@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:29b28286ae3b004d1804c95356bf9e5ec80edf940bea52e37532546db5f27380",
+  "reviewInputFingerprint": "sha256:a82c6713af96df10dc82e9c189ea0ae4304747d830f9445b52d4dd4ffcce4f58",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-a",
+      "roundId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-independent-a",
+      "runIds": [
+        "physics-b034r-recheck-a-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-b",
+      "roundId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-independent-b",
+      "runIds": [
+        "physics-b034r-blind-b-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "d1306bda-35ff-53e9-9458-3cbc128874d8",
+      "firstRecordId": "physics-b034r-recheck-a-20260906-d1306bda-35ff-53e9-9458-3cbc128874d8",
+      "secondRecordId": "physics-b034r-blind-b-20260906-d1306bda-35ff-53e9-9458-3cbc128874d8",
+      "firstRunId": "physics-b034r-recheck-a-20260906",
+      "secondRunId": "physics-b034r-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "firstRecordId": "physics-b034r-recheck-a-20260906-28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "secondRecordId": "physics-b034r-blind-b-20260906-28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "firstRunId": "physics-b034r-recheck-a-20260906",
+      "secondRunId": "physics-b034r-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

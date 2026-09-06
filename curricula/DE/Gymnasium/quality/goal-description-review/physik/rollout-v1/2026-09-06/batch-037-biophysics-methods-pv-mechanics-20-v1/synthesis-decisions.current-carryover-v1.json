@@ -1,0 +1,384 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b037-twelve-unchanged-current-carryover-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-root-independent-review-synthesis",
+  "synthesizedAt": "2026-09-06T11:19:55.944Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906",
+    "batchManifestDigest": "sha256:b2fe45d83ee26fbd8144f07a648c81c1936b0e04fe74316b14248d900813364f",
+    "configDigest": "sha256:a3756bca554653858fc73e40c102de8f552735e1d09d8f3f6aa895dba18b7403",
+    "bundleFingerprint": "sha256:91fe19a22e3cbde43a8abd95ca8e5c78358b4b2e51fd40ab11e731c43e4e7450",
+    "bookDigest": "sha256:ebed6e9c4a5455b794fbf0dd0e7fb908fd116da7504f24de86e4a263abdc69f7",
+    "reviewInputFingerprint": "sha256:07688953edc91cc4ce607c8490e589432ddce3a8645ef4d0813e7381885d9d39",
+    "dualSummaryDigest": "sha256:8c1e6131d4778cf519034a1928ede5361bc1e9ab33618a232ef9c320b59f0d19",
+    "canonicalLandscapeDigest": "sha256:5e44ab039917bf583601c47320cb47e1ffcbe05d46103a510108cd0ad211160a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-a",
+      "campaignDigest": "sha256:0bc5c7d405136871f2139e3531bda53cb25b43a87dd44c941a464bb69054dada",
+      "roundId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:07688953edc91cc4ce607c8490e589432ddce3a8645ef4d0813e7381885d9d39",
+      "batchId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:4dd7ce9afe2bba6d22f0240bc484fe648f183dbbaed088be906d512193e3aa75",
+      "runId": "physics-b037-blind-a-20260906",
+      "runManifestDigest": "sha256:86010537375453bea5a6b7f6019db0e3a6a00d71f6745ad420d0fe5b5a465411",
+      "resultsDigest": "sha256:b91497f5776c04d72de55583dd96254d20f94d6f791c5a4655e30d356d02fc08"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-b",
+      "campaignDigest": "sha256:b07532e31db94111b6977cfa69917b5a1299fefe9ca8900e1d663f72e68cd9dd",
+      "roundId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:07688953edc91cc4ce607c8490e589432ddce3a8645ef4d0813e7381885d9d39",
+      "batchId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:413066ef9383a0b1e96f3316058a1e1bb571e4fed175ebf5eb9bf77992a03bc0",
+      "runId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "runManifestDigest": "sha256:feea3953183f71ac65d94d78c5e3b1531a9b1e13e41c0acab0f329f386e6d966",
+      "resultsDigest": "sha256:ac0ccf859de8167074391bcae554072af0d3425bbcd518febd3e8e6dea1cd4c9"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-001",
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c0779aedbe8187d96c6606de29869b087d59bc7fcea534256a58b3a09b26c93d",
+      "pageFingerprint": "sha256:fdd763866a424be310525247cf0109624b1ffa907a4b035b1d122243496f991f",
+      "goalReviewContextFingerprint": "sha256:a2624d074161de2d44d1f8b7c952332c7f58d84afd46e008690597370d5b55d2",
+      "finalText": {
+        "titleDe": "Experimentelle Untersuchungen fachgerecht dokumentieren",
+        "titleEn": "Document experimental investigations professionally",
+        "descriptionDe": "Die lernende Person kann Beobachtungen, Messwerte, Auswertungsschritte und Ergebnisse einer physikalischen Untersuchung in einem strukturierten Protokoll oder einer fachtypischen Darstellung nachvollziehbar dokumentieren.",
+        "descriptionEn": "The learner can document observations, measurements, evaluation steps, and results of a physical investigation in a structured report or subject-specific representation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.ad62f563-4fee-5399-8d9c-03a214658aa9",
+          "recordDigest": "sha256:5abf076be31274095b5813af27bd8f5ce5b3b3fe0aa0b73bf2f81b5379b5c93a"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.ad62f563-4fee-5399-8d9c-03a214658aa9",
+          "recordDigest": "sha256:c548040a8e9032580cb1392731ac7c0cee46bd0ebd342bdc6e8729b8c8a8d299"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Die nachvollziehbare Trennung von Rohwerten, Auswertung und Schlussfolgerung ist ein gemeinsames Dokumentationsprodukt; kein festes Protokollschema ergänzen. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Separating raw data, analysis and conclusions constitutes one traceable report; no fixed report template is added. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-002",
+      "goalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2363816861390cb79be8b7933efd92a386ffd1b828a998dc0dd5d2344a6188c7",
+      "pageFingerprint": "sha256:7cb1cd280e13f302e7f5a078b4613781e37022ddcade2ea9b37a90b846a81c24",
+      "goalReviewContextFingerprint": "sha256:02c7c21f11b1ce06705b7be6d1543675586ac7c925bd16b0595a64f3773c715f",
+      "finalText": {
+        "titleDe": "Physikalische Informationen aus Quellen auswerten",
+        "titleEn": "Evaluate physical information from sources",
+        "descriptionDe": "Die lernende Person kann Informationen aus vorgegebenen oder selbst recherchierten Quellen entnehmen, nach fachlicher Relevanz ordnen und mit vorhandenen physikalischen Kenntnissen abgleichen.",
+        "descriptionEn": "The learner can extract information from provided or independently researched sources, organize it by subject relevance, and compare it with existing physical knowledge."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+          "recordDigest": "sha256:34247cf20a8102e552a68149b8deb062181ed0e6681ac4fed7463847ba0b8e71"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+          "recordDigest": "sha256:69722f6296fef25c11486f7358119ce0ab869082f6356b88eb6306dd2e3985f9"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Quellenauswahl, fachliche Ordnung und Abgleich bilden eine gemeinsame Informationsauswertung. Messbedingungen statt Autoritätsbehauptung tragen den Nachweis. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Source selection, relevance and physical cross-checking form one information-evaluation competence; measurement conditions, not asserted authority, ground the evidence. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-003",
+      "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bd65326e05e3c1dfa72380c000fbb7330a0d66fdf191b1af769be894a5548ef8",
+      "pageFingerprint": "sha256:36ee595a04df96b62bc71895ead6fc534a309121811f97f4b65c48136a5371c0",
+      "goalReviewContextFingerprint": "sha256:3ada133330e3506f09a6c4efcdabfe72ea23b95eb91bef6ecb8951cb701c21a1",
+      "finalText": {
+        "titleDe": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+        "titleEn": "Present physical work results using subject language",
+        "descriptionDe": "Die lernende Person kann physikalische Arbeitsergebnisse sach- und adressatengerecht darstellen, zentrale Fachbegriffe bewusst verwenden und alltagssprachliche Aussagen in fachsprachliche Formulierungen überführen.",
+        "descriptionEn": "The learner can present physical work results appropriately for audience and purpose, consciously use key terminology, and translate everyday statements into subject language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "recordDigest": "sha256:9298a864f42d03efd562e1be105bd63fc9cfceba1ccf610f6d389249d4c2bbd8"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "recordDigest": "sha256:d00e00cc5e321ed79ef4474ee50f8562bcc2b93bc1da873713829f5e289a8b80"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Adressatenbezug und physikalisch richtige Fachsprache sind Qualitätsmerkmale derselben Ergebnispräsentation, keine zusätzlichen Inhaltsroutinen. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Audience adaptation and correct terminology are quality criteria of the same presentation, not additional content routines. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-004",
+      "goalId": "b378c8b3-5e83-5abf-8243-b0f345037bfc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4f6accca4fa2dcc2939e414b327c9cc9976b92c7fb8bb85408bee619e9351deb",
+      "pageFingerprint": "sha256:ee6a7e958774a303523a67d0f942a252a876ec0c7d453cd50a0c4ed312168b47",
+      "goalReviewContextFingerprint": "sha256:36526332844857734383705600e2a98dc19aa201660c83db81f98d735b6ba034",
+      "finalText": {
+        "titleDe": "Physikalische Bewertungen begründet formulieren",
+        "titleEn": "Formulate evidence-based physical evaluations",
+        "descriptionDe": "Die lernende Person kann zu einfachen physikalisch-technischen Fragestellungen fachliche und außerfachliche Argumente unterscheiden, Nutzen und Risiken abwägen und einen begründeten Standpunkt formulieren.",
+        "descriptionEn": "The learner can distinguish subject-specific and non-subject arguments in simple physical-technological questions, weigh benefits and risks, and formulate a justified position."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.b378c8b3-5e83-5abf-8243-b0f345037bfc",
+          "recordDigest": "sha256:076da66254f485c7bf7a70c99979c5564b5288f53d30e222a3cf8a6434993656"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.b378c8b3-5e83-5abf-8243-b0f345037bfc",
+          "recordDigest": "sha256:1af29a2c027de7e4445a13c7310e288569a20bbf934f4f6c0ac8995ab8fa4094"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Fachliche und wertbezogene Kriterien unterscheiden, gewichten und zu einem begründeten Urteil verbinden ist ein zusammenhängender Bewertungsprozess. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Distinguishing and weighing physical and value-based criteria toward a justified judgment is one coherent evaluation process. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-005",
+      "goalId": "71b51afd-c71b-506f-8128-d6de36b509d1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2506dcf4fe69ff343715120f7dd8c3839d9d5a8d801854a993d30c667c6ae51b",
+      "pageFingerprint": "sha256:ccaed7cafa718953887e666d46a911476ebaf75238534dc75c2e47b2e180f5f0",
+      "goalReviewContextFingerprint": "sha256:05231d004332d9ea0219dd4d3988c68c1bbcf64d6fafe097ea8e51468d9f2990",
+      "finalText": {
+        "titleDe": "Optische Risiken und Lasersicherheit beurteilen",
+        "titleEn": "Evaluate optical risks and laser safety",
+        "descriptionDe": "Die lernende Person kann Risiken beim Umgang mit Linsen, Lichtquellen und Lasern benennen, Sicherheitshinweise fachlich einordnen und einfache Schutzmaßnahmen begründen.",
+        "descriptionEn": "The learner can identify risks when handling lenses, light sources, and lasers, classify safety instructions in subject terms, and justify simple protective measures."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.71b51afd-c71b-506f-8128-d6de36b509d1",
+          "recordDigest": "sha256:4ca5f2c7624498d0952c5b169d9c88564313bf96c14dfacdcc3043d6bc578ab1"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.71b51afd-c71b-506f-8128-d6de36b509d1",
+          "recordDigest": "sha256:3ce367cfd283689fb794a1a2e47f088285604ce7236c133e2ddf3965d08eceae"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Einfache optische Schutzmaßnahmen werden über Expositionswege begründet; keine quantitativen Grenzwerte oder gefährlichen Versuche ergänzen. Bestehende Bildzurückstellung bleibt ehrlich erhalten. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Simple optical protection is justified through exposure pathways; no quantitative thresholds or hazardous experiments are added. Existing image deferral remains explicit. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-006",
+      "goalId": "05af2893-0201-4d7f-985b-272d7b88e26e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:db4865b7bde5c41f8852c8b17fceff4d51f917948688124118901ca57a5a2b2d",
+      "pageFingerprint": "sha256:7d31292d4c5b721de1e43d2639e9610bba4799d4e9737cb8e435359866f2073a",
+      "goalReviewContextFingerprint": "sha256:d10e6ef042b2a98db7e085eae813d4bb0d7a2e1f5294cc825490359ea13e32d0",
+      "finalText": {
+        "titleDe": "Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben",
+        "titleEn": "Describe Linear Restoring Force in Harmonic Oscillations",
+        "descriptionDe": "Die lernende Person kann die lineare Rückstellkraft als Voraussetzung harmonischer mechanischer Schwingungen beschreiben und das Hooke'sche Gesetz fachlich deuten.",
+        "descriptionEn": "The learner can describe linear restoring force as a prerequisite of harmonic mechanical oscillations and interpret Hooke's law in disciplinary terms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.05af2893-0201-4d7f-985b-272d7b88e26e",
+          "recordDigest": "sha256:86cfdf4bfaac5fc84c9476d39b4fb5b994158f2ad2bbb10fa6cdaeb6189639fd"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.05af2893-0201-4d7f-985b-272d7b88e26e",
+          "recordDigest": "sha256:89000fa811d325c45031ba6d86b55ad5965f6fe25f1c3223ac0fc25de1df768c"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Lineare Rückstellkraft und Hooke-Deutung beschreiben denselben Modellkern; Vorzeichen, Gleichgewicht und Idealisation genügen ohne zusätzliche Differentialgleichungen. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Linear restoring force and Hooke interpretation share one model core; direction, equilibrium and idealization suffice without additional differential equations. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-007",
+      "goalId": "eb30189c-27c6-510b-b235-6543afa18b90",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:37c790e548931308946b9800ef2d30e2aa88eb6b5289b788c97f73b4a626c7fa",
+      "pageFingerprint": "sha256:6c5f9e34c289e2641a1e68d8ed6854f92a2d17879c1e2978e98cf1dfe5943c42",
+      "goalReviewContextFingerprint": "sha256:141c4ae3e02da6e41c509954404803417fa5335b8cbc281ad2406372bdcdb3fd",
+      "finalText": {
+        "titleDe": "Einfachen Elektromotor bauen und qualitativ erklären",
+        "titleEn": "Build and qualitatively explain a simple electric motor",
+        "descriptionDe": "Die lernende Person kann einen einfachen Elektromotor aufbauen, seine Funktion mit der Kraft auf stromdurchflossene Leiter im Magnetfeld erklären und Möglichkeiten zur Variation seines Laufs untersuchen.",
+        "descriptionEn": "The learner can build a simple electric motor, explain its operation using the force on current-carrying conductors in a magnetic field, and investigate ways to vary its motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.eb30189c-27c6-510b-b235-6543afa18b90",
+          "recordDigest": "sha256:c7619aa4af76adee4b97cd7e763bbd2fcf5aec2e1c43dc01a25242647b86b7ca"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.eb30189c-27c6-510b-b235-6543afa18b90",
+          "recordDigest": "sha256:5502184592525e837b07b0d4d4e107fc74e66a3d9c679dca5ada44d0100eab24"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Sicheres Aufbauen, kraftbezogenes Erklären und gezieltes Variieren prüfen gemeinsam das einfache Motormodell; kein bestimmter Motortyp wird vorgeschrieben. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Safe construction, force-based explanation and controlled variation jointly assess a simple motor model without prescribing one motor design. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-008",
+      "goalId": "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d663fa47bbebac4849db74bae3278372d20237dded7c7093d94601b9a9872e38",
+      "pageFingerprint": "sha256:796144e6ebff2b5e4bb87632ed8ce4b5c2acde8227dbcda0adcb63afe17543ac",
+      "goalReviewContextFingerprint": "sha256:fed8bb4c0f4c1145998bb99fbe69aa129efff164bfbba59298953359f40a054b",
+      "finalText": {
+        "titleDe": "Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren",
+        "titleEn": "Analyze simple collision processes using momentum and energy conservation",
+        "descriptionDe": "Die lernende Person kann einfache Stossvorgaenge quantitativ untersuchen, dabei Impuls- und Energieerhaltung fachlich nutzen und die Rolle von Erhaltungssaetzen in der Mechanik erklaeren.",
+        "descriptionEn": "The learner can quantitatively analyze simple collision processes, use momentum and energy conservation appropriately, and explain the role of conservation laws in mechanics."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "recordDigest": "sha256:cd056de9c789a9603a8ae929246fd315a05d2c2d815085d094d1a001346e165d"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "recordDigest": "sha256:984fbf63ca099e9ddd9dcdd963ec4a688568b75b81854c640c4c88e0ecdd9823"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Einfache Stoßanalyse unterscheidet Impuls und Gesamtenergie von kinetischer Energie; die Beschreibung behauptet keine allgemeine kinetische Energieerhaltung. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Simple collision analysis distinguishes momentum and total energy from kinetic energy; the description does not assert universal kinetic-energy conservation. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-009",
+      "goalId": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:916b5697a3d0b9aca9e3bb21f3855b481b0ed12c9db21b9d7d9053252e5d820f",
+      "pageFingerprint": "sha256:5a63ee78530685b02744e788b9b6fd8338672d08dd72393953a5e61a29a0ba54",
+      "goalReviewContextFingerprint": "sha256:09658389731727d3c7b07f9caa5b6dedfc218b117b811d135e906c00c74f71f0",
+      "finalText": {
+        "titleDe": "Elastische Stöße",
+        "titleEn": "Elastic Collisions",
+        "descriptionDe": "Die lernende Person kann elastische Stöße in einer Dimension mithilfe von Impuls- und kinetischer Energieerhaltung analysieren und sie fachlich von inelastischen Stößen abgrenzen.",
+        "descriptionEn": "The learner can analyze elastic collisions in one dimension using momentum and kinetic-energy conservation and distinguish them from inelastic collisions on a scientific basis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "recordDigest": "sha256:f5241c501f02b4cf796e8e6c828b233a4132f00d5cf9853f680d4b2bc4ecaa4c"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "recordDigest": "sha256:4ff9aa7acb6a16c7f8b10b2835fe4e1f129810cb53352505da1ce84205eb6fd2"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Der eindimensionale elastische Stoß hat zwei gekoppelte Erhaltungsbedingungen; Abgrenzen erläutert das definierende Merkmal und erweitert nicht auf allgemeine Stoßtheorie. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. The one-dimensional elastic collision has two coupled conservation conditions; contrasting inelastic collisions explains the defining property without introducing general collision theory. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-010",
+      "goalId": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3dcc7f395ea7cfb34b5d885d93c8b6a33c111564f4e22720296b1f796d9597c8",
+      "pageFingerprint": "sha256:86cf96eb4cd9fc0f8fb1df80c286ce9b662be9861a493c5bb13208cf46a99410",
+      "goalReviewContextFingerprint": "sha256:3b0dd002d8420f48d1a34058ecd3b9fd886915beaa88057be801eb42b74391ff",
+      "finalText": {
+        "titleDe": "Elastische Stöße im Schwerpunktsystem analysieren",
+        "titleEn": "Analyze Elastic Collisions in the Center-of-Mass Frame",
+        "descriptionDe": "Die lernende Person kann elastische Stöße im Schwerpunktsystem analysieren, Relativgeschwindigkeiten vor und nach dem Stoß verknüpfen und Ergebnisse ins Laborsystem zurücktransformieren.",
+        "descriptionEn": "The learner can analyze elastic collisions in the center-of-mass frame, relate relative velocities before and after impact, and transform results back to the laboratory frame."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "recordDigest": "sha256:08675257f0ffa9546900250f718d76ed154b2b50b514207c37d3e9790cea7afc"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "recordDigest": "sha256:e2efd92186de783c4eabc7013f0b5be74521b9fdfb8125bb58bc379c13d086a8"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Schwerpunktsystem, relative Geschwindigkeiten und Rücktransformation sind Schritte derselben Stoßanalyse; der direkte Vorgänger begrenzt die geprüften Fälle auf eine Dimension. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Center-of-mass analysis, relative velocities and transforming back are steps of the same collision analysis; the direct predecessor bounds the assessed cases to one dimension. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-011",
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e52a9b9a040f87308e40fb7a7366bb568fbdc843473afd5c35bc1e1574cd0db0",
+      "pageFingerprint": "sha256:2e7a17a58befbac80f3d700524e5d089145b8ea7f64ebbfc495c63a94cdb0395",
+      "goalReviewContextFingerprint": "sha256:6f5cbbea680d57e4462598f34f7cbe98fd9e96439bdaaadd1fe67d3583bb87b9",
+      "finalText": {
+        "titleDe": "Energie und Energieerhaltung in Schwingungen",
+        "titleEn": "Energy and Conservation of Energy in Oscillations",
+        "descriptionDe": "Die lernende Person kann bei reibungsfrei idealisierten Schwingungen den Energieaustausch zwischen potenzieller und kinetischer Energie qualitativ und in einfachen Fällen quantitativ beschreiben.",
+        "descriptionEn": "The learner can qualitatively and, in simple cases, quantitatively describe the energy exchange between potential and kinetic energy in frictionless idealized oscillations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+          "recordDigest": "sha256:c04c0628adb01b351ece5cb0416c55e8789db8f02c8e07552a3dbf7a717d3002"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+          "recordDigest": "sha256:c8f0a6fe08b5d98020c7c90b89dc310ce2dd3a51c6d270ce7ed994da91e686a4"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Die reibungsfreie Modellgrenze und einfache quantitative Energieverteilung sind ausdrücklich vorhanden; qualitative und quantitative Nachweise betreffen denselben Energieaustausch. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. The frictionless model limit and simple quantitative energy distribution are explicit; qualitative and quantitative demonstrations concern the same energy exchange. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    },
+    {
+      "decisionId": "physik-b037-twelve-unchanged-current-carryover-v1-decision-012",
+      "goalId": "e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:71237653350f9b196e08d4a239b8045746b2aca5e4a7f03b7b4db5dbada84e17",
+      "pageFingerprint": "sha256:98655e116fe907b0e866b673b2b40837f44aaeefc8318ca7cac8a1f2c25fff83",
+      "goalReviewContextFingerprint": "sha256:4582262f6de72a0c1967ae8440224a10bd14cf31f04c45d19a8b2a84c4a32b11",
+      "finalText": {
+        "titleDe": "Gedämpfte Schwingungen beschreiben",
+        "titleEn": "Describe Damped Oscillations",
+        "descriptionDe": "Die lernende Person kann gedämpfte mechanische Schwingungen qualitativ beschreiben, den Einfluss der Dämpfung auf die Amplitude erläutern und die Dämpfung als Erweiterung der reibungsfreien Idealisierung einordnen.",
+        "descriptionEn": "The learner can qualitatively describe damped mechanical oscillations, explain the influence of damping on amplitude, and classify damping as an extension of frictionless idealization."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b037-blind-a-20260906.e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+          "recordDigest": "sha256:1112c6fc45e81b18c22328e97a430f425ae1fc36c5081672512a1822b045494f"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-037-biophysics-methods-pv-mechanics-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+          "recordDigest": "sha256:acec1c9e94fe769f7365df3965e45c6600560cf19cffcf1288b751b6148d435b"
+        }
+      },
+      "rationaleDe": "KEEP nach vollständigem Hauptvergleich beider unabhängigen Originalrunden. Das qualitative Abklingen der Amplitude gegenüber dem reibungsfreien Modell ist prüfbar; Exponentialfit, vollständige Fallklassifikation und Resonanz wären unbegründete Zusätze. Wiederverwendung nur bei nativer vollständiger Seiten-/Kontextgleichheit; keine neue Prüfung oder Humanfreigabe behauptet.",
+      "rationaleEn": "KEEP after complete root comparison of both independent original rounds. Qualitative amplitude decay compared with a frictionless model is assessable; exponential fitting, exhaustive damping classification and resonance would add unwarranted scope. Reuse only after native full-page/context equality; no fresh review or human approval is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:2517716dfad2d11390344c3271ec7eed5196758b3ea9ba9fde578f6815fbe72b"
+}

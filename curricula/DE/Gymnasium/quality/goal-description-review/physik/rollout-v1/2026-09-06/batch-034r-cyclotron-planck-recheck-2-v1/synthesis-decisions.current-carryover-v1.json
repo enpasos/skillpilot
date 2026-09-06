@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-b034r-current-2-synthesis-20260906-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-parent-b034r-current-pair",
+  "synthesizedAt": "2026-09-06T07:03:54.317Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906",
+    "batchManifestDigest": "sha256:aa50b364a27b40e735786c3a3662f5b364d093b5188b794b9a6b3942d2e0f202",
+    "configDigest": "sha256:ff39df8dc7fdfbe92eecbcbe51e9c2d7a9d7f6c2e892c76ffaf8211514a0772a",
+    "bundleFingerprint": "sha256:29b28286ae3b004d1804c95356bf9e5ec80edf940bea52e37532546db5f27380",
+    "bookDigest": "sha256:dd4c196657b903576183f2116e25e658b05ccbecd91db64f7825473e3056d1d4",
+    "reviewInputFingerprint": "sha256:a82c6713af96df10dc82e9c189ea0ae4304747d830f9445b52d4dd4ffcce4f58",
+    "dualSummaryDigest": "sha256:0708edba2b36437dbcd9410ff7b61c321a9c0eb9a035a1b96814ddbf261a6ceb",
+    "canonicalLandscapeDigest": "sha256:3316c5a2641e99a28087c911d1434c01e6608c5883834f133a1ea7c24ab01f3f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-a",
+      "campaignDigest": "sha256:8d3b2945673e18476979b0ae4e23e1694dfb495fb076a504fb4971080ff65d72",
+      "roundId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:a82c6713af96df10dc82e9c189ea0ae4304747d830f9445b52d4dd4ffcce4f58",
+      "batchId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e8d2051e3ec1abbbf5e46e725000a4e77e680cc402372f05a8ed6b6cfd24d147",
+      "runId": "physics-b034r-recheck-a-20260906",
+      "runManifestDigest": "sha256:195ec91fab1c2498fdd06f892c1dbc903bcf5272435c38aca7236ef8d442c7ca",
+      "resultsDigest": "sha256:adda9ea2449d6dcea2043b8beda02d9c0e5c9b87fcfe856949c4ffca06e887a8"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-b",
+      "campaignDigest": "sha256:55e34a3c4329d3365c89a73a489a539b1b985aa2243850ac7cedbde1774ea770",
+      "roundId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:a82c6713af96df10dc82e9c189ea0ae4304747d830f9445b52d4dd4ffcce4f58",
+      "batchId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:87abacf9ece552f7522c1e6c18bb01ec1f69d9c2dbfac2e156b5490f2d444881",
+      "runId": "physics-b034r-blind-b-20260906",
+      "runManifestDigest": "sha256:1766a69a4e97fef2c9ee377bcba361c29ebee64f52f3bb0604fc22e586e19d07",
+      "resultsDigest": "sha256:476e486b54f6b0ac02df35bea6b0df29fe47eec83d55ad206586f5019ef0e70c"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-b034r-current-2-synthesis-20260906-v1-decision-001",
+      "goalId": "d1306bda-35ff-53e9-9458-3cbc128874d8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:94a9992901d1558f7945f929598ad8abfc1a0591d90ee8d8592418ea01c55061",
+      "pageFingerprint": "sha256:74ff4bdb8f217e2e4cff928d1e631bdcf8a2716a49d4c416ba2f559d15dcd275",
+      "goalReviewContextFingerprint": "sha256:4e270bb8724b6b1878d4315a3462ca578719905b72736b790efb551a91c46629",
+      "finalText": {
+        "titleDe": "Zyklotron und Strahlentherapie fachlich bewerten",
+        "titleEn": "Evaluate cyclotron applications in radiotherapy",
+        "descriptionDe": "Die lernende Person kann das Funktionsprinzip des Zyklotrons auf Strahlentherapien beziehen und Nutzen sowie Risiken medizinischer Anwendungen mit physikalischen Kriterien bewerten.",
+        "descriptionEn": "The learner can relate the operating principle of the cyclotron to radiotherapy and evaluate the benefits and risks of medical applications using physical criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034r-recheck-a-20260906-d1306bda-35ff-53e9-9458-3cbc128874d8",
+          "recordDigest": "sha256:1801356842f226ca97643161c4891e5466b8479cc95d641d0738ce7c22c73d8b"
+        },
+        "second": {
+          "recordId": "physics-b034r-blind-b-20260906-d1306bda-35ff-53e9-9458-3cbc128874d8",
+          "recordDigest": "sha256:cae0aa97682554aae4b991f601bd040f66360aec246c87035016ce258d59e7e3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden behalten die nun tatsächlich englisch übersetzten Felder bei. Der unveränderte deutsche Kompetenzkern verbindet Zyklotronprinzip und physikalisch begründete Nutzen-Risiko-Bewertung als eine Anwendungsleistung. Bereitgestellte synthetische Dosis- und Reichweitendaten erlauben ein bedingtes Kriterienurteil, keine klinische Therapieempfehlung. Der BY-Quellenumfang wurde bei der Translation nicht erweitert. Das separat gegengeprüfte V2-Profil deckt zwei unabhängige physikalische Anwendungsfälle ab; keine Bild-, Quellen- oder Humanfreigabe wird hier verliehen.",
+      "rationaleEn": "Both independent current rounds retain the now genuinely English translated fields. The unchanged German competence connects the cyclotron principle with a physically justified benefit-risk evaluation as one application performance. Supplied synthetic dose and range data support a conditional criterion-based judgment, not a clinical treatment recommendation. Translation did not broaden the BY source scope. The separately counter-reviewed V2 profile covers two independent physical application cases; this synthesis grants no image, source or human approval."
+    },
+    {
+      "decisionId": "physics-b034r-current-2-synthesis-20260906-v1-decision-002",
+      "goalId": "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:10ef9c1deeaff93b0397893e696e0c1c7a53c854337385c59a0c7538055b8a4f",
+      "pageFingerprint": "sha256:8361c3c4eef1d8a19e064ce8d207c90bdb29e2860a2a6779892996a8c9c6b458",
+      "goalReviewContextFingerprint": "sha256:352b607b696096f75a6d6e46cc08f376ba1392232b80cbfce886543aca1258f0",
+      "finalText": {
+        "titleDe": "Methode: Naturkonstanten bestimmen (Linearisierung)",
+        "titleEn": "Method: Determining Natural Constants (Linearization)",
+        "descriptionDe": "Die lernende Person kann das Plancksche Wirkungsquantum h aus Fotoeffekt-Messdaten durch eine lineare Auswertung der Einstein-Gleichung für die maximale kinetische Energie bestimmen und den Zusammenhang zwischen Geradensteigung und h physikalisch deuten.",
+        "descriptionEn": "The learner can determine Planck's constant h from photoelectric-effect measurement data by linearly analysing Einstein's equation for the maximum kinetic energy and physically interpret the relationship between the slope of the straight line and h."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b034r-recheck-a-20260906-28f6a324-5f5e-5771-91d2-c007f6c275aa",
+          "recordDigest": "sha256:cdf57fefefd9ed9b96dce908eb8f3827569c62ee99b5417d762ee669ff1b1865"
+        },
+        "second": {
+          "recordId": "physics-b034r-blind-b-20260906-28f6a324-5f5e-5771-91d2-c007f6c275aa",
+          "recordDigest": "sha256:7df56aa1728b0333566287d9d204a063c5c13ba08b739e70aca06298f8bcf2e2"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die aktuelle Präzisierung auf maximale Fotoelektronenenergie und physikalische Steigungsdeutung. h-Bestimmung und Deutung bilden dieselbe Messdatenauswertung; es ist weder eine neue Experimentierroutine noch eine Pflichtachse hinzugekommen. E_max gegen f und U_g gegen f bleiben mit korrekter Größenumrechnung zulässig. Das unabhängige Autorenprofil wurde am aktuellen Text gegengeprüft; die beiden synthetischen Geraden samt Fehlergrenzen wurden rechnerisch bestätigt. Weitere Beschreibungs- oder Bildänderungen würden keine belegte Schwäche beheben.",
+      "rationaleEn": "Both independent rounds confirm the current clarification of maximum photoelectron energy and physical slope interpretation. Determining and interpreting h form the same measurement analysis; no new experimental routine or mandatory graph axis has been added. Both E_max versus f and U_stop versus f remain valid with the correct quantity conversion. The independent author's profile was counter-reviewed against the current text; both synthetic lines and their error bounds were independently calculated. Further description or image changes would address no demonstrated weakness."
+    }
+  ],
+  "manifestFingerprint": "sha256:24c9421a58c234a259aaf8f1491c4de5d939add5db19e41ea728e8fcf51c3272"
+}

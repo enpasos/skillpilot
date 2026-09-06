@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-05T07:00:39.059Z
+Generated: 2026-09-06T16:03:19.250Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1179 |
-| Atomare Ziele im Visualisierungs-Scope | 795 |
-| Ziele mit primaerem Visualisierungslink | 722 |
+| Alle Ziele in der Landschaft | 1181 |
+| Atomare Ziele im Visualisierungs-Scope | 796 |
+| Ziele mit primaerem Visualisierungslink | 723 |
 | Coverage | 90.8% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 795 |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 796 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -29,16 +29,16 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 3 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 5 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 1 |
+| `accepted` | 5 |
 | `approved` | 20 |
-| `pilot` | 701 |
+| `pilot` | 698 |
 
 ## Ledger Decisions
 
@@ -181,6 +181,8 @@ Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
+| `6c26a00a-ad1e-59cc-93e2-a38e1683665c` | Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten | `pilot` | - |
+| `a1c79897-6ded-57f8-bee1-2d365a5083c9` | Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen | `pilot` | - |
 | `cc60f759-1168-5fc0-8ff5-5f7a2533e61c` | Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen | `pilot` | - |
 | `03703b29-efd8-57e0-acf5-4381b1dc67ec` | Modalwert bestimmen und im Kontext deuten | `approved` | - |
 | `f08d06dc-139d-5fd2-892c-8cc919b1e4fc` | Terme mit Variablen lesen und deuten | `pilot` | - |

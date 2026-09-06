@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T02:50:57.637Z",
+  "generatedAt": "2026-09-06T16:08:19.838Z",
   "generator": "app/scripts/reportGoalSourceRationaleGapIssues.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "allRelevantReportPath": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json"
   },
   "sourceReport": {
-    "generatedAt": "2026-09-05T02:50:54.282Z",
+    "generatedAt": "2026-09-06T16:02:01.242Z",
     "summary": {
-      "requestedGoals": 795,
-      "resolvedGoals": 795,
+      "requestedGoals": 796,
+      "resolvedGoals": 796,
       "goalsWithClassicSourceRoute": 740,
-      "goalsWithoutClassicSourceRoute": 55,
-      "goalsWithMemSparqlConsistentRoute": 228
+      "goalsWithoutClassicSourceRoute": 56,
+      "goalsWithMemSparqlConsistentRoute": 227
     }
   },
   "summary": {
-    "totalClassicSourceGapIssues": 55,
-    "coveredSiblingMappingGaps": 24,
+    "totalClassicSourceGapIssues": 56,
+    "coveredSiblingMappingGaps": 25,
     "isolatedSourceExpansionGaps": 31,
-    "phases": 4,
+    "phases": 5,
     "areas": 3
   },
   "buckets": {
@@ -48,6 +48,12 @@
         "issues": 3,
         "coveredSiblingMappingGaps": 3,
         "isolatedSourceExpansionGaps": 0
+      },
+      {
+        "key": "J9",
+        "issues": 1,
+        "coveredSiblingMappingGaps": 1,
+        "isolatedSourceExpansionGaps": 0
       }
     ],
     "byArea": [
@@ -59,8 +65,8 @@
       },
       {
         "key": "Analysis",
-        "issues": 6,
-        "coveredSiblingMappingGaps": 0,
+        "issues": 7,
+        "coveredSiblingMappingGaps": 1,
         "isolatedSourceExpansionGaps": 6
       },
       {
@@ -79,8 +85,8 @@
       },
       {
         "key": "covered-sibling-mapping-gap",
-        "issues": 24,
-        "coveredSiblingMappingGaps": 24,
+        "issues": 25,
+        "coveredSiblingMappingGaps": 25,
         "isolatedSourceExpansionGaps": 0
       }
     ]
@@ -2266,6 +2272,50 @@
       "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
     },
     {
+      "id": "GSR-GAP-6C26A00A",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+      "shortKey": "canonical_math_sek1_j9_read_quadratic_axes_and_signs",
+      "title": "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten",
+      "description": "Die lernende Person kann aus dem Graphen einer quadratischen Funktion die Schnittpunkte mit den Koordinatenachsen ablesen, daraus Nullstellen und y-Achsenabschnitt angeben und die Vorzeichenbereiche anhand der Lage des Graphen zur x-Achse bestimmen.",
+      "phase": "J9",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.2A2A",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 9",
+        "Quadratische Funktionen beschreiben und anwenden",
+        "Quadratische Funktionen und Gleichungen grundlegend untersuchen",
+        "Quadratische Funktionen in Darstellungen deuten",
+        "Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten",
+        "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
+        "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten"
+      ],
+      "parentGoalIds": [
+        "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e"
+      ],
+      "parentTitles": [
+        "Eigenschaften quadratischer Funktionen aus Graphen ablesen"
+      ],
+      "siblingGoals": 1,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+          "title": "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-seki-bp2016-3-2-4-02-7a39c971",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.4, Kompetenz 2, S. 28.",
+          "topicCode": "BP2016-3.2.4",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
       "id": "GSR-GAP-18293A33",
       "lane": "covered-sibling-mapping-gap",
       "goalId": "18293a33-a5ff-4a0f-9b6a-085f171cbffe",
@@ -2370,7 +2420,7 @@
       "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
       "shortKey": null,
       "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
-      "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung mit $n\\ge 1$ und $0<p<1$ berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
       "phase": "Q3",
       "area": "unknown",
       "topicCode": null,

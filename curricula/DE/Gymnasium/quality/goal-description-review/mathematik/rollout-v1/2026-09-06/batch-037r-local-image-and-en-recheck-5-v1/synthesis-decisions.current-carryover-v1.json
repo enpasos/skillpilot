@@ -1,0 +1,160 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b037r-current-pages-dual-synthesis-4-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-parent-full-independent-round-comparison",
+  "synthesizedAt": "2026-09-06T10:33:56.729Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-037r-local-image-and-en-recheck-5-v1-20260906",
+    "batchManifestDigest": "sha256:b0be27b54ca94114ec59c24dec1817fd2767773a40ddd838f43fc8b6af69a4e3",
+    "configDigest": "sha256:57b05e69bf501a4b8d264084640e0619ccedd07b8a69e4b503efbe726c88dfa5",
+    "bundleFingerprint": "sha256:dd545a1647cb92bdb849b8cf035eff8866bb370d9b26eac2da79ae74eac8e52c",
+    "bookDigest": "sha256:4b2536d57382b8bd77aba84c88260019edd8a64c9c35832d2ad909efe903df8e",
+    "reviewInputFingerprint": "sha256:f5e8364ef27effc759325502a8f8f8b345856bb88ce22766fa9cc46e36402365",
+    "dualSummaryDigest": "sha256:1b74b38ab091c45b722d8d9c93d0229a6f0eba2d6b03ee0d7e6c8924f1a15272",
+    "canonicalLandscapeDigest": "sha256:aab32ad4ce33b5d91d0350def06feddd9288de1cf1eae0d41332479b809c22cf"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-037r-local-image-and-en-recheck-5-v1-20260906-a",
+      "campaignDigest": "sha256:8ca1b48e579ce850c76c3b23ce607df60e0fa766f0e7a21d4c101559883f1711",
+      "roundId": "mathematik-rollout-v1-batch-037r-local-image-and-en-recheck-5-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-037r-local-image-and-en-recheck-5-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:f5e8364ef27effc759325502a8f8f8b345856bb88ce22766fa9cc46e36402365",
+      "batchId": "mathematik-rollout-v1-batch-037r-local-image-and-en-recheck-5-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:1dd2c03cd463251dcd8e1fe26fa27c52e536218d83c8823c33ddddc9dd85f34a",
+      "runId": "math-b037r-blind-a-20260906",
+      "runManifestDigest": "sha256:02f290e4c8e5d74873c9d9323897c8701fd14b6645164f6963e2c4c76ab42d31",
+      "resultsDigest": "sha256:bd960b47446d2228089a31daaae1f3e99322d79e15072462970d8ee7df4736b4"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-037r-local-image-and-en-recheck-5-v1-20260906-b",
+      "campaignDigest": "sha256:6fe40386d520f97d43da5a80484ba28505feb53de4def8e8ddd13ef28be9e1b5",
+      "roundId": "mathematik-rollout-v1-batch-037r-local-image-and-en-recheck-5-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-037r-local-image-and-en-recheck-5-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:f5e8364ef27effc759325502a8f8f8b345856bb88ce22766fa9cc46e36402365",
+      "batchId": "mathematik-rollout-v1-batch-037r-local-image-and-en-recheck-5-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e2b5ccbc608b5fbcb3ccd122c107d0dc4b083a4f2e679566e89f819d6f36fcf7",
+      "runId": "math-b037r-local-image-en-20260906-blind-b",
+      "runManifestDigest": "sha256:9e4409dca97f25ca6cf3c85480351cf5f4b919a758b2dc0651be592474a6bcaa",
+      "resultsDigest": "sha256:d1790126e54e69cb76acc0e47dfef214fbf1b8826e7bb645a351d41386c2bb41"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b037r-current-pages-dual-synthesis-4-v1-decision-001",
+      "goalId": "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4fcdebc3eaffba91fcc299e37a0ca5808cd340770c58569b521c146de98cf778",
+      "pageFingerprint": "sha256:b10ca118c2409f533c742c3d4b6fe2b4244861cd63a48808f0b666bc56e137d2",
+      "goalReviewContextFingerprint": "sha256:24a8c2b58ea188fda67d05f10edb368baf1b5412ba5aeb668c0ff4bb6d10828f",
+      "finalText": {
+        "titleDe": "Sekanten-, Tangenten- und Normalensteigungen bestimmen",
+        "titleEn": "Determine secant, tangent, and normal slopes",
+        "descriptionDe": "Die lernende Person kann Sekanten-, Tangenten- und Normalensteigungen an Funktionsgraphen bestimmen und die berechneten Steigungen fachsprachlich deuten.",
+        "descriptionEn": "The learner can determine secant, tangent, and normal slopes on function graphs and interpret the calculated slopes using appropriate mathematical terminology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037r-blind-a-20260906.7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+          "recordDigest": "sha256:6ebd4a54a84ac3aa08f378baf3f922460e748383c3908a0a96eb84c4255a3797"
+        },
+        "second": {
+          "recordId": "math-b037r-local-image-en-20260906-blind-b.001",
+          "recordDigest": "sha256:ecb8754c76ee9cbf085cbd8ecf6bf9fb28bf1c3558ae0945656749adc0f16501"
+        }
+      },
+      "rationaleDe": "Die zwei unabhängigen aktuellen Beschreibungsreviews wurden vollständig gelesen und stimmen in der kohärenten Kompetenz Sekanten-, Tangenten- und Normalensteigungen samt Deutung überein. Die reparierte EN-Fassung fordert ebenso wie DE keine Schnittwinkel. Sonderfall waagerechte Tangente/senkrechte Normale ist im Nachweis enthalten; keine zusätzliche Geradengleichungs- oder Winkelpflicht.",
+      "rationaleEn": "Both complete independent reviews support the current slope-and-interpretation scope. The repaired English text matches German without intersection angles; the horizontal-tangent/vertical-normal case remains explicit in the evidence."
+    },
+    {
+      "decisionId": "mathematik-b037r-current-pages-dual-synthesis-4-v1-decision-002",
+      "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9507cc87ed74dd8b065dadd0ba5d3291133d34a1af1c597acf088da4fd6c2357",
+      "pageFingerprint": "sha256:5f9d8191605678248aa777057ac9c28f18bcf6c5b6a539b055da0c410362498a",
+      "goalReviewContextFingerprint": "sha256:4fd6b9c8db1d67bf5b15e3428eb0e4c1cbd070e1cabfdfb6d65c8433fe44615b",
+      "finalText": {
+        "titleDe": "Potenzregel für ganzzahlige Exponenten exemplarisch begründen",
+        "titleEn": "Justify the power rule for integer exponents by example",
+        "descriptionDe": "Die lernende Person kann die Ableitung von $f(x)=x^n$ für betragsmäßig kleine ganzzahlige Exponenten exemplarisch begründen und die Potenzregel fachsprachlich einordnen.",
+        "descriptionEn": "The learner can justify the derivative of $f(x)=x^n$ for small integer exponents by example and explain the power rule using mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037r-blind-a-20260906.e9445479-c188-5c09-842d-faa5e8678099",
+          "recordDigest": "sha256:178f2b146ab010b0973189eaa2e2230c509900f5b180e99b5aceba6959905ab6"
+        },
+        "second": {
+          "recordId": "math-b037r-local-image-en-20260906-blind-b.002",
+          "recordDigest": "sha256:c343bb4a99a64ffa2f77535b009ed703ab04e91884575ec4694a789ef5a2fbad"
+        }
+      },
+      "rationaleDe": "Beide vollständig verglichenen Runden unterstützen KEEP: Die exemplarische Begründung der Potenzregel bleibt von einem allgemeinen Beweis getrennt und berücksichtigt bei negativen Exponenten den Definitionsbereich. Das korrigierte Bild mit zulässiger Faktorkürzung ist aktuell; die Beschreibung wird nicht unnötig verändert.",
+      "rationaleEn": "Both complete rounds support keeping example-based justification distinct from a general proof, including domain restrictions for negative exponents. The corrected factor cancellation image is current; no wording change is warranted."
+    },
+    {
+      "decisionId": "mathematik-b037r-current-pages-dual-synthesis-4-v1-decision-003",
+      "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:08933aa158cadba16d2fe0c7eca1139c5a40e261f927ebe02a597cb4ffea730c",
+      "pageFingerprint": "sha256:56f1129966e97d157f3ad2e67640341d22d4e189081382f4d0353a746f3b1cb1",
+      "goalReviewContextFingerprint": "sha256:fa077dd519d25c2782a1e4e46494c863e77173299ba20c03023ce08efb72a73f",
+      "finalText": {
+        "titleDe": "Ganzrationale Funktionen ableiten",
+        "titleEn": "Differentiate polynomial functions",
+        "descriptionDe": "Die lernende Person kann ganzrationale Funktionen mithilfe der Potenz-, Faktor- und Summenregel sicher ableiten und Ableitungsterme korrekt vereinfachen.",
+        "descriptionEn": "The learner can differentiate polynomial functions using the power, constant multiple, and sum rules and correctly simplify derivative terms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037r-blind-a-20260906.623cd47f-6f9e-58a7-911c-69e4a8609a27",
+          "recordDigest": "sha256:c270a6c9728546b785c6ec6d10490618a0344bd5a4ad6c04b9c98e5d47503da9"
+        },
+        "second": {
+          "recordId": "math-b037r-local-image-en-20260906-blind-b.003",
+          "recordDigest": "sha256:11e5882aed12219e59e0e0e34a4cbe1d88e6db192b0503f748f4cc21f6dabfa3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden vollständig verglichen: Polynomableitung mit Potenz-, Faktor- und Summenregel sowie Vereinfachung ist ein angemessen begrenztes Anwendungsziel. Darstellungswechsel verlangt nachvollziehbare Regelwahl statt bloßer Ergebniskopie. Die doppelte −7 wurde ausschließlich lokal entfernt; kein Anlass zu curricularer Ausweitung.",
+      "rationaleEn": "Both complete independent rounds support the bounded polynomial differentiation skill. Representation transfer exposes rule choice rather than copying answers. Only the duplicated −7 in the image was removed; no curricular expansion is needed."
+    },
+    {
+      "decisionId": "mathematik-b037r-current-pages-dual-synthesis-4-v1-decision-004",
+      "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ef4bb793444bcdfad94e7b641ceff1ff4fa2e13e89c7b8c3d36d2cddd255453b",
+      "pageFingerprint": "sha256:ec0609db95f56f76da4e03f1126e54b5df02f53bdde627c80c279c6ab2f80a5d",
+      "goalReviewContextFingerprint": "sha256:5b15caa22c7941a17e2757b2d681e0a423cab9cce81584d0fd83385708c7617d",
+      "finalText": {
+        "titleDe": "Begriff der Stammfunktion verstehen",
+        "titleEn": "Understand the concept of an antiderivative",
+        "descriptionDe": "Die lernende Person kann eine Stammfunktion als Funktion verstehen, deren Ableitung die gegebene Funktion ist, und diese Beziehung an einfachen Beispielen fachsprachlich beschreiben.",
+        "descriptionEn": "The learner can understand an antiderivative as a function whose derivative is the given function and describe this relationship using simple examples and mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b037r-blind-a-20260906.0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+          "recordDigest": "sha256:3214eeeedb0c5294c7b00816c489fae0cea96519e38599f4352e77125713a87a"
+        },
+        "second": {
+          "recordId": "math-b037r-local-image-en-20260906-blind-b.004",
+          "recordDigest": "sha256:716791615c6fed6c9ba366ae10b3f7193b66f975d965b3ffd5f279afd964d7ea"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden vollständig verglichen: Die Beschreibung operationalisiert den Begriff bereits durch F′=f und das Erklären einfacher Beispiele. Positive und negative Kandidaten, konstante Verschiebung und Intervallbezug machen Verständnis prüfbar. Im korrigierten Bild steht F′=f; Integrationsverfahren werden nicht zusätzlich verlangt.",
+      "rationaleEn": "Both complete rounds find the antiderivative relationship F′=f and explanation of simple examples observable. Candidate checks and constant shifts test the concept without adding integration procedures. The corrected image states F′=f."
+    }
+  ],
+  "manifestFingerprint": "sha256:430bcb05429f6d7807ebb831bc48386aea8429e89e879c662a6b6c483fdfc183"
+}

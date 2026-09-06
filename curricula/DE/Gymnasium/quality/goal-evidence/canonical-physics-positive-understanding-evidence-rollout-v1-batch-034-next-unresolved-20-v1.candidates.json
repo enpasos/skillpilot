@@ -1,0 +1,1287 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b034-next-unresolved-20-v1",
+  "reviewedAt": "2026-09-06T06:37:58Z",
+  "reviewer": "openai-codex-b034-independent-positive-author",
+  "goals": [
+    {
+      "goalId": "f74c691b-0b76-54e0-8fd6-a22211994e0a",
+      "reason": "Aktuelles Ziel: Nuklidschreibweise und begründete Isotopenunterscheidung; Kernstabilität, Zerfälle und Elektronenbilanz werden nicht hinzugenommen.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "nuclear-counts",
+            "essentialUnderstandingDe": "A zählt Protonen und Neutronen, Z nur Protonen; daher N=A−Z. Z bestimmt das Element.",
+            "essentialUnderstandingEn": "A counts protons and neutrons, Z only protons; hence N=A−Z. Z determines the element.",
+            "observablePerformanceDe": "Übersetzt Nuklidschreibweise in Kernzusammensetzung und umgekehrt und erklärt die Positionen von A und Z.",
+            "observablePerformanceEn": "Translates nuclide notation into nuclear composition and back and explains the positions of A and Z."
+          },
+          {
+            "id": "isotope-criterion",
+            "essentialUnderstandingDe": "Isotope haben gleiches Z und verschiedenes N; gleiches A allein macht Kerne nicht zu Isotopen.",
+            "essentialUnderstandingEn": "Isotopes have equal Z and different N; equal A alone does not make nuclei isotopes.",
+            "observablePerformanceDe": "Begründet Paarvergleiche anhand beider Kernzahlen, auch bei gleicher Massenzahl verschiedener Elemente.",
+            "observablePerformanceEn": "Justifies pairwise comparisons using both nuclear counts, including equal mass numbers of different elements."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "nuclear-counts",
+            "isotope-criterion"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-and-comparison",
+            "textDe": "Gegebene Nuklidschreibweise gegenüber gegebener Kernzusammensetzung; gleiches Element gegenüber gleicher Massenzahl.",
+            "textEn": "Given nuclide notation versus given nuclear composition; same element versus same mass number."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "carbon-pair",
+            "taskDemandDe": "Deute ¹²₆C und ¹⁴₆C und begründe, ob sie Isotope sind.",
+            "taskDemandEn": "Interpret ¹²₆C and ¹⁴₆C and justify whether they are isotopes.",
+            "expectedPerformanceDe": "Bestimmt jeweils 6 Protonen sowie 6 bzw. 8 Neutronen; erklärt gleiches Element durch Z=6 und Isotopie durch verschiedenes N.",
+            "expectedPerformanceEn": "Determines 6 protons each and 6 versus 8 neutrons; explains the same element through Z=6 and isotopy through different N.",
+            "understandingFocusDe": "Bedeutung der Indizes statt bloßem Ablesen einer Elementbezeichnung.",
+            "understandingFocusEn": "Meaning of the indices rather than merely reading an element label."
+          },
+          {
+            "id": "construct-and-contrast",
+            "taskDemandDe": "Sauerstoff hat Z=8. Schreibe Kerne mit N=8 bzw. N=10 als Nuklide. Vergleiche außerdem ¹⁴₆C mit ¹⁴₇N.",
+            "taskDemandEn": "Oxygen has Z=8. Write nuclei with N=8 versus N=10 as nuclides. Also compare ¹⁴₆C with ¹⁴₇N.",
+            "expectedPerformanceDe": "Konstruiert ¹⁶₈O und ¹⁸₈O als Isotope; C-14 und N-14 sind wegen Z=6 bzw. 7 keine Isotope voneinander, obwohl A gleich ist.",
+            "expectedPerformanceEn": "Constructs ¹⁶₈O and ¹⁸₈O as isotopes; C-14 and N-14 are not isotopes of each other because Z is 6 versus 7, although A is equal.",
+            "understandingFocusDe": "Umkehrung der Darstellung und tragfähiges Unterscheidungskriterium.",
+            "understandingFocusEn": "Reverse translation and a robust distinguishing criterion."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "512f81af-1480-56a8-ae52-af3aa1a6a859",
+      "reason": "Historische Einordnung mit ausdrücklich synthetischen Messwerten; fachlicher Abgleich: https://history.aip.org/exhibits/einstein/ae20.htm . Kein Anspruch auf vollständige curriculare Quellenzuordnung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Das Bundle liefert keine historische Primärtextpassage. Gefordert wird die begrenzte Aussagekraft des Nullbefunds, nicht eine bestimmte These über seinen persönlichen Einfluss auf Einstein."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "prediction-and-null",
+            "essentialUnderstandingDe": "Ein ruhender Äther mit einfacher klassischer Geschwindigkeitsaddition ließ im mit der Erde bewegten Labor orientierungsabhängige Lichtlaufzeitdifferenzen erwarten; die Apparatur verglich diese über Interferenz beim Drehen.",
+            "essentialUnderstandingEn": "A stationary ether with simple classical velocity addition suggested orientation-dependent light travel-time differences in the Earth-moving laboratory; rotating the apparatus compared these through interference.",
+            "observablePerformanceDe": "Verknüpft Bezugssystem, senkrechte Lichtwege, Drehung und erwartete Streifenverschiebung und beschreibt den Nullbefund innerhalb der Messauflösung.",
+            "observablePerformanceEn": "Connects reference frame, perpendicular light paths, rotation and expected fringe displacement and describes the null result within measurement resolution."
+          },
+          {
+            "id": "historical-reach",
+            "essentialUnderstandingDe": "Der Befund von 1887 widersprach der erwarteten Ätherwind-Signatur unter den Modellannahmen; er bewies nicht allein sämtliche Relativitätspostulate von 1905.",
+            "essentialUnderstandingEn": "The 1887 result contradicted the expected ether-wind signature under the model assumptions; it did not alone prove all the 1905 relativity postulates.",
+            "observablePerformanceDe": "Trennt Beobachtung, widerlegte Modellvorhersage und weitergehende historische Deutung und benennt die begrenzte Schlussweite.",
+            "observablePerformanceEn": "Separates observation, contradicted model prediction and broader historical interpretation and states the limited inferential reach."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "prediction-and-null",
+            "historical-reach"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "evidence-and-inference",
+            "textDe": "Messprotokoll mit Auflösung gegenüber konkurrierenden historischen Schlussfolgerungen.",
+            "textEn": "Measurement record with resolution versus competing historical conclusions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rotating-interferometer",
+            "taskDemandDe": "Ein rein didaktischer Datensatz sagt beim Drehen 0,40 Streifen Verschiebung voraus und zeigt 0,00±0,02 Streifen. Erläutere Messidee, Bezugssystem und Schluss.",
+            "taskDemandEn": "A purely instructional dataset predicts a 0.40-fringe shift on rotation and shows 0.00±0.02 fringes. Explain measurement principle, frame and conclusion.",
+            "expectedPerformanceDe": "Erklärt den Vergleich zweier senkrechter Hin-und-Rückwege im Erdlabor; die erwartete Verschiebung liegt weit außerhalb der angegebenen Unsicherheit. Spricht gegen dieses Ätherwindmodell, nicht für exakt null bei unbegrenzter Präzision.",
+            "expectedPerformanceEn": "Explains comparison of two perpendicular out-and-back paths in the Earth laboratory; the expected shift is far outside the stated uncertainty. Argues against this ether-wind model, not for exact zero at unlimited precision.",
+            "understandingFocusDe": "Nullbefund als prüfbare Modellkritik mit Messgrenze.",
+            "understandingFocusEn": "A null result as testable model criticism with a measurement limit."
+          },
+          {
+            "id": "historical-claim",
+            "taskDemandDe": "Ordne den Versuch von 1887 und die spezielle Relativitätstheorie von 1905 ein. Beurteile: 'Kein Streifenwechsel beweist allein beide Postulate; weitere Annahmen oder Tests sind überflüssig.'",
+            "taskDemandEn": "Place the 1887 experiment and the 1905 special theory of relativity historically. Assess: 'No fringe change alone proves both postulates; further assumptions or tests are unnecessary.'",
+            "expectedPerformanceDe": "Begründet den Beitrag des Nullbefunds zur Kritik am erwarteten Ätherwind, verwirft aber die Alleinbeweis-Behauptung: ein Befund wählt nicht eindeutig alle theoretischen Annahmen aus. Behauptet keinen alleinigen Auslöser von Einsteins Theorie.",
+            "expectedPerformanceEn": "Explains the null result's contribution to criticism of the expected ether wind but rejects the sole-proof claim: one result does not uniquely select every theoretical assumption. Does not claim it was the sole trigger of Einstein's theory.",
+            "understandingFocusDe": "Unterschied zwischen historischem Befund und deduktivem Beweis einer ganzen Theorie.",
+            "understandingFocusEn": "Difference between historical evidence and deductive proof of an entire theory."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+      "reason": "Vektorielle Superposition am selben Ort in paralleler und orthogonaler Anordnung; keine zusätzliche Berechnung von Quellfeldern oder Teilchenbahnen.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "vector-law",
+            "essentialUnderstandingDe": "Elektrische Feldstärken am selben Ort addieren sich vektoriell; Richtung und Vorzeichen gehören zum Feld, nicht nur der Betrag.",
+            "essentialUnderstandingEn": "Electric field strengths at the same location add vectorially; direction and sign belong to the field, not just magnitude.",
+            "observablePerformanceDe": "Wählt ein Koordinatensystem, begründet E_ges=E₁+E₂ und führt eine konsistente Komponenten- oder Pfeilrechnung durch.",
+            "observablePerformanceEn": "Chooses coordinates, justifies E_total=E₁+E₂ and performs a consistent component or arrow calculation."
+          },
+          {
+            "id": "result-meaning",
+            "essentialUnderstandingDe": "Resultierender Betrag und Richtung müssen zur Geometrie passen; bei Gegenrichtung kann der Betrag kleiner werden, bei orthogonalen Feldern folgt er aus den Komponenten.",
+            "essentialUnderstandingEn": "Resultant magnitude and direction must fit the geometry; opposite directions can reduce magnitude, while orthogonal fields determine it through their components.",
+            "observablePerformanceDe": "Gibt Betrag mit N/C und Richtung an und prüft das Ergebnis durch Vektorskizze, Grenzfall oder Komponentenrückprüfung.",
+            "observablePerformanceEn": "Reports magnitude in N/C and direction and checks using a vector sketch, limiting case or component reconstruction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "vector-law",
+            "result-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "field-geometry",
+            "textDe": "Gegenläufige kollineare Felder gegenüber orthogonalen Feldern; Vorzeichen statt Addition bloßer Beträge.",
+            "textEn": "Opposing collinear fields versus orthogonal fields; signs rather than addition of magnitudes alone."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "opposing-fields",
+            "taskDemandDe": "Am selben Punkt zeigen 300 N/C nach Osten und 500 N/C nach Westen. Bestimme und begründe das Gesamtfeld.",
+            "taskDemandEn": "At the same point, 300 N/C points east and 500 N/C west. Determine and justify the total field.",
+            "expectedPerformanceDe": "Wählt z. B. Osten positiv: 300−500=−200 N/C, also 200 N/C nach Westen. Erklärt Teilkompensation und nicht 800 N/C.",
+            "expectedPerformanceEn": "Chooses, for example, east positive: 300−500=−200 N/C, hence 200 N/C west. Explains partial cancellation rather than 800 N/C.",
+            "understandingFocusDe": "Richtungsgerechte Superposition und physikalisches Vorzeichen.",
+            "understandingFocusEn": "Direction-sensitive superposition and physical sign."
+          },
+          {
+            "id": "orthogonal-fields",
+            "taskDemandDe": "Am selben Punkt wirken 300 N/C nach Osten und 400 N/C nach Norden. Konstruiere das Gesamtfeld mit Betrag und Richtung.",
+            "taskDemandEn": "At the same point there are 300 N/C east and 400 N/C north. Construct the total field with magnitude and direction.",
+            "expectedPerformanceDe": "Erhält Komponenten (300,400) N/C und Betrag 500 N/C. Beschreibt die Richtung nordöstlich mit Komponentenverhältnis 4:3 oder Winkel etwa 53,1° nördlich von Osten; prüft durch Skizze.",
+            "expectedPerformanceEn": "Obtains components (300,400) N/C and magnitude 500 N/C. Describes the northeast direction with component ratio 4:3 or angle about 53.1° north of east; checks by sketch.",
+            "understandingFocusDe": "Geometrie der Vektorsumme statt skalarer Betragsaddition.",
+            "understandingFocusEn": "Geometry of vector addition rather than scalar addition of magnitudes."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "af1094c1-511a-5aae-9e0a-3e9196a82d9a",
+      "reason": "Gemeinsamer Kern des aktuellen idealen Transformatorziels: Induktionsprinzip und inverse Strom-/Spannungsverhältnisse. Nur bereitgestellte Niederspannungs-Modellfälle, kein Aufbauauftrag.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "induction-system",
+            "essentialUnderstandingDe": "Zwei Spulen mit gemeinsamem zeitlich veränderlichem magnetischem Fluss koppeln im idealen Transformator Spannungen über ihre Windungszahlen. Ein unveränderliches Gleichfeld induziert keine dauernde Sekundärspannung.",
+            "essentialUnderstandingEn": "Two coils sharing time-varying magnetic flux couple voltages through their turn counts in an ideal transformer. An unchanging field induces no sustained secondary voltage.",
+            "observablePerformanceDe": "Erklärt Bauteilfunktionen und Wechselbetrieb und begründet U₂/U₁=N₂/N₁ unter idealer Flusskopplung.",
+            "observablePerformanceEn": "Explains component functions and alternating operation and justifies U₂/U₁=N₂/N₁ under ideal flux coupling."
+          },
+          {
+            "id": "lossless-transfer",
+            "essentialUnderstandingDe": "Für den verlustlosen Transformator mit ohmscher Last und Effektivwerten gilt U₁I₁=U₂I₂; höhere Spannung bedeutet bei gegebener Leistung kleineren Strom, keinen Energiegewinn.",
+            "essentialUnderstandingEn": "For a lossless transformer with a resistive load and RMS values, U₁I₁=U₂I₂; higher voltage means lower current at given power, not energy gain.",
+            "observablePerformanceDe": "Bestimmt Spannungen und Ströme, prüft beide Leistungen und grenzt ideale Übertragung von Verlusten realer Geräte ab.",
+            "observablePerformanceEn": "Determines voltages and currents, checks both powers and distinguishes ideal transfer from losses in real devices."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "induction-system",
+            "lossless-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "transfer-direction",
+            "textDe": "Abwärtstransformation mit gegebenem Laststrom gegenüber Aufwärtstransformation mit gegebenem Eingangsstrom.",
+            "textEn": "Step-down transformation with specified load current versus step-up transformation with specified input current."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "step-down",
+            "taskDemandDe": "Im verlustlosen Wechselstrommodell mit ohmscher Last: N₁=600, N₂=150, U₁=12 V, I₂=0,80 A, jeweils Effektivwerte. Erkläre Prinzip und berechne U₂, I₁ sowie beide Leistungen.",
+            "taskDemandEn": "In a lossless AC model with resistive load: N₁=600, N₂=150, U₁=12 V, I₂=0.80 A, all RMS values. Explain the principle and calculate U₂, I₁ and both powers.",
+            "expectedPerformanceDe": "Erhält U₂=3 V, I₁=0,20 A und beidseitig 2,4 W; führt die Spannung auf veränderlichen gemeinsamen Fluss und den Strom auf Energiebilanz zurück. Nennt reale Verluste als Modellgrenze.",
+            "expectedPerformanceEn": "Obtains U₂=3 V, I₁=0.20 A and 2.4 W on both sides; relates voltage to changing shared flux and current to energy balance. Names real losses as a model limit.",
+            "understandingFocusDe": "Induktion und Energieübertragung tragen gemeinsam die Rechnung.",
+            "understandingFocusEn": "Induction and energy transfer jointly support the calculation."
+          },
+          {
+            "id": "step-up-and-dc",
+            "taskDemandDe": "Im gleichen idealen Lastmodell: N₁=100, N₂=300, U₁=4 V, I₁=0,90 A. Prüfe die Behauptung dreifacher Leistung durch dreifache Spannung und erkläre, warum konstante Gleichspannung keinen dauernden Transformatorbetrieb liefert.",
+            "taskDemandEn": "In the same ideal load model: N₁=100, N₂=300, U₁=4 V, I₁=0.90 A. Assess the claim of triple power through triple voltage and explain why constant DC does not provide sustained transformer operation.",
+            "expectedPerformanceDe": "Berechnet U₂=12 V, I₂=0,30 A, beidseitig 3,6 W; widerlegt den Energiegewinn. Trennt einen möglichen Einschaltvorgang von fehlendem dauernden Flusswechsel.",
+            "expectedPerformanceEn": "Calculates U₂=12 V, I₂=0.30 A and 3.6 W on both sides; rejects energy gain. Distinguishes a possible switching transient from the absence of sustained flux variation.",
+            "understandingFocusDe": "Modellbedingung und inverse Stromrelation bleiben beim Richtungswechsel erhalten.",
+            "understandingFocusEn": "The model condition and inverse current relation persist when the transformation direction changes."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "58fc7852-722c-5a67-be6a-bfd1be0b527e",
+      "reason": "Qualitative Totalreflexion und Lichtleitung mit vorgegebenen Grenzwinkeln; kein eingeschmuggeltes quantitatives Brechungsgesetz.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "reflection-condition",
+            "essentialUnderstandingDe": "Totalreflexion setzt den Übergang vom optisch dichteren zum dünneren Medium und einen Einfallswinkel über dem Grenzwinkel voraus; Winkel werden zum Lot gemessen.",
+            "essentialUnderstandingEn": "Total internal reflection requires passage from an optically denser to a less dense medium and an incidence angle above the critical angle; angles are measured from the normal.",
+            "observablePerformanceDe": "Entscheidet begründet anhand von Medienreihenfolge und Winkel, ob Totalreflexion möglich ist, und beschreibt den idealen Strahlenverlauf.",
+            "observablePerformanceEn": "Decides with justification from medium order and angle whether total internal reflection is possible and describes the ideal ray path."
+          },
+          {
+            "id": "fiber-guidance",
+            "essentialUnderstandingDe": "Ein geeigneter Kern-Mantel-Brechzahlunterschied ermöglicht wiederholte Totalreflexion; Lichtleitung hängt an den lokalen Bedingungen und ist in realen Fasern nicht verlustfrei.",
+            "essentialUnderstandingEn": "A suitable core-cladding refractive-index difference enables repeated total internal reflection; guidance depends on local conditions and is not lossless in real fibers.",
+            "observablePerformanceDe": "Erklärt Lichtführung und sagt für eine geänderte Grenzfläche oder Biegung qualitativ Leitung beziehungsweise Austritt voraus.",
+            "observablePerformanceEn": "Explains guidance and qualitatively predicts guidance or escape for a changed interface or bend."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reflection-condition",
+            "fiber-guidance"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "medium-and-path",
+            "textDe": "Umkehr der Medienreihenfolge und Änderung des lokalen Einfallswinkels durch einen Faserbogen.",
+            "textEn": "Reversal of medium order and change of local incidence angle through a fiber bend."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "glass-air",
+            "taskDemandDe": "Für Glas zu Luft sei der Grenzwinkel 42°. Vergleiche Einfallswinkel 30° und 50° zum Lot sowie den umgekehrten Übergang Luft zu Glas bei 50°.",
+            "taskDemandEn": "For glass to air let the critical angle be 42°. Compare incidence angles of 30° and 50° from the normal, and the reverse air-to-glass transition at 50°.",
+            "expectedPerformanceDe": "Erklärt bei 30° gebrochenen und reflektierten Anteil, bei 50° Glas zu Luft Totalreflexion; Luft zu Glas erfüllt die Dichtebedingung nicht. Zeichnet oder beschreibt dazu konsistente Strahlen.",
+            "expectedPerformanceEn": "Explains refracted and reflected portions at 30°, total internal reflection for glass to air at 50°; air to glass does not meet the density condition. Draws or describes consistent rays.",
+            "understandingFocusDe": "Beide Bedingungen sind notwendig; ein großer Winkel allein reicht nicht.",
+            "understandingFocusEn": "Both conditions are necessary; a large angle alone is insufficient."
+          },
+          {
+            "id": "bent-fiber",
+            "taskDemandDe": "Eine Modellfaser hat optisch dichteren Kern als Mantel und Grenzwinkel 65°. Ein Strahl trifft gerade bei 70°, nach einer Biegung lokal bei 60° auf die Grenze. Deute die Lichtleitung.",
+            "taskDemandEn": "A model fiber has a core optically denser than its cladding and a critical angle of 65°. A ray reaches the boundary at 70° in the straight section and locally at 60° after a bend. Interpret guidance.",
+            "expectedPerformanceDe": "Sagt zunächst Totalreflexion, danach möglichen Lichtaustritt voraus und erklärt den Winkel jeweils am lokalen Lot. Begründet die Anwendung als Lichtleiter ohne allgemeine Verlustfreiheit zu behaupten.",
+            "expectedPerformanceEn": "Predicts total internal reflection initially and possible light escape afterward and explains each angle relative to the local normal. Justifies light-guide use without claiming general losslessness.",
+            "understandingFocusDe": "Übertragung der Grenzflächenbedingung auf eine technische Geometrie.",
+            "understandingFocusEn": "Transfer of the interface condition to a technical geometry."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ea17b0af-3d53-5a10-acda-7fd9348537ce",
+      "reason": "Versuchsbeschreibung statt eigenständigem gefährlichem Aufbau; Wellenlängenmultiplex als ein mögliches Modell. Fachabgleich: https://resilience.esa.int/archives/projects/wdm-oct ; keine curriculare Vollzuordnung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die englische kanonische Beschreibung ist derzeit deutsch. Das Ziel benennt kein bestimmtes Multiplexverfahren; die vorgeschlagene Wellenlängentrennung ist ein austauschbarer Modellfall, keine neu gesetzte Pflichtmethode."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "audio-light-chain",
+            "essentialUnderstandingDe": "Im vereinfachten Übertragungsmodell moduliert ein elektrisches Audiosignal die Lichtintensität; Detektor und nachfolgende Elektronik gewinnen ein elektrisches Signal zurück. Optische Trägerfrequenz und Audioänderung sind verschieden.",
+            "essentialUnderstandingEn": "In the simplified transmission model an electrical audio signal modulates light intensity; a detector and subsequent electronics recover an electrical signal. Optical carrier frequency and audio variation are different.",
+            "observablePerformanceDe": "Beschreibt Sender, Lichtweg, Empfänger und deren Funktionen, sagt Auswirkungen einer Unterbrechung voraus und nennt ausreichende Bandbreite sowie Rauschen als Bedingung und Grenze.",
+            "observablePerformanceEn": "Describes transmitter, optical path, receiver and their functions, predicts effects of interruption and names adequate bandwidth and noise as a condition and limit."
+          },
+          {
+            "id": "channel-separation",
+            "essentialUnderstandingDe": "Multiplexing teilt einen Übertragungsweg zwischen unterscheidbaren Kanälen; Zusammenführen allein genügt nicht, der Empfänger muss nach dem gewählten Unterscheidungsmerkmal trennen können.",
+            "essentialUnderstandingEn": "Multiplexing shares one transmission path between distinguishable channels; combining alone is insufficient, since the receiver must separate by the selected distinguishing feature.",
+            "observablePerformanceDe": "Entwirft ein funktionales Mehrkanalmodell mit Zusammenführung und Trennung und prüft seine Vorhersage bei fehlender oder unvollständiger Kanaltrennung.",
+            "observablePerformanceEn": "Constructs a functional multichannel model with combining and separation and tests its prediction when channel separation is absent or incomplete."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "audio-light-chain",
+            "channel-separation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "channel-and-fault",
+            "textDe": "Ein Audiokanal mit unterbrochenem Lichtweg gegenüber zwei Kanälen mit selektiver oder fehlender Empfängertrennung.",
+            "textEn": "One audio channel with an interrupted optical path versus two channels with selective or absent receiver separation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "audio-link",
+            "taskDemandDe": "Beschreibe einen simulierten Licht-Audioversuch mit Mikrofon, gesteuerter LED, Lichtweg, Fotodetektor, Verstärker und Lautsprecher. Was ändert sich bei blockiertem Lichtweg oder konstanter LED-Helligkeit?",
+            "taskDemandEn": "Describe a simulated light-audio demonstration using microphone, driven LED, optical path, photodetector, amplifier and speaker. What changes with a blocked path or constant LED brightness?",
+            "expectedPerformanceDe": "Ordnet die Funktionen zu und erklärt zeitliche Intensitätsmodulation. Im idealen Modell verschwindet bei Blockade das übertragene Audiosignal; konstantes Licht trägt ohne Modulation keinen zeitlich veränderlichen Ton. Unterscheidet Signal von möglichem Rauschen.",
+            "expectedPerformanceEn": "Assigns functions and explains temporal intensity modulation. In the ideal model, blocking removes the transmitted audio signal; constant light without modulation carries no time-varying tone. Distinguishes signal from possible noise.",
+            "understandingFocusDe": "Funktionskette und überprüfbare Vorhersagen statt bloßer Bauteilliste.",
+            "understandingFocusEn": "Functional chain and testable predictions rather than a mere component list."
+          },
+          {
+            "id": "two-colors",
+            "taskDemandDe": "In einem Modell tragen rote und grüne Lichtkanäle verschiedene Audiosignale durch dieselbe Faser. Entwickle einen Empfänger für getrennte Wiedergabe und vergleiche ihn mit einem einzigen ungefilterten Detektor.",
+            "taskDemandEn": "In a model, red and green light channels carry different audio signals through the same fiber. Develop a receiver for separate playback and compare it with a single unfiltered detector.",
+            "expectedPerformanceDe": "Schlägt Farbtrennung vor getrennten Detektoren vor und erklärt ideale Kanalzuordnung. Ein ungefilterter Detektor liefert grundsätzlich eine Mischung, nicht automatisch zwei getrennte Signale. Nennt endliche Filtertrennung oder Übersprechen als Modellgrenze.",
+            "expectedPerformanceEn": "Proposes color separation before separate detectors and explains ideal channel assignment. An unfiltered detector generally produces a mixture, not automatically two separate signals. Names finite filter separation or crosstalk as a model limit.",
+            "understandingFocusDe": "Gemeinsamer Weg braucht ein physikalisch nutzbares Trennmerkmal.",
+            "understandingFocusEn": "A shared path needs a physically usable separation feature."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+      "reason": "Nachweise an Photonen und Elektronen unterscheiden Einzelereignis und Ensemble; keine zusätzliche De-Broglie-Rechnung oder Interpretation verborgener klassischer Wege.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "single-events-ensemble",
+            "essentialUnderstandingDe": "Photonen und Elektronen werden in geeigneten Versuchen einzeln lokalisiert registriert; viele Ereignisse können eine wellentypische Interferenz- oder Beugungsverteilung aufbauen.",
+            "essentialUnderstandingEn": "Photons and electrons are individually registered at localized positions in suitable experiments; many events can build a wave-like interference or diffraction distribution.",
+            "observablePerformanceDe": "Deutet getrennt den einzelnen Treffer und die entstehende Häufigkeitsverteilung und erklärt, welche Beobachtung teilchen- beziehungsweise wellentypisch ist.",
+            "observablePerformanceEn": "Interprets a single hit and the resulting frequency distribution separately and explains which observation is particle-like or wave-like."
+          },
+          {
+            "id": "quantum-description",
+            "essentialUnderstandingDe": "Kein einzelnes klassisches Wellen- oder Teilchenbild erklärt alle Beobachtungen; das Interferenzmuster bestimmt nicht den sicheren Ort des nächsten Ereignisses oder einen unbeobachteten klassischen Weg.",
+            "essentialUnderstandingEn": "No single classical wave or particle picture explains all observations; an interference pattern does not determine the certain location of the next event or an unobserved classical path.",
+            "observablePerformanceDe": "Begründet den Quantenobjektbegriff aus veränderten Versuchsbefunden und formuliert Ensemblevorhersagen ohne sichere Einzelbahnbehauptung.",
+            "observablePerformanceEn": "Justifies the quantum-object description from changed experimental findings and formulates ensemble predictions without asserting a definite individual path."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "single-events-ensemble",
+            "quantum-description"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "object-and-pattern",
+            "textDe": "Photonen am Doppelspalt gegenüber Elektronenbeugung am Kristall; Einzelaufnahme gegenüber angesammelter Verteilung.",
+            "textEn": "Photons at a double slit versus electron diffraction at a crystal; single-event image versus accumulated distribution."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "photon-events",
+            "taskDemandDe": "Ein simulierter schwacher Photonenstrahl am Doppelspalt erzeugt einzelne Detektorklicks; nach vielen Ereignissen entstehen helle und dunkle Streifen. Deute beide Befunde und die Vorhersage für den nächsten Klick.",
+            "taskDemandEn": "A simulated weak photon beam at a double slit produces individual detector clicks; after many events bright and dark fringes emerge. Interpret both findings and the prediction for the next click.",
+            "expectedPerformanceDe": "Ordnet Lokalisierung dem Teilchenaspekt, die Verteilung dem Wellenaspekt zu; beschreibt nur Wahrscheinlichkeiten für den nächsten Klick und leitet daraus keinen beobachteten Weg durch einen bestimmten Spalt ab.",
+            "expectedPerformanceEn": "Associates localization with the particle aspect and the distribution with the wave aspect; describes only probabilities for the next click and does not infer an observed path through one particular slit.",
+            "understandingFocusDe": "Einzelereignis und statistische Wellenstruktur sind zugleich zu berücksichtigen.",
+            "understandingFocusEn": "Single events and statistical wave structure must both be considered."
+          },
+          {
+            "id": "electron-crystal",
+            "taskDemandDe": "Bereitgestellte Elektronendetektorbilder hinter einem dünnen Kristall zeigen zunächst einzelne Punkte, später Beugungsringe. Erkläre, weshalb 'Elektronen sind nur klassische Kugeln' und 'ein Elektron ist ein überall gleichzeitig registrierter Ring' nicht tragen.",
+            "taskDemandEn": "Supplied electron detector images behind a thin crystal initially show individual points and later diffraction rings. Explain why 'electrons are only classical balls' and 'an electron is a ring registered everywhere at once' are inadequate.",
+            "expectedPerformanceDe": "Verbindet lokalisierte Einzelregistrierungen mit einer beugungstypischen Ensembleverteilung. Überträgt die Quantenbeschreibung auf Elektronen, ohne Ringe als Gestalt eines einzelnen Elektrons oder gemessene Bahn zu behandeln.",
+            "expectedPerformanceEn": "Connects localized individual registrations with a diffraction-like ensemble distribution. Transfers the quantum description to electrons without treating rings as an individual electron's shape or measured path.",
+            "understandingFocusDe": "Gleiche begriffliche Struktur bei verändertem Objekt und Beugungsaufbau.",
+            "understandingFocusEn": "The same conceptual structure for a changed object and diffraction setup."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "defe44d2-c3d3-456b-a786-fad2cef13fe8",
+      "reason": "Reflexion der Modellfunktion an aktuellen Photon-/Elektron-Bezügen, nicht zusätzlich formale Quantenmechanik.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Beschreibung legt weder konkrete Experimente noch eine erkenntnistheoretische Schule fest. Die zwei Fälle operationalisieren Modellreichweite beispielhaft und beanspruchen keine exklusive Unterrichtsfolge."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "model-observation",
+            "essentialUnderstandingDe": "Ein Modell ist ein zweckgebundenes Darstellungsmittel mit Annahmen; Detektorsignale sind Beobachtungen, Wellen- oder Teilchenbilder deren modellhafte Deutungen.",
+            "essentialUnderstandingEn": "A model is a purpose-dependent representation with assumptions; detector signals are observations, while wave or particle pictures are model-based interpretations.",
+            "observablePerformanceDe": "Kennzeichnet für ein abgegrenztes Experiment Beobachtung, Modellannahme und daraus folgende Vorhersage und begründet die Wahl eines geeigneten Modellaspekts.",
+            "observablePerformanceEn": "Identifies observation, model assumption and consequent prediction for a bounded experiment and justifies the choice of a suitable model aspect."
+          },
+          {
+            "id": "scope-and-revision",
+            "essentialUnderstandingDe": "Klassische Teilchenbilder tragen Lokalisierungsaspekte, klassische Wellenbilder Interferenzaspekte; ihre Grenzen motivieren eine umfassendere Quantenbeschreibung, nicht beliebige Erklärungen.",
+            "essentialUnderstandingEn": "Classical particle pictures support localization aspects and classical wave pictures interference aspects; their limits motivate a broader quantum description, not arbitrary explanations.",
+            "observablePerformanceDe": "Vergleicht Modellvorhersagen mit beiden Befundarten, benennt einen konkreten Gültigkeitsbereich und eine konkrete Grenze und revidiert überzogene Aussagen.",
+            "observablePerformanceEn": "Compares model predictions with both kinds of finding, names a specific range of validity and a specific limit and revises excessive claims."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "model-observation",
+            "scope-and-revision"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "purpose-and-object",
+            "textDe": "Modellwahl für räumliche Photonenverteilungen gegenüber Interpretation einzelner Elektronentreffer und gezeichneter Bahnen.",
+            "textEn": "Model choice for spatial photon distributions versus interpretation of individual electron hits and drawn trajectories."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "photon-model-comparison",
+            "taskDemandDe": "Ein Doppelspalldatensatz zeigt einzelne lokale Photonenabsorptionen und nach vielen Ereignissen Streifen. Vergleiche eine klassische Punktteilchenskizze ohne Interferenz mit einem kontinuierlichen Wellenbild hinsichtlich beider Beobachtungen.",
+            "taskDemandEn": "A double-slit dataset shows individual local photon absorptions and, after many events, fringes. Compare a classical point-particle sketch without interference with a continuous wave picture for both observations.",
+            "expectedPerformanceDe": "Trennt Daten von Bildern, begründet die Nützlichkeit der Wellenstruktur für die Verteilung und der Lokalisierung für Einzelregistrierungen. Erklärt, dass keines der beiden klassischen Bilder allein beide Befunde vollständig trägt.",
+            "expectedPerformanceEn": "Separates data from pictures, justifies the usefulness of wave structure for the distribution and localization for individual registrations. Explains that neither classical picture alone fully accounts for both findings.",
+            "understandingFocusDe": "Modellwahl nach Erklärungsaufgabe und empirischer Grenze.",
+            "understandingFocusEn": "Model choice by explanatory purpose and empirical limit."
+          },
+          {
+            "id": "electron-trajectory-claim",
+            "taskDemandDe": "Bei Elektronenbeugung sind Detektorpunkte und ihre Häufigkeiten gemessen. Eine Illustration ergänzt feste gekrümmte Einzelbahnen. Beurteile, was daran Befund, Modell und unbelegte Zusatzbehauptung ist; formuliere eine angemessene Vorhersage.",
+            "taskDemandEn": "In electron diffraction, detector points and their frequencies are measured. An illustration adds definite curved individual trajectories. Assess what is evidence, model and unsupported extra claim; formulate an appropriate prediction.",
+            "expectedPerformanceDe": "Behandelt Bahnen nicht als mitgemessen; begründet eine Aussage über die Ensembleverteilung statt eines sicheren nächsten Wegs. Nennt den Versuchsaufbau und fehlende Bahnmessung als Grenze der Illustration, nicht als Beleg beliebiger Modelle.",
+            "expectedPerformanceEn": "Does not treat trajectories as simultaneously measured; justifies a statement about the ensemble distribution rather than a definite next path. Identifies the setup and absence of trajectory measurement as a limit of the illustration, not evidence for arbitrary models.",
+            "understandingFocusDe": "Darstellung ist nicht Beobachtung; begrenzte Modelle bleiben an Daten gebunden.",
+            "understandingFocusEn": "Representation is not observation; limited models remain constrained by data."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "49872cc0-401f-5464-9235-4763df4db5cf",
+      "reason": "Qualitative Reaktions-, Energie- und Sicherheitsdeutung ohne Reaktorauslegung oder praktische Strahlenarbeit. Fachabgleich: https://www-pub.iaea.org/MTCD/Publications/PDF/Pub1854_web.pdf ; keine vollständige curriculare Quellenzuordnung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Das Ziel bündelt Reaktionsarten, Energetik und Sicherheitsdiskussion ohne gebundene konkrete Sicherheitskriterien. Die Fälle verlangen transparente physikalische Kriterien, keine pauschale Technologie- oder politische Entscheidung."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "reaction-energy-model",
+            "essentialUnderstandingDe": "Bei Spaltung zerlegt sich ein schwerer Kern, bei Fusion vereinigen sich leichte Kerne. Für Kernsystem samt Reaktionsprodukten wird frei werdende Bindungsenergiedifferenz unter Erhaltung der Gesamtenergie in Bewegungsenergie und Strahlung übertragen.",
+            "essentialUnderstandingEn": "In fission a heavy nucleus splits, while in fusion light nuclei combine. For the nuclear system including reaction products, released binding-energy difference is transferred into kinetic energy and radiation while total energy is conserved.",
+            "observablePerformanceDe": "Deutet vorgegebene Reaktionen und Energieangaben, unterscheidet Spaltung/Fusion und erklärt Energiefreisetzung ohne Energieerzeugung aus dem Nichts.",
+            "observablePerformanceEn": "Interprets supplied reactions and energy values, distinguishes fission/fusion and explains energy release without creation of energy from nothing."
+          },
+          {
+            "id": "conditional-safety-judgment",
+            "essentialUnderstandingDe": "Risiken hängen von Reaktionsprodukten, Strahlung, Betriebsbedingungen und Einschluss ab. Physikalische Gefährdungsbefunde sind von der Gewichtung der Bewertungskriterien zu trennen.",
+            "essentialUnderstandingEn": "Risks depend on reaction products, radiation, operating conditions and containment. Physical hazard findings must be separated from the weighting of evaluation criteria.",
+            "observablePerformanceDe": "Begründet ein bedingtes Sicherheitsurteil anhand benannter Mechanismen und Kriterien und begrenzt es auf die gegebenen Modellinformationen.",
+            "observablePerformanceEn": "Justifies a conditional safety judgment using named mechanisms and criteria and limits it to the supplied model information."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reaction-energy-model",
+            "conditional-safety-judgment"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reaction-and-hazard",
+            "textDe": "Neutronenauslösbare Spaltung mit Folgezerfällen gegenüber Fusion mit erforderlichen Plasmabedingungen und neutronenbedingter Aktivierung.",
+            "textEn": "Neutron-triggerable fission with subsequent decays versus fusion requiring plasma conditions and involving neutron-induced activation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fission-case",
+            "taskDemandDe": "Nur als bereitgestelltes Modell: ²³⁵U+n→¹⁴¹Ba+⁹²Kr+3n, etwa 200 MeV frei; Produkte können radioaktiv sein. Erkläre Reaktion, Energieübertragung und zwei Sicherheitsaspekte.",
+            "taskDemandEn": "Only as a supplied model: ²³⁵U+n→¹⁴¹Ba+⁹²Kr+3n, about 200 MeV released; products can be radioactive. Explain reaction, energy transfer and two safety aspects.",
+            "expectedPerformanceDe": "Erkennt Spaltung und freigesetzte Energie als Bilanzänderung des Kernsystems. Verknüpft weitere Neutronen mit möglicher Kettenreaktion und radioaktive Produkte mit Strahlung/Nachzerfallswärme. Beurteilt Kontroll- und Einschlussbedarf bedingt, ohne aus einer Reaktion vollständige Anlagensicherheit abzuleiten.",
+            "expectedPerformanceEn": "Identifies fission and released energy as a change in the nuclear system's balance. Links further neutrons to a possible chain reaction and radioactive products to radiation/decay heat. Conditionally evaluates control and containment needs without deriving complete plant safety from one reaction.",
+            "understandingFocusDe": "Reaktionsmechanismus trägt Energie- und Sicherheitsdeutung.",
+            "understandingFocusEn": "Reaction mechanism supports energy and safety interpretation."
+          },
+          {
+            "id": "fusion-case",
+            "taskDemandDe": "Bereitgestellt: ²H+³H→⁴He+n, 17,6 MeV frei; geeignete Plasmabedingungen sind nötig, Tritium ist radioaktiv und Neutronen können Bauteile aktivieren. Prüfe 'Fusion liefert Energie und ist deshalb völlig risikofrei'.",
+            "taskDemandEn": "Given: ²H+³H→⁴He+n, 17.6 MeV released; suitable plasma conditions are needed, tritium is radioactive and neutrons can activate components. Assess 'Fusion supplies energy and is therefore entirely risk-free'.",
+            "expectedPerformanceDe": "Erklärt Zusammenschluss leichter Kerne und Energieabgabe an Produkte; vergleicht das Ausbleiben geeigneter Plasmabedingungen mit verbleibenden Tritium-/Aktivierungsgefahren. Verwirft Risikofreiheit unter benannten Strahlenschutzkriterien, ohne pauschal alle Anlagen gleichzusetzen.",
+            "expectedPerformanceEn": "Explains combination of light nuclei and energy transfer to products; contrasts loss of suitable plasma conditions with remaining tritium/activation hazards. Rejects risk-freedom using named radiation-protection criteria without equating all facilities.",
+            "understandingFocusDe": "Geänderte Reaktion verlangt geänderte Mechanismen, nicht bloß ein anderes Werturteil.",
+            "understandingFocusEn": "A changed reaction requires changed mechanisms, not merely a different value judgment."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7df923a0-6470-595e-8cea-53126fad9506",
+      "reason": "Sachtext-/Diagrammauswertung mit explizit bereitgestellten vereinfachten Entwicklungsmodellen. Fachabgleich: https://science.nasa.gov/universe/stars/ und https://science.nasa.gov/missions/webb/nasas-webb-makes-first-detection-of-heavy-element-from-star-merger/ . Keine curriculare Vollzuordnung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die englische Beschreibung ist deutsch. Materierecycling, Elemententstehung und Endstadien bilden einen breiten Verbund ohne konkrete Quellenauszüge; der Kandidat beansprucht weder vollständige Nukleosynthese noch universelle Anfangsmassengrenzen für Sternreste."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "recycling-and-sources",
+            "essentialUnderstandingDe": "Sternentwicklung verändert Kerne und verteilt einen Teil der Materie erneut; Material kann in neue Sterne eingehen, während Reste zurückbleiben. Ein Kreislaufbild bedeutet keinen geschlossenen Weg jedes einzelnen Atoms.",
+            "essentialUnderstandingEn": "Stellar evolution changes nuclei and redistributes some matter; material can enter new stars while remnants remain. A cycle diagram does not imply a closed path for every individual atom.",
+            "observablePerformanceDe": "Verknüpft Aussagen eines Sachtextes mit einem selbst erläuterten Flussdiagramm und unterscheidet Elementbildung, Ausstoß, Wiederverwendung und verbleibenden Rest.",
+            "observablePerformanceEn": "Connects statements in a text with an independently explained flow diagram and distinguishes element formation, ejection, reuse and the remaining remnant."
+          },
+          {
+            "id": "conditional-endstates",
+            "essentialUnderstandingDe": "Elementbildung und Endstadien hängen von Entwicklungsweg und Bedingungen ab; Fusion in Sternen erklärt nicht allein alle schwereren Elemente. Restmasse, Massenverlust und Wechselwirkungen begrenzen einfache Prognosen.",
+            "essentialUnderstandingEn": "Element formation and end states depend on evolutionary path and conditions; stellar fusion alone does not explain all heavier elements. Remnant mass, mass loss and interactions limit simple predictions.",
+            "observablePerformanceDe": "Leitet eine Endstadienprognose aus dem vorgegebenen Modell ab, prüft eine Elemententstehungsbehauptung an Textbelegen und nennt eine relevante Modellgrenze.",
+            "observablePerformanceEn": "Derives an end-state prediction from the supplied model, tests an element-formation claim against textual evidence and names a relevant model limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "recycling-and-sources",
+            "conditional-endstates"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "evolutionary-branch",
+            "textDe": "Sonnenähnlicher Einzelstern gegenüber massereichem Stern und zusätzlichem Neutroneneinfangpfad; sicherer Modellschluss gegenüber bedingter Restprognose.",
+            "textEn": "Sun-like single star versus massive star and an additional neutron-capture pathway; definite model inference versus conditional remnant prediction."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sunlike-recycling",
+            "taskDemandDe": "Modelltext: Ein sonnenähnlicher Einzelstern bildet bei Heliumfusion Kohlenstoff, verliert äußere Schichten und hinterlässt einen Weißen Zwerg. Das ausgestoßene Gas kann mit anderem Gas neue Sterne bilden. Erstelle und deute ein Flussdiagramm; prognostiziere den Rest.",
+            "taskDemandEn": "Model text: A Sun-like single star forms carbon through helium fusion, loses outer layers and leaves a white dwarf. Ejected gas can mix with other gas to form new stars. Construct and interpret a flow diagram; predict the remnant.",
+            "expectedPerformanceDe": "Verknüpft Stern, Elementbildung, Gasausstoß, Mischung und neue Sternbildung; zweigt den Weißen Zwerg als verbleibenden Rest ab. Begrenzt die Prognose auf den beschriebenen Einzelstern und behauptet nicht, alle Materie werde vollständig recycelt.",
+            "expectedPerformanceEn": "Connects star, element formation, gas ejection, mixing and new star formation; branches off the white dwarf as a remaining remnant. Limits the prediction to the described single star and does not claim all matter is completely recycled.",
+            "understandingFocusDe": "Materiefluss und gebundene Endstadienprognose aus konkreten Angaben.",
+            "understandingFocusEn": "Matter flow and a bounded end-state prediction from concrete information."
+          },
+          {
+            "id": "heavy-elements-and-remnant",
+            "taskDemandDe": "Modelltext: Massereiche Sterne können durch Fusion Kerne bis zur Eisengruppe aufbauen; schwere Elemente wie Gold benötigen andere Prozesse, darunter Neutroneneinfang bei Neutronensternverschmelzungen. Ein vorgegebenes Restmodell führt bei ausreichender Stützung zum Neutronenstern, sonst zum Schwarzen Loch. Prüfe 'alles Gold entsteht bei gewöhnlicher Sternfusion' und prognostiziere beide Restzweige.",
+            "taskDemandEn": "Model text: Massive stars can build nuclei up to the iron group by fusion; heavy elements such as gold require other processes, including neutron capture in neutron-star mergers. A supplied remnant model yields a neutron star with sufficient support and otherwise a black hole. Assess 'all gold forms in ordinary stellar fusion' and predict both remnant branches.",
+            "expectedPerformanceDe": "Widerlegt die Ausschließlichkeitsbehauptung mit dem zusätzlichen Entstehungspfad, unterscheidet Sternfusion und Verschmelzung und erläutert beide bedingten Endstadien. Nennt fehlende Rest-/Entwicklungsdaten als Grund, nicht jeden massereichen Stern eindeutig einem Rest zuzuordnen.",
+            "expectedPerformanceEn": "Rejects the exclusivity claim using the additional formation pathway, distinguishes stellar fusion from merger and explains both conditional end states. Names missing remnant/evolution data as a reason not to assign every massive star one definite remnant.",
+            "understandingFocusDe": "Quellengebundene Beurteilung statt pauschaler Element- oder Endstadienregel.",
+            "understandingFocusEn": "Source-bound evaluation rather than a blanket rule for elements or end states."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "14ec85b9-68f6-5400-ad43-5e8dddfddf44",
+      "reason": "Ein möglicher aktueller Forschungsfall ist Gravitationswellenastronomie. Fachabgleich des Detektor-/Anwendungsbezugs: https://www.ligo.caltech.edu/page/what-is-ligo und https://www.ligo.caltech.edu/WA/page/ligo-detectors . Keine curriculare Vollzuordnung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Im aktuellen Ziel und Bundle ist das ausgewählte Forschungsgebiet nicht festgelegt. Gravitationswellen sind hier ein ausdrücklich vorgeschlagener austauschbarer Fall; vor Freigabe muss die fachliche Auswahl menschlich bestätigt oder ersetzt werden. Es wird kein bestimmtes Gebiet zur kanonischen Pflicht erklärt."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "research-object-method",
+            "essentialUnderstandingDe": "Ein Forschungsgebiet verbindet eine physikalische Frage mit zugänglichen Beobachtungen und Untersuchungsverfahren; Forschungsobjekt und Messsignal sind zu unterscheiden.",
+            "essentialUnderstandingEn": "A research field connects a physical question with accessible observations and methods of investigation; research object and measured signal must be distinguished.",
+            "observablePerformanceDe": "Beschreibt in einem ausdrücklich ausgewählten Gebiet eine konkrete Frage, ein passendes Messprinzip und den Zusammenhang zwischen Signal und Untersuchungsgegenstand.",
+            "observablePerformanceEn": "Describes a concrete question, a suitable measurement principle and the connection between signal and subject in an explicitly selected field."
+          },
+          {
+            "id": "application-and-limit",
+            "essentialUnderstandingDe": "Eine Forschungsanwendung nutzt physikalisch begründete Schlussfolgerungen aus Daten; sie ist weder eine unmittelbare Abbildung aller Eigenschaften noch automatisch eine Alltagsanwendung.",
+            "essentialUnderstandingEn": "A research application uses physically justified inferences from data; it is neither a direct image of every property nor automatically an everyday application.",
+            "observablePerformanceDe": "Erklärt eine konkrete Nutzung des Forschungsgebiets und benennt, welche Information gewonnen wird und welche Aussage durch die Angaben nicht gesichert ist.",
+            "observablePerformanceEn": "Explains a concrete use of the research field and states what information is obtained and what assertion is not established by the information."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "research-object-method",
+            "application-and-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "research-function",
+            "textDe": "Messprinzip eines Detektors gegenüber Nutzung mehrerer Beobachtungen zur astrophysikalischen Untersuchung.",
+            "textEn": "Measurement principle of one detector versus use of multiple observations for astrophysical investigation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "detector-question",
+            "taskDemandDe": "Vorgeschlagener Forschungsfall: Gravitationswellen. Information: Ein Laserinterferometer vergleicht Licht in zwei senkrechten Armen; eine Welle kann deren relative optische Längen verändern. Beschreibe Forschungsfrage, Messsignal und die Grenze der Aussage 'Das Gerät fotografiert ein Schwarzes Loch'.",
+            "taskDemandEn": "Proposed research case: gravitational waves. Information: a laser interferometer compares light in two perpendicular arms; a wave can change their relative optical lengths. Describe research question, measured signal and the limit of 'The device photographs a black hole'.",
+            "expectedPerformanceDe": "Verbindet die Suche nach Gravitationswellen mit Änderungen des Interferenzsignals und unterscheidet indirekte Messung von einer Fotografie. Formuliert eine sachbezogene Frage etwa nach Signalen kompakter Doppelobjekte, ohne aus einem einzelnen Signal bereits alle Quellenmerkmale zu behaupten.",
+            "expectedPerformanceEn": "Connects the search for gravitational waves with changes in the interference signal and distinguishes indirect measurement from a photograph. Formulates a relevant question such as signals from compact binaries without claiming all source properties from one signal.",
+            "understandingFocusDe": "Forschungsgegenstand, beobachtbares Signal und Erkenntnisinteresse hängen nachvollziehbar zusammen.",
+            "understandingFocusEn": "Research subject, observable signal and scientific interest are connected intelligibly."
+          },
+          {
+            "id": "astronomy-use",
+            "taskDemandDe": "Bereitgestellte Information: Zwei weit entfernte Detektoren können zeitlich passende Signale registrieren; lokale Störungen und modellierte Wellenformen werden geprüft. Beschreibe den Nutzen für die Untersuchung verschmelzender kompakter Objekte und eine Aussagegrenze.",
+            "taskDemandEn": "Supplied information: two distant detectors can register temporally compatible signals; local disturbances and modeled waveforms are checked. Describe the use for investigating merging compact objects and one inferential limit.",
+            "expectedPerformanceDe": "Erklärt die Anwendung als zusätzliche astronomische Informationsquelle und den Nutzen voneinander entfernter Messorte zur Störungsprüfung. Trennt Daten, Modellvergleich und Schluss auf eine Quelle; zeitliche Übereinstimmung allein beweist weder Quelltyp noch sämtliche Eigenschaften.",
+            "expectedPerformanceEn": "Explains the application as an additional astronomical information source and the value of separated measurement sites for checking disturbances. Separates data, model comparison and source inference; timing agreement alone proves neither source type nor every property.",
+            "understandingFocusDe": "Fachlich begründete Forschungsanwendung mit begrenzter Aussagekraft.",
+            "understandingFocusEn": "Physically grounded research use with limited inferential reach."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+      "reason": "Methodentransfer in den ausdrücklich vorgeschlagenen Gravitationswellenfall mit synthetischen Daten und bereitgestellten vereinfachten Beziehungen. Grundlagenabgleich: https://www.ligo.caltech.edu/MIT/page/ligos-ifo und https://www.ligo.caltech.edu/WA/page/ligo-detectors .",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Das Forschungsgebiet und die einzusetzenden Kursstufenmethoden sind kanonisch nicht ausgewählt. Die folgenden optischen und Laufzeitmodelle sind Kandidaten, keine behauptete Pflichtkombination. Das einfache Interferometermodell ist ausdrücklich keine vollständige LIGO-Instrumentantwort."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "justified-transfer",
+            "essentialUnderstandingDe": "Übertragbare physikalische Beziehungen müssen mit den Größen und Grenzen des Forschungsmodells verknüpft werden; eine bekannte Formel allein ersetzt diese Zuordnung nicht.",
+            "essentialUnderstandingEn": "Transferable physical relationships must be connected to quantities and limits of the research model; a familiar formula alone does not replace that mapping.",
+            "observablePerformanceDe": "Wählt und begründet eine passende Beziehung, legt System, Größen, Annahmen und Einheiten fest und erzeugt eine prüfbare quantitative Vorhersage.",
+            "observablePerformanceEn": "Selects and justifies a suitable relationship, defines system, quantities, assumptions and units and generates a testable quantitative prediction."
+          },
+          {
+            "id": "comparison-and-limit",
+            "essentialUnderstandingDe": "Eine Modellvorhersage wird mit Daten samt Messgrenzen verglichen; Vereinbarkeit ist kein eindeutiger Nachweis der Modellursache.",
+            "essentialUnderstandingEn": "A model prediction is compared with data and measurement limits; compatibility is not a unique demonstration of the modeled cause.",
+            "observablePerformanceDe": "Prüft einen berechneten Wert oder zulässigen Bereich an bereitgestellten Daten, berücksichtigt Unsicherheit und benennt eine konkrete Grenze des übertragenen Modells.",
+            "observablePerformanceEn": "Checks a calculated value or admissible range against supplied data, accounts for uncertainty and names a specific limit of the transferred model."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "justified-transfer",
+            "comparison-and-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "transferred-method",
+            "textDe": "Optische Phasenänderung im Einzeldetektormodell gegenüber Laufzeitgrenze zwischen zwei Messorten.",
+            "textEn": "Optical phase change in a single-detector model versus propagation-time bound between two sites."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "interferometer-scale",
+            "taskDemandDe": "Vorgeschlagener Forschungsfall, einfaches Modell: h=ΔL/L und Δφ=4πΔL/λ, L=4,0 km, h=1,0·10⁻²¹, λ=1064 nm. Eine synthetische Auswertung liefert Δφ=(4,8±0,5)·10⁻¹¹ rad. Berechne und vergleiche; das Modell ignoriert reale Resonatoren und Regelungen.",
+            "taskDemandEn": "Proposed research case, simple model: h=ΔL/L and Δφ=4πΔL/λ, L=4.0 km, h=1.0·10⁻²¹, λ=1064 nm. A synthetic analysis gives Δφ=(4.8±0.5)·10⁻¹¹ rad. Calculate and compare; the model ignores real cavities and control systems.",
+            "expectedPerformanceDe": "Ordnet ΔL der modellierten Armlängenänderung und Δφ dem Lichtvergleich zu; erhält ΔL=4,0·10⁻¹⁸ m und Δφ≈4,72·10⁻¹¹ rad. Stellt Vereinbarkeit mit dem Datenintervall fest, nicht einen eindeutigen Wellennachweis, und nennt die vereinfachte Instrumentantwort.",
+            "expectedPerformanceEn": "Maps ΔL to the modeled arm-length change and Δφ to the light comparison; obtains ΔL=4.0·10⁻¹⁸ m and Δφ≈4.72·10⁻¹¹ rad. Establishes compatibility with the data interval, not unique wave detection, and names the simplified instrument response.",
+            "understandingFocusDe": "Begründeter Optiktransfer mit Größenordnung und Datenprüfung.",
+            "understandingFocusEn": "Justified transfer of optics with scale and data checking."
+          },
+          {
+            "id": "two-site-timing",
+            "taskDemandDe": "Im vorgeschlagenen Forschungsfall seien zwei Messorte 3000 km voneinander entfernt; eine gemeinsame ebene Störung breite sich mit c=3,0·10⁸ m/s aus. Prüfe synthetische Laufzeitdifferenzen 7,0±0,2 ms und 12,0±0,2 ms bei als korrekt angenommenen Uhren.",
+            "taskDemandEn": "In the proposed research case two sites are 3000 km apart; a common plane disturbance propagates at c=3.0·10⁸ m/s. Assess synthetic time differences of 7.0±0.2 ms and 12.0±0.2 ms with clocks assumed correct.",
+            "expectedPerformanceDe": "Leitet |Δt|≤d/c=10 ms aus der maximalen Wegdifferenz ab. 7,0±0,2 ms ist vereinbar, 12,0±0,2 ms nicht. Erklärt die Abhängigkeit von Einfallsrichtung und dass passende Zeitlage allein Quelle und Störungsart nicht beweist.",
+            "expectedPerformanceEn": "Derives |Δt|≤d/c=10 ms from the maximum path difference. 7.0±0.2 ms is compatible and 12.0±0.2 ms is not. Explains dependence on arrival direction and that compatible timing alone does not prove source or disturbance type.",
+            "understandingFocusDe": "Transfer einer Ausbreitungsgrenze statt Wiederholung der optischen Rechnung.",
+            "understandingFocusEn": "Transfer of a propagation bound rather than repetition of the optical calculation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4888444f-4520-437a-9ba7-e74e8f8ed129",
+      "reason": "Qualitative Überlagerung unabhängiger linearer Schwingungen einschließlich Schwebung; Zahlen illustrieren Zustände, ersetzen aber weder Erklärung noch erfordern sie eine neue quantitative Schwebungsformel.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "signed-superposition",
+            "essentialUnderstandingDe": "Bei unabhängigen linearen Schwingungen addieren sich momentane Auslenkungen mit Vorzeichen; Phase und Amplitude bestimmen Verstärkung oder Abschwächung.",
+            "essentialUnderstandingEn": "For independent linear oscillations, instantaneous displacements add with sign; phase and amplitude determine reinforcement or reduction.",
+            "observablePerformanceDe": "Erklärt einen resultierenden Verlauf aus relativer Phase und Amplituden und sagt die Wirkung einer Phasenumkehr qualitativ voraus.",
+            "observablePerformanceEn": "Explains a resultant motion from relative phase and amplitudes and qualitatively predicts the effect of phase reversal."
+          },
+          {
+            "id": "beating-mechanism",
+            "essentialUnderstandingDe": "Bei nahen verschiedenen Frequenzen ändert sich die relative Phase langsam; abwechselnde Verstärkung und Abschwächung ergeben eine Schwebung ohne angenommene Kopplung oder Dämpfung.",
+            "essentialUnderstandingEn": "For nearby different frequencies, relative phase changes slowly; alternating reinforcement and reduction produce beats without assuming coupling or damping.",
+            "observablePerformanceDe": "Deutet einen an- und abschwellenden Verlauf als Überlagerung und sagt die qualitative Änderung bei größerem Frequenzabstand voraus.",
+            "observablePerformanceEn": "Interprets a waxing and waning pattern as superposition and predicts the qualitative change for larger frequency separation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "signed-superposition",
+            "beating-mechanism"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "relative-frequency-phase",
+            "textDe": "Gleiche Frequenz mit fester Phasenbeziehung gegenüber nahen verschiedenen Frequenzen mit wandernder Phasenbeziehung.",
+            "textEn": "Equal frequency with fixed relative phase versus nearby different frequencies with drifting relative phase."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fixed-phase",
+            "taskDemandDe": "Zwei simulierte unabhängige Schwingungen gleicher Frequenz haben Amplitude 1 cm. Vergleiche gleiche und entgegengesetzte Phase; anschließend hat die zweite nur 0,6 cm Amplitude.",
+            "taskDemandEn": "Two simulated independent oscillations of equal frequency have amplitude 1 cm. Compare equal and opposite phase; then the second has amplitude only 0.6 cm.",
+            "expectedPerformanceDe": "Erklärt bei gleicher Phase 2 cm resultierende Amplitude, bei Gegenphase Auslöschung; mit 0,6 cm bleibt bei Gegenphase 0,4 cm. Begründet die Unterschiede durch vorzeichenbehaftete momentane Addition, nicht verschwundene Einzelschwingungen.",
+            "expectedPerformanceEn": "Explains a resultant amplitude of 2 cm for equal phase and cancellation for opposite phase; with 0.6 cm, 0.4 cm remains in opposite phase. Justifies differences through signed instantaneous addition, not vanished component oscillations.",
+            "understandingFocusDe": "Phasenbeziehung und Amplitudenvergleich tragen die qualitative Deutung.",
+            "understandingFocusEn": "Relative phase and amplitude comparison support the qualitative interpretation."
+          },
+          {
+            "id": "nearby-frequencies",
+            "taskDemandDe": "In einer sicheren Simulation werden gleich starke Töne mit 440 Hz und 442 Hz überlagert. Beschreibe das langsame An- und Abschwellen; was ändert sich qualitativ bei 440 Hz und 444 Hz?",
+            "taskDemandEn": "In a safe simulation equally strong tones at 440 Hz and 442 Hz are superposed. Describe the slow waxing and waning; what changes qualitatively at 440 Hz and 444 Hz?",
+            "expectedPerformanceDe": "Erklärt wiederkehrende Gleich- und Gegenphasigkeit bei weiterbestehenden Einzelschwingungen; erwartet bei größerem Frequenzabstand schnelleren Wechsel der Lautstärkehülle. Benötigt dafür weder Dämpfung noch Energieaustausch zwischen gekoppelten Oszillatoren.",
+            "expectedPerformanceEn": "Explains recurring in-phase and opposite-phase relations while individual oscillations persist; expects faster variation of the loudness envelope at larger frequency separation. Requires neither damping nor energy exchange between coupled oscillators.",
+            "understandingFocusDe": "Schwebung als Phasendrift, nicht als periodisch abschaltende Quelle.",
+            "understandingFocusEn": "Beating as phase drift, not a source periodically switching off."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d1306bda-35ff-53e9-9458-3cbc128874d8",
+      "reason": "Physikalische Bewertung ausschließlich anhand synthetischer Strahlentherapiemodelle; keine individuelle medizinische Empfehlung. Fachabgleich: https://www.psi.ch/de/protontherapy/der-protonenbeschleuniger-comet und https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy/external-beam .",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die englische Zielbeschreibung ist deutsch. Das breite Bewertungsziel enthält keine gebundenen klinischen Vergleichsdaten. Die Fälle tragen nur physikalisch begründete, bedingte Nutzen-Risiko-Aussagen und keine Überlegenheitsbehauptung für eine Therapie."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "accelerator-to-dose",
+            "essentialUnderstandingDe": "Im Cyclotron-Modell beschleunigt das elektrische Feld geladene Teilchen, das magnetische Feld lenkt sie ab. Bei Protonentherapie beeinflusst die Strahlenergie die Reichweite und damit die räumliche Energieabgabe.",
+            "essentialUnderstandingEn": "In the cyclotron model the electric field accelerates charged particles and the magnetic field deflects them. In proton therapy beam energy affects range and hence spatial energy deposition.",
+            "observablePerformanceDe": "Erklärt die Funktionskette von Beschleunigung zu Dosisverteilung und legt für einen bereitgestellten Vergleich Modellannahmen und Systemgrenze offen.",
+            "observablePerformanceEn": "Explains the functional chain from acceleration to dose distribution and states model assumptions and system boundary for a supplied comparison."
+          },
+          {
+            "id": "bounded-evaluation",
+            "essentialUnderstandingDe": "Zielabdeckung, Schonung gesunden Gewebes und Empfindlichkeit gegenüber Lage-/Reichweitenunsicherheit sind physikalische Bewertungskriterien; ihr Abwägen ist von gesicherten Daten und klinischen Erfolgsaussagen zu trennen.",
+            "essentialUnderstandingEn": "Target coverage, sparing healthy tissue and sensitivity to position/range uncertainty are physical evaluation criteria; their weighting must be separated from established data and clinical outcome claims.",
+            "observablePerformanceDe": "Vergleicht Daten anhand benannter Kriterien, begründet Nutzen und verbleibende Risiken und formuliert ein bedingtes Urteil mit konkreter Unsicherheitsgrenze.",
+            "observablePerformanceEn": "Compares data using named criteria, justifies benefits and remaining risks and formulates a conditional judgment with a specific uncertainty limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "accelerator-to-dose",
+            "bounded-evaluation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "dose-and-uncertainty",
+            "textDe": "Idealisierte Tiefendosis bei gleicher Zielabdeckung gegenüber veränderter Lage beziehungsweise Reichweite.",
+            "textEn": "Idealized depth dose at equal target coverage versus altered position or range."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "depth-dose-comparison",
+            "taskDemandDe": "Nur Modellwerte relativer Dosis, keine Patientendaten: Verfahren A hat Ziel/gesund davor/gesund dahinter =1,00/0,30/0,20; cyclotronbasierte Protonenoption B =1,00/0,10/0,02. Vergleiche unter gleicher Zielabdeckung und erkläre den Bezug zur Teilchenbeschleunigung.",
+            "taskDemandEn": "Model relative-dose values only, not patient data: method A has target/healthy before/healthy beyond =1.00/0.30/0.20; cyclotron-based proton option B =1.00/0.10/0.02. Compare at equal target coverage and explain the link to particle acceleration.",
+            "expectedPerformanceDe": "Ordnet Energiegewinn dem elektrischen und Ablenkung dem magnetischen Feld zu; verknüpft Protonenenergie mit Reichweite. Begründet anhand der Zahlen geringere Dosis in den betrachteten gesunden Bereichen für B, nicht Risikofreiheit oder klinische Überlegenheit insgesamt.",
+            "expectedPerformanceEn": "Assigns energy gain to the electric field and deflection to the magnetic field; connects proton energy with range. Uses the numbers to justify lower dose in the considered healthy regions for B, not absence of risk or overall clinical superiority.",
+            "understandingFocusDe": "Technisches Wirkprinzip und transparent begrenzter Kriterienvergleich.",
+            "understandingFocusEn": "Technical operating principle and a transparently bounded comparison of criteria."
+          },
+          {
+            "id": "range-robustness",
+            "taskDemandDe": "In einem synthetischen Tiefenmodell endet der nominale Protonenbereich 2 mm vor einem empfindlichen gesunden Bereich; die Lage-/Reichweitenabweichung beträgt ±3 mm. Prüfe die Behauptung, der nominale Kurvenverlauf garantiere vollständige Schonung.",
+            "taskDemandEn": "In a synthetic depth model the nominal proton range ends 2 mm before a sensitive healthy region; position/range deviation is ±3 mm. Assess the claim that the nominal curve guarantees complete sparing.",
+            "expectedPerformanceDe": "Zeigt, dass eine Verschiebung um +3 mm die nominale 2-mm-Lücke um 1 mm überschreiten kann. Verknüpft Energie/Reichweite und Lageunsicherheit mit möglicher Fehlplatzierung der Energieabgabe; verlangt für ein belastbares Urteil Robustheitsdaten, ohne eine Behandlung zu empfehlen.",
+            "expectedPerformanceEn": "Shows that a +3 mm shift can exceed the nominal 2 mm gap by 1 mm. Connects energy/range and position uncertainty with possible misplacement of energy deposition; requires robustness data for a defensible judgment without recommending treatment.",
+            "understandingFocusDe": "Ein günstiger Idealverlauf genügt bei relevanter Unsicherheit nicht für ein Sicherheitsversprechen.",
+            "understandingFocusEn": "A favorable ideal curve does not justify a safety guarantee when uncertainty matters."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec",
+      "reason": "Energie, Impuls, Frequenz und Vakuumwellenlänge eines Photons werden wechselseitig dargestellt und physikalisch gedeutet; keine zusätzliche Stoß- oder Emissionsschwellenkompetenz.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "photon-relations",
+            "essentialUnderstandingDe": "Im Vakuum verbinden E=hf=hc/λ und p=E/c=h/λ Energie, Impulsbetrag, Frequenz und Wellenlänge; Photonenimpuls setzt keine von null verschiedene Ruhemasse voraus.",
+            "essentialUnderstandingEn": "In vacuum E=hf=hc/λ and p=E/c=h/λ connect energy, momentum magnitude, frequency and wavelength; photon momentum does not require nonzero rest mass.",
+            "observablePerformanceDe": "Konstruiert eine konsistente Tabelle, Relationsdarstellung oder Grafik und übersetzt zwischen verschiedenen gegebenen Größen mit Einheiten.",
+            "observablePerformanceEn": "Constructs a consistent table, relation representation or graph and translates between different given quantities with units."
+          },
+          {
+            "id": "scaling-meaning",
+            "essentialUnderstandingDe": "Energie und Impuls pro Photon wachsen proportional zur Frequenz und umgekehrt proportional zur Wellenlänge; die Beziehungen betreffen nicht ohne Photonenzahl die gesamte Strahlenergie.",
+            "essentialUnderstandingEn": "Energy and momentum per photon grow proportionally with frequency and inversely with wavelength; without photon count the relationships do not determine total beam energy.",
+            "observablePerformanceDe": "Erklärt und prüft Skalierungsvergleiche einschließlich eines umgekehrten Schlusses von Impuls auf Wellenlänge und grenzt Einzelphoton von Strahlmenge ab.",
+            "observablePerformanceEn": "Explains and checks scaling comparisons including reverse inference from momentum to wavelength and distinguishes a single photon from a quantity of light."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "photon-relations",
+            "scaling-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "given-quantity-and-count",
+            "textDe": "Wellenlänge als Eingabe gegenüber Impuls als Eingabe; Einzelphotonwerte gegenüber einer geänderten Photonenzahl.",
+            "textEn": "Wavelength as input versus momentum as input; single-photon values versus a changed photon count."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "wavelength-to-table",
+            "taskDemandDe": "Für Vakuumlicht mit λ=600 nm, h=6,63·10⁻³⁴ J s und c=3,00·10⁸ m/s erstelle eine Tabelle für f, E und p und erläutere die Zusammenhänge.",
+            "taskDemandEn": "For vacuum light with λ=600 nm, h=6.63·10⁻³⁴ J s and c=3.00·10⁸ m/s, construct a table for f, E and p and explain the relationships.",
+            "expectedPerformanceDe": "Erhält f=5,00·10¹⁴ Hz, E=3,315·10⁻¹⁹ J und p=1,105·10⁻²⁷ kg m/s; erklärt c=fλ und E=pc und kontrolliert die Einheiten.",
+            "expectedPerformanceEn": "Obtains f=5.00·10¹⁴ Hz, E=3.315·10⁻¹⁹ J and p=1.105·10⁻²⁷ kg m/s; explains c=fλ and E=pc and checks units.",
+            "understandingFocusDe": "Konsistente Übersetzung physikalischer Größen statt unabhängiger Formeleinsätze.",
+            "understandingFocusEn": "Consistent translation of physical quantities rather than independent formula substitutions."
+          },
+          {
+            "id": "momentum-and-photon-count",
+            "taskDemandDe": "Ein Photon hat im Vakuum p=2,210·10⁻²⁷ kg m/s; nutze dieselben Konstanten. Bestimme λ, E und f. Vergleiche mit einem 600-nm-Photon und beurteile, ob doppelt so viele gleichartige Photonen die Wellenlänge ändern.",
+            "taskDemandEn": "A photon in vacuum has p=2.210·10⁻²⁷ kg m/s; use the same constants. Determine λ, E and f. Compare with a 600-nm photon and assess whether twice as many otherwise identical photons change wavelength.",
+            "expectedPerformanceDe": "Erhält λ=300 nm, E=6,63·10⁻¹⁹ J, f=1,00·10¹⁵ Hz; begründet doppelte Energie und doppelten Impuls bei halber Wellenlänge. Eine größere Photonenzahl ändert die Gesamtenergie, nicht automatisch E oder λ des Einzelphotons.",
+            "expectedPerformanceEn": "Obtains λ=300 nm, E=6.63·10⁻¹⁹ J, f=1.00·10¹⁵ Hz; justifies double energy and momentum at half wavelength. A larger photon count changes total energy, not automatically an individual photon's E or λ.",
+            "understandingFocusDe": "Umkehrschluss und Abgrenzung intrinsischer Photonengrößen von der Strahlmenge.",
+            "understandingFocusEn": "Reverse inference and distinction between individual-photon quantities and amount of light."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "reason": "Einsteins Fotoeffektdeutung im gewöhnlichen Einphotonenregime; keine eigenständige Bestimmung von h, die einem benachbarten Ziel zugeordnet ist. Fachabgleich: https://www.nobelprize.org/prizes/themes/the-dual-nature-of-light-as-reflected-in-the-nobel-archives .",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "threshold-energy",
+            "essentialUnderstandingDe": "Im Einphotonenmodell überträgt ein Photon hf auf ein Elektron; Emission erfordert hinreichende Energie für die Austrittsarbeit W_A, und E_kin,max=hf−W_A. Einzelne Elektronen müssen nicht alle die maximale Energie haben.",
+            "essentialUnderstandingEn": "In the single-photon model one photon transfers hf to an electron; emission requires enough energy for work function W_A, and E_kin,max=hf−W_A. Individual electrons need not all have the maximum energy.",
+            "observablePerformanceDe": "Erklärt Schwelle und maximale Elektronenenergie aus einer Energiebilanz und sagt die Wirkung geänderter Frequenz voraus.",
+            "observablePerformanceEn": "Explains threshold and maximum electron energy using an energy balance and predicts the effect of changed frequency."
+          },
+          {
+            "id": "intensity-frequency-distinction",
+            "essentialUnderstandingDe": "Bei festem Material und geeigneten Messbedingungen verändert mehr Intensität bei gleicher Frequenz vor allem die Zahl der ausgelösten Elektronen, nicht deren maximale Energie; unterhalb der Schwelle hilft bloß mehr Intensität im Einphotonenregime nicht.",
+            "essentialUnderstandingEn": "For a fixed material and suitable measurement conditions, more intensity at the same frequency mainly changes the number of emitted electrons, not their maximum energy; below threshold, more intensity alone does not help in the single-photon regime.",
+            "observablePerformanceDe": "Vergleicht Frequenz- und Intensitätsänderungen und erklärt, warum die Befunde nicht durch eine einfache kontinuierliche klassische Energieansammlung am Elektron erfasst werden.",
+            "observablePerformanceEn": "Compares frequency and intensity changes and explains why the findings are not captured by simple continuous classical energy accumulation at an electron."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "threshold-energy",
+            "intensity-frequency-distinction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "threshold-versus-flux",
+            "textDe": "Unterschwellige gegenüber überschwelliger Beleuchtung; Energie pro Photon gegenüber Photonenzahl pro Zeit.",
+            "textEn": "Below-threshold versus above-threshold illumination; energy per photon versus photon count per time."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "threshold-test",
+            "taskDemandDe": "Synthetischer Fotoeffektfall mit W_A=2,0 eV im Einphotonenregime: Licht mit 1,5 eV pro Photon löst auch bei größerer Intensität keine Elektronen aus, Licht mit 3,0 eV schon. Erkläre und bestimme E_kin,max.",
+            "taskDemandEn": "Synthetic photoelectric case with W_A=2.0 eV in the single-photon regime: light with 1.5 eV per photon emits no electrons even at higher intensity, while light with 3.0 eV does. Explain and determine E_kin,max.",
+            "expectedPerformanceDe": "Begründet die fehlende Emission mit der unterschrittenen Einzelphotonenschwelle und erhält bei 3,0 eV maximal 1,0 eV kinetische Energie. Erklärt den Widerspruch zur einfachen Vorstellung beliebiger zeitlicher Energieansammlung aus schwächerem Licht.",
+            "expectedPerformanceEn": "Explains absent emission by the single-photon threshold not being reached and obtains a maximum kinetic energy of 1.0 eV at 3.0 eV. Explains the conflict with a simple picture of unlimited temporal energy accumulation from weaker light.",
+            "understandingFocusDe": "Energiequant und materialabhängige Schwelle tragen die Erklärung.",
+            "understandingFocusEn": "Energy quantum and material-dependent threshold support the explanation."
+          },
+          {
+            "id": "independent-controls",
+            "taskDemandDe": "Bei derselben Oberfläche werden im geeigneten Sammelbetrieb 3,0-eV-Photonen verwendet. Vergleiche Verdopplung des Photonenflusses bei gleicher Frequenz mit Wechsel zu 2,5-eV-Photonen bei gleichem Fluss; W_A=2,0 eV.",
+            "taskDemandEn": "At the same surface, 3.0-eV photons are used under suitable collection conditions. Compare doubling photon flux at fixed frequency with switching to 2.5-eV photons at fixed flux; W_A=2.0 eV.",
+            "expectedPerformanceDe": "Sagt bei größerem Fluss mehr Emissionsereignisse beziehungsweise größeren Fotostrom, aber weiterhin E_kin,max=1,0 eV voraus. Beim Energiewechsel sinkt E_kin,max auf 0,5 eV; eine exakte Gleichheit der Emissionsausbeute verschiedener Frequenzen wird nicht behauptet.",
+            "expectedPerformanceEn": "Predicts more emission events or larger photocurrent at increased flux, but still E_kin,max=1.0 eV. With changed photon energy, E_kin,max falls to 0.5 eV; exact equality of emission yield at different frequencies is not asserted.",
+            "understandingFocusDe": "Getrennte Stellgrößen ändern Ereigniszahl und Energiebilanz unterschiedlich.",
+            "understandingFocusEn": "Independent control variables affect event count and energy balance differently."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6",
+      "reason": "Begrenzter Einstieg über Funktionsideen und offene Fragen, ohne Bandmodellrechnung oder vollständige Halbleitertechnik. Fachabgleich Solarzelle: https://www.energy.gov/cmei/systems/solar-photovoltaic-cell-basics .",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Formulierung 'Einstieg' mit offenen Fragen und das atomare Inhaltsziel sind nicht völlig trennscharf. Der Kandidat hält deshalb nur die ausdrücklich benannte grundlegende Funktionsbeschreibung und sachbezogene Fragebildung fest; er setzt weder reine Orientierung noch vertiefte Halbleiterkompetenz voraus."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "energy-versus-sensing",
+            "essentialUnderstandingDe": "Solarzellen wandeln aufgenommene Lichtenergie in elektrische Energie um; Lichtsensoren liefern eine lichtabhängige elektrische Antwort. Ein Sensorsignal muss nicht die Energie für das gesteuerte Gerät liefern.",
+            "essentialUnderstandingEn": "Solar cells convert absorbed light energy into electrical energy; light sensors provide a light-dependent electrical response. A sensor signal need not supply energy for the controlled device.",
+            "observablePerformanceDe": "Erklärt an unterschiedlichen Alltagsgeräten Lichtwirkung, elektrischen Ausgang und Funktion und trennt Energieversorgung von Mess-/Steuersignal.",
+            "observablePerformanceEn": "Explains light interaction, electrical output and function in different everyday devices and distinguishes energy supply from measurement/control signal."
+          },
+          {
+            "id": "productive-open-question",
+            "essentialUnderstandingDe": "Offene Fragen knüpfen an die Funktionsidee und eine noch ungeklärte Abhängigkeit an, etwa Beleuchtung, Material oder Reaktion; sie sind keine bloße Wiederholung des Gerätetitels.",
+            "essentialUnderstandingEn": "Open questions connect to the functional idea and an unresolved dependence, such as illumination, material or response; they do not merely repeat the device title.",
+            "observablePerformanceDe": "Formuliert selbstständig eine konkrete offene Frage und erläutert, welche Beobachtung oder Bedingungsänderung für eine Antwort aufschlussreich wäre, ohne eine fertige Versuchsdurchführung zu verlangen.",
+            "observablePerformanceEn": "Independently formulates a concrete open question and explains what observation or changed condition could inform an answer, without requiring a complete experimental procedure."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "energy-versus-sensing",
+            "productive-open-question"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "device-purpose",
+            "textDe": "Licht als Energiequelle eines Geräts gegenüber Licht als Information für ein separat versorgtes Gerät.",
+            "textEn": "Light as a device's energy source versus light as information for a separately powered device."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "solar-toy",
+            "taskDemandDe": "Ein Spielzeug ohne Batterie läuft mit einer Solarzelle im Licht und bleibt im Schatten stehen. Beschreibe die Funktionsidee und entwickle eine weiterführende Frage, nicht nur 'Wie funktioniert es?'.",
+            "taskDemandEn": "A toy without a battery runs from a solar cell in light and stops in shade. Describe the functional idea and develop a follow-up question beyond 'How does it work?'.",
+            "expectedPerformanceDe": "Erklärt Lichtaufnahme und elektrische Energieversorgung des Motors als Energieumwandlung; behauptet keine Energieerzeugung oder notwendiges Herausschlagen von Elektronen ins Vakuum. Fragt z. B. nach Einfluss der Beleuchtungsrichtung und nennt einen passenden Vergleich.",
+            "expectedPerformanceEn": "Explains light absorption and electrical supply to the motor as energy conversion; claims neither energy creation nor necessary ejection of electrons into vacuum. Asks, for example, about illumination direction and names a relevant comparison.",
+            "understandingFocusDe": "Grundlegende Energiefunktion mit eigenständig begründeter offener Frage.",
+            "understandingFocusEn": "Basic energy function with an independently justified open question."
+          },
+          {
+            "id": "automatic-light",
+            "taskDemandDe": "Eine netzversorgte Lampe schaltet über einen Lichtsensor bei Dunkelheit ein. Erkläre die Rollen von Licht, Sensor und Stromversorgung und formuliere eine offene Frage zu ihrem Verhalten.",
+            "taskDemandEn": "A mains-powered lamp switches on in darkness through a light sensor. Explain the roles of light, sensor and power supply and formulate an open question about its behavior.",
+            "expectedPerformanceDe": "Beschreibt eine lichtabhängige elektrische Sensorantwort als Steuersignal, während die Lampenenergie aus der separaten Versorgung stammt. Fragt etwa nach der Helligkeitsschwelle oder Reaktionsverzögerung und erläutert einen beobachtbaren Vergleich; kein Eingriff in Netzgeräte.",
+            "expectedPerformanceEn": "Describes a light-dependent electrical sensor response as a control signal while lamp energy comes from the separate supply. Asks, for example, about brightness threshold or response delay and explains an observable comparison; no intervention in mains devices.",
+            "understandingFocusDe": "Mess-/Steuerfunktion ist von photovoltaischer Energieversorgung zu unterscheiden.",
+            "understandingFocusEn": "Measurement/control function must be distinguished from photovoltaic power supply."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "reason": "Linearer Datenbezug E_kin,max=hf−W_A; zwei synthetische, vollständig angegebene Datensätze mit unterschiedlicher Messdarstellung und Unsicherheit. Keine reale Strahlen- oder Hochspannungsarbeit.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "linear-physical-mapping",
+            "essentialUnderstandingDe": "In E_kin,max=hf−W_A ist f die unabhängige Größe, h die Steigung und −W_A der Achsenabschnitt. Der von null verschiedene Abschnitt gehört zur Physik und darf nicht durch einen Ursprungszwang entfernt werden.",
+            "essentialUnderstandingEn": "In E_kin,max=hf−W_A, f is the independent variable, h the slope and −W_A the intercept. The nonzero intercept belongs to the physics and must not be removed by forcing the fit through the origin.",
+            "observablePerformanceDe": "Wählt und beschriftet geeignete Achsen, bestimmt eine Ausgleichsgerade aus frischen Daten und deutet Steigung und Abschnitt mit Einheiten; übersetzt gegebenenfalls E_kin,max=eU_g.",
+            "observablePerformanceEn": "Chooses and labels suitable axes, determines a best-fit line from fresh data and interprets slope and intercept with units; where needed translates E_kin,max=eU_stop."
+          },
+          {
+            "id": "uncertainty-and-model-check",
+            "essentialUnderstandingDe": "Experimentell bestimmtes h ist eine unsicherheitsbehaftete Schätzung; Streuung und Eingangsunsicherheit begrenzen die Aussage und müssen mit dem linearen Modell abgeglichen werden.",
+            "essentialUnderstandingEn": "Experimentally determined h is an uncertain estimate; scatter and input uncertainty limit the conclusion and must be checked against the linear model.",
+            "observablePerformanceDe": "Prüft Residuen oder eine zulässige Steigungsbandbreite, begründet die Größenordnung und nennt Unsicherheitsannahmen statt einen exakten Naturkonstantenwert zu behaupten.",
+            "observablePerformanceEn": "Checks residuals or an admissible slope range, justifies the order of magnitude and states uncertainty assumptions rather than claiming an exact physical constant."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "linear-physical-mapping",
+            "uncertainty-and-model-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "measured-representation",
+            "textDe": "Kinetische Energie unmittelbar als Datenwert gegenüber gemessener Gegenspannung mit erforderlicher Energieumrechnung.",
+            "textEn": "Kinetic energy supplied directly versus measured stopping voltage requiring conversion to energy."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "energy-fit",
+            "taskDemandDe": "Synthetische Daten: f=(5,6,7)·10¹⁴ Hz, E_max=(0,30;0,97;1,62)·10⁻¹⁹ J, je ±0,04·10⁻¹⁹ J; Frequenzfehler vernachlässigbar. Bestimme h mittels linearer Auswertung samt Abschnitt und prüfe Unsicherheit und Modellpassung.",
+            "taskDemandEn": "Synthetic data: f=(5,6,7)·10¹⁴ Hz, E_max=(0.30,0.97,1.62)·10⁻¹⁹ J, each ±0.04·10⁻¹⁹ J; frequency error negligible. Determine h by linear analysis including the intercept and check uncertainty and model agreement.",
+            "expectedPerformanceDe": "Erhält etwa h=6,6·10⁻³⁴ J s und Abschnitt −3,0·10⁻¹⁹ J, also W_A≈3,0·10⁻¹⁹ J. Residuen sind kleiner als die angegebene Energieunsicherheit. Eine Endpunkt-Grenzbetrachtung erlaubt ungefähr (6,2–7,0)·10⁻³⁴ J s; kennzeichnet sie als Fehlergrenze, nicht statistisches Konfidenzintervall.",
+            "expectedPerformanceEn": "Obtains approximately h=6.6·10⁻³⁴ J s and intercept −3.0·10⁻¹⁹ J, hence W_A≈3.0·10⁻¹⁹ J. Residuals are smaller than the stated energy uncertainty. An endpoint bound permits roughly (6.2–7.0)·10⁻³⁴ J s; labels it an error bound, not a statistical confidence interval.",
+            "understandingFocusDe": "Linearisierung verbindet Naturkonstante, Oberflächeneigenschaft und begrenzte Messgenauigkeit.",
+            "understandingFocusEn": "Linearization connects the physical constant, surface property and limited measurement accuracy."
+          },
+          {
+            "id": "voltage-fit",
+            "taskDemandDe": "Neue synthetische Oberfläche: f=(6,7,8)·10¹⁴ Hz, U_g=(0,48;0,89;1,30) V, je ±0,03 V; e=1,60·10⁻¹⁹ C und E_max=eU_g, Frequenzfehler vernachlässigbar. Bestimme h und erläutere, warum die Spannungssteigung allein nicht h ist.",
+            "taskDemandEn": "New synthetic surface: f=(6,7,8)·10¹⁴ Hz, U_stop=(0.48,0.89,1.30) V, each ±0.03 V; e=1.60·10⁻¹⁹ C and E_max=eU_stop, frequency error negligible. Determine h and explain why the voltage slope alone is not h.",
+            "expectedPerformanceDe": "Bestimmt Steigung 4,10·10⁻¹⁵ V s, Abschnitt −1,98 V und h=e·Steigung=6,56·10⁻³⁴ J s. Prüft lineare Passung; eine Endpunktbandbreite von 3,8–4,4·10⁻¹⁵ V s entspricht h≈(6,08–7,04)·10⁻³⁴ J s unter den angegebenen Fehlergrenzen.",
+            "expectedPerformanceEn": "Determines slope 4.10·10⁻¹⁵ V s, intercept −1.98 V and h=e·slope=6.56·10⁻³⁴ J s. Checks linear agreement; an endpoint range of 3.8–4.4·10⁻¹⁵ V s corresponds to h≈(6.08–7.04)·10⁻³⁴ J s under the stated error bounds.",
+            "understandingFocusDe": "Geänderte Messgröße erfordert physikalische Übersetzung von Steigung und Einheiten.",
+            "understandingFocusEn": "A changed measured quantity requires physical translation of slope and units."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dfa53498-34f5-5326-9d94-87e7b528caf3",
+      "reason": "De-Broglie-Beziehung mit physikalischer Bedeutung und Größenordnungsprüfung; nichtrelativistischer Impuls nur unter ausdrücklich geeigneten Bedingungen. Keine quantitative Kristallbeugung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "matter-wavelength",
+            "essentialUnderstandingDe": "Die De-Broglie-Wellenlänge λ=h/p verknüpft Wellenaspekt und Impuls eines Materieobjekts; im nichtrelativistischen Bereich kann p=mv verwendet werden.",
+            "essentialUnderstandingEn": "The de Broglie wavelength λ=h/p connects wave aspect and momentum of a matter object; in the nonrelativistic regime p=mv may be used.",
+            "observablePerformanceDe": "Wählt die geeignete Impulsangabe oder berechnet p unter benannter Bedingung, bestimmt λ mit Einheiten und prüft die inverse Abhängigkeit.",
+            "observablePerformanceEn": "Selects a suitable supplied momentum or calculates p under a named condition, determines λ with units and checks the inverse dependence."
+          },
+          {
+            "id": "wave-evidence-scale",
+            "essentialUnderstandingDe": "Interferenz- oder Beugungsverteilungen vieler Teilchen zeigen den Wellenaspekt, ohne feste klassische Einzelbahnen zu beweisen; beobachtbare Effekte hängen auch von λ relativ zur Versuchsstruktur ab.",
+            "essentialUnderstandingEn": "Interference or diffraction distributions of many particles reveal the wave aspect without proving definite classical individual trajectories; observable effects also depend on λ relative to experimental structure.",
+            "observablePerformanceDe": "Verbindet eine berechnete Wellenlänge mit einem qualitativen Beugungsbefund oder Größenvergleich und begrenzt daraus abgeleitete Aussagen über Einzelereignisse.",
+            "observablePerformanceEn": "Connects a calculated wavelength to a qualitative diffraction finding or size comparison and limits resulting statements about single events."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "matter-wavelength",
+            "wave-evidence-scale"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "momentum-access-and-scale",
+            "textDe": "Direkt gegebener Teilchenimpuls und Kristallstruktur gegenüber Impuls aus Masse/Geschwindigkeit und makroskopischem Größenvergleich.",
+            "textEn": "Directly supplied particle momentum and crystal structure versus momentum from mass/speed and macroscopic scale comparison."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "electron-diffraction-scale",
+            "taskDemandDe": "Ein Elektronenstrahl mit p=3,315·10⁻²⁴ kg m/s zeigt in bereitgestellten Kristalldaten einzelne Treffer, die eine Beugungsverteilung bilden; Strukturabstände liegen um 0,2 nm. Nutze h=6,63·10⁻³⁴ J s und deute die Größenordnung.",
+            "taskDemandEn": "An electron beam with p=3.315·10⁻²⁴ kg m/s shows individual hits building a diffraction distribution in supplied crystal data; structural spacings are around 0.2 nm. Use h=6.63·10⁻³⁴ J s and interpret the scale.",
+            "expectedPerformanceDe": "Berechnet λ=2,0·10⁻¹⁰ m=0,20 nm und ordnet die ähnliche Strukturgröße als plausiblen Beugungsmaßstab ein. Erklärt den Wellenaspekt über die Ensembleverteilung, nicht die materielle Form oder sichere Bahn eines einzelnen Elektrons.",
+            "expectedPerformanceEn": "Calculates λ=2.0·10⁻¹⁰ m=0.20 nm and identifies the similar structure size as a plausible diffraction scale. Explains the wave aspect through the ensemble distribution, not the material shape or definite path of an individual electron.",
+            "understandingFocusDe": "Impulsbeziehung wird mit beobachtbarer Wellenstruktur verbunden.",
+            "understandingFocusEn": "The momentum relation is connected to observable wave structure."
+          },
+          {
+            "id": "mass-speed-and-scale",
+            "taskDemandDe": "Vergleiche im nichtrelativistischen Modell ein Teilchen mit m=1,0·10⁻²⁶ kg, v=100 m/s und einen Körper mit m=0,010 kg, v=1,0 m/s. Berechne mit demselben h die Wellenlängen und erläutere qualitativ, warum an gewöhnlichen Millimeteröffnungen kein vergleichbares Beugungsbild des Körpers zu erwarten ist.",
+            "taskDemandEn": "In the nonrelativistic model compare a particle with m=1.0·10⁻²⁶ kg, v=100 m/s and a body with m=0.010 kg, v=1.0 m/s. Calculate wavelengths using the same h and qualitatively explain why comparable diffraction of the body is not expected at ordinary millimeter apertures.",
+            "expectedPerformanceDe": "Erhält p=1,0·10⁻²⁴ bzw. 1,0·10⁻² kg m/s und λ=6,63·10⁻¹⁰ bzw. 6,63·10⁻³² m. Begründet den extrem kleinen Wellenlängen-/Öffnungsmaßstab beim Körper; schließt daraus nicht, dass λ mathematisch null oder das Gesetz nur für Elektronen gültig sei.",
+            "expectedPerformanceEn": "Obtains p=1.0·10⁻²⁴ versus 1.0·10⁻² kg m/s and λ=6.63·10⁻¹⁰ versus 6.63·10⁻³² m. Explains the body's extremely small wavelength-to-aperture scale; does not conclude that λ is mathematically zero or the law applies only to electrons.",
+            "understandingFocusDe": "Anwendungsbedingung und Größenordnung erklären den Wechsel des beobachtbaren Verhaltens.",
+            "understandingFocusEn": "Applicability conditions and scale explain the change in observable behavior."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2aa2ef4b-8204-59b9-ad53-71c994cd6180",
+      "reason": "Qualitative Comptondeutung mit bereitgestellten Spektren, ohne verpflichtende Herleitung der Verschiebungsformel. Fachabgleich: https://www.nobelprize.org/uploads/2018/06/compton-lecture.pdf . Keine praktische Röntgenarbeit.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "energy-momentum-transfer",
+            "essentialUnderstandingDe": "Im vereinfachten Comptonmodell streut ein Photon an einem anfangs ruhenden freien oder hinreichend schwach gebundenen Elektron. Energie und Impuls des Gesamtsystems bleiben erhalten; das rückstoßende Elektron erhält Energie, das gestreute Photon kann längerwellig werden.",
+            "essentialUnderstandingEn": "In the simplified Compton model a photon scatters from an initially resting free or sufficiently weakly bound electron. Total system energy and momentum are conserved; the recoiling electron gains energy and the scattered photon can have a longer wavelength.",
+            "observablePerformanceDe": "Deutet eine gegebene Wellenlängenverschiebung durch Energie-/Impulsübertragung, ordnet die Richtung der Energieänderungen richtig zu und nennt die Elektronenannahme.",
+            "observablePerformanceEn": "Interprets a supplied wavelength shift through energy/momentum transfer, assigns energy-change directions correctly and states the electron assumption."
+          },
+          {
+            "id": "particle-significance-and-limit",
+            "essentialUnderstandingDe": "Der winkelabhängige verschobene Spektralanteil wird mit Photonenergie und Photonimpuls verständlich und stützt den Teilchenaspekt; dies hebt andere wellentypische Befunde nicht auf. Intensität und Energie eines einzelnen Streuereignisses sind verschieden.",
+            "essentialUnderstandingEn": "The angle-dependent shifted spectral component is understandable through photon energy and momentum and supports the particle aspect; this does not invalidate other wave-like findings. Intensity and energy of an individual scattering event are different.",
+            "observablePerformanceDe": "Erklärt den Erkenntniswert der Spektren und sagt bei geänderter Intensität beziehungsweise Streugeometrie qualitativ voraus, welche Merkmale sich ändern und welche nicht.",
+            "observablePerformanceEn": "Explains the evidential value of the spectra and qualitatively predicts which features change or remain under altered intensity or scattering geometry."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "energy-momentum-transfer",
+            "particle-significance-and-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "angle-versus-intensity",
+            "textDe": "Veränderter Streuwinkel gegenüber erhöhter Ereigniszahl bei unveränderter Einfallswellenlänge und Geometrie.",
+            "textEn": "Changed scattering angle versus increased event count at unchanged incident wavelength and geometry."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "shifted-spectra",
+            "taskDemandDe": "Synthetische Compton-Spektren für anfangs ruhende Elektronen: einfallend λ=0,0710 nm; verschobene Linie bei 45° etwa 0,0717 nm, bei 90° etwa 0,0734 nm. Deute die Unterschiede ohne Herleitung einer Winkelformel.",
+            "taskDemandEn": "Synthetic Compton spectra for initially resting electrons: incident λ=0.0710 nm; shifted line at 45° about 0.0717 nm and at 90° about 0.0734 nm. Interpret the differences without deriving an angular formula.",
+            "expectedPerformanceDe": "Erklärt längere Wellenlänge als kleinere Photonenergie und den Elektronenrückstoß als Energie-/Impulsaufnahme. Aus den Daten folgt bei 90° größere Energieabgabe als bei 45°; kennzeichnet dies als Stoßmodelldeutung der Spektren, nicht als direkt fotografierte Bahn.",
+            "expectedPerformanceEn": "Explains longer wavelength as lower photon energy and electron recoil as energy/momentum uptake. The data imply greater energy transfer at 90° than at 45°; labels this a collision-model interpretation of spectra, not a directly photographed trajectory.",
+            "understandingFocusDe": "Richtung der Verschiebung und Winkelvergleich erhalten eine physikalische Erklärung.",
+            "understandingFocusEn": "The direction of the shift and angle comparison receive a physical explanation."
+          },
+          {
+            "id": "flux-change",
+            "taskDemandDe": "Bei derselben einfallenden Wellenlänge und festem 90°-Streuwinkel wird in einem verdünnten Ein-Streuungsmodell nur der Photonenfluss verdoppelt; Detektor und Elektronenbedingungen bleiben gleich. Wird die verschobene Linie deshalb doppelt so weit verschoben? Erkläre den Teilchenbezug.",
+            "taskDemandEn": "With the same incident wavelength and fixed 90° scattering angle, only photon flux is doubled in a dilute single-scattering model; detector and electron conditions remain unchanged. Does the shifted line therefore shift twice as far? Explain the particle connection.",
+            "expectedPerformanceDe": "Verneint die doppelte Verschiebung: mehr unabhängige Ereignisse erhöhen ideal die Zählrate, nicht die Energie-/Impulsbilanz pro Ereignis oder die Linienlage. Begründet den Photonimpuls als Teil der Deutung und hält den Wellenaspekt anderer Versuche weiterhin offen.",
+            "expectedPerformanceEn": "Rejects double shift: more independent events ideally increase count rate, not the energy/momentum balance per event or line position. Justifies photon momentum as part of the interpretation while retaining the wave aspect of other experiments.",
+            "understandingFocusDe": "Ereigniszahl und Stoßkinematik sind verschieden; Teilchenbeleg ist kein Verbot des Wellenbildes.",
+            "understandingFocusEn": "Event count and collision kinematics differ; particle evidence does not prohibit the wave picture."
+          }
+        ]
+      }
+    }
+  ]
+}

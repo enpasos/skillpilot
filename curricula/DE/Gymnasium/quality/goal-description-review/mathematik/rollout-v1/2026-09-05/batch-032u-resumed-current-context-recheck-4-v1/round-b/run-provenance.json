@@ -1,0 +1,40 @@
+{
+  "runId": "math-b032u-b-gpt6astra-20260905",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "modelVersion": null,
+  "generationParameters": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "high",
+    "forkTurns": "none",
+    "reviewIsolation": {
+      "blindToOtherReviews": true,
+      "allowedReviewInputs": "Assigned round-b packet and explicitly permitted sibling book-model/visualization assets only",
+      "excludedReviewInputs": "Other rounds, historic reviews, synthesis, evidence profiles outside the supplied packet, canonical diffs, and task conversation"
+    }
+  },
+  "generationParametersFingerprint": "sha256:aa550c0081e4cdbd86df41d292076e8023e64a57167450583cae09bdc931cede",
+  "generationParametersFingerprintEncoding": "SHA-256 of UTF-8 JSON.stringify(generationParameters), preserving the documented object key order, without trailing newline",
+  "timing": {
+    "coordinatorObservedDispatchLowerBound": "2026-09-05T18:47:34Z",
+    "coordinatorFirstObservedCompletion": "2026-09-05T18:51:41Z",
+    "source": "Coordinator supplied these observed dispatch/completion boundaries in the materialization task after both independent rounds had finished.",
+    "manifestStartedAtMeaning": "Coordinator-observed dispatch lower bound, not exact inference start time",
+    "manifestCompletedAtMeaning": "Coordinator first observation of completion, not exact inference completion time",
+    "exactInferenceStartedAt": null,
+    "exactInferenceCompletedAt": null,
+    "inferenceDurationSeconds": null
+  },
+  "usage": null,
+  "tokens": null,
+  "cost": null,
+  "toolchainVersion": "codex-apply-patch-v1",
+  "toolchainVersionMeaning": "Local identifier for this materialization workflow using apply_patch; not a measured Codex product build or historical release version",
+  "materialization": "The reviewer materialized the four already returned candidate records unchanged only after the coordinator reported both independent rounds finished. No other review round was inspected.",
+  "artifactDigestEncoding": "SHA-256 of actual file bytes; the description-review-input.json file digest is distinct from its embedded semantic reviewInputFingerprint",
+  "additionalReadArtifactDigests": {
+    "description-review-input.json": "sha256:562a06ee92494ef4dc93a8eb80db0b79f278d3eb0a04ae87d4c27c1ed75ea7ec",
+    "contracts/goal-description-review-record.schema.json": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+  },
+  "outputDigest": "sha256:061244b7143d55952836b2dd0cf58c3946ce1f1b8529f509f7ac1a3a0af3b6f0"
+}

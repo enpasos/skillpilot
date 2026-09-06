@@ -1,0 +1,901 @@
+{
+  "checkedAt": "2026-09-06T09:31:10.528Z",
+  "grantsProgress": false,
+  "config": {
+    "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-config.schema.json",
+    "schemaVersion": 1,
+    "batchId": "mathematik-rollout-v1-batch-037-diagrams-and-first-calculus-20-v1-20260906",
+    "subject": "mathematik",
+    "subjectLabel": "Mathematik",
+    "bookId": "de-gym-math-b037-diagrams-and-first-calculus-20-v1-20260906",
+    "title": "Mathematik – B037 Diagramme und erste Analysis (20 Ziele)",
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "goalIds": [
+      "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+      "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+      "e9445479-c188-5c09-842d-faa5e8678099",
+      "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+      "b1dcc191-d046-50de-984a-ee5c17157628",
+      "01acfcc8-7204-5c22-8774-13f6383f4fd4",
+      "845440ce-f63f-5835-903f-739145ca27bd",
+      "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+      "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+      "f042385e-f772-42db-9c96-f21a792ac5ea",
+      "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+      "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+      "56b4acb5-6024-573f-9890-35fbd21ee343",
+      "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+      "1511b39a-4094-5450-a755-4a3ad3339733"
+    ],
+    "outputDirectory": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-037-diagrams-and-first-calculus-20-v1",
+    "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+    "promptPath": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/goal-description-understanding-evidence-review-v2.md",
+    "criteriaPath": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-goal-description-understanding-evidence-review-criteria-v2.md",
+    "printDerivativeProfile": "bounded-atlas"
+  },
+  "modelDigest": "sha256:24a5ac6024a94423a5a6cad76be3f1eeae2d904b2917f96bb7d74dd6941a3fa7",
+  "subsetDigest": "sha256:05480b270ab7129b113d8b9223fe8cd4a8cd4671d401847bbae929a6dd72069f",
+  "selected": [
+    {
+      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "titleDe": "Achsen, Skalen und Einheiten lesen",
+      "titleEn": "Read axes, scales and units",
+      "phase": "J7",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:1d2bc29ba7768607c729add7f243b4b860e3b2b980a7954fb980db2cd646f40e",
+      "pageFingerprint": "sha256:05ee4f40ebacf3d45bd26155178933a48b4cad8f4793e8e201b1398ac30497ca",
+      "basePageNumber": 204,
+      "coherenceKey": "J7 / (no-area)"
+    },
+    {
+      "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "titleDe": "Kennwerte und Trends deuten",
+      "titleEn": "Interpret key values and trends",
+      "phase": "J7",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:6d115a45d0585730b8e5ef3d5a0864e24cb8c1c9b424b99fa8539b8ebb32f3e6",
+      "pageFingerprint": "sha256:003a3cacc659782bf09a9f5dfadf0c3f0021b0ef1292fbbc5e7df6a5aaee3f57",
+      "basePageNumber": 205,
+      "coherenceKey": "J7 / (no-area)"
+    },
+    {
+      "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "titleDe": "Aussagen anhand von Diagrammen prüfen",
+      "titleEn": "Check claims using diagrams",
+      "phase": "J7",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:77b254048840ff301f55c2da39f68ae59a6e7788a9fc167e80fbfa6324f1dbac",
+      "pageFingerprint": "sha256:560441af10732e330e121240ec19d112672acbe1e8bb0c6cd75184eda5c5b23b",
+      "basePageNumber": 206,
+      "coherenceKey": "J7 / (no-area)"
+    },
+    {
+      "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "titleDe": "Missverständnisse erklären und korrigieren",
+      "titleEn": "Explain and correct misconceptions",
+      "phase": "J7",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:3263d7976c1e2035b9e598cce64c8425473b6f0c3aeb5c1f80cde2961fe351ea",
+      "pageFingerprint": "sha256:ae4d10ec4c23a1f869b836ed48733e779aab229d13e9fd4226cdc1b849dbc962",
+      "basePageNumber": 207,
+      "coherenceKey": "J7 / (no-area)"
+    },
+    {
+      "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+      "titleDe": "Mittlere Änderungsrate berechnen und deuten",
+      "titleEn": "Calculate and interpret average rate of change",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:3dfe26a80eaa74ebeb9a4e0b5536454e503bdeb177cc0eec57073e4b06242ef3",
+      "pageFingerprint": "sha256:3d55df1f7c61820d6a6a7f26a0858cf2a55d3753f88f6ebc097fdd479ee1423e",
+      "basePageNumber": 208,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+      "titleDe": "Grenzwerte des Differenzenquotienten bestimmen",
+      "titleEn": "Determine limits of difference quotients",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:4bb4e75863ec2b4c95d277ae41eb3ef5f7293e3e41cb662223d8c724e96b6dbd",
+      "pageFingerprint": "sha256:dedd599fc0f896e00092c410bcdbf53108c734f5af83f5957b568d5faa365085",
+      "basePageNumber": 209,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+      "titleDe": "Potenzregel für ganzzahlige Exponenten exemplarisch begründen",
+      "titleEn": "Justify the power rule for integer exponents by example",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:9507cc87ed74dd8b065dadd0ba5d3291133d34a1af1c597acf088da4fd6c2357",
+      "pageFingerprint": "sha256:bb28200fab2d9da3090b829464ec464bd39054c1346ece20539f6b377e4d12cc",
+      "basePageNumber": 212,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "titleDe": "Faktor- und Summenregel beweisen und anwenden",
+      "titleEn": "Prove and apply the constant multiple and sum rules",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:f1c1678a1f8c4e801f75391868474c78c3c306248ba24df4fd44ecd66f125b6c",
+      "pageFingerprint": "sha256:52214042b6581c8b541d3ad0a9ffcf2c2c89c128e43e0d81d5012e561494c5ee",
+      "basePageNumber": 213,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+      "titleDe": "Ganzrationale Funktionen ableiten",
+      "titleEn": "Differentiate polynomial functions",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:08933aa158cadba16d2fe0c7eca1139c5a40e261f927ebe02a597cb4ffea730c",
+      "pageFingerprint": "sha256:d06f0b33deff6fd25659d1f454d9eb9cd0c32c82578e9a53f88e1b4df3caba50",
+      "basePageNumber": 214,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
+      "titleDe": "Ableitung als Steigung im Punkt deuten",
+      "titleEn": "Interpret derivative as slope at a point",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:855d6182f1a765b0984fdd7ed86d156fbab0a2fab0df932accc17eede94c798c",
+      "pageFingerprint": "sha256:21f5325c2204fd118f575ff9309c07f46ce355321ca00a87c6bb68e04ad01691",
+      "basePageNumber": 215,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "01acfcc8-7204-5c22-8774-13f6383f4fd4",
+      "titleDe": "Von der Ableitung an einer Stelle zur Ableitungsfunktion übergehen",
+      "titleEn": "Move from the derivative at a point to the derivative function",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:32ee29ecd8f7ea58d2c64d104be4517e96e0ed57964650aa397169de75900748",
+      "pageFingerprint": "sha256:b99a9a5488d5b93f145c1f49e3c5944b2669cc3670940a5135d74a00d6dc382e",
+      "basePageNumber": 216,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
+      "titleDe": "Zusammenhang von f und f′ am Graphen beschreiben",
+      "titleEn": "Describe relationship between f and f' on the graph",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:e74d162728cd54db3b0f28ad3cc07253725085cc492d8a25d6d458d03e336c7b",
+      "pageFingerprint": "sha256:18f2eed46ce202267b33386602dfce13a8b8b55545bfa4a3edfd208e19a8e15d",
+      "basePageNumber": 217,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+      "titleDe": "Begriff der Stammfunktion verstehen",
+      "titleEn": "Understand the concept of an antiderivative",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:ef4bb793444bcdfad94e7b641ceff1ff4fa2e13e89c7b8c3d36d2cddd255453b",
+      "pageFingerprint": "sha256:f61544075a5161371dae4e7e594da20bac183b2e2d99433fed8a5c5220d047de",
+      "basePageNumber": 218,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+      "titleDe": "Tangentengleichungen und Steigungswinkel bestimmen",
+      "titleEn": "Determine tangent equations and slope angles",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:480d9421f2e9c399d6060e4a294c28aed33e25e9cbdaf323bc7786fb92884281",
+      "pageFingerprint": "sha256:2feabcbbc6de701375c5743daf030e010efc4100f61ab341fe0e5fcf24c4edf6",
+      "basePageNumber": 219,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "f042385e-f772-42db-9c96-f21a792ac5ea",
+      "titleDe": "Tangenten- und Normalengleichungen bestimmen",
+      "titleEn": "Determine tangent and normal equations",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:b5bfcf684ee3fa6cff4228471110ac5ad3c1a158e520369f422458b2086a1f59",
+      "pageFingerprint": "sha256:9c1a05ca658001fb110e78ac4bd3a7f307f98af30c4bd618e1b1dca73721ad68",
+      "basePageNumber": 220,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+      "titleDe": "Sekanten-, Tangenten- und Normalensteigungen mit Steigungswinkeln bestimmen",
+      "titleEn": "Determine secant, tangent, and normal slopes with slope angles",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:052196631122ee6b73cf12abd4fd8d7b2ffa9b4d9bfd1a355478453e767f18d8",
+      "pageFingerprint": "sha256:d0a67fb087cb1de25b914c39242d7a6a7b4cc59366847e68a24e32808bcb64d7",
+      "basePageNumber": 221,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+      "titleDe": "Sekanten-, Tangenten- und Normalensteigungen bestimmen",
+      "titleEn": "Determine secant, tangent, and normal slopes and interpret angles of intersection between function graphs",
+      "phase": "E",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.DERIVATIVE.SLOPES_GRAPH_INTERSECTION_ANGLES",
+      "goalFingerprint": "sha256:84667db6fa29737ed21d0a02d266959eab5c5a50a09b01ec923b6f099521fcf6",
+      "pageFingerprint": "sha256:edd0b4192ef22bed03d13979d41f569a1739ad3d5255b477096f93fc72bac14a",
+      "basePageNumber": 222,
+      "coherenceKey": "E / Analysis"
+    },
+    {
+      "goalId": "56b4acb5-6024-573f-9890-35fbd21ee343",
+      "titleDe": "Schnittwinkel zwischen Funktionsgraphen deuten",
+      "titleEn": "Interpret intersection angles between function graphs",
+      "phase": "E",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.E.DERIVATIVE.INTERSECTION_ANGLES",
+      "goalFingerprint": "sha256:cf84c18c62d178dd11fd5509c20471cc86ba05c4af3ebe0c7dd8bf42faf28a5f",
+      "pageFingerprint": "sha256:9f16e1eb90f3c35c803dbc2c5fd14d1ec5cc8ed4b6d54a224d2a389dc7ca8c2a",
+      "basePageNumber": 223,
+      "coherenceKey": "E / Analysis"
+    },
+    {
+      "goalId": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+      "titleDe": "Lokale Differenzierbarkeit am Graphen beurteilen",
+      "titleEn": "Assess local differentiability from graphs",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:b4b59988bf89faf82e02af851a36cc3d274f1ee58c943a013171d3e5821151a9",
+      "pageFingerprint": "sha256:0c6caf298ade6d583e8a35c3ff5756974c50bc1ce298ffc3bc7d3d5f15f62c0a",
+      "basePageNumber": 224,
+      "coherenceKey": "E / (no-area)"
+    },
+    {
+      "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+      "titleDe": "Einfache Extremwertprobleme lösen",
+      "titleEn": "Solve simple extremal problems",
+      "phase": "E",
+      "area": null,
+      "topicCode": null,
+      "goalFingerprint": "sha256:e95b436df5fbdb97620489a9cf4eed0443cc98ba3262859b52d6956d786c945d",
+      "pageFingerprint": "sha256:6ebaaa898a1076bce5b695d876e6c282e1c9448bfa0259f44d779763064a86c1",
+      "basePageNumber": 225,
+      "coherenceKey": "E / (no-area)"
+    }
+  ],
+  "checkpoint": {
+    "mathComplete": 280,
+    "mathTotal": 796,
+    "registeredBindings": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-035r-relative-dispersion-recheck-1-v1/resolution-index.json",
+        "digest": "sha256:012e4f021c83485334ca5add8a476272e129cc7a63b036f251c1b326826dc348"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-035-sibling-priority-remainder-7-v1/resolution-index.current-carryover-v1.json",
+        "digest": "sha256:05826d1bdab850da1df504860ec06802f034ef0f2eba0cd5e8bf44eb909bc2bf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-034-q4-sibling-priority-17-v1/resolution-index.current-carryover-v1.json",
+        "digest": "sha256:b1090f58407e6fb68a3fc6c617d23de72b239770d641e68b2d4cb4a7af05cb0b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-033b-coordinates-lines-motion-current-5-v1/resolution-index.json",
+        "digest": "sha256:afc560c6f762b14f150a16b3ab77a95d473e38aeeac6bb72a688aeeedb03b36d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-033a-functions-current-recheck-4-v1/resolution-index.json",
+        "digest": "sha256:dc1ee1439d1a1f3586e61a620c4b13122fdf85fd02f30086b3bf5a4b9d9527da"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-033-atlas-next-unreviewed-disjoint-20-v1/resolution-index.current-carryover-v1.json",
+        "digest": "sha256:85d1f6d97f8021ca41978fa1945783c9349847bbeae815736c0135f90938f8a3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032v-approved-graph-split-final-recheck-5-v1/resolution-index.json",
+        "digest": "sha256:a5eeef74ab6e98aaef86e1104b6e4a4b9de5e4e5faa75fd19c9ea17ccafd87f1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032w-linear-prerequisite-context-recheck-1-v1/resolution-index.json",
+        "digest": "sha256:5c81e87561249a996732d48ba213e40b249b51ce4a3825510e9167bbcac9ba24"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/calibration-v2/2026-08-25/resolution-index.json",
+        "digest": "sha256:6068c3b5c35ddabd3503fdf82aa7d072bc4fb63918b6e4ec06dc042e31536440"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-001-final-20-v2/resolution-index.json",
+        "digest": "sha256:c4c86ee866d6efb4c46af5d0f03f2a3c8e4d87941d5e7dcec89cb57419534ec2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-002-current-v7-sixth-pass-main-20/resolution-index.current-checkpoint.json",
+        "digest": "sha256:d6e203e0168c659b200997f6119728fa44be47b2be2d77a80b4eab7f350d9e28"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-002-current-v5-follow-up-5/resolution-index.json",
+        "digest": "sha256:14af9b0882ddc0d7264af13e82428d176290c84caa17ed78d0d7d34f01400e93"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-003a-j6-nonstructural-17-current-v2/resolution-index.json",
+        "digest": "sha256:a867646d80bacc42846d59f0e72daa0b0e7048c146a4316647d0e11c0cbb4438"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/resolution-index.json",
+        "digest": "sha256:d3f09afbbc27c4a36c7f0d65a822dc4245d219d8658e08905d6dc2a8c854056c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-007-j6-analysis-patterns-1-v1/resolution-index.json",
+        "digest": "sha256:18002f2b4f4bfcbd6be04a23a89ef194ee4d5fdb655ad8b9351d78ca2372b3ac"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-008-global-analysis-mappings-1-v1/resolution-index.json",
+        "digest": "sha256:479b07685824bdfd9c07de12d15eeb457c2265bdcd7f238d46e2f795223568eb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-009-j7-analysis-proportionality-2-v1/resolution-index.json",
+        "digest": "sha256:16ba9a87662f1b110e27b2acc6984c28fb71905805909dd0d58afeeaa05d8712"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-010-j7-algebra-variables-terms-final-6-v3/resolution-index.json",
+        "digest": "sha256:a42de2342c188b428e4960ce1adb6042ff908c01dcd7b73b4082bf319935703a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-010b-applicability-context-recheck-uncontested-7-v1/resolution-index.json",
+        "digest": "sha256:8857fffc4ef4c8a255683374376d8cadae4e6ae9811f3e2ca375f096a71f98a8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-011-global-geometry-analysis-stochastics-final-7-v4/resolution-index.current-six-after-b031r-v1.json",
+        "digest": "sha256:44351ecde4844e5364be53e0c6fc8ccdb9b6e65348f59b59a76dff711f6cb357"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-final-2-v2/resolution-index.json",
+        "digest": "sha256:60020ebb61258abaf5f4cb299b7c7d5a46b2b57c58f054a612bc08b352a26cac"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004a-uncontested-16-current-v1/resolution-index.current-carryover-4-v1.json",
+        "digest": "sha256:cd59538dae7545965181567b1fdcde33730614795eececbeb8d6d47f62028e5d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-013-j10-functions-trigonometry-deep8-carryover-2-v1/resolution-index.stable-current-carryover-2-v1.json",
+        "digest": "sha256:be5e9034aa6766862c0711d8f6a519f70dd4601f8cd48e653acc2a498140f745"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-014-j7-geometry-measurement-fast16-stable-carryover-3-v1/resolution-index.stable-current-carryover-3-v1.json",
+        "digest": "sha256:21eba9aa6e0f9e2a51ac1f4c1e99a4a3a2a76af9d0264236c2ace4e9011b19d1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-018-e-trigonometric-final-current-5-v1/resolution-index.json",
+        "digest": "sha256:186268d5adb7d6ac18edaa1ea41962da04ecf5c2d67f704ca4ee01305701a1b5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-29/batch-019-q2-lines-planes-current-19-v1/resolution-index.stable-current-carryover-7-v1.json",
+        "digest": "sha256:4fb248090eff84688d7f2cfaceab4bec8c58b20f908f904d31482851cedd7341"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-29/batch-020-q2-lines-planes-and-reverse-context-13-v1/resolution-index.stable-current-carryover-11-v1.json",
+        "digest": "sha256:9c0b7b6c7d723878169b5413a30a1cf882ed48ff5452a1268628e31627281db7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-021-j7-linear-equations-1-v1/resolution-index.json",
+        "digest": "sha256:2f31738c3dd1cef16b3c5d98b61ca86a01f549950ba0e67694d5e89611b59673"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-022-j7-data-secondary-sources-1-v1/resolution-index.json",
+        "digest": "sha256:05639c037359a68e97e605f5414aeff3f749976485f8864efc8e6f0f12085fca"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-024a-j8-linear-functions-revised-3-v1/resolution-index.json",
+        "digest": "sha256:76f0d22af07d85e14b89d94199f285523e5b3ee2142ce8bd3de989aed63f7cca"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-025a-j8-rational-functions-revised-6-v1/resolution-index.stable-current-carryover-4-v1.json",
+        "digest": "sha256:b2c80e5750110c970c056de6912f43c58ac83906b4db7727020ab0f10dbbf04d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-025b-j8-rational-parameter-effects-revised-1-v1/resolution-index.final-current-keep-1-v1.json",
+        "digest": "sha256:3d7942b18a2dc58f98a1d3f7bae0bb64a8155e2f2ee888e4fee67c9c25a4cca5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-025c-j8-rational-terms-from-graphs-recheck-1-v1/resolution-index.final-current-keep-1-v1.json",
+        "digest": "sha256:489b2a26702d1dc681d52d95c22d1eafb3948bce0711dcc563324d9cd488fe8e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-026b-j8-linear-systems-1-v1/resolution-index.json",
+        "digest": "sha256:d9fb0c56920cd64571781ab841b8042f0da52afce1465217891ec296924dfcb9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-026c-j8-fractional-expressions-revised-2-v1/resolution-index.json",
+        "digest": "sha256:66bd12a750ebed9aafed44cd67f086fdae8935ce1946779ef7a37445327f820d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-027a-j8-laplace-experiments-revised-1-v1/resolution-index.json",
+        "digest": "sha256:946650462e654df6b538107e2ced9fe31a15fec8f6dded8b1a8f70569d238333"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-028-j8-algebra-systems-inequalities-fractions-6-v1/resolution-index.stable-current-carryover-2-without-f179-v1.json",
+        "digest": "sha256:55be8c5c43fc5bdf2e3168ff961a34ee3c17733283f894b0e52a1d7937b76200"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1/resolution-index.stable-current-carryover-2-v1.json",
+        "digest": "sha256:0433afddf8b2c16699d1a2bb7d32716e1024494eafb1df790385af4ece64cbc0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-028s-j8-fraction-formulas-domain-final-recheck-1-v1/resolution-index.json",
+        "digest": "sha256:618747d50a7217a2f75301b57b87f223851221acf13b36531fae94a5a3744383"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-029-j8-interest-spreadsheet-parameters-3-v1/resolution-index.stable-current-carryover-1-v1.json",
+        "digest": "sha256:3f6e1751faed58eb17cc323ddf637af4950f684591274095e08086b756134a89"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-029r-j8-interest-duration-revised-1-v1/resolution-index.json",
+        "digest": "sha256:3c038c391a84c1b53ad28e196431d7645721dfcb18ae59361718203bc3f4750d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-029dr-j8-interest-payment-amount-final-recheck-1-v1/resolution-index.json",
+        "digest": "sha256:6a0719e542edc0ede178278650b02f5b98daaebae65c015d30e39e3cb8e92705"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-030-atlas-context-recheck-18-v1/resolution-index.json",
+        "digest": "sha256:01442e9fbe2342e26c4fb97da12403583add55713047a6efaf28e7874cbe2029"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-031-atlas-pages-120-146-20-v1/resolution-index.stable-current-carryover-13-v1.json",
+        "digest": "sha256:a3ce486a855b0717083761bd37135eba91ea11f74c5d5119e8bdf1b32740f227"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-031r-atlas-revised-context-final-recheck-14-v1/resolution-index.overlap-safe-current-filtered-10-v1.json",
+        "digest": "sha256:6f48e90697c2a647b8039a270db0ce3ba6e0a5fcff3eb5a076ec9ebe43de39cd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-031s-final-corrections-and-dependent-context-5-v1/resolution-index.stable-current-carryover-1-v1.json",
+        "digest": "sha256:c4d915d3433eba502cc20acdf5cc8fc21c8dbc10e257fe1da21361c40fbb3102"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-031t-trigonometric-reflection-final-recheck-4-v1/resolution-index.json",
+        "digest": "sha256:94fa24095ba2fd2d86be4abab041b71dedd2e691c3c7e3b61a3d9063143606ad"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032-atlas-next-20-v1/resolution-index.post-b032r-split-overlap-safe-current-filtered-14-v1.json",
+        "digest": "sha256:3e7b440bcad4e8f95803b38cbbb5a4367eb1641dca797e3c774a10563b29ee2b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032r-adjudicated-final-recheck-10-v1/resolution-index.overlap-safe-exact-current-carryover-5-v1.json",
+        "digest": "sha256:edfb7c255620a5697021d5353cad92cead499cb686d412b9bf74a5f2555cae4e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032t-checkpoint-context-recheck-1-v1/resolution-index.json",
+        "digest": "sha256:98b46b7ec658193cd2a98c34c7ec41a2ad38211496f4fd630353d56e1c49f1e3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-035-current-counterreviewed-7-v1.config.json",
+        "digest": "sha256:38e3c883c0f3714dcea9f92ae302817655a7d018971fd6ed51489ccc829080ee"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-034-q4-sibling-priority-17-v1.config.json",
+        "digest": "sha256:352ae99f4872a5079aca5d696ccdcab518ddca0f9adb635dc3d550a211f7d88e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-033b-coordinates-lines-motion-5-v1.config.json",
+        "digest": "sha256:dfde79d51440afd8eae368d2b417ccf172874362e3eb7b5d4a902c3c54af1823"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-033a-functions-4-v1.config.json",
+        "digest": "sha256:ff0324b74ee9715899639ab0a2dd6d564707cbd7a1ef1f4340a6f0b032bba9ac"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-033-current-carryover-8-v1.config.json",
+        "digest": "sha256:2a97c40f90907e773a45e73edcc7839a2efd78e6b19919d544f47f9e5519367f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-032v-approved-graph-split-v1.config.json",
+        "digest": "sha256:d1dbd1ffc7072f83aad883f84ae0842c5e4f8efc69243efe874bb02a551143fd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-calibration-v2.config.json",
+        "digest": "sha256:4e264bfdeb48014ddad9c5618d644a76021806f14ef2f2088a725948b71a8352"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-batch-001-final-20-v2.config.json",
+        "digest": "sha256:a6a2e27977d7c301453f1ec70c10d12ba2619f919622306c33842465ba1c0f67"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-002-current-v2.config.json",
+        "digest": "sha256:b53a9e5cbda9e4f7431888537f4ebc27a0b512a65e64724d0ad3c3beae8627f3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-003-current-main-17-v1.config.json",
+        "digest": "sha256:6c1d8fe43adfd79f929738c6a26ad12c76a095fa7636392d0038bfcee3978dbc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-004-seki-repair-split-current-v1.config.json",
+        "digest": "sha256:c92315197a33a75a3fcef9daeade0e1c77c5f0b9a5f73d3f05512d99a9596b0f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-006a-oblique-view-current-v1.config.json",
+        "digest": "sha256:fccb1c0c7bffabf6ce9bf57724d347038bb770e902e44af5503b226e3726f567"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-006b-j6-split-children-current-v1.config.json",
+        "digest": "sha256:08b24d9765a4a99bee75764a4e13ff1e1540532d99bda16c73cc98100ee50521"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-007-j6-analysis-patterns-current-v1.config.json",
+        "digest": "sha256:4bf24ea0528b2d56e9fae8dc7603dfa8ff42ec4abc00b0b8e6f29acbe4aa5990"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-008-global-analysis-mappings-current-v1.config.json",
+        "digest": "sha256:d21085509b866c938e7c7da959afc437685befc6188a6b7a37c2c2c853d6d853"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-009-j7-proportionality-current-v1.config.json",
+        "digest": "sha256:3cd8cba73b9060ef55bad1a81238673ba306eec1e32ba32e4afd1e171a4c98ea"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-010-j7-algebra-variables-terms-current-v1.config.json",
+        "digest": "sha256:95b13551ba8089b20476cf4d937cd2cba78b3584ba49d26b398281d264f42429"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-011-global-geometry-analysis-stochastics-current-six-after-b031r-v1.config.json",
+        "digest": "sha256:289273ec16a58ab5fb7f8d36b939d8dac67ba9a6b8d09a5d8845e2f17ae10b9c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-012-j6-volume-current-v1.config.json",
+        "digest": "sha256:22fe67afa5fb82eeaa6963d50cad91e66f8b16ad947da609b88ea12a110ed3de"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-004a-carryover-4-current-v1.config.json",
+        "digest": "sha256:ae01617099bef5d74cdb9b7f63eb8d968d59eacf55e13a57585226a8cb8ee9fc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-j10-clean2-current-v1.config.json",
+        "digest": "sha256:5a20dd1a81544c5503e3ca2c5f58d4cb21b40d910c2b61b72f17c1211e85f1a9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-j7-fast16-stable3-current-v1.config.json",
+        "digest": "sha256:b6eedfa17c9f2e86154059c1cc4dd2049f9f00a5087a392f722508e946d39964"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-018-e-trigonometric-final-current-5-v1.config.json",
+        "digest": "sha256:74074af0694d5c32c9868057317cf921569ce50851196ab3dab247b8b8ff4cee"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-019-q2-lines-planes-stable7-current-v1.config.json",
+        "digest": "sha256:7685b9a8e59ffc0b48f58a442044d2dd901d292253692779ecd1e0de760e46fc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-020-q2-lines-planes-stable11-current-v1.config.json",
+        "digest": "sha256:be30448bb22822842040d2993696ac856491010b0b6caf26cd7e26e9f483b37a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-021-j7-linear-equations-current-v1.config.json",
+        "digest": "sha256:eeec283e42ff0e4b9347017582c5b08da9f6accfe9e63f47639cd6fe70392d4d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-022-j7-data-secondary-sources-current-v1.config.json",
+        "digest": "sha256:2aa68d08d053dce87a8a37b4f8cdcd6a88daf7deab564ffb0862b8e99334ae52"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-023a-global-analysis-linear-functions-revised-current-v1.config.json",
+        "digest": "sha256:bed9dc4b590290d42408f73c50fb0643a2651c2fdc32d6c8eb4b735d383877b4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-024a-j8-linear-functions-revised-current-v1.config.json",
+        "digest": "sha256:6f4ea309f1f146b78d6fc8971782fb091c80e194c026cae3e53066da2b871922"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-025a-j8-rational-functions-stable4-current-v1.config.json",
+        "digest": "sha256:8787e7abe9ac5a26028b0bb4835659ac47de7d6566db8d795d4afdba5957565d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-025b-j8-rational-parameter-effects-current-v1.config.json",
+        "digest": "sha256:bd17a605c136fda58cd58a1dfc5f69dc57002b9b79a007d8c4594908576bc5d1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-025c-j8-rational-terms-from-graphs-current-v1.config.json",
+        "digest": "sha256:24ccd027248bdff06d92c3a9399d24ecd869fca38600142b4a073e4a94f5f4bd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-026b-j8-linear-systems-current-v1.config.json",
+        "digest": "sha256:6901a8c7947b13d755eb0b7584bf4263d28a7eb0e137ba3e96eee8a920b56c91"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-026c-j8-fractional-expressions-current-v1.config.json",
+        "digest": "sha256:8a16138a98872f44e3202e9d840f365c8701748c145137fc8041922acc736056"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-027a-j8-laplace-experiments-current-v1.config.json",
+        "digest": "sha256:e11f6383dc59e3b8e3f59a153ee16cc2b4dabe5989b90c3acfa340d844f3c8ef"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-028-current-without-f179-v1.config.json",
+        "digest": "sha256:ebc293a7d11092c76d02ebd4b3243c093c687ad5022f00a91affc8c73140da52"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-029-j8-interest-spreadsheet-parameters-current-v1.config.json",
+        "digest": "sha256:27fc5197b9134d5e6463c6d65365b6266359fc0e8572d2d1115625f3f27a4640"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-030-atlas-context-recheck-18-current-v1.config.json",
+        "digest": "sha256:f53471add8643eb9071c97acc28fd6c1cef4f18605e343f06949d4a10263a29c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-031-stable-current-carryover-13-v1.config.json",
+        "digest": "sha256:b6644f18925ae6314362f3c335918ef52589366ecb75e1b53ebc2c4f8d0080bb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-031r-overlap-safe-current-filtered-10-v1.config.json",
+        "digest": "sha256:bfe7a11c30371cedb7fb3885cb986a1f41287395a442fec02a49e67d9d069d0a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-031s-stable-current-carryover-1-v1.config.json",
+        "digest": "sha256:2516b46c1698e397867a1aed29ea22f212c88839abac4a5d366581b3499bd05a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-031t-trigonometric-reflection-final-recheck-4-current-v1.config.json",
+        "digest": "sha256:eb49e92c7fba430d597a3d18a92164a78e8993bc0008e3435603cdfb38899d5e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-032-post-b032r-split-overlap-safe-current-filtered-14-v1.config.json",
+        "digest": "sha256:f5ae07b4bb75c2564816cf3ab503e352d9d7fd71012eb5ad06e8a1f8f02caea0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-032r-overlap-safe-exact-current-5-v1.config.json",
+        "digest": "sha256:3c2dec52b7542db364e623dff52ea5ab6ad8a7c6482b9927e26d4fdd5f7f5fac"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-032t-checkpoint-current-v1.config.json",
+        "digest": "sha256:7706ace6586a2df843af35f502aade4c3c6393feb7493d9e7997612b0f028a41"
+      }
+    ],
+    "heldGoalIds": [
+      "cf4fe700-dec2-502f-888b-90acefa307bb",
+      "0272c501-2931-5e52-b62f-af068db63c44",
+      "99bfb566-f875-5646-ac3e-05a039838c54",
+      "7ba19509-8ee6-50e0-a411-a371f05b1801",
+      "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+      "b04d65dc-1214-5323-89a7-317d6b099e1a",
+      "42b57670-d2be-5da2-be2f-d58055901813",
+      "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "1bc118c3-1f05-5f2a-b125-418017180d75",
+      "a8ff2666-8df3-4253-8021-3efe42114e40"
+    ]
+  },
+  "search": {
+    "roots": [
+      "curricula/DE/Gymnasium/quality/goal-description-review",
+      "curricula/DE/Gymnasium/quality/goal-evidence",
+      "tmp/goal-description-reviews",
+      "tmp/goal-description-pilots",
+      "tmp/goal-books"
+    ],
+    "matchedFiles": 217,
+    "descriptionRecords": [
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 5,
+        "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 6,
+        "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 7,
+        "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 8,
+        "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 9,
+        "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 10,
+        "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 13,
+        "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 14,
+        "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 15,
+        "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 16,
+        "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 17,
+        "goalId": "01acfcc8-7204-5c22-8774-13f6383f4fd4",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 18,
+        "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 19,
+        "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-008.records.jsonl",
+        "line": 20,
+        "goalId": "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+        "runId": "codex-full-20260816-v1-batch-008",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-009.records.jsonl",
+        "line": 1,
+        "goalId": "f042385e-f772-42db-9c96-f21a792ac5ea",
+        "runId": "codex-full-20260816-v1-batch-009",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-009.records.jsonl",
+        "line": 2,
+        "goalId": "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+        "runId": "codex-full-20260816-v1-batch-009",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-009.records.jsonl",
+        "line": 3,
+        "goalId": "7c0dee9b-a827-456d-9f88-b196fc4e9a13",
+        "runId": "codex-full-20260816-v1-batch-009",
+        "decision": "block",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-009.records.jsonl",
+        "line": 4,
+        "goalId": "56b4acb5-6024-573f-9890-35fbd21ee343",
+        "runId": "codex-full-20260816-v1-batch-009",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-009.records.jsonl",
+        "line": 5,
+        "goalId": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+        "runId": "codex-full-20260816-v1-batch-009",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/results/codex-first-pass-20260816-v1.batch-009.records.jsonl",
+        "line": 6,
+        "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+        "runId": "codex-full-20260816-v1-batch-009",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-017-e-trigonometric-context-recheck-8-v1/round-b/results/mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-first-pass-b.batch-001.records.jsonl",
+        "line": 1,
+        "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+        "runId": "6cc30e96-c150-4c12-b7cd-f324389e9234",
+        "decision": "keep",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      },
+      {
+        "file": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-017-e-trigonometric-context-recheck-8-v1/round-a/results/mathematik-rollout-v1-batch-017-e-trigonometric-context-recheck-8-v1-20260828-first-pass-a.batch-001.records.jsonl",
+        "line": 1,
+        "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+        "runId": "math-b017-a-b61d8d2e-aac4-4947-8819-d7757738d2f0",
+        "decision": "revise",
+        "goalFingerprintMatches": true,
+        "textMatches": true
+      }
+    ],
+    "resolutions": [],
+    "positiveProfiles": [],
+    "limitation": "Search results locate evidence only; current page/context/prompt/campaign currency must be validated before reuse. No source or human approval is inferred.",
+    "additionalTmpPositiveSearch": {
+      "files": 87,
+      "matches": [],
+      "checkedAt": "2026-09-06T09:32:45.960Z"
+    }
+  }
+}

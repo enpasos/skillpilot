@@ -1,0 +1,328 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b038-current-unchanged-ten-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-parent-current-page-synthesis-b038",
+  "synthesizedAt": "2026-09-06T12:07:41.241Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906",
+    "batchManifestDigest": "sha256:7e01a1dbaed3120811088cf2ae9e1a70e84db9b0f630334f760e7637ac75f3e4",
+    "configDigest": "sha256:34ddccc0d0d50fc6adbb3884fa3acf078ae29af8f830511ffdf0eefac6e51547",
+    "bundleFingerprint": "sha256:0623cc80aebed4380b27bef7c75ba62d57f2e4ab0392ecb068cbc17135f689e8",
+    "bookDigest": "sha256:e2800e563e7ff56262322446120dcc6bbf11acc7392a678a2686dc3f0697b817",
+    "reviewInputFingerprint": "sha256:5da4dc59386dfcc9ffe04363edaba316a9a84be3983d58fc50f441e0ec83f8cb",
+    "dualSummaryDigest": "sha256:3c159cd01b6adab542b1247741a10e9233eb61f2678656dbb68d8d919838ee56",
+    "canonicalLandscapeDigest": "sha256:fd9108cf0ccc8176f1fdd3e5633ac716544cff9aa72bcaf8c1f11ad93728d34e"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-a",
+      "campaignDigest": "sha256:b7465b833cef97512a01710ba6c6c48ff16f6b4b68e86449d242a0d90c25bac6",
+      "roundId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:5da4dc59386dfcc9ffe04363edaba316a9a84be3983d58fc50f441e0ec83f8cb",
+      "batchId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:f5f7d35a768312c77fb2a96c5acef20bf5aa7956441deeb6f905234e89119b5d",
+      "runId": "math-b038-blind-a-20260906",
+      "runManifestDigest": "sha256:0a863685f717d4eda0cfbe4ed2e50aefc448fa58fa2e8bc1195515f172b66d13",
+      "resultsDigest": "sha256:4616730f45129eff203694169efaa4b43fb0ba95c6e1b88e243752c89c9a2d53"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-b",
+      "campaignDigest": "sha256:b2fe2876e3975842f899f08b56f33d767b890e698788c5464a7005a5cb44c4f3",
+      "roundId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:5da4dc59386dfcc9ffe04363edaba316a9a84be3983d58fc50f441e0ec83f8cb",
+      "batchId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a61610a81a0b8332d49439e622b36a0a8474a005b2c42fb5d043520de00d5503",
+      "runId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "runManifestDigest": "sha256:1213ff87a5abb6b43be5252ce84622f150cc5071c6495d37640c282424c8b453",
+      "resultsDigest": "sha256:2bd6463ff109c309a4bf9bd9f7fc53b0240ca9cb4e6b4798a8ca9c3b0876f73a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-001",
+      "goalId": "b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e3b6f1323c0cb5b06628a779b01b0614d3a2a2babe98e2e5b9728b6d75259310",
+      "pageFingerprint": "sha256:bb3006aff5241eb4c7accf0f5736716be52d9fadf00529b7fda2759afff86538",
+      "goalReviewContextFingerprint": "sha256:c0801a2b6f1750c75fe9c5374f0793becabda08aac6709b0a9d98e8caa65bf63",
+      "finalText": {
+        "titleDe": "Krümmung und Wendestellen mit der zweiten Ableitung untersuchen",
+        "titleEn": "Analyze curvature and inflection points using the second derivative",
+        "descriptionDe": "Die lernende Person kann das Krümmungsverhalten von Funktionsgraphen mit Hilfe der zweiten Ableitung untersuchen, Wendestellen bestimmen und die zugehörige Änderungsrate im Kontext deuten.",
+        "descriptionEn": "The learner can analyze the curvature of function graphs using the second derivative, determine inflection points, and interpret the corresponding rate of change in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+          "recordDigest": "sha256:fe8724f8a469c85b6656bb2a88da163f46d84e33280664a6a8c73b6b7f63e0f3"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+          "recordDigest": "sha256:47823bfc583ccf5198e15885ae9b58e90a883bef4665f79aa6df5a3ce80188f8"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den zusammenhängenden Zusammenhang zwischen zweiter Ableitung, Krümmung und Änderung einer Änderungsrate. Die unveränderte Seite und ihre tatsächlichen Kontext-/Bildbindungen werden vollständig nativ verglichen; keine weitere Routine oder kosmetische Präzisierung nötig.",
+      "rationaleEn": "Both independent reviews confirm the coherent connection between the second derivative, curvature and change of a rate. The unchanged full page and its actual context/image bindings are compared natively; no extra routine or cosmetic wording is needed."
+    },
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-002",
+      "goalId": "250daae6-58fd-59e4-8a11-f994e789ee47",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d0fe8e863af27977a294ef6b4807e73e3858df26c9ba4a6483b125e9e8c912cc",
+      "pageFingerprint": "sha256:ee427972cb38a55ca1591eb1373aa19a55181212a01eb9f584eb97cdf4f1ba17",
+      "goalReviewContextFingerprint": "sha256:2b1a989bfc8bbe4376c967e4e8b3dd08d92f5743899b9a59b33abbbb4c8e26ab",
+      "finalText": {
+        "titleDe": "Einfache Parametertransformationen in Funktionsuntersuchungen nutzen",
+        "titleEn": "Use simple parameter transformations in function investigations",
+        "descriptionDe": "Die lernende Person kann bei einfachen Funktionen der Form $g(x)=a\\cdot f(x)+b$ die Wirkung der Parameter auf Lage, Streckung, Monotonie und charakteristische Punkte untersuchen.",
+        "descriptionEn": "The learner can investigate the effect of parameters on position, scaling, monotonicity, and characteristic points for simple functions of the form $g(x)=a\\cdot f(x)+b$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.250daae6-58fd-59e4-8a11-f994e789ee47",
+          "recordDigest": "sha256:2c61a05bed9eaa94a7a4c84931dd1c1436019125adbe4530154b2e0e95bf4d43"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.250daae6-58fd-59e4-8a11-f994e789ee47",
+          "recordDigest": "sha256:1ade72c1f9f2b391ba529508e27d435ed7f6cbda850de842c8791e944912d555"
+        }
+      },
+      "rationaleDe": "Die Übertragung unter a·f+b bleibt eine gemeinsame Kompetenz. Beide Reviews lassen die Beschreibung unverändert; Vorzeichenwechsel, vertikale Verschiebung und a=0 werden im separaten positiven Nachweis konkret abgegrenzt. Die aktuelle Ganzseite muss mit der geprüften Seite identisch bleiben.",
+      "rationaleEn": "Transfer under a·f+b remains one coherent competence. Both reviews retain the wording; sign reversal, vertical shift and a=0 are distinguished in the separate positive evidence. The complete current page must equal the reviewed page."
+    },
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-003",
+      "goalId": "d78946f9-1f5f-462c-a99c-fe01054042dd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0d930b61d5bc6722d3f38933c77c66a996049e1091d17fbe0dd32c568dfb4e19",
+      "pageFingerprint": "sha256:e401b8e0afcd18a20bd162e520d58fca7025b9759c4f022987844221a1fdc92a",
+      "goalReviewContextFingerprint": "sha256:9fe7c84f9da2af9ae16dc2e17d266632f4fe6995729ad3d6fbf4b2309ee5d5a4",
+      "finalText": {
+        "titleDe": "Ganzrationale Funktionen mit Differentialrechnung analysieren",
+        "titleEn": "Analyze polynomial functions using differential calculus",
+        "descriptionDe": "Die lernende Person kann ganzrationale Funktionen mit Methoden der Differentialrechnung flexibel untersuchen, Ergebnisse plausibilisieren und digitale Werkzeuge zur Kontrolle reflektiert einsetzen.",
+        "descriptionEn": "The learner can flexibly analyze polynomial functions using methods of differential calculus, check the plausibility of results, and use digital tools reflectively for verification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.d78946f9-1f5f-462c-a99c-fe01054042dd",
+          "recordDigest": "sha256:8ebe2e6a4fc7e2cd699bb35ddcf2c5e0a92858b5b6741ced1de21d572af12ed5"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.d78946f9-1f5f-462c-a99c-fe01054042dd",
+          "recordDigest": "sha256:7eeb4480fd050b8ac847ceb926efe5bbad21a14b2cdcec80f453e304a354f141"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen eine zweckbezogene ganzrationale Funktionsuntersuchung statt eines starren Vollständigkeitsrituals. Die erforderliche flexible Auswahl und Kontrolle von Eigenschaften ist bereits enthalten; unveränderte Ganzseitenbelege werden wiederverwendet.",
+      "rationaleEn": "Both reviews confirm a purpose-driven polynomial investigation rather than a rigid completeness ritual. Flexible selection and checking of properties is already required; unchanged whole-page evidence is reused."
+    },
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-004",
+      "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a88e0a264e12e1535b7f53fb5cbe24951f6022ae5cd4cff7f3f0d2cc5ebbcfff",
+      "pageFingerprint": "sha256:1f750db8559a9db3f42d8cbc47b7480111ea6c5a04c3ea3a816d48318515770d",
+      "goalReviewContextFingerprint": "sha256:b1390e15733d4dddf56d3ff428a7a4f2216823a969ca6323fce59d265d75ad8f",
+      "finalText": {
+        "titleDe": "Newton-Verfahren zur Nullstellennäherung anwenden",
+        "titleEn": "Apply Newton's method for root approximation",
+        "descriptionDe": "Die lernende Person kann das Newton-Verfahren als iteratives Näherungsverfahren erläutern, für geeignete Funktionen anwenden und die Einsatzgrenzen des Verfahrens reflektieren.",
+        "descriptionEn": "The learner can explain Newton's method as an iterative approximation procedure, apply it to suitable functions, and reflect on the method's limits of use."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+          "recordDigest": "sha256:afef64e1d35c19ef104e7b9465dbff9e28ec3ae20a7d55cb2c2dea8b64deb3a7"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+          "recordDigest": "sha256:9aa516fa81dbb50c437ba96e55eb8eec9c12cdd87bdea3e222762015800136ef"
+        }
+      },
+      "rationaleDe": "Newton-Verfahren und die Prüfung seiner Voraussetzungen, Näherungen und möglichen Fehlverläufe bilden eine gemeinsame Verfahrenskompetenz. Beide aktuellen ursprünglichen Reviews sind KEEP. Die bereits dokumentierte Bild-Zurückstellung bleibt ausdrücklich bestehen, kein Bildreview wird erfunden.",
+      "rationaleEn": "Newton iteration and checking its conditions, approximations and possible failure form a coherent procedural competence. Both original current reviews are KEEP. The documented image deferral remains explicit; no image review is invented."
+    },
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-005",
+      "goalId": "8fa32a68-46eb-414e-8292-a4c4052b2522",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fc3e285f9b26ff024cdf3662dc27f461eb943d11704ee70c0ed41f26f85fbf7d",
+      "pageFingerprint": "sha256:e885775d248dad6122e9e1c94efaf29f739831855b458251dfcfa69a22e8dc1b",
+      "goalReviewContextFingerprint": "sha256:3c8c602a50843722e0c2f10821fcc254d2d9bfb1e85f63299d757b4917a460a0",
+      "finalText": {
+        "titleDe": "Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben",
+        "titleEn": "Describe properties of exponential functions of the form $a^x$",
+        "descriptionDe": "Die lernende Person kann die Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben und typische Merkmale in Term, Tabelle und Graph fachlich zuordnen.",
+        "descriptionEn": "The learner can describe properties of exponential functions of the form $a^x$ and relate typical features across term, table, and graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.8fa32a68-46eb-414e-8292-a4c4052b2522",
+          "recordDigest": "sha256:eddd7e24a85c42a1ff955bd7005d39eca1ee0c4667250960fdf707462144b57c"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.8fa32a68-46eb-414e-8292-a4c4052b2522",
+          "recordDigest": "sha256:a8ccdad873509159737cbe29ed07b3ae75f0fca086b9adeb789b94a068d51766"
+        }
+      },
+      "rationaleDe": "Die basisabhängigen Eigenschaften von a^x sind bilingual ausreichend eingegrenzt und von beiden Reviews bestätigt. Vorhandene menschliche Bildfreigabe wird nicht neu erteilt; nur die unveränderten tatsächlichen Seiten-/Bildbindungen werden übernommen.",
+      "rationaleEn": "The base-dependent properties of a^x are sufficiently bounded in both languages and confirmed by both reviews. Existing human image approval is not reissued; only unchanged actual page/image bindings are retained."
+    },
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-006",
+      "goalId": "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d6df97ed81f86a231b7451728aa7eded9fc81f632f8b8f8a4727686eb0eff2d6",
+      "pageFingerprint": "sha256:1bb00cffef43b42cdadad4078a01e77638d49743013c412cc95a8fe3bd9d83d9",
+      "goalReviewContextFingerprint": "sha256:6c1c2066bbdfed6b4c5844c870451fb6c5a0d39598938e06d6923dd87442c1fa",
+      "finalText": {
+        "titleDe": "Ableitungen von $e^x$ und $a^x$ verwenden",
+        "titleEn": "Use derivatives of $e^x$ and $a^x$",
+        "descriptionDe": "Die lernende Person kann die Ableitungsfunktionen von $e^x$ und $a^x$ in passenden mathematischen oder anwendungsbezogenen Aufgaben nutzen und die Ergebnisse fachlich einordnen.",
+        "descriptionEn": "The learner can use the derivatives of $e^x$ and $a^x$ in suitable mathematical or application-oriented tasks and classify the results in a mathematically sound way."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.c3c057a3-caf9-44a5-ae60-639e3119e94a",
+          "recordDigest": "sha256:af1be89a95e5cd1d61e313fa9d4961b46475c3d9c9f88c71c6778acbec2cb577"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.c3c057a3-caf9-44a5-ae60-639e3119e94a",
+          "recordDigest": "sha256:3c9009d79a107ed07df3b9f9557a922056546c13e3cb6c2b576090b9096589e2"
+        }
+      },
+      "rationaleDe": "Die Ableitungsanwendung für e^x und a^x ist ein gemeinsames, überprüfbares Verfahren mit basisabhängigem Faktor. Beide Reviews bestätigen KEEP; der getrennte positive Nachweis erklärt lokale gegenüber mittleren Raten. Keine Ausweitung oder Textänderung erforderlich.",
+      "rationaleEn": "Applying derivatives of e^x and a^x is a coherent assessable procedure with a base-dependent factor. Both reviews confirm KEEP; separate positive evidence explains local versus average rates. No expansion or wording change is needed."
+    },
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-007",
+      "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:654c73c874109291e49c42f1baa92d55c094af60d2705f160384b16b1342e9ba",
+      "pageFingerprint": "sha256:cc50e847f7d90e13aed33c9c3c3823c96b12840dd35d8ef57131593312493cc7",
+      "goalReviewContextFingerprint": "sha256:7f6e1f136546dec6495e0f5f2be4076fdb9b6ad54acf10f051992aecae5ffb7a",
+      "finalText": {
+        "titleDe": "Eulersche Zahl e näherungsweise bestimmen",
+        "titleEn": "Approximate Euler's number e",
+        "descriptionDe": "Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.",
+        "descriptionEn": "The learner can approximate Euler's number e in simple contexts and classify the value as a characteristic constant of the natural exponential function."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "recordDigest": "sha256:2e38646619696d44a3ad9178c65fb0c4f61821ae3ae79bce2ef326d36c26b457"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "recordDigest": "sha256:22458b58e37cdf2d30cee43a379a8f1a4f32fc6da1d9f18740ac9f22a704c48c"
+        }
+      },
+      "rationaleDe": "Die nachvollziehbare Näherung von e mit Einordnung ihrer Bedeutung ist bereits als ein Verfahrensziel formuliert. Beide Reviews bestätigen KEEP; endliche Zahlenbeispiele werden nicht als exakter Grenzwertbeweis ausgegeben. Es werden exakt unveränderte Seitenbelege verwendet.",
+      "rationaleEn": "A reproducible approximation to e with interpretation of its meaning is already one procedural goal. Both reviews confirm KEEP; finite numerical examples are not presented as exact limit proofs. Exact unchanged page evidence is used."
+    },
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-008",
+      "goalId": "fec30a5a-835a-4932-a436-d83549029486",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9243ae2e3b68eb40fdb5b3411df4a4d13f16e1a957716a1064f7c7641c704d14",
+      "pageFingerprint": "sha256:d3f76098f62629df0364fceb7aa837e04b91810cb676a77799ee044994df2c67",
+      "goalReviewContextFingerprint": "sha256:e126fd8924ca83a0f622591ddee087e8e1856aa3dc004fd057e8ad5917930be2",
+      "finalText": {
+        "titleDe": "Exponentialfunktionen für Wachstums- und Zerfallsvorgänge nutzen",
+        "titleEn": "Use exponential functions for growth and decay processes",
+        "descriptionDe": "Die lernende Person kann Exponentialfunktionen zur Beschreibung begrenzter und unbegrenzter Wachstums- und Zerfallsvorgänge verwenden und Ergebnisse im Kontext deuten.",
+        "descriptionEn": "The learner can use exponential functions to describe bounded and unbounded growth and decay processes and interpret the results in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.fec30a5a-835a-4932-a436-d83549029486",
+          "recordDigest": "sha256:63e1e704b8d4d71dda37ba5743fcd20394b3e7252cdd0bb295c643802cf9e064"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.fec30a5a-835a-4932-a436-d83549029486",
+          "recordDigest": "sha256:be26bc42f2c2c629fc9a1e9072cdbfb5ecba8e0947332feffddbed4eb32e4359"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen das Modellieren und Deuten begrenzter und unbegrenzter exponentieller Prozesse. Der Unterschied zwischen Gesamtgröße und verbleibender Differenz ist innerhalb dieses Modellierungsziels prüfbar; es wird kein zusätzliches logistisches Modell verlangt.",
+      "rationaleEn": "Both reviews confirm modelling and interpreting bounded and unbounded exponential processes. Distinguishing the total quantity from the remaining difference is assessable within this modelling goal; no additional logistic model is required."
+    },
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-009",
+      "goalId": "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ef310c9fb9e9abd6d93d4ac8646fa704562032a2bc5ded44afdd8ae7f8407946",
+      "pageFingerprint": "sha256:69f89e8f22890bcde4af30b0782f9c2e1c09300aafdac90f6e56867facd93db1",
+      "goalReviewContextFingerprint": "sha256:8e3e70b2657d835d77dc162245dbff0bf5a5f60022815f2430fd39156ce13add",
+      "finalText": {
+        "titleDe": "Parameter von $f(x)=a\\cdot b^x+c$ deuten",
+        "titleEn": "Interpret parameters of $f(x)=a\\cdot b^x+c$",
+        "descriptionDe": "Die lernende Person kann bei Exponentialfunktionen der Form $f(x)=a\\cdot b^x+c$ die Bedeutung von Anfangs- bzw. Streckungsfaktor, Wachstums- oder Zerfallsfaktor und vertikaler Verschiebung beziehungsweise Grenzwert im Kontext erklären.",
+        "descriptionEn": "The learner can explain the meaning of initial or scaling factor, growth or decay factor, and vertical shift or limiting value in context for exponential functions of the form $f(x)=a\\cdot b^x+c$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+          "recordDigest": "sha256:64fbf2816e044edc4f634d7bff54d3f0d282ea984712ea505ff4ce68e0d9e072"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+          "recordDigest": "sha256:9eeda61be19a79a6853cb76644880b4c724131d0eed5c2645b1912bf8ae3edc2"
+        }
+      },
+      "rationaleDe": "Die Parameterdeutung in a·b^x+c bleibt eine einzige zusammenhängende Kompetenz. Beide Reviews bestätigen den aktuellen Text. Der positive Nachweis prüft insbesondere f(0)=a+c und Vorzeichen/Grenzrichtung; keine bloße Formelersetzung oder Textkosmetik.",
+      "rationaleEn": "Parameter interpretation in a·b^x+c remains one coherent competence. Both reviews confirm the current wording. Positive evidence particularly checks f(0)=a+c and sign/limiting direction; no mere formula substitution or cosmetic rewriting."
+    },
+    {
+      "decisionId": "mathematik-b038-current-unchanged-ten-v1-decision-010",
+      "goalId": "9db266a2-1889-5792-82b0-a7463f0832f1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ae46d57358baa93c1bc0d1fe71bc49b10dc45de16743f0e3d5cd80f76a2fec1d",
+      "pageFingerprint": "sha256:4faf8dbb4aa9f36ac5f5090c641804fdff778d209fcb1727913418ebb40f220d",
+      "goalReviewContextFingerprint": "sha256:2e1c9870decb481f86e63bd625a1ed6fa4997dc077ffc6467d30b6d3936d41ae",
+      "finalText": {
+        "titleDe": "Exponentialfunktionen in e-Schreibweise umformen",
+        "titleEn": "Convert exponential functions to e-notation",
+        "descriptionDe": "Die lernende Person kann Exponentialfunktionen zwischen Darstellungen mit beliebiger Basis und der Standardbasis e umformen und den Wachstumsfaktor beziehungsweise Wachstumsparameter aus der jeweils anderen Darstellung bestimmen.",
+        "descriptionEn": "The learner can convert exponential functions between arbitrary-base notation and standard base e and determine the growth factor or growth parameter from the other representation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b038-blind-a-20260906.9db266a2-1889-5792-82b0-a7463f0832f1",
+          "recordDigest": "sha256:0ff5aa150b26e5e151d99fd82d49352c6372c8b0a8f291dc4e5f7c5da91d2aa9"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-038-derivative-applications-and-exponentials-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.9db266a2-1889-5792-82b0-a7463f0832f1",
+          "recordDigest": "sha256:df1f875776bfb31fe21df90b65eab84add053f18a3215590e216a43ef0f81130"
+        }
+      },
+      "rationaleDe": "Äquivalente Umformung zwischen b^t und e^kt mit Bedeutung des Parameters ist von beiden Reviews als klarer einheitlicher Auftrag bestätigt. Faktor, logarithmischer Parameter und Zeiteinheit werden im positiven Nachweis unterschieden; unveränderte Seite ohne neue Inhaltsbehauptung übernommen.",
+      "rationaleEn": "Both reviews confirm equivalent conversion between b^t and e^kt with parameter meaning as a clear unified task. Factor, logarithmic parameter and time unit are distinguished in positive evidence; the unchanged page is reused without a new content claim."
+    }
+  ],
+  "manifestFingerprint": "sha256:c654f3750aa269980df5d9d60f33781fdbbf124972a33fd8fa851dc18be905b4"
+}

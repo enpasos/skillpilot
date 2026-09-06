@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b037s-optimization-20260906-blind-b",
+  "campaignId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-b",
+  "roundId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:45117d913adcdbc140d3d18646748313ed447c111f5dc24402bc8bb3d8b165c5",
+  "bundleFingerprint": "sha256:45099430c40e65fcba4ec219e93e51e27f4659056d526a003264bcd50f0741d9",
+  "bookDigest": "sha256:4bc5174a4f58f34220bbe65cb1ef197dd4d0ccb199383125c8a4a3239b1a02ec",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex; exact platform model identifier unavailable)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:780778a5d5dfa7d329593b78b3fd54c8f1bd9b65e9aa96e68150c1483a8b2222",
+  "independenceGroupId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1511b39a-4094-5450-a755-4a3ad3339733"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:45117d913adcdbc140d3d18646748313ed447c111f5dc24402bc8bb3d8b165c5"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-06T10:39:20Z",
+  "completedAt": "2026-09-06T10:40:26.344Z",
+  "status": "completed",
+  "outputDigest": "sha256:a3082d0119923e3723ce60298564f2f82d84d074c52ab802db2b2ec991b766d3",
+  "toolchainVersion": "codex-independent-subagent"
+}

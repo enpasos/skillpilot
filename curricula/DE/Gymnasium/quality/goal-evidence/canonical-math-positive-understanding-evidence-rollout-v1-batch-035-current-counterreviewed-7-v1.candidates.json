@@ -1,0 +1,500 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b035-current-counterreviewed-7-v1",
+  "reviewedAt": "2026-09-06T08:39:22.396Z",
+  "reviewer": "Codex root — full bilingual profile counterreview; independent original author retained in batch audit",
+  "goals": [
+    {
+      "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+      "reason": "Das Profil verbindet die Auswahl einer erweiterten Funktionsklasse mit der sachbezogenen Bedeutung ihrer Parameter. Es verlangt keine zusätzliche Kurvendiskussion, Verkettungsanalyse oder statistische Anpassung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Originaleingabe legt nicht abschließend fest, welche Klasse als erweitert gilt. Beide Fälle verwenden deshalb exemplarisch dieselbe gebrochenrationale Klasse, statt mehrere Klassen verbindlich zu verlangen. Die konkrete curriculare Passung dieser Auswahl bleibt mangels gebundener Originalquellenpassage menschlich zu bestätigen."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "klasse-aus-sachstruktur",
+            "essentialUnderstandingDe": "Die passende Funktionsklasse folgt aus sachlichen Beziehungen wie der Verteilung eines festen Betrags auf eine Stückzahl oder einer mit steigender Eingabe begrenzten Antwort. Innerhalb einer gebrochenrationalen Klasse können unterschiedliche Parameter- und Termstrukturen verschiedene solche Beziehungen beschreiben.",
+            "essentialUnderstandingEn": "A suitable function class follows from contextual relationships such as distributing a fixed amount across an item count or a response bounded as the input increases. Within a rational function class, different parameter and expression structures can describe different such relationships.",
+            "observablePerformanceDe": "Die lernende Person wählt oder formuliert zu einer gegebenen Beziehung ein passendes Modell aus einer erweiterten Funktionsklasse, beispielsweise ein gebrochenrationales Modell, und begründet die Auswahl mit dieser Beziehung und dem sachlich zulässigen Eingabebereich.",
+            "observablePerformanceEn": "For a given relationship, the learner selects or formulates a suitable model from an extended function class, for example a rational model, and justifies the choice using that relationship and the contextually admissible input domain."
+          },
+          {
+            "id": "parameter-im-kontext",
+            "essentialUnderstandingDe": "Parameter erhalten ihre Bedeutung aus ihrer Stellung im Modell. Beispielsweise ist ein fester Gesamtbetrag etwas anderes als ein fester Betrag je Stück; in einem Sättigungsmodell sind obere Grenze und Eingabewert für die halbe Sättigungsantwort zu unterscheiden.",
+            "essentialUnderstandingEn": "Parameters derive their meaning from their position in the model. For example, a fixed total amount differs from a fixed amount per item; in a saturation model, the upper limit differs from the input value for half the saturation response.",
+            "observablePerformanceDe": "Die lernende Person erklärt die vorgegebenen oder aus einfachen Kontextbedingungen bestimmten Parameter einschließlich passender Einheiten und prüft ihre Deutung an einem aussagekräftigen Eingabewert oder am Grenzverhalten.",
+            "observablePerformanceEn": "The learner explains the supplied parameters or those determined from simple contextual conditions, including appropriate units, and checks their interpretation using a meaningful input value or limiting behaviour."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "klasse-aus-sachstruktur",
+            "parameter-im-kontext"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "beziehungsstruktur",
+            "textDe": "Wechsel von fallenden durchschnittlichen Stückkosten zu einer steigenden, begrenzten Antwort innerhalb derselben gebrochenrationalen Funktionsklasse.",
+            "textEn": "Change from decreasing average unit costs to an increasing bounded response within the same rational function class."
+          },
+          {
+            "id": "parameterrolle-und-bereich",
+            "textDe": "Positive ganzzahlige Stückzahl mit Fix- und Stückkosten gegenüber nichtnegativer kontinuierlicher Eingabe mit Sättigungsgrenze und Halbwert-Eingabe.",
+            "textEn": "Positive integer item count with fixed and unit costs versus non-negative continuous input with a saturation limit and half-response input."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "durchschnittskosten",
+            "taskDemandDe": "Eine Produktion hat 600 Euro feste Kosten und 4 Euro variable Kosten je Stück. Wähle eine Funktionsklasse für die durchschnittlichen Kosten C(q) je Stück bei positiver ganzzahliger Stückzahl q, formuliere das Modell und deute die Parameter.",
+            "taskDemandEn": "Production has fixed costs of 600 euros and variable costs of 4 euros per item. Choose a function class for the average cost C(q) per item at positive integer quantity q, formulate the model and interpret its parameters.",
+            "expectedPerformanceDe": "Die lernende Person begründet C(q)=600/q+4 als gebrochenrationales Modell, ordnet 600 den gesamten Fixkosten und 4 den variablen Stückkosten zu und erklärt C(100)=10 Euro sowie die Annäherung an 4 Euro bei großen Stückzahlen aus der Kostenverteilung.",
+            "expectedPerformanceEn": "The learner justifies C(q)=600/q+4 as a rational model, identifies 600 as total fixed costs and 4 as variable unit costs, and explains C(100)=10 euros and the approach to 4 euros for large quantities through the allocation of costs.",
+            "understandingFocusDe": "Strukturell begründete Klassenwahl und Unterscheidung zwischen Gesamt- und Stückparametern; beide erforderlichen Erwartungen werden selbstständig gezeigt.",
+            "understandingFocusEn": "Structurally justified class selection and distinction between total and unit parameters; both required expectations are demonstrated independently."
+          },
+          {
+            "id": "saettigungsantwort",
+            "taskDemandDe": "Ein idealisiertes Messgerät hat bei Eingabe c=0 die Antwort 0. Für steigende Konzentrationen c>=0 nähert sich die Antwort 80 Anzeigeeinheiten; bei c=4 mg/L beträgt sie 40. Zur Auswahl stehen unbeschränkte lineare und exponentielle Modelle sowie R(c)=A c/(B+c) mit A,B>0. Wähle ein passendes Modell und deute seine Parameter.",
+            "taskDemandEn": "An idealized measuring device has response 0 at input c=0. For increasing concentrations c>=0, the response approaches 80 display units; at c=4 mg/L it is 40. Available choices are unbounded linear and exponential models and R(c)=A c/(B+c) with A,B>0. Select a suitable model and interpret its parameters.",
+            "expectedPerformanceDe": "Die lernende Person wählt das gebrochenrationale Modell R(c)=80c/(4+c) aufgrund von Anfangswert und Sättigung. Sie deutet A=80 als obere Antwortgrenze und B=4 mg/L als Konzentration der halben Sättigungsantwort, erklärt den zulässigen Bereich c>=0 und prüft R(0)=0, R(4)=40 und beispielsweise R(12)=60.",
+            "expectedPerformanceEn": "The learner selects the rational model R(c)=80c/(4+c) using the initial value and saturation. They interpret A=80 as the upper response limit and B=4 mg/L as the concentration for half the saturation response, explain the admissible domain c>=0, and check R(0)=0, R(4)=40 and, for example, R(12)=60.",
+            "understandingFocusDe": "Unabhängiger Transfer innerhalb derselben erweiterten Klasse: steigende Sättigung und Halbwertparameter statt fallender Fixkostenverteilung; beide Erwartungen werden gezeigt.",
+            "understandingFocusEn": "Independent transfer within the same extended class: increasing saturation and a half-response parameter instead of decreasing allocation of fixed costs; both expectations are demonstrated."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d8f1fd06-785e-5d15-a8e5-7d8b36f91287",
+      "reason": "Das Profil prüft Funktionsverkettung als sachlich geordnete Zuordnung über eine Zwischenvariable. Ableitungsregeln, Optimierung und allgemeine Graphentransformationen werden nicht zusätzlich verlangt.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "zwischenvariable-und-reihenfolge",
+            "essentialUnderstandingDe": "Eine Verkettung verknüpft zwei sachlich aufeinanderfolgende Beziehungen: Der Ausgabewert der inneren Funktion ist die Eingabe der äußeren Funktion. Diese Zwischenvariable bestimmt die Reihenfolge, die Einheiten und den zulässigen Bereich der Gesamtzuordnung.",
+            "essentialUnderstandingEn": "A composition connects two contextually consecutive relationships: the output of the inner function is the input of the outer function. This intermediate variable determines the order, units and admissible domain of the overall mapping.",
+            "observablePerformanceDe": "Die lernende Person benennt Eingabe, Zwischenvariable und Ausgabe, ordnet innere und äußere Funktion zu und begründet, dass die von der inneren Funktion erzeugten Werte im verwendeten Bereich der äußeren Funktion liegen.",
+            "observablePerformanceEn": "The learner identifies input, intermediate variable and output, assigns the inner and outer functions, and explains that the values produced by the inner function lie within the outer function's relevant domain."
+          },
+          {
+            "id": "gesamtmodell-erlaeutern",
+            "essentialUnderstandingDe": "Das Gesamtmodell beschreibt denselben sachlichen Vorgang wie die aufeinanderfolgenden Einzelzuordnungen. Eine passende Zerlegung wird durch die Bedeutung der Größen begründet, nicht allein durch eine formale Möglichkeit, einen Term umzuschreiben.",
+            "essentialUnderstandingEn": "The overall model describes the same contextual process as the consecutive individual mappings. A suitable decomposition is justified by the meanings of the quantities, not merely by a formal possibility of rewriting an expression.",
+            "observablePerformanceDe": "Die lernende Person bildet oder zerlegt einen Gesamtterm passend zum Kontext und erläutert an einem Eingabewert, wie das Zwischenergebnis zum sachlich interpretierten Endergebnis führt.",
+            "observablePerformanceEn": "The learner forms or decomposes an overall expression in accordance with the context and explains, for an input value, how the intermediate result leads to the contextually interpreted final result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "zwischenvariable-und-reihenfolge",
+            "gesamtmodell-erlaeutern"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "richtung-der-modellierung",
+            "textDe": "Wechsel vom Zusammensetzen zweier gegebener Beziehungen zur kontextbezogenen Zerlegung eines Gesamtmodells.",
+            "textEn": "Change from composing two given relationships to decomposing an overall model using its context."
+          },
+          {
+            "id": "zwischenvariable",
+            "textDe": "Geometrische Länge als Zwischenvariable gegenüber elektrischem Signal mit einer linearen Kalibrierung.",
+            "textEn": "A geometric length as intermediate variable versus an electrical signal with linear calibration."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "kreisflaeche-aus-radius",
+            "taskDemandDe": "Ein idealisierter kreisförmiger Fleck hat für 0<=t<=10 Minuten den Radius r(t)=1+0,2t in Zentimetern. Seine Fläche ist A(r)=pi r^2. Modelliere die Fläche in Abhängigkeit von t und erläutere die beiden Funktionen.",
+            "taskDemandEn": "For 0<=t<=10 minutes, an idealized circular patch has radius r(t)=1+0.2t in centimetres. Its area is A(r)=pi r^2. Model the area as a function of t and explain the two functions.",
+            "expectedPerformanceDe": "Die lernende Person bildet A(r(t))=pi(1+0,2t)^2, erklärt Zeit -> Radius -> Fläche und den Radiusbereich 1 bis 3 cm. Für t=5 erhält sie zunächst r=2 cm und anschließend A=4pi cm^2; sie begründet die Reihenfolge mit den Größen.",
+            "expectedPerformanceEn": "The learner forms A(r(t))=pi(1+0.2t)^2, explains time -> radius -> area and the radius range from 1 to 3 cm. For t=5 they first obtain r=2 cm and then A=4pi cm^2, justifying the order through the quantities involved.",
+            "understandingFocusDe": "Eigenständiges Zusammensetzen und Deuten einer geometrischen Zwischenvariable einschließlich des zulässigen Bereichs.",
+            "understandingFocusEn": "Independent composition and interpretation of a geometric intermediate variable, including the admissible domain."
+          },
+          {
+            "id": "messsignal-und-kalibrierung",
+            "taskDemandDe": "Ein idealisiertes System zeigt T(t)=10+40e^(-t/5) Grad Celsius für t>=0 Minuten an. Das Messsignal startet bei 2 Volt und fällt mit dem Faktor e^(-t/5); die Kalibrierung ordnet 0 Volt den Wert 10 Grad Celsius und jedem zusätzlichen Volt 20 Grad Celsius mehr zu. Zerlege das Modell sachgerecht und erläutere beide Funktionen.",
+            "taskDemandEn": "An idealized system displays T(t)=10+40e^(-t/5) degrees Celsius for t>=0 minutes. The signal starts at 2 volts and decreases by factor e^(-t/5); calibration maps 0 volts to 10 degrees Celsius and each additional volt to 20 more degrees Celsius. Decompose the model appropriately and explain both functions.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert U(t)=2e^(-t/5) als innere und F(U)=10+20U als äußere Funktion. Sie erläutert Zeit -> Spannung -> Temperatur, den Signalbereich 0<U<=2 Volt und prüft T(0)=50 sowie T(5)=10+40/e Grad Celsius über beide Zuordnungen.",
+            "expectedPerformanceEn": "The learner identifies U(t)=2e^(-t/5) as the inner function and F(U)=10+20U as the outer function. They explain time -> voltage -> temperature, the signal range 0<U<=2 volts, and check T(0)=50 and T(5)=10+40/e degrees Celsius through both mappings.",
+            "understandingFocusDe": "Frischer Transfer in umgekehrter Modellierungsrichtung mit einer physikalisch bedeuteten Zwischenvariable; beide erforderlichen Erwartungen werden unabhängig abgedeckt.",
+            "understandingFocusEn": "Fresh transfer in the reverse modeling direction with a physically meaningful intermediate variable; both required expectations are covered independently."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
+      "reason": "Das Profil richtet sich auf Herkunft und kontextbezogene Bedeutung zweier Wahrscheinlichkeitsaussagen. Es verlangt weder einen Hypothesentest noch eine Herleitung des Gesetzes der großen Zahlen.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "herkunft-unterscheiden",
+            "essentialUnderstandingDe": "Eine empirische Wahrscheinlichkeit wird anhand beobachteter relativer Häufigkeiten geschätzt. Eine theoretische Wahrscheinlichkeit folgt aus einem festgelegten Zufallsmodell und dessen Annahmen. Die Herkunft einer Zahl entscheidet über diese Unterscheidung, nicht ihre Größe oder Schreibweise.",
+            "essentialUnderstandingEn": "An empirical probability is estimated using observed relative frequencies. A theoretical probability follows from a specified random model and its assumptions. The origin of a number determines this distinction, not its magnitude or notation.",
+            "observablePerformanceDe": "Die lernende Person ordnet gegebene Wahrscheinlichkeitsaussagen als empirisch oder theoretisch ein und benennt die zugrunde liegende Beobachtung beziehungsweise Modellannahme für dasselbe Ereignis.",
+            "observablePerformanceEn": "The learner classifies given probability statements as empirical or theoretical and identifies the underlying observation or model assumption for the same event."
+          },
+          {
+            "id": "aussage-im-kontext",
+            "essentialUnderstandingDe": "Eine relative Häufigkeit beschreibt eine konkrete Versuchsreihe und dient als Schätzung; die theoretische Wahrscheinlichkeit gilt innerhalb des Modells. Gleiche Zahlen machen beide Begründungen nicht identisch, und verschiedene Zahlen sind bei endlichen Versuchsreihen möglich.",
+            "essentialUnderstandingEn": "A relative frequency describes a particular trial series and serves as an estimate; the theoretical probability applies within the model. Equal numbers do not make the justifications identical, and different numbers are possible in finite trial series.",
+            "observablePerformanceDe": "Die lernende Person formuliert für beide Werte eine passende Kontextaussage und erklärt deren Übereinstimmung oder Abweichung, ohne daraus eine Garantie für einen einzelnen nächsten Versuch oder eine feste Quote jeder Versuchsreihe abzuleiten.",
+            "observablePerformanceEn": "The learner formulates an appropriate contextual statement for each value and explains their agreement or difference without deriving a guarantee for the next individual trial or a fixed proportion in every trial series."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "herkunft-unterscheiden",
+            "aussage-im-kontext"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "zahlen-verschieden-oder-gleich",
+            "textDe": "Einmal unterscheiden sich empirischer Schätzwert und Modellwert; im zweiten Fall stimmen sie numerisch überein und müssen dennoch nach ihrer Herkunft unterschieden werden.",
+            "textEn": "In one case the empirical estimate and model value differ; in the second they agree numerically but must still be distinguished by origin."
+          },
+          {
+            "id": "ereignis-und-modellannahme",
+            "textDe": "Wechsel von geraden Würfelzahlen unter Fairnessannahme zu roten Kugeln bei gleichwahrscheinlicher Ziehung mit Zurücklegen.",
+            "textEn": "Change from even die outcomes under a fairness assumption to red balls under equally likely drawing with replacement."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "gerade-wuerfelzahlen",
+            "taskDemandDe": "Bei 100 Würfen werden 56 gerade Zahlen beobachtet. Für das Modell eines fairen sechsseitigen Würfels wird für das Ereignis gerade Zahl die Wahrscheinlichkeit 1/2 angegeben. Ordne 0,56 und 1/2 nach ihrer Herkunft ein und erläutere beide Aussagen.",
+            "taskDemandEn": "In 100 die rolls, 56 even numbers are observed. For a model of a fair six-sided die, probability 1/2 is stated for the event even number. Classify 0.56 and 1/2 by their origin and explain both statements.",
+            "expectedPerformanceDe": "Die lernende Person bezeichnet 56/100=0,56 als beobachtungsbasierten Schätzwert und 1/2 als Modellwahrscheinlichkeit aus drei geraden von sechs gleichwahrscheinlichen Ergebnissen. Sie erläutert, dass 56 gerade Zahlen diese Versuchsreihe beschreiben und das faire Modell nicht genau 50 gerade Zahlen in jeder 100er-Reihe vorschreibt.",
+            "expectedPerformanceEn": "The learner identifies 56/100=0.56 as an observation-based estimate and 1/2 as a model probability from three even outcomes among six equally likely outcomes. They explain that 56 even numbers describe this trial series and that the fair model does not prescribe exactly 50 even numbers in every series of 100.",
+            "understandingFocusDe": "Eigenständige Trennung von Beobachtungs- und Modellbegründung bei unterschiedlichen Zahlenwerten.",
+            "understandingFocusEn": "Independent distinction between observational and model-based justification when numerical values differ."
+          },
+          {
+            "id": "gleiche-werte-andere-herkunft",
+            "taskDemandDe": "Eine Urne enthält drei rote und eine blaue Kugel. Unter der Annahme gleichwahrscheinlicher Ziehung mit Zurücklegen beträgt die Modellwahrscheinlichkeit für Rot 0,75. In einer dokumentierten Reihe sind 30 von 40 Ziehungen rot. Erkläre, warum die beiden Angaben von 75 Prozent nicht dieselbe Art von Aussage sind.",
+            "taskDemandEn": "An urn contains three red balls and one blue ball. Assuming equally likely drawing with replacement, the model probability of red is 0.75. In a documented series, 30 of 40 draws are red. Explain why the two statements of 75 percent are not the same kind of statement.",
+            "expectedPerformanceDe": "Die lernende Person erklärt 30/40 als empirische relative Häufigkeit und 3/4 als theoretischen Wert aus Urnenzusammensetzung und Ziehungsannahme. Sie ordnet die numerische Gleichheit als mögliche Übereinstimmung ein und erläutert, dass daraus weder die nächste Kugelfarbe noch genau drei rote Kugeln in jeder folgenden Vierergruppe folgen.",
+            "expectedPerformanceEn": "The learner explains 30/40 as an empirical relative frequency and 3/4 as a theoretical value from urn composition and the drawing assumption. They interpret the numerical equality as possible agreement and explain that it determines neither the next ball's colour nor exactly three red balls in every subsequent group of four.",
+            "understandingFocusDe": "Transfer bei numerischer Gleichheit: Die Begründungsart bleibt das Unterscheidungsmerkmal. Beide Erwartungen werden ohne Übernahme des ersten Beispiels gezeigt.",
+            "understandingFocusEn": "Transfer under numerical equality: the type of justification remains the distinguishing feature. Both expectations are demonstrated without reproducing the first example."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "reason": "Berechnung und begründete n-Abhängigkeit werden gemeinsam durch Vorwärtsberechnung und eine umgekehrte Anforderung an die relative Streuung geprüft. Absolute und relative Streuung bleiben unterschieden.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Beschreibung nennt die Abnahme bei festem p ohne ausdrückliche Randfallbedingung. Das Profil verwendet für die strenge Abnahme 0<p<1 und n>=1; bei p=1 ist der Quotient konstant null, bei p=0 wegen mu=0 undefiniert. Diese Präzisierung ist ein fachlicher Kandidatenhinweis, keine kanonische Textänderung oder Quellenfreigabe.",
+        "Historischer Befund: Die ursprüngliche Beschreibung nannte die Randbedingungen nicht ausdrücklich. Diese sind inzwischen in DE und EN durch n≥1 und 0<p<1 ergänzt; die Profile werden hier gegen diese aktuelle Fassung materialisiert. Die im Quellen-Audit dokumentierte fehlende direkte normative CV-Passage und separate Assessment-Abdeckungsschuld werden dadurch nicht als gelöst behauptet."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "quotient-und-bedeutung",
+            "essentialUnderstandingDe": "Für X~Bin(n,p) mit n>=1 und 0<p<1 gilt mu=np, sigma=sqrt(np(1-p)) und damit sigma/mu=sqrt((1-p)/(np)). Der dimensionslose Quotient misst Streuung relativ zum Erwartungswert und ist von sigma selbst zu unterscheiden.",
+            "essentialUnderstandingEn": "For X~Bin(n,p) with n>=1 and 0<p<1, mu=np, sigma=sqrt(np(1-p)), and thus sigma/mu=sqrt((1-p)/(np)). The dimensionless quotient measures dispersion relative to the expectation and differs from sigma itself.",
+            "observablePerformanceDe": "Die lernende Person berechnet und vereinfacht den Quotienten aus den Kenngrößen einer Binomialverteilung und erklärt den erhaltenen Wert als relative statt absolute Streuung. Sie benennt bei Bedarf die Voraussetzung mu>0 für den Quotienten.",
+            "observablePerformanceEn": "The learner calculates and simplifies the quotient from the characteristics of a binomial distribution and explains the result as relative rather than absolute dispersion. When relevant, they identify mu>0 as a condition for the quotient."
+          },
+          {
+            "id": "n-abhaengigkeit-begruenden",
+            "essentialUnderstandingDe": "Bei festem 0<p<1 ist sigma/mu gleich einem positiven p-abhängigen Faktor mal 1/sqrt(n). Daher sinkt der Quotient bei wachsendem n, während sigma selbst wachsen kann; eine Vervierfachung von n halbiert den Quotienten.",
+            "essentialUnderstandingEn": "For fixed 0<p<1, sigma/mu equals a positive p-dependent factor times 1/sqrt(n). The quotient therefore decreases as n increases, while sigma itself can increase; quadrupling n halves the quotient.",
+            "observablePerformanceDe": "Die lernende Person begründet die Abnahme allgemein aus der n-Abhängigkeit oder durch einen äquivalenten Vergleich und nutzt diesen Zusammenhang in einem frischen Fall mit verändertem n oder einer vorgegebenen Schranke für den Quotienten. Bei einer gesuchten Versuchszahl berücksichtigt sie deren Ganzzahligkeit.",
+            "observablePerformanceEn": "The learner justifies the decrease generally from the dependence on n or an equivalent comparison and uses this relationship in a fresh case with changed n or a specified bound on the quotient. When finding a number of trials, they account for its integer nature."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "quotient-und-bedeutung",
+            "n-abhaengigkeit-begruenden"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "vorwaerts-und-rueckwaerts",
+            "textDe": "Wechsel von berechneten Streuungsquotienten zweier Verteilungen zur kleinsten ganzzahligen Versuchszahl für eine gegebene relative Streuung.",
+            "textEn": "Change from calculated dispersion quotients of two distributions to the smallest integer trial count for a specified relative dispersion."
+          },
+          {
+            "id": "absolute-und-relative-skalierung",
+            "textDe": "Die gemeinsame Veränderung von Erwartungswert und Standardabweichung wird der Veränderung ihres Quotienten gegenübergestellt; p bleibt innerhalb jedes Vergleichs fest.",
+            "textEn": "The joint change in expectation and standard deviation is contrasted with the change in their quotient; p remains fixed within each comparison."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "vierfache-versuchszahl",
+            "taskDemandDe": "Vergleiche die relative Streuung von X~Bin(100;0,2) und Y~Bin(400;0,2). Begründe zusätzlich für beliebiges festes 0<p<1, weshalb eine Vervierfachung von n den Quotienten halbiert, obwohl die absolute Standardabweichung zunimmt.",
+            "taskDemandEn": "Compare the relative dispersion of X~Bin(100,0.2) and Y~Bin(400,0.2). Also justify, for arbitrary fixed 0<p<1, why quadrupling n halves the quotient even though the absolute standard deviation increases.",
+            "expectedPerformanceDe": "Die lernende Person erhält mu_X=20, sigma_X=4 und den Quotienten 0,2 sowie mu_Y=80, sigma_Y=8 und den Quotienten 0,1. Sie begründet die Halbierung mit 1/sqrt(4n)=1/(2sqrt(n)) und erklärt die unterschiedliche Skalierung von sigma und sigma/mu.",
+            "expectedPerformanceEn": "The learner obtains mu_X=20, sigma_X=4 and quotient 0.2, and mu_Y=80, sigma_Y=8 and quotient 0.1. They justify the halving through 1/sqrt(4n)=1/(2sqrt(n)) and explain the different scaling of sigma and sigma/mu.",
+            "understandingFocusDe": "Rechnerische Bedeutung des Quotienten und allgemeine Begründung des Skalierungszusammenhangs, nicht nur zwei numerische Beispiele.",
+            "understandingFocusEn": "Computational meaning of the quotient and general justification of the scaling relationship, not merely two numerical examples."
+          },
+          {
+            "id": "relative-streuung-vorgegeben",
+            "taskDemandDe": "Für X~Bin(n;0,3) soll sigma/mu höchstens 0,1 sein. Bestimme die kleinste zulässige ganze Versuchszahl n und begründe, warum bei diesem festen p größere Versuchszahlen die Forderung ebenfalls erfüllen.",
+            "taskDemandEn": "For X~Bin(n,0.3), sigma/mu must be at most 0.1. Determine the smallest admissible integer trial count n and justify why larger trial counts also meet the condition for this fixed p.",
+            "expectedPerformanceDe": "Die lernende Person führt sqrt(0,7/(0,3n))<=0,1 auf n>=700/3 zurück und wählt n=234. Sie prüft die Grenzentscheidung etwa mit 0,7/(0,3*233)>0,01 und 0,7/(0,3*234)<0,01 und begründet die weitere Abnahme durch den festen positiven Faktor vor 1/sqrt(n).",
+            "expectedPerformanceEn": "The learner reduces sqrt(0.7/(0.3n))<=0.1 to n>=700/3 and selects n=234. They check the boundary, for example using 0.7/(0.3*233)>0.01 and 0.7/(0.3*234)<0.01, and justify the continued decrease through the fixed positive factor multiplying 1/sqrt(n).",
+            "understandingFocusDe": "Unabhängiger Transfer mit umgekehrter gesuchter Größe und ganzzahliger Zulässigkeit, unter Beibehaltung derselben relativen Streuungsstruktur.",
+            "understandingFocusEn": "Independent transfer with the unknown quantity reversed and integer admissibility, while preserving the same relative-dispersion structure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "18293a33-a5ff-4a0f-9b6a-085f171cbffe",
+      "reason": "Das Profil beschränkt sich auf exemplarische Planung, begründete Erfassungsmerkmale und nachvollziehbare Dokumentation. Verteilungsanpassung, inferenzstatistische Auswertung und tatsächliche personenbezogene Erhebungen sind nicht erforderlich.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "frage-und-erfassungseinheit",
+            "essentialUnderstandingDe": "Eine Erhebung benötigt eine konkrete Frage, eine bezeichnete Gesamtheit und eine eindeutig definierte Erfassungseinheit. Diese Festlegungen entscheiden, welche Beobachtungen zur Frage gehören und wie mehrfaches Erfassen derselben Einheit vermieden oder kenntlich gemacht wird.",
+            "essentialUnderstandingEn": "A survey requires a concrete question, an identified population and a clearly defined observation unit. These decisions determine which observations address the question and how repeated recording of the same unit is avoided or made explicit.",
+            "observablePerformanceDe": "Die lernende Person beschreibt für einen überschaubaren vorgegebenen Sachverhalt Zielgruppe beziehungsweise Objektmenge, Erfassungseinheit, Auswahl und Zeitpunkt der Erhebung so, dass eine andere Person den Plan nachvollziehen kann.",
+            "observablePerformanceEn": "For a manageable supplied situation, the learner describes the target group or set of objects, observation unit, selection and collection time so that another person can understand the plan."
+          },
+          {
+            "id": "merkmale-begruenden",
+            "essentialUnderstandingDe": "Erfasste Merkmale müssen zur Frage passen und so definiert sein, dass verschiedene Erhebende Werte nach derselben Regel festhalten. Kategorien oder Maßeinheiten und der Umgang mit fehlenden Angaben gehören zur Bedeutung des Merkmals.",
+            "essentialUnderstandingEn": "Recorded variables must address the question and be defined so that different collectors record values using the same rule. Categories or measurement units and the handling of missing entries are part of the variable's meaning.",
+            "observablePerformanceDe": "Die lernende Person wählt die benötigten Merkmale, begründet ihren Bezug zur Frage und legt verständliche Kategorien oder Messregeln einschließlich Einheiten und einer Kennzeichnung fehlender Werte fest.",
+            "observablePerformanceEn": "The learner selects the required variables, justifies their connection to the question, and specifies understandable categories or measurement rules, including units and a marker for missing values."
+          },
+          {
+            "id": "ablauf-dokumentieren",
+            "essentialUnderstandingDe": "Nachvollziehbarkeit entsteht durch die Verbindung von Auswahlplan, Erfassungsregeln und einem Protokoll mit dokumentierten Abweichungen. Eine leere Tabelle allein dokumentiert noch nicht, nach welcher Regel Daten zustande kommen.",
+            "essentialUnderstandingEn": "Traceability comes from linking the selection plan, recording rules and a log of deviations. An empty table alone does not document the rule by which data are obtained.",
+            "observablePerformanceDe": "Die lernende Person erstellt ein passendes Erfassungsschema und erläutert anhand ausschließlich synthetischer Probeeingaben, wie Auswahl, Messung oder Beobachtung sowie ein fehlender Wert beziehungsweise eine Abweichung nachvollziehbar dokumentiert werden.",
+            "observablePerformanceEn": "The learner creates an appropriate recording scheme and explains, using exclusively synthetic trial entries, how selection, measurement or observation, and a missing value or deviation are documented traceably."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "frage-und-erfassungseinheit",
+            "merkmale-begruenden",
+            "ablauf-dokumentieren"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "kategorie-und-messwert",
+            "textDe": "Wechsel von einem kategorischen Zustand einzelner Objekte zu einem kontinuierlichen Messwert mit Einheit und festgelegter Messgenauigkeit.",
+            "textEn": "Change from a categorical condition of individual objects to a continuous measurement with a unit and specified precision."
+          },
+          {
+            "id": "auswahl-und-zeitbezug",
+            "textDe": "Ein abgegrenztes Los wird einer über drei Produktionsabschnitte verteilten Erfassung gegenübergestellt; der Auswahl- und Zeitbezug muss entsprechend dokumentiert werden.",
+            "textEn": "A bounded lot is contrasted with collection across three production periods; the selection and temporal reference must be documented accordingly."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "kartons-beim-eingang",
+            "taskDemandDe": "Plane exemplarisch eine Erhebung zur Frage, welcher Anteil eines Loses von 120 nummerierten Versandkartons beim Eingang sichtbare Risse aufweist. Es sollen 30 verschiedene Kartons untersucht werden. Begründe die Merkmale und zeige mit einem Schema und synthetischen Probeeingaben, wie der Ablauf dokumentiert wird.",
+            "taskDemandEn": "Plan an example survey asking what proportion of a lot of 120 numbered shipping cartons has visible tears on arrival. Thirty distinct cartons are to be inspected. Justify the variables and use a recording scheme and synthetic trial entries to show how the process is documented.",
+            "expectedPerformanceDe": "Die lernende Person bezeichnet den einzelnen Karton als Einheit, beschreibt etwa eine Zufallsauswahl von 30 verschiedenen Nummern aus 1 bis 120 und legt eine beobachtbare Rissdefinition fest. Das Protokoll verknüpft Kartonnummer, Beobachtungszeitpunkt und die Kategorien Riss/kein Riss; ein nicht untersuchter Karton wird ausdrücklich als fehlend statt als unbeschädigt vermerkt. Auswahl und etwaige Abweichungen werden festgehalten.",
+            "expectedPerformanceEn": "The learner identifies one carton as the unit, describes for example random selection of 30 distinct numbers from 1 to 120, and defines an observable tear criterion. The log links carton number, observation time and the categories tear/no tear; an uninspected carton is explicitly recorded as missing rather than undamaged. Selection and any deviations are documented.",
+            "understandingFocusDe": "Vollständiger exemplarischer Plan mit begründeter kategorialer Erfassung und nachvollziehbarer Dokumentation; eine Anteilsberechnung ist nicht der Leistungsnachweis dieses Ziels.",
+            "understandingFocusEn": "A complete example plan with justified categorical recording and traceable documentation; calculating a proportion is not the evidence for this goal."
+          },
+          {
+            "id": "fuellmengen-im-tagesverlauf",
+            "taskDemandDe": "Plane eine exemplarische Erhebung von Füllmengen einer Maschine in einem frühen, mittleren und späten Produktionsabschnitt desselben Tages. Pro Abschnitt sollen vier verschiedene Behälter erfasst werden. Begründe die Merkmale und erstelle ein Dokumentationsschema mit synthetischen Probeeingaben, einschließlich eines ausgefallenen Messwerts.",
+            "taskDemandEn": "Plan an example survey of a machine's fill volumes in an early, middle and late production period on the same day. Four distinct containers are to be recorded per period. Justify the variables and create a documentation scheme with synthetic trial entries, including one unavailable measurement.",
+            "expectedPerformanceDe": "Die lernende Person plant insgesamt zwölf Erfassungen, legt eine nachvollziehbare Auswahl innerhalb der drei bezeichneten Zeitabschnitte und eine einheitliche Volumenmessung in Millilitern mit dokumentierter Genauigkeit fest. Sie begründet Füllmenge, Zeitabschnitt und anonyme Behälterkennung als Merkmale des Schemas und dokumentiert den Messausfall getrennt von einem Volumenwert null; Auswertung und Verteilungsanpassung sind nicht nötig.",
+            "expectedPerformanceEn": "The learner plans twelve records in total, specifies a traceable selection within the three identified periods, and defines a consistent volume measurement in millilitres with documented precision. They justify fill volume, production period and anonymous container label as fields in the scheme and document the unavailable measurement separately from a zero volume; analysis and distribution fitting are not required.",
+            "understandingFocusDe": "Unabhängiger Transfer zu zeitbezogenen quantitativen Messwerten; alle drei Erwartungen werden mit einer neuen Erfassungsstruktur gezeigt.",
+            "understandingFocusEn": "Independent transfer to time-referenced quantitative measurements; all three expectations are demonstrated through a new collection structure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
+      "reason": "Das Profil verbindet Eckpunktbestimmung, Konstruktion und Beschreibung einer Schnittfigur. Es berücksichtigt tatsächliche Kantenstücke und gemeinsame Seitenflächen, ohne zusätzliche Flächen- oder Volumenaufgaben einzuführen.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "zulaessige-schnittpunkte",
+            "essentialUnderstandingDe": "Eckpunkte einer ebenen Schnittfigur eines konvexen Polyeders liegen auf dessen Kanten. Ein Schnitt mit einer verlängerten Kantengeraden gehört nur dann zur Figur, wenn er auf dem Kantenstück liegt; eine vollständig in der Ebene liegende Kante muss als solche berücksichtigt werden.",
+            "essentialUnderstandingEn": "Vertices of a plane section of a convex polyhedron lie on its edges. An intersection with an extended edge line belongs to the section only if it lies on the edge segment; an edge lying entirely in the plane must be treated accordingly.",
+            "observablePerformanceDe": "Die lernende Person bestimmt die relevanten Schnittpunkte beziehungsweise enthaltenen Kanten, prüft die Zugehörigkeit zu Ebene und Kantenstück und führt mehrfach erhaltene Eckpunkte nur einmal auf.",
+            "observablePerformanceEn": "The learner determines relevant intersection points or contained edges, checks membership in the plane and edge segment, and lists multiply obtained vertices only once."
+          },
+          {
+            "id": "figur-konstruktiv-begruenden",
+            "essentialUnderstandingDe": "Die Randstrecken der Schnittfigur verlaufen innerhalb der geschnittenen Polyederflächen. Ihre richtige Verbindung ergibt sich aus den gemeinsamen Seitenflächen und nicht aus der scheinbaren Nachbarschaft in einer perspektivischen Zeichnung.",
+            "essentialUnderstandingEn": "The boundary segments of the section lie within the intersected polyhedron faces. Their correct connection follows from shared faces, not apparent adjacency in a perspective drawing.",
+            "observablePerformanceDe": "Die lernende Person verbindet die bestimmten Eckpunkte in begründeter zyklischer Reihenfolge zu einer Konstruktion oder exakten Koordinatendarstellung und beschreibt die Figur anhand gesicherter Parallelitäts- oder Längeneigenschaften.",
+            "observablePerformanceEn": "The learner connects the determined vertices in a justified cyclic order in a construction or exact coordinate representation and describes the figure using established parallelism or length properties."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "zulaessige-schnittpunkte",
+            "figur-konstruktiv-begruenden"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "polyedertyp",
+            "textDe": "Wechsel vom Würfel zum geraden dreiseitigen Prisma mit einer anderen Kanten- und Flächenstruktur.",
+            "textEn": "Change from a cube to a right triangular prism with a different edge and face structure."
+          },
+          {
+            "id": "lage-zur-kante",
+            "textDe": "Eine Ebene durch drei isolierte Würfelecken wird einer Ebene gegenübergestellt, die eine ganze Prismenkante enthält.",
+            "textEn": "A plane through three isolated cube vertices is contrasted with a plane containing an entire prism edge."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "dreieck-im-wuerfel",
+            "taskDemandDe": "Ein Würfel ist durch 0<=x,y,z<=2 beschrieben. Konstruiere seine Schnittfigur mit E: x+y+z=2, bestimme die Eckpunkte und beschreibe die Figur mit einer geometrischen Begründung.",
+            "taskDemandEn": "A cube is described by 0<=x,y,z<=2. Construct its section by E: x+y+z=2, determine the vertices and describe the figure with a geometric justification.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt P=(2,0,0), Q=(0,2,0) und R=(0,0,2), prüft die Ebene und Kantenlage und verbindet die Punkte auf den drei angrenzenden Würfelflächen. Sie beschreibt ein gleichseitiges Dreieck, etwa durch die drei gleichen Seitenlängen 2sqrt(2), und erklärt, weshalb verlängerte Kanten keine weiteren Eckpunkte liefern.",
+            "expectedPerformanceEn": "The learner determines P=(2,0,0), Q=(0,2,0) and R=(0,0,2), checks plane and edge membership, and connects the points on the three adjacent cube faces. They describe an equilateral triangle, for example through its three equal side lengths 2sqrt(2), and explain why extended edges do not supply additional vertices.",
+            "understandingFocusDe": "Exakte Schnittpunktprüfung und begründete Konstruktion einer Dreiecksfigur statt Ablesen einer perspektivischen Form.",
+            "understandingFocusEn": "Exact intersection checks and justified construction of a triangular section rather than reading a perspective shape."
+          },
+          {
+            "id": "enthaltene-kante-im-prisma",
+            "taskDemandDe": "Ein gerades dreiseitiges Prisma ist durch x>=0, y>=0, x+y<=4 und 0<=z<=3 beschrieben. Bestimme und konstruiere den Schnitt mit E: x+z=3. Berücksichtige auch eine vollständig in E liegende Kante und beschreibe die Schnittfigur.",
+            "taskDemandEn": "A right triangular prism is described by x>=0, y>=0, x+y<=4 and 0<=z<=3. Determine and construct its section by E: x+z=3. Account also for an edge lying entirely in E and describe the section.",
+            "expectedPerformanceDe": "Die lernende Person erhält in zyklischer Reihenfolge (3,0,0), (3,1,0), (0,4,3), (0,0,3). Sie erkennt die obere Kante x=0,z=3 als enthalten, prüft alle Punkte gegen die Prisma-Bedingungen und begründet ein rechtwinkliges Trapez: Die parallelen Seiten in y-Richtung haben Längen 1 und 4, die verbindende Seite von (0,0,3) zu (3,0,0) steht senkrecht zu ihnen.",
+            "expectedPerformanceEn": "The learner obtains, in cyclic order, (3,0,0), (3,1,0), (0,4,3), (0,0,3). They identify the upper edge x=0,z=3 as contained, check all points against the prism constraints, and justify a right trapezoid: the parallel sides in the y direction have lengths 1 and 4, and the connecting side from (0,0,3) to (3,0,0) is perpendicular to them.",
+            "understandingFocusDe": "Unabhängiger Transfer zu einer neuen Polyederstruktur und einer enthaltenen Kante; beide erforderlichen Erwartungen bleiben entscheidend.",
+            "understandingFocusEn": "Independent transfer to a new polyhedron structure and a contained edge; both required expectations remain essential."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "reason": "Das Profil fordert vektoriell begründete Maßfolgen statt einer bloßen Neuberechnung transformierter Koordinaten. Die Fälle kontrastieren Flächenskalierung und Volumenerhaltung; eine bestimmte Matrix- oder Determinantenmethode wird nicht vorgeschrieben.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die aktuelle Originaleingabe benennt keine abschließende Klasse zulässiger Transformationen und liefert dazu keine gebundene Originalquellenpassage. Zentrische Streckung und eine explizit gegebene einfache Scherung werden als begrenzte Fälle verwendet; eine allgemeine Kompetenz für beliebige lineare Abbildungen oder Determinanten wird nicht beansprucht. Die konkrete Quellenpassung bleibt menschlich zu prüfen."
+      ],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "vektorielle-wirkung",
+            "essentialUnderstandingDe": "Aus einer vektoriell beschriebenen Transformation lässt sich ableiten, wie relevante Verbindungsvektoren und die Lage von Grundflächen oder Höhen verändert werden. Die für eine Maßaussage benötigte Eigenschaft muss für die konkrete Abbildung begründet werden.",
+            "essentialUnderstandingEn": "A vector-described transformation allows one to derive how relevant displacement vectors and the positions of bases or heights change. The property needed for a measure statement must be justified for the specific mapping.",
+            "observablePerformanceDe": "Die lernende Person wendet die gegebene Abbildung auf geeignete Punkte oder Verbindungsvektoren an und benennt mit Rechnung oder geometrischer Begründung, welche für die Maßberechnung entscheidende Länge, Richtung, Grundfläche oder Höhe verändert beziehungsweise erhalten wird.",
+            "observablePerformanceEn": "The learner applies the given mapping to suitable points or displacement vectors and identifies, by calculation or geometric reasoning, which length, direction, base or height relevant to the measure is changed or preserved."
+          },
+          {
+            "id": "massfolge-begruenden",
+            "essentialUnderstandingDe": "Ein Längenskalierungsfaktor wirkt auf Flächen anders als auf Längen; bei einer Scherung kann das Volumen trotz veränderter Seitenrichtungen erhalten bleiben. Maßfolgen ergeben sich aus den jeweils nachgewiesenen geometrischen Eigenschaften.",
+            "essentialUnderstandingEn": "A length scale factor affects areas differently from lengths; under a shear, volume can be preserved despite changed side directions. Consequences for measures follow from the geometric properties established in each case.",
+            "observablePerformanceDe": "Die lernende Person leitet aus der Transformationswirkung einen begründeten Flächen- oder Volumenfaktor ab und nutzt ihn für die gefragte Maßberechnung. Sie erklärt die Tragweite des Arguments für die konkret betrachtete Figur, ohne eine bloße Zeichnung als Begründung zu verwenden.",
+            "observablePerformanceEn": "The learner derives a justified area or volume factor from the transformation's effect and uses it for the requested measure calculation. They explain the scope of the argument for the specific figure rather than using a drawing alone as justification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "vektorielle-wirkung",
+            "massfolge-begruenden"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "skalierung-und-erhaltung",
+            "textDe": "Wechsel von einer gleichmäßigen Längenskalierung mit verändertem Flächeninhalt zu einer Scherung mit erhaltenem Volumen.",
+            "textEn": "Change from uniform length scaling with changed area to a shear with preserved volume."
+          },
+          {
+            "id": "geometrische-begruendung",
+            "textDe": "Das erste Argument nutzt zwei skalierte Spannvektoren, das zweite eine erhaltene Grundfläche und Höhe beziehungsweise verschobene gleich große Querschnitte.",
+            "textEn": "The first argument uses two scaled spanning vectors; the second uses a preserved base and height or translated equal-size cross-sections."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "dreieck-strecken",
+            "taskDemandDe": "Für A=(1,-1,0), B=(3,-1,0), C=(1,2,0) sei T(X)=A+2(X-A). Bestimme den Flächeninhalt des Bilddreiecks durch ein vektorielles Transformationsargument und erläutere den Flächenfaktor.",
+            "taskDemandEn": "For A=(1,-1,0), B=(3,-1,0), C=(1,2,0), let T(X)=A+2(X-A). Determine the area of the image triangle using a vector transformation argument and explain the area factor.",
+            "expectedPerformanceDe": "Die lernende Person zeigt, dass AB=(2,0,0) und AC=(0,3,0) unter T verdoppelt werden und ihr rechter Winkel erhalten bleibt. Der ursprüngliche Flächeninhalt ist 3 Flächeneinheiten, der Bildinhalt 12; der Faktor 4 folgt aus der Verdopplung beider Spannrichtungen und wird nicht allein aus Bildkoordinaten abgelesen.",
+            "expectedPerformanceEn": "The learner shows that AB=(2,0,0) and AC=(0,3,0) are doubled by T and their right angle is preserved. The original area is 3 square units and the image area is 12; factor 4 follows from doubling both spanning directions rather than merely reading image coordinates.",
+            "understandingFocusDe": "Vektorielle Transformationswirkung und daraus begründete Flächenskalierung in einem eigenständig bearbeiteten Fall.",
+            "understandingFocusEn": "The vector effect of the transformation and the resulting justified area scaling in an independently completed case."
+          },
+          {
+            "id": "quader-scheren",
+            "taskDemandDe": "Auf den Quader 0<=x<=2, 0<=y<=3, 0<=z<=4 wirkt T(x,y,z)=(x+z,y,z). Begründe mithilfe der Transformation das Volumen des Bildkörpers, obwohl seine Seitenkanten nicht mehr alle senkrecht auf der Grundfläche stehen.",
+            "taskDemandEn": "The cuboid 0<=x<=2, 0<=y<=3, 0<=z<=4 is transformed by T(x,y,z)=(x+z,y,z). Use the transformation to justify the image solid's volume, although its side edges are no longer all perpendicular to the base.",
+            "expectedPerformanceDe": "Die lernende Person zeigt, dass die Grundfläche bei z=0 unverändert bleibt und die Ebene z=4 um 4 Einheiten in x-Richtung verschoben wird, während die Höhe 4 bleibt. Mit Grundfläche 6 und Höhe 4 erhält sie 24 Volumeneinheiten. Alternativ begründet sie, dass jeder horizontale Querschnitt nur verschoben wird und seinen Flächeninhalt 6 behält; die Begründung bleibt auf diese Scherung bezogen.",
+            "expectedPerformanceEn": "The learner shows that the base at z=0 remains unchanged and the plane z=4 shifts by 4 units in the x direction while height remains 4. With base area 6 and height 4, they obtain 24 cubic units. Alternatively, they explain that each horizontal cross-section is merely translated and retains area 6; the justification remains tied to this shear.",
+            "understandingFocusDe": "Unabhängiger Transfer von Ähnlichkeitsskalierung zu Volumenerhaltung bei einer nicht längentreuen Abbildung; beide Erwartungen werden erneut gezeigt.",
+            "understandingFocusEn": "Independent transfer from similarity scaling to volume preservation under a mapping that does not preserve lengths; both expectations are demonstrated again."
+          }
+        ]
+      }
+    }
+  ]
+}

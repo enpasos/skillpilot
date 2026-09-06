@@ -1390,22 +1390,46 @@ assert.match(
   /Record 2/u,
 )
 
-const noOpEnglishRevisionBytes = Buffer.from(`${records.map((record, index) => JSON.stringify({
+// Repair one language without forcing cosmetic edits to the sound counterpart.
+for (const unchangedLanguage of ['De', 'En'] as const) {
+  const singleLanguageRevisionBytes = Buffer.from(`${records.map((record, index) => JSON.stringify({
+    $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json',
+    schemaVersion: 1,
+    ...record,
+    ...(index === 0 ? { [`proposedDescription${unchangedLanguage}`]: record[`currentDescription${unchangedLanguage}`] } : {}),
+  })).join('\n')}\n`)
+  assert.deepEqual(
+    (await validateGoalDescriptionReviewBatch({
+      bundle,
+      input,
+      campaign,
+      run: { ...run, outputDigest: sha256(singleLanguageRevisionBytes) },
+      batchInputBytes,
+      recordsBytes: singleLanguageRevisionBytes,
+    })).errors,
+    [],
+  )
+}
+
+const noOpBilingualRevisionBytes = Buffer.from(`${records.map((record, index) => JSON.stringify({
   $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json',
   schemaVersion: 1,
   ...record,
-  ...(index === 0 ? { proposedDescriptionEn: record.currentDescriptionEn } : {}),
+  ...(index === 0 ? {
+    proposedDescriptionDe: record.currentDescriptionDe,
+    proposedDescriptionEn: record.currentDescriptionEn,
+  } : {}),
 })).join('\n')}\n`)
 assert.match(
   (await validateGoalDescriptionReviewBatch({
     bundle,
     input,
     campaign,
-    run: { ...run, outputDigest: sha256(noOpEnglishRevisionBytes) },
+    run: { ...run, outputDigest: sha256(noOpBilingualRevisionBytes) },
     batchInputBytes,
-    recordsBytes: noOpEnglishRevisionBytes,
+    recordsBytes: noOpBilingualRevisionBytes,
   })).errors.join('\n'),
-  /no-op English revision/u,
+  /no-op bilingual revision/u,
 )
 
 const resultDirectoryRoot = await mkdtemp(join(tmpdir(), 'goal-description-review-results-'))

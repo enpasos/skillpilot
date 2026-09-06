@@ -1,0 +1,37 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b032u-b-gpt6astra-20260905",
+  "campaignId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-b",
+  "roundId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:b379901a11d4f44ad545fc755ea6fabdd098dcd92c5317fb2a3d6ae47c9be9fb",
+  "bundleFingerprint": "sha256:38150656559bf00a44661bf357b1d7426250149a030417b8ea3ad7c148918077",
+  "bookDigest": "sha256:31bee385d737ed09a630190d24fbd6f7c25ed96082593f118a0cdd292ce16332",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:aa550c0081e4cdbd86df41d292076e8023e64a57167450583cae09bdc931cede",
+  "independenceGroupId": "mathematik-rollout-v1-batch-032u-resumed-current-context-recheck-4-v1-20260905-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+    "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+    "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+    "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600"
+  ],
+  "inputArtifacts": [
+    { "role": "description_review_batch_input_jsonl", "digest": "sha256:b379901a11d4f44ad545fc755ea6fabdd098dcd92c5317fb2a3d6ae47c9be9fb" },
+    { "role": "review_prompt", "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b" },
+    { "role": "review_criteria", "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919" },
+    { "role": "run_manifest_schema", "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6" }
+  ],
+  "startedAt": "2026-09-05T18:47:34Z",
+  "completedAt": "2026-09-05T18:51:41Z",
+  "status": "completed",
+  "outputDigest": "sha256:061244b7143d55952836b2dd0cf58c3946ce1f1b8529f509f7ac1a3a0af3b6f0",
+  "toolchainVersion": "codex-apply-patch-v1"
+}

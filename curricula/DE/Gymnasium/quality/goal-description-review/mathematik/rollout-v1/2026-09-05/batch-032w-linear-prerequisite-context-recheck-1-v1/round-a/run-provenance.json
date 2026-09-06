@@ -1,0 +1,37 @@
+{
+  "runId": "math-b032w-blind-a-20260905",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "role": "subject_reviewer",
+  "modelIdentity": {
+    "exactModelIdentifier": null,
+    "inheritedModel": "unspecified",
+    "modelDiversityClaim": false,
+    "explanation": "No exact model identifier was supplied to the reviewer. The model was inherited without a specified identifier; available model names are not evidence of the model used."
+  },
+  "generationParameters": {
+    "model": "unknown",
+    "reasoningEffort": "default",
+    "forkTurns": "none",
+    "reviewIsolation": true
+  },
+  "generationParametersExactUtf8Json": "{\"model\":\"unknown\",\"reasoningEffort\":\"default\",\"forkTurns\":\"none\",\"reviewIsolation\":true}",
+  "generationParametersFingerprint": "sha256:be0cdf1d0e582218d45be0f024ca3ef53c659a91c4959ec9e6ec1fd9e1f4bb9f",
+  "generationParameterSemantics": "model=unknown records unavailable identity; reasoningEffort=default records no explicit override and does not identify a resolved effort; forkTurns=none records the coordinator-stated original isolated agent dispatch configuration. This B032w task was assigned to the existing reviewer agent.",
+  "reviewIsolationMeaning": "The B032w first-pass decision used only its own supplied current prompt, criteria, schema, campaign and input. Other B032w round output and prior decisions for this goal were not inspected. The already-returned record was persisted without content changes after both first passes completed.",
+  "observedTiming": {
+    "firstObservedActiveAt": "2026-09-05T19:35:51Z",
+    "recordsCreatedAt": "2026-09-05T19:36:56Z",
+    "exactInferenceStartedAt": null,
+    "exactInferenceCompletedAt": null,
+    "durationSeconds": null,
+    "semantics": "The manifest's required startedAt and completedAt fields store observed run clock markers: a clock read while B032w instructions were being reviewed and the clock read after the complete record was assembled and schema-validated. They are not inferred model start or finish times and do not establish inference duration."
+  },
+  "inputDigest": "sha256:4ec357f1d41ecd31963f185b5ed77e1631cc27c2b1c36b4a65a1be04e439c2e2",
+  "outputDigest": "sha256:ef74b468985c8c5dfdfb1410664c0dc63f8c22cb6afd7819cc93482d2e03127a",
+  "outputSerialization": "Exactly the already-returned record as one UTF-8 JSON line with a final newline; no review-content changes.",
+  "usage": null,
+  "tokenUsage": null,
+  "cost": null,
+  "unknownMetricsExplanation": "Exact inference duration, token usage, and cost were not provided by the execution environment and have not been estimated."
+}

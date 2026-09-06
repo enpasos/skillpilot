@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "math-b032v-targeted-evidence-review-20260905",
+  "reviewType": "targeted_candidate_content_audit",
+  "reviewCompletedObservedAt": "2026-09-05T19:40:06Z",
+  "receiptCreatedAt": "2026-09-05T19:50:45Z",
+  "reviewer": {
+    "provider": "OpenAI",
+    "agentTask": "math_b032v_blind_a",
+    "modelIdentifier": null
+  },
+  "authority": {
+    "reviewAuthority": "ai_candidate",
+    "humanApproval": false,
+    "blindThirdDescriptionRound": false,
+    "modelDiversityClaim": false
+  },
+  "candidateArtifact": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-032v-approved-graph-split-v1.candidates.json",
+    "digest": "sha256:c0acaec67668d75b695087d55c51e91348225f2a39c57da547a4a8cbe2139dd4",
+    "hashScope": "Exact final UTF-8 candidate-file bytes after the two Scheitelabszisse spelling corrections."
+  },
+  "boundScope": {
+    "campaignId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905-a",
+    "bundleFingerprint": "sha256:dddbd19bb44f6fa3eeca26658d8ed6bf5c87b201711dfb5bc84d7374fe34befc",
+    "bookDigest": "sha256:60745f6c69c6296c45178cc21f2bed3085ef09fbd2cb4e8afcb8992b93eaf91b"
+  },
+  "criteria": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+    "digest": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+  },
+  "schema": {
+    "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "digest": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+  },
+  "checkedDimensions": [
+    "Numeric and formula correctness",
+    "German and English semantic parity",
+    "Required expectation coverage",
+    "Independent demonstrations and meaningful fresh transfer",
+    "Current goal scope and method neutrality"
+  ],
+  "goalResults": [
+    {
+      "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+      "result": "PASS"
+    },
+    {
+      "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "result": "PASS"
+    },
+    {
+      "goalId": "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+      "result": "PASS"
+    },
+    {
+      "goalId": "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+      "result": "PASS"
+    },
+    {
+      "goalId": "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600",
+      "result": "PASS"
+    }
+  ],
+  "findings": {
+    "blockingIssues": [],
+    "editorialCorrection": "The earlier targeted audit identified Scheitelabzisse at candidate lines 68 and 232. Both now read Scheitelabszisse. This receipt documents that already completed content audit and the final artifact binding; it does not create another description-review round."
+  },
+  "verification": {
+    "mode": "check_only",
+    "evidenceMaterialization": "PASS",
+    "descriptionReviewBindings": "Unchanged by this receipt and check-only verification."
+  },
+  "limitations": "PASS is an AI content-audit result, not human approval, release authority, learner evidence, or a claim about an exact model identifier. No review was rerun and no candidate or description output was rebound."
+}

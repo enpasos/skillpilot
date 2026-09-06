@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-05T07:00:39.537Z
+Generated: 2026-09-06T16:03:20.380Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -36,8 +36,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 75 |
-| `pilot` | 340 |
+| `accepted` | 74 |
+| `pilot` | 341 |
 
 ## Ledger Decisions
 

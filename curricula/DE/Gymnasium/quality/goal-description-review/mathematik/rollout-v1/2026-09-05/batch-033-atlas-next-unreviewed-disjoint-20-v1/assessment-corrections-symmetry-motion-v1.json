@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "documentType": "assessment-correction-proposal",
+  "status": "proposal_only",
+  "synthesisKind": "targeted AI synthesis and source reconciliation; not a blind review or release approval",
+  "capturedAt": "2026-09-06T05:14:00.000Z",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "canonicalFileSha256AtCapture": "0b3352bd16504b5b50275d06d00c7ab843fad4add27ad561cc63a75ca4df4cd9",
+  "concurrencyNote": "Whole-file hash is informational. Adoption must compare the exact selected before fields; unrelated concurrent canonical edits are outside this proposal.",
+  "noCanonicalSourceLedgerOrReviewWrites": true,
+  "changes": [
+    {
+      "goalId": "e7013f6e-6051-5c88-8b4b-e054dc8db4cc",
+      "title": "Funktionen und Darstellungen analysieren",
+      "before": {
+        "taskContent": "Eine Wasserfontäne wird für waagerechte Entfernungen $0 \\le x \\le 9$ durch die Funktion\n$$\nf(x) = -\\frac{1}{2}x^2 + 4x + 2\n$$\nbeschrieben. Dabei gibt $x$ die waagerechte Entfernung in Metern und $f(x)$ die Höhe in Metern an.\n\n1. Bestimmen Sie die Symmetrieachse und den Scheitelpunkt des Graphen.\n2. Berechnen Sie die Nullstellen von $f$ und interpretieren Sie deren Bedeutung im Kontext.\n3. Untersuchen Sie, in welchem Intervall die Fontäne höher als $8\\,\\text{m}$ ist.\n4. Die lineare Funktion $g(x)=mx+2$ soll durch den Punkt $(4\\mid 6)$ gehen. Bestimmen Sie $m$ und vergleichen Sie die Änderungsrate von $g$ mit dem Verlauf von $f$ im Bereich um den Scheitelpunkt.",
+        "solutionContent": "1. Für die quadratische Funktion gilt\n$$\nx_S = -\\frac{b}{2a} = -\\frac{4}{2\\cdot(-\\tfrac12)} = 4.\n$$\nDann ist\n$$\nf(4) = -\\frac12\\cdot 16 + 16 + 2 = 10.\n$$\nSymmetrieachse: $x=4$, Scheitelpunkt: $S(4\\mid 10)$.\n\n2. Nullstellen aus\n$$\n-\\frac12x^2 + 4x + 2 = 0\n$$\nfolgen mit Multiplikation durch $-2$ zu\n$$\nx^2 - 8x - 4 = 0.\n$$\nDamit\n$$\nx_{1,2} = 4 \\pm 2\\sqrt{5}.\n$$\nRelevant im Modell ist die positive Nullstelle $x_2 = 4 + 2\\sqrt5 \\approx 8{,}47$ m; dort trifft der Wasserstrahl im betrachteten Bereich wieder den Boden. Die negative Nullstelle liegt außerhalb des betrachteten Kontextes.\n\n3. Gesucht ist\n$$\n-\\frac12x^2 + 4x + 2 > 8.\n$$\nDies ist äquivalent zu\n$$\nx^2 - 8x + 12 < 0.\n$$\nFaktorisieren liefert\n$$\n(x-2)(x-6) < 0.\n$$\nAlso ist die Fontäne für $2 < x < 6$ höher als $8$ m.\n\n4. Aus $g(4)=6$ folgt\n$$\n4m + 2 = 6 \\Rightarrow m=1.\n$$\nDie lineare Funktion hat konstante Änderungsrate $1$. Am Scheitelpunkt von $f$ ist die momentane Änderungsrate $0$; in Scheitelnähe flacht der parabolische Verlauf also ab, während $g$ überall mit derselben Steigung wächst."
+      },
+      "after": {
+        "taskContent": "Gegeben ist die auf $\\mathbb{R}$ definierte Funktion\n$$\nf(x) = -\\frac{1}{2}x^2 + 4x + 2.\n$$\nFür eine Wasserfontäne wird die Einschränkung von $f$ auf $0 \\le x \\le 9$ als Modell betrachtet. Dabei gibt $x$ die waagerechte Entfernung in Metern und $f(x)$ die Höhe in Metern an. Unterscheiden Sie die vollständige Parabel über $\\mathbb{R}$ vom Modellgraphen auf $[0,9]$.\n\n1. Prüfen Sie für die vollständige Parabel und den Modellgraphen, ob y-Achsen- oder Ursprungssymmetrie vorliegt; berücksichtigen Sie dabei jeweils die Definitionsmenge. Bestimmen Sie außerdem die Symmetrieachse und den Scheitelpunkt der vollständigen Parabel und entscheiden Sie, ob ihre Achsensymmetrie beim Einschränken auf $[0,9]$ erhalten bleibt.\n2. Berechnen Sie die Nullstellen von $f$ und interpretieren Sie deren Bedeutung im Kontext.\n3. Untersuchen Sie, in welchem Intervall die Fontäne höher als $8\\,\\text{m}$ ist.\n4. Die lineare Funktion $g(x)=mx+2$ soll durch den Punkt $(4\\mid 6)$ gehen. Bestimmen Sie $m$ und vergleichen Sie die Änderungsrate von $g$ mit dem Verlauf von $f$ im Bereich um den Scheitelpunkt.",
+        "solutionContent": "1. Für die vollständige Parabel ist die Definitionsmenge $\\mathbb{R}$ unter $x\\mapsto -x$ invariant. Es gilt\n$$\nf(-x)=-\\frac12x^2-4x+2.\n$$\nDies ist weder mit $f(x)=-\\frac12x^2+4x+2$ noch mit $-f(x)=\\frac12x^2-4x-2$ identisch. Daher ist die vollständige Parabel weder achsensymmetrisch zur y-Achse noch punktsymmetrisch zum Ursprung. Beim Modellgraphen scheitern beide Symmetrien bereits an der Definitionsmenge: Zu $x=9$ gehört beispielsweise $-9$ nicht zu $[0,9]$.\n\nFür die quadratische Funktion gilt\n$$\nx_S = -\\frac{b}{2a} = -\\frac{4}{2\\cdot(-\\tfrac12)} = 4.\n$$\nDann ist\n$$\nf(4) = -\\frac12\\cdot 16 + 16 + 2 = 10.\n$$\nDie vollständige Parabel hat also die Symmetrieachse $x=4$ und den Scheitelpunkt $S(4\\mid 10)$. Dies zeigt auch die Scheitelpunktform $f(x)=-\\frac12(x-4)^2+10$.\n\nDie Einschränkung auf $[0,9]$ erhält diese Achsensymmetrie nicht: Die Spiegelung an $x=4$ bildet $x$ auf $8-x$ ab; insbesondere wird $x=9$ auf $-1$ außerhalb der Definitionsmenge abgebildet. Der Modellgraph ist deshalb nicht als Ganzes achsensymmetrisch zu $x=4$. Sein Scheitelpunkt bleibt $S(4\\mid 10)$.\n\n2. Nullstellen aus\n$$\n-\\frac12x^2 + 4x + 2 = 0\n$$\nfolgen mit Multiplikation durch $-2$ zu\n$$\nx^2 - 8x - 4 = 0.\n$$\nDamit\n$$\nx_{1,2} = 4 \\pm 2\\sqrt{5}.\n$$\nRelevant im Modell ist die positive Nullstelle $x_2 = 4 + 2\\sqrt5 \\approx 8{,}47$ m; dort trifft der Wasserstrahl im betrachteten Bereich wieder den Boden. Die negative Nullstelle liegt außerhalb des betrachteten Kontextes.\n\n3. Gesucht ist\n$$\n-\\frac12x^2 + 4x + 2 > 8.\n$$\nDies ist äquivalent zu\n$$\nx^2 - 8x + 12 < 0.\n$$\nFaktorisieren liefert\n$$\n(x-2)(x-6) < 0.\n$$\nAlso ist die Fontäne für $2 < x < 6$ höher als $8$ m.\n\n4. Aus $g(4)=6$ folgt\n$$\n4m + 2 = 6 \\Rightarrow m=1.\n$$\nDie lineare Funktion hat konstante Änderungsrate $1$. Am Scheitelpunkt von $f$ ist die momentane Änderungsrate $0$; in Scheitelnähe flacht der parabolische Verlauf also ab, während $g$ überall mit derselben Steigung wächst."
+      },
+      "beforeHashes": {
+        "algorithm": "SHA-256; UTF-8; record hash uses JSON.stringify(goal)",
+        "record": "cdf36a6076a069907e1f4122991c693df57468c76e9e0929bdeeb63c7900db46",
+        "taskContent": "3c54291c915379f7626ac1569f3a58edc7e2c79eee0708ef2cd12ff964892526",
+        "solutionContent": "ec2175d866d1f426efd7d803f8313ea26b12d15534f65c1d0d66a24c3cdf206e"
+      },
+      "historicalMetadata": {
+        "reviewStatus": "released",
+        "reviewNote": {
+          "present": false
+        },
+        "sourceRef": {
+          "present": false
+        },
+        "sourceArtifactPath": {
+          "present": false
+        },
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "e1",
+              "points": 5,
+              "description": "Symmetrieachse und Scheitelpunkt korrekt bestimmt und interpretiert"
+            },
+            {
+              "id": "e2",
+              "points": 5,
+              "description": "Nullstellen korrekt berechnet und im Kontext gedeutet"
+            },
+            {
+              "id": "e3",
+              "points": 5,
+              "description": "Intervall mit Höhe über 8 m korrekt bestimmt"
+            },
+            {
+              "id": "e4",
+              "points": 5,
+              "description": "Lineares Vergleichsmodell korrekt bestimmt und Änderungsraten fachlich verglichen"
+            }
+          ]
+        },
+        "requires": [
+          "d8c9eb57-1614-4c1d-829a-618134def352",
+          "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+          "741a8120-71ad-5f87-b9d8-be9d778b097b",
+          "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+          "7ba19509-8ee6-50e0-a411-a371f05b1801",
+          "0b23413e-a334-5dd3-98e5-de067208819e",
+          "1b70498a-62a0-5a84-99dd-476b8af68da6",
+          "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+          "29ce4053-b5c5-4a82-9ff0-3acc492284d8",
+          "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+          "8fa32a68-46eb-414e-8292-a4c4052b2522",
+          "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+          "56b4acb5-6024-573f-9890-35fbd21ee343"
+        ],
+        "coveredGoalIds": [
+          "d8c9eb57-1614-4c1d-829a-618134def352",
+          "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+          "741a8120-71ad-5f87-b9d8-be9d778b097b",
+          "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+          "7ba19509-8ee6-50e0-a411-a371f05b1801",
+          "0b23413e-a334-5dd3-98e5-de067208819e",
+          "1b70498a-62a0-5a84-99dd-476b8af68da6",
+          "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+          "29ce4053-b5c5-4a82-9ff0-3acc492284d8",
+          "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+          "8fa32a68-46eb-414e-8292-a4c4052b2522",
+          "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+          "56b4acb5-6024-573f-9890-35fbd21ee343"
+        ]
+      },
+      "focusedCoverageGoalId": "d8c9eb57-1614-4c1d-829a-618134def352",
+      "coverageClaim": "Only a concrete repair candidate for the named symmetry coverage; none of the 13 historical coveredGoalIds is newly release-reviewed here. Existing coverage and requires are not proposed as validated.",
+      "proposedAncillaryChange": {
+        "path": "examData.scoring.steps[0].description",
+        "before": "Symmetrieachse und Scheitelpunkt korrekt bestimmt und interpretiert",
+        "after": "y-Achsen- und Ursprungssymmetrie unter Beachtung der Definitionsmenge geprüft; Symmetrieachse und Scheitelpunkt der vollständigen Parabel bestimmt und Einschränkung des Modellgraphen korrekt beurteilt",
+        "pointsBefore": 5,
+        "pointsAfter": 5,
+        "suggestedInternalPointAllocation": "y-/Ursprungssymmetrie der vollständigen Parabel: 2; Symmetrieachse und Scheitelpunkt: 2; Definitionsmengen und Einschränkung: 1. Allocation remains a proposal for the focused review."
+      },
+      "preserved": {
+        "parts": 4,
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "partPoints": [
+          5,
+          5,
+          5,
+          5
+        ],
+        "parts2To4ByteIdentical": true,
+        "existingNumbersAndFunctionTerms": true,
+        "symmetryAxis": "x=4 (complete parabola only)",
+        "vertex": "S(4|10) (complete parabola and restricted graph)",
+        "modelDomain": "[0,9]"
+      },
+      "separateOpenFindings": [
+        {
+          "kind": "model-validity",
+          "finding": "The retained [0,9] interval extends beyond the ground hit 4+2sqrt(5). f(9)=-2.5, so the final subinterval is not an above-ground water trajectory. No interval/number/part change is bundled into this symmetry correction."
+        },
+        {
+          "kind": "coverage-not-evidenced",
+          "goalId": "8fa32a68-46eb-414e-8292-a4c4052b2522",
+          "finding": "No exponential function or its properties is asked."
+        },
+        {
+          "kind": "coverage-not-evidenced",
+          "goalId": "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+          "finding": "No given graph is supplied from which a function equation must be determined."
+        },
+        {
+          "kind": "coverage-not-evidenced",
+          "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+          "finding": "No behaviour at infinity or limit notation is asked."
+        },
+        {
+          "kind": "coverage-not-evidenced",
+          "goalId": "56b4acb5-6024-573f-9890-35fbd21ee343",
+          "finding": "No intersection angle or tangent-angle calculation is asked."
+        },
+        {
+          "kind": "coverage-not-evidenced",
+          "goalId": "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+          "finding": "Roots are calculated, but multiplicity and corresponding graph behaviour are not asked."
+        }
+      ],
+      "requiredReview": "Focused assessment review of the changed symmetry task/solution and its 5-point scoring before any new release claim; separately reconcile requires/coveredGoalIds with actual tasks. No aggregate approval of the 13 existing coverage entries."
+    },
+    {
+      "goalId": "ea664a30-98be-508e-90ac-5304679814ee",
+      "title": "Aufgabe 5 (Jahrgangsstufe 10, 10 BE)",
+      "before": {
+        "taskContent": "Eine Drohne bewegt sich auf $r(t)=(1|2|0)+t\\cdot (2|1|1)$. Eine Kontrollgerade ist $s(u)=(5|4|2)+u\\cdot (1|-1|0)$. Ein Regenwassertank ist ein gerader Kreiskegel mit Radius $2.4 m$ und Höhe $6 m$.\n\n1. Interpretiere $r(t)$ als geradlinige Bewegung und berechne die Drohnenposition für $t=2$. (2 BE)\n2. Untersuche, ob $r$ und $s$ sich schneiden. (3 BE)\n3. Vergleiche $r$ mit $k(v)=(0|0|1)+v\\cdot (2|1|1)$ und entscheide die Lagebeziehung. (2 BE)\n4. Berechne das Volumen des kegelförmigen Tanks und plausibilisiere die Formel als Grenzfall von Pyramiden. (3 BE)",
+        "solutionContent": "$r(t)$ beschreibt eine geradlinige Bewegung vom Startpunkt $(1|2|0)$ mit Richtungsvektor $(2|1|1)$. Für $t=2$ liegt die Drohne bei $(5|4|2)$.\n\nFür einen Schnitt mit $s$ löst man $(1+2t,2+t,t)=(5+u,4-u,2)$. Aus der dritten Koordinate folgt $t=2$, dann aus der ersten $u=0$ und aus der zweiten ebenfalls $u=0$; Schnittpunkt ist $(5|4|2)$.\n\n$k$ hat denselben Richtungsvektor wie $r$; der Verbindungsvektor der Stützpunkte $(1|2|-1)$ ist kein Vielfaches von $(2|1|1)$, also sind die Geraden echt parallel.\n\n$V=(1/3)\\cdot \\pi\\cdot r^2\\cdot h=(1/3)\\cdot \\pi\\cdot 2.4^2\\cdot 6=11.52\\pi≈36.2 m^3$. Die Formel ist plausibel, weil ein Kegel als Grenzfall von Pyramiden mit immer mehr Ecken in der Grundfläche verstanden werden kann."
+      },
+      "after": {
+        "taskContent": "Die Position einer Drohne wird durch $r(t)=(1|2|0)+t\\cdot (2|1|1)$ beschrieben. Dabei gibt $t$ die Zeit in Sekunden an; $t=0$ ist der gewählte Referenzzeitpunkt. Alle Ortskoordinaten sind in Metern angegeben. Für die geometrischen Lagevergleiche wird die gesamte Trägergerade $r$ der Flugbahn betrachtet. Eine Kontrollgerade ist $s(u)=(5|4|2)+u\\cdot (1|-1|0)$. Ein Regenwassertank ist ein gerader Kreiskegel mit Radius $2.4 m$ und Höhe $6 m$.\n\n1. Deute den Anfangsort und die konstante Ortsänderung pro Sekunde im Modell $r(t)$ und berechne die Drohnenposition nach zwei Sekunden. (2 BE)\n2. Untersuche, ob $r$ und $s$ sich schneiden. (3 BE)\n3. Vergleiche $r$ mit $k(v)=(0|0|1)+v\\cdot (2|1|1)$ und entscheide die Lagebeziehung. (2 BE)\n4. Berechne das Volumen des kegelförmigen Tanks und plausibilisiere die Formel als Grenzfall von Pyramiden. (3 BE)",
+        "solutionContent": "Zum Referenzzeitpunkt $t=0$ befindet sich die Drohne am Anfangsort $(1|2|0)$ mit Ortskoordinaten in Metern. Ihr konstanter Geschwindigkeitsvektor ist $(2|1|1)\\,\\mathrm{m/s}$: Pro Sekunde ändern sich die drei Ortskoordinaten um $2 m$, $1 m$ und $1 m$. Für $t=2$, also nach zwei Sekunden, gilt $r(2)=(5|4|2)$; auch diese Ortskoordinaten sind in Metern angegeben.\n\nFür einen Schnitt der Trägergerade $r$ mit $s$ löst man $(1+2t,2+t,t)=(5+u,4-u,2)$. Aus der dritten Koordinate folgt $t=2$, dann aus der ersten $u=0$ und aus der zweiten ebenfalls $u=0$; Schnittpunkt ist $(5|4|2)$.\n\n$k$ hat denselben Richtungsvektor wie $r$; der Verbindungsvektor der Stützpunkte $(1|2|-1)$ ist kein Vielfaches von $(2|1|1)$, also sind die Geraden echt parallel.\n\n$V=(1/3)\\cdot \\pi\\cdot r^2\\cdot h=(1/3)\\cdot \\pi\\cdot 2.4^2\\cdot 6=11.52\\pi≈36.2 m^3$. Die Formel ist plausibel, weil ein Kegel als Grenzfall von Pyramiden mit immer mehr Ecken in der Grundfläche verstanden werden kann."
+      },
+      "beforeHashes": {
+        "algorithm": "SHA-256; UTF-8; record hash uses JSON.stringify(goal)",
+        "record": "b07addc61c1bd1e827d4661d772ee3b11de85d814f48bf2572cfc795d1cc42c0",
+        "taskContent": "969c5998873cfc5d3cf111dd77ac4db73ddf926c663e537865fe53a227cd48ac",
+        "solutionContent": "754fc0aa3a14eb375ae2760caa4b7a7f9aafb3db87081b4784a801f8f2a84d85"
+      },
+      "historicalMetadata": {
+        "reviewStatus": "released",
+        "reviewNote": "released after simulated internal review on 2026-06-28 for J10",
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md#task-5",
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 5,
+          "steps": [
+            {
+              "id": "j10_released_v1_5",
+              "points": 10,
+              "description": "Geraden im Raum, vektorielle Bewegungen, Lagebeziehungen und Kegelvolumen in einer technischen Anwendung bearbeiten."
+            }
+          ]
+        },
+        "requires": [
+          "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "50612a57-7b9d-45fd-bc08-e95556444760",
+          "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+          "7b860649-373e-5523-9843-ec96b3537f1f"
+        ],
+        "coveredGoalIds": [
+          "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "50612a57-7b9d-45fd-bc08-e95556444760",
+          "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+          "7b860649-373e-5523-9843-ec96b3537f1f"
+        ]
+      },
+      "focusedCoverageGoalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+      "coverageClaim": "A minimal motion interpretation repair candidate, not a fresh full Task-5 or five-goal coverage review.",
+      "preserved": {
+        "parts": 4,
+        "maxPoints": 10,
+        "passingPoints": 5,
+        "partPoints": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "parts2To4ByteIdentical": true,
+        "allExistingNumbersAndVectorFormulas": true,
+        "noNewParameterRestriction": true,
+        "noNewParametrizationMethodRequirement": true
+      },
+      "motionSemantics": "t is the numerical time in seconds relative to t=0; positions are metres. r(2) is therefore the position at 2 s. The constant vector is displacement per second / velocity. The supporting line, not a newly restricted movement ray, is used for geometric comparisons. No t>=0 requirement is introduced.",
+      "sourceProposals": [
+        {
+          "historicalPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md",
+          "historicalFileSha256": "f41fb0cf1ec9d672011696b13511ef19e2d17f2b7dba459dcb66c85746a7eecc",
+          "section": "## Task 5 - Wartungsdrohne und Wassertank (10 BE)",
+          "before": "## Task 5 - Wartungsdrohne und Wassertank (10 BE)\n\nEine Drohne bewegt sich auf $r(t)=(1|2|0)+t\\cdot (2|1|1)$. Eine Kontrollgerade ist $s(u)=(5|4|2)+u\\cdot (1|-1|0)$. Ein Regenwassertank ist ein gerader Kreiskegel mit Radius $2.4 m$ und Höhe $6 m$.\n\n1. Interpretiere $r(t)$ als geradlinige Bewegung und berechne die Drohnenposition für $t=2$. (2 BE)\n2. Untersuche, ob $r$ und $s$ sich schneiden. (3 BE)\n3. Vergleiche $r$ mit $k(v)=(0|0|1)+v\\cdot (2|1|1)$ und entscheide die Lagebeziehung. (2 BE)\n4. Berechne das Volumen des kegelförmigen Tanks und plausibilisiere die Formel als Grenzfall von Pyramiden. (3 BE)\n",
+          "after": "## Task 5 - Wartungsdrohne und Wassertank (10 BE)\n\nDie Position einer Drohne wird durch $r(t)=(1|2|0)+t\\cdot (2|1|1)$ beschrieben. Dabei gibt $t$ die Zeit in Sekunden an; $t=0$ ist der gewählte Referenzzeitpunkt. Alle Ortskoordinaten sind in Metern angegeben. Für die geometrischen Lagevergleiche wird die gesamte Trägergerade $r$ der Flugbahn betrachtet. Eine Kontrollgerade ist $s(u)=(5|4|2)+u\\cdot (1|-1|0)$. Ein Regenwassertank ist ein gerader Kreiskegel mit Radius $2.4 m$ und Höhe $6 m$.\n\n1. Deute den Anfangsort und die konstante Ortsänderung pro Sekunde im Modell $r(t)$ und berechne die Drohnenposition nach zwei Sekunden. (2 BE)\n2. Untersuche, ob $r$ und $s$ sich schneiden. (3 BE)\n3. Vergleiche $r$ mit $k(v)=(0|0|1)+v\\cdot (2|1|1)$ und entscheide die Lagebeziehung. (2 BE)\n4. Berechne das Volumen des kegelförmigen Tanks und plausibilisiere die Formel als Grenzfall von Pyramiden. (3 BE)\n",
+          "proposedNewPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v3.md",
+          "proposedNewPathExists": false,
+          "scope": "Task-5-only new version; do not overwrite v1 or v2; other tasks retain their existing source pointers."
+        },
+        {
+          "historicalPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/solution_v1.md",
+          "historicalFileSha256": "d932a78bb5d391ba76d092f373f283c43cba1f40aa5e763f6befa4f26fde2626",
+          "section": "## Task 5 - Wartungsdrohne und Wassertank (10 BE)",
+          "before": "## Task 5 - Wartungsdrohne und Wassertank (10 BE)\n\n$r(t)$ beschreibt eine geradlinige Bewegung vom Startpunkt $(1|2|0)$ mit Richtungsvektor $(2|1|1)$. Für $t=2$ liegt die Drohne bei $(5|4|2)$.\n\nFür einen Schnitt mit $s$ löst man $(1+2t,2+t,t)=(5+u,4-u,2)$. Aus der dritten Koordinate folgt $t=2$, dann aus der ersten $u=0$ und aus der zweiten ebenfalls $u=0$; Schnittpunkt ist $(5|4|2)$.\n\n$k$ hat denselben Richtungsvektor wie $r$; der Verbindungsvektor der Stützpunkte $(1|2|-1)$ ist kein Vielfaches von $(2|1|1)$, also sind die Geraden echt parallel.\n\n$V=(1/3)\\cdot \\pi\\cdot r^2\\cdot h=(1/3)\\cdot \\pi\\cdot 2.4^2\\cdot 6=11.52\\pi≈36.2 m^3$. Die Formel ist plausibel, weil ein Kegel als Grenzfall von Pyramiden mit immer mehr Ecken in der Grundfläche verstanden werden kann.\n\nScoring notes:\n\n- 10 BE - Geraden im Raum, vektorielle Bewegungen, Lagebeziehungen und Kegelvolumen in einer technischen Anwendung bearbeiten.\n",
+          "after": "## Task 5 - Wartungsdrohne und Wassertank (10 BE)\n\nZum Referenzzeitpunkt $t=0$ befindet sich die Drohne am Anfangsort $(1|2|0)$ mit Ortskoordinaten in Metern. Ihr konstanter Geschwindigkeitsvektor ist $(2|1|1)\\,\\mathrm{m/s}$: Pro Sekunde ändern sich die drei Ortskoordinaten um $2 m$, $1 m$ und $1 m$. Für $t=2$, also nach zwei Sekunden, gilt $r(2)=(5|4|2)$; auch diese Ortskoordinaten sind in Metern angegeben.\n\nFür einen Schnitt der Trägergerade $r$ mit $s$ löst man $(1+2t,2+t,t)=(5+u,4-u,2)$. Aus der dritten Koordinate folgt $t=2$, dann aus der ersten $u=0$ und aus der zweiten ebenfalls $u=0$; Schnittpunkt ist $(5|4|2)$.\n\n$k$ hat denselben Richtungsvektor wie $r$; der Verbindungsvektor der Stützpunkte $(1|2|-1)$ ist kein Vielfaches von $(2|1|1)$, also sind die Geraden echt parallel.\n\n$V=(1/3)\\cdot \\pi\\cdot r^2\\cdot h=(1/3)\\cdot \\pi\\cdot 2.4^2\\cdot 6=11.52\\pi≈36.2 m^3$. Die Formel ist plausibel, weil ein Kegel als Grenzfall von Pyramiden mit immer mehr Ecken in der Grundfläche verstanden werden kann.\n\nScoring notes:\n\n- 10 BE - Geraden im Raum, vektorielle Bewegungen, Lagebeziehungen und Kegelvolumen in einer technischen Anwendung bearbeiten.\n",
+          "proposedNewPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/solution_v3.md",
+          "proposedNewPathExists": false,
+          "scope": "Task-5-only matching solution version; retains historical numeric scoring, with new review status to be recorded truthfully."
+        }
+      ],
+      "proposedSourcePointerChanges": [
+        {
+          "path": "sourceRef",
+          "before": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md#task-5",
+          "after": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v3.md#task-5",
+          "condition": "Only after the new Task-5-only artifact exists and the adoption is authorized."
+        },
+        {
+          "path": "examData.sourceArtifactPath",
+          "before": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md",
+          "after": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v3.md",
+          "condition": "Only together with the matching task/solution version and its actual review/provenance."
+        }
+      ],
+      "requiredReview": "A focused new AI review artifact (proposed: simulated_review_v3.md) must record its actual author/type/date, task/solution bytes and limited scope. This proposal does not perform that review. The 2026-06-28 simulated approval is historical evidence only; no new human approval is claimed.",
+      "unresolvedVersionMetadata": "Decide the version-bearing scoring step id j10_released_v1_5 explicitly during adoption (e.g. j10_released_v3_5 only if actually released), retaining all points. New source headers/status must describe the new candidate and its real review state, not copy the v1 promoted claim."
+    }
+  ],
+  "provenance": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "role": "Live canonical before texts and metadata; two exact goals only"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/README.md",
+      "sha256": "27b6437d40912a0f24b338eb92c173ce0201add945f9003f1c83361ed672a377",
+      "role": "Version immutability rule: all previously promoted versions remain byte-unchanged; later findings require a new version."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/simulated_review_v1.md",
+      "sha256": "86ca2ae0e7e5c50d6971b811e29b4a33acd2d5ac300b4a068437db7f739171ed",
+      "role": "Historical Codex simulated didactic QA, 2026-06-28, approved_for_release_candidate; not human approval of this proposal."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-033-atlas-next-unreviewed-disjoint-20-v1/four-description-source-reconciliation-v1.md",
+      "role": "Prior targeted source reconciliation; not an independent blind review"
+    }
+  ],
+  "adoptionBoundary": [
+    "Root decides and adopts; these two proposal files change no operative curriculum or release data.",
+    "Do not reuse old released metadata as new review evidence. If operative content is changed before a valid new review, use an honest non-released state such as needs_review; its learner-availability effect is a root decision.",
+    "Retain old review/version evidence historically. Only record an actual new review and its actual authority; generic authorization is not a new human content review.",
+    "After any later adoption, refresh affected assessment/context/source fingerprints and quality evidence in the responsible lanes; no bulk refresh or tests/reviews performed here.",
+    "IDs, titles, graphs, coverage arrays, images, ledgers and profiles remain untouched by this proposal."
+  ]
+}

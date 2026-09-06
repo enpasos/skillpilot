@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b033a-functions-4-v1",
+  "reviewedAt": "2026-09-06T05:18:16Z",
+  "reviewer": "openai-codex-b033a-current-math-positive-candidate-author",
+  "goals": [
+    {
+      "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+      "reason": "DE: Auswertung und Eingabe-Ausgabe-Bedeutung werden gemeinsam geprüft; der frische Fall verändert die Termstruktur und die Rolle eines Minuszeichens, nicht bloß Zahlen. EN: Evaluation and input-output meaning are assessed together; the fresh case changes expression structure and the role of a minus sign rather than merely numbers.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "evaluate-expression",
+            "essentialUnderstandingDe": "Der konkrete Eingabewert ersetzt jedes Vorkommen von x; Klammern, Potenzen und Vorzeichen gehören zum gegebenen Funktionsterm.",
+            "essentialUnderstandingEn": "The concrete input replaces every occurrence of x; brackets, powers and signs belong to the given function expression.",
+            "observablePerformanceDe": "Die lernende Person setzt gegebene zulässige Eingaben selbstständig ein und berechnet die Werte unter Beachtung der Termstruktur.",
+            "observablePerformanceEn": "The learner independently substitutes supplied admissible inputs and calculates values respecting the structure of the expression."
+          },
+          {
+            "id": "input-output-meaning",
+            "essentialUnderstandingDe": "f(a)=b ordnet der Eingabe a die Ausgabe b zu; unterschiedliche Eingaben können denselben Ausgabewert besitzen.",
+            "essentialUnderstandingEn": "f(a)=b assigns output b to input a; different inputs may have the same output.",
+            "observablePerformanceDe": "Die lernende Person deutet ihre berechneten Werte als zugehörige Eingabe-Ausgabe-Paare und unterscheidet dabei Eingabewert, Funktionsname und Ergebnis.",
+            "observablePerformanceEn": "The learner interprets calculated values as corresponding input-output pairs, distinguishing input, function name and result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "evaluate-expression",
+            "input-output-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "expression-structure",
+            "textDe": "Von einem linearen Term zu Potenzen wechseln und ein Minuszeichen außerhalb gegenüber innerhalb der Potenz unterscheiden.",
+            "textEn": "Change from a linear expression to powers and distinguish a minus sign outside versus inside the power."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "linear-evaluation",
+            "taskDemandDe": "Gegeben ist f(x)=3x−2. Berechne ohne Musterlösung f(−1) und f(4) und erkläre jeweils, welche Eingabe zu welcher Ausgabe gehört.",
+            "taskDemandEn": "Given f(x)=3x−2, calculate f(−1) and f(4) without a worked solution and explain which input corresponds to which output.",
+            "expectedPerformanceDe": "f(−1)=3·(−1)−2=−5 und f(4)=10. −1 bzw. 4 sind die Eingaben, −5 bzw. 10 die vom Term zugeordneten Ausgaben.",
+            "expectedPerformanceEn": "f(−1)=3·(−1)−2=−5 and f(4)=10. The inputs are −1 and 4, and the outputs assigned by the expression are −5 and 10.",
+            "understandingFocusDe": "Korrekte Auswertung und Bedeutung der Schreibweise werden an denselben Werten verbunden.",
+            "understandingFocusEn": "Correct evaluation and the meaning of notation are connected through the same values."
+          },
+          {
+            "id": "minus-and-power",
+            "taskDemandDe": "Eine neue Aufgabe gibt p(x)=−x² und q(x)=(−x)² vor. Berechne p(−2), q(−2) und q(2). Deute die drei Zuordnungen und erläutere den für die unterschiedlichen Ergebnisse entscheidenden Unterschied im Term.",
+            "taskDemandEn": "A fresh task gives p(x)=−x² and q(x)=(−x)². Calculate p(−2), q(−2) and q(2). Interpret the three assignments and explain the difference in the expressions that determines the differing results.",
+            "expectedPerformanceDe": "p(−2)=−(−2)²=−4, q(−2)=(−(−2))²=4 und q(2)=(−2)²=4. Bei p wird das Quadrat negiert, bei q wird der gesamte geklammerte Wert quadriert. q ordnet hier zwei verschiedenen Eingaben denselben Wert 4 zu; eine inverse Funktion muss nicht bestimmt werden.",
+            "expectedPerformanceEn": "p(−2)=−(−2)²=−4, q(−2)=(−(−2))²=4 and q(2)=(−2)²=4. In p the square is negated, whereas q squares the entire bracketed value. Here q assigns the same value 4 to two different inputs; finding an inverse function is not required.",
+            "understandingFocusDe": "Die veränderte Termstruktur verlangt eine neue Auswertung; das Ergebnis bleibt als Ausgabe der konkreten Eingabe verständlich.",
+            "understandingFocusEn": "The altered expression structure requires fresh evaluation while retaining the result's meaning as output for the concrete input."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "d8c9eb57-1614-4c1d-829a-618134def352",
+      "reason": "DE: Der algebraische Nachweis und die Symmetrie der Definitionsmenge werden zusammen verlangt. Die Transferaufgabe ändert die Definitionsmenge bei unverändertem Term. EN: Algebraic verification and domain symmetry are required together. The transfer task changes the domain while preserving the expression.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "domain-and-symmetry",
+            "essentialUnderstandingDe": "Bei y-Achsen- und Ursprungssymmetrie muss zu jedem zulässigen x auch −x zulässig sein; die entsprechende Spiegelung betrifft den gesamten Graphen.",
+            "essentialUnderstandingEn": "For y-axis and origin symmetry, −x must be admissible whenever x is; the corresponding reflection concerns the entire graph.",
+            "observablePerformanceDe": "Die lernende Person prüft die Definitionsmenge auf Abschluss unter x↦−x und begründet eine fehlende Symmetrie gegebenenfalls mit einem Punkt ohne Spiegelpartner.",
+            "observablePerformanceEn": "The learner checks that the domain is closed under x↦−x and, where appropriate, establishes absence of symmetry using a point without its reflected partner."
+          },
+          {
+            "id": "algebraic-verification",
+            "essentialUnderstandingDe": "Auf einer symmetrischen Definitionsmenge bedeutet f(−x)=f(x) für alle x y-Achsensymmetrie; f(−x)=−f(x) bedeutet Ursprungssymmetrie. Einzelne passende Zahlenpaare sind kein allgemeiner Nachweis.",
+            "essentialUnderstandingEn": "On a symmetric domain, f(−x)=f(x) for every x means y-axis symmetry; f(−x)=−f(x) means origin symmetry. Individual matching pairs are not a general proof.",
+            "observablePerformanceDe": "Die lernende Person formt f(−x) um, vergleicht es mit f(x) und −f(x) und verbindet den gültigen Nachweis mit der entsprechenden Graphensymmetrie.",
+            "observablePerformanceEn": "The learner transforms f(−x), compares it with f(x) and −f(x), and connects the valid verification to the corresponding graph symmetry."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "domain-and-symmetry",
+            "algebraic-verification"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "domain-restriction",
+            "textDe": "Bei demselben geraden Term eine symmetrische Definitionsmenge durch eine unsymmetrische ersetzen und den Geltungsbereich des algebraischen Arguments überprüfen.",
+            "textEn": "For the same even expression, replace a symmetric domain with an asymmetric one and check the scope of the algebraic argument."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "full-polynomials",
+            "taskDemandDe": "Untersuche p(x)=x⁴−x² und q(x)=x³−x, jeweils auf R, auf Symmetrie zur y-Achse und zum Ursprung. Begründe deine Entscheidungen rechnerisch für den gesamten Graphen.",
+            "taskDemandEn": "Examine p(x)=x⁴−x² and q(x)=x³−x, each on R, for y-axis and origin symmetry. Justify your decisions algebraically for the entire graph.",
+            "expectedPerformanceDe": "R ist unter Vorzeichenwechsel abgeschlossen. p(−x)=p(x), also y-Achsensymmetrie; beispielsweise p(2)=12 schließt Ursprungssymmetrie aus. q(−x)=−q(x), also Ursprungssymmetrie; q(2)=6 und q(−2)=−6 schließen y-Achsensymmetrie aus. Die Symmetriebeweise verwenden allgemeine x.",
+            "expectedPerformanceEn": "R is closed under sign reversal. p(−x)=p(x), giving y-axis symmetry; for example p(2)=12 rules out origin symmetry. q(−x)=−q(x), giving origin symmetry; q(2)=6 and q(−2)=−6 rule out y-axis symmetry. The positive symmetry proofs use general x.",
+            "understandingFocusDe": "Allgemeine Termidentitäten und die geometrischen Spiegelungen werden korrekt zugeordnet.",
+            "understandingFocusEn": "General expression identities are correctly matched to geometric reflections."
+          },
+          {
+            "id": "same-expression-restricted",
+            "taskDemandDe": "Vergleiche den Graphen von h(x)=x² auf D₁=[−2,2] mit dem Graphen desselben Terms auf D₂=[−1,2]. Entscheide für jeden Graphen über y-Achsen- und Ursprungssymmetrie und begründe, warum der gleiche Term nicht jede Symmetrieentscheidung festlegt.",
+            "taskDemandEn": "Compare the graph of h(x)=x² on D₁=[−2,2] with the graph of the same expression on D₂=[−1,2]. Decide y-axis and origin symmetry for each graph and explain why the same expression does not determine every symmetry decision.",
+            "expectedPerformanceDe": "Auf D₁ sind x und −x gemeinsam zulässig und h(−x)=h(x); der Graph ist y-achsensymmetrisch. Er ist nicht ursprungssymmetrisch, etwa wegen h(1)=h(−1)=1. D₂ ist nicht symmetrisch: Zum Punkt (2|4) fehlen beide möglichen Spiegelpunkte mit x=−2. Daher besitzt der zweite Graph keine der beiden Symmetrien, obwohl die Termgleichheit auf dem gemeinsamen Teilbereich gilt.",
+            "expectedPerformanceEn": "On D₁, x and −x are admissible together and h(−x)=h(x), so the graph is y-axis symmetric. It is not origin symmetric, as h(1)=h(−1)=1 shows. D₂ is asymmetric: the point (2,4) lacks both possible reflected points with x=−2. The second graph therefore has neither symmetry, although the expression identity holds on the overlapping part.",
+            "understandingFocusDe": "Der Transfer verändert eine notwendige Bedingung, nicht die Rechenzahlen des Symmetrienachweises.",
+            "understandingFocusEn": "Transfer changes a necessary condition rather than the numerical values in a symmetry calculation."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
+      "reason": "DE: Rückführung wird am gleichen Einheitskreispunkt begründet; der neue Fall verwendet einen allgemein angegebenen Winkel und anschließend eine Spiegelung. Keine halboffene Intervallkonvention wird zusätzlich vorgeschrieben. EN: Reduction is justified by the same unit-circle point; the fresh case uses a generally specified angle followed by a reflection. No additional half-open interval convention is imposed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "full-turn-invariance",
+            "essentialUnderstandingDe": "Eine ganze Umdrehung um 2π ändert den Endpunkt am Einheitskreis und damit dessen Koordinaten cos und sin nicht.",
+            "essentialUnderstandingEn": "A full turn of 2π leaves the endpoint on the unit circle, and hence its cos and sin coordinates, unchanged.",
+            "observablePerformanceDe": "Die lernende Person addiert oder subtrahiert geeignete ganze Vielfache von 2π, nennt einen passenden Winkel im Grundbereich und erläutert die Gleichheit beider Funktionswerte am Kreis.",
+            "observablePerformanceEn": "The learner adds or subtracts suitable integer multiples of 2π, gives an appropriate angle in the principal interval and explains equality of both function values using the circle."
+          },
+          {
+            "id": "signed-angle-coordinates",
+            "essentialUnderstandingDe": "Negative Winkel beschreiben Drehungen im entgegengesetzten Sinn. Bei Spiegelung an der waagerechten Achse bleibt cos gleich, während sin das Vorzeichen wechselt; 0 und 2π haben denselben Endpunkt.",
+            "essentialUnderstandingEn": "Negative angles describe rotations in the opposite direction. Reflection in the horizontal axis preserves cos and reverses the sign of sin; 0 and 2π have the same endpoint.",
+            "observablePerformanceDe": "Die lernende Person führt negative Winkel zurück und ordnet die Sinus- und Kosinuswerte samt Vorzeichen den richtigen Koordinaten zu, auch wenn der Ausgangswinkel nur durch einen Kreispunkt beschrieben ist.",
+            "observablePerformanceEn": "The learner reduces negative angles and assigns sine and cosine values with their signs to the correct coordinates, including when the initial angle is specified only by a circle point."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "full-turn-invariance",
+            "signed-angle-coordinates"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "numeric-to-specified-point",
+            "textDe": "Von konkreten Winkelmaßen zu einem über seine Einheitskreiskoordinaten vorgegebenen Winkel mit zusätzlichen Umdrehungen und umgekehrtem Drehsinn wechseln.",
+            "textEn": "Change from explicit angle measures to an angle specified by its unit-circle coordinates, with additional turns and reversed rotation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "positive-and-negative-angle",
+            "taskDemandDe": "Führe 13π/6 und −π/3 mithilfe des Einheitskreises auf Winkel zwischen 0 und 2π zurück. Gib die zugehörigen Sinus- und Kosinuswerte an und erläutere die Drehungen.",
+            "taskDemandEn": "Use the unit circle to reduce 13π/6 and −π/3 to angles between 0 and 2π. Give their sine and cosine values and explain the rotations.",
+            "expectedPerformanceDe": "13π/6−2π=π/6 mit sin=1/2 und cos=√3/2. −π/3+2π=5π/3 mit sin=−√3/2 und cos=1/2. Jeweils führt die vollständige zusätzliche oder entfernte Umdrehung zum selben Kreispunkt.",
+            "expectedPerformanceEn": "13π/6−2π=π/6, with sin=1/2 and cos=√3/2. −π/3+2π=5π/3, with sin=−√3/2 and cos=1/2. In each case an added or removed complete turn reaches the same circle point.",
+            "understandingFocusDe": "Periodizität und Drehsinn tragen die Zuordnung, nicht ein unkommentiertes Rechnerergebnis.",
+            "understandingFocusEn": "Periodicity and rotation direction support the assignment rather than an unexplained calculator result."
+          },
+          {
+            "id": "unknown-angle-known-point",
+            "taskDemandDe": "Ein Winkel α mit 0<α<π/2 endet am Einheitskreispunkt (3/5|4/5). Bestimme ohne α numerisch auszurechnen sin und cos von α−6π und 4π−α; gib passende Winkel im Grundbereich in Abhängigkeit von α an. Ordne zusätzlich −4π am Kreis ein.",
+            "taskDemandEn": "An angle α with 0<α<π/2 ends at the unit-circle point (3/5,4/5). Without calculating α numerically, determine sin and cos of α−6π and 4π−α, giving suitable principal angles in terms of α. Also locate −4π on the circle.",
+            "expectedPerformanceDe": "α−6π wird durch drei Umdrehungen auf α zurückgeführt: cos=3/5, sin=4/5. 4π−α wird auf 2π−α zurückgeführt: cos=3/5, sin=−4/5. −4π endet bei (1|0); 0 oder 2π ist bei erläutertem gleichen Endpunkt zulässig. Eine Umkehrfunktion wird nicht benötigt.",
+            "expectedPerformanceEn": "Adding three full turns reduces α−6π to α: cos=3/5, sin=4/5. 4π−α reduces to 2π−α: cos=3/5, sin=−4/5. −4π ends at (1,0); either 0 or 2π is acceptable with the common endpoint explained. No inverse function is needed.",
+            "understandingFocusDe": "Die Rückführung bleibt bei unbekanntem Winkelmaß möglich und unterscheidet Periodizität von Spiegelung.",
+            "understandingFocusEn": "Reduction remains possible with an unknown angle measure and distinguishes periodicity from reflection."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+      "reason": "DE: Vertraute charakteristische Eigenschaften werden auf AB1 beschrieben und verglichen; der Transfer ändert Vorzeichen und Parität des ganzzahligen Exponenten. Keine Ableitungen oder neuen allgemeinen Beweispflichten. EN: Familiar characteristic properties are described and compared at AB1; transfer changes sign and parity of the integer exponent. No derivatives or new general proof obligations.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "parity-and-sign",
+            "essentialUnderstandingDe": "Gerade und ungerade ganzzahlige Exponenten bestimmen charakteristische Vorzeichen und Graphensymmetrien der Potenzfunktion; diese Eigenschaften verbinden Term und typischen Verlauf.",
+            "essentialUnderstandingEn": "Even and odd integer exponents determine characteristic signs and graph symmetries of a power function, connecting its expression with its typical shape.",
+            "observablePerformanceDe": "Die lernende Person beschreibt und vergleicht an gegebenen Potenzfunktionen typische Vorzeichen, Achsen- oder Ursprungssymmetrie und passende charakteristische Punkte.",
+            "observablePerformanceEn": "The learner describes and compares typical signs, y-axis or origin symmetry, and suitable characteristic points of given power functions."
+          },
+          {
+            "id": "exponent-regime",
+            "essentialUnderstandingDe": "Positive Exponenten liefern andere Verläufe bei und nahe null als negative Exponenten mit Kehrwertbildung; bei Exponent null ist der Wert auf einem Bereich ohne null konstant 1.",
+            "essentialUnderstandingEn": "Positive exponents give different behaviour at and near zero from negative exponents involving reciprocals; exponent zero gives the constant value 1 on a domain excluding zero.",
+            "observablePerformanceDe": "Die lernende Person vergleicht den Verlauf für positive und negative Exponenten im gegebenen Definitionsbereich und ordnet den ausdrücklich vorgegebenen konstanten Null-Exponenten-Fall ein, ohne eine nicht vereinbarte Bedeutung von 0⁰ zu unterstellen.",
+            "observablePerformanceEn": "The learner compares behaviour for positive and negative exponents on the given domain and classifies an explicitly specified constant zero-exponent case without assuming an unspecified meaning of 0⁰."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parity-and-sign",
+            "exponent-regime"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sign-and-parity-of-exponent",
+            "textDe": "Positive gerade/ungerade Potenzen mit negativen Exponenten und einem explizit definierten Null-Exponenten-Fall vergleichen; die Definitionsbereiche werden vorgegeben.",
+            "textEn": "Compare positive even/odd powers with negative exponents and an explicitly defined zero-exponent case; domains are supplied."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "positive-powers",
+            "taskDemandDe": "Beschreibe und vergleiche f(x)=x² und g(x)=x³ auf R anhand von Vorzeichen, Symmetrie, charakteristischen Punkten und typischem Verlauf links und rechts von null. Eine Ableitung oder ein allgemeiner Beweis ist nicht verlangt.",
+            "taskDemandEn": "Describe and compare f(x)=x² and g(x)=x³ on R using signs, symmetry, characteristic points and typical behaviour to the left and right of zero. Neither differentiation nor a general proof is required.",
+            "expectedPerformanceDe": "x² ist nichtnegativ und y-achsensymmetrisch; der Graph fällt bis (0|0) und steigt danach. x³ hat das Vorzeichen von x, ist ursprungssymmetrisch und steigt durch den Ursprung. Beide enthalten (0|0) und (1|1); bei x=−1 unterscheiden sich die Werte 1 und −1.",
+            "expectedPerformanceEn": "x² is nonnegative and y-axis symmetric; its graph decreases to (0,0) and then increases. x³ has the sign of x, is origin symmetric and increases through the origin. Both contain (0,0) and (1,1); at x=−1 their values differ as 1 and −1.",
+            "understandingFocusDe": "Beschreiben und Vergleichen verbinden die bekannten Graphenmuster mit Exponent und Wertvorzeichen.",
+            "understandingFocusEn": "Description and comparison connect familiar graph patterns with exponent and value signs."
+          },
+          {
+            "id": "reciprocal-and-constant-powers",
+            "taskDemandDe": "Vergleiche nun p(x)=x⁻², q(x)=x⁻³ und h(x)=x⁰=1, alle ausdrücklich nur für x≠0. Beschreibe ihre Vorzeichen und Symmetrie sowie das Verhalten bei Annäherung an null und bei großem Betrag von x. Vergleiche mit den positiven Potenzen der vorigen Aufgabe; formal berechnete Grenzwerte sind nicht verlangt.",
+            "taskDemandEn": "Now compare p(x)=x⁻², q(x)=x⁻³ and h(x)=x⁰=1, all explicitly defined only for x≠0. Describe their signs and symmetry, and their behaviour near zero and for large magnitudes of x. Compare with the positive powers of the preceding task; formally calculated limits are not required.",
+            "expectedPerformanceDe": "p ist positiv und y-achsensymmetrisch, q hat das Vorzeichen von x und ist ursprungssymmetrisch. Nahe null werden die Beträge von p und q sehr groß, für großes |x| nähern sie sich null; bei den positiven Potenzen ist es umgekehrt. Beide Kehrwertfunktionen haben keinen Wert bei null. h bleibt auf dem gegebenen Bereich konstant 1 und ist y-achsensymmetrisch; ob h bei null fortgesetzt wird, ist hier nicht Gegenstand.",
+            "expectedPerformanceEn": "p is positive and y-axis symmetric, while q has the sign of x and is origin symmetric. Near zero the magnitudes of p and q become very large, and for large |x| they approach zero; positive powers behave oppositely. Neither reciprocal function has a value at zero. h remains constant at 1 on the given domain and is y-axis symmetric; extending h to zero is outside this task.",
+            "understandingFocusDe": "Ein geänderter Exponentenbereich verändert den Graphen strukturell; bekannte Eigenschaften werden sachgerecht beschrieben statt durch Differentialrechnung neu bewiesen.",
+            "understandingFocusEn": "Changing the exponent regime changes the graph structurally; familiar properties are described appropriately rather than re-proved using calculus."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    }
+  ]
+}

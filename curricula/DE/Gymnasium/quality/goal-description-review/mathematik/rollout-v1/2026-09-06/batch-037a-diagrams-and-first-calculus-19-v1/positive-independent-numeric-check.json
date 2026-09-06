@@ -1,0 +1,1816 @@
+{
+  "schemaVersion": 1,
+  "checkType": "independent_numeric_algebraic_countercheck",
+  "batchId": "mathematik-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1-20260906",
+  "checkedAt": "2026-09-06T10:08:57.710Z",
+  "status": "PASS",
+  "independence": {
+    "reviewer": "independent-round-b-agent",
+    "authoredCandidateProfiles": false,
+    "authorNumericReportConsulted": false,
+    "sourceMutationPerformed": false
+  },
+  "sourceBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-037a-diagrams-and-first-calculus-19-v1.candidates.json",
+    "digest": "sha256:344f54905899f4c7f574cdab0316bf1c5c1c516108711abfc8a2dfdc987fac37",
+    "bytes": 101515,
+    "reviewId": "canonical-math-positive-evidence-b037a-diagrams-first-calculus-19-v1"
+  },
+  "scriptBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-037a-diagrams-and-first-calculus-19-v1/positive-independent-numeric-check.mjs",
+    "digest": "sha256:7d812edf1e9a107c15e9096658c7ca38cca3037642934f1d1d82ea16bff119c6"
+  },
+  "scope": {
+    "goals": 19,
+    "applicationCases": 38,
+    "assertions": 138,
+    "bilingualTaskAndExpectedPerformanceRead": true,
+    "sourceNaturalLanguageParsedAutomatically": false,
+    "numericalAndAlgebraicFixturesDerivedIndependentlyFromTaskStatements": true,
+    "domainAngleAndOptimizationReasoningManuallyReviewed": true,
+    "allCandidateProfileSemanticsCertified": false
+  },
+  "authority": {
+    "aiCandidateOnly": true,
+    "humanApprovalGranted": false,
+    "learnerExecutionPerformed": false,
+    "masteryOrProgressGranted": false
+  },
+  "findings": [],
+  "results": [
+    {
+      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "caseId": "temperature-scale",
+      "assertions": [
+        {
+          "label": "Time midpoint in hours",
+          "actual": 3,
+          "expected": 3,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Temperature midpoint in degrees Celsius",
+          "actual": 5,
+          "expected": 5,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Uniform scales support 3 h and 5 °C; the axis roles are preserved in both expected answers.",
+      "passed": true
+    },
+    {
+      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "caseId": "horizontal-unit-factor",
+      "assertions": [
+        {
+          "label": "Group A amount in euros",
+          "actual": 200,
+          "expected": 200,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Group B amount in euros",
+          "actual": 350,
+          "expected": 350,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Amount difference in euros",
+          "actual": 150,
+          "expected": 150,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "A and B are categories, while the horizontal numerical readings carry a factor of 100 euros.",
+      "passed": true
+    },
+    {
+      "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "caseId": "reservoir-trend",
+      "assertions": [
+        {
+          "label": "Three segment rates in litres per hour",
+          "actual": [
+            20,
+            0,
+            -10
+          ],
+          "expected": [
+            20,
+            0,
+            -10
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Highest volume",
+          "actual": 60,
+          "expected": 60,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Plateau endpoints in hours",
+          "actual": [
+            2,
+            5
+          ],
+          "expected": [
+            2,
+            5
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Linear segments attain 60 L throughout [2,5]; filling, plateau and decline agree with the signs.",
+      "passed": true
+    },
+    {
+      "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "caseId": "two-distance-lines",
+      "assertions": [
+        {
+          "label": "Line slopes in kilometres per hour",
+          "actual": [
+            6,
+            2
+          ],
+          "expected": [
+            6,
+            2
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Intersection time and distance",
+          "actual": [
+            2,
+            12,
+            12
+          ],
+          "expected": [
+            2,
+            12,
+            12
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Intersection belongs to displayed interval",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The 8 km initial offset and faster slope of A give equality at 2 h, followed by A being ahead within the given range.",
+      "passed": true
+    },
+    {
+      "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "caseId": "truncated-bars",
+      "assertions": [
+        {
+          "label": "Actual value ratio",
+          "actual": 1.1,
+          "expected": 1.1,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Actual percentage increase",
+          "actual": 10,
+          "expected": 10,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Visible bar-length ratio",
+          "actual": 2,
+          "expected": 2,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The visible doubling concerns differences from 45; the data increase is only 10 percent.",
+      "passed": true
+    },
+    {
+      "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "caseId": "unequal-time-gaps",
+      "assertions": [
+        {
+          "label": "First interval length and rate",
+          "actual": [
+            1,
+            10
+          ],
+          "expected": [
+            1,
+            10
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Second interval length",
+          "actual": 9,
+          "expected": 9,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Second interval rate and published rounding",
+          "actual": 1.1111111111111112,
+          "expected": 1.11,
+          "absoluteTolerance": 0.005,
+          "comparison": "absolute_error",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Equal drawn gaps do not represent equal durations; 10 and 10/9 units per year differ.",
+      "passed": true
+    },
+    {
+      "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "caseId": "square-pictograms",
+      "assertions": [
+        {
+          "label": "Displayed area ratio",
+          "actual": 4,
+          "expected": 4,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Data ratio",
+          "actual": 2,
+          "expected": 2,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Equal-width bars of lengths 10 and 20 correctly show the factor of two rather than a fourfold area change.",
+      "passed": true
+    },
+    {
+      "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "caseId": "different-class-sizes",
+      "assertions": [
+        {
+          "label": "Participation percentages",
+          "actual": [
+            60,
+            50
+          ],
+          "expected": [
+            60,
+            50
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Absolute and relative order differ",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The percentage comparison needs group sizes; the proposed percentage bars retain this reference information.",
+      "passed": true
+    },
+    {
+      "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+      "caseId": "travel-average",
+      "assertions": [
+        {
+          "label": "Distance increment and time interval",
+          "actual": [
+            360,
+            3
+          ],
+          "expected": [
+            360,
+            3
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Average speed in metres per minute",
+          "actual": 120,
+          "expected": 120,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Conversion to metres per second",
+          "actual": 2,
+          "expected": 2,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Two cumulative distance values determine the interval average but do not determine every instantaneous speed.",
+      "passed": true
+    },
+    {
+      "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+      "caseId": "cooling-average",
+      "assertions": [
+        {
+          "label": "Temperature at 2 minutes",
+          "actual": 74.4,
+          "expected": 74.4,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Temperature at 6 minutes",
+          "actual": 65.6,
+          "expected": 65.6,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Average rate in degrees Celsius per minute",
+          "actual": -2.200000000000003,
+          "expected": -2.2,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Requested interval lies inside model domain",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The negative interval average is consistent with a nonlinear temperature model, without implying a constant local cooling rate.",
+      "passed": true
+    },
+    {
+      "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+      "caseId": "h-square",
+      "assertions": [
+        {
+          "label": "Direct difference quotient h=0.1",
+          "actual": 4.100000000000001,
+          "expected": 4.1,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Direct difference quotient h=-0.1",
+          "actual": 3.9000000000000012,
+          "expected": 3.9,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Direct difference quotient h=0.01",
+          "actual": 4.009999999999891,
+          "expected": 4.01,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Direct difference quotient h=-0.01",
+          "actual": 3.9899999999999824,
+          "expected": 3.99,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Exact numerator after expansion around x0=2",
+          "actual": [
+            0,
+            4,
+            1
+          ],
+          "expected": [
+            0,
+            4,
+            1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Quotient after h cancellation",
+          "actual": [
+            4,
+            1
+          ],
+          "expected": [
+            4,
+            1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Limit of 4+h",
+          "actual": 4,
+          "expected": 4,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "All four h values are nonzero; polynomial cancellation gives an exact limiting argument, while the finite table alone does not prove convergence.",
+      "passed": true
+    },
+    {
+      "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+      "caseId": "h-reciprocal",
+      "assertions": [
+        {
+          "label": "Domain at h=0.1",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Direct quotient at h=0.1",
+          "actual": -0.9090909090909094,
+          "expected": -0.909091,
+          "absoluteTolerance": 5e-7,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Algebraic quotient agreement at h=0.1",
+          "actual": -0.9090909090909094,
+          "expected": -0.9090909090909091,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Domain at h=-0.1",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Direct quotient at h=-0.1",
+          "actual": -1.1111111111111116,
+          "expected": -1.111111,
+          "absoluteTolerance": 5e-7,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Algebraic quotient agreement at h=-0.1",
+          "actual": -1.1111111111111116,
+          "expected": -1.1111111111111112,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Domain at h=0.01",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Direct quotient at h=0.01",
+          "actual": -0.990099009900991,
+          "expected": -0.990099,
+          "absoluteTolerance": 5e-7,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Algebraic quotient agreement at h=0.01",
+          "actual": -0.990099009900991,
+          "expected": -0.9900990099009901,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Domain at h=-0.01",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Direct quotient at h=-0.01",
+          "actual": -1.0101010101010166,
+          "expected": -1.010101,
+          "absoluteTolerance": 5e-7,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Algebraic quotient agreement at h=-0.01",
+          "actual": -1.0101010101010166,
+          "expected": -1.0101010101010102,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Common numerator of 1/(1+h)-1",
+          "actual": [
+            0,
+            -1
+          ],
+          "expected": [
+            0,
+            -1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Limit of -1/(1+h)",
+          "actual": -1,
+          "expected": -1,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The original difference quotient requires h not equal to 0 or -1; the simplified rational expression establishes the finite limit -1.",
+      "passed": true
+    },
+    {
+      "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+      "caseId": "cube-justification",
+      "assertions": [
+        {
+          "label": "Exact cubic difference quotient in x and h",
+          "actual": {
+            "0,2": 1,
+            "1,1": 3,
+            "2,0": 3
+          },
+          "expected": {
+            "0,2": 1,
+            "1,1": 3,
+            "2,0": 3
+          },
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Terms surviving h to zero",
+          "actual": {
+            "2,0": 3
+          },
+          "expected": {
+            "2,0": 3
+          },
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The exact polynomial identity holds for every real x with h nonzero and yields 3x²; it proves this exponent case, not all integer cases.",
+      "passed": true
+    },
+    {
+      "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+      "caseId": "negative-power-justification",
+      "assertions": [
+        {
+          "label": "Common numerator x-(x+h)",
+          "actual": {
+            "0,1": -1
+          },
+          "expected": {
+            "0,1": -1
+          },
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Common denominator x(x+h)",
+          "actual": {
+            "1,1": 1,
+            "2,0": 1
+          },
+          "expected": {
+            "1,1": 1,
+            "2,0": 1
+          },
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Cancelled quotient at x=-2",
+          "actual": -0.2631578947368418,
+          "expected": -0.2631578947368421,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Negative-exponent rule at x=-2",
+          "actual": -0.25,
+          "expected": -0.25,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Cancelled quotient at x=-0.5",
+          "actual": -5,
+          "expected": -5,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Negative-exponent rule at x=-0.5",
+          "actual": -4,
+          "expected": -4,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Cancelled quotient at x=1",
+          "actual": -0.9090909090909094,
+          "expected": -0.9090909090909091,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Negative-exponent rule at x=1",
+          "actual": -1,
+          "expected": -1,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Cancelled quotient at x=3",
+          "actual": -0.10752688172043001,
+          "expected": -0.1075268817204301,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Negative-exponent rule at x=3",
+          "actual": -0.1111111111111111,
+          "expected": -0.1111111111111111,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Required domain exclusions and an admissible pair",
+          "actual": [
+            false,
+            false,
+            false,
+            true
+          ],
+          "expected": [
+            false,
+            false,
+            false,
+            true
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The independent algebra preserves x≠0, h≠0 and x+h≠0 before cancellation; the limiting derivative retains x≠0.",
+      "passed": true
+    },
+    {
+      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "caseId": "constant-multiple",
+      "assertions": [
+        {
+          "label": "Derivative coefficients of -3x²+5",
+          "actual": [
+            0,
+            -6
+          ],
+          "expected": [
+            0,
+            -6
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Constant term derivative",
+          "actual": [],
+          "expected": [],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Constant extraction identity witness",
+          "actual": -30,
+          "expected": -30,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The symbolic reasoning factors a fixed c from the difference quotient and uses differentiability of u. The witness is a calculation check, not a substitute for that general justification.",
+      "passed": true
+    },
+    {
+      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+      "caseId": "sum-cancellation",
+      "assertions": [
+        {
+          "label": "Simplified sum coefficients",
+          "actual": [
+            0,
+            2
+          ],
+          "expected": [
+            0,
+            2
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Sum of derivatives",
+          "actual": [
+            2
+          ],
+          "expected": [
+            2
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Derivative of simplified sum",
+          "actual": [
+            2
+          ],
+          "expected": [
+            2
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The quoted general proof splits the sum quotient into two existing limits; cancellation gives the same constant derivative through either calculation order.",
+      "passed": true
+    },
+    {
+      "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+      "caseId": "expanded-polynomial",
+      "assertions": [
+        {
+          "label": "Derivative coefficients",
+          "actual": [
+            5,
+            -4,
+            0,
+            12
+          ],
+          "expected": [
+            5,
+            -4,
+            0,
+            12
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The four source summands contribute 12x³, -4x, 5 and 0, including the negative signs and factors.",
+      "passed": true
+    },
+    {
+      "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+      "caseId": "rearranged-polynomial",
+      "assertions": [
+        {
+          "label": "Expanded polynomial coefficients",
+          "actual": [
+            -2,
+            -1,
+            2
+          ],
+          "expected": [
+            -2,
+            -1,
+            2
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Derivative coefficients",
+          "actual": [
+            -1,
+            4
+          ],
+          "expected": [
+            -1,
+            4
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Expansion gives an equivalent polynomial 2x²-x-2 and differentiation gives 4x-1 using only the requested rules.",
+      "passed": true
+    },
+    {
+      "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
+      "caseId": "position-rate",
+      "assertions": [
+        {
+          "label": "Tangent passes through the given position",
+          "actual": 12,
+          "expected": 12,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Tangent slope in the stated axis units",
+          "actual": -2,
+          "expected": -2,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Position 12 m and instantaneous signed velocity -2 m/s are distinct quantities; the data do not impose constant velocity on any interval.",
+      "passed": true
+    },
+    {
+      "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
+      "caseId": "zero-volume-rate",
+      "assertions": [
+        {
+          "label": "A compatible smooth witness has the three volumes",
+          "actual": [
+            101,
+            100,
+            101
+          ],
+          "expected": [
+            101,
+            100,
+            101
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Witness derivative at 5 minutes",
+          "actual": 0,
+          "expected": 0,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Given unequal volume values refute constancy",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "V(t)=100+(t-5)² is a constructed compatibility witness, not a claim that the task uniquely specifies that function. The marked values already refute constant volume.",
+      "passed": true
+    },
+    {
+      "goalId": "01acfcc8-7204-5c22-8774-13f6383f4fd4",
+      "caseId": "parabola-slope-assignment",
+      "assertions": [
+        {
+          "label": "Derivative coefficients",
+          "actual": [
+            0,
+            2
+          ],
+          "expected": [
+            0,
+            2
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Requested derivative values",
+          "actual": [
+            -4,
+            -2,
+            0,
+            2
+          ],
+          "expected": [
+            -4,
+            -2,
+            0,
+            2
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Original heights differ from derivative values",
+          "actual": [
+            3,
+            0,
+            -1,
+            0
+          ],
+          "expected": [
+            3,
+            0,
+            -1,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The term identity f′=2x, not interpolation from four isolated samples, determines the derivative function on all real inputs.",
+      "passed": true
+    },
+    {
+      "goalId": "01acfcc8-7204-5c22-8774-13f6383f4fd4",
+      "caseId": "constant-slope-assignment",
+      "assertions": [
+        {
+          "label": "Affine slope and intercept",
+          "actual": [
+            3,
+            8
+          ],
+          "expected": [
+            3,
+            8
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Derivative of the resulting line",
+          "actual": [
+            3
+          ],
+          "expected": [
+            3
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The full graph is explicitly affine, so its derivative is identically 3 rather than only matching two sampled slopes.",
+      "passed": true
+    },
+    {
+      "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
+      "caseId": "cubic-graph-to-derivative",
+      "assertions": [
+        {
+          "label": "Derivative coefficients",
+          "actual": [
+            -3,
+            0,
+            3
+          ],
+          "expected": [
+            -3,
+            0,
+            3
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Stated extremum coordinates",
+          "actual": [
+            2,
+            -2
+          ],
+          "expected": [
+            2,
+            -2
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Derivative zeros",
+          "actual": [
+            0,
+            0
+          ],
+          "expected": [
+            0,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Sign-interval witnesses",
+          "actual": [
+            1,
+            -1,
+            1
+          ],
+          "expected": [
+            1,
+            -1,
+            1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Factorized derivative identity",
+          "actual": [
+            -3,
+            0,
+            3
+          ],
+          "expected": [
+            -3,
+            0,
+            3
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "3(x-1)(x+1) proves the stated signs. The dependence 3x²-3 decreases up to 0 and increases thereafter without requiring a second derivative; the sample signs are illustrative only.",
+      "passed": true
+    },
+    {
+      "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
+      "caseId": "derivative-with-touching-zero",
+      "assertions": [
+        {
+          "label": "Derivative of cubic with arbitrary example constant",
+          "actual": [
+            0,
+            0,
+            3
+          ],
+          "expected": [
+            0,
+            0,
+            3
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Stationary derivative at zero",
+          "actual": 0,
+          "expected": 0,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Cubic values across zero for two heights",
+          "actual": [
+            6,
+            7,
+            8
+          ],
+          "expected": [
+            6,
+            7,
+            8
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "A changed integration constant preserves derivative",
+          "actual": [
+            0,
+            0,
+            3
+          ],
+          "expected": [
+            0,
+            0,
+            3
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "For a<b, b³-a³=(b-a)(a²+ab+b²)>0, proving strict increase even through the isolated derivative zero. f(0)=C remains free; there is no extremum at zero.",
+      "passed": true
+    },
+    {
+      "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+      "caseId": "two-antiderivatives",
+      "assertions": [
+        {
+          "label": "Both derivatives",
+          "actual": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "expected": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Difference of antiderivatives",
+          "actual": [
+            7
+          ],
+          "expected": [
+            7
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The constant difference 7 vanishes under differentiation; the requirement F′=f does not require F=f or a unique height.",
+      "passed": true
+    },
+    {
+      "goalId": "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+      "caseId": "zero-function",
+      "assertions": [
+        {
+          "label": "Constant derivative values",
+          "actual": [
+            0,
+            0
+          ],
+          "expected": [
+            0,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Derivative of x",
+          "actual": [
+            1
+          ],
+          "expected": [
+            1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Checked inputs are interior to the open interval",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Any constant function has derivative zero throughout (-2,2), whereas G=x has derivative one and is not an antiderivative of the given zero function.",
+      "passed": true
+    },
+    {
+      "goalId": "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+      "caseId": "rising-tangent-angle",
+      "assertions": [
+        {
+          "label": "Point and tangent coefficients",
+          "actual": [
+            1,
+            1,
+            -1,
+            2
+          ],
+          "expected": [
+            1,
+            1,
+            -1,
+            2
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Principal slope angle in degrees",
+          "actual": 63.43494882292201,
+          "expected": 63.43,
+          "absoluteTolerance": 0.005,
+          "comparison": "absolute_error",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "With equal axis scaling and the stated principal arctangent convention, the tangent y=2x-1 has angle about 63.43 degrees.",
+      "passed": true
+    },
+    {
+      "goalId": "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+      "caseId": "falling-reciprocal-angle",
+      "assertions": [
+        {
+          "label": "Admissible contact and tangent coefficients",
+          "actual": [
+            true,
+            1,
+            2,
+            -1
+          ],
+          "expected": [
+            true,
+            1,
+            2,
+            -1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Principal slope angle in degrees",
+          "actual": -45,
+          "expected": -45,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The reciprocal is defined at x=1; its tangent y=-x+2 has the negative angle -45 degrees under the same convention.",
+      "passed": true
+    },
+    {
+      "goalId": "f042385e-f772-42db-9c96-f21a792ac5ea",
+      "caseId": "ramp-guide",
+      "assertions": [
+        {
+          "label": "Tangent and normal coefficients",
+          "actual": [
+            -1,
+            2,
+            1.5,
+            -0.5
+          ],
+          "expected": [
+            -1,
+            2,
+            1.5,
+            -0.5
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Common contact point",
+          "actual": [
+            1,
+            1
+          ],
+          "expected": [
+            1,
+            1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Perpendicular slope product",
+          "actual": -1,
+          "expected": -1,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Normal ground intersection",
+          "actual": [
+            3,
+            0
+          ],
+          "expected": [
+            3,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Equal metre scaling supports the Euclidean perpendicularity calculation; these lines describe the specified local attachment, not the full curved ramp.",
+      "passed": true
+    },
+    {
+      "goalId": "f042385e-f772-42db-9c96-f21a792ac5ea",
+      "caseId": "vertex-support",
+      "assertions": [
+        {
+          "label": "Vertex position and tangent slope",
+          "actual": [
+            2,
+            1,
+            0
+          ],
+          "expected": [
+            2,
+            1,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Vertical normal foot point",
+          "actual": [
+            2,
+            0
+          ],
+          "expected": [
+            2,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Normal direction is perpendicular to horizontal tangent",
+          "actual": 0,
+          "expected": 0,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The tangent is y=1 and the normal is x=2; no expression -1/0 is evaluated or interpreted as a finite slope.",
+      "passed": true
+    },
+    {
+      "goalId": "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+      "caseId": "three-regular-angles",
+      "assertions": [
+        {
+          "label": "Three slopes",
+          "actual": [
+            1,
+            2,
+            -0.5
+          ],
+          "expected": [
+            1,
+            2,
+            -0.5
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Principal angle 1",
+          "actual": 45,
+          "expected": 45,
+          "absoluteTolerance": 0.005,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Principal angle 2",
+          "actual": 63.43494882292201,
+          "expected": 63.43,
+          "absoluteTolerance": 0.005,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Principal angle 3",
+          "actual": -26.56505117707799,
+          "expected": -26.57,
+          "absoluteTolerance": 0.005,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Tangent-normal angle difference",
+          "actual": 90,
+          "expected": 90,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The angles use the stated signed principal convention; the tangent-normal difference is 90 degrees although the normal angle is negative.",
+      "passed": true
+    },
+    {
+      "goalId": "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+      "caseId": "horizontal-tangent-angles",
+      "assertions": [
+        {
+          "label": "Secant endpoint values and slopes",
+          "actual": [
+            1,
+            -3,
+            -2,
+            0
+          ],
+          "expected": [
+            1,
+            -3,
+            -2,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Signed secant angle",
+          "actual": -63.43494882292201,
+          "expected": -63.43,
+          "absoluteTolerance": 0.005,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Horizontal tangent angle",
+          "actual": 0,
+          "expected": 0,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Undirected vertical normal angle",
+          "actual": 90,
+          "expected": 90,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The task separately specifies the undirected 90-degree angle for the vertical normal; there is no finite normal slope.",
+      "passed": true
+    },
+    {
+      "goalId": "56b4acb5-6024-573f-9890-35fbd21ee343",
+      "caseId": "acute-graph-intersection",
+      "assertions": [
+        {
+          "label": "Shared point",
+          "actual": [
+            1,
+            1
+          ],
+          "expected": [
+            1,
+            1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Tangent slopes",
+          "actual": [
+            2,
+            1
+          ],
+          "expected": [
+            2,
+            1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Smaller tangent angle",
+          "actual": 18.43494882292201,
+          "expected": 18.43,
+          "absoluteTolerance": 0.005,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Independent vector-angle check",
+          "actual": 18.434948822922017,
+          "expected": 18.43,
+          "absoluteTolerance": 0.005,
+          "comparison": "absolute_error",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The specified point is x=1; the other intersection at x=0 is not used. Both angle methods give the smaller local angle about 18.43 degrees.",
+      "passed": true
+    },
+    {
+      "goalId": "56b4acb5-6024-573f-9890-35fbd21ee343",
+      "caseId": "orthogonal-intersection",
+      "assertions": [
+        {
+          "label": "Shared point values",
+          "actual": [
+            0,
+            0
+          ],
+          "expected": [
+            0,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Slope product and tangent-formula denominator",
+          "actual": [
+            -1,
+            0
+          ],
+          "expected": [
+            -1,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Vector angle in degrees",
+          "actual": 90,
+          "expected": 90,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "Zero denominator is a limitation of that tangent quotient formula, not a missing geometric angle; the directions are perpendicular.",
+      "passed": true
+    },
+    {
+      "goalId": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+      "caseId": "corner-versus-smooth",
+      "assertions": [
+        {
+          "label": "Absolute-value one-sided difference quotients",
+          "actual": [
+            -1,
+            1
+          ],
+          "expected": [
+            -1,
+            1
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Parabola derivative at zero",
+          "actual": 0,
+          "expected": 0,
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The absolute-value side quotients are identically -1 and +1, proving different side limits; the parabola has the common finite derivative zero.",
+      "passed": true
+    },
+    {
+      "goalId": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+      "caseId": "jump-with-parallel-branches",
+      "assertions": [
+        {
+          "label": "Actual value at zero and left-branch limiting value",
+          "actual": [
+            1,
+            0
+          ],
+          "expected": [
+            1,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Right difference quotient",
+          "actual": 1.0000000000000009,
+          "expected": 1,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Left difference quotient at h=-0.01",
+          "actual": 101,
+          "expected": 101,
+          "absoluteTolerance": 1e-10,
+          "comparison": "absolute_error",
+          "passed": true
+        },
+        {
+          "label": "Both branch slopes",
+          "actual": [
+            [
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          "expected": [
+            [
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The left quotient is (h-1)/h=1-1/h and diverges for h→0−; the right quotient is 1. Open (0,0) and closed (0,1) express the jump despite parallel branches.",
+      "passed": true
+    },
+    {
+      "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+      "caseId": "wall-enclosure",
+      "assertions": [
+        {
+          "label": "Derivative coefficients",
+          "actual": [
+            30,
+            -4
+          ],
+          "expected": [
+            30,
+            -4
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Stationary dimensions and maximum area",
+          "actual": [
+            7.5,
+            15,
+            112.5
+          ],
+          "expected": [
+            7.5,
+            15,
+            112.5
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Interior feasibility and fence constraint",
+          "actual": [
+            true,
+            30
+          ],
+          "expected": [
+            true,
+            30
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Degenerate endpoint areas",
+          "actual": [
+            0,
+            0
+          ],
+          "expected": [
+            0,
+            0
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Derivative sign around interior candidate",
+          "actual": [
+            1,
+            -1
+          ],
+          "expected": [
+            1,
+            -1
+          ],
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "A′=30-4a changes from positive to negative at 7.5 and A=112.5-2(a-7.5)² proves the global maximum on 0<a<15. Zero endpoint areas refer to degenerate limiting rectangles.",
+      "passed": true
+    },
+    {
+      "goalId": "1511b39a-4094-5450-a755-4a3ad3339733",
+      "caseId": "capacity-limited-profit",
+      "assertions": [
+        {
+          "label": "Derivative coefficients and unconstrained stationary point",
+          "actual": [
+            [
+              20,
+              -2
+            ],
+            10
+          ],
+          "expected": [
+            [
+              20,
+              -2
+            ],
+            10
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Stationary point excluded by capacity",
+          "actual": true,
+          "expected": true,
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Derivative at domain ends",
+          "actual": [
+            20,
+            4
+          ],
+          "expected": [
+            20,
+            4
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Profit at both domain ends",
+          "actual": [
+            -64,
+            32
+          ],
+          "expected": [
+            -64,
+            32
+          ],
+          "comparison": "exact",
+          "passed": true
+        },
+        {
+          "label": "Exhaustive integer-domain maximizer",
+          "actual": {
+            "q": 8,
+            "profit": 32
+          },
+          "expected": {
+            "q": 8,
+            "profit": 32
+          },
+          "comparison": "exact",
+          "passed": true
+        }
+      ],
+      "interpretationReview": "The affine derivative decreases only to 4 on [0,8] and is positive throughout; therefore q=8 is also the continuous maximum. Integer enumeration confirms the same feasible boundary answer.",
+      "passed": true
+    }
+  ]
+}

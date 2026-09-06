@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "math-b033b-coordinates-lines-motion-current-synthesis-20260906-v1",
+  "synthesizedBy": "openai-codex-parent-b033b-current-pair",
+  "decisions": [
+    {
+      "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "rationaleDe": "Die aktuelle Beschreibung fordert nicht nur Tupelnotation, sondern ausdrücklich fachsprachliche Deutung der Einträge und Erklärung der kontextbezogenen Richtungsbedeutung. Runde B wird gewählt, weil sie diesen vollständigen Anspruch berücksichtigt. Achsenreihenfolge, gerichtete Komponenten, Vorzeichen und Null werden im getrennten V2-Profil mit beiden Übersetzungsrichtungen und veränderten Achsen belegt. Die konkrete Ersetzung aus A wird begründet verworfen; die ursprünglichen Records bleiben unverändert. J9/AB2 und die Abgrenzung zu Vektorrechnung und Parameterdarstellung bleiben erhalten. Keine neue menschliche, Bild- oder allgemeine Quellenfreigabe wird behauptet.",
+      "rationaleEn": "The current description requires not just tuple notation but explicitly interpreting entries using correct terminology and explaining contextual directional meaning. Round B is selected because it considers this complete demand. Axis order, directed components, signs and zero are specified in the separate V2 profile using both translation directions and changed axes. A's concrete replacement is rejected with reasons; the original records remain unchanged. J9/AB2 and the boundary to vector arithmetic and parametric representation are preserved. No new human, image or general source approval is claimed.",
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Vektoren im räumlichen Koordinatensystem als Tupel darstellen, deren Einträge als gerichtete Änderungen entlang der Koordinatenachsen deuten und einfache Richtungsangaben im Kontext fachsprachlich erklären.",
+        "proposedDescriptionEn": "The learner can represent vectors in the spatial coordinate system as tuples, interpret their entries as directed changes along the coordinate axes, and explain simple directional information in context using correct terminology.",
+        "rationaleDe": "A befürchtet, die bloße Benennung als x-, y- und z-Eintrag könne genügen. Sie erfüllt jedoch schon den aktuellen zweiten Satzteil zur Erklärung der Richtungsbedeutung im Kontext nicht. Die vorgeschlagene Achsenänderungsformulierung ist für Versatzvektoren fachlich sinnvoll, behebt hier aber keine fehlende Kompetenzbehauptung. Die konkret beobachtbare Komponenten- und Vorzeichendeutung gehört in das Profil. Dieses verlangt eigenständige sprachliche Erklärung und Rückübersetzung, nicht bloße Bezeichnung oder Wiederholung; Vektoraddition und Längenberechnung werden nicht ergänzt.",
+        "rationaleEn": "A is concerned that merely naming the x-, y- and z-entries could suffice. That would already fail the current clause requiring explanation of directional meaning in context. The proposed axis-change wording is mathematically useful for displacement vectors but does not repair a missing competence claim here. Concrete observable interpretation of components and signs belongs in the profile. It requires independent verbal explanation and reverse translation, not mere labelling or repetition; vector addition and length calculation are not added."
+      }
+    },
+    {
+      "goalId": "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide aktuellen unabhängigen Runden bestätigen KEEP. Punktkonstruktion trägt die einfache Gerade durch zwei verschiedene Punkte; dies ist eine zusammenhängende räumliche Darstellungskompetenz und kein verdeckter Split. Runde B macht Achseneinteilung, Zeichnungskonvention und beidseitige Fortsetzung besonders konkret. Das getrennte Profil prüft zusätzlich den Wechsel von einer achsenparallelen zu einer schrägen Geraden mit vorzeichenbehafteten Koordinaten. Parameterdarstellung, metrische Rechnungen und Lageuntersuchungen bleiben bei den Nachfolgern. Keine neue menschliche, Bild-, Quellenabdeckungs- oder Projektionsfreigabe wird behauptet.",
+      "rationaleEn": "Both current independent rounds confirm KEEP. Point construction supports the simple line through two distinct points; this is one coherent spatial representation competence rather than a concealed split. Round B makes axis graduations, drawing conventions and extension in both directions particularly concrete. The separate profile also tests changing from an axis-parallel to an oblique line with signed coordinates. Parametric representation, metric calculations and relative-position analysis remain successor competences. No new human, image, source-coverage or projection approval is claimed."
+    },
+    {
+      "goalId": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "rationaleDe": "Beide aktuellen Runden bestätigen den tatsächlich übernommenen beschränkten Parameterbereich. Runde A verbindet den freien Geradenparameter mit abgeschlossenen, darstellungsabhängigen Streckenintervallen. Das getrennte Profil prüft Endpunkte, innere Werte und bei verändertem Stützpunkt sowie skaliertem Richtungsvektor ein negatives Intervall. Die Rechnungen stimmen; ein Standardintervall wird nicht pauschal vorgeschrieben. Die frühere Textübernahme ist separat im B033-Adoptionbeleg dokumentiert. Keine neue menschliche, Bild-, Quellenabdeckungs- oder Projektionsfreigabe wird behauptet.",
+      "rationaleEn": "Both current rounds confirm the bounded parameter domain that was actually adopted. Round A connects the unrestricted line parameter with closed segment intervals that depend on the representation. The separate profile checks endpoints, interior values and a negative interval after changing the support point and scaling the direction vector. Calculations are correct; no universal standard interval is imposed. The earlier wording adoption is documented separately in the B033 adoption receipt. No new human, image, source-coverage or projection approval is claimed."
+    },
+    {
+      "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "rationaleDe": "Runde A berücksichtigt den bereits ausdrücklichen Anspruch, räumliche Lagebeziehungen zu untersuchen und mögliche Schnittpunkte rechnerisch zu bestimmen. Die vier Fälle präzisieren dessen geometrische Abdeckung; sie sind keine zusätzliche Winkel-, Abstands- oder Parameterfamilienkompetenz. Die aktuelle BW-Extraktion und ihr Mapping zu BP2016 §3.3.3(13) fordern ebenfalls Lageuntersuchung und gegebenenfalls Schnittpunktbestimmung, ohne zusätzliche Verfahrenspflicht. Der Profilautor-Dissens zur Fallauslegung ist damit fachlich beantwortet und im Gegenprüfungsbeleg erhalten, nicht als menschliche Abnahme umetikettiert. B's vorgeschlagene Fallliste wird als unnötige Erweiterung des knappen Texts verworfen; das Profil prüft alle vier Fälle mit korrekten Rechnungen und Begründungen.",
+      "rationaleEn": "Round A considers the already explicit demand to investigate spatial line positions and calculate possible intersections. The four cases specify its geometric coverage; they do not add angle, distance or parameter-family competences. The current BW extraction and its mapping to BP2016 section 3.3.3(13) likewise require positional investigation and intersection determination when applicable, without imposing an additional method. The profile author's dissent about interpreting the case coverage is thus addressed mathematically and retained in the counter-review record, not relabelled as human approval. B's proposed case list is rejected as an unnecessary expansion of the concise wording; the profile tests all four cases with correct calculations and reasons.",
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann in einfachen Fällen begründet zwischen identischen, echt parallelen, sich schneidenden und windschiefen Geraden im Raum unterscheiden und im Schnittfall den Schnittpunkt rechnerisch bestimmen.",
+        "proposedDescriptionEn": "The learner can distinguish with reasons, in simple cases, between coincident, distinct parallel, intersecting, and skew lines in space, and determine the intersection point algebraically in the intersecting case.",
+        "rationaleDe": "Die vier Lagefälle sind fachlich korrekt. Der vorhandene Text beschränkt die Kompetenz aber nicht auf eine bloße Schnittrechnung: Er verlangt unabhängig davon die Untersuchung der Lage. Eine unbegründete Gleichsetzung von Parallelität und Windschiefe erfüllt diesen Anspruch nicht. Das Profil verlangt daher Richtungsprüfung und Punktzugehörigkeit beziehungsweise gemeinsame Lösung aller drei Koordinaten sowie geometrische Deutung. Die vollständige Fallabdeckung ist Prüftiefe derselben Kompetenz; eine weitere enumerierende Textfassung ist nicht nötig. Der Dissens bleibt als zurückgewiesener konkreter Vorschlag sichtbar.",
+        "rationaleEn": "The four positional cases are mathematically correct. However, the existing wording does not restrict the competence to calculating an intersection: it separately requires investigating the relative position. Confusing parallel and skew lines without justification would not satisfy that demand. The profile therefore requires checking directions and point membership or a common solution of all three coordinates, together with geometric interpretation. Full case coverage specifies the assessment depth of the same competence; another enumerative description is unnecessary. The dissent remains visible as a rejected concrete proposal."
+      }
+    },
+    {
+      "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "rationaleDe": "Beide Runden bestätigen die tatsächlich übernommene Begrenzung auf gleichförmige geradlinige Bewegung samt Anfangsort, konstantem Geschwindigkeitsvektor und Kontextdeutung. Runde A passt zum frischen Profilfall mit zwei Ortsbeobachtungen und abgeleitetem Geschwindigkeitsvektor. Der Anfangsort bei t=0 darf dort innerhalb des ausdrücklich für 0 bis 6 Sekunden angenommenen Modells bestimmt werden; es liegt keine ungestützte Rückextrapolation vor. Einheiten, Zeitdifferenz, Ortswerte und DE/EN stimmen. Die frühere Textübernahme und die enge J10-Aufgabenkorrektur sind separat belegt; keine allgemeine Assessment- oder menschliche Freigabe wird behauptet.",
+      "rationaleEn": "Both rounds confirm the actually adopted restriction to uniform rectilinear motion with initial position, constant velocity vector and contextual interpretation. Round A matches the fresh profile case using two observed positions and a derived velocity vector. The initial position at t=0 can be determined within the model explicitly assumed from 0 to 6 seconds; this is not unsupported backward extrapolation. Units, elapsed time, positions and DE/EN agree. The earlier wording adoption and narrow J10 task correction are documented separately; no general assessment or human approval is claimed."
+    }
+  ]
+}

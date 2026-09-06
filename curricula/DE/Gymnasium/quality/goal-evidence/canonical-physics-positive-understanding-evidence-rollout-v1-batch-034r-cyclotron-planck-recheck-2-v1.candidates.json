@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b034r-cyclotron-planck-recheck-2-v1",
+  "reviewedAt": "2026-09-06T07:00:24.017Z",
+  "reviewer": "openai-codex-parent-b034r-positive-counterreview",
+  "goals": [
+    {
+      "goalId": "d1306bda-35ff-53e9-9458-3cbc128874d8",
+      "reason": "Physikalische Bewertung ausschließlich anhand synthetischer Strahlentherapiemodelle; keine individuelle medizinische Empfehlung. Fachabgleich: https://www.psi.ch/de/protontherapy/der-protonenbeschleuniger-comet und https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy/external-beam . Gegenreview am aktuellen zweisprachigen Ziel: Wirkprinzip, Energie-Reichweite, gleiche Zielabdeckung und Unsicherheitsgrenze tragen ein zusammenhängendes bedingtes physikalisches Urteil; keine Erweiterung um klinische Entscheidungskompetenz.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Historischer Autorenhinweis zur deutschen EN-Beschreibung ist durch die aktuelle Übersetzung behoben. Die weiterhin gültige Grenze bleibt: synthetische physikalische Kriterienvergleiche belegen weder klinische Überlegenheit noch eine individuelle Therapieempfehlung."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "accelerator-to-dose",
+            "essentialUnderstandingDe": "Im Cyclotron-Modell beschleunigt das elektrische Feld geladene Teilchen, das magnetische Feld lenkt sie ab. Bei Protonentherapie beeinflusst die Strahlenergie die Reichweite und damit die räumliche Energieabgabe.",
+            "essentialUnderstandingEn": "In the cyclotron model the electric field accelerates charged particles and the magnetic field deflects them. In proton therapy beam energy affects range and hence spatial energy deposition.",
+            "observablePerformanceDe": "Erklärt die Funktionskette von Beschleunigung zu Dosisverteilung und legt für einen bereitgestellten Vergleich Modellannahmen und Systemgrenze offen.",
+            "observablePerformanceEn": "Explains the functional chain from acceleration to dose distribution and states model assumptions and system boundary for a supplied comparison."
+          },
+          {
+            "id": "bounded-evaluation",
+            "essentialUnderstandingDe": "Zielabdeckung, Schonung gesunden Gewebes und Empfindlichkeit gegenüber Lage-/Reichweitenunsicherheit sind physikalische Bewertungskriterien; ihr Abwägen ist von gesicherten Daten und klinischen Erfolgsaussagen zu trennen.",
+            "essentialUnderstandingEn": "Target coverage, sparing healthy tissue and sensitivity to position/range uncertainty are physical evaluation criteria; their weighting must be separated from established data and clinical outcome claims.",
+            "observablePerformanceDe": "Vergleicht Daten anhand benannter Kriterien, begründet Nutzen und verbleibende Risiken und formuliert ein bedingtes Urteil mit konkreter Unsicherheitsgrenze.",
+            "observablePerformanceEn": "Compares data using named criteria, justifies benefits and remaining risks and formulates a conditional judgment with a specific uncertainty limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "accelerator-to-dose",
+            "bounded-evaluation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "dose-and-uncertainty",
+            "textDe": "Idealisierte Tiefendosis bei gleicher Zielabdeckung gegenüber veränderter Lage beziehungsweise Reichweite.",
+            "textEn": "Idealized depth dose at equal target coverage versus altered position or range."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "depth-dose-comparison",
+            "taskDemandDe": "Nur Modellwerte relativer Dosis, keine Patientendaten: Verfahren A hat Ziel/gesund davor/gesund dahinter =1,00/0,30/0,20; cyclotronbasierte Protonenoption B =1,00/0,10/0,02. Vergleiche unter gleicher Zielabdeckung und erkläre den Bezug zur Teilchenbeschleunigung.",
+            "taskDemandEn": "Model relative-dose values only, not patient data: method A has target/healthy before/healthy beyond =1.00/0.30/0.20; cyclotron-based proton option B =1.00/0.10/0.02. Compare at equal target coverage and explain the link to particle acceleration.",
+            "expectedPerformanceDe": "Ordnet Energiegewinn dem elektrischen und Ablenkung dem magnetischen Feld zu; verknüpft Protonenenergie mit Reichweite. Begründet anhand der Zahlen geringere Dosis in den betrachteten gesunden Bereichen für B, nicht Risikofreiheit oder klinische Überlegenheit insgesamt.",
+            "expectedPerformanceEn": "Assigns energy gain to the electric field and deflection to the magnetic field; connects proton energy with range. Uses the numbers to justify lower dose in the considered healthy regions for B, not absence of risk or overall clinical superiority.",
+            "understandingFocusDe": "Technisches Wirkprinzip und transparent begrenzter Kriterienvergleich.",
+            "understandingFocusEn": "Technical operating principle and a transparently bounded comparison of criteria."
+          },
+          {
+            "id": "range-robustness",
+            "taskDemandDe": "In einem synthetischen Tiefenmodell endet der nominale Protonenbereich 2 mm vor einem empfindlichen gesunden Bereich; die Lage-/Reichweitenabweichung beträgt ±3 mm. Prüfe die Behauptung, der nominale Kurvenverlauf garantiere vollständige Schonung.",
+            "taskDemandEn": "In a synthetic depth model the nominal proton range ends 2 mm before a sensitive healthy region; position/range deviation is ±3 mm. Assess the claim that the nominal curve guarantees complete sparing.",
+            "expectedPerformanceDe": "Zeigt, dass eine Verschiebung um +3 mm die nominale 2-mm-Lücke um 1 mm überschreiten kann. Verknüpft Energie/Reichweite und Lageunsicherheit mit möglicher Fehlplatzierung der Energieabgabe; verlangt für ein belastbares Urteil Robustheitsdaten, ohne eine Behandlung zu empfehlen.",
+            "expectedPerformanceEn": "Shows that a +3 mm shift can exceed the nominal 2 mm gap by 1 mm. Connects energy/range and position uncertainty with possible misplacement of energy deposition; requires robustness data for a defensible judgment without recommending treatment.",
+            "understandingFocusDe": "Ein günstiger Idealverlauf genügt bei relevanter Unsicherheit nicht für ein Sicherheitsversprechen.",
+            "understandingFocusEn": "A favorable ideal curve does not justify a safety guarantee when uncertainty matters."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "reason": "Linearer Datenbezug E_kin,max=hf−W_A; zwei synthetische, vollständig angegebene Datensätze mit unterschiedlicher Messdarstellung und Unsicherheit. Keine reale Strahlen- oder Hochspannungsarbeit. Gegenreview am aktuellen Ziel: Energie- und Gegenspannungsdarstellung sind beide zulässig; h ist die Energiesteigung beziehungsweise e mal Spannungssteigung. Zwei Datensätze und Fehlergrenzen unabhängig nachgerechnet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "linear-physical-mapping",
+            "essentialUnderstandingDe": "In E_kin,max=hf−W_A ist f die unabhängige Größe, h die Steigung und −W_A der Achsenabschnitt. Der von null verschiedene Abschnitt gehört zur Physik und darf nicht durch einen Ursprungszwang entfernt werden.",
+            "essentialUnderstandingEn": "In E_kin,max=hf−W_A, f is the independent variable, h the slope and −W_A the intercept. The nonzero intercept belongs to the physics and must not be removed by forcing the fit through the origin.",
+            "observablePerformanceDe": "Wählt und beschriftet geeignete Achsen, bestimmt eine Ausgleichsgerade aus frischen Daten und deutet Steigung und Abschnitt mit Einheiten; übersetzt gegebenenfalls E_kin,max=eU_g.",
+            "observablePerformanceEn": "Chooses and labels suitable axes, determines a best-fit line from fresh data and interprets slope and intercept with units; where needed translates E_kin,max=eU_stop."
+          },
+          {
+            "id": "uncertainty-and-model-check",
+            "essentialUnderstandingDe": "Experimentell bestimmtes h ist eine unsicherheitsbehaftete Schätzung; Streuung und Eingangsunsicherheit begrenzen die Aussage und müssen mit dem linearen Modell abgeglichen werden.",
+            "essentialUnderstandingEn": "Experimentally determined h is an uncertain estimate; scatter and input uncertainty limit the conclusion and must be checked against the linear model.",
+            "observablePerformanceDe": "Prüft Residuen oder eine zulässige Steigungsbandbreite, begründet die Größenordnung und nennt Unsicherheitsannahmen statt einen exakten Naturkonstantenwert zu behaupten.",
+            "observablePerformanceEn": "Checks residuals or an admissible slope range, justifies the order of magnitude and states uncertainty assumptions rather than claiming an exact physical constant."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "linear-physical-mapping",
+            "uncertainty-and-model-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "measured-representation",
+            "textDe": "Kinetische Energie unmittelbar als Datenwert gegenüber gemessener Gegenspannung mit erforderlicher Energieumrechnung.",
+            "textEn": "Kinetic energy supplied directly versus measured stopping voltage requiring conversion to energy."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "energy-fit",
+            "taskDemandDe": "Synthetische Daten: f=(5,6,7)·10¹⁴ Hz, E_max=(0,30;0,97;1,62)·10⁻¹⁹ J, je ±0,04·10⁻¹⁹ J; Frequenzfehler vernachlässigbar. Bestimme h mittels linearer Auswertung samt Abschnitt und prüfe Unsicherheit und Modellpassung.",
+            "taskDemandEn": "Synthetic data: f=(5,6,7)·10¹⁴ Hz, E_max=(0.30,0.97,1.62)·10⁻¹⁹ J, each ±0.04·10⁻¹⁹ J; frequency error negligible. Determine h by linear analysis including the intercept and check uncertainty and model agreement.",
+            "expectedPerformanceDe": "Erhält etwa h=6,6·10⁻³⁴ J s und Abschnitt −3,0·10⁻¹⁹ J, also W_A≈3,0·10⁻¹⁹ J. Residuen sind kleiner als die angegebene Energieunsicherheit. Eine Endpunkt-Grenzbetrachtung erlaubt ungefähr (6,2–7,0)·10⁻³⁴ J s; kennzeichnet sie als Fehlergrenze, nicht statistisches Konfidenzintervall.",
+            "expectedPerformanceEn": "Obtains approximately h=6.6·10⁻³⁴ J s and intercept −3.0·10⁻¹⁹ J, hence W_A≈3.0·10⁻¹⁹ J. Residuals are smaller than the stated energy uncertainty. An endpoint bound permits roughly (6.2–7.0)·10⁻³⁴ J s; labels it an error bound, not a statistical confidence interval.",
+            "understandingFocusDe": "Linearisierung verbindet Naturkonstante, Oberflächeneigenschaft und begrenzte Messgenauigkeit.",
+            "understandingFocusEn": "Linearization connects the physical constant, surface property and limited measurement accuracy."
+          },
+          {
+            "id": "voltage-fit",
+            "taskDemandDe": "Neue synthetische Oberfläche: f=(6,7,8)·10¹⁴ Hz, U_g=(0,48;0,89;1,30) V, je ±0,03 V; e=1,60·10⁻¹⁹ C und E_max=eU_g, Frequenzfehler vernachlässigbar. Bestimme h und erläutere, warum die Spannungssteigung allein nicht h ist.",
+            "taskDemandEn": "New synthetic surface: f=(6,7,8)·10¹⁴ Hz, U_stop=(0.48,0.89,1.30) V, each ±0.03 V; e=1.60·10⁻¹⁹ C and E_max=eU_stop, frequency error negligible. Determine h and explain why the voltage slope alone is not h.",
+            "expectedPerformanceDe": "Bestimmt Steigung 4,10·10⁻¹⁵ V s, Abschnitt −1,98 V und h=e·Steigung=6,56·10⁻³⁴ J s. Prüft lineare Passung; eine Endpunktbandbreite von 3,8–4,4·10⁻¹⁵ V s entspricht h≈(6,08–7,04)·10⁻³⁴ J s unter den angegebenen Fehlergrenzen.",
+            "expectedPerformanceEn": "Determines slope 4.10·10⁻¹⁵ V s, intercept −1.98 V and h=e·slope=6.56·10⁻³⁴ J s. Checks linear agreement; an endpoint range of 3.8–4.4·10⁻¹⁵ V s corresponds to h≈(6.08–7.04)·10⁻³⁴ J s under the stated error bounds.",
+            "understandingFocusDe": "Geänderte Messgröße erfordert physikalische Übersetzung von Steigung und Einheiten.",
+            "understandingFocusEn": "A changed measured quantity requires physical translation of slope and units."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "b033a-post-assessment-current-page-comparison-v1",
+  "checkedAt": "2026-09-06T05:42:50.118Z",
+  "method": "Fresh production base/subset build and complete recursive page equality, including canonical context and reverseRequires; no review bytes or bindings changed.",
+  "result": "PASS for complete reviewed pages; top-level build metadata separately disclosed",
+  "unchangedGoalIds": [
+    "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+    "d8c9eb57-1614-4c1d-829a-618134def352",
+    "53b47494-ec60-4128-840d-2a4c4bab6d32",
+    "30c013ac-5164-4c3c-8bc1-9a10b2f49533"
+  ],
+  "currentBaseBookDigest": "sha256:2c88306f83e652976e91f139fa885c64355dc27b723408e4b1ffd336f0616ce0",
+  "previousSubsetBookDigest": "sha256:471d3541249a00537088789673a48972c01343375f1e023dd65298d6f170d7b2",
+  "currentSubsetBookDigest": "sha256:3d8fc6247b49f19669aecb706c86a51b9f24449a81d2ac6c81fef1f10a2e4560",
+  "changedModelFields": [
+    "source",
+    "navigation",
+    "digest"
+  ],
+  "metadataDifferences": [
+    {
+      "path": "/source/landscapeDigest",
+      "before": "sha256:af63937d55981f68482f85b8b893fef6ae9efe76bca34ce409103380ae975750",
+      "after": "sha256:09ba916ff55cb66581bfb6c2b33beb33951cb8678accbe94e136950f0822899d"
+    },
+    {
+      "path": "/source/semanticKindLedgerDigest",
+      "before": "sha256:10893cb7961477e3e2a0eff7960bb40133a326773eed2212dca05fa351f1cbb8",
+      "after": "sha256:c8121f0dfa315210e9d12b87d171bc5bd77c320045b864013bf415c3b840cca0"
+    },
+    {
+      "path": "/navigation/derivedProjection/baseModelDigest",
+      "before": "sha256:1a2ed6fdf65dff489851a14aa0c0d028a77dc7b814bbff1eb15a1e4b31507296",
+      "after": "sha256:2c88306f83e652976e91f139fa885c64355dc27b723408e4b1ffd336f0616ce0"
+    },
+    {
+      "path": "/digest",
+      "before": "sha256:471d3541249a00537088789673a48972c01343375f1e023dd65298d6f170d7b2",
+      "after": "sha256:3d8fc6247b49f19669aecb706c86a51b9f24449a81d2ac6c81fef1f10a2e4560"
+    }
+  ],
+  "currentCanonicalLandscapeDigest": "sha256:d4c9804d2027d5dc81ad59cff31b9347bdd5f01294028f75b79b2c0542246b66",
+  "originalBookModelDigest": "sha256:a834106c3e3781fcba9307ecd946b6dbd7d4d94b51e2b8cde9e99498090901da",
+  "beforeSynthesisManifestDigest": "sha256:a2b3e8146902d0e50f38b632142bc67aea53936d880d62de3412b1ff493aaac7",
+  "beforeSynthesisCanonicalLandscapeDigest": "sha256:0b3352bd16504b5b50275d06d00c7ab843fad4add27ad561cc63a75ca4df4cd9",
+  "followUp": "Retain the original immutable synthesis, resolutions, eight independent review records, input bundle and positive candidates. The standalone finalizer remains a historical whole-landscape checkpoint and therefore reports a stale global canonical digest after the unrelated assessment edits. Do not rewrite historical bindings or timestamps to clear that guard. Current reuse is established by this complete-page comparison plus the current central five-gate checker. The two changed assessment nodes are not among these four goals.",
+  "grantsHumanApproval": false
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-034r-cyclotron-planck-recheck-2-v1.config.json",
+  "configDigest": "sha256:ff39df8dc7fdfbe92eecbcbe51e9c2d7a9d7f6c2e892c76ffaf8211514a0772a",
+  "goalIds": [
+    "d1306bda-35ff-53e9-9458-3cbc128874d8",
+    "28f6a324-5f5e-5771-91d2-c007f6c275aa"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 464,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:3b9ad81e435bf2b9cfdfbbc730712b02892df4aeae0810465bfeabc0d6b49030"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:dd4c196657b903576183f2116e25e658b05ccbecd91db64f7825473e3056d1d4",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:29b28286ae3b004d1804c95356bf9e5ec80edf940bea52e37532546db5f27380",
+    "reviewInputFingerprint": "sha256:a82c6713af96df10dc82e9c189ea0ae4304747d830f9445b52d4dd4ffcce4f58",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-a",
+        "campaignDigest": "sha256:8d3b2945673e18476979b0ae4e23e1694dfb495fb076a504fb4971080ff65d72",
+        "roundId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-independent-a",
+        "batchId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e8d2051e3ec1abbbf5e46e725000a4e77e680cc402372f05a8ed6b6cfd24d147"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-b",
+        "campaignDigest": "sha256:55e34a3c4329d3365c89a73a489a539b1b985aa2243850ac7cedbde1774ea770",
+        "roundId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-independent-b",
+        "batchId": "physik-rollout-v1-batch-034r-cyclotron-planck-recheck-2-v1-20260906-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:87abacf9ece552f7522c1e6c18bb01ec1f69d9c2dbfac2e156b5490f2d444881"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

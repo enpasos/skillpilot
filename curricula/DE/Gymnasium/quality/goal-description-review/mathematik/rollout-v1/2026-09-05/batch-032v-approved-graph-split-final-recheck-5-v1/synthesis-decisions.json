@@ -1,0 +1,188 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-b032v-approved-graph-split-final-synthesis-20260905",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-b032v-integrator",
+  "synthesizedAt": "2026-09-05T19:29:50.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905",
+    "batchManifestDigest": "sha256:8cc9686c8279c9fdd9bd82b683cbfcece674be0066b5d38aa0b9507b1e3dc5b6",
+    "configDigest": "sha256:bfa499788cf6649fd7f9b0515cf752967aa7a5aae591b7dadb7c837fbef93279",
+    "bundleFingerprint": "sha256:dddbd19bb44f6fa3eeca26658d8ed6bf5c87b201711dfb5bc84d7374fe34befc",
+    "bookDigest": "sha256:60745f6c69c6296c45178cc21f2bed3085ef09fbd2cb4e8afcb8992b93eaf91b",
+    "reviewInputFingerprint": "sha256:4b9bca62dce31f3fce5eceb6f1e6577afceb9888e78b111164b9113b72eba8ff",
+    "dualSummaryDigest": "sha256:494dd5d5965c95701ea1d81d9e8d49e3a5fe9035777248662ebee429c0b2107b",
+    "canonicalLandscapeDigest": "sha256:eb9ca6bad4ff78111d360c33269722be1c43108c8b2ba16b12ef62f9afdb7e72"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905-a",
+      "campaignDigest": "sha256:ac64689ad748aa587bd276779b92f69aca257ed52ff1afb5ee0e4809428b685b",
+      "roundId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:4b9bca62dce31f3fce5eceb6f1e6577afceb9888e78b111164b9113b72eba8ff",
+      "batchId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8aba95595dcd4e7936e086b3cc9e2e937c4c5b5cee4687b817e78ab630a05eee",
+      "runId": "math-b032v-blind-a-20260905",
+      "runManifestDigest": "sha256:8d631fcec47abf357991e0ed71103b2a74a83680d9c7dafa79f21263f1e73275",
+      "resultsDigest": "sha256:2ed64861045b22840aa163f9dd5923eff5a223f4eb4d20a6e488d741667eed49"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905-b",
+      "campaignDigest": "sha256:aceb854f77e01b632716a9e88abb77db14ca8f703d8c87421ad0912211660a74",
+      "roundId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:4b9bca62dce31f3fce5eceb6f1e6577afceb9888e78b111164b9113b72eba8ff",
+      "batchId": "mathematik-rollout-v1-batch-032v-approved-graph-split-final-recheck-5-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d4a4deecfe742a79c369d471ad24b01c8251b19d3b4e5264d00e79f510282082",
+      "runId": "math-b032v-blind-b-20260905",
+      "runManifestDigest": "sha256:5c3ecf89bdcd57328f8bb940f92784d165e1186231381ced61b6f23cc3a31a22",
+      "resultsDigest": "sha256:ff1afe49bff836e00206d701977d32602df03f87ec2a6667dd08cc0e2ddf96d3"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-b032v-approved-graph-split-final-synthesis-20260905-decision-001",
+      "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a91043888b326f5ca527f6e8dbb42dd87bc739bfb94d623ecf620b375194d056",
+      "pageFingerprint": "sha256:e1b2944b90ffa1b3765f6d014eb87b35d6ecf284478b47e20b97282b21571f9d",
+      "goalReviewContextFingerprint": "sha256:d27da6ed249f46786e66fc6ba720f2009de3323c30a1a19ebd50e7cd3558ab99",
+      "finalText": {
+        "titleDe": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
+        "titleEn": "Interpret parameters of quadratic functions in vertex form",
+        "descriptionDe": "Die lernende Person kann bei quadratischen Funktionen der Form f(x) = a(x + d)^2 + e mit a ≠ 0 die Wirkung von a, d und e auf Scheitelpunktlage, Symmetrieachse, Öffnungsrichtung und Streckung oder Stauchung der Parabel beschreiben und an Term und Graph begründen.",
+        "descriptionEn": "The learner can describe and justify, using the formula and graph, how a, d, and e in quadratic functions of the form f(x) = a(x + d)^2 + e, with a ≠ 0, affect the vertex position, axis of symmetry, opening direction, and vertical stretch or compression of the parabola."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b032v-blind-a-20260905.goal-001",
+          "recordDigest": "sha256:884dde3128af16dbff9fbb25c1b569f64a449297b14efb492f6cccb3db8d64c3"
+        },
+        "second": {
+          "recordId": "math-b032v-blind-b-20260905.goal-001",
+          "recordDigest": "sha256:a0fbc956ea92561cce31c3f1cc8d973628a30d3f254224466acee926ad514954"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden bestätigen die zusammenhängende Parameterdeutung an Term und Graph. Runde B grenzt Vorzeichen und Betrag von a sowie die unveränderte Scheitelposition im Transfer präzise ab. Der bereits geeignete Text bleibt unverändert.",
+      "rationaleEn": "Both independent current rounds confirm the coherent interpretation of parameters using expression and graph. Round B precisely distinguishes the sign and magnitude of a and the unchanged vertex position in transfer. The already suitable text remains unchanged."
+    },
+    {
+      "decisionId": "math-b032v-approved-graph-split-final-synthesis-20260905-decision-002",
+      "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f163ba76cd1dc1f60bf44e7d8b072f65ab960030b9e1b441ff51ebcbe1c17704",
+      "pageFingerprint": "sha256:64a514f5bcbdf92047bdd0690c3490c27459f05c8acad450c62fa5c583b8f37b",
+      "goalReviewContextFingerprint": "sha256:99877b03a0748cf3b162305d6b6c0807e22fb5c90ded667dcce2008ca9d990f4",
+      "finalText": {
+        "titleDe": "Quadratwurzeln definieren und schätzen",
+        "titleEn": "Define and estimate square roots",
+        "descriptionDe": "Die lernende Person kann die Quadratwurzel einer nichtnegativen Zahl als die nichtnegative Zahl erklären, deren Quadrat die Ausgangszahl ergibt, und Quadratwurzeln aus Quadratzahlen exakt sowie andere Quadratwurzeln näherungsweise bestimmen.",
+        "descriptionEn": "The learner can explain the square root of a non-negative number as the non-negative number whose square equals the original number, determine square roots of perfect squares exactly, and approximate other square roots."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b032v-blind-a-20260905.goal-002",
+          "recordDigest": "sha256:3475adb7da241214565f826f9c229d6eea1177b7d84bbe0fdab11f74e75aef3d"
+        },
+        "second": {
+          "recordId": "math-b032v-blind-b-20260905.goal-002",
+          "recordDigest": "sha256:918ad6eb44c077823c990bc49471912833fe3e4324559db6e8661260cf4e86ec"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Definition, exakte Bestimmung und Schätzung als zusammenhängende Wurzelkompetenz. Die Evidenz aus Runde B verlangt begründete Näherung auch im Dezimalbereich unter 1, ohne einen bestimmten Algorithmus oder Nachfolgekompetenzen hinzuzufügen.",
+      "rationaleEn": "Both rounds confirm definition, exact determination and estimation as one coherent square-root competence. Round B requires justified approximation also in the decimal interval below 1 without adding a particular algorithm or successor competence."
+    },
+    {
+      "decisionId": "math-b032v-approved-graph-split-final-synthesis-20260905-decision-003",
+      "goalId": "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1a09bd956ea69e74b00b4aaed87e278e2c62a09f8079c3035700dfbe0292a1b7",
+      "pageFingerprint": "sha256:767c0b4aec8be27ece56ac3a63dbc7ccbea7ca29605fc522fa4a7e5b2bd6baf3",
+      "goalReviewContextFingerprint": "sha256:9a5e7834467221fc565eb990f825dd65cc9b5a0cbb6409e2227586f4c5f9d962",
+      "finalText": {
+        "titleDe": "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten",
+        "titleEn": "Interpret axis intersections and signs of quadratic functions from graphs",
+        "descriptionDe": "Die lernende Person kann aus dem Graphen einer quadratischen Funktion die Schnittpunkte mit den Koordinatenachsen ablesen, daraus Nullstellen und y-Achsenabschnitt angeben und die Vorzeichenbereiche anhand der Lage des Graphen zur x-Achse bestimmen.",
+        "descriptionEn": "The learner can read the intersections of a quadratic function's graph with the coordinate axes, identify its zeros and y-intercept from them, and determine its sign intervals from the graph's position relative to the x-axis."
+      },
+      "resolutionDecision": "current_after_split",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b032v-blind-a-20260905.goal-003",
+          "recordDigest": "sha256:a440a324615bb9905fdf1106a228ce20d7f6dd85adc61058bd4bfd6c50f13a9d"
+        },
+        "second": {
+          "recordId": "math-b032v-blind-b-20260905.goal-003",
+          "recordDigest": "sha256:60fcfc7a5062f06bce8e879c43fa931e0eea6bb8bf270f5b44dad7b19afd0e4a"
+        }
+      },
+      "rationaleDe": "Nach der ausdrücklich freigegebenen Aufteilung beurteilen beide neuen Blindrunden Achsenlage und Vorzeichen als zusammenhängenden graphischen Deutungsweg. Runde B unterscheidet Punktkoordinaten und Nullstellen und verlangt den Berührfall als echten Transfer; algebraische Nullstellenberechnung bleibt außerhalb dieses Kindes.",
+      "rationaleEn": "After the explicitly authorized split, both fresh blind rounds judge axis position and signs to form a coherent graphical interpretation. Round B distinguishes point coordinates and zeros and requires tangency as meaningful transfer; algebraic root calculation remains outside this child."
+    },
+    {
+      "decisionId": "math-b032v-approved-graph-split-final-synthesis-20260905-decision-004",
+      "goalId": "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:469d1158b1e868ca26f94cef608d66a85b6bbbc7787a12eda5890ee5b2678a02",
+      "pageFingerprint": "sha256:6a9dafbee695b86b5cb800f833f27ef0ac03dbc3a2304ec0956d02a60c18a551",
+      "goalReviewContextFingerprint": "sha256:be2af063ded66cae47840fd9bca8781bfd0260323a7bcb5b99790433a2c8d792",
+      "finalText": {
+        "titleDe": "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen",
+        "titleEn": "Determine the extremum value, range and monotonicity of quadratic functions from graphs",
+        "descriptionDe": "Die lernende Person kann aus Scheitelpunkt und Öffnungsrichtung des Graphen einer quadratischen Funktion den Extremwert, die Wertemenge und die Intervalle des Steigens und Fallens bestimmen.",
+        "descriptionEn": "The learner can use the vertex and opening direction of a quadratic function's graph to determine its extremum value, range, and intervals of increase and decrease."
+      },
+      "resolutionDecision": "current_after_split",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b032v-blind-a-20260905.goal-004",
+          "recordDigest": "sha256:b99bb4b6750aa2c9b8f6962218d938b84ebe06749516532b5ddb229f43363c0f"
+        },
+        "second": {
+          "recordId": "math-b032v-blind-b-20260905.goal-004",
+          "recordDigest": "sha256:2f00c1cdd8eaddf4356bcd2c1ff7a4b7e3d6c548823bb6dbd2a6a159815fe4e6"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Blindrunden bestätigen die gemeinsame Grundlage der drei Ergebnisse in Scheitel und Öffnung und begründen ausdrücklich, warum kein weiterer Split nötig ist. Runde B macht Extremwertart, Wertemengengrenze und Monotonierichtungen unabhängig beobachtbar.",
+      "rationaleEn": "Both current blind rounds confirm vertex and opening as the shared basis of the three results and explicitly explain why no further split is needed. Round B makes extremum type, range bound and directions of monotonicity independently observable."
+    },
+    {
+      "decisionId": "math-b032v-approved-graph-split-final-synthesis-20260905-decision-005",
+      "goalId": "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0c84d55b75167e08ca5c6c55c4a37d775e969c9f6dbcb653a1fafb4fca506caf",
+      "pageFingerprint": "sha256:75ad9603c6fb3f7e266b2d9726ac3cde9d6d35f660bf2428e9c29eed4a38942c",
+      "goalReviewContextFingerprint": "sha256:d6e39d0b109e48a1fc3117c5ffff2ba984870349bf9d90d310ae21285d7800fd",
+      "finalText": {
+        "titleDe": "Nullstellen quadratischer Funktionen in Scheitelpunktform begründen und bestimmen",
+        "titleEn": "Justify and determine zeros of quadratic functions in vertex form",
+        "descriptionDe": "Die lernende Person kann bei quadratischen Funktionen der Form f(x) = a(x + d)^2 + e mit a ≠ 0 Nullstellen als x-Koordinaten der Schnittpunkte des Graphen mit der x-Achse und als Lösungen von f(x) = 0 aufeinander beziehen, ihre Anzahl aus Scheitelpunktlage und Öffnungsrichtung begründen und die Lösungen in einfachen Fällen graphisch und rechnerisch bestimmen.",
+        "descriptionEn": "The learner can relate the zeros of quadratic functions of the form f(x) = a(x + d)^2 + e, with a ≠ 0, to the x-coordinates of the graph's intersections with the x-axis and to the solutions of f(x) = 0, justify their number from the vertex position and opening direction, and determine the solutions graphically and algebraically in simple cases."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b032v-blind-a-20260905.goal-005",
+          "recordDigest": "sha256:d14ade3c1681bd9c52dfbb3d1cbb9df993ee4ddc4a7eb052dc359b1a5c43f8c3"
+        },
+        "second": {
+          "recordId": "math-b032v-blind-b-20260905.goal-005",
+          "recordDigest": "sha256:fcc8eacb0e2713851a2a7c5a3c8d7fe0139cc51e20944e082c17a52773931cf0"
+        }
+      },
+      "rationaleDe": "Die genehmigte lokale Präzisierung benennt Nullstellen als x-Koordinaten statt Punkte. Beide frischen Runden bestätigen den unveränderten Anspruch einfacher Scheitelpunktfälle. Runde B verbindet graphische und rechnerische Evidenz mit den Fällen zweier, einer und keiner reellen Nullstelle.",
+      "rationaleEn": "The authorized local clarification identifies zeros as x-coordinates rather than points. Both fresh rounds confirm the unchanged scope of simple vertex-form cases. Round B connects graphical and algebraic evidence with the cases of two, one and no real zeros."
+    }
+  ],
+  "manifestFingerprint": "sha256:972462ff524f8a8462378372ace1be698f55a9ccc1bad6673a0c62287e1fc977"
+}

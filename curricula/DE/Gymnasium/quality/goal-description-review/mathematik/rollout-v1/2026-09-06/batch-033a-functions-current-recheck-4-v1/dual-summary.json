@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7e308cdaf4ab717c0420f3aaa425f65ed00095ee1253008bff665d6597e87a6e",
+  "reviewInputFingerprint": "sha256:e1b5f84bf21167dbec644f160375c942d266b5064f44f73c32b10c1a20c01c31",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-a",
+      "roundId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-independent-a",
+      "runIds": [
+        "math-b033a-blind-a-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-b",
+      "roundId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-independent-b",
+      "runIds": [
+        "math-b033a-blind-b-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex; exact deployment identifier not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+      "firstRecordId": "math-b033a-blind-a-20260906.record-001",
+      "secondRecordId": "math-b033a-blind-b-20260906-001",
+      "firstRunId": "math-b033a-blind-a-20260906",
+      "secondRunId": "math-b033a-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d8c9eb57-1614-4c1d-829a-618134def352",
+      "firstRecordId": "math-b033a-blind-a-20260906.record-002",
+      "secondRecordId": "math-b033a-blind-b-20260906-002",
+      "firstRunId": "math-b033a-blind-a-20260906",
+      "secondRunId": "math-b033a-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
+      "firstRecordId": "math-b033a-blind-a-20260906.record-003",
+      "secondRecordId": "math-b033a-blind-b-20260906-003",
+      "firstRunId": "math-b033a-blind-a-20260906",
+      "secondRunId": "math-b033a-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+      "firstRecordId": "math-b033a-blind-a-20260906.record-004",
+      "secondRecordId": "math-b033a-blind-b-20260906-004",
+      "firstRunId": "math-b033a-blind-a-20260906",
+      "secondRunId": "math-b033a-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T06:46:05.942Z",
+  "generatedAt": "2026-09-06T16:02:01.359Z",
   "generator": "app/scripts/reportGoalSourceRationaleCoverage.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "runtimeIndexPath": "app/public/data/goal-source-rationales-math-public.json"
   },
   "sourceIndex": {
-    "generatedAt": "2026-09-05T02:50:50.988Z",
+    "generatedAt": "2026-09-06T12:05:29.301Z",
     "generator": "app/scripts/generateGoalSourceRationales.ts",
     "summary": {
       "requestedGoals": 740,
       "resolvedGoals": 740,
       "goalsWithClassicSourceRoute": 740,
       "goalsWithoutClassicSourceRoute": 0,
-      "goalsWithMemSparqlConsistentRoute": 228
+      "goalsWithMemSparqlConsistentRoute": 227
     },
     "request": {
       "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -629,7 +629,7 @@
         "39fa30f2-e1ae-5c36-be56-793b77906abb",
         "f7dcf8c8-06c1-5972-b02a-9d35e5ab7600",
         "7bff61c1-1a69-4991-97de-0cff764f507e",
-        "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+        "a1c79897-6ded-57f8-bee1-2d365a5083c9",
         "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
         "9023226b-fc17-412b-807c-2bb45cd551d5",
         "e322310f-f33a-485d-bc23-2412a6b8fa12",
@@ -769,28 +769,28 @@
     }
   },
   "summary": {
-    "totalGoals": 1179,
-    "atomicLeaves": 923,
-    "relevantAtomicLeaves": 795,
+    "totalGoals": 1181,
+    "atomicLeaves": 924,
+    "relevantAtomicLeaves": 796,
     "memoryOrNonContentLeaves": 128,
-    "clusters": 256,
-    "containsRelations": 1300,
-    "requiresRelations": 2447,
+    "clusters": 257,
+    "containsRelations": 1302,
+    "requiresRelations": 2449,
     "runtimeItems": 740,
     "runtimeItemsInLandscape": 740,
     "runtimeItemsMissingFromLandscape": 0,
     "runtimeGoalsWithClassicSourceRationale": 740,
-    "runtimeGoalsWithMemSparqlConsistentRoute": 228,
+    "runtimeGoalsWithMemSparqlConsistentRoute": 227,
     "relevantLeavesWithClassicSourceRationale": 740,
-    "relevantLeavesWithMemSparqlConsistentRoute": 228,
-    "relevantLeavesMissingRuntimeSourceRationale": 55,
+    "relevantLeavesWithMemSparqlConsistentRoute": 227,
+    "relevantLeavesMissingRuntimeSourceRationale": 56,
     "relevantLeavesWithRuntimeClassicGap": 0,
     "clustersWithDirectRuntimeSourceRationale": 0,
-    "clustersWithoutDirectRuntimeSourceRationale": 256,
+    "clustersWithoutDirectRuntimeSourceRationale": 257,
     "containsRelationRationalesImplemented": 0,
     "requiresRelationRationalesImplemented": 0,
-    "relevantLeafClassicCoveragePercent": 93.1,
-    "relevantLeafMemCoveragePercent": 28.7
+    "relevantLeafClassicCoveragePercent": 93,
+    "relevantLeafMemCoveragePercent": 28.5
   },
   "buckets": {
     "byPhase": [
@@ -823,6 +823,13 @@
         "missingRelevantLeaves": 3
       },
       {
+        "key": "J9",
+        "totalRelevantLeaves": 47,
+        "leavesWithClassicSourceRationale": 46,
+        "leavesWithMemSparqlConsistentRoute": 18,
+        "missingRelevantLeaves": 1
+      },
+      {
         "key": "J10",
         "totalRelevantLeaves": 58,
         "leavesWithClassicSourceRationale": 58,
@@ -834,13 +841,6 @@
         "totalRelevantLeaves": 48,
         "leavesWithClassicSourceRationale": 48,
         "leavesWithMemSparqlConsistentRoute": 10,
-        "missingRelevantLeaves": 0
-      },
-      {
-        "key": "J9",
-        "totalRelevantLeaves": 46,
-        "leavesWithClassicSourceRationale": 46,
-        "leavesWithMemSparqlConsistentRoute": 19,
         "missingRelevantLeaves": 0
       },
       {
@@ -889,10 +889,10 @@
       },
       {
         "key": "Analysis",
-        "totalRelevantLeaves": 127,
+        "totalRelevantLeaves": 128,
         "leavesWithClassicSourceRationale": 121,
-        "leavesWithMemSparqlConsistentRoute": 37,
-        "missingRelevantLeaves": 6
+        "leavesWithMemSparqlConsistentRoute": 36,
+        "missingRelevantLeaves": 7
       },
       {
         "key": "Stochastics",
@@ -2043,6 +2043,29 @@
           "Anwendungen der Integralrechnung",
           "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)",
           "Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "missing_runtime_leaf"
+      },
+      {
+        "id": "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+        "shortKey": "canonical_math_sek1_j9_read_quadratic_axes_and_signs",
+        "title": "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten",
+        "type": "atomic",
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2A2A",
+        "pathTitles": [
+          "Mathematik",
+          "Jahrgangsstufe 9",
+          "Quadratische Funktionen beschreiben und anwenden",
+          "Quadratische Funktionen und Gleichungen grundlegend untersuchen",
+          "Quadratische Funktionen in Darstellungen deuten",
+          "Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten",
+          "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
+          "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten"
         ],
         "runtimeCovered": false,
         "classicSourceRoute": false,
@@ -10535,6 +10558,29 @@
         "classification": "covered_runtime_classic_mem_pending"
       },
       {
+        "id": "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+        "shortKey": "canonical_math_sek1_j9_read_quadratic_range_extremum_monotonicity",
+        "title": "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen",
+        "type": "atomic",
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2A2B",
+        "pathTitles": [
+          "Mathematik",
+          "Jahrgangsstufe 9",
+          "Quadratische Funktionen beschreiben und anwenden",
+          "Quadratische Funktionen und Gleichungen grundlegend untersuchen",
+          "Quadratische Funktionen in Darstellungen deuten",
+          "Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten",
+          "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
+          "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen"
+        ],
+        "runtimeCovered": true,
+        "classicSourceRoute": true,
+        "memSparqlStatus": "mem_sparql_not_configured",
+        "classification": "covered_runtime_classic_mem_pending"
+      },
+      {
         "id": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
         "shortKey": "canonical_math_sek1_j9_vertex_form_parameters",
         "title": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
@@ -15981,6 +16027,28 @@
         "classification": "cluster_aggregate_pending"
       },
       {
+        "id": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+        "shortKey": "canonical_math_sek1_j9_read_quadratic_graph_properties",
+        "title": "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
+        "type": "cluster",
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.2A2",
+        "pathTitles": [
+          "Mathematik",
+          "Jahrgangsstufe 9",
+          "Quadratische Funktionen beschreiben und anwenden",
+          "Quadratische Funktionen und Gleichungen grundlegend untersuchen",
+          "Quadratische Funktionen in Darstellungen deuten",
+          "Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten",
+          "Eigenschaften quadratischer Funktionen aus Graphen ablesen"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
         "id": "c23705d2-57fc-4260-80d8-2d340203a173",
         "shortKey": "canonical_math_determine_vertices_of_quadratic_functions",
         "title": "Scheitelpunkte quadratischer Funktionen bestimmen",
@@ -17220,8 +17288,8 @@
       }
     ],
     "relationRationales": {
-      "containsRelationsPending": 1300,
-      "requiresRelationsPending": 2447
+      "containsRelationsPending": 1302,
+      "requiresRelationsPending": 2449
     }
   },
   "rows": [
@@ -36234,7 +36302,7 @@
       "id": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
       "shortKey": "canonical_math_sek1_j9_read_quadratic_graph_properties",
       "title": "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
-      "type": "atomic",
+      "type": "cluster",
       "phase": "J9",
       "area": "Analysis",
       "topicCode": "CANONICAL.MATH.SEK1.J9.2A2",
@@ -36247,10 +36315,56 @@
         "Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten",
         "Eigenschaften quadratischer Funktionen aus Graphen ablesen"
       ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+      "shortKey": "canonical_math_sek1_j9_read_quadratic_axes_and_signs",
+      "title": "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.2A2A",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 9",
+        "Quadratische Funktionen beschreiben und anwenden",
+        "Quadratische Funktionen und Gleichungen grundlegend untersuchen",
+        "Quadratische Funktionen in Darstellungen deuten",
+        "Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten",
+        "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
+        "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "missing_runtime_leaf"
+    },
+    {
+      "id": "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+      "shortKey": "canonical_math_sek1_j9_read_quadratic_range_extremum_monotonicity",
+      "title": "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen",
+      "type": "atomic",
+      "phase": "J9",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J9.2A2B",
+      "pathTitles": [
+        "Mathematik",
+        "Jahrgangsstufe 9",
+        "Quadratische Funktionen beschreiben und anwenden",
+        "Quadratische Funktionen und Gleichungen grundlegend untersuchen",
+        "Quadratische Funktionen in Darstellungen deuten",
+        "Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten",
+        "Eigenschaften quadratischer Funktionen aus Graphen ablesen",
+        "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen"
+      ],
       "runtimeCovered": true,
       "classicSourceRoute": true,
-      "memSparqlStatus": "mem_sparql_consistent",
-      "classification": "covered_runtime_classic_and_mem"
+      "memSparqlStatus": "mem_sparql_not_configured",
+      "classification": "covered_runtime_classic_mem_pending"
     },
     {
       "id": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",

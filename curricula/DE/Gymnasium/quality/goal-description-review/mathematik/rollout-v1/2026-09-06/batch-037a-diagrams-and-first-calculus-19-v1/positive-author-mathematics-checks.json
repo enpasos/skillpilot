@@ -1,0 +1,172 @@
+{
+  "checkedAt": "2026-09-06T10:05:25.472Z",
+  "caseCount": 40,
+  "checks": [
+    {
+      "caseId": "temperature-scale",
+      "verifiedReasoning": "Linear scale midpoints give3 h and5 °C; axis roles remain distinct."
+    },
+    {
+      "caseId": "horizontal-unit-factor",
+      "verifiedReasoning": "Category labels are not numerical positions; quantitative scale carries multiplier100€."
+    },
+    {
+      "caseId": "reservoir-trend",
+      "verifiedReasoning": "Specified linear segments give +20,0,-10 L/h and a maximum plateau60 L on[2,5]."
+    },
+    {
+      "caseId": "two-distance-lines",
+      "verifiedReasoning": "A=6t,B=2t+8 intersect at(2,12); A starts8 behind and has larger slope."
+    },
+    {
+      "caseId": "truncated-bars",
+      "verifiedReasoning": "Displayed lengths have ratio2 but actual values ratio1.1; cut baseline45 explains the discrepancy."
+    },
+    {
+      "caseId": "unequal-time-gaps",
+      "verifiedReasoning": "Equal graphical horizontal gaps encode1 and9 years, so the two real rates differ."
+    },
+    {
+      "caseId": "square-pictograms",
+      "verifiedReasoning": "Square area ratio4 differs from data ratio2; equal-width zero-baseline bars preserve count ratios."
+    },
+    {
+      "caseId": "different-class-sizes",
+      "verifiedReasoning": "B has larger absolute count, A larger participation proportion; denominators20 and30 stay explicit."
+    },
+    {
+      "caseId": "travel-average",
+      "verifiedReasoning": "Cumulative distance difference360m over3min gives120m/min=2m/s, not a full instantaneous-speed course."
+    },
+    {
+      "caseId": "cooling-average",
+      "verifiedReasoning": "Endpoint temperatures give-2.2°C/min on[2,6]; quadratic model is not a constant-rate model."
+    },
+    {
+      "caseId": "h-square",
+      "verifiedReasoning": "Algebra:((2+h)^2-4)/h=4+h for h≠0, hence exact limit4. Finite numerical table illustrates but does not prove it."
+    },
+    {
+      "caseId": "h-reciprocal",
+      "verifiedReasoning": "Algebra Q=-1/(1+h),h≠0,-1; denominator tends to1, giving limit-1. Finite rounded rows alone prove neither existence nor value."
+    },
+    {
+      "caseId": "cube-justification",
+      "verifiedReasoning": "Exact binomial expansion:(x+h)^3-x^3=3x²h+3xh²+h³; divide by h≠0 then take h→0 to obtain3x². Numeric checks corroborate, not replace, the identity."
+    },
+    {
+      "caseId": "negative-power-justification",
+      "verifiedReasoning": "Common-denominator identity gives-1/[x(x+h)] with x≠0,h≠0,x+h≠0; limit -x^-2. This proves n=-1 only, not all integers."
+    },
+    {
+      "caseId": "constant-multiple",
+      "verifiedReasoning": "For constant c, quotient factors as cQ_u(h); differentiability permits limit c u′. Applied F=-3x²+5 gives-6x; c cannot depend on x."
+    },
+    {
+      "caseId": "sum-cancellation",
+      "verifiedReasoning": "Q_(u+v)=Q_u+Q_v; both derivatives exist, so limits add. x³+(-x³+2x)=2x and derivative terms cancel to2."
+    },
+    {
+      "caseId": "expanded-polynomial",
+      "verifiedReasoning": "Coefficient differentiation gives12x³-4x+5; -7 contributes0 once."
+    },
+    {
+      "caseId": "rearranged-polynomial",
+      "verifiedReasoning": "Polynomial multiplication gives x²-x-2; plusx² gives2x²-x-2 and derivative4x-1 without a product-rule requirement."
+    },
+    {
+      "caseId": "position-rate",
+      "verifiedReasoning": "A consistent smooth witness has position12m and instantaneous rate-2m/s at3s. Rate is signed coordinate change; no constant interval velocity follows."
+    },
+    {
+      "caseId": "zero-volume-rate",
+      "verifiedReasoning": "Smooth witness gives rate0 at5min but different neighbouring volumes101L, so pointwise zero does not imply interval constancy."
+    },
+    {
+      "caseId": "parabola-slope-assignment",
+      "verifiedReasoning": "Known f=x²-1 yields derivative function2x; finite slope pairs illustrate this justified assignment rather than determine an arbitrary function."
+    },
+    {
+      "caseId": "constant-slope-assignment",
+      "verifiedReasoning": "Known full affine graph has constant slope3; derivative graph is horizontaly3, independent of original varying heights."
+    },
+    {
+      "caseId": "cubic-graph-to-derivative",
+      "verifiedReasoning": "Exact derivative3x²-3 has stated signs and decreases until x=0, attaining value-3, then increases. Sign changes classify maximum at-1 and minimum at1; no f″ required."
+    },
+    {
+      "caseId": "derivative-with-touching-zero",
+      "verifiedReasoning": "Derivative3x² is positive except at0; the original is strictly increasing and stationary at0 without an extremum. f=x³+C illustrates height freedom; strict increase does not require f′>0 at every single input."
+    },
+    {
+      "caseId": "two-antiderivatives",
+      "verifiedReasoning": "Both given functions satisfy F′=H′=2x and differ by constant7; the definition is F′=f, not F=f."
+    },
+    {
+      "caseId": "zero-function",
+      "verifiedReasoning": "Constant5 has derivative0, while x has derivative1. Both function height and derivative must retain their roles on(-2,2)."
+    },
+    {
+      "caseId": "rising-tangent-angle",
+      "verifiedReasoning": "P(1,1),m2 gives tangent2x-1 and signed slope angle63.4349488° with equal axes."
+    },
+    {
+      "caseId": "falling-reciprocal-angle",
+      "verifiedReasoning": "Reciprocal at1 gives tangent -x+2 and signed angle-45°; principal-angle convention is explicit."
+    },
+    {
+      "caseId": "ramp-guide",
+      "verifiedReasoning": "Tangent2x-1 and normal-.5x+1.5 pass through(1,1); normal reaches ground at(3,0), with equal metre axes."
+    },
+    {
+      "caseId": "vertex-support",
+      "verifiedReasoning": "Vertex(2,1) has tangent y1 and vertical normal x2; ground foot(2,0). No finite -1/0 slope exists."
+    },
+    {
+      "caseId": "three-regular-angles",
+      "verifiedReasoning": "For x²: secant0→1 slope1, tangent at1 slope2, normal-.5; respective signed angles45°,63.4349488°,-26.5650512°."
+    },
+    {
+      "caseId": "horizontal-tangent-angles",
+      "verifiedReasoning": "For1-x²: secant0→2 slope-2, tangent at0 slope0, normal vertical; vertical undirected angle90° handled outside the open arctan range."
+    },
+    {
+      "caseId": "acute-graph-intersection",
+      "verifiedReasoning": "At(1,1), x² andx have tangent slopes2,1 and smaller angle18.4349488°; local tangent directions, not secants."
+    },
+    {
+      "caseId": "orthogonal-intersection",
+      "verifiedReasoning": "x and-x intersect orthogonally at0; 1+m1m2=0 means use the right-angle case, not an undefined geometric intersection."
+    },
+    {
+      "caseId": "corner-versus-smooth",
+      "verifiedReasoning": "|x| has one-sided slopes-1,+1 at0; x² has common slope0. Corner and smooth horizontal tangent are distinct exact graph structures."
+    },
+    {
+      "caseId": "jump-with-parallel-branches",
+      "verifiedReasoning": "Left branch approaches0 but f(0)=1; jump prevents differentiability despite both branch slopes1. Left quotient is1-1/h and diverges as h→0-."
+    },
+    {
+      "caseId": "wall-enclosure",
+      "verifiedReasoning": "2a+b30 gives A30a-2a²=112.5-2(a-7.5)²; interior maximuma7.5,b15,area112.5m²; degenerate endpoints have zero area."
+    },
+    {
+      "caseId": "capacity-limited-profit",
+      "verifiedReasoning": "Stationary q10 is inadmissible; derivative positive on[0,8] gives maximumq8,value32. Integer restriction gives the same boundary solution."
+    },
+    {
+      "caseId": "cubic-three-slopes",
+      "verifiedReasoning": "UNBOUND7c: secant0→2 slope4, tangent at1 slope3, normal-1/3; no angle requirement."
+    },
+    {
+      "caseId": "vertex-three-slopes",
+      "verifiedReasoning": "UNBOUND7c: secant2→3 slope1, tangent at2 zero, normal vertical without finite slope; no angle requirement."
+    }
+  ],
+  "independentArithmeticCrosscheck": {
+    "actor": "/root/math_b033b_blind_b",
+    "scope": "seven explicitly supplied mathematical subproblems only; no repository review/profile access, no profile authorship or judgement delegated",
+    "results": "h-method both formulas and tables; ordinary and vertical normals; angle conventions and intersectionangles; wall and boundary-profit extrema all independently confirmed",
+    "reviewRunClaim": false
+  }
+}

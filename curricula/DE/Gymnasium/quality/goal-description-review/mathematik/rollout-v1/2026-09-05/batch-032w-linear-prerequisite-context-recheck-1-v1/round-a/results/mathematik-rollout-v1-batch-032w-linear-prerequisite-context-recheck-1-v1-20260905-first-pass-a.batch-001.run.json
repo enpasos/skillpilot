@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b032w-blind-a-20260905",
+  "campaignId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-a",
+  "roundId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:4ec357f1d41ecd31963f185b5ed77e1631cc27c2b1c36b4a65a1be04e439c2e2",
+  "bundleFingerprint": "sha256:631333f707dcce3d31e0cd7ff46f774af6ec71ba5c57013509bb796893ff47be",
+  "bookDigest": "sha256:9c4e87fd0d279ac105541efc00a8e13e54a3626349f2ca8137e61b219b43ad52",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:be0cdf1d0e582218d45be0f024ca3ef53c659a91c4959ec9e6ec1fd9e1f4bb9f",
+  "independenceGroupId": "mathematik-rollout-v1-batch-032w-linear-prerequisite-context-recheck-1-v1-20260905-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:4ec357f1d41ecd31963f185b5ed77e1631cc27c2b1c36b4a65a1be04e439c2e2"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-05T19:35:51Z",
+  "completedAt": "2026-09-05T19:36:56Z",
+  "status": "completed",
+  "outputDigest": "sha256:ef74b468985c8c5dfdfb1410664c0dc63f8c22cb6afd7819cc93482d2e03127a",
+  "toolchainVersion": "goal-description-review-v2"
+}

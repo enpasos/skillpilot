@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-resolution-d8c9eb57-1614-4c1d-829a-618134def352",
+  "goal": {
+    "goalId": "d8c9eb57-1614-4c1d-829a-618134def352",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e4de3f1ebb83f1540175cca3d777ec6d48de6b5e201e1c562703553ea791e443",
+    "pageFingerprint": "sha256:78ab651b3944634e27ec98365792d8821ee20793a8c83af9a70354a903ca944e",
+    "goalReviewContextFingerprint": "sha256:cfa6aeb2f7ffbbe081316ab6a2d1c310e1bc8dee4d7f58c83f975466969074bf",
+    "finalText": {
+      "titleDe": "Symmetrie von Funktionsgraphen nachweisen",
+      "titleEn": "Verify symmetry of function graphs",
+      "descriptionDe": "Die lernende Person kann Achsensymmetrie zur y-Achse und Punktsymmetrie zum Ursprung rechnerisch nachweisen (z. B. mit $f(-x)=f(x)$ bzw. $f(-x)=-f(x)$), dabei prüfen, ob mit jedem x auch −x zur Definitionsmenge gehört, und Graphen entsprechend beurteilen.",
+      "descriptionEn": "The learner can verify symmetry with respect to the y-axis and point symmetry about the origin algebraically (e.g., using $f(-x)=f(x)$ or $f(-x)=-f(x)$), checking that the domain contains −x whenever it contains x, and assess graphs accordingly."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-a",
+      "campaignDigest": "sha256:90f51def7fef6809813fd4c185f650d0f0f669a1c318ffb76b80fe2cddfb5818",
+      "roundId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:e1b5f84bf21167dbec644f160375c942d266b5064f44f73c32b10c1a20c01c31",
+      "goalReviewContextFingerprint": "sha256:cfa6aeb2f7ffbbe081316ab6a2d1c310e1bc8dee4d7f58c83f975466969074bf",
+      "batchId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-first-pass-a.batch-001",
+      "runId": "math-b033a-blind-a-20260906",
+      "runManifestDigest": "sha256:db9363aa6b4937bd5575ff63b8882d2ddbdf75c18d4835f2c5e12d645e120c52",
+      "resultsDigest": "sha256:4e381009f97105e95d4643236c7daec53387e802dee448b821c96ce0febb7ab2",
+      "recordId": "math-b033a-blind-a-20260906.record-002",
+      "recordDigest": "sha256:3db67630da3fb3f11a2be648f33447e0cff21a74f583481ffc1f873cee533967"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-b",
+      "campaignDigest": "sha256:0ba029bf7252562107d785bda6401149f0a4e4ab144e22c3117f9378cb67670b",
+      "roundId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:e1b5f84bf21167dbec644f160375c942d266b5064f44f73c32b10c1a20c01c31",
+      "goalReviewContextFingerprint": "sha256:cfa6aeb2f7ffbbe081316ab6a2d1c310e1bc8dee4d7f58c83f975466969074bf",
+      "batchId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-first-pass-b.batch-001",
+      "runId": "math-b033a-blind-b-20260906",
+      "runManifestDigest": "sha256:82ec07acd917d9a72a6e48cc957d9b7f4f339ed65904bc9e8095fedcedfcca00",
+      "resultsDigest": "sha256:e102f86d61f431f2f6b9c81e418875b2c756bee68d1cfd05dd3921c38dd617c3",
+      "recordId": "math-b033a-blind-b-20260906-002",
+      "recordDigest": "sha256:19d4e386c588c147fa68ffdb74e36c1416a96da1fb207fbf484bbd7acba9717b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:e8a7a218b052a5edb88051619901fa772e83801cda3c95512a1043fe5d2d1556"
+  },
+  "status": "resolved",
+  "decision": "current_after_revision",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-b033a-functions-current-synthesis-20260906-v1",
+    "manifestDigest": "sha256:a2b3e8146902d0e50f38b632142bc67aea53936d880d62de3412b1ff493aaac7",
+    "manifestFingerprint": "sha256:d2d2219c54f5bf8f6fd3036c844db737b692ce652c3d1f9428bcfc0aab3b9ba7",
+    "decisionId": "math-b033a-functions-current-synthesis-20260906-v1-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "math-b033a-functions-current-synthesis-20260906-v1-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "openai-codex-parent-b033a-current-pair",
+    "synthesizedAt": "2026-09-06T05:17:45.553Z",
+    "rationaleDe": "Beide aktuellen Runden empfehlen KEEP für die tatsächlich ergänzte Definitionsmengenbedingung. Allgemeine Termidentität, Abschluss unter x↦−x und die zugehörige Spiegelung bilden einen kohärenten Nachweis. Runde A wird als Evidenzbasis gewählt; B bestätigt die gleiche notwendige Unterscheidung. Einseitige Einschränkung bei gleichem Term ist ein echter Transferfall. Die separate Assessmentkorrektur und ihre weiteren Coveragebefunde werden nicht als erledigte Gesamtprüfung mitbehauptet. Keine neue menschliche, Bild-, Quellenabdeckungs- oder Projektionsfreigabe wird behauptet.",
+    "rationaleEn": "Both current rounds recommend KEEP for the actual added domain condition. A general expression identity, closure under x↦−x and the corresponding reflection form one coherent verification. Round A supplies the evidence; B confirms the same necessary distinction. One-sided domain restriction with an unchanged expression is genuine transfer. The separate assessment correction and its further coverage findings are not claimed as a completed overall audit. No new human, image, source-coverage or projection approval is claimed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Spiegelung eines Graphen an der y-Achse ersetzt (x, f(x)) durch (−x, f(x)); die Punktspiegelung am Ursprung ersetzt ihn durch (−x, −f(x)). Die jeweilige Symmetrie verlangt eine unter x ↦ −x abgeschlossene Definitionsmenge und die passende Funktionsgleichheit für alle ihre Eingaben. Einzelne passende Wertepaarungen beweisen diese allgemeine Aussage nicht.",
+      "essentialUnderstandingEn": "Reflecting a graph in the y-axis replaces (x, f(x)) with (−x, f(x)); point reflection about the origin replaces it with (−x, −f(x)). Each symmetry requires a domain closed under x ↦ −x and the corresponding function equality for every input in that domain. Individual matching pairs of values do not prove this general statement.",
+      "observablePerformanceDe": "Die lernende Person prüft für eine eigenständig vorgelegte Funktion zunächst die Definitionsmenge, vergleicht f(−x) rechnerisch mit f(x) und −f(x) und begründet damit die zutreffende Symmetrie oder das Fehlen beider Symmetrien. Sie verknüpft die Rechnung mit den zugehörigen gespiegelten Graphenpunkten und unterscheidet eine allgemeine Identität von einer bloßen Stichprobe.",
+      "observablePerformanceEn": "For a function presented as an independent task, the learner first checks its domain, compares f(−x) algebraically with f(x) and −f(x), and uses this to justify the applicable symmetry or the absence of both symmetries. They connect the calculation to the corresponding reflected graph points and distinguish a general identity from a mere sample check.",
+      "transferExpectationDe": "In einer unabhängig vorgelegten neuen Aufgabe bleibt ein gerader oder ungerader Funktionsterm gleich, während seine Definitionsmenge einseitig eingeschränkt wird. Die lernende Person beurteilt die Symmetrie erneut und erklärt anhand fehlender gespiegelter Graphenpunkte, warum die passende Termgleichheit allein nun nicht genügt.",
+      "transferExpectationEn": "In a fresh task presented independently, an even or odd function term stays the same while its domain is restricted on one side. The learner reassesses its symmetry and explains through missing reflected graph points why the matching term identity alone is now insufficient."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-05e072fa9dab9a3e0f246710af1abc080f82bd732ceb43909130740b29eef245",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:1bd6479baef9b97506aedc40a214ed4ddb94bebe548f0547f3a24d93831b3374"
+}

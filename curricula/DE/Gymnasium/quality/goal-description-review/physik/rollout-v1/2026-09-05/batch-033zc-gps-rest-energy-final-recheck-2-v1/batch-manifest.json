@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033zc-gps-rest-energy-final-recheck-2-v1.config.json",
+  "configDigest": "sha256:6ee3ea9a608c39e40692bfe305ea8731a9955af8b5872b9d4449c973088b5a4a",
+  "goalIds": [
+    "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+    "bfea7a23-1ce1-4a42-badd-1fc9bf30124a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 464,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:88f34e4b35f715e0676610e1a2d541123bc5a0ab7ea6aa645b39eceeecca4d99"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:1f675da9a0451115db11e9cf3400179f1f330a9e9c7e9d66d05262166d83493b",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:5459c44174fb962f0e0b8dbe3c42bd0554d7cb21ed8493207b0107d9663ef6a1",
+    "reviewInputFingerprint": "sha256:27fe39dfb7dbc2557951bff196604a90c093941dd78fa7db02869cfe086ac6ab",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-a",
+        "campaignDigest": "sha256:390d40e33b3ca91d20c649e2b62f9dba444f6a99b76bf64766dc862d1cf08b2c",
+        "roundId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-independent-a",
+        "batchId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:79f9637ee71b50538f78897311bf184baf7f459d781ad55157cde3d5f5a707ea"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-b",
+        "campaignDigest": "sha256:65d7c8ffb7a1b3a9dad7f5596935d59099b66fc7f626507bc6dd09a3fa704b92",
+        "roundId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-independent-b",
+        "batchId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:6d9fca0a460b49ab52d96f913eda6f916095cd4c2f09345348725b4af1669818"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

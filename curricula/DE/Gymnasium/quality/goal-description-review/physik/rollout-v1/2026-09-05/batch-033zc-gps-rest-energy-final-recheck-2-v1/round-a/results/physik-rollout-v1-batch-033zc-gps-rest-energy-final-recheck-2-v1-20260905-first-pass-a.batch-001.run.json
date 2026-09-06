@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-b033zc-blind-a-20260906",
+  "campaignId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-a",
+  "roundId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:79f9637ee71b50538f78897311bf184baf7f459d781ad55157cde3d5f5a707ea",
+  "bundleFingerprint": "sha256:5459c44174fb962f0e0b8dbe3c42bd0554d7cb21ed8493207b0107d9663ef6a1",
+  "bookDigest": "sha256:1f675da9a0451115db11e9cf3400179f1f330a9e9c7e9d66d05262166d83493b",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:d9a9f6463e0b1349e387192d0b8d7d3ceb73234ac7ca7787e03c87df29fdf0d2",
+  "independenceGroupId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+    "bfea7a23-1ce1-4a42-badd-1fc9bf30124a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:79f9637ee71b50538f78897311bf184baf7f459d781ad55157cde3d5f5a707ea"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-06T04:43:29Z",
+  "completedAt": "2026-09-06T04:49:02Z",
+  "status": "completed",
+  "outputDigest": "sha256:26e3f5cbbd6c7ac1f4d3c297fe18b3784862b663935be3b7c9a5d7c984e11d26",
+  "toolchainVersion": "codex-independent-review-v1"
+}

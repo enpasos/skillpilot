@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5459c44174fb962f0e0b8dbe3c42bd0554d7cb21ed8493207b0107d9663ef6a1",
+  "reviewInputFingerprint": "sha256:27fe39dfb7dbc2557951bff196604a90c093941dd78fa7db02869cfe086ac6ab",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-a",
+      "roundId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-independent-a",
+      "runIds": [
+        "physics-b033zc-blind-a-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-b",
+      "roundId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033zc-gps-rest-energy-final-recheck-2-v1-20260905-independent-b",
+      "runIds": [
+        "physics-b033zc-blind-b-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::unknown::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+      "firstRecordId": "physics-b033zc-blind-a-20260906.001",
+      "secondRecordId": "physics-b033zc-blind-b-20260906.a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+      "firstRunId": "physics-b033zc-blind-a-20260906",
+      "secondRunId": "physics-b033zc-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "firstRecordId": "physics-b033zc-blind-a-20260906.002",
+      "secondRecordId": "physics-b033zc-blind-b-20260906.bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "firstRunId": "physics-b033zc-blind-a-20260906",
+      "secondRunId": "physics-b033zc-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

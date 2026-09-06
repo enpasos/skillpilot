@@ -1,0 +1,1228 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-b037a-biophysics-methods-pv-mechanics-19-v1",
+  "reviewedAt": "2026-09-06T11:08:34Z",
+  "reviewer": "Codex P author; Physics B037a; current AI candidate binding after stable source signal",
+  "goals": [
+    {
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "nachvollziehbarkeit",
+            "essentialUnderstandingDe": "Ein Protokoll trennt Versuchsbedingungen, unveränderte Rohdaten, Rechenweg und Schlussfolgerung; Beobachtung ist nicht Modellinterpretation.",
+            "essentialUnderstandingEn": "A report separates experimental conditions, unchanged raw data, calculations, and conclusions; observation is not model interpretation.",
+            "observablePerformanceDe": "Überführt ungeordnete Notizen in eine nachvollziehbare Darstellung mit Größen, Einheiten, Aufbau, Bedingungen, Auswertung und einer datengetragenen Ergebnisgrenze.",
+            "observablePerformanceEn": "Transforms unordered notes into a traceable representation including quantities, units, setup, conditions, analysis, and a data-supported limit to the conclusion."
+          },
+          {
+            "id": "darstellungsentscheidung",
+            "essentialUnderstandingDe": "Tabellen und Diagramme dokumentieren Datenbezüge; fehlende Angaben und Streuung dürfen nicht durch erfundene Präzision ersetzt werden.",
+            "essentialUnderstandingEn": "Tables and graphs document data relationships; missing information and scatter must not be replaced by invented precision.",
+            "observablePerformanceDe": "Wählt eine zweckmäßige fachtypische Darstellung, kennzeichnet Messung und abgeleitete Größe und lässt eine andere Person die Auswertung rekonstruieren.",
+            "observablePerformanceEn": "Chooses a useful disciplinary representation, distinguishes measured and derived quantities, and enables another person to reconstruct the analysis."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "nachvollziehbarkeit",
+            "darstellungsentscheidung"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "datentyp",
+            "textDe": "Wiederholte Zeitmessung gegenüber einer Messreihe mit veränderter Spannung; Protokolltext gegenüber beschriftetem Diagramm.",
+            "textEn": "Repeated timing versus a voltage-varied series; report text versus a labelled graph."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "pendelprotokoll",
+            "taskDemandDe": "Ordne diese vollständigen Übungsnotizen zu einem kurzen Protokoll: Frage nach der Periodendauer bei unverändertem Pendel, Länge 0,60 m; kleiner gleicher Auslenkwinkel, nicht genauer notiert; drei Zeiten für je 10 volle Perioden 15,0/15,2/14,8 s; Handstoppuhr; keine Geräteunsicherheit angegeben. Dokumentiere Rohdaten und Auswertung.",
+            "taskDemandEn": "Organize these complete exercise notes into a short report: question about period for an unchanged pendulum, length 0.60 m; same small release angle, not recorded more precisely; three times for 10 full periods each, 15.0/15.2/14.8 s; handheld stopwatch; no instrument uncertainty given. Document raw data and analysis.",
+            "expectedPerformanceDe": "Erhält Rohzeiten und N=10, berechnet Perioden 1,50/1,52/1,48 s und Mittel 1,50 s. Kennzeichnet ±0,02 s als maximale beobachtete Abweichung vom Mittel, nicht vollständige Messunsicherheit; die gesamte beobachtete Spannweite beträgt 0,04 s. Beschreibt Aufbau und fehlenden Winkel genauer als offene Protokollangabe; behauptet keine universelle Periodendauer oder Prüfung einer Längenabhängigkeit.",
+            "expectedPerformanceEn": "Preserves raw times and N=10, calculates periods 1.50/1.52/1.48 s and mean 1.50 s. Labels ±0.02 s as the maximum observed deviation from the mean, not total measurement uncertainty; the full observed range is 0.04 s. Describes setup and flags the missing exact angle as an incomplete record; claims neither a universal period nor a test of length dependence.",
+            "understandingFocusDe": "Dokumentation erhält die Trennung zwischen Rohzeit, Periodendauer und begrenzter Aussage.",
+            "understandingFocusEn": "Documentation preserves the distinction between raw time, period, and bounded conclusion."
+          },
+          {
+            "id": "widerstandsdiagramm",
+            "taskDemandDe": "Erstelle aus Notizen eine fachtypische Ergebnisdarstellung: strombegrenzte Kleinspannungsquelle, fester Widerstand, Amperemeter in Reihe und Voltmeter parallel; U=1,0/2,0/3,0 V, I=0,10/0,20/0,29 A; einmal je Einstellung gemessen. Frage: Ist I im untersuchten Bereich ungefähr proportional zu U? Temperatur und Gerätefehler fehlen.",
+            "taskDemandEn": "Create a disciplinary results representation from notes: current-limited low-voltage source, fixed resistor, ammeter in series and voltmeter in parallel; U=1.0/2.0/3.0 V, I=0.10/0.20/0.29 A; one measurement per setting. Question: Is I approximately proportional to U in this range? Temperature and instrument errors are missing.",
+            "expectedPerformanceDe": "Dokumentiert Schaltung und Rohwerttabelle, zeichnet U als x- und I als y-Achse mit Einheiten und einzelnen Punkten. Zeigt etwa 0,10 A/V bzw. R≈10/10/10,34 Ω als abgeleitete Größen; formuliert näherungsweise Übereinstimmung ohne den letzten Wert zu glätten. Temperatur- und Unsicherheitsangaben bleiben offen, nicht erfunden.",
+            "expectedPerformanceEn": "Documents circuit and raw-data table, plots U on the x-axis and I on the y-axis with units and individual points. Shows approximately 0.10 A/V or R≈10/10/10.34 Ω as derived quantities; states approximate agreement without smoothing away the last value. Temperature and uncertainty remain missing rather than invented.",
+            "understandingFocusDe": "Nachvollziehbare Darstellungswahl und ehrlicher Umgang mit Abweichung.",
+            "understandingFocusEn": "Traceable representation choice and honest treatment of a deviation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Quellenkarten sind ausdrücklich erfundene Aufgabenmaterialien, keine normativen oder empirisch freigegebenen Quellen. / Source cards are explicitly invented task materials, not normative or empirically approved sources."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "quellenbezug",
+            "essentialUnderstandingDe": "Physikalisch relevante Information hängt von Fragestellung, Größe, Einheit und Randbedingungen der Quelle ab; eine Zahl ohne diese Bezüge ist nicht vergleichbar.",
+            "essentialUnderstandingEn": "Physically relevant information depends on the question, quantity, unit, and source conditions; a number without these links is not comparable.",
+            "observablePerformanceDe": "Entnimmt Angaben mit Herkunft und Bedingungen, ordnet relevante und irrelevante Inhalte und stellt vergleichbare Aussagen zusammen.",
+            "observablePerformanceEn": "Extracts information with provenance and conditions, separates relevant from irrelevant content, and assembles comparable statements."
+          },
+          {
+            "id": "fachabgleich",
+            "essentialUnderstandingDe": "Ein Abgleich mit bekannten Beziehungen kann Widersprüche oder Grenzen einer Quellenbehauptung zeigen, ohne fehlende Daten zu ersetzen.",
+            "essentialUnderstandingEn": "Comparison with known relationships can reveal contradictions or limits in a source claim without replacing missing data.",
+            "observablePerformanceDe": "Prüft eine konkrete Behauptung mit passenden physikalischen Größen und kennzeichnet ausdrücklich, was sich aus den Quellen nicht entscheiden lässt.",
+            "observablePerformanceEn": "Tests a specific claim using appropriate physical quantities and explicitly states what the sources cannot decide."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "quellenbezug",
+            "fachabgleich"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quellenkonflikt",
+            "textDe": "Unvereinbare Einheiten-/Leistungsbehauptung gegenüber unterschiedlicher Systemgrenze und ausgelassenen Verlusten.",
+            "textEn": "Incompatible unit/power claim versus a different system boundary and omitted losses."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "leuchtmittelquellen",
+            "taskDemandDe": "Nutze drei ausdrücklich fiktive Quellenkarten: A, Messblatt, Lampe 8 W bei 800 lm; B, Werbetext, Vergleichslampe 40 W bei ebenfalls 800 lm, Behauptung 'fünfmal so viel elektrische Energie in einer Stunde'; C, Verpackung, Farbe des Gehäuses blau. Ordne Informationen für die Frage nach elektrischer Energie bei gleicher Lichtstromangabe und prüfe B.",
+            "taskDemandEn": "Use three explicitly fictional source cards: A, measurement sheet, lamp 8 W at 800 lm; B, advertising text, comparison lamp 40 W at the same 800 lm, claiming 'five times as much electrical energy in one hour'; C, packaging, blue housing. Organize information about electrical energy at equal stated luminous flux and test B.",
+            "expectedPerformanceDe": "Verweist auf A/B, verwendet E=P·t: 8 Wh und 40 Wh in einer Stunde, Verhältnis 5; die Behauptung gilt bei dieser Betriebsdauer und diesen Leistungswerten. Gehäusefarbe ist dafür irrelevant. Gleiche Lumen allein belegen weder gleichen Lichtkegel noch gleiche Lebensdauer; keine zusätzliche Qualitätsbewertung wird erfunden.",
+            "expectedPerformanceEn": "References A/B and uses E=P·t: 8 Wh and 40 Wh in one hour, ratio 5; the claim holds for this duration and these power values. Housing colour is irrelevant. Equal lumens alone establish neither equal beam pattern nor equal service life; no additional quality assessment is invented.",
+            "understandingFocusDe": "Fragestellungsbezogene Quellenordnung mit überprüfbarem Größenabgleich.",
+            "understandingFocusEn": "Question-focused organization of sources with a checkable comparison of quantities."
+          },
+          {
+            "id": "pumpenquellen",
+            "taskDemandDe": "Fiktive Quellenkarten: A nennt 12 W elektrische Aufnahme einer Pumpe; B nennt 9 W mechanische Abgabe am Pumpenantrieb unter denselben Bedingungen; C behauptet, daraus folgten 12 W Nutzleistung im angehobenen Wasser; Förderhöhe und Durchfluss fehlen. Werte die Quellen für den Energieübertragungsweg aus.",
+            "taskDemandEn": "Fictional source cards: A gives a pump's electrical input as 12 W; B gives 9 W mechanical output at the pump drive under the same conditions; C claims that this implies 12 W useful power in the raised water; head and flow rate are missing. Evaluate the sources for the energy-transfer path.",
+            "expectedPerformanceDe": "Ordnet 12 W dem Eingang und 9 W einer späteren Schnittstelle zu; 3 W gehen schon bis dort in andere Übertragungen, η=0,75 für diesen Teil. C ist unter den gegebenen Bedingungen nicht gedeckt. Die Wasser-Nutzleistung ist ohne weitere Daten nicht exakt bestimmbar und kann hier höchstens 9 W sein; die fehlende Systemgrenze wird benannt.",
+            "expectedPerformanceEn": "Assigns 12 W to the input and 9 W to a later interface; 3 W already goes to other transfers, with η=0.75 for that segment. C is unsupported under the given conditions. Useful water power cannot be determined exactly without further data and can be at most 9 W here; identifies the missing system boundary.",
+            "understandingFocusDe": "Quellenangaben zu verschiedenen Schnittstellen nicht als dieselbe Größe behandeln.",
+            "understandingFocusEn": "Do not treat source values at different interfaces as the same quantity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "39ef1e8a-9203-5192-8c76-8e0c3322646f",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Konkrete offene Materialanforderung: Fall gleiches-antwortmuster verlangt vor Durchführung eine tatsächlich bereitgestellte empirische Grafik mit überprüfbarer Quelle und Messbedingungen. Sie fehlt im Entwurf; der empirische Pflichtteil darf nicht mit synthetischen Tripeln erfüllt werden. Das reduzierte Empfängermodell des zweiten Falls bleibt ein ausdrücklich synthetischer unabhängiger Transfer. Keine Quellenfreigabe wird behauptet. / Specific outstanding material requirement: case gleiches-antwortmuster requires an actual supplied empirical graph with verifiable source and measurement conditions before use. It is missing from this draft; synthetic triples cannot satisfy the required empirical component. The second case remains explicitly synthetic independent transfer. No source approval is claimed."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "reiz-und-wahrnehmung",
+            "essentialUnderstandingDe": "Additive Mischung überlagert Licht; die Farbwahrnehmung beruht auf dem gemeinsamen Antwortmuster verschiedener Zapfentypen und ist keine neue mittlere Lichtwellenlänge.",
+            "essentialUnderstandingEn": "Additive mixing superposes light; colour perception depends on the joint response pattern of different cone types and is not a new mean wavelength of light.",
+            "observablePerformanceDe": "Verknüpft ein gegebenes spektrales oder Zapfenantwort-Diagramm mit einem Farbvergleich und erklärt, wie verschiedene Lichtzusammensetzungen dasselbe Antwortmuster erzeugen können.",
+            "observablePerformanceEn": "Connects a supplied spectral or cone-response graph to a colour comparison and explains how different light compositions can produce the same response pattern."
+          },
+          {
+            "id": "grafik-auswertung",
+            "essentialUnderstandingDe": "Empirische Antwort- oder Abgleichdaten gelten für bestimmte Reize und Beobachtungsbedingungen; ein vereinfachtes Antwortmodell ersetzt nicht das vollständige Sehsystem.",
+            "essentialUnderstandingEn": "Empirical response or matching data apply to specified stimuli and viewing conditions; a simplified response model does not replace the complete visual system.",
+            "observablePerformanceDe": "Liest Achsen, relative Antwortwerte und Vergleichsbedingungen korrekt, konstruiert einen passenden Vergleich und begrenzt seine Schlussfolgerung bei veränderter Empfängerausstattung.",
+            "observablePerformanceEn": "Reads axes, relative response values, and comparison conditions correctly, constructs an appropriate comparison, and limits the conclusion when receptor equipment changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reiz-und-wahrnehmung",
+            "grafik-auswertung"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reiz-empfaenger",
+            "textDe": "Verschiedene Lichtzusammensetzungen bei gleichem Empfänger gegenüber verändertem Empfänger bei festen Reizen.",
+            "textEn": "Different light compositions for the same observer versus a changed observer for fixed stimuli."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "gleiches-antwortmuster",
+            "taskDemandDe": "Pflichtmaterial für diesen Fall ist eine tatsächlich bereitgestellte empirische Grafik zur Farbangleichung oder Zapfenempfindlichkeit mit überprüfbarer Quellenangabe, Achsen/Einheiten und dokumentierten Reiz-/Messbedingungen. Diese Grafik liegt dem Entwurf noch nicht bei und muss vor Durchführung ergänzt werden; synthetische Daten dürfen sie nicht ersetzen. Werte mindestens zwei Werte oder Kurvenabschnitte aus und verknüpfe einen belegten Vergleich mit dem physiologischen Farbsehen. Bearbeite zusätzlich, ausdrücklich getrennt, diesen Modell-Konsistenzteil: bei festem Adaptationszustand relative Antworten (S,M,L) R=(0,1,4), G=(0,3,2), Y=(0,4,6); im schwachen linearen Modell addieren sich Antworten, die Spektren R+G und Y sind verschieden.",
+            "taskDemandEn": "Required material for this case is an actually supplied empirical graph of colour matching or cone sensitivity with a verifiable source citation, axes/units, and documented stimulus/measurement conditions. This graph is not yet included in the draft and must be added before use; synthetic data must not replace it. Analyze at least two values or curve segments and connect one supported comparison to physiological colour vision. Additionally complete this explicitly separate model-consistency component: at fixed adaptation, relative responses (S,M,L) R=(0,1,4), G=(0,3,2), Y=(0,4,6); responses add in the weak linear model, and the spectra of R+G and Y differ.",
+            "expectedPerformanceDe": "Belegt Aussagen zuerst an der tatsächlich gelieferten empirischen Grafik: nennt Quelle und Bedingungen, liest Achsen und mindestens zwei Werte/Abschnitte korrekt, beschreibt den erkennbaren Vergleich und dessen Mess-/Modellgrenze, ohne Zahlen oder Befunde zu erfinden. Ohne die Pflichtgrafik ist dieser Datenteil nicht erbracht. Erst im getrennten Modellteil konstruiert die Person R+G=(0,4,6) und erklärt den möglichen gleichen Farbeindruck zu Y durch gleiche Zapfenantworten trotz verschiedener Spektren, nicht durch Entstehung einer neuen mittleren Wellenlänge. Die synthetischen Tripel bestätigen keine empirische Empfindlichkeitskurve.",
+            "expectedPerformanceEn": "First supports claims using the actual supplied empirical graph: identifies source and conditions, reads axes and at least two values/segments correctly, describes the observed comparison and its measurement/model limits without inventing numbers or findings. Without the required graph, this data component is not demonstrated. Only in the separate model component does the learner construct R+G=(0,4,6) and explain a possible match to Y by equal cone responses despite different spectra, not by creation of a new mean wavelength. Synthetic triples do not establish an empirical sensitivity curve.",
+            "understandingFocusDe": "Echte empirische Grafik fachlich auswerten und von einem synthetischen Modell gleicher sensorischer Antworten unterscheiden.",
+            "understandingFocusEn": "Analyze an actual empirical graph scientifically and distinguish it from a synthetic model of equal sensory responses."
+          },
+          {
+            "id": "verringerte-antwortdimension",
+            "taskDemandDe": "Eine zweite konstruierte Messgrafik zeigt bei gleicher Helligkeitsabgleich-Bedingung die Antwortmuster A=(1,3,4), B=(1,1,4) in relativen S/M/L-Einheiten. Ein vereinfachtes Empfängermodell registriert zunächst alle drei, dann nur S und L; andere Signale werden im Fall ausgeschlossen. Vergleiche beide Grafiken und die Unterscheidbarkeit, ohne eine medizinische Diagnose zu stellen.",
+            "taskDemandEn": "A second constructed measurement graph shows response patterns A=(1,3,4), B=(1,1,4) in relative S/M/L units under the same brightness-matching condition. A simplified receiver first registers all three and then only S and L; other signals are excluded in this case. Compare the graphs and discriminability without making a medical diagnosis.",
+            "expectedPerformanceDe": "Liest den Unterschied ausschließlich in M ab, zeichnet für das reduzierte Modell zweimal (1,4) und begründet, weshalb der dort verfügbare Farbinformationsunterschied verschwindet. Mit drei Antworten bleiben A/B unterscheidbar. Verallgemeinert dies nicht auf die gesamte reale Wahrnehmung oder eine konkrete Person; die Grafik modelliert nur diese Reiz-/Empfängerbedingungen.",
+            "expectedPerformanceEn": "Reads the difference as confined to M, plots (1,4) twice for the reduced model, and explains why the available colour-information difference disappears there. With three responses A/B remain distinguishable. Does not generalize to all real perception or a specific person; the graph models only these stimulus/receiver conditions.",
+            "understandingFocusDe": "Die physiologische Kodierung bestimmt, welche Unterschiede aus Reizdaten nutzbar sind.",
+            "understandingFocusEn": "Physiological encoding determines which differences in stimulus data are usable."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8fe0ebf1-8256-53d2-9b01-fdb945e57a59",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Hypothetische Dossiers erlauben die unabhängige Vergleichsleistung ohne erfundene zoologische Literatur. Für reale Arten sind Quellen und Messbedingungen vor Nutzung zu ergänzen. / Hypothetical dossiers permit independent comparison without invented zoological literature; actual species require sources and measurement conditions before use."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "vergleichskriterien",
+            "essentialUnderstandingDe": "Der Vergleich von Linsenaugen benötigt gleiche Kriterien für lichtbrechende Teile, Bildempfänger, Auflösung und Umweltbedingungen; ein größeres Auge ist nicht automatisch in jeder Hinsicht überlegen.",
+            "essentialUnderstandingEn": "Comparing lens eyes requires common criteria for refracting components, image receiver, resolution, and environmental conditions; a larger eye is not automatically superior in every respect.",
+            "observablePerformanceDe": "Recherchiert in einem bereitgestellten Materialpaket zielgerichtet, erstellt einen belegten Vergleich und nutzt angegebene Auflösungsgrenzen zur Beurteilung einer konkreten Sehaufgabe.",
+            "observablePerformanceEn": "Researches a supplied material set purposefully, constructs a sourced comparison, and uses stated resolution limits to assess a particular visual task."
+          },
+          {
+            "id": "passung-grenze",
+            "essentialUnderstandingDe": "Geometrische Abbildung ist ein Teilmodell; Rezeptoren, Beleuchtung und Medium begrenzen die Aussage über biologische Sehleistung und Anpassung.",
+            "essentialUnderstandingEn": "Geometrical imaging is a partial model; receptors, illumination, and medium limit claims about biological visual performance and adaptation.",
+            "observablePerformanceDe": "Begründet eine bedingte Passung von Bau-/Funktionsmerkmalen zur Anforderung und nennt eine mit dem Material nicht belegte Schlussfolgerung.",
+            "observablePerformanceEn": "Justifies a conditional match between structural/functional features and the demand and identifies a conclusion unsupported by the material."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "vergleichskriterien",
+            "passung-grenze"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "anforderung-medium",
+            "textDe": "Detailsehen bei hellem/dunklem Umfeld gegenüber Scharfstellen in unterschiedlichen optischen Medien; kein pauschales Artenranking.",
+            "textEn": "Detail vision in bright/dim surroundings versus focusing in different optical media; no unconditional ranking of species."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "hell-dunkel-dossiers",
+            "taskDemandDe": "Recherchiere aus ausdrücklich hypothetischen Tieraugen-Dossiers: A und B besitzen Linse und Netzhaut; A kleinere Eintrittsöffnung und dichte Rezeptoranordnung, B größere Öffnung und geringere Rezeptordichte. Messkarten geben minimale trennbare Winkel bei hellem Licht A=2′, B=6′, bei schwachem Licht A=12′, B=7′ an. Für zwei Details im Winkelabstand 4′ tagsüber und 8′ nachts: Erstelle einen quellenbezogenen Vergleich und begründe die jeweilige Passung.",
+            "taskDemandEn": "Research explicitly hypothetical animal-eye dossiers: A and B have a lens and retina; A has a smaller aperture and dense receptor arrangement, B a larger aperture and lower receptor density. Measurement cards give minimum separable angles in bright light A=2′, B=6′, and in dim light A=12′, B=7′. For two details 4′ apart by day and 8′ apart at night, construct a source-linked comparison and justify the respective match.",
+            "expectedPerformanceDe": "Verknüpft Strukturkarte und jeweilige Messbedingung, nicht nur Öffnungsgröße. Nach den Schwellen trennt tagsüber A die 4′, B nicht; nachts B die 8′, A nicht. Erklärt, dass Auflösung und Lichtsammlung verschiedene Kriterien sind. Aus diesen Dossiers folgen weder universelle Artenwerte noch ein evolutionärer Entstehungsnachweis.",
+            "expectedPerformanceEn": "Links the structural card to the corresponding measurement condition, not only aperture size. By the thresholds, A resolves 4′ by day and B does not; B resolves 8′ at night and A does not. Explains that resolution and light collection are different criteria. These dossiers establish neither universal species values nor an evolutionary origin.",
+            "understandingFocusDe": "Anforderungsbezogener Vergleich statt allgemeinem Überlegenheitsurteil.",
+            "understandingFocusEn": "Demand-specific comparison rather than an overall superiority judgment."
+          },
+          {
+            "id": "medium-und-fokus",
+            "taskDemandDe": "Ein zweites hypothetisches Quellenpaket beschreibt Linsenauge C: starke Brechung an der Hornhaut in Luft, variable Linsenform; Auge D: für Wasser angegebene Linsenbrechung, Fokusänderung durch Verschieben der Linse. Eine Modellkarte sagt: In Wasser ist der Brechungsbeitrag der Hornhaut von C deutlich kleiner; zu C unter Wasser fehlen Auflösungsmessungen. D trennt unter Wasser 0,3°, die Sehaufgabe verlangt 0,5°. Vergleiche Bau, Fokussierung, Auflösung und Modellgrenzen.",
+            "taskDemandEn": "A second hypothetical source set describes lens eye C: strong corneal refraction in air, variable lens shape; eye D: specified lens refraction in water, focusing by shifting the lens. A model card states that C's corneal contribution is much smaller in water; resolution measurements for C underwater are absent. D resolves 0.3° underwater, while the task requires 0.5°. Compare structure, focusing, resolution, and model limits.",
+            "expectedPerformanceDe": "Stellt Formänderung und Verschiebung als verschiedene Wege zur Bildlage an der Netzhaut dar. Begründet D als für die angegebene Unterwasseraufgabe geeignet, da 0,5° über seiner Schwelle liegt. Für C lässt der kleinere Hornhautbeitrag eine geänderte Fokuslage erwarten; eine exakte Unterwasserauflösung oder völlige Blindheit lässt sich daraus nicht behaupten. Verweist je Aussage auf Struktur-, Modell- oder Messkarte.",
+            "expectedPerformanceEn": "Presents shape change and displacement as different ways to position the image on the retina. Justifies D as suitable for the stated underwater task because 0.5° exceeds its threshold. The smaller corneal contribution predicts a changed focus for C; neither exact underwater resolution nor complete blindness follows. Links each statement to a structural, model, or measurement card.",
+            "understandingFocusDe": "Optisches Teilmodell von empirischer biologischer Auflösung unterscheiden.",
+            "understandingFocusEn": "Distinguish the optical partial model from empirical biological resolution."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "fachkern",
+            "essentialUnderstandingDe": "Adressatengerechte Physikkommunikation ändert die Ausdrucksform, nicht den fachlichen Inhalt oder die Reichweite eines Ergebnisses.",
+            "essentialUnderstandingEn": "Audience-appropriate physics communication changes expression, not the scientific content or scope of a result.",
+            "observablePerformanceDe": "Erstellt aus gegebenen Ergebnissen eine verständliche Präsentation mit gezielt eingeführten Fachbegriffen und überprüfbarem Bezug zu Daten oder Darstellung.",
+            "observablePerformanceEn": "Creates a comprehensible presentation from supplied results using purposefully introduced terminology and checkable links to data or a representation."
+          },
+          {
+            "id": "sprachwechsel",
+            "essentialUnderstandingDe": "Alltagssprache kann Energie, Kraft, Temperatur oder Strom anders verwenden als die fachliche Darstellung; die gemeinte Beobachtung muss beim Präzisieren erhalten bleiben.",
+            "essentialUnderstandingEn": "Everyday language can use energy, force, temperature, or current differently from disciplinary language; precision must preserve the intended observation.",
+            "observablePerformanceDe": "Überführt konkrete Alltagsaussagen in fachlich korrekte Formulierungen und erläutert die Begriffe passend zum Vorwissen des Publikums.",
+            "observablePerformanceEn": "Recasts specific everyday statements in scientifically correct language and explains terms appropriately for the audience's prior knowledge."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "fachkern",
+            "sprachwechsel"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "publikum-repraesentation",
+            "textDe": "Kurze mündliche Erklärung für Einsteiger gegenüber einer beschrifteten Präsentationsfolie für Mitschüler mit Grundkenntnissen.",
+            "textEn": "Short oral explanation for beginners versus an annotated presentation slide for classmates with basic knowledge."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "abkuehlen-erklaeren",
+            "taskDemandDe": "Präsentiere für jüngere Lernende diese gegebenen Ergebnisse: Wasser kühlt im Zimmer in 10 min von 60 auf 45 °C, der Raum bleibt ungefähr 20 °C. Die Notiz lautet 'Die Kälte läuft ins Wasser und die Wärme verschwindet.' Formuliere eine kurze Erklärung mit einer geeigneten Skizze; eine Wärmemenge ist nicht gemessen.",
+            "taskDemandEn": "Present these supplied findings to younger learners: water cools in a room from 60 to 45 °C in 10 min; the room remains about 20 °C. A note says 'Cold flows into the water and the heat disappears.' Give a short explanation with a suitable sketch; an amount of heat was not measured.",
+            "expectedPerformanceDe": "Zeigt Temperaturabnahme von 15 K und eine Energieübertragung vom wärmeren Wasser an die Umgebung. Erklärt Temperatur als Zustandsgröße und Wärme als Energieübertragung aufgrund des Temperaturunterschieds in einfacher Sprache. Behauptet weder verschwundene Energie noch 15 J abgegebene Wärme; Skizzenpfeile kodieren die Übertragung, nicht einen Stoff 'Kälte'.",
+            "expectedPerformanceEn": "Shows a temperature decrease of 15 K and energy transfer from warmer water to the surroundings. Explains temperature as a state quantity and heat as energy transfer due to a temperature difference in simple language. Claims neither vanished energy nor 15 J of heat; sketch arrows encode transfer, not a substance called 'cold'.",
+            "understandingFocusDe": "Fachlich gleichbleibender Kern trotz einfacher Sprache.",
+            "understandingFocusEn": "An unchanged scientific core expressed in simple language."
+          },
+          {
+            "id": "strom-folie",
+            "taskDemandDe": "Erstelle für eine Lerngruppe mit Schaltungsgrundlagen eine Folie aus folgenden Ergebnissen einer einfachen Reihenschaltung: Messung vor und nach einer Lampe jeweils 0,20 A; Spannung über der Lampe 3,0 V. Eine Rohnotiz lautet 'Die Lampe verbraucht Strom.' Stelle Ergebnis, Fachbegriff und begrenzte Deutung dar.",
+            "taskDemandEn": "Create a slide for a group familiar with circuit basics from these results for a simple series circuit: current measured before and after a lamp is 0.20 A in each case; voltage across it is 3.0 V. A rough note says 'The lamp uses up current.' Present the result, terminology, and bounded interpretation.",
+            "expectedPerformanceDe": "Zeichnet die Messstellen mit konsistenten Strompfeilen, formuliert gleiche Stromstärke vor/nach der Lampe und elektrische Energieübertragung an der Lampe. Darf P=0,60 W als abgeleitete Angabe zeigen, erklärt aber, dass nicht Ladung vernichtet wird. Trennt Messwerte und Interpretation; eine Aussage zu Lichtwirkungsgrad oder realem Energiemix folgt nicht.",
+            "expectedPerformanceEn": "Draws measurement positions with consistent current arrows, states equal current before/after the lamp and electrical energy transfer at the lamp. May show P=0.60 W as a derived value, but explains that charge is not destroyed. Separates measurements and interpretation; no claim about luminous efficiency or the actual energy mix follows.",
+            "understandingFocusDe": "Eine alltagssprachliche Verbrauchsaussage präzisieren und mit Messwerten kommunizieren.",
+            "understandingFocusEn": "Make an everyday consumption claim precise and communicate it through measurements."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b378c8b3-5e83-5abf-8243-b0f345037bfc",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "sach-und-wert",
+            "essentialUnderstandingDe": "Technische Bewertungen verbinden überprüfbare physikalische Aussagen mit ausdrücklich gewählten außerfachlichen Kriterien; aus Messwerten allein folgt kein einzig zulässiger Standpunkt.",
+            "essentialUnderstandingEn": "Technical evaluations combine testable physical statements with explicitly chosen non-physical criteria; measurements alone do not imply one permissible position.",
+            "observablePerformanceDe": "Trennt Daten, Annahmen und Wertungen, wägt einen Nutzen gegen ein konkretes Risiko oder einen Nachteil ab und formuliert einen bedingten, nachvollziehbaren Standpunkt.",
+            "observablePerformanceEn": "Separates data, assumptions, and values, weighs a benefit against a specific risk or drawback, and formulates a conditional, traceable position."
+          },
+          {
+            "id": "abwaegungsgrenze",
+            "essentialUnderstandingDe": "Ein Standpunkt kann sich bei veränderten Nutzungsbedingungen oder Gewichtungen ändern, ohne dass sich ein physikalisches Gesetz ändert.",
+            "essentialUnderstandingEn": "A position may change with usage conditions or priorities without a change in a physical law.",
+            "observablePerformanceDe": "Prüft die Entscheidung an einer veränderten Bedingung und benennt eine fehlende Information, die für eine belastbarere Bewertung nötig wäre.",
+            "observablePerformanceEn": "Tests the decision against a changed condition and identifies missing information needed for a firmer assessment."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "sach-und-wert",
+            "abwaegungsgrenze"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "zielkonflikt",
+            "textDe": "Energiebedarf versus Verfügbarkeit; gleiche Daten bei verschiedenen Nutzungsprioritäten und fehlenden Sicherheits-/Leistungsdaten.",
+            "textEn": "Energy demand versus availability; identical data under different priorities and missing safety/performance data."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "beleuchtungswahl",
+            "taskDemandDe": "Eine fiktive Schulhofplanung vergleicht Leuchte A mit 6 W und B mit 10 W, beide mit derselben gemessenen Beleuchtungsstärke am vorgesehenen Messpunkt. A kostet mehr und hat einen breiteren Lichtkegel; Blendungsdaten fehlen. Beide laufen 4 h pro Abend. Empfiehl begründet eine Option unter selbst offengelegten Kriterien, ohne eine Sicherheitsfreigabe zu erteilen.",
+            "taskDemandEn": "A fictional schoolyard plan compares light A at 6 W and B at 10 W, both with the same measured illuminance at the intended test point. A costs more and has a broader beam; glare data are absent. Both run 4 h per evening. Recommend an option using explicitly stated criteria, without issuing safety approval.",
+            "expectedPerformanceDe": "Berechnet 24 gegenüber 40 Wh und trennt die Einsparung 16 Wh von Kosten- oder Gestaltungspräferenzen. Erkennt gleiche Punktbeleuchtung nicht als Beleg gleicher Flächenbeleuchtung oder Blendfreiheit. Ein begründetes vorläufiges Votum für A oder B ist möglich; nennt die fehlende Blendungs-/Flächenprüfung und erklärt, wie eine andere Priorität das Votum ändern könnte.",
+            "expectedPerformanceEn": "Calculates 24 versus 40 Wh and separates the 16 Wh saving from cost or design preferences. Does not treat equal illuminance at one point as proof of equal area coverage or freedom from glare. A reasoned provisional choice of A or B is possible; identifies the missing glare/area assessment and explains how another priority could change the choice.",
+            "understandingFocusDe": "Physikalische Einsparung und außerfachliches Entscheidungskriterium auseinanderhalten.",
+            "understandingFocusEn": "Separate a physical saving from a non-physical decision criterion."
+          },
+          {
+            "id": "inselpumpe",
+            "taskDemandDe": "Für eine fiktive Bewässerung liefert eine Solaroption tagsüber unter den gegebenen Bedingungen 60 Wh, benötigt werden täglich 40 Wh; ohne Speicher liefert sie nachts nichts. Eine Netzoption ist jederzeit verfügbar, braucht ebenfalls 40 Wh und verursacht laut Aufgabenkarte höhere laufende Kosten. Soll tagsüber flexibel oder nachts fest bewässert werden? Begründe je Anforderung einen Standpunkt.",
+            "taskDemandEn": "For fictional irrigation, a solar option supplies 60 Wh by day under the stated conditions, while daily demand is 40 Wh; without storage it supplies nothing at night. A grid option is available at any time, also needs 40 Wh, and has higher running costs according to the task card. Irrigation may be flexible by day or fixed at night. Justify a position for each demand.",
+            "expectedPerformanceDe": "Erkennt die ausreichende Tagesenergiemenge, aber nicht automatische zeitliche Verfügbarkeit. Bei flexibler Tagesnutzung kann die Solaroption passen; bei fester Nachtanforderung ist sie in der gegebenen Form ungeeignet. Wägt Kosten und Verfügbarkeit offen ab, benennt Schwankungen der Einstrahlung als Informationsgrenze und erfindet keinen vorhandenen Speicher.",
+            "expectedPerformanceEn": "Recognizes sufficient daytime energy but not automatic temporal availability. Solar can suit flexible daytime use; it is unsuitable in its stated form for fixed nighttime use. Explicitly weighs cost and availability, identifies variable irradiance as an information limit, and does not invent existing storage.",
+            "understandingFocusDe": "Eine veränderte Anforderung kann die Bewertung derselben technischen Daten umkehren.",
+            "understandingFocusEn": "A changed demand can reverse the evaluation of identical technical data."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "71b51afd-c71b-506f-8128-d6de36b509d1",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Fälle sind Papier-/Simulationsaufgaben und keine experimentelle Sicherheitsfreigabe; keine Grenzwerte, Laserklassifizierung oder persönliche Schutzmittelauswahl werden bescheinigt. / Cases are paper/simulation tasks, not experimental safety approval; no exposure limits, laser classification, or personal protective equipment selection are certified."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "konzentration-und-weg",
+            "essentialUnderstandingDe": "Optische Gefährdung hängt vom Strahlungsweg und der Konzentration am Auge oder einem Material ab; eine Linse kann die Bestrahlung lokal stark erhöhen.",
+            "essentialUnderstandingEn": "Optical hazard depends on the radiation path and concentration at the eye or a material; a lens can greatly increase local irradiance.",
+            "observablePerformanceDe": "Kennzeichnet in einem reinen Planszenario direkte, gebündelte und gegebenenfalls reflektierte Strahlwege und begründet eine Schutzmaßnahme über ihre physikalische Wirkung.",
+            "observablePerformanceEn": "Marks direct, focused, and where relevant reflected ray paths in a planning-only scenario and justifies a protective measure through its physical effect."
+          },
+          {
+            "id": "hinweise-und-grenzen",
+            "essentialUnderstandingDe": "Sicherheitshinweise beschränken eine konkrete Verwendung; sichtbare Helligkeit oder bloßes Wegsehen sind kein allgemeiner Gefährdungsnachweis.",
+            "essentialUnderstandingEn": "Safety instructions restrict a particular use; apparent brightness or merely looking away is not a general hazard assessment.",
+            "observablePerformanceDe": "Ordnet einen gegebenen Hinweis der Gefahr zu, wählt eine sichere Darstellungsalternative und fordert bei unbekannten Gerätedaten fachkundige Prüfung statt einer Freigabe.",
+            "observablePerformanceEn": "Links a supplied instruction to the hazard, chooses a safe representation alternative, and requests competent assessment rather than approval when device data are unknown."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "konzentration-und-weg",
+            "hinweise-und-grenzen"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "lichtquelle-weg",
+            "textDe": "Gebündeltes Sonnenlicht mit einer Linse gegenüber einem Lasergerät mit geschlossener Einhausung und möglicher Spiegelreflexion.",
+            "textEn": "Sunlight concentrated by a lens versus an enclosed laser device with possible mirror reflection."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "linse-am-fenster",
+            "taskDemandDe": "Beurteile ausschließlich auf Papier den Plan, eine Sammellinse am sonnigen Fenster auf einen Tisch zu richten und den hellen Fleck aus nächster Nähe zu betrachten. Die mitgelieferte Schulregel verbietet Sonnenbeobachtung durch optische Geräte und unbeaufsichtigte Bündelversuche. Begründe die Risiken und eine sichere Alternative; der Plan wird nicht ausgeführt.",
+            "taskDemandEn": "Assess on paper only a plan to point a converging lens at a table by a sunny window and inspect the bright spot at close range. The supplied school rule prohibits viewing the Sun through optical devices and unsupervised focusing experiments. Explain the risks and a safe alternative; the plan is not carried out.",
+            "expectedPerformanceDe": "Skizziert die räumliche Bündelung, erklärt lokale Erwärmungs-/Brandgefahr und die Gefährdung durch einen möglichen Strahlweg ins Auge. Ordnet beide Regelteile fachlich zu. Ersetzt den Versuch durch eine Strahlskizze oder Simulation, entfernt die Linse aus der geplanten Sonnenposition und behauptet nicht, eine Sonnenbrille mache den Plan sicher.",
+            "expectedPerformanceEn": "Sketches spatial concentration, explains local heating/fire risk and the hazard of a possible ray path into the eye. Connects both parts of the rule to the physics. Replaces the activity with a ray diagram or simulation, removes the lens from the planned solar position, and does not claim sunglasses make the plan safe.",
+            "understandingFocusDe": "Linsen bündeln Energie; Schutz unterbricht den gefährlichen Strahlweg.",
+            "understandingFocusEn": "Lenses concentrate energy; protection interrupts the hazardous optical path."
+          },
+          {
+            "id": "einhausung",
+            "taskDemandDe": "Ein rein hypothetischer Geräteplan zeigt einen Laser in geschlossener Einhausung. Der gelieferte Hinweis erlaubt nur geschlossenen Betrieb unter Aufsicht; Leistungs- und Klassendaten fehlen. Jemand möchte die Abdeckung zum Anschauen öffnen und einen Spiegel hineinhalten, weil der sichtbare Punkt schwach aussieht. Beurteile Vorschlag und Hinweis physikalisch, ohne das Gerät zu bedienen.",
+            "taskDemandEn": "A purely hypothetical device plan shows a laser in a closed enclosure. The supplied instruction allows only closed operation under supervision; power and class data are absent. Someone wants to open the cover to look inside and insert a mirror because the visible spot looks dim. Assess the proposal and instruction physically without operating the device.",
+            "expectedPerformanceDe": "Erkennt direkte und spiegelnd umgelenkte Strahlen als mögliche Augenwege, erklärt die Einhausung als Unterbrechung des Zugangs und verwirft Öffnen/Spiegeln. Die geringe scheinbare Helligkeit ersetzt keine Geräteeinstufung. Wählt unbeleuchtetes Modell oder Simulation und lässt fehlende Gerätedaten fachkundig klären; keine Laserklasse oder Brilleneignung wird erfunden.",
+            "expectedPerformanceEn": "Identifies direct and specularly redirected rays as possible eye paths, explains the enclosure as restricting access, and rejects opening or inserting a mirror. Low apparent brightness does not replace device classification. Chooses an unlit model or simulation and asks for competent clarification of missing device data; invents neither a laser class nor suitable protective eyewear.",
+            "understandingFocusDe": "Sicherheitsinformation auf eine veränderte Strahlgeometrie anwenden.",
+            "understandingFocusEn": "Apply safety information to a changed optical geometry."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2973da95-2cfc-5817-9c99-3c0c82777369",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Fiktive Dossiers sind Aufgabenmaterial, keine Behauptungen über reale Orte, Institute oder politische Ereignisse. / Fictional dossiers are task material, not claims about real towns, institutes, or political events."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "rezeption",
+            "essentialUnderstandingDe": "Gesellschaftliche Rahmenbedingungen können Wahrnehmung, Akzeptanz und Nutzung einer physikalischen Erkenntnis beeinflussen, ohne deren empirische Aussage dadurch allein zu ändern.",
+            "essentialUnderstandingEn": "Social conditions can affect perception, acceptance, and use of a physical finding without thereby changing its empirical content.",
+            "observablePerformanceDe": "Ordnet Quellenangaben physikalischem Befund, gesellschaftlicher Bedingung und Reaktion zu und erklärt einen belegbaren Wirkweg.",
+            "observablePerformanceEn": "Assigns source statements to the physical finding, social condition, and response and explains a supported pathway of influence."
+          },
+          {
+            "id": "beleg-und-kausalitaet",
+            "essentialUnderstandingDe": "Ein zeitlicher Zusammenhang oder eine Meinungsänderung ist noch kein eindeutiger Beleg für einen einzigen gesellschaftlichen Wirkmechanismus.",
+            "essentialUnderstandingEn": "A temporal association or change of opinion does not by itself establish a unique social causal mechanism.",
+            "observablePerformanceDe": "Vergleicht zwei Zeitpunkte oder Gruppen, benennt Alternativerklärungen und grenzt die Erklärung von einem naturwissenschaftlichen Wahrheitsvotum ab.",
+            "observablePerformanceEn": "Compares two times or groups, identifies alternative explanations, and distinguishes the explanation from a vote on scientific truth."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "rezeption",
+            "beleg-und-kausalitaet"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "einflussmechanismus",
+            "textDe": "Finanzielle Zugänglichkeit und politische Förderung gegenüber Vertrauen, Kommunikation und öffentlicher Risikowahrnehmung.",
+            "textEn": "Financial access and policy support versus trust, communication, and public risk perception."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "foerderung-und-nutzung",
+            "taskDemandDe": "Fiktive Dossierkarten: In Ort A und B zeigt derselbe Solarmodultest unter gleichen Bedingungen 18 % Wirkungsgrad. In A sinkt durch ein kommunales Förderprogramm die persönliche Anfangsausgabe, die Installationszahl steigt von 10 auf 25. In B bleiben Ausgabe und Zahl 10 gleich. Befragte in A nennen häufiger Bezahlbarkeit. Erkläre den Einfluss auf Nutzung und die Grenze der Schlussfolgerung.",
+            "taskDemandEn": "Fictional dossier cards: the same solar-module test in towns A and B shows 18% efficiency under identical conditions. In A a municipal support programme reduces personal upfront expense, and installations rise from 10 to 25. In B expense and the count of 10 stay unchanged. Respondents in A mention affordability more often. Explain the influence on use and the limit of the conclusion.",
+            "expectedPerformanceDe": "Trennt unveränderten physikalischen Wirkungsgrad von finanzieller Zugänglichkeit und Nutzung. Die Zunahme um 15 Anlagen in A ist mit einem Förderwirkungspfad vereinbar und durch Befragungen gestützt, beweist aber ohne Kontrolle weiterer Unterschiede keine ausschließliche Ursache. Die Förderung macht die getestete Zelle weder effizienter noch das physikalische Ergebnis wahrer.",
+            "expectedPerformanceEn": "Separates unchanged physical efficiency from financial access and use. The increase of 15 installations in A is consistent with a support mechanism and supported by interviews, but does not prove a sole cause without controlling other differences. Support makes neither the tested cell more efficient nor the physical finding truer.",
+            "understandingFocusDe": "Nutzung physikalischer Technik und Gültigkeit eines Messbefunds unterscheiden.",
+            "understandingFocusEn": "Distinguish use of physical technology from validity of a measurement."
+          },
+          {
+            "id": "vertrauen-und-kommunikation",
+            "taskDemandDe": "In einem zweiten fiktiven Dossier bleibt ein mit Unsicherheitsangabe veröffentlichter Messbefund zu einer neuen Technik unverändert. Nach einem öffentlich bekannt gewordenen Kommunikationsfehler eines Instituts sinkt in einer gleichartig befragten Stichprobe die Zustimmung von 70 auf 45 %; die Befragten nennen Vertrauensverlust. Das Dossier enthält keine neue Gefährdungsmessung. Erkläre Wahrnehmung und Akzeptanz fachlich begrenzt.",
+            "taskDemandEn": "In a second fictional dossier, a published measurement finding about a new technology, including its uncertainty, remains unchanged. After a public communication error by an institute, support in a similarly surveyed sample falls from 70 to 45%; respondents cite lost trust. The dossier contains no new hazard measurement. Explain perception and acceptance with appropriate limits.",
+            "expectedPerformanceDe": "Beschreibt eine Abnahme um 25 Prozentpunkte, verbindet sie begründet mit Vertrauen als sozialem Einfluss und unterscheidet Akzeptanz vom Messbefund. Fehlende Stichproben-/Vergleichsinformation verhindert eine sichere Kausalanalyse. Aus geringerer Zustimmung folgt weder eine neu gemessene physikalische Gefahr noch deren Widerlegung.",
+            "expectedPerformanceEn": "Describes a decrease of 25 percentage points, reasonably connects it to trust as a social influence, and separates acceptance from the measurement. Missing sampling/comparison information prevents firm causal analysis. Lower support establishes neither a newly measured physical hazard nor its refutation.",
+            "understandingFocusDe": "Öffentliche Reaktion anhand von Belegen erklären, nicht als Naturgesetz behandeln.",
+            "understandingFocusEn": "Explain public reaction through evidence rather than treating it as a physical law."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d81576e9-0320-5a90-8a1d-cd824981f2f6",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Keine reale Institution oder Rechtslage wird bewertet. Die hypothetischen Fälle prüfen Verantwortungsargumentation, nicht eine vorgegebene politische Haltung. / No actual institution or legal situation is assessed; hypothetical cases test reasoning about responsibility, not a prescribed political stance."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "rollenverantwortung",
+            "essentialUnderstandingDe": "Einzelne Forschende und Forschungsgemeinschaft haben unterschiedliche Handlungsmöglichkeiten bei Datenqualität, Kommunikation und gesellschaftlicher Nutzung; Verantwortung ist weder grenzenlose Kontrolle noch völlige Folgenlosigkeit.",
+            "essentialUnderstandingEn": "Individual researchers and the research community have different opportunities to act on data quality, communication, and social use; responsibility means neither unlimited control nor freedom from consequences.",
+            "observablePerformanceDe": "Identifiziert für ein physikalisch-technisches Beispiel betroffene Gruppen und Handlungsspielräume, trennt empirische Aussage von Wertentscheidung und begründet konkrete Verantwortungsbeiträge beider Ebenen.",
+            "observablePerformanceEn": "Identifies affected groups and scope for action in a physical-technological case, separates empirical statements from value choices, and justifies specific responsibilities at both levels."
+          },
+          {
+            "id": "folgen-und-grenzen",
+            "essentialUnderstandingDe": "Verantwortungsreflexion berücksichtigt absehbaren Nutzen, mögliche Schäden, Unsicherheit und die Grenzen der eigenen Zuständigkeit.",
+            "essentialUnderstandingEn": "Reflection on responsibility considers foreseeable benefit, possible harm, uncertainty, and limits of one's remit.",
+            "observablePerformanceDe": "Wägt mindestens zwei begründbare Handlungsoptionen ab, nennt eine relevante Unsicherheit und erklärt, welche Entscheidung zusätzlich gesellschaftliche oder politische Beteiligung braucht.",
+            "observablePerformanceEn": "Weighs at least two defensible options, identifies a relevant uncertainty, and explains which decision additionally needs social or political participation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "rollenverantwortung",
+            "folgen-und-grenzen"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "dilemma",
+            "textDe": "Unzuverlässige Messkommunikation mit unmittelbarer Entscheidungswirkung gegenüber einer nützlichen Technik mit möglicher Zweitverwendung.",
+            "textEn": "Unreliable measurement communication affecting an immediate decision versus a beneficial technology with possible secondary use."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "kalibrierfehler",
+            "taskDemandDe": "Fiktiver Fall: Eine Forscherin bemerkt vor einer öffentlichen Präsentation einen ungeprüften Kalibrierfaktor in Messungen zum Energiebedarf eines neuen Gebäudeverfahrens. Das Ergebnis soll morgen eine kommunale Förderentscheidung stützen. Die Größe des Fehlers ist unbekannt. Reflektiere Optionen der Forscherin und der Forschungsgemeinschaft, ohne eine zwingende politische Entscheidung vorzugeben.",
+            "taskDemandEn": "Fictional case: before a public presentation, a researcher notices an unchecked calibration factor in measurements of the energy demand of a new building method. The result is intended to support a municipal funding decision tomorrow. The error size is unknown. Reflect on options for the researcher and the research community without prescribing a mandatory political choice.",
+            "expectedPerformanceDe": "Begründet Offenlegung des ungeprüften Faktors und Kennzeichnung vorläufiger Ergebnisse statt einer erfundenen Korrekturzahl. Wägt Verschieben der belastbaren Empfehlung gegen transparente Präsentation mit deutlicher Begrenzung ab. Ordnet Nachkalibrierung/Dokumentation der Einzelarbeit, unabhängige Prüfung und Standards der Gemeinschaft zu; Förderprioritäten bleiben politische Wertentscheidungen.",
+            "expectedPerformanceEn": "Justifies disclosure of the unchecked factor and labelling results provisional instead of inventing a correction. Weighs postponing a firm recommendation against a transparent presentation with clear limits. Assigns recalibration/documentation to individual work and independent checks and standards to the community; funding priorities remain political value decisions.",
+            "understandingFocusDe": "Verantwortung für Verlässlichkeit und Kommunikation bei nicht aufgelöster Messunsicherheit.",
+            "understandingFocusEn": "Responsibility for reliability and communication under unresolved measurement uncertainty."
+          },
+          {
+            "id": "zweifachnutzung",
+            "taskDemandDe": "Fiktiver Fall: Eine Forschungsgruppe entwickelt einen passiven akustischen Sensor zur räumlichen Zuordnung von Tierlauten. Dieselbe Grundtechnik könnte laut Aufgabenkarte auch menschliche Aktivitäten überwachen; reale Erkennungsraten und rechtliche Zulässigkeit sind nicht angegeben. Diskutiere offene Veröffentlichung gegenüber einer begrenzten, fachübergreifend geprüften Weitergabe; unterscheide Einzel- und Gemeinschaftsverantwortung.",
+            "taskDemandEn": "Fictional case: a research group develops a passive acoustic sensor for locating animal calls. According to the task card, the same basic technology could also monitor human activity; real recognition rates and legal permissibility are not specified. Discuss open publication versus limited sharing after interdisciplinary review; distinguish individual and collective responsibility.",
+            "expectedPerformanceDe": "Benennt Naturschutzforschung als möglichen Nutzen und unerwünschte Überwachung als möglichen Schaden, ohne Funktionsgarantien oder Rechtsurteile zu erfinden. Begründet transparente Beschreibung von Grenzen durch Einzelne und gemeinschaftliche Prüfung von Nutzungsbedingungen, Zugängen und Betroffenenperspektiven. Ein bedingter Standpunkt für eine Option ist zulässig, sofern Gegenargument und offene Leistungsdaten sichtbar bleiben.",
+            "expectedPerformanceEn": "Identifies conservation research as a possible benefit and unwanted surveillance as a possible harm without inventing performance guarantees or legal judgments. Justifies transparent limitation reporting by individuals and community review of use conditions, access, and affected people's perspectives. A conditional preference for either option is acceptable when counterarguments and missing performance data remain explicit.",
+            "understandingFocusDe": "Absehbare Folgen reflektieren, ohne Forschung mit alleiniger gesellschaftlicher Entscheidungsmacht gleichzusetzen.",
+            "understandingFocusEn": "Reflect on foreseeable consequences without giving research sole authority over social decisions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "af1c3116-5b55-55f5-86da-8c2cfe2c550c",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Ausschließlich didaktische Modell-/Datenszenarien; keine individuelle medizinische Beratung, Expositionsfreigabe oder technische Sicherheitsabnahme. / Educational model/data scenarios only; no individual medical advice, exposure approval, or technical safety certification."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "mechanismus-exposition",
+            "essentialUnderstandingDe": "Eine fachliche Risikoaussage verbindet einen physikalischen Wirkmechanismus mit Expositionsbedingungen und verfügbaren Daten; Gerätebezeichnungen allein bestimmen kein individuelles Gesundheitsrisiko.",
+            "essentialUnderstandingEn": "A scientific risk statement connects a physical mechanism to exposure conditions and available data; device names alone do not determine individual health risk.",
+            "observablePerformanceDe": "Analysiert ein gegebenes Anwendungsszenario nach Ursache, Einwirkung und Datenlage und trennt eine qualitative Schutzbegründung von einer medizinischen oder regulatorischen Freigabe.",
+            "observablePerformanceEn": "Analyzes a supplied application scenario in terms of cause, exposure, and evidence and distinguishes a qualitative protective rationale from medical or regulatory approval."
+          },
+          {
+            "id": "handlungsoptionen",
+            "essentialUnderstandingDe": "Schutzoptionen müssen die relevante Einwirkung mindern oder vermeiden; eine Modellrechnung ohne validierte Grenzwerte erlaubt keine sichere individuelle Diagnose.",
+            "essentialUnderstandingEn": "Protective options must reduce or avoid the relevant exposure; a model calculation without validated limits cannot yield a reliable individual diagnosis.",
+            "observablePerformanceDe": "Leitet konkrete, verhältnismäßige Optionen aus dem Mechanismus ab, vergleicht deren erwartete Wirkung und nennt eine entscheidende fehlende Information.",
+            "observablePerformanceEn": "Derives specific, proportionate options from the mechanism, compares their expected effects, and identifies an important missing piece of information."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "mechanismus-exposition",
+            "handlungsoptionen"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "wirkung-und-option",
+            "textDe": "Akustische Exposition durch ein digitales Wiedergabegerät gegenüber unerwünschter elektrischer Erwärmung eines Ladezubehörs.",
+            "textEn": "Acoustic exposure from a digital playback device versus unwanted electrical heating of charging equipment."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "digitale-wiedergabe",
+            "taskDemandDe": "Reine Modellaufgabe, kein Selbstversuch: Bei einem digitalen Kopfhörergerät sind zwei Expositionen mit gleichem Schallspektrum angegeben: A konstante relative Intensität 1 für 2 Zeiteinheiten, B Intensität 2 für 1 Zeiteinheit. Die Aufgabenkarte setzt akustische Energiemenge proportional zu I·t; validierte Dosis-Risiko-Daten fehlen. Vergleiche und begründe mögliche Schutzoptionen ohne einen sicheren Hörpegel zu bescheinigen.",
+            "taskDemandEn": "Model task only, not a self-experiment: two exposures from a digital headphone device have the same sound spectrum: A constant relative intensity 1 for 2 time units, B intensity 2 for 1 time unit. The task card makes acoustic energy proportional to I·t; validated dose-risk data are absent. Compare them and justify possible protective options without certifying a safe listening level.",
+            "expectedPerformanceDe": "Erhält gleiche relative Energiemenge 2 für A/B, aber keine daraus ableitbare gleiche oder sichere individuelle Gesundheitswirkung. Begründet Verringerung von Intensität und/oder Einwirkdauer als Verringerung der modellierten akustischen Energie; beispielsweise A bei halber Dauer ergibt 1. Nennt absolute Pegel, zeitlichen Verlauf und validierte Risikoinformation als fehlend; keine Diagnose.",
+            "expectedPerformanceEn": "Obtains equal relative energy 2 for A/B but does not infer equal or safe individual health effects. Justifies reducing intensity and/or duration as reducing modelled acoustic energy; for example A for half the time gives 1. Identifies absolute levels, time pattern, and validated risk information as missing; makes no diagnosis.",
+            "understandingFocusDe": "Expositionsrechnung von Gesundheitsfreigabe trennen; digitale Technik nach realem physikalischem Wirkweg beurteilen.",
+            "understandingFocusEn": "Separate exposure calculation from health approval; assess digital technology through its physical mechanism."
+          },
+          {
+            "id": "ladezubehoer",
+            "taskDemandDe": "Ein zweites rein schriftliches Szenario nennt ein beschädigtes Ladezubehör mit einem lokal vergrößerten Übergangswiderstand. Die Aufgabenkarte gibt P=I²R für lokale Erwärmung an und weist an, beschädigtes Zubehör nicht weiter zu benutzen, nicht zu öffnen und fachkundig prüfen zu lassen. Strom, Temperaturen und Schutzschaltung sind unbekannt. Begründe Risiko und Handlungsoptionen; kein Anschluss- oder Reparaturversuch.",
+            "taskDemandEn": "A second written-only scenario describes damaged charging equipment with a locally increased contact resistance. The task card gives P=I²R for local heating and instructs users not to continue using damaged equipment, not to open it, and to obtain competent inspection. Current, temperatures, and protective circuitry are unknown. Explain the risk and options; no connection or repair attempt.",
+            "expectedPerformanceDe": "Erklärt, dass bei gleichem Strom höherer Übergangswiderstand mehr lokale Wärmeleistung bedeutet und Berührungs-/Brandgefahr plausibel sein kann. Unbekannter Strom und unbekannte Wärmeabfuhr verhindern eine Temperatur- oder Risikozahl. Begründet Nichtweiterbenutzen und fachkundige Prüfung; 'kurz ausprobieren' liefert keinen sicheren Nachweis. Leitet keine Eigenreparatur oder Sicherheitsgarantie ab.",
+            "expectedPerformanceEn": "Explains that at equal current, greater contact resistance means more local heating power and a plausible contact/fire hazard. Unknown current and heat removal prevent a temperature or risk number. Justifies discontinuing use and competent inspection; 'briefly trying it' provides no safety evidence. Recommends neither self-repair nor a safety guarantee.",
+            "understandingFocusDe": "Eine Schutzoption auf den konkreten Energieübertragungsmechanismus stützen und fehlende Daten offenlassen.",
+            "understandingFocusEn": "Base a protective option on the specific energy-transfer mechanism while leaving missing data unresolved."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "02876b2e-7cf0-5de6-ad04-d4ee95b7f80e",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die bereitgestellten Tabellen sind synthetische Übungsdaten, kein durchgeführter Versuch. Eine spätere Leistungsfeststellung muss die eigenständige Aufnahme im sicheren Aufbau oder in der Messsimulation tatsächlich beobachten. / Supplied tables are synthetic exercise data, not a performed experiment; later assessment must actually observe independent acquisition in the safe setup or measurement simulation."
+      ],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "kennlinienmessung",
+            "essentialUnderstandingDe": "Eine Solarzellenkennlinie verbindet gleichzeitig gemessene Spannung und Strom bei veränderter Last und kontrollierter Bestrahlung; Temperatur und Beleuchtungsdrift können Vergleiche verfälschen.",
+            "essentialUnderstandingEn": "A solar-cell characteristic relates simultaneously measured voltage and current under varied load and controlled irradiance; temperature and illumination drift can confound comparisons.",
+            "observablePerformanceDe": "Plant und führt in einer sicheren Lehranordnung oder interaktiven Messsimulation Lastvariationen bei mindestens zwei Bestrahlungen aus, ordnet Messgeräte korrekt an und protokolliert Bedingungen, Messwerte und Unsicherheit.",
+            "observablePerformanceEn": "Plans and performs load variations at at least two irradiances in a safe teaching setup or interactive measurement simulation, places meters correctly, and records conditions, measurements, and uncertainty."
+          },
+          {
+            "id": "leistung-und-mpp",
+            "essentialUnderstandingDe": "Elektrische Ausgangsleistung ist U·I; Leerlauf und Kurzschluss sind keine Leistungmaxima. Aus endlich vielen Messpunkten folgt zunächst nur ein gemessener Maximalbereich.",
+            "essentialUnderstandingEn": "Electrical output power is U·I; open circuit and short circuit are not power maxima. Finitely many samples initially establish only a measured maximum region.",
+            "observablePerformanceDe": "Erstellt U-I- und P-U-Darstellungen, bestimmt den besten gemessenen Arbeitspunkt und begründet zusätzliche Messpunkte oder eine begrenzte MPP-Aussage anhand der Auflösung.",
+            "observablePerformanceEn": "Constructs U-I and P-U representations, determines the best measured operating point, and justifies additional measurements or a bounded MPP conclusion using resolution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "kennlinienmessung",
+            "leistung-und-mpp"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "messqualitaet",
+            "textDe": "Klare Leistungsspitze gegenüber überlappenden Unsicherheitsbereichen nahe dem Maximum; Bestrahlungsvergleich bei kontrollierter Temperatur.",
+            "textEn": "Clear power peak versus overlapping uncertainty intervals near the maximum; irradiance comparison at controlled temperature."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "zwei-bestrahlungen",
+            "taskDemandDe": "Plane und führe eine unabhängige Kennlinienaufnahme an einer strombegrenzten Kleinspannungs-Lehrzelle unter Aufsicht oder in einer interaktiven Messsimulation durch: Last variieren, Bestrahlung in zwei Stufen konstant halten, Temperatur kontrollieren. Zur eigenständigen Auswertung dienen neue Übungsdaten: U=(0;0,2;0,4;0,5;0,6) V, I bei hoher Bestrahlung=(100;98;90;70;0) mA, bei geringer=(50;48;40;20;0) mA. Zeichne Kennlinien und bestimme den belegbaren MPP-Bereich. Keine Netz- oder Dachanlage.",
+            "taskDemandEn": "Plan and perform an independent characteristic measurement on a current-limited low-voltage teaching cell under supervision or in an interactive measurement simulation: vary load, hold each of two irradiance levels constant, and control temperature. New exercise data for independent analysis are U=(0;0.2;0.4;0.5;0.6) V, I at high irradiance=(100;98;90;70;0) mA, at low=(50;48;40;20;0) mA. Plot characteristics and determine the supported MPP region. No grid-connected or rooftop system.",
+            "expectedPerformanceDe": "Zeigt Voltmeter parallel zur Zelle und Strommessung im Lastkreis; dokumentiert eigene Einstellungen und unterscheidet diese von den Übungsdaten. Berechnet P hoch=(0;19,6;36;35;0) mW, niedrig=(0;9,6;16;10;0) mW. Unter den gegebenen Punkten liegt das Maximum jeweils bei 0,4 V, jedoch kein exakter kontinuierlicher MPP-Nachweis; misst besonders um 0,4–0,5 V feiner. Erklärt die Nullleistung an den Endpunkten und kontrolliert Erwärmung/Drift.",
+            "expectedPerformanceEn": "Shows a voltmeter across the cell and current measurement in the load circuit; documents independent settings and distinguishes them from exercise data. Calculates high P=(0;19.6;36;35;0) mW, low P=(0;9.6;16;10;0) mW. The largest sampled power is at 0.4 V for both, but this does not prove an exact continuous MPP; samples more densely around 0.4–0.5 V. Explains zero endpoint power and checks heating/drift.",
+            "understandingFocusDe": "Ein experimentell bestimmter Arbeitspunkt ist an Bestrahlung, Last und Messauflösung gebunden.",
+            "understandingFocusEn": "An experimentally determined operating point is bound to irradiance, load, and measurement resolution."
+          },
+          {
+            "id": "unsicherer-spitzenbereich",
+            "taskDemandDe": "Bearbeite eine zweite unabhängige Aufnahme in derselben sicheren Art, diesmal mit feiner Lastvariation im Spitzenbereich bei zwei stabilen Bestrahlungsstufen. Übungsdaten: U=(0,30;0,40;0,50) V; hohe Stufe I=(80;65;50) mA, geringe Stufe I=(40;31;22) mA. Absolute Messgrenzen sind ±0,01 V und ±5 mA je Punkt. Dokumentiere Aufbau/Kontrollen, stelle U-I und P-U dar und prüfe die Behauptung eines exakt bekannten MPP bei 0,40 V.",
+            "taskDemandEn": "Perform a second independent acquisition in the same safe manner, now with fine load variation near the peak at two stable irradiance levels. Exercise data: U=(0.30;0.40;0.50) V; high level I=(80;65;50) mA, low level I=(40;31;22) mA. Absolute measurement bounds are ±0.01 V and ±5 mA per point. Document setup/controls, plot U-I and P-U, and test the claim of an exactly known MPP at 0.40 V.",
+            "expectedPerformanceDe": "Erfasst Bedingungen und begründet unabhängiges Nachmessen statt bloßer Wiederholung einer Rechnung. Nennleistungen hoch 24/26/25 mW, niedrig 12/12,4/11 mW; nominal ist 0,40 V jeweils am besten. Für die hohe Stufe ergeben sich Produktintervalle [21,75;26,35], [23,4;28,7], [22,05;28,05] mW: Überlappung verhindert sichere Rangordnung. Auch die geringe Stufe erlaubt keine exakte MPP-Angabe; empfiehlt genauere/zusätzliche Messungen unter konstanten Bedingungen.",
+            "expectedPerformanceEn": "Records conditions and justifies independent remeasurement rather than merely repeating a calculation. Nominal powers are high 24/26/25 mW, low 12/12.4/11 mW; nominally 0.40 V is best in both. High-level product intervals are [21.75;26.35], [23.4;28.7], [22.05;28.05] mW: overlap prevents a firm ranking. The low level likewise does not establish an exact MPP; proposes more accurate/additional measurements under constant conditions.",
+            "understandingFocusDe": "Die Unsicherheit einer abgeleiteten Leistung begrenzt die experimentelle Maximalbehauptung.",
+            "understandingFocusEn": "Uncertainty in derived power limits the experimental maximum claim."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "92076a27-46cd-5c33-b3d8-aa68329af7c4",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "komponenten-und-fluss",
+            "essentialUnderstandingDe": "Eine PV-Anlage überträgt Strahlungsenergie über elektrische Schnittstellen zur Nutzung; Module, Umrichter, Leitungen und gegebenenfalls Speicher haben verschiedene, nicht austauschbare Funktionen.",
+            "essentialUnderstandingEn": "A PV system transfers radiant energy through electrical interfaces to use; modules, converters, wiring, and optional storage have distinct, non-interchangeable functions.",
+            "observablePerformanceDe": "Ordnet gegebene Komponenten in ein funktionales Energieflussbild ein, erklärt DC/AC beziehungsweise Speicherung nur soweit im System erforderlich und verfolgt die Energie zur Last einschließlich Abgaben.",
+            "observablePerformanceEn": "Arranges supplied components in a functional energy-flow diagram, explains DC/AC or storage only as required by the system, and traces energy to the load including losses."
+          },
+          {
+            "id": "zustandswechsel",
+            "essentialUnderstandingDe": "Momentane Erzeugung, Umwandlung und gespeicherte Energie sind verschieden; nicht jede PV-Anlage liefert ohne Sonne oder ohne Netz weiter.",
+            "essentialUnderstandingEn": "Instantaneous generation, conversion, and stored energy differ; not every PV system continues supplying power without sunlight or without a grid.",
+            "observablePerformanceDe": "Erklärt die Funktion der vorhandenen Komponenten bei einer veränderten Betriebsbedingung und benennt ausdrücklich, welche Funktion im konkreten System fehlt.",
+            "observablePerformanceEn": "Explains the function of the existing components under a changed operating condition and explicitly identifies a function absent from the particular system."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "komponenten-und-fluss",
+            "zustandswechsel"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "systemtopologie",
+            "textDe": "Netzgekoppeltes AC-System ohne Speicher gegenüber unabhängigem DC-System mit Speicher; Tageserzeugung gegenüber Versorgung ohne Einstrahlung.",
+            "textEn": "Grid-connected AC system without storage versus independent DC system with storage; daytime generation versus supply without irradiance."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "netzsystem",
+            "taskDemandDe": "Ein fiktives Funktionsschema enthält PV-Module, DC-Leitung, Wechselrichter, AC-Hauslast und Netzanschluss, aber keinen Speicher. Die Aufgabenkarte setzt 500 W DC am Wechselrichtereingang und 450 W AC am Ausgang an, Hauslast 300 W; weitere Leitungsverluste werden vernachlässigt. Erkläre jede Funktion und Energieflüsse, dann den Zustand ohne Einstrahlung bei verfügbarem Netz.",
+            "taskDemandEn": "A fictional functional diagram contains PV modules, DC wiring, inverter, AC household load, and grid connection but no storage. The task card gives 500 W DC at the inverter input and 450 W AC at its output, household demand 300 W; other wiring losses are neglected. Explain each function and the energy flows, then the state without irradiance with the grid available.",
+            "expectedPerformanceDe": "Erklärt Module als Strahlungs-zu-elektrischer Energieumwandlung und Wechselrichter als DC/AC-Schnittstelle, nicht Speicher. Ordnet 50 W dem Umrichterverlust, 300 W der Last und 150 W dem Netzexport zu. Ohne Einstrahlung liefert das Modul hier keine Leistung; die Hauslast kann aus dem verfügbaren Netz versorgt werden. Kein erfundener nächtlicher PV-Vorrat.",
+            "expectedPerformanceEn": "Explains modules as converting radiant to electrical energy and the inverter as a DC/AC interface, not storage. Assigns 50 W to converter loss, 300 W to the load, and 150 W to grid export. Without irradiance the module supplies no power here; the available grid can supply the household load. Invents no nighttime PV reserve.",
+            "understandingFocusDe": "Komponenten über Energieübertragungsfunktion erklären statt nur Bauteilnamen aufzählen.",
+            "understandingFocusEn": "Explain components through energy-transfer function rather than merely naming parts."
+          },
+          {
+            "id": "dc-insel",
+            "taskDemandDe": "Ein unabhängiges fiktives DC-System enthält Modul, Laderegler, Batterie und passende DC-Lampe; Netzanschluss und Wechselrichter fehlen. Am Abend sind laut Aufgabenkarte 24 Wh nutzbare Batterieenergie verfügbar, die Lampe nimmt 6 W auf; bereits eingerechnete Speicherverluste werden nicht doppelt abgezogen. Erkläre Funktionen und die Grenze der Versorgung ohne Sonne.",
+            "taskDemandEn": "An independent fictional DC system contains a module, charge controller, battery, and compatible DC lamp; grid connection and inverter are absent. The task card gives 24 Wh usable battery energy in the evening and 6 W lamp demand; storage losses already included must not be subtracted twice. Explain the functions and the limit of supply without sunlight.",
+            "expectedPerformanceDe": "Zeichnet tagsüber Modul→Laderegler→Speicher/Last und abends Speicher→DC-Last. Erklärt Ladeführung als Reglerfunktion und Energiebevorratung als Batteriefunktion; für die passende DC-Last ist hier kein DC/AC-Wechselrichter nötig. Aus 24 Wh/6 W folgen im Modell 4 h, keine unbegrenzte Versorgung. Benennt neue Einstrahlung oder andere Energiequelle als erforderlich, sobald der nutzbare Speicher leer ist.",
+            "expectedPerformanceEn": "Draws daytime module→controller→storage/load and evening storage→DC load. Explains charging management as the controller function and energy storage as the battery function; a compatible DC load needs no DC/AC inverter here. 24 Wh/6 W gives 4 h in the model, not unlimited supply. Identifies new irradiance or another energy source as necessary once usable storage is exhausted.",
+            "understandingFocusDe": "Optionalen Speicher und systemabhängige Umrichterfunktion bei veränderter Topologie unterscheiden.",
+            "understandingFocusEn": "Distinguish optional storage and system-dependent conversion under changed topology."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "05af2893-0201-4d7f-985b-272d7b88e26e",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "lineare-rueckstellung",
+            "essentialUnderstandingDe": "Bei Auslenkung x von der Gleichgewichtslage bedeutet F=-Dx eine zur Auslenkung proportionale, entgegengesetzte resultierende Rückstellkraft; D>0 hat die Einheit N/m.",
+            "essentialUnderstandingEn": "For displacement x from equilibrium, F=-Dx means a resultant restoring force proportional and opposite to displacement; D>0 has units N/m.",
+            "observablePerformanceDe": "Deutet Vorzeichen und Steigung einer Kraft-Auslenkungs-Darstellung und sagt die Kraftrichtung für positive, negative und verschwindende Auslenkung voraus.",
+            "observablePerformanceEn": "Interprets the sign and slope of a force-displacement representation and predicts force direction for positive, negative, and zero displacement."
+          },
+          {
+            "id": "harmonische-idealisierung",
+            "essentialUnderstandingDe": "Lineare Rückstellung ermöglicht die harmonische Bewegung eines Systems mit konstanter Masse unter vernachlässigbarer Dämpfung und ohne zusätzlichen Antrieb; das Hooke-Modell besitzt einen Gültigkeitsbereich.",
+            "essentialUnderstandingEn": "Linear restoration permits harmonic motion for constant mass with negligible damping and no additional drive; the Hooke model has a validity range.",
+            "observablePerformanceDe": "Begründet aus der Form der Rückstellkraft, in welchem Bereich die harmonische Idealisierung passt, und unterscheidet Federdehnung von Auslenkung um ein verschobenes Gleichgewicht.",
+            "observablePerformanceEn": "Uses the restoring-force form to justify the range of harmonic idealization and distinguishes spring extension from displacement about a shifted equilibrium."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "lineare-rueckstellung",
+            "harmonische-idealisierung"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "nullpunkt-modellbereich",
+            "textDe": "Horizontale Feder gegenüber vertikaler Feder mit verschobener Gleichgewichtslage; linearer Teilbereich gegenüber zusätzlichem nichtlinearem Kraftanteil.",
+            "textEn": "Horizontal spring versus vertical spring with shifted equilibrium; linear range versus an added nonlinear force term."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "horizontale-feder",
+            "taskDemandDe": "Für ein reibungsfrei idealisiertes horizontales Feder-Masse-System gelten die Modellwerte x=(-2;0;3) cm und F=(0,4;0;-0,6) N. Beschreibe den Zusammenhang, zeichne F(x) im gegebenen linearen Bereich und erkläre, warum er harmonische Schwingungen ermöglicht. Keine Periodenformel herleiten.",
+            "taskDemandEn": "For an idealized frictionless horizontal spring-mass system, model values are x=(-2;0;3) cm and F=(0.4;0;-0.6) N. Describe the relationship, graph F(x) in the given linear range, and explain why it permits harmonic oscillations. Do not derive a period formula.",
+            "expectedPerformanceDe": "Bestimmt D=20 N/m und die negative Geradensteigung -20 N/m. Bei x<0 zeigt F nach rechts, bei x>0 nach links; bei x=0 ist F=0, nicht zwingend v=0. Begründet F proportional -x und damit harmonische Rückstellung unter den Idealisierungen; die wenigen Modellpunkte rechtfertigen keine reale Federlinearität für beliebig große Dehnung.",
+            "expectedPerformanceEn": "Determines D=20 N/m and the negative line slope -20 N/m. At x<0 F points right, at x>0 left; at x=0 F=0, not necessarily v=0. Explains F proportional to -x and thus harmonic restoration under the idealizations; a few model points do not establish real spring linearity at arbitrarily large extension.",
+            "understandingFocusDe": "Vorzeichen, Gleichgewicht und linearer Modellbereich tragen die harmonische Deutung.",
+            "understandingFocusEn": "Sign, equilibrium, and the linear model range support the harmonic interpretation."
+          },
+          {
+            "id": "vertikales-gleichgewicht",
+            "taskDemandDe": "Eine vertikale Feder besitzt D=50 N/m und wird durch die Gewichtskraft 1,0 N statisch gedehnt. Definiere danach x als zusätzliche Auslenkung nach unten vom Gleichgewicht. Erkläre die resultierende Kraft bei x=+1 cm und -1 cm. Vergleiche schließlich mit einem gegebenen alternativen Rückstellmodell F=-50x-1000x³ in SI, ohne eine Bewegungsgleichung lösen zu müssen.",
+            "taskDemandEn": "A vertical spring has D=50 N/m and is statically extended by a weight of 1.0 N. Then define x as additional downward displacement from equilibrium. Explain the resultant force at x=+1 cm and -1 cm. Finally compare with the supplied alternative restoring model F=-50x-1000x³ in SI without solving an equation of motion.",
+            "expectedPerformanceDe": "Erhält statische Dehnung 0,02 m; Gewicht und statischer Federanteil heben sich am Gleichgewicht auf, daher Fres=-50x und bei ±1 cm Kräfte ∓0,5 N. Beim Zusatzterm ist F/x=-50-1000x² nicht konstant: nicht exakt harmonisch für endliche Auslenkung, bei kleinem x näherungsweise linear. Verwechselt nicht die gesamte Federdehnung 0,02 m+x mit x.",
+            "expectedPerformanceEn": "Obtains static extension 0.02 m; weight and the static spring contribution cancel at equilibrium, so Fres=-50x and forces at ±1 cm are ∓0.5 N. With the added term, F/x=-50-1000x² is not constant: not exactly harmonic at finite displacement, approximately linear for small x. Does not confuse total spring extension 0.02 m+x with x.",
+            "understandingFocusDe": "Verschobenes Gleichgewicht ändert den Bezugspunkt; Nichtlinearität begrenzt die harmonische Idealisierung.",
+            "understandingFocusEn": "Shifted equilibrium changes the reference point; nonlinearity limits harmonic idealization."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "eb30189c-27c6-510b-b235-6543afa18b90",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Das Profil fordert den gemeinsamen qualitativen Bau-/Erklärungskern, keine Drehmomentformel, Gegeninduktionsrechnung oder stufenspezifische Zusatzvariante. Reale Aufbauleistung ist künftig zu beobachten, nicht hier bereits belegt. / The profile requires the shared qualitative construction/explanation core, not a torque formula, back-emf calculation, or stage-specific extra variant. Actual construction performance must be observed later and is not established here."
+      ],
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "aufbau-und-kraft",
+            "essentialUnderstandingDe": "In einem einfachen Motor können Kräfte auf stromdurchflossene Spulenseiten im Magnetfeld ein Drehmoment erzeugen; geeignete Kontaktierung beziehungsweise Kommutierung erhält den Antrieb während der Drehung.",
+            "essentialUnderstandingEn": "In a simple motor, forces on current-carrying coil sides in a magnetic field can produce torque; suitable contact switching or commutation maintains drive during rotation.",
+            "observablePerformanceDe": "Baut eine sichere einfache Lehranordnung auf oder montiert sie in einer interaktiven Simulation, verfolgt den Stromweg und erklärt entgegengesetzte Leiterkräfte und die Kontaktfunktion qualitativ.",
+            "observablePerformanceEn": "Builds a safe simple teaching setup or assembles it in an interactive simulation, traces current flow, and qualitatively explains opposing conductor forces and the contact function."
+          },
+          {
+            "id": "variation-und-beobachtung",
+            "essentialUnderstandingDe": "Eine gezielte Variation kann Feld, Stromrichtung oder mechanischen Widerstand ändern; beobachteter Lauf und daraus gedeutete Ursache müssen getrennt bleiben.",
+            "essentialUnderstandingEn": "A controlled variation can change field, current direction, or mechanical resistance; observed motion and inferred cause must remain distinct.",
+            "observablePerformanceDe": "Plant eine prüfbare Laufvariation mit Kontrollen, dokumentiert eigene Beobachtungen einschließlich möglicher Startprobleme und vergleicht sie mit einer begründeten Vorhersage.",
+            "observablePerformanceEn": "Plans a testable motion variation with controls, records independent observations including possible starting problems, and compares them with a justified prediction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "aufbau-und-kraft",
+            "variation-und-beobachtung"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "antrieb-gegen-last",
+            "textDe": "Polungsänderung im festgelegten Spulenmotor gegenüber veränderter mechanischer Last; Richtungsprognose gegenüber nicht exakt vorhersagbarer Drehzahl.",
+            "textEn": "Polarity change in the specified coil motor versus changed mechanical load; direction prediction versus speed not exactly predictable."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "polung",
+            "taskDemandDe": "Baue unter Aufsicht einen strombegrenzten Kleinspannungs-Lehrmotor mit fester Feldmagnetpolung und geteiltem Kommutator auf oder montiere denselben Motor interaktiv. Untersuche, was ein Vertauschen ausschließlich der Speiseanschlüsse bewirkt; schalte vor Umbauten ab. Zeichne Stromweg und Kräfte für eine nicht im Totpunkt liegende Spulenstellung, führe den Vergleich aus und protokolliere Beobachtung und Bedingungen.",
+            "taskDemandEn": "Under supervision, build a current-limited low-voltage teaching motor with fixed field-magnet polarity and a split-ring commutator, or assemble the same motor interactively. Investigate the effect of swapping only the supply terminals; switch off before changes. Draw current flow and forces for a coil position away from dead centre, perform the comparison, and record observations and conditions.",
+            "expectedPerformanceDe": "Stellt einen geschlossenen Stromweg und geeignete mechanische Lagerung her, erklärt das Kräftepaar und die halbperiodische Stromumkehr durch den Kommutator. Bei alleiniger Speisepolungsumkehr kehren Leiterkräfte und Antriebsdrehsinn gegenüber der Referenz um; ein etwaiger Startstoß darf nicht als alleinige Ursache ausgegeben werden. Dokumentiert tatsächlichen Lauf, Kontaktprobleme und Kontrollbedingungen statt Erfolg zu behaupten.",
+            "expectedPerformanceEn": "Establishes a closed current path and suitable mechanical support, explains the force couple and half-cycle current reversal by the commutator. Reversing only supply polarity reverses conductor forces and driving rotation relative to the reference; any starting nudge must not be presented as the sole cause. Records actual motion, contact problems, and controls rather than assuming success.",
+            "understandingFocusDe": "Kraftwirkung und Kommutierung durch selbst ausgeführten Polungsvergleich sichtbar machen.",
+            "understandingFocusEn": "Expose force action and commutation through an independently performed polarity comparison."
+          },
+          {
+            "id": "lastvergleich",
+            "taskDemandDe": "Montiere unabhängig eine zweite sichere Lehrmotor-/Simulationsanordnung desselben Grundprinzips. Halte Speisung und Magnetpolung gleich, ändere nur eine kleine, vom Lehrsystem zugelassene mechanische Last. Begründe eine Vorhersage, erfasse den Lauf über gleiche Beobachtungszeiten und protokolliere Streuung; kein Blockieren, keine Erwärmungsprobe und keine Netzspannung.",
+            "taskDemandEn": "Independently assemble a second safe teaching-motor/simulation setup using the same principle. Keep supply and magnet polarity fixed and change only a small mechanical load permitted by the teaching system. Justify a prediction, record motion over equal observation periods, and document scatter; no stalling, heating test, or mains voltage.",
+            "expectedPerformanceDe": "Erklärt unveränderten elektromagnetischen Antriebssinn und zusätzliche entgegenwirkende mechanische Belastung. Erwartet im üblichen Lehrmodell geringere Drehzahl unter Last, vergleicht aber mit eigener Beobachtung und erkennt Reibung, Kontakte und Speisungsänderungen als mögliche Störgrößen. Beansprucht weder exakt halbierte Drehzahl noch Wirkungsgradbestimmung aus bloßer Drehzahl; Sicherheitsgrenzen bleiben eingehalten.",
+            "expectedPerformanceEn": "Explains unchanged electromagnetic driving direction and added opposing mechanical load. Predicts lower speed under load in the usual teaching model but compares with independent observation and recognizes friction, contacts, and supply changes as possible confounders. Claims neither exactly halved speed nor an efficiency determination from speed alone; respects safety limits.",
+            "understandingFocusDe": "Kontrollierte Variation macht aus einem laufenden Modell eine begründete Untersuchung.",
+            "understandingFocusEn": "Controlled variation turns a working model into a reasoned investigation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Gemeinsamer einfacher, stufenübergreifender Kern: keine Schwerpunkttransformation, Stoßzahl oder allgemeine Mehrkörperlösung als Pflicht. / Shared simple cross-stage core: no mandatory centre-of-mass transformation, restitution coefficient, or general many-body solution."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "bilanzsystem",
+            "essentialUnderstandingDe": "Bei einfachen Stößen ist Gesamtimpuls nur bei vernachlässigbarem äußeren Kraftstoß erhalten; Energieerhaltung bezieht sich auf alle relevanten Energieformen, nicht automatisch auf kinetische Energie.",
+            "essentialUnderstandingEn": "In simple collisions, total momentum is conserved only when external impulse is negligible; energy conservation concerns all relevant energy forms, not automatically kinetic energy.",
+            "observablePerformanceDe": "Legt das System beider Körper und eine positive Richtung fest, bilanziert Impuls und Energie vor/nach dem Stoß und benennt die angenommene Isolation.",
+            "observablePerformanceEn": "Defines the two-body system and positive direction, balances momentum and energy before/after collision, and identifies the assumed isolation."
+          },
+          {
+            "id": "stossauswertung",
+            "essentialUnderstandingDe": "Stoßart und Richtungen bestimmen, wie die Erhaltungssätze mit den gegebenen Beobachtungen verknüpft werden können.",
+            "essentialUnderstandingEn": "Collision type and directions determine how conservation laws can be combined with the supplied observations.",
+            "observablePerformanceDe": "Bestimmt einfache Endgeschwindigkeiten oder prüft einen Vorschlag und erklärt, in welche Energieformen fehlende kinetische Energie übergehen kann.",
+            "observablePerformanceEn": "Determines simple final velocities or checks a proposal and explains which forms can receive missing kinetic energy."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bilanzsystem",
+            "stossauswertung"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "stossart-und-richtung",
+            "textDe": "Elastische Übergabe an einen ruhenden gleich schweren Körper gegenüber einem haftenden Frontalstoß mit Gegenbewegung.",
+            "textEn": "Elastic transfer to a stationary equal-mass object versus a sticking head-on collision with opposing motion."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "elastische-uebergabe",
+            "taskDemandDe": "Zwei kleine Wagen von je 0,50 kg stoßen auf einer idealisierten horizontalen Bahn ohne äußeren Kraftstoß elastisch zusammen. Wagen A kommt mit +2,0 m/s auf den ruhenden B zu; danach ruht A. Bestimme die Bewegung von B und erläutere anhand beider Bilanzen die Aussagekraft der Erhaltungssätze.",
+            "taskDemandEn": "Two small carts of 0.50 kg each collide elastically on an idealized horizontal track with no external impulse. Cart A approaches stationary B at +2.0 m/s; afterwards A is at rest. Determine B's motion and explain the role of conservation laws using both balances.",
+            "expectedPerformanceDe": "Setzt das System A+B, erhält pvor=1,0 kg·m/s und damit vB=+2,0 m/s. Ekin ist vorher/nachher 1,0 J; die Körper tauschen im gegebenen Fall die Bewegungszustände. Erklärt, dass gleiche Einzelimpulse nicht erhalten sein müssen, sondern deren Summe; die Beobachtung A ruht ergänzt die Bilanz.",
+            "expectedPerformanceEn": "Defines system A+B, obtains initial p=1.0 kg·m/s and hence vB=+2.0 m/s. Kinetic energy is 1.0 J before/after; in this case the objects exchange motion states. Explains that individual momenta need not be conserved, only their sum; the observation that A stops supplements the balance.",
+            "understandingFocusDe": "Erhaltungsgrößen beschränken einen konkreten einfachen Stoß.",
+            "understandingFocusEn": "Conserved quantities constrain a specific simple collision."
+          },
+          {
+            "id": "haftender-gegenstoss",
+            "taskDemandDe": "Zwei Körper von je 1,0 kg bewegen sich mit +2,0 und -2,0 m/s aufeinander zu und bleiben nach einem idealisierten Stoß verbunden. Äußerer Kraftstoß und Energieabgabe über die Systemgrenze sind vernachlässigbar. Bestimme die gemeinsame Endbewegung und erkläre, ob Energieerhaltung verletzt ist.",
+            "taskDemandEn": "Two objects of 1.0 kg each approach at +2.0 and -2.0 m/s and remain attached after an idealized collision. External impulse and energy transfer across the system boundary are negligible. Determine their shared final motion and explain whether energy conservation is violated.",
+            "expectedPerformanceDe": "Summiert gerichtete Impulse zu null und erhält vnach=0 für 2,0 kg Gesamtmasse. Ekin fällt von 4,0 J auf null; 4,0 J müssen im gewählten abgeschlossenen System in innere Energie/Verformung übergehen. Erklärt, weshalb man hier nicht zusätzlich kinetische Energieerhaltung erzwingen darf; Gesamtenergie bleibt erhalten.",
+            "expectedPerformanceEn": "Adds signed momenta to zero and obtains final v=0 for total mass 2.0 kg. Kinetic energy falls from 4.0 J to zero; 4.0 J must become internal/deformation energy within the selected closed system. Explains why kinetic-energy conservation must not additionally be imposed here; total energy remains conserved.",
+            "understandingFocusDe": "Impulserhaltung und Gesamtenergieerhaltung gelten auch bei nicht erhaltener kinetischer Energie.",
+            "understandingFocusEn": "Momentum and total-energy conservation also apply when kinetic energy is not conserved."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "zwei-erhaltungen",
+            "essentialUnderstandingDe": "Ein eindimensionaler elastischer Stoß eines bezüglich äußerer Impulse isolierten Systems erhält Gesamtimpuls und kinetische Energie; Geschwindigkeiten sind vorzeichenbehaftet.",
+            "essentialUnderstandingEn": "A one-dimensional elastic collision in a system isolated from external impulses conserves total momentum and kinetic energy; velocities carry signs.",
+            "observablePerformanceDe": "Wählt beide Bilanzen begründet, löst oder überprüft Endgeschwindigkeiten unter Berücksichtigung der sich trennenden Körper und prüft Impuls, Energie und Richtung.",
+            "observablePerformanceEn": "Justifiably selects both balances, solves for or checks final velocities while requiring separation of the objects, and checks momentum, energy, and direction."
+          },
+          {
+            "id": "elastisch-abgrenzen",
+            "essentialUnderstandingDe": "Impulserhaltung allein kennzeichnet keinen elastischen Stoß; bei inelastischem Stoß kann kinetische Energie in andere Formen übergehen.",
+            "essentialUnderstandingEn": "Momentum conservation alone does not identify an elastic collision; in an inelastic collision kinetic energy can become other forms.",
+            "observablePerformanceDe": "Prüft einen scheinbar passenden Endzustand auf kinetische Energieerhaltung und erklärt die Abgrenzung ohne Gesamtenergieverlust zu behaupten.",
+            "observablePerformanceEn": "Tests an apparently suitable final state for kinetic-energy conservation and explains the distinction without claiming a loss of total energy."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "zwei-erhaltungen",
+            "elastisch-abgrenzen"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "massen-bewegung",
+            "textDe": "Ungleiche Massen mit ruhendem Ziel gegenüber gleichen Massen mit gegenläufigen Anfangsgeschwindigkeiten; Bilanzprüfung eines inelastischen Vorschlags.",
+            "textEn": "Unequal masses with a stationary target versus equal masses with opposing initial velocities; checking an inelastic proposal against the balances."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rueckprall",
+            "taskDemandDe": "Ein Körper m1=1 kg trifft in einer Dimension mit u1=+3 m/s auf einen ruhenden Körper m2=2 kg. Der Stoß ist elastisch, äußere Impulse sind vernachlässigbar. Bestimme v1 und v2, prüfe beide Bilanzen und grenze das Ergebnis von einer gemeinsamen Weiterbewegung ab.",
+            "taskDemandEn": "An object m1=1 kg travelling at u1=+3 m/s hits stationary m2=2 kg in one dimension. The collision is elastic and external impulses are negligible. Determine v1 and v2, check both balances, and distinguish the result from a shared final motion.",
+            "expectedPerformanceDe": "Erhält v1=-1 m/s, v2=+2 m/s mit p=3 kg·m/s und Ekin=4,5 J vor/nach; der leichte Körper prallt zurück. Die formal unveränderten Anfangsgeschwindigkeiten beschreiben nicht den erfolgten, trennenden Stoß. Gemeinsames v=1 m/s würde zwar p erhalten, aber nur 1,5 J kinetische Energie haben und wäre nicht elastisch.",
+            "expectedPerformanceEn": "Obtains v1=-1 m/s, v2=+2 m/s with p=3 kg·m/s and kinetic energy 4.5 J before/after; the lighter object rebounds. Formally unchanged initial velocities do not describe a completed separating collision. Shared v=1 m/s would conserve p but have only 1.5 J kinetic energy and would not be elastic.",
+            "understandingFocusDe": "Elastische Lösung benötigt beide Erhaltungen und die physikalische Nachstoßsituation.",
+            "understandingFocusEn": "The elastic solution requires both conservation laws and the physical post-collision state."
+          },
+          {
+            "id": "beide-in-bewegung",
+            "taskDemandDe": "Zwei Körper von je 0,50 kg nähern sich in einer Dimension mit u1=+2 m/s und u2=-1 m/s. Analysiere den elastischen Stoß ohne äußeren Kraftstoß. Ein Alternativvorschlag behauptet, beide liefen danach mit +0,50 m/s weiter; prüfe ihn fachlich.",
+            "taskDemandEn": "Two objects of 0.50 kg each approach in one dimension at u1=+2 m/s and u2=-1 m/s. Analyze their elastic collision without external impulse. An alternative proposes that both subsequently move at +0.50 m/s; assess it physically.",
+            "expectedPerformanceDe": "Begründet den Geschwindigkeitstausch v1=-1 m/s, v2=+2 m/s; Gesamtimpuls 0,50 kg·m/s und Ekin=1,25 J bleiben erhalten. Der gemeinsame Alternativzustand hat denselben Impuls, aber nur 0,125 J kinetische Energie; er ist kein elastischer Endzustand. Die Differenz 1,125 J müsste bei einem passenden inelastischen Vorgang anders bilanziert werden.",
+            "expectedPerformanceEn": "Justifies exchanged velocities v1=-1 m/s, v2=+2 m/s; total momentum 0.50 kg·m/s and kinetic energy 1.25 J are conserved. The shared alternative state has the same momentum but only 0.125 J kinetic energy; it is not an elastic final state. The 1.125 J difference would need accounting in other forms for a suitable inelastic event.",
+            "understandingFocusDe": "Gegenläufige Impulse algebraisch summieren; Elastizität nicht aus Impuls allein folgern.",
+            "understandingFocusEn": "Add opposing momenta algebraically; do not infer elasticity from momentum alone."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Vorzeichenumkehr wird ausdrücklich nur für den eindimensionalen elastischen Zweikörperfall verlangt; keine ungerechtfertigte Übertragung auf beliebige zweidimensionale Streuung. / Sign reversal is explicitly required only for a one-dimensional elastic two-body case, not generalized to arbitrary two-dimensional scattering."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "bezugswechsel",
+            "essentialUnderstandingDe": "Die Schwerpunktgeschwindigkeit V=(m1u1+m2u2)/(m1+m2) bleibt bei fehlendem äußeren Impuls konstant; u*=u-V führt in ein System mit Gesamtimpuls null.",
+            "essentialUnderstandingEn": "The centre-of-mass velocity V=(m1u1+m2u2)/(m1+m2) remains constant without external impulse; u*=u-V gives a frame with zero total momentum.",
+            "observablePerformanceDe": "Berechnet V, transformiert beide Anfangsgeschwindigkeiten mit derselben Subtraktion und überprüft den Nullimpuls im Schwerpunktsystem.",
+            "observablePerformanceEn": "Calculates V, transforms both initial velocities using the same subtraction, and checks zero momentum in the centre-of-mass frame."
+          },
+          {
+            "id": "stoss-und-rueckkehr",
+            "essentialUnderstandingDe": "Bei einem eindimensionalen elastischen Zweikörperstoß kehren die Geschwindigkeiten im Schwerpunktsystem ihr Vorzeichen um; Rücktransformation addiert dieselbe Schwerpunktgeschwindigkeit.",
+            "essentialUnderstandingEn": "In a one-dimensional elastic two-body collision, velocities reverse sign in the centre-of-mass frame; transforming back adds the same centre-of-mass velocity.",
+            "observablePerformanceDe": "Verknüpft Annäherungs- und Trennrelativgeschwindigkeit, transformiert zurück und prüft Laborimpuls/-energie sowie die Abhängigkeit der Einzelgeschwindigkeiten vom Beobachter.",
+            "observablePerformanceEn": "Relates approach and separation relative velocities, transforms back, and checks laboratory momentum/energy and the observer dependence of individual velocities."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bezugswechsel",
+            "stoss-und-rueckkehr"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "schwerpunkt-und-beobachter",
+            "textDe": "Bewegter Schwerpunkt mit ruhendem Ziel gegenüber ruhendem Schwerpunkt bei Gegenbewegung und einem zusätzlich bewegten Laborbeobachter.",
+            "textEn": "Moving centre of mass with a stationary target versus a stationary centre of mass with opposing motion and an additionally moving laboratory observer."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bewegter-schwerpunkt",
+            "taskDemandDe": "Ein elastischer eindimensionaler Stoß ohne äußeren Kraftstoß hat m1=2 kg, m2=1 kg, u1=+3 m/s, u2=0. Analysiere ihn ausdrücklich im Schwerpunktsystem und transformiere anschließend in das angegebene Labor zurück; benenne Relativgeschwindigkeiten und prüfe das Ergebnis.",
+            "taskDemandEn": "A one-dimensional elastic collision without external impulse has m1=2 kg, m2=1 kg, u1=+3 m/s, u2=0. Analyze it explicitly in the centre-of-mass frame, then transform back to the stated laboratory; identify relative velocities and check the result.",
+            "expectedPerformanceDe": "V=2 m/s, u1*=+1 und u2*=-2 m/s, Schwerpunktimpuls 2·1+1·(-2)=0. Nach Vorzeichenumkehr v1*=-1, v2*=+2, im Labor v1=1 und v2=4 m/s. Relative Geschwindigkeit u1-u2=3 wird v1-v2=-3 m/s. p=6 kg·m/s und Ekin=9 J bleiben im Labor erhalten; Schwerpunkt-Ekin=3 J ist nicht die gesamte Laborenergie.",
+            "expectedPerformanceEn": "V=2 m/s, u1*=+1 and u2*=-2 m/s, centre-of-mass momentum 2·1+1·(-2)=0. After sign reversal v1*=-1, v2*=+2, laboratory v1=1 and v2=4 m/s. Relative velocity u1-u2=3 becomes v1-v2=-3 m/s. Laboratory p=6 kg·m/s and kinetic energy 9 J are conserved; centre-of-mass kinetic energy 3 J is not the full laboratory energy.",
+            "understandingFocusDe": "Beide Körper mit derselben Schwerpunktgeschwindigkeit hin- und zurücktransformieren.",
+            "understandingFocusEn": "Transform both objects to and from the centre-of-mass frame using the same velocity."
+          },
+          {
+            "id": "ruhender-schwerpunkt",
+            "taskDemandDe": "Ein neuer elastischer eindimensionaler Fall hat m1=1 kg, m2=2 kg und im Labor L u1=+2 m/s, u2=-1 m/s, ohne äußeren Kraftstoß. Analysiere im Schwerpunkt. Ein zweiter Beobachter L′ bewegt sich mit +3 m/s relativ zu L. Gib auch seine Vor-/Nachgeschwindigkeiten an und erkläre, was beim Beobachterwechsel gleich bleibt.",
+            "taskDemandEn": "A new one-dimensional elastic case has m1=1 kg, m2=2 kg and laboratory L velocities u1=+2 m/s, u2=-1 m/s, without external impulse. Analyze it in the centre-of-mass frame. A second observer L′ moves at +3 m/s relative to L. Give that observer's initial/final velocities and explain what remains unchanged under the observer change.",
+            "expectedPerformanceDe": "In L ist V=0, also v1=-2 und v2=+1 m/s; p=0, Ekin=3 J vor/nach. In L′ gilt V′=-3 m/s, Anfang (-1,-4), Ende (-5,-2) m/s. Die Schwerpunktgeschwindigkeiten bleiben (+2,-1) vor und (-2,+1) nach dem Stoß; Relativgeschwindigkeit wechselt +3→-3 m/s in beiden Laboren. L′ hat p=-9 kg·m/s und Ekin=16,5 J vor/nach: Erhaltung gilt frameintern, Zahlenwerte müssen nicht mit L übereinstimmen.",
+            "expectedPerformanceEn": "In L, V=0, so v1=-2 and v2=+1 m/s; p=0 and kinetic energy 3 J before/after. In L′, V′=-3 m/s, initial (-1,-4), final (-5,-2) m/s. Centre-of-mass velocities remain (+2,-1) before and (-2,+1) after; relative velocity changes +3→-3 m/s in both laboratories. L′ has p=-9 kg·m/s and kinetic energy 16.5 J before/after: conservation holds within each frame, but numerical values need not equal those in L.",
+            "understandingFocusDe": "Ein ruhender Schwerpunkt ist kein Sondergesetz; Galilei-Wechsel ändert Laborgrößen, nicht die relative Stoßanalyse.",
+            "understandingFocusEn": "A stationary centre of mass is not a different law; a Galilean change alters laboratory quantities, not relative collision analysis."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "energieaustausch",
+            "essentialUnderstandingDe": "In einer reibungsfrei idealisierten Schwingung bleibt die mechanische Gesamtenergie bei geeigneter Systemgrenze konstant, während potenzielle und kinetische Energie ortsabhängig ineinander übergehen.",
+            "essentialUnderstandingEn": "In a frictionless idealized oscillation, mechanical total energy remains constant for a suitable system boundary while potential and kinetic energy interchange with position.",
+            "observablePerformanceDe": "Legt System und potenziellen Nullpunkt fest, ordnet Umkehr- und Gleichgewichtslage energetisch zu und beschreibt den Austausch über eine vollständige Bewegung.",
+            "observablePerformanceEn": "Defines the system and potential-energy zero, assigns energies to turning and equilibrium positions, and describes the exchange over a complete motion."
+          },
+          {
+            "id": "einfache-bilanz",
+            "essentialUnderstandingDe": "Eine Energiegleichung liefert in einfachen Fällen Beträge der Geschwindigkeit, aber ohne Bewegungsrichtung oder Phase kein eindeutiges Vorzeichen.",
+            "essentialUnderstandingEn": "In simple cases, an energy equation gives speed magnitudes, but not a unique sign without direction or phase information.",
+            "observablePerformanceDe": "Berechnet einfache Teilenergien und Geschwindigkeitsbeträge, prüft ihre Summe und benennt die Richtungsmehrdeutigkeit sowie die Reibungsfreiheitsannahme.",
+            "observablePerformanceEn": "Calculates simple component energies and speed magnitudes, checks their sum, and identifies direction ambiguity and the frictionless assumption."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "energieaustausch",
+            "einfache-bilanz"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "potentialform",
+            "textDe": "Elastische Federenergie eines horizontalen Systems gegenüber gravitativer Lageenergie eines Pendels; gleicher Energiebetrag bei zwei Bewegungsrichtungen.",
+            "textEn": "Elastic spring energy in a horizontal system versus gravitational potential energy of a pendulum; the same energy for two directions of motion."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "federbilanz",
+            "taskDemandDe": "Ein horizontaler idealer Federoszillator hat D=20 N/m, m=0,50 kg und Amplitude A=0,10 m. Mit Epot=Dx²/2 und Nullpunkt x=0: Beschreibe den Energieaustausch, bestimme Energien und Geschwindigkeitsbeträge bei x=0 sowie x=±0,06 m und erkläre die Umkehrlagen.",
+            "taskDemandEn": "An ideal horizontal spring oscillator has D=20 N/m, m=0.50 kg, and amplitude A=0.10 m. With potential energy Dx²/2 and zero at x=0, describe the energy exchange, find energies and speed magnitudes at x=0 and x=±0.06 m, and explain the turning points.",
+            "expectedPerformanceDe": "System Masse+Feder, Eges=0,10 J. Bei x=0: Epot=0, Ekin=0,10 J, |v|=√0,4≈0,632 m/s. Bei ±0,06 m: Epot=0,036 J, Ekin=0,064 J, |v|=√0,256≈0,506 m/s. Bei ±A ruht die Masse momentan und Epot=0,10 J. Die Energie legt bei einer Zwischenposition die Bewegungsrichtung nicht fest.",
+            "expectedPerformanceEn": "System mass+spring, total energy 0.10 J. At x=0: potential 0, kinetic 0.10 J, |v|=√0.4≈0.632 m/s. At ±0.06 m: potential 0.036 J, kinetic 0.064 J, |v|=√0.256≈0.506 m/s. At ±A the mass is momentarily at rest with potential 0.10 J. Energy does not determine the direction of motion at an intermediate position.",
+            "understandingFocusDe": "Konstante Summe bei ortsabhängigem Austausch; Geschwindigkeit ist mehr als ihr Betrag.",
+            "understandingFocusEn": "Constant sum with position-dependent exchange; velocity is more than speed."
+          },
+          {
+            "id": "pendelhoehe",
+            "taskDemandDe": "Ein idealisiertes Pendel mit Masse 0,20 kg wird aus Ruhe 0,050 m über seinem tiefsten Punkt freigegeben; g=10 m/s², Luftreibung und Lagerverluste werden vernachlässigt. Beschreibe qualitativ einen Hin- und Rückweg und berechne Energien und Geschwindigkeitsbeträge unten sowie 0,020 m oberhalb. Eine Kleinwinkelnäherung für die Periodendauer wird nicht benötigt.",
+            "taskDemandEn": "An idealized pendulum of mass 0.20 kg is released from rest 0.050 m above its lowest point; g=10 m/s², with air resistance and bearing losses neglected. Describe an outward and return motion and calculate energies and speeds at the bottom and 0.020 m above it. No small-angle approximation for the period is needed.",
+            "expectedPerformanceDe": "System Pendelkörper+Erde, potenzieller Nullpunkt unten; Eges=0,10 J. Unten Ekin=0,10 J und |v|=1,0 m/s; bei 0,020 m Epot=0,040 J, Ekin=0,060 J und |v|=√0,6≈0,775 m/s. Erreicht auf der Gegenseite wieder 0,050 m Höhe und kehrt um. Beim Hin-/Rückweg sind bei gleicher Höhe die Beträge gleich, die Bewegungsrichtungen verschieden.",
+            "expectedPerformanceEn": "System pendulum object+Earth, potential zero at the bottom; total energy 0.10 J. At the bottom kinetic energy is 0.10 J and speed 1.0 m/s; at 0.020 m potential is 0.040 J, kinetic 0.060 J, and speed √0.6≈0.775 m/s. Reaches height 0.050 m again on the opposite side and turns. At equal height on outward/return motion, speeds match but directions differ.",
+            "understandingFocusDe": "Lageenergie des Erde-Körper-Systems und richtungsunabhängige Energiebilanz.",
+            "understandingFocusEn": "Potential energy of the Earth-object system and a direction-independent energy balance."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+      "reason": "Eigenständig aus aktuellem Zieltext und Originalseitenkontext verfasst; zwei unabhängige DE/EN-Fälle fachlich kontrolliert. Nach dem Stabilitätssignal an aktuelle semantische Eingaben gebundener AI-Kandidat; keine reale Lernleistung, Quellen-, Bild- oder Humanfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "amplitude-und-energieabgabe",
+            "essentialUnderstandingDe": "Dämpfung lässt die Amplitude einer frei schwingenden mechanischen Anordnung abnehmen, wenn mechanische Energie an andere Formen oder die Umgebung übertragen wird; momentane Auslenkung und Amplitudenhülle sind verschieden.",
+            "essentialUnderstandingEn": "Damping reduces the amplitude of a freely oscillating mechanical system when mechanical energy transfers to other forms or the surroundings; instantaneous displacement and amplitude envelope differ.",
+            "observablePerformanceDe": "Beschreibt oder skizziert eine abklingende Schwingung, liest aufeinanderfolgende Umkehrlagen aus und erklärt die Abnahme mit dem Energieübertragungsweg.",
+            "observablePerformanceEn": "Describes or sketches a decaying oscillation, reads successive turning points, and explains the decrease using the energy-transfer path."
+          },
+          {
+            "id": "erweiterung-der-idealisierung",
+            "essentialUnderstandingDe": "Das gedämpfte Modell erweitert die reibungsfreie Idealisierung; Dämpfung bedeutet nicht Vernichtung der Gesamtenergie oder eine aus jedem Verlauf abzulesende universelle Abklingformel.",
+            "essentialUnderstandingEn": "The damped model extends the frictionless idealization; damping does not mean destruction of total energy or a universal decay formula inferable from every trace.",
+            "observablePerformanceDe": "Vergleicht qualitativ gedämpfte und ideale freie Bewegung beziehungsweise unterschiedlich gedämpfte Fälle und begrenzt Aussagen zu Zeitverlauf oder Frequenz auf die vorliegenden Daten.",
+            "observablePerformanceEn": "Qualitatively compares damped and ideal free motion or differently damped cases and limits claims about time course or frequency to the available data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "amplitude-und-energieabgabe",
+            "erweiterung-der-idealisierung"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "verlauf-und-vergleich",
+            "textDe": "Aus einer Zeitdarstellung die Hülle erkennen gegenüber Vorhersage für eine veränderte Reibungsbedingung; keine Exponentialform oder Dämpfungsklassifikation als Pflicht.",
+            "textEn": "Recognizing an envelope in a time representation versus prediction under changed friction; no mandatory exponential form or damping-regime classification."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "umkehrlagen",
+            "taskDemandDe": "Eine neu konstruierte Zeitdarstellung einer frei ausschwingenden Anordnung markiert aufeinanderfolgende Umkehrlagen +4,0, -3,2, +2,6, -2,1 cm zu gleich weit auseinanderliegenden Zeiten. Erläutere und skizziere den Verlauf samt Amplitudenhülle; vergleiche mit einem reibungsfreien Modell aus derselben Anfangsauslenkung. Ein Dämpfungsgesetz ist nicht angegeben.",
+            "taskDemandEn": "A newly constructed time representation of free oscillation marks successive turning points +4.0, -3.2, +2.6, -2.1 cm at equally spaced times. Explain and sketch the trace and amplitude envelope; compare with a frictionless model from the same initial displacement. No damping law is specified.",
+            "expectedPerformanceDe": "Erkennt abnehmende Beträge 4,0→3,2→2,6→2,1 cm trotz wechselnden Vorzeichens und zeichnet eine abklingende Hülle. Das ideale freie Vergleichsmodell hat konstante Amplitude 4,0 cm. Erklärt die Abnahme durch mechanische Energieabgabe beispielsweise an innere Energie von Anordnung/Umgebung; erfindet weder exaktes Exponentialgesetz noch Zeitpunkt vollständigen Stillstands.",
+            "expectedPerformanceEn": "Recognizes decreasing magnitudes 4.0→3.2→2.6→2.1 cm despite alternating signs and draws a decaying envelope. The ideal free comparison has constant amplitude 4.0 cm. Explains the decline through transfer of mechanical energy, for example to internal energy of the setup/surroundings; invents neither an exact exponential law nor an exact stopping time.",
+            "understandingFocusDe": "Amplitudenabnahme von Vorzeichenwechsel und Energievernichtung unterscheiden.",
+            "understandingFocusEn": "Distinguish amplitude decay from sign reversal and destruction of energy."
+          },
+          {
+            "id": "luftwiderstand-variation",
+            "taskDemandDe": "Zwei ansonsten gleiche frei schwingende Pendel werden in einem rein gedanklichen Vergleich aus gleicher Anfangsauslenkung losgelassen. Bei B vergrößert eine leichte Zusatzfläche den Luftwiderstand; deren Massen-/Geometrieeinfluss auf die Rückstellung wird im Aufgabenmodell vernachlässigt. Beide bleiben im betrachteten Zeitraum schwingfähig, es gibt keinen Antrieb. Beschreibe und skizziere den erwarteten Unterschied zur schwächer gedämpften Variante A und zum reibungsfreien Grenzmodell.",
+            "taskDemandEn": "Two otherwise identical freely oscillating pendulums are released from the same displacement in a thought experiment. In B a light additional area increases air resistance; its mass/geometry effect on restoration is neglected in the task model. Both remain oscillatory during the interval considered, with no drive. Describe and sketch the expected difference from less-damped A and the frictionless limiting model.",
+            "expectedPerformanceDe": "Begründet für B schnellere Abnahme der Amplitudenhülle durch stärkere Energieübertragung an die Luft; A klingt langsamer ab, ideal bleibt die Amplitude konstant. Skizziert weiterhin wechselnde Auslenkung um die Gleichgewichtslage. Nennt fehlendes Kraft-/Dämpfungsmodell als Grenze für exakte Zeiten und Frequenzen; behauptet weder konstante Dämpfungsfrequenz für jeden Fall noch erzwungene Schwingung.",
+            "expectedPerformanceEn": "Justifies faster decay of B's envelope through stronger energy transfer to the air; A decays more slowly and the ideal amplitude stays constant. Sketches continuing alternating displacement about equilibrium. Identifies the missing force/damping model as a limit for exact times and frequencies; claims neither an identical damped frequency in every case nor a driven oscillation.",
+            "understandingFocusDe": "Eine qualitative Modellvariation begründen, ohne weiterführende Dämpfungsmathematik zu verlangen.",
+            "understandingFocusEn": "Justify a qualitative model variation without requiring advanced damping mathematics."
+          }
+        ]
+      }
+    }
+  ]
+}

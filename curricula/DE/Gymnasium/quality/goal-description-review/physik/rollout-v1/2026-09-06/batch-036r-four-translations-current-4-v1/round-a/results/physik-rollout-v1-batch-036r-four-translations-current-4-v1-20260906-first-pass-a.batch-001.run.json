@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-b036r-blind-a-20260906",
+  "campaignId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-a",
+  "roundId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:82c832efdcb90ba9b9ec5d5c295dfa40d68862671b7307d8bdcac95b92013665",
+  "bundleFingerprint": "sha256:78db24ab72cdd96207fde20312f6f701018d225d7277e9d9120056dcb5402f9f",
+  "bookDigest": "sha256:0f9d83794993c17dc39f1dda17a0388469e135fcef9095d7d595905142ccac51",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "badb0ef3-233d-560e-bc2a-9df99f09fe7d",
+    "84ddb244-e560-592f-9d43-e84c801fe5b4",
+    "8ac61062-f63e-5935-96ae-84014906c368",
+    "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:82c832efdcb90ba9b9ec5d5c295dfa40d68862671b7307d8bdcac95b92013665"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-06T09:13:26Z",
+  "completedAt": "2026-09-06T09:17:24Z",
+  "status": "completed",
+  "outputDigest": "sha256:cd84e4b5a4649c42c52265b3ffc41e8a8cbe63004d2b5750f5c05f6426b8b29b",
+  "toolchainVersion": "codex-agent-review-v1"
+}

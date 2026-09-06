@@ -1,0 +1,5 @@
+# Standalone-Bildrekonstruktion – Potenzregel exemplarisch begründen
+
+Helle zweispaltige Infografik, weißer Hintergrund, hellblaue Kopf- und Fußflächen, schwarze gut lesbare Schrift, farbige Terme und lockere Erklärungspfeile. Titel „Potenzregel exemplarisch begründen“. Links „Beispiel f(x)=x²“ mit korrekter Grenzwertkette: f′(x)=lim(h→0) ((x+h)²−x²)/h = lim(h→0) (x²+2xh+h²−x²)/h = lim(h→0) (2xh+h²)/h = lim(h→0) h(2x+h)/h = lim(h→0) (2x+h) = 2x. Jeder Bruch hat einen echten, den gesamten Zähler umfassenden Bruchstrich. Sprechblase (x+h)²=x²+2xh+h². Die beiden entgegengesetzten x²-Terme dürfen rot durchgestrichen sein. Keine blauen Durchstreichungen an h, insbesondere niemals den additiven Summanden h in (2x+h) kürzen. Der Faktor h wird nur für h≠0 gekürzt, bevor h gegen null geht. Kurze Labels „h ausklammern & kürzen“ und „Grenzwertbildung (h → 0)“.
+
+Rechts „Einordnung“: d/dx(xⁿ)=n·xⁿ⁻¹; Beispiel n=2 → 2·x²⁻¹=2x. Abschluss: „Der Differenzenquotient begründet die Potenzregel im Beispiel.“ Kein Anspruch, dieses einzelne Beispiel beweise den Satz für alle ganzen Exponenten. Keine Logos oder Metadaten.

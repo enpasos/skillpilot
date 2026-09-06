@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-037s-optimization-plot-final-1-v1.config.json",
+  "configDigest": "sha256:afc0831fdb9cc8136da2dccfa7d053846f80c9104afb7e4dd4703fefcfbd5fc5",
+  "goalIds": [
+    "1511b39a-4094-5450-a755-4a3ad3339733"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 796,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:9eadb77913e372e4ab3f0797b329928b921da7b1212d06876368f6f3811ce430"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:4bc5174a4f58f34220bbe65cb1ef197dd4d0ccb199383125c8a4a3239b1a02ec",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:45099430c40e65fcba4ec219e93e51e27f4659056d526a003264bcd50f0741d9",
+    "reviewInputFingerprint": "sha256:3b2f71f1d18a8cfb480270182575b921e76e2f4f41406d976792cdbdb11bbc6e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-a",
+        "campaignDigest": "sha256:e2b814db229a2142a602936aa784c433f095ecf28cc70714a7eaaf2242f2693c",
+        "roundId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:20a15fd3ffe3d4e433c61df05aa2a6e589b56c9e8d0e65df3819565b05a84878"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-b",
+        "campaignDigest": "sha256:a207c683550064da1c757161d5c4dad68dc88dbb618fb9443e2f8ecf386fe34f",
+        "roundId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-037s-optimization-plot-final-1-v1-20260906-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:45117d913adcdbc140d3d18646748313ed447c111f5dc24402bc8bb3d8b165c5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

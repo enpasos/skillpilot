@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b033a-blind-b-20260906",
+  "campaignId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-b",
+  "roundId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:2cec42a65ff734fa9d3dced87f947ccf00cae0ca47f22736ef6d129a4dbc8a63",
+  "bundleFingerprint": "sha256:7e308cdaf4ab717c0420f3aaa425f65ed00095ee1253008bff665d6597e87a6e",
+  "bookDigest": "sha256:471d3541249a00537088789673a48972c01343375f1e023dd65298d6f170d7b2",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex; exact deployment identifier not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:227662d978cb6600ab1979d299547ecc9c60d7d0414f619faffe24a1deee1e8d",
+  "independenceGroupId": "mathematik-rollout-v1-batch-033a-functions-current-recheck-4-v1-20260906-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+    "d8c9eb57-1614-4c1d-829a-618134def352",
+    "53b47494-ec60-4128-840d-2a4c4bab6d32",
+    "30c013ac-5164-4c3c-8bc1-9a10b2f49533"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2cec42a65ff734fa9d3dced87f947ccf00cae0ca47f22736ef6d129a4dbc8a63"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-06T05:14:10Z",
+  "completedAt": "2026-09-06T05:17:44.553Z",
+  "status": "completed",
+  "outputDigest": "sha256:e102f86d61f431f2f6b9c81e418875b2c756bee68d1cfd05dd3921c38dd617c3",
+  "toolchainVersion": "node-v20.20.2"
+}

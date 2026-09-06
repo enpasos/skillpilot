@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:78db24ab72cdd96207fde20312f6f701018d225d7277e9d9120056dcb5402f9f",
+  "reviewInputFingerprint": "sha256:20fb475c07698e05ef7f0362b64a5bae25105305d748bec69d8ad46b8ae0d2c7",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-a",
+      "roundId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-independent-a",
+      "runIds": [
+        "physics-b036r-blind-a-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-b",
+      "roundId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-036r-four-translations-current-4-v1-20260906-independent-b",
+      "runIds": [
+        "physics-b036r-current-b-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "badb0ef3-233d-560e-bc2a-9df99f09fe7d",
+      "firstRecordId": "physics-b036r-blind-a-20260906.goal-badb0ef3",
+      "secondRecordId": "physics-b036r-current-b-20260906.001",
+      "firstRunId": "physics-b036r-blind-a-20260906",
+      "secondRunId": "physics-b036r-current-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "84ddb244-e560-592f-9d43-e84c801fe5b4",
+      "firstRecordId": "physics-b036r-blind-a-20260906.goal-84ddb244",
+      "secondRecordId": "physics-b036r-current-b-20260906.002",
+      "firstRunId": "physics-b036r-blind-a-20260906",
+      "secondRunId": "physics-b036r-current-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8ac61062-f63e-5935-96ae-84014906c368",
+      "firstRecordId": "physics-b036r-blind-a-20260906.goal-8ac61062",
+      "secondRecordId": "physics-b036r-current-b-20260906.003",
+      "firstRunId": "physics-b036r-blind-a-20260906",
+      "secondRunId": "physics-b036r-current-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ce14a7e7-7e2a-517f-a465-78ba3fbe414d",
+      "firstRecordId": "physics-b036r-blind-a-20260906.goal-ce14a7e7",
+      "secondRecordId": "physics-b036r-current-b-20260906.004",
+      "firstRunId": "physics-b036r-blind-a-20260906",
+      "secondRunId": "physics-b036r-current-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

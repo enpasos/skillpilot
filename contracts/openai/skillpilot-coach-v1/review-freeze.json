@@ -3645,6 +3645,29 @@
           "authorizedSha256": "4da7398340119e0ee1caaf6675ea8091c5beb8de99998a7d1bb1de063692c93e"
         }
       ]
+    },
+    {
+      "id": "2026-09-05-goal-book-layer-a-count-alignment",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Apply the explicitly approved test-only count correction after the reviewed Layer A mathematics goal split increased the published atlas from 795 to 796 atomic entries.",
+      "scope": "Change only the exact verified.model.pages.length expectation in app/scripts/testGoalBookPublication.ts from 795 to 796 and bind this one-line test change plus section 6.58 documentation through the append-only exception record, runtime checker and regression expectation. Preserve all test logic, negative cases, exact-count enforcement, publication/source integrity checks and prior exception history. The associated content split is separately authorized live Layer A data, not a plugin contract change. The Product Owner also preauthorizes comparable mechanical test-data/count and derived-hash alignment after approved Layer A changes only when test logic and product behavior remain unchanged; each future case still requires a concrete documented scope, exact append-only bindings and regressions, never a wildcard rebaseline or gate weakening. This entry authorizes only the exact files and hashes below. No product sources, OpenAI 1.0.0 or Claude 1.1.1 package, MCP/OAuth/tool/schema/MCP-Apps resource/launch/session/identity/locale/learning-state/security/storage contract, portal, reviewer fixture/case or review artifact changes. No deployment.",
+      "target": "local-and-ci-public-layer-a-goal-book-publication-test-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-test-count-alignment-with-unchanged-submitted-contract-and-review-flow",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/scripts/testGoalBookPublication.ts",
+          "priorAuthorizedSha256": "fd49334616e0a98b08e6a2697a7249c4bdb2d5c76f6fb5659058a26e32ab7ae4",
+          "authorizedSha256": "11483618c5b187dc8bd31c7a0e9a92b0bab74297a73fa2ba8a40a2f4104e0079"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "4da7398340119e0ee1caaf6675ea8091c5beb8de99998a7d1bb1de063692c93e",
+          "authorizedSha256": "2b49a4a424173ba547357b005dc3e8f663d7cc65ea4b1ef95e31f2896eb7c80d"
+        }
+      ]
     }
   ],
   "evolvablePresentationIslands": [

@@ -5,7 +5,7 @@
   "inputs": {
     "canonical": {
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-      "sha256": "1ed60293af8783ecb132c168485a761e813459c3c28d2fe2e415785cf9f89b56"
+      "sha256": "fd9108cf0ccc8176f1fdd3e5633ac716544cff9aa72bcaf8c1f11ad93728d34e"
     },
     "parentDerivativeReceipt": {
       "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-composition-view-follow-up-2026-08-16.receipt.json",
@@ -27,11 +27,16 @@
         "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-structural-split-1-v1/source-edge-adjudication.json",
         "fileSha256": "b06d7d4f2309cd15b3fbe488927cc856e165ac05ea063653b64b00284ab6103f",
         "adjudicationDigest": "sha256:4a8be59e32b5eca67870cf8574bc659e59a738e28a8311554bc1f4a6c474c1c8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032v-approved-graph-split-final-recheck-5-v1/duration-layout-adjudication.json",
+        "fileSha256": "28069fb72f663f403d0c7072329323f8cfcbe491c12231f534de39e4caf4f1fb",
+        "adjudicationDigest": "sha256:efe50d63ebd3e3edbc7c0178238bf3b47f7c392eb1adf26d15c2ca39a6974450"
       }
     ]
   },
   "policy": {
-    "sourceOfLayoutTruth": "The six reviewed duration-specific Sek-I candidate layouts and the bound additive structural adjudications are authoritative for the 55 split placements. Mapping buckets remain authoritative for the ordinary atomic target set.",
+    "sourceOfLayoutTruth": "The six reviewed duration-specific Sek-I candidate layouts and the bound additive structural adjudications are authoritative for the 61 split placements. Mapping buckets remain authoritative for the ordinary atomic target set.",
     "transform": [
       "Generate the flat mapping-derived Sek-I view exactly as before, with atomic-asserted goalEntry nodes.",
       "For each placement, remove removeAtomicGoalIds from every direct reference occurrence in the generated Sek-I node.",
@@ -69,7 +74,7 @@
   },
   "counts": {
     "sek1TemplateCount": 6,
-    "splitPlacementCount": 55,
+    "splitPlacementCount": 61,
     "crossStageOutputCount": 12,
     "totalOutputCount": 18
   },
@@ -77,9 +82,23 @@
     {
       "fileName": "de-he-seki-g8.view.json",
       "viewId": "de-he-gym-seki-math-g8",
-      "fileSha256": "0dacc79606859a063e19edb5682df719a5085a744d61a4422eae4996a02db693",
-      "placementCount": 12,
+      "fileSha256": "e22b35d54474fdfdc0c24e94f9cb863002acbab10b31171a8c6e13e863a464e4",
+      "placementCount": 13,
       "placements": [
+        {
+          "parentStructureId": "j8-g8-kompetenzen",
+          "splitCode": "B032V_GRAPH_PROPERTIES",
+          "oldClusterGoalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+          "renderKind": "canonicalSubtree",
+          "removeAtomicGoalIds": [
+            "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+            "a1c79897-6ded-57f8-bee1-2d365a5083c9"
+          ],
+          "replacementNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e"
+          }
+        },
         {
           "parentStructureId": "j5-g8-kompetenzen",
           "splitCode": "S20",
@@ -318,9 +337,23 @@
     {
       "fileName": "de-he-seki-g9.view.json",
       "viewId": "de-he-gym-seki-math-g9",
-      "fileSha256": "3f468f77ff5464e2ee7442096d8c2aaeff8086fd30e821e22c2c4098858811d0",
-      "placementCount": 13,
+      "fileSha256": "b64d7ec99e26033e66e1b1ffbb92a5821c53716b035844d07fe07cd26ffa604f",
+      "placementCount": 14,
       "placements": [
+        {
+          "parentStructureId": "j8-g9-kompetenzen",
+          "splitCode": "B032V_GRAPH_PROPERTIES",
+          "oldClusterGoalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+          "renderKind": "canonicalSubtree",
+          "removeAtomicGoalIds": [
+            "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+            "a1c79897-6ded-57f8-bee1-2d365a5083c9"
+          ],
+          "replacementNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e"
+          }
+        },
         {
           "parentStructureId": "j5-g9-kompetenzen",
           "splitCode": "S20",
@@ -573,12 +606,26 @@
     {
       "fileName": "de-rp-seki-g8.view.json",
       "viewId": "de-rp-gym-seki-math-g8",
-      "fileSha256": "8f934feafcbd28910b010cae5d631d2c036e92892e07abe6527f4d5825bbcd57",
-      "placementCount": 5,
+      "fileSha256": "2bbfbc7d288c4eb816b454dc22a2c1de853199a15ecd7058fdc2b67ca171025e",
+      "placementCount": 6,
       "prerequisiteOnlyGoalIds": [
         "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
       ],
       "placements": [
+        {
+          "parentStructureId": "rp-klasse9-10-msa-g8-kompetenzen",
+          "splitCode": "B032V_GRAPH_PROPERTIES",
+          "oldClusterGoalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+          "renderKind": "canonicalSubtree",
+          "removeAtomicGoalIds": [
+            "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+            "a1c79897-6ded-57f8-bee1-2d365a5083c9"
+          ],
+          "replacementNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e"
+          }
+        },
         {
           "parentStructureId": "rp-orientierungsstufe-g8-kompetenzen",
           "splitCode": "S23",
@@ -657,12 +704,26 @@
     {
       "fileName": "de-rp-seki-g9.view.json",
       "viewId": "de-rp-gym-seki-math-g9",
-      "fileSha256": "2dfa5ddfac38da977598175f19410563fcf986e128b03bce7c4c5766361dfec1",
-      "placementCount": 5,
+      "fileSha256": "90c830e5c7f2114d82d35bfa21989dcf7064219d6eb81b6918399dffd782ab53",
+      "placementCount": 6,
       "prerequisiteOnlyGoalIds": [
         "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
       ],
       "placements": [
+        {
+          "parentStructureId": "rp-klasse9-10-msa-g9-kompetenzen",
+          "splitCode": "B032V_GRAPH_PROPERTIES",
+          "oldClusterGoalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+          "renderKind": "canonicalSubtree",
+          "removeAtomicGoalIds": [
+            "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+            "a1c79897-6ded-57f8-bee1-2d365a5083c9"
+          ],
+          "replacementNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e"
+          }
+        },
         {
           "parentStructureId": "rp-orientierungsstufe-g9-kompetenzen",
           "splitCode": "S23",
@@ -741,8 +802,8 @@
     {
       "fileName": "de-sh-seki-g8.view.json",
       "viewId": "de-sh-gym-seki-math-g8",
-      "fileSha256": "c98dc7cb063161ace26c5773ac770826d2a9776d5eb4e74bde517d985d98f1b6",
-      "placementCount": 10,
+      "fileSha256": "8559f8528eec91856416a767f58d4f248a6ebae5ac98a980bfc5236f40731520",
+      "placementCount": 11,
       "excludedGoalIds": [
         "f17935b0-189f-5e0c-988d-ce508b710097"
       ],
@@ -750,6 +811,20 @@
         "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
       ],
       "placements": [
+        {
+          "parentStructureId": "sh-jg7-9-g8-kompetenzen",
+          "splitCode": "B032V_GRAPH_PROPERTIES",
+          "oldClusterGoalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+          "renderKind": "canonicalSubtree",
+          "removeAtomicGoalIds": [
+            "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+            "a1c79897-6ded-57f8-bee1-2d365a5083c9"
+          ],
+          "replacementNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e"
+          }
+        },
         {
           "parentStructureId": "sh-jg5-6-g8-kompetenzen",
           "splitCode": "S20",
@@ -921,8 +996,8 @@
     {
       "fileName": "de-sh-seki-g9.view.json",
       "viewId": "de-sh-gym-seki-math-g9",
-      "fileSha256": "c94c60b87bea0406f9f57de472b53cb69a9340bce00fc472cc7d5302f324dfb3",
-      "placementCount": 10,
+      "fileSha256": "634def8374a2e8f7481168e740c772e81128b75ba7222d2856cc5e4873d0b69f",
+      "placementCount": 11,
       "excludedGoalIds": [
         "f17935b0-189f-5e0c-988d-ce508b710097"
       ],
@@ -930,6 +1005,20 @@
         "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
       ],
       "placements": [
+        {
+          "parentStructureId": "sh-jg7-9-g9-kompetenzen",
+          "splitCode": "B032V_GRAPH_PROPERTIES",
+          "oldClusterGoalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e",
+          "renderKind": "canonicalSubtree",
+          "removeAtomicGoalIds": [
+            "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+            "a1c79897-6ded-57f8-bee1-2d365a5083c9"
+          ],
+          "replacementNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e"
+          }
+        },
         {
           "parentStructureId": "sh-jg5-6-g9-kompetenzen",
           "splitCode": "S20",

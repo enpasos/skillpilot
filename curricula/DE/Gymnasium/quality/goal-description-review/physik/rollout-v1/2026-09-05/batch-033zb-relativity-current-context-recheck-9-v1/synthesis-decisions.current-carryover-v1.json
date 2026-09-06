@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b033zb-current-carryover-7-synthesis-20260905-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "openai-codex-physics-b033zb-existing-review-ai-synthesis",
+  "synthesizedAt": "2026-09-05T21:17:34.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-033zb-relativity-current-context-recheck-9-v1-20260905",
+    "batchManifestDigest": "sha256:a55dd1d6432ad1b85ce4db26769e184ec7212eecbbd55ace5a59c96252f5655d",
+    "configDigest": "sha256:94e3e4e320a7eb37a26612a3c6783a1146deabe99296849ce4b21629e0bd85d1",
+    "bundleFingerprint": "sha256:e063b56b7d126b1e2cca338bb96dcd5ad04ff0b8252541b743fc288b4fb88ace",
+    "bookDigest": "sha256:036852ba13891e715382a1d0471e078e4dda0de359ab9fb911f8d9de6a758ba1",
+    "reviewInputFingerprint": "sha256:246f8a8efb7b657aa0c7727c6167c279d9c074effb05432b4f29b2382a22512d",
+    "dualSummaryDigest": "sha256:cae358197f1269ceffd6c089d6342611b6f2fb968455d401a4e7f4e65bfff751",
+    "canonicalLandscapeDigest": "sha256:0572ca05da53853cd7ed016d2d2a039ea94e14286b5d4bc2bb29874e3ea8f725"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-033zb-relativity-current-context-recheck-9-v1-20260905-a",
+      "campaignDigest": "sha256:ee7db1abc09efc85e0ce7a3247674b79f8f8df3a63f34411b10fac93ceef2983",
+      "roundId": "physik-rollout-v1-batch-033zb-relativity-current-context-recheck-9-v1-20260905-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-033zb-relativity-current-context-recheck-9-v1-20260905-independent-a",
+      "reviewInputFingerprint": "sha256:246f8a8efb7b657aa0c7727c6167c279d9c074effb05432b4f29b2382a22512d",
+      "batchId": "physik-rollout-v1-batch-033zb-relativity-current-context-recheck-9-v1-20260905-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7c0133dd4eba4e40cd588553ab66d170cbb85050a9494efbcb9648d26e42de25",
+      "runId": "physics-b033zb-blind-a-20260905",
+      "runManifestDigest": "sha256:f9fd9e4e7f07833c2e9b72af568ec4e3dafeb6571dc1ff1ae90565c1131f684b",
+      "resultsDigest": "sha256:b0e223bdaafee407e63956be6a8e749231b1bf1eea7a370ae37de4ba95f4c3b7"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-033zb-relativity-current-context-recheck-9-v1-20260905-b",
+      "campaignDigest": "sha256:bc272eef39d1f50403dbc5c19ac841355a3bcc2dc4da4348adaf5e6d394011b8",
+      "roundId": "physik-rollout-v1-batch-033zb-relativity-current-context-recheck-9-v1-20260905-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-033zb-relativity-current-context-recheck-9-v1-20260905-independent-b",
+      "reviewInputFingerprint": "sha256:246f8a8efb7b657aa0c7727c6167c279d9c074effb05432b4f29b2382a22512d",
+      "batchId": "physik-rollout-v1-batch-033zb-relativity-current-context-recheck-9-v1-20260905-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:7731fce3b43b6f92f984ba5e5fdaf867dcef51529a52553087dfeea0cd772a0c",
+      "runId": "physics-b033zb-blind-b-20260905",
+      "runManifestDigest": "sha256:1022674e10c135fe9904817e80884cc286571bfc86018b6548c421cd4c120443",
+      "resultsDigest": "sha256:21b5424fb662b136affa062dce94fbef963a29e15108bbbe269619966a17426e"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b033zb-current-carryover-7-synthesis-20260905-v1-decision-001",
+      "goalId": "a684bec1-ba59-59d0-98d2-4ca37236f64c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3a8fa9754acbf5657b47f85f8e78a7b8c627116bebd6b63a9eb830479179f784",
+      "pageFingerprint": "sha256:0c319926e00d9d264022255df60af483d15d9455fc53e05969d4c7c3572b6071",
+      "goalReviewContextFingerprint": "sha256:66ff6cace4d7514e079e1fe5ab27e5721ae46ce020b91cb99450215d70cb6b52",
+      "finalText": {
+        "titleDe": "Relativitätspostulate formulieren und erläutern",
+        "titleEn": "Formulate and Explain the Postulates of Relativity",
+        "descriptionDe": "Die lernende Person kann das Relativitätsprinzip und die Invarianz der Lichtgeschwindigkeit als Postulate der speziellen Relativitätstheorie formulieren und ihre Bedeutung für physikalische Beschreibungen in Inertialsystemen erläutern.",
+        "descriptionEn": "The learner can formulate the principle of relativity and the invariance of the speed of light as postulates of special relativity and explain their significance for physical descriptions in inertial frames."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b033zb-blind-a-20260905-001",
+          "recordDigest": "sha256:c6a4e8c54a87e8fc1d6c56e4322992fc91e6393e5100a40c2f56eaf1eb3305c4"
+        },
+        "second": {
+          "recordId": "physics-b033zb-blind-b-20260905.001",
+          "recordDigest": "sha256:d9e7b03d1f0a89b3f43ee9a9accd9639e3ec1f49f37bb55b9b448839884350d3"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen das Formulieren und Erläutern der beiden Postulate als eine begriffliche Kompetenz. Runde B verbindet gleiche Gesetzesform und invariante Vakuumlichtgeschwindigkeit mit einem Wechsel von Quelle und Ausbreitungsrichtung; gleiche Koordinaten oder Messwerte werden daraus nicht gefolgert. Der gleichwertige DE/EN-Zieltext bleibt erhalten, die gesonderten Zeit-, Längen- und Transformationsziele behalten ihren Umfang.",
+      "rationaleEn": "Both rounds confirm formulating and explaining the two postulates as one conceptual competence. Round B connects the same form of physical laws and invariant vacuum light speed with a change of source and propagation direction; identical coordinates or measured values are not inferred. The equivalent German and English descriptions are retained, and the separate time, length and transformation goals retain their scope."
+    },
+    {
+      "decisionId": "physik-b033zb-current-carryover-7-synthesis-20260905-v1-decision-002",
+      "goalId": "19aef2ed-eb46-55b1-9486-ee83f7520bb6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:87cdce8484cb29c9c2c214592718686428a03a02061b4f6c45d6836306435b7b",
+      "pageFingerprint": "sha256:844e532ceb44cdbb3fd9b536d29ed4699f6161dcb624afef86d7f1e638539a4d",
+      "goalReviewContextFingerprint": "sha256:65931abee1b8f73e079fa2ee3f623db4f7ec4c91d0fdc1767b8a76eabf98fea4",
+      "finalText": {
+        "titleDe": "Zeitdilatation erläutern",
+        "titleEn": "Explain Time Dilation",
+        "descriptionDe": "Die lernende Person kann Zeitdilatation mithilfe einfacher Beispiele und Gedankenexperimente erläutern und zugehörige experimentelle Nachweise qualitativ diskutieren.",
+        "descriptionEn": "The learner can explain time dilation using simple examples and thought experiments and qualitatively discuss corresponding experimental evidence."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b033zb-blind-a-20260905-002",
+          "recordDigest": "sha256:442c65feabb5fc0b2381932901c2dc3f9bca73fdcbb3fdcb768b1c02513d6dee"
+        },
+        "second": {
+          "recordId": "physics-b033zb-blind-b-20260905.002",
+          "recordDigest": "sha256:81a49fb2331b822b09e51690d6d7910b584c1b51d521c1d3df4fb9bf5a086c32"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die qualitative Erklärung der Zeitdilatation samt experimenteller Stützung als zusammenhängendes Ziel. Runde B ordnet Eigenzeit und Laborzeit denselben Ereignissen zu, unterscheidet Zeitvergleich von Signallaufzeit und überträgt die Lichtuhrerklärung auf die Überlebenshäufigkeit kurzlebiger Teilchen. Diese fachlich präzise Evidenz konkretisiert den unveränderten bilingualen Text; Gravitationskorrekturen bleiben beim GPS-Nachfolgeziel.",
+      "rationaleEn": "Both rounds confirm qualitative explanation of time dilation and its experimental support as one coherent goal. Round B assigns proper time and laboratory time to the same events, distinguishes time comparison from signal travel time and transfers the light-clock explanation to the survival frequency of short-lived particles. This scientifically precise evidence specifies the unchanged bilingual description; gravitational corrections remain with the GPS successor goal."
+    },
+    {
+      "decisionId": "physik-b033zb-current-carryover-7-synthesis-20260905-v1-decision-003",
+      "goalId": "0c305cf9-3923-51cf-a9ae-5849edc99c9f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8481f06d51a5ffce86b90dfc0c4fa802d485c6eac7bc215efcadc9fbda66266e",
+      "pageFingerprint": "sha256:c05b34c3890dda8f67d186583992c49afca30e69c2247449226068218d008453",
+      "goalReviewContextFingerprint": "sha256:ffcbb88d479345e3d01560946d1fe4ee6676f7ac8a47a00b2a3b5761c9eb45ba",
+      "finalText": {
+        "titleDe": "Längenkontraktion erläutern",
+        "titleEn": "Explain Length Contraction",
+        "descriptionDe": "Die lernende Person kann Längenkontraktion mithilfe einfacher Beispiele und Gedankenexperimente erläutern und zugehörige experimentelle Nachweise qualitativ diskutieren.",
+        "descriptionEn": "The learner can explain length contraction using simple examples and thought experiments and qualitatively discuss corresponding experimental evidence."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b033zb-blind-a-20260905-003",
+          "recordDigest": "sha256:5c92da0f00cbd0c38092bc0b2de467b8e1049926fbe4a583e02deee7d3f7187a"
+        },
+        "second": {
+          "recordId": "physics-b033zb-blind-b-20260905.003",
+          "recordDigest": "sha256:fad41d529d2040e92f56c73646eced4fe2cd25cefc4035375f87542c1886e24b"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die qualitative Längenkontraktionskompetenz und unterscheiden gleichzeitige Endpunktmessung, Fotografie und materielle Stauchung. Runde A macht die experimentelle Deutung besonders konkret: Myonenankünfte sind der Befund, die kürzere atmosphärische Strecke im Teilchenruhesystem ist die modellgestützte Erklärung. Der Wechsel zur Querausrichtung prüft die Richtungsbedingung; die gleichwertigen DE/EN-Beschreibungen bleiben unverändert.",
+      "rationaleEn": "Both rounds confirm the qualitative length-contraction competence and distinguish simultaneous endpoint measurement, photography and material compression. Round A makes the experimental interpretation particularly concrete: muon arrivals are the finding, while the shorter atmospheric distance in the particle's rest frame is the model-based explanation. Changing to a transverse orientation tests the directional condition; the equivalent German and English descriptions remain unchanged."
+    },
+    {
+      "decisionId": "physik-b033zb-current-carryover-7-synthesis-20260905-v1-decision-004",
+      "goalId": "6ebb6182-f221-5f4c-b112-4ac72b104321",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c0d44819ebf638d76cde29a0d91a9d6c5e6931b283196fde07d52ba333485d8e",
+      "pageFingerprint": "sha256:743b3ee11b21ebdf79ae8064b2d84936aa18650d3c97a9c9d86c8369ed92a03d",
+      "goalReviewContextFingerprint": "sha256:4f91ecbcf8d1794c8b6d24a08504874b1538a2c4ec9d3f53c7fcbd5c82a8a907",
+      "finalText": {
+        "titleDe": "Minkowski-Diagramme nutzen",
+        "titleEn": "Use Minkowski Diagrams",
+        "descriptionDe": "Die lernende Person kann Minkowski-Diagramme zur Veranschaulichung relativistischer Effekte einsetzen und einfache Aussagen über Gleichzeitigkeit und Weltlinien treffen.",
+        "descriptionEn": "The learner can use Minkowski diagrams to visualize relativistic effects and make simple statements about simultaneity and world lines."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b033zb-blind-a-20260905-005",
+          "recordDigest": "sha256:e0ef182c340a0a19a2e82a05dcba9c686424c75d8ae2e94e9b938b5125d54d90"
+        },
+        "second": {
+          "recordId": "physics-b033zb-blind-b-20260905.005",
+          "recordDigest": "sha256:f81fcadbb4e839822d5aeaf32b6bdb9992852ce254f5edfba64396970ac7da56"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Weltlinien und Gleichzeitigkeit als zusammengehörige Deutungsgegenstände einer Diagrammkompetenz. Runde B macht x-ct-Skalierung, Lichtweltlinien und den Unterschied zwischen Weltlinie und räumlicher Bahn ausdrücklich und prüft eine begründete Gleichzeitigkeitsaussage beim Richtungswechsel des zweiten Systems. Dies präzisiert die im bilingualen Zieltext beanspruchte einfache Nutzung; algebraische Lorentztransformationen bleiben beim eigenen Ziel.",
+      "rationaleEn": "Both rounds confirm worldlines and simultaneity as related objects of interpretation within one diagram competence. Round B makes x-ct scaling, light worldlines and the distinction between a worldline and a spatial path explicit, and tests a justified simultaneity statement when the second frame reverses direction. This specifies the simple use claimed in the bilingual description; algebraic Lorentz transformations remain with their own goal."
+    },
+    {
+      "decisionId": "physik-b033zb-current-carryover-7-synthesis-20260905-v1-decision-005",
+      "goalId": "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a5f950d3f0bf5b66120e4146ea69a1946711376a55c332148dad7907b7e64c84",
+      "pageFingerprint": "sha256:d368d18faca15420895ae485f71f29f9b550a52a047a05f8a76d3e11d42edb38",
+      "goalReviewContextFingerprint": "sha256:2945728696a026f3447b8ec2112c36d00a0ed706ab02f393d958cc681b219556",
+      "finalText": {
+        "titleDe": "Lorentztransformationen anwenden",
+        "titleEn": "Apply Lorentz Transformations",
+        "descriptionDe": "Die lernende Person kann Raum- und Zeitkoordinaten von Ereignissen zwischen gleichförmig relativ bewegten Inertialsystemen mit Lorentztransformationen umrechnen und die Ergebnisse physikalisch interpretieren.",
+        "descriptionEn": "The learner can use Lorentz transformations to convert the space and time coordinates of events between inertial frames in uniform relative motion and physically interpret the results."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b033zb-blind-a-20260905-006",
+          "recordDigest": "sha256:f205cd7a52399c31aadc68222ddb05c2a6235225d5dbcba12d5d6ce6a066207a"
+        },
+        "second": {
+          "recordId": "physics-b033zb-blind-b-20260905.006",
+          "recordDigest": "sha256:b57c128be35a58a45ce1f2da25a6b8a91eb72de04202584f09c79711073ed246"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Umrechnung und physikalische Interpretation als eine Ereigniskoordinatenkompetenz. Runde A bindet Achsen, gemeinsames Nullereignis, Geschwindigkeitsvorzeichen und Einheiten an dieselben Ereignisse und prüft den Transfer durch umgekehrte Umrechnungsrichtung mit Rückprüfung. Der präzise DE/EN-Zieltext bleibt erhalten; der LK-Tag wird dabei nicht als Nachweis einer vollständigen externen Quellen- oder Projektionsprüfung gewertet.",
+      "rationaleEn": "Both rounds confirm conversion and physical interpretation as one event-coordinate competence. Round A binds axes, the shared origin event, velocity signs and units to the same events and tests transfer by reversing the conversion direction with a transformation-back check. The precise German and English descriptions are retained; the LK tag is not treated as evidence of a complete external source or projection audit."
+    },
+    {
+      "decisionId": "physik-b033zb-current-carryover-7-synthesis-20260905-v1-decision-006",
+      "goalId": "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:79b8e7ed5d70a915cab522e5c4f5a4237b70b34f47784e238efc77f1abdd8758",
+      "pageFingerprint": "sha256:94816fc3ec49d1363c1e91188c938027d932015c64ac79aa679e4ee3354a5798",
+      "goalReviewContextFingerprint": "sha256:8a1a1e7d84598a4f144e6edf14a4762aa0810d737d9ba7eac4ef999120eae061",
+      "finalText": {
+        "titleDe": "Relativistische Geschwindigkeitsaddition anwenden",
+        "titleEn": "Apply Relativistic Velocity Addition",
+        "descriptionDe": "Die lernende Person kann Geschwindigkeiten bei kollinearer Bewegung zwischen gleichförmig relativ bewegten Inertialsystemen mit der relativistischen Geschwindigkeitsaddition umrechnen und die Grenzfälle einordnen.",
+        "descriptionEn": "The learner can use relativistic velocity addition to convert velocities for collinear motion between inertial frames in uniform relative motion and interpret the limiting cases."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b033zb-blind-a-20260905-007",
+          "recordDigest": "sha256:8564aad150ed23764a59083523a2b5d596905286c7cdadf8c3b29ae15e5daf3f"
+        },
+        "second": {
+          "recordId": "physics-b033zb-blind-b-20260905.007",
+          "recordDigest": "sha256:ccc615fa3377262b4b13bc764a8ade26d2c927c77b2f82712f4f9f1f7c57e50a"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die klar auf kollineare Inertialsystemwechsel begrenzte Geschwindigkeitsumrechnung samt Grenzfalldeutung. Runde B verlangt eine begründete Richtungsprognose vor der Rechnung und verbindet Vorzeichenwahl, klassische Näherung und erhaltene Lichtgeschwindigkeitsgrenze beim Wechsel vom Überholen zur Gegenbewegung. Diese Evidenz macht die bereits beanspruchte Interpretation sichtbar; die vorhandenen gleichwertigen DE/EN-Texte bleiben erhalten.",
+      "rationaleEn": "Both rounds confirm velocity conversion and interpretation of limiting cases, explicitly restricted to collinear changes between inertial frames. Round B requires a justified direction prediction before calculation and connects sign choices, the classical approximation and preservation of the speed-of-light limit when overtaking changes to opposing motion. This evidence makes the already claimed interpretation observable; the existing equivalent German and English descriptions are retained."
+    },
+    {
+      "decisionId": "physik-b033zb-current-carryover-7-synthesis-20260905-v1-decision-007",
+      "goalId": "79da5c34-86b2-5c10-9726-9de886ccef7d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bc6c107f55173b70d1dbe29432b063debe6238eae56ff92ee7ff1eb4c7f1f7db",
+      "pageFingerprint": "sha256:e42cdcc5d7a49235e92b8c475beadaedbfc977ef3d1e6d8fd776fb670969c509",
+      "goalReviewContextFingerprint": "sha256:7cb002a712e0ae5e6b435fbdbac8b6e6b239a1f0f1220c753990869f72a58886",
+      "finalText": {
+        "titleDe": "Geschwindigkeitsabhängige „relativistische Masse“ herleiten und einordnen",
+        "titleEn": "Derive and Contextualize Velocity-Dependent “Relativistic Mass”",
+        "descriptionDe": "Die lernende Person kann für ein massives Teilchen mit fester Ruhemasse $m_0$ die historische geschwindigkeitsabhängige Konvention $m_{\\mathrm{rel}}=\\gamma m_0=E/c^2$ herleiten, sie von der invarianten Ruhemasse unterscheiden und erklären, dass in moderner Darstellung Energie und Impulsbetrag – nicht die invariante Masse – mit der Geschwindigkeit relativ zu einem Inertialsystem zunehmen.",
+        "descriptionEn": "For a massive particle of fixed rest mass $m_0$, the learner can derive the historical velocity-dependent convention $m_{\\mathrm{rel}}=\\gamma m_0=E/c^2$, distinguish it from invariant rest mass, and explain that in the modern formulation energy and momentum magnitude—not invariant mass—increase with the particle's speed relative to an inertial frame."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b033zb-blind-a-20260905-008",
+          "recordDigest": "sha256:cb0acaad9fe374bb8711df826a7a10fbe5e4fa23e0c1a61bd5ef85efc993b47c"
+        },
+        "second": {
+          "recordId": "physics-b033zb-blind-b-20260905.008",
+          "recordDigest": "sha256:36fdbac1fec60a9197455517762d18622dfb9ca05b36d7689b43d191a50e8a2c"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Herleitung und moderne Einordnung derselben ausdrücklich historischen Massekonvention für ein massives Teilchen mit fester Ruhemasse. Runde B identifiziert E als Gesamtenergie und prüft beim Bezugssystemwechsel sowie bei reiner Richtungsumkehr die Unterscheidung von Impulsvektor, Impulsbetrag, Energie und invariantem m₀. Der bestehende DE/EN-Text enthält diese fachlich notwendige Begrenzung bereits; Herleitung und Einordnung rechtfertigen keinen Split.",
+      "rationaleEn": "Both rounds confirm derivation and modern contextualization of the same explicitly historical mass convention for a massive particle with fixed rest mass. Round B identifies E as total energy and uses a change of frame and a pure direction reversal to test the distinction between momentum vector, momentum magnitude, energy and invariant m₀. The existing German and English descriptions already contain this scientifically necessary restriction; derivation and contextualization do not warrant a split."
+    }
+  ],
+  "manifestFingerprint": "sha256:66bd2db4fb61dc231098d6133d01a154ddb8395630feb36689b599ae23b5e040"
+}

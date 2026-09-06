@@ -8,7 +8,7 @@
 > Source of truth: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 
-Generated: 2026-09-05T02:50:57.637Z
+Generated: 2026-09-06T16:08:19.838Z
 
 Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-Mathematikreport zu bearbeitbaren Issues. Sie ist kein Runtime-Gate; sie priorisiert die naechsten Source-Extraction- und Mapping-Arbeiten.
 
@@ -16,10 +16,10 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 | Metric | Value |
 | --- | --- |
-| Classic-source gap issues | 55 |
-| Mit belegten Geschwisterzielen | 24 |
+| Classic-source gap issues | 56 |
+| Mit belegten Geschwisterzielen | 25 |
 | Ohne belegten Elternkontext | 31 |
-| Phasen mit Gaps | 4 |
+| Phasen mit Gaps | 5 |
 | Bereiche mit Gaps | 3 |
 
 ## Bearbeitungslanes
@@ -35,13 +35,14 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | E | 8 | 0 | 8 |
 | Q2 | 4 | 4 | 0 |
 | Q3 | 3 | 3 | 0 |
+| J9 | 1 | 1 | 0 |
 
 ## By Area
 
 | Bucket | Issues | Sibling-supported | Isolated |
 | --- | --- | --- | --- |
 | unknown | 48 | 23 | 25 |
-| Analysis | 6 | 0 | 6 |
+| Analysis | 7 | 1 | 6 |
 | Stochastics | 1 | 1 | 0 |
 
 ## Issue Queue
@@ -100,6 +101,7 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | GSR-GAP-71FE4A39 | Quellenbeleg suchen | Q4 | Analysis | Analysis-Modelle in Sachzusammenhängen validieren (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_model_validation) | 0 | - | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Analysis-Modelle in Sachzusammenhängen validieren (LK) |
 | GSR-GAP-DC12F281 | Quellenbeleg suchen | Q4 | Analysis | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context) | 0 | - | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) |
 | GSR-GAP-0B162CB0 | Quellenbeleg suchen | Q4 | Analysis | Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_integral_context) | 0 | - | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) |
+| GSR-GAP-6C26A00A | Geschwister-Mapping pruefen | J9 | Analysis | Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten (canonical_math_sek1_j9_read_quadratic_axes_and_signs) | 1 | Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen (DE-BW \| Bildungsplan BW Mathematik Gymnasium 2016, 3.2.4, Kompetenz 2, S. 28. \| bw-math-seki-bp2016-3-2-4-02-7a39c971) | Mathematik > Jahrgangsstufe 9 > Quadratische Funktionen beschreiben und anwenden > Quadratische Funktionen und Gleichungen grundlegend untersuchen > Quadratische Funktionen in Darstellungen deuten > Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten > Eigenschaften quadratischer Funktionen aus Graphen ablesen > Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten |
 | GSR-GAP-18293A33 | Geschwister-Mapping pruefen | Q3 | Stochastics | Statistische Erhebungen exemplarisch planen und dokumentieren | 1 | Daten tabellarisch und grafisch aufbereiten (DE-BB \| RLP BE/BB Mathematik 1-10, Kap. 2.2, [L5] Daten und Zufall - Niveaustufen E-H, Niveaustufe E, S. 34. \| bb-math-seki-rlp-1-10-2-2-l5-daten-zufall-e-02-7d847ca1) | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Statistik und weitere Wahrscheinlichkeitsverteilungen > Q3.5 Statistik: Datenanalyse und Modellvergleich > Zufallsexperimente statistisch auswerten > Statistische Erhebungen planen, auswerten und kritisch beurteilen > Statistische Erhebungen planen und Daten aufbereiten > Statistische Erhebungen exemplarisch planen und dokumentieren |
 | GSR-GAP-CE2EB0A8 | Geschwister-Mapping pruefen | Q3 | unknown | Empirische und theoretische Wahrscheinlichkeit unterscheiden (canonical_math_q3_distinguish_empirical_and_theoretical_probability) | 2 | Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen (DE-BY \| LehrplanPLUS Bayern Gymnasium Mathematik, M8.5 \| 40b2829a-35fd-5e6e-96ba-20ec6928940d) | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Grundlegende Begriffe und Methoden der Stochastik > Statistischen Wahrscheinlichkeitsbegriff anwenden > Empirische und theoretische Wahrscheinlichkeit unterscheiden |
 | GSR-GAP-5B54F272 | Geschwister-Mapping pruefen | Q3 | unknown | Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK) | 10 | Wahrscheinlichkeiten in Bernoulli-Ketten berechnen (DE-SH \| Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71 \| de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T047-10aa2ff6c6) | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Wahrscheinlichkeitsverteilungen (Überblick) > Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK) |
@@ -108,5 +110,5 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - All-relevant report: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
-- All-relevant generated: 2026-09-05T02:50:54.282Z
+- All-relevant generated: 2026-09-06T16:02:01.242Z
 
