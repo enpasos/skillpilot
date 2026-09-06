@@ -525,7 +525,9 @@ const hesseLkProjectionRegressionIds = {
 const hesseLkDirectPrerequisiteClosure = [
   ['09f47964-2cd0-410e-93ee-9632b582fc91', '2bb4bb91-7929-483a-b735-44275f6b5cdc'],
   ['2d75fd3f-c68b-4a11-89ae-19a30fefc47a', 'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186'],
-  ['29ce4053-b5c5-4a82-9ff0-3acc492284d8', 'e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e'],
+  // B032v replaced the former graph-properties atom with both reviewed child competencies.
+  ['29ce4053-b5c5-4a82-9ff0-3acc492284d8', '6c26a00a-ad1e-59cc-93e2-a38e1683665c'],
+  ['29ce4053-b5c5-4a82-9ff0-3acc492284d8', 'a1c79897-6ded-57f8-bee1-2d365a5083c9'],
   ['29ce4053-b5c5-4a82-9ff0-3acc492284d8', '7bff61c1-1a69-4991-97de-0cff764f507e'],
   ['29ce4053-b5c5-4a82-9ff0-3acc492284d8', '39fa30f2-e1ae-5c36-be56-793b77906abb'],
   ['075f1ef2-6860-4b20-9df2-878157eb395e', 'f242a3e8-55a3-492e-8354-b81b24cdbb78'],
@@ -687,6 +689,29 @@ hesseLkDirectPrerequisiteClosure.forEach(([targetGoalId, prerequisiteGoalId]) =>
     `The direct prerequisite ${prerequisiteGoalId} of Hessen LK target ${targetGoalId} must remain in the projected structural lookup.`,
   )
 })
+assert.deepEqual(
+  canonicalGoalById.get('e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e')?.contains,
+  ['6c26a00a-ad1e-59cc-93e2-a38e1683665c', 'a1c79897-6ded-57f8-bee1-2d365a5083c9'],
+  'B032v must retain the old graph-properties ID as the cluster of its two atomic competencies.',
+)
+const quadraticGraphPrerequisiteIds = [
+  'c65ecabf-d00b-4e2d-99ae-b64692325ffb',
+  'a8c42ee9-2898-4247-819f-c235032ac78a',
+  '6c26a00a-ad1e-59cc-93e2-a38e1683665c',
+  'a1c79897-6ded-57f8-bee1-2d365a5083c9',
+  '7bff61c1-1a69-4991-97de-0cff764f507e',
+  '39fa30f2-e1ae-5c36-be56-793b77906abb',
+].sort()
+for (const [scope, goalById] of [
+  ['canonical', canonicalGoalById],
+  ['learner-facing Hessen LK', learnerFacingGoalById],
+] as const) {
+  assert.deepEqual(
+    [...(goalById.get('29ce4053-b5c5-4a82-9ff0-3acc492284d8')?.requires ?? [])].sort(),
+    quadraticGraphPrerequisiteIds,
+    `The ${scope} quadratic-graph target must require both B032v atoms and its four unchanged prerequisites, not their aggregate cluster.`,
+  )
+}
 canonicalMathEntry.goals
   .filter((goal) => goal.contains.length === 0)
   .filter((goal) => compositionViewExposesGoal(

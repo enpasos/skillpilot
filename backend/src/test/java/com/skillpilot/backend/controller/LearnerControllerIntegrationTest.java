@@ -1321,23 +1321,24 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
+        // The reviewed September 2026 quadratic-properties split adds one atomic target per scope.
         String[][] scopes = {
-                { "DE-BB", "239", "239" },
-                { "DE-BE", "238", "238" },
-                { "DE-BW", "257", "257" },
-                { "DE-BY", "229", "229" },
-                { "DE-HB", "212", "212" },
-                { "DE-HE", "317", "358" },
-                { "DE-HH", "238", "238" },
-                { "DE-MV", "238", "238" },
-                { "DE-NI", "238", "238" },
-                { "DE-NW", "238", "238" },
-                { "DE-RP", "261", "287" },
-                { "DE-SH", "256", "262" },
-                { "DE-SL", "238", "238" },
-                { "DE-SN", "238", "238" },
-                { "DE-ST", "238", "238" },
-                { "DE-TH", "239", "239" }
+                { "DE-BB", "240", "240" },
+                { "DE-BE", "239", "239" },
+                { "DE-BW", "258", "258" },
+                { "DE-BY", "230", "230" },
+                { "DE-HB", "213", "213" },
+                { "DE-HE", "318", "359" },
+                { "DE-HH", "239", "239" },
+                { "DE-MV", "239", "239" },
+                { "DE-NI", "239", "239" },
+                { "DE-NW", "239", "239" },
+                { "DE-RP", "262", "288" },
+                { "DE-SH", "257", "263" },
+                { "DE-SL", "239", "239" },
+                { "DE-SN", "239", "239" },
+                { "DE-ST", "239", "239" },
+                { "DE-TH", "240", "240" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1372,13 +1373,14 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
+        // The same reviewed Sek-I split contributes one atomic target to each cross-stage scope.
         String[][] scopes = {
-                { "DE-HE", "GK", "731", "749" },
-                { "DE-HE", "LK", "857", "875" },
-                { "DE-RP", "GK", "675", "700" },
-                { "DE-RP", "LK", "786", "811" },
-                { "DE-SH", "GK", "650", "656" },
-                { "DE-SH", "LK", "746", "752" }
+                { "DE-HE", "GK", "732", "750" },
+                { "DE-HE", "LK", "858", "876" },
+                { "DE-RP", "GK", "676", "701" },
+                { "DE-RP", "LK", "787", "812" },
+                { "DE-SH", "GK", "651", "657" },
+                { "DE-SH", "LK", "747", "753" }
         };
         SoftAssertions softly = new SoftAssertions();
 
