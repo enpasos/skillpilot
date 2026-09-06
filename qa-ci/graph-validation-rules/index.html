@@ -1,0 +1,5508 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/qa-ci/graph-validation-rules/">
+      
+      
+        <link rel="prev" href="../status/curriculum-quality-status/">
+      
+      
+        <link rel="next" href="../relation-checks/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Graph Validation Rules - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#enforcement-profiles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Graph Validation Rules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enforcement-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enforcement profiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-currently-emitted-with-stable-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules currently emitted with stable IDs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-validator-checks-always-active-fail-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core validator checks (always active, fail CI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-on-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes on scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exam-markdown-table-integrity-gvr-016" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exam Markdown table integrity (GVR-016)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-projection-validator-validateview-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filter-projection validator (validate:view-filters)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composition-view-validator-validatecomposition-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composition-view validator (validate:composition-views)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-compatibility-model-vs-target-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current compatibility model vs. target model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoped-motivation-connectivity-gvr-011" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoped motivation connectivity (GVR-011)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoped-full-route-coverage-gvr-012" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoped full route coverage (GVR-012)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivationorientation-structure-gvr-014" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivation/orientation structure (GVR-014)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reviewed-orientation-outlook-integrity-gvr-015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reviewed orientation outlook integrity (GVR-015)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoped-atomic-direct-requires-gvr-013" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoped atomic direct requires (GVR-013)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation-anchor-rollout-rules-gvr-004-gvr-005" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivation-anchor rollout rules (GVR-004, GVR-005)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-atomic-route-quality-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard atomic route-quality validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#immediate-implications-from-the-updated-concept-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Immediate implications from the updated concept spec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Immediate implications from the updated concept spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#already-implemented-structural-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Already implemented structural alignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-suitable-as-graph-only-ci-rules-yet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not suitable as graph-only CI rules yet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planned-filter-graph-validation-layer-not-yet-implemented-in-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Planned filter-graph validation layer (not yet implemented in CI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-archive-boundary-validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary archive-boundary validator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-legacy-reference-validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary legacy-reference validator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auxiliary legacy-reference validator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#future-rule-prerequisites-before-rollout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future-rule prerequisites before rollout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-child-prerequisite-rule-gvr-006" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct-child prerequisite rule (GVR-006)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mit-ocw-source-linking-rule-gvr-007" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MIT OCW source-linking rule (GVR-007)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-goal-level-link-field-rule-gvr-008" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical goal-level link field rule (GVR-008)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-node-type-consistency-rule-gvr-009" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit node-type consistency rule (GVR-009)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enforcement-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enforcement profiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules-currently-emitted-with-stable-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules currently emitted with stable IDs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-validator-checks-always-active-fail-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core validator checks (always active, fail CI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-on-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes on scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exam-markdown-table-integrity-gvr-016" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exam Markdown table integrity (GVR-016)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-projection-validator-validateview-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filter-projection validator (validate:view-filters)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composition-view-validator-validatecomposition-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composition-view validator (validate:composition-views)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-compatibility-model-vs-target-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current compatibility model vs. target model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoped-motivation-connectivity-gvr-011" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoped motivation connectivity (GVR-011)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoped-full-route-coverage-gvr-012" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoped full route coverage (GVR-012)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivationorientation-structure-gvr-014" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivation/orientation structure (GVR-014)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reviewed-orientation-outlook-integrity-gvr-015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reviewed orientation outlook integrity (GVR-015)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoped-atomic-direct-requires-gvr-013" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoped atomic direct requires (GVR-013)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation-anchor-rollout-rules-gvr-004-gvr-005" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivation-anchor rollout rules (GVR-004, GVR-005)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-atomic-route-quality-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard atomic route-quality validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#immediate-implications-from-the-updated-concept-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Immediate implications from the updated concept spec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Immediate implications from the updated concept spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#already-implemented-structural-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Already implemented structural alignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-suitable-as-graph-only-ci-rules-yet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not suitable as graph-only CI rules yet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planned-filter-graph-validation-layer-not-yet-implemented-in-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Planned filter-graph validation layer (not yet implemented in CI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-archive-boundary-validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary archive-boundary validator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-legacy-reference-validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary legacy-reference validator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auxiliary legacy-reference validator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#future-rule-prerequisites-before-rollout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future-rule prerequisites before rollout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-child-prerequisite-rule-gvr-006" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct-child prerequisite rule (GVR-006)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mit-ocw-source-linking-rule-gvr-007" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MIT OCW source-linking rule (GVR-007)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-goal-level-link-field-rule-gvr-008" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical goal-level link field rule (GVR-008)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-node-type-consistency-rule-gvr-009" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit node-type consistency rule (GVR-009)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Graph Validation Rules</h1>
+
+<p>This is the single source of truth for algorithmic graph validation in CI.</p>
+<ul>
+<li>Validator implementation: <code>app/scripts/validateGraph.ts</code></li>
+<li>CI entrypoint: <code>npm run validate:graph</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>Filter-projection validator: <code>app/scripts/validateViewFilters.ts</code></li>
+<li>Filter-projection CI entrypoint: <code>npm run validate:view-filters</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>Hessen Mathematik G8/G9 duration-projection validator: <code>app/scripts/reportHeMathDurationProjection.ts --check</code></li>
+<li>Hessen Mathematik G8/G9 CI entrypoint: <code>npm run check:he-math-duration-projection</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>Composition-view validator: <code>app/scripts/validateCompositionViews.ts</code></li>
+<li>Composition-view CI entrypoint: <code>npm run validate:composition-views</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>Hessen Oberstufe archive-boundary validator: <code>scripts/validate_hessen_upper_secondary_archive_paths.py</code></li>
+<li>Archive-boundary CI entrypoint: <code>python scripts/validate_hessen_upper_secondary_archive_paths.py</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>Hessen Oberstufe legacy-reference validator: <code>scripts/validate_hessen_upper_secondary_legacy_refs.py</code></li>
+<li>Legacy-reference CI entrypoint: <code>python scripts/validate_hessen_upper_secondary_legacy_refs.py</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>The legacy-reference validator also enforces post-retirement absence of the old <code>curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe</code> tree; only allowlisted provenance/handoff files may still mention that path textually.</li>
+<li>Hessen Sek-I archive-boundary validator: <code>scripts/validate_hessen_lower_secondary_archive_paths.py</code></li>
+<li>Archive-boundary CI entrypoint: <code>python scripts/validate_hessen_lower_secondary_archive_paths.py</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>Hessen Sek-I legacy-reference validator: <code>scripts/validate_hessen_lower_secondary_legacy_refs.py</code></li>
+<li>Legacy-reference CI entrypoint: <code>python scripts/validate_hessen_lower_secondary_legacy_refs.py</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>Bavaria Gymnasium archive-boundary validator: <code>scripts/validate_bavaria_gymnasium_archive_paths.py</code></li>
+<li>Archive-boundary CI entrypoint: <code>python scripts/validate_bavaria_gymnasium_archive_paths.py</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>Bavaria Gymnasium legacy-reference validator: <code>scripts/validate_bavaria_gymnasium_legacy_refs.py</code></li>
+<li>Legacy-reference CI entrypoint: <code>python scripts/validate_bavaria_gymnasium_legacy_refs.py</code> in <code>.github/workflows/ci.yml</code> (<code>graph-validation</code> job)</li>
+<li>The lower-secondary legacy-reference validator fences repo references to <code>curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe</code> to the explicit delete-handoff allowlist until the final repo-side remove is executed.</li>
+</ul>
+<h2 id="enforcement-profiles">Enforcement profiles</h2>
+<ul>
+<li><code>default</code>:</li>
+<li>structural/data integrity rules are <code>error</code> (fail build)</li>
+<li><code>GVR-*</code> rules are also <code>error</code> (strict by default)</li>
+<li><code>legacy-warn</code> (temporary migration mode):</li>
+<li>enable with <code>VALIDATE_GRAPH_STRICT_RULES=0</code></li>
+<li>migration rules are downgraded to <code>warn</code></li>
+<li><code>GVR-012</code> remains an unconditional <code>error</code>; the reviewed Sek-I/Sek-II route gate cannot be bypassed</li>
+</ul>
+<h2 id="rules-currently-emitted-with-stable-ids">Rules currently emitted with stable IDs</h2>
+<table>
+<thead>
+<tr>
+<th>Rule ID</th>
+<th>Description</th>
+<th>Scope</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GVR-001</code></td>
+<td>A goal must not directly require one of its <code>contains</code> ancestors.</td>
+<td>Local landscape</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-002</code></td>
+<td>Legacy phase-compatibility lint: for repositories that still use comparable <code>phase</code> labels, effective prerequisites should not point to later phases (<code>E</code>, <code>Q1..Q4</code>, <code>Abitur</code>, <code>S*</code>, <code>J*</code>). This is a validator-profile rule, not part of the canonical graph validity definition.</td>
+<td>Local landscape</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-003</code></td>
+<td>A goal must not directly require its direct <code>contains</code> parent (most frequent deadlock source).</td>
+<td>Local landscape</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-004</code></td>
+<td>First atomic node must be a motivation anchor (<code>Warum</code>/<code>Why</code>).</td>
+<td>Rollout subset (<code>DE_HES_S_GYM_2_*</code>, excluding <code>OVERVIEW</code>)</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-005</code></td>
+<td>Every atomic node must have a transitive path to the motivation anchor via effective <code>requires</code>.</td>
+<td>Rollout subset (<code>DE_HES_S_GYM_2_*</code>, excluding <code>OVERVIEW</code>)</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-006</code></td>
+<td>A goal must not directly require one of its direct <code>contains</code> children (inverse anti-pattern of <code>GVR-003</code>).</td>
+<td>Rollout subset (<code>DE_HES_S_GYM_2_*</code>, including <code>OVERVIEW</code>)</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-007</code></td>
+<td>MIT OCW module atomic goals must include intensive source-link coverage (<code>concept</code> + <code>practice</code> + <code>assessment</code>) in canonical <code>resourceLinks</code>.</td>
+<td>MIT OCW module landscapes (<code>frameworkId</code> starts with <code>mit-ocw-</code> and root tagged <code>module:*</code>)</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-008</code></td>
+<td>Committed landscape goals must use canonical <code>resourceLinks</code> as the only supported goal-level helper-link field.</td>
+<td>Local landscape</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-009</code></td>
+<td>If explicit <code>type</code> metadata is present, it must match the canonical node classification derived from direct <code>contains</code> children (<code>atomic</code> iff leaf, <code>cluster</code> iff non-leaf).</td>
+<td>Local landscape</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-010</code></td>
+<td>If <code>shortKey</code> is present, it must be unique within the logical <code>landscapeId</code> (duplicates across locale serializations are allowed only when they refer to the same goal id).</td>
+<td>Logical landscape (<code>landscapeId</code>, including multi-file localizations)</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-011</code></td>
+<td>Configured scoped motivation-connectivity profile: every node selected by the profile must have a transitive path to at least one configured motivation anchor via effective <code>requires</code>.</td>
+<td>Profile-defined rollout scopes</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-012</code></td>
+<td>Hard scoped full-route coverage: every selected <code>curricularAtomic</code> goal must lie on a direct atomic <code>requires</code> path from its stage-specific <code>orientation</code> anchor to a stage-specific atomic <code>practiceAssessment</code> terminal.</td>
+<td>Canonical DE Gymnasium mathematics, independently for Sek I and Sek II</td>
+<td>unconditional <code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-013</code></td>
+<td>Configured scoped atomic-route profile: every direct local <code>requires</code> edge from a selected atomic route node must target an atomic node, not a cluster.</td>
+<td>Profile-defined rollout scopes</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-014</code></td>
+<td>Motivation/orientation nodes are pure, prerequisite-free atomic entry anchors and must not carry exam, memory, example, or assessment metadata.</td>
+<td>All loaded landscapes</td>
+<td>unconditional <code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-015</code></td>
+<td>Reviewed orientation outlooks have bounded bilingual paths with in-stage <code>curricularArea</code> roots plus atomic <code>curricularAtomic</code> entry goals and milestones. Every entry directly requires the <code>orientation</code> anchor; <code>contains</code> proves path membership, while a direct, stage-scoped atomic <code>requires</code> route proves downstream sequencing.</td>
+<td>Canonical DE Gymnasium mathematics, independently for Sek I and Sek II</td>
+<td>unconditional <code>error</code></td>
+</tr>
+<tr>
+<td><code>GVR-016</code></td>
+<td>Table-like blocks in learner-facing exam Markdown must use a valid GFM delimiter row and a consistent column count.</td>
+<td>All <code>examData.taskContent*</code> and <code>examData.solutionContent*</code> fields</td>
+<td>unconditional <code>error</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="core-validator-checks-always-active-fail-ci">Core validator checks (always active, fail CI)</h2>
+<p>These checks are already implemented and treated as <code>error</code>:</p>
+<ul>
+<li>JSON parsing and landscape loading</li>
+<li>Goal ID uniqueness inside a landscape</li>
+<li>Optional <code>shortKey</code> uniqueness within a logical <code>landscapeId</code></li>
+<li>Referential integrity for <code>requires</code> and <code>contains</code></li>
+<li>Self-reference guards (<code>goal cannot require itself</code>, <code>goal cannot contain itself</code>)</li>
+<li>Allowed metadata domains:</li>
+<li><code>phase</code></li>
+<li><code>leitideen</code></li>
+<li><code>kompetenzen</code> tag pattern</li>
+<li>DAG checks:</li>
+<li>acyclic direct <code>requires</code></li>
+<li>acyclic <code>contains</code></li>
+<li>acyclic effective requires (<code>requires</code> + inherited from <code>contains</code> ancestors)</li>
+<li>inherited self-prerequisite detection</li>
+<li>Curriculum manifest consistency (<code>curricula/curriculum_manifest.json</code>)</li>
+<li>schema/basic shape</li>
+<li>id/title presence</li>
+<li>duplicates</li>
+<li>unknown IDs</li>
+<li>root curriculum set sync</li>
+<li>title alignment with landscape files</li>
+<li>Project-specific invariants (currently Physics cross-curriculum dependency guard)</li>
+</ul>
+<h2 id="notes-on-scope">Notes on scope</h2>
+<ul>
+<li>Validation is intentionally structural/algorithmic.</li>
+<li>Didactic quality checks (sequencing quality, granularity, redundancy of meanings, etc.) remain part of manual QA (<code>curricula/QA/*</code>).</li>
+<li>Learner-state semantics from the concept spec such as atomic mastery, frontier computation, and optimistic/pessimistic filter evaluation are currently <strong>not</strong> validated in CI.</li>
+<li>Projected filtered learner graphs derived from compiled <code>applicability</code> are now validated by the separate <code>validate:view-filters</code> path.</li>
+<li>Hessen Mathematik Sek-I G8/G9 duration-model projection is validated by <code>check:he-math-duration-projection</code>; it derives canonical-duration-grade evidence from the Hessen G8/G9 source extraction plus M3 mapping review, then requires every evidence link to be represented by authored year structure or duration-specific <code>goalPlacements</code>.</li>
+<li>Explicit learner-facing composition views under <code>curricula/DE/Gymnasium/composition-views/</code> are validated by the separate <code>validate:composition-views</code> path.</li>
+<li>The current CI enforcement scope for <code>validate:view-filters</code> covers the reviewed canonical DE Gymnasium set (<code>Mathematik</code>, <code>Physik</code>, <code>Chemie</code>, <code>Biologie</code>, <code>Informatik</code>, <code>Deutsch</code>, <code>Englisch</code>, <code>Französisch</code>, <code>Griechisch</code>, <code>Chinesisch</code>, <code>Geschichte</code>, <code>Politik und Wirtschaft</code>, <code>Musik</code>, <code>Latein</code>, <code>Spanisch</code>, <code>Wirtschaft</code>, <code>Overview</code>).</li>
+<li>Reviewed applicability warnings can be recorded in <code>docs/qa-ci/applicability-accepted-warnings.json</code>; the validator still prints them, but classifies them as accepted review debt instead of active warnings.</li>
+<li>Additional structural rules should be added here first, then implemented in <code>validateGraph.ts</code>, then rolled out in CI.</li>
+</ul>
+<h2 id="exam-markdown-table-integrity-gvr-016">Exam Markdown table integrity (<code>GVR-016</code>)</h2>
+<p><code>GVR-016</code> protects the shared learner-facing exam content consumed by cockpit
+and coaching providers. Two or more consecutive lines that begin and end with
+pipe characters are treated as an intended GFM table. The second row must be a
+valid delimiter row, and every row must have the same number of columns.</p>
+<p>The rule deliberately scans only <code>taskContent</code>, <code>taskContentEn</code>,
+<code>solutionContent</code>, and <code>solutionContentEn</code> inside <code>examData</code>. A single pipe row
+and ordinary inline notation such as <code>|x|</code> are not classified as tables. This
+keeps archived extraction prose and non-runtime Markdown out of the gate while
+ensuring that released exam data render identically in every GFM-capable host.</p>
+<h2 id="filter-projection-validator-validateview-filters">Filter-projection validator (<code>validate:view-filters</code>)</h2>
+<p>This validator is separate from <code>validate:graph</code> and operates on projected filtered graphs rather than only on authored raw landscapes.</p>
+<p>Current CI scope:</p>
+<ul>
+<li>reviewed canonical DE Gymnasium set</li>
+<li><code>Mathematik</code></li>
+<li><code>Physik</code></li>
+<li><code>Chemie</code></li>
+<li><code>Biologie</code></li>
+<li><code>Informatik</code></li>
+<li><code>Deutsch</code></li>
+<li><code>Englisch</code></li>
+<li><code>Französisch</code></li>
+<li><code>Griechisch</code></li>
+<li><code>Chinesisch</code></li>
+<li><code>Geschichte</code></li>
+<li><code>Politik und Wirtschaft</code></li>
+<li><code>Musik</code></li>
+<li><code>Latein</code></li>
+<li><code>Spanisch</code></li>
+<li><code>Wirtschaft</code></li>
+<li><code>Overview</code></li>
+</ul>
+<p>Current stable finding families:</p>
+<table>
+<thead>
+<tr>
+<th>Rule ID</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>APV-102</code></td>
+<td>A visible goal requires a prerequisite that is invisible in the projected filtered graph.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>APV-103</code></td>
+<td>A visible goal is not reachable from the projected root.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>APV-201</code></td>
+<td>An explicit applicability-override path is used, either embedded or via the canonical override registry.</td>
+<td><code>warning</code></td>
+</tr>
+<tr>
+<td><code>APV-202</code></td>
+<td>Applicability is backed only by <code>partial</code> mappings.</td>
+<td><code>diagnostic</code></td>
+</tr>
+<tr>
+<td><code>APV-203</code></td>
+<td>Compiled applicability differs from currently committed applicability metadata.</td>
+<td><code>warning</code></td>
+</tr>
+</tbody>
+</table>
+<p>Accepted-warning handling:</p>
+<ul>
+<li><code>APV-201</code> may remain in reviewed pilots when no cleaner exact source alignment exists yet.</li>
+<li>Such warning cases must be explicitly listed in <code>docs/qa-ci/applicability-accepted-warnings.json</code> with a short rationale.</li>
+<li><code>APV-202</code> is high-cardinality mapping-shape diagnostics, not a warning: it says a projected visibility decision is backed only by partial mapping evidence. Since <code>1:n</code> / partial coverage can be fachlich complete, <code>validate:view-filters</code> reports <code>APV-202</code> as diagnostic findings and keeps warning debt separate.</li>
+<li>Retained compatibility clusters that are no longer learner-facing must be marked with <code>extendedData.applicabilityProjection = "excluded"</code>. Otherwise cluster child-union applicability can make them visible without a root path and trigger <code>APV-103</code>.</li>
+<li><code>validate:view-filters</code> prints compact summaries by default. Set <code>APPLICABILITY_VERBOSE_WARNINGS=1</code> to print every individual warning line for audit/debug work.</li>
+</ul>
+<h2 id="composition-view-validator-validatecomposition-views">Composition-view validator (<code>validate:composition-views</code>)</h2>
+<p>This validator is separate from both <code>validate:graph</code> and <code>validate:view-filters</code>.</p>
+<p>It operates on explicit learner-facing composition-view files and validates that they compile deterministically against the referenced canonical graph.</p>
+<p>Current scope:</p>
+<ul>
+<li>all <code>.view.json</code> files under <code>curricula/DE/Gymnasium/composition-views/</code></li>
+</ul>
+<p>Current stable finding families:</p>
+<table>
+<thead>
+<tr>
+<th>Rule ID</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPV-000</code></td>
+<td>The composition-view file could not be loaded or parsed.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-001</code></td>
+<td>Required composition-view metadata or node metadata is invalid or missing.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-002</code></td>
+<td>A referenced canonical subtree root does not exist in the referenced canonical graph.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-004</code></td>
+<td>Two referenced canonical subtree roots overlap or the same canonical root is referenced more than once.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-005</code></td>
+<td>The compiled default tree contains the same canonical goal more than once.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-006</code></td>
+<td>The compiled default tree gives one canonical goal more than one visible parent.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-007</code></td>
+<td>A structure node is left empty although it is still present in the view tree.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-008</code></td>
+<td>A composition reference uses an unknown <code>projectionRole</code>.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-009</code></td>
+<td>A direct <code>goalEntry</code> exposes a reviewed <code>semanticKind: curricularArea</code> cluster as an opaque runtime goal instead of expanding it with <code>canonicalSubtree</code> or representing its atomic goals explicitly.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-101</code></td>
+<td>A structure node label is still too generic to be review-safe.</td>
+<td><code>warning</code></td>
+</tr>
+<tr>
+<td><code>CPV-102</code></td>
+<td>A referenced canonical subtree root still looks phase- or state-specific by title.</td>
+<td><code>warning</code></td>
+</tr>
+<tr>
+<td><code>CPV-210</code></td>
+<td>A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the reviewed motivation anchor.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-211</code></td>
+<td>A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the required year exam folders or their individual task nodes.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-212</code></td>
+<td>The canonical Gymnasium mathematics Sek-I exam folder structure is malformed: missing year folder, non-atomic task, missing exam data, cluster prerequisite, duplicate task, or stale aggregate terminal endpoint.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-213</code></td>
+<td>A canonical Gymnasium mathematics Sek-I learner-facing view still exposes the legacy <code>Übungen Sekundarstufe I</code> aggregate branch.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-214</code></td>
+<td>A canonical Gymnasium mathematics Sek-II or cross-stage learner-facing view does not expose the reviewed Sek-II motivation anchor.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-215</code></td>
+<td>A canonical Gymnasium mathematics Sek-II or cross-stage learner-facing view exposes no atomic terminal autonomy/assessment endpoint from the reviewed Sek-II terminal clusters.</td>
+<td><code>error</code></td>
+</tr>
+<tr>
+<td><code>CPV-216</code></td>
+<td>A learner-facing composition label exposes an internal authoring process term such as <code>Source-Extraction</code> instead of naming the represented subject matter.</td>
+<td><code>error</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="current-compatibility-model-vs-target-model">Current compatibility model vs. target model</h2>
+<p>The current CI validator still operates on the compatibility model used by the existing runtime and landscapes:</p>
+<ul>
+<li>direct <code>requires</code> may be authored on atomic or cluster goals</li>
+<li>effective prerequisites are computed by inheriting <code>requires</code> from <code>contains</code> ancestors</li>
+<li>rollout rules such as <code>GVR-004</code> / <code>GVR-005</code> validate motivation connectivity in that effective graph</li>
+</ul>
+<p>The conceptual target model described in <code>docs/concept/skill-graph/graph-definition.md</code> is stricter:</p>
+<ul>
+<li>the canonical didactic sequencing layer should primarily be authored on atomic goals</li>
+<li>atomic/cluster semantics are defined canonically by the direct <code>contains</code> relation (leaf = atomic, non-leaf = cluster)</li>
+<li>cluster-level dependency views should preferably be derived from atomic descendants</li>
+<li>mature route-quality checks should eventually validate atomic didactic routes from motivation anchors to terminal autonomy goals</li>
+<li>progression semantics in the concept doc are defined via atomic mastery and derived cluster satisfaction, but this is not yet a CI validation target</li>
+</ul>
+<p>For reviewed canonical route scopes, this stricter target model is now enforced incrementally:</p>
+<ul>
+<li><code>GVR-013</code> forbids direct local <code>requires</code> from selected atomic route nodes to clusters.</li>
+<li>If a cluster was previously used as a prerequisite shortcut, the route must be repaired by replacing it with reviewed atomic prerequisites. The mechanical migration fallback is to expand the cluster to its atomic descendants, but a tighter didactic prerequisite set is preferred when it has been reviewed.</li>
+</ul>
+<p>Until the validator and landscapes are migrated, this file distinguishes clearly between:</p>
+<ul>
+<li>rules that are implemented today and have stable <code>GVR-*</code> IDs</li>
+<li>planned future direction that is not yet implemented in CI and therefore has no stable rule IDs here</li>
+</ul>
+<h2 id="scoped-motivation-connectivity-gvr-011">Scoped motivation connectivity (<code>GVR-011</code>)</h2>
+<p><code>GVR-011</code> is intentionally phrased as a reusable validator pattern, not as a one-off landscape exception.</p>
+<p>Rule semantics:</p>
+<ul>
+<li>a validator profile declares:</li>
+<li>one target landscape</li>
+<li>one or more reviewed motivation anchor goals</li>
+<li>one scoped goal selector</li>
+<li><code>GVR-011</code> fails if any selected node except the anchor nodes themselves has no transitive path to at least one configured anchor in the effective-requires graph.</li>
+</ul>
+<p>Current active profiles:</p>
+<ul>
+<li>landscape: canonical DE Gymnasium mathematics (<code>Mathematik (Gymnasium, DE)</code>)</li>
+<li>scopes and anchors are checked independently:</li>
+<li>Sek I <code>curricularAtomic</code> goals → <code>Warum Mathematik? – Entdecken, Muster &amp; Alltag</code></li>
+<li>Sek II <code>curricularAtomic</code> goals → <code>Warum Mathematik? – Denken, Muster &amp; Zukunft</code></li>
+<li>selected nodes:</li>
+<li>atomic goals with an authoritative <code>semanticKind=curricularAtomic</code> decision in the stage profile</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li>This keeps the rule formulation general while still allowing rollout-specific route guarantees where the graph has already reached review-safe maturity.</li>
+<li>It is stronger than composition-view ordering alone: the learner-facing tree may start with the motivation node, but <code>GVR-011</code> additionally requires the authored graph semantics to reflect that anchor.</li>
+<li>Stage selection uses authored stage metadata; the anchor assignment is never pooled across Sek I and Sek II.</li>
+</ul>
+<h2 id="scoped-full-route-coverage-gvr-012">Scoped full route coverage (<code>GVR-012</code>)</h2>
+<p><code>GVR-012</code> is intentionally phrased as a reusable validator pattern, not as a one-off landscape exception.</p>
+<p>Rule semantics:</p>
+<ul>
+<li>a validator profile declares:</li>
+<li>one target landscape</li>
+<li>one scoped goal selector</li>
+<li>one or more motivation anchor goals</li>
+<li>one or more terminal autonomy goals</li>
+<li>the semantic-kind ledger must provide authoritative goal classifications</li>
+<li>the semantic-kind ledger must classify every canonical goal exactly once; missing, duplicate, unsupported, or stale decisions fail rather than shrinking the checked set</li>
+<li>every <code>curricularAtomic</code> goal must belong to at least one explicit Sek-I/Sek-II route profile; missing stage membership cannot silently remove it from coverage</li>
+<li>the configured anchor must be atomic, prerequisite-free, and classified as <code>orientation</code></li>
+<li>every configured terminal leaf must be atomic and classified as <code>practiceAssessment</code></li>
+<li>every profile declares its complete stage-local proof-node scope; a Sek-I proof cannot pass through Sek-II goals and vice versa</li>
+<li><code>GVR-012</code> fails if any selected <code>curricularAtomic</code> node has:</li>
+<li>no transitive path to its stage-specific anchor using only direct atomic-to-atomic <code>requires</code>, or</li>
+<li>no transitive path from itself to a configured stage-specific terminal using only those same direct atomic edges</li>
+<li>every configured terminal must itself have a direct atomic path back to the stage-specific anchor</li>
+<li>every proof-participating node may not carry direct prerequisites outside the allowed route node kinds; cluster-level and inherited/effective prerequisites neither count as proof nor survive as additional hidden shortcuts</li>
+<li>only <code>orientation</code>, <code>curricularAtomic</code>, optional <code>memory</code>, and <code>practiceAssessment</code> nodes may prove a hard route; program structure, curricular-area clusters, and runtime-support nodes cannot be used as didactic shortcuts</li>
+<li>a <code>practiceAssessment</code> node cannot be used as a prerequisite before curricular learning; every terminal route must pass through at least one ordinary <code>curricularAtomic</code> goal</li>
+<li>a <code>memory</code> node counts as a route intermediate only after at least one ordinary <code>curricularAtomic</code> goal; it cannot replace the curricular learning segment</li>
+<li>semantic kinds and graph shape must agree: <code>orientation</code>, <code>curricularAtomic</code>, and <code>memory</code> are atomic; <code>curricularArea</code>, <code>programStructure</code>, and <code>runtimeSupport</code> are clusters; <code>practiceAssessment</code> may classify either a terminal folder or one of its atomic tasks</li>
+</ul>
+<p>Current active profiles:</p>
+<ul>
+<li>landscape: canonical DE Gymnasium mathematics (<code>Mathematik (Gymnasium, DE)</code>)</li>
+<li>Sek I:</li>
+<li>motivation anchor: <code>Warum Mathematik? – Entdecken, Muster &amp; Alltag</code></li>
+<li>terminal autonomy goals: the individual exam-task nodes under <code>Prüfungen Jahrgangsstufe 5</code> through <code>Prüfungen Jahrgangsstufe 10</code></li>
+<li>Sek II:</li>
+<li>motivation anchor: <code>Warum Mathematik? – Denken, Muster &amp; Zukunft</code></li>
+<li>terminal autonomy goals: the atomic goals below <code>Übungen E-Phase</code>, <code>Übungen Q1</code> through <code>Übungen Q4</code>, and <code>Übungen Prozesskompetenzen</code></li>
+<li>learner-facing year autonomy: each Sek-I year scope must expose a <code>Prüfungen Jahrgangsstufe &lt;n&gt;</code> folder inside the respective year/year-band structure, with individual exam-task nodes below it. A separate global <code>Sek-I-Abschlussaufgaben Mathematik</code> capstone is not part of the learner-facing route.</li>
+<li>rollout boundary: this year-autonomy rule is currently normative for canonical Gymnasium mathematics. Other Sek-I subjects or school forms should opt in only after their composition views and assessment semantics have been reviewed.</li>
+<li>selected nodes: stage-matching atomic goals with authoritative <code>semanticKind=curricularAtomic</code></li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li><code>GVR-012</code> is a hard release invariant for these reviewed scopes. <code>VALIDATE_GRAPH_STRICT_RULES=0</code> does not downgrade it.</li>
+<li>It proves route coverage on the direct atomic prerequisite layer. Effective cluster inheritance is deliberately insufficient.</li>
+<li>The proof graph is stage-local. Cross-stage prerequisites may remain explicit support requirements, but they cannot be used to manufacture the stage's motivation-to-terminal proof.</li>
+<li>Memory nodes are optional support nodes, not mandatory route checkpoints. They remain governed by the separate memory-card review. Making every exam depend on a memory deck would incorrectly make memorization compulsory.</li>
+<li>A reviewed memory node may occur inside a direct route and then counts as part of that route. Memory nodes that are not route prerequisites remain optional side support and are traced by <code>CQR-302</code>, rather than being forced into every assessment chain.</li>
+<li>Canonical route coverage alone does not certify a narrower learner-facing composition view. Every direct prerequisite of a visible target must also be present in that projection as <code>target</code> or explicitly authored <code>prerequisiteOnly</code>; the runtime blocks a target when a direct canonical prerequisite is absent. The reviewed Hessen Sek-II mathematics LK view has a complete-closure regression for this contract.</li>
+<li>For canonical Gymnasium mathematics Sek I, the terminal autonomy endpoints are the individual year-level exam tasks. Do not reintroduce a separate <code>Sek-I-Abschlussaufgaben Mathematik</code> capstone or expose an aggregate <code>Übungen Sekundarstufe I</code> learner-facing branch as the ordinary route endpoint.</li>
+<li>Sek-I mathematics exam tasks should use coherent, age-appropriate contexts that carry the mathematics. Avoid copied umbrella scenarios and keep each task's <code>requires</code> / <code>examData.coveredGoalIds</code> aligned with the goals actually assessed.</li>
+<li>Prefer a low-floor/high-ceiling task shape: accessible data or representations first, then an explanation, checking, model-limit, or short reasoning prompt appropriate to the year.</li>
+<li>This keeps the rule formulation general while allowing strict CI protection once a concrete rollout scope has explicit motivation and terminal-autonomy anchors.</li>
+</ul>
+<h2 id="motivationorientation-structure-gvr-014">Motivation/orientation structure (<code>GVR-014</code>)</h2>
+<p><code>GVR-014</code> protects motivation nodes globally as pure entry anchors rather than
+content assessments. An authoritative <code>semanticKind</code> takes precedence; only
+when it is absent do the explicit legacy tags <code>Motivation</code> or <code>Orientation</code>
+identify such a node. Every identified node must be atomic and
+prerequisite-free. It must not carry <code>examData</code>, <code>examples</code>, an <code>exam</code> or
+<code>memory</code> node kind, SRS/memorization tags, or assessment/practice tags. The
+rule is always an error, including when older graph rules temporarily run in
+warning mode.</p>
+<p>This structural gate prevents a motivation node from encoding a hard content
+check. Its didactic purpose is to show possibilities, relevance, and positive
+perspectives that invite the learner into the following subject matter; it is
+not evidence that detailed subject knowledge is already present.</p>
+<h2 id="reviewed-orientation-outlook-integrity-gvr-015">Reviewed orientation outlook integrity (<code>GVR-015</code>)</h2>
+<p><code>GVR-015</code> protects the authored learner-facing map attached to both canonical
+Gymnasium mathematics orientation anchors. Each outlook must contain two to
+four bounded bilingual paths. The anchor must be authoritatively classified as
+<code>orientation</code>. Every referenced subtree root, entry goal, and milestone must exist in the
+same canonical landscape and in the anchor's explicit stage scope. Subtree
+roots must be non-atomic <code>curricularArea</code> nodes; entries and milestones must be
+atomic <code>curricularAtomic</code> goals. Each bounded <code>entryGoalIds</code> allowlist must be
+contained in the respective path and each entry must directly require the
+orientation anchor. Runtime path activation uses only this build-validated
+allowlist; <code>milestoneGoalIds</code> remain learner-facing outlook content and never
+become transition authorization.</p>
+<p>The two graph proofs are deliberately separate. Authored <code>contains</code> edges prove
+only that an entry or milestone belongs to one of the path's reviewed fachliche subtrees.
+Downstream sequencing is proved independently through direct <code>requires</code> edges
+whose endpoints are the stage anchor or in-stage atomic <code>curricularAtomic</code>
+goals. Cluster-level <code>requires</code>, inherited prerequisites, program structure,
+memory, assessment, and runtime-support nodes cannot serve as shortcuts in this
+proof.</p>
+<p>The rule also rejects internal authoring-process terms such as
+<code>Source-Extraction</code> in learner-facing path or subtree titles. This keeps the
+reviewed orientation map deterministic and prevents stale IDs, detached
+milestones, or technical maintenance labels from silently reaching the coach.</p>
+<p><code>GVR-015</code> validates the canonical authored map and intentionally does not claim
+that every referenced goal is a <code>target</code> in every jurisdiction/course-profile
+composition view. At runtime the coach outlook is intersected fail-closed with
+the learner's resolved <code>targetGoalIds</code>; goals visible only as
+<code>prerequisiteOnly</code> are excluded, and a path without a valid target entry or a
+valid target milestone is omitted. Transition selection uses the complete
+personalized frontier rather than the compact display options. It activates a
+reviewed path entry only when that entry is currently available. If none is
+available, orientation completion still succeeds, no active goal is set, and
+the ordinary available foundations are returned.</p>
+<h2 id="scoped-atomic-direct-requires-gvr-013">Scoped atomic direct requires (<code>GVR-013</code>)</h2>
+<p><code>GVR-013</code> closes the gap between effective route coverage and canonical route authoring.</p>
+<p>Rule semantics:</p>
+<ul>
+<li>a validator profile declares:</li>
+<li>one target landscape</li>
+<li>one scoped atomic goal selector</li>
+<li>for every selected atomic goal, every direct local <code>requires</code> edge must point to another atomic goal.</li>
+<li>direct <code>requires</code> edges to cluster goals fail the check, because they make the route depend on implicit cluster expansion and can create misleading root nodes in requires-flow visualizations.</li>
+</ul>
+<p>Current active profile:</p>
+<ul>
+<li>landscape: canonical DE Gymnasium mathematics (<code>Mathematik (Gymnasium, DE)</code>)</li>
+<li>scope: all non-memory atomic goals</li>
+<li>selected nodes:</li>
+<li>every atomic goal in the canonical mathematics landscape except memory/SRS goals</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li>A cluster may still be used for navigation through <code>contains</code>, but not as a direct prerequisite target inside this reviewed route scope.</li>
+<li>The rule is deliberately narrower than a repository-wide ban, because older landscapes still use the compatibility model. New mature scopes should add their own <code>GVR-013</code> profile before being marked route-stable.</li>
+</ul>
+<h2 id="motivation-anchor-rollout-rules-gvr-004-gvr-005">Motivation-anchor rollout rules (<code>GVR-004</code>, <code>GVR-005</code>)</h2>
+<ul>
+<li>Scope is controlled in <code>app/scripts/validateGraph.ts</code> via <code>motivationRuleLandscapeIds</code>.</li>
+<li>Current rollout scope: Hessen Gymnasiale Oberstufe subject landscapes (<code>DE_HES_S_GYM_2_*</code>) excluding <code>DE_HES_S_GYM_2_OVERVIEW</code>.</li>
+</ul>
+<p>These rules are intentionally a compatibility rollout, not yet the full mature route-coverage model.</p>
+<p>Validation semantics:</p>
+<ul>
+<li>Atomic node detection:</li>
+<li>concept-level canonical meaning: a node is atomic iff <code>contains.length === 0</code></li>
+<li>current validator implementation uses that canonical leaf/non-leaf definition</li>
+<li>if explicit <code>type</code> metadata is present, <code>GVR-009</code> additionally enforces consistency with that canonical classification</li>
+<li>Motivation anchor detection:</li>
+<li>first atomic node title must start with <code>Warum</code> or <code>Why</code> (case-insensitive)</li>
+<li><code>GVR-004</code> fails if:</li>
+<li>landscape has no atomic nodes, or</li>
+<li>first atomic node is not a motivation node</li>
+<li><code>GVR-005</code> fails if:</li>
+<li>any atomic node except the first motivation node has no transitive path to that anchor in the effective-requires graph</li>
+</ul>
+<p>Effective-requires graph means:</p>
+<ul>
+<li>direct <code>requires</code></li>
+<li>plus inherited <code>requires</code> from <code>contains</code> ancestors</li>
+<li>then transitive reachability over these effective edges</li>
+</ul>
+<p>Interpretation of current coverage strength:</p>
+<ul>
+<li><code>GVR-004</code> / <code>GVR-005</code> ensure that each checked atomic node is connected back to a motivation anchor</li>
+<li>they do <strong>not</strong> yet ensure that the node also lies on a path toward one or more terminal autonomy goals</li>
+<li>they do <strong>not</strong> yet prove that the didactic route is modeled canonically on the atomic <code>requires</code> layer</li>
+</ul>
+<h2 id="hard-atomic-route-quality-validation">Hard atomic route-quality validation</h2>
+<p>The stricter direction is implemented as <code>GVR-012</code> for canonical DE Gymnasium mathematics Sek I and Sek II.</p>
+<p>Target semantics for mature landscapes:</p>
+<ul>
+<li>route coverage should be defined primarily on the atomic direct-prerequisite graph (<code>R_d</code> on atomic goals), not on inherited <code>R_eff</code></li>
+<li>a landscape or route-group may have one or more motivation anchors; a single global anchor is not required if the content structure suggests otherwise</li>
+<li>a landscape will often have multiple terminal autonomy goals, typically authentic independent performances such as exam tasks or other capstones</li>
+<li>every selected <code>curricularAtomic</code> goal must lie on at least one didactic path from its stage-specific motivation anchor to a terminal autonomy goal</li>
+<li>explicitly excluded support-only atomic goals (concept-spec set <code>E_route</code>, e.g. memorization-only helper nodes) require a machine-readable profile convention before they can be validated generically in CI</li>
+</ul>
+<p>Rollout strategy:</p>
+<ul>
+<li>keep <code>GVR-004</code> / <code>GVR-005</code> as migration-compatible checks on <code>R_eff</code></li>
+<li>use <code>GVR-012</code> only after a scope has reviewed semantic kinds, anchors, and terminal sets</li>
+<li>keep other landscapes on migration-compatible checks until they receive an explicit hard profile</li>
+<li>never pool stage anchors merely to make a disconnected route pass</li>
+</ul>
+<h2 id="immediate-implications-from-the-updated-concept-spec">Immediate implications from the updated concept spec</h2>
+<p>The recent updates in <code>docs/concept/skill-graph/graph-definition.md</code> do <strong>not</strong> imply that every newly clarified concept should become a CI graph rule immediately.</p>
+<h3 id="already-implemented-structural-alignment">Already implemented structural alignment</h3>
+<ul>
+<li><strong><code>GVR-009</code>: explicit node-type consistency</strong><br />
+  If a goal stores explicit <code>type</code> metadata, it must match the canonical concept-spec classification:</li>
+<li><code>atomic</code> iff <code>contains.length === 0</code></li>
+<li><code>cluster</code> iff <code>contains.length &gt; 0</code></li>
+</ul>
+<h3 id="not-suitable-as-graph-only-ci-rules-yet">Not suitable as graph-only CI rules yet</h3>
+<ul>
+<li><strong>Atomic mastery / cluster satisfaction semantics</strong><br />
+  These are learner-state/runtime semantics, not static graph invariants.</li>
+<li><strong>Optimistic / pessimistic filter frontier semantics</strong><br />
+  These describe scoped runtime evaluation, not a property of a landscape JSON in isolation.</li>
+<li><strong>Applicability-backed filtered learner graphs</strong><br />
+  These can become a CI target, but only as a projection validator that first materializes filtered graphs from compiled <code>applicability</code> and then validates those projected graphs.</li>
+</ul>
+<h2 id="planned-filter-graph-validation-layer-not-yet-implemented-in-ci">Planned filter-graph validation layer (not yet implemented in CI)</h2>
+<p>The concept spec now makes an important distinction:</p>
+<ul>
+<li>raw landscape validation on the full authored graph</li>
+<li>projected filtered-graph validation on learner-facing scoped views</li>
+</ul>
+<p>The current <code>validate:graph</code> command covers only the first category.</p>
+<p>Planned future addition:</p>
+<ul>
+<li>a separate validator, tentatively <code>validate:view-filters</code></li>
+<li>input:</li>
+<li>committed canonical landscapes</li>
+<li>compiled <code>applicability</code> metadata</li>
+<li>supported filter dimensions / vocabularies</li>
+<li>validation unit:</li>
+<li>projected filtered graphs such as <code>G[jurisdiction = DE-HE]</code></li>
+<li>later, if needed, selected multi-dimensional combinations</li>
+</ul>
+<h2 id="auxiliary-archive-boundary-validator">Auxiliary archive-boundary validator</h2>
+<p>This is a separate retained-asset hygiene gate, not a <code>GVR-*</code> or <code>APV-*</code> rule family.</p>
+<p>Purpose:</p>
+<ul>
+<li>keep the Hessen upper-secondary DE-level archive operationally detached from live legacy repo paths</li>
+<li>allow remaining <code>Gymnasiale_Oberstufe</code> path strings only inside explicitly allowlisted raw archival provenance files</li>
+</ul>
+<p>Implementation and data source:</p>
+<ul>
+<li>validator: <code>scripts/validate_hessen_upper_secondary_archive_paths.py</code></li>
+<li>allowlist and archive root: <code>curricula/DE/Gymnasium/input/HE/retained-asset-registry.json</code></li>
+</ul>
+<p>Current CI semantics:</p>
+<ul>
+<li>scans <code>curricula/DE/Gymnasium/input/HE/abi</code></li>
+<li>fails if a legacy <code>Gymnasiale_Oberstufe</code> path string appears outside the allowlisted raw-provenance files</li>
+<li>keeps machine-readable ABI metadata and repo-authored archive docs on the normalized DE-level archive path</li>
+</ul>
+<h2 id="auxiliary-legacy-reference-validator">Auxiliary legacy-reference validator</h2>
+<p>This is the repo-level handoff gate for the retired Hessen upper-secondary legacy tree.</p>
+<p>Purpose:</p>
+<ul>
+<li>keep active tooling/runtime/test surfaces detached from the retired legacy tree</li>
+<li>keep the old tree absent from the active repo after the delete handoff</li>
+<li>make the remaining allowed references explicit as the surviving provenance/handoff boundary</li>
+</ul>
+<p>Implementation and data source:</p>
+<ul>
+<li>validator: <code>scripts/validate_hessen_upper_secondary_legacy_refs.py</code></li>
+<li>scan roots, exclusions, and allowlist: <code>curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json</code></li>
+</ul>
+<p>Current CI semantics:</p>
+<ul>
+<li>scans active repo surfaces (<code>backend/src</code>, <code>app</code>, <code>scripts</code>, DE-level provenance/input lanes, <code>docs</code>, selected root helpers)</li>
+<li><code>docs</code> is in scope so documentation cannot quietly reintroduce the retired tree as a live reference; the allowlist covers only the dated migration records and the pages that describe this gate</li>
+<li>ignores the already-separated raw ABI archive scope under <code>curricula/DE/Gymnasium/input/HE/abi/**</code></li>
+<li>fails if a <code>Gymnasiale_Oberstufe</code> tree reference appears outside the explicit handoff allowlist</li>
+</ul>
+<p>Expected rule family for that validator:</p>
+<ul>
+<li><code>APV-*</code> for applicability and projected-view validation</li>
+</ul>
+<p>Planned validation focus:</p>
+<ul>
+<li>malformed compiled applicability metadata</li>
+<li>empty visible clusters in a projected filtered graph</li>
+<li>visible goals with invisible prerequisites in a projected filtered graph</li>
+<li>visible goals not reachable from the filtered root through visible <code>contains</code> edges</li>
+</ul>
+<p>This layer is intentionally documented here already so CI semantics stay aligned with the concept spec, even before the implementation lands.</p>
+<h3 id="future-rule-prerequisites-before-rollout">Future-rule prerequisites before rollout</h3>
+<ul>
+<li><strong>Route-exclusion support set (<code>E_route</code>)</strong><br />
+  The concept spec now allows explicit support-only atomic exceptions (for example memory-only helper nodes), but a generic CI rule should only be introduced once there is a stable machine-readable convention for identifying those nodes across landscapes.</li>
+</ul>
+<p>Reference implementations already curated:</p>
+<ul>
+<li>Physics landscape file: <code>curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot</code></li>
+<li>subtree: <code>Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</code></li>
+<li>
+<p>benchmark value:</p>
+<ul>
+<li>no cluster-level <code>requires</code> inside the subtree</li>
+<li>every non-memory atomic goal in the subtree has at least one direct atomic prerequisite path back to the motivation anchor</li>
+<li>every non-memory atomic goal in the subtree also lies on at least one atomic path toward terminal autonomy goals under <code>Übungen E-Phase</code></li>
+<li>the single memorization node in that subtree is explicitly typed as <code>nodeKind: "memory"</code> and is therefore a documented exception rather than an ambiguous leaf</li>
+</ul>
+</li>
+<li>
+<p>Mathematics landscape file: <code>curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot</code></p>
+</li>
+<li>scope: ordinary phases <code>E</code>, <code>Q1</code>, <code>Q2</code>, <code>Q3</code>, <code>Q4</code> plus <code>Übungen Prozesskompetenzen</code></li>
+<li>benchmark value:<ul>
+<li>all local phase-autonomy branches (<code>Übungen E-Phase</code>, <code>Übungen Q1</code>, <code>Übungen Q2</code>, <code>Übungen Q3</code>, <code>Übungen Q4</code>) and the global process-competency branch contain only atomic terminal goals</li>
+<li>all of these terminal goals are exam-mode-capable via concrete <code>examData</code></li>
+<li>outside the intentionally separate global Abitur containers, the landscape does not rely on cluster-level <code>requires</code> for ordinary didactic sequencing</li>
+<li>the two remaining cluster-level <code>requires</code> belong only to the dedicated global Abitur containers and are therefore not the model for ordinary route-quality validation</li>
+</ul>
+</li>
+</ul>
+<p>This means future strict route-quality rules can use both a subtree benchmark (Physics E-phase) and a whole-landscape benchmark (Mathematics upper secondary) during rollout, even before new stable <code>GVR-*</code> IDs are introduced for the stricter atomic route model.</p>
+<h2 id="direct-child-prerequisite-rule-gvr-006">Direct-child prerequisite rule (<code>GVR-006</code>)</h2>
+<ul>
+<li>Scope is controlled in <code>app/scripts/validateGraph.ts</code> via <code>noDirectChildRequireRuleLandscapeIds</code>.</li>
+<li>Current rollout scope: Hessen Gymnasiale Oberstufe subject landscapes (<code>DE_HES_S_GYM_2_*</code>) including <code>DE_HES_S_GYM_2_OVERVIEW</code>.</li>
+<li>Current issue level: follows global <code>GVR-*</code> strictness (<code>error</code> by default, <code>warn</code> with <code>VALIDATE_GRAPH_STRICT_RULES=0</code>).</li>
+</ul>
+<p>Validation semantics:</p>
+<ul>
+<li>For a goal <code>A</code>, collect direct local <code>contains</code> children.</li>
+<li>If any direct local <code>requires</code> target is also in that direct child set, emit <code>GVR-006</code>.</li>
+</ul>
+<h2 id="mit-ocw-source-linking-rule-gvr-007">MIT OCW source-linking rule (<code>GVR-007</code>)</h2>
+<ul>
+<li>Scope: landscapes with top-level <code>frameworkId</code> starting with <code>mit-ocw-</code> and a root node tagged <code>module:*</code> (or <code>modul:*</code>).</li>
+<li>Current issue level: follows global <code>GVR-*</code> strictness (<code>error</code> by default, <code>warn</code> with <code>VALIDATE_GRAPH_STRICT_RULES=0</code>).</li>
+</ul>
+<p>Validation semantics for each atomic goal:</p>
+<ul>
+<li>canonical <code>resourceLinks</code> must exist and include at least one link of type:</li>
+<li><code>concept</code></li>
+<li><code>practice</code></li>
+<li><code>assessment</code></li>
+<li>Required source-link types must include at least one valid OCW course URL (<code>https://ocw.mit.edu/courses/...</code>).</li>
+</ul>
+<h2 id="canonical-goal-level-link-field-rule-gvr-008">Canonical goal-level link field rule (<code>GVR-008</code>)</h2>
+<ul>
+<li>Scope: all committed landscape JSON files validated in CI.</li>
+<li>Current issue level: follows global <code>GVR-*</code> strictness (<code>error</code> by default, <code>warn</code> with <code>VALIDATE_GRAPH_STRICT_RULES=0</code>).</li>
+</ul>
+<p>Validation semantics:</p>
+<ul>
+<li>if a goal contains unsupported legacy goal-level link metadata, emit <code>GVR-008</code></li>
+<li>the canonical supported field is top-level <code>resourceLinks</code></li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li>unsupported goal-level link metadata is rejected by CI and ignored by runtime link rendering</li>
+<li>committed landscape files in this repository should store helper links only in canonical <code>resourceLinks</code></li>
+</ul>
+<h2 id="explicit-node-type-consistency-rule-gvr-009">Explicit node-type consistency rule (<code>GVR-009</code>)</h2>
+<ul>
+<li>Scope: all committed landscape JSON files validated in CI.</li>
+<li>Current issue level: follows global <code>GVR-*</code> strictness (<code>error</code> by default, <code>warn</code> with <code>VALIDATE_GRAPH_STRICT_RULES=0</code>).</li>
+</ul>
+<p>Validation semantics:</p>
+<ul>
+<li>canonical node classification is derived structurally:</li>
+<li><code>atomic</code> iff <code>contains.length === 0</code></li>
+<li><code>cluster</code> iff <code>contains.length &gt; 0</code></li>
+<li>if a goal explicitly stores <code>type: "atomic"</code> but is structurally non-leaf, emit <code>GVR-009</code></li>
+<li>if a goal explicitly stores <code>type: "cluster"</code> but is structurally a leaf, emit <code>GVR-009</code></li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li>explicit <code>type</code> metadata is optional</li>
+<li>if present, it is a redundant declaration and must agree with the canonical graph structure</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

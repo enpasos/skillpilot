@@ -1,0 +1,5417 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/concept/portable-agent-runtime-architecture/">
+      
+      
+        <link rel="prev" href="../levels-of-personalization/">
+      
+      
+        <link rel="next" href="../skill-graph/graph-definition/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Architekturkonzept: Austauschbarer MCP Host - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#architekturkonzept-skillpilot-mit-austauschbarem-mcp-host" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Architekturkonzept: Austauschbarer MCP Host
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="architekturkonzept-skillpilot-mit-austauschbarem-mcp-host">Architekturkonzept: SkillPilot mit austauschbarem MCP Host</h1>
+<p><strong>Status:</strong> Strategiekonzept für die langfristige Host- und
+Anbieterunabhängigkeit von SkillPilot.</p>
+<p><strong>Geltungsbereich:</strong> Auswahl, Bewertung und Ablösung von AI Chat Applications
+beziehungsweise MCP Hosts, die Verantwortungsgrenze zwischen SkillPilot Core,
+MCP Host und Model Provider sowie der daraus folgende Stufenplan.</p>
+<p>Dieses Dokument legt die Richtung fest, nicht den ausgelieferten Vertrag. Die
+verbindlichen Verträge des heutigen Coach-Pfades stehen in den Dokumenten unter
+<a href="#15-verwandte-dokumente">Verwandte Dokumente</a>; bei Abweichungen gelten diese.</p>
+<p><strong>Aufbau:</strong> <a href="#teil-a-stabile-architektur">Teil A</a> enthält die normative
+Architektur und ändert sich nur mit einer bewussten Architekturentscheidung.
+<a href="#teil-b-marktanhang-stand-19-august-2026">Teil B</a> bewertet die heute
+verfügbaren Hosts und ist ausdrücklich datiert. Ändert ein Anbieter seine Pläne,
+Oberflächen oder Altersbedingungen, wird nur Teil B nachgezogen.</p>
+<hr />
+<h1 id="teil-a-stabile-architektur">Teil A — Stabile Architektur</h1>
+<h2 id="1-architekturentscheidung">1. Architekturentscheidung</h2>
+<p>SkillPilot sollte langfristig aus drei unabhängig austauschbaren Bereichen bestehen:</p>
+<ol>
+<li><strong>SkillPilot Core</strong> als dauerhaftes, anbieterneutrales Lernsystem,</li>
+<li>eine <strong>austauschbare AI Chat Application beziehungsweise ein MCP Host</strong>,</li>
+<li>ein <strong>austauschbarer Model Provider</strong>, der möglichst über eine
+   Open-Responses-kompatible Schnittstelle angesprochen wird.</li>
+</ol>
+<p>Die zentrale Architekturregel lautet:</p>
+<blockquote>
+<p><strong>SkillPilot Core darf weder von einem bestimmten Chat-Host noch von einem bestimmten LLM-Anbieter abhängig sein.</strong></p>
+</blockquote>
+<p>Gleichrangig daneben steht eine zweite, ebenso verbindliche Regel:</p>
+<blockquote>
+<p><strong>SkillPilot Core persistiert pro Lernendem ausschließlich strukturierten,
+schema-validierten Lern- und Steuerungszustand. SkillPilot Core speichert
+keine Chatnachrichten, Formulierungen, Freitextantworten, Schülerlösungen,
+Bilder, Anhänge oder modellseitigen Analyseprotokolle.</strong></p>
+</blockquote>
+<p>Beide Regeln stützen sich gegenseitig: Ein Kern, der keine Gesprächsinhalte
+hält, ist leichter host- und anbieterneutral zu halten, und ein Kern ohne
+Hostbindung darf keine hostspezifischen Inhalte übernehmen. Abschnitt 4.2 führt
+die Regel gegen die tatsächliche MCP-Oberfläche aus.</p>
+<p>Was diese Regel <strong>nicht</strong> behauptet: dass die Lernkommunikation nirgends
+gespeichert wird. Sie liegt beim MCP Host und, bei Vision-Nutzung, zusätzlich
+beim Model Provider. Abschnitt 6.3 zieht diese Grenze ausdrücklich.</p>
+<p>Für die nächsten Entwicklungsschritte ergibt sich daraus folgende Strategie:</p>
+<ul>
+<li><strong>Kurzfristig:</strong> selbst betriebener Open-Source-MCP-Host für wenige Testnutzer, am sinnvollsten zunächst LibreChat.</li>
+<li><strong>Parallel:</strong> Archestra als zweiten Pilotkandidaten und Standardslabor für Open-Responses-Routing und MCP Apps prüfen.</li>
+<li><strong>Mittelfristig:</strong> ChatGPT und Claude als vom jeweiligen Anbieter betriebene Zugangskanäle verwenden, sobald sie die benötigten Funktionen, Altersgruppen und Oberflächen tatsächlich unterstützen.</li>
+<li><strong>Langfristig:</strong> Wechsel zu einem fremdbetriebenen, standardkonformen MCP Host mit benutzereigenen Modellzugängen, sobald ein solcher Dienst alle Anforderungen erfüllt.</li>
+</ul>
+<p>Es gibt derzeit <strong>keinen einzelnen verfügbaren Dienst</strong>, der gleichzeitig alle Anforderungen vollständig erfüllt:</p>
+<ul>
+<li>fremdbetriebene Agent Runtime,</li>
+<li>serverseitige, geräteübergreifende Chats,</li>
+<li>direkte Abrechnung zwischen Lernendem und Modellanbieter,</li>
+<li>Open Responses als Modellgrenze,</li>
+<li>Remote MCP,</li>
+<li>Skills,</li>
+<li>MCP Apps UI,</li>
+<li>Agent-Plugin-Paketierung,</li>
+<li>mobile Nutzung,</li>
+<li>Spracheingabe,</li>
+<li>Bildanalyse,</li>
+<li>und Eignung für minderjährige Schülerinnen und Schüler.</li>
+</ul>
+<p>Deshalb ist eine Architektur mit mehreren Betriebswegen sinnvoller als die Suche nach einer einzigen Plattform.</p>
+<hr />
+<h2 id="2-standards-und-ihre-rollen">2. Standards und ihre Rollen</h2>
+<h3 id="21-open-responses">2.1 Open Responses</h3>
+<p><strong>Open Responses</strong> definiert eine offene, providerneutrale Spezifikation für die
+Schnittstelle zwischen Agent Runtime und Model Provider beziehungsweise Model
+Access Layer. Dazu gehören unter anderem:</p>
+<ul>
+<li>typisierte Eingaben und Ausgaben,</li>
+<li>Messages,</li>
+<li>Tool Calls und Tool-Ergebnisse,</li>
+<li>Streaming-Events,</li>
+<li>Reasoning-Elemente,</li>
+<li>mehrstufige Agent Loops,</li>
+<li>providerabhängige Erweiterungen.</li>
+</ul>
+<p>Drei Begriffe werden im weiteren Text streng auseinandergehalten, weil sie
+regelmäßig verwechselt werden:</p>
+<table>
+<thead>
+<tr>
+<th>Begriff</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenAI Responses API</strong></td>
+<td>proprietäre API von OpenAI</td>
+</tr>
+<tr>
+<td><strong>OpenAI-compatible <code>/responses</code></strong></td>
+<td>nachgebildete API-Oberfläche eines Dritten</td>
+</tr>
+<tr>
+<td><strong>Open Responses</strong></td>
+<td>die unabhängige, offene Spezifikation</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Ein Endpunkt mit dem Namen <code>/responses</code> belegt keine
+Open-Responses-Konformität.</strong> Konformität wird anhand der offiziellen
+Acceptance Tests und eines SkillPilot-spezifischen Capability-Profils geprüft,
+nicht aus einem Pfadnamen abgeleitet.</p>
+</blockquote>
+<p>Open Responses reduziert die technische Bindung an die proprietäre API eines einzelnen Modellanbieters. Es garantiert aber nicht, dass alle Modelle dieselben Fähigkeiten besitzen. Bildverarbeitung, Tool Calling, strukturierte Ausgaben und Reasoning bleiben modellabhängige Fähigkeiten.</p>
+<p>Für SkillPilot ist Open Responses eine Anforderung an den <strong>MCP Host beziehungsweise dessen Agent Runtime</strong>, nicht an SkillPilot Core.</p>
+<h3 id="22-model-context-protocol">2.2 Model Context Protocol</h3>
+<p>MCP standardisiert die Verbindung zwischen der KI-Anwendung und SkillPilot Core.</p>
+<p>Die offizielle Rollenverteilung lautet:</p>
+<ul>
+<li><strong>MCP Host:</strong> die gesamte KI-Anwendung,</li>
+<li><strong>MCP Client:</strong> eine vom Host verwaltete Verbindung zu einem MCP Server,</li>
+<li><strong>MCP Server:</strong> SkillPilot Core beziehungsweise dessen standardisierte Schnittstelle.</li>
+</ul>
+<p>Für entfernte Server ist <strong>Streamable HTTP</strong> der maßgebliche Transport.</p>
+<h3 id="23-mcp-apps">2.3 MCP Apps</h3>
+<p>MCP Apps ergänzt MCP um interaktive Oberflächen. Der MCP Server kann zu einem Tool eine HTML-basierte Ressource bereitstellen, die der Host in einer isolierten Umgebung rendert.</p>
+<p>Die UI-Unterstützung wird zwischen Host und Server ausgehandelt. Sie ist daher <strong>optional</strong>. Nicht jeder MCP Host kann MCP Apps anzeigen.</p>
+<p>Jedes SkillPilot-Tool sollte deshalb drei Ausgabeebenen unterstützen:</p>
+<ol>
+<li><strong>Textausgabe</strong> als universeller Fallback,</li>
+<li><strong>strukturierte Daten</strong> für Hosts mit eigener Darstellung,</li>
+<li><strong>MCP Apps UI</strong> für Hosts mit interaktiver UI-Unterstützung.</li>
+</ol>
+<p>Eine didaktisch notwendige Aktion darf niemals ausschließlich über eine MCP-App-Oberfläche möglich sein.</p>
+<h3 id="24-agent-plugins">2.4 Agent Plugins</h3>
+<p>Die portable Agent-Plugins-Spezifikation definiert in Version 1 im Wesentlichen:</p>
+<div class="highlight"><pre><span></span><code>skillpilot-plugin/
+├── plugin.json
+├── skills/
+│   └── skillpilot-coach/
+│       └── SKILL.md
+└── mcp.json
+</code></pre></div>
+<p>Der portable Kern besteht damit aus:</p>
+<ul>
+<li>Manifest (<code>plugin.json</code>, erforderlich),</li>
+<li>Skills (optional),</li>
+<li>MCP-Server-Konfiguration (optional).</li>
+</ul>
+<p><strong>MCP Apps UI ist keine dritte, separat im Agent Plugin verpackte Komponente.</strong> Die UI wird zur Laufzeit vom in <code>mcp.json</code> referenzierten MCP Server bereitgestellt.</p>
+<p>Agent Plugins 1.0 ist derzeit noch ein Working Draft. Installation, Verteilung
+und Update-Oberflächen bleiben bewusst außerhalb des portablen Standards. Das
+Paket sollte deshalb als kanonisches, portables Auslieferungsformat gepflegt
+werden, ohne vorauszusetzen, dass jeder Host es bereits vollständig importieren
+kann.</p>
+<p>Die treffende Formulierung für SkillPilot lautet daher:</p>
+<blockquote>
+<p>SkillPilot wird als Agent Plugin mit Skill und MCP-Konfiguration ausgeliefert. Der referenzierte SkillPilot-MCP-Server stellt zusätzlich optionale MCP Apps UIs bereit.</p>
+</blockquote>
+<h4 id="das-plugin-lost-die-authentifizierung-nicht-mit">Das Plugin löst die Authentifizierung nicht mit</h4>
+<p>Agent Plugins v1 definiert ausdrücklich <strong>keine portable OAuth-Konfiguration und
+keine portablen Credential-Referenzen</strong>:</p>
+<blockquote>
+<p><strong>Das Agent Plugin beschreibt den SkillPilot-MCP-Endpunkt, transportiert aber
+keine OAuth-Client-Secrets und keine hostübergreifend portablen Zugangsdaten.
+OAuth-Discovery, Benutzerzustimmung, Callback-Konfiguration und
+Token-Speicherung bleiben hostverwaltet. Jeder Host benötigt daher ein dünnes
+Installationsprofil für die SkillPilot-Authentifizierung.</strong></p>
+</blockquote>
+<p>Das ist wichtig, weil sonst der Eindruck entsteht, ein Plugin-Import erledige die
+Einrichtung vollständig portabel. Er erledigt Skill und Serveradresse, nicht die
+Identität.</p>
+<p>Host-spezifische Erweiterungen dürfen ergänzend vorhanden sein, sollten aber nur dünne Adapter enthalten. Die didaktischen Regeln gehören in den portablen Skill beziehungsweise in SkillPilot Core.</p>
+<hr />
+<h2 id="3-zielarchitektur">3. Zielarchitektur</h2>
+<h3 id="31-laufzeitsicht">3.1 Laufzeitsicht</h3>
+<div class="highlight"><pre><span></span><code>┌──────────────────────────── Endgeräte ─────────────────────────────┐
+│                                                                    │
+│  Mobile Browser       Desktop Browser       spätere native App     │
+│                                                                    │
+│  • Texteingabe        • Spracheingabe / Diktat                     │
+│  • Kamera             • Bild- und Dateiupload                      │
+└───────────────────────────────┬────────────────────────────────────┘
+                                │ HTTPS
+                                ▼
+┌────────────── AI Chat Application / MCP Host ──────────────────────┐
+│                                                                    │
+│  Chat UI                                                           │
+│  ├── Anmeldung                                                     │
+│  ├── Chatverlauf                                                   │
+│  ├── Spracheingabe                                                 │
+│  ├── Kamera- und Dateiupload                                       │
+│  └── geräteübergreifender Zugriff                                  │
+│                                                                    │
+│  Server-side Agent Runtime                                         │
+│  ├── Agent Loop                                                    │
+│  ├── Conversation Context                                          │
+│  ├── Session- und Chat-Speicher                                    │
+│  ├── Attachment Handling                                           │
+│  └── MCP Client                                                    │
+└──────────────────────┬──────────────────────┬──────────────────────┘
+                       │                      │
+       Open-Responses- │                      │ Remote MCP
+       kompatible API  │                      │ Streamable HTTP + OAuth
+                       ▼                      ▼
+┌────────────────────────────┐   ┌────────────────────────────────────┐
+│ Model Access Layer /       │   │ SkillPilot Core                    │
+│ AI Gateway (optional)      │   │                                    │
+│                            │   │ ┌────────────────────────────────┐ │
+│ • Routing und Fallback     │   │ │ MCP Server                     │ │
+│ • nutzt die Credentials    │   │ │                                │ │
+│   des Lernenden            │   │ │ • Tools                        │ │
+└─────────────┬──────────────┘   │ │ • Resources                    │ │
+              │                  │ │ • Prompts                      │ │
+   provider-native API,          │ │ • optionale MCP Apps UI        │ │
+   falls erforderlich            │ └───────────────┬────────────────┘ │
+              ▼                  │                 │                  │
+┌────────────────────────────┐   │ ┌───────────────▼────────────────┐ │
+│ Model Provider             │   │ │ Didactic Services              │ │
+│                            │   │ │                                │ │
+│ • OpenAI, Anthropic        │   │ │ • Lernzielsteuerung            │ │
+│ • Google, xAI              │   │ │ • Lernkarten                   │ │
+│ • Open-Model-Hoster        │   │ │ • Aufgaben und Bewertungsraster│ │
+│                            │   │ │ • Lernstandsmodell             │ │
+│ Providerkonto des          │   │ │ • Curriculare Ontologie        │ │
+│ Lernenden / der Eltern     │   │ └───────────────┬────────────────┘ │
+│ trägt die Kosten           │   │                 │                  │
+│                            │   │ ┌───────────────▼────────────────┐ │
+│ Bilder zur Vision-Analyse  │   │ │ Learning State Database        │ │
+│ landen HIER, nicht im      │   │ │                                │ │
+│ SkillPilot Core            │   │ │ strukturierter Lern- und       │ │
+└────────────────────────────┘   │ │ Steuerungszustand              │ │
+                                 │ └────────────────────────────────┘ │
+                                 └────────────────────────────────────┘
+</code></pre></div>
+<p>Der <strong>Model Access Layer</strong> ist bewusst als eigene, optionale Komponente
+gezeichnet. Die Agent Runtime spricht entweder direkt einen
+Open-Responses-kompatiblen Provider an oder geht über einen Router, der auf
+provider-native APIs übersetzt:</p>
+<div class="highlight"><pre><span></span><code>Agent Runtime
+    ├── direkt zu einem Open-Responses-kompatiblen Provider
+    └── oder über Model Access Layer / AI Gateway
+</code></pre></div>
+<p>Die Gateway-Instanz ist dabei <strong>nicht</strong> benutzereigen. Benutzereigen sind das
+Providerkonto und die Credentials; die Instanz betreibt der MCP-Host-Betreiber
+oder ein externer Gateway-Anbieter. Abschnitt 7 zieht daraus die
+Abrechnungsregel.</p>
+<h3 id="32-installationssicht-das-agent-plugin">3.2 Installationssicht: das Agent Plugin</h3>
+<p>Das Agent Plugin ist keine weitere Laufzeitverbindung, sondern ein
+<strong>Installations- und Konfigurationsartefakt</strong>. Es taucht deshalb nicht im
+Laufzeitdiagramm auf, entscheidet aber, wie Skill und Serveradresse überhaupt in
+den Host gelangen:</p>
+<div class="highlight"><pre><span></span><code>SkillPilot Agent Plugin
+├── plugin.json
+├── skills/skillpilot-coach/SKILL.md
+└── mcp.json
+        │
+        │ Installation / Import
+        ▼
+AI Chat Application / MCP Host
+├── Agent Runtime lädt den Skill
+├── MCP Client erhält die Serverkonfiguration
+└── OAuth-Profil hostseitig    ← nicht im Plugin enthalten
+        │
+        │ Remote MCP + OAuth
+        ▼
+SkillPilot Core
+</code></pre></div>
+<p>Die letzte Zeile vor der Verbindung ist der Punkt aus Abschnitt 2.4: Das Paket
+bringt Skill und Endpunkt mit, die Authentifizierung bleibt hostverwaltet.</p>
+<hr />
+<h2 id="4-verantwortungs-und-zustandsgrenzen">4. Verantwortungs- und Zustandsgrenzen</h2>
+<p>Die Architektur kennt <strong>drei getrennte Datenverarbeitungsbereiche</strong>. Keiner davon
+verschwindet dadurch, dass ein anderer nichts speichert:</p>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Hält</th>
+<th>Verantwortlich</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCP Host</td>
+<td>Chatverlauf, Nachrichten, Anhänge, Sitzungen, Credentials</td>
+<td>Hostbetreiber (im Pilot: enpasos)</td>
+</tr>
+<tr>
+<td>Model Provider</td>
+<td>übermittelte Prompts und Bilddaten, je nach Anbieterbedingungen</td>
+<td>Modellanbieter, Vertrag mit dem Nutzer</td>
+</tr>
+<tr>
+<td>SkillPilot Core</td>
+<td>strukturierter Lern- und Steuerungszustand</td>
+<td>enpasos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="41-zustand-des-mcp-hosts">4.1 Zustand des MCP Hosts</h3>
+<p>Der MCP Host speichert:</p>
+<ul>
+<li>Benutzerkonto des Chatdienstes,</li>
+<li>Chatverläufe,</li>
+<li>Nachrichten,</li>
+<li>Chat- und Conversation-IDs,</li>
+<li>Modellwahl,</li>
+<li>laufende Agent-Runs,</li>
+<li>hochgeladene Chat-Anhänge,</li>
+<li>technische Tool-Call-Historie,</li>
+<li>gegebenenfalls benutzereigene Provider-Zugangsdaten.</li>
+</ul>
+<p>Damit kann der Nutzer denselben Chat auf Smartphone und Desktop fortsetzen.</p>
+<h3 id="42-zustand-von-skillpilot-core">4.2 Zustand von SkillPilot Core</h3>
+<p>SkillPilot Core persistiert <strong>ausschließlich strukturierten, schema-validierten
+Lern- und Steuerungszustand</strong>:</p>
+<ul>
+<li>Zuordnung zum SkillPilot-Lernenden,</li>
+<li>gewähltes Curriculum und Personalisierung,</li>
+<li>ausgewählter Lernzielbereich (Scope) und aktives Lernziel,</li>
+<li>Mastery je Lernziel als Zahlenwert,</li>
+<li>Lernkartenplanung und fällige Wiederholungen,</li>
+<li>Verified-Recall-Ergebnis je Karte als bestanden oder nicht bestanden.</li>
+</ul>
+<p>Die Liste enthält bewusst beides: Ergebniswerte wie Mastery und
+<strong>Steuerungszustand</strong> wie Curriculum, Scope, aktives Lernziel und fällige
+Wiederholungen. Letzteres ist kein Lernerfolg im engeren Sinn, aber es ist
+strukturiert, schema-validiert und für die Fortsetzung des Lernens nötig.</p>
+<p>Ebenso wichtig ist die Negativliste. SkillPilot Core speichert <strong>nicht</strong>:</p>
+<ul>
+<li>Chatverläufe, Nachrichten oder Formulierungen der lernenden Person,</li>
+<li>Fotos, Scans, Dateianhänge oder sonstige Binärinhalte,</li>
+<li>eingereichte Schülerlösungen oder deren Korrekturen,</li>
+<li>Freitextantworten zu Aufgaben,</li>
+<li>Analyse- oder Bewertungsprotokolle des Modells,</li>
+<li>OCR-Text, Bild-URLs oder sonstige Verweise auf Bildmaterial.</li>
+</ul>
+<p>Diese Grenze ist keine Absicht für später, sondern der heutige Stand: Die
+schreibenden Werkzeuge der MCP-Oberfläche sind <code>setCurriculum</code>,
+<code>setPersonalization</code>, <code>setScope</code>, <code>setActiveGoal</code>, <code>setMastery</code> und
+<code>recordVerifiedRecallResult</code>. Sie nehmen ausschließlich Lernziel-IDs, einen
+Mastery-Zahlenwert und ein bestanden/nicht-bestanden entgegen. Es gibt kein
+Werkzeug, das ein Bild, einen Anhang, eine Lösung oder einen Gesprächsausschnitt
+entgegennimmt.</p>
+<p>Eine einzige textuelle Abweichung besteht heute noch: <code>recordVerifiedRecallResult</code>
+nimmt eine kurze Rückmeldung entgegen, die als <code>lastFeedback</code> beim Kartenergebnis
+abgelegt wird. Sie ist aus dem Recall-Versuch abgeleitet und kein Mitschnitt des
+Gesprächs, aber sie ist Freitext und damit eine Ausnahme von der Regel.</p>
+<p>Diese Ausnahme wird <strong>nicht als Bestandteil der Architektur akzeptiert</strong>. Sie ist
+als <a href="#12-offene-korrekturen-fur-v2">Korrektur für v2</a> vorgemerkt. Bis dahin gilt
+sie als geduldete Altlast: Kein neues Werkzeug und kein neuer Zustand darf sich
+auf sie berufen, und die Negativliste bleibt vollständig gültig.</p>
+<p>Der Lernzustand muss unabhängig vom jeweiligen Chat-Host sein.</p>
+<p>Ein Lernender kann dann beispielsweise zuerst über LibreChat und später über ChatGPT auf SkillPilot zugreifen. Er sieht dort nicht automatisch denselben Chatverlauf, aber SkillPilot kennt weiterhin:</p>
+<ul>
+<li>das aktuelle Lernziel,</li>
+<li>den bisherigen Lernstand,</li>
+<li>die nächste fällige Lernkarte.</li>
+</ul>
+<p>Was er dort ausdrücklich <strong>nicht</strong> wiederfindet, ist die frühere Lernkommunikation
+selbst: das fotografierte Aufgabenblatt, seine ausformulierte Lösung und den
+Dialog, in dem sie besprochen wurde. Das ist gewollt und keine Lücke.</p>
+<h3 id="43-keine-hostubergreifende-chatportabilitat">4.3 Keine hostübergreifende Chatportabilität</h3>
+<p>MCP, Open Responses und Agent Plugins standardisieren derzeit <strong>nicht den Austausch vollständiger Chatarchive zwischen verschiedenen Hosts</strong>. Der MCP Host besitzt und kontrolliert den Gesprächsverlauf und stellt dem MCP Server nur den jeweils benötigten Kontext bereit.</p>
+<p>Daraus folgt:</p>
+<blockquote>
+<p>Der Chatverlauf ist hostgebunden. Der Lernzustand ist SkillPilot-gebunden.</p>
+</blockquote>
+<p>Der Chat darf deshalb niemals die einzige Quelle für didaktisch relevanten Zustand sein.</p>
+<p>SkillPilot sollte nach wichtigen Schritten selbst einen kompakten Checkpoint
+speichern. Dieser Checkpoint besteht aus Kennungen und Ergebniswerten, nicht aus
+Gesprächsinhalten:</p>
+<div class="highlight"><pre><span></span><code>learner
+activeGoal
+masteryValue
+dueItems
+lastRecallOutcome
+</code></pre></div>
+<p>Ein Checkpoint darf ausdrücklich keine Nachrichtenauszüge, keine Lösungstexte und
+keine Verweise auf Bilddateien enthalten. Geht der Chatverlauf verloren, ist der
+Lern- und Steuerungszustand vollständig erhalten und die Lernkommunikation
+bewusst nicht.</p>
+<p><strong>Eine bewusst abgelehnte Ergänzung:</strong> Eine frühere Fassung führte
+<code>nextRecommendedAction</code> als Checkpoint-Feld. Dafür gibt es in der beschriebenen
+Werkzeugoberfläche keinen Schreibvertrag. Die nächste empfohlene Aktion wird
+deshalb <strong>aus dem gespeicherten Zustand abgeleitet und nicht persistiert</strong>. Sie
+darf nicht als neuer, frei beschreibbarer Zustand in die Architektur rutschen;
+soll sie später persistiert werden, ist das ein eigener, strukturierter
+v2-Vertrag mit fester Wertemenge.</p>
+<h3 id="44-identitat-und-sichtbare-kennungen">4.4 Identität und sichtbare Kennungen</h3>
+<p>Die Identität sollte über SkillPilot-OAuth hergestellt werden.</p>
+<p>Der MCP Host erhält ein Zugriffstoken, das SkillPilot intern dem Lernenden zuordnet. Die vom Host gemeldete E-Mail-Adresse oder der Anzeigename darf nicht als alleiniger Identitätsnachweis dienen.</p>
+<p>Beim Thema sichtbare Kennungen sind zwei Dinge zu unterscheiden, die sich sonst
+zu widersprechen scheinen — die Abnahmetests verlangen eine sichtbare Session-ID,
+diese Regel verbietet sichtbare IDs:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>sichtbar erlaubt</strong></td>
+<td>eine zufällige, opake <code>learningSessionId</code></td>
+</tr>
+<tr>
+<td><strong>nicht sichtbar</strong></td>
+<td>interne Lernenden-ID, Konto-ID, Datenbank-ID oder jede daraus ableitbare Kennung</td>
+</tr>
+</tbody>
+</table>
+<p>Die Session-ID darf also im Chat und im Modellkontext erscheinen, weil sie
+nichts über die lernende Person verrät und mit der Session endet.</p>
+<hr />
+<h2 id="5-zwei-dauerhaft-unterstutzte-betriebswege">5. Zwei dauerhaft unterstützte Betriebswege</h2>
+<h3 id="51-betriebsweg-a-vom-plattformanbieter-gehosteter-mcp-host">5.1 Betriebsweg A: vom Plattformanbieter gehosteter MCP Host</h3>
+<div class="highlight"><pre><span></span><code>Smartphone / Browser
+        │
+        ▼
+ChatGPT oder Claude
+├── Chat UI
+├── Agent Runtime
+├── Chat-Speicher
+├── Modellbetrieb
+└── MCP Client
+        │
+        ▼
+SkillPilot Core / Remote MCP
+</code></pre></div>
+<p>Vorteile:</p>
+<ul>
+<li>sehr geringer eigener Betriebsaufwand,</li>
+<li>ausgereifte Apps und Weboberflächen,</li>
+<li>geräteübergreifende Chatverläufe,</li>
+<li>direkte Vertrags- und Abrechnungsbeziehung zwischen Nutzer und Plattform,</li>
+<li>kein eigener LLM-Betrieb.</li>
+</ul>
+<p>Nachteile:</p>
+<ul>
+<li>die Agent Runtime ist anbieterspezifisch,</li>
+<li>die Modellgrenze ist nicht unter eigener Kontrolle,</li>
+<li>Open Responses ist intern nicht erzwingbar,</li>
+<li>Funktionsumfang und Pläne bestimmt der Plattformanbieter,</li>
+<li>Plugin-Reviews und Freigaben können den Zugang verzögern,</li>
+<li>Chatverläufe verbleiben beim jeweiligen Host.</li>
+</ul>
+<p>Dieser Weg ist für die spätere Reichweite attraktiv, darf aber nicht die kanonische SkillPilot-Architektur bestimmen.</p>
+<h3 id="52-betriebsweg-b-portabler-open-source-mcp-host">5.2 Betriebsweg B: portabler Open-Source-MCP-Host</h3>
+<div class="highlight"><pre><span></span><code>Smartphone / Browser
+        │
+        ▼
+selbst oder fremd betriebener Open-Source-MCP-Host
+├── Chat UI
+├── serverseitige Agent Runtime
+├── Chat-Speicher
+├── Open-Responses-kompatibler Client
+└── MCP Client
+        │                       │
+        ▼                       ▼
+Model Provider             SkillPilot Core
+mit Nutzerkonto            Remote MCP
+</code></pre></div>
+<p>Vorteile:</p>
+<ul>
+<li>Agent Runtime und Chatdaten unter eigener Kontrolle,</li>
+<li>austauschbare Modellanbieter,</li>
+<li>benutzereigene API-Zugänge,</li>
+<li>langfristig Open Responses als stabile Modellgrenze,</li>
+<li>standardisierte Remote-MCP-Verbindung,</li>
+<li>späterer Wechsel des Betreibers ohne Änderung von SkillPilot Core.</li>
+</ul>
+<p>Nachteile:</p>
+<ul>
+<li>zunächst eigener Betrieb,</li>
+<li>Verwaltung benutzereigener API-Zugangsdaten,</li>
+<li>eigene Verantwortung für Chatdaten, Anhänge, Backups und Löschung,</li>
+<li>mobile Qualität hängt vom gewählten Open-Source-Host ab,</li>
+<li>die Standards werden von aktuellen Hosts noch nicht überall vollständig unterstützt.</li>
+</ul>
+<p>Dieser Weg ist die <strong>Zielarchitektur</strong> und zugleich die Grundlage für den kurzfristigen Pilotbetrieb.</p>
+<hr />
+<h2 id="6-spracheingabe-und-bildanalyse">6. Spracheingabe und Bildanalyse</h2>
+<h3 id="61-spracheingabe">6.1 Spracheingabe</h3>
+<p>Spracheingabe sollte eine Funktion des Chat-Clients beziehungsweise MCP Hosts sein:</p>
+<div class="highlight"><pre><span></span><code>Mikrofon
+   │
+   ▼
+Speech-to-Text im Browser oder Host
+   │
+   ▼
+normale Textnachricht
+   │
+   ▼
+Agent Runtime
+</code></pre></div>
+<p>SkillPilot Core muss für normales Diktieren keine Audiodaten erhalten.</p>
+<p>Das hat mehrere Vorteile:</p>
+<ul>
+<li>keine zusätzliche Audio-API in SkillPilot,</li>
+<li>kein modellabhängiges Audioformat,</li>
+<li>Text bleibt in allen Hosts verwendbar,</li>
+<li>geringer Portierungsaufwand.</li>
+</ul>
+<p>Ein echter kontinuierlicher Voice Mode ist optional. Für den Lernbetrieb reicht zunächst eine zuverlässige Diktierfunktion im Eingabefeld.</p>
+<h3 id="62-fluchtige-bildanalyse">6.2 Flüchtige Bildanalyse</h3>
+<p>Für die Analyse einer fotografierten Aufgabenlösung sieht der tatsächliche
+Datenfluss so aus:</p>
+<div class="highlight"><pre><span></span><code>Kamera / Bild-Upload
+        │
+        ▼
+MCP Host
+        │
+        │ Bild beziehungsweise Bilddaten
+        ▼
+Model Provider  (vision-fähiges Modell)
+        │
+        │ Analyseergebnis im Chat
+        ▼
+MCP Host
+        │
+        │ setMastery(goalId, wert)
+        ▼
+SkillPilot Core
+</code></pre></div>
+<p>Wichtig ist, was dieser Fluss <strong>nicht</strong> behauptet:</p>
+<blockquote>
+<p><strong>Bei einem remote betriebenen Vision-Modell übermittelt der MCP Host das Bild
+an den ausgewählten Model Provider. Das Bild wird weder an den
+SkillPilot-MCP-Server übertragen noch in SkillPilot Core gespeichert.
+SkillPilot Core erhält ausschließlich schema-validierte Werte des Lern- und
+Steuerungszustands.</strong></p>
+</blockquote>
+<p>Die Grenze verläuft also nicht zwischen Gerät und Host, sondern zwischen
+<strong>Host plus Model Provider</strong> auf der einen und <strong>SkillPilot Core</strong> auf der
+anderen Seite. Nur ein lokal betriebenes Vision-Modell würde das Bild im
+Verantwortungsbereich des Hosts halten; das ist der Ausnahme-, nicht der
+Regelfall.</p>
+<p>Was zurückgeschrieben wird, ist genau ein Mastery-Wert zu einem Lernziel:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"setMastery"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;exakte Lernziel-ID&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"mastery"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Die inhaltliche Beobachtung — welche Aufgabe es war, welchen Fehler die lernende
+Person gemacht hat, wie sicher das Modell war — bleibt im Gespräch bei Host und
+Model Provider. Sie wird nicht als Analyseprotokoll an SkillPilot übergeben. Ein
+Tool, das ein Feld wie <code>observedAnswer</code> oder <code>suspectedError</code> annähme, gibt es
+nicht und soll es auch nicht geben: Es würde die Lernkommunikation in den Kern
+ziehen.</p>
+<h3 id="63-keine-dauerhaft-gespeicherte-schulerlosung-in-skillpilot-core">6.3 Keine dauerhaft gespeicherte Schülerlösung in SkillPilot Core</h3>
+<p>Eine fotografierte oder ausformulierte Schülerlösung wird <strong>nicht in SkillPilot
+Core</strong> abgelegt. Weder als Bild noch als Text, weder direkt im Tool Call noch
+über einen eigenen Uploadweg.</p>
+<p>Dauerhaft bleibt in SkillPilot Core genau eine Aussage übrig: dass dieses
+Lernziel zu diesem Grad beherrscht wird. Nicht, woran es gezeigt wurde.</p>
+<p>Das ist eine bewusste Entscheidung mit einem bewussten Preis:</p>
+<ul>
+<li>Eine Lösung kann über SkillPilot später nicht erneut aufgerufen oder nachkorrigiert werden.</li>
+<li>Es entsteht kein Portfolio und kein belegbarer Lernnachweis im Sinne
+  archivierter Schülerarbeit.</li>
+<li>Ein Wechsel des Chat-Hosts nimmt die frühere Lernkommunikation mit.</li>
+</ul>
+<h4 id="die-verantwortung-verschwindet-nicht-sie-wandert">Die Verantwortung verschwindet nicht, sie wandert</h4>
+<p>Der naheliegende Fehlschluss wäre, dass mit dem Verzicht auf Speicherung im Kern
+auch die Aufbewahrungs- und Löschfragen entfallen. Für SkillPilot Core stimmt
+das; für das Gesamtsystem nicht:</p>
+<blockquote>
+<p><strong>Für SkillPilot Core entfallen Speicherung, Archivierung und Migration von
+Schülerartefakten. Der MCP Host und der Model Provider bleiben jedoch
+eigenständige Datenverarbeitungsbereiche. Betreibt enpasos den MCP Host selbst,
+benötigt dieser eine eigene Regelung für Zugriff, Aufbewahrung, Löschung,
+Backups und den Umgang mit Chat-Anhängen. SkillPilot Core übernimmt keine
+Portabilitäts- oder Archivierungsgarantie für die beim Host gespeicherte
+Lernkommunikation.</strong></p>
+</blockquote>
+<p>Im Pilot betreibt enpasos den Host selbst. Die Fragen nach Aufbewahrungsfristen,
+Löschung, Backup und Einsicht sind dort also real zu beantworten — Abschnitt 8.2
+führt das aus. Was der Kern gewinnt, ist Schmalheit und Austauschbarkeit, nicht
+Verantwortungsfreiheit für das Gesamtsystem.</p>
+<p>Will eine lernende Person eine Lösung behalten, geschieht das außerhalb von
+SkillPilot Core — in der Fotobibliothek des Geräts oder im Anhangspeicher des
+jeweiligen Hosts.</p>
+<p>Tool Calls transportieren entsprechend keine großen Bilder als Base64-Daten. Das
+ist hier keine Optimierung mehr, sondern folgt unmittelbar aus der Regel.</p>
+<p>Sollte später ein echter, archivierter Lernnachweis fachlich gefordert werden,
+ist das eine Änderung dieser Architekturregel und keine bloße Erweiterung. Sie
+wäre gesondert zu entscheiden und zu dokumentieren.</p>
+<hr />
+<h2 id="7-abrechnungsmodell-und-credential-eigentum">7. Abrechnungsmodell und Credential-Eigentum</h2>
+<p>Die Grundregel für alle Betriebswege:</p>
+<blockquote>
+<p><strong>Providerkonto und Modell-Credentials gehören dem Lernenden beziehungsweise
+der erziehungsberechtigten Person. Der MCP Host oder dessen Model Access Layer
+darf die Credentials im Auftrag des Nutzers verwenden. Ein zentraler
+Betreiber-Key mit anschließender Weiterberechnung an SkillPilot-Nutzer ist
+ausgeschlossen.</strong></p>
+</blockquote>
+<h3 id="71-fremdbetriebener-host">7.1 Fremdbetriebener Host</h3>
+<p>Bei ChatGPT oder Claude zahlt der Nutzer das jeweilige Consumer-Abonnement direkt an den Plattformanbieter.</p>
+<p>Das erfüllt die direkte Abrechnung, führt aber zu einer Bindung an dessen:</p>
+<ul>
+<li>Agent Runtime,</li>
+<li>Modellangebot,</li>
+<li>Kontoregeln,</li>
+<li>Altersbedingungen,</li>
+<li>Plugin-Unterstützung.</li>
+</ul>
+<h3 id="72-selbst-betriebener-host-mit-byok">7.2 Selbst betriebener Host mit BYOK</h3>
+<p>Beim Open-Source-Host verwendet jeder Nutzer einen eigenen API-Zugang:</p>
+<div class="highlight"><pre><span></span><code>Lernender beziehungsweise Elternteil
+        │
+        ├── Providerkonto
+        ├── eigener API Key
+        └── eigene Zahlungs- und Budgetgrenze
+                 │
+                 ▼
+        selbst betriebener MCP Host
+        (verwendet den Key im Auftrag,
+         besitzt ihn nicht)
+</code></pre></div>
+<p>Der MCP Host führt die Anfrage aus, aber der Provider rechnet über das Konto des Nutzers ab.</p>
+<p>Wichtig ist die Trennung von Consumer- und API-Abonnements:</p>
+<ul>
+<li>Ein ChatGPT Plus- oder Pro-Abonnement enthält nicht automatisch OpenAI-API-Guthaben.</li>
+<li>Ein Claude Pro- oder Max-Abonnement ist ebenfalls kein Claude-API-Zugang.</li>
+</ul>
+<p>Für minderjährige Lernende sollte das Providerkonto in der Regel durch Eltern beziehungsweise Erziehungsberechtigte angelegt und mit einer festen Ausgabengrenze versehen werden.</p>
+<h3 id="73-ausschlusskriterium">7.3 Ausschlusskriterium</h3>
+<p>Nicht geeignet ist ein Host, der:</p>
+<ul>
+<li>nur einen zentralen API Key des SkillPilot-Betreibers verwendet,</li>
+<li>die Tokenkosten anschließend an SkillPilot berechnet,</li>
+<li>oder keine persönliche Providerabrechnung zulässt.</li>
+</ul>
+<p>Das würde das von SkillPilot zu vermeidende Tokenkosten- und Abrechnungsrisiko wieder auf SkillPilot verlagern.</p>
+<hr />
+<h2 id="8-pilotarchitektur">8. Pilotarchitektur</h2>
+<h3 id="81-aufbau">8.1 Aufbau</h3>
+<div class="highlight"><pre><span></span><code>Internet
+   │
+   ▼
+HTTPS Reverse Proxy
+   │
+   ├────────────────────────────┐
+   ▼                            ▼
+LibreChat                    SkillPilot Core
+Single Node                 bestehende Infrastruktur
+   │                            │
+   ├── MongoDB                  ├── MCP Server
+   ├── Chat Sessions            ├── OAuth
+   ├── User Accounts            └── Learning State
+   ├── User Provider Keys           (strukturierter Lern-
+   ├── Upload-Volume                 und Steuerungszustand)
+   ├── Voice Dictation
+   ├── Image Upload
+   └── MCP Client
+</code></pre></div>
+<p>Für eine Handvoll Testnutzer genügt:</p>
+<ul>
+<li>ein Server beziehungsweise eine VM,</li>
+<li>Docker Compose,</li>
+<li>HTTPS,</li>
+<li>LibreChat,</li>
+<li>MongoDB,</li>
+<li>geschlossene Registrierung,</li>
+<li>manuell angelegte Testkonten,</li>
+<li>keine Kubernetes-Infrastruktur,</li>
+<li>zunächst kein horizontaler Betrieb,</li>
+<li>kein zusätzlicher Redis-Cluster.</li>
+</ul>
+<p>SkillPilot Core bleibt davon getrennt und wird lediglich als Remote-MCP-Server angebunden.</p>
+<h3 id="82-persistenz-sicherung-und-loschung">8.2 Persistenz, Sicherung und Löschung</h3>
+<p>„Tägliche Datenbanksicherung" reicht als Konzept nicht, sobald Bilder und
+Anhänge in einem eigenen Volume liegen. Der Pilot muss deshalb für jeden dieser
+Bestände ausdrücklich benennen, wo er liegt und wer ihn löscht:</p>
+<table>
+<thead>
+<tr>
+<th>Bestand</th>
+<th>Zu entscheiden</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MongoDB (Chats, Nachrichten, Konten)</td>
+<td>Sicherungsintervall, Aufbewahrung, Wiederherstellungstest</td>
+</tr>
+<tr>
+<td>Upload-Volume (Bilder, Anhänge)</td>
+<td>gesichert oder bewusst nicht gesichert; Aufbewahrungs- und Löschfrist</td>
+</tr>
+<tr>
+<td>Verschlüsselungsschlüssel für Provider-Credentials und OAuth-Tokens</td>
+<td>getrennte Sicherung, Rotationsweg</td>
+</tr>
+<tr>
+<td>Konfiguration und Plugin-Paket</td>
+<td>versioniert, reproduzierbar wiederherstellbar</td>
+</tr>
+<tr>
+<td>Provider-seitige Verarbeitung von Bilddaten</td>
+<td>welcher Provider, welche Aufbewahrungsbedingungen</td>
+</tr>
+</tbody>
+</table>
+<p>Zusätzlich ist festzulegen:</p>
+<ul>
+<li><strong>Löschverhalten:</strong> Was passiert mit Anhängen und Provider-Credentials, wenn
+  ein Chat oder ein Benutzerkonto gelöscht wird?</li>
+<li><strong>Zugriff:</strong> Wer im Betreiberteam kann auf Chatinhalte Minderjähriger sehen,
+  und unter welchen Bedingungen?</li>
+</ul>
+<p>Das muss kein Compliance-Kapitel werden. Es muss nur klar sein, <strong>welche Daten wo
+liegen und wer sie löscht</strong>.</p>
+<h3 id="83-pilotkonfiguration">8.3 Pilotkonfiguration</h3>
+<ol>
+<li><strong>Version Pinning:</strong> LibreChat-Version beziehungsweise Commit, Agent-Plugin-Version und
+   SkillPilot-Plugin-Version werden festgeschrieben. „LibreChat aktuell" ist bei
+   experimentellen Funktionen zu unbestimmt.</li>
+<li>Jeder Tester erhält ein Konto im selbst betriebenen Chat-Host.</li>
+<li>Jeder Tester beziehungsweise Elternteil hinterlegt einen eigenen Provider-API-Key.</li>
+<li>Es werden nur Modelle freigeschaltet, die:</li>
+<li>Bilder verarbeiten,</li>
+<li>Tools zuverlässig aufrufen,</li>
+<li>Streaming unterstützen,</li>
+<li>deutschsprachige Antworten in ausreichender Qualität erzeugen.</li>
+<li>Der konkrete Vision-Provider und dessen Datenpfad werden protokolliert.</li>
+<li>SkillPilot wird nativ als Remote-MCP-Server konfiguriert.</li>
+<li>Der SkillPilot Skill wird als Agent- beziehungsweise Skill-Anweisung eingebunden.</li>
+<li>MCP Apps werden nur zusätzlich verwendet, sobald der Host sie stabil unterstützt.</li>
+<li>Die kritischen Lernabläufe bleiben textbasiert nutzbar.</li>
+</ol>
+<hr />
+<h2 id="9-stufenplan">9. Stufenplan</h2>
+<h3 id="phase-1-schnittstellen-stabilisieren">Phase 1: Schnittstellen stabilisieren</h3>
+<p>SkillPilot Core erhält eine hostunabhängige MCP-Schnittstelle mit:</p>
+<ul>
+<li>Streamable HTTP,</li>
+<li>OAuth 2.0,</li>
+<li>stabilen Tool-Namen,</li>
+<li>versionierten Eingabe- und Ausgabeschemata,</li>
+<li>idempotenten Schreiboperationen,</li>
+<li>Text-Fallback,</li>
+<li><code>structuredContent</code>,</li>
+<li>optionalen MCP-Apps-Ressourcen,</li>
+<li>klaren Fehlercodes,</li>
+<li>dauerhaftem Lern- und Steuerungszustand.</li>
+</ul>
+<p>Diese Schnittstelle erhält bewusst <strong>kein</strong> Werkzeug zum Hochladen von Bildern,
+Anhängen oder Schülerlösungen. Die Speichergrenze aus Abschnitt 4.2 ist damit
+schon in Phase 1 durch die Toolliste erzwungen und nicht bloß eine Zusage.</p>
+<p>Parallel wird das kanonische Agent Plugin gepflegt:</p>
+<div class="highlight"><pre><span></span><code>plugin.json
+skills/skillpilot-coach/SKILL.md
+mcp.json
+</code></pre></div>
+<h3 id="phase-2-librechat-pilot">Phase 2: LibreChat-Pilot</h3>
+<p>Ziel:</p>
+<ul>
+<li>fünf bis zehn Testnutzer,</li>
+<li>Smartphone und Desktop,</li>
+<li>derselbe Chat auf mehreren Geräten,</li>
+<li>Diktieren,</li>
+<li>Fotografieren und Analysieren von Lösungen,</li>
+<li>persönlicher API-Zugang,</li>
+<li>keine Abhängigkeit vom OpenAI-Reviewprozess.</li>
+</ul>
+<p>In dieser Phase ist es akzeptabel, dass LibreChat intern noch providerabhängige Adapter verwendet. SkillPilot selbst bleibt trotzdem entkoppelt, weil seine einzige Verbindung Remote MCP ist.</p>
+<h3 id="phase-3-zweiter-kandidat-archestra">Phase 3: Zweiter Kandidat Archestra</h3>
+<p>Parallel wird praktisch geprüft:</p>
+<ul>
+<li><code>/responses</code>-Verhalten gegen die offiziellen Open-Responses-Acceptance-Tests,</li>
+<li>persönliche Provider Keys,</li>
+<li>MCP Apps,</li>
+<li>mobile Browserqualität,</li>
+<li>Kameraaufnahme und Diktierfunktion,</li>
+<li>Agent-Plugin-Import,</li>
+<li>Betriebsaufwand.</li>
+</ul>
+<p>Archestra ersetzt LibreChat erst, wenn es in diesen Punkten praktisch besser abschneidet.</p>
+<h3 id="phase-4-hosted-channels">Phase 4: Hosted Channels</h3>
+<h4 id="claude">Claude</h4>
+<ul>
+<li>Test mit volljährigen Personen,</li>
+<li>Remote MCP,</li>
+<li>MCP Apps,</li>
+<li>mobile Bedienung,</li>
+<li>Diktat,</li>
+<li>Bilder.</li>
+</ul>
+<h4 id="chatgpt">ChatGPT</h4>
+<ul>
+<li>Plugin-Review weiterführen,</li>
+<li>veröffentlichte Plugin-Version testen,</li>
+<li>tatsächliche Plan- und Mobilverfügbarkeit prüfen,</li>
+<li>nicht auf Custom-MCP-Developer-Mode als Schülerlösung bauen.</li>
+</ul>
+<p>Beide Hosts greifen auf denselben SkillPilot-Lernzustand zu. Ihre Chatarchive bleiben getrennt.</p>
+<h3 id="phase-5-fremdbetriebener-portabler-host">Phase 5: Fremdbetriebener portabler Host</h3>
+<p>Ein Wechsel vom eigenen Betrieb zu einem fremden Betreiber erfolgt erst, wenn dieser nachweislich unterstützt:</p>
+<ol>
+<li>serverseitige, dauerhafte Chats,</li>
+<li>geräteübergreifende Nutzung,</li>
+<li>persönliche Modellanbieter-Zugangsdaten,</li>
+<li>direkte Nutzerabrechnung,</li>
+<li>Open Responses,</li>
+<li>Remote MCP mit OAuth,</li>
+<li>MCP Apps,</li>
+<li>Agent Plugins,</li>
+<li>mobile Spracheingabe,</li>
+<li>mobile Bildaufnahme,</li>
+<li>Datenexport und Löschung,</li>
+<li>für die Zielaltersgruppe zulässige Konten.</li>
+</ol>
+<hr />
+<h2 id="10-abnahmetests-fur-jeden-mcp-host">10. Abnahmetests für jeden MCP Host</h2>
+<p>Ein Host darf für SkillPilot erst freigegeben werden, wenn folgende Tests bestehen:</p>
+<h3 id="gerate-und-sitzungen">Geräte und Sitzungen</h3>
+<ul>
+<li>Chat auf dem Smartphone beginnen und auf dem Desktop fortsetzen.</li>
+<li>Chat nach Browserneustart wieder öffnen.</li>
+<li>Während einer laufenden Antwort die Verbindung unterbrechen und fortsetzen.</li>
+<li>Zwei Geräte dürfen nicht zu widersprüchlichen Lernaktionen führen.</li>
+</ul>
+<h3 id="sprache">Sprache</h3>
+<ul>
+<li>mindestens 60 Sekunden deutsche Sprache diktieren,</li>
+<li>mathematische Begriffe ausreichend verständlich erkennen,</li>
+<li>Text vor dem Absenden korrigieren können,</li>
+<li>Tool Call nach diktierter Eingabe erfolgreich ausführen.</li>
+</ul>
+<h3 id="bilder">Bilder</h3>
+<ul>
+<li>Foto direkt mit der Smartphone-Kamera aufnehmen,</li>
+<li>JPEG und typische Smartphoneformate verarbeiten,</li>
+<li>handschriftliche Lösung analysieren,</li>
+<li>anschließend ein SkillPilot-Tool aufrufen,</li>
+<li>Bild und Text gemeinsam in einem Turn verarbeiten,</li>
+<li><strong>dokumentieren, an welchen Model Provider das Bild übertragen wird und welche
+  Speicherungs- beziehungsweise Aufbewahrungsbedingungen dort gelten.</strong></li>
+</ul>
+<h3 id="mcp-negativtest">MCP-Negativtest</h3>
+<p>Der zentrale Datenschutznachweis. Zu prüfen ist nicht, ob das Bild den Host
+verlässt — das tut es bei einem remote betriebenen Vision-Modell —, sondern was
+bei SkillPilot ankommt:</p>
+<blockquote>
+<p><strong>Nachweisen, dass weder Bilddaten noch OCR-Text, Lösungstext, Bild-URL oder
+modellseitiges Analyseprotokoll in MCP-Toolargumenten, SkillPilot-Logs,
+SkillPilot-Traces oder der Learning-State-Datenbank erscheinen.</strong></p>
+</blockquote>
+<h3 id="credential-negativtest">Credential-Negativtest</h3>
+<ul>
+<li>Provider-API-Schlüssel und MCP-OAuth-Tokens dürfen weder in
+  SkillPilot-Toolargumenten noch in SkillPilot-Logs erscheinen.</li>
+<li>API-Schlüssel erscheinen nicht in Chatnachrichten.</li>
+</ul>
+<h3 id="mcp-und-identitat">MCP und Identität</h3>
+<ul>
+<li>OAuth-Anmeldung auf dem Smartphone abschließen,</li>
+<li>Zugriffstoken erneuern,</li>
+<li>unterbrochene MCP-Verbindung wiederherstellen,</li>
+<li>Tool Call eindeutig einem Lernenden zuordnen,</li>
+<li>keine interne SkillPilot-ID im Modellkontext anzeigen; eine opake
+  <code>learningSessionId</code> ist dabei ausdrücklich erlaubt (Abschnitt 4.4).</li>
+</ul>
+<h3 id="idempotenz">Idempotenz</h3>
+<ul>
+<li>Wiederholte beziehungsweise nach Verbindungsabbrüchen erneut ausgeführte
+  <code>setMastery</code>- oder Recall-Schreibaufrufe dürfen nicht zu widersprüchlichen
+  Zuständen führen.</li>
+</ul>
+<h3 id="loschtest">Löschtest</h3>
+<ul>
+<li>Das Löschen eines Chats oder eines Kontos muss das in Abschnitt 8.2 definierte
+  Verhalten für Anhänge und Provider-Credentials auslösen.</li>
+</ul>
+<h3 id="ui">UI</h3>
+<ul>
+<li>vollständiger Ablauf ohne MCP Apps möglich,</li>
+<li>strukturierte Tool-Ergebnisse korrekt anzeigen,</li>
+<li>MCP App auf unterstützten Hosts in einer Sandbox laden,</li>
+<li>UI-Aktion darf nur erlaubte Tools aufrufen.</li>
+</ul>
+<h3 id="abrechnung">Abrechnung</h3>
+<ul>
+<li>jeder Nutzer verwendet ein eigenes Providerkonto,</li>
+<li>kein zentraler SkillPilot-API-Key,</li>
+<li>Modellanbieter rechnet direkt mit Nutzer beziehungsweise Eltern ab,</li>
+<li>Nutzer kann Ausgaben begrenzen.</li>
+</ul>
+<h3 id="open-responses-konformitat">Open-Responses-Konformität</h3>
+<ul>
+<li>Konformität wird anhand der offiziellen Acceptance Tests und eines
+  SkillPilot-spezifischen Capability-Profils geprüft.</li>
+<li>Ein Endpunktname <code>/responses</code> gilt ausdrücklich nicht als Nachweis.</li>
+</ul>
+<h3 id="modellwechsel">Modellwechsel</h3>
+<p>Jedes freigegebene Modell muss dieselben SkillPilot-Referenzfälle bestehen:</p>
+<ul>
+<li>Lernsession fortsetzen,</li>
+<li>Lernziel wechseln,</li>
+<li>fällige Lernkarten starten,</li>
+<li>Nutzerantwort bewerten,</li>
+<li>Bild einer Lösung analysieren,</li>
+<li>nach einem Tool-Ergebnis korrekt weiterfragen,</li>
+<li>sichtbare Session-ID und Backend-Zustand konsistent verwenden.</li>
+</ul>
+<p>Open Responses standardisiert die technische Nachrichtenschnittstelle. Es ersetzt nicht diese fachlichen Modelltests.</p>
+<hr />
+<h2 id="11-endgultige-empfehlung">11. Endgültige Empfehlung</h2>
+<h3 id="zielarchitektur">Zielarchitektur</h3>
+<div class="highlight"><pre><span></span><code>Portabler serverseitiger MCP Host
+        ├── Open Responses zum Model Provider
+        ├── Remote MCP zu SkillPilot Core
+        ├── serverseitiger Chat-Speicher
+        ├── mobile Weboberfläche
+        ├── Diktat
+        └── Bild-Upload
+</code></pre></div>
+<h3 id="kurzfristige-umsetzung">Kurzfristige Umsetzung</h3>
+<p><strong>LibreChat als selbst betriebener Pilot-MCP-Host</strong>:</p>
+<ul>
+<li>geringster zusätzlicher Entwicklungsaufwand,</li>
+<li>BYOK und direkte Providerabrechnung,</li>
+<li>Remote MCP,</li>
+<li>mobile Webnutzung,</li>
+<li>Spracheingabe,</li>
+<li>Bildanalyse,</li>
+<li>geräteübergreifende Chats.</li>
+</ul>
+<p>Dabei werden Agent Plugins und MCP Apps noch nicht als zwingende Laufzeitvoraussetzung verwendet.</p>
+<h3 id="parallelversuch">Parallelversuch</h3>
+<p><strong>Archestra als zweiter Pilotkandidat und Standardslabor</strong>:</p>
+<ul>
+<li>Open-Responses-nahe Modellgrenze,</li>
+<li>persönliche Provider Keys,</li>
+<li>MCP Apps,</li>
+<li>möglicher späterer Wechselkandidat.</li>
+</ul>
+<h3 id="fremdbetriebene-optionen">Fremdbetriebene Optionen</h3>
+<ul>
+<li><strong>Claude:</strong> sehr guter technischer MCP-Kanal für volljährige Testpersonen.</li>
+<li><strong>ChatGPT:</strong> strategisch wichtigster Distributionskanal, aber nicht als kurzfristig garantierte private mobile Testumgebung.</li>
+<li><strong>Künftiger Managed Host:</strong> bevorzugte langfristige Betriebsform, sobald direkte Nutzerabrechnung, Open Responses, Remote MCP, MCP Apps, Agent Plugins und mobile Schülernutzung gemeinsam nachweisbar sind.</li>
+</ul>
+<p>Die entscheidende Maßnahme ist daher nicht, schon heute den endgültigen Chat-Host auszuwählen. Entscheidend ist, <strong>SkillPilot Core, seinen Lern- und Steuerungszustand und das Agent Plugin so sauber zu trennen, dass der Host später ohne Änderung der didaktischen Kernanwendung ersetzt werden kann</strong>.</p>
+<hr />
+<h2 id="12-offene-korrekturen-fur-v2">12. Offene Korrekturen für v2</h2>
+<p>Bekannte Abweichungen zwischen dieser Konzeptfassung und dem gewünschten
+Zielzustand. Sie sind hier festgehalten, damit sie nicht stillschweigend zur
+Architektur werden.</p>
+<h3 id="121-freitext-ruckmeldung-im-verified-recall-entfernen">12.1 Freitext-Rückmeldung im Verified Recall entfernen</h3>
+<p><strong>Abweichung:</strong> <code>recordVerifiedRecallResult</code> nimmt einen Freitextparameter
+entgegen, der als <code>lastFeedback</code> im Lernzustand persistiert wird. Damit speichert
+SkillPilot Core eine formulierte Aussage aus der Lernkommunikation und nicht nur
+strukturierten Lern- und Steuerungszustand.</p>
+<p><strong>Zielzustand in v2:</strong> Das Kartenergebnis besteht ausschließlich aus
+Kennung und Ausgang — <code>cardId</code> und bestanden/nicht bestanden. Die Begründung
+gehört in das Gespräch beim Host, nicht in den Kern.</p>
+<p><strong>Umfang:</strong> Entfernen des Parameters aus der Werkzeugsignatur, Entfernen des
+Feldes aus dem persistierten Kartenzustand, Migration bestehender Einträge sowie
+Nachziehen der abhängigen Prompt- und Vertragsdokumente. Es ist ein
+Contract-Major-Schnitt, keine kompatible Erweiterung, und gehört deshalb in eine
+neue Vertragslinie.</p>
+<p><strong>Bis dahin:</strong> Die Ausnahme bleibt bestehen, wird aber nicht ausgeweitet.</p>
+<hr />
+<h1 id="teil-b-marktanhang-stand-19-august-2026">Teil B — Marktanhang (Stand 19. August 2026)</h1>
+<p>Dieser Teil bewertet die heute verfügbaren Hosts. Er ist <strong>datiert und
+veränderlich</strong>. Ändert ein Anbieter Pläne, Oberflächen, Altersbedingungen oder
+MCP-Unterstützung, wird nur dieser Teil nachgezogen — Teil A bleibt unberührt.</p>
+<p>Die Angaben beruhen auf den Anbieterdokumentationen zum genannten Stand. Vor
+einer Freigabeentscheidung sind sie erneut zu prüfen; die Abnahmetests aus
+Abschnitt 10 ersetzen sie nicht, sondern setzen sie voraus.</p>
+<h2 id="13-host-optionen">13. Host-Optionen</h2>
+<h3 id="131-chatgpt">13.1 ChatGPT</h3>
+<h4 id="was-funktioniert">Was funktioniert</h4>
+<p>ChatGPT bietet:</p>
+<ul>
+<li>vollständig gehostete Chat- und Agent-Laufzeit,</li>
+<li>geräteübergreifende Chatverläufe,</li>
+<li>mobile und Weboberflächen für den allgemeinen Chat,</li>
+<li>Spracheingabe und Bildverarbeitung,</li>
+<li>direkte Abrechnung über das ChatGPT-Konto,</li>
+<li>einen Plugin-Veröffentlichungs- und Verzeichnisprozess.</li>
+</ul>
+<h4 id="aktuelle-einschrankungen">Aktuelle Einschränkungen</h4>
+<p>Die Plugin Directory ist derzeit für ChatGPT Web und Desktop beschrieben. Ob ein
+Plugin installiert oder aufgerufen werden kann, hängt von Plan, Workspace, Rolle,
+Oberfläche und Region ab.</p>
+<p>Custom MCP Apps im Developer Mode sind ausdrücklich <strong>web-only</strong>. Vollständiges
+MCP mit Schreibaktionen ist gegenwärtig Business sowie Enterprise/Edu
+vorbehalten, während Pro nur einen eingeschränkteren Developer-Mode-Pfad besitzt.</p>
+<p>Daraus folgt eine wichtige Präzisierung gegenüber einer pauschalen Zeile
+„mobile Nutzung: ja":</p>
+<div class="highlight"><pre><span></span><code>Mobile Chat-Nutzung:                        ja
+SkillPilot-MCP-/Plugin-Nutzung mobil:       derzeit nicht belastbar nachgewiesen
+Custom MCP Apps im Developer Mode mobil:    nein
+</code></pre></div>
+<p>ChatGPT unterstützt zwar Sprache und Bilder allgemein, der Live-Sprachmodus unterstützt Plugins beziehungsweise verbundene Apps zunächst nicht vollständig.</p>
+<p>Die interne Verbindung zwischen ChatGPT-Agent-Runtime und OpenAI-Modellen ist zudem nicht die von SkillPilot kontrollierte Open-Responses-Grenze.</p>
+<h4 id="eignung">Eignung</h4>
+<p><strong>Geeignet als:</strong></p>
+<ul>
+<li>späterer, fremdbetriebener Vertriebskanal,</li>
+<li>Zugang für Nutzer mit passendem ChatGPT-Konto,</li>
+<li>skalierbare Variante nach erfolgreichem Review.</li>
+</ul>
+<p><strong>Nicht geeignet als:</strong></p>
+<ul>
+<li>kurzfristig garantiert verfügbare private Testumgebung,</li>
+<li>derzeit verlässliche mobile Custom-MCP-App-Lösung,</li>
+<li>anbieterneutrale Agent Runtime.</li>
+</ul>
+<p>Für Minderjährige gilt bei ChatGPT ein Mindestalter von 13 Jahren; von 13 bis 18 ist die Zustimmung eines Elternteils oder Erziehungsberechtigten erforderlich.</p>
+<p><strong>Bewertung:</strong> strategisch wichtig, aber nicht als alleinige Pilotlösung einplanen.</p>
+<hr />
+<h3 id="132-claude">13.2 Claude</h3>
+<h4 id="was-funktioniert_1">Was funktioniert</h4>
+<p>Claude unterstützt Remote MCP Connectors und stellt sie über Web-, Desktop- und
+mobile Oberflächen bereit. Interaktive Connectors beziehungsweise MCP Apps werden
+auch unter iOS und Android unterstützt.</p>
+<p>Claude bietet außerdem:</p>
+<ul>
+<li>mobile Diktierfunktion, dokumentiert auch für Deutsch,</li>
+<li>Voice Mode,</li>
+<li>Bild- und Dateiupload,</li>
+<li>vom Nutzer bezahlte Claude-Abonnements.</li>
+</ul>
+<h4 id="aktuelle-einschrankungen_1">Aktuelle Einschränkungen</h4>
+<ul>
+<li>Für den <strong>Claude-Consumerdienst</strong> gilt ein Mindestalter von 18 Jahren.</li>
+<li>Der Nutzer ist an die Claude-Agent-Runtime und Anthropic-Modelle gebunden.</li>
+<li>Ein Import portabler Agent-Plugins-v1-Pakete ist nicht als belastbarer allgemeiner Produktweg verifiziert.</li>
+<li>Ein Claude-Abonnement ist nicht automatisch ein Claude-API-Guthaben; Consumer- und API-Abrechnung sind getrennt.</li>
+</ul>
+<h4 id="zwei-rollen-sauber-trennen">Zwei Rollen sauber trennen</h4>
+<p>Die 18-Jahre-Grenze betrifft den Consumerdienst und darf nicht zu „Anthropic ist
+als Modellanbieter für Schüler ausgeschlossen" verallgemeinert werden:</p>
+<div class="highlight"><pre><span></span><code>Claude als MCP Host:                für minderjährige Schüler nicht geeignet
+Anthropic als Model Provider
+hinter eigenem Host:                grundsätzlich möglich, aber nur nach Prüfung
+                                    und Umsetzung der Minderjährigenschutz-
+                                    anforderungen des Anbieters
+</code></pre></div>
+<p>Für Betriebsweg B ist Anthropic damit ein zulässiger Modellanbieter, auch wenn
+Claude als Host für die Zielgruppe ausscheidet.</p>
+<h4 id="eignung_1">Eignung</h4>
+<p><strong>Geeignet als:</strong></p>
+<ul>
+<li>technisch sehr guter gehosteter Remote-MCP-Test,</li>
+<li>Test von MCP Apps auf mobilen Endgeräten,</li>
+<li>Pilot mit volljährigen Testpersonen,</li>
+<li>Referenz für die gewünschte spätere Benutzererfahrung.</li>
+</ul>
+<p><strong>Nicht geeignet als:</strong></p>
+<ul>
+<li>reguläre Host-Plattform für minderjährige Schülerinnen und Schüler,</li>
+<li>anbieterneutrale Agent Runtime.</li>
+</ul>
+<p><strong>Bewertung:</strong> aktuell die technisch überzeugendste gehostete MCP-Variante, aber wegen der Altersgrenze nicht die allgemeine Schülerlösung.</p>
+<hr />
+<h3 id="133-librechat">13.3 LibreChat</h3>
+<h4 id="was-funktioniert_2">Was funktioniert</h4>
+<p>LibreChat ist eine selbst hostbare Open-Source-Chatplattform. Für einen kleinen Pilotbetrieb kann sie per Docker Compose auf einem einzelnen Server betrieben werden. Sie besitzt einen serverseitigen Chat- und Sitzungsspeicher und unterstützt wiederaufnehmbare Streams und geräteübergreifende Chatnutzung.</p>
+<p>Für die SkillPilot-Anforderungen sind besonders relevant:</p>
+<ul>
+<li>browserbasierte Spracheingabe,</li>
+<li>Bild- und Dateiupload für Vision-Modelle,</li>
+<li>nutzerbereitgestellte Modell-API-Schlüssel,</li>
+<li>Remote MCP einschließlich OAuth Authorization Code mit PKCE und Refresh Tokens,</li>
+<li>mehrere Modellanbieter.</li>
+</ul>
+<p>LibreChat kann damit die Modellkosten über den persönlichen API-Zugang des Lernenden beziehungsweise der Eltern direkt beim Modellanbieter abrechnen.</p>
+<p>Für seinen Standard-Bildupload dokumentiert LibreChat ausdrücklich, dass Bilder
+für die native Vision-Verarbeitung <strong>direkt an den Model Provider gesendet</strong>
+werden. Das ist die Belegstelle für den Datenfluss aus Abschnitt 6.2.</p>
+<p>Für eine einzelne Instanz ist der Verzicht auf Redis vertretbar; LibreChat sieht
+dafür einen In-Memory-Modus vor.</p>
+<h4 id="stand-der-standards">Stand der Standards</h4>
+<p>Agent Plugins 1.0 wurden im August 2026 als <strong>experimentelle</strong> Funktion in LibreChat integriert. Das System kann portable Pakete mit <code>plugin.json</code>, Skills und <code>mcp.json</code> aus einem Betreiberverzeichnis laden.</p>
+<p>Die offizielle MCP-Apps-Unterstützung liegt weiterhin als <strong>offener Draft Pull Request</strong> vor und ist nicht Bestandteil einer belastbaren regulären Version.</p>
+<p>LibreChat besitzt außerdem einen Responses-kompatiblen Zugang zu seinen eigenen Agents. Das ist jedoch nicht dasselbe wie eine nachweislich durchgängige Open-Responses-Schnittstelle zwischen LibreChat und allen dahinterliegenden Modellanbietern.</p>
+<p>Weil beide Funktionen experimentell beziehungsweise offen sind, ist eine
+<strong>feste Version beziehungsweise ein bestimmter Commit</strong> Pflicht (Abschnitt 8.3).</p>
+<h4 id="eignung_2">Eignung</h4>
+<p><strong>Geeignet als:</strong></p>
+<ul>
+<li>unmittelbare Testplattform für fünf bis zehn Nutzer,</li>
+<li>serverseitiger MCP Host,</li>
+<li>geräteübergreifender Chat,</li>
+<li>mobile Browseroberfläche,</li>
+<li>Spracheingabe,</li>
+<li>Bildanalyse,</li>
+<li>BYOK-Betrieb,</li>
+<li>Remote-MCP-Integration.</li>
+</ul>
+<p><strong>Noch nicht belastbar für:</strong></p>
+<ul>
+<li>vollständige MCP-Apps-Darstellung ohne eigene Anpassungen,</li>
+<li>vollständig standardisierte Open-Responses-Modellgrenze,</li>
+<li>produktive Abhängigkeit vom experimentellen Agent-Plugin-Import.</li>
+</ul>
+<h4 id="konkrete-verwendung-im-pilot">Konkrete Verwendung im Pilot</h4>
+<ol>
+<li>SkillPilot als normalen Remote-MCP-Server in LibreChat konfigurieren.</li>
+<li>Skill-Anweisungen über den vorhandenen Skill- beziehungsweise Agent-Mechanismus einbinden.</li>
+<li>Das kanonische Agent-Plugin-Paket parallel weiterpflegen.</li>
+<li>MCP Apps nicht zur Voraussetzung machen.</li>
+<li>Jede SkillPilot-Funktion zunächst vollständig über Text und strukturierte Tool-Ergebnisse nutzbar machen.</li>
+</ol>
+<p><strong>Bewertung:</strong> beste kurzfristige Hauptlösung.</p>
+<hr />
+<h3 id="134-archestra">13.4 Archestra</h3>
+<h4 id="was-funktioniert_3">Was funktioniert</h4>
+<p>Archestra ist eine selbst hostbare Open-Source-Plattform. Dokumentiert sind
+inzwischen:</p>
+<ul>
+<li>eingebauter serverseitiger Chat,</li>
+<li>Bild-, PDF- und Dateianhänge,</li>
+<li>persönliche Provider-Keys,</li>
+<li>ein OpenAI-kompatibler <code>/responses</code>-Model-Router über mehrere Provider,</li>
+<li>nutzergebundener OAuth-Zugriff auf die jeweils persönlichen Provider-Keys,</li>
+<li>Darstellung von MCP Apps externer MCP Server.</li>
+</ul>
+<p>Damit kommt Archestra der langfristigen Zielarchitektur näher als viele klassische Chat-UIs:</p>
+<div class="highlight"><pre><span></span><code>Agent Runtime
+    ├── Responses-basierter Model Router
+    ├── persönliche Provider Keys
+    ├── MCP Client
+    └── MCP Apps Host
+</code></pre></div>
+<h4 id="aktuelle-einschrankungen_2">Aktuelle Einschränkungen</h4>
+<ul>
+<li>Der Model Router ist als <strong>OpenAI-kompatible</strong> Responses API dokumentiert, der Providerformate übersetzt. Das ist technisch attraktiv, aber kein Nachweis vollständiger Open-Responses-Konformität; diese ist gegen die offiziellen Acceptance Tests zu prüfen.</li>
+<li>Eine belastbare Agent-Plugins-v1-Unterstützung ist nicht verifiziert.</li>
+<li>Die Plattform ist stärker auf Unternehmens- und Plattformbetrieb ausgerichtet und komplexer als LibreChat.</li>
+<li>Das Lizenzmodell ist Open Core; der freie Basisteil steht unter AGPL, bestimmte Enterprise-Funktionen sind separat lizenziert. Für Organisationen unter 30 Nutzern besteht derzeit eine besondere Nutzungsmöglichkeit für Enterprise-Funktionen.</li>
+</ul>
+<h4 id="was-noch-praktisch-zu-prufen-ist">Was noch praktisch zu prüfen ist</h4>
+<div class="highlight"><pre><span></span><code>Datei- und Bildanhänge:   dokumentiert
+mobile Kameraaufnahme:    praktisch zu testen
+Diktierfunktion:          nicht ausreichend belegt, praktisch zu testen
+mobile Gesamtqualität:    praktisch zu testen
+Open-Responses-Konformität: gegen Acceptance Tests zu prüfen
+Betriebsaufwand:          praktisch zu ermitteln
+</code></pre></div>
+<p><strong>Bewertung:</strong> nicht nur ein abstraktes Standardslabor, sondern ein <strong>ernsthafter
+zweiter Pilotkandidat</strong>. LibreChat bleibt für den unmittelbaren Schülerpilot
+wahrscheinlich risikoärmer, weil Sprach- und mobile Bedienung dort klarer
+dokumentiert sind.</p>
+<hr />
+<h3 id="135-open-webui">13.5 Open WebUI</h3>
+<p>Open WebUI besitzt eine breite Modellanbieterunterstützung und experimentelle Responses-API-Funktionen. Eine native, vollständige MCP-Apps-Unterstützung ist jedoch derzeit nicht der stabile Kernweg; dafür wären zusätzliche Bridges oder Erweiterungen nötig.</p>
+<p>Damit würde gerade in dem Bereich eigener Integrationscode entstehen, den SkillPilot vermeiden möchte.</p>
+<p><strong>Bewertung:</strong> für dieses Vorhaben derzeit nicht gegenüber LibreChat oder Archestra bevorzugen.</p>
+<hr />
+<h2 id="14-vergleichsmatrix">14. Vergleichsmatrix</h2>
+<p>Die Matrix fragt bewusst nicht nach allgemeinen Produktfähigkeiten, sondern
+danach, ob etwas <strong>im SkillPilot-MCP-Workflow</strong> funktioniert. Deshalb sind
+„Mobile Chat UI" und „SkillPilot/MCP mobil" getrennte Zeilen: Eine mobile App zu
+haben bedeutet nicht, dass SkillPilot darin mobil nutzbar ist.</p>
+<table>
+<thead>
+<tr>
+<th>Kriterium</th>
+<th>ChatGPT</th>
+<th>Claude</th>
+<th>LibreChat</th>
+<th>Archestra</th>
+<th>Künftiger Managed Host</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Betrieb der Runtime</td>
+<td>OpenAI</td>
+<td>Anthropic</td>
+<td>selbst/fremd hostbar</td>
+<td>selbst/fremd hostbar</td>
+<td>fremder Betreiber</td>
+</tr>
+<tr>
+<td>Mobile Chat UI</td>
+<td>ja</td>
+<td>ja</td>
+<td>mobile Weboberfläche</td>
+<td>zu testen</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>SkillPilot/MCP mobil</td>
+<td>nicht belastbar nachgewiesen</td>
+<td>ja</td>
+<td>ja</td>
+<td>zu testen</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>Diktat im MCP-Chat</td>
+<td>Live-Modus eingeschränkt</td>
+<td>ja</td>
+<td>ja</td>
+<td>nicht belegt, zu testen</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>Kamera/Bild im MCP-Chat</td>
+<td>ja</td>
+<td>ja</td>
+<td>ja</td>
+<td>Anhänge dokumentiert, Kamera zu testen</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>Geräteübergreifender Chat</td>
+<td>ja</td>
+<td>ja</td>
+<td>ja</td>
+<td>dokumentiert</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>Persönliche Provider-Credentials</td>
+<td>nein, Plattformkonto</td>
+<td>nein, Plattformkonto</td>
+<td>BYOK</td>
+<td>persönliche Provider Keys</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>Direkte Abrechnung</td>
+<td>über ChatGPT-Abo</td>
+<td>über Claude-Abo</td>
+<td>Provider ↔ Nutzer</td>
+<td>Provider ↔ Nutzer</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>Open Responses</td>
+<td>nein, intern nicht erzwingbar</td>
+<td>nein</td>
+<td>nur teilweise</td>
+<td>OpenAI-kompatibel, Konformität zu prüfen</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>Remote MCP + OAuth</td>
+<td>ja, planabhängig</td>
+<td>ja</td>
+<td>ja, PKCE + Refresh</td>
+<td>ja</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>MCP Apps</td>
+<td>Custom Apps web-only</td>
+<td>ja, auch mobil</td>
+<td>Draft PR, nicht stabil</td>
+<td>ja</td>
+<td>gefordert, Text-Fallback bleibt Pflicht</td>
+</tr>
+<tr>
+<td>Agent Plugins v1</td>
+<td>OpenAI-Produktweg, nicht portabel</td>
+<td>nicht verifiziert</td>
+<td>experimentell</td>
+<td>nicht verifiziert</td>
+<td>gefordert</td>
+</tr>
+<tr>
+<td>Altersgruppe</td>
+<td>ab 13, unter 18 mit Zustimmung</td>
+<td>Consumer ab 18</td>
+<td>vom Betreiber bestimmt</td>
+<td>vom Betreiber bestimmt</td>
+<td>für Zielgruppe zulässig</td>
+</tr>
+<tr>
+<td><strong>Rolle</strong></td>
+<td>strategischer Vertriebskanal</td>
+<td>sehr gut für volljährige Tester</td>
+<td><strong>unmittelbarer Pilot</strong></td>
+<td><strong>zweiter Pilotkandidat</strong></td>
+<td>langfristiges Ziel</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="15-verwandte-dokumente">15. Verwandte Dokumente</h2>
+<ul>
+<li><a href="../runtime-workflows/provider-neutral-coach-boundary/">Kommunikationsvertrag zwischen ChatClient und SkillPilot-Backend</a>
+  Kanonische, provider-neutrale Verantwortungsgrenze. Sie ist der verbindliche
+  Vertrag hinter Abschnitt 4 dieses Konzepts.</li>
+<li><a href="../runtime-workflows/skillpilot-owned-coach-architecture/">SkillPilot-Lerncoach: Plugin-, Skill- und MCP-App-Architektur</a>
+  Aktuelle Produkt- und Providerarchitektur des ausgelieferten Coaches.</li>
+<li><a href="../runtime-workflows/openai-plugin-versioning-and-lifecycle/">OpenAI-Plugin: Versionierung und Lebenszyklus</a>
+  Verbindliche Versions- und Lebenszyklusregeln der Plugin-Linie.</li>
+<li><a href="../runtime-workflows/openai-mcp-oauth-learner-session-architecture/">OAuth-Appbindung und 24h-Lernsession</a>
+  Identitäts- und Sessionarchitektur hinter Abschnitt 4.4.</li>
+<li><a href="../runtime-workflows/openai-mcp-coach-behavioral-integration/">Verhaltensintegration des MCP-Lerncoaches</a>
+  Sichtbares Coach-Verhalten und End-to-End-Acceptance hinter Abschnitt 10.</li>
+<li><a href="../../security/openai-mcp-client-binding/">OpenAI-MCP-Clientbindung</a>
+  Sicherheitsquelle für Clientbindung, Callback, Scopes und Secret-Lebenszyklus.</li>
+<li><a href="../../deploy/openai-mcp-coach-v1/">ChatGPT-App „SkillPilot Coach v1“</a>
+  Betriebsstand des fremdbetriebenen ChatGPT-Kanals aus Abschnitt 13.1.</li>
+<li><a href="../../deploy/claude-coach-beta/">Claude Coach (pausierte Beta)</a>
+  Betriebsstand des Claude-Kanals aus Abschnitt 13.2.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4555 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/dev/canonical-gymnasium-physics-topic-workboard/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Canonical Gymnasium Physics Topic Workboard - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#canonical-gymnasium-physics-topic-workboard" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Canonical Gymnasium Physics Topic Workboard
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#topic-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topic board
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="canonical-gymnasium-physics-topic-workboard">Canonical Gymnasium Physics Topic Workboard</h1>
+<p>Snapshot: <code>2026-04-20</code></p>
+<p>Purpose:</p>
+<ul>
+<li>steer canonical Gymnasium Physics by <strong>topic first</strong></li>
+<li>use Bundeslaender as evidence and validation lanes, not as the pedagogical design driver</li>
+<li>make open nationwide topic debt explicit before more state-local rollout entropy accumulates</li>
+</ul>
+<p>Scope rule for now:</p>
+<ol>
+<li>the active cross-state Physics surface is still mainly <strong>Sek II</strong></li>
+<li>the board therefore starts with the four upper-secondary topic rows that already have real multi-state evidence</li>
+<li>Sek-I Physics rows should be added once more non-Hessen lower-secondary source lanes become real</li>
+<li>the active source-onboarding tranche nevertheless covers <strong>Sek I and Sek II</strong> source acquisition together</li>
+</ol>
+<p>Working rule:</p>
+<ol>
+<li>the previously missing-state Physics source archive tranche is now complete for both <strong>Sek I and Sek II</strong> where applicable</li>
+<li>the source-snapshot and provenance activation tranche for those newly archived states is now also complete</li>
+<li>the first conservative structural-anchor pass (<code>P3</code>) across those new source-backed states is now complete</li>
+<li>the next active tranche is the first renewed horizontal reviewed Physics topic-row pass across all retained states</li>
+<li>then review the current canonical atom inventory for that row</li>
+<li>compare the row against all retained Bundesland sources</li>
+<li>classify each state cell</li>
+<li>add canonical atoms only where multiple states or strong pedagogical structure justify them</li>
+<li>only then widen or refine the state mappings for that topic</li>
+</ol>
+<p>Coverage rule:</p>
+<ol>
+<li>every active Physics topic row runs in <code>all states required</code> mode</li>
+<li>with the newly archived-state structural-anchor tranche now complete, the active work item is the renewed horizontal all-state topic-row pass, not another state-local structural activation</li>
+<li>a topic row is operationally closed only when every retained Bundesland source column is resolved once</li>
+<li><code>seed</code>, <code>anchor</code>, <code>corr</code>, <code>gap</code>, and <code>loc</code> count as resolved cells; only <code>n/s</code> means the row is still unchecked for that state</li>
+</ol>
+<p>Legend:</p>
+<ul>
+<li><code>seed</code>: canonical topic already materially seeded from the Hessen reference lane</li>
+<li><code>anchor</code>: only broad structural or area-level alignment exists</li>
+<li><code>corr</code>: at least one reviewed corridor is already mapped for this topic</li>
+<li><code>gap</code>: current reviewed source evidence suggests a canonical gap or unresolved atomic split</li>
+<li><code>n/s</code>: not started</li>
+<li><code>loc</code>: state-local packaging; do not automatically canonicalize</li>
+</ul>
+<p>State columns use Bundesland abbreviations:</p>
+<ul>
+<li><code>BW BY BE BB HB HH HE MV NI NW RP SL SN ST SH TH</code></li>
+</ul>
+<h2 id="topic-board">Topic board</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Canonical</th>
+<th>BW</th>
+<th>BY</th>
+<th>BE</th>
+<th>BB</th>
+<th>HB</th>
+<th>HH</th>
+<th>HE</th>
+<th>MV</th>
+<th>NI</th>
+<th>NW</th>
+<th>RP</th>
+<th>SL</th>
+<th>SN</th>
+<th>ST</th>
+<th>SH</th>
+<th>TH</th>
+<th>Open canonical gaps</th>
+<th>Next action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sek II Mechanik / Dynamik</td>
+<td><code>seed</code></td>
+<td><code>loc</code></td>
+<td><code>corr</code></td>
+<td><code>loc</code></td>
+<td><code>anchor</code></td>
+<td><code>loc</code></td>
+<td><code>seed</code></td>
+<td><code>loc</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>loc</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>corr</code></td>
+<td><code>anchor</code></td>
+<td>the first renewed all-state mechanics audit now resolves every retained state cell once: the shared mechanics surface around free fall, horizontal throw, Newton, circle motion, and kinetic/energy entry remains sufficient for the reviewed <code>HE</code>/<code>BY</code>/<code>NI</code>/<code>NW</code> evidence plus the narrow SH circle-motion follow-on; <code>HB</code>, <code>SL</code>, <code>SN</code>, <code>ST</code>, and <code>TH</code> currently only contribute broad structural anchors on mechanics / energy / forces, while <code>BW</code>, <code>BE</code>, <code>BB</code>, <code>HH</code>, <code>MV</code>, and <code>RP</code> currently contribute only local side packaging such as gravitation-with-fields, gravitation / astrophysics electives, absent ordinary upper-secondary mechanics strips, or relativity-side dynamics without forcing a new canonical mechanics split</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> and <code>loc</code> cells explicit, and move the active horizontal reviewed pass to <code>Sek II Elektrizitaet / Magnetismus / Induktion</code> unless later source evidence creates a genuinely shared mechanics mismatch</td>
+<td></td>
+</tr>
+<tr>
+<td>Sek II Elektrizitaet / Magnetismus / Induktion</td>
+<td><code>seed</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>seed</code></td>
+<td><code>anchor</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>corr</code></td>
+<td><code>anchor</code></td>
+<td>the first renewed all-state field/induction audit now resolves every retained state cell once: the shared field/induction surface remains sufficient for the reviewed <code>HE</code>/<code>BY</code>/<code>BW</code>/<code>BE</code>/<code>BB</code>/<code>NI</code>/<code>NW</code>/<code>RP</code>/<code>SH</code> evidence, including the retained BE/BB <code>3.2.1</code> -&gt; <code>3.2.2</code> route, the reviewed SH field/statische-Felder follow-ons, the widened BW electrodynamics strip, the hardened Bayern maintenance surface, and the now-closed RP field/induction family; <code>HB</code>, <code>HH</code>, <code>MV</code>, <code>SL</code>, <code>SN</code>, <code>ST</code>, and <code>TH</code> currently contribute only broad structural anchors on field, magnetism, induction, or course-level packaging without forcing a new canonical split, while the formerly deferred BE/BB <code>c0</code> / <code>Relativitaet</code> pair still land on the shared relativistic linear-accelerator excursus and the former BE/BB <code>Eintrittswinkel</code> clause plus the SH <code>Massenspektrometer</code> leaf now also land on shared canonical field/application surfaces</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> cells explicit, and reopen it only if later source revisions create a genuinely shared field/induction mismatch</td>
+</tr>
+<tr>
+<td>Sek II Schwingungen / Wellen</td>
+<td><code>seed</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>loc</code></td>
+<td><code>loc</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>seed</code></td>
+<td><code>anchor</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>loc</code></td>
+<td><code>anchor</code></td>
+<td>the first renewed all-state oscillation/wave audit now resolves every retained state cell once: the shared oscillation/wave surface remains sufficient for the reviewed <code>HE</code>/<code>BY</code>/<code>BW</code>/<code>NI</code>/<code>NW</code>/<code>RP</code> evidence, including the widened BW <code>Schwingungen</code> / <code>Wellen</code> / <code>Wellenoptik</code> strips, the reviewed Niedersachsen wave strip plus <code>Michelson</code> follow-on, the narrow NRW light-wave surface, and the now-stable RP harmonics / waves / superposition family; <code>HB</code>, <code>HH</code>, <code>MV</code>, <code>SL</code>, <code>SN</code>, <code>ST</code>, and <code>TH</code> currently contribute only broad structural anchors on oscillations, waves, wave optics, or course-level packaging, while <code>BE</code>, <code>BB</code>, and <code>SH</code> currently contribute only local side packaging because their active retained upper-secondary lanes stay on field-focused source families without an ordinary reviewed wave strip; the formerly frozen RP micro-residues on <code>Periodendauer</code>, <code>Polarisation</code>, <code>Weisslichtspektrum</code>, and <code>gekoppelte Schwingungen</code> now land conservatively on shared oscillation and interference surfaces</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> and <code>loc</code> cells explicit, and reopen it only if later source revisions create a genuinely shared oscillation/wave mismatch</td>
+</tr>
+<tr>
+<td>Sek II Quanten / Atom / Kernphysik</td>
+<td><code>seed</code></td>
+<td><code>corr</code></td>
+<td><code>loc</code></td>
+<td><code>loc</code></td>
+<td><code>loc</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>seed</code></td>
+<td><code>anchor</code></td>
+<td><code>loc</code></td>
+<td><code>corr</code></td>
+<td><code>corr</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>loc</code></td>
+<td><code>anchor</code></td>
+<td>the first renewed all-state quantum/atom/kernel audit now resolves every retained state cell once: the shared Q3/Q4 quantum, atom-model, and particle-physics surface remains sufficient for the reviewed <code>HE</code>/<code>BW</code>/<code>NW</code>/<code>RP</code> evidence, including the widened BW quantum strips, the narrow NRW GK/LK quantum and atom-model lane, and the now-stable RP <code>Quantenobjekte I/II</code>, <code>Quantenmechanische Atomvorstellung I/II</code>, <code>Wechselwirkung von Quantenobjekten</code>, and <code>Elementarteilchenphysik</code> family plus the RP follow-ons on Planck estimation, luminescence-side atom-model applications, pair production, open particle-physics questions, relativity-side <code>Masse-Energie-Aequivalenz</code>, astrophysics, cosmology, chaos, and fluid dynamics, all of which now land conservatively on shared canonical surfaces; <code>HB</code>, <code>HH</code>, <code>MV</code>, <code>SL</code>, <code>SN</code>, <code>ST</code>, and <code>TH</code> currently contribute only broad structural anchors on quantum, atom-model, kernphysik, or course-level packaging, while <code>BY</code>, <code>NI</code>, <code>BE</code>, <code>BB</code>, and <code>SH</code> currently contribute only local side packaging through mixed wave/measurement clauses, fine-beam-tube evidence, or field-focused electron-measurement routes rather than one ordinary reviewed quantum corridor</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> and <code>loc</code> cells explicit, and reopen it only if later source revisions create a genuinely shared quantum-side mismatch</td>
+</tr>
+<tr>
+<td>Sek I Elektrizitaet / Magnetismus</td>
+<td><code>seed</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>seed</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td>the first renewed lower-secondary electricity/magnetism audit now resolves every currently source-backed lower-secondary state cell once: the shared Sek-I electricity/magnetism surface remains sufficient for the reviewed Hessen seed plus the retained Bayern side evidence on <code>Ph8 Elektrischer Strom</code> and <code>Ph10 Elektromagnetismus</code>; <code>HB</code>, <code>HH</code>, <code>MV</code>, <code>SL</code>, <code>SN</code>, <code>ST</code>, and <code>TH</code> currently contribute only broad structural anchors on Stromkreise, Elektrizitaet, Magnetismus, Elektromagnetismus, oder Induktion without forcing a new canonical Sek-I split, while <code>BW</code>, <code>BE</code>, <code>BB</code>, <code>NI</code>, <code>NW</code>, <code>RP</code>, and <code>SH</code> still remain missing-source placeholders on this lower-secondary row because no retained DE-Gymnasium Sek-I state lane is active there yet</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> and <code>loc</code> cells explicit, and move the active lower-secondary reviewed pass to <code>Sek I Mechanik / Bewegung</code> unless later retained Sek-I source activation creates a genuinely shared electricity/magnetism mismatch</td>
+</tr>
+<tr>
+<td>Sek I Mechanik / Bewegung</td>
+<td><code>seed</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>seed</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td>the second renewed lower-secondary audit now resolves every currently source-backed lower-secondary mechanics cell once: the shared Sek-I mechanics surface remains sufficient for the reviewed Hessen seed plus the retained Bayern side evidence on <code>Ph8 Mechanik</code>, <code>Ph9 Energie als Erhaltungsgroesse</code>, and the two <code>Ph10</code> strips <code>Impulserhaltung in der Mechanik</code> and <code>Bewegungen und ihre Modellierung</code>; <code>HB</code>, <code>HH</code>, <code>MV</code>, <code>SL</code>, <code>SN</code>, <code>ST</code>, and <code>TH</code> currently contribute only broad structural anchors on Bewegung, Kraft, Mechanik, Energie, oder Gravitation without forcing a new canonical Sek-I mechanics split, while <code>BW</code>, <code>BE</code>, <code>BB</code>, <code>NI</code>, <code>NW</code>, <code>RP</code>, and <code>SH</code> still remain missing-source placeholders on this lower-secondary row because no retained DE-Gymnasium Sek-I state lane is active there yet</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> and <code>loc</code> cells explicit, and move the active lower-secondary reviewed pass to <code>Sek I Optik / Licht / Schall</code> unless later retained Sek-I source activation creates a genuinely shared mechanics mismatch</td>
+</tr>
+<tr>
+<td>Sek I Optik / Licht / Schall</td>
+<td><code>seed</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>seed</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td>the third renewed lower-secondary audit now resolves every currently source-backed lower-secondary optics/light/sound cell once: the shared Sek-I optics/light/sound surface remains sufficient for the reviewed Hessen seed plus the retained Bayern side evidence on <code>Ph8 Optik</code>; <code>HB</code>, <code>HH</code>, <code>MV</code>, <code>SL</code>, <code>SN</code>, <code>ST</code>, and <code>TH</code> currently contribute only broad structural anchors on Licht, Optik, Schall, Akustik, Bildentstehung, oder Abbildungen without forcing a new canonical Sek-I optics split, while <code>BW</code>, <code>BE</code>, <code>BB</code>, <code>NI</code>, <code>NW</code>, <code>RP</code>, and <code>SH</code> still remain missing-source placeholders on this lower-secondary row because no retained DE-Gymnasium Sek-I state lane is active there yet</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> and <code>loc</code> cells explicit, and move the active lower-secondary reviewed pass to <code>Sek I Waerme / Thermik / Teilchenmodell</code> unless later retained Sek-I source activation creates a genuinely shared optics/light/sound mismatch</td>
+</tr>
+<tr>
+<td>Sek I Waerme / Thermik / Teilchenmodell</td>
+<td><code>seed</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>seed</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>loc</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td>the fourth renewed lower-secondary audit now resolves every currently source-backed lower-secondary thermics cell once: the shared Sek-I heat/thermics/particle-model surface remains sufficient for the reviewed Hessen seed plus the retained Bayern side evidence on <code>Ph9 Waermelehre</code>; <code>DE-SL</code> currently contributes one broad structural anchor through the retained <code>Klassenstufe 8</code> mechanics/thermics strip, while <code>DE-MV</code>, <code>DE-SN</code>, <code>DE-ST</code>, and <code>DE-TH</code> currently contribute only local retained side evidence because their lower-secondary thermics strips remain explicitly source-led outside the first <code>P3</code> anchor cut; <code>DE-HB</code>, <code>DE-HH</code>, <code>DE-BW</code>, <code>DE-BE</code>, <code>DE-BB</code>, <code>DE-NI</code>, <code>DE-NW</code>, <code>DE-RP</code>, and <code>DE-SH</code> still remain missing-source placeholders or row-external lower-secondary packaging on this strip</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> and <code>loc</code> cells explicit, and move the active lower-secondary reviewed pass to <code>Sek I Radioaktivitaet / Kernphysik</code> unless later retained Sek-I source activation creates a genuinely shared thermics mismatch</td>
+</tr>
+<tr>
+<td>Sek I Radioaktivitaet / Kernphysik</td>
+<td><code>seed</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>loc</code></td>
+<td><code>seed</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td>the fifth renewed lower-secondary audit now resolves every currently source-backed lower-secondary radioactivity/nuclear cell once: the shared Sek-I radioactivity/nuclear surface remains sufficient for the reviewed Hessen seed plus the retained Bayern side evidence on <code>Ph10 Kernphysik</code>; <code>DE-HB</code>, <code>DE-MV</code>, <code>DE-SL</code>, and <code>DE-TH</code> currently contribute broad structural anchors on Radioaktivitaet, ionisierende Strahlung, Kernenergie, oder Kernphysik, while <code>DE-HH</code> currently contributes only local retained side packaging through the transition strip <code>Licht und Materie</code> with ionising radiation; <code>DE-BW</code>, <code>DE-BE</code>, <code>DE-BB</code>, <code>DE-NI</code>, <code>DE-NW</code>, <code>DE-RP</code>, <code>DE-SH</code>, <code>DE-SN</code>, and <code>DE-ST</code> still remain missing-source placeholders or row-external lower-secondary packaging on this strip</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> and <code>loc</code> cells explicit, and move the active lower-secondary reviewed pass to <code>Sek I Stoffe / Dichte / Druck / Auftrieb</code> unless later retained Sek-I source activation creates a genuinely shared radioactivity/nuclear mismatch</td>
+</tr>
+<tr>
+<td>Sek I Stoffe / Dichte / Druck / Auftrieb</td>
+<td><code>seed</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>seed</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>anchor</code></td>
+<td><code>n/s</code></td>
+<td><code>anchor</code></td>
+<td>the sixth renewed lower-secondary audit now resolves every currently source-backed lower-secondary density/pressure/buoyancy cell once: the shared Sek-I materials/density/pressure/buoyancy surface remains sufficient for the reviewed Hessen seed plus the retained Bayern side evidence on pressure and gases in <code>Ph9 Waermelehre</code>; <code>DE-MV</code>, <code>DE-SL</code>, <code>DE-SN</code>, <code>DE-ST</code>, and <code>DE-TH</code> currently contribute broad structural anchors on Dichte, Druck, Auftrieb, Fluessigkeiten, Gase, oder Stoffeigenschaften, while <code>DE-HB</code> currently contributes only local retained side packaging through the J7/8 force-motion strip with Dichte; <code>DE-HH</code>, <code>DE-BW</code>, <code>DE-BE</code>, <code>DE-BB</code>, <code>DE-NI</code>, <code>DE-NW</code>, <code>DE-RP</code>, and <code>DE-SH</code> still remain missing-source placeholders or row-external lower-secondary packaging on this strip</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>anchor</code> and <code>loc</code> cells explicit, and move the active lower-secondary reviewed pass to <code>Sek I Energie / Arbeit / Leistung / Erhaltung</code> unless later retained Sek-I source activation creates a genuinely shared density/pressure/buoyancy mismatch</td>
+</tr>
+<tr>
+<td>Sek I Energie / Arbeit / Leistung / Erhaltung</td>
+<td><code>seed</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>loc</code></td>
+<td><code>seed</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>loc</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td>the seventh renewed lower-secondary audit now resolves every currently source-backed lower-secondary energy/work/power/conservation cell once: the shared Sek-I energy surface remains sufficient for the reviewed Hessen seed plus the retained Bayern side evidence on <code>Ph9 Energie als Erhaltungsgroesse</code>; <code>DE-HB</code>, <code>DE-HH</code>, <code>DE-MV</code>, <code>DE-SL</code>, <code>DE-SN</code>, <code>DE-ST</code>, and <code>DE-TH</code> currently contribute only local retained side packaging because energy, work, power, efficiency, and conservation still sit inside mechanics strips, transition packages, feeders, or explicitly source-led residual leaves rather than in their own first <code>P3</code> anchor cut; <code>DE-BW</code>, <code>DE-BE</code>, <code>DE-BB</code>, <code>DE-NI</code>, <code>DE-NW</code>, <code>DE-RP</code>, and <code>DE-SH</code> still remain missing-source placeholders or row-external lower-secondary packaging on this strip</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>loc</code> cells explicit, and move the active lower-secondary reviewed pass to <code>Sek I Klima / Energieversorgung / Umwelturteil</code> unless later retained Sek-I source activation creates a genuinely shared energy-side mismatch</td>
+</tr>
+<tr>
+<td>Sek I Klima / Energieversorgung / Umwelturteil</td>
+<td><code>seed</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>seed</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>loc</code></td>
+<td><code>loc</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td><code>n/s</code></td>
+<td>the eighth renewed lower-secondary audit now resolves every currently source-backed lower-secondary climate/energy-supply/environment-judgment cell once: the shared Sek-I climate/energy-supply/environment-judgment surface remains sufficient for the reviewed Hessen seed plus the retained Bayern side evidence on climate-system texts, climate-protection measures, and source-based environmental evaluation in the common Gymnasium bundle; <code>DE-HH</code>, <code>DE-SL</code>, and <code>DE-SN</code> currently contribute only local retained side packaging through the Hamburg transition strip <code>Energie: Erhaltung, Wirkungsgrad, Klima und Kraftwerke</code>, the Saarland class-10 mixed strips on nachhaltige Energieversorgung and Klimaphysik, and the Sachsen <code>K9 Lernbereich 2 Energieversorgung</code>, while <code>DE-HB</code>, <code>DE-MV</code>, <code>DE-BW</code>, <code>DE-BE</code>, <code>DE-BB</code>, <code>DE-NI</code>, <code>DE-NW</code>, <code>DE-RP</code>, <code>DE-ST</code>, <code>DE-SH</code>, and <code>DE-TH</code> still remain missing-source placeholders or row-external lower-secondary packaging on this strip</td>
+<td>treat the row as horizontally audited and stable at the canonical level, keep the audited <code>loc</code> cells explicit, and make the next clean move an explicit lower-secondary row-admission decision rather than opening another row or another state-local widening on reflex</td>
+</tr>
+</tbody>
+</table>
+<h2 id="current-recommendation">Current recommendation</h2>
+<p>Current focus:</p>
+<ol>
+<li>keep <code>Sek II Mechanik / Dynamik</code> stable after the first renewed all-state audit</li>
+<li>keep <code>Sek II Elektrizitaet / Magnetismus / Induktion</code> stable after the renewed all-state audit</li>
+<li>keep <code>Sek II Schwingungen / Wellen</code> stable after the renewed all-state audit</li>
+<li>keep <code>Sek II Quanten / Atom / Kernphysik</code> stable after the renewed all-state audit</li>
+<li>keep <code>Sek I Elektrizitaet / Magnetismus</code> stable after the first renewed lower-secondary all-state audit</li>
+<li>keep <code>Sek I Mechanik / Bewegung</code> stable after the renewed lower-secondary all-state audit</li>
+<li>keep <code>Sek I Optik / Licht / Schall</code> stable after the renewed lower-secondary all-state audit</li>
+<li>keep <code>Sek I Waerme / Thermik / Teilchenmodell</code> stable after the renewed lower-secondary all-state audit</li>
+<li>keep <code>Sek I Radioaktivitaet / Kernphysik</code> stable after the renewed lower-secondary all-state audit</li>
+<li>keep <code>Sek I Stoffe / Dichte / Druck / Auftrieb</code> stable after the renewed lower-secondary all-state audit</li>
+<li>keep <code>Sek I Energie / Arbeit / Leistung / Erhaltung</code> stable after the renewed lower-secondary all-state audit</li>
+<li>keep <code>Sek I Klima / Energieversorgung / Umwelturteil</code> stable after the renewed lower-secondary all-state audit</li>
+<li>treat the first renewed lower-secondary row tranche as horizontally audited once at the current reviewed cut</li>
+<li>keep additional lower-secondary row admission frozen at the current reviewed cut</li>
+<li>treat the first post-tranche lower-secondary candidate sweep as complete</li>
+<li>do not reopen lower-secondary row admission on the current evidence floor unless new source-backed evidence appears</li>
+<li>treat the current <code>F5</code> horizontal reentry tranche itself as complete at the current reviewed cut</li>
+<li>move Physics explicitly into maintenance / evidence-watch mode until a new source-backed trigger appears</li>
+</ol>
+<p>Active coordination artifact:</p>
+<ol>
+<li><code>docs/dev/canonical-gymnasium-physics-topic-workboard.md</code></li>
+</ol>
+<p>Why:</p>
+<ul>
+<li>Physics now has enough reviewed multi-state evidence that another single-state widening would only deepen source asymmetry</li>
+<li>Berlin and Brandenburg still close the retained BE/BB <code>3.2.1</code> -&gt; <code>3.2.2</code> cut without forcing another canonical atom, and only the remaining <code>Eintrittswinkel</code> clause stays explicitly frozen as source-led residue</li>
+<li>Schleswig-Holstein no longer needs another reflex widening on the same retained source family; the next clean move is now a new state/source family outside the frozen SH and BE/BB residues</li>
+<li>the missing nationwide Physics debt is no longer source acquisition itself, no longer snapshot activation itself, no longer the first conservative structural-anchor floor for the newly activated state bundles, and no longer the initial upper-secondary four-row pass; all of that is now complete</li>
+<li>the correct next move is therefore no longer another preselected row on reflex, and that row-admission decision is now resolved conservatively: the retained lower-secondary evidence does <strong>not</strong> yet justify one more nationwide row beyond this first audited tranche</li>
+<li>the three strongest visible post-tranche lower-secondary candidates have now also been checked explicitly and none clears the admission bar on the current evidence floor</li>
+<li>the current horizontal all-state reentry tranche is therefore operationally closed at the current reviewed cut until new source-backed evidence appears</li>
+<li>the operational consequence is now explicit maintenance / evidence-watch mode, not another hidden active rollout on the same evidence floor</li>
+</ul>
+<p>Current blocker note:</p>
+<ol>
+<li>the archive tranche is complete, the snapshot/provenance tranche is complete, and the first conservative statewide structural-anchor floor is now also complete</li>
+<li>the first renewed lower-secondary row tranche is now also complete at the current reviewed cut</li>
+<li>no retained state currently needs another opportunistic widening, and no additional lower-secondary row is admitted yet</li>
+<li>the active blocker is now the lack of a sufficiently Hessen-seeded and multi-state-supported next lower-secondary row candidate beyond the first audited tranche</li>
+<li>the strongest currently visible next candidate <code>Sek I Kosmos / Erde / Mensch / Astronomie</code> still fails the admission bar: Sachsen carries one clear retained K10 astronomy anchor, Hamburg only one local side clause on solar energy, Bayern's strongest astronomy evidence in the retained bundle is upper-secondary <code>Ph13 Astrophysik</code>, and Hessen currently contributes no lower-secondary seed strip for that row</li>
+<li>the second visible next candidate <code>Sek I Elektronik / Halbleiter / elektromagnetische Wellen</code> also still fails the admission bar: Sachsen carries the clearest retained lower-secondary evidence through <code>K9 Grundlagen der Elektronik</code> and <code>K10 Hertz'sche Wellen</code>, Saarland and Sachsen-Anhalt contribute only mixed side packaging on Halbleiter or semiconductors inside broader electricity strips, and Hessen currently contributes no lower-secondary seed strip for that row</li>
+<li>the third visible next candidate <code>Sek I Licht / Materie / Atommodell / Strahlung</code> is also not row-worthy yet, but for a different reason: Hessen does carry a lower-secondary seed on <code>Bausteine des Atoms</code> and <code>Radioaktive Strahlung</code>, and Hamburg carries the mixed strip <code>Licht und Materie</code>, yet this evidence is already materially absorbed by the audited rows <code>Sek I Optik / Licht / Schall</code> and <code>Sek I Radioaktivitaet / Kernphysik</code> rather than forcing a distinct new nationwide row</li>
+<li>the first post-tranche lower-secondary candidate sweep is therefore complete; another candidate pass on the same retained evidence floor would currently be redundant</li>
+</ol>
+<p>Current reopen triggers:</p>
+<ol>
+<li>admit a new lower-secondary nationwide row only if a <strong>Hessen-seeded</strong> strip appears that is also supported by at least one additional retained state lane and is not already materially absorbed by an audited row</li>
+<li>reopen <code>Sek I Kosmos / Erde / Mensch / Astronomie</code> only if Hessen gains an explicit lower-secondary astronomy / cosmos strip or another currently non-Sachsen lane gains a comparably broad retained lower-secondary astronomy anchor</li>
+<li>reopen <code>Sek I Elektronik / Halbleiter / elektromagnetische Wellen</code> only if Hessen gains an explicit lower-secondary electronics / semiconductors / electromagnetic-waves strip or a second non-Sachsen lane moves from mixed side packaging to a clear retained row</li>
+<li>reopen <code>Sek I Licht / Materie / Atommodell / Strahlung</code> only if new retained evidence forces a distinct canonical gap beyond the already audited rows <code>Sek I Optik / Licht / Schall</code> and <code>Sek I Radioaktivitaet / Kernphysik</code></li>
+<li>reopen any upper-secondary state lane only if a later source revision or another Bundesland's retained source family creates a genuinely shared Physics gap that is not already covered by the stable reviewed cuts</li>
+</ol>
+<p>Current watch targets:</p>
+<ol>
+<li>watch Hessen Sek I first: any future lower-secondary source revision that adds a visible strip on astronomy / cosmos, electronics / semiconductors / electromagnetic waves, or a distinct light-matter / atom-model / radiation band is the strongest direct reopen trigger</li>
+<li>watch Sachsen Sek I as the strongest non-Hessen evidence floor for <code>Kosmos</code> and <code>Elektronik</code>: <code>K10 Lernbereich 2 Kosmos, Erde und Mensch</code>, <code>K9 Lernbereich 1 Grundlagen der Elektronik</code>, and <code>K10 Lernbereich 4 Hertz'sche Wellen</code></li>
+<li>watch Hamburg Sek I for possible strengthening of the current side clauses <code>Energieerzeugung in der Sonne</code> and <code>Licht und Materie</code></li>
+<li>watch Saarland and Sachsen-Anhalt Sek I for a possible shift from mixed side packaging on Halbleiter / semiconductors into a clearly retained standalone row</li>
+<li>watch reviewed upper-secondary maintenance lanes only for true scope changes: no open residue lane remains, so reopen only if a later source revision creates a genuinely shared canonical gap</li>
+</ol>
+<p>Current watch files:</p>
+<ol>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_PHYSIK.de.json.snapshot">DE_HES_S_GYM_1_PHYSIK.de.json.snapshot</a></li>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/SN/lower-secondary/source-json/DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot">DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot</a></li>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/HH/lower-secondary/source-json/DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot">DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot</a></li>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/SL/lower-secondary/source-json/DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot">DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot</a></li>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/ST/lower-secondary/source-json/DE_SAN_S_GYM_1_PHYSIK.de.json.snapshot">DE_SAN_S_GYM_1_PHYSIK.de.json.snapshot</a></li>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/BB/upper-secondary/source-json/DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot">DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot</a> and <a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot">DE_BER_S_GYM_2_PHYSIK.de.json.snapshot</a> for future scope changes on the reviewed BE/BB field lane</li>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot">DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot</a> for future scope changes on the reviewed SH field lane</li>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot">DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot</a> for future scope changes on the reviewed RP LF follow-on family</li>
+</ol>
+<p>Machine-readable watch manifest:</p>
+<ol>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json">physics-evidence-watch-manifest.json</a></li>
+<li><a href="/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-status.md">canonical-gymnasium-physics-evidence-watch-status.md</a> rendered by <a href="https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_status.py">render_canonical_physics_evidence_watch_status.py</a></li>
+<li><a href="https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json">physics-evidence-watch-baseline.json</a> captured by <a href="https://github.com/enpasos/skillpilot/blob/main/scripts/capture_canonical_physics_evidence_watch_baseline.py">capture_canonical_physics_evidence_watch_baseline.py</a></li>
+<li><a href="/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md">canonical-gymnasium-physics-evidence-watch-delta.md</a> rendered by <a href="https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_delta.py">render_canonical_physics_evidence_watch_delta.py</a></li>
+<li>exit-code maintenance check via <a href="https://github.com/enpasos/skillpilot/blob/main/scripts/check_canonical_physics_evidence_watch_delta.py">check_canonical_physics_evidence_watch_delta.py</a></li>
+<li>fixed run path via <a href="https://github.com/enpasos/skillpilot/blob/main/scripts/run_canonical_physics_evidence_watch.sh">run_canonical_physics_evidence_watch.sh</a> or <code>cd app &amp;&amp; npm run check:canonical-physics-evidence-watch</code></li>
+<li>scheduled GitHub Actions hook via <a href="https://github.com/enpasos/skillpilot/blob/main/.github/workflows/canonical_physics_evidence_watch.yml">canonical_physics_evidence_watch.yml</a></li>
+</ol>
+<p>Definition of done for one Physics topic row:</p>
+<ol>
+<li>the canonical atom inventory for that row is reviewed and, where needed, tightened</li>
+<li>reviewed state evidence no longer forces obvious new shared Physics atoms</li>
+<li>every currently available retained-source state cell in that row is resolved once; remaining <code>n/s</code> cells are only missing-source placeholders</li>
+<li>state mappings for the resolved states are consistent with the revised canonical cuts</li>
+<li>state-local leftovers are explicitly marked as <code>loc</code> or left out of the canonical core</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

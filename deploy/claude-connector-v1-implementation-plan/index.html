@@ -1,0 +1,5361 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-implementation-plan/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>SkillPilot Claude Connector v1 — Umsetzungsplan - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#skillpilot-claude-connector-v1-umsetzungsplan" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SkillPilot Claude Connector v1 — Umsetzungsplan
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-zielzustand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Zielzustand
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-harte-arbeitsgrenzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Harte Arbeitsgrenzen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Harte Arbeitsgrenzen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-nicht-andern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Nicht ändern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-zulassige-neue-bereiche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Zulässige neue Bereiche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-stop-bedingungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Stop-Bedingungen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-freigaben-vor-dem-ersten-produktionswirksamen-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Freigaben vor dem ersten produktionswirksamen Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-offentlicher-und-interner-vertrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Öffentlicher und interner Vertrag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-zielstruktur-im-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Zielstruktur im Backend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-arbeitspakete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Arbeitspakete
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Arbeitspakete">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wp0-baseline-und-schutzbeweis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP0 — Baseline und Schutzbeweis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp1-deaktiviertes-package-und-fail-closed-konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP1 — Deaktiviertes Package und fail-closed Konfiguration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp2-exakte-routing-und-security-grenze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP2 — Exakte Routing- und Security-Grenze
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp3-oauth-21-cimd-und-token-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP3 — OAuth 2.1, CIMD und Token-Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp4-first-party-lernsitzung-sicher-ausstellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP4 — First-Party-Lernsitzung sicher ausstellen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp5-provider-persistenz-revision-und-idempotenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP5 — Provider-Persistenz, Revision und Idempotenz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp6-mcp-vertrag-und-providerisolierte-mcp-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP6 — MCP-Vertrag und providerisolierte MCP Apps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp7-verified-recall-und-prufungs-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP7 — Verified Recall und Prüfungs-Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp8-edge-datenschutz-und-betrieb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP8 — Edge, Datenschutz und Betrieb
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp9-testmatrix-und-real-claude-abnahme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP9 — Testmatrix und Real-Claude-Abnahme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wp10-disabled-first-rollout-aktivierung-und-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP10 — Disabled-first-Rollout, Aktivierung und Submission
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-reihenfolge-und-abhangigkeiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Reihenfolge und Abhängigkeiten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-verifikationsbefehle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Verifikationsbefehle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-definition-of-done-fur-den-claudeai-directory-kandidaten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Definition of Done für den Claude.ai-Directory-Kandidaten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Definition of Done für den Claude.ai-Directory-Kandidaten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-definition-of-done-des-bevorzugten-plugin-wegs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Definition of Done des bevorzugten Plugin-Wegs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-aktuelle-externe-referenzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Aktuelle externe Referenzen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="skillpilot-claude-connector-v1-umsetzungsplan">SkillPilot Claude Connector v1 — Umsetzungsplan</h1>
+<p><strong>Status:</strong> Claude-v1-only Product-Owner-Unfreeze vom 23. August 2026;
+Pre-Submission-Kandidat wird auf First-Party-24h-Lernsessions umgebaut;
+externe Abnahme und Veröffentlichung nicht freigegeben</p>
+<p><strong>Stand:</strong> 23. August 2026</p>
+<p><strong>Repository-Basis:</strong> <code>main</code> bei <code>f405abce61a3</code></p>
+<p><strong>Architekturgrundlage:</strong>
+<a href="../claude-connector-v1-concept/">SkillPilot Claude Connector v1 — one-JVM architecture and service concept</a></p>
+<p><strong>Verbindliche Schutzregel:</strong>
+<a href="../openai-plugin-v1-review-freeze/">SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre</a></p>
+<p>Dieser Plan übersetzt das beschlossene Claude-Konzept in ausführbare
+Arbeitspakete. Er ersetzt keine Product-Owner-, Security-, Legal- oder
+Release-Freigabe.</p>
+<blockquote>
+<p><strong>Ablösung des alten Plans:</strong> Die bis 21. August beschriebene verschlüsselte
+ID-Datei-/Binding-Seite ist vollständig verworfen. Verbindlich ist nur die in
+dieser Revision beschriebene Zielstruktur: lernendenfreies Connector-OAuth,
+First-Party-Start unter <code>https://skillpilot.com/</code>, eine opake
+<code>spc_</code>-Lernsession für exakt 24 Stunden und die permanente ID ausschließlich
+innerhalb SkillPilots. Widersprechende ältere Evidenz ist nicht wiederverwendbar.</p>
+<p><strong>Unverhandelbare Abgrenzung:</strong> Die bestehende OpenAI App wird weiter
+genutzt. <code>ai/openai app/**</code>, der eingereichte OpenAI-Plugin-Kandidat und sein
+beobachtbarer V1-Vertrag dürfen durch diese Arbeit weder gelöscht, ersetzt,
+umbenannt noch funktional verändert werden. Claude v1 kommt als zusätzliche,
+standardmäßig deaktivierte Provider-Lane in dasselbe Backend.</p>
+</blockquote>
+<hr />
+<h2 id="1-zielzustand">1. Zielzustand</h2>
+<p>Am Ende der Umsetzung existiert ein providerisolierter Remote-MCP-Connector für
+Claude mit folgenden Eigenschaften:</p>
+<ul>
+<li>öffentliche MCP-URL
+  <code>https://mcp-claude-v1.skillpilot.com/mcp</code>;</li>
+<li>eigener OAuth-Issuer, eigene Client-, Token-, Scope-, Subject- und
+  Capability-Grenzen;</li>
+<li>Betrieb im bestehenden Spring-Boot-Deployable, in derselben JVM, demselben
+  systemd-Dienst und über denselben Datasource-Pool;</li>
+<li>keine zweite JVM, kein zusätzlicher Backend-Port, kein zweiter
+  Connection-Pool und kein eingebettetes Modell;</li>
+<li>Wiederverwendung der kanonischen Lernzustandsregeln ausschließlich über
+  <code>CoachToolFacade</code> und <code>CoachStateProjection</code>;</li>
+<li>gemeinsamer kanonischer Lernfortschritt für WebGUI, ChatGPT und Claude mit
+  optimistischer Nebenläufigkeitskontrolle;</li>
+<li>genau vierzehn Werkzeuge für Lernbegleitung, planmäßigen Fachwechsel,
+  Lernzielvisualisierung, normale
+  Karteikartenübung, Level-3-Fokus, aktives Lernziel, Mastery, Verified Recall
+  und Prüfungsmodus;</li>
+<li>keine Änderung der Personal-Curriculum-Konfiguration auf Level 2;</li>
+<li>zwei content-addressed MCP Apps für das freigegebene Lernzielbild und private
+  normale Karteikartenübung; Kartenbewertungen ändern nur den
+  Wiederholungsplan, niemals Mastery;</li>
+<li>Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation für berechtigte bezahlte Nutzer von Claude Web Chat.</li>
+<li>der Coaching-Skill ist nur für diese Web-Oberfläche im V1-Veröffentlichungsumfang;</li>
+<li>in v1 keine Hooks oder Subagents und keine Behauptung von Desktop-Chat- oder
+  Cowork-Plugin-Unterstützung; zusätzliche Oberflächen benötigen eigene
+  Abnahme- und Versionsentscheidungen;</li>
+<li>der im Plugin deklarierte Remote-Connector besitzt OAuth, MCP, alle vierzehn
+  Tools und beide MCP Apps UI-Ressourcen; das Plugin dupliziert diese
+  Implementierungen nicht;</li>
+<li>Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine Voraussetzung für die Plugin-Einreichung.</li>
+<li>keine Behauptung nativer mobiler Plugin-Unterstützung;</li>
+<li>jede Lernsitzung startet ausschließlich über
+  <code>https://skillpilot.com/</code> im gemeinsamen SkillPilot-Webstart;
+  die lernende Person wählt dort sichtbar ID, Curriculum, persönliches
+  Curriculum und Claude, bevor eine opake <code>spc_</code>-Kennung ausgestellt wird, die
+  exakt 24 Stunden nach Ausstellung endet;</li>
+<li>dauerhaftes Connector-OAuth einschließlich <code>offline_access</code> bleibt reiner
+  Transport und enthält oder wählt keine Lernendenidentität;</li>
+<li>der alte Claude-Beta-Endpunkt bleibt deaktiviert und ist weder Grundlage
+  noch Fallback des neuen Connectors.</li>
+</ul>
+<p>Die Produktionstopologie ist:</p>
+<div class="highlight"><pre><span></span><code>Claude ── HTTPS ──&gt; neuer Claude-v1-nginx-vhost
+                         │ exakte Pfadumschreibung
+                         v
+                  bestehender Spring-Boot-Prozess
+                         │
+                 Claude-v1-Package ──&gt; CoachToolFacade
+                         │                    │
+                  eigenes OAuth/             v
+                  MCP/Idempotenz       kanonischer Lernzustand
+
+ChatGPT ─────────&gt; bestehende, eingefrorene OpenAI-v1-Lane ──┘
+WebGUI ──────────&gt; bestehende First-Party-Lane ───────────────┘
+</code></pre></div>
+<p>Die gemeinsame JVM ist bewusst gewählt, weil die Produktionsmaschine nicht
+genug RAM für einen zweiten Prozess hat. Sie beseitigt nicht das gemeinsame
+Crash-, Heap-, Startup- und Migrationsrisiko. Dieses Restrisiko wird durch
+Fail-closed-Konfiguration, begrenzte Ressourcen, Differentialtests,
+Disabled-first-Rollout und schnellen Rollback kontrolliert.</p>
+<hr />
+<h2 id="2-harte-arbeitsgrenzen">2. Harte Arbeitsgrenzen</h2>
+<h3 id="21-nicht-andern">2.1 Nicht ändern</h3>
+<p>Der Entwickler darf im Rahmen dieses Vorhabens insbesondere nicht ändern:</p>
+<ul>
+<li><code>ai/openai app/**</code>;</li>
+<li><code>ai/openai plugin/skillpilot-coach-v1/**</code>;</li>
+<li><code>contracts/openai/skillpilot-coach-v1/**</code>;</li>
+<li>den eingereichten OpenAI-Snapshot, dessen Hashanker, Reviewvideo,
+  Reviewfixtures oder Portalwerte;</li>
+<li><code>backend/src/main/java/com/skillpilot/backend/ai/CoachToolFacade.java</code>;</li>
+<li><code>backend/src/main/java/com/skillpilot/backend/ai/CoachStateProjection.java</code>;</li>
+<li>OpenAI-OAuth-, MCP-, Session-, Widget-, mTLS- oder Edge-Code;</li>
+<li><code>app/src/components/SessionSetup.tsx</code> oder den bestehenden
+  First-Party-Startablauf;</li>
+<li><code>backend/src/main/resources/application.yml</code>;</li>
+<li>bestehende OpenAI-nginx-Dateien;</li>
+<li>Tabellen, Records oder Endpunkte der pausierten Claude-Beta durch
+  Umdeutung, Migration oder Löschung.</li>
+</ul>
+<p>Wenn eine notwendige Funktion über die heutigen öffentlichen Fassaden nicht
+sicher ausdrückbar ist, wird die betreffende Claude-Funktion verschoben. Es
+wird kein direkter Schreibzugriff auf Learner-Tabellen und kein
+providerlokaler fachlicher Workaround eingebaut.</p>
+<h3 id="22-zulassige-neue-bereiche">2.2 Zulässige neue Bereiche</h3>
+<p>Vorgesehene neue Implementierungsbereiche sind:</p>
+<div class="highlight"><pre><span></span><code>backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/
+backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/
+backend/src/main/resources/claude-connector-v1/
+ai/claude/app/
+ai/claude/connector-v1/
+ai/claude/plugin/skillpilot-coach-v1/
+deploy/nginx/skillpilot-claude-connector-v1.conf
+docs/deploy/claude-connector-v1-*.md
+</code></pre></div>
+<p>Eine additive Liquibase-Datei und ihre Aufnahme in den Master-Changelog sind
+erst nach Freigabe des gemeinsamen Startup-Effekts zulässig.</p>
+<h3 id="23-stop-bedingungen">2.3 Stop-Bedingungen</h3>
+<p>Die Arbeit stoppt und wird an Product Owner beziehungsweise Security
+eskaliert, wenn mindestens eine dieser Bedingungen eintritt:</p>
+<ul>
+<li>eine Änderung an einem eingefrorenen OpenAI-Pfad oder -Vertrag wäre nötig;</li>
+<li>der neue Connector benötigt eine weitere Backend-JVM oder einen weiteren
+  Datasource-Pool;</li>
+<li>Beta und v1 lassen sich nicht fail-closed gegenseitig ausschließen;</li>
+<li>Claude-v1-Token oder Capabilities funktionieren auf einer anderen
+  Provider-Lane;</li>
+<li>eine Schreiboperation kann <code>expectedStateVersion</code> und Idempotenz nicht vor
+  der Mutation prüfen;</li>
+<li>eine permanente SkillPilot-ID, ID-Datei oder ein ID-Datei-Passwort müsste
+  Claude, OAuth, MCP oder Logs erreichen;</li>
+<li>OAuth oder Refresh könnte eine Lernsession auswählen, erzeugen, erneuern oder
+  über die exakt 24 Stunden hinaus verlängern;</li>
+<li>Prüfungs- oder Recall-Lösungen würden im normalen Coach-Kontext sichtbar;</li>
+<li>ein erforderlicher Security-Matcher fällt auf die aktuell permissive
+  Default-<code>SecurityFilterChain</code> zurück;</li>
+<li>die vereinbarte RAM-, Pool- oder OpenAI-Latenzgrenze wird überschritten;</li>
+<li>ein Freeze-, Contract- oder Differentialtest schlägt fehl.</li>
+</ul>
+<hr />
+<h2 id="3-freigaben-vor-dem-ersten-produktionswirksamen-code">3. Freigaben vor dem ersten produktionswirksamen Code</h2>
+<p>Die folgenden Entscheidungen werden in einem kurzen Decision Record mit Datum,
+Owner und Ergebnis festgehalten. Offene Punkte sind keine stillschweigende
+Zustimmung.</p>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Entscheidung</th>
+<th>Verantwortlich</th>
+<th>Blockiert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Branch-/Merge-Regel während des OpenAI-Reviews</td>
+<td>Product Owner/Release</td>
+<td>Merge in einen deploybaren Branch</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Exakter Effekt auf den gemeinsamen Backend-Build und Behandlung des laufenden OpenAI-Reviews</td>
+<td>Product Owner/Release</td>
+<td>jedes Produktionsdeployment</td>
+</tr>
+<tr>
+<td>C</td>
+<td>OAuth-CIMD-Policy für Hosted Claude und Claude Code</td>
+<td>Security</td>
+<td>OAuth-Implementierung</td>
+</tr>
+<tr>
+<td>D</td>
+<td>First-Party-Start, exakt 24h <code>spc_</code>, all-tool session binding und OAuth/Session-Trennung</td>
+<td>Security/Product</td>
+<td>öffentlicher Lernzugriff</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Claude-spezifische Datenschutzerklärung, Retention und Mindestalter</td>
+<td>Legal/Product</td>
+<td>Real-User-Test und Veröffentlichung</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Numerisches RAM-, Thread-, Pool- und Latenzbudget</td>
+<td>Operations</td>
+<td>Lasttest und Aktivierung</td>
+</tr>
+<tr>
+<td>G</td>
+<td>Publisher-Organisation und Directory-Berechtigung</td>
+<td>Product/Operations</td>
+<td>ausschließlich Directory-Einreichung, nicht Plugin-Einreichung</td>
+</tr>
+<tr>
+<td>H</td>
+<td>Reviewer-Testkonto mit realistischem, aber wegwerfbarem Lernzustand</td>
+<td>Product/QA</td>
+<td>Veröffentlichung und Real-Client-Abnahme</td>
+</tr>
+</tbody>
+</table>
+<p>Die Product-Owner-Entscheidung vom 23. August 2026 gibt ausschließlich den
+providerisolierten Umbau des noch nicht eingereichten Claude-v1-Kandidaten frei.
+Sie hebt die OpenAI-Review-Sperre nicht auf und ist keine automatische Merge-,
+Produktions-, Restart- oder Portal-Freigabe. Diese Wirkungen bleiben über Gate
+B und das Release-Runbook separat zu entscheiden.</p>
+<hr />
+<h2 id="4-offentlicher-und-interner-vertrag">4. Öffentlicher und interner Vertrag</h2>
+<p>Vor der Implementierung werden die folgenden Pfade in einem Contract-Test
+festgeschrieben. Discovery-Dokumente und Redirects nennen ausschließlich die
+öffentlichen HTTPS-URLs; der interne Präfix ist kein öffentlicher Alias.</p>
+<table>
+<thead>
+<tr>
+<th>Externer Pfad am Claude-v1-Host</th>
+<th>Interner Spring-Pfad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mcp</code></td>
+<td><code>/internal/connectors/claude/v1/mcp</code></td>
+</tr>
+<tr>
+<td><code>/.well-known/oauth-protected-resource/mcp</code></td>
+<td><code>/internal/connectors/claude/v1/oauth/protected-resource</code></td>
+</tr>
+<tr>
+<td><code>/.well-known/oauth-authorization-server</code></td>
+<td><code>/internal/connectors/claude/v1/oauth/authorization-server</code></td>
+</tr>
+<tr>
+<td><code>/oauth2/authorize</code></td>
+<td><code>/internal/connectors/claude/v1/oauth2/authorize</code></td>
+</tr>
+<tr>
+<td><code>/oauth2/token</code></td>
+<td><code>/internal/connectors/claude/v1/oauth2/token</code></td>
+</tr>
+<tr>
+<td><code>/oauth2/revoke</code></td>
+<td><code>/internal/connectors/claude/v1/oauth2/revoke</code></td>
+</tr>
+<tr>
+<td><code>/privacy</code></td>
+<td><code>/internal/connectors/claude/v1/privacy</code></td>
+</tr>
+</tbody>
+</table>
+<p>Zusätzliche Regeln:</p>
+<ul>
+<li><code>resource</code> ist exakt
+  <code>https://mcp-claude-v1.skillpilot.com/mcp</code>, einschließlich <code>/mcp</code>;</li>
+<li>der Issuer ist exakt <code>https://mcp-claude-v1.skillpilot.com</code>;</li>
+<li>unbekannte Pfade, Hosts und Versionsnamen liefern <code>404</code>;</li>
+<li>die internen Pfade liefern über <code>skillpilot.com</code> und den OpenAI-Host
+  ebenfalls <code>404</code>;</li>
+<li>nginx überschreibt die externen Pfade deterministisch und leitet keine
+  beliebigen Unterpfade weiter;</li>
+<li>Anwendung und Edge prüfen Host, externen Resource-Identifier und internen
+  Pfad unabhängig voneinander;</li>
+<li><code>/api/claude/mcp</code> bleibt der deaktivierte Beta-Pfad und wird nie Alias oder
+  Fallback für v1.</li>
+</ul>
+<hr />
+<h2 id="5-zielstruktur-im-backend">5. Zielstruktur im Backend</h2>
+<p>Die Klassennamen sind eine konkrete Startvorgabe. Abweichungen sind zulässig,
+wenn Package-Grenze und Verantwortlichkeiten erhalten bleiben.</p>
+<div class="highlight"><pre><span></span><code>connectors/claude/v1/
+├── ClaudeV1Contract.java
+├── ClaudeV1Properties.java
+├── ClaudeV1Configuration.java
+├── ClaudeV1RuntimeValidation.java
+├── session/
+│   ├── ClaudeV1LearningSession.java
+│   ├── ClaudeV1LearningSessionRepository.java
+│   ├── ClaudeV1LearningSessionService.java
+│   └── ClaudeV1SessionTokenCodec.java
+├── oauth/
+│   ├── ClaudeV1OAuthConfiguration.java
+│   ├── ClaudeV1OAuthMetadataController.java
+│   ├── ClaudeV1CimdMetadataValidator.java
+│   ├── ClaudeV1OpaqueTokenIntrospector.java
+│   └── ClaudeV1TokenLifecycleService.java
+├── mcp/
+│   ├── ClaudeV1McpServerConfiguration.java
+│   ├── ClaudeV1McpContractAdapter.java
+│   ├── ClaudeV1CoachContextProjector.java
+│   └── ClaudeV1CapabilityService.java
+├── persistence/
+│   ├── ClaudeV1IdempotencyRecord.java
+│   └── ClaudeV1IdempotencyRepository.java
+├── observability/
+│   └── ClaudeV1Telemetry.java
+└── web/
+    ├── ClaudeV1CoachUiController.java
+    ├── ClaudeV1CoachStartRequest.java
+    └── ClaudeV1LaunchResponse.java
+</code></pre></div>
+<p>Keine v1-Klasse importiert eine Klasse aus
+<code>com.skillpilot.backend.openai...</code> oder
+<code>com.skillpilot.backend.claude...</code>. Zulässige gemeinsame Abhängigkeiten sind
+providerneutrale API-, AI-, MCP-, Domain- und Service-Grenzen.</p>
+<hr />
+<h2 id="6-arbeitspakete">6. Arbeitspakete</h2>
+<h3 id="wp0-baseline-und-schutzbeweis">WP0 — Baseline und Schutzbeweis</h3>
+<p><strong>Zweck:</strong> Vor jeder Implementierung eine reproduzierbare OpenAI- und
+Repository-Baseline sichern.</p>
+<p><strong>Aufgaben:</strong></p>
+<ol>
+<li>Aktuellen Commit, Java-/Node-Version und sauberen Worktree dokumentieren.</li>
+<li>Alle vier OpenAI-Freeze-/Contract-Prüfungen ausführen.</li>
+<li>Den exportierten OpenAI-V1-Contract-Fingerprint und das zwölf Werkzeuge
+   umfassende Toolset als Testbaseline referenzieren, nicht neu veröffentlichen.</li>
+<li>Eine Datei-Matrix <code>create</code>, <code>read-only reference</code>, <code>forbidden</code> in der
+   Implementierungs-PR-Beschreibung führen.</li>
+<li>CI so planen, dass Änderungen unter den verbotenen Pfaden für diese Arbeit
+   sofort fehlschlagen.</li>
+</ol>
+<p><strong>Abnahme:</strong> Freeze- und Contract-Prüfungen sind grün; kein OpenAI-Byte wurde
+verändert.</p>
+<p><strong>Aufwand:</strong> 0,5–1 Personentag.</p>
+<h3 id="wp1-deaktiviertes-package-und-fail-closed-konfiguration">WP1 — Deaktiviertes Package und fail-closed Konfiguration</h3>
+<p><strong>Zweck:</strong> Eine neue, bei fehlender Freigabe vollständig inaktive Provider-Lane
+anlegen.</p>
+<p><strong>Aufgaben:</strong></p>
+<ol>
+<li><code>ClaudeV1Properties</code> mit Präfix
+   <code>skillpilot.claude.connector.v1</code> implementieren.</li>
+<li>Master-Schalter standardmäßig <code>false</code>; keine <code>matchIfMissing=true</code>-Semantik.</li>
+<li>Konfiguration ausschließlich über Environment/System Properties binden;
+   <code>application.yml</code> bleibt unverändert.</li>
+<li>Beim Aktivieren folgende Werte fail-closed validieren: öffentlicher Origin,
+   Issuer, Resource, interner Basis-Pfad, separates Capability-/Hash-Secret,
+   Access-/Refresh-TTL, Cache- und Response-Grenzen sowie Rate-Limits.</li>
+<li>Startup abbrechen, wenn gleichzeitig <code>skillpilot.claude.enabled=true</code> und
+   <code>skillpilot.claude.connector.v1.enabled=true</code> sind.</li>
+<li>Keine eigenen Executor-, Scheduler-, Webserver- oder Datasource-Beans
+   anlegen.</li>
+</ol>
+<p><strong>Tests:</strong></p>
+<ul>
+<li>disabled: keine v1-Router, Filter, OAuth-, MCP- oder Telemetrie-Beans;</li>
+<li>enabled mit unvollständiger Konfiguration: Startup schlägt verständlich und
+  ohne Secret-Ausgabe fehl;</li>
+<li>Beta plus v1: Startup schlägt fehl;</li>
+<li>OpenAI plus v1: beide disjunkten Kontexte starten;</li>
+<li>keine mehrdeutige unqualifizierte Bean-Injektion.</li>
+</ul>
+<p><strong>Abnahme:</strong> Mit Schalter <code>false</code> ist die öffentliche Route nicht vorhanden und
+der OpenAI-Contract-Fingerprint bleibt identisch.</p>
+<p><strong>Aufwand:</strong> 1–2 Personentage.</p>
+<h3 id="wp2-exakte-routing-und-security-grenze">WP2 — Exakte Routing- und Security-Grenze</h3>
+<p><strong>Zweck:</strong> Sicherstellen, dass keine Claude-Anfrage in die permissive
+Default-Chain oder eine andere Provider-Lane fällt.</p>
+<p><strong>Aufgaben:</strong></p>
+<ol>
+<li>Alle Pfade in <code>ClaudeV1Contract</code> als Konstanten definieren.</li>
+<li>Zwei exakte Security-Chains implementieren:
+   OAuth/Connect und MCP-Resource-Server.</li>
+<li>Auf der heutigen Repository-Basis <code>@Order(5)</code> und <code>@Order(6)</code> verwenden:
+   Beta 1/2 ist gegenseitig ausgeschlossen, OpenAI belegt 3/4, die unnummerierte
+   Default-Chain bleibt danach. Änderungen dieser Reihenfolge benötigen einen
+   neuen vollständigen Chain-Test.</li>
+<li><code>securityMatcher</code> ausschließlich auf den internen v1-Pfaden verwenden; kein
+   generisches <code>/oauth2/**</code> und kein alleiniger Host-Matcher.</li>
+<li>Host-/Origin-Grenze zusätzlich in der Anwendung prüfen. Weitergeleitete
+   Header gelten nur aus der bekannten Reverse-Proxy-Grenze.</li>
+<li>Unauthentifizierte MCP-Aufrufe mit <code>401</code> und korrektem
+   <code>WWW-Authenticate: Bearer resource_metadata="..."</code> beantworten.</li>
+<li>Unknown path, wrong host, wrong version und Beta-Pfad jeweils mit <code>404</code>
+   beziehungsweise fail-closed Auth-Fehler testen.</li>
+</ol>
+<p><strong>Tests:</strong> MockMvc-/Embedded-Server-Matrix für jeden öffentlichen und internen
+Pfad, jeden Host und beide Provider-Tokenrichtungen.</p>
+<p><strong>Abnahme:</strong> Kein v1-Pfad erreicht die Default-Chain; Claude-Token funktionieren
+nur am exakten Claude-v1-Resource-Identifier.</p>
+<p><strong>Aufwand:</strong> 2–3 Personentage.</p>
+<h3 id="wp3-oauth-21-cimd-und-token-lifecycle">WP3 — OAuth 2.1, CIMD und Token-Lifecycle</h3>
+<p><strong>Zweck:</strong> Hosted Claude und Claude Code sicher anbinden, ohne DCR und ohne
+statische Anthropic-Secrets.</p>
+<p><strong>Aufgaben:</strong></p>
+<ol>
+<li>Protected Resource Metadata und Authorization Server Metadata ausliefern.</li>
+<li>In der Server-Metadatei
+   <code>client_id_metadata_document_supported: true</code>,
+   <code>token_endpoint_auth_methods_supported: ["none"]</code> und
+   <code>code_challenge_methods_supported: ["S256"]</code> veröffentlichen.</li>
+<li>Nur diese CIMD-Client-IDs zulassen:
+   <code>https://claude.ai/oauth/mcp-oauth-client-metadata</code> und
+   <code>https://claude.ai/oauth/claude-code-client-metadata</code>.</li>
+<li>CIMD-Dokumente mit kurzen Connect-/Read-Timeouts, harter Body-Grenze,
+   JSON-Schemavalidierung, Self-reference-Prüfung, begrenztem Cache und ohne
+   Redirect auf fremde/private Ziele laden.</li>
+<li>Hosted-Callback exakt auf
+   <code>https://claude.ai/api/mcp/auth_callback</code> beschränken.</li>
+<li>Für Claude Code nur <code>http://127.0.0.1:&lt;ephemeral&gt;/callback</code> und
+   <code>http://localhost:&lt;ephemeral&gt;/callback</code> akzeptieren. Beim Vergleich darf nur
+   der Port variieren; Schema, Host und Pfad bleiben exakt.</li>
+<li>Authorization Code plus PKCE S256 erzwingen; <code>plain</code>, fehlende Challenge,
+   DCR und Client-Credentials-Grant ablehnen.</li>
+<li>Token-Endpunkt für
+   <code>application/x-www-form-urlencoded</code> implementieren.</li>
+<li>Kurze opaque Access Tokens, rotierende Refresh Tokens,
+   Refresh-Replay-Erkennung, <code>invalid_grant</code> und Revocation implementieren.</li>
+<li>Read- und Write-Scope trennen; <code>resource</code>/Audience bei Authorization,
+    Token-Ausgabe und Introspection exakt prüfen.</li>
+<li><code>clientInfo</code> nur für Telemetrie verwenden, nie für Autorisierung.</li>
+</ol>
+<p>Die vorhandenen generischen OAuth-Tabellen und
+<code>ProviderScopedOAuth2AuthorizationService</code> dürfen genutzt werden, sofern der
+v1-Client-Repository-Wrapper alte Claude-Beta- und OpenAI-Datensätze sicher als
+fremd behandelt. Beta-OAuth-Klassen werden nicht wiederverwendet.</p>
+<p><strong>Tests:</strong> Hosted- und Code-Flow, PKCE-Negativfälle, Redirect-Manipulation,
+SSRF/DNS/Redirect-Negativfälle, Resource-Mismatch, Scope-Mismatch,
+Refresh-Rotation/Replays, Revocation und Token-Cross-Provider-Matrix.</p>
+<p><strong>Abnahme:</strong> Beide offiziellen Claude-Clienttypen funktionieren; DCR ist nicht
+vorhanden; ein Token ist auf genau Client, Connection, Scope und Claude-v1-
+Resource gebunden.</p>
+<p><strong>Aufwand:</strong> 5–8 Personentage plus Security Review.</p>
+<h3 id="wp4-first-party-lernsitzung-sicher-ausstellen">WP4 — First-Party-Lernsitzung sicher ausstellen</h3>
+<p><strong>Zweck:</strong> Einen vorhandenen pseudonymen SkillPilot-Lernzustand für höchstens
+24 Stunden freigeben, ohne die permanente ID an Claude oder OAuth zu geben.</p>
+<p><strong>Aufgaben:</strong></p>
+<ol>
+<li>Eine isolierte First-Party-Route
+   <code>https://skillpilot.com/</code> bereitstellen; bestehende
+   ChatGPT-Startbytes und -Semantik nicht ändern.</li>
+<li>Der First-Party-POST
+   <code>/api/ui/learners/{skillpilotId}/claude/v1/launch</code> wählt den Learner nur
+   innerhalb der SkillPilot-WebGUI und gibt niemals die permanente ID an
+   Claude zurück.</li>
+<li><code>ClaudeV1SessionTokenCodec</code> erzeugt eine opake <code>spc_</code>-Kennung mit 43
+   Base64url-Zeichen und HMAC-Integrität.</li>
+<li><code>ClaudeV1LearningSessionService</code> setzt <code>SESSION_TTL</code> exakt auf 24 Stunden;
+   Nutzung verschiebt das Ende nicht.</li>
+<li>Jede der vierzehn Tool-Schemas verlangt <code>learningSessionId</code>; das gilt explizit
+   auch für <code>review_skillpilot_memory_practice_card</code>.</li>
+<li>Toolaufrufe prüfen Learner-Session und Connector-OAuth getrennt. OAuth und
+   <code>offline_access</code> dürfen keine Lernsession auswählen, ausstellen, erneuern
+   oder verlängern.</li>
+<li>Fehlende, manipulierte, abgelaufene und fremde Sessions scheitern
+   fail-closed; ein neuer First-Party-Start ist die einzige Erneuerung.</li>
+<li>Keine permanente ID oder OAuth-Zugangsdaten in URL, Referrer, Analytics,
+   Logs, Toolergebnissen oder normalem Claude-Text. Einzige explizite
+   V1-Ausnahme ist der vom Nutzer gewählte Web-Handoff: genau eine aktuelle
+   24-Stunden-Session steht URL-kodiert im einzigen <code>q</code>-Parameter von
+   <code>https://claude.ai/new</code>, damit Claude die Startnachricht vorbefüllt. Sie
+   darf weder von SkillPilot analysiert oder geloggt noch automatisch gesendet
+   werden; der Nutzer prüft und sendet selbst.</li>
+</ol>
+<p><strong>Tests:</strong> Tokenformat und HMAC, exakt 24h mit kontrollierter Uhr, fehlende und
+abgelaufene Session, Cross-Learner/Session, all-tool Schema-Guard, app-only
+Review-Guard, OAuth-Refresh bei abgelaufener Session, Log-Redaktion sowie
+strikte Web-Handoff-Allowlist mit exakt einem <code>q</code>-Parameter und ohne permanente
+ID, Zusatzparameter, Fragment, Zugangsdaten, Fremdhost oder Auto-Send.</p>
+<p><strong>Abnahme:</strong> Eine bestehende Testperson startet über SkillPilot; alle vierzehn
+Tools funktionieren nur mit der aktuellen Session; nach exakt 24 Stunden ist
+ein neuer Start nötig, während der Connector verbunden bleiben darf; Claude
+sieht nie die permanente ID.</p>
+<p><strong>Aufwand:</strong> 3–5 Personentage plus Threat-Model Review.</p>
+<h3 id="wp5-provider-persistenz-revision-und-idempotenz">WP5 — Provider-Persistenz, Revision und Idempotenz</h3>
+<p><strong>Zweck:</strong> Genau-einmalige Schreibsemantik auf dem gemeinsamen kanonischen
+Lernzustand herstellen.</p>
+<p><strong>Aufgaben:</strong></p>
+<ol>
+<li>Bestehende OAuth-Tabellen nur über ein v1-spezifisches
+   <code>RegisteredClientRepository</code> und den provider-scoped Wrapper ansprechen.</li>
+<li>Nicht auf <code>claude_connection</code>, <code>claude_binding_grant</code> oder
+   <code>claude_pending_launch</code> zugreifen.</li>
+<li>Die bereits produktiv ausgeführte Migration
+   <code>023-add-claude-connector-v1.yaml</code> niemals ändern. Den Modellwechsel nur
+   additiv über <code>024-replace-claude-v1-binding-with-learning-sessions.yaml</code>
+   durchführen.</li>
+<li>IDs und One-time-Handles nur gehasht speichern, soweit ein späterer
+   Klartextvergleich nicht nötig ist. Keine Tokens, Passwörter, Prompts,
+   Antworten oder Lösungen im Audit.</li>
+<li>Sessionauflösung und Idempotenz in den providerisolierten Services halten.
+   Sie dürfen keine OpenAI-Klasse importieren, übernehmen aber dieselben
+   kanonischen Garantien:
+   Learner-Lock, Vergleich von <code>expectedStateVersion</code>, UUID-
+   <code>clientRequestId</code>, Request-Hash, atomare Mutation und deterministischer
+   Replay des begrenzten Ergebnisses.</li>
+<li>Vor jeder Mutation die aktuelle <code>Learner.coachStateRevision</code> prüfen. Nach
+   erfolgreicher Mutation muss die Revision genau entsprechend der kanonischen
+   Domainregel fortgeschritten sein.</li>
+<li>Idempotenzdaten mit kurzer, dokumentierter TTL löschen. Replay-Payloads
+   dürfen ausschließlich die begrenzte, bereits an den Client ausgegebene
+   Zustandsprojektion enthalten, keine Chat- oder Learner-Antworten.</li>
+<li>Revocation löscht oder sperrt nur die gewählte Claude-v1-Verbindung und
+   deren Token/Transaktionen; der Lernzustand und andere Provider bleiben
+   erhalten.</li>
+</ol>
+<p><strong>Tests:</strong> Duplicate Request, gleiche UUID mit anderem Payload, stale revision,
+parallele Writes, Rollback nach Exception, Token-Revocation und
+Migrations-Backward-Compatibility bei deaktiviertem v1.</p>
+<p><strong>Abnahme:</strong> Kein last-writer-wins-Verlust; Dubletten erzeugen keine zweite
+Mutation; Beta- und OpenAI-Datensätze bleiben unangetastet.</p>
+<p><strong>Aufwand:</strong> 4–6 Personentage.</p>
+<h3 id="wp6-mcp-vertrag-und-providerisolierte-mcp-apps">WP6 — MCP-Vertrag und providerisolierte MCP Apps</h3>
+<p><strong>Zweck:</strong> Die kleinste sichere Claude-v1-Werkzeugoberfläche mit den zwölf
+gemeinsamen Lernverantwortlichkeiten plus backend-autorisiertem automatischem
+Planfortsetzen und explizitem planmäßigem Fachwechsel bereitstellen.</p>
+<p>Vorgesehene Namen und Annotationen:</p>
+<table>
+<thead>
+<tr>
+<th>MCP-Tool</th>
+<th>Klasse</th>
+<th>Annotation</th>
+<th>Fachliche Grenze</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_skillpilot_coach_context</code></td>
+<td>read</td>
+<td><code>readOnlyHint: true</code></td>
+<td>projizierter aktueller Zustand plus fachbezogene Tageszahlen aller gültigen Pläne, ohne Plan-/Landscape-IDs und ohne versteckte Mutation</td>
+</tr>
+<tr>
+<td><code>resume_skillpilot_learning_plan</code></td>
+<td>write</td>
+<td><code>destructiveHint: true</code></td>
+<td>nur ohne aktives Ziel und bei autoritativem <code>resumeAvailable</code>; Backend wählt das Ziel und liefert den vollständigen kanonischen Kontext</td>
+</tr>
+<tr>
+<td><code>switch_skillpilot_learning_plan_subject</code></td>
+<td>write</td>
+<td><code>destructiveHint: true</code></td>
+<td>exakt ein lokalisierter <code>subject</code>-Wert aus dem aktuellen Tagesplankontext; Backend parkt ein unfertiges Ziel und wählt das fällige Ziel dieses Fachs, ohne Plan-/Landscape-/Focus-/Goal-ID vom Modell</td>
+</tr>
+<tr>
+<td><code>render_skillpilot_goal_visualization</code></td>
+<td>read + App</td>
+<td><code>readOnlyHint: true</code></td>
+<td>freigegebenes Bild nur für das exakte aktive Ziel und den aktuellen Zustand</td>
+</tr>
+<tr>
+<td><code>start_skillpilot_memory_practice</code></td>
+<td>read + App</td>
+<td><code>readOnlyHint: true</code></td>
+<td>private vollständige Fälligkeitsauswahl, keine Mastery-Mutation</td>
+</tr>
+<tr>
+<td><code>review_skillpilot_memory_practice_card</code></td>
+<td>app-only write</td>
+<td><code>destructiveHint: false</code></td>
+<td>exakt angezeigte Karte; nur Wiederholungsplan, niemals Mastery</td>
+</tr>
+<tr>
+<td><code>get_skillpilot_navigation_options</code></td>
+<td>read</td>
+<td><code>readOnlyHint: true</code></td>
+<td>aktuelle Level-3-Optionen, kein Level 2</td>
+</tr>
+<tr>
+<td><code>set_skillpilot_focus</code></td>
+<td>write</td>
+<td><code>destructiveHint: true</code></td>
+<td>exakt eine frisch publizierte Focus-Option</td>
+</tr>
+<tr>
+<td><code>set_skillpilot_active_goal</code></td>
+<td>write</td>
+<td><code>destructiveHint: true</code></td>
+<td>erlaubtes aktives Ziel, expliziter Redirect</td>
+</tr>
+<tr>
+<td><code>set_skillpilot_mastery</code></td>
+<td>write</td>
+<td><code>destructiveHint: true</code></td>
+<td>aktives Ziel, Orientation-/Exam-Regeln</td>
+</tr>
+<tr>
+<td><code>start_skillpilot_verified_recall</code></td>
+<td>read</td>
+<td><code>readOnlyHint: true</code></td>
+<td>servergewählter vollständiger Batch ohne Zustandsmutation</td>
+</tr>
+<tr>
+<td><code>get_skillpilot_verified_recall_answers</code></td>
+<td>sensitive read</td>
+<td><code>readOnlyHint: true</code></td>
+<td>capability-gebundene Gesamtantworten</td>
+</tr>
+<tr>
+<td><code>record_skillpilot_verified_recall_results</code></td>
+<td>write</td>
+<td><code>destructiveHint: true</code></td>
+<td>ein vollständiger atomarer Befund</td>
+</tr>
+<tr>
+<td><code>get_skillpilot_exam_evaluation</code></td>
+<td>sensitive read</td>
+<td><code>readOnlyHint: true</code></td>
+<td>freigegebene Lösung/Rubrik für aktives Exam</td>
+</tr>
+</tbody>
+</table>
+<p>Jedes Tool erhält zusätzlich einen menschlich lesbaren <code>title</code>. Namen bleiben
+unter 64 Zeichen. Beschreibungen erklären ausschließlich Zweck,
+Aufrufzeitpunkt und tatsächliche Datenwirkung; Coaching-Anweisungen gehören in
+die Server Instructions.</p>
+<p><strong>Adapter-Regeln:</strong></p>
+<ol>
+<li><code>CoachToolFacade</code> und <code>CoachStateProjection</code> werden per Konstruktor
+   injiziert und nur über ihre öffentlichen Methoden verwendet.</li>
+<li>Kein v1-Ergebnis enthält <code>skillpilotId</code>, OAuth-Subject, Token, interne URL
+   oder ungefilterte Exam-Lösung außerhalb des Evaluation-Tools.</li>
+<li>Read-Tools verändern weder Lernzustandsrevision noch Retention-/Activity-
+   Zeitstempel. Reine technische Metriken dürfen aggregiert werden.</li>
+<li>Jede Write-Schema verlangt <code>expectedStateVersion</code> und <code>clientRequestId</code>,
+   sofern eine serverseitige Capability diese Werte nicht bereits eindeutig
+   bindet.</li>
+<li><code>set_skillpilot_focus</code> akzeptiert ausschließlich eine aktuell durch die
+   kanonische Fassade publizierte <code>selectionGoalIds</code>-Liste.</li>
+<li><code>resume_skillpilot_learning_plan</code> akzeptiert nur die aktuelle
+   <code>expectedStateVersion</code> und eine frische <code>clientRequestId</code>, wenn kein aktives
+   Ziel läuft und der Kontext <code>resumeAvailable</code> meldet. Es aktiviert
+   ausschließlich das vom Backend bestimmte Ziel.</li>
+<li><code>switch_skillpilot_learning_plan_subject</code> akzeptiert nur einen exakten
+   lokalisierten <code>subject</code>-Wert aus dem aktuellen <code>learningPlanToday</code>-Kontext,
+   die aktuelle <code>expectedStateVersion</code> und eine frische <code>clientRequestId</code>.
+   Plan-, Landscape-, Focus- und Goal-IDs sind keine Modellparameter; unbekannte,
+   mehrdeutige oder nicht wechselbare Fächer scheitern ohne Mutation.</li>
+<li><code>set_skillpilot_mastery</code> akzeptiert nur das aktive atomare Ziel und bildet
+   Orientation, normale Kompetenz, Memory und Exam getrennt ab.</li>
+<li>Toolantworten sind größenbegrenzt, zweisprachig projizierbar und enthalten
+   klare, maschinenlesbare Fehlercodes für Input, Auth, Conflict, Stale State
+   und Capability-Mismatch.</li>
+<li>Keine Catch-all-API und kein freies URL-, Method- oder Query-Argument.</li>
+<li>Beide UI-Ressourcen sind content-addressed und nutzen den MCP-Apps-MIME-Typ.
+   Vorderseite, Rückseite und Review-Capability einer Karte stehen nur in
+   Component-Metadaten; der modell-sichtbare Receipt enthält nur begrenzten
+   Status und Fortschritt.</li>
+<li>Das Review-Tool ist nur für die App sichtbar und bindet Verbindung, Ziel,
+    Karte, Ausgaberevision und Ablaufzeit kryptographisch. Es akzeptiert nur
+    <code>not_known</code> oder <code>known</code> und eine frische <code>clientRequestId</code>.</li>
+</ol>
+<p><strong>Abnahme:</strong> Toolkatalog enthält exakt vierzehn freigegebene Werkzeuge, zwei
+Ressourcen, korrekte Schemas und Annotationen; alle gültigen Aufrufe liefern
+fachliche Antworten statt generischer 400/500-Fehler. Normale Kartenpraxis ist
+in Tests von Verified Recall und Mastery getrennt.</p>
+<p><strong>Aufwand:</strong> 5–8 Personentage einschließlich Contract-Tests.</p>
+<h3 id="wp7-verified-recall-und-prufungs-capabilities">WP7 — Verified Recall und Prüfungs-Capabilities</h3>
+<p><strong>Zweck:</strong> Lösungsmaterial nur im vorgesehenen, providergebundenen Ablauf
+freigeben.</p>
+<p><strong>Verified Recall:</strong></p>
+<ul>
+<li>Start-Tool übernimmt weder <code>goalId</code> noch <code>batchSize</code> vom Modell, sondern
+  verwendet aktives Memory-Ziel und serverbestimmte vollständige Batchgröße.</li>
+<li>Es ruft die Facade-Variante ohne callergewählte Batchgröße auf.</li>
+<li>Die Batch-Capability bindet Provider, Claude-v1-Verbindung, Learner, Ziel,
+  Karten-IDs in Reihenfolge, Anzahl, Ausgaberevision und Ablaufzeit.</li>
+<li>Answer-Tool gibt alle Sollantworten als einen vollständigen Satz aus und
+  erzeugt eine getrennte Grading-Capability. Der Modellablauf ruft es genau
+  einmal auf; ein technisch identischer Retry bleibt idempotent und verändert
+  keinen Zustand.</li>
+<li>Record-Tool akzeptiert genau einen geordneten Befund für jede Karte. Fehlende,
+  zusätzliche, vertauschte oder fremde Karten führen ohne Teilmutation zum
+  Fehler.</li>
+<li>Backend-Mastery und Continuation kommen ausschließlich aus der kanonischen
+  Batch-Funktion; das Modell speichert keine zusätzliche Memory-Mastery.</li>
+</ul>
+<p><strong>Prüfung:</strong></p>
+<ul>
+<li>Normaler Coach-Kontext enthält Aufgabe und höchstens Maximalpunktzahl, nie
+  Lösung, Passing Points oder Rubrik.</li>
+<li>Evaluation-Tool prüft aktives Exam, Zustand und Claude-v1-Verbindung und
+  mintet eine kurze provider-/learner-session-/goal-/revisiongebundene
+  Evaluation-Capability.</li>
+<li>Exam-Mastery verlangt diese Capability, endliche <code>earnedPoints</code>, konkrete
+  Rückmeldung und mindestens <code>passingPoints</code>.</li>
+<li>Alternative fachlich korrekte Verfahren werden akzeptiert; die Musterlösung
+  ist keine Methodenvorschrift.</li>
+</ul>
+<p><strong>Wichtige Beweisgrenze:</strong> Der MCP-Server erhält den Claude-Chat nicht. Er kann
+daher technisch nicht beweisen, dass der Lernende vor dem Answer- oder
+Evaluation-Aufruf bereits vollständig geantwortet hat. Serverseitig beweisbar
+sind Geheimhaltung bis zum Toolaufruf, State-/Connection-/Goal-Bindung,
+Vollständigkeit des Result-Batches und die Capability-Kette. Das vorherige
+Warten auf eine vollständige sichtbare Abgabe ist zusätzlich eine
+Server-Instruction und ein Real-Claude-Verhaltenstest; es darf nicht als
+kryptographisch erzwungen dokumentiert werden.</p>
+<p><strong>Tests:</strong> Capability-Replay, anderer Provider, anderer Learner, anderes Ziel,
+andere Verbindung, stale state, abgelaufen, Batch-Manipulation, atomarer Rollback,
+Exam nicht bereit und nicht bestandene Prüfung.</p>
+<p><strong>Abnahme:</strong> Vorzeitiges oder fremdes Wiederverwenden von Lösungsmaterial
+scheitert fail-closed; vollständige gültige Abläufe funktionieren atomar.</p>
+<p><strong>Aufwand:</strong> 3–5 Personentage; teilweise parallel zu WP6.</p>
+<h3 id="wp8-edge-datenschutz-und-betrieb">WP8 — Edge, Datenschutz und Betrieb</h3>
+<p><strong>Zweck:</strong> Den Connector getrennt veröffentlichen, ohne OpenAI-v1-Edge-Dateien
+anzufassen.</p>
+<p><strong>Aufgaben:</strong></p>
+<ol>
+<li>Neue Datei <code>deploy/nginx/skillpilot-claude-connector-v1.conf</code> anlegen.</li>
+<li>Eigenen DNS-Namen und eigene Zertifikatslinie vorbereiten.</li>
+<li>Nur die in Abschnitt 4 definierten Pfade auf den bestehenden Backend-Port
+   umschreiben; alles andere <code>404</code>.</li>
+<li>Kein Include und keine Location in einer bestehenden OpenAI-nginx-Datei
+   ändern.</li>
+<li>Connector-spezifische Privacy-Seite mit Datenerhebung, Zweck, Speicherung,
+   Retention, Drittweitergabe, Kontakt und Revocation bereitstellen.</li>
+<li>Request-/Response-Body-Logging für OAuth, First-Party-Launch, MCP, Recall und
+   Exam ausschließen; permanente IDs, <code>spc_</code>-Sessions und Token zusätzlich in
+   strukturierten Logs redigieren.</li>
+<li>Provider-Telemetrie auf Zähler, Statusklasse, Latenz, begrenzte
+   Fehlerkategorie, Heap/Pool und Revocation beschränken.</li>
+<li>Keinen globalen <code>HealthIndicator</code> registrieren, der Claude-Fehler in die
+   bestehende OpenAI-/Backend-Readiness propagiert. Bis zu einer ausdrücklich
+   getrennten Actuator-Gruppe werden Claude-Zustände über Metriken und einen
+   providerinternen Diagnosepfad beobachtet.</li>
+<li>Numerische RAM-, Thread-, DB-Pool- und OpenAI-p95-Grenzen aus Gate F in den
+   Lasttest übernehmen.</li>
+</ol>
+<p><strong>Abnahme:</strong> <code>nginx -t</code> ist grün, <code>nginx -T</code> zeigt nur den neuen vhost-Diff,
+Privacy/Revocation sind erreichbar, und eine Claude-Störung macht OpenAI nicht
+unready.</p>
+<p><strong>Aufwand:</strong> 2–4 Personentage plus Operations/Legal.</p>
+<h3 id="wp9-testmatrix-und-real-claude-abnahme">WP9 — Testmatrix und Real-Claude-Abnahme</h3>
+<p><strong>Zweck:</strong> Protokoll-, Fach-, Sicherheits- und Ein-JVM-Verhalten vor einer
+Veröffentlichung belegen.</p>
+<p><strong>Automatisierte Testgruppen:</strong></p>
+<ul>
+<li><code>ClaudeV1DisabledContextTest</code>;</li>
+<li><code>ClaudeV1RuntimeValidationTest</code>;</li>
+<li><code>ClaudeV1SecurityChainIntegrationTest</code>;</li>
+<li><code>ClaudeV1OAuthFlowIntegrationTest</code>;</li>
+<li><code>ClaudeV1CimdMetadataValidatorTest</code>;</li>
+<li><code>ClaudeV1LearningSessionServiceTest</code>;</li>
+<li><code>ClaudeV1SessionTokenCodecTest</code>;</li>
+<li><code>ClaudeV1McpContractTest</code>;</li>
+<li><code>ClaudeV1MemoryPracticeContractTest</code>;</li>
+<li><code>ClaudeV1VerifiedRecallContractTest</code>;</li>
+<li><code>ClaudeV1ExamContractTest</code>;</li>
+<li><code>ClaudeV1CoachUiControllerTest</code>;</li>
+<li><code>ClaudeV1CrossProviderIsolationTest</code>;</li>
+<li><code>ClaudeV1OpenAiDifferentialContractTest</code>.</li>
+</ul>
+<p><strong>Verpflichtende Cross-Provider-Fälle:</strong></p>
+<ol>
+<li>ChatGPT liest Revision N; Claude schreibt N+1; ChatGPT-Schreibversuch mit N
+   wird abgewiesen; Reload zeigt N+1.</li>
+<li>Derselbe Ablauf in Gegenrichtung.</li>
+<li>Claude-Token auf OpenAI/Beta/Main-API und OpenAI-Token auf Claude werden
+   abgewiesen.</li>
+<li>Revocation einer Claude-Verbindung beendet keine OpenAI-Session.</li>
+<li>Claude-Timeout, ungültige Requests und Last erzeugen keine partielle
+   Lernzustandsmutation.</li>
+</ol>
+<p><strong>Real-Client-Abnahme:</strong></p>
+<ul>
+<li>alle vierzehn Toolpfade und beide Ressourcen mit MCP Inspector prüfen;</li>
+<li>das öffentliche Plugin frisch in Claude Web Chat installieren und dort
+  separat prüfen;</li>
+<li>prüfen, dass der Coaching-Skill auf der Web-Oberfläche greift, während
+  OAuth, alle vierzehn Tools und beide MCP Apps ausschließlich aus dem einmal
+  verbundenen Remote-Connector stammen;</li>
+<li>beide MCP Apps mit privaten Kartenmetadaten und app-only Review testen;</li>
+<li>nachweisen, dass v1 keine Hooks oder Subagents enthält und weder Desktop Chat
+  noch Cowork als unterstützte Plugin-Oberfläche beansprucht;</li>
+<li>den finalen Remote-Connector unabhängig über den Custom-Connector-Weg
+  prüfen; nach Verfügbarkeit den Connector-only-Directory-Eintrag gegen
+  denselben Endpoint testen;</li>
+<li>nachweisen: Plugin und Directory-Installation dürfen bei derselben Remote-MCP-URL koexistieren; Claude stellt für den gemeinsamen Server genau einen Tool-Satz bereit.</li>
+<li>keinen zusätzlichen manuellen Custom Connector für dieselbe Remote-MCP-URL
+  einrichten;</li>
+<li>keine native mobile Plugin-Unterstützung beanspruchen;</li>
+<li>DE- und EN-Coaching, Konflikt, Recall, Exam, Revocation und Reconnect testen;</li>
+<li>mit vollständig bestücktem, wegwerfbarem Erwachsenen-Testlearner testen;</li>
+<li>keine echten Lernenden- oder Produktiv-Credentials im Mitschnitt verwenden.</li>
+</ul>
+<p>Anthropic stellt für Connectoren keine separate Client-Staging-Umgebung bereit.
+Vor dem Produktionsgate wird deshalb eine kurzlebige, authentifizierte
+Entwickler-/Staging-Instanz über einen öffentlichen Test-Host oder Tunnel
+angebunden. Das ist kein zweiter Prozess auf der RAM-begrenzten
+Produktionsmaschine. Der Tunnel wird nach dem Test geschlossen.</p>
+<p><strong>Abnahme:</strong> Alle automatisierten Tests, MCP Inspector, Hosted Claude und die
+jeweils beanspruchten Plugin-Clients sind grün; die OpenAI-Differenz ist null.</p>
+<p><strong>Aufwand:</strong> 4–7 Personentage.</p>
+<h3 id="wp10-disabled-first-rollout-aktivierung-und-submission">WP10 — Disabled-first-Rollout, Aktivierung und Submission</h3>
+<p><strong>Zweck:</strong> Das gemeinsame Deployment mit kleinstmöglichem Rückfallrisiko
+aktivieren.</p>
+<p><strong>Reihenfolge:</strong></p>
+<ol>
+<li>Gate B ausdrücklich freigeben lassen; Entscheidung muss Zielversion,
+   Dateiumfang, gemeinsamen Restart-Effekt und OpenAI-Reviewfolge nennen.</li>
+<li>Datenbank-Backup und Artefakt-Rollbackversion verifizieren.</li>
+<li>Neues gemeinsames Backend-Artefakt mit
+   <code>skillpilot.claude.connector.v1.enabled=false</code> deployen.</li>
+<li>OpenAI-Freeze-, Contract-, OAuth-, MCP-, Widget- und First-Party-Smokes
+   vollständig ausführen.</li>
+<li>Nur bei null beobachtbarer OpenAI-Differenz Claude-v1 per Environment
+   aktivieren und den bestehenden Dienst kontrolliert neu starten.</li>
+<li>Interne Routen und Auth prüfen, während der öffentliche vhost noch aus ist.</li>
+<li>DNS/Zertifikat/vhost aktivieren; <code>nginx -t</code>, <code>nginx -T</code> und externe
+   Negativtests ausführen.</li>
+<li>Erneut OpenAI-Smokes und RAM/Pool/Latenz prüfen.</li>
+<li>Real-Claude-Custom-Connector-Abnahme wiederholen.</li>
+<li>Öffentliche Plugin-Abnahme in Claude Web Chat wiederholen und das Plugin
+    anschließend über den unabhängigen Anthropic-Console-Prozess einreichen.</li>
+<li>Den Connector-only-Directory-Eintrag erst nach seinem eigenen Gate mit
+    Dokumentations-URL, Privacy-URL, Icon, Test-Credentials und Setup-Anleitung
+    einreichen.</li>
+</ol>
+<p>Für die Directory-Einreichung braucht der Publisher nach aktuellem
+Anthropic-Verfahren eine Team- oder Enterprise-Organisation und
+Directory-Management-Rechte. Der Connector selbst wird zuvor mit einem Custom
+Connector getestet; diese Laufzeit entspricht der Directory-Laufzeit. Dieses
+Gate gilt ausschließlich für den unabhängigen Connector-only-Directory-Weg
+und ist keine Voraussetzung für die Plugin-Einreichung.</p>
+<p><strong>Rollback:</strong></p>
+<ol>
+<li>Claude-v1-vhost deaktivieren;</li>
+<li>v1-Master-Schalter auf <code>false</code> setzen;</li>
+<li>bestehenden Dienst kontrolliert neu starten;</li>
+<li>Claude-v1-Transporttoken und offene Lernsessionen widerrufen;</li>
+<li>OpenAI-Smokes wiederholen;</li>
+<li>bei Artefakt- oder Migrationsfehler auf das gesicherte gemeinsame Artefakt
+   zurückrollen; additive v1-Tabellen nicht destruktiv entfernen.</li>
+</ol>
+<p><strong>Abnahme:</strong> Rollback ist vor Aktivierung praktisch geprobt; Plugin- und
+Directory-Submission folgen erst nach den jeweils eigenen stabilen
+Real-Client- und Veröffentlichungs-Gates.</p>
+<p><strong>Aufwand:</strong> 2–4 Personentage plus Review-Wartezeit.</p>
+<hr />
+<h2 id="7-reihenfolge-und-abhangigkeiten">7. Reihenfolge und Abhängigkeiten</h2>
+<div class="highlight"><pre><span></span><code>WP0 ──&gt; WP1 ──&gt; WP2 ──&gt; WP3 ──&gt; WP4
+                 │       │       │
+                 └───────┴──&gt; WP5 ──&gt; WP6 ──&gt; WP7
+                                      │       │
+                                      └──&gt; WP8/WP9 ──&gt; WP10
+</code></pre></div>
+<p>Der kritische Pfad liegt in OAuth/CIMD, First-Party-Sessionausstellung,
+Revision/Idempotenz und Real-Claude-Abnahme. WP6 und WP7 dürfen erst gegen
+Mock-Sessions entwickelt werden, sobald deren Capability- und
+State-Version-Vertrag feststeht.</p>
+<p>Grobe Gesamtschätzung für einen mit Spring Security und MCP vertrauten
+Entwickler: <strong>28–45 Personentage</strong>, zuzüglich Product-, Security-, Legal-,
+Operations- und externer Review-Zeit. Die Spanne ist keine Terminzusage; offene
+Gates, insbesondere Identity/OAuth und RAM-Headroom, dominieren das Risiko.</p>
+<hr />
+<h2 id="8-verifikationsbefehle">8. Verifikationsbefehle</h2>
+<p>Vor jedem Review-fähigen Stand:</p>
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>scripts/check_openai_plugin_review_freeze.mjs
+node<span class="w"> </span>scripts/openai_plugin_release.mjs<span class="w"> </span>verify
+node<span class="w"> </span>scripts/check_skillpilot_coach_plugin.mjs
+node<span class="w"> </span>scripts/check_openai_plugin_versioning.mjs
+node<span class="w"> </span>ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
+node<span class="w"> </span>--test<span class="w"> </span>ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
+npm<span class="w"> </span>--prefix<span class="w"> </span>ai/claude/app<span class="w"> </span><span class="nb">test</span>
+node<span class="w"> </span>--test<span class="w"> </span>scripts/check_claude_connector_v1_release.test.mjs
+node<span class="w"> </span>scripts/check_claude_connector_v1_release.mjs
+
+<span class="nb">cd</span><span class="w"> </span>backend
+./gradlew<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--tests<span class="w"> </span><span class="s1">'com.skillpilot.backend.connectors.claude.v1.*'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tests<span class="w"> </span><span class="s1">'com.skillpilot.backend.connectors.claude.v1.**'</span>
+./gradlew<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<p>Dokumentation:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>app
+npm<span class="w"> </span>run<span class="w"> </span>check:docs-links
+npm<span class="w"> </span>run<span class="w"> </span>check:docs-indexes
+npm<span class="w"> </span>run<span class="w"> </span>check:terminology
+</code></pre></div>
+<p>Vor dem Edge-Reload auf der freigegebenen Zielumgebung:</p>
+<div class="highlight"><pre><span></span><code>nginx<span class="w"> </span>-t
+nginx<span class="w"> </span>-T
+</code></pre></div>
+<p><code>nginx -T</code> kann Secrets oder interne Details enthalten und gehört nicht
+ungefiltert in CI-Logs oder Tickets.</p>
+<hr />
+<h2 id="9-definition-of-done-fur-den-claudeai-directory-kandidaten">9. Definition of Done für den Claude.ai-Directory-Kandidaten</h2>
+<p>Der aktuelle Claude Connector v1 beansprucht für die Directory-Einreichung
+ausschließlich Claude.ai. Er gilt nur dann als umsetzungs- und releasefertig,
+wenn alle folgenden Punkte erfüllt sind:</p>
+<ul>
+<li>die OpenAI App und ihr V1-Vertrag sind byte- und verhaltensgleich zur
+  freigegebenen Baseline;</li>
+<li>v1 ist standardmäßig aus und Beta plus v1 startet nie gemeinsam;</li>
+<li>es existiert nur das bestehende Backend-Deployable und die bestehende JVM;</li>
+<li>öffentliche und interne Pfade, OAuth-Issuer und Resource-Identifier sind
+  exakt versioniert und isoliert;</li>
+<li>Claude.ai besteht OAuth mit PKCE S256;</li>
+<li>jede Lernsitzung startet über <code>https://skillpilot.com/</code> und
+  erhält ausschließlich eine opake <code>spc_</code>-Kennung für exakt 24 Stunden;</li>
+<li>alle vierzehn Tools einschließlich des app-only Review-Tools verlangen dieselbe
+  aktuelle <code>learningSessionId</code>;</li>
+<li>OAuth und <code>offline_access</code> bleiben reiner Connectortransport und können keine
+  Lernsitzung auswählen, erzeugen, erneuern oder verlängern;</li>
+<li>Claude erhält nie die permanente SkillPilot-ID, eine ID-Datei oder deren
+  Passwort;</li>
+<li>alle vierzehn freigegebenen Tools haben genaue Schemas, Titel und korrekte
+  Anthropic-Annotationen;</li>
+<li>beide content-addressed MCP Apps sind deterministisch gebaut; private
+  Kartendaten bleiben component-only und das Review-Tool app-only;</li>
+<li>normale Karteikartenpraxis ändert nur Wiederholungsplanung und nie Mastery;</li>
+<li>Level 2 ist nicht schreibbar; Level 3 und Lernzustandsmutationen verwenden
+  kanonische Regeln, Revision und Idempotenz;</li>
+<li>Recall- und Exam-Capabilities sind provider-, learner-, learner-session-, goal-,
+  state- und zeitgebunden;</li>
+<li>Cross-Provider-Konflikt-, Token-, Revocation- und Fault-Tests sind grün;</li>
+<li>RAM-, Thread-, Pool- und OpenAI-Latenzbudgets sind numerisch erfüllt;</li>
+<li>Privacy, Altersgrenze, Supportkontakt, Testkonto und Reviewer-Anleitung sind
+  freigegeben;</li>
+<li>Disabled-first-Rollout und Rollback sind praktisch belegt;</li>
+<li>MCP Inspector und eine frische Claude.ai-Verbindung wurden gegen den finalen
+  öffentlichen Endpoint getestet;</li>
+<li>Product Owner hat die konkrete Produktionsaktivierung ausdrücklich
+  freigegeben.</li>
+</ul>
+<h3 id="91-definition-of-done-des-bevorzugten-plugin-wegs">9.1 Definition of Done des bevorzugten Plugin-Wegs</h3>
+<p>Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation
+für berechtigte bezahlte Nutzer von Claude Web Chat. Der Coaching-Skill ist nur
+für diese Web-Oberfläche im V1-Veröffentlichungsumfang; OAuth, MCP, alle vierzehn
+Tools und beide MCP Apps bleiben Eigentum des einmal verbundenen
+Remote-Connectors. V1 enthält
+keine Hooks oder Subagents und beansprucht weder Desktop Chat noch Cowork als
+unterstützte Plugin-Oberfläche. Native mobile Plugin-Unterstützung wird nicht
+beansprucht.</p>
+<p>Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-
+Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine
+Voraussetzung der Plugin-Einreichung. Das Plugin darf veröffentlicht werden,
+wenn:</p>
+<ul>
+<li>der lokale Paketcheck und die offizielle Prüfung mit
+  <code>claude plugin validate ai/claude/plugin/skillpilot-coach-v1</code> bestehen;</li>
+<li>Installation, OAuth, First-Party-Start, alle vierzehn Tools und beide MCP Apps
+  in Claude Web Chat getestet wurden;</li>
+<li>der Skill genau einmal wirksam ist. Plugin und Directory-Installation dürfen bei derselben Remote-MCP-URL koexistieren; Claude stellt für den gemeinsamen Server genau einen Tool-Satz bereit. Die beiden MCP Apps stammen weiterhin aus dem Remote-Connector;</li>
+<li>kein zusätzlicher manueller Custom Connector für dieselbe Remote-MCP-URL
+  eingerichtet wird;</li>
+<li>der Skill auf Web Chat nachweislich greift, v1 keine Hooks oder Subagents
+  enthält und keine Unterstützung für Desktop Chat oder Cowork behauptet;</li>
+<li>die Plugin-Dokumentation ausschließlich die tatsächlich belegten Clients und
+  Funktionen beansprucht.</li>
+</ul>
+<hr />
+<h2 id="10-aktuelle-externe-referenzen">10. Aktuelle externe Referenzen</h2>
+<p>Technische Anforderungen wurden zuletzt am 23. August 2026 gegen die aktuellen
+Primärquellen geprüft:</p>
+<ul>
+<li><a href="https://claude.com/docs/connectors/building/authentication">Anthropic: Authentication for connectors</a></li>
+<li><a href="https://claude.com/docs/connectors/building/testing">Anthropic: Testing your connector</a></li>
+<li><a href="https://claude.com/docs/connectors/building/review-criteria">Anthropic: Pre-submission checklist</a></li>
+<li><a href="https://claude.com/docs/connectors/building/submission">Anthropic: Submitting to the Connectors Directory</a></li>
+<li><a href="https://claude.com/docs/plugins/submit">Anthropic: Submit a plugin</a></li>
+<li><a href="https://support.claude.com/en/articles/13837440-use-plugins-in-claude">Anthropic: Use plugins in Claude</a></li>
+<li><a href="https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization">Model Context Protocol: Authorization</a></li>
+</ul>
+<p>Da Anthropic Connector-, OAuth- und Directory-Anforderungen ändern kann, sind
+diese Quellen unmittelbar vor Real-Client-Test und Submission erneut zu
+prüfen. Änderungen der externen Anforderungen autorisieren keine Änderung am
+eingefrorenen OpenAI-Vertrag.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

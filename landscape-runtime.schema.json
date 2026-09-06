@@ -1,0 +1,1024 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.local/schema/landscape-runtime.schema.json",
+  "title": "SkillLandscape (Runtime Fields Only)",
+  "description": "Schema for the runtime contract used by the app. Additional metadata is allowed at the top level and per goal.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "landscapeId",
+    "title",
+    "description",
+    "goals"
+  ],
+  "properties": {
+    "landscapeId": {
+      "type": "string",
+      "description": "Landscape identifier used for routing and cross-landscape references."
+    },
+    "title": {
+      "type": "string",
+      "description": "Landscape title for the file locale."
+    },
+    "titleEn": {
+      "type": "string",
+      "description": "Landscape title in English (optional)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Landscape description for the file locale."
+    },
+    "descriptionEn": {
+      "type": "string",
+      "description": "Landscape description in English (optional)."
+    },
+    "locale": {
+      "type": "string",
+      "description": "Locale code (e.g. de-DE)."
+    },
+    "frameworkId": {
+      "type": "string",
+      "description": "Framework identifier."
+    },
+    "country": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "schoolType": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Optional subject label shown in external prerequisite references."
+    },
+    "filters": {
+      "type": "array",
+      "description": "Optional UI filters (e.g., GK/LK).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "personalizationFlow": {
+      "$ref": "#/$defs/personalizationFlow",
+      "description": "Optional explicit guided-personalization protocol. Skill-graph edges never imply these choices."
+    },
+    "programUnits": {
+      "type": "array",
+      "description": "Optional structural program units used for projected entry-scope views such as years, phases, semesters, or modules.",
+      "items": {
+        "$ref": "#/$defs/programUnit"
+      }
+    },
+    "goalPlacements": {
+      "type": "array",
+      "description": "Optional placements that attach goals to structural program units.",
+      "items": {
+        "$ref": "#/$defs/goalPlacement"
+      }
+    },
+    "competencyCatalog": {
+      "type": "array",
+      "description": "Optional catalog of orthogonal competency-axis entries such as process competencies.",
+      "items": {
+        "$ref": "#/$defs/competencyCatalogEntry"
+      }
+    },
+    "goals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/goal"
+      }
+    }
+  },
+  "$defs": {
+    "personalizationFlow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "stages"
+      ],
+      "properties": {
+        "version": {
+          "const": "1"
+        },
+        "stages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/personalizationStage"
+          }
+        }
+      }
+    },
+    "personalizationStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "order",
+        "label",
+        "groups"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "labelEn": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/personalizationGroup"
+          }
+        }
+      }
+    },
+    "personalizationGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "order",
+        "label",
+        "minSelections",
+        "maxSelections",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "labelEn": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "minSelections": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxSelections": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source": {
+          "$ref": "#/$defs/personalizationOptionSource"
+        }
+      }
+    },
+    "personalizationOptionSource": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "landscapeId"
+          ],
+          "properties": {
+            "kind": {
+              "const": "landscapeFilters"
+            },
+            "landscapeId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "filterIds": {
+              "$ref": "#/$defs/personalizationFilterIds"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "selectedLandscapesFromGroupId",
+            "filterIds",
+            "scopeKey",
+            "scopeBindings"
+          ],
+          "properties": {
+            "kind": {
+              "const": "offeredFiltersForSelectedLandscapes"
+            },
+            "selectedLandscapesFromGroupId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "filterIds": {
+              "$ref": "#/$defs/personalizationFilterIds"
+            },
+            "scopeKey": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scopeBindings": {
+              "$ref": "#/$defs/personalizationScopeBindings"
+            },
+            "optionalWhenUnavailable": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "landscapeIds"
+          ],
+          "properties": {
+            "kind": {
+              "const": "landscapes"
+            },
+            "landscapeIds": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "selectedLandscapesFromGroupId"
+          ],
+          "properties": {
+            "kind": {
+              "const": "filtersForSelectedLandscapes"
+            },
+            "selectedLandscapesFromGroupId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "filterIds": {
+              "$ref": "#/$defs/personalizationFilterIds"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "landscapeId",
+            "scopeKey",
+            "values"
+          ],
+          "properties": {
+            "kind": {
+              "const": "scopeValues"
+            },
+            "landscapeId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scopeKey": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "values": {
+              "$ref": "#/$defs/personalizationScopeValues"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "landscapeIds",
+            "scopeBindings"
+          ],
+          "properties": {
+            "kind": {
+              "const": "offeredLandscapes"
+            },
+            "landscapeIds": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "scopeBindings": {
+              "$ref": "#/$defs/personalizationScopeBindings"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "scopeKey",
+            "values",
+            "scopeBindings"
+          ],
+          "properties": {
+            "kind": {
+              "const": "offeredScopeValues"
+            },
+            "landscapeIds": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "targetLandscapeId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "selectedLandscapesFromGroupId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scopeKey": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "values": {
+              "$ref": "#/$defs/personalizationScopeValues"
+            },
+            "scopeBindings": {
+              "$ref": "#/$defs/personalizationScopeBindings"
+            },
+            "optionalWhenUnavailable": {
+              "type": "boolean"
+            }
+          },
+          "oneOf": [
+            {
+              "required": [
+                "landscapeIds",
+                "targetLandscapeId"
+              ],
+              "not": {
+                "required": [
+                  "selectedLandscapesFromGroupId"
+                ]
+              }
+            },
+            {
+              "required": [
+                "selectedLandscapesFromGroupId"
+              ],
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "landscapeIds"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "targetLandscapeId"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "personalizationScopeBindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/personalizationScopeBinding"
+      }
+    },
+    "personalizationScopeBinding": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dimension",
+            "value"
+          ],
+          "properties": {
+            "dimension": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "required": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dimension",
+            "values"
+          ],
+          "properties": {
+            "dimension": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "x-skillpilot-caseInsensitiveUniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dimension",
+            "selectedValueFromGroupId"
+          ],
+          "properties": {
+            "dimension": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "selectedValueFromGroupId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "omitValues": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "x-skillpilot-caseInsensitiveUniqueItems": true,
+              "description": "Explicit upstream values that represent an unscoped umbrella selection. A matching selection omits this dimension from the offering probe.",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "personalizationScopeValues": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Independently authored entry-scope values such as a duration model. A value is selected by its opaque `value`; `label` and `labelEn` are display text only and never carry selection semantics. Values are unique per scope; the runtime compares them case-insensitively.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "labelEn": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        }
+      }
+    },
+    "personalizationFilterIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "x-skillpilot-caseInsensitiveUniqueItems": true,
+      "description": "Optional case-insensitive set restricting authored filters. In personalizationFlow version 1, filtersForSelectedLandscapes uses one shared restricted vocabulary: every listed ID must resolve in every landscape selectable by the referenced upstream group. Heterogeneous per-landscape restricted lists are not representable in version 1; omit filterIds to use each selected landscape's own authored filters.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "goal": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "title",
+        "description",
+        "weight",
+        "contains",
+        "requires",
+        "dimensionTags"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Goal UUID."
+        },
+        "shortKey": {
+          "type": "string",
+          "description": "Stable ASCII identifier used across persistence/export layers."
+        },
+        "title": {
+          "type": "string",
+          "description": "Goal title for the file locale."
+        },
+        "titleEn": {
+          "type": "string",
+          "description": "Goal title in English (optional)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Goal description for the file locale."
+        },
+        "descriptionEn": {
+          "type": "string",
+          "description": "Goal description in English (optional)."
+        },
+        "sourceRef": {
+          "type": "string",
+          "description": "Canonical provenance reference for this goal; preferably a stable URL when available, otherwise a citation string."
+        },
+        "resourceLinks": {
+          "type": "array",
+          "description": "Canonical helpful learning resources for this goal, ordered by pedagogical priority.",
+          "items": {
+            "$ref": "#/$defs/resourceLink"
+          }
+        },
+        "competencyRefs": {
+          "type": "array",
+          "description": "Optional references into the top-level competencyCatalog for projected competency views.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "core": {
+          "type": "boolean",
+          "description": "Whether the goal is part of the core/default path."
+        },
+        "weight": {
+          "type": "number",
+          "description": "Weight used for aggregated mastery."
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filter and UI tags (e.g., GK/LK)."
+        },
+        "contains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Child goal IDs (contains edges)."
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Prerequisite goal IDs (requires edges)."
+        },
+        "examples": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional example task IDs or labels."
+        },
+        "courseLevel": {
+          "type": "string",
+          "description": "Optional course-level marker such as GK/LK/both."
+        },
+        "themenfeld": {
+          "type": "string",
+          "description": "Optional explicit topic field code."
+        },
+        "leitideen": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional guiding-idea tags."
+        },
+        "kompetenzen": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional process-competency tags."
+        },
+        "dimensionTags": {
+          "type": "object",
+          "required": [
+            "phase"
+          ],
+          "properties": {
+            "framework": {
+              "type": "string"
+            },
+            "demandLevel": {
+              "type": "string"
+            },
+            "processCompetencies": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "guidingIdeas": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "phase": {
+              "type": "string",
+              "description": "Phase code used for ordering (e.g., E, Q1, Q2, Q3, Q4, J11)."
+            },
+            "area": {
+              "type": "string"
+            },
+            "topicCode": {
+              "type": "string"
+            }
+          },
+          "description": "Only `phase` is required. Runtime may derive UI fields from the other known tags; additional dimension tags are allowed.",
+          "additionalProperties": true
+        },
+        "extendedData": {
+          "type": "object",
+          "description": "Arbitrary extra data (e.g. SRS deck config)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "atomic",
+            "cluster"
+          ],
+          "description": "Optional explicit node type."
+        },
+        "nodeKind": {
+          "type": "string",
+          "enum": [
+            "exam",
+            "tutor",
+            "memory"
+          ],
+          "description": "Optional explicit node kind."
+        },
+        "experimentData": {
+          "$ref": "#/$defs/experimentData",
+          "description": "Optional structured experiment description."
+        },
+        "examData": {
+          "type": "object",
+          "required": [
+            "taskContent",
+            "solutionContent",
+            "scoring"
+          ],
+          "properties": {
+            "reviewStatus": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "needs_review",
+                "released"
+              ]
+            },
+            "coveredGoalIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "coveredStrands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "demandLevels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourceArtifactPath": {
+              "type": "string"
+            },
+            "taskContent": {
+              "type": "string",
+              "description": "Markdown with LaTeX/images"
+            },
+            "taskContentEn": {
+              "type": "string",
+              "description": "English translation (optional)"
+            },
+            "solutionContent": {
+              "type": "string",
+              "description": "Markdown with solution/grading steps"
+            },
+            "solutionContentEn": {
+              "type": "string",
+              "description": "English translation (optional)"
+            },
+            "scoring": {
+              "type": "object",
+              "required": [
+                "maxPoints",
+                "passingPoints",
+                "steps"
+              ],
+              "properties": {
+                "maxPoints": {
+                  "type": "number"
+                },
+                "passingPoints": {
+                  "type": "number"
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "points",
+                      "description"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "points": {
+                        "type": "number"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "programUnit": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "kind",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "description": "Structural unit kind such as program, stage, year, phase, semester, module, track, or exam."
+        },
+        "label": {
+          "type": "string"
+        },
+        "shortLabel": {
+          "type": "string"
+        },
+        "order": {
+          "type": "number"
+        },
+        "parentUnitId": {
+          "type": "string"
+        }
+      }
+    },
+    "goalPlacement": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "goalId",
+        "unitId",
+        "relation"
+      ],
+      "properties": {
+        "goalId": {
+          "type": "string"
+        },
+        "unitId": {
+          "type": "string"
+        },
+        "relation": {
+          "type": "string",
+          "description": "Placement relation such as primary, secondary, or assessed."
+        },
+        "context": {
+          "type": "object",
+          "description": "Optional reviewed placement context used for entry-scope projection such as jurisdiction, duration model, or course profile.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "competencyCatalogEntry": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "label",
+        "dimension"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "dimension": {
+          "type": "string"
+        }
+      }
+    },
+    "resourceLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "url"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Didactic role, e.g. overview, concept, practice, assessment, solution, reference."
+        },
+        "title": {
+          "type": "string",
+          "description": "Short user-facing label."
+        },
+        "url": {
+          "type": "string",
+          "description": "Absolute target URL or app-relative asset URL."
+        },
+        "resourceType": {
+          "type": "string",
+          "description": "Concrete material kind, e.g. course-page, video, notes, article, simulation, problem-set, exam, solution-set, book, tool."
+        },
+        "skillpilotId": {
+          "type": "string",
+          "description": "Optional stable SkillPilot goal or asset owner ID used for project-local resources."
+        },
+        "role": {
+          "type": "string",
+          "description": "Optional role inside the resource type, e.g. primary for the main goal visualization."
+        },
+        "altText": {
+          "type": "string",
+          "description": "Optional accessible image description for visual resources."
+        },
+        "reviewStatus": {
+          "type": "string",
+          "description": "Optional editorial/review status for generated resources."
+        },
+        "provider": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string",
+          "description": "Optional BCP-47 language tag of the linked resource."
+        },
+        "license": {
+          "type": "string"
+        }
+      }
+    },
+    "experimentData": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "description"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "equipment": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

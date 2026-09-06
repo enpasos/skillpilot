@@ -1,0 +1,7152 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/">
+      
+      
+        <link rel="prev" href="../skillpilot-owned-coach-architecture/">
+      
+      
+        <link rel="next" href="../openai-mcp-oauth-learner-session-architecture/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#skillpilot-versionierungs-und-lebenszyklusplan-fur-das-openai-plugin" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-zweck-und-zentrale-entscheidung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Zweck und zentrale Entscheidung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-status-dieser-entscheidung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Status dieser Entscheidung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-normative-begriffe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Normative Begriffe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dokumentierte-openai-rahmenbedingungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Dokumentierte OpenAI-Rahmenbedingungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nicht-verwechselbare-versionsebenen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Nicht verwechselbare Versionsebenen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-verbindliche-namen-und-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Verbindliche Namen und Endpoints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Verbindliche Namen und Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-v1-vor-der-ersten-veroffentlichung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 V1 vor der ersten Veröffentlichung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-spatere-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Spätere V2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-domainverifikation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Domainverifikation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-semver-regeln-fur-skillpilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. SemVer-Regeln für SkillPilot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. SemVer-Regeln für SkillPilot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#70-unveroffentlichte-arbeitsversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.0 Unveröffentlichte Arbeitsversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-server-build-ohne-plugin-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Server-Build ohne Plugin-Release
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-patch-innerhalb-einer-plugin-linie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 PATCH innerhalb einer Plugin-Linie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-minor-innerhalb-einer-plugin-linie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 MINOR innerhalb einer Plugin-Linie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-major-als-neue-plugin-identitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 MAJOR als neue Plugin-Identität
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-offentliche-vertragsarchitektur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Öffentliche Vertragsarchitektur
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Öffentliche Vertragsarchitektur">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-adapter-statt-direkter-core-kopplung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Adapter statt direkter Core-Kopplung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-toolnamen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Toolnamen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-antwort-envelopes-fur-zustandsbezogene-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Antwort-Envelopes für zustandsbezogene Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-schreibende-aufrufe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Schreibende Aufrufe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-json-schema-kompatibilitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 JSON-Schema-Kompatibilität
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-dedizierte-mcp-apps-uis-in-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Dedizierte MCP-Apps-UIs in V1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Dedizierte MCP-Apps-UIs in V1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-v1-bindet-pro-ui-werkzeug-genau-eine-aktuelle-ressource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 V1 bindet pro UI-Werkzeug genau eine aktuelle Ressource
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-regeln-fur-interaktive-ui-ressourcen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Regeln für interaktive UI-Ressourcen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-autoritativer-zustand-bleibt-im-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Autoritativer Zustand bleibt im Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-aufbewahrung-beginnt-mit-der-ersten-realen-auslieferung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Aufbewahrung beginnt mit der ersten realen Auslieferung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-skills-versionierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Skills-Versionierung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Skills-Versionierung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-kopplung-an-die-plugin-linie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Kopplung an die Plugin-Linie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-klassifikation-von-skill-anderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Klassifikation von Skill-Änderungen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-skill-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Skill-Tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-authentifizierung-und-autorisierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Authentifizierung und Autorisierung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Authentifizierung und Autorisierung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-getrennte-oauth-resources-pro-major" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Getrennte OAuth-Resources pro Major
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Scopes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-keine-annahme-automatischer-oauth-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Keine Annahme automatischer OAuth-Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-lernsession-zustands-und-workflow-versionierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Lernsession-, Zustands- und Workflow-Versionierung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Lernsession-, Zustands- und Workflow-Versionierung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-learningsessionid-als-opaker-major-gepinnter-handle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 learningSessionId als opaker, major-gepinnter Handle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-trennung-von-contract-und-persistenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Trennung von Contract und Persistenz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-pinning-laufender-lernablaufe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Pinning laufender Lernabläufe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-optionale-gesondert-freizugebende-major-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Optionale, gesondert freizugebende Major-Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-release-prozess-innerhalb-derselben-major-linie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Release-Prozess innerhalb derselben Major-Linie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Release-Prozess innerhalb derselben Major-Linie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-anderung-klassifizieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Änderung klassifizieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-draft-und-veroffentlichten-vertrag-trennen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Draft und veröffentlichten Vertrag trennen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-server-zuerst-als-superset-deployen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Server zuerst als Superset deployen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Rollback
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-lebenszyklus-einer-neuen-major-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Lebenszyklus einer neuen Major-Version
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Lebenszyklus einer neuen Major-Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-kanonischer-contract-line-vertrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Kanonischer Contract-Line-Vertrag
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-normativer-app-first-majorwechsel-und-fehlerfallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Normativer App-first-Majorwechsel und Fehlerfallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-ablauf-v1-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Ablauf V1 -&gt; V2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-gates-vor-unpublish-und-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 Gates vor Unpublish und Delete
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-repository-und-modulstruktur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Repository- und Modulstruktur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-cicd-anforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. CI/CD-Anforderungen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. CI/CD-Anforderungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-versionskonsistenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Versionskonsistenz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-contract-diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Contract-Diff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-skill-contract-lint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Skill-Contract-Lint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-contract-testmatrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 Contract-Testmatrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#165-migrations-und-rollbacktests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5 Migrations- und Rollbacktests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-observability-und-betriebsdaten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Observability und Betriebsdaten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-konkreter-codex-implementierungsauftrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Konkreter Codex-Implementierungsauftrag
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Konkreter Codex-Implementierungsauftrag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-a-vor-der-ersten-v1-veroffentlichung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase A: Vor der ersten V1-Veröffentlichung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-b-release-automatisierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase B: Release-Automatisierung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-c-erst-bei-einer-tatsachlichen-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase C: Erst bei einer tatsächlichen V2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-definition-of-done-fur-die-v1-vorbereitung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Definition of Done für die V1-Vorbereitung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-offene-externe-fragen-und-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Offene externe Fragen und Fallback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-entscheidungsbaum-fur-anderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. Entscheidungsbaum für Änderungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-quellenbasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. Quellenbasis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-zweck-und-zentrale-entscheidung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Zweck und zentrale Entscheidung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-status-dieser-entscheidung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Status dieser Entscheidung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-normative-begriffe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Normative Begriffe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dokumentierte-openai-rahmenbedingungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Dokumentierte OpenAI-Rahmenbedingungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nicht-verwechselbare-versionsebenen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Nicht verwechselbare Versionsebenen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-verbindliche-namen-und-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Verbindliche Namen und Endpoints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Verbindliche Namen und Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-v1-vor-der-ersten-veroffentlichung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 V1 vor der ersten Veröffentlichung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-spatere-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Spätere V2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-domainverifikation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Domainverifikation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-semver-regeln-fur-skillpilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. SemVer-Regeln für SkillPilot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. SemVer-Regeln für SkillPilot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#70-unveroffentlichte-arbeitsversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.0 Unveröffentlichte Arbeitsversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-server-build-ohne-plugin-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Server-Build ohne Plugin-Release
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-patch-innerhalb-einer-plugin-linie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 PATCH innerhalb einer Plugin-Linie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-minor-innerhalb-einer-plugin-linie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 MINOR innerhalb einer Plugin-Linie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-major-als-neue-plugin-identitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 MAJOR als neue Plugin-Identität
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-offentliche-vertragsarchitektur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Öffentliche Vertragsarchitektur
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Öffentliche Vertragsarchitektur">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-adapter-statt-direkter-core-kopplung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Adapter statt direkter Core-Kopplung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-toolnamen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Toolnamen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-antwort-envelopes-fur-zustandsbezogene-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Antwort-Envelopes für zustandsbezogene Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-schreibende-aufrufe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Schreibende Aufrufe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-json-schema-kompatibilitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 JSON-Schema-Kompatibilität
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-dedizierte-mcp-apps-uis-in-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Dedizierte MCP-Apps-UIs in V1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Dedizierte MCP-Apps-UIs in V1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-v1-bindet-pro-ui-werkzeug-genau-eine-aktuelle-ressource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 V1 bindet pro UI-Werkzeug genau eine aktuelle Ressource
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-regeln-fur-interaktive-ui-ressourcen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Regeln für interaktive UI-Ressourcen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-autoritativer-zustand-bleibt-im-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Autoritativer Zustand bleibt im Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-aufbewahrung-beginnt-mit-der-ersten-realen-auslieferung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Aufbewahrung beginnt mit der ersten realen Auslieferung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-skills-versionierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Skills-Versionierung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Skills-Versionierung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-kopplung-an-die-plugin-linie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Kopplung an die Plugin-Linie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-klassifikation-von-skill-anderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Klassifikation von Skill-Änderungen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-skill-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Skill-Tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-authentifizierung-und-autorisierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Authentifizierung und Autorisierung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Authentifizierung und Autorisierung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-getrennte-oauth-resources-pro-major" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Getrennte OAuth-Resources pro Major
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Scopes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-keine-annahme-automatischer-oauth-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Keine Annahme automatischer OAuth-Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-lernsession-zustands-und-workflow-versionierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Lernsession-, Zustands- und Workflow-Versionierung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Lernsession-, Zustands- und Workflow-Versionierung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-learningsessionid-als-opaker-major-gepinnter-handle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 learningSessionId als opaker, major-gepinnter Handle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-trennung-von-contract-und-persistenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Trennung von Contract und Persistenz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-pinning-laufender-lernablaufe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Pinning laufender Lernabläufe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-optionale-gesondert-freizugebende-major-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Optionale, gesondert freizugebende Major-Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-release-prozess-innerhalb-derselben-major-linie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Release-Prozess innerhalb derselben Major-Linie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Release-Prozess innerhalb derselben Major-Linie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-anderung-klassifizieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Änderung klassifizieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-draft-und-veroffentlichten-vertrag-trennen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Draft und veröffentlichten Vertrag trennen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-server-zuerst-als-superset-deployen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Server zuerst als Superset deployen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Rollback
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-lebenszyklus-einer-neuen-major-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Lebenszyklus einer neuen Major-Version
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Lebenszyklus einer neuen Major-Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-kanonischer-contract-line-vertrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Kanonischer Contract-Line-Vertrag
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-normativer-app-first-majorwechsel-und-fehlerfallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Normativer App-first-Majorwechsel und Fehlerfallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-ablauf-v1-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Ablauf V1 -&gt; V2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-gates-vor-unpublish-und-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 Gates vor Unpublish und Delete
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-repository-und-modulstruktur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Repository- und Modulstruktur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-cicd-anforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. CI/CD-Anforderungen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. CI/CD-Anforderungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-versionskonsistenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Versionskonsistenz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-contract-diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Contract-Diff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-skill-contract-lint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Skill-Contract-Lint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-contract-testmatrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 Contract-Testmatrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#165-migrations-und-rollbacktests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5 Migrations- und Rollbacktests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-observability-und-betriebsdaten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Observability und Betriebsdaten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-konkreter-codex-implementierungsauftrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Konkreter Codex-Implementierungsauftrag
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Konkreter Codex-Implementierungsauftrag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-a-vor-der-ersten-v1-veroffentlichung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase A: Vor der ersten V1-Veröffentlichung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-b-release-automatisierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase B: Release-Automatisierung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-c-erst-bei-einer-tatsachlichen-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase C: Erst bei einer tatsächlichen V2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-definition-of-done-fur-die-v1-vorbereitung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Definition of Done für die V1-Vorbereitung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-offene-externe-fragen-und-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Offene externe Fragen und Fallback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-entscheidungsbaum-fur-anderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. Entscheidungsbaum für Änderungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-quellenbasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. Quellenbasis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="skillpilot-versionierungs-und-lebenszyklusplan-fur-das-openai-plugin">SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin</h1>
+<p><strong>Geltungsbereich:</strong> OpenAI-Plugin mit MCP-API, gebündelten Skills und zwei
+jeweils dediziert an genau ein UI-Werkzeug gebundenen, hashgebundenen
+MCP-Apps-Ressourcen im unveröffentlichten V1-Draft</p>
+<p><strong>Dokumentversion:</strong> 1.1</p>
+<p><strong>Stand:</strong> 9. August 2026</p>
+<p><strong>Status:</strong> Verbindliche interne Architekturgrundlage; einzelne Plattformfragen sind noch nicht offiziell von OpenAI geklärt.<br />
+<strong>Adressaten:</strong> Codex, Backend-, MCP-, UI-, Auth- und Release-Entwicklung</p>
+<h2 id="1-zweck-und-zentrale-entscheidung">1. Zweck und zentrale Entscheidung</h2>
+<p>Dieses Dokument legt fest, wie SkillPilot sein öffentliches OpenAI-Plugin von der ersten Veröffentlichung an versioniert, kompatibel weiterentwickelt, bei Bedarf durch eine inkompatible Major-Version ersetzt und eine alte Vertragsgeneration anschließend vollständig stilllegt.</p>
+<p>Die zentrale Architekturentscheidung lautet:</p>
+<blockquote>
+<p><strong>Kompatible Änderungen bleiben als Patch- oder Minor-Releases innerhalb derselben Plugin-Identität. Eine inkompatible Major-Vertragsgeneration, deren Altvertrag später entfernt werden soll, erhält eine eigene Plugin-Identität.</strong></p>
+</blockquote>
+<p>Das Zielmodell ist damit:</p>
+<div class="highlight"><pre><span></span><code>kompatible Änderung
+    -&gt; Patch- oder Minor-Release derselben Plugin-Identität
+
+inkompatible Änderung, bei der der Altvertrag dauerhaft erhalten bleibt
+    -&gt; additive Erweiterung innerhalb derselben Plugin-Identität
+
+inkompatible Major-Änderung, deren Altvertrag später entfernt werden soll
+    -&gt; neue Plugin-Identität, Parallelbetrieb, Migration, Stilllegung der alten Identität
+</code></pre></div>
+<p>Für SkillPilot bedeutet dies konkret:</p>
+<div class="highlight"><pre><span></span><code>Plugin-Linie V1
+    technischer Name: skillpilot-coach-v1
+    Anzeigename:       SkillPilot Coach v1
+    Plugin-Releases:   1.x.y
+    MCP-Endpoint:      https://mcp-coach-v1.skillpilot.com/mcp
+
+Plugin-Linie V2
+    technischer Name: skillpilot-coach-v2
+    Anzeigename:       SkillPilot Coach v2
+    Plugin-Releases:   2.x.y
+    MCP-Endpoint:      https://mcp-coach-v2.skillpilot.com/mcp
+</code></pre></div>
+<p>Beide Plugin-Linien dürfen denselben SkillPilot-Core, dieselbe Datenbank,
+denselben Authorization Server und dieselben Benutzerkonten verwenden. Die
+öffentliche Plugin-Identität und der MCP-Origin werden ausschließlich nach
+Contract-Major getrennt, nicht nach Sprache. Die Interaktionssprache ist eine
+vom Backend autoritativ an die Lernsession gebundene Eigenschaft. Getrennt
+werden die Major-Vertragsadapter, Plugin-Pakete sowie der jeweilige
+Veröffentlichungs- und Stilllegungslebenszyklus.</p>
+<h2 id="2-status-dieser-entscheidung">2. Status dieser Entscheidung</h2>
+<p>Diese Architektur ist der <strong>aktuelle verbindliche interne Plan</strong>. Sie ist eine belastbare Konsequenz aus den derzeit dokumentierten OpenAI-Regeln, aber noch nicht ausdrücklich als offizielle OpenAI-Best-Practice bestätigt.</p>
+<p>Die offene Plattformfrage wurde am 31. Juli 2026 im OpenAI Developer Forum veröffentlicht:</p>
+<ul>
+<li><a href="https://community.openai.com/t/should-each-breaking-major-version-use-a-separate-plugin-identity/1388515">Should each breaking major version use a separate plugin identity?</a></li>
+</ul>
+<p>Die Implementierung MUSS daher zwei Eigenschaften besitzen:</p>
+<ol>
+<li>Sie MUSS die geplante Trennung nach Major-Plugin-Identitäten ermöglichen.</li>
+<li>Sie DARF nicht davon abhängen, dass OpenAI später einen automatischen Nachfolger-Link, eine OAuth-Übernahme, eine Installationsmigration oder ein zuverlässiges Runtime-Versionssignal bereitstellt.</li>
+</ol>
+<p>Sollte OpenAI parallele, versionierte Schwester-Plugins wider Erwarten nicht akzeptieren, bleibt die interne Adaptertrennung bestehen. Als Fallback darf V2 dann nur additiv innerhalb der bestehenden Plugin-Identität eingeführt werden; V1 könnte in diesem Fall nicht entfernt werden, bevor OpenAI einen offiziellen Stilllegungsweg bereitstellt.</p>
+<h2 id="3-normative-begriffe">3. Normative Begriffe</h2>
+<p>In diesem Dokument gelten folgende Begriffe:</p>
+<ul>
+<li><strong>MUSS / DARF NICHT:</strong> verbindliche technische Vorgabe.</li>
+<li><strong>SOLL / SOLL NICHT:</strong> Standardvorgehen; Abweichungen benötigen eine dokumentierte Architekturentscheidung.</li>
+<li><strong>KANN:</strong> zulässige Option.</li>
+</ul>
+<h2 id="4-dokumentierte-openai-rahmenbedingungen">4. Dokumentierte OpenAI-Rahmenbedingungen</h2>
+<p>Die Planung beruht auf den folgenden derzeit dokumentierten Eigenschaften der Plattform:</p>
+<ol>
+<li>Ein Plugin kann Skills, einen MCP-Server oder beides enthalten. Die Veröffentlichung umfasst Listing-Daten, MCP-Details, gebündelte Skills, Testfälle und Release Notes. [OAI-1]</li>
+<li>OpenAI speichert beim Scan einen geprüften Snapshot der MCP-Metadaten. Das veröffentlichte Plugin verwendet diesen Snapshot, während Tool-Aufrufe und – nur bei einem Plugin, das tatsächlich eine UI veröffentlicht – UI-Ressourcen weiterhin den Live-MCP-Server verwenden. [OAI-2]</li>
+<li>Inkompatible Änderungen am MCP-Vertrag innerhalb eines bereits veröffentlichten Plugins werden derzeit nicht unterstützt. Entfernte oder umbenannte Tools und inkompatible Schemas können die veröffentlichte Version sofort brechen; bei einer tatsächlich veröffentlichten UI gilt das ebenso für entfernte oder inkompatibel geänderte UI-Ressourcen. [OAI-2]</li>
+<li>Der dokumentierte Weg innerhalb einer Plugin-Identität ist additiv: neue Tools und Felder hinzufügen, neuen Metadaten-Snapshot prüfen lassen und die alten Verträge weiterhin bereitstellen. Bei einer tatsächlich veröffentlichten UI gilt dies zusätzlich für neue UI-Ressourcen. [OAI-2]</li>
+<li>Serverseitige Korrekturen dürfen ohne neue Plugin-Einreichung deployt werden, sofern der veröffentlichte Vertrag erhalten bleibt. Bei einem Vertragsbruch ist die Serveränderung zurückzurollen. [OAI-2]</li>
+<li>Pro MCP-Integration kann jeweils nur eine Version veröffentlicht und nur eine Version gleichzeitig geprüft werden. Eine freigegebene Aktualisierung ersetzt die vorher veröffentlichte Version derselben Plugin-Identität. Eine Organisation darf mehrere eigenständige Plugins veröffentlichen. [OAI-2]</li>
+<li>Der bei OpenAI registrierte MCP-Endpoint ist Teil des Pluginvertrags. Ein
+   Wechsel von Scheme, Host oder Pfad wird deshalb nur als bewusstes
+   Plugin-Update vorgenommen; die Major-Version liegt bei SkillPilot im
+   dedizierten Endpoint-Host. [OAI-2]</li>
+<li>Ein Plugin kann aus der öffentlichen Sichtbarkeit entfernt oder vollständig aus Organisation, ChatGPT und Codex gelöscht werden. [OAI-2]</li>
+<li>Das Manifest verlangt eine semantische Version. Der technische Paketname ist auf 64 Zeichen begrenzt; der öffentliche Anzeigename auf 30 Zeichen. [OAI-3]</li>
+<li>Bei UI-Plugins muss <code>_meta.ui.domain</code> einen dedizierten, pro Plugin eindeutigen Origin angeben. Eine UI-Ressourcen-URI ist als Cache-Key zu behandeln; bei inkompatiblen HTML-, JavaScript- oder CSS-Änderungen ist eine neue URI zu veröffentlichen. [OAI-4] [OAI-5]</li>
+<li>Skills werden als finaler Dateibaum zusammen mit dem Plugin eingereicht; das Manifest verweist auf das Skills-Verzeichnis und trägt die Plugin-SemVer. [OAI-1] [OAI-6]</li>
+</ol>
+<p>Diese Rahmenbedingungen begründen die Trennung zwischen einer kompatiblen Plugin-Linie und einer neuen Plugin-Identität für eine entfernbare inkompatible Major-Version.</p>
+<h2 id="5-nicht-verwechselbare-versionsebenen">5. Nicht verwechselbare Versionsebenen</h2>
+<p>SkillPilot verwendet mehrere unabhängige Versionen. Keine einzelne Versionsnummer darf für mehrere dieser Bedeutungen missbraucht werden.</p>
+<table>
+<thead>
+<tr>
+<th>Versionsebene</th>
+<th>Beispiel</th>
+<th>Bedeutung</th>
+<th>Quelle der Wahrheit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugin-Identität / Contract-Major</td>
+<td><code>skillpilot-coach-v1</code> / <code>1</code></td>
+<td>Separat veröffentlichbare und später separat stilllegbare öffentliche Vertragslinie</td>
+<td>Plugin-Paket und Deployment-Konfiguration</td>
+</tr>
+<tr>
+<td>Plugin-Paketversion</td>
+<td><code>1.4.2</code></td>
+<td>SemVer des eingereichten Pakets aus Manifest, Skills und geprüften MCP-/UI-Metadaten</td>
+<td>Plugin-Manifest</td>
+</tr>
+<tr>
+<td>MCP-Tool-Contract-Major</td>
+<td><code>1</code></td>
+<td>Semantik und JSON-Schemas der öffentlich sichtbaren SkillPilot-Tools</td>
+<td>Contract-Modul und veröffentlichter Snapshot</td>
+</tr>
+<tr>
+<td>MCP-Protokollversion</td>
+<td>z. B. datumsbasiert</td>
+<td>Transport- und Protokollstand zwischen Host und MCP-Server</td>
+<td>MCP-Handshake; nicht der SkillPilot-Fachvertrag</td>
+</tr>
+<tr>
+<td>Server-Build</td>
+<td><code>2026.07.31.3</code> oder Git-SHA</td>
+<td>Konkret deployte Backend-Implementierung</td>
+<td>Build- und Deployment-Pipeline</td>
+</tr>
+<tr>
+<td>UI-Artefaktversion</td>
+<td>Hash oder <code>1.4.2</code></td>
+<td>Unveränderliche HTML-/JS-/CSS-Auslieferung</td>
+<td>UI-Buildmanifest</td>
+</tr>
+<tr>
+<td>Zustands-Schemaversion</td>
+<td><code>3</code></td>
+<td>Internes persistentes Datenformat einer Lernsession</td>
+<td>Datenmigrationen</td>
+</tr>
+<tr>
+<td>Zustandsversion</td>
+<td><code>42</code></td>
+<td>Monoton steigende Revision des kanonischen Coach-Zustands eines Lernenden; alle Sessions und das Web-UI sehen dieselbe Revision</td>
+<td>Lernenden-Datensatz; Session hält nur einen Diagnose-Snapshot</td>
+</tr>
+<tr>
+<td>Workflow-Version</td>
+<td><code>coach@2.3</code></td>
+<td>Pädagogische Ablauf- und Entscheidungslogik</td>
+<td>Workflow-Konfiguration</td>
+</tr>
+<tr>
+<td>Curriculum-Revision</td>
+<td><code>he-mathe-lk-g9@2026.1</code></td>
+<td>Verwendete Lernziel- und Lehrplanrevision</td>
+<td>Curriculum-Repository</td>
+</tr>
+</tbody>
+</table>
+<p>Verbindliche Konsistenzregel für jede öffentliche Plugin-Linie:</p>
+<div class="highlight"><pre><span></span><code>Major(pluginPackageVersion)
+    == Contract-Major
+    == Major im technischen Plugin-Namen
+    == Major im öffentlichen MCP-Hostname
+</code></pre></div>
+<p>Beispiel:</p>
+<div class="highlight"><pre><span></span><code>plugin name:        skillpilot-coach-v2
+plugin version:     2.3.1
+contract major:     2
+MCP endpoint:       https://mcp-coach-v2.skillpilot.com/mcp
+OAuth resource:     https://mcp-coach-v2.skillpilot.com/mcp
+</code></pre></div>
+<p>Die Server-Buildnummer, Zustands-Schemaversion, Workflow-Version und Curriculum-Revision dürfen unabhängig davon fortschreiten.</p>
+<h2 id="6-verbindliche-namen-und-endpoints">6. Verbindliche Namen und Endpoints</h2>
+<h3 id="61-v1-vor-der-ersten-veroffentlichung">6.1 V1 vor der ersten Veröffentlichung</h3>
+<p>Die erste öffentliche Plugin-Linie MUSS wie folgt vorbereitet werden:</p>
+<div class="highlight"><pre><span></span><code>Technischer Plugin-/Paketname: skillpilot-coach-v1
+Öffentlicher Anzeigename:       SkillPilot Coach v1
+Erste Manifest-Version:         1.0.0
+Contract-Major:                 1
+Öffentlicher MCP-Endpoint:      https://mcp-coach-v1.skillpilot.com/mcp
+OAuth Resource/Audience:        https://mcp-coach-v1.skillpilot.com/mcp
+Protected-Resource-Metadaten:   https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
+Domain-Challenge:               https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge
+OAuth-Issuer:                   https://skillpilot.com/api/openai/v1
+Bildausgabe:                     eine hashgebundene text/html;profile=mcp-app-Ressource
+</code></pre></div>
+<p>Der vorgeschlagene Anzeigename bleibt unter dem OpenAI-Limit von 30 Zeichen.
+Plugin-Metadaten, Skill-Anweisungen und Toolbeschreibungen verwenden neutrales
+Englisch. Nutzerkommunikation und Nutzdaten folgen dagegen ausschließlich der
+in der Lernsession gespeicherten Interaktionssprache.</p>
+<p>Für die V1-Linie gibt es keinen öffentlichen Kompatibilitätsalias. Der
+dedizierte Nginx-vHost bildet ausschließlich den öffentlichen Pfad <code>/mcp</code> auf
+den loopback-gebundenen Spring-Transport <code>/internal/openai/v1/mcp</code> ab. Der
+OAuth-Issuer und seine Browser-Endpunkte bleiben auf <code>skillpilot.com</code>; der
+MCP-Origin verwendet serverauthentisiertes TLS, das von ChatGPT präsentierte
+OpenAI-Clientzertifikat und OAuth. Die öffentlichen Discovery- und
+Domain-Challenge-Pfade verlangen kein Clientzertifikat. Der mTLS-Cutover ändert
+weder Endpoint noch Tool-/Skillvertrag und ist daher keine neue Contract-Major.</p>
+<h3 id="62-spatere-v2">6.2 Spätere V2</h3>
+<p>Eine spätere inkompatible Vertragsgeneration wird separat angelegt:</p>
+<div class="highlight"><pre><span></span><code>Technischer Plugin-/Paketname: skillpilot-coach-v2
+Öffentlicher Anzeigename:       SkillPilot Coach v2
+Erste Manifest-Version:         2.0.0
+Contract-Major:                 2
+Öffentlicher MCP-Endpoint:      https://mcp-coach-v2.skillpilot.com/mcp
+OAuth Resource/Audience:        https://mcp-coach-v2.skillpilot.com/mcp
+Protected-Resource-Metadaten:   https://mcp-coach-v2.skillpilot.com/.well-known/oauth-protected-resource/mcp
+Domain-Challenge:               https://mcp-coach-v2.skillpilot.com/.well-known/openai-apps-challenge
+</code></pre></div>
+<p>V1 und V2 dürfen zeitweise parallel veröffentlicht sein. Sie teilen sich den Core, sind aber an den öffentlichen Grenzen getrennt.</p>
+<h3 id="63-domainverifikation">6.3 Domainverifikation</h3>
+<p>Für jeden unabhängig veröffentlichbaren MCP-Origin MUSS die von OpenAI
+verlangte Challenge auf genau diesem Host bereitgestellt werden:</p>
+<div class="highlight"><pre><span></span><code>/.well-known/openai-apps-challenge
+</code></pre></div>
+<p>Zwei Major-Plugins auf demselben Host würden denselben Challenge-Pfad teilen.
+Deshalb trennt SkillPilot Contract-Majors bereits vor der Veröffentlichung
+durch eigene Hosts. Sprache erzeugt ausdrücklich keinen weiteren Host. Aktuell
+ist nur <code>mcp-coach-v1.skillpilot.com</code> aktiv; die folgenden acht Namen sind durch
+DNS, Zertifikat und einen <code>404</code>-vHost reserviert, aber noch keine
+veröffentlichten oder aufrufbaren MCP-Verträge:</p>
+<div class="highlight"><pre><span></span><code>mcp-coach-v2.skillpilot.com
+mcp-coach-v3.skillpilot.com
+mcp-coach-v4.skillpilot.com
+mcp-coach-v5.skillpilot.com
+mcp-coach-v6.skillpilot.com
+mcp-coach-v7.skillpilot.com
+mcp-coach-v8.skillpilot.com
+mcp-coach-v9.skillpilot.com
+</code></pre></div>
+<p>Die Reservierung erzeugt weder eine Plugin-Veröffentlichung noch eine
+OAuth-Resource. Erst die jeweilige Contract-Implementierung und Freigabe
+aktiviert <code>/mcp</code>, Protected-Resource-Metadaten und den eigenen Challenge-Wert.
+Die früher lokal vorbereiteten, nie veröffentlichten Sprachhosts
+<code>mcp-coach-de-v*</code> und <code>mcp-coach-en-v*</code> sind keine Kompatibilitätsrouten und
+werden nicht weiterbetrieben.</p>
+<h2 id="7-semver-regeln-fur-skillpilot">7. SemVer-Regeln für SkillPilot</h2>
+<h3 id="70-unveroffentlichte-arbeitsversion">7.0 Unveröffentlichte Arbeitsversion</h3>
+<p>Eine noch nicht veröffentlichte Version ist nur bis zur Portal-Einreichung ein
+fortschreibbarer Arbeitsdraft. Ab <strong>Submit for Review</strong> gilt eine separate,
+maschinenlesbare Review-Sperre. Der Lifecycle-Wert bleibt bis zur tatsächlichen
+Veröffentlichung <code>DRAFT</code>; er sagt nichts über die Änderbarkeit während des
+Reviews aus. Während der Sperre sind Paket, Portalwerte und beobachtbares
+Runtime-Verhalten eingefroren, und <code>prepare</code> ist verboten. Die konkrete
+V1-Regel steht in
+<a href="../../../deploy/openai-plugin-v1-review-freeze/"><code>openai-plugin-v1-review-freeze.md</code></a>.</p>
+<p>Approval oder Rejection hebt die Sperre nicht automatisch auf. Eine
+Remediation benötigt eine ausdrückliche, begrenzte Product-Owner-Entscheidung
+und danach eine neue Review-Baseline. Nach tatsächlicher Veröffentlichung gilt
+die bestehende dauerhafte Published-Immutabilität.</p>
+<p>SemVer bezeichnet den beabsichtigten öffentlichen Paketstand, nicht jeden
+internen Arbeitsschritt. Bis <strong>vor</strong> der Portal-Einreichung darf SkillPilot
+denselben internen Draft beliebig oft fortschreiben, deployen, scannen,
+korrigieren und erneut prüfen. Ab <strong>Submit for Review</strong> ist das nur nach einer
+ausdrücklichen, begrenzten Aufhebung und anschließenden Neusetzung der
+Review-Sperre zulässig. Solche internen Arbeitsschritte erhöhen die
+Paketversion nicht.</p>
+<p>Die Grenze ist der reale Veröffentlichungsstatus:</p>
+<ul>
+<li><code>contracts/drafts/openai/&lt;plugin&gt;/&lt;version&gt;-SNAPSHOT/</code> ist ein
+  reproduzierbarer Arbeitsstand, der nur vor der Portal-Einreichung
+  fortschreibbar ist. Während eines Reviews wird er durch den separaten
+  Review-Freeze versiegelt. <code>-SNAPSHOT</code> ist nur dessen interne Kennzeichnung;
+  Manifest und OpenAI-Portal behalten die vorgesehene öffentliche Zielversion
+  <code>&lt;version&gt;</code>;</li>
+<li><code>contracts/published/openai/&lt;plugin&gt;/&lt;version&gt;/</code> darf erst nach bestätigtem
+  <strong>Publish</strong> im OpenAI-Portal entstehen und ist danach unveränderlich;</li>
+<li>der maschinenlesbare <code>release-index.json</code> enthält ausschließlich tatsächlich
+  veröffentlichte Versionen;</li>
+<li>sobald eine Version veröffentlicht ist, erfordert jede weitere Änderung am
+  Plugin-Paket je nach Änderung einen PATCH-, MINOR- oder MAJOR-Schritt.</li>
+</ul>
+<p>Für die aktuelle Linie bedeutet das konkret: <code>SkillPilot Coach v1</code> wurde noch
+nicht veröffentlicht, befindet sich aber bereits im Portal-Review. Der
+eingereichte <code>1.0.0</code>-Draft enthält zwei getrennte aktive hashgebundene
+<code>text/html;profile=mcp-app</code>-Ressourcen für Lernzielvisualisierung und
+interaktives Karteikartenlernen. Bild-Renderer und Kartenlernstart verweisen
+jeweils mit <code>ui.resourceUri</code> und <code>openai/outputTemplate</code> auf ihre eigene
+Ressource; Kartenbewertung und gewöhnliche Werkzeuge bleiben ungebunden. Bis zu
+einer ausdrücklich autorisierten Remediation oder tatsächlichen
+Veröffentlichung werden weder diese Artefakte noch der Draft mit <code>prepare</code>
+aktualisiert. Bereits ausgelieferte Hash-URIs bleiben byte-identisch und passiv
+lesbar.</p>
+<h3 id="71-server-build-ohne-plugin-release">7.1 Server-Build ohne Plugin-Release</h3>
+<p>Kein Plugin-Versionssprung ist erforderlich, wenn ausschließlich die Live-Implementierung geändert wird und der veröffentlichte Vertrag vollständig erhalten bleibt. Beispiele:</p>
+<ul>
+<li>Fehlerkorrektur in einer Berechnung;</li>
+<li>Performanceverbesserung;</li>
+<li>Datenbankoptimierung;</li>
+<li>Korrektur von Live-Daten;</li>
+<li>interne Refaktorierung;</li>
+<li>Sicherheitskorrektur ohne Änderung des sichtbaren Auth-, Tool-, Schema-, Skill- oder UI-Vertrags.</li>
+</ul>
+<p>In diesem Fall ändert sich nur <code>serverBuild</code>. Alle Contract-Tests der veröffentlichten Plugin-Version MÜSSEN gegen den neuen Build bestehen.</p>
+<h3 id="72-patch-innerhalb-einer-plugin-linie">7.2 PATCH innerhalb einer Plugin-Linie</h3>
+<p>Ein PATCH-Release, zum Beispiel <code>1.4.2 -&gt; 1.4.3</code>, wird verwendet, wenn sich das eingereichte Plugin-Paket oder der geprüfte Metadaten-Snapshot ändern muss, aber keine neue öffentliche Fähigkeit und keine Inkompatibilität eingeführt wird. Beispiele:</p>
+<ul>
+<li>Korrektur einer Toolbeschreibung;</li>
+<li>Präzisierung eines <code>SKILL.md</code> ohne neue Workflow-Fähigkeit;</li>
+<li>Korrektur einer Annotation auf das bereits tatsächlich vorhandene Verhalten;</li>
+<li>kompatible UI-Korrektur unter einer neuen unveränderlichen Ressourcen-URI;</li>
+<li>Korrektur von Listing- oder Release-Informationen.</li>
+</ul>
+<p>Ein PATCH des veröffentlichten Pakets benötigt den normalen Scan-, Review- und Veröffentlichungsprozess.</p>
+<h3 id="73-minor-innerhalb-einer-plugin-linie">7.3 MINOR innerhalb einer Plugin-Linie</h3>
+<p>Ein MINOR-Release, zum Beispiel <code>1.4.0 -&gt; 1.5.0</code>, wird für rückwärtskompatible Erweiterungen verwendet. Beispiele:</p>
+<ul>
+<li>neues Tool;</li>
+<li>neues optionales Eingabefeld;</li>
+<li>neue optionale Fähigkeit in einem bestehenden Workflow;</li>
+<li>neuer Skill;</li>
+<li>bei einer Linie, die ausdrücklich eine UI veröffentlicht: neue UI-Komponente
+  oder neue UI-Ressourcen-URI;</li>
+<li>neue additive OAuth-Berechtigung, sofern die bisherige Bedeutung bestehender Scopes unverändert bleibt;</li>
+<li>neues optionales Ergebnis innerhalb eines dafür vorgesehenen Erweiterungsbereichs.</li>
+</ul>
+<p>Der Live-Server MUSS vor dem Scan als Superset sowohl den alten als auch den neuen Vertrag bedienen.</p>
+<h3 id="74-major-als-neue-plugin-identitat">7.4 MAJOR als neue Plugin-Identität</h3>
+<p>Eine inkompatible Änderung, deren Altvertrag später entfernt werden soll, erzeugt keine normale Aktualisierung derselben Plugin-Identität. Sie erzeugt eine neue Plugin-Linie und beginnt dort bei der passenden Major-Version, zum Beispiel <code>2.0.0</code>.</p>
+<p>Als inkompatibel gelten insbesondere:</p>
+<ul>
+<li>Tool entfernen oder umbenennen;</li>
+<li>Pflichtfeld hinzufügen;</li>
+<li>Feld entfernen oder umbenennen;</li>
+<li>Datentyp, Einheit oder Wertebereich inkompatibel ändern;</li>
+<li>neue Semantik bei unverändertem Schema;</li>
+<li>Ergebnisstruktur inkompatibel ändern;</li>
+<li>bestehende Enum-Werte entfernen oder die Bedeutung ändern;</li>
+<li>ein read-only Tool in ein schreibendes oder destruktives Tool umwandeln;</li>
+<li>Authentifizierungs- oder Autorisierungsmodell grundlegend ändern;</li>
+<li>einen UI-Vertrag unter einer bestehenden URI inkompatibel verändern;</li>
+<li>Workflow- und Zustandssemantik so verändern, dass eine bestehende V1-Session nicht mehr korrekt fortgesetzt werden kann;</li>
+<li>alte Tools oder Ressourcen nach einer Übergangsphase tatsächlich entfernen wollen.</li>
+</ul>
+<p>Eine rein additive Übergangslösung innerhalb V1 ist zulässig, wenn der alte V1-Vertrag bis zur Stilllegung der gesamten V1-Plugin-Identität erhalten bleibt. Sie ersetzt jedoch nicht die Major-Grenze.</p>
+<h2 id="8-offentliche-vertragsarchitektur">8. Öffentliche Vertragsarchitektur</h2>
+<h3 id="81-adapter-statt-direkter-core-kopplung">8.1 Adapter statt direkter Core-Kopplung</h3>
+<p>Öffentliche MCP-Schemas DÜRFEN NICHT direkt die internen Domain- oder Persistenzobjekte von SkillPilot exportieren. Jede Major-Linie erhält einen eigenen Adapter:</p>
+<div class="highlight"><pre><span></span><code>OpenAI / ChatGPT / Codex
+          |
+          v
+mcp-coach-v1.skillpilot.com/mcp  ---&gt;  McpContractV1Adapter  ---+
+                                                       |
+                                                       v
+                                                SkillPilot Core
+                                                       ^
+                                                       |
+mcp-coach-v2.skillpilot.com/mcp  ---&gt;  McpContractV2Adapter  ---+
+</code></pre></div>
+<p>Der Core enthält die fachlichen Use Cases. Der jeweilige Adapter übernimmt:</p>
+<ul>
+<li>Validierung des öffentlichen Inputs;</li>
+<li>Übersetzung in kanonische interne Commands;</li>
+<li>Authentifizierungs- und Autorisierungseinbindung;</li>
+<li>Projektion interner Ergebnisse auf das Major-spezifische Outputschema;</li>
+<li>stabile Fehlercodes;</li>
+<li>Abwärtskompatibilität innerhalb der Major-Linie;</li>
+<li>Major-spezifische UI- und Tool-Metadaten.</li>
+</ul>
+<h3 id="82-toolnamen">8.2 Toolnamen</h3>
+<p>Innerhalb einer separat versionierten Plugin-Identität sollen Toolnamen sauber und fachlich bleiben:</p>
+<div class="highlight"><pre><span></span><code>start_learning_session
+get_current_learning_step
+submit_learning_answer
+get_learning_session_status
+</code></pre></div>
+<p>V1 benötigt deshalb im Normalfall keinen Suffix <code>_v1</code>; die Plugin-Identität
+und der dedizierte MCP-Origin bilden bereits den Namespace. V2 darf dieselben
+fachlichen Namen mit einem inkompatiblen V2-Schema verwenden, weil sie eine
+andere Plugin-Identität und einen anderen MCP-Origin besitzt.</p>
+<p>Ein Suffix wie <code>_v2</code> ist nur für eine additive Übergangsfunktion innerhalb derselben Plugin-Identität zulässig, wenn alter und neuer Vertrag gleichzeitig in derselben Toolliste sichtbar sein müssen.</p>
+<h3 id="83-antwort-envelopes-fur-zustandsbezogene-tools">8.3 Antwort-Envelopes für zustandsbezogene Tools</h3>
+<p>Zustandsbezogene Toolantworten MÜSSEN die relevanten Versionen explizit ausweisen. Beispiel:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"contractMajor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"learningSessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sps_..."</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"stateVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"stateSchemaVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"workflowVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coach@2.3"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"curriculumRevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"he-mathe-lk-g9@2026.1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"currentStep"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"allowedActions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"submit_answer"</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Regeln:</p>
+<ul>
+<li><code>contractMajor</code> bezeichnet eine seltene, inkompatible Hard-Fork-Generation
+  der gesamten Plugin-Contract-Line. Ein neuer Major ist nur erforderlich,
+  wenn die bisherige Plugin-Identität, ihr MCP-/OAuth-Namespace oder ein
+  bereits veröffentlichter öffentlicher Toolvertrag nicht kompatibel
+  fortgeführt werden kann. Additive Tools, neue optionale Felder, neue
+  Workflow-, Curriculum-, State-Schema- oder UI-Ressourcenversionen sowie
+  gewöhnliche Produktfeatures erhöhen <code>contractMajor</code> ausdrücklich nicht.</li>
+<li><code>stateVersion</code> ist die monotone Revision des kanonischen Coach-Zustands des
+  Lernenden. Mehrere Lernsessionen und das Web-UI konkurrieren deshalb gegen
+  dieselbe Revision; ein erfolgreicher Schreibzugriff auf einem Transport macht
+  veraltete Schreibzugriffe auf allen anderen Transporten sichtbar.</li>
+<li><code>stateSchemaVersion</code> bezeichnet das interne Persistenzformat.</li>
+<li><code>workflowVersion</code> und <code>curriculumRevision</code> bleiben unabhängig von Plugin-SemVer.</li>
+<li><code>extensions</code> ist der bewusst offene Bereich für kompatible Zusatzinformationen.</li>
+<li>Interne SkillPilot-Benutzer-IDs DÜRFEN NICHT an das Modell oder die UI ausgegeben werden.</li>
+</ul>
+<h3 id="84-schreibende-aufrufe">8.4 Schreibende Aufrufe</h3>
+<p>Jeder schreibende Toolaufruf SOLL mindestens enthalten:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"learningSessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sps_..."</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"expectedStateVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"clientRequestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ee22c4b-..."</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>expectedStateVersion</code> ermöglicht Optimistic Locking und verhindert stilles Überschreiben konkurrierender Änderungen.</li>
+<li><code>clientRequestId</code> macht Retries idempotent.</li>
+<li>Das Tool SOLL die passende MCP-Idempotenzannotation setzen, wenn ein identischer Request keine zusätzliche Wirkung erzeugt.</li>
+<li>Konflikte werden über einen stabilen Fehlercode, nicht nur über frei formulierten Text, signalisiert.</li>
+</ul>
+<h3 id="85-json-schema-kompatibilitat">8.5 JSON-Schema-Kompatibilität</h3>
+<p>Innerhalb einer Major-Linie gelten folgende Regeln:</p>
+<p>Kompatibel sind typischerweise:</p>
+<ul>
+<li>neue optionale Eingabefelder;</li>
+<li>ein zusätzliches Tool;</li>
+<li>ein neuer optionaler Bereich innerhalb von <code>extensions</code>;</li>
+<li>eine Erweiterung, die alte Clients sicher ignorieren können.</li>
+</ul>
+<p>Inkompatibel sind typischerweise:</p>
+<ul>
+<li>neue Pflichtfelder;</li>
+<li>Umbenennen oder Entfernen von Feldern;</li>
+<li>Typ-, Einheiten- oder Bedeutungsänderungen;</li>
+<li>Einschränkungen bislang zulässiger Werte;</li>
+<li>zusätzliche Top-Level-Ausgabefelder, wenn das veröffentlichte Outputschema sie nicht zulässt;</li>
+<li>neue Enum-Werte, wenn bestehende Consumer unbekannte Werte nicht robust behandeln.</li>
+</ul>
+<p>Der Kern des Schemas SOLL streng sein, beispielsweise mit <code>additionalProperties: false</code>. Erweiterbarkeit wird gezielt über <code>extensions</code> oder explizit versionierte Unterobjekte hergestellt. Fehlercodes und fachliche Statuswerte sollen so gestaltet sein, dass unbekannte zukünftige Werte sicher behandelt werden können.</p>
+<p>Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarstellung liefern, damit unterschiedliche Hosts und Clients robust arbeiten können.</p>
+<h2 id="9-dedizierte-mcp-apps-uis-in-v1">9. Dedizierte MCP-Apps-UIs in V1</h2>
+<h3 id="91-v1-bindet-pro-ui-werkzeug-genau-eine-aktuelle-ressource">9.1 V1 bindet pro UI-Werkzeug genau eine aktuelle Ressource</h3>
+<p>Der noch unveröffentlichte V1-Draft bindet zwei aktive hashgebundene Ressourcen
+mit dem MIME-Typ <code>text/html;profile=mcp-app</code>. Das read-only Werkzeug
+<code>render_skillpilot_goal_visualization</code> liefert die geprüfte strukturierte
+<code>goalVisualization</code> an seine bild-only Ressource. Das read-only Werkzeug
+<code>start_skillpilot_memory_practice</code> startet das Karteikartenlernen in einer
+eigenen interaktiven Ressource. Beide Descriptoren enthalten
+<code>ui.resourceUri</code> und <code>openai/outputTemplate</code> mit genau seiner Ressource. Das nur
+von der App aufrufbare Bewertungswerkzeug
+<code>review_skillpilot_memory_practice_card</code> und alle gewöhnlichen
+Werkzeuge bleiben ungebunden; dadurch erzeugen sie weder
+verschachtelte noch leere UI-Komponenten.</p>
+<p>Wenn das neueste Vollresultat eine <code>goalVisualization</code> enthält und den Renderer
+erlaubt, läuft er genau einmal mit dessen unveränderter Ziel-ID; die Top-Level-
+<code>stateVersion</code> wird in <code>expectedStateVersion</code> kopiert. Eine alte oder bereits
+versuchte Freigabe wird nicht verwendet.
+Surface-Metadaten steuern dies nicht, und das Receipt garantiert keine
+Hostdarstellung.</p>
+<p>Sobald eine content-addressierte URI an einen realen Test-Client ausgeliefert
+wurde, kann ein Provider-Metadaten- oder Chat-Snapshot sie später erneut
+anfordern. Runtime, Draft-Snapshot und Ressourceninventar halten sie deshalb
+mit den exakten ursprünglichen Bytes passiv lesbar. Das ist keine zweite aktive
+UI-Version: Nur die aktuelle URI darf in einem Tool-Descriptor gebunden sein.
+Nach dem Deployment werden die Plugin-Metadaten aktualisiert und die aktuelle
+URI zusätzlich in einem frischen Chat geprüft.</p>
+<h3 id="92-regeln-fur-interaktive-ui-ressourcen">9.2 Regeln für interaktive UI-Ressourcen</h3>
+<p>Der zur Einreichung vorgesehene Draft MUSS für jede interaktive
+MCP-UI-Funktion eine eigene aktive Ressource und für die Plugin-Identität einen
+eindeutigen Widget-Origin angeben. <code>_meta.ui.domain</code>, gegebenenfalls der vom
+Zielhost benötigte Kompatibilitätsalias und eine minimale CSP bleiben Teil des
+geprüften Vertrags. Der Widget-Origin ist ein fester Vertragswert und kein
+Runtime-Override. Ein app-internes Folgetool darf den Zustand ändern, bindet
+aber nicht erneut die UI-Ressource.</p>
+<p>Eine in einer <strong>tatsächlich veröffentlichten</strong> Plugin-Version verwendete
+UI-Ressourcen-URI wird als unveränderlicher Artefaktschlüssel behandelt. Ein
+mögliches Format ist:</p>
+<div class="highlight"><pre><span></span><code>ui://skillpilot/coach/&lt;major&gt;/sha256-&lt;artifact-hash&gt;/index.html
+</code></pre></div>
+<p>Nach der Veröffentlichung wird der Inhalt einer solchen URI nicht
+überschrieben; jeder neue produktive UI-Build erhält eine neue URI. Vor der
+ersten tatsächlichen Portal-Veröffentlichung darf ein UI-Draft dagegen
+reproduzierbar ersetzt und bereinigt werden. Testauslieferungen eines
+unveröffentlichten Drafts erzeugen allein keine dauerhafte
+Rückwärtskompatibilitätspflicht.</p>
+<h3 id="93-autoritativer-zustand-bleibt-im-backend">9.3 Autoritativer Zustand bleibt im Backend</h3>
+<p>Die zwei aktiven V1-Ressourcen erzeugen keinen eigenen autoritativen
+Lernzustand.
+Bildfreigabe, Kartenauswahl, Terminierung und Fortschritt werden aus dem
+Backendzustand projiziert. Die interaktive Karteikarten-UI ruft für eine
+Bewertung das app-only Werkzeug auf; bei unbekanntem oder beschädigtem
+Hostzustand fällt sie auf einen sicheren, sichtbaren Fehlerzustand zurück,
+anstatt lokal weiterzulernen oder endlos zu laden.</p>
+<h3 id="94-aufbewahrung-beginnt-mit-der-ersten-realen-auslieferung">9.4 Aufbewahrung beginnt mit der ersten realen Auslieferung</h3>
+<p>Jede UI-Ressource, die einem realen Client angeboten wurde, wird während der
+unterstützten Laufzeit der zugehörigen Plugin-Major-Version unveränderlich
+bereitgestellt. Dies gilt auch für Draft-Tests, weil Provider-Caches keinen
+Release-Status kennen. Eine Nachlaufzeit nach Unpublish oder Delete wird als
+Release- und Betriebsparameter festgelegt; bis dahin bleiben die exakten
+historischen Bytes lesbar und ausschließlich die aktuelle URI aktiv gebunden.</p>
+<h2 id="10-skills-versionierung">10. Skills-Versionierung</h2>
+<h3 id="101-kopplung-an-die-plugin-linie">10.1 Kopplung an die Plugin-Linie</h3>
+<p>Skills besitzen in diesem Plan keine unabhängige, zur Laufzeit ausgehandelte Major-Version. Der veröffentlichte Skill-Bundle-Stand gehört zur jeweiligen Plugin-Paketversion.</p>
+<p>V1 und V2 erhalten getrennte finale Skill-Bäume:</p>
+<div class="highlight"><pre><span></span><code>plugins/openai/skillpilot-coach-v1/skills/...
+plugins/openai/skillpilot-coach-v2/skills/...
+</code></pre></div>
+<p>Ein V1-Skill MUSS ausschließlich V1-Tools und V1-Vertragssemantik verwenden. Ein V2-Skill MUSS ausschließlich V2-Tools und V2-Vertragssemantik verwenden.</p>
+<p>Gemeinsame Quellbausteine sind zulässig, sofern der Build daraus reproduzierbare, getrennte und eingefrorene Bundles erzeugt. Die final eingereichten Bundles müssen als Release-Artefakte archiviert werden.</p>
+<h3 id="102-klassifikation-von-skill-anderungen">10.2 Klassifikation von Skill-Änderungen</h3>
+<ul>
+<li>reine Formulierungs- oder Fehlerkorrektur ohne neue Fähigkeit: PATCH;</li>
+<li>neuer kompatibler Workflow oder neue Toolsequenz: MINOR;</li>
+<li>Skill setzt neue inkompatible Toolsemantik voraus oder verändert den öffentlichen Workflow grundlegend: neue Major-Plugin-Linie.</li>
+</ul>
+<p>Da Skills als finaler Dateibaum Teil der Einreichung sind, behandelt die Release-Pipeline jede Änderung am veröffentlichten Skill-Bundle als neue Plugin-Paketversion mit erneutem Review. Dies ist die konservative interne Regel, solange OpenAI keinen anderslautenden separaten Updatepfad dokumentiert.</p>
+<h3 id="103-skill-tests">10.3 Skill-Tests</h3>
+<p>Für jedes Release müssen mindestens getestet werden:</p>
+<ul>
+<li>direkte Anfragen, die den Skill aktivieren sollen;</li>
+<li>indirekte Anfragen mit demselben Ziel;</li>
+<li>unvollständige Eingaben;</li>
+<li>negative Anfragen, die den Skill nicht aktivieren dürfen;</li>
+<li>Edge Cases und Sicherheitsgrenzen;</li>
+<li>korrekte Auswahl ausschließlich der Tools derselben Contract-Major-Linie.</li>
+</ul>
+<h2 id="11-authentifizierung-und-autorisierung">11. Authentifizierung und Autorisierung</h2>
+<h3 id="111-getrennte-oauth-resources-pro-major">11.1 Getrennte OAuth-Resources pro Major</h3>
+<p>V1 und V2 verwenden denselben Spring Authorization Server, aber getrennte
+vorregistrierte Confidential Clients und getrennte OAuth-Resources
+beziehungsweise Audiences. OAuth bleibt dabei die technische App-Core-Kopplung
+und wählt weder SkillPilot-ID noch Lernenden noch Lernsession:</p>
+<div class="highlight"><pre><span></span><code>V1 resource: https://mcp-coach-v1.skillpilot.com/mcp
+V2 resource: https://mcp-coach-v2.skillpilot.com/mcp
+</code></pre></div>
+<p>Access Tokens müssen auf die passende Resource/Audience geprüft werden. Ein V1-Token darf nicht automatisch als V2-Token gelten, sofern dies nicht ausdrücklich und sicher im Authorization Server konfiguriert wurde.</p>
+<p>Jede Major-Linie verwendet außerdem genau einen für diese Linie
+vorregistrierten statischen Confidential Client mit <code>client_secret_basic</code>,
+Authorization Code plus PKCE und Refresh Token. Der normale V2-Einstieg setzt
+eine eigene V2-Autorisierung voraus; V1-Client, V1-Refresh-Token und V1-Access-
+Token werden nicht übernommen. Daraus entsteht weiterhin keine
+OAuth-Subject-zu-Lernenden- oder OAuth-Subject-zu-Session-Bindung.</p>
+<h3 id="112-scopes">11.2 Scopes</h3>
+<p>Innerhalb einer Major-Linie gilt:</p>
+<ul>
+<li>bestehende Scopes behalten ihre Bedeutung;</li>
+<li>neue Scopes dürfen additiv hinzukommen;</li>
+<li>ein bestehender Scope darf nicht stillschweigend erweitert oder umgedeutet werden;</li>
+<li>eine grundlegende Änderung des Autorisierungsmodells ist ein Major-Bruch.</li>
+</ul>
+<h3 id="113-keine-annahme-automatischer-oauth-migration">11.3 Keine Annahme automatischer OAuth-Migration</h3>
+<p>Die Architektur DARF NICHT davon ausgehen, dass OpenAI eine bestehende V1-Verknüpfung automatisch auf V2 überträgt. V2 muss mit einer erneuten Autorisierung funktionieren. Eine spätere offizielle Nachfolger- oder Reconnect-Funktion kann zusätzlich genutzt werden, ist aber keine Voraussetzung.</p>
+<h2 id="12-lernsession-zustands-und-workflow-versionierung">12. Lernsession-, Zustands- und Workflow-Versionierung</h2>
+<h3 id="121-learningsessionid-als-opaker-major-gepinnter-handle">12.1 <code>learningSessionId</code> als opaker, major-gepinnter Handle</h3>
+<p><code>learningSessionId</code> bleibt ein opaker, nicht personenbezogener Handle. Er
+enthält keine interne Benutzer-ID und keine direkt interpretierbare
+Vertragsversion. <strong>Opak bedeutet jedoch nicht major-neutral:</strong> Der
+Sessiondatensatz ist an genau eine <code>contractMajor</code>, <code>workflowVersion</code> und
+<code>stateSchemaVersion</code> gebunden, und nur der passende Major-Adapter darf ihn
+auflösen.</p>
+<p>V1 trennt die absolute 24-Stunden-Laufzeit von einem kürzeren
+Aktionshorizont. Vor jeder <strong>neuen</strong> sessiongebundenen Lese- oder
+Schreiboperation muss <code>expiresAt &gt;= now + PT1H</code> gelten. Genau eine Stunde
+Restlaufzeit ist zulässig; bei weniger als einer Stunde endet der Aufruf vor der
+fachlichen Operation mit <code>SESSION_RENEWAL_REQUIRED</code>. Fehlende, ungültige oder
+abgelaufene Sessions verwenden <code>SESSION_REQUIRED</code>, eine nicht mehr verfügbare
+gepinnte Revision <code>SESSION_VERSION_UNAVAILABLE</code>. OAuth bleibt in allen drei
+Fällen unabhängig und wird nicht neu verbunden.</p>
+<p>Ein exakter idempotenter Replay eines bereits committeten Writes unterliegt
+derselben <code>PT1H</code>-Grenze. Stimmen Session, Toolname, kanonisch normalisierte
+Argumente und <code>clientRequestId</code> mit dem gespeicherten Erfolg überein, sind die
+gepinnten Workflow- und Curriculumversionen weiterhin verfügbar und entspricht
+seine <code>completedStateVersion</code> noch der aktuellen kanonischen Learner-Revision,
+darf das gespeicherte Ergebnis zurückgegeben werden. Der Replay führt weder die
+fachliche Operation noch eine zweite Mutation aus. Unterhalb <code>PT1H</code>, bei nicht
+mehr verfügbarer gepinnter Version oder nach weiterem Zustandsfortschritt ist
+auch dieser Replay gesperrt.</p>
+<p>Ohne aktuelle SkillPilot-Startnachricht ruft das Modell kein SkillPilot-
+Werkzeug auf, sondern nennt nur lokalisiert <code>https://skillpilot.com/</code> und den
+First-Party-Startweg. Auf <code>SESSION_REQUIRED</code>, <code>SESSION_RENEWAL_REQUIRED</code> oder
+<code>SESSION_VERSION_UNAVAILABLE</code> gibt der Coach <code>instruction</code> unverändert aus oder
+wählt den exakten lokalisierten Eintrag aus <code>instructions</code>; er ergänzt die
+exakte <code>startUrl</code> nur, wenn sie nicht schon enthalten ist. Es gibt keine
+Fachantwort, keinen Retry und keine OAuth-Neuverbindung. <strong>Lernen starten</strong> in der First-Party-Website
+erzeugt die neue Session und öffnet einen neuen Chat.</p>
+<p>Für einen normalen App-first-Wechsel gilt deshalb:</p>
+<div class="highlight"><pre><span></span><code>gültige V1-Session bleibt V1
++ ausdrückliche Wahl von SkillPilot Coach v2
++ eigene V2-OAuth-Autorisierung
++ erneute ausdrückliche Lernstandsauswahl
+-&gt; neue V2-gepinnte learningSessionId
+</code></pre></div>
+<p>Der persistente kanonische Lernstand, das persönliche Curriculum und globale
+Mastery bleiben im gemeinsamen Core erhalten. Capability, OAuth-Token,
+Chat-Handoff und <code>learningSessionId</code> werden dagegen nicht zwischen Majors
+übernommen. Ein V1-Token am V2-Origin und ein V2-Token am V1-Origin werden
+fail-closed vor Projektion oder Mutation abgewiesen.</p>
+<h3 id="122-trennung-von-contract-und-persistenz">12.2 Trennung von Contract und Persistenz</h3>
+<p>Plugin-Major und internes Datenformat dürfen nicht gekoppelt werden:</p>
+<div class="highlight"><pre><span></span><code>Public Contract V1 -&gt; V1 Adapter -&gt; Canonical Model -&gt; State Schema 5
+Public Contract V2 -&gt; V2 Adapter -&gt; Canonical Model -&gt; State Schema 5
+</code></pre></div>
+<p>Historische Zustände werden über interne Datenmigrationen auf das aktuelle kanonische Schema gehoben. Dadurch kann V1 später entfernt werden, ohne dass das gesamte interne Datenmodell dauerhaft V1 bleiben muss.</p>
+<h3 id="123-pinning-laufender-lernablaufe">12.3 Pinning laufender Lernabläufe</h3>
+<p>Eine laufende Lernsession bleibt auf ihrer <code>workflowVersion</code> und <code>curriculumRevision</code> fixiert. Ein normales Server- oder Plugin-Deployment darf den pädagogischen Ablauf einer bestehenden Session nicht unbemerkt verändern.</p>
+<p>Eine Änderung erfolgt nur durch:</p>
+<ul>
+<li>eine ausdrücklich als kompatibel deklarierte Workflow-Migration; oder</li>
+<li>eine explizite Major-Migration der Session.</li>
+</ul>
+<p>V1 verhält sich dabei zunächst bewusst fail-closed: Wenn der Server den
+gepinnten Workflow oder Curriculum-Stand nicht mehr bereitstellt, wird die
+Session mit dem stabilen Fehlercode <code>SESSION_VERSION_UNAVAILABLE</code> angehalten,
+anstatt sie unbemerkt mit anderer Semantik fortzuführen. Ein Release mit neuer
+Workflow- oder Curriculum-Revision muss daher entweder die bisherige Revision
+für die maximale Sessionlaufzeit weiter bedienen, eine geprüfte kompatible
+Migration ausführen oder nach dem Release-Runbook zurückgerollt werden.</p>
+<h3 id="124-optionale-gesondert-freizugebende-major-migration">12.4 Optionale, gesondert freizugebende Major-Migration</h3>
+<p>Der normale Major-Wechsel benötigt keine Sessionmigration und darf nicht von
+ihr abhängen. Falls später zusätzlich eine laufende Session migriert werden
+soll, ist dies ein eigener, ausdrücklich bestätigter, serverseitiger,
+idempotenter und auditierbarer Vertrag. Er darf weder durch Veröffentlichung
+eines Nachfolgers noch durch OAuth, Widget-Metadaten oder das Sprachmodell
+ausgelöst werden und verwendet immer eine neue Ziel-Major-Session-ID.</p>
+<p>Ein internes oder kontrolliertes Migrationsergebnis soll mindestens enthalten:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"migrationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mig_..."</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"sourceContractMajor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"targetContractMajor"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"sourceLearningSessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sps_..."</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"targetLearningSessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sps_..."</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Anforderungen:</p>
+<ul>
+<li>wiederholter Aufruf erzeugt keine zweite Migration;</li>
+<li>Ausgangssnapshot bleibt nachvollziehbar;</li>
+<li>Verluste oder manuelle Entscheidungen werden explizit protokolliert;</li>
+<li>Quell- und Zielsession sowie die Ziel-Major-Autorisierung werden explizit
+  geprüft; OAuth allein wählt dabei keinen Lernenden;</li>
+<li>Rollback beziehungsweise Wiederherstellung ist für den definierten Betriebszeitraum möglich;</li>
+<li>Migrationscode wird erst entfernt, wenn die V1-Linie vollständig beendet und die Aufbewahrungsfrist abgelaufen ist.</li>
+</ul>
+<h2 id="13-release-prozess-innerhalb-derselben-major-linie">13. Release-Prozess innerhalb derselben Major-Linie</h2>
+<h3 id="131-anderung-klassifizieren">13.1 Änderung klassifizieren</h3>
+<p>Vor jeder Änderung wird entschieden:</p>
+<ol>
+<li>Ist ausschließlich der Server-Build betroffen und bleibt der veröffentlichte Vertrag unverändert?</li>
+<li>Ist eine neue Plugin-Paketversion erforderlich?</li>
+<li>Ist die Änderung innerhalb der aktuellen Major-Linie rückwärtskompatibel?</li>
+<li>Muss alte Funktionalität später entfernt werden?</li>
+</ol>
+<p>Bei Unsicherheit wird die Änderung als potenziell inkompatibel behandelt, bis Contract-Diff und Tests das Gegenteil zeigen.</p>
+<h3 id="132-draft-und-veroffentlichten-vertrag-trennen">13.2 Draft und veröffentlichten Vertrag trennen</h3>
+<p>Während der internen Arbeit wird ein reproduzierbarer Draft abgelegt:</p>
+<div class="highlight"><pre><span></span><code>contracts/drafts/openai/skillpilot-coach-v1/1.4.0-SNAPSHOT/
+</code></pre></div>
+<p>Dieser Draft darf bei weiteren internen Schritten derselben noch nicht
+veröffentlichten Version vollständig neu erzeugt werden. Er ist weder ein
+Publikationsnachweis noch eine Begründung für einen Versionssprung.</p>
+<p>Erst nach der tatsächlichen Veröffentlichung im OpenAI-Portal wird derselbe
+geprüfte Stand unter dem unveränderlichen Published-Pfad versiegelt:</p>
+<div class="highlight"><pre><span></span><code>contracts/published/openai/skillpilot-coach-v1/1.4.0/
+  plugin.json
+  app.json
+  mcp.json
+  line.json
+  lifecycle.json
+  contract/contract.json
+  contract/tools-list.json
+  contract/resources-list.json
+  contract/error-catalog.json
+  contract/server-instructions.txt
+  contract/security-schemes.json
+  skills-bundle.json
+  skills-bundle.sha256
+  skillpilot-openai-plugin-coach-v1-1.4.0.tar
+  snapshot-manifest.json
+  release-notes.md
+</code></pre></div>
+<p>Draft und Published-Snapshot müssen den von SkillPilot erzeugten Vertragsstand
+vollständig genug abbilden, um Builds reproduzierbar zu prüfen. Der
+Published-Snapshot darf niemals durch <code>prepare</code>, CI oder eine spätere
+Reviewkorrektur erzeugt oder überschrieben werden. Dafür ist ein eigener,
+explizit bestätigter <code>record-published</code>-Schritt erforderlich.</p>
+<p>Das eingecheckte Tar trägt im Manifest die Rolle <code>plugin-install-bundle</code> und
+wird direkt als deterministisches USTAR aus dem
+Git-Inventar erzeugt. Es darf weder von der installierten <code>tar</code>-Version noch
+von <code>umask</code>, Checkout-Dateirechten, <code>TAR_OPTIONS</code>, unversionierten Dateien oder
+symbolischen Links abhängen. Es enthält nie den Server. Alle Sprach- und
+Vertragslinien werden von genau einem separaten Spring-Boot-Artefakt
+<code>skillpilot-server</code> bedient.</p>
+<h3 id="133-server-zuerst-als-superset-deployen">13.3 Server zuerst als Superset deployen</h3>
+<p>Da OpenAI den produktiven MCP-Endpoint scannt und Toolaufrufe anschließend weiterhin gegen den Live-Server ausführt, wird eine kompatible neue Version in folgender Reihenfolge bereitgestellt:</p>
+<ol>
+<li>neuer Server-Build unterstützt alten und neuen Vertrag;</li>
+<li>alle alten Contract-Tests laufen gegen den neuen Build;</li>
+<li>neue Contract- und Skill-Tests laufen gegen den neuen Build;</li>
+<li>falls die betroffene veröffentlichte Linie tatsächlich eine UI besitzt,
+   werden neue UI-Artefakte unter neuen unveränderlichen URIs veröffentlicht;</li>
+<li>MCP-Endpoint wird im Portal erneut gescannt;</li>
+<li>neue Plugin-Version wird mit Release Notes eingereicht;</li>
+<li>nach Freigabe wird die neue Version veröffentlicht;</li>
+<li>alter Vertrag und alle zu ihm tatsächlich veröffentlichten UI-Ressourcen
+   bleiben verfügbar.</li>
+</ol>
+<p>Eine inkompatible Live-Änderung darf nicht in der Erwartung deployt werden, dass das Review sie später heilt. Wenn ein Deployment den veröffentlichten Vertrag bricht, wird es zurückgerollt.</p>
+<h3 id="134-rollback">13.4 Rollback</h3>
+<p>Für jede veröffentlichte Plugin-Version müssen verfügbar bleiben:</p>
+<ul>
+<li>das freigegebene Plugin-Paket;</li>
+<li>die zugehörigen Contract-Snapshots;</li>
+<li>alle referenzierten UI-Artefakte;</li>
+<li>ein kompatibler Server-Build oder ein Server-Build, der den Vertrag weiterhin erfüllt;</li>
+<li>Datenmigrationen mit dokumentiertem Rollback- oder Recovery-Verfahren.</li>
+</ul>
+<h2 id="14-lebenszyklus-einer-neuen-major-version">14. Lebenszyklus einer neuen Major-Version</h2>
+<h3 id="141-kanonischer-contract-line-vertrag">14.1 Kanonischer Contract-Line-Vertrag</h3>
+<p>Dieses Dokument ist die einzige normative Quelle für Support-Lifecycle,
+Publikationsstatus, Nachfolger und Startpolicy jeder Plugin-Major-Linie. Diese
+drei Zustandsachsen sind unabhängig und dürfen weder in einem gemeinsamen Enum
+zusammengeführt noch automatisch auseinander abgeleitet werden.</p>
+<p><code>supportLifecycle</code> beschreibt ausschließlich den technischen und fachlichen
+Supportzustand:</p>
+<table>
+<thead>
+<tr>
+<th>Wert</th>
+<th>Bedeutung</th>
+<th>Zulässige Entwicklung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CURRENT</code></td>
+<td>empfohlene aktuelle Linie</td>
+<td>neue Features, Fixes und neue Sessions gemäß Startpolicy</td>
+</tr>
+<tr>
+<td><code>SUPPORTED</code></td>
+<td>weiterhin voll unterstützt, aber nicht mehr primär</td>
+<td>Fixes und ausgewählte kompatible Verbesserungen</td>
+</tr>
+<tr>
+<td><code>DEPRECATED</code></td>
+<td>Wechsel auf einen Nachfolger empfohlen</td>
+<td>Sicherheits- und kritische Fixes; keine neuen Features</td>
+</tr>
+<tr>
+<td><code>RETIRED</code></td>
+<td>Vertragslinie beendet</td>
+<td>keine fachliche Ausführung; nur definierte Restaufbewahrung</td>
+</tr>
+</tbody>
+</table>
+<p><code>publicationStatus</code> beschreibt ausschließlich die Sichtbarkeit im
+OpenAI-Veröffentlichungsprozess:</p>
+<table>
+<thead>
+<tr>
+<th>Wert</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DRAFT</code></td>
+<td>intern beziehungsweise im Portal vorbereitet, aber nicht veröffentlicht</td>
+</tr>
+<tr>
+<td><code>PUBLISHED</code></td>
+<td>als diese Plugin-Identität veröffentlicht</td>
+</tr>
+<tr>
+<td><code>UNPUBLISHED</code></td>
+<td>aus der öffentlichen Sichtbarkeit entfernt oder im Portal gelöscht</td>
+</tr>
+</tbody>
+</table>
+<p><code>newSessionPolicy</code> ist die eigenständige serverautoritative Startentscheidung:</p>
+<table>
+<thead>
+<tr>
+<th>Wert</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ALLOW</code></td>
+<td>neue Sessions dieser Major-Linie sind erlaubt</td>
+</tr>
+<tr>
+<td><code>WARN</code></td>
+<td>Start in dieser Linie erst nach ausdrücklicher Wahl; ein geprüfter Nachfolger muss verfügbar sein</td>
+</tr>
+<tr>
+<td><code>BLOCK</code></td>
+<td>keine neue Session dieser Linie</td>
+</tr>
+</tbody>
+</table>
+<p>Die kanonische, geschlossene Projektion besitzt das folgende JSON-Schema. Der
+<code>$id</code> ist die stabile Schemaidentität. Release- und CI-Prüfungen validieren die
+Lifecycle-Quelle und ihre interne Runtime-Projektion gegen dieses Schema. Der
+V1-Modellvertrag veröffentlicht keine sessionlose Startprojektion; die
+Contract Line bleibt Release- und Serverkonfiguration.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://json-schema.org/draft/2020-12/schema"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"$id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://skillpilot.com/schemas/openai/contract-line/v1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"additionalProperties"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"contractMajor"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"policyRevision"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"displayName"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"supportLifecycle"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"publicationStatus"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"newSessionPolicy"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"successor"</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"contractMajor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"policyRevision"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"supportLifecycle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w"> </span><span class="s2">"SUPPORTED"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DEPRECATED"</span><span class="p">,</span><span class="w"> </span><span class="s2">"RETIRED"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"publicationStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"DRAFT"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PUBLISHED"</span><span class="p">,</span><span class="w"> </span><span class="s2">"UNPUBLISHED"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"newSessionPolicy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ALLOW"</span><span class="p">,</span><span class="w"> </span><span class="s2">"WARN"</span><span class="p">,</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"successor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"oneOf"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"additionalProperties"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"contractMajor"</span><span class="p">,</span><span class="w"> </span><span class="s2">"displayName"</span><span class="p">,</span><span class="w"> </span><span class="s2">"handoffUrl"</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"contractMajor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"minLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"handoffUrl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uri"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"maxLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^https://skillpilot\\.com/"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"allOf"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"newSessionPolicy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"const"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WARN"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"newSessionPolicy"</span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"then"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"successor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"supportLifecycle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"const"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RETIRED"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"supportLifecycle"</span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"then"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"publicationStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"const"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNPUBLISHED"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"newSessionPolicy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"const"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOCK"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Zusätzlich zum Schema gelten folgende nicht relativ ausdrückbaren
+Kombinationsregeln:</p>
+<ul>
+<li><code>policyRevision</code> ist innerhalb einer Major-Linie monoton steigend. Jede
+  Änderung an <code>newSessionPolicy</code>, Nachfolgerfreigabe, Notfallsperre oder dem
+  für neue Starts verbindlichen Providerhinweis erhöht sie. Bereits
+  ausgestellte Start-Capabilities bleiben an ihre ursprüngliche Revision
+  gebunden und werden bei Abweichung terminal ungültig; eine spätere Rückkehr
+  zu einer älteren fachlichen Entscheidung lässt sie niemals wieder aufleben.</li>
+<li><code>successor.contractMajor</code> ist stets größer als <code>contractMajor</code>; Anzeigename
+  und Major stimmen mit der Ziel-Plugin-Identität überein.</li>
+<li>Ein nicht-null <code>successor</code> wird nur nach erfolgreicher Veröffentlichung,
+  Erreichbarkeitsprüfung und Canary der Ziel-Linie ausgegeben. Seine
+  <code>handoffUrl</code> steht zusätzlich auf einer release-seitigen exakten
+  First-Party-Allowlist; <code>format</code> und <code>pattern</code> allein autorisieren kein Ziel.</li>
+<li><code>WARN</code> verlangt einen solchen nicht-null Nachfolger und eine ausdrückliche
+  Entscheidung, in der Quell-Linie zu bleiben oder den Nachfolger zu öffnen.</li>
+<li><code>BLOCK</code> stellt niemals eine Start-Capability aus und erzeugt keine Session.
+  <code>successor</code> darf dabei ausdrücklich <code>null</code> sein, insbesondere für
+  Sicherheits-, Rechts- oder Betriebsnotfälle.</li>
+<li><code>BLOCK</code> mit geprüftem Nachfolger ergibt für Verbraucher
+  <code>MAJOR_UPGRADE_REQUIRED</code>; <code>BLOCK</code> mit <code>successor: null</code> ergibt
+  <code>TEMPORARILY_UNAVAILABLE</code> und nur den neutralen First-Party-Fallback.</li>
+<li><code>RETIRED</code> verlangt <code>publicationStatus: UNPUBLISHED</code> und
+  <code>newSessionPolicy: BLOCK</code>.</li>
+<li>Ein <code>DRAFT</code>- oder <code>UNPUBLISHED</code>-Nachfolger darf niemals angeboten werden.</li>
+<li>Unbekannte Werte oder unzulässige Kombinationen werden fail-closed wie
+  <code>BLOCK</code> ohne Nachfolger behandelt.</li>
+</ul>
+<p>Die Zustands- und Datumswerte werden konfigurierbar geführt, zum Beispiel:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"pluginIdentity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skillpilot-coach-v1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"contractLine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"contractMajor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"policyRevision"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SkillPilot Coach v1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"supportLifecycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEPRECATED"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"publicationStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUBLISHED"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"newSessionPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WARN"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"successor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"contractMajor"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SkillPilot Coach v2"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"handoffUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://skillpilot.com/openai/coach-v2"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"deprecatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-02-01"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"endOfSupportAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-08-01"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"unpublishAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-09-01"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"deleteAfter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-11-01"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Die konkreten Fristen werden pro Release entschieden und nicht im Programmcode
+festgelegt. Eine Frist darf die drei expliziten Zustandsachsen nicht
+stillschweigend umschalten.</p>
+<h3 id="142-normativer-app-first-majorwechsel-und-fehlerfallback">14.2 Normativer App-first-Majorwechsel und Fehlerfallback</h3>
+<p>Der Major-Handoff ist identifierfrei und ausschließlich benutzerinitiiert:</p>
+<div class="highlight"><pre><span></span><code>ALLOW
+  -&gt; normaler Start in der Quell-Major-Linie
+
+WARN + veröffentlichter, geprüfter Nachfolger
+  -&gt; ausdrückliche Wahl:
+       in der Quell-Major-Linie starten
+       oder den Nachfolger öffnen
+
+BLOCK + veröffentlichter, geprüfter Nachfolger
+  -&gt; keine Capability und keine Session in der Quell-Major-Linie
+  -&gt; nur identifierfreier Nachfolger-Handoff
+
+BLOCK + successor null
+  -&gt; keine Capability, keine Session und kein Nachfolger-Handoff
+  -&gt; neutraler First-Party-Fallback
+</code></pre></div>
+<p>Der Handoff übergibt weder SkillPilot-ID noch OAuth-Token, Capability,
+<code>learningSessionId</code> oder andere Quell-Major-Laufzeitwerte. Die Ziel-Major-Linie
+führt ihre eigene OAuth-Autorisierung, erneute ausdrückliche
+Lernstandsauswahl und neue major-gepinnte Session durch. Token, Capability und
+Session einer Major-Linie werden von jeder anderen Linie fail-closed
+abgewiesen.</p>
+<p>Scheitert der Ziel-Major vor seinem Sessioncommit, darf ein neuer Quell-Major-
+Start nur angeboten werden, wenn dessen dann aktuelle <code>newSessionPolicy</code>
+<code>ALLOW</code> oder <code>WARN</code> ist. Bei <code>BLOCK</code> bleibt ausschließlich der neutrale
+First-Party-Fallback. Nach Ziel-Major-Commit sind nur idempotente Retries in
+derselben Ziel-Linie zulässig; ein automatisches Downgrade ist verboten.</p>
+<h3 id="143-ablauf-v1-v2">14.3 Ablauf V1 -&gt; V2</h3>
+<ol>
+<li>V1 bleibt unverändert funktionsfähig.</li>
+<li>V2 wird mit eigener Plugin-Identität, eigenem MCP-Origin und
+   einem vor Veröffentlichung festgelegten eindeutigen UI-Origin aufgebaut.</li>
+<li>V2 wird unabhängig getestet, eingereicht und veröffentlicht.</li>
+<li>V1 und V2 laufen parallel.</li>
+<li>Neue App-first-Sessions werden nur nach ausdrücklicher Wahl von V2 über den
+   V2-Einstieg angelegt; eine bestehende V1-App routet keinen Start automatisch
+   nach V2.</li>
+<li>Bestehende V1-Sessions bleiben V1 und werden dort abgeschlossen oder laufen
+   aus. Eine optionale explizite Migration folgt ausschließlich Abschnitt 12.4.</li>
+<li>V1 erhält gegebenenfalls ein letztes kompatibles Release mit sachlichem Nachfolger- und Migrationshinweis.</li>
+<li>Der V1-<code>supportLifecycle</code> wechselt von <code>SUPPORTED</code> nach <code>DEPRECATED</code>.</li>
+<li>Nach Erreichen der Migrations- und Betriebs-Gates wechselt der
+   V1-<code>publicationStatus</code> auf <code>UNPUBLISHED</code>.</li>
+<li>Der V1-Server bleibt für die definierte Grace-Phase verfügbar.</li>
+<li>Danach wird die V1-Plugin-Identität im Portal gelöscht und ihr
+    <code>supportLifecycle</code> auf <code>RETIRED</code> gesetzt; <code>publicationStatus</code> bleibt
+    <code>UNPUBLISHED</code> und <code>newSessionPolicy</code> bleibt <code>BLOCK</code>.</li>
+<li>Erst nach zusätzlicher technischer Prüfung werden V1-Adapter, V1-Skills, V1-spezifische Tests und V1-Infrastruktur entfernt.</li>
+<li>Statische alte UI-Artefakte und notwendige Migrationsdaten bleiben bis zum Ende ihrer Aufbewahrungsfrist erhalten.</li>
+</ol>
+<h3 id="144-gates-vor-unpublish-und-delete">14.4 Gates vor Unpublish und Delete</h3>
+<p>V1 darf nur stillgelegt werden, wenn mindestens folgende Punkte dokumentiert erfüllt sind:</p>
+<ul>
+<li>V2 ist produktiv stabil und vollständig veröffentlicht;</li>
+<li>V2-Auth funktioniert auch ohne automatische Übernahme der V1-Verknüpfung;</li>
+<li>aktive V1-Sessions sind abgelaufen, abgeschlossen, ausdrücklich nach
+  Abschnitt 12.4 migriert oder als Ausnahme erfasst;</li>
+<li>Migrationsfehler und nicht migrierbare Fälle sind bearbeitet;</li>
+<li>Support-, Datenschutz- und Aufbewahrungsanforderungen sind geklärt;</li>
+<li>Telemetrie zeigt keine unerwartete V1-Nutzung mehr;</li>
+<li>V1-Contract-Snapshots, Release-Artefakte und Recovery-Daten sind archiviert;</li>
+<li>der OpenAI-Portalstatus wurde verifiziert;</li>
+<li>der Rückbauplan wurde freigegeben.</li>
+</ul>
+<h2 id="15-repository-und-modulstruktur">15. Repository- und Modulstruktur</h2>
+<p>Die konkrete Package-Root wird an das bestehende SkillPilot-Repository angepasst. Zielstruktur:</p>
+<div class="highlight"><pre><span></span><code>skillpilot/
+  core/
+    application/
+    domain/
+    persistence/
+
+  contracts/
+    coach-v1/
+      tools/
+      schemas/
+      errors/
+      contract-tests/
+    coach-v2/
+      tools/
+      schemas/
+      errors/
+      contract-tests/
+
+  adapters/
+    mcp-v1/
+    mcp-v2/
+
+  plugins/
+    openai/
+      skillpilot-coach-v1/
+        .codex-plugin/plugin.json
+        .app.json
+        skills/
+        release-notes/
+      skillpilot-coach-v2/
+        .codex-plugin/plugin.json
+        .app.json
+        skills/
+        release-notes/
+
+  ui/
+    coach-v1/
+    coach-v2/
+
+  migrations/
+    state/
+    session-v1-to-v2/
+
+  contracts/published/
+    openai/
+      skillpilot-coach-v1/
+      skillpilot-coach-v2/
+
+  contracts/drafts/
+    openai/
+      skillpilot-coach-v1/
+      skillpilot-coach-v2/
+</code></pre></div>
+<p>Die technische Struktur darf in einem Monorepo, mehreren Modulen oder mehreren Repositories umgesetzt werden. Entscheidend sind getrennte Build-, Test- und Releasegrenzen für die öffentlichen Major-Verträge.</p>
+<p>Für andere Hosts, beispielsweise Claude, sollen host-spezifische Pakete außen um denselben fachlichen MCP-Contract gelegt werden. OpenAI-spezifische <code>_meta</code>-Felder, Plugin-Manifeste und Submission-Artefakte dürfen nicht in den fachlichen Core einsickern.</p>
+<h2 id="16-cicd-anforderungen">16. CI/CD-Anforderungen</h2>
+<p>Die Pipeline MUSS mindestens folgende Prüfungen enthalten:</p>
+<h3 id="161-versionskonsistenz">16.1 Versionskonsistenz</h3>
+<p>Automatische Prüfung:</p>
+<div class="highlight"><pre><span></span><code>manifest major == contract major == major im Paketnamen
+                == major im MCP-Endpoint-Pfad
+</code></pre></div>
+<p>Zusätzlich werden OpenAI-Grenzen wie Paketname, Anzeigename und SemVer-Format geprüft.</p>
+<h3 id="162-contract-diff">16.2 Contract-Diff</h3>
+<p>Jeder Build vergleicht die aktuelle Tool- und Ressourcenbeschreibung mit dem zuletzt veröffentlichten Snapshot derselben Major-Linie. Die Pipeline blockiert mindestens:</p>
+<ul>
+<li>entferntes oder umbenanntes Tool;</li>
+<li>neues Pflichtfeld;</li>
+<li>entferntes Feld;</li>
+<li>inkompatibler Typ oder Wertebereich;</li>
+<li>geänderte Bedeutung bestehender Status- oder Enum-Werte;</li>
+<li>geänderte Security Schemes oder Scope-Bedeutungen;</li>
+<li>geänderte Annotationen mit größerer Wirkung;</li>
+<li>bei einer UI-Linie entfernte veröffentlichte UI-Ressourcen;</li>
+<li>bei einer UI-Linie geänderten Inhalt unter einer als unveränderlich
+  registrierten UI-URI.</li>
+</ul>
+<h3 id="163-skill-contract-lint">16.3 Skill-Contract-Lint</h3>
+<p>Die Pipeline prüft:</p>
+<ul>
+<li>jeder im Skill referenzierte Toolname existiert;</li>
+<li>Skill und Tool gehören zur selben Contract-Major-Linie;</li>
+<li>kein V1-Skill verweist auf V2-Tools und umgekehrt;</li>
+<li>finale Bundles enthalten alle referenzierten Dateien;</li>
+<li>Bundle und Hash sind reproduzierbar.</li>
+</ul>
+<h3 id="164-contract-testmatrix">16.4 Contract-Testmatrix</h3>
+<p>Jeder neue Server-Build wird gegen alle noch unterstützten Major-Linien getestet:</p>
+<div class="highlight"><pre><span></span><code>Server Build N
+  -&gt; V1 contract tests
+  -&gt; V2 contract tests
+  -&gt; state migration tests
+  -&gt; auth audience/scope tests
+  -&gt; bei UI-Linien: UI resource integrity tests
+</code></pre></div>
+<p>Solange der V1-<code>supportLifecycle</code> nicht <code>RETIRED</code> ist, darf ein Server-Build mit
+fehlschlagenden V1-Tests nicht produktiv gehen.</p>
+<h3 id="165-migrations-und-rollbacktests">16.5 Migrations- und Rollbacktests</h3>
+<p>Für jede Zustandsmigration werden getestet:</p>
+<ul>
+<li>einmalige Migration;</li>
+<li>wiederholter idempotenter Aufruf;</li>
+<li>Abbruch und Wiederaufnahme;</li>
+<li>nicht migrierbare Fälle;</li>
+<li>Recovery aus Snapshot;</li>
+<li>parallele Zugriffe und <code>stateVersion</code>-Konflikte.</li>
+</ul>
+<h2 id="17-observability-und-betriebsdaten">17. Observability und Betriebsdaten</h2>
+<p>Da kein zuverlässiges, dokumentiertes Runtime-Signal für die konkrete
+veröffentlichte Plugin-Paketversion vorausgesetzt wird, wird die
+Contract-Major-Linie primär durch den aufgerufenen MCP-Origin und die dazu
+exakt gleiche OAuth-Resource bestimmt.</p>
+<p>Jeder Toolaufruf soll mindestens mit folgenden Feldern beobachtbar sein:</p>
+<div class="highlight"><pre><span></span><code>contractMajor
+pluginLine
+serverBuild
+mcpProtocolVersion
+toolName
+requestId / clientRequestId
+learningSessionId (datenschutzgerecht)
+stateVersion
+stateSchemaVersion
+workflowVersion
+curriculumRevision
+resultCode
+latency
+</code></pre></div>
+<p>Wichtige Metriken:</p>
+<ul>
+<li>Aufrufe und aktive Sessions pro Contract-Major;</li>
+<li>V1- und V2-Fehlerraten;</li>
+<li>Migrationsfortschritt und Migrationsfehler;</li>
+<li>V1-Aufrufe nach Deprecation und Unpublish;</li>
+<li>Abrufe alter UI-Artefakte;</li>
+<li>OAuth-Fehler getrennt nach Resource/Audience;</li>
+<li>Contract-Diff- und Regressionsergebnisse pro Release.</li>
+</ul>
+<p><code>clientInfo.version</code> oder ähnliche MCP-Hostangaben dürfen nicht als Plugin-Paketversion interpretiert oder für Contract-Routing verwendet werden, solange OpenAI dies nicht ausdrücklich dokumentiert.</p>
+<p>Die V1-Implementierung erfasst <code>contractMajor</code>, <code>pluginLine</code>, <code>serverBuild</code>,
+<code>toolName</code>, <code>status</code>, einen stabilen <code>resultCode</code> und die Latenz für jeden
+Toolaufruf. Wenn das versionierte Ergebnis sie zuverlässig enthält, werden
+zusätzlich <code>stateVersion</code>, <code>stateSchemaVersion</code>, <code>workflowVersion</code> und
+<code>curriculumRevision</code> protokolliert. Bei Schreibaufrufen wird eine syntaktisch
+gültige <code>clientRequestId</code> protokolliert; die <code>learningSessionId</code> erscheint
+ausschließlich als gekürzter HMAC-SHA-256-Fingerprint und niemals im Klartext.
+Request- und Session-Korrelatoren sowie State-, Workflow-, Curriculum- und
+Build-Versionen sind Logfelder, keine Metrik-Tags. Die Metrik-Tags bleiben auf
+die begrenzten Mengen Contract-Major, Plugin-Linie, Tool, Status und stabiler
+Result-Code beschränkt.</p>
+<p>Der tatsächlich aufgerufene Endpoint-Pfad wird am HTTP-Ingress protokolliert.
+Der derzeitige MCP-SDK-<code>McpTransportContext</code> stellt ihn und die ausgehandelte
+MCP-Protokollversion nicht über dokumentierte, transportübergreifend stabile
+Schlüssel für den Tooladapter bereit. Deshalb dupliziert oder erfindet der
+Adapter diese Werte nicht; eine Protokollversion wird erst ergänzt, wenn der
+Transport sie zuverlässig und dokumentiert bereitstellt.</p>
+<h2 id="18-konkreter-codex-implementierungsauftrag">18. Konkreter Codex-Implementierungsauftrag</h2>
+<h3 id="phase-a-vor-der-ersten-v1-veroffentlichung">Phase A: Vor der ersten V1-Veröffentlichung</h3>
+<p>Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bereits eine dauerhaft isolierbare V1-Linie bildet. Die Phase soll das derzeitige Verhalten möglichst nicht fachlich verändern.</p>
+<ol>
+<li><strong>V1-Konstanten und Konfiguration einführen</strong></li>
+<li><code>pluginIdentity = skillpilot-coach-v1</code></li>
+<li><code>pluginVersion = 1.0.0</code></li>
+<li><code>contractMajor = 1</code></li>
+<li>den öffentlichen MCP-Pfad und die exakte OAuth-Resource festlegen;</li>
+<li>
+<p>Server-Build separat ausgeben.</p>
+</li>
+<li>
+<p><strong>V1-Contract-Modul abtrennen</strong></p>
+</li>
+<li>aktuelle MCP-Tools, Input-/Outputschemas, Fehlercodes und Metadaten in einen expliziten <code>v1</code>-Bereich überführen;</li>
+<li>interne Domainklassen nicht direkt als öffentliche DTOs verwenden;</li>
+<li>
+<p>Adapter zum bestehenden SkillPilot-Core einführen.</p>
+</li>
+<li>
+<p><strong>Öffentlichen V1-Pfad vorbereiten</strong></p>
+</li>
+<li>Spring-Transport unter <code>/internal/openai/v1/mcp</code> vorsehen und über den
+     dedizierten V1-vHost ausschließlich als
+     <code>https://mcp-coach-v1.skillpilot.com/mcp</code> veröffentlichen;</li>
+<li>keinen öffentlichen Kompatibilitätsalias bereitstellen;</li>
+<li>keine zweite öffentliche HTTP-Route bereitstellen;</li>
+<li>keine Abhängigkeit von Redirects;</li>
+<li>
+<p>OpenAI-Challenge-Route berücksichtigen.</p>
+</li>
+<li>
+<p><strong>Dedizierte V1-MCP-Apps-UIs absichern</strong></p>
+</li>
+<li>genau zwei aktiv gebundene hashgebundene
+     <code>text/html;profile=mcp-app</code>-Ressourcen für
+     <code>render_skillpilot_goal_visualization</code> und
+     <code>start_skillpilot_memory_practice</code> ausliefern;</li>
+<li>beide Werkzeuge ausschließlich an ihre eigene Ressource mit
+     <code>ui.resourceUri</code> und <code>openai/outputTemplate</code> binden; Kartenreview und
+     gewöhnliche Tools bleiben ungebunden;</li>
+<li>die validierte strukturierte <code>goalVisualization</code> bild-only rendern und
+     den vollständigen Textpfad bei jedem Hostverhalten erhalten;</li>
+<li>weder User-Agent- noch Surface-Metadaten als Gate verwenden und keine
+     tatsächliche Hostdarstellung behaupten;</li>
+<li>
+<p>jede bereits real ausgelieferte frühere Hash-URI byte-identisch als
+     passive Ressource behalten; ausschließlich die aktuelle URI aktiv binden.</p>
+</li>
+<li>
+<p><strong>V1-Skill-Bundle trennen</strong></p>
+</li>
+<li>eigener finaler Skill-Baum für <code>skillpilot-coach-v1</code>;</li>
+<li>Toolreferenzen gegen V1 prüfen;</li>
+<li>
+<p>Bundle-Hash und Release-Artefakt erzeugen.</p>
+</li>
+<li>
+<p><strong>Session-Versionen vervollständigen</strong></p>
+</li>
+<li><code>contractMajor</code>, <code>stateVersion</code>, <code>stateSchemaVersion</code>, <code>workflowVersion</code> und <code>curriculumRevision</code> in zustandsbezogenen Antworten vorsehen;</li>
+<li><code>expectedStateVersion</code> und <code>clientRequestId</code> für Schreiboperationen prüfen beziehungsweise ergänzen;</li>
+<li>
+<p>stabile Fehlercodes definieren.</p>
+</li>
+<li>
+<p><strong>Draft- und Published-Snapshots trennen</strong></p>
+</li>
+<li>Tool-, Schema-, Ressourcen-, UI-, Skill- und Security-Metadaten automatisiert exportieren;</li>
+<li>Snapshotpfad und Hashes standardisieren;</li>
+<li>denselben unveröffentlichten V1-Draft nur bis <code>Submit for Review</code> ohne
+     Versionssprung fortschreibbar halten; während der Portalprüfung gilt die
+     separate Review-Sperre;</li>
+<li>
+<p>Published-Baseline erst nach bestätigter Portal-Veröffentlichung
+     unveränderlich einfrieren.</p>
+</li>
+<li>
+<p><strong>CI-Gates implementieren</strong></p>
+</li>
+<li>Versionskonsistenz;</li>
+<li>Contract-Diff;</li>
+<li>UI-URI-Integrität;</li>
+<li>Skill-Tool-Lint;</li>
+<li>
+<p>V1-E2E- und Regressionstests.</p>
+</li>
+<li>
+<p><strong>Lifecycle-Konfiguration anlegen</strong></p>
+</li>
+<li><code>supportLifecycle</code> mit <code>CURRENT</code>, <code>SUPPORTED</code>, <code>DEPRECATED</code>, <code>RETIRED</code>
+     modellieren;</li>
+<li><code>publicationStatus</code> mit <code>DRAFT</code>, <code>PUBLISHED</code>, <code>UNPUBLISHED</code> getrennt
+     modellieren;</li>
+<li><code>newSessionPolicy</code> mit <code>ALLOW</code>, <code>WARN</code>, <code>BLOCK</code> sowie den nullable
+     Nachfolger nach dem kanonischen Contract-Line-Schema konfigurieren;</li>
+<li><code>policyRevision</code> monoton und revisionsfest führen;</li>
+<li>
+<p>V1 nach dem Web-first-Rückbau auf <code>policyRevision: 3</code>, <code>CURRENT</code>, <code>DRAFT</code>,
+     <code>ALLOW</code> und <code>successor: null</code> führen; Revision 2 war der nie
+     veröffentlichte Direct-Start-Entwurf und Revision 1 dessen früherer
+     EXISTING-Entwurf.</p>
+</li>
+<li>
+<p><strong>Runbook und ADR ablegen</strong></p>
+<ul>
+<li>dieses Dokument oder eine verdichtete ADR-Version im Repository aufnehmen;</li>
+<li>Release-, Rollback-, Unpublish- und Delete-Schritte dokumentieren.</li>
+</ul>
+</li>
+</ol>
+<h3 id="phase-b-release-automatisierung">Phase B: Release-Automatisierung</h3>
+<p>Nach der strukturellen Vorbereitung:</p>
+<ul>
+<li>Plugin-Paket reproduzierbar bauen;</li>
+<li>Release Notes aus Contract-Diff und Commits vorbereiten;</li>
+<li>Scan- und Submission-Checkliste automatisieren, soweit das Portal dies zulässt;</li>
+<li>freigegebene Artefakte und Snapshots archivieren;</li>
+<li>Smoke Tests gegen den veröffentlichten Endpoint ausführen.</li>
+</ul>
+<h3 id="phase-c-erst-bei-einer-tatsachlichen-v2">Phase C: Erst bei einer tatsächlichen V2</h3>
+<p>Noch keine fachliche V2 implementieren. Lediglich sicherstellen, dass folgende spätere Schritte ohne Core-Neubau möglich sind:</p>
+<ul>
+<li>zweites Contract- und Adaptermodul;</li>
+<li>eigener MCP-Endpoint-Pfad und bei UI-Veröffentlichung ein eigener
+  plugin-eindeutiger UI-Origin;</li>
+<li>neues Plugin-Paket;</li>
+<li>paralleler Betrieb;</li>
+<li>standardmäßig ein expliziter neuer V2-Start mit neuer V2-Session;</li>
+<li>nur optional ein gesondert freigegebener, idempotenter Sessionmigrationspfad;</li>
+<li>V1-Lifecycle und Telemetrie;</li>
+<li>sauberer Rückbau nach Delete.</li>
+</ul>
+<h2 id="19-definition-of-done-fur-die-v1-vorbereitung">19. Definition of Done für die V1-Vorbereitung</h2>
+<p>Die Versionierungsarchitektur gilt vor der ersten öffentlichen Einreichung als ausreichend vorbereitet, wenn:</p>
+<ul>
+<li>V1 im technischen Namen und Anzeigenamen erkennbar ist;</li>
+<li>Manifest-Version und Contract-Major konsistent sind;</li>
+<li>der öffentliche V1-MCP-Pfad unabhängig von späteren V2-Pfaden ist;</li>
+<li>V1 bereits dormant das geschlossene Lifecycle-/Nachfolgerschema sowie die
+  UI-Zustände für <code>ALLOW</code>, <code>WARN</code> und <code>BLOCK</code> enthält, ohne einen noch nicht
+  veröffentlichten Nachfolger zu bewerben;</li>
+<li>der unveröffentlichte V1-Draft genau zwei aktuelle hashgebundene
+  <code>text/html;profile=mcp-app</code>-Ressourcen aktiv bindet, Bild-Renderer und
+  Kartenlauncher jeweils nur an ihre eigene Ressource bindet, app-only
+  Kartenreview ungebunden lässt und jede bereits ausgelieferte frühere
+  Bild-URI byte-identisch passiv lesbar hält; nie veröffentlichte
+  Startressourcen gehören nicht zum V1-Vertrag;</li>
+<li>der aktuelle MCP-Vertrag als reproduzierbarer V1-Draft vorliegt;</li>
+<li>der Published-Index vor der ersten realen Veröffentlichung leer bleibt und
+  nur durch einen explizit bestätigten Publikationsschritt fortgeschrieben
+  werden kann;</li>
+<li>öffentliche DTOs vom Core getrennt sind;</li>
+<li>alle Schreiboperationen idempotent und gegen konkurrierende Zustandsänderungen geschützt sind oder eine dokumentierte Ausnahme besitzen;</li>
+<li>die optionale Bilddarstellung nur aus frischer <code>goalVisualization</code> und
+  aktueller Renderer-Freigabe entsteht, alte Freigaben nicht wiederverwendet
+  werden und der Textpfad vollständig bleibt;</li>
+<li>Skills als V1-Bundle reproduzierbar gebaut und geprüft werden;</li>
+<li>jeder Server-Build gegen den V1-Snapshot getestet wird;</li>
+<li>Lifecycle- und Migrationsfelder im Datenmodell vorgesehen sind;</li>
+<li>keine Runtime-Logik von einem undokumentierten Plugin-Versionssignal abhängt;</li>
+<li>Release- und Rollback-Runbook vorhanden sind.</li>
+</ul>
+<h2 id="20-offene-externe-fragen-und-fallback">20. Offene externe Fragen und Fallback</h2>
+<p>Folgende Punkte sind weiterhin offen und werden über den Community-Thread beziehungsweise Support verfolgt:</p>
+<ol>
+<li>Akzeptiert OpenAI zwei klar versionierte Schwester-Plugins desselben Publishers im Directory?</li>
+<li>Gibt es künftig einen offiziellen Nachfolger-Link zwischen V1 und V2?</li>
+<li>Können OAuth-Verknüpfungen oder Installationen auf einen Nachfolger migriert werden?</li>
+<li>Was geschieht exakt mit bestehenden Installationen und alten Chats nach Unpublish oder Delete?</li>
+<li>Wie lange sollten Ressourcen einer künftig tatsächlich veröffentlichten
+   UI-Linie nach Delete erreichbar bleiben?</li>
+<li>Wird ein verlässliches Runtime-Signal für Plugin-Identität und Plugin-Paketversion bereitgestellt?</li>
+<li>Gibt es einen gesonderten Updatepfad für reine Skill-Änderungen?</li>
+</ol>
+<p>Fallback, falls parallele Major-Plugins nicht akzeptiert werden:</p>
+<ul>
+<li>interne V1-/V2-Adaptertrennung beibehalten;</li>
+<li>V2-Funktionalität nur additiv mit neuen Toolnamen innerhalb der bestehenden
+  Plugin-Identität veröffentlichen; neue UI-Ressourcen kommen nur hinzu, falls
+  diese spätere Linie ausdrücklich eine UI veröffentlicht;</li>
+<li>V1-Vertrag weiterhin bedienen;</li>
+<li>keine Entfernung von V1-Funktionalität, bis OpenAI einen unterstützten Lifecycle bereitstellt.</li>
+</ul>
+<p>Dieser Fallback ist funktional schlechter, darf aber nicht zu einer unkontrollierten Breaking Change im Live-Server führen.</p>
+<h2 id="21-entscheidungsbaum-fur-anderungen">21. Entscheidungsbaum für Änderungen</h2>
+<div class="highlight"><pre><span></span><code>Ändert sich nur die Serverimplementierung,
+ohne den veröffentlichten Vertrag zu verändern?
+  |
+  +-- Ja -&gt; nur Server-Build deployen; alle Contract-Tests ausführen
+  |
+  +-- Nein
+        |
+        v
+Ist die Änderung rückwärtskompatibel?
+  |
+  +-- Ja
+  |     |
+  |     +-- reine Korrektur -&gt; PATCH derselben Plugin-Identität
+  |     +-- neue Fähigkeit  -&gt; MINOR derselben Plugin-Identität
+  |
+  +-- Nein
+        |
+        v
+Kann und soll der alte Vertrag dauerhaft erhalten bleiben?
+  |
+  +-- Ja -&gt; additive Ersatztools/-ressourcen innerhalb der Linie
+  |
+  +-- Nein -&gt; neue Plugin-Major-Identität, Parallelbetrieb,
+              Migration, Unpublish, Delete und Rückbau der alten Linie
+</code></pre></div>
+<h2 id="22-quellenbasis">22. Quellenbasis</h2>
+<p><strong>[OAI-1] OpenAI Developers – Submit plugins</strong><br />
+https://developers.openai.com/plugins/deploy/submission</p>
+<p><strong>[OAI-2] OpenAI Developers – MCP server review requirements</strong><br />
+https://developers.openai.com/plugins/deploy/app-review</p>
+<p><strong>[OAI-3] OpenAI Developers – Plugin submission errors</strong><br />
+https://developers.openai.com/plugins/deploy/submission-errors</p>
+<p><strong>[OAI-4] OpenAI Developers – Plugin UI reference</strong><br />
+https://developers.openai.com/plugins/reference</p>
+<p><strong>[OAI-5] OpenAI Developers – Add UI to your MCP server</strong><br />
+https://developers.openai.com/plugins/build/chatgpt-ui</p>
+<p><strong>[OAI-6] OpenAI Developers – Build skills</strong><br />
+https://developers.openai.com/plugins/build/skills</p>
+<p><strong>[DISC-1] OpenAI Developer Community – Should each breaking major version use a separate plugin identity?</strong><br />
+https://community.openai.com/t/should-each-breaking-major-version-use-a-separate-plugin-identity/1388515</p>
+<hr />
+<p><strong>Pflegehinweis:</strong> Dieses Dokument ist zu aktualisieren, sobald OpenAI eine offizielle Antwort zum Parallelbetrieb versionierter Schwester-Plugins, zur Nachfolgermigration oder zum Verhalten von Unpublish/Delete veröffentlicht. Änderungen an der zentralen Major-Identitätsstrategie benötigen eine neue Architekturentscheidung.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

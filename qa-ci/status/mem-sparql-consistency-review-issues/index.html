@@ -1,0 +1,4576 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/qa-ci/status/mem-sparql-consistency-review-issues/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>MEM SPARQL Consistency Review Issues - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mem-sparql-consistency-review-issues" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MEM SPARQL Consistency Review Issues
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#highest-signal-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Highest Signal Checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-triage-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Triage Queue
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Triage Queue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#possible-real-gap-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        possible real gap (2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-passage-only-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        local passage only (6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-scope-mismatch-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        source scope mismatch (10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notationformula-representation-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        notation/formula representation (14)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#granularity-mismatch-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        granularity mismatch (17)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-extraction-artifact-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        local extraction artifact (0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mem-availability-watch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MEM Availability Watch
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="mem-sparql-consistency-review-issues">MEM SPARQL Consistency Review Issues</h1>
+<blockquote>
+<p>Generated artifact. Do not edit manually.</p>
+<p>Generated by: <code>app/scripts/generateMemSparqlConsistencyAudit.ts</code>
+Regenerate with: <code>cd app &amp;&amp; npm run quality:mem-sparql-consistency</code>
+Source of truth: <code>curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json</code>
+Source of truth: <code>curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.review.jsonl</code></p>
+</blockquote>
+<p>Generated: 2026-06-01T21:02:15.040Z
+Endpoint: https://sparql.mem.edufeed.org/sparql
+Source audit: <code>docs/qa-ci/status/mem-sparql-consistency-audit.md</code></p>
+<p>This generated file is a human work queue derived from the MEM consistency audit. It is not a decision ledger and should not be edited as source of truth.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Scope: Mathematik / Gymnasium</li>
+<li>Concrete comparisons: 2</li>
+<li>Raw review issues: 87</li>
+<li>Text triage items: 49</li>
+<li>MEM availability watch items: 14</li>
+<li>Endpoint or vocabulary watch items: 0</li>
+<li>Open items after ledger: 63</li>
+<li>Decided items in ledger: 0</li>
+<li>Stale ledger reviews: 0</li>
+<li>Review ledger: <code>curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.review.jsonl</code></li>
+<li>Ledger records: 0 total, 0 current, 0 stale, 0 unknown, 0 duplicate</li>
+</ul>
+<h2 id="highest-signal-checks">Highest Signal Checks</h2>
+<ul>
+<li>[ ] <code>triage-6dd2f119513e</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>low</code>, similarity 0.000</li>
+<li>MEM: Division</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-24943</li>
+<li>Review note: PoC probe on 2026-06-01: a constrained MEM query places this as an intermediate node under <code>Beherrschen der Grundrechenarten für natürliche Zahlen</code>; the local Sachsen extraction already contains <code>Umkehrung der Multiplikation</code> plus the related division routines in the same source passage. Treat as wording/granularity review, not as an automatic source gap.</li>
+<li>Review action: Compare against the official source and MEM; create a follow-up if this is a source-version or MEM coverage gap.</li>
+<li>[ ] <code>triage-a3e85d9ef77a</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>low</code>, similarity 0.000</li>
+<li>Local: Bogenlängen</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review note: PoC probe on 2026-06-01: the local Sachsen LK extraction contains <code>Bogenlängen</code> as an official subitem row in Integralrechnung at source line 2746. A constrained MEM query over the Sachsen Gymnasium Mathematik plan did not find an exact <code>Bogenlängen</code> label; it only found <code>Grad- und Bogenmaß</code> for the broader Bogen search. Treat as MEM/source-version coverage feedback candidate.</li>
+<li>Review action: Compare against the official source and MEM; create a follow-up if this is a source-version or MEM coverage gap.</li>
+</ul>
+<h2 id="text-triage-queue">Text Triage Queue</h2>
+<h3 id="possible-real-gap-2">possible real gap (2)</h3>
+<p>Compare against the official source and MEM; create a follow-up if this is a source-version or MEM coverage gap.</p>
+<ul>
+<li>[ ] <code>triage-6dd2f119513e</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>low</code>, similarity 0.000</li>
+<li>MEM: Division</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-24943</li>
+<li>Review note: PoC probe on 2026-06-01: a constrained MEM query places this as an intermediate node under <code>Beherrschen der Grundrechenarten für natürliche Zahlen</code>; the local Sachsen extraction already contains <code>Umkehrung der Multiplikation</code> plus the related division routines in the same source passage. Treat as wording/granularity review, not as an automatic source gap.</li>
+<li>Review action: Compare against the official source and MEM; create a follow-up if this is a source-version or MEM coverage gap.</li>
+<li>[ ] <code>triage-a3e85d9ef77a</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>low</code>, similarity 0.000</li>
+<li>Local: Bogenlängen</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review note: PoC probe on 2026-06-01: the local Sachsen LK extraction contains <code>Bogenlängen</code> as an official subitem row in Integralrechnung at source line 2746. A constrained MEM query over the Sachsen Gymnasium Mathematik plan did not find an exact <code>Bogenlängen</code> label; it only found <code>Grad- und Bogenmaß</code> for the broader Bogen search. Treat as MEM/source-version coverage feedback candidate.</li>
+<li>Review action: Compare against the official source and MEM; create a follow-up if this is a source-version or MEM coverage gap.</li>
+</ul>
+<h3 id="local-passage-only-6">local passage only (6)</h3>
+<p>Decide whether the local extraction should emit a standalone source goal or keep this as passage-only context.</p>
+<ul>
+<li>[ ] <code>triage-71e50486e83b</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: Abstände</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26287</li>
+<li>Local: Jahrgangsstufen 11/12 - Grundkurs: Lernbereich 7 - Abstände und Winkel: - Beherrschen des Ermittelns von Abständen und Winkeln - Skalarprodukt und Vektorprodukt einschließlich ihrer geometrisch...</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether the local extraction should emit a standalone source goal or keep this as passage-only context.</li>
+<li>[ ] <code>triage-72396f73c7b3</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: Sierpinski-Dreieck</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26580</li>
+<li>Local: Jahrgangsstufen 11/12 - Leistungskurs: Wahlbereich 3 - Dynamische Systeme und fraktale Strukturen: ...- Einblick gewinnen in fraktale Strukturen - fraktale Strukturen in der Natur - Sierpinski-Dreieck Selbstähnlichkeit - Feigenbaum-Diagramm Attraktoren, Chaos</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether the local extraction should emit a standalone source goal or keep this as passage-only context.</li>
+<li>[ ] <code>triage-982a5ffdd3ed</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: Lösen linearer Gleichungssysteme</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26421</li>
+<li>Local: Jahrgangsstufen 11/12 - Grundkurs: Lernbereich 2 - Matrizen: - Kennen der Verwendung von Matrizen beim Darstellen und Lösen linearer Gleichungssysteme - Darstellen linearer Gleichungssysteme in Matrizenschreibweise - Multipliziere...</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether the local extraction should emit a standalone source goal or keep this as passage-only context.</li>
+<li>[ ] <code>triage-c5fd709c7e51</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: Formel von Simpson</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26621</li>
+<li>Local: Jahrgangsstufen 11/12 - Leistungskurs: Wahlbereich 5 - Numerische Integrationsverfahren: ...pproximation des Integranden durch Polynome 2. Grades - Kepler’sche Fassregel - Formel von Simpson Einblicke gewinnen in den Vergleich verschiedener iterativer Verfahren anhand a...</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether the local extraction should emit a standalone source goal or keep this as passage-only context.</li>
+<li>[ ] <code>triage-c8e96f9d85e7</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: Feigenbaum-Diagramm</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26584</li>
+<li>Local: Jahrgangsstufen 11/12 - Leistungskurs: Wahlbereich 3 - Dynamische Systeme und fraktale Strukturen: ...ren - fraktale Strukturen in der Natur - Sierpinski-Dreieck Selbstähnlichkeit - Feigenbaum-Diagramm Attraktoren, Chaos</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether the local extraction should emit a standalone source goal or keep this as passage-only context.</li>
+<li>[ ] <code>triage-d3a4d1a06ed0</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: Abstände</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26524</li>
+<li>Local: Jahrgangsstufen 11/12 - Grundkurs: Lernbereich 7 - Abstände und Winkel: - Beherrschen des Ermittelns von Abständen und Winkeln - Skalarprodukt und Vektorprodukt einschließlich ihrer geometrisch...</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether the local extraction should emit a standalone source goal or keep this as passage-only context.</li>
+</ul>
+<h3 id="source-scope-mismatch-10">source scope mismatch (10)</h3>
+<p>Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</p>
+<ul>
+<li>[ ] <code>triage-34562d318990</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Entwickeln des Anschauungsvermögens: Die Schüler nutzen Vektoren zur Veranschaulichung und Beschreibung geometrischer Objekte in Ebene und Raum. Sie stellen räumliche Objekte im dreidimensionalen Koordinatensystem dar und verwenden dazu auch geeignete Software. Das Anschauungsvermögen der Schüler erreicht eine Ausprägung, die Einsicht in komplexere Zusammen…</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+<li>[ ] <code>triage-38529a41b84c</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Erwerben grundlegender Kompetenzen im Umgang mit ausgewählten mathematischen Objekten: Die Schüler gelangen zu vertieften Einsichten bezüglich der zentralen mathematischen Begriffe Grenz- wert, Ableitung und bestimmtes Integral. Sie wenden Regeln der Differential- und Integralrechnung auf ausgewählte Funktionen an. Die Schüler unterscheiden Lösbarkeitsfälle…</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+<li>[ ] <code>triage-553eef945551</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Entwickeln von Problemlösefähigkeiten: Die Schüler wenden die neu erworbenen Kenntnisse der Differential- und Integralrechnung, der Vektor- rechnung und analytischen Geometrie sowie der Wahrscheinlichkeitsrechnung und Statistik auf komple- xere und realitätsnahe Problemstellungen an. Sie übertragen insbesondere ihre Fähigkeiten im Mathema- tisieren und Mode…</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+<li>[ ] <code>triage-5b687cb319c3</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Entwickeln eines kritischen Vernunftgebrauchs: Die Schüler werten kritisch die Eignung von Modellen, Verfahren sowie Hilfsmitteln. Sie berücksichtigen die Genauigkeit implementierter Routinen im GTR bzw. in mathematischer Software. Die Schüler finden Begründungen zunehmend selbstständig. Sie unterscheiden zwischen notwendigen und hinreichenden Bedingungen.</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+<li>[ ] <code>triage-65f8e51436de</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Entwickeln eines kritischen Vernunftgebrauchs: Die Schüler werten kritisch die Eignung von Modellen, Verfahren sowie Hilfsmitteln. Sie schätzen ein, ob eine Näherungslösung oder eine algebraisch exakte Lösung in der jeweiligen Situation verwendet werden sollte, berücksichtigen die Genauigkeit implementierter Routinen im GTR bzw. in mathematischer Soft- ware…</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+<li>[ ] <code>triage-cb66d7fda8d8</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Entwickeln von Problemlösefähigkeiten: Die Schüler wenden die neu erworbenen Kenntnisse der Differential- und Integralrechnung, der Vektor- rechnung und analytischen Geometrie sowie der Wahrscheinlichkeitsrechnung und Statistik auf komple- xere und realitätsnahe Problemstellungen an. Sie übertragen insbesondere ihre Fähigkeiten im Mathema- tisieren und Mode…</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+<li>[ ] <code>triage-cf69b36899f8</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Entwickeln des Anschauungsvermögens: Die Schüler nutzen Vektoren zur Veranschaulichung und Beschreibung geometrischer Objekte in Ebene und Raum. Sie stellen räumliche Objekte im dreidimensionalen Koordinatensystem dar und verwenden dazu auch geeignete Software. Die Schüler stellen Beziehungen zwischen dem Graphen einer Funktion und dem der zugehörigen Ablei…</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+<li>[ ] <code>triage-d5774893b6e1</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Entwickeln des verständigen Umgangs mit der fachgebundenen Sprache unter Bezug und Ab- grenzung zur alltäglichen Sprache: Die Schüler verstehen, reflektieren und nutzen Texte mit dem Ziel, eigenes Wissen weiter zu entwickeln und neues Wissen zu erwerben. Komplexe mathematische Texte zu einem vorgegebenen Thema gestal- ten sie weitgehend selbstständig und si…</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+<li>[ ] <code>triage-db88e12265b6</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Entwickeln des verständigen Umgangs mit der fachgebundenen Sprache unter Bezug und Ab- grenzung zur alltäglichen Sprache: Die Schüler verstehen, reflektieren und nutzen Texte mit dem Ziel, eigenes Wissen weiter zu entwickeln und neues Wissen zu erwerben. Sie beschreiben komplexe Lösungspläne und sind in der Lage, ma- thematische Sachverhalte unter Nutzung z…</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+<li>[ ] <code>triage-fe00cf968753</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>local_only</code>, confidence <code>high</code>, similarity 0.000</li>
+<li>Local: Erwerben grundlegender Kompetenzen im Umgang mit ausgewählten mathematischen Objekten: Die Schüler gewinnen inhaltliches Verständnis von den Begriffen Grenzwert, erste Ableitung und be- stimmtes Integral. Sie wenden Kenntnisse der Differential- und Integralrechnung auf ausgewählte Funktionen an und nutzen beim Lösen von Aufgaben Rechenhilfsmittel sachgerech…</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Decide whether broad stage-level source prose should be excluded from direct MEM text matching or mapped at scope level.</li>
+</ul>
+<h3 id="notationformula-representation-14">notation/formula representation (14)</h3>
+<p>Check equivalence and either improve notation normalization or clean the local source extraction.</p>
+<ul>
+<li>[ ] <code>triage-2f116e1d44fd</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: dy = k·G-y·dx (beschränktes Wachstum)</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26329</li>
+<li>Local: dy  k  (G  y )  dx (beschränktes Wachstum)</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-56ed52cfaede</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: dy = k·y·G-y·dx (logistisches Wachstum)</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26639</li>
+<li>Local: dy  k  y  (G  y )  dx (logistisches Wachstum)</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-7f64d14da45f</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: dy = k·G-y·dx (beschränktes Wachstum)</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26644</li>
+<li>Local: dy  k  G  y   dx (beschränktes Wachstum)</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-d77fd7d3c691</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 1.000</li>
+<li>MEM: Einfluss von Parametern auf den Verlauf der Graphen und auf die Eigenschaften der Funktionen für die Fälle c·fx; fx+c; fx+c; fc·x</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25924</li>
+<li>Local: Einfluss von Parametern auf den Verlauf der Graphen und auf die Eigenschaften der Funktionen für die Fälle c  f ( x ); f ( x )  c; f ( x  c ); f (</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-024c52484a9d</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Ermitteln von Integralen mit und ohne Hilfsmittel</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26468</li>
+<li>Local: Ermitteln von Integralen mit und ohne Hilfsmittel ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, Funktionen, die mittels linearer Substitution integriert werden können,  e dx;  x dx;  sin x dx x</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-071752327759</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Beherrschen charakteristischer Eigenschaften und des Verlaufs der Graphen der Funktionen</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25958</li>
+<li>Local: Beherrschen charakteristischer Eigenschaften und des Verlaufs der Graphen der Funktionen y  x; y  x 2; y  x; y ; x y  ln x; y  e x; y  sin x ohne Verwendung von Hilfsmitteln</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-1d35af9b66a4</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Übertragen des Wissens zu speziellen Funktionen auf Verknüpfungen und Verkettungen von Funktionen</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25954</li>
+<li>Local: Übertragen des Wissens zu speziellen Funktionen auf Verknüpfungen und Verkettungen von Funktionen Verknüpfung der Funktionen y  sin x und y  cos x zu y  tan x</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-c98e76ef6a38</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Ermitteln von Integralen mit und ohne Hilfsmittel</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26264</li>
+<li>Local: Ermitteln von Integralen mit und ohne Hilfsmittel ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten sowie  e dx;  x dx;  sin x dx x</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-e1b2842bbd48</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.800</li>
+<li>MEM: ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten sowie ∫ex dx; ∫1xdx; ∫sin x dx</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26265</li>
+<li>Local: ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, f ( x )  e x, f ( x )  ln x f ( x )  sin x einfache Verkettungen und Verknüpfungen</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-762ffbf0850c</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: ohne Verwendung von Hilfsmitteln</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25961</li>
+<li>Local: Beherrschen charakteristischer Eigenschaften und des Verlaufs der Graphen der Funktionen y  x; y  x 2; y  x; y ; x y  ln x; y  e x; y  sin x ohne Verwendung von Hilfsmitteln</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-5944c6878927</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 0.897</li>
+<li>MEM: ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, Funktionen, die mittels linearer Substitution integriert werden können, ∫ex dx; ∫1xdx; ∫sin x dx</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26474</li>
+<li>Local: Ermitteln von Integralen mit und ohne Hilfsmittel ohne Hilfsmittel: ganzrationale Funktionen, Potenzfunktionen mit rationalen Exponenten, Funktionen, die mittels linearer Substitution integriert werden können,  e dx;  x dx;  sin x dx x</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-8a9c39983cf6</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>medium</code>, similarity 0.000</li>
+<li>MEM: y=x ; y=x2 ; y=x ; y=1x;</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25959</li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-c3e30407aab1</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>medium</code>, similarity 0.000</li>
+<li>MEM: Verknüpfung der Funktionen y=sin x und y=cos x zu y=tan x</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25955</li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+<li>[ ] <code>triage-ff316bf22057</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>medium</code>, similarity 0.000</li>
+<li>MEM: y=ln x ; y=ex ; y=sin x</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25960</li>
+<li>Review action: Check equivalence and either improve notation normalization or clean the local source extraction.</li>
+</ul>
+<h3 id="granularity-mismatch-17">granularity mismatch (17)</h3>
+<p>Check whether MEM and local extraction split or combine the same source content differently.</p>
+<ul>
+<li>[ ] <code>triage-6d357d3cf5ba</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.933</li>
+<li>MEM: Finden von Gleichungen für Messreihen mithilfe linearer Regression mit CAS oder TK</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25751</li>
+<li>Local: Finden von Gleichungen für Messreihen mithilfe linearer Regression mit GTR, CAS oder TK</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-0605e74e9c23</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.923</li>
+<li>MEM: Kennen des Umsetzens einfacher Algorithmen in der Programmierebene des CAS unter Verwendung der allgemeinen Grundstrukturen Sequenz, Verzweigung und Zyklus</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25798</li>
+<li>Local: Kennen des Umsetzens einfacher Algorithmen in der Programmierebene des GTR unter Verwendung der allgemeinen Grundstrukturen Sequenz, Verzweigung und Zyklus</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-79ed32993f6a</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.909</li>
+<li>MEM: grafisches Lösen quadratischer Gleichungen sowie Lösen mit CAS</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25854</li>
+<li>Local: grafisches Lösen quadratischer Gleichungen sowie Lösen mit GTR oder CAS</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-14d07d53ef47</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: inhaltlich im Kopf: einfache Gleichungen mit überschaubarem Zahlenmateria</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25472</li>
+<li>Local: inhaltlich im Kopf: einfache Gleichungen mit überschaubarem Zahlenmaterial</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-3041da890e40</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Definitions- und Wertebereich, lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, achsenparallele Asymptoten</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26034</li>
+<li>Local: lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, achsenparallele Asymptoten</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-3064363a2d6f</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Selbstähnlichkeit</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26582</li>
+<li>Local: Sierpinski-Dreieck Selbstähnlichkeit</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-4deae0299e4e</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Definitions- und Wertebereich, lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, Asymptoten</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26406</li>
+<li>Local: lokale und globale Extrema, Wendepunkte, Nullstellen, Polstellen, Monotonie, Symmetrie, Asymptoten</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-8ab08e939756</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Lösen linearer Gleichungssysteme</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26239</li>
+<li>Local: Lösen linearer Gleichungssysteme mittels Gauß-Jordan-Verfahren</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-9040cadb7721</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Beherrschen des Darstellens, Vergleichens und Ordnens rationaler Zahlen</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25384</li>
+<li>Local: Beherrschen des Darstellens, Vergleichens und Ordnens rationaler Zahlen Darstellen der Beziehungen zwischen natürlichen, gebrochenen, ganzen und rationalen Zahlen im Mengendiagramm</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-cd40326a8f63</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Attraktoren, Chaos</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26585</li>
+<li>Local: Feigenbaum-Diagramm Attraktoren, Chaos</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-f507f0f16db9</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Einblicke gewinnen in den Vergleich verschiedener iterativer Verfahren anhand ausgewählter Beispiele</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26625</li>
+<li>Local: Formel von Simpson Einblicke gewinnen in den Vergleich verschiedener iterativer Verfahren anhand ausgewählter Beispiele</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-4cf280259b8c</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.857</li>
+<li>MEM: mit CAS: kompliziertere Koeffizienten</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25764</li>
+<li>Local: mit GTR oder CAS: kompliziertere Koeffizienten</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-92028a99ecf4</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.833</li>
+<li>MEM: Nutzen von CAS-Programmen oder geeigneter Software zur Simulation</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25818</li>
+<li>Local: Nutzen von GTR-Programmen oder geeigneter Software zur Simulation</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-c370d3db8f3b</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.727</li>
+<li>MEM: Kennen der Simulation mit Zufallszahlen (Monte-Carlo-Methode)</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25811</li>
+<li>Local: Kennen der Simulation mit Zufallszahlen (MonteCarlo-Methode)</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-302b8b8b4ea9</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>paired</code>, confidence <code>high</code>, similarity 0.667</li>
+<li>MEM: Kennen unterschiedlicher optischer Täuschungen</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25263</li>
+<li>Local: Kennen unterschiedlicher optischer Täuschun- m gen S</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-6c6db62fea60</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Integralfunktion, Hauptsatz der Differential- und Integralrechnung</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-26481</li>
+<li>Local: Hauptsatz der Differential- und Integralrechnung</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+<li>[ ] <code>triage-909bb74bfe15</code> Sachsen Mathematik Gymnasium Lehrplan 2019 (DE-SN), <code>mem_only</code>, confidence <code>high</code>, similarity 0.900</li>
+<li>MEM: Darstellen der Beziehungen zwischen natürlichen, gebrochenen, ganzen und rationalen Zahlen im Mengendiagramm</li>
+<li>MEM ref: https://lp-sachsen.org/resource/lernziel-lerninhalt-25388</li>
+<li>Local: Beherrschen des Darstellens, Vergleichens und Ordnens rationaler Zahlen Darstellen der Beziehungen zwischen natürlichen, gebrochenen, ganzen und rationalen Zahlen im Mengendiagramm</li>
+<li>Local ref: <code>Lehrplan Gymnasium Mathematik, Sachsen, 2019</code></li>
+<li>Review action: Check whether MEM and local extraction split or combine the same source content differently.</li>
+</ul>
+<h3 id="local-extraction-artifact-0">local extraction artifact (0)</h3>
+<p>Fix the local source extraction if this is still active source text noise.</p>
+<p>No items.</p>
+<h2 id="mem-availability-watch">MEM Availability Watch</h2>
+<ul>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-04568bf479ca</code> DE-TH: Thüringen: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 545 source goals for Thüringen. The MEM endpoint currently exposes the state vocabulary, but no Thüringen SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-04eaafe7b0a9</code> DE-HB: Bremen: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 531 source goals for Bremen. The MEM endpoint currently exposes the state vocabulary, but no Bremen SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-23f2c417c05d</code> DE-NI: Niedersachsen: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 581 source goals for Niedersachsen. The MEM endpoint currently exposes the state vocabulary, but no Niedersachsen SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-411f6f626b43</code> DE-SL: Saarland: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 1561 source goals for Saarland. The MEM endpoint currently exposes the state vocabulary, but no Saarland SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-433c221727d9</code> DE-RP: Rheinland-Pfalz: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 445 source goals for Rheinland-Pfalz. The MEM endpoint currently exposes the state vocabulary, but no Rheinland-Pfalz SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-4dd84fd1d114</code> DE-BW: Baden-Württemberg: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 499 source goals for Baden-Württemberg. The MEM endpoint currently exposes the state vocabulary, but no Baden-Württemberg SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-654e6484d2ee</code> DE-HE: Hessen: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 917 source goals for Hessen. The MEM endpoint currently exposes the state vocabulary, but no Hessen SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-969ba3a5c24c</code> DE-NW: Nordrhein-Westfalen: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 442 source goals for Nordrhein-Westfalen. The MEM endpoint currently exposes the state vocabulary, but no Nordrhein-Westfalen SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-97302e81cbef</code> DE-HH: Hamburg: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 626 source goals for Hamburg. The MEM endpoint currently exposes the state vocabulary, but no Hamburg SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-a314cbac7646</code> DE-ST: Sachsen-Anhalt: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 612 source goals for Sachsen-Anhalt. The MEM endpoint currently exposes the state vocabulary, but no Sachsen-Anhalt SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-a57f6bde5a04</code> DE-SH: Schleswig-Holstein: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 620 source goals for Schleswig-Holstein. The MEM endpoint currently exposes the state vocabulary, but no Schleswig-Holstein SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-a77dc312361a</code> DE-MV: Mecklenburg-Vorpommern: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 588 source goals for Mecklenburg-Vorpommern. The MEM endpoint currently exposes the state vocabulary, but no Mecklenburg-Vorpommern SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-cb7d88d22353</code> DE-BB: Brandenburg: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 485 source goals for Brandenburg. The MEM endpoint currently exposes the state vocabulary, but no Brandenburg SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+<li>[ ] <code>mem_curriculum_missing_for_local_source-f36e1325f6cb</code> DE-BE: Berlin: local mathematics source extraction exists, but MEM has no matching curriculum plans</li>
+<li>Details: Local SkillPilot source extraction has 2 file(s) and 484 source goals for Berlin. The MEM endpoint currently exposes the state vocabulary, but no Berlin SekI/SekII curriculum plan matching Mathematik/Gymnasium.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

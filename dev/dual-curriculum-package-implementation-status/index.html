@@ -1,0 +1,5955 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/dev/dual-curriculum-package-implementation-status/">
+      
+      
+        <link rel="prev" href="../canonical-gymnasium-chemistry-bundeslaender-status/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Dual Curriculum Package Implementation Status - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dual-curriculum-package-implementation-status" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dual Curriculum Package Implementation Status
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#auf-einen-blick" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auf einen Blick
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-008d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-008d
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-008c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-008c
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-008b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-008b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-008a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-008a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-007a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-007a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-005a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-005a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-005b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-005b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-c
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-d
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-e
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-f
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-007" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-007
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-004b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-004b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-004a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-004a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-schritt-dpk-003" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Schritt: DPK-003
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-schritt-dpk-002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Schritt: DPK-002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-schritt-dpk-001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Schritt: DPK-001
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erreicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erreicht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verbleibende-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verbleibende Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qualitatsnachweise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qualitätsnachweise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pflege-und-commit-konvention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pflege- und Commit-Konvention
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#auf-einen-blick" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auf einen Blick
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-008d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-008d
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-008c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-008c
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-008b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-008b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-008a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-008a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-007a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-007a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-005a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-005a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-005b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-005b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-c
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-d
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-e
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-006c-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-006c-f
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-007" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-007
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-004b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-004b
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-teilschritt-dpk-004a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Teilschritt: DPK-004a
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-schritt-dpk-003" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Schritt: DPK-003
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-schritt-dpk-002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Schritt: DPK-002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgeschlossener-schritt-dpk-001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgeschlossener Schritt: DPK-001
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erreicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erreicht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verbleibende-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verbleibende Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qualitatsnachweise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qualitätsnachweise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pflege-und-commit-konvention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pflege- und Commit-Konvention
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="dual-curriculum-package-implementation-status">Dual Curriculum Package Implementation Status</h1>
+<ul>
+<li>Stand: 2026-07-11</li>
+<li>Zielbild: <a href="../../concept/skill-graph/dual-curriculum-package-releases/">Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie</a></li>
+<li>Aktive Phase: keine; <code>P2</code> ist abgeschlossen, <code>P3</code> noch nicht begonnen</li>
+<li>Nächster Umsetzungsschritt: <code>DPK-009 – semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar</code></li>
+<li>Letzter vollständig abgeschlossener Schritt: <code>DPK-008d – isolierter Reverse Compiler zum installierbaren JSON-Runtime-ZIP</code></li>
+<li>Solider Ausgangsstand: <code>DPK-008d</code></li>
+<li>Abschluss-Gate für DPK-008d: korrigierte eindeutige Placement-Identitäten, 31 Reverse-Compiler-Garantien, 21 Hermetik-Garantien, 53 Vertragsmutationen plus 6 Raw-JSON-Fälle und 10 konsistent neu gehashte Evidenzangriffe, realer isolierter Doppelbuild, unabhängige Full-Package-Validierung und <code>./run_ci.sh</code> grün</li>
+<li>Technische Blocker: keine</li>
+<li>Public-Release-Gates: <a href="../../qa-ci/curriculum-package-human-review-gates/">konkrete menschliche Reviewliste</a></li>
+</ul>
+<p>Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdokument bleibt die Quelle für Zielarchitektur und endgültige Abnahmekriterien; Git-Historie und CI-Artefakte ersetzen ein langes Umsetzungstagebuch.</p>
+<p>DPK-008d wurde mit einem direkten gehärteten Real-Doppelbuild gegen das finale 18/18-FWU-Receipt, dem externen Reverse-Reportvalidator, install/verify des rekonstruierten Pakets und dem vollständigen <code>./run_ci.sh</code> abgeschlossen. Der vollständige äußere Wrapper bleibt der dokumentierte Release-Befehl; sein bereits attestierter DPK-008c/HermiT-Vorlauf wurde für diesen Abschluss nicht unnötig wiederholt.</p>
+<h2 id="auf-einen-blick">Auf einen Blick</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Angestrebtes Ergebnis</th>
+<th>Status</th>
+<th>Nächster Gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell</td>
+<td><code>complete</code></td>
+<td>abgeschlossen</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>JSON-Paket als hermetischer SkillPilot-Runtime-Input</td>
+<td><code>complete</code></td>
+<td>abgeschlossen</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler</td>
+<td><code>complete</code></td>
+<td>abgeschlossen</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>Gemeinsamer <code>contentDigest</code> und Dual-Release-Gate</td>
+<td><code>not_started</code></td>
+<td>DPK-009: Normalformen, Variantenpaar und Manipulationsnachweise zusammenführen</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>Generalisierung über Mathematik hinaus</td>
+<td><code>not_started</code></td>
+<td>Physik und ein sprachliches Fach bestehen</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>Signierter Package-Betrieb und Veröffentlichungskatalog</td>
+<td><code>not_started</code></td>
+<td>atomare Stable-Promotion und Rollback</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>Trennung von Curriculum-Erstellung und SkillPilot-Software</td>
+<td><code>not_started</code></td>
+<td>Software benötigt keinen produktiven Curriculum-Quellbaum</td>
+</tr>
+</tbody>
+</table>
+<p>Statuswerte: <code>not_started</code>, <code>in_progress</code>, <code>complete</code>, <code>blocked</code>, <code>deferred</code>. Es ist höchstens ein Schritt gleichzeitig <code>in_progress</code>.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-008d">Abgeschlossener Teilschritt: DPK-008d</h2>
+<p>DPK-008d rekonstruiert aus dem fertig validierten FWU-OWL-Paket ein installierbares <code>full-standalone-v1</code>-JSON-Paket, ohne das Original-JSON, den Authoring-Checkout oder den TypeScript-Vorwärtsexporter zu lesen. Der eigenständige Python-Compiler streamt die acht behaupteten N-Triples-Segmente in einen SQLite-Index, invertiert ausschließlich die gepinnte 454-Einträge-Feldregistry, regeneriert paketmechanische Metadaten und übernimmt Binärressourcen erst nach Pfad-, Längen- und Hashprüfung. Alle 111 logischen Artefakte bestehen den normalisierten Hash-Oracle; die 757 Bilddateien sind byteidentisch.</p>
+<p>Der erste echte Reverse-Oracle-Lauf hat dabei eine reale Vorwärts-Kollision sichtbar gemacht: Placement-IRIs verwendeten das nicht existente Feld <code>programUnitId</code> und konnten mehrere Placements desselben Goals zusammenfallen lassen. Die Identität ist jetzt eindeutig als <code>goalId@unitId@index</code> definiert. Ein Regressionstest bindet zwei Placements desselben Goals in derselben Unit an getrennte IRIs und bewahrt ihre unterschiedlichen Kontexte. Das daraus neu erzeugte FWU-Paket wurde vollständig durch den unabhängigen 18-Gate-Validator revalidiert.</p>
+<p>Weitere beim realen Rückweg geschlossene Semantikgrenzen sind:</p>
+<ul>
+<li>Registry-typisierte Dezimalzahlen werden als endliche JSON-Zahlen und explizite <code>null</code>-Werte als <code>null</code> rekonstruiert; Text, Zahl, fehlend und <code>null</code> werden nicht vermischt.</li>
+<li>Externe Ressourcen bleiben bewusst ohne <code>artifactPath</code>; nur <code>delivery: embedded</code> verlangt einen eindeutig gebundenen Binärsidecar.</li>
+<li>Singleton-Artefakte erhalten ihre standardisierten Paketpfade auch dann, wenn die Dependency Closure sie nicht als normale Definition wiederholt. Eine redundante exakt gleiche Closure-Bindung ist zulässig, ein abweichender Singleton-Pfad scheitert fail-closed.</li>
+</ul>
+<p>Der reale Rekonstruktionsstand ist:</p>
+<table>
+<thead>
+<tr>
+<th>Merkmal</th>
+<th>Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validiertes FWU-OWL-Input-ZIP</td>
+<td>2.362.455.128 Byte; SHA-256 <code>abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94</code></td>
+</tr>
+<tr>
+<td>FWU-OWL-Manifest</td>
+<td>SHA-256 <code>29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3</code>; 824.452 Tripel</td>
+</tr>
+<tr>
+<td>rekonstruiertes JSON-ZIP</td>
+<td>1.737.571.471 Byte; SHA-256 <code>7dcd233dd495900f6d6bd971ff6e86bdcdcfe5701f3522ed480be8336de23195</code></td>
+</tr>
+<tr>
+<td>rekonstruiertes JSON-Manifest</td>
+<td>SHA-256 <code>8d7970435431ff78743d0bf413a54bbebee009bbaafe35f1283ebcb89b4f2ff0</code></td>
+</tr>
+<tr>
+<td>rekonstruiertes Inventar</td>
+<td>911 ZIP-Einträge; 909 Manifestrecords; 910 Checksummenzeilen; 111 logische Artefakte</td>
+</tr>
+<tr>
+<td>Binärressourcen</td>
+<td>757 Dateien; 1.696.390.279 Byte; byteidentisch zum FWU-Paket</td>
+</tr>
+<tr>
+<td>gemeinsamer Inhalt</td>
+<td><code>sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101</code></td>
+</tr>
+</tbody>
+</table>
+<p>Der Hermetik-Runner öffnet Input, Validierungsreceipt, Compiler, Sandbox-Entry und unabhängigen Full-Package-Validator über stabile no-follow Deskriptoren. Zwei getrennte <code>bubblewrap --clearenv</code>-Läufe starten ohne Host-Root und sehen nur Input, gepinnte Werkzeuge sowie begrenzte, root-eigene read-only Python-/Native-Library-Wurzeln. Python läuft mit <code>-I -S</code>; Netzwerk und Hostdaten fehlen. Der hostseitige <code>strace</code>-Prozess ist für Sandbox-<code>/proc</code> unsichtbar; der Report bindet Rawtrace, den daraus abgeleiteten Entry/Core-Teilbaum und das Prozessbaummanifest. Die tatsächlich geöffneten Runtime-Dateien, Python-/Tracer-ELF-Interpreter und die rekursive <code>DT_NEEDED</code>-Closure werden aus dem Liveprozess abgeleitet und erneut gehasht. Beide Läufe erzeugen dasselbe JSON-ZIP bytegenau und jedes Ergebnis besteht den unabhängigen Validator v2. Der externe Reverse-Report bindet zusätzlich Runner, Sandbox-Entry, Tools, Outputs und ein exaktes 20-Dateien-Evidenzinventar über beide Läufe. Der externe Validator leitet den gefilterten Trace und alle Netzwerk-, Forbidden-Read- und Runtime-Closure-Befunde erneut aus dem Rawtrace ab, parst alle verschachtelten Receipts und öffnet ZIP, Manifest, Checksummen und Semantic Content Index erneut. Sein Vertragsgate umfasst eine gültige und zwei ehrliche frühe Fixtures, 53 semantische Mutationen, 6 Raw-JSON-Angriffe und 10 konsistent neu gehashte Evidenzangriffe.</p>
+<p>Damit ist P2 beendet. DPK-009 ist noch nicht begonnen; der nächste Schritt verwendet Original- und rekonstruiertes JSON erstmals gemeinsam als nachgelagerte Oracles, erzeugt den normativen Äquivalenzreport und beweist zwei vollständige reproduzierbare Variantenpaare.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-008c">Abgeschlossener Teilschritt: DPK-008c</h2>
+<p>DPK-008c validiert das fertige FWU-OWL-ZIP ausschließlich aus veröffentlichten Bytes und Repository-Trust-Roots, ohne Import des Exporters. ZIP, Quell-JSON, Reproduzierbarkeits-Peer, ROBOT und Evidenz werden über no-follow Dateideskriptoren, vollständige Dateiidentitäten und Vor-/Nachhashes gebunden. JSON erhält vor dem Parsen Byte-, Tiefen- und Knotengrenzen. Der Validator prüft Manifest, Profil, Support-, Lizenz-, Schema-, Registry-, Core-, Segment-, Bundle-, Binärsidecar- und Reproduzierbarkeitsverträge erneut und erzeugt einen externen schema-validen Report mit achtzehn fest geordneten Gates. pySHACL, ROBOT und HermiT arbeiten netzfrei auf privaten, hashgebundenen Eingabekopien.</p>
+<p>Der abschließende Core-Audit hat außerdem eine bislang opaque Kompetenzreferenz korrigiert: Registry-<code>competency-entry</code>-Ziele werden nun direkt auf die katalogisierten Kompetenzressourcen projiziert. Exakte Regressionstests decken sowohl <code>competencyRefs</code> als auch das kompatible <code>kompetenzen</code> ab. Dadurch entfallen 162 künstliche Value-Carrier. Die anschließende DPK-008d-Reverse-Prüfung hat zusätzlich die Placement-Identität auf <code>goalId@unitId@index</code> korrigiert. Das fachliche JSON und sein <code>contentDigest</code> bleiben unverändert; der endgültige RDF-Graph umfasst 824.452 Tripel.</p>
+<p>Der reale <code>.3</code>-Lauf besteht alle 18 Gates ohne Diagnose:</p>
+<table>
+<thead>
+<tr>
+<th>Merkmal</th>
+<th>Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FWU-OWL-ZIP und Peer</td>
+<td>je 2.362.455.128 Byte; SHA-256 <code>abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94</code></td>
+</tr>
+<tr>
+<td>FWU-OWL-Manifest</td>
+<td>SHA-256 <code>29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3</code></td>
+</tr>
+<tr>
+<td>Inventar</td>
+<td>819 ZIP-Einträge; 817 Manifestrecords; 757 Binärressourcen mit 1.696.390.279 Byte; 32 Reverse-Support-Dateien</td>
+</tr>
+<tr>
+<td>Semantik</td>
+<td>acht Segmente; 824.452 RDF-Tripel; 111 logische Artefakte; 454 Registry-Einträge; eine additive Core-Fallback-Area</td>
+</tr>
+<tr>
+<td>Ontologie-QS</td>
+<td>pySHACL 0.30.1: 0 Violations/0 Warnings; ROBOT 1.9.10: OWL 2 DL; HermiT 1.4.5.456: konsistent/0 unerfüllbare benannte Klassen</td>
+</tr>
+<tr>
+<td>Gemeinsamer Inhalt</td>
+<td><code>sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>scripts/run_curriculum_fwu_owl_package_conformance.sh</code> ist der schwere reale Release-Gate. Die normale lokale und gehostete CI provisioniert und verifiziert die exakte Toolchain und führt den auf 40 Garantien begrenzten Validator-Selftest aus, nicht den 2,36-GB-/HermiT-Lauf. Der dabei aufgedeckte Java-Sandbox-Fallback ist ebenfalls geschlossen: der hermetische JSON-Consumer bindet das exakt gepinnte Corretto-JDK per stabilem read-only FD nach dem Repository-Masking ein und besteht real wieder 15/15 Checks ohne Host-Java-Fallback.</p>
+<p>DPK-008c ist damit abgeschlossen. DPK-008d hat dieses validierte FWU-Paket inzwischen ohne Original-JSON und ohne Exportercode in ein unabhängig validiertes, installierbares JSON-Runtime-ZIP rekonstruiert.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-008b">Abgeschlossener Teilschritt: DPK-008b</h2>
+<p>DPK-008b implementiert den paketgetriebenen Core-first Exporter als generische TypeScript-Toolchain. Er liest die 111 logischen Artefakte und 757 Binärressourcen ausschließlich aus dem unabhängig validierten, eingefrorenen <code>.3</code>-JSON-Paket, gleicht jeden beobachteten Wert gegen die 454-Einträge-Feldregistry ab und schreibt acht kanonisch sortierte, deduplizierte N-Triples-Segmente. Present-empty bleibt über <code>sp:fieldState</code> von missing unterscheidbar; geordnete Werte behalten explizite Memberships und Positionen. Der Compiler projiziert fachliche Ziele, Bereiche, didaktische Voraussetzungen, Program Units, Placements und Kompetenzachsen so weit wie möglich in den gepinnten FWU-Core. Anwendungsterme bleiben auf nachgewiesene Runtime-, Roundtrip-, Packaging- und Evidenzlücken begrenzt.</p>
+<p>Die Deklarationslane wird vor dem RDF-to-OWL-Parsing aus der exakten Registry-/Anwendungsontologie-Union sowie 16 Core-/externen Bootstrap-Properties abgeleitet. Cross-Kind-Punning innerhalb und zwischen diesen Mengen scheitert. Exakte Tests decken die 526 Deklarationen, <code>sp:fieldState</code>, alle drei <code>sp:referenceRole</code>-Rollen, Core-Area-/Atomic-Typen, authored und additive BFO-Parthood sowie das dreigliedrige <code>LP_0000554</code>-Referenzmuster ab. Die korrigierten Shapes vergleichen <code>goalSemanticKind</code> RDF-termgenau als <code>xsd:string</code>; nach der DPK-008d-Placement-Korrektur umfasst der reale Graph 824.452 Tripel. Die formale, exporterunabhängige SHACL-/OWL-/HermiT-Attestation ist in DPK-008c abgeschlossen.</p>
+<p>Der Builder validiert Paketprofil, Schemakatalog und Manifest intern mit Draft 2020-12, bindet Repository-Trust-Roots sowie die Source-JSON-Identität bytegenau und prüft Quell-ZIP und alle Source-Dateien gegen Drift. Inventar, Lizenzdokumente und Redistributionstatus sind geschlossen. Primär- und Peer-Paket entstehen in einer privaten Run-Staging-Area; nur zwei vollständig materialisierte, byteidentische Builds werden als ganzes Verzeichnis atomar promotet, wobei ein vorhandener letzter guter Stand bis dahin erhalten bleibt.</p>
+<p>Der reale Mathematikbuild hat folgenden unveränderlichen technischen Stand:</p>
+<table>
+<thead>
+<tr>
+<th>Merkmal</th>
+<th>Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FWU-OWL-ZIP</td>
+<td><code>skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.fwu-owl.zip</code></td>
+</tr>
+<tr>
+<td>ZIP und Reproduzierbarkeits-Peer</td>
+<td>je 2.362.455.128 Byte; SHA-256 <code>abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94</code></td>
+</tr>
+<tr>
+<td>FWU-OWL-Manifest</td>
+<td>SHA-256 <code>29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3</code></td>
+</tr>
+<tr>
+<td>Inventar</td>
+<td>819 ZIP-Einträge; 817 Manifestrecords; 757 Binärressourcen; 32 Reverse-Support-Dateien</td>
+</tr>
+<tr>
+<td>Semantik</td>
+<td>111 logische Artefakte; 454 Registry-Einträge; 824.452 RDF-Tripel; eine additive Core-Fallback-Area</td>
+</tr>
+<tr>
+<td>Gemeinsamer Inhalt</td>
+<td><code>sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101</code></td>
+</tr>
+</tbody>
+</table>
+<p>DPK-008b ist damit als Exporter-/Materialisierungsschritt abgeschlossen. DPK-008c prüft das fertige ZIP ohne Exportercode strukturell und ontologisch mit einem externen schema-validen 18-Gate-Report; DPK-008d rekonstruiert daraus inzwischen isoliert ein installierbares JSON-Runtime-Paket.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-008a">Abgeschlossener Teilschritt: DPK-008a</h2>
+<p>DPK-008a legt den ausführbaren Vertrag vor den eigentlichen Ontologieexport. Das innere <code>fwu-owl-v1</code>-Manifest inventarisiert genau acht geordnete normative N-Triples-Segmente (<code>declarations</code>, <code>runtime</code>, <code>landscape</code>, <code>views</code>, <code>mappings</code>, <code>sources</code>, <code>cards</code>, <code>assets</code>). <code>bundle.nt</code> ist davon getrennt und darf ausschließlich die bytegenaue Konkatenation dieser Segmente sein. Core-Kopie, XML-Katalog, SkillPilot-Profil, Shapes, alle Paketverträge, Lizenzen und binäre Sidecars besitzen geschlossene Rollen und Hashbindungen.</p>
+<p>Das produktive Paketprofil fixiert ZIP32-/Pfad-/Dekompressionsgrenzen einschließlich expliziter JSON-Byte-, Tiefen- und Knotengrenzen, verbietet Symlinks, Sonderdateien, Data Descriptors, Extra Fields und Netzwerkauflösung und verlangt achtzehn benannte Gates von Archiv- und Manifestprüfung über Semantic-Content-Index und Registry-Abdeckung bis zu RDF/SHACL/OWL 2 DL/HermiT und Reproduzierbarkeit. Der gepinnte FWU-Core wird byteidentisch und ehrlich als OWL Functional Syntax deklariert. Statisches SkillPilot-Anwendungsprofil, nicht ausführbare SHACL-Core-Shapes und Core-only-XML-Katalog liegen als versionierte Repository-Trust-Roots vor. Sechs Bootstrap-Schemas und drei globale Semantikverträge sind ebenfalls an Repositorybytes gebunden; der 25-Einträge-Schemakatalog wird daraus und aus dem gepinnten 22-Schema-JSON-Profil deterministisch konstruiert. Der externe Validierungsreport bindet ein exaktes ZIP und Manifest, das unabhängig geöffnete JSON-Quellpaket samt fünf Semantikverträgen, Core/Profil/Registry/Definition-Digest/Shapes/Bundle, Zählwerte, Ontologieevidenz und zwei bytegleiche Builds. Frühe Fehler an falschem Suffix, leerem oder übergroßem Input bleiben als schema-valide <code>invalid</code>-/<code>error</code>-Receipts darstellbar. Geschlossene <code>release-support</code>-Records stellen exakt die 22 JSON-Schemas, das JSON-Releaseprofil sowie Redistribution- und Source-Verification-Evidenz für den isolierten Rückcompiler bereit, ohne logische JSON-Payloads zu verstecken.</p>
+<p>Der unabhängige Vertragsvalidator importiert keinen Exporter. Er prüft eine positive, extern am JSON-Quellmanifest verankerte Fixture, zwei ehrliche frühe Fehlerzustände sowie 96 gezielte Mutationen und verwirft doppelte JSON-Keys und nicht-endliche Zahlen. Die Mutationen schließen unter anderem Digest-, Leergraph-, Core-Syntax-, Ontologie-/Shapes-/Schema-/Katalog-Trust-, Deklarationsunion-/Parser-Bootstrap-, vollständige ZIP-Pfad-, NFC-/casefold-sichere Pfad- und Metadatenabgrenzung, JSON-Limit-, Quellpaket-/Quellprofil-, Vertrags-ID-, Support-, Lizenz- und Report-Substitutionen. Die Deklarationslane umfasst exakt 510 deduplizierte Anwendungs- und 16 parserlokale Core-/externe Property-Deklarationen; der hashgebundene <code>sp:fieldState</code>-Carrier hält present-empty von missing unterscheidbar und <code>sp:referenceRole</code> typisiert Kompetenzachsenreferenzen. Die geschlossene SHACL-Enumeration für <code>goalSemanticKind</code> verwendet dieselben expliziten <code>xsd:string</code>-Literale wie der Compiler. Eine rein additive, reverse-nichtautoritative Fach-Area-Projektion hält auch die 18 Mathematik-Atomziele ohne authored <code>curricularArea</code> Core-/SHACL-konform, ohne die Normalform zu verändern. Der äußere Dual-Release-Vertrag bindet zusätzlich Definition-Digest- und Publikationsevidenzprofil; seine 61 Mutationen prüfen die geschlossene Trust-Menge. Damit ist das Format fail-closed definiert; DPK-008b muss nun den eingefrorenen <code>.3</code>-JSON-Kandidaten ausschließlich über diesen Vertrag materialisieren.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-007a">Abgeschlossener Teilschritt: DPK-007a</h2>
+<p>DPK-007a beseitigt die letzte technische Inhaltslücke vor dem Ontologieexport. Die fachlich und technisch geprüfte Visualisierung für <code>f40fcaf7-c630-589c-9f48-6c9e69da0b9d</code> ist als 757. aktives Bild importiert. Der Atomic-Scope umfasst 754 Ziele; keines ist mehr ohne Bild. Die Human-Freigabe bleibt davon getrennt: 136 Visualisierungen sind freigegeben und 621 warten weiterhin auf Review.</p>
+<p>Der unveränderliche Input für DPK-008 ist:</p>
+<table>
+<thead>
+<tr>
+<th>Bindung</th>
+<th>Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON-Paket</td>
+<td><code>skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip</code></td>
+</tr>
+<tr>
+<td>fachlicher <code>contentDigest</code></td>
+<td><code>sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101</code></td>
+</tr>
+<tr>
+<td>ZIP</td>
+<td>1.738.161.217 Byte; SHA-256 <code>403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9</code></td>
+</tr>
+<tr>
+<td>Manifest</td>
+<td>SHA-256 <code>32f732fc553fd39a462280eba7b2fa94367af34b3882ec6115a94948da4b1ebe</code></td>
+</tr>
+<tr>
+<td>Inventar</td>
+<td>914 ZIP-Einträge; 912 Manifestrecords; 111 logische und 757 binäre Inhaltsrecords</td>
+</tr>
+<tr>
+<td>Bilder</td>
+<td>757 eingebettet, zusammen 1.696.390.279 Byte; 69 externe Ressourcen; 826 Ressourcenlinks/-records insgesamt</td>
+</tr>
+<tr>
+<td>Closure</td>
+<td>2.403 Definitionen; 18.820 Referenzen; <code>sha256:7e7d704a9c5e17fbe24f6ac881b44b41ae930f5ac945e69738b753c98b999121</code></td>
+</tr>
+<tr>
+<td>Definitionsindex</td>
+<td><code>sha256:4e99bba1d71d26b94bc23f4ea8251ff4dd3df15a5c63006b7564f7f69948c57d</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ontologie- und Publikationsprofil sind auf <code>1.1.1</code> angehoben. Ihre Core-Positions- und SkillPilot-Order-Lanes werden durch Compiler und unabhängigen Validator gegen die Feldregistry geprüft. Die Registry selbst bleibt mit 454 Einträgen und SHA-256 <code>2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48</code> unverändert. Gezielte Mutationen beweisen, dass ein veraltetes <code>containedGoal</code> oder ein Predicate in der falschen Lane fail-closed scheitert.</p>
+<p>Das vollständige CI-Gate deckte zusätzlich eine bereits reviewte Saarland-Zuordnung auf, deren Einheitskreisziel noch nicht in den DE-SL-CrossStage-Views lag. Die GK- und LK-Views enthalten dieses Ziel jetzt explizit; damit sind wieder alle 9.977 Mathematik-Source-Goals in den vorgesehenen Bundesland-Views abgedeckt und Mathematik bleibt auf M6.</p>
+<p>Der Kandidat ist technisch vollständig und operabel, aber nicht publikationsbereit. Er bleibt <code>not-ready-incomplete</code>, weil 621 fachliche Visualisierungsreviews, 757 Bildrechte plus drei Nicht-Binärklassen (760 Redistribution-Entscheidungen insgesamt) und 479 Source-Text-Entscheidungen offen sind. Sechs Bildrecords enthalten eine nutzerbereitgestellte Erzeugungsbehauptung; auch diese ist keine Rechtefreigabe.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-005a">Abgeschlossener Teilschritt: DPK-005a</h2>
+<p>DPK-005a schließt die Vertrauens-, Archiv- und Review-Grundlage zwischen dem entpackten DPK-004-Modell und dem realen JSON-Paket:</p>
+<ul>
+<li>jeder Manifest-Record besitzt genau eine explizite semantische Bindungsart: logisches Artefakt mit <code>logicalId</code> und <code>normalizationRole</code>, Binärressource mit <code>resourceId</code> oder bewusst ausgeschlossene generierte Paketmechanik;</li>
+<li><code>full-standalone-v1</code> pinnt jetzt alle 22 normativen Payload-Schemas, verlangt deren vollständigen Offline-Schema-Katalog, bindet fünf paketlokale Semantic Contracts und schreibt je Rolle die exakten zulässigen <code>validationSchemaId</code>-Werte vor;</li>
+<li><code>semantic-content-index</code> ist eine eigene verpflichtende Singleton-Rolle; Build-/Validierungsprovenienz bleibt mehrfach inventarisierbar, aber ausdrücklich außerhalb der fachlichen Normalform;</li>
+<li>der Readiness-Gate trennt Vertragsgültigkeit und Publikationsrecht: offene oder verbotene Redistribution bleibt ein formal darstellbarer Staging-Kandidat, führt aber fail-closed zu <code>not-ready-incomplete</code> über <code>publication.redistribution-cleared</code>; beschädigte Identitäts-/Vertragsclaims bleiben <code>invalid</code>;</li>
+<li>der aus dem Legacy-Exporter extrahierte Streaming-ZIP32-Writer erzeugt byteidentische bestehende Exporte, sortiert deterministisch, schreibt ausschließlich STORE-Einträge mit fixer UTC-DOS-Zeit und 0644, erzwingt alle ZIP32-/Profilgrenzen und lehnt unsichere Pfade, Mehrdeutigkeit, Symlinks, Nicht-Dateien, Source-Drift, Data Descriptors, Extras und ZIP64 ab;</li>
+<li>ein Redistribution-Ledger bindet alle 756 realen Bilder und alle 23 Nicht-Binärrollen. Nur die exakte Root-<code>LICENSE</code>-gebundene Softwarevertragsklasse ist automatisch Apache-2.0; 756 Bilder, davon sechs nutzerbereitgestellte Erzeugungsbehauptungen, und drei Artefaktklassen bleiben ehrlich offen;</li>
+<li>eine Source-Verification-Lane reduziert die offene Textprüfung reproduzierbar von 9.977 auf 479 Datensätze: 9.493 Texte liegen zusammenhängend in authored Passage-Carriern, fünf weitere in einer hashgebundenen, nur temporär erzeugten <code>pdftotext -layout</code>-Projektion. Kein Maschinentreffer wird als Human-Freigabe gezählt und kein vollständiger extrahierter amtlicher PDF-Text wird neu versioniert;</li>
+<li>abgeschlossene Source-Entscheidungen sind an <code>reviewEvidenceSha256</code> gebunden; Text-, Passage-, PDF- oder Locator-Drift macht sie stale. Die <a href="../../qa-ci/curriculum-package-human-review-gates/">zentrale Human-Review-Liste</a> trennt fachliche Bildprüfung, Bild-/Datenrechte, Source-Text-Prüfung, Ontologie-Sign-off und Stable-Promotion.</li>
+</ul>
+<p>Gezielte QS:</p>
+<ul>
+<li>Manifest/Profile: eine gültige Fixture und 61 exakt erwartete Negativfälle;</li>
+<li>Offline-Schema-Katalog: vollständiger 22-Schema-Trustsatz, 34 Negativ- und 12 Bindingfälle ohne Remote-Fetch;</li>
+<li>Readiness: fünf Dialekt-Fixtures, Redistribution-Fall, Policy-/Report-Forgery, sieben adversariale ZIPs und 10-fache Exitmatrix;</li>
+<li>Redistribution: realer Check plus 17 fail-closed Mutationen;</li>
+<li>Source Verification: realer Check, acht Mutationen, Duplicate-Key-/stale-Review-Nachweis und optionaler bytegleicher Replay aller neun PDF-Projektionen;</li>
+<li>ZIP32: Golden Bytes, echter byteidentischer Latein-Alt/Neu-Export und 22 Struktur-/Safety-Garantien;</li>
+<li>vollständiges <code>./run_ci.sh</code> auf dem final dokumentierten Stand grün.</li>
+</ul>
+<p>Bewusste Grenze dieses abgeschlossenen Teilschritts: DPK-005a erzeugte noch nicht das rund 1,7-GB-Mathematik-ZIP. Diese Materialisierung ist inzwischen in DPK-005b technisch umgesetzt; offene Human-Gates verhindern weiterhin jede öffentliche Promotion.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-005b">Abgeschlossener Teilschritt: DPK-005b</h2>
+<p>DPK-005b materialisiert das vollständige DPK-004-Modell als echtes <code>full-standalone-v1</code>-JSON-ZIP. Der <a href="https://github.com/enpasos/skillpilot/blob/main/app/scripts/buildFullStandaloneCurriculumPackage.ts">Builder</a> erzeugt aus genau einem freigegebenen Release-Modell ein geschlossenes Inventar, kopiert alle Binärressourcen, legt die 22 vertrauenswürdig gebundenen Schemas und fünf semantischen Verträge paketlokal bei und schreibt Manifest, <code>SHA256SUMS</code>, Lizenzdokumente und explizite Review-Evidenz. Seine ZIP-Operation baut intern zweimal in unterschiedlicher Eingabereihenfolge und promotet nur bytegleiche Ergebnisse atomar.</p>
+<p>Der <a href="https://github.com/enpasos/skillpilot/blob/main/scripts/validate_full_standalone_curriculum_package.py">unabhängige Finished-ZIP-Validator</a> importiert keinen Buildercode. Er prüft tatsächliche ZIP-Struktur und Bytes, Inventar, Runtime- und Offline-Schema-Katalog, Hard-Reference-Closure, <code>contentDigest</code> und alle 756 Binärressourcen gegen package-local Daten und den externen Software-Trust-Root. JSON-Dateien sind durch das v1-Profil sichtbar auf 64 MiB, Tiefe 128 und 5.000.000 Knoten begrenzt; der Validator hat dafür keine strengeren versteckten Grenzen.</p>
+<p>Der reale Mathematik-Gate erwartet exakt:</p>
+<table>
+<thead>
+<tr>
+<th>Merkmal</th>
+<th style="text-align: right;">Erwarteter Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ZIP-Einträge</td>
+<td style="text-align: right;">913</td>
+</tr>
+<tr>
+<td>inventarisierte Manifestdateien</td>
+<td style="text-align: right;">911</td>
+</tr>
+<tr>
+<td>Binärressourcen</td>
+<td style="text-align: right;">756</td>
+</tr>
+<tr>
+<td>fachlicher <code>contentDigest</code></td>
+<td style="text-align: right;"><code>sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>scripts/run_curriculum_release_model_conformance.sh</code> baut weiterhin zwei bytegleiche Release-Modell-Verzeichnisse, bleibt als Required-CI-Gate aber vor der realen ZIP-Materialisierung stehen. Der optionale Wrapper <code>scripts/run_curriculum_full_package_conformance.sh</code> ruft danach den realen ZIP-Builder genau einmal auf; dessen interner Doppelbuild beweist die ZIP-Reproduzierbarkeit. Er schreibt ZIP, Build-Zusammenfassung, unabhängigen Validator-, Consumer- und Readiness-Report unter <code>tmp/curriculum-release-model/full-standalone-package/</code>; die verifizierten Assembly-/Evidence-Bäume und ihre externen Manifeste liegen unter <code>tmp/curriculum-release-model/package-consumer-smoke/</code>. Der Kandidat muss technisch valide sein, bleibt wegen offener Redistribution-Entscheidungen aber ehrlich <code>not-ready-incomplete</code>. DPK-006a–c laden, aktivieren und bedienen ihn inzwischen exakt; DPK-007 beweist zusätzlich den Betrieb ohne <code>curricula/</code>- oder fachlichen <code>app/public</code>-Fallback.</p>
+<p>Gezielte QS ist grün:</p>
+<ul>
+<li>Builder-Selftest einschließlich Closed-Inventory-, Limits-, Symlink-/Source-Drift-, atomarer Promotion- und Doppelbuild-Garantien;</li>
+<li>unabhängiger Validator-Selftest mit adversarialen ZIP-/Trust-/Digest-/Closure-Fällen;</li>
+<li>realer Plan mit 913/911/756 und dem erwarteten <code>contentDigest</code>;</li>
+<li>TypeScript-, Lint-, Python-, Shell-, Workflow- und Dokumentationsprüfungen.</li>
+</ul>
+<p>Das vollständige <code>./run_ci.sh</code> ist auf diesem final dokumentierten Stand grün. DPK-005b ist damit technisch abgeschlossen; die offenen Human-Gates verhindern weiterhin ausdrücklich eine Publikationsfreigabe.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-006a">Abgeschlossener Teilschritt: DPK-006a</h2>
+<p>DPK-006a führt den ersten Backend-Consumer für bereits sicher vorvalidierte und content-adressiert entpackte Pakete ein. <code>skillpilot.curriculum.source</code> trennt <code>repository</code> und <code>package</code> explizit. Im Package-Modus ist ein exakter, nach Package-ID sortierter Mehrpaket-Lock verpflichtend; ein fehlender oder ungültiger Lock bricht den Start ab. Der Consumer scannt keine Paketverzeichnisse, wählt kein <code>latest</code>, schreibt weder Store noch Lock und fällt in diesen Komponenten weder auf Repository, Classpath noch Netzwerk zurück.</p>
+<p>Die Vertrauenskette wurde nach einem unabhängigen Replay-Audit auf Validatorreport v2 gehärtet:</p>
+<ol>
+<li>der Report bindet Outer-ZIP-SHA und -Bytezahl sowie den exakten Manifest-SHA;</li>
+<li>derselbe Report bindet <code>contentDigest</code>, <code>closureDigest</code> und <code>definitionIndexDigest</code> und genau sechs vollständig bestandene Finished-Package-Gates;</li>
+<li>Install-Record und Lock binden den Report-Hash und dieselben Identitäten;</li>
+<li>der Loader hasht vor Snapshot-Publikation jede der 911 manifestinventarisierten Dateien erneut.</li>
+</ol>
+<p>Ein v1-Report oder ein ausgetauschtes Manifest mit nachgezogenen Lock-/Receipt-Hashes wird fail-closed abgewiesen. Der Readiness-Evaluator trägt wegen dieser stärkeren Evidenzsemantik die Version <code>1.2.0</code>. Die stabile fachliche Consumer-API-Version ist unabhängig vom Gradle-Buildqualifier und aktuell <code>0.1.0</code>; frisch gebaute Conformance-Pakete deklarieren deshalb ehrlich <code>&gt;=0.1.0 &lt;1.0.0</code>.</p>
+<p>Dateizugriffe werden vom Dateisystemroot aus über <code>SecureDirectoryStream</code> und <code>NOFOLLOW_LINKS</code> verankert. Lock, Receipt, Report und Paket-JSON verwenden Duplicate-Key- und Trailing-Token-Erkennung sowie die sichtbaren Profilgrenzen. Der Lock ist auf 256 aktive Pakete begrenzt. Der vollständig geladene Snapshot bewahrt Paketidentitäten, Root-/Module-Landschaften, Scope-Dimensionen und Composites, Capabilities, Views, deklarierte Single-/Merge-Offerings, Decks, eingebettete und externe Ressourcen, Migrationen sowie Definitionseigentum. Mehrdeutige IDs oder Definitionen blockieren die gesamte Generation; ein fehlgeschlagener Reload lässt exakt den bisherigen Snapshot aktiv.</p>
+<p>Qualitätsnachweis:</p>
+<ul>
+<li>fokussierte Backend-Suite für Lock, Receipt, Validator-v2, sichere Pfade, Manipulationen, Kompatibilität, Scope-/Merge-Semantik, Mehrpaketkonflikte, Snapshot-Immutabilität und atomaren Reload grün;</li>
+<li>Full-Package-Validator v2 mit 28 Garantien und Readiness-1.2-Selftest einschließlich acht Validatorreport-Fälschungen grün;</li>
+<li>echte read-only Loaderprobe über das 1,7-GB-Mathematikpaket: 1 Landschaft, 88 Views, 88 Offerings, 12 Decks, 825 Ressourcen und 2.402 Closure-Definitionen, alle Manifestbytes erneut geprüft;</li>
+<li>vollständiges <code>./run_ci.sh</code> auf dem final dokumentierten Stand grün.</li>
+</ul>
+<p>Bewusste Grenze: DPK-006a konsumiert nur einen bereits vertrauenswürdig provisionierten Store. Exakte ZIP-Extraktion, <code>SHA256SUMS</code>-/Tree-Identität, Store-Schreibautorität, CAS-Aktivierung und Rollback folgen in DPK-006b. Runtime-Services und Frontend lesen noch nicht aus dem Snapshot; diese Umschaltung folgt in DPK-006c. <code>embedded-fragment</code> bleibt bis zur fachübergreifenden Closure-Lane ausdrücklich fail-closed. Erst DPK-007 darf den vollständigen SkillPilot-Betrieb ohne Quellcheckout und statische fachliche Fallbacks behaupten.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-006b">Abgeschlossener Teilschritt: DPK-006b</h2>
+<p>DPK-006b ergänzt die schreibende, vom Runtime-Prozess getrennte Store-Seite. Der <a href="https://github.com/enpasos/skillpilot/blob/main/scripts/provision_curriculum_package.py">Provisioner</a> kopiert ein Eingabe-ZIP zunächst unter stabiler Dateiidentität in einen privaten, deterministisch nach äußerem SHA benannten Quarantänepfad. Er akzeptiert ausschließlich einen kanonischen Validator-v2-Report mit exakt bestandenen sechs Gates und extrahiert danach selbst nochmals streamingbasiert ohne <code>extractall</code>. Manifest, <code>SHA256SUMS</code>, vollständiger Datei- und Verzeichnisbaum, Profilgrenzen, Bytes und SHA-256 werden vor der Promotion erneut geprüft.</p>
+<p>Das Store-Protokoll besitzt drei externe, geschlossene Betriebsverträge für Validatorreport, Install-Record und aktiven Lock. Sie bleiben bewusst außerhalb des paketlokalen 22-Schema-Trustsatzes und verändern weder Paketformat noch fachlichen Digest. Objektverzeichnisse werden <code>0555</code>, Payload- und Kontrollfiles <code>0444</code>; Ownership- oder Modusdrift scheitert ebenso wie zusätzliche leere Verzeichnisse. Report und Install-Record binden ZIP, Manifest, Closure, Definition-Index und <code>contentDigest</code> bytegenau. Ein vorhandenes content-adressiertes Objekt wird vor jeder Fortsetzung vollständig gegengeprüft; deterministische Quarantänepfade machen auch einen Crash zwischen Objekt-, Report- und Record-Promotion idempotent reparierbar.</p>
+<p>Installation und Aktivierung sind getrennt. Erst ein expliziter <code>activate</code>-Aufruf erzeugt einen strikt nach <code>packageId</code> sortierten Lock. Die beobachtete Vorgängerversion wird als SHA-256-CAS vor und unmittelbar vor <code>replace</code> erneut geprüft und vor Überschreiben unveränderlich archiviert. Rollback verwendet dieselbe Revalidierung und CAS-Semantik. Consumer-SemVer, Definitionskonflikte, globale Landscape-/View-/Offering-/Resource-Identitäten, öffentliche Resource-URLs und die derzeit nicht unterstützte <code>embeddedDependencies</code>-Capability werden vor Aktivierung fail-closed geprüft. Es gibt keine <code>latest</code>-Discovery.</p>
+<p>Qualitätsnachweis:</p>
+<ul>
+<li>Operational Contracts: drei gültige Dokumente und 23 gezielte Negativ-/Raw-JSON-Fälle zusätzlich zur unveränderten Manifest-Suite 1/61;</li>
+<li>schneller Provisioner-Selbsttest mit 38 Lebenszyklus-, Crash-, Path-, Symlink-, Truncation-, Replay-, Permission-, Tree-, Poisoning-, CAS-, Rollback-, Consumer- und Mehrpaketgarantien;</li>
+<li>realer Conformance-Wrapper: reproduzierbares 1,7-GB-Mathematik-ZIP wird unabhängig validiert, sicher installiert, vollständig verifiziert und atomar aktiviert;</li>
+<li>derselbe Store wird anschließend vom echten Java-Repository/Loader gelesen: 911 Manifestfiles, 1 Landschaft, 88 Views, 88 Offerings, 12 Decks, 825 Ressourcen, 756 öffentliche Assets und 2.402 Definitionen;</li>
+<li>vollständiges <code>./run_ci.sh</code> auf dem final dokumentierten Stand grün.</li>
+</ul>
+<p>Bewusste Grenze: Der Store ist nun vertrauenswürdig provisioniert und aktivierbar, aber die bisherigen Landschafts-, View-, Deck-, Mapping- und Asset-Services lesen noch nicht durchgängig aus dem Snapshot. Diese Umschaltung ist DPK-006c. Erst DPK-007 beweist den kompletten Backend-/Frontend-Betrieb in einer Umgebung ohne Curriculum-Checkout und statische fachliche Fallbacks. Publisher-Signaturen bleiben DPK-011; offene menschliche Freigaben werden durch technische Installation nicht ersetzt.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-006c-a">Abgeschlossener Teilschritt: DPK-006c-a</h2>
+<p>DPK-006c-a vervollständigt den read-only Snapshot als alleinige Grundlage für die nachfolgenden Service-Umschaltungen. Er enthält jetzt jedes der 911 manifestinventarisierten realen Mathematikartefakte, nicht nur die Runtime-Katalogrollen. Damit sind auch nicht runtime-erforderliche, aber für Mapping, Quellenanzeige, Quality-Evidenz und späteren Ontologie-Roundtrip benötigte Rollen generationgebunden auffindbar. Jeder Record bewahrt Rolle, MIME-Type, Länge, SHA-256, Runtime-Pflicht, semantische Bindungsart, <code>logicalId</code>/<code>normalizationRole</code> beziehungsweise <code>resourceId</code>, Validierungsschema sowie Lizenz-, Provenienz- und Redistributionsstatus.</p>
+<p>Eine eigene package-only Artefaktfassade akzeptiert ausschließlich einen Schlüssel aus genau diesem unveränderlichen Snapshot. Sie traversiert wieder über den sicheren Store-Reader und prüft bei jedem Zugriff Dateityp, Dateiidentität, Bytegrenze, Länge und SHA-256 erneut. Weder absolute Storepfade noch beliebige relative Pfade werden nach außen gegeben. Das synthetische Store-Fixture führt nun dieselben semantischen Manifestbindungen wie ein reales Paket, sodass Tests die Vertrauenskette nicht über einen schwächeren Sondervertrag umgehen.</p>
+<p>Die Java-/TypeScript-Modelle bewahren außerdem den geschlossenen Landscape-Vertrag verlustfrei: <code>$schema</code>, <code>landscapeFormatVersion</code>, Compatibility-Flags, <code>phase</code>, <code>courseLevel</code>, <code>themenfeld</code>, <code>leitideen</code>, <code>kompetenzen</code>, Experimentdaten, <code>semanticKind</code>, <code>semanticAtomic</code> und <code>examData.reviewNote</code>. Ein fehlendes <code>core</code> bleibt von explizitem <code>false</code> unterscheidbar; das bestehende boolesche <code>isCore()</code>-Verhalten bleibt kompatibel. Auch die lokalisierte API-Kopie erhält diese Felder.</p>
+<p>Qualitätsnachweis:</p>
+<ul>
+<li>Package-Modellsuite einschließlich absent-vs.-false, Semantic-/Experiment-/Review-Roundtrip und unveränderlichem Artefaktindex grün;</li>
+<li>adversariale Artefaktleseproben für unbekannte Keys, zu enge Bytegrenzen und Hashdrift grün;</li>
+<li>reale 1,7-GB-Store-Probe mit exakt 911 Artefakten sowie expliziter Mapping-/Quality-Evidence-Bindung grün;</li>
+<li>TypeScript, ESLint, Diff-Gates und vollständiges <code>./run_ci.sh</code> grün.</li>
+</ul>
+<p>Bewusste Grenze: DPK-006c-a stellt die vertrauenswürdige Datenebene bereit, ändert aber noch keine fachlichen Service-Endpunkte. Landschaften und Mappings folgen in DPK-006c-b, exakte Katalog-/View-Auflösung in DPK-006c-c, Decks und Bilder in DPK-006c-d, Frontend und paketierte Quellenanzeige in DPK-006c-e/f. Der hermetische Gesamtnachweis bleibt DPK-007.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-006c-b">Abgeschlossener Teilschritt: DPK-006c-b</h2>
+<p>DPK-006c-b schaltet <code>LandscapeService</code> und <code>GoalMappingService</code> strikt zwischen Repository- und Package-Quelle um. Im Package-Modus entsteht genau ein lock- und generationsgebundener Domain-State aus den katalogisierten <code>canonical-landscape</code>-, <code>mapping</code>- und <code>source-index</code>-Artefakten; <code>LandscapeProperties</code>, Repositorypfade und Classpath-Dateien sind an diesem Pfad nicht beteiligt. Root-Reihenfolge, Landscape- und Goal-Indizes stammen ausschließlich aus dem Snapshot. Payload- und Katalogmetadaten, doppelte Goal-IDs, unbekannte Mappingziele und inkonsistente Source-Metadaten blockieren den Start.</p>
+<p>Der Mapping-Compiler bewahrt alle autoritativen Kanten in Paketreihenfolge. Mehrere Ziele pro Source Goal sind fachlich erlaubt, ausdrücklich auch mehrere <code>exact</code>-Ziele sowie gemischte <code>exact</code>-/<code>partial</code>-Kanten. Nur eine identische Kante, ein Match-Type-Konflikt für dasselbe Source-/Canonical-Paar oder eine mehrdeutige SourceGoal-Eigentümerschaft scheitert fail-closed. Der singuläre Kompatibilitätszugriff liefert deshalb bei Fanout keinen willkürlichen ersten Treffer; der produktive Mehrfachzugriff bleibt verlustfrei. Diagnoseherkünfte sind opake <code>package:&lt;packageId&gt;/...#&lt;mappingCollectionId&gt;</code>-Labels und keine Storepfade.</p>
+<p>Die kanonische Paketlandschaft enthält bereits fertig kompilierte effektive <code>applicability</code>. Der Package-Service übernimmt sie unverändert und führt weder die alte Mapping-/Contains-Ableitung noch Repository-Provenienz- oder Override-Registries erneut aus. Der amtliche Source-Index ist dagegen die autoritative Quelle für <code>sourceLandscapeId → jurisdiction</code>; Mapping-Metadaten werden strikt dagegen geprüft. SourceGoal-Zugehörigkeit ist aus den veröffentlichten Kanten verfügbar. Eine nicht paketierte historische Source-Cluster→Atomic-Closure und Compatibility-Archive bleiben bewusst leer statt auf den Quellbaum zurückzufallen.</p>
+<p>Qualitätsnachweis:</p>
+<ul>
+<li>13 neue Compiler-/State-Tests für Mehrfach-<code>exact</code>, gemischte Kanten, Counts, geschlossene Felder, Duplikate, Match-Type- und Eigentumskonflikte, 1:1-Source-Join, unbekannte Ziele, Multi-Package-Merge und tiefe Immutabilität;</li>
+<li>konditionale Spring-Konfiguration mit absichtlich konfliktbehaftetem Repository-Poison beweist, dass Package-Mode ausschließlich den Paketstand liefert und ungültige Package-Aktivierung nicht zurückfällt;</li>
+<li>reale 1,7-GB-Store-Probe bindet 1 Landschaft/1.079 Ziele, 31 Source Collections, 55 Dokumente, 9.977 Source Goals, 10.021 Entscheidungen und alle 33.382 geordneten Kanten; alle 16 Jurisdiktionen sind ableitbar und die ausgeschlossene Applicability-Projektion bleibt unverändert;</li>
+<li>gezielte Package-/Landscape-/Mapping-Suiten, Diff-Gates und vollständiges <code>./run_ci.sh</code> grün.</li>
+</ul>
+<p>Bewusste Grenze: Die aktive Package-Generation ist derzeit eine Prozessstart-Grenze. Ein direkter öffentlicher Snapshot-Reload ist gesperrt, bis ein späterer Aktivierungskoordinator Snapshot und sämtliche abgeleiteten Resolver gemeinsam publizieren kann; die externe CAS-Lock-Aktivierung bleibt davon unberührt. Composition Views/Offerings sind inzwischen DPK-006c-c; Decks und Bilder folgen in DPK-006c-d, Frontend und Quellenanzeige in DPK-006c-e/f. Erst DPK-007 erbringt den hermetischen Gesamtbeweis.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-006c-c">Abgeschlossener Teilschritt: DPK-006c-c</h2>
+<p>DPK-006c-c macht Runtime-Katalog, Offerings und Composition Views zu paketautoritativen Laufzeitdaten. Ein generationsgebundener, tief unveränderlicher <code>PackageCompositionViewState</code> prüft beim Start die View-Payloads gegen den Snapshot, die deklarierten Scope-Dimensionen, eindeutige Strukturknoten und die einmalige Sichtbarkeit expandierter Ziele. Jede View muss mindestens über ein Offering erreichbar sein. Single-Offerings müssen exakt denselben Scope wie ihre View tragen; ein Merge ist ausschließlich über eine deklarierte Composite-Dimension, deren geordnete Mitglieder und die explizite View-Reihenfolge zulässig. Freie <code>merged:</code>-IDs, GK/LK-Heuristiken und Teilmengen-Fallbacks existieren im Package-Modus nicht.</p>
+<p><code>CompositionViewService</code> wird nun je Quellmodus genau einmal konfiguriert. Der Repository-Modus behält seine bisherigen Authoring-Heuristiken; der Package-Modus kennt weder <code>LandscapeProperties</code> noch <code>Files.walk</code>, Classpath oder Repository-Dateien. <code>GET /api/ui/curriculum-catalog</code> liefert eine typisierte, geordnete und pfadfreie Projektion von Packages, Roots, Landscapes, Views und Offerings. <code>GET /api/ui/composition-views/offerings/{offeringId}</code> löst eine explizite Offering-ID auf; der bestehende <code>/match</code>-Übergangspfad trifft paketgebunden nur den exakten veröffentlichten Scope.</p>
+<p>Auch nachgelagerte Verbraucher unterscheiden jetzt zwischen nicht verwalteten Repository-Inhalten und paketverwalteten, aber nicht angebotenen Scopes. Der bestehende kanonische Gymnasium-Adapter lässt Lernendenfilter und Champion-Metriken im zweiten Fall fail-closed leer, statt still auf alle gefilterten Ziele oder alte Hessen-Projektionen zurückzufallen. Eine tatsächlich leere Lernendenkonfiguration wählt dagegen das katalogisierte Default-Offering. Interne Prerequisite-/Scope-Berechnungen verwenden nun einen ausdrücklich ungescopten Strukturpfad und verwechseln dessen früheres <code>{}</code>-Sentinel nicht mehr mit einer Lernendenauswahl. <code>goalEntry</code> wird wie im Frontend als genau ein opaker projizierter Laufzeit-Leaf materialisiert; nur <code>canonicalSubtree</code> expandiert Unterziele. Die Topic-Zuordnung schneidet diese projizierten Leaves gegen die ungescopte strukturelle Closure, sodass ein opaker Cluster separat im View platzierte direkte Kinder nicht verschluckt. Aktivierung und Mastery validieren denselben projizierten Leaf statt der dahinterliegenden kanonischen Clusterdefinition, damit jedes angebotene atomare Frontier-Ziel auch abschließbar ist. Jede im Snapshot katalogisierte Landscape gilt im Package-State als paketverwaltet, auch wenn sie selbst kein Offering besitzt. Andere Frameworks werden bis zur generischen Offering-Auswahl in DPK-006c-e nicht durch den Gymnasium-Adapter interpretiert und bleiben dort fail-closed leer.</p>
+<p>Qualitätsnachweis:</p>
+<ul>
+<li>neue State-, Konfigurations-, Controller- und Consumer-Tests für exakte Single-/Composite-/Default-Auflösung, Scope-/Reihenfolgedrift, unangebotene Views, doppelte sichtbare Ziele auch nach Merge, widersprüchliche Merge-Strukturen, Immutabilität, unbekannte Offering- und freie Merge-IDs, opake <code>goalEntry</code>-Knoten einschließlich Topic-Closure, getrennte Strukturauflösung sowie die beiden verhinderten All-Goals-Fallbacks;</li>
+<li>bestehende Integrationsgates stimmen mit dem Frontend-Compiler überein: der generische Physik-View liefert den opaken Newton-Cluster statt verdeckter Kinder und prüft dessen vollständigen Aktivierungs-/Mastery-Workflow, Hessen-Physik zählt 189 learner-facing quellengleiche Ziele und der einzige nicht-atomare Mathematik-<code>goalEntry</code> ersetzt seine drei Kinder durch genau einen Leaf (Hessen LK G8/G9: 777/785);</li>
+<li>unveränderte Repository-Composition-View-Suite einschließlich der bisherigen Authoring-Fallbacks grün;</li>
+<li>reale Store-Probe: alle 88 View-Payloads des 1,7-GB-Mathematikpakets laden; jedes Single-Offering ist per ID und exakt gleichem Scope identisch auflösbar, während der Compiler für exakt gepaarte GK-/LK-Views ein deklariertes, dedupliziertes <code>GK+LK</code>-Composite-Offering erzeugt; freie Merge-IDs bleiben unaufgelöst;</li>
+<li>vollständiges <code>./run_ci.sh</code> auf dem final dokumentierten Stand grün.</li>
+</ul>
+<p>Bewusste Grenze: Der Katalog enthält in diesem Schritt noch keine öffentlichen Deck-/Ressourcen-Hrefs; Deckdateien und Visualisierungsbytes werden noch nicht durch den Package-Resolver ausgeliefert. Das ist DPK-006c-d. Frontend und paketierte Quellenanzeige folgen in DPK-006c-e/f, der hermetische Gesamtbeweis in DPK-007. Offene fachliche und rechtliche Human-Gates bleiben durch die technische View-Auflösung unverändert.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-006c-d">Abgeschlossener Teilschritt: DPK-006c-d</h2>
+<p>DPK-006c-d macht Decks, Karten und eingebettete Bilder zu paketautoritativen Runtime-Ressourcen. Ein unveränderlicher <code>PackageCurriculumResourceState</code> bindet sie an dieselbe Snapshot- und Domain-Generation wie Landschaften, Mappings und Views. Decks werden öffentlich ausschließlich über <code>packageId + packageVersion + deckId + locale</code> identifiziert; der interne Paketpfad dient nur zusammen mit dem besitzenden Ziel als streng geprüfte Kompatibilitätsbindung. Jedes Memory-Ziel muss genau einen nichtleeren <code>srs-deck:&lt;deckId&gt;</code>-Tag tragen, und seine de-/en-Quellen müssen auf katalogisierte Artefakte derselben Landschaft und Deck-ID zeigen. Freie Dateinamensuche oder Locale-Raten gibt es im Package-Modus nicht.</p>
+<p>Eingebettete Ressourcen werden über <code>packageId + packageVersion + resourceId</code> beziehungsweise den exakt katalogisierten <code>publicUrl</code> aufgelöst. V1 liefert ausschließlich manifestgebundene JPEG-/PNG-Bilder eines existierenden Ziels aus. Rolle, Capability, MIME-Type, semantische Bindung, Runtime-Pflicht, Eigentum und 64-MiB-Grenze werden beim State-Aufbau geprüft; bei jedem Abruf prüft die sichere Artefaktfassade Dateiidentität, Länge und SHA-256 erneut. Externe HTTPS-Ressourcen bleiben reine Metadaten-Hrefs und besitzen bewusst keinen Byte-Endpunkt.</p>
+<p><code>DeckResourceService</code>, Deck- und Asset-Controller sind jetzt strikt nach Repository- und Package-Modus verdrahtet. Nur der Authoring-Modus behält seine Repository-/Classpath-Kompatibilität. Der Package-Controller liefert versionsgebundene Hrefs mit MIME, ETag und immutable Cache-Control; die unversionierten <code>/ai-assets</code>- und Goal-Visualization-Aliasse lösen ausschließlich den exakten Paket-<code>publicUrl</code> auf und erzwingen Revalidierung. <code>/data/**</code> wird im Package-Modus explizit mit 404 beantwortet, damit der generische Static-Handler nicht zum versteckten fachlichen Classpath-Fallback wird. Der öffentliche Curriculum-Katalog enthält nun geordnete, pfadfreie Deck- und Ressourceneinträge einschließlich ihrer Hrefs, aber keine Store- oder Artefaktpfade. Auch die Backend-SRS-Logik lädt Karten zielgebunden aus demselben State.</p>
+<p>Qualitätsnachweis:</p>
+<ul>
+<li>State-, Service-, Controller-, Routing-, Modus- und Konfigurationstests für exakte Version/Deck/Locale-/Goal-/Resource-Auflösung, falsche SRS-Bindungen, semantische Manifestdrift, Traversal, externe Metadaten, Immutabilität, ETag/Cache und explizit blockierte Static-Fallbacks;</li>
+<li>Manipulation eines bereits geladenen Bildes wird beim nächsten Abruf durch die erneute SHA-256-Prüfung erkannt, ohne Repository-/Classpath-Ersatz;</li>
+<li>bestehender vollständiger Verified-Recall-/SRS-Workflow im Repository-Modus unverändert grün;</li>
+<li>reale Store-Probe: 12 Deckvarianten mit 128 Karten, 756 eingebettete Bilder (748 JPEG/8 PNG, 1.695.291.325 Byte), 69 externe Ressourcen, beide Sprachquellen eines Memory-Ziels sowie echte Deck- und Bildbytes verifiziert;</li>
+<li>vollständiges <code>./run_ci.sh</code> auf dem final dokumentierten Stand grün.</li>
+</ul>
+<p>Bewusste Grenze: Der Backend-Katalog und die Bytes sind jetzt paketautoritative Runtime-Daten. Das bestehende Frontend liest Roots, Offerings und Ressourcen aber noch nicht durchgängig aus diesem Katalog; diese Umschaltung ist DPK-006c-e. Die paketgebundene Quellenanzeige folgt in DPK-006c-f, der hermetische Nachweis ohne Curriculum-Checkout und fachliche App-Fallbacks in DPK-007. Offene fachliche und rechtliche Human-Gates bleiben unverändert.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-006c-e">Abgeschlossener Teilschritt: DPK-006c-e</h2>
+<p>DPK-006c-e schaltet den Browser-Consumer auf den pfadfreien Runtime-Katalog um. Der neue strikt validierende Adapter kennt genau drei Zustände: Ein gültiger Katalog der API-Version <code>1.1</code> aktiviert den Package-Modus, ausschließlich ein HTTP-<code>404</code> den Repository-Kompatibilitätsmodus; unbekannte Versionen, ungültige Cross-References, Mehrdeutigkeiten, unsichere Hrefs, Netzwerk- und Serverfehler bleiben fail-closed. Ein solcher Fehler darf weder <code>/match</code> noch <code>/data</code>, rohe Bildpfade oder andere fachliche Legacyprovider aktivieren.</p>
+<p>Im Package-Modus werden gespeicherte oder verlinkte Landscape-IDs ausschließlich gegen die katalogisierten Landscapes und Roots normalisiert. Composition Views kommen nur noch über eine exakt deklarierte Offering-ID und <code>GET /api/ui/composition-views/offerings/{offeringId}</code>. Eine leere fachliche Konfiguration wählt das katalogisierte Default-Offering; explizite Offering-IDs aus Profil oder URL sowie vollständig abgeleitete Gymnasium-Scopes müssen exakt zum Katalog passen. Unbekannte oder nur teilweise passende Scopes fallen nicht auf <code>/match</code> oder eine freie Merge-Heuristik zurück. Repositorybetrieb behält seinen bisherigen Authoring-Pfad ausdrücklich als getrennten Zweig.</p>
+<p>Alle drei SRS-Verbraucher erhalten Deck-URLs nun über die exakte Katalogidentität aus Landscape, genau einem <code>srs-deck:&lt;deckId&gt;</code>-Tag und Locale <code>de-DE</code> beziehungsweise <code>en</code>. Goal Cards lösen eingebettete Visualisierungen über Goal-Eigentum und katalogisierten <code>publicUrl</code> auf den paket- und versionsgebundenen Resource-Href auf; externe Tools bleiben katalogisierte HTTPS-Metadaten. Die öffentliche Backend-Projektion verwendet dafür den autoritativen Katalogtyp <code>external-tool</code> statt des detaillierteren Authoring-Typs <code>tool</code>. GPT-Verifikationsprompts betten Bilder nicht mehr als Chat-Images ein, sondern verweisen bei visueller Orientierung auf die normale Cockpit-Ansicht.</p>
+<p>Qualitätsnachweis:</p>
+<ul>
+<li>ausführbarer TypeScript-Selbsttest für fremde Sentinel-Roots, Default-/exakte Offerings, de-/en-Decks, eingebettete und externe Ressourcen, API-Origin-Auflösung und Repository-Kompatibilität;</li>
+<li>Negativmatrix für unbekannte API-Version, falsche Roots/Default-Offerings/Views, doppelte Scope-/Deck-/Resource-Bindungen, unsichere Hrefs sowie Netzwerk-/Serverfehler ohne Legacy-Fallback;</li>
+<li>Backend-API-Integration über echte Package-Services für Katalog → Root → Default-Offering → View, Deck und Bild, unbekanntes Offering und gesperrtes <code>/data/**</code>;</li>
+<li>konditionales Controller-Gate für Package- gegenüber Repository-Modus, TypeScript, ESLint und vollständiges <code>./run_ci.sh</code> grün.</li>
+</ul>
+<p>Bewusste Grenze: Die Quellenbegründungen in <code>GoalCard</code> stammen noch aus zwei eingebrannten, zusammen rund 69 MB großen Mathematik-/Physik-Indizes und dürfen deshalb noch nicht als hermetischer Package-Pfad gelten. Ihre zielgenaue, generationgebundene Ablösung ist DPK-006c-f. Erst DPK-007 beweist den vollständigen Betrieb ohne Curriculum-Checkout und fachliche App-Fallbacks. Offene fachliche und rechtliche Human-Gates bleiben unverändert.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-006c-f">Abgeschlossener Teilschritt: DPK-006c-f</h2>
+<p>DPK-006c-f löst die letzte direkt eingebrannte fachliche Frontendquelle ab. Catalog API <code>1.2</code> veröffentlicht für jedes Paket mit SourceGoal-Evidenz eine pfadfreie Discovery aus Paket, Version, Ziellandschaft, geprüften Umfangszahlen und den tatsächlich verfügbaren Ziel-/Jurisdiktionspaaren. Der Browser zeigt das Quellen-Symbol ausschließlich aus dieser Discovery und lädt erst beim Öffnen genau einen Goal-Beleg. Der Request bindet die aktive Kataloggeneration als URL-Parameter; dadurch bleiben ETag und <code>immutable</code>-Cache auch nach einer späteren Lock-Aktivierung korrekt getrennt. Fehler, leere Evidenz und ungültige Antworten bleiben ohne Repository-Fallback geschlossen.</p>
+<p>Der Backend-State liest ausschließlich das manifestgebundene <code>source-goal-reference-index</code>-Artefakt. Er prüft Rolle, Schema, logische Bindung, sichere Bytes, UTF-8-Text-Hashes, alle Counts sowie Collection-, Landscape-, Document-, Mapping- und Goal-Cross-References. Routen bevorzugen <code>exact</code> vor <code>partial</code> und erhalten innerhalb eines Typs die deklarierte globale Mapping-Kantenreihenfolge. Bekannte Ziele und Mappingziele sind auf die deklarierte Ziellandschaft begrenzt. Ein Paket ohne dieses optionale Evidenzartefakt bleibt lauffähig und veröffentlicht keine Discovery; ein Duplikat oder eine inkonsistente Bindung blockiert den Start.</p>
+<p>Die bisherigen Mathematik-/Physik-Indizes bleiben nur noch als je eine öffentliche Repository-Authoring-Kompatibilitätsdatei erhalten. Ihre zusammen rund 69 MB großen Duplikate unter <code>app/src/data</code> wurden entfernt. Der Produktionsbuild enthält statt zweier großer Hash-Assets nur einen etwa 2,73-kB großen dynamischen Repository-Loader; weder JavaScript noch PWA-Precache enthalten die Payloads. Die UI benennt <code>sourceText</code> korrekt als geprüfte quellennahe Formulierung und behauptet ausdrücklich kein wörtliches amtliches Zitat.</p>
+<p>Qualitätsnachweis:</p>
+<ul>
+<li>Backend-State-, Controller-, Modus-, Konfigurations- und API-Kettentests für 200/204/400/404, Generation, Cache, optionale/duplizierte Rollen, Hash-/Count-/Join-Drift, Ziellandschaft und Routenauswahl;</li>
+<li>reale 1,7-GB-Store-Probe mit 31 Collections, 55 Dokumenten, 9.977 SourceGoals, 33.382 Mappingkanten, 869 belegten Zielgoals und einer echten <code>DE-BY</code>-<code>exact</code>-Route;</li>
+<li>ausführbare Frontend-Selftests für Catalog Discovery, Jurisdiktions-/Generationsbindung, strikte Payloadprüfung und sämtliche fail-closed Fehlerpfade;</li>
+<li>Vite-/PWA-Build-Gate gegen Hash-Assets, Inline-Payloads und Precache-Einträge sowie Repository-Index-/Generated-Report-Konsistenz;</li>
+<li>TypeScript, ESLint, Diff-Gates und vollständiges <code>./run_ci.sh</code> grün.</li>
+</ul>
+<p>Bewusste Grenze: DPK-006c-f beweist die einzelnen Backend- und Browserverträge, aber noch nicht den gesamten gestarteten Anwendungsfluss in einer Umgebung ohne Curriculum-Checkout und ohne fachliche statische App-Daten. Diesen Dateizugriffs-/Resource-Trace erbringt DPK-007. Offene Source-Text-, Bildfachlichkeits- und Rechte-Reviews werden durch die technische Quellenanzeige nicht geschlossen.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-007">Abgeschlossener Teilschritt: DPK-007</h2>
+<p>DPK-007 schließt den Nachweis, dass das JSON-Paket tatsächlich alleiniger fachlicher Input einer gestarteten SkillPilot-Instanz sein kann. Ein eigener Package-Consumer-Frontendbuild setzt <code>publicDir: false</code>, übernimmt daher weder Decks noch Visualisierungen oder Quellenindizes aus <code>app/public</code> und wird als kleiner, hashgebundener App-Shell-Build in eine schlanke Java-Runtime assembliert. Die Backend-Assembly enthält nur Produktionsklassen, Runtime-Abhängigkeiten und den H2-Treiber für den isolierten Test; der rund 3 GB große Repository-Static-Baum wird nicht kopiert.</p>
+<p>Der Runner startet diese Assembly mit dem real provisionierten 1,7-GB-Mathematikpaket in getrennten User-, PID-, Netzwerk-, IPC- und UTS-Namespaces. <code>bubblewrap --clearenv</code> und eine feste Allowlist verhindern geerbte Hostkonfiguration. Nur Loopback ist erreichbar, der content-adressierte Package-Store ist read-only eingebunden und der vollständige Python-/Java-/HTTP-Probe-/Node-/Chromium-Prozessbaum wird mit <code>strace -f -yy</code> protokolliert. Das Repository selbst wird im Namespace verdeckt. Fünf explizite Poison-Lanes für <code>curricula/</code>, <code>app/public/data</code>, <code>app/src/data</code>, den QA-Status unter <code>docs/</code> und statische Backenddaten blieben im realen Trace unbeobachtet.</p>
+<p>Der geschlossene funktionale Satz prüft dynamisch aus dem Katalog, ohne fest codierte Mathematik-IDs:</p>
+<ul>
+<li>App-Shell, genau ein aktives Paket, Kataloggeneration, Root-Landschaft und transitive Runtime-Closure;</li>
+<li>Default-Offering und dieselbe Composition View über den Scope-Matcher;</li>
+<li>einen neu angelegten Lernenden mit dynamisch gesetztem Paketcurriculum und 213 nichtleeren Frontier-Zielen, sämtlich innerhalb der Paket-Closure;</li>
+<li>ein katalogisiertes Deck, eine echte Verified-Recall-Abfrage, Bildbytes über versionierte Route und öffentlichen Alias sowie den geladenen Migrationsträger;</li>
+<li>generationgebundene Source-Evidence einschließlich Negativpfaden und 404 für Legacy-, Repository- und rohe Paketdatenrouten.</li>
+</ul>
+<p>Ein echter Playwright-1.59.1-/Chromium-Fluss rendert dabei paketabgeleiteten Lernzieltext aus Catalog, Closure und View. Ein getrennt simulierter Catalog-404-Fall zeigt den stabilen Fail-closed-Zustand und löst weder Landscape- noch View-Fallbackrequests aus.</p>
+<p>Der externe <code>package-consumer-smoke-report</code> bindet den Nachweis an ZIP-Größe und -SHA, Paket-/Release-ID, Manifest, <code>contentDigest</code>, Closure- und Definition-Index-Digest, den vollständigen aktiven Lock, dessen Generation, den policy-gepinnten Runner, sechs Runner-Helper sowie Frontend-, Backend-, Konfigurations-, Trace-, Assembly- und Evidence-Tree-Hashes. Readiness-Evaluator <code>1.3.0</code> führt ausschließlich diesen Runner selbst aus, bindet Exitcode, Timeout und Frische und berechnet beide kanonischen Bäume unabhängig neu. Vorhandene externe Reports bleiben unbezeugt. No-follow-/atomare Ausgabe und vollständige Pfaddisjunktheit schützen ZIP, Store, Arbeitsbaum und Ontologie-Checkout bereits vor der ersten Mutation. Die Replay-/Forgery-Matrix verwirft abweichende ZIPs, Locks, Generationen, App-Artefakte, Isolationsergebnisse, Checkreihenfolgen, nichtkanonisches JSON und 29 gezielte Consumer-Fälschungen. Ein bestandener Consumer-Gate überschreibt ausdrücklich keine offenen Rechte- oder Fachfreigaben: der reale Kandidat bleibt korrekt <code>not-ready-incomplete</code>.</p>
+<p>Der letzte direkte Repository-Probe im Package-Modus wurde ebenfalls entfernt: <code>CurriculaService</code> erhält die Qualitätsprojektion nun über source-spezifische Provider. Nur Repository-Modus liest <code>docs/qa-ci/status/curriculum-quality-status.json</code>; Package-Modus kennt diese Pfade nicht und liefert bis zu einem eigenen Paketartefakt eine definierte leere Projektion.</p>
+<p>Qualitätsnachweis:</p>
+<ul>
+<li>realer 1.737.052.540-Byte-Kandidat mit 15/15 funktionalen Prüfungen, fünf unbeobachteten Poison-Lanes, read-only Store und loopback-only Namespace;</li>
+<li>rund 28-MB-Datei-/Netzwerk-Trace ohne Checkout- oder externen Netzwerkzugriff;</li>
+<li>61 Manifest-, 23 Provisioner-, sieben Readiness-, acht Validator- und 29 Consumer-Negativfälle einschließlich Repack-Replay;</li>
+<li>externe <code>assembly-manifest.json</code> und <code>evidence-bundle-manifest.json</code>; lokal bleiben die verifizierten Bäume erhalten, CI lädt Reports, beide Manifeste und das Evidence-Bundle für 14 Tage hoch, nicht aber die große Assembly;</li>
+<li>Package-/Repository-Provider-, Poison- und Spring-Kontexttests, TypeScript, Lint, Diff-Gates und vollständiges <code>./run_ci.sh</code> grün.</li>
+</ul>
+<p>Die damalige technische Bildlücke ist in DPK-007a geschlossen. Resource-Index, Quality-Evidence, <code>contentDigest</code>, ZIP-Identität und die späteren Variantenbindungen verwenden seitdem ausschließlich den unveränderlichen Kandidaten <code>0.1.0-conformance.3</code>. Fachliche Bildfreigabe, Bild-/Datenrechte und Source-Text-Review bleiben menschliche Release-Gates.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-004b">Abgeschlossener Teilschritt: DPK-004b</h2>
+<p>Ziel ist die vollständige, verlustfreie Mathematik-Conformance-Kompilation: Neben den Runtime-Artefakten aus DPK-004a werden jetzt auch die veröffentlichungsrelevanten Mappings, amtlichen Quellen, SourceGoal-Belege und Quality-Entscheidungen strikt projiziert und in denselben fachlichen <code>contentDigest</code> aufgenommen.</p>
+<p>Die Paketrolle bleibt generisch und konsumierbar; die spezifischere <code>normalizationRole</code> wählt das geschlossene Payload-Schema und die Feldsemantik:</p>
+<table>
+<thead>
+<tr>
+<th>Paketrolle</th>
+<th><code>normalizationRole</code></th>
+<th>Output</th>
+<th><code>contentDigest</code></th>
+<th>Runtime-Closure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mapping</code></td>
+<td><code>source-to-canonical-mappings</code></td>
+<td><code>data/mappings/source-to-canonical.json</code></td>
+<td>enthalten</td>
+<td>ausgeschlossen</td>
+</tr>
+<tr>
+<td><code>source-index</code></td>
+<td><code>official-source-index</code></td>
+<td><code>data/sources/source-index.json</code></td>
+<td>enthalten</td>
+<td>ausgeschlossen</td>
+</tr>
+<tr>
+<td><code>source-goal-reference-index</code></td>
+<td><code>source-goal-reference-index</code></td>
+<td><code>data/sources/source-goal-references.json</code></td>
+<td>enthalten</td>
+<td>ausgeschlossen</td>
+</tr>
+<tr>
+<td><code>quality-evidence</code></td>
+<td><code>release-quality-evidence</code></td>
+<td><code>metadata/quality/release-quality-evidence.json</code></td>
+<td>enthalten</td>
+<td>ausgeschlossen</td>
+</tr>
+</tbody>
+</table>
+<p>Diese Trennung ist absichtlich: Publikations-Evidenz gehört zur fachlichen Identität und muss den JSON↔OWL-Roundtrip bestehen, ist aber kein navigations- oder frontier-relevanter Runtime-Input. Der reale Closure-Report enthält deshalb keine der vier Publikationsrollen, weiterhin aber die vollständigen 2.402 Runtime-Definitionen und 18.815 harten/weichen Referenzrecords.</p>
+<p>Realer Publikationsnachweis:</p>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Geprüfter Umfang und Entscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mapping-Truth</td>
+<td>31 Collections, 10.021 autoritative Review-Entscheidungen und 33.382 daraus projizierte <code>exact</code>-/<code>partial</code>-Kanten</td>
+</tr>
+<tr>
+<td>Review-Mappingzeilen</td>
+<td>33.334 Kanten; 48 autoritative Entscheidungskanten fehlen dort, 23 explizite Decision-vs-Row-Konflikte werden zugunsten der Decision aufgelöst und 2.599 nicht auf Decision-Ebene typisierte Kanten erhalten ihren edge-spezifischen Reviewwert; 0 bleiben unaufgelöst</td>
+</tr>
+<tr>
+<td>Legacy-Mappings</td>
+<td>2.539 Zeilen bleiben Rückwärtskompatibilitäts-/Auditmaterial; 695 Source-IDs liegen außerhalb historischer Membership, 8 Ziele hängen; keine Legacy-Zeile wird Mapping-Truth</td>
+</tr>
+<tr>
+<td>Amtliche Quellen</td>
+<td>31 Source Collections, 52 Curriculum-Dokumente, 3 amtliche Zusatzdokumente, 9.977 Source Goals und 16 Jurisdiktionen</td>
+</tr>
+<tr>
+<td>Quality-Evidence</td>
+<td>754 Atomicity-, 754 Memory-Goal-, 64 aktive Karten- und 756 aktive Visualisierungsentscheidungen, zusammen 2.328 veröffentlichte Entscheidungen; Atomic-Scope 754, davon 1 ohne aktives Bild</td>
+</tr>
+<tr>
+<td>Visualisierungsfreigabe</td>
+<td>136 human-approved, 620 aktive Reviews offen und 1 Atomic Goal ohne Bild; deshalb ehrlich <code>publicationStatus: not-ready</code></td>
+</tr>
+</tbody>
+</table>
+<p>Die Feldregistry umfasst 454 Regeln: 323 Runtime-Regeln, 130 Regeln für die vier Publikationsnormalformen und einen historischen generischen Eintrag. Eine hashgebundene Rollentabelle typisiert 52 tatsächliche Curriculum-Dokumente als Core-<code>Lehrplan</code> und drei amtliche Zusatzdokumente als <code>sp:OfficialSourceDocument</code>; unbekannte, ungenutzte oder widersprüchliche Rollen scheitern fail-closed. Source Goals verwenden konservativ Core-<code>Curriculares Element</code>, Source→Canonical-Kanten Core-<code>CE-Verweis</code>; nur <code>exact</code>/<code>partial</code> benötigt eine kleine SkillPilot-Erweiterung. Quality-Evidence bleibt vollständig Anwendungsevidenz und erzeugt keine falschen Core-Aussagen.</p>
+<p>Der historische DPK-004b-Kandidat <code>org.skillpilot.curriculum.de.gymnasium.mathematik@0.1.0-conformance.2</code> verwendete das damalige Publikationsprofil <code>1.1.0</code>. Sein Inhaltsindex umfasste 111 logische Artefakte plus 756 Binärrecords und ergab:</p>
+<p><code>sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60</code></p>
+<p>Die fail-closed Scalar-Prüfung hat dabei reale PDF-/OCR-Altlasten gefunden: C0-Steuerzeichen und nicht gepaarte UTF-16-Surrogate wurden in den Authoring-Quellen bereinigt. Die Release-Kompilation akzeptiert solche Werte nicht und ersetzt sie nicht stillschweigend durch Surrogate oder bereinigte Texte.</p>
+<p>Die 9.977 SourceGoal-Records sind eine verlustfrei veröffentlichte, reviewte und quellennahe Authoring-Projektion, keine pauschale Behauptung wortgleicher PDF-Zitate. Der aktuelle Bestand enthält weiterhin OCR-/Transliterationsschuld; nach zusätzlicher hashgebundener PDF-Projektion bleiben 479 <code>sourceText</code>-Werte ohne maschinell hinreichenden zusammenhängenden Nachweis. Vor einer Release-Promotion bleibt deshalb eine eigene Source-Verification-QA-Lane offen, auch wenn JSON↔OWL den veröffentlichten Wortlaut bereits exakt erhält.</p>
+<p>Gezielte QS:</p>
+<ul>
+<li>Compiler und unabhängiger Validator rekonstruieren und prüfen alle vier Publikationsartefakte getrennt;</li>
+<li>9 gültige Fixture-Dokumente, 22 gezielte Negativfälle und 47 benannte Produktions-/Adversarialtests sind grün;</li>
+<li>zwei Realbuilds liefern denselben Dateibaum, dieselben 111+756 Inhaltsrecords und denselben <code>contentDigest</code>;</li>
+<li>unbekannte oder nicht beobachtete Feldklassifikationen, Mapping-Truth-Abweichungen, Legacy-Leakage, falsche Counts, Source-Join-Verlust, Quality-Fingerprint-/Asset-Abweichungen und Publikationsrollen in der Runtime-Closure scheitern fail-closed;</li>
+<li>das vollständige <code>./run_ci.sh</code> ist auf dem final dokumentierten Stand grün.</li>
+</ul>
+<p>Bewusste Grenze: DPK-004 erzeugt weiterhin ein entpacktes Conformance-Modell, kein installierbares ZIP. Manifest, paketlokaler Schema-Katalog, Lizenzen, komplettes Dateiinventar, Bildmaterialisierung und fertige Archivprüfung beginnen mit DPK-005.</p>
+<h2 id="abgeschlossener-teilschritt-dpk-004a">Abgeschlossener Teilschritt: DPK-004a</h2>
+<p>Ziel ist ein reales, strikt validiertes und reproduzierbares Mathematik-Release-Modell zwischen Authoring-Quellen und späterem ZIP. Dieser Teilschritt beweist die Runtime-relevante Kompilation zunächst als entpackten Verzeichnisbaum unter <code>tmp/</code>; er behauptet ausdrücklich noch keine Paket-Readiness.</p>
+<p>Scope:</p>
+<ul>
+<li>strikte, geschlossene Payload-Schemas für kompilierte Landschaften, Composition Views samt Index, Kartendecks samt Index und den Ressourcenindex;</li>
+<li>versionierte Verträge für typisierte Definitionsdigests, harte Referenz-Closure, Ownership und eingebettete Fragmente, Definitionkonflikte sowie Goal-Migrationen mit fail-closed Mastery-/History-Policy;</li>
+<li>ein explizites Mathematik-Buildprofil sowie ein selbst hash- und Namespace-hash-gebundenes Core-first Ontologieprofil, das Repository, Checkout, FWU-Core-IRI, Commit, Quellpfad und Datei-Hash bindet und alle verwendeten Core-Terme gegen die gepinnten OWL-Bytes prüft;</li>
+<li>eine fachlich geprüfte, fingerprint-gebundene Semantic-Kind-Ledger statt Titel-, ID- oder Pfadheuristiken: 1.079 Ziele sind vollständig als curriculare Atome/Bereiche, Programmstruktur, Übung/Assessment, Memory, Orientierung oder Runtime-Support klassifiziert;</li>
+<li>vollständige Feldsemantik für die in diesem Teilschritt kompilierten Runtime-Rollen einschließlich <code>none</code>, Identität, harter und weicher Referenzsemantik;</li>
+<li>deterministische Mathematik-Kompilation mit expliziten Pfadumschreibungen, ohne basename-basierte Kollisionen, sowie paketpfadneutralem semantischem Inhaltsindex;</li>
+<li>lexikalisch abgesicherter Output strikt unter <code>tmp/</code>, privater Staging-/Rename-Promotion und Regressionstests gegen direkte wie über Elternpfade eingeschleuste Symlink-Ziele;</li>
+<li>Fixpunkt-Closure über alle als hart registrierten Referenzen, kanonische Definitions- und Closure-Digests, Konfliktprüfung und initiales, leeres Migrations-Baseline-Artefakt;</li>
+<li>vollständige Runtime-Discovery über Katalog, View- und Card-Index; referenzierte Assessment-Quellen werden in paketlokale Zielpfade kopiert;</li>
+<li>alle aktiven Bildreferenzen werden als Binärrecords mit Bytezahl und SHA-256 in den gemeinsamen <code>contentDigest</code> aufgenommen; externe Tool-Links bleiben explizite, nicht runtime-erforderliche Ressourcen;</li>
+<li>unabhängige Modellvalidierung, reproduzierbarer Doppelbuild, fünf ausführbare Release-Modell-Fixtures mit acht Mutationen, eine Compiler-Emissionsprobe und 25 benannte Selbsttests einschließlich Programmstrukturzyklen, Sonderdatei-Ablehnung und des schema-kompatiblen Felds <code>kompetenzen</code>.</li>
+</ul>
+<p>Realer Mathematik-Nachweis:</p>
+<table>
+<thead>
+<tr>
+<th>Inhalt</th>
+<th style="text-align: right;">Geprüfter Umfang</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Landschaften / Ziele</td>
+<td style="text-align: right;">1 / 1.079</td>
+</tr>
+<tr>
+<td>Program Units / Goal Placements / Kompetenzkatalogeinträge</td>
+<td style="text-align: right;">14 / 249 / 6</td>
+</tr>
+<tr>
+<td>Composition Views</td>
+<td style="text-align: right;">88</td>
+</tr>
+<tr>
+<td>Kartendecks / Karten</td>
+<td style="text-align: right;">12 / 128</td>
+</tr>
+<tr>
+<td>Ressourcenlinks</td>
+<td style="text-align: right;">825</td>
+</tr>
+<tr>
+<td>eingebettete Bilder / Bildbytes</td>
+<td style="text-align: right;">756 / 1.695.291.325</td>
+</tr>
+<tr>
+<td>externe Ressourcen</td>
+<td style="text-align: right;">69</td>
+</tr>
+<tr>
+<td>ungelöste harte Referenzen / externe Runtime-Abhängigkeiten / Definitionskonflikte</td>
+<td style="text-align: right;">0 / 0 / 0</td>
+</tr>
+</tbody>
+</table>
+<p>Bewusste Nicht-Ziele dieses Teilschritts:</p>
+<ul>
+<li>der Output ist noch kein <code>full-standalone-v1</code>-ZIP: Paketmanifest, paketlokaler Schema-Katalog, vollständiges Dateiinventar, Lizenzen, Checksummendatei und fertige Archivgrenzen folgen in DPK-005;</li>
+<li>die 756 Bilder werden in DPK-004a gehasht und semantisch gebunden, aber noch nicht in den entpackten Output kopiert; die ZIP-Materialisierung folgt in DPK-005;</li>
+<li>Mapping-, Quellen- und Quality-Evidenz waren bewusst auf DPK-004b verschoben und sind dort inzwischen vollständig klassifiziert und kompiliert;</li>
+<li>noch kein FWU-OWL-Exporter, isolierter Ontologie-Reverse-Compiler oder öffentlicher Dual-Release-Äquivalenznachweis;</li>
+<li>noch kein Package Loader und kein hermetischer SkillPilot-Consumer-Test.</li>
+</ul>
+<p>Abnahme:</p>
+<ul>
+<li>das reale Mathematikprofil kompiliert exakt den oben ausgewiesenen Umfang in alle strikten Runtime-Artefakte;</li>
+<li>unbekannte Felder, veraltete Semantic-Kind-Fingerprints, falsche Digests, fehlende Ziele, Views, Karten oder Bilder, ungelöste harte Referenzen, fremde Runtime-Abhängigkeiten und widersprüchliche Definitionen scheitern fail-closed;</li>
+<li>zwei unabhängige Builds liefern denselben semantischen Inhalt und denselben Dateibaum;</li>
+<li>gezielte Prüfungen und anschließend <code>./run_ci.sh</code> sind grün;</li>
+<li>der geprüfte Stand wird als eigener Git-Commit festgehalten.</li>
+</ul>
+<p>Die strikte Closure-Prüfung hat dabei zwei bislang unentdeckte Altlasten im Authoring-Bestand sichtbar gemacht und im selben grünen Schritt bereinigt: ein <code>goalPlacement</code> auf einen bereits entfernten Prozesskompetenz-Cluster sowie zehn kanonische Mathematik-Decks mit einer veralteten Landscape-ID.</p>
+<p>Details zu Output, Grenzen und QS: <a href="../../qa-ci/curriculum-release-model-conformance/">Curriculum Release Model Conformance</a>.</p>
+<h2 id="abgeschlossener-schritt-dpk-003">Abgeschlossener Schritt: DPK-003</h2>
+<p>Ziel ist ein ausführbarer, fail-closed Vertrag dafür, wann JSON- und FWU-OWL-Variante fachlich gleich sind und wie beide von einem gemeinsamen Release-Index gebunden werden.</p>
+<p>Scope:</p>
+<ul>
+<li>striktes Schema und versionierte Baseline-Registry für Feldklassen, Kardinalität, Sprache, Missing-/Null-/Default-Semantik, dynamische Map-Keys, Normalisierung, Core-first RDF-Abbildung und exakte Reverse-Abbildung;</li>
+<li>verbindliche Ordnungssemantik mit expliziten RDF-Positionen für Goals, direkte <code>contains</code>-/<code>requires</code>-Kanten, Resource Links, Composition-View-Kinder, Karten und Scoring-Schritte;</li>
+<li>begrenzte, begründete <code>registered-canonical-json-literal</code>-Lanes statt eines vollständigen JSON-Landschaftscarriers;</li>
+<li>versioniertes Normalisierungsprofil und semantischer Inhaltsindex, der logische Artefakte sowie Bild-/Binärressourcen paketpfadneutral in einen gemeinsamen <code>contentDigest</code> überführt;</li>
+<li>strikte Schemas für Äquivalenzreport und externen Dual-Release-Index einschließlich FWU-Core-, Toolchain-, Feldabdeckungs-, Graph-/View-/Card-/Asset-, Ontologie-, Consumer-, Reproduzierbarkeits-, Provenienz- und Signaturbindung;</li>
+<li>unabhängiger Validator mit positiven Fixtures, Hash-/Cross-Binding-Prüfung, Digest-Neuberechnung und adversarialer Mutationsmatrix;</li>
+<li>lokale und gehostete CI-Integration sowie zentrale QA-Dokumentation.</li>
+</ul>
+<p>Bewusste Nicht-Ziele dieses Schritts:</p>
+<ul>
+<li>die 17 Registry-Einträge frieren die kritischen Mappingfamilien und Ordnungsentscheidungen ein; die vollständige Abdeckung aller heute kompilierten Mathematikfelder entsteht erst in DPK-004;</li>
+<li>die positiven Dual-Release-Fixtures sind synthetische Conformance-Beispiele und kein realer Curriculum-Release;</li>
+<li>noch kein produktives JSON- oder FWU-OWL-ZIP, kein produktiver <code>contentDigest</code>, kein FWU-OWL-Paketmanifest und kein isolierter Reverse Compiler;</li>
+<li>bestehende Legacy-Roundtrip-Berichte bleiben Evidenzquellen und werden nicht als neuer Äquivalenzreport ausgegeben;</li>
+<li>die Readiness-Auswertung kann weiterhin nicht <code>ready</code> liefern.</li>
+</ul>
+<p>Abnahme:</p>
+<ul>
+<li>alle fünf authored Vertragsdokumente bestehen ihre strikten Draft-2020-12-Schemas und semantischen Cross-Invarianten;</li>
+<li>ein Inhaltsindex berechnet reproduzierbar den erwarteten gemeinsamen Digest und bindet Registry sowie Normalform bytegenau;</li>
+<li>vollständige Registry-Abdeckung, identische drei Normalformen, geordnete Graph-/View-/Card-Semantik, bytegleiche Bilder, Ontologie-QS, hermetische Consumer-Tests und zwei reproduzierbare Builds sind notwendige Bedingungen für <code>passed</code>;</li>
+<li>der Vertrag definiert eine nicht selbstreferenzielle Signing-Projection; bis zur kryptographischen Prüfung in DPK-011 weist der aktuelle Gate jeden <code>verified</code>-Claim und jede <code>stable</code>-Promotion fail-closed zurück;</li>
+<li>gezielte Prüfungen und anschließend <code>./run_ci.sh</code> sind grün;</li>
+<li>der geprüfte Stand wird als eigener Git-Commit festgehalten.</li>
+</ul>
+<h2 id="abgeschlossener-schritt-dpk-002">Abgeschlossener Schritt: DPK-002</h2>
+<p>Ziel ist die paketlokale, vollständig explizite Discovery- und Schemaauflösung sowie eine Readiness-Aussage, die Legacy-Erfolge nicht mit Standalone-Fähigkeit verwechselt.</p>
+<p>Scope:</p>
+<ul>
+<li>strikter Runtime-Katalogvertrag für Root-Landschaften, interne Rollen, angebotene Scopes, kompilierte View-Auflösung, Decks, Ressourcen, Capabilities und Dependency-Verweise;</li>
+<li>paketlokaler Offline-Schema-Katalog als gehashte Resolver-Tabelle ohne Remote-Fetch oder paketgesteuerte Trust Root;</li>
+<li>vier byte-, hash-, rollen- und größengebundene Bootstrap-Verträge sowie explizite <code>validationSchemaId</code>-Zuordnung der beiden Katalogartefakte;</li>
+<li>versionierte Readiness-Policy und Report-Schema mit fail-closed Pflichtchecks;</li>
+<li>unabhängiger Evaluator, der heutige Subject-Exports ausdrücklich als <code>not-ready-legacy</code>, partielle Zielclaims als <code>invalid</code>, fremde Verträge als <code>unsupported</code> und formal erkennbare, aber noch nicht vollständig bewiesene Zielkandidaten als <code>not-ready-incomplete</code> klassifiziert;</li>
+<li>positive und gezielt negative Vertrags-Fixtures sowie lokale und gehostete CI-Gates;</li>
+<li>echte ZIP-Sicherheits-, Manipulations-, Policy-, Forgery-, Ressourcenlimit- und Exitcode-Tests;</li>
+<li>ZIP-hashgebundene Readiness-Berichte, aus denen Legacy-Validator, Publikationsindex und finales Release-Gate ihre Zielaussage ableiten.</li>
+</ul>
+<p>Bewusste Nicht-Ziele dieses Schritts:</p>
+<ul>
+<li>noch keine Ausgabe eines <code>full-standalone-v1</code>-ZIPs durch den Subject-Exporter;</li>
+<li>noch keine Migration aller Landschafts-, View-, Karten-, Ressourcen-, Closure- und Migrationsschemas in den öffentlichen Offline-Katalog;</li>
+<li>noch keine vollständige Schema-/Semantikvalidierung aller Runtime-Payloads, semantische Digestberechnung oder transitive Closure-Prüfung;</li>
+<li>noch kein Package Loader und kein hermetischer Consumer-Smoke-Test;</li>
+<li>bewusst keine künstliche <code>ready</code>-Fixture, solange diese Gates fehlen.</li>
+</ul>
+<p>Abnahme:</p>
+<ul>
+<li>Runtime- und Schema-Katalog bestehen ihre strikten Schemas und semantischen Referenzprüfungen;</li>
+<li>Schema-Auflösung erfolgt ausschließlich gegen vorab gehashte Paketdateien und benötigt kein Netzwerk;</li>
+<li>Duplicate Keys, IDs/Pfade/Hashes, Limits, unbekannte Referenzen und unvollständige Katalogabdeckung sind negativ getestet;</li>
+<li>heutige Legacy-Manifeste bleiben trotz grüner Legacy-QS <code>not-ready-legacy</code>;</li>
+<li>ein partieller Zielclaim kann niemals als Legacy zurückgestuft werden;</li>
+<li>ein formal korrekter Zielvertrag ohne spätere Pflichtgates bleibt <code>not-ready-incomplete</code>;</li>
+<li>gezielte Vertragsprüfungen und anschließend <code>./run_ci.sh</code> sind grün;</li>
+<li>der geprüfte Stand wird als eigener Git-Commit festgehalten.</li>
+</ul>
+<h2 id="abgeschlossener-schritt-dpk-001">Abgeschlossener Schritt: DPK-001</h2>
+<p>Ziel ist eine vertrauenswürdige Vertragswurzel für spätere JSON-Runtime- und Ontologiepakete.</p>
+<p>Scope:</p>
+<ul>
+<li>striktes JSON Schema für das JSON-Runtime-<code>package-manifest</code> v1;</li>
+<li>maschinenlesbares Profil <code>full-standalone-v1</code> mit erlaubten Rollen und Cardinalitäten;</li>
+<li>positive und gezielt negative Conformance-Fixtures;</li>
+<li>unabhängiger Validator für Schema, Profil, Pfade, Digestformate, Vertragsbindungen, Rollen, Lizenzauflösung, Größen- und Archivgrenzen sowie Asset-Redistribution;</li>
+<li>Ausführung dieses Validators in <code>./run_ci.sh</code> und den betroffenen GitHub-Workflows;</li>
+<li>diese zentrale, aus den relevanten Doku-Indizes verlinkte Statusseite.</li>
+</ul>
+<p>Bewusste Nicht-Ziele dieses Schritts:</p>
+<ul>
+<li>heutige Subject-Exportpakete werden noch nicht als <code>full-standalone-v1</code> ausgegeben;</li>
+<li>noch kein Runtime-Katalog, Package Loader oder berechneter/verifizierter <code>contentDigest</code>; das Manifest reserviert das Digestfeld bereits als verpflichtenden Vertragspunkt;</li>
+<li>noch keine eingebettete Cross-Subject-Closure;</li>
+<li>noch kein FWU-OWL-Manifest/-Profil, öffentliches Ontologie-ZIP oder Release-Index.</li>
+</ul>
+<p>Diese Grenze ist fachlich wichtig: Das heutige Physikpaket deklariert externe Mathematikziele, enthält ihre Definitionen aber noch nicht. DPK-001 darf deshalb keine Standalone-Fähigkeit vortäuschen.</p>
+<p>Abnahme:</p>
+<ul>
+<li>das Schema ist Draft-2020-12-gültig und strikt;</li>
+<li>die gültige Fixture besteht;</li>
+<li>jede ungültige Fixture scheitert aus dem erwarteten, einzeln geprüften Grund;</li>
+<li>der Validator verwendet das vertrauenswürdige Repository-Schema, nicht unbesehen eine Schemakopie aus einem Paket;</li>
+<li>vorhandene Legacy-Exporter und -Validatoren bleiben unverändert funktionsfähig;</li>
+<li>gezielte Vertragsprüfungen und anschließend <code>./run_ci.sh</code> sind grün;</li>
+<li>der geprüfte Stand wird als eigener Git-Commit festgehalten.</li>
+</ul>
+<h2 id="erreicht">Erreicht</h2>
+<table>
+<thead>
+<tr>
+<th>Schritt</th>
+<th>Ergebnis</th>
+<th>Qualitätsnachweis</th>
+<th>Abschluss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DPK-000</td>
+<td>Bestehenden Export, Roundtrip, Runtime-Kopplungen und neues FWU-Core-Profil analysiert; Zielkonzept beschlossen</td>
+<td>Roundtrip- und Doku-Gates; Baseline <code>./run_ci.sh</code> auf <code>0d419930</code> grün</td>
+<td>2026-07-10</td>
+</tr>
+<tr>
+<td>DPK-001</td>
+<td>Strikten JSON-Manifest-/Profilvertrag v1 mit ausführbarer Conformance-Matrix und lokalen wie gehosteten CI-Gates eingeführt</td>
+<td>Vertragsvalidator: 1 gültige Fixture und 39 gezielte Negativfälle; vollständiges <code>./run_ci.sh</code> lokal, Exit 0</td>
+<td>2026-07-10</td>
+</tr>
+<tr>
+<td>DPK-002</td>
+<td>Explizite Runtime-Discovery, offline und vertrauenswürdig gebundene Schemaauflösung sowie fail-closed Readiness-Klassifikation eingeführt; Legacy-ZIPs bleiben nachweisbar nicht standalone</td>
+<td>Manifest 1/49, Runtime 1/31 + 8 Bindings, Schema-Katalog 1/34 + 12 Bindings, Readiness-Adversarialmatrix, realer Latein-Publikationspfad 37/37; vollständiges <code>./run_ci.sh</code> lokal, Exit 0</td>
+<td>2026-07-10</td>
+</tr>
+<tr>
+<td>DPK-003</td>
+<td>Core-first Feld-/RDF-Semantik, versionierte Normalform mit Inhaltsindex sowie externe Äquivalenz- und Dual-Release-Verträge eingeführt</td>
+<td>5 gültige Dokumente, 17 Registry-Einträge, 54 semantische Mutationstests und 8 Raw-JSON-Fälle; vollständiges <code>./run_ci.sh</code> lokal, Exit 0</td>
+<td>2026-07-10</td>
+</tr>
+<tr>
+<td>DPK-004a</td>
+<td>Reales Mathematik-Authoring verlustfrei in ein striktes, entpacktes Runtime-Release-Modell mit typisierter Fixpunkt-Closure, Semantic-Kind-Ledger, Migration, Ressourcenbindung und gemeinsamem <code>contentDigest</code> kompiliert</td>
+<td>Reales Profil: 1.079 Ziele, 88 Views, 12 Decks/128 Karten, 825 Ressourcenlinks einschließlich 756 gehashter Bilder; 0 ungelöste harte Referenzen, externe Runtime-Abhängigkeiten und Definitionskonflikte; 5 Fixture-Dokumente/8 Mutationen, Compilerprobe, 25 Selbsttests, sicherer Doppelbuild und vollständiges <code>./run_ci.sh</code>, Exit 0</td>
+<td>2026-07-10</td>
+</tr>
+<tr>
+<td>DPK-004b / DPK-004</td>
+<td>Autoritative Mappings, Quellen, SourceGoal-Belege und ehrliche Quality-Evidence als vier digest-relevante, nicht runtime-erforderliche Publikationsartefakte ergänzt; P0 damit fachlich und technisch vollständig</td>
+<td>10.021 Mapping-Entscheidungen/33.382 Kanten, 9.977 Source Goals, 2.328 Quality-Entscheidungen plus 1 explizite Bildlücke, 111+756 Inhaltsrecords; 9 gültige Fixture-Dokumente, 22 Negativfälle, 47 Produktions-/Adversarialtests; gezielte QS und vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-10</td>
+</tr>
+<tr>
+<td>DPK-005a</td>
+<td>Paketweite semantische File-Bindings, kompletter Offline-Trustsatz, deterministischer sicherer ZIP32-Writer sowie Rechte- und Source-Verification-Gates eingeführt</td>
+<td>1/61 Manifestfälle, 22 Schemas, 34+12 Katalogfälle, komplette Readiness-Adversarialmatrix, 756 Asset-/23 Rollenbindungen, 9.493+5 maschinelle Source-Treffer/479 Humanqueue, 22 ZIP-Garantien; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-005b</td>
+<td>Vollständigen <code>full-standalone-v1</code>-Builder und unabhängigen Finished-ZIP-Validator umgesetzt; der reale Gate bindet 913 ZIP-Einträge, 911 Manifestdateien, 756 Bilder und den erwarteten Inhaltsdigest und klassifiziert offene Rechte ehrlich als <code>not-ready-incomplete</code></td>
+<td>Builder-/Validator-Selftests, Real-Plan, Finished-ZIP-Validierung und vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-006a</td>
+<td>Read-only Backend-Consumer für einen exakt gepinnten, vorvalidierten content-adressierten Store mit Validator-v2-Trustkette und unveränderlichem Runtime-Snapshot</td>
+<td>29 fokussierte Backend-Tests; Validator v2 mit 28 Garantien; Readiness 1.2 mit acht Report-Fälschungen; reale 1,7-GB-Loaderprobe; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-006b</td>
+<td>Sicheren Quarantäne-/Streaming-Provisioner, immutable content-addressed Store, externe Betriebsverträge sowie atomare CAS-Aktivierung und Rollback umgesetzt</td>
+<td>Operational 3/23; Provisioner 38 Garantien; reale 1,7-GB-Install-/Verify-/Activate-Strecke und echter Java-Loader; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-006c-a</td>
+<td>Vollständiges manifestgebundenes Runtime-Artefaktinventar, erneut verifizierende Lesefassade und verlustfreie Java-/TypeScript-Modellparität eingeführt</td>
+<td>911 reale Artefakte; absent-vs.-false-/Semantic-/Experiment-/Review-Tests; Limit-/Unknown-Key-/Hashdrift-Proben; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-006c-b</td>
+<td>Landschaften, Root-/Goal-Indizes, amtliche Source-Metadaten und verlustfreie Mehrfach-Mappings ausschließlich aus einer Package-Generation bereitgestellt; Repository-/Classpath-Fallback im Package-Modus entfernt</td>
+<td>13 Compiler-/State-Tests; Poison-/Konfigurationsgates; reale Probe mit 1.079 Zielen, 31 Collections, 55 Dokumenten, 9.977 Source Goals, 10.021 Entscheidungen und 33.382 Kanten; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-006c-c</td>
+<td>Runtime-Katalog, Views und Offerings generationsgebunden und exakt aufgelöst; freie Merge-/Scope-Heuristiken im Package-Modus entfernt und Verbraucher bei nicht angebotenen Scopes fail-closed geschaltet</td>
+<td>State-/Konfigurations-/Controller-/Consumer-Gates; Repository-Regression; reale Probe mit 88 Views und 88 Offerings; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-006c-d</td>
+<td>Decks, Karten und Bilder ziel-, paket-, versions- und generationsgebunden aufgelöst; Package-Modus ohne Repository-, Classpath- oder Static-Data-Fallback</td>
+<td>Resolver-/Binding-/Tamper-/Routing-/Cache-/Modus-Gates; reale Probe mit 12 Decks/128 Karten, 756 Bildern und 69 externen Ressourcen; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-006c-e</td>
+<td>Frontend strikt zwischen Package-, Repository- und Fehlerzustand getrennt und auf katalogisierte Roots, exakte Offerings, Decks, Bilder und externe Ressourcen umgestellt</td>
+<td>TypeScript-Adapter-/Negativmatrix; Backend-API-Kette; Modus-/Fallback-Gates; TypeScript/ESLint; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-006c-f</td>
+<td>Quellenanzeige generationgebunden aus paketierter SourceGoal-Evidenz; keine eingebetteten fachlichen Indizes</td>
+<td>State-/API-/Frontend-Negativmatrix; reale 31/55/9.977/33.382/869-Probe; Build-/Precache-Gates; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-007</td>
+<td>Hermetischen Package-only Mathematik-Consumer einschließlich echter Browserdarstellung und checkout-freiem Trace umgesetzt</td>
+<td>15/15 reale Consumer-Prüfungen, fünf unbeobachtete Poison-Lanes, 29 Fälschungsfälle; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-007a</td>
+<td>Letzte Visualisierung technisch importiert, Core-/Registry-Lanes ausgerichtet und unveränderlichen <code>.3</code>-Kandidaten eingefroren</td>
+<td>914/912/757, Digest-/ZIP-/Manifest-/Closure-Pins, Profilalignment-Mutationen; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-008a</td>
+<td>Geschlossenen FWU-OWL-Vertragskern mit gepinnten Core-/Profil-/Shapes-/Schema-Trust-Roots und externem 18-Gate-Report definiert</td>
+<td>96 FWU-OWL- und 61 Dual-Release-Mutationen, Raw-JSON-Fälle und vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-008b</td>
+<td>Generischen Core-first Exporter und atomaren reproduzierbaren FWU-OWL-ZIP-Builder auf dem eingefrorenen <code>.3</code>-JSON-Paket umgesetzt</td>
+<td>819/817/757/32/111; nach Kompetenzreferenz- und Placement-Korrektur 824.452 RDF-Tripel; byteidentisches Buildpaar, TypeScript-/Compiler-/ZIP-Gates und vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-008c</td>
+<td>Unabhängigen Finished-FWU-OWL-Validator samt gepinnter Offline-Ontologie-Toolchain und direkter Kompetenzressourcen-Projektion umgesetzt</td>
+<td>40 Selftest-Garantien; realer schema-valider 18/18-Report für 819/817/8/824.452/111/454/757; SHACL 0/0, OWL 2 DL, HermiT konsistent/0 unerfüllbar; hermetischer JSON-Consumer 15/15; vollständiges <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+<tr>
+<td>DPK-008d</td>
+<td>Isolierten, registry-gesteuerten FWU-OWL-Reverse-Compiler und zweifach hermetischen, evidenzgebundenen JSON-Paketlauf umgesetzt</td>
+<td>Placement-ID <code>goalId@unitId@index</code>; Core 31, Hermetik 21, Vertrag 53+6+10; real 911/909/910/111/757/1.696.390.279 mit bytegleichem Doppelbuild, Validator v2, externem Tiefenaudit und vollständigem <code>./run_ci.sh</code> grün</td>
+<td>2026-07-11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="verbleibende-roadmap">Verbleibende Roadmap</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Phase</th>
+<th>Ergebnis</th>
+<th>Abhängigkeit</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DPK-001</td>
+<td>P0</td>
+<td>JSON-Manifest-/Profilvertrag v1 und Conformance-Validator</td>
+<td>DPK-000</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-002</td>
+<td>P0</td>
+<td>Runtime-Katalogschema, paketlokaler Offline-Schema-Katalog, Artefaktrollen und ehrliche Readiness-Auswertung</td>
+<td>DPK-001</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-003</td>
+<td>P0</td>
+<td>Feldsemantik-/RDF-Mappingregistry, versionierte Normalform sowie Release-Index-/Äquivalenzreport-Schemas</td>
+<td>DPK-001</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-004</td>
+<td>P0</td>
+<td>Closure-, Ownership-, Konflikt- und Migrationsverträge; vollständige Mathematik-Conformance-Kompilation in das neue Release-Modell</td>
+<td>DPK-002–DPK-003</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-004a</td>
+<td>P0</td>
+<td>Entpacktes Runtime-Modell mit strikten Payload-Schemas, Semantic-Kind-Ledger, Fixpunkt-Closure, Migration, Ressourcenbindung und realer Mathematik-Kompilation</td>
+<td>DPK-002–DPK-003</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-004b</td>
+<td>P0</td>
+<td>Mapping-, Quellen- und Quality-Felder vollständig als Runtime-, Publikations-Evidenz oder Authoring-only klassifizieren und in die Mathematik-Conformance aufnehmen</td>
+<td>DPK-004a</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-005</td>
+<td>P1</td>
+<td>Mathematik-JSON-Paket nach <code>full-standalone-v1</code> bauen, strikt validieren und Human-Review-Schuld als maschinenlesbare Release-Gates führen</td>
+<td>DPK-002–DPK-004</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-005a</td>
+<td>P1</td>
+<td>Package-Trust, File-Semantik, deterministisches ZIP32 sowie Redistribution-/Source-Review-Lanes</td>
+<td>DPK-002–DPK-004</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-005b</td>
+<td>P1</td>
+<td>Vollständiges reales Mathematik-Inventar und ZIP materialisieren, paketlokal validieren und reproduzieren</td>
+<td>DPK-005a</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006</td>
+<td>P1</td>
+<td>Manifestbasierter Backend-Package-Loader mit lokalem Store und Lock</td>
+<td>DPK-005</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006a</td>
+<td>P1</td>
+<td>Exakten vorvalidierten Store read-only laden und atomaren unveränderlichen Runtime-Snapshot aufbauen</td>
+<td>DPK-005</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006b</td>
+<td>P1</td>
+<td>ZIP sicher provisionieren, content-adressiert promoten sowie Lock per CAS aktivieren und zurückrollen</td>
+<td>DPK-006a</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006c</td>
+<td>P1</td>
+<td>Landschafts-, View-, Deck-, Mapping- und Asset-Services ohne Fallback auf den Snapshot umstellen</td>
+<td>DPK-006b</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006c-a</td>
+<td>P1</td>
+<td>Vollständiges Manifestinventar, sichere Artefaktfassade und Runtime-Modellparität</td>
+<td>DPK-006b</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006c-b</td>
+<td>P1</td>
+<td>Landschafts- und Mapping-Services ausschließlich aus dem Snapshot bedienen</td>
+<td>DPK-006c-a</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006c-c</td>
+<td>P1</td>
+<td>Exakten Runtime-Katalog und Offering-/Composition-View-Auflösung bereitstellen</td>
+<td>DPK-006c-b</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006c-d</td>
+<td>P1</td>
+<td>Paket- und generationsgebundene Deck-/Bildauflösung ohne Classpath-Fallback</td>
+<td>DPK-006c-c</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006c-e</td>
+<td>P1</td>
+<td>Frontend auf katalogisierte Roots, Offerings und Ressourcen umstellen</td>
+<td>DPK-006c-d</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-006c-f</td>
+<td>P1</td>
+<td>Paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten</td>
+<td>DPK-006c-e</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-007</td>
+<td>P1</td>
+<td>Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern</td>
+<td>DPK-006</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-007a</td>
+<td>P2</td>
+<td>Letzte fehlende Mathematik-Visualisierung technisch importieren und unveränderlichen <code>.3</code>-Content-Freeze erzeugen</td>
+<td>DPK-007</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-008</td>
+<td>P2</td>
+<td>FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen</td>
+<td>DPK-003–DPK-005, DPK-007a</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-008a</td>
+<td>P2</td>
+<td>Geschlossenes FWU-OWL-Manifest, Paketprofil und externes Validierungsreport-Format</td>
+<td>DPK-007a</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-008b</td>
+<td>P2</td>
+<td>Paketgetriebenen Core-first Exporter und reproduzierbares FWU-OWL-ZIP implementieren</td>
+<td>DPK-008a</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-008c</td>
+<td>P2</td>
+<td>Unabhängige RDF-, SHACL-, OWL-2-DL- und HermiT-Paket-QS vervollständigen</td>
+<td>DPK-008b</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-008d</td>
+<td>P2</td>
+<td>Isolierten Reverse Compiler zum installierbaren JSON-Runtime-ZIP implementieren</td>
+<td>DPK-008c</td>
+<td><code>complete</code></td>
+</tr>
+<tr>
+<td>DPK-009</td>
+<td>P3</td>
+<td>Semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar</td>
+<td>DPK-008</td>
+<td><code>not_started</code></td>
+</tr>
+<tr>
+<td>DPK-010</td>
+<td>P4</td>
+<td>Physik-Closure und fachübergreifende Profile</td>
+<td>DPK-004, DPK-009</td>
+<td><code>not_started</code></td>
+</tr>
+<tr>
+<td>DPK-011</td>
+<td>P5</td>
+<td>Signierter Release-Index, Distributionskatalog und atomare Promotion nur bei geschlossenen Visualisierungs- und Source-Verification-Gates</td>
+<td>DPK-009–DPK-010</td>
+<td><code>not_started</code></td>
+</tr>
+<tr>
+<td>DPK-012</td>
+<td>P6</td>
+<td>Curriculum-Toolchain und Inhalte aus dem Software-Repository lösen</td>
+<td>DPK-007, DPK-011</td>
+<td><code>not_started</code></td>
+</tr>
+</tbody>
+</table>
+<p>Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht die detaillierten Phasen und Abnahmekriterien im Zielkonzept.</p>
+<h2 id="qualitatsnachweise">Qualitätsnachweise</h2>
+<table>
+<thead>
+<tr>
+<th>Stand</th>
+<th>Gezielte Prüfungen</th>
+<th>Vollständige CI</th>
+<th>Ergebnis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline <code>0d419930</code></td>
+<td>vorhandene Doku- und Roundtrip-Prüfungen</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-10, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-001</td>
+<td>Vertragsvalidator (1 gültige Fixture, 39 Negativfälle), Workflow-Syntax, Doku-Links und Diff-Check</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-10, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-002</td>
+<td>Manifest 1/49; Runtime 1/31 + 8 Bindings; Schema-Katalog 1/34 + 12 Bindings; Readiness: 5 Manifest-, 4 Policy-Tamper-, 5 Forgery-, 3 Raw-JSON-, 7 adversariale ZIP-, 2 Early-Limit- und 10 Exitcode-Fälle; realer Latein-Build/Validator/Repro/Index 37/37; Lint, TypeScript, Doku, Workflow-YAML und Diff-Check</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-10, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-003</td>
+<td>Dual-Release-Validator: 5 positive Dokumente, 17 Registry-Einträge, 54 semantische Mutationstests, 8 Raw-JSON-Fälle; Schema-, Digest-, Trust-, Cross-Binding-, Doku-, Workflow- und Diff-Gates</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-10, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-004a</td>
+<td>Strikte Schema-/Profil-/Ledger-/Core-Pin-Prüfung; reale Mathematik-Kompilation mit exakten Umfangsgates; 5 Fixture-Dokumente/8 Mutationen; Compilerprobe; 25 unabhängige Selbsttests; sichere Output-Promotion; unabhängige Digest-, Feldabdeckungs-, Referenz-, Closure-, Ownership-, Konflikt-, Migrations-, Index- und Ressourcenprüfung; bytegleicher Doppelbuild</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-10, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-004b / DPK-004</td>
+<td>Compiler plus unabhängiger Validator; 9 gültige Fixture-Dokumente, 22 Negativfälle und 47 Produktions-/Adversarialtests; Mapping-Truth-/Raw-/Legacy-Differenzen, Source-Joins/Lineage, Core-Term-Trust, Source-Semantik-Overclaims, unabhängig abgeleitete Quality-Status, stabile Schlüssel, 454 Registry-Regeln, 111+756 Inhaltsrecords, 0 Publikationsrollen in der Runtime-Closure und bytegleicher Doppelbuild</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-10, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-005a</td>
+<td>Manifest 1/61; vollständiger 22-Schema-Katalog 1/34 + 12 Bindings; Readiness einschließlich Redistribution; 756 Bild-/23 Rollen-Lizenzbindungen und 17 Mutationen; Source Verification 9.493+5+479, 8 Mutationen und PDF-Replay; ZIP32 Golden-/Safety-/Legacy-Bytegleichheit; Doku-, Workflow-, Lint-, TypeScript- und Diff-Gates</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-005b</td>
+<td>Builder- und unabhängiger Validator-Selftest; Real-Paket 913/911/756 plus Digest; Finished-ZIP-, Readiness-, Code-, Workflow- und Doku-Integration</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-006a</td>
+<td>29 Backend-Package-Tests; Report-v2-Replay-/Tamper-/Path-/Conflict-Gates; Validator 28; Readiness 1.2; Builder; reale Paket-/Loaderprobe; Doku- und Diff-Gates</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-006b</td>
+<td>Operational Contracts 3/23; Provisioner-Selftest 38; Crash-/Poison-/Permission-/Replay-/CAS-/Rollback-/Multi-Package-Gates; realer Build→Validator→Store→Activate→Java-Loader; Workflow-, Doku- und Diff-Gates</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-006c-a</td>
+<td>Package-Modellparität; vollständiger Artefaktindex; Unknown-Key-/Limit-/Hashdrift-Gates; reales Inventar 911 einschließlich Mapping/Quality; TypeScript, ESLint, Doku und Diff</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-006c-b</td>
+<td>Geschlossener Mapping-/Source-Compiler; Mehrfach-<code>exact</code>-/Mixed-/Count-/Join-/Conflict-/Immutability-Gates; konditionale Services und Repository-Poison; reale 31/55/9.977/10.021/33.382-Paketprobe; Landscape-/Mapping-Regression</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-006c-c</td>
+<td>Exakte View-/Offering-Indizes; Single-/Merge-/Scope-/Order-/Visibility-/Immutability-Gates; konditionale Repository-/Package-Services; Catalog-/Offering-API; Consumer-Fail-closed; reale 88/88-Paketprobe</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-006c-d</td>
+<td>Exakte Deck-/Goal-/Locale- und Resource-/PublicUrl-Indizes; Semantic-Binding-/Capability-/Owner-/Limit-/Tamper-Gates; konditionale Services/Controller; Static-Fallback-Sperre; pfadfreie Hrefs; reale 12/128/756/69-Paketprobe</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-006c-e</td>
+<td>Frontend-Katalogadapter und Modustrennung; Root-/Offering-/Deck-/Resource-Resolver samt Negativmatrix; Backend-API-Kette und Controller-Modus; TypeScript, ESLint, Doku- und Workflow-Gates</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-006c-f</td>
+<td>SourceGoal-Evidence-State und 200/204/400/404-API; Generation-/Cache-/Hash-/Count-/Crossref-/Order-/Optionalitäts-Gates; Frontend-Discovery und Lazy-Fetch; kein großer Build-/Precache-Index; reale 31/55/9.977/33.382/869-Probe</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-007</td>
+<td>Source-spezifische Quality-Provider; Catalog-only Frontend/Runtime; echter React-/Chromium-Fluss und 404-Fail-closed; evaluator-gesteuerte Runner-Attestation; bwrap-/strace-Isolation; fünf Poison-Lanes; 29 Consumer-Fälschungen, Output-Destruktions- und Replay-Gates</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-007a</td>
+<td>Letzter Bildimport; 754/754 Atomic-Scope-Abdeckung; 914/912/757-Paketfreeze; Profile <code>1.1.1</code>; unveränderte 454-Einträge-Registry und Core-/Order-Lane-Mutationen; unabhängige Modell-/ZIP-/Readiness-Prüfung</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-008a</td>
+<td>FWU-OWL-Verträge: eine positive Fixture, zwei frühe nicht-erfolgreiche Receipts, 96 fail-closed Mutationen, zwei Raw-JSON-Fälle, 14 Rollen, 12 Bindungen, 18 Gates, 510+16 geschlossene Deklarationen, extern gepinnte Core-/Katalog-/Profil-/Shapes-/Schema-/Semantik-Trust-Roots sowie 61 getrennte Dual-Contract-Mutationen</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-008b</td>
+<td>TypeScript-Selftest für 454 Registry-Einträge, 526 Deklarationen, Core-Projektionen, Feldzustände, Referenzrollen, Punning- und Pfad-/Integritätsguards; realer atomarer Doppelbuild 819/817/757/32/111, nach Kompetenzreferenz- und eindeutiger <code>goalId@unitId@index</code>-Placement-Korrektur 824.452 Tripel und byteidentische 2.362.455.128-Byte-ZIPs</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-008c</td>
+<td>40 Validator-Sicherheits-/Semantikgarantien; exakte jsonschema-/pySHACL-/RDFLib-/owlrl-/ROBOT-/Corretto-Pins; realer 18/18-Report für das korrigierte FWU-Paket mit SHACL 0/0, OWL 2 DL, HermiT konsistent/0 unerfüllbar, 757 bytegeprüften Sidecars und byteidentischem Peer; Java-FD-Sandbox-Selftest und realer Consumer 15/15</td>
+<td><code>./run_ci.sh</code>, lokal, 2026-07-11, Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+<tr>
+<td>DPK-008d</td>
+<td>Registry-invertierender Streaming-Reverse-Compiler: 31 Garantien; Hermetik-Runner: 21 Garantien; Reportvertrag: 1 gültige/2 frühe Fixtures, 53 Mutationen, 6 Raw-JSON-Fälle und 10 konsistent neu gehashte Evidenzangriffe; realer host-root-freier Doppelbuild mit 111/111 Normalform-Oracles, 757 bytegleichen Sidecars, zwei unabhängigen Validator-v2-Receipts und extern tiefengeprüftem 20-Dateien-Evidenzinventar</td>
+<td>direkter gehärteter Real-Doppelbuild gegen finales 18/18-Receipt, externer Reportvalidator, install/verify und <code>./run_ci.sh</code>, lokal, 2026-07-11, jeweils Exit 0</td>
+<td><code>passed</code></td>
+</tr>
+</tbody>
+</table>
+<p>Rohlogs und temporäre Artefakte bleiben unter <code>tmp/</code> oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.</p>
+<h2 id="pflege-und-commit-konvention">Pflege- und Commit-Konvention</h2>
+<ul>
+<li>Ein Schritt wird erst <code>complete</code>, wenn seine gezielten Prüfungen und danach das vollständige <code>./run_ci.sh</code> bestanden haben.</li>
+<li>Nach erfolgreicher Qualitätssicherung wird genau dieser abgegrenzte Stand committed.</li>
+<li>Schlägt ein Gate fehl, bleibt der Schritt <code>in_progress</code>; es gibt keinen Zwischencommit mit nur teilweise erfüllter Abnahme.</li>
+<li>Vor dem finalen CI-Lauf eines Schritts werden diese Tabellen bereits auf den erwarteten Abschlussstand gesetzt. Der Commit erfolgt nur, wenn der Lauf tatsächlich grün bleibt.</li>
+<li>Der nächste Schritt beginnt erst auf dem sauberen Commit des vorherigen Schritts.</li>
+<li>Maschinenlesbare paketbezogene Readiness-Berichte bleiben temporäre Build-/CI-Artefakte unter <code>tmp/exports/readiness/</code>; diese authored Seite bleibt die Quelle für Arbeitsstand und Priorisierung.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

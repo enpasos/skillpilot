@@ -1,0 +1,5910 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/qa-ci/status/goal-source-rationale-coverage/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Goal Source Rationale Coverage - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#goal-source-rationale-coverage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Goal Source Rationale Coverage
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaps-by-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaps By Phase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaps-by-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaps By Area
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-work-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Work Queue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#missing-relevant-leaf-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missing Relevant Leaf Goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memfwu-review-needed-for-covered-leaves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MEM/FWU Review Needed For Covered Leaves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-direct-rationale-pending" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cluster Direct Rationale Pending
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="goal-source-rationale-coverage">Goal Source Rationale Coverage</h1>
+<blockquote>
+<p>Generated artifact. Do not edit manually.</p>
+<p>Generated by: <code>app/scripts/reportGoalSourceRationaleCoverage.ts</code>
+Regenerate with: <code>cd app &amp;&amp; npm run quality:goal-source-rationale-coverage</code>
+Source of truth: <code>app/scripts/reportGoalSourceRationaleCoverage.ts</code>
+Source of truth: <code>curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json</code>
+Source of truth: <code>app/public/data/goal-source-rationales-math-public.json</code></p>
+</blockquote>
+<p>Generated: 2026-09-06T16:02:01.359Z</p>
+<p>Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.</p>
+<h2 id="current-coverage">Current Coverage</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alle Mathematik-Ziele</td>
+<td>1181</td>
+</tr>
+<tr>
+<td>Atomare Blattleernziele</td>
+<td>924</td>
+</tr>
+<tr>
+<td>Davon relevant fuer Quellenbegruendung</td>
+<td>796</td>
+</tr>
+<tr>
+<td>Memory-/Nicht-Content-Blattziele</td>
+<td>128</td>
+</tr>
+<tr>
+<td>Clusterziele</td>
+<td>257</td>
+</tr>
+<tr>
+<td>Runtime-Quellenbegruendungen</td>
+<td>740</td>
+</tr>
+<tr>
+<td>Runtime-Ziele mit klassischem Quellenweg</td>
+<td>740</td>
+</tr>
+<tr>
+<td>Runtime-Ziele mit MEM/FWU-konsistenter Route</td>
+<td>227</td>
+</tr>
+<tr>
+<td>Relevante Blattziele mit klassischem Quellenweg</td>
+<td>740/796 (93.0%)</td>
+</tr>
+<tr>
+<td>Relevante Blattziele mit MEM/FWU-konsistenter Route</td>
+<td>227/796 (28.5%)</td>
+</tr>
+<tr>
+<td>Relevante Blattziele ohne Runtime-Quellenbegruendung</td>
+<td>56</td>
+</tr>
+<tr>
+<td>Relevante Blattziele mit Runtime-Classic-Gap</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Cluster mit direkter Runtime-Quellenbegruendung</td>
+<td>0/257</td>
+</tr>
+<tr>
+<td>Cluster ohne direkte Runtime-Quellenbegruendung</td>
+<td>257</td>
+</tr>
+<tr>
+<td>contains-Relationen mit Begruendungstext</td>
+<td>0/1302</td>
+</tr>
+<tr>
+<td>requires-Relationen mit Begruendungstext</td>
+<td>0/2449</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interpretation">Interpretation</h2>
+<ul>
+<li>Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine <code>requires</code>- oder <code>contains</code>-Relationstexte.</li>
+<li>Die 740 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.</li>
+<li>MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.</li>
+</ul>
+<h2 id="gaps-by-phase">Gaps By Phase</h2>
+<table>
+<thead>
+<tr>
+<th>Bucket</th>
+<th>Relevant leaves</th>
+<th>Classic</th>
+<th>MEM consistent</th>
+<th>Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q4</td>
+<td>162</td>
+<td>122 (75.3%)</td>
+<td>37 (22.8%)</td>
+<td>40</td>
+</tr>
+<tr>
+<td>E</td>
+<td>93</td>
+<td>85 (91.4%)</td>
+<td>24 (25.8%)</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Q2</td>
+<td>142</td>
+<td>138 (97.2%)</td>
+<td>21 (14.8%)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Q3</td>
+<td>76</td>
+<td>73 (96.1%)</td>
+<td>16 (21.1%)</td>
+<td>3</td>
+</tr>
+<tr>
+<td>J9</td>
+<td>47</td>
+<td>46 (97.9%)</td>
+<td>18 (38.3%)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>J10</td>
+<td>58</td>
+<td>58 (100.0%)</td>
+<td>21 (36.2%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Q1</td>
+<td>48</td>
+<td>48 (100.0%)</td>
+<td>10 (20.8%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>J7</td>
+<td>45</td>
+<td>45 (100.0%)</td>
+<td>17 (37.8%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>J6</td>
+<td>43</td>
+<td>43 (100.0%)</td>
+<td>22 (51.2%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>J8</td>
+<td>39</td>
+<td>39 (100.0%)</td>
+<td>16 (41.0%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>J5</td>
+<td>36</td>
+<td>36 (100.0%)</td>
+<td>23 (63.9%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>GLOBAL</td>
+<td>7</td>
+<td>7 (100.0%)</td>
+<td>2 (28.6%)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gaps-by-area">Gaps By Area</h2>
+<table>
+<thead>
+<tr>
+<th>Bucket</th>
+<th>Relevant leaves</th>
+<th>Classic</th>
+<th>MEM consistent</th>
+<th>Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unknown</td>
+<td>386</td>
+<td>338 (87.6%)</td>
+<td>70 (18.1%)</td>
+<td>48</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>128</td>
+<td>121 (94.5%)</td>
+<td>36 (28.1%)</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Stochastics</td>
+<td>2</td>
+<td>1 (50.0%)</td>
+<td>1 (50.0%)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Geometry</td>
+<td>81</td>
+<td>81 (100.0%)</td>
+<td>40 (49.4%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>LinearAlgebra</td>
+<td>68</td>
+<td>68 (100.0%)</td>
+<td>7 (10.3%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Algebra</td>
+<td>56</td>
+<td>56 (100.0%)</td>
+<td>33 (58.9%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Arithmetic</td>
+<td>46</td>
+<td>46 (100.0%)</td>
+<td>24 (52.2%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Measurement</td>
+<td>11</td>
+<td>11 (100.0%)</td>
+<td>4 (36.4%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>10</td>
+<td>10 (100.0%)</td>
+<td>8 (80.0%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Probability</td>
+<td>6</td>
+<td>6 (100.0%)</td>
+<td>4 (66.7%)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Lineare Algebra</td>
+<td>2</td>
+<td>2 (100.0%)</td>
+<td>0 (0.0%)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="next-work-queue">Next Work Queue</h2>
+<ol>
+<li>Den All-Relevant-JSON-Report regelmaessig regenerieren: <code>cd app &amp;&amp; npm run quality:goal-source-rationales:math-all-relevant</code>. Er enthaelt alle fachlich relevanten Blattziele und rendert fehlende klassische Quellenwege als Gap-Eintraege.</li>
+<li>Fuer fehlende Blattziele klassische Source-Extraction-/Mapping-Belege ergaenzen oder bestehende Belege auf die kanonischen Ziel-IDs mappen.</li>
+<li>Clustertexte als aggregierte Quellenbegruendung aufbauen: direkte Cluster-Belege nutzen, sonst aus den belegten Kindzielen ableiten.</li>
+<li>Relationstexte fuer <code>requires</code> und <code>contains</code> separat modellieren, weil sie keine Zielbegruendung, sondern eine Entstehungs- bzw. Strukturbegruendung brauchen.</li>
+<li>MEM/FWU-SPARQL-Abgleich aus dem Bayern-PoC auf weitere verfuegbare MEM-Lehrplanbereiche erweitern, sobald dort abrufbare Erwartungstexte stabil sind.</li>
+</ol>
+<h2 id="missing-relevant-leaf-goals">Missing Relevant Leaf Goals</h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Phase</th>
+<th>Area</th>
+<th>Topic</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transformationsargumente für Flächen und Volumina nutzen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Transformationsargumente für Flächen und Volumina nutzen (LK)</td>
+</tr>
+<tr>
+<td>Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum &gt; Vertiefende Untersuchungen im Raum (LK) &gt; Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)</td>
+</tr>
+<tr>
+<td>Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) (canonical_math_q2_use_composed_functions_for_quantifiable_models_lk)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK) &gt; Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK)</td>
+</tr>
+<tr>
+<td>Sachsituationen mit einer erweiterten Funktionsklasse modellieren</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Sachsituationen mit einer erweiterten Funktionsklasse modellieren</td>
+</tr>
+<tr>
+<td>Parameter für vorgegebene Nullstellen bestimmen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen &gt; Parameter für vorgegebene Nullstellen bestimmen</td>
+</tr>
+<tr>
+<td>Parameter zur Modellierung von Sachsituationen bestimmen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen &gt; Parameter zur Modellierung von Sachsituationen bestimmen</td>
+</tr>
+<tr>
+<td>Parameterbereiche für Lösungsexistenz analysieren (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen &gt; Parameterbereiche für Lösungsexistenz analysieren (LK)</td>
+</tr>
+<tr>
+<td>Beweis durch Kontraposition</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Begründungen und Beweise strukturieren &gt; Beweis durch Kontraposition</td>
+</tr>
+<tr>
+<td>Beweis mit Fallunterscheidung</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Begründungen und Beweise strukturieren &gt; Beweis mit Fallunterscheidung</td>
+</tr>
+<tr>
+<td>Einstellungen dokumentieren und reproduzieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Darstellungen mit digitalen Werkzeugen erstellen &gt; Einstellungen dokumentieren und reproduzieren</td>
+</tr>
+<tr>
+<td>Handrechnung mit digitaler Kontrolle kombinieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Darstellungen mit digitalen Werkzeugen erstellen &gt; Handrechnung mit digitaler Kontrolle kombinieren</td>
+</tr>
+<tr>
+<td>Tool-Ausgaben interpretieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Darstellungen mit digitalen Werkzeugen erstellen &gt; Tool-Ausgaben interpretieren</td>
+</tr>
+<tr>
+<td>Werkzeugeinstellungen zielgerichtet setzen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Darstellungen mit digitalen Werkzeugen erstellen &gt; Werkzeugeinstellungen zielgerichtet setzen</td>
+</tr>
+<tr>
+<td>Argumente austauschen und prüfen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Diskutieren und kooperieren &gt; Argumente austauschen und prüfen</td>
+</tr>
+<tr>
+<td>Kooperativ Ergebnisse erarbeiten</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Diskutieren und kooperieren &gt; Kooperativ Ergebnisse erarbeiten</td>
+</tr>
+<tr>
+<td>Kritik aufnehmen und integrieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Diskutieren und kooperieren &gt; Kritik aufnehmen und integrieren</td>
+</tr>
+<tr>
+<td>Entscheidung dokumentieren und bewerten (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Effizienz von Verfahren beurteilen (LK) &gt; Entscheidung dokumentieren und bewerten (LK)</td>
+</tr>
+<tr>
+<td>Verfahren begründet auswählen (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Effizienz von Verfahren beurteilen (LK) &gt; Verfahren begründet auswählen (LK)</td>
+</tr>
+<tr>
+<td>Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)</td>
+</tr>
+<tr>
+<td>Auf Rückfragen eingehen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Ergebnisse adressatengerecht erklären &gt; Auf Rückfragen eingehen</td>
+</tr>
+<tr>
+<td>Einheiten- und Dimensionscheck anwenden</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Ergebnisse formal überprüfen &gt; Einheiten- und Dimensionscheck anwenden</td>
+</tr>
+<tr>
+<td>Kontrollrechnung mit Alternativmethode</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Ergebnisse formal überprüfen &gt; Kontrollrechnung mit Alternativmethode</td>
+</tr>
+<tr>
+<td>Probe durch Einsetzen durchführen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Ergebnisse formal überprüfen &gt; Probe durch Einsetzen durchführen</td>
+</tr>
+<tr>
+<td>Definitionen und Sätze präzise nutzen (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Fachsprache präzisieren (LK) &gt; Definitionen und Sätze präzise nutzen (LK)</td>
+</tr>
+<tr>
+<td>Argumentation formalisieren und präzisieren (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Formale Argumentationen im Leistungskurs entwickeln (LK) &gt; Argumentation formalisieren und präzisieren (LK)</td>
+</tr>
+<tr>
+<td>Beweislücken identifizieren (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Formale Argumentationen im Leistungskurs entwickeln (LK) &gt; Beweislücken identifizieren (LK)</td>
+</tr>
+<tr>
+<td>Beweisstrategien vergleichen und wählen (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Formale Argumentationen im Leistungskurs entwickeln (LK) &gt; Beweisstrategien vergleichen und wählen (LK)</td>
+</tr>
+<tr>
+<td>Medien passend auswählen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Kommunikation reflektieren und präsentieren &gt; Medien passend auswählen</td>
+</tr>
+<tr>
+<td>Aussagekraft und Grenzen diskutieren (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Komplexe Visualisierungen entwickeln (LK) &gt; Aussagekraft und Grenzen diskutieren (LK)</td>
+</tr>
+<tr>
+<td>Mehrere Darstellungen kombinieren (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Komplexe Visualisierungen entwickeln (LK) &gt; Mehrere Darstellungen kombinieren (LK)</td>
+</tr>
+<tr>
+<td>Visualisierung für komplexe Situation entwerfen (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Komplexe Visualisierungen entwickeln (LK) &gt; Visualisierung für komplexe Situation entwerfen (LK)</td>
+</tr>
+<tr>
+<td>Modell vollständig notieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mathematische Modelle bilden &gt; Modell vollständig notieren</td>
+</tr>
+<tr>
+<td>Rand- und Anfangsbedingungen festlegen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mathematische Modelle bilden &gt; Rand- und Anfangsbedingungen festlegen</td>
+</tr>
+<tr>
+<td>Variablen und Parameter definieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mathematische Modelle bilden &gt; Variablen und Parameter definieren</td>
+</tr>
+<tr>
+<td>Alternative Modelle entwickeln (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mehrere Modelle vergleichen (LK) &gt; Alternative Modelle entwickeln (LK)</td>
+</tr>
+<tr>
+<td>Modelle nach Kriterien vergleichen (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mehrere Modelle vergleichen (LK) &gt; Modelle nach Kriterien vergleichen (LK)</td>
+</tr>
+<tr>
+<td>Modellentscheidung begründen (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mehrere Modelle vergleichen (LK) &gt; Modellentscheidung begründen (LK)</td>
+</tr>
+<tr>
+<td>Annahmen und Idealisationen formulieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Sachverhalte strukturieren und vereinfachen &gt; Annahmen und Idealisationen formulieren</td>
+</tr>
+<tr>
+<td>Größen und Einheiten identifizieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Sachverhalte strukturieren und vereinfachen &gt; Größen und Einheiten identifizieren</td>
+</tr>
+<tr>
+<td>Sachskizze mit Variablen erstellen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Sachverhalte strukturieren und vereinfachen &gt; Sachskizze mit Variablen erstellen</td>
+</tr>
+<tr>
+<td>Sachverhalt vereinfachen und strukturieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Sachverhalte strukturieren und vereinfachen &gt; Sachverhalt vereinfachen und strukturieren</td>
+</tr>
+<tr>
+<td>Anschlussbedingungen ohne Sprung und Knick modellieren (canonical_math_e_model_extrema_inflection_smooth_connections_smooth_connections)</td>
+<td>E</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.E.DERIVATIVE_APPLICATIONS.SMOOTH_CONNECTION_MODELS.SMOOTH_CONNECTIONS</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Ableitungseinstieg und Differentialrechnung (Sek II) &gt; Differentialrechnung, Untersuchung und Optimierung &gt; Ableitungen zur Funktionsuntersuchung und Optimierung nutzen &gt; Sachzusammenhänge mit Extrem- und Wendestellen modellieren &gt; Anschlussbedingungen ohne Sprung und Knick modellieren</td>
+</tr>
+<tr>
+<td>Sachzusammenhänge mit Extremstellen modellieren (canonical_math_e_model_extrema_inflection_smooth_connections_extrema)</td>
+<td>E</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.E.DERIVATIVE_APPLICATIONS.SMOOTH_CONNECTION_MODELS.EXTREMA</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Ableitungseinstieg und Differentialrechnung (Sek II) &gt; Differentialrechnung, Untersuchung und Optimierung &gt; Ableitungen zur Funktionsuntersuchung und Optimierung nutzen &gt; Sachzusammenhänge mit Extrem- und Wendestellen modellieren &gt; Sachzusammenhänge mit Extremstellen modellieren</td>
+</tr>
+<tr>
+<td>Sachzusammenhänge mit Wendestellen modellieren (canonical_math_e_model_extrema_inflection_smooth_connections_inflection)</td>
+<td>E</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.E.DERIVATIVE_APPLICATIONS.SMOOTH_CONNECTION_MODELS.INFLECTION</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Ableitungseinstieg und Differentialrechnung (Sek II) &gt; Differentialrechnung, Untersuchung und Optimierung &gt; Ableitungen zur Funktionsuntersuchung und Optimierung nutzen &gt; Sachzusammenhänge mit Extrem- und Wendestellen modellieren &gt; Sachzusammenhänge mit Wendestellen modellieren</td>
+</tr>
+<tr>
+<td>Aus Term einen Graphen erstellen</td>
+<td>E</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Aus Term einen Graphen erstellen</td>
+</tr>
+<tr>
+<td>Funktionsgleichungen aus Graphen bestimmen (canonical_math_e_graph_to_function_equation)</td>
+<td>E</td>
+<td>unknown</td>
+<td>CANONICAL.MATH.E.REPRESENTATIONS.GRAPH_TO_EQUATION</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Funktionsgleichungen aus Graphen bestimmen</td>
+</tr>
+<tr>
+<td>Termmerkmale aus Graphen ableiten</td>
+<td>E</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Termmerkmale aus Graphen ableiten</td>
+</tr>
+<tr>
+<td>Übertragungen begründen und prüfen</td>
+<td>E</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Übertragungen begründen und prüfen</td>
+</tr>
+<tr>
+<td>Zwischen Tabelle, Graph und Term wechseln</td>
+<td>E</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Zwischen Tabelle, Graph und Term wechseln</td>
+</tr>
+<tr>
+<td>Analysis-Modelle in Sachzusammenhängen validieren (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_model_validation)</td>
+<td>Q4</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.MODEL_VALIDATION</td>
+<td>Mathematik &gt; Integralrechnung und Differenzialgleichungen &gt; Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) &gt; Anwendungen der Integralrechnung &gt; Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) &gt; Analysis-Modelle in Sachzusammenhängen validieren (LK)</td>
+</tr>
+<tr>
+<td>Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context)</td>
+<td>Q4</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.DIFFERENTIAL_CONTEXT</td>
+<td>Mathematik &gt; Integralrechnung und Differenzialgleichungen &gt; Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) &gt; Anwendungen der Integralrechnung &gt; Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) &gt; Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)</td>
+</tr>
+<tr>
+<td>Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_integral_context)</td>
+<td>Q4</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.INTEGRAL_CONTEXT</td>
+<td>Mathematik &gt; Integralrechnung und Differenzialgleichungen &gt; Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) &gt; Anwendungen der Integralrechnung &gt; Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) &gt; Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)</td>
+</tr>
+<tr>
+<td>Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten (canonical_math_sek1_j9_read_quadratic_axes_and_signs)</td>
+<td>J9</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK1.J9.2A2A</td>
+<td>Mathematik &gt; Jahrgangsstufe 9 &gt; Quadratische Funktionen beschreiben und anwenden &gt; Quadratische Funktionen und Gleichungen grundlegend untersuchen &gt; Quadratische Funktionen in Darstellungen deuten &gt; Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten &gt; Eigenschaften quadratischer Funktionen aus Graphen ablesen &gt; Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten</td>
+</tr>
+<tr>
+<td>Statistische Erhebungen exemplarisch planen und dokumentieren</td>
+<td>Q3</td>
+<td>Stochastics</td>
+<td>CANONICAL.MATH.SEK2.STATISTICS.SURVEYS.PLAN_AND_DOCUMENT</td>
+<td>Mathematik &gt; Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik &gt; Stochastik, Tests und Statistik (Sek II) &gt; Statistik und weitere Wahrscheinlichkeitsverteilungen &gt; Q3.5 Statistik: Datenanalyse und Modellvergleich &gt; Zufallsexperimente statistisch auswerten &gt; Statistische Erhebungen planen, auswerten und kritisch beurteilen &gt; Statistische Erhebungen planen und Daten aufbereiten &gt; Statistische Erhebungen exemplarisch planen und dokumentieren</td>
+</tr>
+<tr>
+<td>Empirische und theoretische Wahrscheinlichkeit unterscheiden (canonical_math_q3_distinguish_empirical_and_theoretical_probability)</td>
+<td>Q3</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik &gt; Stochastik, Tests und Statistik (Sek II) &gt; Wahrscheinlichkeiten und Verteilungen (Sek II) &gt; Grundlegende Begriffe und Methoden der Stochastik &gt; Statistischen Wahrscheinlichkeitsbegriff anwenden &gt; Empirische und theoretische Wahrscheinlichkeit unterscheiden</td>
+</tr>
+<tr>
+<td>Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)</td>
+<td>Q3</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik &gt; Stochastik, Tests und Statistik (Sek II) &gt; Wahrscheinlichkeiten und Verteilungen (Sek II) &gt; Wahrscheinlichkeitsverteilungen (Überblick) &gt; Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="memfwu-review-needed-for-covered-leaves">MEM/FWU Review Needed For Covered Leaves</h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Phase</th>
+<th>Area</th>
+<th>Topic</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Abstände und Längen im Raum bestimmen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Abstände und Längen im Raum bestimmen</td>
+</tr>
+<tr>
+<td>Abstandsverfahren im Raum auswählen und anwenden</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Abstandsverfahren im Raum auswählen und anwenden</td>
+</tr>
+<tr>
+<td>Flächeninhalte in räumlichen Sachzusammenhängen berechnen (canonical_math_q2_calculate_areas_in_spatial_applications)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.SPATIAL_AREA_APPLICATIONS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Flächeninhalte in räumlichen Sachzusammenhängen berechnen</td>
+</tr>
+<tr>
+<td>Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.LINE_PLANE_AND_PLANE_PLANE_DISTANCES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen</td>
+</tr>
+<tr>
+<td>Gerade-Gerade-Abstände im Raum bestimmen</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.DISTANCES.LINE_LINE</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Gerade-Gerade-Abstände im Raum bestimmen</td>
+</tr>
+<tr>
+<td>Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK) (canonical_math_q2_apply_foot_point_methods_for_distances_between_points_lines_planes_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.GENERAL_FOOT_POINT_DISTANCE_METHODS_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)</td>
+</tr>
+<tr>
+<td>Parabelbahnen mithilfe von Parametern darstellen (LK) (canonical_math_q2_represent_parabolic_paths_with_parameters_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.PARABOLIC_TRAJECTORIES_PARAMETERS_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Parabelbahnen mithilfe von Parametern darstellen (LK)</td>
+</tr>
+<tr>
+<td>Projektionen auf Koordinatenebenen untersuchen (canonical_math_q2_analyze_projection_onto_coordinate_planes)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.PROJECTION_ONTO_COORDINATE_PLANES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Projektionen auf Koordinatenebenen untersuchen</td>
+</tr>
+<tr>
+<td>Punkt-Gerade-Abstände im Raum bestimmen</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.DISTANCES.POINT_LINE</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Punkt-Gerade-Abstände im Raum bestimmen</td>
+</tr>
+<tr>
+<td>Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden (canonical_math_q2_apply_foot_point_method_for_point_plane_distance)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.POINT_PLANE_DISTANCE_FOOT_POINT</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen &gt; Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden</td>
+</tr>
+<tr>
+<td>Punkte an Ebenen spiegeln</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.PLANE.REFLECTION</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Punkte an Ebenen spiegeln</td>
+</tr>
+<tr>
+<td>Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_planes)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.PLANES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Punkte, Geraden und Ebenen allgemein spiegeln (LK) &gt; Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)</td>
+</tr>
+<tr>
+<td>Geraden in allgemeinen Raumkonfigurationen spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_lines)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.LINES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Punkte, Geraden und Ebenen allgemein spiegeln (LK) &gt; Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)</td>
+</tr>
+<tr>
+<td>Punkte in allgemeinen Raumkonfigurationen spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_points)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.POINTS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Punkte, Geraden und Ebenen allgemein spiegeln (LK) &gt; Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)</td>
+</tr>
+<tr>
+<td>Sachprobleme mit Geraden und Ebenen modellieren</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Sachprobleme mit Geraden und Ebenen modellieren</td>
+</tr>
+<tr>
+<td>Schnittwinkel über Richtungs- und Normalenvektoren bestimmen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Schnittwinkel über Richtungs- und Normalenvektoren bestimmen</td>
+</tr>
+<tr>
+<td>Schnittwinkel zwischen geometrischen Objekten berechnen</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.INTERSECTION_ANGLES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Schnittwinkel zwischen geometrischen Objekten berechnen</td>
+</tr>
+<tr>
+<td>Vektorprodukt definieren (LK) (canonical_math_q2_define_vector_product_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.VECTOR_PRODUCT_DEFINITION_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Vektorprodukt definieren (LK)</td>
+</tr>
+<tr>
+<td>Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK) (canonical_math_q2_apply_vector_product_for_normals_and_areas_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.VECTOR_PRODUCT_NORMALS_AREAS_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)</td>
+</tr>
+<tr>
+<td>Winkel zwischen zwei Ebenen berechnen (canonical_math_q2_compute_angle_between_two_planes)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.PLANE_PLANE_ANGLE</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Winkel zwischen zwei Ebenen berechnen</td>
+</tr>
+<tr>
+<td>Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen (canonical_math_q2_find_line_coordinate_plane_intersections_spur_points)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.LINE_COORDINATE_PLANE_SPUR_POINTS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen</td>
+</tr>
+<tr>
+<td>Ebenen in Parameterform angeben und interpretieren</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Ebenen durch verschiedene Gleichungsformen beschreiben &gt; Ebenen in Parameterform angeben und interpretieren</td>
+</tr>
+<tr>
+<td>Koordinatenform einer Ebene aufstellen und interpretieren</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Ebenen durch verschiedene Gleichungsformen beschreiben &gt; Koordinatenform einer Ebene aufstellen und interpretieren</td>
+</tr>
+<tr>
+<td>Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Ebenen durch verschiedene Gleichungsformen beschreiben &gt; Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)</td>
+</tr>
+<tr>
+<td>Normalenvektor einer Ebene bestimmen und nutzen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Ebenen durch verschiedene Gleichungsformen beschreiben &gt; Normalenvektor einer Ebene bestimmen und nutzen</td>
+</tr>
+<tr>
+<td>Punkt-Normalen-Form einer Ebene aufstellen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Ebenen durch verschiedene Gleichungsformen beschreiben &gt; Punkt-Normalen-Form einer Ebene aufstellen</td>
+</tr>
+<tr>
+<td>Punktprobe und Lage eines Punktes zur Ebene prüfen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Ebenen durch verschiedene Gleichungsformen beschreiben &gt; Punktprobe und Lage eines Punktes zur Ebene prüfen</td>
+</tr>
+<tr>
+<td>Zwischen Ebenenformen umformen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Ebenen durch verschiedene Gleichungsformen beschreiben &gt; Zwischen Ebenenformen umformen</td>
+</tr>
+<tr>
+<td>Ebenenscharen in Koordinatengleichung untersuchen (LK) (canonical_math_q2_analyze_families_of_planes_coordinate_equation_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_PLANES_COORDINATE_EQUATION_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Ebenenscharen in Koordinatengleichung untersuchen (LK)</td>
+</tr>
+<tr>
+<td>Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen (canonical_math_q2_select_solution_strategies_for_linear_systems)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.LINEAR_SYSTEM_SOLUTION_STRATEGIES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen</td>
+</tr>
+<tr>
+<td>Geraden im Raum parametrisch darstellen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Geraden im Raum parametrisch darstellen</td>
+</tr>
+<tr>
+<td>Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten</td>
+<td>GLOBAL</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.PARAMETRIC.LINE_SEGMENTS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten</td>
+</tr>
+<tr>
+<td>Geradenscharen untersuchen (LK) (canonical_math_q2_analyze_families_of_lines_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_LINES_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Geradenscharen untersuchen (LK)</td>
+</tr>
+<tr>
+<td>Koordinatenformen von Ebenen zur Orientierung im Raum nutzen</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.PLANE.COORDINATE_ORIENTATION</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Koordinatenformen von Ebenen zur Orientierung im Raum nutzen</td>
+</tr>
+<tr>
+<td>Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen (canonical_math_q2_systematically_solve_linear_systems_in_analytic_geometry)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.LINEAR_SYSTEMS_ANALYTIC_GEOMETRY</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen</td>
+</tr>
+<tr>
+<td>Lösungsmengen linearer Gleichungssysteme geometrisch deuten (canonical_math_q2_interpret_solution_sets_of_linear_systems_geometrically)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.LINEAR_SYSTEM_SOLUTION_SETS_GEOMETRY</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Lösungsmengen linearer Gleichungssysteme geometrisch deuten</td>
+</tr>
+<tr>
+<td>Parallelogramme und Dreiecke in Parameterform darstellen</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.PARAMETRIC.FIGURES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Parallelogramme und Dreiecke in Parameterform darstellen</td>
+</tr>
+<tr>
+<td>Punktprobe bei Geraden und Strecken in Parameterform durchführen (canonical_math_q2_check_point_on_parametric_line_or_segment)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.PARAMETRIC_LINE_POINT_TEST</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Punktprobe bei Geraden und Strecken in Parameterform durchführen</td>
+</tr>
+<tr>
+<td>Besondere Lagen von Geraden zu Koordinatenachsen und Koordinatenebenen untersuchen (canonical_math_q2_analyze_special_line_positions_to_axes_and_coordinate_planes)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.SPECIAL_LINE_POSITIONS_AXES_COORDINATE_PLANES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum &gt; Besondere Lagen von Geraden zu Koordinatenachsen und Koordinatenebenen untersuchen</td>
+</tr>
+<tr>
+<td>Parameterabhängige Winkel und Lagebeziehungen untersuchen (canonical_math_q2_analyze_parameter_dependent_angles_and_spatial_relations)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.PARAMETER_DEPENDENT_ANGLES_RELATIONS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum &gt; Parameterabhängige Winkel und Lagebeziehungen untersuchen</td>
+</tr>
+<tr>
+<td>Schnittpunkte von Geraden mit Ebenen berechnen</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.LINE_PLANE_INTERSECTION</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum &gt; Schnittpunkte von Geraden mit Ebenen berechnen</td>
+</tr>
+<tr>
+<td>Spezielle Lagen von Geraden und Ebenen begründen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum &gt; Spezielle Lagen von Geraden und Ebenen begründen (LK)</td>
+</tr>
+<tr>
+<td>Schnittgerade zweier Ebenen bestimmen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum &gt; Vertiefende Untersuchungen im Raum (LK) &gt; Schnittgerade zweier Ebenen bestimmen (LK)</td>
+</tr>
+<tr>
+<td>Abbildungsmatrix aus Basisbildern bestimmen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Abbildungsmatrix aus Basisbildern bestimmen</td>
+</tr>
+<tr>
+<td>Bildpunkte mit Matrizen berechnen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Bildpunkte mit Matrizen berechnen</td>
+</tr>
+<tr>
+<td>Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)</td>
+</tr>
+<tr>
+<td>Eigene Abbildungen modellieren und interpretieren</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Eigene Abbildungen modellieren und interpretieren</td>
+</tr>
+<tr>
+<td>Fixpunkte linearer Abbildungen bestimmen (LK) (canonical_math_q2_determine_fixed_points_of_linear_mappings_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.5.FIXED_POINTS_LINEAR_MAPPINGS_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Fixpunkte linearer Abbildungen bestimmen (LK)</td>
+</tr>
+<tr>
+<td>Geometrische Abbildungen als linear erkennen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Geometrische Abbildungen als linear erkennen</td>
+</tr>
+<tr>
+<td>Geometrische Abbildungen mit Matrizen beschreiben (canonical_math_q2_describe_geometric_mappings_with_matrices)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.5.GEOMETRIC_MAPPINGS_WITH_MATRICES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Geometrische Abbildungen mit Matrizen beschreiben</td>
+</tr>
+<tr>
+<td>Orthogonale Projektionen als erste lineare Abbildungsintuition deuten (canonical_math_sek2_linear_mappings_projection_intuition)</td>
+<td>GLOBAL</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.LINEAR_MAPPINGS.PROJECTION_INTUITION</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Orthogonale Projektionen als erste lineare Abbildungsintuition deuten</td>
+</tr>
+<tr>
+<td>Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen</td>
+</tr>
+<tr>
+<td>Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen (canonical_math_q2_project_parallel_onto_coordinate_planes_with_matrices)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.5.PARALLEL_PROJECTIONS_COORDINATE_PLANES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen</td>
+</tr>
+<tr>
+<td>Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)</td>
+</tr>
+<tr>
+<td>Zentrische Streckungen am Koordinatenursprung mit Matrizen darstellen (canonical_math_q2_central_stretches_at_origin_with_matrices)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.5.CENTRAL_DILATIONS_ORIGIN</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Zentrische Streckungen am Koordinatenursprung mit Matrizen darstellen</td>
+</tr>
+<tr>
+<td>Zusammensetzungen als Matrixprodukt darstellen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen &gt; Zusammensetzungen als Matrixprodukt darstellen</td>
+</tr>
+<tr>
+<td>Grenzprozesse und Grenzmatrizen interpretieren (LK) (canonical_math_q2_interpret_limit_processes_and_limit_matrices_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.4.LIMIT_PROCESSES_LIMIT_MATRICES_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Fixvektoren, stabile Zustände und Langzeitverhalten &gt; Grenzprozesse und Grenzmatrizen interpretieren (LK)</td>
+</tr>
+<tr>
+<td>Langfristige Entwicklung von Übergangsprozessen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Fixvektoren, stabile Zustände und Langzeitverhalten &gt; Langfristige Entwicklung von Übergangsprozessen (LK)</td>
+</tr>
+<tr>
+<td>Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK) (canonical_math_q2_use_matrix_powers_for_long_term_transition_processes_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.4.LONG_TERM_MATRIX_POWERS_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Fixvektoren, stabile Zustände und Langzeitverhalten &gt; Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)</td>
+</tr>
+<tr>
+<td>Einfache inverse Matrizen bestimmen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrixoperationen und Mehrschrittprozesse &gt; Mit Matrizen rechnen &gt; Einfache inverse Matrizen bestimmen</td>
+</tr>
+<tr>
+<td>Matrix-Vektor-Produkte berechnen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrixoperationen und Mehrschrittprozesse &gt; Mit Matrizen rechnen &gt; Matrix-Vektor-Produkte berechnen</td>
+</tr>
+<tr>
+<td>Matrizen addieren und subtrahieren</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrixoperationen und Mehrschrittprozesse &gt; Mit Matrizen rechnen &gt; Matrizen addieren und subtrahieren</td>
+</tr>
+<tr>
+<td>Matrizen multiplizieren</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrixoperationen und Mehrschrittprozesse &gt; Mit Matrizen rechnen &gt; Matrizen multiplizieren</td>
+</tr>
+<tr>
+<td>Skalare Multiplikation von Matrizen durchführen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrixoperationen und Mehrschrittprozesse &gt; Mit Matrizen rechnen &gt; Skalare Multiplikation von Matrizen durchführen</td>
+</tr>
+<tr>
+<td>Matrixeinträge über Zeilen und Spalten lesen und deuten (canonical_math_matrix_entries_read_and_interpret)</td>
+<td>Q2</td>
+<td>Lineare Algebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.MATRICES.READ_ENTRIES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrizen als Darstellungsform verstehen &gt; Matrixeinträge über Zeilen und Spalten lesen und deuten</td>
+</tr>
+<tr>
+<td>Tupelsachverhalte in Tabellenkalkulation organisieren und Zellbezüge lesen (canonical_math_matrix_spreadsheet_tuples_organize_and_read)</td>
+<td>Q2</td>
+<td>Lineare Algebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.MATRICES.SPREADSHEET_TUPLES_AND_CELL_REFERENCES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrizen als Darstellungsform verstehen &gt; Tupelsachverhalte in Tabellenkalkulation organisieren und Zellbezüge lesen</td>
+</tr>
+<tr>
+<td>Stochastische Übergangsmatrizen für Markov-Ketten prüfen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen &gt; Stochastische Übergangsmatrizen für Markov-Ketten prüfen</td>
+</tr>
+<tr>
+<td>Übergangsprozesse mit stochastischen Matrizen modellieren (canonical_math_q2_model_transition_processes_with_stochastic_matrices)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.4.STOCHASTIC_MATRIX_MODELING</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen &gt; Übergangsprozesse mit stochastischen Matrizen modellieren</td>
+</tr>
+<tr>
+<td>Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben (canonical_math_q2_describe_transition_processes_with_state_vectors_and_transition_matrices)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.4.STATE_VECTORS_TRANSITION_MATRICES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen &gt; Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben</td>
+</tr>
+<tr>
+<td>Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen (canonical_math_q2_assess_backward_markov_calculations_for_validity_and_uniqueness)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen &gt; Zustände in Markov-Ketten berechnen &gt; Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen</td>
+</tr>
+<tr>
+<td>Zustände in Markov-Ketten vorwärts berechnen und deuten (canonical_math_q2_calculate_and_interpret_forward_markov_state_developments)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen &gt; Zustände in Markov-Ketten berechnen &gt; Zustände in Markov-Ketten vorwärts berechnen und deuten</td>
+</tr>
+<tr>
+<td>Abstand zweier Punkte im Raum berechnen (canonical_math_q2_compute_distance_between_two_points_in_space)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.POINT_DISTANCE_SPACE</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Abstand zweier Punkte im Raum berechnen</td>
+</tr>
+<tr>
+<td>Betrag eines Vektors im Raum bestimmen (canonical_math_q2_compute_vector_magnitude_in_space)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.VECTOR_MAGNITUDE_SPACE</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Betrag eines Vektors im Raum bestimmen</td>
+</tr>
+<tr>
+<td>Geometriesoftware zur Raumorientierung nutzen (canonical_math_q2_use_geometry_software_for_spatial_orientation)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.GEOMETRY_SOFTWARE_SPATIAL_ORIENTATION</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Geometriesoftware zur Raumorientierung nutzen</td>
+</tr>
+<tr>
+<td>Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen</td>
+</tr>
+<tr>
+<td>Kollinearität von Vektoren im Raum prüfen (canonical_math_q2_check_collinearity_of_vectors_in_space)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.VECTOR_COLLINEARITY_SPACE</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Kollinearität von Vektoren im Raum prüfen</td>
+</tr>
+<tr>
+<td>Ähnlichkeitsbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_similarity)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.SIMILARITY</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Körper und Figuren im Raum charakterisieren &gt; Eigenschaften ebener Figuren für Flächenberechnungen untersuchen &gt; Ähnlichkeitsbeziehungen ebener Figuren untersuchen</td>
+</tr>
+<tr>
+<td>Eigenschaften ebener Figuren für Flächenberechnungen nutzen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_area_properties)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.AREA_PROPERTIES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Körper und Figuren im Raum charakterisieren &gt; Eigenschaften ebener Figuren für Flächenberechnungen untersuchen &gt; Eigenschaften ebener Figuren für Flächenberechnungen nutzen</td>
+</tr>
+<tr>
+<td>Kongruenzbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_congruence)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.CONGRUENCE</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Körper und Figuren im Raum charakterisieren &gt; Eigenschaften ebener Figuren für Flächenberechnungen untersuchen &gt; Kongruenzbeziehungen ebener Figuren untersuchen</td>
+</tr>
+<tr>
+<td>Längen- und Winkelbeziehungen einfacher Körper untersuchen (canonical_math_q2_analyze_properties_of_simple_solid_bodies_lengths_angles)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.LENGTHS_ANGLES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Körper und Figuren im Raum charakterisieren &gt; Eigenschaften einfacher geometrischer Körper untersuchen &gt; Längen- und Winkelbeziehungen einfacher Körper untersuchen</td>
+</tr>
+</tbody>
+</table>
+<p>Weitere 433 Eintraege stehen in der JSON-Begleitdatei.</p>
+<h2 id="cluster-direct-rationale-pending">Cluster Direct Rationale Pending</h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Phase</th>
+<th>Area</th>
+<th>Topic</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mathematik (canonical_math_module)</td>
+<td>GLOBAL</td>
+<td>Mathematik</td>
+<td>CANONICAL.MATH</td>
+<td>Mathematik</td>
+</tr>
+<tr>
+<td>Abiturprüfung Mathematik (GK) (abi_gk_offer_2026)</td>
+<td>Abitur</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Abiturprüfung Mathematik (GK)</td>
+</tr>
+<tr>
+<td>Teil 1: Hilfsmittelfrei</td>
+<td>Abitur</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Abiturprüfung Mathematik (GK) &gt; Teil 1: Hilfsmittelfrei</td>
+</tr>
+<tr>
+<td>Teil 2: Mit Hilfsmitteln</td>
+<td>Abitur</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Abiturprüfung Mathematik (GK) &gt; Teil 2: Mit Hilfsmitteln</td>
+</tr>
+<tr>
+<td>Abiturprüfung Mathematik (LK) (abi_lk_offer_2026)</td>
+<td>Abitur</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Abiturprüfung Mathematik (LK)</td>
+</tr>
+<tr>
+<td>Teil 1: Hilfsmittelfrei (LK)</td>
+<td>Abitur</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Abiturprüfung Mathematik (LK) &gt; Teil 1: Hilfsmittelfrei (LK)</td>
+</tr>
+<tr>
+<td>Teil 2: Mit Hilfsmitteln (LK)</td>
+<td>Abitur</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Abiturprüfung Mathematik (LK) &gt; Teil 2: Mit Hilfsmitteln (LK)</td>
+</tr>
+<tr>
+<td>Analytische Geometrie, lineare Algebra und vertiefte Analysis</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis</td>
+</tr>
+<tr>
+<td>Raum, Matrizen und lineare Modelle (Sek II) (canonical_math_sek2_space_matrices_models)</td>
+<td>GLOBAL</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.LINEARALGEBRA</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II)</td>
+</tr>
+<tr>
+<td>Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.DISTANCES_ANGLES_REFLECTIONS_AND_APPLICATIONS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum</td>
+</tr>
+<tr>
+<td>Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.POINT_POINT_AND_POINT_PLANE_DISTANCES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen</td>
+</tr>
+<tr>
+<td>Punkte, Geraden und Ebenen allgemein spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Punkte, Geraden und Ebenen allgemein spiegeln (LK)</td>
+</tr>
+<tr>
+<td>Geraden, Ebenen und Gleichungsformen im Raum</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.LINES_PLANES_AND_EQUATION_FORMS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum</td>
+</tr>
+<tr>
+<td>Ebenen durch verschiedene Gleichungsformen beschreiben</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Geraden, Ebenen und Gleichungsformen im Raum &gt; Ebenen durch verschiedene Gleichungsformen beschreiben</td>
+</tr>
+<tr>
+<td>Lagebeziehungen und Schnittmengen im Raum</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.RELATIONS_AND_INTERSECTIONS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum</td>
+</tr>
+<tr>
+<td>Schnittpunkte von Geraden und Ebenen bestimmen und deuten</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.LINE_AND_LINE_PLANE_INTERSECTIONS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum &gt; Schnittpunkte von Geraden und Ebenen bestimmen und deuten</td>
+</tr>
+<tr>
+<td>Vertiefende Untersuchungen im Raum (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum &gt; Vertiefende Untersuchungen im Raum (LK)</td>
+</tr>
+<tr>
+<td>Lineare geometrische Abbildungen und Abbildungsmatrizen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lineare geometrische Abbildungen und Abbildungsmatrizen</td>
+</tr>
+<tr>
+<td>Matrizen, Übergangsprozesse und lineare Modelle (Sek II)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II)</td>
+</tr>
+<tr>
+<td>Fixvektoren, stabile Zustände und Langzeitverhalten</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.MATRICES.FIXED_VECTORS_AND_LONG_TERM_BEHAVIOR</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Fixvektoren, stabile Zustände und Langzeitverhalten</td>
+</tr>
+<tr>
+<td>Matrixoperationen und Mehrschrittprozesse</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.MATRICES.OPERATIONS_AND_MULTI_STEP_PROCESSES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrixoperationen und Mehrschrittprozesse</td>
+</tr>
+<tr>
+<td>Mit Matrizen rechnen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrixoperationen und Mehrschrittprozesse &gt; Mit Matrizen rechnen</td>
+</tr>
+<tr>
+<td>Matrizen als Darstellungsform verstehen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Matrizen als Darstellungsform verstehen</td>
+</tr>
+<tr>
+<td>Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.MATRICES.TRANSITIONS_AND_STATE_VECTORS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen</td>
+</tr>
+<tr>
+<td>Zustände in Markov-Ketten berechnen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Matrizen, Übergangsprozesse und lineare Modelle (Sek II) &gt; Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen &gt; Zustände in Markov-Ketten berechnen</td>
+</tr>
+<tr>
+<td>Punkte, Vektoren und Bewegungen im Raum</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.POINTS_VECTORS_AND_MOTION</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum</td>
+</tr>
+<tr>
+<td>Körper und Figuren im Raum charakterisieren</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Körper und Figuren im Raum charakterisieren</td>
+</tr>
+<tr>
+<td>Eigenschaften ebener Figuren für Flächenberechnungen untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Körper und Figuren im Raum charakterisieren &gt; Eigenschaften ebener Figuren für Flächenberechnungen untersuchen</td>
+</tr>
+<tr>
+<td>Eigenschaften einfacher geometrischer Körper untersuchen (canonical_math_q2_analyze_properties_of_simple_solid_bodies)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Körper und Figuren im Raum charakterisieren &gt; Eigenschaften einfacher geometrischer Körper untersuchen</td>
+</tr>
+<tr>
+<td>Körpereigenschaften begründen und Volumen- sowie Oberflächeninhalte berechnen (canonical_math_q2_justify_body_properties_and_compute_volume_surface)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.JUSTIFY_BODY_PROPERTIES_VOLUME_SURFACE</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Körper und Figuren im Raum charakterisieren &gt; Körpereigenschaften begründen und Volumen- sowie Oberflächeninhalte berechnen</td>
+</tr>
+<tr>
+<td>Räumliche Objekte im dreidimensionalen Koordinatensystem darstellen (canonical_math_q2_represent_spatial_objects_in_3d_coordinates)</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.Q2.2.SPATIAL_OBJECTS_3D_COORDINATES</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Punkte, Vektoren und Bewegungen im Raum &gt; Räumliche Objekte im dreidimensionalen Koordinatensystem darstellen</td>
+</tr>
+<tr>
+<td>Skalarprodukt, Orthogonalität und metrische Grundlagen im Raum</td>
+<td>Q2</td>
+<td>LinearAlgebra</td>
+<td>CANONICAL.MATH.SEK2.SPACE.SCALAR_PRODUCT_AND_METRIC_FOUNDATIONS</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Skalarprodukt, Orthogonalität und metrische Grundlagen im Raum</td>
+</tr>
+<tr>
+<td>Übungen Q2</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Übungen Q2</td>
+</tr>
+<tr>
+<td>Vertiefung der Analysis</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis</td>
+</tr>
+<tr>
+<td>Eigenschaften verknüpfter und verketteter Funktionen graphisch begründen (LK) (canonical_math_q2_graphically_justify_linked_and_composed_function_properties)</td>
+<td>Q2</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK2.Q2.1.GRAPHICAL_FUNCTION_LINK_COMPOSITION</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Eigenschaften verknüpfter und verketteter Funktionen graphisch begründen (LK)</td>
+</tr>
+<tr>
+<td>Natürlichen Logarithmus als Umkehrfunktion und Stammfunktion untersuchen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Natürlichen Logarithmus als Umkehrfunktion und Stammfunktion untersuchen (LK)</td>
+</tr>
+<tr>
+<td>Natürlichen Logarithmus als Umkehrfunktion verstehen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Natürlichen Logarithmus als Umkehrfunktion und Stammfunktion untersuchen (LK) &gt; Natürlichen Logarithmus als Umkehrfunktion verstehen (LK)</td>
+</tr>
+<tr>
+<td>Parameter in Analysisaufgaben untersuchen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Parameter in Analysisaufgaben untersuchen</td>
+</tr>
+<tr>
+<td>Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)</td>
+</tr>
+<tr>
+<td>Transformationen bekannter Funktionsklassen beschreiben</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Transformationen bekannter Funktionsklassen beschreiben</td>
+</tr>
+<tr>
+<td>Daten und Zufall (canonical_math_sek1_data_probability_foundations)</td>
+<td>GLOBAL</td>
+<td>Probability</td>
+<td>CANONICAL.MATH.SEK1.DATA.PROBABILITY</td>
+<td>Mathematik &gt; Daten und Zufall</td>
+</tr>
+<tr>
+<td>Beschreibende Statistik und Datenvergleich (canonical_math_sek1_later_descriptive_statistics_boxplots)</td>
+<td>GLOBAL</td>
+<td>Data</td>
+<td>CANONICAL.MATH.SEK1.DATA.PROBABILITY.D4</td>
+<td>Mathematik &gt; Daten und Zufall &gt; Beschreibende Statistik und Datenvergleich</td>
+</tr>
+<tr>
+<td>Zählen, Kombinatorik und Wahrscheinlichkeitsbrücken (canonical_math_sek1_counting_combinatorics_bridge)</td>
+<td>GLOBAL</td>
+<td>Probability</td>
+<td>CANONICAL.MATH.SEK1.DATA.PROBABILITY.D5</td>
+<td>Mathematik &gt; Daten und Zufall &gt; Zählen, Kombinatorik und Wahrscheinlichkeitsbrücken</td>
+</tr>
+<tr>
+<td>Einfache Zuordnungen, Tabellen und Diagramme (canonical_math_sek1_early_mappings_tables_diagrams)</td>
+<td>GLOBAL</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK1.EARLY.REPRESENTATIONS</td>
+<td>Mathematik &gt; Einfache Zuordnungen, Tabellen und Diagramme</td>
+</tr>
+<tr>
+<td>Diagramme in einfachen Zusammenhängen nutzen (canonical_math_sek1_diagrams_simple_contexts)</td>
+<td>GLOBAL</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK1.EARLY.REPRESENTATIONS.DIAGRAMS</td>
+<td>Mathematik &gt; Einfache Zuordnungen, Tabellen und Diagramme &gt; Diagramme in einfachen Zusammenhängen nutzen</td>
+</tr>
+<tr>
+<td>Tabellen in einfachen Zusammenhängen nutzen (canonical_math_sek1_tables_simple_contexts)</td>
+<td>GLOBAL</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK1.EARLY.REPRESENTATIONS.TABLES</td>
+<td>Mathematik &gt; Einfache Zuordnungen, Tabellen und Diagramme &gt; Tabellen in einfachen Zusammenhängen nutzen</td>
+</tr>
+<tr>
+<td>Frühe Datenroutinen, Häufigkeiten und Datendeutung (canonical_math_sek1_early_data_probability_counting)</td>
+<td>GLOBAL</td>
+<td>Data</td>
+<td>CANONICAL.MATH.SEK1.DATA.PROBABILITY.D1</td>
+<td>Mathematik &gt; Frühe Datenroutinen, Häufigkeiten und Datendeutung</td>
+</tr>
+<tr>
+<td>Frühe Geometrie und Raumvorstellungen (canonical_math_sek1_early_geometry_space)</td>
+<td>GLOBAL</td>
+<td>Geometry</td>
+<td>CANONICAL.MATH.SEK1.EARLY.GEOMETRY</td>
+<td>Mathematik &gt; Frühe Geometrie und Raumvorstellungen</td>
+</tr>
+<tr>
+<td>Halbierende Geraden mit Geodreieck und Zirkel konstruieren (canonical_math_sek1_j7_construct_bisectors)</td>
+<td>J7</td>
+<td>Geometry</td>
+<td>CANONICAL.MATH.SEK1.J7.GEOMETRY.CONSTRUCT.BISECTORS</td>
+<td>Mathematik &gt; Frühe Geometrie und Raumvorstellungen &gt; Halbierende Geraden mit Geodreieck und Zirkel konstruieren</td>
+</tr>
+<tr>
+<td>Frühe Größen-, Flächen- und Volumenvorstellungen (canonical_math_sek1_early_measurement_area_volume)</td>
+<td>GLOBAL</td>
+<td>Measurement</td>
+<td>CANONICAL.MATH.SEK1.EARLY.MEASUREMENT</td>
+<td>Mathematik &gt; Frühe Größen-, Flächen- und Volumenvorstellungen</td>
+</tr>
+<tr>
+<td>Frühe Zahlvorstellungen und Zahlendarstellungen (canonical_math_sek1_early_number_representations)</td>
+<td>GLOBAL</td>
+<td>Arithmetic</td>
+<td>CANONICAL.MATH.SEK1.EARLY.NUMBERS</td>
+<td>Mathematik &gt; Frühe Zahlvorstellungen und Zahlendarstellungen</td>
+</tr>
+<tr>
+<td>Funktionenscharen, Argumentieren und komplexe Zahlen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen</td>
+</tr>
+<tr>
+<td>Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) (canonical_math_sek2_parameters_argumentation_complex)</td>
+<td>GLOBAL</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK2.PARAMETERS.ARGUMENTATION.COMPLEX</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)</td>
+</tr>
+<tr>
+<td>Funktionenscharen und Parameteruntersuchungen (Sek II) (canonical_math_sek2_function_families_parameters)</td>
+<td>GLOBAL</td>
+<td>Analysis</td>
+<td>CANONICAL.MATH.SEK2.FUNCTION_FAMILIES.PARAMETERS</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen (Sek II)</td>
+</tr>
+<tr>
+<td>Funktionenscharen und Parameteruntersuchungen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen</td>
+</tr>
+<tr>
+<td>Ortskurven von Extrem- und Wendepunkten bestimmen (LK)</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen &gt; Ortskurven von Extrem- und Wendepunkten bestimmen (LK)</td>
+</tr>
+<tr>
+<td>Komplexe Zahlen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Komplexe Zahlen</td>
+</tr>
+<tr>
+<td>Komplexe Zahlen algebraisch multiplizieren und dividieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>CANONICAL.MATH.SEK2.Q4.3.MULTIPLY_AND_DIVIDE_COMPLEX_NUMBERS_ALGEBRAICALLY</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Komplexe Zahlen &gt; Komplexe Zahlen algebraisch multiplizieren und dividieren</td>
+</tr>
+<tr>
+<td>Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) (canonical_math_sek2_q4_complex_extension_necessity_by)</td>
+<td>Q4</td>
+<td>Algebra</td>
+<td>CANONICAL.MATH.SEK2.Q4.COMPLEX_EXTENSION_BY</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Komplexe Zahlen &gt; Zahlbereichserweiterung zu komplexen Zahlen begründen (LK)</td>
+</tr>
+<tr>
+<td>Problemlösen und Argumentieren</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren</td>
+</tr>
+</tbody>
+</table>
+<p>Weitere 197 Eintraege stehen in der JSON-Begleitdatei.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Landscape: <code>curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json</code></li>
+<li>Runtime index: <code>app/public/data/goal-source-rationales-math-public.json</code></li>
+<li>Runtime index generated: 2026-09-06T12:05:29.301Z</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

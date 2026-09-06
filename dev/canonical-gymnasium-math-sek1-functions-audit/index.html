@@ -1,0 +1,4850 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/dev/canonical-gymnasium-math-sek1-functions-audit/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Canonical Gymnasium Mathematics: Sek I Functions / Mappings Audit - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#canonical-gymnasium-mathematics-sek-i-functions-mappings-audit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Canonical Gymnasium Mathematics: Sek I Functions / Mappings Audit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reviewed-source-evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reviewed source evidence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reviewed source evidence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hessen-he" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hessen (HE)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brandenburg-and-berlin-bb-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Brandenburg and Berlin (BB, BE)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bremen-hb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bremen (HB)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hamburg-hh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hamburg (HH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sachsen-sn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen (SN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sachsen-anhalt-st" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt (ST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rheinland-pfalz-rp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rheinland-Pfalz (RP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mecklenburg-vorpommern-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mecklenburg-Vorpommern (MV)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-canonical-function-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current canonical function inventory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audit-judgment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audit judgment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-design-step-executed-2026-04-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical design step executed (2026-04-01)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-next-concrete-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended next concrete step
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-criteria-for-this-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit criteria for this audit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exit criteria for this audit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thueringen-th" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thueringen (TH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-reviewed-mapping-realignment-connected-2026-04-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First reviewed mapping realignment connected (2026-04-01)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-k10-k9-k8-and-k6-function-side-corridors-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen K10, K9, K8, and K6 function-side corridors connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-anhalt-jg-56-correspondence-proportionality-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt JG 5/6 correspondence / proportionality corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-anhalt-jg-78-linear-functions-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt JG 7/8 linear-functions corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-anhalt-jg-9-quadratics-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt JG 9 quadratics corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-anhalt-jg-10-function-classes-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt JG 10 function-classes corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mecklenburg-vorpommern-klasse-8-linear-functions-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mecklenburg-Vorpommern Klasse 8 linear-functions corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mecklenburg-vorpommern-klasse-9-quadratics-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mecklenburg-Vorpommern Klasse 9 quadratics corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mecklenburg-vorpommern-klasse-10-late-function-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mecklenburg-Vorpommern Klasse 10 late function corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rheinland-pfalz-klassenstufen-7-und-8-function-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rheinland-Pfalz Klassenstufen 7 und 8 function corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rheinland-Pfalz Klassenstufen 7 und 8 function corridor connected (2026-04-03)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#saarland-sl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saarland (SL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saarland-klassenstufe-8-broad-functions-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saarland Klassenstufe 8 broad functions corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saarland-klassenstufe-9-broad-functions-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saarland Klassenstufe 9 broad functions corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saarland-klassenstufe-10-broad-functions-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saarland Klassenstufe 10 broad functions corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-reviewed-close-out-evidence-bw-by-ni-nw-sh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional reviewed close-out evidence (BW, BY, NI, NW, SH)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional reviewed close-out evidence (BW, BY, NI, NW, SH)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baden-wuerttemberg-bw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baden-Wuerttemberg (BW)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bayern-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bayern (BY)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#niedersachsen-ni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Niedersachsen (NI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nordrhein-westfalen-nw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nordrhein-Westfalen (NW)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schleswig-holstein-sh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schleswig-Holstein (SH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#close-out-judgment-2026-04-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Close-out judgment (2026-04-05)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="canonical-gymnasium-mathematics-sek-i-functions-mappings-audit">Canonical Gymnasium Mathematics: Sek I Functions / Mappings Audit</h1>
+<p>Snapshot: <code>2026-04-05</code></p>
+<p>Purpose:</p>
+<ul>
+<li>review the current canonical <code>Sek I Funktionen / Zuordnungen</code> inventory after the lower-secondary breadth sweep</li>
+<li>use reviewed lower-secondary state evidence to test whether the current canonical function cuts are pedagogically stable</li>
+<li>decide whether the nationwide <code>Sek I Funktionen / Zuordnungen</code> row can be treated as closed for now</li>
+</ul>
+<h2 id="scope">Scope</h2>
+<p>In scope:</p>
+<ul>
+<li>the canonical Sek-I function and mapping topic surface in</li>
+<li><code>curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json</code></li>
+<li>the reviewed lower-secondary source and mapping evidence across all <code>16</code> Bundeslaender</li>
+</ul>
+<p>Out of scope:</p>
+<ul>
+<li>learner-facing composition views</li>
+<li>Sek-II differential calculus packaging</li>
+<li>the geometry-owned trigonometric bridge except where it explicitly turns into late Sek-I function corridors</li>
+</ul>
+<h2 id="reviewed-source-evidence">Reviewed source evidence</h2>
+<h3 id="hessen-he">Hessen (<code>HE</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>HE</code> remains the mature baseline for early mappings, proportional reasoning, linear functions, and the first clear algebra/function boundary</li>
+<li>the Hessen lane confirms that function work can stay visible without pulling core term and equation packaging back into the function topic</li>
+</ul>
+<h3 id="brandenburg-and-berlin-bb-be">Brandenburg and Berlin (<code>BB</code>, <code>BE</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li>the currently reviewed <code>BB</code> and <code>BE</code> lanes already anchor the shared linear-function core</li>
+<li>they validate the existence of a stable lower-secondary function spine, but they do not yet force many additional visible subpackages on their own</li>
+</ul>
+<h3 id="bremen-hb">Bremen (<code>HB</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>HB</code> still contributes mostly broad mixed lower-secondary function/algebra corridors</li>
+<li>Bremen is therefore useful as a packaging pressure test, but not yet as a strong driver for new function atoms</li>
+</ul>
+<h3 id="hamburg-hh">Hamburg (<code>HH</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>HH</code> is currently the strongest reviewed late Sek-I function lane</li>
+<li>the reviewed Hamburg corridors explicitly surface:</li>
+<li>linear and inverse-proportional relationships</li>
+<li>representation changes</li>
+<li>linear functions in applications</li>
+<li>quadratic functions and optimisation</li>
+<li>periodic processes</li>
+<li>exponential growth</li>
+<li>exponential equations and logarithms</li>
+<li>change rates and derivative entry</li>
+</ul>
+<h3 id="sachsen-sn">Sachsen (<code>SN</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>SN</code> now contributes five explicit function-side evidence lanes:</li>
+<li>a broad <code>K10 Lernbereich 1 Wachstumsvorgaenge und periodische Vorgaenge</code> strip</li>
+<li>a late <code>J10</code> strip inside <code>K10 Lernbereich 4 Funktionale Zusammenhaenge</code></li>
+<li>a later <code>K9 Funktionen und Potenzen</code> strip</li>
+<li>a middle-stage <code>K8 Funktionen und lineare Gleichungssysteme</code> strip</li>
+<li>an early <code>K6 Zuordnungen in der Umwelt</code> strip</li>
+<li>the broad Sachsen <code>K10 Lernbereich 1</code> strip already fits the visible J10 trigonometric/exponential corridor without forcing a separate shared growth-model or periodic-model package</li>
+<li>the late Sachsen lane mixes periodic / trigonometric / exponential / logarithmic continuation with sequence, limit, and parametrized-curve residue</li>
+<li>the later Sachsen <code>K9</code> lane confirms the current quadratic boundary and keeps powers / roots on the existing late number-extension side instead of forcing a separate shared power-function package</li>
+<li>the middle Sachsen lane confirms the current <code>F3</code> surface for linear functions and regression while keeping its linear-system residue on the algebra side instead of forcing a new shared mixed package</li>
+<li>the early Sachsen lane confirms the existing early <code>F1/F2</code> surface for mappings, representations, and proportional assignments without forcing a separate package for the attached frequency-interpretation residue</li>
+<li>together these five Sachsen lanes widen the reviewed evidence across the early, middle, later, and late Sek-I function topic without forcing a new shared regression package, a new mixed function-equation package, a new shared power-function package, a separate shared growth/periodicity package, or a new visible sequence / parametric-curve subpackage</li>
+</ul>
+<h3 id="sachsen-anhalt-st">Sachsen-Anhalt (<code>ST</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>ST</code> now contributes a first reviewed early lower-secondary function lane through <code>JG 5/6</code></li>
+<li>the lane splits the broad Sachsen-Anhalt source anchor into an early correspondence strip and a broad direct/inverse-proportionality strip</li>
+<li>the correspondence strip fits the existing early <code>F1/F2</code> surface</li>
+<li>the direct/inverse mix stays acceptable on the existing broad proportional bridge without forcing a separate visible inverse-proportional package</li>
+<li>together this keeps the canonical early function surface stable and shifts the remaining pressure from packaging to coverage</li>
+</ul>
+<h3 id="rheinland-pfalz-rp">Rheinland-Pfalz (<code>RP</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>RP</code> now contributes a first reviewed lower-secondary function corridor on the explicit <code>Klassenstufen 7 und 8</code> lane</li>
+<li>the Rheinland-Pfalz source separates</li>
+<li><code>Proportionale und antiproportionale Zuordnungen</code></li>
+<li><code>Lineare Funktionen</code></li>
+<li>this makes <code>RP</code> a useful pressure test for whether the visible middle Sek-I function surface can absorb a broad proportional bridge next to a cleaner linear-function strip without forcing another package boundary</li>
+</ul>
+<h3 id="mecklenburg-vorpommern-mv">Mecklenburg-Vorpommern (<code>MV</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>MV</code> now contributes a first reviewed lower-secondary function corridor on the explicit <code>Klasse 7</code> lane</li>
+<li>the Mecklenburg-Vorpommern source separates</li>
+<li><code>Zuordnungen</code></li>
+<li><code>proportionale und umgekehrt proportionale Zuordnungen</code></li>
+<li>this makes <code>MV</code> a useful early-lane pressure test for whether the visible early Sek-I function surface can absorb a broad direct/inverse-proportionality bridge next to a cleaner mappings strip without forcing a separate inverse-proportional package</li>
+</ul>
+<h2 id="current-canonical-function-inventory">Current canonical function inventory</h2>
+<p>The canonical graph is already materially seeded here.</p>
+<p>Important current package questions:</p>
+<ol>
+<li>early mappings, function concept, and representation change</li>
+<li>proportional and inverse-proportional bridges after the algebra <code>A3</code> decision</li>
+<li>linear functions, linear calculations, and the remaining algebra residue inside the J8 calculation strip</li>
+<li>quadratic functions versus the equation boundary</li>
+<li>late J10 function continuations: periodic, exponential, logarithmic, and derivative-entry corridors</li>
+</ol>
+<h2 id="audit-judgment">Audit judgment</h2>
+<p>The canonical Sek-I function topic is not missing a usable backbone.
+The main remaining risk was packaging, not first missing content.</p>
+<p>After the algebra cleanup, and with the new Mecklenburg-Vorpommern early lane connected, the decisive nationwide close-out questions sat in three places:</p>
+<ol>
+<li>the J8 linear calculation strip</li>
+<li>the quadratic/equation boundary</li>
+<li>the late J10 function continuations</li>
+</ol>
+<h2 id="canonical-design-step-executed-2026-04-01">Canonical design step executed (<code>2026-04-01</code>)</h2>
+<p>The first canonical packaging pass is now in place.</p>
+<p>Inserted visible package surface in the canonical graph:</p>
+<ol>
+<li><code>F3</code> linear functions, calculations, and applications</li>
+<li><code>F4</code> quadratic functions and the equation boundary</li>
+<li><code>F5</code> late J10 function continuations</li>
+</ol>
+<p>Boundary decisions executed:</p>
+<ul>
+<li>the J8 linear calculation strip was cleaned of the explicit linear-equation residue</li>
+<li>the quadratic representation corridor was narrowed so that the explicit quadratic-equation branch is visible instead of being hidden inside the same subcorridor</li>
+<li>late J10 periodic, exponential, logarithmic, and derivative-entry continuations are now grouped as an explicit visible continuation area of the Sek-I function topic</li>
+<li><code>F1</code> and the basic <code>F2</code> bridge remain materially seeded and were therefore not repackaged again in this step</li>
+</ul>
+<h2 id="recommendation">Recommendation</h2>
+<p>Do not widen more bundesland mappings on Sek-I functions unless a later reviewed lane or validator finding forces a genuinely new shared package beyond the current surface.</p>
+<h2 id="recommended-next-concrete-step">Recommended next concrete step</h2>
+<ol>
+<li>keep the current <code>F1-F5</code> function surface frozen and use later function evidence only for residue control</li>
+<li>move the active lower-secondary breadth wave to <code>Sek I Geometrie / Raum</code></li>
+</ol>
+<h2 id="exit-criteria-for-this-audit">Exit criteria for this audit</h2>
+<p>This topic audit is complete when:</p>
+<h3 id="thueringen-th">Thueringen (<code>TH</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>TH</code> now contributes a first reviewed lower-secondary functions corridor on the explicit <code>Klassenstufen 5/6</code> lane</li>
+<li>the Thueringen source currently separates</li>
+<li><code>Zuordnungen</code></li>
+<li>this makes <code>TH</code> a useful pressure test for whether the visible early mapping surface can absorb a clean <code>5/6</code> correspondence lane without forcing a broader early function split</li>
+<li><code>TH</code> now also contributes a first reviewed broad <code>Klassenstufen 7/8</code> functions corridor</li>
+<li>the archived <code>7/8</code> source still exposes only one shared <code>Funktionen</code> strip</li>
+<li>this confirms that the shared broad Sek-I function surface can absorb a reviewed wide <code>7/8</code> lane without forcing a sharper canonical split from source granularity alone</li>
+<li><code>TH</code> now also contributes a first reviewed broad <code>Klassenstufen 9/10</code> functions corridor</li>
+<li>the archived <code>9/10</code> source still exposes only one shared <code>Funktionen</code> strip</li>
+<li>
+<p>this confirms that the same shared broad Sek-I function surface can absorb a reviewed wide <code>9/10</code> lane, while the strip remains deliberately broad because it crosses the visible <code>F4</code> / late-<code>J10</code> boundary too broadly for a narrower reviewed split</p>
+</li>
+<li>
+<p>the canonical subpackage boundaries above are either accepted or revised</p>
+</li>
+<li>the canonical graph has a stable Sek-I function packaging after the algebra cleanup</li>
+<li>reviewed nationwide evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity</li>
+<li>it is clear whether the remaining residue at late J10 depth or around the quadratic/equation boundary requires further canonical restructuring</li>
+</ul>
+<h2 id="first-reviewed-mapping-realignment-connected-2026-04-01">First reviewed mapping realignment connected (<code>2026-04-01</code>)</h2>
+<ul>
+<li><code>HH J10 Strukturen und funktionaler Zusammenhang</code> now points to the visible <code>F5</code> continuation package instead of the older trig/exponential-only trunk</li>
+<li><code>HH lineare Funktionen in Anwendungen</code> now points to <code>F3</code>, which better reflects application-heavy linear function work than the older single linear-function atom</li>
+<li><code>BB</code>, <code>BE</code>, and <code>HE</code> keep their more precise atomic or already adequate subcorridor targets</li>
+<li>the remaining broad <code>HB</code> and <code>HH</code> mixed lower-secondary function corridors intentionally stay broader because they still span algebra and function packaging at source level</li>
+</ul>
+<h2 id="sachsen-k10-k9-k8-and-k6-function-side-corridors-connected-2026-04-03">Sachsen K10, K9, K8, and K6 function-side corridors connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li><code>SN K10 Lernbereich 1 Wachstumsvorgaenge und periodische Vorgaenge</code> now also points to the visible J10 trigonometric/exponential corridor surface</li>
+<li><code>SN K10 Lernbereich 4 Funktionale Zusammenhaenge</code> now points to the visible <code>F5</code> package surface</li>
+<li>the split Sachsen source strips on periodic / trigonometric / exponential graphs, logarithmic and exponential-equation work, and the broader sequences / parametrized-curves residue make <code>SN</code> the next explicit late-J10 evidence lane after <code>HH</code></li>
+<li><code>SN K9 Lernbereich 1 Funktionen und Potenzen</code> now also contributes a reviewed later lane: its powers / roots strip stays on the late number-extension package, its power-function strip stays on the existing power-function surface, and its quadratic-function / equation strips confirm the current <code>F4</code> boundary without forcing another shared package</li>
+<li><code>SN K8 Lernbereich 3 Funktionen und lineare Gleichungssysteme</code> now also contributes a reviewed middle-stage lane: its function-concept strip points to the shared early representation surface, its linear-function strip points to the visible <code>F3</code> surface, its regression strip intentionally stays broad on <code>F3</code>, and its linear-system strip stays on the algebra side</li>
+<li><code>SN K6 Lernbereich 2 Zuordnungen in der Umwelt</code> now also points to the early shared function surface via mappings / representations and proportional-assignment work</li>
+<li>the Sachsen frequency-related residue inside <code>K6</code> intentionally stays on the broad early function surface instead of forcing a separate shared package at this stage</li>
+<li>the Sachsen broad <code>K10 Lernbereich 1</code> growth-and-periodicity anchor intentionally stays on the visible J10 trigonometric/exponential corridor instead of being over-split into separate exponential and periodic subtargets without reviewed source strips</li>
+<li>the Sachsen late-J10 strip intentionally stays broad on <code>F5</code>, because the current canonical Sek-I function surface does not yet expose a narrower shared package for sequences, limits, and parametrized curves</li>
+</ul>
+<h2 id="sachsen-anhalt-jg-56-correspondence-proportionality-corridor-connected-2026-04-03">Sachsen-Anhalt JG 5/6 correspondence / proportionality corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the broad ST <code>JG 5/6</code> source anchor <code>Zuordnungen, direkte und indirekte Proportionalitaet</code> now sits on the visible early function surface via an explicit reviewed corridor</li>
+<li>its <code>Zuordnungen</code> strip points to the early mapping / representation surface</li>
+<li>its broad proportionality strip intentionally stays on the existing proportional bridge instead of forcing a separate visible inverse-proportional package just from one mixed source lane</li>
+<li><code>ST</code> therefore confirms the early <code>F1/F2</code> surface without reopening the current Sek-I function packaging</li>
+</ul>
+<h2 id="sachsen-anhalt-jg-78-linear-functions-corridor-connected-2026-04-03">Sachsen-Anhalt JG 7/8 linear-functions corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the ST <code>JG 7/8</code> strip <code>Lineare Funktionen</code> now points to the visible <code>F3</code> linear-functions surface</li>
+<li>the reviewed ST lane therefore confirms the current <code>F3</code> cut without pulling algebra residue back into the function topic</li>
+</ul>
+<h2 id="sachsen-anhalt-jg-9-quadratics-corridor-connected-2026-04-03">Sachsen-Anhalt JG 9 quadratics corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the ST <code>JG 9</code> strip <code>Quadratische Gleichungen und quadratische Funktionen</code> now points to the visible <code>F4</code> quadratics surface</li>
+<li>the reviewed ST lane therefore confirms the current <code>F4</code> boundary without forcing a separate mixed quadratics package beyond the existing function/equation cut</li>
+</ul>
+<h2 id="sachsen-anhalt-jg-10-function-classes-corridor-connected-2026-04-03">Sachsen-Anhalt JG 10 function-classes corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the ST <code>JG10</code> strip <code>Funktionsklassen</code> now points to the broad visible J10 trig/exponential corridor</li>
+<li>the reviewed ST lane therefore confirms the existing late-J10 continuation surface without forcing a separate mixed function-classes package</li>
+</ul>
+<h2 id="mecklenburg-vorpommern-klasse-8-linear-functions-corridor-connected-2026-04-04">Mecklenburg-Vorpommern Klasse 8 linear-functions corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the MV <code>Klasse 8</code> lane now contributes a reviewed middle-stage function corridor with separate strips for the broad <code>Funktionen</code> concept work and for <code>Lineare und konstante Funktionen</code></li>
+<li>the concept strip now points to the visible early function-concept surface</li>
+<li>the linear strip now points to the visible <code>F3</code> linear-functions surface</li>
+<li>the MV lane therefore confirms the current middle Sek-I function cut without pulling algebra residue back into the function topic</li>
+</ul>
+<h2 id="mecklenburg-vorpommern-klasse-9-quadratics-corridor-connected-2026-04-04">Mecklenburg-Vorpommern Klasse 9 quadratics corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the MV <code>Klasse 9</code> lane now contributes a reviewed explicit quadratics corridor with separate strips for <code>Quadratische Funktionen</code> and <code>Quadratische Gleichungen</code></li>
+<li>the function strip now points to the visible late Sek-I quadratic representations surface</li>
+<li>the equations strip now points to the explicit quadratic-equations branch</li>
+<li>the MV lane therefore confirms the current <code>F4</code> boundary without forcing a separate mixed quadratics package beyond the existing function/equation cut</li>
+</ul>
+<h2 id="mecklenburg-vorpommern-klasse-10-late-function-corridor-connected-2026-04-04">Mecklenburg-Vorpommern Klasse 10 late function corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the MV <code>Klasse 10</code> lane now contributes a reviewed late function corridor with separate strips for <code>Exponential- und Logarithmusfunktionen</code> and <code>Sinusfunktionen</code></li>
+<li>both reviewed strips intentionally stay on the broad visible J10 trig/exponential continuation surface</li>
+<li>the MV lane therefore confirms the existing late-J10 continuation surface without forcing a separate mixed late-function-classes package</li>
+</ul>
+<h2 id="rheinland-pfalz-klassenstufen-7-und-8-function-corridor-connected-2026-04-03">Rheinland-Pfalz Klassenstufen 7 und 8 function corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the broad RP <code>Klassenstufen 7 und 8: Funktionaler Zusammenhang</code> anchor now points to the visible <code>F3</code> surface instead of the early general function surface</li>
+<li>its reviewed <code>Proportionale und antiproportionale Zuordnungen</code> strip points to the broad proportional bridge</li>
+<li>its reviewed <code>Lineare Funktionen</code> strip points to the explicit linear-function surface</li>
+<li>the RP lane therefore confirms the visible middle Sek-I function cut without forcing a new package boundary between proportional assignments and linear functions</li>
+</ul>
+<h3 id="saarland-sl">Saarland (<code>SL</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>SL</code> now contributes a first reviewed lower-secondary function corridor on the explicit <code>Klassenstufe 7</code> lane</li>
+<li>the Saarland source separates</li>
+<li><code>Zuordnungen</code></li>
+<li><code>Proportionale Zuordnungen</code></li>
+<li><code>Umgekehrt proportionale Zuordnungen</code></li>
+<li>this keeps the broad <code>Klassenstufe 7</code> function parent on the visible early function corridor, places the <code>Zuordnungen</code> strip on the early mapping / representation surface, and keeps both proportionality strips on the broad proportional bridge without forcing a separate visible inverse-proportional package</li>
+<li>the Saarland lane therefore confirms the early Sek-I function surface without reopening the current packaging</li>
+</ul>
+<h2 id="saarland-klassenstufe-8-broad-functions-corridor-connected-2026-04-04">Saarland Klassenstufe 8 broad functions corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the broad SL <code>Klassenstufe 8: Strukturen und funktionaler Zusammenhang</code> anchor now carries a first reviewed corridor on the shared Sek-I function-foundations surface</li>
+<li>the current Saarland grade-8 source still exposes only one shared functions strip</li>
+<li>this confirms the shared broad Sek-I function-foundations surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split</li>
+</ul>
+<h2 id="saarland-klassenstufe-9-broad-functions-corridor-connected-2026-04-04">Saarland Klassenstufe 9 broad functions corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the broad SL <code>Klassenstufe 9: Strukturen und funktionaler Zusammenhang</code> anchor now carries a first reviewed corridor on the shared broad Sek-I function surface</li>
+<li>the current Saarland grade-9 source still exposes only one shared functions strip</li>
+<li>this confirms the shared broad Sek-I function surface can absorb an explicit reviewed class-9 lane without forcing a sharper state-local split</li>
+</ul>
+<h2 id="saarland-klassenstufe-10-broad-functions-corridor-connected-2026-04-04">Saarland Klassenstufe 10 broad functions corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the broad SL <code>Klassenstufe 10: Strukturen und funktionaler Zusammenhang</code> anchor now carries a first reviewed corridor on the shared broad Sek-I function-foundations surface</li>
+<li>the current Saarland grade-10 source still exposes only one shared functions strip</li>
+<li>this confirms the shared broad Sek-I function-foundations surface can absorb an explicit reviewed class-10 lane without forcing a sharper state-local split</li>
+</ul>
+<h2 id="additional-reviewed-close-out-evidence-bw-by-ni-nw-sh">Additional reviewed close-out evidence (<code>BW</code>, <code>BY</code>, <code>NI</code>, <code>NW</code>, <code>SH</code>)</h2>
+<h3 id="baden-wuerttemberg-bw">Baden-Wuerttemberg (<code>BW</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>BW</code> now contributes a reviewed entry corridor plus a reviewed <code>JG7/8</code> linear follow-on corridor on the shared Sek-I function spine</li>
+<li>the first Baden-Wuerttemberg cut already reopens the shared mappings, representation, proportionality, and function-concept surface with one explicit retained prerequisite bridge instead of forcing a new canonical package</li>
+<li>the adjacent <code>JG7/8</code> cut adds reviewed graph-reading, linear-description, line-equation, and rate-of-change interpretation strips, while direct function-value and variable-term prerequisites remain explicit retained bridges</li>
+<li>together this confirms the current early and middle Sek-I <code>F1/F2/F3</code> surface without forcing a Baden-Wuerttemberg-specific function split</li>
+</ul>
+<h3 id="bayern-by">Bayern (<code>BY</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li>the reviewed Bavaria <code>M8-M10</code> tranches now cover introductory function work, linear functions, quadratics, exponential/logarithmic continuation, and sinus/cosinus continuation on the existing shared J8-J10 function surface</li>
+<li><code>M8 1 Funktion und Term</code> and <code>M8 2 Lineare Funktionen</code> intentionally stay conservative broad bridges where the current canonical function corridor is still coarser than the Bavaria source wording, while the explicit function-concept and remaining linear-function leaves already align to the existing shared surface</li>
+<li><code>M9 2 Quadratische Funktionen</code> confirms the current <code>F4</code> quadratic/equation boundary through mixed corridor-level and leaf-level attachments</li>
+<li><code>M10</code> confirms the existing late J10 exponential, logarithmic, and trigonometric continuation corridor without forcing another visible split beyond the current late function surface</li>
+</ul>
+<h3 id="niedersachsen-ni">Niedersachsen (<code>NI</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>NI</code> now contributes a clean prerequisite-backed lower-secondary function corridor on the shared proportional and linear spine</li>
+<li><code>Zuordnungen analysieren</code> is already exact, while proportionality, representation work, and linear-function follow-ons are reviewed partial bridges on the same shared surface</li>
+<li>the remaining Niedersachsen breadth mismatch is documented as source-granularity residue rather than as evidence for a missing canonical atom</li>
+<li>together this confirms the current early and middle Sek-I function surface for Niedersachsen without reopening packaging</li>
+</ul>
+<h3 id="nordrhein-westfalen-nw">Nordrhein-Westfalen (<code>NW</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li>the NRW prerequisite widening removed the hidden-entry blocker, and the first reviewed exact bridges now activate both mappings and function-concept work on real lower-secondary source support</li>
+<li>reviewed follow-on bridges now also cover function values, proportionality, line description, and linear-parameter interpretation without introducing new applicability overrides</li>
+<li>the remaining Nordrhein-Westfalen mismatch is explicitly retained as source breadth, not treated as evidence for a missing shared package</li>
+<li>together this confirms the current <code>F1/F2/F3</code> surface and keeps the next NRW work out of lower-secondary function packaging</li>
+</ul>
+<h3 id="schleswig-holstein-sh">Schleswig-Holstein (<code>SH</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li>the Schleswig-Holstein lower-secondary source snapshot is now refined across all official year bands instead of relying only on one broad parent lane</li>
+<li>the reviewed SH function-side mappings now cover simple mappings, representation change, proportional and inverse-proportional work, linear functions, quadratics, trigonometric functions, exponential growth, and logarithms</li>
+<li>the late J10 SH strips intentionally stay on the broad visible trigonometric/exponential continuation corridor rather than forcing a sharper state-local split</li>
+<li>there are now no remaining unmapped SH Sek-I source atoms or source clusters in the active lane, and the remaining SH function residue is broad-source residue rather than a missing canonical split</li>
+</ul>
+<h2 id="close-out-judgment-2026-04-05">Close-out judgment (<code>2026-04-05</code>)</h2>
+<ul>
+<li>with <code>BW</code>, <code>BY</code>, <code>NI</code>, <code>NW</code>, and <code>SH</code> now folded into the reviewed evidence base, the <code>Sek I Funktionen / Zuordnungen</code> row can be treated as coverage-closed for the current nationwide sweep</li>
+<li>the visible <code>F1-F5</code> surface absorbs all <code>16</code> state lanes without forcing a new shared regression package, a standalone inverse-proportional package, a mixed function/equation package, a separate power-function package, or a sharper late-J10 split</li>
+<li>the remaining broad <code>HB</code>/<code>HH</code> overview lanes, the Sachsen sequence / parametrized-curve residue, and similar wide state-local strips are better described as accepted source-granularity residue than as open canonical gaps</li>
+<li>the active canonical corridor <code>SEK1.J10.FUNCTION_FAMILIES</code> can therefore move from <code>active</code> to <code>completed</code>; the remaining late-function breadth is accepted source-granularity residue and should reopen only if a later reviewed lane or validator finding exposes a real shared gap beyond the current <code>F1-F5</code> surface</li>
+<li>the next lower-secondary breadth step should therefore move to <code>Sek I Geometrie / Raum</code>, not back into function package churn</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

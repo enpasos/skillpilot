@@ -1,0 +1,4760 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/concept/skill-graph/atomic-goal-visualizations/">
+      
+      
+        <link rel="prev" href="../source-and-resource-links/">
+      
+      
+        <link rel="next" href="../human-readable-source-rationales/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Atomic Goal Visualizations - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#atomic-goal-visualizations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Atomic Goal Visualizations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-json-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical JSON Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openai-mcp-apps-image-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenAI MCP Apps Image Delivery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asset Layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#provider-priority-and-exception-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider priority and exception policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-nano-banana-pro-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated Nano Banana Pro Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#low-friction-manual-provider-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Low-Friction Manual Provider Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-review-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard Review Gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pilot
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canonical-json-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical JSON Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openai-mcp-apps-image-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenAI MCP Apps Image Delivery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asset-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asset Layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#provider-priority-and-exception-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider priority and exception policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-nano-banana-pro-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated Nano Banana Pro Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#low-friction-manual-provider-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Low-Friction Manual Provider Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-review-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard Review Gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pilot
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="atomic-goal-visualizations">Atomic Goal Visualizations</h1>
+<p>This document defines the production and integration convention for visualizing atomic learning goals in SkillPilot. Initial rollout scope: canonical <code>DE Gymnasium Mathematik</code>.</p>
+<h2 id="purpose">Purpose</h2>
+<p>Atomic goal visualizations are compact didactic images that help learners
+recognize the core idea of one atomic learning goal. They are not tasks,
+solutions, or curriculum evidence. A visualization supports orientation in the
+cockpit and, for the multilingual OpenAI V1 MCP App, as an optional image-only
+MCP Apps UI. The graph goal remains the source of truth.</p>
+<h2 id="canonical-json-format">Canonical JSON Format</h2>
+<p>If a learning goal has an approved or pilot visualization, the reference is stored directly on that goal in canonical <code>resourceLinks</code>.</p>
+<p>Required fields for a goal visualization link:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"goal-visualization"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"skillpilotId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;same value as goal.id&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visualisierung: &lt;goal title&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/assets/goal-visualizations/&lt;subject&gt;/&lt;skillpilotId&gt;/&lt;skillpilotId&gt;.png"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;generator or production provider&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;short caption&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"altText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;screen-reader description&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;asset/license note&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"reviewStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pilot"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Rules:</p>
+<ul>
+<li><code>skillpilotId</code> must equal the containing goal's <code>id</code>.</li>
+<li>Use <code>type: "goal-visualization"</code> and <code>resourceType: "image"</code>; do not introduce another top-level goal field for images.</li>
+<li>The public <code>url</code> must be root-relative under <code>/assets/goal-visualizations/...</code> so the cockpit can render it locally.</li>
+<li>The image filename must be the SkillPilot ID plus extension: <code>&lt;skillpilotId&gt;.&lt;ext&gt;</code>. Keep language in the link metadata (<code>lang</code>), not in the filename. This keeps copied assets self-identifying without exceeding Windows path limits.</li>
+<li>The multilingual OpenAI V1 adapter may expose a visualization only for the active
+  atomic goal and only when the canonical link has <code>type:
+  "goal-visualization"</code>, <code>resourceType: "image"</code>, and a <code>skillpilotId</code> matching
+  that goal. Other AI integrations continue to use a normal cockpit deep link
+  unless they define and review an equivalent safe UI projection.</li>
+<li>A goal may have multiple visualization links, but at most one <code>role: "primary"</code> per language should be visible in ordinary learner views.</li>
+<li><code>reviewStatus: "pilot"</code> is allowed for integration pilots. Broad rollout should use reviewed assets only.</li>
+</ul>
+<h2 id="openai-mcp-apps-image-delivery">OpenAI MCP Apps Image Delivery</h2>
+<p>The still-unpublished <code>SkillPilot Coach v1</code> draft <code>1.0.0</code> binds exactly one
+active, hash-bound MCP Apps HTML resource for goal images. Its resource URI
+contains the SHA-256 of the self-contained HTML bytes. <code>resources/list</code> and
+<code>resources/read</code> expose the active resource plus every previously advertised
+URI with its exact historical bytes, including the original version-addressed
+<code>1.0.0</code> URI and all later hash URIs, reviewed widget domain, and CSP.</p>
+<p>The dedicated read-only <code>render_skillpilot_goal_visualization</code> tool is the only
+V1 tool whose descriptor carries <code>ui.resourceUri</code> and the
+<code>openai/outputTemplate</code> compatibility alias. Both point to that same active
+resource. Ordinary context, mutation, recall, and exam tools have no UI binding
+and cannot create an empty component. The renderer does not rely on naked MCP
+<code>ImageContent</code> as a guaranteed inline presentation; its visible presentation is
+the explicitly bound MCP Apps UI.</p>
+<p>This boundary follows the official OpenAI component contract: selected tools
+link a registered <code>text/html;profile=mcp-app</code> resource through
+<code>_meta.ui.resourceUri</code>, while <code>_meta["openai/outputTemplate"]</code> is the ChatGPT
+compatibility alias. OpenAI's troubleshooting guide explicitly diagnoses
+"structured content only, no component" by checking that binding and the
+registered HTML resource. Generic MCP content therefore carries no assumed
+ChatGPT visibility guarantee here:</p>
+<ul>
+<li><a href="https://developers.openai.com/plugins/build/chatgpt-ui">https://developers.openai.com/plugins/build/chatgpt-ui</a></li>
+<li><a href="https://developers.openai.com/plugins/deploy/troubleshooting#server-side-issues">https://developers.openai.com/plugins/deploy/troubleshooting#server-side-issues</a></li>
+</ul>
+<p>The renderer is offered only when the learner preference is enabled and the
+current context contains a safe visualization projection. Each previously
+unseen pair of the full context's <code>goalVisualization.goalId</code> and the authorizing
+result's top-level <code>stateVersion</code> in a result that permits the renderer creates
+a separate one-shot authorization. Invoke it once for that pair—even if an
+earlier pair in the conversation was already rendered. A repeated pair creates
+no automatic call; an explicit learner request to show the current image again
+creates one new one-shot call after a fresh qualifying result. Copy the context
+goal and top-level version unchanged into <code>goalId</code> and <code>expectedStateVersion</code>.
+Do not reuse stale authorization or retry otherwise.
+A required mastery handoff remains before
+the successor section; render immediately before coaching the associated active
+goal. Its receipt does not replace the preceding full context. The renderer
+supplies the following bounded <code>structuredContent</code> to the image-only widget:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"goalVisualization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;active atomic goal ID&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;goal title&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;optional goal description&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://skillpilot.com/assets/goal-visualizations/..."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"altText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;accessible image description&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"cockpitUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://skillpilot.com/?l=&lt;curriculumId&gt;&amp;goal=&lt;goalId&gt;"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The projection and image result obey these constraints:</p>
+<ul>
+<li>the learner's default-on <code>showGoalVisualizationsInChat</code> preference must not
+  be disabled;</li>
+<li>the active goal must be atomic;</li>
+<li>its canonical visualization link must match the same goal ID and resolve to a
+  safe public SkillPilot image URL;</li>
+<li>the projected HTTPS URL must resolve to an approved public SkillPilot image
+  below <code>/assets/goal-visualizations/</code> and remain within the resource CSP;</li>
+<li>the safe projection may retain goal metadata for validation, but the widget
+  uses only <code>imageUrl</code> and <code>altText</code> for presentation. It displays exactly the
+  image; title, description, goal ID, and cockpit link are never rendered;</li>
+<li>the widget starts collapsed and becomes visible only after a valid image has
+  loaded. Missing or malformed data and failed image loads keep it collapsed
+  and request teardown, so ordinary tools and unavailable images do not leave
+  empty or permanently loading boxes;</li>
+<li>eligible contexts offer <code>goalVisualization</code> and the renderer permission
+  surface-neutrally. The server and widget do not inspect
+  <code>openai/userAgent</code>,
+  infer Desktop/Mobile/App/Browser, or apply any client-surface presentation
+  gate. A host may render or decline the optional UI resource, while the
+  complete ordinary text response remains available;</li>
+<li>session coordination and idempotent replay preserve the same surface-neutral
+  image authorization. No caller-specific presentation filter mutates a fresh
+  or replayed result;</li>
+<li>after an authorized attempt, do not delay ordinary coaching or retry.
+  Test renderer invocation and visible host behaviour independently, without
+  changing the protocol result by client surface;</li>
+<li>a widget change creates a new active hash-bound URI. Every URI previously
+  advertised to a real test client remains immutable and readable as a passive
+  retained resource because provider metadata and chats may fetch it later.
+  Only the current URI is tool-bound; refresh the plugin and verify a fresh chat
+  after deployment as an additional current-contract check;</li>
+<li>the image is orientation only. It is not evidence, a task, a solution, an
+  assessment, or a mastery signal, and the model must not invent unreadable
+  image details.</li>
+</ul>
+<p>Because <code>1.0.0</code> has not been published in the OpenAI portal, this correction is
+part of the same mutable release draft and does not cause a version increment.</p>
+<p>Learners can change the preference in the cockpit under <strong>Mein Lehrplan →
+Lerneinstellungen → Lernzielbilder im Chat anzeigen</strong>. The persisted setting is
+learner-scoped, defaults to <code>true</code>, and is updated through the existing partial
+preferences endpoint. The backend preference applies across devices and chat
+sessions; it does not promise UI availability or cross-device UI rehydration on
+every ChatGPT surface. Requests that omit the field preserve its current value.</p>
+<p>Future OpenAI delivery of memory-card images or interactive memory-card views
+must follow the same explicit-boundary rule: a dedicated renderer binds a
+reviewed, purpose-specific MCP Apps UI resource. Ordinary memory-card tools must
+not return generic MCP <code>ImageContent</code> as an implicit presentation channel.</p>
+<h2 id="asset-layout">Asset Layout</h2>
+<p>For each approved or pilot image, keep a traceable source directory:</p>
+<div class="highlight"><pre><span></span><code>curricula/DE/Gymnasium/visualizations/mathematik/&lt;skillpilotId&gt;/
+  &lt;skillpilotId&gt;.png
+  prompt.de.md
+  image-reconstruction-prompt.de.md
+</code></pre></div>
+<p><code>prompt.de.md</code> records the original provider prompt. <code>image-reconstruction-prompt.de.md</code> records a standalone alternative prompt derived from the generated image itself; the QA workbench can use it as an alternate correction base when the human review identifies an error. If this file is missing for an older image, the local QA workbench can generate it on demand from the image only.</p>
+<p>Public runtime copies live under:</p>
+<div class="highlight"><pre><span></span><code>app/public/assets/goal-visualizations/mathematik/&lt;skillpilotId&gt;/&lt;skillpilotId&gt;.png
+backend/src/main/resources/static/assets/goal-visualizations/mathematik/&lt;skillpilotId&gt;/&lt;skillpilotId&gt;.png
+</code></pre></div>
+<p><code>npm run deploy:assets</code> runs <code>scripts/deploy_goal_visualizations.ts</code> and copies approved visualization assets from the curriculum source directory into both <code>app/public/assets/goal-visualizations</code> and <code>backend/src/main/resources/static/assets/goal-visualizations</code>. The Vite production build also writes public assets to <code>backend/src/main/resources/static</code>, but the explicit backend copy keeps local static-asset checks consistent before a full frontend build.</p>
+<p>Reference pools of example tasks or image inspirations may be kept locally under <code>tmp/</code>, but must not be committed if licensing is unclear. They must never be copied into final assets.</p>
+<h2 id="production-pipeline">Production Pipeline</h2>
+<h3 id="provider-priority-and-exception-policy">Provider priority and exception policy</h3>
+<p>For new Mathematik and Physik curriculum visualizations, use <strong>Google Gemini /
+Nano Banana Pro as the default production provider</strong>. Its loose, approachable
+illustration style is part of the intended learner experience. An existing,
+fachlich correct Nano Banana Pro asset must not be replaced merely because a
+repository-native SVG would be easier to edit, render deterministically, or
+validate mechanically.</p>
+<p>This priority also applies retroactively to every Mathematik or Physik asset
+newly produced during an ongoing rollout: before such a rollout is finalized,
+review its already-created learner-facing assets against the same provider
+priority and exception evidence. A repository-native draft created earlier in
+the rollout does not become an accepted final asset merely because it predates
+this policy clarification.</p>
+<p>A repository-native SVG or another provider may become the final asset only
+after targeted Nano Banana Pro attempts have failed to achieve the required
+subject-matter correctness or legibility. The corresponding visualization
+review note must record the attempted prompts or reference-image strategy, the
+visible defects in the rejected candidates, and why the fallback is necessary.
+Temporary SVGs remain useful as exact reference inputs for Nano Banana Pro; that
+does not make them the preferred final learner-facing asset.</p>
+<p>When an atomic goal is split, preserve a good existing aggregate image as an
+overview on the retained cluster whenever it still accurately represents the
+combined scope. Add more specific child images without mechanically deleting
+the overview asset.</p>
+<ol>
+<li>Select an atomic goal and record its SkillPilot ID, title, description, phase, and intended learner audience.</li>
+<li>Draft a compact image prompt from the goal itself. The prompt may add concrete representations, but must not add extra curriculum content beyond the goal.</li>
+<li>Generate several candidates with the chosen image provider.</li>
+<li>Review candidates against the quality checklist below.</li>
+<li>Store the selected asset and prompt metadata under <code>curricula/.../visualizations/...</code>.</li>
+<li>Add the optional <code>resourceLinks</code> entry to the canonical goal JSON.</li>
+<li>Copy or deploy the public asset into <code>app/public/assets/...</code> and backend static assets.</li>
+<li>Validate graph JSON, cockpit rendering, the hash-bound image-only MCP Apps
+   renderer, and normal cockpit deep-link behavior outside that renderer.</li>
+</ol>
+<h2 id="automated-nano-banana-pro-workflow">Automated Nano Banana Pro Workflow</h2>
+<p>Preferred automated workflow:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">GEMINI_API_KEY</span><span class="o">=</span><span class="s2">"&lt;key&gt;"</span><span class="w"> </span>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:generate:nano-banana<span class="w"> </span>--<span class="w"> </span><span class="s2">"&lt;goal-id-or-unique-title-fragment&gt;"</span>
+</code></pre></div>
+<p>The command:</p>
+<ul>
+<li>resolves the goal from the canonical math landscape,</li>
+<li>builds the provider prompt from the goal title and description, without sending the SkillPilot ID to the image model,</li>
+<li>keeps provider-facing prompt constraints neutral where possible, for example <code>no technical IDs</code> instead of naming SkillPilot,</li>
+<li>calls the Gemini image API with model <code>gemini-3-pro-image</code>,</li>
+<li>saves a traceable generated candidate under <code>tmp/goal-visualizations/&lt;skillpilotId&gt;/generated/</code>,</li>
+<li>asks Gemini to derive a standalone image-reconstruction prompt for the generated candidate and stores it beside the candidate,</li>
+<li>imports the selected image into the canonical visualization asset layout,</li>
+<li>copies the selected candidate's reconstruction prompt to <code>image-reconstruction-prompt.de.md</code>,</li>
+<li>updates the canonical goal's primary <code>goal-visualization</code> link.</li>
+</ul>
+<p>Use this first as a no-network rehearsal:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:generate:nano-banana<span class="w"> </span>--<span class="w"> </span><span class="s2">"&lt;goal-id-or-unique-title-fragment&gt;"</span><span class="w"> </span>--dry-run
+</code></pre></div>
+<p>Configuration options:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:generate:nano-banana<span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"&lt;skillpilotId&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--aspect-ratio<span class="o">=</span><span class="s2">"16:9"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--image-size<span class="o">=</span><span class="s2">"2K"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mime-type<span class="o">=</span><span class="s2">"image/jpeg"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prompt-append<span class="o">=</span><span class="s2">"Keine langen Formeln; Text sehr kurz halten."</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--review-status<span class="o">=</span><span class="s2">"pilot"</span>
+</code></pre></div>
+<p>For longer or carefully reviewed instructions, prefer a prompt append file over a long shell argument:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:generate:nano-banana<span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"&lt;skillpilotId&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prompt-append-file<span class="o">=</span><span class="s2">"tmp/goal-visualization-prompts/&lt;skillpilotId&gt;.md"</span>
+</code></pre></div>
+<p>Use <code>--skip-reconstruction-prompt</code> only for explicit debugging; normal generated assets should keep the reconstruction prompt so <code>/goal-visualization-qa</code> can offer it as a correction base. The QA workbench also has an on-demand action to create a missing reconstruction prompt for an already imported image.</p>
+<p>For older imported images, generate missing reconstruction prompts in controlled batches from the active canonical primary links:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:generate-reconstruction-prompts<span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--subject<span class="o">=</span>mathematik<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--limit<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--continue-on-error
+</code></pre></div>
+<p>Run with <code>--dry-run</code> first to inspect the planned images. The script reads active primary links from the canonical landscapes under <code>curricula/DE/Gymnasium/canonical/</code>, including linked context or memory images outside the ordinary-atomic QA scope. It validates the exact <code>&lt;subject&gt;/&lt;goalId&gt;/&lt;goalId&gt;.&lt;ext&gt;</code> path shape, skips existing prompts by default, writes <code>image-reconstruction-prompt.de.md</code> beside the canonical source image, and stores provider response traces under <code>tmp/</code>.</p>
+<p>The API key must come from <code>GEMINI_API_KEY</code> or <code>GOOGLE_API_KEY</code>. The generator also reads these variables from a local, ignored <code>.env.local</code> or <code>app/.env.local</code> file:</p>
+<div class="highlight"><pre><span></span><code>GEMINI_API_KEY=&lt;key&gt;
+</code></pre></div>
+<p>Do not commit keys or generated provider scratch files. The <code>tmp/</code> directory is intentionally ignored by Git.</p>
+<p>Small batch generation uses the same single-goal pipeline:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:plan-batch<span class="w"> </span>--<span class="w"> </span>--count<span class="o">=</span><span class="m">10</span>
+
+npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:generate:nano-banana:batch<span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--file<span class="w"> </span>tmp/goal-visualization-next-batch.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--continue-on-error
+</code></pre></div>
+<p>Batch options:</p>
+<ul>
+<li><code>visualization:plan-batch -- --count=&lt;n&gt;</code> writes the next unvisualized atomic goals to <code>tmp/goal-visualization-next-batch.txt</code>.</li>
+<li><code>visualization:plan-batch -- --phase=J5 --count=&lt;n&gt;</code> restricts planning to one phase if phase metadata is available.</li>
+<li><code>visualization:plan-batch</code> skips goals marked <code>deferred_provider_limitation</code> in the review ledgers. Use <code>--include-deferred</code> only for an explicit retry.</li>
+<li><code>--dry-run</code> creates the prompt and request packages for all goals without API calls.</li>
+<li><code>--no-import</code> saves generated images under <code>tmp/.../generated/</code> but does not update canonical JSON.</li>
+<li><code>--continue-on-error</code> continues after a failed goal and reports failures at the end.</li>
+<li>Temporary provider quota or rate-limit errors such as Gemini <code>429</code> stop the batch even with <code>--continue-on-error</code>, so remaining goals are not requested until quota is available again.</li>
+<li>On a temporary provider failure, the batch command writes a resume file containing the failed goal plus all not-yet-started goals. With <code>--file tmp/goal-visualization-batch-036.txt</code>, the default resume file is <code>tmp/goal-visualization-batch-036.resume.txt</code>; override this with <code>--resume-file &lt;path&gt;</code> if needed.</li>
+<li>Re-running a generated resume file is idempotent: <code>--file tmp/goal-visualization-batch-036.resume.txt</code> reuses that same resume file on another temporary provider failure instead of creating <code>*.resume.resume.txt</code>.</li>
+<li><code>--prompt-append-file &lt;path&gt;</code> applies one shared prompt append file to every goal in the batch.</li>
+<li><code>--prompt-append-dir &lt;path&gt;</code> lets the batch use per-goal prompt append files named <code>&lt;skillpilotId&gt;.md</code>, <code>&lt;skillpilotId&gt;.txt</code>, <code>&lt;skillpilotId&gt;.prompt.md</code>, or <code>&lt;skillpilotId&gt;.prompt.txt</code>. A per-goal file takes precedence over a shared <code>--prompt-append-file</code>.</li>
+<li><code>--file &lt;path&gt;</code> reads one goal ID or unique title fragment per line; <code>#</code> starts a comment.</li>
+</ul>
+<p>Before a prepared batch is sent to the provider, check the prompt append directory:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:check-prompt-appends<span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--file<span class="w"> </span>tmp/goal-visualization-batch-036.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prompt-append-dir<span class="w"> </span>tmp/goal-visualization-prompt-appends/batch-036
+</code></pre></div>
+<p>The check verifies that each batch goal has a prompt append file, the files contain explicit required/avoidance sections, and the final provider prompts do not contain concrete goal IDs or the string <code>SkillPilot</code>.</p>
+<p>Every production batch must be visually reviewed before it is considered more than a technical import. Store the review note under:</p>
+<div class="highlight"><pre><span></span><code>curricula/DE/Gymnasium/quality/goal-visualization-review/
+</code></pre></div>
+<p>The review note must record accepted assets, rejected/regenerated assets, visible mathematical issues, and validation checks. Keep <code>reviewStatus: "pilot"</code> in canonical JSON until the asset has passed the intended release review.</p>
+<p>The subject QA ledgers can additionally record an explicit AI review. <code>aiApproved: "yes"</code> is valid only when <code>aiApprovedAssetSha256</code> exactly matches the record's current <code>assetSha256</code>; replacing the image therefore invalidates the AI approval. <code>aiReviewedAt</code>, <code>aiReviewer</code>, and <code>aiNotes</code> describe that hash-bound review. The older <code>umlautsCorrectChatGpt</code> and <code>contentApprovedChatGpt</code> fields remain available as triage and compatibility data and are not promoted automatically. AI approval is useful technical and subject-matter review evidence, but it never replaces <code>humanApproved</code> as the <code>M7</code> or release gate.</p>
+<h2 id="low-friction-manual-provider-workflow">Low-Friction Manual Provider Workflow</h2>
+<p>When using a manual image provider such as Nano Banana Pro, do not hand-build filenames, folders, or JSON links.
+Use the helper scripts:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:prepare<span class="w"> </span>--<span class="w"> </span><span class="s2">"&lt;goal-id-or-unique-title-fragment&gt;"</span>
+</code></pre></div>
+<p>This writes a prompt package to:</p>
+<div class="highlight"><pre><span></span><code>tmp/goal-visualizations/&lt;skillpilotId&gt;/nano-banana-prompt.de.md
+tmp/goal-visualizations/&lt;skillpilotId&gt;/metadata.json
+</code></pre></div>
+<p>Copy the prompt text into the image provider, generate the image, download the selected candidate, then import it:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:import<span class="w"> </span>--<span class="w"> </span><span class="s2">"&lt;skillpilotId&gt;"</span><span class="w"> </span><span class="s2">"&lt;downloaded-image-path&gt;"</span>
+</code></pre></div>
+<p>The import script:</p>
+<ul>
+<li>resolves the goal from the canonical math landscape,</li>
+<li>renames the image to <code>&lt;skillpilotId&gt;.&lt;ext&gt;</code>,</li>
+<li>copies it to <code>curricula/DE/Gymnasium/visualizations/...</code>,</li>
+<li>copies the runtime asset to <code>app/public/assets/goal-visualizations/...</code>,</li>
+<li>writes or refreshes <code>prompt.de.md</code>,</li>
+<li>writes <code>image-reconstruction-prompt.de.md</code> when a sibling reconstruction prompt or <code>--reconstruction-prompt</code> input exists; otherwise it removes any stale reconstruction prompt for that asset,</li>
+<li>adds or replaces the primary <code>goal-visualization</code> link on the goal.</li>
+</ul>
+<p>Optional overrides:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>--prefix<span class="w"> </span>app<span class="w"> </span>run<span class="w"> </span>visualization:import<span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"&lt;skillpilotId&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"&lt;downloaded-image-path&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--reconstruction-prompt<span class="o">=</span><span class="s2">"&lt;standalone-image-prompt.md&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--alt-text<span class="o">=</span><span class="s2">"&lt;specific screen-reader description&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--description<span class="o">=</span><span class="s2">"&lt;short caption&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--review-status<span class="o">=</span><span class="s2">"pilot"</span>
+</code></pre></div>
+<p>Use <code>--dry-run</code> to inspect the planned paths and JSON URL before writing files.</p>
+<h2 id="quality-checklist">Quality Checklist</h2>
+<ul>
+<li>The image addresses exactly one atomic goal.</li>
+<li>Mathematical notation is correct and not misleading.</li>
+<li>The image has no copied third-party worksheet, logo, character, or protected layout.</li>
+<li>The context is plausible and age-appropriate for the goal.</li>
+<li>Text is readable at cockpit card width and does not dominate the image.</li>
+<li>The image works in the cockpit goal card and in the multilingual OpenAI
+  renderer's dedicated active, hash-bound image-only MCP Apps UI resource. Only
+  the renderer binds this image resource; no ordinary tool creates an empty UI
+  component. Other dedicated UI tools use their own resources.</li>
+<li>The visual does not replace the need for explanation, practice, or assessment.</li>
+<li><code>altText</code> is specific enough for non-visual use.</li>
+<li><code>skillpilotId</code>, <code>url</code>, <code>provider</code>, <code>lang</code>, <code>license</code>, and <code>reviewStatus</code> are present.</li>
+<li>The <code>url</code> filename is the same <code>skillpilotId</code> plus image extension.</li>
+</ul>
+<h2 id="hard-review-gate">Hard Review Gate</h2>
+<p>Generated images are useful but not trustworthy by default. A generated asset is only a technical import until it has been visually reviewed against the checklist. The review must be recorded in the batch ledger before the asset may be treated as curated pilot content.</p>
+<p>Mandatory rejection or regeneration triggers:</p>
+<ul>
+<li>wrong calculation, wrong formula, wrong comparison, or wrong unit conversion</li>
+<li>misleading mathematical representation, even if the text is correct</li>
+<li>mismatched labels and drawings, for example marked digits, angle sizes, coordinates, number-line positions, or side properties</li>
+<li>invalid or ambiguous notation that could teach a misconception</li>
+<li>extra topics that distract from or distort the atomic goal</li>
+<li>unreadable or dominant text, especially when the image is shown at cockpit card width</li>
+<li>visible technical IDs, watermarks, provider artifacts, or copied third-party layout</li>
+<li>target-age mismatch, such as concepts clearly above the current year level</li>
+</ul>
+<p>Review decisions should use these labels:</p>
+<ul>
+<li><code>accepted_pilot</code> - no gross mathematical issue is visible; suitable for controlled pilot use</li>
+<li><code>accepted_pilot_after_regeneration</code> - at least one generated attempt was rejected and replaced</li>
+<li><code>rejected_regenerate</code> - current image must not be used; generate a targeted replacement</li>
+<li><code>deferred_provider_limitation</code> - repeated provider attempts stayed fachlich wrong; remove the <code>resourceLinks</code> image reference and revisit when the provider improves</li>
+<li><code>needs_external_review</code> - no obvious blocker, but the image is too subtle or high-risk for self-review only</li>
+</ul>
+<p>If repeated, targeted Nano Banana Pro attempts still contain a gross mathematical
+or tool-use error, do not silently substitute another provider. A precise
+repository-native image may be used only as the documented exception described
+above: the review record must bind the rejected provider attempts, their visible
+defects, and the reason the fallback is materially better. If no fallback meets
+the same fachliche and visual-quality bar, remove the active image link and
+published copies and record <code>deferred_provider_limitation</code> instead.</p>
+<p>Keep <code>reviewStatus: "pilot"</code> until the intended release review has passed. Do not infer approval from the existence of a generated file, a public asset, or a <code>resourceLinks</code> entry.</p>
+<h2 id="pilot">Pilot</h2>
+<p>Pilot goal:</p>
+<ul>
+<li>SkillPilot ID: <code>502ecaa7-cca6-5c51-a1cc-da09a7b2382c</code></li>
+<li>Title: <code>Definitionsmenge einer Funktion bestimmen</code></li>
+<li>Public asset: <code>/assets/goal-visualizations/mathematik/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/502ecaa7-cca6-5c51-a1cc-da09a7b2382c.png</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4912 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/deploy/claude-support-readiness-runbook/">
+      
+      
+        <link rel="prev" href="../claude-personal-marketplace-release/">
+      
+      
+        <link rel="next" href="../../security/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Claude Marketplace Support Readiness - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#claude-personal-marketplace-support-readiness-runbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Claude Marketplace Support Readiness
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#approved-restricted-evidence-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approved Restricted Evidence Store
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ownership-and-support-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ownership And Support Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run The Audit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-results-and-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspect Results And Alerts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-effort-authenticated-tool-detection-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best-Effort Authenticated-Tool Detection Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safe-intake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe Intake
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triage-and-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Triage And Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricted-revocation-tool-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restricted Revocation Tool Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incident-containment-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incident Containment And Recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-part-prepublication-rehearsal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two-Part Prepublication Rehearsal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record-the-drill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Record The Drill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimum-pass-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimum Pass Criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#approved-restricted-evidence-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approved Restricted Evidence Store
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ownership-and-support-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ownership And Support Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run The Audit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-results-and-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspect Results And Alerts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-effort-authenticated-tool-detection-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best-Effort Authenticated-Tool Detection Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safe-intake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe Intake
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triage-and-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Triage And Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricted-revocation-tool-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restricted Revocation Tool Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incident-containment-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incident Containment And Recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-part-prepublication-rehearsal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two-Part Prepublication Rehearsal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record-the-drill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Record The Drill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimum-pass-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimum Pass Criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="claude-personal-marketplace-support-readiness-runbook">Claude Personal Marketplace Support Readiness Runbook</h1>
+<blockquote>
+<p><strong>Status: incomplete.</strong> Support readiness remains a publication blocker.
+Every <code>UNASSIGNED - BLOCKING</code> field below needs an approved owner or value,
+and the mailbox, workflow-notification and rollback drills need recorded
+evidence. This runbook and a green synthetic check do not set a release gate
+to <code>pass</code>.</p>
+</blockquote>
+<p>This runbook covers support and incident response for the existing
+<code>skillpilot-coach-v1</code> personal-marketplace candidate and its dedicated remote
+connector. It does not authorize publication, a production configuration
+change, token or session revocation, or an expansion of the tested client
+contract. The frozen OpenAI Coach v1 contract remains unchanged.</p>
+<h2 id="approved-restricted-evidence-store">Approved Restricted Evidence Store</h2>
+<p>The Product Owner selected one private Google Drive folder as the restricted
+evidence store. It must remain owner-only, with link sharing disabled and MFA
+enabled on the owning account. Each completed release is retained as one final,
+immutable ZIP or PDF evidence bundle; a mutable native document alone is not
+sufficient evidence. The private account address, raw mailbox and alert
+delivery details, screenshots and other sensitive material stay outside this
+repository.</p>
+<p>The approved store was created on 1 September 2026 under the existing private
+SkillPilot Drive folder. A successful write and metadata readback reported
+<code>shared: false</code>, exactly one owner permission and no public, domain, group or
+link permission. The Product Owner separately confirmed that MFA is active on
+the owning Google account. The private folder ID, URL, account details and MFA
+evidence remain outside this repository. Public release records use the opaque
+reference <code>SP-CLAUDE-EVIDENCE-STORE-001</code> and retain only that reference plus
+the SHA-256 of each final bundle.</p>
+<h2 id="ownership-and-support-boundary">Ownership And Support Boundary</h2>
+<table>
+<thead>
+<tr>
+<th>Responsibility</th>
+<th>Current value</th>
+<th>Readiness requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public intake</td>
+<td><code>support@skillpilot.com</code></td>
+<td>Mailbox round trip, access by the accountable responder and every assigned backup, and the current account-security or explicitly accepted residual-risk decision must be evidenced in the restricted store.</td>
+</tr>
+<tr>
+<td>Accountable support owner</td>
+<td>Dr. Matthias Unverzagt (also Product Owner)</td>
+<td>Owns intake and incident declaration.</td>
+</tr>
+<tr>
+<td>Backup support owner</td>
+<td>None; Product Owner accepted the single-owner risk</td>
+<td>Pause active public promotion during an unmonitored absence; the repository and existing installations need not be disabled solely because the owner is absent.</td>
+</tr>
+<tr>
+<td>Operations owner</td>
+<td>Dr. Matthias Unverzagt</td>
+<td>Authorized to execute connector containment and recovery.</td>
+</tr>
+<tr>
+<td>Security owner</td>
+<td>Dr. Matthias Unverzagt</td>
+<td>Owns credential, token and learner-session incidents.</td>
+</tr>
+<tr>
+<td>Covered support hours</td>
+<td>No fixed staffed window; best effort; no guaranteed SLA</td>
+<td>Active public promotion pauses during an unmonitored absence.</td>
+</tr>
+<tr>
+<td>Internal response objectives</td>
+<td>Best effort; no guaranteed response time</td>
+<td>On discovery of a security or privacy incident, pause promotion and contain the connector as necessary as soon as practicable.</td>
+</tr>
+<tr>
+<td>Workflow alert route</td>
+<td>Accountable owner's private GitHub notification route</td>
+<td>The private delivery address stays only in restricted evidence; delivery and acknowledgement still require a drill.</td>
+</tr>
+<tr>
+<td>Authenticated-tool detection</td>
+<td><code>BEST-EFFORT REACTIVE BETA - ACCEPTED</code></td>
+<td>There is no host-side per-operation email monitor and no real-time detection or SLA claim. Signals are the best-effort scheduled public synthetic, the configured GitHub workflow-failure notification route, support reports and targeted inspection of the provider-bounded operation-error record.</td>
+</tr>
+<tr>
+<td>Restricted revocation procedure</td>
+<td><code>SP-CLAUDE-V1-IR-001</code> version <code>1.0.0</code> (<code>draft</code>; isolated rehearsal and approval still blocking)</td>
+<td>The operations and security owner is Dr. Matthias Unverzagt. The reviewed one-shot source and tests are <a href="https://github.com/enpasos/skillpilot/blob/main/scripts/claude_v1_revoke.py"><code>scripts/claude_v1_revoke.py</code></a> and <a href="https://github.com/enpasos/skillpilot/blob/main/scripts/test_claude_v1_revoke.py"><code>scripts/test_claude_v1_revoke.py</code></a>. Keep incident-specific commands, access details and evidence only in the approved restricted evidence store; never commit secrets or live values.</td>
+</tr>
+</tbody>
+</table>
+<p>The supported product boundary is the one documented in the
+<a href="../claude-connector-v1-user-guide/">Claude connector user guide</a> and the
+<a href="../claude-personal-marketplace-release/">personal marketplace release runbook</a>.
+Support must not turn technical availability on another Claude client, plan or
+surface into a SkillPilot support claim without separate acceptance evidence.</p>
+<h2 id="run-the-audit">Run The Audit</h2>
+<p>The synthetic is read-only. It sends only credential-free <code>GET</code> requests to a
+fixed allowlist, rejects redirects, bounds response bodies and never prints
+response bodies. It verifies the current immutable plugin publication, public
+legal and privacy pages, application readiness, connector OAuth discovery and
+the unauthenticated MCP challenge.</p>
+<p>Run its unit tests and then the live check:</p>
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>--test<span class="w"> </span>scripts/claude_support_synthetic.test.mjs
+node<span class="w"> </span>scripts/claude_support_synthetic.mjs<span class="w"> </span>verify
+</code></pre></div>
+<p>The implementation is
+<a href="https://github.com/enpasos/skillpilot/blob/main/scripts/claude_support_synthetic.mjs">claude_support_synthetic.mjs</a>.
+The
+<a href="https://github.com/enpasos/skillpilot/blob/main/.github/workflows/claude-support-synthetic.yml">Claude Support Synthetic workflow</a>
+runs the same unit tests and performs the live check on its schedule or through
+manual dispatch. Pull requests run only the unit tests and do not contact the
+production endpoints.</p>
+<h2 id="inspect-results-and-alerts">Inspect Results And Alerts</h2>
+<p>A passing JSON result contains the UTC check time, candidate version and
+SHA-256, and one bounded result per public check. It contains no local paths,
+credentials, learner data or response bodies. Preserve the JSON artifact and
+the immutable workflow-run URL in the approved evidence store.</p>
+<p>A failed scheduled run is only a signal in GitHub Actions. It is not proven
+alerting until the accountable recipient and every assigned backup actually
+receive the notification. To test that route, manually dispatch the workflow with
+<code>exercise_alert</code> enabled. The workflow first runs the real synthetic and then
+fails intentionally. Record dispatch, delivery and acknowledgement timestamps
+in the drill evidence. Never weaken the check merely to make the drill green.</p>
+<h2 id="best-effort-authenticated-tool-detection-boundary">Best-Effort Authenticated-Tool Detection Boundary</h2>
+<p>The public synthetic deliberately cannot exercise authenticated tools. On
+3 September 2026, the Product Owner selected and accepted the following simpler
+operating boundary for the personal-marketplace beta:</p>
+<ul>
+<li>no host-side per-operation email monitor or additional systemd service;</li>
+<li>the production deployment must not add or retain a technical-mailbox or SMTP
+  credential;</li>
+<li>no guaranteed real-time detection, staffed monitoring window or SLA;</li>
+<li>credential-free public checks scheduled hourly and the configured GitHub
+  workflow-failure notification route, plus reports received through
+  <code>support@skillpilot.com</code>; and</li>
+<li>targeted inspection by the authorized operations owner of the existing
+  provider-bounded Claude v1 operation-error record, whose application message
+  contains only the operation name and duration.</li>
+</ul>
+<p>An authenticated operation failure can therefore remain unknown until a
+support report, a related public-surface failure or a manual check exposes it.
+GitHub workflow scheduling and notification delivery are themselves best effort
+and may be delayed.
+That residual risk is accepted only for the current best-effort personal-
+marketplace beta. Public material must not imply proactive per-tool monitoring,
+real-time detection or guaranteed response times.</p>
+<p>This boundary neither satisfies nor duplicates the separate exact-client
+acceptance gate, which remains independently blocking. During a reported
+incident, reproduce authenticated behavior only when necessary and only with
+the authorized adult test context; never use customer credentials or learner
+state. After recovery, repeat the affected clean-client checks and the public
+synthetic.</p>
+<p>Reassess managed structured observability, durable delivery with retries and an
+independent monitor health signal before any institutional, Directory, staffed,
+SLA-backed or general-availability claim. Such an expansion is a separate
+release and operations decision, not part of this beta runbook.</p>
+<h2 id="safe-intake">Safe Intake</h2>
+<p>Ask only for the minimum information needed to route a report:</p>
+<ul>
+<li>UTC time and whether the failure was during marketplace add, installation,
+  connector authorization, first-party start, or normal use;</li>
+<li>installed plugin version and the marketplace repository revision if visible;</li>
+<li>Claude plan class and client surface, without account identifiers;</li>
+<li>sanitized error text and the relevant synthetic workflow-run URL.</li>
+</ul>
+<p>Never request or retain a permanent SkillPilot ID, an <code>spc_</code> learner-session
+value, a prepared <code>q</code> URL, OAuth code or token, cookie, capability, complete
+chat transcript, or screenshot containing learner data. If one arrives
+unexpectedly, stop copying it, restrict access and route it to the security
+owner under the approved incident process.</p>
+<h2 id="triage-and-troubleshooting">Triage And Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>First safe action</th>
+<th>Escalation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Immutable publication, legal or privacy check fails</td>
+<td>Stop rollout promotion and rerun the synthetic once from a clean environment. Do not replace published bytes or force-push marketplace history.</td>
+<td>Operations owner; security owner too if integrity or disclosure is suspected.</td>
+</tr>
+<tr>
+<td>Application readiness is not <code>UP</code></td>
+<td>Check the approved service and deployment telemetry; do not ask a learner to retry repeatedly.</td>
+<td>Operations owner and incident declaration according to the approved response objective.</td>
+</tr>
+<tr>
+<td>OAuth metadata or MCP Bearer challenge differs</td>
+<td>Treat connector authorization as fail-closed. Do not ask for an OAuth code or token.</td>
+<td>Security and operations owners.</td>
+</tr>
+<tr>
+<td>Marketplace cannot be added or the plugin is absent</td>
+<td>Confirm the full HTTPS marketplace repository URL, eligible supported plan/surface, and one refresh. Preserve only the sanitized client error.</td>
+<td>Support owner; release owner if reproducible on the clean acceptance account.</td>
+</tr>
+<tr>
+<td>Connector authorization fails</td>
+<td>Check the public discovery synthetic. Ask the user to restart authorization only after the public contract is healthy.</td>
+<td>Security owner for loops, unexpected consent, or leaked values.</td>
+</tr>
+<tr>
+<td>A connected client rejects the learner session</td>
+<td>Start a new session only through <code>https://skillpilot.com/</code>; never accept the session value by email.</td>
+<td>Support owner; operations owner if reproducible with an authorized synthetic fixture.</td>
+</tr>
+<tr>
+<td>An authenticated tool fails while the public synthetic passes</td>
+<td>Reproduce only if needed with the authorized adult test fixture, then filter for the provider-bounded Claude v1 operation-error record without copying surrounding journal records or raw learner data.</td>
+<td>Operations and security owners; pause promotion if integrity, privacy or a systematic fault is suspected.</td>
+</tr>
+<tr>
+<td>Provider-wide client failure while SkillPilot checks pass</td>
+<td>Record the provider status as an external dependency and avoid changing SkillPilot bytes.</td>
+<td>Support owner monitors recovery; no SkillPilot rollback without SkillPilot evidence.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="restricted-revocation-tool-contract">Restricted Revocation Tool Contract</h2>
+<p><code>SP-CLAUDE-V1-IR-001</code> is a root-only, one-shot incident tool, not a daemon,
+endpoint or normal deployment step. Install only the reviewed source from the
+exact approved commit. First verify that this path is unchanged in that commit,
+record its SHA-256, then install it byte-identically:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">SKILLPILOT_APPROVED_COMMIT</span><span class="o">=</span>REVIEWED_40_CHARACTER_COMMIT
+<span class="nb">test</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span>--verify<span class="w"> </span>HEAD^<span class="o">{</span>commit<span class="o">}</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="si">${</span><span class="nv">SKILLPILOT_APPROVED_COMMIT</span><span class="si">}</span><span class="s2">"</span>
+git<span class="w"> </span>ls-files<span class="w"> </span>--error-unmatch<span class="w"> </span>scripts/claude_v1_revoke.py
+git<span class="w"> </span>cat-file<span class="w"> </span>-e<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="si">${</span><span class="nv">SKILLPILOT_APPROVED_COMMIT</span><span class="si">}</span><span class="s2">:scripts/claude_v1_revoke.py"</span>
+git<span class="w"> </span>diff<span class="w"> </span>--exit-code<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">SKILLPILOT_APPROVED_COMMIT</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>scripts/claude_v1_revoke.py
+sha256sum<span class="w"> </span>scripts/claude_v1_revoke.py
+sudo<span class="w"> </span>install<span class="w"> </span>-d<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/usr/local/libexec/skillpilot
+sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>scripts/claude_v1_revoke.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/usr/local/libexec/skillpilot/claude_v1_revoke
+sudo<span class="w"> </span>sha256sum<span class="w"> </span>/usr/local/libexec/skillpilot/claude_v1_revoke
+sudo<span class="w"> </span>stat<span class="w"> </span>-c<span class="w"> </span><span class="s1">'%U:%G %a %n'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/usr/local/libexec/skillpilot/claude_v1_revoke
+</code></pre></div>
+<p>The two hashes must match and the installed metadata must be exactly
+<code>root:root 755</code>. Never run the deploy user's writable source copy. The
+installed tool refuses another path, owner or mode. It derives one candidate
+PostgreSQL connection only from the five <code>POSTGRES_*</code> values inherited by the
+uniquely identified SkillPilot application JVM inside the active
+<code>skillpilot.service</code> cgroup, passes only those values to <code>psql</code>, and never
+prints them. The connected server returns a non-secret <code>targetSha256</code> binding
+the database name, effective database role, database OID, server address and
+port, and PostgreSQL postmaster start time. This deliberately supports the
+current <code>bootRun</code> service topology, whose systemd <code>MainPID</code> can be the Gradle
+wrapper rather than the application JVM. It invokes only fixed,
+PATH-independent system-command anchors. A regular anchor is accepted
+directly. A distribution-managed symlink anchor is accepted only through a
+bounded, cycle-free chain in which every link is <code>root:root</code>, every lexical
+parent directory is root-owned and not writable by group or others, and the
+final target is a <code>root:root</code>, non-writable regular executable without special
+mode bits. The resolved final target, not the symlink anchor, is executed. It
+fails closed if the service exposes a
+direct Spring datasource, config or profile override, an external
+<code>application*</code> configuration file in a default search location, another
+EnvironmentFile, an unexpected database-name shape, more or fewer than one
+matching application JVM, or a changing service process.</p>
+<p>This is an operational guard, not host-attestation. It does not introspect
+Spring objects and cannot independently prove which datasource a modified
+application classpath selected. It trusts the host's root boundary, systemd
+unit, running process, inherited environment and deployed application
+classpath. The current <code>bootRun</code> classpath is writable by the deployment user.
+If host, deployment-account, checkout, process, configuration or classpath
+integrity is in doubt, do not run <code>execute</code> on that host. Keep the public edge
+contained, perform revocation from an independently verified DBA-controlled
+database path, and rebuild the host from reviewed immutable artifacts. Moving
+production to a digest-bound, root-owned immutable application artifact is a
+separate hardening improvement before a broader-than-beta rollout.</p>
+<p>Before support readiness can pass, run only its read-only production plan and
+retain the single sanitized JSON result in the restricted evidence store:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>/usr/local/libexec/skillpilot/claude_v1_revoke<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--procedure-id<span class="w"> </span>SP-CLAUDE-V1-IR-001<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--incident-id<span class="w"> </span>SPDRILL-YYYYMMDD-NNN
+</code></pre></div>
+<p><code>plan</code> validates the connected production schema, migrations, exact Claude-v1
+scope and database-target guards without changing a row. The owner must review
+whether the four aggregate counts are plausible and retain <code>targetSha256</code> with
+the plan. A database restart, failover, changed role or changed connection
+target changes that fingerprint and invalidates the plan. Unexpected counts or
+any failed guard stop the procedure; they are not repaired by broadening the
+scope. The <code>REVIEWED_40_CHARACTER_COMMIT</code> placeholder deliberately keeps the
+installation example inert until the approved commit exists.</p>
+<p>The prepublication plan never authorizes an <code>execute</code>. During an actual
+incident, replace the installed active Claude-v1 vhost bytes at the same include
+path with the reviewed deny-only
+<a href="https://github.com/enpasos/skillpilot/blob/main/deploy/nginx/skillpilot-claude-connector-v1-contained.conf"><code>skillpilot-claude-connector-v1-contained.conf</code></a>,
+set the Claude-v1 backend flag to <code>false</code>, restart the shared service to
+readiness, validate Nginx and reload it. The root-owned containment file must be
+mode <code>0644</code>; its source and installed SHA-256 must match. A fresh TLS request to
+<code>/mcp</code> must return both HTTP <code>404</code> and
+<code>X-SkillPilot-Claude-V1-Containment: SP-CLAUDE-V1-CONTAINED-1</code>. This distinctive
+response proves that a new connection reached the loaded deny-only generation,
+not merely a disabled backend through an old proxy worker.</p>
+<div class="highlight"><pre><span></span><code>sha256sum<span class="w"> </span>deploy/nginx/skillpilot-claude-connector-v1-contained.conf
+sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0644</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>deploy/nginx/skillpilot-claude-connector-v1-contained.conf<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/etc/nginx/skillpilot-claude-connector-v1.conf
+sudo<span class="w"> </span>sha256sum<span class="w"> </span>/etc/nginx/skillpilot-claude-connector-v1.conf
+sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+curl<span class="w"> </span>--silent<span class="w"> </span>--show-error<span class="w"> </span>--proto<span class="w"> </span><span class="s1">'=https'</span><span class="w"> </span>--max-time<span class="w"> </span><span class="m">10</span><span class="w"> </span>--dump-header<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span>/dev/null<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://mcp-claude-v1.skillpilot.com/mcp
+</code></pre></div>
+<p>Then repeat <code>plan</code> with the incident's <code>SPINC-...</code> identifier. Only then may the
+security owner copy those four fresh counts, that plan's <code>targetSha256</code> and its
+<code>toolSha256</code> into an <code>execute</code> using the same incident identifier:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>/usr/local/libexec/skillpilot/claude_v1_revoke<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--procedure-id<span class="w"> </span>SP-CLAUDE-V1-IR-001<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--incident-id<span class="w"> </span>SPINC-YYYYMMDD-NNN
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>/usr/local/libexec/skillpilot/claude_v1_revoke<span class="w"> </span>execute<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--procedure-id<span class="w"> </span>SP-CLAUDE-V1-IR-001<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--incident-id<span class="w"> </span>SPINC-YYYYMMDD-NNN<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--expect-oauth<span class="w"> </span>PLAN_OAUTH_COUNT<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--expect-consents<span class="w"> </span>PLAN_CONSENT_COUNT<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--expect-sessions<span class="w"> </span>PLAN_SESSION_COUNT<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--expect-idempotency<span class="w"> </span>PLAN_IDEMPOTENCY_COUNT<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--expect-target-sha256<span class="w"> </span>PLAN_TARGET_SHA256<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--expect-tool-sha256<span class="w"> </span>PLAN_TOOL_SHA256<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--confirm<span class="w"> </span>REVOKE-CLAUDE-V1-AUTHORIZATIONS-AND-SESSIONS
+</code></pre></div>
+<p>The placeholders deliberately make this example non-executable. <code>execute</code>
+requires all values, the exact tool hash, the Claude-v1 flag explicitly
+<code>false</code>, an unchanged running service and the exact root-owned deny-only Nginx
+vhost at <code>/etc/nginx/skillpilot-claude-connector-v1.conf</code>. The proxy check binds
+that file's SHA-256, verifies that the loaded on-disk configuration contains no
+Claude-v1 upstream, and requires the distinctive header plus <code>404</code> from a fresh
+credential-free loopback TLS request. It locks the six involved tables before
+the destructive transaction takes its first snapshot. This can briefly delay
+OAuth writes for other providers, while reads remain available. Row-level
+security, table inheritance, unexpected cascading foreign keys, user DELETE
+triggers or rewrite rules abort before mutation. The transaction either deletes
+the exact current Claude-v1 aggregate scope or rolls back. The target
+fingerprint must still match after the table locks are acquired, so a stale plan
+from a different database instance, role, endpoint or postmaster generation is
+rejected. It forces synchronous local commit and refuses a PostgreSQL server
+with <code>fsync</code> disabled so a reported commit is not merely buffered process
+state.</p>
+<p>The result is always one sanitized JSON object. <code>status: "applied"</code> is the only
+ordinary success. <code>status: "applied_but_containment_unverified"</code> means the
+reported aggregate deletion counts committed but the final service or live
+containment recheck failed. <code>status: "apply_outcome_unverified"</code> means the
+database client did not return trustworthy commit evidence; only the expected
+counts and expected target fingerprint are reported. For either non-success
+status, keep containment in place, run a fresh <code>plan</code> to establish the current
+state, and never retry with guessed or stale values.</p>
+<p>Any change to the procedure's scope, SQL, guards, CLI/operator contract or
+database-target resolution requires a new procedure version, a new isolated
+rehearsal, review, and byte-identical production installation. Earlier
+evidence becomes stale. Version <code>1.0.0</code> must never name different destructive
+semantics.</p>
+<h2 id="incident-containment-and-recovery">Incident Containment And Recovery</h2>
+<ol>
+<li>Open an incident record, assign severity and owners, record UTC detection,
+   and pause new marketplace promotion. Keep all sensitive evidence in the
+   approved restricted store.</li>
+<li>Determine whether the fault is marketplace distribution, the SkillPilot
+   connector, the shared application, or an external Claude client. Preserve
+   the last passing candidate-bound synthetic result.</li>
+<li>For a connector integrity or data-boundary incident, an authorized operator
+   follows the disable order in the
+   <a href="../claude-connector-v1-release/#8-rollback-drill">connector rollback drill</a>.
+   Those production actions require incident authority; this runbook does not
+   execute them.</li>
+<li>The security owner runs a fresh <code>plan</code>, checks its aggregate counts and
+   target fingerprint, and invokes the count-, target- and tool-hash-bound
+   <code>execute</code> form of the approved restricted revocation procedure. It revokes
+   both Claude-v1 transport
+   authorizations and independent Claude-v1 learner sessions, is irreversible,
+   and must never restore revoked credentials from a backup. Use only the
+   installed copy described above. Until the versioned procedure has passed
+   its isolated rehearsal, read-only production plan and approval, support
+   readiness cannot pass.</li>
+<li>Repeat the frozen OpenAI differential checks after containment and before
+   recovery. A Claude response must not silently alter the OpenAI v1 edge,
+   package, tools, schemas, UI, sessions or review artifacts.</li>
+<li>Recover only from a reviewed immutable candidate. Marketplace-content
+   rollback is a new higher-SemVer release; never reuse a version with different
+   bytes, delete history or force-push <code>main</code>.</li>
+<li>Close the incident only after the synthetic, clean-client acceptance and
+   relevant rollback/recovery checks pass and the accountable owners sign off.</li>
+</ol>
+<h2 id="two-part-prepublication-rehearsal">Two-Part Prepublication Rehearsal</h2>
+<p>The personal-marketplace beta proves revocation and production recovery in two
+separate exercises. This avoids deleting real user credentials merely to test
+an emergency control, while still exercising the exact destructive procedure
+before it is needed under incident pressure.</p>
+<ol>
+<li><strong>Restricted-revocation readiness.</strong> The repository integration test runs
+   the exact embedded transaction from <code>SP-CLAUDE-V1-IR-001</code> version <code>1.0.0</code>
+   against a disposable PostgreSQL database containing dedicated Claude-v1
+   fixtures plus negative OpenAI and retired-Claude-beta controls. It must also
+   prove rollback on a late failure, resistance to a poisoned <code>search_path</code>,
+   exclusion of a concurrent OAuth writer, rejection of row-level security and
+   table inheritance, and rejection of unexpected cascades, DELETE triggers
+   and contradictory provider/principal shapes. The transaction must delete
+   only the provider/version-scoped Claude-v1 OAuth authorizations and
+   Claude-v1 learning sessions while preserving the negative controls and
+   durable curriculum/mastery state outside those sessions. Separately,
+   install the same source byte-identically as <code>root:root</code> mode <code>0755</code> and run
+   only its read-only <code>plan</code> against production. Retain only aggregate counts,
+   the non-secret target fingerprint, timestamps, procedure/version hashes and
+   pass/fail results; never retain row values, tokens, session hashes or learner
+   identifiers.</li>
+<li><strong>Production containment/recovery rehearsal.</strong> In an explicitly approved
+   maintenance window, pause promotion, replace only the Claude-v1 TLS vhost
+   with the reviewed deny-only containment vhost and reload Nginx, set the
+   Claude-v1 feature flag to <code>false</code>, restart the shared service, and prove the
+   distinctive containment response while application readiness and the frozen
+   OpenAI v1 differential remain healthy. Re-enable the unchanged known-good
+   backend flag, restart the service and prove readiness while the deny-only
+   vhost remains loaded; only then restore the same reviewed active TLS vhost
+   and reload Nginx. Do not redeploy unchanged artifacts merely for the drill.
+   Then repeat the live synthetic and required clean adult test-client check and
+   record the observed interruption.</li>
+</ol>
+<p>The Product Owner accepted on 3 September 2026 that the production rehearsal
+does not bulk-revoke real OAuth grants or learner sessions. Production-wide
+revocation is reserved for an actual security or data-boundary incident and is
+then executed only after containment by the authorized operations/security
+owner. Recovery after revocation means a fresh OAuth connection and a new
+first-party learning session; it never means restoring revoked records.</p>
+<p>This two-part beta evidence does not weaken or satisfy the stricter independent
+Connector Directory rollback gate in
+<a href="../claude-connector-v1-release/#8-rollback-drill">the connector release runbook</a>.</p>
+<h2 id="record-the-drill">Record The Drill</h2>
+<p>Use the
+<a href="https://github.com/enpasos/skillpilot/blob/main/ai/claude/plugin/skillpilot-coach-v1/release/support-readiness-drill.template.md">support-readiness drill template</a>
+as a checklist, then store the completed evidence outside the public
+repository. Record the accepted best-effort boundary and reference the separate
+sanitized deployment and drill evidence; do not retain raw tool arguments,
+learner state, logs or credentials. The committed file is intentionally a
+pending candidate template and is not release evidence.</p>
+<h2 id="minimum-pass-criteria">Minimum Pass Criteria</h2>
+<p>Support readiness can be changed to <code>pass</code> only in a separate, approved status
+change after all of these are true for the exact candidate, source commit and
+reproducible marketplace-tree SHA-256:</p>
+<ol>
+<li>accountable support, operations and security owners are named, have the
+   required access, and approve the support boundary; one person may hold
+   multiple roles, and a missing backup requires an explicitly accepted
+   single-owner contingency that pauses public promotion during absence;</li>
+<li>the public support mailbox completes inbound and outbound round trips with
+   every assigned responder, without auto-reply or spam-routing ambiguity;</li>
+<li>the actual coverage boundary, including the absence of a fixed staffed
+   window, and the internal severity/response objectives are approved without
+   publishing an unsupported SLA;</li>
+<li>the scheduled synthetic is enabled, its latest candidate-bound run passes,
+   and its sanitized JSON and immutable run URL are retained;</li>
+<li>the intentional failed-run drill reaches the accountable alert path and
+   every assigned backup path, with receipt and acknowledgement timestamps
+   retained;</li>
+<li>the Product Owner has accepted the best-effort authenticated-tool detection
+   boundary, candidate-specific deployment evidence confirms that no host-side
+   WARN-to-email service or SMTP credential is installed for it, and neither
+   release nor support material claims real-time monitoring or an SLA;</li>
+<li>the exact versioned restricted revocation procedure has passed the isolated
+   disposable-database rehearsal, including negative OpenAI and retired-beta
+   controls, transaction rollback, fixed-schema, concurrent-writer, row-level
+   security, table-inheritance, cascade, trigger and provider-scope checks,
+   without learner data, credentials or row values in evidence;</li>
+<li>its byte-identical production copy is installed as <code>root:root</code> mode <code>0755</code>,
+   the trusted-host precondition is explicitly confirmed, and a successful
+   read-only <code>plan</code> has validated the configured running-service connection,
+   target fingerprint and connected production schema without a database
+   mutation;</li>
+<li>the production connector containment, frozen OpenAI differential and
+   known-good recovery rehearsal has passed in an approved maintenance window,
+   without bulk-revoking real credentials and with the observed shared-service
+   interruption recorded;</li>
+<li>at least one sanitized support scenario is triaged end to end by the
+   accountable responder and, when assigned, one by the backup; without a
+   backup, the single-owner absence and promotion-pause contingency is
+   rehearsed instead; and</li>
+<li>the Product Owner reviews the complete evidence and explicitly authorizes
+   the later gate-status change.</li>
+</ol>
+<p>Missing, stale or candidate-mismatched evidence fails closed. A green
+synthetic, a populated template, or a configured email address alone is never
+sufficient. The remote marketplace revision does not exist before first
+publication and is therefore not a support-readiness prerequisite. Bind it in
+the later repository-verification and exact-client activation evidence once it
+exists.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

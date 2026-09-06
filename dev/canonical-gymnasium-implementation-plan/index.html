@@ -1,0 +1,5489 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/dev/canonical-gymnasium-implementation-plan/">
+      
+      
+        <link rel="prev" href="../auto-update/">
+      
+      
+        <link rel="next" href="../canonical-gymnasium-math-bundeslaender-status/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Implementation Plan - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#canonical-gymnasium-implementation-plan" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Implementation Plan
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-reported-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current reported status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-implementation-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First implementation slice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deliverables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deliverables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deliverables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#d1-canonical-pilot-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D1. Canonical pilot landscape
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2-goal-mapping-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D2. Goal mapping file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d3-backend-projection-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D3. Backend projection layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d4-invariant-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D4. Invariant tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operating States
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#close-out-steering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Close-out steering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#work-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Work packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp0-baseline-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP0. Baseline inventory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp1-mapping-format-and-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP1. Mapping format and loader
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp2-canonical-mathematics-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP2. Canonical mathematics landscape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp3-read-side-mastery-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP3. Read-side mastery projection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp4-learner-state-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP4. Learner-state compatibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp5-test-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP5. Test coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp6-hessen-sek-i-math-attachment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP6. Hessen Sek I math attachment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp7-bavaria-math-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP7. Bavaria math mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp8-cross-subject-pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP8. Cross-subject pilot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-execution-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended execution order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definition-of-a-good-first-milestone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition of a good first milestone
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-reported-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current reported status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-implementation-slice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First implementation slice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deliverables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deliverables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deliverables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#d1-canonical-pilot-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D1. Canonical pilot landscape
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2-goal-mapping-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D2. Goal mapping file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d3-backend-projection-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D3. Backend projection layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d4-invariant-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D4. Invariant tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operating States
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#close-out-steering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Close-out steering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#work-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Work packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp0-baseline-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP0. Baseline inventory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp1-mapping-format-and-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP1. Mapping format and loader
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp2-canonical-mathematics-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP2. Canonical mathematics landscape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp3-read-side-mastery-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP3. Read-side mastery projection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp4-learner-state-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP4. Learner-state compatibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp5-test-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP5. Test coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp6-hessen-sek-i-math-attachment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP6. Hessen Sek I math attachment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp7-bavaria-math-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP7. Bavaria math mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wp8-cross-subject-pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WP8. Cross-subject pilot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-execution-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended execution order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definition-of-a-good-first-milestone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition of a good first milestone
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="canonical-gymnasium-implementation-plan">Canonical Gymnasium Implementation Plan</h1>
+<p>Snapshot: <code>2026-03-16</code></p>
+<p>Runtime cleanup note (<code>2026-08-29</code>): the temporary single-learner and bulk
+Gymnasium cutover endpoints, their cockpit/operator controls, and the dedicated
+learner compatibility-archive download endpoint have been removed. No real
+legacy learners require this transition path. The canonical curricula and the
+DE-level archive, mapping, provenance, compatibility-summary, and topic-summary
+registries remain authoritative and unchanged. Cutover-path statements below
+describe rollout history, not currently available runtime operations.</p>
+<p>This document turns the rollout strategy from the concept docs into an implementation-oriented plan.</p>
+<p>See also:</p>
+<ul>
+<li><code>docs/concept/skill-graph/canonical-gymnasium-rollout.md</code></li>
+<li><code>docs/dev/canonical-gymnasium-migration-status.md</code></li>
+<li><code>docs/dev/canonical-gymnasium-math-bundeslaender-status.md</code></li>
+<li><code>docs/dev/canonical-gymnasium-applicability-design.md</code></li>
+<li><code>docs/dev/canonical-gymnasium-physics-parity-plan.md</code></li>
+</ul>
+<h2 id="purpose">Purpose</h2>
+<p>The implementation should start without breaking:</p>
+<ul>
+<li>existing Hessen learner flows,</li>
+<li>existing Custom GPT flows,</li>
+<li>the current unified learner-state contract.</li>
+</ul>
+<p>The project should therefore start with a small, testable pilot rather than a broad curriculum rewrite.</p>
+<h2 id="current-reported-status">Current reported status</h2>
+<p>Use <code>docs/dev/canonical-gymnasium-migration-status.md</code> as the single headline-score source.</p>
+<p>Current reported migration status on <code>2026-03-16</code>:</p>
+<ul>
+<li><code>100%</code></li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li><code>curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe</code> is at <code>100%</code> tree-level delete-gate completion and is already deleted from the active repo</li>
+<li><code>curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe</code> is at <code>100%</code> tree-level delete-gate completion and is already deleted from the active repo</li>
+<li><code>curricula/DE/BY/Gymnasium</code> is now at <code>100%</code> tree-level delete-gate completion and removed from the active repo</li>
+</ul>
+<h2 id="guardrails">Guardrails</h2>
+<ul>
+<li>Do not duplicate canonical goals per Bundesland.</li>
+<li>Do not reintroduce deleted legacy source trees; any retained compatibility or audit need should resolve through the DE-level archive, mapping, and provenance lanes.</li>
+<li>Hessen upper-secondary has already left the active repo path; use the archived source snapshots under <code>curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/</code> instead of reactivating the old tree.</li>
+<li>Do not modify the archived Hessen upper-secondary source snapshots under <code>curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/</code> just to host canonical content.</li>
+<li>Keep the Custom GPT interface unchanged: one learner state, one frontier, one mastery flow.</li>
+<li>Use ISO 3166-2 state codes in new Bundesland-facing metadata, filters, and API-visible fields, for example <code>DE-HE</code> and <code>DE-BY</code>.</li>
+<li>Do not rename existing curriculum directory segments just to enforce that convention during the pilot.</li>
+<li>Place canonical Gymnasium subject landscapes on a Germany-level path, not inside a single Bundesland subtree.</li>
+<li>Prefer additive infrastructure over destructive migration.</li>
+<li>Introduce only the minimum new data structures required for the first pilot.</li>
+<li>Preserve multi-subject navigation as a design target from the beginning.</li>
+<li>For Sek I with different overall school lengths, normalize the first canonical layer to G9 year levels <code>5-10</code> rather than creating separate G8/G9 canonical branches.</li>
+<li>For retained non-canonical materials, use DE-level but state-scoped archive lanes. <code>curricula/DE/Gymnasium/input/DE-HE/abi</code> is the model case, not a special exception.</li>
+</ul>
+<h2 id="first-implementation-slice">First implementation slice</h2>
+<p>The first slice should be:</p>
+<ul>
+<li>subject: Mathematics</li>
+<li>source: Hessen Gymnasiale Oberstufe</li>
+<li>mode: additive pilot</li>
+</ul>
+<p>This slice should produce a canonical mathematics landscape without yet changing the outward-facing learner workflow.</p>
+<h2 id="deliverables">Deliverables</h2>
+<h3 id="d1-canonical-pilot-landscape">D1. Canonical pilot landscape</h3>
+<p>Create one first canonical mathematics landscape derived from the mature Hessen upper-secondary mathematics landscape.</p>
+<p>Initial constraints:</p>
+<ul>
+<li>runtime-compatible <code>SkillLandscape</code> JSON</li>
+<li>no broad restructuring yet</li>
+<li>IDs stable inside the canonical file</li>
+<li>only one subject in scope</li>
+</ul>
+<h3 id="d2-goal-mapping-file">D2. Goal mapping file</h3>
+<p>Create one explicit mapping file from Hessen upper-secondary mathematics goals to canonical mathematics goals.</p>
+<p>Pilot scope:</p>
+<ul>
+<li>support <code>exact</code></li>
+<li>support <code>partial</code></li>
+<li>avoid larger semantics until needed</li>
+</ul>
+<h3 id="d3-backend-projection-layer">D3. Backend projection layer</h3>
+<p>Add a small backend component that can:</p>
+<ul>
+<li>resolve canonical mastery from legacy mastery via mappings,</li>
+<li>keep current learner-state responses stable,</li>
+<li>hide legacy/canonical complexity from the Custom GPT.</li>
+</ul>
+<p>The projection layer should be read-first. Do not start with an invasive write migration.</p>
+<h3 id="d4-invariant-tests">D4. Invariant tests</h3>
+<p>Add tests proving that, for the overlapping Hessen pilot scope:</p>
+<ul>
+<li>learner state remains available,</li>
+<li>frontier behavior stays stable,</li>
+<li>mastery projection is deterministic,</li>
+<li>existing API/controller contracts remain unchanged.</li>
+</ul>
+<h2 id="operating-states">Operating States</h2>
+<p>Canonical convergence should be tracked per adopted subtree, not only per work package.</p>
+<p>Use these operational states:</p>
+<ul>
+<li><code>legacy_frozen</code></li>
+<li>the legacy source subtree stays authoritative and read-only for convergence purposes</li>
+<li><code>subtree_adopted</code></li>
+<li>the subtree exists in canonical DE-level form and has explicit mappings</li>
+<li><code>cutover_ready</code></li>
+<li>projection, frontier, and learner-state behavior are stable enough for low-risk operational switch</li>
+<li><code>legacy_view_retained</code></li>
+<li>canonical is the preferred path, while the old subtree remains available as a compatibility view</li>
+</ul>
+<p>Transition rule:</p>
+<ul>
+<li><code>legacy_frozen</code> -&gt; <code>subtree_adopted</code> -&gt; <code>cutover_ready</code> -&gt; <code>legacy_view_retained</code></li>
+</ul>
+<p>Adoption checklist for a subtree:</p>
+<ul>
+<li>the subtree is didactically coherent</li>
+<li><code>contains</code> coverage is complete enough to navigate it as a unit</li>
+<li>prerequisites are carried over or explicitly rebound</li>
+<li>legacy-to-canonical mappings exist with justified <code>exact</code> / <code>partial</code> semantics</li>
+<li>runtime projection tests cover at least mastery and planned-goal normalization</li>
+</ul>
+<p>Current operational baseline:</p>
+<ul>
+<li>Hessen lower-secondary source JSON, mapping fixtures, and the core lower-secondary provenance registries now survive in DE-level archive/provenance lanes; the original tree is retired from the active repo</li>
+<li>Hessen upper-secondary source JSON now survives only as archived DE-level snapshots under <code>curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/</code>; the original tree is retired from the active repo</li>
+<li>the first canonical Sek-I normalization target is the shared G9-aligned year-level grid <code>5-10</code>; duration-specific source labels stay in provenance and archived inputs</li>
+<li>retained state-owned assets such as <code>abi/</code>, source bundles, and derived exam packages are expected to survive the transition in state-scoped DE archive lanes</li>
+<li>the canonical <code>Gymnasium (DE)</code> overview root is the current preferred DE-level learner entry point</li>
+<li>compiled node-level <code>applicability</code> is now implemented for the reviewed canonical DE Gymnasium set via <code>app/scripts/compileApplicability.ts</code>, <code>app/scripts/validateViewFilters.ts</code>, and <code>app/scripts/applyApplicability.ts</code>; the current reviewed validator result is <code>0</code> errors, <code>0</code> active warnings, <code>136</code> accepted warnings</li>
+<li>the DE-level Mathematics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the existing Sek-I bridge plus exact Hessen legacy mappings for later learner migration</li>
+<li>the DE-level Physics landscape now bulk-adopts the Hessen upper-secondary tree and keeps the pre-existing cross-subject Math bridge and Bavaria collision anchor IDs stable for later learner migration</li>
+<li>the DE-level Chemistry landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level Biology landscape now bulk-adopts the Hessen upper-secondary tree as another Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level Informatics landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level History landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level German landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level Politics-and-Economics landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level English landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level French landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level Latin landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level Spanish landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level Greek landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level Chinese landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level Music landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>the DE-level Economics landscape now bulk-adopts the Hessen upper-secondary tree as the next Hessen-first subject slice and is attached below the shared DE root</li>
+<li>with Music added, every currently modeled Hessen Gymnasiale-Oberstufe subject landscape now has a DE-level adopted counterpart below <code>Gymnasium (DE)</code></li>
+<li>a first backend learner-cutover path from frozen Hessen upper-secondary Math/Physics/Chemistry/Biology/Informatics/History/German/Politics-and-Economics/English/French/Latin/Spanish/Greek/Chinese/Music/Economics views into the DE-level <code>Gymnasium (DE)</code> root is available</li>
+<li>cutover now stabilizes curriculum selection, root/subject filters, first-response planned-scope normalization, and canonical continuation with preserved legacy mastery history</li>
+<li>the cutover HTTP contract now also covers the frozen Hessen overview case with combined Mathematics/Physics selection and the direct Chemistry cutover case with canonical planned-scope continuation</li>
+<li>the learner cockpit now exposes a first explicit UI migration path from frozen Hessen upper-secondary views into <code>Gymnasium (DE)</code> and switches the frontend landscape context after successful cutover</li>
+<li>after successful UI cutover, the cockpit now navigates directly into the migrated canonical focus instead of leaving the learner on the old Hessen route or only at the DE root</li>
+<li>the UI cutover dialog now previews the adopted Hessen -&gt; DE transfer per subject and course level before the learner triggers migration</li>
+<li>the curriculum picker now prioritizes <code>Gymnasium (DE)</code> for new learner entry and explicitly labels the frozen Hessen upper-secondary views as compatibility views</li>
+<li>the frozen Hessen cockpit view now also surfaces the DE cutover directly inside the learner workspace, so retained compatibility views are usable without hiding the canonical migration path in setup only</li>
+<li>ordinary session-start and championship-registration pickers no longer list compatibility views by default; they are only retained there when already selected</li>
+<li>backend bootstrap for new learners now follows the same rule and returns recommended curricula without compatibility views by default; the general UI landscapes endpoint now exposes compatibility explicitly via <code>includeCompatibility=true</code></li>
+<li>the learner cockpit setup now treats Hessen compatibility subjects as an explicitly revealable secondary section, and canonical <code>Gymnasium (DE)</code> setups prune stale Hessen compatibility entries from persisted personal curriculum configs</li>
+<li>when the learner is still inside a Hessen compatibility session, that same cockpit setup now runs in retirement-only mode: migration/audit stay available, but it no longer acts as a normal curriculum configuration editor for the frozen Hessen path</li>
+<li>the learner cockpit now also treats those open Hessen compatibility sessions as read-only/audit-only for planning, active-goal selection, and SRS drilling, so the retained Hessen path is no longer a normal active-learning workspace even before full backend retirement</li>
+<li>UI and AI write endpoints now enforce the same rule server-side: retained Hessen compatibility sessions reject curriculum mutation, planning, active-goal, mastery, and client-state writes, so the remaining compatibility route is backend-read-only as well as frontend-read-only</li>
+<li>UI and AI learner-state routes no longer serve retained Hessen compatibility sessions as live state views; the temporary cockpit migration and per-learner archive controls were removed after the real-user migration window proved empty</li>
+<li>retired Hessen curriculum summaries remain available from the DE-level archive registry <code>curricula/DE/Gymnasium/archive/compatibility-landscape-registry.json</code> for bounded comparison/audit metadata without restoring a live legacy learner-state projection</li>
+<li>Hessen cutover now also resolves stored <code>legacyGoalId -&gt; sourceLandscapeId</code> membership from the DE-level provenance registry <code>curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json</code>, so subject inference no longer depends on a live Hessen upper-secondary skill graph staying loaded</li>
+<li><code>/api/ui/landscapes?includeCompatibility=true</code> now also resolves Hessen compatibility summaries from the frozen DE-level archive registry, so overview/listing metadata no longer depends on loaded Hessen upper-secondary landscape files</li>
+<li><code>/api/ui/curricula/{curriculumId}/topics</code> now also resolves Hessen compatibility topics from the frozen DE-level archive registry <code>curricula/DE/Gymnasium/archive/compatibility-topic-summary-registry.json</code>, while direct <code>/api/ui/landscapes/{id}</code> and <code>/closure</code> routes for Hessen compatibility landscapes are retired</li>
+<li>the <code>Abi26</code> Hessen mathematics bootstrap now provisions learners onto canonical <code>Gymnasium (DE)</code> with <code>DE-HE</code> at the root and canonical mathematics <code>GK</code>/<code>LK</code> filters, instead of selecting the retired Hessen mathematics curriculum directly</li>
+<li>new learner curriculum selections now also reject retired Hessen compatibility IDs server-side even when the caller already knows those IDs, so the compatibility route cannot be reopened as a fresh runtime path</li>
+<li>Hessen upper-secondary exam/deploy/adoption helper tooling now resolves retained <code>abi/</code> defaults plus archived mapping defaults via <code>curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json</code>, and resolves legacy subject-landscape source paths through the shared DE-level provenance source registry instead of per-script hardcoded legacy-tree defaults</li>
+<li>DE-level Hessen <code>abi/</code> operational metadata now follows the same rule: task banks store <code>sourceLandscapeId</code> plus the shared provenance registry path instead of embedding legacy source-landscape file paths, while blueprint/source-catalog/release-bundle source references now only target retained DE-level <code>curricula/DE/Gymnasium/input/DE-HE/...</code> assets</li>
+<li>repo-authored Hessen <code>abi/</code> markdown now also follows that split: authored pipeline/QS/guide documents reference DE-level retained assets or provenance registry entries, while imported/raw source markdown remains intentionally untouched as archival provenance</li>
+<li>the retained/raw boundary is now enforced by <code>scripts/validate_hessen_upper_secondary_archive_paths.py</code>, using the explicit Hessen <code>allowedRawLegacyPathGlobs</code> in <code>curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json</code>, and this gate is now part of both <code>.github/workflows/ci.yml</code> and local <code>run_ci.sh</code></li>
+<li>the remaining repo-level legacy-tree references are now also fenced by <code>curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json</code> plus <code>scripts/validate_hessen_upper_secondary_legacy_refs.py</code>, so active runtime/tooling/test surfaces can only refer to the frozen Hessen upper-secondary tree from an explicit handoff allowlist</li>
+<li>backend/src no longer contains any explicit Hessen upper-secondary tree references; the remaining repo-level blockers are now purely declarative provenance/transfer files plus the validators that guard that boundary</li>
+<li>the frozen Hessen upper-secondary source-JSON lane is now mirrored under <code>curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/</code>, and <code>curricula/DE/Gymnasium/provenance/source-landscape-registry.json</code> now provides <code>archiveSourcePath</code> so authoring/deploy tooling can read those snapshots without requiring the live legacy tree</li>
+<li>backend landscape loading now also falls back to those archived Hessen upper-secondary source snapshots, so retired curriculum IDs remain readable for release metadata, frontier invariants, and explicit retirement/conflict handling after the repo-side delete handoff</li>
+<li>the Hessen upper-secondary delete handoff has now been executed: the original tree is gone from the active repo path, and <code>bash scripts/run_hessen_upper_secondary_delete_handoff_dry_run.sh</code> now acts as the post-retirement verification command for the surviving archive/provenance lane</li>
+<li>an explicit backend bulk-cutover path with <code>dryRun</code> and a supplied learner-ID list is now available, so later Hessen -&gt; DE migrations can be rehearsed and executed without exposing global learner listings</li>
+<li>the operator-facing bulk-cutover UI now supports CSV export of dry-run/execution results and lets operators reduce the current input list to the <code>eligible</code> learner IDs before triggering the real migration</li>
+<li>the Hessen Sek-I backend learner-cutover path now also covers the frozen mixed overview root across the currently supported <code>Mathematik</code>/<code>Physik</code>/<code>Chemie</code>/<code>Biologie</code>/<code>Französisch</code> surface; lower-secondary physics still auto-selects canonical mathematics to keep the existing cross-subject bridge visible, and lower-secondary French now cuts over onto the shared canonical French landscape instead of blocking mixed-overview retirement</li>
+<li>ordinary learner entry now also prefers the canonical DE path over Hessen Sek-I legacy roots: the lower-secondary Hessen overview and subject roots are hidden by default from bootstrap and general picker surfaces, but remain retainable when they are already the active selection</li>
+<li>the frozen Hessen lower-secondary source-JSON lane is now mirrored under <code>curricula/DE/Gymnasium/input/DE-HE/lower-secondary/source-json/</code> (<code>6</code> files), and <code>curricula/DE/Gymnasium/provenance/source-landscape-registry.json</code> now also exposes <code>archiveSourcePath</code> for those lower-secondary landscapes</li>
+<li>Hessen Sek-I legacy-to-canonical mapping fixtures now also live in the DE-level archive lane <code>curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/</code></li>
+<li>frozen Hessen Sek-I compatibility summaries and topic lists now also resolve from the DE-level archive registries <code>curricula/DE/Gymnasium/archive/compatibility-landscape-registry.json</code> and <code>curricula/DE/Gymnasium/archive/compatibility-topic-summary-registry.json</code></li>
+<li><code>scripts/validate_hessen_lower_secondary_archive_paths.py</code> and <code>scripts/validate_hessen_lower_secondary_legacy_refs.py</code> now fence retained-asset and repo-level references for Hessen Sek-I, and both checks are wired into <code>.github/workflows/ci.yml</code> plus local <code>run_ci.sh</code></li>
+<li>the Hessen lower-secondary delete handoff has now been executed: the original tree is gone from the active repo path, and <code>bash scripts/run_hessen_lower_secondary_delete_handoff_dry_run.sh</code> now serves as the post-retirement verification command against the surviving archive/provenance/mapping lanes</li>
+<li>Hessen Sek-I source-goal closures and goal memberships are now also frozen in the shared DE-level provenance registries <code>curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json</code> and <code>curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json</code>, so lower overview/root survivability no longer depends on the live legacy tree</li>
+<li>the currently cutover-supported Hessen Sek-I legacy learner bundle is now frontend- and backend-read-only across <code>Mathematik</code>/<code>Physik</code>/<code>Chemie</code>/<code>Biologie</code>/<code>Französisch</code>; mixed overview sessions that resolve into that supported bundle also reject active-learning writes once the canonical cutover surface exists</li>
+<li>the first Bavaria learner-cutover path is now operational for direct legacy <code>Mathematik</code> learners: Bavaria <code>Mathematik</code> migrates into <code>Gymnasium (DE)</code> with the root filter <code>DE-BY</code>, canonical Mathematics selected, and normalized planned-scope continuation on the shared canonical Math spine</li>
+<li>ordinary learner entry now also prefers the canonical DE path over the Bavaria legacy root: <code>Gymnasium (Bayern)</code> is hidden by default from general overview/bootstrap surfaces and only retained when it is already the active learner selection</li>
+<li>the active Bavaria Math/Physics/Chemistry/Biology/Informatik/Geschichte/Deutsch/Englisch/Französisch/Spanisch/Italienisch/Russisch/Polnisch/Tschechisch/Griechisch/Wirtschaft_und_Recht/Politik_und_Gesellschaft/Latein/Musik/Chinesisch adopted corridor no longer hangs solely off the live <code>curricula/DE/BY/Gymnasium</code> tree: the adopted Bavaria mappings now live under <code>curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/</code>, the shared source-landscape registry now exposes <code>archiveSourcePath</code> for the current adopted Bavaria source landscapes, and <code>scripts/validate_bavaria_gymnasium_archive_paths.py</code> plus <code>scripts/validate_bavaria_gymnasium_legacy_refs.py</code> now fence the DE-level retained-source lane and repo-level operational references</li>
+<li>the currently supported Bavaria legacy mathematics learner path is now detached as an active runtime path: direct <code>Mathematik</code> sessions are frontend- and backend-read-only retirement views, UI/AI write endpoints reject mutations, and the canonical <code>Gymnasium (DE)</code> + <code>DE-BY</code> cutover remains the supported continuation</li>
+<li>the current Bavaria Physics pilot surface now has the same direct learner-cutover and retirement handling: direct legacy <code>Physik</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Physics selected plus the required Math bridge, and active legacy Physics sessions are frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Chemistry and Biology pilot surfaces now also have direct learner-cutover and retirement handling: direct legacy <code>Chemie</code> and <code>Biologie</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Informatics pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Informatik</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Informatics selected, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria German pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Deutsch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical German selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria English pilot now adds <code>11</code> reviewed mappings into the canonical DE English layer, yielding <code>2</code> committed <code>DE-BY</code> applicability nodes on the currently reviewed English surface plus a direct Bavaria <code>Englisch</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria English pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Englisch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical English selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria French pilot now adds <code>11</code> reviewed mappings into the canonical DE French layer, yielding <code>3</code> committed <code>DE-BY</code> applicability nodes on the currently reviewed French surface plus a direct Bavaria <code>Französisch</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria French pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Französisch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical French selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Spanish pilot now adds <code>8</code> reviewed mappings into the canonical DE Spanish layer, yielding <code>2</code> committed <code>DE-BY</code> applicability nodes on the currently reviewed Spanish surface plus a direct Bavaria <code>Spanisch</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria Spanish pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Spanisch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Spanish selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Italian pilot now adds <code>8</code> reviewed mappings into the canonical DE Italian layer, yielding <code>8</code> committed <code>DE-BY</code> applicability nodes plus a direct Bavaria <code>Italienisch</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria Italian pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Italienisch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Italian selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Russian pilot now adds <code>8</code> reviewed mappings into the canonical DE Russian layer, yielding <code>8</code> committed <code>DE-BY</code> applicability nodes plus a direct Bavaria <code>Russisch</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria Russian pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Russisch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Russian selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Polish pilot now adds <code>5</code> reviewed mappings into the canonical DE Polish layer, yielding <code>5</code> committed <code>DE-BY</code> applicability nodes plus a direct Bavaria <code>Polnisch</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria Polish pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Polnisch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Polish selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Czech pilot now adds <code>5</code> reviewed mappings into the canonical DE Czech layer, yielding <code>5</code> committed <code>DE-BY</code> applicability nodes plus a direct Bavaria <code>Tschechisch</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria Czech pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Tschechisch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Czech selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria History pilot now adds <code>56</code> reviewed mappings into the canonical DE history layer, yielding <code>58</code> committed <code>DE-BY</code> applicability nodes through the first reviewed mixed <code>G8</code> / <code>G9</code> bridge plus a direct Bavaria <code>Geschichte</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria History pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Geschichte</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical History selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Greek pilot now adds <code>14</code> reviewed mappings into the canonical DE Greek layer, yielding <code>11</code> committed <code>DE-BY</code> applicability nodes on an early reviewed <code>E-Phase</code> bridge plus a direct Bavaria <code>Griechisch</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria Greek pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Griechisch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Greek selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Wirtschaft-und-Recht pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Wirtschaft und Recht</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical <code>Wirtschaftswissenschaften</code> selected, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Politik-und-Gesellschaft pilot now adds <code>39</code> reviewed mappings into the canonical DE politics/economics layer, yielding <code>22</code> committed <code>DE-BY</code> applicability nodes across a reviewed mixed <code>G8</code> / <code>G9</code> bridge plus a direct Bavaria <code>Politik und Gesellschaft</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria Politik-und-Gesellschaft pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Politik und Gesellschaft</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical <code>Politik und Wirtschaft</code> selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Latin pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Latein</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Latin selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Music pilot now adds <code>15</code> reviewed mappings into the canonical DE music layer, yielding <code>15</code> committed <code>DE-BY</code> applicability nodes plus a direct Bavaria <code>Musik</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria Music pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Musik</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Music selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>the current Bavaria Chinese pilot now adds <code>35</code> reviewed mappings into the canonical DE Chinese layer, yielding <code>33</code> committed <code>DE-BY</code> applicability nodes plus a direct Bavaria <code>Chinesisch</code> cutover path into <code>Gymnasium (DE)</code></li>
+<li>the current Bavaria Chinese pilot surface now also has direct learner-cutover and retirement handling: direct legacy <code>Chinesisch</code> learners migrate into <code>Gymnasium (DE)</code> with <code>DE-BY</code>, canonical Chinese selected with the default <code>GK</code> filter, and active legacy sessions now run as frontend- and backend-read-only retirement views instead of ordinary writable learner paths</li>
+<li>Bavaria Math/Physics/Chemistry/Biology source-goal closures and goal memberships now also live in the shared DE-level provenance registries <code>curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json</code> and <code>curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json</code>, so the current adopted Bavaria corridor no longer depends on the live legacy tree for archived closure or membership lookups</li>
+<li>the full live Bavaria Gymnasium legacy tree now classifies as compatibility-only on the active runtime path, so explicit UI/AI curriculum selection no longer routes fresh learners back into Bavaria legacy root or subject views while existing retired sessions remain archive/cutover-only</li>
+<li>the canonical Mathematics pilot function corridor is <code>cutover_ready</code></li>
+<li>the canonical Physics motion corridor is <code>cutover_ready</code></li>
+<li>the canonical Physics E.2 mechanics corridor is <code>cutover_ready</code></li>
+<li>the canonical Physics E.3 horizontal-projection slice is <code>cutover_ready</code></li>
+<li>the first Hessen Sek I physics mechanics bridge is <code>subtree_adopted</code></li>
+<li>the first Hessen Sek I physics optics bridge is <code>subtree_adopted</code></li>
+<li>the first Hessen Sek I physics electricity bridge is <code>subtree_adopted</code></li>
+<li>the first Hessen Sek I chemistry foundations bridge is <code>subtree_adopted</code></li>
+<li>the first Hessen Sek I biology foundations/cell plus photosynthesis-respiration bridge is <code>subtree_adopted</code></li>
+<li>the canonical Chemistry Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical Biology Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical Informatics Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical History Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical German Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical Politics-and-Economics Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical English Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical French Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical Latin Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical Spanish Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical Greek Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical Chinese Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical Music Hessen baseline is <code>subtree_adopted</code></li>
+<li>the canonical Economics Hessen baseline is <code>subtree_adopted</code></li>
+<li>at tracked-tree granularity, Hessen upper-secondary, Hessen lower-secondary, and Bavaria Gymnasium have now completed the delete handoff (<code>legacy_deleted</code>)</li>
+</ul>
+<h2 id="close-out-steering">Close-out steering</h2>
+<p>The migration has now entered the explicit close-out phase:</p>
+<ul>
+<li>Hessen upper-secondary is already retired from the active repo</li>
+<li>the remaining program risk is now dominated by optional scope extension decisions</li>
+<li>therefore the primary top-line progress number should no longer be the historical subtree-adoption score alone</li>
+</ul>
+<p>From here on, the main overall percentage should be the completion-track score from
+<code>docs/dev/canonical-gymnasium-migration-status.md</code>:</p>
+<ul>
+<li><code>completion-track score</code> = average of the tracked legacy-tree delete-gate scores</li>
+</ul>
+<p>Current close-out headline:</p>
+<ul>
+<li><code>100%</code></li>
+</ul>
+<p>Operational consequence:</p>
+<ul>
+<li>keep the historical close-out score stable, but shift new expansion work onto a Mathematics-first DE-wide track</li>
+<li>prefer adding the next Bundesland to canonical Gymnasium <code>Mathematik</code> over widening additional non-math subject lanes</li>
+<li>keep the migration unit didactically closed even on that Math-first track; do not switch to whole-subject or whole-state big-bang cutovers</li>
+<li>treat source import and mapping-lane setup for the next mathematics state as higher priority than optional out-of-scope items such as Bavaria <code>abi/</code> scope debates</li>
+</ul>
+<p>Strategic refocus on <code>2026-03-20</code>:</p>
+<ul>
+<li>after the reviewed Bavaria applicability close-out across the currently active subject set, the next convergence pressure should come from <strong>new Bundesländer in canonical Gymnasium Mathematics</strong></li>
+<li>current mapping archive reality still reflects only <code>DE-HE</code> and <code>DE-BY</code>; the next meaningful architecture test is therefore a third state on the shared canonical math spine, not more subject breadth on the same two-state base</li>
+<li>the working model from here on is: <strong>Mathematics first, one Bundesland at a time, one didactically closed corridor at a time</strong></li>
+<li>see <code>docs/dev/canonical-gymnasium-math-de-expansion-plan.md</code> for the concrete ordering and onboarding criteria</li>
+</ul>
+<h2 id="work-packages">Work packages</h2>
+<h2 id="wp0-baseline-inventory">WP0. Baseline inventory</h2>
+<p>Status: <code>done</code></p>
+<p>Tasks:</p>
+<ul>
+<li>identify the exact Hessen mathematics source landscape file(s)</li>
+<li>identify which goal IDs are already stable enough for mapping</li>
+<li>identify backend classes responsible for goal loading, learner state, frontier, and mastery persistence</li>
+<li>identify where a mapping registry can be added with minimal surface area</li>
+</ul>
+<p>Expected output:</p>
+<ul>
+<li>one short inventory note in <code>tmp/canonical-gymnasium-work_notes.md</code></li>
+</ul>
+<p>Baseline inventory result:</p>
+<ul>
+<li>Hessen upper-secondary mathematics source file identified:
+  <code>curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json</code></li>
+<li>source landscape ID identified:
+  <code>2796fc7b-ba9d-446f-8f26-711dd6d8a9a3</code></li>
+<li>smallest backend insertion points identified:</li>
+<li>landscape loading / lookup: <code>backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java</code></li>
+<li>mastery read / write and unified learner state: <code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java</code></li>
+<li>mapping files can safely live under curriculum-adjacent directories as plain JSON files because the current landscape loader already skips JSON files that do not expose <code>landscapeId</code> plus a <code>goals</code> array</li>
+</ul>
+<h2 id="wp1-mapping-format-and-loader">WP1. Mapping format and loader</h2>
+<p>Status: <code>done</code></p>
+<p>Tasks:</p>
+<ul>
+<li>define the mapping JSON shape</li>
+<li>add a backend loader for mapping files</li>
+<li>validate duplicate or conflicting mappings early</li>
+<li>keep the format intentionally narrow for the pilot</li>
+</ul>
+<p>Suggested initial file location:</p>
+<ul>
+<li><code>curricula/.../mapping/</code> or another curriculum-adjacent location that keeps ownership visible</li>
+</ul>
+<p>Decision rule:</p>
+<ul>
+<li>choose the smallest location and loader design that does not force later duplication</li>
+</ul>
+<p>WP1 result:</p>
+<ul>
+<li>minimal mapping format implemented in backend:</li>
+<li>top-level fields: <code>version</code>, <code>sourceLandscapeId</code>, <code>targetLandscapeId</code>, <code>mappings</code></li>
+<li>entry fields: <code>legacyGoalId</code>, <code>canonicalGoalId</code>, <code>matchType</code></li>
+<li>supported <code>matchType</code> values currently:</li>
+<li><code>exact</code></li>
+<li><code>partial</code></li>
+<li>conflicting duplicate mappings for the same <code>legacyGoalId</code> are rejected eagerly</li>
+<li>non-landscape, non-mapping JSON files continue to be ignored</li>
+<li>initial storage convention for authored mapping files:</li>
+<li>keep them curriculum-adjacent under <code>curricula/.../mapping/*.json</code></li>
+<li>Bundesland identifier convention for later overlay/filter metadata:</li>
+<li>use ISO 3166-2 codes such as <code>DE-HE</code> and <code>DE-BY</code></li>
+<li>keep existing repo path segments such as <code>DE/HE</code> unchanged unless a separate filesystem migration becomes necessary</li>
+<li>mapping discovery rule:</li>
+<li>inspect ordinary <code>.json</code> files and identify mapping files by JSON shape, not by a special filename suffix</li>
+<li>mapping files intentionally omit <code>landscapeId</code> and <code>goals</code>, so the existing <code>LandscapeService</code> continues to ignore them</li>
+<li>implementation classes:</li>
+<li><code>backend/src/main/java/com/skillpilot/backend/landscape/GoalMappingService.java</code></li>
+<li><code>backend/src/main/java/com/skillpilot/backend/landscape/GoalMappingFile.java</code></li>
+<li><code>backend/src/main/java/com/skillpilot/backend/landscape/GoalMappingEntry.java</code></li>
+<li><code>backend/src/main/java/com/skillpilot/backend/landscape/ResolvedGoalMapping.java</code></li>
+<li>initial test coverage:</li>
+<li><code>backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingServiceTest.java</code></li>
+</ul>
+<h2 id="wp2-canonical-mathematics-landscape">WP2. Canonical mathematics landscape</h2>
+<p>Status: <code>done</code></p>
+<p>Tasks:</p>
+<ul>
+<li>create the first canonical mathematics landscape file</li>
+<li>keep the file close to the current <code>SkillLandscape</code> structure</li>
+<li>document the provenance from Hessen upper-secondary mathematics</li>
+<li>do not mix in Bayern or Sek I yet</li>
+</ul>
+<p>Acceptance criteria:</p>
+<ul>
+<li>file loads through the normal landscape-loading path</li>
+<li>graph validation passes</li>
+</ul>
+<p>WP2 result:</p>
+<ul>
+<li>first canonical mathematics landscape added:</li>
+<li><code>curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json</code></li>
+<li>first real Hessen-to-canonical mapping fixture added:</li>
+<li><code>curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json</code></li>
+<li>pilot location decision for now:</li>
+<li>keep the first canonical seed physically separate from state-owned source trees on a Germany-level path</li>
+<li>pilot scope kept intentionally small:</li>
+<li>pilot root</li>
+<li>motivation goal</li>
+<li>one introductory analysis branch for functions and representations</li>
+<li>coexistence strategy:</li>
+<li>all pilot goals use new IDs</li>
+<li>the pilot landscapes remain directly loadable, but the learner-facing entry point is now the shared root <code>curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json</code></li>
+<li>current learner-facing filter split:</li>
+<li>root: <code>ALL</code>, <code>DE-HE</code>, <code>DE-BY</code></li>
+<li>child subjects: <code>GK</code>, <code>LK</code></li>
+<li>current runtime rule:</li>
+<li>the selected root Bundesland filter is propagated into the selected canonical child landscapes during goal filtering</li>
+<li>current runtime rule is still transitional:</li>
+<li>canonical state visibility is currently derived at runtime from mappings and provenance</li>
+<li><code>sourceLandscapeId -&gt; jurisdiction</code> resolution can now be served from the DE-level provenance registry <code>curricula/DE/Gymnasium/provenance/source-landscape-registry.json</code> instead of depending only on a loaded legacy landscape file</li>
+<li>Hessen upper-secondary champion/topic equivalence can now also serve <code>sourceLandscapeId + sourceGoalId -&gt; atomic legacy closure</code> from the DE-level provenance registry <code>curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json</code></li>
+<li>target architecture should converge to compiled node-level <code>applicability</code>; see <code>docs/dev/canonical-gymnasium-applicability-design.md</code></li>
+<li>verification:</li>
+<li>backend tests confirm loading of the pilot landscape and the repository mapping fixture</li>
+<li>graph validation passes with the new pilot landscape present</li>
+</ul>
+<h2 id="wp3-read-side-mastery-projection">WP3. Read-side mastery projection</h2>
+<p>Status: <code>done</code></p>
+<p>Tasks:</p>
+<ul>
+<li>compute canonical mastery from mapped legacy mastery</li>
+<li>keep legacy mastery storage intact</li>
+<li>do not require Custom GPT changes</li>
+<li>do not force learner data migration yet</li>
+</ul>
+<p>Important note:</p>
+<ul>
+<li>mastery is currently keyed by learner + goal key, not by learner + landscape, so projection can be introduced additively</li>
+</ul>
+<p>WP3 result:</p>
+<ul>
+<li>read-side projection added in:</li>
+<li><code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java#getMastery</code></li>
+<li><code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java#getMasteryWithTimestamps</code></li>
+<li>pilot projection rule for now:</li>
+<li>only <code>exact</code> mappings project mastery into canonical goals</li>
+<li>projection only applies when the canonical goal is visible in the current selected curriculum view</li>
+<li>higher existing canonical mastery wins over projected legacy mastery</li>
+<li>timestamped reads break ties by newer timestamp</li>
+<li>effect on runtime behavior:</li>
+<li>legacy Hessen views keep their stored mastery behavior</li>
+<li>canonical pilot views can consume projected legacy mastery without GPT/API changes</li>
+<li>frontier and learner-state assembly automatically benefit because they already read mastery through <code>LearnerService</code></li>
+<li>direct test coverage now includes:</li>
+<li>canonical mastery read projection</li>
+<li>canonical frontier based on projected legacy mastery</li>
+<li>canonical learner-state compatibility without legacy goal leakage</li>
+<li>legacy-view non-leakage in the opposite direction</li>
+</ul>
+<h2 id="wp4-learner-state-compatibility">WP4. Learner-state compatibility</h2>
+<p>Status: <code>done</code></p>
+<p>Tasks:</p>
+<ul>
+<li>ensure <code>getLearnerState</code> can still return one coherent state</li>
+<li>ensure frontier logic remains stable for legacy Hessen learners</li>
+<li>ensure canonical pilot views can consume projected mastery</li>
+<li>avoid any requirement that the GPT must understand data-layer transitions</li>
+</ul>
+<p>Acceptance criteria:</p>
+<ul>
+<li>no new mandatory GPT actions</li>
+<li>no new client-side branching based on legacy/canonical mode</li>
+</ul>
+<p>WP4 result:</p>
+<ul>
+<li>learner-state compatibility added around view-dependent goal IDs in:</li>
+<li><code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java#getLearnerState</code></li>
+<li><code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java#getRichFrontier</code></li>
+<li><code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java#getPlannedGoals</code></li>
+<li><code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java#setPlannedGoals</code></li>
+<li><code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java#setActiveGoal</code></li>
+<li><code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java#setMastery</code></li>
+<li>current compatibility rule:</li>
+<li>when the current selected curriculum exposes canonical goals, legacy goal IDs are normalized into visible canonical goal IDs where a mapping exists</li>
+<li><code>exact</code> mappings are used for active-goal and mastery flows</li>
+<li><code>partial</code> mappings are additionally allowed for planned-goal / scope anchoring</li>
+<li>persistence stays lightweight: no bulk migration of stored learner state is required for the pilot</li>
+<li>practical effect:</li>
+<li>canonical pilot views no longer leak mapped legacy IDs into planned goals or active-goal state</li>
+<li><code>setMastery</code> can complete successfully even if the stored active goal is still a legacy ID but the visible learning-coach loop is canonical</li>
+<li>UI/GPT flows keep one coherent learner-state contract</li>
+<li>targeted verification now covers:</li>
+<li>projected planned-goal IDs in canonical view</li>
+<li>projected active-goal IDs in canonical view</li>
+<li>canonical mastery writes when the stored active goal originated from a legacy ID</li>
+</ul>
+<h2 id="wp5-test-coverage">WP5. Test coverage</h2>
+<p>Status: <code>done</code></p>
+<p>Tasks:</p>
+<ul>
+<li>add unit tests for mapping load and lookup</li>
+<li>add service tests for mastery projection</li>
+<li>add learner-state invariants for the pilot</li>
+<li>add one regression test ensuring legacy Hessen behavior remains intact</li>
+</ul>
+<p>WP5 result:</p>
+<ul>
+<li>mapping-loader coverage exists for repository-backed fixtures and conflict handling</li>
+<li>learner-service coverage now explicitly locks the first canonical cutover invariants for the Mathematics function corridor:</li>
+<li>exact legacy mastery from Hessen and Bayern projects deterministically into the same canonical goals</li>
+<li>the canonical frontier unlocks from projected legacy mastery without leaking legacy IDs into the visible learner state</li>
+<li>mixed legacy planned goals collapse into the same canonical subtree targets</li>
+<li>stored canonical mastery is not downgraded by weaker projected legacy mastery</li>
+<li>equal-valued projection ties resolve deterministically via newer timestamps</li>
+<li>practical consequence:</li>
+<li>the first adopted Mathematics function corridor can now be treated as <code>cutover_ready</code> on the backend/runtime side while legacy views stay available</li>
+</ul>
+<h2 id="wp6-hessen-sek-i-math-attachment">WP6. Hessen Sek I math attachment</h2>
+<p>Status: <code>in_progress</code></p>
+<p>Tasks:</p>
+<ul>
+<li>extend canonical mathematics downward with Hessen Sek I</li>
+<li>keep mappings explicit</li>
+<li>avoid changing the API surface while expanding content coverage</li>
+</ul>
+<p>WP6 progress so far:</p>
+<ul>
+<li>first Hessen Sek I attachment slice added to the canonical mathematics landscape:</li>
+<li>mappings / functional relationships</li>
+<li>proportional relationships</li>
+<li>linear functions</li>
+<li>quadratic equations</li>
+<li>quadratic functions</li>
+<li>the Hessen Sek I math attachment is now widened with the first reviewed row-based bridge batch beyond that old corridor:</li>
+<li>exact reviewed row mappings for square roots, similarity/Strahlensatz, and circle/cylinder</li>
+<li>exact reviewed foundation mappings for rational-number fluency, geometry-basics visibility, units/measurement handling, and the J6 symmetry/angle baseline</li>
+<li>canonical <code>J6</code> area/volume baseline is now split into separate area and solid-measure atoms so Hessen can map there with exact row-level evidence instead of one broad partial bridge</li>
+<li>canonical <code>J9</code> power/root baseline is now split so Hessen can bind the graph-based Potenz-/Wurzelfunktionsziel exactly, while the shared Potenzgesetz-route remains visible as a sibling child</li>
+<li>canonical <code>J8</code> linear-analysis baseline is now split so Hessen can bind <code>Lineare Gleichungen und Ungleichungen lösen</code> exactly, while Bayern keeps the exact row for line equations, roots, and intersections</li>
+<li>canonical <code>quadratic vertex</code> baseline is now split so Hessen can bind the binomial-formula route exactly, while Bayern keeps the exact Scheitelpunkt/graph route as its own sibling child</li>
+<li>canonical <code>J5</code> number-basics baseline is now split so Hessen can bind <code>Natürliche Zahlen sicher darstellen, ordnen und mit ihnen rechnen</code> exactly, while Bayern keeps the exact add/subtract route with natural and whole numbers</li>
+<li>remaining reviewed math debt is no longer on Hessen row-coverage; only the two Bayern override-backed function-value pilot gaps remain</li>
+<li>exact mappings for Pythagoras, integer-exponent laws, congruence, and term setup</li>
+<li>prerequisite closure for <code>DE-HE</code> is now explicit in the mapping layer for rational numbers, terms, geometry basics, and size/unit handling</li>
+<li>canonical seed now references both Hessen upper-secondary and Hessen Sek I source material</li>
+<li>explicit second mapping file added for Hessen Sek I -&gt; canonical pilot</li>
+<li>no API/GPT contract changes were required for this content expansion</li>
+<li>first Hessen Sek I physics bridge slice added to the canonical DE physics landscape:</li>
+<li>new canonical mechanics bridge cluster under DE physics</li>
+<li>exact mappings for motion diagrams, forces/inertia, friction, and qualitative mechanical energy</li>
+<li>a dedicated canonical density/mass/volume atom now closes the old Hessen <code>7.4 Mechanik</code> row so the broad mechanics anchor itself can bind exactly instead of staying partial</li>
+<li>the Hessen <code>Kräfteigenschaften nutzen</code> row now binds exactly to a dedicated canonical Sek-I <code>force-properties</code> atom instead of the broad mechanics bridge cluster</li>
+<li>the Hessen <code>10.1 Arbeit und Energie</code> row now binds exactly to a dedicated canonical Sek-I <code>work-and-energy</code> cluster that contains qualitative work, mechanical energy, heat, and electrical-energy children</li>
+<li>selected upper-secondary physics goals now explicitly depend on these adopted Sek-I mechanics anchors</li>
+<li>mastery projection and frontier unlocking are covered by targeted backend tests</li>
+<li>first Hessen Sek I heat bridge slice added to the canonical DE physics landscape:</li>
+<li>new canonical Sek-I heat cluster under DE physics</li>
+<li>exact mappings now cover the full Hessen <code>7.2 Wärmelehre</code> row, including temperature/heat, temperature measurement and expansion, particle model, and heat transfer</li>
+<li>the canonical <code>Wärme als Energieform</code> atom now explicitly depends on this reviewed Sek-I heat bridge instead of only on the coarse mechanical-energy baseline</li>
+<li>mastery projection for the adopted heat cluster and its atomic rows, plus a particle-model frontier unlock for heat transfer, are covered by targeted backend tests</li>
+<li>first Hessen Sek I optics bridge slice added to the canonical DE physics landscape:</li>
+<li>new canonical Sek-I optics bridge cluster under DE physics</li>
+<li>exact mappings now cover both <code>7.1 Optik 1</code> and <code>8.1 Optik 2</code>, including light propagation, ray model, reflection, lens imaging, vision, and simple optical instruments</li>
+<li><code>Linsenabbildungen</code> now explicitly depends on the adopted Sek-I ray-model anchor</li>
+<li>mastery projection for both adopted optics clusters and their atomic rows, plus the ray-model frontier unlock for lens imaging, are covered by targeted backend tests</li>
+<li>first Hessen Sek I electricity bridge slice added to the canonical DE physics landscape:</li>
+<li>new canonical Sek-I electricity cluster under DE physics</li>
+<li>exact mappings now cover both <code>7.3 Magnetismus und Elektrizität 1</code> and <code>8.2 Elektrizität 2</code>, including magnets/fields, simple circuits, current effects, current measurement, static electricity/voltage, current-voltage relation, resistor circuits, and electrical safety</li>
+<li>the J8 voltage/safety cluster now explicitly depends on the adopted J7 electricity cluster</li>
+<li>mastery projection for both adopted electricity clusters and their atomic rows, plus frontier unlocks for current effects/current measurement and the voltage-current relation, are covered by targeted backend tests</li>
+<li>first Hessen Sek I radioactivity bridge slice added to the canonical DE physics landscape:</li>
+<li>new canonical Sek-I radioactivity cluster under DE physics</li>
+<li>exact mappings now cover the full non-fakultative Hessen <code>10.2 Radioaktivität</code> row, including atomic structure, radiation detection/effects, and applications/risks</li>
+<li>the upper-secondary <code>Radioaktive Strahlung und Wirkungen</code> entry point now explicitly depends on this reviewed Sek-I radioactivity bridge</li>
+<li>mastery projection for the adopted radioactivity cluster and its atomic rows, plus a frontier unlock from atomic structure toward radiation detection, are covered by targeted backend tests</li>
+<li>first Hessen Sek I pressure/buoyancy bridge slice added to the canonical DE physics landscape:</li>
+<li>new canonical Sek-I pressure-and-buoyancy cluster under DE physics</li>
+<li>exact mappings now cover the facultative Hessen <code>8.3 Druck und Auftrieb</code> row, including pressure in liquids/gases, qualitative pressure-temperature relations, Archimedes' principle, and first qualitative flight/air-resistance interpretations</li>
+<li>the new cluster explicitly depends on the reviewed Sek-I mechanics bridge, and the pressure-temperature atom additionally depends on the reviewed Sek-I heat bridge</li>
+<li>mastery projection for the adopted pressure cluster and its atomic rows, plus a frontier unlock from projected pressure/density mastery toward buoyancy, are covered by targeted backend tests</li>
+<li>first Hessen Sek I acoustics bridge slice added to the canonical DE physics landscape:</li>
+<li>new canonical Sek-I acoustics cluster under DE physics</li>
+<li>exact mappings now cover the facultative Hessen <code>8.3b Akustik</code> row, including sound sources, sound propagation, pitch/loudness, hearing/noise, and music-related sound phenomena</li>
+<li>the sound-propagation atom explicitly reuses the reviewed Sek-I particle-model anchor, and the upper-secondary Q2 <code>Harmonische Wellen und ihre Größen</code> entry point now additionally depends on the reviewed Sek-I acoustics bridge</li>
+<li>mastery projection for the adopted acoustics cluster and its atomic rows, plus a frontier unlock from projected sound-source and particle-model mastery toward sound propagation, are covered by targeted backend tests</li>
+<li>first Hessen Sek I colors bridge slice added to the canonical DE physics landscape:</li>
+<li>new canonical Sek-I colors cluster under DE physics</li>
+<li>exact mappings now cover the facultative Hessen <code>8.3c Farben</code> row, including color origin/decomposition, additive and subtractive color mixing, simple color perception, and technical color applications</li>
+<li>the colors bridge explicitly reuses the reviewed Sek-I light-propagation anchor, and the upper-secondary Q3 <code>Spektrum elektromagnetischer Wellen</code> entry point now additionally depends on the reviewed Sek-I colors bridge</li>
+<li>mastery projection for the adopted colors cluster and its atomic rows, plus a frontier unlock from projected color-origin mastery toward color mixing, are covered by targeted backend tests</li>
+<li>the Hessen Sek I work/energy bridge is now widened into the <code>J10</code> continuation of <code>10.1 Arbeit und Energie</code>:</li>
+<li>exact mappings now also cover <code>Wärme als Energieform</code> and <code>Elektrische Energie nutzen</code>, with the canonical heat-energy atom depending explicitly on the reviewed Sek-I heat bridge and the canonical electrical-energy atom on the reviewed Sek-I voltage bridge</li>
+<li>first Hessen Sek I chemistry bridge slice added to the canonical DE chemistry landscape:</li>
+<li>new canonical foundations cluster for working methods, substances, states, solutions, and first acid-base distinctions</li>
+<li>exact mappings for the adopted J8 chemistry atoms plus partial scope anchors from Hessen J8/8.1</li>
+<li>selected E-phase protolysis goals now explicitly depend on these adopted Sek-I chemistry anchors</li>
+<li>mastery projection, planned-goal projection, and frontier unlocking are covered by targeted backend tests</li>
+<li>the Hessen Sek I chemistry foundations bridge is now widened to the full reviewed <code>8.1 Stoffe – Strukturen – Eigenschaften</code> row:</li>
+<li>new canonical Sek-I safety and separation atoms now sit inside the existing foundations cluster</li>
+<li>the Hessen <code>Gefahren beim Umgang mit Chemikalien</code> and <code>Trennverfahren für Stoffgemische</code> atoms now map exactly, and the old <code>8.1</code> cluster itself upgrades from <code>partial</code> to <code>exact</code></li>
+<li>mastery projection for the widened safety/separation slice, plus a local Sek-I frontier unlock from projected working-methods and substance mastery toward safety, separation, and states, are covered by targeted backend tests</li>
+<li>the Hessen Sek I chemistry reactions bridge now extends reviewed adoption into <code>8.2 Chemische Reaktion – Stoff- und Energieumsatz</code>:</li>
+<li>new canonical Sek-I reactions cluster for reaction characteristics, simple oxidation/reduction, combustion, reaction energy, and conservation of mass</li>
+<li>the Hessen <code>8.2</code> row and all five adopted J8 atoms now map exactly into that cluster</li>
+<li>the upper-secondary E-phase redox route <code>Einfache Redoxreihen aufstellen</code> now additionally depends on the adopted Sek-I oxidation/reduction anchor, without widening the earlier E-phase start nodes</li>
+<li>mastery projection, planned-goal projection, and local Sek-I frontier unlocking for the widened reactions slice are covered by targeted backend tests</li>
+<li>the Hessen Sek I chemistry symbol-language bridge now extends reviewed adoption into <code>9.1 Chemische Symbolsprache und Anwendung</code>:</li>
+<li>new canonical Sek-I symbol-language cluster for constant proportions, Dalton model, chemical symbols/formulas, simple reaction equations, and first redox schemes</li>
+<li>the Hessen <code>9.1</code> row and all five adopted J9 atoms now map exactly into that cluster</li>
+<li>the new cluster reuses the reviewed <code>8.2</code> reactions bridge as its didactic base, and local frontier unlocking now covers the late J9 symbol-language endpoint <code>Redoxreaktionen und Oxidationszahlen</code></li>
+<li>mastery projection, planned-goal projection, and symbol-language frontier unlocking are covered by targeted backend tests</li>
+<li>the Hessen Sek I chemistry ions/electrolysis bridge now extends reviewed adoption into <code>9.3 Elektrolyse und Ionenbegriff</code>:</li>
+<li>new canonical Sek-I ions/electrolysis cluster for conductivity, ions as charge carriers, and electrolysis of simple salt solutions</li>
+<li>the Hessen <code>9.3</code> row and all three adopted J9 atoms now map exactly into that cluster</li>
+<li>the new cluster reuses the reviewed <code>9.1</code> symbol-language bridge as its didactic base, and the upper-secondary <code>Elektrolyse beschreiben</code> route now additionally depends on the adopted Sek-I electrolysis anchor</li>
+<li>mastery projection, planned-goal projection, and local frontier unlocking for the widened ions/electrolysis slice are covered by targeted backend tests</li>
+<li>the Hessen Sek I chemistry atomic-structure bridge now extends reviewed adoption into <code>10.1 Atombau, Periodensystem und Ionenbindung</code>:</li>
+<li>new canonical Sek-I atomic-structure-and-bonding cluster for core-shell model, Bohr energy levels, periodic-table orientation, ion formation via noble-gas rule, and ionic bonding</li>
+<li>the Hessen <code>10.1</code> row and all five adopted J10 atoms now map exactly into that cluster</li>
+<li>the new cluster reuses the reviewed <code>9.1</code> symbol-language bridge as its didactic base, while <code>Ionenbildung</code> additionally depends on the reviewed <code>9.3</code> ions anchor and the upper-secondary <code>Bindungsmodelle sicher nutzen</code> route now depends on the adopted Sek-I ionic-bonding anchor</li>
+<li>mastery projection, planned-goal projection, and local frontier unlocking for the widened atomic-structure slice are covered by targeted backend tests</li>
+<li>first Hessen Sek I biology bridge slice added to the canonical DE biology landscape:</li>
+<li>new canonical foundations-and-cells cluster for biology-as-science, characteristics of life, microscopy, plant cells, and plant/animal cell comparison</li>
+<li>exact mappings for the adopted Sek-I biology atoms plus partial scope anchors from Hessen introductory biology and cells clusters</li>
+<li>selected E-phase cell-biology goals now explicitly depend on these adopted Sek-I biology anchors</li>
+<li>mastery projection, planned-goal projection, and frontier unlocking are covered by targeted backend tests</li>
+<li>Hessen Sek I biology bridge widened in the same canonical DE biology landscape:</li>
+<li>new canonical photosynthesis-and-respiration cluster for light dependence, carbon dioxide/water, starch/oxygen detection, the word equation, and the first significance bridge toward cell respiration</li>
+<li>exact mappings for the adopted Hessen 7.2 metabolism atoms plus a partial scope anchor from the Hessen 7.2 cluster</li>
+<li>selected Q3 metabolism goals now explicitly depend on these adopted Sek-I biology anchors</li>
+<li>mastery projection, planned-goal projection, and Q3 frontier unlocking are covered by targeted backend tests</li>
+</ul>
+<h2 id="wp7-bavaria-math-mapping">WP7. Bavaria math mapping</h2>
+<p>Status: <code>in_progress</code></p>
+<p>Tasks:</p>
+<ul>
+<li>map <code>curricula/DE/BY/Gymnasium/Mathematik.json</code> into the canonical mathematics layer</li>
+<li>preserve Bavarian structure as placement/view metadata rather than duplicated content</li>
+</ul>
+<p>WP7 progress so far:</p>
+<ul>
+<li>first Bavaria mapping fixture added:</li>
+<li><code>curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json</code></li>
+<li>initial pilot scope stays deliberately narrow and reuses the already stabilized canonical function path:</li>
+<li>function concept</li>
+<li>linear-function interpretation</li>
+<li>line equations, roots, and line intersections</li>
+<li>direct proportionality</li>
+<li>vertex determination for quadratic functions</li>
+<li>quadratic-function interpretation</li>
+<li>quadratic graph properties</li>
+<li>solving quadratic equations</li>
+<li>the canonical pilot now carries two small Bavaria-compatible atoms instead of forcing narrower Bavarian goals onto broader pre-existing canonical goals:</li>
+<li><code>Lineare Funktionen rechnerisch untersuchen</code></li>
+<li><code>Scheitelpunkte quadratischer Funktionen bestimmen</code></li>
+<li>these two atoms are now also anchored on the Hessen Sek-I side with explicit <code>partial</code> mappings from:</li>
+<li><code>Lineare Gleichungen und Ungleichungen loesen</code></li>
+<li><code>Binomische Formeln nutzen</code></li>
+<li>Bavarian topic clusters currently map with <code>partial</code> semantics into the canonical Sek-I function cluster so scope/planning can converge without duplicating content</li>
+<li>targeted repository-fixture and learner-service regression tests now cover this first Bavaria slice</li>
+</ul>
+<h2 id="wp8-cross-subject-pilot">WP8. Cross-subject pilot</h2>
+<p>Status: <code>in_progress</code></p>
+<p>Tasks:</p>
+<ul>
+<li>add a first combined Mathematics + Physics view</li>
+<li>add only a small set of explicit Mathe -&gt; Physik <code>requires</code> edges</li>
+<li>verify that navigation improves before expanding cross-subject dependencies further</li>
+</ul>
+<p>WP8 progress so far:</p>
+<ul>
+<li>first canonical Physics pilot added on the Germany-level path:</li>
+<li><code>curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json</code></li>
+<li>pilot scope intentionally stays narrow:</li>
+<li>Hessen upper-secondary E.1 motion corridor</li>
+<li>first Hessen upper-secondary E.3 horizontal-projection subtree</li>
+<li>motion diagrams</li>
+<li>uniform motion</li>
+<li>uniformly accelerated motion</li>
+<li>free fall</li>
+<li>motion modeling</li>
+<li>reference frames and superposition</li>
+<li>horizontal projection</li>
+<li>traffic safety / reaction and braking distances</li>
+<li>first explicit Hessen Physik -&gt; canonical Physik mapping fixture added:</li>
+<li><code>curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json</code></li>
+<li>the Physics pilot reuses the existing canonical Mathematics pilot instead of duplicating content:</li>
+<li>selected canonical mathematics atoms are visible in the Physics motion cluster</li>
+<li>Physics atomic goals add only a small set of explicit Math -&gt; Physics prerequisite edges</li>
+<li>second Physics adoption slice added:</li>
+<li>Hessen E.2 Newton subtree (<code>Newtons Axiome und Inertialsysteme</code>) is now attached to the canonical Physics pilot</li>
+<li>the broader Hessen E.2 parent cluster maps with <code>partial</code> semantics onto this adopted Newton slice</li>
+<li>third Physics adoption slice added:</li>
+<li>the Hessen E.2 conservation subtree (<code>Erhaltungssaetze</code>) is now attached to the canonical Physics pilot</li>
+<li>the adopted conservation corridor keeps energy, momentum, and simple collision goals together as one closed migration slice</li>
+<li>E.2 hardening step added:</li>
+<li>a canonical E.2 mechanics root now groups the adopted Newton and conservation subtrees as one explicit migration unit</li>
+<li>the Hessen E.2 parent cluster now maps <code>exact</code> onto that canonical E.2 corridor</li>
+<li>first Bavaria Physics compatibility slice added:</li>
+<li>a small Bavaria mapping fixture now projects selected Ph8/Ph9/Ph10 mechanics goals into the canonical Physics pilot</li>
+<li>the first Bavaria scope anchors cover motion modeling, energy conservation, and momentum conservation</li>
+<li>Bavaria collision bridge added:</li>
+<li>one small canonical collision atom now absorbs the broader Bavaria collision goal without reshaping the existing Hessen-based elastic/inelastic atoms</li>
+<li>Bavaria 2D motion edge added:</li>
+<li>selected Bavaria horizontal-throw and motion-modeling goals now attach to the canonical movement slice</li>
+<li>the Bavaria horizontal-throw analysis goal and the broad motion-modeling goal now project <code>exact</code> into the adopted canonical atoms</li>
+<li>the remaining borrowed closure nodes for Bavaria visibility still rely on explicit overrides or <code>partial</code> evidence where no honest 1:1 source goal exists yet</li>
+<li>Bavaria E.3 reattachment added:</li>
+<li>the selected Bavaria horizontal-throw goals now attach to the new canonical E.3 slice instead of borrowing the older motion/free-fall atoms</li>
+<li>first E.3 adoption slice added:</li>
+<li>the Hessen subtree <code>Waagerechter Wurf und Superposition</code> is now attached to the canonical Physics pilot as a new <code>subtree_adopted</code> migration unit</li>
+<li>the broader frozen Hessen E.3 parent cluster maps <code>partial</code> onto this adopted horizontal-throw slice</li>
+<li>mixed-state scope normalization hardened:</li>
+<li>redundant canonical child scopes are now removed when a mapped Hessen or Bavaria parent cluster already contains them</li>
+<li>learner-state planned-scope normalization aligned:</li>
+<li><code>getLearnerState</code> now returns the same collapsed canonical parent scopes that <code>getPlannedGoals</code> already exposed for mixed Hessen/Bavaria plans</li>
+<li>HTTP state contract covered:</li>
+<li>the UI learner-state endpoint now has integration tests that read persisted mixed Hessen/Bavaria legacy plans and verify that the serialized <code>goals.planned</code> payload exposes only the collapsed canonical parent scope for movement, E.2 mechanics, and conservation</li>
+<li>first cutover-usage test covered:</li>
+<li>a mixed Hessen/Bavaria conservation plan plus mixed projected legacy mastery now yields a shared canonical collision frontier on the UI learner-state endpoint</li>
+<li>movement cutover-usage test covered:</li>
+<li>a mixed Hessen/Bavaria movement plan plus projected Bavaria physics mastery and Hessen mathematics mastery now yields a shared canonical uniform-motion frontier on the UI learner-state endpoint</li>
+<li>E.2 cutover-usage test covered:</li>
+<li>a mixed Hessen/Bavaria E.2 plan plus projected Hessen accelerated-motion mastery now yields a shared canonical Newton frontier on the UI learner-state endpoint</li>
+<li>E.3 usage test covered:</li>
+<li>a Hessen E.3 legacy plan plus projected Hessen E.2 mastery now yields a canonical superposition frontier on the UI learner-state endpoint</li>
+<li>mixed E.3 usage test covered:</li>
+<li>a mixed Hessen/Bavaria E.3 plan plus projected Hessen E.2 mastery now yields the same canonical superposition frontier on the UI learner-state endpoint</li>
+<li>E.3 cutover-readiness invariants covered:</li>
+<li>exact mastery projection from legacy Hessen E.3 atoms into canonical E.3 atoms</li>
+<li>canonical dominance and timestamp tie-break for mapped E.3 mastery</li>
+<li>canonical active-goal and mastery-write behavior for mapped E.3 goals</li>
+<li>legacy Hessen Physics views staying free of canonical E.3 goal leakage</li>
+<li>targeted verification now covers:</li>
+<li>root-curriculum loading and closure from canonical Physics into canonical Mathematics</li>
+<li>repository-backed Physics mapping fixture loading</li>
+<li>learner frontier / learner-state behavior using projected Hessen Physics + Hessen Mathematics mastery inside the Physics pilot</li>
+<li>first Bavaria Physics mastery projection and scope normalization into the canonical Physics pilot</li>
+<li>exact Bavaria collision-goal projection into the canonical Physics collision bridge atom</li>
+<li>partial scope normalization from Bavaria 2D motion goals into existing canonical movement atoms</li>
+<li>remapped Bavaria horizontal-throw planned-goal normalization into the new canonical E.3 slice</li>
+<li>planned-goal normalization from the frozen Hessen E.3 parent cluster and the adopted horizontal-throw subtree into the new canonical E.3 slice</li>
+<li>mixed Hessen/Bavaria scope collapse onto shared canonical movement, conservation, and E.2 roots</li>
+<li>mixed Hessen/Bavaria scope collapse onto the new shared canonical E.3 root</li>
+<li>learner-state planned-goal output collapsing the same mixed Hessen/Bavaria scope combinations onto shared canonical movement, conservation, and E.2 roots</li>
+<li>exact planned-goal normalization from the Hessen E.2 parent cluster and the Hessen conservation cluster into canonical E.2 scopes</li>
+<li>frontier unlocking inside the hardened E.2 corridor from projected Hessen mastery</li>
+<li>canonical active-goal projection and canonical mastery-write behavior for mapped E.2 goals</li>
+<li>deterministic projection dominance and timestamp tie-break on canonical E.2 goals</li>
+<li>legacy Hessen Physics views staying free of canonical E.2 goal leakage</li>
+<li>cutover-readiness invariants for the Physics motion corridor:<ul>
+<li>exact legacy-Physics mastery projection into canonical Physics goals</li>
+<li>planned-goal normalization from the Hessen E.1 cluster into the canonical Physics corridor</li>
+<li>canonical active-goal and mastery-write flow for mapped legacy Physics goals</li>
+<li>legacy-Physics views staying free of canonical Physics goal leakage</li>
+<li>deterministic projection dominance and timestamp tie-break on canonical Physics goals</li>
+</ul>
+</li>
+<li>practical consequence:</li>
+<li>the adopted Physics motion corridor can now be treated as <code>cutover_ready</code> on the backend/runtime side while the frozen Hessen Physics view remains available</li>
+<li>the canonical Physics E.2 mechanics corridor can now also be treated as <code>cutover_ready</code> on the backend/runtime side while the frozen Hessen Physics view remains available</li>
+<li>the canonical Physics E.3 horizontal-projection slice can now also be treated as <code>cutover_ready</code> on the backend/runtime side while the frozen Hessen Physics view remains available</li>
+<li>the same canonical Physics pilot now accepts a first Bavaria legacy slice without introducing a second canonical structure</li>
+</ul>
+<h2 id="recommended-execution-order">Recommended execution order</h2>
+<ol>
+<li>WP0 baseline inventory</li>
+<li>WP1 mapping format and loader</li>
+<li>WP2 canonical mathematics landscape</li>
+<li>WP3 read-side mastery projection</li>
+<li>WP4 learner-state compatibility</li>
+<li>WP5 test coverage</li>
+<li>WP6 Hessen Sek I math attachment</li>
+<li>WP7 Bavaria math mapping</li>
+<li>WP8 cross-subject pilot</li>
+</ol>
+<h2 id="status-model">Status model</h2>
+<p>Use these status values in this document and in work notes:</p>
+<ul>
+<li><code>todo</code></li>
+<li><code>in_progress</code></li>
+<li><code>blocked</code></li>
+<li><code>done</code></li>
+<li><code>later</code></li>
+</ul>
+<h2 id="change-policy">Change policy</h2>
+<p>Use <code>docs/</code> for durable project knowledge:</p>
+<ul>
+<li>architecture decisions</li>
+<li>rollout stages</li>
+<li>stable file formats</li>
+<li>accepted migration rules</li>
+</ul>
+<p>Use <code>tmp/canonical-gymnasium-work_notes.md</code> for volatile execution notes:</p>
+<ul>
+<li>current sprint status</li>
+<li>open questions</li>
+<li>intermediate decisions</li>
+<li>concrete next actions</li>
+</ul>
+<h2 id="definition-of-a-good-first-milestone">Definition of a good first milestone</h2>
+<p>The first milestone is successful if:</p>
+<ul>
+<li>a canonical mathematics pilot exists,</li>
+<li>Hessen upper-secondary mathematics maps into it,</li>
+<li>current learner APIs still behave the same from the GPT point of view,</li>
+<li>at least one deterministic mastery projection path is tested,</li>
+<li>no existing Hessen learner workflow is broken.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

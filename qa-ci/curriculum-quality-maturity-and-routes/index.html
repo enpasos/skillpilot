@@ -1,0 +1,5811 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/qa-ci/curriculum-quality-maturity-and-routes/">
+      
+      
+        <link rel="prev" href="../ci/">
+      
+      
+        <link rel="next" href="../curriculum-quality-dashboard/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Reifegrade, QA-Scopes und CQR-Regeln - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#curriculum-quality-reifegrade-qa-scopes-und-cqr-regeln" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reifegrade, QA-Scopes und CQR-Regeln
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#grundbegriffe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grundbegriffe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grundbegriffe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#curriculum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curriculum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bundesland-abdeckung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bundesland-Abdeckung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ziel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ziel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qa-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QA-Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routenmodell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routenmodell
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Routenmodell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#richtung-von-requires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Richtung von requires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effektive-route-r_eff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effektive Route R_eff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direkte-atomare-route-r_d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direkte atomare Route R_d
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminale-autonomie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminale Autonomie
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regelstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regelstatus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reifegrade-m0-bis-m7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reifegrade M0 bis M7
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reifegrade M0 bis M7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scope-reife" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope-Reife
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curriculum-reife" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curriculum-Reife
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cqr-regeln-im-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-Regeln im Detail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CQR-Regeln im Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cqr-000-source-snapshot-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-000 - Source snapshot ingestion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-001-basic-graph-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-001 - Basic graph integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-002-explicit-type-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-002 - Explicit type consistency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-003-bundesland-source-backed-view-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-003 - Bundesland source-backed view coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-004-course-level-mapping-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-004 - Course-level mapping consistency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-101-effective-full-route-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-101 - Effective full route coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-102-atomic-direct-route-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-102 - Atomic direct route coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-103-no-scoped-cluster-requires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-103 - No scoped cluster requires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-201-terminal-autonomy-exam-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-201 - Terminal autonomy exam data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-301-semantic-atomicity-review-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-301 - Semantic atomicity review freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-302-memory-card-decision-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-302 - Memory-card decision trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-303-goal-visualization-approval-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-303 - Goal-visualization approval trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-401-composition-view-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-401 - Composition view availability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-501-applicability-warning-debt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-501 - Applicability warning debt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#was-m5-und-m6-bei-mathematik-aktuell-bedeuten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was M5 und M6 bei Mathematik aktuell bedeuten
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#grundbegriffe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grundbegriffe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grundbegriffe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#curriculum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curriculum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bundesland-abdeckung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bundesland-Abdeckung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ziel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ziel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qa-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QA-Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routenmodell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routenmodell
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Routenmodell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#richtung-von-requires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Richtung von requires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effektive-route-r_eff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effektive Route R_eff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direkte-atomare-route-r_d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direkte atomare Route R_d
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminale-autonomie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminale Autonomie
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regelstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regelstatus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reifegrade-m0-bis-m7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reifegrade M0 bis M7
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reifegrade M0 bis M7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scope-reife" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope-Reife
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curriculum-reife" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curriculum-Reife
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cqr-regeln-im-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-Regeln im Detail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CQR-Regeln im Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cqr-000-source-snapshot-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-000 - Source snapshot ingestion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-001-basic-graph-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-001 - Basic graph integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-002-explicit-type-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-002 - Explicit type consistency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-003-bundesland-source-backed-view-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-003 - Bundesland source-backed view coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-004-course-level-mapping-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-004 - Course-level mapping consistency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-101-effective-full-route-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-101 - Effective full route coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-102-atomic-direct-route-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-102 - Atomic direct route coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-103-no-scoped-cluster-requires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-103 - No scoped cluster requires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-201-terminal-autonomy-exam-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-201 - Terminal autonomy exam data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-301-semantic-atomicity-review-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-301 - Semantic atomicity review freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-302-memory-card-decision-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-302 - Memory-card decision trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-303-goal-visualization-approval-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-303 - Goal-visualization approval trace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-401-composition-view-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-401 - Composition view availability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqr-501-applicability-warning-debt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQR-501 - Applicability warning debt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#was-m5-und-m6-bei-mathematik-aktuell-bedeuten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was M5 und M6 bei Mathematik aktuell bedeuten
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="curriculum-quality-reifegrade-qa-scopes-und-cqr-regeln">Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln</h1>
+<p>Diese Seite beschreibt die Bedeutung der Curriculum-Quality-Anzeige im Workbench-Dashboard <code>/quality-dashboard</code>.
+Sie ist die fachliche Lesart der generierten Statusdateien unter <code>docs/qa-ci/status/</code>.</p>
+<p>Normative Implementierung:</p>
+<ul>
+<li>Generator: <code>app/scripts/generateCurriculumQualityStatus.ts</code></li>
+<li>Workbench-Ansicht: <code>app/src/views/CurriculumQualityDashboardView.tsx</code></li>
+<li>Status-Snapshot: <code>docs/qa-ci/status/curriculum-quality-status.json</code></li>
+<li>Kurzuebersicht: <code>docs/qa-ci/curriculum-quality-dashboard.md</code></li>
+</ul>
+<p>Der Generator wird lokal so ausgefuehrt:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>app
+npm<span class="w"> </span>run<span class="w"> </span>quality:curriculum-status
+</code></pre></div>
+<h2 id="grundbegriffe">Grundbegriffe</h2>
+<h3 id="curriculum">Curriculum</h3>
+<p>Ein Curriculum ist im Dashboard eine kanonische <code>SkillLandscape</code>-JSON-Datei aus <code>curricula/DE/Gymnasium/canonical/</code>.
+Das Dashboard bewertet nicht einzelne Bundeslandquellen, sondern die kanonische Landschaft, die daraus entstanden ist.</p>
+<h3 id="bundesland-abdeckung">Bundesland-Abdeckung</h3>
+<p>Die Bundesland-Abdeckung ist eine fruehe Qualitaetssicht auf die Frage:</p>
+<blockquote>
+<p>Ist die learner-facing Bundesland-Sicht fachlich genau durch den jeweiligen Bundesland-Lehrplan gedeckt?</p>
+</blockquote>
+<p>Das Dashboard zaehlt dafuer atomare Knoten in Composition Views. Atomar bedeutet hier: ein Ziel ohne <code>contains</code>.
+Uebungs-, Memory- und Assessment-Knoten zaehlen ausdruecklich mit, wenn sie atomar sind und in der jeweiligen Sicht gerendert werden.</p>
+<p>Es gibt drei verschiedene Atomzahlen, die nicht vermischt werden duerfen:</p>
+<ul>
+<li><code>Roh-Atomar</code>: alle atomaren Leaf-Knoten in der kanonischen JSON-Datei.</li>
+<li><code>DE-Sicht atomar</code>: die Vereinigung aller atomaren Knoten aus den nationalen <code>de-de-*</code> Composition Views. Das ist die aktuelle kanonische Referenzmenge fuer die Deutschland-Sicht.</li>
+<li><code>Bundesland-Sicht atomar</code>: die Vereinigung aller atomaren Knoten aus den Composition Views eines Bundeslands, z. B. <code>de-bw-*</code>.</li>
+</ul>
+<p>Fuer Mathematik ist die DE-Sicht aktuell kleiner als die rohe JSON-Leaf-Menge. Das ist kein Fehler: die rohe Datei kann technische, legacy- oder noch nicht learner-facing eingebundene Atome enthalten. Die Qualitaetsregel fuer Bundeslaender bewertet aber die gerenderte Sicht, nicht blind alle rohen Leaves.</p>
+<p>Fuer jedes deklarierte Bundesland, z. B. <code>DE-HE</code> oder <code>DE-BY</code>, prueft <code>CQR-003</code> zwei Richtungen:</p>
+<ol>
+<li>Sicht -&gt; Quelle: Jeder atomare Knoten der Bundesland-Sicht braucht einen direkten oder akzeptierten indirekten Lehrplanbeleg fuer genau dieses Bundesland.</li>
+<li>Quelle -&gt; Sicht: Jedes im Source-Registry erfasste Originalziel des Bundeslands muss ueber seine atomare Source-Closure vollstaendig auf kanonische atomare Knoten mappen, die in der Bundesland-Sicht enthalten sind.</li>
+</ol>
+<p>Zusaetzlich prueft der Generator, ob atomare Ziele aus vorhandenen Source-Snapshots ueberhaupt im Source-Membership-/Closure-Ledger registriert sind. Damit werden Pilot-Snapshots sichtbar, bei denen bereits extrahierte Lehrplanatome noch nicht in die eigentliche Abdeckungsrechnung aufgenommen wurden.</p>
+<p>Grenze dieser Pruefung: Sie beweist Vollstaendigkeit nur gegen die im Repository vorhandenen und parsebaren Source-Snapshots. Ob ein offizieller PDF-Lehrplan selbst vollstaendig extrahiert wurde, muss ueber einen vollstaendigen Source-Snapshot oder eine zusaetzliche Extract-Ledger-Pruefung abgesichert werden.</p>
+<p>Damit ist Bundeslandabdeckung nicht "alle kanonischen Ziele gelten ueberall", sondern eine bidirektionale Passungspruefung zwischen Lehrplanquelle und kanonischer Bundesland-Sicht.</p>
+<p>Im Dashboard bedeuten die Werte:</p>
+<ul>
+<li><code>Bundeslaender</code>: Anzahl der Bundeslaender, deren Sicht voll belegt ist und deren registrierte Source-Atome voll in die Sicht mappen, im Verhaeltnis zu allen deklarierten Bundeslaendern.</li>
+<li><code>DE-Sicht atomar</code>: nationale atomare Referenzmenge der Composition Views.</li>
+<li><code>Roh-Atomar</code>: alle atomaren Leaf-Knoten der kanonischen JSON-Datei; diese Zahl ist Diagnose, aber nicht der Bundesland-Nenner.</li>
+<li>Pro Bundesland <code>belegt</code>: source-backed atomare Knoten der Bundesland-Sicht im Verhaeltnis zu allen atomaren Knoten dieser Bundesland-Sicht.</li>
+<li>Pro Bundesland <code>sichtbar</code>: atomare Knoten der Bundesland-Sicht.</li>
+<li>Pro Bundesland <code>Lehrplan -&gt; Sicht</code>: registrierte Source-Atome, die in die Bundesland-Sicht mappen, im Verhaeltnis zu allen registrierten Source-Atomen dieses Bundeslands.</li>
+<li>Pro Bundesland <code>Originalziele voll</code>: registrierte Source-Originalziele, deren atomare Source-Closure vollstaendig in die Bundesland-Sicht mappt.</li>
+<li>Pro Bundesland <code>Source-Atome extrahiert</code>: atomare Ziele, die aus vorhandenen Source-Snapshots gelesen wurden.</li>
+<li>Pro Bundesland <code>Source-Atome unregistriert</code>: extrahierte Source-Atome, die noch nicht ueber Membership/Closure in die Abdeckungsrechnung eingehen.</li>
+<li><code>nicht belegt</code>: atomare Bundesland-Sicht-Knoten ohne ausreichenden Lehrplanbeleg.</li>
+<li><code>Lehrplan ungemappt</code>: registrierte Source-Atome ohne Mapping in die Bundesland-Sicht.</li>
+<li>Gruen: beide Richtungen sind vollstaendig, es gibt keine nicht belegten Sicht-Atome und keine Warnungen oder Fehler.</li>
+<li>Gelb: es gibt Teilabdeckung oder Warnungen, aber keine harte falsche Zuordnung.</li>
+<li>Grau: fuer dieses Bundesland ist noch kein atomarer Zielanteil sichtbar oder belegt.</li>
+<li>Rot: es gibt nicht belegte Sicht-Atome, ungemappte Source-Atome oder Applicability-Fehler.</li>
+</ul>
+<p>Wichtig: <code>16/16</code> im Dashboard bedeutet nur dann echte Abdeckung, wenn die Zahlen aus beiden Richtungen vollstaendig sind. Eine pauschale Applicability-Entscheidung, ein Override oder ein "passt schon"-Overlay kann <code>CQR-003</code> nicht erfuellen.</p>
+<h3 id="ziel">Ziel</h3>
+<p>Ein Ziel ist ein <code>LearningGoal</code>.
+Das Dashboard unterscheidet strukturell:</p>
+<ul>
+<li>Atomare Ziele: <code>contains</code> ist leer. Diese Ziele sind die eigentlichen pruefbaren Lernziele.</li>
+<li>Cluster-Ziele: <code>contains</code> verweist auf Unterziele. Diese Ziele buendeln Navigation, Sichtbarkeit oder groessere Themen.</li>
+</ul>
+<p>Die Spalten <code>Ziele</code> und <code>Atomar</code> bedeuten:</p>
+<ul>
+<li><code>Ziele</code>: alle Ziele der Landschaft, also atomare Ziele plus Cluster.</li>
+<li><code>Atomar</code>: alle Ziele ohne <code>contains</code>.</li>
+</ul>
+<h3 id="qa-scope">QA-Scope</h3>
+<p>Ein QA-Scope ist ein explizit konfiguriertes Routenprofil, das einen learner-facing Teilbereich eines Curriculums prueft.
+Die fruehere Bezeichnung <code>Routen</code> war missverstaendlich; die Anzeige heisst deshalb <code>QA-Scopes</code>.</p>
+<p>Ein QA-Scope definiert:</p>
+<ul>
+<li>genau ein Curriculum,</li>
+<li>ein Label, zum Beispiel <code>Sekundarstufe I</code>,</li>
+<li>einen oder mehrere Motivationsanker,</li>
+<li>eine Menge ausgewaehlter atomarer Ziele,</li>
+<li>einen oder mehrere terminale Autonomie-Bereiche, typischerweise Uebungs- oder Klausurziele,</li>
+<li>einen Cluster-Selektor fuer die Frage, welche Cluster-<code>requires</code> innerhalb des Scopes verboten sind.</li>
+</ul>
+<p>Wichtig:</p>
+<ul>
+<li>Die Zahl <code>QA-Scopes</code> zaehlt nicht einzelne Pfade im Graphen.</li>
+<li>Sie zaehlt nicht Aufgaben, Uebungen oder Lernwegvarianten.</li>
+<li>Sie zaehlt nur die im Generator registrierten QA-Profile.</li>
+<li>Ein Curriculum ohne QA-Scope bleibt im Dashboard <code>M0</code>, auch wenn seine reine Graphstruktur technisch valide ist.</li>
+</ul>
+<p>Aktuell sind fuer Mathematik und Physik jeweils zwei Pflicht-Scopes registriert:</p>
+<table>
+<thead>
+<tr>
+<th>Scope-ID</th>
+<th>Label</th>
+<th style="text-align: right;">Ausgewaehlte atomare Ziele</th>
+<th>Motivationsanker</th>
+<th>Terminale Autonomie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canonical-math-sek1</code></td>
+<td>Sekundarstufe I</td>
+<td style="text-align: right;">247</td>
+<td><code>Warum Mathematik? - Entdecken, Muster &amp; Alltag</code></td>
+<td>Jahrgangsnahe <code>Pruefungen Jahrgangsstufe 5</code> bis <code>Pruefungen Jahrgangsstufe 10</code> mit 38 einzelnen Aufgabenknoten</td>
+</tr>
+<tr>
+<td><code>canonical-math-sek2</code></td>
+<td>Sekundarstufe II</td>
+<td style="text-align: right;">397</td>
+<td><code>Warum Mathematik? - Denken, Muster &amp; Zukunft</code></td>
+<td>atomare Klausur-/Uebungsziele unter <code>Uebungen E-Phase</code>, <code>Uebungen Q1</code>, <code>Uebungen Q2</code>, <code>Uebungen Q3</code>, <code>Uebungen Q4</code> und <code>Uebungen Prozesskompetenzen</code></td>
+</tr>
+<tr>
+<td><code>canonical-physics-sek1</code></td>
+<td>Sekundarstufe I</td>
+<td style="text-align: right;">44</td>
+<td><code>Warum Physik?</code></td>
+<td>atomare Klausur-/Uebungsziele unter <code>Uebungen Sekundarstufe I Physik</code></td>
+</tr>
+<tr>
+<td><code>canonical-physics-sek2</code></td>
+<td>Sekundarstufe II</td>
+<td style="text-align: right;">278</td>
+<td><code>Warum Physik?</code></td>
+<td>atomare Klausur-/Uebungsziele unter <code>Uebungen E-Phase</code>, <code>Uebungen Q1</code>, <code>Uebungen Q2</code>, <code>Uebungen Q3</code> und <code>Uebungen Q4</code></td>
+</tr>
+</tbody>
+</table>
+<p>Damit bedeutet <code>QA-Scopes = 2</code> bei Mathematik:</p>
+<blockquote>
+<p>Das Dashboard prueft zwei explizite learner-facing Teilbereiche: Sekundarstufe I und Sekundarstufe II.</p>
+</blockquote>
+<p>Es bedeutet nicht:</p>
+<blockquote>
+<p>Es gibt genau zwei didaktische Pfade im Mathematikgraphen.</p>
+</blockquote>
+<h2 id="routenmodell">Routenmodell</h2>
+<h3 id="richtung-von-requires">Richtung von <code>requires</code></h3>
+<p>Ein Eintrag</p>
+<div class="highlight"><pre><span></span><code>A.requires = [B]
+</code></pre></div>
+<p>bedeutet:</p>
+<div class="highlight"><pre><span></span><code>A setzt B voraus.
+</code></pre></div>
+<p>Die gespeicherte Kante zeigt also vom spaeteren oder anspruchsvolleren Ziel zur Voraussetzung.</p>
+<p>Fuer eine vollstaendige Lernroute braucht ein atomarer Zielknoten zwei Anschluesse:</p>
+<ol>
+<li>Rueckwaerts zu Motivation: Wenn man den <code>requires</code>-Kanten folgt, muss der Zielknoten einen Motivationsanker erreichen.</li>
+<li>Vorwaerts zu Anwendung: In der umgekehrten Richtung muss der Zielknoten von mindestens einem terminalen Uebungs- oder Klausurziel abhaengen.</li>
+</ol>
+<p>Anschaulich:</p>
+<div class="highlight"><pre><span></span><code>Motivation &lt;- Voraussetzungen &lt;- atomare Lernziele &lt;- terminale Uebung / Klausur
+</code></pre></div>
+<p>Technisch wird fuer den Terminalpfad der umgedrehte <code>requires</code>-Graph verwendet. Das ist gleichbedeutend mit:</p>
+<div class="highlight"><pre><span></span><code>Ein terminales Uebungsziel erfordert transitiv das atomare Lernziel.
+</code></pre></div>
+<h3 id="effektive-route-r_eff">Effektive Route <code>R_eff</code></h3>
+<p><code>R_eff</code> ist die kompatible, grosszuegigere Routenprojektion.</p>
+<p>Sie enthaelt:</p>
+<ul>
+<li>direkte <code>requires</code> eines Ziels,</li>
+<li>zusaetzlich <code>requires</code>, die ein Ziel ueber seine <code>contains</code>-Vorfahren erbt.</li>
+</ul>
+<p>Das ist wichtig fuer alte oder halb migrierte Graphen, in denen ein Cluster noch eine Voraussetzung fuer alle darunterliegenden Ziele ausdrueckt.</p>
+<p><code>R_eff</code> beantwortet:</p>
+<blockquote>
+<p>Ist der Teilbereich didaktisch geschlossen, wenn wir vorhandene Cluster-<code>requires</code> noch als Uebergangsmodell akzeptieren?</p>
+</blockquote>
+<h3 id="direkte-atomare-route-r_d">Direkte atomare Route <code>R_d</code></h3>
+<p><code>R_d</code> ist die strengere Zielmodellierung.</p>
+<p>Sie enthaelt nur:</p>
+<ul>
+<li>direkte <code>requires</code>,</li>
+<li>deren Quellziel atomar ist,</li>
+<li>und deren Ziel ebenfalls atomar ist.</li>
+</ul>
+<p>Cluster-Knoten werden fuer diese Pruefung nicht als Routenbruecken akzeptiert.</p>
+<p><code>R_d</code> beantwortet:</p>
+<blockquote>
+<p>Ist die kanonische didaktische Route bereits auf atomarer Lernzielebene modelliert?</p>
+</blockquote>
+<h3 id="terminale-autonomie">Terminale Autonomie</h3>
+<p>Terminale Autonomie meint Ziele, in denen Lernende das Gelernte selbststaendig anwenden muessen, typischerweise in Klausur-, Abschluss- oder Pruefungsform.</p>
+<p>Im Graphen sind solche Ziele meist:</p>
+<ul>
+<li>atomar,</li>
+<li>mit <code>Practice</code> und <code>Assessment</code> getaggt,</li>
+<li>mit <code>examData</code> versehen,</li>
+<li>unter einem Uebungscluster gebuendelt.</li>
+</ul>
+<p>Globale Abiturcontainer sind davon zu unterscheiden. Sie koennen eine separate Assessment-Schicht bilden, ersetzen aber nicht die lokalen terminalen Uebungsziele fuer die normale didaktische Route.</p>
+<h2 id="regelstatus">Regelstatus</h2>
+<p>Jede CQR-Regel kann einen dieser Status haben:</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pass</code></td>
+<td>Die Regel ist fuer den aktuellen Snapshot erfuellt.</td>
+</tr>
+<tr>
+<td><code>warn</code></td>
+<td>Die Regel hat offene Qualitaetsschuld, blockiert aber nicht alle niedrigeren Reifegrade.</td>
+</tr>
+<tr>
+<td><code>fail</code></td>
+<td>Die Regel ist fuer die jeweilige Stufe hart verletzt.</td>
+</tr>
+<tr>
+<td><code>not_configured</code></td>
+<td>Die Regel kann nicht sinnvoll bewertet werden, weil die notwendige Konfiguration fehlt.</td>
+</tr>
+</tbody>
+</table>
+<p>Die Dashboard-Spalten <code>Warnungen</code> und <code>Fehler</code> zaehlen alle Regeln mit diesem Status:</p>
+<ul>
+<li>globale Curriculumregeln,</li>
+<li>plus alle Regeln der zugehoerigen QA-Scopes.</li>
+</ul>
+<h2 id="reifegrade-m0-bis-m7">Reifegrade M0 bis M7</h2>
+<p>Die Reifegrade sind kumulativ und konservativ. Ein hoeherer Reifegrad setzt alle relevanten niedrigeren Bedingungen voraus.</p>
+<h3 id="scope-reife">Scope-Reife</h3>
+<p>Ein einzelner QA-Scope kann maximal <code>M3</code> erreichen.</p>
+<table>
+<thead>
+<tr>
+<th>Scope-Reife</th>
+<th>Exakte Bedingung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M0</code></td>
+<td><code>CQR-101</code> ist nicht <code>pass</code>. Der Scope hat also keine vollstaendige effektive Route von Motivation zu terminaler Autonomie.</td>
+</tr>
+<tr>
+<td><code>M1</code></td>
+<td><code>CQR-101</code> ist <code>pass</code>, aber <code>CQR-102</code> oder <code>CQR-103</code> ist noch nicht <code>pass</code>. Die Route ist effektiv geschlossen, aber noch nicht sauber atomar modelliert oder nutzt noch Cluster-<code>requires</code>.</td>
+</tr>
+<tr>
+<td><code>M2</code></td>
+<td><code>CQR-101</code>, <code>CQR-102</code> und <code>CQR-103</code> sind <code>pass</code>, aber <code>CQR-201</code> ist noch nicht <code>pass</code>. Die Route ist atomar sauber, aber die terminalen Ziele sind noch nicht voll exam-mode-faehig.</td>
+</tr>
+<tr>
+<td><code>M3</code></td>
+<td><code>CQR-101</code>, <code>CQR-102</code>, <code>CQR-103</code> und <code>CQR-201</code> sind <code>pass</code>. Der Scope ist route- und assessment-seitig reif.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="curriculum-reife">Curriculum-Reife</h3>
+<p>Ein Curriculum kann <code>M0</code> bis <code>M7</code> erreichen.</p>
+<table>
+<thead>
+<tr>
+<th>Curriculum-Reife</th>
+<th>Exakte Bedingung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M0</code></td>
+<td>Mindestens eine Grundbedingung fehlt: <code>CQR-001</code> oder <code>CQR-002</code> ist nicht <code>pass</code>, oder die Source-Snapshot-Erfassung inklusive amtlicher HTTP(S)-Originalquellenlinks (<code>CQR-000</code>) ist noch nicht sauber.</td>
+</tr>
+<tr>
+<td><code>M1</code></td>
+<td>Source-Snapshots sind lesbar, mit amtlichen HTTP(S)-Originalquellenlinks belegt, und ihre extrahierten Original-/Source-Ziele sind in Membership/Closure registriert; die Bundesland-View-Abdeckung (<code>CQR-003</code>) oder die GK/LK-Mapping-Konsistenz (<code>CQR-004</code>) ist aber noch nicht sauber.</td>
+</tr>
+<tr>
+<td><code>M2</code></td>
+<td>Source-Ingestion, quellenbelegte Bundeslandabdeckung und GK/LK-Mapping-Konsistenz sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht <code>CQR-101</code> noch nicht.</td>
+</tr>
+<tr>
+<td><code>M3</code></td>
+<td>Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: <code>CQR-101</code>, <code>CQR-102</code> und <code>CQR-103</code> sind je Scope <code>pass</code>; mindestens ein Scope ist aber noch nicht exam-mode-faehig.</td>
+</tr>
+<tr>
+<td><code>M4</code></td>
+<td>Graph, Source-Ingestion, Bundeslandabdeckung und alle QA-Scopes sind <code>M3</code>, aber mindestens eine Kern-Review-Regel (<code>CQR-301</code>, <code>CQR-401</code>, <code>CQR-501</code>) ist noch nicht <code>pass</code>.</td>
+</tr>
+<tr>
+<td><code>M5</code></td>
+<td>Alle QA-Scopes sind <code>M3</code> und zusaetzlich <code>CQR-301</code>, <code>CQR-401</code> und <code>CQR-501</code> sind <code>pass</code>. <code>M5</code> ist der schulgeeignete Kern-QS-Stand und wird nicht durch Memory-Card-Konfiguration verwässert.</td>
+</tr>
+<tr>
+<td><code>M6</code></td>
+<td><code>M5</code> ist erreicht und zusaetzlich ist <code>CQR-302</code> <code>pass</code>; fehlende oder offene Memory-Card-Review-Konfiguration zaehlt fuer <code>CQR-302</code> als offen und blockiert nur <code>M6</code>.</td>
+</tr>
+<tr>
+<td><code>M7</code></td>
+<td><code>M6</code> ist erreicht und zusaetzlich ist <code>CQR-303</code> <code>pass</code>; fehlende Visualisierungslinks, veraltete QA-Hashes oder fehlende Human-Freigaben zaehlen fuer <code>CQR-303</code> als offen und blockieren nur <code>M7</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Wichtige Konsequenz:</p>
+<p><code>M5</code> bedeutet nicht, dass es keine fachliche Verbesserung mehr geben kann.
+Es bedeutet:</p>
+<blockquote>
+<p>Die Originalquellen sind erfasst, die Bundesland-Sichten sind beidseitig belegt, fuer alle konfigurierten Pflicht-QA-Scopes ist die Route von Motivation ueber atomare Lernziele bis zur terminalen Anwendung geschlossen, und die Kern-Review- und Sichtbarkeitsschulden des Dashboards sind im aktuellen Snapshot bereinigt.</p>
+</blockquote>
+<p><code>M6</code> bedeutet darueber hinaus, dass die optionale Memory-Layer fachlich eng begruendet ist: normale atomare Ziele wurden semantisch auf Memory-Notwendigkeit geprueft, aktive Karten sind auf diese Entscheidungen zurueckgefuehrt, und noetige Memory-Knoten sind in den konfigurierten Lernenden-Sichten sichtbar.</p>
+<p><code>M7</code> bedeutet darueber hinaus, dass die optionalen Lernzielbilder vollstaendig ausgerollt und QS-gesichert sind: Jedes normale atomare Lernziel im Visualisierungs-Scope hat ein aktuelles primaeres Bild, die QA-Ledger passen zum aktiven Asset-Hash, und jedes Bild ist menschlich freigegeben.</p>
+<p><code>M5</code> ist damit eine interne Runtime- und Modellierungsreife. Es bedeutet nicht automatisch, dass ein veroeffentlichtes Runtime-ZIP alle Source-Extraction-Evidenz so beilegt, dass ein externer Pruefer jede Mapping-Entscheidung ohne weitere Artefakte inhaltlich nachvollziehen kann. Fuer diese externe Provenienzpruefung gibt es ein getrenntes Provenance-Audit-Artefakt, das Source-Goal-IDs auf konkrete Source-Texte, Locator, offizielle URLs und kanonische Ziel-IDs abbildet.</p>
+<h2 id="cqr-regeln-im-detail">CQR-Regeln im Detail</h2>
+<h3 id="cqr-000-source-snapshot-ingestion"><code>CQR-000</code> - Source snapshot ingestion</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Die Originalziele bzw. Source-Snapshot-Ziele eines Bundeslands sind zuerst ueberhaupt vollstaendig erfasst und auf amtliche Originalquellenlinks zurueckfuehrbar.</p>
+</blockquote>
+<p>Quellenartefakt-Modell:</p>
+<ul>
+<li>Git ist die dauerhafte Quelle fuer die <strong>Referenz</strong> auf den amtlichen Lehrplan: <code>sourceDocument</code>/<code>sourceDocuments</code> muessen die amtliche HTTP(S)-<code>url</code>, Titel, Rolle und bei Bedarf einen lokalen Arbeitsdateipfad dokumentieren.</li>
+<li>Lokale PDF-/HTML-Kopien sind <strong>Arbeitskopien fuer Extraktion und Nachvollzug</strong>, nicht der dauerhafte Source of Truth. Sie bleiben in der Regel durch <code>.gitignore</code> unversioniert.</li>
+<li>Eine fehlende versionierte PDF-Datei ist deshalb fuer sich genommen kein QA-Fehler, solange die amtliche URL dokumentiert ist und die benoetigte Source-Extraction bzw. der retained Snapshot lesbar ist.</li>
+<li>Wenn eine Pipeline-Stufe die Originaldatei tatsaechlich neu verarbeiten muss, muss die Datei lokal verfuegbar oder reproduzierbar herunterladbar sein. Dieser lokale Cache-Status ist Diagnoseinformation, aber nicht der gruene Quellenstatus selbst.</li>
+</ul>
+<p>Scope-Entscheidung:</p>
+<ul>
+<li>Der gruen/pass-Zustand bedeutet: Fuer alle im Curriculum betrachteten Dimensionen ist die Quellenlage explizit geklaert. Dazu gehoeren insbesondere Bundesland, Fach, Sekundarstufe (<code>Sek I</code>/<code>Sek II</code>) und, soweit fachlich relevant, <code>G8</code>/<code>G9</code> bzw. andere Dauer- oder Kursmodelle.</li>
+<li>"Geklaert" kann heissen: Es gibt eine eigene Source-Extraction/einen retained Snapshot fuer diese Zelle, oder es gibt eine explizite reviewed Entscheidung, dass keine getrennte Quelle bzw. keine getrennte G8/G9-Projektion erforderlich ist.</li>
+<li>G8/G9 wird nicht durch doppelte kanonische Zielmengen modelliert. Wenn es relevant ist, muss die Unterscheidung ueber Source-Metadaten, Provenance, Mapping, Composition Views und Duration-Policy dokumentiert sein.</li>
+</ul>
+<p>Geprueft wird:</p>
+<ul>
+<li>Der Generator liest die registrierten Source-Snapshots aus <code>source-landscape-registry.json</code>.</li>
+<li>Jede persistierte Source-Extraction muss strukturierte <code>sourceDocument</code>/<code>sourceDocuments</code>-Metadaten mit einer amtlichen HTTP(S)-<code>url</code> enthalten.</li>
+<li>Aus jedem lesbaren Source-Snapshot werden alle Source-Ziele sowie die atomaren Source-Ziele bestimmt.</li>
+<li><code>source-goal-membership-registry.json</code> und <code>source-goal-closure-registry.json</code> muessen diese extrahierten Ziele registrieren.</li>
+<li>Wenn ein Source-Snapshot nicht lesbar ist, aber bereits Source-Originalziele registriert sind, gilt die Ingestion als nicht sauber.</li>
+<li>Wenn ein extrahiertes Source-Ziel oder Source-Atom nicht in Membership/Closure vorkommt, ist die Source-Erfassung unvollstaendig.</li>
+</ul>
+<p>Metriken:</p>
+<ul>
+<li><code>sourceExtractedGoals</code>: aus vorhandenen Source-Snapshots gelesene Source-Ziele.</li>
+<li><code>sourceOriginalGoals</code>: in Membership/Closure registrierte Source-Originalziele.</li>
+<li><code>sourceUnregisteredGoals</code>: extrahierte Source-Ziele, die nicht registriert sind.</li>
+<li><code>sourceExtractedAtomicGoals</code>: aus Source-Snapshots gelesene atomare Source-Ziele.</li>
+<li><code>sourceUnregisteredAtomicGoals</code>: extrahierte atomare Source-Ziele, die nicht registriert sind.</li>
+<li><code>completeSourceJurisdictions</code>: Bundeslaender, deren Source-Snapshots lesbar und vollstaendig registriert sind.</li>
+<li><code>originalSourceUrlIssues</code>: fehlende oder nicht verwendbare amtliche HTTP(S)-Originalquellenlinks in persistierten Source-Extractions.</li>
+<li>lokale Originaldatei-Verfuegbarkeit: Diagnosewert fuer die Arbeitsumgebung; fehlende Git-Versionierung einer lokal vorhandenen PDF darf <code>CQR-000</code> nicht blockieren.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn alle deklarierten Bundeslaender lesbare Source-Snapshots haben, alle Source-Extractions amtliche HTTP(S)-Originalquellenlinks enthalten, und keine extrahierten Ziele unregistriert sind.</li>
+<li><code>warn</code>, wenn mindestens ein Bundesland noch gar keine Source-Snapshot-Ziele hat, aber keine bereits extrahierten Ziele fehlen.</li>
+<li><code>fail</code>, wenn ein registrierter Source-Snapshot nicht lesbar ist, amtliche HTTP(S)-Originalquellenlinks fehlen, oder extrahierte Ziele nicht in Membership/Closure registriert sind.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Erster fachlicher Meilenstein <code>M1</code>.</li>
+</ul>
+<h3 id="cqr-001-basic-graph-integrity"><code>CQR-001</code> - Basic graph integrity</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Die Landschaft ist als Graph technisch konsistent.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>jede Ziel-ID ist eindeutig,</li>
+<li>lokale <code>requires</code>-Referenzen zeigen auf vorhandene Ziele oder bekannte globale Ziele,</li>
+<li>lokale <code>contains</code>-Referenzen zeigen auf vorhandene Ziele oder bekannte globale Ziele,</li>
+<li>ein Ziel referenziert sich nicht selbst,</li>
+<li>direkte <code>requires</code> bilden keinen Zyklus,</li>
+<li>direkte <code>contains</code> bilden keinen Zyklus.</li>
+</ul>
+<p>Metriken:</p>
+<ul>
+<li><code>goals</code>: Anzahl der Ziele in der Landschaft.</li>
+<li><code>localReferenceIssues</code>: Anzahl gefundener Integritaetsprobleme.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn <code>localReferenceIssues = 0</code>.</li>
+<li><code>fail</code>, wenn mindestens ein Integritaetsproblem existiert.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Grundlage fuer <code>M0</code>.</li>
+</ul>
+<h3 id="cqr-002-explicit-type-consistency"><code>CQR-002</code> - Explicit type consistency</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Explizite <code>type</code>-Metadaten widersprechen nicht der Graphstruktur.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Wenn ein Ziel <code>type: "atomic"</code> deklariert, darf es keine Kinder in <code>contains</code> haben.</li>
+<li>Wenn ein Ziel <code>type: "cluster"</code> deklariert, muss es Kinder in <code>contains</code> haben.</li>
+<li>Ziele ohne <code>type</code> werden fuer diese Regel nicht als Fehler gewertet.</li>
+</ul>
+<p>Metrik:</p>
+<ul>
+<li><code>mismatches</code>: Anzahl der Ziele, deren deklarierter <code>type</code> nicht zur Struktur passt.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn <code>mismatches = 0</code>.</li>
+<li><code>fail</code>, wenn mindestens ein Typwiderspruch existiert.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Grundlage fuer <code>M0</code>.</li>
+</ul>
+<h3 id="cqr-003-bundesland-source-backed-view-coverage"><code>CQR-003</code> - Bundesland source-backed view coverage</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Jede deklarierte Bundesland-Sicht ist atomar voll aus dem jeweiligen Lehrplan belegbar, und jedes registrierte Originalziel des Bundeslands ist in dieser Sicht vollstaendig abgebildet.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Die atomare Zielmenge eines Bundeslands kommt primaer aus den <code>de-&lt;land&gt;-*</code> Composition Views.</li>
+<li>Die nationale Referenzmenge kommt aus den <code>de-de-*</code> Composition Views.</li>
+<li>Falls fuer ein Curriculum noch keine Composition Views existieren, faellt der Generator auf die rohe atomare JSON-Menge zurueck. Dieser Fallback ist eine Uebergangshilfe, kein Zielzustand.</li>
+<li>Pro Bundesland wird getrennt gezaehlt, wie viele atomare Sicht-Knoten vorhanden sind und wie viele davon quellenbelegt sind.</li>
+<li>Als direkt quellenbelegt zaehlen Evidence-Eintraege mit <code>kind: "provenance"</code> oder einem reviewten <code>kind: "mapping"</code> fuer genau dieses Bundesland. <code>partial</code> bleibt eine Passgenauigkeitswarnung, zaehlt aber als inhaltliche Abdeckung, wenn das Source-Ziel dadurch vollstaendig abgedeckt ist.</li>
+<li>Als akzeptierter Ersatzbeleg zaehlt nur ein explizit reviewter <code>requires-closure</code>-Surrogat-Eintrag. Er ist fuer logische Luecken im <code>requires</code>-Fluss gedacht, nicht fuer neue Themen.</li>
+<li><code>kind: "override"</code>, <code>kind: "child-union"</code> und automatische <code>kind: "requires-closure"</code> zaehlen nicht als Lehrplanbeleg fuer diese Regel.</li>
+<li>Wenn ein atomares Ziel in einer Bundesland-Sicht erscheint, aber keinen direkten oder akzeptierten indirekten Beleg fuer dieses Bundesland hat, ist das eine nicht ableitbare Zuordnung und fuehrt zu <code>fail</code>.</li>
+<li>Rueckwaerts werden die registrierten Source-Landschaften, Source-Memberships und Source-Closures gelesen. Jedes registrierte Source-Originalziel hat eine atomare Source-Closure; alle Atome dieser Closure muessen ueber reviewte Mappings in kanonische atomare Knoten fuehren, die in der Bundesland-Sicht enthalten sind. Partielle Mappings zaehlen dabei als inhaltliche Abdeckung, bleiben aber als Passgenauigkeitswarnung sichtbar.</li>
+<li>Wenn ein registriertes Source-Atom nicht in die Bundesland-Sicht mappt, ist die Lehrplanabdeckung unvollstaendig und fuehrt zu <code>fail</code>.</li>
+<li>Wenn ein vorhandener Source-Snapshot weitere atomare Source-Ziele enthaelt, die nicht in Membership/Closure registriert sind, ist die Source-Erfassung unvollstaendig und fuehrt zu <code>fail</code>.</li>
+<li>Projektionswarnungen machen die Bundeslandkarte gelb und verhindern <code>CQR-003 pass</code>.</li>
+<li>Applicability-Fehler in einer Projektion fuehren zu <code>fail</code>.</li>
+</ul>
+<p>Metriken:</p>
+<ul>
+<li><code>totalJurisdictions</code>: Anzahl deklarierter Bundeslaender.</li>
+<li><code>totalAtomicGoals</code>: atomare Zielzahl der nationalen DE-Composition-View-Sicht.</li>
+<li><code>rawAtomicGoals</code>: atomare Leaf-Zielzahl der kanonischen JSON-Datei.</li>
+<li>Pro Bundesland <code>viewAtomicGoals</code>: atomare Zielzahl der Bundesland-Composition-View-Sicht.</li>
+<li>Pro Bundesland <code>sourceBackedAtomicGoals</code>: atomare Sicht-Ziele mit direktem oder akzeptiertem indirektem Lehrplanbeleg.</li>
+<li>Pro Bundesland <code>surrogateBackedAtomicGoals</code>: atomare Sicht-Ziele, die nur ueber reviewten Ersatzbeleg zaehlen.</li>
+<li>Pro Bundesland <code>unsupportedAssignedAtomicGoals</code>: atomare Sicht-Ziele ohne ausreichenden Lehrplanbeleg.</li>
+<li>Pro Bundesland <code>partialSourceLinkedAtomicGoals</code>: atomare Sicht-Ziele mit nur partiellem Mapping; diese sind inhaltlich abgedeckt, aber nicht passgenau belegt.</li>
+<li>Pro Bundesland <code>sourceAtomicGoals</code>: registrierte atomare Source-Lehrplanziele.</li>
+<li>Pro Bundesland <code>sourceMappedToViewAtomicGoals</code>: registrierte Source-Atome, deren Mapping in die Bundesland-Sicht fuehrt.</li>
+<li>Pro Bundesland <code>unmappedSourceAtomicGoals</code>: registrierte Source-Atome ohne Mapping in die Bundesland-Sicht.</li>
+<li>Pro Bundesland <code>sourceExtractedAtomicGoals</code>: aus vorhandenen Source-Snapshots gelesene atomare Source-Ziele.</li>
+<li>Pro Bundesland <code>sourceUnregisteredAtomicGoals</code>: extrahierte Source-Atome, die nicht in Membership/Closure registriert sind.</li>
+<li>Pro Bundesland <code>sourceOriginalGoals</code>: registrierte Source-Originalziele.</li>
+<li>Pro Bundesland <code>sourceFullyCoveredOriginalGoals</code>: registrierte Source-Originalziele, deren atomare Closure vollstaendig in die Bundesland-Sicht mappt.</li>
+<li>Pro Bundesland <code>sourcePartiallyCoveredOriginalGoals</code>: registrierte Source-Originalziele, deren atomare Closure teilweise in die Bundesland-Sicht mappt.</li>
+<li>Pro Bundesland <code>sourceUncoveredOriginalGoals</code>: registrierte Source-Originalziele ohne Mapping in die Bundesland-Sicht.</li>
+<li>Pro Bundesland <code>sourceBackedCoveragePercent</code>: <code>sourceBackedAtomicGoals / viewAtomicGoals</code>.</li>
+<li>Pro Bundesland <code>sourceReverseCoveragePercent</code>: <code>sourceMappedToViewAtomicGoals / sourceAtomicGoals</code>.</li>
+<li><code>cleanJurisdictions</code>: Bundeslaender mit voller beidseitiger Abdeckung ohne Warnungen, Fehler oder nicht belegte Zuordnungen.</li>
+<li><code>partialJurisdictions</code>: Bundeslaender mit Teilabdeckung oder Warnungen, aber ohne harte Fehler.</li>
+<li><code>errorJurisdictions</code>: Bundeslaender mit Applicability-Fehlern, nicht belegten Sicht-Atomen oder ungemappten Source-Atomen.</li>
+<li><code>unsupportedAssignedAtomicGoals</code>: Summe nicht belegter atomarer Sicht-Zuordnungen ueber alle Bundeslaender.</li>
+<li><code>unmappedSourceAtomicGoals</code>: Summe registrierter Source-Atome ohne Mapping in die jeweilige Bundesland-Sicht.</li>
+<li><code>sourceExtractedGoals</code>: Summe extrahierter Source-Snapshot-Ziele.</li>
+<li><code>sourceUnregisteredGoals</code>: Summe extrahierter Source-Snapshot-Ziele, die noch nicht in Membership/Closure registriert sind.</li>
+<li><code>sourceUnregisteredAtomicGoals</code>: Summe extrahierter Source-Atome, die noch nicht in Membership/Closure registriert sind.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn alle deklarierten Bundeslaender alle atomaren Sicht-Ziele quellenbelegt haben, alle registrierten Source-Originalziele vollstaendig in die Sicht mappen und keine Projektion Warnungen, Fehler oder nicht belegte Zuordnungen hat.</li>
+<li><code>warn</code>, wenn mindestens ein Bundesland nur teilweise quellenbelegt ist, gar keine quellenbelegten atomaren Ziele hat oder Projektionswarnungen hat, aber keine harte falsche Zuordnung vorliegt.</li>
+<li><code>fail</code>, wenn mindestens eine Bundesland-Projektion Applicability-Fehler hat, mindestens eine atomare Sicht-Zuordnung ohne ausreichenden Beleg existiert oder mindestens ein registriertes Source-Atom nicht in die Sicht mappt.</li>
+<li><code>not_configured</code>, wenn keine Coverage-Projektion fuer das Curriculum vorliegt.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Zweiter fachlicher Meilenstein <code>M2</code>.</li>
+</ul>
+<p>Interpretation:</p>
+<p><code>CQR-003 pass</code> bedeutet: Die Bundesland-Sicht ist weder zu klein noch zu gross gegenueber den erfassten Lehrplanquellen. Es fehlen keine registrierten Lehrplaninhalte, jedes registrierte Originalziel ist durch atomare View-Ziele vollstaendig abgedeckt, und es sind keine atomaren Sicht-Ziele enthalten, die sich nicht aus dem Bundesland-Lehrplan oder einem explizit reviewten logischen Ersatzbeleg ableiten lassen.</p>
+<p>Ein akzeptiertes <code>APV-201</code>-Overlay kann eine Projektion fuer Runtime- oder Kompatibilitaetszwecke sichtbar halten. Es zaehlt aber nicht als Bundeslandabdeckung. Akzeptierte Warnungen bei <code>CQR-501</code> ersetzen deshalb nie die fachliche Vollstaendigkeits- und Negativpruefung von <code>CQR-003</code>.</p>
+<p>Fuer Mathematik und Physik wird zusaetzlich ein detaillierter Audit-Snapshot erzeugt:</p>
+<ul>
+<li><code>docs/qa-ci/status/curriculum-source-coverage-audit.json</code></li>
+<li><code>docs/qa-ci/status/curriculum-source-coverage-audit.md</code></li>
+</ul>
+<p>Dieser Audit listet pro Bundesland die fehlenden quellenbelegten Atomziele und die sichtbaren atomaren Zuordnungen ohne Lehrplanbeleg vollstaendig maschinenlesbar auf.</p>
+<h3 id="cqr-004-course-level-mapping-consistency"><code>CQR-004</code> - Course-level mapping consistency</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>GK/LK-Markierungen aus der Originalquelle duerfen beim Mapping auf SkillPilot nicht verloren gehen oder heimlich verschaerft werden.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Die Regel laeuft fuer persistierte <code>source-extraction</code>-Mappings, die eine <code>sourceExtractionPath</code> auf ein Extraktionsartefakt mit <code>sourceGoals[].courseLevel</code> besitzen.</li>
+<li>Ein Source-Ziel mit <code>courseLevel: "LK"</code> muss auf kanonische Ziele mappen, die mindestens das Tag <code>LK</code> tragen.</li>
+<li>Ein Source-Ziel mit <code>courseLevel: "GK_LK"</code> muss auf kanonische Ziele mappen, die beide Tags <code>GK</code> und <code>LK</code> tragen.</li>
+<li>Ein Source-Ziel mit <code>courseLevel: "unspecified"</code> wird fachlich konservativ als <code>GK_LK</code> behandelt, weil die Originalquelle an dieser Stelle kein LK-only-Niveau markiert.</li>
+<li>Eine LK-only-Zuordnung fuer <code>unspecified</code> ist nur erlaubt, wenn die Mapping-Review eine explizite <code>courseLevelDecision</code> mit nicht leerer Begruendung dokumentiert. Diese Ausnahme ist sichtbar und wird in <code>reviewedCourseLevelExceptions</code> gezaehlt.</li>
+<li>Partielle Mapping-Kanten werden nicht als akzeptierte Kursniveau-Abdeckung gezaehlt; sie muessen zuerst fachlich entschieden werden.</li>
+</ul>
+<p>Metriken:</p>
+<ul>
+<li><code>sourceGoals</code>: Source-Ziele im verknuepften Extraktionsartefakt.</li>
+<li><code>sourceGoalsWithCourseLevel</code>: Source-Ziele, fuer die eine Kursniveau-Erwartung bestimmt werden konnte.</li>
+<li><code>gkLkSourceGoals</code>: Source-Ziele mit erwarteter GK/LK-Abdeckung.</li>
+<li><code>lkSourceGoals</code>: Source-Ziele mit LK-only-Erwartung.</li>
+<li><code>unspecifiedSourceGoals</code>: Source-Ziele, deren Originalniveau nicht explizit markiert war.</li>
+<li><code>checkedMappingEdges</code>: gepruefte Source-zu-SkillPilot-Mapping-Kanten.</li>
+<li><code>defaultedUnspecifiedMappingEdges</code>: Kanten, bei denen <code>unspecified</code> als GK/LK geprueft wurde.</li>
+<li><code>reviewedCourseLevelExceptions</code>: explizit begruendete Niveau-Ausnahmen.</li>
+<li><code>mismatches</code>: Mapping-Kanten, deren kanonisches Ziel die erwarteten <code>GK</code>/<code>LK</code>-Tags nicht traegt.</li>
+<li><code>missingSourceGoals</code>, <code>missingTargetGoals</code>, <code>unmappedCourseLevelSourceGoals</code>: technische oder fachliche Luecken in den geprueften Artefakten.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn alle geprueften Mapping-Kanten kursniveau-kompatibel sind und kein kursniveau-relevantes Source-Ziel ungemappt bleibt.</li>
+<li><code>fail</code>, wenn eine Kante auf ein Ziel mit fehlenden <code>GK</code>/<code>LK</code>-Tags zeigt, ein Ziel fehlt oder ein kursniveau-relevantes Source-Ziel ungemappt ist.</li>
+<li><code>not_configured</code>, wenn fuer das Curriculum noch kein persistiertes Source-Extraction-Mapping mit Kursniveau-Metadaten vorliegt.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Teil des fachlichen Meilensteins <code>M2</code>. Ein <code>fail</code> verhindert, dass die Bundesland-/Source-Abdeckung als sauber gilt.</li>
+</ul>
+<p>Interpretation:</p>
+<p><code>CQR-004 pass</code> bedeutet nicht, dass GK- und LK-Didaktik schon perfekt ausdifferenziert sind. Es bedeutet enger: Das aktuell reviewte Source-zu-SkillPilot-Mapping respektiert die im Original erkennbare Kursniveau-Semantik und macht fachliche Ausnahmen sichtbar.</p>
+<h3 id="cqr-101-effective-full-route-coverage"><code>CQR-101</code> - Effective full route coverage</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Jeder ausgewaehlte atomare Zielknoten eines QA-Scopes liegt auf einer effektiven Route von Motivation zu terminaler Autonomie.</p>
+</blockquote>
+<p>Geprueft wird fuer jedes durch den Scope-Selektor ausgewaehlte atomare Ziel:</p>
+<ul>
+<li>Es gibt in <code>R_eff</code> einen Pfad vom Ziel zu mindestens einem Motivationsanker.</li>
+<li>Es gibt im umgedrehten <code>R_eff</code> einen Pfad vom Ziel zu mindestens einem terminalen Ziel.</li>
+</ul>
+<p><code>R_eff</code> akzeptiert dabei auch geerbte Cluster-<code>requires</code>.</p>
+<p>Metriken:</p>
+<ul>
+<li><code>selectedAtomicGoals</code>: Anzahl der im Scope geprueften atomaren Ziele.</li>
+<li><code>missingMotivationPath</code>: Anzahl atomarer Ziele ohne effektiven Pfad zum Motivationsanker.</li>
+<li><code>missingTerminalPath</code>: Anzahl atomarer Ziele ohne effektiven Pfad zu terminaler Autonomie.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn beide Missing-Metriken <code>0</code> sind.</li>
+<li><code>fail</code>, wenn mindestens eine Missing-Metrik groesser als <code>0</code> ist.</li>
+<li><code>not_configured</code> auf Curriculumebene, wenn fuer ein Curriculum gar kein QA-Scope registriert ist.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Bestandteil des Routenmeilensteins <code>M3</code>.</li>
+<li>Wenn ein konfigurierter Scope diese Regel nicht besteht, bleibt das Curriculum nach erfolgreicher Bundeslandabdeckung bei <code>M2</code>.</li>
+</ul>
+<h3 id="cqr-102-atomic-direct-route-coverage"><code>CQR-102</code> - Atomic direct route coverage</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Jeder ausgewaehlte atomare Zielknoten eines QA-Scopes liegt auf einer direkt atomar modellierten Route.</p>
+</blockquote>
+<p>Geprueft wird fuer jedes ausgewaehlte atomare Ziel:</p>
+<ul>
+<li>Es gibt in <code>R_d</code> einen Pfad vom Ziel zu mindestens einem Motivationsanker.</li>
+<li>Es gibt im umgedrehten <code>R_d</code> einen Pfad vom Ziel zu mindestens einem terminalen Ziel.</li>
+</ul>
+<p><code>R_d</code> akzeptiert nur direkte atomare <code>requires</code>.
+Cluster-<code>requires</code> helfen hier nicht.</p>
+<p>Metriken:</p>
+<ul>
+<li><code>selectedAtomicGoals</code>: Anzahl der im Scope geprueften atomaren Ziele.</li>
+<li><code>missingDirectMotivationPath</code>: Anzahl atomarer Ziele ohne direkten atomaren Pfad zum Motivationsanker.</li>
+<li><code>missingDirectTerminalPath</code>: Anzahl atomarer Ziele ohne direkten atomaren Pfad zu terminaler Autonomie.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn beide Missing-Metriken <code>0</code> sind.</li>
+<li><code>warn</code>, wenn mindestens eine Missing-Metrik groesser als <code>0</code> ist.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Teil von <code>M3</code>.</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li><code>CQR-101 pass</code>, aber <code>CQR-102 warn</code> bedeutet: Der Scope ist uebergangsweise geschlossen, aber noch nicht sauber auf atomarer Ebene modelliert.</li>
+</ul>
+<h3 id="cqr-103-no-scoped-cluster-requires"><code>CQR-103</code> - No scoped cluster requires</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Die normale didaktische Sequenzierung im QA-Scope haengt nicht mehr von Cluster-<code>requires</code> ab.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Der Scope definiert einen <code>clusterSelector</code>.</li>
+<li>Alle Cluster-Ziele, die durch diesen Selektor in den Scope fallen, duerfen keine <code>requires</code> mehr tragen.</li>
+</ul>
+<p>Metrik:</p>
+<ul>
+<li><code>scopedClusterRequires</code>: Anzahl der scoped Cluster mit mindestens einem <code>requires</code>.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn <code>scopedClusterRequires = 0</code>.</li>
+<li><code>warn</code>, wenn mindestens ein scoped Cluster-<code>requires</code> existiert.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Teil von <code>M3</code>.</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li>Cluster-<code>requires</code> sind nicht generell verboten.</li>
+<li>Sie sind aber fuer reife learner-facing Routen ein Warnsignal, weil sie die didaktische Abhaengigkeit nicht auf dem atomaren Lernziel selbst sichtbar machen.</li>
+</ul>
+<h3 id="cqr-201-terminal-autonomy-exam-data"><code>CQR-201</code> - Terminal autonomy exam data</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Terminale Uebungs- und Pruefungsziele eines QA-Scopes sind exam-mode-faehig.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Der Scope definiert terminale Autonomie-Cluster.</li>
+<li>Deren atomare Kinder werden als terminale Autonomieziele interpretiert.</li>
+<li>Jedes dieser atomaren terminalen Ziele muss <code>examData</code> besitzen.</li>
+</ul>
+<p>Metriken:</p>
+<ul>
+<li><code>terminalAutonomyGoals</code>: Anzahl atomarer terminaler Autonomieziele.</li>
+<li><code>terminalAutonomyGoalsWithExamData</code>: Anzahl davon mit <code>examData</code>.</li>
+<li><code>terminalAutonomyGoalsWithoutExamData</code>: Anzahl davon ohne <code>examData</code>.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn <code>terminalAutonomyGoalsWithoutExamData = 0</code>.</li>
+<li><code>warn</code>, wenn mindestens ein terminales Autonomieziel keine <code>examData</code> hat.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Mindestbedingung fuer Scope-<code>M3</code>.</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li>Die Route endet nicht nur in einem inhaltlichen Ziel, sondern in einer pruefungsnahen Anwendungssituation.</li>
+<li>Das ist die Dashboard-Abbildung des Motivationsknoten -&gt; atomare Lernzielknoten -&gt; selbststaendige Anwendung in Pruefungssituation.</li>
+</ul>
+<h3 id="cqr-301-semantic-atomicity-review-freshness"><code>CQR-301</code> - Semantic atomicity review freshness</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Content-Leaf-Ziele sind semantisch atomar reviewed und die Reviews sind aktuell.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Es existiert mindestens eine Semantic-Atomicity-Konfiguration fuer das Curriculum.</li>
+<li>Alle relevanten atomaren Content-Leaf-Ziele im Scope haben einen Review-Datensatz.</li>
+<li>Der gespeicherte Fingerprint des Review-Datensatzes passt zum aktuellen Zieltext und relevanten Metadaten.</li>
+<li>Kein Review ist veraltet, fehlt, obsolet oder als <code>needs_developer_review</code> oder <code>non_atomic</code> offen.</li>
+</ul>
+<p>Ausgeschlossen sind unter anderem:</p>
+<ul>
+<li>Motivation und Orientierung,</li>
+<li>Practice und Assessment,</li>
+<li>Memorization- oder SRS-Ziele,</li>
+<li>Ziele mit <code>examData</code>.</li>
+</ul>
+<p>Metriken:</p>
+<ul>
+<li><code>configs</code>: Anzahl der Review-Konfigurationen fuer das Curriculum.</li>
+<li><code>leafGoals</code>: Anzahl relevanter Content-Leaf-Ziele im Review-Scope.</li>
+<li><code>atomic</code>: Anzahl aktuell als atomar akzeptierter Ziele.</li>
+<li><code>needsDeveloperReview</code>: offene Developer-Review-Faelle.</li>
+<li><code>nonAtomic</code>: explizit nicht atomare Ziele.</li>
+<li><code>missing</code>: fehlende Review-Datensaetze.</li>
+<li><code>stale</code>: Review-Datensaetze mit veraltetem Fingerprint.</li>
+<li><code>obsolete</code>: Review-Datensaetze fuer Ziele, die nicht mehr im Scope liegen.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn alle offenen Zaehlwerte <code>0</code> sind.</li>
+<li><code>warn</code>, wenn mindestens ein offener Zaehlwert groesser als <code>0</code> ist.</li>
+<li><code>not_configured</code>, wenn fuer das Curriculum keine Semantic-Atomicity-Konfiguration registriert ist.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Teil von <code>M5</code>.</li>
+</ul>
+<h3 id="cqr-302-memory-card-decision-trace"><code>CQR-302</code> - Memory-card decision trace</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Fuer normale atomare Lernziele ist explizit entschieden, ob Memory-Lernen fachlich gerechtfertigt ist; jede behaltene primaere Karte muss aus einer solchen Entscheidung rueckverfolgbar sein, vorhandene Memory-Knoten/SRS-Decks muessen eng bleiben, und konfigurierte Lernenden-Sichten muessen die benoetigten Memory-Knoten wirklich sichtbar machen.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Die Regel wird fuer jedes kanonische Curriculum ausgewiesen.</li>
+<li>Ohne Memory-Card-Review-Konfiguration unter <code>curricula/DE/Gymnasium/quality/memory-card-review/</code> ist der Status <code>not_configured</code>; das blockiert <code>M6</code>, aber nicht den Kern-QS-Stand <code>M5</code>.</li>
+<li>Alle relevanten normalen atomaren Ziele im konfigurierten Scope haben einen Review-Datensatz.</li>
+<li>Der gespeicherte Fingerprint des Review-Datensatzes passt zum aktuellen Zieltext und relevanten Metadaten.</li>
+<li>Der Review-Status ist <code>no_memory_needed</code>, <code>memory_required</code> oder <code>needs_developer_review</code>.</li>
+<li><code>memory_required</code> muss mindestens einen existierenden Memory-Knoten und mindestens eine von diesem Knoten bereitgestellte <code>srs-deck:*</code>-ID referenzieren.</li>
+<li>Wenn <code>visibilityScopes</code> konfiguriert sind, muss jedes dort sichtbare <code>memory_required</code>-Ziel mindestens einen seiner referenzierten Memory-Knoten in derselben Composition View sichtbar haben.</li>
+<li>Jeder vorhandene Memory-Knoten im Scope muss durch mindestens einen aktuellen <code>memory_required</code>-Datensatz begruendet sein.</li>
+<li>Die von den Memory-Knoten referenzierten Deckdateien muessen auffindbar und lesbar sein.</li>
+<li>Primaere Karten werden separat unter <code>*.cards.review.jsonl</code> geprueft.</li>
+<li>Jede behaltene Karte muss <code>kept</code>, <code>necessary: true</code> und mindestens ein konkretes <code>originGoalId</code> haben.</li>
+<li>Jedes <code>originGoalId</code> einer behaltenen Karte muss ein aktuelles <code>memory_required</code>-Ziel sein und das passende Deck referenzieren.</li>
+<li>Karten mit <code>remove</code> duerfen als Audit-Spur im Kartenledger bleiben, muessen aber aus den aktiven Deckdateien entfernt sein.</li>
+<li>Optional erzeugt <code>npm run quality:memory-card-review:report</code> daraus einen lesbaren Markdown-Audit-Report. Der Report ist keine zweite Wahrheit, sondern eine reproduzierbare Sicht auf dieselben Ledger-Daten.</li>
+<li>Kanonische Memory-Decks fuer deutsche Gymnasialfaecher liegen unter <code>curricula/DE/Gymnasium/memory-decks/</code>. Sie liegen absichtlich nicht unter <code>curricula/DE/Gymnasium/canonical/</code>, weil dieser Ordner den <code>SkillLandscape</code>-JSON-Dateien vorbehalten ist. Oeffentliche Deck-IDs, aktive Karten-IDs und Runtime-Dateinamen verwenden kanonische DE/Gymnasium-Namen wie <code>de_gymnasium_math_*</code>, nicht Bundesland- oder Pilotpraefixe wie <code>he</code>, <code>hes</code> oder <code>DE-HE</code>.</li>
+<li>Bundesland-Auswahl wird ueber Composition Views, Applicability, Provenance und die Review-Ledger entschieden. Sie wird nicht durch bundeslandspezifische Deck-Duplikate oder Decknamen modelliert.</li>
+</ul>
+<p>Ausgeschlossen sind unter anderem:</p>
+<ul>
+<li>Motivation und Orientierung,</li>
+<li>Practice und Assessment,</li>
+<li>Memorization- oder SRS-Ziele selbst,</li>
+<li>Ziele mit <code>examData</code>.</li>
+</ul>
+<p>Metriken:</p>
+<ul>
+<li><code>reviewedGoals</code>: Anzahl normaler atomarer Ziele im Review-Scope.</li>
+<li><code>noMemoryNeeded</code>: Ziele, bei denen Memory-Lernen bewusst nicht angesetzt wird.</li>
+<li><code>memoryRequired</code>: Ziele, bei denen ein knapper Memory-Anteil gerechtfertigt ist.</li>
+<li><code>needsDeveloperReview</code>: offene fachliche Entscheidung.</li>
+<li><code>missing</code>, <code>stale</code>, <code>obsolete</code>: fehlende, veraltete oder nicht mehr passende Datensaetze.</li>
+<li><code>memoryGoals</code>, <code>tracedMemoryGoals</code>, <code>untracedMemoryGoals</code>: Rueckverfolgung der vorhandenen Memory-Knoten.</li>
+<li><code>deckIds</code>, <code>deckFiles</code>, <code>cardRows</code>: technische Deck-Sichtbarkeit fuer die referenzierten SRS-Daten.</li>
+<li><code>primaryCards</code>, <code>keptCards</code>, <code>cardsMarkedRemove</code>, <code>cardNeedsDeveloperReview</code>: Karten-Level-Pruefung der primaeren Decksprache.</li>
+<li><code>missingCardReviews</code>, <code>staleCardReviews</code>, <code>obsoleteCardReviews</code>, <code>duplicateCardReviewRecords</code>, <code>invalidCardReviewRecords</code>: offener Kartenledger-Aufwand.</li>
+<li><code>untracedMemoryRequiredGoals</code>: <code>memory_required</code>-Ziele, zu denen keine behaltene Karte mehr fuehrt.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn alle offenen Zaehlwerte <code>0</code> sind und alle Memory-Knoten getraced sind.</li>
+<li><code>warn</code>, wenn mindestens ein offener Zaehlwert groesser als <code>0</code> ist.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Teil von <code>M6</code>; <code>not_configured</code>, <code>warn</code> und <code>fail</code> blockieren <code>M6</code>, aber nicht <code>M5</code>.</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li>Memory-Lernen ist nicht der Standardfall. Die Default-Entscheidung ist <code>no_memory_needed</code>.</li>
+<li><code>memory_required</code> ist nur fuer abrufpflichtige Formeln, Begriffe, Notation, Vokabeln oder vergleichbare harte Merkelemente gedacht.</li>
+<li>Die Regel ist bewusst streng: Erst die semantische Entscheidung pro Lernziel und pro Karte zaehlt, danach kommt die technische Buchhaltung.</li>
+<li>Ein Memory-Deck ist dann fachlich sauber benannt, wenn es den kanonischen Lernkontext beschreibt. Herkunft aus Hessen oder einem anderen Bundesland gehoert in Provenance und Source-Ledger, nicht in die oeffentliche SRS-ID.</li>
+<li>Eine initialisierte Review-Queue ohne fachliche Entscheidungen ist kein Pass. Sie macht den offenen Zustand sichtbar (<code>warn</code>), damit ein Curriculum nicht durch fehlende Konfiguration unsichtbar an <code>CQR-302</code> vorbeilaeuft.</li>
+</ul>
+<h3 id="cqr-303-goal-visualization-approval-trace"><code>CQR-303</code> - Goal-visualization approval trace</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Fuer normale atomare Lernziele sind die Lernzielbilder vollstaendig erstellt, technisch aktuell und menschlich freigegeben.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Die Regel wird fuer jedes kanonische Curriculum ausgewiesen.</li>
+<li>Ohne passendes QA-Ledger unter <code>curricula/DE/Gymnasium/quality/goal-visualization-qa/</code> ist der Status <code>not_configured</code>; das blockiert <code>M7</code>, aber nicht <code>M6</code>.</li>
+<li>Der Visualisierungs-Scope sind normale atomare Ziele: keine Memory-, Exam- oder Tutor-Knoten, keine SRS-Decks und keine Ziele mit <code>examData</code>.</li>
+<li>Jedes Ziel im Scope muss einen primaeren <code>goal-visualization</code>-Link mit <code>resourceType: "image"</code> haben.</li>
+<li>Fuer jeden aktiven Link muss ein QA-Datensatz mit passender <code>goalId</code> und <code>imageUrl</code> existieren.</li>
+<li>Der <code>assetSha256</code> im QA-Datensatz muss zum aktuellen Public Asset passen. Dadurch werden alte Freigaben nach einem Bildwechsel automatisch stale.</li>
+<li>Eine AI-Freigabe ist explizit und bildgebunden: <code>aiApproved: "yes"</code> gilt nur, wenn <code>aiApprovedAssetSha256</code> exakt dem aktuellen <code>assetSha256</code> entspricht. <code>aiReviewedAt</code>, <code>aiReviewer</code> und <code>aiNotes</code> dokumentieren die Prüfung. Ein Bildwechsel setzt diese Evidenz zurück.</li>
+<li>Die Human-Freigabe ist das Release-Gate: <code>humanApproved: "yes"</code> und kein offenes <code>humanIssueIdentified: "yes"</code>.</li>
+<li><code>Approved AI</code> ist zusätzliche technische und fachliche Prüfevidenz, ersetzt aber niemals die Human-Freigabe als <code>M7</code>- oder Release-Gate.</li>
+<li>Eine aktuelle Human-Freigabe ueberstimmt aeltere ChatGPT-Triagewerte. Die Felder <code>umlautsCorrectChatGpt</code> und <code>contentApprovedChatGpt</code> bleiben als Triage- und Arbeitsmetriken sichtbar, sind aber nach Human-Freigabe nicht das harte Release-Gate.</li>
+</ul>
+<p>Metriken:</p>
+<ul>
+<li><code>expectedGoals</code>: normale atomare Ziele im Visualisierungs-Scope.</li>
+<li><code>linkedGoals</code>: Ziele mit primaerem Visualisierungslink.</li>
+<li><code>missingLinks</code>: Ziele ohne aktiven primaeren Bildlink.</li>
+<li><code>qaRecords</code>: Datensaetze im Fach-QA-Ledger.</li>
+<li><code>missingRecords</code>, <code>staleRecords</code>, <code>duplicateRecords</code>, <code>missingAssets</code>: technische Ledger-/Asset-Schulden.</li>
+<li><code>chatGptReady</code>, <code>chatGptOpen</code>: ChatGPT-Triagezustand.</li>
+<li><code>aiApproved</code>, <code>aiNotApproved</code>: explizite, zum aktuellen Asset-Hash passende AI-Freigabe beziehungsweise noch fehlende oder stale AI-Freigabe.</li>
+<li><code>humanApproved</code>, <code>humanNotApproved</code>, <code>humanIssues</code>: menschliche Freigabe und offene menschliche Fehlerhinweise.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn alle Ziele im Scope einen aktuellen Link und einen passenden aktuellen QA-Datensatz haben und jedes aktive Bild menschlich freigegeben ist.</li>
+<li><code>warn</code>, wenn Links, Assets, QA-Datensaetze oder Human-Freigaben fehlen oder stale sind.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Teil von <code>M7</code>; <code>not_configured</code>, <code>warn</code> und <code>fail</code> blockieren <code>M7</code>, aber nicht <code>M6</code>.</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li><code>M7</code> ist eine Veroeffentlichungs- und Orientierungsasset-Schicht, keine fachliche Voraussetzung fuer die Kern-Lernziellandschaft.</li>
+<li>Provider-Deferred-Ziele bleiben sichtbar als nicht vollstaendig ausgerollt; sie koennen <code>M7</code> erst erreichen, wenn ein fachlich korrektes Bild existiert oder der Scope bewusst anders entschieden wird.</li>
+<li>Bilder sind keine Source-Evidence, keine Aufgaben und kein Ersatz fuer Erklaerung oder Uebung.</li>
+</ul>
+<h3 id="cqr-401-composition-view-availability"><code>CQR-401</code> - Composition view availability</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Fuer das Curriculum existiert mindestens eine learner-facing Composition View.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Unter <code>curricula/DE/Gymnasium/composition-views/</code> werden <code>.view.json</code>-Dateien gezaehlt.</li>
+<li>Jede View mit passender <code>landscapeId</code> zaehlt fuer das Curriculum.</li>
+</ul>
+<p>Metrik:</p>
+<ul>
+<li><code>compositionViews</code>: Anzahl registrierter Composition Views fuer das Curriculum.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn <code>compositionViews &gt; 0</code>.</li>
+<li><code>not_configured</code>, wenn keine Composition View registriert ist.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Teil von <code>M5</code>.</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li>Ein graphintern reifes Curriculum reicht fuer die Workbench nicht aus.</li>
+<li>Fuer learner-facing Nutzung muss mindestens eine Sicht existieren, die den Graphen in eine gepruefte Oberflaechenstruktur bringt.</li>
+</ul>
+<h3 id="cqr-501-applicability-warning-debt"><code>CQR-501</code> - Applicability warning debt</h3>
+<p>Ziel:</p>
+<blockquote>
+<p>Die Bundesland-/Scope-Anwendbarkeit des Curriculums hat keine aktive oder obsolete Warnschuld.</p>
+</blockquote>
+<p>Geprueft wird:</p>
+<ul>
+<li>Der Applicability Compiler erzeugt aktuelle <code>APV-*</code>-Findings.</li>
+<li>Warnungen werden mit <code>docs/qa-ci/applicability-accepted-warnings.json</code> abgeglichen.</li>
+<li>Aktive Warnungen sind aktuelle Findings ohne akzeptierten Registry-Eintrag.</li>
+<li>Accepted Warnungen sind aktuelle Findings mit akzeptiertem Registry-Eintrag.</li>
+<li>Obsolete accepted Warnungen sind Registry-Eintraege, fuer die es aktuell kein passendes Finding mehr gibt.</li>
+<li><code>APV-202</code> wird als Diagnose-Finding gezaehlt, nicht als Warnung, weil <code>partial</code> / <code>1:n</code> eine Zuordnungsform und nicht automatisch eine offene fachliche Luecke ist.</li>
+</ul>
+<p>Metriken:</p>
+<ul>
+<li><code>activeWarnings</code>: aktuelle nicht akzeptierte Applicability-Warnungen.</li>
+<li><code>diagnosticPartialOnlyWarnings</code>: aktuelle <code>APV-202</code>-Diagnose-Findings.</li>
+<li><code>acceptedWarnings</code>: aktuelle akzeptierte Applicability-Warnungen.</li>
+<li><code>obsoleteAcceptedWarnings</code>: akzeptierte Warnungen, die nicht mehr zu aktuellen Findings passen.</li>
+</ul>
+<p>Status:</p>
+<ul>
+<li><code>pass</code>, wenn <code>activeWarnings + obsoleteAcceptedWarnings = 0</code>.</li>
+<li><code>warn</code>, wenn mindestens eine aktive oder obsolete akzeptierte Warnung existiert.</li>
+</ul>
+<p>Reifeziel:</p>
+<ul>
+<li>Teil von <code>M5</code>.</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li><code>acceptedWarnings</code> sind keine offenen Fehler. Sie dokumentieren bewusst akzeptierte, weiterhin aktuelle Warnungen.</li>
+<li><code>obsoleteAcceptedWarnings</code> sind dagegen Qualitaetsschuld, weil die Registry dann nicht mehr zur aktuellen Compilerlage passt.</li>
+</ul>
+<h2 id="was-m5-und-m6-bei-mathematik-aktuell-bedeuten">Was <code>M5</code> und <code>M6</code> bei Mathematik aktuell bedeuten</h2>
+<p>Bei <code>Mathematik (Gymnasium, DE)</code> bedeutet <code>M5</code> im aktuellen Dashboard:</p>
+<ul>
+<li>Sek I und Sek II sind als Pflicht-QA-Scopes registriert.</li>
+<li>Sek I prueft 247 normale atomare Lernziele; die 38 jahrgangsnahen Pruefungsaufgaben werden als terminale Assessment-Knoten separat geprueft.</li>
+<li>Sek II prueft 397 atomare Ziele.</li>
+<li>Beide Scopes haben <code>CQR-101</code>, <code>CQR-102</code>, <code>CQR-103</code> und <code>CQR-201</code> auf <code>pass</code>.</li>
+<li>Die globale Kern-Review-Schicht hat <code>CQR-301</code>, <code>CQR-401</code> und <code>CQR-501</code> auf <code>pass</code>.</li>
+</ul>
+<p><code>M6</code> bedeutet zusaetzlich:</p>
+<ul>
+<li><code>CQR-302</code> prueft fuer den Mathematik-Piloten 750 normale atomare Ziele, davon 713 mit <code>no_memory_needed</code> und 37 mit <code>memory_required</code>; 64 aktive primaere Karten sind jeweils auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt, alle 6 vorhandenen Memory-Knoten sind dadurch rueckverfolgt, und die konfigurierten Sek-I-Sichten loesen sichtbare Memory-Pflichten auf sichtbare Memory-Knoten auf.</li>
+</ul>
+<p>Damit ist die Aussage:</p>
+<blockquote>
+<p>Das gesamte kanonische Mathematik-Curriculum ist in seinen beiden konfigurierten Stufen Sek I und Sek II route- und assessment-seitig geprueft; die Kern-Review- und Sichtbarkeitsregeln sind aktuell gruen. Der zusaetzliche M6-Memory-Layer ist ebenfalls gruen, inklusive eines konservativen Memory-Card-Entscheidungstracings.</p>
+</blockquote>
+<p>Bei <code>Physik (Gymnasium, DE)</code> ist <code>CQR-302</code> ebenfalls konfiguriert:</p>
+<ul>
+<li>Der Physik-Review prueft 425 normale atomare Ziele.</li>
+<li>Davon sind 298 mit <code>no_memory_needed</code> und 127 mit <code>memory_required</code> entschieden.</li>
+<li>148 aktive primaere Karten sind auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt.</li>
+<li>15 aeltere E-Phase-Zusatzkarten sind aus den aktiven Decks entfernt und bleiben im Card-Ledger als negative Entscheidung dokumentiert.</li>
+<li>Alle 5 vorhandenen Physik-Memory-Knoten sind dadurch rueckverfolgt.</li>
+</ul>
+<p>Bei <code>Chemie (Gymnasium, DE)</code> ist <code>CQR-302</code> ebenfalls fachlich entschieden und aktuell:</p>
+<ul>
+<li>Der Chemie-Review prueft 376 normale atomare Ziele.</li>
+<li>Davon sind 322 mit <code>no_memory_needed</code> und 54 mit <code>memory_required</code> entschieden.</li>
+<li>55 aktive primaere Karten sind auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt.</li>
+<li>Alle 6 vorhandenen Chemie-Memory-Knoten sind dadurch rueckverfolgt.</li>
+<li>Die Applicability der Chemie-Memory-Knoten ist konservativ auf die vom Compiler belegten Bundeslaender begrenzt; dadurch bleibt <code>CQR-501</code> ohne aktive Warnungen.</li>
+</ul>
+<p>Bei <code>Biologie (Gymnasium, DE)</code> ist <code>CQR-302</code> ebenfalls fachlich entschieden und aktuell:</p>
+<ul>
+<li>Der Biologie-Review prueft 355 normale atomare Ziele.</li>
+<li>Davon sind 348 mit <code>no_memory_needed</code> und 7 mit <code>memory_required</code> entschieden.</li>
+<li>17 aktive primaere Karten sind auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt.</li>
+<li>Der eine vorhandene Biologie-Memory-Knoten ist dadurch rueckverfolgt.</li>
+<li>Die konfigurierte Biologie-GK-Composition-View zeigt den Memory-Knoten dort sichtbar an, wo sichtbare <code>memory_required</code>-Ziele auf ihn verweisen.</li>
+</ul>
+<p>Bei <code>Informatik (Gymnasium, DE)</code> ist <code>CQR-302</code> ebenfalls fachlich entschieden und aktuell:</p>
+<ul>
+<li>Der Informatik-Review prueft 207 normale atomare Ziele.</li>
+<li>Davon sind 198 mit <code>no_memory_needed</code> und 9 mit <code>memory_required</code> entschieden.</li>
+<li>28 aktive primaere Karten sind auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt.</li>
+<li>Alle 5 vorhandenen Informatik-Memory-Knoten sind dadurch rueckverfolgt.</li>
+<li>Alle 18 konfigurierten Informatik-Composition-Views zeigen sichtbare Memory-Pflichten auf sichtbare Memory-Knoten.</li>
+<li>Die Applicability der Informatik-Memory-Knoten ist konservativ auf die vom Compiler belegten Bundeslaender begrenzt; dadurch bleibt <code>CQR-501</code> ohne aktive Warnungen.</li>
+</ul>
+<p>Bei <code>Latein (Gymnasium, DE)</code> ist <code>CQR-302</code> ebenfalls fachlich entschieden und aktuell:</p>
+<ul>
+<li>Der Latein-Review prueft 115 normale atomare Ziele.</li>
+<li>Davon sind 82 mit <code>no_memory_needed</code> und 33 mit <code>memory_required</code> entschieden.</li>
+<li>34 aktive primaere Karten sind auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt.</li>
+<li>Alle 5 vorhandenen Latein-Memory-Knoten sind dadurch rueckverfolgt.</li>
+<li>Die konfigurierte Latein-CrossStage-Composition-View zeigt die Memory-Knoten dort sichtbar an, wo sichtbare <code>memory_required</code>-Ziele auf sie verweisen.</li>
+<li>Die Decks bleiben bewusst schmal: Sie sichern Wortschatz-/Wortbildungsroutinen, Formenlehre, Satzkonstruktionen, Stilmittel/Rhetorik sowie wenige Kultur- und Philosophiebegriffe; Uebersetzen, Analysieren, Interpretieren und Vergleichen bleiben die fuehrende Lernarbeit.</li>
+</ul>
+<p>Bei <code>Deutsch (Gymnasium, DE)</code> ist <code>CQR-302</code> ebenfalls fachlich entschieden und aktuell:</p>
+<ul>
+<li>Der Deutsch-Review prueft 268 normale atomare Ziele.</li>
+<li>Davon sind 194 mit <code>no_memory_needed</code> und 74 mit <code>memory_required</code> entschieden.</li>
+<li>48 aktive primaere Karten sind auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt.</li>
+<li>Alle 5 vorhandenen Deutsch-Memory-Knoten sind dadurch rueckverfolgt.</li>
+<li>Die konfigurierte Deutsch-CrossStage-Composition-View zeigt die Memory-Knoten dort sichtbar an, wo sichtbare <code>memory_required</code>-Ziele auf sie verweisen.</li>
+<li>Die Decks bleiben bewusst schmal: Sie sichern Grammatik/Rechtschreibung, Textsorten/Argumentation, Gattungs- und Formbegriffe, Epochenorientierung sowie Rhetorik-, Medien- und Sprachmodellbegriffe; Lesen, Schreiben, Analysieren, Interpretieren und Diskutieren bleiben die fuehrende Lernarbeit.</li>
+</ul>
+<p>Bei <code>Geschichte (Gymnasium, DE)</code> ist <code>CQR-302</code> ebenfalls fachlich entschieden und aktuell:</p>
+<ul>
+<li>Der Geschichte-Review prueft 156 normale atomare Ziele.</li>
+<li>Davon sind 100 mit <code>no_memory_needed</code> und 56 mit <code>memory_required</code> entschieden.</li>
+<li>57 aktive primaere Karten sind auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt.</li>
+<li>Alle 5 vorhandenen Geschichte-Memory-Knoten sind dadurch rueckverfolgt.</li>
+<li>Die konfigurierte Geschichte-CrossStage-Composition-View zeigt die Memory-Knoten dort sichtbar an, wo sichtbare <code>memory_required</code>-Ziele auf sie verweisen.</li>
+<li>Die Decks bleiben bewusst schmal: Sie sichern Zeitleistenanker und Begriffe zu Vormoderne/Revolution, 19. Jahrhundert, Demokratie und Diktatur 1917-1945, Kaltem Krieg/Gegenwart sowie Erinnerungskultur; Quellenarbeit, Erklaeren, Vergleichen und historisches Urteilen bleiben die fuehrende Lernarbeit.</li>
+</ul>
+<p>Bei <code>Politik und Wirtschaft (Gymnasium, DE)</code> ist <code>CQR-302</code> ebenfalls fachlich entschieden und aktuell:</p>
+<ul>
+<li>Der Politik-und-Wirtschaft-Review prueft 413 normale atomare Ziele.</li>
+<li>Davon sind 306 mit <code>no_memory_needed</code> und 107 mit <code>memory_required</code> entschieden.</li>
+<li>62 aktive primaere Karten sind auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt.</li>
+<li>Alle 5 vorhandenen Politik-und-Wirtschaft-Memory-Knoten sind dadurch rueckverfolgt.</li>
+<li>Alle 14 konfigurierten Bundesland-Composition-Views zeigen sichtbare Memory-Pflichten auf sichtbare Memory-Knoten.</li>
+<li>Die Decks bleiben bewusst schmal: Sie sichern Demokratie/Rechtsstaat, Beteiligung/Medien, Markt/Geld/Sozialstaat, internationale Politik/Global Governance sowie EU-Integration; Fallanalyse, Quellenarbeit, Interessenvergleich, Argumentation und politisch-oekonomisches Urteil bleiben die fuehrende Lernarbeit.</li>
+</ul>
+<p>Bei <code>Wirtschaftswissenschaften (Gymnasium, DE)</code> ist <code>CQR-302</code> ebenfalls fachlich entschieden und aktuell:</p>
+<ul>
+<li>Der Wirtschaftswissenschaften-Review prueft 303 normale atomare Ziele.</li>
+<li>Davon sind 250 mit <code>no_memory_needed</code> und 53 mit <code>memory_required</code> entschieden.</li>
+<li>51 aktive primaere Karten sind auf konkrete <code>memory_required</code>-Ziele zurueckgefuehrt.</li>
+<li>Alle 5 vorhandenen Wirtschaftswissenschaften-Memory-Knoten sind dadurch rueckverfolgt.</li>
+<li>Beide konfigurierten GK/LK-Composition-Views zeigen sichtbare Memory-Pflichten auf sichtbare Memory-Knoten.</li>
+<li>Die Decks bleiben bewusst schmal: Sie sichern Marktordnung/Wettbewerb/Sozialstaat, Unternehmen/Rechnungswesen/Finanzierung, Makrooekonomie/Geldpolitik, Aussenwirtschaft/Entwicklung sowie Wirtschaftsrecht/Falltechnik; Rechnen, Modellkritik, Fallsubsumtion, Materialanalyse und Urteil bleiben die fuehrende Lernarbeit.</li>
+</ul>
+<p>Nicht gemeint ist:</p>
+<blockquote>
+<p>Jede denkbare fachliche Teilroute, jede Bundeslandvariation oder jede moegliche UI-Projektion ist automatisch perfekt.</p>
+</blockquote>
+<p>Neue Stufen, Kursprofile oder learner-facing Varianten muessen als zusaetzliche QA-Scopes, Composition Views oder Validatorprofile explizit modelliert werden, wenn sie denselben Dashboardanspruch tragen sollen.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

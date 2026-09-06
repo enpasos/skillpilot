@@ -1,0 +1,5074 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/production-pipelines/mem-fwu-roundtrip/">
+      
+      
+        <link rel="prev" href="../skillpilot-subject-export-package/">
+      
+      
+        <link rel="next" href="../exam-example/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>MEM/FWU Roundtrip Pipeline - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#memfwu-core-roundtrip-pipeline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MEM/FWU Roundtrip Pipeline
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#roundtrip-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roundtrip Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bound-fwu-core-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bound FWU Core Version
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-first-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core-First Mapping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core-First Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#didactic-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Didactic prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-axis-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Competency-axis projection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goal-containment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal containment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owl-safe-literals-and-source-quarantine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OWL-safe literals and source quarantine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goal-visualization-package-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal-Visualization Package Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-representation-in-rdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image Representation in RDF
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-finished-package-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production finished-package gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-build-the-current-subject-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Build the current subject package
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-validate-the-package-independently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Validate the package independently
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-run-the-preferred-semantic-roundtrip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Run the preferred semantic roundtrip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-validate-the-owl-profile-and-import-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Validate the OWL profile and import closure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-optional-technical-carrier-roundtrip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Optional technical carrier roundtrip
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Gates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remaining-skillpilot-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remaining SkillPilot Profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upstream-follow-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upstream Follow-up
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#roundtrip-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roundtrip Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bound-fwu-core-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bound FWU Core Version
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-first-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core-First Mapping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core-First Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#didactic-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Didactic prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competency-axis-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Competency-axis projection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goal-containment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal containment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owl-safe-literals-and-source-quarantine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OWL-safe literals and source quarantine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goal-visualization-package-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goal-Visualization Package Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-representation-in-rdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image Representation in RDF
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-finished-package-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production finished-package gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-build-the-current-subject-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Build the current subject package
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-validate-the-package-independently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Validate the package independently
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-run-the-preferred-semantic-roundtrip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Run the preferred semantic roundtrip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-validate-the-owl-profile-and-import-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Validate the OWL profile and import closure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-optional-technical-carrier-roundtrip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Optional technical carrier roundtrip
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Gates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remaining-skillpilot-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remaining SkillPilot Profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upstream-follow-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upstream Follow-up
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="memfwu-core-roundtrip-pipeline">MEM/FWU Core Roundtrip Pipeline</h1>
+<p>This pipeline proves that a SkillPilot subject publication package can be transformed into a core-first RDF/OWL bundle based on the FWU Lehrplan-Ontologie and reconstructed semantically without reading the original package as an input source.</p>
+<p>The target release architecture that turns this reference pipeline into paired JSON-runtime and FWU-ontology curriculum releases is described in <a href="../../concept/skill-graph/dual-curriculum-package-releases/">Dual Curriculum Package Releases</a>.</p>
+<p>The current implementation checkpoint and remaining roadmap are tracked in <a href="../../dev/dual-curriculum-package-implementation-status/">Dual Curriculum Package Implementation Status</a>.</p>
+<p>The legacy reference scope for the already working pilot commands below is:</p>
+<p><code>tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip</code></p>
+<p>This reference ZIP belongs to the explicitly marked legacy subject-export lane. A successful semantic roundtrip proves equivalence for the covered content and image sidecars; it does not prove <code>full-standalone-v1</code> runtime readiness, so this specific artifact remains <code>not-ready-legacy</code>.</p>
+<p>DPK-003 provides the normative <a href="../../qa-ci/dual-curriculum-release-contracts/">dual-release contract gate</a>. It intentionally exposes two differences from this legacy pilot: the existing comparator drops <code>null</code> properties during its local normalization and compares several goal arrays as sorted sets, while the release contract keeps missing/null/default distinct and preserves runtime-observable list order. Therefore the current <code>semantic-reconstruction-report.json</code>, technical <code>roundtrip-report.json</code>, and OWL report remain hashable input evidence only; none of them may be relabelled as the public equivalence verdict. DPK-004 compiles and independently validates the complete, unpacked Mathematik release normal form: Runtime closure, all active image-byte bindings, and the four digest-relevant but non-Runtime publication artifacts for mappings, sources, SourceGoals, and quality. It is documented in <a href="../../qa-ci/curriculum-release-model-conformance/">Curriculum Release Model Conformance</a>. DPK-005a closed package-level semantic identity, the complete offline schema trust set, deterministic ZIP32 safety, and the explicit <a href="../../qa-ci/curriculum-package-human-review-gates/">human review gates</a>.</p>
+<p>DPK-005b first materialized that model as a real <code>full-standalone-v1</code> staging ZIP. DPK-006a loads exact package content read-only from a content-addressed store; validator report v2 binds ZIP, manifest, closure and definition index before all manifest files are rehashed by the Java consumer. DPK-006b provisions that store through deterministic quarantine, a second exact streaming extraction/tree check and immutable evidence, then activates it by CAS with rollback history. DPK-006c-a–e bind the complete artifact inventory, landscapes, mappings, path-free runtime catalog, all 88 composition-view offerings, decks, images and browser consumers to the same immutable package generation. DPK-006c-f also replaces the two embedded source-rationale indexes with Catalog-1.2 discovery and generation-bound, per-goal SourceGoal evidence; the real state verifies 31 collections, 55 documents, 9,977 SourceGoals, 33,382 mapping edges and 869 evidenced canonical goals without exposing package paths. DPK-007 completes the chain as Build → Validator → Provisioner → Store → isolated SkillPilot: a package-only frontend and slim backend pass 15/15 real checks with <code>--clearenv</code> in a checkout-hidden, loopback-only namespace, including a real React/Chromium render, a Catalog-404 fail-closed case, a 213-goal package frontier, cards/Verified Recall, image bytes, migration data and source evidence. The readiness evaluator runs the policy-pinned consumer itself and independently rebinds its final assembly and evidence trees; <code>strace</code> observes the whole process tree and none of five repository poison lanes.</p>
+<p>DPK-007a now freezes the exact JSON input for DPK-008 as <code>skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip</code>. The ZIP contains 914 entries and 912 manifest records; it is 1,738,161,217 bytes with SHA-256 <code>403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9</code>, while its manifest has SHA-256 <code>32f732fc553fd39a462280eba7b2fa94367af34b3882ec6115a94948da4b1ebe</code>. Its 111 logical and 757 binary records share <code>contentDigest</code> <code>sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101</code>; the 757 embedded images total 1,696,390,279 bytes. The runtime closure contains 2,403 definitions and 18,820 references with closure digest <code>sha256:7e7d704a9c5e17fbe24f6ac881b44b41ae930f5ac945e69738b753c98b999121</code> and definition-index digest <code>sha256:4e99bba1d71d26b94bc23f4ea8251ff4dd3df15a5c63006b7564f7f69948c57d</code>.</p>
+<p>Ontology and publication profiles are <code>1.1.1</code>. Their Core position and SkillPilot authored-order lanes are checked against the unchanged 454-entry field registry, SHA-256 <code>2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48</code>. DPK-008a supplies the closed <code>fwu-owl-v1</code> inner manifest, package profile and validation-report contracts. DPK-008b materializes candidate <code>.3</code> through that contract as a reproducible Core-first FWU-OWL package, and DPK-008c validates the finished carrier through all eighteen structural, semantic, SHACL, OWL 2 DL, HermiT, sidecar, and reproducibility gates. The first DPK-008d reverse oracle exposed a forward Placement collision caused by reading the nonexistent <code>programUnitId</code>; Placement resources are now keyed by the exact <code>goalId@unitId@index</code>, so repeated placements of one goal, including repeated placements in the same unit, cannot overwrite one another. The corrected primary and peer are each 2,362,455,128 bytes with SHA-256 <code>abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94</code>; the manifest SHA-256 is <code>29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3</code>. Their 819 entries contain 817 manifest records, 757 binary sidecars, 32 reverse-support files and 824,452 RDF triples across the fixed eight segments.</p>
+<p>DPK-008d now reconstructs an independently valid JSON package from that FWU package alone. The output is 1,737,571,471 bytes with SHA-256 <code>7dcd233dd495900f6d6bd971ff6e86bdcdcfe5701f3522ed480be8336de23195</code>; its manifest SHA-256 is <code>8d7970435431ff78743d0bf413a54bbebee009bbaafe35f1283ebcb89b4f2ff0</code>. It contains 911 ZIP entries, 909 manifest records, 910 checksum rows, all 111 logical artifacts, and 757 binary resources totaling 1,696,390,279 bytes. All 111 normalized hash oracles and every binary byte binding pass, and the package retains the shared <code>contentDigest</code>. Candidate <code>.3</code> nevertheless remains honestly <code>not-ready-incomplete</code>: all 754 atomic visualization-scope goals have images, but 621 image reviews, 760 redistribution decisions, and 479 source-text decisions remain human gates.</p>
+<p>Accordingly, two lanes coexist temporarily:</p>
+<ul>
+<li>the commands below continue to exercise the already working legacy semantic OWL pilot;</li>
+<li><code>scripts/run_curriculum_full_package_conformance.sh</code> builds and validates the new JSON staging ZIP under <code>tmp/curriculum-release-model/full-standalone-package/</code>; the ordinary release-model wrapper stops before ZIP materialization;</li>
+<li><code>scripts/validate_curriculum_fwu_owl_package_contracts.py</code> validates the DPK-008a ontology-package contracts independently of the DPK-008b exporter;</li>
+<li><code>npm --prefix app run export:fwu-owl-package -- ...</code> builds the current primary and reproducibility-peer FWU-OWL packages atomically under <code>tmp/curriculum-release-model/fwu-owl-package/</code>;</li>
+<li><code>scripts/validate_fwu_owl_curriculum_package.py</code> validates finished FWU-OWL bytes independently and emits the external schema-valid receipt;</li>
+<li><code>scripts/provision_pinned_robot.sh</code> and <code>scripts/check_curriculum_fwu_owl_validation_tools.py</code> provision and verify the exact offline ontology toolchain;</li>
+<li><code>scripts/run_curriculum_fwu_owl_package_conformance.sh</code> consumes the exact frozen JSON artifact, rebuilds its FWU carrier, and executes the heavyweight real 18-gate validation.</li>
+<li><code>scripts/reconstruct_json_curriculum_package_from_fwu_owl.py</code> is the standalone registry-inverting reverse compiler and never imports the forward exporter;</li>
+<li><code>scripts/run_fwu_owl_reverse_compiler_hermetic.py</code> executes two host-root-free, networkless builds and binds the host-owned traces, minimal Runtime closure, tools, outputs, and independent validator receipts;</li>
+<li><code>scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py</code> validates the external reverse receipt, including nested receipts, actual ZIP/manifest/index bytes, the exact evidence inventory and independently derived trace/Runtime findings;</li>
+<li><code>scripts/run_curriculum_fwu_owl_reverse_conformance.sh</code> runs the complete finished-FWU validation and the heavyweight isolated reverse double build.</li>
+</ul>
+<p>The isolated reconstruction is complete, but it must not yet be presented as the final public dual-release verdict. DPK-009 still has to compare original and reconstructed normal forms as two post-build oracles, run both hermetic consumers, prove two complete variant pairs reproducible, and emit the normative equivalence report and release index.</p>
+<h2 id="roundtrip-contract">Roundtrip Contract</h2>
+<div class="highlight"><pre><span></span><code>SkillPilot subject ZIP, including goal-visualization images
+  -&gt; FWU-core-first semantic bundle: RDF/OWL + hashed binary sidecars
+  -&gt; reconstructed SkillPilot semantic content + materialized image sidecars
+  -&gt; comparison with the original ZIP as validation oracle
+</code></pre></div>
+<p>The original ZIP is used only after reconstruction to compare semantic fields and image bytes. The production reverse transformation reads the eight manifest-bound asserted RDF segments and their sidecars; it does not read JSON or image content from the original ZIP to reconstruct the result. <code>bundle.nt</code> is independently checked as their byte-exact derived concatenation, but it is not a second reconstruction authority.</p>
+<p>The roundtrip is semantic, not layout- or byte-identical for every generated metadata file. A separate technical carrier lane remains available for a byte-oriented package check.</p>
+<h2 id="bound-fwu-core-version">Bound FWU Core Version</h2>
+<p>The local FWU checkout defaults to:</p>
+<p><code>tmp/lehrplan-ontologie</code></p>
+<p>The exporter requires and records:</p>
+<ul>
+<li>Git commit of the checkout;</li>
+<li><code>src/ontology/components/lehrplan-core.owl</code>;</li>
+<li>ontology IRI <code>https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl</code> as the identity recorded in RDF;</li>
+<li>the exact ontology IRI, all declarations used by the exporter, and selected structural sentinel axioms for prerequisites, references, subject-specific competencies, process-competency areas, grades, school stages, requirement levels, titles, and reference positions;</li>
+<li>a copy and SHA-256 digest of the bound core module in the slim bundle.</li>
+</ul>
+<p>The manifest must contain a non-empty Git commit hash and canonical repository-relative Core source path; the RDF binding must repeat both values exactly. Missing values cannot pass by comparing two absent fields.</p>
+<p>The profile always imports the canonical W3ID ontology IRI. The OASIS XML catalog <code>catalog-v001.xml</code> resolves that IRI to <code>ontology/lehrplan-core.owl</code>, so ontology tooling uses the pinned local copy without changing the ontology's identity. The manifest records the canonical import, catalog, bound commit, and core checksum.</p>
+<p><code>declarations.nt</code> declares the classes and property kinds used by the data in the same RDF graph as <code>bundle.nt</code>. This matters for RDF-to-OWL parsers: a later OWL merge cannot retroactively reinterpret unknown predicates that were initially parsed as annotation properties. The closed v1 policy takes the exact same-kind union of 485 registry-derived declarations and all 65 declarations from the byte-pinned application ontology, yielding 510 application declarations, then adds 16 explicitly typed Core/external parser-bootstrap properties. The resulting segment therefore contains exactly 526 declaration triples. <code>sp:fieldState</code> preserves a present empty collection without carrying its content; <code>sp:referenceRole</code> types application-level competency-axis references. Null values in the real candidate are either canonical-JSON literals or explicitly excluded generated fields. The richer domains, ranges, subclass axioms, and equivalences still come from the application profile and imported FWU core.</p>
+<p>This binding is currently necessary because <a href="https://github.com/FWU-DE/lehrplan-ontologie/pull/9">FWU-DE/lehrplan-ontologie#9</a> added <code>LP_0000554</code> to the merged source module while the generated <code>lp*.ttl/owl</code> release artifacts in the same upstream checkout have not yet been regenerated with that term. The pipeline fails early if the expected core contract is unavailable instead of silently falling back to an older ontology release.</p>
+<h2 id="core-first-mapping">Core-First Mapping</h2>
+<table>
+<thead>
+<tr>
+<th>SkillPilot meaning</th>
+<th>Primary representation</th>
+<th>Application fallback or extension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atomic curricular goal with a named curricular area parent</td>
+<td><code>LP_0000336</code> Fachbezogene Kompetenzspezifikation</td>
+<td><code>sp:LearningGoal</code> + <code>sp:AtomicGoal</code> preserve the runtime graph-node distinction</td>
+</tr>
+<tr>
+<td>Curricular atomic goal without an authored curricular-area parent</td>
+<td><code>LP_0000336</code> plus membership in the single deterministic package-generated <code>LP_0000349</code> fallback area</td>
+<td>the authored graph remains parentless; the additive Core projection has no SkillPilot goal ID and is ignored during reconstruction</td>
+</tr>
+<tr>
+<td>Curricular cluster</td>
+<td><code>LP_0000349</code> CE-Bereich</td>
+<td><code>sp:LearningGoal</code> + <code>sp:ClusterGoal</code></td>
+</tr>
+<tr>
+<td>K1–K6 catalog entry</td>
+<td><code>LP_0030265</code> Prozessbezogener Kompetenzbereich (Bistas), core title/number, and mathematics subject</td>
+<td><code>sp:CompetencyCatalogEntry</code> preserves the catalog role</td>
+</tr>
+<tr>
+<td>Authored goal-to-K1–K6 link</td>
+<td>reified <code>LP_0030065</code> CE-Verweis via <code>LP_0030071</code> / <code>LP_0030072</code> for curricular goals</td>
+<td>direct <code>sp:competencyRef</code> is the runtime/unscoped export fallback and remains a legacy importer fallback</td>
+</tr>
+<tr>
+<td><code>dimensionTags.processCompetencies</code></td>
+<td>27 <code>LP_0030265</code> resources for K1–K6 and Kx.y; Kx.y is a BFO part of Kx</td>
+<td>exact structured JSON remains authoritative for reconstruction</td>
+</tr>
+<tr>
+<td><code>dimensionTags.guidingIdeas</code></td>
+<td>five <code>LP_0000268</code> Leitidee-(Bista) resources for L1–L5</td>
+<td>exact structured JSON remains authoritative for reconstruction</td>
+</tr>
+<tr>
+<td>Program year/stage</td>
+<td><code>LP_0000026</code> with <code>LP_2000005</code>–<code>LP_2000010</code>; <code>LP_0000047</code> with Sek I/Sek II individuals</td>
+<td><code>sp:ProgramUnit</code> and placement metadata preserve the application program model</td>
+</tr>
+<tr>
+<td>Strict curricular <code>contains</code></td>
+<td><code>BFO_0000051</code> (<code>hat Teil</code>)</td>
+<td><code>sp:containsGoal</code> additionally preserves the authored direct edge</td>
+</tr>
+<tr>
+<td>Non-curricular or mixed runtime <code>contains</code></td>
+<td>not forced into BFO parthood</td>
+<td><code>sp:containsGoal</code></td>
+</tr>
+<tr>
+<td>Curricular-to-curricular <code>requires</code></td>
+<td>reified <code>LP_0000554</code> Didaktische Voraussetzung</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Runtime <code>requires</code> involving practice, assessment, memory, orientation, or runtime-only clusters</td>
+<td>not asserted as a curricular prerequisite</td>
+<td>direct <code>sp:didacticRequires</code></td>
+</tr>
+<tr>
+<td>Curricular title</td>
+<td><code>LP_0030056</code> -&gt; <code>LP_0000346</code> -&gt; <code>LP_0000344</code></td>
+<td>readable <code>rdfs:label</code> remains in parallel</td>
+</tr>
+<tr>
+<td>Curricular description</td>
+<td><code>LP_0030051</code> -&gt; <code>LP_0030003</code> -&gt; <code>LP_0000344</code></td>
+<td>readable <code>dcterms:description</code> remains in parallel</td>
+</tr>
+<tr>
+<td>Curricular short number</td>
+<td><code>LP_0030057</code> -&gt; <code>LP_0000347</code> -&gt; <code>LP_0000344</code></td>
+<td><code>sp:shortKey</code> preserves the exact runtime field</td>
+</tr>
+<tr>
+<td>Visualization of a curricular goal</td>
+<td>generic <code>LP_0030065</code> CE-Verweis to <code>schema:ImageObject</code>, ordered with <code>LP_0000460</code></td>
+<td>role and package path/hash/length remain SkillPilot packaging metadata</td>
+</tr>
+<tr>
+<td>Visualization of a runtime-only or unscoped goal</td>
+<td>not forced into a curricular CE reference</td>
+<td><code>sp:GoalVisualizationReference</code> via <code>sp:hasGoalVisualization</code> / <code>sp:referencesAsset</code></td>
+</tr>
+<tr>
+<td>Official curriculum document (<code>semanticType: curriculum</code>)</td>
+<td><code>LP_0000438</code> Lehrplan with Core title and canonical URI</td>
+<td>stable source identity, collection grouping, role, and optional landing URL remain publication evidence</td>
+</tr>
+<tr>
+<td>Official supplemental source (<code>semanticType: supplemental-source</code>)</td>
+<td>no false Core-<code>Lehrplan</code> claim</td>
+<td><code>sp:OfficialSourceDocument</code> with <code>rdfs:label</code>; role and semantic type are preserved exactly</td>
+</tr>
+<tr>
+<td>Reviewed SourceGoal evidence</td>
+<td>conservative <code>LP_0000261</code> Curriculares Element with Core title and description</td>
+<td>reviewed source-aligned authored wording/hash, document join, locator, classification, and split lineage remain publication evidence; no verbatim-PDF claim is inferred</td>
+</tr>
+<tr>
+<td>Authoritative source-to-canonical mapping</td>
+<td><code>LP_0030065</code> CE-Verweis via <code>LP_0030071</code> / <code>LP_0030072</code></td>
+<td>only <code>exact</code> versus <code>partial</code> needs a small <code>sp</code> predicate</td>
+</tr>
+<tr>
+<td>Quality evidence</td>
+<td>no Core assertion</td>
+<td>semantic-atomicity, memory-card, and visualization decisions remain <code>sp</code> evidence and never enter Runtime closure</td>
+</tr>
+</tbody>
+</table>
+<h3 id="didactic-prerequisites">Didactic prerequisites</h3>
+<p>Every prerequisite whose source and target are curricular goals is represented as a first-class reference resource:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">&lt;goal/current&gt;</span> <span class="nn">lp</span><span class="p">:</span><span class="nt">LP_0030071</span> <span class="nv">&lt;goal/current/didactic-prerequisite/prior&gt;</span> <span class="p">.</span>
+
+<span class="nv">&lt;goal/current/didactic-prerequisite/prior&gt;</span>
+  <span class="kt">a</span> <span class="nn">lp</span><span class="p">:</span><span class="nt">LP_0000554</span> <span class="p">;</span>
+  <span class="nn">lp</span><span class="p">:</span><span class="nt">LP_0030072</span> <span class="nv">&lt;goal/prior&gt;</span> <span class="p">.</span>
+</code></pre></div>
+<p><code>LP_0030071</code> is <code>hat Verweis</code>; <code>LP_0030072</code> is <code>verweist auf</code>. <code>LP_0000554</code> is already a subclass of <code>LP_0030065</code>, so the redundant generic type and reference-function assertions are omitted. A generic <code>CE-Verweis</code> is not interpreted as a prerequisite. Runtime-only edges use <code>sp:didacticRequires</code> and cannot accidentally acquire curricular semantics.</p>
+<h3 id="competency-axis-projection">Competency-axis projection</h3>
+<p>Structured mathematics axes are projected to the FWU Core only for goals already classified as curricular. Runtime and unscoped goals keep the same data solely in <code>sp:dimensionTagsJson</code> and are not turned into curricular elements by an axis link.</p>
+<p>Every projected axis link uses the generic Core reference pattern. <code>sp:referenceRole</code> is the one application-level reconstruction hint and distinguishes:</p>
+<ul>
+<li>authored <code>competencyRefs</code>;</li>
+<li>derived <code>dimensionTags.processCompetencies</code>;</li>
+<li>derived <code>dimensionTags.guidingIdeas</code>.</li>
+</ul>
+<p>One source/target reference may have more than one role. The importer reconstructs authored <code>competencyRefs</code> only from that exact role, so a derived K1/K1.x projection cannot silently become authored source data. Bundles predating roles retain the former type-based importer fallback.</p>
+<p>The shared L1–L5 resources deliberately use stage-neutral labels (<code>Leitidee L1</code> … <code>Leitidee L5</code>): Sek-I and Sek-II source frameworks use different wording for the same canonical dimension codes. Likewise, Kx.y resources are code-level process subareas, not invented <code>LP_0030266</code> standards; their exact code-level source values remain lossless in <code>dimensionTagsJson</code>.</p>
+<h3 id="goal-containment">Goal containment</h3>
+<p>The exporter classifies graph nodes before writing containment:</p>
+<ul>
+<li>every authored direct edge uses <code>sp:containsGoal</code> as the lossless roundtrip anchor;</li>
+<li>a curricular cluster containing a curricular cluster or atomic curricular goal additionally uses <code>BFO_0000051</code>;</li>
+<li>practice, assessment, memory, orientation, program, runtime-only support folders, and other mixed graph edges are not asserted as BFO parthood;</li>
+<li>the old redundant <code>sp:hasCurricularPart</code> term is not written;</li>
+<li>the importer reconstructs current bundles from direct <code>sp:containsGoal</code> assertions and reads BFO-only assertions only as a legacy fallback.</li>
+</ul>
+<p>The direct application assertion is necessary even for strict curricular edges: <code>BFO_0000051</code> is transitive in the FWU core. A reasoner may therefore materialize indirect descendants. Those inferred triples are valid BFO semantics but must not become direct SkillPilot children during reconstruction.</p>
+<p>Only top-level curricular elements are attached to the landscape as BFO parts. The exporter does not flatten every curricular descendant into a direct landscape child.</p>
+<p>The Core requires every projected <code>LP_0000336</code> atomic competency to have a named <code>LP_0000349</code> area parent. If an authored <code>curricularAtomic</code> has no direct authored <code>curricularArea</code> parent, the exporter creates exactly one deterministic subject-wide fallback area at <code>{landscapeIri}/core-projection/unscoped-curricular-area</code> and attaches exactly those atoms with <code>BFO_0000051</code>. This is an additive Core/SHACL projection only: it has no SkillPilot membership or goal ID, does not enter the normal form or <code>contentDigest</code>, and is ignored by the reverse compiler.</p>
+<h3 id="owl-safe-literals-and-source-quarantine">OWL-safe literals and source quarantine</h3>
+<p>Compact JSON metadata is serialized as <code>xsd:string</code>. A private <code>sp:json</code> datatype is deliberately not used because arbitrary custom datatypes made the otherwise valid graph fail the OWL 2 DL profile. The values in the closed SHACL <code>goalSemanticKind</code> enumeration are likewise written explicitly as <code>xsd:string</code>, so they compare equal to the compiler's typed literals in standards-strict SHACL implementations.</p>
+<p>Before an ordinary RDF literal is written, the exporter rejects XML/RDF-unsafe control characters, U+FFFE/U+FFFF, and unpaired UTF-16 surrogates. Official source evidence is not silently cleaned. If a complete source-goal record contains such OCR/PDF extraction artifacts:</p>
+<ul>
+<li>its safe fields remain ordinary queryable RDF literals;</li>
+<li>the exact record is additionally stored as escaped <code>xsd:string</code> JSON in <code>sp:quarantinedRecordJson</code>;</li>
+<li>unsafe direct literals are omitted;</li>
+<li>the semantic importer restores the exact original record from the quarantined JSON and overlays any safe first-class fields.</li>
+</ul>
+<p>This is a narrow application fallback for malformed source evidence, not a replacement for normal core text entities.</p>
+<p>That quarantine remains only a backward-compatible reader/writer lane for legacy roundtrip bundles. The DPK-004 release compiler has a stricter contract: it rejects C0 controls, U+FFFE/U+FFFF, and unpaired UTF-16 surrogates in every input scalar before projection or hashing and never substitutes a sanitized surrogate value. This gate found real PDF/OCR residue in the Mathematik source extractions; the affected authored source was corrected. Future recurrence blocks the release instead of being hidden in a quarantine carrier.</p>
+<p>Structured application metadata stays structured across the roundtrip. Every present <code>dimensionTags</code> value, including ordered and empty arrays, is preserved as canonical JSON in <code>sp:dimensionTagsJson</code>; repeated <code>sp:dimensionTag</code> literals remain only as a query/legacy projection for array-valued data. Core axis triples are an additional semantic projection, never the lossless source of truth.</p>
+<h2 id="goal-visualization-package-contract">Goal-Visualization Package Contract</h2>
+<p>The subject-package builder selects images exclusively from active canonical links with:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"goal-visualization"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It does not scan the asset directory indiscriminately. Replaced or orphaned files are therefore excluded.</p>
+<p>For a canonical URL such as:</p>
+<div class="highlight"><pre><span></span><code>/assets/goal-visualizations/mathematik/&lt;goalId&gt;/&lt;goalId&gt;.jpg
+</code></pre></div>
+<p>the ZIP contains the same path below its archive root. The file can consequently be resolved by removing the leading slash from the canonical URL.</p>
+<p><code>data/resources/goal-visualizations.json</code> records, per active link:</p>
+<ul>
+<li>goal ID and link order;</li>
+<li>package path and public URL;</li>
+<li>MIME type, byte length, and SHA-256;</li>
+<li><code>skillpilotId</code>, role, title, provider, description, alt text, language, license note, and review status.</li>
+</ul>
+<p>The independent subject-package validator checks:</p>
+<ul>
+<li>unique ZIP entry names, checksum paths, and manifest paths;</li>
+<li>a metadata preflight before decompression: regular-file modes, central-directory sizes, per-entry/total limits, and unambiguous entry metadata;</li>
+<li>an exact manifest file set: every ZIP file except <code>manifest.json</code> and <code>SHA256SUMS</code> appears exactly once;</li>
+<li>rejection of absolute/drive-rooted paths, backslashes, Windows-reserved names or characters, empty, <code>.</code> or <code>..</code> path segments, case-folded/Unicode-normalized collisions, and file/child prefix conflicts;</li>
+<li>rejection of symlinks, directories, and other special ZIP entries: publication ZIPs contain regular-file entries only;</li>
+<li>safe root-relative paths and matching goal/file IDs;</li>
+<li>JPEG/PNG extension, MIME type, and magic bytes;</li>
+<li>exact agreement between canonical link, resource index, ZIP entry, and package manifest;</li>
+<li>byte length and SHA-256;</li>
+<li>a 64 MiB limit per visualization and 8 GiB for the complete visualization lane, enforced consistently by builder, validator, and roundtrip;</li>
+<li>before any per-entry decompression, both roundtrip importers additionally reject archives with an entry above 512 MiB or more than 16 GiB total declared uncompressed data;</li>
+<li>absence of missing and orphaned image entries;</li>
+<li>explicit image-license category and preserved per-link license note.</li>
+</ul>
+<p>Its JSON and Markdown reports record the SHA-256 of the outer ZIP container. The validator hashes that ZIP before and after all <code>zipinfo</code>/<code>unzip</code> checks and fails if the bytes change during validation.</p>
+<p>The category <code>goal-visualization-ai-generated-curated</code> records provenance and curation status. It is deliberately not treated as an SPDX identifier or an automatic CC BY grant.</p>
+<h2 id="image-representation-in-rdf">Image Representation in RDF</h2>
+<p>Images on curricular goals reuse the core <code>CE-Verweis</code> pattern:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">&lt;goal/G&gt;</span> <span class="nn">lp</span><span class="p">:</span><span class="nt">LP_0030071</span> <span class="nv">&lt;goal/G/goal-visualization/0&gt;</span> <span class="p">.</span>
+
+<span class="nv">&lt;goal/G/goal-visualization/0&gt;</span>
+  <span class="kt">a</span> <span class="nn">lp</span><span class="p">:</span><span class="nt">LP_0030065</span> <span class="p">;</span>
+  <span class="nn">lp</span><span class="p">:</span><span class="nt">LP_0030072</span> <span class="nv">&lt;package/asset/...&gt;</span> <span class="p">;</span>
+  <span class="nn">lp</span><span class="p">:</span><span class="nt">LP_0000460</span> <span class="mi">0</span> <span class="p">;</span>
+  <span class="nn">sp</span><span class="p">:</span><span class="nt">role</span> <span class="s">"primary"</span> <span class="p">.</span>
+
+<span class="nv">&lt;package/asset/...&gt;</span>
+  <span class="kt">a</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">ImageObject</span> <span class="p">;</span>
+  <span class="nn">schema</span><span class="p">:</span><span class="nt">contentUrl</span> <span class="s">"/assets/goal-visualizations/..."</span> <span class="p">;</span>
+  <span class="nn">schema</span><span class="p">:</span><span class="nt">encodingFormat</span> <span class="s">"image/jpeg"</span> <span class="p">;</span>
+  <span class="nn">schema</span><span class="p">:</span><span class="nt">accessibilitySummary</span> <span class="s">"..."</span><span class="o">@</span><span class="ge">de</span> <span class="p">;</span>
+  <span class="nn">sp</span><span class="p">:</span><span class="nt">zipPath</span> <span class="s">"&lt;archive-root&gt;/assets/goal-visualizations/..."</span> <span class="p">;</span>
+  <span class="nn">sp</span><span class="p">:</span><span class="nt">sha256</span> <span class="s">"..."</span> <span class="p">;</span>
+  <span class="nn">sp</span><span class="p">:</span><span class="nt">byteLength</span> <span class="mi">12345</span> <span class="p">.</span>
+</code></pre></div>
+<p>Runtime-only and currently unscoped goals use the application lane instead, because a memory, assessment, orientation, or unscoped runtime node must not become a curricular competency merely because it has an image:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">&lt;goal/runtime&gt;</span> <span class="nn">sp</span><span class="p">:</span><span class="nt">hasGoalVisualization</span> <span class="nv">&lt;goal/runtime/goal-visualization/0&gt;</span> <span class="p">.</span>
+
+<span class="nv">&lt;goal/runtime/goal-visualization/0&gt;</span>
+  <span class="kt">a</span> <span class="nn">sp</span><span class="p">:</span><span class="nt">GoalVisualizationReference</span> <span class="p">;</span>
+  <span class="nn">sp</span><span class="p">:</span><span class="nt">referencesAsset</span> <span class="nv">&lt;package/asset/...&gt;</span> <span class="p">;</span>
+  <span class="nn">sp</span><span class="p">:</span><span class="nt">order</span> <span class="mi">0</span> <span class="p">.</span>
+</code></pre></div>
+<p>The SkillPilot profile declares <code>schema:ImageObject rdfs:subClassOf IAO_0000030</code>, so the duplicate per-image IAO type assertion is unnecessary. The importer supports both lanes but, for current self-contained bundles, also proves that every reference uses the lane dictated by the canonical goal classification.</p>
+<p>For goals with images, <code>sp:resourceLinksJson</code> retains null placeholders at the original array positions instead of duplicating all image metadata. The importer fills those positions from the explicit references. Older bundles containing complete JSON links remain readable without producing duplicates.</p>
+<p><code>assets.nt</code> contains these references and media metadata. The corresponding image files live under <code>slim/assets/goal-visualizations/...</code>.</p>
+<p>Binary image data is never Base64-encoded into <code>bundle.nt</code>. The slim manifest records every sidecar path, size, and SHA-256.</p>
+<p>Selected image entries are extracted in argument-size-bounded batches (one batch for the current package), then individually checked for regular-file type, byte length, and SHA-256. Reconstructed asset trees receive independent copies whose destination bytes are hashed again, so later mutation of an input sidecar cannot change an already validated reconstruction.</p>
+<h2 id="commands">Commands</h2>
+<h3 id="production-finished-package-gate">Production finished-package gate</h3>
+<p>Run the bounded tool and validator checks from the repository root:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>scripts/curriculum_fwu_owl_validation_requirements.txt
+bash<span class="w"> </span>scripts/provision_pinned_robot.sh
+python3<span class="w"> </span>-B<span class="w"> </span>scripts/check_curriculum_fwu_owl_validation_tools.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--report<span class="w"> </span>tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
+python3<span class="w"> </span>-B<span class="w"> </span>scripts/validate_fwu_owl_curriculum_package.py<span class="w"> </span>--self-test
+python3<span class="w"> </span>-B<span class="w"> </span>scripts/reconstruct_json_curriculum_package_from_fwu_owl.py<span class="w"> </span>--self-test
+python3<span class="w"> </span>-B<span class="w"> </span>scripts/run_fwu_owl_reverse_compiler_hermetic.py<span class="w"> </span>--self-test
+python3<span class="w"> </span>-B<span class="w"> </span>scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py<span class="w"> </span>--self-test
+</code></pre></div>
+<p>The provisioning command is the only command in this set allowed to download ROBOT. The checker and finished-ZIP validator are network-free and require exact direct pins: <code>jsonschema 4.26.0</code>, <code>pySHACL 0.30.1</code>, <code>RDFLib 7.6.0</code>, <code>owlrl 7.6.2</code>, <code>ROBOT 1.9.10</code>, HermiT <code>1.4.5.456</code>, and the repository-pinned Amazon Corretto runtime.</p>
+<p>The complete real release-conformance lane is:</p>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>scripts/run_curriculum_fwu_owl_package_conformance.sh
+</code></pre></div>
+<p>The wrapper is bound to the frozen DPK-007a JSON artifact and never rebuilds that artifact from the current authoring tree. Restore the exact archived ZIP at its documented default path, or set <code>SKILLPILOT_FROZEN_JSON_PACKAGE</code> to that ZIP; its frozen SHA-256 is checked before provisioning. The wrapper writes the external receipt to <code>tmp/curriculum-release-model/fwu-owl-validation/fwu-owl-package-validation-report.json</code>, the hash-bound ontology evidence below <code>tmp/curriculum-release-model/fwu-owl-validation/evidence/</code>, and the tool receipt to <code>tmp/curriculum-release-model/fwu-owl-validation/tools-report.json</code>. This heavyweight 2.36-GB/HermiT lane is deliberately not part of ordinary CI. The scheduled/manual optional workflow uses separate fresh runners for the current real JSON package gate, the bounded FWU-OWL/roundtrip checks, and the full subject-export gate. Locally, <code>./run_ci.sh package</code> and <code>./run_ci.sh owl</code> keep those concerns selectable, while <code>./run_ci.sh full</code> runs both.</p>
+<p>The complete real reverse-conformance lane is:</p>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>scripts/run_curriculum_fwu_owl_reverse_conformance.sh
+</code></pre></div>
+<p>It first requires the exact corrected FWU package and its clean 18-gate receipt, then executes two private reverse builds. The runner starts each <code>bubblewrap --clearenv</code> namespace without a Host-Root, mounts only Input, pinned tools and narrow root-owned Python/native-library roots read-only, unshares the network and traces the Entry/Core process tree from a host-side tracer that is invisible through sandbox <code>/proc</code>. Python runs with <code>-I -S</code>. The Rawtrace audit derives and rehashes the exact Runtime files actually opened, including ELF loader dependencies. Each reconstructed ZIP is checked by the implementation-independent full-package validator v2; only byte-identical outputs with clean receipts pass. The external validator parses the 18-gate input receipt, both 6-gate output receipts, compiler reports and probes, rederives the filtered Entry/Core trace from the host Rawtrace, derives the Runtime file set and reopens ZIP central directory, manifest, <code>SHA256SUMS</code> and Semantic Content Index. The wrapper writes its report to <code>tmp/curriculum-release-model/fwu-owl-reverse/reverse-compilation-report.json</code>, with an exact 20-file evidence inventory below the adjacent evidence directory. The bounded CI lanes cover 31 reverse-compiler guarantees, 21 hermetic-runner guarantees, and the reverse-report contract's 53 semantic mutations, 6 raw-JSON rejection cases and 10 consistently rehashed evidence attacks.</p>
+<p>The following commands exercise the legacy reference pilot and run from <code>app/</code>.</p>
+<h3 id="1-build-the-current-subject-package">1. Build the current subject package</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>export:subject-package<span class="w"> </span>--<span class="w"> </span>--subject<span class="w"> </span>Mathematik<span class="w"> </span>--version<span class="w"> </span><span class="m">0</span>.1.0
+</code></pre></div>
+<h3 id="2-validate-the-package-independently">2. Validate the package independently</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>export:subject-packages:validate<span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--zip<span class="w"> </span>../tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
+</code></pre></div>
+<h3 id="3-run-the-preferred-semantic-roundtrip">3. Run the preferred semantic roundtrip</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>roundtrip:mem-fwu:semantic
+</code></pre></div>
+<p>This is equivalent to the two explicit stages:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>roundtrip:mem-fwu:slim<span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--zip<span class="w"> </span>../tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ontology-dir<span class="w"> </span>../tmp/lehrplan-ontologie
+
+npm<span class="w"> </span>run<span class="w"> </span>roundtrip:mem-fwu:semantic-reconstruct<span class="w"> </span>--<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--rdf<span class="w"> </span>../tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/bundle.nt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--zip<span class="w"> </span>../tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
+</code></pre></div>
+<h3 id="4-validate-the-owl-profile-and-import-closure">4. Validate the OWL profile and import closure</h3>
+<p>Set <code>ROBOT_JAR</code> to a current <a href="http://robot.obolibrary.org/">ROBOT</a> release. From <code>app/</code>, the manifest-binding gate can run OWL 2 DL and HermiT together:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">ROBOT_JAR</span><span class="o">=</span>/absolute/path/to/robot.jar<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>roundtrip:mem-fwu:owl:reason
+</code></pre></div>
+<p>It writes <code>owl-validation-report.{json,md}</code> with the SHA-256 of ROBOT, manifest, bundle, profile, catalog, bound Core, DL report, and reasoned output. It also fails if any input changes while ROBOT is running.</p>
+<p>The underlying profile-only ROBOT invocation, shown from the repository root, is:</p>
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-Xmx3g<span class="w"> </span>-jar<span class="w"> </span><span class="s2">"</span><span class="nv">$ROBOT_JAR</span><span class="s2">"</span><span class="w"> </span>merge<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--catalog<span class="w"> </span>tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/catalog-v001.xml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input<span class="w"> </span>tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/skillpilot-mem-fwu-profile.ttl<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input<span class="w"> </span>tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/bundle.nt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--collapse-import-closure<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>validate-profile<span class="w"> </span>--profile<span class="w"> </span>DL<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span>tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/robot-dl-report.txt
+</code></pre></div>
+<p>Keeping <code>merge</code> and <code>validate-profile</code> in one ROBOT invocation avoids a large RDF/XML intermediate file and Java XML entity-size limits for long evidence literals. The npm reasoning gate runs the corresponding HermiT invocation separately so both results are explicit.</p>
+<p>Before that independent ontology gate, the semantic report verifies and records the hashes of every RDF segment, <code>bundle.nt</code>, profile, catalog, bound Core, manifest, and input ZIP, including Core IRI, commit, and source path. It also proves that these inputs remain unchanged during semantic validation. <code>owl-validation-report.json</code> independently records the same OWL inputs and the ROBOT binary around the ROBOT/HermiT run.</p>
+<h3 id="5-optional-technical-carrier-roundtrip">5. Optional technical carrier roundtrip</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>roundtrip:mem-fwu
+</code></pre></div>
+<p>The technical lane stores UTF-8 package files as RDF line carriers. Binary images remain hashed sidecars next to the RDF and are materialized back during reconstruction; they are not coerced through UTF-8 text. Until a generic binary-sidecar vocabulary is added, any other binary package entry fails explicitly instead of being dropped.</p>
+<p>The final package-file comparison reads the original package's exact <code>SHA256SUMS</code> once and hashes the reconstructed files in bounded argument batches. It no longer launches two <code>unzip</code> processes for every file; the independently rerun package validator still checks the hashes against the reconstructed ZIP itself.</p>
+<h2 id="output">Output</h2>
+<p>The complete production wrapper writes DPK-008c/DPK-008d output below <code>tmp/curriculum-release-model/fwu-owl-package/</code>, <code>tmp/curriculum-release-model/fwu-owl-validation/</code>, and <code>tmp/curriculum-release-model/fwu-owl-reverse/</code>. The focused DPK-008d completion run reuses the final independently validated 18/18 carrier and writes its hardened receipt below <code>tmp/curriculum-release-model/fwu-owl-reverse-final-hardened/</code>. These receipts, rather than the legacy slim-pilot files below, are authoritative for the forward carrier and isolated reconstruction.</p>
+<p>The corrected FWU input is bound to 2,362,455,128 bytes, SHA-256 <code>abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94</code>, manifest SHA-256 <code>29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3</code>, and 824,452 RDF triples. The reconstructed JSON output is bound to 1,737,571,471 bytes, SHA-256 <code>7dcd233dd495900f6d6bd971ff6e86bdcdcfe5701f3522ed480be8336de23195</code>, manifest SHA-256 <code>8d7970435431ff78743d0bf413a54bbebee009bbaafe35f1283ebcb89b4f2ff0</code>, 911 ZIP entries, 909 manifest records, and 910 checksum rows.</p>
+<p>Default base directory:</p>
+<p><code>tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/</code></p>
+<p>Important paths:</p>
+<ul>
+<li><code>slim/declarations.nt</code>: self-contained OWL class/property declarations for RDF graph parsers;</li>
+<li><code>slim/landscape.nt</code>: goals, Core process/guiding axes, core-first <code>contains</code>, reified prerequisites, program units, placements, and external dependencies;</li>
+<li><code>slim/assets.nt</code>: goal-visualization references and media metadata;</li>
+<li><code>slim/assets/goal-visualizations/</code>: binary image sidecars;</li>
+<li><code>slim/sources.nt</code>: official source documents and reviewed source locators;</li>
+<li><code>slim/mappings.nt</code>: canonical mappings and reviewed decisions;</li>
+<li><code>slim/views.nt</code>: learner-facing composition views;</li>
+<li><code>slim/cards.nt</code>: memorization decks and cards;</li>
+<li><code>slim/bundle.nt</code>: RDF-only concatenation of the semantic <code>.nt</code> segments;</li>
+<li><code>slim/ontology/lehrplan-core.owl</code>: bound upstream core module;</li>
+<li><code>slim/catalog-v001.xml</code>: canonical Core-IRI to pinned local file mapping;</li>
+<li><code>slim/skillpilot-mem-fwu-profile.ttl</code>: remaining application vocabulary;</li>
+<li><code>slim/manifest.json</code>: ontology binding, SHA-256 for every RDF segment/bundle plus profile, catalog and Core, sidecars, and semantic counts;</li>
+<li><code>slim/robot-dl-report.txt</code>: ROBOT OWL 2 DL result;</li>
+<li><code>slim/robot-hermit-reasoned.owl</code>: HermiT output when the reasoning gate is requested;</li>
+<li><code>slim/owl-validation-report.*</code>: manifest-bound OWL/ROBOT inputs and hashed DL/reasoning outputs;</li>
+<li><code>slim/semantic-reconstructed/goal-visualizations.semantic.json</code>: reconstructed schema-compatible resource index;</li>
+<li><code>slim/semantic-reconstructed/goal-visualizations.diagnostic.json</code>: RDF reference resources and structural diagnostics;</li>
+<li><code>slim/semantic-reconstructed/package-assets/</code>: independently materialized and destination-verified image sidecars;</li>
+<li><code>slim/semantic-reconstructed/semantic-reconstruction-report.*</code>: semantic and byte-integrity verdict.</li>
+</ul>
+<h2 id="validation-gates">Validation Gates</h2>
+<p>The semantic reconstruction must pass all existing landscape, mapping, source, view, and card comparisons plus these core/media checks:</p>
+<ul>
+<li>every core prerequisite reference has exactly one incoming <code>LP_0030071</code> edge and one outgoing <code>LP_0030072</code> edge, known goal endpoints, no self-loop, and no duplicate source/target pair;</li>
+<li>every runtime prerequisite is a direct goal-to-goal <code>sp:didacticRequires</code> edge, and the union reconstructs the exact authored <code>requires</code> set;</li>
+<li>generic competency and curricular-visualization references have exactly one source and one correctly typed target, without duplicate source/target pairs;</li>
+<li>K1–K6/Kx.y process axes and L1–L5 guiding ideas have the exact expected Core types, resources, BFO hierarchy, curricular source scope, and reconstruction roles;</li>
+<li>current bundles use Core reference resources only for curricular goals and the application visualization lane only for runtime/unscoped goals;</li>
+<li>every canonical goal has exactly its expected Core area, Core atomic, or application/unscoped type; every Core atomic goal has a named <code>LP_0000349</code> parent rather than relying on an anonymous OWL filler;</li>
+<li>every goal has exactly one expected <code>sp:AtomicGoal</code> or <code>sp:ClusterGoal</code> base type;</li>
+<li>direct containment reconstructs the original <code>contains</code> sets without duplicates, while additional or inferred BFO parthood cannot introduce false direct children;</li>
+<li>every visualization link has exactly one routed reference, one image target, one position/order, and one indexed sidecar;</li>
+<li>RDF metadata equals the canonical resource link and package resource index;</li>
+<li><code>slim/manifest.json</code> contains exactly the same visualization sidecar records as RDF, including package/ZIP/sidecar paths, size, MIME type, and SHA-256, without duplicate IDs or paths;</li>
+<li>sidecar byte length and SHA-256 equal the RDF and original ZIP values;</li>
+<li>all verified sidecars are materialized into the reconstructed package-assets tree;</li>
+<li>missing, malformed, unsafe, duplicate, or orphaned resources fail the run.</li>
+</ul>
+<p>For the production package, DPK-008c independently attests all eighteen gates against the finished ZIP: archive/manifest/profile/inventory/binding/catalog/index/registry checks, strict ordered RDF and exact bundle construction, Core/profile bindings, SHACL with zero violations and warnings, OWL 2 DL, HermiT consistency with zero unsatisfiable named classes, all binary sidecars, and byte-identical reproducibility. DPK-008d adds 111/111 normalized logical-artifact oracles, exact binary-byte parity, a clean independent validator-v2 receipt for each of two byte-identical reconstructed packages, and an evidence-rehashing external receipt. That external gate reads the host-owned trace itself, must derive zero forbidden reads and network attempts, reconstructs the exact Runtime closure from traced opens plus kernel-loaded ELF dependencies, and binds compiler report, probe, sandbox log, output tree, validator log and the complete evidence manifest. The older slim-pilot ontology gate remains useful regression evidence: it merges <code>skillpilot-mem-fwu-profile.ttl</code>, <code>bundle.nt</code>, and the catalog-resolved core import, then requires the complete import closure to satisfy OWL 2 DL. HermiT consistency reasoning remains an additional gate there as well.</p>
+<p>The semantic, technical, package-validation, ROBOT-DL, and optional HermiT outputs jointly form the evidence. Semantic and OWL reports are bound to <code>slim/manifest.json</code>; technical and package-validation reports record and stability-check their input/output hashes directly. Those recorded hashes must agree for the artifacts they share. Do not infer validity from timestamps or copy old counts into this document after source changes.</p>
+<h2 id="remaining-skillpilot-profile">Remaining SkillPilot Profile</h2>
+<p>The profile is intentionally limited to concepts not supplied by the FWU core:</p>
+<ul>
+<li>technical package identity and deterministic reconstruction metadata;</li>
+<li>runtime graph-node distinctions and the direct-containment roundtrip anchor;</li>
+<li>one <code>sp:referenceRole</code> hint that prevents derived Core-axis projections from becoming authored SkillPilot references;</li>
+<li>program units and goal placements;</li>
+<li>scoped composition views;</li>
+<li>auditable mapping and review records;</li>
+<li>losslessly reconstructed authored source locators and fingerprints;</li>
+<li>memory-card decks and cards;</li>
+<li>practice, assessment, memory, and orientation nodes;</li>
+<li>explicit unscoped-curricular migration nodes where the FWU atomic competency restriction cannot yet be satisfied by a named area;</li>
+<li>runtime-only prerequisite edges where the FWU curricular prerequisite semantics do not fit;</li>
+<li>runtime/unscoped visualization references where the curricular CE-reference semantics do not fit;</li>
+<li>package path, hash, byte length, role, and review status for binary visualizations;</li>
+<li>a quarantined JSON record only when source text cannot be represented safely as an ordinary RDF/OWL literal.</li>
+</ul>
+<p>These are not all candidates for the FWU core. Composition views, learning runtime nodes, memorization cards, and binary package mechanics are application concerns. The dedicated prerequisite class and strict curricular parthood now use upstream terms directly.</p>
+<h2 id="operational-notes">Operational Notes</h2>
+<ul>
+<li>The mathematics visualization payload is currently much larger than the RDF metadata. Allow several GiB of free disk space for the source ZIP, slim sidecars, reconstructed copies, and transient bulk extraction.</li>
+<li>JPEG and PNG files are stored without recompression in the reproducible subject ZIP.</li>
+<li>RDF segment writers use bounded synchronous buffers and file statistics instead of ignoring stream backpressure or reading finished files back into memory.</li>
+<li>The semantic importer builds one reverse IRI index. Structural checks therefore resolve incoming reference edges in constant time instead of repeatedly scanning the complete graph.</li>
+<li>Production Placement resources use <code>goalId@unitId@index</code>. <code>unitId</code> is the authored field; the explicit index also preserves two otherwise equal goal/unit placements with different relations or contexts.</li>
+<li>Registry-directed scalar recovery distinguishes finite decimal numbers, explicit <code>null</code>, absent fields, and text. It never infers these states from lexical similarity alone.</li>
+<li>A resource with <code>delivery: external</code> intentionally has no <code>artifactPath</code>; only embedded resources participate in the binary-sidecar join.</li>
+<li>Dependency-closure definitions recover all non-singleton logical paths. Standard singleton roles use their contract paths even when omitted from that definition list; an exact redundant singleton binding is accepted, while a conflicting path fails closed.</li>
+<li>Image sidecars are batch-extracted per phase instead of spawning one <code>unzip</code> process per image; every extracted file is still verified independently before use.</li>
+<li>Generated path lists use code-unit ordering rather than locale-dependent collation.</li>
+<li>The deterministic ZIP writer streams uncompressed entries to disk and hashes the finished file without buffering the full archive. It uses ZIP32 and fails before writing if entry count, file size, offsets, or total archive size exceed supported limits.</li>
+<li>The production FWU package copies the pinned Core bytes without syntax conversion. Although the source filename ends in <code>.owl</code>, those bytes are OWL Functional Syntax and are inventoried as <code>text/owl-functional</code>, not RDF/XML.</li>
+<li>The versioned SkillPilot application ontology, SHACL Core shapes, and Core-only XML catalog under <code>contracts/curriculum-package/v1/ontology/</code> are external trust roots. Package-local copies must match their pinned byte length and SHA-256; the Shapes graph contains no SPARQL, JavaScript, or rule execution.</li>
+<li>Six bootstrap schemas, the global normalization/registry/definition contracts, and the JSON release profile's 22-schema set are externally pinned. The 25-entry FWU schema catalog is deterministic, and no package-local schema or profile may redefine the validator's trust root.</li>
+<li>A successful ontology validation requires the original JSON ZIP as a second input. Its exact ZIP and manifest hashes are checked first; release identity, edition, content digest, runtime/software profile and all five semantic contract bindings are then copied into and attested by the FWU report.</li>
+<li>Keep <code>tmp/</code> for generated packages and reports; do not commit roundtrip artifacts.</li>
+</ul>
+<h2 id="upstream-follow-up">Upstream Follow-up</h2>
+<p>When FWU regenerates its release artifacts and shapes with <code>LP_0000554</code>, the local binding can move from the source core module to the corresponding released artifact. Until then, the manifest makes the exact source commit, source syntax and core-module checksum independently reviewable; its redistribution status remains <code>review-required</code> until HR-005 resolves the applicable license and attribution duties.</p>
+<p>The integration stance remains collaborative: SkillPilot uses the FWU core where its semantics fit, retains application vocabulary only for genuine runtime/package concerns, and turns reproducible roundtrip evidence into focused upstream feedback.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

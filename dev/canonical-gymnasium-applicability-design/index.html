@@ -1,0 +1,5619 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/dev/canonical-gymnasium-applicability-design/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Canonical Gymnasium Applicability Design - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#canonical-gymnasium-applicability-design" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Canonical Gymnasium Applicability Design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-implementation-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current implementation status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design principle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#target-runtime-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Target runtime rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-runtime-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed runtime metadata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimal-schema-delta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal schema delta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-not-use-plain-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not use plain tags?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authoring-side-override-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authoring-side override mechanism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review checklist
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Review checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r1-runtime-field-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R1. Runtime field choice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r2-source-of-truth-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R2. Source-of-truth split
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r3-partial-mapping-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R3. Partial mapping semantics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r4-cluster-applicability-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R4. Cluster applicability rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r5-validation-strictness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R5. Validation strictness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r6-persistence-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R6. Persistence strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r7-scope-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R7. Scope boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiler-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compiler contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compiler contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dimension-resolution-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dimension resolution rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-pass-derivation-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two-pass derivation shape
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Persistence boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applicability-derivation-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applicability derivation model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applicability derivation model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atomic-canonical-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atomic canonical goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cluster goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtered-graph-projection-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtered-graph projection unit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v0-projection-first-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V0. Projection-first validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v1-syntax-validity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V1. Syntax validity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2-cluster-non-emptiness-on-the-projected-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2. Cluster non-emptiness on the projected graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v3-requires-closure-on-the-projected-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V3. Requires closure on the projected graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v4-root-reachability-on-the-projected-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V4. Root reachability on the projected graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v5-no-unsupported-synthetic-leakage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V5. No unsupported synthetic leakage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v6-championfrontiermastery-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V6. Champion/frontier/mastery compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-taxonomy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finding taxonomy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-consequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime consequences
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hesse-abitur-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hesse Abitur example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-to-legacy-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to legacy views
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dry-run-report-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dry-run report contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-rollout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended rollout
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommended rollout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-design-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1. Design approval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-read-only-compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2. Read-only compiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3. Validator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-persist-compiled-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4. Persist compiled field
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-5-switch-runtime-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5. Switch runtime filter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-keep-projection-rules-separate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6. Keep projection rules separate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pilot-acceptance-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pilot acceptance matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-touchpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation touchpoints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation touchpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-shared-types-and-schema-facing-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Shared types and schema-facing code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-read-only-compiler-and-projected-view-validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Read-only compiler and projected-view validator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-backend-runtime-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Backend runtime filtering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-frontend-compatibility-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Frontend compatibility layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-scope-guard-for-first-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. Scope guard for first implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-implementation-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First implementation scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-implementation-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suggested implementation order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-design-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open design decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open design decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#should-courselevel-also-move-into-applicability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Should courseLevel also move into applicability?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-cross-subject-prerequisites-force-applicability-promotion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Should cross-subject prerequisites force applicability promotion?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-the-validator-already-handle-multi-dimensional-combinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Should the validator already handle multi-dimensional combinations?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-next-implementation-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended next implementation step
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="canonical-gymnasium-applicability-design">Canonical Gymnasium Applicability Design</h1>
+<p>Snapshot: <code>2026-03-16</code></p>
+<p>This note defines the target design for <strong>generic runtime filtering on canonical Gymnasium graphs</strong>.</p>
+<p>It is intentionally a <strong>design document</strong>, not an implementation report.</p>
+<p>Related documents:</p>
+<ul>
+<li><code>docs/concept/skill-graph/canonical-gymnasium-rollout.md</code></li>
+<li><code>docs/dev/canonical-gymnasium-implementation-plan.md</code></li>
+<li><code>docs/dev/canonical-gymnasium-migration-status.md</code></li>
+</ul>
+<h2 id="current-implementation-status">Current implementation status</h2>
+<p>The first applicability slice is now implemented for the reviewed canonical DE Gymnasium set.</p>
+<p>Observed repo status on <code>2026-03-16</code>:</p>
+<ul>
+<li>compiler entrypoint exists in <code>app/scripts/compileApplicability.ts</code></li>
+<li>validator entrypoint exists in <code>app/scripts/validateViewFilters.ts</code></li>
+<li>persistence step exists in <code>app/scripts/applyApplicability.ts</code></li>
+<li>accepted review debt is tracked in <code>docs/qa-ci/applicability-accepted-warnings.json</code></li>
+<li>current reviewed validator result is <code>0</code> errors, <code>0</code> active warnings, <code>136</code> accepted warnings</li>
+</ul>
+<p>Interpretation:</p>
+<ul>
+<li>the design decisions below are no longer hypothetical for the reviewed scope</li>
+<li>the remaining architectural work is now about widening and hardening the reviewed applicability surface, especially as Bavaria broadens beyond the current Math/Physics/Chemistry/Biology/Informatik/Geschichte/Deutsch/Englisch/Französisch/Spanisch/Italienisch/Russisch/Polnisch/Tschechisch/Griechisch/Wirtschaft_und_Recht/Politik_und_Gesellschaft/Latein/Musik/Chinesisch adopted corridor</li>
+</ul>
+<h2 id="problem">Problem</h2>
+<p>The current canonical Gymnasium runtime already supports a root-level Bundesland filter such as <code>DE-HE</code> or <code>DE-BY</code>.</p>
+<p>However, the current rule is still transitional:</p>
+<ul>
+<li>jurisdiction-specific visibility is derived at runtime from mappings and provenance,</li>
+<li>the backend recursively asks whether a canonical goal belongs into the selected view,</li>
+<li>this is operationally useful, but it is not the clean target architecture.</li>
+</ul>
+<p>This differs from <code>GK</code> / <code>LK</code> handling:</p>
+<ul>
+<li><code>GK</code> / <code>LK</code> is effectively a <strong>node-local runtime property</strong>,</li>
+<li>Bundesland relevance is currently a <strong>runtime inference</strong>.</li>
+</ul>
+<p>For learner-facing filtering this asymmetry is undesirable.</p>
+<p>Example:</p>
+<ul>
+<li>a Hessen learner preparing for the mathematics Abitur should simply see the canonical goals that are relevant for <code>DE-HE</code> and <code>LK</code>,</li>
+<li>not a graph whose visibility is recomputed ad hoc from provenance recursion every time.</li>
+</ul>
+<h2 id="design-principle">Design principle</h2>
+<p>The target model should separate:</p>
+<ol>
+<li><strong>Source truth</strong></li>
+<li>canonical goals</li>
+<li>provenance</li>
+<li>
+<p>legacy-to-canonical mappings</p>
+</li>
+<li>
+<p><strong>Compiled runtime applicability</strong></p>
+</li>
+<li>a simple node-level, dimension-based applicability field that can be filtered at runtime</li>
+</ol>
+<p>The key principle is:</p>
+<ul>
+<li><strong>do not manually duplicate canonical goals per Bundesland</strong></li>
+<li><strong>do compile view applicability onto canonical nodes before runtime</strong></li>
+</ul>
+<p>So the system remains source-driven, but the runtime becomes node-local and simple.</p>
+<p>Important generalization:</p>
+<ul>
+<li>the first compiled dimension is <code>jurisdiction</code></li>
+<li>the mechanism itself should stay generic enough for other dimensions later</li>
+<li>the data model must therefore not hardcode Bundesland coverage as its only possible meaning</li>
+</ul>
+<h2 id="target-runtime-rule">Target runtime rule</h2>
+<p>For canonical Gymnasium landscapes, the runtime should be able to evaluate visibility with a simple predicate:</p>
+<div class="highlight"><pre><span></span><code>visible(goal, selectedView) =
+  matchesApplicability(goal.applicability, selectedView.filters)
+  AND
+  matchesCourseCoverage(goal, selectedView.courseLevel)
+</code></pre></div>
+<p>Recommended first-step interpretation:</p>
+<div class="highlight"><pre><span></span><code>matchesApplicability(applicability, filters) =
+  for every active (dimension, value) in filters:
+    value == ALL
+    OR (
+      dimension in applicability
+      AND value in applicability[dimension]
+    )
+</code></pre></div>
+<p>Interpretation:</p>
+<ul>
+<li><code>applicability</code> is the new compiled runtime field</li>
+<li><code>jurisdiction</code> is the first compiled dimension inside it</li>
+<li><code>matchesCourseCoverage(...)</code> can continue to be derived from existing <code>GK</code> / <code>LK</code> tags and <code>release.courseLevel</code></li>
+</ul>
+<p>This means:</p>
+<ul>
+<li>Bundesland filtering becomes node-local at runtime</li>
+<li>the machinery remains open for later dimensions without introducing a Germany-specific top-level field</li>
+</ul>
+<h2 id="proposed-runtime-metadata">Proposed runtime metadata</h2>
+<p>Preferred target field on canonical goals:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"applicability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"jurisdiction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"DE-HE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DE-BY"</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Rules:</p>
+<ul>
+<li>field exists only where relevant, primarily on canonical Gymnasium goals</li>
+<li>keys are filter dimensions such as <code>jurisdiction</code></li>
+<li>values in each dimension are unique and sorted</li>
+<li>for the first compiled dimension, values use ISO 3166-2 codes such as <code>DE-HE</code>, <code>DE-BY</code></li>
+<li><code>ALL</code> is <strong>not</strong> stored as a node value; it remains a runtime/UI wildcard</li>
+</ul>
+<p>Important:</p>
+<ul>
+<li><code>applicability</code> is a <strong>compiled runtime field</strong></li>
+<li>it is <strong>not</strong> the primary authoring source of truth</li>
+<li>provenance and mappings remain authoritative inputs for deriving it</li>
+</ul>
+<h2 id="minimal-schema-delta">Minimal schema delta</h2>
+<p>This design intentionally proposes the smallest new surface area.</p>
+<p>Preferred first-step JSON shape:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"…"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"applicability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"jurisdiction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"DE-HE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DE-BY"</span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"applicabilityOverrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"jurisdiction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"DE-HE"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Interpretation:</p>
+<ul>
+<li><code>applicability</code> is the compiled runtime field</li>
+<li><code>extendedData.applicabilityOverrides</code> is optional authoring input</li>
+<li>the override is not required on most goals</li>
+<li>the field is generic even if the first compiled dimension is <code>jurisdiction</code></li>
+</ul>
+<p>First-step schema recommendation:</p>
+<ul>
+<li>allow <code>applicability?: Record&lt;string, string[]&gt;</code> on <code>LearningGoal</code></li>
+<li>keep override data inside <code>extendedData</code></li>
+<li>first implementation supports only the <code>jurisdiction</code> dimension</li>
+<li>do not introduce separate <code>courseCoverage</code>, <code>abiCoverage</code>, or state-specific weighting fields yet</li>
+</ul>
+<h2 id="why-not-use-plain-tags">Why not use plain tags?</h2>
+<p>Using <code>tags: ["DE-HE", "DE-BY"]</code> would make runtime filtering easy, but it mixes two concerns:</p>
+<ul>
+<li>authored semantic tags</li>
+<li>compiled visibility metadata</li>
+</ul>
+<p>That would create long-term drift risk:</p>
+<ul>
+<li>authors might edit filter tags manually,</li>
+<li>the tags could diverge from mappings/provenance,</li>
+<li>validators would no longer know which values are authored and which are derived.</li>
+</ul>
+<p>Therefore the preferred design is:</p>
+<ul>
+<li>explicit structured <code>applicability</code> for runtime visibility</li>
+<li>ordinary <code>tags</code> remain authored semantic metadata</li>
+</ul>
+<h2 id="authoring-side-override-mechanism">Authoring-side override mechanism</h2>
+<p>Most canonical applicability should be derived from:</p>
+<ul>
+<li>provenance,</li>
+<li>mappings,</li>
+<li>cluster structure.</li>
+</ul>
+<p>However, a small explicit override path is still needed for rare cases:</p>
+<ul>
+<li>genuinely synthesized DE-level goals,</li>
+<li>shared bridge goals not yet backed by stable mappings,</li>
+<li>temporary migration repairs where the semantic decision is known before the source graph is fully normalized.</li>
+</ul>
+<p>Preferred authoring-side override location:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"applicabilityOverrides"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"jurisdiction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"DE-HE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DE-BY"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Rules for overrides:</p>
+<ul>
+<li>overrides are exceptional, not the norm</li>
+<li>overrides are authoring inputs to the compiler</li>
+<li>runtime should read only the compiled <code>applicability</code>, not the override itself</li>
+<li>validators should report every override explicitly so they remain auditable</li>
+</ul>
+<h2 id="review-checklist">Review checklist</h2>
+<p>This section remains the review surface for widening or changing the implemented applicability mechanism.</p>
+<p>The reviewed scope should only expand once these points still hold.</p>
+<h3 id="r1-runtime-field-choice">R1. Runtime field choice</h3>
+<p>Decision:</p>
+<ul>
+<li>use a structured goal field <code>applicability</code></li>
+<li>do not introduce a Germany-specific top-level field such as <code>stateCoverage</code></li>
+<li>do not overload ordinary <code>tags</code></li>
+</ul>
+<h3 id="r2-source-of-truth-split">R2. Source-of-truth split</h3>
+<p>Decision:</p>
+<ul>
+<li>provenance and mappings remain authoritative inputs</li>
+<li><code>applicability</code> is compiled from them</li>
+<li>authors should not maintain <code>applicability</code> manually as the primary source of truth</li>
+</ul>
+<h3 id="r3-partial-mapping-semantics">R3. Partial mapping semantics</h3>
+<p>Decision:</p>
+<ul>
+<li><code>partial</code> mappings do contribute to applicability for the compiled dimension</li>
+<li><code>partial</code> mappings do not contribute to exact mastery projection</li>
+</ul>
+<h3 id="r4-cluster-applicability-rule">R4. Cluster applicability rule</h3>
+<p>Decision:</p>
+<ul>
+<li>cluster applicability in a compiled dimension is the union of visible child applicability in that dimension</li>
+<li>cluster applicability should not be handwritten except through exceptional overrides on missing atoms</li>
+</ul>
+<h3 id="r5-validation-strictness">R5. Validation strictness</h3>
+<p>Decision:</p>
+<ul>
+<li>broken <code>requires</code> closure under an active filter dimension is a validation error</li>
+<li>empty visible clusters under an active filter dimension are a validation error</li>
+<li>runtime should not silently "repair" these inconsistencies</li>
+</ul>
+<h3 id="r6-persistence-strategy">R6. Persistence strategy</h3>
+<p>Decision:</p>
+<ul>
+<li>compiled <code>applicability</code> should be committed into canonical JSON</li>
+<li>the compiler remains the authoritative way to regenerate it</li>
+</ul>
+<h3 id="r7-scope-boundary">R7. Scope boundary</h3>
+<p>Decision:</p>
+<ul>
+<li>first implementation compiles only the <code>jurisdiction</code> dimension</li>
+<li>not yet course-coverage normalization</li>
+<li>not yet abi-specific coverage fields</li>
+<li>not yet runtime weighting or recommendation overlays</li>
+</ul>
+<h2 id="compiler-contract">Compiler contract</h2>
+<p>The first compiler should be a pure, deterministic repo-local batch step.</p>
+<p>It should read:</p>
+<ul>
+<li>canonical target landscapes under <code>curricula/DE/Gymnasium/canonical/</code></li>
+<li>legacy-to-canonical mapping files under the existing <code>curricula/DE/**/mapping/</code> trees</li>
+<li>canonical goal metadata, especially <code>extendedData.provenance</code></li>
+<li>optional <code>extendedData.applicabilityOverrides</code></li>
+</ul>
+<p>It should not edit:</p>
+<ul>
+<li>legacy source landscapes</li>
+<li>legacy mapping files</li>
+<li>retained input archives under <code>curricula/DE/Gymnasium/input/</code></li>
+</ul>
+<h3 id="dimension-resolution-rule">Dimension resolution rule</h3>
+<p>The compiler must not infer applicability from human-readable text such as:</p>
+<ul>
+<li>goal titles</li>
+<li>descriptions</li>
+<li>curriculum display names</li>
+</ul>
+<p>Preferred first-step resolution order:</p>
+<ol>
+<li>explicit resolution of <code>jurisdiction</code> from known source landscape identifiers and known mapping-file ownership</li>
+<li>deterministic path-based fallback such as <code>curricula/DE/HE/... -&gt; DE-HE</code> and <code>curricula/DE/BY/... -&gt; DE-BY</code></li>
+<li>otherwise no applicability contribution plus a compiler finding</li>
+</ol>
+<p>This keeps the derivation auditable and avoids hidden heuristics.</p>
+<h3 id="two-pass-derivation-shape">Two-pass derivation shape</h3>
+<p>Recommended first implementation:</p>
+<ol>
+<li>derive atomic-goal applicability evidence from provenance, mappings, and overrides</li>
+<li>compile atomic <code>applicability</code></li>
+<li>derive cluster <code>applicability</code> as the recursive union of visible children per compiled dimension</li>
+<li>project filtered graphs from the compiled result and run validation on those projected graphs</li>
+<li>emit a dry-run report before any JSON rewrite is attempted</li>
+</ol>
+<h3 id="persistence-boundary">Persistence boundary</h3>
+<p>The compiler should treat persisted <code>applicability</code> as generated runtime metadata:</p>
+<ul>
+<li>canonical files may eventually be rewritten by the compiler</li>
+<li>evidence detail should stay in the dry-run report, not in the committed goal JSON</li>
+<li>rerunning the compiler on unchanged inputs should produce byte-stable sorted output</li>
+</ul>
+<h2 id="applicability-derivation-model">Applicability derivation model</h2>
+<h3 id="atomic-canonical-goals">Atomic canonical goals</h3>
+<p>For an atomic canonical goal <code>g</code> and a compiled dimension <code>d</code>, the compiler should derive:</p>
+<div class="highlight"><pre><span></span><code>applicability(g, d) =
+  derivedApplicability(g, d)
+  UNION explicitOverrideApplicability(g, d)
+</code></pre></div>
+<p>For the first implementation, <code>d = jurisdiction</code>, so:</p>
+<div class="highlight"><pre><span></span><code>applicability(g, jurisdiction) =
+  provenanceJurisdictions(g)
+  UNION mappingJurisdictions(g)
+  UNION explicitOverrideApplicability(g, jurisdiction)
+</code></pre></div>
+<p>Where the derived evidence comes from:</p>
+<ul>
+<li><code>provenanceJurisdictions(g)</code> from <code>extendedData.provenance</code></li>
+<li><code>sourceLandscapeId</code></li>
+<li><code>additionalSourceLandscapeIds</code></li>
+<li><code>crossSubjectPrerequisiteLandscapeIds</code></li>
+<li><code>mappingJurisdictions(g)</code> from all legacy-to-canonical mappings that target <code>g</code></li>
+<li><code>explicitOverrideApplicability(g, jurisdiction)</code> from the optional override block above</li>
+</ul>
+<p>Important distinction:</p>
+<ul>
+<li>both <code>exact</code> and <code>partial</code> mappings may contribute to <strong>applicability for visibility</strong></li>
+<li>only <code>exact</code> mappings continue to contribute to <strong>mastery projection</strong></li>
+</ul>
+<p>Rationale:</p>
+<ul>
+<li>a <code>partial</code> mapping is enough to say "this canonical anchor is relevant in this filtered view"</li>
+<li>a <code>partial</code> mapping is not enough to claim exact mastery equivalence</li>
+</ul>
+<h3 id="cluster-goals">Cluster goals</h3>
+<p>For a cluster goal <code>c</code>, the compiler should derive:</p>
+<div class="highlight"><pre><span></span><code>applicability(c, d) = UNION(applicability(child, d) for child in c.contains)
+</code></pre></div>
+<p>This applies recursively to:</p>
+<ul>
+<li>year anchors,</li>
+<li>subject roots,</li>
+<li>DE overview nodes,</li>
+<li>intermediate thematic clusters.</li>
+</ul>
+<p>The cluster rule should stay structural:</p>
+<ul>
+<li>cluster applicability comes from visible descendants,</li>
+<li>not from manual duplication of every cluster-filter relation.</li>
+</ul>
+<h2 id="filtered-graph-projection-unit">Filtered-graph projection unit</h2>
+<p>Validation should not run only on raw goal-local metadata.</p>
+<p>Instead, for each active compiled dimension/value pair, the validator should first build the projected filtered graph:</p>
+<div class="highlight"><pre><span></span><code>G[d = v] =
+  induced subgraph of all canonical goals g
+  such that v in applicability(g, d)
+  with only visible contains/requires edges preserved
+</code></pre></div>
+<p>For the first implementation this means at least:</p>
+<ul>
+<li><code>G[jurisdiction = DE-HE]</code></li>
+<li><code>G[jurisdiction = DE-BY]</code></li>
+</ul>
+<p>All structural validation rules below must run on these projected filtered graphs.</p>
+<p>This is the important operational point:</p>
+<ul>
+<li>we do not merely validate whether a node carries a value</li>
+<li>we validate whether the resulting filtered learner graph is coherent</li>
+</ul>
+<h2 id="validation-rules">Validation rules</h2>
+<p>The whole point of compiled node-level applicability is that correctness is checked <strong>before runtime</strong> on projected filtered graphs.</p>
+<h3 id="v0-projection-first-validation">V0. Projection-first validation</h3>
+<p>For every supported compiled dimension <code>d</code> and every compiled value <code>v</code>:</p>
+<ul>
+<li>first project <code>G[d = v]</code></li>
+<li>then validate that projected graph as a learner-facing graph</li>
+</ul>
+<p>This means validation is performed on the filtered graph, not just on raw metadata fields.</p>
+<h3 id="v1-syntax-validity">V1. Syntax validity</h3>
+<p>For every canonical goal:</p>
+<ul>
+<li><code>applicability</code> contains only known compiled dimensions for the current compiler phase</li>
+<li>values inside each compiled dimension come from the allowed vocabulary</li>
+<li>values are unique</li>
+<li>values are sorted deterministically</li>
+</ul>
+<h3 id="v2-cluster-non-emptiness-on-the-projected-graph">V2. Cluster non-emptiness on the projected graph</h3>
+<p>For every projected graph <code>G[d = v]</code>:</p>
+<ul>
+<li>every visible cluster <code>c</code> must contain at least one visible child in that projected graph</li>
+</ul>
+<p>This prevents phantom clusters that are visible under a filter but structurally empty there.</p>
+<h3 id="v3-requires-closure-on-the-projected-graph">V3. Requires closure on the projected graph</h3>
+<p>For every projected graph <code>G[d = v]</code>:</p>
+<ul>
+<li>every visible goal <code>g</code> must have all required goals <code>r</code> visible in that same projected graph</li>
+</ul>
+<p>This is critical.</p>
+<p>Without this rule, a learner could see a Hessen goal whose prerequisites disappear under the Hessen filter.</p>
+<p>The validator should fail such cases instead of letting runtime patch over them heuristically.</p>
+<h3 id="v4-root-reachability-on-the-projected-graph">V4. Root reachability on the projected graph</h3>
+<p>For every projected graph <code>G[d = v]</code>:</p>
+<ul>
+<li>every visible canonical goal <code>g</code> must be reachable from the selected canonical root through visible <code>contains</code> edges</li>
+</ul>
+<p>This ensures that every filtered view is navigable as a real learner graph.</p>
+<h3 id="v5-no-unsupported-synthetic-leakage">V5. No unsupported synthetic leakage</h3>
+<p>If a canonical atomic goal has:</p>
+<ul>
+<li>no derived applicability for the compiled dimension,</li>
+<li>no explicit override state,</li>
+</ul>
+<p>then:</p>
+<ul>
+<li><code>applicability</code> must not contain a value for that dimension,</li>
+<li>and the goal must stay out of filtered runtime views for that dimension until resolved.</li>
+</ul>
+<p>This keeps the canonical view conservative.</p>
+<h3 id="v6-championfrontiermastery-compatibility">V6. Champion/frontier/mastery compatibility</h3>
+<p>For every validated projected filtered graph:</p>
+<ul>
+<li>frontier computation must only reference visible prerequisites,</li>
+<li>mastery projection may only target visible canonical goals,</li>
+<li>champion counts must be computed over the filtered goal set for that projected view.</li>
+</ul>
+<h2 id="finding-taxonomy">Finding taxonomy</h2>
+<p>The first validator should use stable finding codes so review and CI stay readable.</p>
+<p>Recommended first set:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Severity</th>
+<th>Meaning</th>
+<th>Default handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>APV-001</code></td>
+<td>error</td>
+<td>unknown compiled dimension or malformed compiled applicability value</td>
+<td>fail validation</td>
+</tr>
+<tr>
+<td><code>APV-002</code></td>
+<td>error</td>
+<td>duplicate or unsorted compiled applicability values</td>
+<td>fail validation</td>
+</tr>
+<tr>
+<td><code>APV-003</code></td>
+<td>error</td>
+<td>provenance or mapping source could not be resolved to a supported applicability value in the current compiler scope</td>
+<td>fail validation in reviewed target set</td>
+</tr>
+<tr>
+<td><code>APV-101</code></td>
+<td>error</td>
+<td>projected filtered graph contains a visible cluster with no visible child</td>
+<td>fail validation</td>
+</tr>
+<tr>
+<td><code>APV-102</code></td>
+<td>error</td>
+<td>projected filtered graph contains a visible goal with an invisible prerequisite</td>
+<td>fail validation</td>
+</tr>
+<tr>
+<td><code>APV-103</code></td>
+<td>error</td>
+<td>projected filtered graph contains a visible goal not reachable from the selected canonical root through visible <code>contains</code> edges</td>
+<td>fail validation</td>
+</tr>
+<tr>
+<td><code>APV-104</code></td>
+<td>error</td>
+<td>goal is visible only through an unsupported synthetic path with no provenance, mapping, or approved override evidence</td>
+<td>fail validation</td>
+</tr>
+<tr>
+<td><code>APV-201</code></td>
+<td>warning</td>
+<td>explicit applicability override is used</td>
+<td>surface in report for audit</td>
+</tr>
+<tr>
+<td><code>APV-202</code></td>
+<td>warning</td>
+<td>applicability is backed only by <code>partial</code> mappings</td>
+<td>surface in report; allowed for visibility</td>
+</tr>
+<tr>
+<td><code>APV-203</code></td>
+<td>warning</td>
+<td>compiled applicability changed since the previous committed state for a reviewed canonical file</td>
+<td>surface in review diff</td>
+</tr>
+</tbody>
+</table>
+<p>These code names are now used by the compiler and validator in the repo; the split between hard validation errors and auditable warnings should remain stable.</p>
+<h2 id="runtime-consequences">Runtime consequences</h2>
+<p>After this design is implemented, runtime filtering should no longer need to ask:</p>
+<ul>
+<li>"Does this goal have Hessen coverage via recursive provenance and mapping inference right now?"</li>
+</ul>
+<p>Instead, it should simply ask:</p>
+<ul>
+<li>"Does <code>DE-HE</code> appear in <code>goal.applicability.jurisdiction</code>?"</li>
+</ul>
+<p>The current recursive logic is therefore a <strong>bridge implementation</strong>, not the target architecture.</p>
+<h2 id="hesse-abitur-example">Hesse Abitur example</h2>
+<p>Target learner configuration:</p>
+<ul>
+<li>root curriculum: <code>Gymnasium (DE)</code></li>
+<li>root filter: <code>DE-HE</code></li>
+<li>selected subject: <code>Mathematik</code></li>
+<li>subject filter: <code>LK</code></li>
+</ul>
+<p>Then runtime should behave as follows:</p>
+<ol>
+<li>project the mathematics graph with <code>jurisdiction = DE-HE</code></li>
+<li>among those visible goals, apply the ordinary <code>LK</code> course-level rule</li>
+<li>compute frontier, mastery aggregation, planned goals, and champions on that filtered graph</li>
+</ol>
+<p>Result:</p>
+<ul>
+<li>the learner sees the canonical DE mathematics graph</li>
+<li>but only the Hessen-relevant and LK-relevant slice of it</li>
+<li>without needing a separate Hessen clone of the canonical file</li>
+</ul>
+<h2 id="relationship-to-legacy-views">Relationship to legacy views</h2>
+<p>This design does <strong>not</strong> mean that every state-specific legacy view can be deleted immediately.</p>
+<p>It only means:</p>
+<ul>
+<li>canonical applicability should become node-local and prevalidated</li>
+</ul>
+<p>Legacy views still remain authoritative whenever:</p>
+<ul>
+<li>mapping coverage is incomplete,</li>
+<li>applicability validation fails,</li>
+<li>a canonical subtree is not yet operationally trustworthy.</li>
+</ul>
+<p>So this design strengthens the canonical path without weakening the fallback rule.</p>
+<h2 id="dry-run-report-contract">Dry-run report contract</h2>
+<p>The first implementation should produce a reviewable report under <code>tmp/</code>, for example:</p>
+<ul>
+<li><code>tmp/applicability/summary.json</code></li>
+<li><code>tmp/applicability/&lt;landscapeId&gt;.json</code></li>
+</ul>
+<p>Recommended report shape:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"landscapeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE_DEU_S_GYM_CANONICAL_MATHEMATIK"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"jurisdiction"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"goals"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"goals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jahrgang 8 (Sek I)"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"compiledApplicability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"jurisdiction"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"DE-BY"</span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"evidence"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"dimension"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jurisdiction"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE-BY"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mapping"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"mappingStrength"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partial"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"projections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"dimension"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jurisdiction"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE-BY"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"visibleGoals"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"findings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APV-202"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"warning"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"goalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applicability is backed only by partial mappings."</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Report requirements:</p>
+<ul>
+<li>stable ordering so diffs are reviewable</li>
+<li>enough evidence detail to explain every compiled applicability assignment</li>
+<li>no hidden dependency on runtime services or learner data</li>
+<li>safe to regenerate locally and in CI</li>
+</ul>
+<h2 id="recommended-rollout">Recommended rollout</h2>
+<h3 id="phase-1-design-approval">Phase 1. Design approval</h3>
+<ul>
+<li>review this document</li>
+<li>agree on field names and validation semantics</li>
+</ul>
+<p>Recommended approval output:</p>
+<ul>
+<li>one explicit yes/no answer for each item in the review checklist above</li>
+<li>note any naming changes before the reviewed applicability scope is widened further</li>
+</ul>
+<h3 id="phase-2-read-only-compiler">Phase 2. Read-only compiler</h3>
+<p>Add a compiler that derives <code>applicability</code> but does not yet change runtime behavior.</p>
+<p>Outputs:</p>
+<ul>
+<li>compiled applicability report</li>
+<li>validation failures</li>
+<li>diff preview for canonical goal files</li>
+</ul>
+<p>Preferred non-destructive first output:</p>
+<ul>
+<li>write a report to <code>tmp/</code></li>
+<li>do not rewrite canonical JSON automatically in the very first dry run</li>
+</ul>
+<h3 id="phase-3-validator">Phase 3. Validator</h3>
+<p>Add a dedicated validator, for example:</p>
+<ul>
+<li><code>validate:view-filters</code></li>
+</ul>
+<p>It should fail on:</p>
+<ul>
+<li>broken requires closure on a projected filtered graph</li>
+<li>empty clusters on a projected filtered graph</li>
+<li>malformed compiled applicability</li>
+<li>orphaned visible goals</li>
+</ul>
+<h3 id="phase-4-persist-compiled-field">Phase 4. Persist compiled field</h3>
+<p>Persist compiled <code>applicability</code> onto canonical goals.</p>
+<p>Preferred PoC choice:</p>
+<ul>
+<li>commit the compiled field into canonical JSON</li>
+<li>keep the compiler as the authoritative way to regenerate it</li>
+</ul>
+<p>Rationale:</p>
+<ul>
+<li>the repo already treats landscape JSON as committed runtime data,</li>
+<li>review diffs stay transparent,</li>
+<li>CI validation stays simple.</li>
+</ul>
+<h3 id="phase-5-switch-runtime-filter">Phase 5. Switch runtime filter</h3>
+<p>Replace the current recursive runtime coverage inference with:</p>
+<ul>
+<li>node-local <code>applicability</code> checks for canonical Gymnasium landscapes</li>
+<li>for the first implementation, this means <code>goal.applicability.jurisdiction</code></li>
+</ul>
+<h3 id="phase-6-keep-projection-rules-separate">Phase 6. Keep projection rules separate</h3>
+<p>Do <strong>not</strong> merge applicability for visibility and mastery projection.</p>
+<p>Keep:</p>
+<ul>
+<li>filtered visibility from compiled <code>applicability</code></li>
+<li>mastery projection from <code>exact</code> mappings only</li>
+</ul>
+<h2 id="pilot-acceptance-matrix">Pilot acceptance matrix</h2>
+<p>Before runtime changes begin, the dry-run compiler plus validator should satisfy the following pilot gates.</p>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Pilot slice</th>
+<th>Expected outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A1</code></td>
+<td>canonical mathematics + <code>curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json</code></td>
+<td>projected graph <code>jurisdiction = DE-BY</code> contains the <code>J7-J9</code> anchors and the existing function corridor with zero closure errors</td>
+</tr>
+<tr>
+<td><code>A2</code></td>
+<td>canonical mathematics + Hessen math upper-secondary and lower-secondary pilot mappings</td>
+<td>projected graph <code>jurisdiction = DE-HE</code> for the currently cutover-relevant Hessen math slice has zero closure errors</td>
+</tr>
+<tr>
+<td><code>A3</code></td>
+<td>canonical economics + <code>curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_to_canonical_economics.json</code></td>
+<td>the reviewed Hessen economics mirror compiles with stable <code>jurisdiction = DE-HE</code> applicability and no unexpected <code>DE-BY</code> visibility</td>
+</tr>
+<tr>
+<td><code>A4</code></td>
+<td>canonical overview root plus child subject roots</td>
+<td>root and subject clusters inherit only the union of visible child values; no phantom root visibility appears in the projected filtered graphs</td>
+</tr>
+<tr>
+<td><code>A5</code></td>
+<td>at least one intentional override-backed synthetic goal in a reviewed fixture, if such a case exists</td>
+<td>compiler emits <code>APV-201</code>, keeps applicability explicit, and still passes if no hard errors exist</td>
+</tr>
+</tbody>
+</table>
+<p>Recommended go/no-go rule for implementation:</p>
+<ul>
+<li>proceed to runtime integration only after the reviewed pilot set has zero <code>APV-0xx</code> and <code>APV-1xx</code> errors</li>
+<li>warnings may remain temporarily, but only if they are explicitly accepted in review</li>
+</ul>
+<p>Current status note <code>2026-03-16</code>:</p>
+<ul>
+<li>the reviewed CI scope already satisfies the hard-error rule</li>
+<li><code>A5</code> is exercised by the current accepted Bavaria <code>APV-201</code> cases tracked in <code>docs/qa-ci/applicability-accepted-warnings.json</code></li>
+</ul>
+<h2 id="implementation-touchpoints">Implementation touchpoints</h2>
+<p>This section is intentionally concrete so the first implementation can stay narrow.</p>
+<h3 id="a-shared-types-and-schema-facing-code">A. Shared types and schema-facing code</h3>
+<p>Expected first touchpoints:</p>
+<ul>
+<li><code>app/src/landscapeTypes.ts</code></li>
+<li>goal-level schema handling in graph scripts and loaders that already depend on <code>LearningGoal</code></li>
+</ul>
+<p>First-step change:</p>
+<ul>
+<li>add optional <code>applicability?: Record&lt;string, string[]&gt;</code> to <code>LearningGoal</code></li>
+<li>do <strong>not</strong> widen the first compiler scope beyond <code>jurisdiction</code>, even if the field is generic</li>
+</ul>
+<h3 id="b-read-only-compiler-and-projected-view-validator">B. Read-only compiler and projected-view validator</h3>
+<p>Expected first touchpoints:</p>
+<ul>
+<li>new compiler script in <code>app/scripts/</code>, e.g. <code>compileApplicability.ts</code></li>
+<li>new validator script in <code>app/scripts/</code>, e.g. <code>validateViewFilters.ts</code></li>
+<li><code>app/package.json</code> for script entrypoints</li>
+<li><code>docs/qa-ci/graph-validation-rules.md</code></li>
+<li><code>docs/qa-ci/ci.md</code></li>
+</ul>
+<p>Responsibility split:</p>
+<ul>
+<li><code>validateGraph.ts</code> remains the raw-landscape validator</li>
+<li>the new validator operates on projected filtered graphs derived from compiled <code>applicability</code></li>
+<li>the compiler writes review output under <code>tmp/applicability/</code> in its first phase</li>
+<li>provenance-backed applicability may resolve <code>sourceLandscapeId</code> through the DE-level registry <code>curricula/DE/Gymnasium/provenance/source-landscape-registry.json</code>, so reviewed applicability does not depend on an active legacy source tree staying loadable</li>
+</ul>
+<h3 id="c-backend-runtime-filtering">C. Backend runtime filtering</h3>
+<p>Current hot spots already visible in the codebase:</p>
+<ul>
+<li><code>backend/src/main/java/com/skillpilot/backend/service/LearnerService.java</code></li>
+</ul>
+<p>Relevant current methods:</p>
+<ul>
+<li><code>matchesFilter(...)</code></li>
+<li><code>matchesCourseFilter(...)</code></li>
+<li><code>matchesStateFilter(...)</code></li>
+<li><code>hasCanonicalStateCoverage(...)</code></li>
+</ul>
+<p>Target first-step runtime change:</p>
+<ul>
+<li>keep <code>matchesCourseFilter(...)</code> as-is</li>
+<li>replace transitional state recursion with node-local <code>goal.applicability.jurisdiction</code></li>
+<li>keep mastery projection logic separate from visibility logic</li>
+</ul>
+<h3 id="d-frontend-compatibility-layer">D. Frontend compatibility layer</h3>
+<p>Current hot spots already visible in the codebase:</p>
+<ul>
+<li><code>app/src/views/LearnerView.tsx</code></li>
+</ul>
+<p>Current transitional behavior:</p>
+<ul>
+<li>several view decisions still fall back to tag-based checks such as <code>child.tags.includes(filterId)</code></li>
+<li>this is acceptable as long as backend/runtime remains transitional</li>
+</ul>
+<p>Target after backend switch:</p>
+<ul>
+<li>canonical jurisdiction filtering should no longer depend on ordinary <code>tags</code></li>
+<li>frontend compatibility checks should align with compiled <code>applicability</code> semantics</li>
+<li>legacy landscapes may still continue to use their current simpler filter behavior</li>
+</ul>
+<h3 id="e-scope-guard-for-first-implementation">E. Scope guard for first implementation</h3>
+<p>The first implementation should explicitly avoid:</p>
+<ul>
+<li>changing legacy landscape JSON semantics</li>
+<li>changing mastery projection rules</li>
+<li>changing <code>GK</code> / <code>LK</code> modeling</li>
+<li>changing multi-dimensional filter combinations</li>
+<li>changing learner-facing filter labels or curriculum selection UX</li>
+</ul>
+<h2 id="first-implementation-scope">First implementation scope</h2>
+<p>The first implementation should be intentionally narrow.</p>
+<p>Included:</p>
+<ul>
+<li>compiler for canonical Gymnasium landscapes only</li>
+<li>support for the <code>jurisdiction</code> dimension with <code>DE-HE</code> and <code>DE-BY</code></li>
+<li><code>ALL</code> remains a runtime wildcard, not a stored applicability value</li>
+<li>support for provenance-derived applicability</li>
+<li>support for mapping-derived applicability</li>
+<li>support for <code>extendedData.applicabilityOverrides</code></li>
+<li>validator checks <code>V0</code> to <code>V5</code> on projected filtered graphs</li>
+</ul>
+<p>Deferred:</p>
+<ul>
+<li>additional German states beyond the currently modeled set</li>
+<li>explicit applicability dimensions beyond <code>jurisdiction</code></li>
+<li>dimension-specific weighting changes</li>
+<li>UI badges or provenance chips for compiled applicability</li>
+<li>automatic migration of old canonical files beyond the reviewed target set</li>
+</ul>
+<h2 id="suggested-implementation-order">Suggested implementation order</h2>
+<p>Once the design is accepted, the safest sequence is:</p>
+<ol>
+<li>extend the goal type/schema to allow <code>applicability</code></li>
+<li>implement read-only compiler output in <code>tmp/</code></li>
+<li>implement <code>validate:view-filters</code></li>
+<li>run the compiler on the current canonical Gymnasium files</li>
+<li>review the generated diffs and projection reports</li>
+<li>persist <code>applicability</code> into canonical JSON</li>
+<li>only then switch runtime filtering to the compiled field</li>
+</ol>
+<h2 id="open-design-decisions">Open design decisions</h2>
+<h3 id="should-courselevel-also-move-into-applicability">Should <code>courseLevel</code> also move into <code>applicability</code>?</h3>
+<p>Not required immediately.</p>
+<p>Current recommendation:</p>
+<ul>
+<li>keep <code>GK</code> / <code>LK</code> runtime behavior as-is</li>
+<li>optionally normalize it later into <code>applicability.courseLevel</code> if that reduces complexity</li>
+</ul>
+<h3 id="should-cross-subject-prerequisites-force-applicability-promotion">Should cross-subject prerequisites force applicability promotion?</h3>
+<p>Current recommendation:</p>
+<ul>
+<li>no automatic promotion</li>
+<li>if <code>requires</code> closure fails on a projected filtered graph, the validator should fail</li>
+<li>authors must then fix the source situation via mappings, provenance, or explicit override</li>
+</ul>
+<p>This keeps applicability semantics explicit and auditable.</p>
+<h3 id="should-the-validator-already-handle-multi-dimensional-combinations">Should the validator already handle multi-dimensional combinations?</h3>
+<p>Not in the first implementation.</p>
+<p>Current recommendation:</p>
+<ul>
+<li>first validate one projected graph per supported dimension/value pair</li>
+<li>once a second compiled dimension exists, extend validation to the relevant cross-product of projected views</li>
+</ul>
+<h2 id="recommended-next-implementation-step">Recommended next implementation step</h2>
+<p>After the now-landed first applicability slice, the next implementation step should be:</p>
+<ul>
+<li>widen the reviewed applicability scope and keep reducing override-backed Bavaria pilot debt before broader delete-handoff claims are raised</li>
+</ul>
+<p>and not yet:</p>
+<ul>
+<li>introduce a second compiled dimension</li>
+<li>merge visibility applicability with mastery projection</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

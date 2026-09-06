@@ -1,0 +1,5133 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/dev/canonical-gymnasium-math-sek1-data-chance-audit/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Canonical Gymnasium Mathematics: Sek I Data / Chance Audit - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#canonical-gymnasium-mathematics-sek-i-data-chance-audit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Canonical Gymnasium Mathematics: Sek I Data / Chance Audit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reviewed-source-evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reviewed source evidence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reviewed source evidence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hamburg-hh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hamburg (HH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schleswig-holstein-sh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schleswig-Holstein (SH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bremen-hb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bremen (HB)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sachsen-sn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen (SN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sachsen-anhalt-st" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt (ST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mecklenburg-vorpommern-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mecklenburg-Vorpommern (MV)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thueringen-th" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thueringen (TH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-canonical-datachance-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current canonical data/chance inventory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audit-judgment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audit judgment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Findings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Findings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-early-data-routines-are-present-but-not-visibly-separated-enough-from-later-probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Early data routines are present but not visibly separated enough from later probability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-laplace-relative-frequency-work-is-pedagogically-real-and-should-remain-explicit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Laplace / relative-frequency work is pedagogically real and should remain explicit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-multi-stage-experiments-are-already-a-strong-canonical-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Multi-stage experiments are already a strong canonical unit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-descriptive-statistics-is-present-but-its-relation-to-the-rest-is-too-implicit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Descriptive statistics is present, but its relation to the rest is too implicit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-combinatorics-four-field-table-work-deserves-an-explicit-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Combinatorics / four-field-table work deserves an explicit decision
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-canonical-work-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed canonical work packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommendation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-next-concrete-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended next concrete step
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-k10-random-variable-and-k9-descriptive-statistics-corridors-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen K10 random-variable and K9 descriptive-statistics corridors connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-criteria-for-this-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit criteria for this audit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-step-executed-2026-04-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design step executed (2026-04-01)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#third-state-validation-executed-2026-04-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Third-state validation executed (2026-04-01)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d5-decision-executed-2026-04-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D5 decision executed (2026-04-01)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-anhalt-jg-56-data-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt JG 5/6 data corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-anhalt-jg-78-chance-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt JG 7/8 chance corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-anhalt-jg-10-random-variables-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt JG 10 random-variables corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sachsen-anhalt-jg-9-frequency-distributions-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sachsen-Anhalt JG 9 frequency-distributions corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rheinland-pfalz-klassenstufen-9-und-10-datachance-corridor-connected-2026-04-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rheinland-Pfalz Klassenstufen 9 und 10 data/chance corridor connected (2026-04-03)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saarland-klassenstufe-7-datachance-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saarland Klassenstufe 7 data/chance corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saarland-klassenstufe-8-datachance-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saarland Klassenstufe 8 data/chance corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saarland-klassenstufe-9-datachance-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saarland Klassenstufe 9 data/chance corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saarland-klassenstufe-10-datachance-corridor-connected-2026-04-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saarland Klassenstufe 10 data/chance corridor connected (2026-04-04)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-reviewed-nationwide-evidence-bw-by-sh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional reviewed nationwide evidence (BW, BY, SH)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional reviewed nationwide evidence (BW, BY, SH)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baden-wuerttemberg-bw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baden-Wuerttemberg (BW)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bayern-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bayern (BY)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schleswig-holstein-sh_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schleswig-Holstein (SH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nordrhein-westfalen-lower-secondary-datachance-corridor-connected-2026-04-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nordrhein-Westfalen lower-secondary data/chance corridor connected (2026-04-05)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#berlin-brandenburg-lower-secondary-datachance-corridors-connected-2026-04-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Berlin / Brandenburg lower-secondary data/chance corridors connected (2026-04-05)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#niedersachsen-lower-secondary-datachance-corridor-connected-2026-04-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Niedersachsen lower-secondary data/chance corridor connected (2026-04-05)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coverage-checkpoint-2026-04-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coverage checkpoint (2026-04-05)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="canonical-gymnasium-mathematics-sek-i-data-chance-audit">Canonical Gymnasium Mathematics: Sek I Data / Chance Audit</h1>
+<p>Snapshot: <code>2026-04-05</code></p>
+<p>Purpose:</p>
+<ul>
+<li>review the current canonical <code>Sek I Daten / Zufall</code> inventory before more bundeslandwise widening</li>
+<li>use already reviewed <code>HB</code> and <code>HH</code> Sek-I evidence to test whether the current canonical cuts are pedagogically stable</li>
+<li>define the next canonical work packages for <code>Sek I Daten / Zufall</code></li>
+</ul>
+<h2 id="scope">Scope</h2>
+<p>In scope:</p>
+<ul>
+<li>the canonical Sek-I data/chance topic surface in</li>
+<li><code>curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json</code></li>
+<li>the already reviewed lower-secondary source and mapping evidence from</li>
+<li><code>HB</code></li>
+<li><code>HH</code></li>
+<li><code>MV</code></li>
+<li><code>SH</code></li>
+<li><code>RP</code></li>
+<li><code>SN</code></li>
+<li><code>ST</code></li>
+</ul>
+<p>Out of scope:</p>
+<ul>
+<li>full bundesland completion</li>
+<li>direct canonical JSON refactoring in this step</li>
+<li>learner-facing composition views</li>
+</ul>
+<h2 id="reviewed-source-evidence">Reviewed source evidence</h2>
+<h3 id="hamburg-hh">Hamburg (<code>HH</code>)</h3>
+<p>Reviewed lower-secondary source anchors exist in three bands:</p>
+<ol>
+<li><code>J6 Daten und Zufall</code></li>
+<li><code>J8 Daten und Zufall</code></li>
+<li><code>J10 Daten und Zufall</code></li>
+</ol>
+<p>Observed signal:</p>
+<ul>
+<li><code>HH</code> confirms that data/chance is a stable, visible lane across the whole Sek-I progression</li>
+<li>current reviewed <code>HH</code> evidence is still broad; it is strong enough for package validation, but not yet for fine atomic forcing</li>
+</ul>
+<h3 id="schleswig-holstein-sh">Schleswig-Holstein (<code>SH</code>)</h3>
+<p>Reviewed lower-secondary source and mapping evidence is now explicit enough for package validation:</p>
+<ol>
+<li><code>Jahrgangsband 5/6: Daten und Zufall</code></li>
+<li>statistische Erhebungen</li>
+<li>kombinatorische Fragestellungen</li>
+<li>
+<p>einstufige Zufallsexperimente</p>
+</li>
+<li>
+<p><code>Jahrgangsband 7/8/9: Daten und Zufall</code></p>
+</li>
+<li>Haeufigkeit</li>
+<li>Wahrscheinlichkeit</li>
+<li>mehrstufige Zufallsexperimente</li>
+<li>beschreibende Statistik</li>
+<li>Spannweite, Quartile und Boxplots</li>
+<li>Datenverteilungen vergleichen und deuten</li>
+</ol>
+<p>Observed signal:</p>
+<ul>
+<li><code>SH</code> validates that <code>D4</code> is not just an appendix to general probability work, but a visible later Sek-I package of its own</li>
+<li><code>SH</code> also stabilizes the split between <code>D2</code>, <code>D3</code>, and <code>D4</code> more clearly than <code>HB</code> and <code>HH</code> alone</li>
+<li>the early <code>5/6</code> lane still keeps combinatorics adjacent to first data/chance work, so <code>D5</code> should remain an explicit open decision rather than being silently absorbed</li>
+</ul>
+<h3 id="bremen-hb">Bremen (<code>HB</code>)</h3>
+<p>Reviewed lower-secondary data/chance corridors already exist as broad strips:</p>
+<ol>
+<li><code>J5/6 Stochastik</code></li>
+<li>lists</li>
+<li>diagrams</li>
+<li>means</li>
+<li>
+<p>first random experiments</p>
+</li>
+<li>
+<p><code>J7/8 Stochastik</code></p>
+</li>
+<li>distributions</li>
+<li>Laplace</li>
+<li>
+<p>two-stage random experiments</p>
+</li>
+<li>
+<p><code>J9 Stochastik</code></p>
+</li>
+<li>combinatorics</li>
+<li>four-field tables</li>
+</ol>
+<p>Observed signal:</p>
+<ul>
+<li><code>HB</code> supports a progression from early data routines toward probability models and then toward structured multi-step and conditional settings</li>
+<li><code>HB</code> strongly suggests that combinatorics / four-field-table work should not be hidden inside a diffuse broad statistics package</li>
+</ul>
+<h3 id="sachsen-sn">Sachsen (<code>SN</code>)</h3>
+<p>Reviewed lower-secondary source and mapping evidence is now explicit in three later Sek-I lanes:</p>
+<ol>
+<li><code>K8 Lernbereich 2 Zufallsversuche</code></li>
+<li>Ereignisse und Laplace-Wahrscheinlichkeiten</li>
+<li>Baumdiagramme</li>
+<li>Simulationen</li>
+<li>
+<p>Abzaehlprobleme</p>
+</li>
+<li>
+<p><code>K10 Lernbereich 2 Diskrete Zufallsgroessen</code></p>
+</li>
+<li>Wahrscheinlichkeitsverteilungen</li>
+<li>Stabdiagramme und Histogramme</li>
+<li>Wahrscheinlichkeiten mit <code>genau/mindestens/hoechstens k</code></li>
+<li>Pfadregeln und Abzaehlverfahren</li>
+<li>Verteilungsfunktion</li>
+<li>Erwartungswert, Varianz, Standardabweichung</li>
+<li>
+<p>faire und unfaire Spiele</p>
+</li>
+<li>
+<p><code>K9 Lernbereich 4 Auswerten von Daten</code></p>
+</li>
+<li>Modalwert, Median, arithmetisches Mittel</li>
+<li>Spannweite, Varianz, Standardabweichung</li>
+<li>Klassenbildung und Histogramme</li>
+<li>typische Fehler und Manipulationen in der Statistik</li>
+</ol>
+<p>Observed signal:</p>
+<ul>
+<li><code>SN</code> now also confirms the existing <code>D2</code>, <code>D3</code>, and <code>D5</code> surfaces with an explicit K8 chance-experiment strip</li>
+<li><code>SN</code> adds a real later Sek-I random-variable strip on top of the already frozen <code>D1-D5</code> surface</li>
+<li><code>SN</code> now also adds a real later descriptive-statistics strip that sits cleanly on the existing <code>D4</code> surface</li>
+<li><code>SN</code> now also adds an earlier K7 data-display strip that still fits the same broad <code>D4</code> surface</li>
+<li>the Sachsen K10 strip is still internally mixed between later probability structure, counting bridge, and descriptive-statistics adjacency</li>
+<li>the Sachsen K8 strip is internally mixed between first Laplace work, tree structures, simulation, and counting</li>
+<li>the Sachsen K9 strip is internally mixed between descriptive-statistics routine, histogram work, and critical-reading residue</li>
+<li>the Sachsen K7 strip is internally mixed between diagram forms and first critical reading of statistical data</li>
+<li>together this is strong enough for reviewed corridor mappings, but still not clean enough to force a separate visible canonical <code>D6</code> package for discrete random variables or a separate visible critical-statistics package</li>
+</ul>
+<h3 id="sachsen-anhalt-st">Sachsen-Anhalt (<code>ST</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>ST</code> now contributes a first reviewed early lower-secondary data lane through <code>JG 5/6</code></li>
+<li>the lane is still broad and splits only into data-display work and measures-of-data work</li>
+<li>both strips fit the existing descriptive-statistics surface</li>
+<li>this confirms that early Sachsen-Anhalt data work does not currently force a separate visible early diagram-reading or measures package</li>
+</ul>
+<h3 id="mecklenburg-vorpommern-mv">Mecklenburg-Vorpommern (<code>MV</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>MV</code> now contributes a first reviewed early lower-secondary data/chance corridor on the explicit <code>Klassen 5/6</code> lane</li>
+<li>the Mecklenburg-Vorpommern source separates</li>
+<li><code>Statistische Erhebungen</code></li>
+<li><code>einstufige Zufallsexperimente</code></li>
+<li>this makes <code>MV</code> a useful pressure test for whether the visible early data/chance surface can absorb both survey/display work and first Laplace-style probability work without forcing a separate early diagram or early-probability package</li>
+<li><code>MV</code> now contributes a first reviewed lower-secondary data/chance corridor on the explicit <code>Klasse 9</code> lane</li>
+<li>the Mecklenburg-Vorpommern source separates</li>
+<li><code>Haeufigkeiten, Mittelwerte und Streumasse</code></li>
+<li><code>statistische Erhebungen</code></li>
+<li>this makes <code>MV</code> a useful pressure test for whether the visible <code>D4</code> descriptive-statistics surface can absorb both summary measures and survey-design/evaluation residue without forcing a separate survey or critical-statistics package</li>
+<li><code>MV</code> now also contributes a first reviewed later-probability corridor on the explicit <code>Klasse 10</code> lane</li>
+<li>the Mecklenburg-Vorpommern source separates</li>
+<li><code>Zufallsexperimente mit und ohne Zuruecklegen</code></li>
+<li><code>Zufallsgroessen und Binomialverteilung</code></li>
+<li>this confirms that the visible <code>D3</code> surface can coexist with the frozen broad <code>D1-D5</code> surface for later random-variable residue without forcing a separate visible <code>D6</code> package</li>
+</ul>
+<h3 id="thueringen-th">Thueringen (<code>TH</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li><code>TH</code> now contributes a first reviewed lower-secondary data/chance corridor on the explicit <code>Klassenstufen 5/6</code> lane</li>
+<li>the Thueringen source separates</li>
+<li><code>Daten erfassen und darstellen</code></li>
+<li><code>statistische Kenngroessen und mit Zufall experimentieren</code></li>
+<li>this makes <code>TH</code> a useful pressure test for whether the early data surface can coexist with a still-mixed early statistics/chance strip on the broad Sek-I data/chance surface without forcing either a separate early diagram package or a separate early-probability package</li>
+<li><code>TH</code> now also contributes a first reviewed broad <code>Klassenstufen 7/8</code> data/chance corridor</li>
+<li>the archived <code>7/8</code> source still exposes only one shared <code>Stochastik</code> strip</li>
+<li>this confirms that the shared broad Sek-I data/chance surface can absorb a reviewed wide <code>7/8</code> lane without forcing a sharper canonical split from source granularity alone</li>
+<li><code>TH</code> now also contributes a first reviewed broad <code>Klassenstufen 9/10</code> data/chance corridor</li>
+<li>the archived <code>9/10</code> source still exposes only one shared <code>Stochastik</code> strip</li>
+<li>this confirms that the same shared broad later Sek-I data/chance surface can absorb a reviewed wide <code>9/10</code> lane without forcing a sharper canonical split from source granularity alone</li>
+</ul>
+<h2 id="current-canonical-datachance-inventory">Current canonical data/chance inventory</h2>
+<p>The canonical graph is already materially seeded here.</p>
+<p>Important existing package handles:</p>
+<ol>
+<li>early package</li>
+<li>
+<p><code>Fruehe Daten-, Zufalls- und Zaehlvorstellungen (Sek I)</code></p>
+</li>
+<li>
+<p>later package</p>
+</li>
+<li>
+<p><code>Spaetere Daten-, Wahrscheinlichkeits- und Statistikvorstellungen (Sek I)</code></p>
+</li>
+<li>
+<p>descriptive-statistics package</p>
+</li>
+<li><code>Kenngroessen von Daten bestimmen und interpretieren</code></li>
+<li>
+<p><code>Beschreibende Statistik mit Quartilen, Boxplots und Verteilungen (Sek I)</code></p>
+</li>
+<li>
+<p>probability / experiment packages</p>
+</li>
+<li><code>Laplace-Wahrscheinlichkeiten und relative Haeufigkeiten</code></li>
+<li><code>Zusammengesetzte Zufallsexperimente modellieren und simulieren</code></li>
+<li>
+<p>atoms for <code>Baumdiagramme</code>, <code>Pfadregeln</code>, simulation</p>
+</li>
+<li>
+<p>top-level package</p>
+</li>
+<li><code>Daten und Zufall (Sek I)</code></li>
+</ol>
+<h2 id="audit-judgment">Audit judgment</h2>
+<p>The canonical data/chance topic is not missing a foundation.
+The main packaging decision is now materially stabilized: <code>HB</code>, <code>HH</code>, and especially <code>SH</code> support <code>D1-D4</code> as a workable nationwide cut.</p>
+<p>Main problem:</p>
+<ul>
+<li>the current top-level topic mixes</li>
+<li>early data routines,</li>
+<li>later probability,</li>
+<li>multi-stage experiment structure,</li>
+<li>and descriptive statistics
+  without exposing the package boundaries clearly enough for state-by-state validation</li>
+</ul>
+<p>This is therefore primarily a packaging-and-cut problem, not first a missing-content problem.</p>
+<h2 id="findings">Findings</h2>
+<h3 id="1-early-data-routines-are-present-but-not-visibly-separated-enough-from-later-probability">1. Early data routines are present but not visibly separated enough from later probability</h3>
+<p>The canonical graph already has:</p>
+<ul>
+<li>absolute / relative frequencies</li>
+<li>diagrams</li>
+<li>arithmetic mean</li>
+<li>first random experiments</li>
+</ul>
+<p>This is good.
+But for topic-first steering, these should become a visibly own package:</p>
+<ul>
+<li>collecting, displaying, and interpreting data</li>
+<li>first random situations</li>
+</ul>
+<h3 id="2-laplace-relative-frequency-work-is-pedagogically-real-and-should-remain-explicit">2. Laplace / relative-frequency work is pedagogically real and should remain explicit</h3>
+<p><code>HB J7/8</code> clearly supports a package around:</p>
+<ul>
+<li>distributions</li>
+<li>Laplace</li>
+<li>first probability reasoning</li>
+</ul>
+<p>The canonical graph already contains this material, but it sits partly spread across the early and later mixed package handles.</p>
+<h3 id="3-multi-stage-experiments-are-already-a-strong-canonical-unit">3. Multi-stage experiments are already a strong canonical unit</h3>
+<p>This part looks healthier:</p>
+<ul>
+<li><code>Zusammengesetzte Zufallsexperimente modellieren und simulieren</code></li>
+<li><code>Baumdiagramme und Pfadregeln</code></li>
+<li>simulation</li>
+</ul>
+<p>This should stay an explicit later package.</p>
+<h3 id="4-descriptive-statistics-is-present-but-its-relation-to-the-rest-is-too-implicit">4. Descriptive statistics is present, but its relation to the rest is too implicit</h3>
+<p>The canonical graph already includes:</p>
+<ul>
+<li>median</li>
+<li>quartiles</li>
+<li>boxplots</li>
+<li>comparing distributions</li>
+</ul>
+<p>That is strong.
+But at the package level it is still not clear enough whether descriptive statistics is:</p>
+<ul>
+<li>just an appendix to probability</li>
+<li>or a full own later Sek-I subpackage</li>
+</ul>
+<p>The reviewed state evidence points to the second reading.</p>
+<h3 id="5-combinatorics-four-field-table-work-deserves-an-explicit-decision">5. Combinatorics / four-field-table work deserves an explicit decision</h3>
+<p><code>HB J9</code> gives an important signal:</p>
+<ul>
+<li>combinatorics</li>
+<li>four-field tables</li>
+</ul>
+<p>This does not yet force a large new canonical wave, but it does require a packaging decision:</p>
+<ul>
+<li>either these stay inside the multi-stage / conditional package</li>
+<li>or they become a visible subpackage of later probability structure</li>
+</ul>
+<p>That decision should be made explicitly, not by drift.</p>
+<h2 id="proposed-canonical-work-packages">Proposed canonical work packages</h2>
+<p>For <code>Sek I Daten / Zufall</code>, use these work packages:</p>
+<ol>
+<li><code>D1 Early data routines and first random experiments</code></li>
+<li>collecting data</li>
+<li>tables / diagrams</li>
+<li>absolute / relative frequencies</li>
+<li>arithmetic mean</li>
+<li>
+<p>first simple random situations</p>
+</li>
+<li>
+<p><code>D2 Laplace ideas and probability from frequencies</code></p>
+</li>
+<li>probability notions</li>
+<li>relative frequency as empirical bridge</li>
+<li>
+<p>Laplace settings</p>
+</li>
+<li>
+<p><code>D3 Multi-stage experiments, tree diagrams, conditional structure</code></p>
+</li>
+<li>tree diagrams</li>
+<li>path rules</li>
+<li>simulations</li>
+<li>
+<p>four-field-table adjacency</p>
+</li>
+<li>
+<p><code>D4 Descriptive statistics and data comparison</code></p>
+</li>
+<li>median</li>
+<li>quartiles</li>
+<li>boxplots</li>
+<li>
+<p>compare distributions</p>
+</li>
+<li>
+<p><code>D5 Combinatorics / structured counting bridge</code></p>
+</li>
+<li>only if the reviewed state evidence shows this repeatedly enough</li>
+<li>otherwise keep it attached to <code>D3</code></li>
+</ol>
+<h2 id="recommendation">Recommendation</h2>
+<p>Do not widen more bundesland mappings on Sek-I data/chance before one canonical pass answers these questions:</p>
+<ol>
+<li>Should <code>D1</code> become a clearly visible own canonical subcluster?</li>
+<li>Should <code>D4 descriptive statistics</code> become a more explicit later subcluster?</li>
+<li>Should combinatorics / four-field-table work remain inside <code>D3</code>, or should there be a visible <code>D5</code> bridge package?</li>
+</ol>
+<h2 id="recommended-next-concrete-step">Recommended next concrete step</h2>
+<p>Run one canonical design step only on:</p>
+<h2 id="sachsen-k10-random-variable-and-k9-descriptive-statistics-corridors-connected-2026-04-03">Sachsen K10 random-variable and K9 descriptive-statistics corridors connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li><code>SN K10 Lernbereich 2 Diskrete Zufallsgroessen</code> now points to the broad visible <code>Daten und Zufall (Sek I)</code> surface</li>
+<li>the split Sachsen source strips there now separate</li>
+<li>distributions of discrete random variables,</li>
+<li>event probabilities with path rules / counting procedures / distribution function,</li>
+<li>expected value / variance / standard deviation / fair games</li>
+<li><code>SN K9 Lernbereich 4 Auswerten von Daten</code> now also points to the visible <code>D4</code> descriptive-statistics surface</li>
+<li><code>SN K7 Lernbereich 4 Vernetzung: Darstellen von Daten</code> now also points to the visible <code>D4</code> descriptive-statistics surface</li>
+<li>the split Sachsen source strips there now separate</li>
+<li>Lageparameter,</li>
+<li>Streuungsmasse und Histogramme,</li>
+<li>kritische Beurteilung statistischer Darstellungen</li>
+<li>the earlier Sachsen K7 strip intentionally stays broad on the same <code>D4</code> surface instead of forcing a separate visible diagram-reading package</li>
+<li>the later probability strips intentionally stay on broad existing <code>D3</code> and <code>D4</code>-adjacent package targets</li>
+<li>the later descriptive-statistics strips intentionally stay on broad existing <code>D4</code> targets instead of forcing a new visible histogram or manipulation package</li>
+<li>
+<p>together this confirms reviewed late-Sek-I residue, but still does not justify a new visible canonical random-variable package beyond <code>D1-D5</code></p>
+</li>
+<li>
+<p><code>D1 Early data routines and first random experiments</code></p>
+</li>
+<li><code>D2 Laplace ideas and probability from frequencies</code></li>
+<li><code>D3 Multi-stage experiments, tree diagrams, conditional structure</code></li>
+<li><code>D4 Descriptive statistics and data comparison</code></li>
+</ul>
+<p>Why this cut:</p>
+<ul>
+<li><code>HB</code> and <code>HH</code> already provide enough reviewed evidence for the broad progression</li>
+<li>the package decision matters more right now than adding lots of new atoms</li>
+<li>it keeps combinatorics / four-field-table work open as an explicit follow-up decision instead of forcing it too early</li>
+</ul>
+<h2 id="exit-criteria-for-this-audit">Exit criteria for this audit</h2>
+<p>This topic audit is complete when:</p>
+<ol>
+<li>the canonical subpackage boundaries above are either accepted or revised</li>
+<li>the canonical graph has a stable Sek-I data/chance packaging</li>
+<li>reviewed <code>HB</code> and <code>HH</code> evidence can be described as aligned to the revised packaging or intentionally broader because of source granularity</li>
+<li>it is clear whether combinatorics / four-field-table work stays inside <code>D3</code> or deserves a visible <code>D5</code> package</li>
+<li>at least one reviewed third-state lane beyond <code>HB</code> and <code>HH</code> confirms whether <code>D4</code> really behaves like an explicit later package</li>
+</ol>
+<h2 id="design-step-executed-2026-04-01">Design step executed (<code>2026-04-01</code>)</h2>
+<p>The canonical packaging step for <code>Sek I Daten / Zufall</code> is now executed.</p>
+<p>Accepted package cut:</p>
+<ol>
+<li><code>D1</code> = <code>Fruehe Datenroutinen, Haeufigkeiten und Datendeutung (Sek I)</code></li>
+<li><code>D2</code> = <code>Laplace-Vorstellungen und Wahrscheinlichkeit aus Haeufigkeiten (Sek I)</code></li>
+<li><code>D3</code> = <code>Mehrstufige Zufallsexperimente, Baumdiagramme und bedingte Struktur (Sek I)</code></li>
+<li><code>D4</code> = <code>Beschreibende Statistik und Datenvergleich (Sek I)</code></li>
+</ol>
+<p>What changed in the canonical decision:</p>
+<ul>
+<li>the broad mixed <code>J6 Prozentrechnung und Daten</code> corridor is no longer pulled wholesale into the top-level data/chance package</li>
+<li>instead, the data-facing early atoms now sit in an explicit <code>D1</code> package</li>
+<li><code>D2</code> is now a visible probability bridge from frequencies to Laplace settings</li>
+<li><code>D3</code> explicitly carries tree diagrams, simulation, and for now also the adjacency to combined events / four-field structures</li>
+<li><code>D4</code> is now an explicit descriptive-statistics package instead of an implicit appendix</li>
+</ul>
+<p>Explicit non-decision kept open:</p>
+<ul>
+<li><code>D5</code> (<code>Zaehlen / Kombinatorik</code> as its own visible package) is still intentionally open</li>
+<li>reviewed <code>HB J9</code> evidence is strong enough to keep that question alive, but not yet strong enough to force a separate package in this step</li>
+</ul>
+<p>Resulting next step:</p>
+<ol>
+<li>realign reviewed <code>HB</code> and <code>HH</code> lower-secondary data/chance mappings to <code>D1-D4</code></li>
+<li>only after that decide whether later reviewed state evidence forces an explicit <code>D5</code></li>
+</ol>
+<h2 id="third-state-validation-executed-2026-04-01">Third-state validation executed (<code>2026-04-01</code>)</h2>
+<p><code>SH</code> now serves as the first external validation lane beyond <code>HB</code> and <code>HH</code>.</p>
+<p>What <code>SH</code> confirms:</p>
+<ol>
+<li><code>D1</code> remains a legitimate early package, even when simple combinatorics sits adjacent to first data/chance work</li>
+<li><code>D2</code> and <code>D3</code> can stay separated from later descriptive-statistics work</li>
+<li><code>D4</code> is pedagogically real as a visible later package because the source lane exposes</li>
+<li><code>beschreibende Statistik</code></li>
+<li><code>Spannweite, Quartile und Boxplots</code></li>
+<li><code>Datenverteilungen vergleichen und deuten</code></li>
+</ol>
+<p>Resulting topic status:</p>
+<ul>
+<li><code>D1-D4</code> are now not only canonical design decisions but also externally validated by a third reviewed state lane</li>
+<li>the last package decision <code>D5</code> (<code>Zaehlen / Kombinatorik</code> as a separate visible bridge) is now executed</li>
+</ul>
+<p>Recommended next step after this validation:</p>
+<ol>
+<li>treat <code>Sek I Daten / Zufall</code> as canonically stable enough to freeze further package churn</li>
+<li>use additional state lanes only for mapping and residue control, not to reopen the <code>D1-D5</code> cut without strong contrary evidence</li>
+</ol>
+<h2 id="d5-decision-executed-2026-04-01">D5 decision executed (<code>2026-04-01</code>)</h2>
+<p>The open <code>D5</code> question is now resolved in favour of a visible package.</p>
+<p>Why this decision is now justified:</p>
+<ul>
+<li><code>HB</code> contributes a reviewed later Sek-I signal via <code>J9 Stochastik: Kombinatorik und Vierfeldertafeln</code></li>
+<li><code>SH</code> keeps combinatorial questions explicitly adjacent to early data/chance work in <code>Jahrgangsband 5/6</code></li>
+<li>the Hessen lower-secondary source lane contributes an explicit later atom <code>Abzaehlstrategien nutzen</code> with direct probability use</li>
+</ul>
+<p>Canonical consequence:</p>
+<ol>
+<li><code>D5</code> is now visible as <code>Zaehlen, Kombinatorik und Wahrscheinlichkeitsbruecken (Sek I)</code></li>
+<li>the package currently bundles</li>
+<li>the existing early atom for simple counting principles</li>
+<li>one later bridge atom for combinatorial reasoning in probability situations</li>
+<li><code>D3</code> keeps four-field tables, conditional structure, and multi-step random experiments</li>
+<li><code>D5</code> does not absorb those <code>D3</code> structures; it stays a counting/probability bridge</li>
+</ol>
+<p>Result:</p>
+<ul>
+<li><code>Sek I Daten / Zufall</code> now has a stable visible <code>D1-D5</code> package surface</li>
+<li>the topic should now be treated as materially packaged, with later work focused on mapping quality rather than package invention</li>
+</ul>
+<h2 id="sachsen-anhalt-jg-56-data-corridor-connected-2026-04-03">Sachsen-Anhalt JG 5/6 data corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the ST <code>JG 5/6</code> strips <code>Erfassen, Darstellen und Auswerten von Daten</code> and <code>Kenngroessen von Daten</code> now both point to the existing descriptive-statistics surface</li>
+<li>the reviewed ST lane therefore confirms the broad early <code>D4</code> packaging without reopening the current Sek-I data/chance cut</li>
+</ul>
+<h2 id="sachsen-anhalt-jg-78-chance-corridor-connected-2026-04-03">Sachsen-Anhalt JG 7/8 chance corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the ST <code>JG 7/8</code> strip <code>Zufaellige Ereignisse, Haeufigkeiten, Wahrscheinlichkeiten</code> now points to the existing Laplace / frequency bridge</li>
+<li>the ST <code>JG 7/8</code> strip <code>Mehrstufige Zufallsversuche und Wahrscheinlichkeiten</code> now points to the visible multi-step random-experiment surface</li>
+<li>the reviewed ST lane therefore confirms the current <code>D2/D3</code> split without forcing a new mixed early-probability package</li>
+</ul>
+<h2 id="sachsen-anhalt-jg-10-random-variables-corridor-connected-2026-04-03">Sachsen-Anhalt JG 10 random-variables corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the ST <code>JG10</code> strip <code>Zufallsgroessen</code> now points to the broad visible <code>Daten und Zufall (Sek I)</code> surface</li>
+<li>the reviewed ST lane therefore confirms that later Sek-I random-variable residue can stay on the frozen <code>D1-D5</code> package surface without forcing a separate visible <code>D6</code> package</li>
+</ul>
+<h2 id="sachsen-anhalt-jg-9-frequency-distributions-corridor-connected-2026-04-03">Sachsen-Anhalt JG 9 frequency-distributions corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the ST <code>JG9</code> strip <code>Haeufigkeitsverteilungen</code> now points to the visible <code>D4</code> descriptive-statistics surface</li>
+<li>the reviewed ST lane therefore confirms that later Sek-I distribution-comparison residue can stay on the frozen descriptive-statistics package without forcing a separate visible histogram or frequency-distribution package</li>
+</ul>
+<h2 id="rheinland-pfalz-klassenstufen-9-und-10-datachance-corridor-connected-2026-04-03">Rheinland-Pfalz Klassenstufen 9 und 10 data/chance corridor connected (<code>2026-04-03</code>)</h2>
+<ul>
+<li>the broad RP <code>Klassenstufen 9 und 10: Daten und Zufall</code> anchor now carries a reviewed split into <code>Vierfeldertafeln, zweistufige Zufallsexperimente</code> and <code>Wahrscheinlichkeiten durch Simulationen</code></li>
+<li>the first strip points to the visible multi-stage-experiment surface</li>
+<li>the second strip points to the visible probability-from-frequencies bridge</li>
+<li>the RP lane therefore confirms the visible Sek-I chance surface without forcing a new visible later random-variable package</li>
+</ul>
+<h2 id="saarland-klassenstufe-7-datachance-corridor-connected-2026-04-04">Saarland Klassenstufe 7 data/chance corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the broad SL <code>Klassenstufe 7: Daten und Zufall</code> anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface</li>
+<li>the current Saarland grade-7 source still exposes only one shared data/chance strip</li>
+<li>this confirms that the shared broad Sek-I data/chance surface can absorb an explicit reviewed class-7 lane without forcing a sharper state-local split from source granularity alone</li>
+</ul>
+<h2 id="saarland-klassenstufe-8-datachance-corridor-connected-2026-04-04">Saarland Klassenstufe 8 data/chance corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the broad SL <code>Klassenstufe 8: Daten und Zufall</code> anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface</li>
+<li>the current Saarland grade-8 source still exposes only one shared data/chance strip</li>
+<li>this confirms the shared broad Sek-I data/chance surface can absorb an explicit reviewed class-8 lane without forcing a sharper state-local split</li>
+</ul>
+<h2 id="saarland-klassenstufe-9-datachance-corridor-connected-2026-04-04">Saarland Klassenstufe 9 data/chance corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the broad SL <code>Klassenstufe 9: Daten und Zufall</code> anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface</li>
+<li>the current Saarland grade-9 source still exposes only one shared data/chance strip</li>
+<li>this confirms the shared broad Sek-I data/chance surface can absorb an explicit reviewed class-9 lane without forcing a sharper state-local split</li>
+</ul>
+<h2 id="saarland-klassenstufe-10-datachance-corridor-connected-2026-04-04">Saarland Klassenstufe 10 data/chance corridor connected (<code>2026-04-04</code>)</h2>
+<ul>
+<li>the broad SL <code>Klassenstufe 10: Daten und Zufall</code> anchor now carries a first reviewed corridor on the shared Sek-I data/chance surface</li>
+<li>the current Saarland grade-10 source still exposes only one shared data/chance strip</li>
+<li>this confirms the shared Sek-I data/chance surface can absorb an explicit reviewed grade-10 lane without forcing a sharper state-local split</li>
+</ul>
+<h2 id="additional-reviewed-nationwide-evidence-bw-by-sh">Additional reviewed nationwide evidence (<code>BW</code>, <code>BY</code>, <code>SH</code>)</h2>
+<h3 id="baden-wuerttemberg-bw">Baden-Wuerttemberg (<code>BW</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li>the reviewed Baden-Wuerttemberg lower-secondary lane already carries explicit <code>3.1.5</code>, <code>3.2.5</code>, and <code>3.3.5</code> widening steps on the shared Sek-I data/chance spine</li>
+<li><code>3.1.5 Daten und Zufall</code> now bridges reviewed early data leaves for frequencies, arithmetic mean, and critical diagram reading</li>
+<li><code>3.2.5 Daten und Zufall</code> now bridges reviewed later descriptive-statistics and Laplace work</li>
+<li><code>3.3.5 Daten und Zufall</code> now bridges reviewed later conditional-probability, four-field, stochastic-independence, random-variable, and binomial surfaces</li>
+<li>together this confirms that the visible <code>D1-D5</code> surface can absorb the Baden-Wuerttemberg lane without forcing another package split</li>
+</ul>
+<h3 id="bayern-by">Bayern (<code>BY</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li>the reviewed Bavaria retained gymnasium lane now already reaches the visible Sek-I data/chance surface across <code>M5-M10</code></li>
+<li>the active BY mappings now cover simple counting, frequencies, arithmetic mean, descriptive statistics with quartiles and boxplots, Laplace situations, linked events with Vierfelderstrukturen, tree diagrams, simulation, and conditional-structure work</li>
+<li>together this keeps Bavaria on the current <code>D1-D5</code> package surface instead of forcing a new nationwide data/chance pass</li>
+</ul>
+<h3 id="schleswig-holstein-sh_1">Schleswig-Holstein (<code>SH</code>)</h3>
+<p>Observed signal:</p>
+<ul>
+<li>Schleswig-Holstein no longer only serves as the original third-state validation lane; the lower-secondary source snapshot is now fully refined across <code>5/6</code> and <code>7/8/9</code> on <code>Daten und Zufall</code></li>
+<li>the active SH mappings now cover early statistical surveys, simple combinatorics, one-stage random experiments, frequencies, probability, multi-stage random experiments, quartiles / boxplots, and data-comparison work</li>
+<li>there are now no remaining unmapped SH Sek-I source atoms or source clusters in the active data/chance-owning lane; the remaining mismatch is broad-source residue, not a missing canonical package</li>
+</ul>
+<h2 id="nordrhein-westfalen-lower-secondary-datachance-corridor-connected-2026-04-05">Nordrhein-Westfalen lower-secondary data/chance corridor connected (<code>2026-04-05</code>)</h2>
+<p>Observed signal:</p>
+<ul>
+<li>the active Nordrhein-Westfalen lower-secondary source snapshot now also carries explicit reviewed data/chance corridors from <code>2.3</code>, <code>2.4.1</code>, and <code>2.4.2</code></li>
+<li>the mapped NRW lower-secondary lane now covers early statistical data collection and representation, first measures of data, one- and two-stage random experiments, Laplace-based probability, simulation, critical reading of statistical representations, conditional probability, stochastic independence, and combinatorics</li>
+<li>the compiled canonical applicability now keeps <code>DE-NW</code> on the shared <code>Daten und Zufall (Sek I)</code> root together with the visible <code>D1</code>, <code>D2</code>, <code>D3</code>, <code>D4</code>, and <code>D5</code> package handles</li>
+<li>the Nordrhein-Westfalen data/chance cell can therefore now be treated as resolved on topic level</li>
+</ul>
+<h2 id="berlin-brandenburg-lower-secondary-datachance-corridors-connected-2026-04-05">Berlin / Brandenburg lower-secondary data/chance corridors connected (<code>2026-04-05</code>)</h2>
+<p>Observed signal:</p>
+<ul>
+<li>the active shared BE/BB lower-secondary source snapshots now also carry explicit reviewed data/chance corridors from the Sek-I <code>Daten und Zufall</code> surface on Niveaustufen <code>E-H</code></li>
+<li>the mapped Berlin and Brandenburg lower-secondary lanes now cover statistical surveys and samples, diagram work with frequencies and simple data measures, boxplots / histograms / descriptive-statistics reading, survey critique and manipulation detection, Laplace-oriented probability reasoning, tree/vierfelder-based conditional structure, and explicit combinatorial probability bridges</li>
+<li>the compiled canonical applicability can therefore keep both <code>DE-BE</code> and <code>DE-BB</code> on the shared <code>Daten und Zufall (Sek I)</code> root together with the visible <code>D1</code>, <code>D2</code>, <code>D3</code>, <code>D4</code>, and <code>D5</code> package handles</li>
+<li>the Berlin and Brandenburg data/chance cells can therefore now be treated as resolved on topic level</li>
+</ul>
+<h2 id="niedersachsen-lower-secondary-datachance-corridor-connected-2026-04-05">Niedersachsen lower-secondary data/chance corridor connected (<code>2026-04-05</code>)</h2>
+<p>Observed signal:</p>
+<ul>
+<li>the active Niedersachsen lower-secondary source snapshot now also carries an explicit reviewed data/chance corridor from the five real Lernbereiche <code>Planung und Durchfuehrung statistischer Erhebungen</code>, <code>Masszahlen statistischer Erhebungen</code>, <code>Wahrscheinlichkeit</code>, <code>Ein- und mehrstufige Zufallsversuche</code>, and <code>Baumdiagramme und Vierfeldertafeln</code></li>
+<li>the mapped Niedersachsen lower-secondary lane now covers survey planning and data preparation, chart/frequency work, simple descriptive-statistics measures, probability as a model of relative frequencies, Laplace reasoning, simulation, multi-stage tree-diagram work, and vierfelder-linked-event interpretation</li>
+<li>the compiled canonical applicability can therefore keep <code>DE-NI</code> on the shared <code>Daten und Zufall (Sek I)</code> root together with the visible <code>D1</code>, <code>D2</code>, <code>D3</code>, and <code>D4</code> package handles, while the NI source still does not force a separate new canonical package beyond the frozen <code>D1-D5</code> cut</li>
+<li>the Niedersachsen data/chance cell can therefore now be treated as resolved on topic level</li>
+</ul>
+<h2 id="coverage-checkpoint-2026-04-05">Coverage checkpoint (<code>2026-04-05</code>)</h2>
+<ul>
+<li><code>NI</code> now joins <code>BE</code>, <code>BB</code>, <code>BW</code>, <code>BY</code>, <code>NW</code>, and <code>SH</code> together with the already reviewed <code>HB</code>, <code>HH</code>, <code>HE</code>, <code>MV</code>, <code>RP</code>, <code>SL</code>, <code>SN</code>, <code>ST</code>, and <code>TH</code> lanes as resolved against the frozen <code>D1-D5</code> package surface</li>
+<li>the nationwide data/chance row is therefore fully resolved once across all <code>16</code> states and is no longer blocked by package design or by state-lane breadth debt</li>
+<li>the next nationwide math move should therefore no longer be another Sek-I data/chance sweep; it should shift to applicability, learner-facing scope stabilization, and the broader <code>P6/F6</code> cutover work</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

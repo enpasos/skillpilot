@@ -1,0 +1,4870 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/qa-ci/status/goal-source-rationale-gap-issues/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Goal Source Rationale Gap Issues - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#goal-source-rationale-gap-issues" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Goal Source Rationale Gap Issues
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bearbeitungslanes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bearbeitungslanes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#by-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        By Phase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#by-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        By Area
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issue-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue Queue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="goal-source-rationale-gap-issues">Goal Source Rationale Gap Issues</h1>
+<blockquote>
+<p>Generated artifact. Do not edit manually.</p>
+<p>Generated by: <code>app/scripts/reportGoalSourceRationaleGapIssues.ts</code>
+Regenerate with: <code>cd app &amp;&amp; npm run quality:goal-source-rationale-gap-issues</code>
+Source of truth: <code>app/scripts/reportGoalSourceRationaleGapIssues.ts</code>
+Source of truth: <code>docs/qa-ci/status/goal-source-rationales-math-all-relevant.json</code>
+Source of truth: <code>curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json</code></p>
+</blockquote>
+<p>Generated: 2026-09-06T16:08:19.838Z</p>
+<p>Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-Mathematikreport zu bearbeitbaren Issues. Sie ist kein Runtime-Gate; sie priorisiert die naechsten Source-Extraction- und Mapping-Arbeiten.</p>
+<h2 id="summary">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classic-source gap issues</td>
+<td>56</td>
+</tr>
+<tr>
+<td>Mit belegten Geschwisterzielen</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Ohne belegten Elternkontext</td>
+<td>31</td>
+</tr>
+<tr>
+<td>Phasen mit Gaps</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Bereiche mit Gaps</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bearbeitungslanes">Bearbeitungslanes</h2>
+<ul>
+<li><code>Geschwister-Mapping pruefen</code>: Im selben Elternknoten gibt es belegte Geschwisterziele. Hier zuerst pruefen, ob der vorhandene Quellenabschnitt auch das Gap-Ziel traegt oder feiner gesplittet werden muss.</li>
+<li><code>Quellenbeleg suchen</code>: Im direkten Elternkontext gibt es kein belegtes Geschwisterziel. Hier braucht es wahrscheinlich eine neue oder erweiterte Source-Extraction-/Mapping-Entscheidung.</li>
+</ul>
+<h2 id="by-phase">By Phase</h2>
+<table>
+<thead>
+<tr>
+<th>Bucket</th>
+<th>Issues</th>
+<th>Sibling-supported</th>
+<th>Isolated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q4</td>
+<td>40</td>
+<td>17</td>
+<td>23</td>
+</tr>
+<tr>
+<td>E</td>
+<td>8</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Q2</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Q3</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>J9</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="by-area">By Area</h2>
+<table>
+<thead>
+<tr>
+<th>Bucket</th>
+<th>Issues</th>
+<th>Sibling-supported</th>
+<th>Isolated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unknown</td>
+<td>48</td>
+<td>23</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>7</td>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Stochastics</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="issue-queue">Issue Queue</h2>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Lane</th>
+<th>Phase</th>
+<th>Area</th>
+<th>Goal</th>
+<th>Covered siblings</th>
+<th>Primary source anchor</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GSR-GAP-7D37513B</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>Transformationsargumente für Flächen und Volumina nutzen (LK)</td>
+<td>16</td>
+<td>Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK) (DE-BW | Bildungsplan BW Mathematik Gymnasium 2016, 3.4.2, Kompetenz 6, S. 40. | bw-math-sekii-bp2016-3-4-2-06)</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum &gt; Transformationsargumente für Flächen und Volumina nutzen (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-3AEA4D33</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)</td>
+<td>1</td>
+<td>Schnittgerade zweier Ebenen bestimmen (LK) (DE-HE | HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 2 | he-math-sekii-q2-3-b13-a02-b3fca74f)</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Raum, Matrizen und lineare Modelle (Sek II) &gt; Lagebeziehungen und Schnittmengen im Raum &gt; Vertiefende Untersuchungen im Raum (LK) &gt; Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-D8F1FD06</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) (canonical_math_q2_use_composed_functions_for_quantifiable_models_lk)</td>
+<td>2</td>
+<td>Kettenregel beim Ableiten anwenden (LK) (DE-BY | LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2 | b2650cbe-490c-547e-a55a-d5916c3c0647)</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK) &gt; Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-BF17CADA</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q2</td>
+<td>unknown</td>
+<td>Sachsituationen mit einer erweiterten Funktionsklasse modellieren</td>
+<td>6</td>
+<td>Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen (DE-SH | Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66 | de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K005-fd01e50e5f)</td>
+<td>Mathematik &gt; Analytische Geometrie, lineare Algebra und vertiefte Analysis &gt; Vertiefung der Analysis &gt; Sachsituationen mit einer erweiterten Funktionsklasse modellieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-5E615E88</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Parameter für vorgegebene Nullstellen bestimmen</td>
+<td>8</td>
+<td>Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen (DE-HE | HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2 | he-math-sekii-q4-1-b02-a02-eebba818)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen &gt; Parameter für vorgegebene Nullstellen bestimmen</td>
+</tr>
+<tr>
+<td>GSR-GAP-6CA8AD6B</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Parameter zur Modellierung von Sachsituationen bestimmen</td>
+<td>8</td>
+<td>Parameter in Funktionenscharen deuten (DE-HE | HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2 | he-math-sekii-q4-1-b01-a02-825e2758)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen &gt; Parameter zur Modellierung von Sachsituationen bestimmen</td>
+</tr>
+<tr>
+<td>GSR-GAP-1BDAC3D8</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Parameterbereiche für Lösungsexistenz analysieren (LK)</td>
+<td>8</td>
+<td>Parameter in Funktionenscharen deuten (DE-HE | HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2 | he-math-sekii-q4-1-b01-a02-825e2758)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen (Sek II) &gt; Funktionenscharen und Parameteruntersuchungen &gt; Parameterbereiche für Lösungsexistenz analysieren (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-81527AAC</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Beweis durch Kontraposition</td>
+<td>4</td>
+<td>Beweise verständlich präsentieren (DE-HE | HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 4, Aspekt 2 | he-math-sekii-q4-2-b04-a02-0c999650)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Begründungen und Beweise strukturieren &gt; Beweis durch Kontraposition</td>
+</tr>
+<tr>
+<td>GSR-GAP-9EA981ED</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Beweis mit Fallunterscheidung</td>
+<td>4</td>
+<td>Beweise verständlich präsentieren (DE-HE | HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 4, Aspekt 2 | he-math-sekii-q4-2-b04-a02-0c999650)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Begründungen und Beweise strukturieren &gt; Beweis mit Fallunterscheidung</td>
+</tr>
+<tr>
+<td>GSR-GAP-56F9632D</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Einstellungen dokumentieren und reproduzieren</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Darstellungen mit digitalen Werkzeugen erstellen &gt; Einstellungen dokumentieren und reproduzieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-7C4E8D59</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Handrechnung mit digitaler Kontrolle kombinieren</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Darstellungen mit digitalen Werkzeugen erstellen &gt; Handrechnung mit digitaler Kontrolle kombinieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-7AC32297</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Tool-Ausgaben interpretieren</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Darstellungen mit digitalen Werkzeugen erstellen &gt; Tool-Ausgaben interpretieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-879F9C84</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Werkzeugeinstellungen zielgerichtet setzen</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Darstellungen mit digitalen Werkzeugen erstellen &gt; Werkzeugeinstellungen zielgerichtet setzen</td>
+</tr>
+<tr>
+<td>GSR-GAP-BAB64124</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Argumente austauschen und prüfen</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Diskutieren und kooperieren &gt; Argumente austauschen und prüfen</td>
+</tr>
+<tr>
+<td>GSR-GAP-FC2CF102</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Kooperativ Ergebnisse erarbeiten</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Diskutieren und kooperieren &gt; Kooperativ Ergebnisse erarbeiten</td>
+</tr>
+<tr>
+<td>GSR-GAP-DED082ED</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Kritik aufnehmen und integrieren</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Diskutieren und kooperieren &gt; Kritik aufnehmen und integrieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-619F29F5</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Entscheidung dokumentieren und bewerten (LK)</td>
+<td>1</td>
+<td>Aufwand und Genauigkeit vergleichen (LK) (DE-NW | Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 19 | de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Effizienz von Verfahren beurteilen (LK) &gt; Entscheidung dokumentieren und bewerten (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-E0ED8BB3</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Verfahren begründet auswählen (LK)</td>
+<td>1</td>
+<td>Aufwand und Genauigkeit vergleichen (LK) (DE-NW | Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 19 | de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Effizienz von Verfahren beurteilen (LK) &gt; Verfahren begründet auswählen (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-613871F6</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)</td>
+<td>12</td>
+<td>Mathematische Probleme erkennen und formulieren (DE-HE | HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 1, Aspekt 1 | he-math-sekii-q4-2-b01-a01-05af313f)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-83A6CCB1</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Auf Rückfragen eingehen</td>
+<td>2</td>
+<td>Lösung nachvollziehbar erklären (DE-BW | Bildungsplan BW Mathematik Gymnasium 2016, 2.5, Kompetenz 1, S. 16. | bw-math-sekii-bp2016-2-5-01-329b8f6f)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Ergebnisse adressatengerecht erklären &gt; Auf Rückfragen eingehen</td>
+</tr>
+<tr>
+<td>GSR-GAP-F4DF008D</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Einheiten- und Dimensionscheck anwenden</td>
+<td>1</td>
+<td>Fehlerquellen analysieren und beheben (DE-TH | Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34 | de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Ergebnisse formal überprüfen &gt; Einheiten- und Dimensionscheck anwenden</td>
+</tr>
+<tr>
+<td>GSR-GAP-1EF06AC4</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Kontrollrechnung mit Alternativmethode</td>
+<td>1</td>
+<td>Fehlerquellen analysieren und beheben (DE-TH | Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34 | de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Ergebnisse formal überprüfen &gt; Kontrollrechnung mit Alternativmethode</td>
+</tr>
+<tr>
+<td>GSR-GAP-F0F9C084</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Probe durch Einsetzen durchführen</td>
+<td>1</td>
+<td>Fehlerquellen analysieren und beheben (DE-TH | Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34 | de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Ergebnisse formal überprüfen &gt; Probe durch Einsetzen durchführen</td>
+</tr>
+<tr>
+<td>GSR-GAP-A111F535</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Definitionen und Sätze präzise nutzen (LK)</td>
+<td>2</td>
+<td>Stil und Präzision verbessern (LK) (DE-BY | LehrplanPLUS Bayern Gymnasium Mathematik, M13.3 | by-math-m13-3-f5091eb7-s02-69fef47054)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Fachsprache präzisieren (LK) &gt; Definitionen und Sätze präzise nutzen (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-4AE439C0</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Argumentation formalisieren und präzisieren (LK)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Formale Argumentationen im Leistungskurs entwickeln (LK) &gt; Argumentation formalisieren und präzisieren (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-DD1D9F9C</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Beweislücken identifizieren (LK)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Formale Argumentationen im Leistungskurs entwickeln (LK) &gt; Beweislücken identifizieren (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-01217F4A</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Beweisstrategien vergleichen und wählen (LK)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Formale Argumentationen im Leistungskurs entwickeln (LK) &gt; Beweisstrategien vergleichen und wählen (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-75DB9A04</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Medien passend auswählen</td>
+<td>2</td>
+<td>Ergebnisse strukturiert präsentieren (DE-BY | LehrplanPLUS Bayern Gymnasium Mathematik, M13.3 | by-math-m13-3-f5091eb7-s02-69fef47054)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Kommunikation reflektieren und präsentieren &gt; Medien passend auswählen</td>
+</tr>
+<tr>
+<td>GSR-GAP-D0475ED5</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Aussagekraft und Grenzen diskutieren (LK)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Komplexe Visualisierungen entwickeln (LK) &gt; Aussagekraft und Grenzen diskutieren (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-55FA9261</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Mehrere Darstellungen kombinieren (LK)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Komplexe Visualisierungen entwickeln (LK) &gt; Mehrere Darstellungen kombinieren (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-C23C4364</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Visualisierung für komplexe Situation entwerfen (LK)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Komplexe Visualisierungen entwickeln (LK) &gt; Visualisierung für komplexe Situation entwerfen (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-5C4B5AB1</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Modell vollständig notieren</td>
+<td>1</td>
+<td>Beziehungen als Modellgleichungen aufstellen (DE-HE | Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra | he-math-seki-g9-9-1-03-6c2d7b55)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mathematische Modelle bilden &gt; Modell vollständig notieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-C3CAD3F5</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Rand- und Anfangsbedingungen festlegen</td>
+<td>1</td>
+<td>Beziehungen als Modellgleichungen aufstellen (DE-HE | Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra | he-math-seki-g9-9-1-03-6c2d7b55)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mathematische Modelle bilden &gt; Rand- und Anfangsbedingungen festlegen</td>
+</tr>
+<tr>
+<td>GSR-GAP-670286AA</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Variablen und Parameter definieren</td>
+<td>1</td>
+<td>Beziehungen als Modellgleichungen aufstellen (DE-HE | Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra | he-math-seki-g9-9-1-03-6c2d7b55)</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mathematische Modelle bilden &gt; Variablen und Parameter definieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-74F28CE7</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Alternative Modelle entwickeln (LK)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mehrere Modelle vergleichen (LK) &gt; Alternative Modelle entwickeln (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-163DD583</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Modelle nach Kriterien vergleichen (LK)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mehrere Modelle vergleichen (LK) &gt; Modelle nach Kriterien vergleichen (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-519660D0</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Modellentscheidung begründen (LK)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Mehrere Modelle vergleichen (LK) &gt; Modellentscheidung begründen (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-BFBAEDB9</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Annahmen und Idealisationen formulieren</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Sachverhalte strukturieren und vereinfachen &gt; Annahmen und Idealisationen formulieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-BB4569BC</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Größen und Einheiten identifizieren</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Sachverhalte strukturieren und vereinfachen &gt; Größen und Einheiten identifizieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-8D126397</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Sachskizze mit Variablen erstellen</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Sachverhalte strukturieren und vereinfachen &gt; Sachskizze mit Variablen erstellen</td>
+</tr>
+<tr>
+<td>GSR-GAP-035B7FC6</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>unknown</td>
+<td>Sachverhalt vereinfachen und strukturieren</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Funktionenscharen, Argumentieren und komplexe Zahlen &gt; Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) &gt; Problemlösen und Argumentieren &gt; Sachverhalte strukturieren und vereinfachen &gt; Sachverhalt vereinfachen und strukturieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-4B16FCE6</td>
+<td>Quellenbeleg suchen</td>
+<td>E</td>
+<td>Analysis</td>
+<td>Anschlussbedingungen ohne Sprung und Knick modellieren (canonical_math_e_model_extrema_inflection_smooth_connections_smooth_connections)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Ableitungseinstieg und Differentialrechnung (Sek II) &gt; Differentialrechnung, Untersuchung und Optimierung &gt; Ableitungen zur Funktionsuntersuchung und Optimierung nutzen &gt; Sachzusammenhänge mit Extrem- und Wendestellen modellieren &gt; Anschlussbedingungen ohne Sprung und Knick modellieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-D4F2D4E2</td>
+<td>Quellenbeleg suchen</td>
+<td>E</td>
+<td>Analysis</td>
+<td>Sachzusammenhänge mit Extremstellen modellieren (canonical_math_e_model_extrema_inflection_smooth_connections_extrema)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Ableitungseinstieg und Differentialrechnung (Sek II) &gt; Differentialrechnung, Untersuchung und Optimierung &gt; Ableitungen zur Funktionsuntersuchung und Optimierung nutzen &gt; Sachzusammenhänge mit Extrem- und Wendestellen modellieren &gt; Sachzusammenhänge mit Extremstellen modellieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-B88CBF71</td>
+<td>Quellenbeleg suchen</td>
+<td>E</td>
+<td>Analysis</td>
+<td>Sachzusammenhänge mit Wendestellen modellieren (canonical_math_e_model_extrema_inflection_smooth_connections_inflection)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Ableitungseinstieg und Differentialrechnung (Sek II) &gt; Differentialrechnung, Untersuchung und Optimierung &gt; Ableitungen zur Funktionsuntersuchung und Optimierung nutzen &gt; Sachzusammenhänge mit Extrem- und Wendestellen modellieren &gt; Sachzusammenhänge mit Wendestellen modellieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-0272C501</td>
+<td>Quellenbeleg suchen</td>
+<td>E</td>
+<td>unknown</td>
+<td>Aus Term einen Graphen erstellen</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Aus Term einen Graphen erstellen</td>
+</tr>
+<tr>
+<td>GSR-GAP-1801C759</td>
+<td>Quellenbeleg suchen</td>
+<td>E</td>
+<td>unknown</td>
+<td>Funktionsgleichungen aus Graphen bestimmen (canonical_math_e_graph_to_function_equation)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Funktionsgleichungen aus Graphen bestimmen</td>
+</tr>
+<tr>
+<td>GSR-GAP-99BFB566</td>
+<td>Quellenbeleg suchen</td>
+<td>E</td>
+<td>unknown</td>
+<td>Termmerkmale aus Graphen ableiten</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Termmerkmale aus Graphen ableiten</td>
+</tr>
+<tr>
+<td>GSR-GAP-42B57670</td>
+<td>Quellenbeleg suchen</td>
+<td>E</td>
+<td>unknown</td>
+<td>Übertragungen begründen und prüfen</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Übertragungen begründen und prüfen</td>
+</tr>
+<tr>
+<td>GSR-GAP-B04D65DC</td>
+<td>Quellenbeleg suchen</td>
+<td>E</td>
+<td>unknown</td>
+<td>Zwischen Tabelle, Graph und Term wechseln</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Grundlagen der Analysis und mathematische Modelle &gt; Funktionen und ihre Darstellung &gt; Zwischen Darstellungen wechseln &gt; Zwischen Tabelle, Graph und Term wechseln</td>
+</tr>
+<tr>
+<td>GSR-GAP-71FE4A39</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>Analysis</td>
+<td>Analysis-Modelle in Sachzusammenhängen validieren (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_model_validation)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Integralrechnung und Differenzialgleichungen &gt; Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) &gt; Anwendungen der Integralrechnung &gt; Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) &gt; Analysis-Modelle in Sachzusammenhängen validieren (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-DC12F281</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>Analysis</td>
+<td>Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Integralrechnung und Differenzialgleichungen &gt; Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) &gt; Anwendungen der Integralrechnung &gt; Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) &gt; Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-0B162CB0</td>
+<td>Quellenbeleg suchen</td>
+<td>Q4</td>
+<td>Analysis</td>
+<td>Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_integral_context)</td>
+<td>0</td>
+<td>-</td>
+<td>Mathematik &gt; Integralrechnung und Differenzialgleichungen &gt; Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) &gt; Anwendungen der Integralrechnung &gt; Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) &gt; Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)</td>
+</tr>
+<tr>
+<td>GSR-GAP-6C26A00A</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>J9</td>
+<td>Analysis</td>
+<td>Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten (canonical_math_sek1_j9_read_quadratic_axes_and_signs)</td>
+<td>1</td>
+<td>Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen (DE-BW | Bildungsplan BW Mathematik Gymnasium 2016, 3.2.4, Kompetenz 2, S. 28. | bw-math-seki-bp2016-3-2-4-02-7a39c971)</td>
+<td>Mathematik &gt; Jahrgangsstufe 9 &gt; Quadratische Funktionen beschreiben und anwenden &gt; Quadratische Funktionen und Gleichungen grundlegend untersuchen &gt; Quadratische Funktionen in Darstellungen deuten &gt; Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten &gt; Eigenschaften quadratischer Funktionen aus Graphen ablesen &gt; Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten</td>
+</tr>
+<tr>
+<td>GSR-GAP-18293A33</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q3</td>
+<td>Stochastics</td>
+<td>Statistische Erhebungen exemplarisch planen und dokumentieren</td>
+<td>1</td>
+<td>Daten tabellarisch und grafisch aufbereiten (DE-BB | RLP BE/BB Mathematik 1-10, Kap. 2.2, [L5] Daten und Zufall - Niveaustufen E-H, Niveaustufe E, S. 34. | bb-math-seki-rlp-1-10-2-2-l5-daten-zufall-e-02-7d847ca1)</td>
+<td>Mathematik &gt; Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik &gt; Stochastik, Tests und Statistik (Sek II) &gt; Statistik und weitere Wahrscheinlichkeitsverteilungen &gt; Q3.5 Statistik: Datenanalyse und Modellvergleich &gt; Zufallsexperimente statistisch auswerten &gt; Statistische Erhebungen planen, auswerten und kritisch beurteilen &gt; Statistische Erhebungen planen und Daten aufbereiten &gt; Statistische Erhebungen exemplarisch planen und dokumentieren</td>
+</tr>
+<tr>
+<td>GSR-GAP-CE2EB0A8</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q3</td>
+<td>unknown</td>
+<td>Empirische und theoretische Wahrscheinlichkeit unterscheiden (canonical_math_q3_distinguish_empirical_and_theoretical_probability)</td>
+<td>2</td>
+<td>Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen (DE-BY | LehrplanPLUS Bayern Gymnasium Mathematik, M8.5 | 40b2829a-35fd-5e6e-96ba-20ec6928940d)</td>
+<td>Mathematik &gt; Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik &gt; Stochastik, Tests und Statistik (Sek II) &gt; Wahrscheinlichkeiten und Verteilungen (Sek II) &gt; Grundlegende Begriffe und Methoden der Stochastik &gt; Statistischen Wahrscheinlichkeitsbegriff anwenden &gt; Empirische und theoretische Wahrscheinlichkeit unterscheiden</td>
+</tr>
+<tr>
+<td>GSR-GAP-5B54F272</td>
+<td>Geschwister-Mapping pruefen</td>
+<td>Q3</td>
+<td>unknown</td>
+<td>Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)</td>
+<td>10</td>
+<td>Wahrscheinlichkeiten in Bernoulli-Ketten berechnen (DE-SH | Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71 | de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T047-10aa2ff6c6)</td>
+<td>Mathematik &gt; Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik &gt; Stochastik, Tests und Statistik (Sek II) &gt; Wahrscheinlichkeiten und Verteilungen (Sek II) &gt; Wahrscheinlichkeitsverteilungen (Überblick) &gt; Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Landscape: <code>curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json</code></li>
+<li>All-relevant report: <code>docs/qa-ci/status/goal-source-rationales-math-all-relevant.json</code></li>
+<li>All-relevant generated: 2026-09-06T16:02:01.242Z</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

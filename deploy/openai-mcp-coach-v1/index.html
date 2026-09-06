@@ -1,0 +1,5953 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/deploy/openai-mcp-coach-v1/">
+      
+      
+        <link rel="prev" href="../deployment/">
+      
+      
+        <link rel="next" href="../openai-plugin-v1-release/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ChatGPT-App „SkillPilot Coach v1“ - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chatgpt-app-skillpilot-coach-v1-deployment-und-cutover" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ChatGPT-App „SkillPilot Coach v1“
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-offentlicher-vertrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Öffentlicher Vertrag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-discovery-bootstrap-und-oauth-werte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Discovery-Bootstrap und OAuth-Werte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Runtime-Konfiguration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Runtime-Konfiguration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requestlokale-diagnose-laufzeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requestlokale Diagnose-Laufzeit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-health-readiness-und-metriknamen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Health, Readiness und Metriknamen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-chatgpt-app-konfigurieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. ChatGPT-App konfigurieren
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-technischer-smoke-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Technischer Smoke-Test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Technischer Smoke-Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-datenloser-discovery-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Datenloser Discovery-Bootstrap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-vollbetrieb-zunachst-read-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Vollbetrieb, zunächst read-only
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-acceptance-reihenfolge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Acceptance-Reihenfolge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Acceptance-Reihenfolge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stufe-a-isolierter-read-only-canary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stufe A – isolierter read-only Canary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stufe A – isolierter read-only Canary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#routing-golden-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routing-Golden-Prompts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stufe-b-funktionsfahiger-schreibpilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stufe B – funktionsfähiger Schreibpilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stufe-c-web-first-ubergabe-canary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stufe C – Web-first-Übergabe-Canary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-cockpit-canary-und-cutover" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Cockpit-Canary und Cutover
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Rollback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-externe-restarbeiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Externe Restarbeiten
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-offentlicher-vertrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Öffentlicher Vertrag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-discovery-bootstrap-und-oauth-werte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Discovery-Bootstrap und OAuth-Werte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Runtime-Konfiguration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Runtime-Konfiguration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requestlokale-diagnose-laufzeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requestlokale Diagnose-Laufzeit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-health-readiness-und-metriknamen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Health, Readiness und Metriknamen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-chatgpt-app-konfigurieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. ChatGPT-App konfigurieren
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-technischer-smoke-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Technischer Smoke-Test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Technischer Smoke-Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-datenloser-discovery-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Datenloser Discovery-Bootstrap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-vollbetrieb-zunachst-read-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Vollbetrieb, zunächst read-only
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-acceptance-reihenfolge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Acceptance-Reihenfolge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Acceptance-Reihenfolge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stufe-a-isolierter-read-only-canary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stufe A – isolierter read-only Canary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stufe A – isolierter read-only Canary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#routing-golden-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routing-Golden-Prompts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stufe-b-funktionsfahiger-schreibpilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stufe B – funktionsfähiger Schreibpilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stufe-c-web-first-ubergabe-canary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stufe C – Web-first-Übergabe-Canary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-cockpit-canary-und-cutover" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Cockpit-Canary und Cutover
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Rollback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-externe-restarbeiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Externe Restarbeiten
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="chatgpt-app-skillpilot-coach-v1-deployment-und-cutover">ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover</h1>
+<p><strong>Stand:</strong> 15. August 2026</p>
+<p><strong>Status:</strong> Version <code>1.0.0</code> befindet sich im OpenAI-Portal im Status <code>Review</code>
+und ist noch nicht veröffentlicht. Der V1-Vertrag läuft auf dem dedizierten
+<code>mcp-coach-v1.skillpilot.com</code>-Origin mit serverauthentisiertem HTTPS,
+OpenAI-Connector-mTLS im Modus <code>enforce</code> und OAuth/PKCE. Bis zum Ende des
+Reviews gilt die aktive
+<a href="../openai-plugin-v1-review-freeze/">Review-Sperre</a>: Vertrag,
+Produktionsverhalten und Portalwerte bleiben unverändert. Permanente ID,
+Providerhinweis und Level-2-Konfiguration bleiben ausschließlich im
+First-Party-WebGUI.</p>
+<p>Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit zwei
+getrennt gebundenen MCP Apps UIs: der read-only Lernzielbildanzeige und dem
+interaktiven Karteikartenlernen. MCP-Server,
+OAuth-Authorization-Server, UI-Ressourcenauslieferung und SkillPilot-Fachlogik
+laufen im <strong>bestehenden Spring-Boot-Prozess</strong>. Der Node-MCP-Server unter
+<code>ai/openai app/</code> bleibt ein lokales Regressionstestbett; dort liegt zugleich
+die geprüfte Quellimplementierung der Komponenten, deren selbstenthaltene
+Build-Artefakte in die Spring-Boot-Ressourcen übernommen werden.</p>
+<p>Die kanonische Verantwortungsgrenze zwischen ChatClient und Backend steht im
+<a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/">Kommunikationsvertrag</a>.
+Die Produkt- und Providerarchitektur steht in der
+<a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/">SkillPilot-eigenen Coach-Architektur</a>.
+Der verbindliche Identitäts- und Sitzungsablauf steht getrennt in
+<a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/">openai-mcp-oauth-learner-session-architecture.md</a>.
+Paket-, Contract- und Lifecycle-Versionen folgen dem
+<a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/">Versionierungs- und Lebenszyklusplan</a>;
+Release, Rollback und Stilllegung folgen dem
+<a href="../openai-plugin-v1-release/">V1-Release-Runbook</a>.
+Insbesondere verwaltet ChatGPT OAuth Access- und Refresh-Token automatisch;
+Benutzer geben niemals OAuth-Token, OAuth-Client-Secret oder dauerhafte
+SkillPilot-ID im Chat ein. Jeder ausdrückliche autorisierte Start über die
+First-Party-Weboberfläche erzeugt jedoch eine davon unabhängige, absolut 24
+Stunden gültige <code>learningSessionId</code> und öffnet einen neuen Chat. SkillPilot
+trägt diese Referenz automatisch in die kurze Startnachricht ein; ChatGPT
+übergibt sie unverändert an jedes fachliche MCP-Werkzeug.</p>
+<h2 id="1-offentlicher-vertrag">1. Öffentlicher Vertrag</h2>
+<table>
+<thead>
+<tr>
+<th>Zweck</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugin-Identität</td>
+<td><code>skillpilot-coach-v1</code></td>
+</tr>
+<tr>
+<td>MCP Server URL</td>
+<td><code>https://mcp-coach-v1.skillpilot.com/mcp</code></td>
+</tr>
+<tr>
+<td>OAuth Resource / Audience</td>
+<td><code>https://mcp-coach-v1.skillpilot.com/mcp</code></td>
+</tr>
+<tr>
+<td>Deklarierte Widget-Origin</td>
+<td><code>https://mcp-coach-v1.skillpilot.com</code></td>
+</tr>
+<tr>
+<td>Beobachtete ChatGPT-Web-Origin</td>
+<td><code>https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com</code></td>
+</tr>
+<tr>
+<td>Lernzielbild-Ressource</td>
+<td><code>ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html</code></td>
+</tr>
+<tr>
+<td>Karteikarten-Ressource</td>
+<td><code>ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html</code></td>
+</tr>
+<tr>
+<td>Protected Resource Metadata</td>
+<td><code>https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp</code></td>
+</tr>
+<tr>
+<td>Domain-Challenge</td>
+<td><code>https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge</code></td>
+</tr>
+<tr>
+<td>OAuth Issuer</td>
+<td><code>https://skillpilot.com/api/openai/v1</code></td>
+</tr>
+<tr>
+<td>Authorization-Server-Metadata</td>
+<td><code>https://skillpilot.com/.well-known/oauth-authorization-server/api/openai/v1</code></td>
+</tr>
+<tr>
+<td>Issuer-relative OAuth-Kompatibilitätsroute</td>
+<td><code>https://skillpilot.com/api/openai/v1/.well-known/openid-configuration</code></td>
+</tr>
+<tr>
+<td>Authorization Endpoint</td>
+<td><code>https://skillpilot.com/api/openai/v1/oauth2/authorize</code></td>
+</tr>
+<tr>
+<td>Token Endpoint</td>
+<td><code>https://skillpilot.com/api/openai/v1/oauth2/token</code></td>
+</tr>
+<tr>
+<td>Revocation Endpoint</td>
+<td><code>https://skillpilot.com/api/openai/v1/oauth2/revoke</code></td>
+</tr>
+</tbody>
+</table>
+<p>Beide Discovery-URLs liefern dasselbe OAuth-Metadatendokument. Die kanonische
+RFC-8414-Route bleibt maßgeblich. Der issuer-relative Kompatibilitätsalias ist
+zusätzlich erforderlich, weil ChatGPT ihn bei einer erneuten MCP-Initialisierung
+abruft; er aktiviert weder OpenID-Scopes noch ID-Tokens.</p>
+<p>Das Draft-Inventar enthält je eine aktive content-addressierte Ressource für
+Lernzielbilder und Karteikartenlernen sowie bereits ausgelieferte Start- und
+Bild-Hash-URIs als byte-identische passive Ressourcen.
+<code>render_skillpilot_goal_visualization</code> und
+<code>start_skillpilot_memory_practice</code> referenzieren jeweils nur ihre eigene aktive
+URI über <code>ui.resourceUri</code> und <code>openai/outputTemplate</code>. Das app-only Werkzeug
+<code>review_skillpilot_memory_practice_card</code>, gewöhnliche Werkzeuge und alle
+Retention-Vorgänger bleiben ungebunden. Nach dem Update werden die
+Plugin-Metadaten aktualisiert und neue Chats gegen beide aktiven URIs geprüft.</p>
+<p>Der additive V1-vHost reicht ausschließlich den öffentlichen Pfad <code>/mcp</code> an den
+loopback-gebundenen Spring-Transport <code>/internal/openai/v1/mcp</code> weiter.
+Es gibt keinen öffentlichen Kompatibilitätsalias. Der produktive App-Eintrag
+verwendet ausschließlich diese V1-<strong>Server URL</strong>, nicht den Entwicklungstunnel
+und nicht einen Pfad auf <code>skillpilot.com</code>.</p>
+<h2 id="2-discovery-bootstrap-und-oauth-werte">2. Discovery-Bootstrap und OAuth-Werte</h2>
+<p>Der Produktivvertrag verwendet Authorization Code mit PKCE <code>S256</code> und genau
+einen vorregistrierten <strong>vertraulichen OAuth-Client</strong> für die Linie
+<code>SkillPilot Coach v1</code>. Dessen feste Client-ID, langes zufälliges
+Client-Secret, exakte Callback-Allowlist, feste MCP-Resource und feste Scopes
+werden vom App-Autor auf beiden Seiten konfiguriert. ChatGPT authentisiert sich
+am Token-Endpunkt mit <code>client_secret_basic</code>; SkillPilot akzeptiert weder
+<code>none</code> noch offene Dynamic Client Registration, CIMD oder
+<code>private_key_jwt</code> im aktiven Produktivprofil.</p>
+<p>Das Secret ist ausschließlich geschützte Konfiguration in ChatGPT und
+SkillPilot. Es gehört weder in Repository, Browser, Startnachricht,
+Toolargumente noch Logs. PKCE bindet zusätzlich den Authorization Code an den
+von ChatGPT erzeugten Verifier. Normales serverauthentisiertes HTTPS bleibt
+Pflicht. Am dedizierten MCP-Rand präsentiert ChatGPT zusätzlich ein von OpenAI
+verwaltetes Clientzertifikat; SkillPilot muss dafür kein eigenes Zertifikat
+beantragen.</p>
+<p>Die ChatGPT-Verwaltung prüft die MCP-URL, bevor sie ihre erweiterten OAuth-
+Einstellungen zeigt. Gleichzeitig benötigt der vollständige SkillPilot-
+Authorization-Server die app-spezifische Callback-URL. Dafür existiert ein
+expliziter, datenloser Bootstrapmodus:</p>
+<ol>
+<li>Vollbetrieb deaktiviert lassen und ausschließlich
+   <code>SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED=true</code> setzen.</li>
+<li>Nach dem Restart die vier Discovery-URLs und den konstanten MCP-<code>401</code>
+   verifizieren. Der Bootstrap registriert weder Tools noch OAuth-Client,
+   Token-Endpunkte, Lernerdienste oder einen Coach-Health-Contributor.</li>
+<li>In der ChatGPT-App-Verwaltung <code>Server URL</code>, die produktive MCP-URL und
+   <code>OAuth</code> wählen.</li>
+<li>Eine feste, nur dieser App zugeordnete Client-ID und ein langes zufälliges
+   Client-Secret erzeugen. Dieselben Werte in ChatGPT und SkillPilot
+   konfigurieren; das Secret nie in Dokumentation oder Tickets kopieren.</li>
+<li>Die dort angezeigte app-spezifische Produktions-Callback-URL der Form
+   <code>https://chatgpt.com/connector/oauth/{callback_id}</code> unverändert übernehmen.</li>
+<li>Mehrere echte Callback-URLs als kommaseparierte Liste konfigurieren. Keine
+   Beispiel- oder Legacy-URL ergänzen, die nicht in der App-Verwaltung steht.</li>
+<li>In ChatGPT als Token-Endpunkt-Authentisierung <code>client_secret_basic</code>
+   auswählen. Bootstrap ausschalten und Vollbetrieb mit Client-ID, Secret,
+   Callback, OAuth, MCP und aktivierten Schreiboperationen atomar aktivieren.
+   Ein read-only Canary ist ein bewusst nicht produktionsbereiter
+   Diagnosezustand.</li>
+</ol>
+<p>Der Bootstrap-MCP-Endpunkt weist <strong>jede</strong> Methode und auch beliebige Bearer-
+Werte mit <code>401</code> plus <code>WWW-Authenticate</code> ab. Authorization-, Token-, Revocation-
+und Introspection-Endpunkte bleiben dabei <code>404</code>. Die OpenAI-Dokumentation
+definiert diesen Challenge-/Metadata-Vertrag als Discovery-Mechanismus; ob ein
+konkreter ChatGPT-UI-Build damit seine erweiterten Einstellungen freischaltet,
+wird dennoch praktisch geprüft. Bei einem UI-Fehler wird der Sicherheitsvertrag
+nicht gelockert. Das lokale Rate-Limit und die datensparsame Status-Telemetrie
+schützen bereits diesen öffentlichen Bootstrap-Rand; bei mehreren Instanzen
+bleibt zusätzlich ein gemeinsames Gateway-Limit erforderlich.</p>
+<p>Ohne Client-ID oder Callback-Liste bricht der Spring-Start bei aktiviertem
+OpenAI-V1-OAuth absichtlich ab. Bootstrap und Vollbetrieb dürfen ebenfalls
+nicht gleichzeitig aktiviert sein; diese Fehlkonfiguration bricht den Start ab.</p>
+<h2 id="3-runtime-konfiguration">3. Runtime-Konfiguration</h2>
+<p>Für den sicheren Cutover können Code und additive Liquibase-Migration zunächst
+in einem getrennten read-only Canary geprüft werden. Der produktive
+Vollbetrieb benötigt dagegen aktivierte Schreiboperationen und
+verwendet serverauthentisiertes HTTPS am dedizierten V1-vHost, OpenAI-
+Connector-mTLS und verpflichtendes OAuth/PKCE mit exakter Resource-/Audience-
+und Scope-Prüfung. Der separate Host isoliert Domainverifikation,
+Plugin-Lifecycle und die Clientzertifikatsprüfung. Der bestehende
+<code>skillpilot.com</code>-vHost wird nicht grundsätzlich
+umgebaut; er erhält nur die unten beschriebene enge <code>404</code>-Sperre gegen
+MCP-/Internpfad-Aliasse.</p>
+<p>Die reproduzierbare additive vHost-Konfiguration liegt unter
+<code>deploy/nginx/skillpilot-mcp-coaches.conf</code>. Sie MUSS innerhalb des vorhandenen
+Nginx-<code>http {}</code>-Blocks eingebunden werden. Eine Einbindung auf globaler Ebene
+vor <code>http {}</code> führt zu <code>server directive is not allowed here</code> und ist
+unzulässig. Die zugehörige Certbot-Lineage
+<code>skillpilot-mcp-coaches</code> umfasst nach der Umstellung exakt die bereits
+angelegten Major-Hosts V1 bis V9:</p>
+<div class="highlight"><pre><span></span><code>mcp-coach-v1.skillpilot.com
+mcp-coach-v2.skillpilot.com
+mcp-coach-v3.skillpilot.com
+mcp-coach-v4.skillpilot.com
+mcp-coach-v5.skillpilot.com
+mcp-coach-v6.skillpilot.com
+mcp-coach-v7.skillpilot.com
+mcp-coach-v8.skillpilot.com
+mcp-coach-v9.skillpilot.com
+</code></pre></div>
+<p>Die zuvor lokal vorbereiteten Namen <code>mcp-coach-de-v*</code> und
+<code>mcp-coach-en-v*</code> gehörten zu keiner Veröffentlichung. Sie werden weder in
+Nginx weitergeleitet noch als Kompatibilitätsroute erhalten. Verbliebene DNS-
+Einträge oder alte Zertifikat-SANs dürfen nach dem V1-Cutover entfernt werden.</p>
+<p>Nur V1 wird an Spring weitergeleitet. Die übrigen acht HTTPS-vHosts sind
+reserviert und liefern für jeden Pfad <code>404</code>; ihre DNS- und TLS-Bereitschaft ist
+keine Veröffentlichung. Änderungen werden immer zuerst mit <code>nginx -t</code> geprüft
+und erst danach per Reload aktiviert. Bestehende vHosts werden weder ersetzt
+noch grundsätzlich umgebaut.</p>
+<p>Zusätzlich wird
+<code>deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf</code> ausschließlich
+<strong>innerhalb</strong> des bestehenden HTTPS-<code>server {}</code>-Blocks für <code>skillpilot.com</code>
+und dort vor dessen allgemeinem <code>location /</code> eingebunden. Dieses enge
+Location-Snippet sperrt den verworfenen öffentlichen Pfad, den internen
+Spring-Transport und das interne Protected-Resource-Metadata-Ziel am
+Haupt-Origin mit <code>404</code>. Es darf weder auf globaler Ebene
+noch im <code>http {}</code>-Block eingebunden werden. So bleibt der bestehende Haupt-vHost
+ansonsten unverändert, und nur der dedizierte V1-vHost veröffentlicht den
+MCP-Vertrag.</p>
+<p>Vor einer Installation werden die bestehende Nginx-Hauptdatei und bereits
+vorhandene Ziel-Snippets unter eindeutigen Namen gesichert. Eine vorhandene,
+funktionierende MCP-vHost-Datei wird zuerst gegen die Repository-Vorlage
+verglichen und nicht blind überschrieben:</p>
+<p>Zuvor muss der Produktions-Checkout nachweislich bereits den sprachneutralen
+Cutover enthalten. Diese Prüfung ist verpflichtend: Ein altes Skript würde
+weiter den DE-Host testen; ein alter vHost kann unbekannte neue Hostnamen als
+Default-vHost irrtümlich an V1 weiterleiten. Alle fünf Befehle müssen erfolgreich
+sein und der letzte darf keine Ausgabe erzeugen:</p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-F<span class="w"> </span><span class="s1">'server_name mcp-coach-v1.skillpilot.com;'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>deploy/nginx/skillpilot-mcp-coaches.conf
+grep<span class="w"> </span>-F<span class="w"> </span><span class="s1">'mcp-coach-v9.skillpilot.com'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>deploy/nginx/skillpilot-mcp-coaches.conf
+grep<span class="w"> </span>-F<span class="w"> </span><span class="s1">'proxy_pass http://127.0.0.1:8787/internal/openai/v1/mcp;'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>deploy/nginx/skillpilot-mcp-coaches.conf
+grep<span class="w"> </span>-F<span class="w"> </span><span class="s1">'MCP_ORIGIN="https://mcp-coach-v1.skillpilot.com"'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>scripts/verify_openai_v1_public_edge.sh
+!<span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'mcp-coach-(de|en)-v[1-9]'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>deploy/nginx/skillpilot-mcp-coaches.conf
+</code></pre></div>
+<p>Schlägt eine Prüfung fehl, wird nichts nach <code>/etc/nginx</code> installiert. Zuerst
+muss der freigegebene Commit gepullt werden. Ein erfolgreicher Lauf eines
+veralteten Smoke-Skripts ist kein Ersatz für diesen Inhaltscheck.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>cp<span class="w"> </span>-a<span class="w"> </span>-n<span class="w"> </span>/etc/nginx/nginx.conf<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/etc/nginx/nginx.conf.before-mcp-subdomain-includes
+
+<span class="k">if</span><span class="w"> </span>sudo<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-e<span class="w"> </span>/etc/nginx/skillpilot-mcp-coaches.conf<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>sudo<span class="w"> </span>cp<span class="w"> </span>-a<span class="w"> </span>-n<span class="w"> </span>/etc/nginx/skillpilot-mcp-coaches.conf<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/etc/nginx/skillpilot-mcp-coaches.conf.before-repository-sync
+<span class="w">  </span>sudo<span class="w"> </span>diff<span class="w"> </span>-u<span class="w"> </span>/etc/nginx/skillpilot-mcp-coaches.conf<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>deploy/nginx/skillpilot-mcp-coaches.conf<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span>sudo<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-e<span class="w"> </span>/etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>sudo<span class="w"> </span>cp<span class="w"> </span>-a<span class="w"> </span>-n<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf.before-repository-sync
+<span class="w">  </span>sudo<span class="w"> </span>diff<span class="w"> </span>-u<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<span class="k">fi</span>
+</code></pre></div>
+<p>Die beiden Dateien werden an dieser Stelle noch <strong>nicht</strong> installiert oder
+aktiviert. Beim ersten mTLS-Cutover werden zuerst Backend-Modus, CA-Bundle,
+root-eigene Modusdatei und Loopback-Verifier vorbereitet. Erst danach werden
+die Nginx-Vorlagen im unten beschriebenen gemeinsamen Ablauf installiert. So
+verweist die neue V1-Konfiguration beim vollständigen Nginx-Test niemals auf
+noch fehlende mTLS-Artefakte.</p>
+<p>Die zwei Includes haben absichtlich verschiedene Kontexte:</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># bestehende globale Einstellungen bleiben unverändert</span>
+<span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/skillpilot-mcp-coaches.conf</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">server_name</span><span class="w"> </span><span class="s">skillpilot.com</span><span class="w"> </span><span class="s">skillpilot.org</span><span class="w"> </span><span class="s">skillpilot.mobi</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># vor dem bestehenden allgemeinen `location /`</span>
+<span class="w">        </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1"># bestehende SkillPilot-Proxykonfiguration</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Der Ausschnitt ist eine Platzierungshilfe und kein Ersatz für den bestehenden
+Haupt-vHost. Das zweite Include wird gezielt in genau diesen vorhandenen
+<code>server {}</code>-Block aufgenommen; weitere Einträge bleiben unverändert. Die
+Installation allein aktiviert noch nichts. Vor jedem Reload folgen der
+root-only mTLS-Preflight und ein explizites <code>nginx -t</code> im koordinierten Ablauf
+weiter unten.</p>
+<p>Vor der Installation der neuen TLS-vHost-Vorlage muss die bestehende
+Let's-Encrypt-Lineage bereits auf die neun sprachneutralen Major-Hosts
+umgestellt sein. Zuerst müssen alle vorhandenen DNS-A-/AAAA-Einträge auf
+denselben Server zeigen; ein fehlender AAAA-Eintrag ist zulässig, ein veralteter
+AAAA-Eintrag dagegen nicht. Die folgenden <code>certbot --nginx</code>-Befehle setzen
+voraus, dass noch der zuvor geprüfte, funktionsfähige V1-vHost ohne die neue
+mTLS-Dateireferenz aktiv ist. Bei einer echten Neuinstallation ohne vorhandene
+Lineage wird stattdessen zunächst ausschließlich eine separat geprüfte
+Port-80-Challenge-Konfiguration verwendet; die vollständige Repository-vHost-
+Vorlage wird erst nach Zertifikatsausstellung und danach in der weiter unten
+festgelegten Reihenfolge EnvironmentFile → mTLS-Artefakte → Nginx-Vorlage →
+Preflight aktiviert. Der bestehende Haupt-vHost wird dabei nicht ersetzt.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>certbot<span class="w"> </span>certonly<span class="w"> </span>--nginx<span class="w"> </span>--dry-run<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--preferred-challenges<span class="w"> </span>http<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--key-type<span class="w"> </span>ecdsa<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cert-name<span class="w"> </span>skillpilot-mcp-coaches<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v1.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v2.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v3.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v4.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v5.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v6.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v7.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v8.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v9.skillpilot.com
+
+sudo<span class="w"> </span>certbot<span class="w"> </span>certonly<span class="w"> </span>--nginx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--preferred-challenges<span class="w"> </span>http<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--key-type<span class="w"> </span>ecdsa<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cert-name<span class="w"> </span>skillpilot-mcp-coaches<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--force-renewal<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v1.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v2.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v3.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v4.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v5.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v6.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v7.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v8.skillpilot.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>mcp-coach-v9.skillpilot.com
+
+sudo<span class="w"> </span>certbot<span class="w"> </span>certificates
+sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+sudo<span class="w"> </span>systemctl<span class="w"> </span>is-active<span class="w"> </span>nginx
+</code></pre></div>
+<p>Der zweite Aufruf ersetzt den Domain-Satz derselben Lineage; er erzeugt keine
+parallele Sprachlinie. Vor einer Bestätigung muss die von Certbot angezeigte
+Domainliste exakt auf V1 bis V9 geprüft werden. Danach muss V1 seinen
+geschützten Vertrag liefern und V2 bis V9 müssen über gültiges TLS für jeden
+Pfad <code>404</code> liefern; <code>./scripts/verify_openai_v1_public_edge.sh</code> prüft beides.
+<code>--force-renewal</code> ist hier bewusst gesetzt, weil der erfolgreich geprüfte neue
+SAN-Satz sofort in dieselbe Lineage geschrieben werden soll. <code>--expand</code> ist
+ungeeignet: Es würde die alten, nicht veröffentlichten DE-/EN-SANs beibehalten,
+statt den Domain-Satz exakt zu ersetzen.</p>
+<div class="highlight"><pre><span></span><code>SERVER_ADDRESS=127.0.0.1
+
+SKILLPILOT_PUBLIC_BASE_URL=https://skillpilot.com
+# Unabhängig vom OAuth-Client-Secret erzeugen, z. B.: openssl rand -hex 32
+SKILLPILOT_SIGNING_SECRET=&lt;mindestens-32-hochentropische-zeichen&gt;
+
+SKILLPILOT_OPENAI_COACH_V1_ENABLED=true
+SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED=false
+SKILLPILOT_OPENAI_COACH_V1_OAUTH_ENABLED=true
+SKILLPILOT_OPENAI_COACH_V1_MCP_ENABLED=true
+SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=true
+SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE=observe
+
+SKILLPILOT_OPENAI_CHATGPT_URL=https://chatgpt.com/
+
+SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD=client_secret_basic
+SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ID=&lt;exakte-feste-client-id-dieser-app&gt;
+SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_SECRET=&lt;langes-zufälliges-client-secret&gt;
+SKILLPILOT_OPENAI_COACH_V1_OAUTH_REDIRECT_URIS=&lt;exakte-callback-url-oder-kommaliste&gt;
+
+# Nur bei einem tatsächlichen Client-ID-Wechsel, einmalig und danach entfernen:
+# SKILLPILOT_OPENAI_COACH_V1_OAUTH_LEGACY_CLIENT_IDS=&lt;exakte-alte-client-id-oder-kommaliste&gt;
+
+SKILLPILOT_OPENAI_LEARNING_SESSION_TTL=PT24H
+# Standardmäßig false; nur für einen kontrollierten First-Party-Live-Test kurz aktivieren:
+SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=false
+SKILLPILOT_OPENAI_CLEANUP_INTERVAL_MS=3600000
+SKILLPILOT_OPENAI_OAUTH_ACCESS_TOKEN_TTL=PT1H
+SKILLPILOT_OPENAI_OAUTH_REFRESH_TOKEN_TTL=P30D
+
+SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED=true
+SKILLPILOT_OPENAI_RATE_LIMIT_WINDOW=PT1M
+SKILLPILOT_OPENAI_RATE_LIMIT_MCP_REQUESTS=120
+SKILLPILOT_OPENAI_RATE_LIMIT_OAUTH_REQUESTS=60
+SKILLPILOT_OPENAI_RATE_LIMIT_UI_REQUESTS=60
+SKILLPILOT_OPENAI_RATE_LIMIT_METADATA_REQUESTS=120
+SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS=10000
+</code></pre></div>
+<p><code>MTLS_EDGE_MODE=disabled</code> ist nur der rückrollbare Ausgangszustand vor der
+separaten Edge-Installation. <code>observe</code> prüft vorhandene OpenAI-Zertifikate,
+erlaubt fehlende Zertifikate aber noch bis OAuth und liefert damit den
+Realverkehrsnachweis ohne Ausfall des bisherigen Operator-Smokes. Ein ungültig
+präsentiertes Zertifikat wird auch dort abgelehnt. Nach erfolgreichem
+ChatGPT-Nachweis werden root-eigener Nginx-Modus und Backend-Modus gemeinsam auf
+<code>enforce</code> gesetzt. Veröffentlichung ist nur in <code>enforce</code> zulässig.</p>
+<p>Der erstmalige Cutover auf <code>observe</code> ist eine geordnete, fail-closed
+Aktivierung. Zuerst wird in der root-geschützten systemd-EnvironmentFile
+<code>SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE=observe</code> vorbereitet, ohne den
+Backend-Dienst bereits neu zu starten. Danach gilt exakt diese Reihenfolge:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/home/enpasos/skillpilot
+
+<span class="c1"># 1. Repositoryvertrag und CA-Pins prüfen.</span>
+./scripts/verify_openai_v1_mtls_edge.sh<span class="w"> </span>--static
+
+<span class="c1"># 2. CA-Bundle, Modusdatei und Loopback-Verifier staged installieren.</span>
+sudo<span class="w"> </span>./scripts/install_openai_v1_mtls_edge.sh<span class="w"> </span>--mode<span class="w"> </span>observe
+sudo<span class="w"> </span>systemctl<span class="w"> </span>is-active<span class="w"> </span>skillpilot-openai-v1-mtls-verifier
+
+<span class="c1"># 3. Erst jetzt die bereits gesicherten und geprüften Nginx-Vorlagen installieren.</span>
+sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0644</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>deploy/nginx/skillpilot-mcp-coaches.conf<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/etc/nginx/skillpilot-mcp-coaches.conf
+sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0644</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf
+
+<span class="c1"># 4. Geschützte Backend-Konfiguration, installierte Artefakte und Nginx-Diskstand prüfen.</span>
+sudo<span class="w"> </span>./scripts/verify_openai_v1_mtls_edge.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--preflight<span class="w"> </span>--expected-mode<span class="w"> </span>observe
+sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+
+<span class="c1"># 5. Backend zuerst, danach den bereits geprüften Nginx-Stand aktivieren.</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>skillpilot
+sudo<span class="w"> </span>systemctl<span class="w"> </span>is-active<span class="w"> </span>skillpilot
+sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+sudo<span class="w"> </span>systemctl<span class="w"> </span>is-active<span class="w"> </span>nginx
+
+<span class="c1"># 6. Laufzeitvertrag prüfen; danach folgt der reale ChatGPT-Nachweis.</span>
+./scripts/verify_openai_v1_mtls_edge.sh<span class="w"> </span>--runtime<span class="w"> </span>--expected-mode<span class="w"> </span>observe
+</code></pre></div>
+<p>Der Runtime-Smoke läuft absichtlich ohne <code>sudo</code> und liest weder die
+root-geschützte <code>mode.conf</code> noch die Backend-EnvironmentFile. Er erkennt den
+aktiven Modus ausschließlich über die öffentliche No-Certificate-/Invalid-
+Certificate-Matrix und bestätigt über die Loopback-Operator-Lane zugleich,
+dass der laufende Backend-Filter denselben Modus akzeptiert. Die getrennten
+root-only Gates <code>--staged</code>, <code>--preflight</code> und <code>--installed</code> bleiben für
+Artefaktparität, Dateirechte, systemd, Listener und Nginx-Diskvertrag zuständig.</p>
+<p>Der Installer bezieht die CA-Dateien nicht live, sondern prüft die reviewten
+OpenAI-Dateien, ihre SHA-256-Werte, X.509-Fingerprints und die Intermediate-
+Kette. Die systemd-Unit stellt dem isolierten <code>DynamicUser</code> genau diese beiden
+CA-Dateien über schreibgeschützte Service-Credentials bereit; der Dienst
+benötigt deshalb kein Leserecht auf das geschützte Elternverzeichnis
+<code>/etc/skillpilot</code>. Dafür wird systemd 247 oder neuer vorausgesetzt; die Unit
+verwendet bewusst <code>${CREDENTIALS_DIRECTORY}</code> statt des erst später
+eingeführten <code>%d</code>-Specifiers. Das statische Gate validiert die Unit vor der
+Installation mit <code>systemd-analyze verify</code>. Er installiert den Verifier ausschließlich auf
+<code>127.0.0.1:8792</code> und
+schreibt den ausdrücklich gewählten root-eigenen Nginx-Modus atomar nach
+<code>/etc/skillpilot/openai-mtls/mode.conf</code>. Er editiert, testet und reloadet die
+aktive Nginx-Konfiguration <strong>nie</strong>. Vor jedem Reload muss der separate root-only
+<code>--preflight</code> belegen, dass der installierte Modus exakt mit
+<code>SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE</code> in der geschützten systemd-
+EnvironmentFile übereinstimmt und dass installierte Dateien sowie Nginx-
+Diskkonfiguration dem Repositoryvertrag entsprechen. Weder die EnvironmentFile
+noch ein Secret wird dabei ausgegeben.</p>
+<p>Auch beim erstmaligen Wechsel von <code>disabled</code> auf <code>observe</code> muss der Backend-
+Dienst vor dem Nginx-Reload neu gestartet werden. Zwischen Backend-Neustart und
+Nginx-Reload werden widersprüchliche beziehungsweise noch fehlende Edge-
+Header absichtlich mit <code>403</code> abgewiesen. Dieses kurze fail-closed Fenster wird
+nicht durch einen öffentlichen Diagnose-Bypass aufgehoben.</p>
+<p>Der Cutover von <code>observe</code> nach <code>enforce</code> erfolgt in dieser Reihenfolge:</p>
+<ol>
+<li>In <code>observe</code> mindestens einen realen ChatGPT-Toolaufruf nachweisen. Der
+   privacy-beschränkte Counter mit
+   <code>event="mtls_edge_verified"</code> muss für den Aufruf steigen; der Counter
+   <code>event="mtls_edge_observed_no_cert"</code> darf nicht steigen. Zertifikat, Token
+   und Session-ID dürfen nicht geloggt werden.</li>
+<li>Wartungsfenster beginnen und den Wert in der Backend-EnvironmentFile auf
+   <code>enforce</code> setzen, den Dienst aber noch nicht neu starten. Der laufende
+   Backend-/Edge-Vertrag bleibt dadurch zunächst vollständig auf <code>observe</code>.</li>
+<li><code>sudo ./scripts/install_openai_v1_mtls_edge.sh --mode enforce</code> ausführen und
+   anschließend den getrennten
+   <code>sudo ./scripts/verify_openai_v1_mtls_edge.sh --preflight --expected-mode enforce</code>
+   sowie ein explizites <code>sudo nginx -t</code> ausführen. Erst diese Prüfungen
+   bestätigen Backend-EnvironmentFile, installierten Edge-Modus, Artefakte und
+   Nginx-Diskstand als konsistent. Der Installer editiert oder reloadet Nginx
+   weiterhin nicht.</li>
+<li>Jetzt den Backend-Dienst neu starten, unmittelbar danach
+   <code>sudo systemctl reload nginx</code> und anschließend
+   <code>./scripts/verify_openai_v1_mtls_edge.sh --runtime --expected-mode enforce</code>
+   ausführen. Der öffentliche Aufruf ohne Zertifikat muss <code>403</code> liefern;
+   Metadata und Challenge bleiben erreichbar. Der positive OAuth-Smoke ohne
+   Zertifikat läuft ausschließlich über den echten Loopback-Socket-Peer.
+   Zwischen Backend-Restart und Nginx-Reload lehnt der Backend-Filter die noch
+   aus dem laufenden <code>observe</code>-Edge kommende widersprüchliche Klassifikation
+   absichtlich mit <code>403</code> ab. Dieser kurze fail-closed Übergang ist erwartbar und
+   darf nicht mit einem öffentlichen Bypass überbrückt werden.</li>
+<li>App in einem frischen Chat aktualisieren/verbinden und einen realen
+   ChatGPT-Toolaufruf durchführen. Erst wenn erneut
+   <code>event="mtls_edge_verified"</code> steigt, das Verifier-Journal keinen Reject für
+   diesen Aufruf enthält, kein Backend-Assertion-Reject steigt und der
+   geschützte <code>openAiDeCoach</code>-Health-Detailwert
+   <code>mtlsEdgeMode="enforce"</code> meldet, ist der Cutover publikationsfähig.</li>
+</ol>
+<p>Schlägt Schritt 3 bis 5 fehl, bleibt der Rand fail-closed. Ein Rollback auf
+<code>observe</code> wird ebenfalls als abgestimmte Backend-plus-root-owned-Edge-Änderung
+mit Preflight, <code>nginx -t</code>, Reload und Runtime-Smoke durchgeführt; es ist kein
+veröffentlichungsfähiger Endzustand.</p>
+<p>CA-Vertrauen wird nicht bei Start oder Deployment aus dem Netz aktualisiert.
+Mindestens alle 90 Tage werden die beiden offiziellen OpenAI-CA-Dateien mit den
+gepinnten Repositorydateien, SHA-256-Werten, X.509-Fingerprints,
+Gültigkeitszeiträumen und der Intermediate-Kette verglichen; das Ergebnis und
+das Prüfdatum werden im Betriebsnachweis festgehalten. Unveränderte Dateien
+werden mit <code>./scripts/verify_openai_v1_mtls_edge.sh --static</code> erneut geprüft.
+Eine Abweichung ist kein automatisches Update, sondern eine reviewpflichtige
+CA-Rotation gemäß der
+<a href="https://github.com/enpasos/skillpilot/blob/main/deploy/openai-mtls/PROVENANCE.md">CA-Provenienz</a>, einschließlich
+überlappendem Trust-Cutover, falls OpenAI beide Ketten zeitweise veröffentlicht,
+und erneutem ChatGPT-Positivtest. Zusätzlich werden <code>mtls_edge_verified</code>,
+<code>mtls_edge_observed_no_cert</code> und der Backend-Assertion-Counter
+<code>mtls_edge_rejected</code> überwacht. Zertifikats- und No-Certificate-Rejects vor
+Spring werden aus dem begrenzten Verifier-Journal und dem öffentlichen
+<code>403</code>-Edge-Status abgeleitet. Ein Ausbleiben verifizierter ChatGPT-Aufrufe oder
+ein unerwarteter Anstieg dieser Reject-Signale löst eine Betriebsprüfung aus.
+Spätestens 90 Tage vor Ablauf einer
+gepinnten CA muss eine bestätigte Nachfolge- oder Erneuerungsstrategie vorliegen.</p>
+<p>Die entfernten Direct-Start-Variablen <code>SKILLPILOT_OPENAI_SECURE_COOKIE</code>,
+<code>SKILLPILOT_OPENAI_BINDING_TTL</code>, <code>SKILLPILOT_OPENAI_LAUNCH_TTL</code> und alle
+<code>SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_*</code> dürfen nicht im Service-Environment
+verbleiben. Der Server und der Deployment-Validator lehnen diese alten Namen
+fail-closed ab.</p>
+<p>Die drei öffentlichen V1-URLs werden nicht als Umgebungsvariablen
+konfiguriert. Sie sind unveränderliche Bestandteile des V1-Vertrags:</p>
+<ul>
+<li>MCP und OAuth-Resource: <code>https://mcp-coach-v1.skillpilot.com/mcp</code></li>
+<li>Protected-Resource-Metadaten:
+  <code>https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp</code></li>
+</ul>
+<p>Auch ein <code>SKILLPILOT_OPENAI_COACH_V1_UI_ORIGIN</code> ist unzulässig: Der
+Widget-Origin ist als <code>https://mcp-coach-v1.skillpilot.com</code> fest im V1-Vertrag
+verankert und wird identisch über <code>_meta.ui.domain</code> und
+<code>_meta["openai/widgetDomain"]</code> ausgeliefert. Alte URL-Variablen und
+gleichnamige neue Override-Versuche führen fail-closed zum Abbruch. Damit kann
+eine alte oder falsch geschriebene Route den versionierten V1-Vertrag nicht
+unbemerkt ersetzen.</p>
+<p>ChatGPT Web materialisiert diese deklarierte Domain aktuell als isolierte
+Browser-Origin unter <code>*.web-sandbox.oaiusercontent.com</code>. Die beiden aktiven
+UI-Ressourcen kommunizieren ausschließlich über ihre eng gebundenen MCP-
+Werkzeuge; es gibt keinen providerseitigen Permanent-ID- oder Setup-HTTPS-Pfad.</p>
+<p>Vor dem ersten Subdomain-Deployment werden insbesondere alte Einträge für
+<code>SKILLPILOT_OPENAI_DE_UI_ORIGIN</code>, <code>SKILLPILOT_OPENAI_DE_V1_ORIGIN</code>,
+<code>SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED</code>,
+<code>SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES</code> und mTLS-Smoke-Zertifikate aus
+der EnvironmentFile entfernt. Sie werden nicht durch neue locale-bound Namen
+ersetzt; der einzige aktuelle Backend-Schalter ist
+<code>SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE</code>. Ebenso
+müssen <code>SKILLPILOT_OPENAI_DE_MCP_URL</code>,
+<code>SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE</code> und
+<code>SKILLPILOT_OPENAI_DE_RESOURCE_METADATA</code> vollständig entfernt werden.</p>
+<p><code>./deploy_skillpilot.sh</code> prüft vor Asset-Kopien, Build und Service-Restart die
+tatsächlich von der systemd-Unit referenzierte EnvironmentFile. Der
+Produktionsvertrag erlaubt genau eine solche Datei, standardmäßig
+<code>/etc/skillpilot/skillpilot.env</code>; für einen abweichenden Pfad muss
+<code>SKILLPILOT_SERVICE_ENV_FILE</code> ausdrücklich gesetzt werden. Aus der Datei werden
+ausschließlich Namen entfernter OpenAI-V1-Variablen erkannt; ihre Werte und
+alle OAuth-, Datenbank- oder anderen Secrets werden weder protokolliert noch
+ausgegeben. Dieselben alten Namen dürfen auch nicht über <code>Environment=</code>,
+<code>PassEnvironment=</code> oder die globale systemd-Umgebung eingeschleust werden.
+Ist die eine EnvironmentFile in systemd optional (<code>ignore_errors=yes</code>) und
+fehlt, akzeptiert der Preflight nach Prüfung der übrigen Umgebungskanäle die
+kanonischen V1-Defaults. Eine fehlende verpflichtende Datei
+(<code>ignore_errors=no</code>) bleibt ein Fehler.
+Eine EnvironmentFile mit OAuth- oder Datenbank-Secrets bleibt <code>root:root</code> und
+<code>0600</code>. Ihre Rechte dürfen für den Deployment-Preflight nicht gelockert werden.
+Kann der Deploy-Benutzer die root-geschützte Datei oder einen Elternordner nicht
+lesen beziehungsweise durchlaufen, meldet der Preflight diesen Inhaltscheck
+sichtbar als <code>SKIP</code>; die exakte Spring-Startprüfung bleibt die finale
+fail-closed-Grenze. Eine allgemeine <code>sudo cat</code>-Freigabe oder weltlesbare
+Secret-Datei ist ausdrücklich nicht zulässig.</p>
+<p>Die Migration ist absichtlich fail-closed: alte <code>SKILLPILOT_OPENAI_DE_*</code>-
+und <code>SKILLPILOT_OPENAI_COACH_DE_V1_*</code>-Namen werden nicht als stille
+V1-Aliasse übernommen. Alle V1-spezifischen
+Werte tragen <code>SKILLPILOT_OPENAI_COACH_V1_*</code>; gemeinsame Richtlinien des
+einzigen Spring-Prozesses tragen <code>SKILLPILOT_OPENAI_*</code> ohne Sprach- oder
+Versionssegment. Alte Namen werden entfernt, nicht leer gesetzt.</p>
+<p>Die neun Nginx-Origins sind keine neun Spring-Prozesse und werden nicht über
+eine gemeinsame URL-Umgebungsvariable umgeschaltet. Jeder öffentliche Host
+wird in Nginx fest auf den internen Pfad seiner Vertragslinie abgebildet. Nur
+V1 ist derzeit implementiert; die übrigen reservierten Hosts antworten
+absichtlich mit <code>404</code>. Für spätere Linien gilt bereits jetzt diese eindeutige
+Namenskonvention:</p>
+<table>
+<thead>
+<tr>
+<th>öffentlicher Host</th>
+<th>Spring-Konfigurationsgruppe</th>
+<th>linienbezogene Environment-Namen</th>
+<th>aktueller Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mcp-coach-v1.skillpilot.com</code></td>
+<td><code>skillpilot.openai.coach.v1</code></td>
+<td><code>SKILLPILOT_OPENAI_COACH_V1_*</code></td>
+<td>aktiv, intern <code>/internal/openai/v1/*</code></td>
+</tr>
+<tr>
+<td><code>mcp-coach-v2.skillpilot.com</code></td>
+<td><code>skillpilot.openai.coach.v2</code></td>
+<td><code>SKILLPILOT_OPENAI_COACH_V2_*</code></td>
+<td>reserviert, <code>404</code></td>
+</tr>
+<tr>
+<td><code>mcp-coach-v3.skillpilot.com</code></td>
+<td><code>skillpilot.openai.coach.v3</code></td>
+<td><code>SKILLPILOT_OPENAI_COACH_V3_*</code></td>
+<td>reserviert, <code>404</code></td>
+</tr>
+<tr>
+<td><code>mcp-coach-v4.skillpilot.com</code></td>
+<td><code>skillpilot.openai.coach.v4</code></td>
+<td><code>SKILLPILOT_OPENAI_COACH_V4_*</code></td>
+<td>reserviert, <code>404</code></td>
+</tr>
+<tr>
+<td><code>mcp-coach-v5.skillpilot.com</code></td>
+<td><code>skillpilot.openai.coach.v5</code></td>
+<td><code>SKILLPILOT_OPENAI_COACH_V5_*</code></td>
+<td>reserviert, <code>404</code></td>
+</tr>
+<tr>
+<td><code>mcp-coach-v6.skillpilot.com</code></td>
+<td><code>skillpilot.openai.coach.v6</code></td>
+<td><code>SKILLPILOT_OPENAI_COACH_V6_*</code></td>
+<td>reserviert, <code>404</code></td>
+</tr>
+<tr>
+<td><code>mcp-coach-v7.skillpilot.com</code></td>
+<td><code>skillpilot.openai.coach.v7</code></td>
+<td><code>SKILLPILOT_OPENAI_COACH_V7_*</code></td>
+<td>reserviert, <code>404</code></td>
+</tr>
+<tr>
+<td><code>mcp-coach-v8.skillpilot.com</code></td>
+<td><code>skillpilot.openai.coach.v8</code></td>
+<td><code>SKILLPILOT_OPENAI_COACH_V8_*</code></td>
+<td>reserviert, <code>404</code></td>
+</tr>
+<tr>
+<td><code>mcp-coach-v9.skillpilot.com</code></td>
+<td><code>skillpilot.openai.coach.v9</code></td>
+<td><code>SKILLPILOT_OPENAI_COACH_V9_*</code></td>
+<td>reserviert, <code>404</code></td>
+</tr>
+</tbody>
+</table>
+<p>Die reservierten Namen sind eine Konvention, noch keine akzeptierte
+Laufzeitkonfiguration. Der aktuelle Server bricht beim Setzen einer noch nicht
+implementierten Linie oder eines unbekannten linienbezogenen Namens ab, statt
+den Eintrag still zu ignorieren. Eine Linie wird erst mit eigenem Vertrag,
+interner Route, Spring-Konfigurationsgruppe und Tests aktiviert. Gemeinsame
+Prozesswerte wie Cookie-Härtung, Session-TTLs und Rate Limits bleiben einmalig
+unter <code>SKILLPILOT_OPENAI_*</code>.</p>
+<p>Auch <code>SKILLPILOT_SERVER_BUILD</code> wird nicht in
+<code>/etc/skillpilot/skillpilot.env</code> gepflegt. Gradle baut genau ein Artefakt
+<code>skillpilot-server</code> und bettet den vollständigen
+lowercase Commit von <code>HEAD</code> beim Verarbeiten der Backend-Ressourcen in
+<code>skillpilot.openai.coach.v1.server-build</code> und
+<code>skillpilot.openai.coach.v1.mcp.server-version</code> ein. <code>scripts/deploy.sh</code> prüft beide
+Werte gegen den tatsächlich ausgecheckten Commit, bevor der Dienst neu
+gestartet wird. Die Telemetrie und Health-Ausgabe beschreiben dadurch das
+ausgelieferte Artefakt und keinen manuell nachgetragenen Umgebungswert.</p>
+<p><code>SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=true</code> ist für den funktionsfähigen
+Produktivcoach verpflichtend. Personalisierung, Navigation, Aufgabenfortschritt
+und Mastery sind fachlich schreibende Vorgänge. Bei <code>false</code> funktionieren
+Discovery, OAuth und lesende Werkzeuge weiterhin, aber der Coach bricht beim
+ersten erforderlichen Zustandswechsel mit <code>503 Service Unavailable</code> ab. Dieser
+Wert ist deshalb ausschließlich für einen bewusst isolierten read-only Canary
+geeignet. Die Betriebsabschaltung darf keine erneute OAuth-Verbindung auslösen.</p>
+<p>Der normale aktivierte Provider startet ausschließlich im sicheren
+Clientmodus; es gibt keinen produktiven <code>secure-mode=false</code>-Schalter. Der
+sichere Clientmodus verlangt <code>client_secret_basic</code> und prüft die exakte
+Client-ID, das Secret in konstantzeitgeeigneter Form, Redirect-Allowlist,
+Resource, Scopes und PKCE <code>S256</code>. Fehlendes Secret, <code>none</code>,
+<code>private_key_jwt</code>, DCR, CIMD und jeder stille Profil-Fallback brechen den Start
+beziehungsweise den Tokenaustausch fail-closed ab.</p>
+<p>Auch <code>SKILLPILOT_SIGNING_SECRET</code> ist für den aktivierten OpenAI-V1-Provider
+verpflichtend. Der Prozess bricht den Start ab, wenn der Wert fehlt, dem
+unsicheren Platzhalter entspricht, weniger als 32 Nicht-Leerzeichen enthält
+oder strukturell zu wenig Entropie aufweist. Der Wert wird in dieser Prüfung
+weder protokolliert noch in einer Fehlermeldung wiedergegeben. Er ist ein
+eigenständiges HMAC-Betriebsgeheimnis und darf nicht mit dem OAuth-Client-
+Secret identisch sein.</p>
+<p>Das Client-Secret wird als Betriebsgeheimnis verwaltet: restriktive
+Dateirechte, keine Shell-History, kein Request-/Health-Detail, keine
+Clientausgabe. Bei einer Rotation werden zunächst ChatGPT und SkillPilot
+koordiniert umgestellt, anschließend alle mit dem alten Clientvertrag
+ausgestellten Tokens widerrufen.</p>
+<p>Die Legacy-Client-Allowlist ist nicht Bestandteil des Basisprofils. Sie wird
+nur bei einem tatsächlichen Client-ID-Wechsel verwendet. SkillPilot entfernt
+dann ausschließlich für die exakt genannten Altclients deren OAuth-
+Authorizations, Consents, registrierte Clientzeilen sowie Access- und Refresh-
+Tokens. Historische Verbindungs-, Binding-Grant- und Pending-Launch-
+Altartefakte dürfen beim einmaligen Cutover zusätzlich bereinigt werden. Die
+heutigen <code>openai_de_learning_session</code>-Datensätze werden durch eine reine
+OAuth-Clientrotation dagegen nicht gelöscht. Anschließend muss nur der neu
+konfigurierte Client lesbar sein; andernfalls bricht der Start ab.</p>
+<p>Vor diesem Cutover ist ein Datenbank-Backup Pflicht. Die Einstellung ist
+idempotent für bereits entfernte IDs, soll aber nach dem erfolgreichen
+Produktionsstart wieder aus dem Environment entfernt werden. Alte Access- und
+Refresh-Tokens sowie Autorisierungen sind absichtlich unwiderruflich
+ungültig; ein reines Anwendungs-Rollback stellt sie nicht wieder her. Benutzer
+autorisieren die SkillPilot-App danach einmal neu.</p>
+<p>Die aktuelle additive Migration stellt
+<code>openai_de_learning_session</code> als eigenständige Startberechtigung bereit. Der
+Datensatz enthält mindestens den Hash der zufälligen <code>learningSessionId</code>, die
+interne Lernendenreferenz, <code>started_at</code> und <code>expires_at</code>. Die dauerhafte
+SkillPilot-ID und der Klartext der Session-ID werden dort nicht dupliziert.
+Alte, ausschließlich über ein OAuth-Subject adressierte Sitzungszeilen sind
+kein Fallback und werden beim Cutover kontrolliert entfernt oder migriert.</p>
+<p>Das historische physische Tabellenpräfix <code>openai_de_</code> bleibt bei dieser
+additiven Umstellung bewusst als interner Migrationsanker bestehen. Es ist kein
+Sprach- oder Vertragsmerkmal mehr; die verbindliche Kommunikationssprache
+steht pro Sitzung in <code>communication_locale</code>. Ein Umbenennen bestehender
+Tabellen und interner Java-Typen wäre eine eigenständige, risikoreichere
+Datenbankmigration ohne Nutzen für den öffentlichen V1-Vertrag und gehört
+nicht in diesen Cutover.</p>
+<p>Der Start-Intent ist ein kurzlebiger Auftrag an das Fachbackend. Bei <strong>jedem</strong>
+Klick auf <strong>Lernen starten</strong> wendet SkillPilot den eng typisierten Intent unter
+Learner-Lock auf den autoritativen Zustand an und erzeugt unmittelbar danach
+eine neue kryptografisch zufällige <code>learningSessionId</code>. Auch zwei Starts
+desselben Lernenden erzeugen verschiedene IDs. Die absolute Frist wird durch
+<code>SKILLPILOT_OPENAI_LEARNING_SESSION_TTL</code> gesteuert und beträgt produktiv
+<code>PT24H</code>. MCP-Aufrufe, Access-Token-Refresh, Reload und neue oder parallele
+Chats verlängern sie nicht.</p>
+<p>Vor jeder sessiongebundenen Lese-, Schreib- oder Replay-Antwort prüft der V1-
+Adapter zusätzlich den Aktionshorizont <code>expiresAt &gt;= now + PT1H</code>. Genau eine
+Stunde Restlaufzeit ist gültig; weniger als eine Stunde liefert
+<code>SESSION_RENEWAL_REQUIRED</code>, bevor die fachliche Operation ausgeführt oder ein
+gespeichertes Resultat zurückgegeben wird. Ein bereits committeter Write mit
+demselben Toolnamen, kanonisch identischen Argumenten und derselben
+<code>clientRequestId</code> darf bei weiterhin verfügbarer gepinnter
+Workflow-/Curriculumversion nur dann replayen, wenn seine
+<code>completedStateVersion</code> noch der aktuellen kanonischen Learner-Revision
+entspricht. Dabei werden weder Operation noch Mutation wiederholt. Eine neue
+Session ist stets ein unabhängiger Datensatz und widerruft frühere Sessions
+nicht.</p>
+<p>Die Session-ID wird einmal automatisch in den URL-codierten Startprompt
+eingetragen und danach von ChatGPT unverändert als Pflichtargument an jedes
+lernendenbezogene Tool weitergegeben. SkillPilot löst ausschließlich den Hash
+auf den Lernenden auf. OAuth allein erzeugt oder wählt keine Lernsession; eine
+Session-ID allein autorisiert keinen MCP-Aufruf. Fehlt einer der beiden
+Nachweise, liefert der Fachvertrag <code>SESSION_REQUIRED</code> beziehungsweise einen
+OAuth-Fehler. <code>SESSION_REQUIRED</code>, <code>SESSION_RENEWAL_REQUIRED</code> und
+<code>SESSION_VERSION_UNAVAILABLE</code> lösen keine neue OAuth-Verbindung aus: Der Coach
+gibt <code>instruction</code> unverändert aus; fehlt es, verwendet er den passenden
+exakten Eintrag aus <code>instructions</code>. Die exakte <code>startUrl</code> ergänzt er nur, wenn
+sie nicht bereits in der Instruktion steht. Es folgt keine Fachantwort und kein
+Retry mit der alten Session. Die
+lernende Person verwendet <strong>Lernen starten</strong> im First-Party-WebGUI; die frische
+Session wird im dadurch geöffneten neuen Chat verwendet. Ein Fallback vom
+OAuth-Subject auf einen Lernenden ist unzulässig.</p>
+<p>Das Cockpit startet ausschließlich über
+<code>POST /api/ui/learners/{skillpilotId}/openai/v1/launch</code>. Ein erfolgreicher
+Aufruf wendet den typisierten Start-Intent an und erzeugt genau eine neue
+Lernsession samt Startprompt. Jeder weitere Aufruf erzeugt unabhängig von
+Browser, bestehender App-Autorisierung oder früheren Starts eine neue Session.
+Der <code>/launch</code>-Aufruf ist eigenständig und benötigt keinen vorgeschalteten
+Verbindungsstatus oder kurzlebigen Browser-Zwischenzustand.</p>
+<h4 id="requestlokale-diagnose-laufzeit">Requestlokale Diagnose-Laufzeit</h4>
+<p>Für einen kontrollierten Live-Test des Ein-Stunden-Aktionshorizonts darf nur der
+First-Party-Endpunkt
+<code>POST /api/ui/learners/{skillpilotId}/openai/v1/launch</code> das optionale JSON-Feld
+<code>diagnosticSessionTtlSeconds</code> erhalten. Der Server akzeptiert es ausschließlich,
+wenn
+<code>SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true</code> gesetzt ist.
+Der ganzzahlige Wert muss zwischen <code>3601</code> und <code>86400</code> Sekunden einschließlich
+liegen und darf die normale, weiterhin auf <code>PT24H</code> konfigurierte
+Lernsessionlaufzeit nicht überschreiten.</p>
+<p>Die Abweichung gehört nur zu der einen durch diesen Request erzeugten
+unabhängigen Session. Sie verändert keine Konfiguration und keine andere oder
+spätere Session. Bereits der nächste <code>/launch</code>-Request ohne das Feld erzeugt
+automatisch wieder eine normale <code>PT24H</code>-Session, selbst wenn das Diagnose-Gate
+noch eingeschaltet ist. Kein anderer Startpfad akzeptiert dieses Feld.</p>
+<p>Empfohlene Werte:</p>
+<ul>
+<li><code>3660</code> Sekunden: ungefähr eine Minute bis zum Übergang unter den
+  <code>PT1H</code>-Aktionshorizont;</li>
+<li><code>5400</code> Sekunden: 90-Minuten-Soak mit ungefähr 30 Minuten bis zum Übergang.</li>
+</ul>
+<p>Für diesen Test darf <code>SKILLPILOT_OPENAI_LEARNING_SESSION_TTL</code> <strong>nicht</strong> global
+abgesenkt werden. Für die sofortige Rückkehr zum normalen Laufzeitverhalten
+genügt ein Request ohne Diagnosefeld; dafür ist weder ein Deployment noch eine
+Konfigurationsänderung nötig. Dessen <code>expiresAt</code> wird gegen
+<code>startedAt + PT24H</code> verifiziert. Das separate Diagnose-Gate bleibt nur für das
+kontrollierte Testfenster aktiv und wird danach über den regulären
+Konfigurationsweg wieder auf <code>false</code> gesetzt.</p>
+<p>Abgelaufene oder widerrufene Lernsession-Datensätze werden unabhängig vom
+OAuth-Lebenszyklus abgewiesen und bereinigt. Authorization Codes, Access- und
+Refresh-Tokens sowie Consents folgen ausschließlich ihrem eigenen OAuth-
+Lebenszyklus. Insbesondere erzeugt Tokenausgabe oder Token-Refresh keine
+Lernsession und verlängert keine bestehende. Das Intervall der technischen
+Bereinigung steuert <code>SKILLPILOT_OPENAI_CLEANUP_INTERVAL_MS</code>; der
+Standardwert ist eine Stunde.</p>
+<p>Jeder <code>/launch</code>-Aufruf muss <code>providerEligibilityConfirmed=true</code> ausdrücklich
+mitsenden. Fehlt die Bestätigung oder ist sie falsch, weist das Backend den
+Start mit <code>403</code> ab. Das Cockpit fragt sie einmal pro Browser-Sitzung ab: Die
+lernende Person bestätigt damit, mindestens 13 Jahre alt zu sein, jede am
+Aufenthaltsort geltende höhere Altersgrenze zu erfüllen und unter 18 die
+Erlaubnis eines Elternteils oder einer erziehungsberechtigten Person zu haben.
+SkillPilot leitet das Alter nicht aus Klassenstufe oder Curriculum ab und
+speichert dafür weder Geburtsdatum noch Altersprofil. Es handelt sich um eine
+bewusste Selbstbestätigung, nicht um eine Identitäts- oder Altersverifikation
+und nicht um OAuth-Client- oder Lernendenidentität.</p>
+<p>Der Coach-Pfad benötigt <strong>keinen OpenAI-Modell-API-Key</strong>. Modell und Chat werden
+vom ChatGPT-Konto der lernenden Person bereitgestellt; SkillPilot stellt nur
+MCP-, OAuth- und Fachbackend bereit.</p>
+<p>Die konfigurierte MCP-Resource ist sicherheitsrelevant und wird absichtlich
+<strong>exakt</strong> behandelt. Weder führende oder nachgestellte Leerzeichen noch eine
+zusätzliche abschließende <code>/</code> werden akzeptiert. Der Authorization Request
+wird mit diesem Wert persistiert; Token-Introspektion prüft ihn bei jedem
+MCP-Aufruf erneut als Audience. Derselbe Schutz gilt nach Refresh-Token-
+Rotation.</p>
+<h3 id="31-health-readiness-und-metriknamen">3.1 Health, Readiness und Metriknamen</h3>
+<p>Bei <code>SKILLPILOT_OPENAI_COACH_V1_ENABLED=true</code> registriert Spring den Health-Contributor
+<code>openAiDeCoach</code>. Er fließt in die Actuator-Gruppe <code>readiness</code> ein. Der Beitrag
+ist nur <code>UP</code>, wenn MCP und OAuth aktiviert sind, die erforderlichen Client- und
+Callback-Werte gesetzt sind, die öffentlichen MCP-/Metadata-Ziele gültiges
+HTTPS verwenden und der erwartete Vertrag mit genau zwölf Werkzeugen geladen ist.
+Die Readiness-Gruppe enthält zusätzlich den Datenbank-Health-Check <code>db</code>; ein
+nicht erreichbarer Persistenzdienst darf daher nicht als einsatzbereiter Coach
+gemeldet werden.
+<code>SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=false</code> ist ein erlaubter read-only
+Canary-Zustand und setzt die gemeinsame Readiness nicht auf <code>DOWN</code>. Ob der
+vollständige Coach produktiv funktionsfähig ist, muss deshalb zusätzlich über
+die Betriebsumgebung beziehungsweise einen separaten Deployment-Preflight
+geprüft werden.</p>
+<p>Die Health-Details enthalten ausschließlich nicht geheime Statuswerte, darunter
+<code>serverBuild</code>, <code>serverBuildConfigured</code>, <code>mcpEnabled</code>, <code>oauthEnabled</code>,
+<code>mtlsEdgeMode</code>, <code>writesEnabled</code>, <code>secureMode</code>,
+<code>clientAuthenticationMethod</code>, <code>publicClientConfigured</code>,
+<code>privateKeyJwtConfigured</code>, <code>clientIdConfigured</code>, <code>redirectUrisConfigured</code>,
+<code>contractToolCount</code>, <code>contractHash</code>, <code>rateLimitEnabled</code> und
+<code>rateLimitConfigured</code>. Der
+<code>serverBuild</code> ist der im Backend-Artefakt eingebettete Git-Commit;
+<code>contractHash</code> ist ein deterministischer SHA-256-Hash über Serverinstruktionen
+und öffentliche Tooldeskriptoren. Client-ID, Callback-URLs, MCP-URL, Tokens,
+SkillPilot-IDs und Lerninhalte werden nicht ausgegeben. Health-Details dürfen
+nur über den internen, geschützten Managementzugang freigegeben werden.</p>
+<p>Die exakten Micrometer-Namen heißen:</p>
+<div class="highlight"><pre><span></span><code>skillpilot.openai.coach.v1.mcp.tool.duration
+skillpilot.openai.coach.v1.operational.event
+</code></pre></div>
+<p>Der Timer besitzt aus dem Anwendungscode ausschließlich die begrenzten Tags <code>tool</code>
+(zwölf bekannte Toolnamen oder <code>unknown</code>) und <code>status</code> (<code>success</code>, <code>error</code> oder
+<code>exception</code>). Der Timer liefert Aufrufzahl und Dauer. Argumente, Prompts,
+Antworten, Lernenden- oder Verbindungskennungen und OAuth-Werte sind weder Tags
+noch Messdaten. Ein konfigurierter Exporter kann zusätzliche globale
+Infrastruktur-Tags ergänzen; auch diese dürfen keine personenbezogenen Werte
+enthalten.</p>
+<p>Der zweite Name ist ein Counter mit genau einem begrenzten Tag <code>event</code>. Er
+erfasst ausschließlich <code>oauth_failure</code>, <code>refresh_failure</code>, <code>session_required</code>,
+<code>session_renewal_required</code>, <code>http_401</code>, <code>http_403</code>, <code>http_409</code>, <code>http_429</code>,
+<code>issuer_rate_limited</code>, <code>timeout</code>, <code>replay_rejected</code>, <code>cross_provider_rejected</code>,
+<code>mtls_edge_verified</code>, <code>mtls_edge_observed_no_cert</code>,
+<code>mtls_edge_local_operator</code>, <code>mtls_edge_rejected</code> und <code>tool_exception</code>. Es gibt
+keine dynamischen Fehlertexte, Kennungen, Pfade oder Lerninhalte als Tags.
+Cross-Learner-/IDOR-Abwehr wird zusätzlich in negativen Integrationstests
+geprüft; der MCP-Vertrag nimmt absichtlich keine Lernendenkennung als
+Toolargument entgegen.</p>
+<p>Der lokale Limiter trennt MCP, OAuth, Cockpit-Start und Metadaten. Die
+First-Party-Launch-Route und der MCP-Pfad besitzen getrennte Budgets.</p>
+<p>Die netzbezogenen Budgets verwenden nur die vom Servlet-Container
+normalisierte Netzwerkadresse. Der Limiter parst keine Forwarding-Header.
+Deshalb muss der produktive Reverse Proxy eingehende
+<code>Forwarded</code>-/<code>X-Forwarded-*</code>-Header verwerfen beziehungsweise selbst ersetzen,
+und der Backendport darf nicht direkt aus dem Internet erreichbar sein. Bei
+mehreren Backendinstanzen ist zusätzlich ein gemeinsames Gateway-Limit
+verbindlich; der In-Process-Limiter ist bewusst nur eine letzte lokale
+Schutzschicht. Eine Ablehnung antwortet mit <code>429</code>, <code>Retry-After</code> und <code>no-store</code>.</p>
+<p>Der allgemeine Request-Body-Logger überspringt MCP-, Provider-OAuth- und
+OpenAI-Cockpit-Start-Pfade vollständig. Insbesondere
+Authorization Codes,
+PKCE-Verifier, Access-/Refresh-Tokens und typisierte Lernziel-Startintents dürfen
+auch bei aktiviertem Debug-Logging nicht als Request-Body in den
+Anwendungslogs erscheinen.</p>
+<h2 id="4-chatgpt-app-konfigurieren">4. ChatGPT-App konfigurieren</h2>
+<ol>
+<li>Name: <code>SkillPilot Coach v1</code>.</li>
+<li>Sprachneutrale Beschreibung, zum Beispiel:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Personal learning coach for your saved SkillPilot learning state. Guides you through learning goals, tasks, and review while keeping your progress up to date.
+</code></pre></div>
+<ol>
+<li>Verbindung: <code>Server URL</code>.</li>
+<li>MCP-URL: <code>https://mcp-coach-v1.skillpilot.com/mcp</code>.</li>
+<li>OAuth mit der festen Client-ID, dem dazugehörigen Client-Secret und der
+   exakten Callback-URL konfigurieren. Als Authentisierungsmethode am
+   Token-Endpunkt <code>client_secret_basic</code> wählen. DCR, CIMD, <code>none</code> und
+   <code>private_key_jwt</code> gehören nicht in diese produktive App-Konfiguration.</li>
+<li>Nach jeder Änderung an Werkzeugliste, Werkzeugbeschreibungen oder
+   Serverinstruktionen zuerst das Backend deployen. Danach unter
+   <code>Einstellungen → Plugins</code> die Developer-Mode-App öffnen und <code>Refresh</code>
+   ausführen. Prüfen, dass nur die freigegebenen sprachneutralen
+   Produktivwerkzeuge erscheinen; keine Claude-, Regression-, Start- oder
+   lokalen Widget-Testwerkzeuge dürfen sichtbar sein. <code>resources/list</code> muss
+   genau zwei aktive hashgebundene Ressourcen sowie alle bereits beworbenen
+   Hash-URIs byte-identisch als passive Retention enthalten.
+   <code>render_skillpilot_goal_visualization</code> und
+   <code>start_skillpilot_memory_practice</code> referenzieren jeweils nur ihre eigene
+   aktive Ressource. <code>review_skillpilot_memory_practice_card</code> bleibt app-only
+   und ungebunden.</li>
+</ol>
+<p>Die sichtbare Beschreibung erklärt ausschließlich den Produktnutzen. ChatGPT
+verwendet sie zwar als Signal für die App-Discovery, SkillPilot darf seine
+fachliche Korrektheit oder seinen Arbeitsablauf aber nicht von ihrem Wortlaut
+abhängig machen. Positive und negative Auswahlgrenzen gehören in die
+Werkzeugbeschreibung, werkzeugübergreifende Abläufe in die
+MCP-Serverinstruktionen und verbindliche Autorisierung sowie Zustandsübergänge
+ins Backend.</p>
+<p>Der stabile technische Name des fachlichen Kontextwerkzeugs bleibt
+<code>get_skillpilot_context</code>. Sein englischer Titel muss
+<code>Start or continue the SkillPilot learning coach</code> lauten. Seine Beschreibung nennt
+positive Routingfälle (SkillPilot auswählen oder nennen; lernen, üben, starten,
+fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
+(keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
+semantisch gleiches Alias-Werkzeug veröffentlichen.</p>
+<p>Der unveröffentlichte Arbeitsstand <code>1.0.0-SNAPSHOT</code> registriert genau zwei
+aktive MCP Apps UI-Ressourcen: eine read-only Bildressource für das aktive
+atomare Lernziel und eine interaktive Ressource für Karteikartenlernen im Chat.
+Zuvor ausgelieferte Bild-Hash-URIs bleiben byte-identisch passiv lesbar und
+besitzen keine aktive Werkzeugbindung. Frühere, nie veröffentlichte
+Startressourcen gehören nicht zum V1-Vertrag.
+<code>render_skillpilot_goal_visualization</code> und
+<code>start_skillpilot_memory_practice</code> referenzieren jeweils nur ihre eigene aktive
+Ressource über <code>ui.resourceUri</code> und den ChatGPT-Kompatibilitätsalias
+<code>openai/outputTemplate</code>; das app-only Bewertungswerkzeug bleibt ungebunden.</p>
+<p>Der Vollkontext projiziert <code>goalVisualization</code> und erlaubt den Renderer nur bei
+einem aktiven atomaren Ziel mit passendem kanonischem Bildlink und aktivierter
+Cockpit-Einstellung. Bei dieser frischen Übereinstimmung ruft der Coach den
+Renderer einmal mit der unveränderten <code>goalId</code> auf und kopiert die Top-Level-
+<code>stateVersion</code> in dessen Eingabe <code>expectedStateVersion</code>. Eine ältere Freigabe
+wird weder wiederverwendet noch erneut versucht. Der Renderer revalidiert
+Backendzustand, Ziel-ID und Version und liefert nur die begrenzte strukturierte
+Projektion; sein Receipt ersetzt den Vollkontext nicht. Nacktes MCP-
+<code>ImageContent</code> ist kein Sichtbarkeitsvertrag. Die Komponente rendert nur das
+Bild mit Alttext; Titel, Lernzielbeschreibung und Cockpit-Link bleiben
+unsichtbar. Fehlt ein gültiges Bild oder stellt der Host die optionale
+Komponente nicht dar, bleibt die vollständige Textantwort unverändert.</p>
+<p>Für ein aktives Lernkartenziel veröffentlicht der Kontext zwei klar getrennte
+Modi: <strong>Karteikarten lernen</strong> und <strong>Mit Lerncoach prüfen</strong>. Der erste Modus ruft
+<code>start_skillpilot_memory_practice</code> auf. Nur dessen Komponente erhält die
+Vorder- und Rückseiten eines begrenzten fälligen Kartenstapels in Resultat-<code>_meta</code>.
+Das Umdrehen sowie Vor- und Zurückblättern bleiben rein lokal und schreiben
+keinen Zustand. Erst die einfache Entscheidung <code>Noch nicht gewusst</code> oder
+<code>Gewusst</code> speichert <code>not_known</code> beziehungsweise <code>known</code> atomar über das app-only
+Werkzeug <code>review_skillpilot_memory_practice_card</code>. Modell-sichtbar bleiben nur
+Status und Fortschritt. Eine Bewertung verändert ausschließlich die
+Wiederholungsplanung; intern werden die beiden Entscheidungen auf die
+SM-2-Qualitäten <code>1</code> und <code>4</code> abgebildet. Sie setzt weder Mastery noch beendet sie
+das aktive Ziel. Das Modell startet die Komponente nur einmal. Nach dem Ende
+eines begrenzten Stapels darf ausschließlich die Komponente mit der neuesten
+State-Version den nächsten fälligen Stapel laden.
+Mathematik und das kleine erlaubte Markdown-Subset werden lokal und ohne
+unsichere HTML-Injektion gerendert. Kann der Host die Komponente nicht nutzen,
+bleibt der vom Backend gelieferte Cockpit-Link die Ausweichmöglichkeit.</p>
+<p><strong>Mit Lerncoach prüfen</strong> bleibt der bestehende harte Verified-Recall-Ablauf
+ohne Hilfestellung. Nur diese Prüfung kann den für Lernkartenziele vorgesehenen
+Beherrschungsnachweis liefern. Die für Lernende sichtbare deutsche Bezeichnung
+lautet „Karteikartenlernen“ beziehungsweise „Karteikarten lernen“, nicht
+„SRS-Kartendrill“.</p>
+<p>Da V1 unveröffentlicht ist, gibt es keine Produkt-Kompatibilitätszusage für alte
+Widget-Testnachrichten. Bereits real an Test-Clients ausgelieferte
+content-addressierte Ressourcen bleiben dennoch byte-identisch passiv lesbar,
+damit Provider-Caches und vorhandene Test-Chats nicht mit „Failed to fetch
+template“ brechen. Abnahme und Fehlersuche erfolgen nach Plugin-Refresh
+zusätzlich in einem frischen Chat.</p>
+<p>Die <code>learningSessionId</code> erscheint ausschließlich in der automatisch
+vorbereiteten Startnachricht und wird danach als Toolparameter weitergereicht;
+sie ist keine dauerhafte SkillPilot-ID und kein OAuth-Token. Die Bildkarte ist
+reine Orientierung, keine Evidenz, Aufgabe, Lösung, Bewertung oder
+Mastery-Aktion.</p>
+<h2 id="5-technischer-smoke-test">5. Technischer Smoke-Test</h2>
+<h3 id="51-datenloser-discovery-bootstrap">5.1 Datenloser Discovery-Bootstrap</h3>
+<p>Für diesen einmaligen Zustand gilt:</p>
+<div class="highlight"><pre><span></span><code>SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED=true
+SKILLPILOT_OPENAI_COACH_V1_ENABLED=false
+SKILLPILOT_OPENAI_COACH_V1_OAUTH_ENABLED=false
+SKILLPILOT_OPENAI_COACH_V1_MCP_ENABLED=false
+SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=false
+</code></pre></div>
+<p>Dann:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">MCP_URL</span><span class="o">=</span>https://mcp-coach-v1.skillpilot.com/mcp
+<span class="nv">RESOURCE_METADATA</span><span class="o">=</span>https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
+<span class="nv">AUTH_BASE</span><span class="o">=</span>https://skillpilot.com
+
+curl<span class="w"> </span>-fsS<span class="w"> </span><span class="s2">"</span><span class="nv">$RESOURCE_METADATA</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-e<span class="w"> </span>--arg<span class="w"> </span>resource<span class="w"> </span><span class="s2">"</span><span class="nv">$MCP_URL</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--arg<span class="w"> </span>issuer<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/api/openai/v1"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">'.resource == $resource</span>
+<span class="s1">       and (.authorization_servers | index($issuer))'</span>
+
+curl<span class="w"> </span>-fsS<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/.well-known/oauth-authorization-server/api/openai/v1"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-e<span class="w"> </span>--arg<span class="w"> </span>issuer<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/api/openai/v1"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">'.issuer == $issuer</span>
+<span class="s1">       and (.code_challenge_methods_supported | index("S256"))</span>
+<span class="s1">       and (.token_endpoint_auth_methods_supported | index("client_secret_basic"))'</span>
+
+curl<span class="w"> </span>-fsS<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/api/openai/v1/.well-known/openid-configuration"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-e<span class="w"> </span>--arg<span class="w"> </span>issuer<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/api/openai/v1"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">'.issuer == $issuer</span>
+<span class="s1">       and (.code_challenge_methods_supported | index("S256"))</span>
+<span class="s1">       and (.token_endpoint_auth_methods_supported | index("client_secret_basic"))'</span>
+
+curl<span class="w"> </span>-sS<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-D<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"</span><span class="nv">$MCP_URL</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span><span class="s1">'{}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">'/^HTTP\|^[Ww][Ww][Ww]-Authenticate/p'</span>
+
+<span class="k">for</span><span class="w"> </span>path<span class="w"> </span><span class="k">in</span><span class="w"> </span>oauth2/authorize<span class="w"> </span>oauth2/token<span class="w"> </span>oauth2/revoke<span class="w"> </span>oauth2/introspect<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">test</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>curl<span class="w"> </span>-sS<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s1">'%{http_code}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/api/openai/v1/</span><span class="nv">$path</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">404</span>
+<span class="k">done</span>
+</code></pre></div>
+<p>Erwartung: alle drei Metadatenabrufe sind gültig, MCP antwortet <code>401</code> mit
+<code>WWW-Authenticate</code>, und sämtliche OAuth-Protokollendpunkte bleiben <code>404</code>.
+Der intern aus Kompatibilitätsgründen noch <code>openAiDeCoach</code> benannte
+Health-Contributor existiert in diesem Zustand absichtlich nicht; die allgemeine
+Readiness des übrigen SkillPilot-Dienstes muss weiterhin <code>UP</code> sein.</p>
+<h3 id="52-vollbetrieb-zunachst-read-only">5.2 Vollbetrieb, zunächst read-only</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">MCP_URL</span><span class="o">=</span>https://mcp-coach-v1.skillpilot.com/mcp
+<span class="nv">RESOURCE_METADATA</span><span class="o">=</span>https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
+<span class="nv">AUTH_BASE</span><span class="o">=</span>https://skillpilot.com
+<span class="nv">MANAGEMENT_BASE</span><span class="o">=</span>http://127.0.0.1:8787
+<span class="nv">AUTH_METHOD</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD</span><span class="k">:-</span><span class="nv">client_secret_basic</span><span class="si">}</span><span class="s2">"</span>
+
+curl<span class="w"> </span>-fsS<span class="w"> </span><span class="s2">"</span><span class="nv">$MANAGEMENT_BASE</span><span class="s2">/actuator/health/readiness"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.status == "UP"'</span>
+
+curl<span class="w"> </span>-fsS<span class="w"> </span><span class="s2">"</span><span class="nv">$MANAGEMENT_BASE</span><span class="s2">/actuator/health/openAiDeCoach"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-e<span class="w"> </span><span class="s1">'.status == "UP"'</span>
+
+curl<span class="w"> </span>-fsS<span class="w"> </span><span class="s2">"</span><span class="nv">$RESOURCE_METADATA</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-e<span class="w"> </span>--arg<span class="w"> </span>resource<span class="w"> </span><span class="s2">"</span><span class="nv">$MCP_URL</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--arg<span class="w"> </span>issuer<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/api/openai/v1"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">'.resource == $resource</span>
+<span class="s1">       and (.authorization_servers | index($issuer))</span>
+<span class="s1">       and (.scopes_supported | index("skillpilot.openai.v1.read"))</span>
+<span class="s1">       and (.scopes_supported | index("skillpilot.openai.v1.write"))'</span>
+
+curl<span class="w"> </span>-fsS<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/.well-known/oauth-authorization-server/api/openai/v1"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-e<span class="w"> </span>--arg<span class="w"> </span>issuer<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/api/openai/v1"</span><span class="w"> </span>--arg<span class="w"> </span>auth<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_METHOD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">'.issuer == $issuer</span>
+<span class="s1">       and (.code_challenge_methods_supported | index("S256"))</span>
+<span class="s1">       and (.token_endpoint_auth_methods_supported == [$auth])</span>
+<span class="s1">       and (.registration_endpoint | not)'</span>
+
+curl<span class="w"> </span>-fsS<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/api/openai/v1/.well-known/openid-configuration"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-e<span class="w"> </span>--arg<span class="w"> </span>issuer<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_BASE</span><span class="s2">/api/openai/v1"</span><span class="w"> </span>--arg<span class="w"> </span>auth<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_METHOD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">'.issuer == $issuer</span>
+<span class="s1">       and (.code_challenge_methods_supported | index("S256"))</span>
+<span class="s1">       and (.token_endpoint_auth_methods_supported == [$auth])</span>
+<span class="s1">       and (.registration_endpoint | not)'</span>
+
+curl<span class="w"> </span>-sS<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-D<span class="w"> </span>-<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"</span><span class="nv">$MCP_URL</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">'Accept: application/json, text/event-stream'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span><span class="s1">'{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl-smoke","version":"1"}}}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">'/^HTTP\|^[Ww][Ww][Ww]-Authenticate/p'</span>
+<span class="nb">test</span><span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_METHOD</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>client_secret_basic
+</code></pre></div>
+<p>Erwartung beim letzten Aufruf: <code>401</code> mit
+einem <code>WWW-Authenticate</code>-Header, der auf die
+OpenAI-V1-Resource-Metadata-URL verweist. Ein gültiges Token ohne
+Schreibscope muss stattdessen <code>error="insufficient_scope"</code> erhalten.</p>
+<p>Token, Cookies, Authorization Codes, SkillPilot-IDs und vollständige
+Schülerantworten dürfen nicht in geteilte Logs oder Tickets kopiert werden.</p>
+<p><code>MANAGEMENT_BASE</code> bezeichnet den internen beziehungsweise geschützten
+Managementzugang; Actuator darf dafür nicht ungefiltert über den öffentlichen
+Anwendungs-Origin freigegeben werden. Falls Health-Details für den Deployment-
+Abgleich autorisiert sichtbar sind, muss <code>contractHash</code> aus
+<code>openAiDeCoach</code> über alle Instanzen desselben Artefakts identisch sein.</p>
+<h2 id="6-acceptance-reihenfolge">6. Acceptance-Reihenfolge</h2>
+<h3 id="stufe-a-isolierter-read-only-canary">Stufe A – isolierter read-only Canary</h3>
+<p>Diese Stufe dient ausschließlich der gezielten Prüfung von Discovery, OAuth,
+Sitzungsauflösung und lesenden Werkzeugen. Die gemeinsame Readiness bleibt
+dabei absichtlich nutzbar; der Zustand ist dennoch kein funktionsfähiger
+Produktivcoach.</p>
+<ul>
+<li>Fehlende oder verneinte Provider-Altersbestätigung muss bereits am Cockpit-
+  Start mit <code>403</code> scheitern; eine bestätigte berechtigte Person darf fortfahren.</li>
+<li>App aus einem frischen Chat verbinden; PKCE, Consent und Callback abschließen.</li>
+<li>Fehlendes/falsches Client-Secret, falsche Client-ID, falsche Callback-URI und
+  falsche Resource müssen am OAuth-Vertrag scheitern; Secrets dürfen dabei
+  weder in Antwort noch Log erscheinen.</li>
+<li>In SkillPilot zweimal nacheinander <strong>Lernen starten</strong> und nachweisen, dass
+  zwei verschiedene <code>learningSessionId</code>-Werte mit jeweils eigenem absoluten
+  Ablauf entstanden sind.</li>
+<li><code>get_skillpilot_context</code> und alle Navigationsabfragen mit gültigem OAuth
+  und der jeweils richtigen Session-ID prüfen.</li>
+<li>Bei einem aktiven atomaren Ziel mit passendem kanonischem
+  <code>goal-visualization</code>-Link muss das Vollresultat die Bildprojektion und
+  Renderer-Freigabe enthalten. Der Renderer läuft für dieses frische Ergebnis
+  genau einmal mit dessen <code>goalId</code>; die Top-Level-<code>stateVersion</code> wird in
+  <code>expectedStateVersion</code> kopiert. Auf einem
+  unterstützten Web-Host zeigt es dann ausschließlich das Bild; der Alttext
+  bleibt am <code>img</code>-Element,
+  während Titel, Lernzielbeschreibung und Cockpit-Link nicht gerendert werden.
+  Ein Clusterziel sowie ein atomisches Ziel ohne gültigen oder passenden
+  Bildlink dürfen keine leere oder defekte Karte erzeugen; der Chat bleibt
+  normal lesbar.</li>
+<li>Beim Öffnen desselben Chats in der nativen Mobile-App muss die normale
+  Chat-Antwort vollständig nutzbar bleiben. Der Server liefert dieselbe
+  oberflächenneutrale <code>goalVisualization</code>-Projektion und Renderer-Freigabe wie
+  an andere Hosts; er versucht nicht, die Clientoberfläche aus
+  <code>openai/userAgent</code> oder ähnlichen Hinweisen zu erraten. Ob ein Host die
+  optionale MCP Apps UI darstellt oder ignoriert, ist Hostverhalten und darf
+  den vollständigen Textpfad nicht beeinträchtigen. Ein bereits in einer
+  älteren Nachricht gespeicherter Host-Platzhalter bleibt externe historische
+  Darstellung und kann nicht rückwirkend serverseitig entfernt werden.</li>
+<li>Dasselbe Access Token ohne Session-ID, mit falscher, abgelaufener oder zu
+  einem anderen Lernenden gehörender Session-ID muss scheitern.</li>
+<li>Eine gültige Session-ID ohne gültiges OAuth Access Token muss ebenfalls
+  scheitern.</li>
+<li>Reload, neuer Chat und längerer Dialog müssen den Zustand wieder aus dem
+  Backend laden können, solange ChatGPT die Session-ID weiter an jedes Tool
+  übergibt.</li>
+<li>Eine Mutation muss bei deaktiviertem Write-Kill-Switch sicher abgewiesen
+  werden, ohne den Nutzer in eine erneute Autorisierung zu schicken.</li>
+<li>Andere Lernende, fremde Resource-Werte, abgelaufene/revozierte Tokens und
+  fehlende Scopes müssen negativ getestet werden.</li>
+</ul>
+<h4 id="routing-golden-prompts">Routing-Golden-Prompts</h4>
+<p>Nach jeder Änderung an Werkzeugtitel, Werkzeugbeschreibung oder
+Serverinstruktionen zuerst das Backend deployen und anschließend in der
+Developer-Mode-App <code>Refresh</code> ausführen. Jeden Test danach in einem frischen Chat
+mit aktivierter App ausführen. Für jeden Fall Toolname, Ergebnis und sichtbare
+Antwort notieren:</p>
+<table>
+<thead>
+<tr>
+<th>Prompt</th>
+<th>Erwartung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Verwende SkillPilot Coach v1 und fahre fort.</code> ohne aktuelle SkillPilot-Startnachricht</td>
+<td>Kein Werkzeugaufruf. Der Coach verweist kurz in der Unterhaltungssprache auf <code>https://skillpilot.com/</code>, die WebGUI-Konfiguration und <strong>Lernen starten</strong> / <strong>Start learning</strong>, das eine neue Session in einem neuen Chat öffnet.</td>
+</tr>
+<tr>
+<td>Derselbe Prompt mit aktueller Startnachricht und <code>learningSessionId: sps_…</code></td>
+<td><code>get_skillpilot_context</code> läuft zu Beginn dieses Learner-Turns. Level 2 wird weder erfragt noch verändert; die Antwort verwendet nur den bestätigten WebGUI-Kontext. Nach einer erfolgreichen Mutation gilt deren vollständiger Nachfolgerzustand für den Rest desselben Assistant-Turns ohne redundanten Kontextabruf.</td>
+</tr>
+<tr>
+<td>Derselbe Start bei einem aktiven atomaren Ziel mit freigegebenem Bild</td>
+<td>Nach erfolgreichem Kontext folgt <code>render_skillpilot_goal_visualization</code> genau einmal mit dessen <code>goalId</code>; die Top-Level-<code>stateVersion</code> wird in <code>expectedStateVersion</code> kopiert. Danach bleibt die fachliche Antwort vollständig.</td>
+</tr>
+<tr>
+<td>Bildprojektion oder Renderer-Freigabe fehlt</td>
+<td>Es gibt keinen Renderer-Aufruf und keine leere Bild-UI; die normale Coaching-Antwort bleibt vollständig.</td>
+</tr>
+<tr>
+<td>Vor dem Renderer liegt bereits ein neueres erfolgreiches SkillPilot-Ergebnis vor</td>
+<td>Nur dessen aktuelle Bildfreigabe kann verwendet werden; der alte Bildauftrag wird nicht ausgeführt oder automatisch erneut versucht.</td>
+</tr>
+<tr>
+<td><code>Ich möchte Mathe Oberstufe Hessen lernen.</code> bei ausgewählter App</td>
+<td>Ohne aktuelle Startnachricht folgt nur der WebGUI-Hinweis. Mit gültiger Session bleibt die vorhandene Level-2-Konfiguration autoritativ; eine Änderung erfolgt ausschließlich in SkillPilot und startet danach einen neuen Chat.</td>
+</tr>
+<tr>
+<td>Einer der drei Session-Recovery-Codes</td>
+<td>Der Coach gibt die Serverinstruktion unverändert aus und ergänzt die exakte <code>startUrl</code> nur, wenn sie nicht schon enthalten ist. Keine Fachantwort, kein OAuth-Reconnect; Fortsetzung über WebGUI und neuen Chat.</td>
+</tr>
+<tr>
+<td><code>Lass uns dort weitermachen, wo ich aufgehört habe.</code> bei ausgewählter App</td>
+<td><code>get_skillpilot_context</code> lädt den gespeicherten Zustand; kein neuer Lernpfad wird erfunden.</td>
+</tr>
+<tr>
+<td><code>Erkläre mir allgemein die Mitternachtsformel.</code> ohne ausgewählte App und ohne SkillPilot-Bezug</td>
+<td>SkillPilot wird nicht aufgerufen.</td>
+</tr>
+<tr>
+<td><code>Use SkillPilot Coach v1 and resume my current lesson.</code></td>
+<td>Das Kontextwerkzeug lädt die Session; die Antwort verwendet ausschließlich die darin festgelegte Interaktionssprache.</td>
+</tr>
+</tbody>
+</table>
+<p>Die Anwendung schreibt pro Toolaufruf ausschließlich eine begrenzte
+Diagnosezeile mit Toolname, Status und Dauer, beispielsweise:</p>
+<div class="highlight"><pre><span></span><code>OpenAI V1 MCP tool invocation: tool=get_skillpilot_context status=success durationMs=42
+</code></pre></div>
+<p>Lerninhalte, Antworten, Toolargumente, Tokens und Lernendenkennungen dürfen
+darin nicht erscheinen. Für den Live-Test kann die Zeile mit
+<code>journalctl -u skillpilot</code> geprüft werden.</p>
+<h3 id="stufe-b-funktionsfahiger-schreibpilot">Stufe B – funktionsfähiger Schreibpilot</h3>
+<p>Nach Stufe A <code>SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=true</code> setzen und neu starten.
+Erst dieser Zustand ist als vollständiger fachlicher Schreibpilot freizugeben.
+Dann mit einem dedizierten Testlernstand sämtliche Nutzerreisen prüfen:</p>
+<ol>
+<li>Curriculum, Stage, Subjects, Profile und Personalisierung in der WebGUI;</li>
+<li>Scope und aktives Frontier-Ziel;
+   beim Zielwechsel muss <code>set_skillpilot_active_goal</code> dieselbe
+   Visualisierung aktualisieren beziehungsweise ohne gültiges Bild sauber
+   ausblenden;</li>
+<li>Erklärung, Aufgabe und fachlich alternative korrekte Lösung;</li>
+<li>Mastery-Update einschließlich Konfliktfall;</li>
+<li>Verified Recall mit exakt dem serverseitig gepinnten vollständigen Batch,
+   einmaliger Antwortfreigabe nach vollständiger Lernendenantwort, genau einem
+   atomaren Ergebnis-Write und unmittelbar umgesetzter Backendfortsetzung;</li>
+<li>Prüfung ohne lösungslenkende Nachfrage und Evaluation erst nach vollständiger
+   sichtbarer Abgabe;</li>
+<li>Wiederaufnahme, Parallelchat, Retry, Widerruf und erneute Verbindung.</li>
+</ol>
+<p>Zusätzlich sind die drei Cockpit-Starts separat zu prüfen:</p>
+<ul>
+<li><code>CURRENT_UNIT</code>: Ein einzelner Aufruf von
+  <code>POST /api/ui/learners/{skillpilotId}/openai/v1/launch</code> muss Intent und
+  Lernendenzustand unter Learner-Lock anwenden und genau eine neue Session
+  erzeugen. Das gilt unabhängig davon, ob die App bereits autorisiert ist;
+  OAuth-Tokenausgabe darf daran weder beteiligt sein noch darauf warten;</li>
+<li>Verified Recall: Ziel und Batchgröße müssen als typisierter First-Party-Intent
+  ankommen, in der Lernsession serverseitig gepinnt sein und dürfen in den
+  modellseitigen Startargumenten nicht erneut gewählt werden. Das aktivierte
+  Ziel muss serverseitig als atomares Memory-/SRS-Ziel validiert sein. Der
+  Start liefert alle Karten und eine <code>batchCapability</code>, der einmalige
+  Sollantwortabruf eine <code>gradingCapability</code>; genau ein vollständiger Write
+  speichert alle Bewertungen atomar und liefert die Fortsetzung;</li>
+<li>Abi 2026: Kursniveau und Prüfungsziel müssen typisiert gespeichert und auf
+  die bekannten GK-/LK-Kampagnenziele, vorhandene <code>examData</code> und den passenden
+  Kurs-Tag begrenzt sein;</li>
+<li>ein erster MCP-Aufruf in einem beliebigen parallelen Chat darf keinen
+  Start-Intent konsumieren oder anwenden; jeder Chat benötigt die beim
+  expliziten Start erzeugte Session-ID;</li>
+<li>nach Ablauf der TTL muss die Lernsession unabhängig von OAuth abgewiesen und
+  bereinigt werden; abgelaufene OAuth-Codes und -Tokens werden separat
+  bereinigt, während eine weiterhin gültige App-Autorisierung bestehen bleibt;</li>
+<li>bei exakt <code>PT1H</code> Restlaufzeit muss eine neue Operation noch zulässig sein; bei
+  weniger als <code>PT1H</code> müssen Reads und neue Writes vor der Fachoperation mit
+  <code>SESSION_RENEWAL_REQUIRED</code> enden;</li>
+<li>ein Retry eines committeten Writes mit gleichem Toolnamen, kanonisch
+  identischen Argumenten und derselben <code>clientRequestId</code> darf bei noch nicht
+  abgelaufener Session und verfügbarer gepinnter Workflow-/Curriculumversion
+  nur das gespeicherte Resultat liefern;</li>
+<li>nach jedem der drei Session-Recovery-Codes muss die Fachoperation stoppen.
+  Der Coach gibt <code>instruction</code> unverändert aus; fehlt es, wählt er den exakten
+  Eintrag aus <code>instructions</code> anhand der letzten autoritativen
+  <code>communicationLocale</code>, sonst der aktuellen Unterhaltungssprache. Die exakte
+  <code>startUrl</code> wird nur ergänzt, wenn sie nicht bereits in der Instruktion steht.
+  Es folgen weder Fachantwort noch OAuth-Neuverbindung. Die Person schließt den
+  Start in der WebGUI ab und arbeitet im dadurch geöffneten neuen Chat weiter;</li>
+<li>für den Live-Grenztest das Diagnose-Gate kurz aktivieren und ausschließlich
+  am First-Party-<code>/launch</code> einmal <code>diagnosticSessionTtlSeconds=3660</code> verwenden;
+  alternativ <code>5400</code> für einen 90-Minuten-Soak. Werte <code>3600</code>, <code>86401</code>, Werte über
+  der normalen Laufzeit sowie ein gesetztes Feld bei deaktiviertem Gate müssen
+  ohne Session fail-closed enden;</li>
+<li>direkt danach muss ein weiterer First-Party-Start ohne Diagnosefeld wieder
+  eine <code>PT24H</code>-Session erzeugen. Die globale Learning-Session-TTL bleibt während
+  des gesamten Tests unverändert.</li>
+</ul>
+<p>In allen drei Fällen enthält die sichtbare Startnachricht genau die neu
+erzeugte <code>learningSessionId</code> sowie den fachlichen Startzweck. Sie enthält weder
+dauerhafte SkillPilot-ID, OAuth-Token, Client-Secret noch interne Lernziel-ID.
+Der Benutzer muss die Session-ID weder kopieren noch verändern.</p>
+<h3 id="stufe-c-web-first-ubergabe-canary">Stufe C – Web-first-Übergabe-Canary</h3>
+<ul>
+<li>Ein Chat ohne aktuelle SkillPilot-Startnachricht ruft kein Werkzeug auf und
+  zeigt nur den kurzen lokalisierten Hinweis mit <code>https://skillpilot.com/</code>.</li>
+<li>CREATE/EXISTING, Providerhinweis und die vollständige Level-2-Konfiguration
+  werden ausschließlich im First-Party-WebGUI abgeschlossen.</li>
+<li>Jede ausdrückliche Aktion <strong>Lernen starten</strong> / <strong>Start learning</strong> erzeugt eine
+  neue opake <code>learningSessionId</code> und öffnet einen neuen Chat mit der kurzen
+  Startnachricht; die permanente SkillPilot-ID bleibt außerhalb des Chats.</li>
+<li>Zu Beginn jedes Learner-Turns muss der Vollkontext erfolgreich geladen worden
+  sein. Nach einer erfolgreichen Mutation ist ihr vollständiger
+  Nachfolgerzustand für den Rest desselben Assistant-Turns autoritativ und wird
+  nicht redundant neu geladen. Level-3-Fokus und aktives Ziel bleiben die
+  einzigen chatseitigen Navigationsänderungen.</li>
+<li>Für jeden Session-Recovery-Code gilt die oben geprüfte servereigene
+  Instruktion mit WebGUI und neuem Chat; es gibt keine Fachantwort und keinen
+  OAuth-Reconnect.</li>
+<li><code>resources/list</code> liefert die beiden aktiven UI-Ressourcen sowie ausschließlich
+  die zur Cache-Kompatibilität retained Bildressourcen. Der unveröffentlichte
+  providerseitige Startpfad besitzt weder Tool, Ressource noch Runtime-Dienst.</li>
+</ul>
+<p>Die App wird erst dann zum Standard, wenn zusätzlich die vorgesehene kostenlose
+und feste Consumer-Abo-Nutzung, Deutschland/EU und die vorgesehenen Browser-
+und App-Oberflächen praktisch bestätigt sind. Auf jeder Oberfläche bleibt die
+normale textuelle Chat-Antwort der verbindliche Fallback; die optionale MCP Apps
+UI gehört nur dort zur Freigabezusage, wo sie praktisch bestätigt wurde.</p>
+<h2 id="7-cockpit-canary-und-cutover">7. Cockpit-Canary und Cutover</h2>
+<p>Die Variante ist eine bewusste Entscheidung pro Frontend-Artefakt. Der stabile
+Produktionseinstieg im Repository-Root setzt die aktuelle Produktentscheidung
+<code>openai-mcp</code>; die generische Deployment-Engine akzeptiert weiterhin keinen
+impliziten Default. An der Engine muss für jedes Deployment genau einer der
+Werte <code>visible-session</code>, <code>openai-mcp</code> oder <code>legacy</code> gesetzt sein.</p>
+<p>Für den mehrsprachigen MCP-Canary beziehungsweise Cutover ist der stabile
+Produktionsaufruf:</p>
+<div class="highlight"><pre><span></span><code>./deploy_skillpilot.sh
+</code></pre></div>
+<p>Der Einstieg im Repository-Root setzt die produktive Variante bewusst auf
+<code>openai-mcp</code> und delegiert an <code>scripts/deploy.sh</code>. Die Engine akzeptiert
+weiterhin keinen fehlenden oder ungültigen Variantenwert und bricht dann
+<strong>vor</strong> Git-Update, Build und Restart ab. Dadurch bleibt die Artefaktprüfung
+erhalten, ohne dass beim normalen Deployment jedes Mal eine Buildvariable
+manuell angegeben werden muss. Ein Rollback überschreibt die Variante
+ausdrücklich mit <code>--coach-variant visible-session</code> am selben Einstiegspunkt.
+Eine eventuell noch in der Shell vorhandene
+<code>VITE_SKILLPILOT_COACH_VARIANT</code>-Variable wird vom Produktionseinstieg bewusst
+ignoriert.</p>
+<p>Der Build schreibt die aufgelöste Variante nach
+<code>backend/src/main/resources/static/version.json</code> in das Feld <code>coachVariant</code> und
+als <code>&lt;meta name="skillpilot-coach-variant" ...&gt;</code> nach
+<code>backend/src/main/resources/static/index.html</code>.
+<code>scripts/deploy.sh</code> prüft beide Werte unmittelbar nach dem Frontend-Build mit
+<code>scripts/verify_frontend_coach_variant.mjs</code> und stoppt bei jeder Abweichung vor
+dem Backend-Build und Restart. Nach dem Restart liest dasselbe Prüfskript
+<code>version.json</code> und <code>index.html</code> noch einmal cache-frei von
+<code>SKILLPILOT_BASE_URL</code> (Standard: <code>https://skillpilot.com</code>). Ein alter
+Visible-Session-Build hinter Proxy oder Cache lässt das Deployment dadurch
+ebenfalls fehlschlagen.</p>
+<p>Die OpenAI-MCP-Variante verwendet für alle freigegebenen Sprachen dieselbe
+V1-App. Die beim Start serverseitig erzeugte Lernsession legt ihre
+<code>communicationLocale</code> fest; Plugin-Control-Plane und Toolvertrag bleiben neutrales
+Englisch. Eine Sprache erzeugt weder einen weiteren Host noch eine weitere App.</p>
+<p>Bei jedem Start ruft das Cockpit einmal
+<code>POST /api/ui/learners/{skillpilotId}/openai/v1/launch</code> auf und öffnet ChatGPT
+mit der zurückgegebenen, natürlichsprachlichen Startnachricht im URL-codierten
+<code>prompt</code>-Parameter. Der Benutzer muss keinen Text kopieren oder einfügen.
+Spezielle Starts werden serverseitig als enges, auditierbares Intent-Schema
+vorbereitet; es wird kein freier Instruktionstext aus dem Browser übernommen.
+Jeder normale erfolgreiche Aufruf erzeugt unabhängig vom
+App-Autorisierungsstatus eine neue <code>learningSessionId</code> mit exakt 24 Stunden
+absoluter Gültigkeit und
+nimmt sie in denselben Prompt auf. Die dauerhafte SkillPilot-ID bleibt
+außerhalb von OAuth-Principal, Chat, URL-Prompt und Toolvertrag. ChatGPT muss
+die Session-ID aus dem Prompt unverändert in <strong>jedem</strong> fachlichen MCP-Aufruf
+mitsenden. Die Session-ID ist nicht an eine Chat-Konversation gebunden; sie
+kann innerhalb ihrer Frist in einem neuen Chat weiterverwendet werden, wird
+aber weder durch Nutzung noch durch OAuth-Refresh verlängert.
+Nur der oben beschriebene, explizit freigeschaltete und requestlokale
+First-Party-Diagnosewert darf eine einzelne Testsession verkürzen; er verändert
+diesen Default nicht.</p>
+<p>Der Deployment-Canary muss für <code>CURRENT_UNIT</code>, <code>VERIFIED_RECALL</code> und
+<code>ABI26_EXAM</code> zusätzlich prüfen, dass ChatGPT den genau einmal vorhandenen
+<code>prompt</code>-Parameter in den Composer übernimmt. Die URL beziehungsweise der
+Prompt darf weder dauerhafte SkillPilot-ID noch Lernziel-ID, OAuth-Token oder
+Client-Secret enthalten; die einmalige
+<code>learningSessionId</code> ist darin dagegen ausdrücklich erforderlich.</p>
+<h2 id="8-rollback">8. Rollback</h2>
+<ol>
+<li>Frontend ausdrücklich mit
+   <code>./deploy_skillpilot.sh --coach-variant visible-session</code> bauen und
+   ausliefern. Die Artefaktprüfung muss <code>visible-session</code> bestätigen.</li>
+<li>Zuerst <code>SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=false</code>, bei vollständiger
+   Abschaltung zusätzlich <code>SKILLPILOT_OPENAI_COACH_V1_MCP_ENABLED=false</code>,
+   <code>SKILLPILOT_OPENAI_COACH_V1_OAUTH_ENABLED=false</code> und
+   <code>SKILLPILOT_OPENAI_COACH_V1_ENABLED=false</code> sowie
+   <code>SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED=false</code> setzen.</li>
+<li>App in ChatGPT deaktivieren beziehungsweise die betroffene Version nach dem
+   <a href="../openai-plugin-v1-release/">V1-Release-Runbook</a> zurückziehen.</li>
+<li>Bestehende OpenAI-V1-Verbindungen serverseitig widerrufen, falls ein
+   Sicherheitsgrund vorliegt.</li>
+</ol>
+<p>Die additiven Datenbanktabellen können stehen bleiben. Der getrennte Clean-Slate-
+Custom-GPT-Quellbaum unter <code>ai/openai custom gpt/</code> wird davon nicht verändert.</p>
+<h2 id="9-externe-restarbeiten">9. Externe Restarbeiten</h2>
+<p>Lokaler Code kann weder die echte App-Verwaltung konfigurieren noch Provider-
+Review, Tarifverfügbarkeit oder einen produktiven OAuth-Callback bestätigen.
+Für den sicheren Cutover des bereits aktuellen MCP-Produktpfads werden daher
+noch benötigt:</p>
+<ul>
+<li>Konfiguration derselben festen Client-ID und desselben langen zufälligen
+  Client-Secrets in der V1-App und im SkillPilot-Server sowie Übernahme
+  der tatsächlichen Callback-URL; am Token-Endpunkt muss
+  <code>client_secret_basic</code> ausgewählt sein;</li>
+<li>Nachweis, dass der Backendport nicht direkt aus dem Internet erreichbar ist;</li>
+<li>Datenbank-Backup, Deployment des Spring-Boot-Artefakts samt Migration und
+  atomarer Environment-Umstellung;</li>
+<li>Aktualisierung der V1-App-Version mit der kanonischen Server-URL und
+  anschließende erneute OAuth-Autorisierung;</li>
+<li>dokumentierte positive und negative End-to-End-Evidenz aus ChatGPT;</li>
+<li>erst danach Freigabe der Schreibfunktion und allgemeine Freigabe des
+  Produktpfads.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

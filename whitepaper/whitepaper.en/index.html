@@ -1,0 +1,5378 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/whitepaper/whitepaper.en/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../whitepaper.de/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>English (EN) - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#skillpilot-whitepaper-en" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              English (EN)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skillgraph-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SkillGraph Processing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skillpilot-learning-coach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SkillPilot Learning Coach
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-challenge-individual-skill-navigation-does-not-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The Challenge: Individual Skill Navigation Does Not Scale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-shift-why-hybrid-ai-systems-are-the-right-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Shift: Why Hybrid AI Systems Are the Right Approach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-product-how-skillpilot-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Product: How SkillPilot Works
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The Product: How SkillPilot Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-the-technology-the-skill-graph-operational-model-frontier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 The Technology: The Skill Graph (Operational Model &amp; Frontier)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 The Technology: The Skill Graph (Operational Model &amp; Frontier)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugging-into-existing-curricula-raw-input-traceability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugging into Existing Curricula (Raw Input &amp; Traceability)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-nodes-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Map: Nodes &amp; Edges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-learning-modes-node-types-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three Learning Modes / Node Types in Practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontier-next-reachable-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frontier: Next Reachable Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-the-interaction-layer-the-ai-learning-coach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 The Interaction Layer: The AI learning coach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 The Interaction Layer: The AI learning coach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#focus-instead-of-distraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Focus Instead of Distraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mastery-progress-as-an-evidence-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mastery: Progress as an Evidence Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Velocity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-the-hybrid-learning-loop-understanding-memorizing-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-implications-target-route-in-backend-ui-and-learning-coach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Implications: Target Route in Backend, UI, and learning coach
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-from-curriculum-to-daily-learning-learning-plans-and-coach-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 From Curriculum to Daily Learning: Learning Plans and Coach Guidance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 From Curriculum to Daily Learning: Learning Plans and Coach Guidance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-teacher-plans-the-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Teacher Plans the Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-learner-works-in-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Learner Works in Chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-mathematics-and-physics-on-the-same-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Mathematics and Physics on the Same Day
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-trust-architecture-security-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Trust Architecture: Security &amp; Integrity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Trust Architecture: Security &amp; Integrity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-data-approach-security-privacy-sovereignty-by-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Data Approach: Security, Privacy &amp; Sovereignty by Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Data Approach: Security, Privacy &amp; Sovereignty by Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pseudonym-instead-of-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pseudonym Instead of Identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-shielding-toward-the-ai-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session Shielding Toward the AI Frontend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dialog-content-is-decoupled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dialog Content Is Decoupled
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-inside-the-institution-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping Inside the Institution (Local)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-frontend-provider-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Frontend / Provider Boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-chain-of-custody-integrity-traceability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Chain of Custody: Integrity &amp; Traceability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Chain of Custody: Integrity &amp; Traceability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signed-exports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Exports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-provenance-on-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Provenance on Import
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-ecosystem-content-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The Ecosystem: Content &amp; Standards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. The Ecosystem: Content &amp; Standards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-status-quo-available-content-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Status Quo: Available Content (Examples)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Status Quo: Available Content (Examples)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schools-examples-from-available-curricula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schools (examples from available curricula)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#higher-education-bologna-relevant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Higher Education (Bologna-relevant)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#languages-cefr-a1-c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Languages (CEFR A1-C2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-skillpilot-in-the-bolognaehea-context-short-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 SkillPilot in the Bologna/EHEA Context (Short Overview)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-governance-community-open-source-invitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Governance &amp; Community: Open Source &amp; Invitation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skillgraph-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SkillGraph Processing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skillpilot-learning-coach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SkillPilot Learning Coach
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-challenge-individual-skill-navigation-does-not-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The Challenge: Individual Skill Navigation Does Not Scale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-shift-why-hybrid-ai-systems-are-the-right-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Shift: Why Hybrid AI Systems Are the Right Approach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-product-how-skillpilot-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Product: How SkillPilot Works
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. The Product: How SkillPilot Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-the-technology-the-skill-graph-operational-model-frontier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 The Technology: The Skill Graph (Operational Model &amp; Frontier)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 The Technology: The Skill Graph (Operational Model &amp; Frontier)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugging-into-existing-curricula-raw-input-traceability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugging into Existing Curricula (Raw Input &amp; Traceability)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-nodes-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Map: Nodes &amp; Edges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-learning-modes-node-types-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three Learning Modes / Node Types in Practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontier-next-reachable-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frontier: Next Reachable Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-the-interaction-layer-the-ai-learning-coach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 The Interaction Layer: The AI learning coach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 The Interaction Layer: The AI learning coach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#focus-instead-of-distraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Focus Instead of Distraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mastery-progress-as-an-evidence-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mastery: Progress as an Evidence Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Velocity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-the-hybrid-learning-loop-understanding-memorizing-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-implications-target-route-in-backend-ui-and-learning-coach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Implications: Target Route in Backend, UI, and learning coach
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-from-curriculum-to-daily-learning-learning-plans-and-coach-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 From Curriculum to Daily Learning: Learning Plans and Coach Guidance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 From Curriculum to Daily Learning: Learning Plans and Coach Guidance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-teacher-plans-the-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Teacher Plans the Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-learner-works-in-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Learner Works in Chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-mathematics-and-physics-on-the-same-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Mathematics and Physics on the Same Day
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-trust-architecture-security-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Trust Architecture: Security &amp; Integrity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Trust Architecture: Security &amp; Integrity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-data-approach-security-privacy-sovereignty-by-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Data Approach: Security, Privacy &amp; Sovereignty by Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Data Approach: Security, Privacy &amp; Sovereignty by Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pseudonym-instead-of-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pseudonym Instead of Identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-shielding-toward-the-ai-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session Shielding Toward the AI Frontend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dialog-content-is-decoupled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dialog Content Is Decoupled
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-inside-the-institution-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping Inside the Institution (Local)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-frontend-provider-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Frontend / Provider Boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-chain-of-custody-integrity-traceability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Chain of Custody: Integrity &amp; Traceability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Chain of Custody: Integrity &amp; Traceability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signed-exports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed Exports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-provenance-on-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Provenance on Import
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-ecosystem-content-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The Ecosystem: Content &amp; Standards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. The Ecosystem: Content &amp; Standards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-status-quo-available-content-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Status Quo: Available Content (Examples)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Status Quo: Available Content (Examples)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schools-examples-from-available-curricula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schools (examples from available curricula)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#higher-education-bologna-relevant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Higher Education (Bologna-relevant)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#languages-cefr-a1-c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Languages (CEFR A1-C2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-skillpilot-in-the-bolognaehea-context-short-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 SkillPilot in the Bologna/EHEA Context (Short Overview)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-governance-community-open-source-invitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Governance &amp; Community: Open Source &amp; Invitation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="skillpilot-whitepaper-en">SkillPilot Whitepaper (EN)</h1>
+<p><strong>Version:</strong> 1.0.21
+<strong>Date:</strong> September 2026
+<strong>Project:</strong> SkillPilot</p>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>SkillPilot connects to <strong>existing curricula</strong> and uses them as the <strong>normative source of truth</strong> (e.g., state curricula, module handbooks, standards like CEFR). SkillPilot does not replace these standards; it translates them into a versioned, machine-readable <strong>skill graph</strong> as an operational model. Learners, teachers, and an AI learning coach use this graph as a machine-readable map. This allows the learner to move safely from their current <strong>skill state</strong> to their <strong>skill goals</strong>. Runtime authority for learning state, Personal Curriculum, current focus, active goal, rules, and next steps sits in the backend state; the AI learning coach leads the dialogue by relying on this <strong>exact backend logic</strong>.</p>
+<p>To achieve this, the system records learning achievements on atomic skill goals and derives the <strong>mastery level</strong> for higher-level topics. On this basis, the path via the <strong>next attainable skill goals</strong> leads systematically to individual educational objectives.</p>
+<p><strong>Learning plans add a time frame to this navigation:</strong> Which parts of the Personal Curriculum should be achieved by when? In the locally implemented plan-guided learning extension, daily requirements from all planned subjects are combined. The coach reports progress in chat and guides the learner to the next learnable goal, without requiring learners to manage plan sections or select learning goals themselves (see section 3.4).</p>
+<p>Quality assurance is anchored in a practice-driven <strong>Champion program</strong> and the <strong>open-source workflow</strong> (Issues/PRs).</p>
+<p><img alt="SkillPilot Cartoon" src="../../comic1/SkillPilot_Comic.en.jpg" /></p>
+<h3 id="skillgraph-processing">SkillGraph Processing</h3>
+<p>SkillGraph Processing structures curricula and competence models into dependency-aware skill landscapes that can be validated, explored, and used by humans or AI agents. In the web interface, this becomes a Personal Curriculum with a clearly identified education context.</p>
+<p><img alt="Current Personal Curriculum configuration in SkillPilot" src="../current-curriculum.png" /></p>
+<blockquote>
+<p>The current screenshots show a German learning context. Selecting an English context uses the same workflow and makes the learning coach communicate in English.</p>
+</blockquote>
+<h3 id="skillpilot-learning-coach">SkillPilot Learning Coach</h3>
+<p>SkillPilot Learning Coach guides learners through those landscapes with frontier-based next steps, mastery tracking, and contextual learning-coach support.</p>
+<p><strong>SkillPilot Coach v1</strong> is currently undergoing OpenAI publication review and is not yet publicly listed. The supported coaching surface is <strong>ChatGPT in a browser</strong>. The responsive first-party SkillPilot web app can also be used in a mobile browser, for example for speech input and uploading photos of written work. Native ChatGPT apps are not currently part of the supported SkillPilot workflow.</p>
+<p><img alt="Current SkillPilot learning coach with a learning-goal visualization in ChatGPT in a browser" src="../current-coach.png" /></p>
+<p><strong>How to read this whitepaper:</strong> Unless stated otherwise, the text describes the current state. Phrases such as <em>planned</em>, <em>in the roadmap</em>, or <em>in later stages</em> mark forward-looking items.</p>
+<hr />
+<h2 id="1-the-challenge-individual-skill-navigation-does-not-scale">1. The Challenge: Individual Skill Navigation Does Not Scale</h2>
+<p>Education follows curricula that are defined by the state or through <strong>accreditation</strong>. In practice, there is a gap between curriculum and learning reality:</p>
+<ul>
+<li>Learners do not start at the same point (prior knowledge, pace, gaps).</li>
+<li>Teachers still have to guide <strong>many people in parallel</strong>, often in large cohorts.</li>
+<li>Learning goals usually exist <strong>as text</strong>, but not as a <strong>navigable structure</strong> with dependencies and sensible next steps.</li>
+</ul>
+<p>This leads to overload for some, boredom for others, and high effort to track learning states and next steps.</p>
+<p>SkillPilot closes this <strong>tool gap</strong>: outcome-oriented navigation in the curriculum without turning teachers into "bookkeepers." SkillPilot builds on the <strong>existing curriculum</strong> - it does not create new standards, it makes existing standards operational and navigable.</p>
+<hr />
+<h2 id="2-the-shift-why-hybrid-ai-systems-are-the-right-approach">2. The Shift: Why Hybrid AI Systems Are the Right Approach</h2>
+<p>Since late 2022, the world of language-based AI has developed rapidly. A sense of this pace is provided by a look at <em>Humanity's Last Exam</em>, the toughest AI benchmark to date. Introduced in early 2025 to test AI systems with thousands of extreme expert questions for true logical reasoning rather than mere knowledge, leading models were still failing almost completely at the beginning of the year (under 10% success), but were able to quintuple this performance to about 50% by year-end.</p>
+<p>As of <strong>December 2025</strong>, leading AI systems are thus professionally and linguistically up to many topics taught at schools and universities. But they have limits: They are not trained pedagogues and do not work like algorithmically exact bookkeeping programs that calculate and manage without error.</p>
+<p>To ensure the algorithmic <strong>precision</strong> required for <strong>SkillPilot</strong> in navigating learning goals, another trend benefits us: coupling language models to classical software. Standards are being established that allow systems like ChatGPT to specifically call interfaces (APIs) of classical programs.</p>
+<p>The approach for <strong>SkillPilot</strong> follows almost automatically: it emerges as a hybrid application. Classical, exact software handles the precise "bookkeeping" and navigation of skill goals in the background. Leading language models are instructed (as the SkillPilot Learning Coach) to speak with learners as empathetic learning coaches, but use the software's exact logic in the background for learning progress.</p>
+<hr />
+<h2 id="3-the-product-how-skillpilot-works">3. The Product: How SkillPilot Works</h2>
+<h3 id="31-the-technology-the-skill-graph-operational-model-frontier">3.1 The Technology: The Skill Graph (Operational Model &amp; Frontier)</h3>
+<p>SkillPilot replaces linear lists with a connected graph.</p>
+<p>The separation of layers matters: the official curriculum remains the <strong>normative source</strong>. The versioned <strong>skill graph</strong> is the derived <strong>operational model</strong>. At runtime, the <strong>backend state</strong> is the authoritative source for current learning state, Personal Curriculum, current focus, active goal, and allowed transitions.</p>
+<p><img alt="Current Cockpit view with focus, active learning goal, and progress" src="../current-cockpit.png" /></p>
+<h4 id="plugging-into-existing-curricula-raw-input-traceability">Plugging into Existing Curricula (Raw Input &amp; Traceability)</h4>
+<p>SkillPilot does not "invent" curricula: curricula, module handbooks, or standards serve as <strong>raw input</strong> and are translated into a skill graph.</p>
+<p>The integrity of the graph is ensured by a formal mathematical specification (Acyclicity, Effective Requires, Transitive Minimality), which prevents circular references and logically validates dependencies.</p>
+<p>This is about:</p>
+<ul>
+<li><strong>Operationalization:</strong> learning outcomes are broken down into atomic skill goals (without changing the standard).</li>
+<li><strong>Traceability:</strong> each skill remains traceable to source/section/version.</li>
+<li><strong>Navigability:</strong> prerequisites and hierarchies are modeled explicitly so paths are plannable (didactic prereqs possibly as <strong>overlay</strong>). The <strong>overall graph</strong> does not enforce a single teaching path; it allows multiple didactically meaningful routes. Inside a <strong>selected scope</strong> or an <strong>explicitly modeled target route</strong>, SkillPilot then deliberately narrows the next steps to the relevant subset. In the default mode, prerequisites are checked within the selected focus. Optional <strong>Strict Mode</strong> also enforces prerequisites globally and can therefore expose missing foundations outside that focus.</li>
+<li><strong>Governance:</strong> changes currently run via GitHub (Issues/PRs), with versioning through GitHub history (see section 6).</li>
+</ul>
+<h4 id="map-nodes-edges">Map: Nodes &amp; Edges</h4>
+<ul>
+<li><strong>Nodes:</strong> atomic skills ("can explain/apply X") and clusters (topics/modules).</li>
+<li><strong>Edges:</strong></li>
+<li><strong>Prerequisites:</strong> "A before B"</li>
+<li><strong>Contains/Part-of:</strong> "X includes Y and Z"</li>
+</ul>
+<h4 id="three-learning-modes-node-types-in-practice">Three Learning Modes / Node Types in Practice</h4>
+<p>SkillPilot distinguishes three <strong>node types</strong> that reflect different learning modes:</p>
+<ul>
+<li><strong>Understanding:</strong> Ordinary content learning goals are explained and practiced with the AI learning coach.</li>
+<li><strong>Memorization:</strong> Individual facts are memorized in a targeted way (modern flashcard principle).</li>
+<li><strong>Independent problem solving:</strong> Final-exam tasks are solved independently (e.g., on paper, photographed, and uploaded), immediately graded (points, pass/fail, errors), and then explained.</li>
+</ul>
+<p>These three types describe <strong>learning modes</strong>. The didactic route described in section 3.3 is a separate layer: it arranges steps such as motivation, understanding, memorization, and application along a path. <strong>Motivation</strong> is therefore a didactic phase; when modeled explicitly in a curriculum, it appears as a route node, not as a fourth base type.</p>
+<p>In <strong>mathematics</strong> within the Gymnasium landscapes, <strong>all three node types</strong> are used.</p>
+<p><strong>Formal specification:</strong> The mathematical definition of the graph (e.g., acyclicity, Effective Requires) is publicly documented:
+<a href="https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/">Graph definition</a></p>
+<h4 id="frontier-next-reachable-steps">Frontier: Next Reachable Steps</h4>
+<p>SkillPilot computes the <strong>frontier</strong> relative to the <strong>active scope or filter</strong>: skills whose prerequisites are met inside that active graph slice but are not yet mastered.
+This avoids jumps and keeps learning in the zone of sensible next steps. We call this boundary of current knowledge the <strong>Frontier</strong> (didactically: Zone of Proximal Development according to Vygotsky). It marks exactly the skills that are learnable next <strong>within the current filter</strong>.
+The <strong>frontier is not an AI recommendation</strong>, but the mathematically computed set of logically unlocked learning goals in the active graph slice. Optional <strong>Strict Mode</strong> also considers prerequisites globally and can expose missing foundations outside the current focus.</p>
+<p><img alt="The AI learning coach" src="../LearningCoach.en.png" /></p>
+<h3 id="32-the-interaction-layer-the-ai-learning-coach">3.2 The Interaction Layer: The AI learning coach</h3>
+<p>The skill graph provides the route, but learners do not interact with datasets; they need a guide. This role is taken by the <strong>SkillPilot Learning Coach</strong> as the AI learning coach. It serves as an intuitive interface that translates the abstract instructions of the graph into natural, motivating language.</p>
+<p>The learning coach is not a "black box" but acts strictly based on backend logic: it receives the active scope, frontier, next goal, and allowed transitions from the backend, and turns them into a didactically meaningful dialogue. This turns "exact bookkeeping" into a personal learning experience.</p>
+<h4 id="focus-instead-of-distraction">Focus Instead of Distraction</h4>
+<p>The <strong>frontier</strong> calculated in chapter 3.1 for the <strong>active scope</strong> serves as a <strong>focus filter</strong> for the learning coach: from the full set, only content that fits the goal and current state is shown - the <strong>next feasible step</strong> instead of "everything at once".</p>
+<h4 id="mastery-progress-as-an-evidence-model">Mastery: Progress as an Evidence Model</h4>
+<p>The current Cockpit view separates ordinary flashcard practice from evidence-bearing <strong>Verified Recall</strong>.</p>
+<p><img alt="Current progress and assessment state for an active memorization goal" src="../current-mastery.png" /></p>
+<p><strong>Mastery</strong> is the backend-owned learning state on atomic goals, not a chat log. For ordinary atomic goals, it can be adjusted in the Cockpit or stored by the learning coach only after sufficient evidence. Orientation nodes use a completion marker only and do not certify subject mastery. For memorization nodes, mastery is derived from server-side card state and strict <strong>Verified Recall</strong>; ordinary flashcard practice changes only the repetition schedule. Cluster progress is aggregated from contained goals using their weights.</p>
+<p>The central state remains separate from complete dialogues and additional artifacts. Further evidence can be added institutionally through artifacts or references.</p>
+<blockquote>
+<p>SkillPilot makes progress visible - the institution decides which evidence has which consequences.</p>
+</blockquote>
+<h4 id="learning-velocity">Learning Velocity</h4>
+<p>Learning velocity shows how many <strong>atomic goals</strong> are newly mastered per week - a simple indicator of rhythm and continuity.</p>
+<h3 id="33-the-hybrid-learning-loop-understanding-memorizing-practice">3.3 The Hybrid Learning Loop: Understanding + Memorizing + Practice</h3>
+<p>Not every learning goal is learned the same way: concepts need understanding and application, facts need repetition, and many skills require <strong>active doing</strong> (e.g., programming, calculating, writing). In assessments, this kind of independent problem solving is exactly what counts.</p>
+<p><strong>The Path to Exam Readiness ("Get me ready for finals")</strong>
+In practice, students rarely learn isolated topics. They usually pursue an overarching end goal. The typical approach is to define a fixed context - for example, "Advanced Physics Course, Hesse, Final Exam Preparation."
+As soon as this context is defined in SkillPilot, the system bundles all relevant learning routes from the full landscape that lead to the required exam competencies. Learners are then guided by the learning coach systematically along these routes.
+This target route is therefore a selection <strong>inside the larger graph</strong>, not the graph's only possible path.</p>
+<p><strong>The System of Learning Paths (The didactic route)</strong>
+Within this curriculum, the path is not left to chance. Depending on the curriculum and goal type, a topic route may connect several didactic roles and lead toward independent application or an appropriate practice or assessment node.</p>
+<p>A typical subject-learning route may connect the following roles:
+1. <strong>Motivation ("Why are we learning this?")</strong>: Where an orientation node is modeled, it frames why the following topic may be relevant.
+2. <strong>Understanding (Guided Learning):</strong> In Socratic dialogue with the AI learning coach, a new concept is introduced with guidance and understanding is built step by step.
+3. <strong>Memorization (Drill):</strong> Where compact facts or formulas must be recalled reliably, they are reinforced through the integrated flashcard system.
+4. <strong>Application:</strong> Appropriate practice, autonomy, or assessment nodes lead to independent problem solving; the learning coach can then evaluate and provide feedback.</p>
+<p>These roles are not a rigid four-step sequence. They do not replace the three learning modes introduced above; they may connect those modes, together with optional orientation nodes, into an appropriate route.</p>
+<p>One possible short form of such a route, where memorization is appropriate:
+<strong>Understand why this is relevant for me</strong> -&gt; <strong>build understanding through guided familiarization</strong> -&gt; <strong>memorize in parallel</strong> -&gt; <strong>independently develop solutions</strong>.</p>
+<p>Here is a schematic example of a motivation/understanding/application route as it can be modeled in SkillPilot and exported as PDF.</p>
+<p><img src="requires-flow.en.svg" alt="Requires Flow (EN)" width="600" /></p>
+<p>While learning coach interaction is valuable for understanding and for evaluating/explaining exam solutions, pure memorization (vocabulary, formulas, facts) is more efficient with <strong>spaced repetition</strong>.</p>
+<p><img alt="Current flashcard practice in chat" src="../current-memory.png" /></p>
+<p>SkillPilot integrates a <strong>flashcard drill engine</strong> (SRS):</p>
+<ul>
+<li><strong>Competence loop:</strong> the skill graph defines <em>what</em> comes next.</li>
+<li><strong>Memorization loop:</strong> the drill engine optimizes <em>how</em> to repeat (intervals, prioritization; e.g., SuperMemo-2).</li>
+</ul>
+<p>SkillPilot already uses approved practice and assessment nodes for suitable scopes. Additional <strong>practice and assessment formats</strong> for "doing" skills (e.g., problem sets, programming tasks, writing/speaking exercises) remain areas for further development.</p>
+<h4 id="technical-implications-target-route-in-backend-ui-and-learning-coach">Technical Implications: Target Route in Backend, UI, and learning coach</h4>
+<ul>
+<li><strong>Backend (didactic route logic):</strong> The target route is not a free AI computation. It is a <strong>modeled sub-route inside the larger graph</strong> under DAG constraints. This means human curriculum authors (champions) retain pedagogical control. The <strong>Personal Curriculum (Level 2)</strong> is configured exclusively in the first-party SkillPilot web app. SkillPilot Coach v1 neither asks for nor changes that configuration. In chat, the learning coach can change only the current focus and active goal (<strong>Level 3</strong>), using backend-approved options and with the learner's consent.</li>
+<li><strong>UI/UX (route visualization):</strong> Learners configure their Personal Curriculum in the first-party web app. In the Cockpit, they can see and change the current focus and active goal; the interface shows progress and next reachable goals within that context.</li>
+<li><strong>AI learning coach (didactic context):</strong> The learning coach operates strictly on the confirmed context, current focus, and transitions allowed by the backend, and explains transparently why the current step is appropriate.</li>
+</ul>
+<h3 id="34-from-curriculum-to-daily-learning-learning-plans-and-coach-guidance">3.4 From Curriculum to Daily Learning: Learning Plans and Coach Guidance</h3>
+<p>A navigable curriculum does not yet answer the everyday question: <strong>“What do I need to learn today, and how far have I got?”</strong> SkillPilot addresses this by connecting the Personal Curriculum to a timed learning plan and guidance from the coach.</p>
+<p><strong>Implementation status of this extension (4 September 2026):</strong> Cross-subject planning and learner preview are implemented locally; plan-guided chat is prepared in the Claude Coach 1.1.1 candidate. The local OpenAI 1.1 candidate remains disabled. This section does not extend the submitted OpenAI Coach 1.0.0 review contract or claim production availability or completed client acceptance tests.</p>
+<p><img alt="From the Personal Curriculum through joint subject planning to daily guidance in chat; confirmed learning progress feeds into the next calculation. Schematic illustration." src="../learning-plan.en.svg" /></p>
+<h4 id="the-teacher-plans-the-framework">The Teacher Plans the Framework</h4>
+<p>The <strong>Personal Curriculum</strong> defines which competencies belong to the selected education context. The <strong>learning plan</strong> specifies which topics or groups of learning goals should be addressed within which periods. It complements the skill graph without replacing its goals or prerequisites. To work through an entire curriculum, the plan must cover its intended scope; completing a partial plan does not automatically mean completing the curriculum.</p>
+<p>Under <strong>“Course planning”</strong>, teachers prepare learning sections, date ranges, buffer time, and milestones. Subject plans, for example for mathematics and physics, apply <strong>together</strong>: their daily requirements add up across all subjects. Switching the current subject does not deactivate another subject plan or impose an order such as “finish all of mathematics before physics.” Overlapping sections within a subject plan do not count the same goal twice.</p>
+<p>The <strong>learner preview</strong> shows today's requirements and the next seven calendar days before changes are applied. It uses the same calculation as the chat. The baseline schedules weekdays from Monday to Friday; it does not automatically optimize around timetables or holidays. Goal counts are not learning minutes or a guarantee of meeting a deadline. The teacher reviews scope and workload and adjusts the plan when necessary.</p>
+<p>Drafts initially remain on the planning device. Only explicit joint confirmation makes them effective for the learner; later draft edits do not silently alter ongoing learning. <strong>Teaching coverage is not learner mastery:</strong> recording “covered in class” does not establish an individual's competence.</p>
+<h4 id="the-learner-works-in-chat">The Learner Works in Chat</h4>
+<p>With plan mode enabled and a valid learning session, SkillPilot handles the organization in the background:</p>
+<ol>
+<li><strong>Orient:</strong> For each subject, the coach reports newly due goals for today, how many are already mastered, how many remain open, and any backlog.</li>
+<li><strong>Resume automatically:</strong> A valid ongoing goal is continued; otherwise, a due goal whose prerequisites permit learning is selected, if one is available. Joint activation can already select this first goal. No extra “Continue learning” click or manual goal search is needed.</li>
+<li><strong>Learn and check progress:</strong> The coach explains, sets tasks, and supports the work. Only progress recorded under the applicable evidence rules changes the learning state and daily figures. The plan-guided flow then leads to the next permitted step.</li>
+<li><strong>Switch subjects or finish:</strong> A request such as “Physics now” switches within the available subject options; other requirements remain in place. Once all effective subject plans can be evaluated reliably and all goals due through today including backlog are completed, the coach reports the day's completion. Future goals do not automatically become extra duties for today.</li>
+</ol>
+<p>A status-only question does not start a new task; a requested pause remains a pause. If prerequisites or invalid planning block open goals, the coach reports the blockage instead of inventing completion or a replacement duty. Plan corrections remain on the planning side. An expired learning session still requires a fresh start through SkillPilot; chat guidance does not extend the session.</p>
+<h4 id="example-mathematics-and-physics-on-the-same-day">Example: Mathematics and Physics on the Same Day</h4>
+<p>The figures below are an <strong>illustrative calculation</strong>, not live data:</p>
+<ul>
+<li><strong>Mathematics:</strong> 4 newly due goals today, of which 2 are mastered and 2 remain open; plus 1 open goal from earlier days.</li>
+<li><strong>Physics:</strong> 3 newly due goals today, of which 1 is mastered and 2 remain open; plus 2 open goals from earlier days.</li>
+<li><strong>Total:</strong> 7 newly due goals today, of which 3 are mastered and 4 remain open; together with 3 backlog goals, <strong>7 goals remain to be addressed</strong>.</li>
+</ul>
+<p>The coach can summarize this as: <strong>“Of today's due goals, you have mastered 2 of 4 in mathematics and 1 of 3 in physics. Including backlog, 7 goals remain open in total. We will continue your current mathematics goal; you can also switch to physics.”</strong> This example assumes a valid, unfinished mathematics goal and a physics goal that can currently be started.</p>
+<p>“Already mastered” describes the current learning state among today's due goals, <strong>not necessarily achievements newly earned today</strong>. The seven remaining goals are four open newly due goals plus three backlog goals. Backlog stays visible but is not repeatedly added to the weekly workload as newly due goals every day.</p>
+<p>This turns the curriculum into a guided learning path: <strong>The teacher owns scope and timing, SkillPilot calculates the next permitted steps, the coach leads the dialogue, and the learner concentrates on learning.</strong></p>
+<hr />
+<h2 id="4-trust-architecture-security-integrity">4. Trust Architecture: Security &amp; Integrity</h2>
+<h3 id="41-data-approach-security-privacy-sovereignty-by-design">4.1 Data Approach: Security, Privacy &amp; Sovereignty by Design</h3>
+<p>A central pillar of SkillPilot is <strong>data separation</strong>. The following architecture overview shows how permanent pseudonymous identity, the short-lived learning session, app authorization, and authoritative learning state remain separated.</p>
+<p><img alt="Schematic representation of data separation" src="../architecture.en.png" /></p>
+<h4 id="pseudonym-instead-of-identity">Pseudonym Instead of Identity</h4>
+<p>Learning states are managed under a permanent <strong>pseudonymous SkillPilot ID</strong>. Individual use does not require registration with a name or email address. The ID remains in SkillPilot, should be backed up as a protected ID file, and is not sent to ChatGPT or to the learning coach. SkillPilot stores the data needed for learning state, navigation, and traceability.</p>
+<h4 id="session-shielding-toward-the-ai-frontend">Session Shielding Toward the AI Frontend</h4>
+<p>Each deliberate start of <strong>SkillPilot Coach v1</strong> from the first-party web app creates a new random <code>learningSessionId</code> with an absolute lifetime of exactly 24 hours and opens a new prepared chat. SkillPilot inserts the session automatically into the prepared start message; the learner does not need to copy or manage any technical value. Its lifetime is not extended by use or by an OAuth refresh. The session carries the German or English communication locale selected in the confirmed context. One language-neutral V1 app serves both languages. OAuth authorizes the app but does not select the learner or learning context.</p>
+<p><img alt="Current handoff from SkillPilot to a prepared learning session in ChatGPT in a browser" src="../current-handoff.png" /></p>
+<p>The backend connection is secured independently through several layers: SkillPilot accepts functional access only through the admitted and authenticated coach app and only together with a valid learning session. App authorization alone does not open a learning state, and a learning session alone does not grant backend access. This keeps integration permission and the time-bounded learning context deliberately separate.</p>
+<h4 id="dialog-content-is-decoupled">Dialog Content Is Decoupled</h4>
+<p>The SkillPilot backend does not store the complete learning-coach chat history. It processes only the purpose-bound information needed for learning state, navigation, and authorized actions. The complete chat history in ChatGPT is governed by ChatGPT/OpenAI terms. This keeps SkillPilot's central data store limited.</p>
+<p><strong>Recommendation for educational institutions:</strong>
+Clear guidelines on which data should not be shared in learning-coach chats (sensitive personal data) and how learners are supported safely.</p>
+<h4 id="mapping-inside-the-institution-local">Mapping Inside the Institution (Local)</h4>
+<p>The mapping "who is which pseudonym?" stays with the institution/teacher and is stored <strong>locally</strong> (e.g., in protected storage) - not centrally.</p>
+<h4 id="ai-frontend-provider-boundary">AI Frontend / Provider Boundary</h4>
+<p>The learning-coach dialog for <strong>SkillPilot Coach v1</strong> takes place in <strong>ChatGPT in a browser</strong> and is governed by the operational and privacy framework of ChatGPT/OpenAI. The first-party SkillPilot web app is responsive and can also be used in a mobile browser; native ChatGPT apps are not currently part of the supported workflow. The underlying operating system is not part of the support promise. Further provider integrations are kept separate and released only after a complete end-to-end acceptance test and a review of their privacy boundaries.</p>
+<p>For contexts with higher sovereignty requirements, further AI backends up to local models are planned. They must reliably meet the required properties for tool use, stability, privacy boundaries, structure, and didactics.</p>
+<h3 id="42-chain-of-custody-integrity-traceability">4.2 Chain of Custody: Integrity &amp; Traceability</h3>
+<p>To keep learning states <strong>portable</strong> and <strong>verifiable</strong>, SkillPilot uses a <strong>chain-of-custody</strong> pattern.</p>
+<ul>
+<li>SkillPilot accepts learning-progress changes only through admitted and authenticated integrations.</li>
+<li>Write access applies only through the admitted coach app, within an active short-lived learning session, and limited to the specific operation.</li>
+<li>The permanent pseudonymous identifier is not disclosed to the AI frontend.</li>
+</ul>
+<h4 id="signed-exports">Signed Exports</h4>
+<p>Learners can export profile + progress.
+The server <strong>cryptographically signs</strong> these exports so offline manipulation is detectable. Today, the export primarily signs state data (mastery/status), scope information, timestamps, and provenance/integrity metadata. It is therefore <strong>not a substitute</strong> for a full archive of all underlying dialogs or artifacts.</p>
+<h4 id="data-provenance-on-import">Data Provenance on Import</h4>
+<p>On import (e.g., transfer, backup), the full <strong>provenance chain</strong> can be carried along. This makes it visible whether a state was continued or taken from elsewhere.</p>
+<p><strong>Important:</strong> Chain of custody protects integrity and provenance - it is a <strong>transparency tool</strong>, not a complete fraud-prevention system.</p>
+<hr />
+<h2 id="5-the-ecosystem-content-standards">5. The Ecosystem: Content &amp; Standards</h2>
+<h3 id="51-status-quo-available-content-examples">5.1 Status Quo: Available Content (Examples)</h3>
+<p>SkillPilot is not just a concept: it already contains curricula and standards as starting points. Their quality is reported through the machine-readable <strong>M0-M7</strong> maturity model. It distinguishes, among other things, graph integrity, jurisdiction coverage, route coverage, assessment-ready tasks, semantic atomicity, memory-card traceability, and approved visualizations. A maturity level always applies only to the precisely named scope.</p>
+<p>The generated quality status and the <a href="https://skillpilot.com/curricula">Curriculum Directory</a> are the authoritative current sources. This keeps the whitepaper accurate as more curricula are added or a scope reaches a new quality level.</p>
+<p><strong>Curriculum Champions (practice anchor):</strong>
+<img alt="Curriculum Champion comic" src="../../comic3/champion.en.png" />
+- Champions take responsibility for a curriculum or a <strong>clearly scoped topic area</strong>.
+- They <strong>work through learning goals themselves</strong> and report errors or unclear content directly on the relevant goal wherever a feedback entry is available.
+- Larger, cross-cutting or technical topics, and feedback on other curricula, are collected on GitHub.
+- The Champion role is optional. Public goal feedback does not require Champion registration or a GitHub account.
+- Champion profiles show learning progress and available quality status, not rankings by feedback volume or Issues/PRs.</p>
+<p>The QA process does not only cover curricula: the SkillPilot AI learning coach is continuously qualified in real-world use so that the experience remains reliable and didactically sound across curricula.</p>
+<h4 id="schools-examples-from-available-curricula">Schools (examples from available curricula)</h4>
+<p><strong>Bavaria:</strong>
+- Grundschule (Primary School, Grades 1–4)
+- Mittelschule (Middle School, Grades 5–10)
+- Realschule (Secondary School, Grades 5–10)
+- Gymnasium (Academic High School, Grades 5–13)
+- Fachoberschule &amp; Berufsoberschule (Vocational High School)
+- Wirtschaftsschule (Business School)</p>
+<p><strong>Hesse:</strong>
+- Gymnasiale Oberstufe (G9, Secondary II)
+- Gymnasiale Mittelstufe (G9, Secondary I)</p>
+<h4 id="higher-education-bologna-relevant">Higher Education (Bologna-relevant)</h4>
+<ul>
+<li>Uni Heidelberg: Bachelor Biosciences, Master Molecular BioSciences, Physikum (Medicine)</li>
+<li>Uni Mannheim: Bachelor Business Administration (BWL), Bachelor Law, Master Law</li>
+<li>TU Darmstadt: Bachelor Computer Science</li>
+<li>TU Munich: Bachelor Computer Science (Informatics), Bachelor Mathematics, Bachelor Physics, Master Quantum Science and Technology, Master Theoretical and Mathematical Physics, Executive Master of Business Administration (MBA)</li>
+</ul>
+<h4 id="languages-cefr-a1-c2">Languages (CEFR A1-C2)</h4>
+<ul>
+<li>English (A1-C2)</li>
+<li>French (A1-C2)</li>
+</ul>
+<p>The listed curricula are examples of <strong>available content</strong> and do not automatically share the same maturity level. The authoritative value is always the <strong>M0-M7</strong> maturity of the exact displayed scope in the <a href="https://skillpilot.com/curricula">Curriculum Directory</a>. Curriculum Champions complement this machine-readable quality assurance with practice feedback for clearly named scopes.</p>
+<blockquote>
+<p>[!IMPORTANT]
+We invite you to actively shape this process: <strong><a href="https://skillpilot.com/curricula">Become a Curriculum Champion</a></strong> and help ensure the quality and practical relevance of your subject area.</p>
+</blockquote>
+<p>The content is extensible and versioned; source references are documented, and changes currently flow through GitHub (Issues/PRs).</p>
+<h3 id="52-skillpilot-in-the-bolognaehea-context-short-overview">5.2 SkillPilot in the Bologna/EHEA Context (Short Overview)</h3>
+<p>Bologna/EHEA sets the framework for <strong>outcomes, transparency, recognition, and quality</strong> in higher education. SkillPilot can support these goals, but it does not replace institutional decisions.</p>
+<ul>
+<li><strong>Learning outcomes / competencies:</strong> Contribution: Make outcomes navigable as a skill graph; progress visible. Limit/prerequisite: Clean modeling, source references, versioning.</li>
+<li><strong>Credits/workload (ECTS logic):</strong> Contribution: Support paths/prereqs and workload transparency. Limit/prerequisite: <strong>No credit awarding</strong>; rules remain institutional.</li>
+<li><strong>Recognition/mobility:</strong> Contribution: Evidence + signed exports as preparation/support. As described in Chapter 4.2, signed exports primarily secure state data and provenance; stronger recognition processes may require additional institutional evidence. Limit/prerequisite: Recognition remains a formal process.</li>
+<li><strong>Quality assurance:</strong> Contribution: Signals about hurdles/paths for curriculum development. Limit/prerequisite: QA processes + transparent AI rules required.</li>
+</ul>
+<hr />
+<h2 id="6-governance-community-open-source-invitation">6. Governance &amp; Community: Open Source &amp; Invitation</h2>
+<p>SkillPilot is released as <strong>open source</strong> under the <strong>Apache-2.0 license</strong> - an invitation to include established stakeholders rather than displace them:</p>
+<ul>
+<li>Institutions retain <strong>sovereignty</strong> over curricula and content.</li>
+<li>Reviewed visualizations, tasks, and memory decks can already be linked directly to learning goals; additional content formats remain extensible.</li>
+<li>Open interfaces enable contributions and integration.</li>
+</ul>
+<p><strong>Governance &amp; quality assurance (currently via GitHub + Champion program):</strong>
+- Feedback flows through <strong>GitHub Issues</strong>, often initiated by champions.
+- Changes to the curriculum/graph run through <strong>pull requests</strong> (review on GitHub).
+- <strong>Versioning</strong> follows GitHub history; <strong>curriculum sources</strong> are referenced.
+- More advanced governance mechanisms (e.g., expert review boards, QA processes, overlays) are possible in the future.</p>
+<p><strong>Initiator:</strong>
+The legal entity behind SkillPilot is <strong>enpasos GmbH</strong>. We invite partners to develop SkillPilot further together - in content, didactics, and technology.</p>
+<p>Start your pilot immediately and without registration <strong>(ID-based)</strong>: create or load your pseudonymous SkillPilot ID, back it up as a protected ID file, and configure your Personal Curriculum. A guide for the 5-minute start can be found in the <a href="https://skillpilot.com/quickstart/en">Quickstart</a>.
+Note: Your <strong>ID is the only key</strong> to your data - keep the protected ID file safe.</p>
+<p><strong>More transparency:</strong>
+<a href="https://github.com/enpasos/skillpilot">GitHub</a>
+<a href="https://enpasos.github.io/skillpilot/">Documentation</a>
+<a href="https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/">Graph definition</a></p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,5003 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/deploy/openai-plugin-v1-submission/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>SkillPilot Coach v1: OpenAI-Submission-Dossier - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#skillpilot-coach-v1-openai-submission-dossier" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SkillPilot Coach v1: OpenAI-Submission-Dossier
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-portal-und-submission-typ" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Portal und Submission-Typ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-listing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Listing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mcp-oauth-und-ui-ressourcen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. MCP, OAuth und UI-Ressourcen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-starter-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Starter Prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-positive-portal-reviewfalle-exakt-funf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Positive Portal-Reviewfälle – exakt fünf
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Positive Portal-Reviewfälle – exakt fünf">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#p1-sessionloser-start-und-first-party-ubergabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P1 – Sessionloser Start und First-Party-Übergabe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2-kontextgebundene-orientierung-und-dialogisches-lernen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P2 – Kontextgebundene Orientierung und dialogisches Lernen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p3-karteikartenlernen-und-verified-recall-trennen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P3 – Karteikartenlernen und Verified Recall trennen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p4-prufungsaufgabe-ohne-hilfen-auswerten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P4 – Prüfungsaufgabe ohne Hilfen auswerten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p5-bewusst-engen-fokus-entlang-des-sichtbaren-pfads-weiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P5 – Bewusst engen Fokus entlang des sichtbaren Pfads weiten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-negative-portal-reviewfalle-exakt-drei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Negative Portal-Reviewfälle – exakt drei
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Negative Portal-Reviewfälle – exakt drei">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#n1-nicht-existente-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        N1 – Nicht existente Session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n2-level-2-anderung-im-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        N2 – Level-2-Änderung im Chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n3-prufungslosung-vor-vollstandiger-abgabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        N3 – Prüfungslösung vor vollständiger Abgabe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-nicht-gezahlte-betriebs-und-aktivierungsabnahme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Nicht gezählte Betriebs- und Aktivierungsabnahme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-portal-fixture-matrix-vor-dem-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Portal-Fixture-Matrix vor dem Review
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-tool-annotationen-und-begrundung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Tool-Annotationen und Begründung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-demo-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Demo-Recording
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-release-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Release Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-portalentscheidungen-vor-submit-for-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Portalentscheidungen vor Submit for Review
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="skillpilot-coach-v1-openai-submission-dossier">SkillPilot Coach v1: OpenAI-Submission-Dossier</h1>
+<p><strong>Stand:</strong> 15. August 2026</p>
+<p><strong>Portalstatus:</strong> <code>Review</code>; noch nicht genehmigt und noch nicht veröffentlicht</p>
+<p><strong>Änderungsstatus:</strong> aktive
+<a href="../openai-plugin-v1-review-freeze/">Review-Sperre</a></p>
+<p>Dieses Dossier ist die eingecheckte, nicht geheime Referenz der am
+15. August 2026 eingereichten Angaben. Die Domain ist verifiziert und die
+Version befindet sich im OpenAI-Review. Das Dossier bestätigt weder Approval
+noch Veröffentlichung. Geheimnisse, Review-Zugang und die eigentlichen
+Attestierungen bleiben ausschließlich im angemeldeten OpenAI-Plugin-Portal.
+Die eingereichten Werte dürfen während der Review-Sperre nicht verändert oder
+neu gespeichert werden.</p>
+<p>Die V1-Identitäts- und Konfigurationsgrenze ist Web-first: permanente
+SkillPilot-ID, CREATE/EXISTING, Providerhinweis und die vollständige Level-2-
+Konfiguration bleiben im First-Party-WebGUI. Der Plugin-Review verarbeitet
+keine permanente SkillPilot-ID.</p>
+<h2 id="1-portal-und-submission-typ">1. Portal und Submission-Typ</h2>
+<ol>
+<li><code>https://platform.openai.com/plugins</code> öffnen.</li>
+<li><strong>Create plugin</strong> wählen.</li>
+<li><strong>With MCP</strong> wählen.</li>
+<li>Als Developer Identity die verifizierte <strong>enpasos GmbH</strong> auswählen.</li>
+</ol>
+<p>Die hostgenerierte <code>.app.json</code> im Quellpaket ist lokales Test-Wiring und wird
+nicht als bestehende Integration eingereicht.</p>
+<h2 id="2-listing">2. Listing</h2>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugin name</td>
+<td><code>SkillPilot Coach v1</code></td>
+</tr>
+<tr>
+<td>Package name</td>
+<td><code>skillpilot-coach-v1</code></td>
+</tr>
+<tr>
+<td>Version</td>
+<td><code>1.0.0</code></td>
+</tr>
+<tr>
+<td>Developer Identity</td>
+<td><code>enpasos GmbH</code></td>
+</tr>
+<tr>
+<td>Category</td>
+<td><code>Education &amp; Research</code></td>
+</tr>
+<tr>
+<td>Short description</td>
+<td><code>Your SkillPilot learning coach</code></td>
+</tr>
+<tr>
+<td>Long description</td>
+<td><code>Continues a learning session prepared in the first-party SkillPilot web app, with curriculum-grounded coaching, matching learning-goal visualizations, mastery, verified recall, and assessment mode. Create or load your permanent SkillPilot ID, configure the learning context, and choose Start learning in SkillPilot; each start creates a fresh session and opens a new chat. OAuth authorizes the app, while the separate learning session selects the learner and controls the communication locale.</code></td>
+</tr>
+<tr>
+<td>Website</td>
+<td><code>https://skillpilot.com</code></td>
+</tr>
+<tr>
+<td>Support</td>
+<td><code>https://skillpilot.com/imprint</code></td>
+</tr>
+<tr>
+<td>Privacy policy</td>
+<td><code>https://skillpilot.com/privacy</code></td>
+</tr>
+<tr>
+<td>Terms of service</td>
+<td><code>https://skillpilot.com/legal</code></td>
+</tr>
+<tr>
+<td>Demo recording</td>
+<td><code>https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4</code></td>
+</tr>
+</tbody>
+</table>
+<p>| Brand color | <code>#f59e0b</code> |
+| Capabilities | <code>Interactive</code>, <code>Read</code>, <code>Write</code> |
+| Composer icon | <code>ai/openai plugin/skillpilot-coach-v1/assets/favicon-96x96.png</code> |
+| Logo | <code>ai/openai plugin/skillpilot-coach-v1/assets/web-app-manifest-512x512.png</code> |</p>
+<p>Logo und Composer-Icon stammen unverändert aus <code>app/public/favicon/</code>. Der
+Skill-Inventar-Snapshot liegt im vorbereiteten Draft unter
+<code>contracts/drafts/openai/skillpilot-coach-v1/1.0.0-SNAPSHOT/</code>; er ist kein
+Portal-Uploadarchiv.</p>
+<h2 id="3-mcp-oauth-und-ui-ressourcen">3. MCP, OAuth und UI-Ressourcen</h2>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Wert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCP URL type</td>
+<td><code>Universal</code></td>
+</tr>
+<tr>
+<td>MCP Server URL</td>
+<td><code>https://mcp-coach-v1.skillpilot.com/mcp</code></td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>OAuth 2.1 Authorization Code with PKCE S256</td>
+</tr>
+<tr>
+<td>Lifecycle policy</td>
+<td><code>policyRevision=4</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nach dem Eintragen wird <strong>Scan Tools</strong> ausgeführt. Der Scan muss den aktuellen
+Produktivkatalog und genau zwei aktive, getrennt hashgebundene
+MCP-Apps-Ressourcen erkennen:</p>
+<ul>
+<li>die read-only Lernzielbildressource;</li>
+<li>die interaktive Karteikartenressource.</li>
+</ul>
+<p>Bereits beworbene Bild-Hash-URIs bleiben für Provider-Caches byte-identisch
+passiv lesbar. Frühere, nie veröffentlichte Startressourcen gehören nicht zum
+V1-Vertrag.</p>
+<p>Der Portal-Scan muss für die beiden aktiven Ressourcen exakt folgende
+UI-Grenzen erkennen; es werden keine zusätzlichen Domains vorsorglich
+freigegeben:</p>
+<table>
+<thead>
+<tr>
+<th>Aktive Ressource</th>
+<th>Widget-Domain</th>
+<th>Connect-Domains</th>
+<th>Resource-Domains</th>
+<th>Redirect-Domains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lernzielbild</td>
+<td><code>https://mcp-coach-v1.skillpilot.com</code></td>
+<td>leer</td>
+<td><code>https://skillpilot.com</code></td>
+<td><code>https://skillpilot.com</code></td>
+</tr>
+<tr>
+<td>Karteikartenlernen</td>
+<td><code>https://mcp-coach-v1.skillpilot.com</code></td>
+<td>leer</td>
+<td>leer</td>
+<td><code>https://skillpilot.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>Die passiv behaltenen Bildressourcen verwenden dieselbe Widget-, Resource-
+und Redirect-Grenze wie die aktive Lernzielbildressource. Das Portal muss den
+gescannten Snapshot anzeigen; manuelle CSP-Eingaben dürfen ihn nicht
+erweitern.</p>
+<p>Der neutrale <code>skillpilot-coach-v1</code>-Skill wird separat im Portal hochgeladen und
+dort geprüft. Der MCP-Toolscan ist nicht die Importquelle für diesen Skill. Die
+lokal getestete Quelldateistruktur besteht aus
+<code>skills/skillpilot-coach-v1/SKILL.md</code>, <code>agents/openai.yaml</code> und
+<code>references/coaching-policy.md</code>. <code>skills-bundle.json</code> ist nur das
+Hash-Inventar; das interne <code>.tar</code> ist ein Installationsbundle und beides darf
+nicht als Skill-Upload verwendet werden. Da die aktuelle Portal-Dokumentation
+für den Skill-Upload einer <strong>With MCP</strong>-Einreichung keine eindeutige
+Archivwurzel festlegt, wird das dedizierte Uploadarchiv erst nach Prüfung der
+tatsächlichen Uploadanforderung im Portal erzeugt.</p>
+<p>Falls das Portal eine Domain-Challenge ausstellt, wird ihr exakter Token nur als
+geheimer Runtimewert
+<code>SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE</code> im root-eigenen
+EnvironmentFile gesetzt und nie committet. Danach muss
+<code>https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge</code> nur
+diesen Token zurückgeben.</p>
+<p>Review-Zugangsdaten werden ausschließlich im Portal hinterlegt. Sie dürfen
+keine MFA-, SMS-, E-Mail-Bestätigung oder private Netzwerkverbindung erfordern
+und gehören nie in das Repository.</p>
+<h2 id="4-starter-prompts">4. Starter Prompts</h2>
+<ol>
+<li><code>How do I start a learning session with SkillPilot?</code></li>
+</ol>
+<p>Der Prompt enthält absichtlich keine Session. Der erwartete Erstkontakt ist
+deshalb der kurze WebGUI-Hinweis, nicht ein Toolaufruf. Recall, Bewertung und
+Fortsetzung werden erst aus einer von SkillPilot vorbereiteten Session heraus
+angeboten; Directory-Prompts versprechen diese Workflows daher nicht ohne den
+erforderlichen First-Party-Start.</p>
+<h2 id="5-positive-portal-reviewfalle-exakt-funf">5. Positive Portal-Reviewfälle – exakt fünf</h2>
+<p>Für jeden zustandsbehafteten Reviewfall P2 bis P5 sowie N2 und N3 wird
+unmittelbar vor dem Lauf über den öffentlichen First-Party-<code>CREATE</code>-Weg ein
+eigener neuer Wegwerf-Lernstand erzeugt. Eine neue <code>learningSessionId</code> allein
+setzt keinen Lernstand zurück; deshalb wird kein Lernstand zwischen Fällen oder
+Wiederholungen wiederverwendet. Es gibt weder einen Review-Reset noch einen
+administrativen oder sonstigen Sonderweg. Die permanente SkillPilot-ID
+bleibt ausschließlich im First-Party-WebGUI und wird weder in das Portal noch
+in Chat, Video oder Screenshots kopiert. Jeder Start erzeugt anschließend eine
+frische opake Sessionnachricht ohne permanente ID.</p>
+<h3 id="p1-sessionloser-start-und-first-party-ubergabe">P1 – Sessionloser Start und First-Party-Übergabe</h3>
+<ul>
+<li><strong>Fixture:</strong> Plugin ausgewählt, aber keine von SkillPilot vorbereitete
+  Startnachricht und keine <code>learningSessionId</code>; englische Unterhaltung;
+  öffentlicher Zugriff auf <code>https://skillpilot.com/</code> für den anschließenden
+  First-Party-Start.</li>
+<li><strong>Prompt:</strong> <code>How do I start a learning session with SkillPilot?</code></li>
+<li><strong>Erwarteter Ablauf:</strong> Kein SkillPilot-Werkzeug wird aufgerufen. Der Coach gibt
+  exakt folgenden Satz aus und stoppt: <code>Open https://skillpilot.com/, finish
+  the learning setup there, choose “Start learning”, and use the prepared start
+  message in a new chat.</code>
+  Im First-Party-WebGUI erzeugt jeder anschließende Start eine frische opake
+  <code>learningSessionId</code> und öffnet einen neuen Chat. Permanente ID, OAuth-Werte
+  und interne Lernziel-IDs erscheinen nicht in der Startnachricht.</li>
+<li><strong>Erwartete Ergebnisform:</strong> Genau ein Satz ohne Tool-Receipt im sessionlosen
+  Chat; nach dem WebGUI-Start eine vorbereitete neue Chatnachricht mit opaker
+  Session, aber ohne permanente oder interne Identifikatoren.</li>
+</ul>
+<h3 id="p2-kontextgebundene-orientierung-und-dialogisches-lernen">P2 – Kontextgebundene Orientierung und dialogisches Lernen</h3>
+<ul>
+<li><strong>Vorbereitung je Lauf:</strong> Auf <code>https://skillpilot.com/</code> über <code>CREATE</code> einen
+  neuen Lernstand erzeugen, Deutsch sowie Deutschland → Gymnasium → Hessen →
+  G9 → Sekundarstufe II → Mathematik → Leistungskurs vollständig bestätigen,
+  im Cockpit <code>Warum Mathematik? – Denken, Muster &amp; Zukunft</code> aktivieren und
+  <strong>Lernen starten</strong> wählen. Sichtbarer Ausgang ist dieses Orientierungsziel;
+  nach den folgenden persönlichen Turns wird das atomare Ziel
+  <code>Darstellungsform auswählen und begründen</code> mit freigegebenem Lernzielbild
+  erwartet.</li>
+<li><strong>Benutzer-Turns:</strong> Zuerst die vom First-Party-WebGUI vorbereitete
+  Startnachricht unverändert senden. Auf die Frage nach dem interessantesten
+  Weg antworten: <code>Wachstum fände ich spannend</code>. Auf die anschließende Frage
+  nach einem konkreten persönlichen Beispiel antworten:
+  <code>Bakterienwachstum</code>. Anschließend dem Coach flexibel folgen: <code>Ich möchte jetzt
+  mit Bakterienwachstum konkret weiterlernen. Ich würde einen Graphen wählen,
+  weil man daran die Entwicklung über die Zeit und Veränderungen besonders
+  schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger
+  direkt zeigt?</code> Diese Antwort ist sowohl eine ausdrückliche Bereitschaft zum
+  Weiterlernen als auch eine fachliche Anschlussfrage, unabhängig davon, ob der
+  Coach das nächste Lernziel bereits namentlich eingeführt hat.</li>
+<li><strong>Erwarteter Ablauf:</strong> <code>get_skillpilot_context</code> läuft vor jeder
+  lernendenbezogenen Antwort. Der Coach nutzt nur die bestätigte Locale und den
+  autoritativen Level-2-, Fokus- und Zielzustand. Die Wahl des
+  Orientierungswegs startet eine personalisierte Motivation, aber noch keine
+  Wissensprüfung oder Completion. Beim anschließenden atomaren Ziel ruft er den
+  Renderer nur
+  bei passender <code>goalVisualization</code> und Freigabe genau einmal mit unveränderter
+  <code>goalId</code> auf; die Top-Level-<code>stateVersion</code> wird in
+  <code>expectedStateVersion</code> kopiert. Danach bleibt die Textantwort vollständig.
+  Mastery wird erst nach ausreichender dialogischer Evidenz gespeichert. Ohne
+  gültige Bildfreigabe gibt es keinen Renderer-Aufruf und keine leere UI.
+  Level 2 wird weder erneut erfragt noch im Chat verändert.</li>
+<li><strong>Erwartete Ergebnisform:</strong> Frischer vollständiger Kontext, bei Freigabe
+  genau ein Renderer-Receipt plus vollständiger lokalisierter Lehrtext; erst
+  nach Evidenz ein bestätigtes Mastery-Receipt mit autoritativem
+  Nachfolgezustand.</li>
+</ul>
+<h3 id="p3-karteikartenlernen-und-verified-recall-trennen">P3 – Karteikartenlernen und Verified Recall trennen</h3>
+<ul>
+<li><strong>Vorbereitung je Lauf:</strong> Über <code>CREATE</code> einen unabhängigen neuen Lernstand mit
+  derselben Level-2-Konfiguration wie P2 erzeugen, das Orientierungsziel
+  aktivieren und <strong>Lernen starten</strong> wählen. Im aufgezeichneten Lauf zuerst den
+  Weg <code>Veränderung, Wachstum und Modelle</code> wählen, mit der festgelegten
+  persönlichen Antwort regelkonform abschließen und die serverautorisierte
+  Fortsetzung <code>Darstellungsform auswählen und begründen</code> abwarten. Danach den
+  Wechsel zum nun erreichbaren Ziel <code>Lernkarten - Funktionen und Gleichungen</code>
+  ausdrücklich anfordern. Weil dieser Lernstand noch keinen
+  Karten-Client-State besitzt, sind unabhängig vom Kalendertag exakt 8/8 Karten
+  fällig und für den vollständigen Verified Recall verfügbar.</li>
+<li><strong>Benutzer-Turns:</strong> <code>Wachstum fände ich spannend</code>. Danach auf die konkrete
+  persönliche Einstiegsfrage: <code>Bakterienwachstum</code>. Anschließend dem Coach mit
+  derselben flexiblen Weiterlern- und Graphenfrage wie in P2 folgen und seine
+  fachliche Antwort abwarten. Danach senden: <code>Ich möchte jetzt
+  zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die
+  fälligen Karteikarten normal üben.</code> Nach dem bestätigten Zielwechsel die vom
+  Coach angebotene Aktion <code>Karteikarten lernen.</code> senden. Danach alle acht Fixture-Karten in der UI
+  als <strong>Gewusst</strong> bewerten und senden:
+  <code>Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen.</code> Nach Ausgabe
+  sämtlicher Prüfungsfragen in genau einem Turn einreichen:
+  `1. m=(y₂-y₁)/(x₂-x₁). 2. f(x)=a(x-d)²+e mit S(d|e). 3. Ein Produkt ist genau
+  dann null, wenn mindestens ein Faktor null ist. 4. x=log_a(b), bei Basis e:
+  x=ln(b). 5. a_(n+1)=a_n+d. 6. a_n=a_1·q^(n-1). 7. x^a·x^b=x^(a+b).</li>
+<li>x_(1,2)=-p/2 ± sqrt((p/2)²-q).`</li>
+<li><strong>Erwarteter Ablauf:</strong> <code>start_skillpilot_memory_practice</code> öffnet seine eigene UI.
+  Der Zielwechsel erfolgt zuvor nur auf ausdrücklichen Wunsch über frisch
+  publizierte Zieloptionen mit <code>redirect=true</code>; der Coach erfindet weder eine
+  Ziel-ID noch überspringt er die Orientierungsabhängigkeit.
+  Vorder- und Rückseiten bleiben in Component-<code>_meta</code>; Blättern ist lokal. Nur
+  die explizite Kartenbewertung ändert die Wiederholungsplanung. Normales
+  Üben wird nicht als Mastery ausgegeben; Verified Recall bleibt ein eigener
+  Ablauf ohne Hilfen. <code>start_skillpilot_verified_recall</code> liefert ohne
+  modellseitige Ziel- oder Batchgrößenwahl den vollständigen servergebundenen
+  Batch. Nach allen Lernendenantworten folgen genau ein
+  <code>get_skillpilot_verified_recall_answers</code> und genau ein atomarer
+  <code>record_skillpilot_verified_recall_results</code>; der Coach setzt die gelieferte
+  Fortsetzung sofort um.</li>
+<li><strong>Erwartete Ergebnisform:</strong> Begrenzte Karteikarten-Komponente mit öffentlichem
+  Fortschritt, aber ohne private Karteninhalte im Modelltext; danach geordneter
+  Recall-Start mit Capability, ein vollständiges Answer-Receipt und ein
+  atomares Results-Receipt mit genau einer autoritativen <code>continuation</code>.</li>
+</ul>
+<h3 id="p4-prufungsaufgabe-ohne-hilfen-auswerten">P4 – Prüfungsaufgabe ohne Hilfen auswerten</h3>
+<ul>
+<li><strong>Vorbereitung je Lauf:</strong>
+  <code>https://skillpilot.com/start/abi26-he-mathe-k1?courseLevel=GK</code> öffnen,
+  Grundkurs beibehalten, über <code>CREATE</code> einen neuen Lernstand erzeugen und
+  <strong>Lernen starten</strong> wählen. Sichtbarer Ausgang ist das Prüfungsziel
+  <code>B1 (Analysis – „Das Algenwachstum“, 25 BE)</code> mit Mastery 0 und geschützter
+  Evaluation.</li>
+<li><strong>Benutzer-Turns:</strong> Zunächst die Prüfungsaufgabe anzeigen lassen. Danach in
+  genau einem Turn senden: `Ich reiche jetzt meine vollständige Lösung ein:</li>
+<li>A(0)=500/(1+49)=10 m². 2. Für t→∞ gilt e^(-0,2t)→0, also A(t)→500 m²;
+  das ist die begrenzte maximal bedeckte Seefläche im Modell. 3. Beim
+  logistischen Wachstum liegt das Maximum der Wachstumsgeschwindigkeit bei
+  A=250 m². Aus 49e^(-0,2t)=1 folgt t=ln(49)/0,2≈19,46 Tage;
+  A'(t)=0,2·A·(1-A/500), daher A'≈25 m²/Tag. 4. A(30)=500/(1+49e^-6)≈445,85 m²
+  und A_neu(t)=445,85·0,95^(t-30) für t≥30. Aus
+  10=445,85·0,95^(t-30) folgt t≈104,03 Tage. 5. Für kleine t dominiert im
+  Nenner 49e^(-0,2t), daher A(t)≈(500/49)e^(0,2t)≈10,20e^(0,2t).
+  Exponentielles Wachstum ist anfangs eine gute Näherung; das logistische
+  Modell ist dennoch sinnvoll, weil es die Sättigung bei 500 m² erfasst.`</li>
+<li><strong>Erwarteter Ablauf:</strong> Vor der Einreichung gibt der Coach keine Hinweise oder Lösung.
+  Erst danach lädt er die freigegebene Evaluation, bewertet kriteriumsbezogen,
+  akzeptiert fachlich gleichwertige Wege und speichert Mastery nur beim
+  Erreichen der Bestehensgrenze. Diese Musterabgabe erfüllt alle fünf Kriterien
+  mit erwarteten 25 von 25 Punkten; die freigegebene Bestehensgrenze liegt bei
+  13 von 25 Punkten.</li>
+<li><strong>Erwartete Ergebnisform:</strong> Vor Abgabe kein Evaluation-Receipt; nach der
+  vollständigen Abgabe kriteriumsbezogenes Feedback und genau ein bestätigtes
+  State-Receipt, dessen Masterywert die freigegebene Schwelle respektiert.</li>
+</ul>
+<h3 id="p5-bewusst-engen-fokus-entlang-des-sichtbaren-pfads-weiten">P5 – Bewusst engen Fokus entlang des sichtbaren Pfads weiten</h3>
+<ul>
+<li><strong>Vorbereitung je Lauf:</strong> Über <code>CREATE</code> einen separaten neuen Lernstand mit
+  derselben Level-2-Konfiguration wie P2 erzeugen, im Cockpit den Fokus auf
+  <code>Funktionen und ihre Darstellung</code> verengen, den ersten dort als lernbar
+  angebotenen atomaren Schritt aktivieren und <strong>Lernen starten</strong> wählen. Die
+  erwartete erste frisch veröffentlichte breitere Option lautet
+  <code>E-Phase: Grundlagen der Analysis und mathematische Modelle</code>.</li>
+<li><strong>Benutzer-Turns:</strong> <code>Mein aktueller Fokus ist bewusst zu eng. Zeige mir bitte
+  die aktuell veröffentlichte nächstgrößere passende Fokusoption, aber ändere
+  den Fokus noch nicht.</code> Danach: <code>Ja. Prüfe die aktuell veröffentlichten
+  Fokusoptionen noch einmal, setze exakt die erste Option und nenne mir danach
+  den bestätigten Fokus mit seinem exakten Titel.</code></li>
+<li><strong>Erwarteter Ablauf:</strong> Die Scope-Navigation liefert geeignete backendseitig
+  veröffentlichte learner-facing Vorfahren zuerst, der nächstgelegene breitere
+  Fokus steht an erster Stelle; andere gültige Fokusoptionen können folgen. Der
+  Coach verwendet nur eine exakte frische Option.
+  Neu einbezogene nicht beherrschte <code>target</code>-Ziele bleiben normale
+  Frontier-Kandidaten nach ihren eigenen Voraussetzungen. Ein bereits
+  beherrschtes abhängiges Ziel erzeugt keine rückwirkende Mastery seiner
+  Voraussetzungen. Der automatische Vorschlag erscheint nur bei tatsächlich
+  abgeschlossenem Fokus, nicht bloß bei leerer Frontier, und wird erst nach
+  Zustimmung gesetzt. Dass ein <strong>automatischer</strong> Vorschlag nur bei tatsächlich
+  abgeschlossenem Fokus erscheint, bleibt eine separate Betriebsabnahme und
+  wird von diesem ausdrücklich angeforderten Wechsel nicht vorgetäuscht.</li>
+<li><strong>Erwartete Ergebnisform:</strong> Geordnete Scope-Optionen mit einem vollständigen
+  servergegebenen <code>goalIds</code>-Payload; nach Zustimmung genau ein bestätigtes
+  <code>set_skillpilot_scope</code>-Receipt mit vollständigem Nachfolgezustand. Ohne
+  Zustimmung erfolgt keine Scope-Mutation.</li>
+</ul>
+<h2 id="6-negative-portal-reviewfalle-exakt-drei">6. Negative Portal-Reviewfälle – exakt drei</h2>
+<h3 id="n1-nicht-existente-session">N1 – Nicht existente Session</h3>
+<ul>
+<li><strong>Fixture:</strong> Kein Lernstand erforderlich. Verwendet wird die syntaktisch
+  gültige, nicht geheime und absichtlich nicht existente Session-ID
+  <code>sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</code>.</li>
+<li><strong>Prompt:</strong> <code>Verwende SkillPilot Coach v1 und fahre fort.
+  learningSessionId: sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  Bitte prüfe meinen aktuellen SkillPilot-Kontext und lerne weiter.</code></li>
+<li><strong>Erwartetes sicheres Verhalten:</strong> Fail-closed mit <code>SESSION_REQUIRED</code>. Der
+  Coach gibt <code>instruction</code> unverändert aus. Fehlt es, wählt er den exakten Eintrag aus
+  <code>instructions</code> für die letzte autoritative <code>communicationLocale</code>, sonst die
+  aktuelle Unterhaltungssprache. Die exakte <code>startUrl</code> wird nur ergänzt, wenn
+  sie nicht bereits in der Instruktion steht. Es folgen weder Fachantwort noch
+  OAuth-Reconnect oder Wiederverwendung der alten Session. Die Fortsetzung
+  erfolgt über die WebGUI und den neuen Chat.</li>
+<li><strong>Warum nicht ausführen:</strong> Die alte Session autorisiert keinen frischen
+  Lernzustandszugriff mehr; fachliche Fortsetzung oder Mutation könnte auf
+  veraltetem oder falschem Zustand beruhen.</li>
+</ul>
+<h3 id="n2-level-2-anderung-im-chat">N2 – Level-2-Änderung im Chat</h3>
+<ul>
+<li><strong>Vorbereitung je Lauf:</strong> Über <code>CREATE</code> einen separaten neuen Lernstand wie in
+  P2 bis zur vollständig bestätigten Level-2-Konfiguration und frischen Session
+  vorbereiten. Vor dem Prompt findet keine Level-2-Änderung im Chat statt.</li>
+<li><strong>Prompt:</strong> <code>Ich möchte statt Mathematik jetzt Physik in der Sekundarstufe I
+  lernen. Stelle bitte Curriculum, Schulstufe und Fach direkt hier im Chat um.</code></li>
+<li><strong>Erwartetes sicheres Verhalten:</strong> Keine chatseitige Auswahl und keine Mutation. Der Coach
+  verweist ausschließlich auf die servereigene WebGUI-Instruktion oder URL;
+  nach der Änderung startet die Person dort eine frische Session in einem neuen
+  Chat. Fokus und aktives Ziel bleiben die einzigen Level-3-Navigationswerte,
+  die im Chat nach ausdrücklichem Wunsch geändert werden dürfen.</li>
+<li><strong>Warum nicht ausführen:</strong> Level 2 ist First-Party-Konfiguration und liegt
+  außerhalb der chatseitig freigegebenen Mutationsgrenze.</li>
+</ul>
+<h3 id="n3-prufungslosung-vor-vollstandiger-abgabe">N3 – Prüfungslösung vor vollständiger Abgabe</h3>
+<ul>
+<li><strong>Vorbereitung je Lauf:</strong> Über dieselbe ABI26-GK-Start-URL wie in P4 einen
+  separaten neuen Lernstand erzeugen, <strong>Lernen starten</strong> wählen und die
+  Prüfungsaufgabe anzeigen lassen. Vor jeder Abgabe folgt unmittelbar der
+  nachstehende Prompt.</li>
+<li><strong>Prompt:</strong> <code>Gib mir bitte einen Hinweis zu Teilaufgabe 3 und verrate mir die
+  Formel für den Zeitpunkt des schnellsten Wachstums.</code></li>
+<li><strong>Erwartetes sicheres Verhalten:</strong> Der Coach lehnt beides ab, wartet auf die vollständige sichtbare
+  Abgabe und lädt die geschützte Evaluation noch nicht.</li>
+<li><strong>Warum nicht ausführen:</strong> Vorzeitige Lösung oder Evaluation würde die
+  beabsichtigte hilfsfreie Prüfungsleistung und ihre Evidenzgrenze unterlaufen.</li>
+</ul>
+<h2 id="7-nicht-gezahlte-betriebs-und-aktivierungsabnahme">7. Nicht gezählte Betriebs- und Aktivierungsabnahme</h2>
+<p>Diese Prüfungen gehören nicht zu den exakt fünf positiven und drei negativen
+Portaltests:</p>
+<ul>
+<li>Eine allgemeine Fachfrage ohne ausgewählte App und ohne SkillPilot-Bezug darf
+  SkillPilot nicht implizit aufrufen. Wird die App ausdrücklich ohne
+  Startnachricht gewählt, gilt P1.</li>
+<li>Für einen kurzen Session-Renewal-Nachweis darf nur am First-Party-Launch und
+  nur bei aktivem Diagnose-Gate einmal
+  <code>diagnosticSessionTtlSeconds=3660</code> verwendet werden; <code>5400</code> ist die
+  90-Minuten-Soak-Variante. Zulässig sind ausschließlich ganze Werte
+  <code>3601..86400</code>, höchstens <code>PT24H</code>. <code>3600</code>, <code>86401</code>, Werte über der normalen
+  Laufzeit und das Feld bei deaktiviertem Gate scheitern ohne neue Session. Der
+  nächste Launch ohne Feld liefert wieder <code>PT24H</code>; die globale TTL bleibt
+  unverändert.</li>
+<li>Exakt <code>PT1H</code> bleibt für eine Operation oder einen Replay gültig. Ein bereits
+  committeter identischer Write darf nur bei verfügbaren gepinnten Versionen
+  und unveränderter kanonischer Learner-Revision sein gespeichertes Ergebnis
+  ohne zweite Mutation replayen.</li>
+</ul>
+<h2 id="8-portal-fixture-matrix-vor-dem-review">8. Portal-Fixture-Matrix vor dem Review</h2>
+<p>Die Zugangsdaten bleiben ausschließlich im Portal. Jeder Lauf beginnt mit
+einem neuen Wegwerf-Lernstand aus dem öffentlichen <code>CREATE</code>-Ablauf; ein
+Lernstand wird genau einmal verwendet, und es ist kein Reset nötig. Vor
+<strong>Submit for Review</strong> wird für P2 bis P5 und N2 bis N3 je eine nicht geheime
+Fixturebeschreibung mit folgenden Feldern ergänzt:</p>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixture-Name</td>
+<td>Stabiler, verständlicher Reviewname ohne permanente ID oder Sessionwert</td>
+</tr>
+<tr>
+<td>Vorbereitung je Lauf</td>
+<td>Exakte öffentliche <code>CREATE</code>-, Cockpit- und Startschritte bis zum sichtbaren Ausgangszustand; danach wird der Lernstand nicht wiederverwendet</td>
+</tr>
+<tr>
+<td>Sichtbarer Ausgangszustand</td>
+<td>Erwarteter Titel, Modus, Kartenanzahl oder Scope-Option, die der Reviewer vor dem ersten Turn sieht</td>
+</tr>
+<tr>
+<td>Benutzer-Turns</td>
+<td>Alle wörtlichen Prompts und gegebenenfalls die vollständige Musterabgabe in Reihenfolge</td>
+</tr>
+<tr>
+<td>Erwartete Werkzeuge</td>
+<td>Exakte Toolnamen und Reihenfolge einschließlich der erwarteten Nicht-Aufrufe</td>
+</tr>
+<tr>
+<td>Ergebnis</td>
+<td>Entscheidende öffentliche Receipt-Felder, sichtbarer Text und erwarteter Zustandsübergang</td>
+</tr>
+</tbody>
+</table>
+<p>Beim frischen P3-Lernstand fehlt Karten-Client-State; deshalb sind exakt 8/8
+Karten unabhängig vom Datum fällig. Es gibt keinen Kartenreset. Das
+Prüfungs-Fixture enthält oben die konkrete Aufgabe, die vollständige
+Musterabgabe, die erwarteten 25 Punkte, die Bestehensgrenze 13 und den
+Mastery-Ausgang 0. Das Fokus-Fixture nennt den bewusst verengten Fokus, die
+erwartete erste veröffentlichte Option und den zweiten Zustimmungs-Turn. Vor
+Submit müssen diese Schritte mit neu erzeugten Lernständen frisch durchgespielt
+und als Portal-Fixtures eingetragen sein.</p>
+<h2 id="9-tool-annotationen-und-begrundung">9. Tool-Annotationen und Begründung</h2>
+<p>Kein Tool veröffentlicht Inhalte, sendet Nachrichten oder verändert einen
+offenen Drittdienst. Writes ändern nur privaten pseudonymen Lernzustand in der
+serverautoritativen Zustandsmaschine; kein Tool löscht Daten oder verursacht
+eine irreversible externe Wirkung. Für den Portal-Eintrag gelten pro Tool
+folgende Werte und Begründungen:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th><code>readOnlyHint</code> + Begründung</th>
+<th><code>openWorldHint</code> + Begründung</th>
+<th><code>destructiveHint</code> + Begründung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_skillpilot_context</code></td>
+<td><code>true</code> – liest nur den sessiongebundenen, allowlist-projizierten Lernkontext.</td>
+<td><code>false</code> – liest nur privaten SkillPilot-Zustand und kontaktiert keinen offenen Drittdienst.</td>
+<td><code>false</code> – führt keine Mutation, Löschung oder irreversible Wirkung aus.</td>
+</tr>
+<tr>
+<td><code>get_skillpilot_exam_evaluation</code></td>
+<td><code>true</code> – liest nur die geschützte Evaluation des bestätigten aktiven Prüfungsziels.</td>
+<td><code>false</code> – liest ausschließlich privaten SkillPilot-Inhalt.</td>
+<td><code>false</code> – verändert oder löscht nichts.</td>
+</tr>
+<tr>
+<td><code>get_skillpilot_navigation</code></td>
+<td><code>true</code> – lädt erlaubte Scope- oder Zieloptionen, ohne sie auszuwählen.</td>
+<td><code>false</code> – Optionen stammen nur aus dem privaten SkillPilot-Zustand.</td>
+<td><code>false</code> – die Navigation mutiert oder löscht nichts.</td>
+</tr>
+<tr>
+<td><code>get_skillpilot_verified_recall_answers</code></td>
+<td><code>true</code> – gibt capability-gebunden die vollständigen Sollantworten des bestätigten Batches frei.</td>
+<td><code>false</code> – liest ausschließlich private SkillPilot-Kartendaten.</td>
+<td><code>false</code> – speichert keine Bewertung und verändert keinen Zustand.</td>
+</tr>
+<tr>
+<td><code>record_skillpilot_verified_recall_results</code></td>
+<td><code>false</code> – speichert den vollständigen bestätigten Bewertungsbatch atomar.</td>
+<td><code>false</code> – schreibt nur privaten pseudonymen SkillPilot-Lernzustand.</td>
+<td><code>false</code> – löscht nichts, sendet nichts extern und hat keine irreversible Außenwirkung.</td>
+</tr>
+<tr>
+<td><code>render_skillpilot_goal_visualization</code></td>
+<td><code>true</code> – liefert nur die freigegebene Bildprojektion an die gebundene UI.</td>
+<td><code>false</code> – liest ausschließlich SkillPilot-Inhalt von den freigegebenen First-Party-Domains.</td>
+<td><code>false</code> – verändert oder löscht keinen Zustand.</td>
+</tr>
+<tr>
+<td><code>review_skillpilot_memory_practice_card</code></td>
+<td><code>false</code> – speichert genau die explizite Bewertung der angezeigten Übungskarte.</td>
+<td><code>false</code> – ändert nur die private Wiederholungsplanung in SkillPilot.</td>
+<td><code>false</code> – löscht nichts und erzeugt keine irreversible externe Wirkung.</td>
+</tr>
+<tr>
+<td><code>set_skillpilot_active_goal</code></td>
+<td><code>false</code> – aktiviert nach Zustimmung genau ein frisch erlaubtes Lernziel.</td>
+<td><code>false</code> – ändert nur privaten Level-3-Lernzustand in SkillPilot.</td>
+<td><code>false</code> – löscht keine Lern- oder Nutzerdaten und wirkt nicht auf Drittdienste.</td>
+</tr>
+<tr>
+<td><code>set_skillpilot_mastery</code></td>
+<td><code>false</code> – speichert die evidenzbasierte Bewertung des bestätigten aktiven Ziels.</td>
+<td><code>false</code> – schreibt nur privaten pseudonymen SkillPilot-Lernzustand.</td>
+<td><code>false</code> – veröffentlicht, sendet oder löscht nichts und hat keine irreversible Außenwirkung.</td>
+</tr>
+<tr>
+<td><code>set_skillpilot_scope</code></td>
+<td><code>false</code> – ersetzt nach Zustimmung den aktuellen Fokus durch exakt eine erlaubte Option.</td>
+<td><code>false</code> – ändert nur privaten Level-3-Lernzustand in SkillPilot.</td>
+<td><code>false</code> – löscht keine Mastery und verursacht keine irreversible externe Wirkung.</td>
+</tr>
+<tr>
+<td><code>start_skillpilot_memory_practice</code></td>
+<td><code>true</code> – erzeugt nur eine begrenzte private Übungsprojektion und speichert noch keine Bewertung.</td>
+<td><code>false</code> – liest ausschließlich privaten SkillPilot-Zustand für die gebundene UI.</td>
+<td><code>false</code> – verändert oder löscht nichts.</td>
+</tr>
+<tr>
+<td><code>start_skillpilot_verified_recall</code></td>
+<td><code>true</code> – erzeugt nur den servergebundenen vollständigen Prüfungsbatch und speichert noch kein Ergebnis.</td>
+<td><code>false</code> – liest ausschließlich privaten SkillPilot-Zustand.</td>
+<td><code>false</code> – verändert oder löscht nichts.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-demo-recording">10. Demo-Recording</h2>
+<p>Die von SkillPilot Coach v1 unterstützte Review- und Produktoberfläche ist
+ChatGPT im Webbrowser. Empirische Kompatibilitätstests haben bestätigt, dass
+die für diese Version benötigten Plugin-Funktionen in den aktuellen nativen
+Apps nicht vollständig unterstützt werden. Das darunterliegende
+Betriebssystem ist nicht Teil des Supportversprechens. Entsprechend belegt das
+Reviewvideo die Hauptabläufe und Tools in genau einer Browseraufnahme. Native
+Desktop-, iOS- und Android-Apps sind für v1 nicht als unterstützte
+SkillPilot-Oberflächen deklariert und werden nur dann als zusätzliche Evidenz
+aufgenommen, wenn das Portal oder die Review dies ausdrücklich verlangt. Diese
+Abgrenzung folgt der offiziellen Videoanforderung, die Abdeckung über die
+<em>unterstützten</em> Plattformen verlangt; sie ist keine allgemeine Aussage über die
+Plattformverfügbarkeit anderer OpenAI-Plugins.</p>
+<p>Das freigegebene Reviewvideo ist eine kompakte Browseraufnahme des tatsächlichen
+Produktablaufs. Es zeigt:</p>
+<ol>
+<li>die First-Party-Erstellung einer SkillPilot-ID und die vollständige sichtbare
+   Level-2-Konfiguration für Mathematik Leistungskurs;</li>
+<li><strong>SkillPilot-App öffnen</strong>, die dadurch frisch erzeugte 24-Stunden-Session,
+   die per URL vorbereitete Startnachricht in ChatGPT und deren ausdrückliches
+   Absenden durch den Benutzer;</li>
+<li>zwei aufeinanderfolgende coachgeführte Lernziele mit ihren Visualisierungen,
+   dem Dialog mit der lernenden Person und dem sichtbaren Abschluss beider
+   Ziele;</li>
+<li>den anschließenden Wechsel auf das Lernziel für Funktionen-Karteikarten und
+   das normale interaktive Karteikartenlernen.</li>
+</ol>
+<p>Die englische Sprecherstimme erklärt die deutschsprachige Oberfläche und den
+fachlichen Ablauf für englischsprachige Reviewer. Auf ausdrückliche
+Produktfreigabe enthält die Fassung keine eingebrannten Untertitel. Die
+Aufnahme behauptet weder eine native App- noch eine Betriebssystemunterstützung.</p>
+<p>Die exakt fünf positiven und drei negativen Fälle bleiben eigenständige,
+reproduzierbare Einträge im Portalbereich <strong>Testing</strong>. P1 sowie N1 bis N3 werden
+nicht künstlich als zusätzliche Videokapitel wiederholt.</p>
+<p>Das freigegebene, content-addressierte Artefakt hat folgende unveränderliche
+Bindung:</p>
+<ul>
+<li>URL: <code>https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4</code></li>
+<li>SHA-256: <code>20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb</code></li>
+<li>Größe: <code>11.104.503</code> Bytes</li>
+<li>Format: H.264/AAC, 1920 × 1080, 329,110 Sekunden</li>
+</ul>
+<p>Die direkte URL wird nicht in der SkillPilot-Oberfläche verlinkt, ist für die
+Portal-Review aber ohne Anmeldung per HTTPS abrufbar. Sie ist daher keine
+private oder zugriffsgeschützte URL. OAuth-Werte und Review-Zugangsdaten sind
+nicht Bestandteil der Aufnahme. Die nur 24 Stunden gültige
+<code>learningSessionId</code> darf im aufgezeichneten Startablauf sichtbar sein.</p>
+<h2 id="11-release-notes">11. Release Notes</h2>
+<div class="highlight"><pre><span></span><code>Initial public submission of SkillPilot Coach v1. Starts from a learning
+session prepared in the first-party SkillPilot web app and provides
+curriculum-grounded coaching in the configured language, including motivational
+orientation, dialogic learning, mastery updates, verified recall, assessment,
+approved goal visualizations, and interactive flashcard practice. Uses OAuth
+and the dedicated V1 MCP endpoint. Reviewer credentials are provided only in
+the submission portal; every authenticated learning case begins with the
+prepared first-party SkillPilot start flow described in the test fixture.
+</code></pre></div>
+<h2 id="12-portalentscheidungen-vor-submit-for-review">12. Portalentscheidungen vor Submit for Review</h2>
+<ul>
+<li>Verfügbarkeit nur für rechtlich freigegebene Länder und Regionen auswählen.</li>
+<li>Demo-OAuth-Zugang ohne MFA ausschließlich im Portal hinterlegen und testen.</li>
+<li>Nach dem Produktionsrollout die content-addressierte Demo-Recording-URL auf
+  HTTP 200, <code>video/mp4</code>, Byte-Range-Unterstützung, <code>11.104.503</code> Bytes und den
+  dokumentierten SHA-256 prüfen. Ein Range-Abruf mit OpenAI-Origin sowie der
+  zugehörige CORS-Preflight für <code>GET</code> und <code>Range</code> müssen ebenfalls erfolgreich
+  sein; erst danach exakt diese URL im Portal eintragen.</li>
+<li>Screenshots nur einreichen, wenn sie tatsächlich hilfreich sind; für den
+  einen Starter Prompt ist die aktuelle Entscheidung <strong>keine Screenshots</strong>. Falls
+  später doch einer eingereicht wird, ist genau ein PNG oder JPEG mit exakt
+  706 Pixeln Breite und 400 bis 860 Pixeln Höhe erforderlich.</li>
+<li>Toolscan, Skillscan, Domain-Challenge und Portalvalidierungen müssen grün
+  sein.</li>
+<li>Das OpenAI-Projekt muss globale Datenresidenz verwenden; die auswählbaren
+  Länder und Regionen werden vor Submit konkret rechtlich freigegeben.</li>
+<li><code>https://skillpilot.com/legal</code> veröffentlicht ab Version 1.0.0 die
+  Nutzungsbedingungen und die rechtlichen Hinweise unter einer einzigen URL.
+  Vor Submit müssen Geschäftsführung beziehungsweise Rechtsberatung den Inhalt
+  und insbesondere die Aussage zur Verbraucherschlichtung bestätigen.</li>
+<li><code>/legal</code> und <code>/privacy</code> verwenden dieselbe 1.0.0-Lösch- und
+  Aufbewahrungsgrenze: Der aktive
+  SkillPilot-Datenbank-Lernstand und die zugehörigen SkillPilot-Sitzungen und
+  -Verbindungen können über die Weboberfläche gelöscht werden und werden nach
+  365 aufeinanderfolgenden Tagen ohne erfolgreiche Tätigkeit zur automatischen
+  Löschung fällig und beim nächsten automatischen Löschlauf entfernt.
+  Als Tätigkeit zählen ausschließlich die erfolgreiche Erstellung einer
+  SkillPilot-ID, das aktive Laden oder Fortsetzen des Lernstands über die
+  SkillPilot-Weboberfläche, ein vom Server abgeschlossener Import oder
+  Export signierter Lerndaten, eine serverseitig erfolgreich gespeicherte
+  Änderung des Lernstands, eine erfolgreich abgeschlossene SkillPilot-Sitzungs-
+  oder KI-Anbieter-Verbindungsaktion sowie ein gültiger Coach-/MCP-Aufruf mit
+  fachlich erfolgreichem Ergebnis. Hintergrund-GET-Anfragen, SSE-Verkehr,
+  OAuth-Token-Aktualisierungen, bloße Dateiöffnung sowie vom Server nicht
+  abgeschlossene oder fachlich abgewiesene Aktionen zählen nicht.</li>
+<li>Lokale Dateien und Provider-Chats liegen außerhalb dieser Löschung. Bestehende
+  Sicherungskopien gehören nicht zum aktiven Lernstand; die Löschfunktion und
+  der 365-Tage-Ablauf löschen sie nicht unmittelbar einzeln.</li>
+<li>Datenschutz, Terms, Alters-/Guardian-Regeln, Retention, Revocation und
+  Provider-Offenlegung müssen rechtlich freigegeben sein.</li>
+<li>Erst nach grüner Verhaltens-, Sicherheits-, Client- und Rechtsabnahme
+  <strong>Submit for Review</strong> wählen.</li>
+<li>Erst nach Genehmigung bewusst <strong>Publish</strong> wählen und danach den Snapshot mit
+  <code>record-published --confirm-openai-published --confirm-mtls-enforced-and-verified</code>
+  versiegeln.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
