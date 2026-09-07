@@ -3,7 +3,7 @@ import { mkdir, mkdtemp, readFile, readdir, rm, symlink, writeFile } from 'node:
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { GOAL_BOOK_PUBLICATION_REGISTRY } from '../src/utils/goalBookPublicationRegistry'
-import { buildGoalBookPublications, goalBookBuildArtifactNames } from './buildGoalBookPublications'
+import { buildGoalBookPublications, goalBookBuildArtifactNames, verifyGoalBookPrintFonts } from './buildGoalBookPublications'
 import {
   GOAL_BOOK_BUILD_CACHE_FILE,
   goalBookBuildCacheMatches,
@@ -15,6 +15,42 @@ import {
 
 const temporaryRoot = await mkdtemp(join(tmpdir(), 'skillpilot-goal-book-build-test-'))
 try {
+  const fontCalls: string[] = []
+  const reviewedFontMatch = async (family: string, style: string) => {
+    fontCalls.push(`${family}/${style}`)
+    return {
+      family: family === 'Arial' ? 'Liberation Sans' : 'Liberation Mono',
+      style,
+      weight: style.includes('Bold') ? 200 : 80,
+      slant: style.includes('Italic') ? 100 : 0,
+    }
+  }
+  await verifyGoalBookPrintFonts(reviewedFontMatch)
+  assert.deepEqual(fontCalls, [
+    'Arial/Regular', 'Arial/Bold', 'Arial/Italic', 'Arial/Bold Italic',
+    'Courier New/Regular', 'Courier New/Bold', 'Courier New/Italic', 'Courier New/Bold Italic',
+  ], 'both reviewed print font families require all four real faces')
+  for (const requested of ['Arial', 'Courier New']) {
+    await assert.rejects(verifyGoalBookPrintFonts(async (family, style) => ({
+      ...await reviewedFontMatch(family, style),
+      ...(family === requested ? { family: 'Noto Sans' } : {}),
+    })), (error: unknown) => error instanceof Error
+      && error.message.includes(`print font mismatch: ${requested}`)
+      && error.message.includes('Noto Sans')
+      && error.message.includes('apt-get install fonts-liberation')
+      && error.message.includes('dnf install liberation-sans-fonts liberation-mono-fonts'),
+    'silent Noto fallback fails early with concrete installation guidance')
+  }
+  for (const missingFace of ['Bold', 'Italic', 'Bold Italic']) {
+    await assert.rejects(verifyGoalBookPrintFonts(async (family, style) => ({
+      ...await reviewedFontMatch(family, style),
+      ...(style === missingFace ? { style: 'Regular', weight: 80, slant: 0 } : {}),
+    })), /print font mismatch/u, `${missingFace} cannot silently resolve to the Regular face`)
+  }
+  await assert.rejects(verifyGoalBookPrintFonts(async () => {
+    throw new Error('fc-match unavailable')
+  }), /font preflight failed.*fc-match unavailable.*fontconfig/u)
+
   assert.deepEqual(GOAL_BOOK_PUBLICATION_REGISTRY.map(({ subject }) => subject), [
     'mathematics', 'physics', 'chemistry', 'biology',
   ])
@@ -90,7 +126,7 @@ try {
   await assert.rejects(buildGoalBookPublications({ outputDirectory: concurrentOutput }), /Another goal-book build holds/u)
   assert.ok((await readdir(temporaryRoot)).includes('.concurrent.build-lock'), 'a competing build never removes the original lock')
 
-  console.log('Goal-book publication build tests passed (registry, hashes, missing/tampered artifacts, cache receipts, rollback, unrelated-file protection and locks)')
+  console.log('Goal-book publication build tests passed (reviewed font families/faces, registry, hashes, missing/tampered artifacts, cache receipts, rollback, unrelated-file protection and locks)')
 } finally {
   await rm(temporaryRoot, { recursive: true, force: true })
 }

@@ -706,10 +706,9 @@ export const CurriculaView: React.FC = () => {
           <p className="mt-2 text-text-secondary">{curriculaViewCopy.feedbackDescription}</p>
           <p className="mt-3 text-sm text-text-primary">{curriculaViewCopy.feedbackSteps}</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {curriculaViewCopy.feedbackSubjects.map(({ label, bookId, scopeNote }) => (
+            {curriculaViewCopy.feedbackSubjects.map(({ label, bookId }) => (
               <div key={bookId} data-testid="curricula-feedback-subject" className="flex min-w-0 flex-col gap-3 rounded-xl border border-border-color bg-white/80 p-4 dark:bg-slate-900/60">
                 <h3 className="font-semibold text-text-primary">{label}</h3>
-                {scopeNote && <p className="text-xs text-text-secondary">{scopeNote}</p>}
                 {goalBookDefinitionById(bookId) ? (
                   <Link
                     to={goalBookRoute(bookId)}

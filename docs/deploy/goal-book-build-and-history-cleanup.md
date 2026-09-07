@@ -19,13 +19,19 @@ Die öffentlichen Buch- und PDF-URLs bleiben unverändert.
 ## Bauen und prüfen
 
 Node gemäß `.nvmrc`, die gesperrten npm-Abhängigkeiten, Playwright Chromium,
-Poppler (`pdfinfo`, `pdftohtml`) und Fontconfig (`fc-list`, `fc-match`) sind
-erforderlich. Unter Ubuntu können die Browser-Systemabhängigkeiten mit dem
-folgenden Playwright-Aufruf installiert werden:
+Poppler (`pdfinfo`, `pdftohtml`), Fontconfig (`fc-list`, `fc-match`) und
+Liberation Sans/Mono mit jeweils Regular, Bold, Italic und Bold Italic sind
+erforderlich. Das bestehende Druckprofil muss `Arial` auf **Liberation Sans**
+und `Courier New` auf **Liberation Mono** auflösen. Diese acht echten
+Schriftschnitte werden vor dem Rendern geprüft; Noto-, Regular- oder andere
+stille Fallbacks werden nicht akzeptiert. Die Fontdateihashes und die vollständige
+Layoutprüfung bleiben zusätzlich verbindlich, auch zwischen Liberation-Versionen.
+Unter Ubuntu die Werkzeuge/Fonts und Browser-Systemabhängigkeiten installieren:
 
 ```bash
 cd app
 npm ci
+sudo apt-get install poppler-utils fontconfig fonts-liberation
 npx --no-install playwright install --with-deps chromium
 npm run build
 ```
@@ -145,8 +151,12 @@ Diese Migration ist bewusst kein automatischer Bestandteil von `deploy.sh`.
 Der laufende Dienst wird für die Git-Bereinigung nicht neu gestartet.
 
 Danach gilt wieder der [normale Deploymentprozess](deployment.md). Auf
-Rocky/RHEL/Fedora zuvor `poppler-utils` und `fontconfig` sowie die zum Browser
-passenden Laufzeitbibliotheken bereitstellen. Das Deployment installiert
+Rocky/RHEL/Fedora zuvor `poppler-utils`, `fontconfig`, `liberation-sans-fonts`
+und `liberation-mono-fonts` sowie die zum Browser passenden Laufzeitbibliotheken
+bereitstellen. Alternativ dürfen die vollständigen, verifizierten Liberation-
+Schriftdateien samt Lizenz als reguläre Benutzerfonts installiert werden;
+anschließend `fc-cache -f` ausführen und die acht Auflösungen prüfen. Keine
+Schriftdateien aus unkontrollierten Downloads verwenden. Das Deployment installiert
 gesperrte npm-Abhängigkeiten und deren Chromium-Version und prüft den echten
 Browserstart vor dem Build. Ein bewusst gewählter alternativer Chromium-Pfad
 ist über `GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH` möglich und Teil der Cachebindung.

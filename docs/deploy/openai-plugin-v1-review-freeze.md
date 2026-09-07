@@ -3463,3 +3463,35 @@ MCP/OAuth, Tools, Schemas, MCP-Apps-Ressourcen, Start-/Session-/Identitäts-/
 Locale-/Lernzustandsverträge, Speicherung, Berechtigungen, Portalwerte,
 Reviewfälle, Fixtures und Reviewartefakte bleiben unverändert. Keine
 Neueinreichung und keine Wiederaufnahme der allgemeinen Curriculum-QS.
+
+### 6.64 Explizite Druckschriften für den Quellenbuild
+
+Beim genehmigten Produktionsaufbau am **7. September 2026** stoppt das
+unveränderte harte Layoutgate vor dem Neustart: Rocky löst die bestehenden
+CSS-Familien `Arial` und `Courier New` ohne Liberation-Schriften auf Noto auf.
+Ein gezielter Vergleich desselben Modells/Renderers und Chromium-Builds zeigt
+an den zwei betroffenen Mathematikseiten 9 bzw. 13 Pixel Relationsüberlauf;
+mit den lokal verwendeten Liberation-Schriften passen beide Seiten.
+
+Der Aufbau prüft deshalb vor jedem Rendern und jeder Cacheverwendung explizit
+`Arial` → `Liberation Sans` sowie `Courier New` → `Liberation Mono`, jeweils
+Regular, Bold, Italic und Bold Italic mit tatsächlichem Gewicht und Neigung.
+Andere Familien oder fehlende Schriftschnitte scheitern früh mit konkretem
+Installationshinweis. Bestehende Fontdateihashes und Layoutgates bleiben
+unverändert verbindlich. CI installiert `fonts-liberation` ausdrücklich;
+Produktion darf die geprüften vollständigen Schriftdateien samt Lizenz als
+reguläre Benutzerfonts verwenden. Das ändert weder Renderer, CSS, Seitenbudget
+noch Freigaben und weicht kein Overflow-Gate auf.
+
+Diese eng begrenzte Umsetzung gehört zur expliziten Freigabe aus Abschnitt
+6.62, den Quellenbuild einschließlich Produktionsumstellung vollständig
+funktionsfähig abzuschließen. Die neue Preflight-Regression umfasst passende
+Familien, Noto-Fallback, fehlende Schriftschnitte und fehlendes Fontconfig.
+Append-only fortgeschrieben werden ausschließlich die bestehenden
+Supplemental-Bindungen von `.github/workflows/ci.yml` und diesem Nachtrag;
+keine neue Datei wird eingefroren. Frühere Ausnahmen, primäre Runtime- und
+Baumketten, eingereichte OpenAI-/Claude-Pakete, MCP/OAuth/Tools/Schemas,
+MCP-Apps-Ressourcen, Start-/Session-/Identitäts-/Locale-/Lernzustandsverträge,
+Speicher-/Sicherheitssemantik, Portalwerte, Reviewfälle, Fixtures und
+Reviewartefakte bleiben unverändert. Keine weitere Historienumschreibung,
+keine Neueinreichung und keine Wiederaufnahme der allgemeinen Curriculum-QS.

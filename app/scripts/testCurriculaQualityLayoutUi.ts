@@ -121,9 +121,9 @@ try {
       assert(goalBookDefinitionById(bookId), `${subject} has its national book in the publication registry`)
       const link = subjectCard.getByRole('link', { name: `${subject}: Lernziele öffnen`, exact: true })
       assert(await link.getAttribute('href') === goalBookRoute(bookId), `${subject} opens its registered goal book, not an unbound feedback form`)
+      assert(await subjectCard.locator('p').count() === 0, `${subject} entry shows only the subject and opening action, without scope details`)
     }
-    assert(await feedback.getByText('Bundesweite Übersicht mit Geltung und Originalquellen je Lernziel', { exact: true }).count() === 1, 'Chemistry links the national atlas and its source matrix')
-    assert(await feedback.getByText('Sek I: 16 Länder; Sek II: derzeit Hessen und Bayern', { exact: true }).count() === 1, 'Biology states its actual source coverage instead of claiming unsupported upper-secondary scopes')
+    assert(await feedback.getByText('Issues und Pull Requests sind dort möglich.', { exact: false }).count() === 1, 'GitHub copy states the available actions without migration wording')
     assert(await feedback.getByText('Für weitere Curricula ohne direkten Feedbackeinstieg nutze ebenfalls GitHub und nenne das Curriculum und das Thema.', { exact: true }).count() === 1, 'other curricula retain an explicit and honest GitHub fallback')
     assert(
       await feedback.getByRole('link', { name: 'Größeres Thema auf GitHub besprechen', exact: true }).getAttribute('href') === 'https://github.com/enpasos/skillpilot/issues',
@@ -201,8 +201,8 @@ try {
       await page.getByRole('button', { name: 'EN', exact: true }).click()
       await page.getByRole('heading', { name: 'Improve curricula together', exact: true }).waitFor()
       assert(await feedback.getByText('Public goal feedback does not require a GitHub account or Champion registration.', { exact: true }).count() === 1, 'English copy preserves the public-feedback boundary')
-      assert(await feedback.getByText('Nationwide overview with applicability and original sources per goal', { exact: true }).count() === 1, 'English Chemistry copy describes the national atlas')
-      assert(await feedback.getByText('Lower secondary: 16 states; upper secondary: currently Hesse and Bavaria', { exact: true }).count() === 1, 'English Biology copy states the actual source coverage')
+      assert(await feedback.getByTestId('curricula-feedback-subject').locator('p').count() === 0, 'English subject entries also omit scope details')
+      assert(await feedback.getByText('Issues and pull requests are available there.', { exact: false }).count() === 1, 'English GitHub copy also states the available actions')
       assert(await page.getByRole('button', { name: 'Connect with GitHub', exact: true }).isVisible(), 'English Champion registration keeps the same action')
       assert(await card.getByText('Learning progress', { exact: true }).count() === 1, 'English learning progress remains visible')
       assert(await feedback.getByRole('link', { name: 'Mathematics: Open learning goals', exact: true }).getAttribute('href') === goalBookRoute('de-gym-mathematik-bundesweit'), 'English feedback uses the same actual mathematics book')

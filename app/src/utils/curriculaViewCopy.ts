@@ -11,7 +11,7 @@ export interface CurriculaViewCopy {
   feedbackDescription: string
   feedbackSteps: string
   feedbackAccessNote: string
-  feedbackSubjects: readonly { label: string; bookId: string; scopeNote?: string }[]
+  feedbackSubjects: readonly { label: string; bookId: string }[]
   openGoals: string
   feedbackNotAvailable: string
   githubFallback: string
@@ -47,14 +47,14 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
         feedbackSubjects: [
           { label: 'Mathematics', bookId: 'de-gym-mathematik-bundesweit' },
           { label: 'Physics', bookId: 'de-gym-physik-bundesweit' },
-          { label: 'Chemistry', bookId: 'de-gym-chemie-bundesweit', scopeNote: 'Nationwide overview with applicability and original sources per goal' },
-          { label: 'Biology', bookId: 'de-gym-biologie-bundesweit', scopeNote: 'Lower secondary: 16 states; upper secondary: currently Hesse and Bavaria' },
+          { label: 'Chemistry', bookId: 'de-gym-chemie-bundesweit' },
+          { label: 'Biology', bookId: 'de-gym-biologie-bundesweit' },
         ],
         openGoals: 'Open learning goals',
         feedbackNotAvailable: 'A direct goal-feedback entry is not available here yet.',
         githubFallback: 'Give feedback on GitHub',
         githubTitle: 'Larger ideas and technical topics',
-        githubDescription: 'Use GitHub for broader changes, topics spanning several goals and technical issues. Issues and pull requests remain available there.',
+        githubDescription: 'Use GitHub for broader changes, topics spanning several goals and technical issues. Issues and pull requests are available there.',
         githubAction: 'Discuss a larger topic on GitHub',
         otherCurriculaFeedback: 'For other curricula without a direct goal-feedback entry, please also use GitHub and name the curriculum and topic.',
         championIntroTitle: 'What is a Curriculum Champion?',
@@ -104,14 +104,14 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
         feedbackSubjects: [
           { label: 'Mathematik', bookId: 'de-gym-mathematik-bundesweit' },
           { label: 'Physik', bookId: 'de-gym-physik-bundesweit' },
-          { label: 'Chemie', bookId: 'de-gym-chemie-bundesweit', scopeNote: 'Bundesweite Übersicht mit Geltung und Originalquellen je Lernziel' },
-          { label: 'Biologie', bookId: 'de-gym-biologie-bundesweit', scopeNote: 'Sek I: 16 Länder; Sek II: derzeit Hessen und Bayern' },
+          { label: 'Chemie', bookId: 'de-gym-chemie-bundesweit' },
+          { label: 'Biologie', bookId: 'de-gym-biologie-bundesweit' },
         ],
         openGoals: 'Lernziele öffnen',
         feedbackNotAvailable: 'Hier gibt es noch keinen direkten Einstieg zum Lernziel-Feedback.',
         githubFallback: 'Feedback auf GitHub geben',
         githubTitle: 'Größere Ideen und technische Themen',
-        githubDescription: 'Für größere Änderungen, Themen über mehrere Lernziele hinweg und technische Probleme ist GitHub der passende Ort. Issues und Pull Requests bleiben dort möglich.',
+        githubDescription: 'Für größere Änderungen, Themen über mehrere Lernziele hinweg und technische Probleme ist GitHub der passende Ort. Issues und Pull Requests sind dort möglich.',
         githubAction: 'Größeres Thema auf GitHub besprechen',
         otherCurriculaFeedback: 'Für weitere Curricula ohne direkten Feedbackeinstieg nutze ebenfalls GitHub und nenne das Curriculum und das Thema.',
         championIntroTitle: 'Was ist ein Curriculum-Champion?',

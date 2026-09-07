@@ -4121,6 +4121,29 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "ca4ce3b609b4249f3fa640c515d8bc84a1f44c2c653aa738487fdeb52f26af54"
         }
       ]
+    },
+    {
+      "id": "2026-09-07-goal-book-print-font-preflight",
+      "approvedAt": "2026-09-07",
+      "approvedBy": "product-owner",
+      "reason": "Complete the expressly approved source-build and production migration: the unchanged overflow gate rejected two pages when Rocky silently substituted Noto for missing Liberation fonts. Requiring the successful print-font families fixes the environment without changing the renderer.",
+      "scope": "Require Arial to resolve to Liberation Sans and Courier New to Liberation Mono with actual Regular, Bold, Italic and Bold Italic weight/slant before rendering or cache reuse; retain exact fontfile hashes and all existing layout/publication gates. Install fonts-liberation explicitly in CI and document equivalent system or verified user-font setup. Append section 6.64 and bind only the existing CI/documentation supplemental hashes. No renderer, CSS, page-budget or content changes; no blanket fallback acceptance. Preserve prior exceptions, submitted OpenAI/Claude packages, MCP/OAuth/tools/schemas/MCP-Apps resources, coach launch/session/identity/locale/learning-state/privacy/storage/security contracts, portal, review cases, fixtures and review artifacts. No further history rewrite or general curriculum QA resumption.",
+      "target": "portable-goal-book-build-prerequisites-and-fail-closed-font-preflight",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-build-prerequisite-completion-with-unchanged-submitted-contract",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "priorAuthorizedSha256": "af5eca8f65a4047051b50e23d0a482ff7708fc84555e02bf9286535bbcc20d7b",
+          "authorizedSha256": "50fc73239b1819fa2c144b75bcca30ade195759e6f4b5251c96cbdfb719af228"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "ca4ce3b609b4249f3fa640c515d8bc84a1f44c2c653aa738487fdeb52f26af54",
+          "authorizedSha256": "610ba35efa74917c152e6fc0ca9f602650cd911309900a82228cf95a9f6ea250"
+        }
+      ]
     }
   ]);
 });

@@ -58,8 +58,62 @@ const publicationFilenames = (): string[] => [
   GOAL_BOOK_BUILD_CACHE_FILE,
 ]
 
+type GoalBookPrintFontMatch = {
+  family: string
+  style: string
+  weight: number
+  slant: number
+}
+
+type GoalBookPrintFontResolver = (family: string, style: string) => Promise<GoalBookPrintFontMatch>
+
+const GOAL_BOOK_PRINT_FONT_FAMILIES = [
+  { requested: 'Arial', required: 'Liberation Sans' },
+  { requested: 'Courier New', required: 'Liberation Mono' },
+] as const
+
+// Fontconfig's FC_WEIGHT_REGULAR/BOLD and FC_SLANT_ROMAN/ITALIC values. Checking
+// faces prevents a missing bold/italic file from silently resolving to Regular.
+const GOAL_BOOK_PRINT_FONT_FACES = [
+  { style: 'Regular', weight: 80, slant: 0 },
+  { style: 'Bold', weight: 200, slant: 0 },
+  { style: 'Italic', weight: 80, slant: 100 },
+  { style: 'Bold Italic', weight: 200, slant: 100 },
+] as const
+
+const PRINT_FONT_INSTALL_HINT = 'Install the reviewed print fonts: Ubuntu/Debian: sudo apt-get install fonts-liberation fontconfig; Rocky/RHEL/Fedora: sudo dnf install liberation-sans-fonts liberation-mono-fonts fontconfig. Then run fc-cache -f and retry. If these fonts are installed, check fontconfig overrides; the requested families must resolve to Liberation Sans and Liberation Mono.'
+
+const resolveGoalBookPrintFont: GoalBookPrintFontResolver = async (family, style) => {
+  const { stdout } = await execFileAsync('fc-match', [
+    '--format', '%{family}\t%{style}\t%{weight}\t%{slant}\n', `${family}:style=${style}`,
+  ])
+  const [matchedFamily, matchedStyle, weight, slant] = stdout.trim().split('\t')
+  return { family: matchedFamily, style: matchedStyle, weight: Number(weight), slant: Number(slant) }
+}
+
+/** Fail before rendering instead of silently changing the reviewed page geometry. */
+export const verifyGoalBookPrintFonts = async (
+  resolveFont: GoalBookPrintFontResolver = resolveGoalBookPrintFont,
+): Promise<void> => {
+  for (const { requested, required } of GOAL_BOOK_PRINT_FONT_FAMILIES) {
+    for (const face of GOAL_BOOK_PRINT_FONT_FACES) {
+      let actual: GoalBookPrintFontMatch
+      try {
+        actual = await resolveFont(requested, face.style)
+      } catch (error) {
+        throw new Error(`Goal-book print font preflight failed for ${requested} (${face.style}): ${error instanceof Error ? error.message : String(error)}. ${PRINT_FONT_INSTALL_HINT}`)
+      }
+      if (actual.family !== required || actual.weight !== face.weight || actual.slant !== face.slant) {
+        throw new Error(`Goal-book print font mismatch: ${requested} (${face.style}) resolved to ${actual.family || '(missing family)'} (${actual.style || '(missing face)'}, weight=${actual.weight}, slant=${actual.slant}); expected ${required} (${face.style}, weight=${face.weight}, slant=${face.slant}). ${PRINT_FONT_INSTALL_HINT}`)
+      }
+    }
+  }
+}
+
 /** All effective data are in the rebuilt model/source index; also bind rendering code and tools. */
 const renderEnvironmentDigest = async (chromiumExecutablePath: string): Promise<string> => {
+  await verifyGoalBookPrintFonts()
+  console.log('Goal-book print fonts verified: Arial -> Liberation Sans; Courier New -> Liberation Mono (Regular, Bold, Italic, Bold Italic)')
   const paths = [
     'scripts/buildGoalBookPublications.ts',
     'scripts/goalBookBuildCache.ts',

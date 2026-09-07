@@ -14,11 +14,12 @@ The normal production command is:
 ```
 
 The production host must provide Poppler (`pdfinfo`, `pdftohtml`) and
-Fontconfig (`fc-list`, `fc-match`) for the learning-goal-book build and its
+Fontconfig (`fc-list`, `fc-match`) and Liberation Sans/Mono in all four
+regular/bold/italic/bold-italic faces for the learning-goal-book build and its
 fail-closed publication checks. On Rocky Linux, RHEL, or Fedora:
 
 ```bash
-sudo dnf install poppler-utils fontconfig
+sudo dnf install poppler-utils fontconfig liberation-sans-fonts liberation-mono-fonts
 ```
 
 The deployment checks these commands before updating the Git checkout or

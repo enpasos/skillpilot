@@ -205,7 +205,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install PDF and font tools
-        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
         run: npx --no-install playwright install --with-deps chromium
       - name: Prepare generated curriculum runtime assets
@@ -259,7 +259,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install FFmpeg and PDF validation tools
-        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
         run: npx --no-install playwright install --with-deps chromium
       - name: Restore same-run verified goal-book publications
@@ -388,7 +388,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install PDF validation tools
-        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
         run: npx --no-install playwright install --with-deps chromium
       - name: Restore same-run verified goal-book publications
