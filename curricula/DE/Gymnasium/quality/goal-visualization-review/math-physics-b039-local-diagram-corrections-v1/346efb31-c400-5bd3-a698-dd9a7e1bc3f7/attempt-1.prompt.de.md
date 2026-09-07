@@ -1,0 +1,5 @@
+# Gezielte Korrektur der Wachstumsskala
+
+Bearbeite das bereitgestellte Bild im gleichen lockeren, handgezeichneten Stil. Bewahre Titel, Farben, Gliederung, Formeln, Tabelle und Zerfallsbeispiel. Ändere nur das quantitative Wachstumsdiagramm im Feld „Graph“ so, dass es mathematisch maßstäblich ist.
+
+Zeichne dort gleichmäßig skalierte Achsen: t horizontal von 0 bis 3 in gleichen Schritten; f(t) vertikal von 0 bis 100 in gleich hohen 25er-Schritten. Der Ursprung ist (0,0). Zeichne f(t)=50·1,2^t als sanft konvexe wachsende Kurve, mit Punkten (0,50), (1,60), (2,72), (3,86,4). Der erste Punkt liegt exakt auf halber Höhe der 0-bis-100-Skala; die weiteren Punkte liegen auf 60%, 72% und 86,4% dieser Höhe. Die Höhenzunahmen müssen 10, 12 und 14,4 abbilden; nicht die 0-bis-50-Strecke stauchen. Markiere die vier Punkte, aber vermeide überladene Koordinatentexte: Die vorhandene Tabelle trägt die Werte bereits. Klare gleichmäßige dünne Rasterlinien helfen. Keine Achsenunterbrechung, keine logarithmische Skala. Alle mathematischen Inhalte außerhalb dieses Graphfeldes bleiben unverändert.

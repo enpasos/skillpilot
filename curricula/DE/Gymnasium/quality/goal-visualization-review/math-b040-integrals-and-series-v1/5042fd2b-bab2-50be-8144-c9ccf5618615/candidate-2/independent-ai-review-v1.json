@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtObserved": "2026-09-07 00:47:28 UTC",
+  "reviewer": {
+    "agent": "/root/math_b039_blind_a",
+    "provider": "OpenAI",
+    "product": "Codex",
+    "underlyingModel": "exact model identifier unavailable",
+    "authority": "ai_candidate_review",
+    "humanApproval": false,
+    "modelDiversityClaimed": false
+  },
+  "goalId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+  "candidateNumber": 2,
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/5042fd2b-bab2-50be-8144-c9ccf5618615/candidate-2/5042fd2b-bab2-50be-8144-c9ccf5618615.generated.2026-09-07T00-28-31-554Z.jpg",
+    "sha256": "sha256:70323102f6377a097baba8e612d8b456ee6507c045562adca93c9cb645ce73c7",
+    "actuallyViewed": true,
+    "viewMethod": "view_image",
+    "originalResolutionReinspection": false
+  },
+  "archiveReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/5042fd2b-bab2-50be-8144-c9ccf5618615/candidate-2/archive-receipt.json",
+    "sha256": "sha256:0492456724ea49a6cea0bc416576e0b8b43d0a1f60dd0ddf35b74fe15f3f7c7a",
+    "candidateFilesVerified": 8
+  },
+  "goalContext": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "title": "Graphen von Integrand und Integralfunktion wechselseitig deuten",
+    "description": "Die lernende Person kann vom Graphen einer Funktion auf den Verlauf einer zugehörigen Integralfunktion schließen und umgekehrt aus einer Integralfunktion den Graphen der Integrandenfunktion erschließen.",
+    "translations": null,
+    "requires": [
+      "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "90662398-a0fd-45bf-9ce9-2abbc20428ed"
+    ]
+  },
+  "decision": "accept",
+  "subjectSpecificChecks": [
+    "f(x)=2−x hat bei x=2 die Nullstelle und wechselt dort von positiv zu negativ.",
+    "F(x)=2x−x²/2 erfüllt F'=f und besitzt den Hochpunkt (2|2) sowie Nullstellen 0 und 4; die beiden Graphen passen dazu.",
+    "Die Pfeile f>0→F steigt, f=0→waagerechte Tangente und f<0→F fällt sind korrekt. Im konkreten Vorzeichenwechsel wird der Hochpunkt sachgerecht gezeigt."
+  ],
+  "limitationsAndNotes": [],
+  "minimalCorrection": null,
+  "scope": {
+    "visualCandidateReviewOnly": true,
+    "descriptionReviewDecision": false,
+    "importedByThisReview": false,
+    "activeAssetsChanged": false,
+    "canonicalFieldsChanged": false
+  },
+  "provenance": {
+    "otherReviewerRecordsRead": false,
+    "fullyBlinded": false,
+    "explanation": "Candidate choice and preceding workflow context were supplied by the parent; no other review decision record was read for this visual judgment.",
+    "timing": "Actual image views took place in this active review turn. Exact per-image view timestamps were not logged; the observed timestamp above is the documentation time, not an invented invocation start."
+  }
+}

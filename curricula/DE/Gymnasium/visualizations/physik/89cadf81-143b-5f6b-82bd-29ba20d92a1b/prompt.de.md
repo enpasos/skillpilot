@@ -4,11 +4,11 @@
 
 - SkillPilot-ID: `89cadf81-143b-5f6b-82bd-29ba20d92a1b`
 - Titel: 3. Kepler-Gesetz per Skalierungsargument herleiten (LK)
-- Beschreibung: Die lernende Person kann allein aus der Skalierung der Bewegungsgleichung im Newtonschen Gravitationsfeld (ohne explizite Bahnrechnung) das Verhältnis zwischen Umlaufzeit $T$ und Bahnradius $a$ bestimmen und so die Exponenten des dritten Kepler-Gesetzes herleiten ($T^2 \propto a^3$).
+- Beschreibung: Die lernende Person kann aus der Skalierung der Bewegungsgleichung im Newtonschen Gravitationsfeld bei gleicher Zentralmasse und geometrisch ähnlichen Bahnen ohne explizite Bahnrechnung den Zusammenhang $T^2 \propto a^3$ zwischen Umlaufzeit $T$ und großer Halbachse $a$ herleiten.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `89cadf81-143b-5f6b-82bd-29ba20d92a1b.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/89cadf81-143b-5f6b-82bd-29ba20d92a1b/89cadf81-143b-5f6b-82bd-29ba20d92a1b.jpg`
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -27,35 +27,24 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: 3. Kepler-Gesetz per Skalierungsargument herleiten (LK)
+Titel: 3. Kepler-Gesetz per Skalierungsargument herleiten
 Beschreibung: Die lernende Person kann allein aus der Skalierung der Bewegungsgleichung im Newtonschen Gravitationsfeld (ohne explizite Bahnrechnung) das Verhältnis zwischen Umlaufzeit $T$ und Bahnradius $a$ bestimmen und so die Exponenten des dritten Kepler-Gesetzes herleiten ($T^2 \propto a^3$).
 
 Zusatzanweisung:
-Pflichtinhalt:
+# Fachliche Bildkorrektur: Kepler-Skalierung
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German LK-level infographic for deriving the third Kepler law by scaling.
-- Use a formula balance, not a detailed orbit simulation.
-- Required formula chain:
-  - `Gravitation: F_G ~ 1/a^2`
-  - `Zentripetal: a_z ~ a/T^2`
-  - `m*a/T^2 ~ G*M*m/a^2`
-  - `T^2 ~ a^3`
-  - `T^2/a^3 = konstant`
-- Include a small check table:
-  - `a = 1 -> T = 1`
-  - `a = 4 -> T = 8`
-  - both rows have `T^2/a^3 = 1`
-- Optional visual: two circular orbit outlines with radii `a` and `4a`, no arrowheads.
-- Add note: `M bleibt gleich; nur die Groessenskala a wird verglichen`.
+Use case: precise-object-edit / scientific-educational.
+Input image 1: zu korrigierendes Lernzielbild und Stilreferenz. Behalte den freundlichen blauen Hintergrund, handgezeichnete Skizzen, farbige Formelkästen und die klare Schrift. Titel: „3. Kepler-Gesetz per Skalierungsargument herleiten (LK)“.
 
-Vermeiden:
+Entferne die WAAGE und jeden Text „Gleichgewicht der Kräfte“ vollständig. Gravitation ist die Ursache der Beschleunigung, keine Gegenkraft zur Zentripetalkraft. Entferne sämtliche fehlerhaften Durchstreichungen; am sichersten GAR KEINE Kürzungsstriche.
 
-- Do not write `T ~ a^3`.
-- Do not write `T^3 ~ a^2`.
-- Do not put `m` in the final constant; it cancels.
-- Do not draw force arrows unless they point from a planet to the central mass.
-- Do not add orbit direction arrows.
+Drei klare Bereiche:
+1. Links zwei geometrisch ähnliche schematische Umlaufbahnen um dieselbe Zentralmasse M. Längenskalen „a“ und „4a“. Kreise sind zur Illustration zulässig; klein „ähnliche Bahnen; schematisch“. Darunter: „Gleiche Zentralmasse M; geometrisch ähnliche Bahnen“. Kleine Planetenmassen gegenüber M vorausgesetzt.
+2. Mitte ein nachvollziehbarer Skalierungsweg OHNE Waage und OHNE explizite Lösung einer Bahn. Überschrift „Gravitation bewirkt Beschleunigung“. Kästen: „Gravitationsbeschleunigung: proportional 1/a²“; „Beschleunigung der Bahnbewegung: proportional a/T²“. Zusammenführung: „a/T² ∝ 1/a²“. Dann „T² ∝ a³“. Kein a darf gestrichen werden. Verwende statt unklarer Doppelnutzung des Buchstabens a für Beschleunigung die ausgeschriebenen Begriffe. Zusatz: „Die Zeit skaliert mit der Längenskala hoch 3/2.“
+3. Rechts eine kleine Vergleichstabelle mit drei Spalten „Längenskala“, „Zeitskala“, „T²/a³“. Zeilen „1 | 1 | 1“ und „4 | 8 | 64/64 = 1“. Bezeichne die Zahlen ausdrücklich als relative Skalen, nicht als Einheitenwerte.
+
+Unten: „T²/a³ bleibt konstant – bei gleicher Zentralmasse und ähnlicher Bahnform.“
+Keine sich aufhebenden Kräfte, keine Gleichgewichtsmetapher, keine vertauschten Proportionalitäten, keine doppelten oder abgeschnittenen Formeln. Behalte den lockeren Stil, aber gib allen Formeln und Beschriftungen ausreichend Raum.
 ```
 
 ## Review-Notiz

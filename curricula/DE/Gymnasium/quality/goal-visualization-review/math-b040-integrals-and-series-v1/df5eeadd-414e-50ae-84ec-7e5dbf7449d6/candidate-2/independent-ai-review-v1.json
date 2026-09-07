@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtObserved": "2026-09-07 00:47:28 UTC",
+  "reviewer": {
+    "agent": "/root/math_b039_blind_a",
+    "provider": "OpenAI",
+    "product": "Codex",
+    "underlyingModel": "exact model identifier unavailable",
+    "authority": "ai_candidate_review",
+    "humanApproval": false,
+    "modelDiversityClaimed": false
+  },
+  "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+  "candidateNumber": 2,
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/df5eeadd-414e-50ae-84ec-7e5dbf7449d6/candidate-2/df5eeadd-414e-50ae-84ec-7e5dbf7449d6.generated.2026-09-07T00-28-32-038Z.jpg",
+    "sha256": "sha256:cffa8387e37365913b8bc283dd5c28ea28f703e3b3be66a4778e4a6f2f636ceb",
+    "actuallyViewed": true,
+    "viewMethod": "view_image",
+    "originalResolutionReinspection": true
+  },
+  "archiveReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/df5eeadd-414e-50ae-84ec-7e5dbf7449d6/candidate-2/archive-receipt.json",
+    "sha256": "sha256:65931aaf9d7a80c6f425ce31639d31fbb53e98e30e4e1b9323e0accb383075ab",
+    "candidateFilesVerified": 8
+  },
+  "goalContext": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "title": "Digitale Werkzeuge für numerische Analysen einsetzen",
+    "description": "Die lernende Person kann digitale Werkzeuge nutzen, um Nullstellen, Extremstellen oder Integrale numerisch zu bestimmen, Ergebnisse kritisch zu prüfen und mit analytischen Verfahren zu vergleichen.",
+    "translations": null,
+    "requires": [
+      "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+      "f40fcaf7-c630-589c-9f48-6c9e69da0b9d"
+    ]
+  },
+  "decision": "reject",
+  "subjectSpecificChecks": [
+    "Nullstellen von 3x²−7 sind ±√(7/3)≈±1,53; Scheitel (0|−7) und beide Nullstellen sind richtig dargestellt.",
+    "Für −(x−1)²+3 ist der Hochpunkt (1|3) korrekt; f'(x)=−2(x−1) liefert x=1.",
+    "Für x+1 auf [0,2] stimmt der Trapezinhalt 4 und die Stammfunktion x²/2+x. Die Auswertungsklammer der handschriftlichen exakten Rechnung hat jedoch statt der unteren Grenze 0 die sichtbar fehlerhafte Zeichenfolge 'ble 2'."
+  ],
+  "limitationsAndNotes": [
+    "Die fehlerhafte untere Auswertungsgrenze wurde in Originalauflösung bestätigt. 'x=1,53' im numerisch markierten Display ist zusätzlich besser mit ≈ zu setzen; die minimale Hauptkorrektur betrifft die korrumpierte Grenznotation."
+  ],
+  "minimalCorrection": "Ausschließlich die rechte exakte Integralrechnung sauber setzen: ∫₀²(x+1)dx=[x²/2+x]₀²=(2+2)−0=4; die Zeichenfolge 'ble 2' restlos entfernen. Optional die gerundete Display-Nullstelle als x≈1,53 beschriften. Graphen und übrige Darstellung erhalten.",
+  "scope": {
+    "visualCandidateReviewOnly": true,
+    "descriptionReviewDecision": false,
+    "importedByThisReview": false,
+    "activeAssetsChanged": false,
+    "canonicalFieldsChanged": false
+  },
+  "provenance": {
+    "otherReviewerRecordsRead": false,
+    "fullyBlinded": false,
+    "explanation": "Candidate choice and preceding workflow context were supplied by the parent; no other review decision record was read for this visual judgment.",
+    "timing": "Actual image views took place in this active review turn. Exact per-image view timestamps were not logged; the observed timestamp above is the documentation time, not an invented invocation start."
+  }
+}

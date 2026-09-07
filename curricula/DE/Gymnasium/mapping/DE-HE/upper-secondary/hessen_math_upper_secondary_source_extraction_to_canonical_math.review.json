@@ -459,8 +459,14 @@
     },
     {
       "legacyGoalId": "he-math-sekii-e-7-b02-a01-3682072e",
-      "canonicalGoalId": "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
-      "matchType": "exact",
+      "canonicalGoalId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+      "matchType": "partial",
+      "reviewDecisionId": "he-math-sekii-e-7-b02-a01-3682072e"
+    },
+    {
+      "legacyGoalId": "he-math-sekii-e-7-b02-a01-3682072e",
+      "canonicalGoalId": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+      "matchType": "partial",
       "reviewDecisionId": "he-math-sekii-e-7-b02-a01-3682072e"
     },
     {
@@ -3408,11 +3414,12 @@
       "sourceSpan": "Untersuchen von arithmetischen und geometrischen Reihen sowie deren Grenzwerten",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b"
+        "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+        "74b5a01b-c086-51d0-bc66-046029c92ef7"
       ],
-      "rationale": "Das Reihen-Ziel wurde geschärft, sodass Partialsummen arithmetischer und geometrischer Reihen, Summenformeln sowie Grenzwerte beziehungsweise Divergenz der Reihen prüfbar enthalten sind.",
-      "reviewedAt": "2026-05-05",
-      "reviewer": "codex"
+      "rationale": "Der unveränderte Originalaspekt E.7, S. 34, verlangt die Untersuchung arithmetischer und geometrischer Reihen einschließlich ihrer Grenzwerte. Nach ausdrücklich freigegebenem fachlichem Split decken die beiden atomaren Ziele jeweils eine Reihenfamilie mit Partialsummenformel und begründetem Grenzverhalten ab; gemeinsam erhalten sie den vollständigen bisherigen Scope. Jede einzelne Zielbindung ist eine Teilabdeckung, kein vollständiges exact-Match. Die frühere gebündelte Zuordnung bleibt im Before-Receipt erhalten; keine neue Quellen- oder menschliche Review-Autorität wird behauptet.",
+      "reviewedAt": "2026-09-07",
+      "reviewer": "OpenAI Codex; root-authorized Layer-A split; underlying model unknown"
     },
     {
       "sourceGoalId": "he-math-sekii-q1-1-b01-a01-2d704412",

@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `911f3200-1dbc-59a6-90df-c883c77de39c.jpg`
 
 ## Zweck
@@ -18,21 +18,15 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, modernes, digitales Präsentationsdesign auf einem hellblauen Hintergrund mit einem subtilen horizontalen Farbverlauf, der oben leicht dunkler ist. Oben mittig steht der Titel "Geometrische Reihen in Anwendungen nutzen (LK)" in fetter schwarzer serifenloser Schrift.
+Ein klares, modernes, lehrreiches Infografik-Bild im flachen Design mit subtilen Farbverläufen. Der Hintergrund ist ein sanfter hellblauer Farbverlauf, der von oben nach unten leicht dunkler wird. Oben mittig steht der Titel in fetter schwarzer serifenloser Schrift: "Geometrische Reihen in Anwendungen nutzen (LK)".
 
-Darunter befinden sich drei abgerundete, rechteckige weiße Panels mit einem leichten hellblauen Schatten, horizontal angeordnet. Das linke Panel ist am breitesten, das mittlere etwas schmaler und das rechte am schmalsten.
+Darunter sind drei horizontal angeordnete, abgerundete weiße Rechtecke mit einem hellblauen Rand platziert, die jeweils einen Abschnitt der Infografik darstellen.
 
-**Linkes Panel (1. Anwendungssituation):**
-Oben links steht der Titel "1. Anwendungssituation: Echo-Intensität (Wiederholte Halbierung)" in fetter schwarzer Schrift. Darunter ist eine Illustration zu sehen: Zwei stilisierte, gezackte braune Felsformationen (Klippen) stehen sich gegenüber und bilden ein Tal. Die linke Klippe ist höher. Auf der linken Klippe, oben links, ist ein schwarzes Umriss-Lautsprechersymbol mit drei nach rechts gerichteten Schallwellen zu sehen. Mehrere hellblaue, sprechblasenartige Formen schweben zwischen den Klippen, von links nach rechts kleiner und blasser werdend. Die erste, größte und kräftigste blaue Blase enthält den schwarzen Text "1. Echo (80)". Die zweite Blase enthält "2. Echo (40)". Die dritte Blase enthält "3. Echo (20)". Die vierte Blase enthält "4. Echo (10)". Danach folgen zwei kleinere, leere, sehr blasse hellblaue Blasen und eine Ellipse "...".
+Der linke Abschnitt, betitelt "1. Anwendung: Energie empfangener Echos" in fetter schwarzer Schrift, enthält darunter den Text "Idealisiertes Modell: jedes Echo liefert die halbe Energie" in normaler schwarzer Schrift. Darunter befindet sich eine Illustration von zwei stilisierten, braunen Felsformationen oder Klippen, die sich gegenüberstehen und ein Tal bilden. Die linke Klippe ist höher und detaillierter, die rechte ist niedriger. Auf der linken Klippe, oben links, ist ein schwarzes Umriss-Symbol eines Lautsprechers mit drei nach rechts gerichteten Schallwellenlinien zu sehen. Zwischen den Klippen sind mehrere hellblaue, Sprechblasen-ähnliche Formen horizontal angeordnet, deren Größe von links nach rechts abnimmt. Die ersten vier Sprechblasen enthalten schwarzen Text: Die größte links lautet "1. Echo (80 µJ)", die nächste "2. Echo (40 µJ)", dann "3. Echo (20 µJ)" und die vierte "4. Echo (10 µJ)". Nach der vierten Sprechblase folgen drei kleinere, leere, hellblaue Kreise und dann eine Ellipse (...), die eine Fortsetzung andeutet.
 
-**Mittleres Panel (2. Tabelle & Reihe):**
-Oben links steht der Titel "2. Tabelle & Reihe (Modellierung)" in fetter schwarzer Schrift. Darunter ist eine Tabelle mit schwarzen Rändern. Die Kopfzeile ist blau mit weißem Text: "Nr." (links) und "Intensität" (rechts). Die Datenzeilen haben einen weißen Hintergrund und schwarzen Text:
-1 | 80
-2 | 40
-3 | 20
-4 | 10
-Unter der Tabelle steht der schwarze Text "Reihe: 80 + 40 + 20 + 10 + ...". Darunter steht "Startwert: a = 80 Faktor: q = ½" in schwarzer Schrift, wobei der Bruch ½ korrekt formatiert ist. Darunter befindet sich ein abgerundetes, rechteckiges weißes Feld mit einem dicken schwarzen Umriss. Darin steht der schwarze Text "Summenformel (unendlich):" und die mathematische Formel "S = a / (1 - q) = 80 / (1 - ½) = 160", wobei die Brüche korrekt vertikal ausgerichtet sind.
+Der mittlere Abschnitt ist betitelt "2. Tabelle & Reihe (Modellierung)" in fetter schwarzer Schrift. Darunter ist eine weiße Tabelle mit schwarzem Rand dargestellt, die zwei Spalten und fünf Zeilen hat. Die Kopfzeile ist hellblau hinterlegt mit weißer Schrift: "Nr." in der linken Spalte und "Energie (µJ)" in der rechten Spalte. Die Datenzeilen darunter haben einen weißen Hintergrund und schwarzen Text: "1 | 80", "2 | 40", "3 | 20", "4 | 10". Unter der Tabelle steht der Text "Reihe: 80 + 40 + 20 + 10 + ..." in schwarzer Schrift. Darunter befindet sich ein weiteres abgerundetes weißes Rechteck mit schwarzem Rand, das eine mathematische Formel enthält. Der Text darin lautet: "Startwert: a = 80 µJ Faktor: q = ½". Darunter steht "Summenformel (unendlich):" gefolgt von der Formel "S = a / (1 - q) = 80 / (1 - ½) = 160 µJ". Die Brüche sind korrekt mit horizontalen Bruchlinien dargestellt.
 
-**Rechtes Panel (4. Interpretation):**
-Oben links steht der Titel "4. Interpretation (Ergebnis)" in fetter schwarzer Schrift. Darunter ist eine große, prominente hellblaue Sprechblase mit einem dicken schwarzen Umriss. Darin steht zentriert in schwarzer Schrift: "Gesamt-", "Intensität", "(Grenzwert)", und darunter in größerer, fetter Schrift "S = 160". Unter der Sprechblase steht der schwarze Text "Interpretation:", gefolgt von "Modellierte", "Gesamtintensität", "nähert sich 160.".
+Der rechte Abschnitt ist betitelt "3. Interpretation (Ergebnis)" in fetter schwarzer Schrift. Darunter ist eine große, hellblaue Sprechblase mit einem dicken schwarzen Rand abgebildet. In der Sprechblase steht in schwarzer Schrift: "Summierte Empfangsenergie", darunter in Klammern "(Grenzwert)", und darunter in größerer, fetter schwarzer Schrift "S = 160 µJ". Unter dieser Sprechblase steht der Text "Interpretation:" in fetter schwarzer Schrift, gefolgt von "Die Summe der empfangenen Echo-Energien nähert sich im Modell 160 µJ." in normaler schwarzer Schrift.
+
+Das gesamte Bild hat einen sauberen, professionellen und leicht verständlichen Stil, der für Bildungszwecke geeignet ist.
 ```

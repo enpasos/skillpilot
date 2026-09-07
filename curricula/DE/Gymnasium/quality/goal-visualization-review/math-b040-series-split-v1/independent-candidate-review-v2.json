@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "reviewRevision": 2,
+  "documentedAtObserved": "2026-09-07 00:55:07 UTC",
+  "reviewAuthority": "OpenAI / Codex AI candidate visual review",
+  "humanApproval": false,
+  "descriptionReviewApproval": false,
+  "activeAssetImport": false,
+  "previousVersionPreserved": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-series-split-v1/independent-candidate-review-v1.json",
+  "counts": {
+    "reviewed": 1,
+    "actuallyViewed": 1,
+    "accepted": 1,
+    "rejected": 0
+  },
+  "records": [
+    {
+      "schemaVersion": 1,
+      "reviewRevision": 2,
+      "reviewedAtObserved": "2026-09-07 00:55:07 UTC",
+      "reviewer": {
+        "agent": "/root/math_b039_blind_a",
+        "provider": "OpenAI",
+        "product": "Codex",
+        "underlyingModel": "exact model identifier unavailable",
+        "authority": "ai_candidate_review",
+        "humanApproval": false,
+        "modelDiversityClaimed": false
+      },
+      "goalId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+      "candidateNumber": 2,
+      "image": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-series-split-v1/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4/candidate-2/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4.generated.2026-09-07T00-47-05-709Z.jpg",
+        "sha256": "sha256:ac96aff6ac27effb52d076b2dcf27897fff22f2390ea6e9bf569640f189c1223",
+        "actuallyViewed": true,
+        "viewMethod": "view_image",
+        "detail": "original"
+      },
+      "archiveReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-series-split-v1/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4/candidate-2/archive-receipt.json",
+        "sha256": "sha256:604aba956d639f8b14c77d1ef7d0a0b67c1981995b1059383ee4ceb299ea4545",
+        "candidateFilesVerified": 8
+      },
+      "goalContext": {
+        "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "title": "Arithmetische Reihen untersuchen",
+        "description": "Die lernende Person kann Partialsummen arithmetischer Reihen bestimmen und mithilfe der Summenformel ihr Grenzverhalten begründen.",
+        "translations": null,
+        "requires": [
+          "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+        ]
+      },
+      "decision": "accept",
+      "subjectSpecificChecks": [
+        "Die neue Paarzeile ist eindeutig und richtig: (3+9)+(5+7)=12+12=24; die problematischen Kreuzpfeile sind entfernt.",
+        "Glieder 3,5,7,9 und Partialsummen 3,8,15,24 sind getrennt dargestellt und rechnerisch korrekt.",
+        "aₖ=a₁+(k−1)d und Sₙ=n/2·(2a₁+(n−1)d) sind korrekt. Der Text benennt nun den führenden Term (d/2)n² ohne missverständliches 'wächst' für d<0.",
+        "Die Randfälle d=0,a₁≠0 mit Sₙ=n·a₁ divergent sowie a₁=d=0 mit Sₙ=0 sind erhalten und richtig."
+      ],
+      "minimalCorrection": null,
+      "limitationsAndNotes": [],
+      "scope": {
+        "visualCandidateReviewOnly": true,
+        "descriptionReviewDecision": false,
+        "importedByThisReview": false,
+        "activeAssetsChanged": false,
+        "canonicalFieldsChanged": false
+      },
+      "provenance": {
+        "otherReviewerRecordsRead": false,
+        "fullyBlinded": false,
+        "explanation": "Previous candidate defects and intended local corrections were known. All three new archived rasters were actually inspected in original resolution before the parent's follow-up message giving its own new judgments.",
+        "timing": "First observed clock for this repair-review turn: 2026-09-07 00:51:55 UTC. Exact invocation start and individual view timestamps were not logged. reviewedAtObserved denotes documentation time.",
+        "oldReviewsPreserved": true
+      }
+    }
+  ]
+}

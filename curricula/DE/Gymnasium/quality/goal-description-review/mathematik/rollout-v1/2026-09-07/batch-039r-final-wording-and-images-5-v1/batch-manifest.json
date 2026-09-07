@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-039r-final-wording-and-images-5-v1-20260907",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-039r-final-wording-and-images-5-v1.config.json",
+  "configDigest": "sha256:02cb4c7334138f84a38cddfd33d9e13f2ce0dc87f1d17f35306073269b8cf39d",
+  "goalIds": [
+    "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+    "1b888f4c-df57-52a9-9551-b2b692e929fa",
+    "70a21623-6c87-55ae-b534-ab45a3b9b1d2",
+    "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+    "c61af0a9-7d56-5505-a70d-ee097c3b747f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 796,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:4f2cd02e23f6fb4ddaae976d1da6d7075937cd04c02fc24aa01c5688f040308e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:5d770892573a2a58cf7ede9e680e2982ecf57bac3327350006eaec0b2e7eb01b",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:5ea7ec8ccc8c738263f483fb3d7290b0fe396196a56c080cb22e54fcfceca0e4",
+    "reviewInputFingerprint": "sha256:a6aaf3edc6147ad100d1c1b3dc76cf275377235aa00bc1510fdda3e4158366f9",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-039r-final-wording-and-images-5-v1-20260907-a",
+        "campaignDigest": "sha256:98aa27c959c686ec634a17f515412befbbf6a08a6407df3f067cfb66d0cca727",
+        "roundId": "mathematik-rollout-v1-batch-039r-final-wording-and-images-5-v1-20260907-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-039r-final-wording-and-images-5-v1-20260907-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-039r-final-wording-and-images-5-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f858cb39df6316a8c4d0c75db4150f67622d647cdc7f08706260844f0475fafc"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-039r-final-wording-and-images-5-v1-20260907-b",
+        "campaignDigest": "sha256:333544e3e3727a38f42129c41e4962da9ee87d2b07cedc6f434a283430bcaedc",
+        "roundId": "mathematik-rollout-v1-batch-039r-final-wording-and-images-5-v1-20260907-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-039r-final-wording-and-images-5-v1-20260907-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-039r-final-wording-and-images-5-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:dcf516b50f842f347c03ca71f84d28547e064de85ff708ddc857d3c7f95f0ec4"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

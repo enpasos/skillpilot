@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-p1-authoring-context-v1",
+  "phase": "body-authored-awaiting-root-ai-counterreview-and-native-binding",
+  "observedAt": "2026-09-07T01:14:48.712Z",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "criteria": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+    "sha256": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "readInFull": true
+  },
+  "source": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "observedLandscapeSha256": "sha256:bd33714d53a8774ac18bced0ca93ca3ade8a9de085373c851937af43b7416e44",
+    "goal": {
+      "id": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "title": "Einfache Integrale berechnen",
+      "titleEn": "Calculate simple integrals",
+      "description": "Die lernende Person kann die Stammfunktionen von $x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ sowie von $e^x$, $\\sin(x)$ und $\\cos(x)$ aus den Ableitungsregeln erschließen und damit mithilfe der Faktor- und Summenregel auf geeigneten Intervallen Stammfunktionen entsprechender Linearkombinationen bestimmen.",
+      "descriptionEn": "The learner can infer antiderivatives of $x^n$ for $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ and of $e^x$, $\\sin(x)$, and $\\cos(x)$ from differentiation rules and use the factor and sum rules to determine antiderivatives of their linear combinations on suitable intervals.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.1, S. 36, Spiegelstrich 4",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+          "title": "Visualisierung: Einfache Integrale berechnen",
+          "url": "/assets/goal-visualizations/mathematik/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/a9ed219d-d497-55e5-a4e0-4d45d2554f6b.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Einfache Integrale berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Einfache Integrale berechnen\". Die lernende Person kann Stammfunktionen von Potenzfunktionen $f(x)=x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ bestimmen, Faktor- und Summenregel beim Integrieren anwenden und ganzrationale Funktionen sowie $e^x$, $\\sin(x)$ und $\\cos(x)$ integrieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "prerequisites": [
+      {
+        "id": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+        "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
+        "titleEn": "Use the Fundamental Theorem of Calculus",
+        "description": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, Stammfunktionen bestimmen und das bestimmte Integral über $F(b) - F(a)$ berechnen und geometrisch deuten.",
+        "descriptionEn": "The learner can describe the relationship between derivative and integral, determine antiderivatives, and calculate and geometrically interpret the definite integral via $F(b) - F(a)$.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.4",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+            "title": "Visualisierung: Hauptsatz der Differential- und Integralrechnung nutzen",
+            "url": "/assets/goal-visualizations/mathematik/b9bbd2a8-1379-5ffb-817f-41467d48abef/b9bbd2a8-1379-5ffb-817f-41467d48abef.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Hauptsatz der Differential- und Integralrechnung nutzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Hauptsatz der Differential- und Integralrechnung nutzen\". Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, Stammfunktionen bestimmen und das bestimmte Integral über $F(b) - F(a)$ berechnen und geometrisch deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      }
+    ],
+    "adjudicationReceipt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/a9ed-source-adjudication-adoption-receipt-v1.json",
+      "sha256": "sha256:e8f6aa1d5bebe3d9c41525bc8bbf84f72de3d0fc9714aeeea198556830f165c8"
+    }
+  },
+  "caseCoverage": [
+    {
+      "caseId": "mixed-rule-verification",
+      "expectationIds": [
+        "infer-basic-pairs",
+        "inverse-linearity-and-interval"
+      ]
+    },
+    {
+      "caseId": "negative-power-domain-transfer",
+      "expectationIds": [
+        "infer-basic-pairs",
+        "inverse-linearity-and-interval"
+      ]
+    }
+  ],
+  "notes": [
+    "Current DE/EN descriptions, full direct prerequisite, demand level AB2, applicability and supplied HE Q1.1 p36 source context read. The original source page was actually viewed during the preceding adjudication.",
+    "Two newly authored P cases; no historical P body or D application case was copied. This profile is not the D adjudication receipt and does not declare D KEEP.",
+    "The prerequisite FTC need not be reassessed: neither definite integrals nor geometric area interpretation are added to this goal.",
+    "Visualization resources are separate V evidence; reviewedResourceTypes=[] and no fresh image-QA approval is asserted.",
+    "Root AI body counterreview is pending at this observed authoring time. Native binding must preserve these exact checked bodies."
+  ]
+}

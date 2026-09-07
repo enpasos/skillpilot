@@ -1,0 +1,52 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-physik-b038r-first-pass-b-20260906",
+  "campaignId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-b",
+  "roundId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:f64209d819051c1b558eb598fd7a609ab357c5e8d3f1f81bec8d06f37f7e5626",
+  "bundleFingerprint": "sha256:3b3e54b84e3eddfbf61fdeb4f71965f01d95ff977f59c1bd8a6cb37a96e5a577",
+  "bookDigest": "sha256:04bf071e2200c4a912daac14390d0bd1a1ed4da936a0247be8c49d9caefbdc33",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier and sampling parameters not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:60eba9efb0a9e15d95d50ccd0b466b408123a9318714fcfa0e4c84f7aeeadb5f",
+  "independenceGroupId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+    "a844895e-2cdc-4665-aad2-a49c62f11759",
+    "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+    "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+    "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+    "e413a352-33c4-53ae-b54a-30e52c3e65ae",
+    "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+    "91f1838c-80fc-55f5-ac30-e7d1498fccee",
+    "122e83ac-c9cf-50c1-8a73-a1e3db347f21",
+    "c64820e1-c0ee-4342-9225-f981650f0c52",
+    "5c57dbc7-d258-4aad-a84c-e773f3c493ae"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f64209d819051c1b558eb598fd7a609ab357c5e8d3f1f81bec8d06f37f7e5626"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-06T21:35:31Z",
+  "completedAt": "2026-09-06T21:41:46.359Z",
+  "status": "completed",
+  "outputDigest": "sha256:f9a8cc030639f9cd8a7cfe0bd68bf670bdfa405fe6f51fe2862c8b66391cecae",
+  "toolchainVersion": "codex-interactive-node20.20.2"
+}

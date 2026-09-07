@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b039r-codex-blind-b-20260907",
+  "campaignId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-b",
+  "roundId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:3db4168557c907a490c915c0380340b66a08cd638b5d1a513ded93c86757423c",
+  "bundleFingerprint": "sha256:2012f0d91006a7eae0e7c3de7c4750425bf3a334907e8f02c07d01b241c63c61",
+  "bookDigest": "sha256:e978244b63b3645f060f49bbb3fa15195fb6e1c194d9c657219cb62a58008939",
+  "provider": "openai",
+  "model": "unknown (Codex agent; underlying model not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:a63e8c78f362300e640c6d530720b7443df15c65023fda167a9513759d8840d2",
+  "independenceGroupId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1a1c09f0-96b7-4c33-a623-0e8101537876",
+    "642aebd7-66cd-5a50-b543-73c4b207525d",
+    "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+    "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+    "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:3db4168557c907a490c915c0380340b66a08cd638b5d1a513ded93c86757423c"
+    }
+  ],
+  "startedAt": "2026-09-06T23:45:22Z",
+  "completedAt": "2026-09-06T23:51:13.836Z",
+  "status": "completed",
+  "outputDigest": "sha256:9fb2e9abefc9acf792073087050accb5bbc3084ccd8d56ecb86c6e5344690ca3",
+  "toolchainVersion": "codex-b039r-blind-review-v1"
+}

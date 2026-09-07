@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "codex",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "reviewAuthority": "ai_validation_receipt",
+  "humanApprovalClaimed": false,
+  "observedValidationStartedAt": "2026-09-07 00:56:06 UTC",
+  "observedValidationFinishedAt": "2026-09-07 00:56:07 UTC",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-040-gravitation-and-cosmology-17-v1.config.json",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-040-gravitation-and-cosmology-17-v1.candidates.json",
+  "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-040-gravitation-and-cosmology-17-v1.review.jsonl",
+  "candidateSha256": "sha256:0c2e08dd7f55fe431a53e966e6d1b62d367cb4352116c1e098f71c355bcde6ee",
+  "reviewSha256": "sha256:9392637d9e6a5dfb0239f24ba27af7b774d5da4a8e729292fd40890b6bea6ca6",
+  "canonicalSha256AtBinding": "sha256:a5b589e9e0ce8abf6a1d0837b8a1c366d59ae1ee94e7b08c6d621beb5d947853",
+  "nativeMaterialization": "PASS: Wrote 17 current AI candidate profiles",
+  "nativeCandidateParityCheck": "PASS: Verified 17 current AI candidate profiles",
+  "nativeCurrentStateCheck": {
+    "exitCode": 0,
+    "configuredGoals": 17,
+    "approved": 0,
+    "needsHumanReview": 17,
+    "rejected": 0,
+    "blockingIssues": 0,
+    "output": "# Positive Goal Evidence Review: canonical-physics-positive-evidence-b040-gravitation-cosmology-17-v1\nScope: Physik B040: 17 eigenständige P-v2-AI-Kandidaten; drei offene Split-Ziele ausgeschlossen; Bildprüfung bleibt in ihrer separaten QA-Lane.\nConfigured goals: 17\nApproved: 0\nNeeds human review: 17\nRejected: 0\nBlocking issues: 0\n"
+  },
+  "reviewRunIds": [],
+  "identityLimitation": "No diversity or human-approval claim; no fabricated run manifests. Receipt times describe the observed final native check, not the earlier authoring duration.",
+  "rootReview": "Root reported full reading and acceptance of all 17 profile bodies before final materialization; candidate bytes remained unchanged.",
+  "resolvedInvocationIssue": "First standalone current-state CLI attempt used --config PATH, rejected before validation. Corrected native syntax --config=PATH passed; candidate-parity and materialization CLI use their own documented two-argument form.",
+  "writesExcluded": [
+    "canonical",
+    "registry",
+    "claims",
+    "active visualization QA",
+    "learner/mastery state"
+  ]
+}

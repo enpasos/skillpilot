@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `ece68088-71a8-466b-874c-09e6baac19fc.jpg`
 
 ## Zweck
@@ -18,61 +18,13 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein detailliertes, lehrreiches Infografik-Diagramm im Cartoon-Stil mit klaren, abgerundeten Formen und einer freundlichen Farbpalette. Der Hintergrund ist oben hellblau und darunter weiß.
+Ein hellblaues, pädagogisches Infografik-Poster im Cartoon-Stil mit klaren Linien und leuchtenden Farben. Der Hintergrund ist ein sanfter hellblauer Farbverlauf, oben etwas dunkler. Oben mittig steht der große, fette schwarze Titel: "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten".
 
-Oben mittig befindet sich ein großer, dunkelblauer Titel auf dem hellblauen Hintergrund: "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten".
+Darunter befindet sich ein großes, abgerundetes Rechteck mit einem hellgelben Rand und einem hellgrünen Innenbereich, das den Hauptinhalt darstellt. Dieses Hauptrechteck ist in drei vertikale Spalten unterteilt.
 
-Darunter liegt ein großes, horizontales Rechteck mit abgerundeten Ecken und einem hellgelben Rand. Das Innere dieses Rechtecks ist hellblau. Dieses Rechteck ist vertikal in drei Hauptbereiche unterteilt: "Gegeben", "Rekonstruktion (Berechnung)" und "Deutung (Visualisierung)".
+Die linke Spalte hat einen hellblauen, abgerundeten Rechteck-Header mit dem schwarzen Text "Gegeben". Der Inhalt dieser Spalte ist auf einem weißen Hintergrund dargestellt. Oben links ist der Text "Anfangsbestand B(0) = 5 Liter". Darunter ist eine Cartoon-Illustration eines transparenten Glasbechers, der zu etwa einem Drittel mit hellblauer Flüssigkeit gefüllt ist. Oben rechts ist der Text "Änderungsrate r(t) = 3t² Liter/Min.". Darunter ist eine Cartoon-Illustration eines silbernen Wasserhahns, aus dem ein blauer Wassertropfen in eine kleine hellblaue Pfütze fällt. Eine Sprechblase zeigt vom Wasserhahn nach rechts und enthält den Text "Zuflussrate (positiv)". Unten links ist der Text "Anfangsbestand B(0) = 5 Liter". Darunter ist eine Cartoon-Illustration eines lächelnden, hellblauen Wassertropfen-Charakters mit Armen und Beinen, der neben einer weißen Analoguhr mit schwarzen Zeigern steht, die auf 12 Uhr zeigen. Daneben steht der Text "t = 0 Min.". Unten rechts ist der Text "Änderungsrate r(t) = 3t² Liter/Min.". Darunter ist ein Diagramm mit weißem Hintergrund und grünem Rand. Die X-Achse ist mit "Zeit (Min.)" beschriftet und hat einen Pfeil nach rechts. Die Y-Achse ist mit "Rate (Liter/Min.)" beschriftet und hat einen Pfeil nach oben. Der Ursprung ist (0,0). Eine blaue Kurve, die r(t) = 3t² darstellt, beginnt bei (0,0) und steigt an. Die Punkte (1,3) und (2,12) sind markiert. Eine gestrichelte vertikale Linie führt von (2,12) zur X-Achse. Der Bereich unter der Kurve von t=0 bis t=2 ist hellgrün schattiert. Eine gestrichelte Textbox zeigt auf diesen schattierten Bereich und enthält den Text "Integral der Rate: 8 Liter".
 
-**Bereich 1: "Gegeben"**
-Dieser Bereich hat einen hellgrünen Header mit abgerundeten Ecken und dunkelblauem Text "Gegeben". Der Inhalt ist in vier hellblaue Unterfelder mit dünnem dunkelblauem Rand unterteilt, angeordnet in einem 2x2-Raster.
+Die mittlere Spalte hat einen hellgrünen, abgerundeten Rechteck-Header mit dem schwarzen Text "Rekonstruktion (Berechnung)". Der Inhalt dieser Spalte ist auf einem hellgrünen Hintergrund dargestellt. Die erste Gleichung in einem weißen, abgerundeten Rechteck ist: "B(t) = B(0) + ∫₀ᵗ r(s) ds". Die zweite Gleichung ist: "B(t) = 5 + ∫₀ᵗ 3s² ds = 5 + t³". Darunter befindet sich ein großer, nach unten zeigender grüner Pfeil mit weißer Umrandung. Es folgt der Text: "Für t = 2 Min.:". Die Gleichung für die Änderung (Zuwachs) in einem weißen, abgerundeten Rechteck ist: "Änderung (Zuwachs) = ∫₀² 3s² ds". Die Berechnung lautet: "= [s³]₀² = 2³ – 0³ = 8 Liter". Die abschließende Berechnung ist: "B(2) = Anfangsbestand + Änderung". Das Ergebnis ist: "= 5 + 8 = 13 Liter".
 
-*   **Oberes linkes Feld:**
-    *   Text: "Anfangsbestand B(0) = 5 Liter"
-    *   Darunter eine einfache Cartoon-Zeichnung eines transparenten Glases, das etwa zur Hälfte mit hellblauem Wasser gefüllt ist.
-*   **Oberes rechtes Feld:**
-    *   Text: "Änderungsrate r(t) = 3t² Liter/Min."
-    *   Darunter eine einfache Cartoon-Zeichnung eines silbernen Wasserhahns mit blauem Griff, aus dem hellblaues Wasser in ein kleines, leeres, transparentes Glas tropft.
-    *   Eine hellblaue Sprechblase zeigt vom tropfenden Wasser nach rechts und enthält den Text "Zuflussrate (positiv)".
-*   **Unteres linkes Feld:**
-    *   Text: "Anfangsbestand B(0) = 5 Liter"
-    *   Darunter eine Cartoon-Zeichnung eines lächelnden, hellblauen Wassertropfen-Charakters mit Armen und Beinen, der neben einer runden analogen Uhr steht. Die Uhr hat ein weißes Zifferblatt, schwarze Stunden- und Minutenzeiger, die auf 12 zeigen, und schwarze Strichmarkierungen.
-    *   Neben der Uhr steht der Text: "t = 0 Min."
-*   **Unteres rechtes Feld:**
-    *   Text: "Änderungsrate r(t) = 3t² Liter/Min."
-    *   Darunter ein 2D-Koordinatensystem. Die X-Achse ist mit "t (Min.)" beschriftet und hat Markierungen bei 0, 1, 2. Die Y-Achse ist mit "r(t)" beschriftet. Eine blaue Kurve, die r(t) = 3t² darstellt, steigt von (0,0) an. Zwei Punkte sind auf der Kurve markiert und mit gestrichelten Linien zu den Achsen verbunden: (1,3) und (2,12).
-
-**Bereich 2: "Rekonstruktion (Berechnung)"**
-Dieser Bereich hat einen hellgrünen Header mit abgerundeten Ecken und dunkelblauem Text "Rekonstruktion (Berechnung)". Der Hintergrund dieses Bereichs ist hellgrün.
-
-*   **Oben:** Eine weiße Box mit abgerundeten Ecken und dunkelblauem Rand enthält die Gleichung: `B(t) = B(0) + ∫₀ᵗ r(s) ds`
-*   **Darunter:** Die Gleichung: `B(t) = 5 + ∫₀ᵗ 3s² ds = 5 + t³`
-*   **Darunter:** Ein großer, dicker, weißer Pfeil mit dunkelblauer Umrandung, der nach unten zeigt.
-*   **Darunter:** Der Text: "Für t = 2 Min.:"
-*   **Darunter:** Eine hellgrüne Box mit abgerundeten Ecken und dunkelblauem Rand enthält die Berechnung:
-    *   Text: "Änderung (Zuwachs) ="
-    *   Gleichung: `∫₀² 3s² ds`
-    *   Gleichung: `= [s³]₀² = 2³ - 0³ = 8 Liter`
-*   **Ganz unten:** Die Gleichungen:
-    *   `B(2) = Anfangsbestand + Änderung`
-    *   `= 5 + 8 = 13 Liter`
-
-**Bereich 3: "Deutung (Visualisierung)"**
-Dieser Bereich hat einen hellgelben Header mit abgerundeten Ecken und dunkelblauem Text "Deutung (Visualisierung)". Der Hintergrund dieses Bereichs ist hellgelb.
-
-*   **Oben:** Ein 2D-Koordinatensystem. Die X-Achse ist mit "t (Min.)" beschriftet und hat Markierungen bei 0, 1, 2. Die Y-Achse ist mit "Volumen (Liter)" beschriftet und hat Markierungen bei 0, 5, 13.
-    *   Eine blaue Kurve, die `B(t) = 5 + t³` darstellt, beginnt bei (0,5) und steigt bis (2,13).
-    *   Der Bereich unter der Kurve ist schattiert:
-        *   Ein hellblaues Rechteck von (0,0) bis (2,5) ist schattiert.
-        *   Ein hellgrüner Bereich oberhalb des hellblauen Rechtecks und unter der blauen Kurve von t=0 bis t=2 ist schattiert.
-    *   Gestrichelte horizontale Linien verbinden y=5 mit der Kurve bei t=0 und y=13 mit der Kurve bei t=2.
-    *   Eine gestrichelte vertikale Linie verbindet t=2 mit der Kurve.
-    *   Ein grüner Punkt markiert (2,13) auf der Kurve.
-    *   Eine hellblaue Sprechblase zeigt vom grünen Punkt (2,13) nach rechts und enthält den Text "Endbestand B(2) = 13 Liter".
-    *   Eine hellgrüne Sprechblase zeigt vom hellgrün schattierten Bereich nach rechts und enthält den Text "Änderung (Integralfläche = Zuwachs = 8 Liter)".
-    *   Eine hellblaue Sprechblase zeigt vom hellblau schattierten Rechteck nach rechts und enthält den Text "Anfangsbestand (5 Liter)".
-*   **Darunter:** Eine weiße Box mit abgerundeten Ecken und dunkelblauem Rand enthält den Text: "Deutung: Das Integral liefert die Bestandsänderung. Anfangsbestand plus Änderung ergibt den Bestand."
-*   **Ganz unten:** Eine weiße Box mit abgerundeten Ecken und dunkelblauem Rand enthält ein rotes Warnsymbol (ein rotes "X" in einem roten Kreis mit einem diagonalen Strich) und den Text:
-    *   "Achtung: Rate r(2)=12 ≠ Bestand B(2)=13!"
-    *   "Anfangsbestand B(0) nicht vergessen!"
+Die rechte Spalte hat einen hellgelben, abgerundeten Rechteck-Header mit dem schwarzen Text "Deutung (Visualisierung)". Der Inhalt dieser Spalte ist auf einem hellgelben Hintergrund dargestellt. Ein Diagramm mit weißem Hintergrund und schwarzem Rand ist zu sehen. Die X-Achse ist mit "t (Min.)" beschriftet und hat einen Pfeil nach rechts. Die Y-Achse ist mit "Volumen (Liter)" beschriftet und hat einen Pfeil nach oben. Der Ursprung ist (0,0). Eine blaue Kurve, die B(t) = 5 + t³ darstellt, beginnt bei (0,5) und steigt an. Die Punkte (0,5) und (2,13) sind markiert. Eine gestrichelte horizontale Linie führt von (0,5) zur Y-Achse, beschriftet mit '5'. Eine gestrichelte vertikale Linie führt von (2,13) zur X-Achse, beschriftet mit '2'. Eine gestrichelte horizontale Linie führt von (2,13) zur Y-Achse, beschriftet mit '13'. Eine gestrichelte Textbox zeigt auf den Punkt (2,13) und enthält den Text "(2,13)". Eine weitere Textbox zeigt von (2,13) nach rechts und enthält den Text "Endbestand: 13 Liter". Eine vertikale gestrichelte Linie von (2,5) bis (2,13) ist mit einer Textbox "Bestandsänderung: 8 Liter" beschriftet. Eine gestrichelte Textbox zeigt auf den Punkt (0,5) auf der Y-Achse und enthält den Text "Anfangsbestand (5 Liter)". Unter dem Diagramm befindet sich eine weiße Sprechblase mit schwarzem Rand, die den Text enthält: "Deutung: Das Integral liefert die Bestandsänderung. Anfangsbestand plus Änderung ergibt den Bestand.". Unter der Sprechblase ist ein rotes Warnzeichen (ein Kreuz in einem Kreis) mit schwarzer Umrandung. Daneben steht der schwarze Text: "Achtung: r(2) = 12 L/min, B(2) = 13 L".
 ```

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "root-positive-evidence-body-counterreview",
+  "reviewAuthority": "AI candidate semantic and mathematical counterreview",
+  "humanApproval": false,
+  "reviewer": "codex-root",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-elementary-antiderivatives-1-v1.candidates.json",
+  "candidateSha256": "d3713a3188e32fe3c8b31c0ebf92c2e2fb571d2c2260d154303f5aeb9c4bb00d",
+  "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+  "bodyRead": "All DE/EN expectations, variation axes, task demands and expected performances read in full.",
+  "checks": [
+    "Mixed verification: proposed -4cos differentiates to +4sin, whereas the demand is -4sin. Correct +4cos differentiates to the demanded term; the rest of the mixed primitive is correct.",
+    "General inverse power rule n != -1 and inverse linearity justify construction, rather than mere formula substitution.",
+    "Transfer: -2x^-2 -2x^-1 -3x + exp(x) -2cos(x) differentiates termwise to 4x^-3 +2x^-2 -3 + exp(x) +2sin(x).",
+    "Positive and negative half-lines permit independent constants, and the singularity at zero prevents an interval through zero. The task does not claim that both constants must agree.",
+    "German and English match; neither case adds logarithmic integration, inner transformations or evaluation of definite integrals."
+  ],
+  "result": "pass",
+  "claimLimit": "Supports native P-v2 AI candidate binding only; no D resolution, human approval or global rollout completion follows from this record."
+}

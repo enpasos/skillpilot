@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "physics-b038-image-final-verification-v1",
+  "verifiedAtUtc": "2026-09-06 21:34:19 UTC",
+  "authority": "ai_candidate",
+  "humanApprovalClaimed": false,
+  "status": "PASS",
+  "fiveImportedHashTriples": [
+    {
+      "goalId": "c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+      "sha256": "sha256:ec9f43f8ebd14b3d6430f460d4a855264baaf7cb293eec3e32d6aba8b2de588b"
+    },
+    {
+      "goalId": "a844895e-2cdc-4665-aad2-a49c62f11759",
+      "sha256": "sha256:4b1d8b2c705ee46671a6e3a2c4633bbbcb2cc312f8ec625eae1f93e90e15323d"
+    },
+    {
+      "goalId": "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "sha256": "sha256:2406367b71adc03eca78a0f6de8b4e30e68c3669a744e71b47b1ad75e0d53e18"
+    },
+    {
+      "goalId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+      "sha256": "sha256:e323ef71e0c708d05bde17b39b4110e25881c0e43f3a47bd57282fe57c916b4f"
+    },
+    {
+      "goalId": "c64820e1-c0ee-4342-9225-f981650f0c52",
+      "sha256": "sha256:ab0ebcc0f082ae7c8e789d765e99b16121522ffb517b8a7910d3750cbeae045c"
+    }
+  ],
+  "sixQaRecordsOnly": true,
+  "allOtherCanonicalFieldsIncludingEnPreserved": true,
+  "deferredMissingWithNoApproval": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+  "publicCopiesRecoverablyRemoved": [
+    {
+      "path": "app/public/assets/goal-visualizations/physik/a7255b83-336c-4d42-ba5c-bc2f6248ea36/a7255b83-336c-4d42-ba5c-bc2f6248ea36.jpg",
+      "sha256": "sha256:fcccf883ce0bda2912bd9ac66a1914d42642b848fb0e57d67ef802257850c13e",
+      "bytes": 1614385,
+      "recoveryPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b038-local-diagram-corrections-v1/a7255b83-336c-4d42-ba5c-bc2f6248ea36/original/withdrawn-public.jpg"
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/physik/a7255b83-336c-4d42-ba5c-bc2f6248ea36/a7255b83-336c-4d42-ba5c-bc2f6248ea36.jpg",
+      "sha256": "sha256:fcccf883ce0bda2912bd9ac66a1914d42642b848fb0e57d67ef802257850c13e",
+      "bytes": 1614385,
+      "recoveryPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b038-local-diagram-corrections-v1/a7255b83-336c-4d42-ba5c-bc2f6248ea36/original/withdrawn-backend.jpg"
+    }
+  ],
+  "canonicalAndQaAfterDigests": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "afterSha256": "sha256:23bf5e077fecd39d457ce1278a40621f5b1e4e1553ace95bc67d9db8d14d923c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "afterSha256": "sha256:3bef6c28bece039e65887cfabc266d95e9c55a1855f4f24ac4e55ff236933ff5"
+    }
+  ],
+  "canonicalSourceRelocation": {
+    "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+    "authority": "Root explicit confirmation after unchanged native gate was inspected",
+    "from": "curricula/DE/Gymnasium/visualizations/physik/a7255b83-336c-4d42-ba5c-bc2f6248ea36/a7255b83-336c-4d42-ba5c-bc2f6248ea36.jpg",
+    "to": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b038-local-diagram-corrections-v1/a7255b83-336c-4d42-ba5c-bc2f6248ea36/original/withdrawn-canonical.jpg",
+    "sha256BeforeAndAfter": "sha256:fcccf883ce0bda2912bd9ac66a1914d42642b848fb0e57d67ef802257850c13e",
+    "sourcePromptsPreserved": true,
+    "reason": "The unchanged native asset gate rejects orphan images in the canonical source root as well as public/backend roots. Source bytes are retained as archived provenance; no canonical or QA JSON changed after adoption."
+  },
+  "checks": [
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subject physik",
+      "result": "PASS, one subject file current"
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-approval-coverage -- --subject=physik",
+      "result": "PASS, 437 active visualizations"
+    },
+    {
+      "command": "npm --prefix app run test:goal-visualization-qa-model",
+      "result": "PASS, 4 hash-binding guarantees"
+    },
+    {
+      "command": "npm --prefix app run test:goal-visualization-qa-status",
+      "result": "PASS, 13 guarantees"
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-assets",
+      "result": "PASS, 1532 links in 21 landscapes"
+    },
+    {
+      "command": "adopt-reviewed-candidates.mjs verify",
+      "result": "PASS, five source/public/backend hash triples; six exact QA changes; canonical non-link fields including EN unchanged; all human approval no; deferred has no approval"
+    },
+    {
+      "command": "Read-only recursive archive receipt verification",
+      "result": "PASS, 11 receipts and 113 exact file bindings"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    }
+  ],
+  "executionNote": "Node v20.20.2 used. No global inventory/status/M6 regeneration, deployment, registry or runtime changes performed in this bounded adoption. The adoption receipt's helper hash binds the initially executed helper; the later helper verify phase was narrowly amended to check the subsequently authorized canonical-source relocation."
+}

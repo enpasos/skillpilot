@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b040-elementary-antiderivatives-1-v1",
+  "reviewedAt": "2026-09-07T01:14:48.712Z",
+  "reviewer": "codex-math-b040-elementary-antiderivatives-positive-author",
+  "goals": [
+    {
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "reason": "Neues bilinguales Profil zur explizit quellengebundenen inversen Linearität. Zwei neu verfasste Fälle prüfen Grundpaare, Regelbegründung, gemischte Linearkombinationen und den strukturellen Transfer zu negativen Potenzen auf geeigneten Intervallen. Keine Substitution, innere Transformation, logarithmische Integration oder bestimmte Integralauswertung wird zusätzlich verlangt. D-Adjudikation und frische duale D-Prüfung bleiben getrennt; dieses Profil behauptet weder D-Freigabe noch menschliche Abnahme.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "infer-basic-pairs",
+            "essentialUnderstandingDe": "Stammfunktionen werden durch Umkehren bekannter Ableitungsbeziehungen erschlossen: (x^(n+1)/(n+1))′=x^n für ganze n≠−1, (e^x)′=e^x, (−cos x)′=sin x und (sin x)′=cos x. Das Vorzeichen und der Faktor folgen aus dieser Rückprüfung.",
+            "essentialUnderstandingEn": "Antiderivatives are inferred by reversing known differentiation relations: (x^(n+1)/(n+1))′=x^n for integers n≠−1, (e^x)′=e^x, (−cos x)′=sin x and (sin x)′=cos x. The sign and coefficient follow from this reverse check.",
+            "observablePerformanceDe": "Die lernende Person erschließt benötigte Basisstammfunktionen aus den Ableitungsregeln, begründet den Faktor 1/(n+1) und die trigonometrischen Vorzeichen und erläutert, warum die Potenzformel n=−1 nicht erfasst.",
+            "observablePerformanceEn": "The learner infers the required basic antiderivatives from differentiation rules, justifies the factor 1/(n+1) and the trigonometric signs, and explains why the power formula does not cover n=−1."
+          },
+          {
+            "id": "inverse-linearity-and-interval",
+            "essentialUnderstandingDe": "Aus F′=f und G′=g folgt (αF+βG)′=αf+βg. Deshalb verbinden Faktor- und Summenregel die erschlossenen Basispaare zu einer Stammfunktion der Linearkombination. Additive Konstanten verschwinden beim Ableiten; negative Potenzen erfordern Intervalle ohne 0.",
+            "essentialUnderstandingEn": "F′=f and G′=g imply (αF+βG)′=αf+βg. Therefore the factor and sum rules combine the inferred basic pairs into an antiderivative of the linear combination. Additive constants disappear upon differentiation; negative powers require intervals avoiding 0.",
+            "observablePerformanceDe": "Die lernende Person bestimmt eine Stammfunktion eines gemischten Terms, begründet das termweise Zusammensetzen durch Linearität, bestätigt die Ableitung und benennt ein zulässiges Intervall einschließlich der Konstantenwahl dort.",
+            "observablePerformanceEn": "The learner determines an antiderivative of a mixed expression, justifies its termwise assembly by linearity, confirms its derivative and names an admissible interval including the choice of constant there."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "infer-basic-pairs",
+            "inverse-linearity-and-interval"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "construction-versus-checking",
+            "textDe": "Von der begründeten Prüfung und Vervollständigung einer vorgeschlagenen Stammfunktion zur eigenständigen Konstruktion wechseln; in beiden Richtungen die Ableitungsregeln als Begründung nutzen.",
+            "textEn": "Switch from justified checking and completion of a proposed antiderivative to independent construction, using differentiation rules as the justification in both directions."
+          },
+          {
+            "id": "negative-powers-and-domain",
+            "textDe": "Nichtnegative Potenzen auf ganz R durch negative ganzzahlige Potenzen ersetzen und damit die Rolle der Polstelle sowie getrennter zulässiger Intervalle und Konstanten sichtbar machen.",
+            "textEn": "Replace nonnegative powers on all of R with negative integer powers, exposing the role of the pole and of separate admissible intervals and constants."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "mixed-rule-verification",
+            "taskDemandDe": "Für h(x)=3x²−2e^x+5cos x−4sin x wird H₀(x)=x³−2e^x+5sin x−4cos x vorgeschlagen. Prüfe den Vorschlag durch Ableiten und bestimme eine passende Stammfunktion. Erkläre die benötigten Basispaare und warum das Zusammensetzen der Summanden zulässig ist. Leite auch die Potenzformel für ganzzahliges n≠−1 aus der Ableitungsregel her und benenne hier ein mögliches Intervall.",
+            "taskDemandEn": "For h(x)=3x²−2e^x+5cos x−4sin x, the proposed antiderivative is H₀(x)=x³−2e^x+5sin x−4cos x. Check it by differentiation and determine a suitable antiderivative. Explain the basic pairs used and why assembling the terms is valid. Also derive the power formula for integer n≠−1 from the differentiation rule and name a possible interval here.",
+            "expectedPerformanceDe": "H₀′=3x²−2e^x+5cos x+4sin x. Eine passende Stammfunktion ist H=x³−2e^x+5sin x+4cos x+C auf R. Denn (x^(n+1)/(n+1))′=((n+1)/(n+1))x^n=x^n, und exp bleibt beim Ableiten erhalten, sin wird cos, cos wird −sin. (αF+βG)′=αF′+βG′ rechtfertigt das Zusammensetzen. Für n=−1 ist der Nenner 0, sodass diese Potenzformel nicht anwendbar ist; eine logarithmische Ersatzregel muss hier nicht angegeben werden.",
+            "expectedPerformanceEn": "H₀′=3x²−2e^x+5cos x+4sin x. A suitable antiderivative is H=x³−2e^x+5sin x+4cos x+C on R. Indeed, (x^(n+1)/(n+1))′=((n+1)/(n+1))x^n=x^n; exp retains itself under differentiation, sin becomes cos and cos becomes −sin. (αF+βG)′=αF′+βG′ justifies assembly. At n=−1 the denominator is 0, so this power formula is inapplicable; no logarithmic replacement rule needs to be supplied here.",
+            "understandingFocusDe": "Ein gemischtes Ergebnis anhand der gemeinsamen inversen Ableitungsoperation begründen und die Koeffizienten sowie Vorzeichen nachvollziehbar sichern.",
+            "understandingFocusEn": "Justifying a mixed result through the common inverse differentiation operation and establishing coefficients and signs explicitly."
+          },
+          {
+            "id": "negative-power-domain-transfer",
+            "taskDemandDe": "Bestimme für f(x)=4x^−3+2x^−2−3+e^x+2sin x eine Stammfunktion auf (0,∞). Erschließe die Potenz- und trigonometrischen Bausteine durch Ableiten und begründe ihre Linearkombination. Erkläre, ob derselbe Term auf (−∞,0) verwendbar ist, ob beide Konstanten gleich sein müssen und warum kein gemeinsames Intervall durch 0 zulässig ist.",
+            "taskDemandEn": "For f(x)=4x^−3+2x^−2−3+e^x+2sin x, find an antiderivative on (0,∞). Infer the power and trigonometric components by differentiation and justify their linear combination. Explain whether the same expression is usable on (−∞,0), whether the two constants must agree, and why no common interval through 0 is admissible.",
+            "expectedPerformanceDe": "F(x)=−2/x²−2/x−3x+e^x−2cos x+C₊ auf (0,∞). Die Potenzregel rückwärts liefert 4x^−2/(−2)=−2x^−2 und 2x^−1/(−1)=−2x^−1; der Nenner n+1 ist in beiden Fällen ungleich 0. Ableiten ergibt 4x^−3+2x^−2−3+e^x+2sin x. Die Summe ist durch Linearität zulässig. Auf (−∞,0) gilt derselbe nichtkonstante Term mit einem unabhängig wählbaren C₋; keine Forderung verbindet C₊ und C₋. Bei 0 sind die negativen Potenzen nicht definiert, daher gibt es hier keine Stammfunktion auf einem Intervall, das 0 enthält.",
+            "expectedPerformanceEn": "F(x)=−2/x²−2/x−3x+e^x−2cos x+C₊ on (0,∞). Reversing the power rule gives 4x^−2/(−2)=−2x^−2 and 2x^−1/(−1)=−2x^−1; in each case n+1 is nonzero. Differentiating gives 4x^−3+2x^−2−3+e^x+2sin x. Linearity justifies the sum. On (−∞,0) the same nonconstant expression works with an independently chosen C₋; no requirement connects C₊ and C₋. The negative powers are undefined at 0, so there is no antiderivative here on an interval containing 0.",
+            "understandingFocusDe": "Dieselbe inverse Linearität unter veränderten Exponenten anwenden und die mathematische Bedeutung geeigneter Intervalle statt einer bloßen Symbolregel zeigen.",
+            "understandingFocusEn": "Applying the same inverse linearity with changed exponents and demonstrating the mathematical role of suitable intervals rather than only a symbolic rule."
+          }
+        ]
+      }
+    }
+  ]
+}

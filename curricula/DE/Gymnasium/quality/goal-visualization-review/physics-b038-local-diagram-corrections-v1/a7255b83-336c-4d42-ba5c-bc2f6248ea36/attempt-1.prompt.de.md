@@ -1,0 +1,3 @@
+Use case: precise-object-edit / scientific-educational
+Eingabebild: einziges Edit-Ziel; bestehendes Tafelbild beibehalten.
+Erhalte das gesamte Tafelbild unverändert. Tausche ausschließlich die Farben der beiden schwingenden Energiekurven unten rechts: E_C bleibt blau beschriftet und muss bei t=0, T/2 und T maximal sowie bei T/4 und 3T/4 null sein; E_L bleibt grün beschriftet und muss jeweils komplementär verlaufen. Die konstante Gesamtenergielinie bleibt horizontal bei E₀. Ergänze beim Graphen klein „Gezeigt: φ=0“. Keine anderen Kurven, Formeln, Beschriftungen oder Bauteile verändern. Keine technischen IDs.

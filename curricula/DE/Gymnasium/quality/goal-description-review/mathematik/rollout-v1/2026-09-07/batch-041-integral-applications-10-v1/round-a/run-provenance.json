@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "runId": "mathematik-b04110-first-pass-a-openai-codex-20260907T012559",
+  "campaignId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-a",
+  "roundId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-a.batch-001",
+  "provider": "OpenAI",
+  "product": "Codex",
+  "underlyingExactModel": "unavailable",
+  "humanReviewer": false,
+  "humanApproval": false,
+  "modelDiversityClaim": false,
+  "observedDocumentationWindowStart": "2026-09-07T01:25:59.000Z",
+  "timingLimit": "First observed clock timestamp for this fresh B041 task, not an exact provider invocation or agent-spawn time.",
+  "reviewScope": "All 10 current Round A goals and complete page/canonical contexts, full prompt/criteria/schema/campaign/bundle/input, and all 10 current raster images. No Round B, earlier D judgments, P profiles, adjudication, or canonical diff opened for this task.",
+  "independenceLimits": [
+    "The continuing agent previously worked on disjoint Mathematics B039/B040 goals and visualizations. Current B041 prerequisite titles were therefore not all previously unknown.",
+    "The current ten assigned goal records were reviewed individually from this batch, not from prior review judgments. No model-diversity or human-authority claim is made."
+  ],
+  "readArtifacts": [
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/prompt.md",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/criteria.md",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/contracts/goal-description-review-record.schema.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/description-review-campaign.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/review-bundle-manifest.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/description-review-input.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/batches/mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-a.batch-001.input.jsonl"
+  ],
+  "method": "All ten complete goals and page contexts read; JSON input deep-equal checked against batch JSONL. Every decision, rationale, and six bilingual evidence fields individually authored. At least two concrete independently presentable cases per goal; split-review evidence describes separable facets and does not certify children. Mechanical binder only copies metadata and verifies current DE/EN and raster hashes.",
+  "mappingEvidenceLimit": "Bound sourceRef and raw/page applicability are not claimed to establish complete original-source fidelity, effective projection, or mapping coverage. No external source content was introduced.",
+  "currentInput": {
+    "$schema": "https://skillpilot.com/schemas/goal-description-review/v3/goal-description-review-input.schema.json",
+    "schemaVersion": 3,
+    "bundleFingerprint": "sha256:4cbb883b57763279fc6419d16751df3098b4c6dcdc293c6747f311ffaf4f499a",
+    "bookDigest": "sha256:14f445255f8ca249a97fd0684294b4d67f1170d7f93574809ec9f26f9505e39f",
+    "goalCount": 10,
+    "reviewInputFingerprint": "sha256:83479021a61a07830d7c5ab717f0fd224acc03b2cda69f938b2484838f85cb86"
+  },
+  "imageReview": {
+    "actualViewCount": 10,
+    "missingImageCount": 0,
+    "images": [
+      {
+        "goalId": "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+        "path": "app/public/assets/goal-visualizations/mathematik/31be24f0-3ab1-54d2-856d-fa9b7f36552f/31be24f0-3ab1-54d2-856d-fa9b7f36552f.jpg",
+        "sha256": "sha256:c1c093225817766685acf41ce3ad8540c3741ff8cb009a2ebd610aae594ad797",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      },
+      {
+        "goalId": "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+        "path": "app/public/assets/goal-visualizations/mathematik/649b673c-1a74-5dc5-af01-b4c9e090b90d/649b673c-1a74-5dc5-af01-b4c9e090b90d.jpg",
+        "sha256": "sha256:79aa691ef2d905113f80097b91e7e42b198ee8d460ed79bab25c8acf2e43ab7f",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      },
+      {
+        "goalId": "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+        "path": "app/public/assets/goal-visualizations/mathematik/0d21097c-09bf-5375-8c56-34ce8dc5bc35/0d21097c-09bf-5375-8c56-34ce8dc5bc35.jpg",
+        "sha256": "sha256:38e2ed20d541723c04f32b493812d2a9f2f2ecb4a720c739001f54b617f2bee6",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      },
+      {
+        "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+        "path": "app/public/assets/goal-visualizations/mathematik/e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd/e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd.jpg",
+        "sha256": "sha256:9fb6dacb3b6ebe3b211ea7f499abf3e2b1c154d0c2d59d63c943c3822640cde4",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      },
+      {
+        "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+        "path": "app/public/assets/goal-visualizations/mathematik/34604a97-0c64-5b06-81e2-6ac818732d60/34604a97-0c64-5b06-81e2-6ac818732d60.jpg",
+        "sha256": "sha256:a966522eb9ab80eeaf6bb2204ef821ea95f998220055f2ee3a8a2933904e6d51",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      },
+      {
+        "goalId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+        "path": "app/public/assets/goal-visualizations/mathematik/647888d2-8e23-52b2-a2ec-fad3f31cb1a6/647888d2-8e23-52b2-a2ec-fad3f31cb1a6.jpg",
+        "sha256": "sha256:6214de510ed5b8586e3dd571ffdfd0ddd06abb9e004fa4cc81caf6ec95e03d74",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      },
+      {
+        "goalId": "809ef78a-f282-5593-89be-0f2cb95570ac",
+        "path": "app/public/assets/goal-visualizations/mathematik/809ef78a-f282-5593-89be-0f2cb95570ac/809ef78a-f282-5593-89be-0f2cb95570ac.jpg",
+        "sha256": "sha256:027da3a06ec3b0f2f59a2d5a694b3caf0679f71f6e11040bf60f7182a291b9de",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      },
+      {
+        "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+        "path": "app/public/assets/goal-visualizations/mathematik/23c8b5f9-ab35-4071-a3d4-b76a669a0995/23c8b5f9-ab35-4071-a3d4-b76a669a0995.jpg",
+        "sha256": "sha256:3ec64898d8b00aa18311b84279e4459b2c84468c1854707a0182da1c68dfe5c3",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      },
+      {
+        "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+        "path": "app/public/assets/goal-visualizations/mathematik/19481f5d-94de-4a74-b765-cbebd1525994/19481f5d-94de-4a74-b765-cbebd1525994.jpg",
+        "sha256": "sha256:d3877132614bdaef8bebdb2096a0c6d051b7ac95d971b406d7e6c5f20edc3b4e",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      },
+      {
+        "goalId": "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+        "path": "app/public/assets/goal-visualizations/mathematik/0f180645-37ce-5b6b-8a36-ad7b31168b1a/0f180645-37ce-5b6b-8a36-ad7b31168b1a.jpg",
+        "sha256": "sha256:1654fa3a6970bc6a586db768befff81269ddb4de2e60b2de765219f7f1e41190",
+        "actualRasterViewed": true,
+        "method": "view_image",
+        "teachingSupportOnly": true
+      }
+    ]
+  },
+  "decisions": {
+    "keep": 7,
+    "revise": 1,
+    "split_review": 2,
+    "block": 0
+  },
+  "writesRestrictedTo": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a"
+}

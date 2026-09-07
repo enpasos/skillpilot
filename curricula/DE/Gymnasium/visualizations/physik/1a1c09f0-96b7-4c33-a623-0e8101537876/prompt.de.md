@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)
 - Status: pilot
 - Quellbild: `1a1c09f0-96b7-4c33-a623-0e8101537876.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/1a1c09f0-96b7-4c33-a623-0e8101537876/1a1c09f0-96b7-4c33-a623-0e8101537876.jpg`
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,12 @@ Titel: Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen besc
 Beschreibung: Die lernende Person kann die Interferenz einzelner Quantenobjekte mithilfe von Wahrscheinlichkeitsaussagen beschreiben und den Aufbau eines Interferenzmusters aus vielen Einzelereignissen qualitativ deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+# Zwei örtlich begrenzte Bildkorrekturen
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Einzelne Quanten: Muster aus Treffern`.
-- Show one double-slit setup with an unlabeled source, two slits, and a screen.
-- Use three small snapshots of the same screen labelled `1 Treffer`, `20 Treffer`, and `viele Treffer`.
-- In `1 Treffer`, show one single dot only.
-- In `20 Treffer`, show scattered dots beginning to cluster.
-- In `viele Treffer`, show many dots forming clear vertical interference bands.
-- Add a small smooth probability curve beside the final screen labelled `Wahrscheinlichkeit`.
-- Use no arrows anywhere in the image.
-- Visible learner text must be limited to the title, `1 Treffer`, `20 Treffer`, `viele Treffer`, `Doppelspalt`, `Schirm`, and `Wahrscheinlichkeit`.
+Bearbeite das Referenzbild so minimal wie möglich, mit derselben lockeren Handschrift, denselben Pastellfarben und derselben Gliederung. Behalte Titel, Einzelquanten, Doppelspalt und die drei unteren Schirme mit ihrem Musteraufbau.
 
-Vermeiden:
-
-- Do not write English words such as `source` or `Quantum source`.
-- Do not draw continuous bright bands for the one-hit or 20-hit snapshots.
-- Do not show a single deterministic route through one slit.
-- Do not draw arrows, path lines, trajectory lines, or ray lines.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+1. Ersetze ausschließlich die Beschriftung „20 Treffer“ unter dem mittleren unteren Schirm durch „erste Treffer“. Es sind sichtbar mehr als 20 Punkte; deshalb darf keine genaue Trefferzahl mehr behauptet werden. „1 Treffer“ links und „viele Treffer“ rechts bleiben unverändert.
+2. Entferne rechts neben dem unteren rechten Schirm die rote vertikale Wahrscheinlichkeitskurve samt dem senkrechten Wort „Wahrscheinlichkeit“. Die gezeigten Interferenzstreifen variieren horizontal, daher passt die senkrecht orientierte Wahrscheinlichkeitskurve nicht dazu. KEINE Ersatzkurve zeichnen. Der rechte Schirm allein zeigt weiterhin die senkrechten hellen Trefferbänder mit dunklen Zwischenräumen. Alles andere möglichst exakt beibehalten. Keine neuen Achsen, keine Zusatztexte, keine neue exakte Punktezahl.
 ```
 
 ## Review-Notiz

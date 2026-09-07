@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-p1-author-case-checks-v1",
+  "observedAt": "2026-09-07T01:14:48.712Z",
+  "candidateSha256": "sha256:d3713a3188e32fe3c8b31c0ebf92c2e2fb571d2c2260d154303f5aeb9c4bb00d",
+  "profileBodySchemas": 1,
+  "caseSpecificChecks": [
+    {
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "caseId": "mixed-rule-verification",
+      "status": "pass",
+      "checked": "Exact structured term differentiation and reverse-rule construction recover h and distinguish the proposed sine-sign error. The expected general power-rule calculation and derivative linearity are the mathematical justification; finite examples are not presented as a proof."
+    },
+    {
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "caseId": "negative-power-domain-transfer",
+      "status": "pass",
+      "checked": "Exact structured differentiation and construction recover all five terms, including powers −3 and −2 and constant −3. The interval statement follows from the actual pole at 0 and the disappearance of constants. Numerical derivative checks on both sides of 0 support the term audit, not a general proof."
+    }
+  ],
+  "additionalChecks": {
+    "integerPowerSample": "n=−8 through 8 excluding −1, coefficient/exponent identity; n=−1 rejected",
+    "numericalCrossCheckPoints": [
+      -3,
+      -1,
+      -0.25,
+      0.25,
+      1,
+      3
+    ],
+    "authority": "Author-side mathematical and schema checks only; no learner execution or human approval."
+  }
+}

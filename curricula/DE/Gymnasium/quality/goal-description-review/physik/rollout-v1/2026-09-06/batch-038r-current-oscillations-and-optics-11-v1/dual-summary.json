@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3b3e54b84e3eddfbf61fdeb4f71965f01d95ff977f59c1bd8a6cb37a96e5a577",
+  "reviewInputFingerprint": "sha256:f94209d0d53956f76839bc25202c6082aa923326c69d37b3d0ffead35e8e0c00",
+  "goalCount": 11,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-a",
+      "roundId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact deployment model and version not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-b",
+      "roundId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-independent-b",
+      "runIds": [
+        "codex-physik-b038r-first-pass-b-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier and sampling parameters not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 11,
+    "unavailable": 0,
+    "requiresSynthesis": 11
+  },
+  "goals": [
+    {
+      "goalId": "c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-001",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.001",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a844895e-2cdc-4665-aad2-a49c62f11759",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-002",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.002",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-003",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.003",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-004",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.004",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-005",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.005",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e413a352-33c4-53ae-b54a-30e52c3e65ae",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-006",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.006",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-007",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.007",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "91f1838c-80fc-55f5-ac30-e7d1498fccee",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-008",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.008",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "122e83ac-c9cf-50c1-8a73-a1e3db347f21",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-009",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.009",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c64820e1-c0ee-4342-9225-f981650f0c52",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-010",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.010",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+      "firstRecordId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a.record-011",
+      "secondRecordId": "codex-physik-b038r-first-pass-b-20260906.011",
+      "firstRunId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001.codex-a",
+      "secondRunId": "codex-physik-b038r-first-pass-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

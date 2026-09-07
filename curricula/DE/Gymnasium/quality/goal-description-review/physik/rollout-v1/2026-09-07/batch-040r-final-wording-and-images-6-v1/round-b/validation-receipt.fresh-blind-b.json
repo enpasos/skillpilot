@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "physik-b040r-fresh-blind-b-20260907",
+  "validation": {
+    "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040r-final-wording-and-images-6-v1/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040r-final-wording-and-images-6-v1/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040r-final-wording-and-images-6-v1/round-b/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040r-final-wording-and-images-6-v1/round-b/batches --results-dir curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040r-final-wording-and-images-6-v1/round-b/results",
+    "exitCode": 0,
+    "stdout": "Goal-description review campaign results valid: 6\n"
+  },
+  "recordCount": 6,
+  "decisionCounts": {
+    "keep": 6,
+    "revise": 0,
+    "split_review": 0,
+    "block": 0
+  },
+  "recordsDigest": "sha256:4ce3bf9cd18a315d5dcbf4cc54fc4bcea77afda17d39742980e49406a0ea958f",
+  "runManifestDigest": "sha256:e1d4d7c5277c080ebfc27c686c6d6dd7d6587ae2d1cc91099ece53168bd94883",
+  "provenanceDigest": "sha256:5185cc9d5da61bf8d17cfcac7df788cc5cfe08f24846366acca1613c1c23cd59",
+  "bundleFingerprint": "sha256:929019c0e7cbb728ee996ca9c742f01ad4375c41f736ad0bcc768a6f3e3752e3",
+  "bookDigest": "sha256:d7b2c6d63317b0c10eb25b81e4258008f7d8317d59f5b7b1f2b8eca7360a8e49",
+  "freezeCheck": "CHECK openai_plugin_review_freeze PASS skillpilot-coach-v1 1.0.0 state=IN_REVIEW trees=6 files=22",
+  "scope": "Schema/binding validation, not human acceptance. Every bound raster viewed; no canonical or image edits."
+}

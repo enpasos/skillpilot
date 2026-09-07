@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "runId": "mathematik-b040r-fresh-blind-b-20260907",
+  "validation": {
+    "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1/round-b/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1/round-b/batches --results-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1/round-b/results",
+    "exitCode": 0,
+    "stdout": "Goal-description review campaign results valid: 17\n"
+  },
+  "recordCount": 17,
+  "decisionCounts": {
+    "keep": 16,
+    "revise": 0,
+    "split_review": 0,
+    "block": 1
+  },
+  "blockedGoalIds": [
+    "3862890e-9ea9-4c62-bcf2-e354c9d8f306"
+  ],
+  "recordsDigest": "sha256:e84d5fd192c021c25fe6f38c1ac95fed6c2b35bf5c9d5587e174fd7788d0979a",
+  "runManifestDigest": "sha256:9ec63626690610e100fb6005a570ca3e325482486bbc242b0519d7e287eb3ec8",
+  "provenanceDigest": "sha256:2931d8f0c71c98d24d6ad286cc8c605e0fb75711fad0aa8d741325b468adb0e4",
+  "bundleFingerprint": "sha256:0655ab188764862a1a97deac4cbc63ade8b5e16fa244427bb5b1a5e50c4025c9",
+  "bookDigest": "sha256:53006d5047dac48059f4b54bea88ef56308fbe835d01f16a6cd0939d24aba1b3",
+  "freezeCheck": "CHECK openai_plugin_review_freeze PASS skillpilot-coach-v1 1.0.0 state=IN_REVIEW trees=6 files=22",
+  "scope": "Schema/binding validation, not human acceptance. Every bound raster viewed; no canonical or image edits."
+}

@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "independent-goal-visualization-candidate-review",
+  "reviewId": "math-b039-methods-and-physics-torque-independent-candidates-v2-20260907",
+  "version": 2,
+  "startedAt": "2026-09-06T23:26:57Z",
+  "completedAt": "2026-09-06T23:27:53Z",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "Codex",
+    "underlyingExactModelIdentifier": "not exposed",
+    "role": "independent AI candidate reviewer",
+    "agent": "codex-math-b039-blind-b",
+    "humanApproval": false,
+    "claimsModelDiversity": false
+  },
+  "independence": "The two supplied candidate files were actually inspected with view_image at original resolution and checked against current canonical bilingual goals, direct prerequisites, parent clusters and successors. No root candidate opinions were read. This is an AI image review, not a new blind description round, a human review or a claim of distinct underlying model versions.",
+  "scope": {
+    "candidateCount": 2,
+    "generatesImages": false,
+    "importsImages": false,
+    "writesCanonical": false,
+    "grantsProgress": false,
+    "grantsBatchCompletion": false,
+    "humanApproval": false
+  },
+  "preservedPreviousReview": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b039-methods-and-physics-torque-v1/independent-candidate-review-v1.json",
+    "sha256": "59c49bea874f76e5a0b7976b1738589ed9ab809e0706c23ae72adc584b6c598e",
+    "overwritten": false
+  },
+  "reviews": [
+    {
+      "goalId": "c61af0a9-7d56-5505-a70d-ee097c3b747f",
+      "candidateLabel": "K1",
+      "path": "tmp/goal-visualizations/c61af0a9-7d56-5505-a70d-ee097c3b747f/generated/c61af0a9-7d56-5505-a70d-ee097c3b747f.generated.2026-09-06T23-18-40-519Z.jpg",
+      "sha256": "f008b1e9fd215ddf561b61aef4004c88aa44c21a2110c4216fccf93b183b185b",
+      "actualVisualInspection": {
+        "tool": "view_image",
+        "detail": "original",
+        "width": 2752,
+        "height": 1536
+      },
+      "currentCanonicalContext": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "goalJsonSha256AtInspection": "4d5ad171c54637ce3d27d853d39c06107d79b3291fa6cbb3c63d0564ae1a25d7",
+        "hashRule": "SHA-256 of UTF-8 JSON.stringify(canonical goal object), at inspection; later resource-link imports may change this snapshot hash.",
+        "titleDe": "Grenzwerte von Folgen mit Grenzwertsätzen begründen",
+        "titleEn": "Justify sequence limits using limit laws",
+        "descriptionDe": "Die lernende Person kann Konvergenz beziehungsweise Divergenz von Folgen begründen, Grenzwerte mit Grenzwertsätzen bestimmen und die verwendeten Grenzwertargumente verbal sowie symbolisch darstellen.",
+        "descriptionEn": "The learner can justify convergence or divergence of sequences, determine limits using limit laws, and present the limit arguments verbally and symbolically.",
+        "directPrerequisites": [
+          "1b888f4c-df57-52a9-9551-b2b692e929fa"
+        ],
+        "contextAssessment": "E / Analysis / AB3 in Folgen und Reihen. The current prerequisite treats finite tables and graph excerpts as conjectural and requires a formation rule for null-sequence justification. The candidate supplies formation rules and limit-law arguments, coherently advancing to justification; the successor is autonomous sequences-and-series assessment."
+      },
+      "decision": "accept",
+      "rationaleDe": "Die vorher fehlerhaften Folgenbilder sind durch fachlich korrekte Wertfolgen ersetzt. Rechenbeispiel, Summen-/Produkt-/Quotientensatz mit Voraussetzungen sowie verbale und symbolische Argumentstruktur passen zum aktuellen Lernziel. Kein notwendiger fachlicher oder lesebehindernder Layout-Blocker.",
+      "checks": [
+        {
+          "aspect": "Konvergenzwerte und Richtung",
+          "result": "pass",
+          "evidence": "Für a_n=2+1/n und n=1,2,3,4 sind 3; 2,5; 2⅓; 2,25 exakt richtig. Wegen 1/n>0 und 1/n→0 liegt die Annäherung von oben an 2 vor."
+        },
+        {
+          "aspect": "Divergenzbeispiel",
+          "result": "pass",
+          "evidence": "Für a_n=(−1)^n stehen ausschließlich −1,+1,−1,+1 in korrekter Reihenfolge ab n=1. Gerade und ungerade Teilfolgen haben verschiedene Grenzwerte; die wiederkehrenden zwei Werte begründen das Fehlen eines gemeinsamen Grenzwerts. Keine irreführenden zusätzlichen Punkthöhen."
+        },
+        {
+          "aspect": "Grenzwertsätze und Bedingungen",
+          "result": "pass",
+          "evidence": "Die Summen-, Produkt- und Quotientenformeln stimmen für existierende endliche Teilgrenzwerte A und B; B≠0 steht explizit beim Quotienten. Die Fußzeile verlangt die Existenz der Teilgrenzwerte."
+        },
+        {
+          "aspect": "Rechnung und Formelbezug",
+          "result": "pass",
+          "evidence": "(2n+1)/n = 2n/n + 1/n = 2+1/n für n≥1. Die dargestellte Grenzwertrechnung ergibt 2+0=2; sie behauptet keinen Quotientensatz mit divergierenden Einzelgrenzwerten von 2n und n."
+        },
+        {
+          "aspect": "Argumentation und Layout",
+          "result": "pass",
+          "evidence": "Drei lesbare Spalten trennen Begründung, Grenzwertbestimmung und Darstellung. Die rechte symbolische Vorlage ist über Zeilen umgebrochen und verwendet sichtbar Platzhalter für Operation und Werte; die konkrete Rechnung in der Mitte liefert das fachlich vollständige Beispiel. Keine Kurve oder quantitative Achse wird behauptet."
+        }
+      ],
+      "remainingLimits": [
+        "Die rechte Notiz ist eine schematische Argumentvorlage, kein zusätzlicher ausgefüllter Beweis; bei Aufgaben müssen konkrete Teilfolgen, Grenzwerte und Rechenoperationen benannt werden.",
+        "Die Darstellung illustriert ausgewählte Folgen und elementare Grenzwertsätze, nicht alle Konvergenzmethoden oder den vollständigen formalen ε-N-Beweis.",
+        "Die Sichtung prüft die Rasterdatei, nicht die spätere responsive Darstellung in einer konkreten Anwendung."
+      ],
+      "blockingIssues": [],
+      "requiredChanges": [],
+      "humanApproval": false
+    },
+    {
+      "goalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+      "candidateLabel": "K4",
+      "path": "tmp/goal-visualizations/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea/generated/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea.generated.2026-09-06T23-18-40-259Z.jpg",
+      "sha256": "c9a319582ef2d990e9db2322e2dadff5802a33393660627c40821a38c7047cd1",
+      "actualVisualInspection": {
+        "tool": "view_image",
+        "detail": "original",
+        "width": 2752,
+        "height": 1536
+      },
+      "currentCanonicalContext": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "goalJsonSha256AtInspection": "24bd1d1242066940713fe4db42130de0e113e057cbf30a03b09e3ef449cc975f",
+        "hashRule": "SHA-256 of UTF-8 JSON.stringify(canonical goal object), at inspection; later resource-link imports may change this snapshot hash.",
+        "titleDe": "Mittleres Beschleunigungsmoment bestimmen",
+        "titleEn": "Determine Mean Acceleration Torque",
+        "descriptionDe": "Die lernende Person kann bei konstantem Trägheitsmoment aus einer vorgegebenen mittleren Winkelbeschleunigung das mittlere resultierende Drehmoment bestimmen und seine beschleunigende oder bremsende Wirkung deuten.",
+        "descriptionEn": "The learner can determine the mean net torque from a given mean angular acceleration for a constant moment of inertia and interpret its accelerating or braking effect.",
+        "directPrerequisites": [
+          "642aebd7-66cd-5a50-b543-73c4b207525d"
+        ],
+        "contextAssessment": "E / AB2 in Drehbewegungen, following qualitative moment of inertia and rotational energy and preceding application/assessment goals. The image focuses on mean net torque and its interpretation; no tensor dynamics, precession or new energy calculation is introduced."
+      },
+      "decision": "accept",
+      "rationaleDe": "Die Mittelwert-/Zeitverlaufsverwechslung ist fachlich behoben: Alle drei Beispiele setzen nun ausdrücklich zeitlich konstantes α voraus; zusätzlich warnt die Fußzeile vor dem allgemeinen Fehlschluss von Mittelwert null auf gleichförmige Drehung. Die Werte, Vorzeichen und auf die positive Drehrichtung begrenzte Bremsdeutung stimmen.",
+      "checks": [
+        {
+          "aspect": "Dynamische Beziehung und Voraussetzungen",
+          "result": "pass",
+          "evidence": "Für feste Achse und konstantes Trägheitsmoment I gilt M_res(t)=Iα(t), damit über dasselbe Zeitintervall auch M̄_res=Iᾱ. Feste Achse und konstantes I sind deutlich angegeben."
+        },
+        {
+          "aspect": "Zahlen und Einheiten",
+          "result": "pass",
+          "evidence": "I=2 kg·m² mit α=+3,0,−3 rad/s² ergibt M̄_res=+6,0,−6 N·m. Bei konstantem α stimmen momentaner und mittlerer Wert überein; rad ist im SI dimensionslos."
+        },
+        {
+          "aspect": "Mittelwert gegenüber Zeitverlauf",
+          "result": "pass",
+          "evidence": "Die Formulierung 'In jedem Beispiel ist α zeitlich konstant' sowie die einzelnen α(t)-Angaben schließen den früheren Fehlschluss aus. Im mittleren Beispiel gilt tatsächlich α(t)=0 zu jedem Zeitpunkt, daher bleibt ω konstant. Die Fußzeile stellt ausdrücklich klar, dass ein Mittelwert null allein dies nicht impliziert."
+        },
+        {
+          "aspect": "Beschleunigen und Bremsen",
+          "result": "pass",
+          "evidence": "Aus anfänglich ω>0 folgt bei konstant +3 rad/s² zunehmende positive Winkelgeschwindigkeit. Bei konstant −3 rad/s² sinkt ω bis zum Stillstand; genau dort begrenzt der Text die Bremsdeutung. Er behauptet weder dauerhaftes Bremsen nach einer Richtungsumkehr noch einen zahlenmäßig unbestimmten Stoppzeitpunkt."
+        },
+        {
+          "aspect": "Konkrete Gegenkontrolle",
+          "result": "pass",
+          "evidence": "Als unabhängige Rechnung mit ω(0)=12 rad/s ergeben sich nach 1 s die Werte 15,12,9 rad/s; im negativen Beispiel wäre der Stillstand nach 4 s erreicht. Diese Prüfwerte stehen nicht im Bild und sind nur ein Konsistenzcheck der dargestellten Beziehungen."
+        },
+        {
+          "aspect": "Layout und Zeichenbezüge",
+          "result": "pass",
+          "evidence": "Hauptformel, Bedingungen und drei Vorzeichenfälle sind gut lesbar. Die Radbilder sind Symbole ohne behauptete Messskala oder Zeitfolge; keine Pfeil- oder Achsenskalierung widerspricht den Textaussagen."
+        }
+      ],
+      "remainingLimits": [
+        "Die Beispiele behandeln bewusst zeitlich konstante Winkelbeschleunigung. Bei allgemein zeitabhängigem α gilt die Mittelwertformel weiterhin, aber aus dem Mittelwert folgt nur die Nettoänderung Δω über das gewählte Zeitintervall, nicht der vollständige Verlauf.",
+        "Die Bremsdeutung gilt bei anfänglich positiver Winkelgeschwindigkeit bis zum ersten Stillstand; bei fortgesetzt negativem Drehmoment würde danach eine negative Drehung schneller.",
+        "Das Bild ist ein korrektes schulisches Festachsenmodell und illustriert keine allgemeine dreidimensionale Rotationsdynamik.",
+        "Die Sichtung prüft die Rasterdatei, nicht die spätere responsive Darstellung in einer konkreten Anwendung."
+      ],
+      "blockingIssues": [],
+      "requiredChanges": [],
+      "humanApproval": false
+    }
+  ],
+  "validation": {
+    "actualImagesViewed": 2,
+    "independentArithmeticChecksPassed": true,
+    "imageByteHashesDocumented": true,
+    "currentBilingualGoalAndRelevantGraphContextRead": true,
+    "humanApproval": false
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedAtObserved": "2026-09-07 01:12:22 UTC",
+  "result": "PASS",
+  "recordCount": 6,
+  "decisions": {
+    "keep": 6,
+    "revise": 0,
+    "split_review": 0,
+    "block": 0
+  },
+  "actualImagesViewedAndHashMatched": 6,
+  "missingCases": [],
+  "nativeChecks": [
+    {
+      "name": "validateGoalDescriptionReviewCampaignResults",
+      "exitCode": 0,
+      "output": "Goal-description review campaign results valid: 6"
+    },
+    {
+      "name": "quality:goal-description-rollout-batch check",
+      "exitCode": 0,
+      "output": "Standalone goal-description batch valid; goals=6"
+    },
+    {
+      "name": "check_openai_plugin_review_freeze",
+      "exitCode": 0,
+      "output": "PASS skillpilot-coach-v1 1.0.0 state=IN_REVIEW"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040r-final-wording-and-images-6-v1/round-a/results/physik-rollout-v1-batch-040r-final-wording-and-images-6-v1-20260907-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:b7182e434fe3af46163559dc23b94e579ff943c3e8838e0e70c932defd1bb6eb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040r-final-wording-and-images-6-v1/round-a/results/physik-rollout-v1-batch-040r-final-wording-and-images-6-v1-20260907-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:5a94ceb1a97761ef44d7c8774d87f5c2b370e557661816ed93df8a7b4b1de77e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040r-final-wording-and-images-6-v1/round-a/run-provenance.json",
+      "sha256": "sha256:6b31069f43406f6239e6bfa6728400e15da3ed5017aad3efaa7233aba7af2880"
+    }
+  ],
+  "humanApproval": false,
+  "descriptionSynthesisWritten": false,
+  "canonicalWritten": false
+}

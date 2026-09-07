@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-a9ed-source-adjudication-and-adoption-v1",
+  "recordedAt": "2026-09-07T01:06:13.615Z",
+  "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+  "authority": {
+    "execution": "OpenAI Codex AI author",
+    "model": "unknown",
+    "modelVersion": "unknown",
+    "reviewAuthority": "ai_candidate",
+    "humanApprovalClaimed": false,
+    "direction": "Root authorized exactly the proposed German and English description changes after reading the four source aspects and complete parent bullet. Titles, IDs and edges must remain unchanged. No D KEEP before fresh dual review."
+  },
+  "sources": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/emit-a9ed-source-adjudication-v1.ts",
+      "sha256": "sha256:2a371ea3336d6233700afdd6161a47710d2e04e1a8fed6dfa5f4977023d5fa08"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "sha256": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+      "sha256": "sha256:f019332e31d21ff83198235b8f446d18e27287a5ebc42bbfeff891a581d2f2b3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.cards.review.jsonl",
+      "sha256": "sha256:184e422a8cde529963758beadbd671c1b28aa7ec2f705dbe6f8dda65a4866d21"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.de.json",
+      "sha256": "sha256:85be5a28d8a1f947c727bdd37fc216f3d8817f1567d0ca3c3a373931e648d3fa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.en.json",
+      "sha256": "sha256:4b854f3fa5f9d3c57c5e7c3a3f100163d6c28775e5dd1386aca55362a6a8c106"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/round-a/results/mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:d2f0b6580327c7e6f313cfe0005bb222b86ee7ea5eb187384b89eb54300e1cfe"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/round-b/results/mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:71a139ec72ee3a7e9d68bde90093ca5bba53cc27d103b1b7df989d3c703da441"
+    }
+  ],
+  "conflictingReviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/round-a/results/mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+      "recordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-017",
+      "decision": "block",
+      "rationale": "DE: BLOCK des aktiven Bildes: Die tatsächlich angesehene Tabelle enthält richtige einzelne Stammfunktionen und die obere bestimmte Rechnung ergibt korrekt 12. Die zweite Rechenzeile schreibt jedoch das Integral ohne Grenzen und setzt es mit der Zahl 12 gleich. Damit wird ein unbestimmtes Integral mit einem bestimmten Integralwert verwechselt, genau an der begrifflichen Grenze dieses Ziels. Die Funktionsfamilien selbst sind Instanzen derselben rückwärtigen linearen Ableitungsroutine, kein notwendiger Split. EN: BLOCK of the active image: the viewed table contains correct particular antiderivatives and the upper definite integral correctly equals 12. But its second calculation line writes an integral without bounds and equates it to 12, conflating an indefinite integral with a definite value at this goal’s conceptual boundary. The function families themselves instantiate the same reverse linear differentiation routine, so no split is inherently needed.",
+      "recordSha256": "sha256:75b4706188a3794480800feca09ef4a02d2146f574e7868c14fbe525b12fbc71"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/round-b/results/mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+      "recordId": "codex-mathematik-b040-blind-b-20260907-17",
+      "decision": "split_review",
+      "rationale": "Trotz semanticAtomic=true im technischen Kontext enthält der Wortlaut eigenständig prüfbare Routinen: Potenzregel/Linearität einerseits und nichtpolynomiale Standardstammfunktionen andererseits. Es wird keine sie integrierende begründete Auswahlleistung formuliert. Das tatsächlich betrachtete Bild bestätigt einen Regel- und Funktionenkatalog; seine Stammpaare sind korrekt. Die zweite Rechnungszeile verliert zudem die Integralgrenzen, obwohl sie weiterhin den bestimmten Wert 12 auswertet. Eine Wording-Glättung würde den fachlichen Zuschnitt nicht entscheiden. Urteil aus eigener vollständiger DE/EN-Lektüre und geliefertem Seitenkontext; externe Mappingbelege und menschliche Bildfreigabe werden nicht behauptet.",
+      "recordSha256": "sha256:3d17ac10dd5e0335aa02a0b0b4e0483fcf5c8c80cb209e0dba3ee2d1d937596b"
+    }
+  ],
+  "sourceInspection": {
+    "pdfPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "printedPage": 36,
+    "originalPageActuallyViewed": true,
+    "extractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+    "sourceAspectIds": [
+      "he-math-sekii-q1-1-b04-a01-9c764d50",
+      "he-math-sekii-q1-1-b04-a02-69c075cb",
+      "he-math-sekii-q1-1-b04-a03-a7178d9f",
+      "he-math-sekii-q1-1-b04-a04-6475efbe"
+    ],
+    "decisiveHeading": "Entwickeln der Integrationsregeln mithilfe der Ableitungsregeln",
+    "interpretation": "The original heading supplies the shared rule-development relation missing from the prior activity list. A shared curriculum bullet alone does not prove atomicity; the integrated tasks below demonstrate the bounded common operation."
+  },
+  "adjudication": {
+    "decision": "minimal_source_bound_revision_without_split",
+    "reasons": {
+      "atomicity": "Die neue Fassung stellt den im Original KC Q1.1 S.36 Spiegelstrich4 geforderten Zusammenhang ausdrücklich her: elementare Stammfunktionen aus bekannten Ableitungsregeln erschließen und mittels Linearität zu Stammfunktionen der angegebenen Linearkombinationen verbinden. Potenzen einschließlich negativer ganzzahliger Exponenten, exp und trigonometrische Grundfunktionen sind dabei bekannte Basispaare einer einzigen inversen linearen Operation, keine getrennten Integrationsmethoden. Zwei gemischte Aufgaben plus eine Regelbegründung decken die Kompetenz einschließlich geeigneter Intervalle ab. Innere Transformation, Substitution, partielle Integration und Rekonstruktionsanwendung werden nicht hinzugenommen. Der frühere fehlende Begründungszusammenhang ist sachlich ergänzt, nicht durch einen bloßen Fingerprint-Refresh verdeckt.",
+      "memory": "Die tatsächlich gelesene DE/EN-Karte math_analysis_c13 sichert eng begrenzt die kompakte Potenzregel F=x^(n+1)/(n+1) mit n≠−1. Dieser verfügbare Regelbaustein bleibt für die flüssige Anwendung im erweiterten linearen Term notwendig; das neue Erschließen aus Ableitungsregeln, die Linearkombination, trigonometrische Vorzeichen und Intervallwahl müssen unabhängig erklärt werden und sind durch Kartenabruf nicht nachgewiesen. Die Karte nennt eine Stammfunktion, daher fehlt dort keine allgemeine Konstante. Vorhandener memory_required-Status samt echtem Deck-/Memoryziel-/Kartenbezug bleibt individuell bestätigt; es wird kein zusätzliches Deck angelegt.",
+      "semanticKind": "Die aktuelle Formulierung verlangt eine überprüfbare curriculare Inhaltskompetenz an Stammfunktionen. Sie ist weder eine Themenüberschrift noch ein Memoryziel oder terminales Assessment; curricularAtomic bleibt sachlich angemessen. Bestehende native Statusautorität wird nicht als neue menschliche Abnahme ausgegeben."
+    },
+    "neighbors": [
+      {
+        "id": "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+        "title": "Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen",
+        "titleEn": "Determine Polynomial Antiderivatives and Use Given Antiderivatives",
+        "description": "Die lernende Person kann ohne Hilfsmittel Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen für Integral- und Rekonstruktionsaufgaben sicher nutzen.",
+        "descriptionEn": "The learner can determine antiderivatives of polynomial functions without aids and use given antiderivatives reliably in integral and reconstruction tasks.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+            "title": "Visualisierung: Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen",
+            "url": "/assets/goal-visualizations/mathematik/31be24f0-3ab1-54d2-856d-fa9b7f36552f/31be24f0-3ab1-54d2-856d-fa9b7f36552f.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen\". Die lernende Person kann ohne Hilfsmittel Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen für Integral- und Rekonstruktionsaufgaben sicher nutzen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      {
+        "id": "23589682-2028-54cb-9034-b468b42688f1",
+        "shortKey": "canonical_math_q1_integrate_transformed_exponential_trig_functions",
+        "title": "Transformierte Exponential- und trigonometrische Funktionen integrieren",
+        "titleEn": "Integrate transformed exponential and trigonometric functions",
+        "description": "Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+        "descriptionEn": "The learner can integrate functions of the form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$, and $\\cos(b\\cdot(x-c))$ using the linear inner transformation or reverse chain rule.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+          "d0a9e407-e654-5940-958f-6f608bf3d654",
+          "58d2f963-4fb9-550d-a832-f5ac60808900"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q1",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.1.TRANSFORMED_EXPONENTIAL_TRIG_INTEGRALS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.1, S. 36, Spiegelstrich 5",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "23589682-2028-54cb-9034-b468b42688f1",
+            "title": "Visualisierung: Transformierte Exponential- und trigonometrische Funktionen integrieren",
+            "url": "/assets/goal-visualizations/mathematik/23589682-2028-54cb-9034-b468b42688f1/23589682-2028-54cb-9034-b468b42688f1.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Transformierte Exponential- und trigonometrische Funktionen integrieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Transformierte Exponential- und trigonometrische Funktionen integrieren\". Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      }
+    ],
+    "neighborBoundary": "31be24 retains its without-aids polynomial and supplied-primitive application emphasis; 23589682 retains the next source bullet on linear inner transformations. Neither scope is imported into this foundational inverse-linearity goal.",
+    "remainingGate": "Fresh independent dual D review is still required; historical A/B records and image-QA decisions are untouched."
+  },
+  "integratedAssessmentTasks": [
+    {
+      "id": "derive-power-and-linearity",
+      "taskDe": "Erschließe aus den Ableitungsregeln eine Stammfunktion von x^n für n≠−1 sowie den Zusammenhang für αf+βg, wenn F′=f und G′=g gelten. Erkläre die Rolle geeigneter Intervalle und der Ausnahme n=−1.",
+      "taskEn": "Infer an antiderivative of x^n for n≠−1 and the relation for αf+βg from differentiation rules, given F′=f and G′=g. Explain suitable intervals and the exception n=−1.",
+      "expectedDe": "F_n=x^(n+1)/(n+1), weil die Ableitung (n+1) kompensiert; (αF+βG)′=αf+βg. Bei negativen Potenzen wird auf Intervallen ohne 0 gearbeitet; für n=−1 ist diese Potenzformel nicht definiert. Logarithmusintegration ist kein zusätzliches Pflichtziel.",
+      "expectedEn": "F_n=x^(n+1)/(n+1), since differentiation compensates n+1; (αF+βG)′=αf+βg. Negative powers are treated on intervals avoiding 0; the power formula is undefined at n=−1. Logarithmic integration is not an added requirement."
+    },
+    {
+      "id": "mixed-base-functions",
+      "taskDe": "Bestimme für h=2x³+3e^x−4sin x+cos x eine Stammfunktion und begründe Basispaare, Koeffizienten und Vorzeichen durch Ableiten.",
+      "taskEn": "Find an antiderivative of h=2x³+3e^x−4sin x+cos x and justify the basic pairs, coefficients and signs by differentiation.",
+      "expectedDe": "H=x⁴/2+3e^x+4cos x+sin x+C; die Ableitung liefert jeden Summanden von h, und C verschwindet.",
+      "expectedEn": "H=x⁴/2+3e^x+4cos x+sin x+C; differentiating recovers each term of h, and C disappears."
+    },
+    {
+      "id": "negative-power-transfer",
+      "taskDe": "Bestimme auf x>0 eine Stammfunktion von h=x^−2−2x+2cos x−e^x. Begründe die Intervallwahl und dieselbe inverse Linearität.",
+      "taskEn": "On x>0 find an antiderivative of h=x^−2−2x+2cos x−e^x. Justify the interval and the same inverse linearity.",
+      "expectedDe": "H=−1/x−x²+2sin x−e^x+C, da H′=h. 0 bleibt ausgeschlossen; auf getrennten zulässigen Intervallen kann die additive Konstante unabhängig gewählt werden.",
+      "expectedEn": "H=−1/x−x²+2sin x−e^x+C since H′=h. Zero remains excluded; additive constants can be chosen independently on separate admissible intervals."
+    }
+  ],
+  "before": {
+    "id": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+    "title": "Einfache Integrale berechnen",
+    "titleEn": "Calculate simple integrals",
+    "description": "Die lernende Person kann Stammfunktionen von Potenzfunktionen $f(x)=x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ bestimmen, Faktor- und Summenregel beim Integrieren anwenden und ganzrationale Funktionen sowie $e^x$, $\\sin(x)$ und $\\cos(x)$ integrieren.",
+    "descriptionEn": "The learner can determine antiderivatives of power functions $f(x)=x^n$ for $n\\in\\mathbb{Z}\\setminus\\{-1\\}$, apply factor and sum rules when integrating, and integrate polynomial functions as well as $e^x$, $\\sin(x)$, and $\\cos(x)$.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K5.2"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L2"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.1, S. 36, Spiegelstrich 4",
+    "type": "atomic",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+        "title": "Visualisierung: Einfache Integrale berechnen",
+        "url": "/assets/goal-visualizations/mathematik/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/a9ed219d-d497-55e5-a4e0-4d45d2554f6b.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+        "description": "Visualisierung zum Lernziel: Einfache Integrale berechnen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Einfache Integrale berechnen\". Die lernende Person kann Stammfunktionen von Potenzfunktionen $f(x)=x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ bestimmen, Faktor- und Summenregel beim Integrieren anwenden und ganzrationale Funktionen sowie $e^x$, $\\sin(x)$ und $\\cos(x)$ integrieren.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "after": {
+    "id": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+    "title": "Einfache Integrale berechnen",
+    "titleEn": "Calculate simple integrals",
+    "description": "Die lernende Person kann die Stammfunktionen von $x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ sowie von $e^x$, $\\sin(x)$ und $\\cos(x)$ aus den Ableitungsregeln erschließen und damit mithilfe der Faktor- und Summenregel auf geeigneten Intervallen Stammfunktionen entsprechender Linearkombinationen bestimmen.",
+    "descriptionEn": "The learner can infer antiderivatives of $x^n$ for $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ and of $e^x$, $\\sin(x)$, and $\\cos(x)$ from differentiation rules and use the factor and sum rules to determine antiderivatives of their linear combinations on suitable intervals.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K5.2"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L2"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.1, S. 36, Spiegelstrich 4",
+    "type": "atomic",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+        "title": "Visualisierung: Einfache Integrale berechnen",
+        "url": "/assets/goal-visualizations/mathematik/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/a9ed219d-d497-55e5-a4e0-4d45d2554f6b.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+        "description": "Visualisierung zum Lernziel: Einfache Integrale berechnen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Einfache Integrale berechnen\". Die lernende Person kann Stammfunktionen von Potenzfunktionen $f(x)=x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ bestimmen, Faktor- und Summenregel beim Integrieren anwenden und ganzrationale Funktionen sowie $e^x$, $\\sin(x)$ und $\\cos(x)$ integrieren.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "changedCanonicalFields": [
+    "description",
+    "descriptionEn"
+  ],
+  "bindingsBefore": {
+    "atomicity": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "semantic-atomicity-v1",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "fingerprint": "sha256:78d8cf32e9809c541c63410d47186352153d27c34ef27fbc41d0301caca5ad1f",
+      "status": "atomic",
+      "semanticAtomic": true,
+      "reviewedAt": "2026-05-05",
+      "reviewer": "codex",
+      "reason": "Q1-Review: Eine zusammenhaengende Integral- oder Stammfunktionsroutine; Berechnen, Deuten und Begruenden sind hier Ausfuehrungsschritte einer pruefbaren Kompetenz.",
+      "suggestedSplit": []
+    },
+    "memory": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "fingerprint": "sha256:35a12d62b059636c9f118c7e10e7930079ea017aa46880d9ccedad25e0de26c4",
+      "status": "memory_required",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "ca708087-71f8-5fae-91c5-b80721a4208f"
+      ],
+      "deckIds": [
+        "de_gymnasium_math_analysis_core"
+      ],
+      "reviewedAt": "2026-05-17",
+      "reviewer": "codex-semantic-memory-pilot",
+      "reason": "Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend."
+    },
+    "semanticKind": {
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "sourceFingerprint": "sha256:a83f29826813d9de14d537166046eef53a8d254d98fd08b00dc6a7e2eb60bd3d",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    }
+  },
+  "bindingsAfter": {
+    "atomicity": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "semantic-atomicity-v1",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "fingerprint": "sha256:7488b044b4a997815676fbd501e830bd55cffb63a13611dc7b20fcc9d35d2020",
+      "status": "atomic",
+      "semanticAtomic": true,
+      "reviewedAt": "2026-09-07",
+      "reviewer": "codex-math-b040-a9ed-source-adjudication",
+      "reason": "Individuelle fachliche AI-Nachprüfung nach quellengebundener DE/EN-Präzisierung: Die neue Fassung stellt den im Original KC Q1.1 S.36 Spiegelstrich4 geforderten Zusammenhang ausdrücklich her: elementare Stammfunktionen aus bekannten Ableitungsregeln erschließen und mittels Linearität zu Stammfunktionen der angegebenen Linearkombinationen verbinden. Potenzen einschließlich negativer ganzzahliger Exponenten, exp und trigonometrische Grundfunktionen sind dabei bekannte Basispaare einer einzigen inversen linearen Operation, keine getrennten Integrationsmethoden. Zwei gemischte Aufgaben plus eine Regelbegründung decken die Kompetenz einschließlich geeigneter Intervalle ab. Innere Transformation, Substitution, partielle Integration und Rekonstruktionsanwendung werden nicht hinzugenommen. Der frühere fehlende Begründungszusammenhang ist sachlich ergänzt, nicht durch einen bloßen Fingerprint-Refresh verdeckt. Keine menschliche Einzelabnahme behauptet.",
+      "suggestedSplit": []
+    },
+    "memory": {
+      "schemaVersion": 1,
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "fingerprint": "sha256:bfef1ce9d440df391122d4d2fef41905fa1f680aeaa2d349a31c796ee1000fa7",
+      "status": "memory_required",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "ca708087-71f8-5fae-91c5-b80721a4208f"
+      ],
+      "deckIds": [
+        "de_gymnasium_math_analysis_core"
+      ],
+      "reviewedAt": "2026-09-07",
+      "reviewer": "codex-math-b040-a9ed-source-adjudication",
+      "reason": "Individuelle fachliche AI-Nachprüfung nach quellengebundener DE/EN-Präzisierung: Die tatsächlich gelesene DE/EN-Karte math_analysis_c13 sichert eng begrenzt die kompakte Potenzregel F=x^(n+1)/(n+1) mit n≠−1. Dieser verfügbare Regelbaustein bleibt für die flüssige Anwendung im erweiterten linearen Term notwendig; das neue Erschließen aus Ableitungsregeln, die Linearkombination, trigonometrische Vorzeichen und Intervallwahl müssen unabhängig erklärt werden und sind durch Kartenabruf nicht nachgewiesen. Die Karte nennt eine Stammfunktion, daher fehlt dort keine allgemeine Konstante. Vorhandener memory_required-Status samt echtem Deck-/Memoryziel-/Kartenbezug bleibt individuell bestätigt; es wird kein zusätzliches Deck angelegt. Keine menschliche Einzelabnahme behauptet."
+    },
+    "semanticKind": {
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "sourceFingerprint": "sha256:33ddf77b0ed11b89ef6ed02f5eb21ce7316988e08903395dbe9d56aa65079f05",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    }
+  },
+  "preservedMemoryEvidence": {
+    "ledger": [
+      {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "deckId": "de_gymnasium_math_analysis_core",
+        "cardId": "math_analysis_c13",
+        "fingerprint": "sha256:c45175f4d6c4391b3f0346f72e0cacc0b8f45f163aa7fc0bfdf9adca6730f479",
+        "status": "kept",
+        "necessary": true,
+        "originGoalIds": [
+          "a9ed219d-d497-55e5-a4e0-4d45d2554f6b"
+        ],
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-semantic-memory-pilot",
+        "reason": "Behalten: Stammfunktion von x^n ist eine kompakte Integrationsregel und direkt auf einfache Integrale bezogen."
+      }
+    ],
+    "cards": [
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.de.json",
+        "card": {
+          "id": "math_analysis_c13",
+          "front": "Stammfunktion von $f(x) = x^n$ \n\n(für $n \\neq -1$)",
+          "back": "$F(x) = \\frac{1}{n+1} x^{n+1}$",
+          "category": "Integral",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      },
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.en.json",
+        "card": {
+          "id": "math_analysis_c13",
+          "front": "Antiderivative of $f(x) = x^n$\n\n(for $n \\neq -1$)",
+          "back": "$F(x) = \\frac{1}{n+1} x^{n+1}$",
+          "category": "Integral",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      }
+    ]
+  },
+  "fileDigests": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "beforeSha256": "sha256:cb211be6bc575e1b2e55f6fde5f467ddeb486957f6df55d21ca7aeefcaebcbd1",
+      "afterSha256": "sha256:bd33714d53a8774ac18bced0ca93ca3ade8a9de085373c851937af43b7416e44"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "beforeSha256": "sha256:83b4e1920014905cfc8f1564dc84a4434e0d7c441849d4b439f46d7b2daf7a77",
+      "afterSha256": "sha256:40ab5bcde8a44942bec882ca37fbe09347c9cc309ef46512a22598df45144475"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "beforeSha256": "sha256:2af5418865daa783906da9d270c94eede126368790ac8254441fff98c9284cc1",
+      "afterSha256": "sha256:3ff94e0f6e4566d8b4f2f5f0a1b0913383ec2061648e1820cabf45ba2ca49e20"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "beforeSha256": "sha256:9036622f9b0c4792b95f30da254015187f0901b5baa9e769dbddf4c0367b3f4d",
+      "afterSha256": "sha256:99f1529c408cc24402eb8d4582d0ef497a8ca176ac67eec933df3e23e34b773c"
+    }
+  ],
+  "boundaries": [
+    "Only two canonical description fields, one A record, one M record and one K fingerprint changed.",
+    "Titles, IDs, edges, applicability, source mappings, actual cards/decks, resourceLinks and images are preserved.",
+    "No D/P existing record, registry, claim, source, book, aggregate QA or runtime write. New P1 authoring is a separate subsequent artifact."
+  ]
+}

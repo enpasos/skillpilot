@@ -1,0 +1,2 @@
+Use case: precise-object-edit / scientific-educational.
+Nur grüne Füllung im kleinen Raten-Graphen unten links korrigieren: Sie muss UNTER r(t)=3t² lückenlos über GESAMTEM Intervall von t=0 bis t=2 liegen. Bisher beginnt sie fälschlich erst bei der Hilfslinie t=1. Ergänze kleinen fehlenden Anteil zwischen Ursprung und (1,3), keinegrüneFlächeoberhalbKurve. VertikaleLiniebei1nurdünnegestrichelteHilfslinie, nichtlinkeFlächengrenze. Rechte Bestandszeichnung und alleTexte/Rechnungen unverändertlassen.

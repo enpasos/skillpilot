@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1.config.json",
+  "configDigest": "sha256:58f8c923eea72bcda5423588aaf99c2dc742c367b9480c1f496d0987d6ff9d0a",
+  "goalIds": [
+    "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+    "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+    "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+    "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+    "497f1311-17d6-56ff-afb1-422a738e5c16",
+    "16caf92e-2800-57d1-946c-5b92ce848a96",
+    "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+    "d873ffa2-04b3-5978-a955-89563802a348",
+    "1b833656-cd16-5b21-973a-9810960dcfd2",
+    "c968d263-8be4-5cf9-b320-e95398fe648f",
+    "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+    "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+    "5db07785-8cca-50d5-81a9-e0264d344af9",
+    "206fe51d-cc78-5422-b139-32cc97eb1c37",
+    "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+    "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+    "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+    "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+    "14d99a65-8d58-5647-88ab-02137b96d55b",
+    "ba16948b-5e07-54af-b77b-776e677c6906"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 465,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:c62e496d839eeb7bdcb68c6972ddf3bb191a86aedff71de7b576e251c404f456"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:838bd54fd7008014064c30ba959ab94650b12d43f7b5dd0cd65934364665b59c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:71ecc7c2ccf37e045b23e4b60b9273233a0108135c357fd389c5c79404234f0b",
+    "reviewInputFingerprint": "sha256:3d0c33752552216f1d3dfaba8a1d12b666c40bd40bda9b7f57868d74b7fec973",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a",
+        "campaignDigest": "sha256:d3662aa6221d7cb987b21ae1eadc1e0f71b2544f6f750b2a3c7f3151cad13ee1",
+        "roundId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-independent-a",
+        "batchId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:3f3e978451dd7bf62463f8d2500a75ae956c32128490ec5b45f7f6ff48dff976"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-b",
+        "campaignDigest": "sha256:4f0894316a15a242f922cf3809d8dd354bdd2054b10b3bf488f2634a0cd9323d",
+        "roundId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-independent-b",
+        "batchId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:baf3109aca1ffae85eb8875c71d2a28f8882ff56062e3290c7d56e25eccf510b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

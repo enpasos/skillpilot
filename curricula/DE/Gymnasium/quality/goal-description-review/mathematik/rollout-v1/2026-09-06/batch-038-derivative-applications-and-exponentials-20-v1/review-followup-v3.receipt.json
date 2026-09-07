@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "status": "SCOPED_FOLLOWUP_ADOPTED_NOT_GOAL_ACCEPTANCE",
+  "adoptionId": "B038h-HE-G9-exponential-v3",
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "beforeSha256": "0480c4f856b38f9305e3e405f1720f13e4b27a47cd5d32ff4aafbb5501abe52d",
+      "afterSha256": "be94e9db088ae97d10c86de4e896f92539f717b6154a6d5016a05b69c4db75bc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "beforeSha256": "285409ed7a21c0d1708674a3011cf2ec048b1fda8a480fc79fbac7464863582f",
+      "afterSha256": "145fc86d0463968383d7fa6f643c072226e9229a55d6b85e3b8b87fe50a4d15a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "beforeSha256": "466ede651ab865022d5ccca760f4c5e8814762092f7d89a88ad4884d3355266f",
+      "afterSha256": "3788975060350928948d4112efc1eb4f47780f40edf5b9068af49b27275e2961"
+    },
+    {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "beforeSha256": "60f9bfb68427470e53f19e9fb6923dcf4df8576add9d52ff0d26dee97cd44c15",
+      "afterSha256": "f367f54568e93be6584cea2b5eef794cb4c9ba4ae57909811e6c66f0eb823fba"
+    }
+  ],
+  "reviews": [
+    {
+      "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "before": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "fingerprint": "sha256:cbff526738cd3fa9aad7127c79d641378ffdc80013627840b7d5959aef446b48",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "E-Phasen-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "fingerprint": "sha256:21a0099e37f3f9b571cfb9e0cb281b354b1aa841771e35ea091491c7af2a95e6",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "semanticKind": {
+          "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "sourceFingerprint": "sha256:41933dea5151f5c635fe50e5565134183697be5cd02ccfae229d9d80c0aa23c8",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "after": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "fingerprint": "sha256:cbff526738cd3fa9aad7127c79d641378ffdc80013627840b7d5959aef446b48",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038h-v3-source-route-individual-review",
+          "reason": "Eine Diagnoseleistung: den konstanten relativen Änderungsfaktor aus Tabelle, Graph oder Kontext erkennen und demselben exponentiellen Prozess einen Funktionstyp zuordnen. Darstellungen sind Evidenz für denselben Gegenstand, keine unabhängigen Routinen. Die Ableitung wird hierfür nicht gebraucht; der requires-Abbau ändert nicht den semantischen Kern. Frische individuelle fachliche AI-Prüfung B038h v3; keine menschliche Einzelabnahme oder vollständige Zielabnahme behauptet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "fingerprint": "sha256:21a0099e37f3f9b571cfb9e0cb281b354b1aa841771e35ea091491c7af2a95e6",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038h-v3-source-route-individual-review",
+          "reason": "Kennzeichen müssen an neuen Daten oder Graphen begründet werden. Ein isoliertes Abrufen einer Exponentialformel ersetzt weder Erkennen noch Abgrenzen gegen lineare Entwicklung; kein eigenes Memory-Deck erforderlich. Frische individuelle fachliche AI-Prüfung B038h v3; keine menschliche Einzelabnahme oder vollständige Zielabnahme behauptet."
+        },
+        "semanticKind": {
+          "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "sourceFingerprint": "sha256:e6e535b81ea6508b3d8e1138adc5f8d8e353fe3d4db13d340d864db9ca85ab48",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-b038h-v3-individual-ai-curricular-atomic-source-route-adjudication"
+        }
+      }
+    },
+    {
+      "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+      "before": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "fingerprint": "sha256:55832b257dcd4f5f6f383235250ff990db134f05fce9214ee30935c7f2bce2c4",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038-three-clarification-adoption",
+          "reason": "Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: Motivation und Begründung der Wert-, Ableitungs- und Grenzwerteigenschaften sind eine zusammenhängende Erklärung der natürlichen Exponentialfunktion. Die EN-Reparatur entfernt den zusätzlichen Modellierungsauftrag und stellt den bereits im DE beanspruchten Kern wieder her; sie schafft keinen neuen fachlichen Teilauftrag. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "fingerprint": "sha256:1587db102b528fef3d1ed380d6e590b834ed72b4d3f36f1e6cf8438bc356ecde",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038-three-clarification-adoption",
+          "reason": "Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: no_memory_needed bleibt individuell angemessen: Bewertet wird die begründete Verknüpfung von Exponentialgesetz, Positivität, Ableitung und Grenzverhalten, nicht isolierter Ziffern- oder Formelabruf. Das bloße Wiederholen von (e^x)'=e^x oder e≈2,718 würde diese Begründung nicht nachweisen. Die reine EN-Scopekorrektur erfordert kein neues zielbezogenes Deck. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet."
+        },
+        "semanticKind": {
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "sourceFingerprint": "sha256:b9c4a6d892d6eec630e185e84424d42a2913b2df4f3a3267c742fd124278b87a",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "after": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "fingerprint": "sha256:55832b257dcd4f5f6f383235250ff990db134f05fce9214ee30935c7f2bce2c4",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038h-v3-source-route-individual-review",
+          "reason": "Eine zusammenhängende Begründung der natürlichen Exponentialfunktion: ihre spezielle Ableitungseigenschaft wird mit Werten und Grenzverhalten verknüpft. Die DE/EN-Fassung bleibt identisch; die hierher verschobene Ableitungsbasis sichert die vorhandene Erklärung ab, statt einen zusätzlichen Lerngegenstand zu schaffen. Frische individuelle fachliche AI-Prüfung B038h v3; keine menschliche Einzelabnahme oder vollständige Zielabnahme behauptet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "fingerprint": "sha256:1587db102b528fef3d1ed380d6e590b834ed72b4d3f36f1e6cf8438bc356ecde",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038h-v3-source-route-individual-review",
+          "reason": "Der Gegenstand ist die begründete Verbindung von Exponentialgesetz, Positivität, Ableitung und Grenzverhalten. Abruf von e≈2,718 oder einer Ableitungsformel weist diese Erklärung nicht nach; das bestehende no_memory_needed bleibt zielbezogen angemessen. Frische individuelle fachliche AI-Prüfung B038h v3; keine menschliche Einzelabnahme oder vollständige Zielabnahme behauptet."
+        },
+        "semanticKind": {
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "sourceFingerprint": "sha256:d3da2a2b31e33e3a75460d6ecf0bbafa22f657e72cb15b9c1859573e25eb1f01",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-b038h-v3-individual-ai-curricular-atomic-source-route-adjudication"
+        }
+      }
+    },
+    {
+      "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "before": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "fingerprint": "sha256:f69b8f360c1badef7da009635435643498d93dc8dfb298cf1b0f8be676ffe71f",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "E-Phasen-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "fingerprint": "sha256:fce1402e35c30a9c65b0901ac9cfae8aef4ef5fd3b56d8fdd2bcb6a0944bc615",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "semanticKind": {
+          "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "sourceFingerprint": "sha256:5dd71093fa9d567c07f89af8a6fefdfc293ab207f6c66b54c867e4e061e377fd",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "after": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "fingerprint": "sha256:f69b8f360c1badef7da009635435643498d93dc8dfb298cf1b0f8be676ffe71f",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038h-v3-source-route-individual-review",
+          "reason": "Eine Gleichungslöseleistung mit notwendiger Validierung: den unbekannten Exponenten durch die im Ziel selbst erarbeitete inverse Operation bestimmen, die Lösung durch Einsetzen prüfen und auf den Ausgangskontext zurückbeziehen. Die inverse Operation darf nicht als unsichtbare J10-Mastery angenommen werden. Ein frischer positiver Nachweis muss die Abgrenzung zur Division durch die Basis und die Definitionsbedingungen sichtbar prüfen; keine bloße Bedienroutine. Frische individuelle fachliche AI-Prüfung B038h v3; keine menschliche Einzelabnahme oder vollständige Zielabnahme behauptet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "fingerprint": "sha256:fce1402e35c30a9c65b0901ac9cfae8aef4ef5fd3b56d8fdd2bcb6a0944bc615",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038h-v3-source-route-individual-review",
+          "reason": "Logarithmische Umformung, zulässige Basis/Argumente, Einsetzprobe und Kontextdeutung müssen an einer neuen Exponentialgleichung begründet zusammenspielen. Ein zusätzliches Merkdeck würde das Verständnis der inversen Operation nicht tragen; no_memory_needed bleibt begründet. Frische individuelle fachliche AI-Prüfung B038h v3; keine menschliche Einzelabnahme oder vollständige Zielabnahme behauptet."
+        },
+        "semanticKind": {
+          "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "sourceFingerprint": "sha256:dca29cba8a3025cbb628e002164f1d6726381e72d11699ef64e9dc923470b240",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-b038h-v3-individual-ai-curricular-atomic-source-route-adjudication"
+        }
+      }
+    },
+    {
+      "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+      "before": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "fingerprint": "sha256:e5364f747af174f28c3c43854d2d65841edae997d57b2f93ecf684f2ae572b58",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "fingerprint": "sha256:cc04ef13cf3c827abc35c22c10cd6300f78232e4102fac0638bbeb6be05159e8",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "semanticKind": {
+          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "sourceFingerprint": "sha256:c4736653b6d5b1f21d34ce2900cf0f8d7c335a9f45e3fbabb2c858ff29ed6815",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "after": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "fingerprint": "sha256:e5364f747af174f28c3c43854d2d65841edae997d57b2f93ecf684f2ae572b58",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038h-v3-source-route-individual-review",
+          "reason": "Eine Umkehrfunktionskonstruktion: die eindeutige Umkehrbarkeit der ausgewählten Funktion samt Bereichsbeschränkung feststellen und daraus die passende Umkehrgleichung mit getauschter Definitions-/Wertemenge gewinnen. Die Bereichsprüfung ist notwendiger Teil derselben Leistung, keine zweite Routine. Weder Differentiation noch der Hauptsatz sind dafür erforderlich. Die noch offene HE-Sek-I-Orientierungsprojektion wird nicht als erledigt bewertet. Frische individuelle fachliche AI-Prüfung B038h v3; keine menschliche Einzelabnahme oder vollständige Zielabnahme behauptet.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "fingerprint": "sha256:cc04ef13cf3c827abc35c22c10cd6300f78232e4102fac0638bbeb6be05159e8",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-06",
+          "reviewer": "codex-math-b038h-v3-source-route-individual-review",
+          "reason": "Eine auswendig gelernte Formel für eine einzelne Umkehrfunktion reicht nicht: Bereichswahl, Eindeutigkeit und Umkehrgleichung sind am jeweiligen Beispiel zu begründen. Kein neues Memory-Deck; der Projektions-HOLD bleibt hiervon unabhängig. Frische individuelle fachliche AI-Prüfung B038h v3; keine menschliche Einzelabnahme oder vollständige Zielabnahme behauptet."
+        },
+        "semanticKind": {
+          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "sourceFingerprint": "sha256:4a9be4738b7a30993d98e8f384716fadcc93f4a3dd499502fe874c33de136aa2",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-b038h-v3-individual-ai-curricular-atomic-source-route-adjudication"
+        }
+      }
+    }
+  ],
+  "durationAdjudication": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-038-derivative-applications-and-exponentials-20-v1/duration-scope-adjudication-v3.json",
+    "fileSha256": "2e7f0b537d8dbcbf71cf5d9410be0100784e33e8dc08b09796564379b877f19d"
+  },
+  "beforePolicyInputs": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "fd9108cf0ccc8176f1fdd3e5633ac716544cff9aa72bcaf8c1f11ad93728d34e"
+    },
+    "parentDerivativeReceipt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-composition-view-follow-up-2026-08-16.receipt.json",
+      "receiptDigest": "8552324ee86ad4237df45041c2fe3b112a3775fee053bd882e55de7cb2c49f7c",
+      "fileSha256": "f0aa55d2f4f1390fa3f511c885ce1f297eebb787ae04d9146a779a85ecbe08ab"
+    },
+    "extractionProvenance": {
+      "path": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/implementation-design/split-implementation-manifest.json",
+      "sha256": "b0629a0fb93d8b1e862443700a41f8a698cfc7485d862fc8e677cad749bc1070",
+      "runtimeDependency": false
+    },
+    "additiveAdjudications": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-058bf6de-structural-split-2026-08-27.adjudication.json",
+        "fileSha256": "19cc1a2d0b8d48f8717f20e58732ae6f18e0825743620fc75fccdf891a8396e0",
+        "adjudicationDigest": "sha256:bbba8db5c01d33e709f1c1484b4870a39bc08a29d4b7954a0d4c2ba8e0b61e6b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-structural-split-1-v1/source-edge-adjudication.json",
+        "fileSha256": "b06d7d4f2309cd15b3fbe488927cc856e165ac05ea063653b64b00284ab6103f",
+        "adjudicationDigest": "sha256:4a8be59e32b5eca67870cf8574bc659e59a738e28a8311554bc1f4a6c474c1c8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032v-approved-graph-split-final-recheck-5-v1/duration-layout-adjudication.json",
+        "fileSha256": "28069fb72f663f403d0c7072329323f8cfcbe491c12231f534de39e4caf4f1fb",
+        "adjudicationDigest": "sha256:efe50d63ebd3e3edbc7c0178238bf3b47f7c392eb1adf26d15c2ca39a6974450"
+      }
+    ]
+  },
+  "checks": {
+    "reviewedAtomicityAndMemoryIndividually": 4,
+    "unchangedNativeAMFingerprints": 8,
+    "currentSemanticKinds": 4,
+    "unchangedLayoutPlacements": 61
+  },
+  "remaining": [
+    "Native duration/view preview and content comparison",
+    "Root-owned source/applicability, goal evidence, page/context and maturity checks",
+    "c15/dbc projection HOLD"
+  ]
+}

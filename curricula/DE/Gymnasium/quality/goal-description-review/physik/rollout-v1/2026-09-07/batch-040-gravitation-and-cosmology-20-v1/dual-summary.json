@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:71ecc7c2ccf37e045b23e4b60b9273233a0108135c357fd389c5c79404234f0b",
+  "reviewInputFingerprint": "sha256:3d0c33752552216f1d3dfaba8a1d12b666c40bd40bda9b7f57868d74b7fec973",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a",
+      "roundId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::unknown"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-b",
+      "roundId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-independent-b",
+      "runIds": [
+        "codex-physik-b040-blind-b-20260907"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::unknown"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::unknown::unknown"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-001",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-1",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-002",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-2",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-003",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-3",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-004",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-4",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-005",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-5",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "16caf92e-2800-57d1-946c-5b92ce848a96",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-006",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-6",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-007",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-7",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d873ffa2-04b3-5978-a955-89563802a348",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-008",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-8",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1b833656-cd16-5b21-973a-9810960dcfd2",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-009",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-9",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c968d263-8be4-5cf9-b320-e95398fe648f",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-010",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-10",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-011",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-11",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-012",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-12",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5db07785-8cca-50d5-81a9-e0264d344af9",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-013",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-13",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-014",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-14",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-015",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-15",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-016",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-16",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-017",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-17",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-018",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-18",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "14d99a65-8d58-5647-88ab-02137b96d55b",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-019",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-19",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ba16948b-5e07-54af-b77b-776e677c6906",
+      "firstRecordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-020",
+      "secondRecordId": "codex-physik-b040-blind-b-20260907-20",
+      "firstRunId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "secondRunId": "codex-physik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

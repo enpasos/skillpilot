@@ -1,0 +1,35 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Ein detailliertes, lehrreiches Diagramm im Cartoon-Stil mit klaren schwarzen Umrissen und abgerundeten Ecken, auf einem hellblauen Hintergrund.\nOben befindet sich ein breites, hellblaues Banner mit dem schwarzen Text \"Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten\".\nDarunter ist eine große, weiße Tafel mit einem dünnen beigefarbenen Rand und abgerundeten Ecken, die in drei vertikale Spalten unterteilt ist.\n\nDie linke Spalte ist mit einem hellblauen Kasten mit dem schwarzen Text \"Gegeben\" überschrieben.\nDiese Spalte enthält vier weiße Kästen mit dünnen schwarzen Rändern und abgerundeten Ecken:\n1. Oben links: Text \"Anfangsbestand\" und \"B(0) = 5 Liter\". Darunter ein Cartoon-Bild eines durchsichtigen Glasbechers, der etwa zur Hälfte mit hellblauer Flüssigkeit gefüllt ist.\n2. Oben rechts: Text \"Änderungsrate\" und \"r(t) = 3t² Liter/Min.\". Darunter ein Cartoon-Bild eines silbernen Wasserhahns mit blauem Griff, aus dem hellblaues Wasser in einen kleinen durchsichtigen Glasbecher tropft. Eine hellblaue Sprechblase zeigt vom tropfenden Wasser nach rechts und enthält den schwarzen Text \"Zuflussrate (positiv)\".\n3. Unten links: Text \"Anfangsbestand\" und \"B(0) = 5 Liter\". Darunter ein Cartoon-Bild eines lächelnden, hellblauen Wassertropfen-Charakters mit Armen und Beinen, der neben einer runden Uhr steht. Die Uhr hat ein weißes Zifferblatt mit schwarzen Strichen und einem schwarzen Zeiger, der auf die 12 zeigt. Daneben steht der schwarze Text \"t = 0 Min.\".\n4. Unten rechts: Text \"Änderungsrate\" und \"r(t) = 3t² Liter/Min.\". Darunter ein 2D-Diagramm mit schwarzen Achsen. Die X-Achse ist mit \"Zeit (Min.)\" beschriftet, die Y-Achse mit \"Rate (Liter/Min.)\". Eine blaue Kurve beginnt bei (0,0) und steigt an. Punkte (1,3) und (2,12) sind auf der Kurve markiert, mit gestrichelten Linien zu den Achsen. Die Fläche unter der Kurve von x=0 bis x=2 ist hellgrün schattiert. Eine hellblaue Sprechblase zeigt von der schattierten Fläche nach rechts und enthält den schwarzen Text \"Integral der Rate: 8 Liter\".\n\nDie mittlere Spalte ist mit einem hellgrünen Kasten mit dem schwarzen Text \"Rekonstruktion (Berechnung)\" überschrieben.\nDiese Spalte enthält drei weiße Kästen mit dünnen schwarzen Rändern und abgerundeten Ecken, gefolgt von einem hellgrünen Kasten:\n1. Oben: Mathematische Notation \"B(t) = B(0) + ∫₀ᵗ r(s) ds\".\n2. Mitte: Mathematische Notation \"B(t) = 5 + ∫₀ᵗ 3s² ds = 5 + t³\".\n3. Ein großer, dicker, hellgrüner Pfeil mit schwarzem Umriss zeigt nach unten.\n4. Unten: Ein hellgrüner Kasten mit dünnem schwarzem Rand und abgerundeten Ecken. Er enthält den schwarzen Text \"Für t = 2 Min.:\", \"Änderung (Zuwachs) = ∫₀² 3s² ds\", \"= [s³]₀² = 2³ - 0³ = 8 Liter\", \"B(2) = Anfangsbestand + Änderung\", \"= 5 + 8 = 13 Liter\".\n\nDie rechte Spalte ist mit einem hellgelben Kasten mit dem schwarzen Text \"Deutung (Visualisierung)\" überschrieben.\nDiese Spalte enthält einen weißen Kasten mit einem Diagramm und einen hellgrünen Kasten:\n1. Oben: Ein 2D-Diagramm mit schwarzen Achsen. Die X-Achse ist mit \"t (Min.)\" beschriftet, die Y-Achse mit \"Volumen (Liter)\". Die X-Achse hat Markierungen bei 1 und 2. Die Y-Achse hat Markierungen bei 5 und 13. Eine blaue Kurve beginnt bei (0,5) und steigt an, repräsentiert durch \"B(t) = 5 + t³\". Punkte (0,5) und (2,13) sind auf der Kurve markiert. Gestrichelte Linien verbinden den Punkt (2,13) mit den Achsen. Eine hellgelbe Sprechblase zeigt vom Punkt (2,13) nach rechts und enthält den schwarzen Text \"Endbestand: 13 Liter\". Eine weitere hellgelbe Sprechblase zeigt von der vertikalen Strecke zwischen y=5 und y=13 bei x=2 und enthält den schwarzen Text \"Bestands-änderung: 8 Liter\". Eine hellblaue Sprechblase zeigt vom Punkt (0,5) nach rechts und enthält den schwarzen Text \"Anfangsbestand (5 Liter)\".\n2. Unten: Ein hellgrüner Kasten mit dünnem schwarzem Rand und abgerundeten Ecken. Er enthält den schwarzen Text \"Deutung: Das Integral liefert die\", \"Bestandsänderung. Anfangsbestand\", \"plus Änderung ergibt den Bestand.\". Darunter befindet sich ein rotes Warndreieck mit schwarzem Ausrufezeichen und schwarzem Umriss. Daneben steht der schwarze Text \"Achtung: r(2) = 12 L/min, B(2) = 13 L\".\nAlle Texte sind in einer klaren, serifenlosen Schriftart gehalten."
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 423,
+    "candidatesTokenCount": 1289,
+    "totalTokenCount": 4986,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 165
+      },
+      {
+        "modality": "IMAGE",
+        "tokenCount": 258
+      }
+    ],
+    "thoughtsTokenCount": 3274,
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-2.5-flash",
+  "responseId": "kQOeaqOQEbbSxN8Pk7PMiQ8"
+}

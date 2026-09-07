@@ -1,0 +1,1062 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b040-taylor-tools-integrals-19-v1",
+  "reviewedAt": "2026-09-07T00:36:46.502Z",
+  "reviewer": "codex-math-b040-positive-evidence-author",
+  "goals": [
+    {
+      "goalId": "911f3200-1dbc-59a6-90df-c883c77de39c",
+      "reason": "Geometrische Anwendungssummen; weder reine Formelabfrage noch neue Konvergenztheorie. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "model-and-total",
+            "essentialUnderstandingDe": "Eine geometrische Reihe beschreibt gleichartig gewichtete Beiträge mit konstantem Quotienten. Der Kontext legt den ersten Beitrag, den Quotienten und gegebenenfalls gesonderte Anfangs- oder Doppelbeiträge fest; bei nicht verschwindendem ersten Beitrag benötigt ein endlicher Grenzwert |q|<1.",
+            "essentialUnderstandingEn": "A geometric series models consistently weighted contributions with a constant ratio. The context determines the first contribution, ratio and any separate initial or doubled contributions; for a nonzero first term, a finite limit requires |q|<1.",
+            "observablePerformanceDe": "Die lernende Person leitet die Beiträge aus dem Kontext her, wertet eine passende endliche oder unendliche Summe aus und interpretiert Ergebnis und Modellannahmen mit der zutreffenden Einheit.",
+            "observablePerformanceEn": "The learner derives the terms from the context, evaluates a suitable finite or infinite sum and interprets the result and model assumptions with the correct unit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "model-and-total"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "contribution-structure",
+            "textDe": "Einfache Schichtbeiträge werden durch einmaligen Anfangsweg und doppelt durchlaufene Sprunghöhen ersetzt.",
+            "textEn": "Simple layer contributions are replaced by a one-off initial distance and bounce heights traversed twice."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "layer-thickness",
+            "taskDemandDe": "Eine Beschichtung ist zunächst 12 µm dick; jede weitere Schicht ist 60 % so dick wie die vorherige. Modelliere die Gesamtdicke nach drei Schichten und bei idealisiert unbegrenzt vielen Schichten. Erkläre die Bedeutung des Grenzwerts.",
+            "taskDemandEn": "A coating initially has thickness 12 µm; each subsequent layer is 60% as thick as the previous one. Model total thickness after three layers and after ideally infinitely many layers. Explain the limit.",
+            "expectedPerformanceDe": "Die Beiträge sind 12·0,6^k µm ab k=0. Drei Schichten ergeben 12+7,2+4,32=23,52 µm; die Grenzdicke ist 12/(1−0,6)=30 µm. Jede endliche Anzahl bleibt darunter. Der konstante relative Dickenfaktor ist die Modellannahme.",
+            "expectedPerformanceEn": "The terms are 12·0.6^k µm starting at k=0. Three layers give 12+7.2+4.32=23.52 µm; the limiting thickness is 12/(1−0.6)=30 µm. Every finite number remains below this limit. The constant relative thickness factor is the model assumption.",
+            "understandingFocusDe": "Beitragsfolge, Einheit und endlicher gegenüber idealisiert unendlichem Gesamtwert.",
+            "understandingFocusEn": "Term sequence, unit and finite versus ideally infinite total."
+          },
+          {
+            "id": "bouncing-distance",
+            "taskDemandDe": "Ein Ball fällt aus 3 m Höhe und erreicht nach jedem Aufprall die Hälfte seiner vorigen Fallhöhe. Stelle den idealisierten gesamten zurückgelegten Weg bis zum Stillstand als Reihe dar und bestimme ihn. Begründe, warum die Höhen nicht einfach einmal summiert werden.",
+            "taskDemandEn": "A ball falls from 3 m and after each impact reaches half its preceding fall height. Express its idealized total distance until rest as a series and evaluate it. Explain why the heights are not simply summed once.",
+            "expectedPerformanceDe": "Der Anfangsfall zählt einmal, jede anschließende Höhe aufwärts und abwärts: 3+2·(1,5+0,75+…)=3+2·1,5/(1−0,5)=9 m. Die Reihe modelliert Weg, nicht Höhe über dem Boden. Reale Kontakt- und Verformungseffekte sind in diesem konstanten Quotientenmodell idealisiert.",
+            "expectedPerformanceEn": "The initial fall counts once and each subsequent height twice, upward and downward: 3+2·(1.5+0.75+…)=3+2·1.5/(1−0.5)=9 m. The series models distance, not height above the ground. Real contact and deformation effects are idealized by the constant-ratio model.",
+            "understandingFocusDe": "Transfer der Summenstruktur auf einen Kontext mit unterschiedlichen Beitragsgewichten.",
+            "understandingFocusEn": "Transfer of the sum structure to a context with differently weighted contributions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "reason": "Grundidee an Entwicklungsstelle 0; keine allgemeine Taylor-Konvergenzbehauptung. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "local-contact",
+            "essentialUnderstandingDe": "Ein Taylorpolynom an 0 stimmt bis zur gewählten Ordnung mit Funktionswert und Ableitungswerten an 0 überein. Die Fakultäten kompensieren das wiederholte Ableiten der Potenzen; diese lokale Information legt die ganze Funktion nicht fest.",
+            "essentialUnderstandingEn": "A Taylor polynomial at 0 agrees with the function value and derivative values at 0 up to the chosen order. Factorials compensate for repeated differentiation of powers; this local information does not determine the whole function.",
+            "observablePerformanceDe": "Die lernende Person erklärt die Koeffizienten eines einfachen Taylorpolynoms über den Ableitungskontakt und erläutert an verschiedenen Funktionen mit demselben Taylorpolynom die lokale Aussage und ihre Reichweite.",
+            "observablePerformanceEn": "The learner explains the coefficients of a simple Taylor polynomial through derivative matching and uses different functions with the same Taylor polynomial to explain the local statement and its scope."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "local-contact"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "forward-inverse",
+            "textDe": "Von vorgegebenen Ableitungen zur Näherung wechseln zu verschiedenen Funktionen mit derselben lokalen Näherung.",
+            "textEn": "Switch from supplied derivatives to an approximation, then to different functions sharing the same local approximation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sine-contact",
+            "taskDemandDe": "Für f(x)=sin x sind an 0 die Ableitungswerte der Ordnungen 0 bis 3 gleich 0,1,0,−1. Erläutere damit die Grundidee des Taylorpolynoms dritter Ordnung und die Bedeutung des Faktors 1/6.",
+            "taskDemandEn": "For f(x)=sin x, the derivative values of orders 0 through 3 at 0 are 0,1,0,−1. Use these data to explain the idea of the third-order Taylor polynomial and the factor 1/6.",
+            "expectedPerformanceDe": "T₃(x)=x−x³/6 besitzt dieselben vier Werte an 0; die dritte Ableitung von x³ ist 6. Das Polynom beschreibt lokalen Wert-, Steigungs- und höheren Ableitungskontakt. Die Behauptung ist keine globale Gleichheit mit sin x.",
+            "expectedPerformanceEn": "T₃(x)=x−x³/6 has the same four values at 0; the third derivative of x³ is 6. The polynomial represents local contact in value, slope and higher derivatives. This does not assert global equality with sin x.",
+            "understandingFocusDe": "Fakultätskoeffizient als Folge des geforderten Ableitungskontakts.",
+            "understandingFocusEn": "Factorial coefficient as a consequence of derivative matching."
+          },
+          {
+            "id": "shared-polynomial",
+            "taskDemandDe": "Die Funktionen g(x)=1+x+x⁴ und h(x)=1+x+2x⁴ sind gegeben. Erläutere ohne eine Fernapproximation zu behaupten, weshalb beide dasselbe Taylorpolynom dritter Ordnung an 0 haben und trotzdem verschiedene Funktionen sind.",
+            "taskDemandEn": "The functions g(x)=1+x+x⁴ and h(x)=1+x+2x⁴ are given. Explain why both have the same third-order Taylor polynomial at 0 while remaining different functions, without claiming an approximation far from 0.",
+            "expectedPerformanceDe": "Bis zur dritten Ableitung tragen die x⁴-Terme an 0 nichts bei; für beide ist T₃=1+x. Ihre Differenz h−g=x⁴ ist außerhalb von 0 positiv. Gleicher endlicher Ableitungskontakt bedeutet daher nicht Identität; die Entwicklungsstelle bleibt 0.",
+            "expectedPerformanceEn": "The x⁴ terms contribute nothing at 0 through the third derivative; both have T₃=1+x. Their difference h−g=x⁴ is positive away from 0. Equal finite derivative contact therefore does not imply identity; the expansion point remains 0.",
+            "understandingFocusDe": "Rückschluss aus identischer lokaler Information auf zulässige und nicht bestimmte globale Aussagen.",
+            "understandingFocusEn": "Inferring what identical local information does and does not determine globally."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "reason": "Exponential-Taylorapproximation mit Auswertung und Deutung, ohne neue Restgliedtheorie. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "exponential-approximation",
+            "essentialUnderstandingDe": "Für e^x an 0 lauten die Taylorpolynome Tₙ(x)=Σ(k=0…n)x^k/k!. Polynomgrad und Abstand zur Entwicklungsstelle beeinflussen den Approximationsfehler; das endliche Polynom bleibt eine Näherung.",
+            "essentialUnderstandingEn": "For e^x at 0 the Taylor polynomials are Tₙ(x)=Σ(k=0…n)x^k/k!. Degree and distance from the expansion point affect approximation error; a finite polynomial remains an approximation.",
+            "observablePerformanceDe": "Die lernende Person berechnet passende Taylorwerte, vergleicht sie mit gegebenen Referenzwerten und begründet ihre Verwendbarkeit für die verlangte Genauigkeit oder qualitative Aussage.",
+            "observablePerformanceEn": "The learner computes suitable Taylor values, compares them with supplied reference values and justifies their suitability for a requested accuracy or qualitative statement."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "exponential-approximation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "accuracy-and-location",
+            "textDe": "Von einer Gradwahl bei festem positivem Argument zu der Reichweite eines festen Polynoms bei negativen Argumenten wechseln.",
+            "textEn": "Switch from choosing degree at a fixed positive argument to assessing a fixed polynomial at negative arguments."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "choose-degree",
+            "taskDemandDe": "Nähere e^0,5 mit T₂,T₃,T₄ an. Als Referenz gilt e^0,5≈1,6487212707. Welche der drei Näherungen erfüllt einen absoluten Fehler unter 0,001? Begründe anhand der Taylorstruktur und der Werte.",
+            "taskDemandEn": "Approximate e^0.5 using T₂,T₃,T₄. Use e^0.5≈1.6487212707 as a reference. Which of the three approximations has absolute error below 0.001? Justify using the Taylor structure and values.",
+            "expectedPerformanceDe": "T₂=1,625, T₃≈1,6458333333 und T₄=1,6484375. Die Fehler sind ungefähr 0,0237213; 0,00288794; 0,000283771. Unter diesen drei erfüllt nur T₄ die Vorgabe. Alle Koeffizienten folgen aus e^(k)(0)=1; die Prüfung bezieht sich auf x=0,5.",
+            "expectedPerformanceEn": "T₂=1.625, T₃≈1.6458333333 and T₄=1.6484375. The errors are about 0.0237213; 0.00288794; 0.000283771. Of these three only T₄ meets the requirement. All coefficients follow from e^(k)(0)=1; the check concerns x=0.5.",
+            "understandingFocusDe": "Numerische Approximation mit ausdrücklich begrenzter Genauigkeitsaussage.",
+            "understandingFocusEn": "Numerical approximation with an explicitly bounded accuracy claim."
+          },
+          {
+            "id": "negative-range",
+            "taskDemandDe": "Untersuche T₃(x)=1+x+x²/2+x³/6 bei x=−0,25 und x=−2. Nutze e^−0,25≈0,7788007831 und e^−2≈0,1353352832. Was leisten dieselben Koeffizienten in den beiden Fällen?",
+            "taskDemandEn": "Examine T₃(x)=1+x+x²/2+x³/6 at x=−0.25 and x=−2. Use e^−0.25≈0.7788007831 and e^−2≈0.1353352832. What do the same coefficients achieve in the two cases?",
+            "expectedPerformanceDe": "T₃(−0,25)≈0,7786458333 liegt etwa 0,000154950 unter dem Referenzwert. T₃(−2)=−1/3 ist sogar negativ, obwohl e^x positiv ist. Das feste lokale Polynom bewahrt weiter entfernt nicht jede Eigenschaft der Exponentialfunktion; seine Verwendung muss am Argument geprüft werden.",
+            "expectedPerformanceEn": "T₃(−0.25)≈0.7786458333 is about 0.000154950 below the reference. T₃(−2)=−1/3 is even negative although e^x is positive. Farther away, a fixed local polynomial need not preserve every property of the exponential function; its use must be checked at the argument.",
+            "understandingFocusDe": "Struktureller Transfer von numerischer Genauigkeit zu einer qualitativen Modellgrenze.",
+            "understandingFocusEn": "Structural transfer from numerical accuracy to a qualitative limitation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "reason": "Reihendarstellung von e und Einordnung in Taylorpolynome; keine Konvergenzbeweisforderung. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "number-from-function-series",
+            "essentialUnderstandingDe": "Die Zahl e ist Σ(k=0…∞)1/k!; die endlichen Partialsummen sind die Werte Tₙ(1) der Taylorpolynome von e^x an 0. Der Reihenwert e und ein endlicher Polynomwert sind unterschiedliche Objekte.",
+            "essentialUnderstandingEn": "The number e equals Σ(k=0…∞)1/k!; its finite partial sums are the values Tₙ(1) of the Taylor polynomials of e^x at 0. The series value e and a finite polynomial value are different objects.",
+            "observablePerformanceDe": "Die lernende Person gibt die Reihe mit korrekter Indexierung an, ordnet ihre Partialsummen dem Wert x=1 zu und erklärt, wie eine andere Einsetzstelle die Bedeutung der Summe verändert.",
+            "observablePerformanceEn": "The learner states the correctly indexed series, relates its partial sums to x=1 and explains how a different evaluation point changes the meaning of the sum."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "number-from-function-series"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "evaluation-point",
+            "textDe": "Von der Zahlenreihe zurück zum Polynom in einer Variablen und zu einer anderen Einsetzstelle wechseln.",
+            "textEn": "Move from the numerical series back to a polynomial in a variable and a different evaluation point."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "series-and-partial",
+            "taskDemandDe": "Gib e als unendliche Reihe an und schreibe die Partialsumme bis einschließlich 1/5! aus. Erläutere, welches Taylorpolynom an welcher Stelle diese Partialsumme liefert.",
+            "taskDemandEn": "State e as an infinite series and write out the partial sum through 1/5!. Explain which Taylor polynomial at which point yields this partial sum.",
+            "expectedPerformanceDe": "e=1/0!+1/1!+1/2!+…; die beiden Anfangsterme sind jeweils 1. S₅=1+1+1/2+1/6+1/24+1/120=163/60≈2,7166667. Es gilt S₅=T₅(1), nicht S₅=e; der Grenzwert der Sₙ ist e.",
+            "expectedPerformanceEn": "e=1/0!+1/1!+1/2!+…; the first two terms both equal 1. S₅=1+1+1/2+1/6+1/24+1/120=163/60≈2.7166667. S₅=T₅(1), not S₅=e; the limit of Sₙ is e.",
+            "understandingFocusDe": "Indexierung, Partialsumme und Taylor-Zusammenhang.",
+            "understandingFocusEn": "Indexing, partial sum and Taylor connection."
+          },
+          {
+            "id": "alternating-evaluation",
+            "taskDemandDe": "Zu T₄(x)=1+x+x²/2+x³/6+x⁴/24 stehen die Zahlen 65/24 und 3/8. Ordne sie T₄(1) und T₄(−1) zu und erkläre mit der Reihendarstellung, welche Folge von Polynomwerten e annähert und welche e^−1.",
+            "taskDemandEn": "For T₄(x)=1+x+x²/2+x³/6+x⁴/24 the values 65/24 and 3/8 are given. Match them to T₄(1) and T₄(−1), and use the series representation to explain which sequence of polynomial values approximates e and which e^−1.",
+            "expectedPerformanceDe": "T₄(1)=65/24, T₄(−1)=3/8. Bei x=1 entstehen die positiven Terme 1/k! der e-Reihe; bei x=−1 entstehen (−1)^k/k! und damit die Taylorwerte für e^−1. Die Entwicklungsstelle der Polynome bleibt in beiden Fällen 0.",
+            "expectedPerformanceEn": "T₄(1)=65/24 and T₄(−1)=3/8. At x=1 the positive terms 1/k! of the e series arise; at x=−1 the terms are (−1)^k/k!, giving Taylor values for e^−1. In both cases the polynomials remain expanded at 0.",
+            "understandingFocusDe": "Entwicklungsstelle und Einsetzstelle sowie Zahlenwert und Funktionsreihe auseinanderhalten.",
+            "understandingFocusEn": "Distinguishing expansion point from evaluation point and numerical value from function series."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+      "reason": "Digitales Zeichnen, numerische Funktionsanalyse und kritische Prüfung als zusammengehöriger Arbeitsgang. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "tool-backed-analysis",
+            "essentialUnderstandingDe": "Ein digitales Funktionsbild und numerische Befehle liefern ausdrucks-, definitionsbereichs- und fensterabhängige Informationen. Numerische Null- und Extremstellen benötigen eine nachvollziehbare Prüfung am gegebenen Funktionsterm oder lokalen Verlauf.",
+            "essentialUnderstandingEn": "Digital function plots and numerical commands provide information depending on expression, domain and window. Numerical roots and extrema require a transparent check against the given expression or local behavior.",
+            "observablePerformanceDe": "Die lernende Person erzeugt selbst einen geeigneten Graphen, bestimmt Null- und Extremstellen numerisch, dokumentiert Einstellungen und überprüft die Deutung auch bei einem eingeschränkten Definitionsbereich.",
+            "observablePerformanceEn": "The learner independently creates a suitable graph, determines roots and extrema numerically, documents settings and checks the interpretation even with a restricted domain."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "tool-backed-analysis"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "domain-and-output",
+            "textDe": "Von einer überall definierten Parabel zu einem rationalen Term mit hebbarer Definitionslücke und ohne Extremstelle wechseln.",
+            "textEn": "Switch from an everywhere-defined parabola to a rational expression with a removable domain gap and no extremum."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "parabola-tool",
+            "taskDemandDe": "Erzeuge mit einem digitalen Mathematikwerkzeug den Graphen f(x)=(x−2)²−1, bestimme Nullstellen und Tiefpunkt numerisch und dokumentiere Fenster und Ausgaben. Prüfe die Ergebnisse durch Einsetzen und Werte beiderseits des Tiefpunkts.",
+            "taskDemandEn": "Use a digital mathematics tool to plot f(x)=(x−2)²−1, determine its roots and minimum numerically, and document the window and outputs. Check the results by substitution and values on both sides of the minimum.",
+            "expectedPerformanceDe": "Die dokumentierte Analyse enthält Nullstellen 1 und 3 und den Tiefpunkt (2,−1). f(1)=f(3)=0, während etwa f(1,5)=f(2,5)=−0,75 größer als f(2) ist. Das gewählte Fenster zeigt beide Nullstellen und den Tiefpunkt; Ausgaben werden als Funktionsmerkmale interpretiert.",
+            "expectedPerformanceEn": "The documented analysis gives roots 1 and 3 and minimum (2,−1). f(1)=f(3)=0, while for example f(1.5)=f(2.5)=−0.75 exceeds f(2). The selected window shows both roots and the minimum; outputs are interpreted as function features.",
+            "understandingFocusDe": "Selbstständiger Werkzeugeinsatz mit unabhängiger Ergebnisprüfung.",
+            "understandingFocusEn": "Independent tool use with independent checking of the results."
+          },
+          {
+            "id": "domain-gap-tool",
+            "taskDemandDe": "Untersuche digital h(x)=(x²−1)/(x−1) auf ihrem Definitionsbereich. Bestimme Nullstellen und untersuche Extremstellen. Erkläre, wie eine graphisch kaum sichtbare Stelle bei x=1 in der Dokumentation behandelt werden muss.",
+            "taskDemandEn": "Digitally examine h(x)=(x²−1)/(x−1) on its domain. Determine roots and examine extrema. Explain how a point at x=1 that may be hard to see in the plot must be handled in the documentation.",
+            "expectedPerformanceDe": "Für x≠1 ist h(x)=x+1. Es gibt die Nullstelle x=−1, keine Extremstelle und die ausgeschlossene Stelle (1,2). Die lernende Person dokumentiert den Originalterm und x≠1 und prüft die steigenden Nachbarwerte. Eine durchgehende Bildschirmgerade erweitert den Definitionsbereich nicht.",
+            "expectedPerformanceEn": "For x≠1, h(x)=x+1. There is a root at x=−1, no extremum and an excluded point (1,2). The learner documents the original expression and x≠1 and checks the increasing neighboring values. A continuous-looking screen line does not extend the domain.",
+            "understandingFocusDe": "Kritische Prüfung digitaler Darstellung bei einer strukturell veränderten Funktion.",
+            "understandingFocusEn": "Critical checking of a digital representation for a structurally changed function."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+      "reason": "Bedienen, Variieren und Dokumentieren; keine zusätzliche analytische Beweispflicht. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "controlled-digital-variation",
+            "essentialUnderstandingDe": "Eine Parameteränderung verändert eine mathematische Eigenschaft des Graphen; nachvollziehbare Beobachtungen benötigen dokumentierte Parameterwerte und eine kontrollierte Darstellung.",
+            "essentialUnderstandingEn": "Changing a parameter changes a mathematical graph property; reproducible observations require documented parameter values and a controlled display.",
+            "observablePerformanceDe": "Die lernende Person erzeugt Graphen selbst, verändert einen Parameter interaktiv und dokumentiert mit Werten oder markierten Punkten, was sich verändert und was erhalten bleibt.",
+            "observablePerformanceEn": "The learner independently creates graphs, varies a parameter interactively and documents with values or marked points what changes and what remains invariant."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "controlled-digital-variation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "family-and-invariant",
+            "textDe": "Von der Lage eines Parabelscheitels zu Steigung und gemeinsamem Punkt einer Geradenschar wechseln.",
+            "textEn": "Switch from the position of a parabola vertex to slope and a common point in a family of lines."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "moving-vertex",
+            "taskDemandDe": "Erzeuge digital f_h(x)=(x−h)² mit einem Schieberegler h. Untersuche h=−2,0,2 bei gleichem Fenster und dokumentiere die Scheitelpunkte sowie eine unveränderte Eigenschaft.",
+            "taskDemandEn": "Digitally create f_h(x)=(x−h)² with a slider h. Examine h=−2,0,2 using the same window and document the vertices and one invariant property.",
+            "expectedPerformanceDe": "Die Scheitel liegen bei (−2,0),(0,0),(2,0); sie verschieben sich horizontal. Öffnung und Form bleiben erhalten, beispielsweise beträgt der Funktionswert jeweils 1 eine Einheit rechts vom Scheitel. Dokumentierte Parameterwerte und Punktmarkierungen machen die Beobachtung nachvollziehbar.",
+            "expectedPerformanceEn": "The vertices are (−2,0),(0,0),(2,0); they move horizontally. Opening direction and shape remain unchanged; for example, the value is always 1 one unit to the right of the vertex. Recorded parameter values and point markings make the observation reproducible.",
+            "understandingFocusDe": "Gezielte Parameterbedienung und belegte Beobachtung statt bloßer Graphenansicht.",
+            "understandingFocusEn": "Purposeful parameter manipulation and evidenced observation rather than merely viewing graphs."
+          },
+          {
+            "id": "rotating-line",
+            "taskDemandDe": "Erzeuge in einem neuen digitalen Dokument g_m(x)=mx+1 und ändere m interaktiv zwischen −2,0,2. Dokumentiere den gemeinsamen Punkt und die unterschiedlichen Verläufe anhand geeigneter abgelesener Punkte.",
+            "taskDemandEn": "In a new digital document create g_m(x)=mx+1 and vary m interactively among −2,0,2. Document the common point and differing behavior using suitable points read from the graph.",
+            "expectedPerformanceDe": "Alle Geraden gehen durch (0,1). Bei x=1 erhält man −1,1,3; die Verläufe sind fallend, waagerecht und steigend. Die lernende Person dokumentiert die m-Werte und vergleicht bei gleichen Achsen, sodass die Steigungsänderung und der feste Achsenabschnitt sichtbar werden.",
+            "expectedPerformanceEn": "All lines pass through (0,1). At x=1 their values are −1,1,3; they decrease, are horizontal and increase respectively. The learner records m and compares with common axes, making the changing slope and fixed intercept visible.",
+            "understandingFocusDe": "Transfer des dokumentierten Parametervergleichs auf eine andere Funktionsfamilie und ein anderes Invariantenmerkmal.",
+            "understandingFocusEn": "Transfer of documented parameter comparison to a different function family and invariant."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+      "reason": "Die durch oder zugelassenen numerischen Untersuchungsformen sind Fälle einer Prüfkompetenz, keine neue Mehrfachkompetenz. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "numerical-analytic-comparison",
+            "essentialUnderstandingDe": "Numerische Werkzeugergebnisse sind unter Suchbereich, Rundung und Genauigkeit zu deuten. Ein analytischer Vergleich kann denselben mathematischen Gegenstand unabhängig bestimmen und so die Ausgabe begründet prüfen.",
+            "essentialUnderstandingEn": "Numerical tool results must be interpreted in terms of search range, rounding and accuracy. An analytical comparison can independently determine the same mathematical object and thus justify checking the output.",
+            "observablePerformanceDe": "Die lernende Person bestimmt geeignete Nullstellen, Extremstellen oder Integrale digital, legt Einstellungen offen und vergleicht die numerischen Werte mit einer tragfähigen analytischen Rechnung.",
+            "observablePerformanceEn": "The learner digitally determines suitable roots, extrema or integrals, makes settings explicit and compares numerical values with a valid analytical calculation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "numerical-analytic-comparison"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "numerical-object",
+            "textDe": "Von Null- und Extremstellen einer Funktion zu einem bestimmten Integral mit bekannter Stammfunktion wechseln.",
+            "textEn": "Switch from roots and an extremum to a definite integral with a known antiderivative."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quadratic-comparison",
+            "taskDemandDe": "Bestimme digital Nullstellen und Tiefpunkt von f(x)=x²−3x+1. Vergleiche mit quadratischer Ergänzung und dokumentiere, ob der gewählte Suchbereich beide Nullstellen erfasst.",
+            "taskDemandEn": "Digitally determine the roots and minimum of f(x)=x²−3x+1. Compare with completing the square and document whether the search range covers both roots.",
+            "expectedPerformanceDe": "f=(x−1,5)²−1,25 liefert den Tiefpunkt (1,5;−1,25) und x=(3±√5)/2≈0,381966 und 2,618034. Die digitalen Werte stimmen bis zur gewählten Rundung überein. Ein Suchintervall [0,1] erfasst nur die kleinere Nullstelle; ein geeigneter größerer Bereich umfasst beide.",
+            "expectedPerformanceEn": "f=(x−1.5)²−1.25 gives minimum (1.5,−1.25) and x=(3±√5)/2≈0.381966 and 2.618034. Digital values agree to the selected rounding. A search interval [0,1] covers only the smaller root; a suitable larger range includes both.",
+            "understandingFocusDe": "Suchbereich und analytische Kontrolle numerischer Stellen.",
+            "understandingFocusEn": "Search range and analytical checking of numerical points."
+          },
+          {
+            "id": "integral-comparison",
+            "taskDemandDe": "Berechne digital ∫₀^(π/2) cos x dx im Bogenmaß und vergleiche die Ausgabe mit einer analytischen Rechnung. Dokumentiere Grenzen, Winkeleinheit und Genauigkeit; erläutere, warum eine Dezimalausgabe den exakten Wert nicht verändert.",
+            "taskDemandEn": "Digitally compute ∫₀^(π/2) cos x dx in radians and compare the output with an analytical calculation. Document limits, angular unit and accuracy; explain why a decimal output does not change the exact value.",
+            "expectedPerformanceDe": "Mit der Stammfunktion sin x ergibt sich sin(π/2)−sin0=1. Die numerische Integration muss im Rahmen der eingestellten Genauigkeit dazu passen; die kleine Abweichung etwa einer Ausgabe nahe 1 ist ein numerischer Effekt, kein anderer Integralwert. Grenzen und Bogenmaß sind Teil der überprüften Eingabe.",
+            "expectedPerformanceEn": "Using antiderivative sin x gives sin(π/2)−sin0=1. Numerical integration must agree within the set accuracy; a small deviation in an output near 1 is a numerical effect, not a different integral value. Limits and radians are part of the checked input.",
+            "understandingFocusDe": "Transfer derselben Prüfkompetenz auf numerische Integration statt Nullstellensuche.",
+            "understandingFocusEn": "Transfer of the same checking competence to numerical integration rather than root finding."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+      "reason": "Flächennäherung durch Summen und Genauigkeitsbeurteilung; keine Stammfunktionsrechnung vorausgesetzt. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "bounding-area",
+            "essentialUnderstandingDe": "Unter- und Obersummen verwenden je Teilintervall die kleinsten beziehungsweise größten Funktionswerte. Ihre Differenz begrenzt die Unsicherheit; ein anderes Näherungsverfahren ist anhand seiner geometrischen Beiträge einzuordnen.",
+            "essentialUnderstandingEn": "Lower and upper sums use the smallest and largest function values on each subinterval. Their difference bounds uncertainty; another approximation method is interpreted through its geometric contributions.",
+            "observablePerformanceDe": "Die lernende Person schreibt passende gewichtete Summen, berechnet Flächennäherungen und beurteilt ihre Genauigkeit durch Einschließung und Verfeinerung, auch wenn die Monotonie wechselt.",
+            "observablePerformanceEn": "The learner writes suitable weighted sums, computes area approximations and assesses accuracy through bounds and refinement, including when monotonicity changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bounding-area"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "monotonicity-partition",
+            "textDe": "Von einem fallenden linearen Graphen zu einem Graphen mit innerem Maximum und unterschiedlicher Genauigkeit der Trapeznäherung wechseln.",
+            "textEn": "Switch from a decreasing linear graph to one with an interior maximum and different trapezoidal accuracy."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "decreasing-line",
+            "taskDemandDe": "Nähere die Fläche unter f(x)=4−x auf [0,2] mit zwei gleich breiten Rechtecken von unten und oben sowie mit Trapezen. Schreibe die Summen und beurteile die Genauigkeit. Vergleiche mit vier gleich breiten Rechtecken.",
+            "taskDemandEn": "Approximate the area under f(x)=4−x on [0,2] using two equal-width lower and upper rectangles and trapezoids. Write the sums and assess accuracy. Compare with four equal-width rectangles.",
+            "expectedPerformanceDe": "U=1·(3+2)=5 und O=1·(4+3)=7. Die Trapeze liefern (4+3)/2+(3+2)/2=6, hier wegen des geraden Graphen exakt. Bei Breite 0,5 sind U=5,5 und O=6,5; die Einschließungsbreite sinkt von 2 auf 1.",
+            "expectedPerformanceEn": "L=1·(3+2)=5 and U=1·(4+3)=7. Trapezoids give (4+3)/2+(3+2)/2=6, exact here because the graph is straight. With width 0.5 the lower sum is 5.5 and upper sum 6.5; the enclosing interval shrinks from width 2 to 1.",
+            "understandingFocusDe": "Rechteckauswahl, Summenform und geometrisch begründete Genauigkeit.",
+            "understandingFocusEn": "Rectangle selection, sum notation and geometrically justified accuracy."
+          },
+          {
+            "id": "interior-maximum",
+            "taskDemandDe": "Nähere die Fläche unter f(x)=1−x² auf [−1,1] zuerst mit der Zerlegung −1,0,1 und dann mit −1,−0,5,0,0,5,1. Bestimme jeweils Unter-, Ober- und Trapezsumme. Erläutere den Unterschied zum linearen Fall.",
+            "taskDemandEn": "Approximate the area under f(x)=1−x² on [−1,1], first using partition −1,0,1 and then −1,−0.5,0,0.5,1. Find lower, upper and trapezoidal sums for each. Explain the difference from the linear case.",
+            "expectedPerformanceDe": "Die groben Werte sind U=0, O=2 und Trapezsumme 1. Mit den Funktionswerten 0;0,75;1;0,75;0 erhält man U=0,75, O=1,75 und Trapezsumme 1,25. Die Einschließung wird enger. Links und rechts von 0 muss die Rechteckwahl wechseln; die Trapeze ersetzen gekrümmte Stücke durch Geraden und sind hier nur Näherungen.",
+            "expectedPerformanceEn": "The coarse lower and upper sums are 0 and 2, and the trapezoidal sum is 1. Using values 0,0.75,1,0.75,0 gives lower sum 0.75, upper sum 1.75 and trapezoidal sum 1.25. The bounds tighten. Rectangle selection changes on the two sides of 0; trapezoids replace curved sections by straight lines and are only approximations here.",
+            "understandingFocusDe": "Transfer auf wechselnde Monotonie mit weiterhin begründeter Flächeneinschließung.",
+            "understandingFocusEn": "Transfer to changing monotonicity while retaining justified area bounds."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "reason": "Profil für die freigegebene Präzisierung Bestandsänderung plus Anfangsbestand; finale Wortlautbindung erst nach Stable. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "common-limit",
+            "essentialUnderstandingDe": "Das bestimmte Integral ist der gemeinsame Grenzwert zusammenrückender Unter- und Obersummen; bei einer Änderungsrate bezeichnet es die Bestandsänderung, die zum Anfangsbestand addiert wird.",
+            "essentialUnderstandingEn": "A definite integral is the common limit of converging lower and upper sums; for a rate of change it represents the change in a quantity, added to its initial value.",
+            "observablePerformanceDe": "Die lernende Person deutet eine vorgegebene Einschließungsfolge als Integralwert und unterscheidet im Änderungsratenkontext Anfangsbestand, Integral und Endbestand mit passenden Einheiten.",
+            "observablePerformanceEn": "The learner interprets a supplied sequence of bounds as an integral value and distinguishes initial quantity, integral and final quantity with appropriate units in a rate-of-change context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "common-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "area-to-signed-change",
+            "textDe": "Von einer geometrischen Flächeneinschließung zu einer negativen Änderung eines Bestands mit gegebenem Anfangswert wechseln.",
+            "textEn": "Switch from geometric area bounds to a negative change in a quantity with a given initial value."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "squeezed-area",
+            "taskDemandDe": "Für einen nichtnegativen Graphen auf [a,b] ergeben verfeinerte Zerlegungen die Untersummen 9−2/n und Obersummen 9+2/n für n=1,2,… . Erläutere die Bedeutung für die Fläche und das bestimmte Integral, ohne eine Stammfunktion zu verwenden.",
+            "taskDemandEn": "For a nonnegative graph on [a,b], refined partitions give lower sums 9−2/n and upper sums 9+2/n for n=1,2,… . Explain what this means for the area and definite integral without using an antiderivative.",
+            "expectedPerformanceDe": "Beide Summenfolgen nähern sich 9; ihre Differenz 4/n geht gegen 0. Der eingeschlossene Flächeninhalt und ∫ₐᵇ f(x)dx haben daher den Wert 9 Flächeneinheiten. Eine einzelne endliche Unter- oder Obersumme ist nicht bereits die gemeinsame Grenze.",
+            "expectedPerformanceEn": "Both sum sequences approach 9; their difference 4/n tends to 0. The enclosed area and ∫ₐᵇ f(x)dx therefore equal 9 area units. One finite lower or upper sum is not already the common limit.",
+            "understandingFocusDe": "Positives Erklären des gemeinsamen Grenzwerts über eine enger werdende Einschließung.",
+            "understandingFocusEn": "Positively explaining the common limit through tightening bounds."
+          },
+          {
+            "id": "negative-stock-change",
+            "taskDemandDe": "Eine Nettoflussrate in L/min wird über ein Zeitintervall integriert. Ihre Unter- und Obersummen lauten −5−1/n und −5+1/n Liter. Zu Beginn sind 18 Liter vorhanden. Deute Grenzwert und Endbestand und erkläre den Einfluss eines anderen Anfangsbestands.",
+            "taskDemandEn": "A net flow rate in L/min is integrated over a time interval. Its lower and upper sums are −5−1/n and −5+1/n liters. Initially there are 18 liters. Interpret the limit and final quantity and explain the effect of a different initial quantity.",
+            "expectedPerformanceDe": "Das Integral beträgt −5 L und bezeichnet eine Abnahme um 5 L. Der Endbestand ist 18−5=13 L. Ein um d Liter veränderter Anfangsbestand verändert den Endbestand ebenfalls um d, nicht das Integral derselben Rate. Zeitintegration liefert hier Liter, nicht L/min.",
+            "expectedPerformanceEn": "The integral is −5 L and denotes a decrease of 5 L. The final quantity is 18−5=13 L. Changing the initial quantity by d liters changes the final quantity by d, not the integral of the same rate. Integration over time yields liters, not L/min.",
+            "understandingFocusDe": "Orientierter Grenzwert als Änderung und additive Rolle des Anfangsbestands.",
+            "understandingFocusEn": "Signed limit as a change and the additive role of the initial quantity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "reason": "Rekonstruktion in inner- und außermathematischen Kontexten; Rate und Anfangsbestand bleiben getrennte Daten. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "reconstruction-and-anchor",
+            "essentialUnderstandingDe": "Die rekonstruierte Funktion B erfüllt B(t)=B(t₀)+∫(t₀…t)r(s)ds. Die Rate steuert lokale Zu- und Abnahme, der vorgegebene Wert bestimmt die additive Lage.",
+            "essentialUnderstandingEn": "The reconstructed function satisfies B(t)=B(t₀)+∫(t₀…t)r(s)ds. The rate controls local increase and decrease, while the given value fixes the additive position.",
+            "observablePerformanceDe": "Die lernende Person rekonstruiert den Bestand oder die Funktion aus Rate und Bezugswert, prüft beide Angaben und deutet Vorzeichenwechsel und Gesamtänderung im jeweiligen Kontext.",
+            "observablePerformanceEn": "The learner reconstructs a quantity or function from its rate and reference value, checks both conditions and interprets sign changes and total change in context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reconstruction-and-anchor"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "context-and-anchor",
+            "textDe": "Von einer Nettoflussrate ab Zeit 0 zu einer innermathematischen Ableitung mit Bezugswert an einer negativen Stelle wechseln.",
+            "textEn": "Switch from net flow starting at time 0 to a mathematical derivative with a reference value at a negative argument."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "tank-turning-point",
+            "taskDemandDe": "Ein Behälter enthält bei t=0 zehn Liter. Für 0≤t≤4 Stunden ist die Nettozuflussrate r(t)=6−2t L/h. Rekonstruiere den Bestand und erläutere, wann er wächst, wann er fällt und wie viel nach vier Stunden vorhanden ist.",
+            "taskDemandEn": "A tank contains ten liters at t=0. For 0≤t≤4 hours its net inflow rate is r(t)=6−2t L/h. Reconstruct the quantity and explain when it increases, when it decreases and how much remains after four hours.",
+            "expectedPerformanceDe": "B(t)=10+6t−t² Liter erfüllt B(0)=10 und B′=r. Der Bestand wächst bis t=3, erreicht 19 L und fällt danach auf B(4)=18 L. Die integrierte Rate über vier Stunden ist 8 L; die positive Gesamtänderung schließt eine spätere Abnahme nicht aus.",
+            "expectedPerformanceEn": "B(t)=10+6t−t² liters satisfies B(0)=10 and B′=r. The quantity increases until t=3, reaches 19 L and then falls to B(4)=18 L. The integrated rate over four hours is 8 L; a positive total change does not exclude a later decrease.",
+            "understandingFocusDe": "Rekonstruierte Größe, Anfangswert und lokale Rate konsistent verbinden.",
+            "understandingFocusEn": "Consistently connecting reconstructed quantity, initial value and local rate."
+          },
+          {
+            "id": "anchored-function",
+            "taskDemandDe": "Eine Funktion erfüllt F′(x)=3x²−3 und F(−1)=2. Bestimme F und F(2). Erläutere, warum gleiche Funktionswerte an −1 und 2 mit einer nicht konstanten Funktion vereinbar sind.",
+            "taskDemandEn": "A function satisfies F′(x)=3x²−3 and F(−1)=2. Determine F and F(2). Explain why equal values at −1 and 2 are compatible with a nonconstant function.",
+            "expectedPerformanceDe": "F(x)=x³−3x+C und F(−1)=2 führen zu C=0; F(2)=2. Die Änderung ∫(−1…2)(3x²−3)dx ist 0, obwohl die Rate dazwischen Vorzeichen wechselt. Ableitungsprüfung und Bezugswertprüfung sichern die Rekonstruktion; Flächenbeiträge können sich aufheben.",
+            "expectedPerformanceEn": "F(x)=x³−3x+C with F(−1)=2 gives C=0; F(2)=2. The change ∫(−1…2)(3x²−3)dx is 0 although the rate changes sign in between. Checking the derivative and reference value validates the reconstruction; area contributions can cancel.",
+            "understandingFocusDe": "Transfer der Bestandsrekonstruktion auf eine Funktion mit nichtnulligem Bezugsargument und kompensierter Änderung.",
+            "understandingFocusEn": "Transfer of reconstruction to a function anchored at a nonzero argument with cancelling changes."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+      "reason": "Geometrischer Hauptsatz mit Funktion/Ableitung/Stammfunktion, ohne anspruchsvollere formale Beweismethode. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "geometric-inverse-relation",
+            "essentialUnderstandingDe": "Für stetiges f ist die Änderung der orientierten Fläche über einem schmalen Intervall ungefähr f(x)·h; daher hat A(x)=∫ₐˣ f(t)dt die Ableitung f. Für jede Stammfunktion F gilt F′=f und F″=f′, sofern die weitere Ableitung existiert; eine additive Konstante verändert diese Beziehungen nicht.",
+            "essentialUnderstandingEn": "For continuous f, the change in signed area over a narrow interval is approximately f(x)·h; hence A(x)=∫ₐˣ f(t)dt has derivative f. Every antiderivative F satisfies F′=f and F″=f′ where the further derivative exists; an additive constant does not change these relationships.",
+            "observablePerformanceDe": "Die lernende Person begründet den Zusammenhang am schmalen Flächenstreifen und verbindet Höhe von f, Steigung von F sowie Änderung dieser Steigung durch f′ an einem frischen Beispiel.",
+            "observablePerformanceEn": "The learner justifies the relationship using a narrow area strip and connects the height of f, slope of F and change of that slope through f′ in a fresh example."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "geometric-inverse-relation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "forward-and-backward",
+            "textDe": "Von einem Integranden mit Flächendeutung zu einer vorgegebenen Stammfunktionsfamilie mit lokaler Steigungsdeutung wechseln.",
+            "textEn": "Switch from an integrand interpreted through area to a supplied antiderivative family interpreted through local slopes."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "linear-strip",
+            "taskDemandDe": "Betrachte f(t)=3−t auf [0,4] und A(x)=∫₀ˣ f(t)dt. Begründe geometrisch die Beziehung A′=f und beschreibe mit f und f′, wie sich der Verlauf von A bis über x=3 hinaus ändert.",
+            "taskDemandEn": "Consider f(t)=3−t on [0,4] and A(x)=∫₀ˣ f(t)dt. Justify A′=f geometrically and use f and f′ to describe how A changes through and beyond x=3.",
+            "expectedPerformanceDe": "Ein schmaler orientierter Streifen der Breite h hat näherungsweise Inhalt (3−x)h; der Flächenquotient nähert sich 3−x. A steigt bis x=3 mit abnehmender Steigung, hat dort eine waagerechte Tangente und fällt danach. f′=−1 beschreibt die fortlaufend abnehmende A-Steigung; A=3x−x²/2 ist eine passende Kontrolle.",
+            "expectedPerformanceEn": "A narrow signed strip of width h has approximate area (3−x)h; the area quotient approaches 3−x. A increases to x=3 with decreasing slope, has a horizontal tangent there and decreases afterward. f′=−1 describes the continuously decreasing slope of A; A=3x−x²/2 provides a suitable check.",
+            "understandingFocusDe": "Geometrische Begründung des Ableitens von Flächen und die dreistufige Beziehung A,f,f′.",
+            "understandingFocusEn": "Geometric justification of differentiating area and the three-level relationship A,f,f′."
+          },
+          {
+            "id": "primitive-family",
+            "taskDemandDe": "Gegeben ist die Familie F_C(x)=x⁴−2x²+C. Bestimme f=F_C′ und f′ und deute ihre Werte bei x=1/2 als lokale Aussagen über F_C. Erkläre mit einer Flächenfunktion, warum die freie Konstante dabei keine Rolle spielt.",
+            "taskDemandEn": "Given F_C(x)=x⁴−2x²+C, find f=F_C′ and f′ and interpret their values at x=1/2 as local statements about F_C. Use an area function to explain why the free constant is irrelevant to these statements.",
+            "expectedPerformanceDe": "f=4x³−4x und f′=12x²−4; bei 1/2 sind f=−3/2 und f′=−1. F_C fällt dort, und seine Steigung nimmt lokal weiter ab. A(x)=F_C(x)−F_C(a) entspricht der orientierten Fläche ab a; C fällt heraus. Der schmale Flächenzuwachs von A hat Quotient nahe f(x), unabhängig von C.",
+            "expectedPerformanceEn": "f=4x³−4x and f′=12x²−4; at 1/2 these are −3/2 and −1. F_C decreases there and its slope is locally decreasing further. A(x)=F_C(x)−F_C(a) represents signed area starting at a; C cancels. The narrow area increment of A has quotient near f(x), independently of C.",
+            "understandingFocusDe": "Rückwärtiger Transfer von einer Stammfunktion zur Integrandenhöhe und deren Veränderung.",
+            "understandingFocusEn": "Backward transfer from an antiderivative to integrand height and its change."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "reason": "Begriff und Flächenbedeutung der Integralfunktion; vollständige wechselseitige Graphenkonstruktion bleibt im Nachbarziel. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "fixed-start-variable-end",
+            "essentialUnderstandingDe": "Eine Integralfunktion Aₐ(x)=∫ₐˣ f(t)dt ordnet einer variablen oberen Grenze x die orientierte Fläche ab der festen unteren Grenze a zu. Es gilt Aₐ(a)=0; Integrand f und Integralfunktion Aₐ beschreiben Höhe und angesammelte Fläche, nicht dieselbe Größe.",
+            "essentialUnderstandingEn": "An integral function Aₐ(x)=∫ₐˣ f(t)dt assigns a variable upper limit x the signed area starting from a fixed lower limit a. Aₐ(a)=0; integrand f and integral function Aₐ describe height and accumulated area, not the same quantity.",
+            "observablePerformanceDe": "Die lernende Person definiert die Integralfunktion, identifiziert Rollen von a,x,t und erläutert Werte aus orientierten Flächen, auch links der unteren Grenze oder bei veränderter Bezugsgrenze.",
+            "observablePerformanceEn": "The learner defines the integral function, identifies the roles of a,x,t and explains values through signed areas, including to the left of the lower limit or with a changed reference limit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "fixed-start-variable-end"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "orientation-and-reference",
+            "textDe": "Negative Integranden und umgekehrte Grenzen durch eine neue untere Grenze in einem Vorzeichenwechselkontext ergänzen.",
+            "textEn": "Extend negative integrands and reversed limits to a changed lower limit in a sign-changing context."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "negative-constant",
+            "taskDemandDe": "Definiere für f(t)=−3 auf [−2,2] die Integralfunktion ab a=−1. Bestimme A₋₁(−1), A₋₁(1) und A₋₁(−2) aus Rechtecken und erläutere insbesondere das Vorzeichen links von −1.",
+            "taskDemandEn": "For f(t)=−3 on [−2,2], define the integral function starting at a=−1. Find A₋₁(−1), A₋₁(1) and A₋₁(−2) using rectangles and explain the sign to the left of −1.",
+            "expectedPerformanceDe": "A₋₁(x)=∫(−1…x)(−3)dt=−3(x+1). Die Werte sind 0,−6,+3. Bei x=−2 wird die Orientierung der Integration umgekehrt; daher ist der Wert positiv, obwohl der Integrand negativ ist. t ist die Integrationsvariable, x die veränderliche Grenze.",
+            "expectedPerformanceEn": "A₋₁(x)=∫(−1…x)(−3)dt=−3(x+1). The values are 0,−6,+3. At x=−2 the integration orientation reverses, so the value is positive although the integrand is negative. t is the integration variable and x the variable limit.",
+            "understandingFocusDe": "Definition einschließlich orientierter Integration links der Bezugsgrenze.",
+            "understandingFocusEn": "Definition including signed integration to the left of the reference limit."
+          },
+          {
+            "id": "shifted-reference",
+            "taskDemandDe": "Ein Graph hat auf [0,1] einen orientierten Flächenbeitrag +2 und auf [1,3] einen Beitrag −5. Beschreibe A₀(x)=∫₀ˣ f(t)dt und A₁(x)=∫₁ˣ f(t)dt und bestimme ihre Werte bei 1 und 3. Erkläre ihre Beziehung.",
+            "taskDemandEn": "A graph has signed area contribution +2 on [0,1] and −5 on [1,3]. Describe A₀(x)=∫₀ˣ f(t)dt and A₁(x)=∫₁ˣ f(t)dt and find their values at 1 and 3. Explain their relationship.",
+            "expectedPerformanceDe": "A₀(1)=2, A₀(3)=−3; A₁(1)=0, A₁(3)=−5. Beide Funktionen sammeln Beiträge desselben Integranden ab verschiedenen festen Grenzen: A₁(x)=A₀(x)−2. Der gleiche Flächenzuwachs von 1 bis 3 bedeutet nicht gleiche Funktionswerte.",
+            "expectedPerformanceEn": "A₀(1)=2 and A₀(3)=−3; A₁(1)=0 and A₁(3)=−5. Both accumulate contributions from the same integrand starting at different fixed limits: A₁(x)=A₀(x)−2. Equal area increments from 1 to 3 do not imply equal function values.",
+            "understandingFocusDe": "Transfer von der Definition auf eine geänderte Bezugsgrenze bei gleicher Randfunktion.",
+            "understandingFocusEn": "Transfer of the definition to a different reference limit with the same boundary function."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+      "reason": "Beide Richtungen des ausdrücklich wechselseitigen Darstellungsziels sind verbindlich und durch getrennte Fälle abgedeckt. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "graph-from-integrand",
+            "essentialUnderstandingDe": "Vorzeichen und Veränderung der Integrandenhöhe bestimmen Steigung und Steigungsänderung der Integralfunktion; orientierte Flächen bestimmen ihre Wertunterschiede und die feste Untergrenze ihren Nullwert.",
+            "essentialUnderstandingEn": "The sign and change of integrand height determine the slope and change of slope of the integral function; signed areas determine differences in its values and the fixed lower limit determines its zero value.",
+            "observablePerformanceDe": "Die lernende Person erschließt aus einem neuen Integrandengraphen einen konsistenten Verlauf der Integralfunktion mit begründeten Steigungen, Extremstellen und Flächenwerten.",
+            "observablePerformanceEn": "The learner infers a consistent integral-function graph from a new integrand graph, justifying slopes, extrema and area values."
+          },
+          {
+            "id": "integrand-from-slopes",
+            "essentialUnderstandingDe": "Beim Rückschluss liefern Tangentensteigungen der Integralfunktion die Integrandenwerte. Nullstellen der Integralfunktion sind dabei eine andere Information als waagerechte Tangenten.",
+            "essentialUnderstandingEn": "In the reverse direction, tangent slopes of the integral function give integrand values. Zeros of the integral function provide different information from horizontal tangents.",
+            "observablePerformanceDe": "Die lernende Person rekonstruiert aus ablesbaren Tangentensteigungen und deren Verlauf den Integrandengraphen und begründet die Zuordnung beider Darstellungen.",
+            "observablePerformanceEn": "The learner reconstructs an integrand graph from readable tangent slopes and their behavior and justifies the correspondence between the representations."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "graph-from-integrand",
+            "integrand-from-slopes"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reverse-direction",
+            "textDe": "Die gegebene Darstellung wechselt vom Integranden zur Integralfunktion; die Richtung des Rückschlusses kehrt sich um.",
+            "textEn": "The supplied representation changes from the integrand to the integral function, reversing the direction of inference."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "polygon-to-area-graph",
+            "taskDemandDe": "Der Graph f ist der Polygonzug durch (−2,0),(0,2),(2,0),(4,−2). Skizziere A(x)=∫₀ˣ f(t)dt. Nutze orientierte Dreiecksflächen und begründe Wachstum, Steigungsänderung sowie den Extrempunkt.",
+            "taskDemandEn": "The graph of f is the polygonal line through (−2,0),(0,2),(2,0),(4,−2). Sketch A(x)=∫₀ˣ f(t)dt. Use signed triangular areas and justify growth, changes of slope and the extremum.",
+            "expectedPerformanceDe": "A(−2)=−2, A(0)=0, A(2)=2, A(4)=0. A steigt bis 2, zunächst mit zunehmender Steigung bis 0 und dann mit abnehmender Steigung; bei 2 liegt ein Maximum mit waagerechter Tangente. Danach fällt A mit weiter abnehmender Steigung. Jeder Teil wird aus f und den Flächen begründet.",
+            "expectedPerformanceEn": "A(−2)=−2, A(0)=0, A(2)=2 and A(4)=0. A increases to 2, first with increasing slope until 0 and then with decreasing slope; at 2 it has a maximum with a horizontal tangent. Afterward A decreases with its slope continuing to decrease. Each part is justified from f and the areas.",
+            "understandingFocusDe": "Integrandenhöhe, Krümmungsverhalten und Flächenwerte zu einem konsistenten Graphen verbinden.",
+            "understandingFocusEn": "Connecting integrand height, curvature behavior and area values in a consistent graph."
+          },
+          {
+            "id": "tangent-data-to-integrand",
+            "taskDemandDe": "Eine Integralfunktion ab 0 ist graphisch als nach oben geöffnete Parabel mit A(0)=0, Scheitel (1,−1) und A(2)=0 gegeben. An x=0,1,2,3 sind die Tangentensteigungen −2,0,2,4 markiert; sie ändern sich dazwischen linear. Erschließe den Integrandengraphen und erläutere seine Nullstelle.",
+            "taskDemandEn": "An integral function starting at 0 is shown as an upward-opening parabola with A(0)=0, vertex (1,−1) and A(2)=0. At x=0,1,2,3 the marked tangent slopes are −2,0,2,4, changing linearly between them. Infer the integrand graph and explain its zero.",
+            "expectedPerformanceDe": "Der Integrand ist die Gerade durch (0,−2),(1,0),(2,2),(3,4), also f(x)=2x−2. Seine Nullstelle x=1 gehört zur waagerechten Tangente am Scheitel von A, nicht zu A(0)=A(2)=0. Das negative und positive Flächendreieck zwischen 0 und 2 heben sich auf und erklären A(2)=0.",
+            "expectedPerformanceEn": "The integrand is the line through (0,−2),(1,0),(2,2),(3,4), hence f(x)=2x−2. Its zero x=1 corresponds to the horizontal tangent at the vertex of A, not to A(0)=A(2)=0. The negative and positive triangular areas between 0 and 2 cancel, explaining A(2)=0.",
+            "understandingFocusDe": "Eigenständiger Rückschluss aus Tangenten statt Kopieren der Flächenfunktion.",
+            "understandingFocusEn": "Independent inference from tangents rather than copying the area-function graph."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "reason": "Deutung orientierter Gesamtwirkungen; physikalische Kontextdefinitionen sind gegeben und keine zusätzliche Physikprüfung. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "weighted-signed-effects",
+            "essentialUnderstandingDe": "Ein Produkt aus Rate und Intervalllänge beschreibt einen Beitrag zur Gesamtwirkung. Sein Vorzeichen bezeichnet die im Kontext vereinbarte Richtung; die Summe orientierter Beiträge beschreibt die Nettowirkung mit der Produkteinheit.",
+            "essentialUnderstandingEn": "A product of rate and interval length describes a contribution to the total effect. Its sign denotes the direction agreed in context; the sum of signed contributions describes the net effect with the product unit.",
+            "observablePerformanceDe": "Die lernende Person erklärt einzelne Produkte und ihre Summe im Kontext, verbindet sie mit orientierten Rechteckflächen und interpretiert sowohl Verstärkung als auch Aufhebung von Beiträgen.",
+            "observablePerformanceEn": "The learner explains individual products and their sum in context, connects them with signed rectangular areas and interprets both reinforcement and cancellation of contributions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "weighted-signed-effects"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quantity-and-interval",
+            "textDe": "Von Leistung mal Zeit zu Kraftkomponente mal Weg mit anderen Einheiten und vollständiger Aufhebung wechseln.",
+            "textEn": "Switch from power times time to force component times distance with different units and complete cancellation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "signed-energy-flow",
+            "taskDemandDe": "Ein Speicher nimmt zwei Stunden lang elektrische Leistung von +3 kW auf und gibt danach eine Stunde lang Leistung von −2 kW ab. Deute die Rechteckprodukte, die orientierte Gesamtfläche und den Unterschied zum gesamten umgesetzten Energiebetrag.",
+            "taskDemandEn": "A storage system receives electrical power of +3 kW for two hours and then supplies power of −2 kW for one hour. Interpret the rectangle products, total signed area and difference from the total amount of energy transferred.",
+            "expectedPerformanceDe": "Die Beiträge sind +3·2=+6 kWh und −2·1=−2 kWh. Die orientierte Gesamtfläche bedeutet eine Nettozunahme um 4 kWh. Insgesamt werden 6+2=8 kWh in beiden Richtungen umgesetzt; dies ist eine andere Frage als die Nettoänderung. Die Vorzeichen folgen der vereinbarten Speicherbilanz.",
+            "expectedPerformanceEn": "The contributions are +3·2=+6 kWh and −2·1=−2 kWh. The total signed area means a net increase of 4 kWh. A total of 6+2=8 kWh is transferred in both directions, answering a different question from net change. Signs follow the agreed storage balance.",
+            "understandingFocusDe": "Produkteinheit und kontextgebundene Unterscheidung von Netto- und Betragssumme.",
+            "understandingFocusEn": "Product unit and context-specific distinction between net and absolute totals."
+          },
+          {
+            "id": "signed-work",
+            "taskDemandDe": "Für diese Aufgabe ist die Arbeit eines konstanten Kraftanteils entlang eines Wegs als Kraftanteil mal Weglänge definiert. Ein Körper erfährt zuerst +3 N über 0,5 m und danach −1 N über 1,5 m. Deute beide Produkte und die orientierte Gesamtfläche im Kraft-Weg-Diagramm.",
+            "taskDemandEn": "For this task, work by a constant force component along a path is defined as force component times path length. An object experiences +3 N over 0.5 m and then −1 N over 1.5 m. Interpret both products and the signed total area in the force-distance diagram.",
+            "expectedPerformanceDe": "Es entstehen +1,5 N·m und −1,5 N·m, insgesamt 0 J. Die Nullsumme bedeutet, dass sich positive und negative Arbeit aufheben, nicht dass entlang des Wegs keine Kraftwirkung vorliegt. Die verschiedenen Weglängen gewichten die Höhen; die bloße Summe 3+(−1) wäre keine Arbeit.",
+            "expectedPerformanceEn": "The contributions are +1.5 N·m and −1.5 N·m, totaling 0 J. The zero sum means positive and negative work cancel, not that there is no force effect along the path. Different path lengths weight the heights; merely adding 3+(−1) would not give work.",
+            "understandingFocusDe": "Transfer der Produktsummenbedeutung auf eine andere Größe und ungleich lange Abschnitte.",
+            "understandingFocusEn": "Transfer of product-sum meaning to a different quantity and unequal intervals."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "reason": "Profil für die präzisierte orientierte Flächeninhaltsfunktion mit fester Untergrenze; finale Wortlautbindung erst nach Stable. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "area-function-sketch",
+            "essentialUnderstandingDe": "Eine feste untere Grenze bestimmt den Startwert 0 der orientierten Flächeninhaltsfunktion. Aus den bis x aufgelaufenen positiven und negativen Beiträgen ergeben sich ihre Werte und ihr qualitativer Verlauf.",
+            "essentialUnderstandingEn": "A fixed lower limit determines the zero starting value of the signed area function. Accumulated positive and negative contributions up to x determine its values and qualitative behavior.",
+            "observablePerformanceDe": "Die lernende Person skizziert zu einem neuen Randgraphen und einer festen Bezugsgrenze einen konsistenten Flächengraphen und begründet Ankerpunkte, Wachstum und Steigungsänderung aus den Flächenbeiträgen.",
+            "observablePerformanceEn": "The learner sketches a consistent area-function graph for a new boundary graph and fixed reference limit, justifying anchor points, growth and changes of slope from area contributions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "area-function-sketch"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sign-and-lower-limit",
+            "textDe": "Von einem positiven Dreiecksgraphen ab 0 zu einer vorzeichenwechselnden Randfunktion mit Untergrenze in der Intervallmitte wechseln.",
+            "textEn": "Switch from a positive triangular graph starting at 0 to a sign-changing boundary function with the lower limit inside the interval."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "triangle-accumulation",
+            "taskDemandDe": "Der Randgraph ist der Polygonzug (0,0),(1,2),(2,0). Skizziere die orientierte Flächeninhaltsfunktion ab 0 auf [0,2]. Markiere drei Flächenwerte und beschreibe, wo sie steiler beziehungsweise flacher wird.",
+            "taskDemandEn": "The boundary graph is the polygonal line (0,0),(1,2),(2,0). Sketch its signed area function starting at 0 on [0,2]. Mark three area values and describe where it becomes steeper or flatter.",
+            "expectedPerformanceDe": "Der Flächengraph geht durch (0,0),(1,1),(2,2). Er steigt überall im Inneren, wird bis 1 steiler und danach flacher; bei 0 und 2 ist die Tangente waagerecht. Die Dreiecksflächen liefern die Werte, die Höhe des schmal hinzugefügten Streifens erklärt die Steigungsänderung.",
+            "expectedPerformanceEn": "The area graph passes through (0,0),(1,1),(2,2). It increases throughout the interior, becoming steeper until 1 and flatter afterward; it has horizontal tangents at 0 and 2. Triangle areas give the values, while the height of a narrow added strip explains the change of slope.",
+            "understandingFocusDe": "Qualitative Skizze aus auflaufender Fläche ohne vorgeschriebene Stammfunktionsmethode.",
+            "understandingFocusEn": "Qualitative sketch from accumulated area without requiring an antiderivative method."
+          },
+          {
+            "id": "interior-reference",
+            "taskDemandDe": "Der Randgraph ist die Gerade f(t)=t−1 auf [−1,3], die feste untere Grenze ist a=1. Skizziere A(x)=∫₁ˣ f(t)dt auf beiden Seiten von 1 und begründe die Werte bei −1,1,3 geometrisch.",
+            "taskDemandEn": "The boundary graph is the line f(t)=t−1 on [−1,3], with fixed lower limit a=1. Sketch A(x)=∫₁ˣ f(t)dt on both sides of 1 and geometrically justify its values at −1,1,3.",
+            "expectedPerformanceDe": "A(−1)=2, A(1)=0, A(3)=2. Links von 1 ist f negativ, aber die umgekehrte Integrationsrichtung liefert positive A-Werte. A fällt bis zum Minimum bei 1 und steigt danach; es wird stetig steiler. Die passende Parabel A(x)=(x−1)²/2 kann als Kontrolle dienen, ist aber aus Dreiecksflächen skizzierbar.",
+            "expectedPerformanceEn": "A(−1)=2, A(1)=0 and A(3)=2. To the left of 1, f is negative but reversed integration gives positive A values. A decreases to its minimum at 1 and increases afterward, with continuously increasing slope. The matching parabola A(x)=(x−1)²/2 can be used as a check but can be sketched from triangle areas.",
+            "understandingFocusDe": "Transfer auf eine andere Integrationsorientierung und einen Nullwert innerhalb statt am Rand des Intervalls.",
+            "understandingFocusEn": "Transfer to a different integration orientation and a zero value inside rather than at the edge of the interval."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+      "reason": "Propädeutischer Grenzübergang; keine formale Integrabilitätstheorie oder Epsilon-Delta-Pflicht. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "sum-to-integral",
+            "essentialUnderstandingDe": "Eine Produktsumme gewichtet Funktionswerte mit Intervallbreiten. Bei geeigneten Funktionen und immer feinerer Zerlegung beschreiben diese Summen denselben Grenzwert, das bestimmte Integral; kleine Einzelbeiträge können eine endliche Gesamtwirkung ergeben.",
+            "essentialUnderstandingEn": "A product sum weights function values by interval widths. For suitable functions and increasingly fine partitions these sums describe the same limit, the definite integral; small individual contributions can yield a finite total effect.",
+            "observablePerformanceDe": "Die lernende Person verbindet eine konkrete Produktsumme mit Integrand und Grenzen, verfolgt die Verfeinerung rechnerisch oder anschaulich und erläutert den Grenzwert einschließlich orientierter Beiträge.",
+            "observablePerformanceEn": "The learner connects a concrete product sum with its integrand and limits, traces refinement numerically or intuitively and explains the limit including signed contributions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "sum-to-integral"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "partition-and-integrand",
+            "textDe": "Von rechten Stützstellen einer linearen Funktion zu einer stückweise konstanten vorzeichenwechselnden Funktion und angepasster Zerlegung wechseln.",
+            "textEn": "Switch from right endpoints for a linear function to a piecewise constant sign-changing function with an adapted partition."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "right-sum-limit",
+            "taskDemandDe": "Für f(x)=2x auf [0,3] werden n gleich breite Intervalle mit rechten Stützstellen verwendet. Stelle die Produktsumme auf, berechne die Werte für n=2,4,8 und erläutere ihren Übergang zum Integral. Die Formel Σ(k=1…n)k=n(n+1)/2 darf genutzt werden.",
+            "taskDemandEn": "For f(x)=2x on [0,3], use n equal subintervals with right endpoints. Set up the product sum, compute it for n=2,4,8 and explain its transition to the integral. You may use Σ(k=1…n)k=n(n+1)/2.",
+            "expectedPerformanceDe": "Die Breite ist 3/n, die Höhe an der k-ten Stützstelle 6k/n. Sₙ=Σ(6k/n)(3/n)=9(n+1)/n liefert 13,5;11,25;10,125 und nähert sich 9=∫₀³2x dx. Die zu hohen rechten Rechtecke nähern den Dreiecksinhalt mit feinerer Zerlegung an; das Ergebnis ist keine einzelne Rechteckhöhe.",
+            "expectedPerformanceEn": "Width is 3/n and the height at the kth endpoint is 6k/n. Sₙ=Σ(6k/n)(3/n)=9(n+1)/n gives 13.5,11.25,10.125 and approaches 9=∫₀³2x dx. The overestimating right-endpoint rectangles approach the triangle area as the partition is refined; the result is not an individual rectangle height.",
+            "understandingFocusDe": "Grenzübergang mit explizitem Produkt aus Höhe und Breite.",
+            "understandingFocusEn": "Limit transition with an explicit height-times-width product."
+          },
+          {
+            "id": "piecewise-exact-sums",
+            "taskDemandDe": "Nun gilt f=−1 auf [0,1) und f=2 auf [1,3]. Zerlege zuerst an der Sprungstelle 1 und verfeinere innerhalb beider konstanten Abschnitte beliebig. Nutze Stützstellen im Inneren der Teilintervalle. Erläutere Produktsummen und ihren Integralgrenzwert.",
+            "taskDemandEn": "Now f=−1 on [0,1) and f=2 on [1,3]. First partition at the jump at 1, then refine arbitrarily within both constant sections, using interior sample points. Explain the product sums and their integral limit.",
+            "expectedPerformanceDe": "Jede so angepasste Produktsumme ergibt −1·1+2·2=3. Weitere Zerlegung verändert die Gesamtbreiten 1 und 2 nicht; die Summenfolge ist schon konstant und ihr Grenzwert ∫₀³ f(x)dx ist 3. Die negative Fläche zählt orientiert. Ein Grenzwertprozess darf auch einen schon exakt erreichten Wert beibehalten.",
+            "expectedPerformanceEn": "Every such adapted product sum equals −1·1+2·2=3. Further subdivision does not change total widths 1 and 2; the sum sequence is already constant and its limit ∫₀³ f(x)dx is 3. The negative area counts with its sign. A limiting process may preserve an already exact value.",
+            "understandingFocusDe": "Transfer auf angepasste Partitionen mit Vorzeichenwechsel statt bloß veränderter Zahlen einer monotonen Summe.",
+            "understandingFocusEn": "Transfer to adapted partitions with a sign change rather than merely changing numbers in a monotone sum."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "reason": "Rückwärtige Kettenregel für genau die genannten Funktionsformen; keine allgemeine Substitution oder nichtlineare innere Funktion. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "inverse-inner-factor",
+            "essentialUnderstandingDe": "Bei nichtnulliger linearer innerer Steigung wird die Stammfunktion durch deren Kehrwert gewichtet, damit die Kettenregel beim Ableiten den Integranden ergibt. Verschiebung und Integrationskonstante spielen andere Rollen; bei Steigung 0 wird die Funktion konstant und direkt integriert.",
+            "essentialUnderstandingEn": "For a nonzero linear inner slope, the antiderivative is weighted by its reciprocal so that differentiation by the chain rule recovers the integrand. Translation and integration constant play different roles; zero slope makes the function constant and it is integrated directly.",
+            "observablePerformanceDe": "Die lernende Person bestimmt Stammfunktionen transformierter Exponential-, Sinus- und Kosinusfunktionen, begründet Vorzeichen und Faktor durch Rückwärtslesen der Kettenregel und prüft auch einen degenerierten Parameterfall.",
+            "observablePerformanceEn": "The learner finds antiderivatives of transformed exponential, sine and cosine functions, justifies sign and factor by reversing the chain rule and also checks a degenerate parameter case."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "inverse-inner-factor"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "parameter-sign-zero",
+            "textDe": "Von fest vorgegebenen inneren Steigungen zu einer Kosinusfunktion mit negativer Steigung und einem Fall mit Steigung 0 wechseln.",
+            "textEn": "Switch from specified inner slopes to a cosine with negative slope and a zero-slope case."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unknown-coefficient",
+            "taskDemandDe": "Für e^(−2x+3) wird F(x)=k·e^(−2x+3)+C vorgeschlagen; für sin(3(x+2)) wird H(x)=l·cos(3(x+2))+C vorgeschlagen. Bestimme k und l so, dass Stammfunktionen entstehen, und begründe sie durch Ableiten.",
+            "taskDemandEn": "For e^(−2x+3), F(x)=k·e^(−2x+3)+C is proposed; for sin(3(x+2)), H(x)=l·cos(3(x+2))+C is proposed. Find k and l so they are antiderivatives and justify by differentiation.",
+            "expectedPerformanceDe": "F′=−2k·e^(−2x+3), daher k=−1/2. H′=−3l·sin(3(x+2)), daher l=−1/3. Der Faktor kompensiert die innere Ableitung; +3 beziehungsweise +2 bestimmt die Verschiebung, nicht den zu kompensierenden Ableitungsfaktor. C bleibt beliebig.",
+            "expectedPerformanceEn": "F′=−2k·e^(−2x+3), so k=−1/2. H′=−3l·sin(3(x+2)), so l=−1/3. The factor compensates for the inner derivative; +3 or +2 determines translation, not the derivative factor to compensate. C remains arbitrary.",
+            "understandingFocusDe": "Stammfunktion durch Bestimmung eines Koeffizienten aus der Kettenregel konstruieren.",
+            "understandingFocusEn": "Constructing an antiderivative by determining a coefficient from the chain rule."
+          },
+          {
+            "id": "cosine-and-zero",
+            "taskDemandDe": "Integriere cos(−(x−4)/2). Erläutere anschließend, wie die Stammfunktion von e^(ax+5) für a≠0 aussieht und wie der Fall a=0 behandelt wird. Prüfe die Ergebnisse durch Ableiten.",
+            "taskDemandEn": "Integrate cos(−(x−4)/2). Then explain the antiderivative of e^(ax+5) for a≠0 and how a=0 is handled. Check the results by differentiation.",
+            "expectedPerformanceDe": "Eine Stammfunktion ist −2 sin(−(x−4)/2)+C; beim Ableiten ergibt −2·(−1/2)=1 den richtigen Faktor. Für a≠0 gilt e^(ax+5)/a+C. Bei a=0 ist der Integrand e⁵ konstant, also lautet die Stammfunktion e⁵x+C. Der Nullfall entsteht nicht durch Einsetzen in 1/a.",
+            "expectedPerformanceEn": "An antiderivative is −2 sin(−(x−4)/2)+C; differentiating gives the correct factor −2·(−1/2)=1. For a≠0 the antiderivative is e^(ax+5)/a+C. At a=0 the integrand is constant e⁵, giving e⁵x+C. The zero case is not obtained by substituting into 1/a.",
+            "understandingFocusDe": "Struktureller Parametertransfer mit Vorzeichenkontrolle und gültiger Behandlung der konstanten Funktion.",
+            "understandingFocusEn": "Structural parameter transfer with sign checking and valid handling of a constant function."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+      "reason": "Einfacher geometrisch-anschaulicher Hauptsatz und Anwendung; keine zusätzliche formale Stetigkeitsbegründung. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "ftc-geometric-use",
+            "essentialUnderstandingDe": "Ein kleiner Zuwachs der orientierten Fläche ist näherungsweise Integrandenhöhe mal Breite. Deshalb verknüpft der Hauptsatz Flächenänderung und Ableitung; ein bestimmtes Integral wird als Differenz von Stammfunktionswerten ausgewertet.",
+            "essentialUnderstandingEn": "A small increment in signed area is approximately integrand height times width. The fundamental theorem therefore connects area change and differentiation; a definite integral is evaluated as a difference of antiderivative values.",
+            "observablePerformanceDe": "Die lernende Person erläutert den Zusammenhang geometrisch und verwendet ihn in einem einfachen Integral, wobei Orientierung und die Unabhängigkeit von der Stammfunktionskonstante nachvollziehbar bleiben.",
+            "observablePerformanceEn": "The learner explains the connection geometrically and uses it in a simple integral, keeping orientation and independence from the antiderivative constant transparent."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "ftc-geometric-use"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "formula-to-endpoint-data",
+            "textDe": "Von einer gegebenen Integrandenformel mit positiven und negativen Flächen zu ausschließlich vorgegebenen Stammfunktionswerten wechseln.",
+            "textEn": "Switch from an integrand formula with positive and negative areas to supplied antiderivative endpoint values only."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "signed-linear-integral",
+            "taskDemandDe": "Erläutere den Hauptsatz am Flächenzuwachs zu f(x)=4−2x und berechne ∫₀³ f(x)dx. Vergleiche das Ergebnis mit den beiden orientierten Dreiecksflächen.",
+            "taskDemandEn": "Explain the fundamental theorem using the area increment for f(x)=4−2x and compute ∫₀³ f(x)dx. Compare with the two signed triangular areas.",
+            "expectedPerformanceDe": "Ein schmaler Streifen trägt ungefähr (4−2x)h bei und verbindet Flächenableitung und f. Mit F=4x−x² ergibt sich F(3)−F(0)=3. Das positive Dreieck auf [0,2] hat Inhalt 4, das negative auf [2,3] trägt −1 bei; zusammen 3.",
+            "expectedPerformanceEn": "A narrow strip contributes approximately (4−2x)h, connecting the area derivative with f. With F=4x−x², F(3)−F(0)=3. The positive triangle on [0,2] has area 4 and the negative one on [2,3] contributes −1, totaling 3.",
+            "understandingFocusDe": "Geometrische Erklärung und Rechnung beschreiben denselben orientierten Integralwert.",
+            "understandingFocusEn": "Geometric explanation and calculation describe the same signed integral value."
+          },
+          {
+            "id": "endpoint-only",
+            "taskDemandDe": "Eine Stammfunktion F eines stetigen f erfüllt F(−2)=7 und F(1)=−5. Bestimme ∫(−2…1)f(x)dx und das Integral mit vertauschten Grenzen. Erkläre geometrisch die Werte und warum die Stammfunktion F+10 dieselben Ergebnisse liefert.",
+            "taskDemandEn": "An antiderivative F of continuous f satisfies F(−2)=7 and F(1)=−5. Find ∫(−2…1)f(x)dx and the integral with reversed limits. Explain the values geometrically and why antiderivative F+10 gives the same results.",
+            "expectedPerformanceDe": "Die Werte sind −5−7=−12 und +12. −12 bezeichnet die orientierte Gesamtfläche beziehungsweise den Nettoflächenzuwachs in positiver x-Richtung. Bei F+10 heben sich die zusätzlichen 10 in der Differenz auf. Die lokale Streifendeutung erklärt, warum beide Stammfunktionen dieselben Flächenzuwächse besitzen.",
+            "expectedPerformanceEn": "The values are −5−7=−12 and +12. −12 denotes total signed area or net area increment in the positive x direction. For F+10 the added 10 cancels in the difference. The local strip interpretation explains why both antiderivatives have the same area increments.",
+            "understandingFocusDe": "Transfer auf Daten statt Funktionsterm mit umgekehrter Orientierung.",
+            "understandingFocusEn": "Transfer to data rather than a function expression, with reversed orientation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ced4f794-9b42-4be4-bde5-7d44f134a140",
+      "reason": "LK-Hauptsatz mit ausdrücklich tragender anschaulicher Stetigkeit; kein formaler Epsilon-Delta-Beweis. Eigenständig verfasste bilinguale Verständnisfälle mit geprüften Erwartungslösungen; AI-Kandidat E1/G1, keine menschliche Freigabe oder tatsächliche Lernendenleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "continuity-justification",
+            "essentialUnderstandingDe": "Stetigkeit macht die Integrandenhöhen in einem hinreichend schmalen Intervall beliebig nahe an f(x). Dadurch nähert sich der orientierte Flächenzuwachs pro Breite f(x), also A′(x)=f(x); eine differenzierbare Stammfunktion liefert anschließend die Endpunktdifferenz.",
+            "essentialUnderstandingEn": "Continuity makes integrand heights in a sufficiently narrow interval arbitrarily close to f(x). Hence signed area increment per width approaches f(x), giving A′(x)=f(x); an antiderivative then yields the endpoint difference.",
+            "observablePerformanceDe": "Die lernende Person verwendet die anschauliche Stetigkeit ausdrücklich in einer schmalen Streifen- oder Rechteckeinschließung, begründet damit den Hauptsatz und wendet ihn mit korrekter Orientierung auf einen neuen Integralzusammenhang an.",
+            "observablePerformanceEn": "The learner explicitly uses intuitive continuity in a narrow-strip or rectangle-bound argument to justify the fundamental theorem and applies it with correct orientation in a new integral context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "continuity-justification"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "smoothness-and-sign",
+            "textDe": "Von einem stetigen Integranden mit Knick zu einem glatten vorzeichenwechselnden Integranden wechseln; die Rolle der Stetigkeit bleibt dieselbe.",
+            "textEn": "Switch from a continuous integrand with a corner to a smooth sign-changing integrand; continuity plays the same role."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "continuous-corner",
+            "taskDemandDe": "Für f(t)=|t−1| auf [0,2] und A(x)=∫₀ˣ f(t)dt soll A′(1) anschaulich begründet werden. Erkläre, warum der Knick von f den Hauptsatz hier nicht verhindert, und bestimme ∫₀²|t−1|dt.",
+            "taskDemandEn": "For f(t)=|t−1| on [0,2] and A(x)=∫₀ˣ f(t)dt, justify A′(1) intuitively. Explain why the corner in f does not prevent the fundamental theorem here and find ∫₀²|t−1|dt.",
+            "expectedPerformanceDe": "f ist an 1 stetig mit f(1)=0. In einem kleinen Intervall um 1 liegen alle Höhen zwischen 0 und der kleinen Entfernung zu 1; der Flächenzuwachs pro Breite geht deshalb von beiden Seiten gegen 0. Es folgt A′(1)=0, obwohl f dort nicht differenzierbar ist. Zwei Dreiecke mit Grundseite und Höhe 1 ergeben Integralwert 1; eine stückweise Stammfunktion bestätigt ihn.",
+            "expectedPerformanceEn": "f is continuous at 1 with f(1)=0. In a small interval around 1 all heights lie between 0 and the small distance from 1; area increment per width therefore tends to 0 from both sides. Thus A′(1)=0 although f is not differentiable there. Two triangles of base and height 1 give integral 1; a piecewise antiderivative confirms it.",
+            "understandingFocusDe": "Stetigkeit statt Differenzierbarkeit des Integranden als tragende Begründung.",
+            "understandingFocusEn": "Continuity rather than differentiability of the integrand as the supporting justification."
+          },
+          {
+            "id": "signed-continuous-polynomial",
+            "taskDemandDe": "Begründe den Hauptsatz anschaulich für f(t)=t³−t und wende ihn auf ∫(−1…1) f(t)dt an. Erläutere besonders, warum negative Streifenbeiträge und eine Gesamtfläche 0 zur Begründung passen.",
+            "taskDemandEn": "Justify the fundamental theorem intuitively for f(t)=t³−t and apply it to ∫(−1…1) f(t)dt. In particular explain why negative strip contributions and total signed area 0 fit the justification.",
+            "expectedPerformanceDe": "Das Polynom ist stetig; auf einem schmalen Intervall liegen die Höhen nahe f(x), daher nähert sich der orientierte Flächenquotient f(x), auch bei f(x)<0. F=t⁴/4−t²/2 liefert F(1)=F(−1)=−1/4 und Integral 0. Die gegenläufigen Flächenbeiträge heben sich auf; die lokale Beziehung A′=f bleibt dabei gültig.",
+            "expectedPerformanceEn": "The polynomial is continuous; over a narrow interval its heights lie close to f(x), so the signed area quotient approaches f(x), including when f(x)<0. F=t⁴/4−t²/2 gives F(1)=F(−1)=−1/4 and integral 0. Opposite signed areas cancel while the local relationship A′=f remains valid.",
+            "understandingFocusDe": "Eigenständige Kontinuitätsbegründung mit orientierten Flächen statt reiner Endpunktrechnung.",
+            "understandingFocusEn": "Independent continuity-based justification with signed areas rather than endpoint calculation alone."
+          }
+        ]
+      }
+    }
+  ]
+}

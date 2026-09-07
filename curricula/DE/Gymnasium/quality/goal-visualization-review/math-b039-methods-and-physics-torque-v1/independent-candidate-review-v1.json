@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-b039-methods-and-physics-torque-independent-candidate-review-v1",
+  "reviewer": "/root/math_b039_blind_b",
+  "provider": "OpenAI",
+  "model": "Codex; exact underlying model unknown",
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "modelDiversityClaim": false,
+  "startedAt": "2026-09-06T23:14:54Z",
+  "completedAt": "2026-09-06T23:16:09Z",
+  "method": "Independent subject and layout review from the current canonical bilingual goal texts, direct prerequisites, successors and containing cluster descriptions. All three exact candidate files were actually displayed with view_image. SHA-256 was computed from their original file bytes. No root review opinions or other candidate reviews were inspected. These decisions are AI candidate evidence only, not human approval, import authorization or publication acceptance.",
+  "freezeCheck": "CHECK openai_plugin_review_freeze PASS skillpilot-coach-v1 1.0.0 state=IN_REVIEW trees=6 files=22",
+  "reviews": [
+    {
+      "goalId": "70a21623-6c87-55ae-b534-ab45a3b9b1d2",
+      "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "currentTitleDe": "Konvergenzgeschwindigkeit numerischer Verfahren vergleichen",
+      "currentDescriptionDe": "Die lernende Person kann Bisektionsverfahren, Newton-Verfahren und Regula falsi hinsichtlich Konvergenzgeschwindigkeit, Rechenaufwand und Voraussetzungen an Beispielen vergleichen.",
+      "currentDescriptionEn": "The learner can compare the bisection method, Newton's method, and regula falsi with regard to convergence speed, computational effort, and prerequisites in examples.",
+      "candidatePath": "tmp/goal-visualizations/70a21623-6c87-55ae-b534-ab45a3b9b1d2/generated/70a21623-6c87-55ae-b534-ab45a3b9b1d2.generated.2026-09-06T23-10-08-656Z.jpg",
+      "sha256": "1b42b1026aad9df8314b2db1f6a3403794efec5a26a963130fca8ef59f4eb06e",
+      "viewed": true,
+      "viewTool": "view_image",
+      "decision": "accept",
+      "humanApproval": false,
+      "checksDe": [
+        "Das gemeinsame Beispiel f(x)=x²−2 und √2≈1,414214 ist korrekt. Die Bisektionsfolge [1;2] → [1;1,5] → [1,25;1,5] mit m1=1,5 und m2=1,25 stimmt.",
+        "Regula falsi: Aus f(1)=−1 und f(2)=2 folgt r1=4/3. Weil f(4/3)=−2/9 ist, bleibt der rechte Rand 2 erhalten: [4/3;2]. Der nächste Sekantenschnitt ist 7/5=1,4 und liefert [1,4;2]. Beide dargestellten Werte und Intervalle sind korrekt.",
+        "Newton: Aus x0=3/2 folgt x1=17/12≈1,416667 und x2=577/408≈1,414216. Die angegebenen Näherungen sind richtig gerundet.",
+        "Stetigkeit und Vorzeichenwechsel sind bei beiden Einschließungsverfahren genannt. Newton wird mit verfügbarer Ableitung, geeignetem Startwert und einfachen Nullstellen eingegrenzt; eine allgemeine Konvergenzgarantie wird ausdrücklich ausgeschlossen.",
+        "Der Rechenaufwand unterscheidet Funktionsauswertung, Sekantenberechnung und Ableitungsauswertung. Die Regula-falsi-Spalte weist auf einen lange festbleibenden Rand hin. Der Fußsatz begrenzt jede Geschwindigkeitsfolgerung aus wenigen Beispielschritten.",
+        "Die Zahlen, Brüche, Intervallgrenzen und Spalten sind gut lesbar. Die Bisektionsleisten sind als schematische Intervallfortschreibung konsistent; falsche Sekanten- oder Newtonkurven sind nicht enthalten. Der Text passt zum E/AB3-Verfahrensvergleich nach den drei direkt vorausgesetzten Verfahren."
+      ],
+      "residualLimitsDe": [
+        "In den beiden unteren Tabellenzeilen laufen die Sätze vertikal über die Zeilengrenze: etwa „Garantierte Halbierung“ und „der Intervallbreite“. Das ist eine ungeschickte Zuordnung zu den Zeilenüberschriften, aber der zusammenhängend lesbare Sachinhalt bleibt korrekt. Es begründet keine neue Generierungsrunde allein für Gestaltung.",
+        "Das Bild zeigt wenige Schritte eines Beispiels und keine vollständige Laufzeitmessung bei identischer Fehlertoleranz. Eine faire quantitative Effizienzaussage muss in einer eigenen Aufgabe zusätzlich die Zielgenauigkeit und den Auswertungsaufwand berücksichtigen.",
+        "Dies ist eine KI-Fachprüfung der dargestellten Inhalte; vorhandene oder künftige menschliche Freigaben und effektive bundeslandspezifische Geltungen wurden nicht geprüft."
+      ],
+      "requiredCorrectionsDe": []
+    },
+    {
+      "goalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+      "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "currentTitleDe": "Mittleres Beschleunigungsmoment bestimmen",
+      "currentDescriptionDe": "Die lernende Person kann bei konstantem Trägheitsmoment aus einer vorgegebenen mittleren Winkelbeschleunigung das mittlere resultierende Drehmoment bestimmen und seine beschleunigende oder bremsende Wirkung deuten.",
+      "currentDescriptionEn": "The learner can determine the mean net torque from a given mean angular acceleration for a constant moment of inertia and interpret its accelerating or braking effect.",
+      "candidatePath": "tmp/goal-visualizations/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea/generated/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea.generated.2026-09-06T23-12-44-386Z.jpg",
+      "sha256": "76df0b6e03d3b94036a10e1ff5b389c6d987259ec183e296d8301a0d9b4342ce",
+      "viewed": true,
+      "viewTool": "view_image",
+      "decision": "reject",
+      "humanApproval": false,
+      "checksDe": [
+        "Die feste Drehachse, das konstante Trägheitsmoment und der Bezug auf das resultierende Moment um dieselbe Achse sind ausdrücklich genannt. Damit ist M̄=I·ᾱ korrekt.",
+        "Für I=2 kg·m² ergeben ᾱ=+3 rad/s² und ᾱ=−3 rad/s² korrekt M̄=+6 N·m und M̄=−6 N·m. Die Einheiten und Vorzeichen sind konsistent, die zunächst positive Drehrichtung ist explizit vorgegeben.",
+        "Die Hinweise auf sich aufhebende Antriebs- und Reibungsmomente verhindern die Gleichsetzung eines einzelnen Antriebsmoments mit dem resultierenden Moment. Die Rotorsymbole enthalten keine widersprüchlichen Drehrichtungspfeile.",
+        "Materieller Fachfehler in der mittleren Spalte: Aus ᾱ=0 und M̄=0 folgt nicht „Gleichförmig drehen“ oder „Die Winkelgeschwindigkeit bleibt konstant“. Ein Mittelwert null legt nur gleiche Anfangs- und Endwinkelgeschwindigkeit fest. Die als Folgerung angeordnete Gleichförmigkeitsbehauptung ersetzt unzulässig einen Mittelwert durch eine Aussage über den gesamten Zeitverlauf.",
+        "Konkretes Gegenbeispiel auf [0;T]: ω(t)=ω0+A·sin(2πt/T) mit ω0>A>0 bleibt positiv, hat ω(0)=ω(T)=ω0 und daher ᾱ=0 sowie M̄=0, dreht aber zwischenzeitlich schneller und langsamer. Es erfüllt die im Bild genannten Achsen- und Trägheitsbedingungen.",
+        "Auch die äußeren Spalten beschreiben ohne zusätzliche Zeitverlaufsannahme lediglich Nettoänderungen der Winkelgeschwindigkeit. Ein positiver mittlerer Wert beweist keine durchgehend monotone Beschleunigung; ein negativer Mittelwert allein garantiert nicht, dass gerade der Stillstand erreicht wird. Die Formulierungen sollen den Intervallbezug klar machen.",
+        "Layout, Schrift, Balken über M und α sowie die drei Fallfarben sind gut lesbar. Der Ablehnungsgrund ist fachlich und betrifft unmittelbar das benannte Mittelwertziel, nicht die Gestaltung."
+      ],
+      "residualLimitsDe": [
+        "Die Dauer des Mittelungsintervalls und eine Anfangswinkelgeschwindigkeit sind nicht numerisch vorgegeben; deshalb lässt sich weder ein Stillstandszeitpunkt noch ein vollständiger Bewegungsverlauf bestimmen.",
+        "Gleichförmige Drehung wäre ein mögliches Spezialbeispiel mit α(t)=0 zu allen Zeitpunkten. Diese zusätzliche Annahme ist in der mittleren Spalte nicht als unabhängig gegebene Voraussetzung kenntlich gemacht und darf nicht aus ᾱ=0 abgeleitet werden."
+      ],
+      "requiredCorrectionsDe": [
+        "Die mittlere Spalte durch eine echte Mittelwertaussage ersetzen, etwa „Keine Nettoänderung“ und „Anfangs- und Endwinkelgeschwindigkeit sind gleich; der Verlauf dazwischen ist nicht festgelegt“.",
+        "Bei den äußeren Spalten den Intervall- und Nettocharakter ausdrücklich benennen, etwa „Winkelgeschwindigkeit nimmt im Mittel zu/ab“. Eine bremsende Wirkung auf den Betrag an die positive Drehrichtung im betrachteten Abschnitt binden und keine unbelegte Stillstandsaussage ergänzen.",
+        "Alternativ wären ausdrücklich als zusätzlich gegeben markierte konstante momentane Winkelbeschleunigungen ein zulässiges Spezialbeispiel. Die mittlere Zielformel und die Unterscheidung zwischen Mittelwert und Zeitverlauf müssen dabei erhalten bleiben."
+      ]
+    },
+    {
+      "goalId": "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+      "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "currentTitleDe": "Arithmetische und geometrische Reihen untersuchen",
+      "currentDescriptionDe": "Die lernende Person kann Partialsummen arithmetischer und geometrischer Reihen bestimmen, Summenformeln nutzen und Grenzwerte beziehungsweise Divergenz der Reihen begründen.",
+      "currentDescriptionEn": "The learner can determine partial sums of arithmetic and geometric series, use summation formulas, and justify limits or divergence of the series.",
+      "candidatePath": "tmp/goal-visualizations/12a8dffc-dea7-5f2c-b490-2a1a2bb6901b/generated/12a8dffc-dea7-5f2c-b490-2a1a2bb6901b.generated.2026-09-06T23-14-08-824Z.jpg",
+      "sha256": "70140ebae8e0d9f26062c4906083b9f7ff1fb6df6b04d8753999cd3ddbf43999",
+      "viewed": true,
+      "viewTool": "view_image",
+      "decision": "accept",
+      "humanApproval": false,
+      "checksDe": [
+        "Die fünf arithmetischen Stapel haben nun genau die Beschriftungen a1,a2,a3,a4,a5 bei einer bis fünf Einheiten. a_(n+1)=a_n+d beschreibt die Differenzstruktur korrekt.",
+        "S_n=n/2·(a1+a_n) ist die korrekte Summe der ersten n arithmetischen Glieder; die Klammer bezieht sich sichtbar auf deren gemeinsamen Bestand, nicht auf ein einzelnes Folgenglied.",
+        "Die linke Divergenzbehauptung ist ausdrücklich auf das dargestellte positive Beispiel beschränkt: „Hier: positive Summanden – Partialsummen wachsen unbegrenzt“. Im Kontext der positiv wachsenden arithmetischen Stapel ist das korrekt und behauptet keine entsprechende Aussage für die Nullreihe oder jede Folge positiver Summanden.",
+        "Rechts stimmen a2=a1·q und a3=a2·q sowie S_n=a1·(1−qⁿ)/(1−q) unter q≠1. Für |q|<1 ist der angegebene Grenzwert S=a1/(1−q) korrekt.",
+        "Endliche Partialsumme S_n und Grenzwert S werden durch unterschiedliche Bezeichnungen getrennt. Die Darstellungen passen zur Reihenuntersuchung nach den arithmetischen/geometrischen Folgen; eine harmonische Reihe oder deren Beweis wird nicht hineingenommen.",
+        "Beschriftungen, Exponenten, Summenformeln und Bedingungen sind lesbar und ohne Überdeckung. Die Kugeln und der Sammelbehälter sind qualitative Illustrationen ohne behauptete genaue Skala oder Flächenmessung; sie widersprechen keiner angeschriebenen Zahl."
+      ],
+      "residualLimitsDe": [
+        "Die positiven verkleinerten Kugeln illustrieren einen anschaulichen Fall mit 0<q<1. Negative Quotienten und alternierende Partialsummen werden nicht gezeichnet, bleiben aber korrekt von der symbolischen Bedingung |q|<1 erfasst.",
+        "q=1, negative arithmetische Reihen und die Nullreihe werden im Bild nicht vollständig fallunterschieden. Der Text behauptet keine vollständige Falltafel; diese Fälle gehören in die Erklärung oder eine unabhängige Aufgabe.",
+        "Die Sammlung von Bausteinen und Kugeln ist eine Lernhilfe und kein allgemeiner Grenzwertbeweis. Fachliche Bildakzeptanz ersetzt weder eigenständige Lernleistung noch menschliche Freigabe."
+      ],
+      "requiredCorrectionsDe": []
+    }
+  ]
+}

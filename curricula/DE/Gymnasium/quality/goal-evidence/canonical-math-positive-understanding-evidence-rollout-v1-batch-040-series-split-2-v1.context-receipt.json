@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-p2-final-context-v1",
+  "materializedAt": "2026-09-07T01:10:49.501Z",
+  "author": {
+    "provider": "OpenAI",
+    "model": "unknown",
+    "modelVersion": "unknown",
+    "authority": "ai_candidate",
+    "humanApprovalClaimed": false
+  },
+  "stableDirection": "Root explicitly confirmed final canonical and image-import stability before execution of this read-only native patch emitter.",
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-series-split-2-v1.config.json",
+      "sha256": "sha256:326500015c2c061195a5284010615881af1ea7862cc5c3bb68f20e7aa71fbc8d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-series-split-2-v1.candidates.json",
+      "sha256": "sha256:d339b1029dbc6b9af8207cded0de91a1bfae5d56d66951dd6a787c5e3289c490"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-series-split-2-v1.authoring-context.json",
+      "sha256": "sha256:825b72ccdf4d8a60a64468b0a4ced2b8dc29e6fc847c0fdcb55218718d93b94d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-series-split-2-v1.author-check-report.json",
+      "sha256": "sha256:5757a6fb2861bf9a6f41c05d8a46ed43d5ca0c62a64fb2a1f8dcf9356136ae62"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+      "sha256": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:bd33714d53a8774ac18bced0ca93ca3ade8a9de085373c851937af43b7416e44"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "sha256:99f1529c408cc24402eb8d4582d0ef497a8ca176ac67eec933df3e23e34b773c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-taylor-tools-integrals-19-v1.bind-current.ts",
+      "sha256": "sha256:6c77b13dc0239c2223fee85e58b2abd2cb632b0e93ffd5d53e505a0ad98335bc"
+    }
+  ],
+  "contexts": [
+    {
+      "goalId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+      "currentGoal": {
+        "id": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+        "title": "Arithmetische Reihen untersuchen",
+        "titleEn": "Investigate arithmetic series",
+        "description": "Die lernende Person kann Partialsummen arithmetischer Reihen bestimmen und mithilfe der Summenformel ihr Grenzverhalten begründen.",
+        "descriptionEn": "The learner can determine partial sums of arithmetic series and use the summation formula to justify their limiting behavior.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "E",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.E.SEQUENCES.ARITHMETIC_SERIES_LIMITS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+            "title": "Visualisierung: Arithmetische Reihen untersuchen",
+            "url": "/assets/goal-visualizations/mathematik/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Arithmetische Reihen untersuchen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Arithmetische Reihen untersuchen\". Die lernende Person kann Partialsummen arithmetischer Reihen bestimmen und mithilfe der Summenformel ihr Grenzverhalten begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:553039f95c3d104028271bae13a1d0dfaa69e3fda1c2cd56749a71cf1a8bcc37",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+      ],
+      "requiresAfter": [
+        "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+      ],
+      "prerequisites": [
+        {
+          "id": "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+          "title": "Arithmetische und geometrische Folgen beschreiben",
+          "titleEn": "Describe arithmetic and geometric sequences",
+          "description": "Die lernende Person kann arithmetische und geometrische Folgen definieren, Terme für das n-te Glied aufstellen und Folgenwerte tabellarisch sowie grafisch darstellen.",
+          "descriptionEn": "The learner can define arithmetic and geometric sequences, set up terms for the n-th member, and represent sequence values tabularly and graphically.",
+          "type": "atomic",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34"
+        }
+      ],
+      "sourceReference": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34",
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4.jpg",
+          "url": "/assets/goal-visualizations/mathematik/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4.jpg",
+          "sha256": "sha256:ac96aff6ac27effb52d076b2dcf27897fff22f2390ea6e9bf569640f189c1223",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:ea0bd739714a0970d0b423ffd15319bb31f89ad95bcce3650ac901e6b2bbdcf9",
+          "requires": [
+            "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Arithmetische Reihen untersuchen\". Die lernende Person kann Partialsummen arithmetischer Reihen bestimmen und mithilfe der Summenformel ihr Grenzverhalten begründen.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "finite-cancellation",
+          "expectationIds": [
+            "partial-sums",
+            "limiting-behavior"
+          ]
+        },
+        {
+          "caseId": "parameter-boundaries",
+          "expectationIds": [
+            "partial-sums",
+            "limiting-behavior"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+      "currentGoal": {
+        "id": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+        "title": "Geometrische Reihen untersuchen",
+        "titleEn": "Investigate geometric series",
+        "description": "Die lernende Person kann Partialsummen geometrischer Reihen bestimmen und mithilfe der Summenformel Konvergenz oder Divergenz sowie gegebenenfalls den Grenzwert begründen.",
+        "descriptionEn": "The learner can determine partial sums of geometric series and use the summation formula to justify convergence or divergence and, where applicable, the limit.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "E",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.E.SEQUENCES.GEOMETRIC_SERIES_LIMITS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+            "title": "Visualisierung: Geometrische Reihen untersuchen",
+            "url": "/assets/goal-visualizations/mathematik/74b5a01b-c086-51d0-bc66-046029c92ef7/74b5a01b-c086-51d0-bc66-046029c92ef7.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Geometrische Reihen untersuchen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Geometrische Reihen untersuchen\". Die lernende Person kann Partialsummen geometrischer Reihen bestimmen und mithilfe der Summenformel Konvergenz oder Divergenz sowie gegebenenfalls den Grenzwert begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:868e5b4672e6fba2ed12ab3fc88bedff8b02f6d8b7360705b6c5183027a083b9",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+      ],
+      "requiresAfter": [
+        "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+      ],
+      "prerequisites": [
+        {
+          "id": "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+          "title": "Arithmetische und geometrische Folgen beschreiben",
+          "titleEn": "Describe arithmetic and geometric sequences",
+          "description": "Die lernende Person kann arithmetische und geometrische Folgen definieren, Terme für das n-te Glied aufstellen und Folgenwerte tabellarisch sowie grafisch darstellen.",
+          "descriptionEn": "The learner can define arithmetic and geometric sequences, set up terms for the n-th member, and represent sequence values tabularly and graphically.",
+          "type": "atomic",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34"
+        }
+      ],
+      "sourceReference": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34",
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/74b5a01b-c086-51d0-bc66-046029c92ef7/74b5a01b-c086-51d0-bc66-046029c92ef7.jpg",
+          "url": "/assets/goal-visualizations/mathematik/74b5a01b-c086-51d0-bc66-046029c92ef7/74b5a01b-c086-51d0-bc66-046029c92ef7.jpg",
+          "sha256": "sha256:e8f80fe97fd829028eab68f82452aaf0cf98497b9baf11af8acd9310a14c96b9",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:7ae20635d29d1cd7ce6c32ad7866e395c66d7d9ad359b453ddeda53dccf33880",
+          "requires": [
+            "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/74b5a01b-c086-51d0-bc66-046029c92ef7/74b5a01b-c086-51d0-bc66-046029c92ef7.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Geometrische Reihen untersuchen\". Die lernende Person kann Partialsummen geometrischer Reihen bestimmen und mithilfe der Summenformel Konvergenz oder Divergenz sowie gegebenenfalls den Grenzwert begründen.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "alternating-convergence",
+          "expectationIds": [
+            "partial-sums",
+            "convergence-from-powers"
+          ]
+        },
+        {
+          "caseId": "ratio-classification",
+          "expectationIds": [
+            "partial-sums",
+            "convergence-from-powers"
+          ]
+        }
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "goalId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+      "goalFingerprint": "sha256:ea0bd739714a0970d0b423ffd15319bb31f89ad95bcce3650ac901e6b2bbdcf9",
+      "reviewInputFingerprint": "sha256:d9202b1b3b4ea58b095231838ae6daad70a77a133ad612d7b589d2e21a8b162b",
+      "profileFingerprint": "sha256:c8348ceea0e4067c911912796bc435d60746b8e715be941eb71aae3e7287022d",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+      "goalFingerprint": "sha256:7ae20635d29d1cd7ce6c32ad7866e395c66d7d9ad359b453ddeda53dccf33880",
+      "reviewInputFingerprint": "sha256:c646e6eae54dfd469f0ed889485f3816f3d3fc768f30fe2a536f50ab51883a6c",
+      "profileFingerprint": "sha256:17ed1c7b82e4c58abf0c12012a064eb28f2efda83404788f9881f698f6f07803",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    }
+  ],
+  "output": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-series-split-2-v1.review.jsonl",
+    "sha256": "sha256:6268761e69b91bf97aac3053467522e280f70c6587246306af58aa27dd03fca9"
+  },
+  "toolchain": {
+    "node": "20.20.2",
+    "nativeBuilder": "app/scripts/materializePositiveGoalEvidenceCandidates.ts#buildPositiveGoalEvidenceCandidateRecords"
+  },
+  "boundaries": [
+    "Exactly the already-authored bodies are bound to current inputs; no new or changed body is generated during binding.",
+    "All records stay needs_human_review/ai_candidate/E1/G1 with empty reviewRunIds.",
+    "New independent tasks require learner reasoning without copying teaching graphics. Visualization QA remains separate and no new visual approval is asserted.",
+    "No canonical, registry, claims, D record, source, deck/card, book, generated aggregate QA or runtime file is changed."
+  ]
+}

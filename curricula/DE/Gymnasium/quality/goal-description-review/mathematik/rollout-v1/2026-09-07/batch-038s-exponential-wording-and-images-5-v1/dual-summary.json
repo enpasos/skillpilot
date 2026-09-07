@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e0f3cb7413b76459fa7ec6f8f14e748287f4362df45aaa5d8ada432673561396",
+  "reviewInputFingerprint": "sha256:63523571b2670d41b3ce9182057206db00b19be24a43a30c703d377e6220f40f",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-a",
+      "roundId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-independent-a",
+      "runIds": [
+        "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-a.codex-blind-a"
+      ],
+      "providers": [
+        "OpenAI/Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI/Codex::unknown::unknown"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-b",
+      "roundId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b.codex-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact serving model not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "firstRecordId": "math-b038s-a-781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "secondRecordId": "math-b038s-b-781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "firstRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-a.codex-blind-a",
+      "secondRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+      "firstRecordId": "math-b038s-a-346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+      "secondRecordId": "math-b038s-b-346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+      "firstRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-a.codex-blind-a",
+      "secondRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+      "firstRecordId": "math-b038s-a-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+      "secondRecordId": "math-b038s-b-f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+      "firstRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-a.codex-blind-a",
+      "secondRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "firstRecordId": "math-b038s-a-d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "secondRecordId": "math-b038s-b-d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "firstRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-a.codex-blind-a",
+      "secondRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ab720928-9dbc-53c2-a1f8-865dda92122d",
+      "firstRecordId": "math-b038s-a-ab720928-9dbc-53c2-a1f8-865dda92122d",
+      "secondRecordId": "math-b038s-b-ab720928-9dbc-53c2-a1f8-865dda92122d",
+      "firstRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-a.codex-blind-a",
+      "secondRunId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

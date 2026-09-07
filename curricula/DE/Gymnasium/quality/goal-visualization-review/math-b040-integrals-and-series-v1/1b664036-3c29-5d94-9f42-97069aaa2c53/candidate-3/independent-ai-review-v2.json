@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "reviewRevision": 2,
+  "reviewedAtObserved": "2026-09-07 00:55:07 UTC",
+  "reviewer": {
+    "agent": "/root/math_b039_blind_a",
+    "provider": "OpenAI",
+    "product": "Codex",
+    "underlyingModel": "exact model identifier unavailable",
+    "authority": "ai_candidate_review",
+    "humanApproval": false,
+    "modelDiversityClaimed": false
+  },
+  "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+  "candidateNumber": 3,
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/1b664036-3c29-5d94-9f42-97069aaa2c53/candidate-3/1b664036-3c29-5d94-9f42-97069aaa2c53.generated.2026-09-07T00-47-03-958Z.jpg",
+    "sha256": "sha256:ff23860c67eeffac4026b7068bda78ab2d33e271b4c124c9d70016d189e2faed",
+    "actuallyViewed": true,
+    "viewMethod": "view_image",
+    "detail": "original"
+  },
+  "archiveReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/1b664036-3c29-5d94-9f42-97069aaa2c53/candidate-3/archive-receipt.json",
+    "sha256": "sha256:b41ba03a6ceecffbc38bcaacf485cfd9440195b70b00f8195eb35d6d848ae9fa",
+    "candidateFilesVerified": 8
+  },
+  "goalContext": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "title": "Exponentialfunktion durch Taylorpolynome annähern (LK)",
+    "description": "Die lernende Person kann die natürliche Exponentialfunktion durch Taylorpolynome annähern und die Approximation deuten.",
+    "translations": null,
+    "requires": [
+      "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "ccd47872-4d9d-44db-8c8d-eda24019b502",
+      "4d55ba50-8d67-560c-a10f-cccff4728c40",
+      "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+      "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+      "911f3200-1dbc-59a6-90df-c883c77de39c"
+    ]
+  },
+  "decision": "reject",
+  "subjectSpecificChecks": [
+    "Die Formeln T₀, T₁ und T₃ sowie die Tabelle bei x=1 sind richtig erhalten.",
+    "Der falsche skalierte Graph ist entfernt. Bei x=0,5 stimmen e^0,5≈1,648721, T₂=1,625 und T₃≈1,645833; die absoluten Fehler ≈0,023721 und ≈0,002888 sind korrekt gerundet.",
+    "Neue materielle Rasterregression: Die linke Zeile T₂(x)=1+x+x²/2 ist im Bereich T₂(x), 1 und x großflächig weggewischt bzw. verstümmelt und nicht zuverlässig lesbar. Dies betrifft eine zentrale Formel, nicht bloß Dekoration."
+  ],
+  "minimalCorrection": "Ausschließlich die linke Formelzeile vollständig lesbar als T₂(x)=1+x+x²/2 wiederherstellen. Beide korrekten Zahlentabellen, alle übrigen Formeln und die ausdrückliche Unterscheidung Näherung/exakter Funktionswert erhalten.",
+  "limitationsAndNotes": [
+    "Alle drei neuen Raster wurden vor Eingang der nachfolgenden Root-Nachricht mit dessen Urteilen selbst in Originalauflösung angesehen. Die spätere Root-Nachricht nennt denselben Taylor-Regressionsbefund. Kein vollständig verblindeter Review wird behauptet."
+  ],
+  "scope": {
+    "visualCandidateReviewOnly": true,
+    "descriptionReviewDecision": false,
+    "importedByThisReview": false,
+    "activeAssetsChanged": false,
+    "canonicalFieldsChanged": false
+  },
+  "provenance": {
+    "otherReviewerRecordsRead": false,
+    "fullyBlinded": false,
+    "explanation": "Previous candidate defects and intended local corrections were known. All three new archived rasters were actually inspected in original resolution before the parent's follow-up message giving its own new judgments.",
+    "timing": "First observed clock for this repair-review turn: 2026-09-07 00:51:55 UTC. Exact invocation start and individual view timestamps were not logged. reviewedAtObserved denotes documentation time.",
+    "oldReviewsPreserved": true
+  }
+}

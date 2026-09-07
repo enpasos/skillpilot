@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-06T16:03:20.380Z
+Generated: 2026-09-07T06:00:14.975Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,20 +16,20 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 710 |
-| Atomare Ziele im Visualisierungs-Scope | 464 |
+| Alle Ziele in der Landschaft | 711 |
+| Atomare Ziele im Visualisierungs-Scope | 465 |
 | Ziele mit primaerem Visualisierungslink | 415 |
-| Coverage | 89.4% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 464 |
+| Coverage | 89.2% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 465 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 89 |
-| Offene Provider-Deferred-Ziele | 49 |
+| Review-Ledger-Dateien | 90 |
+| Offene Provider-Deferred-Ziele | 50 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 1 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -66,7 +66,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_retroactive_nano_banana` | 22 |
 | `accepted_reuse_after_current_visual_review` | 3 |
 | `blocked_provider_quota` | 1 |
-| `deferred_provider_limitation` | 62 |
+| `deferred_provider_limitation` | 63 |
 | `provider_temporary_failure_retried` | 1 |
 | `rejected_after_user_review_replaced` | 8 |
 | `rejected_regenerated` | 227 |
@@ -75,8 +75,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-checkpoint-split-reuse-2026-09-05.md` |
-| Latest ledger status | `completed_pilot` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-checkpoint-2026-09-07.md` |
+| Latest ledger status | - |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
 
@@ -85,7 +85,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 49 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 50 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -99,6 +99,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | 074 | `ec7a0a68-730b-5c94-ac72-a937508f8303` | Bahn- und Winkelgeschwindigkeit | `deferred_provider_limitation` |
 | 079 | `861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd` | Biologische Wirkungen ionisierender Strahlung einordnen | `deferred_provider_limitation` |
 | 083 | `1b7e800a-1c0d-5faa-886b-7ef2f3b8348c` | Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen | `deferred_provider_limitation` |
+| physik-checkpoint-2026-09-07 | `a7255b83-336c-4d42-ba5c-bc2f6248ea36` | Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen | `deferred_provider_limitation` |
 | 082 | `c53b3f0c-b4fe-5509-8803-a36c2883e5d6` | Dunkle Materie aus Galaxienrotationskurven erschließen | `deferred_provider_limitation` |
 | 085 | `bf8517a9-142b-5789-826a-767f3b277998` | Durchschnitts- und Momentangeschwindigkeit unterscheiden | `deferred_provider_limitation` |
 | 083 | `2014791b-af68-58d0-838b-fc9701202096` | Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen | `deferred_provider_limitation` |
@@ -112,9 +113,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | 074 | `b1ad9493-acca-5366-9ecd-4b7bf7edaf4a` | Geiger-Müller-Zählrohr funktional erklären | `deferred_provider_limitation` |
 | 079 | `16b94a12-ecc5-5b5c-85b6-87b4290bebf8` | Halbwertszeit radioaktiver Stoffe deuten | `deferred_provider_limitation` |
 | 074 | `f67550ac-df22-5a3e-8172-f04642efca64` | HR-Diagramm quantitativ für Sternentwicklung nutzen | `deferred_provider_limitation` |
-| 074 | `9dba2826-b179-59f0-8d91-5916079e5abe` | Huygens'sches Prinzip und Elementarwellen | `deferred_provider_limitation` |
 
-Weitere 29 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 30 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 
@@ -143,7 +143,9 @@ Keine Eintraege.
 
 ### Linked Without Accepted Review
 
-Keine Eintraege.
+| Goal ID | Title | Link status | Latest ledger decision |
+| --- | --- | --- | --- |
+| `c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea` | Mittleres Beschleunigungsmoment bestimmen | `pilot` | - |
 
 ### Accepted Review Without Link
 

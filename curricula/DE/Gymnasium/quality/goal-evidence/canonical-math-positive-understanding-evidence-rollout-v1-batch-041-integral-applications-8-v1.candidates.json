@@ -1,0 +1,449 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b041-integral-applications-8-v1",
+  "reviewedAt": "2026-09-07T01:36:07.610Z",
+  "reviewer": "codex-root-b041-positive-author",
+  "goals": [
+    {
+      "goalId": "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+      "reason": "Neu verfasste bilinguale AI-Kandidaten: vollständiger aktueller Zieltext und direkte Voraussetzungen begrenzen die Fälle. Mindestens zwei eigenständige Nachweise mit inhaltlicher Variation; keine D-Freigabe, Bildfreigabe, Lernendenleistung oder menschliche Abnahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "additive-integral-structure",
+            "essentialUnderstandingDe": "Intervallzerlegung addiert orientierte Beiträge; Linearität zerlegt Linearkombinationen bei denselben Grenzen. Grenzumkehr ändert das Vorzeichen, und ein konstanter Integrand trägt Konstante mal Intervalllänge bei.",
+            "essentialUnderstandingEn": "Interval subdivision adds signed contributions; linearity decomposes linear combinations with common endpoints. Reversing endpoints changes the sign, and a constant integrand contributes constant times interval length.",
+            "observablePerformanceDe": "Die Person formt Integrale aus gegebenen Teilinformationen um und begründet jeden Schritt durch die passende Additivität, einschließlich Orientierung und konstantem Anteil.",
+            "observablePerformanceEn": "The learner transforms integrals from given partial information and justifies each step by the appropriate additivity, including orientation and any constant contribution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "additive-integral-structure"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von direkt gegebenen Teilintegralen zu indirekt vorgegebenen Summen wechseln; unbekannte Beiträge isolieren und Grenzen umkehren.",
+            "textEn": "Switch from directly given component integrals to indirectly specified sums; isolate unknown contributions and reverse endpoints."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "combine-oriented-parts",
+            "taskDemandDe": "Es gelten ∫₀²f=5, ∫₂⁵f=−1 und ∫₀⁵g=4. Bestimme ∫₀⁵(2f−3g) und ∫₅⁰(2f−3g), ohne Formeln für f,g zu erfinden. Begründe die Umformungen.",
+            "taskDemandEn": "Given ∫₀²f=5, ∫₂⁵f=−1 and ∫₀⁵g=4, determine ∫₀⁵(2f−3g) and ∫₅⁰(2f−3g) without inventing formulas for f,g. Justify the transformations.",
+            "expectedPerformanceDe": "Intervalladditivität liefert ∫₀⁵f=4; Linearität ergibt 2·4−3·4=−4. Die Grenzumkehr ergibt +4. Das negative Teilintegral wird mit seinem Vorzeichen addiert.",
+            "expectedPerformanceEn": "Interval additivity gives ∫₀⁵f=4; linearity gives 2·4−3·4=−4. Reversed endpoints give +4. The negative component integral is added with its sign.",
+            "understandingFocusDe": "Zwei verschiedene Additivitäten in derselben begründeten Rechnung koordinieren.",
+            "understandingFocusEn": "Coordinate two distinct additivities in one justified calculation."
+          },
+          {
+            "id": "infer-missing-integrals",
+            "taskDemandDe": "Es gelten ∫₋₁³(f+g)=7, ∫₋₁³f=2 und ∫₋₁¹g=4. Erschließe ∫₁³g und ∫₃⁻¹(5−2g). Begründe, welcher Beitrag von der Konstanten 5 stammt.",
+            "taskDemandEn": "Given ∫₋₁³(f+g)=7, ∫₋₁³f=2 and ∫₋₁¹g=4, infer ∫₁³g and ∫₃⁻¹(5−2g). Explain the contribution from the constant 5.",
+            "expectedPerformanceDe": "Zuerst ∫₋₁³g=7−2=5, dann ∫₁³g=5−4=1. In Vorwärtsrichtung beträgt der konstante Anteil 5·4=20; insgesamt 20−2·5=10. Grenzumkehr liefert −10.",
+            "expectedPerformanceEn": "First ∫₋₁³g=7−2=5, then ∫₁³g=5−4=1. In the forward direction the constant contributes 5·4=20, giving 20−2·5=10. Reversing endpoints gives −10.",
+            "understandingFocusDe": "Aus Integralbeziehungen fehlende Informationen erschließen statt nur Zahlen einsetzen.",
+            "understandingFocusEn": "Infer missing information from integral relationships rather than just substitute numbers."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+      "reason": "Neu verfasste bilinguale AI-Kandidaten: vollständiger aktueller Zieltext und direkte Voraussetzungen begrenzen die Fälle. Mindestens zwei eigenständige Nachweise mit inhaltlicher Variation; keine D-Freigabe, Bildfreigabe, Lernendenleistung oder menschliche Abnahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "reverse-chain-rule",
+            "essentialUnderstandingDe": "Die Ableitung von (ax+b)^(r+1) enthält a(r+1); für a≠0 und r≠−1 wird dies beim Integrieren ausgeglichen. Bei a=0 liegt stattdessen eine konstante Funktion vor, sofern sie definiert ist. f′·exp(f) ist die Ableitung von exp(f). Die jeweilige Potenz muss auf dem betrachteten Intervall definiert sein.",
+            "essentialUnderstandingEn": "Differentiating (ax+b)^(r+1) introduces a(r+1); integration compensates for this when a≠0 and r≠−1. If a=0, the integrand is instead constant, provided it is defined. f′·exp(f) is the derivative of exp(f). Each power must be defined on the interval considered.",
+            "observablePerformanceDe": "Die Person erkennt innere Funktion und Ableitungsfaktor, bestimmt Stammfunktionen beider bezeichneten Formen, prüft sie durch Ableiten und benennt zulässige Intervalle.",
+            "observablePerformanceEn": "The learner identifies the inner function and derivative factor, determines antiderivatives of both specified forms, checks them by differentiation and names admissible intervals."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reverse-chain-rule"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Zu negativen rationalen Potenzen und fallender innerer Funktion wechseln; Definitionslücken und den Fall einer konstanten inneren Funktion unterscheiden.",
+            "textEn": "Transfer to negative rational powers and a decreasing inner function; distinguish domain gaps and the constant-inner-function case."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "chain-rule-construction",
+            "taskDemandDe": "Bestimme Stammfunktionen von √(3x+1) auf (−1/3,∞) und von 2x·exp(x²) auf R. Begründe die Faktoren über die Kettenregel. Was ändert sich beim ersten Integranden, wenn 3x+1 durch 4 ersetzt wird?",
+            "taskDemandEn": "Find antiderivatives of √(3x+1) on (−1/3,∞) and of 2x·exp(x²) on R. Justify the coefficients through the chain rule. What changes when 3x+1 in the first integrand is replaced by 4?",
+            "expectedPerformanceDe": "(2/9)(3x+1)^(3/2)+C und exp(x²)+C; Ableiten liefert jeweils den Integranden. Beim konstanten Radikanden ist √4=2, also 2x+C, ohne Division durch eine innere Steigung 0.",
+            "expectedPerformanceEn": "(2/9)(3x+1)^(3/2)+C and exp(x²)+C; differentiation recovers each integrand. With the constant radicand, √4=2, giving 2x+C without division by an inner slope of zero.",
+            "understandingFocusDe": "Die äußere Potenz und innere Ableitung gemeinsam berücksichtigen.",
+            "understandingFocusEn": "Account jointly for the outer power and inner derivative."
+          },
+          {
+            "id": "negative-power-intervals",
+            "taskDemandDe": "Bestimme Stammfunktionen von 5(2−5x)^(−2/3) und (2x+1)exp(x²+x). Nutze bei der rationalen Potenz die reelle Kubikwurzel, prüfe die Ableitungen und erläutere die zulässigen Intervalle.",
+            "taskDemandEn": "Find antiderivatives of 5(2−5x)^(−2/3) and (2x+1)exp(x²+x). Use the real cube root for the rational power, check derivatives and explain admissible intervals.",
+            "expectedPerformanceDe": "−3∛(2−5x)+C auf jedem Intervall ohne x=2/5; die Ableitung ist 5(2−5x)^(−2/3). Links und rechts der Lücke können verschiedene Konstanten gelten. Die zweite Stammfunktion ist exp(x²+x)+C auf R, da die innere Ableitung 2x+1 lautet.",
+            "expectedPerformanceEn": "−3∛(2−5x)+C on any interval avoiding x=2/5; its derivative is 5(2−5x)^(−2/3). Constants can differ on either side of the gap. The second antiderivative is exp(x²+x)+C on R because the inner derivative is 2x+1.",
+            "understandingFocusDe": "Vorzeichen des inneren Faktors und Definitionsbereich unter struktureller Variation sichern.",
+            "understandingFocusEn": "Establish the sign of the inner factor and domain under structural variation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+      "reason": "Neu verfasste bilinguale AI-Kandidaten: vollständiger aktueller Zieltext und direkte Voraussetzungen begrenzen die Fälle. Mindestens zwei eigenständige Nachweise mit inhaltlicher Variation; keine D-Freigabe, Bildfreigabe, Lernendenleistung oder menschliche Abnahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "nonnegative-geometric-area",
+            "essentialUnderstandingDe": "Der geometrische Flächeninhalt summiert nichtnegative Streifenbreiten mal Höhenunterschied. Schnittstellen und Vorzeichenwechsel bestimmen die nötige Zerlegung; ein orientiertes Integral kann sonst Beiträge aufheben.",
+            "essentialUnderstandingEn": "Geometric area adds nonnegative strip width times height difference. Intersections and sign changes determine the required subdivision; a signed integral could otherwise cancel contributions.",
+            "observablePerformanceDe": "Die Person identifiziert Grenzen und oberen/unteren Rand, stellt passende Teilintegrale auf, berechnet den Flächeninhalt und erklärt dessen Nichtnegativität.",
+            "observablePerformanceEn": "The learner identifies endpoints and upper/lower boundaries, sets up suitable subintegrals, computes area and explains its nonnegativity."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "nonnegative-geometric-area"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von zwei sich schneidenden Graphen zu einem Graphen mit Achsendurchgang und gegebenen vertikalen Grenzen wechseln.",
+            "textEn": "Transfer from two intersecting graphs to a graph crossing an axis between prescribed vertical boundaries."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "between-two-graphs",
+            "taskDemandDe": "Bestimme den Flächeninhalt zwischen y=x² und y=2x. Begründe Grenzen und Reihenfolge der Randfunktionen.",
+            "taskDemandEn": "Find the area between y=x² and y=2x. Justify the endpoints and order of the boundary functions.",
+            "expectedPerformanceDe": "Die Schnittstellen sind 0 und 2; dort gilt 2x≥x². A=∫₀²(2x−x²)dx=[x²−x³/3]₀²=4/3. Eine Skizze bzw. der Vorzeichentest bestätigt die positive Streifenhöhe.",
+            "expectedPerformanceEn": "Intersections are 0 and 2, with 2x≥x² between them. A=∫₀²(2x−x²)dx=[x²−x³/3]₀²=4/3. A sketch or sign test confirms nonnegative strip height.",
+            "understandingFocusDe": "Die geometrische Begrenzung begründet den Integralansatz.",
+            "understandingFocusEn": "Use geometric boundaries to justify the integral setup."
+          },
+          {
+            "id": "axis-crossing-region",
+            "taskDemandDe": "Die Region wird von y=x−1, der x-Achse und x=0,x=3 begrenzt. Bestimme ihren gesamten Flächeninhalt und vergleiche mit ∫₀³(x−1)dx.",
+            "taskDemandEn": "A region is bounded by y=x−1, the x-axis and x=0,x=3. Find its total area and compare it with ∫₀³(x−1)dx.",
+            "expectedPerformanceDe": "Bei x=1 wechselt der obere Rand. A=∫₀¹(1−x)dx+∫₁³(x−1)dx=1/2+2=5/2. Das orientierte Integral beträgt −1/2+2=3/2 und ist wegen Aufhebung nicht der gesamte Flächeninhalt.",
+            "expectedPerformanceEn": "The upper boundary switches at x=1. A=∫₀¹(1−x)dx+∫₁³(x−1)dx=1/2+2=5/2. The signed integral is −1/2+2=3/2 and, because of cancellation, is not total geometric area.",
+            "understandingFocusDe": "Ein Vorzeichenwechsel verändert die richtige Flächenzerlegung.",
+            "understandingFocusEn": "A sign change alters the correct area subdivision."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+      "reason": "Neu verfasste bilinguale AI-Kandidaten: vollständiger aktueller Zieltext und direkte Voraussetzungen begrenzen die Fälle. Mindestens zwei eigenständige Nachweise mit inhaltlicher Variation; keine D-Freigabe, Bildfreigabe, Lernendenleistung oder menschliche Abnahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "interpret-integral-claims",
+            "essentialUnderstandingDe": "Ein Integralterm trägt Integrand, Grenzen, Vorzeichen und Einheit als Information über die akkumulierte Größe. Bei Integralen von Änderungsraten ist ein Vergleich von Integralwerten ein Vergleich von Änderungen; ein Vergleich von Endbeständen benötigt zusätzlich deren Bezugsbestände.",
+            "essentialUnderstandingEn": "An integral expression carries its integrand, endpoints, sign and units as information about the accumulated quantity. For integrals of rates of change, comparing integral values compares changes; comparing final quantities additionally requires their reference values.",
+            "observablePerformanceDe": "Die Person übersetzt Integralterme in Flächen und sachliche Aussagen und begründet, welche Vergleiche oder Schlussfolgerungen durch den Term tatsächlich getragen werden.",
+            "observablePerformanceEn": "The learner translates integral expressions into areas and contextual statements and justifies which comparisons or conclusions the expression actually supports."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "interpret-integral-claims"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von Vorzeichenflächen eines Ratenverlaufs zu Aussagen über zwei Prozesse mit unterschiedlichen Ausgangsbeständen wechseln.",
+            "textEn": "Transfer from signed areas under one rate curve to claims about two processes with different initial quantities."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "signed-flow-meaning",
+            "taskDemandDe": "Ein Tank tauscht Wasser ausschließlich durch eine einzige umkehrbare Leitung aus; weitere Zu- oder Abflüsse gibt es nicht. Deren vorzeichenbehaftete Durchflussrate q(t)=4−t L/h gilt für 0≤t≤6 (positiv hinein, negativ hinaus). Deute ∫₀⁴q, ∫₄⁶q und ∫₀⁶q in Worten und einer Skizze. Warum ist der letzte Term nicht das gesamte bewegte Wasservolumen?",
+            "taskDemandEn": "A tank exchanges water only through a single reversible pipe; there are no other inflows or outflows. Its signed flow rate q(t)=4−t L/h applies for 0≤t≤6 (positive inward, negative outward). Interpret ∫₀⁴q, ∫₄⁶q and ∫₀⁶q in words and a sketch. Why is the last expression not the total volume moved?",
+            "expectedPerformanceDe": "Die positiven bzw. negativen Dreiecksflächen ergeben +8 L und −2 L, zusammen +6 L Bestandsänderung. Die Summe der Bewegungsbeträge ist 10 L. Die Skizze kennzeichnet die Nullstelle4 und die entgegengesetzten Flächenvorzeichen.",
+            "expectedPerformanceEn": "The positive and negative triangular areas give +8 L and −2 L, hence a +6 L change in quantity. The sum of movement magnitudes is 10 L. The sketch identifies the zero at4 and opposite area signs.",
+            "understandingFocusDe": "Die Orientierung bestimmt die Bedeutung des Integralterms.",
+            "understandingFocusEn": "Orientation determines the meaning of the integral expression."
+          },
+          {
+            "id": "compare-changes-not-final-values",
+            "taskDemandDe": "Für zwei Prozesse gilt über dasselbe Zeitintervall ∫q₁=12 L und ∫q₂=9 L. Der erste startet mit3 L, der zweite mit10 L. Beurteile: „Der erste Prozess hat wegen des größeren Integrals am Ende mehr Wasser.“ Formuliere eine zutreffende Vergleichsaussage und erkläre die Bedingung für einen Endbestandsvergleich allein über Integrale.",
+            "taskDemandEn": "Over the same interval two processes have ∫q₁=12 L and ∫q₂=9 L. They start with3 L and10 L respectively. Assess: “The first process ends with more water because its integral is larger.” Give a correct comparison and explain when integrals alone suffice to compare final quantities.",
+            "expectedPerformanceDe": "Der erste gewinnt3 L mehr, endet aber mit15 L statt19 L. Der Integralvergleich begründet nur die größere Änderung. Bei gleichen Anfangsbeständen würde er auch die Reihenfolge der Endbestände bestimmen.",
+            "expectedPerformanceEn": "The first gains3 L more but ends with15 L rather than19 L. The integral comparison supports only a greater change. With equal initial quantities it would also determine the ordering of final quantities.",
+            "understandingFocusDe": "Die Reichweite einer aus Integralwerten begründeten Aussage erklären.",
+            "understandingFocusEn": "Explain the scope of a claim justified from integral values."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "reason": "Neu verfasste bilinguale AI-Kandidaten: vollständiger aktueller Zieltext und direkte Voraussetzungen begrenzen die Fälle. Mindestens zwei eigenständige Nachweise mit inhaltlicher Variation; keine D-Freigabe, Bildfreigabe, Lernendenleistung oder menschliche Abnahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "solve-integral-condition",
+            "essentialUnderstandingDe": "Eine Integralbedingung führt auf eine Gleichung für eine Grenze oder einen Parameter. Zulässige Intervalle und die Bedeutung als geometrische Fläche oder vorzeichenbehaftete Änderung entscheiden, welche algebraischen Lösungen tatsächlich passen.",
+            "essentialUnderstandingEn": "An integral condition yields an equation for an endpoint or parameter. Admissible intervals and interpretation as geometric area or signed change determine which algebraic solutions actually fit.",
+            "observablePerformanceDe": "Die Person leitet die Gleichung ab, löst sie nach der verlangten Größe, prüft die Kontextbedingungen und setzt das Ergebnis in die ursprüngliche Integralbedingung ein.",
+            "observablePerformanceEn": "The learner derives the equation, solves for the requested quantity, checks contextual conditions and substitutes into the original integral condition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "solve-integral-condition"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer unbekannten oberen Grenze und positiver Flächenbedingung zu einer unteren Grenze sowie einer Bestandsbedingung mit Vorzeichenwechsel wechseln.",
+            "textEn": "Transfer from an unknown upper endpoint and positive area condition to a lower endpoint and a stock condition involving a sign change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "upper-limit-and-height-parameter",
+            "taskDemandDe": "Bestimme b≥0 aus ∫₀ᵇ(2x+1)dx=12. Bestimme außerdem k≥0 so, dass die Fläche unter kx+1 auf [0,2] gleich8 ist. Begründe die zulässigen Lösungen.",
+            "taskDemandEn": "Find b≥0 from ∫₀ᵇ(2x+1)dx=12. Also find k≥0 so that the area under kx+1 on [0,2] equals8. Justify admissible solutions.",
+            "expectedPerformanceDe": "b²+b=12 liefert b=3 oder−4; nur3 erfüllt b≥0. 2k+2=8 liefert k=3. Auf den angegebenen Intervallen sind die Integranden nichtnegativ, deshalb sind die Integralwerte Flächeninhalte.",
+            "expectedPerformanceEn": "b²+b=12 gives b=3 or−4; only3 satisfies b≥0. 2k+2=8 gives k=3. On the specified intervals the integrands are nonnegative, so integral values are geometric areas.",
+            "understandingFocusDe": "Unbekannte Grenze und unbekannte Funktionshöhe als Integralgleichungen lösen.",
+            "understandingFocusEn": "Solve unknown endpoints and unknown function heights through integral equations."
+          },
+          {
+            "id": "lower-limit-and-returning-stock",
+            "taskDemandDe": "Bestimme c∈[0,4] aus ∫c⁴(4−x)dx=2. Ein anderer Tank enthält anfangs10 L und tauscht Wasser ausschließlich durch eine einzige umkehrbare Leitung aus; weitere Zu- oder Abflüsse gibt es nicht. Die vorzeichenbehaftete Durchflussrate ist r(t)=k−t L/min für0≤t≤2 (positiv hinein, negativ hinaus). Bestimme k so, dass er mit10 L endet, und deute das Integral im Unterschied zum gesamten bewegten Volumen.",
+            "taskDemandEn": "Find c∈[0,4] from ∫c⁴(4−x)dx=2. A separate tank initially contains10 L and exchanges water only through a single reversible pipe; there are no other inflows or outflows. Its signed flow rate is r(t)=k−t L/min for0≤t≤2 (positive inward, negative outward). Find k so that it ends at10 L and interpret the integral as distinct from total volume moved.",
+            "expectedPerformanceDe": "(4−c)²/2=2 führt zu c=2; c=6 liegt außerhalb. Die geforderte Änderung ist0, also2k−2=0 und k=1. Zu- und Abfluss gleichen sich aus; die zwei Dreiecksflächen betragen je1/2 L und damit insgesamt1 L Bewegung trotz Nettointegral0.",
+            "expectedPerformanceEn": "(4−c)²/2=2 gives c=2; c=6 lies outside the interval. Required change is0, so2k−2=0 and k=1. Inflow and outflow cancel; the two triangles have magnitude1/2 L each, giving1 L moved despite a zero net integral.",
+            "understandingFocusDe": "Die geforderte Bedeutung der Integralbedingung bei anderem Unbekannten und Vorzeichen prüfen.",
+            "understandingFocusEn": "Check the intended meaning of the integral condition with a different unknown and sign structure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "reason": "Neu verfasste bilinguale AI-Kandidaten: vollständiger aktueller Zieltext und direkte Voraussetzungen begrenzen die Fälle. Mindestens zwei eigenständige Nachweise mit inhaltlicher Variation; keine D-Freigabe, Bildfreigabe, Lernendenleistung oder menschliche Abnahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "contextual-accumulation",
+            "essentialUnderstandingDe": "Aus der Bedeutung des Integranden und der Integrationsvariable folgt, welche Gesamtgröße ein bestimmtes Integral liefert. Eine zeitliche Änderungsrate liefert eine Bestandsdifferenz; eine nichtnegative geometrische Streifenhöhe liefert bei räumlicher Integration einen Flächeninhalt. Ein absoluter Bestand benötigt einen Anfangswert.",
+            "essentialUnderstandingEn": "The meaning of the integrand and integration variable determines which total quantity a definite integral yields. A temporal rate gives a change in quantity; a nonnegative geometric strip height gives area under spatial integration. An absolute quantity requires an initial value.",
+            "observablePerformanceDe": "Die Person übersetzt Kontextdaten in einen Integralansatz, bestimmt die Gesamtwirkung und erklärt Einheit, Vorzeichen und den gegebenenfalls notwendigen Anfangswert.",
+            "observablePerformanceEn": "The learner translates contextual data into an integral model, computes the total effect and explains units, sign and any required initial value."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "contextual-accumulation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von zeitlich wechselndem Nettozufluss zu einer räumlich beschriebenen Begrenzung wechseln und die unterschiedliche Einheit der Gesamtgröße erklären.",
+            "textEn": "Transfer from time-varying net flow to a spatial boundary and explain the different units of the total quantity."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "net-stock-from-rate",
+            "taskDemandDe": "Ein Tank enthält20 L. Die Nettozuflussrate lautet r(t)=6−2t L/min für0≤t≤4. Bestimme den Endbestand mit einem Integral und erläutere die positiven und negativen Beiträge.",
+            "taskDemandEn": "A tank contains20 L. Its net inflow rate is r(t)=6−2t L/min for0≤t≤4. Use an integral to determine the final quantity and explain positive and negative contributions.",
+            "expectedPerformanceDe": "Die Änderung ist∫₀⁴(6−2t)dt=[6t−t²]₀⁴=8 L; Endbestand28 L. Bis t=3 kommen9 L hinzu, danach fließt1 L ab. Das Integral8 ist die Nettoänderung und nicht bereits der absolute Endbestand.",
+            "expectedPerformanceEn": "The change is∫₀⁴(6−2t)dt=[6t−t²]₀⁴=8 L; final quantity28 L. By t=3 there is9 L inflow, followed by1 L outflow. The integral8 is net change, not the absolute final quantity.",
+            "understandingFocusDe": "Die zeitliche Gesamtwirkung samt Bezugsbestand modellieren.",
+            "understandingFocusEn": "Model the total temporal effect together with its reference quantity."
+          },
+          {
+            "id": "spatial-boundary-effect",
+            "taskDemandDe": "Ein ebenes Beet wird in Metern durch y=3−x, y=1 sowie0≤x≤2 begrenzt. Eine Skizze zeigt die beiden Randfunktionen. Bestimme die gesamte Beetfläche durch Aufsummieren senkrechter Streifen und erläutere, warum hier kein Anfangsbestand zu addieren ist.",
+            "taskDemandEn": "A flat garden bed is bounded, in metres, by y=3−x, y=1 and0≤x≤2. A sketch shows both boundary functions. Determine its total area by accumulating vertical strips and explain why no initial stock is added here.",
+            "expectedPerformanceDe": "Die Streifenhöhe ist(3−x)−1=2−x≥0. A=∫₀²(2−x)dx=2 m². Länge mal Breite ergibt Fläche; es wird keine zeitliche Änderung eines vorhandenen Bestands integriert.",
+            "expectedPerformanceEn": "Strip height is(3−x)−1=2−x≥0. A=∫₀²(2−x)dx=2 m². Length times width yields area; this is not integration of the temporal change of an existing stock.",
+            "understandingFocusDe": "Die Akkumulationsidee auf eine Randfunktion mit anderer Dimension übertragen.",
+            "understandingFocusEn": "Transfer accumulation to a boundary function with a different dimension."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+      "reason": "Neu verfasste bilinguale AI-Kandidaten: vollständiger aktueller Zieltext und direkte Voraussetzungen begrenzen die Fälle. Mindestens zwei eigenständige Nachweise mit inhaltlicher Variation; keine D-Freigabe, Bildfreigabe, Lernendenleistung oder menschliche Abnahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "disk-washer-volume",
+            "essentialUnderstandingDe": "Beim Rotieren um die x-Achse liefert ein Querschnitt senkrecht zur Achse πR(x)² beziehungsweise π(R(x)²−r(x)²), nicht das Quadrat des Radiusunterschieds. Räumliche Integration dieser Flächen ergibt Volumen; Wurzelrandfunktionen werden dabei quadriert.",
+            "essentialUnderstandingEn": "Rotation about the x-axis yields perpendicular cross-sectional area πR(x)² or π(R(x)²−r(x)²), not the square of the radius difference. Spatial integration of these areas gives volume; square-root boundaries are squared in this step.",
+            "observablePerformanceDe": "Die Person ermittelt äußere und gegebenenfalls innere Radien aus der rotierenden Region, stellt das Volumenintegral auf und berechnet es mit gültigen Grenzen und kubischer Einheit.",
+            "observablePerformanceEn": "The learner identifies outer and any inner radii from the rotating region, sets up the volume integral and evaluates it with valid endpoints and cubic units."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "disk-washer-volume"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer Fläche mit Achsenrand zum Hohlkörper zwischen zwei Wurzelgraphen wechseln.",
+            "textEn": "Transfer from a region bounded by the axis to a hollow solid between two square-root graphs."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "square-root-disk",
+            "taskDemandDe": "Die Fläche zwischen y=√(2x+1), y=0 und x=0,x=4 rotiert um die x-Achse. Alle Längen sind in cm. Bestimme das Volumen und begründe den Integranden aus einem senkrechten Querschnitt.",
+            "taskDemandEn": "The region between y=√(2x+1), y=0 and x=0,x=4 rotates about the x-axis. All lengths are in cm. Find its volume and justify the integrand using a perpendicular cross-section.",
+            "expectedPerformanceDe": "R²=2x+1, also V=π∫₀⁴(2x+1)dx=20π cm³. Integriert wird die Kreisscheibenfläche, nicht die Randhöhe oder der Kreisumfang.",
+            "expectedPerformanceEn": "R²=2x+1, hence V=π∫₀⁴(2x+1)dx=20π cm³. The integrand is disk area, not boundary height or circumference.",
+            "understandingFocusDe": "Den Radius in die korrekte Querschnittsfläche übersetzen.",
+            "understandingFocusEn": "Translate radius into the correct cross-sectional area."
+          },
+          {
+            "id": "square-root-washer",
+            "taskDemandDe": "Die Fläche zwischen y=√(x+4) und y=√x für0≤x≤3 rotiert um die x-Achse. Bestimme das Volumen in cm³ und vergleiche die Ansätze π(R²−r²) und π(R−r)².",
+            "taskDemandEn": "The region between y=√(x+4) and y=√x for0≤x≤3 rotates about the x-axis. Find its volume in cm³ and compare π(R²−r²) with π(R−r)².",
+            "expectedPerformanceDe": "Der Querschnitt ist ein Kreisring: R²−r²=(x+4)−x=4, also V=12π cm³. π(R−r)² wäre eine volle Scheibe mit Radius der Ringbreite und stellt den Hohlraum geometrisch falsch dar.",
+            "expectedPerformanceEn": "The cross-section is an annulus: R²−r²=(x+4)−x=4, so V=12π cm³. π(R−r)² would be a full disk whose radius is the annular width and does not represent the hollow region correctly.",
+            "understandingFocusDe": "Die Randlage verändert das Querschnittsmodell von Scheibe zu Kreisring.",
+            "understandingFocusEn": "Boundary placement changes the cross-sectional model from disk to annulus."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+      "reason": "Neu verfasste bilinguale AI-Kandidaten: vollständiger aktueller Zieltext und direkte Voraussetzungen begrenzen die Fälle. Mindestens zwei eigenständige Nachweise mit inhaltlicher Variation; keine D-Freigabe, Bildfreigabe, Lernendenleistung oder menschliche Abnahme behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "derive-volume-integral",
+            "essentialUnderstandingDe": "Dünne Scheiben approximieren ein Rotationsvolumen durch Σπf(ξᵢ)²Δxᵢ. Bei stetiger Randfunktion und verfeinerten Zerlegungen führt die Flächensumme zum Integral der Querschnittsflächen. Die Quadratur des Radius ist geometrisch begründet und die Formel bleibt an Rotationsachse und Region gebunden.",
+            "essentialUnderstandingEn": "Thin disks approximate a volume of revolution by Σπf(ξᵢ)²Δxᵢ. For a continuous boundary and refining partitions, the area sum leads to the integral of cross-sectional areas. Squaring the radius is geometrically justified and the formula remains tied to the axis and region of rotation.",
+            "observablePerformanceDe": "Die Person entwickelt den Integralansatz aus Scheibenbreite und Kreisfläche, erläutert den Grenzübergang und nutzt die selbst begründete Formel für eine neue rotierende Fläche.",
+            "observablePerformanceEn": "The learner develops the integral setup from disk thickness and circular area, explains the limiting process and applies the justified formula to a new rotating region."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "derive-volume-integral"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von gleich breiten Scheiben einer stetigen Kurve zu einer stückweise definierten Randfunktion mit getrennten Integralen wechseln.",
+            "textEn": "Transfer from equal-width disks under a continuous curve to a piecewise-defined boundary with separate integrals."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "derive-then-evaluate",
+            "taskDemandDe": "Die Fläche0≤y≤x² auf0≤x≤1 rotiert um die x-Achse. Entwickle über n Scheiben einen Summenansatz und seinen Grenzwert, statt die Volumenformel nur zu zitieren. Berechne danach das Volumen.",
+            "taskDemandEn": "The region0≤y≤x² for0≤x≤1 rotates about the x-axis. Develop a sum over n disks and its limit rather than merely quoting the volume formula. Then calculate the volume.",
+            "expectedPerformanceDe": "Bei Δx=1/n ist ein Scheibenvolumen näherungsweiseπ(ξᵢ²)²/n. Für stetiges x⁴ konvergiert die Summe gegenπ∫₀¹x⁴dx=π/5. Der Radius ist x² und seine Kreisfläche deshalbπx⁴.",
+            "expectedPerformanceEn": "With Δx=1/n, one disk has approximate volumeπ(ξᵢ²)²/n. Continuity of x⁴ makes the sum converge toπ∫₀¹x⁴dx=π/5. Radius is x², hence disk areaπx⁴.",
+            "understandingFocusDe": "Den Grenzübergang und das Radiusquadrat aus der Geometrie begründen.",
+            "understandingFocusEn": "Justify the limiting process and squared radius geometrically."
+          },
+          {
+            "id": "piecewise-solid",
+            "taskDemandDe": "Ein Rotationskörper um die x-Achse hat Radius1 auf0≤x≤1 und Radius2−x auf1≤x≤2. Begründe aus dünnen Scheiben den passenden Integralsummenansatz, berechne das Volumen und prüfe es an Zylinder plus Kegel.",
+            "taskDemandEn": "A solid of revolution about the x-axis has radius1 for0≤x≤1 and radius2−x for1≤x≤2. Use thin disks to justify a sum of integrals, calculate the volume and check it against a cylinder plus cone.",
+            "expectedPerformanceDe": "Die Scheibenflächen sind zunächstπ, dannπ(2−x)². V=π∫₀¹1dx+π∫₁²(2−x)²dx=π+π/3=4π/3. Das stimmt mit einem Zylinder und einem Kegel von jeweils Höhe1 und Radius1 überein; die Zerlegung berücksichtigt den Wechsel der Randfunktion.",
+            "expectedPerformanceEn": "Disk area isπ first andπ(2−x)² afterward. V=π∫₀¹1dx+π∫₁²(2−x)²dx=π+π/3=4π/3. This agrees with a cylinder and cone each of height1 and radius1; subdivision accounts for the change in boundary function.",
+            "understandingFocusDe": "Den selbst begründeten Ansatz auf einen zusammengesetzten Körper übertragen und unabhängig plausibilisieren.",
+            "understandingFocusEn": "Transfer the justified setup to a composite solid and verify it independently."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,761 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "staged-authored-optics-assessment-proposal",
+  "authority": "ai_candidate",
+  "reviewStatus": "draft",
+  "humanApproval": false,
+  "sourceType": "newly_authored_model_assessment",
+  "title": "Drei Spaltmasken im Optikprüfstand",
+  "titleEn": "Three slit masks on an optical test bench",
+  "description": "Die lernende Person kann drei materialgestützte Modellaufgaben zu Doppelspalt, Gitter und Einzelspalt selbstständig bearbeiten und die berechneten Extremstellen samt Modellgrenzen begründen.",
+  "descriptionEn": "The learner can independently solve three material-based model problems on the double slit, grating and single slit, and justify the calculated extrema together with the model limits.",
+  "coveredGoalIds": [
+    "55dbede5-2fee-51e7-ac13-e3b0227c502e",
+    "df4acb52-b700-5b44-bc1e-11d73f24d061",
+    "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+  ],
+  "requires": [
+    "55dbede5-2fee-51e7-ac13-e3b0227c502e",
+    "df4acb52-b700-5b44-bc1e-11d73f24d061",
+    "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+  ],
+  "maxPoints": 30,
+  "passingPoints": 18,
+  "taskContent": "Drei unabhängige Fälle mit je 10 BE. Alle Angaben sind neu verfasste, frei erfundene Modelldaten. Gesamtbestehensgrenze: 18 von 30 BE. Die drei Aufgaben sind auch getrennt mit jeweils 6 von 10 BE auswertbar.\n\n## 1. Doppelspalt: Gangunterschied und Schirmpositionen\n\nEin Lehrlabor prüft eine Spaltmaske für einen Optikprüfstand. Alle Angaben sind frei erfundene Modelldaten, keine Messwerte und keine Originalklausur. Kohärentes monochromatisches Licht trifft senkrecht auf die gleichmäßig beleuchtete Maske. Die Fernfeldbeschreibung gilt als gegeben. Der ebene Schirm steht senkrecht zur optischen Achse; y=0 liegt auf dieser Achse. Ein Taschenrechner darf verwendet werden.\n\nMaterial: Wellenlänge λ=450 nm; Abstand der Spaltmitten d=0,18 mm; Abstand Maske–Schirm L=1,60 m. Die beiden Spalte werden als gleich starke idealisierte schmale Quellen betrachtet; ihre Einzelspalt-Einhüllende wird vernachlässigt.\n\na) Erläutern Sie die unterschiedliche geometrische Bedeutung von d und L. Begründen Sie aus dem Gangunterschied die Bedingungen für helle und dunkle Streifen. (3 BE)\n\nb) Berechnen Sie auf der positiven Schirmseite den Winkel und die Schirmposition des Maximums zweiter Ordnung sowie des ersten Minimums. Verwenden Sie zunächst die Winkelgeometrie ohne Kleinwinkelnäherung. (4 BE)\n\nc) Prüfen Sie am Maximum zweiter Ordnung, ob die Kleinwinkelnäherung den Schirmort mit weniger als 1 % relativem Fehler liefert. Nennen Sie die dafür entscheidende Winkelbedingung und eine hier vernachlässigte Wirkung realer Spalte endlicher Breite. (3 BE)\n\n## 2. Gitter: Hauptmaxima und Grenzen einer Halbordnungsregel\n\nEin Lehrlabor prüft eine Spaltmaske für einen Optikprüfstand. Alle Angaben sind frei erfundene Modelldaten, keine Messwerte und keine Originalklausur. Kohärentes monochromatisches Licht trifft senkrecht auf die gleichmäßig beleuchtete Maske. Die Fernfeldbeschreibung gilt als gegeben. Der ebene Schirm steht senkrecht zur optischen Achse; y=0 liegt auf dieser Achse. Ein Taschenrechner darf verwendet werden.\n\nMaterial: Sieben gleich starke, regelmäßig angeordnete idealisierte schmale Spalte; Gitterkonstante g=1,50 µm; λ=650 nm; L=0,40 m. Die Einzelspalt-Einhüllende wird vernachlässigt. Der Schirm sei ausreichend groß.\n\na) Erläutern Sie die Bedeutung der Gitterkonstante und begründen Sie die Hauptmaximabedingung durch die Phasenbeziehung benachbarter Spalte. (2 BE)\n\nb) Berechnen Sie für die positiven Hauptmaxima erster und zweiter Ordnung jeweils Winkel und Schirmposition. Nutzen Sie keine Kleinwinkelnäherung. Geben Sie sämtliche geometrisch möglichen ganzzahligen Ordnungen an und prüfen Sie ausdrücklich die dritte Ordnung. (6 BE)\n\nc) Eine Person behauptet: „Wie beim Doppelspalt liegt bei g·sinθ=λ/2 stets ein vollständiges Minimum.“ Prüfen Sie dies für diese Siebenspaltmaske. Nutzen Sie dazu: Bei einem Gangunterschied λ/2 wechseln die gleich großen Wellenbeiträge benachbarter Spalte zwischen +A und −A. Leiten Sie daraus ab, ob die genannte Bedingung ein allgemeines Kriterium für Gitterminima ist. (2 BE)\n\n## 3. Einzelspalt: Minima, Zentralbreite und tabellierte Nebenmaxima\n\nEin Lehrlabor prüft eine Spaltmaske für einen Optikprüfstand. Alle Angaben sind frei erfundene Modelldaten, keine Messwerte und keine Originalklausur. Kohärentes monochromatisches Licht trifft senkrecht auf die gleichmäßig beleuchtete Maske. Die Fernfeldbeschreibung gilt als gegeben. Der ebene Schirm steht senkrecht zur optischen Achse; y=0 liegt auf dieser Achse. Ein Taschenrechner darf verwendet werden.\n\nMaterial: Einzelspaltbreite b=0,16 mm; λ=640 nm; L=1,75 m. Es gilt u=b·sinθ/λ; die Intensität wird durch I₀=I(0) normiert und ist symmetrisch: I(−u)=I(u). Die Tabelle ist ein bereitgestellter numerischer Intensitätsverlauf des idealen Fernfeldmodells. Werte sind auf fünf Nachkommastellen gerundet; die Tabelle legt die exakte Maximalstelle zwischen ihren Stützstellen nicht fest. Eine Intensitätsformel muss nicht hergeleitet werden.\n\n| u | I/I₀ |\n| --- | --- |\n| 0,00 | 1,00000 |\n| 0,50 | 0,40528 |\n| 1,00 | 0,00000 |\n| 1,30 | 0,03924 |\n| 1,40 | 0,04676 |\n| 1,43 | 0,04719 |\n| 1,46 | 0,04679 |\n| 1,50 | 0,04503 |\n| 1,70 | 0,02295 |\n| 2,00 | 0,00000 |\n\na) Erklären Sie das erste Minimum durch paarweise Auslöschung von Beiträgen aus den beiden Spalthälften. Geben Sie die allgemeine Bedingung der Einzelspaltminima an; erläutern Sie, weshalb die Ordnung null kein Minimum bezeichnet. (3 BE)\n\nb) Berechnen Sie Winkel und Schirmpositionen der ersten beiden Minima auf beiden Seiten. Bestimmen Sie daraus die Schirmbreite des Zentralmaximums zwischen den ersten Minima. (3 BE)\n\nc) Bestimmen Sie aus der Tabelle näherungsweise die Lage des ersten Nebenmaximums in u sowie dessen Winkel und Schirmposition auf beiden Seiten. Geben Sie außerdem Lage und normierte Höhe des Zentralmaximums an. Beurteilen Sie die Aussage, das erste Nebenmaximum liege exakt bei u=1,5. Kennzeichnen Sie die begrenzte Genauigkeit des Ablesens aus der Tabelle. (4 BE)",
+  "taskContentEn": "Three independent cases worth 10 points each. All data are newly authored, invented model values. Aggregate passing threshold: 18 out of 30 points. The three tasks can also be evaluated separately with a passing threshold of 6 out of 10 points each.\n\n## 1. Double slit: path difference and screen positions\n\nA teaching laboratory is assessing a slit mask for an optical test bench. All data are invented model values, not measurements or an original examination. Coherent monochromatic light is normally incident on the uniformly illuminated mask. The far-field description is assumed valid. The flat screen is perpendicular to the optical axis, with y=0 on that axis. A calculator may be used.\n\nData: wavelength λ=450 nm; slit-centre separation d=0.18 mm; mask-to-screen distance L=1.60 m. The two slits are represented by equally strong idealized narrow sources; their single-slit diffraction envelope is neglected.\n\na) Explain the different geometrical meanings of d and L. Use path difference to justify the conditions for bright and dark fringes. (3 points)\n\nb) On the positive side of the screen, calculate the angle and screen position of the second-order maximum and of the first minimum. First use the angular geometry without a small-angle approximation. (4 points)\n\nc) For the second-order maximum, check whether the small-angle approximation gives the screen position with a relative error below 1%. State the relevant angular condition and one effect of real slits of finite width that is neglected here. (3 points)\n\n## 2. Grating: principal maxima and limits of a half-order rule\n\nA teaching laboratory is assessing a slit mask for an optical test bench. All data are invented model values, not measurements or an original examination. Coherent monochromatic light is normally incident on the uniformly illuminated mask. The far-field description is assumed valid. The flat screen is perpendicular to the optical axis, with y=0 on that axis. A calculator may be used.\n\nData: seven equally strong, regularly spaced idealized narrow slits; grating spacing g=1.50 µm; λ=650 nm; L=0.40 m. The single-slit diffraction envelope is neglected. Assume the screen is sufficiently large.\n\na) Explain the meaning of the grating spacing and justify the condition for principal maxima from the phase relationship of adjacent slits. (2 points)\n\nb) For the positive first- and second-order principal maxima, calculate the angle and screen position. Do not use a small-angle approximation. List all geometrically possible integer orders and explicitly check the third order. (6 points)\n\nc) Someone claims: “As with a double slit, g·sinθ=λ/2 always produces complete cancellation.” Test this for the seven-slit mask. Use the fact that a path difference of λ/2 makes equal contributions from adjacent slits alternate between +A and −A. Explain whether this condition is a general criterion for grating minima. (2 points)\n\n## 3. Single slit: minima, central width and tabulated secondary maxima\n\nA teaching laboratory is assessing a slit mask for an optical test bench. All data are invented model values, not measurements or an original examination. Coherent monochromatic light is normally incident on the uniformly illuminated mask. The far-field description is assumed valid. The flat screen is perpendicular to the optical axis, with y=0 on that axis. A calculator may be used.\n\nData: slit width b=0.16 mm; λ=640 nm; L=1.75 m. Define u=b·sinθ/λ. Intensity is normalized by I₀=I(0) and is symmetric: I(−u)=I(u). The following supplied table describes the ideal far-field intensity distribution numerically. Values are rounded to five decimal places; the table does not locate an exact maximum between sampled positions. Deriving an intensity formula is not required.\n\n| u | I/I₀ |\n| --- | --- |\n| 0.00 | 1.00000 |\n| 0.50 | 0.40528 |\n| 1.00 | 0.00000 |\n| 1.30 | 0.03924 |\n| 1.40 | 0.04676 |\n| 1.43 | 0.04719 |\n| 1.46 | 0.04679 |\n| 1.50 | 0.04503 |\n| 1.70 | 0.02295 |\n| 2.00 | 0.00000 |\n\na) Explain the first minimum by pairwise cancellation of contributions from the two halves of the slit. State the general condition for single-slit minima and explain why order zero is not a minimum. (3 points)\n\nb) Calculate the angles and screen positions of the first two minima on both sides. Hence determine the screen width of the central maximum between the first minima. (3 points)\n\nc) Use the table to estimate the first secondary maximum in u and its angle and screen position on both sides. Also state the central maximum's position and normalized height. Assess the claim that the first secondary maximum is exactly at u=1.5. Identify the limited precision of locating a maximum from the table. (4 points)",
+  "solutionContent": "## 1. Doppelspalt: Gangunterschied und Schirmpositionen\n\na) d ist der Abstand der Spaltmitten in der Maskenebene, L der Abstand von der Maske zum Schirm. Im Fernfeld gilt Δs≈d·sinθ. Helle Streifen: Δs=mλ, weil die Wellen gleichphasig ankommen; dunkle Streifen: Δs=(m+1/2)λ, weil gleich starke Wellen gegenphasig ankommen (m ganzzahlig).\n\nb) Positives Maximum zweiter Ordnung: sinθ=2λ/d=0,005, θ≈0,286480°, y=L·tanθ≈8,000100 mm. Erstes positives Minimum: sinθ=λ/(2d)=0,00125, θ≈0,0716197°, y≈2,00000156 mm.\n\nc) Die Kleinwinkelnäherung erfordert |θ|≪1 im Bogenmaß, damit sinθ≈tanθ≈θ; Fernfeld allein genügt dafür nicht. Sie gibt y≈L·2λ/d=8,000000 mm. Der relative Fehler gegenüber dem geometrischen Wert ist |8,000100−8,000000|/8,000100≈0,0000125001, also ≈0,00125001 % und deutlich unter 1 %. Die reale Einzelspalt-Einhüllende, Intensitätsmodulation bzw. mögliche fehlende Ordnungen werden hier vernachlässigt; ein solcher korrekt benannter Effekt genügt.\n\n## 2. Gitter: Hauptmaxima und Grenzen einer Halbordnungsregel\n\na) g ist der Abstand benachbarter Spaltmitten, nicht die Einzelspaltbreite. Bei g·sinθ=mλ unterscheiden sich benachbarte Phasen um 2πm; damit sind alle sieben Beiträge gleichphasig und ergeben ein Hauptmaximum des idealen Gitterfaktors.\n\nb) Erste Ordnung: sinθ₁=0,433333…, θ₁≈25,6793°, y₁=0,40·tanθ₁≈0,192329 m. Zweite Ordnung: sinθ₂=0,866667…, θ₂≈60,0736°, y₂≈0,694879 m. Aus |mλ/g|≤1 folgt |m|≤2,30769…; möglich sind m=−2,−1,0,1,2. Für m=3 wäre sinθ=1,3, also kein reeller Ausfallswinkel. In diesem Datensatz tritt keine Grenzordnung bei |sinθ|=1 auf; alle genannten Ordnungen schneiden den ausreichend großen endlichen ebenen Schirm.\n\nc) Beim halben Gangunterschied ergibt sich +A−A+A−A+A−A+A=A≠0; drei Paare löschen sich aus, ein Beitrag bleibt. Die Intensität ist deshalb nicht null, die Behauptung widerlegt. Die Hauptmaximabedingung darf nicht in eine allgemeine Halbordnungsregel für Gitterminima umgedeutet werden. Eine allgemeine Nebenmaxima-/Minimaformel ist hier nicht verlangt.\n\n## 3. Einzelspalt: Minima, Zentralbreite und tabellierte Nebenmaxima\n\na) Für das erste Minimum gilt b·sinθ=λ. Jedem Punkt einer Spalthälfte wird ein um b/2 versetzter Punkt zugeordnet; der Gangunterschied des Paares beträgt (b/2)·sinθ=λ/2. Die gleich großen, gegenphasigen Beiträge aller Paare löschen sich aus. Allgemein b·sinθ=mλ mit m=±1,±2,…; m=0 ergibt gleichphasige Beiträge, also das Zentralmaximum statt eines Minimums.\n\nb) Erste Minima: θ≈±0,229184°, y=L·tanθ≈±7,000056 mm. Zweite Minima: θ≈±0,458371°, y≈±14,000448 mm. Zentralbreite zwischen den ersten Minima: 14,000112 mm≈14,00 mm.\n\nc) Das Zentralmaximum liegt bei u=0, θ=0, y=0 mit I/I₀=1. Die Tabelle lokalisiert die ersten Nebenmaxima näherungsweise bei u≈±1,43; die präzise Stelle zwischen Stützstellen ist damit nicht bestimmt. Mit diesem Ablesewert: θ≈±0,327734°, y≈±10,010164 mm≈±10,01 mm. Bei u=1,43 ist I/I₀≈0,04719, höher als 0,04503 bei u=1,50; daher ist 1,5 keine exakte Maximalstelle. Aus der endlichen gerundeten Tabelle wird auch 1,43 nicht als exakte Stelle behauptet. Angemessen gerundete Werte und begründet verwendete Kleinwinkelnäherungen bei dieser kleinen Winkellage sind gleichwertig. Ein genaueres analytisches Nebenmaximum wird nicht verlangt.",
+  "solutionContentEn": "## 1. Double slit: path difference and screen positions\n\na) d is the separation of slit centres in the mask plane, whereas L is the mask-to-screen distance. In the far field, Δs≈d·sinθ. Bright fringes satisfy Δs=mλ because the waves arrive in phase; dark fringes satisfy Δs=(m+1/2)λ because equally strong waves arrive in opposite phase (integer m).\n\nb) Positive second-order maximum: sinθ=2λ/d=0.005, θ≈0.286480°, y=L·tanθ≈8.000100 mm. First positive minimum: sinθ=λ/(2d)=0.00125, θ≈0.0716197°, y≈2.00000156 mm.\n\nc) The small-angle approximation requires |θ|≪1 in radians, so sinθ≈tanθ≈θ; the far-field assumption alone is insufficient. It gives y≈L·2λ/d=8.000000 mm. The relative error compared with the geometrical value is |8.000100−8.000000|/8.000100≈0.0000125001, or ≈0.00125001%, well below 1%. The actual single-slit envelope, modulation of fringe intensities or possible missing orders are neglected; naming one such effect correctly is sufficient.\n\n## 2. Grating: principal maxima and limits of a half-order rule\n\na) g is the separation of adjacent slit centres, not the width of an individual slit. For g·sinθ=mλ, adjacent contributions differ in phase by 2πm; all seven contributions are therefore in phase, producing a principal maximum of the ideal grating factor.\n\nb) First order: sinθ₁=0.433333…, θ₁≈25.6793°, y₁=0.40·tanθ₁≈0.192329 m. Second order: sinθ₂=0.866667…, θ₂≈60.0736°, y₂≈0.694879 m. The condition |mλ/g|≤1 gives |m|≤2.30769…; the possible orders are m=−2,−1,0,1,2. For m=3, sinθ would be 1.3, so no real outgoing angle exists. These data have no limiting order at |sinθ|=1; all listed orders intersect the sufficiently large finite flat screen.\n\nc) At a half-wavelength path difference, +A−A+A−A+A−A+A=A≠0: three pairs cancel and one contribution remains. Intensity is therefore nonzero and the claim is false. The principal-maximum condition must not be turned into a general half-order rule for grating minima. A general formula for secondary maxima or minima is not required here.\n\n## 3. Single slit: minima, central width and tabulated secondary maxima\n\na) At the first minimum, b·sinθ=λ. Pair each point in one half of the slit with a point b/2 away in the other half; their path difference is (b/2)·sinθ=λ/2. All equal, opposite-phase pairs cancel. In general, b·sinθ=mλ for m=±1,±2,…; m=0 makes contributions in phase and gives the central maximum, not a minimum.\n\nb) First minima: θ≈±0.229184°, y=L·tanθ≈±7.000056 mm. Second minima: θ≈±0.458371°, y≈±14.000448 mm. The central width between the first minima is 14.000112 mm≈14.00 mm.\n\nc) The central maximum is at u=0, θ=0, y=0 with I/I₀=1. The table places the first secondary maxima approximately at u≈±1.43; their precise position between samples cannot be determined. Using this estimated value gives θ≈±0.327734°, y≈±10.010164 mm≈±10.01 mm. At u=1.43, I/I₀≈0.04719, greater than 0.04503 at u=1.50, so 1.5 is not an exact maximum position. Nor may 1.43 be claimed exact from the finite rounded table. Sensible rounding and justified small-angle approximations at these small angles are equally acceptable. A more precise analytical secondary maximum is not required.",
+  "rubric": [
+    {
+      "id": "ds-01",
+      "points": 1,
+      "description": "d als Spaltmittenabstand und L als Masken-Schirm-Abstand unterschieden.",
+      "descriptionEn": "Distinguishes slit-centre separation d from mask-to-screen distance L.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "ds-02",
+      "points": 1,
+      "description": "Maximabedingung Δs=mλ mit Gleichphasigkeit begründet.",
+      "descriptionEn": "Justifies Δs=mλ for maxima by phase agreement.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "ds-03",
+      "points": 1,
+      "description": "Minimabedingung Δs=(m+1/2)λ mit Gegenphasigkeit gleich starker Beiträge begründet.",
+      "descriptionEn": "Justifies Δs=(m+1/2)λ for minima by opposite phase of equal contributions.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "ds-04",
+      "points": 1,
+      "description": "Winkel des positiven Maximums zweiter Ordnung korrekt bestimmt: etwa 0,286480°.",
+      "descriptionEn": "Correctly determines the angle of the positive second-order maximum: about 0.286480°.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "ds-05",
+      "points": 1,
+      "description": "Schirmposition dieses Maximums über y=L·tanθ korrekt bestimmt: etwa 8,000100 mm.",
+      "descriptionEn": "Correctly determines that maximum's screen position using y=L·tanθ: about 8.000100 mm.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "ds-06",
+      "points": 1,
+      "description": "Winkel des ersten positiven Minimums korrekt bestimmt: etwa 0,0716197°.",
+      "descriptionEn": "Correctly determines the first positive minimum's angle: about 0.0716197°.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "ds-07",
+      "points": 1,
+      "description": "Schirmposition dieses Minimums über y=L·tanθ korrekt bestimmt: etwa 2,00000156 mm.",
+      "descriptionEn": "Correctly determines that minimum's screen position using y=L·tanθ: about 2.00000156 mm.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "ds-08",
+      "points": 1,
+      "description": "Kleine Winkel im Bogenmaß als Bedingung für sinθ≈tanθ≈θ genannt; nicht bloß Fernfeld behauptet.",
+      "descriptionEn": "States small angles in radians as the condition for sinθ≈tanθ≈θ, rather than merely invoking the far field.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "ds-09",
+      "points": 1,
+      "description": "Näherungsort 8,000000 mm und relativen Fehler etwa 0,00125 % gegenüber der exakten Schirmgeometrie überprüft; 1-%-Kriterium erfüllt.",
+      "descriptionEn": "Checks approximate position 8.000000 mm and relative error about 0.00125% against exact screen geometry; confirms the 1% criterion.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "ds-10",
+      "points": 1,
+      "description": "Eine vernachlässigte reale Spaltbreitenwirkung fachlich richtig benannt, z. B. Einhüllende/Intensitätsmodulation/fehlende Ordnungen.",
+      "descriptionEn": "Correctly identifies one neglected finite-width effect, such as an envelope, intensity modulation or missing orders.",
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+    },
+    {
+      "id": "gr-01",
+      "points": 1,
+      "description": "g als Abstand benachbarter Spaltmitten und nicht als Spaltbreite gedeutet.",
+      "descriptionEn": "Interprets g as adjacent slit-centre separation, not slit width.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "gr-02",
+      "points": 1,
+      "description": "g·sinθ=mλ aus der Gleichphasigkeit sämtlicher benachbarter Beiträge begründet und als Hauptmaximabedingung eingeordnet.",
+      "descriptionEn": "Justifies g·sinθ=mλ from phase agreement of all adjacent contributions and identifies it as the principal-maximum condition.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "gr-03",
+      "points": 1,
+      "description": "Winkel der positiven ersten Ordnung korrekt: etwa 25,6793°.",
+      "descriptionEn": "Correct positive first-order angle: about 25.6793°.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "gr-04",
+      "points": 1,
+      "description": "Schirmposition der positiven ersten Ordnung korrekt mittels Tangens: etwa 0,192329 m.",
+      "descriptionEn": "Correct positive first-order screen position using tangent: about 0.192329 m.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "gr-05",
+      "points": 1,
+      "description": "Winkel der positiven zweiten Ordnung korrekt: etwa 60,0736°.",
+      "descriptionEn": "Correct positive second-order angle: about 60.0736°.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "gr-06",
+      "points": 1,
+      "description": "Schirmposition der positiven zweiten Ordnung korrekt mittels Tangens: etwa 0,694879 m.",
+      "descriptionEn": "Correct positive second-order screen position using tangent: about 0.694879 m.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "gr-07",
+      "points": 1,
+      "description": "Alle geometrisch möglichen ganzzahligen Ordnungen −2,−1,0,1,2 aus |mλ/g|≤1 bestimmt.",
+      "descriptionEn": "Determines all geometrically possible integer orders −2,−1,0,1,2 from |mλ/g|≤1.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "gr-08",
+      "points": 1,
+      "description": "Dritte Ordnung ausdrücklich wegen sinθ=1,3>1 ausgeschlossen.",
+      "descriptionEn": "Explicitly excludes third order because sinθ=1.3>1.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "gr-09",
+      "points": 1,
+      "description": "Für sieben Beiträge bei halbem Gangunterschied drei auslöschende Paare und einen verbleibenden Beitrag A erkannt.",
+      "descriptionEn": "Recognizes three cancelling pairs and one remaining contribution A for seven contributions at half-wavelength path difference.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "gr-10",
+      "points": 1,
+      "description": "Aus nicht verschwindender Amplitude auf nicht verschwindende Intensität geschlossen; allgemeine Gitter-Halbordnungsregel zurückgewiesen.",
+      "descriptionEn": "Infers nonzero intensity from nonzero amplitude and rejects a general grating half-order rule.",
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+    },
+    {
+      "id": "ss-01",
+      "points": 1,
+      "description": "Beim ersten Minimum gegenüberliegende Punkte der beiden Spalthälften im Abstand b/2 gepaart und deren Gangunterschied λ/2 angegeben.",
+      "descriptionEn": "Pairs points in the two slit halves separated by b/2 at the first minimum and states their path difference λ/2.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    },
+    {
+      "id": "ss-02",
+      "points": 1,
+      "description": "Vollständige Auslöschung aus gleich großen gegenphasigen Beiträgen sämtlicher Paare erklärt.",
+      "descriptionEn": "Explains complete cancellation through equal, opposite-phase contributions of all pairs.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    },
+    {
+      "id": "ss-03",
+      "points": 1,
+      "description": "Allgemeine Minimabedingung b·sinθ=mλ für m≠0 angegeben und Ordnung null wegen Gleichphasigkeit ausgeschlossen.",
+      "descriptionEn": "States b·sinθ=mλ for minima with m≠0 and excludes order zero because contributions are in phase.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    },
+    {
+      "id": "ss-04",
+      "points": 1,
+      "description": "Winkel beider erster und zweiter Minima bestimmt: ±0,229184° und ±0,458371°; je Ordnungsgruppe 0,5 BE.",
+      "descriptionEn": "Determines angles of both first and second minima: ±0.229184° and ±0.458371°; 0.5 points per order group.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    },
+    {
+      "id": "ss-05",
+      "points": 1,
+      "description": "Schirmpositionen beider erster und zweiter Minima bestimmt: ±7,000056 mm und ±14,000448 mm; je Ordnungsgruppe 0,5 BE.",
+      "descriptionEn": "Determines positions of both first and second minima: ±7.000056 mm and ±14.000448 mm; 0.5 points per order group.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    },
+    {
+      "id": "ss-06",
+      "points": 1,
+      "description": "Zentralbreite als Abstand zwischen den ersten Minima bestimmt: etwa 14,00 mm, nicht der einseitige Abstand 7 mm.",
+      "descriptionEn": "Determines central width as the separation of the first minima: about 14.00 mm, not the one-sided distance 7 mm.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    },
+    {
+      "id": "ss-07",
+      "points": 1,
+      "description": "Zentralmaximum bei u=θ=y=0 mit normierter Intensität 1 angegeben.",
+      "descriptionEn": "States that the central maximum is at u=θ=y=0 with normalized intensity 1.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    },
+    {
+      "id": "ss-08",
+      "points": 1,
+      "description": "Erste Nebenmaxima aus der Tabelle näherungsweise bei u≈±1,43 lokalisiert.",
+      "descriptionEn": "Locates the first secondary maxima approximately at u≈±1.43 from the table.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    },
+    {
+      "id": "ss-09",
+      "points": 1,
+      "description": "Nebenmaximawinkel etwa ±0,327734° und Schirmposition etwa ±10,01 mm aus dem tabellierten u-Wert bestimmt; je 0,5 BE.",
+      "descriptionEn": "Determines secondary-maximum angle about ±0.327734° and position about ±10.01 mm from the tabulated u value; 0.5 points each.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    },
+    {
+      "id": "ss-10",
+      "points": 1,
+      "description": "Exakte Halbordnung 1,5 anhand niedrigerer tabellierter Intensität zurückgewiesen und eigene tabellenbedingte Näherung ausdrücklich gekennzeichnet.",
+      "descriptionEn": "Rejects exact half-order position 1.5 using the lower tabulated intensity and explicitly acknowledges the approximation imposed by the table.",
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    }
+  ],
+  "cases": [
+    {
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e",
+      "title": "Doppelspalt: Gangunterschied und Schirmpositionen",
+      "titleEn": "Double slit: path difference and screen positions",
+      "description": "Die lernende Person kann eine eigenständige, materialgestützte Modellaufgabe zu diesem Spaltziel bearbeiten und die Ergebnisse samt Modellgrenzen begründen.",
+      "descriptionEn": "The learner can independently solve a material-based model problem for this slit goal and justify the results together with the model limits.",
+      "coveredGoalIds": [
+        "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+      ],
+      "requires": [
+        "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+      ],
+      "maxPoints": 10,
+      "passingPoints": 6,
+      "taskContent": "Ein Lehrlabor prüft eine Spaltmaske für einen Optikprüfstand. Alle Angaben sind frei erfundene Modelldaten, keine Messwerte und keine Originalklausur. Kohärentes monochromatisches Licht trifft senkrecht auf die gleichmäßig beleuchtete Maske. Die Fernfeldbeschreibung gilt als gegeben. Der ebene Schirm steht senkrecht zur optischen Achse; y=0 liegt auf dieser Achse. Ein Taschenrechner darf verwendet werden.\n\nMaterial: Wellenlänge λ=450 nm; Abstand der Spaltmitten d=0,18 mm; Abstand Maske–Schirm L=1,60 m. Die beiden Spalte werden als gleich starke idealisierte schmale Quellen betrachtet; ihre Einzelspalt-Einhüllende wird vernachlässigt.\n\na) Erläutern Sie die unterschiedliche geometrische Bedeutung von d und L. Begründen Sie aus dem Gangunterschied die Bedingungen für helle und dunkle Streifen. (3 BE)\n\nb) Berechnen Sie auf der positiven Schirmseite den Winkel und die Schirmposition des Maximums zweiter Ordnung sowie des ersten Minimums. Verwenden Sie zunächst die Winkelgeometrie ohne Kleinwinkelnäherung. (4 BE)\n\nc) Prüfen Sie am Maximum zweiter Ordnung, ob die Kleinwinkelnäherung den Schirmort mit weniger als 1 % relativem Fehler liefert. Nennen Sie die dafür entscheidende Winkelbedingung und eine hier vernachlässigte Wirkung realer Spalte endlicher Breite. (3 BE)",
+      "taskContentEn": "A teaching laboratory is assessing a slit mask for an optical test bench. All data are invented model values, not measurements or an original examination. Coherent monochromatic light is normally incident on the uniformly illuminated mask. The far-field description is assumed valid. The flat screen is perpendicular to the optical axis, with y=0 on that axis. A calculator may be used.\n\nData: wavelength λ=450 nm; slit-centre separation d=0.18 mm; mask-to-screen distance L=1.60 m. The two slits are represented by equally strong idealized narrow sources; their single-slit diffraction envelope is neglected.\n\na) Explain the different geometrical meanings of d and L. Use path difference to justify the conditions for bright and dark fringes. (3 points)\n\nb) On the positive side of the screen, calculate the angle and screen position of the second-order maximum and of the first minimum. First use the angular geometry without a small-angle approximation. (4 points)\n\nc) For the second-order maximum, check whether the small-angle approximation gives the screen position with a relative error below 1%. State the relevant angular condition and one effect of real slits of finite width that is neglected here. (3 points)",
+      "solutionContent": "a) d ist der Abstand der Spaltmitten in der Maskenebene, L der Abstand von der Maske zum Schirm. Im Fernfeld gilt Δs≈d·sinθ. Helle Streifen: Δs=mλ, weil die Wellen gleichphasig ankommen; dunkle Streifen: Δs=(m+1/2)λ, weil gleich starke Wellen gegenphasig ankommen (m ganzzahlig).\n\nb) Positives Maximum zweiter Ordnung: sinθ=2λ/d=0,005, θ≈0,286480°, y=L·tanθ≈8,000100 mm. Erstes positives Minimum: sinθ=λ/(2d)=0,00125, θ≈0,0716197°, y≈2,00000156 mm.\n\nc) Die Kleinwinkelnäherung erfordert |θ|≪1 im Bogenmaß, damit sinθ≈tanθ≈θ; Fernfeld allein genügt dafür nicht. Sie gibt y≈L·2λ/d=8,000000 mm. Der relative Fehler gegenüber dem geometrischen Wert ist |8,000100−8,000000|/8,000100≈0,0000125001, also ≈0,00125001 % und deutlich unter 1 %. Die reale Einzelspalt-Einhüllende, Intensitätsmodulation bzw. mögliche fehlende Ordnungen werden hier vernachlässigt; ein solcher korrekt benannter Effekt genügt.",
+      "solutionContentEn": "a) d is the separation of slit centres in the mask plane, whereas L is the mask-to-screen distance. In the far field, Δs≈d·sinθ. Bright fringes satisfy Δs=mλ because the waves arrive in phase; dark fringes satisfy Δs=(m+1/2)λ because equally strong waves arrive in opposite phase (integer m).\n\nb) Positive second-order maximum: sinθ=2λ/d=0.005, θ≈0.286480°, y=L·tanθ≈8.000100 mm. First positive minimum: sinθ=λ/(2d)=0.00125, θ≈0.0716197°, y≈2.00000156 mm.\n\nc) The small-angle approximation requires |θ|≪1 in radians, so sinθ≈tanθ≈θ; the far-field assumption alone is insufficient. It gives y≈L·2λ/d=8.000000 mm. The relative error compared with the geometrical value is |8.000100−8.000000|/8.000100≈0.0000125001, or ≈0.00125001%, well below 1%. The actual single-slit envelope, modulation of fringe intensities or possible missing orders are neglected; naming one such effect correctly is sufficient.",
+      "rubric": [
+        {
+          "id": "ds-01",
+          "points": 1,
+          "description": "d als Spaltmittenabstand und L als Masken-Schirm-Abstand unterschieden.",
+          "descriptionEn": "Distinguishes slit-centre separation d from mask-to-screen distance L.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        },
+        {
+          "id": "ds-02",
+          "points": 1,
+          "description": "Maximabedingung Δs=mλ mit Gleichphasigkeit begründet.",
+          "descriptionEn": "Justifies Δs=mλ for maxima by phase agreement.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        },
+        {
+          "id": "ds-03",
+          "points": 1,
+          "description": "Minimabedingung Δs=(m+1/2)λ mit Gegenphasigkeit gleich starker Beiträge begründet.",
+          "descriptionEn": "Justifies Δs=(m+1/2)λ for minima by opposite phase of equal contributions.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        },
+        {
+          "id": "ds-04",
+          "points": 1,
+          "description": "Winkel des positiven Maximums zweiter Ordnung korrekt bestimmt: etwa 0,286480°.",
+          "descriptionEn": "Correctly determines the angle of the positive second-order maximum: about 0.286480°.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        },
+        {
+          "id": "ds-05",
+          "points": 1,
+          "description": "Schirmposition dieses Maximums über y=L·tanθ korrekt bestimmt: etwa 8,000100 mm.",
+          "descriptionEn": "Correctly determines that maximum's screen position using y=L·tanθ: about 8.000100 mm.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        },
+        {
+          "id": "ds-06",
+          "points": 1,
+          "description": "Winkel des ersten positiven Minimums korrekt bestimmt: etwa 0,0716197°.",
+          "descriptionEn": "Correctly determines the first positive minimum's angle: about 0.0716197°.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        },
+        {
+          "id": "ds-07",
+          "points": 1,
+          "description": "Schirmposition dieses Minimums über y=L·tanθ korrekt bestimmt: etwa 2,00000156 mm.",
+          "descriptionEn": "Correctly determines that minimum's screen position using y=L·tanθ: about 2.00000156 mm.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        },
+        {
+          "id": "ds-08",
+          "points": 1,
+          "description": "Kleine Winkel im Bogenmaß als Bedingung für sinθ≈tanθ≈θ genannt; nicht bloß Fernfeld behauptet.",
+          "descriptionEn": "States small angles in radians as the condition for sinθ≈tanθ≈θ, rather than merely invoking the far field.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        },
+        {
+          "id": "ds-09",
+          "points": 1,
+          "description": "Näherungsort 8,000000 mm und relativen Fehler etwa 0,00125 % gegenüber der exakten Schirmgeometrie überprüft; 1-%-Kriterium erfüllt.",
+          "descriptionEn": "Checks approximate position 8.000000 mm and relative error about 0.00125% against exact screen geometry; confirms the 1% criterion.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        },
+        {
+          "id": "ds-10",
+          "points": 1,
+          "description": "Eine vernachlässigte reale Spaltbreitenwirkung fachlich richtig benannt, z. B. Einhüllende/Intensitätsmodulation/fehlende Ordnungen.",
+          "descriptionEn": "Correctly identifies one neglected finite-width effect, such as an envelope, intensity modulation or missing orders.",
+          "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        }
+      ]
+    },
+    {
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061",
+      "title": "Gitter: Hauptmaxima und Grenzen einer Halbordnungsregel",
+      "titleEn": "Grating: principal maxima and limits of a half-order rule",
+      "description": "Die lernende Person kann eine eigenständige, materialgestützte Modellaufgabe zu diesem Spaltziel bearbeiten und die Ergebnisse samt Modellgrenzen begründen.",
+      "descriptionEn": "The learner can independently solve a material-based model problem for this slit goal and justify the results together with the model limits.",
+      "coveredGoalIds": [
+        "df4acb52-b700-5b44-bc1e-11d73f24d061"
+      ],
+      "requires": [
+        "df4acb52-b700-5b44-bc1e-11d73f24d061"
+      ],
+      "maxPoints": 10,
+      "passingPoints": 6,
+      "taskContent": "Ein Lehrlabor prüft eine Spaltmaske für einen Optikprüfstand. Alle Angaben sind frei erfundene Modelldaten, keine Messwerte und keine Originalklausur. Kohärentes monochromatisches Licht trifft senkrecht auf die gleichmäßig beleuchtete Maske. Die Fernfeldbeschreibung gilt als gegeben. Der ebene Schirm steht senkrecht zur optischen Achse; y=0 liegt auf dieser Achse. Ein Taschenrechner darf verwendet werden.\n\nMaterial: Sieben gleich starke, regelmäßig angeordnete idealisierte schmale Spalte; Gitterkonstante g=1,50 µm; λ=650 nm; L=0,40 m. Die Einzelspalt-Einhüllende wird vernachlässigt. Der Schirm sei ausreichend groß.\n\na) Erläutern Sie die Bedeutung der Gitterkonstante und begründen Sie die Hauptmaximabedingung durch die Phasenbeziehung benachbarter Spalte. (2 BE)\n\nb) Berechnen Sie für die positiven Hauptmaxima erster und zweiter Ordnung jeweils Winkel und Schirmposition. Nutzen Sie keine Kleinwinkelnäherung. Geben Sie sämtliche geometrisch möglichen ganzzahligen Ordnungen an und prüfen Sie ausdrücklich die dritte Ordnung. (6 BE)\n\nc) Eine Person behauptet: „Wie beim Doppelspalt liegt bei g·sinθ=λ/2 stets ein vollständiges Minimum.“ Prüfen Sie dies für diese Siebenspaltmaske. Nutzen Sie dazu: Bei einem Gangunterschied λ/2 wechseln die gleich großen Wellenbeiträge benachbarter Spalte zwischen +A und −A. Leiten Sie daraus ab, ob die genannte Bedingung ein allgemeines Kriterium für Gitterminima ist. (2 BE)",
+      "taskContentEn": "A teaching laboratory is assessing a slit mask for an optical test bench. All data are invented model values, not measurements or an original examination. Coherent monochromatic light is normally incident on the uniformly illuminated mask. The far-field description is assumed valid. The flat screen is perpendicular to the optical axis, with y=0 on that axis. A calculator may be used.\n\nData: seven equally strong, regularly spaced idealized narrow slits; grating spacing g=1.50 µm; λ=650 nm; L=0.40 m. The single-slit diffraction envelope is neglected. Assume the screen is sufficiently large.\n\na) Explain the meaning of the grating spacing and justify the condition for principal maxima from the phase relationship of adjacent slits. (2 points)\n\nb) For the positive first- and second-order principal maxima, calculate the angle and screen position. Do not use a small-angle approximation. List all geometrically possible integer orders and explicitly check the third order. (6 points)\n\nc) Someone claims: “As with a double slit, g·sinθ=λ/2 always produces complete cancellation.” Test this for the seven-slit mask. Use the fact that a path difference of λ/2 makes equal contributions from adjacent slits alternate between +A and −A. Explain whether this condition is a general criterion for grating minima. (2 points)",
+      "solutionContent": "a) g ist der Abstand benachbarter Spaltmitten, nicht die Einzelspaltbreite. Bei g·sinθ=mλ unterscheiden sich benachbarte Phasen um 2πm; damit sind alle sieben Beiträge gleichphasig und ergeben ein Hauptmaximum des idealen Gitterfaktors.\n\nb) Erste Ordnung: sinθ₁=0,433333…, θ₁≈25,6793°, y₁=0,40·tanθ₁≈0,192329 m. Zweite Ordnung: sinθ₂=0,866667…, θ₂≈60,0736°, y₂≈0,694879 m. Aus |mλ/g|≤1 folgt |m|≤2,30769…; möglich sind m=−2,−1,0,1,2. Für m=3 wäre sinθ=1,3, also kein reeller Ausfallswinkel. In diesem Datensatz tritt keine Grenzordnung bei |sinθ|=1 auf; alle genannten Ordnungen schneiden den ausreichend großen endlichen ebenen Schirm.\n\nc) Beim halben Gangunterschied ergibt sich +A−A+A−A+A−A+A=A≠0; drei Paare löschen sich aus, ein Beitrag bleibt. Die Intensität ist deshalb nicht null, die Behauptung widerlegt. Die Hauptmaximabedingung darf nicht in eine allgemeine Halbordnungsregel für Gitterminima umgedeutet werden. Eine allgemeine Nebenmaxima-/Minimaformel ist hier nicht verlangt.",
+      "solutionContentEn": "a) g is the separation of adjacent slit centres, not the width of an individual slit. For g·sinθ=mλ, adjacent contributions differ in phase by 2πm; all seven contributions are therefore in phase, producing a principal maximum of the ideal grating factor.\n\nb) First order: sinθ₁=0.433333…, θ₁≈25.6793°, y₁=0.40·tanθ₁≈0.192329 m. Second order: sinθ₂=0.866667…, θ₂≈60.0736°, y₂≈0.694879 m. The condition |mλ/g|≤1 gives |m|≤2.30769…; the possible orders are m=−2,−1,0,1,2. For m=3, sinθ would be 1.3, so no real outgoing angle exists. These data have no limiting order at |sinθ|=1; all listed orders intersect the sufficiently large finite flat screen.\n\nc) At a half-wavelength path difference, +A−A+A−A+A−A+A=A≠0: three pairs cancel and one contribution remains. Intensity is therefore nonzero and the claim is false. The principal-maximum condition must not be turned into a general half-order rule for grating minima. A general formula for secondary maxima or minima is not required here.",
+      "rubric": [
+        {
+          "id": "gr-01",
+          "points": 1,
+          "description": "g als Abstand benachbarter Spaltmitten und nicht als Spaltbreite gedeutet.",
+          "descriptionEn": "Interprets g as adjacent slit-centre separation, not slit width.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        },
+        {
+          "id": "gr-02",
+          "points": 1,
+          "description": "g·sinθ=mλ aus der Gleichphasigkeit sämtlicher benachbarter Beiträge begründet und als Hauptmaximabedingung eingeordnet.",
+          "descriptionEn": "Justifies g·sinθ=mλ from phase agreement of all adjacent contributions and identifies it as the principal-maximum condition.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        },
+        {
+          "id": "gr-03",
+          "points": 1,
+          "description": "Winkel der positiven ersten Ordnung korrekt: etwa 25,6793°.",
+          "descriptionEn": "Correct positive first-order angle: about 25.6793°.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        },
+        {
+          "id": "gr-04",
+          "points": 1,
+          "description": "Schirmposition der positiven ersten Ordnung korrekt mittels Tangens: etwa 0,192329 m.",
+          "descriptionEn": "Correct positive first-order screen position using tangent: about 0.192329 m.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        },
+        {
+          "id": "gr-05",
+          "points": 1,
+          "description": "Winkel der positiven zweiten Ordnung korrekt: etwa 60,0736°.",
+          "descriptionEn": "Correct positive second-order angle: about 60.0736°.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        },
+        {
+          "id": "gr-06",
+          "points": 1,
+          "description": "Schirmposition der positiven zweiten Ordnung korrekt mittels Tangens: etwa 0,694879 m.",
+          "descriptionEn": "Correct positive second-order screen position using tangent: about 0.694879 m.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        },
+        {
+          "id": "gr-07",
+          "points": 1,
+          "description": "Alle geometrisch möglichen ganzzahligen Ordnungen −2,−1,0,1,2 aus |mλ/g|≤1 bestimmt.",
+          "descriptionEn": "Determines all geometrically possible integer orders −2,−1,0,1,2 from |mλ/g|≤1.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        },
+        {
+          "id": "gr-08",
+          "points": 1,
+          "description": "Dritte Ordnung ausdrücklich wegen sinθ=1,3>1 ausgeschlossen.",
+          "descriptionEn": "Explicitly excludes third order because sinθ=1.3>1.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        },
+        {
+          "id": "gr-09",
+          "points": 1,
+          "description": "Für sieben Beiträge bei halbem Gangunterschied drei auslöschende Paare und einen verbleibenden Beitrag A erkannt.",
+          "descriptionEn": "Recognizes three cancelling pairs and one remaining contribution A for seven contributions at half-wavelength path difference.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        },
+        {
+          "id": "gr-10",
+          "points": 1,
+          "description": "Aus nicht verschwindender Amplitude auf nicht verschwindende Intensität geschlossen; allgemeine Gitter-Halbordnungsregel zurückgewiesen.",
+          "descriptionEn": "Infers nonzero intensity from nonzero amplitude and rejects a general grating half-order rule.",
+          "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        }
+      ]
+    },
+    {
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7",
+      "title": "Einzelspalt: Minima, Zentralbreite und tabellierte Nebenmaxima",
+      "titleEn": "Single slit: minima, central width and tabulated secondary maxima",
+      "description": "Die lernende Person kann eine eigenständige, materialgestützte Modellaufgabe zu diesem Spaltziel bearbeiten und die Ergebnisse samt Modellgrenzen begründen.",
+      "descriptionEn": "The learner can independently solve a material-based model problem for this slit goal and justify the results together with the model limits.",
+      "coveredGoalIds": [
+        "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+      ],
+      "requires": [
+        "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+      ],
+      "maxPoints": 10,
+      "passingPoints": 6,
+      "taskContent": "Ein Lehrlabor prüft eine Spaltmaske für einen Optikprüfstand. Alle Angaben sind frei erfundene Modelldaten, keine Messwerte und keine Originalklausur. Kohärentes monochromatisches Licht trifft senkrecht auf die gleichmäßig beleuchtete Maske. Die Fernfeldbeschreibung gilt als gegeben. Der ebene Schirm steht senkrecht zur optischen Achse; y=0 liegt auf dieser Achse. Ein Taschenrechner darf verwendet werden.\n\nMaterial: Einzelspaltbreite b=0,16 mm; λ=640 nm; L=1,75 m. Es gilt u=b·sinθ/λ; die Intensität wird durch I₀=I(0) normiert und ist symmetrisch: I(−u)=I(u). Die Tabelle ist ein bereitgestellter numerischer Intensitätsverlauf des idealen Fernfeldmodells. Werte sind auf fünf Nachkommastellen gerundet; die Tabelle legt die exakte Maximalstelle zwischen ihren Stützstellen nicht fest. Eine Intensitätsformel muss nicht hergeleitet werden.\n\n| u | I/I₀ |\n| --- | --- |\n| 0,00 | 1,00000 |\n| 0,50 | 0,40528 |\n| 1,00 | 0,00000 |\n| 1,30 | 0,03924 |\n| 1,40 | 0,04676 |\n| 1,43 | 0,04719 |\n| 1,46 | 0,04679 |\n| 1,50 | 0,04503 |\n| 1,70 | 0,02295 |\n| 2,00 | 0,00000 |\n\na) Erklären Sie das erste Minimum durch paarweise Auslöschung von Beiträgen aus den beiden Spalthälften. Geben Sie die allgemeine Bedingung der Einzelspaltminima an; erläutern Sie, weshalb die Ordnung null kein Minimum bezeichnet. (3 BE)\n\nb) Berechnen Sie Winkel und Schirmpositionen der ersten beiden Minima auf beiden Seiten. Bestimmen Sie daraus die Schirmbreite des Zentralmaximums zwischen den ersten Minima. (3 BE)\n\nc) Bestimmen Sie aus der Tabelle näherungsweise die Lage des ersten Nebenmaximums in u sowie dessen Winkel und Schirmposition auf beiden Seiten. Geben Sie außerdem Lage und normierte Höhe des Zentralmaximums an. Beurteilen Sie die Aussage, das erste Nebenmaximum liege exakt bei u=1,5. Kennzeichnen Sie die begrenzte Genauigkeit des Ablesens aus der Tabelle. (4 BE)",
+      "taskContentEn": "A teaching laboratory is assessing a slit mask for an optical test bench. All data are invented model values, not measurements or an original examination. Coherent monochromatic light is normally incident on the uniformly illuminated mask. The far-field description is assumed valid. The flat screen is perpendicular to the optical axis, with y=0 on that axis. A calculator may be used.\n\nData: slit width b=0.16 mm; λ=640 nm; L=1.75 m. Define u=b·sinθ/λ. Intensity is normalized by I₀=I(0) and is symmetric: I(−u)=I(u). The following supplied table describes the ideal far-field intensity distribution numerically. Values are rounded to five decimal places; the table does not locate an exact maximum between sampled positions. Deriving an intensity formula is not required.\n\n| u | I/I₀ |\n| --- | --- |\n| 0.00 | 1.00000 |\n| 0.50 | 0.40528 |\n| 1.00 | 0.00000 |\n| 1.30 | 0.03924 |\n| 1.40 | 0.04676 |\n| 1.43 | 0.04719 |\n| 1.46 | 0.04679 |\n| 1.50 | 0.04503 |\n| 1.70 | 0.02295 |\n| 2.00 | 0.00000 |\n\na) Explain the first minimum by pairwise cancellation of contributions from the two halves of the slit. State the general condition for single-slit minima and explain why order zero is not a minimum. (3 points)\n\nb) Calculate the angles and screen positions of the first two minima on both sides. Hence determine the screen width of the central maximum between the first minima. (3 points)\n\nc) Use the table to estimate the first secondary maximum in u and its angle and screen position on both sides. Also state the central maximum's position and normalized height. Assess the claim that the first secondary maximum is exactly at u=1.5. Identify the limited precision of locating a maximum from the table. (4 points)",
+      "solutionContent": "a) Für das erste Minimum gilt b·sinθ=λ. Jedem Punkt einer Spalthälfte wird ein um b/2 versetzter Punkt zugeordnet; der Gangunterschied des Paares beträgt (b/2)·sinθ=λ/2. Die gleich großen, gegenphasigen Beiträge aller Paare löschen sich aus. Allgemein b·sinθ=mλ mit m=±1,±2,…; m=0 ergibt gleichphasige Beiträge, also das Zentralmaximum statt eines Minimums.\n\nb) Erste Minima: θ≈±0,229184°, y=L·tanθ≈±7,000056 mm. Zweite Minima: θ≈±0,458371°, y≈±14,000448 mm. Zentralbreite zwischen den ersten Minima: 14,000112 mm≈14,00 mm.\n\nc) Das Zentralmaximum liegt bei u=0, θ=0, y=0 mit I/I₀=1. Die Tabelle lokalisiert die ersten Nebenmaxima näherungsweise bei u≈±1,43; die präzise Stelle zwischen Stützstellen ist damit nicht bestimmt. Mit diesem Ablesewert: θ≈±0,327734°, y≈±10,010164 mm≈±10,01 mm. Bei u=1,43 ist I/I₀≈0,04719, höher als 0,04503 bei u=1,50; daher ist 1,5 keine exakte Maximalstelle. Aus der endlichen gerundeten Tabelle wird auch 1,43 nicht als exakte Stelle behauptet. Angemessen gerundete Werte und begründet verwendete Kleinwinkelnäherungen bei dieser kleinen Winkellage sind gleichwertig. Ein genaueres analytisches Nebenmaximum wird nicht verlangt.",
+      "solutionContentEn": "a) At the first minimum, b·sinθ=λ. Pair each point in one half of the slit with a point b/2 away in the other half; their path difference is (b/2)·sinθ=λ/2. All equal, opposite-phase pairs cancel. In general, b·sinθ=mλ for m=±1,±2,…; m=0 makes contributions in phase and gives the central maximum, not a minimum.\n\nb) First minima: θ≈±0.229184°, y=L·tanθ≈±7.000056 mm. Second minima: θ≈±0.458371°, y≈±14.000448 mm. The central width between the first minima is 14.000112 mm≈14.00 mm.\n\nc) The central maximum is at u=0, θ=0, y=0 with I/I₀=1. The table places the first secondary maxima approximately at u≈±1.43; their precise position between samples cannot be determined. Using this estimated value gives θ≈±0.327734°, y≈±10.010164 mm≈±10.01 mm. At u=1.43, I/I₀≈0.04719, greater than 0.04503 at u=1.50, so 1.5 is not an exact maximum position. Nor may 1.43 be claimed exact from the finite rounded table. Sensible rounding and justified small-angle approximations at these small angles are equally acceptable. A more precise analytical secondary maximum is not required.",
+      "rubric": [
+        {
+          "id": "ss-01",
+          "points": 1,
+          "description": "Beim ersten Minimum gegenüberliegende Punkte der beiden Spalthälften im Abstand b/2 gepaart und deren Gangunterschied λ/2 angegeben.",
+          "descriptionEn": "Pairs points in the two slit halves separated by b/2 at the first minimum and states their path difference λ/2.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        },
+        {
+          "id": "ss-02",
+          "points": 1,
+          "description": "Vollständige Auslöschung aus gleich großen gegenphasigen Beiträgen sämtlicher Paare erklärt.",
+          "descriptionEn": "Explains complete cancellation through equal, opposite-phase contributions of all pairs.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        },
+        {
+          "id": "ss-03",
+          "points": 1,
+          "description": "Allgemeine Minimabedingung b·sinθ=mλ für m≠0 angegeben und Ordnung null wegen Gleichphasigkeit ausgeschlossen.",
+          "descriptionEn": "States b·sinθ=mλ for minima with m≠0 and excludes order zero because contributions are in phase.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        },
+        {
+          "id": "ss-04",
+          "points": 1,
+          "description": "Winkel beider erster und zweiter Minima bestimmt: ±0,229184° und ±0,458371°; je Ordnungsgruppe 0,5 BE.",
+          "descriptionEn": "Determines angles of both first and second minima: ±0.229184° and ±0.458371°; 0.5 points per order group.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        },
+        {
+          "id": "ss-05",
+          "points": 1,
+          "description": "Schirmpositionen beider erster und zweiter Minima bestimmt: ±7,000056 mm und ±14,000448 mm; je Ordnungsgruppe 0,5 BE.",
+          "descriptionEn": "Determines positions of both first and second minima: ±7.000056 mm and ±14.000448 mm; 0.5 points per order group.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        },
+        {
+          "id": "ss-06",
+          "points": 1,
+          "description": "Zentralbreite als Abstand zwischen den ersten Minima bestimmt: etwa 14,00 mm, nicht der einseitige Abstand 7 mm.",
+          "descriptionEn": "Determines central width as the separation of the first minima: about 14.00 mm, not the one-sided distance 7 mm.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        },
+        {
+          "id": "ss-07",
+          "points": 1,
+          "description": "Zentralmaximum bei u=θ=y=0 mit normierter Intensität 1 angegeben.",
+          "descriptionEn": "States that the central maximum is at u=θ=y=0 with normalized intensity 1.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        },
+        {
+          "id": "ss-08",
+          "points": 1,
+          "description": "Erste Nebenmaxima aus der Tabelle näherungsweise bei u≈±1,43 lokalisiert.",
+          "descriptionEn": "Locates the first secondary maxima approximately at u≈±1.43 from the table.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        },
+        {
+          "id": "ss-09",
+          "points": 1,
+          "description": "Nebenmaximawinkel etwa ±0,327734° und Schirmposition etwa ±10,01 mm aus dem tabellierten u-Wert bestimmt; je 0,5 BE.",
+          "descriptionEn": "Determines secondary-maximum angle about ±0.327734° and position about ±10.01 mm from the tabulated u value; 0.5 points each.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        },
+        {
+          "id": "ss-10",
+          "points": 1,
+          "description": "Exakte Halbordnung 1,5 anhand niedrigerer tabellierter Intensität zurückgewiesen und eigene tabellenbedingte Näherung ausdrücklich gekennzeichnet.",
+          "descriptionEn": "Rejects exact half-order position 1.5 using the lower tabulated intensity and explicitly acknowledges the approximation imposed by the table.",
+          "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        }
+      ]
+    }
+  ],
+  "scoringNotes": {
+    "description": "Angemessene Rundung akzeptieren; nachfolgend methodisch richtige Schritte bei einem übernommenen Rechenfehler gesondert bewerten. Teil-BE innerhalb ausdrücklich geteilter Kriterien sind zulässig. Gesamtbestehen und Bestehen einzelner Fälle sind verschiedene Aussagen; aus 18/30 wird keine Beherrschung aller drei Ziele automatisch abgeleitet.",
+    "descriptionEn": "Accept sensible rounding and credit subsequent methodologically correct work despite a carried-forward arithmetic error. Partial points are allowed within explicitly divided criteria. Passing the aggregate and passing individual cases are different statements; a score of 18/30 does not automatically establish mastery of all three goals."
+  },
+  "integrationNotes": [
+    "Use the three separate cases for source-/course-appropriate placement; no new jurisdiction or course applicability is established by this staging artifact.",
+    "Each separate case contains its own full context, all numerical data, solution, ten one-point rubric items, exactly one covered goal and a 10/6 score definition.",
+    "The optional 30/18 aggregate is a staging composite only. It must not be used to require an unavailable goal in a jurisdiction/course route.",
+    "The former assessment 36d5b915-1cb8-5a05-b64a-5f9497a33d1f was read for non-duplication. Its microscopy/resolution context and numbers were not reused. No P/D candidate body was consulted for this exam draft."
+  ],
+  "authorChecks": {
+    "status": "PASS",
+    "author": "OpenAI/Codex math_b039_blind_a",
+    "exactUnderlyingModel": "not available",
+    "humanApproval": false,
+    "learnerEvidenceClaim": false,
+    "proposedGoalsPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/proposed-goals.json",
+    "proposedGoalsSha256": "sha256:65cf92b4f1984814b29ab31b13b905b5375d3b2ea4b2a66443a105deb90e8fcd",
+    "limitations": "Authoring checks are not independent body review, native curriculum integration, D/P approval or human acceptance. The integrating agent will read the complete bilingual bodies independently.",
+    "observedAt": "2026-09-07T02:01:28.762Z",
+    "numericalVerification": {
+      "status": "PASS",
+      "count": 34,
+      "checks": [
+        {
+          "name": "double/max2-sine",
+          "actual": 0.004999999999999999,
+          "expected": 0.005,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "double/max2-angle-deg",
+          "actual": 0.2864800912409137,
+          "expected": 0.28648009124091367,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "double/max2-screen-mm",
+          "actual": 8.00010000187504,
+          "expected": 8.000100001875039,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "double/min1-sine",
+          "actual": 0.0012499999999999998,
+          "expected": 0.00125,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "double/min1-angle-deg",
+          "actual": 0.07161974304233591,
+          "expected": 0.0716197430423359,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "double/min1-screen-mm",
+          "actual": 2.000001562501831,
+          "expected": 2.0000015625018306,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "double/small-angle-screen-mm",
+          "actual": 8,
+          "expected": 8,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "double/relative-error-percent",
+          "actual": 0.0012500078126032044,
+          "expected": 0.0012500078126032044,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "grating/order1-sine",
+          "actual": 0.43333333333333335,
+          "expected": 0.43333333333333335,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "grating/order1-angle-deg",
+          "actual": 25.679288619456855,
+          "expected": 25.679288619456855,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "grating/order1-screen-m",
+          "actual": 0.19232894757838037,
+          "expected": 0.19232894757838037,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "grating/order2-angle-deg",
+          "actual": 60.07356513338576,
+          "expected": 60.07356513338576,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "grating/order2-screen-m",
+          "actual": 0.6948792289723035,
+          "expected": 0.6948792289723035,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "grating/order-limit",
+          "actual": 2,
+          "expected": 2,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "grating/order3-sine",
+          "actual": 1.3,
+          "expected": 1.3,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "grating/half-order-amplitude",
+          "actual": 1,
+          "expected": 1,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "single/min1-sine",
+          "actual": 0.004,
+          "expected": 0.004,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "single/min1-angle-deg",
+          "actual": 0.22918372921171115,
+          "expected": 0.22918372921171115,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "single/min1-screen-mm",
+          "actual": 7.00005600067201,
+          "expected": 7.00005600067201,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "single/min2-angle-deg",
+          "actual": 0.4583711254853258,
+          "expected": 0.4583711254853259,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "single/min2-screen-mm",
+          "actual": 14.000448021505147,
+          "expected": 14.000448021505147,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "single/central-width-mm",
+          "actual": 14.00011200134402,
+          "expected": 14.00011200134402,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "single/table-side-angle-deg",
+          "actual": 0.3277336459848189,
+          "expected": 0.3277336459848189,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "single/table-side-screen-mm",
+          "actual": 10.010163759610474,
+          "expected": 10.010163759610473,
+          "tolerance": 1e-8
+        },
+        {
+          "name": "single/table@0",
+          "actual": 1,
+          "expected": 1,
+          "tolerance": 1e-12
+        },
+        {
+          "name": "single/table@0.5",
+          "actual": 0.40528,
+          "expected": 0.40528,
+          "tolerance": 1e-12
+        },
+        {
+          "name": "single/table@1",
+          "actual": 0,
+          "expected": 0,
+          "tolerance": 1e-12
+        },
+        {
+          "name": "single/table@1.3",
+          "actual": 0.03924,
+          "expected": 0.03924,
+          "tolerance": 1e-12
+        },
+        {
+          "name": "single/table@1.4",
+          "actual": 0.04676,
+          "expected": 0.04676,
+          "tolerance": 1e-12
+        },
+        {
+          "name": "single/table@1.43",
+          "actual": 0.04719,
+          "expected": 0.04719,
+          "tolerance": 1e-12
+        },
+        {
+          "name": "single/table@1.46",
+          "actual": 0.04679,
+          "expected": 0.04679,
+          "tolerance": 1e-12
+        },
+        {
+          "name": "single/table@1.5",
+          "actual": 0.04503,
+          "expected": 0.04503,
+          "tolerance": 1e-12
+        },
+        {
+          "name": "single/table@1.7",
+          "actual": 0.02295,
+          "expected": 0.02295,
+          "tolerance": 1e-12
+        },
+        {
+          "name": "single/table@2",
+          "actual": 0,
+          "expected": 0,
+          "tolerance": 1e-12
+        }
+      ],
+      "observedAt": "2026-09-07T02:01:28.762Z"
+    },
+    "reproductionCode": "const assert=require(\"node:assert/strict\");\nconst checks=[];const near=(name,actual,expected,tol=1e-8)=>{assert(Math.abs(actual-expected)<=tol*Math.max(1,Math.abs(expected)),name);checks.push({name,actual,expected,tolerance:tol})};const angle=s=>Math.asin(s)*180/Math.PI;const screen=(s,L)=>L*s/Math.sqrt(1-s*s);\nnear(\"double/max2-sine\",2*450e-9/.18e-3,.005);\nnear(\"double/max2-angle-deg\",angle(.005),.28648009124091367);\nnear(\"double/max2-screen-mm\",1000*screen(.005,1.6),8.000100001875039);\nnear(\"double/min1-sine\",.5*450e-9/.18e-3,.00125);\nnear(\"double/min1-angle-deg\",angle(.00125),.0716197430423359);\nnear(\"double/min1-screen-mm\",1000*screen(.00125,1.6),2.0000015625018306);\nnear(\"double/small-angle-screen-mm\",1000*1.6*.005,8);\nnear(\"double/relative-error-percent\",100*(1-Math.sqrt(1-.005**2)),.0012500078126032044);assert(1-Math.sqrt(1-.005**2)<.01);\nnear(\"grating/order1-sine\",650e-9/1.50e-6,13/30);\nnear(\"grating/order1-angle-deg\",angle(13/30),25.679288619456855);\nnear(\"grating/order1-screen-m\",screen(13/30,.4),.19232894757838037);\nnear(\"grating/order2-angle-deg\",angle(26/30),60.07356513338576);\nnear(\"grating/order2-screen-m\",screen(26/30,.4),.6948792289723035);\nnear(\"grating/order-limit\",Math.floor(1.50e-6/650e-9),2);\nnear(\"grating/order3-sine\",3*650e-9/1.50e-6,1.3);assert(3*650e-9/1.50e-6>1);\nnear(\"grating/half-order-amplitude\",Array.from({length:7},(_,i)=>i%2?-1:1).reduce((a,b)=>a+b,0),1);\nnear(\"single/min1-sine\",640e-9/.16e-3,.004);\nnear(\"single/min1-angle-deg\",angle(.004),.22918372921171115);\nnear(\"single/min1-screen-mm\",1000*screen(.004,1.75),7.00005600067201);\nnear(\"single/min2-angle-deg\",angle(.008),.4583711254853259);\nnear(\"single/min2-screen-mm\",1000*screen(.008,1.75),14.000448021505147);\nnear(\"single/central-width-mm\",2000*screen(.004,1.75),14.00011200134402);\nnear(\"single/table-side-angle-deg\",angle(1.43*.004),.3277336459848189);\nnear(\"single/table-side-screen-mm\",1000*screen(1.43*.004,1.75),10.010163759610473);\nconst table=[[0,1],[.5,.40528],[1,0],[1.3,.03924],[1.4,.04676],[1.43,.04719],[1.46,.04679],[1.5,.04503],[1.7,.02295],[2,0]];\nfor(const [u,v] of table){const computed=u===0?1:(Math.sin(Math.PI*u)/(Math.PI*u))**2;near(\"single/table@\"+u,Number(computed.toFixed(5)),v,1e-12);}\nassert(table.find(([u])=>u===1.43)[1]>table.find(([u])=>u===1.5)[1]);\nconsole.log(JSON.stringify({status:\"PASS\",count:checks.length,checks,observedAt:new Date().toISOString()}));",
+    "structuralVerification": {
+      "goalCount": 3,
+      "exactCoveragePerCase": 1,
+      "pointsPerCase": 10,
+      "passingPerCase": 6,
+      "aggregatePoints": 30,
+      "aggregatePassing": 18,
+      "bilingualBodiesPresent": true,
+      "independentCaseContexts": true
+    },
+    "executionNotes": [
+      "The first numerical run passed but its JSON output was truncated by a too-small tool output budget; the same read-only check was rerun with sufficient output and parsed successfully."
+    ]
+  }
+}

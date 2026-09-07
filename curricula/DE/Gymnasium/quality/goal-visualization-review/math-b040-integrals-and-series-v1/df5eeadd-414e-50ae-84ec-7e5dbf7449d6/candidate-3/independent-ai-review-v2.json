@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "reviewRevision": 2,
+  "reviewedAtObserved": "2026-09-07 00:55:07 UTC",
+  "reviewer": {
+    "agent": "/root/math_b039_blind_a",
+    "provider": "OpenAI",
+    "product": "Codex",
+    "underlyingModel": "exact model identifier unavailable",
+    "authority": "ai_candidate_review",
+    "humanApproval": false,
+    "modelDiversityClaimed": false
+  },
+  "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+  "candidateNumber": 3,
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/df5eeadd-414e-50ae-84ec-7e5dbf7449d6/candidate-3/df5eeadd-414e-50ae-84ec-7e5dbf7449d6.generated.2026-09-07T00-47-03-181Z.jpg",
+    "sha256": "sha256:39afbac0e5d7c3724f4b0ff03cd57b9e56b99e3ab7304d093efac2e708de085c",
+    "actuallyViewed": true,
+    "viewMethod": "view_image",
+    "detail": "original"
+  },
+  "archiveReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/df5eeadd-414e-50ae-84ec-7e5dbf7449d6/candidate-3/archive-receipt.json",
+    "sha256": "sha256:79f94180163606e0e231c31f70a0712cae9100faa99ed1c4874f8916168da9b5",
+    "candidateFilesVerified": 8
+  },
+  "goalContext": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "title": "Digitale Werkzeuge für numerische Analysen einsetzen",
+    "description": "Die lernende Person kann digitale Werkzeuge nutzen, um Nullstellen, Extremstellen oder Integrale numerisch zu bestimmen, Ergebnisse kritisch zu prüfen und mit analytischen Verfahren zu vergleichen.",
+    "translations": null,
+    "requires": [
+      "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+      "f40fcaf7-c630-589c-9f48-6c9e69da0b9d"
+    ]
+  },
+  "decision": "accept",
+  "subjectSpecificChecks": [
+    "Die korrumpierte Auswertungsgrenze 'ble 2' ist entfernt; die neue rechte Zeile ∫₀²(x+1)dx=4 ist korrekt.",
+    "Die explizite Trapezrechnung (1+3)·2/2=4 prüft den Integralwert exakt anhand der richtig gezeichneten Randhöhen (0|1) und (2|3).",
+    "Die Nullstellen ±√(7/3)≈±1,53 und der Scheitel (0|−7) bleiben korrekt; die Extremstellenrechnung für −(x−1)²+3 ergibt weiterhin H(1|3)."
+  ],
+  "minimalCorrection": null,
+  "limitationsAndNotes": [
+    "Die gerundete Nullstelle wird im ausdrücklich numerischen Display weiterhin als x=1,53 gezeigt. Ein ≈ wäre typografisch präziser; im gegebenen Vergleich mit der gesondert exakt benannten Wurzel ist dies kein materieller Freigabehinderungsgrund."
+  ],
+  "scope": {
+    "visualCandidateReviewOnly": true,
+    "descriptionReviewDecision": false,
+    "importedByThisReview": false,
+    "activeAssetsChanged": false,
+    "canonicalFieldsChanged": false
+  },
+  "provenance": {
+    "otherReviewerRecordsRead": false,
+    "fullyBlinded": false,
+    "explanation": "Previous candidate defects and intended local corrections were known. All three new archived rasters were actually inspected in original resolution before the parent's follow-up message giving its own new judgments.",
+    "timing": "First observed clock for this repair-review turn: 2026-09-07 00:51:55 UTC. Exact invocation start and individual view timestamps were not logged. reviewedAtObserved denotes documentation time.",
+    "oldReviewsPreserved": true
+  }
+}

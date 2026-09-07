@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b.codex-independent-b",
+  "campaignId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-b",
+  "roundId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b",
+  "startedAt": "2026-09-06T22:55:16Z",
+  "completedAt": "2026-09-06T22:59:48.877Z",
+  "timeScope": "Recorded interval covers final independent judgment and record authoring. Input reading and image inspection immediately preceded the first recorded clock time; their start was not separately timed.",
+  "generationParameters": {
+    "provider": "OpenAI",
+    "client": "Codex",
+    "servingModelName": null,
+    "servingModelVersion": null,
+    "samplingParameters": null,
+    "reason": "Exact serving model name, version and sampling parameters are not exposed to this reviewer; no GPT version is asserted."
+  },
+  "generationParametersFingerprint": "sha256:7f63a2a1881684cf4fa658730b7ad863eb07baa9f64a170f174463e284346e0f",
+  "independence": {
+    "ownRoundOnly": true,
+    "otherRoundOutputsRead": false,
+    "oldReviewsRead": false,
+    "positiveEvidenceProfilesRead": false,
+    "gitDiffsRead": false,
+    "projectMemoryRead": false,
+    "scope": "Five native round-b goals and their supplied local relation/page/visualization context.",
+    "note": "An initial filename-only discovery listed review-schema paths elsewhere; no contents of other review rounds were opened or used."
+  },
+  "inputIntegrity": {
+    "batchInputFingerprint": "sha256:33603010fbe38bf86b3ce4e3912e181ba4c734073a3d6225bc29d81505087af4",
+    "reviewInputFingerprint": "sha256:63523571b2670d41b3ce9182057206db00b19be24a43a30c703d377e6220f40f",
+    "recordSchemaDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "nativeBatchGoalsDeepEqualReviewInput": true,
+    "inputFilesModified": false
+  },
+  "methodologicalLimits": [
+    "All five decisions are individually authored semantic judgments, not generated from statuses or inferred votes.",
+    "Current native input supplies no V2 profiles; create is recommended and no profile is written.",
+    "Supplied applicability, sourceRef and neighbor metadata were used as scope context; external mappings, composition compilation and original sources were not independently re-audited.",
+    "Images were visually inspected through view_image; the displayed previews were resized by the tool. Hashes bind the original active public JPEG bytes.",
+    "No real learner evidence, source verification, human approval, release permission, publication or runtime change is claimed."
+  ],
+  "freezeCheck": {
+    "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH node scripts/check_openai_plugin_review_freeze.mjs",
+    "result": "PASS skillpilot-coach-v1 1.0.0 state=IN_REVIEW trees=6 files=22"
+  },
+  "commandCorrection": "A read-only Node inspection initially used the old shell-default Node and failed on node:fs; it was rerun successfully with the required Node 20 PATH. No data write occurred in the failed call.",
+  "imageReviews": [
+    {
+      "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/781f133a-08bb-54b9-8fda-efa2f8f9b12c/781f133a-08bb-54b9-8fda-efa2f8f9b12c.jpg",
+      "expectedDigest": "sha256:768c1e5c69a7b33686326f8fdb7330eec82fcad1105181ac19103b3ae6e7631e",
+      "actualDigest": "sha256:768c1e5c69a7b33686326f8fdb7330eec82fcad1105181ac19103b3ae6e7631e",
+      "hashMatches": true,
+      "inspectionTool": "view_image",
+      "actuallyViewed": true,
+      "observationDe": "Mit view_image betrachtet: Beide Tabellen verwenden t=0,1,2. B(t)=100·2^t stimmt mit 100,200,400 und den drei beschrifteten Graphpunkten überein. M(t)=80·0,5^t stimmt mit 80,40,20 und den drei Graphpunkten überein. Faktorbereiche und Wachstums-/Zerfallsrichtung sind korrekt; lesbare Beschriftungen. Kein sichtbarer mathematischer Defekt festgestellt.",
+      "disposition": "no_visible_mathematical_defect_found",
+      "reviewAuthority": "ai_candidate",
+      "grantsHumanApproval": false
+    },
+    {
+      "goalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/346efb31-c400-5bd3-a698-dd9a7e1bc3f7/346efb31-c400-5bd3-a698-dd9a7e1bc3f7.jpg",
+      "expectedDigest": "sha256:f76b06ed52e8f8599314346edbf5d80ab123cd9e11fa65181cc2d52fd3085b25",
+      "actualDigest": "sha256:f76b06ed52e8f8599314346edbf5d80ab123cd9e11fa65181cc2d52fd3085b25",
+      "hashMatches": true,
+      "inspectionTool": "view_image",
+      "actuallyViewed": true,
+      "observationDe": "Mit view_image betrachtet: 50·1,2^t ergibt für t=0,1,2,3 die Tabelle 50,60,72,86,4; die gezeichneten Punkte liegen passend auf der beschrifteten Skala. a=1,2 wird korrekt als +20 Prozent pro Zeitschritt erklärt. Der Zerfallsterm 80·0,5^t halbiert 80 auf 40 in einem Zeitschritt; der markierte Zeitabstand ist 1. Kein sichtbarer mathematischer Defekt festgestellt. Der generische Alttext benennt die Kompetenz, bildet aber die konkreten Beispiele nur indirekt ab; daraus folgt keine Textänderung des Ziels.",
+      "disposition": "no_visible_mathematical_defect_found",
+      "reviewAuthority": "ai_candidate",
+      "grantsHumanApproval": false
+    },
+    {
+      "goalId": "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f05acdc5-4949-54c7-b8cd-56ddd1fbdbad/f05acdc5-4949-54c7-b8cd-56ddd1fbdbad.jpg",
+      "expectedDigest": "sha256:2a41da1a57fa6b3a675b38c5e6bed9a77f1d8857348b1235186aa9b6e5ff9dfd",
+      "actualDigest": "sha256:2a41da1a57fa6b3a675b38c5e6bed9a77f1d8857348b1235186aa9b6e5ff9dfd",
+      "hashMatches": true,
+      "inspectionTool": "view_image",
+      "actuallyViewed": true,
+      "observationDe": "Mit view_image betrachtet: Links passen Anfangswert 100, N(1)≈135 und N(2)≈182 zu 100·e^(0,3t), zur Tabelle mit t in Stunden und zur Aussage nach zwei Stunden etwa 182. Der steigende Graph ordnet die markierten Punkte den passenden Höhen zu. Rechts zeigt 80·e^(-0,4t) einen positiven fallenden Verlauf; ohne quantitative Teilstriche ist er eine qualitative Skizze. Kein sichtbarer mathematischer Defekt festgestellt. Das Bild allein erläutert den Begriff der konstanten relativen Rate nicht vollständig und ersetzt daher keine Erklärung.",
+      "disposition": "no_visible_mathematical_defect_found",
+      "reviewAuthority": "ai_candidate",
+      "grantsHumanApproval": false
+    },
+    {
+      "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/d900e0a4-0c45-50dd-a37b-01f9f91a134c/d900e0a4-0c45-50dd-a37b-01f9f91a134c.jpg",
+      "expectedDigest": "sha256:dc8d583e3ef818345ee4faf7ab4568ffe27712e0dfcf4d0d818e751b5ec684af",
+      "actualDigest": "sha256:dc8d583e3ef818345ee4faf7ab4568ffe27712e0dfcf4d0d818e751b5ec684af",
+      "hashMatches": true,
+      "inspectionTool": "view_image",
+      "actuallyViewed": true,
+      "observationDe": "Mit view_image betrachtet: Linke Kette 3·2^x=48 → 2^x=16 → x=4 und Probe 3·2^4=48 korrekt. Rechte Kette 5·1,2^x=20 → 1,2^x=4 → x·ln(1,2)=ln(4) → x=ln(4)/ln(1,2) korrekt. Die Frage nach Erreichen des Zielwerts passt zur Sachdeutung. Keine falsche Gleichheit, kein Vorzeichenfehler und kein sichtbarer mathematischer Defekt festgestellt.",
+      "disposition": "no_visible_mathematical_defect_found",
+      "reviewAuthority": "ai_candidate",
+      "grantsHumanApproval": false
+    },
+    {
+      "goalId": "ab720928-9dbc-53c2-a1f8-865dda92122d",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/ab720928-9dbc-53c2-a1f8-865dda92122d/ab720928-9dbc-53c2-a1f8-865dda92122d.jpg",
+      "expectedDigest": "sha256:7640ca9aa37804f3ccfe8ea65d47f528523155b69f8ecdbd50b42f8e24e6674d",
+      "actualDigest": "sha256:7640ca9aa37804f3ccfe8ea65d47f528523155b69f8ecdbd50b42f8e24e6674d",
+      "hashMatches": true,
+      "inspectionTool": "view_image",
+      "actuallyViewed": true,
+      "observationDe": "Mit view_image betrachtet: Die drei beschrifteten Messpunkte (0|120),(1|150),(2|187,5) stimmen mit f(t)=120·1,25^t überein. 150/120=1,25 und auch 187,5/150=1,25. Der angegebene Wert f(4)≈293 entspricht 292,96875; die gestrichelte Fortsetzung und der Hinweis zur Gültigkeit im passenden Zeitraum kennzeichnen die Prognose. Die rechte Werteskala und die markierten Punkte sind konsistent. Kein sichtbarer mathematischer Defekt festgestellt.",
+      "disposition": "no_visible_mathematical_defect_found",
+      "reviewAuthority": "ai_candidate",
+      "grantsHumanApproval": false
+    }
+  ],
+  "decisions": [
+    {
+      "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "decision": "keep"
+    },
+    {
+      "goalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+      "decision": "keep"
+    },
+    {
+      "goalId": "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+      "decision": "keep"
+    },
+    {
+      "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "decision": "keep"
+    },
+    {
+      "goalId": "ab720928-9dbc-53c2-a1f8-865dda92122d",
+      "decision": "keep"
+    }
+  ],
+  "outputDigest": "sha256:4aec16b3973dd07e0baf93fe8732be51adfff50fbdb41e56f81246e0fc9779c7"
+}

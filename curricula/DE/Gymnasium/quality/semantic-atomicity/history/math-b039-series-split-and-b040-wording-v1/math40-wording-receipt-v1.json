@@ -1,0 +1,548 @@
+{
+  "schemaVersion": 1,
+  "operation": "math40-two-exact-local-wording-adoptions-v1",
+  "observedAt": "2026-09-07T00:31:11.157Z",
+  "authority": "Explicit root authorization: 3862890e exact Round-A proposed descriptions and root-specified minimal DE/EN titles; 9441bb35 exact Round-B proposed descriptions with unchanged titles. Root reports having fully read all four source records; helper independently checks those exact current-record bindings.",
+  "humanApproval": false,
+  "changesGraph": false,
+  "transfersMastery": false,
+  "transfersEvidence": false,
+  "changesImages": false,
+  "changesDOrP": false,
+  "bindings": [
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "round": "a",
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/round-a/results/mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+      "fileSha256": "d2f0b6580327c7e6f313cfe0005bb222b86ee7ea5eb187384b89eb54300e1cfe",
+      "recordLineSha256": "3981b1a1bce5232d65cbc5970597fe1dffaf6071a305842dac11633b0247faf3",
+      "selectedDescription": true,
+      "record": {
+        "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+        "schemaVersion": 1,
+        "recordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-009",
+        "runId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+        "campaignId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a",
+        "roundId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a",
+        "bundleFingerprint": "sha256:ac48a8bc221d32df99107dc5886bbbfc9d946ebe55202e592c6b16a72b281ae8",
+        "bookDigest": "sha256:d7d5d03281f8452b09c492daf847e2fa969d678fde04fb0d7d4caf9d527b3205",
+        "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+        "goalFingerprint": "sha256:d048f0bb1ed0248c5f3c36ade918df43ca8a0f69e5ec2bfc356fbc0049fc2a0b",
+        "pageFingerprint": "sha256:21fb52aa609ee0f71f9631573d9f0e0c8a42e2c6c4f07d5ec29ef2b120a78488",
+        "currentTitleDe": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten",
+        "currentTitleEn": "Interpret the definite integral as the limit of upper and lower sums and as a reconstructed quantity",
+        "currentDescriptionDe": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.",
+        "currentDescriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and in particular as a reconstructed quantity and describe this interpretation precisely.",
+        "decision": "revise",
+        "proposedDescriptionDe": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und bei einer Änderungsrate als Bestandsänderung beschreiben, aus der zusammen mit dem Anfangsbestand der Endbestand entsteht.",
+        "proposedDescriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and, for a rate of change, describe it as the change in a quantity, which combines with the initial value to give the final value.",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Der gemeinsame Grenzwert geeigneter Ober- und Untersummen definiert den Integralwert. Ist der Integrand eine Änderungsrate, beschreibt der Integralwert die Nettoänderung; der absolute Endbestand benötigt zusätzlich den Anfangsbestand.",
+          "essentialUnderstandingEn": "The common limit of suitable upper and lower sums defines the integral value. If the integrand is a rate, that value describes net change; the absolute final quantity additionally requires the initial value.",
+          "observablePerformanceDe": "Die Person erläutert an einer neu vorgelegten Verfeinerungstabelle, wie obere und untere Summen denselben Wert einschließen, und unterscheidet endliche Näherungen vom Grenzwert. Im zweiten Beispiel deutet sie ein Integral von +6 Litern über eine Nettozuflussrate und berechnet bei Anfangsbestand 9 Litern den Endbestand 15 Liter; sie nennt die Multiplikation der Einheiten Liter/Minute mit Minute.",
+          "observablePerformanceEn": "Using a new refinement table, the learner explains how upper and lower sums enclose the same value and distinguishes finite approximations from the limit. In a second example they interpret an integral of +6 litres of net inflow and obtain a final amount of 15 litres from an initial 9 litres, explaining litre/minute multiplied by minute.",
+          "transferExpectationDe": "Bei einem negativen Integral und verändertem Anfangsbestand erklärt die Person dieselbe Nettoabnahme, aber einen anderen Endbestand. Die Grenzwertidee bleibt dieselbe; ein negativer orientierter Beitrag wird nicht in einen positiven Flächenbetrag umgedeutet.",
+          "transferExpectationEn": "For a negative integral and changed initial value, the learner explains the same net decrease but a different final quantity. The limit concept remains unchanged; a negative signed contribution is not replaced by a positive area magnitude."
+        },
+        "rationale": "DE: REVISE: „Integral ... als rekonstruierten Bestand“ verschleiert die notwendige Anfangsbedingung und lässt Integralwert und Endbestand zusammenfallen. Die lokale Präzisierung erhält beide Deutungen eines Integralbegriffs und führt keine neue Rechenmethode ein. JPG tatsächlich angesehen: Grenzwert 12, Anfang 7, Endbestand 19 und ausdrücklich „Integral=Zuwachs“; die neue Formulierung beseitigt den Konflikt mit dieser korrekten Aussage. EN: REVISE: interpreting the integral itself as a reconstructed quantity obscures the initial condition and conflates integral value with final quantity. The local clarification retains two interpretations of one integral concept without adding a method. Viewed JPG shows limit 12, initial 7, final 19 and explicitly “integral=increment”; the replacement resolves the conflict with that correct statement.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "recordStatus": "candidate",
+        "reviewAuthority": "ai_candidate"
+      }
+    },
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "round": "b",
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/round-b/results/mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+      "fileSha256": "71a139ec72ee3a7e9d68bde90093ca5bba53cc27d103b1b7df989d3c703da441",
+      "recordLineSha256": "3bb444714585259aa32fdb06f33825ff6fabf81707f9e18e3d374f0ae9be0d0f",
+      "selectedDescription": false,
+      "record": {
+        "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+        "schemaVersion": 1,
+        "recordId": "codex-mathematik-b040-blind-b-20260907-9",
+        "runId": "codex-mathematik-b040-blind-b-20260907",
+        "campaignId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-b",
+        "roundId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-b",
+        "bundleFingerprint": "sha256:ac48a8bc221d32df99107dc5886bbbfc9d946ebe55202e592c6b16a72b281ae8",
+        "bookDigest": "sha256:d7d5d03281f8452b09c492daf847e2fa969d678fde04fb0d7d4caf9d527b3205",
+        "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+        "goalFingerprint": "sha256:d048f0bb1ed0248c5f3c36ade918df43ca8a0f69e5ec2bfc356fbc0049fc2a0b",
+        "pageFingerprint": "sha256:21fb52aa609ee0f71f9631573d9f0e0c8a42e2c6c4f07d5ec29ef2b120a78488",
+        "currentTitleDe": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten",
+        "currentTitleEn": "Interpret the definite integral as the limit of upper and lower sums and as a reconstructed quantity",
+        "currentDescriptionDe": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.",
+        "currentDescriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and in particular as a reconstructed quantity and describe this interpretation precisely.",
+        "decision": "revise",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Das Integral ist der gemeinsame Grenzwert geeigneter Ober- und Untersummen; bei einer Änderungsrate beschreibt es die Bestandsänderung.",
+          "essentialUnderstandingEn": "The integral is the common limit of suitable upper and lower sums; for a rate of change it represents the change in quantity.",
+          "observablePerformanceDe": "Den Grenzwert einer Summenfolge als kumulierte Änderung deuten und diese von einem vorhandenen Anfangsbestand unterscheiden.",
+          "observablePerformanceEn": "Interpret the limit of a sequence of sums as accumulated change and distinguish it from an existing initial quantity.",
+          "transferExpectationDe": "Bei gleicher Rate, aber anderem Anfangsbestand erklären, weshalb das Integral gleich bleibt und der Endbestand verschieden ist.",
+          "transferExpectationEn": "For the same rate but a different initial quantity, explain why the integral stays the same while the final quantity differs."
+        },
+        "rationale": "Rekonstruierter Bestand ohne Anfangswertbedingung vermischt Integralwert und absoluten Bestand. Das tatsächlich betrachtete aktuelle Bild macht selbst die richtige Unterscheidung: Integral=Zuwachs 12, Anfangsbestand 7, Endbestand 19. Die lokale Revision benennt diese wesentliche Deutung, ohne die Berechnung aus Rate und Anfangsbestand des Nachbarziels zu übernehmen. Urteil aus eigener vollständiger DE/EN-Lektüre und geliefertem Seitenkontext; externe Mappingbelege und menschliche Bildfreigabe werden nicht behauptet.",
+        "proposedDescriptionDe": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und fachsprachlich erläutern, dass es bei einer Änderungsrate die Bestandsänderung und bei Anfangsbestand null den rekonstruierten Bestand beschreibt.",
+        "proposedDescriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and explain precisely that, for a rate of change, it represents the change in quantity and, when the initial quantity is zero, the reconstructed quantity.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "recordStatus": "candidate",
+        "reviewAuthority": "ai_candidate"
+      }
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "round": "a",
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/round-a/results/mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+      "fileSha256": "d2f0b6580327c7e6f313cfe0005bb222b86ee7ea5eb187384b89eb54300e1cfe",
+      "recordLineSha256": "f412357563463f0dbb720ff2ee86ce1ae427efab4cfee53651adf6e14877fc4f",
+      "selectedDescription": false,
+      "record": {
+        "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+        "schemaVersion": 1,
+        "recordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-015",
+        "runId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+        "campaignId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a",
+        "roundId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a",
+        "bundleFingerprint": "sha256:ac48a8bc221d32df99107dc5886bbbfc9d946ebe55202e592c6b16a72b281ae8",
+        "bookDigest": "sha256:d7d5d03281f8452b09c492daf847e2fa969d678fde04fb0d7d4caf9d527b3205",
+        "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+        "goalFingerprint": "sha256:55db9ee3a551f1c4f6d125aa36ebb29a1c1f324b1e42c82c32ba0d3428145060",
+        "pageFingerprint": "sha256:e4d04643dbdd235b9237badd6afc8d07b1bd4a943e16b734f37116ad624a5ba5",
+        "currentTitleDe": "Graphen von Flächeninhaltsfunktionen skizzieren",
+        "currentTitleEn": "Sketch graphs of area functions",
+        "currentDescriptionDe": "Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+        "currentDescriptionEn": "The learner can qualitatively sketch the graph of the associated area function for the graph of a given boundary function.",
+        "decision": "revise",
+        "proposedDescriptionDe": "Die lernende Person kann zu einer gegebenen Randfunktion und einer festen unteren Grenze den Graphen der zugehörigen orientierten Flächeninhaltsfunktion qualitativ skizzieren und dessen Verlauf aus den Flächenbeiträgen begründen.",
+        "proposedDescriptionEn": "The learner can qualitatively sketch the signed area-accumulation function for a given boundary function and fixed lower bound and justify its shape from the accumulated area contributions.",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Die orientierte Flächeninhaltsfunktion sammelt mit f gewichtete Beiträge ab einer festen Startstelle. Sie beginnt dort bei null und steigt oder fällt entsprechend dem Vorzeichen der Randfunktion; die geometrische Gesamtfläche ohne Vorzeichen wäre bei negativen Abschnitten eine andere Funktion.",
+          "essentialUnderstandingEn": "The signed area-accumulation function sums contributions weighted by f from a fixed starting point. It starts at zero there and increases or decreases according to f’s sign; total unsigned geometric area would be a different function on negative sections.",
+          "observablePerformanceDe": "Zu einer neu gegebenen stückweise konstanten Randfunktion mit positiven und negativen Abschnitten skizziert die Person die stetige, stückweise lineare Flächenfunktion und beschriftet mindestens zwei aus Rechtecken berechnete Werte. In einem zweiten Beispiel einer positiven steigenden Randfunktion erklärt sie qualitativ, warum die Flächenfunktion steigt und dabei steiler wird, ohne eine Stammfunktion als einzigen Lösungsweg zu benötigen.",
+          "observablePerformanceEn": "For a newly supplied piecewise constant boundary function with positive and negative sections, the learner sketches the continuous piecewise linear accumulation function and labels at least two values calculated from rectangles. For a second example with positive increasing boundary function, they explain why accumulation increases and becomes steeper without requiring an antiderivative as the sole solution method.",
+          "transferExpectationDe": "Bei veränderter Startstelle legt die Person den neuen Nullwert fest und beschreibt den konstanten Versatz. Wird ein positiver Abschnitt durch einen gleich großen negativen ersetzt, begründet sie den nun fallenden Verlauf statt die Fläche weiterhin positiv aufzusummieren.",
+          "transferExpectationEn": "With a changed starting point, the learner sets the new zero and explains the constant offset. If a positive section is replaced by an equal negative one, they explain the now-decreasing curve instead of continuing to add unsigned area."
+        },
+        "rationale": "DE: REVISE: Ohne feste Startgrenze und ohne Orientierung ist „zugehörige Flächeninhaltsfunktion“ bei negativen Randwerten mehrdeutig. Das tatsächlich angesehene JPG bindet A(x)=Integral von 0 bis x und zeigt korrektes Fallen bei negativer Randfunktion mit Werten 4,2,3. Die lokale Klärung übernimmt diese vorhandene Konvention, nicht die andere Kompetenz einer beliebigen wechselseitigen Graphenrekonstruktion. EN: REVISE: without a fixed starting bound and sign convention, “associated area function” is ambiguous for negative boundary values. The viewed JPG explicitly defines accumulation from zero and correctly decreases over the negative interval, with values 4,2,3. The local clarification preserves this supplied convention without importing arbitrary two-way graph reconstruction.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "recordStatus": "candidate",
+        "reviewAuthority": "ai_candidate"
+      }
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "round": "b",
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/round-b/results/mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+      "fileSha256": "71a139ec72ee3a7e9d68bde90093ca5bba53cc27d103b1b7df989d3c703da441",
+      "recordLineSha256": "e38123b0bcc7b962150615c2742f0e6564cf41b85c56876d3897ddaf5f747497",
+      "selectedDescription": true,
+      "record": {
+        "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+        "schemaVersion": 1,
+        "recordId": "codex-mathematik-b040-blind-b-20260907-15",
+        "runId": "codex-mathematik-b040-blind-b-20260907",
+        "campaignId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-b",
+        "roundId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-b",
+        "bundleFingerprint": "sha256:ac48a8bc221d32df99107dc5886bbbfc9d946ebe55202e592c6b16a72b281ae8",
+        "bookDigest": "sha256:d7d5d03281f8452b09c492daf847e2fa969d678fde04fb0d7d4caf9d527b3205",
+        "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+        "goalFingerprint": "sha256:55db9ee3a551f1c4f6d125aa36ebb29a1c1f324b1e42c82c32ba0d3428145060",
+        "pageFingerprint": "sha256:e4d04643dbdd235b9237badd6afc8d07b1bd4a943e16b734f37116ad624a5ba5",
+        "currentTitleDe": "Graphen von Flächeninhaltsfunktionen skizzieren",
+        "currentTitleEn": "Sketch graphs of area functions",
+        "currentDescriptionDe": "Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+        "currentDescriptionEn": "The learner can qualitatively sketch the graph of the associated area function for the graph of a given boundary function.",
+        "decision": "revise",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Eine orientierte Flächenfunktion akkumuliert ab einer festen Startstelle vorzeichenbehaftete Flächen; negative Randwerte lassen sie abnehmen.",
+          "essentialUnderstandingEn": "A signed-area function accumulates signed areas from a fixed starting point; negative boundary values make it decrease.",
+          "observablePerformanceDe": "Aus dem Randgraphen und einer festen Startstelle eine qualitative Skizze mit passenden Anstiegen, Abnahmen und Anfangswert erstellen.",
+          "observablePerformanceEn": "Use the boundary graph and a fixed starting point to sketch appropriate increases, decreases and the initial value.",
+          "transferExpectationDe": "Den Startpunkt verändern oder einen negativen Abschnitt ergänzen und erklären, wie sich die Flächenfunktion dadurch ändert.",
+          "transferExpectationEn": "Change the starting point or add a negative section and explain the resulting change in the area function."
+        },
+        "rationale": "Ohne feste Startstelle und Flächenkonvention ist die zugehörige Flächeninhaltsfunktion nicht eindeutig: geometrische Fläche und orientierte Akkumulation verhalten sich unterhalb der Achse verschieden. Das tatsächlich betrachtete Bild legt die orientierte Variante Integral von 0 bis x fest und zeigt korrekt die Werte 4,2,3. Die lokale Revision macht diese vorhandene Konvention sichtbar, ohne die wechselseitige Integrandenrekonstruktion zu importieren. Urteil aus eigener vollständiger DE/EN-Lektüre und geliefertem Seitenkontext; externe Mappingbelege und menschliche Bildfreigabe werden nicht behauptet.",
+        "proposedDescriptionDe": "Die lernende Person kann zu einer gegebenen Startstelle aus dem Graphen einer Randfunktion den Verlauf der zugehörigen orientierten Flächeninhaltsfunktion qualitativ skizzieren und dabei positive und negative Flächenbeiträge berücksichtigen.",
+        "proposedDescriptionEn": "Given a starting point, the learner can qualitatively sketch the associated signed-area function from the graph of a boundary function, taking positive and negative area contributions into account.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "recordStatus": "candidate",
+        "reviewAuthority": "ai_candidate"
+      }
+    }
+  ],
+  "changes": [
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "before": {
+        "id": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+        "title": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten",
+        "titleEn": "Interpret the definite integral as the limit of upper and lower sums and as a reconstructed quantity",
+        "description": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.",
+        "descriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and in particular as a reconstructed quantity and describe this interpretation precisely.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.LIMIT_AND_RECONSTRUCTED_QUANTITY"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+            "title": "Visualisierung: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten",
+            "url": "/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten\". Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "after": {
+        "id": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+        "title": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als Bestandsänderung deuten",
+        "titleEn": "Interpret the definite integral as the limit of upper and lower sums and as a change in quantity",
+        "description": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und bei einer Änderungsrate als Bestandsänderung beschreiben, aus der zusammen mit dem Anfangsbestand der Endbestand entsteht.",
+        "descriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and, for a rate of change, describe it as the change in a quantity, which combines with the initial value to give the final value.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.LIMIT_AND_RECONSTRUCTED_QUANTITY"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+            "title": "Visualisierung: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten",
+            "url": "/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten\". Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "fingerprints": {
+        "before": {
+          "A": "sha256:ae7ad1376c365cacb4bcd2e19143b955c603c1b01dc8e0c4b776cc87f6617f96",
+          "M": "sha256:f5c38057524db9e8ea05efad7b62de43465b067da9d3c6b05de4d17752050c73",
+          "K": "sha256:911405d5f68dde5fcf5d1d07dfe69fe4bc90723f8a584b3c017c767aa24c72f4",
+          "goalEvidenceGoal": "sha256:d048f0bb1ed0248c5f3c36ade918df43ca8a0f69e5ec2bfc356fbc0049fc2a0b",
+          "goalEvidenceInput": "sha256:f621408008df857cb2853cd3248077ccf21cb98fb5489116488f17480941db8e"
+        },
+        "after": {
+          "A": "sha256:c1a4c4dc750f98bb8a559cd6ee1c1035bf79433cb49e6789f2def13ac92fc73e",
+          "M": "sha256:73c639a7ac5119c9b60a0e166a820492f188f2c8a4bf226e5550d14cdf56197c",
+          "K": "sha256:bd7bf8468b6f3725772b12580202612d6a6f3822d5256b6c1dfa94afe6b8f4a2",
+          "goalEvidenceGoal": "sha256:8dd8d5c2e0b887b355e9206465cd7f6a763687ac117627305b6c8839ffb02f43",
+          "goalEvidenceInput": "sha256:554fbd52cfceaf43da944628345c2a20595d2ab7d6ff7417c33fb1bbd71e9b3b"
+        }
+      }
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "before": {
+        "id": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+        "title": "Graphen von Flächeninhaltsfunktionen skizzieren",
+        "titleEn": "Sketch graphs of area functions",
+        "description": "Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+        "descriptionEn": "The learner can qualitatively sketch the graph of the associated area function for the graph of a given boundary function.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+            "title": "Visualisierung: Graphen von Flächeninhaltsfunktionen skizzieren",
+            "url": "/assets/goal-visualizations/mathematik/9441bb35-2a2f-4edc-9d8a-bc58c257054d/9441bb35-2a2f-4edc-9d8a-bc58c257054d.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Graphen von Flächeninhaltsfunktionen skizzieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Graphen von Flächeninhaltsfunktionen skizzieren\". Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "after": {
+        "id": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+        "title": "Graphen von Flächeninhaltsfunktionen skizzieren",
+        "titleEn": "Sketch graphs of area functions",
+        "description": "Die lernende Person kann zu einer gegebenen Startstelle aus dem Graphen einer Randfunktion den Verlauf der zugehörigen orientierten Flächeninhaltsfunktion qualitativ skizzieren und dabei positive und negative Flächenbeiträge berücksichtigen.",
+        "descriptionEn": "Given a starting point, the learner can qualitatively sketch the associated signed-area function from the graph of a boundary function, taking positive and negative area contributions into account.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+            "title": "Visualisierung: Graphen von Flächeninhaltsfunktionen skizzieren",
+            "url": "/assets/goal-visualizations/mathematik/9441bb35-2a2f-4edc-9d8a-bc58c257054d/9441bb35-2a2f-4edc-9d8a-bc58c257054d.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Graphen von Flächeninhaltsfunktionen skizzieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Graphen von Flächeninhaltsfunktionen skizzieren\". Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "fingerprints": {
+        "before": {
+          "A": "sha256:908566bab01a44fc4d543826da83077f36268fb8eab5ddc198d118525bf1e36b",
+          "M": "sha256:29a335503d25ae4eb36e91633afe9f82541526c1a378e81f6fe72b1043f04bf5",
+          "K": "sha256:c84143b8dff3e94e724527ad333b756c63d48afd88449f1236dad8621472ac8e",
+          "goalEvidenceGoal": "sha256:55db9ee3a551f1c4f6d125aa36ebb29a1c1f324b1e42c82c32ba0d3428145060",
+          "goalEvidenceInput": "sha256:8774dd8f684c1e4b64de1f2278069790b60f900721a02ea17a00503e22f37e49"
+        },
+        "after": {
+          "A": "sha256:994a03567586e12322d36c6e07a970e764ef9591b695b326eb159111697fd133",
+          "M": "sha256:1bfe9260a0406c3d502c0a1d17890ba2457edfb8aadf15e2e967d1703fdd906d",
+          "K": "sha256:5fc33dc10924548c7b0c151bafde1d81d4b2a6d247b9afd9c7c0587e011de604",
+          "goalEvidenceGoal": "sha256:366b3dfb5b092047fc7b14feb30e070a251edd32dc404de8577468889cae078a",
+          "goalEvidenceInput": "sha256:3771c90b02856d741d418493b3aa0326627616771f78c531c55cc1abf57b4284"
+        }
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "beforeSha256": "9a95c51b69ba891758558b85853ad0ece06914100623889ce2b5182bc8b3bc98",
+      "afterSha256": "0cfbb4ae83af29ee3672b49ed4743714bc65c8ffc110d0982bff01e133ae4877",
+      "fragments": [
+        {
+          "before": "    {\n      \"id\": \"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\n      \"title\": \"Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten\",\n      \"titleEn\": \"Interpret the definite integral as the limit of upper and lower sums and as a reconstructed quantity\",\n      \"description\": \"Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.\",\n      \"descriptionEn\": \"The learner can interpret the definite integral as the common limit of upper and lower sums and in particular as a reconstructed quantity and describe this interpretation precisely.\",\n      \"weight\": 1,\n      \"tags\": [\n        \"GK\",\n        \"LK\"\n      ],\n      \"contains\": [],\n      \"requires\": [\n        \"94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6\"\n      ],\n      \"dimensionTags\": {\n        \"framework\": \"canonical-gymnasium-math\",\n        \"demandLevel\": \"AB2\",\n        \"processCompetencies\": [\n          \"K2.2\",\n          \"K3.2\"\n        ],\n        \"guidingIdeas\": [\n          \"L2\",\n          \"L4\"\n        ],\n        \"phase\": \"Q1\",\n        \"area\": \"Analysis\",\n        \"topicCode\": \"CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.LIMIT_AND_RECONSTRUCTED_QUANTITY\"\n      },\n      \"applicability\": {\n        \"jurisdiction\": [\n          \"DE-BB\",\n          \"DE-BE\",\n          \"DE-BW\",\n          \"DE-BY\",\n          \"DE-HB\",\n          \"DE-HE\",\n          \"DE-HH\",\n          \"DE-MV\",\n          \"DE-NI\",\n          \"DE-NW\",\n          \"DE-RP\",\n          \"DE-SH\",\n          \"DE-SL\",\n          \"DE-SN\",\n          \"DE-ST\",\n          \"DE-TH\"\n        ]\n      },\n      \"type\": \"atomic\",\n      \"resourceLinks\": [\n        {\n          \"type\": \"goal-visualization\",\n          \"resourceType\": \"image\",\n          \"role\": \"primary\",\n          \"skillpilotId\": \"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\n          \"title\": \"Visualisierung: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten\",\n          \"url\": \"/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg\",\n          \"provider\": \"Google Gemini / Nano Banana Pro\",\n          \"description\": \"Visualisierung zum Lernziel: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten.\",\n          \"altText\": \"Didaktische Visualisierung zum Lernziel \\\"Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten\\\". Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.\",\n          \"lang\": \"de\",\n          \"license\": \"AI-generated, SkillPilot-curated\",\n          \"reviewStatus\": \"pilot\"\n        }\n      ]\n    }",
+          "after": "    {\n      \"id\": \"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\n      \"title\": \"Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als Bestandsänderung deuten\",\n      \"titleEn\": \"Interpret the definite integral as the limit of upper and lower sums and as a change in quantity\",\n      \"description\": \"Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und bei einer Änderungsrate als Bestandsänderung beschreiben, aus der zusammen mit dem Anfangsbestand der Endbestand entsteht.\",\n      \"descriptionEn\": \"The learner can interpret the definite integral as the common limit of upper and lower sums and, for a rate of change, describe it as the change in a quantity, which combines with the initial value to give the final value.\",\n      \"weight\": 1,\n      \"tags\": [\n        \"GK\",\n        \"LK\"\n      ],\n      \"contains\": [],\n      \"requires\": [\n        \"94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6\"\n      ],\n      \"dimensionTags\": {\n        \"framework\": \"canonical-gymnasium-math\",\n        \"demandLevel\": \"AB2\",\n        \"processCompetencies\": [\n          \"K2.2\",\n          \"K3.2\"\n        ],\n        \"guidingIdeas\": [\n          \"L2\",\n          \"L4\"\n        ],\n        \"phase\": \"Q1\",\n        \"area\": \"Analysis\",\n        \"topicCode\": \"CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.LIMIT_AND_RECONSTRUCTED_QUANTITY\"\n      },\n      \"applicability\": {\n        \"jurisdiction\": [\n          \"DE-BB\",\n          \"DE-BE\",\n          \"DE-BW\",\n          \"DE-BY\",\n          \"DE-HB\",\n          \"DE-HE\",\n          \"DE-HH\",\n          \"DE-MV\",\n          \"DE-NI\",\n          \"DE-NW\",\n          \"DE-RP\",\n          \"DE-SH\",\n          \"DE-SL\",\n          \"DE-SN\",\n          \"DE-ST\",\n          \"DE-TH\"\n        ]\n      },\n      \"type\": \"atomic\",\n      \"resourceLinks\": [\n        {\n          \"type\": \"goal-visualization\",\n          \"resourceType\": \"image\",\n          \"role\": \"primary\",\n          \"skillpilotId\": \"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\n          \"title\": \"Visualisierung: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten\",\n          \"url\": \"/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg\",\n          \"provider\": \"Google Gemini / Nano Banana Pro\",\n          \"description\": \"Visualisierung zum Lernziel: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten.\",\n          \"altText\": \"Didaktische Visualisierung zum Lernziel \\\"Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten\\\". Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.\",\n          \"lang\": \"de\",\n          \"license\": \"AI-generated, SkillPilot-curated\",\n          \"reviewStatus\": \"pilot\"\n        }\n      ]\n    }"
+        },
+        {
+          "before": "    {\n      \"id\": \"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\n      \"title\": \"Graphen von Flächeninhaltsfunktionen skizzieren\",\n      \"titleEn\": \"Sketch graphs of area functions\",\n      \"description\": \"Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.\",\n      \"descriptionEn\": \"The learner can qualitatively sketch the graph of the associated area function for the graph of a given boundary function.\",\n      \"weight\": 1,\n      \"tags\": [\n        \"GK\",\n        \"LK\"\n      ],\n      \"contains\": [],\n      \"requires\": [\n        \"2afba4a2-287d-5e8f-aeee-a3bcf8652236\"\n      ],\n      \"dimensionTags\": {\n        \"framework\": \"canonical-gymnasium-math\",\n        \"demandLevel\": \"AB2\",\n        \"processCompetencies\": [\n          \"K2.2\",\n          \"K3.2\"\n        ],\n        \"guidingIdeas\": [\n          \"L2\",\n          \"L4\"\n        ],\n        \"phase\": \"Q1\"\n      },\n      \"applicability\": {\n        \"jurisdiction\": [\n          \"DE-BB\",\n          \"DE-BE\",\n          \"DE-BW\",\n          \"DE-BY\",\n          \"DE-HB\",\n          \"DE-HE\",\n          \"DE-HH\",\n          \"DE-MV\",\n          \"DE-NI\",\n          \"DE-NW\",\n          \"DE-RP\",\n          \"DE-SH\",\n          \"DE-SL\",\n          \"DE-SN\",\n          \"DE-ST\",\n          \"DE-TH\"\n        ]\n      },\n      \"type\": \"atomic\",\n      \"resourceLinks\": [\n        {\n          \"type\": \"goal-visualization\",\n          \"resourceType\": \"image\",\n          \"role\": \"primary\",\n          \"skillpilotId\": \"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\n          \"title\": \"Visualisierung: Graphen von Flächeninhaltsfunktionen skizzieren\",\n          \"url\": \"/assets/goal-visualizations/mathematik/9441bb35-2a2f-4edc-9d8a-bc58c257054d/9441bb35-2a2f-4edc-9d8a-bc58c257054d.jpg\",\n          \"provider\": \"Google Gemini / Nano Banana Pro (gemini-3-pro-image)\",\n          \"description\": \"Visualisierung zum Lernziel: Graphen von Flächeninhaltsfunktionen skizzieren.\",\n          \"altText\": \"Didaktische Visualisierung zum Lernziel \\\"Graphen von Flächeninhaltsfunktionen skizzieren\\\". Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.\",\n          \"lang\": \"de\",\n          \"license\": \"AI-generated, SkillPilot-curated\",\n          \"reviewStatus\": \"pilot\"\n        }\n      ]\n    }",
+          "after": "    {\n      \"id\": \"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\n      \"title\": \"Graphen von Flächeninhaltsfunktionen skizzieren\",\n      \"titleEn\": \"Sketch graphs of area functions\",\n      \"description\": \"Die lernende Person kann zu einer gegebenen Startstelle aus dem Graphen einer Randfunktion den Verlauf der zugehörigen orientierten Flächeninhaltsfunktion qualitativ skizzieren und dabei positive und negative Flächenbeiträge berücksichtigen.\",\n      \"descriptionEn\": \"Given a starting point, the learner can qualitatively sketch the associated signed-area function from the graph of a boundary function, taking positive and negative area contributions into account.\",\n      \"weight\": 1,\n      \"tags\": [\n        \"GK\",\n        \"LK\"\n      ],\n      \"contains\": [],\n      \"requires\": [\n        \"2afba4a2-287d-5e8f-aeee-a3bcf8652236\"\n      ],\n      \"dimensionTags\": {\n        \"framework\": \"canonical-gymnasium-math\",\n        \"demandLevel\": \"AB2\",\n        \"processCompetencies\": [\n          \"K2.2\",\n          \"K3.2\"\n        ],\n        \"guidingIdeas\": [\n          \"L2\",\n          \"L4\"\n        ],\n        \"phase\": \"Q1\"\n      },\n      \"applicability\": {\n        \"jurisdiction\": [\n          \"DE-BB\",\n          \"DE-BE\",\n          \"DE-BW\",\n          \"DE-BY\",\n          \"DE-HB\",\n          \"DE-HE\",\n          \"DE-HH\",\n          \"DE-MV\",\n          \"DE-NI\",\n          \"DE-NW\",\n          \"DE-RP\",\n          \"DE-SH\",\n          \"DE-SL\",\n          \"DE-SN\",\n          \"DE-ST\",\n          \"DE-TH\"\n        ]\n      },\n      \"type\": \"atomic\",\n      \"resourceLinks\": [\n        {\n          \"type\": \"goal-visualization\",\n          \"resourceType\": \"image\",\n          \"role\": \"primary\",\n          \"skillpilotId\": \"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\n          \"title\": \"Visualisierung: Graphen von Flächeninhaltsfunktionen skizzieren\",\n          \"url\": \"/assets/goal-visualizations/mathematik/9441bb35-2a2f-4edc-9d8a-bc58c257054d/9441bb35-2a2f-4edc-9d8a-bc58c257054d.jpg\",\n          \"provider\": \"Google Gemini / Nano Banana Pro (gemini-3-pro-image)\",\n          \"description\": \"Visualisierung zum Lernziel: Graphen von Flächeninhaltsfunktionen skizzieren.\",\n          \"altText\": \"Didaktische Visualisierung zum Lernziel \\\"Graphen von Flächeninhaltsfunktionen skizzieren\\\". Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.\",\n          \"lang\": \"de\",\n          \"license\": \"AI-generated, SkillPilot-curated\",\n          \"reviewStatus\": \"pilot\"\n        }\n      ]\n    }"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "beforeSha256": "5ded35f77b2cbff09b13d33461a26411698ffc074902b72c6da212b713152809",
+      "afterSha256": "83b4e1920014905cfc8f1564dc84a4434e0d7c441849d4b439f46d7b2daf7a77",
+      "fragments": [
+        {
+          "before": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\"fingerprint\":\"sha256:ae7ad1376c365cacb4bcd2e19143b955c603c1b01dc8e0c4b776cc87f6617f96\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"Q1-Review: Eine zusammenhaengende Integral- oder Stammfunktionsroutine; Berechnen, Deuten und Begruenden sind hier Ausfuehrungsschritte einer pruefbaren Kompetenz.\",\"suggestedSplit\":[]}",
+          "after": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\"fingerprint\":\"sha256:c1a4c4dc750f98bb8a559cd6ee1c1035bf79433cb49e6789f2def13ac92fc73e\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-07\",\"reviewer\":\"OpenAI Codex; individual current-text AI review after explicit root wording authorization; underlying model unknown; no human attestation\",\"reason\":\"Individuelle Nachprüfung der freigegebenen Q1-Präzisierung: Ober-/Untersummengrenzwert und Nettoänderung sind zwei aufeinander bezogene Deutungen desselben bestimmten Integralwertes. Anfangsbestand plus Integralwert trennt Endbestand und Änderung; es wird keine zusätzliche selbständige Integrationsroutine eingeführt. Die Kompetenz bleibt atomar, nicht das Ermitteln verschiedener Reihensummen.\",\"suggestedSplit\":[]}"
+        },
+        {
+          "before": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\"fingerprint\":\"sha256:908566bab01a44fc4d543826da83077f36268fb8eab5ddc198d118525bf1e36b\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"Q1-Review: Als eine zusammenhaengende, pruefbare Analysisroutine bewertet.\",\"suggestedSplit\":[]}",
+          "after": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\"fingerprint\":\"sha256:994a03567586e12322d36c6e07a970e764ef9591b695b326eb159111697fd133\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-07\",\"reviewer\":\"OpenAI Codex; individual current-text AI review after explicit root wording authorization; underlying model unknown; no human attestation\",\"reason\":\"Individuelle Nachprüfung der freigegebenen Präzisierung: Aus Randgraph, gegebener Startstelle und vorzeichenbehafteten Flächenbeiträgen entsteht genau eine qualitative Flächenfunktionsskizze. Steigen und Fallen sowie der Startwert gehören zu derselben Darstellungskonstruktion; keine zusätzliche Rückwärtsrekonstruktion und keine neue allgemeine Beweispflicht werden verlangt.\",\"suggestedSplit\":[]}"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "beforeSha256": "f477b4168679a99ef1bc80bdc8f8289286c2df633632cf250c5ab27690246ef6",
+      "afterSha256": "2af5418865daa783906da9d270c94eede126368790ac8254441fff98c9284cc1",
+      "fragments": [
+        {
+          "before": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\"fingerprint\":\"sha256:f5c38057524db9e8ea05efad7b62de43465b067da9d3c6b05de4d17752050c73\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+          "after": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\"fingerprint\":\"sha256:73c639a7ac5119c9b60a0e166a820492f188f2c8a4bf226e5550d14cdf56197c\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-07\",\"reviewer\":\"OpenAI Codex; individual current-text AI review after explicit root wording authorization; underlying model unknown; no human attestation\",\"reason\":\"Individuelle No-Memory-Nachprüfung: Die Abgrenzung von Integralwert als Bestandsänderung und Endbestand mit Anfangsbestand wird durch Summenbilder, Einheiten und Kontextverständnis gesichert. Ein eigenes neues Memory-Deck ist dafür nicht erforderlich; bestehende Integrationskarten anderer Ziele werden nicht mitbeansprucht.\"}"
+        },
+        {
+          "before": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\"fingerprint\":\"sha256:29a335503d25ae4eb36e91633afe9f82541526c1a378e81f6fe72b1043f04bf5\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+          "after": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\"fingerprint\":\"sha256:1bfe9260a0406c3d502c0a1d17890ba2457edfb8aadf15e2e967d1703fdd906d\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-07\",\"reviewer\":\"OpenAI Codex; individual current-text AI review after explicit root wording authorization; underlying model unknown; no human attestation\",\"reason\":\"Individuelle No-Memory-Nachprüfung: Qualitative Akkumulation ab einer gegebenen Startstelle wird aus positiven und negativen Flächenbeiträgen aufgebaut. Der Graphtransfer ist eine Verständnis- und Konstruktionsleistung, kein zusätzlicher kompakter Recall-Inhalt; deshalb weiterhin kein eigenes Memory-Deck.\"}"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "beforeSha256": "b3806e2ec66ed29a92c6af8e7b7adb595c314d66c44d9a6260cfabf9a24ef621",
+      "afterSha256": "cf5753c1820dc3c7aacbbbb99d26eaa44eacfc80d187a879d6107ce3c03a4fdc",
+      "fragments": [
+        {
+          "before": "    {\n      \"goalId\": \"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\n      \"sourceFingerprint\": \"sha256:911405d5f68dde5fcf5d1d07dfe69fe4bc90723f8a584b3c017c767aa24c72f4\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-curricular-atomic\"\n    }",
+          "after": "    {\n      \"goalId\": \"3862890e-9ea9-4c62-bcf2-e354c9d8f306\",\n      \"sourceFingerprint\": \"sha256:bd7bf8468b6f3725772b12580202612d6a6f3822d5256b6c1dfa94afe6b8f4a2\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-root-authorized-local-integral-wording-20260907\"\n    }"
+        },
+        {
+          "before": "    {\n      \"goalId\": \"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\n      \"sourceFingerprint\": \"sha256:c84143b8dff3e94e724527ad333b756c63d48afd88449f1236dad8621472ac8e\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-curricular-atomic\"\n    }",
+          "after": "    {\n      \"goalId\": \"9441bb35-2a2f-4edc-9d8a-bc58c257054d\",\n      \"sourceFingerprint\": \"sha256:5fc33dc10924548c7b0c151bafde1d81d4b2a6d247b9afd9c7c0587e011de604\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-root-authorized-local-integral-wording-20260907\"\n    }"
+        }
+      ]
+    }
+  ]
+}

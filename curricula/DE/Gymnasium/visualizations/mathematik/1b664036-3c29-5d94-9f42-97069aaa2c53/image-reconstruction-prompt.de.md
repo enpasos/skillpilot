@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `1b664036-3c29-5d94-9f42-97069aaa2c53.jpg`
 
 ## Zweck
@@ -18,31 +18,24 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, lehrreiches Diagramm im Cartoon-Stil auf hellblauem Hintergrund. Der obere mittlere Titel lautet in großer, fetter, schwarzer Schrift: Exponentialfunktion durch Taylorpolynome annähern (LK).
+Ein klares, lehrreiches Diagramm im Cartoon-Stil auf hellblauem Hintergrund. Oben mittig steht der schwarze, fette Titel: 'Exponentialfunktion durch Taylorpolynome annähern'. Eine vertikale, gestrichelte Linie trennt den linken und rechten Bereich, beginnend unterhalb des Haupttitels und sich bis zum unteren Bildrand erstreckend.
 
-Das Diagramm ist vertikal in zwei Hauptbereiche unterteilt, getrennt durch eine gestrichelte schwarze Linie.
+Im linken Bereich befindet sich ein weißes Rechteck mit abgerundeten Ecken und dünnem schwarzem Rand. Darüber steht zentriert der fette, schwarze Titel: 'Taylorpolynome'. Im Rechteck ist oben rechts in großer, fetter, schwarzer Schrift 'eˣ' zu sehen. Darunter sind vier Aufzählungspunkte mit schwarzem Text:
+• 'T₀(x) = 1'
+• 'T₁(x) = 1 + x'
+• 'T₂(x) = 1 + x + x²/₂'
+• 'T₃(x) = 1 + x + x²/₂ + x³/₆'
+Rechts neben jedem Aufzählungspunkt befindet sich eine farbige Linie: neben T₀(x) eine kurze, gerade, dunkelrote horizontale Linie; neben T₁(x) eine kurze, gerade, orange, schräg aufsteigende Linie; neben T₂(x) eine kurze, sanfte, grüne, nach oben geöffnete Kurve; und neben T₃(x) eine kurze, ausgeprägtere, violette S-förmige Kurve. Unterhalb dieses Rechtecks steht zentriert der schwarze Text: 'Annäherung um x=0'.
 
-Der linke Bereich hat den Titel Taylorpolynome in fetter, schwarzer Schrift. Darunter befindet sich ein weißes, abgerundetes Rechteck mit einem dicken schwarzen Rand. Im oberen rechten Teil dieses Rechtecks steht eˣ in großer, fetter, schwarzer Schrift. Darunter sind vier mathematische Ausdrücke als Aufzählungspunkte gelistet:
-• T₀(x) = 1 (schwarz) mit einer kurzen horizontalen roten Linie rechts daneben.
-• T₁(x) = 1 + x (schwarz) mit einer kurzen diagonalen orangefarbenen Linie rechts daneben.
-• T₂(x) = 1 + x + x²/2 (schwarz) mit einer kurzen geschwungenen grünen Linie rechts daneben.
-• T₃(x) = 1 + x + x²/2 + x³/6 (schwarz) mit einer kurzen wellenförmigen violetten Linie rechts daneben.
-Unter diesem Rechteck steht der Untertitel Annäherung um x=0 in schwarzer Schrift.
+Im oberen rechten Bereich ist ein weiteres weißes Rechteck mit abgerundeten Ecken und dünnem schwarzem Rand. Darüber steht zentriert der fette, schwarze Titel: 'Wert bei x=1'. Innerhalb dieses Rechtecks befindet sich eine Tabelle mit zwei Spalten und fünf Zeilen, inklusive Kopfzeile. Die Kopfzeile enthält 'Funktion' (links) und 'Wert' (rechts) in schwarzem Text. Die Tabellenzeilen sind:
+1. 'eˣ' (dunkelblauer Text) und 'e¹ ≈ 2.718' (schwarzer Text).
+2. 'T₀(1)' (roter Text) und '= 1' (schwarzer Text).
+3. 'T₁(1)' (oranger Text) und '= 2' (schwarzer Text).
+4. 'T₂(1)' (grüner Text) und '= 2.5' (schwarzer Text).
+5. 'T₃(1)' (violetter Text) und '≈ 2.667' (schwarzer Text).
+Rechts neben dieser Tabelle steht eine kleine, männliche Cartoon-Figur mit braunen Haaren, Brille und blauem Hemd, die mit der rechten Hand auf die Tabelle zeigt. Aus seinem Mund kommt eine weiße Sprechblase mit schwarzem Rand, die den schwarzen Text 'Bessere Annäherung!' enthält.
 
-Der rechte Bereich hat den Titel Wert bei x=1 in fetter, schwarzer Schrift. Darunter befindet sich ein weiteres weißes, abgerundetes Rechteck mit einem dicken schwarzen Rand, das eine zweispaltige Tabelle enthält. Die Kopfzeile der Tabelle ist hellgrau und enthält Funktion (links) und Wert (rechts). Die Datenzeilen sind weiß:
-eˣ (blau) | e¹ ≈ 2.718 (schwarz)
-T₀(1) (rot) | = 1 (schwarz)
-T₁(1) (orange) | = 2 (schwarz)
-T₂(1) (grün) | = 2.5 (schwarz)
-T₃(1) (violett) | ≈ 2.667 (schwarz)
-Rechts neben dieser Tabelle steht eine kleine, männliche Cartoonfigur mit braunen Haaren, Brille und blauem Hemd, die mit der rechten Hand auf die Tabelle zeigt. Eine weiße, wolkenförmige Sprechblase kommt aus seinem Mund und enthält den Text Bessere Annäherung! in schwarzer Schrift.
-
-Unter der Tabelle und der Figur befindet sich ein drittes weißes, abgerundetes Rechteck mit einem dicken schwarzen Rand. Oben links in diesem Rechteck steht der Untertitel Graphische Annäherung (nahe x=0) in schwarzer Schrift. Darin ist ein Koordinatensystem mit einer schwarzen x-Achse und y-Achse dargestellt, die sich am Ursprung 0 schneiden. Die x-Achse ist rechts mit einem Pfeil und x beschriftet, die y-Achse oben mit einem Pfeil und y beschriftet. Ein schwarzer Punkt P(0|1) ist auf der y-Achse bei y=1 markiert.
-Fünf Funktionen sind in diesem Koordinatensystem eingezeichnet, alle verlaufen durch den Punkt P(0|1):
-Eine rote horizontale Linie ist mit T₀(x)=1 (rot) beschriftet.
-Eine orangefarbene gerade Linie ist mit T₁(x) (orange) beschriftet.
-Eine grüne Kurve, die einer Parabel ähnelt, ist mit T₂(x) (grün) beschriftet.
-Eine violette Kurve, die einer kubischen Funktion ähnelt, ist mit T₃(x) (violett) beschriftet.
-Eine dunkelblaue exponentielle Kurve ist mit eˣ (blau) beschriftet.
-Die Taylorpolynome T₀, T₁, T₂, T₃ nähern sich der Exponentialfunktion eˣ um x=0 an, wobei höhere Grade eine bessere Annäherung zeigen.
+Im unteren rechten Bereich ist ein drittes weißes Rechteck mit abgerundeten Ecken und dünnem schwarzem Rand. Darüber steht zentriert der fette, schwarze Titel: 'Deutung der Approximation:'. Innerhalb dieses Rechtecks sind zwei Aufzählungspunkte mit schwarzem Text:
+• 'Bei x = 1: höherer Grad → bessere Näherung'
+• 'Näherung ≠ Exakter Wert'
 ```

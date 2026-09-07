@@ -1,0 +1,6 @@
+Use case: educational infographic, brand-new.
+Erstelle eine lockere deutsche Lernzielillustration im Nano-Banana-Stil, handgezeichnete schwarze Schrift, freundliches hellgrünes Pastell, großzügiger Weißraum. Thema „Partialsummen geometrischer Reihen“. Keine Koordinatengraphen.
+Linkes anschauliches Beispiel: 1 + 1/2 + 1/4 + 1/8 + …, dazu ein zweigeteilter Gesamtstreifen der Gesamtlänge2, erste Hälfte1, nächsteViertelgesamtlänge1/2, nächste1/4 undRest. Optional lieber reine Formelchips wenn Streifen nicht exakt möglich. Darunter „S₁ = 1“, „S₂ = 1,5“, „S₃ = 1,75“, „Sₙ nähert sich 2“. Die Summe ist nicht die Folge der Glieder!
+Mitte übersichtlich: „aₖ = a₁ · q^(k−1)“ und „Für q ≠ 1: Sₙ = a₁ · (1−qⁿ)/(1−q)“.
+Darunter „Für |q| < 1 gilt qⁿ → 0 und Sₙ → a₁/(1−q)“.
+Rechts zwei knappe Gegenbeispiele: „q = 2, a₁ = 1: 1, 3, 7, 15, … → kein endlicher Grenzwert“ und „q = −1, a₁ = 1: 1, 0, 1, 0, … → kein Grenzwert“. Beide ausdrücklich „Partialsummen“. Klein aber lesbar „Sonderfall a₁ = 0: alle Partialsummen sind 0.“ Ein klarer Randhinweis „q = 1: Sₙ = n·a₁“. Keine falsche pauschale Divergenz ohne a₁-Bedingung, keine Behauptung endliche Summe sei schon exakt Grenzwert. Keine arithmetische Summenformel.

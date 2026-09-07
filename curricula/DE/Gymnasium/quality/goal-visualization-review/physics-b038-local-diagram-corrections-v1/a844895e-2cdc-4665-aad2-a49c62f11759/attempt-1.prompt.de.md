@@ -1,0 +1,5 @@
+Use case: precise-object-edit / scientific-educational
+Eingabebild: einziges Edit-Ziel; bestehende Lernvisualisierung beibehalten.
+Erhalte Anordnung, Zeichnungen, Farben, Analogiebox und Energieaussagen. Schreibe alle Zeitpunkte mit kleinem t: t=0, t=T/4, t=T/2 und t=3T/4. Setze beim Kondensator t=T/2 ausschließlich Minuszeichen auf die obere und Pluszeichen auf die untere Platte.
+Definiere im mechanischen Teil klein die positive x-Richtung nach links: Die nach rechts gerichtete Geschwindigkeit bei t=T/4 heißt −v_max, die nach links gerichtete bei t=3T/4 heißt +v_max. Der komprimierte Zustand bei t=0 bleibt +x_max, der gestreckte bei t=T/2 bleibt −x_max.
+Definiere q als Ladung der oberen Kondensatorplatte und die positive Stromreferenz durch die Spule nach oben, sodass I=dq/dt: Der Strompfeil nach unten bei t=T/4 heißt −I_max, der nach oben bei t=3T/4 heißt +I_max. Beide Energieformeln verwenden jeweils die quadrierten Beträge v_max² bzw. I_max². Sonst nichts ändern, keine technischen IDs.

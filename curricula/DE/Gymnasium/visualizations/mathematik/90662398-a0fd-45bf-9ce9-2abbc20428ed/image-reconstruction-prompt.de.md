@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `90662398-a0fd-45bf-9ce9-2abbc20428ed.jpg`
 
 ## Zweck
@@ -18,21 +18,26 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, didaktisches Diagramm auf weißem Hintergrund. Oben mittig steht der Titel in fetter, schwarzer Schrift: "Hauptsatz geometrisch begründen und der Zusammenhang von Funktion, Ableitung und Stammfunktion".
+Ein klares, didaktisches Diagramm auf weißem Hintergrund, das mathematische Konzepte der Differential- und Integralrechnung veranschaulicht.
 
-Darunter befinden sich drei rechteckige Kästen, von links nach rechts angeordnet. Jeder Kasten hat einen hellblauen oberen Bereich mit schwarzem Text und ist von einer schwarzen Linie umrandet.
+Der Haupttitel, zentriert und in fetter, schwarzer, serifenloser Schrift, lautet: "Hauptsatz geometrisch begründen und der Zusammenhang von Funktion, Ableitung und Stammfunktion".
 
-Der linke Kasten ist mit "1. Stammfunktion:" überschrieben. Darunter steht die Gleichung "F(x) = x²". Ein Koordinatensystem zeigt eine dunkelblaue Parabel, die durch den Ursprung (0,0) verläuft und symmetrisch zur y-Achse ist. Die Achsen sind mit "x" und "y" beschriftet, der Ursprung mit "0". Eine gestrichelte vertikale Linie führt von x=3 auf der x-Achse zur Parabel. Von diesem Punkt auf der Parabel (3,9) führt eine gestrichelte horizontale Linie zur y-Achse, endend bei "9". Ein kleiner schwarzer Punkt markiert die Stelle (3,9) auf der Parabel, daneben steht "F(3)=9".
+Darunter befinden sich drei nebeneinander angeordnete, rechteckige Boxen mit abgerundeten Ecken und schwarzem Rand. Jede Box hat einen hellblauen oberen Bereich und einen weißen unteren Bereich.
 
-Ein hellblauer Pfeil mit schwarzer Umrandung zeigt von der rechten Seite des ersten Kastens zur linken Seite des mittleren Kastens. Über dem Pfeil steht "Ableiten".
+**Die linke Box ist betitelt "1. Stammfunktion:" und zeigt die Funktion "F(x) = x²".**
+Innerhalb dieser Box ist ein Koordinatensystem mit einer x-Achse, die mit 'x' beschriftet ist, und einer y-Achse, die mit 'y' beschriftet ist. Der Ursprung ist mit '0' markiert. Eine dunkelblaue Parabel, die nach oben geöffnet ist und ihren Scheitelpunkt im Ursprung hat, ist eingezeichnet. Ein Punkt auf der Parabel bei x=3, y=9 ist mit einem dunkelblauen Punkt markiert. Gestrichelte Linien verbinden diesen Punkt mit der x-Achse bei x=3 und mit der y-Achse bei y=9. Neben dem Punkt steht die Beschriftung "F(3)=9".
 
-Der mittlere Kasten ist mit "2. Ableitung:" überschrieben. Darunter steht die Gleichung "F'(x) = 2x = f(x)". Ein Koordinatensystem zeigt eine dunkelblaue, gerade Linie, die durch den Ursprung (0,0) verläuft und eine positive Steigung hat. Die Achsen sind mit "x" und "y" beschriftet, der Ursprung mit "0". Die Linie ist mit "f(x) = 2x" beschriftet.
+**Ein hellblauer, gefüllter Pfeil mit schwarzer Umrandung zeigt von der linken Box nach rechts zur mittleren Box.** Über dem Pfeil steht in schwarzer Schrift das Wort "Ableiten".
 
-Ein hellblauer Pfeil mit schwarzer Umrandung zeigt von der rechten Seite des mittleren Kastens zur linken Seite des rechten Kastens. Über dem Pfeil steht "Integrieren", und darunter in Klammern "(Flächenbestimmung)".
+**Die mittlere Box ist betitelt "2. Ableitung:" und zeigt die Funktion "F'(x) = 2x = f(x)".**
+Innerhalb dieser Box ist ein Koordinatensystem mit einer x-Achse, die mit 'x' beschriftet ist, und einer y-Achse, die mit 'y' beschriftet ist. Der Ursprung ist mit '0' markiert. Eine dunkelblaue, gerade Linie, die durch den Ursprung verläuft und eine positive Steigung hat, ist eingezeichnet. Neben der Linie steht die Beschriftung "f(x) = 2x".
 
-Der rechte Kasten ist mit "3. Flächenfunktion:" überschrieben. Darunter steht die Gleichung "A(x) = ∫₀ˣ 2t dt = x²". Ein Koordinatensystem zeigt eine dunkelblaue, gerade Linie, die durch den Ursprung (0,0) verläuft und eine positive Steigung hat. Die Achsen sind mit "t" und "y" beschriftet, der Ursprung mit "0". Eine gestrichelte vertikale Linie führt von t=3 auf der t-Achse zur Geraden. Der Bereich unter der Geraden von t=0 bis t=3 ist hellblau schattiert. Innerhalb des schattierten Bereichs steht "A(3) = ∫₀³ 2t dt = 9". Neben der Geraden ist "A(x) = x²" platziert. Unterhalb des Koordinatensystems in diesem Kasten befinden sich zwei kleinere, rechteckige Kästen mit schwarzer Umrandung. Der linke enthält "A(3) = 9", der rechte "F(3) - F(0) = 9 - 0 = 9".
+**Ein hellblauer, gefüllter Pfeil mit schwarzer Umrandung zeigt von der mittleren Box nach rechts zur rechten Box.** Über dem Pfeil steht in schwarzer Schrift das Wort "Integrieren" und darunter in Klammern "(Flächenbestimmung)".
 
-Ein großer, geschwungener, hellblauer Pfeil mit schwarzer Umrandung und gestrichelter Linie verläuft von unterhalb des rechten Kastens nach links und dann nach oben, zeigend auf den Bereich unterhalb des linken Kastens. Über diesem Pfeil steht "Hauptsatz: A(x) = F(x)".
+**Die rechte Box ist betitelt "3. Flächenfunktion:" und zeigt die Funktion "A(x) = ∫₀ˣ 2t dt = x²".**
+Innerhalb dieser Box ist ein Koordinatensystem mit einer t-Achse, die mit 't' beschriftet ist, und einer y-Achse, die mit 'y' beschriftet ist. Der Ursprung ist mit '0' markiert. Die y-Achse hat Beschriftungen bei '2', '4', '6'. Eine dunkelblaue, gerade Linie, die durch den Ursprung verläuft und eine positive Steigung hat, ist eingezeichnet und reicht bis zum Punkt (3,6). Eine gestrichelte Linie verbindet (3,0) mit (3,6). Der Bereich unter dieser Linie von t=0 bis t=3 ist hellblau schattiert und bildet ein Dreieck. Innerhalb des schattierten Bereichs befindet sich eine kleine weiße Box mit schwarzem Rand, die den Text "A(3) = ∫₀³ 2t dt = 9" enthält. Unterhalb des Koordinatensystems in dieser Box befinden sich zwei weitere kleine weiße Boxen mit schwarzem Rand. Die linke Box enthält "A(3) = 9". Die rechte Box enthält "F(3) - F(0) = 9 - 0 = 9".
 
-Unterhalb der drei Kästen und mittig platziert ist eine rechteckige "Ergebnisbox" mit schwarzer Umrandung. Darin steht in schwarzer Schrift: "Ergebnisbox: Ableiten und Integrieren sind hier Umkehroperationen." und darunter "A'(x) = f(x)".
+**Unterhalb der drei Boxen verläuft ein großer, geschwungener, hellblauer Pfeil mit schwarzer Umrandung und einer gestrichelten schwarzen Linie entlang seines Pfades.** Der Pfeil beginnt unter der rechten Box und zeigt nach links oben unter die linke Box. Entlang des Pfeils steht in schwarzer Schrift die Beschriftung "Hauptsatz: Hier: A(x) = F(x) - F(0) = F(x)".
+
+**Zentriert unter dem geschwungenen Pfeil befindet sich eine "Ergebnisbox".** Dies ist eine rechteckige Box mit abgerundeten Ecken, schwarzem Rand und weißer Füllung. Der Text darin lautet: "Ergebnisbox: Ableiten und Integrieren sind hier Umkehroperationen." wobei "Ergebnisbox" unterstrichen ist. Darunter steht die mathematische Gleichung "A'(x) = f(x)".
 ```

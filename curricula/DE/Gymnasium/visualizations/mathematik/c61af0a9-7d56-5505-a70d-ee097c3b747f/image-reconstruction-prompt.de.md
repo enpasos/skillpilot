@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)
 - Quellbild: `c61af0a9-7d56-5505-a70d-ee097c3b747f.jpg`
 
 ## Zweck
@@ -18,71 +18,61 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, freundliches und lehrreiches Cartoon-Bild im Stil einer Infografik auf weißem Hintergrund. Das Bild ist in drei vertikale Spalten unterteilt, die jeweils einen Schritt in einem mathematischen Prozess darstellen.
+Ein klares, lehrreiches Infografik-Bild im Cartoon-Stil auf weißem Hintergrund. Alle Elemente haben schwarze Umrisse.
 
-Oben mittig befindet sich ein Haupttitel in einem hellblauen abgerundeten Rechteck mit dünnem schwarzem Rand, der Text lautet: "Grenzwerte von Folgen mit Grenzwertsätzen begründen".
+Oben mittig befindet sich ein hellblaues, abgerundetes Rechteck mit einem dünnen schwarzen Rand, das den Titel enthält: "Grenzwerte von Folgen mit Grenzwertsätzen begründen" in schwarzer, fetter, serifenloser Schrift.
 
-**Linke Spalte (Schritt 1):**
-Diese Spalte ist ein großes, hellblaues abgerundetes Rechteck mit einem gestrichelten hellblauen Rand und einem sehr hellblauen Hintergrund.
-Oben in dieser Spalte befindet sich ein Titel in einem hellblauen abgerundeten Rechteck mit dünnem schwarzem Rand, der Text lautet: "1. Konvergenz / Divergenz (Begründung)".
-Ein junger Cartoon-Junge mit hellbraunem Haar, hellblauem Langarmshirt und blauer Hose steht unten links in der Spalte, hält eine Lupe in der rechten Hand und blickt nach rechts. Er hat einen neugierigen Ausdruck.
-Über dem Jungen befinden sich zwei große, weiße, wolkenförmige Sprechblasen mit schwarzem Umriss, vertikal übereinander angeordnet.
-Die obere Sprechblase enthält:
-- Einen Titel in einem hellblauen abgerundeten Rechteck: "Konvergenz (anwendbar)".
-- Ein Diagramm: Eine horizontale Linie mit einem Pfeil nach rechts, am rechten Ende mit "L" beschriftet. Mehrere kleine blaue Kreise (Punkte) sind um die Linie herum verteilt und nähern sich dem "L" und einander von links. Zwei kleine Pfeile zeigen von links auf "L".
-- Darunter die mathematische Notation: "$a_n = \frac{1}{n} + 2$".
-Zwischen den beiden Sprechblasen befindet sich ein horizontales, hellgelbes abgerundetes Rechteck mit schwarzem Text: "Grenzwerte sind Schlüssel".
-Die untere Sprechblase enthält:
-- Einen Titel in einem hellblauen abgerundeten Rechteck: "Divergenz (nicht anwendbar)".
-- Ein Diagramm: Eine horizontale Linie mit einem Pfeil nach rechts. Kleine blaue Kreise (Punkte) sind in einem Zickzackmuster oberhalb und unterhalb der Linie angeordnet und durch gestrichelte Linien verbunden, ohne eine klare Konvergenz zu zeigen.
-- Darunter die mathematische Notation: "$a_n = (-1)^n$" (zweimal untereinander geschrieben).
-- Darunter ein hellgelbes abgerundetes Rechteck mit schwarzem Text: "Kein fester Grenzwert L".
-Am unteren Rand der linken Spalte befindet sich ein horizontales, hellgelbes abgerundetes Rechteck mit schwarzem Text: "Prüfe: Existieren Grenzwerte der Teilderme?".
+Das Bild ist in drei vertikale Spalten unterteilt, die jeweils einen abgerundeten Hintergrund haben, umrandet von einer gestrichelten schwarzen Linie.
 
-**Mittlere Spalte (Schritt 2):**
-Diese Spalte ist ein großes, hellblaues abgerundetes Rechteck mit einem gestrichelten hellblauen Rand und einem sehr hellblauen Hintergrund.
-Oben in dieser Spalte befindet sich ein Titel in einem hellblauen abgerundeten Rechteck mit dünnem schwarzem Rand, der Text lautet: "2. Grenzwertsätze (Bestimmung)".
-Ein junger Cartoon-Junge mit hellbraunem Haar, hellblauem Langarmshirt und blauer Hose steht unten in der Spalte vor einer weißen Tafel, hält einen schwarzen Marker in der rechten Hand und blickt nach links. Er hat einen konzentrierten Ausdruck.
-Die weiße Tafel ist ein großes, weißes Rechteck mit dünnem schwarzem Rand.
-Oben auf der Tafel befindet sich ein hellblauer abgerundeter Kasten mit der Aufschrift "Zerlegung".
-Darunter steht die mathematische Gleichung: "$\lim_{n \to \infty} \left(\frac{2n+1}{n}\right) = \lim_{n \to \infty} \frac{2n}{n} + \lim_{n \to \infty} \frac{1}{n}$".
-Ein großer, blauer, nach unten zeigender Pfeil ist unter der Gleichung platziert.
-Darunter befindet sich ein hellblauer abgerundeter Kasten mit der Aufschrift "Sätze anwenden".
-Darunter sind drei Grenzwertsätze aufgelistet:
-- Ein Pluszeichen in einem schwarzen Kreis, gefolgt von: "$+\ \lim_{n \to \infty} (a_n + b_n) = A + B$".
-- Ein Sternchen in einem schwarzen Kreis, gefolgt von: "$*\ \lim_{n \to \infty} (a_n \cdot b_n) = A \cdot B$".
-- Ein Divisionszeichen in einem schwarzen Kreis, gefolgt von: "$\div\ \lim_{n \to \infty} \frac{a_n}{b_n} = \frac{A}{B} \quad (B \neq 0)$".
-Unter den Sätzen befindet sich eine kleine Ablage mit zwei weißen Kreidestücken und einem schwarzen Tafellöscher.
-Ganz unten auf der Tafel steht die abschließende Berechnung: "$\lim_{n \to \infty} (2) + \lim_{n \to \infty} \frac{1}{n} = 2 + 0 = 2$".
-Am unteren Rand der mittleren Spalte befindet sich ein horizontales, hellgelbes abgerundetes Rechteck mit schwarzem Text: "Teilgrenzwerte (A, B) müssen existieren!".
+**Linke Spalte (Abschnitt 1):**
+Der Hintergrund ist hellblau. Oben befindet sich ein hellblaues, abgerundetes Rechteck mit dem Text "1. Konvergenz / Divergenz (Begründung)" in schwarzer Schrift.
+Links steht ein Cartoon-Junge mit hellbraunem Haar, einem hellblau-grünen Langarmshirt und blauen Jeans. Er hält eine Lupe in seiner rechten Hand und blickt nach rechts.
+Rechts oberhalb des Jungen ist eine weiße Gedankenblase in Wolkenform mit schwarzem Umriss. Darin steht "Konvergenz" und darunter die mathematische Notation "a_n = 2 + 1/n". Darunter sind vier hellblaue, abgerundete Rechtecke mit schwarzem Rand, die die Zahlen "3", "2,5", "2 1/3", "2,25" enthalten, horizontal angeordnet.
+Unterhalb dieser Gedankenblase ist ein hellorangefarbenes, abgerundetes Rechteck mit dem Text "Annäherung von oben an 2".
+Rechts unterhalb des Jungen ist eine weitere weiße Gedankenblase in Wolkenform mit schwarzem Umriss. Darin steht "Divergenz" und darunter die mathematische Notation "a_n = (-1)^n". Darunter sind vier hellblaue, abgerundete Rechtecke mit schwarzem Rand, die die Zahlen "-1", "+1", "-1", "+1" enthalten, horizontal angeordnet.
+Unterhalb dieser zweiten Gedankenblase ist ein hellorangefarbenes, abgerundetes Rechteck mit dem Text "Zwei wechselnde Werte, kein Grenzwert".
+Ganz unten in dieser Spalte befindet sich ein hellblaues, abgerundetes Rechteck mit dem Text "Prüfe: Existieren Grenzwerte der Teilderme?".
 
-**Rechte Spalte (Schritt 3):**
-Diese Spalte ist ein großes, hellgrünes abgerundetes Rechteck mit einem gestrichelten hellgrünen Rand und einem sehr hellgrünen Hintergrund.
-Oben in dieser Spalte befindet sich ein Titel in einem hellgrünen abgerundeten Rechteck mit dünnem schwarzem Rand, der Text lautet: "3. Argumentation (Darstellung)".
-Diese Spalte ist in zwei vertikale Unterabschnitte unterteilt, die jeweils einen sehr hellgrünen Hintergrund und einen gestrichelten Rand haben.
-Der linke Unterabschnitt, "Verbale Darstellung", enthält:
-- Einen Titel in einem hellgrünen abgerundeten Rechteck: "Verbale Darstellung".
-- Eine große, weiße, wolkenförmige Sprechblase mit schwarzem Umriss, die folgenden Text enthält:
-    "Zerlegung der Folge"
-    "Grenzertsätze"
-    "(Summe/Produkt/"
-    "Quotient)"
-    "Bekannte"
-    "Teilgrenzwerte"
-    "(z.B. $\lim_{n \to \infty} \frac{1}{n} = 0$)"
-    "Resultat durch"
-    "Rechenoperation"
-- Darunter steht ein junger Cartoon-Junge mit hellbraunem Haar, hellblauem Langarmshirt und blauer Hose, der nach rechts blickt, den rechten Arm erhoben und die Hand offen hat, als würde er etwas erklären. Er hat einen freundlichen, selbstbewussten Ausdruck.
-Der rechte Unterabschnitt, "Symbolische Darstellung", enthält:
-- Einen Titel in einem hellgrünen abgerundeten Rechteck: "Symbolische Darstellung".
-- Ein Diagramm eines weißen Notizbuchs mit Spiralbindung oben. Auf den linierten Seiten des Notizbuchs steht folgender Text:
-    "$\lim_{n \to \infty} (...) = \lim_{n \to \infty} (...)$"
-    "[Operation]"
-    "$\lim_{n \to \infty} (...) = $"
-    "[Wert A]"
-    "[Operation]"
-    "[Wert B]"
-    "="
-    "[Gesamtgrenzwert L]" (Dieser letzte Text ist in einem hellgrünen abgerundeten Rechteck innerhalb des Notizbuchs).
-Am unteren Rand der rechten Spalte befindet sich ein horizontales, hellgrünes abgerundetes Rechteck mit einem grünen Häkchen-Symbol links und schwarzem Text: "Stichhaltige Begründung erbracht".
+**Mittlere Spalte (Abschnitt 2):**
+Der Hintergrund ist hellblau. Oben befindet sich ein hellblaues, abgerundetes Rechteck mit dem Text "2. Grenzwertsätze (Bestimmung)" in schwarzer Schrift.
+Der Hauptinhalt ist eine große weiße Tafel mit dünnem schwarzem Rand.
+Oben auf der Tafel ist ein hellblaues, abgerundetes Rechteck mit dem Text "Zerlegung".
+Darunter steht die mathematische Notation: "lim_{n→∞} (2n+1)/n = lim_{n→∞} 2n/n + lim_{n→∞} 1/n".
+Darunter zeigt ein großer, nach unten gerichteter blauer Pfeil mit schwarzem Umriss.
+Unter dem Pfeil ist ein hellblaues, abgerundetes Rechteck mit dem Text "Sätze anwenden".
+Darunter sind drei mathematische Regeln aufgelistet:
+1. Ein schwarzes Pluszeichen (+) in einem schwarzen Kreis, gefolgt von: "lim_{n→∞} (a_n + b_n) = A + B"
+2. Ein schwarzes Sternchen (*) in einem schwarzen Kreis, gefolgt von: "lim_{n→∞} (a_n ⋅ b_n) = A ⋅ B"
+3. Ein schwarzes Divisionszeichen (÷) in einem schwarzen Kreis, gefolgt von: "lim_{n→∞} a_n / b_n = A / B (B ≠ 0)"
+Unter diesen Regeln sind eine kleine schwarze Linie (Tafellöscher) und ein kleines schwarzes Rechteck (Kreidehalter) dargestellt.
+Darunter steht die mathematische Notation: "lim_{n→∞} (2) + lim_{n→∞} (1/n) = 2 + 0 = 2".
+Links neben der Tafel steht ein Cartoon-Junge mit hellbraunem Haar, einem hellblau-grünen Langarmshirt und blauen Jeans. Er schreibt mit einem Stift in seiner rechten Hand auf die Tafel.
+Ganz unten in dieser Spalte befindet sich ein hellblaues, abgerundetes Rechteck mit dem Text "Teilgrenzwerte (A, B) müssen existieren!".
+
+**Rechte Spalte (Abschnitt 3):**
+Der Hintergrund ist hellgrün. Oben befindet sich ein hellgrünes, abgerundetes Rechteck mit dem Text "3. Argumentation (Darstellung)" in schwarzer Schrift.
+Diese Spalte ist in zwei kleinere, vertikale Unterabschnitte unterteilt, die ebenfalls abgerundete, hellgrüne Hintergründe mit gestrichelten schwarzen Linien haben.
+**Linker Unterabschnitt:** Oben ist ein hellgrünes, abgerundetes Rechteck mit dem Text "Verbale Darstellung". Darunter ist eine weiße Sprechblase in Wolkenform mit schwarzem Umriss, die aus dem Mund eines Jungen kommt. Der Text in der Sprechblase lautet:
+"Zerlegung der Folge"
+"Grenzwertsätze"
+"(Summe/Produkt/"
+"Quotient)"
+"Bekannte"
+"Teilgrenzwerte"
+"(z.B. lim_{n→∞} 1/n = 0)"
+"Resultat durch"
+"Rechenoperation"
+Unterhalb der Sprechblase steht ein Cartoon-Junge mit hellbraunem Haar, einem hellblau-grünen Langarmshirt und blauen Jeans. Er gestikuliert mit seiner rechten Hand und blickt leicht nach rechts.
+**Rechter Unterabschnitt:** Oben ist ein hellgrünes, abgerundetes Rechteck mit dem Text "Symbolische Darstellung". Darunter ist ein Diagramm, das ein spiralgebundenes Notizbuch darstellt, mit weißen linierten Seiten und einer grauen Spirale. Auf den Linien des Notizbuchs steht in schwarzer Schrift und mathematischer Notation:
+"lim(...) = lim(...)"
+"n→∞ n→∞" (unter den jeweiligen "lim" ausgerichtet)
+"[Operation]"
+"lim(...) ="
+"n→∞" (unter dem "lim" ausgerichtet)
+"[Wert A]"
+"[Operation]"
+"[Wert B]"
+"="
+Ein hellblaues, abgerundetes Rechteck mit schwarzem Rand, das den Text "[Gesamtgrenzwert L]" enthält, ist unter dem Gleichheitszeichen platziert.
+Ganz unten in der rechten Spalte befindet sich ein hellgrünes, abgerundetes Rechteck mit einem schwarzen Häkchen-Symbol links und dem Text "Stichhaltige Begründung erbracht" in schwarzer Schrift.
 ```

@@ -1,0 +1,4 @@
+Use case: precise-object-edit / scientific-educational.
+Eingabebild: bestehende Lernzielgrafik als Editziel. Korrigiere ausschließlich den unten beschriebenen belegten Mathematikfehler. Erhalte lockeren handgezeichneten Nano-Banana-Stil, Palette, Überschrift, übrige korrekte Inhalte und gut lesbare deutsche Schrift. Kein zusätzlicher Lernstoff, keine neuen Figuren. Zahlen, Formeln und Graphen müssen zueinander passen; dekorative Schematisierung darf keine falsche mathematische Aussage erzeugen.
+
+Nur die zweite Rechenzeile in der rechten Wolke reparieren: Am dortigen bisher grenzenlosen Integral exakt dieselben Grenzen 0 (unten) und 2 (oben) wie in ersterZeile ergänzen. Dadurch korrekt Integral von0bis2(3x²+2x)dx=(2³+2²)−(0³+0²)=12. Alle sonstigenFormeln, TabelleundDesignbyteähnlicherhalten. Tabelleüberschrift 'Eine Stammfunktion F(x)' statt nur 'Stammfunktion F(x)' istalsPräzisierungzulässig; keineanderenneuenInhalte.

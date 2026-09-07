@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "goalId": "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+  "candidateNumber": 1,
+  "assetSha256": "sha256:64d1479362ede44a47c54c27c138f18218626bacbc86dd1a3677f45f74fa9d38",
+  "reviewedAt": "2026-09-07T00:14:45Z",
+  "reviewer": "codex",
+  "reviewerRole": "independent_ai_visual_review",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "independentReviewScope": "Personally inspected original and candidate image pixels; did not adopt another reviewer decision.",
+  "decision": "needs_root_review",
+  "positiveFindings": [
+    "The velocity vectors at perihelion and aphelion are now vertical tangents and have opposite directions, consistent with one clockwise orbit.",
+    "Both gravitational-force arrows point toward the Sun; the distinction between circular centripetal force and general elliptical change of velocity is explicit.",
+    "The Newtonian force formula and centre-to-centre distance explanation are correct."
+  ],
+  "remainingRisks": [
+    "The explicitly labelled Sun focus and second focus lie substantially too close to the centre for the visibly flattened ellipse. On the displayed 2048 px rendition, a≈702 px and b≈379 px imply focal distance c≈591 px, whereas the drawn Sun is only about 260 px from the ellipse centre and the second marker about 335 px away. These are approximate visual estimates, not an exact image fit.",
+    "The global schematic label mitigates scale expectations but does not unambiguously resolve the incorrect-looking focus positions. Root must decide whether this qualitative drawing is acceptable or needs a targeted change. No new generation or import was performed for this goal."
+  ],
+  "rootReviewRequiredBeforeImport": true,
+  "imported": false,
+  "humanApprovalClaimed": false
+}

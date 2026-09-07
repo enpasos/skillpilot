@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "goalId": "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+  "candidateNumber": 3,
+  "assetSha256": "sha256:9922a4389500b22cfe0d23b1e26e22251787eb4ede72ace9e0016572f41e1fbf",
+  "reviewedAt": "2026-09-07T00:24:42.540Z",
+  "reviewer": "codex",
+  "reviewerRole": "independent_ai_visual_review",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "independentReviewScope": "Personally inspected candidate pixels and measured central contour and object positions read-only.",
+  "decision": "rejected_fachlich_incorrect",
+  "positiveFindings": [
+    "The title now limits the drawn orbit to a circle example. The former focus labels and faster/slower claims are removed.",
+    "The equal-speed tangent directions are consistently left upward and right downward; red gravity arrows point toward the Sun. The distinction between the circle centripetal force and the general central gravitational force is explicit."
+  ],
+  "blockingFindings": [
+    "Both planet symbols remain far outside the newly drawn circle. Approximate contour radii are 474.7 px horizontally and 487.1 px vertically, but the planets lie approximately 923.8 px and 933.9 px from its centre. They cannot represent positions on that orbit.",
+    "Correct explanatory text cannot repair the incorrect geometric relationship between orbit and planet positions. The requested circle simplification was not achieved as a coherent diagram."
+  ],
+  "geometryEvidencePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-orbits-and-cosmology-v1/60211ac1-cbe1-5182-87ef-673a068c5b0a/candidate-3/pixel-geometry-review.json",
+  "rootReviewRequiredBeforeImport": true,
+  "imported": false,
+  "humanApprovalClaimed": false,
+  "furtherGenerationPerformed": false
+}

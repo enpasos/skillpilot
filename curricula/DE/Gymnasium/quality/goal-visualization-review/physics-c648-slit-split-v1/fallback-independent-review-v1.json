@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "goal-visualization-independent-ai-review-v1",
+  "reviewedAt": "2026-09-07T02:03:07.089Z",
+  "reviewedBy": "codex-b040r-fresh-blind-b",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "humanApproval": false,
+  "scope": "Two final deterministic fallback PNGs, each actually viewed at original resolution. Proposed bilingual goals and all prompts read; final renderer read completely and SVG labels/geometry inspected. No generation/import/canonical edits made by this reviewer.",
+  "reviewMethod": "Fresh visual inspection of final PNGs plus independently recalculated formulas, source/geometry checks and read-only renderer --check. The earlier Nano findings were already finalized. Native numerical checks are additional evidence, not a substitute for visual review.",
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/render-fallbacks.mjs",
+      "sha256": "sha256:42f22b82f8d61fd91847a825d6bc51364a914b6f6e9f86e82352a89bb77bcc9c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/fallback-v1/grating.svg",
+      "sha256": "sha256:83305a7f770af99d5eca51e569439bd6661cd7a75d8cd78918f295a9c91669c1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/fallback-v1/grating.png",
+      "sha256": "sha256:cab9253e6910799480357a045664d223e03a33b73a6338a86249fdc640d8e4e6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/fallback-v1/single-slit.svg",
+      "sha256": "sha256:8035c1551201ad28f1b2b24f4f49bc63cb8604e99dad77a96a962b47afd5e61f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/fallback-v1/single-slit.png",
+      "sha256": "sha256:1c506f8147fed8d9fbc23a85ebf287575d64b29e1303f0f667a05207f510b2b1"
+    }
+  ],
+  "nativeCheck": {
+    "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH node curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/render-fallbacks.mjs --check",
+    "exitCode": 0,
+    "status": "PASS",
+    "scope": "Deterministic SVG source identity and mathematical assertions only."
+  },
+  "reviews": [
+    {
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061",
+      "case": "grating",
+      "decision": "PASS",
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/fallback-v1/grating.png",
+      "sha256": "sha256:cab9253e6910799480357a045664d223e03a33b73a6338a86249fdc640d8e4e6",
+      "blockers": [],
+      "checks": [
+        "Twelve equal-width apertures at regular 28-unit centre intervals are visibly present. The g dimension joins the centres at SVG y=416 and 444, not the edges or a slit width.",
+        "The illumination arrows are parallel and normal to the aperture plane. Dashed lines are explicitly geometric references, so the midpoint in an opaque bar is not depicted as a spurious light source.",
+        "O=(880,430), P=(880,267.3346994592885), and the upper endpoint of the y1 dimension use the same height; the negative-order marker is at the symmetric y=592.6653005407115.",
+        "The angle arc has its actual centre at the shared aperture reference (250,430). The horizontal L dimension spans x=250 to 880, matching the screen plane and y=L tan(theta).",
+        "All formula cards and explanatory labels are legible, unobstructed and scientifically consistent: g sin(theta_m)=m lambda, integral orders, equal adjacent phase and far-field path difference.",
+        "The figure explicitly shows principal-maximum directions only and disclaims a scale-accurate intensity representation. It neither invents grating minima nor denies secondary maxima.",
+        "500 lines/mm means g=2 micrometres. Independently calculated sin(theta1)=0.25, theta1=14.477512185929923 degrees and y1=0.2581988897471611 m support all displayed rounded numbers.",
+        "The possible-order inequality includes grazing directions; the separate equality note correctly excludes their intersection with a finite screen."
+      ]
+    },
+    {
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7",
+      "case": "single-slit",
+      "decision": "PASS",
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/fallback-v1/single-slit.png",
+      "sha256": "sha256:1c506f8147fed8d9fbc23a85ebf287575d64b29e1303f0f667a05207f510b2b1",
+      "blockers": [],
+      "checks": [
+        "Exactly one aperture is visible. Its width b runs edge-to-edge from SVG y=386 to 474. Normal parallel incident arrows and the stated uniform illumination/far-field model are consistent.",
+        "The common geometric origin is the aperture midpoint (250,430), O is (880,430), and the first positive minimum is (880,330). The opposite minimum is at y=530; y1 measures 430 to 330 and W measures 330 to 530.",
+        "The flat screen, horizontal L dimension, angle arc and geometric leg refer to the same planes and origin. The explicitly enlarged sketch angle is not falsely presented as the numerical example's tiny angle.",
+        "The bright centre, dark first minima and weak side bands have the right interpretation. The transverse raster intensity is computed using sin(atan(y/L)), normalized to the first minimum, not a silently linear y approximation.",
+        "The linear intensity graph defines I/I0 relative to the centre, uses u=b sin(theta)/lambda, has exactly one equally spaced tick at each -2,-1,0,+1,+2, stays nonnegative and is symmetric.",
+        "The actual sinc-squared plot has central height 1 and zeros exactly at nonzero integer u. Its first side peak at u=1.4302966531242027 has height 0.04719044922581128. In SVG coordinates the central rise is 163 and the side rise is 7.69204322380724, giving that same ratio; the orange pointer lands on the true side peak.",
+        "The visible side lobes are not artificially magnified and their labels do not sit on the half-order or zero ticks. The approximation warning is consistent with the plotted curve.",
+        "The minimum rule excludes m=0; the bright-centre note is explicit. Pairing corresponding points of the two half-apertures at the first minimum gives path difference lambda/2 and cancellation.",
+        "The example independently yields first minima ±5.000015625073242 mm, central width 10.000031250146485 mm and first secondary maxima ±7.151528985235306 mm; the displayed ±5.0, 10.0 and ±7.15 mm values are correct.",
+        "All symbols, labels and formula cards are readable. The W background patch and relocated theta label prevent line-through-text ambiguity without altering geometric endpoints."
+      ]
+    }
+  ]
+}

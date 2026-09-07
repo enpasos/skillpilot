@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-p2-authoring-context-v1",
+  "phase": "bodies-authored-awaiting-final-image-import-and-stable-binding",
+  "observedAt": "2026-09-07T00:47:00.565Z",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "criteria": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+    "sha256": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "readInFull": true
+  },
+  "source": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "observedLandscapeSha256": "sha256:0cfbb4ae83af29ee3672b49ed4743714bc65c8ffc110d0982bff01e133ae4877",
+    "goals": [
+      {
+        "id": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+        "title": "Arithmetische Reihen untersuchen",
+        "titleEn": "Investigate arithmetic series",
+        "description": "Die lernende Person kann Partialsummen arithmetischer Reihen bestimmen und mithilfe der Summenformel ihr Grenzverhalten begründen.",
+        "descriptionEn": "The learner can determine partial sums of arithmetic series and use the summation formula to justify their limiting behavior.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "E",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.E.SEQUENCES.ARITHMETIC_SERIES_LIMITS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34",
+        "type": "atomic",
+        "semanticAtomic": true
+      },
+      {
+        "id": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+        "title": "Geometrische Reihen untersuchen",
+        "titleEn": "Investigate geometric series",
+        "description": "Die lernende Person kann Partialsummen geometrischer Reihen bestimmen und mithilfe der Summenformel Konvergenz oder Divergenz sowie gegebenenfalls den Grenzwert begründen.",
+        "descriptionEn": "The learner can determine partial sums of geometric series and use the summation formula to justify convergence or divergence and, where applicable, the limit.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "67c4d6f8-45fc-53d5-8c95-a4c423e421a6"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "E",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.E.SEQUENCES.GEOMETRIC_SERIES_LIMITS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34",
+        "type": "atomic",
+        "semanticAtomic": true
+      }
+    ],
+    "prerequisites": [
+      {
+        "goalId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+        "goals": [
+          {
+            "id": "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+            "title": "Arithmetische und geometrische Folgen beschreiben",
+            "titleEn": "Describe arithmetic and geometric sequences",
+            "description": "Die lernende Person kann arithmetische und geometrische Folgen definieren, Terme für das n-te Glied aufstellen und Folgenwerte tabellarisch sowie grafisch darstellen.",
+            "descriptionEn": "The learner can define arithmetic and geometric sequences, set up terms for the n-th member, and represent sequence values tabularly and graphically.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.2"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "E"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34",
+            "type": "atomic",
+            "semanticAtomic": true,
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+                "title": "Visualisierung: Arithmetische und geometrische Folgen beschreiben",
+                "url": "/assets/goal-visualizations/mathematik/67c4d6f8-45fc-53d5-8c95-a4c423e421a6/67c4d6f8-45fc-53d5-8c95-a4c423e421a6.jpg",
+                "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+                "description": "Visualisierung zum Lernziel: Arithmetische und geometrische Folgen beschreiben.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Arithmetische und geometrische Folgen beschreiben\". Die lernende Person kann arithmetische und geometrische Folgen definieren, Terme für das n-te Glied aufstellen und Folgenwerte tabellarisch sowie grafisch darstellen.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "approved"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "goalId": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+        "goals": [
+          {
+            "id": "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+            "title": "Arithmetische und geometrische Folgen beschreiben",
+            "titleEn": "Describe arithmetic and geometric sequences",
+            "description": "Die lernende Person kann arithmetische und geometrische Folgen definieren, Terme für das n-te Glied aufstellen und Folgenwerte tabellarisch sowie grafisch darstellen.",
+            "descriptionEn": "The learner can define arithmetic and geometric sequences, set up terms for the n-th member, and represent sequence values tabularly and graphically.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.2"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "E"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34",
+            "type": "atomic",
+            "semanticAtomic": true,
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+                "title": "Visualisierung: Arithmetische und geometrische Folgen beschreiben",
+                "url": "/assets/goal-visualizations/mathematik/67c4d6f8-45fc-53d5-8c95-a4c423e421a6/67c4d6f8-45fc-53d5-8c95-a4c423e421a6.jpg",
+                "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+                "description": "Visualisierung zum Lernziel: Arithmetische und geometrische Folgen beschreiben.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Arithmetische und geometrische Folgen beschreiben\". Die lernende Person kann arithmetische und geometrische Folgen definieren, Terme für das n-te Glied aufstellen und Folgenwerte tabellarisch sowie grafisch darstellen.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "approved"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "notes": [
+    "Fresh independent content for each new child; no old broad-parent P body read or copied.",
+    "Both bilingual current descriptions, demand level, relations, applicability and supplied source references were read before authoring.",
+    "No image was bound to either child at authoring time. Root owns image generation/import; V stays in its separate QA lane. Final native materialization waits for Stable.",
+    "No review/run/mastery/human-approval claim is made by this authoring receipt."
+  ]
+}

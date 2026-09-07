@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-p19-author-case-checks-v1",
+  "observedAt": "2026-09-07T00:43:10.591Z",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-taylor-tools-integrals-19-v1.candidates.json",
+  "candidateSha256": "sha256:12f963862e82138d819a913de1e326a4ae55ad6b46fc6a44f51ec046b39709c9",
+  "configSchema": "pass",
+  "profileBodySchemas": 19,
+  "caseSpecificChecks": [
+    {
+      "goalId": "911f3200-1dbc-59a6-90df-c883c77de39c",
+      "caseId": "layer-thickness",
+      "result": "pass",
+      "verified": "Three-layer sum 23.52 µm and geometric limit 30 µm; contribution indexing checked."
+    },
+    {
+      "goalId": "911f3200-1dbc-59a6-90df-c883c77de39c",
+      "caseId": "bouncing-distance",
+      "result": "pass",
+      "verified": "One initial fall plus doubled subsequent heights gives 9 m, not a single height sum."
+    },
+    {
+      "goalId": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "caseId": "sine-contact",
+      "result": "pass",
+      "verified": "Taylor polynomial x−x³/6 has the four stated derivative values at 0."
+    },
+    {
+      "goalId": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "caseId": "shared-polynomial",
+      "result": "pass",
+      "verified": "Agreement through order 3 at 0 and nonzero difference x⁴ away from 0."
+    },
+    {
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "caseId": "choose-degree",
+      "result": "pass",
+      "verified": "All three Taylor values and the requested absolute-error threshold checked against Math.exp."
+    },
+    {
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "caseId": "negative-range",
+      "result": "pass",
+      "verified": "Near-center numerical error and the negative remote cubic value independently checked."
+    },
+    {
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "caseId": "series-and-partial",
+      "result": "pass",
+      "verified": "Factorial partial sum through 1/5! equals 163/60=T₅(1)."
+    },
+    {
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "caseId": "alternating-evaluation",
+      "result": "pass",
+      "verified": "Evaluation at +1 and −1 produces the stated positive and alternating partial sums."
+    },
+    {
+      "goalId": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+      "caseId": "parabola-tool",
+      "result": "pass",
+      "verified": "Expected roots/minimum/local check verified algebraically; no claim that a learner used a digital tool."
+    },
+    {
+      "goalId": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+      "caseId": "domain-gap-tool",
+      "result": "pass",
+      "verified": "Simplified line on x≠1, true root and excluded point checked; no digital execution claim."
+    },
+    {
+      "goalId": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+      "caseId": "moving-vertex",
+      "result": "pass",
+      "verified": "Vertex and translated unit-offset values checked for all three slider settings."
+    },
+    {
+      "goalId": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+      "caseId": "rotating-line",
+      "result": "pass",
+      "verified": "Common point and the three documented line values verified."
+    },
+    {
+      "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+      "caseId": "quadratic-comparison",
+      "result": "pass",
+      "verified": "Exact quadratic roots, minimum and restricted search-range coverage verified."
+    },
+    {
+      "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+      "caseId": "integral-comparison",
+      "result": "pass",
+      "verified": "Radian antiderivative result and an independent composite-Simpson numerical check agree at 1."
+    },
+    {
+      "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+      "caseId": "decreasing-line",
+      "result": "pass",
+      "verified": "Both partitions, upper/lower ordering and exact trapezoidal area for the line checked."
+    },
+    {
+      "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+      "caseId": "interior-maximum",
+      "result": "pass",
+      "verified": "Coarse/refined lower, upper and trapezoidal sums checked across the interior maximum."
+    },
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "caseId": "squeezed-area",
+      "result": "pass",
+      "verified": "Bounds and shrinking gap checked; common-limit reasoning supplied in the authored expectation."
+    },
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "caseId": "negative-stock-change",
+      "result": "pass",
+      "verified": "Negative integral, reconstructed final stock and additive initial-stock change checked."
+    },
+    {
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "caseId": "tank-turning-point",
+      "result": "pass",
+      "verified": "Reconstruction, derivative, maximum, final 18 L and net change 8 L checked."
+    },
+    {
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "caseId": "anchored-function",
+      "result": "pass",
+      "verified": "Nonzero reference argument, derivative and cancelling endpoint change checked."
+    },
+    {
+      "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+      "caseId": "linear-strip",
+      "result": "pass",
+      "verified": "Area primitive, local slopes and maximum at 3 checked; strip argument remains the authored conceptual evidence."
+    },
+    {
+      "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+      "caseId": "primitive-family",
+      "result": "pass",
+      "verified": "First/second derivative values and cancellation of the primitive constant checked."
+    },
+    {
+      "goalId": "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "caseId": "negative-constant",
+      "result": "pass",
+      "verified": "Integral-function values including reversed bounds checked."
+    },
+    {
+      "goalId": "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "caseId": "shifted-reference",
+      "result": "pass",
+      "verified": "Signed segment additivity and the constant −2 reference shift checked."
+    },
+    {
+      "goalId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+      "caseId": "polygon-to-area-graph",
+      "result": "pass",
+      "verified": "Area anchor points and graph slope signs checked on all segments."
+    },
+    {
+      "goalId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+      "caseId": "tangent-data-to-integrand",
+      "result": "pass",
+      "verified": "Reconstructed integrand slopes, distinct zero/tangent roles and cancellation checked."
+    },
+    {
+      "goalId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "caseId": "signed-energy-flow",
+      "result": "pass",
+      "verified": "Net 4 kWh and absolute throughput 8 kWh checked with signed products."
+    },
+    {
+      "goalId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "caseId": "signed-work",
+      "result": "pass",
+      "verified": "Unequal path weighting and complete signed-work cancellation checked."
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "caseId": "triangle-accumulation",
+      "result": "pass",
+      "verified": "Triangle areas and matching increasing-then-decreasing slope behavior checked."
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "caseId": "interior-reference",
+      "result": "pass",
+      "verified": "Interior reference, reversed orientation and both graph branches checked."
+    },
+    {
+      "goalId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+      "caseId": "right-sum-limit",
+      "result": "pass",
+      "verified": "Explicit right sums and their closed expression checked at four partition sizes."
+    },
+    {
+      "goalId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+      "caseId": "piecewise-exact-sums",
+      "result": "pass",
+      "verified": "Adapted interior-point sums retain exact signed value 3 under refinement."
+    },
+    {
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "caseId": "unknown-coefficient",
+      "result": "pass",
+      "verified": "Exponential and sine inverse-chain coefficients checked exactly."
+    },
+    {
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "caseId": "cosine-and-zero",
+      "result": "pass",
+      "verified": "Negative cosine inner slope and zero-slope exponential primitive checked by differentiation."
+    },
+    {
+      "goalId": "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+      "caseId": "signed-linear-integral",
+      "result": "pass",
+      "verified": "Primitive difference and two signed triangle contributions independently agree at 3."
+    },
+    {
+      "goalId": "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+      "caseId": "endpoint-only",
+      "result": "pass",
+      "verified": "Endpoint-only evaluation, reversed limits and additive constant cancellation checked."
+    },
+    {
+      "goalId": "ced4f794-9b42-4be4-bde5-7d44f134a140",
+      "caseId": "continuous-corner",
+      "result": "pass",
+      "verified": "Two-sided area quotient at the continuous corner tends to 0; total triangular area equals 1."
+    },
+    {
+      "goalId": "ced4f794-9b42-4be4-bde5-7d44f134a140",
+      "caseId": "signed-continuous-polynomial",
+      "result": "pass",
+      "verified": "Antiderivative, equal endpoints and local signed derivative values checked."
+    }
+  ],
+  "assessment": "These are author-side mathematical and structural checks of 38 expected solutions. They do not claim execution of hypothetical learner/tool workflows, semantic human approval, image QA approval, independent reviewer agreement or learner mastery."
+}

@@ -1,0 +1,1204 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "physics-b040-two-concrete-proposed-assessments-v1",
+  "status": "authoring_proposal_not_applied",
+  "recordedAt": "2026-09-07T01:35:49.763Z",
+  "author": {
+    "provider": "OpenAI",
+    "model": "unknown",
+    "modelVersion": "unknown",
+    "humanApprovalClaimed": false
+  },
+  "sources": [
+    {
+      "id": "he-q46",
+      "kind": "curriculum_scope_not_exam_origin",
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "locator": "printed page 47, Q4.6 basic level (GK and LK)",
+      "checked": "The original local PDF text of pages 47–48 was read; the seven planned goals and current Kepler goal were read in full. The new questions are not official examination questions."
+    },
+    {
+      "id": "noaa-tides",
+      "kind": "scientific_background",
+      "url": "https://oceanservice.noaa.gov/facts/springtide.html",
+      "checked": "Alignment versus quadrature and spring/neap tidal range; no local tidal prediction or measured heights copied."
+    },
+    {
+      "id": "noaa-differential",
+      "kind": "scientific_background",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_tides/lessons/ups_downs.html",
+      "checked": "Near/far gravitational difference and influence of Sun and Moon; earth-center acceleration comparison in this task is independently formulated."
+    },
+    {
+      "id": "nasa-cobe",
+      "kind": "rounded_observational_summary",
+      "url": "https://science.nasa.gov/mission/cobe/science/",
+      "checked": "Nearly uniform cosmic microwave background with a near-blackbody spectrum at about 2.725 K. No raw COBE data or original plot is reproduced."
+    },
+    {
+      "id": "nasa-size",
+      "kind": "rounded_model_based_summary",
+      "url": "https://www.nasa.gov/science-research/astrophysics/how-big-is-space-we-asked-a-nasa-expert-episode-61/",
+      "checked": "About 92 billion light-years across for the observable universe; the task uses half this diameter as an approximate present radius of 46 billion light-years."
+    },
+    {
+      "id": "nasa-age",
+      "kind": "rounded_model_based_summary",
+      "url": "https://science.nasa.gov/exoplanets/what-is-the-universe/",
+      "checked": "Approximate age 13.8 billion years and Solar System/Milky Way relation. These are supplied interpretive estimates, not quantities learners must recall to extra precision."
+    }
+  ],
+  "localBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:a5b589e9e0ce8abf6a1d0837b8a1c366d59ae1ee94e7b08c6d621beb5d947853"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/layer-a-split-authoring-plan.blind-b.json",
+      "sha256": "sha256:db229de88097a2205f026563b349079806091475a39eeecc7813c5d3862d268a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "sha256": "sha256:46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f"
+    }
+  ],
+  "exams": [
+    {
+      "goalId": "335a75b0-f691-5867-8ce3-3c971d541b9f",
+      "titleDe": "Sonnensystem: Bahnen und Gezeiten",
+      "titleEn": "Solar System: orbits and tides",
+      "descriptionDe": "Die lernende Person kann eine materialgebundene Q4-Klausuraufgabe zum Aufbau des Sonnensystems, zu Keplerschen Bahngesetzen und zur qualitativen Erklärung der Gezeiten selbstständig bearbeiten und die verwendeten Modellannahmen erläutern.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on the structure of the Solar System, Keplerian orbital laws and the qualitative explanation of tides, and explain the model assumptions used.",
+      "courseProfiles": [
+        "GK",
+        "LK"
+      ],
+      "proposedDurationMinutes": 60,
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "497f1311-17d6-56ff-afb1-422a738e5c16",
+        "37013646-f13a-5faf-954c-940f2fd7502f"
+      ],
+      "contextDe": "Ein Planetarium prüft zwei Unterrichtsmodelle: ein Modell sonnennaher und sonnenferner Umlaufbahnen sowie ein vereinfachtes Gezeitenmodell. Die Zahlen für P, K und die Mondbeschleunigungen sind ausdrücklich synthetische, physikalisch plausible Lehrdaten; P und K sind keine neu behaupteten realen Himmelskörper und die Tabelle ist keine Messreihe. Ein Taschenrechner ist erlaubt. Es sind keine externen Materialien nötig.",
+      "contextEn": "A planetarium is checking two teaching models: a model of orbits closer to and farther from the Sun and a simplified tidal model. The numbers for P, K and the lunar accelerations are explicitly synthetic, physically plausible teaching data; P and K are not claimed to be newly identified real celestial bodies and the table is not a measurement series. A calculator is allowed. No external materials are needed.",
+      "materials": [
+        {
+          "id": "A-M1",
+          "contentDe": "Die Sonne wird näherungsweise als ruhender, massedominanter Zentralstern behandelt. Alle hier betrachteten Körper sind an sie gebunden; gegenseitige Störungen und Ausgasungswirkungen werden vernachlässigt. Eine astronomische Einheit (AE) ist eine Längeneinheit. Als Referenz gelten für die Erde a_E=1,00 AE und T_E=1,00 Jahr. Die große Halbachse a beschreibt die Größe einer elliptischen Bahn, nicht den augenblicklichen Sonnenabstand.\n\n| Modellkörper | Charakterisierung | Große Halbachse a | Bahnform |\n| --- | --- | --- | --- |\n| P | Planet, wesentlich leichter als die Sonne | 4,00 AE | wenig langgestreckte Ellipse |\n| K | kleiner eisreicher Komet | 9,00 AE | stark langgestreckte Ellipse |",
+          "contentEn": "The Sun is approximated as a stationary central star that dominates the mass. All bodies considered here are bound to it; mutual perturbations and outgassing effects are neglected. An astronomical unit (AU) is a unit of length. For the reference Earth orbit, a_E=1.00 AU and T_E=1.00 year. The semimajor axis a describes the size of an elliptical orbit, not the instantaneous distance from the Sun.\n\n| Model body | Description | Semimajor axis a | Orbit shape |\n| --- | --- | --- | --- |\n| P | Planet, much less massive than the Sun | 4.00 AU | only mildly elongated ellipse |\n| K | small ice-rich comet | 9.00 AU | highly elongated ellipse |",
+          "provenance": "Own model data; the Earth normalization is a rounded teaching reference, not an ephemeris."
+        },
+        {
+          "id": "A-M2",
+          "contentDe": "Im idealisierten Gezeitenmodell liegt der Mond rechts von der Erde. N ist der mondnahe Oberflächenpunkt, C der Erdmittelpunkt und F der mondferne Oberflächenpunkt, alle drei auf der Erde-Mond-Linie. Die folgenden Beschleunigungen allein durch den Mond zeigen alle nach rechts. Für die Bewegung relativ zum Erdmittelpunkt vergleicht man g_M am jeweiligen Ort mit g_M(C).\n\n| Ort | Mondbeschleunigung g_M in m/s² |\n| --- | --- |\n| N | 3,43 · 10^−5 |\n| C | 3,32 · 10^−5 |\n| F | 3,21 · 10^−5 |\n\nDie Erde wird als kugelförmig mit einem frei beweglichen Ozean idealisiert. Für den Vergleich von Neu-/Vollmond und Halbmond ist auch die Sonnenwirkung qualitativ zu berücksichtigen. Es werden keine tatsächlichen Hochwasserzeiten oder Küstenhöhen gesucht.",
+          "contentEn": "In the idealized tidal model the Moon lies to the right of Earth. N is the near-side surface point, C the center of Earth and F the far-side surface point, all on the Earth–Moon line. The following accelerations due to the Moon alone all point to the right. To consider motion relative to Earth’s center, compare g_M at each point with g_M(C).\n\n| Position | Lunar acceleration g_M in m/s² |\n| --- | --- |\n| N | 3.43 · 10^−5 |\n| C | 3.32 · 10^−5 |\n| F | 3.21 · 10^−5 |\n\nEarth is idealized as spherical with a freely moving ocean. Include the solar contribution qualitatively when comparing new/full moon with quarter moon. No actual high-water times or coastal heights are requested.",
+          "provenance": "Own rounded acceleration example; qualitative physical background checked against NOAA, not a NOAA measurement table."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "A1",
+          "points": 6,
+          "assessedGoalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "taskDe": "Beschreiben Sie anhand von M1 den Aufbau des Modells und die unterschiedlichen Rollen von Sonne, Planet P und Komet K. Skizzieren Sie beide Bahnen mit der Sonne und ordnen Sie die Sonne innerhalb der Ellipsen ein. Erläutern Sie, welche Aussage über Kometen aus dieser einen Beispielbahn gerade nicht allgemein folgt.",
+          "taskEn": "Using M1, describe the model’s structure and the different roles of the Sun, planet P and comet K. Sketch both orbits with the Sun and locate the Sun within the ellipses. Explain which general statement about comets does not follow from this single example orbit.",
+          "solutionDe": "Die Sonne ist der massedominante, selbst leuchtende Zentralstern; P und K umlaufen sie und sind keine weiteren Sterne. P ist ein Planet, K ein wesentlich kleinerer eisreicher Körper, der in Sonnennähe durch freigesetztes Material auffällig werden kann. In der Skizze liegt die Sonne in einem gemeinsamen Brennpunkt; P zeigt die weniger, K die stärker langgestreckte Bahn. Die Abstände ändern sich entlang der Ellipsen. Aus der Modellbahn K folgt nicht, dass alle Kometen genau diese Bahnform, Größe oder Umlaufzeit haben. Größen und Abstände müssen in der Skizze nicht maßstäblich sein.",
+          "solutionEn": "The Sun is the mass-dominant, self-luminous central star; P and K orbit it and are not additional stars. P is a planet, while K is a much smaller ice-rich body that may become conspicuous through released material near the Sun. In the sketch the Sun occupies a common focus; P has the less elongated orbit and K the more elongated one. Distances vary along the ellipses. K’s model orbit does not show that all comets have exactly this shape, size or period. The sketch need not show sizes and distances to scale."
+        },
+        {
+          "id": "A2",
+          "points": 12,
+          "assessedGoalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+          "taskDe": "Formulieren Sie die drei Keplerschen Gesetze einschließlich der Gültigkeitsbedingung für den Vergleich mehrerer Körper. Berechnen Sie aus M1 die Umlaufzeiten von P und K. Begründen Sie mit dem zweiten Gesetz, ob K in Sonnennähe oder Sonnenferne schneller ist. Beurteilen Sie schließlich, ob dieselbe zahlenmäßige Erde-Normierung ohne weitere Angaben auf einen Planeten um einen anderen Stern übertragen werden darf.",
+          "taskEn": "State Kepler’s three laws, including the validity condition when comparing different bodies. Use M1 to calculate the periods of P and K. Use the second law to explain whether K moves faster near or far from the Sun. Finally, judge whether the same numerical Earth normalization can be applied without further information to a planet around another star.",
+          "solutionDe": "1. Die gebundenen Bahnen sind Ellipsen mit der Sonne in einem Brennpunkt. 2. Der Fahrstrahl zur Sonne überstreicht in gleichen Zeiten gleiche Flächen. 3. Für denselben massedominanten Zentralkörper ist T²/a³ konstant; a ist die große Halbachse. Damit gilt T_P=T_E(a_P/a_E)^(3/2)=1 Jahr·4^(3/2)=8,00 Jahre und T_K=1 Jahr·9^(3/2)=27,0 Jahre. Die AE kürzen sich im Verhältnis. Nahe der Sonne muss K in derselben Zeit einen längeren Bahnabschnitt durchlaufen, um bei kürzerem Fahrstrahl dieselbe Fläche zu überstreichen; dort ist es schneller. Die Konstante hängt von der Zentralmasse ab. Für einen anderen Stern ist die Erd-Normierung ohne dessen Masse oder eine passende Referenzbahn nicht begründet.",
+          "solutionEn": "1. Bound orbits are ellipses with the Sun at one focus. 2. The Sun–body radius vector sweeps out equal areas in equal times. 3. For the same mass-dominant central body, T²/a³ is constant; a is the semimajor axis. Thus T_P=T_E(a_P/a_E)^(3/2)=1 year·4^(3/2)=8.00 years and T_K=1 year·9^(3/2)=27.0 years. AU cancels in the ratio. Near the Sun, K must cover a longer orbital segment in the same time to sweep out the same area with a shorter radius vector, so it is faster there. The constant depends on central mass. For another star, the Earth normalization is unjustified without its mass or a suitable reference orbit."
+        },
+        {
+          "id": "A3",
+          "points": 12,
+          "assessedGoalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+          "taskDe": "Vergleichen Sie in M2 die Mondanziehung auf N, C und F. Bestimmen Sie die beiden Beschleunigungsdifferenzen gegenüber C und zeichnen Sie deren Richtungen ein. Erklären Sie damit qualitativ die Streckung des idealisierten Ozeans auf beiden Seiten der Erde; sagen Sie ausdrücklich, ob der Mond die ferne Seite anzieht. Erklären Sie den Unterschied zwischen Spring- und Nipptide durch das Zusammenwirken von Mond und Sonne. Nennen Sie zwei Gründe, weshalb dieses Modell allein keine Hochwasserzeit und -höhe an einem wirklichen Küstenort vorhersagt.",
+          "taskEn": "Compare the lunar attraction at N, C and F in M2. Determine the two acceleration differences relative to C and mark their directions. Use them to explain qualitatively why the idealized ocean is stretched on both sides of Earth; explicitly state whether the Moon attracts the far side. Explain the difference between spring and neap tides through the combined action of Moon and Sun. Give two reasons why this model alone cannot predict high-water time and height at a real coastal location.",
+          "solutionDe": "Die Mondbeschleunigung weist an allen drei Orten zum Mond, nimmt aber von N über C nach F ab. Gegenüber C gilt Δg_N=+1,1·10^−6 m/s² nach rechts und Δg_F=−1,1·10^−6 m/s², also relativ nach links; Δg_C=0. Die nahe Seite wird stärker als der Erdmittelpunkt zum Mond beschleunigt, die ferne schwächer. Deshalb ergibt sich relativ zur fallenden Erde eine Streckung nach beiden Seiten. Die ferne Seite wird weiterhin vom Mond angezogen; ihre relative Bewegung ist keine abstoßende Mondkraft. Bei Neu-/Vollmond verstärken sich die Gezeitenwirkungen entlang annähernd derselben Achse: größerer Tidenhub (Springtide). Bei Halbmond stehen die Achsen ungefähr rechtwinklig; die Wirkungen schwächen sich teilweise: kleinerer Tidenhub (Nipptide). Küstenform, Wassertiefe, Reibung und dynamische Verzögerung sowie Wetter können reale Höhen und Zeiten verändern; zwei sinnvoll erläuterte Einflüsse genügen.",
+          "solutionEn": "At all three positions lunar acceleration points toward the Moon, but it decreases from N through C to F. Relative to C, Δg_N=+1.1·10^−6 m/s² points right and Δg_F=−1.1·10^−6 m/s² points left relative to Earth’s center; Δg_C=0. The near side accelerates toward the Moon more strongly than the center, and the far side less strongly. Relative to the falling Earth this produces stretching on both sides. The Moon still attracts the far side; its relative motion is not a repulsive lunar force. At new/full moon the tidal contributions reinforce along approximately the same axis, giving a larger tidal range (spring tide). At quarter moon their axes are approximately perpendicular and partly counteract, giving a smaller range (neap tide). Coastline shape, water depth, friction and dynamic lag, and weather can change actual heights and times; two sensibly explained influences suffice."
+        }
+      ],
+      "rubric": [
+        {
+          "id": "A1-star",
+          "points": 2,
+          "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "demandLevel": "AB1",
+          "descriptionDe": "Sonne als selbst leuchtender massedominanter Stern, umlaufende Körper keine weiteren Sterne; je 1 P.",
+          "descriptionEn": "Sun identified as a self-luminous mass-dominant star, orbiting bodies not additional stars; 1 point each."
+        },
+        {
+          "id": "A1-bodies",
+          "points": 2,
+          "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "demandLevel": "AB2",
+          "descriptionDe": "Planet und kleiner eisreicher Komet mit unterschiedlichen Rollen und dem zugehörigen Bahncharakter eingeordnet; je 1 P.",
+          "descriptionEn": "Planet and small ice-rich comet classified by their different roles and corresponding orbit character; 1 point each."
+        },
+        {
+          "id": "A1-model",
+          "points": 2,
+          "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "demandLevel": "AB2",
+          "descriptionDe": "Nachvollziehbare Anordnung beider Bahnen um die Sonne (1); keine Verallgemeinerung dieser Kometenbahn auf alle Kometen (1).",
+          "descriptionEn": "Coherent arrangement of both orbits around the Sun (1); no universal generalization from this comet orbit (1)."
+        },
+        {
+          "id": "A2-laws",
+          "points": 5,
+          "goalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+          "demandLevel": "AB1",
+          "descriptionDe": "Ellipse/Brennpunkt, gleiche Flächen in gleichen Zeiten, T²/a³ konstant, a als große Halbachse und gleiche Zentralmasse als Vergleichsbedingung; je 1 P. Brennpunktgenauigkeit wird hier, nicht nochmals in A1, bewertet.",
+          "descriptionEn": "Ellipse/focus, equal areas in equal times, constant T²/a³, a as semimajor axis, and same central mass as comparison condition; 1 point each. Exact focus placement is scored here, not again in A1."
+        },
+        {
+          "id": "A2-periods",
+          "points": 4,
+          "goalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+          "demandLevel": "AB2",
+          "descriptionDe": "Für P und K jeweils korrektes Verhältnis mit T_E sowie Ergebnis 8 Jahre bzw. 27 Jahre mit Zeiteinheit; je 2 P.",
+          "descriptionEn": "For P and K, correct ratio with T_E and result 8 years or 27 years with a time unit; 2 points each."
+        },
+        {
+          "id": "A2-speed",
+          "points": 2,
+          "goalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+          "demandLevel": "AB2",
+          "descriptionDe": "Sonnennähe als schneller identifiziert (1) und aus gleichem Flächenzuwachs bei kürzerem Fahrstrahl begründet (1).",
+          "descriptionEn": "Identifies faster motion near the Sun (1) and explains it through equal swept area with shorter radius vector (1)."
+        },
+        {
+          "id": "A2-central-mass",
+          "points": 1,
+          "goalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+          "demandLevel": "AB2",
+          "descriptionDe": "Übertragung der Erd-Normierung auf unbekannte andere Zentralmasse begründet abgelehnt.",
+          "descriptionEn": "Rejects transferring Earth normalization to an unknown different central mass with a valid reason."
+        },
+        {
+          "id": "A3-relative",
+          "points": 7,
+          "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+          "demandLevel": "AB2",
+          "descriptionDe": "Alle Anziehungen zum Mond (1), Stärke N>C>F (1), Differenzen +1,1·10^−6 und −1,1·10^−6 m/s² (je 1), Bezug zum Erdmittelpunkt statt Abstoßung (1), Streckungsrichtung an N und F erklärt (je 1).",
+          "descriptionEn": "All attractions toward Moon (1), strength N>C>F (1), differences +1.1·10^−6 and −1.1·10^−6 m/s² (1 each), reference to Earth’s center rather than repulsion (1), stretching direction at N and F explained (1 each)."
+        },
+        {
+          "id": "A3-solar",
+          "points": 3,
+          "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+          "demandLevel": "AB2",
+          "descriptionDe": "Sonnenbeitrag bei Neu-/Vollmond verstärkend (1), bei Halbmond teilweise abschwächend (1), Spring-/Nipptide mit größerem/kleinerem Tidenhub zutreffend zugeordnet (1).",
+          "descriptionEn": "Solar contribution reinforcing at new/full moon (1), partly counteracting at quarter moon (1), correct spring/neap classification with larger/smaller range (1)."
+        },
+        {
+          "id": "A3-limits",
+          "points": 2,
+          "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+          "demandLevel": "AB2",
+          "descriptionDe": "Zwei physikalisch sinnvolle Einflüsse auf reale Küstenzeiten/-höhen erläutert; je 1 P.",
+          "descriptionEn": "Explains two physically sensible influences on actual coastal timing/heights; 1 point each."
+        }
+      ],
+      "before": {
+        "id": "335a75b0-f691-5867-8ce3-3c971d541b9f",
+        "title": "Astrophysik und Kosmologie",
+        "titleEn": "Astrophysics and Cosmology",
+        "description": "Die lernende Person kann eine materialgestuetzte Q4-Klausuraufgabe zu Sonnensystem, Kosmologie, Sternentwicklung, Entfernungsbestimmung und allgemeiner Relativitaet im kosmischen Kontext selbstaendig bearbeiten.",
+        "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on the solar system, cosmology, stellar evolution, distance determination, and general relativity in a cosmic context.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+          "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+          "5db07785-8cca-50d5-81a9-e0264d344af9",
+          "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+          "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+          "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+          "14d99a65-8d58-5647-88ab-02137b96d55b",
+          "2b700858-bc2e-5ddf-a791-b14d44160480",
+          "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+          "ba16948b-5e07-54af-b77b-776e677c6906",
+          "da3169ae-c72a-5782-ad95-408167a5c6da",
+          "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+          "e28381b4-50ef-5cac-bfa4-b7c8e03aef82"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_KOSMOS",
+            "LI_ENERGIE"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "treeOrder": 8
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+            "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+            "5db07785-8cca-50d5-81a9-e0264d344af9",
+            "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+            "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+            "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+            "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+            "14d99a65-8d58-5647-88ab-02137b96d55b",
+            "2b700858-bc2e-5ddf-a791-b14d44160480",
+            "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+            "ba16948b-5e07-54af-b77b-776e677c6906",
+            "da3169ae-c72a-5782-ad95-408167a5c6da",
+            "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+            "e28381b4-50ef-5cac-bfa4-b7c8e03aef82"
+          ],
+          "coveredStrands": [
+            "LI_KOSMOS",
+            "LI_ENERGIE",
+            "LI_MATERIE"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "**Kontext:**\n\nBearbeiten Sie eine materialgebundene Klausuraufgabe zu \"Astrophysik und Kosmologie\". Nutzen Sie geeignete Modelle, Diagramme, Rechnungen und eine fachlich begruendete Bewertung.\n\n**Aufgaben:**\n\n1. Stellen Sie die relevanten physikalischen Groessen, Modelle und Zusammenhaenge dar. (8 BE)\n2. Werten Sie gegebene Mess- oder Materialdaten rechnerisch aus und dokumentieren Sie den Loesungsweg. (10 BE)\n3. Deuten Sie das Ergebnis fachlich und pruefen Sie Modellgrenzen. (6 BE)\n4. Beurteilen Sie eine Anwendung oder Entscheidungssituation mit physikalischen Kriterien. (6 BE)",
+          "solutionContent": "Eine vollstaendige Loesung zu \"Astrophysik und Kosmologie\" enthaelt die Auswahl eines passenden Modells, korrekte Groessengleichungen mit Einheiten, nachvollziehbare Rechnungen, eine fachliche Deutung der Ergebnisse und eine begruendete Bewertung der Modellgrenzen.",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 8,
+                "description": "relevante Modelle und Groessen fuer Q4 fachlich richtig dargestellt"
+              },
+              {
+                "id": "s2",
+                "points": 10,
+                "description": "Materialdaten rechnerisch korrekt ausgewertet"
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Ergebnisse fachlich gedeutet und Modellgrenzen benannt"
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Anwendungssituation physikalisch begruendet bewertet"
+              }
+            ]
+          }
+        }
+      },
+      "reviewState": "proposed_only_needs_root_subject_review",
+      "scoringPolicy": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "rationaleDe": "18/30 bleibt die vorhandene 60-Prozent-Schwelle als klarer Autorenentwurf, keine behauptete staatliche Notengrenze. Jeder Teilpunkt ist unten an eine beobachtbare Leistung gebunden. Gleichwertige Skizzen, Formulierungen und Lösungswege werden akzeptiert. Rechen-Folgefehler werden nur am Ursprung abgezogen; richtige weitere Physik kann Punkte erhalten. Ein bestandenes Gesamtergebnis bestätigt nicht automatisch jeden der drei abgedeckten Goal-IDs oder einen LK-Kompetenzumfang.",
+        "rationaleEn": "18/30 retains the existing 60-percent threshold as an explicit authoring proposal, not as a claimed official grading boundary. Each point is tied to observable performance below. Equivalent diagrams, wording and solution methods are accepted. A propagated arithmetic error is penalized only at its origin; correct subsequent physics can receive points. Passing the total does not automatically establish mastery of every one of the three covered goal IDs or of an advanced-course scope."
+      },
+      "coverage": [
+        {
+          "goal": {
+            "id": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "shortKey": "canonical_physics_astro_solar_system_structure",
+            "title": "Aufbau des Sonnensystems beschreiben",
+            "titleEn": "Describe the structure of the Solar System",
+            "description": "Die lernende Person kann den Aufbau des Sonnensystems beschreiben und Sonne, Planeten und Kometen anhand ihrer Rolle und ihrer Bahnen einordnen.",
+            "descriptionEn": "The learner can describe the structure of the Solar System and classify the Sun, planets, and comets by their roles and orbits.",
+            "type": "atomic",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [],
+            "requires": [],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-physics",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [],
+              "phase": "Q4"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-HE",
+                "DE-BY"
+              ]
+            }
+          },
+          "tasks": [
+            "A1"
+          ],
+          "points": 6
+        },
+        {
+          "goal": {
+            "id": "497f1311-17d6-56ff-afb1-422a738e5c16",
+            "title": "Kepler-Gesetze anwenden",
+            "titleEn": "Apply Kepler's Laws",
+            "description": "Die lernende Person kann die drei Kepler’schen Gesetze formulieren und einfache Schlussfolgerungen zu Umlaufzeiten und Bahnradien ziehen.",
+            "descriptionEn": "The learner can formulate Kepler's three laws and draw simple conclusions regarding orbital periods and orbital radii.",
+            "weight": 0.9,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "60211ac1-cbe1-5182-87ef-673a068c5b0a"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-physics",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [],
+              "phase": "E"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+                "title": "Visualisierung: Kepler-Gesetze anwenden",
+                "url": "/assets/goal-visualizations/physik/497f1311-17d6-56ff-afb1-422a738e5c16/497f1311-17d6-56ff-afb1-422a738e5c16.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Kepler-Gesetze anwenden.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Kepler-Gesetze anwenden\". Die lernende Person kann die drei Kepler’schen Gesetze formulieren und einfache Schlussfolgerungen zu Umlaufzeiten und Bahnradien ziehen.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "tasks": [
+            "A2"
+          ],
+          "points": 12
+        },
+        {
+          "goal": {
+            "id": "37013646-f13a-5faf-954c-940f2fd7502f",
+            "shortKey": "canonical_physics_astro_tides_qualitative",
+            "title": "Gezeiten qualitativ erklären",
+            "titleEn": "Explain tides qualitatively",
+            "description": "Die lernende Person kann Gezeiten qualitativ durch die unterschiedliche Gravitationswirkung von Mond und Sonne auf verschiedene Bereiche der Erde erklären.",
+            "descriptionEn": "The learner can explain tides qualitatively through the differing gravitational effects of the Moon and Sun on different regions of Earth.",
+            "type": "atomic",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+              "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-physics",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [],
+              "phase": "Q4"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-HE"
+              ]
+            }
+          },
+          "tasks": [
+            "A3"
+          ],
+          "points": 12
+        }
+      ],
+      "proposedGoalPatch": {
+        "title": "Sonnensystem: Bahnen und Gezeiten",
+        "titleEn": "Solar System: orbits and tides",
+        "description": "Die lernende Person kann eine materialgebundene Q4-Klausuraufgabe zum Aufbau des Sonnensystems, zu Keplerschen Bahngesetzen und zur qualitativen Erklärung der Gezeiten selbstständig bearbeiten und die verwendeten Modellannahmen erläutern.",
+        "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on the structure of the Solar System, Keplerian orbital laws and the qualitative explanation of tides, and explain the model assumptions used.",
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "requires": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "497f1311-17d6-56ff-afb1-422a738e5c16",
+          "37013646-f13a-5faf-954c-940f2fd7502f"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK4_KOMMUNIZIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_KOSMOS"
+          ],
+          "phase": "Q4"
+        },
+        "examData": {
+          "reviewStatus": "needs_review",
+          "reviewNote": "Unveröffentlichter AI-Authoringvorschlag; keine menschliche oder operative Freigabe. Erst nach fachlicher Gegenprüfung, Routenreparatur und geschützten Maturitychecks übernehmen.",
+          "coveredGoalIds": [
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "497f1311-17d6-56ff-afb1-422a738e5c16",
+            "37013646-f13a-5faf-954c-940f2fd7502f"
+          ],
+          "coveredStrands": [
+            "LI_KOSMOS"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "Ein Planetarium prüft zwei Unterrichtsmodelle: ein Modell sonnennaher und sonnenferner Umlaufbahnen sowie ein vereinfachtes Gezeitenmodell. Die Zahlen für P, K und die Mondbeschleunigungen sind ausdrücklich synthetische, physikalisch plausible Lehrdaten; P und K sind keine neu behaupteten realen Himmelskörper und die Tabelle ist keine Messreihe. Ein Taschenrechner ist erlaubt. Es sind keine externen Materialien nötig.\n\n### A-M1\n\nDie Sonne wird näherungsweise als ruhender, massedominanter Zentralstern behandelt. Alle hier betrachteten Körper sind an sie gebunden; gegenseitige Störungen und Ausgasungswirkungen werden vernachlässigt. Eine astronomische Einheit (AE) ist eine Längeneinheit. Als Referenz gelten für die Erde a_E=1,00 AE und T_E=1,00 Jahr. Die große Halbachse a beschreibt die Größe einer elliptischen Bahn, nicht den augenblicklichen Sonnenabstand.\n\n| Modellkörper | Charakterisierung | Große Halbachse a | Bahnform |\n| --- | --- | --- | --- |\n| P | Planet, wesentlich leichter als die Sonne | 4,00 AE | wenig langgestreckte Ellipse |\n| K | kleiner eisreicher Komet | 9,00 AE | stark langgestreckte Ellipse |\n\n### A-M2\n\nIm idealisierten Gezeitenmodell liegt der Mond rechts von der Erde. N ist der mondnahe Oberflächenpunkt, C der Erdmittelpunkt und F der mondferne Oberflächenpunkt, alle drei auf der Erde-Mond-Linie. Die folgenden Beschleunigungen allein durch den Mond zeigen alle nach rechts. Für die Bewegung relativ zum Erdmittelpunkt vergleicht man g_M am jeweiligen Ort mit g_M(C).\n\n| Ort | Mondbeschleunigung g_M in m/s² |\n| --- | --- |\n| N | 3,43 · 10^−5 |\n| C | 3,32 · 10^−5 |\n| F | 3,21 · 10^−5 |\n\nDie Erde wird als kugelförmig mit einem frei beweglichen Ozean idealisiert. Für den Vergleich von Neu-/Vollmond und Halbmond ist auch die Sonnenwirkung qualitativ zu berücksichtigen. Es werden keine tatsächlichen Hochwasserzeiten oder Küstenhöhen gesucht.\n\n### A1 (6 Punkte)\n\nBeschreiben Sie anhand von M1 den Aufbau des Modells und die unterschiedlichen Rollen von Sonne, Planet P und Komet K. Skizzieren Sie beide Bahnen mit der Sonne und ordnen Sie die Sonne innerhalb der Ellipsen ein. Erläutern Sie, welche Aussage über Kometen aus dieser einen Beispielbahn gerade nicht allgemein folgt.\n\n### A2 (12 Punkte)\n\nFormulieren Sie die drei Keplerschen Gesetze einschließlich der Gültigkeitsbedingung für den Vergleich mehrerer Körper. Berechnen Sie aus M1 die Umlaufzeiten von P und K. Begründen Sie mit dem zweiten Gesetz, ob K in Sonnennähe oder Sonnenferne schneller ist. Beurteilen Sie schließlich, ob dieselbe zahlenmäßige Erde-Normierung ohne weitere Angaben auf einen Planeten um einen anderen Stern übertragen werden darf.\n\n### A3 (12 Punkte)\n\nVergleichen Sie in M2 die Mondanziehung auf N, C und F. Bestimmen Sie die beiden Beschleunigungsdifferenzen gegenüber C und zeichnen Sie deren Richtungen ein. Erklären Sie damit qualitativ die Streckung des idealisierten Ozeans auf beiden Seiten der Erde; sagen Sie ausdrücklich, ob der Mond die ferne Seite anzieht. Erklären Sie den Unterschied zwischen Spring- und Nipptide durch das Zusammenwirken von Mond und Sonne. Nennen Sie zwei Gründe, weshalb dieses Modell allein keine Hochwasserzeit und -höhe an einem wirklichen Küstenort vorhersagt.",
+          "taskContentEn": "A planetarium is checking two teaching models: a model of orbits closer to and farther from the Sun and a simplified tidal model. The numbers for P, K and the lunar accelerations are explicitly synthetic, physically plausible teaching data; P and K are not claimed to be newly identified real celestial bodies and the table is not a measurement series. A calculator is allowed. No external materials are needed.\n\n### A-M1\n\nThe Sun is approximated as a stationary central star that dominates the mass. All bodies considered here are bound to it; mutual perturbations and outgassing effects are neglected. An astronomical unit (AU) is a unit of length. For the reference Earth orbit, a_E=1.00 AU and T_E=1.00 year. The semimajor axis a describes the size of an elliptical orbit, not the instantaneous distance from the Sun.\n\n| Model body | Description | Semimajor axis a | Orbit shape |\n| --- | --- | --- | --- |\n| P | Planet, much less massive than the Sun | 4.00 AU | only mildly elongated ellipse |\n| K | small ice-rich comet | 9.00 AU | highly elongated ellipse |\n\n### A-M2\n\nIn the idealized tidal model the Moon lies to the right of Earth. N is the near-side surface point, C the center of Earth and F the far-side surface point, all on the Earth–Moon line. The following accelerations due to the Moon alone all point to the right. To consider motion relative to Earth’s center, compare g_M at each point with g_M(C).\n\n| Position | Lunar acceleration g_M in m/s² |\n| --- | --- |\n| N | 3.43 · 10^−5 |\n| C | 3.32 · 10^−5 |\n| F | 3.21 · 10^−5 |\n\nEarth is idealized as spherical with a freely moving ocean. Include the solar contribution qualitatively when comparing new/full moon with quarter moon. No actual high-water times or coastal heights are requested.\n\n### A1 (6 points)\n\nUsing M1, describe the model’s structure and the different roles of the Sun, planet P and comet K. Sketch both orbits with the Sun and locate the Sun within the ellipses. Explain which general statement about comets does not follow from this single example orbit.\n\n### A2 (12 points)\n\nState Kepler’s three laws, including the validity condition when comparing different bodies. Use M1 to calculate the periods of P and K. Use the second law to explain whether K moves faster near or far from the Sun. Finally, judge whether the same numerical Earth normalization can be applied without further information to a planet around another star.\n\n### A3 (12 points)\n\nCompare the lunar attraction at N, C and F in M2. Determine the two acceleration differences relative to C and mark their directions. Use them to explain qualitatively why the idealized ocean is stretched on both sides of Earth; explicitly state whether the Moon attracts the far side. Explain the difference between spring and neap tides through the combined action of Moon and Sun. Give two reasons why this model alone cannot predict high-water time and height at a real coastal location.",
+          "solutionContent": "### A1 (6 Punkte)\n\nDie Sonne ist der massedominante, selbst leuchtende Zentralstern; P und K umlaufen sie und sind keine weiteren Sterne. P ist ein Planet, K ein wesentlich kleinerer eisreicher Körper, der in Sonnennähe durch freigesetztes Material auffällig werden kann. In der Skizze liegt die Sonne in einem gemeinsamen Brennpunkt; P zeigt die weniger, K die stärker langgestreckte Bahn. Die Abstände ändern sich entlang der Ellipsen. Aus der Modellbahn K folgt nicht, dass alle Kometen genau diese Bahnform, Größe oder Umlaufzeit haben. Größen und Abstände müssen in der Skizze nicht maßstäblich sein.\n\n### A2 (12 Punkte)\n\n1. Die gebundenen Bahnen sind Ellipsen mit der Sonne in einem Brennpunkt. 2. Der Fahrstrahl zur Sonne überstreicht in gleichen Zeiten gleiche Flächen. 3. Für denselben massedominanten Zentralkörper ist T²/a³ konstant; a ist die große Halbachse. Damit gilt T_P=T_E(a_P/a_E)^(3/2)=1 Jahr·4^(3/2)=8,00 Jahre und T_K=1 Jahr·9^(3/2)=27,0 Jahre. Die AE kürzen sich im Verhältnis. Nahe der Sonne muss K in derselben Zeit einen längeren Bahnabschnitt durchlaufen, um bei kürzerem Fahrstrahl dieselbe Fläche zu überstreichen; dort ist es schneller. Die Konstante hängt von der Zentralmasse ab. Für einen anderen Stern ist die Erd-Normierung ohne dessen Masse oder eine passende Referenzbahn nicht begründet.\n\n### A3 (12 Punkte)\n\nDie Mondbeschleunigung weist an allen drei Orten zum Mond, nimmt aber von N über C nach F ab. Gegenüber C gilt Δg_N=+1,1·10^−6 m/s² nach rechts und Δg_F=−1,1·10^−6 m/s², also relativ nach links; Δg_C=0. Die nahe Seite wird stärker als der Erdmittelpunkt zum Mond beschleunigt, die ferne schwächer. Deshalb ergibt sich relativ zur fallenden Erde eine Streckung nach beiden Seiten. Die ferne Seite wird weiterhin vom Mond angezogen; ihre relative Bewegung ist keine abstoßende Mondkraft. Bei Neu-/Vollmond verstärken sich die Gezeitenwirkungen entlang annähernd derselben Achse: größerer Tidenhub (Springtide). Bei Halbmond stehen die Achsen ungefähr rechtwinklig; die Wirkungen schwächen sich teilweise: kleinerer Tidenhub (Nipptide). Küstenform, Wassertiefe, Reibung und dynamische Verzögerung sowie Wetter können reale Höhen und Zeiten verändern; zwei sinnvoll erläuterte Einflüsse genügen.",
+          "solutionContentEn": "### A1 (6 points)\n\nThe Sun is the mass-dominant, self-luminous central star; P and K orbit it and are not additional stars. P is a planet, while K is a much smaller ice-rich body that may become conspicuous through released material near the Sun. In the sketch the Sun occupies a common focus; P has the less elongated orbit and K the more elongated one. Distances vary along the ellipses. K’s model orbit does not show that all comets have exactly this shape, size or period. The sketch need not show sizes and distances to scale.\n\n### A2 (12 points)\n\n1. Bound orbits are ellipses with the Sun at one focus. 2. The Sun–body radius vector sweeps out equal areas in equal times. 3. For the same mass-dominant central body, T²/a³ is constant; a is the semimajor axis. Thus T_P=T_E(a_P/a_E)^(3/2)=1 year·4^(3/2)=8.00 years and T_K=1 year·9^(3/2)=27.0 years. AU cancels in the ratio. Near the Sun, K must cover a longer orbital segment in the same time to sweep out the same area with a shorter radius vector, so it is faster there. The constant depends on central mass. For another star, the Earth normalization is unjustified without its mass or a suitable reference orbit.\n\n### A3 (12 points)\n\nAt all three positions lunar acceleration points toward the Moon, but it decreases from N through C to F. Relative to C, Δg_N=+1.1·10^−6 m/s² points right and Δg_F=−1.1·10^−6 m/s² points left relative to Earth’s center; Δg_C=0. The near side accelerates toward the Moon more strongly than the center, and the far side less strongly. Relative to the falling Earth this produces stretching on both sides. The Moon still attracts the far side; its relative motion is not a repulsive lunar force. At new/full moon the tidal contributions reinforce along approximately the same axis, giving a larger tidal range (spring tide). At quarter moon their axes are approximately perpendicular and partly counteract, giving a smaller range (neap tide). Coastline shape, water depth, friction and dynamic lag, and weather can change actual heights and times; two sensibly explained influences suffice.",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "A1-star",
+                "points": 2,
+                "description": "Sonne als selbst leuchtender massedominanter Stern, umlaufende Körper keine weiteren Sterne; je 1 P."
+              },
+              {
+                "id": "A1-bodies",
+                "points": 2,
+                "description": "Planet und kleiner eisreicher Komet mit unterschiedlichen Rollen und dem zugehörigen Bahncharakter eingeordnet; je 1 P."
+              },
+              {
+                "id": "A1-model",
+                "points": 2,
+                "description": "Nachvollziehbare Anordnung beider Bahnen um die Sonne (1); keine Verallgemeinerung dieser Kometenbahn auf alle Kometen (1)."
+              },
+              {
+                "id": "A2-laws",
+                "points": 5,
+                "description": "Ellipse/Brennpunkt, gleiche Flächen in gleichen Zeiten, T²/a³ konstant, a als große Halbachse und gleiche Zentralmasse als Vergleichsbedingung; je 1 P. Brennpunktgenauigkeit wird hier, nicht nochmals in A1, bewertet."
+              },
+              {
+                "id": "A2-periods",
+                "points": 4,
+                "description": "Für P und K jeweils korrektes Verhältnis mit T_E sowie Ergebnis 8 Jahre bzw. 27 Jahre mit Zeiteinheit; je 2 P."
+              },
+              {
+                "id": "A2-speed",
+                "points": 2,
+                "description": "Sonnennähe als schneller identifiziert (1) und aus gleichem Flächenzuwachs bei kürzerem Fahrstrahl begründet (1)."
+              },
+              {
+                "id": "A2-central-mass",
+                "points": 1,
+                "description": "Übertragung der Erd-Normierung auf unbekannte andere Zentralmasse begründet abgelehnt."
+              },
+              {
+                "id": "A3-relative",
+                "points": 7,
+                "description": "Alle Anziehungen zum Mond (1), Stärke N>C>F (1), Differenzen +1,1·10^−6 und −1,1·10^−6 m/s² (je 1), Bezug zum Erdmittelpunkt statt Abstoßung (1), Streckungsrichtung an N und F erklärt (je 1)."
+              },
+              {
+                "id": "A3-solar",
+                "points": 3,
+                "description": "Sonnenbeitrag bei Neu-/Vollmond verstärkend (1), bei Halbmond teilweise abschwächend (1), Spring-/Nipptide mit größerem/kleinerem Tidenhub zutreffend zugeordnet (1)."
+              },
+              {
+                "id": "A3-limits",
+                "points": 2,
+                "description": "Zwei physikalisch sinnvolle Einflüsse auf reale Küstenzeiten/-höhen erläutert; je 1 P."
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "goalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
+      "titleDe": "Kosmische Strukturen, Urknallbelege und Größenangaben",
+      "titleEn": "Cosmic structures, Big Bang evidence and size statements",
+      "descriptionDe": "Die lernende Person kann eine materialgebundene Q4-Klausuraufgabe zu kosmischen Strukturen, Beobachtungsbelegen für das heiße Urknallmodell und zur Unterscheidung von Alter, beobachtbarer Ausdehnung und gesamtem Universum selbstständig bearbeiten.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on cosmic structures, observational evidence for the hot Big Bang model, and the distinction between age, observable extent and the universe as a whole.",
+      "courseProfiles": [
+        "GK",
+        "LK"
+      ],
+      "proposedDurationMinutes": 60,
+      "requires": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+        "db0394ca-297c-5892-b414-525ec186f928"
+      ],
+      "contextDe": "Ein Planetarium überarbeitet drei zusammengehörige Tafeln: Was ist in was enthalten? Was verraten kosmische Beobachtungen? Was bedeuten Alter und Größe? Prüfen Sie die Aussagen anhand der Materialien. Die Spektraltabelle ist ausdrücklich ein synthetisches Lehrbeispiel, keine reale Galaxienmessung. CMB-Temperatur sowie Alters-/Größenwerte sind gerundete, quellenbasierte Beobachtungs- beziehungsweise Modellzusammenfassungen. Ein Taschenrechner ist erlaubt; quantitative Rotverschiebung, Hubble-Konstante und kosmologische Modellgleichungen werden nicht verlangt.",
+      "contextEn": "A planetarium is revising three related panels: What is contained in what? What do cosmic observations reveal? What do age and size mean? Check the statements using the materials. The spectral table is explicitly a synthetic teaching example, not an actual galaxy measurement. The CMB temperature and age/size values are rounded, source-based observational or model summaries. A calculator is allowed; numerical redshift, the Hubble constant and cosmological model equations are not required.",
+      "materials": [
+        {
+          "id": "B-M1",
+          "contentDe": "Für eine Strukturzeichnung stehen die Begriffe Sonne, Sonnensystem, Milchstraße, Andromedagalaxie und Universum zur Verfügung. Die Milchstraße und Andromeda sind jeweils Galaxien mit sehr vielen Sternen; viele Sterne haben Planetensysteme. Die Sonne gehört zur Milchstraße. Die Nachbargalaxie Andromeda gehört nicht zur Milchstraße. Ein Sternsystem ist keine einzelne Galaxie, und zwischen den Sternsystemen einer Galaxie befindet sich weiterer interstellarer Raum und Materie.",
+          "contentEn": "The labels Sun, Solar System, Milky Way, Andromeda Galaxy and universe are available for a structural diagram. The Milky Way and Andromeda are each galaxies containing very many stars; many stars have planetary systems. The Sun belongs to the Milky Way. The neighboring Andromeda Galaxy does not belong to the Milky Way. A stellar system is not itself a galaxy, and a galaxy also contains interstellar space and matter between its stellar systems.",
+          "provenance": "Own explanatory material; basic Solar System/Milky Way relation checked against NASA. No galaxy-group classification is required."
+        },
+        {
+          "id": "B-M2",
+          "contentDe": "Zwei zu demselben Muster gehörende Spektrallinien werden im Ruhespektrum bei 500 nm und 600 nm identifiziert. Für drei ferne Beispielgalaxien liefert ein idealisiertes Lehrmodell:\n\n| Spektrum | Linie 1 in nm | Linie 2 in nm |\n| --- | --- | --- |\n| Ruhe | 500 | 600 |\n| A | 505 | 606 |\n| B | 515 | 618 |\n| C | 530 | 636 |\n\nFür dieses Beispiel sind zusätzliche lokale Bewegungs- und Störeffekte ausgeblendet. Außerdem wird nahezu aus allen Himmelsrichtungen Mikrowellen-Hintergrundstrahlung beobachtet. Ihr Spektrum stimmt sehr gut mit thermischer Strahlung von etwa 2,725 K überein; kleine Richtungsunterschiede bleiben bestehen. Diese zusammengefasste CMB-Beobachtung stammt aus NASA/COBE, nicht aus der erfundenen Spektraltabelle.",
+          "contentEn": "Two lines belonging to the same spectral pattern are identified at 500 nm and 600 nm in the rest spectrum. For three distant example galaxies an idealized teaching model gives:\n\n| Spectrum | Line 1 in nm | Line 2 in nm |\n| --- | --- | --- |\n| Rest | 500 | 600 |\n| A | 505 | 606 |\n| B | 515 | 618 |\n| C | 530 | 636 |\n\nAdditional local-motion and interfering effects are omitted in this example. Microwave background radiation is also observed from almost all directions. Its spectrum closely matches thermal radiation at about 2.725 K, with small directional differences remaining. This CMB summary comes from NASA/COBE, not from the invented spectral table.",
+          "provenance": "Spectral numbers: independently constructed teaching data. CMB summary: NASA/COBE science page, checked at authoring."
+        },
+        {
+          "id": "B-M3",
+          "contentDe": "Vorgegebene gerundete Modellangaben: Seit der frühen heißen Entwicklungsphase sind ungefähr 13,8 Milliarden Jahre vergangen. Der heutige Radius des beobachtbaren Universums wird im üblichen Expansionsmodell mit ungefähr 46 Milliarden Lichtjahren angegeben. Ein Lichtjahr ist die Strecke, die Licht im Vakuum in einem Jahr zurücklegt. Die zweite Angabe beschreibt heutige räumliche Abstände im Modell, nicht unmittelbar eine Lichtlaufzeit. Die Angaben bestimmen nicht die gesamte räumliche Ausdehnung jenseits unseres beobachtbaren Ausschnitts.\n\nZwei unfertige Tafelsätze lauten: (I) „Der Radius ist 46 Milliarden Lichtjahre, also ist das Universum 46 Milliarden Jahre alt.“ (II) „Aus dem Alter folgt Radius = c·Alter; damit ist zugleich die Grenze des gesamten Universums bekannt.“",
+          "contentEn": "Supplied rounded model estimates: about 13.8 billion years have elapsed since the early hot stage of cosmic evolution. In the usual expansion model the present radius of the observable universe is approximately 46 billion light-years. A light-year is the distance light travels in vacuum in one year. The second estimate describes present spatial distances in the model, not directly a light-travel time. These estimates do not determine the universe’s total spatial extent beyond our observable region.\n\nTwo unfinished panel statements read: (I) “The radius is 46 billion light-years, so the universe is 46 billion years old.” (II) “The age implies radius = c·age, and this also locates the boundary of the entire universe.”",
+          "provenance": "Age: NASA What is the Universe? Radius: half the approximate 92-billion-light-year diameter in NASA How Big is Space? Claims I/II are intentionally authored statements for critical interpretation, not source quotations."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "B1",
+          "points": 8,
+          "assessedGoalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "taskDe": "Erstellen Sie zu M1 eine beschriftete Enthaltenseinszeichnung. Ordnen Sie Sonne und Sonnensystem der Milchstraße zu und stellen Sie Andromeda ohne falsche Verschachtelung daneben dar. Erläutern Sie zwei Unterschiede zwischen einem Stern-/Planetensystem und einer Galaxie. Erklären Sie, warum „Die Milchstraße ist eine Ansammlung von Planeten um die Sonne“ keine passende Beschreibung ist.",
+          "taskEn": "Create a labeled containment diagram for M1. Place the Sun and Solar System within the Milky Way and show Andromeda alongside it without false nesting. Explain two differences between a stellar/planetary system and a galaxy. Explain why “The Milky Way is a collection of planets around the Sun” is not an adequate description.",
+          "solutionDe": "Die Sonne liegt im Sonnensystem, dieses innerhalb der Milchstraße; Milchstraße und Andromeda sind getrennte Galaxien im Universum. Ein Planetensystem wird im Beispiel von einem Zentralstern und seinen gebundenen Begleitern geprägt. Eine Galaxie umfasst sehr viele Sterne beziehungsweise Sternsysteme sowie interstellare Materie und ist räumlich wesentlich größer. Nicht alle Sterne der Milchstraße sind Planeten oder Begleiter der Sonne. Eine korrekt beschriftete Schachtelzeichnung oder ein Baum mit denselben Beziehungen ist gleichwertig; zusätzliche Galaxienverbände werden nicht verlangt.",
+          "solutionEn": "The Sun lies within the Solar System, which lies within the Milky Way; the Milky Way and Andromeda are separate galaxies within the universe. The example planetary system is organized around a central star and its bound companions. A galaxy contains very many stars or stellar systems as well as interstellar matter and has a much larger spatial extent. The Milky Way’s stars are not planets or companions orbiting the Sun. Correctly labeled nested regions or an equivalent tree are equally acceptable; additional galaxy-group levels are not required."
+        },
+        {
+          "id": "B2",
+          "points": 12,
+          "assessedGoalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "taskDe": "Beschreiben Sie die Veränderung des Linienmusters in M2 qualitativ und nennen Sie das am stärksten verschobene Beispiel. Erklären Sie, wie die kosmologische Deutung dieser Verschiebung und die CMB-Beobachtung gemeinsam zum heißen Urknallmodell passen. Beschreiben Sie dazu die Entwicklung von einem früher heißen, dichteren Zustand zur späteren Expansion und Abkühlung. Beurteilen Sie die Aussage: „Die beiden Beobachtungen beweisen jedes Detail des Anfangs und zeigen einen Explosionsort im vorhandenen leeren Raum.“ Ein z-Wert muss nicht berechnet werden.",
+          "taskEn": "Describe qualitatively how the line pattern in M2 changes and identify the most shifted example. Explain how the cosmological interpretation of this shift and the CMB observation jointly fit the hot Big Bang model. Describe the evolution from an earlier hot, denser state through later expansion and cooling. Assess the statement: “These two observations prove every detail of the beginning and identify an explosion site in pre-existing empty space.” No z-value needs to be calculated.",
+          "solutionDe": "Beide identifizierten Linien liegen bei größeren Wellenlängen als im Ruhespektrum; das Muster ist gemeinsam gestreckt, am stärksten bei C. In der kosmologischen Deutung wird Licht während seiner Ausbreitung mit der Expansion des Raums zu längeren Wellenlängen gestreckt. Das Modell beschreibt einen früher heißeren, dichteren Zustand und anschließende Expansion/Abkühlung. Die heute kalte, nahezu allseitige thermische CMB lässt sich als abgekühlte Reliktstrahlung der frühen heißen Phase einordnen, nicht als bloßes Licht der Sonne. Beide Beobachtungsarten stützen damit denselben Modellzusammenhang. Sie beweisen nicht jedes Detail oder einen mathematischen Anfangszustand. Das Modell ist keine Explosion von einem ausgezeichneten Ort in einen schon vorhandenen leeren Außenraum; aus diesen Daten folgt kein solcher Mittelpunkt.",
+          "solutionEn": "Both identified lines occur at longer wavelengths than in the rest spectrum; the pattern is stretched together, most strongly for C. In the cosmological interpretation, expansion stretches light to longer wavelengths during propagation. The model describes an earlier hotter, denser state followed by expansion and cooling. Today’s cold, nearly all-sky thermal CMB can be interpreted as cooled relic radiation from the early hot phase, not simply as sunlight. Both types of observation thus support the same model relationship. They do not establish every detail or a mathematical initial state. The model is not an explosion from a privileged location into pre-existing empty space; these data identify no such center."
+        },
+        {
+          "id": "B3",
+          "points": 10,
+          "assessedGoalId": "db0394ca-297c-5892-b414-525ec186f928",
+          "taskDe": "Ordnen Sie in M3 die Angaben 13,8 und 46 Milliarden jeweils der physikalischen Größe und Einheit zu; geben Sie auch den zu 46 Milliarden Lichtjahren gehörenden Durchmesser an. Bestimmen Sie zum Vergleich c·13,8 Milliarden Jahre in Lichtjahren und das Verhältnis 46/13,8. Korrigieren Sie die Tafelsätze I und II mit einer zusammenhängenden physikalischen Begründung. Unterscheiden Sie dabei heutige Entfernung, vergangene Zeit und die Grenze des beobachtbaren Ausschnitts. Eine Berechnung der Expansionsgeschichte wird nicht verlangt.",
+          "taskEn": "Assign the estimates 13.8 and 46 billion in M3 to their physical quantities and units; also give the diameter corresponding to a radius of 46 billion light-years. For comparison, determine c·13.8 billion years in light-years and the ratio 46/13.8. Correct panel statements I and II with a coherent physical explanation. Distinguish present distance, elapsed time and the boundary of the observable region. No calculation of expansion history is required.",
+          "solutionDe": "13,8 Milliarden Jahre bezeichnen eine vergangene Zeit, 46 Milliarden Lichtjahre eine heutige Modell-Länge; ein Lichtjahr ist keine Zeiteinheit. Der zugehörige Durchmesser beträgt ungefähr 92 Milliarden Lichtjahre. c·13,8 Milliarden Jahre entspricht per Definition 13,8 Milliarden Lichtjahren; 46/13,8≈3,33 ist einheitenlos. Das Produkt c·Alter allein ist hier kein heutiger Radius, weil sich räumliche Abstände während der Lichtausbreitung durch Expansion geändert haben. Deshalb darf 46 Milliarden Lichtjahre nicht unmittelbar in 46 Milliarden Jahre Alter umgedeutet werden. Der beobachtbare Ausschnitt ist durch die zugänglichen Signale begrenzt, nicht durch eine nachgewiesene materielle Außenkante des gesamten Universums. Über dessen volle Ausdehnung oder Endlichkeit entscheiden die gegebenen Zahlen nicht.",
+          "solutionEn": "13.8 billion years denotes elapsed time, while 46 billion light-years denotes a present model distance; a light-year is not a time unit. The corresponding diameter is approximately 92 billion light-years. By definition, c·13.8 billion years is 13.8 billion light-years; 46/13.8≈3.33 is dimensionless. The product c·age alone is not the present radius here, because spatial distances changed through expansion during light propagation. Therefore 46 billion light-years cannot be read directly as an age of 46 billion years. The observable region is limited by accessible signals, not by an established material outer edge of the whole universe. The supplied numbers do not settle its total extent or finiteness."
+        }
+      ],
+      "rubric": [
+        {
+          "id": "B1-containment",
+          "points": 4,
+          "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "demandLevel": "AB2",
+          "descriptionDe": "Sonne im Sonnensystem, Sonnensystem in Milchstraße, Andromeda als separate Galaxie, beide Galaxien im Universum; je 1 P.",
+          "descriptionEn": "Sun in Solar System, Solar System in Milky Way, Andromeda as separate galaxy, both galaxies in universe; 1 point each."
+        },
+        {
+          "id": "B1-distinction",
+          "points": 4,
+          "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "demandLevel": "AB2",
+          "descriptionDe": "Zentralstern/Begleiter gegenüber vielen Sternsystemen (2), deutlich unterschiedliche räumliche Skala oder interstellare Materie (1), falsche Identifikation der Galaxiensterne als Sonnenplaneten begründet korrigiert (1).",
+          "descriptionEn": "Central star/companions contrasted with many stellar systems (2), very different spatial scale or interstellar matter (1), justified correction of the false identification of galactic stars as solar planets (1)."
+        },
+        {
+          "id": "B2-lines",
+          "points": 4,
+          "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "demandLevel": "AB2",
+          "descriptionDe": "Größere Wellenlängen (1), gemeinsames verändertes Muster (1), C am stärksten (1), Wellenlängenstreckung durch kosmische Expansion erklärt (1).",
+          "descriptionEn": "Longer wavelengths (1), pattern shifted together (1), C most shifted (1), wavelength stretching through cosmic expansion explained (1)."
+        },
+        {
+          "id": "B2-hot-origin",
+          "points": 5,
+          "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "demandLevel": "AB2",
+          "descriptionDe": "Früher heißer/dichter (1), spätere Expansion/Abkühlung (1), nahezu allseitige thermische CMB als abgekühltes Relikt erklärt (2), keine bloße Sonnenstrahlung (1).",
+          "descriptionEn": "Earlier hot/denser state (1), later expansion/cooling (1), nearly all-sky thermal CMB explained as cooled relic (2), not simply sunlight (1)."
+        },
+        {
+          "id": "B2-model-limit",
+          "points": 3,
+          "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "demandLevel": "AB3",
+          "descriptionDe": "Zwei Beobachtungen als zusammenpassende Modellstützung statt Detailbeweis eingeordnet (2), kein belegter zentraler Explosionsort in vorgegebenem Außenraum (1).",
+          "descriptionEn": "Two observations classified as coherent model support rather than proof of every detail (2), no established central explosion site in a pre-existing exterior (1)."
+        },
+        {
+          "id": "B3-quantities",
+          "points": 4,
+          "goalId": "db0394ca-297c-5892-b414-525ec186f928",
+          "demandLevel": "AB1",
+          "descriptionDe": "Alter 13,8 Milliarden Jahre (1), heutiger Radius 46 Milliarden Lichtjahre (1), Lichtjahr als Längeneinheit (1), Durchmesser 92 Milliarden Lichtjahre (1).",
+          "descriptionEn": "Age 13.8 billion years (1), present radius 46 billion light-years (1), light-year as length unit (1), diameter 92 billion light-years (1)."
+        },
+        {
+          "id": "B3-comparison",
+          "points": 2,
+          "goalId": "db0394ca-297c-5892-b414-525ec186f928",
+          "demandLevel": "AB2",
+          "descriptionDe": "c·Alter=13,8 Milliarden Lichtjahre (1), Verhältnis ungefähr 3,33 ohne Einheit (1).",
+          "descriptionEn": "c·age=13.8 billion light-years (1), ratio approximately 3.33 with no unit (1)."
+        },
+        {
+          "id": "B3-interpretation",
+          "points": 4,
+          "goalId": "db0394ca-297c-5892-b414-525ec186f928",
+          "demandLevel": "AB3",
+          "descriptionDe": "Expansionsbedingt heutige Distanz von Lichtlaufzeit getrennt und beide Tafelsätze korrigiert (2), Beobachtungsgrenze von unbekannter gesamter Ausdehnung/Endlichkeit unterschieden (2).",
+          "descriptionEn": "Present distance distinguished from light-travel time because of expansion and both panel statements corrected (2), observational boundary distinguished from unknown total extent/finiteness (2)."
+        }
+      ],
+      "before": {
+        "id": "4a58df57-f791-502f-8b8d-9ba155e46035",
+        "shortKey": "canonical_physics_q4_practice_capstone",
+        "title": "Q4-Klausuraufgaben Physik selbstständig lösen",
+        "titleEn": "Solve Q4 physics written-test tasks independently",
+        "description": "Die lernende Person kann eine prüfungsnahe, materialgebundene Physik-Klausuraufgabe der Phase Q4 selbstständig bearbeiten und fachlich begründet auswerten.",
+        "descriptionEn": "The learner can independently solve an exam-like, material-based Q4 physics written-test task and justify the result scientifically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE",
+            "LI_TECHNIK"
+          ],
+          "phase": "Q4",
+          "area": "Klausurtraining",
+          "topicCode": "CANONICAL.PHYSICS.Q4.PRACTICE.CAPSTONE"
+        },
+        "requires": [
+          "a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+          "defe44d2-c3d3-456b-a786-fad2cef13fe8",
+          "4245c54f-d609-41bc-9eff-e9ceeff4902f",
+          "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "1a1c09f0-96b7-4c33-a623-0e8101537876",
+          "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+          "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+          "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+          "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "ad021f2e-6b94-5e6e-a264-3d1110094b87",
+          "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
+          "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
+          "8c97c234-a932-5e84-aed5-237b4e2a8336",
+          "aef1e312-6a0c-5323-9202-c22ae84086f2",
+          "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+          "75f7139f-0f07-5cec-bcea-4f139502b528",
+          "2ec48368-ac5b-55f9-a396-5a5fe4e1e874",
+          "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+          "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+          "49872cc0-401f-5464-9235-4763df4db5cf",
+          "a684bec1-ba59-59d0-98d2-4ca37236f64c",
+          "512f81af-1480-56a8-ae52-af3aa1a6a859",
+          "19aef2ed-eb46-55b1-9486-ee83f7520bb6",
+          "0c305cf9-3923-51cf-a9ae-5849edc99c9f",
+          "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+          "6ebb6182-f221-5f4c-b112-4ac72b104321",
+          "70b358bf-da6d-53ba-8393-51d5c2365b04",
+          "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+          "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+          "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+          "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "14d99a65-8d58-5647-88ab-02137b96d55b",
+          "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+          "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+          "5db07785-8cca-50d5-81a9-e0264d344af9",
+          "206fe51d-cc78-5422-b139-32cc97eb1c37",
+          "3b50255a-6b01-578b-8f5c-4383536a3221",
+          "6e7c35e0-7a38-5996-a42e-005038eff0db",
+          "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
+          "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+          "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+          "79da5c34-86b2-5c10-9726-9de886ccef7d",
+          "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+          "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+          "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+          "e6a50c74-c922-508c-aa27-07bac2566955",
+          "5492f0e0-cbae-574e-a853-182616205ed3",
+          "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+          "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+          "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+          "4e046c1c-bcc7-5e3c-9f71-f80d69027483",
+          "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+          "8eb6456b-d915-50ed-a076-2b23c2e5420c",
+          "2fab2e3a-1558-5e67-aed0-15fc51c737cd",
+          "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+          "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+          "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+          "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+          "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+          "a08e33db-d821-457b-86dd-870e7648c5f4",
+          "14ec85b9-68f6-5400-ad43-5e8dddfddf44",
+          "5c0d5040-92e4-50f6-9695-9d33d889a080"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+            "defe44d2-c3d3-456b-a786-fad2cef13fe8",
+            "4245c54f-d609-41bc-9eff-e9ceeff4902f",
+            "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+            "1a1c09f0-96b7-4c33-a623-0e8101537876",
+            "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+            "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+            "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+            "51bc5513-6879-548f-b19a-9746b667f1a3",
+            "ad021f2e-6b94-5e6e-a264-3d1110094b87",
+            "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
+            "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
+            "8c97c234-a932-5e84-aed5-237b4e2a8336",
+            "aef1e312-6a0c-5323-9202-c22ae84086f2",
+            "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+            "75f7139f-0f07-5cec-bcea-4f139502b528",
+            "2ec48368-ac5b-55f9-a396-5a5fe4e1e874",
+            "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+            "a12fddce-0215-58d9-bd91-21be8a960d25",
+            "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+            "49872cc0-401f-5464-9235-4763df4db5cf",
+            "a684bec1-ba59-59d0-98d2-4ca37236f64c",
+            "512f81af-1480-56a8-ae52-af3aa1a6a859",
+            "19aef2ed-eb46-55b1-9486-ee83f7520bb6",
+            "0c305cf9-3923-51cf-a9ae-5849edc99c9f",
+            "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+            "6ebb6182-f221-5f4c-b112-4ac72b104321",
+            "70b358bf-da6d-53ba-8393-51d5c2365b04",
+            "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+            "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+            "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+            "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+            "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+            "14d99a65-8d58-5647-88ab-02137b96d55b",
+            "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+            "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+            "5db07785-8cca-50d5-81a9-e0264d344af9",
+            "206fe51d-cc78-5422-b139-32cc97eb1c37",
+            "3b50255a-6b01-578b-8f5c-4383536a3221",
+            "6e7c35e0-7a38-5996-a42e-005038eff0db",
+            "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
+            "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+            "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+            "79da5c34-86b2-5c10-9726-9de886ccef7d",
+            "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+            "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+            "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+            "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+            "e6a50c74-c922-508c-aa27-07bac2566955",
+            "5492f0e0-cbae-574e-a853-182616205ed3",
+            "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+            "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+            "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+            "4e046c1c-bcc7-5e3c-9f71-f80d69027483",
+            "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+            "8eb6456b-d915-50ed-a076-2b23c2e5420c",
+            "2fab2e3a-1558-5e67-aed0-15fc51c737cd",
+            "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+            "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+            "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+            "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+            "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+            "a08e33db-d821-457b-86dd-870e7648c5f4",
+            "14ec85b9-68f6-5400-ad43-5e8dddfddf44",
+            "5c0d5040-92e4-50f6-9695-9d33d889a080"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE",
+            "LI_TECHNIK",
+            "LI_MATERIE",
+            "LI_WELLEN",
+            "KONZEPT_ZUFALL_DETERMINIERTHEIT",
+            "LI_KOSMOS"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Kontext:**\n\nBearbeiten Sie eine materialgebundene Klausuraufgabe zu \"Q4-Klausuraufgaben Physik selbstständig lösen\". Nutzen Sie geeignete Modelle, Diagramme, Rechnungen und eine fachlich begruendete Bewertung.\n\n**Aufgaben:**\n\n1. Stellen Sie die relevanten physikalischen Groessen, Modelle und Zusammenhaenge dar. (8 BE)\n2. Werten Sie gegebene Mess- oder Materialdaten rechnerisch aus und dokumentieren Sie den Loesungsweg. (10 BE)\n3. Deuten Sie das Ergebnis fachlich und pruefen Sie Modellgrenzen. (6 BE)\n4. Beurteilen Sie eine Anwendung oder Entscheidungssituation mit physikalischen Kriterien. (6 BE)",
+          "solutionContent": "Eine vollstaendige Loesung zu \"Q4-Klausuraufgaben Physik selbstständig lösen\" enthaelt die Auswahl eines passenden Modells, korrekte Groessengleichungen mit Einheiten, nachvollziehbare Rechnungen, eine fachliche Deutung der Ergebnisse und eine begruendete Bewertung der Modellgrenzen.",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 8,
+                "description": "relevante Modelle und Groessen fuer Q4 fachlich richtig dargestellt"
+              },
+              {
+                "id": "s2",
+                "points": 10,
+                "description": "Materialdaten rechnerisch korrekt ausgewertet"
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Ergebnisse fachlich gedeutet und Modellgrenzen benannt"
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Anwendungssituation physikalisch begruendet bewertet"
+              }
+            ]
+          }
+        }
+      },
+      "reviewState": "proposed_only_needs_root_subject_review",
+      "scoringPolicy": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "rationaleDe": "18/30 bleibt die vorhandene 60-Prozent-Schwelle als klarer Autorenentwurf, keine behauptete staatliche Notengrenze. Jeder Teilpunkt ist unten an eine beobachtbare Leistung gebunden. Gleichwertige Skizzen, Formulierungen und Lösungswege werden akzeptiert. Rechen-Folgefehler werden nur am Ursprung abgezogen; richtige weitere Physik kann Punkte erhalten. Ein bestandenes Gesamtergebnis bestätigt nicht automatisch jeden der drei abgedeckten Goal-IDs oder einen LK-Kompetenzumfang.",
+        "rationaleEn": "18/30 retains the existing 60-percent threshold as an explicit authoring proposal, not as a claimed official grading boundary. Each point is tied to observable performance below. Equivalent diagrams, wording and solution methods are accepted. A propagated arithmetic error is penalized only at its origin; correct subsequent physics can receive points. Passing the total does not automatically establish mastery of every one of the three covered goal IDs or of an advanced-course scope."
+      },
+      "coverage": [
+        {
+          "goal": {
+            "id": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "shortKey": "canonical_physics_astro_universe_structural_hierarchy",
+            "title": "Kosmische Strukturen einordnen",
+            "titleEn": "Classify cosmic structures",
+            "description": "Die lernende Person kann größere kosmische Strukturen wie Galaxien beschreiben und Sternsysteme darin einordnen.",
+            "descriptionEn": "The learner can describe larger cosmic structures such as galaxies and locate stellar systems within them.",
+            "type": "atomic",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-physics",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [],
+              "phase": "Q4"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-HE",
+                "DE-BW",
+                "DE-BY",
+                "DE-RP"
+              ]
+            }
+          },
+          "tasks": [
+            "B1"
+          ],
+          "points": 8
+        },
+        {
+          "goal": {
+            "id": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "shortKey": "canonical_physics_astro_big_bang_redshift_cmb",
+            "title": "Urknallmodell anhand kosmologischer Beobachtungen erläutern",
+            "titleEn": "Explain the Big Bang model using cosmological observations",
+            "description": "Die lernende Person kann das heiße Urknallmodell qualitativ erläutern und kosmologische Rotverschiebung sowie Hintergrundstrahlung als Beobachtungsbelege dafür einordnen.",
+            "descriptionEn": "The learner can explain the hot Big Bang model qualitatively and interpret cosmological redshift and the cosmic microwave background as observational evidence for it.",
+            "type": "atomic",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+              "2b700858-bc2e-5ddf-a791-b14d44160480"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-physics",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [],
+              "phase": "Q4"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-HE",
+                "DE-BW",
+                "DE-BY",
+                "DE-RP"
+              ]
+            }
+          },
+          "tasks": [
+            "B2"
+          ],
+          "points": 12
+        },
+        {
+          "goal": {
+            "id": "db0394ca-297c-5892-b414-525ec186f928",
+            "shortKey": "canonical_physics_astro_universe_size_age_qualitative",
+            "title": "Größe und Alter des Universums qualitativ einordnen",
+            "titleEn": "Interpret the size and age of the universe qualitatively",
+            "description": "Die lernende Person kann qualitative Aussagen zu Größe und Alter des Universums einordnen und dabei räumliche Ausdehnung und vergangene Zeit sowie das beobachtbare und das gesamte Universum unterscheiden.",
+            "descriptionEn": "The learner can interpret qualitative statements about the size and age of the universe, distinguishing spatial extent from elapsed time and the observable universe from the universe as a whole.",
+            "type": "atomic",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [],
+            "requires": [
+              "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+              "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-physics",
+              "demandLevel": "AB2",
+              "processCompetencies": [],
+              "guidingIdeas": [],
+              "phase": "Q4"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-HE",
+                "DE-BW",
+                "DE-RP"
+              ]
+            }
+          },
+          "tasks": [
+            "B3"
+          ],
+          "points": 10
+        }
+      ],
+      "proposedGoalPatch": {
+        "title": "Kosmische Strukturen, Urknallbelege und Größenangaben",
+        "titleEn": "Cosmic structures, Big Bang evidence and size statements",
+        "description": "Die lernende Person kann eine materialgebundene Q4-Klausuraufgabe zu kosmischen Strukturen, Beobachtungsbelegen für das heiße Urknallmodell und zur Unterscheidung von Alter, beobachtbarer Ausdehnung und gesamtem Universum selbstständig bearbeiten.",
+        "descriptionEn": "The learner can independently solve a material-based Q4 written-test task on cosmic structures, observational evidence for the hot Big Bang model, and the distinction between age, observable extent and the universe as a whole.",
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "requires": [
+          "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "db0394ca-297c-5892-b414-525ec186f928"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK4_KOMMUNIZIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_KOSMOS"
+          ],
+          "phase": "Q4",
+          "area": "Klausurtraining",
+          "topicCode": "CANONICAL.PHYSICS.Q4.PRACTICE.CAPSTONE"
+        },
+        "examData": {
+          "reviewStatus": "needs_review",
+          "reviewNote": "Unveröffentlichter AI-Authoringvorschlag; keine menschliche oder operative Freigabe. Erst nach fachlicher Gegenprüfung, Routenreparatur und geschützten Maturitychecks übernehmen.",
+          "coveredGoalIds": [
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "db0394ca-297c-5892-b414-525ec186f928"
+          ],
+          "coveredStrands": [
+            "LI_KOSMOS"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Ein Planetarium überarbeitet drei zusammengehörige Tafeln: Was ist in was enthalten? Was verraten kosmische Beobachtungen? Was bedeuten Alter und Größe? Prüfen Sie die Aussagen anhand der Materialien. Die Spektraltabelle ist ausdrücklich ein synthetisches Lehrbeispiel, keine reale Galaxienmessung. CMB-Temperatur sowie Alters-/Größenwerte sind gerundete, quellenbasierte Beobachtungs- beziehungsweise Modellzusammenfassungen. Ein Taschenrechner ist erlaubt; quantitative Rotverschiebung, Hubble-Konstante und kosmologische Modellgleichungen werden nicht verlangt.\n\n### B-M1\n\nFür eine Strukturzeichnung stehen die Begriffe Sonne, Sonnensystem, Milchstraße, Andromedagalaxie und Universum zur Verfügung. Die Milchstraße und Andromeda sind jeweils Galaxien mit sehr vielen Sternen; viele Sterne haben Planetensysteme. Die Sonne gehört zur Milchstraße. Die Nachbargalaxie Andromeda gehört nicht zur Milchstraße. Ein Sternsystem ist keine einzelne Galaxie, und zwischen den Sternsystemen einer Galaxie befindet sich weiterer interstellarer Raum und Materie.\n\n### B-M2\n\nZwei zu demselben Muster gehörende Spektrallinien werden im Ruhespektrum bei 500 nm und 600 nm identifiziert. Für drei ferne Beispielgalaxien liefert ein idealisiertes Lehrmodell:\n\n| Spektrum | Linie 1 in nm | Linie 2 in nm |\n| --- | --- | --- |\n| Ruhe | 500 | 600 |\n| A | 505 | 606 |\n| B | 515 | 618 |\n| C | 530 | 636 |\n\nFür dieses Beispiel sind zusätzliche lokale Bewegungs- und Störeffekte ausgeblendet. Außerdem wird nahezu aus allen Himmelsrichtungen Mikrowellen-Hintergrundstrahlung beobachtet. Ihr Spektrum stimmt sehr gut mit thermischer Strahlung von etwa 2,725 K überein; kleine Richtungsunterschiede bleiben bestehen. Diese zusammengefasste CMB-Beobachtung stammt aus NASA/COBE, nicht aus der erfundenen Spektraltabelle.\n\n### B-M3\n\nVorgegebene gerundete Modellangaben: Seit der frühen heißen Entwicklungsphase sind ungefähr 13,8 Milliarden Jahre vergangen. Der heutige Radius des beobachtbaren Universums wird im üblichen Expansionsmodell mit ungefähr 46 Milliarden Lichtjahren angegeben. Ein Lichtjahr ist die Strecke, die Licht im Vakuum in einem Jahr zurücklegt. Die zweite Angabe beschreibt heutige räumliche Abstände im Modell, nicht unmittelbar eine Lichtlaufzeit. Die Angaben bestimmen nicht die gesamte räumliche Ausdehnung jenseits unseres beobachtbaren Ausschnitts.\n\nZwei unfertige Tafelsätze lauten: (I) „Der Radius ist 46 Milliarden Lichtjahre, also ist das Universum 46 Milliarden Jahre alt.“ (II) „Aus dem Alter folgt Radius = c·Alter; damit ist zugleich die Grenze des gesamten Universums bekannt.“\n\n### B1 (8 Punkte)\n\nErstellen Sie zu M1 eine beschriftete Enthaltenseinszeichnung. Ordnen Sie Sonne und Sonnensystem der Milchstraße zu und stellen Sie Andromeda ohne falsche Verschachtelung daneben dar. Erläutern Sie zwei Unterschiede zwischen einem Stern-/Planetensystem und einer Galaxie. Erklären Sie, warum „Die Milchstraße ist eine Ansammlung von Planeten um die Sonne“ keine passende Beschreibung ist.\n\n### B2 (12 Punkte)\n\nBeschreiben Sie die Veränderung des Linienmusters in M2 qualitativ und nennen Sie das am stärksten verschobene Beispiel. Erklären Sie, wie die kosmologische Deutung dieser Verschiebung und die CMB-Beobachtung gemeinsam zum heißen Urknallmodell passen. Beschreiben Sie dazu die Entwicklung von einem früher heißen, dichteren Zustand zur späteren Expansion und Abkühlung. Beurteilen Sie die Aussage: „Die beiden Beobachtungen beweisen jedes Detail des Anfangs und zeigen einen Explosionsort im vorhandenen leeren Raum.“ Ein z-Wert muss nicht berechnet werden.\n\n### B3 (10 Punkte)\n\nOrdnen Sie in M3 die Angaben 13,8 und 46 Milliarden jeweils der physikalischen Größe und Einheit zu; geben Sie auch den zu 46 Milliarden Lichtjahren gehörenden Durchmesser an. Bestimmen Sie zum Vergleich c·13,8 Milliarden Jahre in Lichtjahren und das Verhältnis 46/13,8. Korrigieren Sie die Tafelsätze I und II mit einer zusammenhängenden physikalischen Begründung. Unterscheiden Sie dabei heutige Entfernung, vergangene Zeit und die Grenze des beobachtbaren Ausschnitts. Eine Berechnung der Expansionsgeschichte wird nicht verlangt.",
+          "taskContentEn": "A planetarium is revising three related panels: What is contained in what? What do cosmic observations reveal? What do age and size mean? Check the statements using the materials. The spectral table is explicitly a synthetic teaching example, not an actual galaxy measurement. The CMB temperature and age/size values are rounded, source-based observational or model summaries. A calculator is allowed; numerical redshift, the Hubble constant and cosmological model equations are not required.\n\n### B-M1\n\nThe labels Sun, Solar System, Milky Way, Andromeda Galaxy and universe are available for a structural diagram. The Milky Way and Andromeda are each galaxies containing very many stars; many stars have planetary systems. The Sun belongs to the Milky Way. The neighboring Andromeda Galaxy does not belong to the Milky Way. A stellar system is not itself a galaxy, and a galaxy also contains interstellar space and matter between its stellar systems.\n\n### B-M2\n\nTwo lines belonging to the same spectral pattern are identified at 500 nm and 600 nm in the rest spectrum. For three distant example galaxies an idealized teaching model gives:\n\n| Spectrum | Line 1 in nm | Line 2 in nm |\n| --- | --- | --- |\n| Rest | 500 | 600 |\n| A | 505 | 606 |\n| B | 515 | 618 |\n| C | 530 | 636 |\n\nAdditional local-motion and interfering effects are omitted in this example. Microwave background radiation is also observed from almost all directions. Its spectrum closely matches thermal radiation at about 2.725 K, with small directional differences remaining. This CMB summary comes from NASA/COBE, not from the invented spectral table.\n\n### B-M3\n\nSupplied rounded model estimates: about 13.8 billion years have elapsed since the early hot stage of cosmic evolution. In the usual expansion model the present radius of the observable universe is approximately 46 billion light-years. A light-year is the distance light travels in vacuum in one year. The second estimate describes present spatial distances in the model, not directly a light-travel time. These estimates do not determine the universe’s total spatial extent beyond our observable region.\n\nTwo unfinished panel statements read: (I) “The radius is 46 billion light-years, so the universe is 46 billion years old.” (II) “The age implies radius = c·age, and this also locates the boundary of the entire universe.”\n\n### B1 (8 points)\n\nCreate a labeled containment diagram for M1. Place the Sun and Solar System within the Milky Way and show Andromeda alongside it without false nesting. Explain two differences between a stellar/planetary system and a galaxy. Explain why “The Milky Way is a collection of planets around the Sun” is not an adequate description.\n\n### B2 (12 points)\n\nDescribe qualitatively how the line pattern in M2 changes and identify the most shifted example. Explain how the cosmological interpretation of this shift and the CMB observation jointly fit the hot Big Bang model. Describe the evolution from an earlier hot, denser state through later expansion and cooling. Assess the statement: “These two observations prove every detail of the beginning and identify an explosion site in pre-existing empty space.” No z-value needs to be calculated.\n\n### B3 (10 points)\n\nAssign the estimates 13.8 and 46 billion in M3 to their physical quantities and units; also give the diameter corresponding to a radius of 46 billion light-years. For comparison, determine c·13.8 billion years in light-years and the ratio 46/13.8. Correct panel statements I and II with a coherent physical explanation. Distinguish present distance, elapsed time and the boundary of the observable region. No calculation of expansion history is required.",
+          "solutionContent": "### B1 (8 Punkte)\n\nDie Sonne liegt im Sonnensystem, dieses innerhalb der Milchstraße; Milchstraße und Andromeda sind getrennte Galaxien im Universum. Ein Planetensystem wird im Beispiel von einem Zentralstern und seinen gebundenen Begleitern geprägt. Eine Galaxie umfasst sehr viele Sterne beziehungsweise Sternsysteme sowie interstellare Materie und ist räumlich wesentlich größer. Nicht alle Sterne der Milchstraße sind Planeten oder Begleiter der Sonne. Eine korrekt beschriftete Schachtelzeichnung oder ein Baum mit denselben Beziehungen ist gleichwertig; zusätzliche Galaxienverbände werden nicht verlangt.\n\n### B2 (12 Punkte)\n\nBeide identifizierten Linien liegen bei größeren Wellenlängen als im Ruhespektrum; das Muster ist gemeinsam gestreckt, am stärksten bei C. In der kosmologischen Deutung wird Licht während seiner Ausbreitung mit der Expansion des Raums zu längeren Wellenlängen gestreckt. Das Modell beschreibt einen früher heißeren, dichteren Zustand und anschließende Expansion/Abkühlung. Die heute kalte, nahezu allseitige thermische CMB lässt sich als abgekühlte Reliktstrahlung der frühen heißen Phase einordnen, nicht als bloßes Licht der Sonne. Beide Beobachtungsarten stützen damit denselben Modellzusammenhang. Sie beweisen nicht jedes Detail oder einen mathematischen Anfangszustand. Das Modell ist keine Explosion von einem ausgezeichneten Ort in einen schon vorhandenen leeren Außenraum; aus diesen Daten folgt kein solcher Mittelpunkt.\n\n### B3 (10 Punkte)\n\n13,8 Milliarden Jahre bezeichnen eine vergangene Zeit, 46 Milliarden Lichtjahre eine heutige Modell-Länge; ein Lichtjahr ist keine Zeiteinheit. Der zugehörige Durchmesser beträgt ungefähr 92 Milliarden Lichtjahre. c·13,8 Milliarden Jahre entspricht per Definition 13,8 Milliarden Lichtjahren; 46/13,8≈3,33 ist einheitenlos. Das Produkt c·Alter allein ist hier kein heutiger Radius, weil sich räumliche Abstände während der Lichtausbreitung durch Expansion geändert haben. Deshalb darf 46 Milliarden Lichtjahre nicht unmittelbar in 46 Milliarden Jahre Alter umgedeutet werden. Der beobachtbare Ausschnitt ist durch die zugänglichen Signale begrenzt, nicht durch eine nachgewiesene materielle Außenkante des gesamten Universums. Über dessen volle Ausdehnung oder Endlichkeit entscheiden die gegebenen Zahlen nicht.",
+          "solutionContentEn": "### B1 (8 points)\n\nThe Sun lies within the Solar System, which lies within the Milky Way; the Milky Way and Andromeda are separate galaxies within the universe. The example planetary system is organized around a central star and its bound companions. A galaxy contains very many stars or stellar systems as well as interstellar matter and has a much larger spatial extent. The Milky Way’s stars are not planets or companions orbiting the Sun. Correctly labeled nested regions or an equivalent tree are equally acceptable; additional galaxy-group levels are not required.\n\n### B2 (12 points)\n\nBoth identified lines occur at longer wavelengths than in the rest spectrum; the pattern is stretched together, most strongly for C. In the cosmological interpretation, expansion stretches light to longer wavelengths during propagation. The model describes an earlier hotter, denser state followed by expansion and cooling. Today’s cold, nearly all-sky thermal CMB can be interpreted as cooled relic radiation from the early hot phase, not simply as sunlight. Both types of observation thus support the same model relationship. They do not establish every detail or a mathematical initial state. The model is not an explosion from a privileged location into pre-existing empty space; these data identify no such center.\n\n### B3 (10 points)\n\n13.8 billion years denotes elapsed time, while 46 billion light-years denotes a present model distance; a light-year is not a time unit. The corresponding diameter is approximately 92 billion light-years. By definition, c·13.8 billion years is 13.8 billion light-years; 46/13.8≈3.33 is dimensionless. The product c·age alone is not the present radius here, because spatial distances changed through expansion during light propagation. Therefore 46 billion light-years cannot be read directly as an age of 46 billion years. The observable region is limited by accessible signals, not by an established material outer edge of the whole universe. The supplied numbers do not settle its total extent or finiteness.",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "B1-containment",
+                "points": 4,
+                "description": "Sonne im Sonnensystem, Sonnensystem in Milchstraße, Andromeda als separate Galaxie, beide Galaxien im Universum; je 1 P."
+              },
+              {
+                "id": "B1-distinction",
+                "points": 4,
+                "description": "Zentralstern/Begleiter gegenüber vielen Sternsystemen (2), deutlich unterschiedliche räumliche Skala oder interstellare Materie (1), falsche Identifikation der Galaxiensterne als Sonnenplaneten begründet korrigiert (1)."
+              },
+              {
+                "id": "B2-lines",
+                "points": 4,
+                "description": "Größere Wellenlängen (1), gemeinsames verändertes Muster (1), C am stärksten (1), Wellenlängenstreckung durch kosmische Expansion erklärt (1)."
+              },
+              {
+                "id": "B2-hot-origin",
+                "points": 5,
+                "description": "Früher heißer/dichter (1), spätere Expansion/Abkühlung (1), nahezu allseitige thermische CMB als abgekühltes Relikt erklärt (2), keine bloße Sonnenstrahlung (1)."
+              },
+              {
+                "id": "B2-model-limit",
+                "points": 3,
+                "description": "Zwei Beobachtungen als zusammenpassende Modellstützung statt Detailbeweis eingeordnet (2), kein belegter zentraler Explosionsort in vorgegebenem Außenraum (1)."
+              },
+              {
+                "id": "B3-quantities",
+                "points": 4,
+                "description": "Alter 13,8 Milliarden Jahre (1), heutiger Radius 46 Milliarden Lichtjahre (1), Lichtjahr als Längeneinheit (1), Durchmesser 92 Milliarden Lichtjahre (1)."
+              },
+              {
+                "id": "B3-comparison",
+                "points": 2,
+                "description": "c·Alter=13,8 Milliarden Lichtjahre (1), Verhältnis ungefähr 3,33 ohne Einheit (1)."
+              },
+              {
+                "id": "B3-interpretation",
+                "points": 4,
+                "description": "Expansionsbedingt heutige Distanz von Lichtlaufzeit getrennt und beide Tafelsätze korrigiert (2), Beobachtungsgrenze von unbekannter gesamter Ausdehnung/Endlichkeit unterschieden (2)."
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "deploymentHold": [
+    "No active canonical, image, ledger, source, composition, registry, runtime, learner or aggregate QA changes.",
+    "Both old terminal IDs are proposed for narrower concrete assessments; titles and descriptions must narrow with actual coverage, and old broad coverage must not remain operative.",
+    "New child IDs are only proposed and not yet canonical. These exam patches cannot be applied before their reviewed split implementation.",
+    "Only HE Q4.6 scope is freshly checked here. Proposed applicability is therefore HE only; broader old jurisdiction lists cannot be silently retained. Composition/CQR-104 effects require separate prospective review.",
+    "The route-diff lists 20 existing Q4 structural endpoint losses plus new DM/DE gaps and S/G motivation gaps. Do not adopt until follow-up tasks/route decisions and protected M6 checks are resolved.",
+    "18/30 is a proposed exam-pass threshold, not per-goal mastery or a human approval claim."
+  ]
+}

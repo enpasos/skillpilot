@@ -3350,3 +3350,32 @@ Locale-/Lernzustandsverträge, API-, Speicher- und Datenschutzsemantik,
 Portalwerte, Reviewfälle, OpenAI-Review-Fixtures und Reviewartefakte bleiben
 unverändert. Es erfolgt keine Portalaktion, kein Deployment und keine
 Wiederaufnahme einer allgemeinen Curriculum-QS.
+
+### 6.61 Mechanische Buch-Testzahl nach der genehmigten Reihen-Aufteilung
+
+Am **7. September 2026** wird die Vorabfreigabe aus Abschnitt 6.58 für einen
+gleichartigen, rein mechanischen Fall angewandt. Die bereits geprüfte
+Layer-A-Aufteilung des zusammengesetzten Reihenziels erhöht das öffentliche
+Mathematikbuch von 796 auf 797 atomare Zielseiten. Ausschließlich die feste
+Erwartung `verified.model.pages.length` in
+`app/scripts/testGoalBookPublication.ts` wird von **796 auf 797** korrigiert.
+Alle anderen Bytes dieser Testdatei bleiben unverändert. Die exakte Prüfung,
+Negativfälle und Publikations-/Quellenintegrität werden nicht abgeschwächt.
+
+Die bestehende Bindung wird append-only fortgeschrieben:
+
+- `app/scripts/testGoalBookPublication.ts`:
+  `e2be85c9ae8aa46d4594699e644b50868724103f52263f9d9fd886ce7657f162`
+  → `6c95cf9de67d0a03d4fe562779d71ce6289f3c97c5def211147ad43ea18f5dcd`.
+
+Record, Runtime-Checker und Regression binden genau diese Testkorrektur und
+diesen Dokumentationsnachtrag. Frühere Ausnahmen bleiben unverändert;
+keine weiteren Dateien werden neu eingefroren. Die Regression prüft außerdem,
+dass die primären Runtime- und Baumketten unverändert bleiben und der vorherige
+Testhash durch Rücktausch genau dieser Zahl wiederhergestellt wird.
+
+Dies ist keine neue fachliche Freigabe und keine Änderung der Produktlogik.
+OpenAI `1.0.0`, Claude `1.1.1`, Pakete, MCP/OAuth, Tools, Schemas,
+MCP-Apps-Ressourcen, Start-/Session-/Identitäts-/Locale-/Lernzustandsverträge,
+Berechtigungen, Speicherung, Sicherheit, Portalwerte, Reviewfälle, Fixtures
+und Reviewartefakte bleiben unverändert. Keine Portalaktion und kein Deployment.

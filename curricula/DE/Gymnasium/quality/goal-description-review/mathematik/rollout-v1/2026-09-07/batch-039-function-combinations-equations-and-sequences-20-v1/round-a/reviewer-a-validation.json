@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907-first-pass-a.codex-run-001",
+  "nativeCampaignValidation": {
+    "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-039-function-combinations-equations-and-sequences-20-v1/round-a/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-039-function-combinations-equations-and-sequences-20-v1/round-a/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-039-function-combinations-equations-and-sequences-20-v1/round-a/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-039-function-combinations-equations-and-sequences-20-v1/round-a/batches --results-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-039-function-combinations-equations-and-sequences-20-v1/round-a/results",
+    "exitCode": 0,
+    "output": "Goal-description review campaign results valid: 20\n"
+  },
+  "reviewFreezeCheck": {
+    "command": "node scripts/check_openai_plugin_review_freeze.mjs",
+    "exitCode": 0,
+    "output": "CHECK openai_plugin_review_freeze PASS skillpilot-coach-v1 1.0.0 state=IN_REVIEW trees=6 files=22"
+  },
+  "records": {
+    "count": 20,
+    "missingGoalIds": [],
+    "extraGoalIds": [],
+    "decisions": {
+      "keep": 18,
+      "revise": 2
+    },
+    "digest": "sha256:cd3bab8883f68ab0708864219a45fd6a9e67124b36c11c0952507da81b60cf11"
+  },
+  "images": {
+    "viewed": 19,
+    "currentAssetDigestsMatchAllBoundDigests": true,
+    "notPresentGoalIds": [
+      "47400de4-b0e4-5bb6-a1bd-bd2beee616bb"
+    ],
+    "goalsWithObservedImageIssues": [
+      "70a21623-6c87-55ae-b534-ab45a3b9b1d2",
+      "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b"
+    ]
+  },
+  "authority": "ai_candidate",
+  "grantsAcceptance": false
+}

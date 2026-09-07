@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b038r-calculus-and-j10-logarithms-3-v1",
+  "reviewedAt": "2026-09-06T22:06:00.000Z",
+  "reviewer": "OpenAI Codex root; individually authored unbound AI profiles; no human approval",
+  "goals": [
+    {
+      "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+      "reason": "Aktuelle bilinguale Beschreibung, direkte Voraussetzung und Sek-II-Geltungsmatrix vollständig gelesen. Die Fälle verbinden Stammfunktion, bestimmte Integration und geometrische Bedeutung als Anwendungen desselben Hauptsatzes. Keine zusätzliche Integraltechnik, kein tatsächlicher Lernnachweis.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "antiderivative-integral-connection",
+            "essentialUnderstandingDe": "Für eine stetige Funktion f auf dem betrachteten Intervall verbindet der Hauptsatz Integration und Ableitung: Eine Stammfunktion F mit F′=f liefert das bestimmte Integral als F(b)−F(a). Additive Konstanten der Stammfunktion fallen in der Differenz weg; die Integralfunktion A(x)=∫ von a bis x f(t) dt besitzt die Ableitung f(x).",
+            "essentialUnderstandingEn": "For a continuous function f on the interval considered, the fundamental theorem connects integration and differentiation: an antiderivative F with F′=f gives the definite integral as F(b)−F(a). Additive antiderivative constants cancel in the difference; the accumulation function A(x)=∫ from a to x f(t) dt has derivative f(x).",
+            "observablePerformanceDe": "Bestimmt zu einer einfachen stetigen Funktion eine Stammfunktion, prüft sie durch Ableiten und erklärt die Bestimmung des Integrals aus ihren Randwerten. Erläutert an einer selbst bestimmten Integralfunktion den Zusammenhang zwischen dem Integranden und ihrer lokalen Änderungsrate.",
+            "observablePerformanceEn": "Finds an antiderivative of a simple continuous function, checks it by differentiation, and explains evaluating the integral from its endpoint values. Uses an independently determined accumulation function to explain how the integrand relates to its local rate of change."
+          },
+          {
+            "id": "oriented-geometric-meaning",
+            "essentialUnderstandingDe": "Ein bestimmtes Integral ist eine orientierte Flächenbilanz, nicht stets die Summe positiver Flächeninhalte. Vorzeichen des Integranden und Orientierung der Grenzen bestimmen die Bilanz; geometrischer Gesamtflächeninhalt und Integral können verschieden sein.",
+            "essentialUnderstandingEn": "A definite integral is an oriented area balance, not always the sum of positive areas. The sign of the integrand and orientation of the limits determine the balance; total geometric area and the integral may differ.",
+            "observablePerformanceDe": "Deutet das berechnete Integral anhand der Lage des Graphen und der Integrationsgrenzen, erklärt Vorzeichen oder Aufhebung von Teilflächen und kontrolliert die Randwertrechnung an einfacher Geometrie.",
+            "observablePerformanceEn": "Interprets the computed integral using the graph's position and integration limits, explains signs or cancellation of partial areas, and checks endpoint evaluation against simple geometry."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["antiderivative-integral-connection", "oriented-geometric-meaning"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [{
+          "id": "fixed-crossing-interval-and-variable-reversed-limit",
+          "textDe": "Von einem festen Intervall mit Vorzeichenwechsel zu einer variablen oberen Grenze einschließlich umgekehrter Integrationsrichtung wechseln.",
+          "textEn": "Move from a fixed interval with a sign change to a variable upper limit including reversed integration direction."
+        }],
+        "applicationCaseBriefs": [
+          {
+            "id": "signed-area-and-constant",
+            "taskDemandDe": "Bestimme ∫ von 0 bis 3 (x−1) dx über eine selbst gewählte Stammfunktion. Begründe, warum deren additive Konstante das Ergebnis nicht ändert. Zeichne den Graphen und vergleiche den Integralwert mit dem gesamten Flächeninhalt zwischen Graph und x-Achse auf diesem Intervall.",
+            "taskDemandEn": "Evaluate ∫ from 0 to 3 (x−1) dx using an antiderivative you choose. Explain why its additive constant does not change the result. Draw the graph and compare the integral with the total area between the graph and the x-axis on this interval.",
+            "expectedPerformanceDe": "F(x)=x²/2−x+C hat F′=x−1. F(3)−F(0)=1,5; C hebt sich auf. Das Dreieck unter der Achse von 0 bis 1 hat Fläche 0,5, das oberhalb von 1 bis 3 Fläche 2. Die orientierte Bilanz ist −0,5+2=1,5, der Gesamtflächeninhalt 2,5. Die eigene Skizze und Rechnung stimmen überein.",
+            "expectedPerformanceEn": "F(x)=x²/2−x+C has F′=x−1. F(3)−F(0)=1.5; C cancels. The triangle below the axis from 0 to 1 has area 0.5, and the one above from 1 to 3 has area 2. The oriented balance is −0.5+2=1.5, while total area is 2.5. The independent sketch and calculation agree.",
+            "understandingFocusDe": "Ableitungskontrolle, Randwertdifferenz und vorzeichenbehaftete Geometrie als zusammenhängende Hauptsatzanwendung erklären.",
+            "understandingFocusEn": "Explain differentiation checks, endpoint differences and signed geometry as a connected application of the fundamental theorem."
+          },
+          {
+            "id": "accumulation-and-reversed-bound",
+            "taskDemandDe": "Für f(t)=2t+1 sei A(x)=∫ von 1 bis x f(t) dt auf 0≤x≤2. Bestimme A(x), A(1), A′(x) und A(0). Erläutere den Zusammenhang A′=f und warum A(0) trotz positivem f auf [0,1] negativ ist.",
+            "taskDemandEn": "For f(t)=2t+1 let A(x)=∫ from 1 to x f(t) dt on 0≤x≤2. Determine A(x), A(1), A′(x) and A(0). Explain the relationship A′=f and why A(0) is negative despite positive f on [0,1].",
+            "expectedPerformanceDe": "Aus F(t)=t²+t folgt A(x)=x²+x−2, daher A(1)=0, A′(x)=2x+1=f(x) und A(0)=−2. Die Flächenzunahme bei Veränderung der oberen Grenze wird lokal durch die Höhe f(x) beschrieben. ∫ von 1 bis 0 f ist das Negative von ∫ von 0 bis 1 f; der positive Trapezinhalt 2 erhält wegen der umgekehrten Orientierung das Minuszeichen.",
+            "expectedPerformanceEn": "F(t)=t²+t yields A(x)=x²+x−2, so A(1)=0, A′(x)=2x+1=f(x) and A(0)=−2. The local change in accumulated area as the upper limit changes is described by the height f(x). ∫ from 1 to 0 f is the negative of ∫ from 0 to 1 f; the positive trapezoid area 2 receives a minus sign because orientation is reversed.",
+            "understandingFocusDe": "Den Hauptsatz auf eine veränderliche Grenze übertragen und Ableitung sowie Orientierung unabhängig voneinander deuten.",
+            "understandingFocusEn": "Transfer the fundamental theorem to a variable limit and interpret differentiation and orientation separately."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+      "reason": "Aktuelle Sek-I-Zielbeschreibung und wirksame G8/G9-Geltungsmatrix einschließlich neuer HE-G9-Quelle gelesen. Einfache Exponentialgleichungen werden logarithmisch begründet gelöst, geprüft und in einem Wachstumskontext gedeutet; keine Ableitungen oder kontinuierlichen Wachstumsraten hinzugefügt.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": ["Die bestehenden direkten Voraussetzungen enthalten keinen gesonderten Logarithmus-Recall-Nachweis. Die inverse Bedeutung und zulässigen Umformungen werden daher in diesem Ziel aufgebaut und beobachtet, nicht als verdeckte Voraussetzung angenommen."],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "inverse-exponent-and-check",
+            "essentialUnderstandingDe": "Der Logarithmus beantwortet die Frage nach dem Exponenten. Nach Isolieren einer positiven Potenz a^u=v mit a>0 und a≠1 folgt u=log_a(v); eine Basisänderung erlaubt ln(v)/ln(a). Eine Vorfaktor-Division ist von dieser Umkehrung der Potenz zu unterscheiden.",
+            "essentialUnderstandingEn": "A logarithm answers the question about the exponent. After isolating a positive power a^u=v with a>0 and a≠1, u=log_a(v); changing the base gives ln(v)/ln(a). Dividing out a prefactor differs from inverting the exponential relationship.",
+            "observablePerformanceDe": "Isoliert in einer neuen einfachen Exponentialgleichung die Potenz, begründet die logarithmische Umformung mit der Umkehrbeziehung und prüft die Lösung in der Ausgangsgleichung. Benennt die erforderliche positive Basis und den positiven Zielwert.",
+            "observablePerformanceEn": "Isolates the power in a fresh simple exponential equation, justifies the logarithmic transformation using the inverse relationship, and checks the solution in the original equation. Identifies the required positive base and positive target value."
+          },
+          {
+            "id": "time-unit-and-growth-threshold",
+            "essentialUnderstandingDe": "Der Exponent muss zum Zeitintervall des Wachstumsfaktors passen. Der reelle Zeitpunkt einer Gleichheit und der erste erlaubte Beobachtungszeitpunkt oberhalb einer Schwelle sind unterschiedliche Antworten.",
+            "essentialUnderstandingEn": "The exponent must match the time interval of the growth factor. The real time of equality and the first allowed observation time above a threshold are different answers.",
+            "observablePerformanceDe": "Deutet die gefundene Zeit im vorgegebenen Wachstumsmodell, berücksichtigt dessen Zeitmaßstab und begründet eine diskrete Schwellenentscheidung durch Prüfung benachbarter Beobachtungszeitpunkte.",
+            "observablePerformanceEn": "Interprets the time obtained in the supplied growth model, accounts for its time scale, and justifies a discrete threshold decision by checking adjacent observation times."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["inverse-exponent-and-check", "time-unit-and-growth-threshold"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [{
+          "id": "prefactor-equation-and-two-hour-growth",
+          "textDe": "Von einer einfachen Gleichung mit Vorfaktor zu einem Wachstumsmodell mit Zweistundenfaktor und diskreten Beobachtungszeiten wechseln.",
+          "textEn": "Move from a simple equation with a prefactor to a growth model with a two-hour factor and discrete observation times."
+        }],
+        "applicationCaseBriefs": [
+          {
+            "id": "isolate-power",
+            "taskDemandDe": "Löse 3·2^x=15 logarithmisch. Erkläre, warum erst durch 3 geteilt wird und warum anschließendes Teilen durch 2 den Exponenten nicht isoliert. Prüfe Deine Lösung durch Einsetzen und erläutere, ob −15 statt 15 eine reelle Lösung zuließe.",
+            "taskDemandEn": "Solve 3·2^x=15 logarithmically. Explain why you first divide by 3 and why then dividing by 2 does not isolate the exponent. Check your solution by substitution and explain whether replacing 15 by −15 would permit a real solution.",
+            "expectedPerformanceDe": "2^x=5 führt zur inversen Frage nach dem Exponenten, also x=log_2(5)=ln(5)/ln(2)≈2,321928. Damit ist 3·2^x=15. x ist kein Faktor in 2^x, daher ist 5/2 keine Lösung. Für rechte Seite −15 müsste 2^x=−5 gelten; eine positive Basis liefert hier stets positive Werte, also keine reelle Lösung.",
+            "expectedPerformanceEn": "2^x=5 asks the inverse question about the exponent, so x=log_2(5)=ln(5)/ln(2)≈2.321928. This gives 3·2^x=15. x is not a factor in 2^x, so 5/2 is not a solution. A right-hand side of −15 would require 2^x=−5; this positive base always gives positive values, so there is no real solution.",
+            "understandingFocusDe": "Vorfaktor, Potenz und inverse Operation unterscheiden und Zulässigkeit der Lösung mathematisch prüfen.",
+            "understandingFocusEn": "Distinguish prefactor, power and inverse operation and check mathematical admissibility."
+          },
+          {
+            "id": "two-hour-observation",
+            "taskDemandDe": "Eine idealisierte Wachstumsmenge beginnt mit 40 Einheiten und vergrößert sich alle zwei Stunden um den Faktor 1,25. Es gilt N(t)=40·1,25^(t/2), t in Stunden. Wann erreicht das Modell 100 Einheiten? Beobachtet wird nur bei t=0,2,4,…; nenne den ersten Beobachtungszeitpunkt mit mindestens 100 und prüfe seine Nachbarzeit.",
+            "taskDemandEn": "An idealized growing quantity starts with 40 units and increases by a factor of 1.25 every two hours. N(t)=40·1.25^(t/2), with t in hours. When does the model reach 100 units? Observations occur only at t=0,2,4,…; give the first observation time with at least 100 and check the adjacent earlier time.",
+            "expectedPerformanceDe": "1,25^(t/2)=2,5 liefert t=2 ln(2,5)/ln(1,25)≈8,212567 h. Der Faktor gilt für zwei Stunden; der Faktor 2 vor dem Logarithmenquotienten ist deshalb notwendig. N(8)=97,65625<100 und N(10)=122,0703125>100, also erstmals bei der Beobachtung nach 10 h. Die Prognose setzt das gleichbleibende Wachstumsmodell voraus.",
+            "expectedPerformanceEn": "1.25^(t/2)=2.5 gives t=2 ln(2.5)/ln(1.25)≈8.212567 h. The factor applies to two hours, so the multiplier 2 before the logarithm ratio is necessary. N(8)=97.65625<100 and N(10)=122.0703125>100, so the first qualifying observation is after 10 h. The forecast assumes that the growth model remains unchanged.",
+            "understandingFocusDe": "Logarithmische Lösung mit Zeitskala, Einsetzprobe und diskreter Kontextentscheidung verbinden.",
+            "understandingFocusEn": "Connect logarithmic solution with time scale, substitution checks and a discrete contextual decision."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+      "reason": "Aktuelle DE/EN-Fassung und Sek-I-Geltung gelesen. Der Schwerpunkt ist der Bedeutungs- und Darstellungswechsel Exponentialbeziehung/Logarithmus, nicht die allgemeine Gleichungslösungsroutine des Nachbarziels. Positive Verhältnisse und negative Logarithmen werden an zwei einfach definierten Kontexten gedeutet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "equivalent-exponential-logarithmic-statements",
+            "essentialUnderstandingDe": "Für a>0, a≠1 und y>0 sind a^x=y und log_a(y)=x gleichwertige Aussagen. Basis, Exponent und Ergebnis behalten ihre Rollen; der Logarithmus gibt den Exponenten an und ist keine Division des Ergebnisses durch die Basis.",
+            "essentialUnderstandingEn": "For a>0, a≠1 and y>0, a^x=y and log_a(y)=x are equivalent statements. Base, exponent and result retain their roles; the logarithm gives the exponent and is not division of the result by the base.",
+            "observablePerformanceDe": "Übersetzt selbstständig zwischen einer verbalen exponentiellen Beziehung, Potenzschreibweise und Logarithmusschreibweise und benennt die Bedeutung jedes beteiligten Wertes. Prüft den Wechsel durch Rückübersetzung.",
+            "observablePerformanceEn": "Independently translates among a verbal exponential relationship, exponential notation and logarithmic notation and identifies the meaning of each value. Checks the conversion by translating back."
+          },
+          {
+            "id": "inverse-scale-context-and-domain",
+            "essentialUnderstandingDe": "Ein Logarithmus ordnet einem positiven Verhältnis eine exponentielle Stufenzahl zu. Bei Basis größer als 1 entsprechen Verhältnisse kleiner als 1 negativen Stufen; ein negativer Logarithmus ist mit einem positiven Argument vereinbar.",
+            "essentialUnderstandingEn": "A logarithm assigns an exponential step number to a positive ratio. For a base greater than 1, ratios below 1 correspond to negative steps; a negative logarithm is compatible with a positive argument.",
+            "observablePerformanceDe": "Deutet den Logarithmus als Stufe oder Faktoranzahl im definierten Modell, wechselt die Basis passend zur Kontextregel und unterscheidet negative Stufen von unzulässigen nichtpositiven Argumenten.",
+            "observablePerformanceEn": "Interprets the logarithm as a step or number of factors in the defined model, selects the base matching the contextual rule, and distinguishes negative steps from inadmissible nonpositive arguments."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["equivalent-exponential-logarithmic-statements", "inverse-scale-context-and-domain"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [{
+          "id": "doubling-steps-and-reciprocal-decimal-ratio",
+          "textDe": "Von ganzzahligen Verdopplungsschritten zu einem positiven Verhältnis unter 1 auf einer ausdrücklich definierten Zehnerskala wechseln.",
+          "textEn": "Move from integer doubling steps to a positive ratio below 1 on an explicitly defined base-ten scale."
+        }],
+        "applicationCaseBriefs": [
+          {
+            "id": "doubling-levels",
+            "taskDemandDe": "In einem Verdopplungsmodell gilt für das Verhältnis zum Startwert R=2^k. Ein Wert ist 32-mal so groß wie der Startwert. Formuliere die exponentielle und die logarithmische Aussage und erkläre k. Übersetze anschließend log_2(8)=3 zurück in eine Aussage über dasselbe Modell.",
+            "taskDemandEn": "In a doubling model, the ratio to the starting value is R=2^k. A value is 32 times the starting value. State the exponential and logarithmic statements and explain k. Then translate log_2(8)=3 back into a statement about the same model.",
+            "expectedPerformanceDe": "2^5=32 ist gleichwertig zu log_2(32)=5: Fünf Verdopplungsschritte erzeugen den Faktor 32. Die Basis 2 stammt aus der Verdopplungsregel, 32 ist das Verhältnis und 5 die Schrittzahl. log_2(8)=3 entspricht 2³=8, also einem achtfachen Wert nach drei Verdopplungen; 32/2 wäre nicht die gesuchte Schrittzahl.",
+            "expectedPerformanceEn": "2^5=32 is equivalent to log_2(32)=5: five doubling steps produce a factor of 32. Base 2 comes from the doubling rule, 32 is the ratio and 5 the step count. log_2(8)=3 corresponds to 2³=8, meaning an eightfold value after three doublings; 32/2 would not be the step count sought.",
+            "understandingFocusDe": "Die inversen Schreibweisen mit einer konkreten Multiplikationsregel und den Rollen der Zahlen verknüpfen.",
+            "understandingFocusEn": "Connect inverse notations to a concrete multiplication rule and the roles of the numbers."
+          },
+          {
+            "id": "decimal-comparison-scale",
+            "taskDemandDe": "Eine Vergleichsskala ist durch R=10^s definiert, wobei R das positive Verhältnis einer Menge zu einer Bezugsmenge ist. Für R=0,01: Bestimme s, notiere beide gleichwertigen Schreibweisen und deute den Wert. Welches Verhältnis gehört zu s=0? Warum lässt sich R=−1 nicht auf dieser reellen Skala abbilden?",
+            "taskDemandEn": "A comparison scale is defined by R=10^s, where R is the positive ratio of an amount to a reference amount. For R=0.01, determine s, write both equivalent notations and interpret the value. Which ratio corresponds to s=0? Why cannot R=−1 be represented on this real scale?",
+            "expectedPerformanceDe": "10^(−2)=0,01 und log_10(0,01)=−2. Die Menge ist ein Hundertstel der Bezugsmenge; die negative Stufe bedeutet zweimalige Verringerung um den Faktor 10, keine negative Menge. s=0 gehört zu R=1. Da 10^s für alle reellen s positiv bleibt, besitzt R=−1 keinen reellen Skalenwert.",
+            "expectedPerformanceEn": "10^(−2)=0.01 and log_10(0.01)=−2. The amount is one hundredth of the reference; the negative step means two reductions by a factor of 10, not a negative amount. s=0 corresponds to R=1. Since 10^s stays positive for all real s, R=−1 has no real scale value.",
+            "understandingFocusDe": "Die Umkehrbeziehung auf eine andere Basis und negative Exponenten übertragen, während der Definitionsbereich erhalten bleibt.",
+            "understandingFocusEn": "Transfer the inverse relationship to a different base and negative exponents while preserving the domain."
+          }
+        ]
+      }
+    }
+  ]
+}

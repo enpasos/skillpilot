@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-06T16:03:20.380Z",
+  "generatedAt": "2026-09-07T06:00:14.975Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "physik",
@@ -10,11 +10,11 @@
     "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2"
   },
   "summary": {
-    "totalGoals": 710,
-    "atomicGoalsInScope": 464,
+    "totalGoals": 711,
+    "atomicGoalsInScope": 465,
     "goalsWithPrimaryVisualization": 415,
-    "coveragePercent": 89.4,
-    "goalsAccountedForByAssetOrDeferred": 464,
+    "coveragePercent": 89.2,
+    "goalsAccountedForByAssetOrDeferred": 465,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
@@ -25,7 +25,7 @@
       "accepted": 74,
       "pilot": 341
     },
-    "reviewLedgerFiles": 89,
+    "reviewLedgerFiles": 90,
     "reviewDecisionCounts": {
       "accepted_cluster_overview_after_atomic_split": 1,
       "accepted_documented_repo_native_fallback": 1,
@@ -50,22 +50,22 @@
       "accepted_retroactive_nano_banana": 22,
       "accepted_reuse_after_current_visual_review": 3,
       "blocked_provider_quota": 1,
-      "deferred_provider_limitation": 62,
+      "deferred_provider_limitation": 63,
       "provider_temporary_failure_retried": 1,
       "rejected_after_user_review_replaced": 8,
       "rejected_regenerated": 227
     },
-    "openProviderDeferredGoals": 49,
+    "openProviderDeferredGoals": 50,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 1,
     "regularUnlinkedGoals": 0,
     "coverageGatePassed": true,
-    "linkedWithoutAcceptedReview": 0,
+    "linkedWithoutAcceptedReview": 1,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-checkpoint-split-reuse-2026-09-05.md",
-    "latestLedgerStatus": "completed_pilot",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-checkpoint-2026-09-07.md",
+    "latestLedgerStatus": null,
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2"
   },
@@ -112,6 +112,13 @@
         "title": "Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen",
         "decision": "deferred_provider_limitation",
         "notes": "Neues Strukturkind ohne Ersatzbild; spätere Visualisierung ausschließlich durch einen gezielten, fachlich geprüften Nano-Banana-Pro-Lauf."
+      },
+      {
+        "batch": "physik-checkpoint-2026-09-07",
+        "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "title": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Drei verworfene Nano-Versuche mit widersprüchlichen Energieverläufen; aktive Bildkopien entfernt und Original archiviert. Siehe physics-b038-local-diagram-corrections-v1/physik-b038-local-diagram-disposition-2026-09-06.md sowie independent-candidate-1/2/3-review.md. Der QA-Datensatz führt bereits dieselbe Rückstellung."
       },
       {
         "batch": "082",
@@ -491,7 +498,15 @@
     ]
   },
   "consistency": {
-    "linkedWithoutAcceptedReview": [],
+    "linkedWithoutAcceptedReview": [
+      {
+        "goalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+        "title": "Mittleres Beschleunigungsmoment bestimmen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea.jpg",
+        "latestDecision": null
+      }
+    ],
     "acceptedReviewWithoutLink": []
   },
   "visualizedGoals": [
@@ -910,14 +925,6 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/defe44d2-c3d3-456b-a786-fad2cef13fe8/defe44d2-c3d3-456b-a786-fad2cef13fe8.jpg"
-    },
-    {
-      "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
-      "title": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen",
-      "phase": "Q2",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/a7255b83-336c-4d42-ba5c-bc2f6248ea36/a7255b83-336c-4d42-ba5c-bc2f6248ea36.jpg"
     },
     {
       "goalId": "330808f6-789a-583d-86df-e271a7683d8b",
@@ -2592,6 +2599,14 @@
       "url": "/assets/goal-visualizations/physik/f23fdfa9-38b6-5157-8301-ed302476c456/f23fdfa9-38b6-5157-8301-ed302476c456.jpg"
     },
     {
+      "goalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+      "title": "Mittleres Beschleunigungsmoment bestimmen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea.jpg"
+    },
+    {
       "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
       "title": "Modellierung und Idealisierung von Bewegungen",
       "phase": "E",
@@ -3081,7 +3096,7 @@
     },
     {
       "goalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
-      "title": "Rotationsenergie und Beschleunigungsmoment berechnen",
+      "title": "Rotationsenergie bestimmen",
       "phase": "E",
       "area": "",
       "reviewStatus": "pilot",

@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "qa-metadata-sync-receipt-v1",
+  "recordedAt": "2026-09-06T23:38:31.221Z",
+  "authority": "metadata synchronization only; no new image review or human approval",
+  "humanApprovalClaimed": false,
+  "imageAdoptionReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b039-methods-and-physics-torque-v1/image-qa-adoption-receipt-v1.json",
+    "sha256": "sha256:dba6eaa0fff346fb75643eaf07c3f9a7dee4ff7323fc862cd6d275b3f7e5feda"
+  },
+  "priorImageAdoptionVerify": {
+    "status": "PASS",
+    "observedDocumentationTime": "2026-09-06T23:35:51Z",
+    "meaning": "Observed clock immediately after the successful original helper verify; not an invented exact invocation time."
+  },
+  "helper": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b039-methods-and-physics-torque-v1/sync-qa-metadata.mjs",
+    "sha256": "sha256:e16b99c8f5ed3648ab79c71c5a86a059fc7c1717b656cc21f301a46367ab4c43"
+  },
+  "preSyncState": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b039-methods-and-physics-torque-v1/pre-qa-metadata-sync-v1.json",
+    "sha256": "sha256:ee4d803942ce0df731d13c9dccce666ac8091d427281e0ccf46d507eb50a3fea"
+  },
+  "commands": [
+    "npm --prefix app run quality:goal-visualization-qa -- --subject mathematik",
+    "npm --prefix app run check:goal-visualization-qa -- --subject mathematik",
+    "npm --prefix app run quality:goal-visualization-qa -- --subject physik",
+    "npm --prefix app run check:goal-visualization-qa -- --subject physik"
+  ],
+  "changes": [
+    {
+      "subject": "mathematik",
+      "goalId": "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+      "changedKeys": [
+        "description"
+      ],
+      "before": {
+        "goalId": "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+        "title": "Ganzrationale Funktionen faktorisieren und Nullstellen bestimmen",
+        "description": "Die lernende Person kann Nullstellen ganzrationaler Funktionen systematisch suchen, Funktionen in Linearfaktordarstellung überführen und Nullstellen aus linearen Faktoren ablesen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/51e80e7b-df31-5d97-97f9-4c6e26eb7416/51e80e7b-df31-5d97-97f9-4c6e26eb7416.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/51e80e7b-df31-5d97-97f9-4c6e26eb7416/51e80e7b-df31-5d97-97f9-4c6e26eb7416.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/51e80e7b-df31-5d97-97f9-4c6e26eb7416/51e80e7b-df31-5d97-97f9-4c6e26eb7416.jpg",
+        "assetSha256": "sha256:10b617f4fe662337b907cf4d5f118262cf8204a0ad1d480e897d3c4c08042efd",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-08-16T08:27:41.000Z",
+        "chatGptReviewer": "codex-goal-description-image-review-2026-08-16",
+        "chatGptNotes": "R05, class B: accepted reuse after fresh review against revised description. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:10b617f4fe662337b907cf4d5f118262cf8204a0ad1d480e897d3c4c08042efd",
+        "aiReviewedAt": "2026-08-16T08:27:41.000Z",
+        "aiReviewer": "codex-fresh-full-resolution-2026-08-16",
+        "aiNotes": "R05, class B: accepted reuse after fresh review against revised description. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts."
+      },
+      "after": {
+        "goalId": "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+        "title": "Ganzrationale Funktionen faktorisieren und Nullstellen bestimmen",
+        "description": "Die lernende Person kann reelle Nullstellen ganzrationaler Funktionen systematisch suchen, die Funktionen soweit möglich in reelle Linearfaktoren zerlegen und Nullstellen aus den Faktoren ablesen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/51e80e7b-df31-5d97-97f9-4c6e26eb7416/51e80e7b-df31-5d97-97f9-4c6e26eb7416.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/51e80e7b-df31-5d97-97f9-4c6e26eb7416/51e80e7b-df31-5d97-97f9-4c6e26eb7416.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/51e80e7b-df31-5d97-97f9-4c6e26eb7416/51e80e7b-df31-5d97-97f9-4c6e26eb7416.jpg",
+        "assetSha256": "sha256:10b617f4fe662337b907cf4d5f118262cf8204a0ad1d480e897d3c4c08042efd",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-08-16T08:27:41.000Z",
+        "chatGptReviewer": "codex-goal-description-image-review-2026-08-16",
+        "chatGptNotes": "R05, class B: accepted reuse after fresh review against revised description. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:10b617f4fe662337b907cf4d5f118262cf8204a0ad1d480e897d3c4c08042efd",
+        "aiReviewedAt": "2026-08-16T08:27:41.000Z",
+        "aiReviewer": "codex-fresh-full-resolution-2026-08-16",
+        "aiNotes": "R05, class B: accepted reuse after fresh review against revised description. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts."
+      },
+      "retainedImageSha256": "sha256:10b617f4fe662337b907cf4d5f118262cf8204a0ad1d480e897d3c4c08042efd"
+    },
+    {
+      "subject": "mathematik",
+      "goalId": "1b888f4c-df57-52a9-9551-b2b692e929fa",
+      "changedKeys": [
+        "description"
+      ],
+      "before": {
+        "goalId": "1b888f4c-df57-52a9-9551-b2b692e929fa",
+        "title": "Konvergenz und Divergenz von Folgen beschreiben",
+        "description": "Die lernende Person kann anhand tabellarischer oder grafischer Darstellungen entscheiden, ob eine Folge konvergiert oder divergiert, Grenzwerte schätzen und Nullfolgen begründen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg",
+        "assetSha256": "sha256:bd38636821efe2c1c37818f1b5f20dbb6ab4925aee09c754b0d2f497bc15ea8b",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:bd38636821efe2c1c37818f1b5f20dbb6ab4925aee09c754b0d2f497bc15ea8b",
+        "aiReviewedAt": "2026-07-16T15:49:01.434Z",
+        "aiReviewer": "codex-fresh-original-resolution-review-2026-07-16",
+        "aiNotes": "Konvergente Folge, divergente Folge und alternierende beschränkte Folge sind mit vollständigen, korrekten Tabellenwerten und passenden Graphen dargestellt."
+      },
+      "after": {
+        "goalId": "1b888f4c-df57-52a9-9551-b2b692e929fa",
+        "title": "Konvergenz und Divergenz von Folgen beschreiben",
+        "description": "Die lernende Person kann aus tabellarischen oder grafischen Darstellungen Vermutungen über Konvergenz oder Divergenz von Folgen formulieren, Grenzwerte schätzen und anhand des Bildungsgesetzes begründen, wann eine Nullfolge vorliegt.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg",
+        "assetSha256": "sha256:bd38636821efe2c1c37818f1b5f20dbb6ab4925aee09c754b0d2f497bc15ea8b",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:bd38636821efe2c1c37818f1b5f20dbb6ab4925aee09c754b0d2f497bc15ea8b",
+        "aiReviewedAt": "2026-07-16T15:49:01.434Z",
+        "aiReviewer": "codex-fresh-original-resolution-review-2026-07-16",
+        "aiNotes": "Konvergente Folge, divergente Folge und alternierende beschränkte Folge sind mit vollständigen, korrekten Tabellenwerten und passenden Graphen dargestellt."
+      },
+      "retainedImageSha256": "sha256:bd38636821efe2c1c37818f1b5f20dbb6ab4925aee09c754b0d2f497bc15ea8b"
+    }
+  ],
+  "fileDigests": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "beforeSha256": "sha256:6b26f5ff7c8cda60e984e283e327fea8a5c8bfce6b3bc43064a11eb90e3f5f4b",
+      "afterSha256": "sha256:0ca973ec048f8d6f651a10144d7994055eb9aa683cae2c8678175d84fa26489c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "beforeSha256": "sha256:3f646ccc7f0b1fa96dc70c94e2c46577b519d747c4a6b5b80b12803d9858da7e",
+      "afterSha256": "sha256:3f646ccc7f0b1fa96dc70c94e2c46577b519d747c4a6b5b80b12803d9858da7e"
+    }
+  ],
+  "preservation": {
+    "canonicalBytesUnchanged": true,
+    "fourImportedImageQaRecordsUnchanged": true,
+    "twelveImageBytesUnchanged": true,
+    "eightPromptBytesUnchanged": true,
+    "approvalFieldsUnchangedAcrossEveryQaRecord": true,
+    "qaRecordOrderUnchanged": true,
+    "otherQaRecordFieldsUnchanged": true
+  },
+  "provenanceClarification": {
+    "goalId": "c61af0a9-7d56-5505-a70d-ee097c3b747f",
+    "clarificationDe": "Die neue Wertfolge 3; 2,5; 2⅓; 2,25 sowie die ausschließlich wechselnden Werte −1,+1 sind korrekt. Der Anlass der Reparatur waren unzutreffende Punkthöhen im früheren Raster. Die Formulierung „nun korrekt 2⅓“ im abgeschlossenen Importreceipt soll nicht behaupten, dass genau dieses frühere Zahlenetikett falsch war.",
+    "historicalReceiptPreserved": true,
+    "noImageChange": true
+  },
+  "finalVerification": "Run this helper with verify. The original adoption helper remains a historical pre-metadata-sync verification, because it intentionally binds the earlier whole-QA hashes."
+}

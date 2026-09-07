@@ -1,0 +1,795 @@
+{
+  "schemaVersion": 1,
+  "status": "read_only_authoring_plan_not_applied",
+  "preparedAt": "2026-09-07T01:10:23.121Z",
+  "author": {
+    "reviewer": "codex",
+    "provider": "OpenAI",
+    "model": "unknown",
+    "modelVersion": "unknown",
+    "humanApprovalClaimed": false
+  },
+  "baseline": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "sha256:a5b589e9e0ce8abf6a1d0837b8a1c366d59ae1ee94e7b08c6d621beb5d947853"
+  },
+  "newGoals": [
+    {
+      "id": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+      "shortKey": "canonical_physics_astro_solar_system_structure",
+      "title": "Aufbau des Sonnensystems beschreiben",
+      "titleEn": "Describe the structure of the Solar System",
+      "description": "Die lernende Person kann den Aufbau des Sonnensystems beschreiben und Sonne, Planeten und Kometen anhand ihrer Rolle und ihrer Bahnen einordnen.",
+      "descriptionEn": "The learner can describe the structure of the Solar System and classify the Sun, planets, and comets by their roles and orbits.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BY"
+        ]
+      }
+    },
+    {
+      "id": "37013646-f13a-5faf-954c-940f2fd7502f",
+      "shortKey": "canonical_physics_astro_tides_qualitative",
+      "title": "Gezeiten qualitativ erklären",
+      "titleEn": "Explain tides qualitatively",
+      "description": "Die lernende Person kann Gezeiten qualitativ durch die unterschiedliche Gravitationswirkung von Mond und Sonne auf verschiedene Bereiche der Erde erklären.",
+      "descriptionEn": "The learner can explain tides qualitatively through the differing gravitational effects of the Moon and Sun on different regions of Earth.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      }
+    },
+    {
+      "id": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+      "shortKey": "canonical_physics_astro_big_bang_redshift_cmb",
+      "title": "Urknallmodell anhand kosmologischer Beobachtungen erläutern",
+      "titleEn": "Explain the Big Bang model using cosmological observations",
+      "description": "Die lernende Person kann das heiße Urknallmodell qualitativ erläutern und kosmologische Rotverschiebung sowie Hintergrundstrahlung als Beobachtungsbelege dafür einordnen.",
+      "descriptionEn": "The learner can explain the hot Big Bang model qualitatively and interpret cosmological redshift and the cosmic microwave background as observational evidence for it.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "2b700858-bc2e-5ddf-a791-b14d44160480"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY",
+          "DE-RP"
+        ]
+      }
+    },
+    {
+      "id": "3d466956-04fb-58d7-9008-ad8090f8706d",
+      "shortKey": "canonical_physics_astro_dark_matter_qualitative",
+      "title": "Dunkle Materie qualitativ einordnen",
+      "titleEn": "Interpret dark matter qualitatively",
+      "description": "Die lernende Person kann dunkle Materie als Modellbestandteil zur Erklärung von Gravitationswirkungen erläutern, die sich nicht durch die beobachtete sichtbare Materie allein erklären lassen.",
+      "descriptionEn": "The learner can explain dark matter as a model component accounting for gravitational effects that cannot be explained by the observed visible matter alone.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY"
+        ]
+      }
+    },
+    {
+      "id": "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+      "shortKey": "canonical_physics_astro_dark_energy_qualitative",
+      "title": "Dunkle Energie qualitativ einordnen",
+      "titleEn": "Interpret dark energy qualitatively",
+      "description": "Die lernende Person kann dunkle Energie als Modellbegriff zur Beschreibung der beobachteten beschleunigten Expansion des Universums einordnen.",
+      "descriptionEn": "The learner can interpret dark energy as a model concept used to describe the observed accelerated expansion of the universe.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      }
+    },
+    {
+      "id": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+      "shortKey": "canonical_physics_astro_universe_structural_hierarchy",
+      "title": "Kosmische Strukturen einordnen",
+      "titleEn": "Classify cosmic structures",
+      "description": "Die lernende Person kann größere kosmische Strukturen wie Galaxien beschreiben und Sternsysteme darin einordnen.",
+      "descriptionEn": "The learner can describe larger cosmic structures such as galaxies and locate stellar systems within them.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY",
+          "DE-RP"
+        ]
+      }
+    },
+    {
+      "id": "db0394ca-297c-5892-b414-525ec186f928",
+      "shortKey": "canonical_physics_astro_universe_size_age_qualitative",
+      "title": "Größe und Alter des Universums qualitativ einordnen",
+      "titleEn": "Interpret the size and age of the universe qualitatively",
+      "description": "Die lernende Person kann qualitative Aussagen zu Größe und Alter des Universums einordnen und dabei räumliche Ausdehnung und vergangene Zeit sowie das beobachtbare und das gesamte Universum unterscheiden.",
+      "descriptionEn": "The learner can interpret qualitative statements about the size and age of the universe, distinguishing spatial extent from elapsed time and the observable universe from the universe as a whole.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+        "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-RP"
+        ]
+      }
+    }
+  ],
+  "clusterUpdates": [
+    {
+      "goalId": "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+      "before": {
+        "type": "atomic",
+        "contains": [],
+        "requires": [
+          "497f1311-17d6-56ff-afb1-422a738e5c16"
+        ]
+      },
+      "after": {
+        "type": "cluster",
+        "contains": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "497f1311-17d6-56ff-afb1-422a738e5c16",
+          "37013646-f13a-5faf-954c-940f2fd7502f"
+        ],
+        "requires": []
+      },
+      "semanticPolicy": "Preserve the complete old description/descriptionEn; do not narrow the old ID to one child; no learner mastery mutation."
+    },
+    {
+      "goalId": "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+      "before": {
+        "type": "atomic",
+        "contains": [],
+        "requires": [
+          "c9405043-bdc0-5995-8b4d-5bb56d97d05d"
+        ]
+      },
+      "after": {
+        "type": "cluster",
+        "contains": [
+          "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "3d466956-04fb-58d7-9008-ad8090f8706d",
+          "b4772b06-b10c-52dd-841b-a96ffb7c7e28"
+        ],
+        "requires": []
+      },
+      "semanticPolicy": "Preserve the complete old description/descriptionEn; do not narrow the old ID to one child; no learner mastery mutation."
+    },
+    {
+      "goalId": "5db07785-8cca-50d5-81a9-e0264d344af9",
+      "before": {
+        "type": "atomic",
+        "contains": [],
+        "requires": [
+          "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9"
+        ]
+      },
+      "after": {
+        "type": "cluster",
+        "contains": [
+          "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "db0394ca-297c-5892-b414-525ec186f928"
+        ],
+        "requires": []
+      },
+      "semanticPolicy": "Preserve the complete old description/descriptionEn; do not narrow the old ID to one child; no learner mastery mutation."
+    }
+  ],
+  "edgeUpdates": [
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "title": "Hertzsprung-Russell-Diagramm (HRD)",
+      "before": [
+        "c9405043-bdc0-5995-8b4d-5bb56d97d05d"
+      ],
+      "after": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ]
+    },
+    {
+      "goalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "title": "Energieumwandlung in der Sonne",
+      "before": [
+        "c9405043-bdc0-5995-8b4d-5bb56d97d05d"
+      ],
+      "after": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ]
+    },
+    {
+      "goalId": "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+      "title": "Entfernungsbestimmung",
+      "before": [
+        "c9405043-bdc0-5995-8b4d-5bb56d97d05d"
+      ],
+      "after": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ]
+    },
+    {
+      "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "title": "Exoplaneten-Nachweise erlaeutern",
+      "before": [
+        "c9405043-bdc0-5995-8b4d-5bb56d97d05d"
+      ],
+      "after": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ]
+    },
+    {
+      "goalId": "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+      "title": "Planetenkonstellationen und ihre Sichtbarkeit modellieren",
+      "before": [
+        "c9405043-bdc0-5995-8b4d-5bb56d97d05d"
+      ],
+      "after": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ]
+    },
+    {
+      "goalId": "982df2f3-e040-5f4b-b668-0fe05d994b29",
+      "title": "Himmelskörper des Sonnensystems physikalisch klassifizieren",
+      "before": [
+        "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+        "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e"
+      ],
+      "after": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e"
+      ]
+    },
+    {
+      "goalId": "a5031dfc-6d25-5a04-850a-5c7d8a254c21",
+      "title": "Strahlungsgleichgewichte und Lebensbedingungen abschätzen",
+      "before": [
+        "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+        "89124b92-5769-5e13-8a5d-78497936260f"
+      ],
+      "after": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "89124b92-5769-5e13-8a5d-78497936260f"
+      ]
+    },
+    {
+      "goalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+      "title": "Sonnenmasse aus Bahndaten abschätzen",
+      "before": [
+        "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+        "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+      ],
+      "after": [
+        "497f1311-17d6-56ff-afb1-422a738e5c16",
+        "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+      ]
+    },
+    {
+      "goalId": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+      "title": "Kosmologie vertieft",
+      "before": [
+        "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9"
+      ],
+      "after": [
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+      ]
+    },
+    {
+      "goalId": "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
+      "title": "Offene kosmologische Fragen quellenkritisch einordnen",
+      "before": [
+        "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+        "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e"
+      ],
+      "after": [
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+        "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e"
+      ]
+    },
+    {
+      "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+      "title": "Teleskope und Spektralbereiche zur Struktur der Milchstraße nutzen",
+      "before": [
+        "2b700858-bc2e-5ddf-a791-b14d44160480",
+        "5db07785-8cca-50d5-81a9-e0264d344af9"
+      ],
+      "after": [
+        "2b700858-bc2e-5ddf-a791-b14d44160480",
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7"
+      ]
+    },
+    {
+      "goalId": "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+      "title": "Massen aus astronomischen Bahnbewegungen abschätzen",
+      "before": [
+        "5db07785-8cca-50d5-81a9-e0264d344af9",
+        "14d99a65-8d58-5647-88ab-02137b96d55b"
+      ],
+      "after": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "14d99a65-8d58-5647-88ab-02137b96d55b"
+      ]
+    },
+    {
+      "goalId": "266b6cf8-d49d-5197-862c-9998fcf179a5",
+      "title": "Lernkarten - Q4",
+      "before": [
+        "51bc5513-6879-548f-b19a-9746b667f1a3",
+        "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+        "a684bec1-ba59-59d0-98d2-4ca37236f64c",
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "c9405043-bdc0-5995-8b4d-5bb56d97d05d"
+      ],
+      "after": [
+        "51bc5513-6879-548f-b19a-9746b667f1a3",
+        "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+        "a684bec1-ba59-59d0-98d2-4ca37236f64c",
+        "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+      ]
+    }
+  ],
+  "masterySafety": {
+    "forbiddenOperativeChildProvenanceKey": "splitFromCanonicalGoalId",
+    "forbiddenLocations": [
+      "extendedData.provenance",
+      "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json"
+    ],
+    "alsoForbidden": "No exact source or legacy mastery mapping from an old aggregate source ID directly to a new child. Narrow normative source coverage is not mastery equivalence.",
+    "splitTraceLocation": "This external authoring plan and dedicated quality/source-review artifacts, outside the runtime canonical provenance registry.",
+    "requiredConditions": [
+      "Set actual type=cluster on the three old IDs.",
+      "Expose intended children exactly once as authored target goals or explicitly prerequisiteOnly as required by the selected view.",
+      "Do not leave a childless projected cluster standing in for unseen intended targets.",
+      "No learner-state/mastery writes, imports, distribution or reset."
+    ],
+    "nativeReceipt": "runtime-cluster-mastery.readonly-receipt-v2.json"
+  },
+  "assessmentChecks": [
+    {
+      "goalId": "335a75b0-f691-5867-8ce3-3c971d541b9f",
+      "title": "Astrophysik und Kosmologie",
+      "reviewStatus": "released",
+      "claimedCoveredGoalCount": 14,
+      "taskContent": "**Kontext:**\n\nBearbeiten Sie eine materialgebundene Klausuraufgabe zu \"Astrophysik und Kosmologie\". Nutzen Sie geeignete Modelle, Diagramme, Rechnungen und eine fachlich begruendete Bewertung.\n\n**Aufgaben:**\n\n1. Stellen Sie die relevanten physikalischen Groessen, Modelle und Zusammenhaenge dar. (8 BE)\n2. Werten Sie gegebene Mess- oder Materialdaten rechnerisch aus und dokumentieren Sie den Loesungsweg. (10 BE)\n3. Deuten Sie das Ergebnis fachlich und pruefen Sie Modellgrenzen. (6 BE)\n4. Beurteilen Sie eine Anwendung oder Entscheidungssituation mit physikalischen Kriterien. (6 BE)",
+      "solutionContent": "Eine vollstaendige Loesung zu \"Astrophysik und Kosmologie\" enthaelt die Auswahl eines passenden Modells, korrekte Groessengleichungen mit Einheiten, nachvollziehbare Rechnungen, eine fachliche Deutung der Ergebnisse und eine begruendete Bewertung der Modellgrenzen.",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 8,
+            "description": "relevante Modelle und Groessen fuer Q4 fachlich richtig dargestellt"
+          },
+          {
+            "id": "s2",
+            "points": 10,
+            "description": "Materialdaten rechnerisch korrekt ausgewertet"
+          },
+          {
+            "id": "s3",
+            "points": 6,
+            "description": "Ergebnisse fachlich gedeutet und Modellgrenzen benannt"
+          },
+          {
+            "id": "s4",
+            "points": 6,
+            "description": "Anwendungssituation physikalisch begruendet bewertet"
+          }
+        ]
+      },
+      "assessmentCoverageFinding": "All four tasks are generic placeholders. No materials, numbers, concrete objects, or scientific questions are provided. No one of S/T/B/DM/DE/G/U or reused Kepler is actually assessed by the present task text.",
+      "confirmedNewChildCoverage": [],
+      "proposedCoveredGoalIds": null,
+      "implementationHold": "Do not fan out old three covered IDs or requires into children. Author concrete tasks, solutions and scoring first; then name only individually assessed children. Root authorized future assessment authoring in Layer A, but requested plan-only before B041."
+    },
+    {
+      "goalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
+      "title": "Q4-Klausuraufgaben Physik selbstständig lösen",
+      "reviewStatus": "released",
+      "claimedCoveredGoalCount": 65,
+      "taskContent": "**Kontext:**\n\nBearbeiten Sie eine materialgebundene Klausuraufgabe zu \"Q4-Klausuraufgaben Physik selbstständig lösen\". Nutzen Sie geeignete Modelle, Diagramme, Rechnungen und eine fachlich begruendete Bewertung.\n\n**Aufgaben:**\n\n1. Stellen Sie die relevanten physikalischen Groessen, Modelle und Zusammenhaenge dar. (8 BE)\n2. Werten Sie gegebene Mess- oder Materialdaten rechnerisch aus und dokumentieren Sie den Loesungsweg. (10 BE)\n3. Deuten Sie das Ergebnis fachlich und pruefen Sie Modellgrenzen. (6 BE)\n4. Beurteilen Sie eine Anwendung oder Entscheidungssituation mit physikalischen Kriterien. (6 BE)",
+      "solutionContent": "Eine vollstaendige Loesung zu \"Q4-Klausuraufgaben Physik selbstständig lösen\" enthaelt die Auswahl eines passenden Modells, korrekte Groessengleichungen mit Einheiten, nachvollziehbare Rechnungen, eine fachliche Deutung der Ergebnisse und eine begruendete Bewertung der Modellgrenzen.",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 18,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 8,
+            "description": "relevante Modelle und Groessen fuer Q4 fachlich richtig dargestellt"
+          },
+          {
+            "id": "s2",
+            "points": 10,
+            "description": "Materialdaten rechnerisch korrekt ausgewertet"
+          },
+          {
+            "id": "s3",
+            "points": 6,
+            "description": "Ergebnisse fachlich gedeutet und Modellgrenzen benannt"
+          },
+          {
+            "id": "s4",
+            "points": 6,
+            "description": "Anwendungssituation physikalisch begruendet bewertet"
+          }
+        ]
+      },
+      "assessmentCoverageFinding": "All four tasks are generic placeholders. No materials, numbers, concrete objects, or scientific questions are provided. No one of S/T/B/DM/DE/G/U or reused Kepler is actually assessed by the present task text.",
+      "confirmedNewChildCoverage": [],
+      "proposedCoveredGoalIds": null,
+      "implementationHold": "Do not fan out old three covered IDs or requires into children. Author concrete tasks, solutions and scoring first; then name only individually assessed children. Root authorized future assessment authoring in Layer A, but requested plan-only before B041."
+    }
+  ],
+  "memoryPlan": {
+    "deckId": "de_gymnasium_physics_structure_q4",
+    "deckPath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_structure_q4.de.json",
+    "sourceSha256": "sha256:77bfe50e32c343cdedbb73a8e9077f3f6a6a324e72f5e10da57388073265caab",
+    "runtimePath": "app/public/data/de_gymnasium_physics_flashcards_structure_q4.de.json",
+    "all16CardsRead": true,
+    "all16OriginRecordsRead": true,
+    "impactedCardCount": 1,
+    "unaffectedCardIds": [
+      "physics_q4_c01",
+      "physics_q4_c02",
+      "physics_q4_c03",
+      "physics_q4_c04",
+      "physics_q4_c05",
+      "physics_q4_c06",
+      "physics_q4_c07",
+      "physics_q4_c08",
+      "physics_q4_c09",
+      "physics_q4_c10",
+      "physics_q4_c11",
+      "physics_q4_c12",
+      "physics_q4_c13",
+      "physics_q4_c14",
+      "physics_q4_c16"
+    ],
+    "cardUpdate": {
+      "cardId": "physics_q4_c15",
+      "before": {
+        "id": "physics_q4_c15",
+        "front": "Rotverschiebung (Kosmologie)",
+        "back": "Verschiebung von Spektrallinien entfernter Galaxien ins Rote.\nIndiz für die Expansion des Universums (Doppler-Effekt bzw. kosmologische Expansion).",
+        "category": "Q4.6 Astrophysik (Option)",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9"
+        ]
+      },
+      "after": {
+        "id": "physics_q4_c15",
+        "front": "Rotverschiebung (Kosmologie)",
+        "back": "Bei kosmologischer Rotverschiebung werden die Wellenlängen des Lichts durch die Expansion des Raums gestreckt. Spektrallinien werden bei größeren Wellenlängen als im Ruhespektrum beobachtet.",
+        "category": "Q4.6 Astrophysik (Option)",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:c52d55c3-b687-586c-b0f9-8ffcd1069424"
+        ]
+      },
+      "englishMeaningForReviewOnly": "In cosmological redshift, the expansion of space stretches the wavelengths of light. Spectral lines are observed at longer wavelengths than in the rest-frame spectrum.",
+      "cardLedgerAfter": {
+        "status": "kept",
+        "necessary": true,
+        "originGoalIds": [
+          "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+        ]
+      }
+    },
+    "goalDecisions": [
+      {
+        "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "status": "no_memory_needed",
+        "memoryGoalIds": [],
+        "deckIds": []
+      },
+      {
+        "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+        "status": "no_memory_needed",
+        "memoryGoalIds": [],
+        "deckIds": []
+      },
+      {
+        "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+        "status": "memory_required",
+        "memoryGoalIds": [
+          "266b6cf8-d49d-5197-862c-9998fcf179a5"
+        ],
+        "deckIds": [
+          "de_gymnasium_physics_structure_q4"
+        ]
+      },
+      {
+        "goalId": "3d466956-04fb-58d7-9008-ad8090f8706d",
+        "status": "no_memory_needed",
+        "memoryGoalIds": [],
+        "deckIds": []
+      },
+      {
+        "goalId": "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+        "status": "no_memory_needed",
+        "memoryGoalIds": [],
+        "deckIds": []
+      },
+      {
+        "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "status": "no_memory_needed",
+        "memoryGoalIds": [],
+        "deckIds": []
+      },
+      {
+        "goalId": "db0394ca-297c-5892-b414-525ec186f928",
+        "status": "no_memory_needed",
+        "memoryGoalIds": [],
+        "deckIds": []
+      }
+    ],
+    "oldGoalDecisions": "Archive old leaf decisions when node kind changes; do not copy them to all children. Preserve all 15 unrelated card contents and origin IDs.",
+    "englishDeckPolicy": "No current Q4 English deck exists in public/data. The translation above is a review aid, not a request to create or deploy a new deck."
+  },
+  "sourceScope": {
+    "primaryPlan": "layer-a-split-plan.blind-b.de.md",
+    "coveragePolicy": "Direct topic fragments support only their named content. Multiple fragments may jointly cover a goal. No broad source umbrella or prerequisite is claimed as exact evidence of every new child.",
+    "heQ46": {
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+      "sourceToChildren": {
+        "he-phys-sekii-q4-6-b02-a01-06ec99c7": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+        ],
+        "he-phys-sekii-q4-6-b04-a01-f21366c9": [
+          "497f1311-17d6-56ff-afb1-422a738e5c16"
+        ],
+        "he-phys-sekii-q4-6-b05-a01-2337f1ec": [
+          "37013646-f13a-5faf-954c-940f2fd7502f"
+        ],
+        "he-phys-sekii-q4-6-b07-a01-6363597e": [
+          "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7"
+        ],
+        "he-phys-sekii-q4-6-b08-a01-e49cf7c0": [
+          "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+        ],
+        "he-phys-sekii-q4-6-b10-a01-63c631fb": [
+          "db0394ca-297c-5892-b414-525ec186f928"
+        ],
+        "he-phys-sekii-q4-6-b11-a01-73863b44": [
+          "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "3d466956-04fb-58d7-9008-ad8090f8706d",
+          "b4772b06-b10c-52dd-841b-a96ffb7c7e28"
+        ]
+      },
+      "b11RemoveTarget": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+      "unchangedOutsideSplit": "b03 gravity; b12-b16 stellar energy/evolution. b01/b06/b09 remain contextual headings, not standalone full child evidence."
+    },
+    "jurisdictionBounds": [
+      {
+        "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "proposedDirectTargetJurisdictions": [
+          "DE-HE",
+          "DE-BY"
+        ]
+      },
+      {
+        "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+        "proposedDirectTargetJurisdictions": [
+          "DE-HE"
+        ]
+      },
+      {
+        "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+        "proposedDirectTargetJurisdictions": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY",
+          "DE-RP"
+        ]
+      },
+      {
+        "goalId": "3d466956-04fb-58d7-9008-ad8090f8706d",
+        "proposedDirectTargetJurisdictions": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY"
+        ]
+      },
+      {
+        "goalId": "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+        "proposedDirectTargetJurisdictions": [
+          "DE-HE"
+        ]
+      },
+      {
+        "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "proposedDirectTargetJurisdictions": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY",
+          "DE-RP"
+        ]
+      },
+      {
+        "goalId": "db0394ca-297c-5892-b414-525ec186f928",
+        "proposedDirectTargetJurisdictions": [
+          "DE-HE",
+          "DE-BW",
+          "DE-RP"
+        ]
+      }
+    ],
+    "exceptions": [
+      "BW wave Doppler row remains with existing e7131fe3 and must not project any B/CMB/DM/DE goal.",
+      "BY Hubble-age source alone does not establish the complete qualitative size/observable-universe U goal. Preserve 44f0 and aa0; do not add full U as a target from this fragment alone.",
+      "HH scales/historical-timeline row is insufficient evidence for B or complete U; retain genuinely covered astronomical scale content, leave unsupported historical coverage explicitly open.",
+      "RP paired structure/scale and development/age clauses jointly support U; preserve DRAFT evidence status.",
+      "DE is directly evidenced here only by HE b11; do not spread it to BY/BW/RP/HH."
+    ]
+  },
+  "compositionPlan": {
+    "preserveUniqueVisible497": true,
+    "clusterRequires": [],
+    "explicitDirectReferences": [
+      "de-by-gk",
+      "de-by-lk",
+      "de-by-sekii-gk",
+      "de-by-sekii-lk",
+      "de-bw-gk",
+      "de-bw-lk",
+      "de-bw-sekii-gk",
+      "de-bw-sekii-lk"
+    ],
+    "nationalAtlasPath": "app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json",
+    "bw": "Replace incorrect e5 wave placement with the retained dedicated Doppler target; place actual B/G/U/DM targets within 3.5.7 only when their fragments cover them.",
+    "scopeSafety": "Rebuild projections and inspect current direct and ancestor references before final operations. Do not add all cluster children to partial source scopes.",
+    "actualViewDiffReady": false
+  },
+  "checks": {
+    "checkedAt": "2026-09-07T01:10:23.111Z",
+    "newGoalCount": 7,
+    "clusterUpdateCount": 3,
+    "ordinaryAndMemoryEdgeUpdateCount": 13,
+    "baselineRequiresCycles": [],
+    "proposedRequiresCycles": [],
+    "baselineContainsCycles": [],
+    "proposedContainsCycles": [],
+    "newIdCollisions": [],
+    "missingRefs": [],
+    "canonicalWrites": false
+  },
+  "executionStatus": {
+    "preconditionInvestigation": "complete with explicit findings",
+    "canonicalImplementation": "not authorized in this task",
+    "assessmentCoverage": "not demonstrated by current placeholders; future concrete authoring required",
+    "runtimeChangeRequired": false,
+    "remainingBeforeApplication": [
+      "Concrete narrow assessment tasks/solutions/scoring and honest coveredGoalIds/requires.",
+      "Source-by-source authored composition diff and native target/prerequisiteOnly visibility proof.",
+      "Fresh K/A/M/D/P/V decisions for actual final changes; no mechanical approval."
+    ]
+  }
+}

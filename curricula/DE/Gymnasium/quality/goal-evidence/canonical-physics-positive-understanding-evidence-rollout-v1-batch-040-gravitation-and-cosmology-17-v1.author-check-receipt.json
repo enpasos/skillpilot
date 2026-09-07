@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-07T00:39:22.699Z",
+  "reviewer": "codex",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "reviewAuthority": "ai_author_check",
+  "humanApprovalClaimed": false,
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-040-gravitation-and-cosmology-17-v1.candidates.json",
+  "candidateSha256": "sha256:0c2e08dd7f55fe431a53e966e6d1b62d367cb4352116c1e098f71c355bcde6ee",
+  "profileCount": 17,
+  "applicationCaseCount": 34,
+  "configAndProfileSchema": "PASS",
+  "scopeOrderAndCoverage": "PASS",
+  "numericalChecks": [
+    {
+      "goalPrefix": "eb0ffdea",
+      "caseId": "local-field",
+      "label": "3 kg at 6 N/kg",
+      "actual": 18,
+      "expected": 18,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "eb0ffdea",
+      "caseId": "local-field",
+      "label": "6 kg at 6 N/kg",
+      "actual": 36,
+      "expected": 36,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "eb0ffdea",
+      "caseId": "altitude-radius",
+      "label": "surface weight",
+      "actual": 32,
+      "expected": 32,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "eb0ffdea",
+      "caseId": "altitude-radius",
+      "label": "weight at height R (radius 2R)",
+      "actual": 8,
+      "expected": 8,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "a42f91a4",
+      "caseId": "two-paths",
+      "label": "gravitational work",
+      "actual": -20,
+      "expected": -20,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "a42f91a4",
+      "caseId": "closed-loop",
+      "label": "closed-path gravitational work",
+      "actual": 0,
+      "expected": 0,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "594f7f21",
+      "caseId": "height-zero",
+      "label": "initial energy ground zero",
+      "actual": 20,
+      "expected": 20,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "594f7f21",
+      "caseId": "height-zero",
+      "label": "final energy ground zero",
+      "actual": 80,
+      "expected": 80,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "594f7f21",
+      "caseId": "height-zero",
+      "label": "initial energy upper zero",
+      "actual": -60,
+      "expected": -60,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "594f7f21",
+      "caseId": "height-zero",
+      "label": "energy change",
+      "actual": 60,
+      "expected": 60,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "594f7f21",
+      "caseId": "potential-table",
+      "label": "2 kg energy increase",
+      "actual": 40,
+      "expected": 40,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "594f7f21",
+      "caseId": "potential-table",
+      "label": "5 kg energy increase",
+      "actual": 100,
+      "expected": 100,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "594f7f21",
+      "caseId": "potential-table",
+      "label": "shifted 2 kg energy increase",
+      "actual": 40,
+      "expected": 40,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "497f1311",
+      "caseId": "two-orbits",
+      "label": "period from semimajor-axis ratio",
+      "actual": 27,
+      "expected": 27,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "16caf92e",
+      "caseId": "derive-and-check",
+      "label": "second apsis speed",
+      "actual": 2,
+      "expected": 2,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "16caf92e",
+      "caseId": "derive-and-check",
+      "label": "areal velocity first apsis",
+      "actual": 5,
+      "expected": 5,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "16caf92e",
+      "caseId": "derive-and-check",
+      "label": "areal velocity second apsis",
+      "actual": 5,
+      "expected": 5,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "89cadf81",
+      "caseId": "scale-nine",
+      "label": "time scale",
+      "actual": 27,
+      "expected": 27,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "89cadf81",
+      "caseId": "scale-nine",
+      "label": "new period days",
+      "actual": 54,
+      "expected": 54,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "89cadf81",
+      "caseId": "reverse-and-limit",
+      "label": "length scale from time scale",
+      "actual": 0.25,
+      "expected": 0.25,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "1b833656",
+      "caseId": "data-and-cause",
+      "label": "first Kepler ratio",
+      "actual": 1,
+      "expected": 1,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "1b833656",
+      "caseId": "data-and-cause",
+      "label": "second Kepler ratio",
+      "actual": 1,
+      "expected": 1,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "4c5c7cb1",
+      "caseId": "combine-reactions",
+      "label": "net proton consumption",
+      "actual": 4,
+      "expected": 4,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "4c5c7cb1",
+      "caseId": "mass-and-escape",
+      "label": "total release MeV",
+      "actual": 26.73405,
+      "expected": 26.7,
+      "tolerance": 0.05,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "aa0fa5fb",
+      "caseId": "small-redshift",
+      "label": "dimensionless redshift",
+      "actual": 0.02,
+      "expected": 0.02,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "aa0fa5fb",
+      "caseId": "small-redshift",
+      "label": "distance Mpc",
+      "actual": 85.71428571428571,
+      "expected": 85.7,
+      "tolerance": 0.05,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "aa0fa5fb",
+      "caseId": "large-redshift",
+      "label": "dimensionless redshift",
+      "actual": 1,
+      "expected": 1,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "aa0fa5fb",
+      "caseId": "large-redshift",
+      "label": "scale-factor ratio",
+      "actual": 2,
+      "expected": 2,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "db6b8de4",
+      "caseId": "parallax-interval",
+      "label": "central distance pc",
+      "actual": 20,
+      "expected": 20,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "db6b8de4",
+      "caseId": "parallax-interval",
+      "label": "lower distance pc",
+      "actual": 18.181818181818183,
+      "expected": 18.2,
+      "tolerance": 0.05,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "db6b8de4",
+      "caseId": "parallax-interval",
+      "label": "upper distance pc",
+      "actual": 22.22222222222222,
+      "expected": 22.2,
+      "tolerance": 0.05,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "db6b8de4",
+      "caseId": "flux-calibration",
+      "label": "equal-luminosity distance pc",
+      "actual": 30,
+      "expected": 30,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    },
+    {
+      "goalPrefix": "db6b8de4",
+      "caseId": "flux-calibration",
+      "label": "same-flux luminosity ratio",
+      "actual": 4,
+      "expected": 4,
+      "tolerance": 1e-10,
+      "result": "PASS"
+    }
+  ],
+  "limitations": "Schema checks and arithmetic do not prove semantic quality or bilingual equivalence. All 17 profile bodies were separately authored and read by this AI reviewer; independent root review remains required before any registry change. No final current-state binding is claimed by this check."
+}

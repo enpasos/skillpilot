@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)
 - Quellbild: `12a8dffc-dea7-5f2c-b490-2a1a2bb6901b.jpg`
 
 ## Zweck
@@ -18,24 +18,23 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein detailliertes, lehrreiches Infografik-Diagramm im Cartoon-Stil mit klaren schwarzen Umrissen und weichen Schatten auf weißem Hintergrund. Der Haupttitel oben in der Mitte lautet in fetter schwarzer Schrift: 'Arithmetische und geometrische Reihen untersuchen'.
+Ein klares, lehrreiches Diagramm im Cartoon-Stil auf weißem Hintergrund. Der obere Titel lautet zentriert und fett in Schwarz: "Arithmetische und geometrische Reihen untersuchen".
 
-Darunter befinden sich zwei große, nebeneinanderliegende Panels mit abgerundeten Ecken. Das linke Panel hat einen hellblauen Hintergrund und ist überschrieben mit 'Arithmetische Reihen (+d)'. Das rechte Panel hat einen hellorangen Hintergrund und ist überschrieben mit 'Geometrische Reihen (×q)'.
+Darunter befinden sich zwei vertikale Hauptfelder mit abgerundeten Ecken und schwarzen Umrandungen. Das linke Feld hat einen hellblauen Kopfbereich mit dem fetten Text "Arithmetische Reihen (+d)" und einen sehr hellblauen Inhaltsbereich. Das rechte Feld hat einen hellorangen Kopfbereich mit dem fetten Text "Geometrische Reihen (×q)" und einen sehr hellorangen Inhaltsbereich.
 
-**Linkes Panel (Arithmetische Reihen):**
-Oben links ist eine cartoonartige Hand mit nach unten zeigenden Fingern zu sehen, die über einer Reihe von hellblauen, rechteckigen Blöcken schwebt. Die Blöcke sind von links nach rechts in ansteigender Höhe gestapelt: ein einzelner Block (`a₁`), ein Stapel von zwei Blöcken (`a₂`), ein Stapel von drei Blöcken (`a₃`) und ein Stapel von vier Blöcken (`a₄`). Unter jedem Stapel steht der entsprechende Term (`a₁`, `a₂`, `a₃`, `a₄`). Rechts neben den Stapeln befindet sich eine große geschweifte Klammer, die die gesamte Höhe der Stapel umschließt. Daneben ist ein abgerundetes Rechteck mit der Aufschrift 'Partialsumme Sₙ' platziert. Über dem dritten Stapel (`a₃`) steht der Text `a₃`, und über dem vierten Stapel (`a₄`) steht der Text `a₄ = a₃ + d`.
-Zwei nach oben zeigende, hellblaue Pfeile entspringen unter den Blockstapeln und münden in eine weiße Sprechblase. In der Sprechblase steht die Formel: `Sₙ = (n/2)(a₁ + aₙ)`.
-Darunter steht der Text 'Für n → ∞:' gefolgt von 'Divergenz' in Fettschrift und '(wächst unbegrenzt)' in Klammern. Ein großer, hellblauer Pfeil zeigt von diesem Text nach rechts zu einem chaotischen Haufen unregelmäßig gestapelter hellblauer Blöcke. Unter dem Text 'Divergenz' schwebt eine flauschige weiße Wolke mit einem schwarzen Unendlichkeitszeichen (∞) darin. Ein hellblauer Pfeil zeigt von dieser Wolke nach unten zum zentralen unteren Panel.
+**Linkes Feld (Arithmetische Reihen):**
+Im oberen Teil des hellblauen Inhaltsbereichs ist eine cartoonartige Hand in Hautfarbe zu sehen, die einen hellblau-grauen Quader mit der Beschriftung "a₂" auf einen anderen Quader mit der Beschriftung "a₁" setzt. Rechts davon sind fünf gestapelte Quaderreihen abgebildet, die von links nach rechts an Höhe zunehmen: "a₁" ist ein Quader hoch, "a₂" zwei Quader hoch, "a₃" drei Quader hoch, "a₄" vier Quader hoch und "a₅" fünf Quader hoch. Über den Quadern steht die Formel "a_{n+1} = a_n + d". Rechts neben den Quaderstapeln umspannt eine große schwarne geschweifte Klammer die Höhe der Stapel und zeigt auf ein hellgraues, abgerundetes Rechteck mit schwarzem Rand, das den Text "Partialsumme S_n" enthält.
+Unter den Quadern zeigen zwei hellblau-graue Pfeile nach unten auf eine weiße Sprechblase mit schwarzem Rand, die die Formel "S_n = \frac{n}{2} (a_1 + a_n)" enthält.
+Darunter steht der Text "Für n → ∞:", gefolgt von dem fetten Wort "Divergenz". Darunter in Klammern steht "(Hier: positive Summanden – Partialsummen wachsen unbegrenzt)". Rechts davon zeigt ein großer hellblau-grauer Pfeil nach rechts auf einen großen, unordentlichen Haufen verstreuter hellblau-grauer Quader. Unter dem Wort "Divergenz" zeigt ein hellblau-grauer Pfeil nach unten und leicht links auf eine weiße Wolkenform mit grauem Umriss, die ein schwarzes Unendlichkeitszeichen "∞" enthält.
 
-**Rechtes Panel (Geometrische Reihen):**
-Oben links ist eine cartoonartige Hand mit nach unten zeigenden Fingern zu sehen, die über einer Reihe von hellorangen Kreisen schwebt. Die Kreise nehmen von links nach rechts an Größe ab: ein großer Kreis (`a₁`), ein kleinerer Kreis (`a₂`), ein noch kleinerer Kreis (`a₃`), gefolgt von einer Ellipse `...`. Unter den Kreisen stehen die entsprechenden Terme (`a₁`, `a₂`, `a₃`). Rechts neben den Kreisen befindet sich eine große geschweifte Klammer, die die gesamte Höhe der Kreise umschließt. Daneben ist ein abgerundetes Rechteck mit der Aufschrift 'Partialsumme Sₙ' platziert. Über dem zweiten Kreis (`a₂`) steht der Text `a₂ = a₁ × q`, und über dem dritten Kreis (`a₃`) steht der Text `a₃ = a₂ × q`.
-Zwei nach oben zeigende, hellorange Pfeile entspringen unter den Kreisen und münden in eine weiße Sprechblase. In der Sprechblase steht die Formel: `Sₙ = a₁ (1 - qⁿ) / (1 - q) (mit q ≠ 1)`.
-Darunter steht der Text 'Für n → ∞, |q| < 1:' gefolgt von 'Grenzwert (Konvergenz)' in Fettschrift. Ein großer, hellorange Pfeil zeigt von diesem Text nach rechts zu einem quadratischen Behälter, der ordentlich mit hellorangen Kreisen gefüllt ist, die in Reihen und Spalten angeordnet sind. Rechts neben dem Behälter steht die Formel: `S = a₁ / (1 - q)`. Ein hellorange Pfeil zeigt von unter dem Text 'Grenzwert (Konvergenz)' nach unten zum zentralen unteren Panel.
+**Rechtes Feld (Geometrische Reihen):**
+Im oberen Teil des hellorangen Inhaltsbereichs ist eine cartoonartige Hand in Hautfarbe zu sehen, die eine große hellorange Kugel mit der Beschriftung "a₁" hält. Rechts davon sind mehrere hellorange Kugeln abgebildet, die von links nach rechts kleiner werden: "a₁" (größte), "a₂" (kleiner), "a₃" (noch kleiner), gefolgt von einer Ellipse "..." und der kleinsten Kugel. Über den Kugeln stehen die Formeln "a₂ = a₁ × q", "a₃ = a₂ × q" und "..." untereinander. Rechts neben den Kugeln umspannt eine große schwarze geschweifte Klammer die Höhe der Kugeln und zeigt auf ein hellgraues, abgerundetes Rechteck mit schwarzem Rand, das den Text "Partialsumme S_n" enthält.
+Unter den Kugeln zeigen zwei hellblau-graue Pfeile nach unten auf eine weiße Sprechblase mit schwarzem Rand, die die Formel "S_n = a_1 \frac{1 - q^n}{1 - q} \text{ (mit } q \neq 1 \text{)}" enthält.
+Darunter steht der Text "Für n → ∞, |q| < 1:", gefolgt von dem fetten Wort "Grenzwert (Konvergenz)". Rechts davon zeigt ein großer hellblau-grauer Pfeil nach rechts auf einen schwarzen, rechteckigen Behälter, der ordentlich mit hellorangen Kugeln gefüllt ist. Rechts neben dem Behälter steht die Formel "S = \frac{a_1}{1 - q}". Unter dem Wort "Grenzwert (Konvergenz)" zeigt ein hellblau-grauer Pfeil nach unten und leicht links auf einen einzelnen hellorangen rechteckigen Block.
 
-**Unteres zentrales Panel:**
-Dieses Panel erstreckt sich über die gesamte Breite unter den beiden oberen Panels. Es hat einen hellgrauen Hintergrund, abgerundete Ecken und ist überschrieben mit 'Reihenverhalten begründen'.
-Im linken Bereich dieses Panels steht 'Divergenz:' in Fettschrift, gefolgt von 'Kein fester Wert'. Ein hellblauer Doppelpfeil verbindet diesen Text mit der Wolke mit dem Unendlichkeitszeichen im linken oberen Panel.
-Im rechten Bereich dieses Panels steht 'Konvergenz:' in Fettschrift, gefolgt von 'Fester Grenzwert S'. Ein hellorange Pfeil zeigt von diesem Text nach rechts zu einem einzelnen hellorangen rechteckigen Block, der unter dem Behälter mit Kreisen im rechten oberen Panel platziert ist.
-
-Der gesamte Stil ist klar, informativ und leicht verständlich, mit einer freundlichen Ästhetik.
+**Unteres Feld (Reihenverhalten begründen):**
+Unterhalb der beiden Hauptfelder befindet sich ein drittes, horizontales Feld mit abgerundeten Ecken und schwarzem Rand. Es hat einen hellgrauen Kopfbereich mit dem fetten Text "Reihenverhalten begründen" und einen sehr hellgrauen Inhaltsbereich.
+Im linken Teil des Inhaltsbereichs steht der Text "Divergenz:", darunter "Kein fester Wert". Ein hellblau-grauer Pfeil zeigt von links auf diesen Text und verbindet sich mit der Wolke mit dem Unendlichkeitszeichen aus dem linken Hauptfeld.
+Im rechten Teil des Inhaltsbereichs steht der Text "Konvergenz:", darunter "Fester Grenzwert S". Ein hellblau-grauer Pfeil zeigt von rechts auf diesen Text und verbindet sich mit dem einzelnen hellorangen Block aus dem rechten Hauptfeld.
+In der Mitte des unteren Feldes verbindet ein doppelseitiger hellblau-grauer Pfeil die Bereiche "Divergenz" und "Konvergenz".
 ```

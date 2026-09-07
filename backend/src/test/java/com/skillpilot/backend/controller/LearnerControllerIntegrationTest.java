@@ -463,7 +463,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.champion().curriculumId()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(response.champion().topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
         assertThat(response.champion().masteredCount()).isEqualTo(2);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(294);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(295);
 
         var snapshot = curriculaService.getSnapshot();
         var curriculum = snapshot.curricula().stream()
@@ -474,7 +474,7 @@ public class LearnerControllerIntegrationTest {
                 .anySatisfy(champion -> {
                     assertThat(champion.topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
                     assertThat(champion.masteredCount()).isEqualTo(2);
-                    assertThat(champion.totalTopicGoals()).isEqualTo(294);
+                    assertThat(champion.totalTopicGoals()).isEqualTo(295);
                 });
     }
 
@@ -1321,14 +1321,14 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
-        // The reviewed September 2026 quadratic-properties split adds one atomic target per scope.
+        // Current Layer-A totals include the reviewed HE-G9 J10/exponential-route correction.
         String[][] scopes = {
                 { "DE-BB", "240", "240" },
                 { "DE-BE", "239", "239" },
                 { "DE-BW", "258", "258" },
                 { "DE-BY", "230", "230" },
                 { "DE-HB", "213", "213" },
-                { "DE-HE", "318", "359" },
+                { "DE-HE", "318", "356" },
                 { "DE-HH", "239", "239" },
                 { "DE-MV", "239", "239" },
                 { "DE-NI", "239", "239" },
@@ -1373,14 +1373,14 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
-        // The same reviewed Sek-I split contributes one atomic target to each cross-stage scope.
+        // The series split adds one target; HE-G9 also includes the reviewed J10 route entries.
         String[][] scopes = {
-                { "DE-HE", "GK", "732", "750" },
-                { "DE-HE", "LK", "858", "876" },
-                { "DE-RP", "GK", "676", "701" },
-                { "DE-RP", "LK", "787", "812" },
-                { "DE-SH", "GK", "651", "657" },
-                { "DE-SH", "LK", "747", "753" }
+                { "DE-HE", "GK", "733", "754" },
+                { "DE-HE", "LK", "859", "880" },
+                { "DE-RP", "GK", "677", "702" },
+                { "DE-RP", "LK", "788", "813" },
+                { "DE-SH", "GK", "652", "658" },
+                { "DE-SH", "LK", "748", "754" }
         };
         SoftAssertions softly = new SoftAssertions();
 

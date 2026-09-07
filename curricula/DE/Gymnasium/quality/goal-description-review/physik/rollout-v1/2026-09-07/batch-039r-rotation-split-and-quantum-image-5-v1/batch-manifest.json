@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-039r-rotation-split-and-quantum-image-5-v1.config.json",
+  "configDigest": "sha256:6d33489685f1fff8f725f380e74561c4937ec713ebbd79078c64a53f7eb4d7a7",
+  "goalIds": [
+    "1a1c09f0-96b7-4c33-a623-0e8101537876",
+    "642aebd7-66cd-5a50-b543-73c4b207525d",
+    "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+    "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+    "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 465,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:c62e496d839eeb7bdcb68c6972ddf3bb191a86aedff71de7b576e251c404f456"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e978244b63b3645f060f49bbb3fa15195fb6e1c194d9c657219cb62a58008939",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:2012f0d91006a7eae0e7c3de7c4750425bf3a334907e8f02c07d01b241c63c61",
+    "reviewInputFingerprint": "sha256:ac436791ee528e6cad1c101492f4a180feca5c9e3fd984e2f33957b252bfc036",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a",
+        "campaignDigest": "sha256:e0742dd157121c5fdcac246c21b53a1783492090d1db3e255e73c477378283b8",
+        "roundId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-independent-a",
+        "batchId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:12a264a726e7a44303ec434fe7bbcb8e2c6c7cc976aca8f3842db239f3bbae01"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-b",
+        "campaignDigest": "sha256:88e5334105ffc9480537dc81cbb699b407ca9b8c2a5c04839ac200b3deaa29ad",
+        "roundId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-independent-b",
+        "batchId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:3db4168557c907a490c915c0380340b66a08cd638b5d1a513ded93c86757423c"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

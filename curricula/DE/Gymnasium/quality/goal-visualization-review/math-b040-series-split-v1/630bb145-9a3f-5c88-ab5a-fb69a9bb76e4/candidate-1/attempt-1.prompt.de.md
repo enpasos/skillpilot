@@ -1,0 +1,5 @@
+Use case: educational infographic, brand-new.
+Erstelle eine lockere, klare deutsche Lernzielillustration im Nano-Banana-Stil, handgezeichnete schwarze Schrift, freundliches hellblaues Pastell, großzügiger Weißraum. Thema: „Partialsummen arithmetischer Reihen“. Keine Koordinatengraphen.
+Oben ein konkretes Beispiel: „Glieder: 3, 5, 7, 9, …“ und darunter getrennt „Partialsummen: 3, 8, 15, 24, …“. Verdeutliche farbig: S₄ = 3 + 5 + 7 + 9 = 24. Zwei kurze Pfeile zeigen zu Paaren 3+9=12 und 5+7=12, sodass 2·12=24. Keine falschen Mengen oder Balkenhöhen.
+Mitte groß und lesbar: aₖ = a₁ + (k−1)d und Sₙ = n/2 · (2a₁ + (n−1)d). Kennzeichne n als Anzahl der Glieder und d als konstante Differenz.
+Unten qualitative Erklärung: „Für d ≠ 0 wächst der führende Term wie (d/2)n²: kein endlicher Grenzwert.“ Zwei kleine Randfälle: „d = 0, a₁ ≠ 0: Sₙ = n·a₁, ebenfalls divergent.“ „a₁ = d = 0: Sₙ = 0.“ Wichtig: Folge der Glieder und Folge der Partialsummen unterscheiden. Kein geometrisches-Reihen-Thema, keine zusätzliche Formel. Alle Formeln exakt, kein Text über Linien, keine Fußnoten-Miniatur.

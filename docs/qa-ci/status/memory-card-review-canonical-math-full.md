@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 796 |
-| goals without memory need | 757 |
+| ordinary atomic goals reviewed | 797 |
+| goals without memory need | 758 |
 | goals with intentional memory support | 39 |
 | goals needing developer review | 0 |
 | primary cards in scope | 64 |
@@ -61,7 +61,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | J9: Abstände, Beträge und Mittelpunkte im Raum berechnen (`a8ff2666-8df3-4253-8021-3efe42114e40`) | `de_gymnasium_math_linalg_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra. |
 | J9: Quadratische Gleichungen lösen (`9023226b-fc17-412b-807c-2bb45cd551d5`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
 | Q1: Bestände und Mittelwerte modellieren (`809ef78a-f282-5593-89be-0f2cb95570ac`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
-| Q1: Einfache Integrale berechnen (`a9ed219d-d497-55e5-a4e0-4d45d2554f6b`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
+| Q1: Einfache Integrale berechnen (`a9ed219d-d497-55e5-a4e0-4d45d2554f6b`) | `de_gymnasium_math_analysis_core` | Individuelle fachliche AI-Nachprüfung nach quellengebundener DE/EN-Präzisierung: Die tatsächlich gelesene DE/EN-Karte math_analysis_c13 sichert eng begrenzt die kompakte Potenzregel F=x^(n+1)/(n+1) mit n≠−1. Dieser verfügbare Regelbaustein bleibt für die flüssige Anwendung im erweiterten linearen Term notwendig; das neue Erschließen aus Ableitungsregeln, die Linearkombination, trigonometrische Vorzeichen und Intervallwahl müssen unabhängig erklärt werden und sind durch Kartenabruf nicht nachgewiesen. Die Karte nennt eine Stammfunktion, daher fehlt dort keine allgemeine Konstante. Vorhandener memory_required-Status samt echtem Deck-/Memoryziel-/Kartenbezug bleibt individuell bestätigt; es wird kein zusätzliches Deck angelegt. Keine menschliche Einzelabnahme behauptet. |
 | Q1: Hauptsatz der Differential- und Integralrechnung nutzen (`b9bbd2a8-1379-5ffb-817f-41467d48abef`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
 | Q2: Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK) (`3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
 | Q2: Kettenregel beim Ableiten anwenden (LK) (`ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75`) | `de_gymnasium_math_analysis_core` | Die Kettenregel ist ein kompakter, notwendiger Abrufbaustein. Verständnis, Auswahl der Regel und Kontrolle der Ableitung bleiben im gewöhnlichen Lernziel und in Aufgaben verankert. |

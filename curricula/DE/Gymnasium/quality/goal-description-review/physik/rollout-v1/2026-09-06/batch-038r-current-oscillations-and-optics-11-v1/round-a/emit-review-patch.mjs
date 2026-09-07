@@ -1,0 +1,242 @@
+import { readFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+// Individually authored blind review A. This helper only emits an apply_patch
+// payload; the caller applies that payload to the two authorized result files.
+const directory = dirname(fileURLToPath(import.meta.url))
+const campaign = JSON.parse(readFileSync(resolve(directory, 'description-review-campaign.json'), 'utf8'))
+const batch = campaign.batches[0]
+const rows = readFileSync(resolve(directory, 'batches', `${batch.batchId}.input.jsonl`), 'utf8').trim().split('\n').map(JSON.parse)
+const sha256 = (value) => `sha256:${createHash('sha256').update(value).digest('hex')}`
+const runId = `${batch.batchId}.codex-a`
+
+const decisions = [
+  {
+    goalId: 'c0205f47-185c-5e27-b89c-c3ff8809b1d1',
+    decision: 'keep',
+    rationale: 'Resonanzkurven, unterschiedliche Dämpfungen und die qualitative wie quantitative Analyse sind in beiden Sprachen ausdrücklich benannt. Damit ist ein konkreter Kurvenvergleich nach dem vorausgesetzten Resonanzverständnis abgegrenzt; eine zusätzliche Lösung der Schwingungsgleichung gehört nicht hierher. Die knappe Beschreibung muss die einzelnen auszuwertenden Kurvenmerkmale nicht auflisten. Das neue Evidenzprofil sollte die Vergleichsbedingungen und die physikalische Begründung der Kurvenunterschiede sichern. Das betrachtete Bild ist qualitative Lehrunterstützung, kein quantitativer Leistungsnachweis. Eine normative Landeszuordnung wurde nicht unabhängig geprüft.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Eine Resonanzkurve verknüpft die stationäre Schwingungsamplitude mit der Erregerfrequenz. Bei sonst gleichem linearem Schwinger und gleicher Kraftamplitude verändert die Dämpfung Höhe, Breite und gegebenenfalls Lage des Resonanzmaximums; Erregerfrequenz, Eigenfrequenz und Frequenz des Amplitudenmaximums sind zu unterscheiden.',
+      essentialUnderstandingEn: 'A resonance curve relates the steady-state oscillation amplitude to the driving frequency. For an otherwise unchanged linear oscillator and the same driving-force amplitude, damping changes the height, width and, where relevant, position of the resonance peak; driving frequency, natural frequency and frequency of maximum amplitude must be distinguished.',
+      observablePerformanceDe: 'Die lernende Person wertet selbstständig skalierte Amplituden-Frequenz-Kurven aus, bestimmt und vergleicht Spitzenamplituden und Frequenzbereiche nach einem ausdrücklich gewählten Breitenkriterium und erklärt die Unterschiede durch Dämpfung. Sie prüft, ob Anregung und übrige Systemparameter einen solchen Vergleich zulassen, und verwendet passende Einheiten.',
+      observablePerformanceEn: 'The learner independently evaluates scaled amplitude-frequency curves, determines and compares peak amplitudes and frequency ranges using an explicitly chosen width criterion, and explains the differences through damping. They check whether the driving conditions and other system parameters permit this comparison and use appropriate units.',
+      transferExpectationDe: 'In einer neuen Aufgabe sind Kurven eines veränderten Dämpfungszustands mit zusätzlich veränderter Kraftamplitude gegeben. Die lernende Person erklärt, weshalb die Spitzenhöhe allein die Dämpfung nicht eindeutig bestimmt, und nutzt geeignete weitere Kurvenmerkmale beziehungsweise die bekannte Anregung zur begründeten Einordnung.',
+      transferExpectationEn: 'A fresh task provides curves for a changed damping condition with an additional change in driving-force amplitude. The learner explains why peak height alone does not uniquely determine damping and uses suitable additional curve features or the known driving conditions to justify the comparison.'
+    }
+  },
+  {
+    goalId: 'a844895e-2cdc-4665-aad2-a49c62f11759',
+    decision: 'keep',
+    rationale: 'Die vorhandene Beschreibung gibt die drei konkreten Vergleichsdimensionen Rückstellwirkung, charakteristische Größen und periodische Energieumwandlung bereits an. Diese Dimensionen tragen gemeinsam eine fachlich einheitliche Analogiebildung; es werden nicht unabhängige neue Analysen beider Systeme angehäuft. DE und EN stimmen überein. Das Evidenzprofil konkretisiert die Zuordnungen und die verlustfreie Modellgrenze, ohne die separate Differentialgleichungskompetenz zu übernehmen.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Federpendel und idealer LC-Kreis besitzen entsprechende dynamische Rollen: Auslenkung und Ladung, Geschwindigkeit und Stromstärke, Masse und Induktivität sowie Federkonstante und Kehrwert der Kapazität. Im verlustfreien jeweiligen Gesamtsystem wechselt Energie periodisch zwischen zwei Speicherformen; die Analogie setzt keine Gleichheit der physikalischen Größen oder Einheiten voraus.',
+      essentialUnderstandingEn: 'A spring oscillator and an ideal LC circuit have corresponding dynamical roles: displacement and charge, velocity and current, mass and inductance, and spring constant and inverse capacitance. In each complete lossless system, energy periodically shifts between two storage forms; the analogy does not imply that the physical quantities or their units are identical.',
+      observablePerformanceDe: 'Die lernende Person entwickelt selbstständig eine begründete Zuordnung der Größen und erläutert an ausgewählten Phasen beider Schwingungen die Rückstellwirkung und den Wechsel zwischen potenzieller und kinetischer beziehungsweise elektrischer und magnetischer Energie. Sie stimmt dabei Vorzeichenkonventionen, Nulldurchgänge und Energiemaxima aufeinander ab.',
+      observablePerformanceEn: 'The learner independently constructs a justified correspondence between the quantities and explains, at selected phases of both oscillations, the restoring action and the exchange between potential and kinetic energy or electric and magnetic energy. They coordinate sign conventions, zero crossings and energy maxima.',
+      transferExpectationDe: 'Eine neue Aufgabe beginnt mit maximaler Geschwindigkeit des Federpendels beziehungsweise maximaler Stromstärke des LC-Kreises. Die lernende Person überträgt die Analogie auf diese veränderte Anfangsphase und begründet, welche Energieform zunächst vorliegt und welche zugeordneten Größen anschließend wachsen oder abnehmen.',
+      transferExpectationEn: 'A fresh task starts with maximum speed of the spring oscillator or maximum current in the LC circuit. The learner applies the analogy to this changed initial phase and justifies which energy form is initially present and which corresponding quantities subsequently increase or decrease.'
+    }
+  },
+  {
+    goalId: 'a7255b83-336c-4d42-ba5c-bc2f6248ea36',
+    decision: 'keep',
+    rationale: 'Lösen mit geeignetem Ansatz und Deuten hinsichtlich Periodendauer, Frequenz und Energieumlagerung sind bereits ausdrücklich gekoppelt. Das ist eine zusammenhängende mathematisch-physikalische Modellkompetenz und keine bloße Formelabfrage. Die idealisierte Modellgrenze ist benannt, die Übersetzung erhält den Inhalt, und die Voraussetzungen begrenzen die Neuigkeit auf den elektromagnetischen Anwendungsfall. Im gebundenen Datensatz ist kein Bild vorhanden; daraus folgt kein Beschreibungsdefekt.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Für einen idealen verlustfreien LC-Kreis beschreibt q″ + q/(LC) = 0 die Rückwirkung zwischen Ladung und Strom. Ein sinusförmiger Ansatz liefert die Eigenkreisfrequenz 1/√(LC); Anfangsladung und Anfangsstrom bestimmen Amplitude und Phase. Elektrische und magnetische Energie ergänzen sich im abgeschlossenen idealen Kreis zur konstanten Gesamtenergie.',
+      essentialUnderstandingEn: 'For an ideal lossless LC circuit, q″ + q/(LC) = 0 describes the feedback between charge and current. A sinusoidal ansatz gives the natural angular frequency 1/√(LC); initial charge and initial current determine amplitude and phase. Electric and magnetic energy add up to constant total energy in the closed ideal circuit.',
+      observablePerformanceDe: 'Die lernende Person wählt selbstständig einen Ansatz, prüft ihn durch Ableiten und Einsetzen und passt die Lösung an gegebene Anfangsbedingungen an. Sie bestimmt Periodendauer und Frequenz mit Einheiten, gewinnt bei konsistenter Bezugsrichtung den Strom aus der Ladungsänderung und erklärt den zeitlichen Wechsel der beiden Energieanteile.',
+      observablePerformanceEn: 'The learner independently chooses an ansatz, verifies it by differentiation and substitution, and fits the solution to given initial conditions. They determine period and frequency with units, obtain current from the change in charge using a consistent reference direction, and explain the time-dependent exchange between the two energy contributions.',
+      transferExpectationDe: 'In einer eigenständig gestellten Aufgabe ist zu Beginn der Kondensator ungeladen, aber ein Strom vorhanden. Die lernende Person entwickelt die dafür passende Phase der Lösung und erklärt, weshalb die anfänglich magnetische Energie den anschließenden Ladungsaufbau ermöglicht, während die Eigenfrequenz durch L und C festgelegt bleibt.',
+      transferExpectationEn: 'In an independently presented task, the capacitor is initially uncharged but a current is present. The learner develops the corresponding solution phase and explains why the initially magnetic energy enables charge to build up, while the natural frequency remains fixed by L and C.'
+    }
+  },
+  {
+    goalId: '5f97952e-5ac9-5749-94d0-d1dc50dda358',
+    decision: 'keep',
+    rationale: 'Spannung, Stromstärke, sinusförmiger Verlauf, ohmscher Kreis und Zeigerdarstellung sind konkret begrenzt; die Deutung der Phasenbeziehung ist schon enthalten. Die Beschreibung verlangt damit einen sinnvollen Darstellungswechsel und lässt kapazitive beziehungsweise induktive Phasenlagen beim direkten Nachfolger. Umschrift und sprachlicher Stil sind kein fachlicher Änderungsgrund. Das betrachtete Zeigerbild wird nicht als unabhängiger Nachweis behandelt.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Im ideal ohmschen Wechselstromkreis gilt bei passiver Bezugskonvention u(t) = R i(t): Spannung und Strom haben dieselbe Frequenz und sind phasengleich. Zeigerlänge und Zeigerwinkel kodieren Amplitude und Phase einer sinusförmigen Größe; die Zeiger sind keine räumlichen Richtungen des Stromflusses, und Spannung und Strom benötigen eigene Einheiten beziehungsweise Maßstäbe.',
+      essentialUnderstandingEn: 'In an ideal resistive AC circuit, u(t) = R i(t) holds under the passive reference convention: voltage and current have the same frequency and are in phase. Phasor length and angle encode the amplitude and phase of a sinusoidal quantity; phasors are not spatial directions of current flow, and voltage and current require their own units or scales.',
+      observablePerformanceDe: 'Die lernende Person erstellt selbstständig aus einem gegebenen sinusförmigen Zeitverlauf ein passendes Zeigerdiagramm für Spannung und Strom und erläutert den gemeinsamen Phasenwinkel. Sie übersetzt zurück in Zeitverläufe und begründet die gleichzeitigen Nulldurchgänge und Extremwerte mit dem ohmschen Zusammenhang.',
+      observablePerformanceEn: 'The learner independently constructs a suitable voltage-current phasor diagram from a given sinusoidal time trace and explains the shared phase angle. They translate it back into time traces and justify the simultaneous zero crossings and extrema using the resistive relationship.',
+      transferExpectationDe: 'Eine neue Schaltskizze kehrt nur die positive Strombezugsrichtung um. Die lernende Person passt Vorzeichen und Zeigerlage konsistent an und erklärt, weshalb die so dargestellte Gegenphasigkeit eine Folge der Bezugswahl ist und keine zeitliche Verzögerung im Widerstand bedeutet.',
+      transferExpectationEn: 'A fresh circuit sketch reverses only the positive current reference direction. The learner consistently adjusts the sign and phasor orientation and explains why the resulting opposite-phase representation follows from the reference choice and does not indicate a time delay in the resistor.'
+    }
+  },
+  {
+    goalId: 'ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a',
+    decision: 'keep',
+    rationale: 'Die Beschreibung verlangt bereits das Erschließen der Amplituden- und Phasenbeziehungen aus differentiellen Zusammenhängen und deren Darstellung. Kondensator und Spule bilden hier zwei duale Fälle derselben eng begrenzten Kompetenz; das Ziel fordert weder unabhängige Bauteilkonstruktion noch vollständige RLC- oder Filteranalyse. Deshalb ist keine Aufspaltung allein wegen der zwei Bauteilnamen begründet. Das Evidenzprofil muss die verwendeten idealen Bauteilgleichungen und Vorzeichenkonventionen ausdrücklich machen; DE und EN sind gleichwertig.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Für ideale Bauteile bei sinusförmiger Anregung folgen aus i = C du/dt und u = L di/dt sowohl Amplitudenverhältnisse als auch die Viertelperiodenverschiebung. Bei passiver Bezugskonvention eilt der Kondensatorstrom der Spannung voraus, während der Spulenstrom nachläuft; die Beträge der Blindwiderstände verändern sich mit der Frequenz entgegengesetzt.',
+      essentialUnderstandingEn: 'For ideal components under sinusoidal excitation, i = C du/dt and u = L di/dt determine both amplitude ratios and quarter-period phase shifts. Under the passive reference convention, capacitor current leads voltage while inductor current lags it; the reactance magnitudes change with frequency in opposite ways.',
+      observablePerformanceDe: 'Die lernende Person leitet aus vorgegebenen sinusförmigen Größen und den jeweiligen Bauteilgleichungen selbstständig den anderen Zeitverlauf ab. Sie begründet daraus Vor- oder Nacheilen und die Frequenzabhängigkeit des Amplitudenverhältnisses, zeichnet ein konsistentes Zeigerdiagramm und unterscheidet idealisierte Bauteilaussagen von einem real verlustbehafteten Aufbau.',
+      observablePerformanceEn: 'The learner independently derives the other time trace from given sinusoidal quantities and the relevant component equations. They use this to justify leading or lagging behavior and the frequency dependence of the amplitude ratio, construct a consistent phasor diagram, and distinguish ideal-component statements from a real lossy setup.',
+      transferExpectationDe: 'Eine frische Aufgabe gibt den Stromverlauf statt des Spannungsverlaufs vor und wechselt das betrachtete Bauteil vom Kondensator zur Spule. Die lernende Person bestimmt die zugehörige Spannung aus der passenden Differentialbeziehung und erklärt die veränderte Phasenlage, ohne eine auswendig gelernte Zeigerorientierung zu übernehmen.',
+      transferExpectationEn: 'A fresh task specifies the current trace instead of the voltage trace and changes the component from a capacitor to an inductor. The learner determines the corresponding voltage from the appropriate differential relationship and explains the changed phase relation without copying a memorized phasor orientation.'
+    }
+  },
+  {
+    goalId: 'e413a352-33c4-53ae-b54a-30e52c3e65ae',
+    decision: 'keep',
+    rationale: 'Die Untersuchung eines frequenzabhängigen Filterverhaltens mit graphischer Darstellung ist bereits ein beobachtbares, einheitliches Ziel. Das Wort oder erhält die Wahl des Filterfalls sowie der experimentellen oder rechnerischen Methode; daraus darf keine verpflichtende Mehrfachprüfung aller Filter oder eine zusätzliche Entwurfskompetenz werden. Bandfilter wird ohne Quellenbeleg nicht in Bandsperre umgedeutet. Das Evidenzprofil präzisiert Ein- und Ausgangsgrößen, Variablenkontrolle und Deutung des Frequenzgangs.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Der Frequenzgang eines Filters beschreibt, wie die Ausgangsamplitude im Verhältnis zur Eingangsamplitude von der Frequenz abhängt. Durchlass- und Abschwächungsbereiche ergeben sich aus dem frequenzabhängigen Bauteilverhalten und der gewählten Ausgangsabnahme; Messkurve und idealisierte rechnerische Vorhersage sind unterschiedliche Zugänge zu diesem Zusammenhang.',
+      essentialUnderstandingEn: 'A filter response describes how output amplitude relative to input amplitude depends on frequency. Pass and attenuation regions follow from frequency-dependent component behavior and the chosen output terminals; a measured curve and an idealized calculated prediction are different routes to this relationship.',
+      observablePerformanceDe: 'Die lernende Person untersucht selbstständig einen ausgewählten Filter rechnerisch, anhand bereitgestellter Messdaten oder in einem beaufsichtigten sicheren Kleinspannungsaufbau. Sie legt Ein- und Ausgang fest, variiert die Frequenz kontrolliert, stellt das Amplitudenverhältnis graphisch dar und begründet die erkennbaren Durchlass- und Abschwächungsbereiche; bei Messdaten berücksichtigt sie erkennbare Unsicherheiten.',
+      observablePerformanceEn: 'The learner independently investigates one selected filter by calculation, using supplied measurements, or in a supervised safe low-voltage setup. They define input and output, vary frequency in a controlled way, plot the amplitude ratio, and justify the visible pass and attenuation regions; when using measurements they consider evident uncertainties.',
+      transferExpectationDe: 'Eine neue Aufgabe verwendet dieselbe RC-Reihenschaltung, nimmt das Ausgangssignal jedoch am anderen Bauteil ab. Die lernende Person sagt den Wechsel des Frequenzverhaltens begründet voraus und überprüft ihn rechnerisch oder an frischen Daten, statt die vorherige Kurve allein anhand des Bauteilbestands zu übernehmen.',
+      transferExpectationEn: 'A fresh task uses the same series RC circuit but takes the output across the other component. The learner predicts the change in frequency response with a reason and checks it through calculation or fresh data, rather than reusing the previous curve solely because the components are unchanged.'
+    }
+  },
+  {
+    goalId: '5da7d4d0-878e-44fd-b398-1b1de8b636a4',
+    decision: 'keep',
+    rationale: 'Der Übergang vom Schwingkreis zum Dipol und die grundlegende Abstrahlung sind als ein zusammenhängender Modellierungsgegenstand beschrieben. Die Formulierung in Grundzügen begrenzt den Anspruch angemessen; sie erfordert weder Antennendimensionierung noch eine Maxwell-Herleitung. Der schulische Grenzfall ist als Modellbrücke zu lesen, nicht als exakte Gleichheit mit jedem realen Dipol. Diese Modellgrenze und der Energieabtransport gehören in die Evidenzfelder. Das geöffnete-Schwingkreis-Bild dient nur als Veranschaulichung.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Die Modellbrücke vom geschlossenen LC-Kreis zum geöffneten schwingenden Dipol verbindet zeitlich veränderliche Ladungsverteilung und Ströme mit elektromagnetischer Abstrahlung. Der Dipol ist eine idealisierte Quelle; nach außen übertragene Feldenergie verlässt das betrachtete Quellsystem. Feldlinienbilder stellen ein Modell dar und sind weder materielle Fäden noch Bahnen ausgesandter Ladungen.',
+      essentialUnderstandingEn: 'The model bridge from a closed LC circuit to an opened oscillating dipole connects time-varying charge distributions and currents with electromagnetic radiation. The dipole is an idealized source; outwardly transferred field energy leaves the source system. Field-line drawings represent a model and are neither material threads nor paths of emitted charges.',
+      observablePerformanceDe: 'Die lernende Person erläutert selbstständig an einer eigenen beschrifteten Skizze, welche Rolle schwingende Ladungen, Strom und sich verändernde Felder beim idealisierten Übergang spielen. Sie erklärt qualitativ, wie elektromagnetische Wellen Energie von der Quelle wegtransportieren und weshalb ein real abstrahlender Dipol nicht ohne Energiezufuhr verlustfrei weiterschwingt.',
+      observablePerformanceEn: 'The learner independently uses their own labeled sketch to explain the roles of oscillating charges, current and changing fields in the idealized transition. They explain qualitatively how electromagnetic waves transport energy away from the source and why a real radiating dipole cannot continue oscillating without loss in the absence of an energy supply.',
+      transferExpectationDe: 'In einer neuen Modellaufgabe wird die Anregung nach anfänglicher Dipolschwingung abgeschaltet. Die lernende Person unterscheidet die weiterlaufende bereits ausgesandte Welle von der abklingenden Quelle und begründet den Unterschied durch den Energieabtransport über die Grenze des Quellsystems.',
+      transferExpectationEn: 'In a fresh model task, the drive is switched off after the dipole has begun oscillating. The learner distinguishes an already emitted wave that continues to propagate from the decaying source and explains the difference through energy transport across the source-system boundary.'
+    }
+  },
+  {
+    goalId: '91f1838c-80fc-55f5-ac30-e7d1498fccee',
+    decision: 'keep',
+    rationale: 'Rückkopplung ist mit dem konkreten Zweck der Aufrechterhaltung elektromagnetischer Schwingungen und einfachen Anwendungskontexten verbunden. Das reicht als knapper Kompetenzkern; Energiequelle, phasenrichtige Rückführung und Verlustausgleich werden im Evidenzprofil konkretisiert. Es besteht kein Anlass, aus dem Erklärziel einen Schaltungsbau oder einen vollständigen Stabilitätsnachweis zu machen. Der direkte Nachfolger Modulation bleibt inhaltlich getrennt.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Geeignete Rückkopplung führt einen Teil des Schwingungssignals so zum Verstärker zurück, dass die durch eine äußere Energiequelle bereitgestellte Energie die Verluste des Schwingkreises ausgleichen kann. Rückkopplung erzeugt keine Energie; Phase und Stärke der Rückwirkung bestimmen, ob die Schwingung gestützt, abgeschwächt oder zunächst verstärkt wird.',
+      essentialUnderstandingEn: 'Suitable feedback returns part of the oscillation signal to an amplifier so that energy supplied by an external source can compensate for losses in the oscillating circuit. Feedback creates no energy; the phase and strength of its action determine whether oscillation is sustained, weakened or initially amplified.',
+      observablePerformanceDe: 'Die lernende Person erklärt selbstständig an einem einfachen Oszillator-Blockbild Signalrückführung und Energiezufuhr als verschiedene Zusammenhänge. Sie begründet, warum eine passende Rückkopplung eine anhaltende Schwingung ermöglicht, während eine Unterbrechung der Energiezufuhr oder eine ungeeignete Rückwirkung den Verlustausgleich verhindert.',
+      observablePerformanceEn: 'The learner independently explains signal feedback and energy supply as different relationships in a simple oscillator block diagram. They justify why suitable feedback permits sustained oscillation, whereas interruption of the power supply or unsuitable feedback prevents compensation for losses.',
+      transferExpectationDe: 'Eine neue Aufgabe kehrt bei unveränderter Energieversorgung die Wirkung des Rückkopplungssignals um. Die lernende Person sagt qualitativ voraus, weshalb diese Rückwirkung die vorhandene Schwingung nicht auf dieselbe Weise aufrechterhält, und erklärt den Unterschied anhand der Phase statt allein anhand der vorhandenen Verstärkung.',
+      transferExpectationEn: 'A fresh task reverses the action of the feedback signal while leaving the power supply unchanged. The learner predicts qualitatively why this feedback no longer sustains the existing oscillation in the same way and explains the difference using phase rather than merely the presence of amplification.'
+    }
+  },
+  {
+    goalId: '122e83ac-c9cf-50c1-8a73-a1e3db347f21',
+    decision: 'revise',
+    proposedDescriptionDe: 'Die lernende Person kann erklären, wie bei der Modulation eine Kenngröße einer Trägerwelle durch ein Informationssignal verändert wird, und dieses Prinzip an einer Anwendung elektromagnetischer Wellen beschreiben.',
+    proposedDescriptionEn: 'The learner can explain how modulation changes a characteristic of a carrier wave according to an information signal and describe this principle in an application of electromagnetic waves.',
+    rationale: 'Die bisherige Formulierung benennt Modulation und ihren technischen Zweck, lässt aber die entscheidende Beziehung zwischen Informationssignal und veränderter Trägergröße unausgesprochen. Dadurch könnte die verlangte Beschreibung bereits durch die Aussage Modulation überträgt Information und die Nennung einer Funkanwendung erfüllt erscheinen. Die lokale Änderung macht genau diese bereits beanspruchte Beziehung sichtbar, ohne ein bestimmtes Modulationsverfahren, Demodulation, Spektralrechnung oder Senderbau vorzuschreiben. DE und EN bleiben in Umfang und Anspruch gleich. Das AM-Bild begründet keine Beschränkung des allgemeinen Ziels auf AM.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Bei Modulation bestimmt das Informationssignal eine Veränderung einer Trägergröße, etwa Amplitude oder Frequenz. Informationssignal, unmodulierter Träger und modulierte elektromagnetische Welle haben unterschiedliche Rollen; die Information ist im gesteuerten Verlauf der betreffenden Größe kodiert, nicht bereits in der bloßen Existenz einer hochfrequenten Schwingung.',
+      essentialUnderstandingEn: 'In modulation, the information signal determines a change in a carrier characteristic, such as amplitude or frequency. The information signal, unmodulated carrier and modulated electromagnetic wave have distinct roles; information is encoded in the controlled variation of the relevant characteristic, not merely in the existence of a high-frequency oscillation.',
+      observablePerformanceDe: 'Die lernende Person erklärt selbstständig an einem einfachen Übertragungsbeispiel, welches Signal die Information liefert und welche Trägergröße dadurch verändert wird. Sie interpretiert oder erstellt passende schematische Zeitverläufe und zeigt daran, wie verschiedene Signalabschnitte in der Modulation wiederzufinden sind, ohne das Trägersignal mit dem Informationssignal gleichzusetzen.',
+      observablePerformanceEn: 'The learner independently explains, in a simple transmission example, which signal supplies the information and which carrier characteristic it changes. They interpret or construct suitable schematic time traces and show how different portions of the signal appear in the modulation without equating the carrier with the information signal.',
+      transferExpectationDe: 'Eine frische Aufgabe verwendet anstelle eines gleichmäßig periodischen Informationssignals eine Folge unterschiedlich langer Signalabschnitte mit ausdrücklich vorgegebener Modulationszuordnung. Die lernende Person skizziert oder erläutert die entsprechenden Trägeränderungen und begründet, wie diese die zeitliche Struktur der Information abbilden.',
+      transferExpectationEn: 'A fresh task replaces a regularly periodic information signal with a sequence of signal segments of different lengths and explicitly supplies the modulation rule. The learner sketches or explains the corresponding carrier changes and justifies how they represent the temporal structure of the information.'
+    }
+  },
+  {
+    goalId: 'c64820e1-c0ee-4342-9225-f981650f0c52',
+    decision: 'revise',
+    proposedDescriptionDe: 'Die lernende Person kann für ausgewählte Beugungsvorgänge an Einzelspalt, Doppelspalt und Gitter in Fernfeldnäherung die passenden Interferenzbedingungen begründen und daraus die Lage von Minima beziehungsweise Maxima berechnen.',
+    proposedDescriptionEn: 'The learner can justify the appropriate interference conditions for selected diffraction processes at a single slit, double slit, and grating in the far-field approximation and use them to calculate the positions of minima or maxima.',
+    rationale: 'Die aktuelle Beschreibung begrenzt die Rechnung bereits auf Fernfeldfälle, nennt als einzige Leistung aber berechnen. Gerade hier können formal ähnliche Bedingungen je nach Geometrie Minima oder Maxima bezeichnen; bloßes Einsetzen kann diese zentrale Unterscheidung verdecken. Die Änderung verknüpft die Rechnung mit der begründeten Auswahl der passenden Interferenzbedingung, ohne eine neue Versuchsart, Intensitätsanalyse oder allgemeine Nahfeldlösung aufzunehmen. Die drei Anordnungen sind Varianten derselben Ortsbestimmung aus Interferenzbedingungen; daraus allein folgt kein Split. Das Bild illustriert Formeln, ersetzt aber nicht ihre selbstständige Zuordnung.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Im Fernfeld legt die Überlagerung mit geometrieabhängigen Gangunterschieden die Richtung ausgewählter Minima und Maxima fest. Die Einzelspaltbedingung b sin θ = mλ für m ≠ 0 beschreibt Minima, während d sin θ = mλ bei entsprechend idealisierten Doppelspalt- und Gitterfällen Hauptmaxima beschreibt. Winkel und Schirmposition sind geometrisch verbunden; Fernfeld- und Kleinwinkelnäherung sind nicht identisch.',
+      essentialUnderstandingEn: 'In the far field, superposition with geometry-dependent path differences determines the directions of selected minima and maxima. The single-slit condition b sin θ = mλ for m ≠ 0 describes minima, whereas d sin θ = mλ describes principal maxima in the corresponding idealized double-slit and grating cases. Angle and screen position are linked geometrically; the far-field and small-angle approximations are not identical.',
+      observablePerformanceDe: 'Die lernende Person wählt für eine selbstständig gestellte Anordnung die passende Bedingung und begründet, ob sie ein Minimum oder Maximum bestimmt. Sie unterscheidet Spaltbreite und Spaltabstand, bestimmt zulässige Ordnungen sowie Winkel oder Schirmpositionen mit konsistenten Einheiten und prüft, ob eine zusätzlich verwendete Kleinwinkelnäherung zur Geometrie passt.',
+      observablePerformanceEn: 'The learner selects the appropriate condition for an independently presented arrangement and justifies whether it determines a minimum or maximum. They distinguish slit width from slit spacing, determine allowed orders and angles or screen positions with consistent units, and check whether any additionally used small-angle approximation fits the geometry.',
+      transferExpectationDe: 'Eine neue Fernfeldaufgabe ersetzt einen Einzelspalt durch zwei idealisierte schmale Spalte und verlangt ein Hauptmaximum statt eines Minimums. Die lernende Person erklärt, warum sich trotz ähnlich aussehender Formel die Bedeutung der Länge und der Ordnung ändert, und berechnet die neue Lage aus der zur Anordnung passenden Bedingung.',
+      transferExpectationEn: 'A fresh far-field task replaces a single slit with two idealized narrow slits and asks for a principal maximum instead of a minimum. The learner explains why the meanings of the length and order change despite the similar-looking formula and calculates the new position from the condition appropriate to the arrangement.'
+    }
+  },
+  {
+    goalId: '5c57dbc7-d258-4aad-a84c-e773f3c493ae',
+    decision: 'keep',
+    rationale: 'Die Beschreibung benennt die zentrale epistemische Unterscheidung ausdrücklich: klassische Bahnaussagen gegenüber Wahrscheinlichkeitsaussagen über mögliche Messergebnisse. Sie fordert deren Erläuterung und bleibt sprachlich äquivalent. Der Doppelspalt-Vorgänger liefert den Zusammenhang; die Nachfolger behandeln Zustandsentwicklung, Einzelquanteninterferenz und Realitätsdeutung gesondert. Das PK5-Tag allein berechtigt nicht zur Erweiterung um Werturteile oder Interpretationsphilosophie. Das Evidenzprofil präzisiert Ensemble und Einzelereignis, ohne den Beschreibungskern unnötig umzuschreiben.',
+    understandingEvidence: {
+      essentialUnderstandingDe: 'Quantenmechanische Vorhersagen beziehen sich auf Wahrscheinlichkeiten möglicher Messergebnisse bei festgelegter Präparation und Messanordnung. Ein registrierter Einzelort ist ein konkretes Ergebnis; eine Wahrscheinlichkeitsverteilung beschreibt die Statistik gleichartig vorbereiteter Ereignisse und liefert keine klassische Bahn für das einzelne Quantenobjekt. Statistische Vorhersagbarkeit und die Unbestimmtheit eines Einzelergebnisses sind vereinbar.',
+      essentialUnderstandingEn: 'Quantum-mechanical predictions concern probabilities of possible measurement outcomes for a specified preparation and measurement arrangement. A recorded individual position is a concrete outcome; a probability distribution describes the statistics of identically prepared events and does not provide a classical trajectory for the individual quantum object. Statistical predictability is compatible with uncertainty about an individual outcome.',
+      observablePerformanceDe: 'Die lernende Person erläutert selbstständig anhand bereitgestellter Einzelereignisse und ihrer Häufigkeitsverteilung, welche Vorhersage die Wahrscheinlichkeitsbeschreibung erlaubt und welche klassische Bahnaussage daraus nicht folgt. Sie begründet den Unterschied zwischen einer Vorhersage für viele gleichartig vorbereitete Versuche und der Behauptung eines festgelegten nächsten Trefferorts.',
+      observablePerformanceEn: 'The learner independently uses supplied individual events and their frequency distribution to explain what the probabilistic description predicts and which classical trajectory claim does not follow. They justify the distinction between a prediction for many identically prepared trials and a claim that the next detection position is fixed.',
+      transferExpectationDe: 'Eine neue Aufgabe verändert die Messanordnung und liefert dazu eine andere Wahrscheinlichkeitsverteilung. Die lernende Person erläutert die damit geänderten Aussagen über Häufigkeiten und mögliche Einzelergebnisse, ohne die alte Verteilung weiterzuverwenden oder aus dem neuen Muster eine verborgene klassische Bahn abzuleiten.',
+      transferExpectationEn: 'A fresh task changes the measurement arrangement and supplies a different probability distribution. The learner explains the resulting changes in statements about frequencies and possible individual outcomes without retaining the old distribution or inferring a hidden classical trajectory from the new pattern.'
+    }
+  }
+]
+
+if (decisions.length !== rows.length) throw new Error('Review coverage differs from assigned input')
+const records = rows.map(({ goal }, index) => {
+  const decision = decisions[index]
+  if (decision.goalId !== goal.goalId) throw new Error(`Review order differs at ${index}`)
+  return {
+    $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json',
+    schemaVersion: 1,
+    recordId: `${runId}.record-${String(index + 1).padStart(3, '0')}`,
+    runId,
+    campaignId: campaign.campaignId,
+    roundId: campaign.roundId,
+    bundleFingerprint: campaign.bundleFingerprint,
+    bookDigest: campaign.bookDigest,
+    goalId: goal.goalId,
+    goalFingerprint: goal.goalFingerprint,
+    pageFingerprint: goal.pageFingerprint,
+    currentTitleDe: goal.currentTitleDe,
+    currentTitleEn: goal.currentTitleEn,
+    currentDescriptionDe: goal.currentDescriptionDe,
+    currentDescriptionEn: goal.currentDescriptionEn,
+    ...decision,
+    evidenceProfileContract: 'positive-understanding-evidence-v2',
+    evidenceProfileRecommendation: 'create',
+    recordStatus: 'candidate',
+    reviewAuthority: 'ai_candidate'
+  }
+})
+const recordsBytes = records.map(record => JSON.stringify(record)).join('\n') + '\n'
+// The model identity exposed to this review is Codex. No exact deployment model,
+// sampling configuration, provider diversity or independent vendor is inferred.
+const generationParameters = {
+  interface: 'Codex',
+  exactModelVersion: 'not exposed',
+  samplingParameters: 'not exposed',
+  reviewMode: 'independent blind first pass A',
+  externalSourceVerification: false,
+  inspectedBoundImageCount: 10
+}
+const run = {
+  $schema: 'https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json',
+  schemaVersion: 1,
+  runId,
+  campaignId: campaign.campaignId,
+  roundId: campaign.roundId,
+  batchId: batch.batchId,
+  batchInputFingerprint: batch.batchInputFingerprint,
+  bundleFingerprint: campaign.bundleFingerprint,
+  bookDigest: campaign.bookDigest,
+  provider: 'OpenAI',
+  model: 'Codex (exact deployment model and version not exposed)',
+  role: 'subject_reviewer',
+  promptFamilyId: 'skillpilot-goal-description-understanding-evidence-v2',
+  promptFingerprint: campaign.promptFingerprint,
+  criteriaFingerprint: campaign.criteriaFingerprint,
+  generationParametersFingerprint: sha256(JSON.stringify(generationParameters)),
+  independenceGroupId: campaign.independenceGroupId,
+  blindToOtherRuns: true,
+  goalIds: batch.goalIds,
+  inputArtifacts: [
+    { role: 'description_review_batch_input_jsonl', digest: batch.batchInputFingerprint },
+    { role: 'review_prompt', digest: campaign.promptFingerprint },
+    { role: 'review_criteria', digest: campaign.criteriaFingerprint }
+  ],
+  startedAt: '2026-09-06T21:33:04Z',
+  completedAt: new Date().toISOString(),
+  status: 'completed',
+  outputDigest: sha256(recordsBytes),
+  toolchainVersion: `codex-node-${process.versions.node}`
+}
+const files = [
+  [resolve(directory, 'results', `${batch.batchId}.records.jsonl`), recordsBytes],
+  [resolve(directory, 'results', `${batch.batchId}.run.json`), JSON.stringify(run, null, 2) + '\n']
+]
+const patch = ['*** Begin Patch', ...files.flatMap(([path, contents]) => [
+  `*** Add File: ${path}`,
+  ...contents.trimEnd().split('\n').map(line => `+${line}`)
+]), '*** End Patch'].join('\n')
+console.log(JSON.stringify({ patch, decisions: records.map(({ goalId, decision }) => ({ goalId, decision })), run }))

@@ -1544,3 +1544,186 @@ Deployment in dieser Reparatur.
 
 Der große QS-Lauf bleibt angehalten. Die separat freigegebenen drei
 Schreibkorrekturen aus dem Feedback-Eingang sind nicht Teil dieser CI-Reparatur.
+
+### Wiederaufnahme nach bestätigtem Deployment: B039/B039r, 7. September 2026
+
+Der Product Owner hat nach erfolgreicher CI und eigenem Deployment die
+Fortsetzung bis 100 % für Mathematik und Physik ausdrücklich beauftragt.
+Die vorherige Pause ist damit beendet; kein Commit, Push oder Deployment wird
+durch diese lokale QS-Fortsetzung behauptet.
+
+Der native Fünf-Gate-Bericht nach Abschluss der aktuellen B039-Nachprüfungen
+bestätigt Mathematik **349/796 (43,8 %)** und Physik **394/465 (84,7 %)** bei
+null technischen Blockern. Die geschützten Maturity-Floors bleiben bestanden.
+Offene fachliche Entscheidungen bleiben dennoch offen: Null technische
+Blocker ist weder 100 % noch eine pauschale fachliche Freigabe.
+
+Für B039 wurden 15 unveränderte Mathematik- und 16 unveränderte Physikziele
+mit nachgewiesener aktueller Seiten-, Kontext-, Sprach- und Fingerprintbindung
+aus den beiden unabhängigen Reviews übernommen. Die frischen B039r-Reviews
+schließen vier weitere Mathematikziele und fünf Physikziele ab. Bei
+`12a8dffc-dea7-5f2c-b490-2a1a2bb6901b` widersprechen sich KEEP und SPLIT_REVIEW;
+dieses Ziel zählt nicht als abgeschlossen und erhält die enge B039h-Claim zur
+fachlichen Klärung. Ein neuer Physik-Atomknoten trennt das mittlere Drehmoment
+von der Rotationsenergie, deshalb lautet der aktuelle Physiknenner 465.
+
+Vier gezielt korrigierte Nano-Banana-Pro-Bilder wurden nach tatsächlicher
+Bildprüfung übernommen. Für drei Mathematik- und ein Physik-P-v2-Profil
+wurden danach die geänderten Bildeingabebindungen ausdrücklich nachgeprüft;
+Profilinhalte und Aufgabenfälle blieben unverändert. Die alten Eingaben sind
+archiviert. Alle P-v2-Nachweise bleiben AI-Kandidaten auf E1/G1, ohne
+menschliche Freigabe und ohne Behauptung beobachteter Lernendenleistung.
+
+Die nationalen PDF-Bücher, Modelle, Quellenindizes und der Transparenznachweis
+wurden auf den stabilen Stand synchronisiert und lokal validiert. Weitere
+fachliche Änderungen benötigen vor einem nächsten Commit erneut die oben
+genannte vollständige CI-Abschlusskette; deren Erfolg für den nächsten Stand
+wird hier nicht vorweggenommen.
+
+Fortsetzung: B040 umfasst je 20 durch die native Auswahl ermittelte offene
+Ziele (Mathematik: Taylorpolynome, digitale Werkzeuge und Integrale; Physik:
+Gravitation und Kosmologie). Beide Claims sind vor Arbeitsbeginn im zentralen
+In-flight-Ledger eingetragen. Unveränderte abgeschlossene Ziele werden nicht
+erneut ausgewählt; die älteren engen Fachklärungs-Claims bleiben sichtbar.
+
+### Konsolidierung und erneute Pause: B040, 7. September 2026
+
+Der Product Owner hat die Konsolidierung zu einem commit-fähigen Zwischenstand
+und anschließend einen Arbeitsstopp beauftragt. **Keine neuen QS-Pakete starten.**
+Commit, Push und Deployment sind nicht Bestandteil dieses lokalen Abschlusses.
+Die Wiederaufnahme erfolgt erst nach dem Commit und erneuter Nutzeranweisung.
+
+Der native Register-Snapshot nach B040r und der letzten Bild-/Profilbindung
+meldet Mathematik **370/797 (46,4 %)** und Physik **411/465 (88,4 %)** bei null
+technischen Blockern. B040r trägt 16 Mathematik- und sechs Physik-KEEPs bei.
+Diese Registerzahlen sind keine menschliche Freigabe und kein 100-%-Abschluss.
+Insbesondere enthält der bisherige Physikregisterstand noch die unten erneut
+beanstandeten Beugungsziele; deren bisherige KEEP-Einträge dürfen beim nächsten
+Weiterlauf nicht als Grund verwendet werden, die neuen Befunde zu überspringen.
+
+**Abgeschlossenes Paket:** Die bisherigen kanonischen Korrekturen und
+Aufteilungen bleiben erhalten, einschließlich getrennter Reihen-Ziele in
+Mathematik und des mittleren Beschleunigungsmoments in Physik. Das ursprüngliche
+Reihenziel bleibt als Cluster erhalten. Quellen-Mappings bilden die Teile als
+`partial` ab, nicht als zwei neue identische `exact`-Behauptungen. Das erklärt
+die entsprechend aktualisierten Mapping-Fixtures und Paket-Zählwerte.
+
+Die Integralgrafik `3862890e-9ea9-4c62-bcf2-e354c9d8f306` ist durch den von
+Root und unabhängiger AI-Gegenprüfung tatsächlich angesehenen Nano-Kandidaten 2
+ersetzt: vier korrekte Unter-/Obersummenrechtecke, gemeinsamer Grenzwert 12 L,
+7 L Anfangsbestand und 19 L Endbestand. SHA-256:
+`e11037682194882cefe91e8bf855b16c0702470c80b560643bc2dcd3767a26d2`.
+Nur dessen geänderte Bild-Alttext-Bindung im P-Profil wurde mit dem nativen
+Builder erneuert; alle 19 Aufgabenprofile, Ziel-Fingerprints und
+AI-Kandidatenstatus bleiben unverändert. Der neue
+`...batch-040-taylor-tools-integrals-19-v1.386-c2-context-receipt.json`
+belegt dies zusätzlich zum historischen Context-Receipt.
+
+Die nationalen Bücher werden aus demselben aktuellen Modell veröffentlicht:
+Mathematik 797 Zielseiten, Physik 465 Zielseiten. Originalquellen-Indizes,
+PDF-Manifeste, öffentlicher Buchindex, Bildstatusberichte, Quellenberichtskette
+und Transparenzinventar gehören gemeinsam in den Commit. Nicht nur die
+kanonischen JSONs oder die öffentlichen JPGs einzeln committen.
+
+**Wichtiger Konsolidierungsbefund:** Drei historische JSON-Kandidaten waren
+keine Runtime-Landschaften. Besonders `physics-c648-slit-split-v1/proposed-goals`
+trug die echte Physik-Curriculum-ID und konnte vom rekursiven Runtime-Scanner
+eingelesen werden. Diese drei Dateien liegen jetzt byte-identisch als
+`.json.snapshot` vor. Die Pfad-/SHA-Tabelle
+`curricula/DE/Gymnasium/quality/goal-visualization-review/checkpoint-2026-09-07-archive-paths.json`
+erhält die Auflösung historischer Receipt-Pfade. Keine Scanner-Ausnahme und
+keine Abschwächung des Runtime-Schemas wurde eingeführt.
+
+#### Konkreter Einstieg nach dem Commit
+
+1. **Beugung zuerst konsolidieren, vorhandene IDs wiederverwenden.**
+   `6270e558-d657-5363-a6b2-e49a032a453b` (Doppelspalt),
+   `91683676-01cf-5003-80fa-a04d043b4e61` (Spektren am Gitter) und
+   `f6a3a602-1e45-5018-b0ff-3d49933cf634` (Einzelspalt) sind vorhanden.
+   Der Sammelknoten `c64820e1-c0ee-4342-9225-f981650f0c52` ist neu zu prüfen.
+   Im vorhandenen Doppelspaltbild steht die Ordnung m irrtümlich doppelt.
+   Zuerst `physics-c648-slit-split-v1/existing-goals-reuse-review.md` lesen.
+   Die temporäre 17-Datei-Aufteilung in drei zusätzliche Inhaltsziele wurde
+   exakt zurückgenommen; Adoption und Reversal sind getrennt dokumentiert.
+   **Den alten Patch nicht erneut anwenden.**
+2. Geprüfte Nano-/SVG-Kandidaten und die drei Mini-Prüfungsentwürfe sind nur
+   archivierte Vorarbeiten. Die Bildprüfung gilt jeweils für den damaligen
+   Zielumfang, nicht automatisch für ein bestehendes anderes Ziel. Gitter-
+   Spektren und inverse Wellenlängenbestimmung sowie die eigenständige
+   Einzelspalt-Modellierung dürfen nicht entfallen. Der zusätzliche
+   Einzelspalt-SVG-Entwurf V2 wurde nur von Root angesehen und wartet noch auf
+   eine unabhängige Gegenprüfung. Nichts davon ist als neues Beugungsbild
+   veröffentlicht. Als Alternative prüfen: c648 nur als quellenbelegtes
+   LK-Doppelspalt-Minimaziel erhalten; keine ungesicherte GK-Ausweitung oder
+   automatische Übertragung alter Mastery auf neue Atome.
+3. **386 bleibt in der engen D-HOLD-Claim**, obwohl sein Bild und P-Profil
+   jetzt korrigiert sind. Nur eine neue Beschreibung-/Kontext-Gegenprüfung
+   auf diesem finalen Stand kann den D-Hold schließen; nicht erneut alle
+   19 P-Profile oder bereits abgeschlossene B040r-Ziele bearbeiten.
+4. **B041 bleibt Entwurf:** zehn Mathematik-D-Ziele mit zwei Gegenprüfungen,
+   acht noch nicht zentral gebundene P-Kandidaten. Drei bereits begonnene
+   Präzisierungen wurden zwischen Autorenskript und Kandidatendatei
+   synchronisiert: Netto-/Bruttovolumen nur bei einer einzigen umkehrbaren
+   Leitung ohne weitere Zu-/Abflüsse; Änderungsdeutung nur bei integrierten
+   Änderungsraten. Die frühere Gegenprüfung bleibt historisch, keine neue
+   Freigabe daraus ableiten. Insbesondere `23c5382a`, `31be24f0`, `809ef78a`
+   und die beanstandete Grafik `34604a97` bleiben zur fachlichen Klärung offen.
+5. Die drei Kosmologie-Holds und alle älteren engen Quellen-/Migrations-Holds
+   bleiben im In-flight-Ledger reserviert. Geplante Kosmologie-Aufteilungen
+   dürfen die lokalen Q4-Prüfungsrouten nicht verlieren. Vor neuer Auswahl
+   zuerst diese reservierten Aufgaben und die Beugungsbefunde auswerten;
+   erst danach wieder den nativen Selektor verwenden.
+
+#### Abschlussprüfungen dieses Checkpoints
+
+Der lokale Zwischenstand ist konsolidiert. Folgende Prüfungen sind bestanden:
+
+- Graph-/UUID-/Schema-Prüfungen (14.607 JSON-Dateien), harte Lernrouten,
+  Jahrgangsprüfungsrouten, Composition-Views und Duration-/Scope-Policies;
+  die drei archivierten Kandidaten sind keine Runtime-Landschaften mehr.
+- Quellenindex- und Quellenberichtskette, Mapping-Fixtures, alle konfigurierten
+  Memory-Reviews, aktueller Qualitätsstatus und alle **neun geschützten
+  Maturity-Floors**. Keine M6-Grenze wurde herabgesetzt.
+- Aktuelle Bildassets, QA-Frische, Freigabe-/Rollout-Abdeckung und Parität.
+  Der bekannte Physik-Provider-Hold `a7255b83` ist mit den drei verworfenen
+  Kandidaten auch im sichtbaren Deferral-Bericht belegt, nicht freigegeben.
+- Alle Teile der Lernzielbuch-Pipeline, inklusive Physik-Eingangsdaten,
+  Modell, Renderer, Review-Bundle, Publikation aller vier Bücher, Runtime und
+  Workbench-Verweisen. Mathematik hat **797**, Physik **465** Zielseiten.
+- Frontend-Lint, TypeScript-/Produktionsbuild, gebaute Shell-Assets,
+  Quellen-Artifact-Grenze und KI-Transparenzinventar/-Buildnachweis.
+- Paket-, Runtime-Katalog- und Schema-Katalog-Verträge sowie Readiness-,
+  Validator-, Provisioner- und Consumer-Smoke-Selbsttests. Die vollständige
+  in CI verwendete Release-Model-Konformitätskette ist bestanden:
+  unabhängige Validierung, aktuelle Reviewbindungen und zwei byte-identische
+  Builds (`SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false`). Offene menschliche
+  Quellen-/Weitergabefreigaben bleiben offen; daraus folgt keine Freigabe zur
+  eigenständigen Paketveröffentlichung.
+- Archiv-/Legacy-Pfadprüfungen für Hessen und Bayern, Chemie-Prüfungspipeline,
+  Dokumentationslinks/-Indizes und `git diff --check`.
+- OpenAI-Review-Freeze und alle **16 Freeze-Regressionen**. Die bereits in
+  Abschnitt 6.58 vorab genehmigte mechanische Buch-Testzahländerung 796 → 797
+  ist mit Abschnitt 6.61 append-only gebunden. Eine neue Regression beweist
+  den identischen vorherigen Testhash nach Rücktausch genau dieser Zahl;
+  keine Produktlogik oder eingereichte Coach-Artefakte wurden verändert.
+- Beide Paketverifikationen sind bestanden: OpenAI V1 entspricht exakt dem
+  eingefrorenen internen Draft; Claude 1.1.1 behält seine veröffentlichten
+  53.140 Paketbytes und den bisherigen SHA-256.
+
+**Backend-Prüfung genau abgegrenzt:** Nach Beseitigung der Physik-ID-Kollision
+lief die vollständige Suite mit 1.558 Tests: 1.554 bestanden, drei veraltete
+Zählwert-Erwartungen fehlgeschlagen, ein Test übersprungen. Die drei Fehler
+betrafen ausschließlich die schon fachlich geprüfte Reihen-Aufteilung und
+die HE-G9/J10-Projektion. Nur deren feste Testzahlen wurden korrigiert;
+Mastery-Erwartungen, Filterprüfungen und Produktcode blieben unverändert.
+Anschließend bestanden alle drei betroffenen Integrationstests und die
+gesamte Mapping-Fixture-Klasse: **90 Tests, null Fehler**, Gradle `check`
+erfolgreich mit diesem gezielten Testfilter. Ein weiterer ungefilterter
+Gesamtlauf wurde nach der reinen Erwartungswertkorrektur nicht ausgeführt.
+Dies ist kein behaupteter neuer vollständiger grüner Backend-Lauf
+und kein bereits durchlaufener GitHub-CI-Run.
+
+Die Wiederaufnahme ist dokumentiert; **Bearbeitung nach diesem Checkpoint
+angehalten. Kein neuer Batch, kein Commit, Push oder Deployment.** Nach dem
+Nutzer-Commit zunächst dessen CI-Ergebnis prüfen, dann auf erneute Anweisung
+an den oben reservierten offenen Arbeiten weiterarbeiten.

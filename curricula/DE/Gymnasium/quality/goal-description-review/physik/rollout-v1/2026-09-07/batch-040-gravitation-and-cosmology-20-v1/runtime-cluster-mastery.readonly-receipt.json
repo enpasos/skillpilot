@@ -1,0 +1,151 @@
+{
+  "reviewer": "codex",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "humanApprovalClaimed": false,
+  "exitCode": 0,
+  "native": {
+    "finishedAt": "2026-09-07T01:05:08.189345154Z",
+    "checks": [
+      {
+        "name": "old canonical mastery does not create child values",
+        "observed": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "name": "cluster effective and prerequisite mastery derive from children",
+        "observed": [
+          0,
+          0,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "name": "read-only aggregation does not mutate raw mastery",
+        "observed": {
+          "c9405043-bdc0-5995-8b4d-5bb56d97d05d": 1,
+          "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9": 1,
+          "5db07785-8cca-50d5-81a9-e0264d344af9": 1
+        },
+        "passed": true
+      },
+      {
+        "name": "cluster raw mastery excluded from atomic completion",
+        "observed": {
+          "mastered_atomic": 0,
+          "total_atomic": 8
+        },
+        "passed": true
+      },
+      {
+        "name": "empty parent requires does not inject old chain into new children",
+        "observed": {
+          "c9405043-bdc0-5995-8b4d-5bb56d97d05d": [],
+          "3d466956-04fb-58d7-9008-ad8090f8706d": [],
+          "db0394ca-297c-5892-b414-525ec186f928": [],
+          "c52d55c3-b687-586c-b0f9-8ffcd1069424": [],
+          "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9": [],
+          "37013646-f13a-5faf-954c-940f2fd7502f": [],
+          "5db07785-8cca-50d5-81a9-e0264d344af9": [],
+          "b4772b06-b10c-52dd-841b-a96ffb7c7e28": [],
+          "497f1311-17d6-56ff-afb1-422a738e5c16": [
+            "60211ac1-cbe1-5182-87ef-673a068c5b0a"
+          ],
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93": [],
+          "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7": []
+        },
+        "passed": true
+      },
+      {
+        "name": "without operative split provenance legacy mastery maps to parent only",
+        "observed": {
+          "c9405043-bdc0-5995-8b4d-5bb56d97d05d": 1,
+          "bf1a6607-076c-4b59-b782-a2a7d736177c": 1,
+          "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9": 1,
+          "65c5a696-bd70-4e8a-929e-935e30cd1cf9": 1,
+          "5db07785-8cca-50d5-81a9-e0264d344af9": 1,
+          "98a7de71-da9f-4b0e-adae-dfbf612f5a10": 1
+        },
+        "passed": true
+      },
+      {
+        "name": "negative control: splitFromCanonicalGoalId DOES project legacy mastery to all seven new children",
+        "observed": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "passed": true
+      },
+      {
+        "name": "one real child mastery leaves siblings unmastered and parent incomplete",
+        "observed": {
+          "parent": 0,
+          "sibling": 0,
+          "firstChild": 1
+        },
+        "passed": true
+      },
+      {
+        "name": "visible unmastered child defeats old parent mastery in partial projection",
+        "observed": {
+          "c52d55c3-b687-586c-b0f9-8ffcd1069424": 0,
+          "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "negative control: no present children retains parent fallback, so authored target visibility is mandatory",
+        "observed": {
+          "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9": 1
+        },
+        "passed": true
+      }
+    ],
+    "startedAt": "2026-09-07T01:05:06.468576709Z",
+    "schemaVersion": 1,
+    "limitations": "Component-level native check; no HTTP session or full frontend browser run. New children deliberately have no requires in this fixture to isolate mastery inheritance; proposed real edges are separately DAG-checked.",
+    "method": "Native compiled LearnerService methods, in-memory canonical clone and mocked lookup services; no database or state mutation"
+  },
+  "stderr": "Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3\nWARNING: A Java agent has been loaded dynamically (/home/enpasos/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.18.11/82212e5b3633e7a65fca8bec525762cfb6c9bae4/byte-buddy-agent-1.18.11.jar)\nWARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning\nWARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information\nWARNING: Dynamic loading of agents will be disallowed by default in a future release\nOpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended\nSLF4J: Failed to load class \"org.slf4j.impl.StaticLoggerBinder\".\nSLF4J: Defaulting to no-operation (NOP) logger implementation\nSLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.\n",
+  "artifacts": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "sha256:f38ccdc8972a3a3a2149ac659e649bc69c06a16f0a6bc6e3b6cc5fa457901b81"
+    },
+    {
+      "path": "backend/build/classes/java/main/com/skillpilot/backend/service/LearnerService.class",
+      "sha256": "sha256:260ce7417e65ddb0c4024fff221946141da0db41f4fb10d465f5f57d67daf512"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+      "sha256": "sha256:ce00240476ba67f815b5618fd8eb8d3ed9affdac6d05de31fdb67180053204ef"
+    },
+    {
+      "path": "app/src/hooks/useMasteryCalculation.ts",
+      "sha256": "sha256:95b4800ae3fa38df57ba61798313489b2761a7cdae142e76dcc3da97f59c1600"
+    },
+    {
+      "path": "app/src/views/LearnerView.tsx",
+      "sha256": "sha256:24a074b0d63d73bc73e859ab1429eed7cf36144fbddb8e16cbac57959e95b632"
+    },
+    {
+      "path": "tmp/PhysicsB040RuntimeAudit.java",
+      "sha256": "sha256:bbde7d098970a346e9decde45971536c3c21b0dfb7f2043bf75bef076080a1a2"
+    }
+  ]
+}

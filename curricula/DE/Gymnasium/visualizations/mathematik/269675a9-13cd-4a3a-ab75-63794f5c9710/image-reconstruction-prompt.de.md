@@ -1,0 +1,59 @@
+# Bildrekonstruktionsprompt: Produktsummen und orientierte Flächen im Sachkontext deuten
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `269675a9-13cd-4a3a-ab75-63794f5c9710`
+- Titel: Produktsummen und orientierte Flächen im Sachkontext deuten
+- Beschreibung: Die lernende Person kann Produktsummen und Inhalte orientierter Flächen in Sachsituationen deuten und ihre Bedeutung für Gesamtwirkungen qualitativ erläutern.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Quellbild: `269675a9-13cd-4a3a-ab75-63794f5c9710.jpg`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Ein detailliertes, pädagogisches Diagramm im Stil einer handgezeichneten Tafelzeichnung mit klaren schwarzen Linien und farbigen Flächen auf weißem Hintergrund.
+
+**Titel:** Oben mittig steht der Titel in schwarzer, leicht informeller Schrift: "Produktsummen und orientierte Flächen im Sachkontext deuten".
+
+**Hauptdiagramm (Koordinatensystem):**
+Ein zentrales Koordinatensystem mit einer horizontalen x-Achse und einer vertikalen y-Achse. Beide Achsen sind mit Pfeilen versehen, die die positive Richtung anzeigen.
+- Die x-Achse ist beschriftet mit "Zeit (t) in Minuten" und hat Teilstriche und Zahlen von 0 bis 6 in Einerschritten.
+- Die y-Achse ist um 90 Grad gegen den Uhrzeigersinn gedreht beschriftet mit "Netto-Zuflussrate (r) in Liter/Minute" und hat Teilstriche und Zahlen von -2 bis +4 in Einerschritten.
+- Der Ursprung (0,0) ist deutlich markiert.
+
+**Flächen (Rechtecke):**
+Drei farbige Rechtecke sind im Koordinatensystem eingezeichnet, die jeweils eine Fläche repräsentieren:
+1.  **Blaues Rechteck:** Von x=0 bis x=2 und von y=0 bis y=+3. Es ist hellblau gefüllt und schwarz umrandet. Rechts neben diesem Rechteck, leicht unterhalb seiner oberen rechten Ecke, befindet sich ein schwarzer Textkasten mit den Zeilen:
+    "Breite: 2 min, Höhe: +3 L/min.
+    Fläche: 2 * (+3) = +6 Liter (Positiv)"
+2.  **Oranges Rechteck:** Von x=2 bis x=5 und von y=-1 bis y=0. Es ist hellorange gefüllt und schwarz umrandet. Unterhalb der x-Achse, mittig unter diesem Rechteck, befindet sich ein schwarzer Textkasten mit den Zeilen:
+    "Breite: 3 min, Höhe: -1 L/min.
+    Fläche: 3 * (-1) = -3 Liter (Negativ)"
+    Ein geschwungener schwarzer Pfeil zeigt von diesem Textkasten nach oben zum orangen Rechteck.
+3.  **Grünes Rechteck:** Von x=5 bis x=6 und von y=0 bis y=+2. Es ist hellgrün gefüllt und schwarz umrandet. Rechts neben diesem Rechteck, leicht unterhalb seiner oberen rechten Ecke, befindet sich ein schwarzer Textkasten mit den Zeilen:
+    "Breite: 1 min, Höhe: +2 L/min.
+    Fläche: 1 * (+2) = +2 Liter (Positiv)"
+
+**Ergebnisbereich:**
+Unterhalb des Koordinatensystems, linksbündig, steht in schwarzer Schrift, unterstrichen: "Produktsumme (Gesamtwirkung)".
+Darunter folgt die Berechnung: "(+6 Liter) + (-3 Liter) + (+2 Liter)".
+Und darunter das Ergebnis: "= +5 Liter".
+Ein großer, hohler, schwarz umrandeter Pfeil zeigt von links auf die Zeile "(+6 Liter) + (-3 Liter) + (+2 Liter)".
+Ein weiterer identischer Pfeil zeigt von rechts neben "= +5 Liter" nach rechts auf ein Ergebnis-Feld.
+
+**Ergebnis-Feld:**
+Rechts neben der Produktsummen-Berechnung befindet sich ein rechteckiges Feld mit abgerundeten Ecken, hellgelber Füllung und einer dicken schwarzen Umrandung. Darin steht in schwarzer Schrift:
+"Ergebnis & Deutung" (unterstrichen)
+"Gesamtwirkung der orientierten Flächen ="
+"Bestandsänderung: +5 Liter"
+"(Netto-Zunahme im Tank)"
+
+**Schriftart:** Alle Texte sind in einer konsistenten, leicht informellen, handgezeichneten Sans-Serif-Schriftart gehalten, die an eine Marker- oder Kreideschrift erinnert.
+```

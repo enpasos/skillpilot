@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "runId": "mathematik-b041-fresh-blind-b-20260907",
+  "validation": {
+    "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-b/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-b/batches --results-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-b/results",
+    "exitCode": 0,
+    "stdout": "Goal-description review campaign results valid: 10\n"
+  },
+  "recordCount": 10,
+  "decisionCounts": {
+    "keep": 4,
+    "revise": 3,
+    "split_review": 2,
+    "block": 1
+  },
+  "blockedGoalIds": [
+    "34604a97-0c64-5b06-81e2-6ac818732d60"
+  ],
+  "splitReviewGoalIds": [
+    "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+    "809ef78a-f282-5593-89be-0f2cb95570ac"
+  ],
+  "revisionGoalIds": [
+    "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+    "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+    "19481f5d-94de-4a74-b765-cbebd1525994"
+  ],
+  "recordsDigest": "sha256:97c0e4903fd0e9612ee0b8dce94b9b3747956c8fef10c9c73279dc6d5838ad10",
+  "runManifestDigest": "sha256:42a292a37a3de02244676b92dbeeec14f43f637fcba198a1059afe59d44df002",
+  "provenanceDigest": "sha256:544a938bd4931d85cd37cf8b86759e205e06f1cec5fb6ac5934fd07ac62e9874",
+  "bundleFingerprint": "sha256:4cbb883b57763279fc6419d16751df3098b4c6dcdc293c6747f311ffaf4f499a",
+  "bookDigest": "sha256:14f445255f8ca249a97fd0684294b4d67f1170d7f93574809ec9f26f9505e39f",
+  "scope": "Schema/binding validation, not human acceptance. Every bound raster viewed; no canonical or image edits."
+}

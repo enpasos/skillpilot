@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:6f4afd2c738ec478100c705411f7890c6d9578b4f038d052a6382348cdfdbb1d",
+  "reviewInputFingerprint": "sha256:3f2be264966bbc72a462e248cf02843a3554e9905a8fc784213422c852c998f3",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-a",
+      "roundId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-independent-a",
+      "runIds": [
+        "physics-b038-blind-a-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-b",
+      "roundId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying platform model identifier and snapshot unavailable in this run)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "18c1f954-487e-5121-bb18-6c64a82f573d",
+      "firstRecordId": "physics-b038-blind-a-20260906.18c1f954-487e-5121-bb18-6c64a82f573d",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.18c1f954-487e-5121-bb18-6c64a82f573d",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+      "firstRecordId": "physics-b038-blind-a-20260906.c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a844895e-2cdc-4665-aad2-a49c62f11759",
+      "firstRecordId": "physics-b038-blind-a-20260906.a844895e-2cdc-4665-aad2-a49c62f11759",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.a844895e-2cdc-4665-aad2-a49c62f11759",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+      "firstRecordId": "physics-b038-blind-a-20260906.f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "firstRecordId": "physics-b038-blind-a-20260906.a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+      "firstRecordId": "physics-b038-blind-a-20260906.5f97952e-5ac9-5749-94d0-d1dc50dda358",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.5f97952e-5ac9-5749-94d0-d1dc50dda358",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+      "firstRecordId": "physics-b038-blind-a-20260906.ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e413a352-33c4-53ae-b54a-30e52c3e65ae",
+      "firstRecordId": "physics-b038-blind-a-20260906.e413a352-33c4-53ae-b54a-30e52c3e65ae",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.e413a352-33c4-53ae-b54a-30e52c3e65ae",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "firstRecordId": "physics-b038-blind-a-20260906.5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "91f1838c-80fc-55f5-ac30-e7d1498fccee",
+      "firstRecordId": "physics-b038-blind-a-20260906.91f1838c-80fc-55f5-ac30-e7d1498fccee",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.91f1838c-80fc-55f5-ac30-e7d1498fccee",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "122e83ac-c9cf-50c1-8a73-a1e3db347f21",
+      "firstRecordId": "physics-b038-blind-a-20260906.122e83ac-c9cf-50c1-8a73-a1e3db347f21",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.122e83ac-c9cf-50c1-8a73-a1e3db347f21",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "firstRecordId": "physics-b038-blind-a-20260906.5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8ad305d2-bde0-4223-9477-517b2943148b",
+      "firstRecordId": "physics-b038-blind-a-20260906.8ad305d2-bde0-4223-9477-517b2943148b",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.8ad305d2-bde0-4223-9477-517b2943148b",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c71315c1-f329-4289-a145-d99819da7bad",
+      "firstRecordId": "physics-b038-blind-a-20260906.c71315c1-f329-4289-a145-d99819da7bad",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.c71315c1-f329-4289-a145-d99819da7bad",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2c6af966-7703-4176-a117-5ddb8295bedf",
+      "firstRecordId": "physics-b038-blind-a-20260906.2c6af966-7703-4176-a117-5ddb8295bedf",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.2c6af966-7703-4176-a117-5ddb8295bedf",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c64820e1-c0ee-4342-9225-f981650f0c52",
+      "firstRecordId": "physics-b038-blind-a-20260906.c64820e1-c0ee-4342-9225-f981650f0c52",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.c64820e1-c0ee-4342-9225-f981650f0c52",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+      "firstRecordId": "physics-b038-blind-a-20260906.31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+      "firstRecordId": "physics-b038-blind-a-20260906.c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4245c54f-d609-41bc-9eff-e9ceeff4902f",
+      "firstRecordId": "physics-b038-blind-a-20260906.4245c54f-d609-41bc-9eff-e9ceeff4902f",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.4245c54f-d609-41bc-9eff-e9ceeff4902f",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+      "firstRecordId": "physics-b038-blind-a-20260906.5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+      "secondRecordId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906.5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+      "firstRunId": "physics-b038-blind-a-20260906",
+      "secondRunId": "physik-rollout-v1-batch-038-oscillations-ac-and-light-models-20-v1-20260906-first-pass-b.batch-001.codex-blind-b-20260906",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

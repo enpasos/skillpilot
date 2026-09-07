@@ -1,0 +1,667 @@
+{
+  "schemaVersion": 1,
+  "adoptionId": "B038h-HE-G9-exponential-v3",
+  "adoptedAt": "2026-09-06",
+  "status": "SCOPED_LAYER_A_ADOPTED_NOT_GOAL_ACCEPTANCE",
+  "authority": "Fachliche AI-Adjudikation unter der allgemeinen Userfreigabe für echte Layer-A-Verbesserungen; keine menschliche Einzelprüfung behauptet.",
+  "source": {
+    "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+    "sha256": "3ec1451c515f4bc70d97690331ca66f922d933355c4326e1dc4100a95e3e664c",
+    "sourceGoalIds": [
+      "he-math-seki-g9-10-2-04-d7759617",
+      "he-math-seki-g9-10-2-06-6ae4d32a",
+      "he-math-seki-g9-10-2-07-5e841891"
+    ],
+    "originalUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-mathematik.pdf",
+    "printedPage": 38,
+    "section": "10.2 Funktionen",
+    "readBack": "Quellzeilen 04/06/07 plus benachbarte Darstellungs-, Anwendungs- und Modellierungsanforderungen am Original gegengelesen; G9 bleibt legacy-grade-sequencing-reference, KC binding-core."
+  },
+  "files": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "beforeSha256": "fd9108cf0ccc8176f1fdd3e5633ac716544cff9aa72bcaf8c1f11ad93728d34e",
+      "afterSha256": "894f220a492a4a830b4fdbaf3829171fcd0b142e51a155ddaa64d383ea5fcdce"
+    },
+    "mapping": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "beforeSha256": "ecc6b19f67dbb8a55e47ae00eec46a7a441527d92f2d68a52a2d6c558bde4ceb",
+      "afterSha256": "5137bbf7c4e1718a139a05128aa8e871a760fc9fd18973f1886a096a9136fc0d"
+    }
+  },
+  "immutableEvidence": {
+    "source-scope-49f9059a-seven-child-proposal-v1.md": "152836b846cb9cb6975dda437346e2abf8a414461d96462ff32f6630ff0a7d71",
+    "source-scope-49f9059a-route-audit-v2.md": "e6493b0783655e31f8352037e50918faab51df5f2a3725123281cb5216e951a1",
+    "source-scope-49f9059a-stage-route-option-v3.md": "c96e4317340e0a8e18de56f35421087f73ff964cf26e014608277f290780f2ac",
+    "audit-he-g9-exponential-route-v2.ts": "30eef6f2f17d554323417dc22df1bc78975a0bfa49784cd4f2a9b72a1b699cd0",
+    "adopt-he-g9-exponential-scope-v3.mjs": "36845a2d993a441b78ec80444eb3b89c725ee3b61d94528d7d7c6308ae484651"
+  },
+  "canonicalRequiresDelta": [
+    {
+      "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "before": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+      ],
+      "after": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "reason": "Wachstum/Zerfall in Tabellen, Graphen und Kontexten erkennen und Exponentialfunktionen zuordnen erfordert keine Differentiation. Die bestehende Orientierung bleibt erhalten."
+    },
+    {
+      "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+      "before": [
+        "346efb31-c400-5bd3-a698-dd9a7e1bc3f7"
+      ],
+      "after": [
+        "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+      ],
+      "reason": "Die erklärte Ableitungseigenschaft von e^x braucht die Ableitungsbasis. Diese Kante wird vom elementaren Wachstumsziel hierher verschoben; Calculus-Nachfolger bleiben abgesichert."
+    },
+    {
+      "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "before": [
+        "628928a6-4f48-54dc-952d-dec0e69dc856"
+      ],
+      "after": [
+        "781f133a-08bb-54b9-8fda-efa2f8f9b12c"
+      ],
+      "reason": "Ein unbekannter Exponent wird durch die im Ziel selbst erklärte und begründete inverse Operation bestimmt. Exponentialmodellverständnis geht voraus; e^x-Ableitung und heimlich gemeisterte J10-Logarithmen werden nicht vorausgesetzt. Frisches positives Profil muss die inverse Operation innerhalb dieses Ziels nachweisen."
+    },
+    {
+      "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+      "before": [
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "after": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "reason": "Die elementare Umkehrbarkeits-, Funktionsgleichungs- und Definitions-/Wertemengenleistung benötigt weder Differentiation noch den Hauptsatz. Die gesonderte HE-Sek-I-Projektionslücke der bestehenden Orientierung bleibt HOLD."
+    }
+  ],
+  "changedGoalIds": [
+    "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+    "628928a6-4f48-54dc-952d-dec0e69dc856",
+    "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+    "c15fe32d-1c83-4127-b1a4-9125af3d8f5d"
+  ],
+  "beforeGoals": [
+    {
+      "id": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "title": "Exponentialen Wachstum und Zerfall deuten",
+      "titleEn": "Interpret exponential growth and decay",
+      "description": "Die lernende Person kann Wachstums- und Zerfallsprozesse anhand von Tabellen, Graphen und Kontextbeschreibungen erkennen, typische Merkmale benennen und passende Exponentialfunktionen zuordnen.",
+      "descriptionEn": "The learner can identify growth and decay processes using tables, graphs and contextual descriptions, name typical characteristics and assign suitable exponential functions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K6.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "title": "Visualisierung: Exponentialen Wachstum und Zerfall deuten",
+          "url": "/assets/goal-visualizations/mathematik/781f133a-08bb-54b9-8fda-efa2f8f9b12c/781f133a-08bb-54b9-8fda-efa2f8f9b12c.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Exponentialen Wachstum und Zerfall deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Exponentialen Wachstum und Zerfall deuten\". Die lernende Person kann Wachstums- und Zerfallsprozesse anhand von Tabellen, Graphen und Kontextbeschreibungen erkennen, typische Merkmale benennen und passende Exponentialfunktionen zuordnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "628928a6-4f48-54dc-952d-dec0e69dc856",
+      "title": "Eigenschaften der natürlichen Exponentialfunktion begründen",
+      "titleEn": "Justify properties of the natural exponential function",
+      "description": "Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.",
+      "descriptionEn": "The learner can motivate $e^x$ and justify important properties such as its values, derivative, and behavior at infinity.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "346efb31-c400-5bd3-a698-dd9a7e1bc3f7"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "title": "Visualisierung: Eigenschaften der natürlichen Exponentialfunktion begründen",
+          "url": "/assets/goal-visualizations/mathematik/628928a6-4f48-54dc-952d-dec0e69dc856/628928a6-4f48-54dc-952d-dec0e69dc856.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Eigenschaften der natürlichen Exponentialfunktion begründen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Eigenschaften der natürlichen Exponentialfunktion begründen\". Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "title": "Exponentialgleichungen lösen",
+      "titleEn": "Solve exponential equations",
+      "description": "Die lernende Person kann Gleichungen der Form $b \\cdot a^x = c$ mithilfe logarithmischer Umformungen lösen, Ergebnisse überprüfen und in Sachsituationen interpretieren.",
+      "descriptionEn": "The learner can solve equations of the form $b \\cdot a^x = c$ using logarithmic transformations, check results and interpret them in contexts.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "628928a6-4f48-54dc-952d-dec0e69dc856"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "E"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "title": "Visualisierung: Exponentialgleichungen lösen",
+          "url": "/assets/goal-visualizations/mathematik/d900e0a4-0c45-50dd-a37b-01f9f91a134c/d900e0a4-0c45-50dd-a37b-01f9f91a134c.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Exponentialgleichungen lösen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Exponentialgleichungen lösen\". Die lernende Person kann Gleichungen der Form $b \\cdot a^x = c$ mithilfe logarithmischer Umformungen lösen, Ergebnisse überprüfen und in Sachsituationen interpretieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+      "title": "Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen",
+      "titleEn": "Investigate invertibility and determine inverse functions",
+      "description": "Die lernende Person kann ausgewählte Funktionen auf Umkehrbarkeit untersuchen, einfache Funktionsgleichungen von Umkehrfunktionen aufstellen und dabei Definitions- und Wertemenge von Funktion und Umkehrfunktion berücksichtigen.",
+      "descriptionEn": "The learner can investigate selected functions for invertibility, set up simple equations of inverse functions, and account for the domain and range of the function and its inverse.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 3",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "title": "Visualisierung: Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/c15fe32d-1c83-4127-b1a4-9125af3d8f5d/c15fe32d-1c83-4127-b1a4-9125af3d8f5d.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen\". Die lernende Person kann ausgewählte Funktionen auf Umkehrbarkeit untersuchen, einfache Funktionsgleichungen von Umkehrfunktionen aufstellen und dabei Definitions- und Wertemenge von Funktion und Umkehrfunktion berücksichtigen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "mappingDelta": {
+    "remove": [
+      {
+        "legacyGoalId": "he-math-seki-g9-10-2-04-d7759617",
+        "canonicalGoalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+        "matchType": "exact",
+        "reviewDecisionId": "he-math-seki-g9-10-2-04-d7759617"
+      },
+      {
+        "legacyGoalId": "he-math-seki-g9-10-2-07-5e841891",
+        "canonicalGoalId": "48e7615d-3e6e-4b5c-9df3-310e510f91f0",
+        "matchType": "exact",
+        "reviewDecisionId": "he-math-seki-g9-10-2-07-5e841891"
+      }
+    ],
+    "add": [
+      {
+        "legacyGoalId": "he-math-seki-g9-10-2-06-6ae4d32a",
+        "canonicalGoalId": "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+        "matchType": "partial",
+        "reviewDecisionId": "he-math-seki-g9-10-2-06-6ae4d32a"
+      },
+      {
+        "legacyGoalId": "he-math-seki-g9-10-2-07-5e841891",
+        "canonicalGoalId": "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+        "matchType": "partial",
+        "reviewDecisionId": "he-math-seki-g9-10-2-07-5e841891"
+      }
+    ],
+    "revise": [
+      {
+        "before": {
+          "legacyGoalId": "he-math-seki-g9-10-2-07-5e841891",
+          "canonicalGoalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-g9-10-2-07-5e841891"
+        },
+        "after": {
+          "legacyGoalId": "he-math-seki-g9-10-2-07-5e841891",
+          "canonicalGoalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "matchType": "partial",
+          "reviewDecisionId": "he-math-seki-g9-10-2-07-5e841891"
+        }
+      },
+      {
+        "before": {
+          "legacyGoalId": "he-math-seki-g9-10-2-07-5e841891",
+          "canonicalGoalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-g9-10-2-07-5e841891"
+        },
+        "after": {
+          "legacyGoalId": "he-math-seki-g9-10-2-07-5e841891",
+          "canonicalGoalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "matchType": "partial",
+          "reviewDecisionId": "he-math-seki-g9-10-2-07-5e841891"
+        }
+      },
+      {
+        "before": {
+          "legacyGoalId": "he-math-seki-g9-10-2-07-5e841891",
+          "canonicalGoalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-g9-10-2-07-5e841891"
+        },
+        "after": {
+          "legacyGoalId": "he-math-seki-g9-10-2-07-5e841891",
+          "canonicalGoalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "matchType": "partial",
+          "reviewDecisionId": "he-math-seki-g9-10-2-07-5e841891"
+        }
+      }
+    ]
+  },
+  "sourceDecisionDelta": [
+    {
+      "before": {
+        "sourceGoalId": "he-math-seki-g9-10-2-04-d7759617",
+        "topicCode": "G9-10.2",
+        "sourceSpan": "Verdopplung- und Halbierungszeiten als Parameter",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+          "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7"
+        ],
+        "rationale": "Verdopplungs- und Halbwertszeiten als Parameter werden durch Parameter- und Halbwertszeitziele fuer Exponentialfunktionen abgedeckt.",
+        "reviewedAt": "2026-05-06",
+        "reviewer": "codex",
+        "matchType": "partial"
+      },
+      "after": {
+        "sourceGoalId": "he-math-seki-g9-10-2-04-d7759617",
+        "topicCode": "G9-10.2",
+        "sourceSpan": "Verdopplung- und Halbierungszeiten als Parameter",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7"
+        ],
+        "rationale": "Frische fachliche AI-Adjudikation B038h v3 (2026-09-06), G9 10.2, gedruckte S. 38: Verdopplungs-/Halbierungszeiten und Parameter werden in der G9-Projektion durch die bereits vorhandenen J10-Ziele c19d1f8f (partial) und c74d0c7e (bestehende exact-Kante unverändert) vertreten. Die zusätzliche E-Phasen-Kante auf 346efb31 entfällt ohne Kompetenzverlust; eine zweite Oberstufenroute ist dafür nicht erforderlich. Die beiden unveränderten Kanten erhalten hierdurch keine neue Einzelabnahme. Keine menschliche Quellenfreigabe behauptet.",
+        "reviewedAt": "2026-09-06",
+        "reviewer": "Codex fachliche AI-Adjudikation B038h v3; keine menschliche Einzelabnahme",
+        "matchType": "partial"
+      }
+    },
+    {
+      "before": {
+        "sourceGoalId": "he-math-seki-g9-10-2-06-6ae4d32a",
+        "topicCode": "G9-10.2",
+        "sourceSpan": "Logarithmen Logarithmieren neben dem Radizieren als zweite Möglichkeit der Umkehrung des Potenzierens, Logarithmengesetze logba = log10a / log10b, verständiger Gebrauch des Taschenrechners",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "14af09c2-999f-52fa-8d42-1f2f6b23629b",
+          "a41761f2-8ba8-5af4-87c1-eb5e4ab1d020"
+        ],
+        "rationale": "Logarithmen als Umkehrung des Potenzierens, Logarithmengesetze und Taschenrechnergebrauch werden durch Logarithmus-, Umkehrfunktions-, Werkzeug- und Plausibilitaetsziele abgedeckt.",
+        "reviewedAt": "2026-05-06",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "he-math-seki-g9-10-2-06-6ae4d32a",
+        "topicCode": "G9-10.2",
+        "sourceSpan": "Logarithmen Logarithmieren neben dem Radizieren als zweite Möglichkeit der Umkehrung des Potenzierens, Logarithmengesetze logba = log10a / log10b, verständiger Gebrauch des Taschenrechners",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "14af09c2-999f-52fa-8d42-1f2f6b23629b",
+          "a41761f2-8ba8-5af4-87c1-eb5e4ab1d020",
+          "c088fd81-fe4f-4282-99af-ebc0d1a7d202"
+        ],
+        "rationale": "Frische fachliche AI-Adjudikation B038h v3 (2026-09-06), G9 10.2, gedruckte S. 38: partial-Kante auf das vorhandene J10-Ziel c088fd81 ergänzt. Den unbekannten Exponenten durch Logarithmieren als inverse Operation bestimmen ist unmittelbar gedeckt; Überprüfung und Kontextdeutung stützen sich zusätzlich auf den expliziten Anwendungs- und Modellierungsauftrag derselben Einheit. Die vier bisherigen Verweise bleiben unverändert; diese begrenzte Adjudikation ist keine neue Abnahme aller ihrer exact-Behauptungen. Keine e^x-Ableitung, kein still vorausgesetztes Calculus und keine menschliche Einzelabnahme.",
+        "reviewedAt": "2026-09-06",
+        "reviewer": "Codex fachliche AI-Adjudikation B038h v3; keine menschliche Einzelabnahme",
+        "matchType": "partial"
+      }
+    },
+    {
+      "before": {
+        "sourceGoalId": "he-math-seki-g9-10-2-07-5e841891",
+        "topicCode": "G9-10.2",
+        "sourceSpan": "Logarithmusfunktionen x → logbx Wiederaufgreifen des Begriffs der Umkehrfunktion, Umkehrung der Exponentialfunktion, Eigenschaften der Logarithmusfunktion und ihrer Graphen",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "48e7615d-3e6e-4b5c-9df3-310e510f91f0"
+        ],
+        "rationale": "Logarithmusfunktionen als Umkehrungen von Exponentialfunktionen sowie ihre Graphen und Eigenschaften werden durch Logarithmus- und Umkehrfunktionsziele abgedeckt.",
+        "reviewedAt": "2026-05-06",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "he-math-seki-g9-10-2-07-5e841891",
+        "topicCode": "G9-10.2",
+        "sourceSpan": "Logarithmusfunktionen x → logbx Wiederaufgreifen des Begriffs der Umkehrfunktion, Umkehrung der Exponentialfunktion, Eigenschaften der Logarithmusfunktion und ihrer Graphen",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "aed3ca99-815b-40b8-ae91-e11bf92f51da"
+        ],
+        "rationale": "Frische fachliche AI-Adjudikation B038h v3 (2026-09-06), G9 10.2, gedruckte S. 38: Die pauschale exact-Kante zum siebenkindigen E-Cluster 48e7615d entfällt; natürliche Basis, Ableitung und asymptotische Dominanz werden von dieser Zeile nicht verlangt. 3c1d6ce7 bleibt partial für den inversen Zusammenhang, c15fe32d partial für die Umkehrbarkeit der ausgewählten Exponentialfunktion mit Definitions-/Wertebereich und dbc13bb0 partial für die Beziehung von Exponential- und Logarithmusgraph. aed3ca99 wird partial für Exponential-/Logarithmusschreibweise als Umkehrwerkzeug ergänzt, nicht als Ersatz des eigenständigen Graphauftrags. c15fe32d/dbc13bb0 behalten eine gesonderte offene Orientierungsprojektion; keine vollständige Routenabnahme oder menschliche Einzelabnahme behauptet.",
+        "reviewedAt": "2026-09-06",
+        "reviewer": "Codex fachliche AI-Adjudikation B038h v3; keine menschliche Einzelabnahme",
+        "matchType": "partial"
+      }
+    }
+  ],
+  "rawG9ProjectionDelta": {
+    "removed": [
+      "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+      "49f9059a-876c-5051-8146-d008b5cc691c",
+      "628928a6-4f48-54dc-952d-dec0e69dc856",
+      "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "ab720928-9dbc-53c2-a1f8-865dda92122d",
+      "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad"
+    ],
+    "added": [
+      "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+      "c088fd81-fe4f-4282-99af-ebc0d1a7d202"
+    ]
+  },
+  "sourceContextAffectedGoalIds": [
+    "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+    "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+    "49f9059a-876c-5051-8146-d008b5cc691c",
+    "628928a6-4f48-54dc-952d-dec0e69dc856",
+    "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+    "ab720928-9dbc-53c2-a1f8-865dda92122d",
+    "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+    "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+    "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+    "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+    "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+    "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad"
+  ],
+  "dependencyContextAffectedGoalIds": [
+    "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+    "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+    "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+    "0e8417d7-effb-5314-93ba-a571b01726ce",
+    "0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b",
+    "18b43bc8-ee2a-5505-99ad-3a261a62f64a",
+    "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
+    "1b664036-3c29-5d94-9f42-97069aaa2c53",
+    "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+    "23589682-2028-54cb-9034-b468b42688f1",
+    "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+    "315093d4-515a-542c-b776-d72a12763d1a",
+    "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+    "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+    "3b64b90b-ed89-5aeb-9838-bf05ccef9d77",
+    "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+    "499b8a0d-a5da-5cf7-8557-89e16152b752",
+    "49f9059a-876c-5051-8146-d008b5cc691c",
+    "4ae9e316-509f-517d-bd94-a165817af24f",
+    "5886c6e8-2bea-5401-a834-9bd621b04bda",
+    "58fda9b4-4336-5594-99ce-722c4a453372",
+    "5e615e88-25b6-50d5-8f1a-c57e5f9466ed",
+    "5fe4218e-4fb0-5339-8764-c989befa244e",
+    "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+    "628928a6-4f48-54dc-952d-dec0e69dc856",
+    "66d75e35-bcbc-5ec9-95f9-8e0558e75f14",
+    "6ca8ad6b-a770-5d5e-9f91-7211c54c45b0",
+    "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+    "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+    "848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+    "87372f49-c832-50f6-921f-ec9a6804d58a",
+    "886caebc-a042-4a94-91f9-6dc184203c42",
+    "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
+    "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+    "9634bfe1-39ea-5428-a042-c3f970f811a3",
+    "963907f9-8d4c-5e1c-945d-10b7be07e1b9",
+    "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+    "97fb270f-9ede-5fe0-9a1f-600ffbd65610",
+    "993a14e8-60f0-5764-9340-b2447a5fa84b",
+    "9db266a2-1889-5792-82b0-a7463f0832f1",
+    "ab720928-9dbc-53c2-a1f8-865dda92122d",
+    "adcac2a7-e763-5442-abf2-866532fedcda",
+    "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
+    "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+    "bfa2351c-735e-56eb-a778-2413aa68db42",
+    "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
+    "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+    "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+    "c87597fd-4d54-5e9a-a3d0-9a2943d8153c",
+    "ccd47872-4d9d-44db-8c8d-eda24019b502",
+    "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+    "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+    "d0a9e407-e654-5940-958f-6f608bf3d654",
+    "d144a855-9139-55c7-a801-e8b85dab5f01",
+    "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+    "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+    "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+    "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+    "e33e75e3-eae5-5a09-862f-d1a11176373f",
+    "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+    "f77b9b40-6afc-5d9e-821e-79903bbbcb94",
+    "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+    "fdce0ced-46a0-594a-9b5d-d2dc18e5e473"
+  ],
+  "freshPositiveEvidenceRequirement": {
+    "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+    "inverseOperationWithinGoal": true,
+    "requirements": [
+      "Logarithmus als Umkehrung für einen unbekannten Exponenten im Ziel selbst erläutern und begründen; keine unsichtbare J10-Mastery voraussetzen.",
+      "Division durch die Basis als falsche Alternative unterscheiden; Basis-/Definitionsbedingungen prüfen.",
+      "Lösung durch Einsetzen überprüfen und im Sachkontext beurteilen; kein bloßes Taschenrechnertippen."
+    ]
+  },
+  "hold": {
+    "goalIds": [
+      "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+      "dbc13bb0-963b-49a8-a441-2183f4b64c8e"
+    ],
+    "reason": "Vorhandene Orientierung 71cec9fb ist in HE-Sek-I nicht sichtbar; keine Projektionsentscheidung in dieser Adoption.",
+    "goalAcceptance": false
+  },
+  "preserved": [
+    "Alle Goal-IDs, DE/EN-Texte, contains, Bilder, Tags und fachlichen Geltungsfelder",
+    "Alle unveränderten Source-Decisions und Mapping-Kanten außerhalb der drei Quellen",
+    "Runtime, Mastery und eingefrorene V1-Verträge",
+    "Originale v1/v2/v3/audit-Evidenz, keine breite Rebindung"
+  ],
+  "checks": {
+    "allRequiresAcyclic": true,
+    "mappingDecisionAlignment": true,
+    "exactRawG9Delta": true,
+    "onlyFourRequiresChanged": true
+  },
+  "pending": [
+    "Vier individuelle A/M/SemanticKinds-Folgeprüfungen",
+    "Native Duration-/View-Generierung und tatsächlicher Scopevergleich",
+    "Frische positive Ziel-/Seiten-/Kontextnachweise durch Root, Maturity-Floors und zentrale Berichte"
+  ]
+}

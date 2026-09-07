@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-038r-current-oscillations-and-optics-11-v1.config.json",
+  "configDigest": "sha256:50257fa77269c303f4b073eb4d8d797f6844591018a3396d304e51d04c5a928f",
+  "goalIds": [
+    "c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+    "a844895e-2cdc-4665-aad2-a49c62f11759",
+    "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+    "5f97952e-5ac9-5749-94d0-d1dc50dda358",
+    "ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a",
+    "e413a352-33c4-53ae-b54a-30e52c3e65ae",
+    "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+    "91f1838c-80fc-55f5-ac30-e7d1498fccee",
+    "122e83ac-c9cf-50c1-8a73-a1e3db347f21",
+    "c64820e1-c0ee-4342-9225-f981650f0c52",
+    "5c57dbc7-d258-4aad-a84c-e773f3c493ae"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 464,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:35292211ecfb2e26f1e23085788c296235c610e4229d789d9d99386abe294426"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:04bf071e2200c4a912daac14390d0bd1a1ed4da936a0247be8c49d9caefbdc33",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:3b3e54b84e3eddfbf61fdeb4f71965f01d95ff977f59c1bd8a6cb37a96e5a577",
+    "reviewInputFingerprint": "sha256:f94209d0d53956f76839bc25202c6082aa923326c69d37b3d0ffead35e8e0c00",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-a",
+        "campaignDigest": "sha256:b94bf420f4bab0426881090d5ad1d01cc439214c8170abde857d19e1389d362f",
+        "roundId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-independent-a",
+        "batchId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:6de315694e1408ec450b97b5c43e7bea70b90b532172c88092edf73d335dface"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-b",
+        "campaignDigest": "sha256:bbdeedef132f4fdc05fc114a5e220ddc898c9e44d1100a4350623f0a7dfc25f7",
+        "roundId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-independent-b",
+        "batchId": "physik-rollout-v1-batch-038r-current-oscillations-and-optics-11-v1-20260906-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:f64209d819051c1b558eb598fd7a609ab357c5e8d3f1f81bec8d06f37f7e5626"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

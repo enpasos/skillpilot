@@ -1,0 +1,826 @@
+{
+  "schemaVersion": 1,
+  "kind": "physics-positive-evidence-author-context-notes",
+  "recordedAt": "2026-09-06T22:13:14Z",
+  "authority": "Unbound E1/G1 AI candidate authoring only. Materialization must retain needs_human_review / ai_candidate. No human approval, empirical validation, model diversity, or D-review claim.",
+  "author": {
+    "provider": "OpenAI",
+    "identity": "Codex",
+    "exactUnderlyingModel": "not exposed",
+    "reviewRunsClaimed": []
+  },
+  "inputBoundary": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "currentCanonicalDigestAfterRootEnglishCorrections": "sha256:2de83901b9dd7ac53fb79a879276d28b25d7dcbcfe6150a452309e182bbc8ca9",
+    "scopeModelPath": "tmp/goal-books/de-gym-physik-bundesweit.book-model.json",
+    "scopeModelDigestAtRead": "sha256:c8092dbaa037e115a0270508bdd5da8b156d9ede7a886eb25ad5bac2fca257ae",
+    "scopeModelLandscapeDigestAtRead": "sha256:982fd6d13b8c276849d545a72f45eb44325300b08e15d4b3440f9022b6bd2386",
+    "scopeNote": "All 20 compiled pages and their applicability tuples were read. That snapshot preceded two pure EN corrections, which were subsequently re-read from canonical; scope was unchanged. Applicability is compiled runtime context, not independently verified normative source mapping.",
+    "structuralTemplate": "B038 candidate envelope/profile key structure only; no case content copied.",
+    "excludedAuthorities": "No D-review results, A/M ledgers, or previous adjudications used as content-review authority. Selection eligibility was supplied by the parent agent; not independently claimed here."
+  },
+  "instructionsRead": [
+    "AGENTS.md",
+    "curricula/DE/Gymnasium/quality/goal-description-review/README.md",
+    "curricula/DE/Gymnasium/quality/deep-understanding-rollout/README.md",
+    "curricula/DE/Gymnasium/quality/goal-evidence/prompts/physics-positive-understanding-evidence-profile-criteria-v1.md",
+    "curricula/DE/Gymnasium/quality/goal-evidence/prompts/physics-goal-description-understanding-evidence-review-criteria-v1.md",
+    "contracts/goal-evidence/v2/goal-evidence-profile.schema.json"
+  ],
+  "cases": {
+    "count": 40,
+    "perGoal": 2,
+    "authorship": "Fresh authored scenarios/data; no learner responses observed. Both cases can be generated and answered without reproducing the current illustration.",
+    "safety": "Supplied data, simulations, or supervised apparatus; no autonomous high-voltage, fast-rotor, smartphone-tether, or traffic experiment."
+  },
+  "scientificSources": [
+    {
+      "id": "matter-wave-lab",
+      "url": "https://www2.physnet.uni-hamburg.de/TUHH/Versuchsanleitung/Elektronenbeugung.pdf",
+      "type": "university experiment instructions",
+      "usedFor": "Tube functions, polycrystal rings, nonrelativistic momentum, Bragg versus scattering angle, geometry caution. Candidate numbers are independently authored; planar approximation is explicitly separate from the spherical tube."
+    },
+    {
+      "id": "path-distinguishability",
+      "url": "https://arxiv.org/abs/1503.02990",
+      "type": "original research",
+      "usedFor": "Coherence/path-distinguishability relation. Candidate assessment stays qualitative, without requiring a quantitative duality bound."
+    },
+    {
+      "id": "gyroscope-mechanics",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/mit8_01scs22_chapter22.pdf",
+      "type": "official university course notes",
+      "usedFor": "Torque changes angular momentum; slow precession is a fast-spin approximation. Conservation is not asserted for the full vector under gravity torque."
+    },
+    {
+      "id": "bicycle-counterexample",
+      "url": "https://research.utwente.nl/en/publications/a-bicycle-can-be-self-stable-without-gyroscopic-or-caster-effects/",
+      "type": "authors university publication record for original research",
+      "usedFor": "Concrete counterexample to gyroscopic or caster effects being necessary for bicycle self-stability; not a universal stability claim."
+    },
+    {
+      "id": "gauss-combined-method",
+      "url": "https://www.yorku.ca/marko/PHYS2211/Lab6.pdf",
+      "type": "official university experiment instructions",
+      "usedFor": "Oscillation measures mB_H, axial deflection measures m/B_H; SI units, same-magnet requirement and measurement precautions. Numeric data and algebra checks authored independently."
+    },
+    {
+      "id": "gauss-principal-geometry",
+      "url": "https://lp.uni-goettingen.de/get/text/4203",
+      "type": "official university experiment material",
+      "usedFor": "Axial versus equatorial Gauss geometry and dipole torque. Candidate avoids ambiguous numbered principal-position labels."
+    }
+  ],
+  "scopeGroups": [
+    {
+      "id": "scope-1",
+      "applicability": [
+        "DE-BB:SekII/G8/GK,SekII/G8/LK",
+        "DE-BE:SekII/G8/GK,SekII/G8/LK",
+        "DE-BY:SekII/G9/GK,SekII/G9/LK",
+        "DE-HB:SekII/GK,SekII/LK",
+        "DE-HE:SekII/GK,SekII/LK",
+        "DE-HH:SekII/GK,SekII/LK",
+        "DE-MV:SekII/GK,SekII/LK",
+        "DE-NI:SekII/G9/GK,SekII/G9/LK",
+        "DE-NW:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-RP:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SH:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SL:SekII/GK,SekII/LK",
+        "DE-SN:SekII/GK,SekII/LK",
+        "DE-ST:SekII/GK,SekII/LK",
+        "DE-TH:SekII/GK,SekII/LK"
+      ]
+    },
+    {
+      "id": "scope-2",
+      "applicability": [
+        "DE-BB:SekII/G8/GK,SekII/G8/LK",
+        "DE-BE:SekII/G8/GK,SekII/G8/LK",
+        "DE-BW:SekII/GK,SekII/LK",
+        "DE-BY:SekII/G9/GK,SekII/G9/LK",
+        "DE-HB:SekII/GK,SekII/LK",
+        "DE-HE:SekII/GK,SekII/LK",
+        "DE-HH:SekII/GK,SekII/LK",
+        "DE-MV:SekII/GK,SekII/LK",
+        "DE-NI:SekII/G9/GK,SekII/G9/LK",
+        "DE-NW:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-RP:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SH:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SL:SekII/GK,SekII/LK",
+        "DE-SN:SekII/GK,SekII/LK",
+        "DE-ST:SekII/GK,SekII/LK",
+        "DE-TH:SekII/GK,SekII/LK"
+      ]
+    },
+    {
+      "id": "scope-3",
+      "applicability": [
+        "DE-BB:SekII/G8/GK,SekII/G8/LK",
+        "DE-BE:SekII/G8/GK,SekII/G8/LK",
+        "DE-BW:SekII/LK",
+        "DE-BY:SekII/G9/LK",
+        "DE-HB:SekII/GK,SekII/LK",
+        "DE-HE:SekII/GK,SekII/LK",
+        "DE-HH:SekII/GK,SekII/LK",
+        "DE-MV:SekII/GK,SekII/LK",
+        "DE-NI:SekII/G9/GK,SekII/G9/LK",
+        "DE-NW:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-RP:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SH:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SL:SekII/GK,SekII/LK",
+        "DE-SN:SekII/GK,SekII/LK",
+        "DE-ST:SekII/GK,SekII/LK",
+        "DE-TH:SekII/GK,SekII/LK"
+      ]
+    },
+    {
+      "id": "scope-4",
+      "applicability": [
+        "DE-BB:SekII/G8/GK,SekII/G8/LK",
+        "DE-BE:SekII/G8/GK,SekII/G8/LK",
+        "DE-BY:SekII/G9/LK",
+        "DE-HB:SekII/GK,SekII/LK",
+        "DE-HE:SekII/GK,SekII/LK",
+        "DE-HH:SekII/GK,SekII/LK",
+        "DE-MV:SekII/GK,SekII/LK",
+        "DE-NI:SekII/G9/GK,SekII/G9/LK",
+        "DE-NW:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-RP:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SH:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SL:SekII/GK,SekII/LK",
+        "DE-SN:SekII/GK,SekII/LK",
+        "DE-ST:SekII/GK,SekII/LK",
+        "DE-TH:SekII/GK,SekII/LK"
+      ]
+    },
+    {
+      "id": "scope-5",
+      "applicability": [
+        "DE-BB:SekII/G8/GK,SekII/G8/LK",
+        "DE-BE:SekII/G8/GK,SekII/G8/LK",
+        "DE-BW:SekI/G8,SekI/G9",
+        "DE-BY:SekII/G9/GK,SekII/G9/LK",
+        "DE-HB:SekII/GK,SekII/LK",
+        "DE-HE:SekII/GK,SekII/LK",
+        "DE-HH:SekII/GK,SekII/LK",
+        "DE-MV:SekII/GK,SekII/LK",
+        "DE-NI:SekII/G9/GK,SekII/G9/LK",
+        "DE-NW:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-RP:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SH:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SL:SekII/GK,SekII/LK",
+        "DE-SN:SekII/GK,SekII/LK",
+        "DE-ST:SekII/GK,SekII/LK",
+        "DE-TH:SekII/GK,SekII/LK"
+      ]
+    },
+    {
+      "id": "scope-6",
+      "applicability": [
+        "DE-BB:SekII/G8/GK,SekII/G8/LK",
+        "DE-BE:SekII/G8/GK,SekII/G8/LK",
+        "DE-HB:SekII/GK,SekII/LK",
+        "DE-HE:SekII/GK,SekII/LK",
+        "DE-HH:SekII/GK,SekII/LK",
+        "DE-MV:SekII/GK,SekII/LK",
+        "DE-NI:SekII/G9/GK,SekII/G9/LK",
+        "DE-NW:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-RP:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SH:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SL:SekII/GK,SekII/LK",
+        "DE-SN:SekII/GK,SekII/LK",
+        "DE-ST:SekII/GK,SekII/LK",
+        "DE-TH:SekII/GK,SekII/LK"
+      ]
+    },
+    {
+      "id": "scope-7",
+      "applicability": [
+        "DE-BB:SekII/G8/GK,SekII/G8/LK",
+        "DE-BE:SekII/G8/GK,SekII/G8/LK",
+        "DE-BW:SekII/LK",
+        "DE-HB:SekII/GK,SekII/LK",
+        "DE-HE:SekII/GK,SekII/LK",
+        "DE-HH:SekII/GK,SekII/LK",
+        "DE-MV:SekII/GK,SekII/LK",
+        "DE-NI:SekII/G9/GK,SekII/G9/LK",
+        "DE-NW:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-RP:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SH:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SL:SekII/GK,SekII/LK",
+        "DE-SN:SekII/GK,SekII/LK",
+        "DE-ST:SekII/GK,SekII/LK",
+        "DE-TH:SekII/GK,SekII/LK"
+      ]
+    },
+    {
+      "id": "scope-8",
+      "applicability": [
+        "DE-BB:SekII/G8/GK,SekII/G8/LK",
+        "DE-BE:SekII/G8/GK,SekII/G8/LK",
+        "DE-BW:SekII/GK,SekII/LK",
+        "DE-HB:SekII/GK,SekII/LK",
+        "DE-HE:SekII/GK,SekII/LK",
+        "DE-HH:SekII/GK,SekII/LK",
+        "DE-MV:SekII/GK,SekII/LK",
+        "DE-NI:SekII/G9/GK,SekII/G9/LK",
+        "DE-NW:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-RP:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SH:SekII/G8/GK,SekII/G8/LK,SekII/G9/GK,SekII/G9/LK",
+        "DE-SL:SekII/GK,SekII/LK",
+        "DE-SN:SekII/GK,SekII/LK",
+        "DE-ST:SekII/GK,SekII/LK",
+        "DE-TH:SekII/GK,SekII/LK"
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "goalId": "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+      "titleDe": "Zeitentwicklung von Quantenzuständen einordnen",
+      "pageNumber": 353,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Q4 Struktur von Materie, Raum und Zeit",
+        "Quantenobjekte"
+      ],
+      "scopeGroupId": "scope-1",
+      "predecessorGoalIds": [
+        "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+        "51bc5513-6879-548f-b19a-9746b667f1a3"
+      ],
+      "successorGoalIds": [
+        "b585ff81-6332-5d11-ae63-ee6a9928c00d",
+        "4a58df57-f791-502f-8b8d-9ba155e46035"
+      ],
+      "parentGoalIds": [
+        "ab636b78-6031-5a5b-afa2-9ffefbdd5dda"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/d5bff282-741f-4cc5-9622-b77584fdcc5a/d5bff282-741f-4cc5-9622-b77584fdcc5a.jpg",
+        "digest": "sha256:c3f839b5479a327a19757c95ff840b152311b5806bb4768ae86484ebf7b077be",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Zustandsentwicklung ohne Lösung einer Differentialgleichung; vorbereitete Zustände und Messzeit/Messgröße tragen den Vergleich."
+    },
+    {
+      "goalId": "1a1c09f0-96b7-4c33-a623-0e8101537876",
+      "titleDe": "Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben",
+      "pageNumber": 354,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Q4 Struktur von Materie, Raum und Zeit",
+        "Quantenobjekte"
+      ],
+      "scopeGroupId": "scope-2",
+      "predecessorGoalIds": [
+        "5c57dbc7-d258-4aad-a84c-e773f3c493ae"
+      ],
+      "successorGoalIds": [
+        "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+        "4a58df57-f791-502f-8b8d-9ba155e46035"
+      ],
+      "parentGoalIds": [
+        "ab636b78-6031-5a5b-afa2-9ffefbdd5dda"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/1a1c09f0-96b7-4c33-a623-0e8101537876/1a1c09f0-96b7-4c33-a623-0e8101537876.jpg",
+        "digest": "sha256:30a1ec2fb895bd6d995ff23e0f5eb47cf354b2f2c5ba0f5231ee3a846feff88b",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Einzelereignisse und normierte Statistik; Komplementarität bleibt ein eigenes Nachfolgerziel."
+    },
+    {
+      "goalId": "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+      "titleDe": "Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern",
+      "pageNumber": 355,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Q4 Struktur von Materie, Raum und Zeit",
+        "Quantenobjekte"
+      ],
+      "scopeGroupId": "scope-2",
+      "predecessorGoalIds": [
+        "1a1c09f0-96b7-4c33-a623-0e8101537876"
+      ],
+      "successorGoalIds": [
+        "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+        "8c97c234-a932-5e84-aed5-237b4e2a8336",
+        "4a58df57-f791-502f-8b8d-9ba155e46035",
+        "b9fcbad4-a855-54b7-8017-4caac1e2ffb7",
+        "52b6722a-b3b2-5d2d-a507-0215532b0422"
+      ],
+      "parentGoalIds": [
+        "ab636b78-6031-5a5b-afa2-9ffefbdd5dda"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/6031bed0-9baa-4f45-b2a5-57ffb00d39cc/6031bed0-9baa-4f45-b2a5-57ffb00d39cc.jpg",
+        "digest": "sha256:cd474d6ae832616242258090c198bc5e368d529f4e67bf6013d614976cc329fa",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Wegmarkierung als physische Unterscheidbarkeit; kein Bewusstseinskriterium und kein verpflichtendes Quantenradiererprotokoll."
+    },
+    {
+      "goalId": "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+      "titleDe": "Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden",
+      "pageNumber": 356,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Q4 Struktur von Materie, Raum und Zeit",
+        "Quantenobjekte"
+      ],
+      "scopeGroupId": "scope-3",
+      "predecessorGoalIds": [
+        "6031bed0-9baa-4f45-b2a5-57ffb00d39cc"
+      ],
+      "successorGoalIds": [
+        "4a58df57-f791-502f-8b8d-9ba155e46035"
+      ],
+      "parentGoalIds": [
+        "ab636b78-6031-5a5b-afa2-9ffefbdd5dda"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/f6e5929f-d52a-42a4-a5d2-ff498ee7083f/f6e5929f-d52a-42a4-a5d2-ff498ee7083f.jpg",
+        "digest": "sha256:7f2a13a79322a5adf226ff0cf4cf7a76929b666e3d0d28331f2773c38a9de840",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Qualitative Zustandsstreuung; keine Gleichsetzung von Spaltbreite und exakter Standardabweichung."
+    },
+    {
+      "goalId": "727d0946-7019-50ed-8fc6-85db12508733",
+      "titleDe": "Realitaetsbegriff in der Quantenphysik diskutieren",
+      "pageNumber": 358,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Q4 Struktur von Materie, Raum und Zeit",
+        "Quantenobjekte"
+      ],
+      "scopeGroupId": "scope-2",
+      "predecessorGoalIds": [
+        "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+        "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf"
+      ],
+      "successorGoalIds": [
+        "b585ff81-6332-5d11-ae63-ee6a9928c00d"
+      ],
+      "parentGoalIds": [
+        "ab636b78-6031-5a5b-afa2-9ffefbdd5dda"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/727d0946-7019-50ed-8fc6-85db12508733/727d0946-7019-50ed-8fc6-85db12508733.jpg",
+        "digest": "sha256:762134d9442fe55de68d60366828a55e896f811d3fe7dd66886ac13498402ee0",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Interpretative Annahmen von experimentellen Aussagen trennen; keine bestimmte Ontologie als richtige Antwort festlegen."
+    },
+    {
+      "goalId": "e296aba6-f407-5944-a2bd-e5296e4c9f06",
+      "titleDe": "Elektronenbeugung als Materiewellenexperiment auswerten",
+      "pageNumber": 360,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Q4 Struktur von Materie, Raum und Zeit",
+        "Quantenobjekte"
+      ],
+      "scopeGroupId": "scope-1",
+      "predecessorGoalIds": [
+        "dfa53498-34f5-5326-9d94-87e7b528caf3",
+        "c71315c1-f329-4289-a145-d99819da7bad"
+      ],
+      "successorGoalIds": [],
+      "parentGoalIds": [
+        "ab636b78-6031-5a5b-afa2-9ffefbdd5dda"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/e296aba6-f407-5944-a2bd-e5296e4c9f06/e296aba6-f407-5944-a2bd-e5296e4c9f06.jpg",
+        "digest": "sha256:1ae33c35c4c56fc02011a1d40f29b8921e03457a7b5243fba61c756505938ecb",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Anfangs enthielten titleEn/descriptionEn deutsche Texte. Root hat sie während der Autorarbeit korrigiert; aktuelle echte EN vor diesem Kontextprotokoll nochmals gelesen. Profil-EN ist unabhängig formuliert. Zahlenfälle verwenden ausdrücklich idealisierte ebene Schirmgeometrie, nicht ungeprüft die sphärische Röhrengeometrie."
+    },
+    {
+      "goalId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+      "titleDe": "Quanteninterferometer mit Phasen und Weginformation deuten",
+      "pageNumber": 361,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Q4 Struktur von Materie, Raum und Zeit",
+        "Quantenobjekte"
+      ],
+      "scopeGroupId": "scope-4",
+      "predecessorGoalIds": [
+        "c5413852-abae-566b-b435-f9939209ca63",
+        "6031bed0-9baa-4f45-b2a5-57ffb00d39cc"
+      ],
+      "successorGoalIds": [],
+      "parentGoalIds": [
+        "ab636b78-6031-5a5b-afa2-9ffefbdd5dda"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/52b6722a-b3b2-5d2d-a507-0215532b0422/52b6722a-b3b2-5d2d-a507-0215532b0422.jpg",
+        "digest": "sha256:fc9fb7c943adbb10a7e3a18d2ecaffbbffc0d595324c40280dcdfca658b19340",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Anfangs enthielten titleEn/descriptionEn deutsche Texte. Roots reine EN-Korrektur wurde nochmals gelesen. Ausgangsport- und Phasenkonvention in den frischen Fällen ausdrücklich angegeben."
+    },
+    {
+      "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+      "titleDe": "Kreisbewegung mit Zentripetalkraft anwenden",
+      "pageNumber": 364,
+      "breadcrumbs": [
+        "Physik",
+        "Bundeslandspezifische Ergänzungen",
+        "Stufenübergreifend",
+        "Weitere fachliche Ziele"
+      ],
+      "scopeGroupId": "scope-5",
+      "predecessorGoalIds": [
+        "e918b31f-6f39-5dee-ade6-3617080fb24f"
+      ],
+      "successorGoalIds": [
+        "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
+        "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
+        "1b432223-3d59-5586-86a9-2214b4844101",
+        "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+        "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+        "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+        "cf570e66-2ce2-5923-9033-c97d74119553",
+        "b1808b4c-5e02-5e1f-831f-47ee126e00ee",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "db0aff75-7c88-52b0-a989-535b411c141e"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/accb1d9e-cd48-5983-bcef-9b9bca4a9114/accb1d9e-cd48-5983-bcef-9b9bca4a9114.jpg",
+        "digest": "sha256:ed0a161cae7b320eecaa483e25903d7cabffad2b0a4350b3eae43579ad7eee0f",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Kompilierte Seite liegt unter stufenübergreifenden Ergänzungen und ist auch DE-BW SekI sichtbar; Relation v = ωr wird für den Vergleich bereitgestellt, kein implizites LK-Niveau."
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "titleDe": "Kurvenfahrten mit Haftreibung analysieren",
+      "pageNumber": 365,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Waagerechter Wurf und Kreisbewegung",
+        "Kreisbewegungen und Zentripetalkraft"
+      ],
+      "scopeGroupId": "scope-1",
+      "predecessorGoalIds": [
+        "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+      ],
+      "successorGoalIds": [
+        "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
+        "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
+        "dd99528a-bae5-5b78-89e6-c6092c927f8d",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "db0aff75-7c88-52b0-a989-535b411c141e"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/e2da5eec-45de-5527-9ad7-16f41cacbe58/e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg",
+        "digest": "sha256:c774291a035bde8009b0b0aa04dcd123c45e31cd374d0aaad591b8ff4c54aa4f",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Nur unüberhöhte ebene Kurve mit vernachlässigten Antriebs-/Bremskräften; simulierte Daten sind keine Fahrsicherheitsempfehlung."
+    },
+    {
+      "goalId": "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+      "titleDe": "Scheinkräfte in nicht-inertialen Systemen",
+      "pageNumber": 366,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Waagerechter Wurf und Kreisbewegung",
+        "Kreisbewegungen und Zentripetalkraft"
+      ],
+      "scopeGroupId": "scope-1",
+      "predecessorGoalIds": [
+        "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+      ],
+      "successorGoalIds": [
+        "dd99528a-bae5-5b78-89e6-c6092c927f8d",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "db0aff75-7c88-52b0-a989-535b411c141e"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/39b2a0c4-eecf-5049-b58f-e790790a3bf2/39b2a0c4-eecf-5049-b58f-e790790a3bf2.jpg",
+        "digest": "sha256:da0e2c64b063c5aca2aeb46e0d52325ae7248e8e4b2d20163e9c4dafb2d7edee",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Qualitativer Rahmenvergleich; bestehendes Smartphone-Schwingexperiment wird nicht übernommen. Sichere Simulationen genügen."
+    },
+    {
+      "goalId": "cf570e66-2ce2-5923-9033-c97d74119553",
+      "titleDe": "Drehmoment beschreiben",
+      "pageNumber": 367,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Drehbewegungen"
+      ],
+      "scopeGroupId": "scope-6",
+      "predecessorGoalIds": [
+        "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+      ],
+      "successorGoalIds": [
+        "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+        "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "9743baad-9371-52b6-98ee-72bc6dc68701"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/cf570e66-2ce2-5923-9033-c97d74119553/cf570e66-2ce2-5923-9033-c97d74119553.jpg",
+        "digest": "sha256:3d8def38041d3332d55747d234e8234f0a4cb4f885b2e8425300ac17ad5fd450",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Drehwirkung an einfacher Achse, kein Vorziehen einer Rotationsdynamikrechnung."
+    },
+    {
+      "goalId": "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+      "titleDe": "Drehimpuls als Erhaltungsgröße",
+      "pageNumber": 368,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Drehbewegungen"
+      ],
+      "scopeGroupId": "scope-6",
+      "predecessorGoalIds": [
+        "cf570e66-2ce2-5923-9033-c97d74119553",
+        "839ecc8f-3a60-418b-bc92-64bfeef33824"
+      ],
+      "successorGoalIds": [
+        "642aebd7-66cd-5a50-b543-73c4b207525d",
+        "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "9743baad-9371-52b6-98ee-72bc6dc68701"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/37f17e7e-9fcf-5dca-ac10-e94cb8420be5/37f17e7e-9fcf-5dca-ac10-e94cb8420be5.jpg",
+        "digest": "sha256:602f1a5b3e41a15d7200406684aad57ed55f0f14a92c39f7dcf36d578dfa6a3b",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Systemwahl vor Erhaltungsbehauptung; detaillierte Trägheitsmomentberechnung bleibt dem späteren Kontext vorbehalten."
+    },
+    {
+      "goalId": "642aebd7-66cd-5a50-b543-73c4b207525d",
+      "titleDe": "Trägheitsmoment und Rotationsenergie",
+      "pageNumber": 369,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Drehbewegungen"
+      ],
+      "scopeGroupId": "scope-6",
+      "predecessorGoalIds": [
+        "37f17e7e-9fcf-5dca-ac10-e94cb8420be5"
+      ],
+      "successorGoalIds": [
+        "879491c0-7153-570b-91f4-c61d9fe8a143",
+        "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+        "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "9743baad-9371-52b6-98ee-72bc6dc68701"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/642aebd7-66cd-5a50-b543-73c4b207525d/642aebd7-66cd-5a50-b543-73c4b207525d.jpg",
+        "digest": "sha256:9feb94c40057c500bc3a0335434e6a6db1b1f3dda9268091bd129c0cf261fb66",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Qualitative Verteilungs- und Energievergleiche; keine Spezialformeln für Körperträgheitsmomente als neue Gedächtnisanforderung."
+    },
+    {
+      "goalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+      "titleDe": "Rotationsenergie und Beschleunigungsmoment berechnen",
+      "pageNumber": 370,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Drehbewegungen"
+      ],
+      "scopeGroupId": "scope-6",
+      "predecessorGoalIds": [
+        "642aebd7-66cd-5a50-b543-73c4b207525d"
+      ],
+      "successorGoalIds": [
+        "879491c0-7153-570b-91f4-c61d9fe8a143",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "9743baad-9371-52b6-98ee-72bc6dc68701"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931/5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931.jpg",
+        "digest": "sha256:7d2995fb02681e48f73947378d5d7a5253180e492ab4da547b81e1c09b00720b",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Energie und mittleres Nettodrehmoment im selben konstant-I-Modell; keine D-Entscheidung zur Formulierung oder Atomarität getroffen."
+    },
+    {
+      "goalId": "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+      "titleDe": "Präzessionsbewegungen erklären",
+      "pageNumber": 371,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Drehbewegungen"
+      ],
+      "scopeGroupId": "scope-6",
+      "predecessorGoalIds": [
+        "642aebd7-66cd-5a50-b543-73c4b207525d"
+      ],
+      "successorGoalIds": [
+        "8daaf751-93fe-56d9-8697-ac30237061bd",
+        "6d25344c-35d7-5853-925d-2bccbaf50630",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "9743baad-9371-52b6-98ee-72bc6dc68701"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc/b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc.jpg",
+        "digest": "sha256:56ec95e4d47d515867d4cb42459db172078360ec2d2c007ed650e26b1e9655a3",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Unter Gewichtsdrehmoment ändert sich der volle L-Vektor. Schneller symmetrischer Rotor und langsame Präzession sind Modellbedingungen; torque-free Vergleich trägt die echte Erhaltung."
+    },
+    {
+      "goalId": "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+      "titleDe": "Pirouetten mit Drehimpuls deuten",
+      "pageNumber": 372,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Drehbewegungen",
+        "Anwendungsbeispiele für Drehbewegungen deuten"
+      ],
+      "scopeGroupId": "scope-6",
+      "predecessorGoalIds": [
+        "37f17e7e-9fcf-5dca-ac10-e94cb8420be5"
+      ],
+      "successorGoalIds": [
+        "6d25344c-35d7-5853-925d-2bccbaf50630",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "7c33dae8-f57a-51a1-a1b4-75ee6d5b200e"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/21c0a5f2-4152-549a-aa9c-e02ab772f589/21c0a5f2-4152-549a-aa9c-e02ab772f589.jpg",
+        "digest": "sha256:51931a0352ff56e709e46b1bd70b4a7fd0f2e4819e19d634030f6dcca692ea22",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Pirouette als Anwendung, nicht nur Wiederholung der allgemeinen Drehimpulsdefinition; Gegenfall mit äußerem Bremsmoment."
+    },
+    {
+      "goalId": "8daaf751-93fe-56d9-8697-ac30237061bd",
+      "titleDe": "Fahrraddynamik mit Kreiselwirkung erklären",
+      "pageNumber": 373,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Drehbewegungen",
+        "Anwendungsbeispiele für Drehbewegungen deuten"
+      ],
+      "scopeGroupId": "scope-6",
+      "predecessorGoalIds": [
+        "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc"
+      ],
+      "successorGoalIds": [
+        "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+        "6d25344c-35d7-5853-925d-2bccbaf50630",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "7c33dae8-f57a-51a1-a1b4-75ee6d5b200e"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/8daaf751-93fe-56d9-8697-ac30237061bd/8daaf751-93fe-56d9-8697-ac30237061bd.jpg",
+        "digest": "sha256:94c6d6e9759115a96819558e3db3039a42cfed0f42966db3bff477060f466c86",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Gyroskopische Lenk-/Kippkopplung ist ein Beitrag und keine notwendige oder hinreichende Alleinerklärung. Primärbefund eines selbststabilen Modells mit kompensierter Kreiselwirkung trägt den Gegenfall."
+    },
+    {
+      "goalId": "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+      "titleDe": "Kreiselstabilisierung technisch begründen",
+      "pageNumber": 374,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+        "Drehbewegungen",
+        "Anwendungsbeispiele für Drehbewegungen deuten"
+      ],
+      "scopeGroupId": "scope-6",
+      "predecessorGoalIds": [
+        "8daaf751-93fe-56d9-8697-ac30237061bd"
+      ],
+      "successorGoalIds": [
+        "6d25344c-35d7-5853-925d-2bccbaf50630",
+        "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+      ],
+      "parentGoalIds": [
+        "7c33dae8-f57a-51a1-a1b4-75ee6d5b200e"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/07f298b2-2f5e-5b16-8150-bc603fa78ecd/07f298b2-2f5e-5b16-8150-bc603fa78ecd.jpg",
+        "digest": "sha256:6f10a17a4a4897f6d4508a23358bec8b610933229d01ee2e8826e39fde5161a1",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Passiver Referenzrotor und aktiv kardanisch schwenkbarer Rotor sind zwei ausdrücklich definierte technische Anordnungen. Keine Aussage, jeder kommerzielle Gimbal verwende einen mechanischen Kreisel."
+    },
+    {
+      "goalId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+      "titleDe": "Drehmoment auf Magnetnadeln und Dipole",
+      "pageNumber": 375,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Q1 Elektrisches und magnetisches Feld",
+        "Magnetisches Feld",
+        "Mikroskopische und makroskopische Wirkung magnetischer Felder"
+      ],
+      "scopeGroupId": "scope-7",
+      "predecessorGoalIds": [
+        "c6355a22-24cf-5d8b-88af-ea11711460fb",
+        "cf570e66-2ce2-5923-9033-c97d74119553"
+      ],
+      "successorGoalIds": [
+        "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+        "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
+        "d441ee2f-9230-5751-832b-5b0b5cf14605"
+      ],
+      "parentGoalIds": [
+        "6a955b34-1b90-5193-8f7e-ebb777f7b7bd"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/d02438ba-0cc9-5993-831e-5e44d35e32c4/d02438ba-0cc9-5993-831e-5e44d35e32c4.jpg",
+        "digest": "sha256:b49d8052a21dae57a8afc092ffc8987bd8729d2fc54bbbe2efcd7039e8369208",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "Homogenes Feld, idealer Dipol, μ von Süd nach Nord; parallele/antiparallele Nullmomentlage und Dämpfung voneinander unterscheiden."
+    },
+    {
+      "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "titleDe": "Gaußsches Verfahren anwenden",
+      "pageNumber": 376,
+      "breadcrumbs": [
+        "Physik",
+        "Sekundarstufe II (GK und LK)",
+        "Q1 Elektrisches und magnetisches Feld",
+        "Magnetisches Feld",
+        "Technische Anwendungen magnetischer Felder"
+      ],
+      "scopeGroupId": "scope-8",
+      "predecessorGoalIds": [
+        "d02438ba-0cc9-5993-831e-5e44d35e32c4"
+      ],
+      "successorGoalIds": [
+        "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
+        "d441ee2f-9230-5751-832b-5b0b5cf14605"
+      ],
+      "parentGoalIds": [
+        "c0634f78-efb9-51cb-ad4f-0e0e4d18bad0"
+      ],
+      "visualization": {
+        "url": "/assets/goal-visualizations/physik/58db62d4-458f-5e2d-9ca0-968e09f4944b/58db62d4-458f-5e2d-9ca0-968e09f4944b.jpg",
+        "digest": "sha256:a0be40ce8a2c1d59c7e87753982531eee8a4382a78657415a540777da4a23616",
+        "visuallyInspected": true
+      },
+      "authorContextNote": "B_H bezeichnet magnetische Flussdichte in Tesla, nicht H in A/m. Hauptlagen werden geometrisch axial/äquatorial benannt; SI-Dipolfaktoren unterscheiden sich um zwei. Beide Teilmessungen müssen dasselbe m betreffen."
+    }
+  ],
+  "handoff": "Only the candidates, this context file and a read-only author-check helper were authored. Root must read all profiles before any later binding or P/D review. No canonical, visualization, registry, status, or native review-ledger change is authorized by these artifacts."
+}

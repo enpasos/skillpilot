@@ -1,0 +1,1109 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b039-function-combinations-equations-and-sequences-20-v1",
+  "reviewedAt": "2026-09-06T23:22:49Z",
+  "reviewer": "OpenAI Codex independent author; underlying exact model unknown; AI candidate, no human review or model-diversity claim",
+  "goals": [
+    {
+      "goalId": "1341c20b-87ab-51e7-bd4a-50166c27806e",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Verknüpfungen von ganzrationalen und Exponentialfunktionen strukturieren“. Von nebeneinanderstehenden Verknüpfungen zum Tausch innerer und äußerer Funktionen wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "function-combination-structure",
+            "essentialUnderstandingDe": "Summe, Produkt und Verkettung beschreiben unterschiedliche Verknüpfungen von Funktionswerten. Bei einer Verkettung wird der Wert der inneren Funktion zum Argument der äußeren; diese Struktur bestimmt die passende Ableitungsregel.",
+            "essentialUnderstandingEn": "A sum, product and composition combine function values in different ways. In a composition, the value of the inner function becomes the argument of the outer function; this structure determines the appropriate differentiation rule.",
+            "observablePerformanceDe": "Die lernende Person zerlegt selbstständig etwa x²+eˣ, x²eˣ und e^(x²+1), benennt Summanden, Faktoren beziehungsweise innere und äußere Funktion und begründet die vorbereitete Regelwahl ohne bereits die vollständige Ableitung berechnen zu müssen.",
+            "observablePerformanceEn": "The learner independently decomposes expressions such as x²+eˣ, x²eˣ and e^(x²+1), identifies summands, factors or inner and outer functions, and justifies the planned rule choice without having to compute the complete derivative."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "function-combination-structure"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "function-combination-structure-variation",
+            "textDe": "Von nebeneinanderstehenden Verknüpfungen zum Tausch innerer und äußerer Funktionen wechseln.",
+            "textEn": "Move from side-by-side combinations to exchanging inner and outer functions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-structures",
+            "taskDemandDe": "Zerlege A(x)=x−1+e^(2x), B(x)=(x²+1)e^(−x) und C(x)=e^((x−1)²) in Teilfunktionen. Benenne die jeweils äußerste Verknüpfung und plane passende Ableitungsregeln; berechne die Ableitungen noch nicht.",
+            "taskDemandEn": "Decompose A(x)=x−1+e^(2x), B(x)=(x²+1)e^(−x) and C(x)=e^((x−1)²) into component functions. Identify the outermost combination and plan appropriate differentiation rules; do not compute the derivatives yet.",
+            "expectedPerformanceDe": "A ist eine Summe aus x−1 und e^(2x); der zweite Summand enthält zusätzlich die Verkettung u=2x, F(u)=e^u. B ist ein Produkt mit Faktoren x²+1 und e^(−x), im zweiten Faktor liegt eine Verkettung. C ist eine Verkettung mit u=(x−1)² und F(u)=e^u. Die Struktur begründet Summe-, Produkt- beziehungsweise Kettenregel und nötige innere Regeln.",
+            "expectedPerformanceEn": "A is a sum of x−1 and e^(2x); its second summand also contains the composition u=2x, F(u)=e^u. B is a product with factors x²+1 and e^(−x), with a composition in the second factor. C is a composition with u=(x−1)² and F(u)=e^u. The structure warrants the sum, product or chain rule and any needed inner rules.",
+            "understandingFocusDe": "Die äußerste Operation und verschachtelte Teilfunktionen unterscheiden.",
+            "understandingFocusEn": "Distinguish the outermost operation from nested component functions."
+          },
+          {
+            "id": "swapped-function-roles",
+            "taskDemandDe": "Vergleiche P(x)=e^(x²+2) und Q(x)=(e^x+2)². Beschreibe für beide den Weg vom Eingang x zum Ergebnis und welche innere und äußere Funktion die Kettenregel vorbereitet.",
+            "taskDemandEn": "Compare P(x)=e^(x²+2) and Q(x)=(e^x+2)². For each, describe the path from input x to output and which inner and outer functions prepare the chain rule.",
+            "expectedPerformanceDe": "Bei P liefert u=x²+2 den Eingang für F(u)=e^u. Bei Q liefert v=e^x+2 den Eingang für G(v)=v². Beide sind Verkettungen, aber die Ableitung des äußeren Kerns ist einmal exponentiell, einmal die Potenzableitung; die inneren Ableitungen sind entsprechend verschieden. Es wird keine Produktregel allein aus dem Auftreten von Quadrat und Exponentialfunktion abgeleitet.",
+            "expectedPerformanceEn": "For P, u=x²+2 is the input to F(u)=e^u. For Q, v=e^x+2 is the input to G(v)=v². Both are compositions, but the outer derivative is exponential in one and a power derivative in the other; the inner derivatives differ accordingly. Merely seeing a square and an exponential does not justify the product rule.",
+            "understandingFocusDe": "Die Rollen der Teilfunktionen auf eine veränderte Verschachtelung übertragen.",
+            "understandingFocusEn": "Transfer component-function roles to a changed nesting structure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "864f9a45-badf-5a31-88d3-da4525808c2d",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Produkt- und Kettenregel an Beispielen überprüfen“. Von einer exakten algebraischen Kontrolle zu einer begrenzten numerischen Kontrolle wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "independent-rule-verification",
+            "essentialUnderstandingDe": "Die Produktregel enthält zwei Summanden, die Kettenregel die äußere Ableitung an der inneren Funktion mal innere Ableitung. Ein unabhängiger Rechenweg überprüft ein Beispiel; numerisch-grafische Übereinstimmung ist kein allgemeiner Beweis.",
+            "essentialUnderstandingEn": "The product rule contains two summands; the chain rule uses the outer derivative evaluated at the inner function, multiplied by the inner derivative. An independent calculation checks an example; numerical or graphical agreement is not a general proof.",
+            "observablePerformanceDe": "Die lernende Person überprüft an selbst bearbeiteten Beispielen Produkt- und Kettenregel durch einen geeigneten zweiten Weg, etwa Ausmultiplizieren vor dem Ableiten, erklärt beide Regelstrukturen und benennt die begrenzte Aussagekraft einer numerisch-grafischen Kontrolle.",
+            "observablePerformanceEn": "The learner checks the product and chain rules on independently worked examples using a suitable second route, such as expanding before differentiating, explains both rule structures and states the limited force of a numerical or graphical check."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independent-rule-verification"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "independent-rule-verification-variation",
+            "textDe": "Von einer exakten algebraischen Kontrolle zu einer begrenzten numerischen Kontrolle wechseln.",
+            "textEn": "Move from exact algebraic verification to a numerical check with limited inferential force."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "polynomial-two-paths",
+            "taskDemandDe": "Überprüfe die Ableitung von f(x)=(x²+1)(x−2) mit Produktregel und einem unabhängigen Rechenweg. Überprüfe außerdem g(x)=(3x−2)² mit Kettenregel und Ausmultiplizieren. Erkläre die Regelstrukturen.",
+            "taskDemandEn": "Check the derivative of f(x)=(x²+1)(x−2) using the product rule and an independent calculation. Also check g(x)=(3x−2)² using the chain rule and expansion. Explain the rule structures.",
+            "expectedPerformanceDe": "Produktregel: 2x(x−2)+(x²+1)=3x²−4x+1. Ausmultiplizieren liefert f=x³−2x²+x−2 und dieselbe Ableitung. Kettenregel: 2(3x−2)·3=18x−12. Aus g=9x²−12x+4 folgt ebenfalls 18x−12. Zwei Produktsummanden und innerer Faktor 3 werden erklärt.",
+            "expectedPerformanceEn": "Product rule: 2x(x−2)+(x²+1)=3x²−4x+1. Expansion gives f=x³−2x²+x−2 and the same derivative. Chain rule: 2(3x−2)·3=18x−12. Expanding g=9x²−12x+4 also yields 18x−12. The two product terms and inner factor 3 are explained.",
+            "understandingFocusDe": "Gleichheit zweier selbst hergeleiteter Ableitungswege zeigen.",
+            "understandingFocusEn": "Establish agreement between two independently derived differentiation routes."
+          },
+          {
+            "id": "exponential-local-check",
+            "taskDemandDe": "Bestimme für h(x)=(x+1)e^x und j(x)=e^(2x+1) jeweils die Ableitung bei x=0. Kontrolliere diese Werte mit dem zentralen Differenzenquotienten [F(ε)−F(−ε)]/(2ε) für ε=0,001. Erläutere die Aussagekraft der Kontrolle.",
+            "taskDemandEn": "For h(x)=(x+1)e^x and j(x)=e^(2x+1), find the derivative at x=0. Check each value using the central difference quotient [F(ε)−F(−ε)]/(2ε) with ε=0.001. Explain the strength of this check.",
+            "expectedPerformanceDe": "Die Regeln ergeben h′(0)=2 und j′(0)=2e≈5,436563657. Die Differenzenquotienten sind ungefähr 2,000000667 und 5,436567281. Die Abweichungen sind mit einer Näherung vereinbar. Die Kontrolle stützt die zwei lokalen Ergebnisse; sie beweist weder die Regeln allgemein noch die Gleichheit der Funktionen für alle x.",
+            "expectedPerformanceEn": "The rules give h′(0)=2 and j′(0)=2e≈5.436563657. The difference quotients are approximately 2.000000667 and 5.436567281. Their differences are consistent with approximation. The check supports these two local results; it proves neither the rules generally nor equality of functions for every x.",
+            "understandingFocusDe": "Numerische Plausibilität von exakter Beispielgleichheit und allgemeinem Beweis unterscheiden.",
+            "understandingFocusEn": "Distinguish numerical plausibility from exact equality in an example and from a general proof."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d0a9e407-e654-5940-958f-6f608bf3d654",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Produkt- und Kettenregel bei Exponentialverknüpfungen anwenden“. Von einer verschobenen Exponentialfunktion zu einem Produkt mit negativem Exponentenkoeffizienten wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "exponential-product-chain-application",
+            "essentialUnderstandingDe": "Bei a·e^(kx+c)+b liefert die innere lineare Funktion den Faktor k, die additive Konstante b trägt keine Ableitung bei. Bei (ax+b)e^(kx) müssen beide Faktoren abgeleitet werden; das Vorzeichen der Ableitung beschreibt die lokale Änderung.",
+            "essentialUnderstandingEn": "For a·e^(kx+c)+b, the inner linear function supplies the factor k and the additive constant b contributes no derivative. For (ax+b)e^(kx), both factors contribute differentiated terms; the derivative's sign describes local change.",
+            "observablePerformanceDe": "Die lernende Person berechnet die Ableitungen beider vorgegebenen Funktionstypen selbstständig, erläutert den inneren Faktor und die beiden Produktsummanden und nutzt die erhaltene Ableitung für eine passende Aussage über das Steigen oder Fallen der Funktion.",
+            "observablePerformanceEn": "The learner independently differentiates both specified function types, explains the inner factor and the two product terms, and uses the derivative to make an appropriate statement about where the function increases or decreases."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "exponential-product-chain-application"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "exponential-product-chain-application-variation",
+            "textDe": "Von einer verschobenen Exponentialfunktion zu einem Produkt mit negativem Exponentenkoeffizienten wechseln.",
+            "textEn": "Move from a shifted exponential function to a product with a negative exponent coefficient."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "shifted-exponential-decrease",
+            "taskDemandDe": "Leite f(x)=2e^(−3x+1)+5 ab und begründe daraus, ob f irgendwo wächst. Erkläre die Rolle der Faktoren 2 und −3 sowie der Konstante 5.",
+            "taskDemandEn": "Differentiate f(x)=2e^(−3x+1)+5 and use the result to justify whether f increases anywhere. Explain the roles of factors 2 and −3 and the constant 5.",
+            "expectedPerformanceDe": "f′(x)=−6e^(−3x+1). Die innere Ableitung ist −3, der Vorfaktor 2 bleibt erhalten und die Ableitung von 5 ist 0. Da die Exponentialfunktion positiv ist, ist f′ überall negativ und f streng fallend.",
+            "expectedPerformanceEn": "f′(x)=−6e^(−3x+1). The inner derivative is −3, the prefactor 2 remains and the derivative of 5 is 0. Since the exponential is positive, f′ is negative everywhere and f is strictly decreasing.",
+            "understandingFocusDe": "Innere Ableitung mit der Bedeutung des Ableitungsvorzeichens verbinden.",
+            "understandingFocusEn": "Connect the inner derivative to the meaning of the derivative's sign."
+          },
+          {
+            "id": "product-turning-behavior",
+            "taskDemandDe": "Untersuche mithilfe der Ableitung, wo g(x)=(3x−2)e^(−x) steigt oder fällt. Begründe insbesondere, warum der negative Exponent allein noch keine überall fallende Funktion erzwingt.",
+            "taskDemandEn": "Use the derivative to determine where g(x)=(3x−2)e^(−x) increases or decreases. Explain why the negative exponent alone does not force the whole function to decrease everywhere.",
+            "expectedPerformanceDe": "g′=3e^(−x)−(3x−2)e^(−x)=(5−3x)e^(−x). Weil e^(−x)>0, steigt g für x<5/3 und fällt für x>5/3; bei 5/3 liegt ein Maximum. Beide Produktbeiträge bestimmen das Vorzeichen, nicht nur die Abnahme des Exponentialfaktors.",
+            "expectedPerformanceEn": "g′=3e^(−x)−(3x−2)e^(−x)=(5−3x)e^(−x). Since e^(−x)>0, g increases for x<5/3 and decreases for x>5/3, giving a maximum at 5/3. Both product contributions determine the sign, not just the decay of the exponential factor.",
+            "understandingFocusDe": "Die Struktur eines Produkts für eine eigenständige Funktionsaussage nutzen.",
+            "understandingFocusEn": "Use product structure to make an independent statement about the function."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "46166788-4a8f-53d5-9fe9-77b0a018d7ee",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Polynomdivision zur Nullstellensuche anwenden“. Von vollständiger reeller Zerlegung zu fehlenden Potenztermen und einem nicht reell zerlegbaren Restfaktor wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "polynomial-division-factor-check",
+            "essentialUnderstandingDe": "Ist r eine Nullstelle eines Polynoms p, so ist x−r ein Faktor und die Division hat Rest null. Die Zerlegung senkt den Grad, und aus einem verschwindenden Linearfaktor folgt eine Nullstelle des ursprünglichen Polynoms.",
+            "essentialUnderstandingEn": "If r is a zero of a polynomial p, then x−r is a factor and division leaves remainder zero. Factoring reduces the degree, and a vanishing linear factor identifies a zero of the original polynomial.",
+            "observablePerformanceDe": "Die lernende Person führt mit einer gefundenen oder gegebenen Nullstelle eine Polynomdivision durch, kontrolliert Quotient und Rest, liest weitere reelle Nullstellen aus verfügbaren Linearfaktoren ab und prüft sie im Ausgangspolynom.",
+            "observablePerformanceEn": "Using a found or given zero, the learner performs polynomial division, checks quotient and remainder, reads further real zeros from available linear factors and checks them in the original polynomial."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "polynomial-division-factor-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "polynomial-division-factor-check-variation",
+            "textDe": "Von vollständiger reeller Zerlegung zu fehlenden Potenztermen und einem nicht reell zerlegbaren Restfaktor wechseln.",
+            "textEn": "Move from complete real factorization to missing power terms and a remainder factor without real linear factors."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "division-known-negative-root",
+            "taskDemandDe": "Für p(x)=x³+x²−4x−4 ist −1 eine Nullstelle. Führe die Polynomdivision durch x+1 durch, bestimme alle reellen Nullstellen und prüfe sie im Ausgangspolynom.",
+            "taskDemandEn": "For p(x)=x³+x²−4x−4, −1 is a zero. Divide by x+1, find all real zeros and check them in the original polynomial.",
+            "expectedPerformanceDe": "Die Division ergibt x²−4 ohne Rest. Also p=(x+1)(x−2)(x+2); die Nullstellen sind −1,2,−2. Einsetzen ergibt jeweils 0. Die Division ist gerechtfertigt, weil der Faktor x+1 zur Nullstelle −1 gehört.",
+            "expectedPerformanceEn": "Division gives x²−4 with no remainder. Thus p=(x+1)(x−2)(x+2); the zeros are −1,2,−2. Substitution gives 0 each time. The divisor x+1 corresponds to the zero −1.",
+            "understandingFocusDe": "Nullstelle, Linearfaktor, Quotient und Einsetzprobe zusammenführen.",
+            "understandingFocusEn": "Connect a zero, its linear factor, the quotient and substitution checks."
+          },
+          {
+            "id": "missing-terms-irreducible-quotient",
+            "taskDemandDe": "Dividiere q(x)=x³−8 durch x−2. Erläutere den Umgang mit den fehlenden Potenztermen und entscheide, ob der Quotient weitere reelle Nullstellen liefert.",
+            "taskDemandEn": "Divide q(x)=x³−8 by x−2. Explain how to handle the missing power terms and decide whether the quotient yields further real zeros.",
+            "expectedPerformanceDe": "Mit 0x² und 0x lautet der Quotient x²+2x+4, Rest 0. Dieser ist (x+1)²+3>0 für alle reellen x. Daher bleibt allein x=2 als reelle Nullstelle; q(2)=0. Die Division wird auch dann korrekt abgeschlossen, wenn kein weiterer reeller Linearfaktor existiert.",
+            "expectedPerformanceEn": "Using 0x² and 0x, the quotient is x²+2x+4 with remainder 0. This is (x+1)²+3>0 for every real x. Therefore x=2 is the only real zero, and q(2)=0. Division is completed correctly even when no further real linear factor exists.",
+            "understandingFocusDe": "Das Verfahren bei verändertem Termaufbau und begrenzter Faktorisierbarkeit anwenden.",
+            "understandingFocusEn": "Apply the method to a changed expression structure and limited factorization."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Ganzrationale Funktionen faktorisieren und Nullstellen bestimmen“. Von einem biquadratischen vollständig reell zerlegbaren Polynom zu einem irreduziblen quadratischen Rest wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "real-zeros-factorization-boundary",
+            "essentialUnderstandingDe": "Reelle Nullstellen entsprechen reellen Linearfaktoren. Nicht jedes reelle Polynom lässt sich vollständig in reelle Linearfaktoren zerlegen; ein verbleibender Faktor kann keine reellen Nullstellen haben.",
+            "essentialUnderstandingEn": "Real zeros correspond to real linear factors. Not every real polynomial factors completely into real linear factors; a remaining factor may have no real zeros.",
+            "observablePerformanceDe": "Die lernende Person wählt selbstständig eine passende Nullstellensuche, nutzt gefundene Nullstellen zum Faktorisieren und erklärt anhand des verbleibenden Faktors, welche reellen Nullstellen erfasst sind und wann keine vollständige reelle Linearfaktorzerlegung vorliegt.",
+            "observablePerformanceEn": "The learner independently chooses a suitable search for zeros, uses found zeros to factor the polynomial and explains from the remaining factor which real zeros have been captured and when complete real linear factorization is unavailable."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "real-zeros-factorization-boundary"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "real-zeros-factorization-boundary-variation",
+            "textDe": "Von einem biquadratischen vollständig reell zerlegbaren Polynom zu einem irreduziblen quadratischen Rest wechseln.",
+            "textEn": "Move from a biquadratic polynomial that splits completely over the reals to an irreducible quadratic remainder."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "biquadratic-systematic-search",
+            "taskDemandDe": "Bestimme die reellen Nullstellen von p(x)=x⁴−5x²+4. Wähle eine systematische Strategie und schreibe p als Produkt reeller Linearfaktoren.",
+            "taskDemandEn": "Find the real zeros of p(x)=x⁴−5x²+4. Choose a systematic strategy and write p as a product of real linear factors.",
+            "expectedPerformanceDe": "Mit y=x² wird y²−5y+4=(y−1)(y−4). Daraus folgen x²=1 oder 4, also x=±1,±2. p=(x−1)(x+1)(x−2)(x+2). Die Substitution nutzt die geraden Potenzen; äquivalentes direktes Faktorisieren ist zulässig.",
+            "expectedPerformanceEn": "With y=x², y²−5y+4=(y−1)(y−4). Thus x²=1 or 4, giving x=±1,±2. p=(x−1)(x+1)(x−2)(x+2). The substitution uses the even powers; equivalent direct factoring is acceptable.",
+            "understandingFocusDe": "Eine geeignete Termstruktur zur vollständigen reellen Nullstellensuche nutzen.",
+            "understandingFocusEn": "Use a suitable expression structure for a complete search for real zeros."
+          },
+          {
+            "id": "real-factorization-stops",
+            "taskDemandDe": "Suche die reellen Nullstellen von q(x)=x³−3x²+x−3 und zerlege das Polynom so weit wie möglich in reelle Linearfaktoren. Begründe, wann die Suche vollständig ist.",
+            "taskDemandEn": "Find the real zeros of q(x)=x³−3x²+x−3 and extract real linear factors as far as possible. Justify when the search is complete.",
+            "expectedPerformanceDe": "Gruppieren ergibt q=x²(x−3)+(x−3)=(x−3)(x²+1). Weil x²+1>0, ist x=3 die einzige reelle Nullstelle. Der quadratische Rest lässt sich nicht in reelle Linearfaktoren zerlegen; die Identität und q(3)=0 bestätigen das Ergebnis.",
+            "expectedPerformanceEn": "Grouping yields q=x²(x−3)+(x−3)=(x−3)(x²+1). Since x²+1>0, x=3 is the only real zero. The quadratic remainder has no real linear factorization; the identity and q(3)=0 confirm the result.",
+            "understandingFocusDe": "Vorhandene reelle Nullstellen bestimmen, ohne vollständige reelle Zerlegbarkeit vorauszusetzen.",
+            "understandingFocusEn": "Identify existing real zeros without assuming complete factorization over the reals."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Vielfachheiten und Graphverhalten aus Linearfaktoren deuten“. Von der Faktorform zur lokalen Skizze und anschließend von vorgegebenem Graphverhalten zurück zu einer passenden Faktorform wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "multiplicity-local-sign-behavior",
+            "essentialUnderstandingDe": "Die Vielfachheit einer Nullstelle ist die Potenz ihres Linearfaktors. Eine gerade Potenz erhält das Vorzeichen beim Durchgang durch die Nullstelle, eine ungerade wechselt es; wiederholte Faktoren bewirken zusätzlich ein flacheres lokales Verhalten.",
+            "essentialUnderstandingEn": "A zero's multiplicity is the exponent of its linear factor. An even power preserves the sign across the zero, whereas an odd power changes it; repeated factors also produce flatter local behavior.",
+            "observablePerformanceDe": "Die lernende Person liest die Vielfachheiten aus einer selbst ausgewerteten Linearfaktordarstellung ab, begründet mit den Vorzeichen der Faktoren Berühren oder Schneiden der x-Achse und skizziert das lokale Verhalten an den betreffenden Nullstellen.",
+            "observablePerformanceEn": "The learner reads multiplicities from an independently analyzed linear factorization, uses the factors' signs to justify touching or crossing the x-axis and sketches local behavior at the relevant zeros."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "multiplicity-local-sign-behavior"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "multiplicity-local-sign-behavior-variation",
+            "textDe": "Von der Faktorform zur lokalen Skizze und anschließend von vorgegebenem Graphverhalten zurück zu einer passenden Faktorform wechseln.",
+            "textEn": "Move from factorization to a local sketch and then from specified graph behavior back to a suitable factorization."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "negative-prefactor-high-multiplicity",
+            "taskDemandDe": "Deute die Nullstellen und das lokale Graphverhalten von f(x)=−(x−1)^4(x+2)^3. Begründe Berühren oder Schneiden und die Vorzeichen auf beiden Seiten jeder Nullstelle.",
+            "taskDemandEn": "Interpret the zeros and local graph behavior of f(x)=−(x−1)^4(x+2)^3. Justify touching or crossing and the signs on either side of each zero.",
+            "expectedPerformanceDe": "Bei x=1 ist die Vielfachheit 4; der übrige Faktor ist dort negativ, daher berührt der Graph die Achse von unten. Bei x=−2 ist die Vielfachheit 3; der Graph wechselt von positiven zu negativen Werten und schneidet mit flachem Verlauf. Die Parität steuert den Vorzeichenwechsel, der Vorfaktor die Orientierung.",
+            "expectedPerformanceEn": "At x=1 the multiplicity is 4; the remaining factor is negative there, so the graph touches the axis from below. At x=−2 the multiplicity is 3; the graph changes from positive to negative values and crosses with a flattened shape. Parity controls the sign change, while the prefactor controls orientation.",
+            "understandingFocusDe": "Vielfachheit von lokaler Vorzeichenlage unterscheiden.",
+            "understandingFocusEn": "Distinguish multiplicity from the local sign orientation."
+          },
+          {
+            "id": "construct-from-local-behavior",
+            "taskDemandDe": "Konstruiere ein Polynom möglichst niedrigen Grades, dessen Graph bei x=0 die Achse von oben berührt und bei x=3 von positiven zu negativen Werten schneidet. Begründe Deine Faktoren und den Vorfaktor.",
+            "taskDemandEn": "Construct a polynomial of the lowest possible degree whose graph touches the axis from above at x=0 and crosses from positive to negative values at x=3. Justify your factors and prefactor.",
+            "expectedPerformanceDe": "Eine passende Wahl ist g(x)=−x²(x−3). Die gerade Vielfachheit 2 bei 0 bewirkt Berühren; nahe 0 ist −(x−3)>0. Die einfache Nullstelle bei 3 bewirkt Schneiden, und der negative Vorfaktor gibt den verlangten Vorzeichenwechsel. Grad 3 ist wegen mindestens zwei plus einer Faktorinstanz minimal.",
+            "expectedPerformanceEn": "One suitable choice is g(x)=−x²(x−3). Even multiplicity 2 at 0 produces touching; near 0, −(x−3)>0. The simple zero at 3 produces crossing, and the negative prefactor gives the required sign change. Degree 3 is minimal because at least two plus one factor instances are needed.",
+            "understandingFocusDe": "Die Deutung der Faktorpotenzen in umgekehrter Informationsrichtung anwenden.",
+            "understandingFocusEn": "Apply interpretation of factor powers in the reverse direction of information."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Bisektionsverfahren zur Nullstellennäherung anwenden“. Von zwei echten Intervallhalbierungen zum exakten Mittelpunkttreffer und zur Prüfung einer unstetigen Gegenkonfiguration wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "bisection-enclosure-and-validity",
+            "essentialUnderstandingDe": "Stetigkeit und entgegengesetzte Randvorzeichen sichern mindestens eine Nullstelle im Intervall. Bei der Bisektion bleibt die Hälfte mit Vorzeichenwechsel erhalten, sodass sich die Einschließung und ihre Breite kontrolliert verkleinern.",
+            "essentialUnderstandingEn": "Continuity and opposite endpoint signs guarantee at least one zero in the interval. Bisection retains the half with a sign change, so the enclosure and its width shrink in a controlled way.",
+            "observablePerformanceDe": "Die lernende Person begründet ein zulässiges Startintervall, berechnet Mittelpunkte und Funktionsvorzeichen, wählt jeweils die richtige Hälfte und erklärt den verbleibenden Näherungsfehler anhand der Intervallbreite; eine genau getroffene Nullstelle erkennt sie als Abschluss.",
+            "observablePerformanceEn": "The learner justifies a valid initial interval, computes midpoints and function signs, selects the correct half each time and explains the remaining approximation error from the interval width; an exact zero is recognized as completion."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bisection-enclosure-and-validity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "bisection-enclosure-and-validity-variation",
+            "textDe": "Von zwei echten Intervallhalbierungen zum exakten Mittelpunkttreffer und zur Prüfung einer unstetigen Gegenkonfiguration wechseln.",
+            "textEn": "Move from two genuine interval halvings to an exact midpoint hit and a discontinuous contrasting configuration."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cubic-two-halvings",
+            "taskDemandDe": "Begründe für f(x)=x³−5 das Startintervall [1;2]. Führe zwei Bisektionsschritte aus und gib anschließend eine mittige Näherung samt gesicherter maximaler Abweichung aus dem verbleibenden Intervall an.",
+            "taskDemandEn": "Justify [1,2] as a starting interval for f(x)=x³−5. Perform two bisection steps and then give the midpoint approximation with the maximum error guaranteed by the remaining interval.",
+            "expectedPerformanceDe": "f ist stetig, f(1)=−4 und f(2)=3. m1=1,5 liefert −1,625, also [1,5;2]. m2=1,75 liefert 0,359375, also [1,5;1,75]. Dessen Mittelpunkt ist 1,625; eine eingeschlossene Nullstelle liegt höchstens 0,125 davon entfernt.",
+            "expectedPerformanceEn": "f is continuous, with f(1)=−4 and f(2)=3. m1=1.5 gives −1.625, retaining [1.5,2]. m2=1.75 gives 0.359375, retaining [1.5,1.75]. The remaining midpoint is 1.625; an enclosed zero is at most 0.125 away.",
+            "understandingFocusDe": "Vorzeichenentscheidung und Intervallbreite als begründete Näherung verknüpfen.",
+            "understandingFocusEn": "Connect sign-based interval selection and interval width to a justified approximation."
+          },
+          {
+            "id": "exact-hit-and-continuity",
+            "taskDemandDe": "Prüfe f(x)=x(x−2)(x+2) auf [−3;−1] und beginne die Bisektion. Vergleiche anschließend mit h(x)=1/x auf [−1;1]: Darf ein Vorzeichenwechsel dort ebenso als Nullstelleneinschließung gelten?",
+            "taskDemandEn": "Check f(x)=x(x−2)(x+2) on [−3,−1] and begin bisection. Then compare h(x)=1/x on [−1,1]: does the sign change likewise provide a root enclosure?",
+            "expectedPerformanceDe": "Für das Polynom sind f(−3)=−15 und f(−1)=3; der Mittelpunkt −2 ist exakt eine Nullstelle, daher ist keine weitere Halbierung nötig. Bei 1/x ist 0 nicht definiert und das Intervall nicht stetig überbrückt; h hat überhaupt keine Nullstelle. Der Randvorzeichenwechsel allein genügt hier nicht.",
+            "expectedPerformanceEn": "For the polynomial, f(−3)=−15 and f(−1)=3; midpoint −2 is exactly a zero, so no further halving is needed. For 1/x, 0 is undefined and continuity does not span the interval; h has no zero at all. Endpoint signs alone are insufficient here.",
+            "understandingFocusDe": "Exakten Abschluss und die tragende Stetigkeitsvoraussetzung eigenständig erkennen.",
+            "understandingFocusEn": "Independently recognize exact completion and the essential continuity prerequisite."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Regula falsi zur Nullstellennäherung anwenden“. Von einer konvexen zu einer konkaven Funktion wechseln, wodurch die erhaltene Randseite wechselt. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "regula-falsi-secant-bracket",
+            "essentialUnderstandingDe": "Regula falsi ersetzt den Graphen zwischen zwei Randpunkten eines stetigen Vorzeichenwechselintervalls durch die Sekante. Deren Nullstelle ist ein Näherungswert; das Vorzeichen des echten Funktionswerts bestimmt das neue Einschließungsintervall.",
+            "essentialUnderstandingEn": "Regula falsi replaces the graph between the endpoints of a continuous sign-change interval by its secant. The secant's zero is an approximation; the sign of the actual function value determines the new enclosing interval.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder berechnet die Sekante, bestimmt ihre Nullstelle, wertet dort die ursprüngliche Funktion aus und begründet, welcher alte Endpunkt erhalten bleibt; sie unterscheidet Sekanten- und Funktionsnullstelle.",
+            "observablePerformanceEn": "The learner constructs or computes the secant, finds its zero, evaluates the original function there and explains which old endpoint must be retained; the secant's zero is distinguished from the function's zero."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "regula-falsi-secant-bracket"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "regula-falsi-secant-bracket-variation",
+            "textDe": "Von einer konvexen zu einer konkaven Funktion wechseln, wodurch die erhaltene Randseite wechselt.",
+            "textEn": "Move from a convex to a concave function, changing which endpoint is retained."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "convex-two-secants",
+            "taskDemandDe": "Führe für f(x)=x²−3 auf [1;2] zwei Regula-falsi-Schritte aus. Leite die Sekantenschnittpunkte aus den Randwerten her und begründe jedes neue Intervall.",
+            "taskDemandEn": "Perform two regula falsi steps for f(x)=x²−3 on [1,2]. Derive the secant intercepts from the endpoint values and justify each new interval.",
+            "expectedPerformanceDe": "f(1)=−2, f(2)=1 und der erste Sekantenschnitt ist c1=5/3. Da f(c1)=−2/9, bleibt [5/3;2]. Daraus folgt c2=19/11; f(c2)=−2/121, also [19/11;2]. Die obere Grenze 2 bleibt wegen ihres positiven Funktionswerts erhalten.",
+            "expectedPerformanceEn": "f(1)=−2, f(2)=1 and the first secant intercept is c1=5/3. Since f(c1)=−2/9, retain [5/3,2]. This gives c2=19/11; f(c2)=−2/121, retaining [19/11,2]. Upper endpoint 2 remains because its function value is positive.",
+            "understandingFocusDe": "Sekantennullstelle und Vorzeichen am tatsächlichen Graphen unterscheiden.",
+            "understandingFocusEn": "Distinguish the secant's zero from the sign at the actual graph."
+          },
+          {
+            "id": "concave-endpoint-change",
+            "taskDemandDe": "Für g(x)=√x−2 auf [1;9] berechne einen Regula-falsi-Schritt und bestimme das neue Intervall. Erkläre, warum jetzt die andere Randseite erhalten bleibt als beim Beispiel x²−3.",
+            "taskDemandEn": "For g(x)=√x−2 on [1,9], compute one regula falsi step and determine the new interval. Explain why the opposite endpoint is now retained compared with x²−3.",
+            "expectedPerformanceDe": "g(1)=−1 und g(9)=1 liefern den Sekantenschnitt c=5. g(5)=√5−2>0, deshalb bleibt [1;5]. Die Auswahl folgt dem Vorzeichen der Funktion, nicht einer festen Regel 'linke Grenze ersetzen'. Der wahre Nullstellenwert 4 liegt innerhalb der neuen Einschließung.",
+            "expectedPerformanceEn": "g(1)=−1 and g(9)=1 give secant intercept c=5. Since g(5)=√5−2>0, retain [1,5]. Selection follows the function sign, not a fixed rule to replace the left endpoint. The true zero 4 lies inside the new enclosure.",
+            "understandingFocusDe": "Die Intervallwahl bei veränderter Krümmung aus dem unveränderten Einschließungsprinzip ableiten.",
+            "understandingFocusEn": "Derive interval selection under changed curvature from the unchanged enclosure principle."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "70a21623-6c87-55ae-b534-ab45a3b9b1d2",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Konvergenzgeschwindigkeit numerischer Verfahren vergleichen“. Von einer einfachen Nullstelle zur mehrfachen Nullstelle wechseln und die Geschwindigkeit sowie Anwendbarkeit neu beurteilen. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "numerical-method-comparison",
+            "essentialUnderstandingDe": "Ein fairer Vergleich numerischer Nullstellenverfahren bezieht dieselbe Aufgabe und Zielgenauigkeit ein. Iterationszahl, Aufwand je Schritt und Anwendbarkeit sind verschieden: Bisektion schachtelt Intervalle, Regula falsi verwendet Sekanten, Newton nutzt Ableitungen und hängt vom Startwert ab.",
+            "essentialUnderstandingEn": "A fair comparison of numerical root-finding methods uses the same problem and target accuracy. Iteration count, cost per step and applicability differ: bisection nests intervals, regula falsi uses secants, and Newton uses derivatives and depends on the initial value.",
+            "observablePerformanceDe": "Die lernende Person vergleicht an einer selbst bearbeiteten Aufgabe Näherungsfolgen, Funktions- und Ableitungsauswertungen sowie die Voraussetzungen der drei Verfahren und begründet, welches für die geforderte Genauigkeit und die gegebenen Informationen zweckmäßig ist.",
+            "observablePerformanceEn": "On an independently worked problem, the learner compares approximation sequences, function and derivative evaluations, and the three methods' prerequisites, then justifies which is suitable for the required accuracy and available information."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "numerical-method-comparison"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "numerical-method-comparison-variation",
+            "textDe": "Von einer einfachen Nullstelle zur mehrfachen Nullstelle wechseln und die Geschwindigkeit sowie Anwendbarkeit neu beurteilen.",
+            "textEn": "Move from a simple to a multiple zero and reassess speed and applicability."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "same-root-same-two-steps",
+            "taskDemandDe": "Vergleiche für f(x)=x²−3 die ersten zwei Näherungen von Bisektion und Regula falsi ab [1;2] mit Newton ab x0=2. Nutze √3 als Referenz für die Fehlerbestimmung. Vergleiche Fortschritt und benötigte Auswertungen statt nur Iterationszahlen. Prüfe außerdem, welche Verfahren nach zwei Näherungen den absoluten Fehler 0,01 unterschritten haben.",
+            "taskDemandEn": "For f(x)=x²−3, compare the first two approximations from bisection and regula falsi starting at [1,2] with Newton starting at x0=2. Use √3 as the reference for errors. Compare progress and required evaluations rather than iteration counts alone. Also check which methods have reduced the absolute error below 0.01 after two approximations.",
+            "expectedPerformanceDe": "Bisektion liefert 1,5 und 1,75, mit Fehlern etwa 0,232051 und 0,017949. Regula falsi liefert 5/3 und 19/11, mit Fehlern etwa 0,065384 und 0,004778. Newton liefert 7/4 und 97/56, mit Fehlern etwa 0,017949 und 0,00009205. In diesem Vergleich verbessert Newton am schnellsten, benötigt aber f′; Randverfahren benötigen eine stetige Vorzeichenwechseleinschließung, und Regula falsi zusätzlich Sekantenrechnung. Die Schwelle 0,01 erreichen nach diesen zwei Näherungen Regula falsi und Newton, die Bisektion noch nicht. Bei gespeicherten Randwerten brauchen Bisektion und Regula falsi je zwei anfängliche und zwei neue f-Auswertungen; Newton braucht zwei f- und zwei f′-Auswertungen. Gleiche Anzahlen bedeuten wegen unterschiedlicher Auswertungskosten nicht automatisch gleichen Aufwand.",
+            "expectedPerformanceEn": "Bisection gives 1.5 and 1.75, with errors about 0.232051 and 0.017949. Regula falsi gives 5/3 and 19/11, with errors about 0.065384 and 0.004778. Newton gives 7/4 and 97/56, with errors about 0.017949 and 0.00009205. Newton improves fastest in this comparison but needs f′; bracketing methods need a continuous sign-change enclosure, and regula falsi also requires secant calculations. After these two approximations, regula falsi and Newton meet the 0.01 threshold, while bisection does not yet. With stored endpoint values, bisection and regula falsi each need two initial and two new f evaluations; Newton needs two f and two f′ evaluations. Equal counts do not automatically mean equal effort because evaluation costs differ.",
+            "understandingFocusDe": "Genauigkeit, Rechenaufwand und Voraussetzungen am gleichen Problem vergleichen.",
+            "understandingFocusEn": "Compare accuracy, computational effort and prerequisites on the same problem."
+          },
+          {
+            "id": "double-root-changes-ranking",
+            "taskDemandDe": "Untersuche f(x)=(x−1)² mit Newton-Startwert 3 und dem vorgeschlagenen Intervall [0;2] für Bisektion/Regula falsi. Berechne zwei Newton-Schritte und beurteile, welche allgemeinen Aussagen aus dem vorherigen Vergleich noch gelten.",
+            "taskDemandEn": "Examine f(x)=(x−1)² with Newton starting at 3 and [0,2] proposed for bisection/regula falsi. Compute two Newton steps and assess which general statements from the preceding comparison still hold.",
+            "expectedPerformanceDe": "Für x≠1 ergibt Newton x_neu=(x+1)/2; 3→2→1,5 halbiert den Fehler nur linear. Die doppelte Nullstelle erfüllt nicht die übliche Einfachheitsbedingung für quadratische Newton-Konvergenz. f(0)=f(2)=1 liefert kein Vorzeichenwechselintervall; diese Einschließungsbegründung ist daher nicht anwendbar, auch wenn eine zusätzliche Auswertung bei 1 zufällig die Nullstelle direkt trifft.",
+            "expectedPerformanceEn": "For x≠1, Newton gives x_new=(x+1)/2; 3→2→1.5 halves the error only linearly. The double zero does not meet the usual simple-root condition for quadratic Newton convergence. f(0)=f(2)=1 gives no sign-change interval, so the bracketing justification is unavailable even though an additional evaluation at 1 would happen to hit the zero exactly.",
+            "understandingFocusDe": "Bedingte Geschwindigkeitsaussagen von universellen Verfahrensversprechen unterscheiden.",
+            "understandingFocusEn": "Distinguish conditional speed claims from universal promises about a method."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Arithmetische und geometrische Folgen beschreiben“. Startindex, additive Änderung und vorzeichenwechselnden multiplikativen Faktor variieren. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "arithmetic-geometric-index-and-structure",
+            "essentialUnderstandingDe": "Arithmetische Folgen entstehen durch eine konstante additive Änderung, geometrische durch einen konstanten multiplikativen Faktor. Ein expliziter Term verbindet den Index mit dem Folgenglied; Tabellen und einzelne Graphpunkte zeigen dieselbe diskrete Zuordnung.",
+            "essentialUnderstandingEn": "Arithmetic sequences have a constant additive change; geometric sequences have a constant multiplicative factor. An explicit expression maps an index to its term, while tables and separate graph points display the same discrete correspondence.",
+            "observablePerformanceDe": "Die lernende Person erklärt den Unterschied zwischen konstanter Differenz und konstantem Faktor, stellt zu einer passenden Folge mit festgelegtem Startindex den n-ten Term auf und erzeugt dazu selbstständig eine konsistente Tabelle und Punktdarstellung.",
+            "observablePerformanceEn": "The learner explains the difference between a constant difference and a constant factor, writes an nth-term expression for a suitable sequence with a specified starting index and independently produces a consistent table and point plot."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "arithmetic-geometric-index-and-structure"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "arithmetic-geometric-index-and-structure-variation",
+            "textDe": "Startindex, additive Änderung und vorzeichenwechselnden multiplikativen Faktor variieren.",
+            "textEn": "Vary the starting index, additive change and sign-alternating multiplicative factor."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-basic-sequence-rules",
+            "taskDemandDe": "Eine arithmetische Folge beginnt bei a1=4 und hat Differenz −3; eine geometrische bei b1=3 und Faktor 2. Gib jeweils die ersten vier Werte, einen Term für das n-te Glied und eine diskrete grafische Darstellung an. Erkläre den Unterschied der Regeln.",
+            "taskDemandEn": "An arithmetic sequence starts at a1=4 with difference −3; a geometric sequence starts at b1=3 with ratio 2. Give the first four values, an nth-term expression and a discrete plot for each. Explain the difference between the rules.",
+            "expectedPerformanceDe": "a: 4,1,−2,−5 mit a_n=4−3(n−1)=7−3n. b: 3,6,12,24 mit b_n=3·2^(n−1). Die Punkte stehen bei n=1,2,3,4. Die arithmetische Folge hat konstante Differenz −3, die geometrische konstanten Faktor 2; ihre Graphen bestehen aus einzelnen Punkten.",
+            "expectedPerformanceEn": "a: 4,1,−2,−5 with a_n=4−3(n−1)=7−3n. b: 3,6,12,24 with b_n=3·2^(n−1). Points occur at n=1,2,3,4. The arithmetic sequence has constant difference −3 and the geometric sequence constant factor 2; their graphs consist of separate points.",
+            "understandingFocusDe": "Rekursive Veränderung, expliziten Term und Punktdarstellung koordinieren.",
+            "understandingFocusEn": "Coordinate successive change, explicit expression and point plot."
+          },
+          {
+            "id": "zero-index-negative-ratio",
+            "taskDemandDe": "Eine Folge ist durch c0=3 und c_(n+1)=−c_n/2 für n≥0 festgelegt. Ordne ihren Typ ein, gib c0 bis c4 und einen expliziten Term an und zeichne die Punkte. Vergleiche mit einer arithmetischen Abnahme um 1,5 ab demselben Startwert.",
+            "taskDemandEn": "A sequence is defined by c0=3 and c_(n+1)=−c_n/2 for n≥0. Classify it, give c0 through c4 and an explicit expression, and plot the points. Compare it with an arithmetic decrease of 1.5 from the same starting value.",
+            "expectedPerformanceDe": "c_n=3(−1/2)^n ist geometrisch; die Werte sind 3,−1,5,0,75,−0,375,0,1875. Der Graph wechselt die Seite der Achse, und die Beträge werden halbiert. Die arithmetische Vergleichsfolge 3−1,5n liefert 3,1,5,0,−1,5,−3; gleiche Zahlen im Startkontext bedeuten nicht denselben Änderungstyp.",
+            "expectedPerformanceEn": "c_n=3(−1/2)^n is geometric, with values 3,−1.5,0.75,−0.375,0.1875. The plot alternates sides of the axis and the magnitudes halve. The arithmetic comparison sequence 3−1.5n gives 3,1.5,0,−1.5,−3; shared starting-context numbers do not imply the same type of change.",
+            "understandingFocusDe": "Multiplikative Struktur bei negativem Faktor und geändertem Indexbeginn bewahren.",
+            "understandingFocusEn": "Preserve multiplicative structure with a negative ratio and changed index origin."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Arithmetische und geometrische Reihen untersuchen“. Von positiver arithmetischer und geometrischer Folge zu negativem Quotienten und dem Grenzfall q=1 wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "partial-sums-and-infinite-behavior",
+            "essentialUnderstandingDe": "Eine Reihe wird durch ihre Partialsummen untersucht, nicht durch einzelne Summanden allein. Für arithmetische und geometrische Summandenfolgen ergeben sich verschiedene Summenformeln; bei geometrischen Reihen entscheidet das Verhalten von q^n über den endlichen Grenzwert.",
+            "essentialUnderstandingEn": "A series is investigated through its partial sums, not through individual summands alone. Arithmetic and geometric summand sequences yield different summation formulas; for geometric series, the behavior of q^n determines the finite limit.",
+            "observablePerformanceDe": "Die lernende Person berechnet selbstständig passende Partialsummen beider Reihentypen, erläutert die Summanden und Indizes der gewählten Formel und begründet an deren n-Abhängigkeit einen endlichen Grenzwert oder Divergenz; Sonderfälle wie q=1 werden passend behandelt.",
+            "observablePerformanceEn": "The learner independently computes appropriate partial sums of both series types, explains the summands and indices in the chosen formula and uses its dependence on n to justify a finite limit or divergence; special cases such as q=1 are handled appropriately."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "partial-sums-and-infinite-behavior"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "partial-sums-and-infinite-behavior-variation",
+            "textDe": "Von positiver arithmetischer und geometrischer Folge zu negativem Quotienten und dem Grenzfall q=1 wechseln.",
+            "textEn": "Move from positive arithmetic and geometric sequences to a negative ratio and the boundary case q=1."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-sum-types",
+            "taskDemandDe": "Für a_k=3+2(k−1) und b_k=6·(1/3)^(k−1), k≥1: Bestimme jeweils eine Formel für die Summe der ersten n Glieder, berechne S_5 bei a und S_3 bei b und beschreibe das Verhalten der Partialsummen für wachsendes n.",
+            "taskDemandEn": "For a_k=3+2(k−1) and b_k=6·(1/3)^(k−1), k≥1, find a formula for the sum of the first n terms, compute S_5 for a and S_3 for b, and describe the behavior of the partial sums as n grows.",
+            "expectedPerformanceDe": "Arithmetisch: S_n=n(3+(2n+1))/2=n(n+2), S_5=35; die Partialsummen wachsen unbegrenzt. Geometrisch: S_n=6(1−3^(−n))/(1−1/3)=9(1−3^(−n)), S_3=26/3; der Rest 9·3^(−n) geht gegen null, daher Grenzwert 9. Die Auswahl der Summenformel wird mit konstanter Differenz beziehungsweise konstantem Quotienten begründet.",
+            "expectedPerformanceEn": "Arithmetic: S_n=n(3+(2n+1))/2=n(n+2), S_5=35; the partial sums grow without bound. Geometric: S_n=6(1−3^(−n))/(1−1/3)=9(1−3^(−n)), S_3=26/3; the remainder 9·3^(−n) tends to zero, hence the limit is 9. Constant difference or constant ratio justifies the selected sum formula.",
+            "understandingFocusDe": "Folge, endliche Summe und Grenzwert der Partialsummen auseinanderhalten.",
+            "understandingFocusEn": "Distinguish the sequence, finite sum and limit of partial sums."
+          },
+          {
+            "id": "negative-ratio-boundary",
+            "taskDemandDe": "Untersuche die Partialsummen der geometrischen Folge c_k=3·(−1/2)^(k−1), k≥1. Vergleiche die ersten drei Partialsummen, eine allgemeine Summenformel und das langfristige Verhalten mit dem Fall c_k=3 für alle k.",
+            "taskDemandEn": "Investigate partial sums of the geometric sequence c_k=3·(−1/2)^(k−1), k≥1. Compare the first three partial sums, a general sum formula and long-term behavior with the case c_k=3 for every k.",
+            "expectedPerformanceDe": "Für q=−1/2 lauten die ersten Summen 3, 3/2, 9/4 und S_n=2(1−(−1/2)^n). Sie wechseln um 2, konvergieren aber wegen |q|<1 gegen 2. Für q=1 ist S_n=3n und divergent; die Formel mit Nenner 1−q darf dort nicht eingesetzt werden.",
+            "expectedPerformanceEn": "For q=−1/2 the first sums are 3, 3/2, 9/4 and S_n=2(1−(−1/2)^n). They alternate around 2 but converge to 2 because |q|<1. For q=1, S_n=3n diverges; the formula with denominator 1−q is not applicable there.",
+            "understandingFocusDe": "Vorzeichenwechsel verhindern Konvergenz nicht; den ausgeschlossenen Nennerfall gesondert behandeln.",
+            "understandingFocusEn": "Sign changes do not prevent convergence; handle the excluded denominator case separately."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1b888f4c-df57-52a9-9551-b2b692e929fa",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Konvergenz und Divergenz von Folgen beschreiben“. Zwischen endlicher Tabelle, vollständiger Vorschrift und abklingender beziehungsweise bleibender Oszillation wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "conjectures-versus-sequence-rule",
+            "essentialUnderstandingDe": "Konvergenz beschreibt das Verhalten beliebig später Folgenglieder; eine endliche Tabelle oder ein begrenzter Graph allein entscheidet es nicht. Eine Nullfolge konvergiert gegen null, auch wenn ihre Glieder das Vorzeichen wechseln.",
+            "essentialUnderstandingEn": "Convergence concerns arbitrarily late terms; a finite table or bounded plot alone cannot decide it. A null sequence converges to zero, even when its terms alternate in sign.",
+            "observablePerformanceDe": "Die lernende Person beschreibt den beobachtbaren Trend einer selbst ausgewerteten Tabelle oder Punktdarstellung, formuliert eine begründete Vermutung über einen Grenzwert und unterscheidet diese von einer Erklärung aus dem Bildungsgesetz, etwa warum die Beträge von (−1)^n/n gegen null gehen.",
+            "observablePerformanceEn": "The learner describes the visible trend in an independently analyzed table or point plot, formulates a reasoned conjecture about a limit and distinguishes it from an explanation based on the formation rule, such as why the absolute values of (−1)^n/n tend to zero."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "conjectures-versus-sequence-rule"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "conjectures-versus-sequence-rule-variation",
+            "textDe": "Zwischen endlicher Tabelle, vollständiger Vorschrift und abklingender beziehungsweise bleibender Oszillation wechseln.",
+            "textEn": "Move between a finite table, a complete rule, and decaying versus persistent oscillation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "table-and-rule",
+            "taskDemandDe": "Eine Tabelle zeigt für n=1,2,3,4 die Werte 0,5; 0,75; 0,875; 0,9375. Formuliere eine plausible Grenzwertvermutung und erkläre ihre Reichweite. Anschließend wird a_n=1−2^(−n) für alle n≥1 angegeben: Begründe jetzt das Grenzverhalten und untersuche den Abstand zu deinem vermuteten Grenzwert.",
+            "taskDemandEn": "A table shows 0.5, 0.75, 0.875, 0.9375 for n=1,2,3,4. Formulate a plausible limit conjecture and explain its scope. You are then given a_n=1−2^(−n) for every n≥1: justify the limiting behavior and investigate the distance to the conjectured limit.",
+            "expectedPerformanceDe": "Die Tabelle legt den Grenzwert 1 nahe, beweist ihn jedoch nicht. Mit der Vorschrift gilt |a_n−1|=2^(−n)→0; diese Abstandsfolge ist eine Nullfolge, a_n selbst konvergiert gegen 1 und ist keine Nullfolge.",
+            "expectedPerformanceEn": "The table suggests the limit 1 but does not prove it. From the rule, |a_n−1|=2^(−n)→0; this distance sequence is a null sequence, whereas a_n itself converges to 1 and is not a null sequence.",
+            "understandingFocusDe": "Eine beobachtete Annäherung von einer Begründung durch das Bildungsgesetz unterscheiden.",
+            "understandingFocusEn": "Distinguish an observed approach from justification using the formation rule."
+          },
+          {
+            "id": "finite-prefix-and-oscillation",
+            "taskDemandDe": "Eine Folge b stimmt für n=1 bis 4 mit der Tabelle aus 0,5; 0,75; 0,875; 0,9375 überein, für n≥5 gilt b_n=n. Was zeigt dies über Schlüsse aus endlichen Tabellen? Vergleiche danach c_n=(−1)^n/n mit d_n=(−1)^n: Welche ist eine Nullfolge und warum?",
+            "taskDemandEn": "A sequence b agrees with the table 0.5, 0.75, 0.875, 0.9375 for n=1 to 4, but b_n=n for n≥5. What does this show about conclusions from finite tables? Then compare c_n=(−1)^n/n with d_n=(−1)^n: which is a null sequence, and why?",
+            "expectedPerformanceDe": "b wächst trotz desselben Anfangs unbegrenzt; ein endlicher Ausschnitt entscheidet das unendliche Verhalten nicht. c ist eine Nullfolge, weil |c_n|=1/n→0; d wechselt dauerhaft zwischen −1 und 1 und hat keinen Grenzwert. Vorzeichenwechsel allein entscheiden die Frage nicht.",
+            "expectedPerformanceEn": "Despite the same prefix, b grows without bound; a finite excerpt does not determine infinite behavior. c is a null sequence because |c_n|=1/n→0; d keeps alternating between −1 and 1 and has no limit. Sign changes alone do not decide the question.",
+            "understandingFocusDe": "Die Aussagegrenze einer Darstellung erkennen und abklingende von dauerhafter Oszillation unterscheiden.",
+            "understandingFocusEn": "Recognize the limits of a representation and distinguish decaying from persistent oscillation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c61af0a9-7d56-5505-a70d-ee097c3b747f",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Grenzwerte von Folgen mit Grenzwertsätzen begründen“. Von einem zulässigen Quotientengesetz zu einem zunächst unbestimmten Quotienten und einer divergenten Folge wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "limit-laws-and-domain-conditions",
+            "essentialUnderstandingDe": "Grenzwertsätze verknüpfen bereits begründete endliche Teilgrenzwerte. Beim Quotientensatz muss der Nennergrenzwert ungleich null sein; das Scheitern einer Satzvoraussetzung allein beweist keine Divergenz der Gesamtfolge.",
+            "essentialUnderstandingEn": "Limit laws combine already established finite component limits. The quotient law requires a nonzero denominator limit; failure of a law's prerequisite alone does not prove that the whole sequence diverges.",
+            "observablePerformanceDe": "Die lernende Person zerlegt eine Folge geeignet, prüft die Voraussetzungen der verwendeten Grenzwertsätze und stellt die Rechnung mit einer erklärenden Argumentation dar; bei einer divergenten Folge begründet sie das Verhalten statt fehlende Satzanwendbarkeit als Beweis auszugeben.",
+            "observablePerformanceEn": "The learner decomposes a sequence appropriately, checks the prerequisites of the applied limit laws and presents the calculation together with explanatory reasoning; for a divergent sequence, its behavior is justified rather than treating failure to apply a law as proof."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "limit-laws-and-domain-conditions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "limit-laws-and-domain-conditions-variation",
+            "textDe": "Von einem zulässigen Quotientengesetz zu einem zunächst unbestimmten Quotienten und einer divergenten Folge wechseln.",
+            "textEn": "Move from a valid quotient law to an initially indeterminate quotient and a divergent sequence."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rational-limit-justified",
+            "taskDemandDe": "Begründe lim_(n→∞) (3n²−2n+1)/(2n²+n) mit Grenzwertsätzen. Erläutere in Worten und mit Symbolen, warum das Quotientengesetz nach geeigneter Umformung anwendbar ist.",
+            "taskDemandEn": "Justify lim_(n→∞) (3n²−2n+1)/(2n²+n) using limit laws. Explain verbally and symbolically why the quotient law applies after a suitable transformation.",
+            "expectedPerformanceDe": "Division durch n² ergibt (3−2/n+1/n²)/(2+1/n). Wegen 1/n→0 und 1/n²→0 liefern Summen- und Faktorregel Zählergrenzwert 3 und Nennergrenzwert 2. Da 2≠0, erlaubt das Quotientengesetz den Grenzwert 3/2.",
+            "expectedPerformanceEn": "Dividing by n² gives (3−2/n+1/n²)/(2+1/n). Since 1/n→0 and 1/n²→0, sum and scalar-multiple laws give numerator limit 3 and denominator limit 2. Since 2≠0, the quotient law yields 3/2.",
+            "understandingFocusDe": "Rechengesetze nicht nur nennen, sondern ihre Voraussetzungen am Ausdruck prüfen.",
+            "understandingFocusEn": "Check the laws' assumptions for the expression rather than merely naming them."
+          },
+          {
+            "id": "zero-denominator-and-divergence",
+            "taskDemandDe": "Eine Person behauptet: (1/n)/(1/n+1/n²) habe den Grenzwert 0/0, und 1+(−1)^n habe den Grenzwert 1. Prüfe beide Aussagen und begründe ein korrektes Ergebnis.",
+            "taskDemandEn": "Someone claims that (1/n)/(1/n+1/n²) has limit 0/0, and that 1+(−1)^n has limit 1. Check both claims and justify a correct conclusion.",
+            "expectedPerformanceDe": "0/0 ist kein Grenzwert; das Quotientengesetz ist mit Nennergrenzwert 0 zunächst nicht anwendbar. Kürzen ergibt 1/(1+1/n)→1. Die zweite Folge hat auf geraden Indizes den Wert 2 und auf ungeraden 0; sie ist divergent. Für (−1)^n existiert kein Grenzwert, den man in ein Summengesetz einsetzen könnte.",
+            "expectedPerformanceEn": "0/0 is not a limit; with denominator limit zero the quotient law initially does not apply. Cancellation gives 1/(1+1/n)→1. The second sequence equals 2 on even indices and 0 on odd ones; it diverges. There is no limit of (−1)^n to substitute into a sum law.",
+            "understandingFocusDe": "Unzulässige Regelanwendung von auflösbarer Unbestimmtheit und echter Divergenz unterscheiden.",
+            "understandingFocusEn": "Distinguish invalid use of a law from removable indeterminacy and genuine divergence."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "6a66b4f5-d36e-5b53-91ad-cf25a849d66b",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Explizit definierte Folgen darstellen und berechnen (LK)“. Von einem bei null beginnenden Wechselzeichenmuster zu einer rationalen Vorschrift mit eingeschränktem Indexbereich wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "explicit-rule-index-evaluation",
+            "essentialUnderstandingDe": "Eine explizite Folgenvorschrift ordnet jedem zulässigen ganzzahligen Index direkt einen Wert zu. Index, Folgenglied und Punkt (n,a_n) bezeichnen verschiedene Rollen; zwischen den Indizes liegen keine weiteren Folgenglieder.",
+            "essentialUnderstandingEn": "An explicit sequence rule assigns a value directly to each admissible integer index. Index, term and point (n,a_n) play different roles; there are no additional sequence terms between indices.",
+            "observablePerformanceDe": "Die lernende Person berechnet aus einer selbst interpretierten expliziten Vorschrift ausgewählte Folgenglieder, auch mit weit auseinanderliegenden Indizes, stellt sie passend dar und erläutert Indexbereich, Termwert und diskrete Darstellung fachsprachlich.",
+            "observablePerformanceEn": "The learner computes selected terms from an independently interpreted explicit rule, including widely separated indices, represents them appropriately and explains the index domain, term value and discrete representation in mathematical language."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "explicit-rule-index-evaluation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "explicit-rule-index-evaluation-variation",
+            "textDe": "Von einem bei null beginnenden Wechselzeichenmuster zu einer rationalen Vorschrift mit eingeschränktem Indexbereich wechseln.",
+            "textEn": "Move from an alternating rule starting at zero to a rational rule with a restricted index domain."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "alternating-explicit-rule",
+            "taskDemandDe": "Für a_n=(−1)^n(n+1), n=0,1,2,…, berechne a_0 bis a_3 sowie a_100. Skizziere die vier Anfangspunkte (n,a_n) und erkläre die getrennten Rollen von Index, Vorzeichenfaktor und Betrag.",
+            "taskDemandEn": "For a_n=(−1)^n(n+1), n=0,1,2,…, compute a_0 through a_3 and a_100. Sketch the four initial points (n,a_n) and explain the separate roles of index, sign factor and magnitude.",
+            "expectedPerformanceDe": "a_0=1, a_1=−2, a_2=3, a_3=−4 und a_100=101. Die Punkte sind (0,1),(1,−2),(2,3),(3,−4). Der Index wird unmittelbar eingesetzt; seine Parität bestimmt das Vorzeichen, n+1 den Betrag. Vorherige Glieder werden für a_100 nicht benötigt.",
+            "expectedPerformanceEn": "a_0=1, a_1=−2, a_2=3, a_3=−4 and a_100=101. The points are (0,1),(1,−2),(2,3),(3,−4). The index is substituted directly; its parity sets the sign and n+1 the magnitude. Earlier terms are not needed to compute a_100.",
+            "understandingFocusDe": "Explizite Vorschriften ordnen einem zulässigen Index direkt einen Wert zu.",
+            "understandingFocusEn": "Explicit rules assign a value directly to an admissible index."
+          },
+          {
+            "id": "rational-index-domain",
+            "taskDemandDe": "Für b_n=n/(n−2), n∈{3,4,5,…}, berechne b_3 bis b_6 und b_20. Erkläre, warum b_2 kein Glied dieser Folge ist, und weshalb das fünfte Glied der Folge nicht b_5 heißt.",
+            "taskDemandEn": "For b_n=n/(n−2), n∈{3,4,5,…}, compute b_3 through b_6 and b_20. Explain why b_2 is not a term of this sequence and why the fifth term of the sequence is not called b_5.",
+            "expectedPerformanceDe": "b_3=3, b_4=2, b_5=5/3, b_6=3/2 und b_20=10/9. n=2 liegt außerhalb des angegebenen Indexbereichs und würde zudem einen Nenner null erzeugen. Die Folge beginnt bei n=3; ihr fünftes Glied ist deshalb b_7=7/5. Position in der Folge und Index sind zu unterscheiden; eine Tabelle ausgewählter Glieder kann zusätzlich Indizes überspringen.",
+            "expectedPerformanceEn": "b_3=3, b_4=2, b_5=5/3, b_6=3/2 and b_20=10/9. n=2 is outside the stated index domain and would also create a zero denominator. The sequence starts at n=3, so its fifth term is b_7=7/5. Position in the sequence and index must be distinguished; a table of selected terms may additionally skip indices.",
+            "understandingFocusDe": "Die Einsetzstrategie auf einen neuen Term übertragen und den Indexbereich beachten.",
+            "understandingFocusEn": "Transfer direct substitution to a new expression while respecting its index domain."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "10efb267-9733-5db3-a807-03f4cf54e336",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Rekursiv definierte Folgen darstellen und berechnen (LK)“. Von einer Rekursion mit zwei Vorgängern zu einer nichtlinearen Rekursion mit einem Vorgänger wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "recursive-initial-values-and-dependency",
+            "essentialUnderstandingDe": "Eine rekursive Definition besteht aus genügend Startwerten und einer Regel, die spätere Glieder aus vorherigen bestimmt. Die Anzahl der benötigten Vorgängerglieder und der gültige Indexbeginn gehören zur Definition; der Index wird nicht einfach wie bei einer expliziten Formel eingesetzt.",
+            "essentialUnderstandingEn": "A recursive definition consists of enough initial values and a rule determining later terms from preceding ones. The required number of predecessor terms and the valid starting index are part of the definition; the index is not simply substituted as in an explicit formula.",
+            "observablePerformanceDe": "Die lernende Person liest Startwerte und Rekursionsbereich aus einer selbst bearbeiteten Definition, berechnet nachvollziehbar mehrere Folgenglieder und erklärt die Vorgängerabhängigkeit an Fibonacci- oder einer gegebenen Newton-Rekursion.",
+            "observablePerformanceEn": "The learner extracts initial values and the recursion's index range from an independently worked definition, computes several terms transparently and explains dependence on predecessors using Fibonacci or a supplied Newton recurrence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "recursive-initial-values-and-dependency"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "recursive-initial-values-and-dependency-variation",
+            "textDe": "Von einer Rekursion mit zwei Vorgängern zu einer nichtlinearen Rekursion mit einem Vorgänger wechseln.",
+            "textEn": "Move from a recursion with two preceding terms to a nonlinear recursion with one preceding term."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-predecessor-recursion",
+            "taskDemandDe": "Gegeben sind F_0=2, F_1=1 und F_(n+2)=F_(n+1)+F_n für n≥0. Berechne F_2 bis F_5 und erkläre, weshalb die Rekursion hier zwei Anfangswerte benötigt. Vergleiche kurz mit dem Startpaar 1,1.",
+            "taskDemandEn": "Given F_0=2, F_1=1 and F_(n+2)=F_(n+1)+F_n for n≥0, compute F_2 through F_5 and explain why this recursion needs two initial values. Briefly compare with the initial pair 1,1.",
+            "expectedPerformanceDe": "Es folgen F_2=3,F_3=4,F_4=7,F_5=11. Jeder neue Wert verwendet genau die beiden vorherigen; ohne das zweite Startglied wäre F_2 nicht festgelegt. Beim Startpaar 1,1 entstehen stattdessen 2,3,5,8; dieselbe Rekursionsregel allein legt die Folge nicht fest.",
+            "expectedPerformanceEn": "The next terms are F_2=3,F_3=4,F_4=7,F_5=11. Each new value uses exactly the preceding two; without the second initial term F_2 would not be determined. Initial pair 1,1 instead produces 2,3,5,8; the recursive rule alone does not determine the sequence.",
+            "understandingFocusDe": "Anfangswerte und Abhängigkeitstiefe gehören zur vollständigen rekursiven Definition.",
+            "understandingFocusEn": "Initial values and dependency depth belong to a complete recursive definition."
+          },
+          {
+            "id": "newton-type-update",
+            "taskDemandDe": "Gegeben sind a_0=2 und a_(n+1)=1/2·(a_n+3/a_n). Berechne a_1 und a_2 exakt und beschreibe einen Rechenplan für a_3. Erkläre, weshalb diese Rekursion nur einen Startwert braucht und a_0=0 unzulässig wäre.",
+            "taskDemandEn": "Given a_0=2 and a_(n+1)=1/2·(a_n+3/a_n), compute a_1 and a_2 exactly and describe how to compute a_3. Explain why this recursion needs only one starting value and why a_0=0 would be inadmissible.",
+            "expectedPerformanceDe": "a_1=7/4 und a_2=97/56. Für a_3 wird der gesamte Wert 97/56 sowohl in a_n als auch in 3/a_n eingesetzt: a_3=18817/10864. Die Vorschrift benötigt nur den unmittelbar vorherigen Wert; bei a_0=0 wäre schon 3/a_0 undefiniert. Ein Beweis der Konvergenz oder die Herleitung des Newton-Verfahrens wird nicht verlangt.",
+            "expectedPerformanceEn": "a_1=7/4 and a_2=97/56. For a_3, substitute the entire value 97/56 into both a_n and 3/a_n: a_3=18817/10864. The rule needs only the immediately preceding value; a_0=0 would make 3/a_0 undefined. Neither a convergence proof nor a derivation of Newton's method is required.",
+            "understandingFocusDe": "Eine nichtlineare Vorschrift schrittweise korrekt ausführen, ohne Index und vorherigen Wert zu verwechseln.",
+            "understandingFocusEn": "Execute a nonlinear update correctly without confusing the index with the preceding value."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Bildungsgesetze zu Folgengliedern aufstellen (LK)“. Von quadratischem Wachstum zu einer Verdopplungsrekursion wechseln; endliche Daten als nicht eindeutig kennzeichnen. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "plausible-formation-rules-not-uniqueness",
+            "essentialUnderstandingDe": "Endlich viele Folgenglieder können zu mehreren Bildungsgesetzen passen. Ein vorgeschlagenes Gesetz muss alle gegebenen Index-Wert-Paare erklären; erkennbare Differenzen, Faktoren oder Vorgängerbeziehungen begründen die Wahl unter einer benannten Musterannahme.",
+            "essentialUnderstandingEn": "Finitely many sequence terms can fit more than one formation rule. A proposed rule must account for all given index-value pairs; visible differences, factors or predecessor relations justify its choice under a stated pattern assumption.",
+            "observablePerformanceDe": "Die lernende Person findet selbstständig ein plausibles explizites oder rekursives Gesetz, überprüft es an allen gegebenen Gliedern und erläutert, welche mathematische Regelmäßigkeit die Wahl trägt, ohne aus endlich vielen Werten Eindeutigkeit zu behaupten.",
+            "observablePerformanceEn": "The learner independently finds a plausible explicit or recursive rule, checks it against all supplied terms and explains the mathematical regularity supporting the choice without claiming uniqueness from finitely many values."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "plausible-formation-rules-not-uniqueness"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "plausible-formation-rules-not-uniqueness-variation",
+            "textDe": "Von quadratischem Wachstum zu einer Verdopplungsrekursion wechseln; endliche Daten als nicht eindeutig kennzeichnen.",
+            "textEn": "Move from quadratic growth to a doubling recursion; acknowledge that finite data do not determine a unique rule."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "odd-differences",
+            "taskDemandDe": "Für n=1,2,3,4,5 sind die Werte 2,5,10,17,26 angegeben. Finde eine einfache explizite oder rekursive Fortsetzung, begründe sie anhand der Werte und sage, ob damit die einzig mögliche unendliche Folge gefunden ist.",
+            "taskDemandEn": "For n=1,2,3,4,5 the terms are 2,5,10,17,26. Find a simple explicit or recursive continuation, justify it using the data, and state whether it is the only possible infinite sequence.",
+            "expectedPerformanceDe": "a_n=n²+1 passt zu allen fünf Werten; die Differenzen 3,5,7,9 steigen jeweils um 2. Gleichwertig ist a_1=2, a_(n+1)=a_n+2n+1. Beide setzen plausibel mit 37 fort. Die endlichen Daten allein beweisen diese Fortsetzung nicht: spätere Werte könnten ohne zusätzliche Vorgabe anders gewählt werden.",
+            "expectedPerformanceEn": "a_n=n²+1 fits all five values; differences 3,5,7,9 increase by 2. Equivalently, a_1=2, a_(n+1)=a_n+2n+1. Both plausibly continue with 37. Finite data alone do not prove this continuation: later terms could be chosen differently without additional constraints.",
+            "understandingFocusDe": "Ein Muster durch überprüfbare Beziehungen begründen und die Nicht-Eindeutigkeit endlicher Daten benennen.",
+            "understandingFocusEn": "Justify a pattern by checkable relationships and acknowledge non-uniqueness of finite data."
+          },
+          {
+            "id": "doubling-offset",
+            "taskDemandDe": "Die ersten Werte einer Folge ab n=1 sind 2,3,5,9,17. Prüfe die Vorschläge b_(n+1)=2b_n−1 mit b_1=2 und b_n=1+2^(n−1). Begründe, wie beide zum selben Muster passen, und prognostiziere zwei weitere Werte unter dieser Annahme.",
+            "taskDemandEn": "A sequence starting at n=1 has initial terms 2,3,5,9,17. Check the proposals b_(n+1)=2b_n−1 with b_1=2 and b_n=1+2^(n−1). Explain how both fit the same pattern and predict two more values under this assumption.",
+            "expectedPerformanceDe": "Die Rekursion reproduziert alle Übergänge und liefert 33,65. Bei c_n=b_n−1 entstehen 1,2,4,8,16, also eine geometrische Folge mit Quotient 2; daraus folgt der explizite Vorschlag. Einsetzen bestätigt b_(n+1)=1+2^n=2(1+2^(n−1))−1. Die Prognose bleibt an die gewählte Regel gebunden.",
+            "expectedPerformanceEn": "The recursion reproduces every transition and yields 33,65. For c_n=b_n−1, the terms are 1,2,4,8,16, a geometric sequence with ratio 2; this gives the explicit proposal. Substitution confirms b_(n+1)=1+2^n=2(1+2^(n−1))−1. The prediction remains conditional on the chosen rule.",
+            "understandingFocusDe": "Ein neues Muster durch Verschieben auf eine bekannte Struktur zurückführen, nicht nur Zahlen fortsetzen.",
+            "understandingFocusEn": "Reduce a fresh pattern to a known structure by shifting it, rather than merely extending numbers."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b66d13c5-187e-530b-b4d3-efc7506a7f34",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Folgen auf Monotonie, Beschränktheit und Konvergenz untersuchen (LK)“. Von monotoner beschränkter Konvergenz zu einer nichtmonotonen konvergenten Folge wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "monotone-bounded-and-limit-identification",
+            "essentialUnderstandingDe": "Monotonie und passende Beschränktheit sichern gemeinsam Konvergenz einer reellen Folge. Beschränktheit allein genügt nicht; eine beliebige obere Schranke ist nicht automatisch der Grenzwert, und ein Grenzwertkandidat muss zur Folge passen.",
+            "essentialUnderstandingEn": "Monotonicity together with the appropriate boundedness guarantees convergence of a real sequence. Boundedness alone is insufficient; an arbitrary upper bound is not automatically the limit, and a proposed limit must fit the sequence.",
+            "observablePerformanceDe": "Die lernende Person begründet die Monotonie etwa über a_(n+1)−a_n, weist eine passende Schranke nach, formuliert den daraus zulässigen Konvergenzschluss und bestimmt den Grenzwert durch ein zur Definition passendes weiteres Argument.",
+            "observablePerformanceEn": "The learner justifies monotonicity, for example through a_(n+1)−a_n, establishes an appropriate bound, states the warranted convergence conclusion and determines the limit through a further argument suited to the definition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "monotone-bounded-and-limit-identification"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "monotone-bounded-and-limit-identification-variation",
+            "textDe": "Von monotoner beschränkter Konvergenz zu einer nichtmonotonen konvergenten Folge wechseln.",
+            "textEn": "Move from monotone bounded convergence to a nonmonotone convergent sequence."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bounded-increasing-rational",
+            "taskDemandDe": "Untersuche a_n=n/(n+1), n≥1, auf Monotonie und Beschränktheit, begründe die Konvergenz und bestimme den Grenzwert. Erkläre, welcher Teil des Arguments nur die Existenz und welcher den Wert des Grenzwerts liefert.",
+            "taskDemandEn": "Investigate a_n=n/(n+1), n≥1, for monotonicity and boundedness, justify convergence and determine its limit. Explain which part proves existence and which determines the value of the limit.",
+            "expectedPerformanceDe": "a_(n+1)−a_n=1/((n+1)(n+2))>0 und 0<a_n<1. Monotonie und obere Schranke sichern einen Grenzwert. Die Umformung a_n=1−1/(n+1) bestimmt diesen als 1. Die bloße Angabe einer oberen Schranke würde deren Gleichheit mit dem Grenzwert nicht beweisen.",
+            "expectedPerformanceEn": "a_(n+1)−a_n=1/((n+1)(n+2))>0 and 0<a_n<1. Monotonicity and an upper bound guarantee a limit. Rewriting a_n=1−1/(n+1) identifies that limit as 1. Merely giving an upper bound would not prove that it equals the limit.",
+            "understandingFocusDe": "Existenzsicherung und Bestimmung des Grenzwerts logisch auseinanderhalten.",
+            "understandingFocusEn": "Separate logically the existence of a limit from identifying its value."
+          },
+          {
+            "id": "nonmonotone-convergence",
+            "taskDemandDe": "Für b_n=2+(−1)^n/n, n≥1, behauptet jemand: Ohne Monotonie kann die Folge nicht konvergieren. Prüfe die Behauptung mit Anfangswerten, Schranken und einem Grenzwertargument. Was zeigt das über das Monotoniekriterium?",
+            "taskDemandEn": "For b_n=2+(−1)^n/n, n≥1, someone claims that a nonmonotone sequence cannot converge. Check this claim using initial values, bounds and a limit argument. What does this show about the monotone convergence criterion?",
+            "expectedPerformanceDe": "Die Werte 1,5/2,5/3,9/4 zeigen steigende und fallende Schritte; die Folge ist nicht monoton. Für alle n gilt 1≤b_n≤5/2, und |b_n−2|=1/n→0, also b_n→2. Monotonie und Beschränktheit sind zusammen hinreichend, aber Monotonie ist keine notwendige Bedingung für Konvergenz.",
+            "expectedPerformanceEn": "The values 1,5/2,5/3,9/4 show both upward and downward steps; the sequence is not monotone. For every n, 1≤b_n≤5/2 and |b_n−2|=1/n→0, hence b_n→2. Monotonicity and boundedness together are sufficient, but monotonicity is not necessary for convergence.",
+            "understandingFocusDe": "Eine hinreichende Bedingung nicht fälschlich als notwendige Bedingung behandeln.",
+            "understandingFocusEn": "Do not mistake a sufficient condition for a necessary one."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4d55ba50-8d67-560c-a10f-cccff4728c40",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Reihen als Folgen von Partialsummen beschreiben (LK)“. Vom Summieren positiver Glieder ab Index 1 zu wechselnden Gliedern ab Index 0 wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "series-as-partial-sum-sequences",
+            "essentialUnderstandingDe": "Aus einer Summandenfolge (a_n) entsteht die Partialsummenfolge S_n=Σ_(k=1)^n a_k. Der Laufindex k zählt Summanden, n bezeichnet die letzte Summandenposition; die Reihe ist die Folge dieser Summen und nicht die ursprüngliche Summandenfolge.",
+            "essentialUnderstandingEn": "A summand sequence (a_n) generates the partial-sum sequence S_n=Σ_(k=1)^n a_k. The running index k counts summands, while n identifies the last summand position; the series is the sequence of these sums, not the original summand sequence.",
+            "observablePerformanceDe": "Die lernende Person bildet selbstständig aus einer vorgegebenen Summandenfolge mehrere Partialsummen, erläutert die Summenschreibweise und stellt denselben Sachverhalt als ausgeschriebene Summe, Tabelle und Partialsummenfolge dar.",
+            "observablePerformanceEn": "The learner independently forms several partial sums from a supplied summand sequence, explains summation notation and represents the same relationship as an expanded sum, table and partial-sum sequence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "series-as-partial-sum-sequences"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "series-as-partial-sum-sequences-variation",
+            "textDe": "Vom Summieren positiver Glieder ab Index 1 zu wechselnden Gliedern ab Index 0 wechseln.",
+            "textEn": "Move from summing positive terms starting at index 1 to alternating terms starting at index 0."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "odd-number-partial-sums",
+            "taskDemandDe": "Gegeben ist a_n=2n−1 für n≥1. Schreibe S_n als Summe mit Sigma-Zeichen und berechne die Glieder a_1 bis a_4 sowie die Partialsummen S_1 bis S_4. Erkläre insbesondere den Unterschied zwischen a_4 und S_4.",
+            "taskDemandEn": "Given a_n=2n−1 for n≥1, write S_n using sigma notation and compute a_1 through a_4 and partial sums S_1 through S_4. Explain especially the difference between a_4 and S_4.",
+            "expectedPerformanceDe": "S_n=Σ_(k=1)^n(2k−1). Die Folgenglieder sind 1,3,5,7, die Partialsummen 1,4,9,16. a_4=7 ist der vierte Summand, S_4=16 die Summe der ersten vier. Der Laufindex k wird beim Summieren durchlaufen, n legt die obere Grenze fest.",
+            "expectedPerformanceEn": "S_n=Σ_(k=1)^n(2k−1). The sequence terms are 1,3,5,7 and the partial sums are 1,4,9,16. a_4=7 is the fourth summand, whereas S_4=16 is the sum of the first four. The running index k ranges through the summands, while n sets the upper limit.",
+            "understandingFocusDe": "Eine Reihe über ihre Partialsummenfolge beschreiben; Summand und Summenwert unterscheiden.",
+            "understandingFocusEn": "Describe a series through its sequence of partial sums; distinguish a summand from a sum."
+          },
+          {
+            "id": "zero-based-alternating-sums",
+            "taskDemandDe": "Für T_n=Σ_(k=0)^n(−1)^k berechne T_0 bis T_3. Wie viele Summanden enthält T_n? Formuliere eine Beziehung zwischen T_n und T_(n−1) für n≥1 und erläutere sie.",
+            "taskDemandEn": "For T_n=Σ_(k=0)^n(−1)^k, compute T_0 through T_3. How many summands does T_n contain? Formulate and explain a relationship between T_n and T_(n−1) for n≥1.",
+            "expectedPerformanceDe": "T_0=1,T_1=0,T_2=1,T_3=0; T_n enthält n+1 Summanden. T_n=T_(n−1)+(−1)^n, weil genau der neue letzte Summand hinzukommt. Der Startindex 0 verändert die Anzahl der Summanden, nicht die Bedeutung einer Partialsumme. Eine allgemeine Konvergenzuntersuchung ist hier nicht erforderlich.",
+            "expectedPerformanceEn": "T_0=1,T_1=0,T_2=1,T_3=0; T_n contains n+1 summands. T_n=T_(n−1)+(−1)^n because exactly the new final summand is added. Starting at index 0 changes the term count, not the meaning of a partial sum. A general convergence investigation is not required here.",
+            "understandingFocusDe": "Die Darstellung auf einen anderen Startindex übertragen und den Zuwachs der Partialsumme identifizieren.",
+            "understandingFocusEn": "Transfer the representation to a different starting index and identify the increment of a partial sum."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Divergenz der harmonischen Reihe begründen (LK)“. Vom Grundargument zu einer Reihe mit endlich vielen entfernten Anfangsgliedern wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "harmonic-series-divergence-argument",
+            "essentialUnderstandingDe": "Obwohl 1/n gegen null geht, wachsen die Partialsummen der harmonischen Reihe unbegrenzt. Eine geeignete allgemeine Abschätzung zeigt immer neue positive Summenbeiträge mit einer festen unteren Schranke; einige berechnete Partialsummen allein beweisen die Divergenz nicht.",
+            "essentialUnderstandingEn": "Although 1/n tends to zero, the harmonic series' partial sums grow without bound. A suitable general estimate yields endlessly many positive contributions with a fixed lower bound; a few computed partial sums alone do not prove divergence.",
+            "observablePerformanceDe": "Die lernende Person entwickelt selbstständig ein gültiges Divergenzargument, etwa durch Blöcke zwischen aufeinanderfolgenden Zweierpotenzen mit jeweils mindestens 1/2 Beitrag, und erklärt daraus, warum jede vorgegebene Schranke irgendwann überschritten wird.",
+            "observablePerformanceEn": "The learner independently develops a valid divergence argument, for example by grouping terms between consecutive powers of two so each block contributes at least 1/2, and explains why every specified bound is eventually exceeded."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "harmonic-series-divergence-argument"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "harmonic-series-divergence-argument-variation",
+            "textDe": "Vom Grundargument zu einer Reihe mit endlich vielen entfernten Anfangsgliedern wechseln.",
+            "textEn": "Move from the basic divergence argument to a series with finitely many initial terms removed."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "harmonic-unbounded-sums",
+            "taskDemandDe": "Begründe mit einem geeigneten nachvollziehbaren Argument, dass H_n=Σ_(k=1)^n 1/k keinen endlichen Grenzwert besitzt. Eine mögliche Hilfe ist die Gruppierung k=2^(j−1)+1 bis 2^j. Erkläre auch, weshalb 1/n→0 der Divergenz nicht widerspricht.",
+            "taskDemandEn": "Give a suitable, understandable argument that H_n=Σ_(k=1)^n 1/k has no finite limit. One possible aid is grouping k=2^(j−1)+1 through 2^j. Also explain why 1/n→0 does not contradict divergence.",
+            "expectedPerformanceDe": "Jeder solche Block enthält 2^(j−1) Summanden, jeweils mindestens 1/2^j, und hat daher Summe mindestens 1/2. Also H_(2^m)≥1+m/2, was beliebig groß wird. Da alle Summanden positiv sind, wachsen die gesamten Partialsummen unbegrenzt. Dass die einzelnen Summanden gegen null gehen, ist für Reihenkonvergenz notwendig, aber nicht hinreichend; ein anderes gültiges Divergenzargument ist ebenfalls zulässig.",
+            "expectedPerformanceEn": "Each such block has 2^(j−1) terms, each at least 1/2^j, so its sum is at least 1/2. Thus H_(2^m)≥1+m/2, which becomes arbitrarily large. Since all summands are positive, all partial sums grow without bound. Terms tending to zero is necessary but not sufficient for series convergence; another valid divergence argument is also acceptable.",
+            "understandingFocusDe": "Unbegrenztes Wachstum durch beliebig viele gleichmäßig positive Beiträge begründen, nicht durch wenige Dezimalwerte.",
+            "understandingFocusEn": "Justify unbounded growth using arbitrarily many uniformly positive contributions, not a few decimal approximations."
+          },
+          {
+            "id": "remove-finite-prefix",
+            "taskDemandDe": "Jemand vermutet, dass Σ_(k=101)^n 1/k nun einen endlichen Grenzwert hat, weil die großen ersten hundert Summanden fehlen. Prüfe dies, indem du dein Divergenzargument anpasst oder die Partialsummen mit H_n vergleichst.",
+            "taskDemandEn": "Someone conjectures that Σ_(k=101)^n 1/k now has a finite limit because the first hundred large summands are missing. Check this by adapting your divergence argument or comparing its partial sums with H_n.",
+            "expectedPerformanceDe": "Für n≥101 ist die neue Partialsumme H_n−H_100. H_100 ist eine feste endliche Zahl; ihr Abzug kann das unbegrenzte Wachstum von H_n nicht begrenzen. Alternativ bleiben nach dem entfernten Anfang weiterhin beliebig viele vollständige Verdopplungsblöcke mit Beitrag mindestens 1/2. Die Reihe divergiert weiterhin gegen +∞.",
+            "expectedPerformanceEn": "For n≥101 the new partial sum is H_n−H_100. H_100 is a fixed finite number; subtracting it cannot bound the unbounded growth of H_n. Alternatively, arbitrarily many complete doubling blocks contributing at least 1/2 remain after the removed prefix. The series still diverges to +∞.",
+            "understandingFocusDe": "Das Argument auf eine echte Veränderung übertragen und erklären, warum ein endlicher Anfang das Grenzverhalten nicht rettet.",
+            "understandingFocusEn": "Transfer the argument to a genuine modification and explain why a finite prefix cannot rescue the limiting behavior."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+      "reason": "Eigenständiges, zielbezogenes P-v2-Autorenprofil zu „Konvergenzbedingungen geometrischer Reihen erläutern (LK)“. Von einem positiven Quotienten zu negativem Quotienten und den ausgeschlossenen Rand- und Außenfällen wechseln. Zwei neue Aufgabenfälle mit Erwartungslösungen; keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "geometric-series-convergence-domain",
+            "essentialUnderstandingDe": "Für eine geometrische Reihe mit nichtverschwindendem Anfangsglied konvergieren die Partialsummen genau für |q|<1, weil q^n gegen null geht; dann ist die Summe a1/(1−q). q=1 und q=−1 zeigen verschiedene Divergenzformen; die identisch nullwertige Reihe ist ein Sonderfall.",
+            "essentialUnderstandingEn": "For a geometric series with a nonzero initial term, partial sums converge exactly when |q|<1 because q^n tends to zero; the sum is then a1/(1−q). q=1 and q=−1 illustrate different forms of divergence; the identically zero series is a special case.",
+            "observablePerformanceDe": "Die lernende Person erklärt anhand der Partialsummenformel den Zusammenhang zwischen dem Parameter q und Konvergenz, prüft die Voraussetzungen vor Verwendung der Grenzwertformel und berechnet die Summe mit passendem Anfangsglied und Indexbeginn.",
+            "observablePerformanceEn": "The learner uses the partial-sum formula to explain how q controls convergence, checks the prerequisites before applying the limit formula and computes the sum with the correct initial term and starting index."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "geometric-series-convergence-domain"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "geometric-series-convergence-domain-variation",
+            "textDe": "Von einem positiven Quotienten zu negativem Quotienten und den ausgeschlossenen Rand- und Außenfällen wechseln.",
+            "textEn": "Move from a positive ratio to a negative ratio and excluded boundary and exterior cases."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "positive-ratio-infinite-sum",
+            "taskDemandDe": "Bestimme für Σ_(k=0)^∞5·(2/5)^k zunächst die Partialsumme S_n=Σ_(k=0)^n5·(2/5)^k und dann den Reihenwert. Begründe die Konvergenzbedingung und erkläre den Unterschied zwischen n und der Anzahl der Summanden.",
+            "taskDemandEn": "For Σ_(k=0)^∞5·(2/5)^k, first determine S_n=Σ_(k=0)^n5·(2/5)^k and then the infinite sum. Justify the convergence condition and explain the difference between n and the number of summands.",
+            "expectedPerformanceDe": "S_n=(25/3)(1−(2/5)^(n+1)), da n+1 Summanden vorliegen. Wegen |2/5|<1 geht die Restpotenz gegen null und der Reihenwert ist 25/3. Die unendliche Summe ist der Grenzwert der endlichen Partialsummen, nicht das bloße Einsetzen eines Symbols ∞.",
+            "expectedPerformanceEn": "S_n=(25/3)(1−(2/5)^(n+1)), since there are n+1 summands. Because |2/5|<1, the remaining power tends to zero and the infinite sum is 25/3. The infinite sum is the limit of finite partial sums, not merely substitution of a symbol ∞.",
+            "understandingFocusDe": "Die endliche Summenformel mit dem Grenzwert der Restpotenz verbinden.",
+            "understandingFocusEn": "Connect the finite sum formula with the limiting behavior of the remaining power."
+          },
+          {
+            "id": "ratio-boundary-cases",
+            "taskDemandDe": "Untersuche Σ_(k=0)^∞2q^k für q=−1/2, q=−1, q=1 und q=2 auf Konvergenz. Berechne einen Reihenwert nur dort, wo er existiert, und begründe, warum 2/(1−q) nicht in jedem Fall verwendet werden darf.",
+            "taskDemandEn": "Investigate convergence of Σ_(k=0)^∞2q^k for q=−1/2, q=−1, q=1 and q=2. Compute an infinite sum only where it exists, and justify why 2/(1−q) cannot be used in every case.",
+            "expectedPerformanceDe": "Für q=−1/2 gilt |q|<1 und der Reihenwert ist 2/(1+1/2)=4/3. Bei q=−1 wechseln die Partialsummen zwischen 2 und 0. Bei q=1 sind sie 2(n+1), bei q=2 sind sie 2(2^(n+1)−1); beide wachsen unbegrenzt. Für den nichtverschwindenden Anfangsfaktor 2 ist |q|<1 die Konvergenzbedingung; q≠1 allein reicht nicht.",
+            "expectedPerformanceEn": "For q=−1/2, |q|<1 and the infinite sum is 2/(1+1/2)=4/3. For q=−1 the partial sums alternate between 2 and 0. For q=1 they are 2(n+1), and for q=2 they are 2(2^(n+1)−1); both grow without bound. With nonzero initial factor 2, convergence requires |q|<1; q≠1 alone is insufficient.",
+            "understandingFocusDe": "Konvergenzbedingung auch bei negativem Quotienten und an den Grenzen korrekt anwenden.",
+            "understandingFocusEn": "Apply the convergence condition correctly for a negative ratio and at the boundaries."
+          }
+        ]
+      }
+    }
+  ]
+}

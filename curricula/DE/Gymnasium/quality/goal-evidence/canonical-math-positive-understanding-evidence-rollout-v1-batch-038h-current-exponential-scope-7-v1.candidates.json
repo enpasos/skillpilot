@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b038h-current-exponential-scope-7-v1",
+  "reviewedAt": "2026-09-06T21:56:34.640Z",
+  "reviewer": "OpenAI Codex root; individual current-scope review of seven Math B038 profiles; AI candidate, no human approval",
+  "goals": [
+    {
+      "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+      "reason": "Root hat den vollständigen bilingualen Profilkörper samt beiden Fällen erneut gegen den aktuellen Zielkern gelesen. Sieben frühere HE-Sek-I-Quellkonflikte sind durch die gesonderte v3-Layer-A-Korrektur behoben; Bindung erst nach aktuellem Seiten-/Kontextcheck. Ausgangsentwurf SHA256 3c8fcaff2b1ceac4219057577affcd801ca8e21ba1070d47afb54fd2dbbfe086. Keine menschliche Freigabe oder reale Lernleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "equal-interval-ratio",
+            "essentialUnderstandingDe": "Exponentielles Wachstum oder exponentieller Zerfall hat in einem solchen Modell einen konstanten positiven Faktor über gleich lange Zeitintervalle, nicht eine konstante absolute Änderung.",
+            "essentialUnderstandingEn": "In an exponential growth or decay model, equal time intervals have a constant positive multiplicative factor, not a constant absolute change.",
+            "observablePerformanceDe": "Vergleicht passende Quotienten und ordnet Wachstum, Zerfall und die dazu passende Term- oder Graphform begründet zu.",
+            "observablePerformanceEn": "Compares appropriate ratios and justifies identification of growth, decay, and a matching expression or graph."
+          },
+          {
+            "id": "representation-and-limits",
+            "essentialUnderstandingDe": "Anfangswert, Faktor und Zeitintervall müssen in Tabelle, Graph und Kontext zusammenpassen; endlich viele Werte erzwingen ohne Modellannahme keine eindeutige Funktion.",
+            "essentialUnderstandingEn": "Initial value, factor, and time interval must agree across table, graph, and context; finitely many values do not force a unique function without a model assumption.",
+            "observablePerformanceDe": "Verknüpft Darstellungen und bezeichnet die Zuordnung als passendes Modell, nicht als aus wenigen Punkten bewiesenes Naturgesetz.",
+            "observablePerformanceEn": "Connects representations and identifies the assignment as a compatible model, not a natural law proved from a few points."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "equal-interval-ratio",
+            "representation-and-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "table-and-verbal-process",
+            "textDe": "Eine Wachstumstabelle mit gleichen Abständen und einen Zerfallsprozess mit ausdrücklich mehrstündigem Faktor auswerten.",
+            "textEn": "Interpret an equal-step growth table and a decay process with an explicitly multi-hour factor."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ratio-table",
+            "taskDemandDe": "Eine Tabelle enthält für t=0,1,2 die Werte 50;75;112,5. Entscheide, ob 50+25t oder 50·1,5^t zu allen Werten passt, und beschreibe einen dazu passenden Graphen. Reichen die drei Werte für Eindeutigkeit unter allen Funktionen?",
+            "taskDemandEn": "A table contains values 50,75,112.5 at t=0,1,2. Decide whether 50+25t or 50·1.5^t fits all entries and describe a matching graph. Do the three values ensure uniqueness among all functions?",
+            "expectedPerformanceDe": "Beide Quotienten sind 1,5; die Differenzen 25 und 37,5 sind verschieden. 50·1,5^t passt, der lineare Term liefert bei 2 nur 100. Der Exponentialgraph startet bei 50, bleibt positiv und steigt mit wachsenden Zuwächsen. Andere Funktionen können die drei Punkte ebenfalls treffen.",
+            "expectedPerformanceEn": "Both ratios are 1.5; differences 25 and 37.5 differ. 50·1.5^t fits, whereas the linear expression gives only 100 at 2. The exponential graph starts at 50, stays positive, and increases with increasing increments. Other functions can also pass through the three points.",
+            "understandingFocusDe": "Multiplikative Struktur erkennen, ohne aus endlichen Daten globale Eindeutigkeit abzuleiten.",
+            "understandingFocusEn": "Recognise multiplicative structure without inferring global uniqueness from finite data."
+          },
+          {
+            "id": "three-hour-decay",
+            "taskDemandDe": "Eine Modellbeschreibung sagt: Von anfangs 160 Einheiten bleibt alle drei Stunden die Hälfte. Wähle zwischen 160·0,5^t und 160·0,5^(t/3), wenn t in Stunden gemessen wird. Ergänze Werte bei 3 und 6 Stunden und beschreibe den Verlauf.",
+            "taskDemandEn": "A model states: starting from 160 units, half remains every three hours. Choose between 160·0.5^t and 160·0.5^(t/3), with t measured in hours. Supply values at 3 and 6 hours and describe the course.",
+            "expectedPerformanceDe": "Passend ist 160·0,5^(t/3), mit 80 und 40 Einheiten. Der Graph fällt, bleibt positiv und nähert sich im Modell 0; er erreicht 0 nicht in endlicher Zeit. 0,5^t würde eine Halbierung pro Stunde ausdrücken.",
+            "expectedPerformanceEn": "160·0.5^(t/3) fits, giving 80 and 40 units. The graph decreases, remains positive, and approaches 0 in the model without reaching it in finite time. 0.5^t would describe halving every hour.",
+            "understandingFocusDe": "Den Faktor mit seiner Zeitspanne verbinden und den asymptotischen Verlauf deuten.",
+            "understandingFocusEn": "Connect the factor to its time span and interpret the asymptotic course."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+      "reason": "Root hat den vollständigen bilingualen Profilkörper samt beiden Fällen erneut gegen den aktuellen Zielkern gelesen. Sieben frühere HE-Sek-I-Quellkonflikte sind durch die gesonderte v3-Layer-A-Korrektur behoben; Bindung erst nach aktuellem Seiten-/Kontextcheck. Ausgangsentwurf SHA256 3c8fcaff2b1ceac4219057577affcd801ca8e21ba1070d47afb54fd2dbbfe086. Keine menschliche Freigabe oder reale Lernleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "factor-and-timescale",
+            "essentialUnderstandingDe": "Bei f(t)=b·a^t ist b der Wert bei t=0 und a der Faktor pro Zeiteinheit; Verdopplungs- und Halbwertszeit beschreiben passende feste Zeitabstände.",
+            "essentialUnderstandingEn": "In f(t)=b·a^t, b is the value at t=0 and a the factor per time unit; doubling and half-life describe corresponding fixed time intervals.",
+            "observablePerformanceDe": "Bestimmt Faktor und passende Verdopplungs- oder Halbwertszeit und überprüft diese an Funktionswerten.",
+            "observablePerformanceEn": "Determines the factor and appropriate doubling time or half-life and checks them using function values."
+          },
+          {
+            "id": "linked-representations",
+            "essentialUnderstandingDe": "Term, Tabelle und Graph müssen dieselben multiplikativen Änderungen ausdrücken; ein größerer Anfangswert ändert bei gleichem Faktor die Zeitkonstante nicht.",
+            "essentialUnderstandingEn": "Expression, table, and graph must express the same multiplicative changes; a larger initial value does not change the doubling time or half-life when the factor is unchanged.",
+            "observablePerformanceDe": "Verknüpft abgelesene und berechnete Werte und erklärt den Einfluss von a gegenüber dem von b.",
+            "observablePerformanceEn": "Connects read-off and calculated values and explains the effect of a compared with b."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "factor-and-timescale",
+            "linked-representations"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "term-growth-and-sparse-decay-table",
+            "textDe": "Wachstum aus einem Term und Zerfall aus einer Tabelle mit Zweier-Zeitabständen rekonstruieren.",
+            "textEn": "Interpret growth from an expression and reconstruct decay from a table with time steps of two."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "root-two-growth",
+            "taskDemandDe": "Für f(t)=12·(√2)^t mit t in Tagen: Bestimme Anfangswert, Faktor und Verdopplungszeit. Gib passende Tabellenpunkte an und erkläre, was sich bei 24 statt 12 ändert.",
+            "taskDemandEn": "For f(t)=12·(√2)^t with t in days, determine the initial value, factor, and doubling time. Provide corresponding table points and explain what changes if 12 becomes 24.",
+            "expectedPerformanceDe": "f(0)=12, Tagesfaktor √2; nach zwei Tagen ist (√2)²=2, also Verdopplungszeit 2 Tage. Punkte (0,12),(2,24),(4,48). Der Graph steigt; bei Anfangswert 24 verdoppeln sich alle Ordinaten, die Verdopplungszeit bleibt 2 Tage.",
+            "expectedPerformanceEn": "f(0)=12, daily factor √2; after two days (√2)²=2, so doubling time is 2 days. Points (0,12),(2,24),(4,48). The graph increases; with initial value 24 all ordinates double, while doubling time remains 2 days.",
+            "understandingFocusDe": "Wirkung des Anfangswerts von der des Zeitfaktors unterscheiden.",
+            "understandingFocusEn": "Distinguish the effect of the initial value from the time factor."
+          },
+          {
+            "id": "two-hour-table",
+            "taskDemandDe": "Unter der Annahme f(t)=b·a^t zeigt eine Tabelle 80,20,5 Einheiten bei t=0,2,4 Stunden. Bestimme a, Halbwertszeit und den fehlenden Wert bei einer Stunde; beschreibe den zugehörigen Graphen.",
+            "taskDemandEn": "Assuming f(t)=b·a^t, a table gives 80,20,5 units at t=0,2,4 hours. Determine a, half-life, and the missing value after one hour; describe the graph.",
+            "expectedPerformanceDe": "b=80 und a²=1/4, daher für positive Basis a=1/2 pro Stunde. Halbwertszeit 1 Stunde, f(1)=40. Der Graph fällt positiv gegen 0. Der Tabellenquotient 1/4 gilt für zwei Stunden und ist nicht der Stundenfaktor.",
+            "expectedPerformanceEn": "b=80 and a²=1/4, hence for a positive base a=1/2 per hour. Half-life is 1 hour and f(1)=40. The graph decreases positively towards 0. The table ratio 1/4 applies to two hours, not one.",
+            "understandingFocusDe": "Aus einer gröberen Zeitskala den elementaren Faktor gewinnen.",
+            "understandingFocusEn": "Recover the elementary factor from a coarser time scale."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+      "reason": "Root hat den vollständigen bilingualen Profilkörper samt beiden Fällen erneut gegen den aktuellen Zielkern gelesen. Sieben frühere HE-Sek-I-Quellkonflikte sind durch die gesonderte v3-Layer-A-Korrektur behoben; Bindung erst nach aktuellem Seiten-/Kontextcheck. Ausgangsentwurf SHA256 3c8fcaff2b1ceac4219057577affcd801ca8e21ba1070d47afb54fd2dbbfe086. Keine menschliche Freigabe oder reale Lernleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Historischer EN-Konflikt des Ausgangsentwurfs ist im aktuellen Goal behoben: kontinuierliche Modellierung steht nicht mehr in der EN-Eigenschaftsbeschreibung. Dieses Profil bleibt beim Eigenschaftskern. Die bisherigen ln-Beispielargumente wurden durch Exponenten und Kehrwertbeziehungen ersetzt, damit die erst im eigenständigen Gleichungsziel einzuführende inverse Operation nicht vorausgesetzt wird."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "normalised-rate-property",
+            "essentialUnderstandingDe": "Die natürliche Exponentialfunktion ist die normierte Exponentialfunktion mit f(0)=1 und f′=f; dies motiviert die besondere Basis e.",
+            "essentialUnderstandingEn": "The natural exponential function is the normalised exponential with f(0)=1 and f′=f, motivating the special base e.",
+            "observablePerformanceDe": "Verbindet Normierung, Funktionswerte und Tangentensteigungen und begründet daraus das strenge Steigen.",
+            "observablePerformanceEn": "Connects normalisation, function values, and tangent slopes and uses them to justify strict increase."
+          },
+          {
+            "id": "positivity-and-limits",
+            "essentialUnderstandingDe": "e^x ist für alle reellen x positiv, e^(−x)=1/e^x, mit Grenzwerten 0 für x→−∞ und ∞ für x→∞.",
+            "essentialUnderstandingEn": "e^x is positive for all real x, e^(−x)=1/e^x, with limits 0 as x→−∞ and ∞ as x→∞.",
+            "observablePerformanceDe": "Begründet Werte- und Grenzwertaussagen zusammenhängend, ohne die Asymptote als erreichte Nullstelle zu behandeln.",
+            "observablePerformanceEn": "Justifies statements about values and limits coherently without treating the asymptote as an attained zero."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "normalised-rate-property",
+            "positivity-and-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "local-property-and-global-limit",
+            "textDe": "Die lokale Gleichheit von Wert und Ableitung sowie globale Aussagen über positive und negative Argumente unabhängig begründen.",
+            "textEn": "Independently justify the local equality of value and derivative and global statements for positive and negative arguments."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "value-and-slope",
+            "taskDemandDe": "Ein normierter Exponentialgraph soll an jeder Stelle denselben Zahlenwert für Höhe und Tangentensteigung haben. Erkläre die Wahl f(x)=e^x und bestimme Höhe und Steigung bei 0 und 1, symbolisch und mit e≈2,71828. Begründe sein Monotonieverhalten.",
+            "taskDemandEn": "A normalised exponential graph is required to have equal numerical values for height and tangent slope at every location. Explain the choice f(x)=e^x and determine height and slope at 0 and 1, symbolically and using e≈2.71828. Justify its monotonicity.",
+            "expectedPerformanceDe": "f(0)=1 und f′=e^x=f erfüllen die Bedingungen; bei 0 sind Höhe und Steigung 1, bei 1 beide e≈2,71828. Weil e^x>0 ist die Ableitung überall positiv und die Funktion streng steigend. Die Gleichheit ist eine Eigenschaft der Funktion, keine zufällige Übereinstimmung an zwei Punkten.",
+            "expectedPerformanceEn": "f(0)=1 and f′=e^x=f meet the conditions; at 0 height and slope are 1, at 1 both are e≈2.71828. Since e^x>0 the derivative is positive everywhere and the function is strictly increasing. The equality is a property of the function, not an accidental match at two points.",
+            "understandingFocusDe": "Die charakteristische Ableitungseigenschaft als Begründung einsetzen.",
+            "understandingFocusEn": "Use the characteristic derivative property as a justification."
+          },
+          {
+            "id": "negative-input-and-asymptote",
+            "taskDemandDe": "Beurteile: e^(−3) sei negativ und der Graph erreiche für genügend kleine x die x-Achse. Verknüpfe e³ und e^(−3) durch ein Produkt und begründe die beiden Grenzrichtungen des Graphen.",
+            "taskDemandEn": "Assess the claims that e^(−3) is negative and the graph reaches the x-axis for sufficiently small x. Relate e³ and e^(−3) through a product and justify both limiting directions of the graph.",
+            "expectedPerformanceDe": "e³·e^(−3)=e⁰=1, daher e^(−3)=1/e³>0. Aus positivem exponentiellem Wachstum e^x→∞ folgt mit der Kehrwertbeziehung e^x→0 für x→−∞. 0 wird bei keinem endlichen reellen x erreicht.",
+            "expectedPerformanceEn": "e³·e^(−3)=e⁰=1, hence e^(−3)=1/e³>0. Positive exponential growth e^x→∞ and the reciprocal relation imply e^x→0 as x→−∞. Zero is never attained at a finite real x.",
+            "understandingFocusDe": "Negative Argumente von negativen Werten und Annäherung von Gleichheit unterscheiden.",
+            "understandingFocusEn": "Distinguish negative inputs from negative outputs and approach from equality."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+      "reason": "Root hat den vollständigen bilingualen Profilkörper samt beiden Fällen erneut gegen den aktuellen Zielkern gelesen. Sieben frühere HE-Sek-I-Quellkonflikte sind durch die gesonderte v3-Layer-A-Korrektur behoben; Bindung erst nach aktuellem Seiten-/Kontextcheck. Ausgangsentwurf SHA256 3c8fcaff2b1ceac4219057577affcd801ca8e21ba1070d47afb54fd2dbbfe086. Keine menschliche Freigabe oder reale Lernleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die Modellierungsfälle dürfen logarithmische Gleichungslösung nicht heimlich voraussetzen. Für die Zeitumrechnung wird daher die isolierte Exponentialwert-Beziehung e^r=2 bereitgestellt; Aufbau, Bedeutung und Prüfung des kontinuierlichen Modells bleiben eigenständige Leistung. Eine selbstständig logarithmisch gewonnene äquivalente Lösung bleibt zulässig."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "continuous-exponential-model",
+            "essentialUnderstandingDe": "Ein kontinuierliches exponentielles Modell B·e^(kt) verbindet Anfangswert B und konstanten relativen Wachstumsparameter k mit der gewählten Zeiteinheit.",
+            "essentialUnderstandingEn": "A continuous exponential model B·e^(kt) connects initial value B and constant relative growth parameter k to the chosen time unit.",
+            "observablePerformanceDe": "Stellt aus passenden Angaben ein Modell auf und deutet Vorzeichen, Einheit und Ergebnisse.",
+            "observablePerformanceEn": "Constructs a model from appropriate information and interprets its sign, unit, and outputs."
+          },
+          {
+            "id": "rate-versus-finite-factor",
+            "essentialUnderstandingDe": "k ist nicht identisch mit dem endlichen prozentualen Zuwachs je Zeiteinheit; dieser folgt aus e^k. Vorhersagen bleiben an die konstante Parameterannahme gebunden.",
+            "essentialUnderstandingEn": "k is not identical to the finite percentage increase per time unit, which follows from e^k. Predictions remain conditional on the constant-parameter assumption.",
+            "observablePerformanceDe": "Unterscheidet kontinuierlichen Parameter, endlichen Faktor und Zeitdauer und prüft die Kontextplausibilität.",
+            "observablePerformanceEn": "Distinguishes continuous parameter, finite factor, and elapsed time and checks contextual plausibility."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "continuous-exponential-model",
+            "rate-versus-finite-factor"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "given-rate-and-given-half-life",
+            "textDe": "Kontinuierliches Wachstum aus k und Zerfall aus einer Halbwertszeit modellieren.",
+            "textEn": "Model continuous growth from k and decay from a half-life."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "continuous-growth",
+            "taskDemandDe": "Ein idealisiertes Modell startet mit 100 Einheiten und hat konstanten kontinuierlichen Wachstumsparameter 0,2 pro Stunde. Formuliere N(t), bestimme N(3) und die Verdopplungszeit und prüfe die Aussage 'genau 20 Prozent mehr nach einer Stunde'. Als Hilfswert ist e^r=2 mit r≈0,693147 gegeben; ein Logarithmusverfahren ist nicht erforderlich.",
+            "taskDemandEn": "An idealised model starts with 100 units and has constant continuous growth parameter 0.2 per hour. State N(t), find N(3) and doubling time, and assess 'exactly 20 percent more after one hour'. The supporting value e^r=2 with r≈0.693147 is supplied; a logarithm procedure is not required.",
+            "expectedPerformanceDe": "N(t)=100e^(0,2t), N(3)≈182,212. Verdopplungszeit ln 2/0,2≈3,466 h. Der Stundenfaktor e^0,2≈1,22140 ergibt etwa 22,14 Prozent, nicht genau 20. Langfristige Aussagen setzen weiterhin denselben Parameter voraus. Mit dem Hilfswert folgt 0,2T=r, also T=r/0,2; logarithmische Herleitung ist eine gleichwertige Alternative.",
+            "expectedPerformanceEn": "N(t)=100e^(0.2t), N(3)≈182.212. Doubling time ln 2/0.2≈3.466 h. The hourly factor e^0.2≈1.22140 gives about 22.14 percent, not exactly 20. Long-term claims still require the same parameter. The supplied value gives 0.2T=r, hence T=r/0.2; a logarithmic derivation is an equivalent alternative.",
+            "understandingFocusDe": "Kontinuierlichen Parameter korrekt in endliche Veränderungen übersetzen.",
+            "understandingFocusEn": "Translate a continuous parameter correctly into finite changes."
+          },
+          {
+            "id": "half-life-model",
+            "taskDemandDe": "Ein kontinuierliches Zerfallsmodell hat Anfangsmenge 240 mg und Halbwertszeit 3 Stunden. Verwende die e-Schreibweise, bestimme den Parameter und die Menge nach 4,5 Stunden und erläutere die Modellgrenze. Als Hilfswert ist e^(−r)=1/2 mit r≈0,693147 gegeben; ein Logarithmusverfahren ist nicht erforderlich.",
+            "taskDemandEn": "A continuous decay model has initial amount 240 mg and half-life 3 hours. Use base-e notation, determine the parameter and amount after 4.5 hours, and explain the model boundary. The supporting value e^(−r)=1/2 with r≈0.693147 is supplied; a logarithm procedure is not required.",
+            "expectedPerformanceDe": "M(t)=240e^(−(ln 2/3)t), k=−ln 2/3≈−0,23105 h⁻¹. M(4,5)=240·2^(−1,5)≈84,853 mg. Nach 3 h sind es 120 mg. Das Modell beschreibt konstanten relativen Zerfall, nicht einen linearen Verlust von 40 mg je Stunde; Gültigkeit und Messbarkeit sehr kleiner Mengen sind Kontextfragen. Aus 3k=−r ergibt sich k=−r/3; die Halbierung wird am Modell überprüft.",
+            "expectedPerformanceEn": "M(t)=240e^(−(ln 2/3)t), k=−ln 2/3≈−0.23105 h⁻¹. M(4.5)=240·2^(−1.5)≈84.853 mg. After 3 h it gives 120 mg. The model describes constant relative decay, not a linear loss of 40 mg per hour; validity and measurability of very small amounts depend on context. From 3k=−r one obtains k=−r/3; the halving is checked in the model.",
+            "understandingFocusDe": "Eine Zeitkonstante in einen negativen kontinuierlichen Parameter überführen.",
+            "understandingFocusEn": "Convert a time constant into a negative continuous parameter."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "reason": "Root hat den vollständigen bilingualen Profilkörper samt beiden Fällen erneut gegen den aktuellen Zielkern gelesen. Sieben frühere HE-Sek-I-Quellkonflikte sind durch die gesonderte v3-Layer-A-Korrektur behoben; Bindung erst nach aktuellem Seiten-/Kontextcheck. Ausgangsentwurf SHA256 3c8fcaff2b1ceac4219057577affcd801ca8e21ba1070d47afb54fd2dbbfe086. Keine menschliche Freigabe oder reale Lernleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die logarithmische inverse Operation gehört in dieses Ziel selbst. Die entfernte e-Funktions-Voraussetzung wird weder durch vorausgesetzte J10-Logarithmus-Mastery noch durch bloßes Bedienen einer Log-Taste ersetzt. Beide Fälle verlangen eine selbstständige Begründung der Umkehrung und der Lösungsbedingungen."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "logarithmic-solution",
+            "essentialUnderstandingDe": "Der Logarithmus zur Basis a ist die inverse Frage zu a^x: Welcher Exponent erzeugt den gegebenen positiven Wert? Für a>0, a≠1, b≠0 und c/b>0 führt b·a^x=c zu x=ln(c/b)/ln a. Division durch a macht einen Exponenten nicht frei; a^x ist kein Produkt a·x.",
+            "essentialUnderstandingEn": "A logarithm to base a asks the inverse question to a^x: which exponent produces the given positive value? For a>0, a≠1, b≠0 and c/b>0, b·a^x=c yields x=ln(c/b)/ln a. Division by a does not isolate an exponent; a^x is not the product a·x.",
+            "observablePerformanceDe": "Isoliert die Potenz, erläutert die logarithmische Umkehrung und die Bedingungen ihrer Anwendung, leitet die Lösung daraus her und überprüft sie durch Einsetzen. Die Umkehrbeziehung wird in diesem Ziel aufgebaut und nicht aus einer ungeprüften verborgenen Voraussetzung übernommen.",
+            "observablePerformanceEn": "Isolates the power, explains the logarithmic inversion and its applicability conditions, derives the solution and checks it by substitution. The inverse relationship is developed within this goal rather than assumed from an unverified hidden prerequisite."
+          },
+          {
+            "id": "contextual-solution-set",
+            "essentialUnderstandingDe": "Die reelle Gleichungslösung muss mit erlaubten Zeiten und gegebenenfalls diskreten Beobachtungszeitpunkten abgeglichen werden.",
+            "essentialUnderstandingEn": "The real equation solution must be checked against allowed times and, where relevant, discrete observation times.",
+            "observablePerformanceDe": "Unterscheidet exakten Schwellenzeitpunkt, ersten zulässigen Beobachtungszeitpunkt und im Kontext unerreichbare Zielwerte.",
+            "observablePerformanceEn": "Distinguishes exact threshold time, first admissible observation time, and contextually unreachable targets."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "logarithmic-solution",
+            "contextual-solution-set"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "discrete-growth-and-continuous-decay",
+            "textDe": "Eine Wachstumsschwelle bei ganzzahligen Zeitpunkten und eine kontinuierliche Zerfallsgleichung mit einer unzulässigen Zeitlösung vergleichen.",
+            "textEn": "Compare a growth threshold at integer time points with a continuous decay equation having an inadmissible-time alternative."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "first-whole-year",
+            "taskDemandDe": "Ein Modell liefert K(t)=200·1,1^t, t in Jahren. Löse K(t)=300 und bestimme zusätzlich das erste ganze Jahr, in dem K mindestens 300 beträgt. Prüfe die beiden benachbarten ganzzahligen Zeitpunkte. Erkläre dabei, welche inverse Frage der Logarithmus beantwortet, warum Division durch 1,1 den Exponenten nicht isoliert und unter welchen Bedingungen die logarithmische Umformung zulässig ist.",
+            "taskDemandEn": "A model gives K(t)=200·1.1^t with t in years. Solve K(t)=300 and also determine the first whole year when K is at least 300. Check the two adjacent integer times. Explain which inverse question the logarithm answers, why division by 1.1 does not isolate the exponent, and under which conditions the logarithmic transformation is valid.",
+            "expectedPerformanceDe": "t=ln(1,5)/ln(1,1)≈4,25416. Wegen des Wachstums ist das erste ganze Jahr 5; K(4)=292,82<300 und K(5)=322,102>300. Rundung auf 4 wäre für die Schwellenfrage falsch. Nach Division durch 200 ist 1,1^t=1,5. Gesucht ist der Exponent zur positiven Basis 1,1≠1; ln(1,1^t)=t ln(1,1) liefert die Lösung. 200≠0 und 1,5>0 sichern die Umformung; die ursprüngliche Gleichung wird bei t≈4,25416 numerisch kontrolliert.",
+            "expectedPerformanceEn": "t=ln(1.5)/ln(1.1)≈4.25416. Since the model grows, the first whole year is 5; K(4)=292.82<300 and K(5)=322.102>300. Rounding to 4 would be wrong for the threshold question. After division by 200, 1.1^t=1.5. The unknown is the exponent for positive base 1.1≠1; ln(1.1^t)=t ln(1.1) gives the solution. 200≠0 and 1.5>0 secure the transformation; the original equation is checked numerically at t≈4.25416.",
+            "understandingFocusDe": "Algebraische Lösung und diskrete Kontextentscheidung getrennt begründen.",
+            "understandingFocusEn": "Justify the algebraic solution and discrete contextual decision separately."
+          },
+          {
+            "id": "decay-and-negative-time",
+            "taskDemandDe": "Für t≥0 Stunden gilt M(t)=80·0,8^t. Wann sind noch 20 Einheiten vorhanden? Prüfe außerdem, ob 100 Einheiten erreicht werden können, obwohl die entsprechende Gleichung eine reelle Lösung hat. Begründe auch für die Basis zwischen 0 und 1 die logarithmische Umkehrung; unterscheide reelle Gleichungslösung und erlaubte Zeit.",
+            "taskDemandEn": "For t≥0 hours let M(t)=80·0.8^t. When do 20 units remain? Also assess whether 100 units can be reached although the corresponding equation has a real solution. Also justify the logarithmic inversion for a base between 0 and 1; distinguish a real equation solution from an admissible time.",
+            "expectedPerformanceDe": "Für 20 gilt t=ln(1/4)/ln(0,8)≈6,21257 h, durch Einsetzen überprüfbar. Für 100 ergibt sich ln(1,25)/ln(0,8)=−1 h. Diese Lösung liegt außerhalb t≥0; im erlaubten Bereich fällt M von 80 ab und erreicht 100 nicht. Die Funktion 0,8^t ist positiv und streng fallend, besitzt daher für jeden positiven Zielquotienten genau einen reellen Exponenten. Der negative Wert von ln(0,8) ist zulässig; logarithmiert werden die positiven Quotienten 1/4 beziehungsweise 1,25.",
+            "expectedPerformanceEn": "For 20, t=ln(1/4)/ln(0.8)≈6.21257 h, checkable by substitution. For 100 the solution is ln(1.25)/ln(0.8)=−1 h. This lies outside t≥0; in the allowed domain M decreases from 80 and never reaches 100. The function 0.8^t is positive and strictly decreasing, so each positive target ratio has exactly one real exponent. The negative value of ln(0.8) is valid; the logarithms are applied to the positive ratios 1/4 and 1.25.",
+            "understandingFocusDe": "Zulässige Logarithmusrechnung garantiert keine zulässige Kontextlösung.",
+            "understandingFocusEn": "Valid logarithmic algebra does not guarantee a contextually admissible solution."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ab720928-9dbc-53c2-a1f8-865dda92122d",
+      "reason": "Root hat den vollständigen bilingualen Profilkörper samt beiden Fällen erneut gegen den aktuellen Zielkern gelesen. Sieben frühere HE-Sek-I-Quellkonflikte sind durch die gesonderte v3-Layer-A-Korrektur behoben; Bindung erst nach aktuellem Seiten-/Kontextcheck. Ausgangsentwurf SHA256 3c8fcaff2b1ceac4219057577affcd801ca8e21ba1070d47afb54fd2dbbfe086. Keine menschliche Freigabe oder reale Lernleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "parameter-identification",
+            "essentialUnderstandingDe": "Unter der ausdrücklich gewählten Klasse B·a^t bestimmen zwei positive Messwerte zu verschiedenen Zeiten die Parameter; weitere Daten prüfen die Modellpassung.",
+            "essentialUnderstandingEn": "Within the explicitly chosen class B·a^t, two positive measurements at different times determine the parameters; additional data test the fit.",
+            "observablePerformanceDe": "Berücksichtigt Zeitabstände bei der Parameterbestimmung und vergleicht unabhängige weitere Werte mit der Modellvorhersage.",
+            "observablePerformanceEn": "Accounts for time intervals when determining parameters and compares independent additional values with predictions."
+          },
+          {
+            "id": "conditional-forecast",
+            "essentialUnderstandingDe": "Eine rechnerisch passende Exponentialfunktion ist eine Modellannahme; widersprechende Daten und geänderte Bedingungen begrenzen Extrapolationen.",
+            "essentialUnderstandingEn": "An algebraically fitted exponential is a model assumption; conflicting data and changing conditions limit extrapolation.",
+            "observablePerformanceDe": "Formuliert quantitative Vorhersagen bedingt und benennt anhand konkreter Abweichungen, wann ein exaktes Exponentialmodell nicht trägt.",
+            "observablePerformanceEn": "States quantitative forecasts conditionally and identifies from concrete discrepancies when an exact exponential model fails."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parameter-identification",
+            "conditional-forecast"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "consistent-data-and-model-conflict",
+            "textDe": "Konsistente gleichabständige Daten und Daten ohne Messung bei t=0 mit einem widersprechenden Prüfwert auswerten.",
+            "textEn": "Evaluate consistent equally spaced data and data without a measurement at t=0 whose check value contradicts the model."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "validated-model-forecast",
+            "taskDemandDe": "Die bereitgestellten Beispieldaten sind (t,N)=(0,40),(2,90),(4,202,5). Wähle die Modellklasse N=B·a^t, bestimme B,a aus den ersten zwei Punkten, prüfe den dritten und prognostiziere N(6) unter derselben Annahme.",
+            "taskDemandEn": "Supplied example data are (t,N)=(0,40),(2,90),(4,202.5). Choose the model class N=B·a^t, determine B,a from the first two points, check the third, and forecast N(6) under the same assumption.",
+            "expectedPerformanceDe": "B=40, a²=90/40=2,25, also a=1,5 für positive Basis. N(4)=202,5 bestätigt den Prüfwert; N(6)=455,625. Die Prognose gilt nur bei Fortbestand des multiplikativen Modells; drei passende Punkte beweisen keinen unbegrenzten realen Verlauf.",
+            "expectedPerformanceEn": "B=40, a²=90/40=2.25, so a=1.5 for a positive base. N(4)=202.5 agrees with the check value; N(6)=455.625. The forecast requires persistence of the multiplicative model; three matching points do not prove an unlimited real trajectory.",
+            "understandingFocusDe": "Parametergewinnung, unabhängige Datenkontrolle und bedingte Prognose verbinden.",
+            "understandingFocusEn": "Connect parameter identification, independent data checking, and conditional prediction."
+          },
+          {
+            "id": "missing-origin-and-conflict",
+            "taskDemandDe": "Bereitgestellte Beispieldaten lauten (1,100),(3,64),(5,50). Passe B·a^t zunächst an die ersten beiden Werte an, prüfe den dritten und beurteile eine genaue Prognose für t=7. Es ist kein statistisches Anpassungsverfahren vorgegeben.",
+            "taskDemandEn": "Supplied example data are (1,100),(3,64),(5,50). First fit B·a^t to the first two values, check the third, and assess an exact forecast for t=7. No statistical fitting procedure is prescribed.",
+            "expectedPerformanceDe": "a²=0,64, also a=0,8 und B=125, nicht 100. Das Modell liefert N(5)=40,96 statt 50 und bedingt N(7)=26,2144. Die drei Angaben liegen nicht auf genau diesem Exponentialmodell; ohne Angaben zu Messfehlern oder geänderten Bedingungen ist die Vorhersage nicht als verlässlich exakte Entwicklung auszugeben. Eine beliebige nachträgliche Anpassung ist nicht gefordert.",
+            "expectedPerformanceEn": "a²=0.64, so a=0.8 and B=125, not 100. The model gives N(5)=40.96 rather than 50 and conditionally N(7)=26.2144. The three values do not lie on this exact exponential model; without information about measurement error or changed conditions the forecast cannot be presented as a reliably exact trajectory. An arbitrary subsequent fitting method is not required.",
+            "understandingFocusDe": "Den Anfangswert rückrechnen und Modellwiderspruch offen ausweisen, statt Datenpassung zu behaupten.",
+            "understandingFocusEn": "Recover the initial value and openly report model conflict instead of claiming a fit."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "reason": "Root hat den vollständigen bilingualen Profilkörper samt beiden Fällen erneut gegen den aktuellen Zielkern gelesen. Sieben frühere HE-Sek-I-Quellkonflikte sind durch die gesonderte v3-Layer-A-Korrektur behoben; Bindung erst nach aktuellem Seiten-/Kontextcheck. Ausgangsentwurf SHA256 3c8fcaff2b1ceac4219057577affcd801ca8e21ba1070d47afb54fd2dbbfe086. Keine menschliche Freigabe oder reale Lernleistung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Der frühere HE-Sek-I-Konflikt ist durch die separat dokumentierte, quellengebundene v3-Zuordnungsänderung behoben. Dieses LK-Profil bleibt beim asymptotischen Vergleich; es begründet nicht selbst die Quellenzuordnung."
+      ],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "eventual-comparison",
+            "essentialUnderstandingDe": "Für feste positive Potenzen wächst e^x bei x→∞ schließlich stärker als x^n; ein endliches Diagramm oder einzelner Vergleich beweist diese Aussage nicht.",
+            "essentialUnderstandingEn": "For fixed positive powers, e^x eventually outgrows x^n as x→∞; a finite diagram or isolated comparison does not prove this.",
+            "observablePerformanceDe": "Formuliert einen passenden Quotienten und begründet dessen Grenzverhalten mit einer tragfähigen Abschätzung.",
+            "observablePerformanceEn": "Forms a suitable ratio and justifies its limiting behaviour with a sound estimate."
+          },
+          {
+            "id": "direction-and-sign",
+            "essentialUnderstandingDe": "Bei x→−∞ wird e^x klein; eine Umbenennung t=−x verbindet diesen Fall mit dem Wachstum für t→∞ und erhält das Vorzeichen von Potenzfaktoren.",
+            "essentialUnderstandingEn": "As x→−∞, e^x becomes small; substituting t=−x connects this case to growth for t→∞ while preserving signs of power factors.",
+            "observablePerformanceDe": "Unterscheidet Grenzrichtung, Produkt und Quotient und erläutert das resultierende Vorzeichen.",
+            "observablePerformanceEn": "Distinguishes limiting direction, product, and ratio and explains the resulting sign."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "eventual-comparison",
+            "direction-and-sign"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "growth-ratio-and-decaying-product",
+            "textDe": "Einen Quotienten bei +∞ und ein vorzeichenbehaftetes Produkt bei −∞ vergleichen.",
+            "textEn": "Compare a ratio at +∞ and a signed product at −∞."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quadratic-versus-exponential",
+            "taskDemandDe": "Vergleiche x² und e^x langfristig für x→∞. Als gültige Hilfsabschätzung für x>0 ist e^x≥x³/6 gegeben. Begründe mehr als das, was eine begrenzte Grafik zeigen könnte.",
+            "taskDemandEn": "Compare x² and e^x in the long run as x→∞. The valid supporting bound e^x≥x³/6 for x>0 is supplied. Justify more than a bounded graph could show.",
+            "expectedPerformanceDe": "0≤x²/e^x≤6/x→0. Damit wird das Verhältnis der Potenz zur Exponentialfunktion beliebig klein; kurzfristige Größenvergleiche sagen darüber allein nichts aus. Die Abschätzung ist ein bereitgestelltes Hilfsmittel, keine neu zu beweisende Reihenentwicklung.",
+            "expectedPerformanceEn": "0≤x²/e^x≤6/x→0. Thus the ratio of the power to the exponential becomes arbitrarily small; short-range size comparisons alone do not establish this. The estimate is supplied support, not a newly required series expansion.",
+            "understandingFocusDe": "Asymptotische Dominanz durch eine quantitativ verschwindende obere Schranke begründen.",
+            "understandingFocusEn": "Justify asymptotic dominance using a quantitatively vanishing upper bound."
+          },
+          {
+            "id": "negative-direction-product",
+            "taskDemandDe": "Bestimme und begründe das Verhalten von x³e^x für x→−∞ einschließlich der Annäherungsseite. Für t>0 darf e^t≥t⁴/24 verwendet werden.",
+            "taskDemandEn": "Determine and justify the behaviour of x³e^x as x→−∞, including the side of approach. For t>0 you may use e^t≥t⁴/24.",
+            "expectedPerformanceDe": "Mit t=−x→∞ wird x³e^x=−t³/e^t. Sein Betrag liegt zwischen 0 und 24/t und geht gegen 0; das Produkt nähert sich 0 von unten. Die wachsende Potenz im Betrag überwiegt nicht den exponentiellen Zerfall.",
+            "expectedPerformanceEn": "With t=−x→∞, x³e^x=−t³/e^t. Its magnitude lies between 0 and 24/t and tends to 0; the product approaches 0 from below. Growth of the power in magnitude does not dominate exponential decay.",
+            "understandingFocusDe": "Die Wachstumsrelation auf eine andere Grenzrichtung und ein Produkt übertragen, ohne das Vorzeichen zu verlieren.",
+            "understandingFocusEn": "Transfer the growth relation to another limiting direction and a product without losing the sign."
+          }
+        ]
+      }
+    }
+  ]
+}

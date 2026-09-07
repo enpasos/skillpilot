@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtObserved": "2026-09-07 00:47:28 UTC",
+  "reviewer": {
+    "agent": "/root/math_b039_blind_a",
+    "provider": "OpenAI",
+    "product": "Codex",
+    "underlyingModel": "exact model identifier unavailable",
+    "authority": "ai_candidate_review",
+    "humanApproval": false,
+    "modelDiversityClaimed": false
+  },
+  "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+  "candidateNumber": 1,
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/90662398-a0fd-45bf-9ce9-2abbc20428ed/candidate-1/90662398-a0fd-45bf-9ce9-2abbc20428ed.generated.2026-09-07T00-21-37-391Z.jpg",
+    "sha256": "sha256:e7c6bed22ab9de1ad8f9fa8bc829839b796a76fb25696ab07f02326bed2eca0d",
+    "actuallyViewed": true,
+    "viewMethod": "view_image",
+    "originalResolutionReinspection": false
+  },
+  "archiveReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/90662398-a0fd-45bf-9ce9-2abbc20428ed/candidate-1/archive-receipt.json",
+    "sha256": "sha256:af79657e6ba0aa37ff3e90aff924a7c0116e0df4896dabb734ffd489571120d9",
+    "candidateFilesVerified": 8
+  },
+  "goalContext": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "title": "Hauptsatz geometrisch begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben",
+    "description": "Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch anschaulich als Beziehung zwischen Ableiten und Integrieren begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben.",
+    "translations": null,
+    "requires": [
+      "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+    ]
+  },
+  "decision": "accept",
+  "subjectSpecificChecks": [
+    "F(x)=x² und F'(x)=2x=f(x) sind korrekt; der markierte Punkt (3|9) stimmt.",
+    "Die Dreiecksfläche unter f(t)=2t von 0 bis 3 beträgt 3·6/2=9; A(3)=F(3)-F(0)=9 stimmt.",
+    "Der Zusatz 'Hier' begrenzt A(x)=F(x) auf F(0)=0; A'=f und die beiden Richtungen Ableiten/Integrieren werden korrekt verbunden."
+  ],
+  "limitationsAndNotes": [
+    "Die Grafik ist eine anschauliche Beispielbegründung, kein allgemeiner Beweis des Hauptsatzes. Sie behauptet diese Vollständigkeit nicht."
+  ],
+  "minimalCorrection": null,
+  "scope": {
+    "visualCandidateReviewOnly": true,
+    "descriptionReviewDecision": false,
+    "importedByThisReview": false,
+    "activeAssetsChanged": false,
+    "canonicalFieldsChanged": false
+  },
+  "provenance": {
+    "otherReviewerRecordsRead": false,
+    "fullyBlinded": false,
+    "explanation": "Candidate choice and preceding workflow context were supplied by the parent; no other review decision record was read for this visual judgment.",
+    "timing": "Actual image views took place in this active review turn. Exact per-image view timestamps were not logged; the observed timestamp above is the documentation time, not an invented invocation start."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b039-two-description-adoption-native-validation",
+  "checkedAt": "2026-09-06T23:18:55.786Z",
+  "author": "Codex",
+  "implementationReceipt": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-039-two-description-adoption-v1/two-description-adoption-receipt-v1.json",
+  "readOnlyVerification": {
+    "checkedAt": "2026-09-06T23:18:23.557Z",
+    "status": "PASS",
+    "goals": [
+      "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+      "1b888f4c-df57-52a9-9551-b2b692e929fa"
+    ],
+    "exactProposedDeEnMatches": 2,
+    "unchangedTitlesIdsEdgesScopesMastery": true,
+    "exactOriginalFileHashesRecovered": 4,
+    "unchangedImages": 2,
+    "individualAtomicity": "2 atomic",
+    "individualMemory": "2 no_memory_needed",
+    "nativeKindFingerprints": "2 current",
+    "mathChecks": {
+      "polynomialIdentityAndRoots": "PASS",
+      "displayedSequenceValues": "PASS",
+      "finitePrefixCounterexample": "PASS",
+      "conceptualReason": "For real x, x²+1 >= 1 prevents a real zero; 1/n tends to zero while an eventually constant-one continuation tends to one. These algebraic and tail arguments, not finite samples alone, support the corrections."
+    },
+    "canonicalSha256": "sha256:6fc22ca01905e4f63fc28a5a13e865e481dd4f372251c1d6a7b849e73ab887a2"
+  },
+  "nativeChecks": [
+    {
+      "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json --mode=check",
+      "exitCode": 0,
+      "currentAtomic": 796,
+      "missing": 0,
+      "stale": 0,
+      "open": 0,
+      "obsolete": 0
+    },
+    {
+      "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json --mode=check",
+      "exitCode": 0,
+      "ordinaryAtomic": 796,
+      "currentNoMemory": 757,
+      "currentMemoryRequired": 39,
+      "primaryCards": 64,
+      "keptPrimaryCards": 64,
+      "missing": 0,
+      "stale": 0,
+      "open": 0,
+      "obsolete": 0,
+      "visibilityChecks": 17,
+      "invisibleRequiredMemoryGoals": 0
+    }
+  ],
+  "notClaimed": "No global quality status/M6, source reapproval, D/P closure, image QA/approval, registry, learner mastery or deployment acceptance. Root owns the separate post-revision gates."
+}

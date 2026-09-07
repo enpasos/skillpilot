@@ -1,0 +1,22 @@
+# Bildrekonstruktionsprompt: Mittleres Beschleunigungsmoment bestimmen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea`
+- Titel: Mittleres Beschleunigungsmoment bestimmen
+- Beschreibung: Die lernende Person kann bei konstantem Trägheitsmoment aus einer vorgegebenen mittleren Winkelbeschleunigung das mittlere resultierende Drehmoment bestimmen und seine beschleunigende oder bremsende Wirkung deuten.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Quellbild: `c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea.jpg`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Ein klares, lehrreiches Diagramm im handgezeichneten Stil auf einem hellbeigen Hintergrund. Der Titel oben mittig lautet in großer, fetter, schwarzer serifenloser Schrift: 'Mittleres Beschleunigungsmoment'. Darunter, zentriert, steht die Formel in schwarzer Schrift: '$\overline{M}_{\text{res}} = I \cdot \overline{\alpha}$'. Darunter folgen vier Zeilen zentrierter, schwarzer serifenloser Text: 'Feste Achse $\cdot$ konstantes Trägheitsmoment $I$', 'Mittleres resultierendes Drehmoment aus mittlerer Winkelbeschleunigung', 'Drei Beispiele: $I = 2 \text{ kg} \cdot \text{m}^2$ und zunächst $\omega > 0$.', 'In jedem Beispiel ist $\alpha$ zeitlich konstant.'. Unter diesem Textblock befinden sich drei gleich große, rechteckige Kästen mit abgerundeten Ecken und einer handgezeichneten schwarzen Umrandung, horizontal nebeneinander angeordnet. Jeder Kasten enthält oben mittig ein kleines, stilisiertes, graues Rad-Symbol mit sechs Speichen. Der linke Kasten hat einen hellgrünen Hintergrund. Sein Titel in fetter, schwarzer serifenloser Schrift lautet 'Beschleunigen'. Darunter stehen zwei Zeilen schwarzer serifenloser Text: '$\alpha(t) = +3 \text{ rad/s}^2$, konstant' und '$\overline{M}_{\text{res}} = +6 \text{ N} \cdot \text{m}$'. Darunter steht der Satz: 'Die positive Drehung wird schneller.'. Der mittlere Kasten hat einen hellgelben Hintergrund. Sein Titel in fetter, schwarzer serifenloser Schrift lautet 'Gleichförmig drehen'. Darunter stehen zwei Zeilen schwarzer serifenloser Text: '$\alpha(t) = 0$, konstant' und '$\overline{M}_{\text{res}} = 0$'. Darunter steht der Satz: 'Hier bleibt $\omega$ zu jedem Zeitpunkt gleich.'. Der rechte Kasten hat einen hellorangen Hintergrund. Sein Titel in fetter, schwarzer serifenloser Schrift lautet 'Bremsen'. Darunter stehen zwei Zeilen schwarzer serifenloser Text: '$\alpha(t) = -3 \text{ rad/s}^2$, konstant' und '$\overline{M}_{\text{res}} = -6 \text{ N} \cdot \text{m}$'. Darunter steht der Satz: 'Die positive Drehung wird langsamer – bis zum Stillstand.'. Ganz unten, zentriert unter den Kästen, steht in schwarzer serifenloser Schrift der Satz: 'Allgemein gilt: Ein Mittelwert null allein bedeutet nicht gleichförmige Drehung.'. Die Schriftart ist insgesamt klar und gut lesbar, mit mathematischen Variablen in kursiver Serifenschrift und dem Rest in serifenloser Schrift.
+```

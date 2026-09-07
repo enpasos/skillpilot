@@ -1,0 +1,496 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-b039-sixteen-exact-current-root-synthesis-20260907",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-root-full-dual-record-counterreview",
+  "synthesizedAt": "2026-09-06T22:16:08.069Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906",
+    "batchManifestDigest": "sha256:fb35df61d7a105c504d7550a75f413df9ceeca7f1fbeb21b7c3a7d9bbde261af",
+    "configDigest": "sha256:89a40acb388be8f7b4866a190256f73e63cc4c1ec06cf1003d0373e384712462",
+    "bundleFingerprint": "sha256:c5d02c732c1369630ab7b7c8db1853a96d069ca8c0dac88a14c2c31ac591d8f8",
+    "bookDigest": "sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666",
+    "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+    "dualSummaryDigest": "sha256:f8bd2f44a8413cd5084c9a7ce952cb5395d23ad65ff64d09fa58ff1ec4faa0ee",
+    "canonicalLandscapeDigest": "sha256:299448ab7bf943c82ac56f910c11a5d4202c9a432da6e5683b87351b1dcd0220"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+      "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+      "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+      "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+      "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b56324027508aad9e8b817a7f066ed85eb24697c8b98fa9ffc9c97c29dc2067b",
+      "runId": "physics-b039-a-codex-20260906T220133Z",
+      "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+      "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+      "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+      "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+      "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+      "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:7ae019b04d6c0fcff50a82d9f2f7aef339694287e25e10a79d4feb1061322218",
+      "runId": "physik-b039-openai-codex-independent-b-20260906",
+      "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+      "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-001",
+      "goalId": "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0efbeddced8f8421769cc6db0886385ef0e4ae42fc5266d055e4d71547ea0287",
+      "pageFingerprint": "sha256:7fc0434d8440de6b3338811530e3221932900138d8d22a546862b154e9f9a323",
+      "goalReviewContextFingerprint": "sha256:32045bc5222e073d9ca4b1e6503bb78ff414ad5e7925800110a174450023752f",
+      "finalText": {
+        "titleDe": "Zeitentwicklung von Quantenzuständen einordnen",
+        "titleEn": "Classify Time Evolution of Quantum States",
+        "descriptionDe": "Die lernende Person kann erklären, dass die zeitliche Entwicklung eines Quantenzustands im Modell deterministisch beschrieben wird, während Messergebnisse probabilistisch gedeutet werden.",
+        "descriptionEn": "The learner can explain that the time evolution of a quantum state is described deterministically in the model while measurement outcomes are interpreted probabilistically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.01",
+          "recordDigest": "sha256:9dc71ce0a0d9dbcdf78c43f74bfbc20c74853e7a8643ee5cae1b1dbfa407a257"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-001",
+          "recordDigest": "sha256:973d09ee53d44ac348b5aa1ffb6dacc9aeadbfe23822e171a6b262b9e7e75a90"
+        }
+      },
+      "rationaleDe": "Beide Runden treffen denselben Kern: eindeutige ungestörte Zustandsentwicklung ist von probabilistischen Einzelmessungen zu unterscheiden. A bleibt mit dem neuen Messzeitpunkt direkt bei der beanspruchten Zeitentwicklung; eine vollständige Schrödingergleichungsrechnung wird nicht ergänzt. Bs Zwischenmessung ist eine ergänzende Modellgrenze, kein Widerspruch und kein zusätzlich verpflichtender Kompetenzteil.",
+      "rationaleEn": "Both rounds identify the same distinction between uniquely determined undisturbed state evolution and probabilistic individual measurements. A keeps its changed-measurement-time transfer directly within the stated evolution scope; no full Schrödinger-equation calculation is added. B's intermediate measurement is a complementary model boundary, not a disagreement or an additional mandatory competence."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-002",
+      "goalId": "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e3ec3577e9f68564da5e35d837b44d1563c002c9ddb2fa94878524b000d4af63",
+      "pageFingerprint": "sha256:178c6460e518af084958a6a89ec0f8ae87861203edefe90713ad2da7968b4acb",
+      "goalReviewContextFingerprint": "sha256:6ebeabf5cbe45bab3d783119dabe281b97bd26824b58388211f8f11fb51fdc93",
+      "finalText": {
+        "titleDe": "Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern",
+        "titleEn": "Explain Complementarity via Interference Capability and Which-Path Information",
+        "descriptionDe": "Die lernende Person kann Komplementaritaet erlaeutern, indem sie die Sichtbarkeit von Interferenz mit verfuegbarer Welcher-Weg-Information in Beziehung setzt.",
+        "descriptionEn": "The learner can explain complementarity by relating the visibility of interference to the availability of which-path information."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.03",
+          "recordDigest": "sha256:29ded93c0173c1befa5729b8eb5dd00dc18c470597f70f66390abd874f318eeb"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-003",
+          "recordDigest": "sha256:ae4657f8f2d0e20ff1455e9eb605e1154f5aef39532dda89c439cc54dc57a128"
+        }
+      },
+      "rationaleDe": "Beide Runden beurteilen die physikalische Verfügbarkeit von Weginformation, nicht das Bewusstsein eines Beobachters. B konkretisiert den qualitativen Vergleich unterschiedlicher Wegmarkierungen; die vorhandenen Nachfolger zu Delayed Choice und Verschränkung werden nicht vorgezogen. As ungelesene vollständige Markierung und Bs abgestufte Markierung sind vereinbare Variationen. Eine quantitative Sichtbarkeitsrelation ist daraus nicht abzuleiten.",
+      "rationaleEn": "Both rounds concern physical availability of path information, not an observer's consciousness. B specifies a qualitative comparison of different path markings without importing the separate delayed-choice or entanglement successors. A's unread complete marking and B's graded marking are compatible variations. Neither warrants adding a quantitative visibility relation."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-003",
+      "goalId": "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b4e03e6ab1ee0a16e60677b30f9d2a1ed936ec1bc87294f0ed44efac91240402",
+      "pageFingerprint": "sha256:ab2b838a8ebc80e0c328437de9b3a393bfc55b38eb85a99a87570a628550b6e7",
+      "goalReviewContextFingerprint": "sha256:cdb7b3f8433abf05877f0db1cd3943bf393de43d503f32ee10574f633e532843",
+      "finalText": {
+        "titleDe": "Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden",
+        "titleEn": "Justify Position-Momentum Uncertainty and Limits of the Trajectory Concept",
+        "descriptionDe": "Die lernende Person kann die Orts-Impuls-Unbestimmtheit qualitativ begruenden und daraus Grenzen des klassischen Bahnbegriffs fuer Quantenobjekte ableiten.",
+        "descriptionEn": "The learner can qualitatively justify position-momentum uncertainty and derive from it the limits of the classical trajectory concept for quantum objects."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.04",
+          "recordDigest": "sha256:b4dc59a7cfeb5d6856a07f0153993eb582839e1bbbb358ba389a0b7a9ddd33c3"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-004",
+          "recordDigest": "sha256:a2674b3467edfd48ef985037335a0758a6f2104cb00e04512ee9fcdc5c281dee"
+        }
+      },
+      "rationaleDe": "Die übereinstimmende Begründung verbindet räumliche Eingrenzung mit der Streuung der entsprechenden Impulskomponente und der Grenze einer klassischen Bahn. As gedrehte Spaltrichtung prüft genau diese Komponentenbindung; Geräteungenauigkeit ersetzt die Zustandsunbestimmtheit nicht. Bs Darstellungswechsel ist fachlich kompatibel. A wird ohne formalen Fourierbeweis oder pauschales Urteil über sämtliche Quanteninterpretationen vorgeschlagen.",
+      "rationaleEn": "The shared explanation connects spatial localization with spread of the corresponding momentum component and the limit of a classical trajectory. A's rotated slit tests that component-specific relation; apparatus error does not replace state uncertainty. B's representation change is compatible. A is proposed without a formal Fourier proof or a blanket claim about every quantum interpretation."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-004",
+      "goalId": "727d0946-7019-50ed-8fc6-85db12508733",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7f47b7829790d7c459dcfd08fd9773ab8ad7280840a46b47c8647d9a624a92cb",
+      "pageFingerprint": "sha256:0173d19ff47b5ecc8de830f9aa0e52cb796606f53e15ede892bd73a65f98c5c6",
+      "goalReviewContextFingerprint": "sha256:3c711e0310512e5c45ea0046ab461764664509cfd01bacd1906e514dd9fb8e0b",
+      "finalText": {
+        "titleDe": "Realitaetsbegriff in der Quantenphysik diskutieren",
+        "titleEn": "Discuss Reality in Quantum Physics",
+        "descriptionDe": "Die lernende Person kann den Realitaetsbegriff in der Quantenphysik anhand von Messung, Praeparation und Wahrscheinlichkeitsaussagen fachlich diskutieren.",
+        "descriptionEn": "The learner can discuss the concept of reality in quantum physics using measurement, preparation, and probabilistic statements."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.05",
+          "recordDigest": "sha256:7d91354ea2e21ddca24283fa6ee7edb45e2fa189cc595c94d914122c1fccae02"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-005",
+          "recordDigest": "sha256:08636d3a5e9e176ba675cbc1a43bf0d3cdfad87b9a61ef1c6af8a4759e6edfca"
+        }
+      },
+      "rationaleDe": "Beide Runden trennen experimentell prüfbare Aussagen von ontologischer Deutung. As Vergleich zweier Interpretationen mit gleichen Vorhersagen konkretisiert das geforderte begründete Realitätsurteil, ohne eine metaphysische Position als richtige Lernantwort vorzuschreiben. Bs anderer Messkontext ergänzt dieselbe Begrenzung der Aussagekraft; daraus entsteht kein fachlicher Dissent und kein neues Messproblem-Unterziel.",
+      "rationaleEn": "Both rounds distinguish experimentally testable statements from ontological interpretation. A's comparison of interpretations with identical predictions makes the requested reasoned judgment concrete without prescribing a metaphysical position as the correct answer. B's different measurement context supplements the same limit on claims; it introduces neither subject-matter dissent nor a new measurement-problem subgoal."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-005",
+      "goalId": "e296aba6-f407-5944-a2bd-e5296e4c9f06",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4ab973c19ad170f141df63fb8abe56b2b9a8bd7843515fdbf87ec390f0541c15",
+      "pageFingerprint": "sha256:d7ed29d65afabaca5a187b265a1a5a51fe499770f3030df50927fc3ea6b9603f",
+      "goalReviewContextFingerprint": "sha256:f14ba6dc84ae4d0fdbf6ff7e3655373496fba41d94c7db5dfa8ae0f915900b59",
+      "finalText": {
+        "titleDe": "Elektronenbeugung als Materiewellenexperiment auswerten",
+        "titleEn": "Analyze electron diffraction as a matter-wave experiment",
+        "descriptionDe": "Die lernende Person kann Aufbau und Funktion einer Elektronenbeugungsroehre beschreiben, Beugungsbilder deuten und aus Messdaten den Zusammenhang zwischen Impuls und De-Broglie-Wellenlaenge erschliessen.",
+        "descriptionEn": "The learner can describe the setup and operation of an electron diffraction tube, interpret diffraction patterns, and infer the relationship between momentum and de Broglie wavelength from measurement data."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.06",
+          "recordDigest": "sha256:6b71a285cd692821012f12402e72f29ce40dce836953dfa6b52f4361811c3998"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-006",
+          "recordDigest": "sha256:de4543d871b8b9d98a8bcf997d1331afe6abd8790c6566c57bb86ed0a5148cb9"
+        }
+      },
+      "rationaleDe": "Aufbau, Ringdeutung und Impuls-Wellenlängen-Schluss bleiben in beiden Runden eine experimentelle Argumentationskette. A benennt das geeignete nichtrelativistische Modell sowie gemessene und erschlossene Größen ausdrücklich. Sein Abstandswechsel prüft die Trennung von Geometrie- und Wellenlängeneffekt. Beide Transferfälle sind nahezu deckungsgleich und setzen gelieferte Daten und bekannte Geometrie voraus, keinen selbstständigen Hochspannungsversuch. Die echte EN-Fassung war bereits im versiegelten B039-Input enthalten und ist unverändert.",
+      "rationaleEn": "Both rounds treat setup, ring interpretation, and momentum–wavelength inference as one experimental reasoning chain. A explicitly identifies the appropriate nonrelativistic model and measured versus inferred quantities. Its changed-distance case tests separation of geometry and wavelength effects. Both transfer cases are closely aligned and use supplied data and known geometry, not an independent high-voltage experiment. The genuine English translation was already present in the sealed B039 input and remains unchanged."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-006",
+      "goalId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:50eda6a08c18e710cdad64fc705e9b27d4c08acc714e2ee6460921b7ca22cf7c",
+      "pageFingerprint": "sha256:6ce33f56d7ece9c3cab4218122beff4633febacd9531e68cc290fcea992b6a50",
+      "goalReviewContextFingerprint": "sha256:5291242054232c7cdd1bcaf7b6904c059990867e2131818b426bbbbdefc54bc5",
+      "finalText": {
+        "titleDe": "Quanteninterferometer mit Phasen und Weginformation deuten",
+        "titleEn": "Interpret quantum interferometers using phases and which-path information",
+        "descriptionDe": "Die lernende Person kann Interferenzexperimente mit einzelnen Photonen, etwa im Mach-Zehnder-Interferometer, mit Phasenbeziehungen, Zeigerdiagrammen und Weginformation deuten.",
+        "descriptionEn": "The learner can interpret interference experiments with single photons, for example in a Mach-Zehnder interferometer, using phase relationships, phasor diagrams, and which-path information."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.07",
+          "recordDigest": "sha256:eb7c2bfe1a5234b555accf79a2989080e2fb73e88547bd84d21b5b1a8398f04a"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-007",
+          "recordDigest": "sha256:b439c01abff4a88de3f3c26aa9110a44a020aeb1b1bfee2a862242821eadb065"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden Phasenzeiger, Ausgangswahrscheinlichkeiten und Weginformation zur Deutung eines Einzelphotoneninterferometers. B variiert Phasenplatte und Wegmarkierung im angegebenen Aufbau; die Aufgabe muss die Strahlteilerkonvention liefern und darf keine halben Detektorklicks unterstellen. As entfernter zweiter Strahlteiler ist ein vereinbarer weiterer Fall, keine notwendige zusätzliche Apparatekompetenz. DE und die schon vor dem Bundle korrigierte EN-Fassung sind exakt gleich geblieben.",
+      "rationaleEn": "Both rounds connect phasors, output probabilities, and path information in interpreting a single-photon interferometer. B varies a phase plate and path marking in the specified setup; the task must provide beam-splitter conventions and must not imply half detector clicks. A's removed second beam splitter is a compatible additional case, not an extra required apparatus competence. German and the English translation corrected before bundling remain exactly unchanged."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-007",
+      "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d41cc76cfb615e3207679372bf0da6efb25c42751a29a2aea867ea2228416054",
+      "pageFingerprint": "sha256:24254f06dd70bca1c726bf049a5e11ea05aa12482018c94322dbc00dc511d9bc",
+      "goalReviewContextFingerprint": "sha256:2a7d61a0096c4c339445234834311b2507c5d9b5f699d86e36c9de33866af50b",
+      "finalText": {
+        "titleDe": "Kreisbewegung mit Zentripetalkraft anwenden",
+        "titleEn": "Apply Circular Motion with Centripetal Force",
+        "descriptionDe": "Die lernende Person kann gleichförmige Kreisbewegungen mithilfe der Zentripetalkraft beschreiben und quantitativ analysieren.",
+        "descriptionEn": "The learner can describe and quantitatively analyze uniform circular motions using centripetal force."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.08",
+          "recordDigest": "sha256:3579f026b0e1f9947e2c4da375b9ea3a236aeb1527f23278de55a454cc5aefbe"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-008",
+          "recordDigest": "sha256:5ec74480e8fb6de2cfba5d1e730cae5e62fbc799faed6eec8d588176912035d3"
+        }
+      },
+      "rationaleDe": "Die gemeinsame Kompetenz identifiziert die reale Wechselwirkung hinter der radialen Resultierenden und analysiert gleichförmige Kreisbewegung quantitativ. A hält mit Feder statt Faden einen elementaren Wechselwirkungswechsel ein; das passt auch zur tatsächlich gebundenen BW-Sek-I-Projektion. Bs tangentiale Fortsetzung beim Wegfall der Kraft ergänzt die Richtungsdeutung. Sie wird nicht als neue Spezialaufgabe oder erneute vollständige Herleitung des Voraussetzungsknotens festgeschrieben.",
+      "rationaleEn": "The common competence identifies the real interaction supplying the radial resultant and quantitatively analyzes uniform circular motion. A uses a simple string-to-spring change, consistent with the actually bound Baden-Württemberg lower-secondary projection. B's tangential continuation after removing the force complements direction reasoning. It is not imposed as a new specialist task or a repeated full derivation of the prerequisite goal."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-008",
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:454a9eeade46e56e98dabccd96eb45c35cabdc3c2cd3901f954362cfb05b0cf0",
+      "pageFingerprint": "sha256:f5b25db257187843cb37194471d597755aa606d66ffea153a8d35691dd325887",
+      "goalReviewContextFingerprint": "sha256:f9e54be06695f99156f5a2fd86f1f151120c79e09c43e708c21161727c70e938",
+      "finalText": {
+        "titleDe": "Kurvenfahrten mit Haftreibung analysieren",
+        "titleEn": "Analyze Cornering with Static Friction",
+        "descriptionDe": "Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.",
+        "descriptionEn": "The learner can quantitatively analyze simple situations such as cornering with static friction using centripetal force."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.09",
+          "recordDigest": "sha256:309f9f9209236602fd7262fb3c1adac335e187af9f91e0e1f4b4802c2a766c1a"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-009",
+          "recordDigest": "sha256:3b3f12779acde23003513fdeb808e7c9f40fea21ae671c9a3f6908339bd3b29d"
+        }
+      },
+      "rationaleDe": "Beide Runden unterscheiden die erforderliche Haftreibung von ihrem Maximalwert. B macht beim trockenen/nassen Belag besonders klar: Für gleiche Fahrt bleibt der Kraftbedarf gleich, während sich die Grenze ändert. Die Ebene und vereinfachte konstante Kreisfahrt begrenzen die quantitative Prüfung. As Grenzgeschwindigkeitsableitung ist damit vereinbar. Überhöhte Kurven, vollständige Fahrdynamik und reale Rutschgrenzversuche bleiben außerhalb dieses Vorschlags.",
+      "rationaleEn": "Both rounds distinguish required static friction from its maximum value. B makes the dry/wet comparison especially clear: identical motion keeps the force demand unchanged while the limit changes. A level road and simplified uniform turn bound the quantitative task. A's limiting-speed derivation is compatible. Banked turns, complete vehicle dynamics, and real skid-limit experiments remain outside this proposal."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-009",
+      "goalId": "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:da7eec66e0b225b3d717189b5c2f2dbd46917e6c213f4c0a3517e3e3edafd4b6",
+      "pageFingerprint": "sha256:bdac2482c5cdfd94c15dcda39d0e888bcf2ee88e62feca40a5e916802e366797",
+      "goalReviewContextFingerprint": "sha256:6a496e5c51887a2fdcb7f1ec23b7f638bc15fff2b153586ed33df8d1aa1afa3f",
+      "finalText": {
+        "titleDe": "Scheinkräfte in nicht-inertialen Systemen",
+        "titleEn": "Fictitious Forces in Non-Inertial Systems",
+        "descriptionDe": "Die lernende Person kann Scheinkräfte in beschleunigten Bezugssystemen qualitativ erklären und typische Beispiele wie Kreisbewegungen in rotierenden Systemen deuten.",
+        "descriptionEn": "The learner can qualitatively explain fictitious forces in accelerated reference systems and interpret typical examples such as circular motions in rotating systems."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.10",
+          "recordDigest": "sha256:116e1f50a53e4db6e2cc31a3b3f52048b2e16da7241648adcfd643323dd3e8e2"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-010",
+          "recordDigest": "sha256:a951268c79d5fdc287ba07ce1cf6ed715350af927e5b187282c1f144f3bb890c"
+        }
+      },
+      "rationaleDe": "Beide Runden erklären dieselbe Bewegung konsistent im Inertial- und beschleunigten System. B grenzt die Zentrifugalkraft ausdrücklich von einem zusätzlichen Wechselwirkungspaar zur Zentripetalkraft ab; der geradlinig beschleunigte Wagen prüft den allgemeinen Bezugsrahmengedanken qualitativ. Die Transferfälle stimmen fachlich überein. Ein vollständiger mathematischer Trägheitskraftkatalog wird nicht ergänzt; der allgemeine sourceRef gilt weiterhin nicht als eigenständig geprüfter Normativnachweis.",
+      "rationaleEn": "Both rounds explain the same motion consistently in inertial and accelerating frames. B explicitly distinguishes centrifugal force from an extra interaction pair with centripetal force; the linearly accelerating carriage tests the general reference-frame idea qualitatively. The transfer cases agree in substance. No complete mathematical catalogue of inertial forces is added, and the broad sourceRef is still not treated as independently verified normative evidence."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-010",
+      "goalId": "cf570e66-2ce2-5923-9033-c97d74119553",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:523fab8b325aa66e4f04738f200e958e97bfd42ebec1bf04471d08207e927986",
+      "pageFingerprint": "sha256:8ae54b9e4a128399756692f93894722de8a92c7c2d83c2f5aa7e702b23141ca0",
+      "goalReviewContextFingerprint": "sha256:c2a1075f0075f8a552bea11bd81138b7654a7125c278bb1b52b9707adb33d3ff",
+      "finalText": {
+        "titleDe": "Drehmoment beschreiben",
+        "titleEn": "Describe Torque",
+        "descriptionDe": "Die lernende Person kann das Drehmoment als Maß für die Drehwirkung einer Kraft definieren, berechnen und an einfachen Hebel- und Alltagsbeispielen anwenden.",
+        "descriptionEn": "The learner can define torque as a measure for the turning effect of a force, calculate it, and apply it to simple lever and everyday examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.11",
+          "recordDigest": "sha256:0f451de4382b262a9cc5f7b9666dafbb6c43fe454188dd258a31a3d58a466a5a"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-011",
+          "recordDigest": "sha256:e0a08a65919c56bb626c3389fea1b725a829b8db9a6cac9233cd8e96b5761540"
+        }
+      },
+      "rationaleDe": "Definition, Betrag und Anwendung gehören in beiden Runden zur einen Drehwirkung bezüglich einer Achse. A prüft den senkrechten Hebelarm besonders deutlich am verschwindenden Moment bei einer durch die Achse laufenden Wirkungslinie. Der AB1-Rahmen benötigt keinen dreidimensionalen Vektorformalismus. Bs schräge Kraftrichtung ist eine kompatible Zwischenvariation desselben Hebelarmprinzips, kein eigenständiger weiterer Kompetenzanspruch.",
+      "rationaleEn": "Definition, magnitude, and application concern the same turning effect about an axis in both rounds. A tests the perpendicular lever arm particularly clearly through zero torque when the line of action passes through the axis. The AB1 scope does not require three-dimensional vector formalism. B's oblique force is a compatible intermediate variation of the same lever-arm principle, not a separate additional competence."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-011",
+      "goalId": "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c9e31f96c381b55c3d657e59e3f8365a3f65667cdf373341b5b4eda5b1b8e604",
+      "pageFingerprint": "sha256:086bf51eefab661fdc3fa89eace1fab0c3b2558c99de941b27d2239751f45bfa",
+      "goalReviewContextFingerprint": "sha256:1558163ffc07dd4ac96d999d414ce5a93e1da010a19c9b997b7e4e08ea4b44a4",
+      "finalText": {
+        "titleDe": "Drehimpuls als Erhaltungsgröße",
+        "titleEn": "Angular Momentum as Conserved Quantity",
+        "descriptionDe": "Die lernende Person kann den Drehimpuls definieren, seine Erhaltung bei drehmomentfreien Vorgängen erläutern und einfache Beispiele (z. B. Pirouette) qualitativ deuten.",
+        "descriptionEn": "The learner can define angular momentum, explain its conservation in torque-free processes, and qualitatively interpret simple examples (e.g., pirouette)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.12",
+          "recordDigest": "sha256:d33634c4f05f54b0bfcdf76f1858d3be5ae38f625cea38d4fc44a6dd817f7b66"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-012",
+          "recordDigest": "sha256:f52c4c894e53205c9c17360b323659ac47556abcdb462bef3e00d4ac28573e24"
+        }
+      },
+      "rationaleDe": "Beide Runden binden die Erhaltung an das verschwindende resultierende äußere Drehmoment des genannten Systems. B lässt die innere Massenumverteilung erklären und prüft anschließend die Grenze durch eine äußere Bremse. Der qualitative Grundlagenumfang bleibt vom konkreten Pirouettennachfolger unterscheidbar. As Achsenbezug und Bs Systemgrenze passen zusammen; die unterschiedlichen Formulierungen erzeugen keinen Erhaltungswiderspruch. Es wird keine pauschale Energieerhaltung mit übernommen.",
+      "rationaleEn": "Both rounds bind conservation to zero net external torque on the stated system. B asks for reasoning about internal mass redistribution followed by the boundary case of an external brake. The qualitative foundation remains distinct from its specific pirouette successor. A's axis reference and B's system boundary are compatible and create no conservation disagreement. No blanket energy-conservation claim is carried along."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-012",
+      "goalId": "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:85ad0da07345b585d1fea701d5b611e9147a9504a5291dcf4670ae2129c2e88f",
+      "pageFingerprint": "sha256:864ba99dd5b8379ab5a226981f5e66e2ee92e4818bd402639c299ce4e081a53b",
+      "goalReviewContextFingerprint": "sha256:86390c2141717f7cd6355c7a76a3129d02fa40077bbae75f3894a6eec3623a0d",
+      "finalText": {
+        "titleDe": "Pirouetten mit Drehimpuls deuten",
+        "titleEn": "Interpret Pirouettes Using Angular Momentum",
+        "descriptionDe": "Die lernende Person kann Pirouetten durch Erhaltung des Drehimpulses und Änderungen des Trägheitsmoments qualitativ erklären.",
+        "descriptionEn": "The learner can qualitatively explain pirouettes through conservation of angular momentum and changes in moment of inertia."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.16",
+          "recordDigest": "sha256:19722f1b7896ebc165495e42eaef5c4b3954d2c23166b9edd313989b58740eac"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-016",
+          "recordDigest": "sha256:8bd943c4bcef6e5dbf4f36c89b93b79ef75c0d03e797355350be2edad7619adb"
+        }
+      },
+      "rationaleDe": "Beide Runden verlangen die qualitative Kette Körperhaltung, Massenabstände, Trägheitsmoment und Drehgeschwindigkeit bei vernachlässigbarem äußeren Moment. A verändert nur die Beinhaltung und prüft damit verständnisorientiert den Transfer über die gelernte Armregel hinaus. Bs anschließendes Ausstrecken und Bremsmoment sind kompatible Umkehrung beziehungsweise Grenze. Sie begründen weder eine neue Energiebilanz noch einen verpflichtenden praktischen Pirouettenversuch.",
+      "rationaleEn": "Both rounds require the qualitative chain from posture through mass distances and moment of inertia to rotation rate under negligible external torque. A changes only leg position, testing understanding beyond a memorized rule about arms. B's later extension and braking torque are compatible reversal and boundary cases. They justify neither a new energy-balance requirement nor a compulsory practical pirouette."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-013",
+      "goalId": "8daaf751-93fe-56d9-8697-ac30237061bd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4d70917dc3f293b8da9f0928302ec805f468a9bdda0bc6c7ee88e10223fbf27f",
+      "pageFingerprint": "sha256:e7aab28e26a926e2aa70a0893ef01a23af1e45c122554ec6466915fe9d7ff36f",
+      "goalReviewContextFingerprint": "sha256:f31d296398479691a1af226695b6ab47a25466240ca2b17550b9d50877e8dfe5",
+      "finalText": {
+        "titleDe": "Fahrraddynamik mit Kreiselwirkung erklären",
+        "titleEn": "Explain Bicycle Dynamics with Gyroscopic Effects",
+        "descriptionDe": "Die lernende Person kann Stabilität und Lenkverhalten von Fahrrädern mit Drehmomenten und Kreiselwirkung qualitativ deuten.",
+        "descriptionEn": "The learner can qualitatively interpret bicycle stability and steering behavior using torques and gyroscopic effects."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.17",
+          "recordDigest": "sha256:cd81179200d9feec911f498e5a0c668e941c257d5bcf861ad6e874d93950ee94"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-017",
+          "recordDigest": "sha256:e4b1bf18093d098ff4e54369bd9519840a3562ab31101821f390999e7faa28bf"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten Kreiselwirkung als begrenzten Beitrag zur Fahrradbewegung, nicht als alleinige Stabilitätsursache. A fordert beim Vergleich verschiedener Raddrehimpulse ausdrücklich, daraus keine vollständige Stabilitätsrangfolge abzuleiten. Das passt zum vorhandenen qualitativen Anwendungsziel. Bs kompensierter Raddrehimpuls verdeutlicht dieselbe Grenze und widerspricht A nicht. Der Voraussetzungsknoten b49 hat neuen Text, aber sein referenziertes ID-/Titelfeld und die vollständige hiesige Seite bleiben gleich; die Korrektur unterstützt, statt verändert, diese bereits begrenzte Erklärung.",
+      "rationaleEn": "Both rounds retain gyroscopic effects as a limited contribution to bicycle motion, not the sole cause of stability. A explicitly prevents a comparison of wheel angular momenta from becoming a complete stability ranking, matching the existing qualitative application goal. B's canceled wheel angular momentum illustrates the same boundary without contradicting A. Prerequisite b49 has revised text, but its referenced ID/title and this entire page are unchanged; that correction supports rather than changes the already limited explanation."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-014",
+      "goalId": "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b45b67a1ebc13c647fb210368bbd1bde6bbee59f9098215b07628f8cbbe9e497",
+      "pageFingerprint": "sha256:a0efa8648ab7060e9f214888e1ac52c430e2e816c36889f8de78e9c51c981cb8",
+      "goalReviewContextFingerprint": "sha256:b03af36d83fc61160d8350123b3dc5d0ed1eafc6c8a4568c0a5262e0d79695b8",
+      "finalText": {
+        "titleDe": "Kreiselstabilisierung technisch begründen",
+        "titleEn": "Technically Justify Gyroscopic Stabilization",
+        "descriptionDe": "Die lernende Person kann Kreiselstabilisierung in technischen Anwendungen mithilfe von Drehimpuls- und Drehmomentargumenten begründen.",
+        "descriptionEn": "The learner can justify gyroscopic stabilization in technical applications using angular momentum and torque arguments."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.18",
+          "recordDigest": "sha256:f9fa4a023001f3c4bf51a788f45156b23f75f2e2a3b5bbec4c5b247d5792c7be"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-018",
+          "recordDigest": "sha256:5ecdeebb5c3b2335a489b1744c37c836819c97784bbae3be7313e5e14be4e348"
+        }
+      },
+      "rationaleDe": "Beide Runden binden die technische Begründung an eine beschriebene Lagerung, Kopplung und Störmomentrichtung. B formuliert den Stabilisierungsschluss besonders bedingungsbezogen; der Wechsel von quer zu parallel zur Rotorachse verhindert eine pauschale Stabilitätsgarantie. As kurzer Impulsvergleich und Bs Lagerungsargument sind vereinbar. Weder jedes Kameragimbal noch jeder beliebige Rotor wird dadurch zu einer mechanischen Kreiselstabilisierung erklärt.",
+      "rationaleEn": "Both rounds bind the technical explanation to specified mounting, coupling, and disturbance-torque direction. B states the stabilization conclusion particularly conditionally; changing the disturbance from transverse to parallel to the rotor axis prevents a blanket stability guarantee. A's brief-impulse comparison and B's mounting argument are compatible. Neither every camera gimbal nor every arbitrary rotor is thereby classified as mechanical gyroscopic stabilization."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-015",
+      "goalId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5b09fe0d44e7af4893dcd26470f12a702adaaa4d7d4817bf9b271940b0132b96",
+      "pageFingerprint": "sha256:f51e99d8ee71c17bdf2804abdf25d122dc12c5b4e2f350f7ec72fcbd5032118f",
+      "goalReviewContextFingerprint": "sha256:dc92bb28bf9fcfb12c3467e89d5c792473b2e24b466bb8934634847a968f7dac",
+      "finalText": {
+        "titleDe": "Drehmoment auf Magnetnadeln und Dipole",
+        "titleEn": "Torque on Magnetic Needles and Dipoles",
+        "descriptionDe": "Die lernende Person kann das Drehmoment auf Magnetnadeln und magnetische Dipole im homogenen Feld mit M = mu * B * sin(alpha) berechnen und die Ausrichtung im Feld fachlich begründen.",
+        "descriptionEn": "The learner can calculate the torque on magnetic needles and magnetic dipoles in a homogeneous field using M = mu * B * sin(alpha) and explain alignment in the field."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.19",
+          "recordDigest": "sha256:b9acb4a2fa6ebb419dc0334548e0a2fbdc6a913d5d7498e7e5f86592104870a6"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-019",
+          "recordDigest": "sha256:9df281fc5ee2a8833fce060cb96d9c11840e0d72381974b78f08e691acc5ff89"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden den Momentbetrag im homogenen Feld mit der Deutung paralleler und antiparalleler Gleichgewichtslagen. B prüft die Feldumkehr einschließlich des Sonderfalls eines verschwindenden Moments; Winkeldefinition, Drehsinn und Dämpfungsbedingung verhindern bloßes Formeleinsetzen. As kleine Auslenkung und Bs Feldumkehr sind kompatible Stabilitätsprüfungen. Feldgradientkräfte, Quantenspin oder eine eigenständige Schwingungstheorie werden nicht ergänzt.",
+      "rationaleEn": "Both rounds connect torque magnitude in a uniform field with parallel and antiparallel equilibria. B tests field reversal including the zero-torque special case; angle definition, turning direction, and damping condition prevent mere formula substitution. A's small displacement and B's field reversal are compatible stability checks. No field-gradient forces, quantum spin, or separate oscillation theory is added."
+    },
+    {
+      "decisionId": "physics-b039-sixteen-exact-current-root-synthesis-20260907-decision-016",
+      "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6568d1ab24e4653dd7d39e3360f164d2ba8cb8ae15a74e457505bc23aa7d3a41",
+      "pageFingerprint": "sha256:18b4f28bb2b07299ed47dc327b8e6a36df6f5c455beb856974e56db74a7531b4",
+      "goalReviewContextFingerprint": "sha256:a1056deb3b83227a6544c36224a6cb8fd5fdea877ef8a5c46f391cfac75409c6",
+      "finalText": {
+        "titleDe": "Gaußsches Verfahren anwenden",
+        "titleEn": "Apply the Gauss Method",
+        "descriptionDe": "Die lernende Person kann das Messverfahren von Gauß (Ablenkungsmethode in Hauptlage und Schwingungsmethode) zur Bestimmung der Horizontalintensität des Erdmagnetfeldes beschreiben und anwenden.",
+        "descriptionEn": "The learner can describe and apply the Gauss measurement method (deflection method in principal position and oscillation method) to determine the horizontal intensity of the Earth's magnetic field."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-b039-a-codex-20260906T220133Z.20",
+          "recordDigest": "sha256:7aa942b4b22bd1b573c44e173b01fbc7f56b1b271bfd8f61adef3608b02d86fc"
+        },
+        "second": {
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-020",
+          "recordDigest": "sha256:37b627610ef21e26e8a3c0627dd507c45f440080cafad8c9fd29684972a931a0"
+        }
+      },
+      "rationaleDe": "Beide Runden begründen die gemeinsame Auswertung von Ablenkung und Schwingung durch die Elimination des unbekannten Magnetmoments; die zwei Schritte bleiben ein integriertes Messverfahren. A ist als Synthesebasis enger: anderer Magnet bei angegebener Hauptlage, bekanntem Trägheitsmoment und kontrollierten Näherungen. Bs andere Hauptlage ist nur bei ausdrücklich mitgelieferter Geometrie und Konvention ein geeigneter Zusatzfall; sie wird nicht als neuer Pflichtumfang verlangt. Der Vorschlag übernimmt keine unbenannte Hauptlagenkonvention und keinen neu geprüften normativen Quellenanspruch.",
+      "rationaleEn": "Both rounds justify combining deflection and oscillation through elimination of the unknown magnetic moment, preserving one integrated measurement method. A is the narrower synthesis basis: a different magnet with a specified principal-position geometry, known moment of inertia, and controlled approximations. B's other principal position is suitable only when geometry and conventions are explicitly supplied; it is not imposed as new mandatory scope. The proposal assumes no unstated principal-position convention and makes no newly verified normative-source claim."
+    }
+  ],
+  "manifestFingerprint": "sha256:19fb994850ad5355202ea4e4c22bb49a2549bc041f40a79f740a869dfbeea11b"
+}

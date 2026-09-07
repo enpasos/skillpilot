@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ac48a8bc221d32df99107dc5886bbbfc9d946ebe55202e592c6b16a72b281ae8",
+  "reviewInputFingerprint": "sha256:d3bcd407d75513296075bc7c0db0e3806dedefb5915e0a3bc3fed1f7bc3f087b",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a",
+      "roundId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-independent-a",
+      "runIds": [
+        "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::unknown"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-b",
+      "roundId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-independent-b",
+      "runIds": [
+        "codex-mathematik-b040-blind-b-20260907"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::unknown"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::unknown::unknown"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "911f3200-1dbc-59a6-90df-c883c77de39c",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-001",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-1",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-002",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-2",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-003",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-3",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-004",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-4",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-005",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-5",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-006",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-6",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-007",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-7",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-008",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-8",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-009",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-9",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-010",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-10",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-011",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-11",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-012",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-12",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-013",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-13",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-014",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-14",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-015",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-15",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-016",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-16",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-017",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-17",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-018",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-18",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-019",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-19",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ced4f794-9b42-4be4-bde5-7d44f134a140",
+      "firstRecordId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-020",
+      "secondRecordId": "codex-mathematik-b040-blind-b-20260907-20",
+      "firstRunId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a-run",
+      "secondRunId": "codex-mathematik-b040-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

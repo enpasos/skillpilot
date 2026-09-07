@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1.config.json",
+  "configDigest": "sha256:9cbbafd45aa9f3a825454bb9a1bc81c95f843a1346ac2d3b6a8c0ba73fe0d703",
+  "goalIds": [
+    "911f3200-1dbc-59a6-90df-c883c77de39c",
+    "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+    "1b664036-3c29-5d94-9f42-97069aaa2c53",
+    "315093d4-515a-542c-b776-d72a12763d1a",
+    "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+    "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+    "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+    "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+    "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+    "ece68088-71a8-466b-874c-09e6baac19fc",
+    "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+    "24f21c0c-b506-56ec-ad17-39b209af4585",
+    "5042fd2b-bab2-50be-8144-c9ccf5618615",
+    "269675a9-13cd-4a3a-ab75-63794f5c9710",
+    "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+    "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+    "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+    "23589682-2028-54cb-9034-b468b42688f1",
+    "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+    "ced4f794-9b42-4be4-bde5-7d44f134a140"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 796,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:f7610e34ad9cf06f795d209b071dfd0d3f34f320f676d595a0038fa2d496bd1f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d7d5d03281f8452b09c492daf847e2fa969d678fde04fb0d7d4caf9d527b3205",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:ac48a8bc221d32df99107dc5886bbbfc9d946ebe55202e592c6b16a72b281ae8",
+    "reviewInputFingerprint": "sha256:d3bcd407d75513296075bc7c0db0e3806dedefb5915e0a3bc3fed1f7bc3f087b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-a",
+        "campaignDigest": "sha256:e9e865e396ea02373c9acd4d0ed5458accc92b8d19580d288ecba6d9467d64a8",
+        "roundId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:adf192529f53f5282c03ef000c426d50221a48a61f738ba96da73dee0c0432c6"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-b",
+        "campaignDigest": "sha256:75b57b5f79490205a6935fc0faa3563c8d487b15bbee4fad28f0bfe211399856",
+        "roundId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9ab499c56d5b187dcbac6558ad39bfc8a6e7c0d728f1916b29cd94a31f22afb3"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

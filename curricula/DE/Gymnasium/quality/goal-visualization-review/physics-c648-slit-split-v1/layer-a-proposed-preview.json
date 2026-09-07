@@ -1,0 +1,1795 @@
+{
+  "artifactType": "physics-c648-source-bound-split-proposed-change-v1",
+  "status": "proposed_not_applied",
+  "observedAt": "2026-09-07T02:07:21.913Z",
+  "authority": {
+    "provider": "OpenAI",
+    "model": "unknown",
+    "modelVersion": "unknown",
+    "humanApprovalClaimed": false
+  },
+  "parentBefore": {
+    "id": "c64820e1-c0ee-4342-9225-f981650f0c52",
+    "title": "Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen",
+    "titleEn": "Calculate the Positions of Interference Minima and Maxima in the Far-Field Approximation",
+    "description": "Die lernende Person kann die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewaehlten Beugungsvorgaengen in Fernfeldnaeherung fuer Einzelspalt, Doppelspalt und Gitter berechnen.",
+    "descriptionEn": "The learner can calculate the positions of interference minima and maxima for selected diffraction processes in the far-field approximation for the single slit, double slit, and grating.",
+    "weight": 1.1,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "2c6af966-7703-4176-a117-5ddb8295bedf"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_WELLEN"
+      ],
+      "phase": "Q3"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "c64820e1-c0ee-4342-9225-f981650f0c52",
+        "title": "Visualisierung: Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen",
+        "url": "/assets/goal-visualizations/physik/c64820e1-c0ee-4342-9225-f981650f0c52/c64820e1-c0ee-4342-9225-f981650f0c52.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)",
+        "description": "Visualisierung zum Lernziel: Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen\". Die lernende Person kann die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewaehlten Beugungsvorgaengen in Fernfeldnaeherung fuer Einzelspalt, Doppelspalt und Gitter berechnen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "parentAfter": {
+    "id": "c64820e1-c0ee-4342-9225-f981650f0c52",
+    "title": "Interferenzlagen an Einzelspalt, Doppelspalt und Gitter",
+    "titleEn": "Interference positions for single slit, double slit and grating",
+    "description": "Dieser Bereich bündelt drei getrennte Lernziele zur Lagebestimmung bei Einzelspaltbeugung, Doppelspaltinterferenz und optischen Gittern; der jeweilige Kursumfang wird an den Teilzielen ausgewiesen.",
+    "descriptionEn": "This area groups three separate learning goals for positions in single-slit diffraction, double-slit interference and optical gratings; course applicability is specified for each constituent goal.",
+    "weight": 3,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [
+      "55dbede5-2fee-51e7-ac13-e3b0227c502e",
+      "df4acb52-b700-5b44-bc1e-11d73f24d061",
+      "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    ],
+    "requires": [],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [
+        "LI_WELLEN"
+      ],
+      "phase": "Q3"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "cluster",
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary"
+    }
+  },
+  "newGoals": [
+    {
+      "id": "55dbede5-2fee-51e7-ac13-e3b0227c502e",
+      "title": "Lage von Maxima und Minima am idealisierten Doppelspalt bestimmen",
+      "titleEn": "Determine maxima and minima of idealized double-slit interference",
+      "description": "Die lernende Person kann bei senkrechtem, kohärentem und monochromatischem Lichteinfall am idealisierten Doppelspalt die Bedingungen für helle und dunkle Streifen aus dem Gangunterschied begründen und daraus deren Winkel und Schirmpositionen in Fernfeldnäherung bestimmen. Sie unterscheidet dabei den Abstand der Spaltmitten vom Schirmabstand und verwendet die Kleinwinkelnäherung nur, wenn sie angemessen ist; die Einhüllende realer Spalte endlicher Breite wird hier vernachlässigt.",
+      "descriptionEn": "The learner can explain the conditions for bright and dark fringes from the path difference for normally incident coherent monochromatic light at an idealized double slit, and determine their angles and screen positions in the far-field approximation. They distinguish slit-centre separation from screen distance and use the small-angle approximation only when appropriate; the envelope due to finite slit width is neglected here.",
+      "contains": [],
+      "requires": [
+        "2c6af966-7703-4176-a117-5ddb8295bedf"
+      ],
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "df4acb52-b700-5b44-bc1e-11d73f24d061",
+      "title": "Lage der Hauptmaxima eines optischen Gitters bestimmen",
+      "titleEn": "Determine the principal maxima of an optical diffraction grating",
+      "description": "Die lernende Person kann bei senkrechtem, kohärentem und monochromatischem Lichteinfall die Hauptmaxima eines regelmäßigen optischen Gitters aus der Gleichphasigkeit benachbarter Spalte begründen und ihre Winkel und Schirmpositionen im Fernfeld bestimmen. Sie deutet die Gitterkonstante als Abstand benachbarter Spaltmitten, prüft die geometrisch möglichen Ordnungen und unterscheidet diese Hauptmaximabedingung von Aussagen über Nebenmaxima oder Minima.",
+      "descriptionEn": "The learner can explain the principal maxima of a regular optical grating from the phase agreement of adjacent slits for normally incident coherent monochromatic light, and determine their angles and screen positions in the far field. They interpret the grating constant as the separation of adjacent slit centres, check geometrically possible orders and distinguish this principal-maximum condition from statements about secondary maxima or minima.",
+      "contains": [],
+      "requires": [
+        "2c6af966-7703-4176-a117-5ddb8295bedf"
+      ],
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7",
+      "title": "Extrema der Einzelspaltbeugung bestimmen",
+      "titleEn": "Determine extrema of single-slit diffraction",
+      "description": "Die lernende Person kann bei senkrechtem monochromatischem Lichteinfall auf einen gleichmäßig beleuchteten Einzelspalt die Minima im Fernfeld durch paarweise Auslöschung erklären und ihre Winkel und Schirmpositionen berechnen. Daraus bestimmt sie die Breite des Zentralmaximums; die Lage der Nebenmaxima ermittelt sie aus einem bereitgestellten Intensitätsverlauf und kennzeichnet Näherungen, statt halbe Ordnungen als exakte Maximapositionen anzunehmen.",
+      "descriptionEn": "The learner can explain far-field minima by pairwise cancellation for normally incident monochromatic light illuminating a single slit uniformly, and calculate their angles and screen positions. From these they determine the width of the central maximum; they obtain secondary-maximum positions from a supplied intensity curve and identify approximations rather than treating half orders as exact maximum positions.",
+      "contains": [],
+      "requires": [
+        "2c6af966-7703-4176-a117-5ddb8295bedf"
+      ],
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    }
+  ],
+  "newAssessments": [
+    {
+      "id": "aba1ff9c-40ba-5b2b-89b4-09dc119b3ada",
+      "title": "Prüfungsaufgabe: Doppelspalt: Gangunterschied und Schirmpositionen",
+      "titleEn": "Assessment task: Double slit: path difference and screen positions",
+      "description": "Die lernende Person kann eine eigenständige materialgebundene Prüfungsaufgabe zu diesem optischen Modell bearbeiten, ihre Rechnung begründen und die Modellgrenzen beurteilen.",
+      "descriptionEn": "The learner can independently solve a material-based assessment task about this optical model, justify the calculation and assess the model limitations.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+      ],
+      "type": "atomic",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "Q3",
+        "area": "Klausurtraining"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "examData": {
+        "reviewStatus": "needs_review",
+        "coveredGoalIds": [
+          "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        ],
+        "coveredStrands": [
+          "LI_WELLEN"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "Ein Lehrlabor prüft eine Spaltmaske für einen Optikprüfstand. Alle Angaben sind frei erfundene Modelldaten, keine Messwerte und keine Originalklausur. Kohärentes monochromatisches Licht trifft senkrecht auf die gleichmäßig beleuchtete Maske. Die Fernfeldbeschreibung gilt als gegeben. Der ebene Schirm steht senkrecht zur optischen Achse; y=0 liegt auf dieser Achse. Ein Taschenrechner darf verwendet werden.\n\nMaterial: Wellenlänge λ=450 nm; Abstand der Spaltmitten d=0,18 mm; Abstand Maske–Schirm L=1,60 m. Die beiden Spalte werden als gleich starke idealisierte schmale Quellen betrachtet; ihre Einzelspalt-Einhüllende wird vernachlässigt.\n\na) Erläutern Sie die unterschiedliche geometrische Bedeutung von d und L. Begründen Sie aus dem Gangunterschied die Bedingungen für helle und dunkle Streifen. (3 BE)\n\nb) Berechnen Sie auf der positiven Schirmseite den Winkel und die Schirmposition des Maximums zweiter Ordnung sowie des ersten Minimums. Verwenden Sie zunächst die Winkelgeometrie ohne Kleinwinkelnäherung. (4 BE)\n\nc) Prüfen Sie am Maximum zweiter Ordnung, ob die Kleinwinkelnäherung den Schirmort mit weniger als 1 % relativem Fehler liefert. Nennen Sie die dafür entscheidende Winkelbedingung und eine hier vernachlässigte Wirkung realer Spalte endlicher Breite. (3 BE)",
+        "taskContentEn": "A teaching laboratory is assessing a slit mask for an optical test bench. All data are invented model values, not measurements or an original examination. Coherent monochromatic light is normally incident on the uniformly illuminated mask. The far-field description is assumed valid. The flat screen is perpendicular to the optical axis, with y=0 on that axis. A calculator may be used.\n\nData: wavelength λ=450 nm; slit-centre separation d=0.18 mm; mask-to-screen distance L=1.60 m. The two slits are represented by equally strong idealized narrow sources; their single-slit diffraction envelope is neglected.\n\na) Explain the different geometrical meanings of d and L. Use path difference to justify the conditions for bright and dark fringes. (3 points)\n\nb) On the positive side of the screen, calculate the angle and screen position of the second-order maximum and of the first minimum. First use the angular geometry without a small-angle approximation. (4 points)\n\nc) For the second-order maximum, check whether the small-angle approximation gives the screen position with a relative error below 1%. State the relevant angular condition and one effect of real slits of finite width that is neglected here. (3 points)",
+        "solutionContent": "a) d ist der Abstand der Spaltmitten in der Maskenebene, L der Abstand von der Maske zum Schirm. Im Fernfeld gilt Δs≈d·sinθ. Helle Streifen: Δs=mλ, weil die Wellen gleichphasig ankommen; dunkle Streifen: Δs=(m+1/2)λ, weil gleich starke Wellen gegenphasig ankommen (m ganzzahlig).\n\nb) Positives Maximum zweiter Ordnung: sinθ=2λ/d=0,005, θ≈0,286480°, y=L·tanθ≈8,000100 mm. Erstes positives Minimum: sinθ=λ/(2d)=0,00125, θ≈0,0716197°, y≈2,00000156 mm.\n\nc) Die Kleinwinkelnäherung erfordert |θ|≪1 im Bogenmaß, damit sinθ≈tanθ≈θ; Fernfeld allein genügt dafür nicht. Sie gibt y≈L·2λ/d=8,000000 mm. Der relative Fehler gegenüber dem geometrischen Wert ist |8,000100−8,000000|/8,000100≈0,0000125001, also ≈0,00125001 % und deutlich unter 1 %. Die reale Einzelspalt-Einhüllende, Intensitätsmodulation bzw. mögliche fehlende Ordnungen werden hier vernachlässigt; ein solcher korrekt benannter Effekt genügt.\n\nBewertungshinweis: Angemessene Rundung akzeptieren; nachfolgend methodisch richtige Schritte bei einem übernommenen Rechenfehler gesondert bewerten. Teil-BE innerhalb ausdrücklich geteilter Kriterien sind zulässig. Gesamtbestehen und Bestehen einzelner Fälle sind verschiedene Aussagen; aus 18/30 wird keine Beherrschung aller drei Ziele automatisch abgeleitet.",
+        "solutionContentEn": "a) d is the separation of slit centres in the mask plane, whereas L is the mask-to-screen distance. In the far field, Δs≈d·sinθ. Bright fringes satisfy Δs=mλ because the waves arrive in phase; dark fringes satisfy Δs=(m+1/2)λ because equally strong waves arrive in opposite phase (integer m).\n\nb) Positive second-order maximum: sinθ=2λ/d=0.005, θ≈0.286480°, y=L·tanθ≈8.000100 mm. First positive minimum: sinθ=λ/(2d)=0.00125, θ≈0.0716197°, y≈2.00000156 mm.\n\nc) The small-angle approximation requires |θ|≪1 in radians, so sinθ≈tanθ≈θ; the far-field assumption alone is insufficient. It gives y≈L·2λ/d=8.000000 mm. The relative error compared with the geometrical value is |8.000100−8.000000|/8.000100≈0.0000125001, or ≈0.00125001%, well below 1%. The actual single-slit envelope, modulation of fringe intensities or possible missing orders are neglected; naming one such effect correctly is sufficient.\n\nScoring note: Accept sensible rounding and credit subsequent methodologically correct work despite a carried-forward arithmetic error. Partial points are allowed within explicitly divided criteria. Passing the aggregate and passing individual cases are different statements; a score of 18/30 does not automatically establish mastery of all three goals.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 6,
+          "steps": [
+            {
+              "id": "ds-01",
+              "points": 1,
+              "description": "d als Spaltmittenabstand und L als Masken-Schirm-Abstand unterschieden."
+            },
+            {
+              "id": "ds-02",
+              "points": 1,
+              "description": "Maximabedingung Δs=mλ mit Gleichphasigkeit begründet."
+            },
+            {
+              "id": "ds-03",
+              "points": 1,
+              "description": "Minimabedingung Δs=(m+1/2)λ mit Gegenphasigkeit gleich starker Beiträge begründet."
+            },
+            {
+              "id": "ds-04",
+              "points": 1,
+              "description": "Winkel des positiven Maximums zweiter Ordnung korrekt bestimmt: etwa 0,286480°."
+            },
+            {
+              "id": "ds-05",
+              "points": 1,
+              "description": "Schirmposition dieses Maximums über y=L·tanθ korrekt bestimmt: etwa 8,000100 mm."
+            },
+            {
+              "id": "ds-06",
+              "points": 1,
+              "description": "Winkel des ersten positiven Minimums korrekt bestimmt: etwa 0,0716197°."
+            },
+            {
+              "id": "ds-07",
+              "points": 1,
+              "description": "Schirmposition dieses Minimums über y=L·tanθ korrekt bestimmt: etwa 2,00000156 mm."
+            },
+            {
+              "id": "ds-08",
+              "points": 1,
+              "description": "Kleine Winkel im Bogenmaß als Bedingung für sinθ≈tanθ≈θ genannt; nicht bloß Fernfeld behauptet."
+            },
+            {
+              "id": "ds-09",
+              "points": 1,
+              "description": "Näherungsort 8,000000 mm und relativen Fehler etwa 0,00125 % gegenüber der exakten Schirmgeometrie überprüft; 1-%-Kriterium erfüllt."
+            },
+            {
+              "id": "ds-10",
+              "points": 1,
+              "description": "Eine vernachlässigte reale Spaltbreitenwirkung fachlich richtig benannt, z. B. Einhüllende/Intensitätsmodulation/fehlende Ordnungen."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ddadb014-865e-5929-85d8-b7a8f57ab3d8",
+      "title": "Prüfungsaufgabe: Gitter: Hauptmaxima und Grenzen einer Halbordnungsregel",
+      "titleEn": "Assessment task: Grating: principal maxima and limits of a half-order rule",
+      "description": "Die lernende Person kann eine eigenständige materialgebundene Prüfungsaufgabe zu diesem optischen Modell bearbeiten, ihre Rechnung begründen und die Modellgrenzen beurteilen.",
+      "descriptionEn": "The learner can independently solve a material-based assessment task about this optical model, justify the calculation and assess the model limitations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "df4acb52-b700-5b44-bc1e-11d73f24d061"
+      ],
+      "type": "atomic",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "Q3",
+        "area": "Klausurtraining"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "examData": {
+        "reviewStatus": "needs_review",
+        "coveredGoalIds": [
+          "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        ],
+        "coveredStrands": [
+          "LI_WELLEN"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "Ein Lehrlabor prüft eine Spaltmaske für einen Optikprüfstand. Alle Angaben sind frei erfundene Modelldaten, keine Messwerte und keine Originalklausur. Kohärentes monochromatisches Licht trifft senkrecht auf die gleichmäßig beleuchtete Maske. Die Fernfeldbeschreibung gilt als gegeben. Der ebene Schirm steht senkrecht zur optischen Achse; y=0 liegt auf dieser Achse. Ein Taschenrechner darf verwendet werden.\n\nMaterial: Sieben gleich starke, regelmäßig angeordnete idealisierte schmale Spalte; Gitterkonstante g=1,50 µm; λ=650 nm; L=0,40 m. Die Einzelspalt-Einhüllende wird vernachlässigt. Der Schirm sei ausreichend groß.\n\na) Erläutern Sie die Bedeutung der Gitterkonstante und begründen Sie die Hauptmaximabedingung durch die Phasenbeziehung benachbarter Spalte. (2 BE)\n\nb) Berechnen Sie für die positiven Hauptmaxima erster und zweiter Ordnung jeweils Winkel und Schirmposition. Nutzen Sie keine Kleinwinkelnäherung. Geben Sie sämtliche geometrisch möglichen ganzzahligen Ordnungen an und prüfen Sie ausdrücklich die dritte Ordnung. (6 BE)\n\nc) Eine Person behauptet: „Wie beim Doppelspalt liegt bei g·sinθ=λ/2 stets ein vollständiges Minimum.“ Prüfen Sie dies für diese Siebenspaltmaske. Nutzen Sie dazu: Bei einem Gangunterschied λ/2 wechseln die gleich großen Wellenbeiträge benachbarter Spalte zwischen +A und −A. Leiten Sie daraus ab, ob die genannte Bedingung ein allgemeines Kriterium für Gitterminima ist. (2 BE)",
+        "taskContentEn": "A teaching laboratory is assessing a slit mask for an optical test bench. All data are invented model values, not measurements or an original examination. Coherent monochromatic light is normally incident on the uniformly illuminated mask. The far-field description is assumed valid. The flat screen is perpendicular to the optical axis, with y=0 on that axis. A calculator may be used.\n\nData: seven equally strong, regularly spaced idealized narrow slits; grating spacing g=1.50 µm; λ=650 nm; L=0.40 m. The single-slit diffraction envelope is neglected. Assume the screen is sufficiently large.\n\na) Explain the meaning of the grating spacing and justify the condition for principal maxima from the phase relationship of adjacent slits. (2 points)\n\nb) For the positive first- and second-order principal maxima, calculate the angle and screen position. Do not use a small-angle approximation. List all geometrically possible integer orders and explicitly check the third order. (6 points)\n\nc) Someone claims: “As with a double slit, g·sinθ=λ/2 always produces complete cancellation.” Test this for the seven-slit mask. Use the fact that a path difference of λ/2 makes equal contributions from adjacent slits alternate between +A and −A. Explain whether this condition is a general criterion for grating minima. (2 points)",
+        "solutionContent": "a) g ist der Abstand benachbarter Spaltmitten, nicht die Einzelspaltbreite. Bei g·sinθ=mλ unterscheiden sich benachbarte Phasen um 2πm; damit sind alle sieben Beiträge gleichphasig und ergeben ein Hauptmaximum des idealen Gitterfaktors.\n\nb) Erste Ordnung: sinθ₁=0,433333…, θ₁≈25,6793°, y₁=0,40·tanθ₁≈0,192329 m. Zweite Ordnung: sinθ₂=0,866667…, θ₂≈60,0736°, y₂≈0,694879 m. Aus |mλ/g|≤1 folgt |m|≤2,30769…; möglich sind m=−2,−1,0,1,2. Für m=3 wäre sinθ=1,3, also kein reeller Ausfallswinkel. In diesem Datensatz tritt keine Grenzordnung bei |sinθ|=1 auf; alle genannten Ordnungen schneiden den ausreichend großen endlichen ebenen Schirm.\n\nc) Beim halben Gangunterschied ergibt sich +A−A+A−A+A−A+A=A≠0; drei Paare löschen sich aus, ein Beitrag bleibt. Die Intensität ist deshalb nicht null, die Behauptung widerlegt. Die Hauptmaximabedingung darf nicht in eine allgemeine Halbordnungsregel für Gitterminima umgedeutet werden. Eine allgemeine Nebenmaxima-/Minimaformel ist hier nicht verlangt.\n\nBewertungshinweis: Angemessene Rundung akzeptieren; nachfolgend methodisch richtige Schritte bei einem übernommenen Rechenfehler gesondert bewerten. Teil-BE innerhalb ausdrücklich geteilter Kriterien sind zulässig. Gesamtbestehen und Bestehen einzelner Fälle sind verschiedene Aussagen; aus 18/30 wird keine Beherrschung aller drei Ziele automatisch abgeleitet.",
+        "solutionContentEn": "a) g is the separation of adjacent slit centres, not the width of an individual slit. For g·sinθ=mλ, adjacent contributions differ in phase by 2πm; all seven contributions are therefore in phase, producing a principal maximum of the ideal grating factor.\n\nb) First order: sinθ₁=0.433333…, θ₁≈25.6793°, y₁=0.40·tanθ₁≈0.192329 m. Second order: sinθ₂=0.866667…, θ₂≈60.0736°, y₂≈0.694879 m. The condition |mλ/g|≤1 gives |m|≤2.30769…; the possible orders are m=−2,−1,0,1,2. For m=3, sinθ would be 1.3, so no real outgoing angle exists. These data have no limiting order at |sinθ|=1; all listed orders intersect the sufficiently large finite flat screen.\n\nc) At a half-wavelength path difference, +A−A+A−A+A−A+A=A≠0: three pairs cancel and one contribution remains. Intensity is therefore nonzero and the claim is false. The principal-maximum condition must not be turned into a general half-order rule for grating minima. A general formula for secondary maxima or minima is not required here.\n\nScoring note: Accept sensible rounding and credit subsequent methodologically correct work despite a carried-forward arithmetic error. Partial points are allowed within explicitly divided criteria. Passing the aggregate and passing individual cases are different statements; a score of 18/30 does not automatically establish mastery of all three goals.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 6,
+          "steps": [
+            {
+              "id": "gr-01",
+              "points": 1,
+              "description": "g als Abstand benachbarter Spaltmitten und nicht als Spaltbreite gedeutet."
+            },
+            {
+              "id": "gr-02",
+              "points": 1,
+              "description": "g·sinθ=mλ aus der Gleichphasigkeit sämtlicher benachbarter Beiträge begründet und als Hauptmaximabedingung eingeordnet."
+            },
+            {
+              "id": "gr-03",
+              "points": 1,
+              "description": "Winkel der positiven ersten Ordnung korrekt: etwa 25,6793°."
+            },
+            {
+              "id": "gr-04",
+              "points": 1,
+              "description": "Schirmposition der positiven ersten Ordnung korrekt mittels Tangens: etwa 0,192329 m."
+            },
+            {
+              "id": "gr-05",
+              "points": 1,
+              "description": "Winkel der positiven zweiten Ordnung korrekt: etwa 60,0736°."
+            },
+            {
+              "id": "gr-06",
+              "points": 1,
+              "description": "Schirmposition der positiven zweiten Ordnung korrekt mittels Tangens: etwa 0,694879 m."
+            },
+            {
+              "id": "gr-07",
+              "points": 1,
+              "description": "Alle geometrisch möglichen ganzzahligen Ordnungen −2,−1,0,1,2 aus |mλ/g|≤1 bestimmt."
+            },
+            {
+              "id": "gr-08",
+              "points": 1,
+              "description": "Dritte Ordnung ausdrücklich wegen sinθ=1,3>1 ausgeschlossen."
+            },
+            {
+              "id": "gr-09",
+              "points": 1,
+              "description": "Für sieben Beiträge bei halbem Gangunterschied drei auslöschende Paare und einen verbleibenden Beitrag A erkannt."
+            },
+            {
+              "id": "gr-10",
+              "points": 1,
+              "description": "Aus nicht verschwindender Amplitude auf nicht verschwindende Intensität geschlossen; allgemeine Gitter-Halbordnungsregel zurückgewiesen."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "16f3413b-4231-579d-a540-a75c957e2de8",
+      "title": "Prüfungsaufgabe: Einzelspalt: Minima, Zentralbreite und tabellierte Nebenmaxima",
+      "titleEn": "Assessment task: Single slit: minima, central width and tabulated secondary maxima",
+      "description": "Die lernende Person kann eine eigenständige materialgebundene Prüfungsaufgabe zu diesem optischen Modell bearbeiten, ihre Rechnung begründen und die Modellgrenzen beurteilen.",
+      "descriptionEn": "The learner can independently solve a material-based assessment task about this optical model, justify the calculation and assess the model limitations.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+      ],
+      "type": "atomic",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN",
+          "PK5_BEWERTEN"
+        ],
+        "guidingIdeas": [
+          "LI_WELLEN"
+        ],
+        "phase": "Q3",
+        "area": "Klausurtraining"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "examData": {
+        "reviewStatus": "needs_review",
+        "coveredGoalIds": [
+          "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        ],
+        "coveredStrands": [
+          "LI_WELLEN"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "Ein Lehrlabor prüft eine Spaltmaske für einen Optikprüfstand. Alle Angaben sind frei erfundene Modelldaten, keine Messwerte und keine Originalklausur. Kohärentes monochromatisches Licht trifft senkrecht auf die gleichmäßig beleuchtete Maske. Die Fernfeldbeschreibung gilt als gegeben. Der ebene Schirm steht senkrecht zur optischen Achse; y=0 liegt auf dieser Achse. Ein Taschenrechner darf verwendet werden.\n\nMaterial: Einzelspaltbreite b=0,16 mm; λ=640 nm; L=1,75 m. Es gilt u=b·sinθ/λ; die Intensität wird durch I₀=I(0) normiert und ist symmetrisch: I(−u)=I(u). Die Tabelle ist ein bereitgestellter numerischer Intensitätsverlauf des idealen Fernfeldmodells. Werte sind auf fünf Nachkommastellen gerundet; die Tabelle legt die exakte Maximalstelle zwischen ihren Stützstellen nicht fest. Eine Intensitätsformel muss nicht hergeleitet werden.\n\n| u | I/I₀ |\n| --- | --- |\n| 0,00 | 1,00000 |\n| 0,50 | 0,40528 |\n| 1,00 | 0,00000 |\n| 1,30 | 0,03924 |\n| 1,40 | 0,04676 |\n| 1,43 | 0,04719 |\n| 1,46 | 0,04679 |\n| 1,50 | 0,04503 |\n| 1,70 | 0,02295 |\n| 2,00 | 0,00000 |\n\na) Erklären Sie das erste Minimum durch paarweise Auslöschung von Beiträgen aus den beiden Spalthälften. Geben Sie die allgemeine Bedingung der Einzelspaltminima an; erläutern Sie, weshalb die Ordnung null kein Minimum bezeichnet. (3 BE)\n\nb) Berechnen Sie Winkel und Schirmpositionen der ersten beiden Minima auf beiden Seiten. Bestimmen Sie daraus die Schirmbreite des Zentralmaximums zwischen den ersten Minima. (3 BE)\n\nc) Bestimmen Sie aus der Tabelle näherungsweise die Lage des ersten Nebenmaximums in u sowie dessen Winkel und Schirmposition auf beiden Seiten. Geben Sie außerdem Lage und normierte Höhe des Zentralmaximums an. Beurteilen Sie die Aussage, das erste Nebenmaximum liege exakt bei u=1,5. Kennzeichnen Sie die begrenzte Genauigkeit des Ablesens aus der Tabelle. (4 BE)",
+        "taskContentEn": "A teaching laboratory is assessing a slit mask for an optical test bench. All data are invented model values, not measurements or an original examination. Coherent monochromatic light is normally incident on the uniformly illuminated mask. The far-field description is assumed valid. The flat screen is perpendicular to the optical axis, with y=0 on that axis. A calculator may be used.\n\nData: slit width b=0.16 mm; λ=640 nm; L=1.75 m. Define u=b·sinθ/λ. Intensity is normalized by I₀=I(0) and is symmetric: I(−u)=I(u). The following supplied table describes the ideal far-field intensity distribution numerically. Values are rounded to five decimal places; the table does not locate an exact maximum between sampled positions. Deriving an intensity formula is not required.\n\n| u | I/I₀ |\n| --- | --- |\n| 0.00 | 1.00000 |\n| 0.50 | 0.40528 |\n| 1.00 | 0.00000 |\n| 1.30 | 0.03924 |\n| 1.40 | 0.04676 |\n| 1.43 | 0.04719 |\n| 1.46 | 0.04679 |\n| 1.50 | 0.04503 |\n| 1.70 | 0.02295 |\n| 2.00 | 0.00000 |\n\na) Explain the first minimum by pairwise cancellation of contributions from the two halves of the slit. State the general condition for single-slit minima and explain why order zero is not a minimum. (3 points)\n\nb) Calculate the angles and screen positions of the first two minima on both sides. Hence determine the screen width of the central maximum between the first minima. (3 points)\n\nc) Use the table to estimate the first secondary maximum in u and its angle and screen position on both sides. Also state the central maximum's position and normalized height. Assess the claim that the first secondary maximum is exactly at u=1.5. Identify the limited precision of locating a maximum from the table. (4 points)",
+        "solutionContent": "a) Für das erste Minimum gilt b·sinθ=λ. Jedem Punkt einer Spalthälfte wird ein um b/2 versetzter Punkt zugeordnet; der Gangunterschied des Paares beträgt (b/2)·sinθ=λ/2. Die gleich großen, gegenphasigen Beiträge aller Paare löschen sich aus. Allgemein b·sinθ=mλ mit m=±1,±2,…; m=0 ergibt gleichphasige Beiträge, also das Zentralmaximum statt eines Minimums.\n\nb) Erste Minima: θ≈±0,229184°, y=L·tanθ≈±7,000056 mm. Zweite Minima: θ≈±0,458371°, y≈±14,000448 mm. Zentralbreite zwischen den ersten Minima: 14,000112 mm≈14,00 mm.\n\nc) Das Zentralmaximum liegt bei u=0, θ=0, y=0 mit I/I₀=1. Die Tabelle lokalisiert die ersten Nebenmaxima näherungsweise bei u≈±1,43; die präzise Stelle zwischen Stützstellen ist damit nicht bestimmt. Mit diesem Ablesewert: θ≈±0,327734°, y≈±10,010164 mm≈±10,01 mm. Bei u=1,43 ist I/I₀≈0,04719, höher als 0,04503 bei u=1,50; daher ist 1,5 keine exakte Maximalstelle. Aus der endlichen gerundeten Tabelle wird auch 1,43 nicht als exakte Stelle behauptet. Angemessen gerundete Werte und begründet verwendete Kleinwinkelnäherungen bei dieser kleinen Winkellage sind gleichwertig. Ein genaueres analytisches Nebenmaximum wird nicht verlangt.\n\nBewertungshinweis: Angemessene Rundung akzeptieren; nachfolgend methodisch richtige Schritte bei einem übernommenen Rechenfehler gesondert bewerten. Teil-BE innerhalb ausdrücklich geteilter Kriterien sind zulässig. Gesamtbestehen und Bestehen einzelner Fälle sind verschiedene Aussagen; aus 18/30 wird keine Beherrschung aller drei Ziele automatisch abgeleitet.",
+        "solutionContentEn": "a) At the first minimum, b·sinθ=λ. Pair each point in one half of the slit with a point b/2 away in the other half; their path difference is (b/2)·sinθ=λ/2. All equal, opposite-phase pairs cancel. In general, b·sinθ=mλ for m=±1,±2,…; m=0 makes contributions in phase and gives the central maximum, not a minimum.\n\nb) First minima: θ≈±0.229184°, y=L·tanθ≈±7.000056 mm. Second minima: θ≈±0.458371°, y≈±14.000448 mm. The central width between the first minima is 14.000112 mm≈14.00 mm.\n\nc) The central maximum is at u=0, θ=0, y=0 with I/I₀=1. The table places the first secondary maxima approximately at u≈±1.43; their precise position between samples cannot be determined. Using this estimated value gives θ≈±0.327734°, y≈±10.010164 mm≈±10.01 mm. At u=1.43, I/I₀≈0.04719, greater than 0.04503 at u=1.50, so 1.5 is not an exact maximum position. Nor may 1.43 be claimed exact from the finite rounded table. Sensible rounding and justified small-angle approximations at these small angles are equally acceptable. A more precise analytical secondary maximum is not required.\n\nScoring note: Accept sensible rounding and credit subsequent methodologically correct work despite a carried-forward arithmetic error. Partial points are allowed within explicitly divided criteria. Passing the aggregate and passing individual cases are different statements; a score of 18/30 does not automatically establish mastery of all three goals.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 6,
+          "steps": [
+            {
+              "id": "ss-01",
+              "points": 1,
+              "description": "Beim ersten Minimum gegenüberliegende Punkte der beiden Spalthälften im Abstand b/2 gepaart und deren Gangunterschied λ/2 angegeben."
+            },
+            {
+              "id": "ss-02",
+              "points": 1,
+              "description": "Vollständige Auslöschung aus gleich großen gegenphasigen Beiträgen sämtlicher Paare erklärt."
+            },
+            {
+              "id": "ss-03",
+              "points": 1,
+              "description": "Allgemeine Minimabedingung b·sinθ=mλ für m≠0 angegeben und Ordnung null wegen Gleichphasigkeit ausgeschlossen."
+            },
+            {
+              "id": "ss-04",
+              "points": 1,
+              "description": "Winkel beider erster und zweiter Minima bestimmt: ±0,229184° und ±0,458371°; je Ordnungsgruppe 0,5 BE."
+            },
+            {
+              "id": "ss-05",
+              "points": 1,
+              "description": "Schirmpositionen beider erster und zweiter Minima bestimmt: ±7,000056 mm und ±14,000448 mm; je Ordnungsgruppe 0,5 BE."
+            },
+            {
+              "id": "ss-06",
+              "points": 1,
+              "description": "Zentralbreite als Abstand zwischen den ersten Minima bestimmt: etwa 14,00 mm, nicht der einseitige Abstand 7 mm."
+            },
+            {
+              "id": "ss-07",
+              "points": 1,
+              "description": "Zentralmaximum bei u=θ=y=0 mit normierter Intensität 1 angegeben."
+            },
+            {
+              "id": "ss-08",
+              "points": 1,
+              "description": "Erste Nebenmaxima aus der Tabelle näherungsweise bei u≈±1,43 lokalisiert."
+            },
+            {
+              "id": "ss-09",
+              "points": 1,
+              "description": "Nebenmaximawinkel etwa ±0,327734° und Schirmposition etwa ±10,01 mm aus dem tabellierten u-Wert bestimmt; je 0,5 BE."
+            },
+            {
+              "id": "ss-10",
+              "points": 1,
+              "description": "Exakte Halbordnung 1,5 anhand niedrigerer tabellierter Intensität zurückgewiesen und eigene tabellenbedingte Näherung ausdrücklich gekennzeichnet."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "capstoneDelta": {
+    "beforeRequires": [
+      "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "8ad305d2-bde0-4223-9477-517b2943148b",
+      "c71315c1-f329-4289-a145-d99819da7bad",
+      "2c6af966-7703-4176-a117-5ddb8295bedf",
+      "c64820e1-c0ee-4342-9225-f981650f0c52",
+      "31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+      "c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+      "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+      "58fc7852-722c-5a67-be6a-bfd1be0b527e",
+      "6270e558-d657-5363-a6b2-e49a032a453b",
+      "91683676-01cf-5003-80fa-a04d043b4e61",
+      "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6",
+      "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec",
+      "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "dfa53498-34f5-5326-9d94-87e7b528caf3",
+      "2aa2ef4b-8204-59b9-ad53-71c994cd6180",
+      "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
+      "d7244ce4-5409-58d1-a1b4-bfae35f391e1",
+      "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8",
+      "cf340ce4-8d91-5d22-a1d9-53bf408abdb3",
+      "904670af-8e4c-543e-bc9b-e6248d87a10d",
+      "c14857d3-634f-4a59-9a3f-8d0638fc5784",
+      "7e9e814c-fe12-42a9-8d80-e09e7fb52964",
+      "8ea46612-7f0d-4ef4-a732-9428e640ae92",
+      "974a2d1c-2225-519d-965f-7744fe8aafd5",
+      "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+      "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+      "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1",
+      "bacae732-2016-5a83-bc61-d0f94ed5a0e4",
+      "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+      "81c0d811-e6de-5489-8415-3b257c734a2e",
+      "0693f68f-1bd4-50a9-ba2b-af95b1c949ee",
+      "5476480f-7ff2-529f-aade-968198c782a9",
+      "c5413852-abae-566b-b435-f9939209ca63",
+      "ea2d5085-4ec1-5e33-87e0-15edcad635bf",
+      "0172ca41-cc42-51d6-94ad-f0f4680059e4"
+    ],
+    "afterRequires": [
+      "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "8ad305d2-bde0-4223-9477-517b2943148b",
+      "c71315c1-f329-4289-a145-d99819da7bad",
+      "2c6af966-7703-4176-a117-5ddb8295bedf",
+      "31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+      "c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+      "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+      "58fc7852-722c-5a67-be6a-bfd1be0b527e",
+      "6270e558-d657-5363-a6b2-e49a032a453b",
+      "91683676-01cf-5003-80fa-a04d043b4e61",
+      "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6",
+      "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec",
+      "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "dfa53498-34f5-5326-9d94-87e7b528caf3",
+      "2aa2ef4b-8204-59b9-ad53-71c994cd6180",
+      "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
+      "d7244ce4-5409-58d1-a1b4-bfae35f391e1",
+      "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8",
+      "cf340ce4-8d91-5d22-a1d9-53bf408abdb3",
+      "904670af-8e4c-543e-bc9b-e6248d87a10d",
+      "c14857d3-634f-4a59-9a3f-8d0638fc5784",
+      "7e9e814c-fe12-42a9-8d80-e09e7fb52964",
+      "8ea46612-7f0d-4ef4-a732-9428e640ae92",
+      "974a2d1c-2225-519d-965f-7744fe8aafd5",
+      "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+      "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+      "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1",
+      "bacae732-2016-5a83-bc61-d0f94ed5a0e4",
+      "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+      "81c0d811-e6de-5489-8415-3b257c734a2e",
+      "0693f68f-1bd4-50a9-ba2b-af95b1c949ee",
+      "5476480f-7ff2-529f-aade-968198c782a9",
+      "c5413852-abae-566b-b435-f9939209ca63",
+      "ea2d5085-4ec1-5e33-87e0-15edcad635bf",
+      "0172ca41-cc42-51d6-94ad-f0f4680059e4"
+    ],
+    "beforeCovered": [
+      "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "8ad305d2-bde0-4223-9477-517b2943148b",
+      "c71315c1-f329-4289-a145-d99819da7bad",
+      "2c6af966-7703-4176-a117-5ddb8295bedf",
+      "c64820e1-c0ee-4342-9225-f981650f0c52",
+      "31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+      "c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+      "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+      "58fc7852-722c-5a67-be6a-bfd1be0b527e",
+      "6270e558-d657-5363-a6b2-e49a032a453b",
+      "91683676-01cf-5003-80fa-a04d043b4e61",
+      "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6",
+      "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec",
+      "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "dfa53498-34f5-5326-9d94-87e7b528caf3",
+      "2aa2ef4b-8204-59b9-ad53-71c994cd6180",
+      "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
+      "d7244ce4-5409-58d1-a1b4-bfae35f391e1",
+      "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8",
+      "cf340ce4-8d91-5d22-a1d9-53bf408abdb3",
+      "904670af-8e4c-543e-bc9b-e6248d87a10d",
+      "c14857d3-634f-4a59-9a3f-8d0638fc5784",
+      "7e9e814c-fe12-42a9-8d80-e09e7fb52964",
+      "8ea46612-7f0d-4ef4-a732-9428e640ae92",
+      "974a2d1c-2225-519d-965f-7744fe8aafd5",
+      "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+      "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+      "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1",
+      "bacae732-2016-5a83-bc61-d0f94ed5a0e4",
+      "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+      "81c0d811-e6de-5489-8415-3b257c734a2e",
+      "0693f68f-1bd4-50a9-ba2b-af95b1c949ee",
+      "5476480f-7ff2-529f-aade-968198c782a9",
+      "c5413852-abae-566b-b435-f9939209ca63",
+      "ea2d5085-4ec1-5e33-87e0-15edcad635bf",
+      "0172ca41-cc42-51d6-94ad-f0f4680059e4"
+    ],
+    "afterCovered": [
+      "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "8ad305d2-bde0-4223-9477-517b2943148b",
+      "c71315c1-f329-4289-a145-d99819da7bad",
+      "2c6af966-7703-4176-a117-5ddb8295bedf",
+      "31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+      "c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+      "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+      "58fc7852-722c-5a67-be6a-bfd1be0b527e",
+      "6270e558-d657-5363-a6b2-e49a032a453b",
+      "91683676-01cf-5003-80fa-a04d043b4e61",
+      "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6",
+      "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec",
+      "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "dfa53498-34f5-5326-9d94-87e7b528caf3",
+      "2aa2ef4b-8204-59b9-ad53-71c994cd6180",
+      "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
+      "d7244ce4-5409-58d1-a1b4-bfae35f391e1",
+      "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8",
+      "cf340ce4-8d91-5d22-a1d9-53bf408abdb3",
+      "904670af-8e4c-543e-bc9b-e6248d87a10d",
+      "c14857d3-634f-4a59-9a3f-8d0638fc5784",
+      "7e9e814c-fe12-42a9-8d80-e09e7fb52964",
+      "8ea46612-7f0d-4ef4-a732-9428e640ae92",
+      "974a2d1c-2225-519d-965f-7744fe8aafd5",
+      "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+      "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+      "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1",
+      "bacae732-2016-5a83-bc61-d0f94ed5a0e4",
+      "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+      "81c0d811-e6de-5489-8415-3b257c734a2e",
+      "0693f68f-1bd4-50a9-ba2b-af95b1c949ee",
+      "5476480f-7ff2-529f-aade-968198c782a9",
+      "c5413852-abae-566b-b435-f9939209ca63",
+      "ea2d5085-4ec1-5e33-87e0-15edcad635bf",
+      "0172ca41-cc42-51d6-94ad-f0f4680059e4"
+    ],
+    "other39AndBodyUnchanged": true
+  },
+  "sourcePlan": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "bw-phys-sekii-3-4-5-b04-a01-4fb610f5",
+        "passageId": "bw-phys-sekii:3.4.5",
+        "topicCode": "3.4.5",
+        "bulletIndex": 4,
+        "aspectIndex": 1,
+        "title": "BW 3.4.5 (4): die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgän...",
+        "description": "Die lernende Person kann die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "sourceText": "die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "sourceSpan": "3.4.5 (4)",
+        "parentBulletText": "die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "sourceRef": "Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, 3.4.5 (4), S. 29.",
+        "courseLevel": "GK_LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "BW",
+          "SekII",
+          "3.4.5",
+          "Basisfach",
+          "Quantenphysik"
+        ],
+        "rawSourceText": "die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "rawSourceSpan": "3.4.5 (4)",
+        "rawParentBulletText": "die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)"
+      },
+      "before": {
+        "sourceGoalId": "bw-phys-sekii-3-4-5-b04-a01-4fb610f5",
+        "topicCode": "3.4.5",
+        "sourceSpan": "3.4.5 (4)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "c64820e1-c0ee-4342-9225-f981650f0c52"
+        ],
+        "rationale": "Das amtliche BW-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "bw-phys-sekii-3-4-5-b04-a01-4fb610f5",
+        "topicCode": "3.4.5",
+        "sourceSpan": "3.4.5 (4)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "6270e558-d657-5363-a6b2-e49a032a453b",
+          "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Basisfach nur Doppelspaltmaxima und Gitterhauptmaxima; Leistungsfach zusätzlich Doppelspaltminima und Einzelspaltminima. Originaldruckseiten 31/37/45 (PDF 33/39/47), nicht die fehlerhaften alten Extraktions-Seitenzahlen. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "bw-phys-sekii-3-5-5-b04-a01-48bddaad",
+        "passageId": "bw-phys-sekii:3.5.5",
+        "topicCode": "3.5.5",
+        "bulletIndex": 4,
+        "aspectIndex": 1,
+        "title": "BW 3.5.5 (4): die Lage von Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen ...",
+        "description": "Die lernende Person kann die Lage von Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "sourceText": "die Lage von Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "sourceSpan": "3.5.5 (4)",
+        "parentBulletText": "die Lage von Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "sourceRef": "Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, 3.5.5 (4), S. 35.",
+        "courseLevel": "GK_LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "BW",
+          "SekII",
+          "3.5.5",
+          "Basisfach",
+          "Astrophysik"
+        ],
+        "rawSourceText": "die Lage von Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "rawSourceSpan": "3.5.5 (4)",
+        "rawParentBulletText": "die Lage von Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Maxima beim Doppelspalt, Hauptmaxima beim Gitter)"
+      },
+      "before": {
+        "sourceGoalId": "bw-phys-sekii-3-5-5-b04-a01-48bddaad",
+        "topicCode": "3.5.5",
+        "sourceSpan": "3.5.5 (4)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "c64820e1-c0ee-4342-9225-f981650f0c52"
+        ],
+        "rationale": "Das amtliche BW-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "bw-phys-sekii-3-5-5-b04-a01-48bddaad",
+        "topicCode": "3.5.5",
+        "sourceSpan": "3.5.5 (4)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "6270e558-d657-5363-a6b2-e49a032a453b",
+          "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Basisfach nur Doppelspaltmaxima und Gitterhauptmaxima; Leistungsfach zusätzlich Doppelspaltminima und Einzelspaltminima. Originaldruckseiten 31/37/45 (PDF 33/39/47), nicht die fehlerhaften alten Extraktions-Seitenzahlen. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "bw-phys-sekii-3-6-5-b06-a01-e3aa9020",
+        "passageId": "bw-phys-sekii:3.6.5",
+        "topicCode": "3.6.5",
+        "bulletIndex": 6,
+        "aspectIndex": 1,
+        "title": "BW 3.6.5 (6): die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgän...",
+        "description": "Die lernende Person kann die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Minima beim Einzelspalt, Minima und Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "sourceText": "die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Minima beim Einzelspalt, Minima und Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "sourceSpan": "3.6.5 (6)",
+        "parentBulletText": "die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Minima beim Einzelspalt, Minima und Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "sourceRef": "Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, 3.6.5 (6), S. 43.",
+        "courseLevel": "LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "BW",
+          "SekII",
+          "3.6.5",
+          "LF",
+          "LK"
+        ],
+        "rawSourceText": "die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Minima beim Einzelspalt, Minima und Maxima beim Doppelspalt, Hauptmaxima beim Gitter)",
+        "rawSourceSpan": "3.6.5 (6)",
+        "rawParentBulletText": "die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewählten Beugungsvorgängen in Fernfeldnäherung berechnen (Minima beim Einzelspalt, Minima und Maxima beim Doppelspalt, Hauptmaxima beim Gitter)"
+      },
+      "before": {
+        "sourceGoalId": "bw-phys-sekii-3-6-5-b06-a01-e3aa9020",
+        "topicCode": "3.6.5",
+        "sourceSpan": "3.6.5 (6)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "c64820e1-c0ee-4342-9225-f981650f0c52",
+          "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+          "6270e558-d657-5363-a6b2-e49a032a453b"
+        ],
+        "rationale": "Das amtliche BW-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die passende Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "bw-phys-sekii-3-6-5-b06-a01-e3aa9020",
+        "topicCode": "3.6.5",
+        "sourceSpan": "3.6.5 (6)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+          "6270e558-d657-5363-a6b2-e49a032a453b",
+          "55dbede5-2fee-51e7-ac13-e3b0227c502e",
+          "df4acb52-b700-5b44-bc1e-11d73f24d061",
+          "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Basisfach nur Doppelspaltmaxima und Gitterhauptmaxima; Leistungsfach zusätzlich Doppelspaltminima und Einzelspaltminima. Originaldruckseiten 31/37/45 (PDF 33/39/47), nicht die fehlerhaften alten Extraktions-Seitenzahlen. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "he-phys-sekii-q3-1-b07-a01-7bb1b8cb",
+        "passageId": "he-physics-sekii:Q3.1",
+        "topicCode": "Q3.1",
+        "bulletIndex": 7,
+        "aspectIndex": 1,
+        "title": "Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Beding...",
+        "description": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Bedingung für die Anwendung der Kleinwinkelnäherung)\" im Kontext \"Elektromagnetische Wellen\" fachgerecht bearbeiten.",
+        "sourceText": "Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "sourceSpan": "Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "parentBulletText": "Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, Q3.1, S. 41, Spiegelstrich 7",
+        "courseLevel": "GK_LK",
+        "granularity": "officialBullet",
+        "tags": [
+          "source:DE-HE",
+          "sourceDocument:KC2024",
+          "subject:Physik",
+          "stage:SekII",
+          "topic:Q3.1",
+          "bullet:7"
+        ],
+        "rawSourceText": "Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "rawSourceSpan": "Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "rawParentBulletText": "Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Bedingung für die Anwendung der Kleinwinkelnäherung)"
+      },
+      "before": {
+        "sourceGoalId": "he-phys-sekii-q3-1-b07-a01-7bb1b8cb",
+        "topicCode": "Q3.1",
+        "sourceSpan": "Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "6270e558-d657-5363-a6b2-e49a032a453b",
+          "c64820e1-c0ee-4342-9225-f981650f0c52"
+        ],
+        "rationale": "Der amtliche Sek-II-Lehrplanaspekt wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "he-phys-sekii-q3-1-b07-a01-7bb1b8cb",
+        "topicCode": "Q3.1",
+        "sourceSpan": "Interferenz am Doppelspalt (Experiment, Herleitung der Formel für die Orte der Maxima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "6270e558-d657-5363-a6b2-e49a032a453b"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Q3.1 Originaldruckseite 41: Doppelspaltmaxima und Gitter-Wellenlängenanwendung GK/LK; Einzelspalt nur LK. Keine allgemeine GK-Minimapflicht. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "he-phys-sekii-q3-1-b13-a01-03a9ca89",
+        "passageId": "he-physics-sekii:Q3.1",
+        "topicCode": "Q3.1",
+        "bulletIndex": 13,
+        "aspectIndex": 1,
+        "title": "Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Max...",
+        "description": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Maxima und Minima, Bedingung für die Anwendung der Kleinwinkelnäherung)\" im Kontext \"Elektromagnetische Wellen\" fachgerecht bearbeiten.",
+        "sourceText": "Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Maxima und Minima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "sourceSpan": "Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Maxima und Minima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "parentBulletText": "Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Maxima und Minima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, Q3.1, S. 41, Spiegelstrich 13",
+        "courseLevel": "LK",
+        "granularity": "officialBullet",
+        "tags": [
+          "source:DE-HE",
+          "sourceDocument:KC2024",
+          "subject:Physik",
+          "stage:SekII",
+          "topic:Q3.1",
+          "bullet:13"
+        ],
+        "rawSourceText": "Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Maxima und Minima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "rawSourceSpan": "Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Maxima und Minima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "rawParentBulletText": "Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Maxima und Minima, Bedingung für die Anwendung der Kleinwinkelnäherung)"
+      },
+      "before": {
+        "sourceGoalId": "he-phys-sekii-q3-1-b13-a01-03a9ca89",
+        "topicCode": "Q3.1",
+        "sourceSpan": "Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Maxima und Minima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+          "c71315c1-f329-4289-a145-d99819da7bad",
+          "2c6af966-7703-4176-a117-5ddb8295bedf",
+          "c64820e1-c0ee-4342-9225-f981650f0c52"
+        ],
+        "rationale": "Der amtliche Sek-II-Lehrplanaspekt wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "he-phys-sekii-q3-1-b13-a01-03a9ca89",
+        "topicCode": "Q3.1",
+        "sourceSpan": "Einzelspalt mit monochromatischem Licht (Beugung und Interferenz, Bestimmung der Orte der Maxima und Minima, Bedingung für die Anwendung der Kleinwinkelnäherung)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+          "c71315c1-f329-4289-a145-d99819da7bad",
+          "2c6af966-7703-4176-a117-5ddb8295bedf",
+          "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Q3.1 Originaldruckseite 41: Doppelspaltmaxima und Gitter-Wellenlängenanwendung GK/LK; Einzelspalt nur LK. Keine allgemeine GK-Minimapflicht. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "he-phys-sekii-q3-1-b08-a01-1c9d7aa6",
+        "passageId": "he-physics-sekii:Q3.1",
+        "topicCode": "Q3.1",
+        "bulletIndex": 8,
+        "aspectIndex": 1,
+        "title": "Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung d...",
+        "description": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung der Formel)\" im Kontext \"Elektromagnetische Wellen\" fachgerecht bearbeiten.",
+        "sourceText": "Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung der Formel)",
+        "sourceSpan": "Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung der Formel)",
+        "parentBulletText": "Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung der Formel)",
+        "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, Q3.1, S. 41, Spiegelstrich 8",
+        "courseLevel": "GK_LK",
+        "granularity": "officialBullet",
+        "tags": [
+          "source:DE-HE",
+          "sourceDocument:KC2024",
+          "subject:Physik",
+          "stage:SekII",
+          "topic:Q3.1",
+          "bullet:8"
+        ],
+        "rawSourceText": "Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung der Formel)",
+        "rawSourceSpan": "Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung der Formel)",
+        "rawParentBulletText": "Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung der Formel)"
+      },
+      "before": {
+        "sourceGoalId": "he-phys-sekii-q3-1-b08-a01-1c9d7aa6",
+        "topicCode": "Q3.1",
+        "sourceSpan": "Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung der Formel)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "91683676-01cf-5003-80fa-a04d043b4e61"
+        ],
+        "rationale": "Der amtliche Sek-II-Lehrplanaspekt wird durch das kanonische Physikziel inhaltlich abgedeckt.",
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "he-phys-sekii-q3-1-b08-a01-1c9d7aa6",
+        "topicCode": "Q3.1",
+        "sourceSpan": "Wellenlängenbestimmung von monochromatischem Licht (auch mit Beugungsgitter ohne Herleitung der Formel)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "91683676-01cf-5003-80fa-a04d043b4e61",
+          "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Q3.1 Originaldruckseite 41: Doppelspaltmaxima und Gitter-Wellenlängenanwendung GK/LK; Einzelspalt nur LK. Keine allgemeine GK-Minimapflicht. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "56801db7-c4d5-53ca-a765-73945bce4ff0",
+        "passageId": "33bab656-a10e-5bc3-a647-cb4878430b04",
+        "topicCode": "Ph12-EA.3",
+        "bulletIndex": 7,
+        "aspectIndex": 1,
+        "title": "erklären die Kohärenzbedingungen zur Beobachtung von Interferenzeffekten und erläutern die Bedeutung...",
+        "description": "erklären die Kohärenzbedingungen zur Beobachtung von Interferenzeffekten und erläutern die Bedeutung von Interferenzexperimenten zum Nachweis der Welleneigenschaft und zur Bestimmung von Wellenlängen.",
+        "sourceText": "erklären die Kohärenzbedingungen zur Beobachtung von Interferenzeffekten und erläutern die Bedeutung von Interferenzexperimenten zum Nachweis der Welleneigenschaft und zur Bestimmung von Wellenlängen.",
+        "sourceSpan": "Ph12-EA.3.7",
+        "parentBulletText": "erklären die Kohärenzbedingungen zur Beobachtung von Interferenzeffekten und erläutern die Bedeutung von Interferenzexperimenten zum Nachweis der Welleneigenschaft und zur Bestimmung von Wellenlängen.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph12-EA.3.7",
+        "courseLevel": "LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekII",
+          "courseLevel:LK",
+          "topic:Ph12-EA.3"
+        ],
+        "rawSourceText": "erklären die Kohärenzbedingungen zur Beobachtung von Interferenzeffekten und erläutern die Bedeutung von Interferenzexperimenten zum Nachweis der Welleneigenschaft und zur Bestimmung von Wellenlängen.",
+        "rawSourceSpan": "Ph12-EA.3.7",
+        "rawParentBulletText": "erklären die Kohärenzbedingungen zur Beobachtung von Interferenzeffekten und erläutern die Bedeutung von Interferenzexperimenten zum Nachweis der Welleneigenschaft und zur Bestimmung von Wellenlängen."
+      },
+      "before": {
+        "sourceGoalId": "56801db7-c4d5-53ca-a765-73945bce4ff0",
+        "topicCode": "Ph12-EA.3",
+        "sourceSpan": "Ph12-EA.3.7",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "c71315c1-f329-4289-a145-d99819da7bad",
+          "c64820e1-c0ee-4342-9225-f981650f0c52",
+          "91683676-01cf-5003-80fa-a04d043b4e61"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "56801db7-c4d5-53ca-a765-73945bce4ff0",
+        "topicCode": "Ph12-EA.3",
+        "sourceSpan": "Ph12-EA.3.7",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "c71315c1-f329-4289-a145-d99819da7bad",
+          "91683676-01cf-5003-80fa-a04d043b4e61"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Ph12 GA/EA unterscheiden: Gitteranwendung auch GA; vollständiges Doppelspaltmodell und Einzelspaltverlauf hier nur EA. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "b47189a1-27b3-5986-a29b-f7f4d43a59ac",
+        "passageId": "33bab656-a10e-5bc3-a647-cb4878430b04",
+        "topicCode": "Ph12-EA.3",
+        "bulletIndex": 8,
+        "aspectIndex": 1,
+        "title": "erklären anhand von Zeigerdarstellungen grundlegende Phänomene bei der Interferenz am Mehrfachspalt....",
+        "description": "erklären anhand von Zeigerdarstellungen grundlegende Phänomene bei der Interferenz am Mehrfachspalt. Sie erweitern diese Betrachtungen hin zu einem grundlegenden Verständnis der Intensitätsverteilung bei der Interferenz am optischen Gitter.",
+        "sourceText": "erklären anhand von Zeigerdarstellungen grundlegende Phänomene bei der Interferenz am Mehrfachspalt. Sie erweitern diese Betrachtungen hin zu einem grundlegenden Verständnis der Intensitätsverteilung bei der Interferenz am optischen Gitter.",
+        "sourceSpan": "Ph12-EA.3.8",
+        "parentBulletText": "erklären anhand von Zeigerdarstellungen grundlegende Phänomene bei der Interferenz am Mehrfachspalt. Sie erweitern diese Betrachtungen hin zu einem grundlegenden Verständnis der Intensitätsverteilung bei der Interferenz am optischen Gitter.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph12-EA.3.8",
+        "courseLevel": "LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekII",
+          "courseLevel:LK",
+          "topic:Ph12-EA.3"
+        ],
+        "rawSourceText": "erklären anhand von Zeigerdarstellungen grundlegende Phänomene bei der Interferenz am Mehrfachspalt. Sie erweitern diese Betrachtungen hin zu einem grundlegenden Verständnis der Intensitätsverteilung bei der Interferenz am optischen Gitter.",
+        "rawSourceSpan": "Ph12-EA.3.8",
+        "rawParentBulletText": "erklären anhand von Zeigerdarstellungen grundlegende Phänomene bei der Interferenz am Mehrfachspalt. Sie erweitern diese Betrachtungen hin zu einem grundlegenden Verständnis der Intensitätsverteilung bei der Interferenz am optischen Gitter."
+      },
+      "before": {
+        "sourceGoalId": "b47189a1-27b3-5986-a29b-f7f4d43a59ac",
+        "topicCode": "Ph12-EA.3",
+        "sourceSpan": "Ph12-EA.3.8",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "2c6af966-7703-4176-a117-5ddb8295bedf",
+          "c64820e1-c0ee-4342-9225-f981650f0c52",
+          "c71315c1-f329-4289-a145-d99819da7bad"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "b47189a1-27b3-5986-a29b-f7f4d43a59ac",
+        "topicCode": "Ph12-EA.3",
+        "sourceSpan": "Ph12-EA.3.8",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "2c6af966-7703-4176-a117-5ddb8295bedf",
+          "c71315c1-f329-4289-a145-d99819da7bad",
+          "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Ph12 GA/EA unterscheiden: Gitteranwendung auch GA; vollständiges Doppelspaltmodell und Einzelspaltverlauf hier nur EA. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "b44c5542-925f-5bea-bbda-b641d0ee3ae7",
+        "passageId": "33bab656-a10e-5bc3-a647-cb4878430b04",
+        "topicCode": "Ph12-EA.3",
+        "bulletIndex": 10,
+        "aspectIndex": 1,
+        "title": "erklären die im Experiment beobachtete Intensitätsverteilung bei der Beugung am Einfachspalt mithilf...",
+        "description": "erklären die im Experiment beobachtete Intensitätsverteilung bei der Beugung am Einfachspalt mithilfe des Zeigerformalismus. Sie erläutern die Einflüsse der Beugung am Einfachspalt auf die beobachtete Intensitätsverteilung bei der Interferenz von Licht an Doppelspalt und Gitter.",
+        "sourceText": "erklären die im Experiment beobachtete Intensitätsverteilung bei der Beugung am Einfachspalt mithilfe des Zeigerformalismus. Sie erläutern die Einflüsse der Beugung am Einfachspalt auf die beobachtete Intensitätsverteilung bei der Interferenz von Licht an Doppelspalt und Gitter.",
+        "sourceSpan": "Ph12-EA.3.10",
+        "parentBulletText": "erklären die im Experiment beobachtete Intensitätsverteilung bei der Beugung am Einfachspalt mithilfe des Zeigerformalismus. Sie erläutern die Einflüsse der Beugung am Einfachspalt auf die beobachtete Intensitätsverteilung bei der Interferenz von Licht an Doppelspalt und Gitter.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph12-EA.3.10",
+        "courseLevel": "LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekII",
+          "courseLevel:LK",
+          "topic:Ph12-EA.3"
+        ],
+        "rawSourceText": "erklären die im Experiment beobachtete Intensitätsverteilung bei der Beugung am Einfachspalt mithilfe des Zeigerformalismus. Sie erläutern die Einflüsse der Beugung am Einfachspalt auf die beobachtete Intensitätsverteilung bei der Interferenz von Licht an Doppelspalt und Gitter.",
+        "rawSourceSpan": "Ph12-EA.3.10",
+        "rawParentBulletText": "erklären die im Experiment beobachtete Intensitätsverteilung bei der Beugung am Einfachspalt mithilfe des Zeigerformalismus. Sie erläutern die Einflüsse der Beugung am Einfachspalt auf die beobachtete Intensitätsverteilung bei der Interferenz von Licht an Doppelspalt und Gitter."
+      },
+      "before": {
+        "sourceGoalId": "b44c5542-925f-5bea-bbda-b641d0ee3ae7",
+        "topicCode": "Ph12-EA.3",
+        "sourceSpan": "Ph12-EA.3.10",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "2c6af966-7703-4176-a117-5ddb8295bedf",
+          "c64820e1-c0ee-4342-9225-f981650f0c52"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "b44c5542-925f-5bea-bbda-b641d0ee3ae7",
+        "topicCode": "Ph12-EA.3",
+        "sourceSpan": "Ph12-EA.3.10",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "2c6af966-7703-4176-a117-5ddb8295bedf",
+          "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Ph12 GA/EA unterscheiden: Gitteranwendung auch GA; vollständiges Doppelspaltmodell und Einzelspaltverlauf hier nur EA. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "d12fd0f2-4d61-5c9f-9824-ed03f7e3b2ea",
+        "passageId": "bc2eb2d7-0219-5f8c-909d-a9812189beeb",
+        "topicCode": "Ph12-EA.4",
+        "bulletIndex": 10,
+        "aspectIndex": 1,
+        "title": "bestimmen die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines G...",
+        "description": "bestimmen die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Sie minimieren die Auswirkungen der Messunsicherheiten, indem sie den quantitativen Einfluss der Unsicherheiten der Eingangsgrößen auf das Ergebnis ermitteln. Sie erläutern die Funktion der einzelnen Komponenten des Aufbaus und kombinieren Größengleichungen zur Auswertung des Experiments. Zur Bestimmung von Strukturgrößen mittels Interferenz planen sie ein Experiment und vergleichen die ermittelten Abmessungen mit den bekannten Strukturgrößen.",
+        "sourceText": "bestimmen die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Sie minimieren die Auswirkungen der Messunsicherheiten, indem sie den quantitativen Einfluss der Unsicherheiten der Eingangsgrößen auf das Ergebnis ermitteln. Sie erläutern die Funktion der einzelnen Komponenten des Aufbaus und kombinieren Größengleichungen zur Auswertung des Experiments. Zur Bestimmung von Strukturgrößen mittels Interferenz planen sie ein Experiment und vergleichen die ermittelten Abmessungen mit den bekannten Strukturgrößen.",
+        "sourceSpan": "Ph12-EA.4.10",
+        "parentBulletText": "bestimmen die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Sie minimieren die Auswirkungen der Messunsicherheiten, indem sie den quantitativen Einfluss der Unsicherheiten der Eingangsgrößen auf das Ergebnis ermitteln. Sie erläutern die Funktion der einzelnen Komponenten des Aufbaus und kombinieren Größengleichungen zur Auswertung des Experiments. Zur Bestimmung von Strukturgrößen mittels Interferenz planen sie ein Experiment und vergleichen die ermittelten Abmessungen mit den bekannten Strukturgrößen.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph12-EA.4.10",
+        "courseLevel": "LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekII",
+          "courseLevel:LK",
+          "topic:Ph12-EA.4"
+        ],
+        "rawSourceText": "bestimmen die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Sie minimieren die Auswirkungen der Messunsicherheiten, indem sie den quantitativen Einfluss der Unsicherheiten der Eingangsgrößen auf das Ergebnis ermitteln. Sie erläutern die Funktion der einzelnen Komponenten des Aufbaus und kombinieren Größengleichungen zur Auswertung des Experiments. Zur Bestimmung von Strukturgrößen mittels Interferenz planen sie ein Experiment und vergleichen die ermittelten Abmessungen mit den bekannten Strukturgrößen.",
+        "rawSourceSpan": "Ph12-EA.4.10",
+        "rawParentBulletText": "bestimmen die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Sie minimieren die Auswirkungen der Messunsicherheiten, indem sie den quantitativen Einfluss der Unsicherheiten der Eingangsgrößen auf das Ergebnis ermitteln. Sie erläutern die Funktion der einzelnen Komponenten des Aufbaus und kombinieren Größengleichungen zur Auswertung des Experiments. Zur Bestimmung von Strukturgrößen mittels Interferenz planen sie ein Experiment und vergleichen die ermittelten Abmessungen mit den bekannten Strukturgrößen."
+      },
+      "before": {
+        "sourceGoalId": "d12fd0f2-4d61-5c9f-9824-ed03f7e3b2ea",
+        "topicCode": "Ph12-EA.4",
+        "sourceSpan": "Ph12-EA.4.10",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "91683676-01cf-5003-80fa-a04d043b4e61",
+          "c71315c1-f329-4289-a145-d99819da7bad",
+          "c64820e1-c0ee-4342-9225-f981650f0c52",
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "72effc66-87f4-5f5e-8d36-1547677365fb"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "d12fd0f2-4d61-5c9f-9824-ed03f7e3b2ea",
+        "topicCode": "Ph12-EA.4",
+        "sourceSpan": "Ph12-EA.4.10",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "91683676-01cf-5003-80fa-a04d043b4e61",
+          "c71315c1-f329-4289-a145-d99819da7bad",
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "72effc66-87f4-5f5e-8d36-1547677365fb",
+          "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Ph12 GA/EA unterscheiden: Gitteranwendung auch GA; vollständiges Doppelspaltmodell und Einzelspaltverlauf hier nur EA. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "b4193da7-ad13-5a31-9a3a-7c1afd8dedd4",
+        "passageId": "33bab656-a10e-5bc3-a647-cb4878430b04",
+        "topicCode": "Ph12-EA.3",
+        "bulletIndex": 6,
+        "aspectIndex": 1,
+        "title": "Bei der Betrachtung der Interferenz von Licht am Doppelspalt reflektieren sie verwendete Annahmen un...",
+        "description": "Bei der Betrachtung der Interferenz von Licht am Doppelspalt reflektieren sie verwendete Annahmen und Näherungen und erläutern Abweichungen der experimentellen Beobachtungen von der mathematischen Modellierung. Sie identifizieren Licht als sichtbaren Teil des elektromagnetischen Spektrums und reflektieren die Generalisierbarkeit theoretischer Überlegungen.",
+        "sourceText": "Bei der Betrachtung der Interferenz von Licht am Doppelspalt reflektieren sie verwendete Annahmen und Näherungen und erläutern Abweichungen der experimentellen Beobachtungen von der mathematischen Modellierung. Sie identifizieren Licht als sichtbaren Teil des elektromagnetischen Spektrums und reflektieren die Generalisierbarkeit theoretischer Überlegungen.",
+        "sourceSpan": "Ph12-EA.3.6",
+        "parentBulletText": "Bei der Betrachtung der Interferenz von Licht am Doppelspalt reflektieren sie verwendete Annahmen und Näherungen und erläutern Abweichungen der experimentellen Beobachtungen von der mathematischen Modellierung. Sie identifizieren Licht als sichtbaren Teil des elektromagnetischen Spektrums und reflektieren die Generalisierbarkeit theoretischer Überlegungen.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph12-EA.3.6",
+        "courseLevel": "LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekII",
+          "courseLevel:LK",
+          "topic:Ph12-EA.3"
+        ],
+        "rawSourceText": "Bei der Betrachtung der Interferenz von Licht am Doppelspalt reflektieren sie verwendete Annahmen und Näherungen und erläutern Abweichungen der experimentellen Beobachtungen von der mathematischen Modellierung. Sie identifizieren Licht als sichtbaren Teil des elektromagnetischen Spektrums und reflektieren die Generalisierbarkeit theoretischer Überlegungen.",
+        "rawSourceSpan": "Ph12-EA.3.6",
+        "rawParentBulletText": "Bei der Betrachtung der Interferenz von Licht am Doppelspalt reflektieren sie verwendete Annahmen und Näherungen und erläutern Abweichungen der experimentellen Beobachtungen von der mathematischen Modellierung. Sie identifizieren Licht als sichtbaren Teil des elektromagnetischen Spektrums und reflektieren die Generalisierbarkeit theoretischer Überlegungen."
+      },
+      "before": {
+        "sourceGoalId": "b4193da7-ad13-5a31-9a3a-7c1afd8dedd4",
+        "topicCode": "Ph12-EA.3",
+        "sourceSpan": "Ph12-EA.3.6",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "6270e558-d657-5363-a6b2-e49a032a453b",
+          "c71315c1-f329-4289-a145-d99819da7bad",
+          "2c6af966-7703-4176-a117-5ddb8295bedf",
+          "4a7cbe83-b694-57d3-85ce-1eeca418daaf"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "b4193da7-ad13-5a31-9a3a-7c1afd8dedd4",
+        "topicCode": "Ph12-EA.3",
+        "sourceSpan": "Ph12-EA.3.6",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "6270e558-d657-5363-a6b2-e49a032a453b",
+          "c71315c1-f329-4289-a145-d99819da7bad",
+          "2c6af966-7703-4176-a117-5ddb8295bedf",
+          "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "55dbede5-2fee-51e7-ac13-e3b0227c502e"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Ph12 GA/EA unterscheiden: Gitteranwendung auch GA; vollständiges Doppelspaltmodell und Einzelspaltverlauf hier nur EA. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "source": {
+        "id": "e7949f0c-c726-59e7-9a1e-a2978b55c177",
+        "passageId": "a520d078-99ad-553d-94d5-74ab355648ea",
+        "topicCode": "Ph12-GA.3",
+        "bulletIndex": 3,
+        "aspectIndex": 1,
+        "title": "bestimmen selbständig die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mith...",
+        "description": "bestimmen selbständig die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Dabei erläutern sie die Funktion der einzelnen Komponenten des Aufbaus, diskutieren Möglichkeiten der Minimierung von Messunsicherheiten und ermitteln den quantitativen Einfluss der Unsicherheiten auf das Ergebnis.",
+        "sourceText": "bestimmen selbständig die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Dabei erläutern sie die Funktion der einzelnen Komponenten des Aufbaus, diskutieren Möglichkeiten der Minimierung von Messunsicherheiten und ermitteln den quantitativen Einfluss der Unsicherheiten auf das Ergebnis.",
+        "sourceSpan": "Ph12-GA.3.3",
+        "parentBulletText": "bestimmen selbständig die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Dabei erläutern sie die Funktion der einzelnen Komponenten des Aufbaus, diskutieren Möglichkeiten der Minimierung von Messunsicherheiten und ermitteln den quantitativen Einfluss der Unsicherheiten auf das Ergebnis.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph12-GA.3.3",
+        "courseLevel": "GK_LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekII",
+          "courseLevel:GK_LK",
+          "topic:Ph12-GA.3"
+        ],
+        "rawSourceText": "bestimmen selbständig die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Dabei erläutern sie die Funktion der einzelnen Komponenten des Aufbaus, diskutieren Möglichkeiten der Minimierung von Messunsicherheiten und ermitteln den quantitativen Einfluss der Unsicherheiten auf das Ergebnis.",
+        "rawSourceSpan": "Ph12-GA.3.3",
+        "rawParentBulletText": "bestimmen selbständig die Wellenlängen verschiedenfarbigen, von Leuchtdioden emittierten Lichts mithilfe eines Gitters. Dabei erläutern sie die Funktion der einzelnen Komponenten des Aufbaus, diskutieren Möglichkeiten der Minimierung von Messunsicherheiten und ermitteln den quantitativen Einfluss der Unsicherheiten auf das Ergebnis."
+      },
+      "before": {
+        "sourceGoalId": "e7949f0c-c726-59e7-9a1e-a2978b55c177",
+        "topicCode": "Ph12-GA.3",
+        "sourceSpan": "Ph12-GA.3.3",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "91683676-01cf-5003-80fa-a04d043b4e61",
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "72effc66-87f4-5f5e-8d36-1547677365fb"
+        ],
+        "rationale": "Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.",
+        "reviewedAt": "2026-05-10",
+        "reviewer": "codex"
+      },
+      "after": {
+        "sourceGoalId": "e7949f0c-c726-59e7-9a1e-a2978b55c177",
+        "topicCode": "Ph12-GA.3",
+        "sourceSpan": "Ph12-GA.3.3",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "91683676-01cf-5003-80fa-a04d043b4e61",
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "72effc66-87f4-5f5e-8d36-1547677365fb",
+          "df4acb52-b700-5b44-bc1e-11d73f24d061"
+        ],
+        "rationale": "Individuelle c648-Aufteilung anhand des vollständigen Originalaspekts: Ph12 GA/EA unterscheiden: Gitteranwendung auch GA; vollständiges Doppelspaltmodell und Einzelspaltverlauf hier nur EA. Die neuen Teilziele tragen nur den benannten fachlichen Teil; bestehende weitere Experiment-/Spektren-/Modellziele bleiben erhalten. Partielle Zuordnung, keine Masteryübertragung.",
+        "reviewedAt": "2026-09-07",
+        "reviewer": "OpenAI Codex c648 source author; AI, model unknown"
+      }
+    }
+  ],
+  "viewChecks": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+      "courseProfile": "GK",
+      "substitution": [
+        "df4acb52-b700-5b44-bc1e-11d73f24d061"
+      ],
+      "existingDoubleSlitPlacementRetained": true,
+      "nativeNewErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "courseProfile": "LK",
+      "substitution": [
+        "canonicalSubtree:c64820e1-c0ee-4342-9225-f981650f0c52"
+      ],
+      "existingDoubleSlitPlacementRetained": false,
+      "nativeNewErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-gk.view.json",
+      "courseProfile": "GK",
+      "substitution": [
+        "df4acb52-b700-5b44-bc1e-11d73f24d061"
+      ],
+      "existingDoubleSlitPlacementRetained": true,
+      "nativeNewErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json",
+      "courseProfile": "LK",
+      "substitution": [
+        "canonicalSubtree:c64820e1-c0ee-4342-9225-f981650f0c52"
+      ],
+      "existingDoubleSlitPlacementRetained": false,
+      "nativeNewErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+      "courseProfile": "GK",
+      "substitution": [
+        "df4acb52-b700-5b44-bc1e-11d73f24d061"
+      ],
+      "existingDoubleSlitPlacementRetained": true,
+      "nativeNewErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+      "courseProfile": "LK",
+      "substitution": [
+        "canonicalSubtree:c64820e1-c0ee-4342-9225-f981650f0c52"
+      ],
+      "existingDoubleSlitPlacementRetained": false,
+      "nativeNewErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json",
+      "courseProfile": "GK",
+      "substitution": [
+        "df4acb52-b700-5b44-bc1e-11d73f24d061"
+      ],
+      "existingDoubleSlitPlacementRetained": true,
+      "nativeNewErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json",
+      "courseProfile": "LK",
+      "substitution": [
+        "canonicalSubtree:c64820e1-c0ee-4342-9225-f981650f0c52"
+      ],
+      "existingDoubleSlitPlacementRetained": false,
+      "nativeNewErrors": []
+    }
+  ],
+  "atomicityReasons": [
+    "Eine geometrische Doppelspaltoperation: zwei kohärente Beiträge über ihren Gangunterschied zu hellen/dunklen Streifen zuordnen und in Winkel/Schirmorte übersetzen. Maxima/Minima sind komplementäre Ausgänge desselben Modells; 627 bleibt unveränderter Maxima-/Kleinwinkel-Basiseinstieg. Die neue vollständige Hell/Dunkel-Anforderung wird nicht als HE-/BW-Basisfachpflicht ausgegeben.",
+    "Eine Gitteroperation: Gleichphasigkeit benachbarter Beiträge bestimmt Hauptmaximrichtungen und zulässige Ordnungen. Die ausdrückliche Grenze gegenüber Minima/Nebenmaxima schützt vor einer falschen Doppelspaltübertragung; 916 bleibt der eigenständige polychromatische Spektren-/Wellenlängenanwendungskontext.",
+    "Eine Auswertung des Einzelspaltbeugungsbildes: Minima begründet berechnen, daraus Zentralbreite bestimmen und Nebenmaxima aus einem vorgegebenen Verlauf lokalisieren. Kein eigenständiges Aufstellen der Intensitätsverteilung; diese Modellierung bleibt beim unveränderten LK-Ziel f6a3a602. Datenablesung mit Fehlergrenze ersetzt keine exakte Halbordnungsregel."
+  ],
+  "memoryReasons": [
+    "Keine zusätzliche Karte erforderlich: Die ganz-/halbzahligen Gangunterschiede werden aus Gleich-/Gegenphasigkeit begründet und in einer frischen Geometrie geprüft; eine auswendig gelernte Formel allein genügt nicht.",
+    "Keine zusätzliche Karte erforderlich: Hauptmaximabedingung und Ordnungsgrenze werden im Aufgabenmodell aus der Gleichphasigkeit begründet. Die Unterscheidung von Spaltabstand und -breite sowie ein Gegenbeispiel zur Halbordnungsregel tragen das Verständnis.",
+    "Keine zusätzliche Karte erforderlich: Paarweise Auslöschung begründet die Minima; Nebenmaxima werden ausdrücklich aus bereitgestellten Daten gelesen. Es besteht kein Bedarf, numerische Nebenmaximastellen oder eine Intensitätsformel auswendig zu speichern."
+  ],
+  "mainAuthorCountercheck": {
+    "status": "pass",
+    "completeAssessmentFileRead": true,
+    "completeBilingualTasksSolutionsAndThirtyRubricItemsRead": true,
+    "actualEnglishInputsReparsed": [
+      {
+        "wavelength": 4.5000000000000003e-7,
+        "distance": 1.6,
+        "aperture": 0.00017999999999999998
+      },
+      {
+        "wavelength": 6.5e-7,
+        "distance": 0.4,
+        "aperture": 0.0000015
+      },
+      {
+        "wavelength": 6.4e-7,
+        "distance": 1.75,
+        "aperture": 0.00016
+      }
+    ],
+    "recomputedGeometry": [
+      [
+        {
+          "degrees": 0.2864800912409138,
+          "metres": 0.008000100001875041
+        },
+        {
+          "degrees": 0.07161974304233593,
+          "metres": 0.0020000015625018315
+        }
+      ],
+      [
+        {
+          "degrees": 25.679288619456855,
+          "metres": 0.19232894757838037
+        },
+        {
+          "degrees": 60.07356513338576,
+          "metres": 0.6948792289723035
+        }
+      ],
+      [
+        {
+          "degrees": 0.22918372921171115,
+          "metres": 0.0070000560006720095
+        },
+        {
+          "degrees": 0.4583711254853258,
+          "metres": 0.014000448021505147
+        },
+        {
+          "degrees": 0.32773364598481886,
+          "metres": 0.010010163759610472
+        }
+      ]
+    ],
+    "independentlyRecomputedTableRows": [
+      [
+        0,
+        1
+      ],
+      [
+        0.5,
+        0.40528
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1.3,
+        0.03924
+      ],
+      [
+        1.4,
+        0.04676
+      ],
+      [
+        1.43,
+        0.04719
+      ],
+      [
+        1.46,
+        0.04679
+      ],
+      [
+        1.5,
+        0.04503
+      ],
+      [
+        1.7,
+        0.02295
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "distinction": "The main integrating author independently recalculated the actual task values and intensity table; this is an AI countercheck, not human or learner evidence."
+  },
+  "originalSourceInspection": {
+    "HE": {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "printedPage": 41,
+      "originalPdfTextRead": true
+    },
+    "BW": {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH_V2.pdf",
+      "printedPages": [
+        31,
+        37,
+        45
+      ],
+      "physicalPdfPages": [
+        33,
+        39,
+        47
+      ],
+      "originalPdfTextRead": true,
+      "warning": "Extracted sourceRef page labels 29/35/43 are inaccurate for this retained revised PDF; original content and section identities were checked directly."
+    },
+    "BY": {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+      "originalRetainedGoalTextsRead": true,
+      "passages": [
+        "Ph12-GA.3.2",
+        "Ph12-GA.3.3",
+        "Ph12-EA.3.6",
+        "Ph12-EA.3.7",
+        "Ph12-EA.3.8",
+        "Ph12-EA.3.10",
+        "Ph12-EA.4.10"
+      ]
+    }
+  },
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "beforeSha256": "sha256:a5b589e9e0ce8abf6a1d0837b8a1c366d59ae1ee94e7b08c6d621beb5d947853",
+      "afterSha256": "sha256:78c3f8cacddbd6502a4f34b1910e03276eeeb01da929732ea0d7edd6eb111ff2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "beforeSha256": "sha256:c6438cfca26a2d1a9279fa143e59ff3b03ee6ba081ba3280fb6af918bd1ae6ad",
+      "afterSha256": "sha256:73aeb5d0435c7cfbc5b6faf8e78976489c2989f89641d146ae630ca455a09d4c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+      "beforeSha256": "sha256:5283f51e89c2d0a5a1a2a5957a5d5131284ba942391dbc8d386a1e2eb4447043",
+      "afterSha256": "sha256:766617c5e743eb48fad318508ec969b71d942988f52b99c13c370687556ec76e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "beforeSha256": "sha256:77dc310d80190c655a5d90957369d72d8da040d0e05030f9c7d251ab58b6092f",
+      "afterSha256": "sha256:0993b1c742a887060776327652632f4df63d10498a244b923a2ac62ed6e5b0dd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "beforeSha256": "sha256:6f51954de69e28875f65fe5969fdce6858186b466ec3fa547061979a5f94c521",
+      "afterSha256": "sha256:a8046a92abd206fe4c228f7da3f9a9faad1c763b01465af757d218edca3e4299"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "beforeSha256": "sha256:35880465a5137342e00555da3a92b8f174e997ebb47d3832cf75f0f7c15f566a",
+      "afterSha256": "sha256:bef5524c364609b896819eb457b6433ae50e3a3fef98fcd8fac7072ef6dac4e8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "beforeSha256": "sha256:5c902fe657bff038101eec0c3706e29485e689a653141bf0837a72ccacf30b8a",
+      "afterSha256": "sha256:2437ac67d406c14c7f4c704bc194bd9e3d2024d98830e1849017c4c259915f69"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json",
+      "beforeSha256": "sha256:e4c58765440b20d618926a40bc1bd44c0931cd56996baabe0879c2a94cb5b0aa",
+      "afterSha256": "sha256:cad104dcc28ddea46cb0cf08f1d9c980bc4d4fd601ba0f6c273fbfcde554d674"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+      "beforeSha256": "sha256:d14245ae6258210f0375a51b9185b8ce098329af19e4e9bf4331299106e42785",
+      "afterSha256": "sha256:9e50c63279f7e46e6b15d787ec31f3225408758a49a8c49c46c42e41bd23939d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+      "beforeSha256": "sha256:c26ea17c9ac2ad4d0c31e81fd4fdddd2f8f619c7988abbd7e72a2ce46742dff3",
+      "afterSha256": "sha256:7e61fcfc9fd9718f4f03df5aa64b07137a22d3bcafbad319f5ad5cedc0f9c357"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "beforeSha256": "sha256:ccba1a3c6d26e3c6c9bb7923288c64fe1381a601a8ce60005df0e23ddbcf1bfb",
+      "afterSha256": "sha256:fc0026350e6853a7f2df8801ab165ba66b63c1d0d0a4ec426f13c160fbff7c79"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-gk.view.json",
+      "beforeSha256": "sha256:d863234e81e70e163b04565497568fcbb80cf41aecdd0a55b50c0dced6d3f9bc",
+      "afterSha256": "sha256:5fb6897bbc9a70e2e7641889d2b9f4a3575d8892fd824dc9d99568ba1788cdab"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json",
+      "beforeSha256": "sha256:3aeae7c0e538367a170bd2ad87eb3f9db8561eb5b1b74f4c48455a57ff570b6b",
+      "afterSha256": "sha256:5e3a637e33b113229e3ee4eb0d1469e0f95dd3cf4a5b26425f8932c326782e7b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+      "beforeSha256": "sha256:d3f081a8abb29f0b2e45d3e75d8c8ba6eab6dddca259b5fa4b92be6758c02a51",
+      "afterSha256": "sha256:22424d71ab0a5f13c4c1ff20906a248f90014a51e807ac897fff5233129f3f34"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+      "beforeSha256": "sha256:d883a1b3192630cbb4fa778e7bf6bbb1ff4cbb901f221ca276dd12982a341551",
+      "afterSha256": "sha256:c51dcd42e422e10a86b7354ffefefbbf990596f500365ad341ab50879dc06815"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json",
+      "beforeSha256": "sha256:2ad685f31f31137d8e856858524e91dab0b96ffadfadec5f23bdb1ad1484c9f4",
+      "afterSha256": "sha256:c3397ec4a7452be2bb0eca7732e327ef9e836722741819c865fe989f75790db3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json",
+      "beforeSha256": "sha256:5974975db3c9c657b1334e76bb0729e123ca7c5c9bd4c1548c69d5e0100c008b",
+      "afterSha256": "sha256:b769266fda18e7a7f7850e02e9346d52253164e5d227681c56f60e4fd41e1a58"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/proposed-goals.json",
+      "sha256": "sha256:65cf92b4f1984814b29ab31b13b905b5375d3b2ea4b2a66443a105deb90e8fcd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/proposed-lk-assessment.json",
+      "sha256": "sha256:3f1c7c4e555590efce67c89bbdcc288be169ae3151ef8d1495b8777400fcaefa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_PHYSIK_SEKII_BP2016_V2.source-extraction.json",
+      "sha256": "sha256:6a5ce9e02f42937bb6cacf24997ac5123a68170bd97a71e8f7ab9cf6981a0a5f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+      "sha256": "sha256:9552cccda78f64503c338ee4f2c6adba2909f9cbdd8a8f3d111b97627ea7c27b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "sha256:c8d655fc7ce812b9e4eebe23fe35d96af388871d9dd80dec9a7848e30d50fa17"
+    }
+  ],
+  "assumptionsAndHolds": [
+    "Only staging emission; no native M6, D, P or V release is claimed.",
+    "Three real mini-assessments each carry one goal, 10 points and proposed pass threshold 6; total points do not automatically establish goal mastery.",
+    "GK source scope uses existing max-only 627 plus grating; no GK single-slit or full double-slit minimum requirement.",
+    "Existing 627/f6 descriptions, existing36d5 and all other assessment bodies stay byte-semantically unchanged.",
+    "New source mappings are partial; no splitFromCanonicalGoalId, legacyMasterySourceGoalIds, parentGoalId mastery hint, aliases or state migration are written.",
+    "Parent A/M decisions and active image link are archived; old JPG files, D/P histories and V records are not overwritten.",
+    "Root must reconcile active D/P/V configuration and review children after images are imported, then run native source/view/route/M6 protected-floor gates before completion.",
+    "The old39 capstone body remains a known generic placeholder; preserved structural endpoints are not new semantic assessment approval."
+  ],
+  "patchSummary": {
+    "status": "proposal_checks_pass",
+    "observedAt": "2026-09-07T02:07:21.913Z",
+    "changedActiveFiles": 17,
+    "canonicalNew": 6,
+    "newContentIds": [
+      "55dbede5-2fee-51e7-ac13-e3b0227c502e",
+      "df4acb52-b700-5b44-bc1e-11d73f24d061",
+      "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7"
+    ],
+    "newAssessmentIds": [
+      "aba1ff9c-40ba-5b2b-89b4-09dc119b3ada",
+      "ddadb014-865e-5929-85d8-b7a8f57ab3d8",
+      "16f3413b-4231-579d-a540-a75c957e2de8"
+    ],
+    "capstoneRemainingCount": 39,
+    "activePatchSha256": "sha256:26290053db44420fda94eea7a583ffdf9723ab90d71c7f54f79b2c388dbc0f3c"
+  }
+}

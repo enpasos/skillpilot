@@ -1,0 +1,372 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-b040-current-root-synthesis-20260907",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-root-full-current-dual-record-counterreview",
+  "synthesizedAt": "2026-09-07T00:04:38.571Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907",
+    "batchManifestDigest": "sha256:a0e4c38a4ebdc9b73bb29294671ce199e1aaaa00393daf2e06796b76c7ea5aa6",
+    "configDigest": "sha256:58f8c923eea72bcda5423588aaf99c2dc742c367b9480c1f496d0987d6ff9d0a",
+    "bundleFingerprint": "sha256:71ecc7c2ccf37e045b23e4b60b9273233a0108135c357fd389c5c79404234f0b",
+    "bookDigest": "sha256:838bd54fd7008014064c30ba959ab94650b12d43f7b5dd0cd65934364665b59c",
+    "reviewInputFingerprint": "sha256:3d0c33752552216f1d3dfaba8a1d12b666c40bd40bda9b7f57868d74b7fec973",
+    "dualSummaryDigest": "sha256:c75ad5d9da8eae2e32e3e4bb617d7d68e9a65d0569d76457cff4d0d1d229b641",
+    "canonicalLandscapeDigest": "sha256:a63fae6f9f69c0d804db9688f52138ddf83d9cc19aac1d4dd34d46b3ff4cdddc"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a",
+      "campaignDigest": "sha256:d3662aa6221d7cb987b21ae1eadc1e0f71b2544f6f750b2a3c7f3151cad13ee1",
+      "roundId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-independent-a",
+      "reviewInputFingerprint": "sha256:3d0c33752552216f1d3dfaba8a1d12b666c40bd40bda9b7f57868d74b7fec973",
+      "batchId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3f3e978451dd7bf62463f8d2500a75ae956c32128490ec5b45f7f6ff48dff976",
+      "runId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-run",
+      "runManifestDigest": "sha256:53d3583d992d72630f2995f64076165b10d70b92a7dc8477b631e5ac44828392",
+      "resultsDigest": "sha256:3d0b4ea4f52a4d7038df88e39a82f574fe0486aa653ec6a99dfbc0707ce2bcb0"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-b",
+      "campaignDigest": "sha256:4f0894316a15a242f922cf3809d8dd354bdd2054b10b3bf488f2634a0cd9323d",
+      "roundId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-independent-b",
+      "reviewInputFingerprint": "sha256:3d0c33752552216f1d3dfaba8a1d12b666c40bd40bda9b7f57868d74b7fec973",
+      "batchId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:baf3109aca1ffae85eb8875c71d2a28f8882ff56062e3290c7d56e25eccf510b",
+      "runId": "codex-physik-b040-blind-b-20260907",
+      "runManifestDigest": "sha256:7b7d8e75fb6253b953de7df7173e1371b467fc0eaf2b947fdf2dd37793a96c1d",
+      "resultsDigest": "sha256:15430fe88787f916a796b22166222f17e62c3bbba3fa7e4bac3841945673f888"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-001",
+      "goalId": "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e9efeb618b0553d9b241515d9f4d18f16300dbee61d7c6284008e09dff440144",
+      "pageFingerprint": "sha256:9fca01f8d21c0cf40e78d6d853aa3fe6ce96587165011cd80e8003faff4e09f2",
+      "goalReviewContextFingerprint": "sha256:8e042f55b4fe13bc1db054b2e989d7c3bb5c213931e7c9cc5ac56d9b0da0123c",
+      "finalText": {
+        "titleDe": "Gravitationsgesetz und Gewichtskraft anwenden",
+        "titleEn": "Apply Law of Gravitation and Weight Force",
+        "descriptionDe": "Die lernende Person kann das Gravitationsgesetz formulieren, die Gewichtskraft aus der Feldstärke herleiten und einfache Aufgaben zu Gravitationskräften lösen.",
+        "descriptionEn": "The learner can formulate the law of gravitation, derive the weight force from field strength, and solve simple problems on gravitational forces."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-001",
+          "recordDigest": "sha256:82b912382dd5aae98851c778fb2847083ee96e26078311b831398b249e9a4922"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-1",
+          "recordDigest": "sha256:8c55ded2d06ade6fc34992d5734bc0b92c6ed0006911cfbc81f12fe056776f3b"
+        }
+      },
+      "rationaleDe": "Newtons Gravitationsgesetz und Gewichtskraft werden als derselbe Feldzusammenhang F=mg erklärt. Beide Urteile erhalten die geeigneten einfachen Anwendungen und unterscheiden Massenparameter, Abstand und lokale Feldstärke.",
+      "rationaleEn": "Newtonian gravitation and weight are explained as the same field relationship F=mg. Both reviews preserve suitable simple applications and distinguish mass parameters, distance and local field strength."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-002",
+      "goalId": "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f6c1a43a7bb06b0f5849aad3df42654f6641e9e086bc0b42f5ccef5c0ed235f2",
+      "pageFingerprint": "sha256:badabffa5b7ea73974229afc733ddef5501daf2916238fc27f6d842afbb1ea2b",
+      "goalReviewContextFingerprint": "sha256:cc93056693e89b5ea4d1ba11d099c3f847c06cafec8788393c2551f2d79849ec",
+      "finalText": {
+        "titleDe": "Gravitationskraft und Gravitationspotential",
+        "titleEn": "Gravitational Force and Gravitational Potential",
+        "descriptionDe": "Der Lernende versteht die Gravitationskraft als konservative Kraft, die aus einem Potential abgeleitet ist. Das wird im Rahmen der mathematischen Möglichkeiten der Oberstufe erklärt.",
+        "descriptionEn": "The learner understands gravitational force as a conservative force derived from a potential. This is explained within the mathematical scope of upper secondary level."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-002",
+          "recordDigest": "sha256:fd951f033eb565b171d08692bac57ecfa760e11909dcf4a03e21f685f57b17d5"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-2",
+          "recordDigest": "sha256:4e08a552adad2257b5ca4134667e878fe336b3710d5f91fcde19e1df123ac5ec"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann im Rahmen der Oberstufenmathematik erläutern, wie sich die Gravitationskraft aus der Änderung der potenziellen Energie ableiten lässt und warum die von ihr verrichtete Arbeit nur vom Anfangs- und Endpunkt abhängt.",
+        "rationaleDe": "Der aktuelle Text benennt bereits den konkreten Zusammenhang konservative Gravitationskraft/Potential und begrenzt die Mathematik auf die Oberstufe. Die zusätzliche Ausformulierung aus B ist didaktisch plausibel, behebt aber keinen belegten Bedeutungsfehler; KEEP wahrt den bestehenden Umfang. Der abgelehnte Vorschlag bleibt ausdrücklich gebunden.",
+        "proposedDescriptionEn": "The learner can explain, within upper secondary mathematics, how gravitational force follows from the change in potential energy and why the work it does depends only on the initial and final points.",
+        "rationaleEn": "The current text already names the concrete conservative-gravity/potential relationship and limits mathematics to upper-secondary scope. B's elaboration is pedagogically plausible but fixes no demonstrated semantic error; KEEP preserves the scope. The rejected proposal remains explicitly bound."
+      },
+      "rationaleDe": "Der aktuelle Text benennt bereits den konkreten Zusammenhang konservative Gravitationskraft/Potential und begrenzt die Mathematik auf die Oberstufe. Die zusätzliche Ausformulierung aus B ist didaktisch plausibel, behebt aber keinen belegten Bedeutungsfehler; KEEP wahrt den bestehenden Umfang. Der abgelehnte Vorschlag bleibt ausdrücklich gebunden.",
+      "rationaleEn": "The current text already names the concrete conservative-gravity/potential relationship and limits mathematics to upper-secondary scope. B's elaboration is pedagogically plausible but fixes no demonstrated semantic error; KEEP preserves the scope. The rejected proposal remains explicitly bound."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-003",
+      "goalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c0e78ebf926862c9083c5caebefd185a0e96abafe4462abcf3664ff3f21a1a29",
+      "pageFingerprint": "sha256:77419c44692b96f32fb52af6c1fe7cffc09647e34ebcf3c933e5b3d73bf1c465",
+      "goalReviewContextFingerprint": "sha256:41405ecb15a64c965fcb30fbc50d966886dd78b2ad4895858c7be60e01f731eb",
+      "finalText": {
+        "titleDe": "Kepler-Gesetze anwenden",
+        "titleEn": "Apply Kepler's Laws",
+        "descriptionDe": "Die lernende Person kann die drei Kepler’schen Gesetze formulieren und einfache Schlussfolgerungen zu Umlaufzeiten und Bahnradien ziehen.",
+        "descriptionEn": "The learner can formulate Kepler's three laws and draw simple conclusions regarding orbital periods and orbital radii."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-005",
+          "recordDigest": "sha256:9b9fe396ff872c5889f44fc57c59d19e7a28c4111f3880dac240b24d4e19ffb9"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-5",
+          "recordDigest": "sha256:9e50d11a731a5195605e53ecf7ec0a33937317e4211c61c029f61ae357bd8d33"
+        }
+      },
+      "rationaleDe": "Die drei Keplerschen Gesetze beschreiben gemeinsam das begrenzte kinematische Bahnmodell. Beide Urteile verlangen ihre Bedeutung im Planetenkontext, ohne Newtonsche Ableitungen oder kosmologische Zusatzthemen zu importieren.",
+      "rationaleEn": "Kepler's three laws jointly describe the bounded kinematic orbital model. Both reviews require their meaning in planetary contexts without importing Newtonian derivations or cosmological topics."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-004",
+      "goalId": "16caf92e-2800-57d1-946c-5b92ce848a96",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:114f263b76cb92b20052de7b37a1b107b339b39e55417cbd6f487541a5c66005",
+      "pageFingerprint": "sha256:15f614df27af128a2d43ec335a347d2614056639c098b3415255398300a0e809",
+      "goalReviewContextFingerprint": "sha256:ec2e171ad665f4084b11d897078fb766214f6332f4089782fa6cea2f9fb7338e",
+      "finalText": {
+        "titleDe": "2. Kepler-Gesetz aus Drehimpulserhaltung herleiten (LK)",
+        "titleEn": "Derive Kepler's Second Law from Angular Momentum Conservation (Advanced Course)",
+        "descriptionDe": "Die lernende Person kann das zweite Kepler-Gesetz aus der Bewegungsgleichung im Zentralfeld herleiten, eine konstante Flächengeschwindigkeit begründen und den Zusammenhang zur Drehimpulserhaltung erläutern.",
+        "descriptionEn": "The learner can derive Kepler's second law from the equation of motion in a central field, justify a constant areal velocity, and explain its relation to angular momentum conservation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-006",
+          "recordDigest": "sha256:d2e0903284b024d15d32270eddb6153556bd9899e331980e62dde7f885e2d94a"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-6",
+          "recordDigest": "sha256:1d2b2fd67eb8dbf75957fcd1c07c88585099e451a598701684329103cf1e814a"
+        }
+      },
+      "rationaleDe": "Die Ableitung des Flächensatzes aus konstantem Drehimpuls ist eine zusammenhängende Argumentation. Beide Urteile unterscheiden die notwendige Zentralrichtung von der für diesen Schritt nicht benötigten speziellen invers-quadratischen Kraftabhängigkeit.",
+      "rationaleEn": "Deriving the area law from constant angular momentum is one connected argument. Both reviews distinguish the necessary central direction from the inverse-square dependence that this particular step does not require."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-005",
+      "goalId": "d873ffa2-04b3-5978-a955-89563802a348",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d9bc42de0ba8e018dcc9a325deabfd205b95c2580633acbd22da9d3ad7b96048",
+      "pageFingerprint": "sha256:967c953dceee6108c067e330a12e4449a479e3a0d4ad511578e787d1d5c21d59",
+      "goalReviewContextFingerprint": "sha256:5d9df3a1ccfccc2cddba11d2b3ebb8beceb12e7cb6a03874f588c9cd3a03394d",
+      "finalText": {
+        "titleDe": "Newtons Beitrag zur Erklärung von Planetenbewegungen erläutern (GK)",
+        "titleEn": "Explain Newton's Contribution to Planetary Motion (Basic Course)",
+        "descriptionDe": "Die lernende Person kann erläutern, warum Newtons Gravitationsphysik ein vertieftes Verständnis der Planetenbewegung ermöglicht.",
+        "descriptionEn": "The learner can explain why Newtonian gravitational physics enables a deeper understanding of planetary motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-008",
+          "recordDigest": "sha256:666ef032d1f91e43761796a8cee8d9850c116d3fe6fca1a909623145f847fdd5"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-8",
+          "recordDigest": "sha256:aa031b81084b244ea9ea4bb18f2bf1aa52b68cebb4d69c031fa770423f1962a2"
+        }
+      },
+      "rationaleDe": "Newtons dynamische Erklärung verbindet das vorausgesetzte Kepler-Modell mit Gravitation. Beide Urteile respektieren den qualitativen GK-Zuschnitt statt eine vollständige Bahnrechnung hinzuzufügen.",
+      "rationaleEn": "Newton's dynamical explanation connects the prerequisite Kepler model to gravity. Both reviews respect the qualitative basic-course scope rather than adding a complete orbit calculation."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-006",
+      "goalId": "1b833656-cd16-5b21-973a-9810960dcfd2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5ed74dacb46fc24a24163bd9505ef3b8d66ada04f52cb66770481314291c8be8",
+      "pageFingerprint": "sha256:9996b48e606bae5313520d368af7e1744ecc9b6c2c38e61de844358be842ceed",
+      "goalReviewContextFingerprint": "sha256:f78d42d21cd9e32f85ea50978cee80326861f8c7aa944b8f0a7a10fe4ff95918",
+      "finalText": {
+        "titleDe": "Keplers Beschreibung und Newtons Erklärung unterscheiden (LK)",
+        "titleEn": "Distinguish Kepler's Description and Newton's Explanation (Advanced Course)",
+        "descriptionDe": "Die lernende Person kann den Unterschied zwischen Keplers kinematischer Beschreibung und Newtons dynamischer Erklärung fachlich darstellen.",
+        "descriptionEn": "The learner can present the difference between Kepler's kinematic description and Newton's dynamic explanation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-009",
+          "recordDigest": "sha256:c8e88e52a48084516955c3846b542dc42bbe663269876dde400e2b5fcf43b49e"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-9",
+          "recordDigest": "sha256:7bd4edf7c5e66bf2b2866ede4ddb40297592b14f494b8c3ae963d36c5cc54e24"
+        }
+      },
+      "rationaleDe": "Kinematische Beschreibung und dynamische Erklärung werden ausdrücklich verglichen. Beide Urteile bestätigen diesen integrierenden LK-Vergleich, nicht zwei getrennt nochmals zu lernende Modellpakete.",
+      "rationaleEn": "Kinematic description and dynamical explanation are explicitly compared. Both reviews confirm this integrated advanced comparison rather than two separate model packages to relearn."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-007",
+      "goalId": "c968d263-8be4-5cf9-b320-e95398fe648f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3d133c92d1cdf056c034663d3ad324fce7c9c57723c449cea9bad9148dc7668e",
+      "pageFingerprint": "sha256:96d5dd14a94e63b8f14368aa52b2039e1e2485077adea93511742f272d9ab990",
+      "goalReviewContextFingerprint": "sha256:46ace500e2e40baa27b16ffd5be83610aa2002e3e8f13f8875b7d654b881fcd1",
+      "finalText": {
+        "titleDe": "Übergang von geometrischen zu dynamischen Modellen darstellen (LK)",
+        "titleEn": "Describe Transition from Geometric to Dynamic Models (Advanced Course)",
+        "descriptionDe": "Die lernende Person kann den Übergang von geometrischen Weltmodellen zu einer physikalisch begründeten dynamischen Beschreibung erläutern.",
+        "descriptionEn": "The learner can explain the transition from geometric world models to a physically grounded dynamic description."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-010",
+          "recordDigest": "sha256:57e4728b02c52d43bef20e9908ec3d0d4eec935e7b328a3ed14278ed88a95b5b"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-10",
+          "recordDigest": "sha256:fd1f6872683f55aa4cfd239603b391904a0f2e586448349acdd50b171f5ebd06"
+        }
+      },
+      "rationaleDe": "Die historische Modellverschiebung wird anhand fachlicher Erklärungsleistung eingeordnet. Beide Urteile verbinden geometrische Bahnbeschreibung und dynamisches Kraftverständnis, ohne eine bloße Namenschronologie als Nachweis gelten zu lassen.",
+      "rationaleEn": "The historical model shift is interpreted through explanatory content. Both reviews connect geometric orbital description and dynamical force understanding rather than treating a list of historical names as evidence."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-008",
+      "goalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d4452a2636957c7a27de0766e3f80fab69d644de133e4f54ef55a9a5d15062f3",
+      "pageFingerprint": "sha256:f690920449900a38f92aab57c9b0b9b1d834de77d9ffc945a115183e132de0f4",
+      "goalReviewContextFingerprint": "sha256:5790df4d523b46495959dce60f90f7f81b65d98832359d3ee62e83361a8b0c14",
+      "finalText": {
+        "titleDe": "Energieumwandlung in der Sonne",
+        "titleEn": "Energy Conversion in the Sun",
+        "descriptionDe": "Die lernende Person kann Proton-Proton-Reaktionen und Energiegewinnung erklären.",
+        "descriptionEn": "The learner can explain proton-proton reactions and energy generation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-015",
+          "recordDigest": "sha256:fab956d980b3a8cfdb91e9ad5338545ebe23c4db20878e871b3037837adf25a8"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-15",
+          "recordDigest": "sha256:c93de6df623f0ea56b972e01621ecd3969ee61c12032d29c203052c79fb95ab1"
+        }
+      },
+      "rationaleDe": "Die Proton-Proton-Kette und ihre Energiefreisetzung bilden eine einzige physikalische Prozessdeutung. Beide Urteile bewahren den vorgegebenen Reaktionsumfang und verwechseln freiwerdende Energie nicht mit einer Verletzung von Erhaltungsgrößen.",
+      "rationaleEn": "The proton-proton chain and its energy release form one physical process interpretation. Both reviews preserve the specified reaction scope and distinguish energy release from violations of conservation."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-009",
+      "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bb4ba40122976e6833e0b849d6d5ad97c330bdf56805e8c86afa0bffe2ece9d8",
+      "pageFingerprint": "sha256:eaffb7fdd64362aa714c6d371f7cd54d27491c27583d9960915a9355dbf3ecd0",
+      "goalReviewContextFingerprint": "sha256:1f878e9ff8feb406ceefac438cdf4c7b2b67da9cb1851887685109c9fff25223",
+      "finalText": {
+        "titleDe": "Sterntypen und Entwicklung",
+        "titleEn": "Star Types and Evolution",
+        "descriptionDe": "Die lernende Person kann Lebenszyklen verschiedener Sterntypen beschreiben.",
+        "descriptionEn": "The learner can describe life cycles of different star types."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-016",
+          "recordDigest": "sha256:80fb43ac7a63089192d2c57ea7654db0c8fc5d86d198e1ac68120d18ab962671"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-16",
+          "recordDigest": "sha256:8a6a64d697225f39dfa16f877543a9fa910df11e89c876c00c6ff21607a1301a"
+        }
+      },
+      "rationaleDe": "Massenabhängige Sternentwicklung ist der gemeinsame Modellkern für verschiedene Entwicklungswege. Beide Urteile halten den qualitativen Zusammenhang ein; eigenständige HR-Diagrammzuordnung bleibt eine Voraussetzung, kein zusätzliches neues Ziel.",
+      "rationaleEn": "Mass-dependent stellar evolution is the shared model core behind different pathways. Both reviews retain the qualitative relationship; independent HR-diagram classification remains a prerequisite rather than an additional new goal."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-010",
+      "goalId": "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b1ce46fca7daff2d5d2edf6ca7f564ec8bbd17e61c02edbb648b90bd6e45fe46",
+      "pageFingerprint": "sha256:f9e1ea9ef4cb55b4c3964c7d68e88dc428401425f42be8f1f1fc420825193106",
+      "goalReviewContextFingerprint": "sha256:a352760513459ee7b408e6c1fe3f0a6c1993d48fbb41638cf09c2cbf2ec6d6b4",
+      "finalText": {
+        "titleDe": "Entfernungsbestimmung",
+        "titleEn": "Distance Determination",
+        "descriptionDe": "Entfernung/Leuchtkraft aus Beobachtungsdaten abschätzen.",
+        "descriptionEn": "Estimate distance/luminosity from observational data."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-018",
+          "recordDigest": "sha256:4dfc3c47c9114064843749ab805a454c94e4487a4a488d3771674845858e6fa0"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-18",
+          "recordDigest": "sha256:c8af0064435f265be13454364c3e1579988724df1692fa82550f250087989bf4"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann aus geeigneten astronomischen Beobachtungsdaten Entfernungen oder Leuchtkräfte abschätzen und den dabei verwendeten Zusammenhang zwischen Messgrößen und gesuchter Größe erläutern.",
+        "rationaleDe": "Der knappe Satz beschreibt bereits eine beobachtbare Schätzleistung aus Beobachtungsdaten. Entfernung und Leuchtkraft sind die unbekannten Größen derselben astronomischen Inferenz. Die längere Erläuterung aus A ist eine optionale Explikation, kein belegter Scope- oder Korrektheitsfehler; der Vorschlag bleibt im Dissens dokumentiert.",
+        "proposedDescriptionEn": "The learner can estimate astronomical distances or luminosities from suitable observational data and explain the relationship used between measured quantities and the quantity being estimated.",
+        "rationaleEn": "The concise statement already describes an observable estimate from observational data. Distance and luminosity are unknowns within the same astronomical inference. A's longer explanation is optional elaboration, not a demonstrated scope or correctness defect; the proposal remains documented as dissent."
+      },
+      "rationaleDe": "Der knappe Satz beschreibt bereits eine beobachtbare Schätzleistung aus Beobachtungsdaten. Entfernung und Leuchtkraft sind die unbekannten Größen derselben astronomischen Inferenz. Die längere Erläuterung aus A ist eine optionale Explikation, kein belegter Scope- oder Korrektheitsfehler; der Vorschlag bleibt im Dissens dokumentiert.",
+      "rationaleEn": "The concise statement already describes an observable estimate from observational data. Distance and luminosity are unknowns within the same astronomical inference. A's longer explanation is optional elaboration, not a demonstrated scope or correctness defect; the proposal remains documented as dissent."
+    },
+    {
+      "decisionId": "physics-b040-current-root-synthesis-20260907-decision-011",
+      "goalId": "ba16948b-5e07-54af-b77b-776e677c6906",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4bf62170842a4068ff8da48cd2559485b5f3b1af44f53eda9ccad9deaf26501a",
+      "pageFingerprint": "sha256:c8f3fcf47d3784d25929dca62102939ebf65dc804f9999d2a2cc4862d102f1bf",
+      "goalReviewContextFingerprint": "sha256:aa5aeb4fe46dae3ffba5c09c1d61646088ddf4ca18f031f03004a685b2b7aab6",
+      "finalText": {
+        "titleDe": "Gravitationswellen und elektromagnetische Wellen vergleichen",
+        "titleEn": "Compare Gravitational and Electromagnetic Waves",
+        "descriptionDe": "Die lernende Person kann Gemeinsamkeiten und Unterschiede elektromagnetischer Wellen und Gravitationswellen qualitativ beschreiben.",
+        "descriptionEn": "The learner can qualitatively describe similarities and differences between electromagnetic waves and gravitational waves."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-a-020",
+          "recordDigest": "sha256:642fd25afc6c6bbb95582f85ceb9dd826a45c77bbb5dc73dffd2257d89e8d618"
+        },
+        "second": {
+          "recordId": "codex-physik-b040-blind-b-20260907-20",
+          "recordDigest": "sha256:cccea4dcaf01abb728b606bec008988cbc75dcfe37dbaeb220f127b2c8f5618d"
+        }
+      },
+      "rationaleDe": "Gemeinsamkeiten und Unterschiede zweier Wellenarten sind eine ausdrücklich integrierende Vergleichskompetenz. Beide aktuellen Urteile sind KEEP. Die zuvor vom Nutzer akzeptierte Illustration wird erhalten; stilistische Restunvollkommenheiten rechtfertigen keine erneute Generierung.",
+      "rationaleEn": "Similarities and differences of the two wave types form an explicitly integrated comparison. Both current reviews are KEEP. The illustration previously accepted by the user is retained; remaining stylistic imperfections do not justify another generation."
+    }
+  ],
+  "manifestFingerprint": "sha256:097bc2d056d58d896c18847aefb12b4f7fdba8a79826558bcd1c50cdea262390"
+}

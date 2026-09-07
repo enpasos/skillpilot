@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1.config.json",
+  "configDigest": "sha256:89a40acb388be8f7b4866a190256f73e63cc4c1ec06cf1003d0373e384712462",
+  "goalIds": [
+    "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+    "1a1c09f0-96b7-4c33-a623-0e8101537876",
+    "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+    "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+    "727d0946-7019-50ed-8fc6-85db12508733",
+    "e296aba6-f407-5944-a2bd-e5296e4c9f06",
+    "52b6722a-b3b2-5d2d-a507-0215532b0422",
+    "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+    "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+    "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+    "cf570e66-2ce2-5923-9033-c97d74119553",
+    "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+    "642aebd7-66cd-5a50-b543-73c4b207525d",
+    "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+    "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+    "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+    "8daaf751-93fe-56d9-8697-ac30237061bd",
+    "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+    "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+    "58db62d4-458f-5e2d-9ca0-968e09f4944b"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 464,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:a72059c5e6addc0da4cc7f8635b014f6458adb5fb5ca5c25d772ee9256e8bf41"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c5d02c732c1369630ab7b7c8db1853a96d069ca8c0dac88a14c2c31ac591d8f8",
+    "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+        "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+        "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+        "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b56324027508aad9e8b817a7f066ed85eb24697c8b98fa9ffc9c97c29dc2067b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+        "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+        "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+        "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:7ae019b04d6c0fcff50a82d9f2f7aef339694287e25e10a79d4feb1061322218"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

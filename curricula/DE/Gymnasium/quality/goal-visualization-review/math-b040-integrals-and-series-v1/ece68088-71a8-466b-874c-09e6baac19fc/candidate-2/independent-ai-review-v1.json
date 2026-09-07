@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtObserved": "2026-09-07 00:47:28 UTC",
+  "reviewer": {
+    "agent": "/root/math_b039_blind_a",
+    "provider": "OpenAI",
+    "product": "Codex",
+    "underlyingModel": "exact model identifier unavailable",
+    "authority": "ai_candidate_review",
+    "humanApproval": false,
+    "modelDiversityClaimed": false
+  },
+  "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+  "candidateNumber": 2,
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/ece68088-71a8-466b-874c-09e6baac19fc/candidate-2/ece68088-71a8-466b-874c-09e6baac19fc.generated.2026-09-07T00-28-31-566Z.jpg",
+    "sha256": "sha256:fe50b4cf3d844446ad4860d1778462cc153972b0aeea4c8efa4effaee68850c2",
+    "actuallyViewed": true,
+    "viewMethod": "view_image",
+    "originalResolutionReinspection": false
+  },
+  "archiveReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/ece68088-71a8-466b-874c-09e6baac19fc/candidate-2/archive-receipt.json",
+    "sha256": "sha256:27d06d006c2f23f0b3188bcad7ebc84d5ef086e03b9c9a6545b6639e01de1dd6",
+    "candidateFilesVerified": 8
+  },
+  "goalContext": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "title": "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+    "description": "Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+    "translations": null,
+    "requires": [
+      "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+    ]
+  },
+  "decision": "accept",
+  "subjectSpecificChecks": [
+    "B(t)=B₀+∫₀ᵗr(s)ds trennt Anfangsbestand und Bestandsänderung richtig.",
+    "Mit B₀=5 L und r(t)=3t² liefert ∫₀²3s²ds=8 L und damit B(2)=13 L.",
+    "Der Bestandsgraph startet bei (0|5), nicht im Ursprung, und steigt konvex bis zum markierten Punkt (2|13); der Ratengraph markiert passend (1|3) und (2|12)."
+  ],
+  "limitationsAndNotes": [
+    "Die Kurven sind anschauliche handgezeichnete Verläufe, keine Präzisionsplots. Die explizit markierten Werte, Richtung und Krümmung tragen das Beispiel korrekt."
+  ],
+  "minimalCorrection": null,
+  "scope": {
+    "visualCandidateReviewOnly": true,
+    "descriptionReviewDecision": false,
+    "importedByThisReview": false,
+    "activeAssetsChanged": false,
+    "canonicalFieldsChanged": false
+  },
+  "provenance": {
+    "otherReviewerRecordsRead": false,
+    "fullyBlinded": false,
+    "explanation": "Candidate choice and preceding workflow context were supplied by the parent; no other review decision record was read for this visual judgment.",
+    "timing": "Actual image views took place in this active review turn. Exact per-image view timestamps were not logged; the observed timestamp above is the documentation time, not an invented invocation start."
+  }
+}

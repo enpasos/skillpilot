@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2012f0d91006a7eae0e7c3de7c4750425bf3a334907e8f02c07d01b241c63c61",
+  "reviewInputFingerprint": "sha256:ac436791ee528e6cad1c101492f4a180feca5c9e3fd984e2f33957b252bfc036",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a",
+      "roundId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::unknown"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-b",
+      "roundId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-independent-b",
+      "runIds": [
+        "physik-b039r-codex-blind-b-20260907"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::unknown (Codex agent; underlying model not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "1a1c09f0-96b7-4c33-a623-0e8101537876",
+      "firstRecordId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run-1",
+      "secondRecordId": "physik-b039r-codex-blind-b-20260907.1a1c09f0-96b7-4c33-a623-0e8101537876",
+      "firstRunId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run",
+      "secondRunId": "physik-b039r-codex-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "642aebd7-66cd-5a50-b543-73c4b207525d",
+      "firstRecordId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run-2",
+      "secondRecordId": "physik-b039r-codex-blind-b-20260907.642aebd7-66cd-5a50-b543-73c4b207525d",
+      "firstRunId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run",
+      "secondRunId": "physik-b039r-codex-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+      "firstRecordId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run-3",
+      "secondRecordId": "physik-b039r-codex-blind-b-20260907.5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+      "firstRunId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run",
+      "secondRunId": "physik-b039r-codex-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+      "firstRecordId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run-4",
+      "secondRecordId": "physik-b039r-codex-blind-b-20260907.b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+      "firstRunId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run",
+      "secondRunId": "physik-b039r-codex-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+      "firstRecordId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run-5",
+      "secondRecordId": "physik-b039r-codex-blind-b-20260907.c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+      "firstRunId": "physik-rollout-v1-batch-039r-rotation-split-and-quantum-image-5-v1-20260907-a-run",
+      "secondRunId": "physik-b039r-codex-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

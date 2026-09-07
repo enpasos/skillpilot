@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-p1-final-context-v1",
+  "materializedAt": "2026-09-07T01:18:24.379Z",
+  "author": {
+    "provider": "OpenAI",
+    "model": "unknown",
+    "modelVersion": "unknown",
+    "authority": "ai_candidate",
+    "humanApprovalClaimed": false
+  },
+  "stableDirection": "Root explicitly confirmed stable canonical and image inputs and reported its completed full-body AI counterreview before this read-only native emitter was executed. Model agreement is not human approval.",
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-elementary-antiderivatives-1-v1.config.json",
+      "sha256": "sha256:3d9709aaabb4bbace08025390551e39e969faeb7a27584941b3243f4ce8d4fc6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-elementary-antiderivatives-1-v1.candidates.json",
+      "sha256": "sha256:d3713a3188e32fe3c8b31c0ebf92c2e2fb571d2c2260d154303f5aeb9c4bb00d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-elementary-antiderivatives-1-v1.author.mjs",
+      "sha256": "sha256:9fee4a933d355a2d865425c6d2b347cf5cdf198d2be1eca5bd87a4361461deeb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-elementary-antiderivatives-1-v1.authoring-context.json",
+      "sha256": "sha256:f9abda0adc96ba380a5b24cd177a397519f9515798d68c00dd14f2b7dfc953f0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-elementary-antiderivatives-1-v1.author-check-report.json",
+      "sha256": "sha256:59efbc77d18eff23e79a3c267b81e204f8c4510185a9016bcd4e0e6948fabe47"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-elementary-antiderivatives-1-v1.bind-current.ts",
+      "sha256": "sha256:d244fe72a1916bea0ad76cecdf7ac1b6251450bea5ecb41aa04db4b97d6969ba"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+      "sha256": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:bd33714d53a8774ac18bced0ca93ca3ade8a9de085373c851937af43b7416e44"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "sha256:99f1529c408cc24402eb8d4582d0ef497a8ca176ac67eec933df3e23e34b773c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/a9ed-source-adjudication-adoption-receipt-v1.json",
+      "sha256": "sha256:e8f6aa1d5bebe3d9c41525bc8bbf84f72de3d0fc9714aeeea198556830f165c8"
+    },
+    {
+      "path": "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+      "sha256": "sha256:ae02d37a78fbdd02fbecff6d61c47e86f775c47aeacc6a85367a10c1d2c9cec7"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+    }
+  ],
+  "currentGoal": {
+    "id": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+    "title": "Einfache Integrale berechnen",
+    "titleEn": "Calculate simple integrals",
+    "description": "Die lernende Person kann die Stammfunktionen von $x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ sowie von $e^x$, $\\sin(x)$ und $\\cos(x)$ aus den Ableitungsregeln erschließen und damit mithilfe der Faktor- und Summenregel auf geeigneten Intervallen Stammfunktionen entsprechender Linearkombinationen bestimmen.",
+    "descriptionEn": "The learner can infer antiderivatives of $x^n$ for $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ and of $e^x$, $\\sin(x)$, and $\\cos(x)$ from differentiation rules and use the factor and sum rules to determine antiderivatives of their linear combinations on suitable intervals.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K5.2"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L2"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.1, S. 36, Spiegelstrich 4",
+    "type": "atomic",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+        "title": "Visualisierung: Einfache Integrale berechnen",
+        "url": "/assets/goal-visualizations/mathematik/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/a9ed219d-d497-55e5-a4e0-4d45d2554f6b.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+        "description": "Visualisierung zum Lernziel: Einfache Integrale berechnen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Einfache Integrale berechnen\". Die lernende Person kann Stammfunktionen von Potenzfunktionen $f(x)=x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ bestimmen, Faktor- und Summenregel beim Integrieren anwenden und ganzrationale Funktionen sowie $e^x$, $\\sin(x)$ und $\\cos(x)$ integrieren.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "prerequisites": [
+    {
+      "id": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+      "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
+      "titleEn": "Use the Fundamental Theorem of Calculus",
+      "description": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, Stammfunktionen bestimmen und das bestimmte Integral über $F(b) - F(a)$ berechnen und geometrisch deuten.",
+      "descriptionEn": "The learner can describe the relationship between derivative and integral, determine antiderivatives, and calculate and geometrically interpret the definite integral via $F(b) - F(a)$.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.4",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+          "title": "Visualisierung: Hauptsatz der Differential- und Integralrechnung nutzen",
+          "url": "/assets/goal-visualizations/mathematik/b9bbd2a8-1379-5ffb-817f-41467d48abef/b9bbd2a8-1379-5ffb-817f-41467d48abef.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Hauptsatz der Differential- und Integralrechnung nutzen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Hauptsatz der Differential- und Integralrechnung nutzen\". Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, Stammfunktionen bestimmen und das bestimmte Integral über $F(b) - F(a)$ berechnen und geometrisch deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "semanticKind": {
+    "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+    "sourceFingerprint": "sha256:33ddf77b0ed11b89ef6ed02f5eb21ce7316988e08903395dbe9d56aa65079f05",
+    "semanticKind": "curricularAtomic",
+    "decisionStatus": "authoritative",
+    "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+  },
+  "activeVisualizationInventory": [
+    {
+      "path": "app/public/assets/goal-visualizations/mathematik/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/a9ed219d-d497-55e5-a4e0-4d45d2554f6b.jpg",
+      "url": "/assets/goal-visualizations/mathematik/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/a9ed219d-d497-55e5-a4e0-4d45d2554f6b.jpg",
+      "sha256": "sha256:37c5ff8338339499a403ac7071ad3401aafd02b7f020c618248552878b037e00",
+      "note": "Inventory only, not P image-QA evidence or a new visual approval."
+    }
+  ],
+  "nativeReviewInputPayload": {
+    "profileSchemaVersion": 2,
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "goalInput": {
+      "ruleVersion": "goal-evidence-v1",
+      "goalFingerprint": "sha256:109e8e23279da6c71a1620347ba4055e81ac65abde43dc8e42f15efa8530652b",
+      "requires": [
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+      ],
+      "contains": [],
+      "examples": [],
+      "goalVisualizations": [
+        {
+          "role": "primary",
+          "url": "/assets/goal-visualizations/mathematik/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/a9ed219d-d497-55e5-a4e0-4d45d2554f6b.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Einfache Integrale berechnen\". Die lernende Person kann Stammfunktionen von Potenzfunktionen $f(x)=x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ bestimmen, Faktor- und Summenregel beim Integrieren anwenden und ganzrationale Funktionen sowie $e^x$, $\\sin(x)$ und $\\cos(x)$ integrieren.",
+          "reviewStatus": "pilot",
+          "digest": null
+        }
+      ]
+    }
+  },
+  "caseCoverage": [
+    {
+      "caseId": "mixed-rule-verification",
+      "expectationIds": [
+        "infer-basic-pairs",
+        "inverse-linearity-and-interval"
+      ]
+    },
+    {
+      "caseId": "negative-power-domain-transfer",
+      "expectationIds": [
+        "infer-basic-pairs",
+        "inverse-linearity-and-interval"
+      ]
+    }
+  ],
+  "bindings": {
+    "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+    "goalFingerprint": "sha256:109e8e23279da6c71a1620347ba4055e81ac65abde43dc8e42f15efa8530652b",
+    "reviewInputFingerprint": "sha256:6966dea9037c9f05e9b29707311ef911c0d5dad6281bf58cc6ff7b0d5582e7e7",
+    "profileFingerprint": "sha256:4282b0b970ab46312c8c679b0f6f7add7a5c1ea5b90e851cf4698d243eb0d234",
+    "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+  },
+  "output": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-elementary-antiderivatives-1-v1.review.jsonl",
+    "sha256": "sha256:293daee8ae9c75fe2c9217cc5f2db26452b4e8ae0ce4ce6f89ec316531f838fc"
+  },
+  "toolchain": {
+    "node": "20.20.2",
+    "nativeBuilder": "app/scripts/materializePositiveGoalEvidenceCandidates.ts#buildPositiveGoalEvidenceCandidateRecords"
+  },
+  "boundaries": [
+    "Exactly one checked, independently authored profile is bound without body changes.",
+    "needs_human_review/ai_candidate/E1/G1, no learner execution, model-diversity or human-approval claim.",
+    "D review and V image QA remain separate; this P record does not approve either.",
+    "No canonical, A/M/K, existing D/P, registry, claims, source, deck/card, book, aggregate QA or runtime write."
+  ]
+}

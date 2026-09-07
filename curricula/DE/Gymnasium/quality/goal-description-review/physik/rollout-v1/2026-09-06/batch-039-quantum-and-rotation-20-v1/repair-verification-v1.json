@@ -1,0 +1,172 @@
+{
+  "checkedAt": "2026-09-06T23:02:35.652Z",
+  "status": "PASS",
+  "exactRecoveryBaselineHashesVerified": 11,
+  "changedExistingGoalIds": [
+    "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+    "6d25344c-35d7-5853-925d-2bccbaf50630",
+    "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+    "879491c0-7153-570b-91f4-c61d9fe8a143",
+    "9743baad-9371-52b6-98ee-72bc6dc68701"
+  ],
+  "addedGoalIds": [
+    "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea"
+  ],
+  "removedGoalIds": [],
+  "b49Unchanged": true,
+  "phaseNoFalseConcreteCoverage": true,
+  "sourceFindings": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceId": "he-phys-sekii-e-7-b01-a01-8ba122e4",
+      "rows": [
+        {
+          "legacyGoalId": "he-phys-sekii-e-7-b01-a01-8ba122e4",
+          "canonicalGoalId": "cf570e66-2ce2-5923-9033-c97d74119553",
+          "matchType": "partial",
+          "reviewDecisionId": "he-phys-sekii-e-7-b01-a01-8ba122e4"
+        },
+        {
+          "legacyGoalId": "he-phys-sekii-e-7-b01-a01-8ba122e4",
+          "canonicalGoalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+          "matchType": "partial",
+          "reviewDecisionId": "he-phys-sekii-e-7-b01-a01-8ba122e4"
+        }
+      ],
+      "decision": {
+        "sourceGoalId": "he-phys-sekii-e-7-b01-a01-8ba122e4",
+        "topicCode": "E.7",
+        "sourceSpan": "Drehmoment",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "cf570e66-2ce2-5923-9033-c97d74119553",
+          "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea"
+        ],
+        "rationale": "B039: Amtlich geprüft: HE KC Physik 2024, E.7, S. 31, Drehmoment; Kontext Trägheitsmoment und mathematische Modellierung/quantitative Vorhersagen der E-Phase auf S. 29. Der Source-Aspekt wird auf Kraft-Hebelarm/Drehwirkung (cf570e66-2ce2-5923-9033-c97d74119553) und mittleres resultierendes Beschleunigungsmoment bei konstantem I (c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea) operationalisiert. M = I alpha steht nicht wörtlich im Spiegelstrich; beide Teilkanten sind partial, kein vollständiges 1:1-Abbild. E.7 ist nicht Teil der verpflichtenden E.1–E.3; GK_LK bewahrt die nicht LK-exklusive Einführungsphasen-Einordnung, keine Pflichtstoffbehauptung. Kein zusätzlicher Energieanspruch aus diesem Drehmomentaspekt.",
+        "reviewedAt": "2026-09-06T22:48:22.881Z",
+        "reviewer": "codex-physics-b039-energy-torque-split-2026-09-06"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceId": "rp-phys-sek2-ef-torque-lk",
+      "rows": [
+        {
+          "legacyGoalId": "rp-phys-sek2-ef-torque-lk",
+          "canonicalGoalId": "cf570e66-2ce2-5923-9033-c97d74119553",
+          "matchType": "partial",
+          "reviewDecisionId": "rp-phys-sek2-ef-torque-lk"
+        },
+        {
+          "legacyGoalId": "rp-phys-sek2-ef-torque-lk",
+          "canonicalGoalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+          "matchType": "partial",
+          "reviewDecisionId": "rp-phys-sek2-ef-torque-lk"
+        }
+      ],
+      "decision": {
+        "sourceGoalId": "rp-phys-sek2-ef-torque-lk",
+        "topicCode": "INTRO-ROTATION",
+        "sourceSpan": "5.3 Rotation starrer Körper, S. 54",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "cf570e66-2ce2-5923-9033-c97d74119553",
+          "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea"
+        ],
+        "rationale": "B039: Amtlich geprüft: RP Lehrplan Physik MSS, S. 54, Rotation starrer Körper, ausdrücklich Einführungsphase Leistungsfach/Wahlpflicht. Der breitere Drehmomentaspekt mit Trägheitsmoment und Translationsanalogien als Kontext trägt die begrenzten Teilansprüche Kraft-Hebelarm/Drehwirkung (cf570e66-2ce2-5923-9033-c97d74119553) und mittleres resultierendes Beschleunigungsmoment bei konstantem I (c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea). Die konkrete Formelanforderung ist eine Operationalisierung, keine wörtliche 1:1-Übernahme; beide Kanten partial. Diese Source-Zuordnung belegt nur LK, ausdrücklich keinen RP-GK-Anspruch.",
+        "reviewedAt": "2026-09-06T22:48:22.881Z",
+        "reviewer": "codex-physics-b039-energy-torque-split-2026-09-06"
+      }
+    }
+  ],
+  "publicMirror": [
+    {
+      "language": "de",
+      "canonical": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json",
+      "public": "app/public/data/de_gymnasium_physics_flashcards_mechanics_ephase.de.json",
+      "matching": true,
+      "backendBuildCopyExists": true,
+      "backendBuildCopyMatches": false
+    },
+    {
+      "language": "en",
+      "canonical": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.en.json",
+      "public": "app/public/data/de_gymnasium_physics_flashcards_mechanics_ephase.en.json",
+      "matching": true,
+      "backendBuildCopyExists": true,
+      "backendBuildCopyMatches": false
+    }
+  ],
+  "finalFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "beforeSha256": "sha256:6cbd8b02e7d8dc4bee481cef1cfc383d514ec771bc8782c2879cc2b2ad1106c7",
+      "afterSha256": "sha256:cdc557a36e28aac6666b3012fda7c25e1921e4e3da4bbaf9942b5ff4fee52d3f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+      "beforeSha256": "sha256:ba9e53c30be41d84a2dc5521da50ec2cc209a2887375b3dfa25d409c87f4b4f7",
+      "afterSha256": "sha256:b2155aac0e217e3475d50b571de3669c5276b54b3ecf43bbb747ea734dd93e01"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "beforeSha256": "sha256:8e21cb8f308c5c85aa0565ca79383ded8832e64c6a8a3c52b026c21499b9a778",
+      "afterSha256": "sha256:35880465a5137342e00555da3a92b8f174e997ebb47d3832cf75f0f7c15f566a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "beforeSha256": "sha256:5c6159e486a0265cb28d2221e420ddc485a3a272028830c2396d5ca8f17561fa",
+      "afterSha256": "sha256:16fa10250971894be9097b0f5540a475f2c163e75bcff699ebb4412fbabd81b5"
+    },
+    {
+      "path": "app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json",
+      "beforeSha256": "sha256:8f52e88dc3ce8b27878e5d5d10c9b9c128fd34ef9f0f6632dd15d49b6c0d32c4",
+      "afterSha256": "sha256:eff9a9839aa94c9821d25e8e7831b2b79436f0702298d5cd213333c14d4691de"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "beforeSha256": "sha256:78bb4398e2d5c982bf8bf8e4d634984e281be9eb94d1fc46a414e86e9af575bb",
+      "afterSha256": "sha256:41db2a779100fdea7071097f993417991495c16b5c0f333d442ab30d473d260a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+      "beforeSha256": "sha256:2b3759a4785d7d7ba988899aae60e423b25e767dd340dd473437fd3c8c628007",
+      "afterSha256": "sha256:782873394f7fb99218739c5791c27dedc235718fa41e339e799b79a319ccb9e0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json",
+      "beforeSha256": "sha256:a317e2bfe3709aa7fedeb0b15c939272b4a447b1f9c20a8b24394a0ef014d503",
+      "afterSha256": "sha256:0f5b4f52b0e1c1a56e48a29499ae5aa7b54c2fbc7b5a126396a4c6d78f1c56e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.en.json",
+      "beforeSha256": "sha256:8dc9e495c78d0ec41f683f8928d962593bf1816fa3653a76fd00ac78ac295218",
+      "afterSha256": "sha256:8ee72d8e3b264540763cbb3c118290111a00a98cb82077802777d8cfb7ad3dad"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.cards.review.jsonl",
+      "beforeSha256": "sha256:7b4228e6d905b74d07e21710463600bc5e5e303dcd258e7b60cc9f9caccbadba",
+      "afterSha256": "sha256:c866eb484c3296ab0aa1621208a9c8869cbf44d2e4bfc5f2d05a2b1fa5add614"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "beforeSha256": "sha256:b5e7795f61a4a8918ba1e670f86daf67837cabae8425dac9541be2f2f48bf76b",
+      "afterSha256": "sha256:fac3f5e1f891abb52507351edca477add503f8cfd86f301a57a01abea897baa6"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_physics_flashcards_mechanics_ephase.de.json",
+      "beforeSha256": "sha256:a317e2bfe3709aa7fedeb0b15c939272b4a447b1f9c20a8b24394a0ef014d503",
+      "afterSha256": "sha256:0f5b4f52b0e1c1a56e48a29499ae5aa7b54c2fbc7b5a126396a4c6d78f1c56e9"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_physics_flashcards_mechanics_ephase.en.json",
+      "beforeSha256": "sha256:8dc9e495c78d0ec41f683f8928d962593bf1816fa3653a76fd00ac78ac295218",
+      "afterSha256": "sha256:8ee72d8e3b264540763cbb3c118290111a00a98cb82077802777d8cfb7ad3dad"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+      "beforeSha256": "sha256:4995d7f53b9996f1e3525c9a841de4567c0601ee25925140d7e27b102dd2b9e4",
+      "afterSha256": "sha256:47ac696155d25c6c482d6d1a9d7ad932d1fe6fc83294bc55661a70eb510b7988"
+    }
+  ]
+}

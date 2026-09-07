@@ -1,0 +1,2 @@
+Use case: precise-object-edit / scientific-educational.
+Nur ein Zeichen und Hilfslabel korrigieren: rechter Monitor im Integrale-Panel y-Achse obere bisherige Marke '2' in '3' ändern, da die Gerade bei x=2 den Wert3 hat. Die y-Markierung1 unten bleibt, Abstand0zu1 ist halber Abstand1zu3. Ergänze bei Geradenpunkt über x2 '(2|3)' und kurze horizontale Hilfslinie zu3. Linke inzwischen richtige Parabel und alle anderen Elemente unverändert lassen. KeinenneuenGraph, keineAbstandsänderungaußerfallsnötigderTickposition fürgleichmäßigeSkala.

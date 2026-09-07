@@ -1,0 +1,28 @@
+# Bildrekonstruktionsprompt: Hertz'schen Dipol als Grenzfall des Schwingkreises deuten
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `5da7d4d0-878e-44fd-b398-1b1de8b636a4`
+- Titel: Hertz'schen Dipol als Grenzfall des Schwingkreises deuten
+- Beschreibung: Die lernende Person kann den Hertz'schen Dipol als Grenzfall eines elektromagnetischen Schwingkreises beschreiben und die Abstrahlung elektromagnetischer Wellen in Grundzügen deuten.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)
+- Quellbild: `5da7d4d0-878e-44fd-b398-1b1de8b636a4.jpg`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Ein klares, didaktisches Diagramm im Stil einer technischen Zeichnung oder eines Lehrbuchs, mit einem hellblauen Gittermuster auf weißem Hintergrund. Oben mittig steht der Titel "Hertz-Dipol" in dunklem Blau.
+
+Links befindet sich ein Schaltkreisdiagramm, umrandet von einer hellblauen gestrichelten Linie, die ein Rechteck bildet. Darüber steht in dunklem Blau das Wort "Schwingkreis". Der Schaltkreis besteht aus einem Kondensator (zwei parallele, horizontale Platten) links oben, beschriftet mit "C" rechts daneben. Die obere Platte des Kondensators hat drei '+' Symbole, die untere Platte drei '-' Symbole. Rechts unten ist eine Spule (mehrere vertikale Windungen) dargestellt, beschriftet mit "L" links daneben. Beide Komponenten sind durch dicke, dunkelgraue Linien verbunden, die einen geschlossenen rechteckigen Stromkreis bilden.
+
+Eine große, geschwungene, orangefarbene Pfeilform zeigt von der Mitte des linken Schaltkreises nach rechts. Der Pfeil hat eine weiche, leicht verwaschene Kante und ist mit dem Wort "oeffnen" in dunklem Braun beschriftet.
+
+Rechts vom Pfeil ist ein Hertz-Dipol dargestellt. Darüber steht in dunklem Blau der Text "Hertz-Dipol". Der Dipol besteht aus zwei vertikalen, parallelen, zylindrischen Stäben in Grau, die einen kleinen Spalt in der Mitte haben. Der obere Stab ist mit einem '+' Symbol oben rechts versehen, der untere Stab mit einem '-' Symbol unten links. Konzentrische, halbkreisförmige Wellen in verschiedenen Blautönen (von hellblau bis hellviolett) breiten sich vom Dipol nach rechts und oben aus. Entlang dieser Wellen, schräg nach oben rechts verlaufend, steht der Text "elektromagnetische Welle" in dunklem Blau.
+```

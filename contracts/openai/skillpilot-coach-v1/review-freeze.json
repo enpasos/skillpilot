@@ -3749,6 +3749,29 @@
           "authorizedSha256": "91b6bfe07990480c2bde2e908dea60e7931564f95d8cfde6d642d03efa73dfc4"
         }
       ]
+    },
+    {
+      "id": "2026-09-07-goal-book-series-split-count-alignment",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Apply the standing section 6.58 approval for mechanical Layer A test-data alignment on 7 September 2026 after the reviewed mathematics series split increases the atlas from 796 to 797 atomic pages.",
+      "scope": "Change only verified.model.pages.length from 796 to 797 in app/scripts/testGoalBookPublication.ts and append section 6.61 documentation. Bind exactly these two existing supplemental files in the record, runtime checker and regression. Preserve exact-count enforcement, every other test byte, negative cases, publication/source integrity and prior exception history. The regression reconstructs the previous test hash by reversing this single count change and confirms unchanged primary runtime/tree chains and no new frozen paths. This applies the existing preauthorization, not a new human review of curriculum content. No product logic, OpenAI 1.0.0 or Claude 1.1.1 package, MCP/OAuth/tool/schema/MCP-Apps resource, launch/session/identity/locale/learning-state/security/storage contract, portal, review case/fixture/artifact or deployment change.",
+      "target": "local-and-ci-public-layer-a-goal-book-publication-test-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-test-count-alignment-with-unchanged-submitted-contract-and-review-flow",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/scripts/testGoalBookPublication.ts",
+          "priorAuthorizedSha256": "e2be85c9ae8aa46d4594699e644b50868724103f52263f9d9fd886ce7657f162",
+          "authorizedSha256": "6c95cf9de67d0a03d4fe562779d71ce6289f3c97c5def211147ad43ea18f5dcd"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "91b6bfe07990480c2bde2e908dea60e7931564f95d8cfde6d642d03efa73dfc4",
+          "authorizedSha256": "6d99ca4a49c89659b0cd5d6cea6947048b9917ecbf9862ad037db5cd03f5cdc7"
+        }
+      ]
     }
   ],
   "evolvablePresentationIslands": [

@@ -263,6 +263,9 @@ const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
   'f203a552-fcf0-560c-baa2-47d4eb2379c8',
 ])
 const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
+  '6d25344c-35d7-5853-925d-2bccbaf50630', // B039: both independent rotation targets assessed.
+  '7f83e25c-38f7-5ac2-8f9c-ec54eeef1026', // B039: E-phase terminal route retains both targets.
+  '879491c0-7153-570b-91f4-c61d9fe8a143', // B039: rotation assessment covers the separated mean-torque atom.
   '3631c8f7-ff48-57ff-b7ee-8397ff1d166a',
   'ef2bb474-89e1-5deb-81c4-c6b05d174bbd',
   '44ada28b-8635-5481-8d09-2d91686d352b',
@@ -516,14 +519,14 @@ const EXPECTED_JURISDICTIONS = [
 ] as const
 
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 464,
+  curricularAtomic: 465,
   curricularArea: 101,
   practiceAssessment: 133,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 710,
+  total: 711,
 }
 const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6308
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6136
@@ -662,7 +665,12 @@ const explicitClassification = (
       semanticKind: 'curricularAtomic',
       decisionBasis: STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS.has(goal.id)
         ? 'reviewed-current-structural-split-curricular-atomic'
-        : BILINGUAL_COMPLETENESS_RECHECK_GOAL_IDS.has(goal.id)
+        : new Set([
+          '5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931', // B039: rotational energy, separated from mean torque.
+          'c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea', // B039: independent mean-torque goal.
+        ]).has(goal.id)
+          ? 'reviewed-current-post-split-curricular-atomic'
+          : BILINGUAL_COMPLETENESS_RECHECK_GOAL_IDS.has(goal.id)
           ? 'reviewed-current-semantic-recheck-curricular-atomic'
           : 'reviewed-current-pilot-curricular-atomic',
     }
@@ -703,7 +711,9 @@ const explicitClassification = (
       semanticKind: 'curricularArea',
       decisionBasis: STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS.has(goal.id)
         ? 'reviewed-current-structural-split-curricular-area'
-        : 'reviewed-current-pilot-curricular-area',
+        : goal.id === '9743baad-9371-52b6-98ee-72bc6dc68701'
+          ? 'reviewed-current-post-split-curricular-area'
+          : 'reviewed-current-pilot-curricular-area',
     }
   }
   if (
@@ -1619,7 +1629,8 @@ for (const profilePath of [
     }
   })
 }
-assert.equal(canonicalProfileTargetIds.size, 391)
+// The reviewed torque split adds one distinct curricular target.
+assert.equal(canonicalProfileTargetIds.size, 392)
 assert.equal(
   canonicalProfileTargetIds.has(ROAD_SAFETY_GOAL_ID),
   false,
@@ -1658,7 +1669,7 @@ const navigationGoalIds = new Set([...collectAtomicGoalIds(
 assert.deepEqual(
   [...navigationGoalIds].sort(compareCodePoints),
   [...atlasCurricularAtomicGoalIds].sort(compareCodePoints),
-  'canonical goal-book navigation must place all 464 atlas goals exactly once',
+  'canonical goal-book navigation must place all 465 atlas goals exactly once',
 )
 
 const durationPolicy = readJson<{

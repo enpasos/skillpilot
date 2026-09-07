@@ -1,14 +1,14 @@
-# Bildrekonstruktionsprompt: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten
+# Bildrekonstruktionsprompt: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als Bestandsänderung deuten
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `3862890e-9ea9-4c62-bcf2-e354c9d8f306`
-- Titel: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten
-- Beschreibung: Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.
+- Titel: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als Bestandsänderung deuten
+- Beschreibung: Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und bei einer Änderungsrate als Bestandsänderung beschreiben, aus der zusammen mit dem Anfangsbestand der Endbestand entsteht.
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg`
 
 ## Zweck
@@ -18,28 +18,21 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein freundliches, handgezeichnetes, lehrreiches Cartoon-Bild im Stil einer Infografik auf einem hellbeigen Hintergrund mit subtilen, verstreuten mathematischen Symbolen wie Integralen, Summenzeichen und Limes-Notationen in Hellgrau.
+Ein handgezeichnetes, lehrreiches Diagramm im Cartoon-Stil auf einem hellbeigen Hintergrund, umrandet von einer dicken dunkelbraunen Linie. Der Titel oben mittig lautet: 'Integral und Bestandsänderung'.
 
-Das Bild ist in drei Hauptbereiche unterteilt: einen oberen Banner, einen mittleren Bereich mit zwei vertikalen Spalten und einen unteren horizontalen Bereich.
+Oben links ist ein lächelnder, junger Cartoon-Junge mit hellbraunem Haar und blauem Hemd zu sehen, der einen Zeigestock in seiner rechten Hand hält und auf den linken Bereich des Diagramms zeigt.
 
-Oben befindet sich ein hellbeiger, leicht gewellter Banner mit dunkler Umrandung, der den Titel trägt: "Bestimmtes Integral: Grenzwert & Rekonstruierter Bestand" in einer fetten, runden, dunklen Schrift. Die Enden des Banners sind spitz zulaufend wie ein Band.
+Der linke Bereich ist überschrieben mit 'Integral als Grenzwert'. Darunter befindet sich ein Koordinatensystem mit einer dicken dunkelbraunen x-Achse, beschriftet mit 't' und den Zahlen 0, 1, 2, 3, 4, und einer dicken dunkelbraunen y-Achse, beschriftet mit 'f(t)' und den Zahlen 1, 2, 3, 4, 5. Eine schwarze diagonale Linie repräsentiert die Funktion f(t) = t + 1, beginnend bei (0,1) und endend bei (4,5). Rechts neben der Linie steht 'f(t) = t + 1'. Vier blaue Rechtecke (Balken) sind von t=0 bis t=4 gezeichnet, mit Höhen entsprechend der Untersumme (Höhe 1 von t=0 bis t=1, Höhe 2 von t=1 bis t=2, Höhe 3 von t=2 bis t=3, Höhe 4 von t=3 bis t=4). Darüber sind vier rote trapezförmige Flächen, die den Bereich zwischen den blauen Balken und der Funktion f(t)=t+1 darstellen. Unter dem Graphen steht der Text: 'n = 4: Untersumme 10, Obersumme 14'.
 
-Der mittlere Bereich ist in zwei vertikale Spalten unterteilt.
-Die linke Spalte ist überschrieben mit "Grenzwert von Ober- und Untersummen" in fetter, runder, dunkler Schrift. Sie enthält zwei nebeneinander liegende Koordinatensysteme.
-1.  **Linkes Koordinatensystem (n=4):** Eine x-Achse beschriftet mit "t" (von 0 bis 4) und eine y-Achse beschriftet mit "4". Eine diagonale Linie repräsentiert die Funktion f(t) = t+1. Vier blaue Rechtecke (Untersumme) sind so gezeichnet, dass ihre oberen linken Ecken die Linie berühren. Vier rote Rechtecke (Obersumme) sind so gezeichnet, dass ihre oberen rechten Ecken die Linie berühren, wobei die roten Teile über den blauen liegen. Ein Pfeil zeigt von den roten Rechtecken auf den Text "Obersumme (n=4) = 14". Ein weiterer Pfeil zeigt von den blauen Rechtecken auf den Text "Untersumme (n=4) = 10". Die Funktion ist mit "f(t) = t+1" beschriftet.
-2.  **Rechtes Koordinatensystem (n=8):** Ähnlich dem linken, aber mit acht schmaleren blauen Rechtecken (Untersumme) und acht roten Rechtecken (Obersumme). Ein Pfeil zeigt von den roten Rechtecken auf den Text "Obersumme (n=8) = 13". Ein weiterer Pfeil zeigt von den blauen Rechtecken auf den Text "Untersumme (n=8) = 11".
+Unter dem Graphen befindet sich eine dunkelbraun umrandete Tabelle mit drei Spalten und drei Zeilen. Die Kopfzeile enthält 'n', 'Untersumme', 'Obersumme'. Die Daten sind: '4 | 10 | 14', '8 | 11 | 13', '16 | 11,5 | 12,5'. Rechts neben der Tabelle zeigt ein großer grauer Pfeil nach rechts. Daneben steht 'Grenzwert:' gefolgt von der mathematischen Notation '$\int_0^4 (t+1) dt = 12$'.
 
-Unter den beiden Graphen befindet sich eine hellbeige Tabelle mit dunkler Umrandung, beschriftet mit "Tabelle:". Die Spalten sind "n", "Untersumme", "Obersumme". Die Zeilen enthalten die Werte: "4", "10", "14" und "8", "11", "13".
-Ein großer, dicker, dunkler Pfeil zeigt von unterhalb der Tabelle nach rechts. Darüber steht "Grenzwert (n → ∞)". Dieser Pfeil zeigt auf ein hellbeige umrandetes Rechteck, das die mathematische Notation "∫₀⁴ (t+1) dt = 12" enthält. Über diesem Rechteck schwebt eine Sprechblase mit dem Text "Gemeinsamer Grenzwert!".
+Der rechte Bereich ist überschrieben mit 'Integral als Bestandsänderung'. Darunter sind drei cartoonartige, hellblaue Wasserbehälter dargestellt, die Wasser enthalten und von dunkelbraunen Linien umrandet sind.
+Der linke Behälter hat einen niedrigen Wasserstand und ist mit einem weißen, abgerundeten Textfeld beschriftet, das 'Anfangsbestand' und darunter '7 L' enthält. Ein graues Rohr führt von links in diesen Behälter, aus dem hellblaues Wasser fließt. Um diesen Behälter herum sind hellblaue Wassertropfen und Spritzer zu sehen.
+Der rechte Behälter hat einen hohen Wasserstand und ist mit einem weißen, abgerundeten Textfeld beschriftet, das 'Endbestand' und darunter '19 L' enthält. Auch um diesen Behälter herum sind hellblaue Wassertropfen und Spritzer zu sehen.
+Zwischen den beiden Behältern, über dem Wasserstand, befindet sich ein rotes, abgerundetes Textfeld mit 'Zuwachs' und darunter '12 L'. Ein graues Rohr verbindet die Behälter visuell, wobei Wasser aus dem Rohr in den rechten Behälter fließt.
+Unter den Behältern steht die Gleichung: 'B(4) = 7 + 12 = 19'. Rechts daneben ist ein kleines weißes, abgerundetes Textfeld mit zwei Zeilen: 't in min,' und 'f(t) in L/min'.
 
-Die rechte Spalte des mittleren Bereichs ist überschrieben mit "Rekonstruierter Bestand" in fetter, runder, dunkler Schrift. Sie zeigt eine Illustration eines grauen Wasserhahns, aus dem Wasser in einen transparenten Messbecher fließt. Der Wasserstand im Becher ist bei der Markierung "19". Eine niedrigere Markierung ist mit "7" beschriftet.
-Ein Pfeil zeigt vom fließenden Wasser auf den Text "+12 (Integral = Zuwachs)".
-Ein hellbeige umrandetes Rechteck mit dem Text "Anfangsbestand B(0) = 7" zeigt auf die "7"-Markierung im Becher.
-Ein weiteres hellbeige umrandetes Rechteck mit dem Text "Rekonstruierter Bestand B(4) = 7 + 12 = 19" zeigt auf die "19"-Markierung im Becher.
-Unter dem Becher ist eine kleine braune Stoppuhr abgebildet, daneben steht "t=0 bis t=4".
+Unten rechts im Bild ist eine lächelnde, junge Cartoon-Frau mit braunem Dutt und blauem Hemd zu sehen, die einen Zeigestock in ihrer rechten Hand hält und auf eine große weiße Sprechblase in der unteren Mitte des Bildes zeigt. Diese Sprechblase enthält zwei Zeilen Text: 'Das Integral liefert die Änderung.' und 'Anfangsbestand + Änderung = Endbestand.'
 
-Drei kleine, dunkle, quadratische Verbindungselemente und ein großer Pfeil verbinden das Rechteck "∫₀⁴ (t+1) dt = 12" mit dem Rechteck "Anfangsbestand B(0) = 7" und von dort zum Messbecher, um die Addition des Integrals zum Anfangsbestand zu visualisieren.
-
-Der untere Bereich ist ein großes, hellgrünes, abgerundetes Rechteck mit dunkler Umrandung. Links darin befindet sich ein großes grünes Häkchen-Symbol. Der Text lautet: "Ergebnis: Ober- und Untersummen nähern sich demselben Integralwert (12); das Integral rekonstruiert den Bestandszuwachs (+12)." in fetter, runder, dunkler Schrift.
-Rechts daneben steht eine lächelnde, weibliche Cartoon-Lehrerfigur mit braunem Dutt, blauem Blazer und weißem Hemd, die mit einem Holzzeigestab auf den Text im grünen Kasten zeigt.
+Alle Texte sind in einer klaren, handgeschriebenen Schriftart in Dunkelbraun gehalten.
 ```

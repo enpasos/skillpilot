@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-07 01:33:41 UTC",
+  "status": "PASS",
+  "goalCount": 10,
+  "actualRasterViews": 10,
+  "missingImageCount": 0,
+  "decisionCounts": {
+    "keep": 7,
+    "revise": 1,
+    "split_review": 2,
+    "block": 0
+  },
+  "openCases": [
+    {
+      "goalId": "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+      "decision": "split_review",
+      "reason": "Unaided construction versus use of supplied antiderivatives are independently assessable."
+    },
+    {
+      "goalId": "809ef78a-f282-5593-89be-0f2cb95570ac",
+      "decision": "split_review",
+      "reason": "Quantity reconstruction versus function means are independently assessable."
+    },
+    {
+      "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "decision": "revise",
+      "reason": "Distinguish integrated change from absolute quantity requiring an initial value."
+    }
+  ],
+  "nativeCampaignCheck": {
+    "chunk_id": "085824",
+    "wall_time_seconds": 0.572191457,
+    "exit_code": 0,
+    "original_token_count": 13,
+    "output": "Goal-description review campaign results valid: 10\n"
+  },
+  "nativeBatchCheck": {
+    "chunk_id": "1f772f",
+    "wall_time_seconds": 0.880200606,
+    "exit_code": 0,
+    "original_token_count": 98,
+    "output": "\n> skillpilot@0.0.0 quality:goal-description-rollout-batch\n> tsx scripts/materializeGoalDescriptionRolloutBatch.ts check --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1.config.json\n\nStandalone goal-description batch valid: mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907; goals=10\n"
+  },
+  "authorNumericalCheck": {
+    "chunk_id": "982e17",
+    "wall_time_seconds": 0.000003701,
+    "exit_code": 0,
+    "original_token_count": 39,
+    "output": "{\"status\":\"PASS\",\"arithmeticAssertions\":28,\"scope\":\"Author numerical checks only; not learner performance, proof replacement, or semantic bulk decision\"}\n"
+  },
+  "freezeCheck": {
+    "chunk_id": "ae59ea",
+    "wall_time_seconds": 0.044370167,
+    "exit_code": 0,
+    "original_token_count": 25,
+    "output": "CHECK openai_plugin_review_freeze PASS skillpilot-coach-v1 1.0.0 state=IN_REVIEW trees=6 files=22\n"
+  },
+  "hashes": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/run-provenance.json",
+      "sha256": "be9ae6ca2dcca384ce127d7b991e38658d28fb51b814e3e2a19532e4353af9bf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/results/mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-a.batch-001.run.json",
+      "sha256": "32105175b564bd910b2daa4fbd0b94f385f0f6a9617bc309515b19777de37028"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/results/mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-a.batch-001.records.jsonl",
+      "sha256": "58fa890dddee3f928640f1fd08abb17b9acf3c7ecb75da1bfd228440b0862aa2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/round-a/author-check.mjs",
+      "sha256": "0f2157e3a1bf348f3fc9008057181c2f82d41fb8d9ea077729464e83ceca1285"
+    }
+  ],
+  "authority": "AI candidates only; no human approval, canonical adoption, child-goal evidence, or model diversity."
+}

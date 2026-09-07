@@ -1,0 +1,3023 @@
+{
+  "artifactType": "goal-description-current-carryover-preflight-v1",
+  "status": "read_only_preflight_with_draft_synthesis_proposals",
+  "author": {
+    "provider": "OpenAI",
+    "agent": "Codex",
+    "exactModelIdentifierDisclosed": false
+  },
+  "authority": {
+    "finalResolutions": false,
+    "registryWrites": false,
+    "canonicalWrites": false,
+    "sourceReviewRebinding": false,
+    "grantsProgress": false,
+    "grantsBatchCompletion": false,
+    "humanAcceptanceClaim": false
+  },
+  "method": {
+    "nativeModelLoader": "loadGoalBookBuildInputs",
+    "nativeOriginalDualValidator": "materializeGoalDescriptionRolloutBatchDualSummary(configPath, false)",
+    "nativeSame20SubsetBuilder": "buildGoalDescriptionRolloutSubsetModel",
+    "nativeCanonicalContextBuilder": "buildGoalDescriptionCanonicalContext",
+    "nativeGoalFingerprintBuilder": "fingerprintGoalForEvidence with GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION and curricularAtomic",
+    "nativeExactSourceExtractor": "extractGoalDescriptionDualRoundResolutionSource",
+    "pageEquality": "stableGoalBookJson on complete native page objects, including all nested values and array order; no page fields omitted",
+    "contextEquality": "stableGoalBookJson on complete bound canonicalContext versus freshly built canonicalContext",
+    "textEquality": "exact titleDe/titleEn/descriptionDe/descriptionEn string equality",
+    "assetEquality": "actual app/public image bytes SHA-256 checked against current native visualization.originalDigest and compared with sealed digest",
+    "evidenceProfileEquality": "Each original evidenceProfile is null and each current page.evidenceReview is null; no profile is synthesized or rebound for this audit.",
+    "subsetIdentity": "The current native atlas is projected using the original ordered 20 goal IDs, bookId and title. Original subset page numbers, navigation order, tree order, references and full pages are compared unchanged, not renumbered to an eligible-only subset.",
+    "candidateRule": "full page + canonical context + all four bilingual strings + goal fingerprint + unchanged evidence-profile presence + independent keep/keep. Any failed condition excludes reuse.",
+    "rationaleReview": "All 20 pairs of original DE/EN understanding evidence and rationales were read to distinguish matching decisions from actual compatible substance. Eligible proposals explicitly discuss different cases and boundaries.",
+    "limits": "This is exact input compatibility and proposal drafting, not a fresh image-quality review, normative mappings audit, final dual-round resolution, learner mastery finding or complete-batch approval. Current atlas/global digest changes do not authorize alteration of any original source binding."
+  },
+  "checkedAt": "2026-09-06T23:24:03.756Z",
+  "currentCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "currentCanonicalSha256": "sha256:cdc557a36e28aac6666b3012fda7c25e1921e4e3da4bbaf9942b5ff4fee52d3f",
+  "currentBaseBookDigest": "sha256:3eb23ce478656fccc4f1fd25e6dd04555f64dda3380dff76652d5b20074dddf4",
+  "currentBaseAtomicCount": 465,
+  "currentSubsetBookDigest": "sha256:28f21aa520b9762fb6e75938c9472befe07c175969eb550d98b076a063de638e",
+  "originalSubsetBookDigest": "sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666",
+  "originalDenominator": 464,
+  "nativeDualValidation": "PASS",
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1.config.json",
+      "sha256": "sha256:89a40acb388be8f7b4866a190256f73e63cc4c1ec06cf1003d0373e384712462"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/batch-manifest.json",
+      "sha256": "sha256:fb35df61d7a105c504d7550a75f413df9ceeca7f1fbeb21b7c3a7d9bbde261af"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/dual-summary.json",
+      "sha256": "sha256:f8bd2f44a8413cd5084c9a7ce952cb5395d23ad65ff64d09fa58ff1ec4faa0ee"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/bundle/book-model.json",
+      "sha256": "sha256:c40d5a57d88967ff7b4e7e404402312906f354b5019ab07160db397100a41399"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/round-a/description-review-input.json",
+      "sha256": "sha256:31d9b89e682ee1ffef507abf391b95477a1b37617ffa4bc5d3b4d569721d0957"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/round-b/description-review-input.json",
+      "sha256": "sha256:31d9b89e682ee1ffef507abf391b95477a1b37617ffa4bc5d3b4d569721d0957"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/round-a/results/physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/round-a/results/physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:c40b890b64190b88e5913216d9c9758c5de9726472fff75f1704f0e286f02a20"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/round-b/results/physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/round-b/results/physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:b929ce8fa6182b4535aa427ee5bf35963a86efcd581e2fb5b3dd6f25fccb9f78"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-038r-exponential-scope-and-context-11-v1/emit-six-current-carryover-v1.ts",
+      "sha256": "sha256:81f9b9a558a67a31e2d5d1da24c91129f4ac60c720a6ecaf1f6e031bddc238d5"
+    }
+  ],
+  "all20Audit": [
+    {
+      "goalId": "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+      "titleDe": "Zeitentwicklung von Quantenzuständen einordnen",
+      "originalIndex": 1,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:0efbeddced8f8421769cc6db0886385ef0e4ae42fc5266d055e4d71547ea0287",
+        "currentGoal": "sha256:0efbeddced8f8421769cc6db0886385ef0e4ae42fc5266d055e4d71547ea0287",
+        "oldPage": "sha256:7fc0434d8440de6b3338811530e3221932900138d8d22a546862b154e9f9a323",
+        "currentPage": "sha256:7fc0434d8440de6b3338811530e3221932900138d8d22a546862b154e9f9a323",
+        "oldFullPageObject": "sha256:1ae91d8c2e34ad2b42bc8f661aace0e108611c7a4065727742d4bfe87176ca38",
+        "currentFullPageObject": "sha256:1ae91d8c2e34ad2b42bc8f661aace0e108611c7a4065727742d4bfe87176ca38",
+        "oldCanonicalContext": "sha256:280308a800694750f5d74a01bc3c86cace4a1eecfe8270592b9bb6f08c98e781",
+        "currentCanonicalContext": "sha256:280308a800694750f5d74a01bc3c86cace4a1eecfe8270592b9bb6f08c98e781",
+        "firstRecord": "sha256:9dc71ce0a0d9dbcdf78c43f74bfbc20c74853e7a8643ee5cae1b1dbfa407a257",
+        "secondRecord": "sha256:973d09ee53d44ac348b5aa1ffb6dacc9aeadbfe23822e171a6b262b9e7e75a90",
+        "firstGoalReviewContext": "sha256:32045bc5222e073d9ca4b1e6503bb78ff414ad5e7925800110a174450023752f",
+        "secondGoalReviewContext": "sha256:32045bc5222e073d9ca4b1e6503bb78ff414ad5e7925800110a174450023752f"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/d5bff282-741f-4cc5-9622-b77584fdcc5a/d5bff282-741f-4cc5-9622-b77584fdcc5a.jpg",
+        "sha256": "sha256:c3f839b5479a327a19757c95ff840b152311b5806bb4768ae86484ebf7b077be",
+        "oldDigest": "sha256:c3f839b5479a327a19757c95ff840b152311b5806bb4768ae86484ebf7b077be",
+        "currentModelDigest": "sha256:c3f839b5479a327a19757c95ff840b152311b5806bb4768ae86484ebf7b077be"
+      },
+      "originalText": {
+        "titleDe": "Zeitentwicklung von Quantenzuständen einordnen",
+        "titleEn": "Classify Time Evolution of Quantum States",
+        "descriptionDe": "Die lernende Person kann erklären, dass die zeitliche Entwicklung eines Quantenzustands im Modell deterministisch beschrieben wird, während Messergebnisse probabilistisch gedeutet werden.",
+        "descriptionEn": "The learner can explain that the time evolution of a quantum state is described deterministically in the model while measurement outcomes are interpreted probabilistically."
+      },
+      "currentText": {
+        "titleDe": "Zeitentwicklung von Quantenzuständen einordnen",
+        "titleEn": "Classify Time Evolution of Quantum States",
+        "descriptionDe": "Die lernende Person kann erklären, dass die zeitliche Entwicklung eines Quantenzustands im Modell deterministisch beschrieben wird, während Messergebnisse probabilistisch gedeutet werden.",
+        "descriptionEn": "The learner can explain that the time evolution of a quantum state is described deterministically in the model while measurement outcomes are interpreted probabilistically."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:32045bc5222e073d9ca4b1e6503bb78ff414ad5e7925800110a174450023752f",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.01",
+          "recordDigest": "sha256:9dc71ce0a0d9dbcdf78c43f74bfbc20c74853e7a8643ee5cae1b1dbfa407a257"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:32045bc5222e073d9ca4b1e6503bb78ff414ad5e7925800110a174450023752f",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-001",
+          "recordDigest": "sha256:973d09ee53d44ac348b5aa1ffb6dacc9aeadbfe23822e171a6b262b9e7e75a90"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "1a1c09f0-96b7-4c33-a623-0e8101537876",
+      "titleDe": "Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben",
+      "originalIndex": 2,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": false,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": false,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": false,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [
+        {
+          "field": "visualization.originalDigest",
+          "before": "sha256:30a1ec2fb895bd6d995ff23e0f5eb47cf354b2f2c5ba0f5231ee3a846feff88b",
+          "after": "sha256:ac0240de6c3917ec150cc32cacf3bfe32fc10c79cdefa9f6b15e0be973cca6e8"
+        },
+        {
+          "field": "pageFingerprint",
+          "before": "sha256:c54c90ab757bcca20c3d951c56e7b68bbe851409f0b19e455a5655dce0168464",
+          "after": "sha256:8ab14fc6460bc9e4ffd85f81df8bb99393013231457cf94db07e1e4f43cb801b"
+        }
+      ],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:2440324d074b4dde97c82c92c78e8248e84bc780ac2281c2f1e931249b2bfc61",
+        "currentGoal": "sha256:2440324d074b4dde97c82c92c78e8248e84bc780ac2281c2f1e931249b2bfc61",
+        "oldPage": "sha256:c54c90ab757bcca20c3d951c56e7b68bbe851409f0b19e455a5655dce0168464",
+        "currentPage": "sha256:8ab14fc6460bc9e4ffd85f81df8bb99393013231457cf94db07e1e4f43cb801b",
+        "oldFullPageObject": "sha256:6bac83e3758947df275b877c815dce31d72b0d0afc615040db0b6c62d8574d13",
+        "currentFullPageObject": "sha256:445e91d7f1f95d32f5bed3c2d5d529179d545148ada6a3b30cf2c17496370de3",
+        "oldCanonicalContext": "sha256:3b40ae090cff8af7dc44aad883b7a1b0b74fc44a7d8042f1e092f7c6ea46854b",
+        "currentCanonicalContext": "sha256:3b40ae090cff8af7dc44aad883b7a1b0b74fc44a7d8042f1e092f7c6ea46854b",
+        "firstRecord": "sha256:fca1d394ef79260be84064da71b914282529534a179cd0aaf5e256fe798ce164",
+        "secondRecord": "sha256:c9125c3f4e9fa3b744e74c166aa92847c2ee67ed51008ce0b2d52cde5ee32bbe",
+        "firstGoalReviewContext": "sha256:c99fe2e9897de64993b629266647f5cf782d2934e2c5dcd5b6d8ec57298f7bb6",
+        "secondGoalReviewContext": "sha256:c99fe2e9897de64993b629266647f5cf782d2934e2c5dcd5b6d8ec57298f7bb6"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/1a1c09f0-96b7-4c33-a623-0e8101537876/1a1c09f0-96b7-4c33-a623-0e8101537876.jpg",
+        "sha256": "sha256:ac0240de6c3917ec150cc32cacf3bfe32fc10c79cdefa9f6b15e0be973cca6e8",
+        "oldDigest": "sha256:30a1ec2fb895bd6d995ff23e0f5eb47cf354b2f2c5ba0f5231ee3a846feff88b",
+        "currentModelDigest": "sha256:ac0240de6c3917ec150cc32cacf3bfe32fc10c79cdefa9f6b15e0be973cca6e8"
+      },
+      "originalText": {
+        "titleDe": "Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben",
+        "titleEn": "Describe Interference of Single Quantum Objects Using Probability Statements",
+        "descriptionDe": "Die lernende Person kann die Interferenz einzelner Quantenobjekte mithilfe von Wahrscheinlichkeitsaussagen beschreiben und den Aufbau eines Interferenzmusters aus vielen Einzelereignissen qualitativ deuten.",
+        "descriptionEn": "The learner can describe the interference of single quantum objects using probability statements and qualitatively interpret the emergence of an interference pattern from many individual events."
+      },
+      "currentText": {
+        "titleDe": "Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben",
+        "titleEn": "Describe Interference of Single Quantum Objects Using Probability Statements",
+        "descriptionDe": "Die lernende Person kann die Interferenz einzelner Quantenobjekte mithilfe von Wahrscheinlichkeitsaussagen beschreiben und den Aufbau eines Interferenzmusters aus vielen Einzelereignissen qualitativ deuten.",
+        "descriptionEn": "The learner can describe the interference of single quantum objects using probability statements and qualitatively interpret the emergence of an interference pattern from many individual events."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:c99fe2e9897de64993b629266647f5cf782d2934e2c5dcd5b6d8ec57298f7bb6",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.02",
+          "recordDigest": "sha256:fca1d394ef79260be84064da71b914282529534a179cd0aaf5e256fe798ce164"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:c99fe2e9897de64993b629266647f5cf782d2934e2c5dcd5b6d8ec57298f7bb6",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-002",
+          "recordDigest": "sha256:c9125c3f4e9fa3b744e74c166aa92847c2ee67ed51008ce0b2d52cde5ee32bbe"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+      "titleDe": "Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern",
+      "originalIndex": 3,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:e3ec3577e9f68564da5e35d837b44d1563c002c9ddb2fa94878524b000d4af63",
+        "currentGoal": "sha256:e3ec3577e9f68564da5e35d837b44d1563c002c9ddb2fa94878524b000d4af63",
+        "oldPage": "sha256:178c6460e518af084958a6a89ec0f8ae87861203edefe90713ad2da7968b4acb",
+        "currentPage": "sha256:178c6460e518af084958a6a89ec0f8ae87861203edefe90713ad2da7968b4acb",
+        "oldFullPageObject": "sha256:06ecadad88a695e6ebd007919ece8ce9d42c833b4b4525b5e7b473d7004691ba",
+        "currentFullPageObject": "sha256:06ecadad88a695e6ebd007919ece8ce9d42c833b4b4525b5e7b473d7004691ba",
+        "oldCanonicalContext": "sha256:9d266286f87f83cf22d23da15538d67614027ed06a885b0c854ffceb469a5112",
+        "currentCanonicalContext": "sha256:9d266286f87f83cf22d23da15538d67614027ed06a885b0c854ffceb469a5112",
+        "firstRecord": "sha256:29ded93c0173c1befa5729b8eb5dd00dc18c470597f70f66390abd874f318eeb",
+        "secondRecord": "sha256:ae4657f8f2d0e20ff1455e9eb605e1154f5aef39532dda89c439cc54dc57a128",
+        "firstGoalReviewContext": "sha256:6ebeabf5cbe45bab3d783119dabe281b97bd26824b58388211f8f11fb51fdc93",
+        "secondGoalReviewContext": "sha256:6ebeabf5cbe45bab3d783119dabe281b97bd26824b58388211f8f11fb51fdc93"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/6031bed0-9baa-4f45-b2a5-57ffb00d39cc/6031bed0-9baa-4f45-b2a5-57ffb00d39cc.jpg",
+        "sha256": "sha256:cd474d6ae832616242258090c198bc5e368d529f4e67bf6013d614976cc329fa",
+        "oldDigest": "sha256:cd474d6ae832616242258090c198bc5e368d529f4e67bf6013d614976cc329fa",
+        "currentModelDigest": "sha256:cd474d6ae832616242258090c198bc5e368d529f4e67bf6013d614976cc329fa"
+      },
+      "originalText": {
+        "titleDe": "Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern",
+        "titleEn": "Explain Complementarity via Interference Capability and Which-Path Information",
+        "descriptionDe": "Die lernende Person kann Komplementaritaet erlaeutern, indem sie die Sichtbarkeit von Interferenz mit verfuegbarer Welcher-Weg-Information in Beziehung setzt.",
+        "descriptionEn": "The learner can explain complementarity by relating the visibility of interference to the availability of which-path information."
+      },
+      "currentText": {
+        "titleDe": "Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern",
+        "titleEn": "Explain Complementarity via Interference Capability and Which-Path Information",
+        "descriptionDe": "Die lernende Person kann Komplementaritaet erlaeutern, indem sie die Sichtbarkeit von Interferenz mit verfuegbarer Welcher-Weg-Information in Beziehung setzt.",
+        "descriptionEn": "The learner can explain complementarity by relating the visibility of interference to the availability of which-path information."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:6ebeabf5cbe45bab3d783119dabe281b97bd26824b58388211f8f11fb51fdc93",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.03",
+          "recordDigest": "sha256:29ded93c0173c1befa5729b8eb5dd00dc18c470597f70f66390abd874f318eeb"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:6ebeabf5cbe45bab3d783119dabe281b97bd26824b58388211f8f11fb51fdc93",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-003",
+          "recordDigest": "sha256:ae4657f8f2d0e20ff1455e9eb605e1154f5aef39532dda89c439cc54dc57a128"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+      "titleDe": "Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden",
+      "originalIndex": 4,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:b4e03e6ab1ee0a16e60677b30f9d2a1ed936ec1bc87294f0ed44efac91240402",
+        "currentGoal": "sha256:b4e03e6ab1ee0a16e60677b30f9d2a1ed936ec1bc87294f0ed44efac91240402",
+        "oldPage": "sha256:ab2b838a8ebc80e0c328437de9b3a393bfc55b38eb85a99a87570a628550b6e7",
+        "currentPage": "sha256:ab2b838a8ebc80e0c328437de9b3a393bfc55b38eb85a99a87570a628550b6e7",
+        "oldFullPageObject": "sha256:d05e1476ffbc047b14306bee9179dbda796bd432a682ac04af0d41f92c717589",
+        "currentFullPageObject": "sha256:d05e1476ffbc047b14306bee9179dbda796bd432a682ac04af0d41f92c717589",
+        "oldCanonicalContext": "sha256:b761554f8566190040fdecc31ae47027d83ee78ee28a7657a1dec9f836aa6289",
+        "currentCanonicalContext": "sha256:b761554f8566190040fdecc31ae47027d83ee78ee28a7657a1dec9f836aa6289",
+        "firstRecord": "sha256:b4dc59a7cfeb5d6856a07f0153993eb582839e1bbbb358ba389a0b7a9ddd33c3",
+        "secondRecord": "sha256:a2674b3467edfd48ef985037335a0758a6f2104cb00e04512ee9fcdc5c281dee",
+        "firstGoalReviewContext": "sha256:cdb7b3f8433abf05877f0db1cd3943bf393de43d503f32ee10574f633e532843",
+        "secondGoalReviewContext": "sha256:cdb7b3f8433abf05877f0db1cd3943bf393de43d503f32ee10574f633e532843"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/f6e5929f-d52a-42a4-a5d2-ff498ee7083f/f6e5929f-d52a-42a4-a5d2-ff498ee7083f.jpg",
+        "sha256": "sha256:7f2a13a79322a5adf226ff0cf4cf7a76929b666e3d0d28331f2773c38a9de840",
+        "oldDigest": "sha256:7f2a13a79322a5adf226ff0cf4cf7a76929b666e3d0d28331f2773c38a9de840",
+        "currentModelDigest": "sha256:7f2a13a79322a5adf226ff0cf4cf7a76929b666e3d0d28331f2773c38a9de840"
+      },
+      "originalText": {
+        "titleDe": "Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden",
+        "titleEn": "Justify Position-Momentum Uncertainty and Limits of the Trajectory Concept",
+        "descriptionDe": "Die lernende Person kann die Orts-Impuls-Unbestimmtheit qualitativ begruenden und daraus Grenzen des klassischen Bahnbegriffs fuer Quantenobjekte ableiten.",
+        "descriptionEn": "The learner can qualitatively justify position-momentum uncertainty and derive from it the limits of the classical trajectory concept for quantum objects."
+      },
+      "currentText": {
+        "titleDe": "Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden",
+        "titleEn": "Justify Position-Momentum Uncertainty and Limits of the Trajectory Concept",
+        "descriptionDe": "Die lernende Person kann die Orts-Impuls-Unbestimmtheit qualitativ begruenden und daraus Grenzen des klassischen Bahnbegriffs fuer Quantenobjekte ableiten.",
+        "descriptionEn": "The learner can qualitatively justify position-momentum uncertainty and derive from it the limits of the classical trajectory concept for quantum objects."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:cdb7b3f8433abf05877f0db1cd3943bf393de43d503f32ee10574f633e532843",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.04",
+          "recordDigest": "sha256:b4dc59a7cfeb5d6856a07f0153993eb582839e1bbbb358ba389a0b7a9ddd33c3"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:cdb7b3f8433abf05877f0db1cd3943bf393de43d503f32ee10574f633e532843",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-004",
+          "recordDigest": "sha256:a2674b3467edfd48ef985037335a0758a6f2104cb00e04512ee9fcdc5c281dee"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "727d0946-7019-50ed-8fc6-85db12508733",
+      "titleDe": "Realitaetsbegriff in der Quantenphysik diskutieren",
+      "originalIndex": 5,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "shortKey",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:7f47b7829790d7c459dcfd08fd9773ab8ad7280840a46b47c8647d9a624a92cb",
+        "currentGoal": "sha256:7f47b7829790d7c459dcfd08fd9773ab8ad7280840a46b47c8647d9a624a92cb",
+        "oldPage": "sha256:0173d19ff47b5ecc8de830f9aa0e52cb796606f53e15ede892bd73a65f98c5c6",
+        "currentPage": "sha256:0173d19ff47b5ecc8de830f9aa0e52cb796606f53e15ede892bd73a65f98c5c6",
+        "oldFullPageObject": "sha256:430e701e217c560a55e998d2032f6f500ae392d15b7d9d1397c704a154a6e85d",
+        "currentFullPageObject": "sha256:430e701e217c560a55e998d2032f6f500ae392d15b7d9d1397c704a154a6e85d",
+        "oldCanonicalContext": "sha256:5a50b35320f4b3d3f41a41aa14506155b169890075a3481a9c7982baa3b06f52",
+        "currentCanonicalContext": "sha256:5a50b35320f4b3d3f41a41aa14506155b169890075a3481a9c7982baa3b06f52",
+        "firstRecord": "sha256:7d91354ea2e21ddca24283fa6ee7edb45e2fa189cc595c94d914122c1fccae02",
+        "secondRecord": "sha256:08636d3a5e9e176ba675cbc1a43bf0d3cdfad87b9a61ef1c6af8a4759e6edfca",
+        "firstGoalReviewContext": "sha256:3c711e0310512e5c45ea0046ab461764664509cfd01bacd1906e514dd9fb8e0b",
+        "secondGoalReviewContext": "sha256:3c711e0310512e5c45ea0046ab461764664509cfd01bacd1906e514dd9fb8e0b"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/727d0946-7019-50ed-8fc6-85db12508733/727d0946-7019-50ed-8fc6-85db12508733.jpg",
+        "sha256": "sha256:762134d9442fe55de68d60366828a55e896f811d3fe7dd66886ac13498402ee0",
+        "oldDigest": "sha256:762134d9442fe55de68d60366828a55e896f811d3fe7dd66886ac13498402ee0",
+        "currentModelDigest": "sha256:762134d9442fe55de68d60366828a55e896f811d3fe7dd66886ac13498402ee0"
+      },
+      "originalText": {
+        "titleDe": "Realitaetsbegriff in der Quantenphysik diskutieren",
+        "titleEn": "Discuss Reality in Quantum Physics",
+        "descriptionDe": "Die lernende Person kann den Realitaetsbegriff in der Quantenphysik anhand von Messung, Praeparation und Wahrscheinlichkeitsaussagen fachlich diskutieren.",
+        "descriptionEn": "The learner can discuss the concept of reality in quantum physics using measurement, preparation, and probabilistic statements."
+      },
+      "currentText": {
+        "titleDe": "Realitaetsbegriff in der Quantenphysik diskutieren",
+        "titleEn": "Discuss Reality in Quantum Physics",
+        "descriptionDe": "Die lernende Person kann den Realitaetsbegriff in der Quantenphysik anhand von Messung, Praeparation und Wahrscheinlichkeitsaussagen fachlich diskutieren.",
+        "descriptionEn": "The learner can discuss the concept of reality in quantum physics using measurement, preparation, and probabilistic statements."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:3c711e0310512e5c45ea0046ab461764664509cfd01bacd1906e514dd9fb8e0b",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.05",
+          "recordDigest": "sha256:7d91354ea2e21ddca24283fa6ee7edb45e2fa189cc595c94d914122c1fccae02"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:3c711e0310512e5c45ea0046ab461764664509cfd01bacd1906e514dd9fb8e0b",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-005",
+          "recordDigest": "sha256:08636d3a5e9e176ba675cbc1a43bf0d3cdfad87b9a61ef1c6af8a4759e6edfca"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "e296aba6-f407-5944-a2bd-e5296e4c9f06",
+      "titleDe": "Elektronenbeugung als Materiewellenexperiment auswerten",
+      "originalIndex": 6,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "shortKey",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:4ab973c19ad170f141df63fb8abe56b2b9a8bd7843515fdbf87ec390f0541c15",
+        "currentGoal": "sha256:4ab973c19ad170f141df63fb8abe56b2b9a8bd7843515fdbf87ec390f0541c15",
+        "oldPage": "sha256:d7ed29d65afabaca5a187b265a1a5a51fe499770f3030df50927fc3ea6b9603f",
+        "currentPage": "sha256:d7ed29d65afabaca5a187b265a1a5a51fe499770f3030df50927fc3ea6b9603f",
+        "oldFullPageObject": "sha256:b0bad522a301681708489b9595258a69abeb755592b4cf52f4fcf8bf25a477a6",
+        "currentFullPageObject": "sha256:b0bad522a301681708489b9595258a69abeb755592b4cf52f4fcf8bf25a477a6",
+        "oldCanonicalContext": "sha256:9feb80db14383a91ccde3dd371563d31825340fea0c69c1b91d20a97fcbc092c",
+        "currentCanonicalContext": "sha256:9feb80db14383a91ccde3dd371563d31825340fea0c69c1b91d20a97fcbc092c",
+        "firstRecord": "sha256:6b71a285cd692821012f12402e72f29ce40dce836953dfa6b52f4361811c3998",
+        "secondRecord": "sha256:de4543d871b8b9d98a8bcf997d1331afe6abd8790c6566c57bb86ed0a5148cb9",
+        "firstGoalReviewContext": "sha256:f14ba6dc84ae4d0fdbf6ff7e3655373496fba41d94c7db5dfa8ae0f915900b59",
+        "secondGoalReviewContext": "sha256:f14ba6dc84ae4d0fdbf6ff7e3655373496fba41d94c7db5dfa8ae0f915900b59"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/e296aba6-f407-5944-a2bd-e5296e4c9f06/e296aba6-f407-5944-a2bd-e5296e4c9f06.jpg",
+        "sha256": "sha256:1ae33c35c4c56fc02011a1d40f29b8921e03457a7b5243fba61c756505938ecb",
+        "oldDigest": "sha256:1ae33c35c4c56fc02011a1d40f29b8921e03457a7b5243fba61c756505938ecb",
+        "currentModelDigest": "sha256:1ae33c35c4c56fc02011a1d40f29b8921e03457a7b5243fba61c756505938ecb"
+      },
+      "originalText": {
+        "titleDe": "Elektronenbeugung als Materiewellenexperiment auswerten",
+        "titleEn": "Analyze electron diffraction as a matter-wave experiment",
+        "descriptionDe": "Die lernende Person kann Aufbau und Funktion einer Elektronenbeugungsroehre beschreiben, Beugungsbilder deuten und aus Messdaten den Zusammenhang zwischen Impuls und De-Broglie-Wellenlaenge erschliessen.",
+        "descriptionEn": "The learner can describe the setup and operation of an electron diffraction tube, interpret diffraction patterns, and infer the relationship between momentum and de Broglie wavelength from measurement data."
+      },
+      "currentText": {
+        "titleDe": "Elektronenbeugung als Materiewellenexperiment auswerten",
+        "titleEn": "Analyze electron diffraction as a matter-wave experiment",
+        "descriptionDe": "Die lernende Person kann Aufbau und Funktion einer Elektronenbeugungsroehre beschreiben, Beugungsbilder deuten und aus Messdaten den Zusammenhang zwischen Impuls und De-Broglie-Wellenlaenge erschliessen.",
+        "descriptionEn": "The learner can describe the setup and operation of an electron diffraction tube, interpret diffraction patterns, and infer the relationship between momentum and de Broglie wavelength from measurement data."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:f14ba6dc84ae4d0fdbf6ff7e3655373496fba41d94c7db5dfa8ae0f915900b59",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.06",
+          "recordDigest": "sha256:6b71a285cd692821012f12402e72f29ce40dce836953dfa6b52f4361811c3998"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:f14ba6dc84ae4d0fdbf6ff7e3655373496fba41d94c7db5dfa8ae0f915900b59",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-006",
+          "recordDigest": "sha256:de4543d871b8b9d98a8bcf997d1331afe6abd8790c6566c57bb86ed0a5148cb9"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+      "titleDe": "Quanteninterferometer mit Phasen und Weginformation deuten",
+      "originalIndex": 7,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "shortKey",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:50eda6a08c18e710cdad64fc705e9b27d4c08acc714e2ee6460921b7ca22cf7c",
+        "currentGoal": "sha256:50eda6a08c18e710cdad64fc705e9b27d4c08acc714e2ee6460921b7ca22cf7c",
+        "oldPage": "sha256:6ce33f56d7ece9c3cab4218122beff4633febacd9531e68cc290fcea992b6a50",
+        "currentPage": "sha256:6ce33f56d7ece9c3cab4218122beff4633febacd9531e68cc290fcea992b6a50",
+        "oldFullPageObject": "sha256:ab4151b7057463e305f46f40179dc4ce1528339d52c653f93bf09c560b518a95",
+        "currentFullPageObject": "sha256:ab4151b7057463e305f46f40179dc4ce1528339d52c653f93bf09c560b518a95",
+        "oldCanonicalContext": "sha256:cd4101d879ceec53e955dccc6f5e45c0e74cf9fb6470435929591a3266344334",
+        "currentCanonicalContext": "sha256:cd4101d879ceec53e955dccc6f5e45c0e74cf9fb6470435929591a3266344334",
+        "firstRecord": "sha256:eb7c2bfe1a5234b555accf79a2989080e2fb73e88547bd84d21b5b1a8398f04a",
+        "secondRecord": "sha256:b439c01abff4a88de3f3c26aa9110a44a020aeb1b1bfee2a862242821eadb065",
+        "firstGoalReviewContext": "sha256:5291242054232c7cdd1bcaf7b6904c059990867e2131818b426bbbbdefc54bc5",
+        "secondGoalReviewContext": "sha256:5291242054232c7cdd1bcaf7b6904c059990867e2131818b426bbbbdefc54bc5"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/52b6722a-b3b2-5d2d-a507-0215532b0422/52b6722a-b3b2-5d2d-a507-0215532b0422.jpg",
+        "sha256": "sha256:fc9fb7c943adbb10a7e3a18d2ecaffbbffc0d595324c40280dcdfca658b19340",
+        "oldDigest": "sha256:fc9fb7c943adbb10a7e3a18d2ecaffbbffc0d595324c40280dcdfca658b19340",
+        "currentModelDigest": "sha256:fc9fb7c943adbb10a7e3a18d2ecaffbbffc0d595324c40280dcdfca658b19340"
+      },
+      "originalText": {
+        "titleDe": "Quanteninterferometer mit Phasen und Weginformation deuten",
+        "titleEn": "Interpret quantum interferometers using phases and which-path information",
+        "descriptionDe": "Die lernende Person kann Interferenzexperimente mit einzelnen Photonen, etwa im Mach-Zehnder-Interferometer, mit Phasenbeziehungen, Zeigerdiagrammen und Weginformation deuten.",
+        "descriptionEn": "The learner can interpret interference experiments with single photons, for example in a Mach-Zehnder interferometer, using phase relationships, phasor diagrams, and which-path information."
+      },
+      "currentText": {
+        "titleDe": "Quanteninterferometer mit Phasen und Weginformation deuten",
+        "titleEn": "Interpret quantum interferometers using phases and which-path information",
+        "descriptionDe": "Die lernende Person kann Interferenzexperimente mit einzelnen Photonen, etwa im Mach-Zehnder-Interferometer, mit Phasenbeziehungen, Zeigerdiagrammen und Weginformation deuten.",
+        "descriptionEn": "The learner can interpret interference experiments with single photons, for example in a Mach-Zehnder interferometer, using phase relationships, phasor diagrams, and which-path information."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:5291242054232c7cdd1bcaf7b6904c059990867e2131818b426bbbbdefc54bc5",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.07",
+          "recordDigest": "sha256:eb7c2bfe1a5234b555accf79a2989080e2fb73e88547bd84d21b5b1a8398f04a"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:5291242054232c7cdd1bcaf7b6904c059990867e2131818b426bbbbdefc54bc5",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-007",
+          "recordDigest": "sha256:b439c01abff4a88de3f3c26aa9110a44a020aeb1b1bfee2a862242821eadb065"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+      "titleDe": "Kreisbewegung mit Zentripetalkraft anwenden",
+      "originalIndex": 8,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:d41cc76cfb615e3207679372bf0da6efb25c42751a29a2aea867ea2228416054",
+        "currentGoal": "sha256:d41cc76cfb615e3207679372bf0da6efb25c42751a29a2aea867ea2228416054",
+        "oldPage": "sha256:24254f06dd70bca1c726bf049a5e11ea05aa12482018c94322dbc00dc511d9bc",
+        "currentPage": "sha256:24254f06dd70bca1c726bf049a5e11ea05aa12482018c94322dbc00dc511d9bc",
+        "oldFullPageObject": "sha256:2725d3d5cf6935e51d049f4f840f33f102f8ca731a79060d45d8f687a4fb41fa",
+        "currentFullPageObject": "sha256:2725d3d5cf6935e51d049f4f840f33f102f8ca731a79060d45d8f687a4fb41fa",
+        "oldCanonicalContext": "sha256:5aa5ff77f4de0e1188e7c9a5f713d59c1affa88b5e93442b3e627eb070460f43",
+        "currentCanonicalContext": "sha256:5aa5ff77f4de0e1188e7c9a5f713d59c1affa88b5e93442b3e627eb070460f43",
+        "firstRecord": "sha256:3579f026b0e1f9947e2c4da375b9ea3a236aeb1527f23278de55a454cc5aefbe",
+        "secondRecord": "sha256:5ec74480e8fb6de2cfba5d1e730cae5e62fbc799faed6eec8d588176912035d3",
+        "firstGoalReviewContext": "sha256:2a7d61a0096c4c339445234834311b2507c5d9b5f699d86e36c9de33866af50b",
+        "secondGoalReviewContext": "sha256:2a7d61a0096c4c339445234834311b2507c5d9b5f699d86e36c9de33866af50b"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/accb1d9e-cd48-5983-bcef-9b9bca4a9114/accb1d9e-cd48-5983-bcef-9b9bca4a9114.jpg",
+        "sha256": "sha256:ed0a161cae7b320eecaa483e25903d7cabffad2b0a4350b3eae43579ad7eee0f",
+        "oldDigest": "sha256:ed0a161cae7b320eecaa483e25903d7cabffad2b0a4350b3eae43579ad7eee0f",
+        "currentModelDigest": "sha256:ed0a161cae7b320eecaa483e25903d7cabffad2b0a4350b3eae43579ad7eee0f"
+      },
+      "originalText": {
+        "titleDe": "Kreisbewegung mit Zentripetalkraft anwenden",
+        "titleEn": "Apply Circular Motion with Centripetal Force",
+        "descriptionDe": "Die lernende Person kann gleichförmige Kreisbewegungen mithilfe der Zentripetalkraft beschreiben und quantitativ analysieren.",
+        "descriptionEn": "The learner can describe and quantitatively analyze uniform circular motions using centripetal force."
+      },
+      "currentText": {
+        "titleDe": "Kreisbewegung mit Zentripetalkraft anwenden",
+        "titleEn": "Apply Circular Motion with Centripetal Force",
+        "descriptionDe": "Die lernende Person kann gleichförmige Kreisbewegungen mithilfe der Zentripetalkraft beschreiben und quantitativ analysieren.",
+        "descriptionEn": "The learner can describe and quantitatively analyze uniform circular motions using centripetal force."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:2a7d61a0096c4c339445234834311b2507c5d9b5f699d86e36c9de33866af50b",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.08",
+          "recordDigest": "sha256:3579f026b0e1f9947e2c4da375b9ea3a236aeb1527f23278de55a454cc5aefbe"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:2a7d61a0096c4c339445234834311b2507c5d9b5f699d86e36c9de33866af50b",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-008",
+          "recordDigest": "sha256:5ec74480e8fb6de2cfba5d1e730cae5e62fbc799faed6eec8d588176912035d3"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "titleDe": "Kurvenfahrten mit Haftreibung analysieren",
+      "originalIndex": 9,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:454a9eeade46e56e98dabccd96eb45c35cabdc3c2cd3901f954362cfb05b0cf0",
+        "currentGoal": "sha256:454a9eeade46e56e98dabccd96eb45c35cabdc3c2cd3901f954362cfb05b0cf0",
+        "oldPage": "sha256:f5b25db257187843cb37194471d597755aa606d66ffea153a8d35691dd325887",
+        "currentPage": "sha256:f5b25db257187843cb37194471d597755aa606d66ffea153a8d35691dd325887",
+        "oldFullPageObject": "sha256:fea9cba004d25601e2d2b1b894d975d3199bde506e4531d660c38dff1a5d1fb0",
+        "currentFullPageObject": "sha256:fea9cba004d25601e2d2b1b894d975d3199bde506e4531d660c38dff1a5d1fb0",
+        "oldCanonicalContext": "sha256:4d4637c5735bf5aa842142deaaffdc9cec75c364d2cfed317ee61225c62e5519",
+        "currentCanonicalContext": "sha256:4d4637c5735bf5aa842142deaaffdc9cec75c364d2cfed317ee61225c62e5519",
+        "firstRecord": "sha256:309f9f9209236602fd7262fb3c1adac335e187af9f91e0e1f4b4802c2a766c1a",
+        "secondRecord": "sha256:3b3f12779acde23003513fdeb808e7c9f40fea21ae671c9a3f6908339bd3b29d",
+        "firstGoalReviewContext": "sha256:f9e54be06695f99156f5a2fd86f1f151120c79e09c43e708c21161727c70e938",
+        "secondGoalReviewContext": "sha256:f9e54be06695f99156f5a2fd86f1f151120c79e09c43e708c21161727c70e938"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/e2da5eec-45de-5527-9ad7-16f41cacbe58/e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg",
+        "sha256": "sha256:c774291a035bde8009b0b0aa04dcd123c45e31cd374d0aaad591b8ff4c54aa4f",
+        "oldDigest": "sha256:c774291a035bde8009b0b0aa04dcd123c45e31cd374d0aaad591b8ff4c54aa4f",
+        "currentModelDigest": "sha256:c774291a035bde8009b0b0aa04dcd123c45e31cd374d0aaad591b8ff4c54aa4f"
+      },
+      "originalText": {
+        "titleDe": "Kurvenfahrten mit Haftreibung analysieren",
+        "titleEn": "Analyze Cornering with Static Friction",
+        "descriptionDe": "Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.",
+        "descriptionEn": "The learner can quantitatively analyze simple situations such as cornering with static friction using centripetal force."
+      },
+      "currentText": {
+        "titleDe": "Kurvenfahrten mit Haftreibung analysieren",
+        "titleEn": "Analyze Cornering with Static Friction",
+        "descriptionDe": "Die lernende Person kann einfache Situationen wie Kurvenfahrten mit Haftreibung mithilfe der Zentripetalkraft quantitativ analysieren.",
+        "descriptionEn": "The learner can quantitatively analyze simple situations such as cornering with static friction using centripetal force."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:f9e54be06695f99156f5a2fd86f1f151120c79e09c43e708c21161727c70e938",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.09",
+          "recordDigest": "sha256:309f9f9209236602fd7262fb3c1adac335e187af9f91e0e1f4b4802c2a766c1a"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:f9e54be06695f99156f5a2fd86f1f151120c79e09c43e708c21161727c70e938",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-009",
+          "recordDigest": "sha256:3b3f12779acde23003513fdeb808e7c9f40fea21ae671c9a3f6908339bd3b29d"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+      "titleDe": "Scheinkräfte in nicht-inertialen Systemen",
+      "originalIndex": 10,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:da7eec66e0b225b3d717189b5c2f2dbd46917e6c213f4c0a3517e3e3edafd4b6",
+        "currentGoal": "sha256:da7eec66e0b225b3d717189b5c2f2dbd46917e6c213f4c0a3517e3e3edafd4b6",
+        "oldPage": "sha256:bdac2482c5cdfd94c15dcda39d0e888bcf2ee88e62feca40a5e916802e366797",
+        "currentPage": "sha256:bdac2482c5cdfd94c15dcda39d0e888bcf2ee88e62feca40a5e916802e366797",
+        "oldFullPageObject": "sha256:159a38d9358c33fd236c8d07b5146c0a20e85eebf3975a47194148382c476d59",
+        "currentFullPageObject": "sha256:159a38d9358c33fd236c8d07b5146c0a20e85eebf3975a47194148382c476d59",
+        "oldCanonicalContext": "sha256:46e987ed67b51bc12c623f3bcf5cd1a63daee3153adf31f24d3a93281c59b4ef",
+        "currentCanonicalContext": "sha256:46e987ed67b51bc12c623f3bcf5cd1a63daee3153adf31f24d3a93281c59b4ef",
+        "firstRecord": "sha256:116e1f50a53e4db6e2cc31a3b3f52048b2e16da7241648adcfd643323dd3e8e2",
+        "secondRecord": "sha256:a951268c79d5fdc287ba07ce1cf6ed715350af927e5b187282c1f144f3bb890c",
+        "firstGoalReviewContext": "sha256:6a496e5c51887a2fdcb7f1ec23b7f638bc15fff2b153586ed33df8d1aa1afa3f",
+        "secondGoalReviewContext": "sha256:6a496e5c51887a2fdcb7f1ec23b7f638bc15fff2b153586ed33df8d1aa1afa3f"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/39b2a0c4-eecf-5049-b58f-e790790a3bf2/39b2a0c4-eecf-5049-b58f-e790790a3bf2.jpg",
+        "sha256": "sha256:da0e2c64b063c5aca2aeb46e0d52325ae7248e8e4b2d20163e9c4dafb2d7edee",
+        "oldDigest": "sha256:da0e2c64b063c5aca2aeb46e0d52325ae7248e8e4b2d20163e9c4dafb2d7edee",
+        "currentModelDigest": "sha256:da0e2c64b063c5aca2aeb46e0d52325ae7248e8e4b2d20163e9c4dafb2d7edee"
+      },
+      "originalText": {
+        "titleDe": "Scheinkräfte in nicht-inertialen Systemen",
+        "titleEn": "Fictitious Forces in Non-Inertial Systems",
+        "descriptionDe": "Die lernende Person kann Scheinkräfte in beschleunigten Bezugssystemen qualitativ erklären und typische Beispiele wie Kreisbewegungen in rotierenden Systemen deuten.",
+        "descriptionEn": "The learner can qualitatively explain fictitious forces in accelerated reference systems and interpret typical examples such as circular motions in rotating systems."
+      },
+      "currentText": {
+        "titleDe": "Scheinkräfte in nicht-inertialen Systemen",
+        "titleEn": "Fictitious Forces in Non-Inertial Systems",
+        "descriptionDe": "Die lernende Person kann Scheinkräfte in beschleunigten Bezugssystemen qualitativ erklären und typische Beispiele wie Kreisbewegungen in rotierenden Systemen deuten.",
+        "descriptionEn": "The learner can qualitatively explain fictitious forces in accelerated reference systems and interpret typical examples such as circular motions in rotating systems."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:6a496e5c51887a2fdcb7f1ec23b7f638bc15fff2b153586ed33df8d1aa1afa3f",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.10",
+          "recordDigest": "sha256:116e1f50a53e4db6e2cc31a3b3f52048b2e16da7241648adcfd643323dd3e8e2"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:6a496e5c51887a2fdcb7f1ec23b7f638bc15fff2b153586ed33df8d1aa1afa3f",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-010",
+          "recordDigest": "sha256:a951268c79d5fdc287ba07ce1cf6ed715350af927e5b187282c1f144f3bb890c"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "cf570e66-2ce2-5923-9033-c97d74119553",
+      "titleDe": "Drehmoment beschreiben",
+      "originalIndex": 11,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:523fab8b325aa66e4f04738f200e958e97bfd42ebec1bf04471d08207e927986",
+        "currentGoal": "sha256:523fab8b325aa66e4f04738f200e958e97bfd42ebec1bf04471d08207e927986",
+        "oldPage": "sha256:8ae54b9e4a128399756692f93894722de8a92c7c2d83c2f5aa7e702b23141ca0",
+        "currentPage": "sha256:8ae54b9e4a128399756692f93894722de8a92c7c2d83c2f5aa7e702b23141ca0",
+        "oldFullPageObject": "sha256:7db5aec2001cf06293e83aba64d8f5055c52026644bbbb0e64730c61b5673511",
+        "currentFullPageObject": "sha256:7db5aec2001cf06293e83aba64d8f5055c52026644bbbb0e64730c61b5673511",
+        "oldCanonicalContext": "sha256:6438a504ccbc366632793aad5f14bbe2148d2332fe56a70c3d180cd4bb23d4b6",
+        "currentCanonicalContext": "sha256:6438a504ccbc366632793aad5f14bbe2148d2332fe56a70c3d180cd4bb23d4b6",
+        "firstRecord": "sha256:0f451de4382b262a9cc5f7b9666dafbb6c43fe454188dd258a31a3d58a466a5a",
+        "secondRecord": "sha256:e0a08a65919c56bb626c3389fea1b725a829b8db9a6cac9233cd8e96b5761540",
+        "firstGoalReviewContext": "sha256:c2a1075f0075f8a552bea11bd81138b7654a7125c278bb1b52b9707adb33d3ff",
+        "secondGoalReviewContext": "sha256:c2a1075f0075f8a552bea11bd81138b7654a7125c278bb1b52b9707adb33d3ff"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/cf570e66-2ce2-5923-9033-c97d74119553/cf570e66-2ce2-5923-9033-c97d74119553.jpg",
+        "sha256": "sha256:3d8def38041d3332d55747d234e8234f0a4cb4f885b2e8425300ac17ad5fd450",
+        "oldDigest": "sha256:3d8def38041d3332d55747d234e8234f0a4cb4f885b2e8425300ac17ad5fd450",
+        "currentModelDigest": "sha256:3d8def38041d3332d55747d234e8234f0a4cb4f885b2e8425300ac17ad5fd450"
+      },
+      "originalText": {
+        "titleDe": "Drehmoment beschreiben",
+        "titleEn": "Describe Torque",
+        "descriptionDe": "Die lernende Person kann das Drehmoment als Maß für die Drehwirkung einer Kraft definieren, berechnen und an einfachen Hebel- und Alltagsbeispielen anwenden.",
+        "descriptionEn": "The learner can define torque as a measure for the turning effect of a force, calculate it, and apply it to simple lever and everyday examples."
+      },
+      "currentText": {
+        "titleDe": "Drehmoment beschreiben",
+        "titleEn": "Describe Torque",
+        "descriptionDe": "Die lernende Person kann das Drehmoment als Maß für die Drehwirkung einer Kraft definieren, berechnen und an einfachen Hebel- und Alltagsbeispielen anwenden.",
+        "descriptionEn": "The learner can define torque as a measure for the turning effect of a force, calculate it, and apply it to simple lever and everyday examples."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:c2a1075f0075f8a552bea11bd81138b7654a7125c278bb1b52b9707adb33d3ff",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.11",
+          "recordDigest": "sha256:0f451de4382b262a9cc5f7b9666dafbb6c43fe454188dd258a31a3d58a466a5a"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:c2a1075f0075f8a552bea11bd81138b7654a7125c278bb1b52b9707adb33d3ff",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-011",
+          "recordDigest": "sha256:e0a08a65919c56bb626c3389fea1b725a829b8db9a6cac9233cd8e96b5761540"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+      "titleDe": "Drehimpuls als Erhaltungsgröße",
+      "originalIndex": 12,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:c9e31f96c381b55c3d657e59e3f8365a3f65667cdf373341b5b4eda5b1b8e604",
+        "currentGoal": "sha256:c9e31f96c381b55c3d657e59e3f8365a3f65667cdf373341b5b4eda5b1b8e604",
+        "oldPage": "sha256:086bf51eefab661fdc3fa89eace1fab0c3b2558c99de941b27d2239751f45bfa",
+        "currentPage": "sha256:086bf51eefab661fdc3fa89eace1fab0c3b2558c99de941b27d2239751f45bfa",
+        "oldFullPageObject": "sha256:9787e112b4bea0f2b66b165fcb28ed1a4c4028dc34cc1c4a2f6935d3e712a108",
+        "currentFullPageObject": "sha256:9787e112b4bea0f2b66b165fcb28ed1a4c4028dc34cc1c4a2f6935d3e712a108",
+        "oldCanonicalContext": "sha256:4946a47932c2a4532b0f0c1ec1221f79a879f276441759a147054b9b7b5f5f24",
+        "currentCanonicalContext": "sha256:4946a47932c2a4532b0f0c1ec1221f79a879f276441759a147054b9b7b5f5f24",
+        "firstRecord": "sha256:d33634c4f05f54b0bfcdf76f1858d3be5ae38f625cea38d4fc44a6dd817f7b66",
+        "secondRecord": "sha256:f52c4c894e53205c9c17360b323659ac47556abcdb462bef3e00d4ac28573e24",
+        "firstGoalReviewContext": "sha256:1558163ffc07dd4ac96d999d414ce5a93e1da010a19c9b997b7e4e08ea4b44a4",
+        "secondGoalReviewContext": "sha256:1558163ffc07dd4ac96d999d414ce5a93e1da010a19c9b997b7e4e08ea4b44a4"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/37f17e7e-9fcf-5dca-ac10-e94cb8420be5/37f17e7e-9fcf-5dca-ac10-e94cb8420be5.jpg",
+        "sha256": "sha256:602f1a5b3e41a15d7200406684aad57ed55f0f14a92c39f7dcf36d578dfa6a3b",
+        "oldDigest": "sha256:602f1a5b3e41a15d7200406684aad57ed55f0f14a92c39f7dcf36d578dfa6a3b",
+        "currentModelDigest": "sha256:602f1a5b3e41a15d7200406684aad57ed55f0f14a92c39f7dcf36d578dfa6a3b"
+      },
+      "originalText": {
+        "titleDe": "Drehimpuls als Erhaltungsgröße",
+        "titleEn": "Angular Momentum as Conserved Quantity",
+        "descriptionDe": "Die lernende Person kann den Drehimpuls definieren, seine Erhaltung bei drehmomentfreien Vorgängen erläutern und einfache Beispiele (z. B. Pirouette) qualitativ deuten.",
+        "descriptionEn": "The learner can define angular momentum, explain its conservation in torque-free processes, and qualitatively interpret simple examples (e.g., pirouette)."
+      },
+      "currentText": {
+        "titleDe": "Drehimpuls als Erhaltungsgröße",
+        "titleEn": "Angular Momentum as Conserved Quantity",
+        "descriptionDe": "Die lernende Person kann den Drehimpuls definieren, seine Erhaltung bei drehmomentfreien Vorgängen erläutern und einfache Beispiele (z. B. Pirouette) qualitativ deuten.",
+        "descriptionEn": "The learner can define angular momentum, explain its conservation in torque-free processes, and qualitatively interpret simple examples (e.g., pirouette)."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:1558163ffc07dd4ac96d999d414ce5a93e1da010a19c9b997b7e4e08ea4b44a4",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.12",
+          "recordDigest": "sha256:d33634c4f05f54b0bfcdf76f1858d3be5ae38f625cea38d4fc44a6dd817f7b66"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:1558163ffc07dd4ac96d999d414ce5a93e1da010a19c9b997b7e4e08ea4b44a4",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-012",
+          "recordDigest": "sha256:f52c4c894e53205c9c17360b323659ac47556abcdb462bef3e00d4ac28573e24"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "642aebd7-66cd-5a50-b543-73c4b207525d",
+      "titleDe": "Trägheitsmoment und Rotationsenergie",
+      "originalIndex": 13,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": false,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": false,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": false,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [
+        {
+          "field": "reverseRequires",
+          "before": [
+            {
+              "goalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+              "title": "Rotationsenergie und Beschleunigungsmoment berechnen",
+              "anchor": "goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+              "pageNumber": 14
+            },
+            {
+              "goalId": "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+              "title": "Präzessionsbewegungen erklären",
+              "anchor": "goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+              "pageNumber": 15
+            }
+          ],
+          "after": [
+            {
+              "goalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+              "title": "Rotationsenergie bestimmen",
+              "anchor": "goal-5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+              "pageNumber": 14
+            },
+            {
+              "goalId": "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+              "title": "Präzessionsbewegungen erklären",
+              "anchor": "goal-b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+              "pageNumber": 15
+            }
+          ]
+        },
+        {
+          "field": "externalReverseRequires",
+          "before": [
+            {
+              "goalId": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+              "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+            },
+            {
+              "goalId": "879491c0-7153-570b-91f4-c61d9fe8a143",
+              "title": "Thermodynamik und Rotationssystem",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143"
+            }
+          ],
+          "after": [
+            {
+              "goalId": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+              "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+            },
+            {
+              "goalId": "879491c0-7153-570b-91f4-c61d9fe8a143",
+              "title": "Thermodynamik und Rotationssystem",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143"
+            },
+            {
+              "goalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+              "title": "Mittleres Beschleunigungsmoment bestimmen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea"
+            }
+          ]
+        },
+        {
+          "field": "pageFingerprint",
+          "before": "sha256:0356868aac527392b6dd02fa65d139848b20a17cac8caa714c61f051cda5ad81",
+          "after": "sha256:8d171403b85ac7df1358e157c0fea60a7fb2e429d2bbbcd8755ca2422f9431b9"
+        }
+      ],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:fe5902a51e2c706b3b60d87ae77edb9724dff6c82b57f4e6dec188316ade16ed",
+        "currentGoal": "sha256:fe5902a51e2c706b3b60d87ae77edb9724dff6c82b57f4e6dec188316ade16ed",
+        "oldPage": "sha256:0356868aac527392b6dd02fa65d139848b20a17cac8caa714c61f051cda5ad81",
+        "currentPage": "sha256:8d171403b85ac7df1358e157c0fea60a7fb2e429d2bbbcd8755ca2422f9431b9",
+        "oldFullPageObject": "sha256:4eeaef6217cf5a0e25324ce2e5986caec8d472f1972f171fd974099a7e2e942c",
+        "currentFullPageObject": "sha256:b26a6642bf8df57ee4961c240dfe3f670bf9e151b453878e03da1045a43e84b6",
+        "oldCanonicalContext": "sha256:6844c71f5ac512cbff04d33261dd3bc83e70e00815ca334af59b62cc01b9a6e9",
+        "currentCanonicalContext": "sha256:6844c71f5ac512cbff04d33261dd3bc83e70e00815ca334af59b62cc01b9a6e9",
+        "firstRecord": "sha256:d53b32b307dc1a2cb34488d561737ad9692d62163be6b02b0d94226c7565e64d",
+        "secondRecord": "sha256:f8c03d12ea96a373618e14584614b56041ecab5b29a3a00b105d9bd65f4eec0a",
+        "firstGoalReviewContext": "sha256:d2e3b798da17a4bc0f96462e4e3367b24e65ab82042c61aae0af2006d1259a5d",
+        "secondGoalReviewContext": "sha256:d2e3b798da17a4bc0f96462e4e3367b24e65ab82042c61aae0af2006d1259a5d"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/642aebd7-66cd-5a50-b543-73c4b207525d/642aebd7-66cd-5a50-b543-73c4b207525d.jpg",
+        "sha256": "sha256:9feb94c40057c500bc3a0335434e6a6db1b1f3dda9268091bd129c0cf261fb66",
+        "oldDigest": "sha256:9feb94c40057c500bc3a0335434e6a6db1b1f3dda9268091bd129c0cf261fb66",
+        "currentModelDigest": "sha256:9feb94c40057c500bc3a0335434e6a6db1b1f3dda9268091bd129c0cf261fb66"
+      },
+      "originalText": {
+        "titleDe": "Trägheitsmoment und Rotationsenergie",
+        "titleEn": "Moment of Inertia and Rotational Energy",
+        "descriptionDe": "Die lernende Person kann den Begriff des Trägheitsmoments qualitativ erklären, einfache Beispiele vergleichen und den Zusammenhang mit Rotationsenergie herstellen.",
+        "descriptionEn": "The learner can qualitatively explain the concept of moment of inertia, compare simple examples, and establish the connection with rotational energy."
+      },
+      "currentText": {
+        "titleDe": "Trägheitsmoment und Rotationsenergie",
+        "titleEn": "Moment of Inertia and Rotational Energy",
+        "descriptionDe": "Die lernende Person kann den Begriff des Trägheitsmoments qualitativ erklären, einfache Beispiele vergleichen und den Zusammenhang mit Rotationsenergie herstellen.",
+        "descriptionEn": "The learner can qualitatively explain the concept of moment of inertia, compare simple examples, and establish the connection with rotational energy."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:d2e3b798da17a4bc0f96462e4e3367b24e65ab82042c61aae0af2006d1259a5d",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.13",
+          "recordDigest": "sha256:d53b32b307dc1a2cb34488d561737ad9692d62163be6b02b0d94226c7565e64d"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:d2e3b798da17a4bc0f96462e4e3367b24e65ab82042c61aae0af2006d1259a5d",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-013",
+          "recordDigest": "sha256:f8c03d12ea96a373618e14584614b56041ecab5b29a3a00b105d9bd65f4eec0a"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+      "titleDe": "Rotationsenergie bestimmen",
+      "originalIndex": 14,
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "fullPageEqual": false,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": false,
+      "goalFingerprintEqual": false,
+      "pageFingerprintEqual": false,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": false,
+      "eligibleForCarryover": false,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [
+        {
+          "field": "title",
+          "before": "Rotationsenergie und Beschleunigungsmoment berechnen",
+          "after": "Rotationsenergie bestimmen"
+        },
+        {
+          "field": "description",
+          "before": "Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen sowie bei vorgegebener Winkelbeschleunigung das mittlere Beschleunigungsmoment berechnen.",
+          "after": "Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen."
+        },
+        {
+          "field": "externalReverseRequires",
+          "before": [
+            {
+              "goalId": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+              "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+            },
+            {
+              "goalId": "879491c0-7153-570b-91f4-c61d9fe8a143",
+              "title": "Thermodynamik und Rotationssystem",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143"
+            }
+          ],
+          "after": [
+            {
+              "goalId": "6d25344c-35d7-5853-925d-2bccbaf50630",
+              "title": "Drehbewegungen in Sport und Technik anwenden",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-6d25344c-35d7-5853-925d-2bccbaf50630"
+            },
+            {
+              "goalId": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+              "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-7f83e25c-38f7-5ac2-8f9c-ec54eeef1026"
+            },
+            {
+              "goalId": "879491c0-7153-570b-91f4-c61d9fe8a143",
+              "title": "Thermodynamik und Rotationssystem",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1#goal-879491c0-7153-570b-91f4-c61d9fe8a143"
+            }
+          ]
+        },
+        {
+          "field": "visualization.title",
+          "before": "Visualisierung: Rotationsenergie und Beschleunigungsmoment berechnen",
+          "after": "Visualisierung: Rotationsenergie mit Momentvergleich"
+        },
+        {
+          "field": "visualization.altText",
+          "before": "Didaktische Visualisierung zum Lernziel \"Rotationsenergie und Beschleunigungsmoment berechnen\". Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen sowie bei vorgegebener Winkelbeschleunigung das mittlere Beschleunigungsmoment berechnen.",
+          "after": "Links: Rotationsenergie E_rot = 1/2 I omega² mit Trägheitsmoment, Winkelgeschwindigkeit, Einheiten und einem Beispiel von 4,0 J. Rechts steht zum Vergleich das getrennte Beschleunigungsmoment-Ziel; es ist kein zusätzlicher Kompetenzanspruch dieses Energieziels."
+        },
+        {
+          "field": "goalFingerprint",
+          "before": "sha256:52c1455132a5c07248d413c389c773e73eae6620826c7815e0f9a7c57fcc3723",
+          "after": "sha256:1e7cd82a50a4aa5d88308a7a107c12ffb1585fc3d5c230608f0ecebfba651700"
+        },
+        {
+          "field": "pageFingerprint",
+          "before": "sha256:cdf3edb77805bcf4c388db98d03bc7d28348c328213e260107f6e06a3a476a4f",
+          "after": "sha256:f57aa9395d4155a352cb5418f5d032a9f0ed83abb568a005c6276b9f98658684"
+        }
+      ],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [
+        {
+          "field": "titleDe",
+          "before": "Rotationsenergie und Beschleunigungsmoment berechnen",
+          "after": "Rotationsenergie bestimmen"
+        },
+        {
+          "field": "titleEn",
+          "before": "Calculate Rotational Energy and Acceleration Torque",
+          "after": "Determine Rotational Energy"
+        },
+        {
+          "field": "descriptionDe",
+          "before": "Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen sowie bei vorgegebener Winkelbeschleunigung das mittlere Beschleunigungsmoment berechnen.",
+          "after": "Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen."
+        },
+        {
+          "field": "descriptionEn",
+          "before": "The learner can determine rotational energy from moment of inertia and angular velocity and calculate the mean acceleration torque for a given angular acceleration.",
+          "after": "The learner can determine rotational energy from moment of inertia and angular velocity."
+        }
+      ],
+      "fingerprints": {
+        "oldGoal": "sha256:52c1455132a5c07248d413c389c773e73eae6620826c7815e0f9a7c57fcc3723",
+        "currentGoal": "sha256:1e7cd82a50a4aa5d88308a7a107c12ffb1585fc3d5c230608f0ecebfba651700",
+        "oldPage": "sha256:cdf3edb77805bcf4c388db98d03bc7d28348c328213e260107f6e06a3a476a4f",
+        "currentPage": "sha256:f57aa9395d4155a352cb5418f5d032a9f0ed83abb568a005c6276b9f98658684",
+        "oldFullPageObject": "sha256:c74cf8eb7c63632f3896c20f4aaa4d42eae3a49810f4b5e4c925b077cb55564e",
+        "currentFullPageObject": "sha256:b4f37ce5fae8c651e48c4beca85366280921fcfaa90ee10531ee4c401f70d477",
+        "oldCanonicalContext": "sha256:a2ca79b1214f01d2a4229f75670bb3763a79e6836aa7761fcbb894714d78865b",
+        "currentCanonicalContext": "sha256:a2ca79b1214f01d2a4229f75670bb3763a79e6836aa7761fcbb894714d78865b",
+        "firstRecord": "sha256:6198edce055a85cc467331a20408de92d973e06281242c37fc7c5e16df9534bb",
+        "secondRecord": "sha256:8ae0fb4cf9f7e02d08e097c5f8925c52d3c190634ece1f1120c4cae5e21cd720",
+        "firstGoalReviewContext": "sha256:cedfc80f62e2e659611514f0a99156d024a4e726f3de87e24dedd1952d5a1ce7",
+        "secondGoalReviewContext": "sha256:cedfc80f62e2e659611514f0a99156d024a4e726f3de87e24dedd1952d5a1ce7"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931/5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931.jpg",
+        "sha256": "sha256:7d2995fb02681e48f73947378d5d7a5253180e492ab4da547b81e1c09b00720b",
+        "oldDigest": "sha256:7d2995fb02681e48f73947378d5d7a5253180e492ab4da547b81e1c09b00720b",
+        "currentModelDigest": "sha256:7d2995fb02681e48f73947378d5d7a5253180e492ab4da547b81e1c09b00720b"
+      },
+      "originalText": {
+        "titleDe": "Rotationsenergie und Beschleunigungsmoment berechnen",
+        "titleEn": "Calculate Rotational Energy and Acceleration Torque",
+        "descriptionDe": "Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen sowie bei vorgegebener Winkelbeschleunigung das mittlere Beschleunigungsmoment berechnen.",
+        "descriptionEn": "The learner can determine rotational energy from moment of inertia and angular velocity and calculate the mean acceleration torque for a given angular acceleration."
+      },
+      "currentText": {
+        "titleDe": "Rotationsenergie bestimmen",
+        "titleEn": "Determine Rotational Energy",
+        "descriptionDe": "Die lernende Person kann aus Trägheitsmoment und Winkelgeschwindigkeit die Rotationsenergie bestimmen.",
+        "descriptionEn": "The learner can determine rotational energy from moment of inertia and angular velocity."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:cedfc80f62e2e659611514f0a99156d024a4e726f3de87e24dedd1952d5a1ce7",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.14",
+          "recordDigest": "sha256:6198edce055a85cc467331a20408de92d973e06281242c37fc7c5e16df9534bb"
+        },
+        "decision": "split_review"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:cedfc80f62e2e659611514f0a99156d024a4e726f3de87e24dedd1952d5a1ce7",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-014",
+          "recordDigest": "sha256:8ae0fb4cf9f7e02d08e097c5f8925c52d3c190634ece1f1120c4cae5e21cd720"
+        },
+        "decision": "split_review"
+      }
+    },
+    {
+      "goalId": "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+      "titleDe": "Präzessionsbewegungen erklären",
+      "originalIndex": 15,
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "fullPageEqual": false,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": false,
+      "goalFingerprintEqual": false,
+      "pageFingerprintEqual": false,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": false,
+      "eligibleForCarryover": false,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [
+        {
+          "field": "description",
+          "before": "Die lernende Person kann die Präzession von Kreisel- oder Gyroskopsystemen qualitativ beschreiben und mit der Wirkung von Drehmoment und Drehimpulserhaltung verknüpfen.",
+          "after": "Die lernende Person kann die Präzession von Kreiseln oder Gyroskopen qualitativ als Änderung der Drehimpulsrichtung durch ein äußeres Drehmoment erklären und von der Drehimpulserhaltung ohne äußeres Drehmoment abgrenzen."
+        },
+        {
+          "field": "visualization.altText",
+          "before": "Didaktische Visualisierung zum Lernziel \"Präzessionsbewegungen erklären\". Die lernende Person kann die Präzession von Kreisel- oder Gyroskopsystemen qualitativ beschreiben und mit der Wirkung von Drehmoment und Drehimpulserhaltung verknüpfen.",
+          "after": "Didaktische Visualisierung zum Lernziel \"Präzessionsbewegungen erklären\": Ein äußeres Drehmoment ändert die Richtung des Drehimpulses eines Kreisels."
+        },
+        {
+          "field": "goalFingerprint",
+          "before": "sha256:755e082de1e0f63acfabed698e888f0ee70a6b78ba017ef40930f67f55aca075",
+          "after": "sha256:a8896f6893ae1d1bc36c5d8a481844bcf8ac36fcebefee470a55fda8cdd1578a"
+        },
+        {
+          "field": "pageFingerprint",
+          "before": "sha256:4d15971ee9c530776a0684030b1c58803313d5bc028a60c62eba4a4d805555f4",
+          "after": "sha256:fdb083de567f765efe59439908c695281640bf8d38cbe5414ac1ba860be56004"
+        }
+      ],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [
+        {
+          "field": "descriptionDe",
+          "before": "Die lernende Person kann die Präzession von Kreisel- oder Gyroskopsystemen qualitativ beschreiben und mit der Wirkung von Drehmoment und Drehimpulserhaltung verknüpfen.",
+          "after": "Die lernende Person kann die Präzession von Kreiseln oder Gyroskopen qualitativ als Änderung der Drehimpulsrichtung durch ein äußeres Drehmoment erklären und von der Drehimpulserhaltung ohne äußeres Drehmoment abgrenzen."
+        },
+        {
+          "field": "descriptionEn",
+          "before": "The learner can qualitatively describe the precession of top or gyroscope systems and link it to the effect of torque and conservation of angular momentum.",
+          "after": "The learner can qualitatively explain the precession of tops or gyroscopes as a change in angular momentum direction caused by an external torque and distinguish it from angular momentum conservation without an external torque."
+        }
+      ],
+      "fingerprints": {
+        "oldGoal": "sha256:755e082de1e0f63acfabed698e888f0ee70a6b78ba017ef40930f67f55aca075",
+        "currentGoal": "sha256:a8896f6893ae1d1bc36c5d8a481844bcf8ac36fcebefee470a55fda8cdd1578a",
+        "oldPage": "sha256:4d15971ee9c530776a0684030b1c58803313d5bc028a60c62eba4a4d805555f4",
+        "currentPage": "sha256:fdb083de567f765efe59439908c695281640bf8d38cbe5414ac1ba860be56004",
+        "oldFullPageObject": "sha256:bd5773484df6b293a54180500fbc952472e010e31738fde6452c94a442062930",
+        "currentFullPageObject": "sha256:a1f31f1966e826645fd0ecb548397d7307a4486b15a2241fbc320f70efc140c9",
+        "oldCanonicalContext": "sha256:4daa84c351b2af7f628c2b3e5fe0a9c68104c2e851567ba0e381d0417d94e3fa",
+        "currentCanonicalContext": "sha256:4daa84c351b2af7f628c2b3e5fe0a9c68104c2e851567ba0e381d0417d94e3fa",
+        "firstRecord": "sha256:f013a56057ece1b409a1805dd7e6fc66a8cb4eb7e6d8d359c70cc0efa31df67e",
+        "secondRecord": "sha256:541035fe520cb5ec9e1d781ef293ffb73d9f0a04b54bdbf82bf6bf39791dc5e3",
+        "firstGoalReviewContext": "sha256:877696a6a7a0de6b49baefe3e02e301b8de88fbeb9623b848610b57a4a997f11",
+        "secondGoalReviewContext": "sha256:877696a6a7a0de6b49baefe3e02e301b8de88fbeb9623b848610b57a4a997f11"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc/b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc.jpg",
+        "sha256": "sha256:56ec95e4d47d515867d4cb42459db172078360ec2d2c007ed650e26b1e9655a3",
+        "oldDigest": "sha256:56ec95e4d47d515867d4cb42459db172078360ec2d2c007ed650e26b1e9655a3",
+        "currentModelDigest": "sha256:56ec95e4d47d515867d4cb42459db172078360ec2d2c007ed650e26b1e9655a3"
+      },
+      "originalText": {
+        "titleDe": "Präzessionsbewegungen erklären",
+        "titleEn": "Explain Precession Motions",
+        "descriptionDe": "Die lernende Person kann die Präzession von Kreisel- oder Gyroskopsystemen qualitativ beschreiben und mit der Wirkung von Drehmoment und Drehimpulserhaltung verknüpfen.",
+        "descriptionEn": "The learner can qualitatively describe the precession of top or gyroscope systems and link it to the effect of torque and conservation of angular momentum."
+      },
+      "currentText": {
+        "titleDe": "Präzessionsbewegungen erklären",
+        "titleEn": "Explain Precession Motions",
+        "descriptionDe": "Die lernende Person kann die Präzession von Kreiseln oder Gyroskopen qualitativ als Änderung der Drehimpulsrichtung durch ein äußeres Drehmoment erklären und von der Drehimpulserhaltung ohne äußeres Drehmoment abgrenzen.",
+        "descriptionEn": "The learner can qualitatively explain the precession of tops or gyroscopes as a change in angular momentum direction caused by an external torque and distinguish it from angular momentum conservation without an external torque."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:877696a6a7a0de6b49baefe3e02e301b8de88fbeb9623b848610b57a4a997f11",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.15",
+          "recordDigest": "sha256:f013a56057ece1b409a1805dd7e6fc66a8cb4eb7e6d8d359c70cc0efa31df67e"
+        },
+        "decision": "revise"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:877696a6a7a0de6b49baefe3e02e301b8de88fbeb9623b848610b57a4a997f11",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-015",
+          "recordDigest": "sha256:541035fe520cb5ec9e1d781ef293ffb73d9f0a04b54bdbf82bf6bf39791dc5e3"
+        },
+        "decision": "revise"
+      }
+    },
+    {
+      "goalId": "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+      "titleDe": "Pirouetten mit Drehimpuls deuten",
+      "originalIndex": 16,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:85ad0da07345b585d1fea701d5b611e9147a9504a5291dcf4670ae2129c2e88f",
+        "currentGoal": "sha256:85ad0da07345b585d1fea701d5b611e9147a9504a5291dcf4670ae2129c2e88f",
+        "oldPage": "sha256:864ba99dd5b8379ab5a226981f5e66e2ee92e4818bd402639c299ce4e081a53b",
+        "currentPage": "sha256:864ba99dd5b8379ab5a226981f5e66e2ee92e4818bd402639c299ce4e081a53b",
+        "oldFullPageObject": "sha256:daf7db85cd9ac2573b859e55eafca160c321cf79b06508740cc67e2233bb81ee",
+        "currentFullPageObject": "sha256:daf7db85cd9ac2573b859e55eafca160c321cf79b06508740cc67e2233bb81ee",
+        "oldCanonicalContext": "sha256:6844c71f5ac512cbff04d33261dd3bc83e70e00815ca334af59b62cc01b9a6e9",
+        "currentCanonicalContext": "sha256:6844c71f5ac512cbff04d33261dd3bc83e70e00815ca334af59b62cc01b9a6e9",
+        "firstRecord": "sha256:19722f1b7896ebc165495e42eaef5c4b3954d2c23166b9edd313989b58740eac",
+        "secondRecord": "sha256:8bd943c4bcef6e5dbf4f36c89b93b79ef75c0d03e797355350be2edad7619adb",
+        "firstGoalReviewContext": "sha256:86390c2141717f7cd6355c7a76a3129d02fa40077bbae75f3894a6eec3623a0d",
+        "secondGoalReviewContext": "sha256:86390c2141717f7cd6355c7a76a3129d02fa40077bbae75f3894a6eec3623a0d"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/21c0a5f2-4152-549a-aa9c-e02ab772f589/21c0a5f2-4152-549a-aa9c-e02ab772f589.jpg",
+        "sha256": "sha256:51931a0352ff56e709e46b1bd70b4a7fd0f2e4819e19d634030f6dcca692ea22",
+        "oldDigest": "sha256:51931a0352ff56e709e46b1bd70b4a7fd0f2e4819e19d634030f6dcca692ea22",
+        "currentModelDigest": "sha256:51931a0352ff56e709e46b1bd70b4a7fd0f2e4819e19d634030f6dcca692ea22"
+      },
+      "originalText": {
+        "titleDe": "Pirouetten mit Drehimpuls deuten",
+        "titleEn": "Interpret Pirouettes Using Angular Momentum",
+        "descriptionDe": "Die lernende Person kann Pirouetten durch Erhaltung des Drehimpulses und Änderungen des Trägheitsmoments qualitativ erklären.",
+        "descriptionEn": "The learner can qualitatively explain pirouettes through conservation of angular momentum and changes in moment of inertia."
+      },
+      "currentText": {
+        "titleDe": "Pirouetten mit Drehimpuls deuten",
+        "titleEn": "Interpret Pirouettes Using Angular Momentum",
+        "descriptionDe": "Die lernende Person kann Pirouetten durch Erhaltung des Drehimpulses und Änderungen des Trägheitsmoments qualitativ erklären.",
+        "descriptionEn": "The learner can qualitatively explain pirouettes through conservation of angular momentum and changes in moment of inertia."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:86390c2141717f7cd6355c7a76a3129d02fa40077bbae75f3894a6eec3623a0d",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.16",
+          "recordDigest": "sha256:19722f1b7896ebc165495e42eaef5c4b3954d2c23166b9edd313989b58740eac"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:86390c2141717f7cd6355c7a76a3129d02fa40077bbae75f3894a6eec3623a0d",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-016",
+          "recordDigest": "sha256:8bd943c4bcef6e5dbf4f36c89b93b79ef75c0d03e797355350be2edad7619adb"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "8daaf751-93fe-56d9-8697-ac30237061bd",
+      "titleDe": "Fahrraddynamik mit Kreiselwirkung erklären",
+      "originalIndex": 17,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:4d70917dc3f293b8da9f0928302ec805f468a9bdda0bc6c7ee88e10223fbf27f",
+        "currentGoal": "sha256:4d70917dc3f293b8da9f0928302ec805f468a9bdda0bc6c7ee88e10223fbf27f",
+        "oldPage": "sha256:e7aab28e26a926e2aa70a0893ef01a23af1e45c122554ec6466915fe9d7ff36f",
+        "currentPage": "sha256:e7aab28e26a926e2aa70a0893ef01a23af1e45c122554ec6466915fe9d7ff36f",
+        "oldFullPageObject": "sha256:a1992f5ae3a1e85b5328b0841cf7d5688fef96772495d6517dafe909a62ce5d7",
+        "currentFullPageObject": "sha256:a1992f5ae3a1e85b5328b0841cf7d5688fef96772495d6517dafe909a62ce5d7",
+        "oldCanonicalContext": "sha256:c98404331fad2de7caeac4671f9ff43870ed94561586b02f7d87e362079b1d19",
+        "currentCanonicalContext": "sha256:c98404331fad2de7caeac4671f9ff43870ed94561586b02f7d87e362079b1d19",
+        "firstRecord": "sha256:cd81179200d9feec911f498e5a0c668e941c257d5bcf861ad6e874d93950ee94",
+        "secondRecord": "sha256:e4b1bf18093d098ff4e54369bd9519840a3562ab31101821f390999e7faa28bf",
+        "firstGoalReviewContext": "sha256:f31d296398479691a1af226695b6ab47a25466240ca2b17550b9d50877e8dfe5",
+        "secondGoalReviewContext": "sha256:f31d296398479691a1af226695b6ab47a25466240ca2b17550b9d50877e8dfe5"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/8daaf751-93fe-56d9-8697-ac30237061bd/8daaf751-93fe-56d9-8697-ac30237061bd.jpg",
+        "sha256": "sha256:94c6d6e9759115a96819558e3db3039a42cfed0f42966db3bff477060f466c86",
+        "oldDigest": "sha256:94c6d6e9759115a96819558e3db3039a42cfed0f42966db3bff477060f466c86",
+        "currentModelDigest": "sha256:94c6d6e9759115a96819558e3db3039a42cfed0f42966db3bff477060f466c86"
+      },
+      "originalText": {
+        "titleDe": "Fahrraddynamik mit Kreiselwirkung erklären",
+        "titleEn": "Explain Bicycle Dynamics with Gyroscopic Effects",
+        "descriptionDe": "Die lernende Person kann Stabilität und Lenkverhalten von Fahrrädern mit Drehmomenten und Kreiselwirkung qualitativ deuten.",
+        "descriptionEn": "The learner can qualitatively interpret bicycle stability and steering behavior using torques and gyroscopic effects."
+      },
+      "currentText": {
+        "titleDe": "Fahrraddynamik mit Kreiselwirkung erklären",
+        "titleEn": "Explain Bicycle Dynamics with Gyroscopic Effects",
+        "descriptionDe": "Die lernende Person kann Stabilität und Lenkverhalten von Fahrrädern mit Drehmomenten und Kreiselwirkung qualitativ deuten.",
+        "descriptionEn": "The learner can qualitatively interpret bicycle stability and steering behavior using torques and gyroscopic effects."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:f31d296398479691a1af226695b6ab47a25466240ca2b17550b9d50877e8dfe5",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.17",
+          "recordDigest": "sha256:cd81179200d9feec911f498e5a0c668e941c257d5bcf861ad6e874d93950ee94"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:f31d296398479691a1af226695b6ab47a25466240ca2b17550b9d50877e8dfe5",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-017",
+          "recordDigest": "sha256:e4b1bf18093d098ff4e54369bd9519840a3562ab31101821f390999e7faa28bf"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+      "titleDe": "Kreiselstabilisierung technisch begründen",
+      "originalIndex": 18,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:b45b67a1ebc13c647fb210368bbd1bde6bbee59f9098215b07628f8cbbe9e497",
+        "currentGoal": "sha256:b45b67a1ebc13c647fb210368bbd1bde6bbee59f9098215b07628f8cbbe9e497",
+        "oldPage": "sha256:a0efa8648ab7060e9f214888e1ac52c430e2e816c36889f8de78e9c51c981cb8",
+        "currentPage": "sha256:a0efa8648ab7060e9f214888e1ac52c430e2e816c36889f8de78e9c51c981cb8",
+        "oldFullPageObject": "sha256:793a264dbc4e26786d35bebbe68e2a38e4bd473c3b886eec8b21d79bca2ccb2b",
+        "currentFullPageObject": "sha256:793a264dbc4e26786d35bebbe68e2a38e4bd473c3b886eec8b21d79bca2ccb2b",
+        "oldCanonicalContext": "sha256:f508c5184223e3e0b74613749bf532c1a8dcea4e3a992646422affeeb0d59013",
+        "currentCanonicalContext": "sha256:f508c5184223e3e0b74613749bf532c1a8dcea4e3a992646422affeeb0d59013",
+        "firstRecord": "sha256:f9fa4a023001f3c4bf51a788f45156b23f75f2e2a3b5bbec4c5b247d5792c7be",
+        "secondRecord": "sha256:5ecdeebb5c3b2335a489b1744c37c836819c97784bbae3be7313e5e14be4e348",
+        "firstGoalReviewContext": "sha256:b03af36d83fc61160d8350123b3dc5d0ed1eafc6c8a4568c0a5262e0d79695b8",
+        "secondGoalReviewContext": "sha256:b03af36d83fc61160d8350123b3dc5d0ed1eafc6c8a4568c0a5262e0d79695b8"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/07f298b2-2f5e-5b16-8150-bc603fa78ecd/07f298b2-2f5e-5b16-8150-bc603fa78ecd.jpg",
+        "sha256": "sha256:6f10a17a4a4897f6d4508a23358bec8b610933229d01ee2e8826e39fde5161a1",
+        "oldDigest": "sha256:6f10a17a4a4897f6d4508a23358bec8b610933229d01ee2e8826e39fde5161a1",
+        "currentModelDigest": "sha256:6f10a17a4a4897f6d4508a23358bec8b610933229d01ee2e8826e39fde5161a1"
+      },
+      "originalText": {
+        "titleDe": "Kreiselstabilisierung technisch begründen",
+        "titleEn": "Technically Justify Gyroscopic Stabilization",
+        "descriptionDe": "Die lernende Person kann Kreiselstabilisierung in technischen Anwendungen mithilfe von Drehimpuls- und Drehmomentargumenten begründen.",
+        "descriptionEn": "The learner can justify gyroscopic stabilization in technical applications using angular momentum and torque arguments."
+      },
+      "currentText": {
+        "titleDe": "Kreiselstabilisierung technisch begründen",
+        "titleEn": "Technically Justify Gyroscopic Stabilization",
+        "descriptionDe": "Die lernende Person kann Kreiselstabilisierung in technischen Anwendungen mithilfe von Drehimpuls- und Drehmomentargumenten begründen.",
+        "descriptionEn": "The learner can justify gyroscopic stabilization in technical applications using angular momentum and torque arguments."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:b03af36d83fc61160d8350123b3dc5d0ed1eafc6c8a4568c0a5262e0d79695b8",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.18",
+          "recordDigest": "sha256:f9fa4a023001f3c4bf51a788f45156b23f75f2e2a3b5bbec4c5b247d5792c7be"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:b03af36d83fc61160d8350123b3dc5d0ed1eafc6c8a4568c0a5262e0d79695b8",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-018",
+          "recordDigest": "sha256:5ecdeebb5c3b2335a489b1744c37c836819c97784bbae3be7313e5e14be4e348"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+      "titleDe": "Drehmoment auf Magnetnadeln und Dipole",
+      "originalIndex": 19,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:5b09fe0d44e7af4893dcd26470f12a702adaaa4d7d4817bf9b271940b0132b96",
+        "currentGoal": "sha256:5b09fe0d44e7af4893dcd26470f12a702adaaa4d7d4817bf9b271940b0132b96",
+        "oldPage": "sha256:f51e99d8ee71c17bdf2804abdf25d122dc12c5b4e2f350f7ec72fcbd5032118f",
+        "currentPage": "sha256:f51e99d8ee71c17bdf2804abdf25d122dc12c5b4e2f350f7ec72fcbd5032118f",
+        "oldFullPageObject": "sha256:b24f0d4d2f366706ec4284d6a94e57d86af8bfaedd9689941187b6fd62abefb2",
+        "currentFullPageObject": "sha256:b24f0d4d2f366706ec4284d6a94e57d86af8bfaedd9689941187b6fd62abefb2",
+        "oldCanonicalContext": "sha256:45a418147dff11b3260f0d1985e0c7fdeb3a509ad39e3e67bbeaa0d9e52f9e2b",
+        "currentCanonicalContext": "sha256:45a418147dff11b3260f0d1985e0c7fdeb3a509ad39e3e67bbeaa0d9e52f9e2b",
+        "firstRecord": "sha256:b9acb4a2fa6ebb419dc0334548e0a2fbdc6a913d5d7498e7e5f86592104870a6",
+        "secondRecord": "sha256:9df281fc5ee2a8833fce060cb96d9c11840e0d72381974b78f08e691acc5ff89",
+        "firstGoalReviewContext": "sha256:dc92bb28bf9fcfb12c3467e89d5c792473b2e24b466bb8934634847a968f7dac",
+        "secondGoalReviewContext": "sha256:dc92bb28bf9fcfb12c3467e89d5c792473b2e24b466bb8934634847a968f7dac"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/d02438ba-0cc9-5993-831e-5e44d35e32c4/d02438ba-0cc9-5993-831e-5e44d35e32c4.jpg",
+        "sha256": "sha256:b49d8052a21dae57a8afc092ffc8987bd8729d2fc54bbbe2efcd7039e8369208",
+        "oldDigest": "sha256:b49d8052a21dae57a8afc092ffc8987bd8729d2fc54bbbe2efcd7039e8369208",
+        "currentModelDigest": "sha256:b49d8052a21dae57a8afc092ffc8987bd8729d2fc54bbbe2efcd7039e8369208"
+      },
+      "originalText": {
+        "titleDe": "Drehmoment auf Magnetnadeln und Dipole",
+        "titleEn": "Torque on Magnetic Needles and Dipoles",
+        "descriptionDe": "Die lernende Person kann das Drehmoment auf Magnetnadeln und magnetische Dipole im homogenen Feld mit M = mu * B * sin(alpha) berechnen und die Ausrichtung im Feld fachlich begründen.",
+        "descriptionEn": "The learner can calculate the torque on magnetic needles and magnetic dipoles in a homogeneous field using M = mu * B * sin(alpha) and explain alignment in the field."
+      },
+      "currentText": {
+        "titleDe": "Drehmoment auf Magnetnadeln und Dipole",
+        "titleEn": "Torque on Magnetic Needles and Dipoles",
+        "descriptionDe": "Die lernende Person kann das Drehmoment auf Magnetnadeln und magnetische Dipole im homogenen Feld mit M = mu * B * sin(alpha) berechnen und die Ausrichtung im Feld fachlich begründen.",
+        "descriptionEn": "The learner can calculate the torque on magnetic needles and magnetic dipoles in a homogeneous field using M = mu * B * sin(alpha) and explain alignment in the field."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:dc92bb28bf9fcfb12c3467e89d5c792473b2e24b466bb8934634847a968f7dac",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.19",
+          "recordDigest": "sha256:b9acb4a2fa6ebb419dc0334548e0a2fbdc6a913d5d7498e7e5f86592104870a6"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:dc92bb28bf9fcfb12c3467e89d5c792473b2e24b466bb8934634847a968f7dac",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-019",
+          "recordDigest": "sha256:9df281fc5ee2a8833fce060cb96d9c11840e0d72381974b78f08e691acc5ff89"
+        },
+        "decision": "keep"
+      }
+    },
+    {
+      "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "titleDe": "Gaußsches Verfahren anwenden",
+      "originalIndex": 20,
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "fullPageEqual": true,
+      "canonicalContextEqual": true,
+      "bilingualTextEqual": true,
+      "goalFingerprintEqual": true,
+      "pageFingerprintEqual": true,
+      "evidenceProfileUnchanged": true,
+      "bothKeep": true,
+      "eligibleForCarryover": true,
+      "pageFieldsChecked": [
+        "pageNumber",
+        "navigationOrder",
+        "treeOrder",
+        "goalId",
+        "anchor",
+        "title",
+        "description",
+        "breadcrumbs",
+        "chapterIds",
+        "applicability",
+        "requires",
+        "reverseRequires",
+        "externalPrerequisites",
+        "externalReverseRequires",
+        "visualization",
+        "evidenceReview",
+        "goalFingerprint",
+        "pageFingerprint"
+      ],
+      "canonicalContextFieldsChecked": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "changedPageFields": [],
+      "changedCanonicalContextFields": [],
+      "changedBilingualFields": [],
+      "fingerprints": {
+        "oldGoal": "sha256:6568d1ab24e4653dd7d39e3360f164d2ba8cb8ae15a74e457505bc23aa7d3a41",
+        "currentGoal": "sha256:6568d1ab24e4653dd7d39e3360f164d2ba8cb8ae15a74e457505bc23aa7d3a41",
+        "oldPage": "sha256:18b4f28bb2b07299ed47dc327b8e6a36df6f5c455beb856974e56db74a7531b4",
+        "currentPage": "sha256:18b4f28bb2b07299ed47dc327b8e6a36df6f5c455beb856974e56db74a7531b4",
+        "oldFullPageObject": "sha256:7b22ca16b355974a15a536f5ef774c53e5181c82ff0b47b53fc1a4af5cdd053d",
+        "currentFullPageObject": "sha256:7b22ca16b355974a15a536f5ef774c53e5181c82ff0b47b53fc1a4af5cdd053d",
+        "oldCanonicalContext": "sha256:afaa1f0ea21c2a82773cdde31e1a8c61b44bef3427fca197e532f4abc1ccda5a",
+        "currentCanonicalContext": "sha256:afaa1f0ea21c2a82773cdde31e1a8c61b44bef3427fca197e532f4abc1ccda5a",
+        "firstRecord": "sha256:7aa942b4b22bd1b573c44e173b01fbc7f56b1b271bfd8f61adef3608b02d86fc",
+        "secondRecord": "sha256:37b627610ef21e26e8a3c0627dd507c45f440080cafad8c9fd29684972a931a0",
+        "firstGoalReviewContext": "sha256:a1056deb3b83227a6544c36224a6cb8fd5fdea877ef8a5c46f391cfac75409c6",
+        "secondGoalReviewContext": "sha256:a1056deb3b83227a6544c36224a6cb8fd5fdea877ef8a5c46f391cfac75409c6"
+      },
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/physik/58db62d4-458f-5e2d-9ca0-968e09f4944b/58db62d4-458f-5e2d-9ca0-968e09f4944b.jpg",
+        "sha256": "sha256:a0be40ce8a2c1d59c7e87753982531eee8a4382a78657415a540777da4a23616",
+        "oldDigest": "sha256:a0be40ce8a2c1d59c7e87753982531eee8a4382a78657415a540777da4a23616",
+        "currentModelDigest": "sha256:a0be40ce8a2c1d59c7e87753982531eee8a4382a78657415a540777da4a23616"
+      },
+      "originalText": {
+        "titleDe": "Gaußsches Verfahren anwenden",
+        "titleEn": "Apply the Gauss Method",
+        "descriptionDe": "Die lernende Person kann das Messverfahren von Gauß (Ablenkungsmethode in Hauptlage und Schwingungsmethode) zur Bestimmung der Horizontalintensität des Erdmagnetfeldes beschreiben und anwenden.",
+        "descriptionEn": "The learner can describe and apply the Gauss measurement method (deflection method in principal position and oscillation method) to determine the horizontal intensity of the Earth's magnetic field."
+      },
+      "currentText": {
+        "titleDe": "Gaußsches Verfahren anwenden",
+        "titleEn": "Apply the Gauss Method",
+        "descriptionDe": "Die lernende Person kann das Messverfahren von Gauß (Ablenkungsmethode in Hauptlage und Schwingungsmethode) zur Bestimmung der Horizontalintensität des Erdmagnetfeldes beschreiben und anwenden.",
+        "descriptionEn": "The learner can describe and apply the Gauss measurement method (deflection method in principal position and oscillation method) to determine the horizontal intensity of the Earth's magnetic field."
+      },
+      "firstSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-a",
+          "campaignDigest": "sha256:ea3109638b7d9e308f4b9e76ab714a3177ceb92ca40e80438037fa701a98cad1",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-a",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:a1056deb3b83227a6544c36224a6cb8fd5fdea877ef8a5c46f391cfac75409c6",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-a.batch-001",
+          "runId": "physics-b039-a-codex-20260906T220133Z",
+          "runManifestDigest": "sha256:d80b5b07b4f46c818aa49fd1f39d42f6eb11818a2b7b8fcb5a99e645e45688c9",
+          "resultsDigest": "sha256:9a31311725063ef599f9b6176a178dd5e6a06413f651e31a6a81f01b4bc90f75",
+          "recordId": "physics-b039-a-codex-20260906T220133Z.20",
+          "recordDigest": "sha256:7aa942b4b22bd1b573c44e173b01fbc7f56b1b271bfd8f61adef3608b02d86fc"
+        },
+        "decision": "keep"
+      },
+      "secondSource": {
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+          "campaignDigest": "sha256:133e220fbef12e5d6501b4bada4a1d5805de195680b5928da55c2cef79e56799",
+          "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+          "reviewInputFingerprint": "sha256:cd1e248b73901dcd3b8cc148e8f1196360ecb6f52ec93c55249e38ff9581f2cd",
+          "goalReviewContextFingerprint": "sha256:a1056deb3b83227a6544c36224a6cb8fd5fdea877ef8a5c46f391cfac75409c6",
+          "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+          "runId": "physik-b039-openai-codex-independent-b-20260906",
+          "runManifestDigest": "sha256:c770c0d2515a9195b5e168e1e2fb2a9f6f5319b34d62548e30b3a539ab356539",
+          "resultsDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+          "recordId": "physik-b039-openai-codex-independent-b-20260906.record-020",
+          "recordDigest": "sha256:37b627610ef21e26e8a3c0627dd507c45f440080cafad8c9fd29684972a931a0"
+        },
+        "decision": "keep"
+      }
+    }
+  ],
+  "eligibleGoalIds": [
+    "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+    "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+    "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+    "727d0946-7019-50ed-8fc6-85db12508733",
+    "e296aba6-f407-5944-a2bd-e5296e4c9f06",
+    "52b6722a-b3b2-5d2d-a507-0215532b0422",
+    "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+    "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+    "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+    "cf570e66-2ce2-5923-9033-c97d74119553",
+    "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+    "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+    "8daaf751-93fe-56d9-8697-ac30237061bd",
+    "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+    "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+    "58db62d4-458f-5e2d-9ca0-968e09f4944b"
+  ],
+  "ineligibleGoalIds": [
+    "1a1c09f0-96b7-4c33-a623-0e8101537876",
+    "642aebd7-66cd-5a50-b543-73c4b207525d",
+    "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+    "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc"
+  ],
+  "newUnreviewedMomentId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+  "summary": {
+    "originalGoalCount": 20,
+    "exactUnchangedKeepPairs": 16,
+    "excludedOriginalGoals": 4,
+    "newUnreviewedGoals": 1,
+    "freshCurrentReviewGoalCount": 5,
+    "originalDecisionsPerRound": {
+      "keep": 18,
+      "revise": 1,
+      "split_review": 1
+    }
+  },
+  "eligibleList": [
+    "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+    "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+    "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+    "727d0946-7019-50ed-8fc6-85db12508733",
+    "e296aba6-f407-5944-a2bd-e5296e4c9f06",
+    "52b6722a-b3b2-5d2d-a507-0215532b0422",
+    "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+    "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+    "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+    "cf570e66-2ce2-5923-9033-c97d74119553",
+    "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+    "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+    "8daaf751-93fe-56d9-8697-ac30237061bd",
+    "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+    "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+    "58db62d4-458f-5e2d-9ca0-968e09f4944b"
+  ],
+  "freshReviewRequired": [
+    {
+      "goalId": "1a1c09f0-96b7-4c33-a623-0e8101537876",
+      "reason": "Changed image bytes and native page fingerprint despite identical DE/EN, own graph context and goal fingerprint. Original keep/keep does not review the corrected current image."
+    },
+    {
+      "goalId": "642aebd7-66cd-5a50-b543-73c4b207525d",
+      "reason": "Own requires, canonicalContext, DE/EN and goal fingerprint are unchanged. Full page differs: internal successor 5a has a narrower energy title; new moment goal c2c3cdc5 is an external reverse prerequisite. Exact full-page binding therefore fails."
+    },
+    {
+      "goalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+      "reason": "Original split_review/split_review remains historical. Current energy-only title and DE/EN description, visualization title/alt text and assessment reverse-prerequisite context are changed; current atomic energy scope requires fresh review."
+    },
+    {
+      "goalId": "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+      "reason": "Original revise/revise remains historical. Current DE/EN precision about external torque changing angular-momentum direction and current visualization alt text are changed; fresh review is required."
+    },
+    {
+      "goalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+      "reason": "New independent mean-acceleration-torque goal is absent from both original 20-goal campaigns. No old energy/torque record is transferable to this new ID. Bind fresh review after the intended moment-image decision/import is final."
+    }
+  ],
+  "draftSynthesisProposals": [
+    {
+      "goalId": "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "first",
+      "rationaleDe": "Beide Runden treffen denselben Kern: eindeutige ungestörte Zustandsentwicklung ist von probabilistischen Einzelmessungen zu unterscheiden. A bleibt mit dem neuen Messzeitpunkt direkt bei der beanspruchten Zeitentwicklung; eine vollständige Schrödingergleichungsrechnung wird nicht ergänzt.",
+      "rationaleEn": "Both rounds identify the same distinction between uniquely determined undisturbed state evolution and probabilistic individual measurements. A keeps its changed-measurement-time transfer directly within the stated evolution scope; no full Schrödinger-equation calculation is added.",
+      "reviewerDifferenceHandlingDe": "Bs Zwischenmessung ist eine ergänzende Modellgrenze, kein Widerspruch und kein zusätzlich verpflichtender Kompetenzteil.",
+      "reviewerDifferenceHandlingEn": "B's intermediate measurement is a complementary model boundary, not a disagreement or an additional mandatory competence.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "second",
+      "rationaleDe": "Beide Runden beurteilen die physikalische Verfügbarkeit von Weginformation, nicht das Bewusstsein eines Beobachters. B konkretisiert den qualitativen Vergleich unterschiedlicher Wegmarkierungen; die vorhandenen Nachfolger zu Delayed Choice und Verschränkung werden nicht vorgezogen.",
+      "rationaleEn": "Both rounds concern physical availability of path information, not an observer's consciousness. B specifies a qualitative comparison of different path markings without importing the separate delayed-choice or entanglement successors.",
+      "reviewerDifferenceHandlingDe": "As ungelesene vollständige Markierung und Bs abgestufte Markierung sind vereinbare Variationen. Eine quantitative Sichtbarkeitsrelation ist daraus nicht abzuleiten.",
+      "reviewerDifferenceHandlingEn": "A's unread complete marking and B's graded marking are compatible variations. Neither warrants adding a quantitative visibility relation.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "first",
+      "rationaleDe": "Die übereinstimmende Begründung verbindet räumliche Eingrenzung mit der Streuung der entsprechenden Impulskomponente und der Grenze einer klassischen Bahn. As gedrehte Spaltrichtung prüft genau diese Komponentenbindung; Geräteungenauigkeit ersetzt die Zustandsunbestimmtheit nicht.",
+      "rationaleEn": "The shared explanation connects spatial localization with spread of the corresponding momentum component and the limit of a classical trajectory. A's rotated slit tests that component-specific relation; apparatus error does not replace state uncertainty.",
+      "reviewerDifferenceHandlingDe": "Bs Darstellungswechsel ist fachlich kompatibel. A wird ohne formalen Fourierbeweis oder pauschales Urteil über sämtliche Quanteninterpretationen vorgeschlagen.",
+      "reviewerDifferenceHandlingEn": "B's representation change is compatible. A is proposed without a formal Fourier proof or a blanket claim about every quantum interpretation.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "727d0946-7019-50ed-8fc6-85db12508733",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "first",
+      "rationaleDe": "Beide Runden trennen experimentell prüfbare Aussagen von ontologischer Deutung. As Vergleich zweier Interpretationen mit gleichen Vorhersagen konkretisiert das geforderte begründete Realitätsurteil, ohne eine metaphysische Position als richtige Lernantwort vorzuschreiben.",
+      "rationaleEn": "Both rounds distinguish experimentally testable statements from ontological interpretation. A's comparison of interpretations with identical predictions makes the requested reasoned judgment concrete without prescribing a metaphysical position as the correct answer.",
+      "reviewerDifferenceHandlingDe": "Bs anderer Messkontext ergänzt dieselbe Begrenzung der Aussagekraft; daraus entsteht kein fachlicher Dissent und kein neues Messproblem-Unterziel.",
+      "reviewerDifferenceHandlingEn": "B's different measurement context supplements the same limit on claims; it introduces neither subject-matter dissent nor a new measurement-problem subgoal.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "e296aba6-f407-5944-a2bd-e5296e4c9f06",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "first",
+      "rationaleDe": "Aufbau, Ringdeutung und Impuls-Wellenlängen-Schluss bleiben in beiden Runden eine experimentelle Argumentationskette. A benennt das geeignete nichtrelativistische Modell sowie gemessene und erschlossene Größen ausdrücklich. Sein Abstandswechsel prüft die Trennung von Geometrie- und Wellenlängeneffekt.",
+      "rationaleEn": "Both rounds treat setup, ring interpretation, and momentum–wavelength inference as one experimental reasoning chain. A explicitly identifies the appropriate nonrelativistic model and measured versus inferred quantities. Its changed-distance case tests separation of geometry and wavelength effects.",
+      "reviewerDifferenceHandlingDe": "Beide Transferfälle sind nahezu deckungsgleich und setzen gelieferte Daten und bekannte Geometrie voraus, keinen selbstständigen Hochspannungsversuch. Die echte EN-Fassung war bereits im versiegelten B039-Input enthalten und ist unverändert.",
+      "reviewerDifferenceHandlingEn": "Both transfer cases are closely aligned and use supplied data and known geometry, not an independent high-voltage experiment. The genuine English translation was already present in the sealed B039 input and remains unchanged.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "52b6722a-b3b2-5d2d-a507-0215532b0422",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "second",
+      "rationaleDe": "Beide Runden verbinden Phasenzeiger, Ausgangswahrscheinlichkeiten und Weginformation zur Deutung eines Einzelphotoneninterferometers. B variiert Phasenplatte und Wegmarkierung im angegebenen Aufbau; die Aufgabe muss die Strahlteilerkonvention liefern und darf keine halben Detektorklicks unterstellen.",
+      "rationaleEn": "Both rounds connect phasors, output probabilities, and path information in interpreting a single-photon interferometer. B varies a phase plate and path marking in the specified setup; the task must provide beam-splitter conventions and must not imply half detector clicks.",
+      "reviewerDifferenceHandlingDe": "As entfernter zweiter Strahlteiler ist ein vereinbarer weiterer Fall, keine notwendige zusätzliche Apparatekompetenz. DE und die schon vor dem Bundle korrigierte EN-Fassung sind exakt gleich geblieben.",
+      "reviewerDifferenceHandlingEn": "A's removed second beam splitter is a compatible additional case, not an extra required apparatus competence. German and the English translation corrected before bundling remain exactly unchanged.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "first",
+      "rationaleDe": "Die gemeinsame Kompetenz identifiziert die reale Wechselwirkung hinter der radialen Resultierenden und analysiert gleichförmige Kreisbewegung quantitativ. A hält mit Feder statt Faden einen elementaren Wechselwirkungswechsel ein; das passt auch zur tatsächlich gebundenen BW-Sek-I-Projektion.",
+      "rationaleEn": "The common competence identifies the real interaction supplying the radial resultant and quantitatively analyzes uniform circular motion. A uses a simple string-to-spring change, consistent with the actually bound Baden-Württemberg lower-secondary projection.",
+      "reviewerDifferenceHandlingDe": "Bs tangentiale Fortsetzung beim Wegfall der Kraft ergänzt die Richtungsdeutung. Sie wird nicht als neue Spezialaufgabe oder erneute vollständige Herleitung des Voraussetzungsknotens festgeschrieben.",
+      "reviewerDifferenceHandlingEn": "B's tangential continuation after removing the force complements direction reasoning. It is not imposed as a new specialist task or a repeated full derivation of the prerequisite goal.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "second",
+      "rationaleDe": "Beide Runden unterscheiden die erforderliche Haftreibung von ihrem Maximalwert. B macht beim trockenen/nassen Belag besonders klar: Für gleiche Fahrt bleibt der Kraftbedarf gleich, während sich die Grenze ändert. Die Ebene und vereinfachte konstante Kreisfahrt begrenzen die quantitative Prüfung.",
+      "rationaleEn": "Both rounds distinguish required static friction from its maximum value. B makes the dry/wet comparison especially clear: identical motion keeps the force demand unchanged while the limit changes. A level road and simplified uniform turn bound the quantitative task.",
+      "reviewerDifferenceHandlingDe": "As Grenzgeschwindigkeitsableitung ist damit vereinbar. Überhöhte Kurven, vollständige Fahrdynamik und reale Rutschgrenzversuche bleiben außerhalb dieses Vorschlags.",
+      "reviewerDifferenceHandlingEn": "A's limiting-speed derivation is compatible. Banked turns, complete vehicle dynamics, and real skid-limit experiments remain outside this proposal.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "second",
+      "rationaleDe": "Beide Runden erklären dieselbe Bewegung konsistent im Inertial- und beschleunigten System. B grenzt die Zentrifugalkraft ausdrücklich von einem zusätzlichen Wechselwirkungspaar zur Zentripetalkraft ab; der geradlinig beschleunigte Wagen prüft den allgemeinen Bezugsrahmengedanken qualitativ.",
+      "rationaleEn": "Both rounds explain the same motion consistently in inertial and accelerating frames. B explicitly distinguishes centrifugal force from an extra interaction pair with centripetal force; the linearly accelerating carriage tests the general reference-frame idea qualitatively.",
+      "reviewerDifferenceHandlingDe": "Die Transferfälle stimmen fachlich überein. Ein vollständiger mathematischer Trägheitskraftkatalog wird nicht ergänzt; der allgemeine sourceRef gilt weiterhin nicht als eigenständig geprüfter Normativnachweis.",
+      "reviewerDifferenceHandlingEn": "The transfer cases agree in substance. No complete mathematical catalogue of inertial forces is added, and the broad sourceRef is still not treated as independently verified normative evidence.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "cf570e66-2ce2-5923-9033-c97d74119553",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "first",
+      "rationaleDe": "Definition, Betrag und Anwendung gehören in beiden Runden zur einen Drehwirkung bezüglich einer Achse. A prüft den senkrechten Hebelarm besonders deutlich am verschwindenden Moment bei einer durch die Achse laufenden Wirkungslinie. Der AB1-Rahmen benötigt keinen dreidimensionalen Vektorformalismus.",
+      "rationaleEn": "Definition, magnitude, and application concern the same turning effect about an axis in both rounds. A tests the perpendicular lever arm particularly clearly through zero torque when the line of action passes through the axis. The AB1 scope does not require three-dimensional vector formalism.",
+      "reviewerDifferenceHandlingDe": "Bs schräge Kraftrichtung ist eine kompatible Zwischenvariation desselben Hebelarmprinzips, kein eigenständiger weiterer Kompetenzanspruch.",
+      "reviewerDifferenceHandlingEn": "B's oblique force is a compatible intermediate variation of the same lever-arm principle, not a separate additional competence.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "second",
+      "rationaleDe": "Beide Runden binden die Erhaltung an das verschwindende resultierende äußere Drehmoment des genannten Systems. B lässt die innere Massenumverteilung erklären und prüft anschließend die Grenze durch eine äußere Bremse. Der qualitative Grundlagenumfang bleibt vom konkreten Pirouettennachfolger unterscheidbar.",
+      "rationaleEn": "Both rounds bind conservation to zero net external torque on the stated system. B asks for reasoning about internal mass redistribution followed by the boundary case of an external brake. The qualitative foundation remains distinct from its specific pirouette successor.",
+      "reviewerDifferenceHandlingDe": "As Achsenbezug und Bs Systemgrenze passen zusammen; die unterschiedlichen Formulierungen erzeugen keinen Erhaltungswiderspruch. Es wird keine pauschale Energieerhaltung mit übernommen.",
+      "reviewerDifferenceHandlingEn": "A's axis reference and B's system boundary are compatible and create no conservation disagreement. No blanket energy-conservation claim is carried along.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "first",
+      "rationaleDe": "Beide Runden verlangen die qualitative Kette Körperhaltung, Massenabstände, Trägheitsmoment und Drehgeschwindigkeit bei vernachlässigbarem äußeren Moment. A verändert nur die Beinhaltung und prüft damit verständnisorientiert den Transfer über die gelernte Armregel hinaus.",
+      "rationaleEn": "Both rounds require the qualitative chain from posture through mass distances and moment of inertia to rotation rate under negligible external torque. A changes only leg position, testing understanding beyond a memorized rule about arms.",
+      "reviewerDifferenceHandlingDe": "Bs anschließendes Ausstrecken und Bremsmoment sind kompatible Umkehrung beziehungsweise Grenze. Sie begründen weder eine neue Energiebilanz noch einen verpflichtenden praktischen Pirouettenversuch.",
+      "reviewerDifferenceHandlingEn": "B's later extension and braking torque are compatible reversal and boundary cases. They justify neither a new energy-balance requirement nor a compulsory practical pirouette.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "8daaf751-93fe-56d9-8697-ac30237061bd",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "first",
+      "rationaleDe": "Beide Runden behalten Kreiselwirkung als begrenzten Beitrag zur Fahrradbewegung, nicht als alleinige Stabilitätsursache. A fordert beim Vergleich verschiedener Raddrehimpulse ausdrücklich, daraus keine vollständige Stabilitätsrangfolge abzuleiten. Das passt zum vorhandenen qualitativen Anwendungsziel.",
+      "rationaleEn": "Both rounds retain gyroscopic effects as a limited contribution to bicycle motion, not the sole cause of stability. A explicitly prevents a comparison of wheel angular momenta from becoming a complete stability ranking, matching the existing qualitative application goal.",
+      "reviewerDifferenceHandlingDe": "Bs kompensierter Raddrehimpuls verdeutlicht dieselbe Grenze und widerspricht A nicht. Der Voraussetzungsknoten b49 hat neuen Text, aber sein referenziertes ID-/Titelfeld und die vollständige hiesige Seite bleiben gleich; die Korrektur unterstützt, statt verändert, diese bereits begrenzte Erklärung.",
+      "reviewerDifferenceHandlingEn": "B's canceled wheel angular momentum illustrates the same boundary without contradicting A. Prerequisite b49 has revised text, but its referenced ID/title and this entire page are unchanged; that correction supports rather than changes the already limited explanation.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "second",
+      "rationaleDe": "Beide Runden binden die technische Begründung an eine beschriebene Lagerung, Kopplung und Störmomentrichtung. B formuliert den Stabilisierungsschluss besonders bedingungsbezogen; der Wechsel von quer zu parallel zur Rotorachse verhindert eine pauschale Stabilitätsgarantie.",
+      "rationaleEn": "Both rounds bind the technical explanation to specified mounting, coupling, and disturbance-torque direction. B states the stabilization conclusion particularly conditionally; changing the disturbance from transverse to parallel to the rotor axis prevents a blanket stability guarantee.",
+      "reviewerDifferenceHandlingDe": "As kurzer Impulsvergleich und Bs Lagerungsargument sind vereinbar. Weder jedes Kameragimbal noch jeder beliebige Rotor wird dadurch zu einer mechanischen Kreiselstabilisierung erklärt.",
+      "reviewerDifferenceHandlingEn": "A's brief-impulse comparison and B's mounting argument are compatible. Neither every camera gimbal nor every arbitrary rotor is thereby classified as mechanical gyroscopic stabilization.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "second",
+      "rationaleDe": "Beide Runden verbinden den Momentbetrag im homogenen Feld mit der Deutung paralleler und antiparalleler Gleichgewichtslagen. B prüft die Feldumkehr einschließlich des Sonderfalls eines verschwindenden Moments; Winkeldefinition, Drehsinn und Dämpfungsbedingung verhindern bloßes Formeleinsetzen.",
+      "rationaleEn": "Both rounds connect torque magnitude in a uniform field with parallel and antiparallel equilibria. B tests field reversal including the zero-torque special case; angle definition, turning direction, and damping condition prevent mere formula substitution.",
+      "reviewerDifferenceHandlingDe": "As kleine Auslenkung und Bs Feldumkehr sind kompatible Stabilitätsprüfungen. Feldgradientkräfte, Quantenspin oder eine eigenständige Schwingungstheorie werden nicht ergänzt.",
+      "reviewerDifferenceHandlingEn": "A's small displacement and B's field reversal are compatible stability checks. No field-gradient forces, quantum spin, or separate oscillation theory is added.",
+      "materialDissentIdentified": false,
+      "hold": false
+    },
+    {
+      "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "status": "draft_for_parent_review",
+      "proposedDisposition": "keep",
+      "proposedEvidenceRound": "first",
+      "rationaleDe": "Beide Runden begründen die gemeinsame Auswertung von Ablenkung und Schwingung durch die Elimination des unbekannten Magnetmoments; die zwei Schritte bleiben ein integriertes Messverfahren. A ist als Synthesebasis enger: anderer Magnet bei angegebener Hauptlage, bekanntem Trägheitsmoment und kontrollierten Näherungen.",
+      "rationaleEn": "Both rounds justify combining deflection and oscillation through elimination of the unknown magnetic moment, preserving one integrated measurement method. A is the narrower synthesis basis: a different magnet with a specified principal-position geometry, known moment of inertia, and controlled approximations.",
+      "reviewerDifferenceHandlingDe": "Bs andere Hauptlage ist nur bei ausdrücklich mitgelieferter Geometrie und Konvention ein geeigneter Zusatzfall; sie wird nicht als neuer Pflichtumfang verlangt. Der Vorschlag übernimmt keine unbenannte Hauptlagenkonvention und keinen neu geprüften normativen Quellenanspruch.",
+      "reviewerDifferenceHandlingEn": "B's other principal position is suitable only when geometry and conventions are explicitly supplied; it is not imposed as new mandatory scope. The proposal assumes no unstated principal-position convention and makes no newly verified normative-source claim.",
+      "materialDissentIdentified": false,
+      "hold": false
+    }
+  ],
+  "nextStep": "Parent review and explicit authorization are required before a new exact-carryover helper or any final resolution is authored. Re-run this full-page/current-context audit immediately before emission, preserving original record IDs, exact line digests and all native source bindings."
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "reviewRevision": 3,
+  "documentedAtObserved": "2026-09-07 01:00:57 UTC",
+  "humanApproval": false,
+  "descriptionReviewApproval": false,
+  "activeAssetImport": false,
+  "records": [
+    {
+      "schemaVersion": 1,
+      "reviewRevision": 3,
+      "documentedAtObserved": "2026-09-07 00:59:38 UTC",
+      "reviewer": {
+        "agent": "/root/math_b039_blind_a",
+        "provider": "OpenAI",
+        "product": "Codex",
+        "underlyingModel": "exact identifier unavailable",
+        "humanApproval": false,
+        "authority": "ai_candidate_review"
+      },
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "candidateNumber": 4,
+      "image": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/1b664036-3c29-5d94-9f42-97069aaa2c53/candidate-4/1b664036-3c29-5d94-9f42-97069aaa2c53.generated.2026-09-07T00-53-22-933Z.jpg",
+        "sha256": "sha256:ff046afbff9057908ccb6ff0fd696a91917b4a15bb6294c5ca3bfad897a3547f",
+        "actuallyViewed": true,
+        "method": "view_image",
+        "detail": "original"
+      },
+      "decision": "reject",
+      "findings": [
+        "Die linke T₂-Formel ist wieder vollständig lesbar und korrekt. Die Tabelle bei x=1 enthält die richtigen Näherungen 1;2;2,5;2,667 zu e≈2,718.",
+        "Das zweite Zahlenpanel wurde durch eine Deutung ersetzt, obwohl der unapplied attempt-4 dies nicht verlangte. Die neue unqualifizierte Aussage 'Höherer Grad = Bessere Näherung' gilt nicht für jeden festen reellen x bei jedem einzelnen Gradeschritt. Zum Beispiel bei x=−3: T₀=1, T₁=−2; der absolute Fehler steigt von ungefähr 0,950213 auf 2,049787.",
+        "Der beauftragte Ein-Zeilen-Ersatz beschränkt die Aussage ausdrücklich auf x=1 und die korrekt dargestellte obere Tabelle."
+      ],
+      "minimalCorrection": "Ersetze ausschließlich 'Höherer Grad = Bessere Näherung' durch 'Bei x = 1: höherer Grad → bessere Näherung'.",
+      "provenance": {
+        "otherReviewerRecordsRead": false,
+        "fullyBlinded": false,
+        "parentConcernKnownBeforeOwnView": true,
+        "actualRequestArchive": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/1b664036-3c29-5d94-9f42-97069aaa2c53/candidate-4/archive-receipt.json",
+        "cliIgnoredNotApplied": true,
+        "attempt4Applied": false,
+        "explanation": "Actual request and native prompt collector confirm only the standard goal prompt plus C3 reference. Unapplied authored text is archived under unapplied-attempt-4.prompt.de.md, not claimed as the effective request."
+      },
+      "activeAssetsChanged": false,
+      "descriptionReviewDecision": false
+    },
+    {
+      "schemaVersion": 1,
+      "documentedAtObserved": "2026-09-07 01:00:57 UTC",
+      "reviewer": {
+        "agent": "/root/math_b039_blind_a",
+        "provider": "OpenAI",
+        "product": "Codex",
+        "underlyingModel": "exact identifier unavailable",
+        "authority": "ai_author_visual_check",
+        "humanApproval": false,
+        "independentOfGeneration": false
+      },
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "candidateNumber": 5,
+      "image": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/1b664036-3c29-5d94-9f42-97069aaa2c53/candidate-5/1b664036-3c29-5d94-9f42-97069aaa2c53.generated.2026-09-07T01-00-03-702Z.jpg",
+        "sha256": "sha256:9d2aad63f4a6504b004547fccb8f68b48743e3677089ef29afa247b8a1f50275",
+        "actuallyViewed": true,
+        "method": "view_image",
+        "detail": "original"
+      },
+      "decision": "needs_independent_review",
+      "authorCheck": {
+        "mathematicalContent": "pass",
+        "targetedCorrectionPresent": true,
+        "findings": [
+          "Die Zeile lautet jetzt erkennbar 'Bei x = 1: höherer Grad → bessere Näherung', auf zwei Zeilen umgebrochen. Die Einschränkung passt zur oberen Tabelle und beseitigt die unqualifizierte Aussage.",
+          "Alle vier Taylorformeln einschließlich T₂ sind vollständig lesbar und mathematisch richtig. Die Tabelle bei x=1 enthält unverändert die richtigen Werte.",
+          "Im neu bearbeiteten Text sind um 'Grad' und den Beginn von 'bessere' leichte Überdruck-/Wischreste sichtbar. Die gemeinte Aussage bleibt lesbar; der Root soll die tatsächlichen Rasterreste in seiner unabhängigen Sicht beurteilen."
+        ],
+        "noFurtherGenerationPerformed": true
+      },
+      "provenance": {
+        "actualRequestArchive": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/1b664036-3c29-5d94-9f42-97069aaa2c53/candidate-5/archive-receipt.json",
+        "promptAppendApplied": true,
+        "cliIgnoredNotApplied": false,
+        "nativeCommand": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH node scripts/generate_goal_visualization_nano_banana.mjs --goal 1b664036-3c29-5d94-9f42-97069aaa2c53 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --subject DE/Gymnasium/Mathematik --lang de --reference-image curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/1b664036-3c29-5d94-9f42-97069aaa2c53/candidate-4/1b664036-3c29-5d94-9f42-97069aaa2c53.generated.2026-09-07T00-53-22-933Z.jpg --prompt-append-file curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/1b664036-3c29-5d94-9f42-97069aaa2c53/attempt-5.prompt.de.md --no-import",
+        "firstObservedBeforeInvocation": "2026-09-07 00:59:37 UTC",
+        "timingNote": "The observation before invoking the native generator is a bound, not a fabricated exact process start. Output timestamp identifies the native saved raster.",
+        "skillInfluence": "Imagegen prompt guidance used for explicit edit-target role, exact replacement wording, and invariant preservation; repository-native Nano Banana CLI used as explicitly requested."
+      },
+      "activeAssetsChanged": false,
+      "descriptionReviewDecision": false
+    }
+  ]
+}

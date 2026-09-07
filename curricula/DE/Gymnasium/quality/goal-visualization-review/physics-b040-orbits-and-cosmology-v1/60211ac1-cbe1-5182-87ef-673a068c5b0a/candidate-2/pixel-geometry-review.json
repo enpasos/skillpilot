@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "imagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-orbits-and-cosmology-v1/60211ac1-cbe1-5182-87ef-673a068c5b0a/candidate-2/60211ac1-cbe1-5182-87ef-673a068c5b0a.generated.2026-09-07T00-18-38-443Z.jpg",
+  "imageSizePx": [
+    2752,
+    1536
+  ],
+  "method": "Read-only RGB segmentation of blue orbit pixels near the visible contour, excluding the planet boxes; least-squares fit of an axis-aligned ellipse. Sun centre estimated from bounding box of yellow pixels in its local region. Approximate raster estimates, not exact source geometry.",
+  "orbitPixelCount": 39717,
+  "orbitRgbThresholds": {
+    "R": [
+      40,
+      135
+    ],
+    "G": [
+      85,
+      185
+    ],
+    "B": [
+      140,
+      225
+    ]
+  },
+  "ellipseCentrePx": [
+    1380.714609732107,
+    719.011485734655
+  ],
+  "semiMajorAxisPx": 927.2553422325516,
+  "semiMinorAxisPx": 510.2692063051606,
+  "focalDistancePx": 774.2272320162266,
+  "expectedLeftFocusPx": [
+    606.4873777158805,
+    719.011485734655
+  ],
+  "sunYellowPixelBoundingBoxPx": [
+    924,
+    618,
+    1098,
+    790
+  ],
+  "observedSunCentrePx": [
+    1011,
+    704
+  ],
+  "sunFocusDistancePx": 404.7910649843157,
+  "medianAbsoluteNormalizedRadialResidual": 0.004523965708454147,
+  "conclusion": "FAIL: the Sun remains hundreds of pixels too close to the ellipse centre. The focus error is far larger than contour thickness and fitting uncertainty."
+}

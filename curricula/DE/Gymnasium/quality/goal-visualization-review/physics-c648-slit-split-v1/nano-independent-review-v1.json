@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "goal-visualization-independent-ai-review-v1",
+  "reviewedAt": "2026-09-07T02:00:43.730Z",
+  "reviewedBy": "codex-b040r-fresh-blind-b",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "humanApproval": false,
+  "scope": "Original Nano JPEG candidates only; proposed bilingual goals and all three full prompts read. All three 2752x1536 originals visually inspected at original detail. Formulas independently derived and numerical examples recalculated. This is not OCR-only validation and does not import or approve canonical assets.",
+  "independence": "No generator outputs or other reviewers' scripts informed the first visual decisions. Root subsequently confirmed the same findings. Earlier B040r synthesis is a separate nonblind task.",
+  "formulaChecks": {
+    "doubleSlit": "Normally incident equal-phase sources: Δs≈d sinθ; constructive phases require mλ, destructive phases require (m+1/2)λ. Screen geometry y=L tanθ; y≈L sinθ only at small angles.",
+    "grating": "Adjacent-slit phase agreement requires g sinθ=mλ. With 500 lines/mm, g=2 µm; λ/g=0.25, θ1=14.4775121859°, y1=0.2581988897 m at L=1 m. |m|=4 is grazing and cannot hit a finite screen; no universal grating-minimum rule is inferred.",
+    "singleSlit": "Uniform-aperture amplitude integration gives I/I0=[sin(πu)/(πu)]², u=b sinθ/λ. Nonzero integer u are zeros. Differentiation gives tan(πu)=πu for nonzero secondary extrema; independently solved first positive maximum u=1.4302966531242025 and I/I0=0.04719044922581128."
+  },
+  "reviews": [
+    {
+      "goalId": "55dbede5-2fee-51e7-ac13-e3b0227c502e",
+      "case": "double-slit",
+      "decision": "PASS",
+      "path": "tmp/goal-visualizations/55dbede5-2fee-51e7-ac13-e3b0227c502e/generated/55dbede5-2fee-51e7-ac13-e3b0227c502e.generated.2026-09-07T01-51-01-365Z.jpg",
+      "sha256": "sha256:8c0dcb985fb97a45160504e11a5b2b7bd657649d1054245fc03fb6fc00674e56",
+      "checks": [
+        "Exactly two open slits; the d dimension ends at both aperture centres, not at aperture edges.",
+        "Normal parallel incident arrows; the dashed geometric leg and horizontal reference have the same origin at the midpoint between the slits.",
+        "O lies on the central bright m=0 stripe, P on the upper bright m=+1 stripe, y is measured O to P, and L is measured between aperture and screen planes.",
+        "Dark minimum pointer lies between bright orders 0 and +1; the ±1 bright stripes are symmetrically placed within hand-drawn precision.",
+        "All visible phase, path-difference and screen formulas match the stated far-field idealization without envelope.",
+        "Independent exact geometry gives first bright positions ±5.000015625 mm and nearest dark positions ±2.500001953 mm, supporting the displayed rounded values."
+      ],
+      "cosmeticNotes": [
+        "The non-scale sketch caption is duplicated. This introduces no scientific contradiction and is not a blocker."
+      ],
+      "blockers": []
+    },
+    {
+      "goalId": "df4acb52-b700-5b44-bc1e-11d73f24d061",
+      "case": "grating",
+      "decision": "BLOCK",
+      "path": "tmp/goal-visualizations/df4acb52-b700-5b44-bc1e-11d73f24d061/generated/df4acb52-b700-5b44-bc1e-11d73f24d061.generated.2026-09-07T01-51-04-733Z.jpg",
+      "sha256": "sha256:c423e985f7e56b214e41822c3ad9745cccf150a62befe0656d261cc5946f1ecf",
+      "checks": [
+        "Six open apertures are present; the enlargement identifies g between adjacent aperture centres.",
+        "Textual principal-maximum condition, finite-screen grazing limit and all displayed numerical values are correct.",
+        "The caption limits the illustration to selected principal maxima and does not claim that secondary maxima are absent."
+      ],
+      "blockers": [
+        "P is at the upper ray endpoint around screen y≈516 px, whereas the y1 arrow and m=+1 designation terminate around y≈570 px. These are different points, so the geometry does not identify one consistent measured maximum.",
+        "Rays drawn from different apertures end at different upper screen heights (approximately 516 and 568 px, with the dashed line between them) rather than the same principal-maximum observation point.",
+        "The extra Δs double arrow measures a transverse separation between a ray and the dashed geometric line, not the optical path-length difference along propagation. This is incompatible with the displayed Δs≈g sinθ interpretation."
+      ],
+      "requiredRepair": "Use one unambiguous geometric midpoint-to-P leg and measure y1 from O to that same P. Remove the invented Δs transverse measure or replace it with a correct path-difference construction. All contributing rays intended to meet at P must actually meet there."
+    },
+    {
+      "goalId": "6e4faa1f-bccf-574e-bdb9-544f44c1d7f7",
+      "case": "single-slit",
+      "decision": "BLOCK",
+      "path": "tmp/goal-visualizations/6e4faa1f-bccf-574e-bdb9-544f44c1d7f7/generated/6e4faa1f-bccf-574e-bdb9-544f44c1d7f7.generated.2026-09-07T01-51-08-476Z.jpg",
+      "sha256": "sha256:4b1922196d74e9dc961eaa3918a33a1f15d183676a75fb589d2da59063404a9c",
+      "checks": [
+        "Exactly one aperture; b measures the gap between its two edges.",
+        "The minima formula excludes m=0, the centre is a central maximum, and the first-minimum pairwise-cancellation statement is correct.",
+        "All printed screen-position formulas and rounded example numbers are correct: first minima ±5.000015625 mm, central width 10.000031250 mm, first secondary maxima ±7.151528985 mm.",
+        "The horizontal intensity axis has equally spaced unique ticks -2,-1,0,+1,+2, and zeros occur at the stated integer locations."
+      ],
+      "blockers": [
+        "The intensity plot uses a single I/I0 axis with baseline near y=1412 px and unit peak near y=1042 px. The dashed line labelled 0.047 and the first side peak lie near y=1371 px, about 0.11 of the central height, not 0.047. No separate expanded side-lobe scale is declared.",
+        "The first drawn positive side peak is near x=1088 px, while u=0 is near x=728 and u=1 near x=970: u≈1.49, nearly the half-order explicitly warned against, not the stated u≈1.43.",
+        "The screen is drawn obliquely in perspective and the L endpoint, O and vertical y1 measure use different projected references, despite the requested flat 2D geometry. The defective intensity scale is independently sufficient to block."
+      ],
+      "requiredRepair": "Generate the actual sinc-squared curve on one correct linear intensity scale, with first side maximum u=1.430296653 and height 0.047190449. Keep zeros at integer u and all labels tied to the actual plotted locations. Use one flat screen line with consistent O, first minimum, y1 and L references."
+    }
+  ]
+}

@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `5042fd2b-bab2-50be-8144-c9ccf5618615.jpg`
 
 ## Zweck
@@ -18,38 +18,20 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein detailliertes, didaktisches Diagramm zur Veranschaulichung der Beziehung zwischen einer Funktion und ihrer Stammfunktion. Der Hintergrund ist hellblau mit schwachen, weißen mathematischen Formeln und Symbolen, die wie auf einer Tafel geschrieben aussehen. Im Vordergrund befindet sich ein großes, weißes Rechteck mit abgerundeten Ecken und schwarzem Rand, das das Hauptdiagramm enthält.
+Ein mathematisches Diagramm auf einem hellblauen Hintergrund mit subtilen, verblassten Kreidezeichnungen. Oben zentriert steht der Titel in schwarzer, fetter Schrift: "Graphen von Integrand und Integralfunktion wechselseitig deuten". Darunter sind zwei große, weiße Rechteckfelder mit abgerundeten Ecken vertikal angeordnet.
 
-Oben im weißen Rechteck steht der schwarze Titel: "Graphen von Integrand und Integralfunktion wechselseitig deuten".
+Das obere Feld zeigt links den Text "Integrand\nf(x)" in Schwarz. Rechts davon befindet sich ein Koordinatensystem mit einer schwarzen, nach rechts zeigenden x-Achse (beschriftet "x") und einer schwarzen, nach oben zeigenden y-Achse (beschriftet "y"). Die y-Achse hat schwarze Teilstriche und Beschriftungen bei 0, 2 und -2. Die x-Achse hat Teilstriche und Beschriftungen bei 0 und 2. Eine rote, gerade Linie, die die Funktion f(x) = 2 - x darstellt, verläuft von (0,2) durch (2,0) nach rechts unten. Der Bereich zwischen dieser roten Linie und der x-Achse ist hellrot schattiert. Über dem schattierten Bereich für x < 2 steht in einem hellroten, abgerundeten Kasten der Text "f(x) > 0". Unter dem schattierten Bereich für x > 2 steht in einem hellroten, abgerundeten Kasten der Text "f(x) < 0". Bei x=2 auf der x-Achse ist ein roter Punkt, von dem eine schwarze Linie nach oben zu dem schwarzen Text "f(2) = 0\n(Nullstelle)" führt. Rechts neben der roten Linie steht der schwarze Text "f(x) = 2 - x".
 
-Das Diagramm ist horizontal in zwei Hauptbereiche unterteilt, getrennt durch eine gestrichelte schwarze Linie in der Mitte.
+In der Mitte, zwischen den beiden weißen Feldern, verläuft eine gestrichelte schwarze Linie. Oberhalb dieser Linie sind drei hellrote, abgerundete Textkästen horizontal angeordnet: "f > 0 → F steigt" (links), "f = 0 → waagrechte Tangente an F" (Mitte) und "f < 0 → F fällt" (rechts). Unterhalb der gestrichelten Linie sind zwei hellblaue, abgerundete Textkästen horizontal angeordnet: "Wechselseitiges Deuten\n(Integration)" (links) und "Wechselseitiges Deuten\n(Ableitung / Steigung)" (rechts).
+Pfeile verbinden diese Elemente:
+- Ein roter, geschwungener Pfeil zeigt vom oberen Graphen (Bereich f(x) > 0) nach unten rechts zum Kasten "f > 0 → F steigt".
+- Ein hellblauer, geschwungener Pfeil zeigt vom Kasten "f > 0 → F steigt" nach unten links zum Kasten "Wechselseitiges Deuten\n(Integration)".
+- Ein hellblauer, geschwungener Pfeil zeigt vom Kasten "Wechselseitiges Deuten\n(Integration)" nach oben rechts zum oberen Graphen (Bereich f(x) > 0).
+- Ein roter, geschwungener Pfeil zeigt vom oberen Graphen (Bereich f(x) < 0) nach unten links zum Kasten "f < 0 → F fällt".
+- Ein hellblauer, geschwungener Pfeil zeigt vom Kasten "f < 0 → F fällt" nach unten rechts zum Kasten "Wechselseitiges Deuten\n(Ableitung / Steigung)".
+- Ein hellblauer, geschwungener Pfeil zeigt vom Kasten "Wechselseitiges Deuten\n(Ableitung / Steigung)" nach oben links zum oberen Graphen (Bereich f(x) < 0).
+- Ein roter, vertikaler Pfeil zeigt vom roten Punkt bei x=2 auf der x-Achse des oberen Graphen nach unten zum Kasten "f = 0 → waagrechte Tangente an F".
+- Ein roter, vertikaler Pfeil zeigt vom Kasten "f = 0 → waagrechte Tangente an F" nach unten zum Hochpunkt des unteren Graphen.
 
-**Oberer Bereich (Integrand f(x)):**
-Links neben dem Graphen steht der schwarze Text "Integrand\nf(x)".
-Ein Koordinatensystem mit schwarzen x- und y-Achsen, die jeweils mit Pfeilen enden. Die y-Achse ist oben mit 'y' und die x-Achse rechts mit 'x' beschriftet. Ein hellgraues Gitter ist sichtbar.
-Auf der x-Achse sind die Punkte 'x=2' und 'x=4' markiert.
-Eine rote Kurve, die die Funktion f(x) darstellt, verläuft durch das Koordinatensystem.
-Der Bereich zwischen der roten Kurve und der x-Achse ist hellrot schattiert.
-Bei x=2 schneidet die rote Kurve die x-Achse. An dieser Stelle ist ein roter Punkt auf der x-Achse markiert. Eine dünne schwarze Linie führt von diesem Punkt nach oben zu einem weißen Textfeld mit schwarzem Rand, das "f(2) = 0\n(Nullstelle)" enthält.
-Links von x=2, oberhalb der roten Kurve, befindet sich ein weißes Textfeld mit schwarzem Rand, das "f(x) > 0" enthält.
-Rechts von x=2, unterhalb der roten Kurve, befindet sich ein weißes Textfeld mit schwarzem Rand, das "f(x) < 0" enthält.
-
-**Mittlerer Bereich (Verbindung der Graphen):**
-Die gestrichelte schwarze Linie trennt die beiden Graphen.
-Links befindet sich ein hellblaues Rechteck mit abgerundeten Ecken und schwarzem Rand, das den Text "Wechselseitiges Deuten\n(Integration)" enthält. Ein großer, hellblauer Pfeil zeigt von diesem Feld nach unten.
-Ein hellrosa Rechteck mit abgerundeten Ecken und schwarzem Rand, das "f > 0 → F steigt" enthält, ist über einem großen roten Pfeil platziert, der von der oberen Kurve (wo f(x) > 0) nach unten zeigt.
-Zentral befindet sich ein hellrosa Rechteck mit abgerundeten Ecken und schwarzem Rand, das "f = 0 → waagrechte\nTangente an F" enthält. Ein großer roter Pfeil zeigt von diesem Feld nach unten, genau über x=2.
-Ein hellrosa Rechteck mit abgerundeten Ecken und schwarzem Rand, das "f < 0 → F fällt" enthält, ist über einem großen roten Pfeil platziert, der von der oberen Kurve (wo f(x) < 0) nach unten zeigt.
-Rechts befindet sich ein hellblaues Rechteck mit abgerundeten Ecken und schwarzem Rand, das den Text "Wechselseitiges Deuten\n(Ableitung / Steigung)" enthält. Ein großer, hellblauer Pfeil zeigt von diesem Feld nach oben.
-
-**Unterer Bereich (Integralfunktion F(x)):**
-Links neben dem Graphen steht der schwarze Text "Integralfunktion\nF(x) mit\nF'(x)=f(x)".
-Ein Koordinatensystem mit schwarzen x- und y-Achsen, die jeweils mit Pfeilen enden. Die y-Achse ist oben mit 'y' und die x-Achse rechts mit 'x' beschriftet. Ein hellgraues Gitter ist sichtbar.
-Auf der x-Achse sind die Punkte 'x=2' und '4' markiert.
-Eine blaue Kurve, die die Funktion F(x) darstellt, verläuft durch das Koordinatensystem.
-Der Bereich hinter der blauen Kurve ist in den Abschnitten links und rechts von x=2 hellblau schattiert, um die Funktionsbereiche hervorzuheben.
-Bei x=2 befindet sich ein blauer Punkt auf der blauen Kurve. Eine dünne schwarze Linie führt von der x-Achse bei x=2 nach oben zu diesem Punkt. Eine gestrichelte blaue horizontale Linie erstreckt sich von diesem blauen Punkt nach rechts.
-Links von x=2, unterhalb der blauen Kurve, befindet sich ein weißes Textfeld mit schwarzem Rand, das "F steigt\n(Steigung > 0)" enthält.
-Rechts von x=2, unterhalb der blauen Kurve, befindet sich ein weißes Textfeld mit schwarzem Rand, das "F fällt\n(Steigung < 0)" enthält.
-Oberhalb des blauen Punktes bei x=2 befindet sich ein weißes Textfeld mit schwarzem Rand, das "F hat Hochpunkt\n(waagrechte Tangente)" enthält. Eine dünne schwarze Linie verbindet dieses Feld mit dem blauen Punkt.
+Das untere Feld zeigt links den Text "Integralfunktion\nF(x) mit\nF'(x)=f(x)" in Schwarz. Rechts davon befindet sich ein Koordinatensystem mit einer schwarzen, nach rechts zeigenden x-Achse (beschriftet "x") und einer schwarzen, nach oben zeigenden y-Achse (beschriftet "y"). Die y-Achse hat schwarze Teilstriche und Beschriftungen bei 0 und 2. Die x-Achse hat Teilstriche und Beschriftungen bei 0, 2 und 4. Eine blaue, parabolische Kurve, die die Funktion F(x) = 2x - x²/2 darstellt, verläuft von (0,0) über einen Hochpunkt bei (2,2) nach (4,0). Für x < 2 steht auf der Kurve der schwarze Text "F steigt\n(Steigung > 0)". Für x > 2 steht auf der Kurve der schwarze Text "F fällt\n(Steigung < 0)". Bei x=2 auf der Kurve ist ein blauer Punkt, von dem eine schwarze Linie nach unten zu dem schwarzen Text "F hat Hochpunkt\n(waagrechte Tangente)" führt. Eine gestrichelte blaue Linie verläuft horizontal durch diesen Hochpunkt. Rechts neben der blauen Kurve steht der schwarze Text "F(x) = 2x - x²/2".
 ```

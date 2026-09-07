@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)
 - Status: pilot
 - Quellbild: `70a21623-6c87-55ae-b534-ab45a3b9b1d2.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/70a21623-6c87-55ae-b534-ab45a3b9b1d2/70a21623-6c87-55ae-b534-ab45a3b9b1d2.jpg`
@@ -31,19 +31,15 @@ Titel: Konvergenzgeschwindigkeit numerischer Verfahren vergleichen
 Beschreibung: Die lernende Person kann Bisektionsverfahren, Newton-Verfahren und Regula falsi hinsichtlich Konvergenzgeschwindigkeit, Rechenaufwand und Voraussetzungen an Beispielen vergleichen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-- Erzeuge eine neue, tabellenbasierte Vergleichsinfografik für `f(x)=x²−2` und die Nullstelle `√2`.
-- Bisektion mit Startintervall `[1;2]`: `[1;2] → [1;1,5] → [1,25;1,5]`; Voraussetzung Vorzeichenwechsel; robust, aber linear und eher langsam.
-- Regula falsi: erste Näherungen `1,333…` und `1,4`; Voraussetzung Vorzeichenwechsel; meist schneller, kann einseitig stagnieren.
-- Newton mit `x₀=1,5`: `x₁≈1,4167`, `x₂≈1,4142`; benötigt Ableitung und geeigneten Startwert; nahe der Nullstelle sehr schnell.
-- Vergleiche Rechenaufwand, Voraussetzung, Tempo und Risiko in klaren Zeilen.
-
-Vermeiden:
-- Keine komplexen Iterationsgraphen mit mehrfach oder falsch beschrifteten Punkten.
-- Keine Gleichsetzung von Tempo und garantierter Sicherheit.
-- Keine Dezimalpunkte.
-
-Korrekturhinweis: Beschreibe Regula falsi als `meist schneller als Bisektion, aber weiterhin typischerweise linear`. Schreibe niemals `schneller als linear`.
+Use case: scientific-educational
+Korrigiere nur die beigefügte Lernzielgrafik. Behalte Stil, Titel, drei Spalten, Farben, Zahlen und übrige Texte.
+In der mittleren Spalte Regula falsi ist das Lineal samt blauer Linie und Punkten unbrauchbar, weil es r₂=1,4 doppelt und an widersprüchlichen Stellen zeigt. Entferne das komplette Lineal, die blaue Achse, sämtliche Punkte und Beschriftungen des kleinen Diagramms. Setze stattdessen drei einfache übereinander liegende Zahlenkärtchen ohne Koordinaten oder Maßstab:
+"Start: [1; 2]"
+"r₁ = 4/3 → [4/3; 2]"
+"r₂ = 1,4 → [1,4; 2]"
+Jeder Text darf genau einmal in der mittleren Spalte stehen. Kein graphisches Sekanten-/Intervallbild ergänzen. Kleine dekorative Kreide oder ein Stift ohne Zahlen sind erlaubt.
+Unten in der mittleren Spalte den Tippfehler "von von" beseitigen; verbindlicher Text: "Tempo abhängig von der Funktion; ein Rand kann lange festbleiben".
+Übrige Bisektion und Newton unverändert lassen. Alle Texte müssen vollständig und ohne Überlappung lesbar bleiben.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,40 @@
+# Bildrekonstruktionsprompt: Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `c64820e1-c0ee-4342-9225-f981650f0c52`
+- Titel: Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen
+- Beschreibung: Die lernende Person kann die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewaehlten Beugungsvorgaengen in Fernfeldnaeherung fuer Einzelspalt, Doppelspalt und Gitter berechnen.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)
+- Quellbild: `c64820e1-c0ee-4342-9225-f981650f0c52.jpg`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Ein klares, lehrreiches Diagramm im Stil einer handgezeichneten Skizze mit dicken schwarzen Umrissen, das ein physikalisches Experiment zur Beugung und Interferenz im Fernfeld darstellt. Der Hintergrund ist oben hellblau und verläuft nach unten hin in ein sehr helles Blau oder Weiß. Oben mittig steht der Titel in schwarzer, serifenloser Schrift: "Fernfeld: Maxima und Minima".
+
+Auf der linken Seite befindet sich eine vertikale, graue Blende mit einem einzelnen, schmalen, rechteckigen Spalt in der Mitte. Die Blende besteht aus zwei grauen, rechteckigen Blöcken, die den Spalt umschließen. Aus dem Spalt treten nach rechts hin schwache, hellblaue, konzentrische Wellenfronten hervor.
+
+Eine dicke schwarze horizontale Linie erstreckt sich vom Mittelpunkt des Spaltes nach rechts. Eine weitere dicke schwarze Linie beginnt ebenfalls am Mittelpunkt des Spaltes und steigt schräg nach oben an. Zwischen dieser schrägen Linie und der horizontalen Linie ist ein Bogen eingezeichnet, der den Winkel "θ" (Theta) markiert. Unterhalb der horizontalen Linie, etwa in der Mitte zwischen Spalt und Schirm, ist die Länge "L" beschriftet.
+
+Auf der rechten Seite des Bildes steht ein vertikaler, dunkelgrauer Schirm mit einem dünnen, hellrosa-beigen Rand. Auf diesem Schirm sind drei helle, ovale, weiß-graue Flecken zu sehen, die ein Interferenzmuster darstellen. Der mittlere Fleck ist auf Höhe der horizontalen Linie und ist mit "m = 0" rechts daneben beschriftet. Der obere Fleck ist oberhalb des mittleren Flecks und ist mit "m = +1" rechts daneben beschriftet. Der untere Fleck ist unterhalb des mittleren Flecks und ist mit "m = -1" rechts daneben beschriftet. Die schräge Linie vom Spalt zeigt genau auf den oberen Fleck (m = +1). Eine vertikale schwarze Linie mit Pfeilspitzen an beiden Enden, beschriftet mit "y₁", verbindet die horizontale Linie mit dem oberen Fleck (m = +1) auf dem Schirm.
+
+Oberhalb der horizontalen Linie und rechts vom Spalt befinden sich zwei beige, rechteckige Textfelder mit dicken schwarzen Umrissen.
+Das linke Textfeld enthält folgende schwarze Schrift:
+Einzelsplt-Minima:
+b sin(θ) = mλ
+m = ±1, ±2, ... (m ≠ 0)
+
+Das rechte Textfeld, rechts neben dem ersten, enthält folgende schwarze Schrift:
+d sin(θ) = mλ
+y_m ≈ L tan(θ)
+
+Die Schriftart für alle Texte und mathematischen Symbole ist klar, serifenlos und wirkt leicht handgeschrieben oder cartoonhaft. Das gesamte Diagramm ist sauber und übersichtlich gestaltet, um physikalische Konzepte zu veranschaulichen.
+```

@@ -1,0 +1,1340 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-p19-authoring-context-v1",
+  "phase": "profile-bodies-authored-awaiting-confirmed-stable-inputs",
+  "observedAt": "2026-09-07T00:36:46.502Z",
+  "author": {
+    "provider": "OpenAI",
+    "model": "unknown",
+    "modelVersion": "unknown",
+    "authority": "ai_candidate",
+    "humanApprovalClaimed": false
+  },
+  "sourceInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040-taylor-digital-tools-and-integrals-20-v1/round-a/batches/mathematik-rollout-v1-batch-040-taylor-digital-tools-and-integrals-20-v1-20260907-first-pass-a.batch-001.input.jsonl",
+    "sha256": "sha256:adf192529f53f5282c03ef000c426d50221a48a61f738ba96da73dee0c0432c6"
+  },
+  "criteria": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+    "sha256": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "readInFull": true
+  },
+  "excludedGoalIds": [
+    "a9ed219d-d497-55e5-a4e0-4d45d2554f6b"
+  ],
+  "scopeNotes": [
+    "All nineteen current bound bilingual descriptions, demand levels, direct relations, applicability and supplied source-reference context were read. Original twenty active JPGs were directly viewed during the closed D-A round. These P bodies neither reuse D case text nor claim image approval.",
+    "Fresh application cases were authored independently here; no earlier P profile bodies were read or copied. Only the prior P39 config format was inspected.",
+    "The two instructed precision changes at 3862890e and 9441bb35 are explicit in the bodies. Current canonical wording/requirements and semantic-kind bindings must be checked after root confirms Stable.",
+    "reviewedResourceTypes is empty: images remain in their independent QA lane. Final materialization still waits for root stable confirmation and is not performed by this body author.",
+    "A later materialization/context receipt must bind actual then-current goal and criteria fingerprints. This receipt is authoring context, not a fabricated completed run or current-input certification."
+  ],
+  "originalBoundGoalContexts": [
+    {
+      "goalId": "911f3200-1dbc-59a6-90df-c883c77de39c",
+      "titleDe": "Geometrische Reihen in Anwendungen nutzen (LK)",
+      "titleEn": "Use geometric series in applications (advanced course)",
+      "descriptionDe": "Die lernende Person kann geometrische Reihen in geeigneten Anwendungssituationen modellieren und auswerten.",
+      "descriptionEn": "The learner can model and evaluate geometric series in suitable application contexts.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": false,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2",
+            "K4.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.SERIES_HARMONIC_GEOMETRIC_BY.GEOMETRIC_APPLICATIONS"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+          "b66d13c5-187e-530b-b4d3-efc7506a7f34"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": "canonical_math_sek2_q4_harmonic_geometric_series_applications_by_geometric_applications",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "titleDe": "Grundidee von Taylorpolynomen erläutern (LK)",
+      "titleEn": "Explain the basic idea of Taylor polynomials (advanced course)",
+      "descriptionDe": "Die lernende Person kann die Grundidee von Taylorpolynomen an der Entwicklungsstelle 0 fachsprachlich erläutern.",
+      "descriptionEn": "The learner can explain the basic idea of Taylor polynomials at expansion point 0.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": false,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB3",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K1.4",
+            "K3.2",
+            "K5.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.TAYLOR_IDEA"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "911f3200-1dbc-59a6-90df-c883c77de39c"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_taylor_idea",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "titleDe": "Exponentialfunktion durch Taylorpolynome annähern (LK)",
+      "titleEn": "Approximate the exponential function by Taylor polynomials (advanced course)",
+      "descriptionDe": "Die lernende Person kann die natürliche Exponentialfunktion durch Taylorpolynome annähern und die Approximation deuten.",
+      "descriptionEn": "The learner can approximate the natural exponential function by Taylor polynomials and interpret the approximation.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": false,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB3",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K1.4",
+            "K3.2",
+            "K5.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.EXP_APPROXIMATION"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+          "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "911f3200-1dbc-59a6-90df-c883c77de39c"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_exp_approximation",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "titleDe": "Reihendarstellung der eulerschen Zahl angeben (LK)",
+      "titleEn": "State the series representation of Euler’s number (advanced course)",
+      "descriptionDe": "Die lernende Person kann die Reihendarstellung der eulerschen Zahl $e$ angeben und in den Taylorpolynom-Kontext einordnen.",
+      "descriptionEn": "The learner can state the series representation of Euler’s number $e$ and relate it to Taylor polynomials.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": false,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB3",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K1.4",
+            "K3.2",
+            "K5.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.E_SERIES"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "1b664036-3c29-5d94-9f42-97069aaa2c53",
+          "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "911f3200-1dbc-59a6-90df-c883c77de39c"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_e_series",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+      "titleDe": "Digitale Werkzeuge zur Analyse von Funktionen nutzen",
+      "titleEn": "Use digital tools to analyze functions",
+      "descriptionDe": "Die lernende Person kann ein digitales Werkzeug verwenden, um Funktionsgraphen zu erzeugen, Nullstellen und Extremstellen numerisch zu bestimmen und Ergebnisse kritisch zu prüfen.",
+      "descriptionEn": "The learner can use a digital tool to generate function graphs, numerically determine roots and extrema, and critically examine results.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1",
+            "L4",
+            "L5"
+          ],
+          "phase": "E",
+          "processCompetencies": [
+            "K4.3",
+            "K5.3",
+            "K6.2"
+          ]
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "a8c42ee9-2898-4247-819f-c235032ac78a"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+      "titleDe": "Funktionen digital darstellen und untersuchen",
+      "titleEn": "Represent and investigate functions digitally",
+      "descriptionDe": "Die lernende Person kann digitale Mathematikwerkzeuge bedienen, um Funktionsgraphen zu erzeugen, Parameter interaktiv zu verändern und Beobachtungen zu dokumentieren.",
+      "descriptionEn": "The learner can operate digital mathematics tools to generate function graphs, interactively change parameters, and document observations.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB1",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1",
+            "L5"
+          ],
+          "phase": "E",
+          "processCompetencies": [
+            "K4.2",
+            "K5.2"
+          ]
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+      "titleDe": "Digitale Werkzeuge für numerische Analysen einsetzen",
+      "titleEn": "Deploy digital tools for numerical analyses",
+      "descriptionDe": "Die lernende Person kann digitale Werkzeuge nutzen, um Nullstellen, Extremstellen oder Integrale numerisch zu bestimmen, Ergebnisse kritisch zu prüfen und mit analytischen Verfahren zu vergleichen.",
+      "descriptionEn": "The learner can use digital tools to numerically determine roots, extrema, or integrals, critically examine results, and compare them with analytical methods.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1",
+            "L5"
+          ],
+          "phase": "E",
+          "processCompetencies": [
+            "K4.2",
+            "K5.2"
+          ]
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+          "f40fcaf7-c630-589c-9f48-6c9e69da0b9d"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+      "titleDe": "Flächen unter Graphen näherungsweise bestimmen",
+      "titleEn": "Determine areas under graphs approximately",
+      "descriptionDe": "Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+      "descriptionEn": "The learner can determine areas under function graphs using rectangle sums (upper and lower sums) and other approximation methods, write them as sums, and estimate the accuracy of the approximation.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB1",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K2.2",
+            "K4.2"
+          ]
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+        ],
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "titleDe": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten",
+      "titleEn": "Interpret the definite integral as the limit of upper and lower sums and as a reconstructed quantity",
+      "descriptionDe": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.",
+      "descriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and in particular as a reconstructed quantity and describe this interpretation precisely.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.LIMIT_AND_RECONSTRUCTED_QUANTITY"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "titleDe": "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+      "titleEn": "Reconstruct and interpret quantities from rates of change and an initial value",
+      "descriptionDe": "Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+      "descriptionEn": "The learner can calculate quantities from rates of change and an initial value and interpret the reconstruction in mathematical and real-world contexts.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.APPLICATIONS.STOCK_RECONSTRUCTION"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+        ],
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+      "titleDe": "Hauptsatz geometrisch begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben",
+      "titleEn": "Justify the fundamental theorem geometrically and describe the relation between function, derivative, and antiderivative",
+      "descriptionDe": "Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch anschaulich als Beziehung zwischen Ableiten und Integrieren begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben.",
+      "descriptionEn": "The learner can justify the fundamental theorem of calculus geometrically as a relationship between differentiation and integration and describe the relation between function, derivative, and antiderivative.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K1.4",
+            "K5.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.FTC_GEOMETRIC_JUSTIFICATION"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "titleDe": "Integralfunktion definieren und ihre Bedeutung beschreiben",
+      "titleEn": "Define an integral function and describe its meaning",
+      "descriptionDe": "Die lernende Person kann den Begriff der Integralfunktion definieren, seine Bedeutung beschreiben und den Zusammenhang zwischen Integrand und Integralfunktion an Flächenbetrachtungen erläutern.",
+      "descriptionEn": "The learner can define the concept of an integral function, describe its meaning, and explain the relationship between integrand and integral function using area interpretations.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": false,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2",
+            "K4.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.INTEGRAL_FUNCTION_DEFINE_BY"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "3862890e-9ea9-4c62-bcf2-e354c9d8f306"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": "canonical_math_sek2_q1_integral_function_define_by",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1",
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+      "titleDe": "Graphen von Integrand und Integralfunktion wechselseitig deuten",
+      "titleEn": "Interpret graphs of integrand and integral function mutually",
+      "descriptionDe": "Die lernende Person kann vom Graphen einer Funktion auf den Verlauf einer zugehörigen Integralfunktion schließen und umgekehrt aus einer Integralfunktion den Graphen der Integrandenfunktion erschließen.",
+      "descriptionEn": "The learner can infer the graph of an associated integral function from a function graph and, conversely, infer the graph of the integrand from an integral-function graph.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": false,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2",
+            "K4.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.INTEGRAL_FUNCTION_GRAPHS_BY"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "24f21c0c-b506-56ec-ad17-39b209af4585",
+          "90662398-a0fd-45bf-9ce9-2abbc20428ed"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": "canonical_math_sek2_q1_integral_function_graphs_by",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1",
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "titleDe": "Produktsummen und orientierte Flächen im Sachkontext deuten",
+      "titleEn": "Interpret product sums and oriented areas in context",
+      "descriptionDe": "Die lernende Person kann Produktsummen und Inhalte orientierter Flächen in Sachsituationen deuten und ihre Bedeutung für Gesamtwirkungen qualitativ erläutern.",
+      "descriptionEn": "The learner can interpret product sums and oriented areas in real-world situations and qualitatively explain their meaning for total effects.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ]
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "titleDe": "Graphen von Flächeninhaltsfunktionen skizzieren",
+      "titleEn": "Sketch graphs of area functions",
+      "descriptionDe": "Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+      "descriptionEn": "The learner can qualitatively sketch the graph of the associated area function for the graph of a given boundary function.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ]
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+        ],
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+      "titleDe": "Übergang von Produktsummen zum Integral erläutern und vollziehen",
+      "titleEn": "Explain and Carry Out the Transition from Product Sums to the Integral",
+      "descriptionDe": "Die lernende Person kann an geeigneten Beispielen den Übergang von Produktsummen zum bestimmten Integral auf der Grundlage eines propädeutischen Grenzwertbegriffs erläutern und nachvollziehen.",
+      "descriptionEn": "The learner can explain and trace the transition from product sums to the definite integral in suitable examples based on a propaedeutic notion of limit.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K1.4",
+            "K2.2",
+            "K4.2"
+          ]
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "269675a9-13cd-4a3a-ab75-63794f5c9710",
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "titleDe": "Transformierte Exponential- und trigonometrische Funktionen integrieren",
+      "titleEn": "Integrate transformed exponential and trigonometric functions",
+      "descriptionDe": "Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+      "descriptionEn": "The learner can integrate functions of the form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$, and $\\cos(b\\cdot(x-c))$ using the linear inner transformation or reverse chain rule.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K5.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.1.TRANSFORMED_EXPONENTIAL_TRIG_INTEGRALS"
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+          "d0a9e407-e654-5940-958f-6f608bf3d654",
+          "58d2f963-4fb9-550d-a832-f5ac60808900"
+        ],
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "shortKey": "canonical_math_q1_integrate_transformed_exponential_trig_functions",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.1, S. 36, Spiegelstrich 5",
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+      "titleDe": "Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und anwenden",
+      "titleEn": "Explain and Apply the Fundamental Theorem of Calculus Geometrically and Intuitively",
+      "descriptionDe": "Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und in einfachen Integralzusammenhängen anwenden.",
+      "descriptionEn": "The learner can explain the Fundamental Theorem of Calculus geometrically and intuitively and apply it in basic integral contexts.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K1.4",
+            "K5.2"
+          ]
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    },
+    {
+      "goalId": "ced4f794-9b42-4be4-bde5-7d44f134a140",
+      "titleDe": "Hauptsatz der Differential- und Integralrechnung mit anschaulichem Stetigkeitsbegriff begründen und anwenden (LK)",
+      "titleEn": "Justify and Apply the Fundamental Theorem of Calculus Using an Intuitive Continuity Concept (advanced course)",
+      "descriptionDe": "Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung unter Verwendung eines anschaulichen Stetigkeitsbegriffs begründen und in Integralzusammenhängen anwenden.",
+      "descriptionEn": "The learner can justify the Fundamental Theorem of Calculus using an intuitive concept of continuity and apply it in integral contexts.",
+      "canonicalContext": {
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "competencyRefs": [],
+        "contains": [],
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB3",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "processCompetencies": [
+            "K1.4",
+            "K5.2"
+          ]
+        },
+        "examples": [],
+        "nodeKind": null,
+        "phase": null,
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "shortKey": null,
+        "sourceRef": null,
+        "tags": [
+          "LK"
+        ],
+        "type": "atomic",
+        "weight": 1
+      }
+    }
+  ]
+}

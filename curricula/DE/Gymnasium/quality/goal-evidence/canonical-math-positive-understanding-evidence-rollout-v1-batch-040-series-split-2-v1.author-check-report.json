@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-p2-author-case-checks-v1",
+  "observedAt": "2026-09-07T00:47:00.565Z",
+  "candidateSha256": "sha256:d339b1029dbc6b9af8207cded0de91a1bfae5d56d66951dd6a787c5e3289c490",
+  "profileBodySchemas": 2,
+  "caseSpecificChecks": [
+    {
+      "goalId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+      "caseId": "finite-cancellation",
+      "status": "pass",
+      "checked": "Direct sums and closed formula at n=1,3,8,20; S3=15, S8=0; leading coefficient −1 justifies negative divergence."
+    },
+    {
+      "goalId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+      "caseId": "parameter-boundaries",
+      "status": "pass",
+      "checked": "S4=4a+6d and quadratic/linear decomposition verified for nine parameter combinations; algebraic classification includes d=0 and a=d=0."
+    },
+    {
+      "goalId": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+      "caseId": "alternating-convergence",
+      "status": "pass",
+      "checked": "First four partial sums, signed remainder and shrinking distance to limit4 checked; q-power reasoning stated explicitly."
+    },
+    {
+      "goalId": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+      "caseId": "ratio-classification",
+      "status": "pass",
+      "checked": "Direct sums match closed forms in seven ratio regimes; q=1, q=−1, q<−1 and a=0 handled; analytic q^n classification supplies the limit justification."
+    }
+  ],
+  "authority": "author-side checks only; AI candidate E1/G1, no human approval or observed learner demonstration"
+}

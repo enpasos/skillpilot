@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-b041-fresh-blind-b-20260907",
+  "campaignId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-b",
+  "roundId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:52129716d0dceb2f733eab2777cafd76a6fc4d429ac8c6ee1d01de72183e70ef",
+  "bundleFingerprint": "sha256:4cbb883b57763279fc6419d16751df3098b4c6dcdc293c6747f311ffaf4f499a",
+  "bookDigest": "sha256:14f445255f8ca249a97fd0684294b4d67f1170d7f93574809ec9f26f9505e39f",
+  "provider": "OpenAI",
+  "model": "Codex; inherited runtime identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:0354bd63f1f5546e9b2d22626c86e0746a71b07586d8036a0e5096f470fd5229",
+  "independenceGroupId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+    "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+    "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+    "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+    "34604a97-0c64-5b06-81e2-6ac818732d60",
+    "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+    "809ef78a-f282-5593-89be-0f2cb95570ac",
+    "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+    "19481f5d-94de-4a74-b765-cbebd1525994",
+    "0f180645-37ce-5b6b-8a36-ad7b31168b1a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_markdown",
+      "digest": "sha256:3943167d583f63a8d19da4ce2bc1b8460f9975e3c86745e981357cf19539f919"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:52129716d0dceb2f733eab2777cafd76a6fc4d429ac8c6ee1d01de72183e70ef"
+    }
+  ],
+  "startedAt": "2026-09-07T01:37:02Z",
+  "completedAt": "2026-09-07T01:43:20.139Z",
+  "status": "completed",
+  "outputDigest": "sha256:97c0e4903fd0e9612ee0b8dce94b9b3747956c8fef10c9c73279dc6d5838ad10",
+  "toolchainVersion": "goal-description-review-v2+node-v20.20.2+tsx"
+}

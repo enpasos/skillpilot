@@ -1,0 +1,2 @@
+Use case: precise-object-edit / scientific-educational.
+Nur untere y-Achsenmarke '2' anpassen: F(x)=2x−x²/2 hat MaximumF(2)=2. Verschiebe die Ziffer2 daher genau auf Höhe der gestrichelten waagrechten Tangente/des blau markierten Maximums, statt eine Gitterzeile darunter. Ergänze kleine passende y-Achsentickmarke bei dieserHöhe. DenGitterlinienkeineanderenZahlenzuordnen. BeideKurven,Formeln,Nullstellen,Achsenx undsämtlicheanderenElemente unverändertlassen.

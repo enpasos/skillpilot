@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-038r-exponential-scope-and-context-11-v1-20260907",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-038r-exponential-scope-and-context-11-v1.config.json",
+  "configDigest": "sha256:9afa0db44c9b456c51f3beba4280d034e2fe6e1dbd6b1411ebaed4a1c45bf820",
+  "goalIds": [
+    "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+    "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+    "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+    "628928a6-4f48-54dc-952d-dec0e69dc856",
+    "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+    "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+    "ab720928-9dbc-53c2-a1f8-865dda92122d",
+    "49f9059a-876c-5051-8146-d008b5cc691c",
+    "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+    "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+    "aed3ca99-815b-40b8-ae91-e11bf92f51da"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 796,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:669fc06f52602301c3f9f0554c88c4d43dce419d97b51542004a3e32b8bb60a7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c16689b6309d9916c52a712a5123911f856dfbcc7f720c7dd82aa6492963f9b9",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:1b25c9e6acc872355b0d96f18279ebc855e66f5171f636eb96c536082c5f1666",
+    "reviewInputFingerprint": "sha256:e576465dc668d1b4d731737699ca90a58dd88f6e69dd364188abb7cb7d4a0aa7",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-038r-exponential-scope-and-context-11-v1-20260907-a",
+        "campaignDigest": "sha256:a6e5f82a3d16e76b1c0d23fc8564996c204e6ac31c761c6b48f4ad79db7ca786",
+        "roundId": "mathematik-rollout-v1-batch-038r-exponential-scope-and-context-11-v1-20260907-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-038r-exponential-scope-and-context-11-v1-20260907-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-038r-exponential-scope-and-context-11-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b12c3b551e6dc257f6c796c1eef152231ae302ff56fc62ddedb420ccf579f290"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-038r-exponential-scope-and-context-11-v1-20260907-b",
+        "campaignDigest": "sha256:c9088a77c7b09499fe929b971fc4db31fbe3d44d4e2231b12d82293304777b23",
+        "roundId": "mathematik-rollout-v1-batch-038r-exponential-scope-and-context-11-v1-20260907-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-038r-exponential-scope-and-context-11-v1-20260907-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-038r-exponential-scope-and-context-11-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:74df31706ec959ab5b533e22a44da20b067c71e34d6f9046cd0e5a1173404dd9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

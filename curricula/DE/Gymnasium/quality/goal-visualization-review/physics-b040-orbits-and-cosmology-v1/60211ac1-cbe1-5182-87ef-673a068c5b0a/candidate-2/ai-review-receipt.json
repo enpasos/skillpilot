@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "goalId": "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+  "candidateNumber": 2,
+  "assetSha256": "sha256:7a2f8c7bec84683da94314cb3bbc7f17164cf8210cccfff13a95d43fa7ee49e1",
+  "reviewedAt": "2026-09-07T00:20:38.253Z",
+  "reviewer": "codex",
+  "reviewerRole": "independent_ai_visual_review",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "independentReviewScope": "Personally inspected candidate pixels and performed read-only image-pixel geometry analysis.",
+  "decision": "rejected_fachlich_incorrect",
+  "positiveFindings": [
+    "The second focus marker and its label are removed. The Sun is smaller.",
+    "The left upward and right downward tangential velocity directions, inward gravitational arrows and correct circle-versus-ellipse text remain."
+  ],
+  "blockingFindings": [
+    "The Sun is still incorrectly placed. A least-squares fit to 39,717 blue contour pixels gives ellipse centre approximately (1380.7, 719.0), semi-major axis 927.3 px and semi-minor axis 510.3 px. The left focus is therefore approximately (606.5, 719.0).",
+    "The yellow Sun pixel bounding box gives centre approximately (1011, 704), roughly 404.8 px from the derived focus. This is a substantive positional error, not contour thickness or fitting uncertainty.",
+    "The local correction request did not achieve its essential condition despite explicit geometry in the prompt; C2 must not be imported."
+  ],
+  "geometryEvidencePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-orbits-and-cosmology-v1/60211ac1-cbe1-5182-87ef-673a068c5b0a/candidate-2/pixel-geometry-review.json",
+  "rootReviewRequiredBeforeImport": true,
+  "imported": false,
+  "humanApprovalClaimed": false,
+  "furtherGenerationPerformed": false
+}

@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "physics-b040-proposed-assessments-author-checks-v1",
+  "observedAt": "2026-09-07T01:39:30.406Z",
+  "authority": {
+    "provider": "OpenAI",
+    "model": "unknown",
+    "modelVersion": "unknown",
+    "status": "author_side_checks_not_human_release",
+    "actualLearnerTrial": false
+  },
+  "proposalBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/proposed-assessments.authoring.json",
+    "sha256": "sha256:d319f270da145806f99d2b28ae676609d88a75f85543ac97ac2eb997d7e17a8c"
+  },
+  "scopeAndRaster": [
+    {
+      "goalId": "335a75b0-f691-5867-8ce3-3c971d541b9f",
+      "total": 30,
+      "pass": 18,
+      "goalPoints": [
+        {
+          "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "points": 6
+        },
+        {
+          "goalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+          "points": 12
+        },
+        {
+          "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+          "points": 12
+        }
+      ],
+      "demandPoints": [
+        {
+          "level": "AB1",
+          "points": 7
+        },
+        {
+          "level": "AB2",
+          "points": 23
+        },
+        {
+          "level": "AB3",
+          "points": 0
+        }
+      ]
+    },
+    {
+      "goalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
+      "total": 30,
+      "pass": 18,
+      "goalPoints": [
+        {
+          "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "points": 8
+        },
+        {
+          "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "points": 12
+        },
+        {
+          "goalId": "db0394ca-297c-5892-b414-525ec186f928",
+          "points": 10
+        }
+      ],
+      "demandPoints": [
+        {
+          "level": "AB1",
+          "points": 4
+        },
+        {
+          "level": "AB2",
+          "points": 19
+        },
+        {
+          "level": "AB3",
+          "points": 7
+        }
+      ]
+    }
+  ],
+  "mathematicalChecks": [
+    {
+      "taskId": "A1",
+      "status": "checked",
+      "method": "Individually read structure, roles, bounded example and model caveat in both languages. Orbit focus is fully scored only under Kepler, avoiding duplicated focus points."
+    },
+    {
+      "taskId": "A2",
+      "status": "pass",
+      "inputExtractedFromActualEnglishMaterial": {
+        "earthAxisAU": 1,
+        "earthPeriodYears": 1,
+        "planetAxisAU": 4,
+        "cometAxisAU": 9
+      },
+      "computedPeriodYears": [
+        8,
+        27
+      ],
+      "method": "Both Kepler-ratio equations recalculated; T²/a³ equality checked; length ratio dimensionless, period retains years. Equal-area speed reasoning and same-central-mass condition individually checked in DE/EN. No energy/angular-momentum derivation added."
+    },
+    {
+      "taskId": "A3",
+      "status": "pass",
+      "inputAccelerations": [
+        0.00003430000000000001,
+        0.0000332,
+        0.0000321
+      ],
+      "relativeAccelerations": [
+        0.0000011000000000000064,
+        -0.0000010999999999999996
+      ],
+      "unit": "m/s²",
+      "independentPlausibilityModel": {
+        "moonGM": 4900000000000,
+        "centerDistance": 384000000,
+        "earthRadius": 6370000,
+        "predictedAccelerations": [
+          0.000034360787039549265,
+          0.00003323025173611111,
+          0.00003215460735274327
+        ],
+        "tolerance": "within 1%; synthetic rounded values, not a precision ephemeris"
+      },
+      "method": "Actual table numbers read and subtracted. All absolute attractions remain toward Moon, while relative far-side acceleration points away from center. Sun/Moon tidal gradients, not absolute attractions, reinforce or partly counteract. Two local-coast model limits individually reviewed."
+    },
+    {
+      "taskId": "B1",
+      "status": "checked",
+      "method": "Hierarchy and contrasting galaxy versus stellar-system meanings independently assessed. Andromeda is not nested in the Milky Way. No galaxy-group, telescope-selection or mass/luminosity-unit competence claimed."
+    },
+    {
+      "taskId": "B2",
+      "status": "pass",
+      "inputSpectralRowsNm": [
+        [
+          500,
+          600
+        ],
+        [
+          505,
+          606
+        ],
+        [
+          515,
+          618
+        ],
+        [
+          530,
+          636
+        ]
+      ],
+      "commonStretchFactors": [
+        1.01,
+        1.03,
+        1.06
+      ],
+      "method": "Both line ratios coincide per synthetic spectrum and increase from A through C. Computing these ratios here is an author consistency check, not a required learner z calculation. Thermal CMB at approximately 2.725 K, early hot/dense phase, expansion/cooling, and limited evidential claim checked bilingually against cited NASA science. Not an all-galaxies/local-Doppler or central-explosion claim."
+    },
+    {
+      "taskId": "B3",
+      "status": "pass",
+      "input": {
+        "ageBillionYears": 13.8,
+        "presentObservableRadiusBillionLightYears": 46
+      },
+      "results": {
+        "diameterBillionLightYears": 92,
+        "staticLightTravelProductBillionLightYears": 13.8,
+        "dimensionlessComparison": 3.333333333333333
+      },
+      "method": "Arithmetic recomputed from actual material. Time, length and present model distance distinguished; supplied radius is not derived from c times age. Observable region not identified with total extent. No Hubble-age or expansion-equation procedure required."
+    }
+  ],
+  "bilingualReview": "Every DE/EN material, demand, expected solution and rubric item authored and checked for the same quantities, domains, direction, conditions and scope. No model or human diversity claim.",
+  "nativeReadOnlyChecks": {
+    "examMarkdownTables": "pass for all four native exam content fields and both compiled documents",
+    "requiresEqualsCoveredGoalIds": "pass, exactly three per exam",
+    "profileTags": "all six current/proposed assessed goals include GK; no LK-only target is silently assessed",
+    "sourceApplicability": "HE supported by every assessed goal; broader visibility is held for later review",
+    "routeAuditCoverageEquality": "pass"
+  },
+  "limits": [
+    "Sixty minutes per assessment is a workload estimate, not learner-calibrated timing.",
+    "18/30 is the retained proposal threshold, not an official grading rule and not automatic mastery of every listed goal.",
+    "The native aggregate M6/CQR status is not regenerated or claimed green. Structural route losses in the separate counterfactual remain adoption blockers.",
+    "The existing 47 other assessment texts are inventory, not freshly approved here; only the seven Q4 and two specifically relevant Q3 texts were read in full for the described semantic boundary."
+  ]
+}

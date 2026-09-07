@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtObserved": "2026-09-07 00:47:28 UTC",
+  "reviewer": {
+    "agent": "/root/math_b039_blind_a",
+    "provider": "OpenAI",
+    "product": "Codex",
+    "underlyingModel": "exact model identifier unavailable",
+    "authority": "ai_candidate_review",
+    "humanApproval": false,
+    "modelDiversityClaimed": false
+  },
+  "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+  "candidateNumber": 1,
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/candidate-1/a9ed219d-d497-55e5-a4e0-4d45d2554f6b.generated.2026-09-07T00-21-34-322Z.jpg",
+    "sha256": "sha256:37c5ff8338339499a403ac7071ad3401aafd02b7f020c618248552878b037e00",
+    "actuallyViewed": true,
+    "viewMethod": "view_image",
+    "originalResolutionReinspection": false
+  },
+  "archiveReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/candidate-1/archive-receipt.json",
+    "sha256": "sha256:dc80613600a066118d7ef5d539c1fa2aa7e3b164738c0cfaebf58bf4f6d527ad",
+    "candidateFilesVerified": 8
+  },
+  "goalContext": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "title": "Einfache Integrale berechnen",
+    "description": "Die lernende Person kann Stammfunktionen von Potenzfunktionen $f(x)=x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ bestimmen, Faktor- und Summenregel beim Integrieren anwenden und ganzrationale Funktionen sowie $e^x$, $\\sin(x)$ und $\\cos(x)$ integrieren.",
+    "translations": null,
+    "requires": [
+      "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+    ]
+  },
+  "decision": "accept",
+  "subjectSpecificChecks": [
+    "Alle fünf angegebenen Stammfunktionen stimmen: x³→x⁴/4, 3x²+2x→x³+x², eˣ→eˣ, cos→sin, sin→−cos.",
+    "Die Überschrift 'Eine Stammfunktion' macht das Weglassen von +C korrekt.",
+    "Die Rechnung ∫₀²(3x²+2x)dx=(8+4)−0=12 stimmt; obere minus untere Grenze sind richtig angeordnet."
+  ],
+  "limitationsAndNotes": [
+    "Die Tabelle illustriert konkrete zulässige Fälle; sie behauptet nicht, xⁿ sei auch für n=−1 nach der Potenzregel zu integrieren."
+  ],
+  "minimalCorrection": null,
+  "scope": {
+    "visualCandidateReviewOnly": true,
+    "descriptionReviewDecision": false,
+    "importedByThisReview": false,
+    "activeAssetsChanged": false,
+    "canonicalFieldsChanged": false
+  },
+  "provenance": {
+    "otherReviewerRecordsRead": false,
+    "fullyBlinded": false,
+    "explanation": "Candidate choice and preceding workflow context were supplied by the parent; no other review decision record was read for this visual judgment.",
+    "timing": "Actual image views took place in this active review turn. Exact per-image view timestamps were not logged; the observed timestamp above is the documentation time, not an invented invocation start."
+  }
+}

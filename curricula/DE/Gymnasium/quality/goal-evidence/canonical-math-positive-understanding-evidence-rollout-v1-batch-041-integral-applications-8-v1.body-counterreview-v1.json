@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "positive-understanding-profile-body-counterreview",
+  "reviewId": "canonical-math-positive-evidence-b041-integral-applications-8-v1-body-counterreview-v1",
+  "authority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewer": {
+    "agent": "math_b039_blind_a",
+    "provider": "OpenAI",
+    "product": "Codex",
+    "exactUnderlyingModel": "not available",
+    "humanApproval": false,
+    "modelDiversityClaim": false
+  },
+  "reviewWindow": {
+    "firstObservedAt": "2026-09-07T01:36:44Z",
+    "completedObservedAt": "2026-09-07 01:44:07 UTC",
+    "limitation": "Observed documentation window, not an exact invocation start timestamp."
+  },
+  "independence": {
+    "bodyAuthor": "codex-root-b041-positive-author",
+    "counterreviewerAuthoredTheseBodies": false,
+    "scope": "All eight expectations and sixteen bilingual case briefs were read in full and personally evaluated against current goal bodies and direct prerequisites. No other P body verdict was used.",
+    "priorInvolvement": "Reviewer authored the separate D Round A judgments for the ten-goal B041 scope. This is independent of the P body author but not independent of all prior goal review. No human or model-family diversity is implied."
+  },
+  "inputHashes": {
+    "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.candidates.json": "sha256:41da51c97319524e23acd90646edd9cc8fa0310028eaacd7555b3bed2e8e3827",
+    "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.author.mjs": "sha256:e8b862f7fd1c4973f0861d2475c0e456540c7caa3784df016d068efd570f51c0",
+    "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.authoring-context.json": "sha256:7130820891522dc56d10ea0ea1fcd6d748142d09ac72b2f226ed0bef38139622",
+    "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.config.json": "sha256:c0fadc484e51e8810ba476780ea6240b9de3dee515e12dbda9754307552094f8",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "sha256:bd33714d53a8774ac18bced0ca93ca3ade8a9de085373c851937af43b7416e44",
+    "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+  },
+  "contextComparisons": [
+    {
+      "goalId": "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+      "goalMatchesCurrent": true,
+      "prerequisitesMatchCurrent": true
+    },
+    {
+      "goalId": "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+      "goalMatchesCurrent": true,
+      "prerequisitesMatchCurrent": true
+    },
+    {
+      "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+      "goalMatchesCurrent": true,
+      "prerequisitesMatchCurrent": true
+    },
+    {
+      "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+      "goalMatchesCurrent": true,
+      "prerequisitesMatchCurrent": true
+    },
+    {
+      "goalId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "goalMatchesCurrent": true,
+      "prerequisitesMatchCurrent": true
+    },
+    {
+      "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "goalMatchesCurrent": true,
+      "prerequisitesMatchCurrent": true
+    },
+    {
+      "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+      "goalMatchesCurrent": true,
+      "prerequisitesMatchCurrent": true
+    },
+    {
+      "goalId": "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+      "goalMatchesCurrent": true,
+      "prerequisitesMatchCurrent": true
+    }
+  ],
+  "criteriaReadInFull": true,
+  "authorSourceReadInFull": true,
+  "candidateBodiesReadInFull": true,
+  "authoringContextReadInFull": true,
+  "reviewedResourceTypes": [],
+  "excludedGoalIds": [
+    "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+    "809ef78a-f282-5593-89be-0f2cb95570ac"
+  ],
+  "overallDecision": "hold_whole_batch_binding_for_two_small_body_corrections_and_23_canonical_revision",
+  "summary": {
+    "acceptBody": 5,
+    "reviseBodyBeforeBinding": 2,
+    "conditionalBodyAccept": 1,
+    "totalGoals": 8,
+    "totalCases": 16,
+    "expectations": 8,
+    "learnerPerformanceClaim": false,
+    "nativeBindingPerformed": false
+  },
+  "globalFindings": [
+    "All numeric answers and symbolic antiderivatives are mathematically correct on the stated domains; the two required changes concern what a net-rate model warrants, not arithmetic.",
+    "Each profile contains two answer-independent demonstrations with a genuine structural, representational or contextual variation. No profile is rejected as a number-swapped template.",
+    "DE and EN align in substantive demands and solutions; the identified net/gross-flow and generic-integral wording defects occur in both languages.",
+    "Eight single expectation records each integrate indispensable meaning and observable performance. RequiredExpectationIds cover all eight; no optional group hides a mandatory facet; minimumIndependentDemonstrations=2 is supported by the two cases.",
+    "The retained status is AI candidate / E1 / G1 / needs_human_review. No visualization, D approval, source approval, actual learner evidence or human acceptance is transferred."
+  ],
+  "goals": [
+    {
+      "goalId": "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+      "decision": "accept_body",
+      "expectationFinding": "Die eine Erwartung beschreibt die gemeinsame Strukturleistung am bestimmten Integral: orientierte Teilintervalle und Linearkombinationen rechnerisch koordinieren und die jeweils verwendete Regel begründen. Das ist mehr als Ergebnisrichtigkeit und deckt den aktuellen DE/EN-Zieltext ohne neue Nebenkompetenz ab.",
+      "prerequisiteFinding": "b9bbd2a8 liefert Hauptsatz und Grunddeutung. Die Fälle verwenden bewusst gegebene Integralwerte; neues Leistungsobjekt ist deren regelgeleitete Transformation, nicht nochmals Stammfunktionskonstruktion.",
+      "independenceAndTransfer": "Fall 2 benötigt keine Antwort aus Fall 1. Er kehrt die Informationsrichtung um, erschließt einen fehlenden Summanden und ergänzt einen konstanten Integranden über ein nicht bei null beginnendes Intervall; daher echte Strukturvariation statt Zahlentausch.",
+      "cases": [
+        {
+          "caseId": "combine-oriented-parts",
+          "decision": "accept",
+          "finding": "∫f=4, 2·4−3·4=−4, Grenzumkehr +4. Der negative Teilbeitrag −1 muss vorzeichenrichtig erhalten bleiben. DE/EN verlangen dieselbe begründete Koordination beider Additivitäten."
+        },
+        {
+          "caseId": "infer-missing-integrals",
+          "decision": "accept",
+          "finding": "∫g=5, fehlender Beitrag 1, konstanter Anteil 5·4=20, Vorwärtsintegral 10 und rückwärts −10. DE/EN sind gleichwertig; fehlende Informationen erschließen und die Konstante erklären sind beobachtbare Verständnisleistungen."
+        }
+      ]
+    },
+    {
+      "goalId": "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+      "decision": "accept_body",
+      "expectationFinding": "Innere Ableitung und Faktorenausgleich erklären beide ausdrücklich genannten Integrandenformen. a=0, r≠−1 und reelle Definitionsintervalle sichern die Generalität; die Erwartung verlangt Ableitungsprobe statt bloßer Regelbehauptung.",
+      "prerequisiteFinding": "a9ed219d stellt elementare Stammfunktionen und Linearität, 23589682 lineare innere Transformationen bereit. Neu sind rationale affine Potenzen und f′exp(f); die Fälle bleiben exakt darin und fordern keine allgemeine Substitutionsroutine.",
+      "independenceAndTransfer": "Zwei vollständig eigenständige Aufgabenbündel prüfen jeweils beide Formen. Fall 2 verändert Exponentenvorzeichen, innere Steigung und Definitionsgebiet einschließlich zweier Zusammenhangsintervalle; das ist wesentlicher Transfer.",
+      "cases": [
+        {
+          "caseId": "chain-rule-construction",
+          "decision": "accept",
+          "finding": "(2/9)(3x+1)^(3/2) differenziert zu √(3x+1); exp(x²) zu 2x exp(x²). Der konstante Radikand 4 führt zu 2x+C, nicht Division durch a=0. Beide Sprachfassungen setzen passende Intervalle und dieselbe Faktorbegründung."
+        },
+        {
+          "caseId": "negative-power-intervals",
+          "decision": "accept",
+          "finding": "−3∛(2−5x) hat für x≠2/5 die Ableitung 5/(∛(2−5x))². Das gilt links und rechts der Definitionslücke; unterschiedliche Integrationskonstanten sind möglich. exp(x²+x) liefert genau (2x+1)exp(x²+x). Reelle Kubikwurzel ist ausdrücklich vorgegeben und vermeidet einen Zweigdeutungsfehler in DE wie EN."
+        }
+      ]
+    },
+    {
+      "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+      "decision": "accept_body",
+      "expectationFinding": "Grenzen, Randreihenfolge und Nichtnegativität begründen den passenden geometrischen Integralansatz. Der Unterschied zwischen Fläche und orientierter Bilanz ist unverzichtbares Verständnis innerhalb des Zieltexts, keine neue Routine.",
+      "prerequisiteFinding": "Hauptsatz und einfache Algebra/Differentiationskenntnisse werden benutzt, nicht als zusätzliche Erwartung ausgegeben. Der Orientierungsanker 71cec9fb wird nicht fachlich abgeprüft.",
+      "independenceAndTransfer": "Fall 1 bestimmt zwei Schnittgrenzen zweier Graphen. Fall 2 verwendet feste vertikale Grenzen und erzwingt wegen des Achsendurchgangs eine andere Ober-/Unterrandzerlegung. Keine Abhängigkeit von früheren Antworten, kein bloßer Zahlenwechsel.",
+      "cases": [
+        {
+          "caseId": "between-two-graphs",
+          "decision": "accept",
+          "finding": "Schnittstellen 0 und 2; 2x−x²≥0 auf [0,2]. Integral 4/3. DE/EN verlangen die geometrische Begründung und erlauben Skizze oder Vorzeichentest."
+        },
+        {
+          "caseId": "axis-crossing-region",
+          "decision": "accept",
+          "finding": "Zerlegung bei x=1 liefert 1/2+2=5/2. Das unzerlegte orientierte Integral ist 3/2. Beide Fassungen machen die notwendige Nichtaufhebung positiver Flächenbeiträge beobachtbar."
+        }
+      ]
+    },
+    {
+      "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+      "decision": "revise_body_before_binding",
+      "expectationFinding": "Der allgemeine erste Satz und die beobachtbare Darstellung/Argumentation passen. Der Satz 'Ein Vergleich von Integralwerten ist ein Vergleich von Änderungen' ist jedoch ohne Ratenkontext falsch: etwa zwei Integrale nichtnegativer Randfunktionen vergleichen Flächen. Minimal diesen Satz in DE/EN ausdrücklich auf Integrale von Änderungsraten begrenzen.",
+      "prerequisiteFinding": "e9114fc2 und b9bbd2a8 stellen Flächenberechnung und Hauptsatz bereit. Das neue Leistungsobjekt ist die sprachlich-grafische Deutung und Reichweite einer Aussage, nicht eine erneute Routineprüfung.",
+      "independenceAndTransfer": "Fall 2 ist unabhängig und wechselt von einem Graphen mit Vorzeichenwechsel zur kritischen Prüfung eines Endbestandsvergleichs bei ungleichen Anfangswerten. Das ist substanzieller Argumentationstransfer; die Fallstruktur muss nicht ersetzt werden.",
+      "cases": [
+        {
+          "caseId": "signed-flow-meaning",
+          "decision": "revise_context_assumption",
+          "finding": "Rechnung +8 L, −2 L, +6 L und ∫|q|=10 L ist richtig. Aus einer NETTOzuflussrate folgt aber ohne Ausschluss gleichzeitiger Gegenströme nicht, dass insgesamt genau 10 L Wasser bewegt werden. Zum selben q können ein zusätzlicher Zufluss und Abfluss von je 1 L/h gehören: Netto bleibt unverändert, tatsächliche Bewegung steigt auf 22 L. DE und EN tragen denselben Modellierungsfehler.",
+          "minimalRepairDe": "Explizit: Der Tank tauscht Wasser ausschließlich durch eine einzige Leitung aus; q ist deren vorzeichenbehaftete Durchflussrate (positiv hinein, negativ hinaus). Dann sind 10 L das gesamte durch diese Leitung bewegte Volumen. Alternativ 10 L nur als Summe der Beträge der Nettoänderungen bezeichnen und tatsächlichen Gesamtfluss offenlassen.",
+          "minimalRepairEn": "Specify that the tank exchanges water only through one pipe and q is its signed flow rate, positive inward and negative outward. Then 10 L is total volume passing through that pipe. Alternatively describe 10 L only as total variation of net quantity and leave actual gross flow undetermined."
+        },
+        {
+          "caseId": "compare-changes-not-final-values",
+          "decision": "accept",
+          "finding": "15 L gegenüber 19 L trotz um 3 L größerer Zunahme. Gleiche Anfangswerte reichen aus, damit Integralreihenfolge und Endbestandsreihenfolge übereinstimmen. Der behauptete allgemeine Schluss wird begründet widerlegt; beide Sprachfassungen sind inhaltlich deckungsgleich."
+        }
+      ]
+    },
+    {
+      "goalId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "decision": "revise_body_before_binding",
+      "expectationFinding": "Gleichung herleiten, Unbekannte bestimmen, zulässige Lösungen prüfen und rückeinsetzen bilden genau die Zielroutine unter sinnvoller Kontextdeutung. Kein atomarer Zusatzbefund; nur die Modellannahme eines Beispiels ist zu präzisieren.",
+      "prerequisiteFinding": "e9114fc2 sichert Flächenansätze. Quadratische Gleichungen und Hauptsatz werden funktional verwendet; der Anfangsbestand im zweiten Fall dient dem geforderten Bestandsziel und erweitert den Scope nicht.",
+      "independenceAndTransfer": "Fall 2 ist ohne Fall 1 lösbar und verändert obere zu unterer Grenze sowie positive Flächenbedingung zu vorzeichenwechselnder Bestandsbedingung. Beide Typen Unbekannter bleiben in beiden Demonstrationen integriert.",
+      "cases": [
+        {
+          "caseId": "upper-limit-and-height-parameter",
+          "decision": "accept",
+          "finding": "b²+b−12=(b−3)(b+4); b=3 ist zulässig, −4 ausgeschlossen. 2k+2=8 ergibt k=3. Positivität trägt die Flächeninterpretation. DE/EN äquivalent."
+        },
+        {
+          "caseId": "lower-limit-and-returning-stock",
+          "decision": "revise_context_assumption",
+          "finding": "c=2 ist zulässig, c=6 außerhalb; 2k−2=0 liefert k=1. ∫r=0 und ∫|r|=1 L sind korrekt. 'insgesamt 1 L Bewegung' folgt aus der bloßen Bestandsrate ohne Ein-Leitungsannahme jedoch nicht: zusätzliche gegenläufige Ströme von je 1 L/min ergeben dieselbe Bestandsrate bei 5 L Gesamtbewegung.",
+          "minimalRepairDe": "Den zweiten Prozess als Tank mit genau einer umkehrbaren Austauschleitung und ohne weitere Zu-/Abflüsse definieren; r(t) ist deren vorzeichenbehafteter Durchfluss. Alternativ nur Nettoänderung 0 und Summe der Beträge der Nettoänderungen 1 L benennen.",
+          "minimalRepairEn": "Define the second process as a tank with a single reversible exchange pipe and no other inflows or outflows; r(t) is its signed flow. Alternatively distinguish zero net change from 1 L total variation of net quantity only."
+        }
+      ]
+    },
+    {
+      "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "decision": "conditional_body_accept_pending_canonical_revision",
+      "expectationFinding": "Der Profilkörper unterscheidet korrekt Bestandsdifferenz, absoluten Bestand mit Anfangswert und räumliche Fläche. Das ist mit der angekündigten minimalen D-Revision vereinbar; es ist ausdrücklich keine Freigabe der unveränderten aktuellen Canonicalformulierung 'Gesamtbestände ... aus Änderungsraten'.",
+      "prerequisiteFinding": "2afba4a2 enthält Anfangsbestand plus Rate bereits als Voraussetzung, b9bbd2a8 den Hauptsatz. Das neue Profil verlangt kontextgerechte Gesamtmodellierung, Einheiten und Deutung; es erklärt die Voraussetzung nicht zu einer zusätzlichen fremden Kompetenz.",
+      "independenceAndTransfer": "Fall 2 wechselt unabhängig von Zeit/Litern zur räumlichen Begrenzung/Quadratmetern. Die lernende Person muss die Akkumulationsgröße neu bestimmen und begründen, weshalb kein Anfangsbestand addiert wird. Das ist echter Dimensions- und Kontexttransfer.",
+      "bindingCondition": "Erst die angekündigte Canonical-DE/EN-Präzisierung fachlich übernehmen, dann aktuelle native Fingerprints binden. Dieser Review ersetzt weder die D-Übernahme noch native Validierung.",
+      "cases": [
+        {
+          "caseId": "net-stock-from-rate",
+          "decision": "accept_with_small_wording_precision",
+          "finding": "Nettoänderung 8 L, Endbestand 28 L, Teil-Nettoänderungen +9 L bis t=3 und −1 L danach sind richtig. 'kommen 9 L hinzu / fließt 1 L ab' sollte bei einer Nettozuflussrate präzise als Bestandszunahme/-abnahme formuliert werden, ohne tatsächlich getrennte Bruttoflüsse zu behaupten. Die verlangte Lösung des Falls selbst ist eindeutig.",
+          "minimalRepairDe": "Bis t=3 steigt der Bestand netto um 9 L; danach sinkt er netto um 1 L.",
+          "minimalRepairEn": "By t=3 the quantity increases by a net 9 L; afterward it decreases by a net 1 L."
+        },
+        {
+          "caseId": "spatial-boundary-effect",
+          "decision": "accept",
+          "finding": "Oberer minus unterer Rand (3−x)−1=2−x≥0 ergibt 2 m². Kein Anfangsbestand, weil eine räumliche Streifenfläche und keine zeitliche Bestandsänderung integriert wird. Die spezifizierten Formeln und Grenzen tragen den Fall auch ohne eine separat mitgelieferte Skizze; DE/EN äquivalent."
+        }
+      ]
+    },
+    {
+      "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+      "decision": "accept_body",
+      "expectationFinding": "Die Zuordnung von Randhöhe zu Radius und von Radius zu Scheiben-/Ringfläche ist das unverzichtbare Verständnis des Rotationsvolumens. Wurzelfunktionen, gültige Grenzen und kubische Einheit erhalten den vollen aktuellen Zielumfang.",
+      "prerequisiteFinding": "e9114fc2 stellt die Region-/Randinterpretation bereit, a9ed219d elementare Stammfunktionen. Neu ist die räumliche Querschnittsmodellierung. Kein Ableitungs- oder Beweisziel wird zusätzlich verpflichtend.",
+      "independenceAndTransfer": "Fall 2 ist unabhängig und verändert die Topologie des Querschnitts: Achsenrand wird durch inneren Wurzelrand ersetzt. Die korrekte Differenz der Quadrate muss geometrisch gegen das Quadrat der Differenz abgegrenzt werden.",
+      "cases": [
+        {
+          "caseId": "square-root-disk",
+          "decision": "accept",
+          "finding": "R²=2x+1, ∫₀⁴(2x+1)=20, daher 20π cm³. Die Querschnittserklärung macht Fläche statt Höhe/Umfang sichtbar; DE/EN gleichwertig."
+        },
+        {
+          "caseId": "square-root-washer",
+          "decision": "accept",
+          "finding": "R²−r²=4 konstant, daher 12π cm³. (R−r)² wäre bereits bei x=1 nur 6−2√5 statt 4 und bildet eine volle Scheibe, nicht den Ring. Die Einheit cm³ legt die beabsichtigte Längeneinheit nahe; 'Alle Längen in cm' wäre lediglich eine optionale redaktionelle Verdeutlichung."
+        }
+      ]
+    },
+    {
+      "goalId": "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+      "decision": "accept_body",
+      "expectationFinding": "Radiusquadrat, Scheibendicke, Summe und Grenzübergang werden als Herleitung der Volumenformel verlangt und anschließend angewandt. Archetyp proof ist angemessen; bloßes Zitieren einer Formel reicht ausdrücklich nicht.",
+      "prerequisiteFinding": "e9114fc2 und a9ed219d tragen Grundidee der Flächenakkumulation und Rechnen mit Stammfunktionen. Neu ist die begründete Übertragung auf Volumina. Die geometrische Kontrollrechnung ist Plausibilisierung innerhalb dieses Ziels, kein neues Körpertheorie-Curriculum.",
+      "independenceAndTransfer": "Fall 2 hat eigene Daten, eine stückweise definierte Randfunktion und die unabhängige geometrische Gegenprobe Zylinder plus Kegel. Es muss weder ein Ergebnis noch eine Formel aus Fall 1 übernommen werden; der Ansatz ist erneut aus dünnen Scheiben zu begründen.",
+      "cases": [
+        {
+          "caseId": "derive-then-evaluate",
+          "decision": "accept",
+          "finding": "Radius ξᵢ², Scheibenfläche πξᵢ⁴, Dicke 1/n; Stetigkeit rechtfertigt den Integralgrenzwert π/5. DE/EN verlangen Herleitung und Auswertung, keine reine Formelwiedergabe."
+        },
+        {
+          "caseId": "piecewise-solid",
+          "decision": "accept",
+          "finding": "Radiusfunktion ist bei x=1 stetig. Die getrennten Querschnittsintegrale ergeben π+π/3=4π/3; Zylinder und Kegel mit r=h=1 bestätigen dies. Die Aufgabe fordert den Scheibenansatz erneut; die Lösungsskizze benennt beide Flächenstücke. Beide Sprachfassungen decken denselben Transfer ab."
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "nativeAuthorCheck": {
+      "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH node curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.author.mjs --check",
+      "status": "PASS",
+      "meaning": "Body/author equality and profile schema only, not a semantic verdict."
+    },
+    "independentMathematics": {
+      "status": "PASS",
+      "count": 47,
+      "checks": [
+        {
+          "name": "649/combined-f",
+          "actual": 4,
+          "expected": 4,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "649/linear-combination",
+          "actual": -4,
+          "expected": -4,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "649/reversed",
+          "actual": 4,
+          "expected": 4,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "649/missing-part",
+          "actual": 1,
+          "expected": 1,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "649/constant-and-reversal",
+          "actual": -10,
+          "expected": -10,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "0d/sqrt-derivative@0",
+          "actual": 0.9999999999621422,
+          "expected": 1,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/sqrt-derivative@1",
+          "actual": 2.0000000000131024,
+          "expected": 2,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/sqrt-derivative@2",
+          "actual": 2.645751311147748,
+          "expected": 2.6457513110645907,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/exp-square-derivative@-1",
+          "actual": -5.436563657834625,
+          "expected": -5.43656365691809,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/exp-square-derivative@0",
+          "actual": 0,
+          "expected": 0,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/exp-square-derivative@1",
+          "actual": 5.436563657834625,
+          "expected": 5.43656365691809,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/constant-inner",
+          "actual": 2.0000000000131024,
+          "expected": 2,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/real-negative-power@-1",
+          "actual": 1.3663794162344087,
+          "expected": 1.3663794162659921,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/real-negative-power@0",
+          "actual": 3.1498026251020046,
+          "expected": 3.1498026247371826,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/real-negative-power@1",
+          "actual": 2.4037492839301677,
+          "expected": 2.4037492838456807,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/real-negative-power@2",
+          "actual": 1.2500000000414957,
+          "expected": 1.25,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/general-exp-chain@-1",
+          "actual": -1.0000000001175735,
+          "expected": -1,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/general-exp-chain@0",
+          "actual": 1.0000000001175735,
+          "expected": 1,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "0d/general-exp-chain@1",
+          "actual": 22.16716830232279,
+          "expected": 22.16716829679195,
+          "tolerance": 1e-7
+        },
+        {
+          "name": "e911/graph-area",
+          "actual": 1.3333333333333335,
+          "expected": 1.3333333333333333,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "e911/unsigned",
+          "actual": 2.5,
+          "expected": 2.5,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "e911/signed",
+          "actual": 1.5,
+          "expected": 1.5,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "346/positive",
+          "actual": 8,
+          "expected": 8,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "346/negative",
+          "actual": -2,
+          "expected": -2,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "346/net",
+          "actual": 6,
+          "expected": 6,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "346/net-variation",
+          "actual": 10,
+          "expected": 10,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "346/final-one",
+          "actual": 15,
+          "expected": 15,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "346/final-two",
+          "actual": 19,
+          "expected": 19,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "346/simultaneous-flow-counterexample",
+          "actual": 22,
+          "expected": 22,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "647/b-valid",
+          "actual": 12,
+          "expected": 12,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "647/b-excluded",
+          "actual": 12,
+          "expected": 12,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "647/k",
+          "actual": 8,
+          "expected": 8,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "647/lower-c",
+          "actual": 2,
+          "expected": 2,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "647/zero-net",
+          "actual": 0,
+          "expected": 0,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "647/net-variation",
+          "actual": 1,
+          "expected": 1,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "647/simultaneous-flow-counterexample",
+          "actual": 5,
+          "expected": 5,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "23/net",
+          "actual": 8,
+          "expected": 8,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "23/positive-net",
+          "actual": 9,
+          "expected": 9,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "23/negative-net",
+          "actual": -1,
+          "expected": -1,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "23/final",
+          "actual": 28,
+          "expected": 28,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "23/bed",
+          "actual": 2,
+          "expected": 2,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "194/disk-coefficient",
+          "actual": 20,
+          "expected": 20,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "194/washer-coefficient",
+          "actual": 12,
+          "expected": 12,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "194/wrong-width-radius@1",
+          "actual": 1.5278640450004208,
+          "expected": 1.5278640450004204,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "0f/x4-integral-coefficient",
+          "actual": 0.2,
+          "expected": 0.2,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "0f/piecewise-coefficient",
+          "actual": 1.3333333333333333,
+          "expected": 1.3333333333333333,
+          "tolerance": 1e-9
+        },
+        {
+          "name": "0f/geometric-coefficient",
+          "actual": 1.3333333333333333,
+          "expected": 1.3333333333333333,
+          "tolerance": 1e-9
+        }
+      ],
+      "reproductionCode": "const assert=require(\"node:assert/strict\");\nlet checks=[];\nconst near=(name,actual,expected,tolerance=1e-9)=>{assert(Math.abs(actual-expected)<=tolerance*Math.max(1,Math.abs(expected)),name);checks.push({name,actual,expected,tolerance})};\nconst I=(F,a,b)=>F(b)-F(a);\nconst D=(F,x)=>{const h=1e-5;return (F(x+h)-F(x-h))/(2*h)};\nnear(\"649/combined-f\",5-1,4);near(\"649/linear-combination\",2*(5-1)-3*4,-4);near(\"649/reversed\",-(2*(5-1)-3*4),4);near(\"649/missing-part\",7-2-4,1);near(\"649/constant-and-reversal\",-(5*(3-(-1))-2*(7-2)),-10);\nfor(const x of [0,1,2])near(\"0d/sqrt-derivative@\"+x,D(x=>2/9*(3*x+1)**1.5,x),Math.sqrt(3*x+1),1e-7);\nfor(const x of [-1,0,1])near(\"0d/exp-square-derivative@\"+x,D(x=>Math.exp(x*x),x),2*x*Math.exp(x*x),1e-7);\nnear(\"0d/constant-inner\",D(x=>2*x,2),2,1e-7);\nfor(const x of [-1,0,1,2])near(\"0d/real-negative-power@\"+x,D(x=>-3*Math.cbrt(2-5*x),x),5/Math.cbrt(2-5*x)**2,1e-7);\nfor(const x of [-1,0,1])near(\"0d/general-exp-chain@\"+x,D(x=>Math.exp(x*x+x),x),(2*x+1)*Math.exp(x*x+x),1e-7);\nnear(\"e911/graph-area\",I(x=>x*x-x*x*x/3,0,2),4/3);near(\"e911/unsigned\",I(x=>x-x*x/2,0,1)+I(x=>x*x/2-x,1,3),2.5);near(\"e911/signed\",I(x=>x*x/2-x,0,3),1.5);\nnear(\"346/positive\",I(x=>4*x-x*x/2,0,4),8);near(\"346/negative\",I(x=>4*x-x*x/2,4,6),-2);near(\"346/net\",I(x=>4*x-x*x/2,0,6),6);near(\"346/net-variation\",8+2,10);near(\"346/final-one\",3+12,15);near(\"346/final-two\",10+9,19);near(\"346/simultaneous-flow-counterexample\",10+2*1*6,22);\nnear(\"647/b-valid\",I(x=>x*x+x,0,3),12);near(\"647/b-excluded\",I(x=>x*x+x,0,-4),12);near(\"647/k\",I(x=>3*x*x/2+x,0,2),8);near(\"647/lower-c\",I(x=>4*x-x*x/2,2,4),2);near(\"647/zero-net\",I(x=>x-x*x/2,0,2),0);near(\"647/net-variation\",I(x=>x-x*x/2,0,1)-I(x=>x-x*x/2,1,2),1);near(\"647/simultaneous-flow-counterexample\",1+2*1*2,5);\nnear(\"23/net\",I(x=>6*x-x*x,0,4),8);near(\"23/positive-net\",I(x=>6*x-x*x,0,3),9);near(\"23/negative-net\",I(x=>6*x-x*x,3,4),-1);near(\"23/final\",20+I(x=>6*x-x*x,0,4),28);near(\"23/bed\",I(x=>2*x-x*x/2,0,2),2);\nnear(\"194/disk-coefficient\",I(x=>x*x+x,0,4),20);near(\"194/washer-coefficient\",I(x=>4*x,0,3),12);near(\"194/wrong-width-radius@1\",(Math.sqrt(5)-1)**2,6-2*Math.sqrt(5));assert((Math.sqrt(5)-1)**2!==4);\nnear(\"0f/x4-integral-coefficient\",I(x=>x**5/5,0,1),.2);near(\"0f/piecewise-coefficient\",I(x=>x,0,1)+I(x=>-((2-x)**3)/3,1,2),4/3);near(\"0f/geometric-coefficient\",1+1/3,4/3);\nconsole.log(JSON.stringify({status:\"PASS\",count:checks.length,checks}));",
+      "notes": [
+        "Numerical derivative checks supplement the explicit symbolic chain-rule reasoning recorded per case; they do not purport to prove the formulas by sampling.",
+        "Two preliminary inline-check executions had shell newline quoting / JavaScript exponent precedence syntax errors and executed no assertions; the corrected code above ran all 47 checks successfully."
+      ]
+    }
+  },
+  "writeScope": "This counterreview artifact only; no candidate, author, canonical, review ledger, native binding, registry, runtime or historical D file was modified."
+}

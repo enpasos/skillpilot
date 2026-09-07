@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-07 01:25:34 UTC",
+  "status": "PASS",
+  "reviewedGoalCount": 17,
+  "actualRasterViews": 17,
+  "missingImageCount": 0,
+  "decisionCounts": {
+    "keep": 17,
+    "revise": 0,
+    "split_review": 0,
+    "block": 0
+  },
+  "nativeCampaignCheck": {
+    "chunk_id": "4fbdc4",
+    "wall_time_seconds": 0.567236781,
+    "exit_code": 0,
+    "original_token_count": 13,
+    "output": "Goal-description review campaign results valid: 17\n"
+  },
+  "nativeBatchCheck": {
+    "chunk_id": "90f6ed",
+    "wall_time_seconds": 0.872563785,
+    "exit_code": 0,
+    "original_token_count": 101,
+    "output": "\n> skillpilot@0.0.0 quality:goal-description-rollout-batch\n> tsx scripts/materializeGoalDescriptionRolloutBatch.ts check --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1.config.json\n\nStandalone goal-description batch valid: mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907; goals=17\n"
+  },
+  "authorNumericalCheck": {
+    "chunk_id": "9b1341",
+    "wall_time_seconds": 0.0000033,
+    "exit_code": 0,
+    "original_token_count": 37,
+    "output": "{\"status\":\"PASS\",\"arithmeticAssertions\":33,\"scope\":\"Author-side numerical cross-checks only; no learner evidence and no semantic bulk decision\"}\n"
+  },
+  "freezeCheck": "PASS under Node 20.20.2. Earlier attempt using the shell default old Node failed to parse optional chaining; no content mutation occurred.",
+  "hashes": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1/round-a/run-provenance.json",
+      "sha256": "bb0e8a471a801ba8c57ceece66b19cbbe1bc2e19305fb953c2a7bc73615fbf4d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1/round-a/results/mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-first-pass-a.batch-001.run.json",
+      "sha256": "19b8cd7964a2f83d858f38695dc7adbed9f5202fba48caf5881b9945798f6055"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1/round-a/results/mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-first-pass-a.batch-001.records.jsonl",
+      "sha256": "e080cdd3adfe2492b6be4bc53692460621c31aba8cfd1591e65f2b1dba2fc408"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040r-final-series-and-integrals-17-v1/round-a/author-check.mjs",
+      "sha256": "5e71f5b4395b619246f263d1564f8303895f8f1b46083980795db6756acd9dda"
+    }
+  ],
+  "authority": "AI candidates only; no human approval, reviewer-author separation, or model-diversity claim. See run-provenance.json for prior authoring and visualization involvement."
+}

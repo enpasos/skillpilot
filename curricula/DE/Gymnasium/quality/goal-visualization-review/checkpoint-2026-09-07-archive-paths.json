@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "review-archive-path-moves",
+  "reason": "These historical candidate payloads are not runtime landscapes. Preserve their exact bytes as .json.snapshot instead of weakening runtime landscape discovery or its schema. Historical receipts retain their original paths and hashes; resolve those paths through this move table. No historical approval is rewritten.",
+  "moves": [
+    {
+      "from": "physics-c648-slit-split-v1/proposed-goals.json",
+      "to": "physics-c648-slit-split-v1/proposed-goals.json.snapshot",
+      "unchangedSha256": "65cf92b4f1984814b29ab31b13b905b5375d3b2ea4b2a66443a105deb90e8fcd"
+    },
+    {
+      "from": "math-b039-methods-and-physics-torque-v1/pre-current-evidence/math.candidates.json",
+      "to": "math-b039-methods-and-physics-torque-v1/pre-current-evidence/math.candidates.json.snapshot",
+      "unchangedSha256": "74d7ed91281dcc3d35fe68448342951f42416826d24e544cf9c846017622a30b"
+    },
+    {
+      "from": "math-b039-methods-and-physics-torque-v1/pre-current-evidence/physics.candidates.json",
+      "to": "math-b039-methods-and-physics-torque-v1/pre-current-evidence/physics.candidates.json.snapshot",
+      "unchangedSha256": "351fec6d8d879d0e62a44800fcc4479573fa050e2da92a771a20fd55506e03b0"
+    }
+  ],
+  "pathBase": "curricula/DE/Gymnasium/quality/goal-visualization-review/",
+  "diffractionActivation": "PAUSED: the three-new-goal proposal was reverted. Do not apply it again; use existing-goals-reuse-review.md before a new implementation."
+}

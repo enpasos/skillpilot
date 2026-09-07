@@ -1,0 +1,62 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b039-openai-codex-independent-b-20260906",
+  "campaignId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-b",
+  "roundId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:7ae019b04d6c0fcff50a82d9f2f7aef339694287e25e10a79d4feb1061322218",
+  "bundleFingerprint": "sha256:c5d02c732c1369630ab7b7c8db1853a96d069ca8c0dac88a14c2c31ac591d8f8",
+  "bookDigest": "sha256:769a34d765bac2e4cba41d1f2e78eb6806e4140778954edd1c664c43c3c43666",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "modelVersion": "Exact model identifier not disclosed by the environment",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:bfeee7f340f55ff484e5201bfe8f8d301240b9511692254bd8da82b26a8a3afc",
+  "independenceGroupId": "physik-rollout-v1-batch-039-quantum-and-rotation-20-v1-20260906-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+    "1a1c09f0-96b7-4c33-a623-0e8101537876",
+    "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+    "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+    "727d0946-7019-50ed-8fc6-85db12508733",
+    "e296aba6-f407-5944-a2bd-e5296e4c9f06",
+    "52b6722a-b3b2-5d2d-a507-0215532b0422",
+    "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+    "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+    "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+    "cf570e66-2ce2-5923-9033-c97d74119553",
+    "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+    "642aebd7-66cd-5a50-b543-73c4b207525d",
+    "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+    "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+    "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+    "8daaf751-93fe-56d9-8697-ac30237061bd",
+    "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+    "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+    "58db62d4-458f-5e2d-9ca0-968e09f4944b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7ae019b04d6c0fcff50a82d9f2f7aef339694287e25e10a79d4feb1061322218"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-06T22:04:49.000Z",
+  "completedAt": "2026-09-06T22:16:07.069Z",
+  "status": "completed",
+  "outputDigest": "sha256:e4d3ec28c0583223f7807c6f7fb7e2339a6dc7ea5d9cc5153d4aa03ba8e53bad",
+  "toolchainVersion": "codex-independent-review-node20-v1"
+}

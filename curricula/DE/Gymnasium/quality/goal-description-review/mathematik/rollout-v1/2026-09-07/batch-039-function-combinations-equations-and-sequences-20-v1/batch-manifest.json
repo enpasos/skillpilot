@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-039-function-combinations-equations-and-sequences-20-v1.config.json",
+  "configDigest": "sha256:45aeb16ee1dd9d8aba28490869861ad37ad58341565fae899a7c3b255597782f",
+  "goalIds": [
+    "1341c20b-87ab-51e7-bd4a-50166c27806e",
+    "864f9a45-badf-5a31-88d3-da4525808c2d",
+    "d0a9e407-e654-5940-958f-6f608bf3d654",
+    "46166788-4a8f-53d5-9fe9-77b0a018d7ee",
+    "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+    "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+    "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+    "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
+    "70a21623-6c87-55ae-b534-ab45a3b9b1d2",
+    "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+    "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+    "1b888f4c-df57-52a9-9551-b2b692e929fa",
+    "c61af0a9-7d56-5505-a70d-ee097c3b747f",
+    "6a66b4f5-d36e-5b53-91ad-cf25a849d66b",
+    "10efb267-9733-5db3-a807-03f4cf54e336",
+    "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+    "b66d13c5-187e-530b-b4d3-efc7506a7f34",
+    "4d55ba50-8d67-560c-a10f-cccff4728c40",
+    "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+    "c66cb27b-8199-58fb-95f4-6314c0c2d07b"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 796,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:354e0a4bb3b5f398b715d67aeacf1ea323e4c9e2f48fd872a5d072b8a93d186e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:8565c49590f097d1ea6d470435020aae53f0e7877e4926b1c782b3d83a6e2ad5",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:ad847897fa4309ed6b99f1eb66903acead56580c61fca946674d19b854af52f6",
+    "reviewInputFingerprint": "sha256:3a917a7266400f52df5f295f312f47444d1a16a4a11eb677d572a3dc6504b5a5",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907-a",
+        "campaignDigest": "sha256:b7b7539c4d294c072c74f25ef8340efc68be9b6f8650205b785c7ef52c3ffd42",
+        "roundId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:723cded099ebd025bf41a8e46836ef2765296413646dc5e259cc0c16abdab7bb"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907-b",
+        "campaignDigest": "sha256:9cdf02d3514f1129b5b76af182eb21448243d840b49f04b1f4a6258191148372",
+        "roundId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-039-function-combinations-equations-and-sequences-20-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:c2b4613030428c8b95f608e0055ae5d1c5ac8df54df50240cfd3af4970b75fef"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

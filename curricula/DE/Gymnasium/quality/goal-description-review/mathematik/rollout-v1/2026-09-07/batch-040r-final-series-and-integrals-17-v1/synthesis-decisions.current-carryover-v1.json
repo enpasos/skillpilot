@@ -1,0 +1,496 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-b040r-nonblind-synthesis",
+  "synthesizedAt": "2026-09-07T01:36:01.962Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907",
+    "batchManifestDigest": "sha256:db230f0409d8fd11db89122f4f599a41ebd7a32665d87465e6107540ae4c0857",
+    "configDigest": "sha256:ef0843102e1afc5cb03f31bbb7a3ff378e8df999a36a484059ce655ab351ceff",
+    "bundleFingerprint": "sha256:0655ab188764862a1a97deac4cbc63ade8b5e16fa244427bb5b1a5e50c4025c9",
+    "bookDigest": "sha256:53006d5047dac48059f4b54bea88ef56308fbe835d01f16a6cd0939d24aba1b3",
+    "reviewInputFingerprint": "sha256:7839118449aad2efbe0869aa0d34611ae4b7126eea9332996cd2fe70b6026425",
+    "dualSummaryDigest": "sha256:750884d45a15781db4be544674edce950053ae6bda85204347298f520dfd3214",
+    "canonicalLandscapeDigest": "sha256:bd33714d53a8774ac18bced0ca93ca3ade8a9de085373c851937af43b7416e44"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-a",
+      "campaignDigest": "sha256:b19df9922bb4aba6bc579c94501798796a39f0856043017a06431d2179a87b0e",
+      "roundId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-independent-a",
+      "reviewInputFingerprint": "sha256:7839118449aad2efbe0869aa0d34611ae4b7126eea9332996cd2fe70b6026425",
+      "batchId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7b750cfcd671fca6da158928329db1075622e8fea301a3b09e2cf8cd62c9aa07",
+      "runId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515",
+      "runManifestDigest": "sha256:156c6ea11a1d4a3bb2562ed97868a1386666443fa7c3d1aef290abc33fa3f16c",
+      "resultsDigest": "sha256:e080cdd3adfe2492b6be4bc53692460621c31aba8cfd1591e65f2b1dba2fc408"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-b",
+      "campaignDigest": "sha256:90fedd644efed1a637820d8d834227999cc59fb443d1fc1d6b96504e80515b12",
+      "roundId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-independent-b",
+      "reviewInputFingerprint": "sha256:7839118449aad2efbe0869aa0d34611ae4b7126eea9332996cd2fe70b6026425",
+      "batchId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:495867983a9ef6a760284d636455826fb34d0fe6f8a88ca139b1439d6b94ded4",
+      "runId": "mathematik-b040r-fresh-blind-b-20260907",
+      "runManifestDigest": "sha256:67c37491c0e2cbffd361352a43f0dcf432983e7ef600f3495ab380d348a39f5b",
+      "resultsDigest": "sha256:e84d5fd192c021c25fe6f38c1ac95fed6c2b35bf5c9d5587e174fd7788d0979a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-001",
+      "goalId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ea0bd739714a0970d0b423ffd15319bb31f89ad95bcce3650ac901e6b2bbdcf9",
+      "pageFingerprint": "sha256:24716db92d9eaecd66d63ad232554666c79e2c28bc8e9e8101e0e3dbb350b58c",
+      "goalReviewContextFingerprint": "sha256:1a3c858ce50474a9d6cbe02771246dbc54058b347252f83c6d94a0d86e9e1378",
+      "finalText": {
+        "titleDe": "Arithmetische Reihen untersuchen",
+        "titleEn": "Investigate arithmetic series",
+        "descriptionDe": "Die lernende Person kann Partialsummen arithmetischer Reihen bestimmen und mithilfe der Summenformel ihr Grenzverhalten begründen.",
+        "descriptionEn": "The learner can determine partial sums of arithmetic series and use the summation formula to justify their limiting behavior."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+          "recordDigest": "sha256:b9acfd79c69df23bcf026b0047e061f644618d7f59a4d1402d0735c33d43d74b"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+          "recordDigest": "sha256:dc56a20d5a489e3547a8afd106ebdc1a987090b45bb85fce224116a8d46f8703"
+        }
+      },
+      "rationaleDe": "A und B begründen das Grenzverhalten am quadratischen beziehungsweise linearen Summenausdruck und beachten die Nullreihe. A wird gewählt: negative Differenz mit eigener Summenentwicklung und eine unabhängige inverse konstante Gliedfolge prüfen zwei Schlussrichtungen. B bestätigt die mögliche anfängliche Zunahme trotz späterer negativer Divergenz; kein neues Reihenkriterium wird ergänzt.",
+      "rationaleEn": "A and B justify limiting behavior through the quadratic or linear sum expression and account for the zero series. A is selected: a negative difference with an independently derived sum and a fresh inverse constant-term sequence test two reasoning directions. B confirms possible initial growth despite later negative divergence; no new series criterion is added."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-002",
+      "goalId": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7ae20635d29d1cd7ce6c32ad7866e395c66d7d9ad359b453ddeda53dccf33880",
+      "pageFingerprint": "sha256:78b76b210bbcf5b32f2f9e91ad2c1abf8809a315ab92a14d0d50672806cd4dc0",
+      "goalReviewContextFingerprint": "sha256:6429b0110e655ccd07c967a221d2c7fe99d254bd9c95fb53507b070150e14e1d",
+      "finalText": {
+        "titleDe": "Geometrische Reihen untersuchen",
+        "titleEn": "Investigate geometric series",
+        "descriptionDe": "Die lernende Person kann Partialsummen geometrischer Reihen bestimmen und mithilfe der Summenformel Konvergenz oder Divergenz sowie gegebenenfalls den Grenzwert begründen.",
+        "descriptionEn": "The learner can determine partial sums of geometric series and use the summation formula to justify convergence or divergence and, where applicable, the limit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.74b5a01b-c086-51d0-bc66-046029c92ef7",
+          "recordDigest": "sha256:653c1ae83e520377b3a529a3750ab6e9008bcf0daf9d31a429aec97f9bbfae28"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.74b5a01b-c086-51d0-bc66-046029c92ef7",
+          "recordDigest": "sha256:2185d18bc03c3510baae0592ff5e64def02eb09990373e6fe8ef6491565b0439"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden Partialsummenformel und Konvergenzentscheidung kohärent und behandeln q=1, q=-1 sowie den Nullstart. A wird gewählt, weil die konkrete alternierende Konvergenz und ein unabhängiger Grenzparameterfall diese Unterscheidungen nachvollziehbar prüfen. B bestätigt dieselben Bedingungen; Anwendung und allgemeine Reihentests bleiben außerhalb.",
+      "rationaleEn": "Both rounds coherently connect the partial-sum formula and convergence decision and handle q=1, q=-1 and zero initial value. A is selected because concrete alternating convergence and an independent boundary-parameter case make these distinctions observable. B confirms the same conditions; applications and general series tests remain outside scope."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-003",
+      "goalId": "4d55ba50-8d67-560c-a10f-cccff4728c40",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dc585b2a281e9dd10acd4e2aa454dc3ff40d8f476f9c27304595bfa0d7f2720a",
+      "pageFingerprint": "sha256:1e2f8d58b7b8b728d3c4bb32812d584f0315e6828d970bf05f3df92750061d5c",
+      "goalReviewContextFingerprint": "sha256:581536e8058660e6e85496d147c3aa100738c51a294d10438874aba8fb3afed1",
+      "finalText": {
+        "titleDe": "Reihen als Folgen von Partialsummen beschreiben (LK)",
+        "titleEn": "Describe series as sequences of partial sums (advanced course)",
+        "descriptionDe": "Die lernende Person kann Reihen als Folgen von Partialsummen beschreiben und die zugehörige Notation fachsprachlich deuten.",
+        "descriptionEn": "The learner can describe series as sequences of partial sums and interpret the associated notation using mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "recordDigest": "sha256:3b7d41fdf86944987e04fc40bd0738d72a4e13522eb511fb9a9c1e942a3c60bb"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "recordDigest": "sha256:6b99e3ee99f865ee1c36105b6d7a12ef9873ac9b72029467ae1584155f78ceb0"
+        }
+      },
+      "rationaleDe": "A und B unterscheiden Summand, Partialsumme, Partialsummenfolge und gebundenen Laufindex. A wird gewählt, weil die alternierenden neuen Glieder und die unabhängige Rückgewinnung aus einer Summentabelle Begriffsverständnis in beiden Darstellungsrichtungen konkret zeigen. Das Profil ergänzt keine allgemeine Konvergenzprüfung; B bestätigt denselben engen Notationskern.",
+      "rationaleEn": "A and B distinguish summand, partial sum, partial-sum sequence and bound summation index. A is selected because fresh alternating terms and independent reconstruction from a partial-sum table concretely show conceptual understanding in both directions. The profile adds no general convergence test; B confirms the same narrow notational core."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-004",
+      "goalId": "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3472e12dad10632f991371095c5f930aca6217e0cd2691ad79aa1caa0c2c854d",
+      "pageFingerprint": "sha256:4e24013e6204fb45e312b5321d06f96facf9ab39586f8c352f555a7372bb1e42",
+      "goalReviewContextFingerprint": "sha256:eac4acf52f2bff8e2a93a17b48a62dd54903bf9527f81c19a6d3484f127d24a5",
+      "finalText": {
+        "titleDe": "Divergenz der harmonischen Reihe begründen (LK)",
+        "titleEn": "Justify divergence of the harmonic series (advanced course)",
+        "descriptionDe": "Die lernende Person kann die Divergenz der harmonischen Reihe mit einem geeigneten Argument begründen.",
+        "descriptionEn": "The learner can justify divergence of the harmonic series using a suitable argument."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "recordDigest": "sha256:2704c290963e3eef874d43f8d1a1aa7b5858503f748ed5991289e5c466c6f2ec"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "recordDigest": "sha256:10907a46cf8192a034637901cee18ec5a1a090e90822de13c5fc9f972d600844"
+        }
+      },
+      "rationaleDe": "Beide Runden begründen Unbeschränktheit durch beliebig fortsetzbare Beiträge und erkennen endlichen Präfixentfall als echten Transfer. B wird gewählt, weil es einen gültigen Divergenzweg fordert und dyadische Blöcke ausdrücklich nur als Beispiel nennt. A bestätigt die korrekte Abschätzung H_(2^m)≥1+m/2; die methodenoffene Beschreibung wird dadurch nicht auf diesen einen Beweis festgelegt.",
+      "rationaleEn": "Both rounds justify unboundedness through indefinitely repeatable contributions and recognize removal of a finite prefix as genuine transfer. B is selected because it requires a valid divergence argument and explicitly treats dyadic blocks only as an example. A confirms the correct bound H_(2^m)≥1+m/2; the method-open description is not restricted to this proof."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-005",
+      "goalId": "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3dbbb3e10850d849912d9fa8aaa4ffaf4dfe7b5cf5941c5af6d2e895b3bd5a29",
+      "pageFingerprint": "sha256:4ff8bf273dd9b01b55ac6fa7f76613ed987c5ce8b83f70a7a1c9d75ef3ac55ee",
+      "goalReviewContextFingerprint": "sha256:2ca25899dc7863dd8d10099852f1e6f212e83ae5b0b5482020f8143c427e72e7",
+      "finalText": {
+        "titleDe": "Konvergenzbedingungen geometrischer Reihen erläutern (LK)",
+        "titleEn": "Explain convergence conditions for geometric series (advanced course)",
+        "descriptionDe": "Die lernende Person kann Konvergenzbedingungen geometrischer Reihen erläutern und den Grenzwert konvergenter geometrischer Reihen bestimmen.",
+        "descriptionEn": "The learner can explain convergence conditions for geometric series and determine the limit of convergent geometric series."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "recordDigest": "sha256:5a2b4cef781c6a0afb87204d45db77caf0f43fbc08a99f3aca768e15282ff421"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "recordDigest": "sha256:869c0c39694ed78da424b36bfb9c4e59a3a66808c534a43b3ce915fd95e1df81"
+        }
+      },
+      "rationaleDe": "A und B bestätigen die bedingte Grenzwertentscheidung aus |q| und behandeln den Nullstart gesondert. A wird gewählt: alternierende Konvergenz wird einer neuen falschen Grenzwertrechnung bei q=3 gegenübergestellt. B sichert die Abgrenzung zur beschränkten Oszillation bei q=-1. Die bekannte Überlappung mit dem Grundziel rechtfertigt keine automatische ID-Zusammenlegung oder zusätzliche Textpflicht.",
+      "rationaleEn": "A and B confirm the conditional limit decision from |q| and treat zero initial value separately. A is selected: alternating convergence is contrasted with a fresh incorrect limit calculation at q=3. B safeguards the distinction from bounded oscillation at q=-1. Known overlap with the introductory goal authorizes neither automatic ID merging nor additional wording requirements."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-006",
+      "goalId": "911f3200-1dbc-59a6-90df-c883c77de39c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a3e061f5e834dd32f0df9675c64ef00f9f3bf5987dbe15c957372000c4388f1f",
+      "pageFingerprint": "sha256:5ab84a40a037071af50a7d4836c234da4a1304453a53f47ea91669c773303df7",
+      "goalReviewContextFingerprint": "sha256:d44f45571c75876773de48130e6e3718a5214c33552a832088e5e2bf19612a21",
+      "finalText": {
+        "titleDe": "Geometrische Reihen in Anwendungen nutzen (LK)",
+        "titleEn": "Use geometric series in applications (advanced course)",
+        "descriptionDe": "Die lernende Person kann geometrische Reihen in geeigneten Anwendungssituationen modellieren und auswerten.",
+        "descriptionEn": "The learner can model and evaluate geometric series in suitable application contexts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.911f3200-1dbc-59a6-90df-c883c77de39c",
+          "recordDigest": "sha256:d59557fe2faad20e7f8ca6141c71dbcae1d6011f429682f2244cd38b7f6dce4f"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.911f3200-1dbc-59a6-90df-c883c77de39c",
+          "recordDigest": "sha256:b80f51c72e72ba4864718153b7588217709f55d8779b7d8b2e5ea774a97a4a9a"
+        }
+      },
+      "rationaleDe": "Die Runden bestätigen konstante multiplikative Beiträge einer addierbaren Größe als gemeinsamen Modellierungskern. A wird gewählt, weil Rückgewinnung zu endlicher Flächenkonstruktion nicht nur Zahlen, sondern Modellgröße und Horizont verändert; halbierte Seiten bedeuten den Flächenquotienten 1/4. B bestätigt die Grenze zwischen Partialsumme und idealisiertem Grenzwert sowie das korrekte Energiemodell des Bildes.",
+      "rationaleEn": "The rounds confirm constant multiplicative contributions of one additive quantity as the shared modelling core. A is selected because recovery changes to a finite area construction, varying the model quantity and horizon rather than only numbers; halved sides imply area ratio 1/4. B confirms the distinction between partial sum and idealized limit and the image's correct energy model."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-007",
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:796595e371bb5ca08d5d67105a94ce5dab513f4d4f4e448c3ddae61c28addcd7",
+      "pageFingerprint": "sha256:2d7ca8346d62d60e7a9172fd83136eb13c4e635b4acbe064f71597769c66f05c",
+      "goalReviewContextFingerprint": "sha256:2d629f345c8a9aa417c01fb07a253b3f570e5842e56d9d0c386c7cfcbb919470",
+      "finalText": {
+        "titleDe": "Exponentialfunktion durch Taylorpolynome annähern (LK)",
+        "titleEn": "Approximate the exponential function by Taylor polynomials (advanced course)",
+        "descriptionDe": "Die lernende Person kann die natürliche Exponentialfunktion durch Taylorpolynome annähern und die Approximation deuten.",
+        "descriptionEn": "The learner can approximate the natural exponential function by Taylor polynomials and interpret the approximation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.1b664036-3c29-5d94-9f42-97069aaa2c53",
+          "recordDigest": "sha256:763d96ece5cc8b4e22907fa107229fea0609349e840e085003fac2e908a71648"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.1b664036-3c29-5d94-9f42-97069aaa2c53",
+          "recordDigest": "sha256:7c32670c7da4d9be7d811bd9550d367cbd84ed10080074f87979f86b7a30ba64"
+        }
+      },
+      "rationaleDe": "A und B bestätigen eine endliche lokale Taylorapproximation von e^x mit Deutung von Grad und Abstand. B wird gewählt, da ein negatives Auswertungsargument die Termvorzeichen und tatsächliche Näherungsgüte verändert, ohne eine zusätzliche Verschiebungsroutine obligatorisch zu machen. A bestätigt Ableitungsanpassung und das numerisch korrekte Bild; eine allgemeine Restglied- oder Konvergenzbeweispflicht folgt daraus nicht.",
+      "rationaleEn": "A and B confirm a finite local Taylor approximation of e^x with interpretation of degree and distance. B is selected because a negative evaluation argument changes term signs and actual accuracy without making an extra recentering routine compulsory. A confirms derivative matching and the numerically correct image; no general remainder or convergence proof follows."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-008",
+      "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d50d77ea6f06fc622fef11bc58f082d2cca46f84bf4a501490c3606ba9da3c22",
+      "pageFingerprint": "sha256:33da1096cd91c1b12919505b4eb01b033be1d687e78eae231c09757e28b25938",
+      "goalReviewContextFingerprint": "sha256:c0a9356c068dccb241590f5bcd404d2b7fc9ff38a2fb7ad281054b349a9a8fa1",
+      "finalText": {
+        "titleDe": "Digitale Werkzeuge für numerische Analysen einsetzen",
+        "titleEn": "Deploy digital tools for numerical analyses",
+        "descriptionDe": "Die lernende Person kann digitale Werkzeuge nutzen, um Nullstellen, Extremstellen oder Integrale numerisch zu bestimmen, Ergebnisse kritisch zu prüfen und mit analytischen Verfahren zu vergleichen.",
+        "descriptionEn": "The learner can use digital tools to numerically determine roots, extrema, or integrals, critically examine results, and compare them with analytical methods."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+          "recordDigest": "sha256:9e71425c5c4698fee2c92032ce740faa8d7bc9a6cf834fb94177073603d23901"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+          "recordDigest": "sha256:3bbf72199661067638efd03421968e15933d1400fdec3062e735fb06a4e426ab"
+        }
+      },
+      "rationaleDe": "Beide Runden werten Nullstellen, Extremstellen oder Integrale als alternative Gegenstände derselben digitalen Ergebnisprüfung, nicht als drei neue analytische Routinen. A wird gewählt, weil Suchintervall und Vollständigkeit zunächst an einer Nullstelle, anschließend Methodengenauigkeit an einer Quadratur beziehungsweise einem stationären Nicht-Extremum geprüft werden. B bestätigt die unabhängige analytische Gegenprüfung und Werkzeugneutralität.",
+      "rationaleEn": "Both rounds treat roots, extrema or integrals as alternative objects of one digital-result validation competence, not three new analytical routines. A is selected because search interval and completeness are first tested with a root, then method accuracy with quadrature or a stationary non-extremum. B confirms independent analytical checking and tool neutrality."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-009",
+      "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0f3249f94f2cefdbea0e007f2aff0673e69dd00024cd5930a007d89c7e487033",
+      "pageFingerprint": "sha256:8b44c9892735086fff9b3f5338d301c832c7ac20b5a33ca4cb0bf296ba4d8ab2",
+      "goalReviewContextFingerprint": "sha256:960c33380e24f52c4593b07bc3ef4927a10a7e4b58c97f4434d7359a090b97ce",
+      "finalText": {
+        "titleDe": "Flächen unter Graphen näherungsweise bestimmen",
+        "titleEn": "Determine areas under graphs approximately",
+        "descriptionDe": "Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+        "descriptionEn": "The learner can determine areas under function graphs using rectangle sums (upper and lower sums) and other approximation methods, write them as sums, and estimate the accuracy of the approximation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+          "recordDigest": "sha256:bafbc3bc550c9252ce1f3a9cca7825b951539c664f51fb1fe960e7fa28d9bc36"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+          "recordDigest": "sha256:79c4b02bbcaf78a88a140d144fb9dbf0f98bd1c4133b3e1e0c8bc0dad4ec10ee"
+        }
+      },
+      "rationaleDe": "A und B verbinden Summenschreibweise, Approximation und Schranken als eine Flächennäherungskompetenz. A wird gewählt, weil die neue nichtmonotone Kurve ein inneres Maximum besitzt und damit bloße Links-Rechts-Rezepte wirksam prüft; der erste Fall vergleicht zusätzlich die Trapeznäherung. B bestätigt Monotoniebedingungen und das korrekte Vier-Rechteck-Bild. Grenzwertbeweis und Hauptsatz bleiben eigene Ziele.",
+      "rationaleEn": "A and B connect sum notation, approximation and bounds as one area-approximation competence. A is selected because its fresh nonmonotone curve has an interior maximum, effectively testing simplistic left-right recipes; its first case also compares a trapezoidal approximation. B confirms monotonicity conditions and the correct four-rectangle image. Limit proofs and the fundamental theorem remain separate goals."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-010",
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ea2687cb15c3a37460fe5cb180be6ed603c3f79cc2da09057d74033df0e24bff",
+      "pageFingerprint": "sha256:e274bb5ce7247a4e0d2a6e554098cfbf5dfb06ee556e4b1fe1b8c4d8bb04331b",
+      "goalReviewContextFingerprint": "sha256:6d2c8c1e7cd2a27030dab7575a0a4aa73f911eb8c4ebe8a01a34c1ca237cd76e",
+      "finalText": {
+        "titleDe": "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+        "titleEn": "Reconstruct and interpret quantities from rates of change and an initial value",
+        "descriptionDe": "Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+        "descriptionEn": "The learner can calculate quantities from rates of change and an initial value and interpret the reconstruction in mathematical and real-world contexts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.ece68088-71a8-466b-874c-09e6baac19fc",
+          "recordDigest": "sha256:2bae68397610c1a9709489841d208550e0ee6d82952439136a77940f539043ef"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.ece68088-71a8-466b-874c-09e6baac19fc",
+          "recordDigest": "sha256:0e7ca8326852bf3f83bf3b1dd77c46a0eb0d262b26cb2b59e41500a9a20e5483"
+        }
+      },
+      "rationaleDe": "Die Runden stimmen bei Rate, Anfangswert, vorzeichenbehafteter Änderung und eindeutig rekonstruiertem Bestand überein. B wird gewählt, weil es die Rekonstruktion zusätzlich am Anfangswert und durch Ableiten kontrolliert und eine spätere Bezugszeit zum rückwärts gerichteten Transfer nutzt. A bestätigt anhand konkreter Vorzeichenwechsel und verschobener Bezugszeit dieselbe Kompetenz. Allgemeine Differentialgleichungen werden nicht ergänzt.",
+      "rationaleEn": "The rounds agree on rate, initial value, signed change and the uniquely reconstructed quantity. B is selected because it checks reconstruction against the initial value and by differentiation, then uses a later reference time for backward transfer. A confirms the same competence through concrete sign changes and shifted reference time. General differential equations are not added."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-011",
+      "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6b90f5fa042d929990a9415c99043709d46de9b38a0324fb81d746e17bb1901c",
+      "pageFingerprint": "sha256:4d05a88be4a4c6bde6f476ccef35fc67c2f61e47f2be946011373b9d39568c0a",
+      "goalReviewContextFingerprint": "sha256:e0acbe8290cd602c54df81ce730af411eb90e10f728a063803d862cdc03e0443",
+      "finalText": {
+        "titleDe": "Hauptsatz geometrisch begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben",
+        "titleEn": "Justify the fundamental theorem geometrically and describe the relation between function, derivative, and antiderivative",
+        "descriptionDe": "Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch anschaulich als Beziehung zwischen Ableiten und Integrieren begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben.",
+        "descriptionEn": "The learner can justify the fundamental theorem of calculus geometrically as a relationship between differentiation and integration and describe the relation between function, derivative, and antiderivative."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.90662398-a0fd-45bf-9ce9-2abbc20428ed",
+          "recordDigest": "sha256:a5e3d92187f921c114fc9e4b991ae493dc2b8479ccc6e2a806a3ca8480ed23ff"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.90662398-a0fd-45bf-9ce9-2abbc20428ed",
+          "recordDigest": "sha256:3d23e2b6456980be97d8d96b2ec951c849b16df8a74cd236c86ea49e2390fa2a"
+        }
+      },
+      "rationaleDe": "A und B verlangen ein eigenständig erklärtes schrumpfendes Flächenstreifenargument statt bloß das Bildbeispiel nachzurechnen. A wird gewählt, weil es den Übergang A'=f zur Endpunktdifferenz und einen unabhängigen negativen Integranden samt verschobener Stammfunktion ausdrücklich verbindet. B bestätigt die nötige Korrektur F(x)-F(a); es wird keine epsilon-delta-Beweispflicht ergänzt.",
+      "rationaleEn": "A and B require an independently explained shrinking-area-strip argument rather than merely recalculating the image example. A is selected because it explicitly connects A'=f to the endpoint difference and an independent negative integrand with a shifted antiderivative. B confirms the necessary adjustment F(x)-F(a); no epsilon-delta proof requirement is added."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-012",
+      "goalId": "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d98c978fcf5cd13b2e623fb81239920fc635342bf4beb336068ef23b63c16730",
+      "pageFingerprint": "sha256:80298bc974101d0febbad702894f4647ead1151cfb7c7d675cadd36e884cdd52",
+      "goalReviewContextFingerprint": "sha256:6125d6e4c4b5f7ed62408043eb57ddb6f21da0817b288f2ec89b17371b7ccdbe",
+      "finalText": {
+        "titleDe": "Integralfunktion definieren und ihre Bedeutung beschreiben",
+        "titleEn": "Define an integral function and describe its meaning",
+        "descriptionDe": "Die lernende Person kann den Begriff der Integralfunktion definieren, seine Bedeutung beschreiben und den Zusammenhang zwischen Integrand und Integralfunktion an Flächenbetrachtungen erläutern.",
+        "descriptionEn": "The learner can define the concept of an integral function, describe its meaning, and explain the relationship between integrand and integral function using area interpretations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.24f21c0c-b506-56ec-ad17-39b209af4585",
+          "recordDigest": "sha256:e4c891551b367896707c76430a368b78b010e6d26f5c5db75f5b8c0ba9ee38ff"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.24f21c0c-b506-56ec-ad17-39b209af4585",
+          "recordDigest": "sha256:fde1c0ab7f4cb2fae2d9e521f7d654805859b961f9c0e3c6dd6dd21c548e3cbc"
+        }
+      },
+      "rationaleDe": "Beide Runden sichern feste Startstelle, variable obere Grenze und orientierte Akkumulation. A wird gewählt, da der erste konkrete Fall a=1 auch rückwärts gerichtete Integration prüft und die unabhängige Startstellenänderung eine konstante Flächenverschiebung erklärt. B bestätigt Laufvariable und denselben Zusammenhang; das vollständige gegenseitige Graphenrekonstruieren bleibt dem Nachfolger vorbehalten.",
+      "rationaleEn": "Both rounds secure the fixed starting point, variable upper limit and signed accumulation. A is selected because its concrete a=1 case also tests reversed integration and its independent change of starting point explains a constant area shift. B confirms the dummy variable and the same relationship; full mutual graph reconstruction remains with the successor goal."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-013",
+      "goalId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6dd489638aff3d1a5bcdabff8973e8be2311cb238077f84de2b5cb0f7c3974ef",
+      "pageFingerprint": "sha256:09855663e3e801ffcb89899a020471d1cff3a7ebb8bd8e78d41b48ff158ba09a",
+      "goalReviewContextFingerprint": "sha256:0c3e1d43ccc9f626669abc5366ea9ec711ca8efd6be54f178b63c23720cbe8ad",
+      "finalText": {
+        "titleDe": "Graphen von Integrand und Integralfunktion wechselseitig deuten",
+        "titleEn": "Interpret graphs of integrand and integral function mutually",
+        "descriptionDe": "Die lernende Person kann vom Graphen einer Funktion auf den Verlauf einer zugehörigen Integralfunktion schließen und umgekehrt aus einer Integralfunktion den Graphen der Integrandenfunktion erschließen.",
+        "descriptionEn": "The learner can infer the graph of an associated integral function from a function graph and, conversely, infer the graph of the integrand from an integral-function graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.5042fd2b-bab2-50be-8144-c9ccf5618615",
+          "recordDigest": "sha256:fb9ed9ac2260dad25f5c614188f37e0d0fcefefbc12989bc1d590852573adcb4"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.5042fd2b-bab2-50be-8144-c9ccf5618615",
+          "recordDigest": "sha256:a6b9f09f42e3008dfdb17f734784e228701c0755b8af3f83a4d00fc5491c0e62"
+        }
+      },
+      "rationaleDe": "A und B behandeln beide Schlussrichtungen als denselben graphischen Zusammenhang F'=f und unterscheiden waagerechte Tangente von Extremum. A wird gewählt, weil ein neuer Integrand zunächst zu einer normierten Integralfunktion führt und der unabhängige kubische Gegenfall die Schlussrichtung umkehrt. B bestätigt die notwendige Vorzeichenwechselbedingung; keine eindeutige Höhenlage ohne Startbezug wird unterstellt.",
+      "rationaleEn": "A and B treat both inference directions as the same graphical relationship F'=f and distinguish a horizontal tangent from an extremum. A is selected because a fresh integrand first yields a normalized integral function, while an independent cubic case reverses the inference direction. B confirms the necessary sign-change condition; no unique vertical position without a starting reference is assumed."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-014",
+      "goalId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:191c616b3f172d506b0d8c192a97d4e38eb232027a979682b2cd178f9a0cfa17",
+      "pageFingerprint": "sha256:45e6412c6201cc81c04ec013434a4b3e35239f84fdc768882e774d845a411dc3",
+      "goalReviewContextFingerprint": "sha256:811c170aabb2605cca39a429a528db9fcb1b60c371ba4be83bfcef217548f162",
+      "finalText": {
+        "titleDe": "Produktsummen und orientierte Flächen im Sachkontext deuten",
+        "titleEn": "Interpret product sums and oriented areas in context",
+        "descriptionDe": "Die lernende Person kann Produktsummen und Inhalte orientierter Flächen in Sachsituationen deuten und ihre Bedeutung für Gesamtwirkungen qualitativ erläutern.",
+        "descriptionEn": "The learner can interpret product sums and oriented areas in real-world situations and qualitatively explain their meaning for total effects."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.269675a9-13cd-4a3a-ab75-63794f5c9710",
+          "recordDigest": "sha256:f99d0e24933501a11156c53bf712b2cb3ed6c20710e45dbc363d1da8db181556"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.269675a9-13cd-4a3a-ab75-63794f5c9710",
+          "recordDigest": "sha256:e7c5b570a2e2cf54559544df59901c75a42f2815387fd83bef94370a7ea62006"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Produktsumme und orientierte Fläche als zwei Darstellungen einer Nettowirkung mit passenden Einheiten. A wird gewählt: Ein neuer negativer Nettobeitrag und ein unabhängiger Wechsel von Flüssigkeitsmenge zu Ortsänderung prüfen die Abgrenzung gegen Umsatz beziehungsweise Wegstrecke. B bestätigt denselben Vorzeichenkern. Keine Anfangsbestände oder exakte Integrationsmethoden werden zusätzlich gefordert.",
+      "rationaleEn": "Both rounds confirm product sums and signed areas as two representations of net effect with appropriate units. A is selected: a fresh negative net contribution and an independent shift from liquid quantity to displacement test the distinction from throughput or distance. B confirms the same sign-based core. Neither initial quantities nor exact integration methods are additionally required."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-015",
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:366b3dfb5b092047fc7b14feb30e070a251edd32dc404de8577468889cae078a",
+      "pageFingerprint": "sha256:0cc3a4d8aedc56f5ecb4f696e1f752a4c13b35cd261783da52d443b23ff93e31",
+      "goalReviewContextFingerprint": "sha256:0da81da8206512865caafd5f8af5df508ebe9ddf84d802c63e14fca9bc760a6e",
+      "finalText": {
+        "titleDe": "Graphen von Flächeninhaltsfunktionen skizzieren",
+        "titleEn": "Sketch graphs of area functions",
+        "descriptionDe": "Die lernende Person kann zu einer gegebenen Startstelle aus dem Graphen einer Randfunktion den Verlauf der zugehörigen orientierten Flächeninhaltsfunktion qualitativ skizzieren und dabei positive und negative Flächenbeiträge berücksichtigen.",
+        "descriptionEn": "Given a starting point, the learner can qualitatively sketch the associated signed-area function from the graph of a boundary function, taking positive and negative area contributions into account."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+          "recordDigest": "sha256:95a8cdf73277df2c1d3d1c4a1c6c2039a7cf864827c10ac383c02a6eb396fe99"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+          "recordDigest": "sha256:bf62e89b231f5053235192eee3b9d26f8f425aea942118fd7b4f481109e33bc9"
+        }
+      },
+      "rationaleDe": "A und B bestätigen den eindeutigen Startwert A(a)=0 und die positive wie negative Akkumulation beim qualitativen Skizzieren. A wird gewählt, weil die unabhängige dreiecksförmige Randfunktion gekrümmte Abschnitte verlangt und damit eine Übertragung der Geraden aus dem Stufenbild verhindert; auch die veränderte Startstelle wird berücksichtigt. B bestätigt die umgekehrte Orientierung links vom Startpunkt.",
+      "rationaleEn": "A and B confirm the definite starting value A(a)=0 and positive as well as negative accumulation in qualitative sketching. A is selected because an independent triangular boundary function requires curved portions, preventing automatic copying of straight lines from the step-function image; the changed starting point is also handled. B confirms reversed orientation to the left of that point."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040r-final-series-and-integrals-17-v1-20260907-current-carryover-v1-decision-016",
+      "goalId": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:109e8e23279da6c71a1620347ba4055e81ac65abde43dc8e42f15efa8530652b",
+      "pageFingerprint": "sha256:7380d12736f0bf823e0739f9429b10e301d6304eb2ec9c1b573461227d358caf",
+      "goalReviewContextFingerprint": "sha256:10e416f2ef591e9f5b9296cdccc4738003a25b321176977e90fbfd7c225866a5",
+      "finalText": {
+        "titleDe": "Einfache Integrale berechnen",
+        "titleEn": "Calculate simple integrals",
+        "descriptionDe": "Die lernende Person kann die Stammfunktionen von $x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ sowie von $e^x$, $\\sin(x)$ und $\\cos(x)$ aus den Ableitungsregeln erschließen und damit mithilfe der Faktor- und Summenregel auf geeigneten Intervallen Stammfunktionen entsprechender Linearkombinationen bestimmen.",
+        "descriptionEn": "The learner can infer antiderivatives of $x^n$ for $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ and of $e^x$, $\\sin(x)$, and $\\cos(x)$ from differentiation rules and use the factor and sum rules to determine antiderivatives of their linear combinations on suitable intervals."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b040r17-first-pass-a-openai-codex-20260907T011515.a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+          "recordDigest": "sha256:ce0bf6739f12e22d6dc59f643c30f7727aa6cc870513aad0507a30fdc1c4dd6a"
+        },
+        "second": {
+          "recordId": "mathematik-b040r-fresh-blind-b-20260907.a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+          "recordDigest": "sha256:a3f126d9ce2d4b600b342094ab1df7315b48f831c3a8409233616737a78fdc8c"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen das Umkehren bekannter Ableitungen und die Fortsetzung durch Linearität auf einer abgegrenzten Funktionsbasis. A wird gewählt, weil eine gemischte neue Linearkombination Vorzeichenkontrolle und ein unabhängiger Fall mit negativer Potenz die Intervallwahl sowie den Ausschluss n=-1 konkret prüfen. B bestätigt dieselben Grenzen. Substitution, partielle Integration und logarithmische Integration werden nicht ergänzt.",
+      "rationaleEn": "Both rounds confirm reversing known derivatives and extension through linearity on a bounded function basis. A is selected because a fresh mixed linear combination tests signs and an independent negative-power case concretely tests interval choice and exclusion of n=-1. B confirms the same limits. Substitution, integration by parts and logarithmic integration are not added."
+    }
+  ],
+  "manifestFingerprint": "sha256:e50cc1330a39fe854d8130d04145971de3bebdc1afcf25ea5021e4b4d0bc3323"
+}

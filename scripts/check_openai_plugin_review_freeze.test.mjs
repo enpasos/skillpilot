@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import test from "node:test";
@@ -4018,6 +4019,29 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "91b6bfe07990480c2bde2e908dea60e7931564f95d8cfde6d642d03efa73dfc4"
         }
       ]
+    },
+    {
+      "id": "2026-09-07-goal-book-series-split-count-alignment",
+      "approvedAt": "2026-09-05",
+      "approvedBy": "product-owner",
+      "reason": "Apply the standing section 6.58 approval for mechanical Layer A test-data alignment on 7 September 2026 after the reviewed mathematics series split increases the atlas from 796 to 797 atomic pages.",
+      "scope": "Change only verified.model.pages.length from 796 to 797 in app/scripts/testGoalBookPublication.ts and append section 6.61 documentation. Bind exactly these two existing supplemental files in the record, runtime checker and regression. Preserve exact-count enforcement, every other test byte, negative cases, publication/source integrity and prior exception history. The regression reconstructs the previous test hash by reversing this single count change and confirms unchanged primary runtime/tree chains and no new frozen paths. This applies the existing preauthorization, not a new human review of curriculum content. No product logic, OpenAI 1.0.0 or Claude 1.1.1 package, MCP/OAuth/tool/schema/MCP-Apps resource, launch/session/identity/locale/learning-state/security/storage contract, portal, review case/fixture/artifact or deployment change.",
+      "target": "local-and-ci-public-layer-a-goal-book-publication-test-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-test-count-alignment-with-unchanged-submitted-contract-and-review-flow",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/scripts/testGoalBookPublication.ts",
+          "priorAuthorizedSha256": "e2be85c9ae8aa46d4594699e644b50868724103f52263f9d9fd886ce7657f162",
+          "authorizedSha256": "6c95cf9de67d0a03d4fe562779d71ce6289f3c97c5def211147ad43ea18f5dcd"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "91b6bfe07990480c2bde2e908dea60e7931564f95d8cfde6d642d03efa73dfc4",
+          "authorizedSha256": "6d99ca4a49c89659b0cd5d6cea6947048b9917ecbf9862ad037db5cd03f5cdc7"
+        }
+      ]
     }
   ]);
 });
@@ -4103,6 +4127,47 @@ test("nationwide atlas correction adds no frozen files or primary runtime change
   assert.deepEqual(
     resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, after),
     resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, before),
+  );
+});
+
+test("series split count alignment changes only the preauthorized count and documentation", () => {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  const index = freeze.authorizedRuntimeExceptions.findIndex(
+    ({ id }) => id === "2026-09-07-goal-book-series-split-count-alignment",
+  );
+  assert.ok(index > 0);
+  const exception = freeze.authorizedRuntimeExceptions[index];
+  assert.equal(exception.supplementalOnly, true);
+  assert.equal(Object.hasOwn(exception, "protectedFile"), false);
+  assert.equal(Object.hasOwn(exception, "protectedTree"), false);
+  assert.deepEqual(exception.additionalFiles.map(({ path }) => path), [
+    "app/scripts/testGoalBookPublication.ts",
+    "docs/deploy/openai-plugin-v1-review-freeze.md",
+  ]);
+  const before = freeze.authorizedRuntimeExceptions.slice(0, index);
+  const after = freeze.authorizedRuntimeExceptions.slice(0, index + 1);
+  const priorFiles = resolveAuthorizedSupplementalFileChains(before, freeze.authorizedCopyClarifications);
+  const currentFiles = resolveAuthorizedSupplementalFileChains(after, freeze.authorizedCopyClarifications);
+  assert.deepEqual([...currentFiles.keys()], [...priorFiles.keys()]);
+  for (const file of exception.additionalFiles) {
+    assert.equal(file.priorAuthorizedSha256, priorFiles.get(file.path)?.authorizedSha256);
+    assert.notEqual(file.authorizedSha256, file.priorAuthorizedSha256);
+  }
+  assert.deepEqual(
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, after),
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, before),
+  );
+  assert.deepEqual(
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, after),
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, before),
+  );
+  const currentTest = readFileSync(resolve(repositoryRoot, exception.additionalFiles[0].path), "utf8");
+  const currentAssertion = "assert.equal(verified.model.pages.length, 797)";
+  assert.equal(currentTest.split(currentAssertion).length, 2);
+  const priorTest = currentTest.replace(currentAssertion, "assert.equal(verified.model.pages.length, 796)");
+  assert.equal(
+    createHash("sha256").update(priorTest).digest("hex"),
+    exception.additionalFiles[0].priorAuthorizedSha256,
   );
 });
 

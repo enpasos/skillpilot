@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-038s-exponential-wording-and-images-5-v1.config.json",
+  "configDigest": "sha256:640153c2f0774c7e480a06ba90d7c5ca587f8456af099ada8544d744bb3e797c",
+  "goalIds": [
+    "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+    "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+    "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+    "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+    "ab720928-9dbc-53c2-a1f8-865dda92122d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 796,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:0404b6110d4162c8670f56628a21aaf6ccdf16ed57f2153026614342fb676013"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:3d4788160314044454b57fbc66d721b6d7598dadd4930d2a1773ee36fea2b91d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e0f3cb7413b76459fa7ec6f8f14e748287f4362df45aaa5d8ada432673561396",
+    "reviewInputFingerprint": "sha256:63523571b2670d41b3ce9182057206db00b19be24a43a30c703d377e6220f40f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-a",
+        "campaignDigest": "sha256:d5f45c3497147a9ef8023b392295a79314642d09491e642aab9c809f32729913",
+        "roundId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4982fbea399f5eb04d5ba3e7b5a2dc29cdc5bd5e61b82882634ee0b8b01e0314"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-b",
+        "campaignDigest": "sha256:90f394888ee2f63e9128c283bea829aa60fa863c04edbc98fee89fb3e8f77eaf",
+        "roundId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-038s-exponential-wording-and-images-5-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:33603010fbe38bf86b3ce4e3912e181ba4c734073a3d6225bc29d81505087af4"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

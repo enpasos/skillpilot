@@ -1,0 +1,3165 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "math-b040-p19-final-context-v1",
+  "materializedAt": "2026-09-07T01:10:32.047Z",
+  "author": {
+    "provider": "OpenAI",
+    "model": "unknown",
+    "modelVersion": "unknown",
+    "authority": "ai_candidate",
+    "humanApprovalClaimed": false
+  },
+  "stableDirection": "Root explicitly confirmed final canonical and image-import stability before execution of this read-only native patch emitter.",
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-taylor-tools-integrals-19-v1.config.json",
+      "sha256": "sha256:d626903669c655c38200783fad994c641589281486e0bda233d2825abab74b93"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-taylor-tools-integrals-19-v1.candidates.json",
+      "sha256": "sha256:12f963862e82138d819a913de1e326a4ae55ad6b46fc6a44f51ec046b39709c9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-taylor-tools-integrals-19-v1.authoring-context.json",
+      "sha256": "sha256:58b6fce4bb0bef80e3e4b6c321330910cd45f52f16323e7799c7591504fad588"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-taylor-tools-integrals-19-v1.author-check-report.json",
+      "sha256": "sha256:9bf8f8b947c58203d8edfb1ecbc4963af377f684680ffe81690904191cb8b102"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+      "sha256": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:bd33714d53a8774ac18bced0ca93ca3ade8a9de085373c851937af43b7416e44"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "sha256:99f1529c408cc24402eb8d4582d0ef497a8ca176ac67eec933df3e23e34b773c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-taylor-tools-integrals-19-v1.bind-current.ts",
+      "sha256": "sha256:6c77b13dc0239c2223fee85e58b2abd2cb632b0e93ffd5d53e505a0ad98335bc"
+    }
+  ],
+  "contexts": [
+    {
+      "goalId": "911f3200-1dbc-59a6-90df-c883c77de39c",
+      "currentGoal": {
+        "id": "911f3200-1dbc-59a6-90df-c883c77de39c",
+        "shortKey": "canonical_math_sek2_q4_harmonic_geometric_series_applications_by_geometric_applications",
+        "title": "Geometrische Reihen in Anwendungen nutzen (LK)",
+        "titleEn": "Use geometric series in applications (advanced course)",
+        "description": "Die lernende Person kann geometrische Reihen in geeigneten Anwendungssituationen modellieren und auswerten.",
+        "descriptionEn": "The learner can model and evaluate geometric series in suitable application contexts.",
+        "core": false,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q4",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.SERIES_HARMONIC_GEOMETRIC_BY.GEOMETRIC_APPLICATIONS"
+        },
+        "contains": [],
+        "requires": [
+          "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+          "74b5a01b-c086-51d0-bc66-046029c92ef7",
+          "b66d13c5-187e-530b-b4d3-efc7506a7f34"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "911f3200-1dbc-59a6-90df-c883c77de39c",
+            "title": "Visualisierung: Geometrische Reihen in Anwendungen nutzen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/911f3200-1dbc-59a6-90df-c883c77de39c/911f3200-1dbc-59a6-90df-c883c77de39c.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Geometrische Reihen in Anwendungen nutzen (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Geometrische Reihen in Anwendungen nutzen (LK)\". Die lernende Person kann geometrische Reihen in geeigneten Anwendungssituationen modellieren und auswerten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:cccbfe7c61e1328e91ad1011ef8a0d95967a073a70e27fdaac29e5eafc1e3c0f",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+        "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+        "b66d13c5-187e-530b-b4d3-efc7506a7f34"
+      ],
+      "requiresAfter": [
+        "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+        "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+        "74b5a01b-c086-51d0-bc66-046029c92ef7",
+        "b66d13c5-187e-530b-b4d3-efc7506a7f34"
+      ],
+      "prerequisites": [
+        {
+          "id": "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "title": "Konvergenzbedingungen geometrischer Reihen erläutern (LK)",
+          "titleEn": "Explain convergence conditions for geometric series (advanced course)",
+          "description": "Die lernende Person kann Konvergenzbedingungen geometrischer Reihen erläutern und den Grenzwert konvergenter geometrischer Reihen bestimmen.",
+          "descriptionEn": "The learner can explain convergence conditions for geometric series and determine the limit of convergent geometric series.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+          "title": "Arithmetische Reihen untersuchen",
+          "titleEn": "Investigate arithmetic series",
+          "description": "Die lernende Person kann Partialsummen arithmetischer Reihen bestimmen und mithilfe der Summenformel ihr Grenzverhalten begründen.",
+          "descriptionEn": "The learner can determine partial sums of arithmetic series and use the summation formula to justify their limiting behavior.",
+          "type": "atomic",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34"
+        },
+        {
+          "id": "74b5a01b-c086-51d0-bc66-046029c92ef7",
+          "title": "Geometrische Reihen untersuchen",
+          "titleEn": "Investigate geometric series",
+          "description": "Die lernende Person kann Partialsummen geometrischer Reihen bestimmen und mithilfe der Summenformel Konvergenz oder Divergenz sowie gegebenenfalls den Grenzwert begründen.",
+          "descriptionEn": "The learner can determine partial sums of geometric series and use the summation formula to justify convergence or divergence and, where applicable, the limit.",
+          "type": "atomic",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.7, S. 34"
+        },
+        {
+          "id": "b66d13c5-187e-530b-b4d3-efc7506a7f34",
+          "title": "Folgen auf Monotonie, Beschränktheit und Konvergenz untersuchen (LK)",
+          "titleEn": "Analyze sequences for monotonicity, boundedness, and convergence (advanced course)",
+          "description": "Die lernende Person kann Folgen hinsichtlich Monotonie und Beschränktheit untersuchen, daraus Konvergenzaussagen ableiten und Grenzwerte konvergenter Folgen bestimmen.",
+          "descriptionEn": "The learner can analyze sequences for monotonicity and boundedness, infer convergence statements, and determine limits of convergent sequences.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        }
+      ],
+      "sourceReference": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/911f3200-1dbc-59a6-90df-c883c77de39c/911f3200-1dbc-59a6-90df-c883c77de39c.jpg",
+          "url": "/assets/goal-visualizations/mathematik/911f3200-1dbc-59a6-90df-c883c77de39c/911f3200-1dbc-59a6-90df-c883c77de39c.jpg",
+          "sha256": "sha256:a75186dda80a14c82c920aa38af1e7ec77d7644212c16fbfbd9564cf3ff16f39",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:a3e061f5e834dd32f0df9675c64ef00f9f3bf5987dbe15c957372000c4388f1f",
+          "requires": [
+            "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
+            "74b5a01b-c086-51d0-bc66-046029c92ef7",
+            "b66d13c5-187e-530b-b4d3-efc7506a7f34",
+            "c66cb27b-8199-58fb-95f4-6314c0c2d07b"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/911f3200-1dbc-59a6-90df-c883c77de39c/911f3200-1dbc-59a6-90df-c883c77de39c.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Geometrische Reihen in Anwendungen nutzen (LK)\". Die lernende Person kann geometrische Reihen in geeigneten Anwendungssituationen modellieren und auswerten.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "layer-thickness",
+          "expectationIds": [
+            "model-and-total"
+          ]
+        },
+        {
+          "caseId": "bouncing-distance",
+          "expectationIds": [
+            "model-and-total"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "currentGoal": {
+        "id": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+        "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_taylor_idea",
+        "title": "Grundidee von Taylorpolynomen erläutern (LK)",
+        "titleEn": "Explain the basic idea of Taylor polynomials (advanced course)",
+        "description": "Die lernende Person kann die Grundidee von Taylorpolynomen an der Entwicklungsstelle 0 fachsprachlich erläutern.",
+        "descriptionEn": "The learner can explain the basic idea of Taylor polynomials at expansion point 0.",
+        "core": false,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.4",
+            "K3.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.TAYLOR_IDEA"
+        },
+        "contains": [],
+        "requires": [
+          "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "911f3200-1dbc-59a6-90df-c883c77de39c"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+            "title": "Visualisierung: Grundidee von Taylorpolynomen erläutern (LK)",
+            "url": "/assets/goal-visualizations/mathematik/3773bd34-3631-5fd2-b9b7-dfa01adf5abd/3773bd34-3631-5fd2-b9b7-dfa01adf5abd.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Grundidee von Taylorpolynomen erläutern (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Grundidee von Taylorpolynomen erläutern (LK)\". Die lernende Person kann die Grundidee von Taylorpolynomen an der Entwicklungsstelle 0 fachsprachlich erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:7b15729c5648e070fbaad1e2fd3e72f8785feac43bbb5b0390907d8fb2dc0f1d",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "4d55ba50-8d67-560c-a10f-cccff4728c40",
+        "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+        "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+        "911f3200-1dbc-59a6-90df-c883c77de39c"
+      ],
+      "requiresAfter": [
+        "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "4d55ba50-8d67-560c-a10f-cccff4728c40",
+        "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+        "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+        "911f3200-1dbc-59a6-90df-c883c77de39c"
+      ],
+      "prerequisites": [
+        {
+          "id": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "title": "Eulersche Zahl e näherungsweise bestimmen",
+          "titleEn": "Approximate Euler's number e",
+          "description": "Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.",
+          "descriptionEn": "The learner can approximate Euler's number e in simple contexts and classify the value as a characteristic constant of the natural exponential function.",
+          "type": "atomic",
+          "sourceRef": null
+        },
+        {
+          "id": "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "title": "Reihen als Folgen von Partialsummen beschreiben (LK)",
+          "titleEn": "Describe series as sequences of partial sums (advanced course)",
+          "description": "Die lernende Person kann Reihen als Folgen von Partialsummen beschreiben und die zugehörige Notation fachsprachlich deuten.",
+          "descriptionEn": "The learner can describe series as sequences of partial sums and interpret the associated notation using mathematical language.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "title": "Divergenz der harmonischen Reihe begründen (LK)",
+          "titleEn": "Justify divergence of the harmonic series (advanced course)",
+          "description": "Die lernende Person kann die Divergenz der harmonischen Reihe mit einem geeigneten Argument begründen.",
+          "descriptionEn": "The learner can justify divergence of the harmonic series using a suitable argument.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "title": "Konvergenzbedingungen geometrischer Reihen erläutern (LK)",
+          "titleEn": "Explain convergence conditions for geometric series (advanced course)",
+          "description": "Die lernende Person kann Konvergenzbedingungen geometrischer Reihen erläutern und den Grenzwert konvergenter geometrischer Reihen bestimmen.",
+          "descriptionEn": "The learner can explain convergence conditions for geometric series and determine the limit of convergent geometric series.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "911f3200-1dbc-59a6-90df-c883c77de39c",
+          "title": "Geometrische Reihen in Anwendungen nutzen (LK)",
+          "titleEn": "Use geometric series in applications (advanced course)",
+          "description": "Die lernende Person kann geometrische Reihen in geeigneten Anwendungssituationen modellieren und auswerten.",
+          "descriptionEn": "The learner can model and evaluate geometric series in suitable application contexts.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        }
+      ],
+      "sourceReference": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/3773bd34-3631-5fd2-b9b7-dfa01adf5abd/3773bd34-3631-5fd2-b9b7-dfa01adf5abd.jpg",
+          "url": "/assets/goal-visualizations/mathematik/3773bd34-3631-5fd2-b9b7-dfa01adf5abd/3773bd34-3631-5fd2-b9b7-dfa01adf5abd.jpg",
+          "sha256": "sha256:5c55c23956721bf14f4f8f0622fe72c94f51aa4399368d3d91da9c652484df18",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:f0b1e0329ca388d3d50eb625bb5799540ab69826f961b5d2536dcbcd3339d88b",
+          "requires": [
+            "4d55ba50-8d67-560c-a10f-cccff4728c40",
+            "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+            "911f3200-1dbc-59a6-90df-c883c77de39c",
+            "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+            "ccd47872-4d9d-44db-8c8d-eda24019b502"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/3773bd34-3631-5fd2-b9b7-dfa01adf5abd/3773bd34-3631-5fd2-b9b7-dfa01adf5abd.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Grundidee von Taylorpolynomen erläutern (LK)\". Die lernende Person kann die Grundidee von Taylorpolynomen an der Entwicklungsstelle 0 fachsprachlich erläutern.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "sine-contact",
+          "expectationIds": [
+            "local-contact"
+          ]
+        },
+        {
+          "caseId": "shared-polynomial",
+          "expectationIds": [
+            "local-contact"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "currentGoal": {
+        "id": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+        "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_exp_approximation",
+        "title": "Exponentialfunktion durch Taylorpolynome annähern (LK)",
+        "titleEn": "Approximate the exponential function by Taylor polynomials (advanced course)",
+        "description": "Die lernende Person kann die natürliche Exponentialfunktion durch Taylorpolynome annähern und die Approximation deuten.",
+        "descriptionEn": "The learner can approximate the natural exponential function by Taylor polynomials and interpret the approximation.",
+        "core": false,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.4",
+            "K3.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.EXP_APPROXIMATION"
+        },
+        "contains": [],
+        "requires": [
+          "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+          "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "911f3200-1dbc-59a6-90df-c883c77de39c"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+            "title": "Visualisierung: Exponentialfunktion durch Taylorpolynome annähern (LK)",
+            "url": "/assets/goal-visualizations/mathematik/1b664036-3c29-5d94-9f42-97069aaa2c53/1b664036-3c29-5d94-9f42-97069aaa2c53.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Exponentialfunktion durch Taylorpolynome annähern (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Exponentialfunktion durch Taylorpolynome annähern (LK)\". Die lernende Person kann die natürliche Exponentialfunktion durch Taylorpolynome annähern und die Approximation deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:f6aef27d954b5de214ec608857f1c90435fa13953f76bbf122f12bcc61312f82",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+        "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "4d55ba50-8d67-560c-a10f-cccff4728c40",
+        "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+        "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+        "911f3200-1dbc-59a6-90df-c883c77de39c"
+      ],
+      "requiresAfter": [
+        "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+        "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "4d55ba50-8d67-560c-a10f-cccff4728c40",
+        "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+        "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+        "911f3200-1dbc-59a6-90df-c883c77de39c"
+      ],
+      "prerequisites": [
+        {
+          "id": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+          "title": "Grundidee von Taylorpolynomen erläutern (LK)",
+          "titleEn": "Explain the basic idea of Taylor polynomials (advanced course)",
+          "description": "Die lernende Person kann die Grundidee von Taylorpolynomen an der Entwicklungsstelle 0 fachsprachlich erläutern.",
+          "descriptionEn": "The learner can explain the basic idea of Taylor polynomials at expansion point 0.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "title": "Eulersche Zahl e näherungsweise bestimmen",
+          "titleEn": "Approximate Euler's number e",
+          "description": "Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.",
+          "descriptionEn": "The learner can approximate Euler's number e in simple contexts and classify the value as a characteristic constant of the natural exponential function.",
+          "type": "atomic",
+          "sourceRef": null
+        },
+        {
+          "id": "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "title": "Reihen als Folgen von Partialsummen beschreiben (LK)",
+          "titleEn": "Describe series as sequences of partial sums (advanced course)",
+          "description": "Die lernende Person kann Reihen als Folgen von Partialsummen beschreiben und die zugehörige Notation fachsprachlich deuten.",
+          "descriptionEn": "The learner can describe series as sequences of partial sums and interpret the associated notation using mathematical language.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "title": "Divergenz der harmonischen Reihe begründen (LK)",
+          "titleEn": "Justify divergence of the harmonic series (advanced course)",
+          "description": "Die lernende Person kann die Divergenz der harmonischen Reihe mit einem geeigneten Argument begründen.",
+          "descriptionEn": "The learner can justify divergence of the harmonic series using a suitable argument.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "title": "Konvergenzbedingungen geometrischer Reihen erläutern (LK)",
+          "titleEn": "Explain convergence conditions for geometric series (advanced course)",
+          "description": "Die lernende Person kann Konvergenzbedingungen geometrischer Reihen erläutern und den Grenzwert konvergenter geometrischer Reihen bestimmen.",
+          "descriptionEn": "The learner can explain convergence conditions for geometric series and determine the limit of convergent geometric series.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "911f3200-1dbc-59a6-90df-c883c77de39c",
+          "title": "Geometrische Reihen in Anwendungen nutzen (LK)",
+          "titleEn": "Use geometric series in applications (advanced course)",
+          "description": "Die lernende Person kann geometrische Reihen in geeigneten Anwendungssituationen modellieren und auswerten.",
+          "descriptionEn": "The learner can model and evaluate geometric series in suitable application contexts.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        }
+      ],
+      "sourceReference": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/1b664036-3c29-5d94-9f42-97069aaa2c53/1b664036-3c29-5d94-9f42-97069aaa2c53.jpg",
+          "url": "/assets/goal-visualizations/mathematik/1b664036-3c29-5d94-9f42-97069aaa2c53/1b664036-3c29-5d94-9f42-97069aaa2c53.jpg",
+          "sha256": "sha256:9d2aad63f4a6504b004547fccb8f68b48743e3677089ef29afa247b8a1f50275",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:796595e371bb5ca08d5d67105a94ce5dab513f4d4f4e448c3ddae61c28addcd7",
+          "requires": [
+            "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+            "4d55ba50-8d67-560c-a10f-cccff4728c40",
+            "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+            "911f3200-1dbc-59a6-90df-c883c77de39c",
+            "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+            "ccd47872-4d9d-44db-8c8d-eda24019b502"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/1b664036-3c29-5d94-9f42-97069aaa2c53/1b664036-3c29-5d94-9f42-97069aaa2c53.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Exponentialfunktion durch Taylorpolynome annähern (LK)\". Die lernende Person kann die natürliche Exponentialfunktion durch Taylorpolynome annähern und die Approximation deuten.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "choose-degree",
+          "expectationIds": [
+            "exponential-approximation"
+          ]
+        },
+        {
+          "caseId": "negative-range",
+          "expectationIds": [
+            "exponential-approximation"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "currentGoal": {
+        "id": "315093d4-515a-542c-b776-d72a12763d1a",
+        "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_e_series",
+        "title": "Reihendarstellung der eulerschen Zahl angeben (LK)",
+        "titleEn": "State the series representation of Euler’s number (advanced course)",
+        "description": "Die lernende Person kann die Reihendarstellung der eulerschen Zahl $e$ angeben und in den Taylorpolynom-Kontext einordnen.",
+        "descriptionEn": "The learner can state the series representation of Euler’s number $e$ and relate it to Taylor polynomials.",
+        "core": false,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.4",
+            "K3.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.E_SERIES"
+        },
+        "contains": [],
+        "requires": [
+          "1b664036-3c29-5d94-9f42-97069aaa2c53",
+          "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "911f3200-1dbc-59a6-90df-c883c77de39c"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "315093d4-515a-542c-b776-d72a12763d1a",
+            "title": "Visualisierung: Reihendarstellung der eulerschen Zahl angeben (LK)",
+            "url": "/assets/goal-visualizations/mathematik/315093d4-515a-542c-b776-d72a12763d1a/315093d4-515a-542c-b776-d72a12763d1a.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Reihendarstellung der eulerschen Zahl angeben (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Reihendarstellung der eulerschen Zahl angeben (LK)\". Die lernende Person kann die Reihendarstellung der eulerschen Zahl $e$ angeben und in den Taylorpolynom-Kontext einordnen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:fe93fb96f4020349157abc247ada0dc3ccbff4a77e2138a991c8afed6f134f6a",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "1b664036-3c29-5d94-9f42-97069aaa2c53",
+        "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "4d55ba50-8d67-560c-a10f-cccff4728c40",
+        "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+        "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+        "911f3200-1dbc-59a6-90df-c883c77de39c"
+      ],
+      "requiresAfter": [
+        "1b664036-3c29-5d94-9f42-97069aaa2c53",
+        "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "4d55ba50-8d67-560c-a10f-cccff4728c40",
+        "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+        "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+        "911f3200-1dbc-59a6-90df-c883c77de39c"
+      ],
+      "prerequisites": [
+        {
+          "id": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+          "title": "Exponentialfunktion durch Taylorpolynome annähern (LK)",
+          "titleEn": "Approximate the exponential function by Taylor polynomials (advanced course)",
+          "description": "Die lernende Person kann die natürliche Exponentialfunktion durch Taylorpolynome annähern und die Approximation deuten.",
+          "descriptionEn": "The learner can approximate the natural exponential function by Taylor polynomials and interpret the approximation.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "title": "Eulersche Zahl e näherungsweise bestimmen",
+          "titleEn": "Approximate Euler's number e",
+          "description": "Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.",
+          "descriptionEn": "The learner can approximate Euler's number e in simple contexts and classify the value as a characteristic constant of the natural exponential function.",
+          "type": "atomic",
+          "sourceRef": null
+        },
+        {
+          "id": "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "title": "Reihen als Folgen von Partialsummen beschreiben (LK)",
+          "titleEn": "Describe series as sequences of partial sums (advanced course)",
+          "description": "Die lernende Person kann Reihen als Folgen von Partialsummen beschreiben und die zugehörige Notation fachsprachlich deuten.",
+          "descriptionEn": "The learner can describe series as sequences of partial sums and interpret the associated notation using mathematical language.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "title": "Divergenz der harmonischen Reihe begründen (LK)",
+          "titleEn": "Justify divergence of the harmonic series (advanced course)",
+          "description": "Die lernende Person kann die Divergenz der harmonischen Reihe mit einem geeigneten Argument begründen.",
+          "descriptionEn": "The learner can justify divergence of the harmonic series using a suitable argument.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "title": "Konvergenzbedingungen geometrischer Reihen erläutern (LK)",
+          "titleEn": "Explain convergence conditions for geometric series (advanced course)",
+          "description": "Die lernende Person kann Konvergenzbedingungen geometrischer Reihen erläutern und den Grenzwert konvergenter geometrischer Reihen bestimmen.",
+          "descriptionEn": "The learner can explain convergence conditions for geometric series and determine the limit of convergent geometric series.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        },
+        {
+          "id": "911f3200-1dbc-59a6-90df-c883c77de39c",
+          "title": "Geometrische Reihen in Anwendungen nutzen (LK)",
+          "titleEn": "Use geometric series in applications (advanced course)",
+          "description": "Die lernende Person kann geometrische Reihen in geeigneten Anwendungssituationen modellieren und auswerten.",
+          "descriptionEn": "The learner can model and evaluate geometric series in suitable application contexts.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2"
+        }
+      ],
+      "sourceReference": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/315093d4-515a-542c-b776-d72a12763d1a/315093d4-515a-542c-b776-d72a12763d1a.jpg",
+          "url": "/assets/goal-visualizations/mathematik/315093d4-515a-542c-b776-d72a12763d1a/315093d4-515a-542c-b776-d72a12763d1a.jpg",
+          "sha256": "sha256:9a9b0c8e140777005feb0c6fe32f801ea0bdfd91fffbb16d601c8f565d8a01c9",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:0cfefb4649b6fa22189f2cd55d63fe84da88c4972cae8e2a4cb7a0ebbb1021ad",
+          "requires": [
+            "1b664036-3c29-5d94-9f42-97069aaa2c53",
+            "4d55ba50-8d67-560c-a10f-cccff4728c40",
+            "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+            "911f3200-1dbc-59a6-90df-c883c77de39c",
+            "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+            "ccd47872-4d9d-44db-8c8d-eda24019b502"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/315093d4-515a-542c-b776-d72a12763d1a/315093d4-515a-542c-b776-d72a12763d1a.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Reihendarstellung der eulerschen Zahl angeben (LK)\". Die lernende Person kann die Reihendarstellung der eulerschen Zahl $e$ angeben und in den Taylorpolynom-Kontext einordnen.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "series-and-partial",
+          "expectationIds": [
+            "number-from-function-series"
+          ]
+        },
+        {
+          "caseId": "alternating-evaluation",
+          "expectationIds": [
+            "number-from-function-series"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+      "currentGoal": {
+        "id": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+        "title": "Digitale Werkzeuge zur Analyse von Funktionen nutzen",
+        "titleEn": "Use digital tools to analyze functions",
+        "description": "Die lernende Person kann ein digitales Werkzeug verwenden, um Funktionsgraphen zu erzeugen, Nullstellen und Extremstellen numerisch zu bestimmen und Ergebnisse kritisch zu prüfen.",
+        "descriptionEn": "The learner can use a digital tool to generate function graphs, numerically determine roots and extrema, and critically examine results.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "a8c42ee9-2898-4247-819f-c235032ac78a"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.3",
+            "K5.3",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4",
+            "L5"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+            "title": "Visualisierung: Digitale Werkzeuge zur Analyse von Funktionen nutzen",
+            "url": "/assets/goal-visualizations/mathematik/1eb7b2ce-f9b1-52dc-aa66-5543c946454b/1eb7b2ce-f9b1-52dc-aa66-5543c946454b.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Digitale Werkzeuge zur Analyse von Funktionen nutzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Digitale Werkzeuge zur Analyse von Funktionen nutzen\". Die lernende Person kann ein digitales Werkzeug verwenden, um Funktionsgraphen zu erzeugen, Nullstellen und Extremstellen numerisch zu bestimmen und Ergebnisse kritisch zu prüfen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:56b8b23865fe807dbbd263d04e482c215c6cdbc3f6925648c24500d4420d4989",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "a8c42ee9-2898-4247-819f-c235032ac78a"
+      ],
+      "requiresAfter": [
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "a8c42ee9-2898-4247-819f-c235032ac78a"
+      ],
+      "prerequisites": [
+        {
+          "id": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "title": "Funktionswerte berechnen",
+          "titleEn": "Calculate function values",
+          "description": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+          "descriptionEn": "The learner can correctly calculate function values for concrete x-values from given function terms $f(x)$ and interpret them as the outputs corresponding to those inputs.",
+          "type": "atomic",
+          "sourceRef": null
+        },
+        {
+          "id": "a8c42ee9-2898-4247-819f-c235032ac78a",
+          "title": "Funktionswerte aus Graphen ablesen",
+          "titleEn": "Read function values from graphs",
+          "description": "Die lernende Person kann aus Graphen zu gegebenen x-Werten die zugehörigen Funktionswerte sowie zu gegebenen Funktionswerten die zugehörigen x-Werte ablesen.",
+          "descriptionEn": "The learner can read the corresponding function values for given x-values and the corresponding x-values for given function values from graphs.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/1eb7b2ce-f9b1-52dc-aa66-5543c946454b/1eb7b2ce-f9b1-52dc-aa66-5543c946454b.jpg",
+          "url": "/assets/goal-visualizations/mathematik/1eb7b2ce-f9b1-52dc-aa66-5543c946454b/1eb7b2ce-f9b1-52dc-aa66-5543c946454b.jpg",
+          "sha256": "sha256:cb475bd6a72d3a6776e178663a8b268bc5e755e0b11f7d76ed97b2cea2651ed4",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:5dc0d1e09820834b81938760ee6caf1c8ddb98559b65a2f3f8a22578510a1a91",
+          "requires": [
+            "a8c42ee9-2898-4247-819f-c235032ac78a",
+            "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/1eb7b2ce-f9b1-52dc-aa66-5543c946454b/1eb7b2ce-f9b1-52dc-aa66-5543c946454b.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Digitale Werkzeuge zur Analyse von Funktionen nutzen\". Die lernende Person kann ein digitales Werkzeug verwenden, um Funktionsgraphen zu erzeugen, Nullstellen und Extremstellen numerisch zu bestimmen und Ergebnisse kritisch zu prüfen.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "parabola-tool",
+          "expectationIds": [
+            "tool-backed-analysis"
+          ]
+        },
+        {
+          "caseId": "domain-gap-tool",
+          "expectationIds": [
+            "tool-backed-analysis"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+      "currentGoal": {
+        "id": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+        "title": "Funktionen digital darstellen und untersuchen",
+        "titleEn": "Represent and investigate functions digitally",
+        "description": "Die lernende Person kann digitale Mathematikwerkzeuge bedienen, um Funktionsgraphen zu erzeugen, Parameter interaktiv zu verändern und Beobachtungen zu dokumentieren.",
+        "descriptionEn": "The learner can operate digital mathematics tools to generate function graphs, interactively change parameters, and document observations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K4.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L5"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+            "title": "Visualisierung: Funktionen digital darstellen und untersuchen",
+            "url": "/assets/goal-visualizations/mathematik/89ca5089-7122-5a82-b21f-17d0bd46a3bd/89ca5089-7122-5a82-b21f-17d0bd46a3bd.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Funktionen digital darstellen und untersuchen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Funktionen digital darstellen und untersuchen\". Die lernende Person kann digitale Mathematikwerkzeuge bedienen, um Funktionsgraphen zu erzeugen, Parameter interaktiv zu verändern und Beobachtungen zu dokumentieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:773177b203dae8faedc5ec09a4168f9f8c7a618d12c4675bc94a0535b72dc719",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91"
+      ],
+      "requiresAfter": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91"
+      ],
+      "prerequisites": [
+        {
+          "id": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "title": "Funktionsbegriff und Darstellungen verstehen",
+          "titleEn": "Understand function concept and representations",
+          "description": "Die lernende Person kann reellwertige Funktionen als Zuordnung zwischen Zahlenmengen beschreiben und zwischen Wertetabelle, Term und Graph wechseln.",
+          "descriptionEn": "The learner can describe real-valued functions as a mapping between sets of numbers and switch between value table, term, and graph.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/89ca5089-7122-5a82-b21f-17d0bd46a3bd/89ca5089-7122-5a82-b21f-17d0bd46a3bd.jpg",
+          "url": "/assets/goal-visualizations/mathematik/89ca5089-7122-5a82-b21f-17d0bd46a3bd/89ca5089-7122-5a82-b21f-17d0bd46a3bd.jpg",
+          "sha256": "sha256:49d1a0edb88d78598c8e162aab6b71f5c68b9e1ca900a65dcff2872b3b8ba2e5",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:63dcff7a1434ad105a1e723033d9d5668ff6afa351c6650e975c4695e14cc7ca",
+          "requires": [
+            "09f47964-2cd0-410e-93ee-9632b582fc91"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/89ca5089-7122-5a82-b21f-17d0bd46a3bd/89ca5089-7122-5a82-b21f-17d0bd46a3bd.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Funktionen digital darstellen und untersuchen\". Die lernende Person kann digitale Mathematikwerkzeuge bedienen, um Funktionsgraphen zu erzeugen, Parameter interaktiv zu verändern und Beobachtungen zu dokumentieren.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "moving-vertex",
+          "expectationIds": [
+            "controlled-digital-variation"
+          ]
+        },
+        {
+          "caseId": "rotating-line",
+          "expectationIds": [
+            "controlled-digital-variation"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+      "currentGoal": {
+        "id": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+        "title": "Digitale Werkzeuge für numerische Analysen einsetzen",
+        "titleEn": "Deploy digital tools for numerical analyses",
+        "description": "Die lernende Person kann digitale Werkzeuge nutzen, um Nullstellen, Extremstellen oder Integrale numerisch zu bestimmen, Ergebnisse kritisch zu prüfen und mit analytischen Verfahren zu vergleichen.",
+        "descriptionEn": "The learner can use digital tools to numerically determine roots, extrema, or integrals, critically examine results, and compare them with analytical methods.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+          "f40fcaf7-c630-589c-9f48-6c9e69da0b9d"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L5"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+            "title": "Visualisierung: Digitale Werkzeuge für numerische Analysen einsetzen",
+            "url": "/assets/goal-visualizations/mathematik/df5eeadd-414e-50ae-84ec-7e5dbf7449d6/df5eeadd-414e-50ae-84ec-7e5dbf7449d6.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Digitale Werkzeuge für numerische Analysen einsetzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Digitale Werkzeuge für numerische Analysen einsetzen\". Die lernende Person kann digitale Werkzeuge nutzen, um Nullstellen, Extremstellen oder Integrale numerisch zu bestimmen, Ergebnisse kritisch zu prüfen und mit analytischen Verfahren zu vergleichen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:bc130bcb09bd3d10f2b490afcfd44d504fb1e145ee52b2817c403ccd55f6184b",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+        "f40fcaf7-c630-589c-9f48-6c9e69da0b9d"
+      ],
+      "requiresAfter": [
+        "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+        "f40fcaf7-c630-589c-9f48-6c9e69da0b9d"
+      ],
+      "prerequisites": [
+        {
+          "id": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+          "title": "Funktionen digital darstellen und untersuchen",
+          "titleEn": "Represent and investigate functions digitally",
+          "description": "Die lernende Person kann digitale Mathematikwerkzeuge bedienen, um Funktionsgraphen zu erzeugen, Parameter interaktiv zu verändern und Beobachtungen zu dokumentieren.",
+          "descriptionEn": "The learner can operate digital mathematics tools to generate function graphs, interactively change parameters, and document observations.",
+          "type": "atomic",
+          "sourceRef": null
+        },
+        {
+          "id": "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+          "title": "Bisektionsverfahren zur Nullstellennäherung anwenden",
+          "titleEn": "Apply the bisection method for root approximation",
+          "description": "Die lernende Person kann für eine stetige Funktion ein Vorzeichenwechselintervall begründen, das Bisektionsverfahren schrittweise durchführen und die entstehende Intervallschachtelung als Nullstellennäherung deuten.",
+          "descriptionEn": "The learner can justify a sign-change interval for a continuous function, carry out the bisection method step by step, and interpret the resulting interval nesting as a root approximation.",
+          "type": "atomic",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.6, S. 34"
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/df5eeadd-414e-50ae-84ec-7e5dbf7449d6/df5eeadd-414e-50ae-84ec-7e5dbf7449d6.jpg",
+          "url": "/assets/goal-visualizations/mathematik/df5eeadd-414e-50ae-84ec-7e5dbf7449d6/df5eeadd-414e-50ae-84ec-7e5dbf7449d6.jpg",
+          "sha256": "sha256:39afbac0e5d7c3724f4b0ff03cd57b9e56b99e3ab7304d093efac2e708de085c",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:d50d77ea6f06fc622fef11bc58f082d2cca46f84bf4a501490c3606ba9da3c22",
+          "requires": [
+            "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+            "f40fcaf7-c630-589c-9f48-6c9e69da0b9d"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/df5eeadd-414e-50ae-84ec-7e5dbf7449d6/df5eeadd-414e-50ae-84ec-7e5dbf7449d6.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Digitale Werkzeuge für numerische Analysen einsetzen\". Die lernende Person kann digitale Werkzeuge nutzen, um Nullstellen, Extremstellen oder Integrale numerisch zu bestimmen, Ergebnisse kritisch zu prüfen und mit analytischen Verfahren zu vergleichen.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "quadratic-comparison",
+          "expectationIds": [
+            "numerical-analytic-comparison"
+          ]
+        },
+        {
+          "caseId": "integral-comparison",
+          "expectationIds": [
+            "numerical-analytic-comparison"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+      "currentGoal": {
+        "id": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+        "title": "Flächen unter Graphen näherungsweise bestimmen",
+        "titleEn": "Determine areas under graphs approximately",
+        "description": "Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+        "descriptionEn": "The learner can determine areas under function graphs using rectangle sums (upper and lower sums) and other approximation methods, write them as sums, and estimate the accuracy of the approximation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+            "title": "Visualisierung: Flächen unter Graphen näherungsweise bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Flächen unter Graphen näherungsweise bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Flächen unter Graphen näherungsweise bestimmen\". Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:523228aaefd2adef6ad7eea7149ddecaab91f5fa83af1d6b6f5198da7130f30d",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+      ],
+      "requiresAfter": [
+        "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+      ],
+      "prerequisites": [
+        {
+          "id": "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+          "title": "Integral als Bestand und Flächeninhalt verstehen",
+          "titleEn": "Understand integral as quantity and area",
+          "description": "Die lernende Person kann ein bestimmtes Integral je nach Situation als orientierten Flächeninhalt oder Bestandsänderung deuten und aus Änderungsrate und Anfangsbestand einen Bestand bestimmen.",
+          "descriptionEn": "The learner can interpret a definite integral, depending on the situation, as oriented area or change in a stock and determine a stock from a rate of change and an initial stock.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6.jpg",
+          "url": "/assets/goal-visualizations/mathematik/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6.jpg",
+          "sha256": "sha256:30fbe42c2291fcc8a0214c9d1b1662c436843ed3ee905fbfbd43818f586175fb",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:0f3249f94f2cefdbea0e007f2aff0673e69dd00024cd5930a007d89c7e487033",
+          "requires": [
+            "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Flächen unter Graphen näherungsweise bestimmen\". Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "decreasing-line",
+          "expectationIds": [
+            "bounding-area"
+          ]
+        },
+        {
+          "caseId": "interior-maximum",
+          "expectationIds": [
+            "bounding-area"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "currentGoal": {
+        "id": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+        "title": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als Bestandsänderung deuten",
+        "titleEn": "Interpret the definite integral as the limit of upper and lower sums and as a change in quantity",
+        "description": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und bei einer Änderungsrate als Bestandsänderung beschreiben, aus der zusammen mit dem Anfangsbestand der Endbestand entsteht.",
+        "descriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and, for a rate of change, describe it as the change in a quantity, which combines with the initial value to give the final value.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.LIMIT_AND_RECONSTRUCTED_QUANTITY"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+            "title": "Visualisierung: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten",
+            "url": "/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten\". Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:bd7bf8468b6f3725772b12580202612d6a6f3822d5256b6c1dfa94afe6b8f4a2",
+      "textChangesSinceOriginalAuthoringInput": [
+        {
+          "field": "title",
+          "before": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten",
+          "after": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als Bestandsänderung deuten"
+        },
+        {
+          "field": "titleEn",
+          "before": "Interpret the definite integral as the limit of upper and lower sums and as a reconstructed quantity",
+          "after": "Interpret the definite integral as the limit of upper and lower sums and as a change in quantity"
+        },
+        {
+          "field": "description",
+          "before": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.",
+          "after": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und bei einer Änderungsrate als Bestandsänderung beschreiben, aus der zusammen mit dem Anfangsbestand der Endbestand entsteht."
+        },
+        {
+          "field": "descriptionEn",
+          "before": "The learner can interpret the definite integral as the common limit of upper and lower sums and in particular as a reconstructed quantity and describe this interpretation precisely.",
+          "after": "The learner can interpret the definite integral as the common limit of upper and lower sums and, for a rate of change, describe it as the change in a quantity, which combines with the initial value to give the final value."
+        }
+      ],
+      "requiresBefore": [
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "requiresAfter": [
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "prerequisites": [
+        {
+          "id": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+          "title": "Flächen unter Graphen näherungsweise bestimmen",
+          "titleEn": "Determine areas under graphs approximately",
+          "description": "Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+          "descriptionEn": "The learner can determine areas under function graphs using rectangle sums (upper and lower sums) and other approximation methods, write them as sums, and estimate the accuracy of the approximation.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg",
+          "url": "/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg",
+          "sha256": "sha256:f8e2a6af14f8a5f930174fdbeb05af3af0a38728bfee0a4c41a72cf8d53609a8",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:8dd8d5c2e0b887b355e9206465cd7f6a763687ac117627305b6c8839ffb02f43",
+          "requires": [
+            "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als rekonstruierter Bestand deuten\". Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen sowie insbesondere als rekonstruierten Bestand deuten und diese Deutung fachsprachlich beschreiben.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "squeezed-area",
+          "expectationIds": [
+            "common-limit"
+          ]
+        },
+        {
+          "caseId": "negative-stock-change",
+          "expectationIds": [
+            "common-limit"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "currentGoal": {
+        "id": "ece68088-71a8-466b-874c-09e6baac19fc",
+        "title": "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+        "titleEn": "Reconstruct and interpret quantities from rates of change and an initial value",
+        "description": "Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+        "descriptionEn": "The learner can calculate quantities from rates of change and an initial value and interpret the reconstruction in mathematical and real-world contexts.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.APPLICATIONS.STOCK_RECONSTRUCTION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "ece68088-71a8-466b-874c-09e6baac19fc",
+            "title": "Visualisierung: Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+            "url": "/assets/goal-visualizations/mathematik/ece68088-71a8-466b-874c-09e6baac19fc/ece68088-71a8-466b-874c-09e6baac19fc.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten\". Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:28e56030758463c0bf4c28e0d41433f227a10820c6a81e0c63f6a1fe9661c296",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+      ],
+      "requiresAfter": [
+        "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+      ],
+      "prerequisites": [
+        {
+          "id": "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+          "title": "Integral als Bestand und Flächeninhalt verstehen",
+          "titleEn": "Understand integral as quantity and area",
+          "description": "Die lernende Person kann ein bestimmtes Integral je nach Situation als orientierten Flächeninhalt oder Bestandsänderung deuten und aus Änderungsrate und Anfangsbestand einen Bestand bestimmen.",
+          "descriptionEn": "The learner can interpret a definite integral, depending on the situation, as oriented area or change in a stock and determine a stock from a rate of change and an initial stock.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/ece68088-71a8-466b-874c-09e6baac19fc/ece68088-71a8-466b-874c-09e6baac19fc.jpg",
+          "url": "/assets/goal-visualizations/mathematik/ece68088-71a8-466b-874c-09e6baac19fc/ece68088-71a8-466b-874c-09e6baac19fc.jpg",
+          "sha256": "sha256:fe50b4cf3d844446ad4860d1778462cc153972b0aeea4c8efa4effaee68850c2",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:ea2687cb15c3a37460fe5cb180be6ed603c3f79cc2da09057d74033df0e24bff",
+          "requires": [
+            "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/ece68088-71a8-466b-874c-09e6baac19fc/ece68088-71a8-466b-874c-09e6baac19fc.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten\". Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "tank-turning-point",
+          "expectationIds": [
+            "reconstruction-and-anchor"
+          ]
+        },
+        {
+          "caseId": "anchored-function",
+          "expectationIds": [
+            "reconstruction-and-anchor"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+      "currentGoal": {
+        "id": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+        "title": "Hauptsatz geometrisch begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben",
+        "titleEn": "Justify the fundamental theorem geometrically and describe the relation between function, derivative, and antiderivative",
+        "description": "Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch anschaulich als Beziehung zwischen Ableiten und Integrieren begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben.",
+        "descriptionEn": "The learner can justify the fundamental theorem of calculus geometrically as a relationship between differentiation and integration and describe the relation between function, derivative, and antiderivative.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.4",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.FTC_GEOMETRIC_JUSTIFICATION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+            "title": "Visualisierung: Hauptsatz geometrisch begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben",
+            "url": "/assets/goal-visualizations/mathematik/90662398-a0fd-45bf-9ce9-2abbc20428ed/90662398-a0fd-45bf-9ce9-2abbc20428ed.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Hauptsatz geometrisch begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Hauptsatz geometrisch begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben\". Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch anschaulich als Beziehung zwischen Ableiten und Integrieren begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:06e649b8775ef0916b00c1d6fbcfec271a3c5a903c2a3899995a3042bab19d5c",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "requiresAfter": [
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "prerequisites": [
+        {
+          "id": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+          "title": "Flächen unter Graphen näherungsweise bestimmen",
+          "titleEn": "Determine areas under graphs approximately",
+          "description": "Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+          "descriptionEn": "The learner can determine areas under function graphs using rectangle sums (upper and lower sums) and other approximation methods, write them as sums, and estimate the accuracy of the approximation.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/90662398-a0fd-45bf-9ce9-2abbc20428ed/90662398-a0fd-45bf-9ce9-2abbc20428ed.jpg",
+          "url": "/assets/goal-visualizations/mathematik/90662398-a0fd-45bf-9ce9-2abbc20428ed/90662398-a0fd-45bf-9ce9-2abbc20428ed.jpg",
+          "sha256": "sha256:e7c6bed22ab9de1ad8f9fa8bc829839b796a76fb25696ab07f02326bed2eca0d",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:6b90f5fa042d929990a9415c99043709d46de9b38a0324fb81d746e17bb1901c",
+          "requires": [
+            "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/90662398-a0fd-45bf-9ce9-2abbc20428ed/90662398-a0fd-45bf-9ce9-2abbc20428ed.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Hauptsatz geometrisch begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben\". Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch anschaulich als Beziehung zwischen Ableiten und Integrieren begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "linear-strip",
+          "expectationIds": [
+            "geometric-inverse-relation"
+          ]
+        },
+        {
+          "caseId": "primitive-family",
+          "expectationIds": [
+            "geometric-inverse-relation"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "currentGoal": {
+        "id": "24f21c0c-b506-56ec-ad17-39b209af4585",
+        "shortKey": "canonical_math_sek2_q1_integral_function_define_by",
+        "title": "Integralfunktion definieren und ihre Bedeutung beschreiben",
+        "titleEn": "Define an integral function and describe its meaning",
+        "description": "Die lernende Person kann den Begriff der Integralfunktion definieren, seine Bedeutung beschreiben und den Zusammenhang zwischen Integrand und Integralfunktion an Flächenbetrachtungen erläutern.",
+        "descriptionEn": "The learner can define the concept of an integral function, describe its meaning, and explain the relationship between integrand and integral function using area interpretations.",
+        "core": false,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q1",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.INTEGRAL_FUNCTION_DEFINE_BY"
+        },
+        "contains": [],
+        "requires": [
+          "3862890e-9ea9-4c62-bcf2-e354c9d8f306"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "24f21c0c-b506-56ec-ad17-39b209af4585",
+            "title": "Visualisierung: Integralfunktion definieren und ihre Bedeutung beschreiben",
+            "url": "/assets/goal-visualizations/mathematik/24f21c0c-b506-56ec-ad17-39b209af4585/24f21c0c-b506-56ec-ad17-39b209af4585.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Integralfunktion definieren und ihre Bedeutung beschreiben.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Integralfunktion definieren und ihre Bedeutung beschreiben\". Die lernende Person kann den Begriff der Integralfunktion definieren, seine Bedeutung beschreiben und den Zusammenhang zwischen Integrand und Integralfunktion an Flächenbetrachtungen erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:98db042708b44ff71945e5d53e780776f326741a6367c9107f2c178374ba2c93",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "3862890e-9ea9-4c62-bcf2-e354c9d8f306"
+      ],
+      "requiresAfter": [
+        "3862890e-9ea9-4c62-bcf2-e354c9d8f306"
+      ],
+      "prerequisites": [
+        {
+          "id": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+          "title": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als Bestandsänderung deuten",
+          "titleEn": "Interpret the definite integral as the limit of upper and lower sums and as a change in quantity",
+          "description": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und bei einer Änderungsrate als Bestandsänderung beschreiben, aus der zusammen mit dem Anfangsbestand der Endbestand entsteht.",
+          "descriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and, for a rate of change, describe it as the change in a quantity, which combines with the initial value to give the final value.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1",
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/24f21c0c-b506-56ec-ad17-39b209af4585/24f21c0c-b506-56ec-ad17-39b209af4585.jpg",
+          "url": "/assets/goal-visualizations/mathematik/24f21c0c-b506-56ec-ad17-39b209af4585/24f21c0c-b506-56ec-ad17-39b209af4585.jpg",
+          "sha256": "sha256:f03ea412f1eacc774ebe0d0bdd19cded49d28a16b83c1922531e0f41cfa562b2",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:d98c978fcf5cd13b2e623fb81239920fc635342bf4beb336068ef23b63c16730",
+          "requires": [
+            "3862890e-9ea9-4c62-bcf2-e354c9d8f306"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/24f21c0c-b506-56ec-ad17-39b209af4585/24f21c0c-b506-56ec-ad17-39b209af4585.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Integralfunktion definieren und ihre Bedeutung beschreiben\". Die lernende Person kann den Begriff der Integralfunktion definieren, seine Bedeutung beschreiben und den Zusammenhang zwischen Integrand und Integralfunktion an Flächenbetrachtungen erläutern.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "negative-constant",
+          "expectationIds": [
+            "fixed-start-variable-end"
+          ]
+        },
+        {
+          "caseId": "shifted-reference",
+          "expectationIds": [
+            "fixed-start-variable-end"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+      "currentGoal": {
+        "id": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+        "shortKey": "canonical_math_sek2_q1_integral_function_graphs_by",
+        "title": "Graphen von Integrand und Integralfunktion wechselseitig deuten",
+        "titleEn": "Interpret graphs of integrand and integral function mutually",
+        "description": "Die lernende Person kann vom Graphen einer Funktion auf den Verlauf einer zugehörigen Integralfunktion schließen und umgekehrt aus einer Integralfunktion den Graphen der Integrandenfunktion erschließen.",
+        "descriptionEn": "The learner can infer the graph of an associated integral function from a function graph and, conversely, infer the graph of the integrand from an integral-function graph.",
+        "core": false,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q1",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.INTEGRAL_FUNCTION_GRAPHS_BY"
+        },
+        "contains": [],
+        "requires": [
+          "24f21c0c-b506-56ec-ad17-39b209af4585",
+          "90662398-a0fd-45bf-9ce9-2abbc20428ed"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+            "title": "Visualisierung: Graphen von Integrand und Integralfunktion wechselseitig deuten",
+            "url": "/assets/goal-visualizations/mathematik/5042fd2b-bab2-50be-8144-c9ccf5618615/5042fd2b-bab2-50be-8144-c9ccf5618615.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Graphen von Integrand und Integralfunktion wechselseitig deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Graphen von Integrand und Integralfunktion wechselseitig deuten\". Die lernende Person kann vom Graphen einer Funktion auf den Verlauf einer zugehörigen Integralfunktion schließen und umgekehrt aus einer Integralfunktion den Graphen der Integrandenfunktion erschließen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:880aeee0285d3151aff5bf8d39eebdb48a3fb37b9106dbfb05f061684e072efa",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "24f21c0c-b506-56ec-ad17-39b209af4585",
+        "90662398-a0fd-45bf-9ce9-2abbc20428ed"
+      ],
+      "requiresAfter": [
+        "24f21c0c-b506-56ec-ad17-39b209af4585",
+        "90662398-a0fd-45bf-9ce9-2abbc20428ed"
+      ],
+      "prerequisites": [
+        {
+          "id": "24f21c0c-b506-56ec-ad17-39b209af4585",
+          "title": "Integralfunktion definieren und ihre Bedeutung beschreiben",
+          "titleEn": "Define an integral function and describe its meaning",
+          "description": "Die lernende Person kann den Begriff der Integralfunktion definieren, seine Bedeutung beschreiben und den Zusammenhang zwischen Integrand und Integralfunktion an Flächenbetrachtungen erläutern.",
+          "descriptionEn": "The learner can define the concept of an integral function, describe its meaning, and explain the relationship between integrand and integral function using area interpretations.",
+          "type": "atomic",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1"
+        },
+        {
+          "id": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+          "title": "Hauptsatz geometrisch begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben",
+          "titleEn": "Justify the fundamental theorem geometrically and describe the relation between function, derivative, and antiderivative",
+          "description": "Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch anschaulich als Beziehung zwischen Ableiten und Integrieren begründen und den Zusammenhang von Funktion, Ableitungsfunktion und Stammfunktion beschreiben.",
+          "descriptionEn": "The learner can justify the fundamental theorem of calculus geometrically as a relationship between differentiation and integration and describe the relation between function, derivative, and antiderivative.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1",
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/5042fd2b-bab2-50be-8144-c9ccf5618615/5042fd2b-bab2-50be-8144-c9ccf5618615.jpg",
+          "url": "/assets/goal-visualizations/mathematik/5042fd2b-bab2-50be-8144-c9ccf5618615/5042fd2b-bab2-50be-8144-c9ccf5618615.jpg",
+          "sha256": "sha256:70323102f6377a097baba8e612d8b456ee6507c045562adca93c9cb645ce73c7",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:6dd489638aff3d1a5bcdabff8973e8be2311cb238077f84de2b5cb0f7c3974ef",
+          "requires": [
+            "24f21c0c-b506-56ec-ad17-39b209af4585",
+            "90662398-a0fd-45bf-9ce9-2abbc20428ed"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/5042fd2b-bab2-50be-8144-c9ccf5618615/5042fd2b-bab2-50be-8144-c9ccf5618615.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Graphen von Integrand und Integralfunktion wechselseitig deuten\". Die lernende Person kann vom Graphen einer Funktion auf den Verlauf einer zugehörigen Integralfunktion schließen und umgekehrt aus einer Integralfunktion den Graphen der Integrandenfunktion erschließen.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "polygon-to-area-graph",
+          "expectationIds": [
+            "graph-from-integrand"
+          ]
+        },
+        {
+          "caseId": "tangent-data-to-integrand",
+          "expectationIds": [
+            "integrand-from-slopes"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "currentGoal": {
+        "id": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+        "title": "Produktsummen und orientierte Flächen im Sachkontext deuten",
+        "titleEn": "Interpret product sums and oriented areas in context",
+        "description": "Die lernende Person kann Produktsummen und Inhalte orientierter Flächen in Sachsituationen deuten und ihre Bedeutung für Gesamtwirkungen qualitativ erläutern.",
+        "descriptionEn": "The learner can interpret product sums and oriented areas in real-world situations and qualitatively explain their meaning for total effects.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+            "title": "Visualisierung: Produktsummen und orientierte Flächen im Sachkontext deuten",
+            "url": "/assets/goal-visualizations/mathematik/269675a9-13cd-4a3a-ab75-63794f5c9710/269675a9-13cd-4a3a-ab75-63794f5c9710.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Produktsummen und orientierte Flächen im Sachkontext deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Produktsummen und orientierte Flächen im Sachkontext deuten\". Die lernende Person kann Produktsummen und Inhalte orientierter Flächen in Sachsituationen deuten und ihre Bedeutung für Gesamtwirkungen qualitativ erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:d5f67bc6957230797207b6675c767fd61ad12aaca3a33f7d60f7554c1cc09f5b",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "requiresAfter": [
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "prerequisites": [
+        {
+          "id": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "title": "Ableitungen elementarer Funktionen berechnen",
+          "titleEn": "Calculate derivatives of elementary functions",
+          "description": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+          "descriptionEn": "The learner can use the structure of polynomial functions up to degree 3 and simple exponential and power functions to select the appropriate differentiation rule and calculate the derivative step by step.",
+          "type": "atomic",
+          "sourceRef": null
+        },
+        {
+          "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+          "titleEn": "Why Mathematics? – Thinking, Patterns & Future",
+          "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/269675a9-13cd-4a3a-ab75-63794f5c9710/269675a9-13cd-4a3a-ab75-63794f5c9710.jpg",
+          "url": "/assets/goal-visualizations/mathematik/269675a9-13cd-4a3a-ab75-63794f5c9710/269675a9-13cd-4a3a-ab75-63794f5c9710.jpg",
+          "sha256": "sha256:4bcc41d4fe7f7a5dc98b9e88c39333c2f9ddd8ac932dff52882c03e29d4cdf34",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:191c616b3f172d506b0d8c192a97d4e38eb232027a979682b2cd178f9a0cfa17",
+          "requires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/269675a9-13cd-4a3a-ab75-63794f5c9710/269675a9-13cd-4a3a-ab75-63794f5c9710.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Produktsummen und orientierte Flächen im Sachkontext deuten\". Die lernende Person kann Produktsummen und Inhalte orientierter Flächen in Sachsituationen deuten und ihre Bedeutung für Gesamtwirkungen qualitativ erläutern.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "signed-energy-flow",
+          "expectationIds": [
+            "weighted-signed-effects"
+          ]
+        },
+        {
+          "caseId": "signed-work",
+          "expectationIds": [
+            "weighted-signed-effects"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "currentGoal": {
+        "id": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+        "title": "Graphen von Flächeninhaltsfunktionen skizzieren",
+        "titleEn": "Sketch graphs of area functions",
+        "description": "Die lernende Person kann zu einer gegebenen Startstelle aus dem Graphen einer Randfunktion den Verlauf der zugehörigen orientierten Flächeninhaltsfunktion qualitativ skizzieren und dabei positive und negative Flächenbeiträge berücksichtigen.",
+        "descriptionEn": "Given a starting point, the learner can qualitatively sketch the associated signed-area function from the graph of a boundary function, taking positive and negative area contributions into account.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+            "title": "Visualisierung: Graphen von Flächeninhaltsfunktionen skizzieren",
+            "url": "/assets/goal-visualizations/mathematik/9441bb35-2a2f-4edc-9d8a-bc58c257054d/9441bb35-2a2f-4edc-9d8a-bc58c257054d.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Graphen von Flächeninhaltsfunktionen skizzieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Graphen von Flächeninhaltsfunktionen skizzieren\". Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:5fc33dc10924548c7b0c151bafde1d81d4b2a6d247b9afd9c7c0587e011de604",
+      "textChangesSinceOriginalAuthoringInput": [
+        {
+          "field": "description",
+          "before": "Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+          "after": "Die lernende Person kann zu einer gegebenen Startstelle aus dem Graphen einer Randfunktion den Verlauf der zugehörigen orientierten Flächeninhaltsfunktion qualitativ skizzieren und dabei positive und negative Flächenbeiträge berücksichtigen."
+        },
+        {
+          "field": "descriptionEn",
+          "before": "The learner can qualitatively sketch the graph of the associated area function for the graph of a given boundary function.",
+          "after": "Given a starting point, the learner can qualitatively sketch the associated signed-area function from the graph of a boundary function, taking positive and negative area contributions into account."
+        }
+      ],
+      "requiresBefore": [
+        "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+      ],
+      "requiresAfter": [
+        "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+      ],
+      "prerequisites": [
+        {
+          "id": "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+          "title": "Integral als Bestand und Flächeninhalt verstehen",
+          "titleEn": "Understand integral as quantity and area",
+          "description": "Die lernende Person kann ein bestimmtes Integral je nach Situation als orientierten Flächeninhalt oder Bestandsänderung deuten und aus Änderungsrate und Anfangsbestand einen Bestand bestimmen.",
+          "descriptionEn": "The learner can interpret a definite integral, depending on the situation, as oriented area or change in a stock and determine a stock from a rate of change and an initial stock.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/9441bb35-2a2f-4edc-9d8a-bc58c257054d/9441bb35-2a2f-4edc-9d8a-bc58c257054d.jpg",
+          "url": "/assets/goal-visualizations/mathematik/9441bb35-2a2f-4edc-9d8a-bc58c257054d/9441bb35-2a2f-4edc-9d8a-bc58c257054d.jpg",
+          "sha256": "sha256:a900debc5505eb2745ff326d741a691d52a3c7a4cfdf4199712942f50c043d80",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:366b3dfb5b092047fc7b14feb30e070a251edd32dc404de8577468889cae078a",
+          "requires": [
+            "2afba4a2-287d-5e8f-aeee-a3bcf8652236"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/9441bb35-2a2f-4edc-9d8a-bc58c257054d/9441bb35-2a2f-4edc-9d8a-bc58c257054d.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Graphen von Flächeninhaltsfunktionen skizzieren\". Die lernende Person kann zu dem Graphen einer gegebenen Randfunktion den Graphen der zugehörigen Flächeninhaltsfunktion qualitativ skizzieren.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "triangle-accumulation",
+          "expectationIds": [
+            "area-function-sketch"
+          ]
+        },
+        {
+          "caseId": "interior-reference",
+          "expectationIds": [
+            "area-function-sketch"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+      "currentGoal": {
+        "id": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+        "title": "Übergang von Produktsummen zum Integral erläutern und vollziehen",
+        "titleEn": "Explain and Carry Out the Transition from Product Sums to the Integral",
+        "description": "Die lernende Person kann an geeigneten Beispielen den Übergang von Produktsummen zum bestimmten Integral auf der Grundlage eines propädeutischen Grenzwertbegriffs erläutern und nachvollziehen.",
+        "descriptionEn": "The learner can explain and trace the transition from product sums to the definite integral in suitable examples based on a propaedeutic notion of limit.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "269675a9-13cd-4a3a-ab75-63794f5c9710",
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.4",
+            "K2.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+            "title": "Visualisierung: Übergang von Produktsummen zum Integral erläutern und vollziehen",
+            "url": "/assets/goal-visualizations/mathematik/b559e2ea-60ef-4b3f-a37c-669b867ace29/b559e2ea-60ef-4b3f-a37c-669b867ace29.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Übergang von Produktsummen zum Integral erläutern und vollziehen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Übergang von Produktsummen zum Integral erläutern und vollziehen\". Die lernende Person kann an geeigneten Beispielen den Übergang von Produktsummen zum bestimmten Integral auf der Grundlage eines propädeutischen Grenzwertbegriffs erläutern und nachvollziehen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:4873b58013b94ff5972cb6c74a34b15bab785704ab6bf32b1416d7112fa42e98",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "269675a9-13cd-4a3a-ab75-63794f5c9710",
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "requiresAfter": [
+        "269675a9-13cd-4a3a-ab75-63794f5c9710",
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "prerequisites": [
+        {
+          "id": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+          "title": "Produktsummen und orientierte Flächen im Sachkontext deuten",
+          "titleEn": "Interpret product sums and oriented areas in context",
+          "description": "Die lernende Person kann Produktsummen und Inhalte orientierter Flächen in Sachsituationen deuten und ihre Bedeutung für Gesamtwirkungen qualitativ erläutern.",
+          "descriptionEn": "The learner can interpret product sums and oriented areas in real-world situations and qualitatively explain their meaning for total effects.",
+          "type": "atomic",
+          "sourceRef": null
+        },
+        {
+          "id": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+          "title": "Flächen unter Graphen näherungsweise bestimmen",
+          "titleEn": "Determine areas under graphs approximately",
+          "description": "Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+          "descriptionEn": "The learner can determine areas under function graphs using rectangle sums (upper and lower sums) and other approximation methods, write them as sums, and estimate the accuracy of the approximation.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/b559e2ea-60ef-4b3f-a37c-669b867ace29/b559e2ea-60ef-4b3f-a37c-669b867ace29.jpg",
+          "url": "/assets/goal-visualizations/mathematik/b559e2ea-60ef-4b3f-a37c-669b867ace29/b559e2ea-60ef-4b3f-a37c-669b867ace29.jpg",
+          "sha256": "sha256:1db73ca41952aee0488a4d9d5537eaf558997d7d8cdf584975c3ed31e6435891",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:f17dbdc3fc95a5f1287bd13870cdab289df2f5f7278e6857a426fb40e1e7e8e6",
+          "requires": [
+            "269675a9-13cd-4a3a-ab75-63794f5c9710",
+            "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/b559e2ea-60ef-4b3f-a37c-669b867ace29/b559e2ea-60ef-4b3f-a37c-669b867ace29.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Übergang von Produktsummen zum Integral erläutern und vollziehen\". Die lernende Person kann an geeigneten Beispielen den Übergang von Produktsummen zum bestimmten Integral auf der Grundlage eines propädeutischen Grenzwertbegriffs erläutern und nachvollziehen.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "right-sum-limit",
+          "expectationIds": [
+            "sum-to-integral"
+          ]
+        },
+        {
+          "caseId": "piecewise-exact-sums",
+          "expectationIds": [
+            "sum-to-integral"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "currentGoal": {
+        "id": "23589682-2028-54cb-9034-b468b42688f1",
+        "shortKey": "canonical_math_q1_integrate_transformed_exponential_trig_functions",
+        "title": "Transformierte Exponential- und trigonometrische Funktionen integrieren",
+        "titleEn": "Integrate transformed exponential and trigonometric functions",
+        "description": "Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+        "descriptionEn": "The learner can integrate functions of the form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$, and $\\cos(b\\cdot(x-c))$ using the linear inner transformation or reverse chain rule.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+          "d0a9e407-e654-5940-958f-6f608bf3d654",
+          "58d2f963-4fb9-550d-a832-f5ac60808900"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q1",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.1.TRANSFORMED_EXPONENTIAL_TRIG_INTEGRALS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.1, S. 36, Spiegelstrich 5",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "23589682-2028-54cb-9034-b468b42688f1",
+            "title": "Visualisierung: Transformierte Exponential- und trigonometrische Funktionen integrieren",
+            "url": "/assets/goal-visualizations/mathematik/23589682-2028-54cb-9034-b468b42688f1/23589682-2028-54cb-9034-b468b42688f1.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Transformierte Exponential- und trigonometrische Funktionen integrieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Transformierte Exponential- und trigonometrische Funktionen integrieren\". Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:5c481b33650048e064ed6446aa3a4540013e58d73acee70dedcfbc3a082dbf55",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+        "d0a9e407-e654-5940-958f-6f608bf3d654",
+        "58d2f963-4fb9-550d-a832-f5ac60808900"
+      ],
+      "requiresAfter": [
+        "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+        "d0a9e407-e654-5940-958f-6f608bf3d654",
+        "58d2f963-4fb9-550d-a832-f5ac60808900"
+      ],
+      "prerequisites": [
+        {
+          "id": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+          "title": "Einfache Integrale berechnen",
+          "titleEn": "Calculate simple integrals",
+          "description": "Die lernende Person kann die Stammfunktionen von $x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ sowie von $e^x$, $\\sin(x)$ und $\\cos(x)$ aus den Ableitungsregeln erschließen und damit mithilfe der Faktor- und Summenregel auf geeigneten Intervallen Stammfunktionen entsprechender Linearkombinationen bestimmen.",
+          "descriptionEn": "The learner can infer antiderivatives of $x^n$ for $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ and of $e^x$, $\\sin(x)$, and $\\cos(x)$ from differentiation rules and use the factor and sum rules to determine antiderivatives of their linear combinations on suitable intervals.",
+          "type": "atomic",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.1, S. 36, Spiegelstrich 4"
+        },
+        {
+          "id": "d0a9e407-e654-5940-958f-6f608bf3d654",
+          "title": "Produkt- und Kettenregel bei Exponentialverknüpfungen anwenden",
+          "titleEn": "Apply product and chain rules to exponential combinations",
+          "description": "Die lernende Person kann Produkt- und Kettenregel bei Funktionen der Typen $f(x)=a\\cdot e^{kx+c}+b$ und $f(x)=(ax+b)\\cdot e^{kx}$ anwenden, Ableitungen berechnen und Ergebnisse in Funktionsuntersuchungen nutzen.",
+          "descriptionEn": "The learner can apply the product and chain rules to functions of the types $f(x)=a\\cdot e^{kx+c}+b$ and $f(x)=(ax+b)\\cdot e^{kx}$, compute derivatives, and use the results in function investigations.",
+          "type": "atomic",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.4, S. 33"
+        },
+        {
+          "id": "58d2f963-4fb9-550d-a832-f5ac60808900",
+          "title": "Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten",
+          "titleEn": "Differentiate transformed sine and cosine functions using the chain rule",
+          "description": "Die lernende Person kann Funktionen der Form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ beziehungsweise $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ mit der Kettenregel ableiten und die Bedeutung der inneren linearen Transformation für die Ableitung erklären.",
+          "descriptionEn": "The learner can differentiate functions of the form $f(x)=a\\cdot\\sin(b\\cdot(x-c))+d$ or $f(x)=a\\cdot\\cos(b\\cdot(x-c))+d$ using the chain rule and explain the role of the inner linear transformation.",
+          "type": "atomic",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.5, S. 33"
+        }
+      ],
+      "sourceReference": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.1, S. 36, Spiegelstrich 5",
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/23589682-2028-54cb-9034-b468b42688f1/23589682-2028-54cb-9034-b468b42688f1.jpg",
+          "url": "/assets/goal-visualizations/mathematik/23589682-2028-54cb-9034-b468b42688f1/23589682-2028-54cb-9034-b468b42688f1.jpg",
+          "sha256": "sha256:a092f8c25d2a711237635c090207fb0ea546c758cf757aa780bca6aac3d81ef4",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:bc9f463c22a3c34c6dce03f7afdc173634c7adb6272ded3132eb998d0b72da65",
+          "requires": [
+            "58d2f963-4fb9-550d-a832-f5ac60808900",
+            "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+            "d0a9e407-e654-5940-958f-6f608bf3d654"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/23589682-2028-54cb-9034-b468b42688f1/23589682-2028-54cb-9034-b468b42688f1.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Transformierte Exponential- und trigonometrische Funktionen integrieren\". Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "unknown-coefficient",
+          "expectationIds": [
+            "inverse-inner-factor"
+          ]
+        },
+        {
+          "caseId": "cosine-and-zero",
+          "expectationIds": [
+            "inverse-inner-factor"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+      "currentGoal": {
+        "id": "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+        "title": "Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und anwenden",
+        "titleEn": "Explain and Apply the Fundamental Theorem of Calculus Geometrically and Intuitively",
+        "description": "Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und in einfachen Integralzusammenhängen anwenden.",
+        "descriptionEn": "The learner can explain the Fundamental Theorem of Calculus geometrically and intuitively and apply it in basic integral contexts.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.4",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+            "title": "Visualisierung: Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und anwenden",
+            "url": "/assets/goal-visualizations/mathematik/8675a3d8-9aaa-4f35-b4ed-383d1c93ea24/8675a3d8-9aaa-4f35-b4ed-383d1c93ea24.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und anwenden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und anwenden\". Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und in einfachen Integralzusammenhängen anwenden.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:93774503b6770034eec890b65350eb3a0898ac3a15796a60823b1bfbdefb7e09",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "requiresAfter": [
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "prerequisites": [
+        {
+          "id": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+          "title": "Flächen unter Graphen näherungsweise bestimmen",
+          "titleEn": "Determine areas under graphs approximately",
+          "description": "Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+          "descriptionEn": "The learner can determine areas under function graphs using rectangle sums (upper and lower sums) and other approximation methods, write them as sums, and estimate the accuracy of the approximation.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/8675a3d8-9aaa-4f35-b4ed-383d1c93ea24/8675a3d8-9aaa-4f35-b4ed-383d1c93ea24.jpg",
+          "url": "/assets/goal-visualizations/mathematik/8675a3d8-9aaa-4f35-b4ed-383d1c93ea24/8675a3d8-9aaa-4f35-b4ed-383d1c93ea24.jpg",
+          "sha256": "sha256:3bf3a603c137c54e0578ed47aeff3bbf5951896a0891321d15c833ad57c91afe",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:b2b1b3f2f85a305ca740864060dbf25a04a4aecc07adbb972115f30a0fda0669",
+          "requires": [
+            "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/8675a3d8-9aaa-4f35-b4ed-383d1c93ea24/8675a3d8-9aaa-4f35-b4ed-383d1c93ea24.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und anwenden\". Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung geometrisch-anschaulich erläutern und in einfachen Integralzusammenhängen anwenden.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "signed-linear-integral",
+          "expectationIds": [
+            "ftc-geometric-use"
+          ]
+        },
+        {
+          "caseId": "endpoint-only",
+          "expectationIds": [
+            "ftc-geometric-use"
+          ]
+        }
+      ]
+    },
+    {
+      "goalId": "ced4f794-9b42-4be4-bde5-7d44f134a140",
+      "currentGoal": {
+        "id": "ced4f794-9b42-4be4-bde5-7d44f134a140",
+        "title": "Hauptsatz der Differential- und Integralrechnung mit anschaulichem Stetigkeitsbegriff begründen und anwenden (LK)",
+        "titleEn": "Justify and Apply the Fundamental Theorem of Calculus Using an Intuitive Continuity Concept (advanced course)",
+        "description": "Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung unter Verwendung eines anschaulichen Stetigkeitsbegriffs begründen und in Integralzusammenhängen anwenden.",
+        "descriptionEn": "The learner can justify the Fundamental Theorem of Calculus using an intuitive concept of continuity and apply it in integral contexts.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.4",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "ced4f794-9b42-4be4-bde5-7d44f134a140",
+            "title": "Visualisierung: Hauptsatz der Differential- und Integralrechnung mit anschaulichem Stetigkeitsbegriff begründen und anwenden (LK)",
+            "url": "/assets/goal-visualizations/mathematik/ced4f794-9b42-4be4-bde5-7d44f134a140/ced4f794-9b42-4be4-bde5-7d44f134a140.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Hauptsatz der Differential- und Integralrechnung mit anschaulichem Stetigkeitsbegriff begründen und anwenden (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Hauptsatz der Differential- und Integralrechnung mit anschaulichem Stetigkeitsbegriff begründen und anwenden (LK)\". Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung unter Verwendung eines anschaulichen Stetigkeitsbegriffs begründen und in Integralzusammenhängen anwenden.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindSourceFingerprint": "sha256:d3ff9656893f7bc8ccfe95cc1d601fb06cc4db726d891df1ab5ac3eb8614ddf1",
+      "textChangesSinceOriginalAuthoringInput": [],
+      "requiresBefore": [
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "requiresAfter": [
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+      ],
+      "prerequisites": [
+        {
+          "id": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+          "title": "Flächen unter Graphen näherungsweise bestimmen",
+          "titleEn": "Determine areas under graphs approximately",
+          "description": "Die lernende Person kann Flächeninhalte unter Funktionsgraphen durch Rechtecksummen (Ober- und Untersummen) und andere Näherungsverfahren bestimmen, diese als Summen schreiben und die Genauigkeit der Approximation einschätzen.",
+          "descriptionEn": "The learner can determine areas under function graphs using rectangle sums (upper and lower sums) and other approximation methods, write them as sums, and estimate the accuracy of the approximation.",
+          "type": "atomic",
+          "sourceRef": null
+        }
+      ],
+      "sourceReference": null,
+      "activeVisualizationInventory": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/ced4f794-9b42-4be4-bde5-7d44f134a140/ced4f794-9b42-4be4-bde5-7d44f134a140.jpg",
+          "url": "/assets/goal-visualizations/mathematik/ced4f794-9b42-4be4-bde5-7d44f134a140/ced4f794-9b42-4be4-bde5-7d44f134a140.jpg",
+          "sha256": "sha256:fdb50375e130c39303296ea3f16598eee04f99dbf6c07c456d7867167d592bdc",
+          "note": "Inventory only; reviewedResourceTypes=[] and this P lane makes no image-QA approval claim."
+        }
+      ],
+      "nativeReviewInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:463211b4a5008ee631e33229f2e8592c9d43ee1ae9066fd939965cbd116eeb6a",
+          "requires": [
+            "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/mathematik/ced4f794-9b42-4be4-bde5-7d44f134a140/ced4f794-9b42-4be4-bde5-7d44f134a140.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Hauptsatz der Differential- und Integralrechnung mit anschaulichem Stetigkeitsbegriff begründen und anwenden (LK)\". Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung unter Verwendung eines anschaulichen Stetigkeitsbegriffs begründen und in Integralzusammenhängen anwenden.",
+              "reviewStatus": "pilot",
+              "digest": null
+            }
+          ]
+        }
+      },
+      "caseCoverage": [
+        {
+          "caseId": "continuous-corner",
+          "expectationIds": [
+            "continuity-justification"
+          ]
+        },
+        {
+          "caseId": "signed-continuous-polynomial",
+          "expectationIds": [
+            "continuity-justification"
+          ]
+        }
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "goalId": "911f3200-1dbc-59a6-90df-c883c77de39c",
+      "goalFingerprint": "sha256:a3e061f5e834dd32f0df9675c64ef00f9f3bf5987dbe15c957372000c4388f1f",
+      "reviewInputFingerprint": "sha256:9584d44a6aa8675b99203598abc9bdd1d32491c62c750b91c0d26934349a5d5b",
+      "profileFingerprint": "sha256:b2bb57fef4b8dd8659d3eb1fda83be626c361e51fe1da46c5335c55dbb81a9bd",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "goalFingerprint": "sha256:f0b1e0329ca388d3d50eb625bb5799540ab69826f961b5d2536dcbcd3339d88b",
+      "reviewInputFingerprint": "sha256:d78258559d409fc43877841c4d9ba810793ea05d49be56d28e28bdce3a98c64e",
+      "profileFingerprint": "sha256:3c6d19402b6a1fc4a3afe796ad36d3c46e9ff1fdc49c23fea3dc20881574e82b",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "goalFingerprint": "sha256:796595e371bb5ca08d5d67105a94ce5dab513f4d4f4e448c3ddae61c28addcd7",
+      "reviewInputFingerprint": "sha256:92243cc720a9c86b9042ca9f149f4f3867daa9d2f56cdaccdb5f1b0e4895fe78",
+      "profileFingerprint": "sha256:6cb4418e063cc0271637fc645ce882ab8e5cb9799595cb3b0272c5f5853c3038",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "goalFingerprint": "sha256:0cfefb4649b6fa22189f2cd55d63fe84da88c4972cae8e2a4cb7a0ebbb1021ad",
+      "reviewInputFingerprint": "sha256:e94db81b001a23ae089044eccbce9be50a63cf1a2f86af640ddfd866bf95e436",
+      "profileFingerprint": "sha256:b3d1bb5564e27001a3c47e7f32a3d13cccf5d8bbc850d31dacfb1256d2a792aa",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+      "goalFingerprint": "sha256:5dc0d1e09820834b81938760ee6caf1c8ddb98559b65a2f3f8a22578510a1a91",
+      "reviewInputFingerprint": "sha256:6435b3f42118fdc5979fa543a5f11427dc94fe9a6c3f3f76d4ecb86a6191fea3",
+      "profileFingerprint": "sha256:25c327745b1dc2ae083f6753458883fe4283db6dbeb6995f7ecb82853c1cbb35",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "89ca5089-7122-5a82-b21f-17d0bd46a3bd",
+      "goalFingerprint": "sha256:63dcff7a1434ad105a1e723033d9d5668ff6afa351c6650e975c4695e14cc7ca",
+      "reviewInputFingerprint": "sha256:630e0ca99f3d08b93f455053933caf1a177a902843f7bf946bd33a91bf888624",
+      "profileFingerprint": "sha256:7cf6d032b503f5bfe70be70f50a471dc825a00c9f3fcb1ae58eead0d2dffa849",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "df5eeadd-414e-50ae-84ec-7e5dbf7449d6",
+      "goalFingerprint": "sha256:d50d77ea6f06fc622fef11bc58f082d2cca46f84bf4a501490c3606ba9da3c22",
+      "reviewInputFingerprint": "sha256:b0d0bfe0f6aa001b3290842d9cfc9b6245c456241133a8a54a193f069ace4a7b",
+      "profileFingerprint": "sha256:4831d860c78c16080f99834f4b36e8a429fae9563a5917a1fd2b09bae452e59e",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+      "goalFingerprint": "sha256:0f3249f94f2cefdbea0e007f2aff0673e69dd00024cd5930a007d89c7e487033",
+      "reviewInputFingerprint": "sha256:a669ec6670bbf0e474c72fa0a95c6f761d4a47ddd0e5dfe835dd658f83877f20",
+      "profileFingerprint": "sha256:b506c36821327f7d24f733d16273d1d90448d2445de5ec39b57c3b918ab9b79f",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "goalFingerprint": "sha256:8dd8d5c2e0b887b355e9206465cd7f6a763687ac117627305b6c8839ffb02f43",
+      "reviewInputFingerprint": "sha256:4f3d3529efc05a2bb855e32aac4f0f24cbbc16df2d968cd143c0391c8b76ec36",
+      "profileFingerprint": "sha256:b10ee0fb59452bb661df244f29247f50799d0946fba9211352c02cf4f2b1908e",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "goalFingerprint": "sha256:ea2687cb15c3a37460fe5cb180be6ed603c3f79cc2da09057d74033df0e24bff",
+      "reviewInputFingerprint": "sha256:4b7aa9073347a7e7c05ca459fc1238262cec8d176e9ec42e0c6716701074a947",
+      "profileFingerprint": "sha256:28c6ea73115155814786b0ffc8740dbc2aac0cc09eb952ca18a2962e5c3fee7a",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+      "goalFingerprint": "sha256:6b90f5fa042d929990a9415c99043709d46de9b38a0324fb81d746e17bb1901c",
+      "reviewInputFingerprint": "sha256:dd5c0fe322a369ee95822fd79b10409a1915aeefaebb5a8566ad4a3d9ea81682",
+      "profileFingerprint": "sha256:3bec5a0698a4ee1a1ee23e3d7f5c866ede470e889b5edcf75adf6277907979a9",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "goalFingerprint": "sha256:d98c978fcf5cd13b2e623fb81239920fc635342bf4beb336068ef23b63c16730",
+      "reviewInputFingerprint": "sha256:851c41e004148721fbe98fd5d9142c1585daef934e7cc2a275c8a8d9ffe3a2aa",
+      "profileFingerprint": "sha256:92346a5d39f54b3261c43c5313eeecc808b9e657d4d4d4eee147ced289c59e01",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "5042fd2b-bab2-50be-8144-c9ccf5618615",
+      "goalFingerprint": "sha256:6dd489638aff3d1a5bcdabff8973e8be2311cb238077f84de2b5cb0f7c3974ef",
+      "reviewInputFingerprint": "sha256:d216f14fc235ffac8d3ef942175263a7f5dee44a139564f8e45f5bd504b7c1d1",
+      "profileFingerprint": "sha256:e3e38ef41c1af8b090e706e20764683d4d93f9f33c6684e9ff4a84c0f46c7c22",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "goalFingerprint": "sha256:191c616b3f172d506b0d8c192a97d4e38eb232027a979682b2cd178f9a0cfa17",
+      "reviewInputFingerprint": "sha256:8a69e3aefb3b5990552362ddd67ed156fa67b9509f13d81b0e1b803a714e3d14",
+      "profileFingerprint": "sha256:f74468f072daedbec9bc4b317db989d92ba8f4a7e68b2d43ddc82f838eafa676",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "goalFingerprint": "sha256:366b3dfb5b092047fc7b14feb30e070a251edd32dc404de8577468889cae078a",
+      "reviewInputFingerprint": "sha256:9008491812229af1d723a1f4a6c93c31960bf15b063ea3f3f13ac2a51981cee2",
+      "profileFingerprint": "sha256:42c061e6a8f8b5415fc15854189491861093003bf8ed474e224d7f254fc3e6f8",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+      "goalFingerprint": "sha256:f17dbdc3fc95a5f1287bd13870cdab289df2f5f7278e6857a426fb40e1e7e8e6",
+      "reviewInputFingerprint": "sha256:632aaf7c764045a143a5c313870f7c4253c24ac4205b56af44a85e3fb14e5042",
+      "profileFingerprint": "sha256:a923a6898e61e5647f07dc660c00b6f08c2a5bd2a746eda12a8d836c9c4bd67a",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "goalFingerprint": "sha256:bc9f463c22a3c34c6dce03f7afdc173634c7adb6272ded3132eb998d0b72da65",
+      "reviewInputFingerprint": "sha256:725b84ec747675370cb71c6c90df27d5528ee510a0da63de5c0c8d4edabbbdb5",
+      "profileFingerprint": "sha256:c2221800154ba7069d370c77e456d4e9d0adbac1e5fb09a21178ecda55e70b33",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+      "goalFingerprint": "sha256:b2b1b3f2f85a305ca740864060dbf25a04a4aecc07adbb972115f30a0fda0669",
+      "reviewInputFingerprint": "sha256:1e220bbcebd96b740d4fe9692a138df2b3c83e209f9a7aad579732d738cacc98",
+      "profileFingerprint": "sha256:61ce586b5ab7a30fddb9fd511b67af5340f4c6ad691c80ad66de8fb1fa29a48e",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "goalId": "ced4f794-9b42-4be4-bde5-7d44f134a140",
+      "goalFingerprint": "sha256:463211b4a5008ee631e33229f2e8592c9d43ee1ae9066fd939965cbd116eeb6a",
+      "reviewInputFingerprint": "sha256:0734e6c6c6def24eb342d195e0abc47bf91c2f8d2ff2994ca6bc1256b9e28f26",
+      "profileFingerprint": "sha256:c91e22a3b39182fa08c1bc3cda4b299e09818e3f7a76997c1647469879361c66",
+      "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    }
+  ],
+  "output": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-040-taylor-tools-integrals-19-v1.review.jsonl",
+    "sha256": "sha256:20cecb8659c440d472898cb59b8a3b1b6177196bac42bf808afdbd71f7566b1c"
+  },
+  "toolchain": {
+    "node": "20.20.2",
+    "nativeBuilder": "app/scripts/materializePositiveGoalEvidenceCandidates.ts#buildPositiveGoalEvidenceCandidateRecords"
+  },
+  "boundaries": [
+    "Exactly the already-authored bodies are bound to current inputs; no new or changed body is generated during binding.",
+    "All records stay needs_human_review/ai_candidate/E1/G1 with empty reviewRunIds.",
+    "New independent tasks require learner reasoning without copying teaching graphics. Visualization QA remains separate and no new visual approval is asserted.",
+    "No canonical, registry, claims, D record, source, deck/card, book, generated aggregate QA or runtime file is changed."
+  ]
+}

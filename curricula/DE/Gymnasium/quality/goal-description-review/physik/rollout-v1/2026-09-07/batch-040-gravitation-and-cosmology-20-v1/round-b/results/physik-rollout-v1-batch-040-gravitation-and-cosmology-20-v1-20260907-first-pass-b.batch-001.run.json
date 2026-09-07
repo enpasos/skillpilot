@@ -1,0 +1,62 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-physik-b040-blind-b-20260907",
+  "campaignId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-b",
+  "roundId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:baf3109aca1ffae85eb8875c71d2a28f8882ff56062e3290c7d56e25eccf510b",
+  "bundleFingerprint": "sha256:71ecc7c2ccf37e045b23e4b60b9273233a0108135c357fd389c5c79404234f0b",
+  "bookDigest": "sha256:838bd54fd7008014064c30ba959ab94650b12d43f7b5dd0cd65934364665b59c",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:b03543e6742b9f99d060ce7a58bcac5f9dfaf53fb61d7523aed374e5d9de8578",
+  "independenceGroupId": "physik-rollout-v1-batch-040-gravitation-and-cosmology-20-v1-20260907-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+    "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+    "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+    "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+    "497f1311-17d6-56ff-afb1-422a738e5c16",
+    "16caf92e-2800-57d1-946c-5b92ce848a96",
+    "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+    "d873ffa2-04b3-5978-a955-89563802a348",
+    "1b833656-cd16-5b21-973a-9810960dcfd2",
+    "c968d263-8be4-5cf9-b320-e95398fe648f",
+    "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+    "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+    "5db07785-8cca-50d5-81a9-e0264d344af9",
+    "206fe51d-cc78-5422-b139-32cc97eb1c37",
+    "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+    "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+    "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+    "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+    "14d99a65-8d58-5647-88ab-02137b96d55b",
+    "ba16948b-5e07-54af-b77b-776e677c6906"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:baf3109aca1ffae85eb8875c71d2a28f8882ff56062e3290c7d56e25eccf510b"
+    }
+  ],
+  "startedAt": "2026-09-06T23:53:11Z",
+  "completedAt": "2026-09-07T00:01:34.833Z",
+  "status": "completed",
+  "outputDigest": "sha256:15430fe88787f916a796b22166222f17e62c3bbba3fa7e4bac3841945673f888",
+  "toolchainVersion": "codex-b040-blind-review-v1"
+}

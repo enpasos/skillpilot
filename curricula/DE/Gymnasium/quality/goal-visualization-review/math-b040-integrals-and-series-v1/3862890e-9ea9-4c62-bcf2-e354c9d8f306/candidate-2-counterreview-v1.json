@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "independent-ai-visualization-candidate-counterreview",
+  "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+  "candidate": "candidate-2",
+  "decision": "accept",
+  "authority": "ai_candidate",
+  "humanApproval": false,
+  "reviewer": {
+    "agent": "math_b039_blind_a",
+    "provider": "OpenAI",
+    "product": "Codex",
+    "exactUnderlyingModel": "not available",
+    "modelDiversityClaim": false
+  },
+  "observedReviewWindow": {
+    "firstObservedAt": "2026-09-07T02:15:42Z",
+    "completedObservedAt": "2026-09-07 02:18:40 UTC"
+  },
+  "independence": {
+    "currentCandidateAuthoredByReviewer": false,
+    "currentCandidateGeneratedByReviewer": false,
+    "parentCandidate2VerdictRead": false,
+    "candidate1VerdictRead": false,
+    "priorInvolvement": "Reviewer previously participated in the Math386 description wording adoption and a D review of its then-active visualization. Those activities do not substitute for this fresh actual-raster review. Parent reported C1 as defective; no C1 review record or C2 parent verdict was read."
+  },
+  "inputHashes": {
+    "tmp/goal-visualizations/3862890e-9ea9-4c62-bcf2-e354c9d8f306/generated/3862890e-9ea9-4c62-bcf2-e354c9d8f306.generated.2026-09-07T01-31-11-274Z.jpg": "sha256:e11037682194882cefe91e8bf855b16c0702470c80b560643bc2dcd3767a26d2",
+    "tmp/goal-visualizations/3862890e-9ea9-4c62-bcf2-e354c9d8f306/nano-banana-request.json": "sha256:801b853b11cc6560f0a79bc30065ebccf0f8725e2858e1ba7a22f21d8a805cd7",
+    "tmp/goal-visualizations/3862890e-9ea9-4c62-bcf2-e354c9d8f306/nano-banana-prompt.de.md": "sha256:228f54dd4a0dac4b8c41272903e480f64238d90b750dc240c0f305d2fdd20490",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b040-integrals-and-series-v1/3862890e-9ea9-4c62-bcf2-e354c9d8f306/attempt-2.prompt.de.md": "sha256:df8e46b559a7d4100bd86cf033219b8b9dce55491a9207d638e0d45e36e04845",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "sha256:bd33714d53a8774ac18bced0ca93ca3ade8a9de085373c851937af43b7416e44"
+  },
+  "currentGoalObjectSha256": "sha256:d9db8f98ac700259c3c5f715fc351ba027ffedf43b382752d03c0aef2ffe500b",
+  "currentGoal": {
+    "id": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+    "title": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als Bestandsänderung deuten",
+    "titleEn": "Interpret the definite integral as the limit of upper and lower sums and as a change in quantity",
+    "description": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und bei einer Änderungsrate als Bestandsänderung beschreiben, aus der zusammen mit dem Anfangsbestand der Endbestand entsteht.",
+    "descriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and, for a rate of change, describe it as the change in a quantity, which combines with the initial value to give the final value.",
+    "requires": [
+      "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6"
+    ]
+  },
+  "actualPromptReadInFull": true,
+  "actualRequestReadInFull": true,
+  "actualRequestContainsFullAttempt2Prompt": true,
+  "actualRaster": {
+    "path": "tmp/goal-visualizations/3862890e-9ea9-4c62-bcf2-e354c9d8f306/generated/3862890e-9ea9-4c62-bcf2-e354c9d8f306.generated.2026-09-07T01-31-11-274Z.jpg",
+    "sha256": "sha256:e11037682194882cefe91e8bf855b16c0702470c80b560643bc2dcd3767a26d2",
+    "sourceDimensions": {
+      "width": 2752,
+      "height": 1536
+    },
+    "inspection": "Viewed actual JPEG twice with view_image. Initial display was resized to 2048×1143 by the presentation layer; it was then explicitly displayed with original image detail at 2752×1536. No OCR-only or prompt-only judgment.",
+    "editedForInspection": false
+  },
+  "findings": [
+    {
+      "area": "coordinate-system-and-line",
+      "status": "pass",
+      "observation": "Ein gemeinsamer Ursprung ohne versetzten Nullpunkt. t-Ticks 0,1,2,3,4 gleichmäßig; f(t)-Ticks 1 bis 5 gleichmäßig. Die Gerade passiert sichtbar (0,1),(1,2),(2,3),(3,4),(4,5). Die kurze Fortsetzung rechts von t=4 ändert das klar auf [0,4] schattierte Integrationsintervall nicht."
+    },
+    {
+      "area": "four-rectangles-and-endpoint-indices",
+      "status": "pass",
+      "observation": "Genau vier blaue Rechtecke liegen lückenlos auf [0,1],[1,2],[2,3],[3,4], mit Höhen 1,2,3,4. Ihre linken oberen Ecken liegen auf der steigenden Geraden. Die vier roten Zusatzstreifen haben Höhe 1, sodass die gesamten oberen Rechtecke Höhen 2,3,4,5 erreichen; deren rechte obere Ecken berühren die Gerade. Rot allein ist die Differenz OberminusUntersumme, nicht eine weitere Untersumme."
+    },
+    {
+      "area": "sum-table",
+      "status": "pass",
+      "observation": "Rasterlabels n=4: Untersumme 10, Obersumme 14; Tabelle zeigt exakt 4|10|14, 8|11|13 und 16|11,5|12,5. Für n gleiche Teilintervalle der Breite 4/n ergibt unabhängiges Nachrechnen U_n=12−8/n und O_n=12+8/n. Alle drei Zeilen stimmen; n=8 und n=16 werden nicht fälschlich als zusätzliche Vier-Rechteckbilder dargestellt.",
+      "numericalChecks": [
+        {
+          "n": 4,
+          "width": 1,
+          "lower": 10,
+          "upper": 14
+        },
+        {
+          "n": 8,
+          "width": 0.5,
+          "lower": 11,
+          "upper": 13
+        },
+        {
+          "n": 16,
+          "width": 0.25,
+          "lower": 11.5,
+          "upper": 12.5
+        }
+      ]
+    },
+    {
+      "area": "integral-limits-and-common-limit",
+      "status": "pass",
+      "observation": "Im Originalraster steht lesbar ∫ von 0 bis 4 (t+1) dt = 12. Grenzen, Integrand und Differential sind unverstümmelt. [t²/2+t]₀⁴=12; U_n steigt gegen 12 und O_n fällt gegen 12. Pfeil und Grenzwertlabel passen zum gemeinsamen Grenzwert."
+    },
+    {
+      "area": "stock-change-versus-final-stock",
+      "status": "pass",
+      "observation": "Anfangsbestand 7 L, Zuwachs 12 L und Endbestand 19 L sind voneinander getrennt beschriftet. B(4)=7+12=19 ist korrekt und wird nicht mit dem Integralwert 12 gleichgesetzt. Die Schlussaussage trennt Änderung und Endbestand ausdrücklich."
+    },
+    {
+      "area": "dimensions-and-units",
+      "status": "pass",
+      "observation": "Die Kontextbox nennt t in min und f(t) in L/min; damit haben Rechteckprodukte und Integral die Einheit L. f(t)=t+1 ist dabei eine Zahlenwertregel in den deklarierten Einheiten. B(4)=19 wird durch das Endbestandslabel als Literwert bestimmt. Es werden keine Liter und Liter-pro-Minute addiert."
+    },
+    {
+      "area": "legibility-and-scope",
+      "status": "pass",
+      "observation": "In voller Originalauflösung sind Funktionsgleichung, Integrationsgrenzen, Tabelleneinträge, Dezimalkommas und Bestandslabels eindeutig lesbar. Das Bild zeigt das konkrete Verständnisbeispiel des aktuellen DE/EN-Ziels ohne zusätzliche mathematische Pflicht oder eine Behauptung tatsächlicher Lernendenleistung."
+    }
+  ],
+  "nonBlockingObservations": [
+    "Die Wassergefäße sind eine schematische Veranschaulichung und haben keine graduierte Volumenskala. Ihre gezeichneten Füllhöhen sind daher nicht als maßstäblicher Vergleich 7:12:19 zu lesen; die konkreten Zahlenlabels und die additive Aussage sind eindeutig.",
+    "Kein zusätzlicher Reparaturlauf wird aus diesem Rasterbefund verlangt."
+  ],
+  "blockingFindings": [],
+  "recommendation": "C2 als fachlich akzeptabler AI-Kandidat an den separat verantworteten Root-Import-/QA-Schritt übergeben. Diese Gegenprüfung ist keine menschliche Approval und führt keinen Import aus.",
+  "writeScope": "Only this separate C2 counterreview file; no active image, canonical, registry, QA ledger, previous candidate, request or review record changed.",
+  "diagnosticsNote": "The optional identify metadata command was unavailable. Original dimensions were established from the image tool's source-dimension notice and the subsequent original-detail display, not from that command."
+}
