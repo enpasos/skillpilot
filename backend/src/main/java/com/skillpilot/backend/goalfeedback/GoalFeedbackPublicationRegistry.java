@@ -126,6 +126,9 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
                 .build()
                 .encode()
                 .toUriString();
+        // The link binds the semantic publication, not one PDF rendering. Its
+        // durable manifest fingerprint is the immutable first-published
+        // provenance for that snapshot, not a claim about the latest PDF bytes.
         TrustedContext context = new TrustedContext(
                 page.goalId(), page.goalFingerprint(), page.pageFingerprint(),
                 book.id(), book.edition(), book.modelDigest(), book.locale(), book.title(),
@@ -294,12 +297,18 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
                         resultSet.getString("locale"), resultSet.getString("render_manifest_fingerprint"),
                         resultSet.getString("snapshot_json"), resultSet.getTimestamp("first_seen_at").toInstant()),
                 book.id(), book.edition(), book.modelDigest());
+        // A rebuild may change PDF bytes (and thus the render manifest) without
+        // changing the book model. Preserve the first-published evidence instead
+        // of overwriting append-only rows. Substituting only the stored manifest
+        // into the complete incoming canonical snapshot also proves that the
+        // stored manifest column agrees with its JSON and every other field is
+        // still exactly identical, including all page and text/link bindings.
         require(stored != null
                         && stored.modelSha256().equals(book.modelSha256())
                         && stored.title().equals(book.title())
                         && stored.locale().equals(book.locale())
-                        && stored.renderManifestSha256().equals(book.renderManifestSha256())
-                        && stored.snapshotJson().equals(snapshotJson),
+                        && SHA256.matcher(stored.renderManifestSha256()).matches()
+                        && stored.snapshotJson().equals(snapshotJson(book, stored.renderManifestSha256())),
                 "Durable goal-book snapshot conflicts with verified static publication: " + book.id());
         return new SnapshotIdentity(stored.id(), stored.firstSeenAt());
     }
@@ -401,6 +410,10 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
     }
 
     private String snapshotJson(PublishedBook book) {
+        return snapshotJson(book, book.renderManifestSha256());
+    }
+
+    private String snapshotJson(PublishedBook book, String renderManifestFingerprint) {
         ObjectNode root = objectMapper.createObjectNode();
         root.put("bookId", book.id());
         root.put("title", book.title());
@@ -408,7 +421,7 @@ public class GoalFeedbackPublicationRegistry implements InitializingBean {
         root.put("edition", book.edition());
         root.put("bookDigest", book.modelDigest());
         root.put("modelSha256", book.modelSha256());
-        root.put("renderManifestFingerprint", book.renderManifestSha256());
+        root.put("renderManifestFingerprint", renderManifestFingerprint);
         ArrayNode pages = root.putArray("pages");
         book.pagesByNumber().values().stream()
                 .sorted(Comparator.comparingInt(PublishedPage::pageNumber))

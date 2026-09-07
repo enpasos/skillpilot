@@ -121,17 +121,20 @@ bytegleich gebunden:
 
 Beide Bücher wurden aus den finalen lokalen Eingaben neu gebaut, mit dem
 gebundenen Chromium-Profil gerendert und gegen
-[`index.json`](https://github.com/enpasos/skillpilot/blob/main/app/public/lernzielbuch/index.json) geprüft:
+den Publikationsindex geprüft. Die folgenden Prüfsummen dokumentieren den
+damaligen Stand, nicht den jeweils aktuellen
+[`index.json`](https://skillpilot.com/lernzielbuch/index.json):
 
 | Fach | Seiten | Modelldigest | Modell-SHA256 | PDF-SHA256 | Manifest-SHA256 |
 | --- | ---: | --- | --- | --- | --- |
 | Mathematik | 786 | `sha256:79fccee18ed4f96812242a203d3ccbddc26a906cc893ea8ca952f9260212d973` | `86ce857020768d7aeea0b398fe22901d369dd9a7892248eef6fa08bb085a6402` | `391ae4335c111a01512e0fe59da8adf683ede89f28fa29c908bd886b174836af` | `5962252fdd88a5602be499d2fbd59cb210756b28d738dcc3b9d9164e9f84aa5f` |
 | Physik | 438 | `sha256:76e95dbfe5fc41b67011d88fcf98ad46e6dd757aa37e76cc1a97d482d1968499` | `c2c9c5b6503c098364d0050e647a9ef183b134bef89a8062f84dca2a872f662e` | `8d432804c4cc8973128830e1596c2b53927b01d48c93038a01633b41434088f4` | `87cd3868832c6d670198fb05b15dd7604ce606725cd3c7e9282b74049a4dac1d` |
 
-Direkte lokale Artefakte:
+Aktuelle Veröffentlichungen (werden seit 7. September 2026 beim Build erzeugt;
+keine unveränderlichen Kopien dieses historischen Checkpoints):
 
-- [`de-gym-mathematik-bundesweit.pdf`](https://github.com/enpasos/skillpilot/blob/main/app/public/lernzielbuch/de-gym-mathematik-bundesweit.pdf)
-- [`de-gym-physik-bundesweit.pdf`](https://github.com/enpasos/skillpilot/blob/main/app/public/lernzielbuch/de-gym-physik-bundesweit.pdf)
+- [`de-gym-mathematik-bundesweit.pdf`](https://skillpilot.com/lernzielbuch/de-gym-mathematik-bundesweit.pdf)
+- [`de-gym-physik-bundesweit.pdf`](https://skillpilot.com/lernzielbuch/de-gym-physik-bundesweit.pdf)
 
 Die öffentlichen Quellenrationale-Indizes sind aktuell gebunden:
 Mathematik 731 Einträge (`9023e95b26ee…`), Physik 400 Einträge

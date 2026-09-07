@@ -78,9 +78,16 @@ jobs:
           git_update = source.index('git stash\n')
           if preflight >= git_update:
               raise SystemExit('PDF tool preflight must run before the Git update')
-          for command in ('pdfinfo', 'pdftohtml'):
+          for command in ('pdfinfo', 'pdftohtml', 'fc-list', 'fc-match'):
               if command not in source:
                   raise SystemExit(f'Deployment PDF tool preflight omits {command}')
+          install = source.index('./node_modules/.bin/playwright install chromium')
+          browser_preflight = source.index('require_goal_book_browser\n')
+          application_build = source.index('npm run build\n')
+          if not install < browser_preflight < application_build:
+              raise SystemExit('Pinned Chromium install and launch check must precede the application build')
+          if 'npm ci\n' not in source:
+              raise SystemExit('Deployment must install the locked application dependencies')
           if 'SKILLPILOT_BACKEND_BUILD_DIR="${DEPLOY_BACKEND_BUILD_DIR}"' not in source:
               raise SystemExit('Deployment backend build is not isolated from the live bootRun build directory')
           PY
@@ -180,8 +187,62 @@ jobs:
       - name: Validate OpenAI V1 mTLS edge verifier
         run: ./scripts/verify_openai_v1_mtls_edge.sh --static
 
+  goal-book-publication:
+    name: Learning-goal book build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Install PDF and font tools
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig
+      - name: Install pinned Playwright Chromium
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Prepare generated curriculum runtime assets
+        run: npm run prepare:runtime-assets
+      - name: Reject tracked generated goal-book publications
+        run: |
+          if [ -n "$(git ls-files -- public/lernzielbuch)" ]; then
+            echo 'Learning-goal books are generated build artifacts and must not be committed.' >&2
+            git ls-files -- public/lernzielbuch
+            exit 1
+          fi
+      - name: Build and validate all four goal-book publications from source
+        run: npm run build:goal-books -- --force
+      - name: Verify generated publication bindings
+        run: npm run check:goal-book-publication
+      - name: Share verified goal-book publications with the application checks
+        uses: actions/upload-artifact@v6
+        with:
+          name: goal-book-publication-${{ github.sha }}
+          path: app/public/lernzielbuch/
+          include-hidden-files: true
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
+      - name: Share only the catalog and models required by backend tests
+        uses: actions/upload-artifact@v6
+        with:
+          name: goal-book-catalog-${{ github.sha }}
+          path: |
+            app/public/lernzielbuch/index.json
+            app/public/lernzielbuch/*.book-model.json
+          if-no-files-found: error
+          retention-days: 3
+
   frontend-ci:
     name: Application frontend CI
+    needs: goal-book-publication
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -198,18 +259,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install FFmpeg and PDF validation tools
-        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils
-      - name: Validate reproducible browser demo-video tool
-        working-directory: tools/demo-video
-        run: |
-          npm ci --ignore-scripts
-          npm run check
-          npm run demo -- validate --scenario scenarios/example.yaml
-          npx playwright install --with-deps chromium
-          DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
-            npm run demo -- record --scenario scenarios/example.yaml
-          DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
-            npm run demo -- verify-recording --scenario scenarios/example.yaml
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig
+      - name: Install pinned Playwright Chromium
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Restore same-run verified goal-book publications
+        uses: actions/download-artifact@v7
+        with:
+          name: goal-book-publication-${{ github.sha }}
+          path: app/public/lernzielbuch/
       - name: Test deterministic ZIP32 writer
         run: npm run test:deterministic-zip32
       - name: Test package landscape model parity
@@ -259,8 +316,6 @@ jobs:
         run: npm run test:session-setup
       - name: Test public FAQ copy
         run: npm run test:faq
-      - name: Install Playwright Chromium
-        run: npx playwright install --with-deps chromium
       - name: Test public landing page and overview
         run: |
           npm run test:public-landing
@@ -299,9 +354,24 @@ jobs:
         run: npm run check:frontend-shell-assets
       - name: Check AI transparency in the built application
         run: npm run check:ai-transparency-artifact
+      # The demo tool has its own Playwright version. Install its OS/font
+      # dependencies only after consuming the books, keeping the publication
+      # producer's pinned browser/font fingerprint valid for cache reuse.
+      - name: Validate reproducible browser demo-video tool
+        working-directory: tools/demo-video
+        run: |
+          npm ci --ignore-scripts
+          npm run check
+          npm run demo -- validate --scenario scenarios/example.yaml
+          npx playwright install --with-deps chromium
+          DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
+            npm run demo -- record --scenario scenarios/example.yaml
+          DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
+            npm run demo -- verify-recording --scenario scenarios/example.yaml
 
   graph-validation:
     name: Curriculum CI
+    needs: goal-book-publication
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -318,7 +388,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install PDF validation tools
-        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig
+      - name: Install pinned Playwright Chromium
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Restore same-run verified goal-book publications
+        uses: actions/download-artifact@v7
+        with:
+          name: goal-book-publication-${{ github.sha }}
+          path: app/public/lernzielbuch/
       - name: Validate Graph
         run: npm run validate:graph
       - name: Test exam Markdown conventions
@@ -330,7 +407,10 @@ jobs:
       - name: Test learner-facing composition labels
         run: npm run test:learner-facing-composition-labels
       - name: Validate Competency Wording
-        run: python -B ../scripts/validate_competency_wording.py
+        run: |
+          python -B ../scripts/validate_competency_wording.py
+          node --test ../scripts/check_curriculum_spelling.test.mjs
+          node ../scripts/check_curriculum_spelling.mjs
       - name: Validate View Filters
         run: npm run validate:view-filters
       - name: Check Source Landscape Registry
@@ -478,6 +558,7 @@ jobs:
         run: cd .. && python scripts/validate_bavaria_gymnasium_legacy_refs.py
 
   backend-ci:
+    needs: goal-book-publication
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -485,6 +566,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Restore same-run verified goal-book catalog and models
+        uses: actions/download-artifact@v7
+        with:
+          name: goal-book-catalog-${{ github.sha }}
+          path: app/public/lernzielbuch/
       - name: Use Java
         uses: actions/setup-java@v5
         with:

@@ -1,10 +1,10 @@
-# Lernzielvisualisierung: Fotöffekt und Einstein-Deutung
+# Lernzielvisualisierung: Fotoeffekt und Einstein-Deutung
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f`
-- Titel: Fotöffekt und Einstein-Deutung
-- Beschreibung: Die lernende Person kann den Fotöffekt beschreiben, die Einstein’sche Deutung erläutern und die Widersprüche zur klassischen Wellentheorie herausarbeiten.
+- Titel: Fotoeffekt und Einstein-Deutung
+- Beschreibung: Die lernende Person kann den Fotoeffekt beschreiben, die Einstein’sche Deutung erläutern und die Widersprüche zur klassischen Wellentheorie herausarbeiten.
 
 ## Generator
 
@@ -27,8 +27,8 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Fotöffekt und Einstein-Deutung
-Beschreibung: Die lernende Person kann den Fotöffekt beschreiben, die Einstein’sche Deutung erläutern und die Widersprüche zur klassischen Wellentheorie herausarbeiten.
+Titel: Fotoeffekt und Einstein-Deutung
+Beschreibung: Die lernende Person kann den Fotoeffekt beschreiben, die Einstein’sche Deutung erläutern und die Widersprüche zur klassischen Wellentheorie herausarbeiten.
 
 Zusatzanweisung:
 Pflichtinhalt:

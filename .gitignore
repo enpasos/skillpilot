@@ -35,6 +35,13 @@ build/
 backend/src/main/resources/static/
 spring-server/src/main/resources/static/
 
+# Learning-goal books: generated from the versioned curriculum and renderer.
+# Includes PDFs, BookModels, source indexes, render manifests and build receipts.
+/app/public/lernzielbuch/
+/app/public/.goal-book-build-*/
+/app/public/.goal-book-previous-*/
+/app/public/.lernzielbuch.build-lock/
+
 # Curriculum assets
 curricula/**/*.pdf
 curricula/**/*.html 

@@ -13,17 +13,25 @@ The normal production command is:
 ./deploy_skillpilot.sh
 ```
 
-The production host must provide the Poppler commands `pdfinfo` and
-`pdftohtml`, which are used by the fail-closed learning-goal-book publication
-check. On Rocky Linux, RHEL, or Fedora they are installed with:
+The production host must provide Poppler (`pdfinfo`, `pdftohtml`) and
+Fontconfig (`fc-list`, `fc-match`) for the learning-goal-book build and its
+fail-closed publication checks. On Rocky Linux, RHEL, or Fedora:
 
 ```bash
-sudo dnf install poppler-utils
+sudo dnf install poppler-utils fontconfig
 ```
 
-The deployment checks both commands before updating the Git checkout or
+The deployment checks these commands before updating the Git checkout or
 copying assets. A missing production dependency therefore cannot leave a new
 `index.html` next to stale hashed frontend assets.
+
+Learning-goal-book PDFs and their public indexes are generated, not committed.
+The deployment uses `npm ci`, installs the lockfile-matched Playwright Chromium,
+checks that it can launch, and generates/verifies all four books before Vite.
+Browser OS libraries must already be available; there is no silent fallback to
+a system browser. See [the book build and history-migration runbook](goal-book-build-and-history-cleanup.md),
+especially before using an old production checkout after the one-time Git
+history cleanup.
 
 Generated shell files such as `backend/src/main/resources/static/index.html`,
 `sw.js`, and `version.json` are deliberately not tracked. Vite creates them and
@@ -146,7 +154,14 @@ python3 scripts/deploy_story.py
 
 cd app
 echo "Installiere Abhaengigkeiten..."
-npm install
+npm ci
+
+echo "Installiere den zum Lockfile passenden Chromium..."
+if [ -z "${GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH:-}" ]; then
+  ./node_modules/.bin/playwright install chromium
+fi
+# The executable deploy.sh additionally checks Poppler/Fontconfig and launches
+# Chromium before the build; use that script as the authoritative procedure.
 
 echo "Baue Anwendung..."
 npm run build

@@ -59,16 +59,44 @@ require_goal_book_pdf_tools() {
   local missing_commands=()
   local command_name
 
-  for command_name in pdfinfo pdftohtml; do
+  for command_name in pdfinfo pdftohtml fc-list fc-match; do
     if ! command -v "${command_name}" >/dev/null 2>&1; then
       missing_commands+=("${command_name}")
     fi
   done
 
   if [ "${#missing_commands[@]}" -gt 0 ]; then
-    echo "Abbruch: PDF-Werkzeuge für die Lernzielbuch-Prüfung fehlen: ${missing_commands[*]}." >&2
-    echo "Installiere zuerst poppler-utils (Rocky/RHEL/Fedora: sudo dnf install poppler-utils)." >&2
+    echo "Abbruch: PDF-/Schriftwerkzeuge für den Lernzielbuch-Build fehlen: ${missing_commands[*]}." >&2
+    echo "Installiere zuerst poppler-utils und fontconfig (Rocky/RHEL/Fedora: sudo dnf install poppler-utils fontconfig)." >&2
     echo "Das Deployment wurde vor Git-Update, Asset-Kopie und Build beendet." >&2
+    exit 1
+  fi
+}
+
+require_goal_book_browser() {
+  # Use the browser belonging to the package-lock version of Playwright. The
+  # same optional executable override is supported by the goal-book builder.
+  # Launching it catches missing OS libraries before generating/publicizing any
+  # books; browser installation alone would not prove that it can run.
+  if ! node --input-type=module <<'NODE'
+import { chromium } from 'playwright';
+let browser;
+try {
+  browser = await chromium.launch({
+    headless: true,
+    executablePath: process.env.GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH || undefined,
+    args: ['--disable-background-networking', '--disable-dev-shm-usage', '--disable-gpu', '--no-first-run'],
+  });
+  console.log(`CHECK goal_book_chromium PASS ${browser.version()}`);
+} finally {
+  await browser?.close();
+}
+NODE
+  then
+    echo "Abbruch: Chromium für den Lernzielbuch-Build kann nicht gestartet werden." >&2
+    echo "Bitte die oben genannten Betriebssystem-Abhängigkeiten installieren." >&2
+    echo "Optional: GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH auf einen geprüften Chromium-Pfad setzen." >&2
+    echo "Der laufende Backend-Dienst wurde nicht neu gestartet." >&2
     exit 1
   fi
 }
@@ -296,7 +324,13 @@ python3 scripts/deploy_story.py
 cd app
 
 echo "Installiere Abhängigkeiten..."
-npm install
+npm ci
+
+if [ -z "${GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH:-}" ]; then
+  echo "Installiere die zum Lockfile passende Chromium-Version für die Lernzielbücher..."
+  ./node_modules/.bin/playwright install chromium
+fi
+require_goal_book_browser
 
 echo "Baue Anwendung..."
 npm run build

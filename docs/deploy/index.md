@@ -5,6 +5,7 @@ This page groups deployment-facing operational documentation.
 ## Deployment
 
 - [SkillPilot Deployment Process](deployment.md)
+- [Lernzielbücher: Build und Git-Historienbereinigung](goal-book-build-and-history-cleanup.md)
 - [ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover](openai-mcp-coach-v1.md)
 - [SkillPilot Coach v1: Release, Rollback und Stilllegung](openai-plugin-v1-release.md)
 - [SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre](openai-plugin-v1-review-freeze.md)

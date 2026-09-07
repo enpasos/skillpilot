@@ -428,6 +428,12 @@ When adding new goals (especially atomic ones), follow these conventions:
      `scripts/config/competency-wording-exceptions.json`. Source-extraction
      artifacts may retain the original wording without becoming operative
      competence formulations.
+   * Never convert `ae`, `oe`, or `ue` to umlauts indiscriminately in authored
+     or displayed text. Review every proposed word and field in its actual
+     context first; valid spellings such as `Fotoeffekt`, `photoelektrisch`,
+     `Koeffizient`, names, URLs, IDs, and formulas must remain intact. Record
+     corrections as explicit before/after cases and update only their affected
+     evidence bindings. A spelling fix is not a new substantive QA approval.
 
 2. **IDs reflect structure**
 
@@ -689,6 +695,14 @@ composition views. It is not a second curriculum source.
 Rules:
 
 * Build HTML and PDF from one shared, versioned BookModel.
+* Commit the curriculum, publication configuration, reviewed source bindings,
+  visualization sources and renderer, not the generated publications under
+  `app/public/lernzielbuch/`. `npm --prefix app run build:goal-books` generates
+  the four registered PDFs, BookModels, source indexes, render manifests and
+  publication index before application packaging. CI shares one verified
+  publication artifact across jobs; neither missing output nor a stale cache
+  may bypass the existing publication checks. See
+  `docs/deploy/goal-book-build-and-history-cleanup.md`.
 * Include each eligible `target` goal exactly once and on exactly one complete
   PDF page. Cluster and structure nodes provide chapter paths; memory,
   orientation, practice/assessment, exam, and runtime-support nodes require

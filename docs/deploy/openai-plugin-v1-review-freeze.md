@@ -3379,3 +3379,87 @@ OpenAI `1.0.0`, Claude `1.1.1`, Pakete, MCP/OAuth, Tools, Schemas,
 MCP-Apps-Ressourcen, Start-/Session-/Identitäts-/Locale-/Lernzustandsverträge,
 Berechtigungen, Speicherung, Sicherheit, Portalwerte, Reviewfälle, Fixtures
 und Reviewartefakte bleiben unverändert. Keine Portalaktion und kein Deployment.
+
+### 6.62 Lernzielbücher als Build-Artefakte und bereinigte Quellhistorie
+
+Am **7. September 2026** genehmigt der Product Owner ausdrücklich die
+Umstellung der generierten Lernzielbuch-Publikationen auf Build-Artefakte und
+die zugehörige Historienbereinigung einschließlich des eingefrorenen
+OpenAI-Review-Quellcommits. Diese Freigabe ist auf den Publikationsprozess und
+die sechs im [Build- und Migrationsprotokoll](goal-book-build-and-history-cleanup.md)
+genannten PDF-Pfade begrenzt. Sie hebt die übrigen Reviewgrenzen nicht auf.
+
+Quellen, Konfigurationen und Renderer bleiben versioniert. PDFs, BookModels,
+Quellenindizes, Render-Manifeste und Publikationsindex werden vor dem Build
+erzeugt und mit den unveränderten vollständigen Publikationsprüfungen geprüft.
+CI übergibt ein geprüftes Artefakt desselben Commits an seine Konsumenten;
+ein vollständiger, an Inhalte und Renderumgebung gebundener Cache darf nur
+nach erneuter Integritätsprüfung verwendet werden.
+
+Die bestehende Feedbackregistry darf bei byte-identischem Modell und identischen
+vollständigen öffentlichen Seiten ausschließlich einen anderen Render-Manifesthash
+akzeptieren. Der erste gespeicherte Snapshot samt ursprünglichem Manifesthash
+und Zeitstempel bleibt unverändert. Dieser Nachweis bezeichnet die erste
+Publikation, nicht die Bytes jeder späteren PDF-Neurenderung. Manipulierte
+Modellbytes, Seitenbindungen und inkonsistente gespeicherte Fingerprints bleiben
+Fehler. Acht zusätzliche Regressionstests und die unveränderten bisherigen
+Feedbacktests sichern diesen eng begrenzten Kompatibilitätsfall ab. Es gibt keine
+neue API, Datenbankmigration oder zentrale Speicherung von Klasseninformationen.
+
+Der ursprüngliche Einreichungsnachweis `submittedSourceCommit` bleibt
+`ff3a16b0d6e3c8a564176ab4743e777cddf3e79c`; sein bereinigtes Äquivalent ist
+`7fef7a0d9d4dbcd78101848b75774c8f6ee1335a`. Alle übrigen Dateien dieses Commits
+und alle 28 gebundenen Snapshot-/Plugin-/Videoartefakte sind byte-identisch
+geprüft. Die vollständige Commit-Zuordnung und die signierten Originalcommits
+bleiben extern gesichert. Der veröffentlichte Branch wird nur nach erneutem
+Remotevergleich mit exakter Lease ersetzt; `gh-pages` bleibt unverändert.
+
+Record, Runtime-Checker und Regression schreiben ausschließlich die bestehenden
+Supplemental-Bindungen für `AGENTS.md`, `app/package.json`, CI-Workflow,
+`GoalFeedbackPublicationRegistry.java` und diesen Nachtrag append-only fort.
+Frühere Ausnahmen, primäre Runtime- und Baumketten sowie die festen Buchtests
+bleiben unverändert. Die Ausnahme bindet die sechs erlaubten Historienpfade und
+die alte/neue Quellcommit-Zuordnung ausdrücklich; keine neuen Dateien werden
+in den Review-Freeze aufgenommen.
+
+OpenAI `1.0.0` und Claude `1.1.1`, Pakete, MCP/OAuth, Tools, Schemas,
+MCP-Apps-Ressourcen, Coach-Start, Sessions, Identitäten, Locale, Lernzustände,
+Berechtigungen, Portalwerte, Reviewfälle, Fixtures und Reviewartefakte bleiben
+unverändert. Keine Portalaktion oder Neueinreichung. Die Git-Veröffentlichung
+ist kein Produktionsdeployment; bestehende Produktionsklone benötigen zuvor
+die separat dokumentierte Historienmigration. Die Curriculum-QS bleibt pausiert.
+
+### 6.63 Inhaltlich geprüfte Umlaut-Einzelfälle statt pauschaler Ersetzung
+
+Am **7. September 2026** beanstandet der Product Owner ausdrücklich
+`Fotöffekt` im Physik-Lernziel `cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f` und
+verlangt eine dauerhafte Einzelfallprüfung aller vorgeschlagenen
+`ae`-/`oe`-/`ue`-Umstellungen. Richtig ist `Fotoeffekt`: `Foto` und `Effekt`
+behalten ihre getrennten Buchstaben. Die Prüfung findet daneben echte
+gleichartige Fehler in Reibungs- und Schwächungskoeffizienten.
+
+Die eng begrenzte Layer-A-Korrektur erfasst 27 einzeln gelesene und mit
+vollständigem Vorher-/Nachher-Text sowie Prüfsummen dokumentierte Felder
+in elf Physikknoten. IDs, Kanten, Zahlen, Formeln und Kompetenzumfang bleiben
+unverändert. Nur die betroffenen bestehenden Evidenzfingerprints und die
+Textbindung des Visualisierungsprompts werden konsistent fortgeschrieben;
+die Bildbytes, Bildfreigaben und historischen Reviewpakete bleiben unverändert.
+Der [Einzelfallbeleg](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/orthography/physics-fotoeffekt-2026-09-07.review.json)
+ist keine erneute fachliche Gesamtfreigabe. Die regulären Maturity-Gates gelten
+weiterhin unverändert.
+
+`AGENTS.md` schreibt die inhaltliche Prüfung jedes vorgeschlagenen Wortes und
+Textfeldes vor. Die neue CI-Prüfung meldet ausschließlich bereits geprüfte
+Fehlkonversionen, ohne Texte zu verändern; sie ist weder ein allgemeines
+Wörterbuch noch ein Ersatz für die Einzelfallprüfung. Regressionstests sichern
+korrekte Fachbegriffe, echte Umlaute, Namen und mehrdeutige Buchstabenfolgen
+gegen eine erneute pauschale Umstellung ab.
+
+Record, Runtime-Checker und Regression binden append-only die bereits
+geschützten Dateien `AGENTS.md`, `.github/workflows/ci.yml` und diesen Nachtrag.
+Keine primäre Runtime- oder Baumkette und keine frühere Ausnahme wird geändert;
+keine neue Datei wird eingefroren. OpenAI `1.0.0`, Claude `1.1.1`, ihre Pakete,
+MCP/OAuth, Tools, Schemas, MCP-Apps-Ressourcen, Start-/Session-/Identitäts-/
+Locale-/Lernzustandsverträge, Speicherung, Berechtigungen, Portalwerte,
+Reviewfälle, Fixtures und Reviewartefakte bleiben unverändert. Keine
+Neueinreichung und keine Wiederaufnahme der allgemeinen Curriculum-QS.

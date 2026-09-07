@@ -4042,6 +4042,85 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "6d99ca4a49c89659b0cd5d6cea6947048b9917ecbf9862ad037db5cd03f5cdc7"
         }
       ]
+    },
+    {
+      "id": "2026-09-07-goal-book-build-artifacts-and-history-cleanup",
+      "approvedAt": "2026-09-07",
+      "approvedBy": "product-owner",
+      "reason": "The product owner explicitly authorizes source-only goal-book publication, removal of six generated PDF paths from Git history, and amendment of the frozen OpenAI review source commit on 7 September 2026.",
+      "scope": "Generate all four registered goal-book publications from versioned sources before application packaging; preserve strict publication gates and share same-run verified artifacts in CI. Accept only render-manifest differences for byte-identical feedback BookModels and identical complete public snapshots, preserving immutable first-publication provenance and all historical link bindings. Append section 6.62, source-only authoring guidance and existing supplemental hashes. Record the exactly verified six-path history rewrite, not a changed review candidate: keep the original submittedSourceCommit attestation and all submitted snapshot, package, contract and video bytes. No OpenAI 1.0.0 or Claude 1.1.1 package, MCP/OAuth/tool/schema/MCP-Apps resource, coach launch/session/identity/locale/learning-state/security/privacy/storage contract, portal, review case or fixture change. No general curriculum QA resumption.",
+      "target": "goal-book-build-publication-and-exact-six-pdf-git-history-cleanup",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-source-history-readdressing-with-unchanged-submitted-artifacts-and-coach-contracts",
+      "supplementalOnly": true,
+      "sourceHistoryRewrite": {
+        "originalSubmittedSourceCommit": "ff3a16b0d6e3c8a564176ab4743e777cddf3e79c",
+        "rewrittenSubmittedSourceCommit": "7fef7a0d9d4dbcd78101848b75774c8f6ee1335a",
+        "commitMapSha256": "9e5f190c1f6973c8656c39967a7fadbfdbe9d5b467d19ba2cf48d6964b55d6e2",
+        "removedPaths": [
+          "app/public/lernzielbuch/de-gym-mathematik-bundesweit.pdf",
+          "app/public/lernzielbuch/de-gym-physik-bundesweit.pdf",
+          "app/public/lernzielbuch/de-gym-chemie-bundesweit.pdf",
+          "app/public/lernzielbuch/de-gym-biologie-bundesweit.pdf",
+          "app/public/lernzielbuch/de-gym-chemie-lk.pdf",
+          "app/public/lernzielbuch/de-gym-biologie-gk.pdf"
+        ]
+      },
+      "additionalFiles": [
+        {
+          "path": "AGENTS.md",
+          "priorAuthorizedSha256": "8a4b34bc7532d3989026ea18525a3a46565cd44b30d51b9ef6c236fdbf25ac27",
+          "authorizedSha256": "5707605f0b615518583a343cc3ab635512408100b0a4c49d687ad7c8eff22ded"
+        },
+        {
+          "path": "app/package.json",
+          "priorAuthorizedSha256": "40db0e21f1a6a3ef07b31d9dce9bb5bf1e1e8e383220d5c389caff7254fcd3f7",
+          "authorizedSha256": "3a8da0afa5791eacc4c398661eea59b99dd020c635efdc0892177c86ce9abd15"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "priorAuthorizedSha256": "bd348047e1a966bcb6684e8365af2ff61d620de3277cd3d99ed862943852a469",
+          "authorizedSha256": "af6b90c899b85375b0ca08dc28ecc83bb180a2204534e935a18b910fb0be8b95"
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/goalfeedback/GoalFeedbackPublicationRegistry.java",
+          "priorAuthorizedSha256": "2f5b6a124a6b4600b8e2876d09b898ed93a65a159f5bc0d881f17f3a94e01b11",
+          "authorizedSha256": "3914a2fe1318b0712d1942492398778a99bfb4936b1410efd99f8d2ea35f66c4"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "6d99ca4a49c89659b0cd5d6cea6947048b9917ecbf9862ad037db5cd03f5cdc7",
+          "authorizedSha256": "363eabe33987fa70491e0d93e73e7dea7d556154d109ce3c0c274949b7dec8ac"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-07-case-reviewed-curriculum-spelling",
+      "approvedAt": "2026-09-07",
+      "approvedBy": "product-owner",
+      "reason": "The product owner reports the incorrect Fotöffekt spelling and explicitly requires contextual review of every proposed ae/oe/ue conversion. Individually reviewed Fotoeffekt and coefficient corrections remain orthographic Layer A changes only.",
+      "scope": "Correct exactly 27 individually hash-bound text fields in 11 Physics goals and their affected current evidence/prompt bindings; preserve IDs, edges, formulas, numbers, images, previous QA decisions and historical review bundles. Require contextual per-word/per-field review in AGENTS.md and run a non-mutating known-collision regression guard in Curriculum CI. Append section 6.63 and bind only the existing AGENTS, CI and documentation supplemental paths. No broad text normalization, no new substantive QA approval and no weakening of maturity floors. Preserve OpenAI 1.0.0 and Claude 1.1.1 packages, MCP/OAuth/tools/schemas/MCP-Apps resources, coach launch/session/identity/locale/learning-state/privacy/storage/security contracts, review cases, fixtures, portal and submitted artifacts.",
+      "target": "reviewed-layer-a-orthography-and-non-mutating-ci-regression",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-orthographic-layer-a-correction-with-unchanged-submitted-contract",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "AGENTS.md",
+          "priorAuthorizedSha256": "5707605f0b615518583a343cc3ab635512408100b0a4c49d687ad7c8eff22ded",
+          "authorizedSha256": "73c7355ffdf70560768068400372920979da6732d5fe916827b32b35b846a3c5"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "priorAuthorizedSha256": "af6b90c899b85375b0ca08dc28ecc83bb180a2204534e935a18b910fb0be8b95",
+          "authorizedSha256": "af5eca8f65a4047051b50e23d0a482ff7708fc84555e02bf9286535bbcc20d7b"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "363eabe33987fa70491e0d93e73e7dea7d556154d109ce3c0c274949b7dec8ac",
+          "authorizedSha256": "ca4ce3b609b4249f3fa640c515d8bc84a1f44c2c653aa738487fdeb52f26af54"
+        }
+      ]
     }
   ]);
 });
@@ -4169,6 +4248,56 @@ test("series split count alignment changes only the preauthorized count and docu
     createHash("sha256").update(priorTest).digest("hex"),
     exception.additionalFiles[0].priorAuthorizedSha256,
   );
+});
+
+test("goal-book build and history exception preserves review artifacts and exact source-path scope", () => {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  const index = freeze.authorizedRuntimeExceptions.findIndex(
+    ({ id }) => id === "2026-09-07-goal-book-build-artifacts-and-history-cleanup",
+  );
+  assert.ok(index > 0);
+  const exception = freeze.authorizedRuntimeExceptions[index];
+  assert.equal(exception.supplementalOnly, true);
+  assert.equal(Object.hasOwn(exception, "protectedFile"), false);
+  assert.equal(Object.hasOwn(exception, "protectedTree"), false);
+  assert.equal(exception.sourceHistoryRewrite.originalSubmittedSourceCommit, freeze.submittedSourceCommit);
+  assert.equal(exception.sourceHistoryRewrite.rewrittenSubmittedSourceCommit,
+    "7fef7a0d9d4dbcd78101848b75774c8f6ee1335a");
+  assert.deepEqual(exception.sourceHistoryRewrite.removedPaths, [
+    "app/public/lernzielbuch/de-gym-mathematik-bundesweit.pdf",
+    "app/public/lernzielbuch/de-gym-physik-bundesweit.pdf",
+    "app/public/lernzielbuch/de-gym-chemie-bundesweit.pdf",
+    "app/public/lernzielbuch/de-gym-biologie-bundesweit.pdf",
+    "app/public/lernzielbuch/de-gym-chemie-lk.pdf",
+    "app/public/lernzielbuch/de-gym-biologie-gk.pdf",
+  ]);
+  assert.deepEqual(exception.additionalFiles.map(({ path }) => path), [
+    "AGENTS.md",
+    "app/package.json",
+    ".github/workflows/ci.yml",
+    "backend/src/main/java/com/skillpilot/backend/goalfeedback/GoalFeedbackPublicationRegistry.java",
+    "docs/deploy/openai-plugin-v1-review-freeze.md",
+  ]);
+  const before = freeze.authorizedRuntimeExceptions.slice(0, index);
+  const after = freeze.authorizedRuntimeExceptions.slice(0, index + 1);
+  const priorFiles = resolveAuthorizedSupplementalFileChains(before, freeze.authorizedCopyClarifications);
+  const currentFiles = resolveAuthorizedSupplementalFileChains(after, freeze.authorizedCopyClarifications);
+  assert.deepEqual([...currentFiles.keys()], [...priorFiles.keys()]);
+  for (const file of exception.additionalFiles) {
+    assert.equal(file.priorAuthorizedSha256, priorFiles.get(file.path)?.authorizedSha256);
+    assert.notEqual(file.authorizedSha256, file.priorAuthorizedSha256);
+  }
+  assert.deepEqual(
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, after),
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, before),
+  );
+  assert.deepEqual(
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, after),
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, before),
+  );
+  const publicationChecker = "app/scripts/checkGoalBookPublication.ts";
+  assert.equal(currentFiles.get(publicationChecker)?.authorizedSha256,
+    "621b94a5a13807f349269fa7e258c7780e1cecb75763956de966b64e32068d8e");
 });
 
 test("review exception chains preserve the latest protected runtime hashes", () => {
