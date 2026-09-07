@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-b040s-first-pass-b-codex-20260907T123544",
+  "campaignId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-b",
+  "roundId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:7517c4b9482493e3e42597ae331fd98eacf2f6632cf667f3d8ecf7629de461f1",
+  "bundleFingerprint": "sha256:2ce7d916790974a2d54d55d6640e26d769732fe00c8d841ebbf50b7e521bc859",
+  "bookDigest": "sha256:8b306cb15b57d9163859e7804c8b647481037002f5f69c9bdb1d5473eec41c88",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:1e7cd8cdd2e7d7d7d992e64bca6b5b27449215a5b4793d2f470ae225cf74de56",
+  "independenceGroupId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:b7f1cb54b98a6ae039b7261ff80b3a8663f3026e576f7fb8e61f01c1a494b1ea"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7517c4b9482493e3e42597ae331fd98eacf2f6632cf667f3d8ecf7629de461f1"
+    }
+  ],
+  "startedAt": "2026-09-07T12:35:44.000Z",
+  "completedAt": "2026-09-07T12:38:30.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:20392354a85ba690761209b1d2707be41862a6d3fc4b346c6f01e49efd584f12",
+  "toolchainVersion": "goal-description-review-v2-codex-local"
+}

@@ -8,50 +8,34 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Repository-native SVG / Playwright Chromium (reviewed Nano fallback)
 - Status: pilot
-- Quellbild: `d6b74b15-1cbc-512b-a160-0f40aecafe8c.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/d6b74b15-1cbc-512b-a160-0f40aecafe8c/d6b74b15-1cbc-512b-a160-0f40aecafe8c.jpg`
+- Quellbild: `d6b74b15-1cbc-512b-a160-0f40aecafe8c.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/d6b74b15-1cbc-512b-a160-0f40aecafe8c/d6b74b15-1cbc-512b-a160-0f40aecafe8c.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+# Native Konstruktion: ähnliche Dreiecke
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Dieser eng begrenzte Ersatz wurde nach drei tatsächlich betrachteten, fachlich
+falschen Nano-Banana-Pro-Versuchen erstellt. Die verbindlichen Prompts, Rasterhashes
+und Ablehnungsgründe stehen unter attempts/v1, attempts/v2 und attempts/v3.
+Die Freigabe betrifft nur dieses Lernziel; korrekte Nano-Bilder bleiben erhalten.
 
-Titel: Ähnlichkeitsbeziehungen ebener Figuren untersuchen
-Beschreibung: Die lernende Person kann Ähnlichkeitsbeziehungen einfacher ebener Figuren untersuchen und daraus passende Längen- oder Flächenbeziehungen ableiten.
+render-d6b74b15-fallback.mjs zeichnet zwei rechtwinklige, verschachtelte Dreiecke
+im selben Maßstab60px/cm. B=B′=(270,680), A=(270,440), C=(450,680),
+A′=(270,200), C′=(630,680). Die Seiten sind exakt3–4–5cm und6–8–10cm.
+Die kleinen Katheten sind halb so lang wie die großen, beide Hypotenusen parallel.
+Die kleine blaue Fläche beträgt6cm², die gesamte große blaue+orange24cm².
+Einzige Winkelmarkierung ist der tatsächliche gemeinsame rechte Winkel.
 
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Aehnlichkeitsbeziehungen ebener Figuren untersuchen.
-- Verwende genau zwei rechtwinklige Dreiecke:
-  Kleines Dreieck: Seiten 3 cm, 4 cm, 5 cm.
-  Grosses Dreieck: Seiten 6 cm, 8 cm, 10 cm.
-- Zeige die Verhaeltnisse:
-  6/3 = 2, 8/4 = 2, 10/5 = 2.
-  Streckfaktor k = 2.
-- Begruendung:
-  Alle entsprechenden Seiten stehen im gleichen Verhaeltnis.
-  Also sind die Dreiecke aehnlich, aber nicht kongruent.
-- Flaechenbeziehung:
-  A_gross = k^2 * A_klein = 4 * A_klein.
-- Zeige gleiche Winkel mit kleinen Winkelmarkierungen.
-
-Vermeiden:
-- Nicht behaupten, die Dreiecke seien kongruent.
-- Nicht den Flaechenfaktor als 2 angeben; bei k=2 ist der Flaechenfaktor 4.
-- Nicht ungleiche Seitenverhaeltnisse zeigen.
-- Nicht Seiten 6,8,10 als willkuerliche zweite Figur ohne Zuordnung darstellen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Der Renderer prüft alle sechs euklidischen Seitenlängen, beide Flächen, die
+Proportion3:4, den Längenfaktor2 und parallele Hypotenusen rechnerisch. Der im
+Repository fixierte Playwright Chromium rendert das SVG als1600×900PNG.
+Die tatsächliche PNG-Sichtprüfung und ihre Hashbindung sind separat dokumentiert.
+Das ist eine reproduzierbare Konstruktionsbeschreibung, kein Gemini-
+Rekonstruktionsprompt und keine behauptete Humanfreigabe.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-synthesis-current-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex /root/goal_book_ci_integration; separate current-page synthesis, no human authority",
+  "synthesizedAt": "2026-09-07T12:41:13.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907",
+    "batchManifestDigest": "sha256:4cab12e847600bf5d94563f63cceceb0f0826a1d3dedd48ea2641f5d54bd5fb8",
+    "configDigest": "sha256:482e8054897dcc5b444e8f4f130448c062c8f39915e2faf0297cb1232460ece2",
+    "bundleFingerprint": "sha256:55224e03e0e7977af1ddd02bb5648211178404aa31df0581fc43684e252f6dcf",
+    "bookDigest": "sha256:c166f84d9684a8b48d5b26cb0a970edc00627988532aa0d0a095d7a1e925faa0",
+    "reviewInputFingerprint": "sha256:d3704346b749d6b27a0aa680d2463b9bca9d837cbf631d5c6bffbfae3aa413e2",
+    "dualSummaryDigest": "sha256:cda3252ea3818ec31adae3a692877e9f2fc65457babd76e217d84d0711f5b375",
+    "canonicalLandscapeDigest": "sha256:752d76bf355cc945d5350c9b83a5e8bb8ac24a93c3363d6ab8d8bc87fc65a576"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-a",
+      "campaignDigest": "sha256:08dacabc9721fcc5f3fa1dca1cdd1573ecb37468d5ca0f9f2644131712da1868",
+      "roundId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-independent-a",
+      "reviewInputFingerprint": "sha256:d3704346b749d6b27a0aa680d2463b9bca9d837cbf631d5c6bffbfae3aa413e2",
+      "batchId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:ad826bc8c08f9ed66e1485a74b5c6d483c7dcdbfbdae5bd69e0c0befddd8f9ed",
+      "runId": "math-386-round-a-20260907T123718Z-history-audit",
+      "runManifestDigest": "sha256:d94aae8f0c5c2879d3e65f2ad3f26bf979bd7584dfb2d904d6300166d80bb2fc",
+      "resultsDigest": "sha256:1f5e72755e99f14360b9d05913c098e8acdef4c9aaaee71b6667288e4a0e79a8"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-b",
+      "campaignDigest": "sha256:8c9693801e441cf61962dcdafd5cb09af2f1d2d5d99017846ddb683afe223f49",
+      "roundId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-independent-b",
+      "reviewInputFingerprint": "sha256:d3704346b749d6b27a0aa680d2463b9bca9d837cbf631d5c6bffbfae3aa413e2",
+      "batchId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9eac2441ec260df6a3bff1ec469a90ba4c1a6ce0b97b70444c520f38921b5a51",
+      "runId": "math-b040s386-first-pass-b-codex-20260907T123601",
+      "runManifestDigest": "sha256:f4a0ba70109563a66947743587b1abc68ccbf775df293e5ac3c3d365ada578a8",
+      "resultsDigest": "sha256:8f5d5e9d4e198cd2a206475f32eb9705cbc167254223eb3cd56728e8f77accf7"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-synthesis-current-v1-decision-001",
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8dd8d5c2e0b887b355e9206465cd7f6a763687ac117627305b6c8839ffb02f43",
+      "pageFingerprint": "sha256:2f512dae35339c0e55809ce546a123c0ffba29db51874a9a1d24f2d3e7497b5b",
+      "goalReviewContextFingerprint": "sha256:1167e5b4d2617d7e90fcf407e20c69264980ce4cf9ec06750f364ad85979fb75",
+      "finalText": {
+        "titleDe": "Bestimmtes Integral als Grenzwert von Ober- und Untersummen sowie als Bestandsänderung deuten",
+        "titleEn": "Interpret the definite integral as the limit of upper and lower sums and as a change in quantity",
+        "descriptionDe": "Die lernende Person kann das bestimmte Integral als gemeinsamen Grenzwert von Ober- und Untersummen deuten und bei einer Änderungsrate als Bestandsänderung beschreiben, aus der zusammen mit dem Anfangsbestand der Endbestand entsteht.",
+        "descriptionEn": "The learner can interpret the definite integral as the common limit of upper and lower sums and, for a rate of change, describe it as the change in a quantity, which combines with the initial value to give the final value."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-386-round-a-20260907T123718Z-history-audit.record-001",
+          "recordDigest": "sha256:e35127376340de7145e2a9648270679534151c90e1d5880b1e7dce1abea276ea"
+        },
+        "second": {
+          "recordId": "math-b040s386-first-pass-b-codex-20260907T123601-386",
+          "recordDigest": "sha256:05eca0a71d883cd19fd04e922f142d9faca416eb0530102de2b5a259dc255b38"
+        }
+      },
+      "rationaleDe": "Beide getrennt erstellten aktuellen Blindrunden behalten den identischen bilingualen Kompetenztext bei. Die Beschreibung verbindet die obere/untere Einschließung und deren gemeinsamen Grenzwert mit der Bedeutung desselben Integrals als vorzeichenbehaftete Bestandsänderung; der Anfangsbestand bleibt ausdrücklich vom Integralwert getrennt. Die tatsächliche aktuelle Visualisierung e1103768… wurde auch für diese Synthese angesehen: Die vier Rechtecke haben Breite 1 und Höhen 1/2/3/4 beziehungsweise 2/3/4/5, also 10 und 14; die weitere Tabelle 11/13 und 11,5/12,5 passt zu f(t)=t+1 auf [0,4], Grenzwert 12 L und 7 L + 12 L = 19 L stimmen. Der historische Bild-HOLD wird nicht umgeschrieben; nur dieses neu gebundene Paket ist Gegenstand der Auflösung. Runde A wird als Nachweistext ausgewählt, weil sie Integrabilität, Verfeinerung, Rate×Zeit, Einheiten und vorzeichenbehafteten Transfer geschlossen beschreibt; Runde B bestätigt denselben Kern und ergänzt die Variation allein des Anfangsbestands. Beide Rezensenten haben bestehende Agentinstanzen verwendet und dies transparent dokumentiert; weder neue Threads, Modellvielfalt noch menschliche Freigabe werden behauptet. Keine Änderung am Curriculum, vorhandenen V2-Profil oder Bildstatus und keine automatische zentrale Fortschrittsbehauptung.",
+      "rationaleEn": "Both separately authored current blind rounds retain the identical bilingual competence text. The description connects upper/lower enclosure and the common limit with the meaning of that same integral as a signed change in quantity; the initial quantity remains explicitly distinct from the integral value. The actual current visualization e1103768… was also inspected for this synthesis: four rectangles of width 1 have heights 1/2/3/4 and 2/3/4/5, giving 10 and 14; the subsequent 11/13 and 11.5/12.5 table fits f(t)=t+1 on [0,4], the limit is 12 L, and 7 L + 12 L = 19 L is correct. The historical image HOLD is not rewritten; this newly bound package alone is resolved. Round A supplies the evidence wording because it coherently connects integrability, refinement, rate times time, units and signed transfer; Round B confirms that core and adds variation of the initial quantity alone. Both reviewers transparently used existing agent instances; no fresh threads, model diversity or human approval are claimed. This does not change the curriculum, existing V2 profile or image approval status, and does not itself assert central progress."
+    }
+  ],
+  "manifestFingerprint": "sha256:7532984baa8f1462c333e572c9bad1e419b7376e7d3785e87c3dcedb19c25a58"
+}

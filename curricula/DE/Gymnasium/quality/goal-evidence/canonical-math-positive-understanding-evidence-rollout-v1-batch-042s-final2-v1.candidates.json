@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b042s-final2-v1",
+  "reviewedAt": "2026-09-07T14:57:05Z",
+  "reviewer": "codex-goal-book-ci-integration-b042s-current-profile-author",
+  "goals": [
+    {
+      "goalId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "reason": "Aktueller Titel und bilinguale Beschreibung beanspruchen Grenzwertdefinition, Konvergenz, Integralberechnung und Betragsfläche. Die zwei individuell ausgearbeiteten Fälle prüfen eine innere Singularität samt divergentem Vergleich und eine unendliche Grenze mit Vorzeichenwechsel; keine bloße Wiederholung des positiven Randbeispiels im Bild. AI-Kandidat E1/G1, keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "improper-limit-value-area",
+            "essentialUnderstandingDe": "Ein uneigentliches Integral wird durch Grenzwerte gewöhnlicher Integrale definiert. Eine unendliche Grenze oder eine Singularität verlangt einen eigenen Grenzübergang; nur ein endlicher Grenzwert liefert Konvergenz und einen Integralwert. Geometrische Fläche bezieht sich auf den Betrag des Integranden und ist vom vorzeichenbehafteten Integral zu unterscheiden.",
+            "essentialUnderstandingEn": "An improper integral is defined by limits of ordinary integrals. An infinite bound or a singularity requires its own limiting process; only a finite limit establishes convergence and an integral value. Geometric area concerns the absolute value of the integrand and must be distinguished from the signed integral.",
+            "observablePerformanceDe": "Die lernende Person setzt für eine unendliche Grenze oder eine Singularität selbst eine endliche Hilfsgrenze, berechnet zunächst das gewöhnliche Integral und begründet anschließend Konvergenz oder Divergenz aus dem Grenzwert. Sie deutet den berechneten Wert beziehungsweise die fehlende Endlichkeit und trennt bei Vorzeichenwechseln Integral und geometrische Fläche.",
+            "observablePerformanceEn": "The learner independently introduces a finite auxiliary bound for an infinite bound or a singularity, first computes the ordinary integral, and then justifies convergence or divergence from the limit. They interpret the calculated value or lack of finiteness and distinguish signed integral from geometric area when the integrand changes sign."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "improper-limit-value-area"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "In einer neuen Aufgabe wechselt die problematische Stelle von einer inneren Singularität im endlichen Intervall zu einer unendlichen Integrationsgrenze; zusätzlich verändert sich die Vorzeichenstruktur. Die lernende Person legt die nötigen Grenzübergänge selbst fest und begründet, ob Integral und Fläche endlich sind und gegebenenfalls denselben Wert haben.",
+            "textEn": "In a fresh task, the problematic location changes from an interior singularity in a finite interval to an infinite integration bound, and the sign structure also changes. The learner independently establishes the required limiting processes and explains whether the integral and area are finite and, if so, whether they have the same value."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "interior-singularity-two-limits",
+            "taskDemandDe": "Untersuche ∫₀² 1/√|x−1| dx. Begründe, an welcher Stelle die gewöhnliche Integralrechnung nicht unmittelbar anwendbar ist, welche getrennten Grenzübergänge nötig sind und ob ein endlicher Wert entsteht. Vergleiche anschließend mit ∫₀² 1/|x−1| dx und erkläre, warum unbeschränkte Funktionswerte allein keine Konvergenzentscheidung liefern.",
+            "taskDemandEn": "Investigate ∫₀² 1/√|x−1| dx. Explain where ordinary integration cannot be applied directly, which separate limiting processes are required, and whether a finite value exists. Then compare with ∫₀² 1/|x−1| dx and explain why unbounded function values alone do not determine convergence.",
+            "expectedPerformanceDe": "Die Singularität liegt innen bei x=1. Links ergibt lim(a→1⁻)∫₀ᵃ(1−x)⁻¹ᐟ²dx=lim[2−2√(1−a)]=2, rechts lim(b→1⁺)∫ᵦ²(x−1)⁻¹ᐟ²dx=lim[2−2√(b−1)]=2. Beide Grenzwerte existieren getrennt; ihr Gesamtwert beträgt 4 und entspricht wegen Positivität der Fläche. Beim Betragsexponenten −1 wachsen die entsprechenden logarithmischen Integrale ohne Grenze; daher divergiert das Vergleichsintegral.",
+            "expectedPerformanceEn": "The singularity is interior at x=1. On the left, lim(a→1⁻)∫₀ᵃ(1−x)⁻¹ᐟ²dx=lim[2−2√(1−a)]=2; on the right, lim(b→1⁺)∫ᵦ²(x−1)⁻¹ᐟ²dx=lim[2−2√(b−1)]=2. Both limits exist separately; their sum is 4 and equals the area because the integrand is positive. For absolute-value exponent −1, the corresponding logarithmic integrals grow without bound, so the comparison integral diverges.",
+            "understandingFocusDe": "Eine innere Singularität verlangt die getrennte Prüfung beider Seiten; das Grenzverhalten der Integrale entscheidet, nicht bloß die unendliche Funktionshöhe.",
+            "understandingFocusEn": "An interior singularity requires separate checks on both sides; convergence is decided by the integral limits, not merely by infinite function height."
+          },
+          {
+            "id": "infinite-bound-signed-area",
+            "taskDemandDe": "Bestimme für f(x)=(x−2)/x³ auf [1,∞) sowohl das uneigentliche Integral als auch den geometrischen Flächeninhalt zwischen Graph und x-Achse. Begründe die verwendeten Grenzen, Konvergenz und den Zusammenhang beziehungsweise Unterschied der beiden Ergebnisse.",
+            "taskDemandEn": "For f(x)=(x−2)/x³ on [1,∞), determine both the improper integral and the geometric area between the graph and the x-axis. Justify the bounds used, convergence, and the relation or difference between the results.",
+            "expectedPerformanceDe": "f=x⁻²−2x⁻³ hat auf x>0 die Stammfunktion F=−1/x+1/x². Deshalb ist lim(R→∞)[F(R)−F(1)]=0. Auf [1,2] ist f nichtpositiv, danach positiv; F(1)=0, F(2)=−1/4 und F(R)→0. Der geometrische Flächeninhalt ist folglich −∫₁²f+lim(R→∞)∫₂ᴿf=1/4+1/4=1/2. Beide Teilflächen sind endlich; der Integralwert 0 entsteht durch Vorzeichenkompensation und bedeutet keine fehlende Fläche.",
+            "expectedPerformanceEn": "f=x⁻²−2x⁻³ has antiderivative F=−1/x+1/x² for x>0. Thus lim(R→∞)[F(R)−F(1)]=0. On [1,2], f is nonpositive and afterwards positive; F(1)=0, F(2)=−1/4, and F(R)→0. The geometric area is therefore −∫₁²f+lim(R→∞)∫₂ᴿf=1/4+1/4=1/2. Both component areas are finite; integral value 0 results from sign cancellation and does not mean that there is no area.",
+            "understandingFocusDe": "Der neue unendliche Integrationsbereich und Vorzeichenwechsel verlangen einen anderen Grenzübergang und die begründete Trennung von Integral und Betragsfläche.",
+            "understandingFocusEn": "The new infinite integration interval and sign change require a different limiting process and a justified distinction between integral and absolute-value area."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c",
+      "reason": "Aktuelle bilinguale Kompetenz umfasst Summe, Produkt und Verkettung mit Exponential- und Polynomanteilen sowie Sachuntersuchung. Zwei eigenständig ausgearbeitete Fälle verbinden Strukturvergleich und neue Verkettung mit realem Größenbezug und explizitem Gültigkeitsbereich. AI-Kandidat E1/G1, keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "combination-structure-analysis",
+            "essentialUnderstandingDe": "Bei Verknüpfungen von Exponentialfunktionen mit Polynomen bestimmt die Struktur als Summe, Produkt oder Verkettung, welche Anteile das Verhalten der Gesamtfunktion und ihre Ableitung prägen. Das Vorzeichen der Ableitung, Definitions- und Situationsbereich sowie die unterschiedliche Entwicklung der Teilfunktionen verbinden Term, Graph und Sachdeutung.",
+            "essentialUnderstandingEn": "For combinations of exponential functions and polynomials, the structure as a sum, product, or composition determines how the components shape the overall function and its derivative. The derivative sign, mathematical and contextual domains, and different behavior of the components connect expression, graph, and contextual interpretation.",
+            "observablePerformanceDe": "Die lernende Person erkennt die Verknüpfungsart an einem neuen Term, wählt begründet passende Ableitungsregeln und untersucht damit Monotonie, Extremstellen und das relevante Randverhalten. Sie erklärt den entstehenden Graphen aus den Komponenten und deutet die Resultate in einem gegebenen Sachmodell unter dessen Voraussetzungen.",
+            "observablePerformanceEn": "The learner identifies the combination type in a new expression, justifies the applicable differentiation rules, and uses them to investigate monotonicity, extrema, and relevant boundary behavior. They explain the resulting graph through its components and interpret the results within the assumptions of a supplied contextual model."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "combination-structure-analysis"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Eine unabhängig vorgelegte neue Aufgabe verändert eine Produktstruktur zu einer Summe oder Verkettung und gibt einen anderen sinnvollen Situationsbereich vor. Die lernende Person überträgt nicht ungeprüft die vorherige Kurvenform, sondern begründet Ableitung, Verlauf und die im neuen Modell zulässige Interpretation erneut.",
+            "textEn": "An independently presented fresh task changes a product structure to a sum or composition and supplies a different meaningful contextual domain. The learner does not copy the earlier curve shape but newly justifies the derivative, behavior, and interpretation permitted by the changed model."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sum-versus-product-structure",
+            "taskDemandDe": "Vergleiche auf t≥0 die Funktionen s(t)=t²+e⁻ᵗ und p(t)=t²e⁻ᵗ. Begründe aus ihrer Verknüpfungsstruktur die passenden Ableitungen und untersuche Monotonie, Extremstellen sowie das Verhalten für große t. Beschreibe damit die wesentlichen Unterschiede der beiden Graphen; für eine nicht elementar lösbare Extremstellenbedingung genügt eine begründete Eingrenzung.",
+            "taskDemandEn": "Compare s(t)=t²+e⁻ᵗ and p(t)=t²e⁻ᵗ for t≥0. Justify the applicable derivatives from their combination structures and investigate monotonicity, extrema, and behavior for large t. Use this to describe the essential differences between the graphs; a justified bracket is sufficient when an extremum condition is not elementarily solvable.",
+            "expectedPerformanceDe": "Für die Summe gilt s′=2t−e⁻ᵗ und s″=2+e⁻ᵗ>0. Aus s′(0)<0 und s′(0,35)<0<s′(0,36) folgt eine einzige Minimumstelle zwischen 0,35 und 0,36; s wächst danach unbegrenzt. Für das Produkt ergibt die Produktregel p′=e⁻ᵗt(2−t), also Wachstum auf (0,2), Abnahme danach und Maximum p(2)=4/e². Trotz wachsendem Polynomanteil gilt p(t)→0; Summe und Produkt haben daher grundverschiedenes langfristiges Verhalten. Die Randwerte s(0)=1 und p(0)=0 ordnen die Skizzen ein.",
+            "expectedPerformanceEn": "For the sum, s′=2t−e⁻ᵗ and s″=2+e⁻ᵗ>0. From s′(0)<0 and s′(0.35)<0<s′(0.36), there is exactly one minimum between 0.35 and 0.36; s subsequently grows without bound. For the product, the product rule gives p′=e⁻ᵗt(2−t), hence increase on (0,2), decrease afterwards, and maximum p(2)=4/e². Despite the growing polynomial factor, p(t)→0; sum and product therefore have fundamentally different long-term behavior. Initial values s(0)=1 and p(0)=0 locate the sketches.",
+            "understandingFocusDe": "Die Verknüpfungsart beeinflusst Ableitungsregeln und Gesamtverhalten; identische Komponenten begründen nicht dieselbe Kurvenform.",
+            "understandingFocusEn": "The combination type affects differentiation rules and overall behavior; identical components do not imply an identical curve shape."
+          },
+          {
+            "id": "composed-heating-power-pulse",
+            "taskDemandDe": "Die Heizleistung eines geregelten Versuchs wird im Messzeitraum 0≤t≤8 min durch H(t)=12exp(−(t−3)²/4) kW modelliert; die Zahlen im Exponenten sind für t in Minuten kalibriert. Untersuche Verknüpfungsstruktur, zeitlichen Verlauf und Zeitpunkt sowie Höhe der größten Heizleistung. Deute das Ergebnis im Kontext und beurteile, was das Modell über Zeiten außerhalb des Messzeitraums aussagt.",
+            "taskDemandEn": "The heating power in a controlled experiment is modeled over the measurement interval 0≤t≤8 min by H(t)=12exp(−(t−3)²/4) kW; the numbers in the exponent are calibrated for t measured in minutes. Investigate the combination structure, time behavior, and the time and value of greatest heating power. Interpret the result in context and assess what the model says about times outside the measurement interval.",
+            "expectedPerformanceDe": "Die Exponentialfunktion ist mit dem quadratischen inneren Term verknüpft. Mit der Kettenregel folgt H′(t)=−(t−3)H(t)/2 in kW/min. Da H>0, steigt die Heizleistung bis t=3 min, erreicht dort 12 kW und fällt anschließend. H(0)=12e⁻⁹ᐟ⁴≈1,265 kW und H(8)=12e⁻²⁵ᐟ⁴≈0,0232 kW passen zum Verlauf. Der Maximalwert beschreibt eine Leistung, nicht eine gespeicherte Energie. Die Formel ist mathematisch auch außerhalb [0,8] auswertbar, ihre reale Gültigkeit dort ist mit den gegebenen Angaben jedoch nicht belegt.",
+            "expectedPerformanceEn": "The exponential function is composed with a quadratic inner expression. The chain rule gives H′(t)=−(t−3)H(t)/2 in kW/min. Since H>0, heating power increases until t=3 min, reaches 12 kW there, and then decreases. H(0)=12e⁻⁹ᐟ⁴≈1.265 kW and H(8)=12e⁻²⁵ᐟ⁴≈0.0232 kW agree with this behavior. The maximum describes power, not stored energy. The formula can mathematically be evaluated outside [0,8], but its real-world validity there is not established by the supplied information.",
+            "understandingFocusDe": "Eine neue Verkettungsstruktur und ein begrenzter realer Situationsbereich verlangen neu begründete Ableitung, Größeninterpretation und Modellgrenzen.",
+            "understandingFocusEn": "A new composition structure and a bounded real-world domain require freshly justified differentiation, quantity interpretation, and model limits."
+          }
+        ]
+      }
+    }
+  ]
+}

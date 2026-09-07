@@ -1,0 +1,262 @@
+[
+  {
+    "goalId": "12f4b957-da3d-53d5-a924-45a634ab8d44",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Substitution kehrt die Kettenregel um: Variable, Differential und bei bestimmten Integralen auch die Grenzen müssen zusammen in die neue Variable überführt werden.",
+      "essentialUnderstandingEn": "Substitution reverses the chain rule: the variable, differential and, for definite integrals, the bounds must all be transformed consistently.",
+      "observablePerformanceDe": "Die lernende Person erkennt eine innere Funktion samt Ableitungsfaktor, begründet die Substitution und berechnet ein Integral mit ausdrücklich umgerechneten Grenzen.",
+      "observablePerformanceEn": "The learner identifies an inner function and its derivative factor, justifies the substitution and evaluates an integral with explicitly transformed bounds.",
+      "transferExpectationDe": "Bei einem ähnlichen Integral mit anderen Grenzen prüft sie deren Transformation erneut, statt die ursprünglichen Zahlen ohne Begründung zu übernehmen.",
+      "transferExpectationEn": "For a related integral with different bounds, the learner transforms them again rather than copying the original numbers without justification."
+    },
+    "rationale": "KEEP: DE/EN beschreiben eine kohärente Substitutionskompetenz. Das tatsächlich gelesene Bild zeigt u=x², du=2x dx und die expliziten Umrechnungen 0² und 1² für das Ergebnis sin(1). Dass die Zahlen der Grenzen in diesem Beispiel gleich bleiben, ist kein Rechenfehler; ein Transferfall soll gerade andere Grenzen verwenden. Keine belegte Text- oder Bildkorrektur."
+  },
+  {
+    "goalId": "5fe4218e-4fb0-5339-8764-c989befa244e",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Differentialgleichung modelliert den Zusammenhang zwischen Zustand und Änderungsrate; Anfangsbedingung und Umgebungs- oder Grenzwert haben verschiedene Aufgaben.",
+      "essentialUnderstandingEn": "A differential equation models the relation between state and rate of change; the initial condition and an environmental or limiting value play different roles.",
+      "observablePerformanceDe": "Die lernende Person formuliert für Abkühlung eine vom Temperaturunterschied abhängige Änderungsrate und begründet Vorzeichen, Parameter, Einheiten und Anfangswert.",
+      "observablePerformanceEn": "The learner formulates a cooling rate depending on the temperature difference and justifies its sign, parameters, units and initial value.",
+      "transferExpectationDe": "Bei gleicher Anfangstemperatur und geänderter Umgebung unterscheidet sie, welcher Teil der Differentialgleichung sich ändert und welcher Anfangswert erhalten bleibt.",
+      "transferExpectationEn": "With the same initial temperature but a different environment, the learner distinguishes the changed differential equation from the unchanged initial condition."
+    },
+    "rationale": "BLOCK nur im Bild: Die Formeln T′=−0,12(T−20) und T(0)=80 sind korrekt, doch ein großer Pfeil vom Feld Anfangsbedingung T(0)=80 endet am Umgebungsterm 20 in der Differentialgleichung. Das verwechselt gerade die fachlich zu trennenden Daten. Pfeil entfernen oder eindeutig an den Anfangspunkt (0,80) führen; die beidsprachige Modellierungskompetenz und richtigen Formelbestandteile bleiben."
+  },
+  {
+    "goalId": "963907f9-8d4c-5e1c-945d-10b7be07e1b9",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Richtungsfeld zeigt lokale Steigungen möglicher Lösungskurven, nicht deren Funktionswerte; eine Anfangsbedingung wählt eine dazu passende Kurve aus.",
+      "essentialUnderstandingEn": "A direction field shows local slopes of possible solution curves, not their values; an initial condition selects a compatible curve.",
+      "observablePerformanceDe": "Die lernende Person deutet positive, negative und horizontale Segmente, skizziert eine zu einem Anfangspunkt passende Lösung und erklärt ein Gleichgewicht.",
+      "observablePerformanceEn": "The learner interprets positive, negative and horizontal segments, sketches a solution through an initial point and explains an equilibrium.",
+      "transferExpectationDe": "Für einen Anfangswert auf der anderen Seite des Gleichgewichts begründet sie die geänderte Änderungsrichtung und das langfristige Verhalten.",
+      "transferExpectationEn": "For an initial value on the other side of the equilibrium, the learner explains the changed direction of motion and long-term behaviour."
+    },
+    "rationale": "KEEP: Die DE/EN-Fassung verbindet Erarbeiten und Interpretieren eines Richtungsfeldes sinnvoll. Im tatsächlich geöffneten Bild y′=0,5(4−y) sind Steigungsvorzeichen und Gleichgewicht y=4 konsistent, Lösungen nähern sich von beiden Seiten ohne Kreuzung. Die unnummerierte Zeitachse macht daraus keine quantitative Steigungsableseaufgabe; keine kosmetische Neuzeichnung."
+  },
+  {
+    "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine allgemeine Lösung beschreibt eine Funktionenfamilie; eine Anfangsbedingung legt die passende besondere Lösung fest, die durch Einsetzen überprüft werden kann.",
+      "essentialUnderstandingEn": "A general solution describes a family of functions; an initial condition determines the appropriate particular solution, which can be verified by substitution.",
+      "observablePerformanceDe": "Die lernende Person trennt in einem geeigneten Beispiel die Variablen, integriert, bestimmt die Konstante aus der Anfangsbedingung und prüft die Lösung.",
+      "observablePerformanceEn": "The learner separates variables in a suitable example, integrates, determines the constant from the initial condition and verifies the solution.",
+      "transferExpectationDe": "Bei verändertem Anfangswert unterscheidet sie positive Lösungen von einer gegebenenfalls beim Dividieren ausgeschlossenen Gleichgewichtslösung.",
+      "transferExpectationEn": "With a changed initial value, the learner distinguishes positive solutions from any equilibrium solution excluded by division."
+    },
+    "rationale": "KEEP: DE/EN benennen die elementare Lösungskompetenz hinreichend. Das Bild P′=0,3P mit P(0)=100 arbeitet ausdrücklich auf P>0; ln(P), C₁=e^C und 100e^(0,3t) sind dort korrekt. Die Nullfunktion fehlt nicht fehlerhaft in dieser ausdrücklich positiven Fallbetrachtung. Keine allgemeine Methodenliste oder pauschale Fallausweitung nötig."
+  },
+  {
+    "goalId": "58fda9b4-4336-5594-99ce-722c4a453372",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei einer harmonischen Schwingung ist die Beschleunigung der Auslenkung entgegengerichtet; eine Differentialgleichung zweiter Ordnung kann daraus periodische Lösungen beschreiben.",
+      "essentialUnderstandingEn": "In harmonic oscillation, acceleration opposes displacement; a second-order differential equation describes periodic solutions arising from this relation.",
+      "observablePerformanceDe": "Die lernende Person deutet y″=−4y qualitativ, überprüft eine Sinus- oder Kosinuslösung und erklärt Beschleunigungsrichtung und Periodendauer.",
+      "observablePerformanceEn": "The learner interprets y″=−4y qualitatively, verifies a sine or cosine solution and explains acceleration direction and period.",
+      "transferExpectationDe": "Für einen anderen positiven Rückstellfaktor begründet sie die Veränderung der Frequenz, ohne eine neue allgemeine Lösungsverfahrenspflicht einzuführen.",
+      "transferExpectationEn": "For a different positive restoring coefficient, the learner explains the change in frequency without requiring a new general solution method."
+    },
+    "rationale": "BLOCK im Bild: A cos(2t)+B sin(2t) und T=π stimmen. Bei negativer Auslenkung steht jedoch neben der richtigen Aufwärtsbeschleunigung zusätzlich y″=0. Außerdem zeigt das optionale (y,y′)-Phasenportrait eine gedrehte Ellipse mit falscher Umlaufrichtung; für y″=−4y gilt y′²+4y²=konstant und im dargestellten Achsensinn clockwise. Falsches Null-Label korrigieren und das nicht benötigte Phasenportrait entfernen oder korrekt darstellen. Zieltext unverändert."
+  },
+  {
+    "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei 1/xⁿ bestimmen der Ausschluss von x=0 und die Parität des Exponenten die Definitionsmenge, Vorzeichen, Symmetrie und das Verhalten an Polstelle und im Unendlichen.",
+      "essentialUnderstandingEn": "For 1/xⁿ, exclusion of zero and the exponent's parity determine the domain, signs, symmetry and behaviour near the pole and at infinity.",
+      "observablePerformanceDe": "Die lernende Person begründet die unterschiedlichen Graphenäste und Wertebereiche für 1/x und 1/x² und überprüft charakteristische Punkte durch Einsetzen.",
+      "observablePerformanceEn": "The learner explains the different branches and ranges of 1/x and 1/x² and checks characteristic points by substitution.",
+      "transferExpectationDe": "Sie überträgt die Paritätsargumente auf 1/x³ beziehungsweise 1/x⁴ und unterscheidet qualitative Eigenschaften von konkreten Funktionswerten.",
+      "transferExpectationEn": "The learner transfers parity arguments to 1/x³ or 1/x⁴ and distinguishes qualitative properties from numerical function values."
+    },
+    "rationale": "BLOCK des quantitativen rechten Bildgraphen, nicht der DE/EN-Kompetenz: Beide Koordinatensysteme haben gleichmäßig markierte Einheiten mit (1,1). Die rechte 1/x²-Kurve verläuft bei x=2 ungefähr bei 0,45 statt 0,25 und bei x=4 etwa bei 0,2 statt 0,0625; sie übernimmt nahezu den Betrag der linken 1/x-Kurve. Die richtigen Symmetrie-, Mengen- und Asymptotenbeschriftungen sollen erhalten bleiben, aber die Paritätsdarstellung darf nicht mit einer falschen Potenzkurve gekoppelt werden."
+  },
+  {
+    "goalId": "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Quadratwurzelfunktion ordnet jedem nichtnegativen x die nichtnegative Zahl zu, deren Quadrat x ist; dies erklärt Definitionsmenge, Wertebereich und charakteristische Punkte.",
+      "essentialUnderstandingEn": "The square-root function assigns to each nonnegative x the nonnegative number whose square is x; this explains its domain, range and characteristic points.",
+      "observablePerformanceDe": "Die lernende Person begründet die Einschränkung auf nichtnegative Werte und skizziert den Verlauf mithilfe passender Quadrat-Wurzel-Paare.",
+      "observablePerformanceEn": "The learner justifies the restriction to nonnegative values and sketches the graph using suitable square-root pairs.",
+      "transferExpectationDe": "Sie unterscheidet den Funktionswert √9=3 von den beiden Lösungen der Gleichung y²=9 und nutzt dies bei einer neuen Graphenfrage.",
+      "transferExpectationEn": "The learner distinguishes the function value √9=3 from the two solutions of y²=9 and uses this distinction in a new graph question."
+    },
+    "rationale": "KEEP: Beide Sprachfassungen meinen ausdrücklich die Quadratwurzelfunktion. Das gelesene Bild zeigt (0,0), (1,1), (4,2) und (9,3) korrekt auf einem steigenden, konkaven Verlauf. Eigenschaften und Skizze sind Bestandteile einer einheitlichen Funktionsvorstellung, keine unabhängige Kompetenzsammlung."
+  },
+  {
+    "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Darstellung als Potenz erlaubt es, Kehrwertpotenzen und die Quadratwurzel mit derselben Potenzregel abzuleiten; der zulässige Definitionsbereich bleibt dabei zu beachten.",
+      "essentialUnderstandingEn": "Power notation allows reciprocal powers and the square root to be differentiated with the same power rule while retaining the appropriate domain restrictions.",
+      "observablePerformanceDe": "Die lernende Person schreibt 1/xⁿ beziehungsweise √x als Potenz, leitet begründet ab und nennt Stellen, an denen die Ableitungsformel nicht gilt.",
+      "observablePerformanceEn": "The learner rewrites 1/xⁿ or √x as a power, differentiates with justification and identifies points where the derivative formula does not apply.",
+      "transferExpectationDe": "Sie überträgt das Vorgehen auf einen anderen negativen Exponenten und erklärt, warum beim Wurzelgraphen der Randpunkt x=0 gesondert zu behandeln ist.",
+      "transferExpectationEn": "The learner transfers the method to another negative exponent and explains why the square-root endpoint at zero needs separate treatment."
+    },
+    "rationale": "BLOCK einer fachlich falschen Bildbeschriftung: 1/x²=x^(−2) ist eine Potenzumschreibung, kein Basiswechsel. Genau das bezeichnet die Sprechblase jedoch als Basiswechsel, dann Potenzregel. Die übrigen Ableitungen und Einschränkungen im Bild stimmen; gezielt nur diesen Begriff berichtigen. Der DE/EN-Zieltext fordert richtige Fachsprache und ist unverändert geeignet."
+  },
+  {
+    "goalId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Änderung des Funktionsarguments verschiebt den Graphen horizontal mit dem entsprechenden umgekehrten Vorzeichen; eine Addition zum Funktionswert verschiebt vertikal.",
+      "essentialUnderstandingEn": "Changing the function argument shifts the graph horizontally with the corresponding reversed sign, while adding to the function value shifts it vertically.",
+      "observablePerformanceDe": "Die lernende Person ordnet f(x−c)+d einer Verschiebung zu und begründet die neue Lage eines bekannten Graphenpunkts.",
+      "observablePerformanceEn": "The learner identifies the shift represented by f(x−c)+d and justifies the new position of a known graph point.",
+      "transferExpectationDe": "Sie bestimmt aus einer vorgegebenen horizontalen und vertikalen Verschiebung den neuen Term, auch bei negativen Verschiebungswerten.",
+      "transferExpectationEn": "The learner constructs the new expression from a specified horizontal and vertical shift, including negative shift values."
+    },
+    "rationale": "KEEP: DE/EN verbinden Term und Graph durch eine klar überprüfbare Verschiebungskompetenz. Das tatsächlich geprüfte Bild x², (x−2)² und x²+3 zeigt passende Scheitel und Richtungen. Keine nachgewiesene Korrektur erforderlich."
+  },
+  {
+    "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Vertikales Skalieren verändert die y-Koordinate eines Graphenpunkts, horizontales Skalieren dessen x-Koordinate; der Faktor im Argument wirkt reziprok auf diese Koordinate.",
+      "essentialUnderstandingEn": "Vertical scaling changes a graph point's y-coordinate and horizontal scaling its x-coordinate; an argument multiplier acts reciprocally on that coordinate.",
+      "observablePerformanceDe": "Die lernende Person leitet die Punktabbildungen (x,y)→(x,ay) und (x,y)→(x/b,y) her und nutzt sie für passende Graphen und Terme.",
+      "observablePerformanceEn": "The learner derives the point mappings (x,y)→(x,ay) and (x,y)→(x/b,y) and uses them to match graphs and expressions.",
+      "transferExpectationDe": "Für eine nichtquadratische Grundfunktion erklärt sie den Unterschied zwischen a f(x) und f(bx), ohne deren beim Quadrat mögliche Termgleichheit zu verallgemeinern.",
+      "transferExpectationEn": "For a nonquadratic base function, the learner explains the difference between a f(x) and f(bx) without generalising equivalences particular to a square."
+    },
+    "rationale": "BLOCK im Bild: Ein als (1,2) beschrifteter roter Punkt liegt auf der y-Achse; ein weiterer (1,2)-Punkt liegt auf derselben Höhe wie der blaue (2,4)-Punkt. Grüne (2,2)-Beschriftungen liegen auf unterschiedlichen Höhen. Rechts ist (1,4) am negativen Ast eingezeichnet. Diese widersprüchlichen Koordinaten unterlaufen die zentrale Punktabbildung. Die DE/EN-Beschreibung bleibt; beide Diagramme müssen koordinatenkonsistent werden."
+  },
+  {
+    "goalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Spiegelungen an x-Achse, y-Achse und Ursprung ändern unterschiedliche Koordinatenvorzeichen und entsprechen −f(x), f(−x) beziehungsweise −f(−x).",
+      "essentialUnderstandingEn": "Reflections in the x-axis, y-axis and origin change different coordinate signs and correspond to −f(x), f(−x) and −f(−x), respectively.",
+      "observablePerformanceDe": "Die lernende Person begründet aus einer Punktabbildung den Spiegelungsterm und kontrolliert markante Punkte sowie den gesamten Graphenverlauf.",
+      "observablePerformanceEn": "The learner derives the reflection expression from a point mapping and checks characteristic points and the full graph shape.",
+      "transferExpectationDe": "Bei einer asymmetrischen Grundfunktion unterscheidet sie Achsen- und Ursprungsspiegelung auch dann, wenn einzelne Punkte oder Funktionswerte gleich erscheinen.",
+      "transferExpectationEn": "For an asymmetric base function, the learner distinguishes axis and origin reflections even when some points or values happen to coincide."
+    },
+    "rationale": "BLOCK des Bildes: Die Punktformeln sind richtig, die Ursprungsspiegelung passt jedoch nicht zum Ausgangsgraphen. Dessen beide äußeren Äste liegen unten; bei −f(−x) müssen beide oben liegen und der einzelne Hochpunkt zum Tiefpunkt links werden. Das Bild zeigt stattdessen einen fallenden rechten Ast und einen zusätzlichen rechten Hochpunkt. Auch die gemischten farbigen/grauen Äste in den Teilbildern sind nicht als konsistente Vollgraphen lesbar. Zieltext behalten, Spiegelungsgraphen fachlich berichtigen."
+  },
+  {
+    "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "In a f(b(x−c))+d wirken horizontale und vertikale Skalierungen und Verschiebungen zusammen; ihre Reihenfolge ist nicht beliebig vertauschbar.",
+      "essentialUnderstandingEn": "In a f(b(x−c))+d, horizontal and vertical scalings and shifts act together; their order cannot be interchanged arbitrarily.",
+      "observablePerformanceDe": "Die lernende Person bestimmt die neue Lage eines Punkts durch (x,y)→(x/b+c,ay+d) und erklärt daraus die Wirkung der Parameter ohne konkrete Formel für f.",
+      "observablePerformanceEn": "The learner determines a point's new position through (x,y)→(x/b+c,ay+d) and uses this to explain parameter effects without an explicit formula for f.",
+      "transferExpectationDe": "Sie prüft eine behauptete Transformationsfolge an einem bekannten Punkt und korrigiert eine vertauschte horizontale Streckung und Verschiebung.",
+      "transferExpectationEn": "The learner checks a proposed transformation sequence using a known point and corrects a swapped horizontal scaling and shift."
+    },
+    "rationale": "BLOCK im Bildablauf für −2f(0,5(x−3))+1: Die Pfeilkette verschiebt zuerst um 3 nach rechts und streckt danach horizontal um 2. Eine Streckung bezüglich der üblichen y-Achse verdoppelt dann auch die Verschiebung auf 6. Richtig ist erst die horizontale Streckung, dann die Verschiebung um 3, oder eine ausdrücklich anders definierte Streckachse. Die einzelnen Parameterfelder stimmen; nur die falsche Reihenfolge gezielt korrigieren, DE/EN-Text behalten."
+  },
+  {
+    "goalId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Achsensymmetrie von f um x=c entspricht gleichen Werten bei c±h; für die Ableitung folgen dort entgegengesetzte Werte und Punktsymmetrie um (c,0).",
+      "essentialUnderstandingEn": "Symmetry of f about x=c means equal values at c±h; its derivative has opposite values there and point symmetry about (c,0).",
+      "observablePerformanceDe": "Die lernende Person begründet die Symmetrie einer verschobenen Funktion und ihrer Ableitung mit Paaren gleicher Abstände oder passenden Termidentitäten.",
+      "observablePerformanceEn": "The learner justifies symmetry of a shifted function and its derivative using equal-distance pairs or suitable identities.",
+      "transferExpectationDe": "Bei einem anderen Symmetriezentrum prüft sie die Aussagen mit c±h statt unverändert die Kriterien f(−x)=±f(x) anzuwenden.",
+      "transferExpectationEn": "For a different symmetry centre, the learner checks statements using c±h rather than applying f(−x)=±f(x) unchanged."
+    },
+    "rationale": "KEEP: DE/EN sind parallel; das Bild f=(x−2)²+1 und f′=2(x−2) zeigt die fachlich relevanten Paare (1,2)/(3,2) und (1,−2)/(3,2), das Zentrum und die Termidentitäten konsistent. Eine schematische Achsenverkürzung vor dem betrachteten Bereich verändert diese lokalen Gleichabstandsargumente nicht. Keine unbegründete Textausweitung."
+  },
+  {
+    "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Umkehrfunktion ist nur eindeutig, wenn jedem Funktionswert genau ein zulässiger Ausgangswert zugeordnet ist; beim Umkehren werden Definitions- und Wertebereich vertauscht.",
+      "essentialUnderstandingEn": "An inverse function is unique only when each output corresponds to one admissible input; inversion exchanges domain and range.",
+      "observablePerformanceDe": "Die lernende Person prüft die Umkehrbarkeit, bestimmt eine Umkehrfunktion und begründet bei einer Parabel die nötige Einschränkung des Definitionsbereichs.",
+      "observablePerformanceEn": "The learner checks invertibility, determines an inverse and justifies the required domain restriction for a parabola.",
+      "transferExpectationDe": "Für den anderen monotonen Parabelast erklärt sie, warum eine andere Wurzelvorzeichenwahl zur Umkehrung gehört.",
+      "transferExpectationEn": "For the other monotonic parabola branch, the learner explains why inversion requires the other square-root sign."
+    },
+    "rationale": "BLOCK des unteren linken Bildgraphen: f(x)=2x+3 und f⁻¹(x)=(x−3)/2 sowie f⁻¹(5)=1 sind korrekt beschriftet. Der markierte Inversenpunkt liegt jedoch bei der ausdrücklich mit 2 beschrifteten y-Höhe. Die Gerade schneidet die x-Achse zudem ungefähr bei 2 statt 3. Den falschen Graphen korrigieren; die guten Bereichs- und Parabelastbeispiele sowie DE/EN-Kompetenz bleiben."
+  },
+  {
+    "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Graph einer Umkehrfunktion entsteht durch Vertauschen der Koordinaten, also Spiegelung an y=x; gemeinsame Punkte auf dieser Geraden bleiben fest.",
+      "essentialUnderstandingEn": "An inverse graph is obtained by exchanging coordinates, equivalent to reflection in y=x; shared points on that line remain fixed.",
+      "observablePerformanceDe": "Die lernende Person ordnet einem Punkt (a,b) den Inversenpunkt (b,a) zu und erläutert die daraus entstehende Spiegelbeziehung zweier Graphen.",
+      "observablePerformanceEn": "The learner pairs a point (a,b) with the inverse point (b,a) and explains the resulting reflection relation between the graphs.",
+      "transferExpectationDe": "Sie erkennt in einem neuen Graphenpaar einen behaupteten Fixpunkt, der nicht auf beiden Graphen liegt, als Widerspruch zur Umkehrbeziehung.",
+      "transferExpectationEn": "In a new graph pair, the learner recognises that a claimed fixed point missing from either graph contradicts the inverse relation."
+    },
+    "rationale": "BLOCK des Bildes trotz treffender kurzer DE/EN-Beschreibung: Q(1,1) wird als unveränderter Punkt markiert, liegt aber nicht auf dem blauen Ausgangsgraphen und ist kein gemeinsamer Schnittpunkt der gezeichneten Kurven. Die beiden Kurven sind zudem nicht konsistent an y=x gespiegelt. Richtige Einzelbeschriftungen P(2,5) und P′(5,2) reichen dafür nicht. Geometrisch korrektes Graphenpaar erforderlich."
+  },
+  {
+    "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der natürliche Logarithmus kehrt die Exponentialfunktion um: ln(eˣ)=x und e^(ln x)=x für x>0 verbinden inverse Zuordnung und Graphenspiegelung.",
+      "essentialUnderstandingEn": "The natural logarithm inverts the exponential: ln(eˣ)=x and e^(ln x)=x for x>0 connect inverse mappings with reflected graphs.",
+      "observablePerformanceDe": "Die lernende Person erläutert die beiden Umkehridentitäten samt Definitionsbedingung und ordnet charakteristische Exponentialpunkte den Logarithmuspunkten zu.",
+      "observablePerformanceEn": "The learner explains both inverse identities and their domain condition and pairs characteristic exponential points with logarithmic points.",
+      "transferExpectationDe": "Bei einer Exponentialgleichung begründet sie die Verwendung von ln als Umkehrung und überprüft, ob ein verlangter Logarithmuswert überhaupt definiert ist.",
+      "transferExpectationEn": "In an exponential equation, the learner justifies using ln as the inverse and checks whether a proposed logarithm is defined."
+    },
+    "rationale": "KEEP: Die DE/EN-Fassung benennt den zentralen Umkehrzusammenhang präzise und überprüfbar. Im aktuellen Eingang kein eigener Bildlink; keine Bildprüfung behauptet und kein Bildzwang eingeführt. Das positive Profil ergänzt konkrete Nachweis- und Transferhandlungen, nicht eine unnötige Änderung am Zieltext."
+  },
+  {
+    "goalId": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Definitionsmenge, Wertebereich, Nullstelle, Monotonie und Randverhalten von ln lassen sich gemeinsam aus der Umkehrung der Exponentialfunktion erklären.",
+      "essentialUnderstandingEn": "The domain, range, zero, monotonicity and limiting behaviour of ln can all be explained through inversion of the exponential function.",
+      "observablePerformanceDe": "Die lernende Person begründet x>0, den Wertebereich R, die Nullstelle 1 und das streng steigende Verhalten, statt Eigenschaften nur aufzuzählen.",
+      "observablePerformanceEn": "The learner justifies x>0, range R, the zero at 1 and strict increase rather than merely listing properties.",
+      "transferExpectationDe": "Sie erklärt an Werten nahe 0 und sehr großen positiven Werten, weshalb die Logarithmusfunktion unbeschränkt, aber nur auf positiven Argumenten definiert ist.",
+      "transferExpectationEn": "Using values near zero and very large positive values, the learner explains why the logarithm is unbounded but defined only for positive arguments."
+    },
+    "rationale": "KEEP: Eine zusammenhängende Eigenschaftenuntersuchung derselben Funktion aus dem Umkehrprinzip ist semantisch nicht wegen mehrerer benannter Eigenschaften zu splitten. DE/EN stimmen fachlich überein; kein eigenes Bild im Eingang. Das Verständnisprofil fordert begründete Beziehungen und nicht Listenreproduktion."
+  },
+  {
+    "goalId": "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Transformationen eines Logarithmusgraphen müssen die Positivität des Arguments erhalten und verschieben oder skalieren dadurch auch Definitionsbereich und senkrechte Asymptote.",
+      "essentialUnderstandingEn": "Transforming a logarithmic graph must retain a positive argument and consequently changes its domain and vertical asymptote through shifts or scalings.",
+      "observablePerformanceDe": "Die lernende Person deutet Parameter eines transformierten Logarithmusterms, bestimmt den Definitionsbereich und begründet die neue Lage charakteristischer Punkte.",
+      "observablePerformanceEn": "The learner interprets parameters in a transformed logarithm, determines its domain and justifies the new positions of characteristic points.",
+      "transferExpectationDe": "Bei einer kombinierten horizontalen Verschiebung und Streckung bestimmt sie die neue Asymptote und passende Punkte erneut, statt nur die Kurvenform unverändert zu verschieben.",
+      "transferExpectationEn": "For a combined horizontal shift and scaling, the learner determines the new asymptote and suitable points again rather than merely shifting the unchanged curve."
+    },
+    "rationale": "KEEP: Beide Sprachfassungen benennen passende einfache Graphentransformationen; der verlinkte Vorgänger zu Logarithmuseigenschaften trägt insbesondere Definitionsbereich und Asymptote. Kein Bild verlinkt. Eine mögliche algebraische Umdeutung ln(bx)=ln(x)+ln(b) für b>0 widerlegt die angegebene geometrische Transformation nicht und rechtfertigt keine unnötige Textkorrektur."
+  },
+  {
+    "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Auf positiven Intervallen ist ln eine Stammfunktion von 1/x; das folgt aus der Ableitung und verbindet die Sonderform des Integranden mit dem bestimmten Integral.",
+      "essentialUnderstandingEn": "On positive intervals, ln is an antiderivative of 1/x; this follows from differentiation and connects the special integrand with definite integration.",
+      "observablePerformanceDe": "Die lernende Person begründet die Stammfunktion durch Ableiten und berechnet ein bestimmtes Integral von 1/x mit zulässigen positiven Grenzen.",
+      "observablePerformanceEn": "The learner justifies the antiderivative by differentiation and evaluates a definite integral of 1/x with admissible positive bounds.",
+      "transferExpectationDe": "Sie unterscheidet den Sonderfall 1/x von 1/x² und prüft eine Integralbehauptung anhand der Ableitung statt das Logarithmusergebnis zu verallgemeinern.",
+      "transferExpectationEn": "The learner distinguishes 1/x from 1/x² and checks an integral claim by differentiation instead of generalising the logarithmic result."
+    },
+    "rationale": "BLOCK nur der quantitativen Flächengrafik: Die positiven Definitionsbedingungen, Stammfunktionen und Rechnung ∫₁ᵉ1/x dx=1 sind richtig. Im beschrifteten Koordinatensystem ist aber die Strecke von 1 bis e etwa viermal statt 1,718-mal so lang wie von 0 bis 1; die Höhe 1/e liegt etwa bei 0,27 statt 0,368 der Höhe 1. Ohne Achsenbruch oder Schemavermerk vermittelt dies eine falsche Skalierung der gezeigten Fläche. Grafik korrekt skalieren, nicht die guten Formeln oder DE/EN-Beschreibung umschreiben. Keine pauschale Pflicht zu negativen Intervallen eingeführt."
+  },
+  {
+    "goalId": "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Parameter beschreiben eine Funktionenfamilie; Bedingungen an Punkte oder Grapheneigenschaften werden zu Gleichungen, deren gemeinsame Erfüllung die Parameterwahl begründet.",
+      "essentialUnderstandingEn": "Parameters describe a function family; point or graph conditions become equations whose joint satisfaction justifies the chosen parameter values.",
+      "observablePerformanceDe": "Die lernende Person übersetzt Scheitel- und Punktbedingungen in Gleichungen, bestimmt die Parameter und kontrolliert alle ursprünglichen Bedingungen am Ergebnis.",
+      "observablePerformanceEn": "The learner translates vertex and point conditions into equations, determines the parameters and checks all original conditions against the result.",
+      "transferExpectationDe": "Bei veränderten oder unzureichenden Bedingungen erklärt sie, ob andere oder nicht eindeutig bestimmte Parameter möglich sind, statt eine Zahl zu erzwingen.",
+      "transferExpectationEn": "With changed or insufficient conditions, the learner explains whether different or nonunique parameters are possible rather than forcing a number."
+    },
+    "rationale": "KEEP: DE/EN fassen die inverse Parameterbestimmung mit Begründung als eine Kompetenz. Die Bildrechnung für a(x−2)²+b, S(2,1), P(4,9) ergibt korrekt b=1 und a=2; beide Bedingungen wurden nachgerechnet. Das linke schematische Familienbild variiert beide Parameter, es behauptet keinen für sämtliche Kurven festgehaltenen b-Wert. Deshalb ist der nach unten geöffnete Ast mit Scheitelhöhe 0 kein belegter Widerspruch. Keine kosmetische Neuzeichnung."
+  }
+]

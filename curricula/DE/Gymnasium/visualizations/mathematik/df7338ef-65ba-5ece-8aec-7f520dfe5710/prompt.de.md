@@ -8,43 +8,37 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `df7338ef-65ba-5ece-8aec-7f520dfe5710.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/df7338ef-65ba-5ece-8aec-7f520dfe5710/df7338ef-65ba-5ece-8aec-7f520dfe5710.jpg`
+- Provider: Repository-native SVG / Playwright Chromium (reviewed Nano fallback)
+- Status: ai-reviewed
+- Quellbild: `df7338ef-65ba-5ece-8aec-7f520dfe5710.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/df7338ef-65ba-5ece-8aec-7f520dfe5710/df7338ef-65ba-5ece-8aec-7f520dfe5710.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+# Deterministische mathematische Konstruktion – keine Nano-Generierung
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Dies dokumentiert die tatsächlich umgesetzte native Ersatzkonstruktion.
+Die beiden realen Nano-Versuche, ihre Prompts und Ablehnungen bleiben im Archiv.
+Es werden keine Nano-Pixel nachbearbeitet oder als erfolgreiche Nano-Korrektur ausgegeben.
 
-Titel: Logistisches Wachstum untersuchen
-Beschreibung: Die lernende Person kann logistisches Wachstum anhand geeigneter Funktionen beschreiben, modellieren und die Unterschiede zu begrenztem bzw. einfachem exponentiellem Wachstum (Sättigung/Tragfähigkeit) herausarbeiten.
+render-df7338ef-fallback.mjs zeichnet N(t)=1000/(1+9 exp(−0,6t)) für
+0≤t≤10 aus1001 berechneten Punkten auf linearen Achsen:
+px=110+74t, py=575−0,33N. Startwert100, Tragfähigkeit1000 und der
+Wendepunkt bei N=500, t=ln(9)/0,6≈3,662 müssen zu diesen Achsen passen.
+Die Differentialgleichung N′=0,6N(1−N/1000) erklärt das Maximum des
+absoluten Zuwachses150 je Modellzeiteinheit bei N=500.
+E(t)=100exp(0,6t) und B(t)=1000−900exp(−0,6t) werden textlich
+gegenübergestellt: E wird steiler und ist unbeschränkt, B wird flacher und
+hat keinen Wendepunkt. Die S-Form gehört zum dargestellten logistischen
+Anfangswert unter K/2, nicht beliebigen Anfangswerten.
+Der im Repository fixierte Playwright Chromium rendert das SVG als1600×900-PNG.
 
-Zusatzanweisung:
-Pflichtinhalt:
-- Überarbeite das Referenzbild und bewahre S-Kurve, Tragfähigkeit 1000, Wendepunkt bei N=500 und Vergleichsgraphen.
-- Verwende überall das Dezimalkomma `0,6`, insbesondere in `N(t)=1000/(1+9·exp(−0,6t))`, `t=ln(9)/0,6` und `N'=0,6·N·(1−N/1000)`.
-
-Vermeiden:
-- Keine Dezimalpunkte.
-- Keine Änderung von Startwert, Tragfähigkeit oder Wendepunkt.
-- Keine zusätzliche Wachstumsfunktion.
-
-Korrekturhinweis: In beiden Formeln muss der Faktor exakt `0,6` lauten, insbesondere `N' = 0,6 · N · (1 − N/1000)`. `0.6` ist nirgends zulässig.
-
-Letzter Korrekturhinweis:
-- Der Titel lautet nur `Logistisches Wachstum untersuchen`, ohne Klammerzusatz.
-- Prüfe besonders die Differentialgleichung: Zwischen 0 und 6 muss ein Komma stehen.
+Notwendigkeit der Ausnahme: Beide gezielten Nano-Korrekturen setzten N(0)=100
+weiterhin an eine falsche Position der ausdrücklich linearen y-Achse; der
+zweite Versuch ergänzte widersprüchliche Teilstriche. Das native SVG wurde
+am tatsächlichen Raster zweifach geprüft und sämtliche1001 Kurvenpunkte
+unabhängig nachgerechnet. Keine allgemeine Provideränderung und keine menschliche Freigabe.
 ```
 
 ## Review-Notiz

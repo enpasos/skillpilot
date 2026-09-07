@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "goal-visualization-independent-raster-review-v1",
+  "reviewer": "/root",
+  "reviewerModel": "Codex (exact underlying model identifier unavailable)",
+  "reviewedAt": "2026-09-07T15:25:34Z",
+  "authority": "AI candidate inspection; no human publication approval.",
+  "independence": "Root did not author or render these candidates. Root previously reviewed the original images and knew the author's stated repairs before independently opening the two actual candidate rasters. No blind-review or model-diversity claim.",
+  "display": "Two full2752×1536 rasters opened using view_image; display resized to2048×1143. Complete text, symbols, shapes and marker correspondence inspected.",
+  "records": [
+    {
+      "goalId": "ef1524f1-0b2f-59f7-a001-5ab3e3dececb",
+      "candidatePath": "tmp/goal-visualizations/ef1524f1-0b2f-59f7-a001-5ab3e3dececb/generated/ef1524f1-0b2f-59f7-a001-5ab3e3dececb.generated.2026-09-07T15-18-11-978Z.jpg",
+      "sha256": "8b6fad21e5ae75fbdaf80df2ed088381978f5ff36538756904040f9836514cfa",
+      "decision": "pass",
+      "checks": [
+        "AB and CD have the same single parallel marker; BC and AD the same double marker. Corresponding opposite sides in the actual quadrilateral are parallel.",
+        "Red alpha at A covers BAC only; red alpha at C covers DCA only. Blue beta at C covers BCA only; blue beta at A covers CAD only. Diagonal AC bounds, rather than crosses, each marked angle.",
+        "Parallelism yields the stated alternate-angle equalities. Shared AC is the included side for WSW. Mapping ABC to CDA is A→C,B→D,C→A; the conclusion AB=CD and BC=AD follows.",
+        "All six proof steps are legible and distinguish premise, argument and conclusion. No equality of side lengths is circularly assumed."
+      ]
+    },
+    {
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "candidatePath": "tmp/goal-visualizations/4af3dfb9-7e15-5da5-8b86-0aac6c80e266/generated/4af3dfb9-7e15-5da5-8b86-0aac6c80e266.generated.2026-09-07T15-17-02-114Z.jpg",
+      "sha256": "623431c71b7a84b638f96d723fe6ba1462bfdb2e5d35b77c297135e0505beb02",
+      "decision": "pass",
+      "checks": [
+        "Compared the actual canonical DE/EN description: all nine named types are present: equilateral/isosceles/right triangles, square, rectangle, rhombus, parallelogram, trapezium and kite.",
+        "Equilateral three sides have one equality mark each; isosceles only two legs. The right triangle marks its perpendicular legs and opposite hypotenuse correctly.",
+        "Square has four equal sides and four right-angle corner markers; rectangle distinguishes opposite side families. Rhombus has four equal side markers and no false equal-angle claim.",
+        "Parallelogram has separate opposite parallel-marker families. Trapezium explicitly uses the inclusive at-least-one-parallel-pair convention. Kite has two distinct adjacent equal-length families.",
+        "No wrong number or unsupported formula occurs. Definitions, diagram markers and visible shapes agree within hand-drawn schematic precision."
+      ],
+      "nonBlockingNotes": [
+        "The isosceles triangle appears twice; both copies are correct. Redundancy is not a reason to regenerate an otherwise accurate visualization."
+      ]
+    }
+  ]
+}

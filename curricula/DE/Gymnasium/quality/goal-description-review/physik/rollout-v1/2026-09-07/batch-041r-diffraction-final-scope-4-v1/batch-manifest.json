@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-041r-diffraction-final-scope-4-v1.config.json",
+  "configDigest": "sha256:d62e8291efe00d522bc3b9c0ce32ce525cdffc3d7dccb98ff34b5e28947cdbcd",
+  "goalIds": [
+    "6270e558-d657-5363-a6b2-e49a032a453b",
+    "c64820e1-c0ee-4342-9225-f981650f0c52",
+    "91683676-01cf-5003-80fa-a04d043b4e61",
+    "f6a3a602-1e45-5018-b0ff-3d49933cf634"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 465,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:0c036c58aa0ed615d8468900c5b1ee3679ba7b1c03ac896dac5b6c92f3297f59"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:4e596c051fe87a7cfb101f93b68e1046bc3478b2d810f8cce28e1a77aa83de00",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:15c4bb4cf70330d8ffe9a736d5a41ede07ed4ea3653050445050d1a475d70f69",
+    "reviewInputFingerprint": "sha256:9c285ff210ffe0034f13a9c0fd3268aef24eeb22f0f948b5fb17fdf1c4796fe5",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-a",
+        "campaignDigest": "sha256:c1f52f9e90befc03eadef6c507f81d4caa45924336740ae1e0fa06728a2d21dd",
+        "roundId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-independent-a",
+        "batchId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:d54fadad21311593e5e4a6907ca87fb5244569f95b23732d7947683bada7dc90"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-b",
+        "campaignDigest": "sha256:872cf555923e9159ab186bbcd583900e1b05a922e7ea15702bde24cc94b546a5",
+        "roundId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-independent-b",
+        "batchId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:71c8aa81d30a797d8ec996972efd55b81aea15580822d37fc0f07395989dd8c6"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

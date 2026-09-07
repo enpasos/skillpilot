@@ -31,33 +31,18 @@ Titel: Eigenschaften geometrischer Figuren begründen
 Beschreibung: Die lernende Person kann Eigenschaften einfacher geometrischer Figuren begründen und die verwendeten Kongruenz-, Ähnlichkeits-, Parallelitäts- oder Winkelargumente nachvollziehbar darstellen.
 
 Zusatzanweisung:
-Korrigiere die bestehende Visualisierung gezielt.
-
-Erhalte den klaren handgezeichneten Stil, das breite 16:9-Layout, den Titel oben und die drei gelben Abschnittsüberschriften.
-
-Fachliche Pflichtkorrektur:
-- Abschnitt 1 und Abschnitt 2 dürfen inhaltlich gleich bleiben: Parallelogramm ABCD mit Diagonale AC, Wechselwinkel und gemeinsamer Seite.
-- Abschnitt 3 darf keine separaten, frei neu gezeichneten Dreiecke enthalten, wenn ihre Form, Orientierung, Winkel oder Seitenmarkierungen nicht exakt zu den aus dem Parallelogramm entstehenden Dreiecken passen.
-- Sicherste Lösung: Entferne in Abschnitt 3 die beiden separaten Dreieckszeichnungen vollständig und ersetze sie durch eine saubere, textbasierte Schlussfolgerungsbox mit kleinen korrekten Symbolen.
-- Die Box soll klar zeigen:
-  1. Winkel BAC = Winkel DCA
-  2. Winkel BCA = Winkel CAD
-  3. AC ist gemeinsame Seite
-  4. Daraus folgt: Dreieck ABC ist kongruent zu Dreieck CDA (WSW)
-  5. Also: Länge(AB) = Länge(CD) und Länge(BC) = Länge(AD)
-- Der Abschlusssatz muss lauten: "Gegenüberliegende Seiten im Parallelogramm sind gleich lang."
-
-Wenn du in Abschnitt 3 doch Dreiecke zeichnest, müssen sie exakt die beiden Teildreiecke aus demselben Parallelogramm sein:
-- Dreieck ABC und Dreieck CDA entstehen durch dieselbe Diagonale AC.
-- AC ist in beiden Dreiecken dieselbe gemeinsame Seite.
-- Gleiche Winkelmarkierungen müssen an exakt entsprechenden Winkeln sitzen.
-- Seitenmarkierungen müssen den Schluss Länge(AB) = Länge(CD) und Länge(BC) = Länge(AD) korrekt unterstützen.
-
-Gestalterische Vorgaben:
-- Keine langen Zusatztexte, keine internen Anweisungen im Bild.
-- Alle deutschen Umlaute korrekt schreiben.
-- Keine technische Beschriftung, keine Dateinamen, keine Produktnamen, keine Schulformlabels.
-- Keine falschen Pfeile, keine unpassenden Dreiecksformen, keine widersprüchlichen Markierungen.
+Use case: scientific-educational
+Ersetze die falschen Winkelmarkierungen des Referenzbildes durch eine eindeutig lesbare Beweisskizze. Eine große Parallelogrammzeichnung links, kurze nummerierte Begründung rechts, freundlicher ruhiger handgezeichneter Stil. Keine Wiederholung dreier fast gleicher Zeichnungen.
+Pflichtinhalt:
+- Ein echtes Parallelogramm ABCD: A unten links, B oben links, C oben rechts, D unten rechts. AB parallel CD, BC parallel AD. Diagonale AC deutlich einzeichnen.
+- Genau ZWEI Winkelpaare zur WSW-Begründung: Rot markiert Winkel BAC (bei A ZWISCHEN AB und AC) und DCA (bei C ZWISCHEN CD und CA). Blau markiert Winkel BCA (bei C ZWISCHEN CB und CA) und CAD (bei A ZWISCHEN CA und AD).
+- Jeder Winkelbogen beginnt und endet an seinen beiden tatsächlich gemeinten Strahlen. Rot und Blau belegen somit jeweils einen TEIL des Innenwinkels bei A und C. Kein Bogen darf einen ganzen Innenwinkel von AB bis AD oder von CB bis CD umfassen.
+- Kleine rote alpha-Zeichen nur in den roten Teilwinkeln und kleine blaue beta-Zeichen nur in den blauen Teilwinkeln. Jeweils genau zwei alpha und zwei beta.
+- Die gemeinsame Diagonale AC ist als Seite beider Dreiecke erkennbar.
+- Rechts lesbarer Text: "AB ∥ CD und BC ∥ AD"; "α: ∠BAC = ∠DCA"; "β: ∠BCA = ∠CAD"; "AC ist gemeinsame Seite"; "ΔABC ≅ ΔCDA (WSW)"; "Also: AB = CD und BC = AD".
+- Wenn Parallelitätszeichen an Seiten genutzt werden: AB/CD je ein Pfeil, BC/AD je zwei. Die Zeichen stehen auf den Linien, nicht auf den Winkelbögen.
+Vermeiden:
+Keine Markierung ganzer Innenwinkel als BAC/DCA, keine vertauschten Winkelbuchstaben, keine falsche Reihenfolge kongruenter Dreiecksecken, keine Behauptung gleicher Seiten als bereits gegebene Voraussetzung. Keine technischen IDs, keine Logos, keine Wasserzeichen.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-07T14:53:40Z",
+  "scope": "Native preparation only for a new current 20-goal Physics batch; no substantive A/B review yet and no canonical/QA/central-ledger writes.",
+  "selection": {
+    "strategy": "landscape-order",
+    "maximumGoalCount": 20,
+    "selectedGoalCount": 20,
+    "centralStrictCompleteCount": 411,
+    "liveDenominator": 465,
+    "inFlightExcludedGoalCount": 10,
+    "nativeOutputPath": "selection-native.json",
+    "digest": "sha256:1e13b3d7bf797516a349df69693a98c573fe506c1023470dcf47fb6e2daad308"
+  },
+  "preparation": {
+    "exitCode": 0,
+    "stdout": "Standalone goal-description batch prepared: physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907; goals=20; model=sha256:18b8df380756858d09549ded32926e0a8d42a11e8e948d768d3e78a78d19dbda; bundle=sha256:b575826e51dcbf5430656d9c22c44de38c11963160918cd998a74edb69f8e100",
+    "bookModelDigest": "sha256:18b8df380756858d09549ded32926e0a8d42a11e8e948d768d3e78a78d19dbda",
+    "bundleFingerprint": "sha256:b575826e51dcbf5430656d9c22c44de38c11963160918cd998a74edb69f8e100"
+  },
+  "validation": {
+    "exitCode": 0,
+    "stdout": "> skillpilot@0.0.0 quality:goal-description-rollout-batch\n> tsx scripts/materializeGoalDescriptionRolloutBatch.ts check --config curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1.config.json\n\nStandalone goal-description batch valid: physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907; goals=20"
+  },
+  "artifactDigests": {
+    "config": "sha256:01d8dc3b3a8b27dadfbab68c7488a14f71595f1ea8370377bca388e8cf947236",
+    "batchManifest": "sha256:0a77888aaf06fe338e3a35b89a2597d18b1900f69cbfbe9c6bb697dfe90354f7",
+    "roundACampaign": "sha256:a56ffa04e3f25037791fe7539db4f62e1a24c8f1c70af43dcd776db8b62d3f7d",
+    "roundBCampaign": "sha256:b2708aaf9c846d035fac0b359088b1199f1072ebcf382b61fdcb3132e70ca45e"
+  },
+  "supersededPreparationAttempts": [
+    {
+      "scope": "Initial coherent-area-phase selection returned one Exoplanet goal.",
+      "result": "No bundle produced. Native prepare rejected an output directory precreated solely for the selection receipt. The two agent-created provisional files and their then-empty exact directory were removed after the coordinator directed a full up-to-20 batch. No canonical or claim changes."
+    },
+    {
+      "scope": "First landscape-order retry during concurrent central/source updates.",
+      "result": "Failed closed on one central blocking issue; no bypass. A fresh native report subsequently showed zero blockers and Math402/797, Physics411/465. The successful full native retry is retained verbatim in selection-native.json; no unverified cause of the temporary issue is claimed."
+    }
+  ],
+  "claimOwner": "Root coordinator; no claim written by this preparing agent.",
+  "authority": "Selection and preparation confer no review, publication or mastery authority."
+}

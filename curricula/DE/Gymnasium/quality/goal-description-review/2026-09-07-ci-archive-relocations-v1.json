@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "review-archive-location-receipt-v1",
+  "relocatedAt": "2026-09-07T16:23:58Z",
+  "agent": "/root/goal_book_ci_integration",
+  "reason": "validateGraph.ts scans .json below curricula and recognizes landscapeId plus goals. Two native selector records have goalId records rather than curriculum id nodes, causing phantom missing-reference errors. A full historical landscape backup also must not participate as live data. Rename only to .json.snapshot; do not alter payload, approved source, gates or historical receipts.",
+  "files": [
+    {
+      "from": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/selection-native.json",
+      "purpose": "Verbatim native rollout-selection output, not a curriculum. The original preparation receipt remains immutable and this relocation resolves its nativeOutputPath.",
+      "to": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/selection-native.json.snapshot",
+      "sha256": "1e13b3d7bf797516a349df69693a98c573fe506c1023470dcf47fb6e2daad308"
+    },
+    {
+      "from": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1.selection-current-frontier-v1.json",
+      "purpose": "Verbatim native current-frontier selection snapshot, not a curriculum; original payload and historical selection count stay immutable.",
+      "to": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1.selection-current-frontier-v1.json.snapshot",
+      "sha256": "980ee80b7e9e8bf5ea2427dff1a5b44f615eaf6e27ac15b9d13924762fffc177"
+    },
+    {
+      "from": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/before-v1/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "purpose": "Historical whole-landscape before-image, not operative curriculum. The original before-v1/receipt.json remains immutable; the exact-path resolver in the current delta checker follows this relocation.",
+      "to": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/before-v1/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json.snapshot",
+      "sha256": "31f389f47b24244140cbf7364de19d06994dd3555b59ff14094ea53b76bc325c"
+    }
+  ],
+  "originalBytesPreserved": true,
+  "canonicalSourcesChanged": false,
+  "validatorChanged": false,
+  "originalReceiptPolicy": "Historical receipt bytes and claimed original locations are retained. This append-only location mapping and the current archive checker identify the new exact paths with unchanged SHA-256."
+}

@@ -1,0 +1,262 @@
+[
+  {
+    "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ortsvektoren beginnen im Ursprung, Verschiebungen verbinden Punkte; ein Richtungsvektor beschreibt eine von null verschiedene Geradenrichtung, keine Geradenlänge.",
+      "essentialUnderstandingEn": "Position vectors begin at the origin, displacements join two points, and a direction vector describes a nonzero line direction without fixing a line length.",
+      "observablePerformanceDe": "Erläutert OA, OB und AB=B-A in einem Bezugssystem und unterscheidet einen verschobenen Pfeilrepräsentanten von einem Punkt.",
+      "observablePerformanceEn": "Explain OA, OB and AB=B-A using one coordinate frame and distinguish a translated representative from a point.",
+      "transferExpectationDe": "Verschiebt den Ursprung und vergleicht veränderte Ortskoordinaten mit unverändertem Verschiebungsvektor.",
+      "transferExpectationEn": "Translate the origin and compare what changes in position coordinates and what stays invariant in displacement."
+    },
+    "rationale": "Text DE/EN is an appropriate representation-and-meaning competence. BLOCK actual image: direction card says direction vector gives length/scaling of a line, conflating an infinite line with parameter scaling. Also OA=(1,2,1),OB=(4,3,3) projected positions cannot fit shown positive x-left/y-right directions with positive unit scales. No blind wording patch can cure the raster."
+  },
+  {
+    "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Koordinaten verorten einen Punkt im Bezugssystem; Vektorkomponenten beschreiben darin gerichtete Änderungen.",
+      "essentialUnderstandingEn": "Coordinates locate a point relative to a frame, while vector components describe directed changes in that frame.",
+      "observablePerformanceDe": "Trägt Tupel ein und liest sie ab; erläutert Punkt, Ortsvektor und Richtungsvektor als verschiedene Deutungen.",
+      "observablePerformanceEn": "Plot and read triples, explaining point versus position-vector and direction-vector interpretations.",
+      "transferExpectationDe": "Vergleicht dieselbe Verschiebung an verschiedenen Startpunkten einschließlich negativer und nullwertiger Komponenten.",
+      "transferExpectationEn": "Compare the same displacement attached to different start points, including negative and zero components."
+    },
+    "rationale": "KEEP: concise bilingual coordinate representation competency, with prior point/vector tuple goals supplied. No current image is bound, hence no image approval claimed. Distinctions form a coherent representation competence, not an added vector-arithmetic goal."
+  },
+  {
+    "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Koordinaten eines räumlichen Objekts hängen von Ursprung, Achsen und Einheiten ab, nicht allein von seiner Bildschirmposition.",
+      "essentialUnderstandingEn": "A spatial object's coordinates depend on chosen origin, axes and units, not only on its apparent screen position.",
+      "observablePerformanceDe": "Wählt einen geeigneten Bezug und weist charakteristischen Objektpunkten konsistente Koordinaten zu.",
+      "observablePerformanceEn": "Choose a convenient frame and assign coherent coordinates to characteristic object points.",
+      "transferExpectationDe": "Legt den Ursprung in eine andere Ecke und erklärt die geänderten Tupel desselben Körpers.",
+      "transferExpectationEn": "Move the origin to another vertex and explain changed triples for the same solid."
+    },
+    "rationale": "Text is precise and bilingual. BLOCK image: cuboid corner triples imply x-edge AB and y-edge BC, but x=4 is displayed along BC and y=3 along CD. An unexplained extra dashed top cross-section compounds coordinate ambiguity. Correction needs image repair, not a broader canonical description."
+  },
+  {
+    "goalId": "7680701b-35e3-519e-beaa-09753e733756",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Schrägbild erhält parallele Richtungen unter einer gewählten Projektion; Bildlängen sind nicht automatisch Raumlängen.",
+      "essentialUnderstandingEn": "An oblique sketch preserves parallel directions while applying a chosen projection convention, so picture lengths need not equal spatial lengths.",
+      "observablePerformanceDe": "Konstruiert einen Körper mit erklärtem Tiefenwinkel und Verkürzung und erläutert die Zuordnung von Vorder- und Rückseite.",
+      "observablePerformanceEn": "Construct a solid from its dimensions using a stated depth angle and shortening and explain front/back correspondence.",
+      "transferExpectationDe": "Wählt eine andere Vorderfläche oder Tiefenverkürzung bei denselben Körpermaßen.",
+      "transferExpectationEn": "Use a different front face or depth shortening while preserving the same object dimensions."
+    },
+    "rationale": "KEEP coherent construction/explanation competency, same DE/EN demand. Actual three-panel 4×3×2 example has front4:3, depth drawn1 at45°, parallel back face; projected depth length is about one quarter of front4 as stated. Solid back edges can be read as a transparent wireframe, not a false claim that all edges are visible."
+  },
+  {
+    "goalId": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein geordnetes Koordinatentupel beschreibt vorzeichenbehaftete Beiträge entlang der gewählten Raumachsen.",
+      "essentialUnderstandingEn": "An ordered coordinate triple specifies successive signed contributions along the chosen spatial axes.",
+      "observablePerformanceDe": "Erklärt und konstruiert den Koordinatenweg zu einem Punkt und liest das Tupel aus einer eindeutigen Raumdarstellung.",
+      "observablePerformanceEn": "Explain and construct the coordinate path to a point and read the triple from an unambiguous spatial representation.",
+      "transferExpectationDe": "Erschließt fehlende Koordinaten bei Punkten in einer Koordinatenebene oder mit negativer Richtung.",
+      "transferExpectationEn": "Recover missing coordinate information when the point lies in a coordinate plane or uses a negative direction."
+    },
+    "rationale": "KEEP: narrowly point-coordinate explanation, not separate vector operations. Actual image O→A(3,0,0)→B(3,2,0)→P(3,2,4) uses matching x/y/z directions, labels and parallel steps. No unjustified numeric scale reading is required."
+  },
+  {
+    "goalId": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Körperklassen werden durch Flächen-, Kanten- und Eckbeziehungen bestimmt; ein schiefer Körper ist nicht bloß die schräg gezeichnete Ansicht eines geraden.",
+      "essentialUnderstandingEn": "Solids are classified by defining face, edge and vertex relations; an oblique prism or pyramid is not a distorted drawing of a right one.",
+      "observablePerformanceDe": "Identifiziert einen Körper und begründet den Namen mit Grund-/Deckflächen, Seitenkanten und senkrechter Höhe.",
+      "observablePerformanceEn": "Identify a solid and justify its name using base/top faces, lateral edges and perpendicular height.",
+      "transferExpectationDe": "Vergleicht ein gedrehtes gerades mit einem tatsächlich schiefen Prisma, ohne allein nach Bildneigung zu klassifizieren.",
+      "transferExpectationEn": "Compare a rotated right prism with a genuinely oblique prism without classifying from screen tilt alone."
+    },
+    "rationale": "KEEP-level bilingual text is one classification competence. BLOCK actual image: general cuboid has a on front horizontal and front vertical edge but c on the parallel rear vertical edge. These inconsistent edge labels undermine the stated three independent lengths a,b,c. Height conventions must remain explicit in any replacement."
+  },
+  {
+    "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ebene Figurenklassen werden durch Seiten- und Winkelbeziehungen bestimmt; Sonderfälle können mehreren Klassen angehören.",
+      "essentialUnderstandingEn": "Plane-figure classes are characterized by side and angle relations, and special cases can belong to more than one class.",
+      "observablePerformanceDe": "Beschreibt und unterscheidet die genannten Drei- und Vierecke anhand ihrer definierenden Eigenschaften statt ihrer Lage.",
+      "observablePerformanceEn": "Describe and distinguish the named triangles and quadrilaterals from defining properties rather than orientation.",
+      "transferExpectationDe": "Ordnet gedrehte Figuren oder ein Quadrat als Sonderfall von Raute/Rechteck ein und benennt die verwendete Trapezdefinition.",
+      "transferExpectationEn": "Classify rotated figures or a square as a special rhombus/rectangle using an explicitly chosen trapezium convention."
+    },
+    "rationale": "Text preserves one classification competency and DE/EN parity. BLOCK actual raster: all four rhombus angles carry identical double-arc markers although adjacent angles differ; kite has the same side tick on all four visibly unequal sides instead of distinguishing its two adjacent pairs. Definitions mostly correct but contradictory diagram codes require repair."
+  },
+  {
+    "goalId": "5390691d-1b7c-5572-9589-a69c2bba9a27",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Flächeninhalt hängt von senkrechter Höhe und Figurenstruktur ab; Scherung oder Zerlegung begründen Formeln ohne Flächenänderung.",
+      "essentialUnderstandingEn": "Area depends on perpendicular height and the figure's structure; shear or decomposition can explain formulas without changing area.",
+      "observablePerformanceDe": "Wählt begründet Grundseite/Höhe oder eine Zerlegung und berechnet den Inhalt mit korrekten Flächeneinheiten.",
+      "observablePerformanceEn": "Choose a justified base-height pair or decomposition and compute area with correct squared units.",
+      "transferExpectationDe": "Vergleicht eine gescherte Figur oder ein stumpfwinkliges Dreieck mit äußerer Höhe unter Beibehaltung des Flächenarguments.",
+      "transferExpectationEn": "Compare a sheared figure or an obtuse triangle whose altitude lies outside while retaining the area argument."
+    },
+    "rationale": "KEEP: properties-for-area analysis is one coherent competence. Actual rectangle/parallelogram6×4→24cm² and trianglehalf→12cm² are correct; perpendicular altitudes and excluded sloping side are marked clearly. No template-copy evidence is inferred from this support."
+  },
+  {
+    "goalId": "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Kongruenz bedeutet Deckung durch abstandserhaltende Abbildungen; hinreichende Kriterien benötigen die richtige Zuordnung der Teile.",
+      "essentialUnderstandingEn": "Congruence is coincidence under distance-preserving transformations, and sufficient criteria require a correct correspondence of parts.",
+      "observablePerformanceDe": "Ordnet Ecken zu und begründet Kongruenz durch ein gültiges Kriterium statt durch bloßen Augenschein.",
+      "observablePerformanceEn": "Match vertices and justify congruence by a valid criterion, distinguishing evidence from a visual impression.",
+      "transferExpectationDe": "Prüft eine veränderte Datenauswahl ohne eindeutige Kongruenz oder eine gespiegelte Anordnung mit denselben Längen.",
+      "transferExpectationEn": "Test a changed information set that no longer fixes congruence, or a reflected arrangement with the same lengths."
+    },
+    "rationale": "KEEP bilingual criterion-based reasoning. Actual3/4/5 triangle pairs have matching SSS labels and explicit AB↔DE,BC↔EF,AC↔DF. Small hand-drawn angular inaccuracies do not contradict a coordinate plot or asserted exact diagram scale; the correspondence and conclusion are sound."
+  },
+  {
+    "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ähnlichkeit erhält Winkel und multipliziert entsprechende Längen mit einem Faktor k, damit Flächen mit k².",
+      "essentialUnderstandingEn": "Similarity preserves angles and multiplies corresponding lengths by one factor k, hence areas by k squared.",
+      "observablePerformanceDe": "Begründet eine Zuordnung und leitet Längen- und Flächenbeziehungen ab statt den Maßstab nach Augenschein anzunehmen.",
+      "observablePerformanceEn": "Establish a justified correspondence and derive length and area relations rather than assume scale from appearance.",
+      "transferExpectationDe": "Erschließt einen Längenfaktor aus einem Flächenverhältnis oder verwirft widersprüchliche Seitenverhältnisse.",
+      "transferExpectationEn": "Infer a length factor from an area ratio or reject a figure with inconsistent corresponding-side ratios."
+    },
+    "rationale": "Text is concise, coherent and bilingual. BLOCK quantitative grid raster: small3-by4 triangle is drawn with horizontal leg slightly longer than vertical4; larger6-by8 likewise wrong proportions, and enlargement is far below claimed2. Formulas k2 and area4 are correct but the unqualified common-grid diagrams contradict those numeric lengths."
+  },
+  {
+    "goalId": "ef1524f1-0b2f-59f7-a001-5ab3e3dececb",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein geometrischer Beweis verbindet Voraussetzungen durch gültige Winkel-, Parallelitäts-, Kongruenz- oder Ähnlichkeitsschritte mit der Behauptung.",
+      "essentialUnderstandingEn": "A geometric proof connects stated assumptions to a conclusion through valid angle, parallelism, congruence or similarity implications.",
+      "observablePerformanceDe": "Stellt eine nachvollziehbare Kette dar und erklärt jedes Kriterium, ohne die Behauptung vorauszusetzen.",
+      "observablePerformanceEn": "Present a traceable chain and identify why each criterion applies, without using the conclusion as a premise.",
+      "transferExpectationDe": "Prüft einen Beweis nach Wegfall einer Parallelitätsannahme und benennt den dadurch ungültigen Schritt.",
+      "transferExpectationEn": "Check a proposed proof after one parallelism assumption is removed and identify the exact failing step."
+    },
+    "rationale": "Text is an appropriate AB3 justification goal. BLOCK image marker fidelity: written BAC=DCA and BCA=CAD yield valid WSW, but filled/arc-marked regions cover whole BAD and BCD angles, not the named diagonal subangles. Correct algebraic proof does not license incorrect angle markings."
+  },
+  {
+    "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Ansichtswechsel verändert die Projektion, nicht die Koordinaten oder tatsächlichen Lagebeziehungen einer festen Raumkonstruktion.",
+      "essentialUnderstandingEn": "Changing the camera view changes projection, not the coordinates or actual incidence of a fixed spatial construction.",
+      "observablePerformanceDe": "Konstruiert ein Objekt in Geometriesoftware, variiert Ansichten und prüft Koordinaten oder Lagebehauptungen am Modell.",
+      "observablePerformanceEn": "Construct an object in geometry software, vary views and check coordinates or positional claims against the model.",
+      "transferExpectationDe": "Klärt eine scheinbare Überlagerung durch eine zweite Ansicht und unterscheidet Kamera- von Punktbewegung.",
+      "transferExpectationEn": "Resolve an apparent overlap by a second view and distinguish moving the camera from moving a point."
+    },
+    "rationale": "KEEP-level tool-supported spatial verification text, no required software brand. BLOCK image: Pxy=(2,1,0) has its x-axis projection at a mark labelled1, not2; main diagram therefore conflicts with numeric coordinate claim and correct top-view tuple. Side view lacks horizontal-axis identification, so cannot independently resolve it."
+  },
+  {
+    "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Vektoraddition verkettet Verschiebungen; Skalarmultiplikation skaliert alle Komponenten gemeinsam und kehrt bei negativem Faktor die Richtung um.",
+      "essentialUnderstandingEn": "Vector addition composes displacements and scalar multiplication scales all components together, including direction reversal for a negative scalar.",
+      "observablePerformanceDe": "Berechnet und zeichnet Addition/Skalierung und erklärt die Übereinstimmung mit der Kopf-an-Schwanz-Konstruktion.",
+      "observablePerformanceEn": "Compute and draw addition/scaling and explain why the algebra matches a head-to-tail construction.",
+      "transferExpectationDe": "Konstruiert eine Differenz oder ein negatives/nullfaches Vielfaches als verändertes Verschiebungsproblem.",
+      "transferExpectationEn": "Construct a difference or a negative/zero multiple as a changed displacement problem."
+    },
+    "rationale": "One coherent linear-operation interpretation, DE/EN aligned. BLOCK actual image: vector a and2a from the same origin visibly have different directions rather than being collinear, despite correct numeric components. In the shown axes, b=(-1,2,3) also points screen-left while both x-negative and y-positive contributions imply screen-right. Must repair geometry."
+  },
+  {
+    "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Linearkombination summiert skalierte gegebene Vektoren; Koeffizienten beschreiben den Aufbau der Zielverschiebung.",
+      "essentialUnderstandingEn": "A linear combination is a sum of scaled given vectors; coefficients describe how their directions generate the target displacement.",
+      "observablePerformanceDe": "Bestimmt Koeffizienten durch konsistente Komponentengleichungen und deutet die Lösung geometrisch.",
+      "observablePerformanceEn": "Determine coefficients by consistent component equations and relate the solution to a geometric construction.",
+      "transferExpectationDe": "Prüft einen Zielvektor außerhalb der Spannweite oder vergleicht Koeffizienten bei redundanten Erzeugern.",
+      "transferExpectationEn": "Test a target outside the span or compare alternative coefficients when generators are redundant."
+    },
+    "rationale": "Text appropriately combines coefficient determination and geometric meaning. BLOCK image: u=(1,0,1) is drawn screen-right in a coordinate system with positive x screen-left and z vertical. With zero y it must have a leftward horizontal component. Correct displayed2u+v arithmetic does not cure the false spatial projection."
+  },
+  {
+    "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Abhängigkeit bedeutet eine nichttriviale Nullkombination; Unabhängigkeit bedeutet nur die triviale und damit nichtredundante Erzeugerrichtungen.",
+      "essentialUnderstandingEn": "Dependence means a nontrivial zero combination; independence means only the trivial one, corresponding to nonredundant generating directions.",
+      "observablePerformanceDe": "Löst die Nullkombinationsgleichungen und erklärt Gerade, Ebene oder Raumspanne der gegebenen Vektormenge.",
+      "observablePerformanceEn": "Solve the zero-combination equations and explain line, plane or spatial span within the given vector set.",
+      "transferExpectationDe": "Nimmt einen Nullvektor hinzu oder verändert einen Erzeuger aus der Ebene heraus und begründet die Wirkung.",
+      "transferExpectationEn": "Include a zero vector or change one generator out of a plane and justify how dependence changes."
+    },
+    "rationale": "Text is precise and bilingual. BLOCK image: dependent-case a=(1,0,0) is drawn along the rightward y-like direction instead of the positive x-axis drawn down-left. Numeric a+b-c=0 and independent standard basis are correct, but the geometric explanation misidentifies the axis-associated vectors."
+  },
+  {
+    "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Zwei Vektoren sind kollinear, wenn ihre Komponenten ein gemeinsames skalares Vielfaches ergeben; Nullkomponenten dürfen nicht zu ungültiger Division führen.",
+      "essentialUnderstandingEn": "Two vectors are collinear when their components admit one common scalar-multiple relation, with zero components handled without invalid division.",
+      "observablePerformanceDe": "Prüft alle Komponenten mit demselben Faktor und deutet bei von null verschiedenen Vektoren gleiche oder entgegengesetzte Richtung.",
+      "observablePerformanceEn": "Check all components with one scalar and interpret parallel or opposite direction where nonzero vectors permit it.",
+      "transferExpectationDe": "Nutzt negative Skalierung oder Nullkomponenten, um das Kriterium über einfache positive Quotienten hinaus zu prüfen.",
+      "transferExpectationEn": "Use negative scaling or zero components to test the criterion beyond simple positive component ratios."
+    },
+    "rationale": "KEEP-level scalar criterion with clear DE/EN parity. BLOCK image: labelled a=(2,-1,3) and c=(3,-1,4) point screen-right, yet positive x and negative y both contribute screen-left under displayed axes. Correct ratios establish collinearity numerically but the asserted spatial vectors contradict that coordinate convention."
+  },
+  {
+    "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Vektorbetrag ist eine nichtnegative skalare Länge, die aus orthogonalen Komponenten mit Pythagoras folgt.",
+      "essentialUnderstandingEn": "Vector magnitude is a nonnegative scalar length derived by Pythagoras from perpendicular coordinate components.",
+      "observablePerformanceDe": "Leitet oder erläutert die Quadratsummenwurzel und deutet das Ergebnis als Verschiebungslänge.",
+      "observablePerformanceEn": "Derive or explain the square-root-of-squares formula and interpret the result as displacement length.",
+      "transferExpectationDe": "Vergleicht vorzeichenveränderte Vektoren oder skalare Vielfache und begründet gleiche Länge beziehungsweise Skalierung mit dem Faktor-Betrag.",
+      "transferExpectationEn": "Compare sign-reversed vectors or a scalar multiple and explain equal length or absolute-factor scaling."
+    },
+    "rationale": "KEEP narrow calculate-and-interpret competency. Actual cuboid diagonal(3,4,12) has correct corner/axis association and √169=13, with explicit scalar-versus-vector distinction. Diagram is spatial teaching support without a claimed common rendered unit scale, not a value-read-off graph."
+  },
+  {
+    "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Punktabstand ist der Betrag des Verbindungsvektors und unabhängig von der Reihenfolge der Punkte.",
+      "essentialUnderstandingEn": "Point distance is the magnitude of their connecting vector and is independent of which point is chosen first.",
+      "observablePerformanceDe": "Bildet B-A, berechnet den Betrag und unterscheidet gerichtete Verschiebung vom vorzeichenlosen Abstand.",
+      "observablePerformanceEn": "Form B-A, compute its norm and explain displacement direction versus unsigned distance.",
+      "transferExpectationDe": "Verschiebt beide Endpunkte oder vertauscht sie und begründet den unveränderten Abstand bei geänderten Koordinaten beziehungsweise Vektorvorzeichen.",
+      "transferExpectationEn": "Translate both endpoints or reverse them and justify unchanged distance despite changed coordinates or vector sign."
+    },
+    "rationale": "Text and arithmetic B-A=(3,4,12),distance13 are correct. BLOCK actual coordinate-grid image: O,A=(1,2,0),B=(4,6,12) screen positions cannot be reconciled with positive x-down-left, y-right and z-up using positive linear axis scales. Unmarked geometric inconsistency remains despite correct formula."
+  },
+  {
+    "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+    "decision": "block",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Strecke in einer Raumfigur wird durch den Betrag des Vektors zwischen ihren richtig identifizierten Endpunkten gemessen.",
+      "essentialUnderstandingEn": "A segment in a spatial figure is measured by the norm of the vector between its correctly identified endpoints.",
+      "observablePerformanceDe": "Wählt Endpunkte für Kante, Flächen- oder Raumdiagonale und verwendet die berechnete Länge im geometrischen Problem.",
+      "observablePerformanceEn": "Select endpoints for an edge, face diagonal or space diagonal and use the computed length in the geometric question.",
+      "transferExpectationDe": "Vergleicht Flächen- und Raumdiagonale oder erschließt eine fehlende Abmessung aus einer Streckenbedingung.",
+      "transferExpectationEn": "Compare a face diagonal with a space diagonal or infer a missing dimension from a segment constraint."
+    },
+    "rationale": "Text is one contextual segment-length competence. BLOCK image: orange line ends at displayed B but is called AC; B/C corner labels and coordinate axes are inconsistent with the drawn cuboid, while formulas √52 and√61 are numerically correct. Endpoint correspondence must be repaired before closure."
+  },
+  {
+    "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+    "decision": "keep",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Matrixeintrag wird durch geordnete Zeilen- und Spaltenindizes lokalisiert; seine Kontextbedeutung hängt von den zugewiesenen Kategorien ab.",
+      "essentialUnderstandingEn": "A matrix entry is located by ordered row and column indices, and its contextual meaning depends on their assigned categories.",
+      "observablePerformanceDe": "Liest einen Eintrag, nennt beide Indizes und erläutert seine Bedeutung anhand der vorgegebenen Zeilen-/Spaltenbezeichnungen.",
+      "observablePerformanceEn": "Read an entry, state both indices and explain its meaning with the given row/column labels.",
+      "transferExpectationDe": "Deutet dieselben Daten nach Tausch der Zeilen-/Spaltenrollen oder Umordnung der Beschriftungen und trennt Wert und Index.",
+      "transferExpectationEn": "Interpret the same data after row/column roles are exchanged or labels reordered without confusing value and index."
+    },
+    "rationale": "KEEP: suitable entry-level locate-and-interpret competence in both languages, not matrix arithmetic. Actual2×3 matrix indices a1,2=5 and a2,3=-4, row/column arrows and example object/feature context are correct. Supplied legacy calculus prerequisites are not asserted to be mathematically necessary by this description review."
+  }
+]

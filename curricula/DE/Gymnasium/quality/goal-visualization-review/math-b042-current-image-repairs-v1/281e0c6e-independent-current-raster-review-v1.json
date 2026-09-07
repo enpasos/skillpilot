@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-current-raster-counterreview",
+  "reviewerAgent": "/root/goal_book_ci_integration",
+  "reviewedAt": "2026-09-07T13:40:31Z",
+  "goalId": "281e0c6e-d06d-580f-8443-4369f0ea524b",
+  "goalFingerprint": "sha256:9addd1882ef972c4330ddcf60ee8a267f27b298f431ed0c5703215e8e71b8ee7",
+  "currentTitleDe": "Reale Gegenstände als Rotationskörper zur Volumenbestimmung modellieren (LK)",
+  "currentDescriptionDe": "Die lernende Person kann reale Gegenstände durch geeignete Rotationskörper beziehungsweise Randfunktionen modellieren, passende Integrale zur Volumenbestimmung aufstellen und die Modellannahmen im Kontext begründen.",
+  "asset": {
+    "path": "tmp/goal-visualizations/281e0c6e-d06d-580f-8443-4369f0ea524b/generated/281e0c6e-d06d-580f-8443-4369f0ea524b.generated.2026-09-07T13-27-05-351Z.jpg",
+    "sha256": "sha256:669588b74984a4e4e014d03325f35c3823041cccc02361257f596ea50cc035b4",
+    "bytes": 1841865
+  },
+  "previousPublicAsset": {
+    "path": "app/public/assets/goal-visualizations/mathematik/281e0c6e-d06d-580f-8443-4369f0ea524b/281e0c6e-d06d-580f-8443-4369f0ea524b.jpg",
+    "sha256": "sha256:d7c738cdb480b20b96b307ba30e7ea34fbc360c64829db93648cc94ad420183f",
+    "bytes": 2232957
+  },
+  "decision": "pass",
+  "blockingFindings": [],
+  "independence": {
+    "existingAgentInstance": true,
+    "priorContext": "Own B042 first-pass-A and subsequently both sealed B042 first-pass records are known. Root requested a separate current-candidate raster review; the root's verdict and written current-candidate image review were not read before this judgment.",
+    "blindToCurrentAuthorVerdict": true,
+    "newBlindDescriptionReview": false,
+    "humanAuthority": false
+  },
+  "actualInspection": {
+    "method": "Full raster actually opened with view_image; visible equations, all labels, arrows and schematic geometry read. File SHA256 checked from bytes.",
+    "scope": "Current corrected raster only. No import, no visual-QA ledger mutation, no publication approval."
+  },
+  "checks": [
+    {
+      "aspect": "single-model coherence",
+      "finding": "The cup/frustum has a smaller bottom radius r0, larger top radius r1 and height h. The dashed central vertical line and endpoint measurements are consistent with x measured along the body's height. The example models the volume enclosed by the radius profile; it does not claim glass/material volume."
+    },
+    {
+      "aspect": "disk and strip orientation",
+      "finding": "Physical circular slices are perpendicular to the symmetry axis. The radius diagram now uses a vertical strip at one x-interval, with dx horizontal along x and r(x) vertical from the x-axis to the radius height. The old association with horizontal strips across radius levels is removed."
+    },
+    {
+      "aspect": "linear radius",
+      "finding": "r(x)=r0+(r1−r0)x/h on 0≤x≤h has endpoints r(0)=r0 and r(h)=r1. The plotted straight increasing segment and dashed projection to (h,r1) agree. Assumed example conditions are h>0 and 0<r0<r1."
+    },
+    {
+      "aspect": "cross-section and volume",
+      "finding": "The caption separates circular area πr(x)² from thin-disk volume πr(x)²dx; the total V=π∫₀ʰr(x)²dx has correct power, factor, limits and variable. Dimensions are length² for area and length³ for disk and total volume."
+    },
+    {
+      "aspect": "schematic limits",
+      "finding": "The physical cup and the symbolic radius plot are schematic with no numerical scale; no numeric equivalence of their drawn aspect ratios is asserted. The finite drawn strip represents the infinitesimal-slice approximation, not an exact finite rectangular decomposition."
+    },
+    {
+      "aspect": "text and visual completeness",
+      "finding": "Title stays within the existing real-object volume-modeling goal. r0,r1,h,r(x),dx, cross-sectional area and integral are visible and linked; no unrelated skill or worked numeric answer is added."
+    }
+  ],
+  "remainingTeachingAssumptions": [
+    "For a real cup's capacity, learners still need appropriate inner measurements; for exterior volume use the outer profile. Wall/material volume would require a separate inner/outer subtraction and is not asserted by this image.",
+    "The displayed linear radius models a frustum, not every rotational object; selection of an appropriate profile and checking model assumptions remain the stated goal."
+  ],
+  "verdictReason": "The targeted orientation defect is corrected without changing the competence. The current formulas, disk/radius mapping, bounds and dimensions are mutually consistent. No blocking mathematical claim found in the actually viewed raster. This AI image counterreview alone does not replace final imported-byte QA or fresh final-page D reviews."
+}

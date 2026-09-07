@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b032r-q3-electromagnetic-waves-current-v1",
+  "reviewedAt": "2026-09-05T09:00:00.000Z",
+  "reviewer": "codex-physics-rollout-v1-batch-032r-positive-understanding-candidate-author-2026-09-05",
+  "goals": [
+    {
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "reason": "DE: Das Profil prüft das elektromagnetische Spektrum als physikalisch begründete Ordnung statt als auswendig gelernte Farbleiste. Zwei unabhängige Anwendungen verlangen die konsistente Nutzung von c = λf, relevante Wechselwirkungseigenschaften und eine ausdrückliche Grenze der Zuordnung. EN: The profile assesses the electromagnetic spectrum as a physically justified ordering rather than a memorised colour bar. Two independent applications require consistent use of c = λf, relevant interaction properties, and an explicit limitation of the assignment.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "order-spectrum-consistently",
+            "essentialUnderstandingDe": "Alle Spektralbereiche sind elektromagnetische Wellen. Im Vakuum sind Frequenz und Wellenlänge über c = λf gegenläufig geordnet; die benannten Bereichsgrenzen sind Konventionen und keine sprunghaften Änderungen der Wellenart.",
+            "essentialUnderstandingEn": "All spectral regions are electromagnetic waves. In vacuum, frequency and wavelength are inversely ordered through c = λf; named region boundaries are conventions rather than abrupt changes in wave type.",
+            "observablePerformanceDe": "Die lernende Person ordnet unbekannte Frequenz- und Vakuumwellenlängenangaben konsistent, rechnet zwischen ihnen um, kennzeichnet überlappende oder konventionelle Grenzbereiche angemessen und prüft Größenordnung sowie Einheit.",
+            "observablePerformanceEn": "The learner consistently orders unfamiliar frequency and vacuum-wavelength data, converts between them, appropriately marks overlapping or conventional boundary regions, and checks order of magnitude and units."
+          },
+          {
+            "id": "justify-applications-and-limits",
+            "essentialUnderstandingDe": "Technische Eignung folgt nicht allein aus dem Namen eines Spektralbereichs, sondern aus Eigenschaften wie Beugung, räumlicher Auflösung, atmosphärischer oder materieller Absorption und der energieabhängigen Wechselwirkung mit Materie. Die konkrete Eignung hängt daher auch vom Medium, der Geometrie und Sicherheitsanforderungen ab.",
+            "essentialUnderstandingEn": "Technical suitability follows not from a spectral-region name alone but from properties such as diffraction, spatial resolution, atmospheric or material absorption, and energy-dependent interaction with matter. Suitability therefore also depends on medium, geometry, and safety requirements.",
+            "observablePerformanceDe": "Die lernende Person wählt für eine neue technische Anforderung einen plausiblen Bereich, begründet die Wahl mit mindestens einer relevanten Welleneigenschaft, vergleicht eine Alternative und benennt eine physikalische oder praktische Grenze.",
+            "observablePerformanceEn": "For a new technical requirement, the learner selects a plausible region, justifies it using at least one relevant wave property, compares an alternative, and states a physical or practical limitation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "order-spectrum-consistently",
+            "justify-applications-and-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "given-quantity",
+            "textDe": "Frequenz, Vakuumwellenlänge oder Photonenenergie als Ausgangsgröße",
+            "textEn": "Frequency, vacuum wavelength, or photon energy as the starting quantity"
+          },
+          {
+            "id": "application-demand",
+            "textDe": "Reichweite, Auflösung, selektive Absorption oder geringe Materialwirkung",
+            "textEn": "Range, resolution, selective absorption, or weak material interaction"
+          },
+          {
+            "id": "propagation-medium",
+            "textDe": "Vakuum, Atmosphäre oder ein angegebenes Material",
+            "textEn": "Vacuum, atmosphere, or a specified material"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "remote-communication-band-choice",
+            "taskDemandDe": "Für eine Funkverbindung durch die Atmosphäre stehen drei Wellenlängenbereiche mit angegebenen Absorptionsdaten und Antennengrößen zur Wahl. Ordne sie im Spektrum ein, berechne die Frequenzen und entscheide begründet, welcher Bereich für große Reichweite bei begrenzter Antennengröße am geeignetsten ist.",
+            "taskDemandEn": "For a radio link through the atmosphere, three wavelength ranges with specified absorption data and antenna sizes are available. Place them in the spectrum, calculate their frequencies, and justify which range is most suitable for long range with limited antenna size.",
+            "expectedPerformanceDe": "Die lernende Person nutzt c = λf mit korrekten Einheiten, ordnet die Bereiche konsistent und wägt atmosphärische Absorption gegen die geometrische Antennenanforderung ab. Sie macht deutlich, dass die Entscheidung von den gegebenen Daten und nicht allein vom Bereichsnamen abhängt.",
+            "expectedPerformanceEn": "The learner uses c = λf with correct units, orders the regions consistently, and weighs atmospheric absorption against the geometric antenna requirement. They make clear that the decision depends on the supplied data rather than the region name alone.",
+            "understandingFocusDe": "Der Fall verbindet Spektrumsordnung mit einer durch Randbedingungen getragenen technischen Entscheidung.",
+            "understandingFocusEn": "The case connects spectral ordering with a technical decision supported by constraints."
+          },
+          {
+            "id": "imaging-resolution-and-absorption",
+            "taskDemandDe": "Zwei Bildgebungsverfahren unterscheiden sich in Wellenlänge und in der gemessenen Absorption eines Gewebemodells. Vergleiche die erwartbare räumliche Auflösung, ordne beide Spektralbereiche ein und entscheide, welches Verfahren für eine oberflächennahe Struktur geeignet ist. Benenne eine Grenze der Entscheidung.",
+            "taskDemandEn": "Two imaging methods differ in wavelength and in measured absorption by a tissue model. Compare their expected spatial resolution, place both spectral regions, and decide which method is suitable for a near-surface structure. State one limitation of the decision.",
+            "expectedPerformanceDe": "Die lernende Person begründet die Auflösung qualitativ über die Wellenlänge, berücksichtigt die gegebenen Absorptionsdaten und vermeidet die pauschale Aussage, kürzere Wellenlänge sei immer besser. Sie nennt etwa Eindringtiefe, Dosis oder Modellabhängigkeit als Grenze.",
+            "expectedPerformanceEn": "The learner justifies resolution qualitatively through wavelength, uses the supplied absorption data, and avoids the blanket claim that shorter wavelength is always better. They state penetration depth, dose, or model dependence as a limitation.",
+            "understandingFocusDe": "Der unabhängige Fall prüft Transfer von der Ordnung zu Wechselwirkung, Auflösung und Modellgrenzen.",
+            "understandingFocusEn": "The independent case tests transfer from ordering to interaction, resolution, and model limitations."
+          }
+        ]
+      },
+      "dissent": []
+    },
+    {
+      "goalId": "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+      "reason": "DE: Das Profil macht die elektrische Feldrichtung, die Schwingungsebene und die qualitative Komponentenwirkung idealer Polarisatoren in zwei voneinander unabhängigen Anordnungen beobachtbar. Das quantitative Malus-Gesetz wird bewusst nicht vorausgesetzt. EN: The profile makes the electric-field direction, plane of vibration, and qualitative component action of ideal polarizers observable in two independent arrangements. The quantitative Malus law is deliberately not presupposed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "represent-linear-polarization-geometry",
+            "essentialUnderstandingDe": "Bei linear polarisiertem Licht schwingt der elektrische Feldvektor in einer festen Richtung senkrecht zur Ausbreitungsrichtung. Beide Richtungen spannen die Schwingungsebene auf; die magnetische Feldrichtung ist davon zu unterscheiden.",
+            "essentialUnderstandingEn": "For linearly polarized light, the electric-field vector oscillates in a fixed direction perpendicular to propagation. These directions span the plane of vibration; the magnetic-field direction must be distinguished from it.",
+            "observablePerformanceDe": "Die lernende Person zeichnet für eine beliebig räumlich gedrehte Welle Ausbreitungsrichtung, elektrische Feldrichtung und Schwingungsebene konsistent ein und erkennt unzulässige Skizzen, in denen das elektrische Feld eine Längskomponente besitzt.",
+            "observablePerformanceEn": "For an arbitrarily rotated wave, the learner consistently draws the propagation direction, electric-field direction, and plane of vibration and identifies invalid diagrams in which the electric field has a longitudinal component."
+          },
+          {
+            "id": "infer-polarization-from-analyzer",
+            "essentialUnderstandingDe": "Ein idealisierter linearer Polarisator überträgt die elektrische Feldkomponente entlang seiner Transmissionsachse. Gekreuzte Achsen sperren ideal linear polarisiertes Licht; reale Filter, Streuung oder teilweise Polarisation begrenzen dieses Modell.",
+            "essentialUnderstandingEn": "An ideal linear polarizer transmits the electric-field component along its transmission axis. Crossed axes block ideally linearly polarized light; real filters, scattering, or partial polarization limit this model.",
+            "observablePerformanceDe": "Die lernende Person sagt qualitative Helligkeitsänderungen bei gedrehten Achsen voraus, nutzt mehrere Analysatorstellungen zur Unterscheidung von unpolarisiertem und linear polarisiertem Eingangslicht und nennt eine Grenze des Idealmodells.",
+            "observablePerformanceEn": "The learner predicts qualitative brightness changes for rotated axes, uses several analyzer orientations to distinguish unpolarized from linearly polarized incident light, and states a limitation of the ideal model."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "represent-linear-polarization-geometry",
+            "infer-polarization-from-analyzer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "wave-orientation",
+            "textDe": "Horizontale, vertikale oder räumlich gedrehte Ausbreitungsrichtung",
+            "textEn": "Horizontal, vertical, or spatially rotated propagation direction"
+          },
+          {
+            "id": "incident-state",
+            "textDe": "Unpolarisiertes, linear polarisiertes oder teilweise polarisiertes Licht",
+            "textEn": "Unpolarized, linearly polarized, or partially polarized light"
+          },
+          {
+            "id": "analyzer-orientation",
+            "textDe": "Parallele, gekreuzte oder schrittweise gedrehte Transmissionsachse",
+            "textEn": "Parallel, crossed, or progressively rotated transmission axis"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unknown-light-analyzer-series",
+            "taskDemandDe": "Eine unbekannte Lichtquelle wird mit einem drehbaren Analysator untersucht; als vereinfachte Alternativen sind nur unpolarisiertes oder linear polarisiertes Licht vorgegeben. In Fall A bleibt die Helligkeit idealisiert konstant, in Fall B tritt bei einer Stellung ein Minimum auf. Deute beide Messreihen, bestimme in Fall B die elektrische Schwingungsrichtung und zeichne die zugehörige Schwingungsebene.",
+            "taskDemandEn": "An unknown light source is examined using a rotating analyzer, with unpolarized or linearly polarized light given as the only simplified alternatives. In case A the brightness ideally remains constant; in case B a minimum occurs at one orientation. Interpret both series, determine the electric-field oscillation direction in case B, and draw the corresponding plane of vibration.",
+            "expectedPerformanceDe": "Die lernende Person ordnet Fall A im vereinfachten Modell unpolarisiertem und Fall B linear polarisiertem Licht zu, bestimmt die Schwingungsrichtung senkrecht zur Sperrstellung und stellt sie quer zur Ausbreitung dar. Sie weist darauf hin, dass reale Restintensität das Idealmodell begrenzt.",
+            "expectedPerformanceEn": "Within the simplified model, the learner assigns case A to unpolarized and case B to linearly polarized light, determines the oscillation direction perpendicular to the extinction orientation, and represents it transverse to propagation. They note that real residual intensity limits the ideal model.",
+            "understandingFocusDe": "Der Fall prüft die inverse Deutung von Beobachtungen statt bloßer Filterbenennung.",
+            "understandingFocusEn": "The case tests inverse interpretation of observations rather than mere filter naming."
+          },
+          {
+            "id": "glare-reduction-orientation",
+            "taskDemandDe": "Reflektiertes Blendlicht ist überwiegend horizontal polarisiert. Entscheide, wie die Transmissionsachse einer idealisierten Brille orientiert werden soll, sage die Wirkung bei einer Drehung um 90 Grad voraus und begründe beides mit dem Komponentenmodell.",
+            "taskDemandEn": "Reflected glare is predominantly horizontally polarized. Decide how the transmission axis of an idealized pair of glasses should be oriented, predict the effect of a 90-degree rotation, and justify both using the component model.",
+            "expectedPerformanceDe": "Die lernende Person wählt eine vertikale Transmissionsachse zur Unterdrückung der horizontalen Feldkomponente und erwartet bei horizontaler Achse eine deutlich größere Transmission. Sie grenzt die Aussage auf idealisierte lineare Polarisation und ideale Filter ein.",
+            "expectedPerformanceEn": "The learner chooses a vertical transmission axis to suppress the horizontal field component and expects much greater transmission for a horizontal axis. They limit the statement to idealized linear polarization and ideal filters.",
+            "understandingFocusDe": "Der unabhängige Anwendungstransfer verbindet Feldgeometrie mit einer begründeten Designentscheidung.",
+            "understandingFocusEn": "The independent application transfer connects field geometry with a justified design decision."
+          }
+        ]
+      },
+      "dissent": []
+    },
+    {
+      "goalId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "reason": "DE: Das Profil prüft stehende elektromagnetische Wellen für ausdrücklich benannte Feldkomponenten und Randbedingungen. Zwei Fälle trennen Superposition, zeitliches Feldverhalten und Resonatormoden, ohne pauschale Knotenregeln zu verallgemeinern. EN: The profile assesses standing electromagnetic waves for explicitly named field components and boundary conditions. Two cases distinguish superposition, temporal field behaviour, and resonator modes without overgeneralising generic node rules.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "construct-standing-field-pattern",
+            "essentialUnderstandingDe": "Zwei kohärente gleichfrequente Wellen gleicher Amplitude, die entgegengesetzt laufen, erzeugen für eine betrachtete Feldkomponente ein ortsfestes Amplitudenmuster. Knoten bleiben für diese Komponente stets null, während Bäuche zeitlich schwingen; elektrische und magnetische Muster können räumlich versetzt sein.",
+            "essentialUnderstandingEn": "Two coherent equal-frequency waves of equal amplitude travelling in opposite directions produce a stationary amplitude pattern for a selected field component. Nodes remain zero for that component while antinodes oscillate in time; electric and magnetic patterns may be spatially offset.",
+            "observablePerformanceDe": "Die lernende Person überlagert zwei gegenläufige Wellen in Skizze oder Gleichung, markiert Knoten und Bäuche der ausdrücklich benannten Komponente und beschreibt deren zeitliches Verhalten ohne ein statisches Feld anzunehmen.",
+            "observablePerformanceEn": "The learner superposes two counter-propagating waves in a diagram or equation, marks nodes and antinodes of the explicitly named component, and describes their time dependence without assuming a static field."
+          },
+          {
+            "id": "apply-explicit-boundary-conditions",
+            "essentialUnderstandingDe": "Zulässige Moden folgen aus den konkreten Randbedingungen und der Resonatorlänge. Für eine elektrische Feldkomponente, die an zwei ideal leitenden Endflächen verschwindet, gilt L = nλ/2; andere Randbedingungen können eine andere Modenfolge erzeugen.",
+            "essentialUnderstandingEn": "Allowed modes follow from the specific boundary conditions and resonator length. For an electric-field component that vanishes at two ideal conducting end surfaces, L = nλ/2; different boundary conditions can produce a different mode sequence.",
+            "observablePerformanceDe": "Die lernende Person leitet für angegebene Randbedingungen die zulässigen Wellenlängen und Frequenzen her, sagt Änderungen bei veränderter Länge voraus und verweigert eine Modenformel, wenn die Randbedingungen nicht spezifiziert sind.",
+            "observablePerformanceEn": "The learner derives allowed wavelengths and frequencies from stated boundary conditions, predicts changes under altered length, and declines to apply a mode formula when boundary conditions are unspecified."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "construct-standing-field-pattern",
+            "apply-explicit-boundary-conditions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation",
+            "textDe": "Momentane Feldkurven, Amplitudenhülle oder Gleichungsdarstellung",
+            "textEn": "Instantaneous field curves, amplitude envelope, or equation representation"
+          },
+          {
+            "id": "field-component",
+            "textDe": "Elektrische oder magnetische Feldkomponente mit expliziter Benennung",
+            "textEn": "Explicitly named electric or magnetic field component"
+          },
+          {
+            "id": "resonator-change",
+            "textDe": "Geänderte Länge, Modenzahl oder ausdrücklich geänderte Randbedingung",
+            "textEn": "Changed length, mode number, or explicitly changed boundary condition"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "conducting-end-cavity-modes",
+            "taskDemandDe": "In einem eindimensional idealisierten Resonator der Länge L verschwindet die betrachtete tangentiale elektrische Feldkomponente an beiden leitenden Enden. Konstruiere die ersten drei Moden, bestimme ihre Wellenlängen und Frequenzen und sage die Änderung der Grundfrequenz bei Verdopplung von L voraus.",
+            "taskDemandEn": "In an idealized one-dimensional resonator of length L, the selected tangential electric-field component vanishes at both conducting ends. Construct the first three modes, determine their wavelengths and frequencies, and predict the change in fundamental frequency when L is doubled.",
+            "expectedPerformanceDe": "Die lernende Person setzt elektrische Knoten an beide Enden, erhält λ_n = 2L/n und f_n = nc/(2L), zeichnet n Halbwellen und begründet die Halbierung der Grundfrequenz bei doppelter Länge.",
+            "expectedPerformanceEn": "The learner places electric nodes at both ends, obtains λ_n = 2L/n and f_n = nc/(2L), draws n half-waves, and justifies halving the fundamental frequency when length doubles.",
+            "understandingFocusDe": "Der Fall verbindet explizite Randbedingungen mit Muster, Modenzahl und Skalierung.",
+            "understandingFocusEn": "The case connects explicit boundary conditions with pattern, mode number, and scaling."
+          },
+          {
+            "id": "counterpropagating-wave-snapshots",
+            "taskDemandDe": "Zwei angegebene gegenläufige elektrische Feldwellen werden zu drei verschiedenen Zeitpunkten überlagert. Bestimme die resultierende Feldfunktion, markiere ortsfeste Knoten und Bäuche und erkläre, weshalb das Muster trotz zeitlich wechselnder Feldwerte nicht fortschreitet.",
+            "taskDemandEn": "Two specified counter-propagating electric-field waves are superposed at three different times. Determine the resulting field function, mark stationary nodes and antinodes, and explain why the pattern does not travel even though field values change with time.",
+            "expectedPerformanceDe": "Die lernende Person formt die Summe in ein Produkt aus Orts- und Zeitfaktor um, identifiziert zeitunabhängige Knotenlagen und zeitlich schwingende Bauchwerte und trennt stationäres Amplitudenmuster von statischem Feld.",
+            "expectedPerformanceEn": "The learner rewrites the sum as a product of spatial and temporal factors, identifies time-independent node positions and time-varying antinode values, and distinguishes a stationary amplitude pattern from a static field.",
+            "understandingFocusDe": "Der unabhängige Fall prüft die Entstehung des Musters direkt aus Superposition statt aus einer auswendig gelernten Resonatorzeichnung.",
+            "understandingFocusEn": "The independent case tests formation of the pattern directly from superposition rather than a memorised resonator diagram."
+          }
+        ]
+      },
+      "dissent": []
+    },
+    {
+      "goalId": "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1",
+      "reason": "DE: Das Profil prüft Interferometer über die Bilanz optischer Wege und anordnungsspezifische Geometriefaktoren. Michelson-Spiegelbewegung und ein unabhängiger Einpass-Medienfall verhindern das Auswendiglernen eines pauschalen Faktors zwei. EN: The profile assesses interferometers through optical-path accounting and setup-specific geometry factors. A Michelson mirror displacement and an independent single-pass medium case prevent memorisation of a universal factor of two.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "relate-optical-path-and-phase",
+            "essentialUnderstandingDe": "Ein Interferometer teilt kohärentes Licht auf zwei Wege und überlagert es wieder. Die optische Weglängendifferenz Δs_opt bestimmt über Δφ = 2πΔs_opt/λ das Signal; fehlende Kohärenz oder instabile Wege vermindern den Kontrast.",
+            "essentialUnderstandingEn": "An interferometer splits coherent light into two paths and recombines it. Optical path-length difference Δs_opt determines the signal through Δφ = 2πΔs_opt/λ; insufficient coherence or unstable paths reduce contrast.",
+            "observablePerformanceDe": "Die lernende Person verfolgt beide Strahlwege, bilanziert ihre optischen Längen, ordnet Maxima und Minima über die Phasendifferenz zu und sagt die Signalentwicklung bei einer gezielten Änderung voraus.",
+            "observablePerformanceEn": "The learner traces both beam paths, accounts for their optical lengths, assigns maxima and minima through phase difference, and predicts signal evolution under a deliberate change."
+          },
+          {
+            "id": "derive-setup-specific-factor",
+            "essentialUnderstandingDe": "Der Zusammenhang zwischen einer Bauteiländerung und Δs_opt folgt aus der konkreten Strahlführung. Ein verschobener Michelson-Spiegel ändert Hin- und Rückweg, während ein Medium in einem einfach durchlaufenen Arm nur seine einmalige optische Länge ändert.",
+            "essentialUnderstandingEn": "The relation between a component change and Δs_opt follows from the specific beam path. A displaced Michelson mirror changes outward and return paths, whereas a medium in a single-pass arm changes its optical length only once.",
+            "observablePerformanceDe": "Die lernende Person leitet den Geometriefaktor aus einer neuen Skizze her, bestimmt aus gezählten Perioden eine Längen- oder Brechzahländerung und prüft Vorzeichen, Einheit und Plausibilität.",
+            "observablePerformanceEn": "The learner derives the geometry factor from a fresh diagram, determines a length or refractive-index change from counted periods, and checks sign, units, and plausibility."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "relate-optical-path-and-phase",
+            "derive-setup-specific-factor"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "interferometer-geometry",
+            "textDe": "Michelson-Hin-und-Rückweg oder Mach-Zehnder-Einpassweg",
+            "textEn": "Michelson out-and-back path or Mach-Zehnder single-pass path"
+          },
+          {
+            "id": "changed-property",
+            "textDe": "Geometrische Weglänge, Brechungsindex oder Kohärenz",
+            "textEn": "Geometric path length, refractive index, or coherence"
+          },
+          {
+            "id": "observable",
+            "textDe": "Gezählte Perioden, Intensitätskurve oder Phasenverschiebung",
+            "textEn": "Counted periods, intensity curve, or phase shift"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "michelson-mirror-displacement",
+            "taskDemandDe": "In einem Michelson-Interferometer wird ein Spiegel um Δx entlang des Strahls verschoben; währenddessen werden N vollständige Helligkeitsperioden gezählt. Leite den Zusammenhang zwischen Δx, N und λ aus der Strahlführung her und bestimme eine unbekannte Spiegelbewegung.",
+            "taskDemandEn": "In a Michelson interferometer, one mirror is displaced by Δx along the beam while N complete brightness periods are counted. Derive the relation between Δx, N, and λ from the beam path and determine an unknown mirror displacement.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die Änderung von Hin- und Rückweg, erhält Δs_opt = 2Δx und für N Perioden 2Δx = Nλ. Sie prüft die Größenordnung und erklärt, warum der Faktor zwei geometrisch und nicht universell ist.",
+            "expectedPerformanceEn": "The learner recognises the change in outward and return paths, obtains Δs_opt = 2Δx and 2Δx = Nλ for N periods. They check the order of magnitude and explain why the factor of two is geometric rather than universal.",
+            "understandingFocusDe": "Der Fall prüft die Herleitung des bekannten Michelson-Faktors aus dem tatsächlichen Weg.",
+            "understandingFocusEn": "The case tests derivation of the familiar Michelson factor from the actual path."
+          },
+          {
+            "id": "mach-zehnder-gas-cell",
+            "taskDemandDe": "In einem Mach-Zehnder-Interferometer durchläuft ein Arm eine Gaszelle der Länge l genau einmal. Beim Druckwechsel werden N Signalperioden beobachtet. Stelle die optische Weglängenänderung auf und bestimme die Änderung des Brechungsindex; vergleiche mit der falschen Annahme eines doppelten Durchlaufs.",
+            "taskDemandEn": "In a Mach-Zehnder interferometer, one arm passes through a gas cell of length l exactly once. A pressure change produces N signal periods. Set up the optical path-length change and determine the refractive-index change; compare it with the incorrect assumption of a double pass.",
+            "expectedPerformanceDe": "Die lernende Person erhält Δs_opt = lΔn und damit lΔn = Nλ, nicht 2lΔn. Sie begründet den Faktor aus der Einpass-Geometrie und nennt Temperaturstabilität oder endliche Kohärenz als Messgrenze.",
+            "expectedPerformanceEn": "The learner obtains Δs_opt = lΔn and hence lΔn = Nλ, not 2lΔn. They justify the factor from the single-pass geometry and state temperature stability or finite coherence as a measurement limitation.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft, ob optische Weglänge flexibel bilanziert statt eine Formel übertragen wird.",
+            "understandingFocusEn": "The independent transfer tests whether optical path length is flexibly accounted for rather than a formula copied."
+          }
+        ]
+      },
+      "dissent": []
+    }
+  ]
+}

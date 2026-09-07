@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-v1-b044-current-keep6-v1",
+  "reviewedAt": "2026-09-07T14:59:36Z",
+  "reviewer": "OpenAI Codex /root/goal_book_build_generator; exact model unavailable; content-specific AI authoring",
+  "goals": [
+    {
+      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "coherent-understanding",
+            "essentialUnderstandingDe": "Koordinatentripel beschreiben Punkte relativ zum Ursprung und Vektoren als gerichtete Komponenten; eine Vektorzeichnung darf parallel verschoben werden, ohne den Vektor zu ändern.",
+            "essentialUnderstandingEn": "Coordinate triples describe points relative to the origin and vectors through directed components; translating a vector arrow does not change the vector.",
+            "observablePerformanceDe": "Die Person trägt einen Punkt und einen unabhängig gegebenen Vektor ein, liest ein zweites Beispiel ab und unterscheidet Ortsbindung von Richtung.",
+            "observablePerformanceEn": "The learner plots a point and an independently supplied vector, reads a second example, and distinguishes position dependence from direction."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "coherent-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "point-vs-displacement",
+            "textDe": "Punktlage und gerichtete Verschiebung mit nicht im Ursprung liegendem Anfangspunkt vergleichen.",
+            "textEn": "Compare point position and directed displacement starting away from the origin."
+          },
+          {
+            "id": "input-direction",
+            "textDe": "Zwischen Koordinatentripel, Koordinatenweg und räumlichem Pfeil wechseln.",
+            "textEn": "Switch among coordinate triples, coordinate paths and spatial arrows."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "plot-point-and-free-vector",
+            "taskDemandDe": "In einem selbst beschrifteten räumlichen Koordinatensystem sind P=(2,-1,3) und v=(-1,2,0) darzustellen. Erläutere, was das Tripel jeweils beschreibt und wie sich Ortsvektor OP und der frei platzierbare Pfeil v unterscheiden.",
+            "taskDemandEn": "Represent P=(2,-1,3) and v=(-1,2,0) in a spatial coordinate system that you label yourself. Explain what each triple describes and how the position vector OP differs from the freely placed arrow v.",
+            "expectedPerformanceDe": "Trägt P relativ zum Ursprung ein, zeichnet v mit negativer x-, positiver y- und keiner z-Komponente und erläutert Punktlage gegenüber gerichteter Verschiebung. Eine konsistente selbst gewählte Parallelprojektion ist zulässig.",
+            "expectedPerformanceEn": "Plots P relative to the origin, draws v with negative x, positive y and zero z component, and explains point position versus directed displacement. A consistently chosen parallel projection is acceptable.",
+            "understandingFocusDe": "Koordinatenrolle und geometrische Darstellung werden aktiv verbunden.",
+            "understandingFocusEn": "The coordinate role is actively connected to the geometric representation."
+          },
+          {
+            "id": "read-displaced-arrow",
+            "taskDemandDe": "Ein räumlicher Pfeil beginnt bei A=(3,0,-2) und endet bei B=(3,4,1). Lies seine Komponenten ab und zeichne denselben Vektor zusätzlich mit Anfangspunkt im Ursprung. Erläutere, ob B und der Endpunkt des neuen Pfeils derselbe Punkt sind.",
+            "taskDemandEn": "A spatial arrow starts at A=(3,0,-2) and ends at B=(3,4,1). Read its components and draw the same vector starting at the origin. Explain whether B and the endpoint of the new arrow are the same point.",
+            "expectedPerformanceDe": "Erkennt v=(0,4,3), setzt den originären Pfeilendpunkt auf (0,4,3) und unterscheidet ihn von B. Die unveränderte Verschiebung benötigt denselben Komponentenweg, nicht denselben absoluten Endpunkt.",
+            "expectedPerformanceEn": "Identifies v=(0,4,3), places the origin-based arrow endpoint at (0,4,3), and distinguishes it from B. The unchanged displacement requires the same component steps, not the same absolute endpoint.",
+            "understandingFocusDe": "Der neue Fall wechselt von vorgegebenem Tripel zu einem nicht im Ursprung verankerten Pfeil.",
+            "understandingFocusEn": "The fresh case changes from a supplied triple to an arrow not anchored at the origin."
+          }
+        ]
+      },
+      "reason": "Punkte und Vektoren im Raum koordinatisieren: zwei konkret neu ausgearbeitete Fälle verbinden die positive Verständnisleistung mit beobachtbarer Anwendung und struktureller Variation. Beide Fälle wurden während der Autorenschaft rechnerisch/geometrisch geprüft. Die versiegelten D-Runden dienen nur dem unveränderten Seitenkontext; sie sind keine nachträglich behauptete unabhängige P-Fallfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "7680701b-35e3-519e-beaa-09753e733756",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "coherent-understanding",
+            "essentialUnderstandingDe": "Ein Schrägbild erhält Parallelität und zeigt die Vorderfläche maßgerecht, während Tiefenrichtung und Verkürzungsfaktor als Darstellungswahl festgelegt werden.",
+            "essentialUnderstandingEn": "An oblique sketch preserves parallelism and shows the front face to scale, while depth direction and shortening factor are specified representation choices.",
+            "observablePerformanceDe": "Die Person zeichnet einen Quader mit gegebenen Maßen, verwendet parallele Tiefenkanten und erklärt reale gegenüber gezeichneten Tiefenlängen.",
+            "observablePerformanceEn": "The learner sketches a cuboid with given dimensions, uses parallel depth edges, and explains actual versus drawn depth lengths."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "coherent-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "projection-choice",
+            "textDe": "Vorderseite, Tiefenwinkel und Verkürzungsfaktor gezielt ändern.",
+            "textEn": "Deliberately change the front face, depth angle and shortening factor."
+          },
+          {
+            "id": "actual-vs-drawn-depth",
+            "textDe": "Reale Körpermaße von ihrer verkürzten Zeichnung unterscheiden.",
+            "textEn": "Distinguish actual solid dimensions from their shortened drawing."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "construct-half-depth-view",
+            "taskDemandDe": "Zeichne ohne Vorlage ein Schrägbild eines Quaders: Vorderfläche 5 cm breit und 2 cm hoch, reale Tiefe 4 cm. Die Tiefenkanten sollen bei 45 Grad auf die Hälfte verkürzt werden. Beschreibe die Konstruktion und kennzeichne reale gegenüber gezeichneten Maßen.",
+            "taskDemandEn": "Without a template, draw an oblique sketch of a cuboid with a front face 5 cm wide and 2 cm high and an actual depth of 4 cm. Depth edges are to be drawn at 45 degrees with a shortening factor of one half. Explain the construction and distinguish actual from drawn dimensions.",
+            "expectedPerformanceDe": "Konstruiert die Vorderfläche mit 5×2 cm, vier parallele Tiefenkanten von 2 cm und eine parallele kongruente Rückfläche; erläutert, dass 2 cm eine Zeichenlänge für 4 cm Tiefe sind.",
+            "expectedPerformanceEn": "Constructs a 5×2 cm front face, four parallel depth edges of 2 cm, and a parallel congruent rear face; explains that 2 cm is the drawing length for 4 cm of depth.",
+            "understandingFocusDe": "Die Tiefenverkürzung gehört zur gewählten Darstellung und verändert den Körper nicht.",
+            "understandingFocusEn": "Depth shortening belongs to the chosen representation and does not change the solid."
+          },
+          {
+            "id": "change-front-and-projection",
+            "taskDemandDe": "Stelle denselben Quader in einer zweiten selbstständigen Zeichnung mit der 4×2-cm-Seite als Vorderfläche dar. Die neue reale Tiefe beträgt 5 cm; vorgegeben sind 30 Grad und der Verkürzungsfaktor 1/3. Erkläre, was gegenüber der ersten Ansicht anders gezeichnet werden muss.",
+            "taskDemandEn": "Represent the same cuboid in a second independent drawing with the 4×2 cm face at the front. The new actual depth is 5 cm; the specified angle is 30 degrees and the shortening factor is one third. Explain what must be drawn differently from the first view.",
+            "expectedPerformanceDe": "Zeichnet 4×2 cm unverzerrt vorne und parallele Tiefenkanten der Länge 5/3 cm bei 30 Grad. Erkennt trotz anderer Vorderseite, Tiefenrichtung und Verkürzung dieselben realen Kantenlängen 5,4,2 cm.",
+            "expectedPerformanceEn": "Draws an undistorted 4×2 cm front and parallel depth edges of length 5/3 cm at 30 degrees. Recognizes the same actual edge lengths 5,4,2 cm despite changed front face, depth direction, and shortening.",
+            "understandingFocusDe": "Frischer Perspektiv- und Bezugsflächenwechsel statt bloßer Größenänderung.",
+            "understandingFocusEn": "Fresh change of projection and reference face rather than a mere size change."
+          }
+        ]
+      },
+      "reason": "Schrägbilder räumlicher Objekte zeichnen: zwei konkret neu ausgearbeitete Fälle verbinden die positive Verständnisleistung mit beobachtbarer Anwendung und struktureller Variation. Beide Fälle wurden während der Autorenschaft rechnerisch/geometrisch geprüft. Die versiegelten D-Runden dienen nur dem unveränderten Seitenkontext; sie sind keine nachträglich behauptete unabhängige P-Fallfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "coherent-understanding",
+            "essentialUnderstandingDe": "Die Reihenfolge eines Punkttripels benennt drei gerichtete Koordinaten; eine Nullkomponente kennzeichnet die Lage in einer entsprechenden Koordinatenebene.",
+            "essentialUnderstandingEn": "The order of a point triple identifies three directed coordinates; a zero component indicates membership of the corresponding coordinate plane.",
+            "observablePerformanceDe": "Die Person erläutert einen Koordinatenweg zu einem Punkt und ordnet Punkt, Projektion und angegebenes Tripel in einer Darstellung einander zu.",
+            "observablePerformanceEn": "The learner explains a coordinate path to a point and matches the point, its projection, and its triple in a representation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "coherent-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "coordinate-signs",
+            "textDe": "Negative und verschwindende Komponenten in verschiedenen Raumlagen verwenden.",
+            "textEn": "Use negative and zero components in different spatial positions."
+          },
+          {
+            "id": "point-vs-projection",
+            "textDe": "Koordinaten aus einem Weg oder aus einer Projektion samt Höhe erschließen.",
+            "textEn": "Infer coordinates from a path or from a projection together with height."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "verbal-route-to-triple",
+            "taskDemandDe": "Ein Punkt liegt vom Ursprung aus zwei Einheiten in negativer x-Richtung, ohne Verschiebung in y-Richtung und drei Einheiten in positiver z-Richtung. Gib sein Tripel an, skizziere einen Koordinatenweg und beschreibe die Bedeutung der Nullkomponente.",
+            "taskDemandEn": "A point lies two units in the negative x direction from the origin, with no displacement in y and three units in the positive z direction. Give its triple, sketch a coordinate path, and explain the zero component.",
+            "expectedPerformanceDe": "Gibt P=(-2,0,3) an, ordnet alle drei Einträge den Achsen zu und beschreibt P als Punkt der xz-Ebene. Koordinatenweg und Vorzeichen sind konsistent.",
+            "expectedPerformanceEn": "Gives P=(-2,0,3), assigns all three entries to the axes, and describes P as a point in the xz plane. Coordinate path and signs are consistent.",
+            "understandingFocusDe": "Richtung, Reihenfolge und Ebenenlage folgen aus dem Punkttripel.",
+            "understandingFocusEn": "Direction, order, and plane membership follow from the point triple."
+          },
+          {
+            "id": "recover-point-from-projection",
+            "taskDemandDe": "Die senkrechte Projektion eines neuen Punktes Q auf die xy-Ebene ist Qxy=(-3,2,0). Q liegt zwei Einheiten unterhalb dieser Ebene. Beschreibe Q durch Koordinaten und zeichne Q sowie Qxy in einer selbst gewählten räumlichen Ansicht. Erläutere den Unterschied beider Punkte.",
+            "taskDemandEn": "The perpendicular projection of a new point Q onto the xy plane is Qxy=(-3,2,0). Q lies two units below this plane. Describe Q using coordinates and draw Q and Qxy in a spatial view of your choice. Explain the difference between the two points.",
+            "expectedPerformanceDe": "Bestimmt Q=(-3,2,-2), erhält x und y und erklärt, dass die Projektion nur die z-Koordinate auf null setzt. Unterscheidet Lageinformation aus Draufsicht von der zusätzlich gegebenen Höheninformation.",
+            "expectedPerformanceEn": "Determines Q=(-3,2,-2), retains x and y, and explains that the projection only sets z to zero. Distinguishes positional information from the top view from the additionally supplied height.",
+            "understandingFocusDe": "Die inverse Beschreibung aus Projektion und negativer Höhe verlangt eine andere Informationsrichtung.",
+            "understandingFocusEn": "Reconstructing the point from a projection and negative height changes the direction of information."
+          }
+        ]
+      },
+      "reason": "Punkte im Raum mit Koordinaten beschreiben: zwei konkret neu ausgearbeitete Fälle verbinden die positive Verständnisleistung mit beobachtbarer Anwendung und struktureller Variation. Beide Fälle wurden während der Autorenschaft rechnerisch/geometrisch geprüft. Die versiegelten D-Runden dienen nur dem unveränderten Seitenkontext; sie sind keine nachträglich behauptete unabhängige P-Fallfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "coherent-understanding",
+            "essentialUnderstandingDe": "Flächeninhalt hängt von geeigneter Grundseite und zugehöriger senkrechter Höhe ab; eine schräge Seitenlänge darf nicht ohne Begründung als Höhe verwendet werden.",
+            "essentialUnderstandingEn": "Area depends on a suitable base and its corresponding perpendicular height; a sloping side cannot be substituted for the height without justification.",
+            "observablePerformanceDe": "Die Person identifiziert relevante Figureneigenschaften, wählt Grundseite und Höhe und berechnet einen Flächeninhalt mit nachvollziehbarer geometrischer Begründung.",
+            "observablePerformanceEn": "The learner identifies relevant figure properties, chooses a base and height, and calculates an area with a traceable geometric justification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "coherent-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "figure-structure",
+            "textDe": "Parallelogramm und Dreieck anhand ihrer geometrischen Eigenschaften behandeln.",
+            "textEn": "Use the geometric properties of parallelograms and triangles."
+          },
+          {
+            "id": "altitude-position",
+            "textDe": "Innere beziehungsweise äußere senkrechte Höhe zur gewählten Grundseite begründen.",
+            "textEn": "Justify an internal or external perpendicular altitude for the chosen base."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "choose-perpendicular-height",
+            "taskDemandDe": "Ein Parallelogramm hat die Eckpunkte A=(0,0), B=(6,0), C=(8,3), D=(2,3). Bestimme seine Fläche und erkläre anhand einer eigenen Skizze, welche Strecke als Höhe zur Grundseite AB dient.",
+            "taskDemandEn": "A parallelogram has vertices A=(0,0), B=(6,0), C=(8,3), D=(2,3). Determine its area and explain with your own sketch which segment serves as the height for base AB.",
+            "expectedPerformanceDe": "Nutzt AB=6 und den senkrechten Abstand der parallelen Geraden y=0 und y=3, also h=3, und erhält A=18 Flächeneinheiten. Erklärt, weshalb AD mit Länge sqrt(13) eine Seite und nicht die zu AB gehörende Höhe ist.",
+            "expectedPerformanceEn": "Uses AB=6 and the perpendicular distance between the parallel lines y=0 and y=3, hence h=3, and obtains 18 square units. Explains why AD, of length sqrt(13), is a side rather than the height corresponding to AB.",
+            "understandingFocusDe": "Eigenschaften der parallelen Grund- und Decklinie bestimmen die für die Fläche relevante Höhe.",
+            "understandingFocusEn": "Properties of the parallel base and opposite line determine the height relevant to area."
+          },
+          {
+            "id": "external-triangle-altitude",
+            "taskDemandDe": "Ein neues Dreieck besitzt A=(0,0), B=(4,0), C=(6,3). Zeichne eine passende Höhe zu AB und berechne die Fläche. Erläutere, warum eine Höhe außerhalb der Dreiecksfläche die Rechnung nicht ungültig macht.",
+            "taskDemandEn": "A new triangle has A=(0,0), B=(4,0), C=(6,3). Draw a suitable altitude to AB and calculate the area. Explain why an altitude outside the triangle does not invalidate the calculation.",
+            "expectedPerformanceDe": "Verlängert die Grundlinie bis (6,0), zeichnet die senkrechte Höhe 3 und erhält A=4·3/2=6 Flächeneinheiten. Die Höhe ist der Abstand zur tragenden Grundgeraden; der Faktor 1/2 gehört zum Dreieck.",
+            "expectedPerformanceEn": "Extends the base line to (6,0), draws the perpendicular altitude of 3, and obtains 4·3/2=6 square units. The altitude is the distance to the line containing the base; the factor one half belongs to the triangle.",
+            "understandingFocusDe": "Ein neuer Figurentyp mit außen liegender Höhe prüft Eigenschaftsnutzung statt Vorlagenkopie.",
+            "understandingFocusEn": "A different figure type with an external altitude tests use of properties rather than copying a template."
+          }
+        ]
+      },
+      "reason": "Eigenschaften ebener Figuren für Flächenberechnungen nutzen: zwei konkret neu ausgearbeitete Fälle verbinden die positive Verständnisleistung mit beobachtbarer Anwendung und struktureller Variation. Beide Fälle wurden während der Autorenschaft rechnerisch/geometrisch geprüft. Die versiegelten D-Runden dienen nur dem unveränderten Seitenkontext; sie sind keine nachträglich behauptete unabhängige P-Fallfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "coherent-understanding",
+            "essentialUnderstandingDe": "Kongruenz bedeutet Deckungsgleichheit unter längenerhaltenden Bewegungen; passende entsprechende Daten begründen Kongruenz, bloße optische Ähnlichkeit nicht.",
+            "essentialUnderstandingEn": "Congruence means superposability under distance-preserving transformations; appropriate corresponding data establish congruence, not visual resemblance alone.",
+            "observablePerformanceDe": "Die Person ordnet entsprechende Seiten beziehungsweise Winkel zu, wählt ein gültiges Kongruenzkriterium und begründet eine konkrete Entscheidung.",
+            "observablePerformanceEn": "The learner matches corresponding sides or angles, selects a valid congruence criterion, and justifies a concrete decision."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "coherent-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "correspondence",
+            "textDe": "Entsprechungen auch bei vertauschter oder gespiegelter Beschriftung bestimmen.",
+            "textEn": "Determine correspondences even with reordered or mirrored labels."
+          },
+          {
+            "id": "sufficiency",
+            "textDe": "Kongruenz mit passenden invarianten Daten begründen und von bloßer Flächengleichheit unterscheiden.",
+            "textEn": "Justify congruence using appropriate invariant data and distinguish it from equal area alone."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sss-correspondence",
+            "taskDemandDe": "Zwei unabhängig skizzierte Dreiecke erfüllen AB=6, BC=7, AC=8 sowie XY=8, YZ=7, XZ=6. Das zweite Dreieck ist spiegelverkehrt angeordnet. Entscheide über Kongruenz, gib die richtige Eckpunktzuordnung an und begründe das verwendete Kriterium.",
+            "taskDemandEn": "Two independently sketched triangles satisfy AB=6, BC=7, AC=8 and XY=8, YZ=7, XZ=6. The second triangle is mirrored. Decide whether they are congruent, give the correct vertex correspondence, and justify the criterion used.",
+            "expectedPerformanceDe": "Ordnet A↔X, B↔Z, C↔Y zu und begründet ABC≅XZY durch SSS. Erklärt, dass die gespiegelte Ansicht Längen nicht verändert; Seiten müssen entsprechend und nicht bloß in alphabetischer Reihenfolge verglichen werden.",
+            "expectedPerformanceEn": "Matches A↔X, B↔Z, C↔Y and justifies ABC≅XZY by SSS. Explains that a mirrored view preserves lengths; corresponding sides, not just alphabetically ordered ones, must be compared.",
+            "understandingFocusDe": "Korrespondenz und ein tragfähiges Kriterium begründen die Kongruenz.",
+            "understandingFocusEn": "Correspondence and a valid criterion establish congruence."
+          },
+          {
+            "id": "equal-area-data-insufficiency",
+            "taskDemandDe": "Zwei rechteckige Platten besitzen Seitenlängen 2×6 und 3×4. Beide haben Fläche 12. Entscheide, ob sie durch Verschieben, Drehen oder Spiegeln zur Deckung gebracht werden können, und begründe die Aussage geometrisch.",
+            "taskDemandEn": "Two rectangular plates have side lengths 2×6 and 3×4. Both have area 12. Decide whether translation, rotation, or reflection can make them coincide, and justify the statement geometrically.",
+            "expectedPerformanceDe": "Verneint Kongruenz, weil die Seitenlängenpaare {2,6} und {3,4} nicht übereinstimmen und diese unter den genannten Bewegungen erhalten bleiben. Gleiche Fläche allein ist hier kein ausreichendes Kongruenzkriterium.",
+            "expectedPerformanceEn": "Rejects congruence because the side-length pairs {2,6} and {3,4} differ and are preserved under the stated transformations. Equal area alone is not a sufficient congruence criterion here.",
+            "understandingFocusDe": "Eine neue Figurenklasse und unzureichende Daten verlangen eine begründete Negativentscheidung.",
+            "understandingFocusEn": "A different figure class and insufficient data require a justified negative decision."
+          }
+        ]
+      },
+      "reason": "Kongruenzbeziehungen ebener Figuren untersuchen: zwei konkret neu ausgearbeitete Fälle verbinden die positive Verständnisleistung mit beobachtbarer Anwendung und struktureller Variation. Beide Fälle wurden während der Autorenschaft rechnerisch/geometrisch geprüft. Die versiegelten D-Runden dienen nur dem unveränderten Seitenkontext; sie sind keine nachträglich behauptete unabhängige P-Fallfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "coherent-understanding",
+            "essentialUnderstandingDe": "Der euklidische Betrag ist die nichtnegative Länge einer Verschiebung; in orthonormalen Koordinaten ergibt er sich durch räumlichen Pythagoras aus den Komponenten.",
+            "essentialUnderstandingEn": "The Euclidean magnitude is the nonnegative length of a displacement; in orthonormal coordinates it follows from the spatial Pythagorean relationship between components.",
+            "observablePerformanceDe": "Die Person berechnet den Betrag eines Raumvektors und erklärt die Quadratsumme über rechtwinklige Teilstrecken statt Vektorkomponenten bloß zu addieren.",
+            "observablePerformanceEn": "The learner calculates a spatial vector magnitude and explains the sum of squares using perpendicular component segments instead of merely adding components."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "coherent-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "signs-and-norm",
+            "textDe": "Vorzeichen von Komponenten bei nichtnegativer euklidischer Länge deuten.",
+            "textEn": "Interpret component signs with a nonnegative Euclidean length."
+          },
+          {
+            "id": "forward-vs-inverse",
+            "textDe": "Von bekannten Komponenten zum Betrag und vom Betrag zu möglichen fehlenden Komponenten wechseln.",
+            "textEn": "Switch from known components to magnitude and from magnitude to possible missing components."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "negative-component-magnitude",
+            "taskDemandDe": "Bestimme den Betrag von v=(-2,3,6) in einem orthonormalen Koordinatensystem. Erläutere mit rechtwinkligen Teilstrecken, wie die Komponenten zur Verschiebungslänge beitragen.",
+            "taskDemandEn": "Determine the magnitude of v=(-2,3,6) in an orthonormal coordinate system. Explain using perpendicular component segments how the components contribute to displacement length.",
+            "expectedPerformanceDe": "Erhält sqrt(4+9+36)=7; erklärt zunächst die Länge sqrt(13) der xy-Projektion und dann den räumlichen Pythagoras. Das negative Vorzeichen der x-Komponente gibt Richtung und keine negative Länge an.",
+            "expectedPerformanceEn": "Obtains sqrt(4+9+36)=7; first explains the xy-projection length sqrt(13) and then the spatial Pythagorean relation. The negative x component indicates direction rather than a negative length.",
+            "understandingFocusDe": "Die Norm wird aus orthogonalen Komponenten geometrisch erklärt.",
+            "understandingFocusEn": "The norm is geometrically explained through orthogonal components."
+          },
+          {
+            "id": "inverse-height-and-sign",
+            "taskDemandDe": "Ein neuer Vektor hat Komponenten (3,4,z) und Betrag13. Bestimme alle möglichen reellen z und erkläre geometrisch, weshalb die Länge allein das Vorzeichen nicht festlegt.",
+            "taskDemandEn": "A new vector has components (3,4,z) and magnitude13. Determine all possible real values of z and explain geometrically why length alone does not determine the sign.",
+            "expectedPerformanceDe": "Aus9+16+z²=169 folgt z²=144 und z=±12. Die beiden Vektoren liegen spiegelbildlich zur xy-Ebene und haben deshalb gleiche Länge bei unterschiedlicher z-Richtung.",
+            "expectedPerformanceEn": "From9+16+z²=169 obtains z²=144 and z=±12. The two vectors are mirror images across the xy plane and therefore have the same length with different z directions.",
+            "understandingFocusDe": "Die inverse Bestimmung einer Komponente prüft Normverständnis und Vorzeicheninvarianz.",
+            "understandingFocusEn": "Inferring a component inversely tests norm understanding and sign invariance."
+          }
+        ]
+      },
+      "reason": "Betrag eines Vektors im Raum bestimmen: zwei konkret neu ausgearbeitete Fälle verbinden die positive Verständnisleistung mit beobachtbarer Anwendung und struktureller Variation. Beide Fälle wurden während der Autorenschaft rechnerisch/geometrisch geprüft. Die versiegelten D-Runden dienen nur dem unveränderten Seitenkontext; sie sind keine nachträglich behauptete unabhängige P-Fallfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    }
+  ]
+}

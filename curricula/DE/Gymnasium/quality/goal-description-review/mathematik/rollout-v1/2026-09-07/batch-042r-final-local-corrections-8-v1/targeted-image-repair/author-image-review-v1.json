@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/goal_book_ci_integration",
+  "reviewedAt": "2026-09-07 14:30:01 UTC",
+  "authority": "ai_candidate",
+  "actualRasterInspection": true,
+  "priorInvolvement": "Authored targeted prompts after own current A-block and root confirmation; this is actual author-side candidate inspection, not a fresh independent thread.",
+  "candidates": [
+    {
+      "goalId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "imagePath": "tmp/goal-visualizations/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d/generated/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.generated.2026-09-07T14-23-22-996Z.jpg",
+      "sha256": "0c5a0f7f9f99a46c9f3f1d2987067105f3ba4f0abb8f2a9ef5f3634b1a18dfa2",
+      "decision": "reject",
+      "findings": [
+        "New x axis is visibly non-linear:0,.25,.5,1 and2 occupy roughly equally spaced or inconsistent gaps. Correct coordinate text has been attached to warped locations.",
+        "At origin≈276 and x1≈735, x.5 must sit≈505.5, not≈581; x.25 must sit≈390.75, not≈432. Thus the new coordinate labels still do not rescue the curve.",
+        "The four limit formulas and value2 remain correct. Retain as rejected attempt; regenerate only the flawed left plot with truly equal quarter-unit spacing."
+      ]
+    },
+    {
+      "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c",
+      "imagePath": "tmp/goal-visualizations/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c/generated/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c.generated.2026-09-07T14-23-21-417Z.jpg",
+      "sha256": "63330caeb94155284c50e874671871993391d2187f3ce47684e66755b9463066",
+      "decision": "pass",
+      "checks": [
+        "Actually viewed entire2752x1536 raster, including derivative formula, exponential/polynomial mini-panels, sign table and main graph.",
+        "Main graph now has linear x0..6 at equal spacing and linear y0..0.6 ticks; pointx4 is about0.293, not the old0.12, and pointx3≈0.448 correctly remains close to peak0.541.",
+        "Function begins with horizontal tangent at0, peaks atx2 with horizontal tangent, and positive tail atx6≈0.089 stays above axis.",
+        "f′=exp(-x)x(2−x), exp(-x)>0, signs+on(0,2) and−after2, H(2,4/e²), domainx≥0 all agree; unchanged learner text preserved."
+      ]
+    }
+  ],
+  "imported": false,
+  "humanApproval": false
+}

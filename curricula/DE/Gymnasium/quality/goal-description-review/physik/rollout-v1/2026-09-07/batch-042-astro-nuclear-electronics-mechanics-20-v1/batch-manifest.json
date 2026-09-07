@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1.config.json",
+  "configDigest": "sha256:01d8dc3b3a8b27dadfbab68c7488a14f71595f1ea8370377bca388e8cf947236",
+  "goalIds": [
+    "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+    "f67550ac-df22-5a3e-8172-f04642efca64",
+    "a12fddce-0215-58d9-bd91-21be8a960d25",
+    "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+    "3b50255a-6b01-578b-8f5c-4383536a3221",
+    "6e7c35e0-7a38-5996-a42e-005038eff0db",
+    "e6a50c74-c922-508c-aa27-07bac2566955",
+    "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+    "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+    "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+    "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+    "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+    "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+    "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+    "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+    "1232febe-868a-4dac-b4c2-e35789434601",
+    "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+    "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+    "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+    "12260012-cf04-5409-b57d-f5b3a46d9126"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 465,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:3b065df93c7efa0b226f7294b5d26536ca9d6e1dca32471ece21395d1ab3151f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:18b8df380756858d09549ded32926e0a8d42a11e8e948d768d3e78a78d19dbda",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b575826e51dcbf5430656d9c22c44de38c11963160918cd998a74edb69f8e100",
+    "reviewInputFingerprint": "sha256:48c0f02fbc265e0ce1c644940fdb1d1a4a6788647ff079ba654a60faec1fe67a",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-a",
+        "campaignDigest": "sha256:e10c2930bc3f630327890c8d3cf8544d629f8d52f5599b7761923b377f931cd4",
+        "roundId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-independent-a",
+        "batchId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ef10768f22209c42b9953d6454ec70f54ff6b52c3c1c87961003facfce4b8ad7"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-b",
+        "campaignDigest": "sha256:f63fcd0775c90c1130144837e3645222d665a7fc55aea34f8c2aa93c452dc442",
+        "roundId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-independent-b",
+        "batchId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:5aca33029ad8b2bb990bcd098f4fedee29d53418ee5d7335c79f8639dcd8654a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

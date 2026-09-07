@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-07T05:55:46.306Z
+Generated: 2026-09-07T16:23:29.879Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -24,7 +24,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 237 |
+| Review-Ledger-Dateien | 239 |
 | Offene Provider-Deferred-Ziele | 73 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -37,8 +37,9 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 5 |
+| `ai-reviewed` | 6 |
 | `approved` | 20 |
-| `pilot` | 699 |
+| `pilot` | 693 |
 
 ## Ledger Decisions
 
@@ -47,6 +48,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted` | 2 |
 | `accepted_after_regeneration` | 8 |
 | `accepted_after_user_issue_correction` | 8 |
+| `accepted_ai` | 2 |
 | `accepted_context_visualization` | 2 |
 | `accepted_documented_repo_native_fallback` | 3 |
 | `accepted_existing_asset` | 11 |
@@ -55,7 +57,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot_after_fresh_ai_review_correction` | 1 |
 | `accepted_pilot_after_provider_retry` | 2 |
 | `accepted_pilot_after_reference_guided_regeneration` | 1 |
-| `accepted_pilot_after_regeneration` | 166 |
+| `accepted_pilot_after_regeneration` | 172 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_attempt` | 13 |
 | `accepted_pilot_after_second_regeneration` | 15 |
@@ -94,8 +96,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-checkpoint-split-reuse-2026-09-05.md` |
-| Latest ledger status | `completed_pilot` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-b042s-final-image-repairs-2026-09-07.md` |
+| Latest ledger status | - |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
 

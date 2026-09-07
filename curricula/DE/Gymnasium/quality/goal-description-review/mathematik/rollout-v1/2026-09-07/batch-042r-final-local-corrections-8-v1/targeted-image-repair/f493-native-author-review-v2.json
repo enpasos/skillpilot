@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/goal_book_ci_integration",
+  "reviewedAt": "2026-09-07 14:40:06 UTC",
+  "decision": "pass",
+  "imagePath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042r-final-local-corrections-8-v1/targeted-image-repair/f493-native-fallback-v2.png",
+  "imageSha256": "71c5c1b7c91dd8a1cc6189fdf241541bae4c8f5888ae83401691af3c6c0d0712",
+  "svgPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042r-final-local-corrections-8-v1/targeted-image-repair/f493-native-fallback-v2.svg",
+  "svgSha256": "97fd27ea5587d16e15c0870689ca5364ec84c8ae25656516e970a596523af856",
+  "rendererPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042r-final-local-corrections-8-v1/targeted-image-repair/render-f493-native-fallback-v2.mjs",
+  "rendererSha256": "49d87df350a5a209ea4f02a9ec99939696d5011affef4f909837b4a250765d1e",
+  "actualFullRasterViewed": true,
+  "checks": [
+    "All1600x900 image seen at original resolution; function/axis label separated fromy6; formulas legible and no overlap/clipping.",
+    "Exact2001-point1/sqrt(x) path on independent linear scales. Native sampling check maximum coordinate roundoff error0.00059077px; no hand-shaped high-singularity segment.",
+    "x=1/16 corresponds toy4, x1/4toy2, x1/2tosqrt2, endpoint(1,1); x0 excluded and singular; graph clipping above6 explicitly disclosed.",
+    "Shading represents0<x≤1 below positivef within visiblewindow, with x1boundarytoheight1; continuation abovewindow not presented as a bounded function.",
+    "For0<a<1, ordinary integral equals2−2sqrt(a); limitasatends0+equals2. PositiveexamplealonejustifiesIntegralwert=Flächeninhalt,notageneralunsignedclaim."
+  ],
+  "narrowException": "Root expressly approved after two targeted Nano edits remained wrong: first non-linear quarter/half/unit x placement, second high branch near0 wrong despite correct labelled points. This deterministic replacement is necessity-based, not a general provider switch.",
+  "rejectedEvidencePaths": [
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042r-final-local-corrections-8-v1/targeted-image-repair/author-image-review-v1.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042r-final-local-corrections-8-v1/targeted-image-repair/f493-author-image-review-v2.json"
+  ],
+  "supersededNativeCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042r-final-local-corrections-8-v1/targeted-image-repair/f493-native-fallback.png",
+    "sha256": "f96382deae98283e751b5bb3fc4620c73b630572193b5b628eaf33b8ace05aca",
+    "reason": "Small f(x)/y6 label collision caught in own real raster inspection; only label position changed in nativev2, not mathematics."
+  },
+  "authority": "ai_candidate",
+  "humanApproval": false,
+  "imported": false
+}

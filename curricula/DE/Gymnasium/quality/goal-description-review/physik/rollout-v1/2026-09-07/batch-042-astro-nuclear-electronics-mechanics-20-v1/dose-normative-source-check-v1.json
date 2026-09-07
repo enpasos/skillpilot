@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-09-07 15:32:42 UTC",
+  "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+  "scope": "Bounded read-only normative clause check after A/B seal; not a complete nationwide mapping review or authoring authorization.",
+  "findings": [
+    {
+      "source": "HE legacy provenance",
+      "registry": "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+      "sourceGoalId": "9d10db5a-f1e0-4caf-9c37-6e05e4f9d4fb",
+      "snapshot": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot",
+      "finding": "Exact mapping and snapshot reproduce the current dose/shielding fragment, but this old authored goal is not itself a normative curriculum clause."
+    },
+    {
+      "source": "Actual locally retained HE KC2024 PDF",
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "digest": "sha256:46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+      "method": "pdftotext -layout piped to case-insensitive search Dosis|Abschirm|Strahlenschutz|Kernstrahlung",
+      "finding": "No exact term match. Existing source extraction has broad radiation effects/applications/dangers but no exact quantitative dose/shielding clause located in this bounded check; absence of a search hit is not a complete proof of source absence."
+    },
+    {
+      "source": "Actual locally retained NRW KLP2022 PDF",
+      "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ph_2022_06_07.pdf",
+      "digest": "sha256:648605d32584d44319f1e0b8b34cffe0519926f22a68137f2dd21520f1377f7d",
+      "officialUrl": "https://lehrplannavigator.nrw.de/system/files/media/document/file/gost_klp_ph_2022_06_07.pdf",
+      "actualPrintedAndPdfPage": 43,
+      "context": "Qualifikationsphase Grundkurs, Strahlung und Materie, Erkenntnisgewinnungskompetenz",
+      "sourceGoalId": "nw-phys-sekii-klp2022-GK-strahlung-und-materie-erkenntnisgewinnungskompetenz-008-39464f2a",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "directMapping": "partial to e6a50; same source clause also maps to canonical 1e9ec823 and 23fd87f3",
+      "finding": "Direct normative demand to quantify effects using effective dose and evaluate derived radiation-protection measures. Do not mislabel radiation-weighted H=w_R D alone as effective dose, and do not import all clauses from the mapped siblings.",
+      "sourceMetadataCaveat": "The retained source extraction/sourceSpan says S.42, whereas the actual PDF text carrying this bullet prints 43. No source file or mapping was edited."
+    },
+    {
+      "source": "Retained BY LehrplanPLUS extraction, not a fresh live-page verification",
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sourceGoalId": "93256f65-3b22-5caf-89eb-0ddf0e3dae9b",
+      "sourceSpan": "Ph13-GA.4.7",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "finding": "Given protection rules, own modeling/calculation and their generalizability support a modeled quantitative protection judgment. The broad bullet is shared with risk/application goals and does not donate all of their scope to this one goal."
+    },
+    {
+      "source": "Retained SN extraction, not independently checked against PDF in this bounded pass",
+      "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_PHYSIK_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "sourceGoalId": "sn-phys-sekii-sn-jahrgangsstufe-12-leistungskurs-lb6-102-08-9553302b",
+      "sourceSpan": "Jahrgangsstufe12 LK, Eigenschaften der Atomkerne, PDF-S.69",
+      "finding": "Names radiation protection and equivalent dose with quality factor q; different explicit dose concepts across source scopes require correct distinctions rather than one formula being declared universal."
+    }
+  ],
+  "conclusion": "The dose/protection competence has direct normative support beyond the old HE shorthand, but the precise cross-source demand must distinguish dose concepts and model assumptions. The A wording suggestion remains non-operative. No canonical text, scope, source mapping, QA or historical review changed."
+}

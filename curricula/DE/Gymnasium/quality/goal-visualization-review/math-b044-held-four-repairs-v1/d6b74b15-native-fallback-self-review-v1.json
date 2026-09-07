@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "goal-visualization-authorized-native-fallback-self-review-v1",
+  "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+  "reviewedAt": "2026-09-07T15:34:05Z",
+  "reviewer": "/root/goal_book_build_generator",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "decision": "candidate_pass_pending_independent_review",
+  "authority": "Root authorized only this specific fallback after personally viewing and rejecting Nano V1 and V2. V3 subsequently failed the same ratio. No generic replacement of correct Nano images; no claim of human approval.",
+  "rejectedNanoAttempts": [
+    {
+      "candidatePath": "tmp/goal-visualizations/d6b74b15-1cbc-512b-a160-0f40aecafe8c/generated/d6b74b15-1cbc-512b-a160-0f40aecafe8c.generated.2026-09-07T15-18-13-568Z.jpg",
+      "candidateSha256": "sha256:bc234d9d208efa8005b518fd10959abe1d36935f4060b9c801f5a205e4658963",
+      "promptAppendPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/prompts/v1/d6b74b15-1cbc-512b-a160-0f40aecafe8c.md",
+      "promptAppendSha256": "sha256:1c1f302a2f73d251d4ba4d3a5569704fb669ce12af92617306b73038d68cf55b"
+    },
+    {
+      "candidatePath": "tmp/goal-visualizations/d6b74b15-1cbc-512b-a160-0f40aecafe8c/generated/d6b74b15-1cbc-512b-a160-0f40aecafe8c.generated.2026-09-07T15-25-14-951Z.jpg",
+      "candidateSha256": "sha256:63aa9aab3de7f941d27301acb128807b2ec9241bf2dd3d8556691d501cabbf32",
+      "promptAppendPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/prompts/v2/d6b74b15-1cbc-512b-a160-0f40aecafe8c.md",
+      "promptAppendSha256": "sha256:c77d930081fac534fff99dfb7c4f1500dd1c5ce35ac51249175ae46b870a420c"
+    },
+    {
+      "candidatePath": "tmp/goal-visualizations/d6b74b15-1cbc-512b-a160-0f40aecafe8c/generated/d6b74b15-1cbc-512b-a160-0f40aecafe8c.generated.2026-09-07T15-29-23-024Z.jpg",
+      "candidateSha256": "sha256:8364bc11fbc2f45630b8e29730ace1d5547a3970e88db5cd0fc159c69ce526e0",
+      "promptAppendPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/prompts/v3/d6b74b15-1cbc-512b-a160-0f40aecafe8c.md",
+      "promptAppendSha256": "sha256:19a3031bd4f9c83055c49d584d8fdfb6ab5c32fcfe90e7ef9d8bac3b08c52719"
+    }
+  ],
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/render-d6b74b15-fallback.mjs",
+      "sha256": "sha256:51474e8b22551364f2693768bb531ad8395df815f0a7788c8f59c8fce0123868"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/d6b74b15-fallback.svg",
+      "sha256": "sha256:ba03a2fa67b4d309dead6b597dddb7b5b53d1e2096efbc2889eadd250cf610dd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/d6b74b15-fallback.png",
+      "sha256": "sha256:bfbdcb7a5d25c32facec4dc351964925d9000265b789c5c1eb89b64e44829f4c"
+    }
+  ],
+  "renderCommand": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH node curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/render-d6b74b15-fallback.mjs",
+  "renderExitCode": 0,
+  "actuallyViewedRaster": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/d6b74b15-fallback.png",
+    "sha256": "sha256:bfbdcb7a5d25c32facec4dc351964925d9000265b789c5c1eb89b64e44829f4c",
+    "detail": "original",
+    "dimensions": [
+      1600,
+      900
+    ],
+    "fullyViewed": true
+  },
+  "construction": {
+    "pixelsPerCentimetre": 60,
+    "points": {
+      "A": [
+        270,
+        440
+      ],
+      "B": [
+        270,
+        680
+      ],
+      "C": [
+        450,
+        680
+      ],
+      "A_prime": [
+        270,
+        200
+      ],
+      "C_prime": [
+        630,
+        680
+      ]
+    },
+    "smallSideLengthsCm": [
+      3,
+      4,
+      5
+    ],
+    "largeSideLengthsCm": [
+      6,
+      8,
+      10
+    ],
+    "commonWidthHeightRatio": 0.75,
+    "linearScaleFactor": 2,
+    "smallAreaCm2": 6,
+    "largeAreaCm2": 24,
+    "areaScaleFactor": 4
+  },
+  "checks": [
+    "Two right-angle corners coincide at B=B′; horizontal and vertical legs are exactly orthogonal. Single right-angle marker touches the actual legs.",
+    "A is exact midpoint of A′B′; C exact midpoint of B′C′. Inner hypotenuse and outer hypotenuse have the same slope4/3.",
+    "Every six displayed side length equals the Euclidean length computed from its SVG endpoints using60pixels/cm. Width/height3/4 exact for both triangles.",
+    "Height240→480px and width180→360px directly show factor2; triangle areas21600→86400px² show factor4.",
+    "Numeric3/4/5/6/8/10 labels sit by the correct legs/hypotenuses; full8/6 dimension arrows span the full large distances; no side-equality ticks.",
+    "Both area calculations and ratios recalculated; large area explicitly includes blue plus orange, not only the orange remainder.",
+    "Readable German text and six endpoints, labels do not intersect edges or other letters in the actual raster. Native text bounding check found zero strings outside1600x900 viewport.",
+    "No actual assessment, mastery data, source-evidence claim or human approval encoded."
+  ],
+  "canonicalImportPerformed": false,
+  "remainingGate": "Independent root raster/source numerical counterreview, then coordinated source checkpoint with the three passed Nano candidates and eight requires corrections."
+}

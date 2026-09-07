@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040s-photoelectric-spelling-current-1-v1.config.json",
+  "configDigest": "sha256:f0ae2de8bb5117d2d8d98d197de994228f68310bc9db76ef216772ac40e44c1a",
+  "goalIds": [
+    "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 465,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:45c689bd91a3c64852845b501b6dab17e81a597dac590ae62db8bfbd52eda6d1"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:8b306cb15b57d9163859e7804c8b647481037002f5f69c9bdb1d5473eec41c88",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:2ce7d916790974a2d54d55d6640e26d769732fe00c8d841ebbf50b7e521bc859",
+    "reviewInputFingerprint": "sha256:4f4cb9da961abb87ed1edd28a4d691df1b7b4b01b78864a28f4ffed6653e75a5",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-a",
+        "campaignDigest": "sha256:ae5fdfc72020898365a082640c07c5ea5702fa82e86607d20b1173f64ba9977d",
+        "roundId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-independent-a",
+        "batchId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:42cd1ae7ffa2997790eb1dc3b799f3a2889a1d66c6c1cdad69fafdbba6c486c1"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-b",
+        "campaignDigest": "sha256:48034aa550058afdc622472771497bb28a76a30f4ccee9c3d615af0d464ec277",
+        "roundId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-independent-b",
+        "batchId": "physik-rollout-v1-batch-040s-photoelectric-spelling-current-1-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:7517c4b9482493e3e42597ae331fd98eacf2f6632cf667f3d8ecf7629de461f1"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

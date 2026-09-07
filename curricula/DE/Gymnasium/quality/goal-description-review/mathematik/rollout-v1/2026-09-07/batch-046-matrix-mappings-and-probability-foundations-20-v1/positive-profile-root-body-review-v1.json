@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T16:19:18Z",
+  "reviewer": "Codex (exact underlying model identifier unavailable)",
+  "reviewerRole": "root-independent-profile-body-review",
+  "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-046-current-keep7-v1.candidates.json",
+  "inputSha256": "8d7e0fe4128c3757642b9b017dd897b9643f39767c3d4c283b357aeecf2bef0d",
+  "scope": "All seven complete profiles, all fourteen concrete DE/EN application-case briefs, expectations, structural variation and claim limits. Independent from the profile author; existing root reviewer, not a fresh thread or claimed model diversity.",
+  "verdict": "PASS",
+  "humanApproval": false,
+  "claimLimit": "E1/G1 AI candidate profiles only; no actual learner performance or mastery certified.",
+  "checks": [
+    {
+      "goalId": "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c",
+      "caseCount": 2,
+      "reason": "Recomputed BA=[[1,-1],[0,-1]] and AB=[[1,1],[0,-1]], giving (-1,-3) versus (5,-3). Rectangular CP=[[0,0,-1],[1,0,0]] gives (-3,1); PC is undefined because 3!=2. Both language versions preserve column-vector order and dimensions."
+    },
+    {
+      "goalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
+      "caseCount": 2,
+      "reason": "86/200=.43. Pooled unequal series give 40/120=1/3, not the unweighted .4; comparable unchanged spinner conditions and empirical uncertainty are explicit. Pooling changes the data structure, not merely the numbers."
+    },
+    {
+      "goalId": "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+      "caseCount": 2,
+      "reason": "Cumulative coin proportions .7/.54/.512 correctly illustrate stabilization without a next-toss compensation guarantee. Second sequence .51/.52/.505 has absolute deviations 10/40/50 and relative deviations .01/.02/.005. Both versions reject monotonic and absolute-error misconceptions."
+    },
+    {
+      "goalId": "3019e775-1420-510f-850b-5a29acc47a64",
+      "caseCount": 2,
+      "reason": "All four ordered coin outcomes and both exactly-one-head cases are complete; translated H/T corresponds to K/Z. Dice event sum>=10 contains exactly six stated ordered pairs. Sum outcomes 2..12 aggregate unequal numbers of pairs, so equal likelihood is not inherited."
+    },
+    {
+      "goalId": "5a2371fd-74ce-5013-932e-35d3713aeaf7",
+      "caseCount": 2,
+      "reason": "Fair die .5 versus .7/.54 gives relative deviations .20/.04 and absolute deviations 4/8. Urn elementary outcomes are individual balls: .75 versus .775/.76, deviations .025/.01. Replacement/mixing and no universal longer-series guarantee are explicit."
+    },
+    {
+      "goalId": "71d1fd4d-8471-5f25-94a0-4c531a74783c",
+      "caseCount": 2,
+      "reason": "Checked intersection{4,6}, union{2,4,5,6}, difference{2}, complement{1,3,5}, XOR{2,5}, and De Morgan result{1,3}. New universe1..8 and B subset A give XOR{2,6} and complement{1,3,5,7}. Membership arguments and genuine changed set geometry support understanding."
+    },
+    {
+      "goalId": "c2831918-26f1-421e-90fb-ce707689594e",
+      "caseCount": 2,
+      "reason": "First table12/28/18/42 gives conditional .3/.4 and joint .12; A-first tree products reproduce all cells. Second table80/20/420/480 gives .8/.16/.08; B-first tree .5 times .16/.84/.04/.96 reproduces .08/.42/.02/.48. Denominator asymmetry and absence of causal inference are correct in DE/EN."
+    }
+  ]
+}

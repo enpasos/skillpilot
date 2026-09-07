@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-09-07T13:18:45Z",
+  "independence": "Own review before reading the assigned independent image review; this reviewer authored the targeted repair prompts and is not an independent second reviewer.",
+  "records": [
+    {
+      "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+      "candidateSha256": "9667d2497bf224204ebfa80cbc22340555194ef35ac337c7459ad5b1c3182f12",
+      "decision": "block",
+      "corrected": [
+        "Maximum x-axis label is now 2; 4/e² remains the height.",
+        "Both positive right-hand tails remain above the x-axis; the fabricated second zero is removed.",
+        "Product/chain derivative, h′=e⁻ˣ(2x−x²), stationarity at 0 and 2, positivity of e⁻ˣ, and maximum at x=2 remain correct."
+      ],
+      "remaining": [
+        "The large graph still leaves (0,0) with a steep positive slope, rather than the horizontal tangent implied by h′(0)=0 and explicitly requested. The task is about derivative/representation coherence; this contradiction must be corrected.",
+        "Against the labelled x=2 scale, the falling large-graph curve near x=4 is too low for h(4)=16/e⁴≈0.293, over half the maximum. A accurately sampled plotted curve would remove residual geometric ambiguity."
+      ],
+      "action": "No import. Correct the actual plotted function rather than accepting a qualitatively plausible hump."
+    },
+    {
+      "goalId": "5ccf0d90-2967-576e-8f72-f002792d8515",
+      "candidateSha256": "3d974b3711e04f8e6e27b454e2ac127ac0ab824cfdb9b95bd5e57d12db5ef85c",
+      "decision": "pass",
+      "checks": [
+        "The speech bubble now says innere Funktion x², ihre Ableitung 2x, not 2x ist du.",
+        "Input integral retains 2x(1+x²)e^(x²) and bounds 0,1.",
+        "u=x² and du=2x dx are both correct; transformed bounds remain 0 and 1.",
+        "Transformed integral (1+u)e^u du and candidate G=u e^u agree by the product rule.",
+        "Boundary evaluation [u e^u]₀¹=(1·e¹)−(0·e⁰)=e is correct.",
+        "All three stages, explanatory headings, arrows and the strategy conclusion remain consistent with the goal. No unrelated new prerequisite or method requirement is introduced."
+      ],
+      "action": "Eligible for import only after the other reviewer independently passes this exact hash; not human-approved."
+    }
+  ]
+}

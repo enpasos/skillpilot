@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,26 +31,14 @@ Titel: Einfache geometrische Körper im Raum beschreiben
 Beschreibung: Die lernende Person kann einfache geometrische Körper wie Würfel, Quader, gerade und schiefe Prismen sowie gerade und schiefe Pyramiden fachsprachlich beschreiben und in räumlichen Darstellungen identifizieren.
 
 Zusatzanweisung:
+Use case: scientific-educational
+Surgical edit of the supplied reference illustration. Keep the six bodies, their silhouettes, colours, names and all mathematically correct descriptive speech bubbles. Do not redesign the layout.
 Pflichtinhalt:
-- Thema: Einfache geometrische Koerper im Raum fachsprachlich beschreiben.
-- Zeige eine klare Uebersicht mit vier beschrifteten Koerpergruppen:
-  1. Wuerfel: alle Kanten gleich lang, rechte Winkel.
-  2. Quader: drei Kantenlaengen a, b, c, rechte Winkel.
-  3. Prisma: zwei kongruente parallele Grundflaechen; einmal gerades Prisma mit senkrechten Seitenkanten, einmal schiefes Prisma mit geneigten Seitenkanten.
-  4. Pyramide: eine Grundflaeche und eine Spitze; einmal gerade Pyramide mit Hoehe senkrecht zur Grundflaeche, einmal schiefe Pyramide mit seitlich verschobener Spitze.
-- Verwende die Fachbegriffe:
-  Grundflaeche,
-  Deckflaeche beim Prisma,
-  Seitenkante,
-  Hoehe h,
-  Spitze bei Pyramiden.
-- Markiere die Hoehe immer als senkrechte Strecke zur Grundflaeche, nicht als Seitenkante.
-
+1. In the ORANGE QUADER panel top right, ERASE the brown letter a immediately LEFT OF ITS LEFT VERTICAL EDGE. That label is wrong. The empty spot must show plain blue background. Keep the a below the front horizontal width, keep b at the bottom depth edge, and keep c beside the far-right vertical edge. After the edit this orange body must have EXACTLY THREE edge labels total: one a, one b, one c.
+2. In the two green prism pictures and the two pyramid pictures, erase EVERY optional BLUE height annotation: all blue dashed lines, all text "Höhe h", all blue h letters, all blue right-angle boxes and points. Restore the underlying green/yellow/red/blue background. Keep only the actual body edges, dashed hidden body edges, the black Grundfläche/Deckfläche text and Spitze labels. Height is not part of this identification exercise.
+3. All six named examples must stay: Würfel, Quader, gerades Prisma, schiefes Prisma, gerade Pyramide, schiefe Pyramide. Preserve the top title, body geometry and the explanation of congruent parallel prism bases and single pyramid apex.
 Vermeiden:
-- Bei Pyramiden keine Deckflaeche einzeichnen.
-- Bei schiefen Koerpern die Hoehe nicht entlang einer schiefen Seitenkante markieren.
-- Wuerfel und Quader nicht gleichsetzen; beim Wuerfel sind alle Kanten gleich lang.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Do not move the wrong orange left vertical a to another place: delete it. Do not add any new height construction, right-angle marker, formula, pointer, icon or label. Do not alter the cube a labels (they are correct). Do not label the same family of vertical cuboid edges with two independent lengths. No platform branding, identifiers or watermark.
 ```
 
 ## Review-Notiz

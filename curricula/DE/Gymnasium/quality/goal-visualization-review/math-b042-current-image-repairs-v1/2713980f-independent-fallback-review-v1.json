@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-b042-271-independent-fallback-review-20260907T133857Z",
+  "startedAt": "2026-09-07T13:38:57Z",
+  "completedAt": "2026-09-07T13:43:34Z",
+  "reviewer": {
+    "agentInstance": "/root/goal_book_pdf_history_audit",
+    "model": "Codex (exact underlying model identifier unavailable)",
+    "newThreadClaimed": false,
+    "modelDiversityClaimed": false,
+    "humanApprovalClaimed": false
+  },
+  "provenance": {
+    "scope": "Separate current image counter-review, not a rewrite of the sealed earlier image or description reviews. Both the second Nano JPEG and the native PNG were actually opened; the renderer/SVG were read and all 801 SVG samples independently recalculated without executing or editing root's renderer.",
+    "priorInvolvement": "This existing instance rejected the first Nano 271 image in independent-image-review-v1.json. Root disclosed its new candidate and its own concerns about the second Nano output before requesting this counter-review; therefore no blindness to root's concern is claimed. No B042 A/B description-review records were read.",
+    "canonicalSource": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
+  },
+  "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+  "currentTitleDe": "Analysisgrundlagen in Q1-Anschlussaufgaben nutzen",
+  "currentDescriptionDe": "Die lernende Person kann die in der Einführungsphase erarbeiteten Inhalte zu Funktionen und Darstellungen, Ableitungsbegriff und Anwendungen, ganzrationalen Funktionen, Exponentialfunktionen, trigonometrischen Funktionen und Ableitungsregeln in Q1-Anschlussaufgaben passend auswählen, begründet einsetzen und fachlich einordnen.",
+  "secondNanoAttempt": {
+    "imagePath": "tmp/goal-visualizations/2713980f-75d2-5455-a8cb-bcd3888c49a0/generated/2713980f-75d2-5455-a8cb-bcd3888c49a0.generated.2026-09-07T13-24-05-520Z.jpg",
+    "imageSha256": "23ca2bb900390231719cba4982033f950b381abd51abe9058d902674583a14b4",
+    "verdict": "reject",
+    "blockingFindings": [
+      "The main blue maximum projects between the labeled x=2 and x=4 ticks, not to x=2. h'=e^(−x)x(2−x) forces the positive interior maximum to x=2.",
+      "A newly drawn green line at the origin slopes upward rather than horizontally. h'(0)=0 requires a horizontal tangent. The correct derivative text does not cure this contradictory visible mark."
+    ],
+    "positiveControls": [
+      "The product/chain derivative and x=0 or x=2 algebra remain correct.",
+      "The positive hump and right-hand tail remain recognizable; no new positive zero is introduced."
+    ]
+  },
+  "nativeCandidate": {
+    "svgPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/2713980f-fallback.svg",
+    "svgSha256": "88d1aaefe49158596813b3e5efd02c8696b4fce123dc1ff5a003982c96a02f2e",
+    "imagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/2713980f-fallback.png",
+    "imageSha256": "bab37f3c1a277c7534d31cf737ebef80ec7763a48d98d803f19ae8169642a64c",
+    "rendererPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/render-2713980f-fallback.mjs",
+    "rendererSha256": "c73d84c9b561415176ef6ae5ca7ecf56b06e14da2388c1c15e014c208337d28c",
+    "verdict": "pass_as_teaching_candidate",
+    "blockingFindings": [],
+    "positiveControls": [
+      "h(x)=x²e^(−x), x≥0, is consistent across the title strip, graph and derivation.",
+      "The graph starts at (0,0) with the visible horizontal green tangent, rises initially convex, has its maximum precisely over x=2 at 4/e²≈0.541341 and stays positive while approaching zero to the right.",
+      "Both green tangent segments are horizontal. The maximum point, dashed projections, y-ticks 0.2,0.4,0.6 and x-ticks 0,2,4,6,8 agree with the sampled curve.",
+      "h'=2xe^(−x)+x²(−e^(−x))=e^(−x)x(2−x) is correct. The factor −1 is correctly attributed to the inner function −x.",
+      "Since e^(−x)>0, the sign arguments h'>0 on (0,2) and h'<0 on (2,∞) correctly justify rise and fall. h'(0)=h'(2)=0 is correct; x=0 is explicitly a boundary and h(2)=4/e² the maximum.",
+      "The example connects representations, product/chain rule selection and qualitative reasoning, appropriately illustrating the current broad Q1 transfer competence without claiming to cover every function family.",
+      "All displayed formulas, explanations, process arrows, axis labels and point annotations are legible in the actual 1600x900 PNG; no content was visibly clipped or obscured."
+    ],
+    "negativeControls": [
+      "No oblique origin tangent, wrong maximum abscissa, extra positive zero, algebraic sign error or prematurely vanishing right tail remains.",
+      "A single worked example is not claimed to prove learner mastery or to exhaust all competencies listed by the goal.",
+      "The native exception is specific to two demonstrated targeted Nano repair failures, not a general replacement of Nano Banana as the first-choice generation provider."
+    ],
+    "numericSvgVerification": {
+      "samplesChecked": 801,
+      "domain": [
+        0,
+        8
+      ],
+      "step": 0.01,
+      "mapping": "px=110+65x; py=680−550x²e^(−x)",
+      "maximumAbsolutePixelRoundingError": 0.0004999080618972584,
+      "tolerance": 0.000501,
+      "controls": [
+        {
+          "x": 0,
+          "h": 0
+        },
+        {
+          "x": 0.5,
+          "h": 0.15163266492815836
+        },
+        {
+          "x": 1,
+          "h": 0.36787944117144233
+        },
+        {
+          "x": 2,
+          "h": 0.5413411329464508
+        },
+        {
+          "x": 4,
+          "h": 0.29305022221974686
+        },
+        {
+          "x": 6,
+          "h": 0.08923507835998891
+        },
+        {
+          "x": 8,
+          "h": 0.02146960818576076
+        }
+      ]
+    }
+  },
+  "authority": "Independent AI image-level counter-review only. Root's images/renderer and all previous review records remain unchanged. No image import, canonical, runtime, QA or publication state change performed."
+}

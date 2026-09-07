@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+
+const stem = "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-043-current-keep9-v1";
+const source = JSON.parse(fs.readFileSync(stem + '.candidates.json', 'utf8'));
+const checks = [];
+const near = (a,b,tolerance=1e-10) => assert.ok(Math.abs(a-b)<=tolerance, `${a} != ${b}`);
+const check = (name, f) => { f(); checks.push({name, pass:true}); };
+const simpson = (f,a,b,n=4000) => { const h=(b-a)/n; let s=f(a)+f(b); for(let i=1;i<n;i++)s+=(i%2?4:2)*f(a+i*h); return s*h/3; };
+check('Substitution quotient and transformed bounds 1,5',()=>near(simpson(x=>2*x/(1+x*x),0,2),Math.log(5)));
+check('Decreasing inner substitution: reversed bounds and negative differential',()=>near(simpson(x=>2*x*Math.cos(1-x*x),0,1),Math.sin(1)));
+check('Stable direction field slopes 4,0,-2 and both approach directions',()=>{assert.deepEqual([1,3,4].map(y=>2*(3-y)),[4,0,-2]); for(const t of [0,0.5,2]){const lower=3-2*Math.exp(-2*t),upper=3+Math.exp(-2*t);assert.ok(lower<3&&upper>3);near(2*(3-lower),4*Math.exp(-2*t));near(2*(3-upper),-2*Math.exp(-2*t));}});
+check('Unstable direction field slopes -1,0,1',()=>assert.deepEqual([2,3,4].map(y=>y-3),[-1,0,1]));
+check('Decay IVP y=3exp(-2t), initial value and differential equation',()=>{near(3*Math.exp(0),3);for(const t of [0,0.5,2])near(-6*Math.exp(-2*t),-2*(3*Math.exp(-2*t)));});
+check('Time-dependent separable IVP includes zero and Cexp(t squared)',()=>{for(const c of [0,1,-2])for(const t of [-1,0,0.5])near(c*Math.exp(t*t)*2*t,2*t*(c*Math.exp(t*t)));near(0*Math.exp(0),0);});
+check('Square-root direct values and inverse table',()=>{assert.deepEqual([0,4,16,25].map(Math.sqrt),[0,2,4,5]);assert.deepEqual([0,0.5,3].map(y=>y*y),[0,0.25,9]);});
+check('Unknown graph shift coordinates and reverse term selection',()=>{assert.deepEqual([[-1,2],[0,-1],[2,3]].map(([x,y])=>[x+2,y+1]),[[1,3],[2,0],[4,4]]);assert.deepEqual([4-3,5-2],[1,3]);});
+check('Exponential/logarithmic inverse points including negative exponent',()=>{for(const u of [-1,0,2])near(Math.log(Math.exp(u)),u);assert.ok(Math.log(0.5)<0);near(Math.exp(Math.log(0.5)),0.5);});
+check('Logarithmic bounds from exponential bounds',()=>{const z=(Math.exp(-3)+Math.exp(-2))/2;assert.ok(-3<Math.log(z)&&Math.log(z)<-2);for(const u of [-4,-8,-12])assert.ok(Math.exp(u)>0);});
+check('Combined logarithm point mapping and domain',()=>{const g=x=>2*Math.log(3*(x-1))+4;near(g(4/3),4);near(g(1+Math.E/3),6);assert.ok(3*((1+Math.E/3)-1)>0);});
+check('Inside/outside logarithm factor distinction',()=>{const h=x=>Math.log(2*(x+2))+3,k=x=>2*Math.log(x+2)+3;near(h(-1.5),3);near(h(-1),Math.log(2)+3);near(k(-1),3);assert.ok(h(-1)!==3);});
+check('Parabola parameter solution and both constraints',()=>{const f=x=>2*(x-1)**2-2;near(f(1),-2);near(f(3),6);});
+check('Redundant symmetric constraints with two admissible pairs',()=>{for(const [a,b]of [[1,2],[2,-2]]){near(4*a+b,6);near(a*(-1-1)**2+b,6);near(a*(3-1)**2+b,6);}});
+check('Exact authored profile count and independent case coverage',()=>{assert.equal(source.goals.length,9);assert.equal(source.goals.reduce((s,g)=>s+g.profile.applicationCaseBriefs.length,0),18);for(const g of source.goals){assert.equal(g.profile.coverageExpectations.minimumIndependentDemonstrations,2);assert.equal(g.profile.applicationCaseBriefs.length,2);assert.ok(g.profile.coverageExpectations.freshVariationRequired&&g.profile.coverageExpectations.independentTransferRequired);for(const c of g.profile.applicationCaseBriefs)for(const k of ['taskDemandDe','taskDemandEn','expectedPerformanceDe','expectedPerformanceEn','understandingFocusDe','understandingFocusEn'])assert.ok(c[k].trim());}});
+const digest = p => 'sha256:'+crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+console.log(JSON.stringify({checkedAt:new Date().toISOString(),authority:'AI author self-check, not independent review or human approval',cases:18,profiles:9,checks,artifacts:['.config.json','.candidates.json','.review.jsonl','.author-check.mjs'].map(s=>({path:stem+s,digest:digest(stem+s)}))},null,2));

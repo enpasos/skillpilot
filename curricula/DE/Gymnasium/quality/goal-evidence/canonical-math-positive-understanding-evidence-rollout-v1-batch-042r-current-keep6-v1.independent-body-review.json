@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "startedAt": "2026-09-07T14:33:16Z",
+  "completedAt": "2026-09-07T14:35:40.507Z",
+  "candidatesSha256": "139072c1c164eb1050ffbe1d7256cd88cb4b8572d411f72c3efa39f6e61df132",
+  "ledgerSha256": "46482621f38fde5c7df97c93cd0ddfaaed2cf5ec2df5a8efa55f28c2f02db17c",
+  "checks": {
+    "capacity": 513.1268000863329,
+    "material": 70.68583470577035,
+    "maxStock": 57.35758882342885,
+    "fillAt4": 35.2848223531423,
+    "logisticK": 0.36620409622270317,
+    "maxLogisticRate": 54.93061443340548,
+    "inflectionAboveHalf": -3.000000000000001,
+    "logIntegral": 1.5972640247326626
+  },
+  "scope": "All six actual bilingual V2 profile bodies, required expectations, variation axes, and twelve application cases read in full. Native schema validation is not used as a substitute for these semantic judgments.",
+  "authority": "AI counterreview only; candidates remain E1/G1, ai_candidate and needs_human_review; no observed learner mastery or human approval.",
+  "reviews": [
+    {
+      "goalId": "281e0c6e-d06d-580f-8443-4369f0ea524b",
+      "decision": "pass",
+      "cases": [
+        "Inner cup: r=3+x/5, capacity490pi/3, correctly inside cylinder bounds90pi..250pi.",
+        "Hollow workpiece: cross-section R²-r²=1.75+0.1x, integrated material22.5pi; not(R-r)², no invented end plate."
+      ],
+      "reason": "Capacity versus material is a structural variation of the same real-object rotation model; all needed dimensions and idealizations are provided in both languages."
+    },
+    {
+      "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+      "decision": "pass",
+      "cases": [
+        "N'=10exp(-t/2)(1-t/2), sign change gives t2 maximum50+20/e; interval endpoints cannot exceed it.",
+        "s'=3pi/2*cos(pi*t/2); reversals1,3; at2 position0 but velocity-3pi/2, not rest."
+      ],
+      "reason": "Method selection and coordination of value, rate and representation are actually elicited. The prior overly broad A integral demand is explicitly excluded; no integration is required."
+    },
+    {
+      "goalId": "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+      "decision": "pass",
+      "cases": [
+        "V0=10, V4=50-40/e≈35.28, gap strictly positive at finite times; model limit not claimed as measured tank capacity.",
+        "T0=80, limit20 approached from above, negative rate tending0; same shrinking-gap principle with reversed quantity direction."
+      ],
+      "reason": "Finite value, limit, direction and rate are distinguished; cooling is a genuine changed-side transfer rather than substituted numbers."
+    },
+    {
+      "goalId": "848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+      "decision": "pass",
+      "cases": [
+        "All three formulas start10; E unbounded, B decreasing growth and limit80, logistic L changes concavity at40.",
+        "20,24,28.8 supports local ratio1.2 only; resource information and insufficient observation window prevent an unjustified unique/global model claim."
+      ],
+      "reason": "One comparison competency, justified model selection and explicit uncertainty are assessed. No extra differential-equation derivation is forced."
+    },
+    {
+      "goalId": "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+      "decision": "pass",
+      "cases": [
+        "K600,N0=150,N3=300 => a3,k=ln3/3, inflection(3,300), maximum rate50ln3≈54.93.",
+        "N0=450 => a1/3; formal inflection time-3, so t≥0 is already concave down despite the logistic mechanism."
+      ],
+      "reason": "Both cases remain within positive classical logistic growth below capacity. Changing initial position relative to half capacity defeats the false compulsory-future-S-curve shortcut."
+    },
+    {
+      "goalId": "5ccf0d90-2967-576e-8f72-f002792d8515",
+      "decision": "pass",
+      "cases": [
+        "u=x² transforms ∫0¹2x³exp(x²)dx to ∫0¹u exp(u)du, [(u-1)exp(u)]0¹=1.",
+        "Derivative of x²ln²x/2-x²lnx/2+x²/4 equals x ln²x; endpoints give(e²-1)/4. u=lnx alternative correctly gives∫0¹u²exp(2u)du."
+      ],
+      "reason": "Method combinations are selected and justified, alternative valid methods are allowed, and transformed bounds/differential plus differentiation checks are explicit."
+    }
+  ],
+  "deEnParity": "All six expectation/variation pairs and twelve task/expected-performance/focus pairs were read and express equivalent demands.",
+  "claim": "PASS6 profile bodies / 12 cases, not a release of the two excluded image-dissent goals."
+}

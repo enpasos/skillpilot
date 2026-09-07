@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-09-07T16:19:58.986Z",
+  "purpose": "Persistence-only archive for the user-requested pause/commit; no generation, image inspection, new verdict, curriculum write, QA ledger write or import.",
+  "status": "NOT_IMPORTED",
+  "v2Status": "V2_NOT_REVIEWED",
+  "counts": {
+    "v1": 7,
+    "v2": 4,
+    "total": 11,
+    "totalBytes": 22842482
+  },
+  "copyMethod": "Exclusive byte-identical regular-file copies; existing equal files may be retained, collisions fail closed; all source and destination SHA256 values verified.",
+  "existingSealsAndEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/archive-manifest.json",
+      "digest": "sha256:4c48df9b86d3f1b8bd70c38790980d77cf2581f0890acc1fd5e075a6744cda7b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-evidence/paused-archive-manifest.json",
+      "digest": "sha256:c0f3cbfd48ba101406cfb553e567db9b57000f52b3d87acb24dcd472bcb59afa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/independent-v1-review.json",
+      "digest": "sha256:0680e2d6feb2eb592fc4bf673db624d13f6ffabb486ef4f7298af13043939766"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/root-v1-image-review.json",
+      "digest": "sha256:31e30501a084543d9c6c949cf2d43b377fa146a6408cecc68578f614edd26877"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-corrections/7f-quasineutrality-adjudication.json",
+      "digest": "sha256:92e6939a69635559f23e3d2b41ed95d262e3c611b7f16bdb744b7454577e3d06"
+    }
+  ],
+  "existingSealsUnchanged": true,
+  "verdictPolicy": "V1 verdicts are copied literally from the separate unchanged sealed reviews, not harmonized. The separate 7f adjudication remains linked above. V2 has not been visually reviewed.",
+  "requestMetadataCredentialKeyScan": {
+    "result": "PASS_NO_MATCHING_KEYS",
+    "jsonFilesChecked": 22,
+    "requestFilesChecked": 11,
+    "responseFilesChecked": 11,
+    "method": "Recursive JSON property-name-only scan for API-key, authentication header, credential, password, secret and token field names; no values printed or interpreted. This does not claim a content-level secret audit.",
+    "files": [
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/7f0798cb-5966-5dcb-beb3-84f637ab6139/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/7f0798cb-5966-5dcb-beb3-84f637ab6139/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/12260012-cf04-5409-b57d-f5b3a46d9126/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/12260012-cf04-5409-b57d-f5b3a46d9126/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/cde9b548-2cf4-59ad-b5d4-a71872afbe56/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/cde9b548-2cf4-59ad-b5d4-a71872afbe56/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/6e7c35e0-7a38-5996-a42e-005038eff0db/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/6e7c35e0-7a38-5996-a42e-005038eff0db/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/af50bb9a-fd7b-50f5-9698-48c4efe99032/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/af50bb9a-fd7b-50f5-9698-48c4efe99032/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-evidence/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-evidence/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-evidence/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-evidence/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-evidence/12260012-cf04-5409-b57d-f5b3a46d9126/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-evidence/12260012-cf04-5409-b57d-f5b3a46d9126/nano-banana-response-summary.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-evidence/7f0798cb-5966-5dcb-beb3-84f637ab6139/nano-banana-request.json",
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v2-evidence/7f0798cb-5966-5dcb-beb3-84f637ab6139/nano-banana-response-summary.json"
+    ]
+  },
+  "records": [
+    {
+      "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "version": 1,
+      "originalTemporaryPath": "tmp/goal-visualizations/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/generated/5b8eaf71-96fe-50eb-b9ea-a8fa392df086.generated.2026-09-07T15-49-14-388Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v1/5b8eaf71-96fe-50eb-b9ea-a8fa392df086.generated.2026-09-07T15-49-14-388Z.jpg",
+      "digest": "sha256:b2c29f69b6820ef42d3d26dd0d8a0f2401b62112328a53841446a0efd43d793e",
+      "bytes": 2229300,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V1_SEALED_REVIEW_ONLY",
+      "sealedVerdicts": {
+        "independent": "reject",
+        "root": "reject"
+      }
+    },
+    {
+      "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "version": 1,
+      "originalTemporaryPath": "tmp/goal-visualizations/7f0798cb-5966-5dcb-beb3-84f637ab6139/generated/7f0798cb-5966-5dcb-beb3-84f637ab6139.generated.2026-09-07T15-49-18-402Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v1/7f0798cb-5966-5dcb-beb3-84f637ab6139.generated.2026-09-07T15-49-18-402Z.jpg",
+      "digest": "sha256:fcfb28e07b09cd2574fae69b7a2e3654ec01fd7d1858638d70ac5bc3e13f3081",
+      "bytes": 2292777,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V1_SEALED_REVIEW_ONLY",
+      "sealedVerdicts": {
+        "independent": "needs_revision",
+        "root": "pass"
+      }
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "version": 1,
+      "originalTemporaryPath": "tmp/goal-visualizations/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/generated/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.generated.2026-09-07T15-49-12-119Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v1/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.generated.2026-09-07T15-49-12-119Z.jpg",
+      "digest": "sha256:59a60826117ab79a68babf18cb785c6ceba89c2f03ed04cf71d5490b249c6d5e",
+      "bytes": 2188872,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V1_SEALED_REVIEW_ONLY",
+      "sealedVerdicts": {
+        "independent": "reject",
+        "root": "reject"
+      }
+    },
+    {
+      "goalId": "12260012-cf04-5409-b57d-f5b3a46d9126",
+      "version": 1,
+      "originalTemporaryPath": "tmp/goal-visualizations/12260012-cf04-5409-b57d-f5b3a46d9126/generated/12260012-cf04-5409-b57d-f5b3a46d9126.generated.2026-09-07T15-49-15-635Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v1/12260012-cf04-5409-b57d-f5b3a46d9126.generated.2026-09-07T15-49-15-635Z.jpg",
+      "digest": "sha256:7fb42f10c5277b67d977af6aaefaa63726da82b8fa618d6d857066983c82871b",
+      "bytes": 2202663,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V1_SEALED_REVIEW_ONLY",
+      "sealedVerdicts": {
+        "independent": "reject",
+        "root": "reject"
+      }
+    },
+    {
+      "goalId": "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+      "version": 1,
+      "originalTemporaryPath": "tmp/goal-visualizations/cde9b548-2cf4-59ad-b5d4-a71872afbe56/generated/cde9b548-2cf4-59ad-b5d4-a71872afbe56.generated.2026-09-07T15-52-15-172Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v1/cde9b548-2cf4-59ad-b5d4-a71872afbe56.generated.2026-09-07T15-52-15-172Z.jpg",
+      "digest": "sha256:3117ce9362d1efb1bac051a384890e4b33ed04accdae221cd744fb1aba0c382c",
+      "bytes": 2347140,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V1_SEALED_REVIEW_ONLY",
+      "sealedVerdicts": {
+        "independent": "accept_candidate",
+        "root": "pass"
+      }
+    },
+    {
+      "goalId": "6e7c35e0-7a38-5996-a42e-005038eff0db",
+      "version": 1,
+      "originalTemporaryPath": "tmp/goal-visualizations/6e7c35e0-7a38-5996-a42e-005038eff0db/generated/6e7c35e0-7a38-5996-a42e-005038eff0db.generated.2026-09-07T15-52-15-713Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v1/6e7c35e0-7a38-5996-a42e-005038eff0db.generated.2026-09-07T15-52-15-713Z.jpg",
+      "digest": "sha256:52b36f88813860a55022792a47166c691051af71c0dc864f124fb8908fc34388",
+      "bytes": 2213934,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V1_SEALED_REVIEW_ONLY",
+      "sealedVerdicts": {
+        "independent": "accept_candidate",
+        "root": "pass"
+      }
+    },
+    {
+      "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "version": 1,
+      "originalTemporaryPath": "tmp/goal-visualizations/af50bb9a-fd7b-50f5-9698-48c4efe99032/generated/af50bb9a-fd7b-50f5-9698-48c4efe99032.generated.2026-09-07T15-52-20-253Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v1/af50bb9a-fd7b-50f5-9698-48c4efe99032.generated.2026-09-07T15-52-20-253Z.jpg",
+      "digest": "sha256:438402ac93ebe6d746bfc077c75cff3c5908a561493786fc09bfdcac619900df",
+      "bytes": 2027693,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V1_SEALED_REVIEW_ONLY",
+      "sealedVerdicts": {
+        "independent": "accept_candidate",
+        "root": "pass"
+      }
+    },
+    {
+      "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "version": 2,
+      "originalTemporaryPath": "tmp/goal-visualizations/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/generated/5b8eaf71-96fe-50eb-b9ea-a8fa392df086.generated.2026-09-07T16-15-40-161Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v2/5b8eaf71-96fe-50eb-b9ea-a8fa392df086.generated.2026-09-07T16-15-40-161Z.jpg",
+      "digest": "sha256:9907c5800ba079be25adfbe7f5332f4437026de198402ede4f340df100a4705a",
+      "bytes": 1947166,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V2_NOT_REVIEWED"
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "version": 2,
+      "originalTemporaryPath": "tmp/goal-visualizations/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/generated/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.generated.2026-09-07T16-15-40-126Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v2/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.generated.2026-09-07T16-15-40-126Z.jpg",
+      "digest": "sha256:99db6e508909eb0e3f85e5ee18baafee82b4aa9dd9ade4e77be2709781f7c004",
+      "bytes": 1707975,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V2_NOT_REVIEWED"
+    },
+    {
+      "goalId": "12260012-cf04-5409-b57d-f5b3a46d9126",
+      "version": 2,
+      "originalTemporaryPath": "tmp/goal-visualizations/12260012-cf04-5409-b57d-f5b3a46d9126/generated/12260012-cf04-5409-b57d-f5b3a46d9126.generated.2026-09-07T16-15-48-172Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v2/12260012-cf04-5409-b57d-f5b3a46d9126.generated.2026-09-07T16-15-48-172Z.jpg",
+      "digest": "sha256:a9943b0a6449fb841f7c0ec1dc7207431b02a0a58772d612449b9c94a1c25d36",
+      "bytes": 1879118,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V2_NOT_REVIEWED"
+    },
+    {
+      "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "version": 2,
+      "originalTemporaryPath": "tmp/goal-visualizations/7f0798cb-5966-5dcb-beb3-84f637ab6139/generated/7f0798cb-5966-5dcb-beb3-84f637ab6139.generated.2026-09-07T16-16-26-206Z.jpg",
+      "persistentCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-v2/7f0798cb-5966-5dcb-beb3-84f637ab6139.generated.2026-09-07T16-16-26-206Z.jpg",
+      "digest": "sha256:0a23056f9150181f098699946702df876d150423bc79fb7402519dd83580dfbd",
+      "bytes": 1805844,
+      "importStatus": "NOT_IMPORTED",
+      "reviewStatus": "V2_NOT_REVIEWED"
+    }
+  ]
+}

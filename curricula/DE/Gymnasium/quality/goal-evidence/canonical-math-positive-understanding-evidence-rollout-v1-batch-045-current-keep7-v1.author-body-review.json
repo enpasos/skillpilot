@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "canonical-math-positive-evidence-b045-keep7-v1",
+  "reviewedAt": "2026-09-07T15:30:32Z",
+  "reviewer": "/root/goal_book_ci_integration",
+  "authority": "ai_candidate_author_body_review",
+  "goalIds": [
+    "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+    "cf48c918-f6c1-5429-8da6-14df43f2f550",
+    "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+    "5e893892-393e-5df0-b705-fb3b3458122f",
+    "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+    "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+    "4bc6cc77-3d20-5d27-a74a-8efb0a038d17"
+  ],
+  "goalCount": 7,
+  "bilingualCaseCount": 14,
+  "candidateSha256": "4d27c2beb99e598198869bc2be58a2350263cacea03450cf069dc2154d86dfe4",
+  "ledgerSha256": "933d1fd032903f57bbc44b795ee1fb13cf42f39509cf354a6b33116ca14e4d2a",
+  "arithmeticScriptSha256": "a22e20a36d070b92b014a1bbc0ca0bb06070a49df6672966ad32bb040ea6e583",
+  "reviewScope": "Every DE/EN task demand, expected performance and understanding focus was individually authored and checked against the unchanged current goal. The 14 cases were checked for correct mathematics, meaningful structural variation, positive demonstration, bounds/context/conventions and avoidance of claims beyond the goal. Arithmetic/representation script independently checks the concrete numerical identities; it does not confer semantic approval.",
+  "checks": [
+    {
+      "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "result": "PASS",
+      "details": "Two arch families: vertical coefficient changes height/slopes but not span; horizontal parameter shifts supports and preserves height/span. Conditions a>0 and nonnegative modeled arch explicitly bound."
+    },
+    {
+      "goalId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
+      "result": "PASS",
+      "details": "Expandable product derivative3x²+4x−1 with independent expansion check; exponential product derivativexeˣ and cancellation at0."
+    },
+    {
+      "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+      "result": "PASS",
+      "details": "Composition order differentiates12(3x−2)^3 from12x^3; nonlinear inner−x² produces−2x factor with justified sign."
+    },
+    {
+      "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+      "result": "PASS",
+      "details": "Two-state daily graph and changed three-state row-oriented table; every edge, loop, zero and outgoing sum verified. No invented empirical claim."
+    },
+    {
+      "goalId": "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+      "result": "PASS",
+      "details": "M²=[[.4,.15],[.6,.85]], two distinct paths to.15; three-state cycle powers correct, exact-time distribution distinguished from cumulative visits."
+    },
+    {
+      "goalId": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+      "result": "PASS",
+      "details": "Column fixed distribution(.2,.8), one-step proof; explicit row-vector swap example unique(.5,.5) but nonconvergent point start. No incorrect rejection of legitimate left eigenvectors."
+    },
+    {
+      "goalId": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+      "result": "PASS",
+      "details": "Recurrence a_next=.5a+.1 and deviation formula justify limit matrix; absorbing powers and swap-matrix alternation provide genuine different limiting behavior."
+    }
+  ],
+  "nativeMaterializer": "write then read-only verify PASS7",
+  "nativeDescriptionSynthesis": "read-only partial current-page/native resolution check PASS7 of20",
+  "arithmeticResult": "PASS7/14 under Node20.20.2; initial system Node was too old for node:assert/strict and changed no artifacts.",
+  "humanApproval": false,
+  "centralRegistration": false,
+  "sourceWrites": false
+}

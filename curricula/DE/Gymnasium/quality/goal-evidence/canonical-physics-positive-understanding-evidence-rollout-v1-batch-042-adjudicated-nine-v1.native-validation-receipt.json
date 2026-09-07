@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-07 15:33:16 UTC",
+  "profiles": 9,
+  "cases": 18,
+  "nativeChecks": [
+    {
+      "name": "candidate-current-binding",
+      "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/materializePositiveGoalEvidenceCandidates.ts --config 'curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-042-adjudicated-nine-v1.config.json' --candidates 'curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-042-adjudicated-nine-v1.candidates.json'",
+      "exitCode": 0,
+      "output": "Verified curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-042-adjudicated-nine-v1.review.jsonl: 9 current AI candidate profile(s).\n"
+    },
+    {
+      "name": "native-profile-check",
+      "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config='curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-042-adjudicated-nine-v1.config.json' --mode=check",
+      "exitCode": 0,
+      "output": "# Positive Goal Evidence Review: canonical-physics-positive-evidence-b042-adjudicated-nine-v1\nScope: Neun fachlich post-seal adjudizierte aktuelle B042-Ziele; individuelle 18 bilinguale V2-Fälle, zusätzliche unabhängige D-Gegenprüfung ausstehend. Keine menschliche Freigabe.\nConfigured goals: 9\nApproved: 0\nNeeds human review: 9\nRejected: 0\nBlocking issues: 0\n"
+    },
+    {
+      "name": "new-neutral-preparation",
+      "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH npm --prefix app run quality:goal-description-rollout-batch -- check --config 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042r-current-nine-contexts-v1.config.json'",
+      "exitCode": 0,
+      "output": "\n> skillpilot@0.0.0 quality:goal-description-rollout-batch\n> tsx scripts/materializeGoalDescriptionRolloutBatch.ts check --config curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042r-current-nine-contexts-v1.config.json\n\nStandalone goal-description batch valid: physik-rollout-v1-batch-042r-current-nine-contexts-v1-20260907; goals=9\n"
+    }
+  ],
+  "recordsDigest": "sha256:5c31383093e3509dda94f9c4cf0c57cf7a24796dd1ac06974da01f9af65d0ac7",
+  "candidateDigest": "sha256:55e7fc0e2aecd400d6729f261b951ebd82707556ef4382ae96525d1ad19edef0",
+  "authorSelfCheckReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-042-adjudicated-nine-v1.author-check-receipt.json",
+  "originalARecordsPreserved": "sha256:eaedb42e813a01dfc57fa8151e98ac760de680fe57de099a80d1d72059387905",
+  "originalBRecordsPreserved": "sha256:c3794aa101194dbaf6602402726aed28188ac1f936e731ba5c7031022a1e3f8d",
+  "limitations": [
+    "Original A20 remains formally nonblind and native-invalid; no validator weakened.",
+    "Post-seal P authorship is nonblind; no model diversity, actual learner performance or human approval claimed.",
+    "Additional independent B042r9 D review and separate independent full P body review are still required.",
+    "No canonical, QA, central-registry, server, runtime or deployment writes performed."
+  ]
+}

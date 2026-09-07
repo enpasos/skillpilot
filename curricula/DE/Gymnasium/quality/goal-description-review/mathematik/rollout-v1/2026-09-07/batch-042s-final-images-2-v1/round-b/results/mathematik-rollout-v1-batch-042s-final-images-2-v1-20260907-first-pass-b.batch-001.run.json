@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b042s-final-images-b-root-20260907",
+  "campaignId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-b",
+  "roundId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:2ac74cd092269e431592cd5816f069bc022d359a891d63ef6e1e73d4e9672da1",
+  "bundleFingerprint": "sha256:d4e2ace8afac193872c73ec1cf139f9ff45fdba262c08016870e87398e3d298f",
+  "bookDigest": "sha256:e4c8f7efd74b3be9309ff3968b77c6246ff729ed189fc3e1a57b4c58158ac2af",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "role": "disconfirming_reviewer",
+  "promptFamilyId": "generic-goal-description-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:3443a311d9b4e1456fdc819da7e3f9e3d9368042c3c4977b19c2d813ec00f329",
+  "independenceGroupId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+    "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2ac74cd092269e431592cd5816f069bc022d359a891d63ef6e1e73d4e9672da1"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-07T14:53:00Z",
+  "completedAt": "2026-09-07T14:59:27Z",
+  "status": "completed",
+  "outputDigest": "sha256:df13ff9952f27ed11d3b32407f4bb0055d7de8bc55540b5321d451b92eab38ab",
+  "toolchainVersion": "codex-native-review-and-exact-binding-v1"
+}

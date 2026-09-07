@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-b042-df-native-fallback-self-review-20260907T134642Z",
+  "recordedAt": "2026-09-07T13:47:55Z",
+  "reviewer": {
+    "agentInstance": "/root/goal_book_pdf_history_audit",
+    "model": "Codex (exact underlying model identifier unavailable)",
+    "role": "native candidate author and self-reviewer; root performs a separate independent counter-review",
+    "newThreadClaimed": false,
+    "modelDiversityClaimed": false,
+    "humanApprovalClaimed": false
+  },
+  "goalId": "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+  "currentTitleDe": "Logistisches Wachstum untersuchen (LK)",
+  "currentDescriptionDe": "Die lernende Person kann logistisches Wachstum anhand geeigneter Funktionen beschreiben, modellieren und die Unterschiede zu begrenztem bzw. einfachem exponentiellem Wachstum (Sättigung/Tragfähigkeit) herausarbeiten.",
+  "nativeException": {
+    "authority": "Root explicitly instructed this narrow native replacement after the sealed self-review of two targeted Nano Banana attempts. No general provider change was authorized.",
+    "reason": "Both reference-image attempts corrected the false bounded-growth parenthetical but failed to put the explicitly labeled N(0)=100 at the mathematically correct y-coordinate. Attempt 2 added contradictory intermediate ticks instead. The requested correction is exact function-to-axis geometry.",
+    "attemptEvidence": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/growth-candidate-generation-review-v1.json",
+    "firstAttemptPrompt": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/df7338ef-correction-v1.prompt.de.md",
+    "secondAttemptPrompt": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/df7338ef-correction-v2.prompt.de.md",
+    "firstAttemptImageSha256": "6a65bfab747682e06dfd77c8b217e855a71bcfc4c6dbc6d7a79ebc7bed61fe6c",
+    "secondAttemptImageSha256": "8b6ddd2a1d2f21a6012acbac10368b40872dc883c895562a0a5ce03462da0340",
+    "method": "New vector diagram sampled from the exact logistic function, with a separate three-model textual comparison. No rejected bitmap was pixel-retouched; no generated pixels were falsely presented as a successful Nano repair.",
+    "skillEffect": "Imagegen's reference-preservation and actual-raster inspection discipline exposed two failed repairs. The expressly requested repo-native mathematical diagram is the bounded exception, not an unrequested raster editing fallback."
+  },
+  "artifacts": {
+    "svgPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/df7338ef-fallback.svg",
+    "svgSha256": "11bd68bf5b405c584e93dac10c4d346c923e73cd57cd426faeb8d0adcd14e659",
+    "imagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/df7338ef-fallback.png",
+    "imageSha256": "c48eeabdc64dc66a44f56a2e8f6621466bea3df16ef4e9caaf8d6cca54c7c6a4",
+    "rendererPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/render-df7338ef-fallback.mjs",
+    "rendererSha256": "ca949dac3cc538dc783a8394c1e0c45b81f6d0c3cbba04a84f0fb96d3f40ead3",
+    "renderCommand": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH node curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/render-df7338ef-fallback.mjs",
+    "renderExitCode": 0,
+    "dimensions": {
+      "width": 1600,
+      "height": 900
+    },
+    "renderMechanism": "Repository-pinned app Playwright Chromium; DejaVu Sans; actual PNG viewed at original resolution.",
+    "overwritePolicy": "Renderer uses exclusive creation for its SVG and refuses an existing PNG; reviewed artifacts are not silently regenerated."
+  },
+  "verdict": "pass_self_review_pending_independent_counter_review",
+  "blockingFindings": [],
+  "positiveControls": [
+    {
+      "control": "Domain, function and initial value",
+      "result": "N(t)=1000/(1+9e^(−0.6t)), t≥0, is displayed consistently. N(0)=100 and 0<N(t)<1000 hold. The marked start has coordinates (110,542), exactly 33 pixels above zero on a 165-pixel 0→500 interval."
+    },
+    {
+      "control": "Linear axes and curve",
+      "result": "The plotted N-axis ticks 0,100,250,500,750,1000 all use py=575−0.33N. The t-axis ticks 0,2,4,6,8,10 all use px=110+74t. All 1001 graph samples agree with the displayed function to sub-0.0005-pixel coordinate rounding."
+    },
+    {
+      "control": "Inflection and curvature",
+      "result": "N'=0.6N(1−N/1000)>0. N''=0.6N'(1−2N/1000), hence curvature changes at N=500. t_W=ln(9)/0.6≈3.66204; the point lies before t=4 and at the exact 500 level. The blue curve rises first with increasing and then decreasing slope."
+    },
+    {
+      "control": "Maximum absolute growth",
+      "result": "0.6N(1−N/1000) is a downward-opening quadratic in N, maximized at N=500. Its value there is 150; the text explicitly says absolute growth per model time unit, not maximal relative growth."
+    },
+    {
+      "control": "Saturation",
+      "result": "The horizontal dashed K=1000 line uses the same y-scale. The graph remains below it for finite t; N(10)=978.17805 is visibly below the line. The model approaches 1000 from below as t grows."
+    },
+    {
+      "control": "Exponential comparison",
+      "result": "E(t)=100exp(0.6t) has the same initial value 100, E'=0.6E>0 and E''=0.36E>0. Growth is proportional to stock, the curve becomes steeper and has no inflection or finite upper bound."
+    },
+    {
+      "control": "Bounded comparison",
+      "result": "B(t)=1000−900exp(−0.6t) has initial value 100 and cap 1000; B'=540exp(−0.6t)=0.6(1000−B)>0 and B''=−324exp(−0.6t)<0. It becomes flatter and has no inflection, including at t=0. The false parenthetical is absent."
+    },
+    {
+      "control": "Logistic comparison and modeling scope",
+      "result": "L(t)=N(t) unambiguously refers to the main worked model. Its growth depends on stock and remaining carrying capacity; the final prompt asks the learner to check resources, stock and time period rather than treating the formula as a universal natural law."
+    },
+    {
+      "control": "All labels, marks and layout",
+      "result": "The orange marker and dashed projections identify W, the blue marker/callout identifies N(0), and the orange horizontal dashed line identifies carrying capacity. No additional unverified inset curves occur. Formula exponent, fraction, inequalities, arrows, model comparisons and captions are readable in the actual PNG. No SVG text extends outside the 1600x900 viewport."
+    }
+  ],
+  "negativeControls": [
+    "No point is positioned by copying the failed Nano curve; no numeral is merely attached to inconsistent geometry.",
+    "No finite-time crossing of K, zero crossing, wrong initial point, extra inflection or maximal-relative-rate assertion appears.",
+    "The example's population and time are model quantities; no physical dataset, empirical fit or unprovided unit is invented.",
+    "The three-model comparison does not imply equal numerical trajectories or a falsely shared event order.",
+    "The worked illustration is not evidence of an actual learner's mastery or human fachliche approval."
+  ],
+  "numericVerification": {
+    "samplesChecked": 1001,
+    "domain": [
+      0,
+      10
+    ],
+    "step": 0.01,
+    "maximumAbsolutePixelRoundingError": 0.0004983942747003312,
+    "tolerance": 0.000501,
+    "initialHeightTo500HeightRatio": 0.2,
+    "inflectionCoordinates": {
+      "t": 3.662040962227033,
+      "N": 500,
+      "x": 380.99103120480044,
+      "y": 410
+    },
+    "controls": [
+      {
+        "t": 0,
+        "N": 100,
+        "NPrime": 54
+      },
+      {
+        "t": 1,
+        "N": 168.36987599182143,
+        "NPrime": 84.01287651019206
+      },
+      {
+        "t": 2,
+        "N": 269.4874523966029,
+        "NPrime": 118.11837923843497
+      },
+      {
+        "t": 3.662040962227033,
+        "N": 500.00000000000006,
+        "NPrime": 149.99999999999997
+      },
+      {
+        "t": 4,
+        "N": 550.5208649761885,
+        "NPrime": 148.46858532123466
+      },
+      {
+        "t": 6,
+        "N": 802.6239368737704,
+        "NPrime": 95.05125169861212
+      },
+      {
+        "t": 8,
+        "N": 931.0399876798491,
+        "NPrime": 38.522717412573336
+      },
+      {
+        "t": 10,
+        "N": 978.178051236962,
+        "NPrime": 12.807450789132806
+      }
+    ]
+  },
+  "authority": "Only the scoped candidate renderer, SVG, PNG and this report were added. No image import, canonical goal, active visualization, runtime, QA, review verdict from another run or publication state was changed. Earlier rejected-attempt evidence is preserved."
+}

@@ -1,0 +1,101 @@
+{
+  "checkedAt": "2026-09-07T15:31:31.214Z",
+  "authority": "Author arithmetic/structure self-check only; not independent body review, blind D completion or human approval.",
+  "profiles": 9,
+  "applicationCases": 18,
+  "checks": [
+    {
+      "name": "Nine exact current candidates, eighteen independently presented cases, two distinct expectations each",
+      "pass": true
+    },
+    {
+      "name": "Every declared expectation required, two independent demonstrations and meaningful transfer",
+      "pass": true
+    },
+    {
+      "name": "Candidate-only E1/G1 and no fabricated review run IDs or human approval",
+      "pass": true
+    },
+    {
+      "name": "Decay: three half-lives give 200 expected parent nuclei and A0/8=0.01925 Bq",
+      "pass": true
+    },
+    {
+      "name": "Decay supplied initial activity agrees with ln(2)*N/T in seconds to stated rounding",
+      "pass": true
+    },
+    {
+      "name": "Initial radioactive daughter production is positive at D=0 while parent decreases",
+      "pass": true
+    },
+    {
+      "name": "Fictional energy options: B initially strictly lower thermal input; revised intervals overlap",
+      "pass": true
+    },
+    {
+      "name": "Both fictional options have physical efficiencies below one; supplied waste comparison uses identical class",
+      "pass": true
+    },
+    {
+      "name": "Atom-to-ion case preserves two uud protons and two udd neutrons and removes one lepton",
+      "pass": true
+    },
+    {
+      "name": "Superconducting model temperatures straddle the explicitly supplied Tc=90 K",
+      "pass": true
+    },
+    {
+      "name": "Band case EF lies inside M band but in S gap; finite-temperature case changes occupation, not band support",
+      "pass": true
+    },
+    {
+      "name": "Common-emitter qualitative output slope is negative for positive collector-current change",
+      "pass": true
+    },
+    {
+      "name": "Crash fixed impulse: -6000 Ns; mean forces -60000 and -20000 N",
+      "pass": true
+    },
+    {
+      "name": "Crash earlier braking changes impulse to -3000 Ns and force magnitude to 30000 N",
+      "pass": true
+    },
+    {
+      "name": "Sticking collision: p=6, v=2, kinetic energies 9 and 6 J; 3 J conversion",
+      "pass": true
+    },
+    {
+      "name": "Non-sticking counter-moving collision: p=2, vB=2, energies 5 and 2 J; 3 J conversion",
+      "pass": true
+    },
+    {
+      "name": "Projectile table: x=3t, y=4t-5t², vy=4-10t at all five times",
+      "pass": true
+    },
+    {
+      "name": "Downward start stays descending for t>=0 while acceleration is counted once",
+      "pass": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-042-adjudicated-nine-v1.config.json",
+      "digest": "sha256:8beeedf491ff7f36719013b1a858c895f7312b9fed41ee8139cdc8ff7a6b1ac8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-042-adjudicated-nine-v1.candidates.json",
+      "digest": "sha256:55e7fc0e2aecd400d6729f261b951ebd82707556ef4382ae96525d1ad19edef0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-042-adjudicated-nine-v1.review.jsonl",
+      "digest": "sha256:5c31383093e3509dda94f9c4cf0c57cf7a24796dd1ac06974da01f9af65d0ac7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-042-adjudicated-nine-v1.author-check.mjs",
+      "digest": "sha256:f780311892a217022a88bae797b5150c056231c7746759dee6c8c5c44251f1ba"
+    }
+  ],
+  "executionNotes": [
+    "Initial invocation used default old Node and failed before any check with ERR_UNKNOWN_BUILTIN_MODULE node:assert/strict. Rerun with pinned Node v20.20.2 succeeded; no test weakened."
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b041-diffraction-existing-4-v1",
+  "reviewedAt": "2026-09-07T14:11:34Z",
+  "reviewer": "OpenAI Codex /root/goal_book_build_generator; exact model unavailable",
+  "goals": [
+    {
+      "goalId": "6270e558-d657-5363-a6b2-e49a032a453b",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "phase-to-screen",
+            "essentialUnderstandingDe": "Bei senkrechtem kohärentem Einfall erklären ganzzahlige Gangunterschiede die hellen Doppelspaltmaxima. Fernfeld erlaubt Δs≈d sinθ; y=L tanθ folgt aus der Schirmgeometrie. Erst die zusätzliche Kleinwinkelannahme macht die Streifenabstände näherungsweise konstant.",
+            "essentialUnderstandingEn": "For normal coherent incidence, integer-wavelength path differences explain bright double-slit maxima. The far field permits Δs≈d sinθ; y=L tanθ follows from screen geometry. Only the additional small-angle assumption makes fringe spacings approximately constant.",
+            "observablePerformanceDe": "Leitet die Maximabedingung aus Phasen/Gangunterschied her, übersetzt Winkel in Schirmorte und begründet anhand der Messgeometrie, ob eine Linearisierung ausreicht.",
+            "observablePerformanceEn": "Derives the maximum condition from phase/path difference, converts angles to screen positions and justifies linearisation using the measurement geometry."
+          },
+          {
+            "id": "inverse-and-colour-model",
+            "essentialUnderstandingDe": "Aus bekannten Spalt- und Schirmabständen und zugeordneter Ordnung lässt sich eine unbekannte Wellenlänge erschließen. Verschiedene Wellenlängen haben bei derselben Ordnung verschiedene Winkel, im Zentrum aber ein gemeinsames Maximum.",
+            "essentialUnderstandingEn": "Known slit and screen distances and an assigned order allow an unknown wavelength to be inferred. Different wavelengths have different angles for the same order but share a central maximum.",
+            "observablePerformanceDe": "Wertet neue Schirmdaten mit Einheiten und Ordnungsbegründung aus und erklärt die Veränderung eines Musters bei einer zweiten Wellenlänge; unterscheidet Modellvorhersage von einer tatsächlich gemessenen Größe.",
+            "observablePerformanceEn": "Analyses fresh screen data with units and justified orders and explains how a second wavelength changes the pattern; distinguishes model predictions from measured quantities."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "phase-to-screen",
+            "inverse-and-colour-model"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "measurement-versus-prediction",
+            "textDe": "Unbekannte Wellenlänge aus mehreren Maxima erschließen statt nur einen vorgegebenen Zahlenwert einsetzen; danach eine neue Farbe vorhersagen.",
+            "textEn": "Infer an unknown wavelength from several maxima rather than substituting a supplied wavelength; then predict a new colour."
+          },
+          {
+            "id": "geometry-and-source-regime",
+            "textDe": "Schirmabstand, zugeordnete Ordnung oder Spektralzusammensetzung ändern; Kleinwinkel- und Fernfeldannahme jeweils getrennt prüfen.",
+            "textEn": "Change screen distance, assigned order or spectral composition; assess far-field and small-angle assumptions separately."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-fringe-measurement",
+            "taskDemandDe": "Gelieferte Laboraufnahme: d=0,20mm, L=0,80m. Die hellen Streifen m=±1 und±2 liegen bei±2,60mm und±5,20mm. Erläutere ein geeignetes Auswertungsmodell, bestimme λ und sage voraus, was bei Verdopplung von L bei unveränderter Quelle geschieht.",
+            "taskDemandEn": "Supplied laboratory image: d=0.20mm, L=0.80m. Bright fringes m=±1 and±2 lie at±2.60mm and±5.20mm. Explain a suitable model, determine λ and predict the effect of doubling L at unchanged source.",
+            "expectedPerformanceDe": "Begründet konstruktive Phasenlage und erhält etwa650nm aus beiden Ordnungen; θ₂≈0,372° stützt die Kleinwinkelnäherung. Bei verdoppeltem L verdoppeln sich die Schirmorte bei gleichbleibenden Winkeln. Die Aufnahme wird nicht als unmittelbar gemessene Wellenlänge ausgegeben.",
+            "expectedPerformanceEn": "Justifies constructive phase and obtains about650nm from both orders; θ₂≈0.372° supports the approximation. Doubling L doubles screen positions while angles stay unchanged. The photograph is not described as directly measuring wavelength.",
+            "understandingFocusDe": "Messinversion, Phasengrundlage und geometrischer Transfer tragen gemeinsam die Erklärung.",
+            "understandingFocusEn": "Measurement inversion, phase reasoning and geometric transfer jointly support the explanation."
+          },
+          {
+            "id": "two-colours-without-template",
+            "taskDemandDe": "Ohne Abbildung: ein idealisierter Doppelspalt mit d=0,20mm und L=0,80m erhält Licht mit650nm und zusätzlich475nm. Konstruiere eine qualitative symmetrische Skizze der ersten Maxima, berechne ihre Orte und beurteile, ob jedes helle Maximum beider Farben zusammenfällt.",
+            "taskDemandEn": "Without a figure, an idealised double slit with d=0.20mm and L=0.80m receives650nm light plus475nm light. Construct a qualitative symmetric sketch of first maxima, calculate their positions and assess whether every bright maximum coincides for both colours.",
+            "expectedPerformanceDe": "Ordnet±1,90mm der475nm-Komponente und±2,60mm der650nm-Komponente zu, erklärt kürzere Wellen näher am Zentrum und gemeinsames m0. Weitere Überlappungen benötigen passende ganzzahlige Ordnungen; bloße Helligkeit bedeutet keine gemeinsame Wellenlänge. Selbst gezeichnete Zuordnung, nicht Kopie des Buchbilds.",
+            "expectedPerformanceEn": "Assigns±1.90mm to475nm and±2.60mm to650nm, explains the shorter wavelength being nearer the centre and shared m0. Other overlaps require suitable integer orders; brightness does not imply one wavelength. Independently constructed mapping, not a copied book figure.",
+            "understandingFocusDe": "Frischer polychromatischer Transfer desselben Doppelspaltmodells.",
+            "understandingFocusEn": "Fresh polychromatic transfer of the same double-slit model."
+          }
+        ]
+      },
+      "reason": "B041: eigenständig neu formulierter V2-Kandidat für genau das vorhandene getrennte Beugungsziel. Aktuelle DE/EN-Fassung, tatsächlich betrachtetes Fallbild und konkrete HE/BW/BY-Quellgrenzen geprüft. Die Fälle verlangen eigene Modellbegründung und inhaltlichen Transfer, keine bloße Bildkopie oder Zahlenvariation. Keine tatsächliche Lernendenleistung, Humanfreigabe oder bereits erfolgte unabhängige Profilkörperprüfung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "c64820e1-c0ee-4342-9225-f981650f0c52",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "destructive-phase",
+            "essentialUnderstandingDe": "Beim idealisierten Doppelspalt löschen sich gleich starke kohärente Beiträge in Gegenphase aus. Die Minima erfüllen d sinθ=(m+1/2)λ mit ganzzahligem m; das Zentrum mλ=0 ist dagegen ein helles Maximum.",
+            "essentialUnderstandingEn": "For an idealised double slit, equally strong coherent contributions cancel in opposite phase. Minima satisfy d sinθ=(m+1/2)λ for integer m; zero path difference instead gives a bright central maximum.",
+            "observablePerformanceDe": "Begründet Halbzahlbedingung und richtige Ordnungszuordnung beiderseits des Zentrums und prüft eine falsche helle/dunkle Zuordnung.",
+            "observablePerformanceEn": "Explains the half-order condition and correct indices on both sides and checks an incorrect bright/dark assignment."
+          },
+          {
+            "id": "geometry-and-amplitude-limits",
+            "essentialUnderstandingDe": "Die Schirmkoordinate ist y=L tanθ, nicht allgemein L sinθ. Vollständige Dunkelheit setzt gleiche Amplituden voraus; bei unveränderter relativer Phase und ungleichen konstanten Amplituden bleiben die idealen Minimumorte, aber Restintensität entsteht.",
+            "essentialUnderstandingEn": "The screen coordinate is y=L tanθ, not generally L sinθ. Complete darkness requires equal amplitudes; unchanged relative phase and unequal constant amplitudes preserve ideal minimum positions but leave residual intensity.",
+            "observablePerformanceDe": "Berechnet Winkel und Orte in einem nichtkleinen Winkelbereich und erklärt aus Phasen- und Amplitudenvergleich, wann eine dunkle Stelle nicht mehr vollständig dunkel bleibt.",
+            "observablePerformanceEn": "Calculates angles and positions beyond a small-angle regime and uses phase/amplitude comparisons to explain when a minimum is no longer completely dark."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "destructive-phase",
+            "geometry-and-amplitude-limits"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "small-to-large-angle",
+            "textDe": "Von kleinen Winkeln zu einem Spaltmittenabstand von wenigen Wellenlängen wechseln, ohne die Fernfeldannahme aufzugeben.",
+            "textEn": "Move from small angles to centre spacing of only a few wavelengths without abandoning the far-field assumption."
+          },
+          {
+            "id": "balanced-to-unbalanced",
+            "textDe": "Gleiche Skalierung beider Beiträge mit gezielter Abschwächung eines einzelnen Spalts vergleichen.",
+            "textEn": "Compare equal scaling of both contributions with attenuation of just one slit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "half-order-identification",
+            "taskDemandDe": "Gelieferte Fernfeld-Messdaten: λ=600nm,d=0,30mm,L=1,5m. Eine Auswertung bezeichnet±3,0mm als nächste dunkle Stellen. Begründe eine Korrektur aus der Phasenbedingung, inklusive der richtigen ganzzahligen m-Werte für die beiden nächsten Minima.",
+            "taskDemandEn": "Supplied far-field data: λ=600nm,d=0.30mm,L=1.5m. An analysis calls±3.0mm the nearest dark positions. Correct it using the phase condition, including the proper integer m values for the two nearest minima.",
+            "expectedPerformanceDe": "Identifiziert±3,0mm als erste helle Maxima. Minima liegen für m0/−1 bei etwa±1,5mm; die nächsten weiteren Minima bei±4,5mm. Erklärt gegenphasige Beiträge statt nur die Maximafunktion umzubenennen.",
+            "expectedPerformanceEn": "Identifies±3.0mm as the first bright maxima. Minima for m0/−1 are about±1.5mm, with the next pair at±4.5mm. Explains opposite-phase contributions rather than relabelling a maximum formula.",
+            "understandingFocusDe": "Die Halbzahlphase bestimmt Ort und Bedeutung der dunklen Streifen.",
+            "understandingFocusEn": "Half-order phase determines both the positions and meaning of dark fringes."
+          },
+          {
+            "id": "finite-angle-and-unequal-slits",
+            "taskDemandDe": "Gedanklicher idealisierter Doppelspalt im Fernfeld: d=3λ, L=1m. Bestimme das zweite positive Minimum und vergleiche exakte Schirmgeometrie mit y≈L sinθ. Anschließend werde nur eine Spaltamplitude halbiert; die ursprünglichen Amplituden waren jeweils A. Bleibt dort vollständige Dunkelheit?",
+            "taskDemandEn": "Idealised far-field thought experiment: d=3λ,L=1m. Find the second positive minimum and compare exact screen geometry with y≈L sinθ. Then halve only one slit amplitude; both were originally A. Does full darkness remain?",
+            "expectedPerformanceDe": "Für m1 gilt sinθ=1/2, θ30° und y≈0,577m statt0,500m; Fernfeld allein rechtfertigt die lineare Schirmform nicht. Gegenphase bleibt, aber die Resultierende hat Betrag A/2: positive Restintensität, keine Verschiebung der idealen Phasenminima. Nicht mit Einzelspaltminima oder einer Gitterregel argumentieren.",
+            "expectedPerformanceEn": "For m1,sinθ=1/2,θ30° and y≈0.577m rather than0.500m; far field alone does not justify linear screen coordinates. Opposite phase remains but the resultant magnitude is A/2, giving positive residual intensity without shifting the ideal phase minima. Do not use single-slit or grating rules.",
+            "understandingFocusDe": "Unabhängiger Grenzfalltransfer über Winkelbereich und veränderte Amplituden.",
+            "understandingFocusEn": "Independent limiting-case transfer across angular regime and changed amplitudes."
+          }
+        ]
+      },
+      "reason": "B041: eigenständig neu formulierter V2-Kandidat für genau das vorhandene getrennte Beugungsziel. Aktuelle DE/EN-Fassung, tatsächlich betrachtetes Fallbild und konkrete HE/BW/BY-Quellgrenzen geprüft. Die Fälle verlangen eigene Modellbegründung und inhaltlichen Transfer, keine bloße Bildkopie oder Zahlenvariation. Keine tatsächliche Lernendenleistung, Humanfreigabe oder bereits erfolgte unabhängige Profilkörperprüfung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "91683676-01cf-5003-80fa-a04d043b4e61",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "grating-phases-and-spacing",
+            "essentialUnderstandingDe": "Die Gitterkonstante ist der Abstand benachbarter Spaltmitten, nicht die Spaltbreite. In Hauptmaximrichtungen haben benachbarte Beiträge ganzzahlige Gangunterschiede und gemeinsame Phase; g sinθ=mλ beschreibt Hauptmaxima, nicht eine allgemeine Minimaregel.",
+            "essentialUnderstandingEn": "The grating constant is the distance between neighbouring slit centres, not slit width. At principal maxima neighbouring contributions have integer-wavelength path differences and equal phase; g sinθ=mλ describes principal maxima, not a general minimum rule.",
+            "observablePerformanceDe": "Erläutert die Phasenlage mit eigener Skizze oder Zeigern, rechnet Liniendichte in g um und grenzt Hauptmaxima gegen eine falsche Doppelspalt-Minimaregel ab.",
+            "observablePerformanceEn": "Explains phase using an independently constructed sketch or phasors, converts line density to g and distinguishes principal maxima from a false double-slit minimum rule."
+          },
+          {
+            "id": "spectral-order-inversion",
+            "essentialUnderstandingDe": "Für dieselbe Ordnung nimmt der Betrag des Beugungswinkels mit λ zu; m0 ist für alle Wellenlängen gemeinsam. Verschiedene Ordnungen können überlappen, weshalb eine inverse λ-Bestimmung eine begründete Ordnungszuordnung braucht.",
+            "essentialUnderstandingEn": "Within one order, angular magnitude increases with λ; m0 is shared by all wavelengths. Different orders can overlap, so inverse wavelength determination requires justified order assignment.",
+            "observablePerformanceDe": "Deutet neue polychromatische Daten und konstruiert die beidseitige Farbreihenfolge, bestimmt λ und prüft Ordnungsmehrdeutigkeiten oder geometrisch unmögliche Richtungen.",
+            "observablePerformanceEn": "Interprets fresh polychromatic data, constructs colour order on both sides, determines λ and checks ambiguous orders or geometrically impossible directions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "grating-phases-and-spacing",
+            "spectral-order-inversion"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "inverse-spectral-data",
+            "textDe": "Wellenlängen aus Winkeldaten erschließen statt aus bereits beschrifteten Farben ablesen.",
+            "textEn": "Infer wavelengths from angular measurements rather than reading prelabelled colours."
+          },
+          {
+            "id": "order-overlap-and-aperture",
+            "textDe": "Liniengemisch und Ordnung ändern; eine falsche Übertragung der Doppelspalt-Halbzahlregel am Mehrfachspalt mit Phasenaddition prüfen.",
+            "textEn": "Change the line mixture and order; test a false double-slit half-order rule using phase addition for multiple slits."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unknown-line-with-order",
+            "taskDemandDe": "Ein geliefertes Gitterspektrum stammt von500Linien/mm bei senkrechtem Einfall. Die erste Ordnung einer unbekannten Linie liegt beiθ=19,47°, die erste einer bekannten450nm-Linie bei etwa13,00°. Bestimme die unbekannte Wellenlänge und erkläre Farbenreihenfolge und gemeinsames Zentrum.",
+            "taskDemandEn": "A supplied normally incident grating spectrum uses500lines/mm. First order of an unknown line lies atθ=19.47°, while a known450nm line is near13.00°. Determine the unknown wavelength and explain colour order and the shared centre.",
+            "expectedPerformanceDe": "Erhält g=2µm und λ≈666,6nm; längere Welle liegt beidseitig weiter außen. m0 liegt für beide im Zentrum. Die Wellenlänge wird aus gemessenem Winkel und bekannter Ordnung erschlossen; zwei Linien müssen zusammen nicht weiß aussehen.",
+            "expectedPerformanceEn": "Obtains g=2µm and λ≈666.6nm; the longer wave is farther out on both sides. Both share m0. Wavelength is inferred from measured angle and known order; two lines need not combine to white.",
+            "understandingFocusDe": "Physikalisch begründete Spektreninterpretation und inverse Messauswertung.",
+            "understandingFocusEn": "Physically justified spectral interpretation and inverse measurement analysis."
+          },
+          {
+            "id": "overlap-and-false-minimum",
+            "taskDemandDe": "Ohne Buchgrafik: g=2µm, Licht enthält400nm und600nm. Suche die kleinsten positiven sich überlagernden Ordnungen. Ein Mitschüler behauptet zusätzlich, bei g sinθ=λ/2 sei jedes beliebige Gitter völlig dunkel. Prüfe dies an genau drei gleich starken Spalten mit Zeigern.",
+            "taskDemandEn": "Without the book figure: g=2µm and light contains400nm and600nm. Find the smallest overlapping positive orders. A student also claims every grating is completely dark at g sinθ=λ/2. Test this using phasors for exactly three equally strong slits.",
+            "expectedPerformanceDe": "Ordnet400nm die3. und600nm die2. Ordnung zu; sinθ=0,6,θ≈36,87° ist möglich. Bei Phasensprüngenπ sind drei normierte Beiträge+1,−1,+1, ihre Summe ist1 statt0. Die Hauptmaximabedingung bleibt richtig, eine universelle Halbzahl-Minimaregel ist widerlegt.",
+            "expectedPerformanceEn": "Assigns order3 to400nm and order2 to600nm; sinθ=0.6,θ≈36.87° is possible. For phase incrementsπ the three normalised contributions are+1,−1,+1 and sum to1, not0. The principal-maximum condition remains valid but a universal half-order minimum rule is disproved.",
+            "understandingFocusDe": "Eigenständiger Ordnungs- und Phasenmodelltransfer statt Formelkopie.",
+            "understandingFocusEn": "Independent order and phase-model transfer rather than copied formulas."
+          }
+        ]
+      },
+      "reason": "B041: eigenständig neu formulierter V2-Kandidat für genau das vorhandene getrennte Beugungsziel. Aktuelle DE/EN-Fassung, tatsächlich betrachtetes Fallbild und konkrete HE/BW/BY-Quellgrenzen geprüft. Die Fälle verlangen eigene Modellbegründung und inhaltlichen Transfer, keine bloße Bildkopie oder Zahlenvariation. Keine tatsächliche Lernendenleistung, Humanfreigabe oder bereits erfolgte unabhängige Profilkörperprüfung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "continuous-aperture-model",
+            "essentialUnderstandingDe": "Für eine gleichmäßig beleuchtete Einzelöffnung werden die ortsabhängigen Elementarwellenamplituden kohärent addiert. Das Fraunhofer-Modell ergibt I/I0=[sin(πu)/(πu)]² mit u=b sinθ/λ und Grenzwert1 bei u0; unabhängige Intensitäten zu addieren wäre ein anderes Modell.",
+            "essentialUnderstandingEn": "For a uniformly illuminated single aperture, position-dependent elementary-wave amplitudes add coherently. The Fraunhofer model gives I/I0=[sin(πu)/(πu)]² with u=b sinθ/λ and limit1 at u0; summing independent intensities would be a different model.",
+            "observablePerformanceDe": "Konstruiert oder erläutert die kontinuierliche Phasenaddition, begründet das Quadrieren der resultierenden Amplitude und zeichnet einen normierten Verlauf mit korrektem Zentrum und Nullstellen.",
+            "observablePerformanceEn": "Constructs or explains continuous phase addition, justifies squaring the resultant amplitude and draws a normalised curve with the correct centre and zeros."
+          },
+          {
+            "id": "minima-side-maxima-and-validity",
+            "essentialUnderstandingDe": "Nichtnullige ganzzahlige u sind Minima, die ersten beiden begrenzen das Zentralmaximum. Nebenmaxima folgen aus dem sinc²-Modell, nicht exakt aus halben Ordnungen. Beleuchtungsverteilung, Fernfeldbedingung und Kleinwinkelannahme sind getrennte Voraussetzungen.",
+            "essentialUnderstandingEn": "Nonzero integer u values are minima, with the first pair bounding the central maximum. Secondary maxima follow from the sinc² model, not exact half orders. Illumination profile, far-field condition and small-angle approximation are separate assumptions.",
+            "observablePerformanceDe": "Berechnet Minimumorte und Zentralbreite mit begründeter Geometrie, lokalisiert ein Nebenmaximum aus Modelldaten und beurteilt Grenzen bei veränderter Spaltbreite oder Beleuchtung.",
+            "observablePerformanceEn": "Calculates minima and central width using justified geometry, locates a secondary maximum from model data and assesses validity under changed slit width or illumination."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "continuous-aperture-model",
+            "minima-side-maxima-and-validity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "model-construction-versus-reading",
+            "textDe": "Ein Intensitätsmodell aus kohärenten Amplituden aufbauen statt bloß gegebene Tabellenwerte ablesen.",
+            "textEn": "Construct an intensity model from coherent amplitudes rather than merely reading a supplied table."
+          },
+          {
+            "id": "aperture-width-and-illumination",
+            "textDe": "Spaltbreite und gleichmäßige Beleuchtung als verschiedene Modellparameter bzw. Annahmen verändern.",
+            "textEn": "Vary slit width and uniform illumination as distinct model parameters or assumptions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fresh-single-slit-model",
+            "taskDemandDe": "Gegebene Fernfeldanordnung: λ=600nm,b=0,30mm,L=1,5m, gleichmäßige Beleuchtung. Erkläre mit phasenabhängigen Elementarwellen, warum Amplituden und nicht Intensitäten addiert werden. Stelle das normierte Intensitätsmodell auf und bestimme erste Minima, Zentralbreite und Intensität des ersten Nebenmaximums beiu≈1,4303.",
+            "taskDemandEn": "Given far-field arrangement:λ=600nm,b=0.30mm,L=1.5m with uniform illumination. Use phase-dependent elementary waves to explain why amplitudes, not intensities, are added. Construct the normalised intensity model and find first minima, central width and first secondary-maximum intensity atu≈1.4303.",
+            "expectedPerformanceDe": "Leitet/erläutert sinc² aus der Amplitudenüberlagerung und den Zentrumgrenzwert1. Erste Minima etwa±3,0mm, Zentralbreite6,0mm. Nebenmaximum etwa4,29mm mit I/I0≈0,04719; kein künstlich erhöhter Seitenpeak und kein Minimum beiu0.",
+            "expectedPerformanceEn": "Derives/explains sinc² from amplitude superposition and centre limit1. First minima are about±3.0mm and central width6.0mm. The side maximum is about4.29mm with I/I0≈0.04719; no artificially enlarged side peak and no minimum atu0.",
+            "understandingFocusDe": "Vollständiges Intensitätsmodell statt Austausch einer Minimagleichung.",
+            "understandingFocusEn": "A complete intensity model rather than substituting a minimum equation."
+          },
+          {
+            "id": "changed-width-and-model-limit",
+            "taskDemandDe": "In derselben Modellanordnung wird b halbiert, λ und L bleiben gleich. Sage die Veränderung der Winkel-/Schirmverteilung voraus und begründe sie. Danach wird nur die Mitte des Spalts stark beleuchtet, die Ränder deutlich schwächer: Darf dieselbe gleichmäßig beleuchtete sinc²-Verteilung unverändert weiterbenutzt werden?",
+            "taskDemandEn": "In the same model arrangement b is halved while λ and L stay fixed. Predict and justify the angular and screen-pattern changes. Then illuminate the slit centre much more strongly than its edges: may the same uniformly illuminated sinc² distribution be retained unchanged?",
+            "expectedPerformanceDe": "Aus u=b sinθ/λ folgen größere Winkel; im hier kleinen Winkelbereich verdoppeln sich näherungsweise die Orte und Zentralbreite. Die normierte Kurve überu bleibt bei weiterhin gleichmäßiger Beleuchtung gleich; das behauptet keine unveränderte absolute Spitzenintensität. Nichtgleichmäßige Beleuchtung erfordert gewichtete Amplitudenüberlagerung; alte Nullstellen/Seitenhöhen dürfen ohne neues Modell nicht garantiert werden.",
+            "expectedPerformanceEn": "u=b sinθ/λ implies larger angles; in this small-angle case positions and central width approximately double. With still-uniform illumination the normalised curve versusu stays the same, not necessarily the absolute peak intensity. Nonuniform illumination requires weighted amplitude superposition; old zeros and side heights cannot be guaranteed without a new model.",
+            "understandingFocusDe": "Frischer Transfer über einen Geometrieparameter und eine echte Modellannahme.",
+            "understandingFocusEn": "Fresh transfer across a geometry parameter and a genuine model assumption."
+          }
+        ]
+      },
+      "reason": "B041: eigenständig neu formulierter V2-Kandidat für genau das vorhandene getrennte Beugungsziel. Aktuelle DE/EN-Fassung, tatsächlich betrachtetes Fallbild und konkrete HE/BW/BY-Quellgrenzen geprüft. Die Fälle verlangen eigene Modellbegründung und inhaltlichen Transfer, keine bloße Bildkopie oder Zahlenvariation. Keine tatsächliche Lernendenleistung, Humanfreigabe oder bereits erfolgte unabhängige Profilkörperprüfung behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    }
+  ]
+}

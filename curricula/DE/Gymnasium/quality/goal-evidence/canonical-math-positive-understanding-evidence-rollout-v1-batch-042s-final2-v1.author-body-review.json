@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/goal_book_ci_integration",
+  "reviewedAt": "2026-09-07 14:58:47 UTC",
+  "scope": "Both complete bilingual profile bodies and all four application cases individually authored and checked against the current goal context and mathematics V2 criteria.",
+  "authority": "ai_candidate",
+  "humanApproval": false,
+  "candidates": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042s-final2-v1.candidates.json",
+    "sha256": "d01fc53d61c4691b266e2f18f87a081e22b668206004d8a72ee3522b778fb6f2"
+  },
+  "ledger": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042s-final2-v1.review.jsonl",
+    "sha256": "dad4584fae7872e610f39f5c4a660aaac3b5277f1c1825647a851120bd55b8fc"
+  },
+  "arithmetic": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042s-final2-v1.arithmetic-check.mjs",
+    "sha256": "6620a0c94273d70998ef5d95d9509cef3a31de912786b23f0a9fba6cb477e70c",
+    "result": {
+      "pass": true,
+      "interiorSingularIntegral": 4,
+      "logarithmicComparison": "diverges to +infinity",
+      "infiniteSignedIntegral": 0,
+      "infiniteAbsoluteArea": 0.5,
+      "sumMinimum": 0.35173371124919584,
+      "H0": 1.264790694742372,
+      "H8": 0.02316544963473251
+    }
+  },
+  "decisions": [
+    {
+      "goalId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "decision": "pass",
+      "checks": [
+        "Convergence, divergence, exact computation and absolute-value area all required and covered; no merely formula-copy case.",
+        "Interior singularity requires left/right limits separately; square-root comparison gives2+2=4, logarithmic comparison diverges.",
+        "Infinite-domain signed integral0 but area1/2 is independently derived via F(1)=0,F(2)=−1/4,F(∞)=0; no cancellation of divergent integrals.",
+        "German/English same mathematical demands and two actual structural demonstrations. Variation wording aligned to the actual interior-versus-infinite cases."
+      ]
+    },
+    {
+      "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c",
+      "decision": "pass",
+      "checks": [
+        "Both cases jointly cover sum, product and composition; differentiation connects structure, monotonicity, extrema, endpoint behavior and meaning.",
+        "Sum derivative strictly increasing gives unique minimum between.35/.36; product maximum2 and decay0 correct.",
+        "Composition case has polynomial inner expression, calibrated minute units, power in kW and derivative in kW/min. Peak12at3; finite endpoints and extrapolation limits stated correctly.",
+        "Neither Lambert-W nor integration of power is required; method neutrality and no successor parameter-family competence. All DE/EN fields substantively equivalent."
+      ]
+    }
+  ],
+  "independentBodyReviewPending": true
+}

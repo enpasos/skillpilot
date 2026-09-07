@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-09-07T15:48:00Z",
+  "status": "proposal_only_not_applied",
+  "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+  "provenance": {
+    "reviewer": "/root/goal_book_pdf_history_audit",
+    "model": "Codex (exact underlying model identifier unavailable)",
+    "priorInvolvement": "Author of the original B042-A records and post-seal source check; this is a separate requested source-grounded authoring proposal, not an independent blind review. Original records and decisions remain unchanged.",
+    "currentR9ResultsRead": false,
+    "previousSourceCheck": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/dose-normative-source-check-v1.json",
+    "newWork": "Actual NRW PDF p.43 and SN PDF p.69, BY retained primary JSON and official live basic-level topic page verified; adjacent canonical DE/EN bodies and current effective page scope read."
+  },
+  "canonicalLease": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "d2b1b698622a1f9b1cd3de82f05e5322aa873fd269c19d1693598b24b14c5a91",
+    "goalFingerprint": "sha256:7b9634fd537cfd13b9f1d0682a02ce7e8ac45ec70ef6a161bb9bde7a93da0e8b",
+    "pageFingerprintInOriginalB04220": "sha256:787833f7c1ca64c3e055f25322e109f438b30b7244b6b7f3368930f036c77918"
+  },
+  "proposedFields": {
+    "description": {
+      "before": "Dosismaße und Abschirmung berechnen/bewerten.",
+      "after": "Die lernende Person kann Energiedosis, Äquivalentdosis und effektive Dosis unterscheiden, die zur Fragestellung passende Dosisgröße unter benannten Modellannahmen aus gegebenen Daten bestimmen und die Wirksamkeit einer Abschirmung unter sonst vergleichbaren Expositionsbedingungen anhand der Dosisreduktion beurteilen."
+    },
+    "descriptionEn": {
+      "before": "Calculate/evaluate dose measures and shielding.",
+      "after": "The learner can distinguish absorbed dose, equivalent dose, and effective dose, determine the dose quantity appropriate to the question from given data under stated model assumptions, and assess the effectiveness of shielding by the reduction in dose under otherwise comparable exposure conditions."
+    }
+  },
+  "atomicity": {
+    "proposal": "retain_one_atomic_goal",
+    "competenceCore": "Quantitatively compare a shielding intervention using a correctly chosen and modeled dose quantity.",
+    "rationale": "Distinguishing the dose quantities and stating the applicable model are correctness conditions for the same calculation-and-interpretation task, not three independent assessment routines. The learner selects the quantity appropriate to the given problem; the wording does not require all three dose calculations in each task. One or two linked cases can assess the complete target.",
+    "splitNotRequired": "No compelling content split follows from the current dose-and-shielding target or these three clauses. Splitting into separate definition, arithmetic, and protection goals would artificially fragment this integrated application.",
+    "wouldRequireSeparateGoals": [
+      "Independent operation/calibration of radiation detectors",
+      "Independent derivation or fitting of decay laws",
+      "Comprehensive application benefit-risk judgments",
+      "Medical individual-risk estimates or legal compliance determinations",
+      "Reactor technology or energy-policy trade-offs"
+    ],
+    "authority": "Authoring proposal only; final semantic atomicity decision must be reviewed on approved current bytes."
+  },
+  "normativeSources": [
+    {
+      "jurisdiction": "DE-NW",
+      "officialUrl": "https://lehrplannavigator.nrw.de/system/files/media/document/file/gost_klp_ph_2022_06_07.pdf",
+      "retainedPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ph_2022_06_07.pdf",
+      "sha256": "648605d32584d44319f1e0b8b34cffe0519926f22a68137f2dd21520f1377f7d",
+      "actualReading": "pdftotext -layout, PDF and printed page 43, Qualifikationsphase Grundkurs, Strahlung und Materie, Erkenntnisgewinnung",
+      "sourceGoalId": "nw-phys-sekii-klp2022-GK-strahlung-und-materie-erkenntnisgewinnungskompetenz-008-39464f2a",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "mappingLines": [
+        2695,
+        2710
+      ],
+      "directMapping": "partial",
+      "supportedCore": "Quantifying radiation effects using effective dose and evaluating protection measures derived from that quantification.",
+      "boundary": "The source clause also maps to two clusters (1e9ec823 Methods in the introductory phase; 23fd87f3 radiation-risk/nuclear-energy judgment). It does not assign every descendant competency of either cluster to e6a50.",
+      "metadataCaveat": "Retained extraction says S.42; the actual matching PDF page prints 43. No extraction or mapping correction is made here."
+    },
+    {
+      "jurisdiction": "DE-BY",
+      "officialUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/lernbereich/312075",
+      "retainedPath": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+      "sha256": "6b49157703e7bad2685e09684d94248447da2f066a1c9cafc48bf11e758cbdfc",
+      "actualReading": "Retained primary JSON and live official Ph13 basic-level section 4.2 Radioaktivität und Kernenergietechnik; protection-rule competence and associated dose content, retrieved 2026-09-07.",
+      "sourceGoalId": "93256f65-3b22-5caf-89eb-0ddf0e3dae9b",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "mappingLines": [
+        4667,
+        4682
+      ],
+      "directMapping": "partial",
+      "supportedCore": "The curriculum names absorbed and equivalent dose, and connects reflection on given protection rules to learners' modeling, calculations and consideration of how far their conclusions generalize.",
+      "boundary": "The same mapped clause also supports bb5c5eab's broader risk judgment and b378c8b3's argument evaluation; those independent aims are not added to the proposed dose calculation target.",
+      "metadataCaveat": "The retained extraction span Ph13-GA.4.7 is an older extraction locator; the currently opened topic is labelled Ph13 4.2. This proposal preserves both identities and does not silently relabel the source record."
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "officialUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/102",
+      "retainedPath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+      "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+      "actualReading": "Actual local PDF pages 68–70; relevant text at PDF p.69 / printed p.57, Jahrgangsstufe 12 Leistungskurs, Lernbereich 6 Eigenschaften der Atomkerne.",
+      "sourceGoalId": "sn-phys-sekii-sn-jahrgangsstufe-12-leistungskurs-lb6-102-08-9553302b",
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "mappingLines": [
+        9445,
+        9470
+      ],
+      "directMapping": "partial",
+      "supportedCore": "Radiation absorption and protection, with equivalent dose explicitly represented as D_q = (E/m) q and q named as a quality factor.",
+      "boundary": "Use this as a stated simplified dose model; it is not a universal formula for effective dose or permission to conflate all radiation weighting conventions.",
+      "metadataCaveat": "The relevant retained page footer says 2011 within the present 2025 document. This describes section history, not an unverified claim that the whole source file is out of date."
+    }
+  ],
+  "definitionsCheck": {
+    "officialUrl": "https://www.gesetze-im-internet.de/strlschv_2018/anlage_18.html",
+    "actuallyRead": "Annex 18, B.1–2, official online text on 2026-09-07.",
+    "authorityLimit": "Supplementary primary terminology check only, not a new curricular scope source, legal advice or a requirement to memorize regulatory tables.",
+    "doseDistinctions": [
+      {
+        "nameDe": "Energiedosis",
+        "nameEn": "absorbed dose",
+        "meaning": "Absorbed energy per mass; D = E_abs/m, measured in Gy. For tissue doses, the specified averaging region matters."
+      },
+      {
+        "nameDe": "Äquivalentdosis",
+        "nameEn": "equivalent dose",
+        "meaning": "A radiation-quality-weighted dose quantity measured in Sv. Specify the convention and weighting factor in the model. In the organ-equivalent formulation H_T = sum_R w_R D_T,R; with one specified radiation component this reduces to w_R D_T. The SN quality-factor q notation is not asserted to be universally identical to every modern w_R or operational Q definition."
+      },
+      {
+        "nameDe": "effektive Dosis",
+        "nameEn": "effective dose",
+        "meaning": "A protection quantity additionally combining weighted organ/tissue equivalent doses; E_eff = sum_T w_T H_T in the stated simplified organ model, measured in Sv. A single radiation-weighted absorbed dose is not automatically effective dose."
+      }
+    ],
+    "notationBoundary": "E_abs denotes absorbed energy and E_eff effective dose here to avoid using E ambiguously. These explanatory equations belong to the proposal's correctness notes, not to an enlarged mandatory formula list in the goal.",
+    "riskBoundary": "A dose-model comparison is not an individual clinical prognosis or a guarantee of safety."
+  },
+  "taskModelConditions": [
+    "State whether the given data represent absorbed energy/mass, a given tissue dose, or a given dose rate integrated over a specified duration.",
+    "Supply the relevant radiation/tissue weighting factors when needed; do not introduce a recall demand for entire regulatory tables.",
+    "For the shielding comparison keep incident source conditions, duration and geometry otherwise comparable, or quantify their stated differences explicitly.",
+    "Use an attenuation relation only within its stated radiation/material/energy and geometry assumptions. Do not assume a count-rate reduction universally equals an absorbed-, equivalent- or effective-dose reduction.",
+    "If shielding changes the radiation mixture or energy distribution, a simple unchanged-weight proportional reduction needs additional justification; a scalar-factor classroom model must state that simplification.",
+    "Criterion is the absolute or relative reduction in the same chosen dose quantity, not an unsupported assertion that any nonzero shielding eliminates risk.",
+    "A conceptual classification or a question asking what data are missing may demonstrate the distinction; not every case must numerically calculate all three quantities.",
+    "Use provided data or a simulation, not an invitation to unapproved exposure experiments."
+  ],
+  "currentScope": {
+    "source": "Own originally prepared B042-A exact page applicability, read again for this proposal; no r9 results used.",
+    "effectiveJurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "effectiveStage": "SekII only",
+    "effectiveCourseProfiles": [
+      "GK",
+      "LK"
+    ],
+    "effectiveScopeUnchanged": true,
+    "rawTagCaveat": "Raw tags contain LK but do not override the compiler's explicit GK/LK applicability. The proposed wording must not be justified as LK-only.",
+    "auditLimit": "NRW/BY/SN clauses provide directly mapped support for the common core. This bounded check is not a complete new normative coverage audit for every one of the 15 effective jurisdictions.",
+    "levelBoundary": "The wording asks for the appropriate dose quantity under given data/model assumptions, not a universal all-organ quantitative dosimetry sequence in every mapped scope."
+  },
+  "neighborBoundaries": [
+    {
+      "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "relationship": "sole direct prerequisite",
+      "keepOutside": "Independent decay-law work, half-life/activity interpretation and qualitative decay-chain reasoning remain here; no extra decay fitting requirement."
+    },
+    {
+      "goalId": "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+      "relationship": "related existing application goal",
+      "keepOutside": "Qualitative explanation of an application via radiation type, interaction and detection, plus its benefit/hazard judgment."
+    },
+    {
+      "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+      "relationship": "related existing radiation-risk goal",
+      "keepOutside": "General assessment of a radiation-risk situation, source activity versus dose, geometry, duration and uncertainty. e6a50 retains the narrower numerical dose/shielding comparison, rather than copying this complete judgment goal."
+    },
+    {
+      "goalId": "1593d95c-2aac-504c-8527-37cb61877da9",
+      "relationship": "related radiation-type goal",
+      "keepOutside": "Classifying alpha/beta/gamma, nuclear changes and qualitative ionization/penetration properties."
+    },
+    {
+      "goalId": "b378c8b3-5e83-5abf-8243-b0f345037bfc",
+      "relationship": "shared BY source-clause target",
+      "keepOutside": "Generic weighing of physical and nonphysical arguments and reasoned positions."
+    },
+    {
+      "goalId": "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+      "relationship": "related nuclear-options goal",
+      "keepOutside": "Comparison of nuclear-energy options and energy-policy criteria."
+    }
+  ],
+  "assessmentBoundaryExample": {
+    "status": "Illustrative correctness control only; not a registered P evidence profile.",
+    "setup": "In a supplied monoenergetic-photon model, the same 0.020 kg tissue region absorbs 4.0e-6 J without the shield and 1.0e-6 J with it over equal times and unchanged incident geometry. Set w_R = 1, and supply tissue weight w_T = 0.12; this modeled organ is the only nonzero organ contribution.",
+    "expected": "D falls from 2.0e-4 Gy to 5.0e-5 Gy; H_T from 2.0e-4 Sv to 5.0e-5 Sv; the modeled contribution to effective dose falls from 2.4e-5 Sv to 6.0e-6 Sv. Each matched quantity is reduced by 75% under these explicit assumptions.",
+    "negativeControls": [
+      "Equal numerical values of D and H_T when w_R=1 do not make their physical quantities or units interchangeable.",
+      "H_T alone is not effective dose; missing organ information generally prevents determining the full effective dose.",
+      "The stated 75% dose reduction is conditional on this model, not a universal shield property or evidence of zero hazard."
+    ],
+    "scope": "A linked calculation and explanation tests the integrated core; these numerical constants and this particular organ are not additions to the canonical goal."
+  },
+  "minimalImpact": {
+    "proposedCanonicalFields": [
+      "description",
+      "descriptionEn"
+    ],
+    "fixedFields": [
+      "id",
+      "title",
+      "titleEn",
+      "contains",
+      "requires",
+      "tags",
+      "weight",
+      "dimensionTags",
+      "applicability",
+      "source mappings",
+      "composition views"
+    ],
+    "graph": "No new goal, split, edge, chapter move or applicability expansion.",
+    "immediateSuccessors": [
+      "4daef009-6425-526a-8574-4fa75f28f946",
+      "4a58df57-f791-502f-8b8d-9ba155e46035"
+    ],
+    "successorMeaning": "Both are assessment endpoints. Their current goal text and edges are unchanged; after approval verify task coverage still matches the clarified competence without transferring new dose demands to unrelated neighbors.",
+    "visualization": {
+      "path": "app/public/assets/goal-visualizations/physik/e6a50c74-c922-508c-aa27-07bac2566955/e6a50c74-c922-508c-aa27-07bac2566955.jpg",
+      "sha256": "cb908fc1fb25c30ae6293015aa67e87e313e84e63a0fb4c518127f6d648503a5",
+      "currentState": "review_candidate; no publication approval claimed",
+      "impact": "No pixel change proposed here. The current image is a partial illustration of absorbed/radiation-weighted dose and protection; a fresh current-image review must check its labeling against the clarified distinctions. Its existing generated altText repeats the old fragment and should be deliberately reviewed alongside the new text, not blindly stamped with an image approval."
+    },
+    "expectedBindingEffects": "The goal's source, semantic-kind, semantic-atomicity, memory-review, positive-evidence and description-review fingerprints depend on the changed descriptions and must be revalidated normally. The full book/model and prepared review-bundle digest will change. An exact current page-impact build is deferred until wording approval; no stale records are relabelled.",
+    "noR9Mutation": "No B042r9 A/B results are read or rewritten. Source mutation remains blocked by parent instruction until the ongoing neutral reviews are sealed.",
+    "requiredAfterApproval": [
+      "Apply only approved text and separately justified resource metadata changes.",
+      "Revalidate exact goal kind/atomicity and memory suitability on current bytes; do not bulk-rebind unrelated decisions.",
+      "Run a current bilingual D review and an individual V2 P review with explicit quantitative positive/negative controls.",
+      "Rebuild/check applicable goal-book review inputs, visualization binding, curriculum-quality status and protected maturity floors."
+    ],
+    "actualWrites": "This proposal and its evidence notes only; no canonical, source, mapping, registry, QA ledger, runtime or production mutation."
+  }
+}

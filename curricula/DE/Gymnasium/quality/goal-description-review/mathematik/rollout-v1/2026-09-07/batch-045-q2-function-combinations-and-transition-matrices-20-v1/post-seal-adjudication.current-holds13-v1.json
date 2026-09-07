@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "adjudicatedAt": "2026-09-07T15:30:17Z",
+  "authority": "ai_synthesis_with_root_countercheck",
+  "sourceBatchConfig": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-045-q2-function-combinations-and-transition-matrices-20-v1.config.json",
+  "firstOutputDigest": "sha256:f62d0f5b65a7e48ef64c513b419a3123be8cc9e95a8a43750f964ba4b65893e0",
+  "secondOutputDigest": "sha256:09a49beed977fc07794a6234a91929ee409c967e1d02805ebd113914a4d91509",
+  "resolvedSubsetGoalIds": [
+    "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+    "cf48c918-f6c1-5429-8da6-14df43f2f550",
+    "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+    "5e893892-393e-5df0-b705-fb3b3458122f",
+    "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+    "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+    "4bc6cc77-3d20-5d27-a74a-8efb0a038d17"
+  ],
+  "holdGoalIds": [
+    "71683f37-24de-4e0f-badd-858b56fa4d64",
+    "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+    "0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85",
+    "91311908-9209-58e4-8429-99dad9df546d",
+    "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+    "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+    "03685f87-7570-5bb3-b1c7-134124abb317",
+    "4fb40e58-58c1-5964-b58e-3347a8022b97",
+    "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+    "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+    "6aa593a3-6690-581d-9b7d-37cac78187a1",
+    "304111dd-426b-520b-a275-3fa37da1b0e0",
+    "ce198bc9-b014-52ba-814f-25cc3e020668"
+  ],
+  "decisions": [
+    {
+      "goalId": "6aa593a3-6690-581d-9b7d-37cac78187a1",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "currentDisposition": "hold",
+      "rationale": "After both seals, root rechecked the actual lower expression and accepted that the leading M directly before the expanded matrix, without an equals sign or clear separate label, is an additional factor. Targeted notation repair must write Mv0=[expanded matrix]v0 unambiguously; the valid endpoint numbers alone do not settle the expression. Original B KEEP stays immutable."
+    },
+    {
+      "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "currentDisposition": "hold",
+      "rationale": "Both direct Analysis-prerequisite issue and malformed central equality chain A=[A]·B=[B]=C=[C] remain. Root accepted the latter concrete notation defect after sealing. BA is defined in the pictured example (3x3); no invented claim that it is undefined."
+    },
+    {
+      "goalIds": [
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+        "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+        "ce198bc9-b014-52ba-814f-25cc3e020668"
+      ],
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "currentDisposition": "hold",
+      "rationale": "A scoped its KEEP to valid bilingual wording/image and explicitly did not approve direct Analysis prerequisites. B identifies these hard prerequisite edges as substantive current-context blockers. The conservative synthesis excludes all three; no D/P completion through a narrowed reading of the page."
+    }
+  ],
+  "holds": {
+    "71683f37-24de-4e0f-badd-858b56fa4d64": "BLOCK/BLOCK remains HOLD after both sealed reviews. DE/EN beschreiben eine tragfähige einzelne Modellierungsleistung; h(0)=0 liefert korrekt a=-5/9. Die tatsächlich geöffnete Grafik blockiert aber die Seite: Rechts ist S(3,5)/Max. Höhe an einem Punkt auf dem absteigenden Ast der großen Flugbahn markiert; die daneben überlagerten kleinen Bögen liefern auch keine eindeutige korrekte Scheitelzuordnung. Ein Scheitel darf nicht als absteigender Punkt beschriftet werden. Enger Bildfix mit genau einem nachvollziehbaren Kontrollgraphen; keine neue Kompetenz und keine Textänderung erforderlich.",
+    "ebc41c8b-5754-5161-9b07-f4525b9fd9b4": "BLOCK/BLOCK remains HOLD after both sealed reviews. Die punktweise Summenbildung ist in DE/EN fachlich sinnvoll und atomar. Das tatsächlich gesehene Bild zeigt jedoch x=1 links von der mit 0 beschrifteten senkrechten Achse und x=2 rechts davon. Damit ist die positive x-Koordinate im Koordinatenbild falsch angeordnet, obwohl 1+1=2 und 4+2=6 in Balken und Tabelle stimmen. Bildkorrektur mit gültiger linearer x-Achse oder ausdrücklich achsenfreier Zweifalltafel erforderlich.",
+    "0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85": "BLOCK/BLOCK remains HOLD after both sealed reviews. DE/EN und die Produkttabelle für x(2-x) sind korrekt, aber die aktuelle Rastergrafik ist quantitativ unzuverlässig: Die positive Nullstelle '(2,0)' liegt zwischen den x-Ticks 2 und 2,5; negative x-Beschriftungen laufen -1,5, -1,0, -1 in gleicher Richtung und die y-Achse enthält zweimal -1. Die richtige Tabelle heilt die widersprüchlichen Achsen nicht. Grafik mit linear konsistenten Ticks, Punkten und Kurven neu prüfen.",
+    "91311908-9209-58e4-8429-99dad9df546d": "BLOCK/BLOCK remains HOLD after both sealed reviews. Text, Maschinenreihenfolge und Tabelle zu (x+1)^2 sind fachlich passend. Die tatsächliche Grafik blockiert: Gepunktete Verbindungen weisen die Tabellenzeile x=-2,h=1 dem hohen rechten Punkt zu und x=-1,h=0 einem linken Punkt auf Höhe 1 statt dem Scheitel. Bei der durch Scheitel(-1,0) und (0,1) festgelegten Skalierung liegt der hohe rechte Punkt zudem nicht bei (1,4). Zuordnungen und Kurve müssen gemeinsam korrigiert werden.",
+    "c72a8032-71f6-56ed-a896-06ae435ff2ec": "BLOCK/BLOCK remains HOLD after both sealed reviews. DE/EN formulieren eine zusammenhängende Funktionsuntersuchung ohne zwingenden Split. Definitionsbereich, Symmetrie, Ableitung und Vorzeichenrechnung des Beispiels ln(x²+1) stimmen. Das tatsächlich betrachtete Hauptdiagramm zeichnet aber einen bis x=±3 konvexen parabelförmigen Graphen; tatsächlich wechselt f''=2(1-x²)/(1+x²)² bei ±1 das Vorzeichen und die Äste flachen danach ab. Das kleine beschriftete Symbol verlegt zusätzlich den Tiefpunkt rechts von die y-Achse. Beschriftete Funktionsbilder müssen dem konkreten Verlauf entsprechen.",
+    "f378917f-2ca7-4c68-bd66-3f9457095dd5": "KEEP/BLOCK remains HOLD after both sealed reviews. Tabellarisches Organisieren einfacher Tupel, Zelladressen lesen und deren Bedeutung erklären ist ein konkretes zusammengehöriges DE/EN-Ziel. Das aktuelle requires fordert jedoch Hauptsatz der Differential-/Integralrechnung und elementare Ableitungen, obwohl Tabellenlesen weder Integralrechnung noch Ableiten voraussetzt und sogar im kompilierten HE-Sek-I-G8-Scope auftaucht. Diese fachfremde harte Zugangssperre muss gezielt entfernt werden. Das Bild selbst ist für die Datenzeilen brauchbar. Tatsächlich geöffnet: Spalten A/B/C, Zeilen1–4, Q=(4;1), B3=4 als x von Q und C4=3 als y von R korrekt. 'Jede Tabellenzeile' ist hier im Kontext der Datenzeilen zu lesen, die Kopfzeile ist sichtbar; kein eigenständiger Bildblock.",
+    "03685f87-7570-5bb3-b1c7-134124abb317": "BLOCK/BLOCK remains HOLD after both sealed reviews. Die einzelne Darstellungs-/Deutungsleistung ist DE/EN sinnvoll und der Rechenweg M(100,50,20)^T=(72,55,43)^T korrekt. In der tatsächlichen Rasteransicht zeigt jedoch die Sprechblasen-Spitze '30% wechseln von A nach B' auf den Eintrag 0.6 in nach-A/von-A, nicht auf 0.3 in nach-B/von-A. Gerade die Eintragsdeutung ist das Lernziel; der falsche Pfeil ist deshalb ein konkreter fachlicher Bildblocker. Nur diese Zuordnung korrigieren und das vollständige Bild danach erneut prüfen.",
+    "4fb40e58-58c1-5964-b58e-3347a8022b97": "BLOCK/BLOCK remains HOLD after both sealed reviews. Skalare Multiplikation ist als einzelne grundlegende Operation legitim; DE/EN stimmen und die Endmatrix 3A=(6,-3;0,12) ist richtig. Die zentrale tatsächlich betrachtete Rechenwolke enthält aber 3·[3·2,3·(-1);3·0,3·4]: Der Skalar steht bereits in allen Einträgen und nochmals davor. Das ist 9A, nicht die daneben behauptete Endmatrix. Doppelten Faktor entfernen; keine pauschale Beschreibungserweiterung.",
+    "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8": "BLOCK/BLOCK remains HOLD after both sealed reviews. DE/EN benennen die gleiche eintragweise Operation einschließlich gleich großer Matrizen; die acht ausgerechneten Ergebniswerte im Bild stimmen. Die tatsächlich betrachteten Verbindungswege ordnen aber u.a. die grüne 4 unten rechts in A dem oberen rechten Term -1+5 bzw. -1-5 zu. Damit widerspricht die Pfeilzuordnung der behaupteten Regel 'gleiche Positionen'. Zahlen und Pfeile gemeinsam korrigieren; keine neue Teilkompetenz erforderlich.",
+    "6f09c97e-779b-500b-8092-3fb9696aa5bb": "KEEP/BLOCK remains HOLD after both sealed reviews. Matrix-Vektor-Produkt und Deutung als Folgezustand sind in diesem Übergangsprozesskontext eine einzelne passende DE/EN-Kompetenz. Das Bild berechnet .8*70+.3*30=65 und .2*70+.7*30=35 richtig und zeigt die beiden Matrixzeilen. Der Block betrifft die echten direkten requires: Hauptsatz und Ableitungen sind für endliche Zeilen-Skalarprodukte nicht notwendig. Tabellen- und Matrixgrundlagen dagegen behalten; keine ausgedachte Bildkorrektur. Bild vollständig geprüft: Matrix[[.8,.3],[.2,.7]], Ausgang(70,30), Ergebnis(65,35), beide ausgeschriebenen Rechnungen und Komponenten stimmen. Kein Bildfehler als Blockgrund behauptet; die unnötige Analysis-Zugangssperre steht im aktuellen Kontext.",
+    "6aa593a3-6690-581d-9b7d-37cac78187a1": "BLOCK/KEEP remains HOLD after both sealed reviews. Die Modellwahl einschließlich begründeter Wahrscheinlichkeiten ist DE/EN klar und inhaltlich atomar. Tabelle, Spaltensummen und .75/.25 sind richtig. Der untere tatsächlich gelesene Rechenausdruck lautet aber 'M [0.8 0.3;0.2 0.7] · [0.9;0.1] = ...': Ohne Gleichheitszeichen oder Kennzeichnung einer reinen Bezeichnung ist M ein zusätzlicher Matrixfaktor und führt zu M²v0=(.675,.325), nicht zum ausgegebenen v1. Die Notation muss eindeutig zu Mv0 = [Matrix]v0 werden; kein neuer fachlicher Scope.",
+    "304111dd-426b-520b-a275-3fa37da1b0e0": "BLOCK/BLOCK remains HOLD after both sealed reviews. Die Matrixprodukt-Kompetenz mit Dimensionen und Reihenfolge ist DE/EN gut begrenzt. C=(2,7;14,10) und die Einzelrechnungen stimmen. Die tatsächlich gesehene zentrale Gleichheitskette setzt jedoch A=[A]·B=[B]=C=[C] und damit Matrizen unterschiedlicher Dimension gleich. Im rechten vertauschten Beispiel passen die inneren Dimensionen sogar (BA ist 3x3), weshalb 'Dimensionen passen oft nicht' dieses konkrete Beispiel nicht erklärt. Formel-/Beispielkorrektur erforderlich; die Schlussmatrix allein genügt nicht.",
+    "ce198bc9-b014-52ba-814f-25cc3e020668": "KEEP/BLOCK remains HOLD after both sealed reviews. Das inverse Bestimmen einfacher2×2- oder Diagonalmatrizen mit Multiplikationsprobe ist ein angemessen begrenztes DE/EN-Ziel; die Probe gehört zum selben Verständnis. Das bereits approved Bild ist auch in der tatsächlichen Prüfung korrekt: det1, Inverse[[1,-1],[-1,2]], ProduktI. Jedoch sind direkt Hauptsatz und Ableitungen als Voraussetzung eingetragen, obwohl der hier geforderte endliche Inversions-/Prüfprozess keine Differential- oder Integralrechnung benötigt. Harte Kanten gezielt berichtigen. Bild tatsächlich geöffnet trotz Altstatus approved: alle vier ausgeschriebenen Multiplikationen ergeben1,0,0,1; Regel Diagonale tauschen/Nebendiagonale negieren ist ausdrücklich auf det=1 beschränkt. Nicht für allgemeine Determinanten als vollgültige Formel ausgegeben."
+  },
+  "historicalRecordsModified": false,
+  "canonicalWrites": false,
+  "grantsProgress": false,
+  "grantsHumanAuthority": false
+}

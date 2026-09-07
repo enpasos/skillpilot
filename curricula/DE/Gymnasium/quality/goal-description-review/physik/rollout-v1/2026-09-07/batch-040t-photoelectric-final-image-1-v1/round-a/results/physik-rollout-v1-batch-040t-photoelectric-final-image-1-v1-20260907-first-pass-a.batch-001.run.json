@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-040t-cb0-round-a-20260907T131342Z-history-audit",
+  "campaignId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-a",
+  "roundId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:c62b11380ad6065df1ca000eecac1e4920eca183ce9808dc4112f786f870fa37",
+  "bundleFingerprint": "sha256:5ff8a21fee3074746d8510a4e83677e326ec4166457034891f67b972e5a005a8",
+  "bookDigest": "sha256:9f45f8e41fb6789570aa56d63b9d23ce27c6ac69337a0efc214601683ae4b597",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:96c0e28a95e58222dec1a94a2e4851942b29aac4a5134e4f89fbcb1cd625120e",
+  "independenceGroupId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:d244049e03d220da71af48b72beeade1bedbd3afa42d4c2df31b3088308004a0"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c62b11380ad6065df1ca000eecac1e4920eca183ce9808dc4112f786f870fa37"
+    }
+  ],
+  "startedAt": "2026-09-07T13:13:42Z",
+  "completedAt": "2026-09-07T13:16:05Z",
+  "status": "completed",
+  "outputDigest": "sha256:79c371382fdfabaa08667b17ca16a1375d2f8d5c8bdc0a1eeab0c74a901c8f9b",
+  "toolchainVersion": "node-20.20.2-tsx-4.21.0"
+}

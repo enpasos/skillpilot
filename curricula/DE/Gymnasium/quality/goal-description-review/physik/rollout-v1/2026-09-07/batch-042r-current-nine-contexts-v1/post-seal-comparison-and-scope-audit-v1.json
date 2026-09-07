@@ -1,0 +1,978 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "physics-b042r-nine-post-seal-comparison-and-scope-audit-v1",
+  "createdAt": "2026-09-07T15:57:56Z",
+  "authority": "nonblind_ai_post_seal_analysis",
+  "reviewer": "/root/goal_book_build_generator",
+  "originalReviewRecordsUnchanged": true,
+  "sealedRecordDigests": {
+    "first": "sha256:4fe393e56464568419c973c4bc17e6222b9c16cd10432c82eaaac2095d817934",
+    "second": "sha256:09c327ccf94485482b4adf89024c1c8638476eb0a20091af97429cd898665ff8"
+  },
+  "pairs": [
+    {
+      "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "titleDe": "Zerfallsgesetze anwenden",
+      "firstDecision": "split_review",
+      "secondDecision": "block",
+      "genuineCommonKeep": false
+    },
+    {
+      "goalId": "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+      "titleDe": "Kernenergieoptionen mit physikalischen Kriterien bewerten",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "genuineCommonKeep": true
+    },
+    {
+      "goalId": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+      "titleDe": "Elementare Bestandteile der Materie mit Strukturmodellen ordnen",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "genuineCommonKeep": true
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "titleDe": "Supraleitung qualitativ verstehen",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "genuineCommonKeep": false
+    },
+    {
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "titleDe": "Quantenphysikalische Bändermodelle",
+      "firstDecision": "revise",
+      "secondDecision": "block",
+      "genuineCommonKeep": false
+    },
+    {
+      "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+      "titleDe": "Transistor und einfache Schaltungen",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "genuineCommonKeep": false
+    },
+    {
+      "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
+      "titleDe": "Unfallphysik: Kraftstoß und Knautschzone",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "genuineCommonKeep": false
+    },
+    {
+      "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "titleDe": "Inelastische Stöße",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "genuineCommonKeep": true
+    },
+    {
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "titleDe": "Schiefen Wurf beschreiben",
+      "firstDecision": "revise",
+      "secondDecision": "block",
+      "genuineCommonKeep": false
+    }
+  ],
+  "mechanicalCommonKeepIds": [
+    "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+    "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+    "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+  ],
+  "notRegistered": true,
+  "registrationRequiresRootAdjudication": true,
+  "scopeAuditMethod": "Native compileCompositionView with normalizeCanonicalLandscape/normalizeCompositionView and the complete canonical goal universe (including cross-subject prerequisites); all six results have zero compiler findings. Inspection-only: no canonical, mapping or view edits.",
+  "discardedIncompleteDiagnostic": "An initial physics-only compiler invocation omitted cross-subject prerequisite goals and produced CPV-002 diagnostics for eight Mathematics IDs. Those were diagnostic input incompleteness, not repository defects; the complete-universe rerun below supersedes that invocation.",
+  "scopeResults": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "viewId": "de-he-gym-physics-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "findings": [],
+      "targets": [
+        {
+          "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (GK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Weitere Bewegungen",
+              "sourceGoalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+            },
+            {
+              "label": "Schiefen Wurf beschreiben",
+              "sourceGoalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+            }
+          ]
+        },
+        {
+          "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (GK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Kernphysik",
+              "sourceGoalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+            },
+            {
+              "label": "Zerfallsgesetze anwenden",
+              "sourceGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25"
+            }
+          ]
+        },
+        {
+          "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (GK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Transistor und einfache Schaltungen",
+              "sourceGoalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd"
+            }
+          ]
+        },
+        {
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (GK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Supraleitung qualitativ verstehen",
+              "sourceGoalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec"
+            }
+          ]
+        },
+        {
+          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (GK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Quantenphysikalische Bändermodelle",
+              "sourceGoalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+            }
+          ]
+        }
+      ],
+      "declarations": [
+        {
+          "pointer": "/rootNodes/0/children/11/children/0/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+        },
+        {
+          "pointer": "/rootNodes/0/children/11/children/4/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+        },
+        {
+          "pointer": "/rootNodes/0/children/11/children/4/children/6",
+          "kind": "canonicalSubtree",
+          "goalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "viewId": "de-he-gym-sekii-physics-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "findings": [],
+      "targets": [
+        {
+          "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Weitere Bewegungen",
+              "sourceGoalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+            },
+            {
+              "label": "Schiefen Wurf beschreiben",
+              "sourceGoalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+            }
+          ]
+        },
+        {
+          "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Kernphysik",
+              "sourceGoalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+            },
+            {
+              "label": "Zerfallsgesetze anwenden",
+              "sourceGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25"
+            }
+          ]
+        },
+        {
+          "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Transistor und einfache Schaltungen",
+              "sourceGoalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd"
+            }
+          ]
+        },
+        {
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Supraleitung qualitativ verstehen",
+              "sourceGoalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec"
+            }
+          ]
+        },
+        {
+          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Quantenphysikalische Bändermodelle",
+              "sourceGoalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+            }
+          ]
+        }
+      ],
+      "declarations": [
+        {
+          "pointer": "/rootNodes/0/children/9/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+        },
+        {
+          "pointer": "/rootNodes/0/children/13/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+        },
+        {
+          "pointer": "/rootNodes/0/children/13/children/6",
+          "kind": "canonicalSubtree",
+          "goalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "viewId": "de-he-gym-physics-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "findings": [],
+      "targets": [
+        {
+          "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (LK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Weitere Bewegungen",
+              "sourceGoalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+            },
+            {
+              "label": "Schiefen Wurf beschreiben",
+              "sourceGoalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+            }
+          ]
+        },
+        {
+          "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (LK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Kernphysik",
+              "sourceGoalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+            },
+            {
+              "label": "Zerfallsgesetze anwenden",
+              "sourceGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25"
+            }
+          ]
+        },
+        {
+          "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (LK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Transistor und einfache Schaltungen",
+              "sourceGoalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd"
+            }
+          ]
+        },
+        {
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (LK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Supraleitung qualitativ verstehen",
+              "sourceGoalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec"
+            }
+          ]
+        },
+        {
+          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (LK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Quantenphysikalische Bändermodelle",
+              "sourceGoalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+            }
+          ]
+        }
+      ],
+      "declarations": [
+        {
+          "pointer": "/rootNodes/0/children/11/children/0/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+        },
+        {
+          "pointer": "/rootNodes/0/children/11/children/4/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+        },
+        {
+          "pointer": "/rootNodes/0/children/11/children/4/children/6",
+          "kind": "canonicalSubtree",
+          "goalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "viewId": "de-he-gym-sekii-physics-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "findings": [],
+      "targets": [
+        {
+          "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Weitere Bewegungen",
+              "sourceGoalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+            },
+            {
+              "label": "Schiefen Wurf beschreiben",
+              "sourceGoalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+            }
+          ]
+        },
+        {
+          "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Kernphysik",
+              "sourceGoalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+            },
+            {
+              "label": "Zerfallsgesetze anwenden",
+              "sourceGoalId": "a12fddce-0215-58d9-bd91-21be8a960d25"
+            }
+          ]
+        },
+        {
+          "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Transistor und einfache Schaltungen",
+              "sourceGoalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd"
+            }
+          ]
+        },
+        {
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Supraleitung qualitativ verstehen",
+              "sourceGoalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec"
+            }
+          ]
+        },
+        {
+          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Quantenphysikalische Bändermodelle",
+              "sourceGoalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+            }
+          ]
+        }
+      ],
+      "declarations": [
+        {
+          "pointer": "/rootNodes/0/children/9/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+        },
+        {
+          "pointer": "/rootNodes/0/children/13/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+        },
+        {
+          "pointer": "/rootNodes/0/children/13/children/6",
+          "kind": "canonicalSubtree",
+          "goalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+      "viewId": "de-rp-gym-physics-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "jurisdiction": "DE-RP"
+      },
+      "findings": [],
+      "targets": [
+        {
+          "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (GK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Weitere Bewegungen",
+              "sourceGoalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+            },
+            {
+              "label": "Schiefen Wurf beschreiben",
+              "sourceGoalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+            }
+          ]
+        },
+        {
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (GK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Supraleitung qualitativ verstehen",
+              "sourceGoalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec"
+            }
+          ]
+        },
+        {
+          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (GK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Quantenphysikalische Bändermodelle",
+              "sourceGoalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+            }
+          ]
+        }
+      ],
+      "declarations": [
+        {
+          "pointer": "/rootNodes/0/children/13/children/11/children/10",
+          "kind": "goalEntry",
+          "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "pointer": "/rootNodes/0/children/13/children/11/children/33",
+          "kind": "goalEntry",
+          "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "pointer": "/rootNodes/0/children/14/children/0/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+        },
+        {
+          "pointer": "/rootNodes/0/children/14/children/4/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+        },
+        {
+          "pointer": "/rootNodes/0/children/14/children/4/children/6",
+          "kind": "canonicalSubtree",
+          "goalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+      "viewId": "de-rp-gym-physics-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "jurisdiction": "DE-RP"
+      },
+      "findings": [],
+      "targets": [
+        {
+          "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (LK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Weitere Bewegungen",
+              "sourceGoalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+            },
+            {
+              "label": "Schiefen Wurf beschreiben",
+              "sourceGoalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+            }
+          ]
+        },
+        {
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (LK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Supraleitung qualitativ verstehen",
+              "sourceGoalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec"
+            }
+          ]
+        },
+        {
+          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+          "path": [
+            {
+              "label": "Physik",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Sekundarstufe II (LK)",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Q4 Struktur von Materie, Raum und Zeit",
+              "sourceGoalId": null
+            },
+            {
+              "label": "Festkörperphysik",
+              "sourceGoalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+            },
+            {
+              "label": "Quantenphysikalische Bändermodelle",
+              "sourceGoalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+            }
+          ]
+        }
+      ],
+      "declarations": [
+        {
+          "pointer": "/rootNodes/0/children/13/children/11/children/10",
+          "kind": "goalEntry",
+          "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "pointer": "/rootNodes/0/children/13/children/11/children/33",
+          "kind": "goalEntry",
+          "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "pointer": "/rootNodes/0/children/14/children/0/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9"
+        },
+        {
+          "pointer": "/rootNodes/0/children/14/children/4/children/3",
+          "kind": "canonicalSubtree",
+          "goalId": "72c2bf5d-c62b-5744-9971-4c117f2a432d"
+        },
+        {
+          "pointer": "/rootNodes/0/children/14/children/4/children/6",
+          "kind": "canonicalSubtree",
+          "goalId": "620d4320-6b93-500b-8a62-86d02b1ed1f0"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "goalIds": [
+        "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+        "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+      ],
+      "jurisdiction": "DE-HE",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "sourceSection": "Q4.5, printed p.47, explicit heading erhöhtes Niveau (Leistungskurs)",
+      "sourceTexts": [
+        "quantenphysikalische Erklärung der Energiebänder (Fermienergie, nur qualitativ)",
+        "Supraleitung (nur qualitativ)"
+      ],
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalIds": [
+        "he-phys-sekii-q4-5-b09-a01-2ee64ed0",
+        "he-phys-sekii-q4-5-b11-a01-14834c04"
+      ],
+      "canonicalParentId": "620d4320-6b93-500b-8a62-86d02b1ed1f0",
+      "projectionCause": "The authored GK view includes the entire Festkörperphysik canonicalSubtree with omitted projectionRole, which means target. Its contains includes both atoms, and no more-specific prerequisiteOnly override excludes them. The native compiled target tree proves the current GK visibility independently of atlas metadata.",
+      "repairBoundary": "A narrowly evidenced HE-GK override can be proposed separately; do not infer all other states from HE or from LK tags. Preserve GK basic Bändermodell and all LK targets. No source change authorized by this audit."
+    },
+    {
+      "goalIds": [
+        "a12fddce-0215-58d9-bd91-21be8a960d25"
+      ],
+      "jurisdiction": "DE-HE",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "sourceSection": "Q4.3, printed pp.45–46",
+      "sourceTexts": [
+        "grundlegendes Niveau: Kernzerfall, Aktivität, Halbwertzeit, Zerfallskonstante",
+        "erhöhtes Niveau (Leistungskurs): Zerfallsgesetze – Zerfallsreihen"
+      ],
+      "canonicalParentId": "72c2bf5d-c62b-5744-9971-4c117f2a432d",
+      "projectionCause": "Whole Kernphysik subtree is a target in both HE GK views; the text of the single a12 atom already includes the distinct decay-chain clause.",
+      "existingRelatedGoalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "repairBoundary": "Do not exclude simple decay laws from GK. First decide whether to consolidate the chain clause into the existing chain atom and preserve the source mapping. Both fresh rounds reject a single undifferentiated completion record, for partly different reasons."
+    },
+    {
+      "goalIds": [
+        "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+      ],
+      "jurisdiction": "DE-RP",
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/Physik_Sekundarstufe_II_MSS.pdf",
+      "sourceSection": "Printed p.53: Wurfbewegungen, Einführungsphase Leistungsfach, Wahlpflichtbaustein",
+      "sourceTexts": [
+        "Schiefer Wurf"
+      ],
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalIds": [
+        "rp-phys-sek2-ef-oblique-throw-lk"
+      ],
+      "canonicalParentId": "04d1d2df-a94b-5db4-8d07-cbb512c2e0b9",
+      "projectionCause": "de-rp-gk.view.json /rootNodes/0/children/14/children/0/children/3 includes the entire Weitere Bewegungen subtree as target; fbec has no direct prerequisiteOnly override and remains in the native compiled GK target tree.",
+      "repairBoundary": "Check any alternative explicit RP-GK source before changing scope; the directly mapped source is LK. Both rounds independently identify the separate horizontal-projectile/vertical-motion wording ambiguity."
+    }
+  ],
+  "adjudicationNotes": [
+    {
+      "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+      "status": "pending_root",
+      "note": "Both rounds wrote SPLIT_REVIEW, but examples introduced by wie/or are not automatically all compulsory routines. The normative HE separation (switch/flip-flop basic, amplifier enhanced) and existing separate amplifier target require a contextual boundary decision, not a count-based new-goal split. No automatic new IDs or competence removal."
+    },
+    {
+      "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
+      "status": "pending_root",
+      "note": "Both rounds suggested precision, but neither proves that the original text states the false claim smaller impulse at the same momentum change. The original wording merely names a relationship. If existing precise positive evidence resolves the operationalization, root may reject the editorial change; do not relabel the two sealed REVISE records as KEEP. No independent medical probability is claimed."
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "status": "source_scope_hold",
+      "note": "A's rationale refers to an LK/Sek-II context, but both exact bound pages and current native GK projections include HE GK. The positive physics and raster judgment can be retained without granting the wrong course scope."
+    }
+  ],
+  "grantsStrictProgress": false,
+  "grantsHumanApproval": false
+}

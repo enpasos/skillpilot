@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "completedAt": "2026-09-07T14:23:16.738Z",
+  "scope": "Four newly authored case-separated Physics B041 assessment nodes: actual current canonical German and English tasks, full solutions, prerequisites, coveredGoalIds, and scoring were read. Root is not their original author; prior package coordination is disclosed, and this is not a human review or independent-model claim.",
+  "releaseMeaning": "Internal fachliche release of these assessment artifacts after actual author review and root counterreview. No human, classroom, psychometric, or external approval is asserted. Positive-understanding profiles remain separately ai_candidate / needs_human_review.",
+  "hashMethod": "sha256 of UTF-8 JSON.stringify(current goal.examData)",
+  "reference": "https://openstax.org/books/university-physics-volume-3/pages/4-2-intensity-in-single-slit-diffraction",
+  "reviews": [
+    {
+      "goalId": "caf8fc1e-83d5-5aaf-8863-0f7d4948ace5",
+      "examDataSha256": "79121e3146d3844b2b344da7e79ae8bdcac668caf255c9733ec2c540d31d64a1",
+      "decision": "released",
+      "rationale": "Coherent equal-phase contributions explain maxima; measuring the second order exercises inverse use, while adding 450 nm tests the same wavelength-position relation. Far field is explicitly distinguished from small angle, the envelope exclusion is stated, and two spectral lines are not incorrectly called white. German and English agree; 4+4+2=10 BE and coverage names exactly the one double-slit content goal.",
+      "independentCalculation": "atan(0.008/2)=0.2291818958 deg; d*sin(theta)/2=599.9952001 nm; small-angle discrepancy 0.0007999968 percent. First-order positions approximately 4 mm and 3 mm."
+    },
+    {
+      "goalId": "45b3a745-16ec-57b0-8f54-dd36292f4958",
+      "examDataSha256": "bfc476a8fdd36df9cad68d0f35b57a1973951da86235b5bb9f0629f9eb1aefbf",
+      "decision": "released",
+      "rationale": "Half-integer path difference is justified through opposite phase and equal amplitudes. Indexing the nearest minima as m=0,-1, retaining exact screen geometry, and the one-slit attenuation transfer distinguish understanding from formula recall. Residual intensity at unequal amplitudes is correct within the explicitly idealized envelope-free model. Both languages and the 4+4+2 scoring agree; coverage is limited to the minima goal.",
+      "independentCalculation": "asin(0.00125)=0.0716197430 deg; 2*tan(asin(0.00125))=2.500001953 mm. With amplitudes A and B, I_min is proportional to (A-B)^2, so unequal amplitudes lift the minima without shifting the ideal phase condition."
+    },
+    {
+      "goalId": "90f8f0dc-d919-54a2-a487-93547706e40e",
+      "examDataSha256": "064e8c69c9713e9eb9d910161a320a6ed53bea0a9eef26dedb930574ba8cf6ec",
+      "decision": "released_after_rounding_clarification",
+      "rationale": "Phases of adjacent equally spaced slit contributions explain principal maxima; density inversion, colour order, central overlap, inverse wavelength and order ambiguity use this same grating model. Root added an explicit whole-nanometre rounding instruction to task 3 in both languages: a rounded measured angle must not imply an exact equality of physical spectral lines. The task now clearly compares the rounded model, with the solution already stating that limitation. 3+4+3=10 BE and coverage names only the grating goal.",
+      "independentCalculation": "500 lines/mm -> g=2000 nm. 2000*sin(17.46 deg)=600.0798125 nm, rounded model 600 nm; asin(450/2000)=13.0028782 deg. 3*600=4*450=1800 nm, asin(0.9)=64.1580672 deg. Orders 3 and 4 are coprime and geometrically allowed; no exact unrounded measurement equality is asserted."
+    },
+    {
+      "goalId": "e1abfda1-f1c4-5b32-a6bd-da605698bf73",
+      "examDataSha256": "4a20fa2a89e778dc4d10eefb7eeb349267febbbd22754dfce0281ac463d91c3f",
+      "decision": "released",
+      "rationale": "The material supplies the scalar amplitude integral and coordinate bounds, making the requested model derivation self-contained. The solution adds amplitudes, squares the result for intensity, handles the removable singularity at the bright centre, and derives nonzero integer minima. A supplied numerical root makes the side-maximum calculation possible without pretending that half orders are exact. German and English demand the same work; 4+3+3=10 BE and coverage is limited to the existing single-slit modeling goal.",
+      "independentCalculation": "Integral from -1/2 to 1/2 of cos(2*pi*u*xi) is sin(pi*u)/(pi*u), with centre limit 1. First minimum y=5.000015625 mm and central width approximately 10 mm. At u=1.4303, normalized intensity=0.04719044922 and y=7.151545720 mm; this is approximately 4.72 percent, not 47 percent."
+    }
+  ],
+  "preserved": "All four assessment IDs, requires, coveredGoalIds, scoring allocations and content-goal IDs preserved. Apart from the explicitly recorded bilingual rounding clarification, the four tasks and solutions are unchanged. No learner state, class information, runtime contract, or protected maturity floor was altered."
+}

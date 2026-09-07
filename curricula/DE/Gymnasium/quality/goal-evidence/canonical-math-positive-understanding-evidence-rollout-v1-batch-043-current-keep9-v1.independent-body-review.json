@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "startedAt": "2026-09-07T14:36:00Z",
+  "completedAt": "2026-09-07T14:42:23.085Z",
+  "scope": "Independent reading of the actual complete bilingual expectation, coverage, variation and application-case bodies; checked mathematical reasoning, task sufficiency and DE/EN parity.",
+  "authority": "AI counterreview only. E1/G1, ai_candidate and needs_human_review retained. No human approval or observed learner mastery.",
+  "candidatesSha256": "50a97f50227323a188d8f53db094672d9ad40a72f57d1b424530e84bff3afff0",
+  "ledgerSha256": "0ef0c824f7b4df95a7b209ce400241be439e0a7c841224abb864317b26ef3e3c",
+  "claim": "PASS9 profile bodies and18 application cases, excluding the11 image-hold goals.",
+  "reviews": [
+    {
+      "goalId": "12f4b957-da3d-53d5-a924-45a634ab8d44",
+      "decision": "pass",
+      "reason": "u=1+x² gives bounds1..5 and ln5; decreasing u=1-x² changes bounds1..0 and differential sign, yielding sin1. Structural orientation transfer, not mere numerical substitution."
+    },
+    {
+      "goalId": "963907f9-8d4c-5e1c-945d-10b7be07e1b9",
+      "decision": "pass",
+      "reason": "For y'=2(3-y), slopes at1,3,4 are4,0,-2 and approach3; y'=y-3 reverses stability. Equilibrium and direction are justified without forcing an explicit solution."
+    },
+    {
+      "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+      "decision": "pass",
+      "reason": "Ce^-2t solves y'=-2y including zero, initial3 selects3e^-2t. For y'=2ty, Ce^(t²) and the separately retained zero solution address division-by-y loss; initial0 yields zero."
+    },
+    {
+      "goalId": "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+      "decision": "pass",
+      "reason": "Principal roots0,2,4,5 for0,4,16,25; inverse data0,.5,3 imply0,.25,9. Function differs from two-branch relation y²=x, correctly excludes negative principal roots."
+    },
+    {
+      "goalId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+      "decision": "pass",
+      "reason": "f(x-2)+1 maps points to(1,3),(2,0),(4,4). Left3/down2 is f(x+3)-2 and sends(4,5) to(1,3). Argument reasoning required, not unexplained direction mnemonics."
+    },
+    {
+      "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+      "decision": "pass",
+      "reason": "Exp points invert by swapping coordinates. e^u=.5 implies u=ln(.5)<0; exponential never reaches0, so ln0 is undefined. No unrelated logarithm rules added."
+    },
+    {
+      "goalId": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+      "decision": "pass",
+      "reason": "Inverse exp bijection gives positive domain, real range, zero1, strict increase and endpoint limits. e^-3<z<e^-2 implies -3<ln(z)<-2 despite z>0; properties justified structurally."
+    },
+    {
+      "goalId": "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
+      "decision": "pass",
+      "reason": "2ln(3(x-1))+4 maps(u,v) to(u/3+1,2v+4), domain x>1, asymptote1. Both inverse-designed candidates have asymptote-2, but only2ln(x+2)+3 passes(-1,3); ln(2(x+2))+3 there equals ln2+3."
+    },
+    {
+      "goalId": "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+      "decision": "pass",
+      "reason": "Vertex(1,-2) fixes b=-2, point(3,6) then a=2. Symmetric points(-1,6),(3,6) provide only one independent equation4a+b=6, not two parameters; both proposed example parameter pairs satisfy it."
+    }
+  ],
+  "numericChecks": {
+    "ln5": 1.6094379124341003,
+    "sin1": 0.8414709848078965,
+    "dglAt1": 0.4060058497098381
+  }
+}

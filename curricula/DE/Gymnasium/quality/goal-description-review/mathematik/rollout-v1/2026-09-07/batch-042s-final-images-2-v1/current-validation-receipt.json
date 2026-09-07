@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "validatedAt": "2026-09-07 15:04:54 UTC",
+  "authority": "Read-only local validation; no human release or live deployment claim",
+  "checks": [
+    {
+      "command": "check-image-only-adoption-v1.mjs",
+      "result": "PASS; exact two resourceLinks and QA rows, all unrelated rows/text/IDs/edges/semantic-ledgers unchanged",
+      "receipt": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042r-final-local-corrections-8-v1/targeted-image-repair/adoption-check-receipt-v1.json"
+    },
+    {
+      "command": "generateGoalVisualizationQaLedgers.ts --subject mathematik --check",
+      "result": "PASS; native serialization/current asset bindings"
+    },
+    {
+      "command": "semanticAtomicityReview.ts --config=...canonical-math-full.config.json --mode=check",
+      "result": "PASS;797 current atomic, no missing/stale/obsolete records"
+    },
+    {
+      "command": "memoryCardReview.ts --config=...canonical-math-full.config.json --mode=check",
+      "result": "PASS;797 current decisions,64 kept primary cards, no missing/stale/obsolete records"
+    },
+    {
+      "command": "checkGoalVisualizationQaApprovalCoverage.ts mathematik",
+      "result": "PASS;738 active images in this native gate scope, not a newly inferred full-curriculum denominator"
+    },
+    {
+      "command": "materializeGoalDescriptionRolloutBatch.ts prepare/check/summarize/finalize --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042s-final-images-2-v1.config.json",
+      "result": "PASS;2 pages/2 fully resolved current descriptions"
+    },
+    {
+      "command": "materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042s-final2-v1.config.json --candidates curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042s-final2-v1.candidates.json",
+      "result": "PASS;2 current candidate profiles; complete independent body review also PASS2/4cases"
+    }
+  ],
+  "scopeBoundaries": [
+    "No canonical wording changes during B042s image-only adoption.",
+    "No lowering of M6 floors, no change to runtime, registry or in-flight ledger.",
+    "Root owns current global quality/maturity regeneration and central five-gate live counts.",
+    "Historical B042r dissent and first-pass record bytes remain intact."
+  ]
+}

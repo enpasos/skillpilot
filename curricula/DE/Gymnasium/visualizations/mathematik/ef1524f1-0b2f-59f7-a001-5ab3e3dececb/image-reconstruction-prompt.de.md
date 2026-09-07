@@ -18,28 +18,24 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein Bild im Stil einer Bildungspräsentation auf weißem Hintergrund. Oben mittig steht in großer, schwarzer, handgeschriebener Schrift der Titel: 'Eigenschaften geometrischer Figuren begründen'.
+Ein klares, didaktisches Diagramm auf einem hellblauen Hintergrund. Der Stil ist sauber und einfach, wie eine Tafelzeichnung oder ein Lehrmaterial.
 
-Darunter sind drei Abschnitte horizontal angeordnet. Jeder Abschnitt hat einen Titel in schwarzer, handgeschriebener Schrift auf einem abgerundeten, rechteckigen, gelben Hintergrund.
+Oben mittig steht der Titel in schwarzer, fetter, abgerundeter serifenloser Schrift: "Eigenschaften geometrischer Figuren begründen".
 
-**Abschnitt 1 (links):**
-Der Titel lautet '1. Parallelität & Wechselwinkel'. Darunter befindet sich ein Diagramm eines Parallelogramms ABCD. Die Eckpunkte sind gegen den Uhrzeigersinn mit A (unten links), B (oben links), C (oben rechts) und D (unten rechts) beschriftet. Eine Diagonale AC ist gezeichnet. Die Seite AB und die Seite CD sind jeweils mit einem einzelnen Pfeil markiert, der ihre Parallelität anzeigt. Die Seite BC und die Seite AD sind jeweils mit zwei Pfeilen markiert, die ihre Parallelität anzeigen. Der Winkel BAC (am Punkt A, zwischen AB und AC) ist mit einem einzelnen roten Bogen und einem roten Kreuz markiert. Der Winkel DCA (am Punkt C, zwischen DC und AC) ist ebenfalls mit einem einzelnen roten Bogen und einem roten Kreuz markiert, was ihre Gleichheit visuell darstellt. Unter dem Diagramm stehen in schwarzer, handgeschriebener Schrift zwei Zeilen Text: 'Winkel BAC = Winkel DCA' und darunter 'Wechselwinkel sind gleich'.
+Links befindet sich eine geometrische Figur: ein Parallelogramm ABCD, gezeichnet mit schwarzen Linien. Die Eckpunkte sind gegen den Uhrzeigersinn beschriftet: A unten links, B oben links, C oben rechts und D unten rechts, jeweils in schwarzer, fetter, serifenloser Schrift. Eine Diagonale AC verbindet die Eckpunkte A und C.
+Die Seite AB hat zwei nach rechts zeigende Pfeile in der Mitte, die Parallelität anzeigen. Die Seite CD hat ebenfalls zwei nach rechts zeigende Pfeile in der Mitte, die Parallelität zu AB anzeigen.
+Die Seite BC hat einen nach rechts zeigenden Pfeil in der Mitte, der Parallelität anzeigt. Die Seite AD hat ebenfalls einen nach rechts zeigenden Pfeil in der Mitte, der Parallelität zu BC anzeigt.
+Am Eckpunkt A ist der Winkel zwischen AD und AC mit einem hellblauen Bogen markiert und mit einem blauen 'β' beschriftet. Der Winkel zwischen AB und AC ist mit einem roten Bogen markiert und mit einem roten 'α' beschriftet.
+Am Eckpunkt C ist der Winkel zwischen BC und AC mit einem hellblauen Bogen markiert und mit einem blauen 'β' beschriftet. Der Winkel zwischen CD und AC ist mit einem roten Bogen markiert und mit einem roten 'α' beschriftet. Die Bögen für 'α' und 'β' an beiden Eckpunkten A und C sind klar voneinander getrennt; der rote Bogen für 'α' ist näher an der Diagonale AC, während der blaue Bogen für 'β' weiter von der Diagonale AC entfernt ist.
 
-**Abschnitt 2 (Mitte):**
-Der Titel lautet '2. Gemeinsame Seite'. Darunter befindet sich ein weiteres Diagramm eines Parallelogramms ABCD, das in Form und Beschriftung identisch mit dem ersten ist, jedoch ohne Parallelitätspfeile oder Winkelmarkierungen. Die Diagonale AC ist gezeichnet. Das Dreieck ABC ist hellblau gefüllt. Das Dreieck CDA ist hellorange gefüllt. Ein schwarzer Pfeil zeigt von unten nach oben auf die Diagonale AC. Unter dem Diagramm steht in schwarzer, handgeschriebener Schrift der Text: 'AC ist gemeinsame Seite'.
+Rechts neben der geometrischen Figur befindet sich eine nummerierte Liste mit sechs mathematischen Aussagen und Erklärungen, vertikal ausgerichtet. Der Text ist in schwarzer, fetter, abgerundeter serifenloser Schrift, passend zum Titel und den Beschriftungen der Figur.
 
-**Abschnitt 3 (rechts):**
-Der Titel lautet '3. Kongruenz & Schluss'. Darunter befindet sich ein weißes, rechteckiges Feld mit einem dicken schwarzen Rand. Innerhalb dieses Feldes ist eine nummerierte Liste in schwarzer, handgeschriebener Schrift:
-'Konklusion:'
-'1. Winkel BAC = Winkel DCA' mit einem grünen Häkchen rechts daneben.
-'2. Winkel BCA = Winkel CAD' mit einem grünen Häkchen rechts daneben.
-'3. AC ist gemeinsame Seite' mit einem grünen Häkchen rechts daneben.
-'4. Daraus folgt:'
-'Dreieck ABC ist kongruent zu Dreieck CDA (WSW)' mit einem grünen Häkchen rechts daneben.
-'5. Also:'
-'Länge(AB) = Länge(CD) und'
-'Länge(BC) = Länge(AD)'
-Unter diesem Feld befindet sich ein weiteres abgerundetes, rechteckiges Feld mit hellgrauem Hintergrund. Darin steht in schwarzer, handgeschriebener Schrift der Text: 'Gegenüberliegende Seiten im Parallelogramm sind gleich lang.'
+1.  "1. AB // CD und BC // AD (Voraussetzung)" – Die Liniensegmente AB, CD, BC und AD sind jeweils mit einem Überstrich versehen. Das Symbol "//" steht für Parallelität.
+2.  "2. α: ∠BAC = ∠DCA (Wechselwinkel)" – Das 'α' ist rot. Das Symbol "∠" steht für Winkel.
+3.  "3. β: ∠BCA = ∠CAD (Wechselwinkel)" – Das 'β' ist blau. Das Symbol "∠" steht für Winkel.
+4.  "4. AC ist gemeinsame Seite" – Das Liniensegment AC ist mit einem Überstrich versehen.
+5.  "5. ΔABC ≅ ΔCDA (WSW-Kongruenz)" – Das Symbol "Δ" steht für Dreieck. Das Symbol "≅" steht für Kongruenz.
+6.  "6. Also: AB = CD und BC = AD (Eigenschaft)" – Die Liniensegmente AB, CD, BC und AD sind jeweils mit einem Überstrich versehen.
 
-Alle Texte und Diagramme sind klar und deutlich dargestellt, mit einem sauberen, didaktischen Erscheinungsbild.
+Alle Textelemente und mathematischen Symbole sind präzise und klar dargestellt, um eine einfache Lesbarkeit und Verständlichkeit zu gewährleisten.
 ```

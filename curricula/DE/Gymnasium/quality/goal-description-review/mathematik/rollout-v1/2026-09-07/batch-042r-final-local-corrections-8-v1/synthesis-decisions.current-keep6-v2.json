@@ -1,0 +1,216 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v2-b042r-current-keep6-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-goal-book-ci-integration-nonblind-current-synthesis",
+  "synthesizedAt": "2026-09-07T14:15:23.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-042r-final-local-corrections-8-v1-20260907",
+    "batchManifestDigest": "sha256:db63b3f123bb38fb978de329318a40752eba932b8d68792ee9c050e7d289634b",
+    "configDigest": "sha256:bc814b36d11faa0759ddb72ca23bf9e4e11001a9bf9babb25c598ad51e48d690",
+    "bundleFingerprint": "sha256:d07948dbf92232934e830e8c48c9dd0264df4915d3841c1b1d7f3639636212d4",
+    "bookDigest": "sha256:8f45a852bfd84e814133593b54250f355bf0af4bd1e8cea69792981038c92925",
+    "reviewInputFingerprint": "sha256:31733b2e9269bc4491e3a0eda9be93fe8c4b2e14de06c8f8056e8e783e855a3a",
+    "dualSummaryDigest": "sha256:0cfd9722aa83a2cfcfcf90a818f5c225ee4c60d13f3db220eabb89a8bef2f4c2",
+    "canonicalLandscapeDigest": "sha256:96e647034cdb5b3e218cdb780c6ba4bc878a1efbcfa06d454172bae3dfa2fc6e"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-042r-final-local-corrections-8-v1-20260907-a",
+      "campaignDigest": "sha256:0ccb80d6407b3e9ecd4f4859d2645f06a11a3274e53df60aee9cdaaa6de338df",
+      "roundId": "mathematik-rollout-v1-batch-042r-final-local-corrections-8-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-042r-final-local-corrections-8-v1-20260907-independent-a",
+      "reviewInputFingerprint": "sha256:31733b2e9269bc4491e3a0eda9be93fe8c4b2e14de06c8f8056e8e783e855a3a",
+      "batchId": "mathematik-rollout-v1-batch-042r-final-local-corrections-8-v1-20260907-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:07df12423b6ddcedc9813b2f7167d0d847d0d9d641a2948b69816e84dcb60061",
+      "runId": "math-b042r-round-a-20260907T140452Z-ci-integration",
+      "runManifestDigest": "sha256:37bcdf84367e4a6ca72cdc50e13076269bf3a9bff17e7dc702810744fbb51240",
+      "resultsDigest": "sha256:01569a41338f23e97db724f61999894f73655eb67eef62696e076eab684c90c4"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-042r-final-local-corrections-8-v1-20260907-b",
+      "campaignDigest": "sha256:fac1ee643438aad3b66901ed5b6547dc4ec8042146d196420dc9b76b02ab9ee8",
+      "roundId": "mathematik-rollout-v1-batch-042r-final-local-corrections-8-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-042r-final-local-corrections-8-v1-20260907-independent-b",
+      "reviewInputFingerprint": "sha256:31733b2e9269bc4491e3a0eda9be93fe8c4b2e14de06c8f8056e8e783e855a3a",
+      "batchId": "mathematik-rollout-v1-batch-042r-final-local-corrections-8-v1-20260907-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c54fd36e505aa20e75a210b1306211e37a99cf6b87cac09536d7fe9c49a8bac3",
+      "runId": "math-b042r-first-pass-b-root-20260907",
+      "runManifestDigest": "sha256:e1eae7fd26843ccdf568f6ffe9421ff40d9d27a2215b7b7be6b89c01a4b7309f",
+      "resultsDigest": "sha256:c1bf40d0600e66bded0f55f2d2d8c3f8a4d55d35a91813ff3013c69fa485918d"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v2-b042r-current-keep6-v1-decision-001",
+      "goalId": "281e0c6e-d06d-580f-8443-4369f0ea524b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9addd1882ef972c4330ddcf60ee8a267f27b298f431ed0c5703215e8e71b8ee7",
+      "pageFingerprint": "sha256:02f7852f536d29a30dbda96a56d89d45409e5f0707cdb4db7d1e244671ea2ee5",
+      "goalReviewContextFingerprint": "sha256:a4a39566738fb97b6d4442356001a20a8a7946201451c8e2059ef3a97263d534",
+      "finalText": {
+        "titleDe": "Reale Gegenstände als Rotationskörper zur Volumenbestimmung modellieren (LK)",
+        "titleEn": "Model real objects as solids of revolution for volume determination (advanced course)",
+        "descriptionDe": "Die lernende Person kann reale Gegenstände durch geeignete Rotationskörper beziehungsweise Randfunktionen modellieren, passende Integrale zur Volumenbestimmung aufstellen und die Modellannahmen im Kontext begründen.",
+        "descriptionEn": "The learner can model real objects with suitable solids of revolution or boundary functions, set up appropriate integrals for volume determination, and justify the modeling assumptions in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b042r-round-a-20260907T140452Z-ci-integration-281e0c6e-d06d-580f-8443-4369f0ea524b",
+          "recordDigest": "sha256:34c67401574f416fdec19266c041f24f1380b946ab8004fadcb06bb762223fa2"
+        },
+        "second": {
+          "recordId": "math-b042r-first-pass-b-root-20260907.281e0c6e-d06d-580f-8443-4369f0ea524b",
+          "recordDigest": "sha256:206537cd789cb0486dcf2e26fe16c5b5a727b4d3c24505469f789003076e4487"
+        }
+      },
+      "rationaleDe": "Die beiden aktuellen Reviews bestätigen die Modellierung realer Rotationsgegenstände; das korrigierte Becher-/Radiusdiagramm ist fachlich konsistent. Das Profil prüft Maßwahl, Innenvolumen und im veränderten Fall Materialvolumen, statt nur die abgebildete Formel nachzurechnen.",
+      "rationaleEn": "Both current reviews support modelling real solids of revolution; the corrected vessel/radius diagram is consistent. The profile tests dimension choices, inner capacity and material volume in a changed case rather than copying the formula."
+    },
+    {
+      "decisionId": "mathematik-rollout-v2-b042r-current-keep6-v1-decision-002",
+      "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ee713a77fac5dba916b2c6e89441e2e6be3c4ead094f52292dd0a585a542f954",
+      "pageFingerprint": "sha256:2b4512dbd0a39e21871ef175569042bc7d2764edd442186d7a5929ba862fd6f4",
+      "goalReviewContextFingerprint": "sha256:760feba7268ee5e44198221e35203023f2b63b3cec6aa53491edba27055a0ef7",
+      "finalText": {
+        "titleDe": "Analysisgrundlagen in Q1-Anschlussaufgaben nutzen",
+        "titleEn": "Use analysis foundations in Q1 follow-up tasks",
+        "descriptionDe": "Die lernende Person kann die in der Einführungsphase erarbeiteten Inhalte zu Funktionen und Darstellungen, Ableitungsbegriff und Anwendungen, ganzrationalen Funktionen, Exponentialfunktionen, trigonometrischen Funktionen und Ableitungsregeln in Q1-Anschlussaufgaben passend auswählen, begründet einsetzen und fachlich einordnen.",
+        "descriptionEn": "The learner can select, justify, apply, and classify introductory-phase content on functions and representations, derivative concepts and applications, polynomial functions, exponential functions, trigonometric functions, and derivative rules in Q1 follow-up tasks."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b042r-round-a-20260907T140452Z-ci-integration-2713980f-75d2-5455-a8cb-bcd3888c49a0",
+          "recordDigest": "sha256:f8ef317e2c75de16b4dc64eaa140f7cd261427fac95c6f930834e66f7ccabc08"
+        },
+        "second": {
+          "recordId": "math-b042r-first-pass-b-root-20260907.2713980f-75d2-5455-a8cb-bcd3888c49a0",
+          "recordDigest": "sha256:23938df0a8897f4236e97d0d1be3f4b61ad8d2930d1bbd585dd5a37417f484af"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen den unveränderten E→Q1-Brückentext und das korrekte neue native Bild. Der versiegelte A-Nachweis erwähnt aber zusätzlich Integralwerkzeuge und überschreitet damit diese konkrete Funktions-/Ableitungskompetenz; diese Erweiterung wird ausdrücklich verworfen. Deshalb wird B als gebundene Evidenzquelle gewählt. Das eigenständige V2-Profil konkretisiert die kanonische allgemeine Werkzeugwahl mit einem Polynom-Exponentialprodukt und einem trigonometrischen Bewegungskontext, ohne B's einzelnes Musterbeispiel zur ganzen Kompetenz zu machen. Die erste noch nicht zentral registrierte Teil-Synthesev1 ist dadurch supersediert; beide Originalreviews bleiben unverändert.",
+      "rationaleEn": "Both reviews support the unchanged introductory-to-Q1 bridge description and the correct new native image. However, sealed A additionally mentions integration tools and thereby exceeds this particular function/differentiation competence; that extension is explicitly rejected. B is therefore selected as the bound evidence source. The independently authored V2 profile makes the canonical general tool choice concrete with a polynomial-exponential product and trigonometric motion, without treating B's single example as the whole competence. This supersedes the first, not centrally registered partial synthesisv1; both original reviews remain unchanged."
+    },
+    {
+      "decisionId": "mathematik-rollout-v2-b042r-current-keep6-v1-decision-003",
+      "goalId": "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:636242e07f4311e01c46b70d48e92e9da61eddc71d42957421a42860df20b43c",
+      "pageFingerprint": "sha256:591df4c1193b927d9d6ea25dbf9f96af99f0a4d684ad38ce83a59a1f00786710",
+      "goalReviewContextFingerprint": "sha256:0b8beeb0e8c4475e0c36cf7fdff9a4918e77c8469bee8979da1989e0fbd83bb7",
+      "finalText": {
+        "titleDe": "Asymptotisches Verhalten begrenzten Wachstums beschreiben",
+        "titleEn": "Describe the asymptotic behaviour of bounded growth",
+        "descriptionDe": "Die lernende Person kann das asymptotische Verhalten begrenzten Wachstums beschreiben, den zugehörigen Grenzwert fachlich deuten und die Sättigung im jeweiligen Kontext einordnen.",
+        "descriptionEn": "The learner can describe the asymptotic behaviour of bounded growth, interpret the corresponding limit value mathematically, and classify the saturation level in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b042r-round-a-20260907T140452Z-ci-integration-ccd83f05-a0ae-4cd1-8917-24793a219fee",
+          "recordDigest": "sha256:a2f5fa1057804a8a910c76492e58b33bbe259a0d22793d4328cf7f2865a5e411"
+        },
+        "second": {
+          "recordId": "math-b042r-first-pass-b-root-20260907.ccd83f05-a0ae-4cd1-8917-24793a219fee",
+          "recordDigest": "sha256:3472ee547884a81fb6d78de7d7614bffd0d220fc9d93ee445e7b98d2a37deed6"
+        }
+      },
+      "rationaleDe": "Die gemeinsame fachliche Aussage ist die begründete asymptotische Annäherung mit Trennung von Bestand, Abstand und Änderungsrate. Das neue Raster ist auch quantitativ konsistent. Ein Fall von oben statt von unten und der endliche Zeitpunkt gegenüber dem Grenzwert konkretisieren Transfer ohne neue Modellfamilie.",
+      "rationaleEn": "The shared finding is justified asymptotic approach distinguishing quantity, gap and rate. The new image is quantitatively consistent. Approach from above instead of below and finite time versus limit make transfer concrete without introducing a new family."
+    },
+    {
+      "decisionId": "mathematik-rollout-v2-b042r-current-keep6-v1-decision-004",
+      "goalId": "848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a6e8e002fe4ef46eb562ab86274ed5943a66a7639b1085b54cc4f36ee30c91d6",
+      "pageFingerprint": "sha256:8c6888cfd9db4280a0393afd60bd69b0390682fc21b28a4fda683c3c2dec4025",
+      "goalReviewContextFingerprint": "sha256:0ac313880d874988ab152fcaf31dbafe0c57566f110f63fa1a8260af5b78ba40",
+      "finalText": {
+        "titleDe": "Exponentielle, begrenzte und logistische Wachstumsmodelle vergleichen",
+        "titleEn": "Compare exponential, bounded, and logistic growth models",
+        "descriptionDe": "Die lernende Person kann exponentielle, begrenzte und logistische Wachstumsmodelle vergleichen, Unterschiede im Verlauf fachlich herausarbeiten und die zugrunde liegenden Modellannahmen begründet einordnen.",
+        "descriptionEn": "The learner can compare exponential, bounded, and logistic growth models, work out differences in their behaviour mathematically, and classify the underlying modelling assumptions with justification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b042r-round-a-20260907T140452Z-ci-integration-848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+          "recordDigest": "sha256:b9e5cb57dc81970ce25e546fd0dc101baaa635b696f4c28c7b1d317614bdae79"
+        },
+        "second": {
+          "recordId": "math-b042r-first-pass-b-root-20260907.848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+          "recordDigest": "sha256:a6c41e60b06c3c8bc470f385f163adceb0ad7c1dc005ce81ab09d104b052dc6e"
+        }
+      },
+      "rationaleDe": "Beide Reviews akzeptieren den qualitativen Vergleich mit ausdrücklich getrennten schematischen Diagrammen; keine gemeinsame quantitative Zeitskala wird behauptet. Das Profil verlangt deshalb eine begründete Modellwahl aus Daten und Annahmen und vermeidet eine erzwungene DGL-Herleitung.",
+      "rationaleEn": "Both reviews accept qualitative comparison using explicitly separate schematic plots, without claiming a common quantitative time scale. The profile therefore tests justified model selection from data and assumptions, not mandatory differential-equation derivation."
+    },
+    {
+      "decisionId": "mathematik-rollout-v2-b042r-current-keep6-v1-decision-005",
+      "goalId": "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:188b59b6cebbbaccf70b96a87352c0aa466044cb1d0204d8b57d1d3409dd9835",
+      "pageFingerprint": "sha256:ac368bc971eab21422a627cbaaf3b27c0198131f6c8aa8db152f755ae0da5f1b",
+      "goalReviewContextFingerprint": "sha256:e6f9f6469ed62d8deb5d01a4b147e8b0675cd8d445d40a53501d41d50d364099",
+      "finalText": {
+        "titleDe": "Logistisches Wachstum untersuchen (LK)",
+        "titleEn": "Investigate logistic growth (advanced course)",
+        "descriptionDe": "Die lernende Person kann logistisches Wachstum anhand geeigneter Funktionen beschreiben, modellieren und die Unterschiede zu begrenztem bzw. einfachem exponentiellem Wachstum (Sättigung/Tragfähigkeit) herausarbeiten.",
+        "descriptionEn": "The learner can describe and model logistic growth using suitable functions and work out the differences to bounded or simple exponential growth (saturation/carrying capacity)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b042r-round-a-20260907T140452Z-ci-integration-df7338ef-65ba-5ece-8aec-7f520dfe5710",
+          "recordDigest": "sha256:a268fec861b1ee2fe7098c6a4e10c8633f8d1220bdae0daaabb2ad2a761dfb0a"
+        },
+        "second": {
+          "recordId": "math-b042r-first-pass-b-root-20260907.df7338ef-65ba-5ece-8aec-7f520dfe5710",
+          "recordDigest": "sha256:128cb1e7ee786748a32ce7e2088f526a0420e35f7e7b93b7c5b21f8fc1a0fb07"
+        }
+      },
+      "rationaleDe": "Das neue native Logistikbild besteht beide tatsächlichen Sichtungen. Anfangswert, Kapazität, halbe Kapazität als Ort maximalen Zuwachses und der qualifizierte S-Verlauf bilden eine kohärente LK-Untersuchung. Der frische Fall oberhalb halber Kapazität verhindert die falsche Behauptung jedes Zeitfenster müsse S-förmig sein.",
+      "rationaleEn": "The new native logistic image passes both actual inspections. Initial value, capacity, maximum growth at half capacity and a qualified S-shape form coherent advanced analysis. A fresh case above half capacity prevents the false claim that every observation window must be S-shaped."
+    },
+    {
+      "decisionId": "mathematik-rollout-v2-b042r-current-keep6-v1-decision-006",
+      "goalId": "5ccf0d90-2967-576e-8f72-f002792d8515",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:04a41dc79bf2db893d4bd18b259164f4b153bb73766408d3f903585da9570848",
+      "pageFingerprint": "sha256:ee7093996c0d1c768df69b879cee9b5e32321cc695f692ec5778f22573fd9a70",
+      "goalReviewContextFingerprint": "sha256:05f10c2968727eb7c94564267d0c364e4429b63ff42309d952731a609c4f75fa",
+      "finalText": {
+        "titleDe": "Integrationstechniken gezielt kombinieren",
+        "titleEn": "Combine integration techniques purposefully",
+        "descriptionDe": "Die lernende Person kann bei gegebenen Integralen geeignete Techniken auswählen, ggf. mehrere Methoden kombinieren und den Lösungsweg begründen.",
+        "descriptionEn": "The learner can select suitable techniques for given integrals, combine multiple methods if necessary, and justify the solution path."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b042r-round-a-20260907T140452Z-ci-integration-5ccf0d90-2967-576e-8f72-f002792d8515",
+          "recordDigest": "sha256:0daffdbab4ff7e8f74892d1be0c7673e8894e1b330db90d2b1e36ef47f80d039"
+        },
+        "second": {
+          "recordId": "math-b042r-first-pass-b-root-20260907.5ccf0d90-2967-576e-8f72-f002792d8515",
+          "recordDigest": "sha256:1106a74f71864be56dd08ec6a1e4ca50ecc2999a879c106f8c6d20e20b860e59"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die korrekte Transformationskette im neuen Bild. Strukturgeleitete Auswahl, korrekte Differential-/Grenzenbehandlung und Ableitungskontrolle bleiben der Kern; ein neuer Fall muss eine andere begründete Kombination verlangen, nicht nur dieselbe Substitution mit neuen Zahlen.",
+      "rationaleEn": "Both reviews support the corrected transformation chain in the new image. Structure-led selection, consistent differential/bound treatment and differentiation checks remain central; a fresh case must require another justified combination rather than the same substitution with changed numbers."
+    }
+  ],
+  "manifestFingerprint": "sha256:c450f4d14b5b9173c950e6fc7ffa4b4b853fa58c2ccae075b8819e3cfd330624"
+}

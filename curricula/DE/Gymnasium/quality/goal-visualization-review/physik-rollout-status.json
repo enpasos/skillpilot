@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-07T06:00:14.975Z",
+  "generatedAt": "2026-09-07T14:06:36.700Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "physik",
@@ -10,7 +10,7 @@
     "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2"
   },
   "summary": {
-    "totalGoals": 711,
+    "totalGoals": 715,
     "atomicGoalsInScope": 465,
     "goalsWithPrimaryVisualization": 415,
     "coveragePercent": 89.2,
@@ -25,7 +25,7 @@
       "accepted": 74,
       "pilot": 341
     },
-    "reviewLedgerFiles": 90,
+    "reviewLedgerFiles": 92,
     "reviewDecisionCounts": {
       "accepted_cluster_overview_after_atomic_split": 1,
       "accepted_documented_repo_native_fallback": 1,
@@ -46,7 +46,7 @@
       "accepted_pilot_after_regeneration_and_owner_review": 3,
       "accepted_pilot_after_second_regeneration": 24,
       "accepted_pilot_after_third_regeneration": 3,
-      "accepted_pilot_after_user_review_correction": 10,
+      "accepted_pilot_after_user_review_correction": 15,
       "accepted_retroactive_nano_banana": 22,
       "accepted_reuse_after_current_visual_review": 3,
       "blocked_provider_quota": 1,
@@ -494,6 +494,41 @@
         "title": "Sonnen- und Mondfinsternisse mit Schattenräumen erklären",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "`2fb3862606a2dfb298f548144cb4c5b4bde990aee9932cc24d224746750438df`; beide Teilbilder besitzen genau vier gerade Randstrahlen. Bei der Sonnenfinsternis sind sie gemeinsame Tangenten von Sonne und Mond, bei der Mondfinsternis gemeinsame Tangenten von Sonne und Erde; der Mond liegt dort berührungsfrei im Erdschatten. Kern- und Halbschatten folgen den begrenzenden Geraden konsistent."
+      },
+      {
+        "batch": "090",
+        "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+        "title": "Fotoeffekt und Einstein-Deutung",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Aktuelles JPEG SHA-256 `945377b827f576d3033fe21316f73baeedffb63dc1f6a2417048012889f7a70b` tatsächlich visuell geprüft: zwei gleiche Metalloberflächen, ober- und unterschwellige Beleuchtung, Elektronenaustritt nur oberhalb der Schwelle, maximale kinetische Energie, Grenzfrequenz und Intensität bei festem f korrekt getrennt. Pfeile sind schematisch, keine quantitative Messung. Unabhängiger Einzelbefund: `physics-cb0-photoelectric-current-v1/independent-v2-review.json`. AI-Kandidat, keine menschliche Bildfreigabe."
+      },
+      {
+        "batch": "091",
+        "goalId": "6270e558-d657-5363-a6b2-e49a032a453b",
+        "title": "Interferenz am Doppelspalt",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Geprüfter Nano-Kandidat unverändert übernommen; SHA `8c0dcb985fb97a45160504e11a5b2b7bd657649d1054245fc03fb6fc00674e56`. Korrekte ganzzahlige Maximabedingung ohne zusätzlichen Faktor m, konsistente Spaltmitten-/Schirmgeometrie und sauber getrennte Kleinwinkelannahme."
+      },
+      {
+        "batch": "091",
+        "goalId": "c64820e1-c0ee-4342-9225-f981650f0c52",
+        "title": "Interferenzminima am Doppelspalt begründen und lokalisieren",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Derselbe korrekte Doppelspalt-Nano, SHA `8c0dcb985fb97a45160504e11a5b2b7bd657649d1054245fc03fb6fc00674e56`, jetzt auf den vorhandenen engen LK-Minimaauftrag bezogen. Keine gemeinsame Einzelspalt-/Gitterformel mehr."
+      },
+      {
+        "batch": "091",
+        "goalId": "91683676-01cf-5003-80fa-a04d043b4e61",
+        "title": "Spektren mit Beugungsgitter deuten",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Begründeter Präzisionsfallback nach dokumentiertem Nano-Fehlversuch, SHA `1229eb17bd2ee31c00f8333a064c4a90f894f5c44ffc81b78961be50f68b1a7c`. Unveränderte überprüfte Hauptmaximageometrie; ausdrücklich eigener Zweilinien-Spektrenfall mit inverser Wellenlängenbeziehung ergänzt."
+      },
+      {
+        "batch": "091",
+        "goalId": "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+        "title": "Beugung am Einzelspalt berechnen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Begründeter Präzisionsfallback nach dokumentiertem Nano-Fehlversuch, SHA `631da849a2077827647e046289217450b8aa5c87d4c4d15b35cbf6f649591860`. Echte lineare sinc²-Kurve samt sichtbarem vollständigem Modell, Grenzwert, Minima und richtigen Nebenmaximawerten."
       }
     ]
   },
@@ -732,7 +767,7 @@
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/f6a3a602-1e45-5018-b0ff-3d49933cf634/f6a3a602-1e45-5018-b0ff-3d49933cf634.jpg"
+      "url": "/assets/goal-visualizations/physik/f6a3a602-1e45-5018-b0ff-3d49933cf634/f6a3a602-1e45-5018-b0ff-3d49933cf634.png"
     },
     {
       "goalId": "41872413-497e-5b88-ac65-365ed7d9851f",
@@ -1583,20 +1618,20 @@
       "url": "/assets/goal-visualizations/physik/158e1c19-7ccb-4c8c-931c-b685951ab161/158e1c19-7ccb-4c8c-931c-b685951ab161.jpg"
     },
     {
+      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "title": "Fotoeffekt und Einstein-Deutung",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f.jpg"
+    },
+    {
       "goalId": "5476480f-7ff2-529f-aade-968198c782a9",
       "title": "Fotoeffekt-Daten auswerten",
       "phase": "Q3",
       "area": "",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/5476480f-7ff2-529f-aade-968198c782a9/5476480f-7ff2-529f-aade-968198c782a9.jpg"
-    },
-    {
-      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
-      "title": "Fotöffekt und Einstein-Deutung",
-      "phase": "Q3",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f.jpg"
     },
     {
       "goalId": "cf340ce4-8d91-5d22-a1d9-53bf408abdb3",
@@ -1983,6 +2018,14 @@
       "url": "/assets/goal-visualizations/physik/85157cf0-7f68-5aea-b375-0f9797008cc9/85157cf0-7f68-5aea-b375-0f9797008cc9.jpg"
     },
     {
+      "goalId": "c64820e1-c0ee-4342-9225-f981650f0c52",
+      "title": "Interferenzminima am Doppelspalt begründen und lokalisieren",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c64820e1-c0ee-4342-9225-f981650f0c52/c64820e1-c0ee-4342-9225-f981650f0c52.jpg"
+    },
+    {
       "goalId": "2c6af966-7703-4176-a117-5ddb8295bedf",
       "title": "Interferenzmuster und Intensitaetsverteilungen bei Einzelspalt, Doppelspalt und Gitter beschreiben",
       "phase": "Q3",
@@ -2261,14 +2304,6 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/7fe6f8a1-5580-4e37-bf8e-9772964a6b0a/7fe6f8a1-5580-4e37-bf8e-9772964a6b0a.jpg"
-    },
-    {
-      "goalId": "c64820e1-c0ee-4342-9225-f981650f0c52",
-      "title": "Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen",
-      "phase": "Q3",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/c64820e1-c0ee-4342-9225-f981650f0c52/c64820e1-c0ee-4342-9225-f981650f0c52.jpg"
     },
     {
       "goalId": "0c305cf9-3923-51cf-a9ae-5849edc99c9f",
@@ -3292,7 +3327,7 @@
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/91683676-01cf-5003-80fa-a04d043b4e61/91683676-01cf-5003-80fa-a04d043b4e61.jpg"
+      "url": "/assets/goal-visualizations/physik/91683676-01cf-5003-80fa-a04d043b4e61/91683676-01cf-5003-80fa-a04d043b4e61.png"
     },
     {
       "goalId": "b57427c9-1af5-5daa-8c65-b84a4cc20785",

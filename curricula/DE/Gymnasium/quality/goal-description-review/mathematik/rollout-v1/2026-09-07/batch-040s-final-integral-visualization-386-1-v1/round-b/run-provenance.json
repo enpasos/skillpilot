@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "runId": "math-b040s386-first-pass-b-codex-20260907T123601",
+  "reviewerAgent": "/root/goal_book_build_generator",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "modelAliasNormalization": {
+    "authorizedBy": "root-coordinator explicit B040s metadata-only correction 2026-09-07",
+    "previousModel": "unknown",
+    "previousModelVersion": "unknown",
+    "reason": "Normalize equivalent unknown-model aliases across the two new B040s runs so textual spelling differences do not manufacture model diversity. No concrete model identity or model version is asserted.",
+    "recordsUnchangedSha256": "sha256:8f5d5e9d4e198cd2a206475f32eb9705cbc167254223eb3cd56728e8f77accf7"
+  },
+  "startedAt": "2026-09-07T12:36:01.000Z",
+  "completedAt": "2026-09-07T12:38:06.506Z",
+  "reviewMethod": "one-goal independent first-pass assessment from assigned round-b input, criteria and current raster",
+  "contextBoundary": {
+    "freshThread": false,
+    "existingAgentContext": "Existing agent previously worked on book-build infrastructure and a separate Physics audit/profile context. It had access to general project instructions and rollout status, not to Mathematics round A or historical Mathematics D/P review decisions for this goal.",
+    "otherRoundOutputsRead": false,
+    "earlierMathematicsReviewOutputsRead": false,
+    "adjudicationOrCanonicalDiffRead": false,
+    "otherReviewerDecisionCommunicated": false,
+    "independenceLimit": "Separate reviewer judgment in an existing agent, not a newly spawned context-isolated model or model diversity claim."
+  },
+  "inputArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040s-final-integral-visualization-386-1-v1/round-b/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040s-final-integral-visualization-386-1-v1/round-b/criteria.md",
+      "sha256": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040s-final-integral-visualization-386-1-v1/round-b/contracts/goal-description-review-record.schema.json",
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040s-final-integral-visualization-386-1-v1/round-b/description-review-campaign.json",
+      "sha256": "sha256:fea1e06e78b35e0005cbb937adb178405c75a81d5e4306a6c9e0e6ea8939381d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040s-final-integral-visualization-386-1-v1/round-b/description-review-input.json",
+      "sha256": "sha256:807d382034e7d4f1dc98ea9d3293744b611d4eb3d7302a72d6f4021e98b270ba"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040s-final-integral-visualization-386-1-v1/round-b/review-bundle-manifest.json",
+      "sha256": "sha256:39f786db0dd3fd0e9717a9e4a8f526e07d51cf12ace5519aa9d589f25faa6e22"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-040s-final-integral-visualization-386-1-v1/round-b/batches/mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-b.batch-001.input.jsonl",
+      "sha256": "sha256:9eac2441ec260df6a3bff1ec469a90ba4c1a6ce0b97b70444c520f38921b5a51"
+    }
+  ],
+  "visualization": {
+    "path": "app/public/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg",
+    "sha256": "sha256:e11037682194882cefe91e8bf855b16c0702470c80b560643bc2dcd3767a26d2",
+    "visuallyInspected": true,
+    "humanApprovalClaimed": false,
+    "arithmeticChecks": [
+      {
+        "n": 4,
+        "lower": 10,
+        "upper": 14
+      },
+      {
+        "n": 8,
+        "lower": 11,
+        "upper": 13
+      },
+      {
+        "n": 16,
+        "lower": 11.5,
+        "upper": 12.5
+      }
+    ],
+    "integral": 12,
+    "initialQuantity": 7,
+    "finalQuantity": 19
+  },
+  "generationParameters": {
+    "modelOverrideRequested": false,
+    "exactSamplingParameters": "unavailable"
+  },
+  "authority": "ai_candidate"
+}

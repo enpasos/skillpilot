@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5ff8a21fee3074746d8510a4e83677e326ec4166457034891f67b972e5a005a8",
+  "reviewInputFingerprint": "sha256:d07ceccea1f06658ba387cf9f835e53e06307012f53c65387e6ed9340c02521b",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-a",
+      "roundId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-independent-a",
+      "runIds": [
+        "physics-040t-cb0-round-a-20260907T131342Z-history-audit"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-b",
+      "roundId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-independent-b",
+      "runIds": [
+        "physics-b040t-current-followup-b-codex-20260907T130657Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "firstRecordId": "physics-040t-cb0-round-a-20260907T131342Z-history-audit.record-001",
+      "secondRecordId": "physics-b040t-current-followup-b-codex-20260907T130657Z-cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "firstRunId": "physics-040t-cb0-round-a-20260907T131342Z-history-audit",
+      "secondRunId": "physics-b040t-current-followup-b-codex-20260907T130657Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

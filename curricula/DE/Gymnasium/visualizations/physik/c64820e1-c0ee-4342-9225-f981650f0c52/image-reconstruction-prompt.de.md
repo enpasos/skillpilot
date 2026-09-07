@@ -1,14 +1,14 @@
-# Bildrekonstruktionsprompt: Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen
+# Bildrekonstruktionsprompt: Interferenzminima am Doppelspalt begründen und lokalisieren
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `c64820e1-c0ee-4342-9225-f981650f0c52`
-- Titel: Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen
-- Beschreibung: Die lernende Person kann die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewaehlten Beugungsvorgaengen in Fernfeldnaeherung fuer Einzelspalt, Doppelspalt und Gitter berechnen.
+- Titel: Interferenzminima am Doppelspalt begründen und lokalisieren
+- Beschreibung: Die lernende Person kann beim idealisierten Doppelspalt mit gleich starken kohärenten Beiträgen die dunklen Stellen aus destruktiver Interferenz begründen, ihre Winkel und Schirmpositionen bestimmen und die Minima gegenüber den Maxima sowie gegenüber einer unzulässigen Kleinwinkelnäherung abgrenzen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `c64820e1-c0ee-4342-9225-f981650f0c52.jpg`
 
 ## Zweck
@@ -18,23 +18,41 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, lehrreiches Diagramm im Stil einer handgezeichneten Skizze mit dicken schwarzen Umrissen, das ein physikalisches Experiment zur Beugung und Interferenz im Fernfeld darstellt. Der Hintergrund ist oben hellblau und verläuft nach unten hin in ein sehr helles Blau oder Weiß. Oben mittig steht der Titel in schwarzer, serifenloser Schrift: "Fernfeld: Maxima und Minima".
+Ein Bildungsdiagramm im klaren, einfachen, leicht handgezeichneten Stil. Der Hintergrund ist hellblau mit einem subtilen horizontalen Farbverlauf, der nach rechts hin in einen hellen gelb/beige Farbton übergeht.
 
-Auf der linken Seite befindet sich eine vertikale, graue Blende mit einem einzelnen, schmalen, rechteckigen Spalt in der Mitte. Die Blende besteht aus zwei grauen, rechteckigen Blöcken, die den Spalt umschließen. Aus dem Spalt treten nach rechts hin schwache, hellblaue, konzentrische Wellenfronten hervor.
+Oben mittig steht der Titel in großer, fetter, schwarzer, serifenloser Schrift: "Doppelspalt: helle und dunkle Streifen".
+Darunter, in kleinerer, schwarzer, serifenloser Schrift: "Senkrechter, kohärenter, monochromatischer Einfall · Fernfeld · idealisiert ohne Einhüllende".
 
-Eine dicke schwarze horizontale Linie erstreckt sich vom Mittelpunkt des Spaltes nach rechts. Eine weitere dicke schwarze Linie beginnt ebenfalls am Mittelpunkt des Spaltes und steigt schräg nach oben an. Zwischen dieser schrägen Linie und der horizontalen Linie ist ein Bogen eingezeichnet, der den Winkel "θ" (Theta) markiert. Unterhalb der horizontalen Linie, etwa in der Mitte zwischen Spalt und Schirm, ist die Länge "L" beschriftet.
+Links oben im Diagrammbereich, über den Wellenpfeilen, steht in schwarzem Text: "Skizze, nicht maßstäblich".
 
-Auf der rechten Seite des Bildes steht ein vertikaler, dunkelgrauer Schirm mit einem dünnen, hellrosa-beigen Rand. Auf diesem Schirm sind drei helle, ovale, weiß-graue Flecken zu sehen, die ein Interferenzmuster darstellen. Der mittlere Fleck ist auf Höhe der horizontalen Linie und ist mit "m = 0" rechts daneben beschriftet. Der obere Fleck ist oberhalb des mittleren Flecks und ist mit "m = +1" rechts daneben beschriftet. Der untere Fleck ist unterhalb des mittleren Flecks und ist mit "m = -1" rechts daneben beschriftet. Die schräge Linie vom Spalt zeigt genau auf den oberen Fleck (m = +1). Eine vertikale schwarze Linie mit Pfeilspitzen an beiden Enden, beschriftet mit "y₁", verbindet die horizontale Linie mit dem oberen Fleck (m = +1) auf dem Schirm.
+Das Hauptdiagramm zeigt von links nach rechts:
+Ganz links sind fünf horizontal nach rechts zeigende schwarze Pfeile, die gleichmäßig vertikal verteilt sind und Wellen darstellen. Links neben diesen Pfeilen steht vertikal der schwarze Text: "λ: Wellenlänge".
+Rechts davon befinden sich zwei vertikale, dünne, graue Rechtecke mit schwarzen, leicht unregelmäßigen Umrissen, die die Spalte eines Doppelspalts symbolisieren. Zwischen den Spalten ist ein kleiner Abstand. Links neben den Spalten ist ein vertikaler schwarzer Doppelpfeil, der den Abstand zwischen den Mitten der Spalte markiert und mit dem um 90 Grad gegen den Uhrzeigersinn gedrehten schwarzen Text "d: Spaltmittenabstand" beschriftet ist.
+Von der Mitte zwischen den Spalten erstreckt sich eine horizontale gestrichelte schwarze Linie nach rechts, die als "Bezugslinie" beschriftet ist. Am Ursprung dieser Linie, in der Mitte der Spalte, ist ein schwarzer Punkt mit der Beschriftung "O".
+Rechts vom Doppelspalt steht ein vertikales, durchgehend schwarzes Rechteck, das einen Schirm darstellt.
+Unterhalb des gesamten Diagramms, von der Mitte der Spalte bis zum Schirm, erstreckt sich ein horizontaler schwarzer Doppelpfeil, beschriftet mit "L: Schirmabstand".
 
-Oberhalb der horizontalen Linie und rechts vom Spalt befinden sich zwei beige, rechteckige Textfelder mit dicken schwarzen Umrissen.
-Das linke Textfeld enthält folgende schwarze Schrift:
-Einzelsplt-Minima:
-b sin(θ) = mλ
-m = ±1, ±2, ... (m ≠ 0)
+Auf der rechten Seite des Schirms ist ein Graustufenmuster von vertikalen Interferenzstreifen dargestellt. Der zentrale Streifen, der mit der "Bezugslinie" auf Höhe von "O" ausgerichtet ist, ist hell (weiß) und mit "m = 0" beschriftet. Darüber befindet sich ein dunkler Streifen, gefolgt von einem hellen Streifen, der mit "m = +1" beschriftet ist. Unterhalb des zentralen Streifens befindet sich ein dunkler Streifen, gefolgt von einem hellen Streifen, der mit "m = -1" beschriftet ist.
+Ein schwarzer Punkt mit der Beschriftung "P" befindet sich auf dem Schirm, innerhalb des hellen Streifens "m = +1". Ein vertikaler schwarzer Pfeil zeigt von der "Bezugslinie" zu Punkt "P". Ein gekrümmter schwarzer Pfeil zeigt vom dunklen Streifen direkt unter "m = +1" nach links und ist mit "Minimum" beschriftet.
+Eine gestrichelte schwarze Linie, beschriftet mit "Bezugsschenkel", erstreckt sich vom oberen Spalt zu Punkt "P". Eine weitere gestrichelte schwarze Linie erstreckt sich vom unteren Spalt zu Punkt "P". Eine dritte gestrichelte schwarze Linie erstreckt sich von Punkt "O" zu Punkt "P". Zwischen der horizontalen "Bezugslinie" und der gestrichelten Linie von "O" zu "P" ist ein Winkel "θ" markiert. Rechts vom Schirm, von der "Bezugslinie" bis zu Punkt "P", ist ein vertikaler schwarzer Doppelpfeil, beschriftet mit "y: Abstand von O".
 
-Das rechte Textfeld, rechts neben dem ersten, enthält folgende schwarze Schrift:
-d sin(θ) = mλ
-y_m ≈ L tan(θ)
+Links unten im Diagrammbereich, unter dem "L: Schirmabstand"-Pfeil, steht in schwarzem Text: "Skizze, nicht maßstäblich".
 
-Die Schriftart für alle Texte und mathematischen Symbole ist klar, serifenlos und wirkt leicht handgeschrieben oder cartoonhaft. Das gesamte Diagramm ist sauber und übersichtlich gestaltet, um physikalische Konzepte zu veranschaulichen.
+Rechts im Bild sind drei weiße, rechteckige Textfelder mit schwarzen, leicht unregelmäßigen Umrissen, vertikal übereinander angeordnet. Alle Texte in den Feldern sind schwarz und in einer klaren, lesbaren serifenlosen Schriftart.
+
+Das oberste Textfeld enthält:
+"Gangunterschied: Δs ≈ d sin θ"
+"Hell: d sin θ = m λ"
+"Dunkel: d sin θ = (m + ½) λ"
+"m = 0, ±1, ±2, ..."
+"Hell: gleichphasig · dunkel: gegenphasig"
+
+Das mittlere Textfeld enthält:
+"Schirmgeometrie: y = L tan θ"
+"Nur bei kleinen Winkeln: y ≈ L sin θ"
+
+Das unterste Textfeld enthält:
+"Beispiel: λ = 500 nm, d = 0,20 mm, L = 2,0 m"
+"Erste helle Streifen: y ≈ ±5,0 mm"
+"Nächste dunkle Stellen: y ≈ ±2,5 mm"
 ```

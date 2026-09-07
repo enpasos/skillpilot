@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-07T06:00:14.975Z
+Generated: 2026-09-07T14:06:36.700Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,7 +16,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 711 |
+| Alle Ziele in der Landschaft | 715 |
 | Atomare Ziele im Visualisierungs-Scope | 465 |
 | Ziele mit primaerem Visualisierungslink | 415 |
 | Coverage | 89.2% |
@@ -24,7 +24,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 90 |
+| Review-Ledger-Dateien | 92 |
 | Offene Provider-Deferred-Ziele | 50 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
@@ -62,7 +62,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_pilot_after_regeneration_and_owner_review` | 3 |
 | `accepted_pilot_after_second_regeneration` | 24 |
 | `accepted_pilot_after_third_regeneration` | 3 |
-| `accepted_pilot_after_user_review_correction` | 10 |
+| `accepted_pilot_after_user_review_correction` | 15 |
 | `accepted_retroactive_nano_banana` | 22 |
 | `accepted_reuse_after_current_visual_review` | 3 |
 | `blocked_provider_quota` | 1 |
@@ -138,6 +138,11 @@ Keine Eintraege.
 | 054 | `7fe6f8a1-5580-4e37-bf8e-9772964a6b0a` | Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben | `accepted_pilot_after_user_review_correction` |
 | 062 | `45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83` | Kraft und Verformung experimentell untersuchen | `accepted_pilot_after_user_review_correction` |
 | 077 | `f0046ae8-cbfc-526b-8414-04e3595b6075` | Sonnen- und Mondfinsternisse mit Schattenräumen erklären | `accepted_pilot_after_user_review_correction` |
+| 090 | `cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f` | Fotoeffekt und Einstein-Deutung | `accepted_pilot_after_user_review_correction` |
+| 091 | `6270e558-d657-5363-a6b2-e49a032a453b` | Interferenz am Doppelspalt | `accepted_pilot_after_user_review_correction` |
+| 091 | `c64820e1-c0ee-4342-9225-f981650f0c52` | Interferenzminima am Doppelspalt begründen und lokalisieren | `accepted_pilot_after_user_review_correction` |
+| 091 | `91683676-01cf-5003-80fa-a04d043b4e61` | Spektren mit Beugungsgitter deuten | `accepted_pilot_after_user_review_correction` |
+| 091 | `f6a3a602-1e45-5018-b0ff-3d49933cf634` | Beugung am Einzelspalt berechnen | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 

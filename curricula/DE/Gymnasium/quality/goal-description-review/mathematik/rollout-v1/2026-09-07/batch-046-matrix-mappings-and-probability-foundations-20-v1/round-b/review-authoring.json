@@ -1,0 +1,266 @@
+[
+  {
+    "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+    "decision": "block",
+    "rationale": "Die zweisprachige Beschreibung trennt endliche Potenzen sinnvoll von der nachfolgenden Grenzmatrix-Deutung; kein Bild vorhanden. Aber die aktuelle Seite weist HE-GK aus, obwohl das tatsächlich gelesene HE-KC S.43 langfristige Matrixpotenzen ausdrücklich unter erhöhtem Niveau führt. Diese konkrete Scope-Abweichung ist vor Freigabe zu klären; keine Behauptung einer geprüften bundesweiten Normabdeckung.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Potenz M^n beschreibt n aufeinanderfolgende gleichartige Übergänge; Anfangsverteilung und Schrittzahl bestimmen den Zustand.",
+      "essentialUnderstandingEn": "A power M^n represents n consecutive transitions under the same rule; the initial distribution and step count determine the state.",
+      "observablePerformanceDe": "Berechnet Zustände für mehrere Zeithorizonte, erklärt den Bezug der Einträge zu Zuständen und prüft die Erhaltung der Gesamtheit.",
+      "observablePerformanceEn": "Calculates states over several time horizons, explains how entries relate to states, and checks conservation of the total.",
+      "transferExpectationDe": "Vergleicht einen stabilisierenden Übergang mit einem periodischen Wechsel und begründet, weshalb große Schrittzahlen nicht stets denselben Zustand erzeugen.",
+      "transferExpectationEn": "Compares a stabilising transition with a periodic switch and explains why large step counts need not produce the same state."
+    }
+  },
+  {
+    "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+    "decision": "block",
+    "rationale": "Die Beschreibung der Grenzmatrix ist klar und von Fixvektoren abgegrenzt. Bildwerte M=(.8,.3;.2,.7), G=(.6,.6;.4,.4) sind richtig; jedoch steht am bereits vertikalen stationären Vektor zusätzlich T, wodurch M·g dimensionswidrig wird. Zudem HE-GK in der aktuellen Seite entgegen tatsächlich gelesenem KC S.43 LK. Keine Textkosmetik löst diese Befunde.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Grenzmatrix ist ein Grenzwert der Matrixpotenzen; stationäre Vektoren allein garantieren weder Konvergenz noch Unabhängigkeit vom Anfangszustand.",
+      "essentialUnderstandingEn": "A limiting matrix is a limit of matrix powers; stationary vectors alone guarantee neither convergence nor independence from the initial state.",
+      "observablePerformanceDe": "Deutet die Spalten einer gegebenen Grenzmatrix über Anfangszustände und unterscheidet einen Fixvektor vom Grenzwert einer ganzen Matrixfolge.",
+      "observablePerformanceEn": "Interprets the columns of a given limiting matrix through initial states and distinguishes a fixed vector from a limit of the matrix sequence.",
+      "transferExpectationDe": "Erkennt beim Wechsel zu periodischen Übergängen oder mehreren abgeschlossenen Klassen Grenzen einer startunabhängigen Langzeitaussage.",
+      "transferExpectationEn": "Recognises limits of an initial-state-independent conclusion when transitions become periodic or have several closed classes."
+    }
+  },
+  {
+    "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+    "decision": "block",
+    "rationale": "Der DE/EN-Text und das tatsächlich betrachtete Additivitäts-/Homogenitätsbild sind fachlich passend; die Allquantifizierung verhindert Beispiel-als-Beweis. Die direkten Voraussetzungen erzwingen aber Ableitungen und Hauptsatz der Differential-/Integralrechnung für eine elementare lineare Vektorabbildung. Diese belegte fachfremde Eingangssperre bleibt offen; gute Text- und Bildbytes erhalten.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Linearität bedeutet Verträglichkeit mit Addition und skalarer Multiplikation für alle Vektoren und Skalare, nicht nur Erhaltung des Ursprungs.",
+      "essentialUnderstandingEn": "Linearity means preserving addition and scalar multiplication for all vectors and scalars, not merely preserving the origin.",
+      "observablePerformanceDe": "Prüft eine einfache Abbildung mit beiden Gesetzen, liefert bei Nichtlinearität ein Gegenbeispiel und unterscheidet dieses von einem allgemeinen Beweis.",
+      "observablePerformanceEn": "Checks a simple mapping against both laws, gives a counterexample for nonlinearity, and distinguishes it from a general proof.",
+      "transferExpectationDe": "Unterscheidet bei einem Wechsel von einer Matrixabbildung zu einer Verschiebung oder quadratischen Abbildung trotz anschaulicher Regel die fehlende Linearität.",
+      "transferExpectationEn": "On changing from a matrix mapping to a translation or quadratic mapping, identifies the failure of linearity despite an intuitive geometric rule."
+    }
+  },
+  {
+    "goalId": "4c494716-567b-59c2-855c-6ea45635c666",
+    "decision": "block",
+    "rationale": "Der integrierte Beschreiben-und-Deuten-Auftrag und Matrix-Vektor-Voraussetzungen passen zum gelesenen HE-KC S.44. Das aktuelle Raster widerspricht aber der eigenen Projektion: Q=(-1,2) liegt auf der y-Achse, und P'=(5,0) wird zusätzlich oberhalb der x-Achse bezeichnet. S(x,y)=(x+y,0) und Zahlenrechnung stimmen; die Bildlagen müssen korrigiert werden.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Spalten einer linearen Abbildungsmatrix beschreiben Basisbilder; eine Projektion ordnet jedem Ortsvektor seinen Schattenpunkt zu.",
+      "essentialUnderstandingEn": "The columns of a linear mapping matrix describe basis images; a projection assigns each position vector its shadow point.",
+      "observablePerformanceDe": "Formuliert aus einer gegebenen linearen Schattenregel eine Matrix, berechnet Kontrollbilder und deutet die Veränderung der Koordinaten.",
+      "observablePerformanceEn": "Builds a matrix from a given linear shadow rule, calculates check images, and interprets the coordinate changes.",
+      "transferExpectationDe": "Passt bei veränderter Projektionsrichtung die Matrix an und erklärt, welche Koordinate verschwindet und welche sich abhängig von der Höhe ändert.",
+      "transferExpectationEn": "Adapts the matrix to a changed projection direction and explains which coordinate vanishes and which changes with height."
+    }
+  },
+  {
+    "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+    "decision": "block",
+    "rationale": "Text, Voraussetzungen und drei Matrixrechnungen sind korrekt; der Auftrag bleibt eine atomare Anwendung auf Punkte. Im tatsächlich betrachteten Raster startet der orange Pfeil jedoch bei P=(2,1) und endet bei R'=(0,1), obwohl A·P=(3,1) gilt. Der vorhandene Approved-Status heilt diese falsche Zuordnung nicht. Text erhalten, Pfeilverbindung korrigieren.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Bildpunkt entsteht aus dem Matrixprodukt mit dem Ortsvektor; jede Zeile bestimmt eine Bildkoordinate und die Reihenfolge ist fest.",
+      "essentialUnderstandingEn": "An image point is obtained by multiplying the mapping matrix by its position vector; each row determines an image coordinate and order matters.",
+      "observablePerformanceDe": "Berechnet Bildkoordinaten samt Zeilen-Skalarprodukten, ordnet jedem Ausgangspunkt sein Bild zu und kontrolliert die geometrische Wirkung.",
+      "observablePerformanceEn": "Calculates image coordinates with row dot products, matches each original point to its image, and checks the geometric effect.",
+      "transferExpectationDe": "Bearbeitet eine singuläre Projektion statt einer Scherung und erklärt, warum verschiedene Ausgangspunkte dasselbe Bild haben können.",
+      "transferExpectationEn": "Handles a singular projection instead of a shear and explains why different original points can have the same image."
+    }
+  },
+  {
+    "goalId": "b72d87d4-763e-54aa-940d-31f195b51700",
+    "decision": "block",
+    "rationale": "Spiegelungsmatrizen, Bildpunktrechnung und DE/EN-Beschreibung stimmen. Das Diagramm verortet aber den Mittelpunkt von P=(2,1,3) und P'=(2,1,-3) direkt auf der gezeichneten y-Achse; damit suggeriert es x=0 statt x=2. Für die ausdrücklich koordinatenbezogene Darstellung ist die Fußpunktlage zu korrigieren. Keine neue Textkompetenz erforderlich.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Spiegelung an einer Koordinatenebene erhält die beiden Ebenenkoordinaten und kehrt allein die senkrechte Koordinate um.",
+      "essentialUnderstandingEn": "A reflection in a coordinate plane preserves its two in-plane coordinates and reverses only the perpendicular coordinate.",
+      "observablePerformanceDe": "Leitet die diagonale Spiegelungsmatrix aus den Basisbildern ab, berechnet Bildpunkte und begründet Ebene als Fixpunktmenge sowie gleiche Abstände.",
+      "observablePerformanceEn": "Derives the diagonal reflection matrix from basis images, calculates image points, and explains the fixed plane and equal distances.",
+      "transferExpectationDe": "Wechselt von der xy- zur yz-Ebene und prüft auch einen Punkt auf der Ebene und die Rückkehr nach zweimaligem Spiegeln.",
+      "transferExpectationEn": "Changes from the xy-plane to the yz-plane and checks a point in the plane as well as return after two reflections."
+    }
+  },
+  {
+    "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+    "decision": "block",
+    "rationale": "Das Ziel verlangt Parallelprojektionen und ist mit Matrizenbildung und Anwendung kohärent; die gezeigten drei Diagonalmatrizen sind zulässige orthogonale Spezialfälle. Das Raster behauptet parallel zur ausgeblendeten Achse gerichtete Pfeile, zeichnet beim yz-Fall aber einen waagerechten Pfeil parallel zur y-Achse statt zur schrägen x-Achse. Zudem ist die skizzierte positive y-Lage nicht P=(2,-1,3). Bildkorrektur nötig, keine pauschale Einschränkung aller Parallelprojektionen auf orthogonale Fälle.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Parallelprojektion bildet entlang einer festgelegten Richtung auf eine Ebene ab; die Richtung muss die Ebene treffen und bestimmt die Matrix.",
+      "essentialUnderstandingEn": "A parallel projection maps along a fixed direction onto a plane; the direction must meet the plane and determines the matrix.",
+      "observablePerformanceDe": "Bestimmt Basisbilder für eine gegebene Projektionsrichtung, baut die Matrix auf und prüft Bildlage sowie Parallelität von Punkt-Bildpunkt-Verbindungen.",
+      "observablePerformanceEn": "Determines basis images for a given projection direction, constructs the matrix, and checks the image plane and parallel point-to-image connections.",
+      "transferExpectationDe": "Vergleicht orthogonale mit schiefer Projektion auf dieselbe Koordinatenebene und erklärt die zusätzliche Änderung der verbleibenden Koordinaten.",
+      "transferExpectationEn": "Compares orthogonal and oblique projection onto the same coordinate plane and explains the additional change in retained coordinates."
+    }
+  },
+  {
+    "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
+    "decision": "block",
+    "rationale": "Beschreibungen, Ursprung als Zentrum, k=2 und die vier eingezeichneten Koordinaten sind passend. Rechts steht jedoch mehrfach Z mal einem bereits vertikalen Vektor mit zusätzlichem Transpositionszeichen; das ist als Matrixprodukt nicht definiert. Die schmale Korrektur betrifft diese Notation, nicht das gute Koordinatenbild oder die Kompetenz.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei einer zentrischen Streckung um den Ursprung werden alle Koordinaten mit demselben Faktor multipliziert; Richtung und Abstand folgen dessen Vorzeichen und Betrag.",
+      "essentialUnderstandingEn": "A central dilation about the origin multiplies all coordinates by the same factor; direction and distance follow its sign and magnitude.",
+      "observablePerformanceDe": "Bestimmt kI aus Basisbildern, berechnet Bildpunkte und begründet gemeinsame Ursprungsgeraden und die Abstandsänderung.",
+      "observablePerformanceEn": "Derives kI from basis images, calculates image points, and explains common lines through the origin and the distance change.",
+      "transferExpectationDe": "Deutet einen negativen oder zwischen null und eins liegenden Faktor statt bloßer Vergrößerung und unterscheidet Richtungsumkehr von Verkürzung.",
+      "transferExpectationEn": "Interprets a negative factor or one between zero and one instead of mere enlargement and distinguishes reversal from shortening."
+    }
+  },
+  {
+    "goalId": "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c",
+    "decision": "keep",
+    "rationale": "Das Ziel ist knapp, zweisprachig gleichwertig und benennt mit der Reihenfolge genau die zentrale Unterscheidung der Komposition. Die tatsächlich gelesenen Rechenblasen liefern A(1,2)=(3,2), B(3,2)=(6,2), BA=(2,2;0,1), also korrektes gleiches Direktbild. Die kleinen Gitter sind qualitative Illustration, keine zusätzliche Zahlbehauptung. Kein belegter Anlass für neue Text- oder Bildbytes.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei Spaltenvektoren steht die später ausgeführte lineare Abbildung links; Assoziativität erlaubt Zusammenfassen, nicht Vertauschen.",
+      "essentialUnderstandingEn": "For column vectors the later linear mapping stands on the left; associativity permits grouping, not interchanging the mappings.",
+      "observablePerformanceDe": "Übersetzt eine Reihenfolge geometrischer Schritte in das Matrixprodukt und kontrolliert es durch sukzessive und direkte Punktabbildung.",
+      "observablePerformanceEn": "Translates an ordered sequence of geometric steps into a matrix product and checks it by successive and direct point mapping.",
+      "transferExpectationDe": "Vertauscht in einer neuen Aufgabe Scherung und richtungsabhängige Streckung und begründet anhand eines Bildpunkts unterschiedliche Gesamtwirkungen.",
+      "transferExpectationEn": "Reverses shear and directional stretching in a fresh task and uses an image point to explain their different composite effects."
+    }
+  },
+  {
+    "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+    "decision": "revise",
+    "rationale": "Die Modellierung ist ein zusammenhängender AB3-Auftrag; das aktuelle Bild zur Spiegelung an y=x mit korrekten Punkten ist gut. Die Formulierung 'schräge Gerade' begrenzt das Beispiel aber nicht auf Ursprungsgeraden, obwohl hier gewöhnliche lineare Abbildungsmatrizen und keine homogenen Koordinaten vorausgesetzt sind. Der kleine Zusatz linear/Ursprungsgerade macht die vorhandene Kapitelgrenze ausdrücklich, ohne neue Verfahren einzuführen.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Geometrische Anforderungen bestimmen eine lineare Abbildung nur dann als gewöhnliche Matrix, wenn sie mit dem Ursprung und den Linearitätsgesetzen vereinbar sind.",
+      "essentialUnderstandingEn": "Geometric requirements define an ordinary linear mapping matrix only when compatible with the origin and linearity laws.",
+      "observablePerformanceDe": "Konstruiert eine Matrix aus passenden Basisbildern, prüft die geforderten Bildlagen und begründet, warum sie die geometrische Anforderung erfüllt.",
+      "observablePerformanceEn": "Constructs a matrix from suitable basis images, checks required image positions, and explains why it meets the geometric requirement.",
+      "transferExpectationDe": "Modelliert statt Koordinatenspiegelung eine Spiegelung an einer schrägen Ursprungsgeraden und erkennt, warum eine verschobene Spiegelachse nicht dieselbe lineare Form erlaubt.",
+      "transferExpectationEn": "Models reflection in an oblique line through the origin instead of a coordinate reflection and recognises why a translated axis does not admit the same linear form."
+    },
+    "proposedDescriptionDe": "Die lernende Person kann zu gegebenen Anforderungen an lineare geometrische Abbildungen, etwa Spiegelungen an schrägen Ursprungsgeraden oder Streckungen in einer vorgegebenen Richtung, passende Abbildungsmatrizen konstruieren, testen und im Kontext begründen.",
+    "proposedDescriptionEn": "The learner can construct, test, and justify suitable mapping matrices for given requirements on linear geometric mappings, such as reflections in oblique lines through the origin or stretching in a specified direction."
+  },
+  {
+    "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+    "decision": "block",
+    "rationale": "Die Matrix Rz(90°) und Rechnung (-1,2,3) sind richtig. Das Raster zeigt jedoch doppelte y-Achsen, bezeichnet zwei verschiedene rote Richtungen als -e_x=(-1,0,0) und einen nach unten gerichteten Pfeil als e_z, obwohl e_z oben liegt. Außerdem HE-GK-Seitengeltung entgegen dem tatsächlich gelesenen LK-Abschnitt auf KC S.44. Die vorhandene Freigabemarkierung ersetzt keine Korrektur dieser Widersprüche.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Drehung um eine Koordinatenachse lässt deren Komponente fest und dreht die senkrechte Ebene unter Erhaltung von Längen und Winkeln.",
+      "essentialUnderstandingEn": "Rotation about a coordinate axis fixes its component and rotates the perpendicular plane while preserving lengths and angles.",
+      "observablePerformanceDe": "Bestimmt die Matrix aus den gedrehten Basisvektoren bei benannter Drehrichtung und berechnet sowie kontrolliert einen Bildpunkt.",
+      "observablePerformanceEn": "Determines the matrix from rotated basis vectors with a stated rotation direction and calculates and checks an image point.",
+      "transferExpectationDe": "Wechselt von der z- zur x-Achse und zu negativem Winkel, wobei feste Komponente und Vorzeichen der Sinusterme begründet werden.",
+      "transferExpectationEn": "Changes from the z-axis to the x-axis and to a negative angle, explaining the fixed component and signs of sine terms."
+    }
+  },
+  {
+    "goalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
+    "decision": "keep",
+    "rationale": "Häufigkeiten ermitteln und daraus schätzen ist ein einziges empirisches Inferenzziel, nicht künstlich zu zerlegen. Der Text sagt ausdrücklich schätzen und verwechselt endliche Daten nicht mit exakter theoretischer Wahrscheinlichkeit; DE/EN und Häufigkeitsvoraussetzung passen. Kein Bild vorhanden, daher keine erfundene Bildfreigabe; Profildetails können die Stichprobenbedingungen tragen.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Absolute Häufigkeit zählt ein Ereignis, relative Häufigkeit bezieht es auf alle Versuche und liefert unter vergleichbaren Bedingungen eine empirische Schätzung.",
+      "essentialUnderstandingEn": "Absolute frequency counts an event, relative frequency relates it to all trials, and under comparable conditions provides an empirical estimate.",
+      "observablePerformanceDe": "Extrahiert Ereigniszahlen aus Daten, bestimmt den passenden Nenner und erläutert die Aussage und Unsicherheit der Wahrscheinlichkeitsschätzung.",
+      "observablePerformanceEn": "Extracts event counts from data, determines the correct denominator, and explains the meaning and uncertainty of the probability estimate.",
+      "transferExpectationDe": "Führt zwei unterschiedlich große Versuchsserien zusammen und begründet, warum ihre relativen Häufigkeiten nicht ungewichtet gemittelt werden dürfen.",
+      "transferExpectationEn": "Combines two trial series of unequal sizes and explains why their relative frequencies cannot be averaged without weighting."
+    }
+  },
+  {
+    "goalId": "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+    "decision": "keep",
+    "rationale": "Der aktuelle Text enthält gerade die wichtige Einschränkung: typische Stabilisierung ist keine Garantie für eine einzelne Reihe. Darstellung aus Daten oder Simulation bleibt methodenneutral, die empirisch/theoretische Unterscheidung ist passende Voraussetzung. Keine Pflicht zu formalen Grenzwertbeweisen oder Hypothesentests hineinlesen. Kein Bild im Kontext.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei vergleichbaren Wiederholungen werden große Abweichungen relativer Häufigkeiten typischerweise seltener; einzelne Verläufe müssen sich nicht monoton annähern.",
+      "essentialUnderstandingEn": "Under comparable repetitions, large deviations of relative frequency typically become less common; individual paths need not approach monotonically.",
+      "observablePerformanceDe": "Deutet mehrere Häufigkeitsverläufe bei wachsender Versuchszahl und widerlegt aus ihnen eine angebliche sichere oder monotone Stabilisierung.",
+      "observablePerformanceEn": "Interprets several frequency paths as trial counts grow and refutes a claimed certain or monotonic stabilisation.",
+      "transferExpectationDe": "Unterscheidet bei einer neuen Simulation kleinere relative Schwankungen von wachsender absoluter Differenz zur erwarteten Trefferzahl.",
+      "transferExpectationEn": "In a fresh simulation distinguishes smaller relative fluctuations from a growing absolute difference from the expected count."
+    }
+  },
+  {
+    "goalId": "3019e775-1420-510f-850b-5a29acc47a64",
+    "decision": "keep",
+    "rationale": "Ergebnis, Ergebnismenge und Ereignis sind die drei zusammengehörenden Ebenen einer klaren Experimentbeschreibung. Die Formulierung ist in beiden Sprachen gleich und auch für die ausgewiesene HE-SekI verständlich. Sie verlangt weder Durchführung noch Gleichwahrscheinlichkeit; nachfolgende Ereignisverknüpfungen werden nicht vorweggenommen. Kein Bild vorhanden.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Ergebnis ist ein möglicher einzelner Ausgang; ein Ereignis ist eine Teilmenge der zum beschriebenen Experiment passenden Ergebnismenge.",
+      "essentialUnderstandingEn": "An outcome is one possible result; an event is a subset of the sample space appropriate to the specified experiment.",
+      "observablePerformanceDe": "Legt Ergebnisse und eine vollständige Ergebnismenge fest und übersetzt eine Ereignisaussage in deren zugehörige Ergebnisse.",
+      "observablePerformanceEn": "Defines outcomes and a complete sample space and translates an event statement into its associated outcomes.",
+      "transferExpectationDe": "Ändert bei zwei Ziehungen die Beobachtung von geordneter Folge auf ungeordnetes Paar und erklärt die daraus veränderte Ergebnisbeschreibung.",
+      "transferExpectationEn": "For two draws changes the observation from an ordered sequence to an unordered pair and explains the resulting outcome description."
+    }
+  },
+  {
+    "goalId": "5a2371fd-74ce-5013-932e-35d3713aeaf7",
+    "decision": "keep",
+    "rationale": "Das Vergleichen ist klar von bloßer Laplace-Berechnung sowie empirischem Schätzen abgegrenzt, beide passende Voraussetzungen sind vorhanden. 'Einordnen' der Abweichung bei unterschiedlicher Versuchszahl fordert keine ungedeckte monotone Annäherung. Bilingual gleich und auf das konkrete Experiment begrenzt; kein Bild. Keine neue Statistikmethode hinzufügen.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Laplace-Wahrscheinlichkeit beruht auf gleichwahrscheinlichen Ergebnissen, relative Häufigkeit auf endlich vielen Versuchen; Abweichungen sind zufallsbedingt möglich.",
+      "essentialUnderstandingEn": "A Laplace probability rests on equally likely outcomes, whereas relative frequency comes from finitely many trials; random deviations can occur.",
+      "observablePerformanceDe": "Begründet das Laplace-Modell, berechnet den theoretischen Anteil und vergleicht ihn mit Versuchsdaten ohne Abweichung als unmittelbaren Gegenbeweis zu behandeln.",
+      "observablePerformanceEn": "Justifies the Laplace model, calculates the theoretical proportion, and compares it with trial data without treating every deviation as an immediate refutation.",
+      "transferExpectationDe": "Vergleicht dieselbe relative Abweichung in kleinen und großen Serien und trennt Zufallsschwankung von einem begründeten Zweifel an Gleichwahrscheinlichkeit.",
+      "transferExpectationEn": "Compares the same relative deviation in small and large series and distinguishes random variation from a justified doubt about equal likelihood."
+    }
+  },
+  {
+    "goalId": "71d1fd4d-8471-5f25-94a0-4c531a74783c",
+    "decision": "keep",
+    "rationale": "Die verschiedenen Mengenoperationen sind Varianten desselben Übersetzungs- und Auswertungsziels, nicht eigenständige Themenpakete. Beide Formeln sind richtig; das tatsächliche Viererbild schattiert Schnitt, Vereinigung, Differenz und Komplement korrekt relativ zu Omega. Es erhebt keinen Vollständigkeitsanspruch für XOR oder De Morgan. DE/EN und Ereignis-Voraussetzung stimmen.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Logische Verknüpfungen von Ereignissen entsprechen Mengenoperationen innerhalb derselben Ergebnismenge; inklusives und exklusives Oder unterscheiden sich im Schnitt.",
+      "essentialUnderstandingEn": "Logical combinations of events correspond to set operations within one sample space; inclusive and exclusive or differ on the intersection.",
+      "observablePerformanceDe": "Übersetzt Aussagen in Mengenzeichen, bestimmt die zugehörigen Ergebnisse und prüft einfache Umformungen an einem konkreten Mengensystem.",
+      "observablePerformanceEn": "Translates statements into set notation, determines their outcomes, and checks simple identities in a concrete system of sets.",
+      "transferExpectationDe": "Prüft einen neuen Fall mit überlappenden statt disjunkten Ereignissen und erklärt, weshalb inklusives Oder, exklusives Oder und Summe nicht gleichgesetzt werden dürfen.",
+      "transferExpectationEn": "Checks a fresh case with overlapping instead of disjoint events and explains why inclusive or, exclusive or, and addition cannot be equated."
+    }
+  },
+  {
+    "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+    "decision": "revise",
+    "rationale": "Der Baum und seine vier Münzpfade sind arithmetisch konsistent; die Multiplikations- und Additionsregel sind passend. Die EN-Fassung 'using concrete worked examples' legt jedoch Arbeit anhand vorgerechneter Lösungen nahe, während die Kompetenz eigenständiges Darstellen und Berechnen verlangt. Beide knappen Ersatzfassungen nennen Ereigniswahrscheinlichkeiten und Pfadregeln ohne diese Hilfestellung, ohne zusätzliche Formel oder demand-level-Erhöhung.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Pfad beschreibt eine Ergebnisfolge mit gegebenenfalls bedingten Astwahrscheinlichkeiten; disjunkte passende Pfade bilden gemeinsam ein Ereignis.",
+      "essentialUnderstandingEn": "A path describes an outcome sequence with possibly conditional branch probabilities; appropriate disjoint paths together form an event.",
+      "observablePerformanceDe": "Zeichnet einen vollständigen Baum, multipliziert entlang der passenden Pfade und addiert nur disjunkte Ereignisanteile.",
+      "observablePerformanceEn": "Draws a complete tree, multiplies along the relevant paths, and adds only disjoint event contributions.",
+      "transferExpectationDe": "Überträgt einen Ziehungsbaum von mit Zurücklegen auf ohne Zurücklegen und erklärt die veränderten Astwahrscheinlichkeiten bei gleichem Ereignis.",
+      "transferExpectationEn": "Transfers a drawing tree from replacement to no replacement and explains changed branch probabilities for the same event."
+    },
+    "proposedDescriptionDe": "Die lernende Person kann mehrstufige Zufallsexperimente in Baumdiagrammen darstellen und Ereigniswahrscheinlichkeiten mithilfe der Pfadregeln berechnen.",
+    "proposedDescriptionEn": "The learner can represent multi-stage random experiments with tree diagrams and calculate event probabilities using the path rules."
+  },
+  {
+    "goalId": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+    "decision": "block",
+    "rationale": "Aufbau und Deutung einer Kontingenztafel bilden ein schlüssiges Ziel; DE/EN und Zahlen der beiden Tafeln sind korrekt. Die aktuelle Bildbeschriftung führt aber einen Pfeil 'Bedingte Wahrscheinlichkeit P(A|B)' zur gemeinsamen Zelle .30 und P(B|A) zur Randhäufigkeit .40 statt zu den Quotienten. Trotz richtiger Rechnungen unten erzeugt das eine falsche Ableseregel. Zieltext behalten, visuelle Zuordnung klarstellen.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Innenzellen einer Kontingenztafel sind gemeinsame Häufigkeiten; Randwerte definieren Gesamt- oder bedingte Bezugsgruppen für unterschiedliche Quotienten.",
+      "essentialUnderstandingEn": "Interior contingency-table cells are joint frequencies; margins define total or conditional reference groups for different ratios.",
+      "observablePerformanceDe": "Erstellt aus Sachangaben eine konsistente Tafel, ergänzt Randwerte und benennt beim Ablesen gemeinsamer oder bedingter Anteile stets die Bezugsgruppe.",
+      "observablePerformanceEn": "Constructs a consistent table from contextual data, completes margins, and always names the reference group when reading joint or conditional proportions.",
+      "transferExpectationDe": "Wechselt von absoluten Zahlen zu einer normierten Mehrfeldertafel und erklärt, welche Randgruppe für eine neu formulierte Bedingung relevant ist.",
+      "transferExpectationEn": "Changes from counts to a normalised multi-category table and explains which marginal group is relevant to a newly stated condition."
+    }
+  },
+  {
+    "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+    "decision": "keep",
+    "rationale": "Die Beschreibung hält Identifizieren und Berechnen über äquivalente Tabellen/Bäume zusammen, ohne Bayes-Verfahren als Zusatz zu verlangen. Die aktuelle Abbildung liefert .30/.40=.75 und .10/.40=.25; die übrigen Äste .33/.67 sind erkennbar zweistellig gerundete Drittel und passen zu .20/.40. Keine relevante Widersprüchlichkeit durch übliche Rundung. Text, Voraussetzungen und bilinguale Parität erhalten.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine bedingte Wahrscheinlichkeit beschränkt die Bezugsmenge auf das gegebene Ereignis; der gemeinsame Anteil wird durch dessen positive Wahrscheinlichkeit geteilt.",
+      "essentialUnderstandingEn": "A conditional probability restricts the reference population to the given event; the joint proportion is divided by its positive probability.",
+      "observablePerformanceDe": "Identifiziert Bedingung und gesuchtes Ereignis, wählt aus Tafel oder Baum den richtigen Zähler und Nenner und erläutert den resultierenden Anteil.",
+      "observablePerformanceEn": "Identifies the condition and target event, selects the correct numerator and denominator from a table or tree, and explains the resulting proportion.",
+      "transferExpectationDe": "Kehrt in einem neuen Kontext die Bedingung um oder erhält absolute statt relative Daten und begründet den jeweils geänderten Nenner.",
+      "transferExpectationEn": "Reverses the condition in a fresh context or receives counts instead of proportions and explains the changed denominator."
+    }
+  },
+  {
+    "goalId": "c2831918-26f1-421e-90fb-ce707689594e",
+    "decision": "keep",
+    "rationale": "Der Auftrag benennt die drei häufig verwechselten Größen ausdrücklich und verknüpft sie mit dem Darstellungswechsel. Passende bedingte-Wahrscheinlichkeitsvoraussetzung vorhanden; das aktuelle Drei-Panel-Bild zeigt Schnitt und beide Quotienten korrekt. Es behauptet keine gleichen Werte oder Kausalität, die schematischen Kreise liefern keine Zahlen. Keine Änderung nötig.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "P(B|A), P(A|B) und P(A∩B) beschreiben unterschiedliche Bezugsgruppen, obwohl ihnen derselbe gemeinsame Ereignisanteil zugrunde liegt.",
+      "essentialUnderstandingEn": "P(B|A), P(A|B), and P(A∩B) refer to different reference populations although they share the same joint event portion.",
+      "observablePerformanceDe": "Ordnet drei Sachfragen den passenden Größen zu, begründet die Bezugsgruppe und übersetzt dieselben Daten zwischen Baum und Tafel.",
+      "observablePerformanceEn": "Matches three contextual questions to the appropriate quantities, explains their reference populations, and translates the same data between tree and table.",
+      "transferExpectationDe": "Analysiert einen Fall mit stark ungleichen Randhäufigkeiten und erklärt, warum eine große bedingte Wahrscheinlichkeit nicht die umgekehrte oder gemeinsame Größe groß macht.",
+      "transferExpectationEn": "Analyses a case with highly unequal margins and explains why one large conditional probability does not make the reverse conditional or joint quantity large."
+    }
+  }
+]

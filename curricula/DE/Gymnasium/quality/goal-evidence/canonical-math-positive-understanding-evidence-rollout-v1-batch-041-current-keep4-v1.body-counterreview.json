@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "positive-evidence-individual-body-counterreview-v1",
+  "checkedAt": "2026-09-07 13:01:11 UTC",
+  "reviewer": "/root/goal_book_ci_integration",
+  "authority": "ai_candidate",
+  "provenance": "Existing coordinator context; independently re-read selected current candidate bodies, canonical goal/prerequisites and V2 criteria, then read historical counterreview and both D records. Nonblind P counterreview, not a new independent D round, not human approval.",
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.candidates.json",
+      "sha256": "sha256:ea58e2c34813bad4d725c279956b9ff9cc66de834362a75aa6e03b17e8b5e5db"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.config.json",
+      "sha256": "sha256:c0fadc484e51e8810ba476780ea6240b9de3dee515e12dbda9754307552094f8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.body-counterreview-v1.json",
+      "sha256": "sha256:03907201f29b2d54470b8983dde744fc0c32f89ef1edc51432c5507beb5cf95c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-current-keep4-v1.candidates.json",
+      "sha256": "sha256:67c4739e401d9a8d35b9c23fdb11a73125e3a943945cb96956e8565d3061a06c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-current-keep4-v1.config.json",
+      "sha256": "sha256:0c22772b3b9888a815ec954a70f773511c9a9893eb18f9f87dedaba3aa0614d4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-current-keep4-v1.review.jsonl",
+      "sha256": "sha256:9129fb9863dc0e46dffb4cf8f49996ade2387b829a0e47d7ccc486615d5b467d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+      "sha256": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:752d76bf355cc945d5350c9b83a5e8bb8ac24a93c3363d6ab8d8bc87fc65a576"
+    }
+  ],
+  "scope": [
+    "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+    "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+    "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+    "0f180645-37ce-5b6b-8a36-ad7b31168b1a"
+  ],
+  "canonicalChanges": false,
+  "historicalCandidateOrReviewChanges": false,
+  "profileFieldCorrections": [
+    {
+      "path": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6/profile/expectations/0/observablePerformanceDe",
+      "before": "Die Person leitet die Gleichung ab, löst sie nach der verlangten Größe, prüft die Kontextbedingungen und setzt das Ergebnis in die ursprüngliche Integralbedingung ein.",
+      "after": "Die Person wertet die vorgegebene Integralgleichung aus, löst sie nach der verlangten Größe, prüft die Kontextbedingungen und setzt das Ergebnis in die ursprüngliche Integralbedingung ein."
+    },
+    {
+      "path": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6/profile/expectations/0/observablePerformanceEn",
+      "before": "The learner derives the equation, solves for the requested quantity, checks contextual conditions and substitutes into the original integral condition.",
+      "after": "The learner evaluates the supplied integral equation, solves for the requested quantity, checks contextual conditions and substitutes into the original integral condition."
+    },
+    {
+      "path": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6/profile/applicationCaseBriefs/0/taskDemandDe",
+      "before": "Bestimme b≥0 aus ∫₀ᵇ(2x+1)dx=12. Bestimme außerdem k≥0 so, dass die Fläche unter kx+1 auf [0,2] gleich8 ist. Begründe die zulässigen Lösungen.",
+      "after": "Bestimme b≥0 aus ∫₀ᵇ(2x+1)dx=12. Bestimme außerdem k≥0 aus der vorgegebenen Gleichung ∫₀²(kx+1)dx=8 für den Flächeninhalt unter kx+1 auf [0,2]. Begründe die zulässigen Lösungen."
+    },
+    {
+      "path": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6/profile/applicationCaseBriefs/0/taskDemandEn",
+      "before": "Find b≥0 from ∫₀ᵇ(2x+1)dx=12. Also find k≥0 so that the area under kx+1 on [0,2] equals8. Justify admissible solutions.",
+      "after": "Find b≥0 from ∫₀ᵇ(2x+1)dx=12. Also find k≥0 from the supplied equation ∫₀²(kx+1)dx=8 for the area under kx+1 on [0,2]. Justify admissible solutions."
+    },
+    {
+      "path": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6/profile/applicationCaseBriefs/1/taskDemandDe",
+      "before": "Bestimme c∈[0,4] aus ∫c⁴(4−x)dx=2. Ein anderer Tank enthält anfangs10 L und tauscht Wasser ausschließlich durch eine einzige umkehrbare Leitung aus; weitere Zu- oder Abflüsse gibt es nicht. Die vorzeichenbehaftete Durchflussrate ist r(t)=k−t L/min für0≤t≤2 (positiv hinein, negativ hinaus). Bestimme k so, dass er mit10 L endet, und deute das Integral im Unterschied zum gesamten bewegten Volumen.",
+      "after": "Bestimme c∈[0,4] aus ∫c⁴(4−x)dx=2. Ein anderer Tank enthält anfangs10 L und tauscht Wasser ausschließlich durch eine einzige umkehrbare Leitung aus; weitere Zu- oder Abflüsse gibt es nicht. Die vorzeichenbehaftete Durchflussrate ist r(t)=k−t L/min für0≤t≤2 (positiv hinein, negativ hinaus). Die Bedingung für den Endbestand ist als Gleichung 10+∫₀²(k−t)dt=10 vorgegeben. Bestimme daraus k und deute das Integral im Unterschied zum gesamten bewegten Volumen."
+    },
+    {
+      "path": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6/profile/applicationCaseBriefs/1/taskDemandEn",
+      "before": "Find c∈[0,4] from ∫c⁴(4−x)dx=2. A separate tank initially contains10 L and exchanges water only through a single reversible pipe; there are no other inflows or outflows. Its signed flow rate is r(t)=k−t L/min for0≤t≤2 (positive inward, negative outward). Find k so that it ends at10 L and interpret the integral as distinct from total volume moved.",
+      "after": "Find c∈[0,4] from ∫c⁴(4−x)dx=2. A separate tank initially contains10 L and exchanges water only through a single reversible pipe; there are no other inflows or outflows. Its signed flow rate is r(t)=k−t L/min for0≤t≤2 (positive inward, negative outward). The final-stock condition is supplied as the equation 10+∫₀²(k−t)dt=10. Find k from this equation and interpret the integral as distinct from total volume moved."
+    },
+    {
+      "path": "0f180645-37ce-5b6b-8a36-ad7b31168b1a/profile/expectations/0/essentialUnderstandingDe",
+      "before": "Dünne Scheiben approximieren ein Rotationsvolumen durch Σπf(ξᵢ)²Δxᵢ. Bei stetiger Randfunktion und verfeinerten Zerlegungen führt die Flächensumme zum Integral der Querschnittsflächen. Die Quadratur des Radius ist geometrisch begründet und die Formel bleibt an Rotationsachse und Region gebunden.",
+      "after": "Dünne Scheiben approximieren ein Rotationsvolumen durch Σπf(ξᵢ)²Δxᵢ. Bei stetiger Randfunktion und verfeinerten Zerlegungen führt die Summe der Scheibenvolumina zum Integral der Querschnittsflächen. Die Quadratur des Radius ist geometrisch begründet und die Formel bleibt an Rotationsachse und Region gebunden."
+    },
+    {
+      "path": "0f180645-37ce-5b6b-8a36-ad7b31168b1a/profile/expectations/0/essentialUnderstandingEn",
+      "before": "Thin disks approximate a volume of revolution by Σπf(ξᵢ)²Δxᵢ. For a continuous boundary and refining partitions, the area sum leads to the integral of cross-sectional areas. Squaring the radius is geometrically justified and the formula remains tied to the axis and region of rotation.",
+      "after": "Thin disks approximate a volume of revolution by Σπf(ξᵢ)²Δxᵢ. For a continuous boundary and refining partitions, the sum of disk volumes leads to the integral of cross-sectional areas. Squaring the radius is geometrically justified and the formula remains tied to the axis and region of rotation."
+    }
+  ],
+  "reviewFindings": [
+    {
+      "goalId": "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+      "outcome": "retained",
+      "criteria": "One structural expectation with all required coverage, 2 genuinely independent demonstrations, inverse-information transfer and common-bound/sign checks; no answer-imitation or formula invention.",
+      "checks": [
+        "∫0^5 f=5−1=4; 2·4−3·4=−4; reversed integral=4.",
+        "∫−1^3 g=7−2=5; ∫1^3 g=5−4=1; reverse integral of(5−2g)=−(20−10)=−10."
+      ]
+    },
+    {
+      "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+      "outcome": "retained",
+      "criteria": "One geometric-area modeling expectation, intersections/order/domain split explicit, nonnegative geometric area distinguished from oriented integral, independent curve and axis cases.",
+      "checks": [
+        "x²=2x gives x=0,2; ∫0^2(2x−x²)dx=4/3.",
+        "x−1 crosses axis at1; area=1/2+2=5/2, signed integral=−1/2+2=3/2."
+      ]
+    },
+    {
+      "goalId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "outcome": "narrowed_to_supplied_equations",
+      "criteria": "One solving-equations expectation, not an additional construction-of-model competence. Both pairs of integral equations explicitly supplied; substitution and admissibility required. Retained current single reversible pipe/no other flows assumption so gross volume interpretation is legitimate.",
+      "checks": [
+        "b²+b=12 => b=3 or−4; b≥0 selects3. 2k+2=8 => k=3.",
+        "(4−c)²/2=2 => c=2 or6; [0,4] selects2.",
+        "10+2k−2=10 => k=1; signed rate1−t integrates0 over[0,2]; absolute integral=1/2+1/2=1L only under explicitly supplied one-pipe assumption."
+      ]
+    },
+    {
+      "goalId": "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+      "outcome": "dimensional_wording_clarified",
+      "criteria": "One proof/derivation expectation, actual weighted thin-disk sum with area times thickness, not quoting formula. Fresh piecewise-body case independently derives and checks with cylinder plus cone.",
+      "checks": [
+        "Radius=x², area=πx⁴; sum πξ_i⁴Δx_i -> π∫0^1x⁴dx=π/5.",
+        "Piecewise radius1 then2−x gives volumeπ+π/3=4π/3; independent geometric cylinder/cone check agrees."
+      ]
+    }
+  ],
+  "historicalCounterreviewReconciliation": "Current eight-candidate file already includes the single-pipe assumption in647 and two related corrections in excluded346. None is discarded or silently overwritten. Excluded23 still contains an unqualified9L-in/1L-out interpretation and remains outside this finalized four. Old counterreview digest is historical, not proof that current candidate bytes were reviewed then.",
+  "excludedGoals": {
+    "31be24f0-3ab1-54d2-856d-fa9b7f36552f": "SPLIT/SPLIT: constructing polynomial primitives and using supplied primitives require a scoped consolidation decision; no closure by text equality.",
+    "809ef78a-f282-5593-89be-0f2cb95570ac": "SPLIT/SPLIT: reconstructing stocks, mean stocks and mean rates are independently assessable; inspect existing goals before splitting.",
+    "34604a97-0c64-5b06-81e2-6ac818732d60": "KEEP/BLOCK: bound image describes unweighted accumulated height rather than width-weighted contributions. Requires actual image/content correction and current review.",
+    "23c8b5f9-ab35-4071-a3d4-b76a669a0995": "REVISE/REVISE: stock reconstruction omits the required initial value; canonical revision must be coordinated before closure.",
+    "0d21097c-09bf-5375-8c56-34ce8dc5bc35": "KEEP/REVISE: domain restrictions and role of the inner derivative need explicit fachliche adjudication, not a majority vote.",
+    "19481f5d-94de-4a74-b765-cbebd1525994": "KEEP/REVISE: German root functions versus narrower English square-root functions need a scoped bilingual parity decision."
+  },
+  "nativeMaterializationAndReadOnlyValidation": {
+    "exitCode": 0,
+    "currentCandidateCount": 4,
+    "status": "needs_human_review",
+    "authority": "ai_candidate"
+  },
+  "diversityCaveat": "Historical B041 A/B unknown-model prose aliases differ; preserve historical bytes and do not treat native lexical report-only distinctProviderOrModel as evidence of model diversity.",
+  "grantsHumanApproval": false,
+  "grantsLearnerMastery": false,
+  "grantsImageApproval": false,
+  "grantsCentralProgress": false
+}

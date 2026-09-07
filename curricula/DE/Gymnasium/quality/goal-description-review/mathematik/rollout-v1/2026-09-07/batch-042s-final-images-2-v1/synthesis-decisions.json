@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-b042s-final2-synthesis-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-goal-book-ci-integration-current-b042s-nonblind-synthesis",
+  "synthesizedAt": "2026-09-07T14:59:28.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907",
+    "batchManifestDigest": "sha256:7add5087c534b9add4553b6e8c074cdf2d25f8db8e03b21b0b949e14c618c0cb",
+    "configDigest": "sha256:616fd189649d2cc2853906986b34ea5439c85fc0524e4917e30b117f6c5d6499",
+    "bundleFingerprint": "sha256:d4e2ace8afac193872c73ec1cf139f9ff45fdba262c08016870e87398e3d298f",
+    "bookDigest": "sha256:e4c8f7efd74b3be9309ff3968b77c6246ff729ed189fc3e1a57b4c58158ac2af",
+    "reviewInputFingerprint": "sha256:80121dc4fba09dc4b3b7612f676a134f4996848f3011716f6e9913277cd05915",
+    "dualSummaryDigest": "sha256:4067dab81e78a5fb45ce83bda8effa5c507f0ddda99cb94f1dc14438cd3fdd55",
+    "canonicalLandscapeDigest": "sha256:31f389f47b24244140cbf7364de19d06994dd3555b59ff14094ea53b76bc325c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-a",
+      "campaignDigest": "sha256:6224c72228315714e5a65bf68b12c8ddbb3a82fbff2a9537d7b5b5c8da3ebaa0",
+      "roundId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-independent-a",
+      "reviewInputFingerprint": "sha256:80121dc4fba09dc4b3b7612f676a134f4996848f3011716f6e9913277cd05915",
+      "batchId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:2e72571e194d691b53ce288f174ab340dcdb861089f19e0de28d65c26a100c25",
+      "runId": "math-b042s-round-a-20260907T145105Z-ci-integration",
+      "runManifestDigest": "sha256:77391e30e2b7d5d2ccaf81d54f84c3af3f102238a2adffb04125e89aaab17868",
+      "resultsDigest": "sha256:ccd7140f31cfca1cdbc95daa23342c23104dd6e18c35cbeed4a1cc80572f62fb"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-b",
+      "campaignDigest": "sha256:a778f76f8dcf78d946b3afc353a4ce335d4b23efd114d629da67c2853d57db59",
+      "roundId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-independent-b",
+      "reviewInputFingerprint": "sha256:80121dc4fba09dc4b3b7612f676a134f4996848f3011716f6e9913277cd05915",
+      "batchId": "mathematik-rollout-v1-batch-042s-final-images-2-v1-20260907-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:2ac74cd092269e431592cd5816f069bc022d359a891d63ef6e1e73d4e9672da1",
+      "runId": "math-b042s-final-images-b-root-20260907",
+      "runManifestDigest": "sha256:e24bc2eb083e27dd5f0b3348cac23a3c89eeae92e9c007d275e874b97ed2fba4",
+      "resultsDigest": "sha256:df13ff9952f27ed11d3b32407f4bb0055d7de8bc55540b5321d451b92eab38ab"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-b042s-final2-synthesis-v1-decision-001",
+      "goalId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:20dd9dbcd20a99d4c8cb128f2a74cd96d88460c07ada312d545e20bd2a2fbeed",
+      "pageFingerprint": "sha256:bc8bb137eaa9a2d9b7ded28d53a2dbf7701c6f670a04b4f25519e6414c037a66",
+      "goalReviewContextFingerprint": "sha256:5abc2bc806c809f7a81e124d95375ef7d04f317526633c46890b7f627777969e",
+      "finalText": {
+        "titleDe": "Uneigentliche Integrale berechnen (LK)",
+        "titleEn": "Compute improper integrals (advanced course)",
+        "descriptionDe": "Die lernende Person kann uneigentliche Integrale mit unendlichen Integrationsgrenzen oder Singularitäten als Grenzwerte formulieren, ihre Konvergenz untersuchen, im konvergenten Fall ihren Wert berechnen und geometrische Flächeninhalte mithilfe des Betrags des Integranden beurteilen.",
+        "descriptionEn": "The learner can formulate improper integrals with infinite bounds or singularities as limits, investigate their convergence, calculate their value when convergent, and assess geometric areas using the absolute value of the integrand."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b042s-round-a-20260907T145105Z-ci-integration:f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+          "recordDigest": "sha256:5c7576c29c47a83e9ac0b252d64071fd838dd8148bf07f3e82c7b584a42ee140"
+        },
+        "second": {
+          "recordId": "math-b042s-final-images-b-root-20260907.f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+          "recordDigest": "sha256:71f3da1b0e17dc3e89952827878156cf95e61a78a9f6c0f1cf74182ae66a5d07"
+        }
+      },
+      "rationaleDe": "Beide aktuell versiegelten Rundenergebnisse wurden vollständig inhaltlich verglichen. Sie bestätigen denselben Grenzwert-/Konvergenz-/Berechnungsprozess und die Trennung von Integral und geometrischer Fläche. A wird wegen der expliziten beobachtbaren Prüfung endlicher Singularitäten UND unendlicher Grenzen sowie der Vorzeichenstruktur als Profilbasis gewählt; B ergänzt übereinstimmend die getrennten einseitigen Grenzen bei inneren Singularitäten. Beide tatsächlichen aktuellen Rasterprüfungen bestätigen die finale exakte Kurve. Der frühere BLOCK/KEEP-Dissens ist ausschließlich durch die dokumentierte neue Bildfassung behoben, seine alten Records bleiben unverändert. Keine neue Textänderung, Quellenfreigabe oder menschliche Abnahme.",
+      "rationaleEn": "Both currently sealed round records were compared in full. They confirm the same limit/convergence/calculation process and distinction between signed integral and geometric area. A is chosen as the profile basis because it explicitly makes finite singularities, infinite bounds and sign structure observable; B consistently adds separate one-sided limits at interior singularities. Both actual current raster inspections confirm the exact final curve. The earlier BLOCK/KEEP disagreement is addressed solely by the documented replacement image, with old records preserved unchanged. No new wording change, source approval or human acceptance is granted."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b042s-final2-synthesis-v1-decision-002",
+      "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c2fc7857b6093b331dbc8f1db7ee962155a509e2aa7a980bd0abf04dca8a1043",
+      "pageFingerprint": "sha256:2baeef523f47549446f32d9df28672357c9ea358191facafbce8e894dea9c0ad",
+      "goalReviewContextFingerprint": "sha256:4a263ba5254ed0c6c2a447c641a87fdebf8d196806215bf33fce163dbf28807b",
+      "finalText": {
+        "titleDe": "Verknüpfungen von Exponential- und ganzrationalen Funktionen untersuchen",
+        "titleEn": "Investigate combinations of exponential and polynomial functions",
+        "descriptionDe": "Die lernende Person kann Funktionen analysieren, in denen Exponentialfunktionen mit ganzrationalen Funktionen addiert, multipliziert oder verkettet werden, und diese auch in Sachsituationen untersuchen.",
+        "descriptionEn": "The learner can analyze functions in which exponential functions are added, multiplied, or composed with polynomials, and investigate them in real-world situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b042s-round-a-20260907T145105Z-ci-integration:e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c",
+          "recordDigest": "sha256:0faf9e15bf995a3d7403697a9ea409930530db9e70c61c8a3d2a54e75f621289"
+        },
+        "second": {
+          "recordId": "math-b042s-final-images-b-root-20260907.e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c",
+          "recordDigest": "sha256:890e71b2adaf5e8684252e0d879f2667f71706c174badd60f9804ec63608cb10"
+        }
+      },
+      "rationaleDe": "Die vollständig gelesenen A/B-Ergebnisse stimmen zur präzisen DE/EN-Kompetenz, zur Ableitung aus der Verknüpfungsstruktur und zur Interpretation im zulässigen Bereich überein. A liefert die konkrete Strukturvariation Summe/Produkt/Verkettung und Randverhalten für das aktuelle Profil; B bestätigt dieselbe Untersuchungskompetenz und unterscheidet echte Strukturänderung von Skalierung. Die finale Nano-Kurve ist auch quantitativ auf ihrem positiven abfallenden Ast korrekt, während die alten Fehlerbelege erhalten bleiben. Auswahl nach inhaltlicher Prüfung, nicht aufgrund der KEEP-Labels; keine neue fachliche Erweiterung oder menschliche Freigabe.",
+      "rationaleEn": "The fully read A/B records agree on the precise bilingual competence, differentiation from combination structure, and interpretation in the admissible domain. A supplies concrete sum/product/composition variation and boundary behavior for the current profile; B confirms the same analysis competence and distinguishes genuine structural change from scaling. The final Nano curve is quantitatively correct on its positive decreasing tail, while the old defect evidence is preserved. This selection follows substantive review rather than KEEP labels; it grants no new scope or human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:3e458d360a5a9097ac7f1e8f138fd9e2d8a8b8647acad2c8b9764b57dfa81df5"
+}

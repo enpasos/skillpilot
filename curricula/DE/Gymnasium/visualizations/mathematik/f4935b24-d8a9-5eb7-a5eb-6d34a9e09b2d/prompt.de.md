@@ -4,50 +4,27 @@
 
 - SkillPilot-ID: `f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d`
 - Titel: Uneigentliche Integrale berechnen (LK)
-- Beschreibung: Die lernende Person kann uneigentliche Integrale mit unendlichen Integrationsgrenzen oder Unstetigkeitsstellen als Grenzwerte formulieren, berechnen und entscheiden, ob der Flächeninhalt endlich ist.
+- Beschreibung: Die lernende Person kann uneigentliche Integrale mit unendlichen Integrationsgrenzen oder Singularitäten als Grenzwerte formulieren, ihre Konvergenz untersuchen, im konvergenten Fall ihren Wert berechnen und geometrische Flächeninhalte mithilfe des Betrags des Integranden beurteilen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Repository-native SVG / Playwright Chromium (reviewed Nano fallback)
 - Status: pilot
-- Quellbild: `f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.jpg`
+- Quellbild: `f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+# Konstruktionsanweisung – eng begrenzter nativer Ersatz
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Dies ist eine repository-native SVG/PNG-Konstruktion nach zwei fachlich gescheiterten gezielten Nano-Banana-Pro-Korrekturen, kein an Nano übermittelter Prompt.
 
-Titel: Uneigentliche Integrale berechnen (LK)
-Beschreibung: Die lernende Person kann uneigentliche Integrale mit unendlichen Integrationsgrenzen oder Unstetigkeitsstellen als Grenzwerte formulieren, berechnen und entscheiden, ob der Flächeninhalt endlich ist.
+Zeige das unveränderte Beispiel f(x)=1/√x auf 0<x≤1. Zeichne auf wirklich linearen Achsen mit x-Pixelabbildung 110+650x und y-Pixelabbildung 735−80y. Die Kurve besteht aus 2001 direkt berechneten Punkten von x=1/36 bis 1. Kontrollpunkte: (1/16,4), (1/4,2), (1/2,√2), (1,1). Oberhalb y=6 läuft die Kurve außerhalb des Bildfensters weiter; kennzeichne dies ausdrücklich. x=0 ist ausgeschlossen und eine Singularität. Schattiere nur den sichtbaren Teil der Fläche unter der positiven Kurve auf 0<x≤1. Die Begrenzung bei x=1 endet an (1,1).
 
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Uneigentliche Integrale mit Unstetigkeitsstelle als Grenzwert berechnen.
-- Verwende f(x)=1/sqrt(x) auf dem Intervall (0,1].
-- Zeige die Flaeche unter der Kurve nahe x=0 mit senkrechter Asymptote am linken Rand.
-- Formuliere:
-  integral_0^1 1/sqrt(x) dx
-  = lim_{a -> 0+} integral_a^1 x^(-1/2) dx
-  = lim_{a -> 0+} [2*sqrt(x)]_a^1
-  = lim_{a -> 0+} (2 - 2*sqrt(a))
-  = 2.
-- Entscheidung: Der Flaecheninhalt ist endlich, weil der Grenzwert existiert.
+Erkläre getrennt: Für 0<a<1 wird zunächst das gewöhnliche Integral von a bis 1 gebildet. Es ergibt [2√x] von a bis 1 = 2−2√a. Der Grenzwert für a→0⁺ beträgt 2; das uneigentliche Integral konvergiert. Nur wegen f>0 stimmen hier Integralwert und geometrischer Flächeninhalt überein. Unbeschränkte Funktionswerte allein entscheiden nicht über die Konvergenz.
 
-Vermeiden:
-- Nicht direkt x=0 in 1/sqrt(x) einsetzen.
-- Nicht mit integral_0^1 1/x dx verwechseln; dieses Beispiel hier konvergiert.
-- Nicht behaupten, die Flaeche sei unendlich.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Alle Texte müssen im 1600×900-Raster ohne Überlagerung lesbar sein. Die native V1 hatte lediglich eine kleine Kollision zwischen Funktionslabel und y=6-Beschriftung; V2 versetzt nur dieses Label. Renderer und SVG neben diesem Prompt sind die genaue reproduzierbare Konstruktion.
 ```
 
 ## Review-Notiz

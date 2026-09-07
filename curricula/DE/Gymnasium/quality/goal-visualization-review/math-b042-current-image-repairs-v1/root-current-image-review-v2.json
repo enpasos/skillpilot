@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "reviewAuthority": "ai_candidate",
+  "humanApproved": false,
+  "reviewedAt": "2026-09-07T13:43:00Z",
+  "independence": "Actual visual checks. Root authored the271/281 repairs and therefore supplies their author-side review; for ccd/848 this is a second content check after another agent's generation and own review. Same coordinated thread, no fresh-provider or human-review claim.",
+  "records": [
+    {
+      "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+      "candidateSha256": "23ca2bb900390231719cba4982033f950b381abd51abe9058d902674583a14b4",
+      "decision": "block",
+      "checks": ["Second targeted Nano attempt still places the maximum between labelled2 and4 rather than at2.", "The requested horizontal origin tangent is drawn obliquely; the curve does not establish h′(0)=0.", "A displayed correct derivative cannot compensate for the contradictory plotted function."],
+      "action": "Do not import. Retain this failed attempt as evidence for the narrowly scoped deterministic fallback."
+    },
+    {
+      "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+      "candidateSha256": "bab37f3c1a277c7534d31cf737ebef80ec7763a48d98d803f19ae8169642a64c",
+      "sourceSvgSha256": "88d1aaefe49158596813b3e5efd02c8696b4fce123dc1ff5a003982c96a02f2e",
+      "decision": "pass",
+      "checks": ["Final1600x900 PNG actually viewed after overflow corrections; all formulas, headings, labels and conclusions fit their panels.", "Sampled h=x²e^(−x) has h(0)=0 with horizontal tangent, maximum(2,4/e²), and positive descending tail approaching0.", "Product and chain rule give h′=e^(−x)(2x−x²); stationarity, sign analysis and tangent markings agree.", "Nonnegative domain and method-selection context remain explicit. No second positive zero or fabricated maximum location."],
+      "action": "Import only with the independent exact-hash review and documented Nano failure receipt; native exception for this asset, not a changed default provider."
+    },
+    {
+      "goalId": "281e0c6e-d06d-580f-8443-4369f0ea524b",
+      "candidateSha256": "669588b74984a4e4e014d03325f35c3823041cccc02361257f596ea50cc035b4",
+      "decision": "pass",
+      "checks": ["The radius-function diagram now uses one vertical radius strip with horizontal widthdx, not the misleading horizontal volume bands.", "The real-body disk callouts terminate on disks transverse to the cup axis, not on radius-plot bands.", "r(0)=r0, r(h)=r1 and the linear interpolation formula agree with the depicted frustum model.", "Disk areaπr(x)², disk-volume elementπr(x)²dx and V=π∫0..h r(x)²dx are mutually consistent.", "Cup dimensions are schematic. Using inner versus outer radius is a modeling choice; no claim of wall-material volume is made."],
+      "action": "Exact candidate independently passed by goal_book_ci_integration; eligible for bounded import."
+    },
+    {
+      "goalId": "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+      "candidateSha256": "001b1c50b36cf0f7981913412c0b24e092923a464d1488b6b68403dccc6f7673",
+      "decision": "pass",
+      "checks": ["H=80−60e^(−0.4t), t≥0, H(0)=20 cm, limit80 and horizontal asymptote are correct.", "Labelled values H(2)≈53.04, H(4)≈67.89, H(6)≈74.56 agree with calculation and their positions on the linear axes.", "The rising concave-down curve stays below80; no finite-time attainment is implied.", "Time is weeks, heightcm; the bounded-growth interpretation is explicitly about the model plant."],
+      "action": "Second actual content check passed; eligible for import after author receipt is sealed."
+    },
+    {
+      "goalId": "848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+      "candidateSha256": "a83b5f7ea1c599e774b207a82e9c10377eb265d1c1537d9275fb2e7c8c9ef998",
+      "decision": "pass",
+      "checks": ["Actual original-resolution image viewed to inspect each formula, including corrected unparenthesized exponent−0.35t in the bounded model and closed parentheses in the logistic denominator.", "E=2·1.35^t reaches20 at ln(10)/ln(1.35)≈7.67; B=20−18e^(−.35t) approaches20; L=20/(1+9e^(−.6t)) has inflection atln(9)/.6≈3.66 with value10. All start at2.", "Three explicitly separated schematic diagrams no longer assert a false ordering on a shared time axis.", "Convex exponential, concave-down bounded growth and logistic curvature change are distinguished, as are their relative-rate, remaining-gap and stock-times-gap assumptions."],
+      "limitations": ["Explicitly schematic model comparison, not a quantitatively scaled graph-reading task. Hand-drawn vertical distances near the origins are approximate. Exact facts are supplied by the formulas and labelled values, not pixel measurements."],
+      "action": "Second actual content check passed for qualitative comparison; preserve the visible schematic qualifier in alt text and evidence."
+    }
+  ]
+}

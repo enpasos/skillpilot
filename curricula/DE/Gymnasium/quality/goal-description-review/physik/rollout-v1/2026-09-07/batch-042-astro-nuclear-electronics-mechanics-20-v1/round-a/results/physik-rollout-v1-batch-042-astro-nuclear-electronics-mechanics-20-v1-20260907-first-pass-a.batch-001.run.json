@@ -1,0 +1,65 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b042-a-subject-review-20260907T145501Z",
+  "campaignId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-a",
+  "roundId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:ef10768f22209c42b9953d6454ec70f54ff6b52c3c1c87961003facfce4b8ad7",
+  "bundleFingerprint": "sha256:b575826e51dcbf5430656d9c22c44de38c11963160918cd998a74edb69f8e100",
+  "bookDigest": "sha256:18b8df380756858d09549ded32926e0a8d42a11e8e948d768d3e78a78d19dbda",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:6d08878ce684f54be2d3e469da9edb9fe096b5e6fc464e8d8150578d3ccc0704",
+  "independenceGroupId": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-independent-a",
+  "blindToOtherRuns": false,
+  "goalIds": [
+    "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+    "f67550ac-df22-5a3e-8172-f04642efca64",
+    "a12fddce-0215-58d9-bd91-21be8a960d25",
+    "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+    "3b50255a-6b01-578b-8f5c-4383536a3221",
+    "6e7c35e0-7a38-5996-a42e-005038eff0db",
+    "e6a50c74-c922-508c-aa27-07bac2566955",
+    "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+    "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+    "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+    "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+    "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+    "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+    "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+    "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+    "1232febe-868a-4dac-b4c2-e35789434601",
+    "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+    "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+    "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+    "12260012-cf04-5409-b57d-f5b3a46d9126"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:0e6e2872e5f71dd0eab80406d970cfdd17e0ec8890d6d8544aea76405b2c2c3a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ef10768f22209c42b9953d6454ec70f54ff6b52c3c1c87961003facfce4b8ad7"
+    }
+  ],
+  "startedAt": "2026-09-07T14:55:01Z",
+  "completedAt": "2026-09-07T15:17:27Z",
+  "status": "completed",
+  "outputDigest": "sha256:eaedb42e813a01dfc57fa8151e98ac760de680fe57de099a80d1d72059387905",
+  "toolchainVersion": "codex-native-goal-description-review-v1"
+}

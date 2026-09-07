@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-07T14:46:08Z",
+  "batchId": "physik-b041r-current-four-postseal-synthesis-v1",
+  "scope": "Post-seal, nonblind per-goal D synthesis of the current B041r four-goal batch; no canonical or central registration writes.",
+  "recordSealsUnchanged": {
+    "a": "sha256:76e95817af66a0269270352abe16f6bbb793beac6c6691631360fbd606505020",
+    "b": "sha256:74c1b8ee05a6698b19200d853c81df67ece297ee567e9888fa2a025127e4e39d"
+  },
+  "checks": [
+    {
+      "command": "quality:goal-description-rollout-batch summarize --write",
+      "result": "PASS4; four evidence/rationale differences require explicit synthesis"
+    },
+    {
+      "command": "materializeGoalDescriptionRolloutSynthesisManifest --write",
+      "result": "PASS4; native exact bindings"
+    },
+    {
+      "command": "quality:goal-description-rollout-resolutions --write",
+      "result": "PASS4/4"
+    },
+    {
+      "command": "quality:goal-description-rollout-resolutions (read-only)",
+      "result": "PASS4/4"
+    },
+    {
+      "command": "quality:goal-description-rollout-batch finalize --write",
+      "result": "PASS4/4"
+    },
+    {
+      "command": "quality:goal-description-rollout-batch finalize (read-only)",
+      "result": "PASS4/4; current standalone bindings"
+    }
+  ],
+  "artifacts": {
+    "dual-summary.json": "sha256:23450beb3cac3f719760fbbe52fd07aa2ca686055e08177df67c57f178e01a4d",
+    "synthesis-decisions.json": "sha256:0445153de53d7ef297e242000451594fb2fdc8f8c4927e1a393cfa8eb6e74eb5",
+    "resolution-index.json": "sha256:5509a129f27f04c8d3904b8fc7c26d2641aa9cc52c8beef6294923d6382dec6b"
+  },
+  "decisionDisagreements": 0,
+  "evidenceAndRationaleDifferences": 4,
+  "allFourDifferencesIndividuallyCompared": true,
+  "modelDiversityClaimed": false,
+  "exactModelIdentifierAvailable": false,
+  "tokenCountAvailable": false,
+  "tokenCount": null,
+  "humanApproval": false,
+  "automaticAcceptance": false,
+  "learnerEvidence": false,
+  "centralRegistrationPerformed": false,
+  "positiveProfileReviewPerformed": false
+}

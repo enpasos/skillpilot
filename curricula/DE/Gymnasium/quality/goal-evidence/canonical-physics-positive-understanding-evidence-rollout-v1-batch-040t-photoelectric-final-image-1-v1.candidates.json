@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b040t-photoelectric-final-image-1-v1",
+  "reviewedAt": "2026-09-07T13:18:04Z",
+  "reviewer": "openai-codex-b040t-photoelectric-final-image-profile-context-review",
+  "goals": [
+    {
+      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "reason": "B040t: Profil erneut gegen aktuelle DE/EN-Zielbeschreibung und die tatsächlich betrachtete finale Emissionsskizze 945377b8… geprüft. Bestehende Erwartungen und zwei Fälle bleiben unverändert. Nach Versiegelung beider aktuellen D-Folgeprüfungen wurde deren unabhängig vorgeschlagener Materialwechsel-Transfer als eigene Variationsachse und dritter konkreter Fall ergänzt: neue Schwelle und kontrollierter Vergleich von Frequenz- und Intensitätsänderung. Kein Lernendenergebnis oder Humanurteil wird behauptet; die Reviewer haben nicht diesen Profilkörper gegengeprüft. Die getrennte V2-Bildprüfung steht in physics-cb0-photoelectric-current-v1/independent-v2-review.json. B040s bleibt historisch erhalten; der native Materializer bindet aktuelle Eingänge und den tatsächlich ergänzten V2-Profilkörper.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "threshold-energy",
+            "essentialUnderstandingDe": "Im Einphotonenmodell überträgt ein Photon hf auf ein Elektron; Emission erfordert hinreichende Energie für die Austrittsarbeit W_A, und E_kin,max=hf−W_A. Einzelne Elektronen müssen nicht alle die maximale Energie haben.",
+            "essentialUnderstandingEn": "In the single-photon model one photon transfers hf to an electron; emission requires enough energy for work function W_A, and E_kin,max=hf−W_A. Individual electrons need not all have the maximum energy.",
+            "observablePerformanceDe": "Erklärt Schwelle und maximale Elektronenenergie aus einer Energiebilanz und sagt die Wirkung geänderter Frequenz voraus.",
+            "observablePerformanceEn": "Explains threshold and maximum electron energy using an energy balance and predicts the effect of changed frequency."
+          },
+          {
+            "id": "intensity-frequency-distinction",
+            "essentialUnderstandingDe": "Bei festem Material und geeigneten Messbedingungen verändert mehr Intensität bei gleicher Frequenz vor allem die Zahl der ausgelösten Elektronen, nicht deren maximale Energie; unterhalb der Schwelle hilft bloß mehr Intensität im Einphotonenregime nicht.",
+            "essentialUnderstandingEn": "For a fixed material and suitable measurement conditions, more intensity at the same frequency mainly changes the number of emitted electrons, not their maximum energy; below threshold, more intensity alone does not help in the single-photon regime.",
+            "observablePerformanceDe": "Vergleicht Frequenz- und Intensitätsänderungen und erklärt, warum die Befunde nicht durch eine einfache kontinuierliche klassische Energieansammlung am Elektron erfasst werden.",
+            "observablePerformanceEn": "Compares frequency and intensity changes and explains why the findings are not captured by simple continuous classical energy accumulation at an electron."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "threshold-energy",
+            "intensity-frequency-distinction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "threshold-versus-flux",
+            "textDe": "Unterschwellige gegenüber überschwelliger Beleuchtung; Energie pro Photon gegenüber Photonenzahl pro Zeit.",
+            "textEn": "Below-threshold versus above-threshold illumination; energy per photon versus photon count per time."
+          },
+          {
+            "id": "changed-material-threshold",
+            "textDe": "Ein Materialwechsel bei unveränderter Beleuchtung verändert die Austrittsarbeit und damit die Grenzfrequenz; Frequenz und Intensität als getrennte mögliche Eingriffe vergleichen.",
+            "textEn": "A material change at unchanged illumination changes the work function and therefore the threshold frequency; compare frequency and intensity as separate possible interventions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "threshold-test",
+            "taskDemandDe": "Synthetischer Fotoeffektfall mit W_A=2,0 eV im Einphotonenregime: Licht mit 1,5 eV pro Photon löst auch bei größerer Intensität keine Elektronen aus, Licht mit 3,0 eV schon. Erkläre und bestimme E_kin,max.",
+            "taskDemandEn": "Synthetic photoelectric case with W_A=2.0 eV in the single-photon regime: light with 1.5 eV per photon emits no electrons even at higher intensity, while light with 3.0 eV does. Explain and determine E_kin,max.",
+            "expectedPerformanceDe": "Begründet die fehlende Emission mit der unterschrittenen Einzelphotonenschwelle und erhält bei 3,0 eV maximal 1,0 eV kinetische Energie. Erklärt den Widerspruch zur einfachen Vorstellung beliebiger zeitlicher Energieansammlung aus schwächerem Licht.",
+            "expectedPerformanceEn": "Explains absent emission by the single-photon threshold not being reached and obtains a maximum kinetic energy of 1.0 eV at 3.0 eV. Explains the conflict with a simple picture of unlimited temporal energy accumulation from weaker light.",
+            "understandingFocusDe": "Energiequant und materialabhängige Schwelle tragen die Erklärung.",
+            "understandingFocusEn": "Energy quantum and material-dependent threshold support the explanation."
+          },
+          {
+            "id": "independent-controls",
+            "taskDemandDe": "Bei derselben Oberfläche werden im geeigneten Sammelbetrieb 3,0-eV-Photonen verwendet. Vergleiche Verdopplung des Photonenflusses bei gleicher Frequenz mit Wechsel zu 2,5-eV-Photonen bei gleichem Fluss; W_A=2,0 eV.",
+            "taskDemandEn": "At the same surface, 3.0-eV photons are used under suitable collection conditions. Compare doubling photon flux at fixed frequency with switching to 2.5-eV photons at fixed flux; W_A=2.0 eV.",
+            "expectedPerformanceDe": "Sagt bei größerem Fluss mehr Emissionsereignisse beziehungsweise größeren Fotostrom, aber weiterhin E_kin,max=1,0 eV voraus. Beim Energiewechsel sinkt E_kin,max auf 0,5 eV; eine exakte Gleichheit der Emissionsausbeute verschiedener Frequenzen wird nicht behauptet.",
+            "expectedPerformanceEn": "Predicts more emission events or larger photocurrent at increased flux, but still E_kin,max=1.0 eV. With changed photon energy, E_kin,max falls to 0.5 eV; exact equality of emission yield at different frequencies is not asserted.",
+            "understandingFocusDe": "Getrennte Stellgrößen ändern Ereigniszahl und Energiebilanz unterschiedlich.",
+            "understandingFocusEn": "Independent control variables affect event count and energy balance differently."
+          },
+          {
+            "id": "fresh-material-transfer",
+            "taskDemandDe": "Unabhängiger neuer Fall im Ein-Photonen-Modell: Eine Oberfläche mit W_A=2,0 eV wird bei unveränderten 3,0-eV-Photonen durch eine mit W_A=3,2 eV ersetzt. Sage vor jeder Rechnung voraus, ob Elektronen austreten. Vergleiche als Eingriffe doppelte Intensität bei gleicher Frequenz und einen Frequenzwechsel auf 4,0 eV pro Photon. Begründe, was die neue Materialschwelle überwinden kann.",
+            "taskDemandEn": "Independent fresh case in the single-photon model: a surface with W_A=2.0 eV is replaced by one with W_A=3.2 eV while the 3.0-eV photons remain unchanged. Predict before calculating whether electrons are emitted. Compare doubling intensity at the same frequency with changing frequency to give 4.0 eV per photon. Explain which intervention can overcome the new material threshold.",
+            "expectedPerformanceDe": "Erklärt die gestiegene Grenzfrequenz und das Ausbleiben von Emission nach dem Materialwechsel: 3,0 eV liegen unter 3,2 eV. Mehr unterschwelliges Licht genügt nicht; die Frequenzerhöhung ermöglicht Emission mit E_kin,max=0,8 eV. Eine negative rechnerische Differenz wird nicht als negative Elektronenenergie oder Emission gedeutet. Das Argument verbindet Materialeigenschaft und Photonenergie, statt nur dieselbe Formel mit neuen Zahlen aufzusagen.",
+            "expectedPerformanceEn": "Explains the higher threshold frequency and absent emission after the material change: 3.0 eV is below 3.2 eV. More subthreshold light is insufficient; the higher frequency permits emission with E_kin,max=0.8 eV. A negative computed difference is not interpreted as negative electron energy or as emission. The argument connects material properties with photon energy rather than merely reciting the same formula with changed numbers.",
+            "understandingFocusDe": "Frischer Transfer auf eine geänderte Materialeigenschaft, mit begründetem Eingriffsvergleich und fachlich korrekter Schwelleninterpretation.",
+            "understandingFocusEn": "Fresh transfer to a changed material property, with a reasoned comparison of interventions and a physically correct interpretation of the threshold."
+          }
+        ]
+      }
+    }
+  ]
+}

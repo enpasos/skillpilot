@@ -1,0 +1,450 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "physics-b042-seven-v1-independent-image-review-20260907",
+  "startedAt": "2026-09-07 16:00:50 UTC",
+  "sealedAt": "2026-09-07 16:09:02 UTC",
+  "status": "sealed_individual_candidate_review",
+  "reviewer": {
+    "agent": "/root/goal_book_pdf_history_audit",
+    "model": "Codex (exact underlying model identifier unavailable)",
+    "priorInvolvement": "Existing agent, not a fresh thread. Prior B042 description/active-image review and source-boundary proposals are known. No generation of these seven V1 candidates and no other reviewer verdicts on these candidates were read before this seal.",
+    "independence": "Individual first assessment of these seven exact generated V1 JPEGs; current canonical DE/EN context and actual sent prompts were read. Parent is independently reviewing the same candidates.",
+    "humanApprovalClaimed": false,
+    "modelDiversityClaimed": false,
+    "currentR9ResultsRead": false
+  },
+  "scope": {
+    "requestedGoalCount": 7,
+    "actualRasterCount": 7,
+    "canonicalDigestAtReading": "sha256:d2b1b698622a1f9b1cd3de82f05e5322aa873fd269c19d1693598b24b14c5a91",
+    "noCanonicalOrQaWrites": true,
+    "noGeneration": true,
+    "noImport": true,
+    "readinessMeaning": "readyForImport means this review has no blocking image finding; it is not authorization to bypass the parent's independent countercheck, native import gates or human approval."
+  },
+  "archiveManifest": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/archive-manifest.json",
+  "arithmeticAndRequestProof": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/request-context-and-arithmetic.receipt.json",
+  "summary": {
+    "acceptCandidate": 3,
+    "needsRevision": 1,
+    "reject": 3,
+    "readyForImportGoalIds": [
+      "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+      "6e7c35e0-7a38-5996-a42e-005038eff0db",
+      "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+    ]
+  },
+  "records": [
+    {
+      "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "title": "Exoplaneten-Nachweise erlaeutern",
+      "canonicalGoalObjectDigest": "sha256:366241d3f1d99d7eac39cd55e5c7e3517505d7a3325f4c949e4a3e04a6a2b270",
+      "currentDescriptionDe": "Die lernende Person kann grundlegende Methoden zum Nachweis von Exoplaneten, insbesondere Transit- und Radialgeschwindigkeitsmethode, qualitativ erklaeren.",
+      "currentDescriptionEn": "The learner can qualitatively explain basic methods for detecting exoplanets, especially transit and radial-velocity methods.",
+      "candidatePath": "tmp/goal-visualizations/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/generated/5b8eaf71-96fe-50eb-b9ea-a8fa392df086.generated.2026-09-07T15-49-14-388Z.jpg",
+      "candidateDigest": "sha256:b2c29f69b6820ef42d3d26dd0d8a0f2401b62112328a53841446a0efd43d793e",
+      "candidateBytes": 2229300,
+      "viewedActualRaster": true,
+      "viewMethod": "view_image detail=original, complete image",
+      "archivedEvidenceDirectory": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "decision": "reject",
+      "readyForImport": false,
+      "summaryDe": "Transitsequenz und Doppler-Spektrum sind plausibel; die räumliche Stern-Planet-Schwerpunkt-Skizze ist als Zweikörpersystem falsch.",
+      "checks": [
+        {
+          "part": "Titel und Transit-Seitenansicht",
+          "result": "pass",
+          "detail": "Beobachter/Teleskop links, Planet in der Mitte und Stern rechts liegen in der richtigen Reihenfolge. Die Lichtpfeile zeigen vom Stern zum Beobachter; der Planet liegt tatsächlich zwischen beiden. Beide beschreibenden Transittexte sind korrekt."
+        },
+        {
+          "part": "Helligkeit-Zeit-Kurve",
+          "result": "pass",
+          "detail": "Achsen Helligkeit und Zeit mit korrekter Orientierung; genau ein zeitlich begrenztes Minimum, davor und danach gleiches Helligkeitsniveau. Der Einbruch ist ausdrücklich schematisch und trägt keine falsche quantitative Transit-Tiefe."
+        },
+        {
+          "part": "Stern, Planet, Schwerpunkt und Umlaufpfeile",
+          "result": "fail",
+          "detail": "Die Zentren von Stern (links oben), Schwerpunktkreuz (mittig tiefer) und Planet (rechts ungefähr auf Höhe des Kreuzes) liegen sichtbar nicht auf einer Geraden. Für das gezeigte isolierte Stern-Planet-Paar muss der gemeinsame Schwerpunkt auf der Verbindung ihrer Zentren liegen. Zudem suggerieren die langen Pfeilbögen einen gemeinsamen Umlaufweg anstelle einer kleinen Stern- und größeren Planetenbahn. Der Kern der stellaren Reflexbewegung wird so nicht korrekt dargestellt."
+        },
+        {
+          "part": "Drei Spektralstreifen",
+          "result": "pass",
+          "detail": "Annäherungslinie liegt links von der gestrichelten Ruhereferenz, Ruhelinie auf ihr, Entfernungslinie rechts. Gemeinsame λ-Achse wächst nach rechts; λ<λ₀ blau und λ>λ₀ rot sind richtig. Die Pfeile innerhalb der Streifen passen zu dieser Verschiebung."
+        },
+        {
+          "part": "Abschlussaussage und Lesbarkeit",
+          "result": "pass",
+          "detail": "Die periodische Linienverschiebung wird korrekt auf die Sternbewegung bezogen. Kurze Labels, keine Überdeckung relevanter Schrift, keine zusätzlichen Zahlen/Formeln."
+        }
+      ],
+      "blockingFindings": [
+        {
+          "code": "BARYCENTER_GEOMETRY",
+          "location": "Rechte obere Skizze",
+          "severity": "substantive",
+          "reason": "Nicht kollineare Zweikörperpositionen und gemeinsame statt getrennte Bahngeometrie widersprechen der gezeigten Schwerpunktdeutung.",
+          "correctionBoundary": "Stern und Planet gegenüberliegend auf einer durch den Schwerpunkt verlaufenden Linie; kleine Sternbahn und größere Planetenbahn, konsistente Umlaufrichtung. Transit und Spektralstreifen können fachlich erhalten bleiben."
+        }
+      ],
+      "nonBlockingNotes": [
+        "Schematische Größen sind kein Problem; die Ablehnung stützt sich nicht auf ein nicht angegebenes exaktes Massen- oder Radienverhältnis."
+      ],
+      "references": [
+        "https://spaceplace.nasa.gov/barycenter/en/"
+      ]
+    },
+    {
+      "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "title": "p-n-Übergang und Diode",
+      "canonicalGoalObjectDigest": "sha256:331ff6198f68a3e940ba1414ba0a6a24d3571c7be19e3cc1b5c2706aa7669316",
+      "currentDescriptionDe": "Die lernende Person kann den p-n-Übergang qualitativ beschreiben, Kennlinien von Dioden experimentell bestimmen und einfache Gleichrichterschaltungen erläutern.",
+      "currentDescriptionEn": "The learner can qualitatively describe the p-n junction, experimentally determine characteristic curves of diodes, and explain simple rectifier circuits.",
+      "candidatePath": "tmp/goal-visualizations/7f0798cb-5966-5dcb-beb3-84f637ab6139/generated/7f0798cb-5966-5dcb-beb3-84f637ab6139.generated.2026-09-07T15-49-18-402Z.jpg",
+      "candidateDigest": "sha256:fcfb28e07b09cd2574fae69b7a2e3654ec01fd7d1858638d70ac5bc3e13f3081",
+      "candidateBytes": 2292777,
+      "viewedActualRaster": true,
+      "viewMethod": "view_image detail=original, complete image",
+      "archivedEvidenceDirectory": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "decision": "needs_revision",
+      "readyForImport": false,
+      "summaryDe": "Kennlinie und Einweggleichrichter sind korrekt. Das Teilchenbild bleibt wegen der Darstellung der äußeren Ladungsbilanz didaktisch mehrdeutig; noch keine uneingeschränkte Bildfreigabe.",
+      "checks": [
+        {
+          "part": "p-/n-Typ und Legende",
+          "result": "pass_with_concern",
+          "detail": "Mobile Löcher auf p und Elektronen auf n sind richtig bezeichnet. Mobile Träger sind durch kleinere/hellere Symbole von ortsfesten Akzeptor- und Donatorionen unterscheidbar. Im p-Außenbereich sind aber sehr viele Plus-Löcher gegenüber wenigen negativen Akzeptorionen gezeichnet; im n-Außenbereich entsprechend viele Elektronen gegenüber nur vier gezeichneten positiven Donatorionen. Ohne Kennzeichnung einer bloßen Stichprobe oder der quasi-neutralen Außenbereiche ist eine Nettoladung der ganzen p-/n-Bereiche naheliegend."
+        },
+        {
+          "part": "Raumladungszone",
+          "result": "pass",
+          "detail": "An der p-Seite der Verarmungszone negative ortsfeste Akzeptorionen, an der n-Seite positive Donatorionen; keine falsche Vakuumlücke. Die Zone wird korrekt als Verarmungs-/Raumladungszone bezeichnet."
+        },
+        {
+          "part": "Polungshinweise",
+          "result": "pass",
+          "detail": "Durchlass: Plus an p, Minus an n, kleinere Barriere. Sperrung: Minus an p, Plus an n, größere Barriere. Beide Beziehungen sind korrekt."
+        },
+        {
+          "part": "Diodenkennlinie und Messhinweis",
+          "result": "pass",
+          "detail": "U_D horizontal, I_D vertikal, Nullachsen vorhanden; kleiner negativer Sperrstrom und steiler positiver Vorwärtsanstieg. Kein Durchbruch behauptet, keine universelle harte Schwellenspannung. Spannung an der Diode und Strom durch sie messen sowie Strom begrenzen sind richtige Hinweise."
+        },
+        {
+          "part": "Einweggleichrichter",
+          "result": "pass",
+          "detail": "Ein vollständiger unverzweigter Kreis aus isolierter Wechselspannungsquelle, korrekt nach rechts orientierter Diode, Lastwiderstand und Rückleitung. Kein Kurzschluss am Lastwiderstand und kein parallel falsch angeschlossenes Bauteil. U_out wird zwischen seinen beiden Anschlüssen gemessen."
+        },
+        {
+          "part": "Ein-/Ausgangskurven",
+          "result": "pass",
+          "detail": "Gleiche zeitliche Nullstellen und positive Halbwellen; negative Eingangshalbwellen werden beim ausdrücklich idealisierten Ausgang durch exakt null ersetzt. Die real schematische Sperrstromkennlinie wird so nicht mit dem idealen Ausgang gleichgesetzt."
+        },
+        {
+          "part": "Text/Notation/Lesbarkeit",
+          "result": "pass",
+          "detail": "Alle weiteren sichtbaren Labels sind lesbar und fachlich passend; kein Netzspannungsaufbau und keine zusätzliche Zahlenrechnung."
+        }
+      ],
+      "blockingFindings": [
+        {
+          "code": "BULK_NEUTRALITY_AMBIGUITY",
+          "location": "p-/n-Außenbereiche im Teilchenbild links oben",
+          "severity": "didactic_ambiguity",
+          "reason": "Die Kombination expliziter Träger-/Ionensymbole mit stark unausgeglichenen sichtbaren Ladungsanzahlen kann p-Typ als insgesamt positiv und n-Typ als insgesamt negativ lehren. Die Außenbereiche sollten im hier gezeigten Grundmodell quasi-neutral sein.",
+          "correctionBoundary": "Außenbereiche klar als insgesamt quasi-neutral kennzeichnen und die Ladungskompensation im schematischen Teilchenbild eindeutig machen; keine Änderung an korrekter Raumladungszone, Kennlinie oder Gleichrichter nötig.",
+          "uncertainty": "Die Bildsymbole sind nicht ausdrücklich als quantitative Vollzählung bezeichnet. Daher wird kein exakter physikalischer Dichtefehler behauptet; needs_revision beruht auf einer konkreten fehlleitenden Darstellung, nicht auf nachträglich erfundenen Messdaten."
+        }
+      ],
+      "nonBlockingNotes": [
+        "Eine rein schematische Teilchendarstellung darf Anzahlen vereinfachen. Die Bedeutungsgrenze zur Nettoladung muss dabei sichtbar bleiben.",
+        "Die Ablehnung/Revision betrifft nicht eine fehlende zweite Messschaltung; ein unterstützendes Bild muss nicht sämtliche Experimentschritte des Lernziels ersetzen."
+      ],
+      "references": [
+        "https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/e241bb54d370c62ff3d8089062ed74f5_lecture13.pdf"
+      ]
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "title": "Waagerechter Wurf analysieren",
+      "canonicalGoalObjectDigest": "sha256:beff75c2bc5437393b3039d17265faf8cecdd5fca52be9036328f5d0c3b89cd5",
+      "currentDescriptionDe": "Die lernende Person kann den waagerechten Wurf experimentell untersuchen, als Überlagerung von horizontaler und vertikaler Bewegung deuten und die Flugbahn im x-y-Diagramm darstellen.",
+      "currentDescriptionEn": "The learner can experimentally investigate horizontal projection, interpret it as a superposition of horizontal and vertical motion, and represent the trajectory in an x-y diagram.",
+      "candidatePath": "tmp/goal-visualizations/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/generated/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.generated.2026-09-07T15-49-12-119Z.jpg",
+      "candidateDigest": "sha256:59a60826117ab79a68babf18cb785c6ceba89c2f03ed04cf71d5490b249c6d5e",
+      "candidateBytes": 2188872,
+      "viewedActualRaster": true,
+      "viewMethod": "view_image detail=original, complete image",
+      "archivedEvidenceDirectory": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "decision": "reject",
+      "readyForImport": false,
+      "summaryDe": "Formeln, Tabelle und Modellbedingungen stimmen; der gezeichnete t=2-s-Punkt widerspricht ihnen deutlich.",
+      "checks": [
+        {
+          "part": "Modellbedingungen",
+          "result": "pass",
+          "detail": "Start (0,0), konstantes v_x=2 m/s, v_y(0)=0, ausdrücklich vereinfachtes g=10 m/s² und vernachlässigter Luftwiderstand ergeben ein konsistentes Modell."
+        },
+        {
+          "part": "Formeln",
+          "result": "pass",
+          "detail": "x=v_x t, y=½gt² und y=g x²/(2v_x²) stimmen bei nach unten positivem y. Kein zweites g und keine falsche Beschleunigungseinheit."
+        },
+        {
+          "part": "Datentabelle",
+          "result": "pass",
+          "detail": "Zeilen t=0,1,2,3 s; x=0,2,4,6 m; y=0,5,20,45 m wurden unabhängig nachgerechnet."
+        },
+        {
+          "part": "Achsen und Marken",
+          "result": "pass",
+          "detail": "x nach rechts mit gleichmäßig aufsteigenden 0–6-m-Ticks; y nach unten mit gleichmäßigen 5-m-Ticks bis50. Anfangspunkt und t=1-s-Punkt stimmen mit (0,0) und (2,5); t=3 s liegt bei (6,45)."
+        },
+        {
+          "part": "t=2 s und Kurve",
+          "result": "fail",
+          "detail": "Die Marke t=2 s liegt auf der gestrichelten y=25-m-Linie, nicht bei20 m, und sichtbar etwas rechts der x=4-m-Hilfslinie. Die Kurve läuft durch diesen falschen Punkt. Das ist keine Rundungsabweichung: erwartet ist exakt (4,20) im eigenen Modell."
+        },
+        {
+          "part": "Erklärung und Lesbarkeit",
+          "result": "pass",
+          "detail": "Gleiche horizontale Zuwächse in gleichen Zeiten, zunehmende vertikale Zuwächse und gemeinsame Zeit sind richtig formuliert. Keine bedeutungsrelevanten Schriftartefakte."
+        }
+      ],
+      "blockingFindings": [
+        {
+          "code": "POINT_T2_WRONG",
+          "location": "Linker Graph, Marke t=2 s",
+          "severity": "substantive",
+          "reason": "Die sichtbare Darstellung (ungefähr4,2;25) widerspricht Formel und Tabelle (4;20).",
+          "correctionBoundary": "Gesamte Parabel und alle Punkte auf demselben linearen Raster neu prüfen; nicht nur Tabellenwert oder y-Tick umetikettieren."
+        }
+      ],
+      "nonBlockingNotes": [
+        "Positive Fallformel ist wegen der nach unten gerichteten y-Achse korrekt; kein Vorzeichenfehler."
+      ],
+      "references": []
+    },
+    {
+      "goalId": "12260012-cf04-5409-b57d-f5b3a46d9126",
+      "title": "Freier Fall mit Luftreibung und Grenzgeschwindigkeit",
+      "canonicalGoalObjectDigest": "sha256:6c620ca98b218e41e9f795e3994393caab785df39ae51dc7db238761aef45356",
+      "currentDescriptionDe": "Die lernende Person kann den freien Fall mit Luftreibung qualitativ und mithilfe einfacher Modelle beschreiben und den Begriff der Grenzgeschwindigkeit erläutern.",
+      "currentDescriptionEn": "The learner can qualitatively describe free fall with air resistance using simple models and explain the concept of terminal velocity.",
+      "candidatePath": "tmp/goal-visualizations/12260012-cf04-5409-b57d-f5b3a46d9126/generated/12260012-cf04-5409-b57d-f5b3a46d9126.generated.2026-09-07T15-49-15-635Z.jpg",
+      "candidateDigest": "sha256:7fb42f10c5277b67d977af6aaefaa63726da82b8fa618d6d857066983c82871b",
+      "candidateBytes": 2202663,
+      "viewedActualRaster": true,
+      "viewMethod": "view_image detail=original, complete image",
+      "archivedEvidenceDirectory": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/12260012-cf04-5409-b57d-f5b3a46d9126",
+      "decision": "reject",
+      "readyForImport": false,
+      "summaryDe": "Die Zustandsformeln und v-t-Skizze stimmen. Die Kräftepfeile stellen den behaupteten Grenzzustand jedoch nicht maßstäblich gleich dar.",
+      "checks": [
+        {
+          "part": "Loslassen",
+          "result": "pass_with_concern",
+          "detail": "Freier Ball ohne Kontaktkraft, v=0, F_L=0 und a=g stimmen beim vernachlässigten Auftrieb. Der blaue Gewichtspfeil zeigt nach unten. Zusätzliche schwarze Maßpfeile mit160 sind keine sinnvoll erklärten physikalischen Größen."
+        },
+        {
+          "part": "Beschleunigter Fall",
+          "result": "pass",
+          "detail": "Gewicht nach unten, Luftwiderstand nach oben und sichtbar kleiner; F_L zwischen0 und F_G, zunehmendes v und0<a<g passen zusammen. Die Kräfte beginnen ungefähr am selben Körpermittelpunkt."
+        },
+        {
+          "part": "Grenzzustand",
+          "result": "fail",
+          "detail": "Orange nach oben ist vom gemeinsamen Ansatz bis zur Spitze deutlich länger als Blau nach unten (visuell etwa340 gegenüber250 Bildpunkten). Damit widerspricht das Pfeilbild F_L=F_G und a=0. Außerdem ist der blaue Gewichtspfeil hier deutlich kürzer als in den beiden vorherigen Zuständen desselben Körpers."
+        },
+        {
+          "part": "Zahl-/Maßmarkierungen",
+          "result": "fail",
+          "detail": "Die Zahlen80 und160 wurden als unbenannte Dimensionierung neben den Kraftpfeilen sichtbar gemacht. Im Prompt waren sie nur grafische Längenvorgaben; im Bild fehlen die Bedeutung und physikalische Einheit. Sie reparieren die tatsächlich ungleichen Pfeile nicht."
+        },
+        {
+          "part": "v-t-Skizze",
+          "result": "pass",
+          "detail": "Positive Fallgeschwindigkeit gegen Zeit; Start bei0, monotoner Anstieg mit abnehmender Steigung, Annäherung von unten an v_G ohne Überschwingen oder sichtbaren Schnitt. Die Grenzlinie und Achsen sind richtig bezeichnet."
+        },
+        {
+          "part": "Legende und Modelltext",
+          "result": "pass",
+          "detail": "BlauFG Gewichtskraft, orangeFL Luftwiderstand; positive Richtung nach unten; Auftrieb vernachlässigt; Gegenkraft wächst mit Geschwindigkeit. v=v_G konstant wird nicht als Stillstand bezeichnet."
+        }
+      ],
+      "blockingFindings": [
+        {
+          "code": "UNEQUAL_TERMINAL_FORCES",
+          "location": "Rechtes Kraftpanel",
+          "severity": "substantive",
+          "reason": "Ungleiche entgegengesetzte Pfeile trotz ausdrücklich behauptetem Kräftegleichgewicht; Gewichtskraft verändert ihre sichtbare Größe zwischen Zuständen.",
+          "correctionBoundary": "Einheitlicher Maßstab, gleiche Gewichtspfeillänge in allen Panels und exakt gleich lange Gegenkraft im Grenzzustand."
+        },
+        {
+          "code": "RENDERED_LAYOUT_NUMBERS",
+          "location": "Schwarze Maßpfeile80/160",
+          "severity": "notation",
+          "reason": "Interne grafische Vorgabezahlen erscheinen unbeschriftet als vermeintliche Sachangaben.",
+          "correctionBoundary": "Diese Hilfsmaße entfernen oder durch ausdrücklich fachlich begründete physikalische Angaben ersetzen; keine erfundenen Newtonwerte."
+        }
+      ],
+      "nonBlockingNotes": [
+        "Die v-t-Skizze kann erhalten bleiben; korrekter Text allein rettet das falsche Kräftebild nicht."
+      ],
+      "references": []
+    },
+    {
+      "goalId": "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+      "title": "Bindungsenergie und Massendefekt",
+      "canonicalGoalObjectDigest": "sha256:809ba474e73415c4fc4151f9c98d0cf30c171c874ea6cfe73156ffc786addb0e",
+      "currentDescriptionDe": "Die lernende Person kann Bindungsenergie pro Nukleon und Massendefekt qualitativ erklären und in einfachen Fällen die bei Kernreaktionen freigesetzte Energie berechnen.",
+      "currentDescriptionEn": "The learner can qualitatively explain binding energy per nucleon and mass defect and calculate the energy released in nuclear reactions in simple cases.",
+      "candidatePath": "tmp/goal-visualizations/cde9b548-2cf4-59ad-b5d4-a71872afbe56/generated/cde9b548-2cf4-59ad-b5d4-a71872afbe56.generated.2026-09-07T15-52-15-172Z.jpg",
+      "candidateDigest": "sha256:3117ce9362d1efb1bac051a384890e4b33ed04accdae221cd744fb1aba0c382c",
+      "candidateBytes": 2347140,
+      "viewedActualRaster": true,
+      "viewMethod": "view_image detail=original, complete image",
+      "archivedEvidenceDirectory": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+      "decision": "accept_candidate",
+      "readyForImport": true,
+      "summaryDe": "Teilchenbilanz, Energierichtung, Massendefinitionen und sämtliche Zahlen stimmen.",
+      "checks": [
+        {
+          "part": "Freie und gebundene Teilchen",
+          "result": "pass",
+          "detail": "Links genau zwei p⁺ und zwei n⁰, rechts genau zwei p⁺ und zwei n⁰ im Helium-4-Kern, A=4. Keine Elektronen oder zusätzlichen Nukleonen. Leichte Randüberlappung der Kugeln verbirgt keine Teilchenzahl oder Beschriftung."
+        },
+        {
+          "part": "Richtung und Bindungsbedeutung",
+          "result": "pass",
+          "detail": "Kernbildung von freien Nukleonen zum gebundenen Kern; Energiepfeil nach außen. Zum vollständigen Zerlegen ist E_B zuzuführen. Gleiche Zusammensetzung und kleinere gebundene Ruhemasse sind richtig unterschieden."
+        },
+        {
+          "part": "Massendefektformeln",
+          "result": "pass",
+          "detail": "m_frei=2m_p+2m_n, Δm=m_frei−m_Kern>0 und E_B=Δm c² sind in konsistenter Kernmassenkonvention. Es wird nicht atomare Gesamtmasse mit Kernmasse verwechselt."
+        },
+        {
+          "part": "Rechenbeispiel und Einheiten",
+          "result": "pass",
+          "detail": "Gerundeter Modellwert Δm≈0,0304u; 1u·c²≈931,5MeV ergibt28,3176MeV≈28,3MeV. Division durchA=4 ergibt7,0794MeV≈7,08MeV pro Nukleon; alle Näherungen und Einheiten passen."
+        },
+        {
+          "part": "Lesbarkeit und Bedeutung",
+          "result": "pass",
+          "detail": "Alle Beschriftungen sind lesbar, keine Protonenmasse-Verlustbehauptung und keine falsche Kurve oder zusätzliche ungebundene Sachinformation."
+        }
+      ],
+      "blockingFindings": [],
+      "nonBlockingNotes": [
+        "Die Energiepfeilbeschriftung ist ober- und unterhalb desselben Pfeils redundant. Das ist gestalterisch unnötig, aber kein zweiter Energiefluss und kein fachlicher Ablehnungsgrund.",
+        "Akzeptanz ist nur die eigene Kandidatenbewertung, keine Human-/Publikationsfreigabe."
+      ],
+      "references": []
+    },
+    {
+      "goalId": "6e7c35e0-7a38-5996-a42e-005038eff0db",
+      "title": "Potenzialtopfmodell für Kerne",
+      "canonicalGoalObjectDigest": "sha256:3723b8b5ec5449eb801725b433ce5f3caf6445fd4ba081a368d4ff5d6887b2c5",
+      "currentDescriptionDe": "Die lernende Person kann Potenzialtopfmodelle zur Bindungsenergie qualitativer beschreiben.",
+      "currentDescriptionEn": "The learner can describe potential well models for binding energy qualitatively.",
+      "candidatePath": "tmp/goal-visualizations/6e7c35e0-7a38-5996-a42e-005038eff0db/generated/6e7c35e0-7a38-5996-a42e-005038eff0db.generated.2026-09-07T15-52-15-713Z.jpg",
+      "candidateDigest": "sha256:52b36f88813860a55022792a47166c691051af71c0dc864f124fb8908fc34388",
+      "candidateBytes": 2213934,
+      "viewedActualRaster": true,
+      "viewMethod": "view_image detail=original, complete image",
+      "archivedEvidenceDirectory": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/6e7c35e0-7a38-5996-a42e-005038eff0db",
+      "decision": "accept_candidate",
+      "readyForImport": true,
+      "summaryDe": "Endlicher Topf, Energieniveau und beide Energiedifferenzen sind korrekt und sichtbar maßstäblich getrennt.",
+      "checks": [
+        {
+          "part": "Achsen und Potenzial",
+          "result": "pass",
+          "detail": "Ort x horizontal, Energie/MeV vertikal; lineare negative Energieskala. Beide Außenplateaus und gestricheltes Referenzniveau bei0, Topfboden durchgehend bei−10MeV."
+        },
+        {
+          "part": "Gebundener Zustand",
+          "result": "pass",
+          "detail": "Genau eine grüne horizontale Linie bei−4MeV, zwischen Topfboden und Null. Beschriftung E=−4MeV passt exakt zur Skalierung."
+        },
+        {
+          "part": "Bindungsenergie und Topftiefe",
+          "result": "pass",
+          "detail": "Lila Doppelpfeil von−4 bis0, blau von−10 bis0; sichtbares Längenverhältnis ungefähr4:10. E_B=0−(−4MeV)=4MeV richtig. Der Text verwechselt diese Bindungsenergie nicht mit der10-MeV-Topftiefe."
+        },
+        {
+          "part": "Modellgrenzen",
+          "result": "pass",
+          "detail": "E=0 als freies ruhendes Teilchen außerhalb ist eine konsistente gewählte nichtrelativistische Energiereferenz. Vereinfachtes Einteilchenmodell und keine maßstäbliche Darstellung eines realen Kerns sind ausdrücklich benannt. Keine unzutreffende Coulombbarriere oder Mehrteilchenzahl wird behauptet."
+        },
+        {
+          "part": "Lesbarkeit",
+          "result": "pass",
+          "detail": "Alle Zahlen, Vorzeichen, Subskripte und Pfeilenden sind sichtbar. Die fachliche Unterscheidung bleibt auch ohne Kenntnis des Korrekturprompts nachvollziehbar."
+        }
+      ],
+      "blockingFindings": [],
+      "nonBlockingNotes": [
+        "Der im aktuellen kanonischen Beschreibungssatz noch enthaltene genehmigte Einzelfehler 'qualitativer' ist kein Fehler dieser Bildbytes und wurde hier nicht geändert.",
+        "Ein einziges beispielhaftes Niveau ist zulässig; es wird kein vollständiges Spektrum behauptet."
+      ],
+      "references": []
+    },
+    {
+      "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "title": "Transistorverstärker analysieren",
+      "canonicalGoalObjectDigest": "sha256:07c95dbe0992e6d53f80e139dd1e24908e29088815804a9d352426ed920a3c81",
+      "currentDescriptionDe": "Die lernende Person kann Verstärkerschaltungen aufbauen und Kennlinien interpretieren.",
+      "currentDescriptionEn": "The learner can build amplifier circuits and interpret characteristic curves.",
+      "candidatePath": "tmp/goal-visualizations/af50bb9a-fd7b-50f5-9698-48c4efe99032/generated/af50bb9a-fd7b-50f5-9698-48c4efe99032.generated.2026-09-07T15-52-20-253Z.jpg",
+      "candidateDigest": "sha256:438402ac93ebe6d746bfc077c75cff3c5908a561493786fc09bfdcac619900df",
+      "candidateBytes": 2027693,
+      "viewedActualRaster": true,
+      "viewMethod": "view_image detail=original, complete image",
+      "archivedEvidenceDirectory": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "decision": "accept_candidate",
+      "readyForImport": true,
+      "summaryDe": "NPN-Emitterschaltung mit gegebenem Arbeitspunkt, Ausgangsabgriff und gegenphasigen Wechselanteilen ist fachlich konsistent.",
+      "checks": [
+        {
+          "part": "Transistor und Versorgung",
+          "result": "pass",
+          "detail": "NPN mit vom Basisbereich weg gerichtetem Emitterpfeil; C oben überR_C an+5V, E unten anGND, B links. Die gemeinsame Masse und alle Strompfade sind geschlossen dargestellt."
+        },
+        {
+          "part": "Basiseingang",
+          "result": "pass",
+          "detail": "Gegebene Gleichvorspannung plus kleines Eingangssignal über einen Basisvorwiderstand; keine fehlende Biasversorgung zu unterstellen. Der Text beschränkt auf Arbeitspunkt im aktiven Bereich und kleine Aussteuerung."
+        },
+        {
+          "part": "Ausgang und Gleichung",
+          "result": "pass",
+          "detail": "u_out am Kollektor gegen GND, nicht der Spannungsabfall anR_C. u_out=5V−R_C·I_C und die Kette u_in steigt→I_C steigt→Abfall anR_C steigt→u_out sinkt sind korrekt."
+        },
+        {
+          "part": "Signaldiagramme",
+          "result": "pass",
+          "detail": "Gleiche Perioden und Nullstellzeiten. Bei Eingangsmaxima liegen Ausgangsminima; 180°Phasenumkehr ist tatsächlich gezeichnet, die Ausgangsamplitude größer. Δu_in/Δu_out sind ausdrücklich Wechselanteile um0 um den Gleicharbeitspunkt, also keine unbegründete negative absolute Kollektorspannung."
+        },
+        {
+          "part": "Arbeitspunkt-/Transferdarstellung",
+          "result": "pass_with_scope_note",
+          "detail": "Fallende u_out-gegen-u_in-Darstellung mit markiertem Arbeitspunkt passt zur lokalen Kleinsignalbetrachtung. Sie ist keine vollständige reale Großsignalcharakteristik bis in Sperrung/Sättigung; eine solche wird im begrenzenden Bildtext auch nicht behauptet."
+        },
+        {
+          "part": "Energie und Lesbarkeit",
+          "result": "pass",
+          "detail": "Versorgung als Quelle der Signalenergie korrekt. Bezeichnungen, Formeln, Anschlusskreise, Bezugspotential und Pfeile sind klar lesbar."
+        }
+      ],
+      "blockingFindings": [],
+      "nonBlockingNotes": [
+        "Anders als angefordert starten die gezeichneten Sinuskurven an entgegengesetzten Extrema statt gemeinsamen Nullstellen. Ihre relative Phase bleibt exakt gegenläufig; der willkürliche Zeitursprung ist kein fachlicher Fehler.",
+        "Die optionale fallende Gerade wird ausschließlich im ausdrücklich angegebenen Kleinsignal-/Arbeitspunktkontext akzeptiert, nicht als allgemeine lineare Transistorkennlinie."
+      ],
+      "references": [
+        "https://wiki.analog.com/university/courses/electronics/text/chapter-9"
+      ]
+    }
+  ]
+}

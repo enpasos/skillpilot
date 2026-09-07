@@ -1,0 +1,300 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-b043-current-keep9-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-existing-agent-b043-nonblind-synthesis",
+  "synthesizedAt": "2026-09-07T14:20:03.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-043-differential-equations-transformations-logarithms-20-v1-20260907",
+    "batchManifestDigest": "sha256:76bb172345c40383529e43e65a2ac58b9fa3716419839b5fb28b9086ca918fc4",
+    "configDigest": "sha256:f4df299a3595166201cb84c3958d9a2f72a73f00dadec3e7255236553f968129",
+    "bundleFingerprint": "sha256:0f95671e1c0138ea7b70c3e104c34d20a1fc8c796cdc01cf53e10ef616c2e576",
+    "bookDigest": "sha256:485c4cea5a3cd7a0c671f415536367e707824a1edcca0c8f298957b67bd474b1",
+    "reviewInputFingerprint": "sha256:0c9d3c3da574d2cc9b1ab657506f58d3573b76ba6c1223c78ee1f8115688d016",
+    "dualSummaryDigest": "sha256:edd3b06891c93d28227b0a61fb6bcc5c09219c7040a78eb1545fa71863d02c47",
+    "canonicalLandscapeDigest": "sha256:96e647034cdb5b3e218cdb780c6ba4bc878a1efbcfa06d454172bae3dfa2fc6e"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-043-differential-equations-transformations-logarithms-20-v1-20260907-a",
+      "campaignDigest": "sha256:166bee5b769e6146078ea348f543dbcb890ca40526cf713f6996bb1383876487",
+      "roundId": "mathematik-rollout-v1-batch-043-differential-equations-transformations-logarithms-20-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-043-differential-equations-transformations-logarithms-20-v1-20260907-independent-a",
+      "reviewInputFingerprint": "sha256:0c9d3c3da574d2cc9b1ab657506f58d3573b76ba6c1223c78ee1f8115688d016",
+      "batchId": "mathematik-rollout-v1-batch-043-differential-equations-transformations-logarithms-20-v1-20260907-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:ebcffc43bc8831f96d9d96480c0a95421a8de79e277a718f5b2d046599c17d51",
+      "runId": "math-b043-a-codex-existing-instance-20260907t140701z",
+      "runManifestDigest": "sha256:4b3d4bf7977b12d4e95ed05b8ac35de57f7154f00da7930bb2f5ec54d434c8bb",
+      "resultsDigest": "sha256:a489971dbd40b0f707d812c243d2174ff5857ccf5ff20d5cfcc7d5d3975f1a37"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-043-differential-equations-transformations-logarithms-20-v1-20260907-b",
+      "campaignDigest": "sha256:1842879cb231371ec95f3c46a3dfc97d4dea70ed3e3db8f6de52239d201cd5da",
+      "roundId": "mathematik-rollout-v1-batch-043-differential-equations-transformations-logarithms-20-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-043-differential-equations-transformations-logarithms-20-v1-20260907-independent-b",
+      "reviewInputFingerprint": "sha256:0c9d3c3da574d2cc9b1ab657506f58d3573b76ba6c1223c78ee1f8115688d016",
+      "batchId": "mathematik-rollout-v1-batch-043-differential-equations-transformations-logarithms-20-v1-20260907-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:70161f218ec5e5daf3a851b4310e95c510765be69606496a7d49aa49fab670fb",
+      "runId": "math-b043-first-pass-b-root-20260907",
+      "runManifestDigest": "sha256:a1a3a26ee62ab817852480396823b89864eee6b0736de2ed0c483d17b1e1288f",
+      "resultsDigest": "sha256:2f6a2d35409984830df0b78909fc66d15926fd878dd29a1d848c89e3df466794"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-b043-current-keep9-v1-decision-001",
+      "goalId": "12f4b957-da3d-53d5-a924-45a634ab8d44",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:67b18a25b59137825651c12ec689b6fafa48bf1867ae15db551b19b5ad1d02bc",
+      "pageFingerprint": "sha256:53d26b15cb03f312736b931866df7ea9a5d26841181805831c88eb373466e478",
+      "goalReviewContextFingerprint": "sha256:b5f33a573b0888367e800c1f504f7c8464f388cb62ca92cc2629da132fa52684",
+      "finalText": {
+        "titleDe": "Substitutionsmethode anwenden (LK)",
+        "titleEn": "Apply substitution method (advanced course)",
+        "descriptionDe": "Die lernende Person kann Integrale mithilfe geeigneter Substitutionen vereinfachen und dabei die Veränderung der Integrationsgrenzen korrekt berücksichtigen.",
+        "descriptionEn": "The learner can simplify integrals using suitable substitutions and correctly account for the change of integration limits."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b043-a-12f4b957-da3d-53d5-a924-45a634ab8d44",
+          "recordDigest": "sha256:4e4449a79c97e28b6bc76173834d5ca9d9084a6af17be9f1731e7b5deeacbcc7"
+        },
+        "second": {
+          "recordId": "math-b043-first-pass-b-root-20260907.12f4b957-da3d-53d5-a924-45a634ab8d44",
+          "recordDigest": "sha256:156bad4ad38d2124c748d81d37b5e70ffa28059b752d9fe1855904ac3d4b5270"
+        }
+      },
+      "rationaleDe": "Die Substitution ist in beiden Runden als einheitliche LK-Kompetenz bestätigt. A wird als Evidenzquelle gewählt, weil der Fall einer abnehmenden inneren Funktion die Grenzrichtung strukturell verändert; B nennt lediglich andere Grenzzahlen. Das korrekte aktuelle Bild bleibt unverändert.",
+      "rationaleEn": "Both rounds confirm substitution as one coherent advanced-course competence. A is selected because its decreasing inner function changes the direction of the bounds structurally, whereas B mentions only different bound values. The correct current image remains unchanged."
+    },
+    {
+      "decisionId": "math-b043-current-keep9-v1-decision-002",
+      "goalId": "963907f9-8d4c-5e1c-945d-10b7be07e1b9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3568c82a4062e64a322d0058f6bf4ccea72139bf9debc88fa3c232ba3d03a86b",
+      "pageFingerprint": "sha256:04a2e8972d2a4b4f2e2d4bd2622831a03b076a00d9b7d8d1cb93cbef3d65e318",
+      "goalReviewContextFingerprint": "sha256:818ed8ee83014f175fef21a5a2f9a417737aab93f8ba1a97a837cbe646a894f8",
+      "finalText": {
+        "titleDe": "Richtungsfelder erarbeiten und interpretieren",
+        "titleEn": "Develop and interpret direction fields",
+        "descriptionDe": "Die lernende Person kann Richtungsfelder zu einfachen Differenzialgleichungen erster Ordnung, auch mithilfe digitaler Werkzeuge, erarbeiten, typische Lösungskurven skizzieren und qualitative Aussagen über das Langzeitverhalten treffen.",
+        "descriptionEn": "The learner can develop direction fields for simple first-order differential equations, including with digital tools, sketch typical solution curves, and make qualitative statements about long-term behaviour."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b043-a-963907f9-8d4c-5e1c-945d-10b7be07e1b9",
+          "recordDigest": "sha256:ac7464cb72b1befd19eb98317e01224e8399dba1b1d90162f4080ae6a7678fcd"
+        },
+        "second": {
+          "recordId": "math-b043-first-pass-b-root-20260907.963907f9-8d4c-5e1c-945d-10b7be07e1b9",
+          "recordDigest": "sha256:cac55fcd881a5ef3117029ace1d46e90750987eb09dfd93f2fa9c58b0e120fb6"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Feldsteigungen, Gleichgewicht und Lösungsskizzen. Die fehlende numerische t-Skala ist bei dieser ausdrücklich qualitativen Darstellung kein Befund. A ergänzt mit instabilem statt stabilem Gleichgewicht einen eigenständigen Transfer; keine allgemeine Lösungsverfahrenspflicht.",
+      "rationaleEn": "Both rounds confirm field slopes, equilibrium and solution sketches. Absence of a numerical t-scale is not a defect in this qualitative representation. A adds independent transfer from stable to unstable equilibrium without requiring a general solution method."
+    },
+    {
+      "decisionId": "math-b043-current-keep9-v1-decision-003",
+      "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1bb95326194cbfc799dca9293ce1d26625d371b2dd2f1377da6a23ae334c873d",
+      "pageFingerprint": "sha256:0e6713603d062145b53913d2c5726f21c33d11d1e671570790c9c6fd027f1046",
+      "goalReviewContextFingerprint": "sha256:a7a8c6dc853ff4f83ab813f4582ee5b9c5d7b1191314202942cfd584da30337a",
+      "finalText": {
+        "titleDe": "Differenzialgleichungen erster Ordnung elementar lösen",
+        "titleEn": "Solve first-order differential equations with elementary methods",
+        "descriptionDe": "Die lernende Person kann geeignete Differenzialgleichungen erster Ordnung durch Separation der Variablen und andere elementare Lösungsmethoden lösen, allgemeine und spezielle Lösungen gewinnen und Anfangsbedingungen berücksichtigen.",
+        "descriptionEn": "The learner can solve suitable first-order differential equations by separation of variables and other elementary solution methods, obtain general and particular solutions, and account for initial conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b043-a-28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+          "recordDigest": "sha256:9d680a3fbb32bd8c0d5d5a6c7de9fc906906722a37d903b339f1fbdd4fae1deb"
+        },
+        "second": {
+          "recordId": "math-b043-first-pass-b-root-20260907.28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+          "recordDigest": "sha256:3df24d2ff3bf8e5961965e1b6a3197f8d5fa2ec951ac2fa526256b23b260dd12"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die elementare DGL-Lösung und den ausdrücklich positiven Bildfall; ln(P) ist dort zulässig. A liefert einen strukturell geänderten separierbaren Fall samt Null-Lösungskontrolle. Allgemeine und besondere Lösung bleiben Aspekte derselben Kompetenz.",
+      "rationaleEn": "Both rounds confirm elementary differential-equation solving and the explicitly positive example, where ln(P) is valid. A supplies a structurally changed separable case with a zero-solution check. General and particular solutions remain facets of the same competence."
+    },
+    {
+      "decisionId": "math-b043-current-keep9-v1-decision-004",
+      "goalId": "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:67de6bb3e45275199dd969cf7d8a1066e9574daf3ce5190e060348ee0f8ee23b",
+      "pageFingerprint": "sha256:1bebc170cc21a6736e7126d1b00f7dc1bb5e1b8cfe7623206f25232ff4276a95",
+      "goalReviewContextFingerprint": "sha256:2e1e434710f19e6219f4758636d70732cf4a66c5c91ddc9d4fbdbef6f48488f0",
+      "finalText": {
+        "titleDe": "Wurzelfunktionen beschreiben und darstellen",
+        "titleEn": "Describe and represent root functions",
+        "descriptionDe": "Die lernende Person kann die einfache Wurzelfunktion $f(x)=\\sqrt{x}$ in Definitions- und Wertebereich beschreiben, charakteristische Punkte angeben und den Graphen skizzieren.",
+        "descriptionEn": "The learner can describe the simple square-root function $f(x)=\\sqrt{x}$ in terms of domain and range, identify key points, and sketch its graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b043-a-5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+          "recordDigest": "sha256:23595c5171db22d34450bc61aed4a0472037a5544e8c7ecfebd7942a0fd02d5d"
+        },
+        "second": {
+          "recordId": "math-b043-first-pass-b-root-20260907.5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+          "recordDigest": "sha256:a5da2202aa9f55183f0fa86b2803a0c6db72933d12c8ce59cdcfed07f78f5294"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Hauptwurzel und die korrekten Stützpunkte. A wird für die begründete Umkehrung einer unvollständigen Wertetabelle gewählt; B ergänzt als gleichgerichtete Erläuterung die Trennung von √9 und y²=9. Kein Ableiten als Zusatzpflicht.",
+      "rationaleEn": "Both rounds confirm the principal square root and the correct support points. A is selected for justified inversion of an incomplete value table; B adds the compatible distinction between √9 and y²=9. Differentiation is not added as a requirement."
+    },
+    {
+      "decisionId": "math-b043-current-keep9-v1-decision-005",
+      "goalId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:17b6d3d5136b29463d8ef6d8817ca2d5fec9b8a0f34e0ee6b39b074910d64528",
+      "pageFingerprint": "sha256:341ff72e7fc11854f9503132d8a856a6deaa924f313c00d9c854130366d30289",
+      "goalReviewContextFingerprint": "sha256:f1b8a27e20da61a40e6d97cd670596288f0f669d5cd43d24bd00578f4ed5d6a4",
+      "finalText": {
+        "titleDe": "Verschiebungen von Funktionsgraphen beschreiben",
+        "titleEn": "Describe shifts of function graphs",
+        "descriptionDe": "Die lernende Person kann Verschiebungen von Funktionsgraphen in x- und y-Richtung anhand von Parametern im Funktionsterm beschreiben und grafisch darstellen.",
+        "descriptionEn": "The learner can describe shifts of function graphs in the x and y directions using parameters in the function term and represent them graphically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b043-a-dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+          "recordDigest": "sha256:9f3608ea7b5c8888908bcbd49c628c32e56d0b6d4ec3e501c713a407a634d2da"
+        },
+        "second": {
+          "recordId": "math-b043-first-pass-b-root-20260907.dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+          "recordDigest": "sha256:4e640785d3314e80bb64036951719f0c725eb1a65882315035f404fd8c3ece9c"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Verschiebungszuordnung und die aktuellen Parabelbeispiele. A wird gewählt, weil die Übertragung auf einen nur punktweise bekannten nichtparabolischen Graphen das Verständnis unabhängig vom vertrauten Bild prüft; die umgekehrte Richtung aus B bleibt kompatibel.",
+      "rationaleEn": "Both rounds confirm the shift mapping and the current parabola examples. A is selected because transfer to a non-parabolic graph known only through points checks understanding independently of the familiar image; B's reverse-direction formulation is compatible."
+    },
+    {
+      "decisionId": "math-b043-current-keep9-v1-decision-006",
+      "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a23e3293dcf9cd787b1d702666e17dcdbec1ecc57f253726c099377855e7eedb",
+      "pageFingerprint": "sha256:fc8ce36be0fe4c97f55ec2b32b2ef101e9e62d05ed408e35d8b6ce4d819519fb",
+      "goalReviewContextFingerprint": "sha256:1dbe709fd1c89fe690967a7f3e2b937d8beb0eb376198a537178a5a62f76074f",
+      "finalText": {
+        "titleDe": "Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)",
+        "titleEn": "Explain the natural logarithm as the inverse of the exponential function (advanced course)",
+        "descriptionDe": "Die lernende Person kann $\\ln(x)$ als Umkehrfunktion von $e^x$ erklären und die gegenseitige Zuordnung der Graphen durch Spiegelung an der Geraden $y=x$ darstellen.",
+        "descriptionEn": "The learner can explain $\\ln(x)$ as the inverse of $e^x$ and represent the relationship between their graphs as reflection in the line $y=x$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b043-a-06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+          "recordDigest": "sha256:c49407001963b4216a56f8c4468303965d00784e720cc620d50a3ac0b7968588"
+        },
+        "second": {
+          "recordId": "math-b043-first-pass-b-root-20260907.06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+          "recordDigest": "sha256:c6742f835cabe3c5edfb20d4a1d43843b5f6b168b3195dfd6de8d16d4f37ea23"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die inverse Zuordnung exp/ln ohne fehlendes Bild zum Fehler zu erklären. A konkretisiert den Koordinatentausch bei einem negativen Exponenten; die Definitionsbedingung positiver ln-Argumente aus B bleibt ausdrücklich erhalten. Keine Behauptung eines zweiten Modellanbieters.",
+      "rationaleEn": "Both rounds confirm the inverse exp/ln mapping without treating the absent image as a defect. A makes coordinate exchange concrete for a negative exponent; B's positive-domain condition for ln is retained explicitly. No second model provider is claimed."
+    },
+    {
+      "decisionId": "math-b043-current-keep9-v1-decision-007",
+      "goalId": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23d05f56be6cfabe2d4cfaebb23f7643d0af9ab86456780b6ac03e3f06005dc5",
+      "pageFingerprint": "sha256:6cfdef4e03b123665a0e1ddbee81835495fbd2539d59d1bec6673ebe7e855f2a",
+      "goalReviewContextFingerprint": "sha256:273da31794bfa03a57cd2b55bf5a626f9827439432c931c4f4b58b10db3ed365",
+      "finalText": {
+        "titleDe": "Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK)",
+        "titleEn": "Explain basic properties of the natural logarithm function (advanced course)",
+        "descriptionDe": "Die lernende Person kann Definitions- und Wertemenge, Nullstelle, Monotonie und Randverhalten der natürlichen Logarithmusfunktion aus ihrer Umkehrbeziehung zur e-Funktion begründen.",
+        "descriptionEn": "The learner can justify the domain, range, zero, monotonicity, and end behaviour of the natural logarithm function from its inverse relationship with the exponential function."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b043-a-04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+          "recordDigest": "sha256:a9e333e1fbcb145742e5e059f46b118241f8d729c838328b027907c695ca5928"
+        },
+        "second": {
+          "recordId": "math-b043-first-pass-b-root-20260907.04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+          "recordDigest": "sha256:270c0b21fd551102348527527acfff06ebcfafacb2c83b4c3ff122cd81aaa5be"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Eigenschaften als zusammenhängende Folgerungen der Umkehrbeziehung. A wird wegen der aus Exponentialschranken hergeleiteten ln-Ungleichung als konkreter Transfer gewählt. Das gesamte Randverhalten wird weiterhin begründet und nicht zu einer Merkliste verkürzt.",
+      "rationaleEn": "Both rounds confirm the properties as connected consequences of inversion. A is selected for the concrete transfer from exponential bounds to a logarithmic inequality. Both end behaviours remain justified rather than reduced to a memorised list."
+    },
+    {
+      "decisionId": "math-b043-current-keep9-v1-decision-008",
+      "goalId": "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:25ad1509044377c0f82e31a3fbf087cc508dfd345fbcf58f344197d997254a5b",
+      "pageFingerprint": "sha256:52de6a0d55dc1af9bdff91bf3bcaf5c370cd0caf84fc66faf7eed2c0f43c2ca6",
+      "goalReviewContextFingerprint": "sha256:82507e38900041cbd5fdacc4a506e98b40e4fda0eba2e52b2de314405d505d6f",
+      "finalText": {
+        "titleDe": "Transformationen von Logarithmusgraphen deuten (LK)",
+        "titleEn": "Interpret transformations of logarithm graphs (advanced course)",
+        "descriptionDe": "Die lernende Person kann einfache Streckungen und Verschiebungen des Graphen einer Logarithmusfunktion in x- und y-Richtung aus dem Funktionsterm erkennen und deuten.",
+        "descriptionEn": "The learner can identify and interpret simple stretches and horizontal or vertical shifts of a logarithm graph from its function expression."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b043-a-8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
+          "recordDigest": "sha256:7aa39c81d4be73c62476e61083231e260af3d3e6cd45afeef80a949623c439d3"
+        },
+        "second": {
+          "recordId": "math-b043-first-pass-b-root-20260907.8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
+          "recordDigest": "sha256:941d18d79a7a3ea0dcf71c3edba1a7f78f29596e5fa3240e29b6e20d4bfd56a4"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen einfache Logarithmustransformationen. A bindet Faktoren und Verschiebungen durch eine konkrete Punktabbildung; B ergänzt passend die Positivität des Arguments und die verschobene Asymptote. Keine unbeanspruchte Reflexions- oder Logarithmengesetzpflicht.",
+      "rationaleEn": "Both rounds confirm simple logarithm transformations. A binds factors and shifts through a concrete point mapping; B compatibly emphasises argument positivity and the shifted asymptote. No unclaimed reflection or logarithm-law requirement is added."
+    },
+    {
+      "decisionId": "math-b043-current-keep9-v1-decision-009",
+      "goalId": "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:752e24652005e449c52d039959b2b8c443ba0affeb750ad2d0208b667fea95b8",
+      "pageFingerprint": "sha256:74721d9b56d670deeb79a8fc76ee3c1a319bf3428724445d895e8b7be5d8456b",
+      "goalReviewContextFingerprint": "sha256:f023118319f1c3e6e3b9e843df97e0d6c2c6ea6eb8d76acf8f5a3429d643caa1",
+      "finalText": {
+        "titleDe": "Parameter in Analysisaufgaben nutzen, bestimmen und begründen",
+        "titleEn": "Use, determine, and justify parameters in analysis problems",
+        "descriptionDe": "Die lernende Person kann Parameter in Funktionen nutzen, um Lage und Form des Graphen zu beeinflussen, Parameterwerte aus Bedingungen ableiten und Ergebnisse begründen.",
+        "descriptionEn": "The learner can use parameters in functions to influence the position and shape of the graph, derive parameter values from conditions, and justify results."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b043-a-972cc7e8-be9c-444c-ba45-98e817b3cf14",
+          "recordDigest": "sha256:f1e0915bcf35f52daef0757be3907ff24e316de60b3826db7118944bbfa5d310"
+        },
+        "second": {
+          "recordId": "math-b043-first-pass-b-root-20260907.972cc7e8-be9c-444c-ba45-98e817b3cf14",
+          "recordDigest": "sha256:3c9ac92a07e3f3bc24f04d88182aeb18bba30e19e0fb46c0b39bc72e8b7dfdd1"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Parameterrechnung und die Bedingungsprüfung. Das linke qualitative Familienbild variiert a und b; ein gleicher b-Wert aller Kurven wird nicht behauptet. A wird wegen des konkreten Falls redundanter symmetrischer Punktbedingungen gewählt.",
+      "rationaleEn": "Both rounds confirm the parameter calculation and checking of conditions. The qualitative family sketch varies both a and b; it does not assert one fixed b for every curve. A is selected for the concrete case of redundant symmetric point conditions."
+    }
+  ],
+  "manifestFingerprint": "sha256:744dbb050376c903c3045f8b03f5a61974ddc01cfcf3a5868be7f2de1e3096cf"
+}

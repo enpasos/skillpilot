@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "runId": "math-b042-independent-a-codex-20260907T130411Z",
+  "reviewerAgent": "/root/goal_book_ci_integration",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "actualStartedAt": "2026-09-07T13:04:11Z",
+  "actualCompletedAt": "2026-09-07T13:22:07Z",
+  "pauses": [
+    {
+      "start": "2026-09-07T13:06:57Z",
+      "end": "2026-09-07T13:09:05Z",
+      "purpose": "Separate one-goal Physics040t follow-up review; no Math-B outputs consulted."
+    }
+  ],
+  "independence": {
+    "existingAgentInstance": true,
+    "newThread": false,
+    "priorContext": "Existing coordinator with Math386/B041 work and a separate Physics040s/040t follow-up. No prior D/P judgments for these twenty B042 goals or current B042 round-b files were read.",
+    "currentCounterRoundRead": false,
+    "blindnessScope": "Independent current B042 first-pass-A; all own judgments written before any exchange of current round-B findings. No fresh-thread or distinct-model claim.",
+    "modelDiversityClaimed": false,
+    "modelIdentifierLimitation": "Underlying exact model identifier is not exposed; neutral alias is intentionally identical across independent agents."
+  },
+  "inputs": {
+    "directory": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042-calculus-models-growth-and-integration-20-v1/round-a",
+    "bundleFingerprint": "sha256:a664052bd73604efc0396ee00280f1009dfefe87c4a322b1fafe37035f2cd31d",
+    "bookDigest": "sha256:35c6ce0ee9b2cbc8ccae5e676ca2ac4ea444b16ce3f2dfeb012f082577d12dc1",
+    "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+    "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+    "recordSchemaDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "batchId": "mathematik-rollout-v1-batch-042-calculus-models-growth-and-integration-20-v1-20260907-first-pass-a.batch-001",
+    "batchInputFingerprint": "sha256:87d73c0abd0a2c40edd421559faafe361e1d99c791277ad1de76e62d9b2b151f"
+  },
+  "procedure": [
+    "Read own prepared prompt, criteria, record/run schemas, campaign and all twenty complete current goal/page/canonical-context input records.",
+    "Actually viewed each of the fifteen referenced raster images through the image viewer; five inputs have no image. The image hashes were independently checked against the prepared bindings after viewing.",
+    "Authored a separate rationale and six bilingual positive-understanding evidence fields per goal; kept block/revise cases explicit rather than converting counterevidence into completion.",
+    "Manually checked displayed equations, derivative/integral examples, asymptotes, graph values/order, assumptions, DE/EN scope and structural transfer. No live learner performance, human approval or complete external source audit claimed."
+  ],
+  "images": [
+    {
+      "goalId": "281e0c6e-d06d-580f-8443-4369f0ea524b",
+      "path": "app/public/assets/goal-visualizations/mathematik/281e0c6e-d06d-580f-8443-4369f0ea524b/281e0c6e-d06d-580f-8443-4369f0ea524b.jpg",
+      "digest": "sha256:d7c738cdb480b20b96b307ba30e7ea34fbc360c64829db93648cc94ad420183f",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "path": "app/public/assets/goal-visualizations/mathematik/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.jpg",
+      "digest": "sha256:f9170f149f0f14adaa95e0f8480fff32c791119a9f7c25866e3839764a4db23e",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+      "image": null
+    },
+    {
+      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "path": "app/public/assets/goal-visualizations/mathematik/0b162cb0-8507-5ac2-b9d6-57f40f4d3f35/0b162cb0-8507-5ac2-b9d6-57f40f4d3f35.jpg",
+      "digest": "sha256:532ff015057db5c336b05c7710accabc0d2a8879a218f31b2f5b69231050cce1",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "path": "app/public/assets/goal-visualizations/mathematik/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2.jpg",
+      "digest": "sha256:defdc7c70cfc1d3eb76f91ec4bb6b2a70b516eab38a569a68e483034b1768872",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+      "path": "app/public/assets/goal-visualizations/mathematik/2713980f-75d2-5455-a8cb-bcd3888c49a0/2713980f-75d2-5455-a8cb-bcd3888c49a0.jpg",
+      "digest": "sha256:4ef85ed77276a421e32056bc58557d7e386e3ec0d39fc8404242bc5c70118c32",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c",
+      "path": "app/public/assets/goal-visualizations/mathematik/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c.jpg",
+      "digest": "sha256:a98fb4c5d79cb97507dea8569b0afce4e5908f6891b1caf3d1283f5d2a691281",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4",
+      "path": "app/public/assets/goal-visualizations/mathematik/93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4/93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4.jpg",
+      "digest": "sha256:6160346440213d87a4eefbb272c62a47badc1e0ecf67dfdb1d1eb0b6a6460de2",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "4ae9e316-509f-517d-bd94-a165817af24f",
+      "image": null
+    },
+    {
+      "goalId": "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+      "path": "app/public/assets/goal-visualizations/mathematik/ccd83f05-a0ae-4cd1-8917-24793a219fee/ccd83f05-a0ae-4cd1-8917-24793a219fee.jpg",
+      "digest": "sha256:5a1d076573527274e7ff29dc33545f4d39ae1b0beed04402ca41ba31101a58a4",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "886caebc-a042-4a94-91f9-6dc184203c42",
+      "path": "app/public/assets/goal-visualizations/mathematik/886caebc-a042-4a94-91f9-6dc184203c42/886caebc-a042-4a94-91f9-6dc184203c42.jpg",
+      "digest": "sha256:cba6a767ef8da49baa56c485622c93a8f6f213e72a244dfe4f7a11f87726b364",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+      "path": "app/public/assets/goal-visualizations/mathematik/848af536-c7e5-4df0-a4e9-d5d0ff15244c/848af536-c7e5-4df0-a4e9-d5d0ff15244c.jpg",
+      "digest": "sha256:04612005a10c23d5a52661c0d2c43e55674aff47b89c2562bd7b9b1f2ddfd80a",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298",
+      "image": null
+    },
+    {
+      "goalId": "164921f6-3bf7-5efc-a438-ea4759dca9ef",
+      "image": null
+    },
+    {
+      "goalId": "b71c332f-ef9d-5c27-983b-7103269ff419",
+      "image": null
+    },
+    {
+      "goalId": "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+      "path": "app/public/assets/goal-visualizations/mathematik/df7338ef-65ba-5ece-8aec-7f520dfe5710/df7338ef-65ba-5ece-8aec-7f520dfe5710.jpg",
+      "digest": "sha256:ceeb85e1f91ca25d8c57cc546a45ba0686b6f088aa2cef4d7123af5110e9679e",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "dc3c6e19-8ac2-532c-8d64-ca6e3d3f5cd9",
+      "path": "app/public/assets/goal-visualizations/mathematik/dc3c6e19-8ac2-532c-8d64-ca6e3d3f5cd9/dc3c6e19-8ac2-532c-8d64-ca6e3d3f5cd9.jpg",
+      "digest": "sha256:3809c8f4e33ccdb162345caf830508dcb6e53e44532d21a438d41ca6e44a89f2",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "d108ec1f-2c8f-5267-be75-10e1b77edd7a",
+      "path": "app/public/assets/goal-visualizations/mathematik/d108ec1f-2c8f-5267-be75-10e1b77edd7a/d108ec1f-2c8f-5267-be75-10e1b77edd7a.jpg",
+      "digest": "sha256:e38fbae440f54289d0eaf5d20c4c16b4213ecca5241b515a349a7c90657e74e9",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "5ccf0d90-2967-576e-8f72-f002792d8515",
+      "path": "app/public/assets/goal-visualizations/mathematik/5ccf0d90-2967-576e-8f72-f002792d8515/5ccf0d90-2967-576e-8f72-f002792d8515.jpg",
+      "digest": "sha256:fe40ad87d4f5e7ca1e95c92d4fa2ba00113f610f8e00c0a24b0a146d97e2bdf7",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    },
+    {
+      "goalId": "6d89d813-29dc-5e76-b004-98ed6b6fe8ce",
+      "path": "app/public/assets/goal-visualizations/mathematik/6d89d813-29dc-5e76-b004-98ed6b6fe8ce/6d89d813-29dc-5e76-b004-98ed6b6fe8ce.jpg",
+      "digest": "sha256:a9cd474cdfbd118094c166a4915c76c374c29cf76a0838e74d75045c2d8077fa",
+      "actuallyViewed": true,
+      "actualDigestCheckedEqual": true
+    }
+  ],
+  "decisions": {
+    "keep": 13,
+    "revise": 1,
+    "block": 6
+  }
+}

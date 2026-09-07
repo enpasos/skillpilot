@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "review-archive-location-receipt-v1",
+  "relocatedAt": "2026-09-07T16:30:57Z",
+  "agent": "/root/goal_book_ci_integration",
+  "reason": "The unchanged Python schema discovery deliberately treats unrecognized top-level goals collections as potential malformed curricula. These four review/staging/before-image artifacts are not curricula. Preserve their exact original bytes under .json.snapshot, rather than weaken curriculum discovery or schemas.",
+  "files": [
+    {
+      "from": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/plan-and-original-findings.json",
+      "purpose": "Four-goal staging plan and original findings, not a SkillLandscape.",
+      "to": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/plan-and-original-findings.json.snapshot",
+      "sha256": "8c158ff2f093d42fa75988e909e5ed427df9cadb92ff72741610572cfb32351a"
+    },
+    {
+      "from": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/first-four-staging-plan-v1.json",
+      "purpose": "Four-goal no-import staging plan, not a SkillLandscape.",
+      "to": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/first-four-staging-plan-v1.json.snapshot",
+      "sha256": "7bcc3dcd16fd66a5255efa9d245f83d31330b22409885dae69ac1608512cc83f"
+    },
+    {
+      "from": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/request-context-and-arithmetic.receipt.json",
+      "purpose": "Sealed independent-review context and arithmetic receipt, not a SkillLandscape. Original independent-v1-review.json reference remains historically immutable.",
+      "to": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/v1-evidence/request-context-and-arithmetic.receipt.json.snapshot",
+      "sha256": "ab4331db9c5c2f20214197a48d92cb349fa131e154968584b5d5bd8dfa8de5a2"
+    },
+    {
+      "from": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/archive-before-adoption-v1/original-eight-goals-and-qa.json",
+      "purpose": "Historical eight-goal/QA/A-M before-image, not a SkillLandscape. Original archive-receipt.json and wording review references remain historically immutable.",
+      "to": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/archive-before-adoption-v1/original-eight-goals-and-qa.json.snapshot",
+      "sha256": "93320dc6c5433703cb4f4af571b0f0d6e7a35563256dfffb56324cb4d5c1a6ea"
+    }
+  ],
+  "preservedHistoricalReferences": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b042-eight-image-repairs-v1/independent-v1-review.json",
+      "sha256": "0680e2d6feb2eb592fc4bf673db624d13f6ffabb486ef4f7298af13043939766"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/current-two-wording-am-review-v1.json",
+      "sha256": "8049478839a484f2edf5966cf66ffd25ed700377164293d7cfdb2c310697a76d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/archive-before-adoption-v1/archive-receipt.json",
+      "sha256": "8cf1db1b8dc390b265900177f2e676285017b7c86612927192657661c64e78a3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/archive-before-adoption.mjs",
+      "sha256": "2c3824d6916b66bfe904d484e62d8c2ae00e90e33014fa0cdedae2fe7f313e99"
+    }
+  ],
+  "originalBytesPreserved": true,
+  "canonicalSourcesChanged": false,
+  "validatorChanged": false,
+  "previousRelocationReceipt": "curricula/DE/Gymnasium/quality/goal-description-review/2026-09-07-ci-archive-relocations-v1.json",
+  "previousReceiptUnchanged": true,
+  "referencePolicy": "Historical records and the one-shot archive creation recipe retain their original bytes and historical paths. Current archive-verification consumers resolve only the explicit matching path in this receipt and require identical original SHA-256. Do not rerun old source-adoption or retirement operations as a validation step."
+}

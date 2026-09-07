@@ -1727,3 +1727,236 @@ Die Wiederaufnahme ist dokumentiert; **Bearbeitung nach diesem Checkpoint
 angehalten. Kein neuer Batch, kein Commit, Push oder Deployment.** Nach dem
 Nutzer-Commit zunächst dessen CI-Ergebnis prüfen, dann auf erneute Anweisung
 an den oben reservierten offenen Arbeiten weiterarbeiten.
+
+### Wiederaufnahme nach Commit 837745c69 — 7. September 2026
+
+Der Product Owner beauftragt erneut ausdrücklich, Mathematik und Physik auf
+100 Prozent zu bringen. Der vorherige commit-fähige CI-/Build-/Textstand ist
+als `837745c69` eingecheckt; der Arbeitsbaum war beim Wiedereinstieg sauber.
+Die vorherige Unterbrechung diente der Quellenbuild-/Historien- und
+CI-Korrektur, nicht einem weiteren fachlichen QS-Abschluss. Der vorherige
+Schritt war damit Implementierungsfortschritt, aber kein Nettozuwachs bei
+streng abgeschlossenen Lernzielen.
+
+Der erneut ausgeführte native Fünf-Gate-Check zeigt Mathematik **370/797
+(46,4 Prozent)** und Physik zunächst **396/465 (85,2 Prozent)**. Alle fünf
+technischen Blocker betreffen ausschließlich den nach der einzeln geprüften
+Schreibkorrektur veralteten Fotoeffekt-Nachweis `cb0e05ff`. Die ungültige
+P-Bindung dieses einen Ziels sperrt konservativ dessen gesamtes 15er-Profilpaket;
+die anderen 14 Profile sind dadurch nicht fachlich schlechter geworden.
+Keine historischen Reviewrecords werden zur Beseitigung dieser Sperre
+nachträglich umgeschrieben oder als neue Reviews ausgegeben.
+
+Die beiden aktuellen Ein-Ziel-Pakete B040s reservieren vor Reviewbeginn:
+
+- Mathematik `3862890e`: neue Beschreibung-/Seitenprüfung mit der bereits
+  übernommenen finalen Integralgrafik; das bestehende aktuelle P-Profil bleibt
+  erhalten. Der alte B040h-Claim wird ersetzt, nicht doppelt vergeben.
+- Physik `cb0e05ff`: zwei aktuelle unabhängige Beschreibungsprüfungen und eine
+  gezielte P-Kontextnachführung nach `Fotöffekt` → `Fotoeffekt`; unveränderte
+  Nachweise der anderen 14 Ziele werden erhalten.
+
+Die früher genannten B033/B033z-Pakete werden nicht neu gestartet. B041,
+Kosmologie und die übrigen dokumentierten Fach-Holds bleiben reserviert.
+Die ausdrücklich beanstandeten Beugungsziele bleiben ungeachtet älterer
+positiver Registereinträge ein verpflichtender offener Prüfschritt vor einem
+100-Prozent-Anspruch. Es werden weder neue Lernendenfreigaben behauptet noch
+Klassen-, Runtime-, Plugin- oder Sicherheitsverträge verändert.
+
+#### Aktuell nativ bestätigter Fortschritt dieser Wiederaufnahme
+
+Der Fünf-Gate-Check vom 7. September zeigt nach Registrierung der gezielten
+Pakete **Mathematik 375/797 (47,1 Prozent)** und **Physik 410/465
+(88,2 Prozent)**, ohne technische Blocker. Gegenüber dem oben genannten
+Einstiegsstand sind das fünf neu abgeschlossene Mathe-Ziele und vierzehn
+wieder korrekt erfasste unveränderte Physik-Ziele. Die vierzehn sind keine
+vierzehn neuen fachlichen Reviews: Ihre zuvor gültigen D-/P-Nachweise wurden
+als exakter aktueller Teilbestand vom tatsächlich veralteten Fotoeffekt-Ziel
+getrennt. Historische Records und die früheren Paketentscheidungen bleiben
+unverändert erhalten.
+
+- Mathe B040s: `3862890e` ist nach zwei getrennten aktuellen KEEP-Prüfungen
+  einschließlich der finalen Integralgrafik streng abgeschlossen. Der
+  zugehörige aktive Ein-Ziel-Claim ist entfernt.
+- Mathe B041: `649b673c`, `e9114fc2`, `647888d2` und `0f180645` sind mit
+  aktuellem Vierer-D-Index und einem einzeln gegengeprüften V2-Profilteilpaket
+  abgeschlossen. Die übrigen sechs B041-Ziele bleiben offen. Die neue
+  Profil-Gegenprüfung unterscheidet insbesondere vorgegebene Integralgleichungen
+  von zusätzlicher Modellierungsanforderung und Querschnittsflächen von
+  Scheibenvolumina. Sie ist keine nachträgliche Freigabe alter Profilbytes.
+- Physik Fotoeffekt: Die alte Grafik und eine ebenfalls fehlerhafte erste
+  Nano-Banana-Korrektur sind getrennt archiviert. Die zweite Fassung ohne
+  irreführende elektrische Schaltung hat eine eigenständige Bildprüfung
+  bestanden und ist nativ importiert. Der neue B040t-Claim ersetzt B040s;
+  aktuelle Beschreibungs-Folgeprüfungen sind bis zu ihrem Abschluss offen.
+  Das durch den Bildlink tatsächlich veraltete P040s-Profil wird nicht
+  rückwirkend umgeschrieben, sondern durch eine neue P040t-Kontextbindung
+  ersetzt. Der Profilinhalt bleibt unverändert; eine menschliche Freigabe
+  wird nicht behauptet.
+- Mathe B042 reserviert zwanzig weitere Ziele zu Analysis-Modellen,
+  Wachstum und Integration. Runde B ist mit zwanzig fingerprintgebundenen
+  Kandidaten nativ validiert; die getrennte Runde A läuft noch. Die
+  Bildsichtung hat konkrete Achsen-, Kurven- und Erklärungskonflikte gefunden.
+  Zwei eng begrenzte Nano-Banana-Korrekturen werden zunächst ausschließlich
+  als temporäre Kandidaten erzeugt; ohne Gegenprüfung gibt es keinen Import.
+
+Die neun geschützten Curriculum-Reifegrad-Untergrenzen und das aktualisierte
+KI-Transparenzinventar sind nach dem Fotoeffekt-Import nativ geprüft und
+bestanden. Der Gesamtauftrag bleibt aktiv; dieser Stand ist weder ein
+100-Prozent-Abschluss noch eine Veröffentlichung oder Deploymentmeldung.
+
+Der anschließende native Check bestätigt nach vollständiger B040t-Registrierung
+**Physik 411/465 (88,4 Prozent)**, Mathematik unverändert **375/797
+(47,1 Prozent)**, weiterhin ohne technische Blocker. Fotoeffekt gewinnt damit
+einen streng abgeschlossenen Eintrag zurück. Beide neuen D-Folgeprüfungen
+sind dokumentiert, die aktuelle P-Fassung enthält zusätzlich einen konkret
+nachgerechneten Materialwechsel-Fall; alte Profilfälle bleiben unverändert.
+Der B040t-Claim ist geschlossen. Das nächste Physik-Paket B041 reserviert die
+vier vorhandenen Beugungsziele entsprechend dem dokumentierten begrenzten
+Konsolidierungsplan; es ersetzt keine unabhängigen Reviews durch bloße neue
+Hashbindungen.
+
+#### B042-Teilabschluss und verpflichtende Beugungskorrektur
+
+Der folgende native Fünf-Gate-Check bestätigt **Mathematik 387/797
+(48,6 Prozent)** und **Physik 407/465 (87,5 Prozent)**, ohne technische
+Blocker. Mathematik gewinnt zwölf weitere aktuelle Abschlüsse aus B042:
+zwei getrennt versiegelte Beschreibungsrunden, ein nativ erneut geprüfter
+Zwölfer-D-Index und zwölf neue V2-Profile mit 24 konkreten bilingualen Fällen.
+Eine unabhängige vollständige Body-Gegenprüfung bestätigt insbesondere
+Rechnungen, strukturellen Transfer, Modellgrenzen und die Übereinstimmung
+von Aufgaben und Erwartungen. E1/G1 und `ai_candidate` sind keine
+menschliche Freigabe und kein Nachweis tatsächlicher Lernendenleistung.
+
+Physik sinkt gezielt um vier, weil die ausdrücklich beanstandeten bestehenden
+Beugungsziele vor ihrer fachlichen Korrektur aus den aktuellen D-/P-Indizes
+genommen wurden. Die gültigen übrigen Ziele der betroffenen historischen
+Pakete sind als genaue Teilbestände erhalten; alte Entscheidungen bleiben
+unverändert dokumentiert. Die vier sind verpflichtend offen, nicht
+versehentlich als erledigt weitergezählt.
+
+Mathe B042r reserviert die acht verbleibenden lokalen Korrekturfälle und
+ersetzt den alten Zwanziger-Claim; die zwölf abgeschlossenen Ziele werden
+nicht erneut geprüft. Sechs Fälle betreffen belegte Bildfehler, zwei die
+Beschreibung uneigentlicher Integrale beziehungsweise eine falsche
+englische Übersetzung. Nano Banana bleibt erste Wahl. Nur bei zwei
+tatsächlich gescheiterten gezielten Korrekturen wird ein eng begründeter,
+separat geprüfter berechneter Ersatz erstellt. Mathematik B043 reserviert
+zwanzig bislang unbeanspruchte Ziele zu Differenzialgleichungen,
+Transformationen und Logarithmen; Vorbereitung erfolgt auf dem nächsten
+stabilen Quellenstand. Der Auftrag läuft weiter.
+
+### Nutzerpause und Commit-Meilenstein — 7. September 2026
+
+Der Product Owner hat ausdrücklich einen stabilen, commitfähigen Meilenstein
+und anschließend eine Pause angefordert. Diese Anweisung ersetzt die vorherige
+automatische Fortsetzung: **keine weitere fachliche QS und kein neues Paket
+ohne erneute Freigabe. B047 wurde nicht begonnen.** Der Arbeitsstand wird weder
+automatisch committet noch gepusht oder deployed. Das 100-Prozent-Ziel ist
+weiterhin offen, nicht abgeschlossen und nicht fachlich blockiert. Die technische
+Goal-Pause ist eine Nutzer-/Systemsteuerung; der Agent behauptet keinen von ihm
+gesetzten Pause-Status.
+
+Der abschließende native Fünf-Gate-Check bestätigt:
+
+| Fach | Streng abgeschlossen | Anteil | Noch offen |
+| --- | ---: | ---: | ---: |
+| Mathematik | 424 / 797 | 53,2 % | 373 |
+| Physik | 414 / 465 | 89,0 % | 51 |
+
+Es gibt **keine technischen Blocker**. Die aktuellen A-/M-/V-Gates bestehen
+für alle 797 beziehungsweise 465 curricularAtomic-Ziele. D und P sind für
+424 beziehungsweise 414 Ziele abgeschlossen. Die zwölf konfliktfreien
+In-flight-Einträge reservieren offene Folgearbeiten; sie sind keine laufenden
+Jobs. Gegenüber dem Einstieg dieses Arbeitsstands werden 54 weitere Mathe-
+und 18 weitere Physik-Abschlüsse erfasst. Darin enthalten sind die oben
+ausgewiesenen vierzehn wieder korrekt gebundenen Physik-Nachweise; diese werden
+nicht als vierzehn neue fachliche Reviews ausgegeben.
+
+**Enthaltene Arbeiten:** weitere unabhängige Beschreibungsreviews und einzeln
+geprüfte bilinguale V2-Verständnisprofile; gezielte Mathe-Bild-/Textkorrekturen
+und acht belegte Voraussetzungskorrekturen; Korrektur des Fotoeffekt-Bilds
+sowie der vorhandenen Beugungsziele, Bilder und ihrer curricularen Geltung.
+Die ursprünglichen Belege und ersetzten Bilder bleiben nachvollziehbar
+archiviert. E1/G1-AI-Kandidaten sind keine menschliche Freigabe und bescheinigen
+keine tatsächliche Lernendenleistung. Die geschützten M6-Niveaus bleiben erhalten.
+
+**Letzte kleine Pakete:** Mathematik B046 ist mit sieben aktuellen D-/P-
+Abschlüssen einschließlich unabhängiger Prüfung aller vierzehn DE-/EN-Fälle
+registriert; der Restclaim umfasst exakt dreizehn Ziele. Physik B042r gewinnt
+drei aktuelle D-/P-Abschlüsse; B042h reserviert die übrigen siebzehn. Bereits
+gültige ältere Nachweise wurden nicht pauschal erneut geprüft oder umgeschrieben.
+
+**Bewusst zurückgestellt:** Die sieben genehmigten Physik-Textfelder in vier
+Zielen sind noch nicht angewendet. Die drei beidseits akzeptierten neuen
+Physikbilder sind noch nicht importiert. Sieben V1- und vier bereits vor der
+Pause gestartete V2-Bildkandidaten liegen hashgebunden im Quality-Archiv;
+V2 ist ausdrücklich ungeprüft. Die GK-/LK- und Zerfallsreihen-Vorschläge bleiben
+unangewendete Vorschläge, keine wirksamen Scope-Änderungen. Die früheren
+offenen Bild-, Quellen-, Kosmologie- und Migrationsfälle bleiben offen.
+
+Für die spätere Fortsetzung maßgeblich sind die zentrale Registry
+`curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json`,
+das bestehende In-flight-Ledger und folgende Abschluss-/Archivbelege:
+
+- B046: `checkpoint-final-validation-v1.json` und
+  `positive-profile-root-body-review-v1.json` im aktuellen Zwanziger-Paket.
+- Physik B042r: `source-scope-and-decay-boundaries-proposal-v1.md`;
+  die beiden vollständigen 64-View-Simulationen sind nur Vorschläge.
+- Physik-Bildarchiv: `goal-visualization-review/physics-b042-eight-image-repairs-v1/paused-candidates-manifest.json`.
+- Die zwei append-only `2026-09-07-ci-archive-relocations-v*.json` unter
+  `goal-description-review/` lösen sieben unverändert umbenannte Archive auf.
+  Historische Originalreceipts und Bildprüfsiegel bleiben unverändert;
+  aktuelle Archivprüfer berücksichtigen die belegten neuen Pfade.
+
+**Technische Konsolidierung:** Quellenverzeichnisse, Quellenabdeckungsberichte,
+der Physik-Memory-Bericht und der Mathe-Bildstatus wurden regulär nachgeführt.
+Die Mathe-Daueransichten erhielten ausschließlich die geprüfte aktuelle
+Quell-Prüfsumme: alle 18 erzeugten Ansichten bleiben bytegleich. Sieben reine
+Review-/Vorher-Dateien verwenden nun `.json.snapshot`, damit die unveränderten
+Graph-/Schema-Prüfer sie nicht als operative Curricula behandeln. Prüfregeln
+oder Qualitätsuntergrenzen wurden nicht abgeschwächt. Klasseninformationen,
+Runtime-, Plugin- und Sicherheitsverträge bleiben unverändert.
+
+**Lokale Abschlussprüfungen:** Die 41 relevanten Curriculum-Gates, der zentrale
+Fünf-Gate-/In-flight-Check, Graph (593 Landschaften), Composition Views (297),
+Quellenabdeckung, Memory-/Bild-QA und alle neun Maturity-Floors sind bestanden.
+Auch alle fünf zusätzlichen Python-Gates sind bestanden, einschließlich
+15.224 vollständig geprüfter Schema-Dateien. Der vollständige Anwendungsbuild
+einschließlich TypeScript, Vite/PWA und der vier neu erzeugten, streng geprüften
+Lernzielbuch-Publikationen ist erfolgreich. Es werden keine Lernzielbuch-PDFs
+in Git aufgenommen. Der Quellenverzeichnis-Check im fertigen Build besteht.
+Der vollständige Frontend-Lint besteht ebenfalls. Die zusätzlichen
+OpenAI-V1- und Claude-Publikationsprüfungen bestehen auf dem gebauten Stand;
+der OpenAI-V1-Entwurf stimmt weiterhin exakt mit `1.0.0-SNAPSHOT` überein.
+
+Der erste Backend-Gesamtlauf fand eine veraltete BW-Physik-Mapping-Erwartung
+und wurde nach dieser Diagnose vorzeitig beendet. Ausschließlich die
+Erwartungszahl 64 → 68 und die zwei bereits fachlich ersetzten Tupel wurden
+auf ihre sechs aktuellen Teilzuordnungen nachgeführt; die übrigen 62 Tupel,
+Reihenfolge und alle anderen Assertions bleiben unverändert. Der Beleg liegt
+bei `physics-c648-slit-split-v1/backend-bw-mapping-fixture-delta-receipt-v1.json`.
+Auch nach dieser reinen Testnachführung besteht der OpenAI-Review-Freeze-Check.
+Der anschließende ungefilterte Backend-Gesamtlauf auf dem vollständig gebauten
+Stand ist am 7. September 2026 um 16:50 UTC erfolgreich beendet:
+`./gradlew test --fail-fast check --console=plain`, Corretto `25.0.2.10.1`,
+178 Testsuiten mit 1.566 Testfällen, davon einer übersprungen, keine Fehler.
+Die korrigierte Mapping-Fixture besteht einschließlich aller 87 Tests ihrer
+Suite. Der Gesamtlauf dauerte 12 Minuten 39 Sekunden. Auch der abschließende
+`git diff --check` besteht. Der Stand ist damit lokal commitfähig; ein neuer
+GitHub-CI-Lauf wurde nicht gestartet und wird nicht als bestanden behauptet.
+
+Lokale Prüfprotokolle liegen unter
+`tmp/math-physics-milestone-20260907-{build,backend-final,lint,release-verify}.log`;
+die Curriculum-Gate-Übersicht unter
+`tmp/curriculum-checkpoint-ci-20260907.JJFfeW/final-summary.json` und die fünf
+Python-Gates unter
+`tmp/paused-layer-a-python-gates-20260907-gF5NkC/checkpoint-results.json`.
+Die dort zunächst noch offene Schema-Nachprüfung wurde gemäß dem zuletzt
+genannten Ergebnisprotokoll erfolgreich abgeschlossen. Diese temporären Logs
+sind nicht Teil der Git-Quellen; die Abschlusszahlen und die oben referenzierten
+fachlichen Nachweise bleiben mit diesem Dokument im Repository erhalten.
+
+Nach dem Nutzer-Commit zunächst dessen CI prüfen. Erst nach erneuter
+Fortsetzungsfreigabe an den reservierten offenen Fällen weiterarbeiten;
+keinen historischen Gesamtneustart ausführen.

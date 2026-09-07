@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-b042-independent-image-review-20260907T131816Z",
+  "startedAt": "2026-09-07T13:18:16Z",
+  "completedAt": "2026-09-07T13:20:22Z",
+  "reviewer": {
+    "agentInstance": "/root/goal_book_pdf_history_audit",
+    "executionKind": "bounded image review in an existing agent instance",
+    "model": "Codex (exact underlying model identifier unavailable)",
+    "newThreadClaimed": false,
+    "modelDiversityClaimed": false,
+    "humanApprovalClaimed": false
+  },
+  "provenance": {
+    "basis": "Both actual generated JPEGs opened at original 2752x1536 resolution. Current canonical target goal objects and the two supplied correction prompts were read. Analytic derivative/antiderivative checks were independently evaluated, with numerical spot checks using Node.",
+    "excluded": "No B042 A/B description-review records, syntheses or other review judgments were read. No image import, canonical edit, runtime edit or QA status change was performed.",
+    "priorInvolvement": "This instance has earlier technical deployment/font and separate mathematics 386/physics cb0 review involvement. It is not claimed to be a new thread or a different model. No previous B042 subject-review outputs were consulted for these two judgments.",
+    "canonicalSource": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
+  },
+  "results": [
+    {
+      "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+      "currentTitleDe": "Analysisgrundlagen in Q1-Anschlussaufgaben nutzen",
+      "currentDescriptionDe": "Die lernende Person kann die in der Einführungsphase erarbeiteten Inhalte zu Funktionen und Darstellungen, Ableitungsbegriff und Anwendungen, ganzrationalen Funktionen, Exponentialfunktionen, trigonometrischen Funktionen und Ableitungsregeln in Q1-Anschlussaufgaben passend auswählen, begründet einsetzen und fachlich einordnen.",
+      "imagePath": "tmp/goal-visualizations/2713980f-75d2-5455-a8cb-bcd3888c49a0/generated/2713980f-75d2-5455-a8cb-bcd3888c49a0.generated.2026-09-07T13-16-25-527Z.jpg",
+      "imageSha256": "9667d2497bf224204ebfa80cbc22340555194ef35ac337c7459ad5b1c3182f12",
+      "correctionPrompt": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/2713980f-correction.prompt.de.md",
+      "correctionPromptSha256": "838f502db377e69c58860ef7ee8f2709cd1dd9a59164f0c3e51882bd14780f9d",
+      "verdict": "revise_before_import",
+      "blockingFindings": [
+        {
+          "id": "h-origin-tangent",
+          "location": "Large blue h(x) graph on the board, directly to the right of the origin",
+          "observation": "The curve leaves the origin visibly obliquely upward, essentially as a steep segment, rather than with a horizontal tangent and initially convex rise.",
+          "mathematicalControl": "h'(x)=e^(-x)(2x−x²), hence h'(0)=0; h''(0)=2>0. For small positive x, h(x) behaves like x². A drawn non-horizontal launch conflicts with the function and the derivative printed beside it.",
+          "requiredCorrection": "Redraw the blue curve with an unmistakably horizontal start at (0,0), initially curving upward before the ascent bends toward the maximum. Apply the same checked function shape to the small red sketch, whose starting direction is also not clearly horizontal."
+        }
+      ],
+      "positiveControls": [
+        {
+          "control": "Function and domain",
+          "result": "h(x)=x²e^(-x), x≥0, is consistently the board's assigned function."
+        },
+        {
+          "control": "Product and chain rules",
+          "result": "h'=(x²)'e^(-x)+x²(e^(-x))'=2xe^(-x)+x²(−e^(-x))=e^(-x)(2x−x²) is correct."
+        },
+        {
+          "control": "Stationary candidates and maximum",
+          "result": "e^(-x)>0 permits x(2−x)=0, giving x=0 and x=2. On (0,2), h'>0; on (2,∞), h'<0, so x=2 is the unique maximum. The relevant maximum label at x=2 is correct; x=0 is a domain boundary, not another interior maximum."
+        },
+        {
+          "control": "Axes and maximum marking",
+          "result": "The large graph correctly uses x horizontally and h(x) vertically. The maximum projects to x=2; the vertical-axis level is correctly 4/e². h(0)=0 and the origin marker are correct."
+        },
+        {
+          "control": "Positive tail and zero count",
+          "result": "Both displayed right branches remain above the x-axis in their visible portions. Neither introduces a second positive zero."
+        },
+        {
+          "control": "Toolbox scope",
+          "result": "Function/representation, difference quotient, polynomial example x³−2x, exponential and sine sketches, and derivative-rule tools are appropriate reminders for the stated selection/application goal. Their arrows toward the task describe tool choice, not equations requiring every tool to be used."
+        },
+        {
+          "control": "Remaining text and process arrows",
+          "result": "The progression from function/representation to derivative choice to extremum application, and the final advice to select known tools, match the competence. The derivative quotient and small generic toolbox sketches are schematic reminders, not claims of an exact derivative value for h."
+        }
+      ],
+      "additionalChecks": [
+        {
+          "topic": "Right-hand decay shape",
+          "finding": "The large blue tail appears too low too soon relative to its own 0→2 horizontal spacing and 4/e² vertical level. At the position corresponding roughly to x=4, it is drawn substantially below half the maximum, while h(4)=0.293050 is about 54.13% of h(2)=0.541341. This is a qualitative visual comparison, not a pixel-exact measured dataset; use the control values below when redrawing instead of merely attaching a positive tail."
+        },
+        {
+          "topic": "Small red graph",
+          "finding": "The single hump and positive right branch are improvements over a parabola-like positive zero, but the origin tangent is not clearly rendered as horizontal. It should be generated from the same checked h-shape as the larger graph."
+        },
+        {
+          "topic": "Boundary candidate",
+          "finding": "The algebraic branch x=0 is correctly present; an explicit Randpunkt label would make its role clearer and satisfy the correction prompt. The current text does not falsely name it a maximum."
+        }
+      ],
+      "numericalShapeControls": [
+        {
+          "x": 0,
+          "h": 0,
+          "hPrime": 0
+        },
+        {
+          "x": 0.1,
+          "h": 0.009048374180359597
+        },
+        {
+          "x": 0.5,
+          "h": 0.15163266492815836
+        },
+        {
+          "x": 1,
+          "h": 0.36787944117144233
+        },
+        {
+          "x": 2,
+          "h": 0.5413411329464508,
+          "hPrime": 0
+        },
+        {
+          "x": 4,
+          "h": 0.29305022221974686
+        },
+        {
+          "x": 6,
+          "h": 0.08923507835998891
+        }
+      ],
+      "scopeConclusion": "The worked example is a suitable representative use of E-phase tools for a Q1 task. Correct algebra and labels do not remove the remaining conflict between the function's zero derivative at the origin and the drawn main curve. This judgment concerns the image, not a canonical goal rewrite."
+    },
+    {
+      "goalId": "5ccf0d90-2967-576e-8f72-f002792d8515",
+      "currentTitleDe": "Integrationstechniken gezielt kombinieren",
+      "currentDescriptionDe": "Die lernende Person kann bei gegebenen Integralen geeignete Techniken auswählen, ggf. mehrere Methoden kombinieren und den Lösungsweg begründen.",
+      "imagePath": "tmp/goal-visualizations/5ccf0d90-2967-576e-8f72-f002792d8515/generated/5ccf0d90-2967-576e-8f72-f002792d8515.generated.2026-09-07T13-16-27-217Z.jpg",
+      "imageSha256": "3d974b3711e04f8e6e27b454e2ac127ac0ab824cfdb9b95bd5e57d12db5ef85c",
+      "correctionPrompt": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/5ccf0d90-correction.prompt.de.md",
+      "correctionPromptSha256": "0796970a3cf17407bf4f775c5ca7ffeb16e0206e124afd0469968997d4d6fbae",
+      "verdict": "pass_as_teaching_candidate",
+      "blockingFindings": [],
+      "positiveControls": [
+        {
+          "control": "Given integral",
+          "result": "I=∫₀¹2x(1+x²)e^(x²) dx is readable, with positive exponent x², both limits and dx present."
+        },
+        {
+          "control": "Corrected structural explanation",
+          "result": "The bubble names inner function x² and derivative 2x, then recommends substitution. It no longer identifies the factor 2x alone with du."
+        },
+        {
+          "control": "Substitution and differential",
+          "result": "u=x² and du=2x dx are correct. On [0,1], the monotone substitution maps x=0→u=0 and x=1→u=1; the zero derivative at the endpoint does not invalidate this substitution."
+        },
+        {
+          "control": "Transformed integral",
+          "result": "I=∫₀¹(1+u)e^u du correctly transforms both occurrences of x² and the entire factor 2x dx. No remaining x-factor or missing differential is present."
+        },
+        {
+          "control": "Choice of antiderivative",
+          "result": "The question G'(u)=(1+u)e^u and the ansatz G(u)=u e^u match. A constant is unnecessary for this selected antiderivative in a definite integral."
+        },
+        {
+          "control": "Derivative control",
+          "result": "G'(u)=1·e^u+u·e^u=(1+u)e^u is a correct product-rule verification."
+        },
+        {
+          "control": "Evaluation",
+          "result": "I=[u e^u]₀¹=(1·e¹)−(0·e⁰)=e is correct, with upper-minus-lower order and unchanged bounds."
+        },
+        {
+          "control": "Independent full-chain check",
+          "result": "Directly in x, F(x)=x²e^(x²) has F'(x)=2x(1+x²)e^(x²), and F(1)−F(0)=e. Numerical sample evaluations of both derivative forms agree at x=0, 0.25, 0.5 and 1."
+        },
+        {
+          "control": "Process arrows and explanations",
+          "result": "Arrows consistently connect structure recognition, substitution, antiderivative ansatz/check and evaluation. The final instruction to analyze structure before combining techniques matches the current competence and does not require gratuitous extra methods."
+        },
+        {
+          "control": "Other visible marks and layout",
+          "result": "No axes or plotted curves occur. The character, thought bubbles, colored columns and checkmark are didactic decoration, not numerical data. Formulas and explanatory text are legible and do not visibly conflict."
+        }
+      ],
+      "negativeControls": [
+        "No occurrence of the false differential assertion 'Faktor 2x ist du.' remains.",
+        "No integral-limit, variable, exponent or sign change invalidates the calculation.",
+        "No requirement for integration by parts is invented: substitution plus recognizing and checking an antiderivative is a legitimate purposeful combination for this example.",
+        "The worked illustration is not itself proof that a learner can independently select methods or solve a changed task."
+      ],
+      "scopeConclusion": "The image provides a correct worked example of justified technique selection and combination. It is an AI-reviewed teaching candidate, not human approval, publication authority or evidence of actual learner mastery."
+    }
+  ],
+  "authority": "These are image-level AI review judgments only. No candidate has been imported and no QA, canonical, runtime or publication state has been changed."
+}

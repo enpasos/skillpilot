@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-b041r-first-pass-b-root-20260907",
+  "campaignId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-b",
+  "roundId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:71c8aa81d30a797d8ec996972efd55b81aea15580822d37fc0f07395989dd8c6",
+  "bundleFingerprint": "sha256:15c4bb4cf70330d8ffe9a736d5a41ede07ed4ea3653050445050d1a475d70f69",
+  "bookDigest": "sha256:4e596c051fe87a7cfb101f93b68e1046bc3478b2d810f8cce28e1a77aa83de00",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "role": "disconfirming_reviewer",
+  "promptFamilyId": "generic-goal-description-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:3443a311d9b4e1456fdc819da7e3f9e3d9368042c3c4977b19c2d813ec00f329",
+  "independenceGroupId": "physik-rollout-v1-batch-041r-diffraction-final-scope-4-v1-20260907-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6270e558-d657-5363-a6b2-e49a032a453b",
+    "c64820e1-c0ee-4342-9225-f981650f0c52",
+    "91683676-01cf-5003-80fa-a04d043b4e61",
+    "f6a3a602-1e45-5018-b0ff-3d49933cf634"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:71c8aa81d30a797d8ec996972efd55b81aea15580822d37fc0f07395989dd8c6"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-07T14:28:53Z",
+  "completedAt": "2026-09-07T14:31:51Z",
+  "status": "completed",
+  "outputDigest": "sha256:74c1b8ee05a6698b19200d853c81df67ece297ee567e9888fa2a025127e4e39d",
+  "toolchainVersion": "codex-native-review-and-exact-binding-v1"
+}

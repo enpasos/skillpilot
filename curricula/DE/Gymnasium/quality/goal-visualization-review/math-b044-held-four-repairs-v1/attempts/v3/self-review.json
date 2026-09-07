@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "goal-visualization-staging-self-review-v1",
+  "reviewedAt": "2026-09-07T15:34:05Z",
+  "reviewer": "/root/goal_book_build_generator",
+  "reviewerModel": "Codex (exact underlying model identifier unavailable)",
+  "actuallyViewed": true,
+  "originalResolutionRequested": true,
+  "humanApproval": false,
+  "canonicalFilesChanged": false,
+  "attempts": [
+    {
+      "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "candidatePath": "tmp/goal-visualizations/d6b74b15-1cbc-512b-a160-0f40aecafe8c/generated/d6b74b15-1cbc-512b-a160-0f40aecafe8c.generated.2026-09-07T15-29-23-024Z.jpg",
+      "candidateSha256": "sha256:8364bc11fbc2f45630b8e29730ace1d5547a3970e88db5cd0fc159c69ce526e0",
+      "promptAppendPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/prompts/v3/d6b74b15-1cbc-512b-a160-0f40aecafe8c.md",
+      "promptAppendSha256": "sha256:19a3031bd4f9c83055c49d584d8fdfb6ab5c32fcfe90e7ef9d8bac3b08c52719",
+      "providerPromptSha256": "sha256:2bd80f47e2f35f713659cf2e1d3314575553bd0821f1ff04d18cad52a668e89e",
+      "providerRequestSha256": "sha256:5a744013ab63bd23a16cae3d3213ebf84e6f6409754bea6728f62afb3cb40593",
+      "responseSummary": {
+        "id": "v1_ChdUOWllYXBhSERlMlF4TjhQemUtQXdBTRIXVDlpZWFwYUhEZTJReE44UHplLUF3QU0",
+        "model": "gemini-3-pro-image",
+        "textBlocks": [],
+        "imageCandidateCount": 1
+      },
+      "reconstructionPromptPath": "tmp/goal-visualizations/d6b74b15-1cbc-512b-a160-0f40aecafe8c/generated/d6b74b15-1cbc-512b-a160-0f40aecafe8c.generated.2026-09-07T15-29-23-024Z.image-reconstruction-prompt.de.md",
+      "reconstructionPromptSha256": "sha256:08c88664b709b47b85b36d3092966963df0ef65973c4abc1e363ac0f5a389981",
+      "archivedProviderPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/attempts/v3/d6b74b15-1cbc-512b-a160-0f40aecafe8c.provider-prompt.de.md",
+      "decision": "reject",
+      "checks": [
+        "Die vier falschen Gleichheitsticks sind beseitigt, die vorherigen numerischen Rechnungen bleiben korrekt."
+      ],
+      "blockingFindings": [
+        "Die Kontur der beiden Dreiecke bleibt praktisch unverändert gegenüber V2: große Breite ungefähr609 und Höhe664 Bildpunkte in der angezeigten2048pxAnsicht, nicht das beabsichtigte6:8-Verhältnis. Die explizit verlangte Konturkorrektur fand nicht statt."
+      ],
+      "nextAction": "Root explicitly authorized a goal-specific newly computed native fallback after its independent confirmation of the first two actual Nano failures. Third targeted attempt also failed; do not import any rejected candidate."
+    }
+  ]
+}

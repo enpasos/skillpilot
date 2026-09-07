@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07T13:47:24Z",
+  "reviewer": "/root",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "authority": "ai_candidate",
+  "humanApproved": false,
+  "independence": "Root did not author this renderer or image. Actual original-size PNG viewed; source read and all plotted coordinates separately recalculated without executing the renderer. Root commissioned the narrow native fallback after disclosed Nano failures; no blindness to those concerns or independent-provider claim.",
+  "goalId": "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+  "imagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b042-current-image-repairs-v1/df7338ef-fallback.png",
+  "imageSha256": "c48eeabdc64dc66a44f56a2e8f6621466bea3df16ef4e9caaf8d6cca54c7c6a4",
+  "svgSha256": "11bd68bf5b405c584e93dac10c4d346c923e73cd57cd426faeb8d0adcd14e659",
+  "decision": "pass",
+  "checks": [
+    "All titles, explanatory text, axis labels and formulas fit in the actual1600x900 PNG and remain legible; no panel clipping.",
+    "N(t)=1000/(1+9e^(−0.6t)), t≥0 gives N(0)=100; the plotted start and labelled100 tick coincide at y542, not at the rejected Nano start position.",
+    "Linear axes put0/250/500/750/1000 in consistent positions. The curve increases with an inflection at ln(9)/.6≈3.662, N500, and approaches1000 from below.",
+    "N′=.6N(1−N/1000) is correct. Absolute instantaneous growth is maximal at N500 with N′150 per model time unit. The text does not confuse that rate with stock.",
+    "The exponential comparison E=100e^(.6t) has positive second derivative, no upper bound and no inflection; the bounded comparison B=1000−900e^(−.6t) has negative second derivative throughout, no exceptional initial inflection.",
+    "The logistic S-shape statement is correctly about this model with initial stock100 below K/2, not every possible logistic initial condition. Model assumptions and applicability are explicitly questioned.",
+    "No reused falsely positioned start, incorrect bounded-growth exception, extra asymptote crossing or unsupported physical unit remains."
+  ],
+  "numericVerification": {
+    "method": "Read the1001 actual SVG path coordinates; independently evaluate1000exp(.6t)/(exp(.6t)+9) for t=i/100; compare with mappingpx=110+74t, py=575−.33N.",
+    "sampleCount": 1001,
+    "maximumPixelRoundingError": 0.0004983942747003312,
+    "tolerance": 0.000501,
+    "inflectionTime": 3.662040962227033,
+    "maximumGrowthRate": 150
+  },
+  "action": "Eligible for import with the author review and two-Nano-attempt archive/necessity record. This is an asset-specific exception; it does not change the Nano-first policy or imply human approval."
+}

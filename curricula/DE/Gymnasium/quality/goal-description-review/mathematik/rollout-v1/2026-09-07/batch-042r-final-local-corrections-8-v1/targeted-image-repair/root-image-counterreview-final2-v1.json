@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "completedAt": "2026-09-07T14:44:02Z",
+  "method": "Actual complete raster images opened and independently inspected; numeric checks performed from their stated functions. Existing agent instance and prior involvement disclosed; not a fresh isolated model or human review.",
+  "reviews": [
+    {
+      "goalId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "asset": "f493-native-fallback-v2.png",
+      "sha256": "71c5c1b7c91dd8a1cc6189fdf241541bae4c8f5888ae83401691af3c6c0d0712",
+      "decision": "pass",
+      "findings": [
+        "Linear x-quarter intervals and linear y-integer grid agree with plotted 1/sqrt(x), including x1/16→4, x1/4→2, x1/2→sqrt2 and x1→1.",
+        "Excluded x0 is explicitly marked; upper clipping/continuation above viewport and shaded positive domain0<x<=1 are disclosed.",
+        "Replace singular lower boundary by a>0; integral[ a,1 ]=2-2sqrt(a), limit2 as a→0+, positive function makes integral equal area. All displayed formulas, endpoint conventions and arrows are consistent.",
+        "Axis labels no longer touch. Text is legible and no extra unrelated competence is introduced."
+      ]
+    },
+    {
+      "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c",
+      "asset": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c.generated.2026-09-07T14-23-21-417Z.jpg",
+      "sha256": "63330caeb94155284c50e874671871993391d2187f3ce47684e66755b9463066",
+      "decision": "pass",
+      "findings": [
+        "Reopened actual raster at14:44 after initial actual review14:29. Function x²e^-x and derivative e^-x*x*(2-x), derivative zeros0/2 and positive-then-negative sign on positive domain are correct.",
+        "Plot has consistent linear axes; values at1..6 agree with.367879,.541341,.448084,.293050,.168449,.089235, fixing the former too-steep tail.",
+        "Maximum(2,4/e²) is correctly positioned. Polynomial versus exponential components and product rule are accurately distinguished; modeling pictogram makes no quantified battery-law claim."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b040s-photoelectric-spelling-current-1-v1",
+  "reviewedAt": "2026-09-07T12:35:34.107Z",
+  "reviewer": "openai-codex-b040s-photoelectric-profile-context-review",
+  "goals": [
+    {
+      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "reason": "B040s-Prüfung gegen die aktuelle DE/EN-Beschreibung: Der bestehende Profilkörper bleibt unverändert. Schwelle und maximale kinetische Energie folgen aus hf = W_A + E_kin,max; Frequenz und Intensität werden im gewöhnlichen Einphotonenregime getrennt, geänderte Stellgrößen liefern einen echten Transferfall. Die Bestimmung von h verbleibt beim benachbarten Ziel. Ausschließlich nachgewiesene Schreibkorrektur im Zieleingang, keine neue menschliche Freigabe; historisches B034-Profil bleibt erhalten. Fachabgleich: https://www.nobelprize.org/prizes/physics/1921/ceremony-speech/ und https://openstax.org/books/university-physics-volume-3/pages/6-2-photoelectric-effect .",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "threshold-energy",
+            "essentialUnderstandingDe": "Im Einphotonenmodell überträgt ein Photon hf auf ein Elektron; Emission erfordert hinreichende Energie für die Austrittsarbeit W_A, und E_kin,max=hf−W_A. Einzelne Elektronen müssen nicht alle die maximale Energie haben.",
+            "essentialUnderstandingEn": "In the single-photon model one photon transfers hf to an electron; emission requires enough energy for work function W_A, and E_kin,max=hf−W_A. Individual electrons need not all have the maximum energy.",
+            "observablePerformanceDe": "Erklärt Schwelle und maximale Elektronenenergie aus einer Energiebilanz und sagt die Wirkung geänderter Frequenz voraus.",
+            "observablePerformanceEn": "Explains threshold and maximum electron energy using an energy balance and predicts the effect of changed frequency."
+          },
+          {
+            "id": "intensity-frequency-distinction",
+            "essentialUnderstandingDe": "Bei festem Material und geeigneten Messbedingungen verändert mehr Intensität bei gleicher Frequenz vor allem die Zahl der ausgelösten Elektronen, nicht deren maximale Energie; unterhalb der Schwelle hilft bloß mehr Intensität im Einphotonenregime nicht.",
+            "essentialUnderstandingEn": "For a fixed material and suitable measurement conditions, more intensity at the same frequency mainly changes the number of emitted electrons, not their maximum energy; below threshold, more intensity alone does not help in the single-photon regime.",
+            "observablePerformanceDe": "Vergleicht Frequenz- und Intensitätsänderungen und erklärt, warum die Befunde nicht durch eine einfache kontinuierliche klassische Energieansammlung am Elektron erfasst werden.",
+            "observablePerformanceEn": "Compares frequency and intensity changes and explains why the findings are not captured by simple continuous classical energy accumulation at an electron."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "threshold-energy",
+            "intensity-frequency-distinction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "threshold-versus-flux",
+            "textDe": "Unterschwellige gegenüber überschwelliger Beleuchtung; Energie pro Photon gegenüber Photonenzahl pro Zeit.",
+            "textEn": "Below-threshold versus above-threshold illumination; energy per photon versus photon count per time."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "threshold-test",
+            "taskDemandDe": "Synthetischer Fotoeffektfall mit W_A=2,0 eV im Einphotonenregime: Licht mit 1,5 eV pro Photon löst auch bei größerer Intensität keine Elektronen aus, Licht mit 3,0 eV schon. Erkläre und bestimme E_kin,max.",
+            "taskDemandEn": "Synthetic photoelectric case with W_A=2.0 eV in the single-photon regime: light with 1.5 eV per photon emits no electrons even at higher intensity, while light with 3.0 eV does. Explain and determine E_kin,max.",
+            "expectedPerformanceDe": "Begründet die fehlende Emission mit der unterschrittenen Einzelphotonenschwelle und erhält bei 3,0 eV maximal 1,0 eV kinetische Energie. Erklärt den Widerspruch zur einfachen Vorstellung beliebiger zeitlicher Energieansammlung aus schwächerem Licht.",
+            "expectedPerformanceEn": "Explains absent emission by the single-photon threshold not being reached and obtains a maximum kinetic energy of 1.0 eV at 3.0 eV. Explains the conflict with a simple picture of unlimited temporal energy accumulation from weaker light.",
+            "understandingFocusDe": "Energiequant und materialabhängige Schwelle tragen die Erklärung.",
+            "understandingFocusEn": "Energy quantum and material-dependent threshold support the explanation."
+          },
+          {
+            "id": "independent-controls",
+            "taskDemandDe": "Bei derselben Oberfläche werden im geeigneten Sammelbetrieb 3,0-eV-Photonen verwendet. Vergleiche Verdopplung des Photonenflusses bei gleicher Frequenz mit Wechsel zu 2,5-eV-Photonen bei gleichem Fluss; W_A=2,0 eV.",
+            "taskDemandEn": "At the same surface, 3.0-eV photons are used under suitable collection conditions. Compare doubling photon flux at fixed frequency with switching to 2.5-eV photons at fixed flux; W_A=2.0 eV.",
+            "expectedPerformanceDe": "Sagt bei größerem Fluss mehr Emissionsereignisse beziehungsweise größeren Fotostrom, aber weiterhin E_kin,max=1,0 eV voraus. Beim Energiewechsel sinkt E_kin,max auf 0,5 eV; eine exakte Gleichheit der Emissionsausbeute verschiedener Frequenzen wird nicht behauptet.",
+            "expectedPerformanceEn": "Predicts more emission events or larger photocurrent at increased flux, but still E_kin,max=1.0 eV. With changed photon energy, E_kin,max falls to 0.5 eV; exact equality of emission yield at different frequencies is not asserted.",
+            "understandingFocusDe": "Getrennte Stellgrößen ändern Ereigniszahl und Energiebilanz unterschiedlich.",
+            "understandingFocusEn": "Independent control variables affect event count and energy balance differently."
+          }
+        ]
+      }
+    }
+  ]
+}

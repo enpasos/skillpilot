@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-b041-current-keep4-v1",
+  "reviewedAt": "2026-09-07T12:57:02Z",
+  "reviewer": "codex-goal-book-ci-integration-b041-current-body-counterreview",
+  "goals": [
+    {
+      "goalId": "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+      "reason": "Aktueller bilingualer AI-Kandidat nach individueller Gegenprüfung des vorhandenen B041-Profils gegen V2-Kriterien, aktuelle Zielbeschreibung und Voraussetzungen. Zwei fachlich gerechnete, eigenständige Fälle mit frischer Variation; keine Lernendenleistung, Bildfreigabe oder menschliche Abnahme behauptet. Die historische D-Bewertung bleibt unverändert.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "additive-integral-structure",
+            "essentialUnderstandingDe": "Intervallzerlegung addiert orientierte Beiträge; Linearität zerlegt Linearkombinationen bei denselben Grenzen. Grenzumkehr ändert das Vorzeichen, und ein konstanter Integrand trägt Konstante mal Intervalllänge bei.",
+            "essentialUnderstandingEn": "Interval subdivision adds signed contributions; linearity decomposes linear combinations with common endpoints. Reversing endpoints changes the sign, and a constant integrand contributes constant times interval length.",
+            "observablePerformanceDe": "Die Person formt Integrale aus gegebenen Teilinformationen um und begründet jeden Schritt durch die passende Additivität, einschließlich Orientierung und konstantem Anteil.",
+            "observablePerformanceEn": "The learner transforms integrals from given partial information and justifies each step by the appropriate additivity, including orientation and any constant contribution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "additive-integral-structure"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von direkt gegebenen Teilintegralen zu indirekt vorgegebenen Summen wechseln; unbekannte Beiträge isolieren und Grenzen umkehren.",
+            "textEn": "Switch from directly given component integrals to indirectly specified sums; isolate unknown contributions and reverse endpoints."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "combine-oriented-parts",
+            "taskDemandDe": "Es gelten ∫₀²f=5, ∫₂⁵f=−1 und ∫₀⁵g=4. Bestimme ∫₀⁵(2f−3g) und ∫₅⁰(2f−3g), ohne Formeln für f,g zu erfinden. Begründe die Umformungen.",
+            "taskDemandEn": "Given ∫₀²f=5, ∫₂⁵f=−1 and ∫₀⁵g=4, determine ∫₀⁵(2f−3g) and ∫₅⁰(2f−3g) without inventing formulas for f,g. Justify the transformations.",
+            "expectedPerformanceDe": "Intervalladditivität liefert ∫₀⁵f=4; Linearität ergibt 2·4−3·4=−4. Die Grenzumkehr ergibt +4. Das negative Teilintegral wird mit seinem Vorzeichen addiert.",
+            "expectedPerformanceEn": "Interval additivity gives ∫₀⁵f=4; linearity gives 2·4−3·4=−4. Reversed endpoints give +4. The negative component integral is added with its sign.",
+            "understandingFocusDe": "Zwei verschiedene Additivitäten in derselben begründeten Rechnung koordinieren.",
+            "understandingFocusEn": "Coordinate two distinct additivities in one justified calculation."
+          },
+          {
+            "id": "infer-missing-integrals",
+            "taskDemandDe": "Es gelten ∫₋₁³(f+g)=7, ∫₋₁³f=2 und ∫₋₁¹g=4. Erschließe ∫₁³g und ∫₃⁻¹(5−2g). Begründe, welcher Beitrag von der Konstanten 5 stammt.",
+            "taskDemandEn": "Given ∫₋₁³(f+g)=7, ∫₋₁³f=2 and ∫₋₁¹g=4, infer ∫₁³g and ∫₃⁻¹(5−2g). Explain the contribution from the constant 5.",
+            "expectedPerformanceDe": "Zuerst ∫₋₁³g=7−2=5, dann ∫₁³g=5−4=1. In Vorwärtsrichtung beträgt der konstante Anteil 5·4=20; insgesamt 20−2·5=10. Grenzumkehr liefert −10.",
+            "expectedPerformanceEn": "First ∫₋₁³g=7−2=5, then ∫₁³g=5−4=1. In the forward direction the constant contributes 5·4=20, giving 20−2·5=10. Reversing endpoints gives −10.",
+            "understandingFocusDe": "Aus Integralbeziehungen fehlende Informationen erschließen statt nur Zahlen einsetzen.",
+            "understandingFocusEn": "Infer missing information from integral relationships rather than just substitute numbers."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+      "reason": "Aktueller bilingualer AI-Kandidat nach individueller Gegenprüfung des vorhandenen B041-Profils gegen V2-Kriterien, aktuelle Zielbeschreibung und Voraussetzungen. Zwei fachlich gerechnete, eigenständige Fälle mit frischer Variation; keine Lernendenleistung, Bildfreigabe oder menschliche Abnahme behauptet. Die historische D-Bewertung bleibt unverändert.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "nonnegative-geometric-area",
+            "essentialUnderstandingDe": "Der geometrische Flächeninhalt summiert nichtnegative Streifenbreiten mal Höhenunterschied. Schnittstellen und Vorzeichenwechsel bestimmen die nötige Zerlegung; ein orientiertes Integral kann sonst Beiträge aufheben.",
+            "essentialUnderstandingEn": "Geometric area adds nonnegative strip width times height difference. Intersections and sign changes determine the required subdivision; a signed integral could otherwise cancel contributions.",
+            "observablePerformanceDe": "Die Person identifiziert Grenzen und oberen/unteren Rand, stellt passende Teilintegrale auf, berechnet den Flächeninhalt und erklärt dessen Nichtnegativität.",
+            "observablePerformanceEn": "The learner identifies endpoints and upper/lower boundaries, sets up suitable subintegrals, computes area and explains its nonnegativity."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "nonnegative-geometric-area"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von zwei sich schneidenden Graphen zu einem Graphen mit Achsendurchgang und gegebenen vertikalen Grenzen wechseln.",
+            "textEn": "Transfer from two intersecting graphs to a graph crossing an axis between prescribed vertical boundaries."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "between-two-graphs",
+            "taskDemandDe": "Bestimme den Flächeninhalt zwischen y=x² und y=2x. Begründe Grenzen und Reihenfolge der Randfunktionen.",
+            "taskDemandEn": "Find the area between y=x² and y=2x. Justify the endpoints and order of the boundary functions.",
+            "expectedPerformanceDe": "Die Schnittstellen sind 0 und 2; dort gilt 2x≥x². A=∫₀²(2x−x²)dx=[x²−x³/3]₀²=4/3. Eine Skizze bzw. der Vorzeichentest bestätigt die positive Streifenhöhe.",
+            "expectedPerformanceEn": "Intersections are 0 and 2, with 2x≥x² between them. A=∫₀²(2x−x²)dx=[x²−x³/3]₀²=4/3. A sketch or sign test confirms nonnegative strip height.",
+            "understandingFocusDe": "Die geometrische Begrenzung begründet den Integralansatz.",
+            "understandingFocusEn": "Use geometric boundaries to justify the integral setup."
+          },
+          {
+            "id": "axis-crossing-region",
+            "taskDemandDe": "Die Region wird von y=x−1, der x-Achse und x=0,x=3 begrenzt. Bestimme ihren gesamten Flächeninhalt und vergleiche mit ∫₀³(x−1)dx.",
+            "taskDemandEn": "A region is bounded by y=x−1, the x-axis and x=0,x=3. Find its total area and compare it with ∫₀³(x−1)dx.",
+            "expectedPerformanceDe": "Bei x=1 wechselt der obere Rand. A=∫₀¹(1−x)dx+∫₁³(x−1)dx=1/2+2=5/2. Das orientierte Integral beträgt −1/2+2=3/2 und ist wegen Aufhebung nicht der gesamte Flächeninhalt.",
+            "expectedPerformanceEn": "The upper boundary switches at x=1. A=∫₀¹(1−x)dx+∫₁³(x−1)dx=1/2+2=5/2. The signed integral is −1/2+2=3/2 and, because of cancellation, is not total geometric area.",
+            "understandingFocusDe": "Ein Vorzeichenwechsel verändert die richtige Flächenzerlegung.",
+            "understandingFocusEn": "A sign change alters the correct area subdivision."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "reason": "Aktueller bilingualer AI-Kandidat nach individueller Gegenprüfung des vorhandenen B041-Profils gegen V2-Kriterien, aktuelle Zielbeschreibung und Voraussetzungen. Zwei fachlich gerechnete, eigenständige Fälle mit frischer Variation; keine Lernendenleistung, Bildfreigabe oder menschliche Abnahme behauptet. Die historische D-Bewertung bleibt unverändert.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "solve-integral-condition",
+            "essentialUnderstandingDe": "Eine Integralbedingung führt auf eine Gleichung für eine Grenze oder einen Parameter. Zulässige Intervalle und die Bedeutung als geometrische Fläche oder vorzeichenbehaftete Änderung entscheiden, welche algebraischen Lösungen tatsächlich passen.",
+            "essentialUnderstandingEn": "An integral condition yields an equation for an endpoint or parameter. Admissible intervals and interpretation as geometric area or signed change determine which algebraic solutions actually fit.",
+            "observablePerformanceDe": "Die Person wertet die vorgegebene Integralgleichung aus, löst sie nach der verlangten Größe, prüft die Kontextbedingungen und setzt das Ergebnis in die ursprüngliche Integralbedingung ein.",
+            "observablePerformanceEn": "The learner evaluates the supplied integral equation, solves for the requested quantity, checks contextual conditions and substitutes into the original integral condition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "solve-integral-condition"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer unbekannten oberen Grenze und positiver Flächenbedingung zu einer unteren Grenze sowie einer Bestandsbedingung mit Vorzeichenwechsel wechseln.",
+            "textEn": "Transfer from an unknown upper endpoint and positive area condition to a lower endpoint and a stock condition involving a sign change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "upper-limit-and-height-parameter",
+            "taskDemandDe": "Bestimme b≥0 aus ∫₀ᵇ(2x+1)dx=12. Bestimme außerdem k≥0 aus der vorgegebenen Gleichung ∫₀²(kx+1)dx=8 für den Flächeninhalt unter kx+1 auf [0,2]. Begründe die zulässigen Lösungen.",
+            "taskDemandEn": "Find b≥0 from ∫₀ᵇ(2x+1)dx=12. Also find k≥0 from the supplied equation ∫₀²(kx+1)dx=8 for the area under kx+1 on [0,2]. Justify admissible solutions.",
+            "expectedPerformanceDe": "b²+b=12 liefert b=3 oder−4; nur3 erfüllt b≥0. 2k+2=8 liefert k=3. Auf den angegebenen Intervallen sind die Integranden nichtnegativ, deshalb sind die Integralwerte Flächeninhalte.",
+            "expectedPerformanceEn": "b²+b=12 gives b=3 or−4; only3 satisfies b≥0. 2k+2=8 gives k=3. On the specified intervals the integrands are nonnegative, so integral values are geometric areas.",
+            "understandingFocusDe": "Unbekannte Grenze und unbekannte Funktionshöhe als Integralgleichungen lösen.",
+            "understandingFocusEn": "Solve unknown endpoints and unknown function heights through integral equations."
+          },
+          {
+            "id": "lower-limit-and-returning-stock",
+            "taskDemandDe": "Bestimme c∈[0,4] aus ∫c⁴(4−x)dx=2. Ein anderer Tank enthält anfangs10 L und tauscht Wasser ausschließlich durch eine einzige umkehrbare Leitung aus; weitere Zu- oder Abflüsse gibt es nicht. Die vorzeichenbehaftete Durchflussrate ist r(t)=k−t L/min für0≤t≤2 (positiv hinein, negativ hinaus). Die Bedingung für den Endbestand ist als Gleichung 10+∫₀²(k−t)dt=10 vorgegeben. Bestimme daraus k und deute das Integral im Unterschied zum gesamten bewegten Volumen.",
+            "taskDemandEn": "Find c∈[0,4] from ∫c⁴(4−x)dx=2. A separate tank initially contains10 L and exchanges water only through a single reversible pipe; there are no other inflows or outflows. Its signed flow rate is r(t)=k−t L/min for0≤t≤2 (positive inward, negative outward). The final-stock condition is supplied as the equation 10+∫₀²(k−t)dt=10. Find k from this equation and interpret the integral as distinct from total volume moved.",
+            "expectedPerformanceDe": "(4−c)²/2=2 führt zu c=2; c=6 liegt außerhalb. Die geforderte Änderung ist0, also2k−2=0 und k=1. Zu- und Abfluss gleichen sich aus; die zwei Dreiecksflächen betragen je1/2 L und damit insgesamt1 L Bewegung trotz Nettointegral0.",
+            "expectedPerformanceEn": "(4−c)²/2=2 gives c=2; c=6 lies outside the interval. Required change is0, so2k−2=0 and k=1. Inflow and outflow cancel; the two triangles have magnitude1/2 L each, giving1 L moved despite a zero net integral.",
+            "understandingFocusDe": "Die geforderte Bedeutung der Integralbedingung bei anderem Unbekannten und Vorzeichen prüfen.",
+            "understandingFocusEn": "Check the intended meaning of the integral condition with a different unknown and sign structure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+      "reason": "Aktueller bilingualer AI-Kandidat nach individueller Gegenprüfung des vorhandenen B041-Profils gegen V2-Kriterien, aktuelle Zielbeschreibung und Voraussetzungen. Zwei fachlich gerechnete, eigenständige Fälle mit frischer Variation; keine Lernendenleistung, Bildfreigabe oder menschliche Abnahme behauptet. Die historische D-Bewertung bleibt unverändert.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "derive-volume-integral",
+            "essentialUnderstandingDe": "Dünne Scheiben approximieren ein Rotationsvolumen durch Σπf(ξᵢ)²Δxᵢ. Bei stetiger Randfunktion und verfeinerten Zerlegungen führt die Summe der Scheibenvolumina zum Integral der Querschnittsflächen. Die Quadratur des Radius ist geometrisch begründet und die Formel bleibt an Rotationsachse und Region gebunden.",
+            "essentialUnderstandingEn": "Thin disks approximate a volume of revolution by Σπf(ξᵢ)²Δxᵢ. For a continuous boundary and refining partitions, the sum of disk volumes leads to the integral of cross-sectional areas. Squaring the radius is geometrically justified and the formula remains tied to the axis and region of rotation.",
+            "observablePerformanceDe": "Die Person entwickelt den Integralansatz aus Scheibenbreite und Kreisfläche, erläutert den Grenzübergang und nutzt die selbst begründete Formel für eine neue rotierende Fläche.",
+            "observablePerformanceEn": "The learner develops the integral setup from disk thickness and circular area, explains the limiting process and applies the justified formula to a new rotating region."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "derive-volume-integral"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von gleich breiten Scheiben einer stetigen Kurve zu einer stückweise definierten Randfunktion mit getrennten Integralen wechseln.",
+            "textEn": "Transfer from equal-width disks under a continuous curve to a piecewise-defined boundary with separate integrals."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "derive-then-evaluate",
+            "taskDemandDe": "Die Fläche0≤y≤x² auf0≤x≤1 rotiert um die x-Achse. Entwickle über n Scheiben einen Summenansatz und seinen Grenzwert, statt die Volumenformel nur zu zitieren. Berechne danach das Volumen.",
+            "taskDemandEn": "The region0≤y≤x² for0≤x≤1 rotates about the x-axis. Develop a sum over n disks and its limit rather than merely quoting the volume formula. Then calculate the volume.",
+            "expectedPerformanceDe": "Bei Δx=1/n ist ein Scheibenvolumen näherungsweiseπ(ξᵢ²)²/n. Für stetiges x⁴ konvergiert die Summe gegenπ∫₀¹x⁴dx=π/5. Der Radius ist x² und seine Kreisfläche deshalbπx⁴.",
+            "expectedPerformanceEn": "With Δx=1/n, one disk has approximate volumeπ(ξᵢ²)²/n. Continuity of x⁴ makes the sum converge toπ∫₀¹x⁴dx=π/5. Radius is x², hence disk areaπx⁴.",
+            "understandingFocusDe": "Den Grenzübergang und das Radiusquadrat aus der Geometrie begründen.",
+            "understandingFocusEn": "Justify the limiting process and squared radius geometrically."
+          },
+          {
+            "id": "piecewise-solid",
+            "taskDemandDe": "Ein Rotationskörper um die x-Achse hat Radius1 auf0≤x≤1 und Radius2−x auf1≤x≤2. Begründe aus dünnen Scheiben den passenden Integralsummenansatz, berechne das Volumen und prüfe es an Zylinder plus Kegel.",
+            "taskDemandEn": "A solid of revolution about the x-axis has radius1 for0≤x≤1 and radius2−x for1≤x≤2. Use thin disks to justify a sum of integrals, calculate the volume and check it against a cylinder plus cone.",
+            "expectedPerformanceDe": "Die Scheibenflächen sind zunächstπ, dannπ(2−x)². V=π∫₀¹1dx+π∫₁²(2−x)²dx=π+π/3=4π/3. Das stimmt mit einem Zylinder und einem Kegel von jeweils Höhe1 und Radius1 überein; die Zerlegung berücksichtigt den Wechsel der Randfunktion.",
+            "expectedPerformanceEn": "Disk area isπ first andπ(2−x)² afterward. V=π∫₀¹1dx+π∫₁²(2−x)²dx=π+π/3=4π/3. This agrees with a cylinder and cone each of height1 and radius1; subdivision accounts for the change in boundary function.",
+            "understandingFocusDe": "Den selbst begründeten Ansatz auf einen zusammengesetzten Körper übertragen und unabhängig plausibilisieren.",
+            "understandingFocusEn": "Transfer the justified setup to a composite solid and verify it independently."
+          }
+        ]
+      }
+    }
+  ]
+}

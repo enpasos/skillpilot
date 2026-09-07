@@ -1,0 +1,874 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "bounded-prerequisite-change-plan-v1",
+  "auditExecutedAt": "2026-09-07T15:11:06.440Z",
+  "authority": "Root approved semantic changes; canonical execution is deferred until coordinated source-write checkpoint. This is an AI planning audit, not a fresh D review or human approval.",
+  "canonicalWritesPerformed": false,
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "bytesSha256": "sha256:31f389f47b24244140cbf7364de19d06994dd3555b59ff14094ea53b76bc325c",
+    "semanticDigest": "sha256:8e246ed9dfe0898bf93ff4b0c78ee92be9768de5c432852631d681917410c2f3"
+  },
+  "hypotheticalAfter": {
+    "semanticDigest": "sha256:8e2a3f0fa0f15d085a3445306b91990e35c512bccdaa0ee91b6551b30e8f2253",
+    "newGoalIds": [],
+    "deletedGoalIds": [],
+    "pageCount": 797
+  },
+  "canonicalChangedGoals": [
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+      "beforeGoalBytesSha256": "sha256:ee6c4dff600c58d0035742bd152f9d28f80d94c949a9f10cc4152cdcd221a3c6",
+      "afterGoalBytesSha256": "sha256:3864765bf1ec13cdc49d3fcc2a3c15e990523e3eb2df9d124c06561381142de7",
+      "fields": [
+        "requires"
+      ],
+      "beforeRequires": [
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "afterRequires": [
+        "075f1ef2-6860-4b20-9df2-878157eb395e",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "beforeGoalFingerprint": "sha256:49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5",
+      "afterGoalFingerprint": "sha256:49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5",
+      "beforeEvidenceInputFingerprint": "sha256:89b4bb44736480981e53f4b9873d2bf56946f9587280c85ddcfdf7815facc4c1",
+      "afterEvidenceInputFingerprint": "sha256:32fe386da911f23b9cc4ed2255c5892439a7e21ba08314c97b19e743247b7e52",
+      "beforeCanonicalContextSha256": "sha256:31688ce49f73474dffb96774d451ff9d8dc682134842d3d25ecf6a32def65e99",
+      "afterCanonicalContextSha256": "sha256:7058dc048ecfe1d6f6372c8ae6704a43ad3930e619963d0d33c620716eedf91b"
+    },
+    {
+      "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "title": "Matrixeinträge über Zeilen und Spalten lesen und deuten",
+      "beforeGoalBytesSha256": "sha256:a4dfb9ddba8312f485089f5958699d25bc1a88ee84164ee0f2ad58bdaf8e4860",
+      "afterGoalBytesSha256": "sha256:3a33a6f5f4508eb3607c4558932afa5451aeb1375cf8c49fb76ca0aad5fd49b1",
+      "fields": [
+        "requires"
+      ],
+      "beforeRequires": [
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "afterRequires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "beforeGoalFingerprint": "sha256:f7f29587fea3db23560638c7e24fc102097ed99c3e28ca8ad5a1e0eed6abe371",
+      "afterGoalFingerprint": "sha256:f7f29587fea3db23560638c7e24fc102097ed99c3e28ca8ad5a1e0eed6abe371",
+      "beforeEvidenceInputFingerprint": "sha256:f0e377080cb97bf56f83081805ff9fe975a857dc4f9aab446735ce8cbdf3ef48",
+      "afterEvidenceInputFingerprint": "sha256:e85c2fff4218d0c19fd9a9f900ce125c36f00bf6d91b553dfed5a14e10ea78a7",
+      "beforeCanonicalContextSha256": "sha256:35ea4aacc8318319c909872c9b3a14f19e4f9affe242c7b377f3e2f4dd40465a",
+      "afterCanonicalContextSha256": "sha256:e506f6b534c117126c25d2ef9f082590a871f885b2e0d5d534be3d71aaf1aa1b"
+    }
+  ],
+  "semanticKindBindingChanges": [
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "beforeFingerprint": "sha256:c9a84071774dca78a8e17cbf45b2947ad0ac77e30dd19582ba0b0d3c2735c74d",
+      "afterFingerprint": "sha256:ffe12f30d0bba208dfc64269ac525b1853547a5d0027c56eb0b783d2447ce503",
+      "semanticKind": "curricularAtomic",
+      "classificationUnchanged": true,
+      "requiresNativeLedgerFollowup": true
+    },
+    {
+      "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "beforeFingerprint": "sha256:1a30cb43557f2654b191510f4cf870fa53c967f3e468982b471c7f9b0701f413",
+      "afterFingerprint": "sha256:064c4fc0ccf12637327e873b6b04e33b95c03ee5d6b37ce06779f8f2c561d546",
+      "semanticKind": "curricularAtomic",
+      "classificationUnchanged": true,
+      "requiresNativeLedgerFollowup": true
+    }
+  ],
+  "dagChecks": [
+    {
+      "edge": "requires",
+      "checkedGoals": 1183,
+      "cycles": 0,
+      "unresolvedReferences": 0
+    },
+    {
+      "edge": "contains",
+      "checkedGoals": 1183,
+      "cycles": 0,
+      "unresolvedReferences": 0
+    }
+  ],
+  "fingerprintChecks": [
+    {
+      "lane": "semantic-atomicity",
+      "ruleVersion": "semantic-atomicity-v1",
+      "records": [
+        {
+          "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "beforeFingerprint": "sha256:b45c9b5afb1dd6ca289e7408e7c1be975c34c688a842870cfa0f5bd0c41fa4f7",
+          "afterFingerprint": "sha256:b45c9b5afb1dd6ca289e7408e7c1be975c34c688a842870cfa0f5bd0c41fa4f7",
+          "status": "atomic",
+          "recordUnchanged": true
+        },
+        {
+          "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "beforeFingerprint": "sha256:dcb834c828ef682499677a9fcc293eda85f63111009b5c3b885609d2ade0742d",
+          "afterFingerprint": "sha256:dcb834c828ef682499677a9fcc293eda85f63111009b5c3b885609d2ade0742d",
+          "status": "atomic",
+          "recordUnchanged": true
+        }
+      ]
+    },
+    {
+      "lane": "memory-card-review",
+      "ruleVersion": "memory-card-review-v1",
+      "records": [
+        {
+          "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "beforeFingerprint": "sha256:b22a2591d63abbc7e588ae8b2c583c1d9a3edf741251b9d568ddcf4feb3c488c",
+          "afterFingerprint": "sha256:b22a2591d63abbc7e588ae8b2c583c1d9a3edf741251b9d568ddcf4feb3c488c",
+          "status": "no_memory_needed",
+          "recordUnchanged": true
+        },
+        {
+          "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "beforeFingerprint": "sha256:4f9cdf1a9a33f653e5a9bafee2fe355ab7dd4c0e976a644550ff9fc41c0d1775",
+          "afterFingerprint": "sha256:4f9cdf1a9a33f653e5a9bafee2fe355ab7dd4c0e976a644550ff9fc41c0d1775",
+          "status": "no_memory_needed",
+          "recordUnchanged": true
+        }
+      ]
+    }
+  ],
+  "bookModelBefore": "sha256:2dc9bf1857e0209b05e365598da7e11b95875feeac8c67bf748d1f4f395c50b5",
+  "bookModelHypotheticalAfter": "sha256:e19de7bdbeb6e9a229e7f3501ee9dcba71548a0369f56d600db71482eba802e4",
+  "fullPageChanges": [
+    {
+      "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+      "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+      "fields": [
+        "reverseRequires",
+        "pageFingerprint"
+      ],
+      "beforePage": 170,
+      "afterPage": 170,
+      "beforePageFingerprint": "sha256:4b8dbef7cc77bf80d5a7d77802794658571f5b5e45cbab1fdbea13d5d75cca87",
+      "afterPageFingerprint": "sha256:3c18b1efb8ead4c7dbf88093ab6f654b029806b8a1d70eba3d8a8393a99cba54"
+    },
+    {
+      "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+      "title": "Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten",
+      "fields": [
+        "reverseRequires",
+        "pageFingerprint"
+      ],
+      "beforePage": 171,
+      "afterPage": 171,
+      "beforePageFingerprint": "sha256:28616fd780c1caf0c1da2364a45d123395f2c4ffbb8289b96e3b55beb2efff3d",
+      "afterPageFingerprint": "sha256:a531a97e951cea1733c04d4886f23cc085c745f2b3237c33420567eb474eb472"
+    },
+    {
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "title": "Ableitungen elementarer Funktionen berechnen",
+      "fields": [
+        "reverseRequires",
+        "pageFingerprint"
+      ],
+      "beforePage": 211,
+      "afterPage": 211,
+      "beforePageFingerprint": "sha256:81cc8f97aa90555b32ad3d44ec0ecd59d5cb55f73479343db06bff8af3e8d53a",
+      "afterPageFingerprint": "sha256:565c628c347278531369cb8b27dfc6f021b2fde0a0022bc286c5c25fea263e3a"
+    },
+    {
+      "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+      "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
+      "fields": [
+        "reverseRequires",
+        "pageFingerprint"
+      ],
+      "beforePage": 297,
+      "afterPage": 297,
+      "beforePageFingerprint": "sha256:32b381a40c9210af2060767d0f2fcd6a58849f4250796681f76ea98c33b3e372",
+      "afterPageFingerprint": "sha256:833f33f89aed89470e9aa49a8e4c05b310dd2f329150de1901456c378eee069e"
+    },
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+      "fields": [
+        "pageNumber",
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 363,
+      "afterPage": 364,
+      "beforePageFingerprint": "sha256:33893a58cdcca42bc8c298ad684543c6e4646ec1c61c272c34198cc4ebb48509",
+      "afterPageFingerprint": "sha256:bdf375a81f5bb5b041b0be34335997a6a03f042601de5fd8dd534432db443107"
+    },
+    {
+      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+      "title": "Punkte und Vektoren im Raum koordinatisieren",
+      "fields": [
+        "pageNumber",
+        "reverseRequires",
+        "pageFingerprint"
+      ],
+      "beforePage": 364,
+      "afterPage": 363,
+      "beforePageFingerprint": "sha256:e65e4d7c23f6015e2fa74991285c52e7c345b9b3fd78add3623eb13e4152921c",
+      "afterPageFingerprint": "sha256:55b4ccf0ad17cd551cb2ff5418a42521a4eaf12592eadbff452129f2b08d88f2"
+    },
+    {
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "title": "Räumliche Objekte im Koordinatensystem verorten",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 365,
+      "afterPage": 365,
+      "beforePageFingerprint": "sha256:57ecabaa9a3b6c436ba5875f483e51bee4232a25d7cb542c9c8e92cc816053c1",
+      "afterPageFingerprint": "sha256:e8481a84a71f398a4b683a69ecfeb13d65345d25e912a8e53e0ae4791b5fe3cb"
+    },
+    {
+      "goalId": "7680701b-35e3-519e-beaa-09753e733756",
+      "title": "Schrägbilder räumlicher Objekte zeichnen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 366,
+      "afterPage": 366,
+      "beforePageFingerprint": "sha256:3e6efababdc8dd7f7ac1026a8b3b544f491e565fa66c35e8598a40c9fe725590",
+      "afterPageFingerprint": "sha256:769809efacf1c4ab0b65890a5d520992b4e8541987b3660c61c8239112819528"
+    },
+    {
+      "goalId": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "title": "Punkte im Raum mit Koordinaten beschreiben",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 367,
+      "afterPage": 367,
+      "beforePageFingerprint": "sha256:8ebec11a635ccbfa9b24f6856b611c7a676ffd721e1e61290a3ea132e0778830",
+      "afterPageFingerprint": "sha256:9d0c6f85b8211aeb0dd34a9702eaecc356a1e18f0ad0bedef3c2f2a57a64589a"
+    },
+    {
+      "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "title": "Vektoren im Raum addieren und vervielfachen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 375,
+      "afterPage": 375,
+      "beforePageFingerprint": "sha256:77c67ac7b2708ba67561a3da2f89a692efb1fb3b3ffea77610539e81fd322297",
+      "afterPageFingerprint": "sha256:14d1a2f358ae8f038f2e68bb38433532dc77c2abf78e56e04ee6d96cf5435acc"
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "title": "Betrag eines Vektors im Raum bestimmen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 379,
+      "afterPage": 379,
+      "beforePageFingerprint": "sha256:cb550079278518288721308a0b732475e20df5c73eea4f63686b73b61e358bad",
+      "afterPageFingerprint": "sha256:b3b57494c7cc1a9c25858e3cb5edcfe5859b20e21db337a2889de76b0d39f268"
+    },
+    {
+      "goalId": "effe43eb-cabe-56cb-a228-35887d7915c1",
+      "title": "Geraden im Raum parametrisch darstellen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 382,
+      "afterPage": 382,
+      "beforePageFingerprint": "sha256:fbbad572799ffb5f453c1ada90bf9a30d85967411eb405ef773410ad12fc1c6d",
+      "afterPageFingerprint": "sha256:553551f4230777b039376d793eacea07ab5b17d1d37eeb8990d3ef5c95b94fc7"
+    },
+    {
+      "goalId": "525b1da9-7fdd-4a70-9f30-ff01d7511b04",
+      "title": "Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 383,
+      "afterPage": 383,
+      "beforePageFingerprint": "sha256:81568b589f1497ce78474e2764548d543be2e4c14d31e12c0076054fbb86aa57",
+      "afterPageFingerprint": "sha256:0943d0d6ecc4b7a0882c409c1044a10770792d0ea714562704d1e0335dab394d"
+    },
+    {
+      "goalId": "d785943c-d61b-51a1-a9c2-c36a9e0cc97d",
+      "title": "Ebenen in Parameterform angeben und interpretieren",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 384,
+      "afterPage": 384,
+      "beforePageFingerprint": "sha256:e67ec60ca33e6c50668933f99867c2c847c02128e08a553cdfb25846dfa2d155",
+      "afterPageFingerprint": "sha256:d79d0348549d01123871a9368e2bf2129e11a76740334aa0039e80b51696add5"
+    },
+    {
+      "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "title": "Matrixeinträge über Zeilen und Spalten lesen und deuten",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 386,
+      "afterPage": 386,
+      "beforePageFingerprint": "sha256:60ad29c6c1d2e3b8539476f7823edc6e1e4ed1efbe24ad36733810cefcb08ce1",
+      "afterPageFingerprint": "sha256:9896a0d85ac15626fcb0974ab18388d23be428cc61ac1f2f14175e5c4a3a5f20"
+    },
+    {
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "title": "Geometrische Abbildungen als linear erkennen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 404,
+      "afterPage": 404,
+      "beforePageFingerprint": "sha256:e51299fa3c7a5ea795d0639ad08836a9b67138339e500ea51eaec79c8b73832a",
+      "afterPageFingerprint": "sha256:e91f69dce87bff6467920216b27055e0b873e6d91afe643da148e72ae754d914"
+    },
+    {
+      "goalId": "9460c3ff-e72d-4107-bc73-087d217200aa",
+      "title": "Skalarprodukt als Orthogonalitätskriterium nutzen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 682,
+      "afterPage": 682,
+      "beforePageFingerprint": "sha256:b4fb5a7ed26d6a69fbafdbc59fadf6171066f29172bebd2319c2f3a4f60c10ac",
+      "afterPageFingerprint": "sha256:0d51171ebcdc62844413e9327f777aca78fe585d171a220b66043c012a873002"
+    },
+    {
+      "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+      "title": "Skalarprodukt von Vektoren definieren",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 706,
+      "afterPage": 706,
+      "beforePageFingerprint": "sha256:1b741e2ca02176f66d4e4e85a3d0268293b7300546a6be88d4c4af7df2dd103b",
+      "afterPageFingerprint": "sha256:1bcf4ebab8543ca1df27c45e8c51f86d9d773c4a7bc6afe5b485fa95bd3614d7"
+    },
+    {
+      "goalId": "265af6af-8eac-5632-b730-800aafcde26a",
+      "title": "Skalarprodukt zur Winkelberechnung nutzen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 712,
+      "afterPage": 712,
+      "beforePageFingerprint": "sha256:9f3d959edfca9ef1d58dee3cfd730b744bbfcf4c1e313f9f455eada1627e9ac9",
+      "afterPageFingerprint": "sha256:3bd28f24d6d959ead0f1a3c96c039c3e107f170d143575923657bd263bb5206f"
+    }
+  ],
+  "b044SubsetChanges": [
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+      "fields": [
+        "pageNumber",
+        "requires",
+        "externalPrerequisites",
+        "pageFingerprint"
+      ],
+      "beforePage": 1,
+      "afterPage": 2,
+      "beforePageFingerprint": "sha256:9abcddf4bc46921957f13b5e03122d954522243a19eb343ff85090401bebdee0",
+      "afterPageFingerprint": "sha256:eb65e9d51ddd494e71bdaaa9a71ad23f197b5d90d4efeca12acad41b142a330a"
+    },
+    {
+      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+      "title": "Punkte und Vektoren im Raum koordinatisieren",
+      "fields": [
+        "pageNumber",
+        "reverseRequires",
+        "pageFingerprint"
+      ],
+      "beforePage": 2,
+      "afterPage": 1,
+      "beforePageFingerprint": "sha256:26c9261a1b20c6c50a57b23c78e834e79df14c0c4f3f77923bb76d42c666eb81",
+      "afterPageFingerprint": "sha256:5b128b417c3b6109bc7634340ac54be54b7deda7da9e07d2ba97defb6086d5bd"
+    },
+    {
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "title": "Räumliche Objekte im Koordinatensystem verorten",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 3,
+      "afterPage": 3,
+      "beforePageFingerprint": "sha256:1fec87de6b6026878d0e8e8be29dc96bca5e9e0babf9a1f45e20142c2033aa5d",
+      "afterPageFingerprint": "sha256:eafb2576a05e15f9a47b8a3b243f3caf3aefc1e8cc909b325522a3fc2b9913b3"
+    },
+    {
+      "goalId": "7680701b-35e3-519e-beaa-09753e733756",
+      "title": "Schrägbilder räumlicher Objekte zeichnen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 4,
+      "afterPage": 4,
+      "beforePageFingerprint": "sha256:9272c4ce3d89574c14de4ca68ee0d80f121ea9224a46083af5de54f492e87f00",
+      "afterPageFingerprint": "sha256:b7286bee0d231442e8112dcfda29f208dbf2ef8069882f660253c23a1e83a844"
+    },
+    {
+      "goalId": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "title": "Punkte im Raum mit Koordinaten beschreiben",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 5,
+      "afterPage": 5,
+      "beforePageFingerprint": "sha256:4d1705dcc339b349ee5127652c6ea72aac5ae74db1c2136cadb80f172d785d91",
+      "afterPageFingerprint": "sha256:97f2e69684c97049437da08791e012ecdf256f8dabb8181361c8408f89ee237f"
+    },
+    {
+      "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "title": "Vektoren im Raum addieren und vervielfachen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 13,
+      "afterPage": 13,
+      "beforePageFingerprint": "sha256:f0161db35fc812bd7aa951963c6af7e4e6ed415b14d0cd73f9052a934b550c80",
+      "afterPageFingerprint": "sha256:be8f976879ffdaf8a74696f32c4824d3d27689a6f59c434547931237ed0f216f"
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "title": "Betrag eines Vektors im Raum bestimmen",
+      "fields": [
+        "requires",
+        "pageFingerprint"
+      ],
+      "beforePage": 17,
+      "afterPage": 17,
+      "beforePageFingerprint": "sha256:90ad1cde9ee32c0880b826bf050debe5e4e09e35e1ddf5d249af6c1a04c4e965",
+      "afterPageFingerprint": "sha256:dcb641aa87b6f82299a954aa5dcea9f13d4617b7b251a5a45ebb6997a784523e"
+    },
+    {
+      "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "title": "Matrixeinträge über Zeilen und Spalten lesen und deuten",
+      "fields": [
+        "externalPrerequisites",
+        "pageFingerprint"
+      ],
+      "beforePage": 20,
+      "afterPage": 20,
+      "beforePageFingerprint": "sha256:f2c51132626f3eb25b3c393f8c327588ba772aaf80fef69f35c2fe3821fe05e1",
+      "afterPageFingerprint": "sha256:5a70a0ecaa5985b94fbffb2e7332a3a0e2e35809e0d6fc62007bcd461f598881"
+    }
+  ],
+  "requirements": {
+    "preserve": "Both original sealed B044 A/B reviews, current D6/P6 artifacts and all A/M records. No user/mastery mutation.",
+    "newDescriptionReview": "Fresh bound-page reviews for changed targets, affected 075 reverseRequires and any other currently strict affected native pages; hold original evidence, do not relabel current.",
+    "newPositiveProfileReview": "be0 and b506 reviewInput changes through requires; semantic goal fingerprint stays unchanged. B044 P6 have no incoming-edge binding and stay technically unchanged unless a later own-case/context change occurs.",
+    "afterWriteChecks": [
+      "Exact goal field delta = requires only on2approvedgoals",
+      "Native A/M checks without ledger rewrite",
+      "DAG and composition checks",
+      "Fresh goal-book model and current strict-report debt inspection",
+      "Curriculum quality status regeneration and all protected maturity floors"
+    ]
+  },
+  "sourceBindings": [
+    {
+      "path": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+      "sha256": "sha256:436a37e331f6b5bce9e2c858c891ed6557242ff05e0b6dc57c55aca1359703e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:31f389f47b24244140cbf7364de19d06994dd3555b59ff14094ea53b76bc325c"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-math-national-atlas.sources.json",
+      "sha256": "sha256:a0f34763fbf962233b278a32ffab27878441d219fe77177e671a47a8ddb0bdcb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "sha256": "sha256:c752f0e04383202c9a344ad28282d5ee3eb9abf3d65ac597ffbd06ca3d05ce42"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "sha256": "sha256:5981c435c31bf314e1c629b5307661fe71c4e4c58018f0ddb455319aa3a68a61"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "sha256": "sha256:1c7db79627b028f88d9cc000c38e1bdf624ecc3b107b8b9dbefe594fa58cca49"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "sha256": "sha256:a2287761097d1e52c4c8aaea3b477ad9f82e97db81939ccde58b57e88e2532b3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "sha256": "sha256:47e9838b408be5190e636c0ea18becc8434364dc42b98eb39d7586c2b1d63603"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+      "sha256": "sha256:149418a00050d12b05a3906828b696c410dac4df4d05e43baf9d097353091907"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+      "sha256": "sha256:af8e2aaa96cb6659bd09f567101eb86a438e93b737961d56a447d024c21b34ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+      "sha256": "sha256:8f0128fbd116b918bcf40a533440320a810ff84c1c00166ab74476587b9cb46d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+      "sha256": "sha256:c680bffce9c2b8f4dddbc1a41d68d51e128cd82fede74227371b017cc373394f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "sha256": "sha256:0c72375d8e1d8b832e8f44a4f9eb0e4b3e5ff252db6eb2117b24edb887a0d1a7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "sha256": "sha256:42653d926cb96e0166762e196060812a283be16b13e7bb31d6086bff9eddf2ec"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+      "sha256": "sha256:15b6c1c13d5d2f5f80e1e5e2f5701d16ea13ab462f37b65b74c55a470facdb21"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "sha256": "sha256:d43e33824b3179755abfa726b35b57added0d25f5f22026b8ff7c9f314bb2fc5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+      "sha256": "sha256:9746afa9300c78ef1dfd92674aac860ebef597223f05849deca7c721dc1a82d5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "sha256": "sha256:53dc3d34cace43a29a97b5cf4fafa15cfcfa20ceda49c01aa18de57e53ce9155"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "sha256": "sha256:b2950f192be0fa858ac8137553a169b4fa5a71a07288cbb7c1311ccf65336185"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "sha256": "sha256:5ad017dc31e2c4b0fb43fceeef443c22fe5af06b178a13b8b0242daaf5a6102e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "sha256": "sha256:186af83537f968355ec6a8494aa4af8896213608f51961d3dec13c6fe083b690"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "sha256": "sha256:86f036e1075a2c4aa43e88d797169efb6a78282d32165f6b4a4bc33214e231a2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+      "sha256": "sha256:4414bf019cea061fd705a193bbd91711875372485af9f6e7b18b87b192266cf5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "sha256": "sha256:b89222edb232c38616cda4bdd7697d5c06b7d46f7babf31aef4f0be341356dd4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "sha256": "sha256:6970128a2513ef09b3a124200297a93a2f68dd3eeeabb996435bbd71805d8852"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "sha256": "sha256:56f63919cf430bb912e5b8e84eba26d8d7a63eb37d8a4f0d5f1b15ff2b6c2d32"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "sha256": "sha256:689991fc4ad19ca06dc602242f72b67e7e28ec717b091820e34133fd31d07f29"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "sha256": "sha256:d52e4621202067546563d730900b9589c0168c44f14029f59b0fedd075b1a9db"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "sha256": "sha256:e48087353eaa3a459a2793f494d5c594de68ea4367d7daba35f4da899eefa5c6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "sha256": "sha256:56278f6e8418e0019af67ab8d778d0ab38a645d4c62040d8a0d3c89fe7970a94"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "sha256": "sha256:141ab186dedbcc4103ca0013574d01288964121100ce5d76578e59d89cbe7137"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "sha256": "sha256:e22b35d54474fdfdc0c24e94f9cb863002acbab10b31171a8c6e13e863a464e4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "sha256": "sha256:d3cf6398f220c43ef4af4fbe0d1ff1347edebfe6485ab7f03f3624bc4d5e92eb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "sha256": "sha256:09661368fcfac2a7a3964fc69ae7d97b9fce3fa7480eb051203fc6424fad060c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "sha256": "sha256:46c41b81407427711be50eb6669ddb79566672b1eba53b7bbf9cf74b98e9e83c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+      "sha256": "sha256:db398b4148ac22956ecc78a0b8119a792b4ba08db06ecb30a0e894efa7f47e21"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+      "sha256": "sha256:56065159dbbc488422908320e6cfbe5926f66d02955d46bfd2e5b81c4598fa98"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+      "sha256": "sha256:3a97e5f52d7af998871d0bbb1a1165b783b6fb7fa6c4577ab4a4e21c4e2846b8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+      "sha256": "sha256:928bfc1ba5327b58159cb4a1348fb117ef611255c054699a87b3682e0d550c21"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "sha256": "sha256:20d7d12c0dc19708f823f55086bc020a08d9c47f5226b579bb393d7d40b319bc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+      "sha256": "sha256:e01a1b81642916e72914910f7444f5595638f0e32074fd14d31a6f79268e6c63"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "sha256": "sha256:40118dada2ba560a3b1bd0e46a17b2b30faf71fd53620fa4af7f1de7c65a0a19"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+      "sha256": "sha256:5a731da47390ff6b12166dffa8f16ab98f9c516c5d36b4fb95563c9022aaf675"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "sha256": "sha256:a90332aa92446b33e2951fd6c5cd03d42b7cf4a8ef5a61f137732a7a69a658ca"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "sha256": "sha256:3220b113d9f4e0b9936746187f533d57c42bab3fc86d84c5da473d6fdf01cdd6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "sha256": "sha256:4d42d70052c80ae930c2d7338888d1373323603e5c3d1398284793b141b8829c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "sha256": "sha256:d29f4af03fd228e23fc1ce53933d763072d68f598533a4133f8ec8ffcfbd2480"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "sha256": "sha256:cb7075e2690208bd18a01ddbd1a30f7774f5ccdac71b738c9cca8804d23fc9d4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "sha256": "sha256:a0c4951be0790d588c46ccd038996d418bdd7dfcc8a8f48eb3a96592341f0b5a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "sha256": "sha256:f75fbc86e5ad8b53248c5bd75c2d8adb8627e89d4a157152ed23d64a588660bc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "sha256": "sha256:71e25d84b1703062dceaab2e775e968c0e374733bdbc1d9f2d4a0742f8d91699"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "sha256": "sha256:480f2e4eef23464b92415d9484d4235f9c574cb677a6256cf814678b5ff4c30a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "sha256": "sha256:acad29b85f19338b5e435615e5b0bbe28203d9072ab3ac687e0e3787e1770af7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "sha256": "sha256:2cc99b44e72dcc112365b51ac66c83bf9201d3cb8ef64c1e1b1b9ba7d65633e3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "sha256": "sha256:86812571b4a0c2cb77ac1ee17d6c4bb55e3b317cd6dfae7bdbd7ec8576b250d6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "sha256": "sha256:ee4f59f31beeb1a70f0d7d220a6037c9c274ddecc4bd40b6e1bcafaaccc6ef19"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "sha256": "sha256:cf678f6c58266e329c49a39eca97aa8aee81b22acc432c67536d686b7ec1dd05"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "sha256": "sha256:2bbfbc7d288c4eb816b454dc22a2c1de853199a15ecd7058fdc2b67ca171025e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "sha256": "sha256:90c830e5c7f2114d82d35bfa21989dcf7064219d6eb81b6918399dffd782ab53"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "sha256": "sha256:20d9b852209479adc2dbd0880d72ce03c21d87cf038d54d09efaca1c81bdfa96"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+      "sha256": "sha256:38f106ffc8c9a1865852febfb2e2d59f081ab9ec83128ccd89617cd0f6ae730d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "sha256": "sha256:1bddb851ca3ad7988bce77e9541f32500579f16db18bbba47f6381171bdfd3a3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "sha256": "sha256:195c18e5f033ab4468b6338e76f903402b29c18d62f186ee1ea96a5914b81c5a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "sha256": "sha256:cf5a2b297c3d8d57b27d5969c4e9c329ea7568b5c2b780f2ad87c6f7cd3e61ee"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "sha256": "sha256:30bdb21618f2e1595a99f577975f72d15487b13f7299aa1f1777374e40678f09"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "sha256": "sha256:75aa35502685609f14ff41c471dd2ff4cdc2478b08422a9b4c50e3abb80c1aab"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "sha256": "sha256:6a6b1e639d4ce691b481d06ad16b0b09a91c557eb06da305f5ae413add4e133e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "sha256": "sha256:8559f8528eec91856416a767f58d4f248a6ebae5ac98a980bfc5236f40731520"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "sha256": "sha256:634def8374a2e8f7481168e740c772e81128b75ba7222d2856cc5e4873d0b69f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "sha256": "sha256:1dd6b8838efb75216d87be94a820e00a440cfc24f1abab49a02031025a11d927"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "sha256": "sha256:e24ceba772be2b338318ef1b204cf339b1eed07a00964cf76b2308d0f0272258"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "sha256": "sha256:6250ab3dfeefcd3df886b5beabb13f9c9cd2e3519a5304f1e83b5bb27957fd2a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+      "sha256": "sha256:4fe14e6d948884f433beeca501f17fef6ce21efe59de859f45b8f43bb1b1b0ed"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "sha256": "sha256:3364eb220bad7bdde3c5759784565a87f217e52a1817c3dc80ee9ad2dba85f56"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+      "sha256": "sha256:ad8303341fda90f06a4aebf1361bbf6573915fe0006a070845022860809323fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "sha256": "sha256:fa298eb1421a02236539b75d1db20ad341e4d9ab310770c7f3cc7935e8689c0e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+      "sha256": "sha256:abad4e79202f5f43ca9023b06c277b71b3cff42be93a86ddab351f333270373c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "sha256": "sha256:1745d76ee9fdcc9818dec5ac851e474631b137874c9e562ac0eb0d7c9f362d28"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+      "sha256": "sha256:5ed405115afbda44ea8889a5b3e6252ab27a90f5fd0dfe74a2862b8e388fac17"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "sha256": "sha256:19a32c8bb8a95d015fe6207c7e15400d3bdbda99a11a03669d895b93520404d9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+      "sha256": "sha256:a272b4e8423b780ce69ba016e541e46f7ccadc60523a4fa05cea5c2d6c2ea6ce"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "sha256": "sha256:3be393bc3b1903958e58e7b25dd7e5c7ff8132eab834145fa054015d739ffbe4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+      "sha256": "sha256:43826a5338c3a7ba0347dd87932d81b4442a34b289f6e9f4ca041d925743721f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "sha256": "sha256:c2ef053f9c838b73f587f225631498c6871a33c9f7c5b8ef4621521304e466fe"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+      "sha256": "sha256:d0829e5eff102bab0ed03ac87518a890c02b90820a9ef796e4def06701682d07"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "sha256": "sha256:838418a7cbbab783d0f6c2e33293e29cff7a9d3317099ebee47c537417afdf02"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+      "sha256": "sha256:c5dd32067ec1faa7476c8a9cf37184d1869b36e337dba9f379f893b300587e1c"
+    },
+    {
+      "path": "app/scripts/config/goal-books/navigation/de-gym-math-national-atlas.view.json",
+      "sha256": "sha256:21915e3d69ae72eaaf3911450ba87b3713ae5a9ce4a571ddd3622cfd30dffa36"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+      "sha256": "sha256:71ea186d9a42dad9a814e9de6b29b751531acdd483094bdec8e0dc8860faedd8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "sha256:ed1c947ec62021db0c36583abd0b9ace87c938854a59d081bb00baf31f310075"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1.config.json",
+      "sha256": "sha256:e7443328fdda3244eda9a33617488149e300d27fe879c2ee2c2f1a9f138cdaf8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/bundle/book-model.json",
+      "sha256": "sha256:10014eff79222128daf8ff730378f824e27bb2b71f232eda79fd34f848fb0ef0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "sha256": "sha256:90d5511603dc1d31fa33161b7f0a7425469c48e16dd03b96619a0ecb0bd92f9b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "sha256": "sha256:ea550e2622601369588d8ab213620b0dded5769564ae2b4bb15170138e840c7a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "sha256": "sha256:5e1e071231587496e7bd5ecab4a8bee07fa51eea1db08d39f2112b0ef7e0fa1e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "sha256": "sha256:a01e28018bc71273f056759d1a32d4e83af6fef03bf51731b60bc1bf05d693eb"
+    }
+  ]
+}

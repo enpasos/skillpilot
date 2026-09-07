@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-b040s386-first-pass-b-codex-20260907T123601",
+  "campaignId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-b",
+  "roundId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:9eac2441ec260df6a3bff1ec469a90ba4c1a6ce0b97b70444c520f38921b5a51",
+  "bundleFingerprint": "sha256:55224e03e0e7977af1ddd02bb5648211178404aa31df0581fc43684e252f6dcf",
+  "bookDigest": "sha256:c166f84d9684a8b48d5b26cb0a970edc00627988532aa0d0a095d7a1e925faa0",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:245621755ec3a2daac6ea671eab88b7632a316c039e5c13fa09495bba8fdd0c5",
+  "independenceGroupId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3862890e-9ea9-4c62-bcf2-e354c9d8f306"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:1c723ade98a748db1d5f2262b08612636e22ef42db79da152b3c4354a2dfd777"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9eac2441ec260df6a3bff1ec469a90ba4c1a6ce0b97b70444c520f38921b5a51"
+    }
+  ],
+  "startedAt": "2026-09-07T12:36:01.000Z",
+  "completedAt": "2026-09-07T12:38:06.506Z",
+  "status": "completed",
+  "outputDigest": "sha256:8f5d5e9d4e198cd2a206475f32eb9705cbc167254223eb3cd56728e8f77accf7",
+  "toolchainVersion": "goal-description-review-v2-codex-local"
+}

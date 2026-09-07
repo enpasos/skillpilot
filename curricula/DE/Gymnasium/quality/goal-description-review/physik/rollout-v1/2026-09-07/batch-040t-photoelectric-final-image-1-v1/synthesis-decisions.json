@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-synthesis-current-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex /root/goal_book_build_generator; actual current follow-up synthesis, no human approval",
+  "synthesizedAt": "2026-09-07T13:16:06.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907",
+    "batchManifestDigest": "sha256:a45a7150f4272609631f2881e3d104804d4277d2b5f1e8cb23863fdddb115859",
+    "configDigest": "sha256:e2ac8b420db984a11dbfd58c912b26866d5ea1262205a4f0a124b3e7bf6e1e78",
+    "bundleFingerprint": "sha256:5ff8a21fee3074746d8510a4e83677e326ec4166457034891f67b972e5a005a8",
+    "bookDigest": "sha256:9f45f8e41fb6789570aa56d63b9d23ce27c6ac69337a0efc214601683ae4b597",
+    "reviewInputFingerprint": "sha256:d07ceccea1f06658ba387cf9f835e53e06307012f53c65387e6ed9340c02521b",
+    "dualSummaryDigest": "sha256:0c7f5be3a99a40280d29820681f0a89ea7102b83e2e3a83ec573e149de297cd3",
+    "canonicalLandscapeDigest": "sha256:addfd1b244a7f42f5438aa4ebec6af908cbf5b6530326c5bad6c14646e77d9d4"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-a",
+      "campaignDigest": "sha256:bb0614f6197c97bf2de096e44fc52a1057aeb5a1450e854dd67e2aea9b3e8848",
+      "roundId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-independent-a",
+      "reviewInputFingerprint": "sha256:d07ceccea1f06658ba387cf9f835e53e06307012f53c65387e6ed9340c02521b",
+      "batchId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:c62b11380ad6065df1ca000eecac1e4920eca183ce9808dc4112f786f870fa37",
+      "runId": "physics-040t-cb0-round-a-20260907T131342Z-history-audit",
+      "runManifestDigest": "sha256:329b0005ef66506ad678af04a8d3c981f72a5135ff819c2e16e2dc16f78c1699",
+      "resultsDigest": "sha256:79c371382fdfabaa08667b17ca16a1375d2f8d5c8bdc0a1eeab0c74a901c8f9b"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-b",
+      "campaignDigest": "sha256:c45de3f470ca71b5fb108acfa21e680897a646c2ef8f3e31d2901ebb8bd42af7",
+      "roundId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-independent-b",
+      "reviewInputFingerprint": "sha256:d07ceccea1f06658ba387cf9f835e53e06307012f53c65387e6ed9340c02521b",
+      "batchId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e3dc24b77fcc4c6165a3673ef8b6c59f26f483c4d20cc2e346b599cd30018a7f",
+      "runId": "physics-b040t-current-followup-b-codex-20260907T130657Z",
+      "runManifestDigest": "sha256:76f569457d2b0bcd24a6c95a61a758450e511080a4f591844bb5d6542211ea06",
+      "resultsDigest": "sha256:66b94cf43b2fe7dba398102e45605fa8d1469863000800a025cb0a464d2fbc79"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-synthesis-current-v1-decision-001",
+      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:862937d3f99b5d607fade16a5e1e696a0aedc73a7ccac277f2e5ffb7da6e9a5a",
+      "pageFingerprint": "sha256:1b5ab3aeedf4cbf6dc597cc800f66244f24ee0fea95cc5686eaa7f87f06dd68c",
+      "goalReviewContextFingerprint": "sha256:294e6532cbd0d8deb39732e3a74cd6e4e49eae01cf687dc7f116acf3d2518182",
+      "finalText": {
+        "titleDe": "Fotoeffekt und Einstein-Deutung",
+        "titleEn": "Photoelectric Effect and Einstein's Interpretation",
+        "descriptionDe": "Die lernende Person kann den Fotoeffekt beschreiben, die Einstein’sche Deutung erläutern und die Widersprüche zur klassischen Wellentheorie herausarbeiten.",
+        "descriptionEn": "The learner can describe the photoelectric effect, explain Einstein's interpretation, and highlight contradictions to classical wave theory."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-040t-cb0-round-a-20260907T131342Z-history-audit.record-001",
+          "recordDigest": "sha256:3f6b9f2929f6d1df7c1cc92ea81cba90b14a032ce425b1755295aab37b6ed8e9"
+        },
+        "second": {
+          "recordId": "physics-b040t-current-followup-b-codex-20260907T130657Z-cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+          "recordDigest": "sha256:45222c970be96905530ba9b565319bb9d56d55ce511a84ad3a2157dac5375dd1"
+        }
+      },
+      "rationaleDe": "Beide getrennt erstellten aktuellen Folgeprüfungen behalten den identischen bilingualen Kompetenztext bei. Beobachtung des Fotoeffekts, Einstein-Deutung und Abgrenzung zur rein klassischen kontinuierlichen Energieaufnahme bilden einen zusammenhängenden Erklärungsauftrag; ausführliche Datenanalyse und weitere Anwendungen bleiben bei den vorhandenen Nachfolgezielen. Das tatsächlich von beiden Reviewern und dem Koordinator betrachtete aktuelle Raster 945377b8… zeigt das gleiche Metall in zwei Frequenzfällen, ausdrücklich maximale Elektronenenergie, Materialschwelle und die Intensitätswirkung bei festem f im Ein-Photonen-Modell. Die frühere fehlerhafte elektrische Messschaltung wird nicht mehr gezeigt. Symbolische Pfeile und Teilchenzahlen sind keine Messdaten. Die aktuelle Seite ersetzt daher den früher gebundenen Bildblocker sachlich, ohne alte B040s-KEEP/BLOCK-Records nachträglich umzuschreiben. Runde A liefert die Nachweisformulierung, weil sie Beobachtung/Modell, sichere qualitative Befunde, erhaltene Wellenbeschreibung für andere Phänomene und frischen Materialwechsel-Transfer besonders klar trennt; Runde B bestätigt denselben Modellkern und Eingriffsvergleich. Beide Reviewer haben ihre historische Vorbefassung offengelegt und keine aktuelle Gegenrunde vor Versiegelung gelesen; keine neuen Threads oder Modellvielfalt werden behauptet. Die separate aktuelle P040t-Fassung ergänzt den von beiden Runden genannten Materialwechsel als konkreten dritten Transferfall, ohne die vorhandenen Erwartungen und zwei Fälle zu entfernen. Die Grafik ist Lernhilfe, weder Originalquelle noch erbrachter Leistungsnachweis. Diese Synthese verleiht keine menschliche Bild-, Quellen- oder Releasefreigabe und behauptet keinen globalen 100-Prozent-Stand.",
+      "rationaleEn": "Both separately authored current follow-up reviews retain the identical bilingual competence text. Observing the photoelectric effect, explaining it through Einstein's interpretation and distinguishing it from purely classical continuous energy absorption form one coherent explanatory task; detailed data analysis and further applications remain with the existing successor goals. The current raster 945377b8…, actually inspected by both reviewers and the coordinator, shows the same metal in two frequency cases, explicitly maximum electron energy, the material threshold and the intensity effect at fixed f in the single-photon model. The earlier faulty electrical measurement circuit is no longer shown. Symbolic arrows and particle counts are not measurement data. The current page thus substantively addresses the earlier bound image blocker without retrospectively rewriting the old B040s KEEP/BLOCK records. Round A supplies the evidence wording because it particularly clearly separates observation from model, safe qualitative findings, the continued wave description of other phenomena and fresh transfer through a material change; Round B confirms the same model core and comparison of interventions. Both reviewers disclose their historical involvement and read no current counterpart result before sealing their own record; no new threads or model diversity are claimed. The separate current P040t version adds the material change proposed by both rounds as a concrete third transfer case without removing the existing expectations or two cases. The picture is a learning aid, neither an original source nor demonstrated learner performance. This synthesis grants no human image, source or release approval and asserts no global 100-percent status."
+    }
+  ],
+  "manifestFingerprint": "sha256:93426a15fee60abec76702e6868d995509bd2e52c569d644a8302e4292e06181"
+}

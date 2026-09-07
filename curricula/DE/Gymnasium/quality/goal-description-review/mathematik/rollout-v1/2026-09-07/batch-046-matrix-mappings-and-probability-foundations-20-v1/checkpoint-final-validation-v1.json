@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-07T16:25:32Z",
+  "agent": "/root/goal_book_ci_integration",
+  "scope": "Final bounded B046 KEEP7/REST13 and archive-location technical checkpoint; QS paused by user, no B047 work started.",
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/2026-09-07-ci-archive-relocations-v1.json",
+      "sha256": "78bbaf65379ed1b4531a101f6dc9ed611d11ba9a2fd8afd6fc50b3096ce6de5c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/resolution-index.current-keep7-v1.json",
+      "sha256": "a86119fc14fb633dec6d867731269cb390b1e1e69a02335a6c836fab45ffd5f9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/current-keep7-v1.currency-receipt.json",
+      "sha256": "7168e22c2d2e04429c7c5075132a10b54c2042745e3be8c4fb9aecd85aa3b015"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-046-current-keep7-v1.candidates.json",
+      "sha256": "8d7e0fe4128c3757642b9b017dd897b9643f39767c3d4c283b357aeecf2bef0d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-046-current-keep7-v1.review.jsonl",
+      "sha256": "7bbcbc98e6e4cd3c2cd8d103cb82a8803088b5d30a4d7810dbaac0d42f71182e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-046-current-keep7-v1.arithmetic-check.mjs",
+      "sha256": "9b4566f61ab13b46d771020a5f1130a9286b8142c2d93048923ffef3c53eb4c7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/check-adopted-checkpoint-v1.mjs",
+      "sha256": "09698ee7be34effa85aa6caf98eb372c03972fb77efd8bd2cb59d1f502ade5da"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/positive-profile-root-body-review-v1.json",
+      "sha256": "388fdb2c0948c2d128b436dbc4493f8f7e4fd328466391ca088dd96e37c02eb3"
+    }
+  ],
+  "checks": [
+    {
+      "command": "tsx curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/emit-current-keep7-v1.ts --check",
+      "exitCode": 0,
+      "result": "10 artifacts, 7 strictly valid unchanged-page description resolutions"
+    },
+    {
+      "command": "tsx app/scripts/materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-046-current-keep7-v1.config.json --candidates curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-046-current-keep7-v1.candidates.json --write",
+      "exitCode": 0,
+      "result": "7 current AI candidate profiles"
+    },
+    {
+      "command": "node curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-046-current-keep7-v1.arithmetic-check.mjs",
+      "exitCode": 0,
+      "result": "7 goals / 14 individually checked cases"
+    },
+    {
+      "command": "npm --prefix app run validate:graph",
+      "exitCode": 0,
+      "result": "593 landscapes passed; no validator code change"
+    },
+    {
+      "command": "node curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/check-adopted-checkpoint-v1.mjs",
+      "exitCode": 0,
+      "result": "All24 archive hashes,12 precisely scoped source changes,8 classification-preserving bindings,12 image copies and unchanged A/M verified; requires/contains DAG1183 with no cycles or unresolved references"
+    }
+  ],
+  "historicalReviewRecordsChanged": false,
+  "canonicalDataChangedByThisFinalization": false,
+  "registryChanges": "Added only B046 description index and P7 config; B046 claim reduced exactly from20 to the13 excluded goals. Physics entries unchanged.",
+  "restConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046h-current-source-image-and-wording-holds-13-v1.config.json",
+  "humanApproval": false,
+  "centralFinalCheckOwner": "/root/goal_book_build_generator",
+  "deploymentOrCommitClaim": false
+}

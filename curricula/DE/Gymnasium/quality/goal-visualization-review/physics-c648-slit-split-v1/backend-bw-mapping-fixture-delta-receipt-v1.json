@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "repository-backed-physics-fixture-alignment-receipt-v1",
+  "recordedAt": "2026-09-07T16:36:58Z",
+  "reviewerAgent": "/root/goal_book_ci_integration",
+  "scope": "Read-only independent tuple/file-delta verification after Root applied the explicitly reviewed test-only follow-up. No canonical source edit, no new fachliche review, no weakened assertion.",
+  "gitHead": "837745c690100d79d0b8de68e0e46012f35cf211",
+  "testPath": "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java",
+  "method": "parsesRepositoryBackedCanonicalPhysicsBadenWuerttembergUpperSecondaryMappingFixture",
+  "oldTestSha256": "73ecc4fb59a8d2e55b813faa10cf461bedc564cac7d7be9d974483017264c067",
+  "currentTestSha256": "0ce1c6c4909cdea686709dcea683d1a50f9c3bab008f4db9aa84dd8b8f927c30",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json",
+  "mappingSha256": "c4b2f46879e8ba213d746f446f66062849577360a8c37eed0f461112c22a3bb4",
+  "adoptionReceiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-c648-slit-split-v1/existing-goals-v2.adoption-receipt.json",
+  "adoptionReceiptSha256": "ddacfbf65459a2ffd1061fd95098dd164c1fa641deaecf749a1c62d7ccbd73f3",
+  "oldCount": 64,
+  "currentCount": 68,
+  "unchangedOrderedTupleCount": 62,
+  "changedSources": [
+    {
+      "legacyGoalId": "7b93414b-dd50-41c2-8f49-10778158e070",
+      "previousTuples": [
+        [
+          "7b93414b-dd50-41c2-8f49-10778158e070",
+          "c64820e1-c0ee-4342-9225-f981650f0c52",
+          "exact"
+        ]
+      ],
+      "currentTuples": [
+        [
+          "7b93414b-dd50-41c2-8f49-10778158e070",
+          "6270e558-d657-5363-a6b2-e49a032a453b",
+          "partial"
+        ],
+        [
+          "7b93414b-dd50-41c2-8f49-10778158e070",
+          "c64820e1-c0ee-4342-9225-f981650f0c52",
+          "partial"
+        ],
+        [
+          "7b93414b-dd50-41c2-8f49-10778158e070",
+          "91683676-01cf-5003-80fa-a04d043b4e61",
+          "partial"
+        ],
+        [
+          "7b93414b-dd50-41c2-8f49-10778158e070",
+          "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+          "partial"
+        ]
+      ]
+    },
+    {
+      "legacyGoalId": "5562f1bb-ff4c-4fca-8230-fca0bcd1870d",
+      "previousTuples": [
+        [
+          "5562f1bb-ff4c-4fca-8230-fca0bcd1870d",
+          "c64820e1-c0ee-4342-9225-f981650f0c52",
+          "partial"
+        ]
+      ],
+      "currentTuples": [
+        [
+          "5562f1bb-ff4c-4fca-8230-fca0bcd1870d",
+          "6270e558-d657-5363-a6b2-e49a032a453b",
+          "partial"
+        ],
+        [
+          "5562f1bb-ff4c-4fca-8230-fca0bcd1870d",
+          "91683676-01cf-5003-80fa-a04d043b4e61",
+          "partial"
+        ]
+      ]
+    }
+  ],
+  "checks": {
+    "currentTestTuplesEqualCurrentMapping": true,
+    "onlySizeAndTwoTupleExpansionsChanged": true,
+    "allOtherTestFileBytesUnchanged": true
+  },
+  "sourceRationales": [
+    {
+      "legacyGoalId": "7b93414b-dd50-41c2-8f49-10778158e070",
+      "course": "BW Leistungsfach",
+      "reasonDe": "Die zuvor auf ein Sammelziel exakt abgebildete LF-Quelle deckt nach der bereits geprüften fachlichen Trennung vier Teilkompetenzen ab: Doppelspaltmaxima (6270), Doppelspaltminima (c648), Gitterhauptmaxima (9168), Einzelspaltminima (f6a3). Jede einzelne Zuordnung ist daher partial, keine vollständige 1:1-Gleichsetzung und keine automatische Masteryübertragung.",
+      "evidence": "existing-goals-v2.adoption-receipt.json, mapping review item for source7b93414b, lines1005–1040 at review time."
+    },
+    {
+      "legacyGoalId": "5562f1bb-ff4c-4fca-8230-fca0bcd1870d",
+      "course": "BW Basisfach",
+      "reasonDe": "Die historische BF-Extraktion war weiter gefasst als die tatsächlich geprüfte amtliche Klammer. Der belegte BF-Scope verlangt Doppelspaltmaxima und Gitterhauptmaxima, deshalb zwei partial-Zuordnungen auf6270/9168 und keine unberechtigte BF-Zuordnung auf Doppelspaltminima(c648) oder Einzelspaltminima(f6a3).",
+      "evidence": "existing-goals-v2.adoption-receipt.json, mapping review item for source5562f1bb, lines1041–1074 at review time."
+    }
+  ],
+  "assertionPolicy": "Keep explicit hasSize(68), exact/partial presence, complete containsExactly tuple sequence, source/target/version assertions. Replace no assertion with fixture-derived expected values.",
+  "verificationStatus": "PASS of independent read-only delta assertions only; not a Java test-run result.",
+  "javaTestStatus": "Not claimed here. Root owns the subsequent backend rerun; its result must be checked separately.",
+  "humanApprovalClaimed": false,
+  "reviewFreezeStatus": "Root reported freeze check PASS after the exact test edit; this receipt does not independently rerun or replace that check."
+}

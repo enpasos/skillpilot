@@ -1,0 +1,642 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-b042-adjudicated-nine-v1",
+  "reviewedAt": "2026-09-07T15:28:24Z",
+  "reviewer": "Codex existing agent /root/goal_book_pdf_history_audit; explicitly non-blind post-seal P author; exact model identifier unavailable",
+  "goals": [
+    {
+      "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "reason": "Zwei individuell entworfene sichere Daten-/Modellfälle zum aktuellen Zerfallskern, einschließlich qualitativer Tochterproduktion; BW-Sek-I ohne Differentialrechnung. Zwei unabhängig zu stellende frische Aufgabenfälle; E1/G1-Kandidat, keine tatsächliche Lernleistungs- oder menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "The original A20 native first-pass validation failed closed after premature peer aggregate disclosure. This profile claims no valid independent A20 review run; reviewRunIds remains empty and a further neutral independent description counterreview is pending."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "population",
+            "essentialUnderstandingDe": "Ein einfaches Zerfallsmodell beschreibt die statistische Abnahme instabiler Kerne durch wiederholte Halbierung; Einzelereignisse bleiben zufällig.",
+            "essentialUnderstandingEn": "A simple decay model describes the statistical decrease of unstable nuclei through repeated halving; individual events remain random.",
+            "observablePerformanceDe": "Die lernende Person wählt zu gegebenen Daten die passende Halbierungsfolge, berechnet Bestandsanteile und deutet die Aktivitätsänderung samt Modellbedingungen und Zeiteinheit.",
+            "observablePerformanceEn": "The learner selects a halving sequence appropriate to supplied data, calculates remaining fractions, and interprets changes in activity with model conditions and time units."
+          },
+          {
+            "id": "daughter",
+            "essentialUnderstandingDe": "Aktivität bezeichnet Zerfälle pro Zeit, nicht einfach die Zahl vorhandener Kerne; eine instabile Tochter kann in einer Reihe zugleich entstehen und zerfallen.",
+            "essentialUnderstandingEn": "Activity means decays per time rather than simply the number of nuclei present; an unstable daughter can be produced and decay simultaneously in a chain.",
+            "observablePerformanceDe": "Die lernende Person trennt Mutterbestand, Tochterbestand und Zerfallsrate, erklärt deren mögliche unterschiedliche Entwicklung und prüft, ob ein einfaches Ein-Nuklid-Modell für die Frage reicht.",
+            "observablePerformanceEn": "The learner separates parent population, daughter population and decay rate, explains their potentially different changes, and checks whether a simple single-nuclide model is sufficient."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "population",
+            "daughter"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "daughter-stability",
+            "textDe": "Stabile Tochter gegenüber ebenfalls radioaktiver Tochter; Bestandsabnahme der Mutter wird nicht automatisch zur Gesamtaktivität erklärt.",
+            "textEn": "Stable daughter versus radioactive daughter; decreasing parent population is not automatically treated as total activity."
+          },
+          {
+            "id": "time-population",
+            "textDe": "Zeitdarstellung in Halbwertszeiten gegenüber Zeitstunden und verschiedene Halbwertszeiten bei gleicher Ausgangskernzahl.",
+            "textEn": "Time represented in half-lives versus hours, and different half-lives at equal initial nucleus counts."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "stable-daughter",
+            "taskDemandDe": "Eine modellierte Probe enthält anfangs 1600 instabile Kerne P, T₁/₂=2 h, die ausschließlich in eine stabile Tochter zerfallen; A₀=0,154 Bq ist als Modellwert vorgegeben. Bestimme Erwartungsbestand und Aktivität nach 6 h und erkläre, warum damit kein individueller Zerfallszeitpunkt vorhergesagt ist.",
+            "taskDemandEn": "A modelled sample initially contains 1600 unstable P nuclei with half-life 2 h, decaying only to a stable daughter; A₀=0.154 Bq is supplied as a model value. Determine expected population and activity after 6 h and explain why this does not predict an individual decay time.",
+            "expectedPerformanceDe": "Begründet drei Halbierungen, 200 erwartete Mutterkerne und A₀/8≈0,0193 Bq; unterscheidet statistische Erwartung und tatsächlich schwankende Zahl und erklärt die Aktivitätsabnahme bei unveränderter Zerfallseigenschaft.",
+            "expectedPerformanceEn": "Justify three halvings, 200 expected parent nuclei and A₀/8≈0.0193 Bq; distinguish statistical expectation from fluctuating actual count and explain the decrease in activity at unchanged decay properties.",
+            "understandingFocusDe": "Einfaches Populationsmodell, relative Halbierung und Aktivität als Rate, ohne ein reales Strahlenexperiment oder deterministischen Einzelkernfahrplan.",
+            "understandingFocusEn": "Simple population model, relative halving and activity as a rate, without a real radiation experiment or deterministic individual-nucleus schedule."
+          },
+          {
+            "id": "radioactive-daughter",
+            "taskDemandDe": "In einer frischen Modellreihe P→D→stabil hat P die Halbwertszeit 2 h und D die Halbwertszeit 0,5 h. Anfangs sind 1600 P und keine D vorhanden; keine Kerne verlassen die Probe. Erkläre qualitativ die frühe Entwicklung beider Bestände und beurteile die Behauptung, die Gesamtaktivität müsse exakt alle 2 h halbieren.",
+            "taskDemandEn": "In a fresh model chain P→D→stable, P has half-life 2 h and D half-life 0.5 h. Initially there are 1600 P and no D nuclei; no nuclei leave the sample. Qualitatively explain the early changes of both populations and assess the claim that total activity must halve exactly every 2 h.",
+            "expectedPerformanceDe": "Mutterbestand nimmt statistisch ab; Tochterbestand wächst zunächst aus null, während neu entstandene D ebenfalls zerfallen. Trennt Mutteraktivität von der zusätzlichen Tochteraktivität und begründet, weshalb deren Summe nicht automatisch dem einfachen Muttergesetz folgt; keine quantitative Ketten-Differentialrechnung nötig.",
+            "expectedPerformanceEn": "The parent population statistically decreases; daughter population initially rises from zero while newly formed D also decays. Distinguish parent activity from additional daughter activity and explain why their sum does not automatically follow the simple parent law; quantitative chain differential equations are unnecessary.",
+            "understandingFocusDe": "Transfer vom Ein-Nuklid-Modell zur qualitativen Weitergabe in einer Zerfallsreihe; Systemgrenze und Reichweite der einfachen Aktivitätsformel.",
+            "understandingFocusEn": "Transfer from a single-nuclide model to qualitative production in a decay chain; system boundary and limits of the simple activity law."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+      "reason": "Fiktive, ausdrücklich begrenzte PK5-Modellvergleiche; keine aktuellen Politikdaten oder realen Sicherheitszusagen. Altersgerechte Intervallvergleiche statt Risikotechnik. Zwei unabhängig zu stellende frische Aufgabenfälle; E1/G1-Kandidat, keine tatsächliche Lernleistungs- oder menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "The original A20 native first-pass validation failed closed after premature peer aggregate disclosure. This profile claims no valid independent A20 review run; reviewRunIds remains empty and a further neutral independent description counterreview is pending."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "physical-criteria",
+            "essentialUnderstandingDe": "Die Bewertung einer Energieoption benötigt eine klare Vergleichsleistung, physikalisch belegte Kriterien und deren Unsicherheit; Werte wie Abfallmenge allein beschreiben nicht sämtliche Folgen.",
+            "essentialUnderstandingEn": "Evaluating an energy option requires a clear comparison service, physically supported criteria and their uncertainty; a quantity such as waste volume alone does not describe all consequences.",
+            "observablePerformanceDe": "Die lernende Person ordnet bereitgestellte Daten gleichen Systemgrenzen zu, formuliert Kriterien und vergleicht Optionen mit benannten Datenlücken und Modellgrenzen.",
+            "observablePerformanceEn": "The learner assigns supplied data to equal system boundaries, formulates criteria, and compares options while identifying data gaps and model limits."
+          },
+          {
+            "id": "judgment",
+            "essentialUnderstandingDe": "Eine Kriteriengewichtung ist eine begründbare Wertentscheidung, keine neue physikalische Messung; veränderte Annahmen können die Robustheit eines Urteils verändern.",
+            "essentialUnderstandingEn": "Weighting criteria is a justifiable value decision, not a new physical measurement; changed assumptions can alter a judgement's robustness.",
+            "observablePerformanceDe": "Die lernende Person begründet ein konditionales Urteil und prüft an einer relevanten Annahmen- oder Gewichtungsänderung, ob es bestehen bleibt, ohne Unsicherheit zu verschweigen.",
+            "observablePerformanceEn": "The learner justifies a conditional judgement and tests whether it survives a relevant change in assumptions or weights without concealing uncertainty."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "physical-criteria",
+            "judgment"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "system-boundary",
+            "textDe": "Gleiche bereitgestellte Nutzenergie bei unterschiedlichem Anlagen- und Entsorgungsumfang; unvollständige Daten offen benennen.",
+            "textEn": "Equal supplied useful energy with different plant and waste-management boundaries; explicitly identify incomplete data."
+          },
+          {
+            "id": "uncertainty-weight",
+            "textDe": "Neue physikalische Unsicherheitsintervalle gegenüber ausdrücklich veränderten Prioritäten der Entscheidung.",
+            "textEn": "New physical uncertainty intervals versus explicitly changed decision priorities."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "hypothetical-options",
+            "taskDemandDe": "Zwei ausdrücklich erfundene Kernenergieoptionen sollen jeweils 1 TWh elektrische Nutzenergie liefern. Ein gleich abgegrenztes Modell gibt für A 3,0–3,4 TWh Wärmebedarf und 4 m³ einer fest definierten Abfallklasse, für B 2,5–2,9 TWh und 7 m³ derselben Klasse an. Sicherheitsdaten fehlen. Vergleiche physikalisch und begründe ein konditionales Urteil mit mindestens zwei Kriterien.",
+            "taskDemandEn": "Two explicitly fictional nuclear energy options each supply 1 TWh of useful electrical energy. A model with equal boundaries gives A a thermal input requirement of 3.0–3.4 TWh and 4 m³ of a defined waste class, and B 2.5–2.9 TWh and 7 m³ of the same class. Safety data are missing. Make a physical comparison and justify a conditional judgement using at least two criteria.",
+            "expectedPerformanceDe": "Erkennt Bs geringeren modellierten Wärmeeinsatz und As kleinere Menge derselben Abfallklasse, legt eigene Prioritäten offen und erklärt, dass ohne Sicherheitsdaten kein allumfassendes Urteil folgt. Nennt die gleiche Nutzenergie, Abfallklasse und Systemgrenze als Vergleichsvoraussetzungen.",
+            "expectedPerformanceEn": "Identify B's lower modelled thermal input and A's smaller amount of the same waste class, state priorities explicitly, and explain that missing safety data prevent an all-encompassing judgement. Name equal useful energy, waste class and system boundary as comparison conditions.",
+            "understandingFocusDe": "Physikalischer Zielkonflikt und begründete Wertung unter klar begrenzten künstlichen Daten, nicht eine Behauptung über reale Reaktortypen.",
+            "understandingFocusEn": "Physical trade-off and justified evaluation using explicitly limited artificial data, not a claim about real reactor types."
+          },
+          {
+            "id": "changed-assumptions",
+            "taskDemandDe": "In einer neuen Beratung bleibt A unverändert, aber zusätzliche Modellunsicherheit erweitert Bs Wärmebedarf auf 2,5–3,8 TWh je 1 TWh Nutzenergie. Gruppe X priorisiert geringen Wärmeeinsatz, Gruppe Y geringe Abfallmenge. Prüfe getrennt, was die neue Datenlage und was diese Prioritäten am Vergleich verändern.",
+            "taskDemandEn": "In a fresh consultation, A remains unchanged but additional model uncertainty widens B's thermal input requirement to 2.5–3.8 TWh per 1 TWh of useful energy. Group X prioritises low thermal input; group Y prioritises low waste volume. Separately examine how the new evidence and these priorities affect the comparison.",
+            "expectedPerformanceDe": "Zeigt die Überlappung der Wärmeintervalle und verneint eine robuste Rangfolge allein für den Wärmeeinsatz; die vorgegebene Abfallrangfolge bleibt. Unterscheidet die physikalisch veränderte Unsicherheit von X/Y-Wertentscheidungen und formuliert notwendige Zusatzdaten oder konditionale Urteile.",
+            "expectedPerformanceEn": "Show the overlapping thermal-input intervals and reject a robust ranking based solely on thermal input; the supplied waste-volume ranking remains. Distinguish changed physical uncertainty from X/Y value choices and state necessary additional data or conditional judgements.",
+            "understandingFocusDe": "Frischer Unsicherheits- und Prioritätenwechsel statt bloßer Zahlentausch; begrenzte Modellgüte und normative Gewichtung werden getrennt.",
+            "understandingFocusEn": "Fresh change in uncertainty and priorities rather than mere number substitution; limited model quality and normative weighting remain separate."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+      "reason": "Einfaches AB1-Strukturmodell mit eigenem Diagramm und atomarem Hüllenwechsel, einschließlich BW-Sek-I-Scope. Zwei unabhängig zu stellende frische Aufgabenfälle; E1/G1-Kandidat, keine tatsächliche Lernleistungs- oder menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "The original A20 native first-pass validation failed closed after premature peer aggregate disclosure. This profile claims no valid independent A20 review run; reviewRunIds remains empty and a further neutral independent description counterreview is pending."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "hierarchy",
+            "essentialUnderstandingDe": "Zusammensetzungsmodelle unterscheiden Atom, Kern, Elektronen und Nukleonen; Protonen und Neutronen sind keine elementaren Quarks.",
+            "essentialUnderstandingEn": "Composition models distinguish atoms, nuclei, electrons and nucleons; protons and neutrons are not elementary quarks.",
+            "observablePerformanceDe": "Die lernende Person konstruiert aus vorgegebenen Bausteinen eine begründete Hierarchie und erläutert die Bedeutung ihrer Verbindungspfeile ohne reale Größen- oder Bahnbehauptung.",
+            "observablePerformanceEn": "The learner constructs a justified hierarchy from supplied constituents and explains the meaning of its arrows without claiming actual sizes or trajectories."
+          },
+          {
+            "id": "families",
+            "essentialUnderstandingDe": "Quarks und Leptonen sind im einfachen Modell elementare Materieteilchen; uud beschreibt ein Proton, udd ein Neutron, und ein Elektron gehört zu den Leptonen.",
+            "essentialUnderstandingEn": "Quarks and leptons are elementary matter particles in the simple model; uud describes a proton, udd a neutron, and an electron belongs to the leptons.",
+            "observablePerformanceDe": "Die lernende Person trennt Gruppenzugehörigkeit von Zusammensetzung und erklärt eine geänderte Atom-/Ionenstruktur, ohne den unveränderten Kern umzudeuten.",
+            "observablePerformanceEn": "The learner distinguishes group membership from composition and explains a changed atom/ion structure without reinterpreting the unchanged nucleus."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "hierarchy",
+            "families"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "notation",
+            "textDe": "Verschachtelte Textbeschreibung gegenüber eigener Pfeilhierarchie; Pfeile für Zusammensetzung und Familienzuordnung unterscheiden.",
+            "textEn": "Nested verbal description versus a self-constructed arrow hierarchy; distinguish composition arrows from family-membership arrows."
+          },
+          {
+            "id": "electron-count",
+            "textDe": "Atom gegenüber einfach ionisierter Form bei unverändertem Kern.",
+            "textEn": "Atom versus singly ionised form with unchanged nucleus."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "construct-hierarchy",
+            "taskDemandDe": "Ordne die Karten Atom, Kern, Elektron, Proton, Neutron, u-Quark, d-Quark und Lepton in eine eigene beschriftete Strukturübersicht. Verwende unterschiedliche Pfeilbeschriftungen für 'besteht aus' und 'gehört zur Familie'; erkläre uud und udd im einfachen Modell.",
+            "taskDemandEn": "Arrange cards labelled atom, nucleus, electron, proton, neutron, u quark, d quark and lepton in your own labelled structural overview. Use different arrow labels for 'is composed of' and 'belongs to the family'; explain uud and udd in the simple model.",
+            "expectedPerformanceDe": "Konstruiert Atom→Kern/Elektronen und Kern→Protonen/Neutronen, erläutert Proton uud/Neutron udd sowie Elektron als Lepton. Begründet, warum eine Familie kein zusätzlicher räumlicher Körperteil des Elektrons ist und Pfeilabstände keine Größen darstellen.",
+            "expectedPerformanceEn": "Construct atom→nucleus/electrons and nucleus→protons/neutrons, explain proton uud/neutron udd and electron as a lepton. Justify why a family is not an additional spatial part of an electron and arrow spacing does not represent size.",
+            "understandingFocusDe": "Eigenständige Übersetzung eines Bausteinsatzes in ein Strukturmodell statt Kopieren des bekannten Bildaufbaus.",
+            "understandingFocusEn": "Independent translation of a constituent set into a structural model rather than copying the familiar illustration."
+          },
+          {
+            "id": "ion-change",
+            "taskDemandDe": "Eine neue Textbeschreibung nennt einen Kern mit zwei Protonen und zwei Neutronen sowie zunächst zwei Elektronen. Danach wird genau ein Elektron entfernt, der Kern bleibt unverändert. Stelle vor und nach der Änderung die Bausteine und Familienzuordnung dar; eine Ladungsrechnung ist nicht verlangt.",
+            "taskDemandEn": "A fresh verbal description gives a nucleus with two protons and two neutrons and initially two electrons. Exactly one electron is then removed while the nucleus remains unchanged. Represent constituents and family membership before and after; a charge calculation is not required.",
+            "expectedPerformanceDe": "Zeigt nachher ein Elektron statt zwei, unverändert zwei uud-Protonen und zwei udd-Neutronen. Erläutert, dass das entfernte Elektron ein Lepton und kein Quark ist, und trennt Atom-/Ionenänderung von einem Kernumbau.",
+            "expectedPerformanceEn": "Show one electron instead of two afterward, with unchanged two uud protons and two udd neutrons. Explain that the removed electron is a lepton, not a quark, and distinguish the atom/ion change from a nuclear transformation.",
+            "understandingFocusDe": "Gleicher Strukturkern unter einer echten Zusammensetzungsänderung der Hülle; keine Zusatzforderung nach Kernreaktionen oder fortgeschrittener Teilchentheorie.",
+            "understandingFocusEn": "The same structural core under a genuine change of electron-shell composition; no added requirement for nuclear reactions or advanced particle theory."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "reason": "Qualitative supraleitende Zustands- und Magnetdeutung mit bereitgestellten Daten/Videos; keine BCS-Herleitung oder selbstständige Kryotechnik. Zwei unabhängig zu stellende frische Aufgabenfälle; E1/G1-Kandidat, keine tatsächliche Lernleistungs- oder menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "The original A20 native first-pass validation failed closed after premature peer aggregate disclosure. This profile claims no valid independent A20 review run; reviewRunIds remains empty and a further neutral independent description counterreview is pending."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "transition",
+            "essentialUnderstandingDe": "Im vereinfachten supraleitenden Gleichstromzustand verschwindet der Widerstand unterhalb einer materialabhängigen kritischen Temperatur, solange die übrigen kritischen Bedingungen erfüllt sind.",
+            "essentialUnderstandingEn": "In the simplified superconducting DC state, resistance vanishes below a material-dependent critical temperature provided the other critical conditions are met.",
+            "observablePerformanceDe": "Die lernende Person erklärt einen vorgegebenen R-T-Verlauf und sagt bei Überschreiten der kritischen Temperatur eine qualitative Zustandsänderung samt Anwendungsgrenze voraus.",
+            "observablePerformanceEn": "The learner explains a supplied R-T trace and predicts a qualitative state change and application limit when the critical temperature is exceeded."
+          },
+          {
+            "id": "magnetism",
+            "essentialUnderstandingDe": "Supraleitung umfasst besonderes magnetisches Verhalten wie den Meissner-Effekt; Levitation allein ist ohne Kenntnis des Aufbaus kein eindeutiger Nachweis und nicht bloß eine Folge kleinen Widerstands.",
+            "essentialUnderstandingEn": "Superconductivity includes distinctive magnetic behaviour such as the Meissner effect; levitation alone is not conclusive without knowing the setup and is not merely a consequence of low resistance.",
+            "observablePerformanceDe": "Die lernende Person deutet eine passend dokumentierte Magnetbeobachtung zusammen mit Temperatur-/Widerstandsdaten und erklärt eine einfache Anwendung unter den angegebenen Modellbedingungen.",
+            "observablePerformanceEn": "The learner interprets an appropriately documented magnetic observation together with temperature/resistance data and explains a simple application under the stated model conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "transition",
+            "magnetism"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "temperature-crossing",
+            "textDe": "Abkühlen beziehungsweise Erwärmen über T_c bei festgehaltenen, geeigneten Strom- und Feldbedingungen.",
+            "textEn": "Cooling or warming across T_c with fixed suitable current and field conditions."
+          },
+          {
+            "id": "observation-specificity",
+            "textDe": "Dokumentierter supraleitender Aufbau gegenüber einer Schwebe-Beobachtung mit unbekanntem Mechanismus.",
+            "textEn": "Documented superconducting setup versus a levitation observation with an unknown mechanism."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "resistance-transition",
+            "taskDemandDe": "Ein bereitgestelltes idealisiertes Gleichstromdiagramm eines Modellmaterials zeigt R=0 unter 90 K und R>0 darüber; Strom und Magnetfeld liegen im geeigneten Bereich. Ein dokumentierter Aufbau verwendet das Material bei 80 K als supraleitenden Leiter. Erkläre die Beobachtung und sage die Auswirkung einer Erwärmung auf 95 K auf diese Anwendung voraus.",
+            "taskDemandEn": "A supplied idealised DC diagram of a model material shows R=0 below 90 K and R>0 above; current and magnetic field are in the suitable range. A documented setup uses the material at 80 K as a superconducting conductor. Explain the observation and predict the effect on this application of warming to 95 K.",
+            "expectedPerformanceDe": "Ordnet 80 K dem supraleitenden und 95 K dem normalleitenden Zustand zu, erläutert den Verlust des widerstandsfreien Betriebs und trennt den idealisierten Nullwert von einer experimentellen Aussage 'unter Messgrenze'. Keine tatsächliche Kühlanlage bedienen.",
+            "expectedPerformanceEn": "Classify 80 K as superconducting and 95 K as normal-conducting, explain the loss of resistance-free operation, and distinguish the idealised zero from an experimental statement 'below detection limit'. Do not operate real cooling equipment.",
+            "understandingFocusDe": "Kritische Zustandsbedingung, Mess-/Modellunterscheidung und eine konkrete Anwendungsgrenze.",
+            "understandingFocusEn": "Critical state condition, measurement/model distinction and a concrete application limit."
+          },
+          {
+            "id": "levitation-comparison",
+            "taskDemandDe": "Zwei neue Lehrvideos zeigen je einen schwebenden Magneten. Zu A sind ein supraleitendes Material, geeignete kleine Feldstärke, Temperatur unter T_c und magnetische Flussverdrängung dokumentiert; bei Erwärmung über T_c endet dieses Verhalten. Zu B ist nur das Schweben sichtbar, der Aufbau unbekannt. Erkläre A qualitativ und beurteile, was sich über B ableiten lässt.",
+            "taskDemandEn": "Two fresh teaching videos each show a levitating magnet. A documents a superconducting material, a suitably small field, temperature below T_c and magnetic-flux expulsion; warming above T_c ends this behaviour. B shows levitation only, with the setup unknown. Qualitatively explain A and assess what can be inferred about B.",
+            "expectedPerformanceDe": "Verknüpft As dokumentiertes Verhalten mit dem Meissner-Effekt im angegebenen Zustandsbereich und erklärt seine Temperaturabhängigkeit. Erkennt für B mehrere mögliche Mechanismen und fordert zusätzliche Material-/Temperatur-/Widerstands- oder Magnetbelege statt eines automatischen Supraleitungsbeweises.",
+            "expectedPerformanceEn": "Connect A's documented behaviour with the Meissner effect in the stated regime and explain its temperature dependence. Recognise multiple possible mechanisms for B and request additional material, temperature, resistance or magnetic evidence instead of treating levitation as automatic proof of superconductivity.",
+            "understandingFocusDe": "Frischer Wechsel der Evidenzqualität; Phänomen, Modellzuordnung und bloß sichtbare Schwebe-Beobachtung bleiben getrennt.",
+            "understandingFocusEn": "Fresh change in evidence quality; phenomenon, model attribution and visible levitation alone remain distinct."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "reason": "Post-seal KEEP-Adjudikation zu einer vorsorglichen A-REVISE; das Profil expliziert Besetzung/Temperatur ohne Kanonänderung, zusätzliche unabhängige D-Gegenprüfung noch ausstehend. Zwei unabhängig zu stellende frische Aufgabenfälle; E1/G1-Kandidat, keine tatsächliche Lernleistungs- oder menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Original A proposed a precautionary wording revision; the explicitly post-seal subject adjudication accepts current wording for the concrete reasons retained in post-seal-subject-adjudication-v1.json. The original A record is not changed.",
+        "The original A20 native first-pass validation failed closed after premature peer aggregate disclosure. This profile claims no valid independent A20 review run; reviewRunIds remains empty and a further neutral independent description counterreview is pending."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "occupation",
+            "essentialUnderstandingDe": "Erlaubte Energiebänder legen mögliche Zustände fest; deren Besetzung wird im einfachen Modell relativ zur Fermienergie gedeutet. Eine Bandlücke enthält keine erlaubten Zustände und ist nicht dasselbe wie ein leeres erlaubtes Band.",
+            "essentialUnderstandingEn": "Allowed energy bands specify possible states; their occupation is interpreted relative to Fermi energy in the simple model. A band gap contains no allowed states and differs from an empty allowed band.",
+            "observablePerformanceDe": "Die lernende Person interpretiert und ergänzt ein vorgegebenes Bänderschema, unterscheidet erlaubte/leere Zustände von einer Lücke und erläutert die Funktion der Fermienergie ohne sie zum Entstehungsmechanismus der Bänder zu machen.",
+            "observablePerformanceEn": "The learner interprets and completes a supplied band diagram, distinguishes allowed empty states from a gap, and explains the role of Fermi energy without treating it as the mechanism that creates bands."
+          },
+          {
+            "id": "temperature",
+            "essentialUnderstandingDe": "Bei T=0 sind im einfachen Fermimodell Zustände unterhalb der Fermienergie besetzt und oberhalb unbesetzt; bei endlicher Temperatur ist die Besetzungsgrenze nicht scharf und thermische Anregung kann Ladungsträger ermöglichen.",
+            "essentialUnderstandingEn": "At T=0 in the simple Fermi model, states below Fermi energy are occupied and those above are empty; at finite temperature the occupation boundary is not sharp and thermal excitation may enable charge carriers.",
+            "observablePerformanceDe": "Die lernende Person erklärt den qualitativen Unterschied zweier ausdrücklich mit Temperaturbedingungen versehener Schemata und begründet, welche Leitfähigkeitsdeutung das vereinfachte Bild erlaubt.",
+            "observablePerformanceEn": "The learner explains the qualitative difference between two diagrams with explicit temperature conditions and justifies which conductivity interpretation the simplified picture supports."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "occupation",
+            "temperature"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "allowed-states",
+            "textDe": "Teilweise besetztes erlaubtes Band gegenüber vollständig besetztem Band und durch Lücke getrenntem leeren Band.",
+            "textEn": "Partly occupied allowed band versus a full band and an empty band separated by a gap."
+          },
+          {
+            "id": "temperature-regime",
+            "textDe": "Idealisierter T=0-Grenzfall gegenüber erläutertem endlichem Temperaturzustand desselben intrinsischen Modellhalbleiters.",
+            "textEn": "Idealised T=0 limit versus an explained finite-temperature state of the same intrinsic model semiconductor."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "complete-band-schema",
+            "taskDemandDe": "Bei T=0 sind für Modell M erlaubte Zustände von 0 bis 4 eV mit E_F=2 eV gegeben. Modell S hat ein Valenzband von 0 bis 1 eV, ein Leitungsband von 3 bis 5 eV und E_F=2 eV. Zeichne einfache Bänderschemata, markiere besetzte/unbesetzte Bereiche und erkläre den Unterschied einer leeren erlaubten Energie von einer Bandlücke.",
+            "taskDemandEn": "At T=0, model M has allowed states from 0 to 4 eV with E_F=2 eV. Model S has a valence band from 0 to 1 eV, a conduction band from 3 to 5 eV and E_F=2 eV. Draw simple band diagrams, mark occupied/empty regions and explain the difference between an empty allowed energy and a band gap.",
+            "expectedPerformanceDe": "Zeigt bei M Besetzung unter 2 eV und erlaubte leere Zustände darüber; bei S volles Valenzband, keine Zustände in 1–3 eV und leeres Leitungsband. Begründet qualitativ die unterschiedlichen Möglichkeiten naher freier Zustände; die künstlichen eV-Werte sind kein Materialdatenanspruch.",
+            "expectedPerformanceEn": "Show M occupied below 2 eV with allowed empty states above; show S with a full valence band, no states in 1–3 eV and an empty conduction band. Qualitatively justify the different availability of nearby empty states; the artificial eV values are not claims about real material data.",
+            "understandingFocusDe": "Eigenes Energieschema übersetzt Zustandsangebot und Besetzung; Fermi-Energie als Besetzungsbezug statt Bandentstehung.",
+            "understandingFocusEn": "A self-constructed energy diagram translates available states and occupation; Fermi energy is an occupation reference, not a cause of band formation."
+          },
+          {
+            "id": "thermal-excitation",
+            "taskDemandDe": "Ein neuer intrinsischer Modellhalbleiter wird einmal idealisiert bei T=0 und einmal bei endlicher Temperatur dargestellt. Im zweiten Bild sind wenige Elektronen im Leitungsband und passende unbesetzte Zustände im Valenzband eingezeichnet; die erlaubten Bänder bleiben im Modell gleich. Erkläre und ergänze beide Schemata, ohne eine quantitative Anregungswahrscheinlichkeit zu berechnen.",
+            "taskDemandEn": "A new intrinsic model semiconductor is shown once ideally at T=0 and once at finite temperature. The second diagram contains a few conduction-band electrons and corresponding empty valence-band states; allowed bands remain unchanged in the model. Explain and complete both diagrams without calculating quantitative excitation probabilities.",
+            "expectedPerformanceDe": "Erklärt die thermische Umverteilung der Besetzung, ordnet Elektronen und verbleibende Löcher zusammen und begründet ihre mögliche Beteiligung an Leitung. Zeigt, dass erlaubte Bänder nicht erst durch die gezeichneten Elektronen entstehen und keine scharfe T=0-Besetzungsregel unverändert übertragen werden darf.",
+            "expectedPerformanceEn": "Explain thermal redistribution of occupation, pair electrons with the holes left behind, and justify their possible role in conduction. Show that allowed bands are not created by the drawn electrons and that the sharp T=0 occupation rule cannot be transferred unchanged.",
+            "understandingFocusDe": "Echter Wechsel der Modellbedingung Temperatur mit unverändertem Zustandsangebot; qualitative Quanten-/Leitfähigkeitsdeutung ohne Fermi-Dirac-Rechenpflicht.",
+            "understandingFocusEn": "A genuine temperature-regime change with unchanged available states; qualitative quantum/conductivity interpretation without mandatory Fermi-Dirac calculations."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+      "reason": "Zwei qualitative Interpretationsfälle statt verpflichtender Bau aller Beispielschaltungen; BY-Sek-I ohne quantitative Verstärkerkennlinie. Zwei unabhängig zu stellende frische Aufgabenfälle; E1/G1-Kandidat, keine tatsächliche Lernleistungs- oder menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "The original A20 native first-pass validation failed closed after premature peer aggregate disclosure. This profile claims no valid independent A20 review run; reviewRunIds remains empty and a further neutral independent description counterreview is pending."
+      ],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "transistor-control",
+            "essentialUnderstandingDe": "Ein Bipolartransistor verknüpft einen Basis-Emitter-Eingangszustand mit dem Kollektorstrompfad; Stromversorgung und Beschaltung bestimmen das beobachtete Ausgangsverhalten.",
+            "essentialUnderstandingEn": "A bipolar transistor links its base-emitter input condition to the collector-current path; supply and surrounding circuit determine observed output behaviour.",
+            "observablePerformanceDe": "Die lernende Person benennt in einem gegebenen einfachen NPN-Modell Basis, Kollektor und Emitter und erklärt, welche Strompfade in erläuterten Sperr-/Leitzuständen verfügbar sind.",
+            "observablePerformanceEn": "The learner identifies base, collector and emitter in a supplied simple NPN model and explains which current paths are available in explained off/conducting states."
+          },
+          {
+            "id": "circuit-function",
+            "essentialUnderstandingDe": "Schalter- und einfacher Verstärkerbetrieb nutzen dasselbe Steuerelement in unterschiedlichen Arbeitsbereichen; größere Ausgangssignalenergie stammt aus der Versorgung, nicht aus einer Energieerzeugung des Transistors.",
+            "essentialUnderstandingEn": "Switching and simple amplification use the same control element in different operating regions; increased output-signal energy comes from the supply, not from energy creation by the transistor.",
+            "observablePerformanceDe": "Die lernende Person deutet eine vorgegebene einfache Schaltung aus Bauteilverknüpfung und Arbeitszustand und sagt die qualitative Auswirkung einer Eingangsänderung mit ihrer Versorgungsbeziehung voraus.",
+            "observablePerformanceEn": "The learner interprets a supplied simple circuit using component connections and operating state and predicts the qualitative effect of an input change together with its supply relationship."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "transistor-control",
+            "circuit-function"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "operation-regime",
+            "textDe": "Vorgegebener Schalterzustand gegenüber ausdrücklich vorgespanntem kleinen Signal im aktiven Bereich.",
+            "textEn": "Supplied switching state versus an explicitly biased small signal in the active region."
+          },
+          {
+            "id": "output-location",
+            "textDe": "Strom im Lastzweig gegenüber Spannung am Kollektorknoten einer erklärten Emitterschaltung.",
+            "textEn": "Current in the load branch versus voltage at the collector node of an explained common-emitter circuit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "switch-interpretation",
+            "taskDemandDe": "Ein vollständig beschriebenes Niederspannungs-NPN-Modell hat E an Masse, eine Lampe im Stromzweig von +5 V zum Kollektor und einen geeigneten Basisvorwiderstand. Zustand X hält die Basis ohne leitende Basis-Emitter-Vorspannung, Zustand Y liefert den laut Vorgabe ausreichenden Basisstrom zum Einschalten. Erkläre die Bauteilrollen und das Lampenverhalten; kein eigener Aufbau ist verlangt.",
+            "taskDemandEn": "A fully described low-voltage NPN model has E at ground, a lamp in the current branch from +5 V to the collector and a suitable base resistor. State X provides no conducting base-emitter bias; state Y supplies the base current stated to be sufficient for switching on. Explain component roles and lamp behaviour; no physical assembly is required.",
+            "expectedPerformanceDe": "Erklärt im Modell X den gesperrten Lastpfad und die dunkle Lampe, in Y den leitenden Kollektor-Emitter-Pfad und die versorgte Lampe. Ordnet B/C/E korrekt zu und benennt die 5-V-Quelle als Energiequelle; keine universelle Stromverstärkung wird vorausgesetzt.",
+            "expectedPerformanceEn": "Explain the blocked load path and dark lamp in model X and the conducting collector-emitter path and powered lamp in Y. Identify B/C/E correctly and name the 5 V supply as the energy source; no universal current gain is assumed.",
+            "understandingFocusDe": "Qualitative Grundfunktion im gegebenen Schalterbeispiel aus Strompfaden statt bloßer Erkennung eines Transistorsymbols.",
+            "understandingFocusEn": "Qualitative basic operation in a supplied switching example through current paths rather than simple recognition of a transistor symbol."
+          },
+          {
+            "id": "amplifier-interpretation",
+            "taskDemandDe": "In einer frischen einfachen Emitterschaltung ersetzt ein Widerstand die Lampe; die Gleichvorspannung hält den Transistor ausdrücklich im aktiven Bereich. Der Ausgang ist die Kollektorspannung gegen Masse. Bei kleiner positiver Eingangsänderung steigt laut Modell der Kollektorstrom. Sage die Ausgangsänderung voraus und vergleiche die Funktion mit dem Schalterfall, ohne Verstärkungsfaktor oder Kennlinie zu berechnen.",
+            "taskDemandEn": "In a fresh simple common-emitter circuit, a resistor replaces the lamp; DC bias explicitly keeps the transistor in the active region. Output is collector voltage relative to ground. A small positive input change increases collector current according to the model. Predict the output change and compare the function with switching, without calculating gain or a characteristic curve.",
+            "expectedPerformanceDe": "Erklärt den größeren Spannungsabfall am Kollektorwiderstand und daher sinkende Kollektorspannung. Unterscheidet kleine Signaländerungen im aktiven Bereich vom Ein/Aus-Betrieb und ordnet die Signalenergie der Versorgung zu; quantitative Verstärkeranalyse bleibt dem Nachfolger vorbehalten.",
+            "expectedPerformanceEn": "Explain the increased voltage drop across the collector resistor and thus the falling collector voltage. Distinguish small signal changes in the active region from on/off operation and attribute signal energy to the supply; quantitative amplifier analysis remains for the successor goal.",
+            "understandingFocusDe": "Transfer desselben Transistormodells auf eine geänderte einfache Schaltungsfunktion mit ausdrücklich gegebenem Arbeitspunkt.",
+            "understandingFocusEn": "Transfer of the same transistor model to a changed simple circuit function with an explicitly supplied operating point."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
+      "reason": "Post-seal KEEP zu einer nicht zwingenden Satz-/Kriteriumspräzisierung; bereitgestellte ideale Verkehrsdaten statt realer Verletzungs- oder Abstandsempfehlungen. Zwei unabhängig zu stellende frische Aufgabenfälle; E1/G1-Kandidat, keine tatsächliche Lernleistungs- oder menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Original A proposed a precautionary wording revision; the explicitly post-seal subject adjudication accepts current wording for the concrete reasons retained in post-seal-subject-adjudication-v1.json. The original A record is not changed.",
+        "The original A20 native first-pass validation failed closed after premature peer aggregate disclosure. This profile claims no valid independent A20 review run; reviewRunIds remains empty and a further neutral independent description counterreview is pending."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "impulse-time",
+            "essentialUnderstandingDe": "Bei gleicher Impulsänderung bedeutet längere Abbremszeit kleinere mittlere Kraft; die Kraftstoßfläche allein legt weder Spitzenkraft noch tatsächliches Verletzungsrisiko fest.",
+            "essentialUnderstandingEn": "For the same momentum change, longer stopping time means smaller average force; impulse area alone determines neither peak force nor actual injury risk.",
+            "observablePerformanceDe": "Die lernende Person bilanziert in einem ausdrücklich idealisierten Unfallmodell die Impulsänderung mit Vorzeichen und interpretiert mittlere Kräfte aus gegebenen Stoppzeiten, ohne eine medizinische Prognose zu behaupten.",
+            "observablePerformanceEn": "The learner balances signed momentum change in an explicitly idealised crash model and interprets average forces from supplied stopping times without claiming a medical prognosis."
+          },
+          {
+            "id": "protection-mechanisms",
+            "essentialUnderstandingDe": "Knautschzonen verändern den Stoppverlauf während eines Aufpralls; vorheriger Abstand kann einen Zusammenstoß verhindern oder vorheriges Bremsen ermöglichen. Die beiden Wirkungen verändern unterschiedliche Modellgrößen.",
+            "essentialUnderstandingEn": "Crumple zones alter stopping during impact; earlier spacing can prevent a collision or allow prior braking. These effects change different model quantities.",
+            "observablePerformanceDe": "Die lernende Person erklärt anhand gegebener Anfangs-/Endzustände und Bremsinformationen, ob Zeitverlauf oder Aufprallgeschwindigkeit geändert wurde, und begründet die Grenzen eines vereinfachten Kraftvergleichs.",
+            "observablePerformanceEn": "The learner uses supplied initial/final states and braking information to explain whether stopping duration or impact speed changed and justifies the limits of a simplified force comparison."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "impulse-time",
+            "protection-mechanisms"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "fixed-momentum",
+            "textDe": "Gleiche Anfangs-/Endgeschwindigkeit mit verschiedenem Stoppverlauf; mittlere Kraft nicht mit Spitzenkraft gleichsetzen.",
+            "textEn": "Equal initial/final velocity with different stopping duration; do not equate average and peak force."
+          },
+          {
+            "id": "preimpact-change",
+            "textDe": "Unveränderter Aufprall-Stoppverlauf, aber durch vorangehendes Bremsen geänderte Aufprallgeschwindigkeit oder ganz vermiedener Aufprall.",
+            "textEn": "Unchanged impact stopping process but altered impact speed through prior braking or complete collision avoidance."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "crumpling-time",
+            "taskDemandDe": "In zwei bereitgestellten idealisierten Aufprallmodellen wird dieselbe Masse von 1000 kg von +6 m/s auf 0 abgebremst. Variante A benötigt 0,10 s, Variante B durch einen veränderten Deformationsweg 0,30 s. Vergleiche Kraftstoß und mittlere Kraft; beschreibe die Aussage und Grenze dieses Knautschzonenmodells.",
+            "taskDemandEn": "In two supplied idealised impact models, the same 1000 kg mass slows from +6 m/s to 0. Variant A takes 0.10 s; variant B takes 0.30 s through a changed deformation path. Compare impulse and average force and state the meaning and limit of this crumple-zone model.",
+            "expectedPerformanceDe": "Bestimmt Δp=−6000 Ns in beiden Varianten und mittlere Kräfte −60000 N beziehungsweise −20000 N. Begründet die gleiche Impulsänderung und die kleinere Kraft durch längere Zeit, ohne identische Spitzenkräfte, Körperbelastungen oder eine garantierte Verletzungsfreiheit abzuleiten.",
+            "expectedPerformanceEn": "Determine Δp=−6000 Ns in both variants and average forces of −60000 N and −20000 N. Justify the equal momentum change and lower force through longer time without inferring equal peak forces, body loading or guaranteed absence of injury.",
+            "understandingFocusDe": "Systembilanz, Zeiteinfluss und physikalische statt medizinische Deutung der modellierten Schutzwirkung.",
+            "understandingFocusEn": "System balance, time dependence and a physical rather than medical interpretation of modelled protection."
+          },
+          {
+            "id": "spacing-before-impact",
+            "taskDemandDe": "Ein neuer Modellvergleich gibt dieselbe Masse 1000 kg, Stillstand nach dem Aufprall und jeweils 0,10 s Aufprall-Stoppzeit vor. Ohne vorherigen Bremsweg beträgt die Aufprallgeschwindigkeit 6 m/s; durch größeren vorherigen Abstand und bereits erfolgtes Bremsen nur 3 m/s. Ein dritter vorgegebener Fall kommt schon vor dem Hindernis zum Stillstand. Erkläre, wodurch sich diese Fälle von einer bloß längeren Knautschzeit unterscheiden.",
+            "taskDemandEn": "A fresh model comparison uses the same 1000 kg mass, rest after impact and 0.10 s impact stopping time in each collision. Without prior braking distance, impact speed is 6 m/s; with greater earlier spacing and completed braking, it is 3 m/s. A third supplied case stops before the obstacle. Explain how these differ from merely increasing crumpling time.",
+            "expectedPerformanceDe": "Vergleicht Impulsänderungen −6000/−3000 Ns und mittlere Kraftbeträge 60000/30000 N bei gleicher Stoppzeit. Begründet die Änderung über geringere Aufprallgeschwindigkeit; im dritten Fall fehlt ein Aufprallkraftstoß, obwohl das vorangehende Bremsen ebenfalls Impuls ändert. Keine konkrete Abstandsvorschrift wird errechnet.",
+            "expectedPerformanceEn": "Compare momentum changes of −6000/−3000 Ns and average force magnitudes of 60000/30000 N at equal stopping time. Explain the change through lower impact speed; the third case has no collision impulse although earlier braking also changes momentum. No specific spacing rule is calculated.",
+            "understandingFocusDe": "Frischer Wechsel von Zeitverlängerung zu verändertem Anfangszustand beziehungsweise Vermeidung des Aufpralls; Sicherheitsabstand und Knautschzone werden nicht gleichgesetzt.",
+            "understandingFocusEn": "Fresh change from time extension to an altered initial state or collision avoidance; safety spacing and crumple zones are not conflated."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "reason": "Zwei eigenständige algebraisch einfache Stoßmodelle; Vorzeichen, System und nicht haftender Spezialfall statt Wiederholung des aktuellen Bildbeispiels. Zwei unabhängig zu stellende frische Aufgabenfälle; E1/G1-Kandidat, keine tatsächliche Lernleistungs- oder menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "The original A20 native first-pass validation failed closed after premature peer aggregate disclosure. This profile claims no valid independent A20 review run; reviewRunIds remains empty and a further neutral independent description counterreview is pending."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "system-momentum",
+            "essentialUnderstandingDe": "Der Gesamtimpuls eines Stoßsystems bleibt nur bei vernachlässigbarem äußeren Kraftstoß erhalten; in einer Dimension tragen entgegengesetzte Geschwindigkeiten entgegengesetzte Vorzeichen.",
+            "essentialUnderstandingEn": "Total momentum of a collision system is conserved only with negligible external impulse; in one dimension opposite velocities carry opposite signs.",
+            "observablePerformanceDe": "Die lernende Person wählt das Zweikörpersystem, stellt eine vorzeichenrichtige Impulsbilanz auf und löst einen ausreichend bestimmten Stoßfall mit Einheiten- und Plausibilitätskontrolle.",
+            "observablePerformanceEn": "The learner selects the two-body system, constructs a correctly signed momentum balance, and solves a sufficiently specified collision case with unit and plausibility checks."
+          },
+          {
+            "id": "inelastic-energy",
+            "essentialUnderstandingDe": "Inelastisch bedeutet Umwandlung kinetischer Energie, nicht Verlust der Gesamtenergie; eine gemeinsame Endgeschwindigkeit folgt zusätzlich aus Haftenbleiben und nicht aus dem Wort inelastisch allein.",
+            "essentialUnderstandingEn": "Inelastic means conversion of kinetic energy rather than loss of total energy; a common final velocity additionally follows from sticking, not from the word inelastic alone.",
+            "observablePerformanceDe": "Die lernende Person erklärt die kinetische Energiedifferenz im gewählten System und prüft bei getrenntem Weiterfahren, welche Zusatzinformation zur Bestimmung beider Endgeschwindigkeiten erforderlich ist.",
+            "observablePerformanceEn": "The learner explains the kinetic-energy difference in the chosen system and checks which extra information is needed to determine both final velocities when the bodies separate."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "system-momentum",
+            "inelastic-energy"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "collision-outcome",
+            "textDe": "Vollständiges Haftenbleiben gegenüber nicht haftendem inelastischem Stoß mit einer gegebenen Endgeschwindigkeit.",
+            "textEn": "Complete sticking versus a non-sticking inelastic collision with one supplied final velocity."
+          },
+          {
+            "id": "direction",
+            "textDe": "Stoß gegen ruhenden Körper gegenüber aufeinander zulaufenden Körpern; Vorzeichen und Systemgrenze beibehalten.",
+            "textEn": "Collision with a stationary body versus bodies approaching one another; retain signs and system boundary."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sticking-carts",
+            "taskDemandDe": "Ein bereitgestelltes reibungsarmes eindimensionales Wagenmodell hat Wagen A mit 2 kg bei +3 m/s und Wagen B mit 1 kg in Ruhe. Beide haften nach dem Stoß; äußerer Kraftstoß wird während des kurzen Stoßes vernachlässigt. Bestimme die gemeinsame Endgeschwindigkeit und deute die kinetische Energieänderung.",
+            "taskDemandEn": "A supplied low-friction one-dimensional cart model has cart A of 2 kg moving at +3 m/s and cart B of 1 kg at rest. They stick after collision; external impulse is neglected during the brief collision. Determine their shared final velocity and interpret the kinetic-energy change.",
+            "expectedPerformanceDe": "Bilanziert p=6 kg·m/s und erhält v=+2 m/s; berechnet E_kin vorher 9 J und nachher 6 J, erklärt die 3 J Umwandlung in innere Energie/Verformung und die Rolle des Zweikörpersystems. Die kleinere kinetische Energie wird nicht als Bruch der Gesamtenergieerhaltung gedeutet.",
+            "expectedPerformanceEn": "Balance p=6 kg·m/s and obtain v=+2 m/s; calculate initial kinetic energy 9 J and final 6 J, explain 3 J converted to internal energy/deformation and the two-body system boundary. Lower kinetic energy is not treated as a violation of total energy conservation.",
+            "understandingFocusDe": "Gemeinsame Endgeschwindigkeit aus gegebener Haftbedingung, Impulserhaltung und qualitativ gedeutete Energiebilanz.",
+            "understandingFocusEn": "Shared final velocity from the supplied sticking condition, momentum conservation and a qualitatively interpreted energy balance."
+          },
+          {
+            "id": "separating-carts",
+            "taskDemandDe": "In einem frischen abgeschlossenen Modellstoß nähern sich zwei Wagen von je 1 kg mit u_A=+3 m/s und u_B=−1 m/s. Sie haften nicht; nachher ist v_A=0 gemessen. Bestimme v_B und prüfe die Bezeichnung inelastisch. Erkläre auch, weshalb ohne die Endmessung v_A=0 die Impulsbilanz allein nicht beide Endgeschwindigkeiten festlegen würde.",
+            "taskDemandEn": "In a fresh isolated model collision, two 1 kg carts approach with u_A=+3 m/s and u_B=−1 m/s. They do not stick; afterward v_A=0 is measured. Determine v_B and check the description inelastic. Also explain why without the measurement v_A=0, momentum balance alone would not determine both final velocities.",
+            "expectedPerformanceDe": "Erhält vorzeichenrichtig Gesamtimpuls 2 kg·m/s und v_B=+2 m/s. Vergleicht 5 J vorher mit 2 J nachher und deutet 3 J Umwandlung. Benennt eine Impulsgleichung mit zwei unbekannten Endgeschwindigkeiten ohne Zusatzdatum; inelastisch erzwingt kein Haften.",
+            "expectedPerformanceEn": "Obtain signed total momentum 2 kg·m/s and v_B=+2 m/s. Compare initial 5 J with final 2 J and interpret 3 J of conversion. Identify one momentum equation with two unknown final velocities without the extra datum; inelastic does not require sticking.",
+            "understandingFocusDe": "Transfer durch Richtungswechsel und nicht haftendes Ergebnis, einschließlich ausreichender Daten und Grenzen der Bilanzgleichung.",
+            "understandingFocusEn": "Transfer through a direction change and non-sticking outcome, including sufficient data and limits of the balance equation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "reason": "Post-seal KEEP bei explizit gültiger Komponentenzerlegung; qualitative AB1-Fälle ohne neue Reichweitenoptimierung, Trigonometrie oder Flugzeitrechnung. Zwei unabhängig zu stellende frische Aufgabenfälle; E1/G1-Kandidat, keine tatsächliche Lernleistungs- oder menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Original A proposed a precautionary wording revision; the explicitly post-seal subject adjudication accepts current wording for the concrete reasons retained in post-seal-subject-adjudication-v1.json. The original A record is not changed.",
+        "The original A20 native first-pass validation failed closed after premature peer aggregate disclosure. This profile claims no valid independent A20 review run; reviewRunIds remains empty and a further neutral independent description counterreview is pending."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "components",
+            "essentialUnderstandingDe": "Der schiefe Wurf lässt sich aus gleichförmiger Horizontalbewegung und vertikaler Bewegung mit Anfangsanteil und genau einer Fallbeschleunigung zusammensetzen; alle Komponenten verwenden dieselbe Zeit.",
+            "essentialUnderstandingEn": "Oblique projection can be composed from uniform horizontal motion and vertical motion with an initial component and exactly one gravitational acceleration; all components use the same time.",
+            "observablePerformanceDe": "Die lernende Person übersetzt vorgegebene Komponenten- oder Zeitdaten in eine qualitative Flugbahnskizze und erklärt am Scheitel den Unterschied zwischen vertikaler und gesamter Geschwindigkeit.",
+            "observablePerformanceEn": "The learner translates supplied component or time data into a qualitative trajectory sketch and explains the difference between vertical and total velocity at the highest point."
+          },
+          {
+            "id": "changed-launch",
+            "essentialUnderstandingDe": "Ein vertikaler Startanteil nach oben oder unten verändert den vertikalen Bewegungsbeginn, nicht die konstante horizontale Bewegung oder die einmal wirkende Fallbeschleunigung im idealisierten Modell.",
+            "essentialUnderstandingEn": "An upward or downward initial vertical component changes the initial vertical motion, not the constant horizontal motion or the single gravitational acceleration in the idealised model.",
+            "observablePerformanceDe": "Die lernende Person konstruiert für einen geänderten Startanteil eine konsistente qualitative Bahn und begründet, welche bekannten Scheitel-/Symmetrieaussagen für die neue Start- und Endhöhe gelten.",
+            "observablePerformanceEn": "The learner constructs a consistent qualitative trajectory for a changed initial component and explains which familiar highest-point/symmetry statements apply to the new initial and final heights."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "components",
+            "changed-launch"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "vertical-sign",
+            "textDe": "Positiver gegenüber negativem vertikalem Startanteil bei gleichem horizontalem Anteil.",
+            "textEn": "Positive versus negative initial vertical component at equal horizontal component."
+          },
+          {
+            "id": "height-context",
+            "textDe": "Gleiche Start-/Endhöhe gegenüber Abwurf oberhalb des Bodens; typische Symmetrie nicht auf den abgeschnittenen gesamten Flug übertragen.",
+            "textEn": "Equal launch/landing height versus launch above the ground; do not transfer typical symmetry to the entire height-truncated flight."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "upward-components",
+            "taskDemandDe": "Ein ideales Wurfmodell ohne Luftwiderstand gibt für t=0/0,2/0,4/0,6/0,8 s die Positionen (x,y)=(0,0)/(0,6;0,6)/(1,2;0,8)/(1,8;0,6)/(2,4;0) m. Dabei bleibt v_x=3 m/s und v_y durchläuft +4/+2/0/−2/−4 m/s. Skizziere die typische Bahn und erkläre Komponenten und Bewegung am höchsten Punkt; keine trigonometrische Zerlegung ist gefordert.",
+            "taskDemandEn": "An ideal projectile model without air resistance gives positions (x,y)=(0,0)/(0.6,0.6)/(1.2,0.8)/(1.8,0.6)/(2.4,0) m at t=0/0.2/0.4/0.6/0.8 s. Here v_x remains 3 m/s while v_y takes +4/+2/0/−2/−4 m/s. Sketch the typical trajectory and explain components and motion at the highest point; no trigonometric decomposition is required.",
+            "expectedPerformanceDe": "Konstruiert eine nach unten gekrümmte, zur gleichen Start-/Endhöhe passende Bahn mit gleich großen horizontalen Zeitschritten; erklärt, dass am Scheitel nur v_y=0, aber v_x und die abwärts gerichtete Beschleunigung nicht null sind. Verwendet für beide Komponenten dieselben Zeiten.",
+            "expectedPerformanceEn": "Construct a downward-curving trajectory consistent with equal start/landing heights and equal horizontal steps in equal times; explain that only v_y=0 at the highest point, while v_x and downward acceleration are nonzero. Use the same times for both components.",
+            "understandingFocusDe": "Eigenständige Koordination von Tabelle, Geschwindigkeitskomponenten und typischer Bahn statt auswendig gelernter Scheitelbehauptung.",
+            "understandingFocusEn": "Independent coordination of a table, velocity components and typical trajectory rather than a memorised claim about the highest point."
+          },
+          {
+            "id": "downward-launch",
+            "taskDemandDe": "Ein frischer idealer Wurf startet 2 m über dem Boden mit unverändert nach rechts gerichtetem v_x, aber einem von Anfang an nach unten gerichteten vertikalen Startanteil. Die vertikale Beschleunigung bleibt konstant nach unten. Skizziere qualitativ und vergleiche mit dem zuvor nach oben gestarteten Wurf; eine Flugzeitrechnung ist nicht verlangt.",
+            "taskDemandEn": "A fresh ideal projectile starts 2 m above the ground with unchanged rightward v_x but an initially downward vertical component. Vertical acceleration remains constant downward. Sketch qualitatively and compare with the previous upward launch; no flight-time calculation is required.",
+            "expectedPerformanceDe": "Zeichnet eine unmittelbar sinkende, zunehmend steile Bahn bei gleichen horizontalen Zeitabständen und erklärt, warum nach dem Abwurf kein oberhalb des Startpunkts liegender Scheitel auftritt. Beschreibt den schiefen Wurf als waagerechten Wurf plus gleichförmigen vertikalen Startanteil oder als zwei getrennte Komponenten mit nur einmal berücksichtigter Erdbeschleunigung.",
+            "expectedPerformanceEn": "Draw an immediately descending, increasingly steep trajectory with equal horizontal displacements in equal times and explain why no highest point above the launch position occurs after release. Describe oblique projection as horizontal projection plus a uniform initial vertical contribution, or as two components with gravity included only once.",
+            "understandingFocusDe": "Echter Vorzeichen-/Höhenwechsel bleibt qualitative Wurfkompetenz; mathematisch zulässige Überlagerung ohne doppelte Fallbeschleunigung.",
+            "understandingFocusEn": "A genuine sign/height change remains a qualitative projectile competence; mathematically valid superposition without double gravitational acceleration."
+          }
+        ]
+      }
+    }
+  ]
+}

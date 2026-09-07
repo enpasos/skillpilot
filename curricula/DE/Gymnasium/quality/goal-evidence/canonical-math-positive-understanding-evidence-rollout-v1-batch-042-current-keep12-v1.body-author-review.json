@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "auditType": "positive-understanding-evidence-current-profile-author-review-v1",
+  "checkedAt": "2026-09-07T13:39:13Z",
+  "reviewerAgent": "/root/goal_book_ci_integration",
+  "authority": "AI author self-review and arithmetic spot-check; not independent second review, not human approval.",
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042-current-keep12-v1.config.json",
+      "digest": "sha256:ff6e081985b22d50848ac1c3aa75a55f19c59d53908cf499808c396709ddf311"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042-current-keep12-v1.candidates.json",
+      "digest": "sha256:4638b2c1319a523f1410361e74f8a18e77e94ca24f67f2bf7f6f60934490555b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042-current-keep12-v1.review.jsonl",
+      "digest": "sha256:f9f50c35cd15c6859dbb8dde090701b84658532433d76d39cc713bf4e8845103"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042-current-keep12-v1.arithmetic-check.ts",
+      "digest": "sha256:4da61c30ec1d0061b75c15a15d8dbe550d3d54eff147faad49ae0a7b695e320e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042-calculus-models-growth-and-integration-20-v1/round-a/prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042-calculus-models-growth-and-integration-20-v1/round-a/criteria.md",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+      "digest": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042-calculus-models-growth-and-integration-20-v1/resolution-index.current-keep12-v1.json",
+      "digest": "sha256:44ea1a2c334a05e4c6ff74feebcd01302045c442f983b67e4ff09f7baad72a81"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042-calculus-models-growth-and-integration-20-v1/synthesis-decisions.current-keep12-v1.json",
+      "digest": "sha256:a068423589906a55b0a8a6dee6040308c5eca435b73786759262fa48e5b3b99b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042-calculus-models-growth-and-integration-20-v1/round-a/results/mathematik-rollout-v1-batch-042-calculus-models-growth-and-integration-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+      "digest": "sha256:0fdff4bc7910448c15cb50332a32da9cd8d5f297bd538c6f91506319933d95b6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-042-calculus-models-growth-and-integration-20-v1/round-b/results/mathematik-rollout-v1-batch-042-calculus-models-growth-and-integration-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+      "digest": "sha256:f58abdd023a9562068d94476248899e89a2ad1d5b63a8747520e0e1a554ae23e"
+    }
+  ],
+  "scope": [
+    "dc12f281-f161-572b-a973-8405ae9b2498",
+    "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+    "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+    "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4",
+    "4ae9e316-509f-517d-bd94-a165817af24f",
+    "886caebc-a042-4a94-91f9-6dc184203c42",
+    "e7350739-c89f-5c7b-b4d1-717d6a767298",
+    "164921f6-3bf7-5efc-a438-ea4759dca9ef",
+    "b71c332f-ef9d-5c27-983b-7103269ff419",
+    "dc3c6e19-8ac2-532c-8d64-ca6e3d3f5cd9",
+    "d108ec1f-2c8f-5267-be75-10e1b77edd7a",
+    "6d89d813-29dc-5e76-b004-98ed6b6fe8ce"
+  ],
+  "criteriaReviewed": "Full Mathematik positive-understanding-evidence-profile criteria V2: exact current scope, positive observable evidence, archetype, coverage, two independent cases, meaningful transfer, bilingual equivalence and E1/G1 authority.",
+  "goalReviews": [
+    {
+      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+      "decision": "current_ai_candidate",
+      "archetype": "modeling",
+      "caseIds": [
+        "stock-versus-growth-rate",
+        "position-and-reversal"
+      ],
+      "sourceScope": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Differentialrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
+      "scopeAndPerformanceRationale": "Beide Reviews grenzen eine strategische Kontextkompetenz ab: Fragestellung und zulässiger Bereich bestimmen, welche Ableitung für lokale Rate oder Extremwert benötigt wird. Die Profile konkretisieren Bestands- gegenüber Ratenmaximum sowie einen Wechsel zur Bewegung; der kurze Text bleibt methodenneutral und unverändert.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "Aus einem neu vorgelegten Weg-Zeit-Modell entscheidet die Person, ob nach maximaler Geschwindigkeit oder einem Umkehrzeitpunkt gefragt ist, wählt die passende Ableitungs-/Vorzeichenanalyse und interpretiert die Ergebnisse innerhalb des Modellintervalls.",
+        "textEn": "Given a fresh position-time model, the learner decides whether the question asks for maximum velocity or a turning time, selects the corresponding derivative/sign analysis and interprets results within the modeled interval."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "stock-versus-growth-rate",
+        "position-and-reversal"
+      ]
+    },
+    {
+      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "decision": "current_ai_candidate",
+      "archetype": "modeling",
+      "caseIds": [
+        "net-flow-and-final-stock",
+        "displacement-versus-distance"
+      ],
+      "sourceScope": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Integralrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
+      "scopeAndPerformanceRationale": "Beide Reviews bestätigen die sinnvolle Auswahl von Integral, Grenzen und Kontextdeutung. Das geprüfte Bild bezeichnet die 20 L zutreffend als Zuflussmenge; es behauptet keinen Endbestand. Die Profile trennen Anfangswert, Nettoänderung und bei Richtungswechsel die Strecke, ohne die Beschreibung auszuweiten.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "Bei einer unabhängig vorgelegten Geschwindigkeitskurve mit Richtungswechsel wählt die Person für Ortsänderung ∫v, für zurückgelegte Strecke ∫|v| und begründet die Zerlegung sowie die jeweiligen Einheiten.",
+        "textEn": "For an independently presented velocity graph with a direction change, the learner chooses ∫v for displacement and ∫|v| for traveled distance, explaining subdivision and the corresponding units."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "net-flow-and-final-stock",
+        "displacement-versus-distance"
+      ]
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "decision": "current_ai_candidate",
+      "archetype": "modeling",
+      "caseIds": [
+        "visitor-model-validity",
+        "capacity-breaks-filling-model"
+      ],
+      "sourceScope": "Die lernende Person kann Modellannahmen und Resultate in Sachzusammenhängen der Differential- und Integralrechnung fachlich prüfen und Grenzen des Modells benennen.",
+      "scopeAndPerformanceRationale": "Beide Reviews bestätigen eigenständige Modellvalidierung mit überprüften Besucherwerten. Rechnerische Richtigkeit reicht nicht für sachliche Gültigkeit; Zeitbereich und Ressourcenbedingungen werden an einem Besucher- und einem Kapazitätsfall geprüft. Titel und Beschreibung bleiben beidsprachig unverändert.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "Bei einem neuen Befüllmodell überschreitet das berechnete Integral die Tankkapazität. Die Person unterscheidet Rechenfehler von verletzter Modellannahme und nennt Überlauf oder ein verkürztes Gültigkeitsintervall als notwendige Kontextprüfung.",
+        "textEn": "In a new filling model, the computed integral exceeds tank capacity. The learner distinguishes arithmetic error from a violated assumption and identifies overflow or a shorter validity interval as necessary contextual checks."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "visitor-model-validity",
+        "capacity-breaks-filling-model"
+      ]
+    },
+    {
+      "goalId": "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4",
+      "decision": "current_ai_candidate",
+      "archetype": "proof",
+      "caseIds": [
+        "verify-product-candidate",
+        "verify-composition-and-constant"
+      ],
+      "sourceScope": "Die lernende Person kann zu einer gegebenen Funktion durch Ableiten nachweisen, dass eine vorgegebene Funktion eine Stammfunktion ist, insbesondere bei verknüpften Exponential- und ganzrationalen Funktionen.",
+      "scopeAndPerformanceRationale": "Beide Reviews bestätigen den Identitätsnachweis F′=f für eine vorgegebene Stammfunktion. Produkt- und Kettenregelbeispiele prüfen die Nachweisleistung, nicht eine zusätzliche Stammfunktionssuche. Ein fehlendes +C ist bei einer einzelnen vorgegebenen Stammfunktion kein Fehler.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "In einem neuen Fall f(x)=2xe^(x²) prüft die Person F(x)=e^(x²)+7 mit der Kettenregel und beurteilt einen zweiten fehlerhaften Kandidaten, dessen Ableitung nur an einer Stelle übereinstimmt.",
+        "textEn": "In a new case f(x)=2xe^(x²), the learner checks F(x)=e^(x²)+7 using the chain rule and judges a second incorrect candidate whose derivative agrees at only one point."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "verify-product-candidate",
+        "verify-composition-and-constant"
+      ]
+    },
+    {
+      "goalId": "4ae9e316-509f-517d-bd94-a165817af24f",
+      "decision": "current_ai_candidate",
+      "archetype": "modeling",
+      "caseIds": [
+        "infer-saturation-from-growth-data",
+        "infer-ambient-limit-from-cooling"
+      ],
+      "sourceScope": "Die lernende Person kann zu experimentellen Daten ein Modell für begrenztes Wachstum oder begrenzten Zerfall aufstellen, die Begrenzungsgröße und weitere Modellparameter bestimmen und die Modellannahmen im Kontext deuten.",
+      "scopeAndPerformanceRationale": "Beide Reviews verlangen eine tatsächlich datenbasierte Modellbildung derselben begrenzten Exponentialfamilie. Gleichabständige Werte bestimmen die Annäherung von unten oder oben; Grenzwert, Rate und Annahmen werden begründet. Keine reine Parameterablese-Aufgabe ersetzt die beanspruchte Modellbildung.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "Bei unabhängig vorgelegten Abkühldaten80,50,35 und konstanter Umgebung erklärt die Person die Annäherung von oben, erschließt die Grenze20 und prüft, ob die angenommene konstante Umgebung zu den Messbedingungen passt.",
+        "textEn": "For independently presented cooling data80,50,35 with constant ambient conditions, the learner explains approach from above, infers the limit20 and checks whether constant ambient conditions match the experiment."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "infer-saturation-from-growth-data",
+        "infer-ambient-limit-from-cooling"
+      ]
+    },
+    {
+      "goalId": "886caebc-a042-4a94-91f9-6dc184203c42",
+      "decision": "current_ai_candidate",
+      "archetype": "modeling",
+      "caseIds": [
+        "interpret-saturation-limit",
+        "same-initial-trend-different-futures"
+      ],
+      "sourceScope": "Die lernende Person kann das asymptotische Verhalten von Wachstumsmodellen im jeweiligen Sachzusammenhang beschreiben, Grenzwerte plausibel deuten und die langfristige Entwicklung fachlich einordnen.",
+      "scopeAndPerformanceRationale": "Beide Reviews bestätigen Langzeitdeutung als eigene Kontextkompetenz. Anfangswert, mathematischer Grenzwert und empirische Gültigkeit werden getrennt; eine Sättigungsprognose wird mit einer langfristig anderen Modellannahme verglichen. Der unveränderte Text bleibt fachlich tragfähig.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "In einem neuen Populationskontext vergleicht die Person dieselbe anfängliche Größenordnung bei exponentiellem Wachstum ohne Grenze mit einem Sättigungsmodell und erläutert, warum ähnliche Anfangswerte keine gleiche langfristige Entwicklung beweisen.",
+        "textEn": "In a new population context the learner compares initially similar sizes under unbounded exponential growth and a saturation model, explaining why similar initial values do not establish the same long-term development."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "interpret-saturation-limit",
+        "same-initial-trend-different-futures"
+      ]
+    },
+    {
+      "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298",
+      "decision": "current_ai_candidate",
+      "archetype": "modeling",
+      "caseIds": [
+        "parameter-controls-time-and-height",
+        "changed-polynomial-and-parameter-boundary"
+      ],
+      "sourceScope": "Die lernende Person kann Funktionen mit Parametern untersuchen, bei denen Exponentialfunktionen mit ganzrationalen Funktionen verknüpft sind, und diese in Realsituationen interpretieren.",
+      "scopeAndPerformanceRationale": "Beide Reviews bestätigen die LK-Scharanalyse mit Exponential-Polynom-Verknüpfung. Der Parameter bleibt bei Differentiation nach der Zeit konstant, und sein zulässiger Bereich beeinflusst Extremstellen und Kontext. Der frische Fall an der Parametergrenze prüft qualitative Regimeänderung statt Zahlenersetzung.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "Bei einer neuen Parametervariation mit a=0 oder a<0 erklärt die Person, weshalb das zuvor beschriebene Anstiegs-Abklingmodell kein inneres Maximum auf t>0 mehr besitzt und im ursprünglichen Kontext seine Bedeutung verliert.",
+        "textEn": "For a fresh parameter variation with a=0 or a<0, the learner explains why the previous rise-and-decay model no longer has an interior maximum for t>0 and loses its original contextual meaning."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "parameter-controls-time-and-height",
+        "changed-polynomial-and-parameter-boundary"
+      ]
+    },
+    {
+      "goalId": "164921f6-3bf7-5efc-a438-ea4759dca9ef",
+      "decision": "current_ai_candidate",
+      "archetype": "modeling",
+      "caseIds": [
+        "catenary-shape-at-fixed-low-point",
+        "shifted-axis-and-unequal-supports"
+      ],
+      "sourceScope": "Die lernende Person kann eine Kettenlinie als Funktionsmodell mit Exponentialbezug untersuchen, die Wirkung ihrer Parameter deuten und zentrale Eigenschaften in einem passenden Sachkontext beschreiben.",
+      "scopeAndPerformanceRationale": "Beide Reviews bestätigen die klar abgegrenzte Kettenlinien-Modellfamilie. Exponentialdarstellung, Symmetrie, Tiefpunkt und Lage-/Formparameter tragen die Kompetenz; eine mechanische Herleitung ist nicht verlangt. Der veränderte Koordinaten- und Aufhängekontext prüft echten Transfer.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "Bei einem neuen Modell mit horizontal verschobenem Tiefpunkt und unterschiedlich hohen Aufhängepunkten nutzt die Person die verschobene Symmetrieachse zur Auswertung und erklärt, warum die Mitte der Spannweite nicht automatisch der Tiefpunkt ist.",
+        "textEn": "In a new model with a horizontally shifted minimum and supports at different heights, the learner uses the shifted symmetry axis and explains why the midpoint of the span is not automatically the lowest point."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "catenary-shape-at-fixed-low-point",
+        "shifted-axis-and-unequal-supports"
+      ]
+    },
+    {
+      "goalId": "b71c332f-ef9d-5c27-983b-7103269ff419",
+      "decision": "current_ai_candidate",
+      "archetype": "modeling",
+      "caseIds": [
+        "interpret-bell-parameters",
+        "infer-shift-and-width-from-observations"
+      ],
+      "sourceScope": "Die lernende Person kann eine Glockenkurve als Funktionsmodell mit Exponentialbezug untersuchen, die Wirkung ihrer Parameter deuten und zentrale Eigenschaften in einem passenden Sachkontext beschreiben.",
+      "scopeAndPerformanceRationale": "Beide Reviews bestätigen die Glockenkurven-Modellfamilie ohne unberechtigte Normierungs- oder Wahrscheinlichkeitsanforderung. Höhe, Lage und Breite werden getrennt interpretiert und anhand eines neuen Profils zurückerschlossen. Keine kanonische Textänderung ist nötig.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "In einer neu vorgelegten breiteren Glockenkurve mit gleichem Peak und verschobenem Zentrum entscheidet die Person, welche Parameter unverändert bleiben und welche sich ändern, und prüft dies an symmetrischen Funktionswerten.",
+        "textEn": "For a fresh broader bell curve with the same peak and a shifted center, the learner decides which parameters remain unchanged and which change, checking the conclusion with symmetric function values."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "interpret-bell-parameters",
+        "infer-shift-and-width-from-observations"
+      ]
+    },
+    {
+      "goalId": "dc3c6e19-8ac2-532c-8d64-ca6e3d3f5cd9",
+      "decision": "current_ai_candidate",
+      "archetype": "procedure",
+      "caseIds": [
+        "linear-coefficient-ansatz",
+        "quadratic-ansatz-adaptation"
+      ],
+      "sourceScope": "Die lernende Person kann für geeignete Integranden eine Stammfunktion mithilfe eines Formansatzes mit Koeffizientenvergleich bestimmen.",
+      "scopeAndPerformanceRationale": "Beide Reviews bestätigen Formansatz und Koeffizientenvergleich als ein geeignetes Stammfunktionsverfahren. Das geprüfte lineare Beispiel stimmt; ein unabhängiges quadratisches Beispiel erweitert den Ansatz strukturbedingt. Ableitungskontrolle und Identität begründen die Lösung.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "Bei einem unabhängig vorgelegten quadratischen Polynom mal e^x erweitert die Person den Ansatz auf (ax²+bx+c)e^x und begründet, warum der bisherige lineare Ansatz nicht genügend Terme liefern kann.",
+        "textEn": "For an independently presented quadratic polynomial multiplied by e^x, the learner extends the ansatz to (ax²+bx+c)e^x and explains why the earlier linear ansatz cannot produce all required terms."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "linear-coefficient-ansatz",
+        "quadratic-ansatz-adaptation"
+      ]
+    },
+    {
+      "goalId": "d108ec1f-2c8f-5267-be75-10e1b77edd7a",
+      "decision": "current_ai_candidate",
+      "archetype": "procedure",
+      "caseIds": [
+        "justify-linear-family-with-chain-factor",
+        "justify-quadratic-with-negative-chain-factor"
+      ],
+      "sourceScope": "Die lernende Person kann Argumente für die Wahl eines Formansatzes angeben, Ableitungen zur Kontrolle nutzen und Koeffizientenvergleich sicher durchführen.",
+      "scopeAndPerformanceRationale": "Beide Reviews verlangen zusätzlich die Begründung der gewählten Form. Kettenfaktor und Produktregel bestimmen die Vergleichsgleichungen; ein unzureichender Ansatz wird nachvollziehbar ausgeschlossen. Der Text bleibt unverändert, während eigenständige Fälle die Begründungsleistung sichtbar machen.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "Bei einem neuen Integranden mit quadratischem Polynomfaktor vergleicht die Person einen linearen und einen quadratischen Ansatz, erklärt das fehlende x²-Glied beim ersten und überprüft den geeigneten Ansatz durch Ableiten.",
+        "textEn": "For a new integrand with a quadratic polynomial factor, the learner compares linear and quadratic ansatzes, explains the missing x² term in the first and checks the suitable ansatz by differentiation."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "justify-linear-family-with-chain-factor",
+        "justify-quadratic-with-negative-chain-factor"
+      ]
+    },
+    {
+      "goalId": "6d89d813-29dc-5e76-b004-98ed6b6fe8ce",
+      "decision": "current_ai_candidate",
+      "archetype": "procedure",
+      "caseIds": [
+        "parts-with-exponential-factor",
+        "hidden-factor-in-logarithm"
+      ],
+      "sourceScope": "Die lernende Person kann Integrale geeigneter Funktionen mithilfe der Methode der partiellen Integration berechnen und die Wahl der Zerlegung begründen.",
+      "scopeAndPerformanceRationale": "Beide Reviews bestätigen partielle Integration einschließlich begründeter Zerlegung, Vorzeichen und Randterm. Das geprüfte Produktbeispiel ist korrekt. Ein frischer Fall mit implizitem Faktor 1 verlangt eine neu gewählte Zerlegung und bleibt innerhalb des LK-Verfahrens.",
+      "transfer": {
+        "id": "structural-transfer",
+        "textDe": "Bei der unabhängig gestellten Aufgabe ∫₁ᵉln(x)dx erkennt die Person den impliziten Faktor 1, wählt u=ln(x) und v′=1, begründet diese gegenüber der umgekehrten Wahl und erhält mit [x ln(x)−x]₁ᵉ den Wert 1.",
+        "textEn": "For the independently posed problem ∫₁ᵉln(x)dx, the learner identifies the implicit factor 1, chooses u=ln(x) and v′=1, justifies this instead of the reversed choice and obtains 1 from [x ln(x)−x]₁ᵉ."
+      },
+      "bilingualBodiesIndividuallyRead": true,
+      "arithmeticCaseIdsChecked": [
+        "parts-with-exponential-factor",
+        "hidden-factor-in-logarithm"
+      ]
+    }
+  ],
+  "authorCorrectionsBeforeSeal": [
+    {
+      "goalId": "164921f6-3bf7-5efc-a438-ea4759dca9ef",
+      "fields": [
+        "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+        "profile.applicationCaseBriefs[0].expectedPerformanceEn"
+      ],
+      "beforeDe": "y′=sinh(x/a) und y″=cosh(x/a)/a>0",
+      "afterDe": "y′=(e^(x/a)−e^(−x/a))/2 und y″=(e^(x/a)+e^(−x/a))/(2a)>0",
+      "reason": "Use the explicitly supplied exponential representation, avoiding an unnecessary prerequisite of differentiation rules for a newly named hyperbolic sine. English changed equivalently."
+    },
+    {
+      "goalId": "b71c332f-ef9d-5c27-983b-7103269ff419",
+      "fields": [
+        "profile.expectations[0].essentialUnderstandingDe",
+        "profile.expectations[0].essentialUnderstandingEn"
+      ],
+      "removedDe": "eine solche Kurve ist nicht automatisch eine normierte Wahrscheinlichkeitsdichte",
+      "reason": "The caveat is mathematically true but not a required competence of this concentration-model goal. Remove it from the required expectation rather than introduce an unclaimed probability-density requirement. All genuine position/height/width content retained; English changed equivalently."
+    }
+  ],
+  "caseAdministration": "Case briefs describe possible future independent demonstrations. Expected performances are reviewer-side answers, not learner task handouts. Do not show worked example/image reasoning before a demonstration or count coached repetition as independent success.",
+  "nativeChecks": [
+    {
+      "check": "current candidate materializer --write then read-only verification",
+      "exitCode": 0,
+      "result": "12 current AI candidate profiles"
+    },
+    {
+      "check": "positiveGoalEvidenceReview --mode=check",
+      "exitCode": 0,
+      "result": "12 configured; 0 approved; 12 needs_human_review; 0 blocking"
+    },
+    {
+      "check": "emit-current-keep12-v1.ts --check",
+      "exitCode": 0,
+      "result": "15 exact output files; 12 strict resolutions; original campaign goal count20"
+    },
+    {
+      "check": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-042-current-keep12-v1.arithmetic-check.ts",
+      "exitCode": 0,
+      "candidateDigest": "sha256:4638b2c1319a523f1410361e74f8a18e77e94ca24f67f2bf7f6f60934490555b",
+      "checkedCaseCount": 24,
+      "checkedCases": [
+        "stock-versus-growth-rate",
+        "position-and-reversal",
+        "net-flow-and-final-stock",
+        "displacement-versus-distance",
+        "visitor-model-validity",
+        "capacity-breaks-filling-model",
+        "verify-product-candidate",
+        "verify-composition-and-constant",
+        "infer-saturation-from-growth-data",
+        "infer-ambient-limit-from-cooling",
+        "interpret-saturation-limit",
+        "same-initial-trend-different-futures",
+        "parameter-controls-time-and-height",
+        "changed-polynomial-and-parameter-boundary",
+        "catenary-shape-at-fixed-low-point",
+        "shifted-axis-and-unequal-supports",
+        "interpret-bell-parameters",
+        "infer-shift-and-width-from-observations",
+        "linear-coefficient-ansatz",
+        "quadratic-ansatz-adaptation",
+        "justify-linear-family-with-chain-factor",
+        "justify-quadratic-with-negative-chain-factor",
+        "parts-with-exponential-factor",
+        "hidden-factor-in-logarithm"
+      ],
+      "claim": "Arithmetic spot-check only; no automatic pedagogical or human approval."
+    }
+  ],
+  "limitations": [
+    "No current canonical text, graph, public visualization, learner state or protected maturity ledger changed by this subset work.",
+    "Eight disputed/blocked D goals remain outside this P scope and outside the partial strict D index.",
+    "Independent P-body second review is separately assigned to root and is not claimed by this author receipt.",
+    "Numerical/analytic spot checks verify the explicitly implemented equations; they do not automatically parse or validate every natural-language sentence.",
+    "The central five-gate rollout registry alone controls live progress; this receipt does not grant progress or human authority."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "reviewedAt": "2026-09-07 16:02:56 UTC",
+  "inspection": "Actual seven full rasters read. First four during preceding context before 15:54 UTC, remaining three in this segment; no fabricated exact per-image start time.",
+  "independence": "No peer V1 image review read before this record.",
+  "approvalAuthority": "AI candidate only; not an import or human approval",
+  "records": [
+    {
+      "id": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "path": "tmp/goal-visualizations/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/generated/5b8eaf71-96fe-50eb-b9ea-a8fa392df086.generated.2026-09-07T15-49-14-388Z.jpg",
+      "sha256": "b2c29f69b6820ef42d3d26dd0d8a0f2401b62112328a53841446a0efd43d793e",
+      "verdict": "reject",
+      "rationale": "Transit geometry and spectral displacement are now sound, but the radial-velocity panel draws star and planet on the same large orbit instead of their different orbits about the common centre of mass. Replace only this misleading orbital sketch."
+    },
+    {
+      "id": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "path": "tmp/goal-visualizations/7f0798cb-5966-5dcb-beb3-84f637ab6139/generated/7f0798cb-5966-5dcb-beb3-84f637ab6139.generated.2026-09-07T15-49-18-402Z.jpg",
+      "sha256": "fcfb28e07b09cd2574fae69b7a2e3654ec01fd7d1858638d70ac5bc3e13f3081",
+      "verdict": "pass",
+      "rationale": "p/n fixed-ion signs, mobile carriers, forward/reverse qualitative I/V and bias explanations checked. Closed series AC-diode-load circuit and load output are coherent; output clips negative half-cycles with matching timing. Idealisation explicit."
+    },
+    {
+      "id": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "path": "tmp/goal-visualizations/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/generated/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.generated.2026-09-07T15-49-12-119Z.jpg",
+      "sha256": "59a60826117ab79a68babf18cb785c6ceba89c2f03ed04cf71d5490b249c6d5e",
+      "verdict": "reject",
+      "rationale": "The displayed table/formulas x=2t,y=5t² require t=2 at (4,20), but the plotted t=2 dot is near (4.15,25). t=3 at (6,45) was repaired, yet the middle point and associated curve remain false."
+    },
+    {
+      "id": "12260012-cf04-5409-b57d-f5b3a46d9126",
+      "path": "tmp/goal-visualizations/12260012-cf04-5409-b57d-f5b3a46d9126/generated/12260012-cf04-5409-b57d-f5b3a46d9126.generated.2026-09-07T15-49-15-635Z.jpg",
+      "sha256": "7fb42f10c5277b67d977af6aaefaa63726da82b8fa618d6d857066983c82871b",
+      "verdict": "reject",
+      "rationale": "Terminal force arrows remain visibly unequal despite F_G=F_L, gravitational arrow changes length across panels, and unexplained construction-number labels 160/80/160 leak into the learner graphic. Preserve correct velocity curve but repair the actual force geometry."
+    },
+    {
+      "id": "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+      "path": "tmp/goal-visualizations/cde9b548-2cf4-59ad-b5d4-a71872afbe56/generated/cde9b548-2cf4-59ad-b5d4-a71872afbe56.generated.2026-09-07T15-52-15-172Z.jpg",
+      "sha256": "3117ce9362d1efb1bac051a384890e4b33ed04accdae221cd744fb1aba0c382c",
+      "verdict": "pass",
+      "rationale": "Counted 2 protons plus 2 neutrons on both sides; outgoing binding energy and reverse disassembly correctly distinguished. Δm positive, E_B=Δm c², .0304*931.5=28.3176 MeV and /4=7.0794 MeV match rounded 28.3 and7.08. Same-composition mass caveat is explicit. Repeated label is redundant, not false."
+    },
+    {
+      "id": "6e7c35e0-7a38-5996-a42e-005038eff0db",
+      "path": "tmp/goal-visualizations/6e7c35e0-7a38-5996-a42e-005038eff0db/generated/6e7c35e0-7a38-5996-a42e-005038eff0db.generated.2026-09-07T15-52-15-713Z.jpg",
+      "sha256": "52b36f88813860a55022792a47166c691051af71c0dc864f124fb8908fc34388",
+      "verdict": "pass",
+      "rationale": "Actual well at -10, bound state at -4, zero outside; binding arrow spans -4 to0, depth arrow spans -10 to0 with matching4:10 lengths. Equations and reference zero correct; simplified one-particle model explicitly disclaimed as a scale model of a real nucleus."
+    },
+    {
+      "id": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "path": "tmp/goal-visualizations/af50bb9a-fd7b-50f5-9698-48c4efe99032/generated/af50bb9a-fd7b-50f5-9698-48c4efe99032.generated.2026-09-07T15-52-20-253Z.jpg",
+      "sha256": "438402ac93ebe6d746bfc077c75cff3c5908a561493786fc09bfdcac619900df",
+      "verdict": "pass",
+      "rationale": "NPN emitter arrow outward, emitter at common ground, collector via R_C to+5V; DC-biased small input through base resistance and output collector-to-ground are valid. Two AC traces have common period/opposite extrema, larger output amplitude; u_out=5V-R_C I_C and active-region/bias/power-source limits checked. Qualitative transfer restricted to small signal."
+    }
+  ]
+}

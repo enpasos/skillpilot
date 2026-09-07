@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:de5ebc5ecdb9fe548f005162393fd7c75e38575ea35c232629e9132d01193c76",
+  "reviewInputFingerprint": "sha256:f6ed5d9b5177c01035f109567b88152786e95a4fb7d29be015155b42c32f31f4",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-a",
+      "roundId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-independent-a",
+      "runIds": [
+        "math-b046-round-a-20260907T155921Z-ci-integration"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-b",
+      "roundId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-independent-b",
+      "runIds": [
+        "codex-root-math-b046-current-blind-b-20260907"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4c494716-567b-59c2-855c-6ea45635c666",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.4c494716-567b-59c2-855c-6ea45635c666",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.4c494716-567b-59c2-855c-6ea45635c666",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b72d87d4-763e-54aa-940d-31f195b51700",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.b72d87d4-763e-54aa-940d-31f195b51700",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.b72d87d4-763e-54aa-940d-31f195b51700",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.55039f9c-4ebc-5115-add5-fae95b915e46",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.55039f9c-4ebc-5115-add5-fae95b915e46",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.168d8879-0412-5524-94c5-c1d8169dbd65",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.168d8879-0412-5524-94c5-c1d8169dbd65",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.7bd8f022-5002-5610-994c-a9cec1890558",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.7bd8f022-5002-5610-994c-a9cec1890558",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.8823e26e-694c-581b-9adf-4db7db6f43c9",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.8823e26e-694c-581b-9adf-4db7db6f43c9",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3019e775-1420-510f-850b-5a29acc47a64",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.3019e775-1420-510f-850b-5a29acc47a64",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.3019e775-1420-510f-850b-5a29acc47a64",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5a2371fd-74ce-5013-932e-35d3713aeaf7",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.5a2371fd-74ce-5013-932e-35d3713aeaf7",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.5a2371fd-74ce-5013-932e-35d3713aeaf7",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "71d1fd4d-8471-5f25-94a0-4c531a74783c",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.71d1fd4d-8471-5f25-94a0-4c531a74783c",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.71d1fd4d-8471-5f25-94a0-4c531a74783c",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c2831918-26f1-421e-90fb-ce707689594e",
+      "firstRecordId": "math-b046-round-a-20260907T155921Z-ci-integration.c2831918-26f1-421e-90fb-ce707689594e",
+      "secondRecordId": "codex-root-math-b046-current-blind-b-20260907.c2831918-26f1-421e-90fb-ce707689594e",
+      "firstRunId": "math-b046-round-a-20260907T155921Z-ci-integration",
+      "secondRunId": "codex-root-math-b046-current-blind-b-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

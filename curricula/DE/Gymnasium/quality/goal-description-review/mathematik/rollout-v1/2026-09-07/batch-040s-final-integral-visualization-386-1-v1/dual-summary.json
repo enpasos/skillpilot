@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:55224e03e0e7977af1ddd02bb5648211178404aa31df0581fc43684e252f6dcf",
+  "reviewInputFingerprint": "sha256:d3704346b749d6b27a0aa680d2463b9bca9d837cbf631d5c6bffbfae3aa413e2",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-a",
+      "roundId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-independent-a",
+      "runIds": [
+        "math-386-round-a-20260907T123718Z-history-audit"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-b",
+      "roundId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-independent-b",
+      "runIds": [
+        "math-b040s386-first-pass-b-codex-20260907T123601"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "firstRecordId": "math-386-round-a-20260907T123718Z-history-audit.record-001",
+      "secondRecordId": "math-b040s386-first-pass-b-codex-20260907T123601-386",
+      "firstRunId": "math-386-round-a-20260907T123718Z-history-audit",
+      "secondRunId": "math-b040s386-first-pass-b-codex-20260907T123601",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root",
+  "reviewerModel": "Codex (exact underlying model identifier unavailable)",
+  "startedAt": "2026-09-07T15:28:51Z",
+  "completedAt": "2026-09-07T15:30:55Z",
+  "reviewKind": "independent full-body semantic and calculation review; not blind to finalized D decisions",
+  "candidateDigest": "sha256:4d27c2beb99e598198869bc2be58a2350263cacea03450cf069dc2154d86dfe4",
+  "ledgerDigest": "sha256:933d1fd032903f57bbc44b795ee1fb13cf42f39509cf354a6b33116ca14e4d2a",
+  "decision": "pass",
+  "profiles": 7,
+  "bilingualCases": 14,
+  "authority": "E1/G1 AI candidates, no observed learner performance or human approval",
+  "checks": [
+    {
+      "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "result": "h=a(4-x²),roots±2,span4,vertex4a,derivative-2ax; q=9-(x-b)²,rootsb±3,height9,span6. Vertical scale versus horizontal translation is genuine structural transfer; DE/EN equivalent."
+    },
+    {
+      "goalId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
+      "result": "Expanded p=x³+2x²-x-2 gives3x²+4x-1, matching product rule. q=(x-1)e^x givesxe^x, contributions cancel at0. Fresh exponential example tests both rate contributions rather than a number swap."
+    },
+    {
+      "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+      "result": "F'12(3x-2)³ and G'12x³ correctly distinguish composition order. H'= -2x exp(-x²), signs+left/-right and0at0; omitted inner factor correctly rejected. DE/EN complete."
+    },
+    {
+      "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+      "result": "Two-state .8/.2 and .3/.7 daily graph correct. Three-state row convention leads exactly toA→A/B=.5/.5,B→B/C=.25/.75,C→A=1; omitted edges0,rows1. Changed convention and extra state independent of earlier picture."
+    },
+    {
+      "goalId": "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+      "result": "M²[[.40,.15],[.60,.85]] numerically verified;B→A two-step paths.06+.09=.15. Three-cycle square andcubeI verified. Exactly-three-step B-probability0 versus prior visit1 is correctly distinguished."
+    },
+    {
+      "goalId": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+      "result": "Column fixed v(.2,.8) verified. Row swap has unique stationary(.5,.5) while(1,0)alternates; stationarity is not convergence. Nonnegativity/normalization and convention explicit in both languages."
+    },
+    {
+      "goalId": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+      "result": "a_next=.5a+.1 gives a_n=.2+.5^n(a0-.2), limiting columns(.2,.8). Absorbing A^n[[1,1-.75^n],[0,.75^n]] and swap S^n alternating verified. No unwarranted universal convergence claim."
+    }
+  ],
+  "scope": "Read every expectation, coverage constraint, variation axis and all complete German/English task demands, expected performances and understanding focuses. Checked current descriptions from independent sealed B45 review. Mechanical numerical checks supplement—not replace—semantic review."
+}

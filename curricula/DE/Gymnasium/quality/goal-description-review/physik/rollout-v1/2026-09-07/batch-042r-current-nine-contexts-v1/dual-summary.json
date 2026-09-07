@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e59e850ceaf95048eb875645fa701c456ddbd412bfaebdfcb2abd0ce52872668",
+  "reviewInputFingerprint": "sha256:2dc279c00bdd19b0091642572e9442115bfa9458498b8ef54070c81a916879c6",
+  "goalCount": 9,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-042r-current-nine-contexts-v1-20260907-a",
+      "roundId": "physik-rollout-v1-batch-042r-current-nine-contexts-v1-20260907-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-042r-current-nine-contexts-v1-20260907-independent-a",
+      "runIds": [
+        "phys-b042r-round-a-20260907T153130Z-ci-integration"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-042r-current-nine-contexts-v1-20260907-b",
+      "roundId": "physik-rollout-v1-batch-042r-current-nine-contexts-v1-20260907-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-042r-current-nine-contexts-v1-20260907-independent-b",
+      "runIds": [
+        "physics-b042r-nine-round-b-20260907T153712Z-build-generator"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 9,
+    "unavailable": 0,
+    "requiresSynthesis": 9
+  },
+  "goals": [
+    {
+      "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "firstRecordId": "phys-b042r-round-a-20260907T153130Z-ci-integration:a12fddce-0215-58d9-bd91-21be8a960d25",
+      "secondRecordId": "physics-b042r-b-a12fddce-0215-58d9-bd91-21be8a960d25",
+      "firstRunId": "phys-b042r-round-a-20260907T153130Z-ci-integration",
+      "secondRunId": "physics-b042r-nine-round-b-20260907T153712Z-build-generator",
+      "firstDecision": "split_review",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+      "firstRecordId": "phys-b042r-round-a-20260907T153130Z-ci-integration:7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+      "secondRecordId": "physics-b042r-b-7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+      "firstRunId": "phys-b042r-round-a-20260907T153130Z-ci-integration",
+      "secondRunId": "physics-b042r-nine-round-b-20260907T153712Z-build-generator",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+      "firstRecordId": "phys-b042r-round-a-20260907T153130Z-ci-integration:b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+      "secondRecordId": "physics-b042r-b-b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+      "firstRunId": "phys-b042r-round-a-20260907T153130Z-ci-integration",
+      "secondRunId": "physics-b042r-nine-round-b-20260907T153712Z-build-generator",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "firstRecordId": "phys-b042r-round-a-20260907T153130Z-ci-integration:853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "secondRecordId": "physics-b042r-b-853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "firstRunId": "phys-b042r-round-a-20260907T153130Z-ci-integration",
+      "secondRunId": "physics-b042r-nine-round-b-20260907T153712Z-build-generator",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "firstRecordId": "phys-b042r-round-a-20260907T153130Z-ci-integration:658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "secondRecordId": "physics-b042r-b-658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "firstRunId": "phys-b042r-round-a-20260907T153130Z-ci-integration",
+      "secondRunId": "physics-b042r-nine-round-b-20260907T153712Z-build-generator",
+      "firstDecision": "revise",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+      "firstRecordId": "phys-b042r-round-a-20260907T153130Z-ci-integration:d36727cc-ce42-51a3-9425-41afb0b9acdd",
+      "secondRecordId": "physics-b042r-b-d36727cc-ce42-51a3-9425-41afb0b9acdd",
+      "firstRunId": "phys-b042r-round-a-20260907T153130Z-ci-integration",
+      "secondRunId": "physics-b042r-nine-round-b-20260907T153712Z-build-generator",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
+      "firstRecordId": "phys-b042r-round-a-20260907T153130Z-ci-integration:1232febe-868a-4dac-b4c2-e35789434601",
+      "secondRecordId": "physics-b042r-b-1232febe-868a-4dac-b4c2-e35789434601",
+      "firstRunId": "phys-b042r-round-a-20260907T153130Z-ci-integration",
+      "secondRunId": "physics-b042r-nine-round-b-20260907T153712Z-build-generator",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "firstRecordId": "phys-b042r-round-a-20260907T153130Z-ci-integration:0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "secondRecordId": "physics-b042r-b-0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "firstRunId": "phys-b042r-round-a-20260907T153130Z-ci-integration",
+      "secondRunId": "physics-b042r-nine-round-b-20260907T153712Z-build-generator",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "firstRecordId": "phys-b042r-round-a-20260907T153130Z-ci-integration:fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "secondRecordId": "physics-b042r-b-fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "firstRunId": "phys-b042r-round-a-20260907T153130Z-ci-integration",
+      "secondRunId": "physics-b042r-nine-round-b-20260907T153712Z-build-generator",
+      "firstDecision": "revise",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

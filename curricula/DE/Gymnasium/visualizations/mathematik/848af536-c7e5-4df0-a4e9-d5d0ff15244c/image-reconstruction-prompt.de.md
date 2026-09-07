@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `848af536-c7e5-4df0-a4e9-d5d0ff15244c.jpg`
 
 ## Zweck
@@ -18,17 +18,18 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, lehrreiches Diagramm auf weißem Hintergrund, das drei Wachstumsmodelle vergleicht. Der Titel oben mittig in großer, fetter, schwarzer Schrift lautet: 'Exponentielle, begrenzte und logistische Wachstumsmodelle vergleichen'.
+Ein klares, lehrreiches Diagramm auf weißem Hintergrund, das drei verschiedene Wachstumsmodelle vergleicht. Der Haupttitel oben in großer, fetter, schwarzer Schrift lautet: 'Exponentielle, begrenzte und logistische Wachstumsmodelle vergleichen'. Darunter steht ein kleinerer, zentrierter, schwarzer Untertitel: 'Getrennte schematische Diagramme – keine gemeinsame Zeitskala'.
 
-Das Diagramm zeigt ein Koordinatensystem mit einer schwarzen, nach rechts zeigenden x-Achse, beschriftet mit 'Zeit t' am rechten Ende, und einer schwarzen, nach oben zeigenden y-Achse, beschriftet mit 'Menge y' am oberen Ende. Der Ursprung ist bei (0,0). Auf der y-Achse sind die Werte '2', '10' und '20' markiert. Ein roter Punkt bei (0,2) ist mit 'Startwert (0, 2)' links davon beschriftet.
+Unter dem Untertitel sind drei separate, nebeneinander angeordnete Koordinatensysteme dargestellt. Jedes System hat eine schwarze, nach rechts zeigende x-Achse, beschriftet mit 't', und eine schwarze, nach oben zeigende y-Achse. Der Ursprung (0,0) ist für alle drei Graphen gleich.
 
-Eine schwarze, gestrichelte horizontale Linie verläuft bei y=20. Darüber, leicht rechts der Mitte, steht die Beschriftung 'Tragfähigkeit / Asymptotische Grenze y=20'.
+**Linkes Diagramm (Exponentiell):**
+Der Titel über diesem Diagramm ist 'Exponentiell' in roter Schrift. Die y-Achse ist mit 'E(t)' beschriftet und hat Teilstriche bei 0, 2, 10 und 20. Eine rote, exponentiell ansteigende Kurve beginnt bei (0,2), markiert mit einem roten Punkt. Dieser Punkt ist links mit 'Startwert (0, 2)' und darunter mit 'E(0)=2' beschriftet. Die Kurve steigt steil an und erreicht den Wert 20. Eine gestrichelte horizontale Linie verläuft von y=20 nach rechts, und eine gestrichelte vertikale Linie fällt von dem Punkt auf der Kurve, wo y=20 ist, zur x-Achse ab. Dieser Schnittpunkt auf der x-Achse ist mit 't≈7,67' beschriftet. Ein schwarzer Punkt markiert den Schnittpunkt der Kurve mit der horizontalen gestrichelten Linie bei y=20. Unter der Kurve steht die Gleichung 'E(t)=2·1,35ᵗ, t≥0'. Rechts neben der y-Achse, oberhalb der Kurve, befindet sich ein schwarzer Textblock: 'Modellannahme: Konstante relative Wachstumsrate; keine obere Grenze.'
 
-Drei Kurven beginnen alle am Startwert (0,2):
+**Mittleres Diagramm (Begrenzt):**
+Der Titel über diesem Diagramm ist 'Begrenzt' in blauer Schrift. Die y-Achse ist mit 'B(t)' beschriftet und hat Teilstriche bei 0, 2, 10 und 20. Eine blaue Kurve beginnt bei (0,2), markiert mit einem blauen Punkt, der darunter mit 'B(0)=2' beschriftet ist. Die Kurve steigt an und nähert sich asymptotisch dem Wert 20. Eine gestrichelte horizontale Linie verläuft von y=20 nach rechts und ist oberhalb mit 'Sättigung 20' beschriftet. Unter der Kurve steht die Gleichung 'B(t)=20-18·e⁻⁰,³⁵ᵗ, t≥0'. Unter der Kurve befindet sich ein schwarzer Textblock: 'Modellannahme: Zuwachs proportional zum verbleibenden Abstand zur Grenze.'
 
-1.  **Exponentielle Kurve:** Eine rote Kurve, die steil ansteigt, die gestrichelte Linie bei y=20 kreuzt und weiter nach oben verläuft. Oberhalb der Kurve, links, steht in fetter roter Schrift 'Exponentiell:'. Darunter in schwarzer Schrift die Gleichung 'E(t)=2*1.35^t'. Unterhalb dieser Kurve befindet sich eine wolkenförmige Sprechblase mit schwarzem Rand, die den Text 'Modellannahmen: konstante relative Wachstumsrate' enthält. Oberhalb der Kurve, wo sie die y=20 Linie überschreitet, zeigt ein roter Pfeil nach oben, begleitet von drei kleinen schwarzen Kreisen nahe der Kurve. Über dem Pfeil steht in schwarzer Schrift 'Keine obere Grenze'.
+**Rechtes Diagramm (Logistisch):**
+Der Titel über diesem Diagramm ist 'Logistisch' in grüner Schrift. Die y-Achse ist mit 'L(t)' beschriftet und hat Teilstriche bei 0, 2, 10 und 20. Eine grüne, S-förmige (sigmoide) Kurve beginnt bei (0,2), markiert mit einem grünen Punkt, der darunter mit 'L(0)=2' beschriftet ist. Die Kurve steigt an und nähert sich asymptotisch dem Wert 20. Eine gestrichelte horizontale Linie verläuft von y=20 nach rechts und ist oberhalb mit 'Tragfähigkeit 20' beschriftet. Auf der Kurve ist ein schwarzer Punkt markiert, der den Wendepunkt darstellt. Von diesem Wendepunkt verläuft eine gestrichelte vertikale Linie zur x-Achse, beschriftet mit 't≈3,66', und eine gestrichelte horizontale Linie zur y-Achse, die den Wert 10 erreicht. Der Wendepunkt ist oberhalb und rechts mit 'Wendepunkt' beschriftet. Unter der Kurve steht die Gleichung 'L(t)=20/(1+9·e^(-0,6t)), t≥0'. Unter der Kurve befindet sich ein schwarzer Textblock: 'Modellannahme: Zuwachs hängt vom Bestand und vom Abstand zur Tragfähigkeit ab.'
 
-2.  **Begrenzte Kurve:** Eine blaue Kurve, die ansteigt und sich der gestrichelten Linie bei y=20 von unten asymptotisch nähert. Oberhalb der Kurve, rechts von der exponentiellen Kurve, steht in fetter blauer Schrift 'Begrenzt:'. Darunter in schwarzer Schrift die Gleichung 'B(t)=20-18*e^(-0.35t)'. Ein blauer Pfeil folgt der Kurve nach rechts, nahe der y=20 Linie.
-
-3.  **Logistische Kurve:** Eine grüne Kurve, die ansteigt, zunächst langsam, dann schneller, dann wieder langsamer, und sich der gestrichelten Linie bei y=20 von unten asymptotisch nähert. Oberhalb der Kurve, ganz rechts, steht in fetter grüner Schrift 'Logistisch:'. Darunter in schwarzer Schrift die Gleichung 'L(t)=20/(1+9*e^(-0.6t))'. Auf dieser Kurve ist ein schwarzer Punkt bei ungefähr y=10 markiert, beschriftet mit 'Wendepunkt (y=10)' rechts und leicht oberhalb des Punktes. Drei kleine schwarze Kreise sind unterhalb des Wendepunkts nahe der Kurve platziert. Unterhalb der Kurve, nahe dem Wendepunkt, befindet sich eine wolkenförmige Sprechblase mit schwarzem Rand, die den Text 'Modellannahmen: Zuwachs hängt vom verbleibenden Abstand zur Grenze ab' enthält. Weiter rechts, unterhalb der 'Logistisch:' Beschriftung, ist eine weitere wolkenförmige Sprechblase mit schwarzem Rand, die den Text 'Modellannahmen: Selbstbegrenzung mit anfangs wachsendem, später fallendem Zuwachs' enthält. Ein grüner Pfeil folgt der Kurve nach rechts, nahe der y=20 Linie.
+Der Gesamtstil ist klar, präzise und didaktisch, mit gut lesbaren schwarzen Sans-Serif-Schriftarten für alle Texte und Beschriftungen.
 ```

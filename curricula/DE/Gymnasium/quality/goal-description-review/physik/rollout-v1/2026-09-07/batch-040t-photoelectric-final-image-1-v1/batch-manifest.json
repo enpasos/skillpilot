@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040t-photoelectric-final-image-1-v1.config.json",
+  "configDigest": "sha256:e2ac8b420db984a11dbfd58c912b26866d5ea1262205a4f0a124b3e7bf6e1e78",
+  "goalIds": [
+    "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 465,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:b2eda42474b8da07a41dfa0a27d03a062cab3c6c7f48891201e0447b52afad85"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9f45f8e41fb6789570aa56d63b9d23ce27c6ac69337a0efc214601683ae4b597",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:5ff8a21fee3074746d8510a4e83677e326ec4166457034891f67b972e5a005a8",
+    "reviewInputFingerprint": "sha256:d07ceccea1f06658ba387cf9f835e53e06307012f53c65387e6ed9340c02521b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-a",
+        "campaignDigest": "sha256:bb0614f6197c97bf2de096e44fc52a1057aeb5a1450e854dd67e2aea9b3e8848",
+        "roundId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-independent-a",
+        "batchId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:c62b11380ad6065df1ca000eecac1e4920eca183ce9808dc4112f786f870fa37"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-b",
+        "campaignDigest": "sha256:c45de3f470ca71b5fb108acfa21e680897a646c2ef8f3e31d2901ebb8bd42af7",
+        "roundId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-independent-b",
+        "batchId": "physik-rollout-v1-batch-040t-photoelectric-final-image-1-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:e3dc24b77fcc4c6165a3673ef8b6c59f26f483c4d20cc2e346b599cd30018a7f"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

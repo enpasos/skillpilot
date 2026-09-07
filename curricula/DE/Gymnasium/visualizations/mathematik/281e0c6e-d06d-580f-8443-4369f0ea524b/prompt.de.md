@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: ai-reviewed
 - Quellbild: `281e0c6e-d06d-580f-8443-4369f0ea524b.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/281e0c6e-d06d-580f-8443-4369f0ea524b/281e0c6e-d06d-580f-8443-4369f0ea524b.jpg`
 
@@ -31,19 +31,40 @@ Titel: Reale Gegenstände als Rotationskörper zur Volumenbestimmung modellieren
 Beschreibung: Die lernende Person kann reale Gegenstände durch geeignete Rotationskörper beziehungsweise Randfunktionen modellieren, passende Integrale zur Volumenbestimmung aufstellen und die Modellannahmen im Kontext begründen.
 
 Zusatzanweisung:
-Erstelle eine neue, zusammenhängende Lernillustration zur Volumenberechnung eines rotationssymmetrischen Trinkglases durch Integration.
+# Verwechslung zwischen Kreisquerschnitt und Radiusdiagramm beheben
 
-Pflichtinhalt:
-- Zeichne ein Glas als Kegelstumpf mit Höhe h, positivem Bodenradius r₀ und größerem oberen Radius r₁.
-- Zeige daneben den linearen Radiusverlauf exakt als „r(x) = r₀ + (r₁−r₀)·x/h“ für 0 ≤ x ≤ h.
-- Zeige die dazu passende Volumenformel exakt als „V = π · ∫₀ʰ r(x)² dx“.
-- Markiere an mindestens drei Höhen schmale Kreisscheiben, sodass die Integration als Summe dünner Volumenscheiben sichtbar wird.
-- Zeichnung und Formel müssen denselben Kegelstumpf beschreiben.
+Gezielte Bearbeitung des beigefügten Referenzbildes. Den Becher links mit
+seinen drei waagerechten gelben Volumenscheiben, den richtigen Radien r₀,r₁
+und der Höhe h, die große Überschrift, Farben und die Volumenformel rechts
+beibehalten. Die Radiusfunktion r(x)=r₀+(r₁−r₀)x/h für 0≤x≤h bleibt richtig.
 
-Vermeiden:
-- Keine Vollkegel-Formel für ein Glas mit positivem Bodenradius.
-- Kein Bodenradius null, keine Zylinderzeichnung und keine widersprüchlichen Maße.
-- Keine technischen Metadaten, Logos oder Wasserzeichen.
+Korrigiere ausschließlich das mittlere x-r-Diagramm und seine Zuordnung:
+Es zeigt x waagerecht und r senkrecht. Deshalb gehört eine dünne
+Volumenscheibe bei einer festen Höhe x zu einem **senkrechten** schmalen
+Streifen der Breite dx und Höhe r(x), nicht zu einem waagerechten Streifen.
+
+Entferne sämtliche gelben/roten waagerechten Füllstreifen und die L-förmigen
+Flächen. Entferne auch die Verbindungslinien, die von „Volumenscheibe“ auf
+die senkrechte r-Achse zeigen. Diese drei Bezeichnungen dürfen allein die
+drei wirklichen Scheiben im Becher links markieren, nicht das Radiusdiagramm.
+
+Zeichne im mittleren Diagramm genau einen schmalen senkrechten gelben
+Rechteckstreifen: Unterkante auf der x-Achse, Höhe r(x), schmale Breite dx
+entlang der waagerechten x-Achse. Sein oberer Mittelpunkt liegt auf der
+roten steigenden Radiusgeraden. Die Rechteckform ist die Näherung einer
+dünnen Scheibe; keine waagerechte Füllung hinzufügen.
+Eine senkrechte Doppelpfeil-Markierung neben dem Streifen erklärt r(x).
+Eine waagerechte kurze Doppelpfeil-Markierung unter seiner Unterkante erklärt dx.
+Die Gerade beginnt bei (0,r₀) und endet bei (h,r₁). Achsen r und x,
+Markierungen r₀,r₁,h und die gestrichelten Randprojektionen bleiben korrekt.
+
+Direkt unter dem mittleren Diagramm klein und gut lesbar ergänzen:
+„Kreisfläche: πr(x)² · Scheibenvolumen: πr(x)² dx“
+Im rechten Formelkasten bleibt V=π∫₀ʰr(x)² dx stehen.
+Keine weiteren Formeln, Daten oder Deko hinzufügen. Die Grafik soll die
+Begründung der Modellierung unterstützen und keine falsche Zuordnung
+zwischen waagerechter Scheibe im aufrechten Becher und dem um 90° anders
+orientierten Radiusdiagramm nahelegen.
 ```
 
 ## Review-Notiz

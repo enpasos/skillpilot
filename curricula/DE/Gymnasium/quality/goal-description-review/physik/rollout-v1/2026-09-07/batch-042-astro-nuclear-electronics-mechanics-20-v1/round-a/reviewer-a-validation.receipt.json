@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "recordCount": 20,
+  "recordsDigest": "sha256:eaedb42e813a01dfc57fa8151e98ac760de680fe57de099a80d1d72059387905",
+  "runPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/round-a/results/physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-first-pass-a.batch-001.run.json",
+  "provenancePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/round-a/reviewer-a-provenance.json",
+  "nativeValidation": {
+    "cmd": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/round-a/review-bundle-manifest.json' --input 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/round-a/description-review-input.json' --campaign 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/round-a/description-review-campaign.json' --batches-dir 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/round-a/batches' --results-dir 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/round-a/results'",
+    "result": {
+      "chunk_id": "23856b",
+      "wall_time_seconds": 0.513134132,
+      "exit_code": 1,
+      "original_token_count": 79,
+      "output": "physik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-first-pass-a.batch-001: Independent AI review runs must be blind to other runs\nphysik-rollout-v1-batch-042-astro-nuclear-electronics-mechanics-20-v1-20260907-first-pass-a.batch-001: Independent campaign runs must be blind to other runs\n"
+    },
+    "at": "2026-09-07 15:17:27 UTC"
+  },
+  "seal": {
+    "recordsImmutableAfterThisReceipt": true,
+    "technicalPass": false,
+    "reason": "All twenty content records were individually authored; mandatory first-pass blind flag deliberately false after aggregate peer disclosure, so the native validator correctly fails closed. Not eligible as independent D closure without an honestly independent replacement review or explicit non-authoritative treatment."
+  },
+  "currentPeerBRecordsOpened": false,
+  "createdAt": "2026-09-07 15:17:41 UTC"
+}

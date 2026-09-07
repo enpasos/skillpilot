@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1.config.json",
+  "configDigest": "sha256:c9aeffa3399dbe0b1f9649d8f2f9dabffde6ea28357803ed6a9f1bdb18305561",
+  "goalIds": [
+    "0de1e45c-aea9-5e53-932a-027dcf509efa",
+    "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+    "69243680-c2c1-5661-80c0-c95a2be1dabf",
+    "4c494716-567b-59c2-855c-6ea45635c666",
+    "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+    "b72d87d4-763e-54aa-940d-31f195b51700",
+    "55039f9c-4ebc-5115-add5-fae95b915e46",
+    "35558905-753d-5fcb-b25e-7f85ffdbff56",
+    "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c",
+    "168d8879-0412-5524-94c5-c1d8169dbd65",
+    "7bd8f022-5002-5610-994c-a9cec1890558",
+    "8823e26e-694c-581b-9adf-4db7db6f43c9",
+    "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+    "3019e775-1420-510f-850b-5a29acc47a64",
+    "5a2371fd-74ce-5013-932e-35d3713aeaf7",
+    "71d1fd4d-8471-5f25-94a0-4c531a74783c",
+    "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+    "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+    "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+    "c2831918-26f1-421e-90fb-ce707689594e"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:9d75bde71b7b05eea5fcfe25403a9a18b0d65d9a81d2b56d028317b801ef13cb"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:af8a4a918536627e23fb5ac81cf34dfa8af1d510da6cca9e97249e910821abb9",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:de5ebc5ecdb9fe548f005162393fd7c75e38575ea35c232629e9132d01193c76",
+    "reviewInputFingerprint": "sha256:f6ed5d9b5177c01035f109567b88152786e95a4fb7d29be015155b42c32f31f4",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-a",
+        "campaignDigest": "sha256:e8fb4947b515ac20da39bdb03d6d08227aa0b5047cb032cf09d1ab94628e401d",
+        "roundId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a",
+        "independenceGroupId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-independent-a",
+        "batchId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:581f08647859d63bd294a549b33504be83ae29881ea88d59d9fa0dde4967135d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-b",
+        "campaignDigest": "sha256:53ba4214fff3444bd2b0df9f09872f293a7e2a1f02ee9e3bd18640dc166d4ecd",
+        "roundId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b",
+        "independenceGroupId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-independent-b",
+        "batchId": "mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a57ffb44831bd7d80709942189793a1b6d1fedca90794fc8503473d4b38979df"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-07T15:54:16.117Z",
+  "nativeCommand": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/translation-hypothetical-impact-v1.ts curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/approved-6e7-qualitativ-single-field-v1.proposal.json",
+  "status": "PASS_counterfactual_only",
+  "executionSessionId": 13434,
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "beforeCanonicalDigest": "sha256:d2b1b698622a1f9b1cd3de82f05e5322aa873fd269c19d1693598b24b14c5a91",
+  "nativeBaselineReconstructionExact": true,
+  "unchangedLedgerFailure": "Goal-book model: stale semantic-kind decision for goal 6e7c35e0-7a38-5996-a42e-005038eff0db; expected sha256:49e01e5c15346a778f8bdef0c0cef87175a6c88f9744798f884d4298e7871348.",
+  "hypothesisOnly": "The unchanged real ledger fails closed. Only an in-memory semantic-kind copy was rebound to calculate the effect prognosis. This is not an actual semantic decision or a release check.",
+  "semanticKind": {
+    "before": "sha256:88968ee0f83c7b420d392cd742c3c143b69e1f74f2a97930ba2f489edc7897cc",
+    "hypotheticalAfter": "sha256:49e01e5c15346a778f8bdef0c0cef87175a6c88f9744798f884d4298e7871348"
+  },
+  "changedGoalId": "6e7c35e0-7a38-5996-a42e-005038eff0db",
+  "changedCanonicalFields": [
+    "description"
+  ],
+  "pageCount": 465,
+  "unchangedFullPageCount": 464,
+  "changedPage": {
+    "pageNumber": 423,
+    "changedFields": [
+      "description",
+      "goalFingerprint",
+      "pageFingerprint"
+    ],
+    "beforeGoalFingerprint": "sha256:f2c48d75744d0b47403248045eb3cd8b4b551688e9ae60f55035520476e3723d",
+    "afterGoalFingerprint": "sha256:745ffa7893a9e56d09821d6f24a96306a1b8acc7f4afcceaffe5ce75d35cc8f7",
+    "beforePageFingerprint": "sha256:22423abaedb6071be208e4fac4c6920e4b53dfd7972416b75d566a4896dbfed8",
+    "afterPageFingerprint": "sha256:7c4b76dacd603aaa472d3181ef609f080796dfaeaf9b203b260b79ac0c17aadf"
+  },
+  "model": {
+    "before": "sha256:9cb5d8aa9ec18b87e223a046110674cdc78ee6e3106ca80cff15a8d06ebcdf17",
+    "hypotheticalAfter": "sha256:78282dea3f8f0ed370b262a83677a0803c04d6c5737630bff9a620d6ba09bc94"
+  },
+  "allNineR9FullPageObjectsUnchanged": true,
+  "allNinePositiveCanonicalObjectsAndGoalAndInputFingerprintsUnchanged": true,
+  "r9ResultsRead": false,
+  "sharedCanonicalUnchanged": true,
+  "note": "This run is from its own recorded source/model time; global baseline can differ from the earlier EN-only receipt because other agents update review evidence. Actual apply still requires fresh exact source checks.",
+  "rawOutputLanguageCorrection": "The reused checker originally printed translation-specific prose despite a one-field German proposal. The executable assertions and output hashes were correct; explanatory prose is now generalized in the checker and recorded accurately here."
+}

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-b041-current-keep4-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-goal-book-ci-integration-nonblind-current-synthesis",
+  "synthesizedAt": "2026-09-07T01:43:21.139Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907",
+    "batchManifestDigest": "sha256:816312e4f3a7b3c0d61a3971d54d97b8c37f32377a22186a065f0e0cc1683c4c",
+    "configDigest": "sha256:c030d9910d40529b9dca75376afef134fe01673abf1e78307dd3d10719fdfbf2",
+    "bundleFingerprint": "sha256:4cbb883b57763279fc6419d16751df3098b4c6dcdc293c6747f311ffaf4f499a",
+    "bookDigest": "sha256:14f445255f8ca249a97fd0684294b4d67f1170d7f93574809ec9f26f9505e39f",
+    "reviewInputFingerprint": "sha256:83479021a61a07830d7c5ab717f0fd224acc03b2cda69f938b2484838f85cb86",
+    "dualSummaryDigest": "sha256:afe378e9f4572a03894e7ac10cae7db57e55f837bfbd52ff5b3f5ed1319b9773",
+    "canonicalLandscapeDigest": "sha256:752d76bf355cc945d5350c9b83a5e8bb8ac24a93c3363d6ab8d8bc87fc65a576"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-a",
+      "campaignDigest": "sha256:bafd948266c8df4f98e37f7b6ead1107872d8df3cd7871d9ef8752b6e22b3a81",
+      "roundId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-independent-a",
+      "reviewInputFingerprint": "sha256:83479021a61a07830d7c5ab717f0fd224acc03b2cda69f938b2484838f85cb86",
+      "batchId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:11a49f627c1ee73145c6f171d56cf2df06a89937346e5915a0dc8c14c2495e1c",
+      "runId": "mathematik-b04110-first-pass-a-openai-codex-20260907T012559",
+      "runManifestDigest": "sha256:0b6dfceedaf371a229cef151bd4b31617c2618467d88c0b26d2408fc37c7743d",
+      "resultsDigest": "sha256:58fa890dddee3f928640f1fd08abb17b9acf3c7ecb75da1bfd228440b0862aa2"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-b",
+      "campaignDigest": "sha256:6aa4a3ddb581cf791e5740a0fef258fd934633a5ae22a31b15980f5b6ca547a8",
+      "roundId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-independent-b",
+      "reviewInputFingerprint": "sha256:83479021a61a07830d7c5ab717f0fd224acc03b2cda69f938b2484838f85cb86",
+      "batchId": "mathematik-rollout-v1-batch-041-integral-applications-10-v1-20260907-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:52129716d0dceb2f733eab2777cafd76a6fc4d429ac8c6ee1d01de72183e70ef",
+      "runId": "mathematik-b041-fresh-blind-b-20260907",
+      "runManifestDigest": "sha256:bc2826a6ec91c41b62fc3a77f21b8c735a8e291cd65ac5726fc451e8754017d9",
+      "resultsDigest": "sha256:97c0e4903fd0e9612ee0b8dce94b9b3747956c8fef10c9c73279dc6d5838ad10"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-b041-current-keep4-v1-decision-001",
+      "goalId": "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2576db7305df0092a2255c20eeeb6722e935e7e0a4e5023d74e3a73ca2c82306",
+      "pageFingerprint": "sha256:9be0ab2e54e0609813892354b100516aec8689c01ed00206a6c8a373b9963055",
+      "goalReviewContextFingerprint": "sha256:761f00af979a6870d77aaaf6be576835de6e8ddf0c5a8c08cbb1352d91087e3a",
+      "finalText": {
+        "titleDe": "Intervalladditivität und Linearität von Integralen nutzen",
+        "titleEn": "Use Interval Additivity and Linearity of Integrals",
+        "descriptionDe": "Die lernende Person kann bestimmte Integrale mithilfe von Intervalladditivität und Linearität umformen, zerlegen, zusammenfassen und die Rechenschritte fachlich begründen.",
+        "descriptionEn": "The learner can transform, split, and combine definite integrals using interval additivity and linearity and justify the calculation steps mathematically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b04110-first-pass-a-openai-codex-20260907T012559.649b673c-1a74-5dc5-af01-b4c9e090b90d",
+          "recordDigest": "sha256:fd5b1fece1cff662780ac7a7a178a57a67b4213cff70e57f630f5c3f87e7fbd9"
+        },
+        "second": {
+          "recordId": "mathematik-b041-fresh-blind-b-20260907.649b673c-1a74-5dc5-af01-b4c9e090b90d",
+          "recordDigest": "sha256:21f1cff6bacbc154bcd954642cff6f29cb0525181555993cf5cb5246c7e39b5b"
+        }
+      },
+      "rationaleDe": "Beide vollständigen, weiterhin exakt aktuellen Reviews bestätigen Intervalladditivität und Linearität als eine strukturelle Kompetenz. Vorzeichen, gemeinsame Grenzen und Grenzumkehr sind enthalten. Die Fälle kombinieren bekannte Teilintegrale bzw. erschließen fehlende Beiträge; keine primitive Funktionsvorschrift wird unterstellt. Titel und Beschreibung bleiben unverändert.",
+      "rationaleEn": "Both complete, still exactly current reviews support interval additivity and linearity as one structural competence. Signs, common bounds and reversing endpoints are covered. The cases combine known partial integrals or infer missing contributions without assuming a formula for the integrand. Keep the title and description unchanged."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b041-current-keep4-v1-decision-002",
+      "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:351192b47c3fabc153a1dd80e0cd3ccad0fa240e9eb6295f0da611eba089146c",
+      "pageFingerprint": "sha256:04c49ea40d73a81460b14421aebcd92b595f679f26198861aed525227d77191b",
+      "goalReviewContextFingerprint": "sha256:a4adc68d2e6c1dd6586e6eed45a35a7ca9fd2d74df21b031b9d67797197efafd",
+      "finalText": {
+        "titleDe": "Flächen mit Integralen berechnen",
+        "titleEn": "Calculate areas with integrals",
+        "descriptionDe": "Die lernende Person kann Flächeninhalte berechnen, die von einem oder mehreren Funktionsgraphen und Parallelen zu den Koordinatenachsen begrenzt werden, und dazu passende Integrale aufstellen.",
+        "descriptionEn": "The learner can calculate areas bounded by one or more function graphs and parallels to the coordinate axes, and set up suitable integrals."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b04110-first-pass-a-openai-codex-20260907T012559.e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "recordDigest": "sha256:64e0602e5d2d6889c047da258a9589b23606b1b0a3cc7f4d2c3eb08f9be4ddc8"
+        },
+        "second": {
+          "recordId": "mathematik-b041-fresh-blind-b-20260907.e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "recordDigest": "sha256:dae01d2dcc931f023c5ab7e61c12b166a2a2fa5f69697c3ab06c98238e15ace2"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Reviews bestätigen das Ermitteln nichtnegativer geometrischer Flächen über passende Integrale. Nullstellen, Schnittpunkte und der Wechsel der oberen Funktion steuern die Zerlegung; das orientierte Integral ist nicht ungeprüft der Flächeninhalt. Die eigenständigen Fälle Fläche zwischen Kurven und Vorzeichenwechsel an der Achse tragen dieselbe Kompetenz. Keine Textänderung erforderlich.",
+      "rationaleEn": "Both current reviews support determining nonnegative geometric areas using suitable integrals. Zeros, intersections and changes in the upper function determine subdivision; a signed integral is not automatically geometric area. Independent cases between curves and across an axis crossing exercise the same competence. No text change is required."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b041-current-keep4-v1-decision-003",
+      "goalId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1281d5a93d0e1ac35a2b922f28744c0a02dab4a4a47263cf605da6f867d6b2fa",
+      "pageFingerprint": "sha256:0bd4f04d988a7982ace54565853481260a8366f00c8d8cee68f3034cfc9aa9f6",
+      "goalReviewContextFingerprint": "sha256:ff8293f0f1abd87af8f4b69a398fdab204a9bef5a6d208627d7abf582dbc6fc4",
+      "finalText": {
+        "titleDe": "Integrationsgrenzen und Parameter bestimmen",
+        "titleEn": "Determine integration limits and parameters",
+        "descriptionDe": "Die lernende Person kann aus vorgegebenen Gleichungen mit bestimmten Integralen Integrationsgrenzen oder Parameterwerte eines Funktionsterms so bestimmen, dass ein geforderter Flächeninhalt oder Bestand erreicht wird.",
+        "descriptionEn": "The learner can determine integration limits or parameter values of a function term from given equations with definite integrals so that a required area or stock is achieved."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b04110-first-pass-a-openai-codex-20260907T012559.647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+          "recordDigest": "sha256:640eaae3a6ee100d7bfa5169b6ebcc31c17be88101b611e7cc170be3d53013fe"
+        },
+        "second": {
+          "recordId": "mathematik-b041-fresh-blind-b-20260907.647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+          "recordDigest": "sha256:adb2731adda9282e08cd1ce1aadae124b418d02bae1f4a120baabdfab9dc120b"
+        }
+      },
+      "rationaleDe": "Die beiden KEEP-Reviews sind vollständig und exakt aktuell. Die Kompetenz bleibt das Lösen bereits vorgegebener Integralgleichungen nach Grenzen oder Parametern mit Zulässigkeitsprüfung; eine zusätzliche Modellierungsleistung ist nicht erforderlich. Im neuen P-Teilpaket werden deshalb beide Gleichungen ausdrücklich geliefert, und die bereits vorhandene Ein-Leitungsannahme bleibt für die Netto-/Gesamtvolumen-Deutung erhalten. D-Texte unverändert.",
+      "rationaleEn": "Both complete KEEP reviews remain exactly current. The competence is solving supplied integral equations for bounds or parameters while checking admissibility; an additional modeling task is not required. The new P subset therefore supplies both equations explicitly and preserves the existing single-pipe assumption when interpreting net versus total moved volume. D text remains unchanged."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b041-current-keep4-v1-decision-004",
+      "goalId": "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b876e6bdeb0f4f608ee1bbc1d58e67c93588020f5dccfefb783c1067b5004cb7",
+      "pageFingerprint": "sha256:c18bade4299e5ec779efdd448b9200cbafdcc96d35b3979c7e56e5a386ab198e",
+      "goalReviewContextFingerprint": "sha256:c4e03299be43dce831fe4733d406c8dc9d888057eae120bc62e9379cd1aa9dd2",
+      "finalText": {
+        "titleDe": "Rotationskörper mit Integralen untersuchen (LK)",
+        "titleEn": "Investigate solids of revolution with integrals (advanced course)",
+        "descriptionDe": "Die lernende Person kann Volumina von Rotationskörpern begründen und berechnen, indem sie passende Integrale aufstellt und die Volumenformel aus der Grundvorstellung des Integralbegriffs ableitet.",
+        "descriptionEn": "The learner can justify and calculate volumes of solids of revolution by setting up suitable integrals and deriving the volume formula from the basic concept of the integral."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b04110-first-pass-a-openai-codex-20260907T012559.0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+          "recordDigest": "sha256:e04a689c116a191aac34a67531b6aee781ca3c5276c73d7cddfada4329acd4d6"
+        },
+        "second": {
+          "recordId": "mathematik-b041-fresh-blind-b-20260907.0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+          "recordDigest": "sha256:6ab9303811f80ea86306418acca4f2661646e0e5ef3e49e045d8244f5ee25db5"
+        }
+      },
+      "rationaleDe": "Beide KEEP-Reviews bestätigen die aus Scheibensummen begründete Integralformel und ihre Anwendung auf Rotationskörper als zusammengehörige Herleitungsleistung. Radiusquadrat, Scheibendicke und Grenzübergang werden explizit begründet; der neue zusammengesetzte Körper prüft Transfer. Die P-Gegenprüfung präzisiert allein die dimensional missverständliche Flächensumme zur Summe der Scheibenvolumina. Keine Änderung der aktuellen Lernzielbeschreibung.",
+      "rationaleEn": "Both KEEP reviews support deriving the integral formula from disk sums and applying it to solids of revolution as one derivational competence. Squared radius, disk thickness and the limiting process are justified explicitly; a new composite solid tests transfer. P counterreview only clarifies the dimensionally ambiguous area sum as a sum of disk volumes. The current learning-goal description is unchanged."
+    }
+  ],
+  "manifestFingerprint": "sha256:bb02a067f3ff72cbb787fd84dc45806ab9a7b06a9dcb522c5d643dbb511463f6"
+}

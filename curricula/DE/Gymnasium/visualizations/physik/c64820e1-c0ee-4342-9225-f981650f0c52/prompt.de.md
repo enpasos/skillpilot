@@ -1,14 +1,14 @@
-# Lernzielvisualisierung: Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen
+# Lernzielvisualisierung: Interferenzminima am Doppelspalt begründen und lokalisieren
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `c64820e1-c0ee-4342-9225-f981650f0c52`
-- Titel: Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen
-- Beschreibung: Die lernende Person kann die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewaehlten Beugungsvorgaengen in Fernfeldnaeherung fuer Einzelspalt, Doppelspalt und Gitter berechnen.
+- Titel: Interferenzminima am Doppelspalt begründen und lokalisieren
+- Beschreibung: Die lernende Person kann beim idealisierten Doppelspalt mit gleich starken kohärenten Beiträgen die dunklen Stellen aus destruktiver Interferenz begründen, ihre Winkel und Schirmpositionen bestimmen und die Minima gegenüber den Maxima sowie gegenüber einer unzulässigen Kleinwinkelnäherung abgrenzen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `c64820e1-c0ee-4342-9225-f981650f0c52.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/c64820e1-c0ee-4342-9225-f981650f0c52/c64820e1-c0ee-4342-9225-f981650f0c52.jpg`
@@ -16,24 +16,26 @@
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Use case: scientific-educational. Erzeuge ein eigenständiges, freundliches, leicht handgezeichnetes Lehrbild für Oberstufenschüler, 16:9, 2K. Heller hellblau-cremefarbener Hintergrund, dunkle lesbare lockere Schrift, großzügige Abstände. KEINE Kombination verschiedener Beugungsfälle. Nur idealisierter DOPPELSPALT. Keine Vorlage übernehmen.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Titel exakt: "Doppelspalt: helle und dunkle Streifen".
+Untertitel: "Senkrechter, kohärenter, monochromatischer Einfall · Fernfeld · idealisiert ohne Einhüllende".
 
-Titel: Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen
-Beschreibung: Die lernende Person kann die Lage von Interferenzminima beziehungsweise Interferenzmaxima bei ausgewaehlten Beugungsvorgaengen in Fernfeldnaeherung fuer Einzelspalt, Doppelspalt und Gitter berechnen.
+Linke Hälfte: gut lesbare, FLACHE 2D-Querschnittsskizze, ausdrücklich "Skizze, nicht maßstäblich". Eine undurchsichtige Blende mit GENAU ZWEI kleinen offenen Spalten, übereinander. Keine dritte Öffnung. Links davon parallele horizontale Einfallspfeile Richtung rechts, mit "λ: Wellenlänge". Markiere d mit einer vertikalen Maßlinie, deren Enden exakt die MITTEN beider Öffnungen treffen: "d: Spaltmittenabstand". Rechts ein gerader senkrechter Schirm, kein schräges 3D-Brett. Die horizontale Bezugslinie läuft von der Mitte zwischen den Spalten zum Schirmzentrum O. Ein schräger gestrichelter GEOMETRISCHER Bezugsschenkel von derselben Mitte zum ersten oberen hellen Streifen P. Das ist KEIN aus dem undurchsichtigen Steg kommender Lichtstrahl! Winkel θ zwischen Bezugslinie und Bezugsschenkel mit gemeinsamem Scheitel an der Blende. L wird als horizontale Maßlinie zwischen Blendenebene und Schirmebene gemessen. y als vertikaler Doppelpfeil vom Schirmzentrum O bis P. Beschrifte "L: Schirmabstand", "y: Abstand von O". Helle Streifen auf dem Schirm symmetrisch bei m=−1,0,+1, dunkle Stellen dazwischen. m=0 liegt exakt auf der Bezugslinie, P liegt beim hellen m=+1. Dunkle Stelle zwischen 0 und +1 mit kleinem Pointer "Minimum". Sonst keine Zahlen an der Skizze, damit keine vorgetäuschte Maßstäblichkeit entsteht.
 
-Zusatzanweisung:
-Use case: precise-object-edit / scientific-educational
-Eingabebild: einziges Edit-Ziel; bestehende Lernvisualisierung beibehalten.
-Erhalte Zeichnung, Geometrie, Strahlen, Schirm, Farben und alle anderen Beschriftungen unverändert. Ergänze ausschließlich im kleinen Kasten „Einzelspalt-Minima“ unter b sin(θ)=mλ die deutlich lesbare Einschränkung „m=±1, ±2, … (m≠0)“. Sorge durch geringfügig mehr Höhe dieses Kastens für ausreichend Platz. Die rechts gezeichneten Doppelspaltmaxima m=−1,0,+1 bleiben unverändert. Keine sonstigen Änderungen und keine technischen IDs.
+Rechte Hälfte: drei übersichtliche Kästchen mit exakt diesen Inhalten:
+1. "Gangunterschied: Δs ≈ d sin θ"
+"Hell: d sin θ = m λ"
+"Dunkel: d sin θ = (m + ½) λ"
+"m = 0, ±1, ±2, …"
+"Hell: gleichphasig · dunkel: gegenphasig"
+2. "Schirmgeometrie: y = L tan θ"
+"Nur bei kleinen Winkeln: y ≈ L sin θ"
+3. "Beispiel: λ = 500 nm, d = 0,20 mm, L = 2,0 m"
+"Erste helle Streifen: y ≈ ±5,0 mm"
+"Nächste dunkle Stellen: y ≈ ±2,5 mm"
+
+Alle Formeln fachlich exakt so. Kein b, kein Einzelspalt, kein Gitter, keine Intensitäts-Einhüllende. Keine Nebenmaximaformeln. d darf nie Spaltbreite darstellen. y=L tanθ hat GLEICHHEITSZEICHEN, kein Näherungszeichen. Einfall und Skizze müssen klar getrennt von abstrakter Bezugslinie sein. Jede Beschriftung genau einmal und direkt beim zutreffenden Objekt. Nichts dekorativ erfinden.
 ```
 
 ## Review-Notiz

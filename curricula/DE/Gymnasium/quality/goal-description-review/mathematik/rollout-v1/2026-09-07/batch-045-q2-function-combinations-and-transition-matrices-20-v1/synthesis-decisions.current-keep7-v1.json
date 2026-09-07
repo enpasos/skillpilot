@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-b045-current-keep7-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "codex-goal-book-ci-integration-nonblind-current-synthesis",
+  "synthesizedAt": "2026-09-07T15:23:26.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907",
+    "batchManifestDigest": "sha256:f328720041ed7f8dbe2a28a567ec166e97603a8a023c0d3cd3b7a4c942847483",
+    "configDigest": "sha256:e8f261023ba3700099e5daa7105e69fb8f01a7472c383c44a689ac01fb0b8eb9",
+    "bundleFingerprint": "sha256:7c957539588d3a857e064371fc1e782bb4aa568e7ad690dcb7446813e20c7c4f",
+    "bookDigest": "sha256:2b97bcf5a88de1f4c4d75a0a3c194462f14a1b580f18282145d3b4af626c25aa",
+    "reviewInputFingerprint": "sha256:2210e465b03df573847b102caf15d5deb2dbf9c1df00b0ffe21b7f7c0e5bb784",
+    "dualSummaryDigest": "sha256:c17788ae74adafd8dc01947f34fe4e216cb591226f3dcc55fe63cf1190ee51d8",
+    "canonicalLandscapeDigest": "sha256:31f389f47b24244140cbf7364de19d06994dd3555b59ff14094ea53b76bc325c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907-a",
+      "campaignDigest": "sha256:7364775c1028c7a775e4008529d53c09fe8e891a989e2cd9a8ca00fe855f994f",
+      "roundId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907-independent-a",
+      "reviewInputFingerprint": "sha256:2210e465b03df573847b102caf15d5deb2dbf9c1df00b0ffe21b7f7c0e5bb784",
+      "batchId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e71d3f995572079904756bef467876c1da2a4fb12da0015e852f1edcdf7fe3bb",
+      "runId": "math-b045-round-a-20260907T151021Z-ci-integration",
+      "runManifestDigest": "sha256:fc359aa4d3c0fcf31810629c245639811bcaa70516fd76d8a749d5b5a1e40a5f",
+      "resultsDigest": "sha256:f62d0f5b65a7e48ef64c513b419a3123be8cc9e95a8a43750f964ba4b65893e0"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907-b",
+      "campaignDigest": "sha256:0e751a26a41f7a5d9f5b951f7fad1e344fd5fc5238cd04672a1a343a396c1aac",
+      "roundId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907-independent-b",
+      "reviewInputFingerprint": "sha256:2210e465b03df573847b102caf15d5deb2dbf9c1df00b0ffe21b7f7c0e5bb784",
+      "batchId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:02f102942422c6b27d9f6a883a9d7d1fdbc859d0092b9df73e83cb0e4efc64f0",
+      "runId": "math-b045-first-pass-b-root-20260907",
+      "runManifestDigest": "sha256:96c1a1aaf073a2e8115645239999a7f1153f435773a3ef3d383471aac01d1415",
+      "resultsDigest": "sha256:09a49beed977fc07794a6234a91929ee409c967e1d02805ebd113914a4d91509"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-b045-current-keep7-v1-decision-001",
+      "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ca6db96cf9e3395d10d5fea430652715939a9659743de0265ed781649aad382d",
+      "pageFingerprint": "sha256:2ac3f63e4832884ec5522ddfff5a1340fa164fcd86d95d302bedff21bc2d3f5c",
+      "goalReviewContextFingerprint": "sha256:2a1ac140bd4f1eef649df9bfd99a03f1e1c3fb204478dccc22ff257f4f3115a8",
+      "finalText": {
+        "titleDe": "Parameter von Funktionen und Funktionsscharen im Kontext untersuchen",
+        "titleEn": "Investigate parameters of functions and function families in context",
+        "descriptionDe": "Die lernende Person kann Parameter von Funktionen und Funktionsscharen im Kontext einer Fragestellung interpretieren und ihren Einfluss auf charakteristische Eigenschaften untersuchen.",
+        "descriptionEn": "The learner can interpret parameters of functions and function families in the context of a question and investigate their influence on characteristic properties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b045-round-a-20260907T151021Z-ci-integration:91e2f564-3bc8-4924-af85-2a3fa84c1471",
+          "recordDigest": "sha256:09e1f3d4fcd54cdcb7caff5b7c622e39886a9c66f4296ebbfa7616f1a2324aa4"
+        },
+        "second": {
+          "recordId": "math-b045-first-pass-b-root-20260907.91e2f564-3bc8-4924-af85-2a3fa84c1471",
+          "recordDigest": "sha256:f292ed8539f61beb54dd235118c122eab6ff3d83e38d275764d697a7ad3059da"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen den Unterschied zwischen Parameterbestimmung und Untersuchung der Parameterwirkung. Positive Parameter, feste Nullstellen und variable Höhe des gezeigten Brückenmodells wurden tatsächlich geprüft. Das neue Profil wechselt vom Höhenparameter zu einer horizontalen Parameterposition und erhält den konkreten Kontext.",
+      "rationaleEn": "Both current rounds confirm the distinction between parameter estimation and analysis of parameter effects. Positive parameters, fixed roots and changing height in the pictured bridge model were actually checked. The new profile changes from a height parameter to a horizontal parameter position while preserving a concrete context."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b045-current-keep7-v1-decision-002",
+      "goalId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cb1d29214b658b899f714a97b36e0a30b4a3b3550128e2c10580655334454a9b",
+      "pageFingerprint": "sha256:cd645678dfa92a9e10a7cb7863aaa4fcd4b577c8cbc808dad1638673b96b5629",
+      "goalReviewContextFingerprint": "sha256:48186f7ef1848239f29cd5a57abf89ae492161baf6b6a5d38efc44a34724fef5",
+      "finalText": {
+        "titleDe": "Produktregel beim Ableiten anwenden (LK)",
+        "titleEn": "Apply the product rule in differentiation (advanced course)",
+        "descriptionDe": "Die lernende Person kann Produkte differenzierbarer Funktionen mit der Produktregel ableiten und die Ableitung durch einen geeigneten Kontrollweg überprüfen.",
+        "descriptionEn": "The learner can differentiate products of differentiable functions using the product rule and verify the derivative by a suitable check."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b045-round-a-20260907T151021Z-ci-integration:cf48c918-f6c1-5429-8da6-14df43f2f550",
+          "recordDigest": "sha256:a2b3a8123eb4646f55c6d691ea1dca5fb4aab7048cdbdaf3cb4007d0c0224853"
+        },
+        "second": {
+          "recordId": "math-b045-first-pass-b-root-20260907.cf48c918-f6c1-5429-8da6-14df43f2f550",
+          "recordDigest": "sha256:035f9643d47ac54e86a1513a577ffa480c2de37ee2e9fb486a0dd9e4e421a7ab"
+        }
+      },
+      "rationaleDe": "Die übereinstimmende Kompetenz ist die begründete Produktableitung einschließlich Kontrolle. Kein Bild ist gebunden; beide Runden erfinden dafür keine Freigabe. Das V2-Profil erklärt beide Änderungsbeiträge an einem ausmultiplizierbaren Produkt und prüft den Transfer mit einem Exponentialfaktor.",
+      "rationaleEn": "The shared competence is justified product differentiation with checking. No image is bound and neither round invents approval. The V2 profile explains both rate contributions through an expandable product and tests transfer using an exponential factor."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b045-current-keep7-v1-decision-003",
+      "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:677dd42a79da7fa906c58834b32c58cc20229b1d19be94c1e9dba9dec2edbe15",
+      "pageFingerprint": "sha256:226d4e9037ecbc5d8f9b19184fa57141aa3d7b3ac4cefd7e432f92e817dfa4fd",
+      "goalReviewContextFingerprint": "sha256:8b82715fe36b5e4a7a2edf3e3295a9f7d26e98094372052ed008f0a5f19606a3",
+      "finalText": {
+        "titleDe": "Kettenregel beim Ableiten anwenden (LK)",
+        "titleEn": "Apply the chain rule in differentiation (advanced course)",
+        "descriptionDe": "Die lernende Person kann Verkettungen differenzierbarer Funktionen mit der Kettenregel ableiten und äußere sowie innere Funktion im Ableitungsweg nachvollziehbar kennzeichnen.",
+        "descriptionEn": "The learner can differentiate compositions of differentiable functions using the chain rule and clearly identify the outer and inner functions in the differentiation process."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b045-round-a-20260907T151021Z-ci-integration:ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+          "recordDigest": "sha256:91b2000488b3ba61e464d7272ced2728d25e25221b34077d41e20f5dde22fc50"
+        },
+        "second": {
+          "recordId": "math-b045-first-pass-b-root-20260907.ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+          "recordDigest": "sha256:fbdd4bb81a86961ca63ff881fd020636e02d10e10a293578db6b6109e9fd429c"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten die präzise Kettenregel-Kompetenz. Das unabhängige Profil macht die Auswertung der äußeren Ableitung und den inneren Faktor sichtbar; Reihenfolgentausch und nichtlineare innere Funktion liefern echte Variation. Eine fehlende Grafik wird nicht als gesehene ausgegeben.",
+      "rationaleEn": "Both rounds retain the precise chain-rule competence. The independent profile makes the outer derivative evaluation and inner factor explicit; reversed composition order and a nonlinear inner function provide genuine variation. An absent image is not presented as inspected."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b045-current-keep7-v1-decision-004",
+      "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6697f34bcd2130309026154d0582bd0be6cd1dc6401e3074d179d7508a372b4d",
+      "pageFingerprint": "sha256:d38bbbad11c6f5277461b2d36325643ad2fc54fc86d55f685ec6498cd66a99e3",
+      "goalReviewContextFingerprint": "sha256:9c694ec3889267dc2bf5ec01777f602051e722c770f31ff9bbdc237572ac466c",
+      "finalText": {
+        "titleDe": "Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben",
+        "titleEn": "Describe transition processes using state and transition graphs",
+        "descriptionDe": "Die lernende Person kann Übergangsprozesse mithilfe von Zustands- beziehungsweise Übergangsgraphen beschreiben, die Knoten und Übergänge im Kontext deuten und passende Graphdarstellungen erstellen.",
+        "descriptionEn": "The learner can describe transition processes using state or transition graphs, interpret nodes and transitions in context, and create suitable graph representations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b045-round-a-20260907T151021Z-ci-integration:5e893892-393e-5df0-b705-fb3b3458122f",
+          "recordDigest": "sha256:11432bb0ddc111ce76f61ff334aae1eddd16671ff8b8c3a238c87b25b4726706"
+        },
+        "second": {
+          "recordId": "math-b045-first-pass-b-root-20260907.5e893892-393e-5df0-b705-fb3b3458122f",
+          "recordDigest": "sha256:9807a04fc523cc7cbe7524091a68248986709df0dd31dd786ad17b8c49c6bbb8"
+        }
+      },
+      "rationaleDe": "Die tatsächlichen Graph- und Tabellenkontrollen beider Runden stimmen mit den gerichteten Übergängen überein. Das Profil hält die Darstellungskompetenz von späterer Matrixrechnung getrennt und prüft Schrittbedeutung, Schleifen sowie eine neue Drei-Zustands-/Zeilenkonvention.",
+      "rationaleEn": "Both actual graph and table checks agree with the directed transitions. The profile keeps representation separate from later matrix calculation and tests step meaning, loops and a new three-state/row-oriented convention."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b045-current-keep7-v1-decision-005",
+      "goalId": "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2290fa53811026a6ae0db0663f4fc6dda1a7c4247ae3528b743f74b03dc08337",
+      "pageFingerprint": "sha256:2ca842971afe7570fa3b74d137580fe2151b0aae362dc0e12a1682684035c20e",
+      "goalReviewContextFingerprint": "sha256:3ffa145ae7fa7cc3d814ae532cd9ea130a10533e42105633d03e14488a67bc38",
+      "finalText": {
+        "titleDe": "Matrixpotenzen in Übergangsprozessen deuten",
+        "titleEn": "Interpret matrix powers in transition processes",
+        "descriptionDe": "Die lernende Person kann Matrixpotenzen berechnen, Matrixeinträge bei Potenzen wie $M^2$ bestimmen und interpretieren sowie erläutern, welche Aussagen daraus über mehrschrittige Übergangsprozesse folgen.",
+        "descriptionEn": "The learner can calculate powers of matrices, determine and interpret entries of powers such as $M^2$, and explain what they imply for multi-step transition processes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b045-round-a-20260907T151021Z-ci-integration:33c6e64c-5955-5b07-85d4-74a97b19dd56",
+          "recordDigest": "sha256:91e5fcf994daee3484b987273dac2db7d0041130bab12ec2293fcb31942af152"
+        },
+        "second": {
+          "recordId": "math-b045-first-pass-b-root-20260907.33c6e64c-5955-5b07-85d4-74a97b19dd56",
+          "recordDigest": "sha256:67d22221dbfdb7481531b8c7f5fba39c502762eb2113be0653c12b9ee90546ae"
+        }
+      },
+      "rationaleDe": "Die zulässige von-Zeilen/nach-Spalten-Konvention und alle vier Zweischrittpfadsummen wurden unabhängig bestätigt. Ein Profil mit expliziter Spaltenkonvention und anschließendem Drei-Zustands-Zyklus prüft die inhaltliche Mehrschrittdeutung, insbesondere genau-n statt bis-n.",
+      "rationaleEn": "The valid origin-row/destination-column convention and all four two-step path sums were independently confirmed. A profile with explicit column convention followed by a three-state cycle tests multistep meaning, particularly exactly-n rather than up-to-n."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b045-current-keep7-v1-decision-006",
+      "goalId": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7285bb91054634c630cb0069e59d967a196fd7a165f9ecb584af0bc6e0c3fee7",
+      "pageFingerprint": "sha256:a5b7e018705d49eb1a23780be40e465c287e6eecc9b42fde2ee3063cc4a19946",
+      "goalReviewContextFingerprint": "sha256:f8fa08f05013c12774aa3ef8a494695af9fdd47d2cc25b1e3a82e3e1482c7876",
+      "finalText": {
+        "titleDe": "Stabile Zustände mithilfe von Fixvektoren bestimmen",
+        "titleEn": "Determine stable states using fixed vectors",
+        "descriptionDe": "Die lernende Person kann für eine Übergangsmatrix Fixvektoren bestimmen, sie als stabile Verteilungen interpretieren und im Kontext des zugrunde liegenden Prozesses deuten.",
+        "descriptionEn": "The learner can determine fixed vectors for a transition matrix, interpret them as stable distributions, and interpret them in the context of the underlying process."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b045-round-a-20260907T151021Z-ci-integration:8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+          "recordDigest": "sha256:7ef475f8e95bccc5b851775384fad159a20f5ef772216bb091783928ff70eddf"
+        },
+        "second": {
+          "recordId": "math-b045-first-pass-b-root-20260907.8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+          "recordDigest": "sha256:11501870a4b36135c360a1c594b3f18063aaf43217bc06d94121fc57d0f71ce7"
+        }
+      },
+      "rationaleDe": "Beide Runden erkennen den legitimen linken Fixvektor in den angegebenen Gleichungen und bestätigen Normierung sowie Probe. Keine falsche Pflicht zur Spaltenkonvention. Das Profil legt jede Konvention explizit fest und trennt stationäre Verteilung mit einem periodischen Gegenbeispiel von universeller Konvergenz.",
+      "rationaleEn": "Both rounds recognize the legitimate left fixed vector in the given equations and confirm normalization and verification. No false requirement for column convention is imposed. Each profile case states its convention and uses a periodic counterexample to distinguish stationarity from universal convergence."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-b045-current-keep7-v1-decision-007",
+      "goalId": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:efb7ac3ead8cf8dbf8ab4d66a8895dedc9e0084ca81f1e7d0a4a838469e422ff",
+      "pageFingerprint": "sha256:8c496ec0cdc320f1622992426656d8fbc871763502400748ec3aff12d87b1d40",
+      "goalReviewContextFingerprint": "sha256:7d6d33504e33337effd8e117f870f44cfd2360449d79c9851e85e6ca89312ffa",
+      "finalText": {
+        "titleDe": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+        "titleEn": "Long-term development of transition processes (advanced course)",
+        "descriptionDe": "Die lernende Person kann die langfristige Entwicklung von Übergangsprozessen mithilfe von Matrixpotenzen, Grenzprozessen und Grenzmatrizen untersuchen und die Ergebnisse im Kontext interpretieren.",
+        "descriptionEn": "The learner can analyze the long-term development of transition processes using matrix powers, limiting processes, and limiting matrices, and interpret the results in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b045-round-a-20260907T151021Z-ci-integration:4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "recordDigest": "sha256:8d0f0c2a3a3d538ee373901e26766c52a8df2b0d1ddbfee6886e3d6fbe3b1ffe"
+        },
+        "second": {
+          "recordId": "math-b045-first-pass-b-root-20260907.4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "recordDigest": "sha256:a828636f337e3d2ba8579578ea66ac9e59b353dde4878cd4cb0a4fec606f9963"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die gerundeten Potenzen und die Grenzmatrix des konkreten positiven Beispiels. Das Profil verlangt ein begründetes Rekursionsargument und vergleicht Absorption mit Periodizität; dadurch wird die korrekte Einzelfallaussage nicht zu einer falschen allgemeinen Konvergenzgarantie.",
+      "rationaleEn": "Both rounds confirm the rounded powers and limiting matrix of the particular positive example. The profile demands a justified recurrence argument and compares absorption with periodicity, preventing a correct example from becoming a false universal convergence guarantee."
+    }
+  ],
+  "manifestFingerprint": "sha256:1f5fb1b094e5cc43617d46a63e046271be20393d5dc384601d65413e3acc68fa"
+}

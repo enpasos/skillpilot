@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:95ed17eff7fefa6c52583c7cbc030feac57cd110f7de8d124a4e9cd3e961fec8",
+  "reviewInputFingerprint": "sha256:2254cab705efe8e488ab9ff44f5795481eaf9e648331763f9db6114c6d202627",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-a",
+      "roundId": "mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-independent-a",
+      "runIds": [
+        "math-b044-round-a-20260907T143505Z-build-generator"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-b",
+      "roundId": "mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-independent-b",
+      "runIds": [
+        "math-b044-first-pass-b-root-20260907"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "firstRecordId": "math-b044-a-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+      "firstRecordId": "math-b044-a-075f1ef2-6860-4b20-9df2-878157eb395e",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.075f1ef2-6860-4b20-9df2-878157eb395e",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "firstRecordId": "math-b044-a-aae119f2-925f-5fc1-b795-b52c9e980863",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.aae119f2-925f-5fc1-b795-b52c9e980863",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7680701b-35e3-519e-beaa-09753e733756",
+      "firstRecordId": "math-b044-a-7680701b-35e3-519e-beaa-09753e733756",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.7680701b-35e3-519e-beaa-09753e733756",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "firstRecordId": "math-b044-a-d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+      "firstRecordId": "math-b044-a-d379e28b-d9d5-5cab-b383-318e0499c0c7",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.d379e28b-d9d5-5cab-b383-318e0499c0c7",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "firstRecordId": "math-b044-a-4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "firstRecordId": "math-b044-a-5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+      "firstRecordId": "math-b044-a-b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "firstRecordId": "math-b044-a-d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ef1524f1-0b2f-59f7-a001-5ab3e3dececb",
+      "firstRecordId": "math-b044-a-ef1524f1-0b2f-59f7-a001-5ab3e3dececb",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.ef1524f1-0b2f-59f7-a001-5ab3e3dececb",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "firstRecordId": "math-b044-a-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "firstRecordId": "math-b044-a-f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "firstRecordId": "math-b044-a-72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "firstRecordId": "math-b044-a-6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "firstRecordId": "math-b044-a-54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "firstRecordId": "math-b044-a-fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "firstRecordId": "math-b044-a-68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+      "firstRecordId": "math-b044-a-69eda7f9-1898-5220-932d-e7bec839b7af",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.69eda7f9-1898-5220-932d-e7bec839b7af",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "firstRecordId": "math-b044-a-b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "secondRecordId": "math-b044-first-pass-b-root-20260907.b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "firstRunId": "math-b044-round-a-20260907T143505Z-build-generator",
+      "secondRunId": "math-b044-first-pass-b-root-20260907",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

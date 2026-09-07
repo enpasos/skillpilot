@@ -1,0 +1,1496 @@
+{
+  "schemaVersion": 1,
+  "status": "proposal_only_not_applied",
+  "variant": "four_goals_eight_overrides_chain_successor_unresolved",
+  "sourceBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:d2b1b698622a1f9b1cd3de82f05e5322aa873fd269c19d1693598b24b14c5a91"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:ac84e0eeec7784a69e0c46af3bad48cfdec06ca22a20c7fe88dd2990c6b938e3"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+      "sha256": "sha256:47ac696155d25c6c482d6d1a9d7ad932d1fe6fc83294bc55661a70eb510b7988"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "sha256": "sha256:46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+      "sha256": "sha256:9552cccda78f64503c338ee4f2c6adba2909f9cbdd8a8f3d111b97627ea7c27b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sha256": "sha256:570ebe507ca7c8eb7a4b18bd2658b50775995823e3d8aaa0807cf69bb6c54b4b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/Physik_Sekundarstufe_II_MSS.pdf",
+      "sha256": "sha256:3bf220e5e409fc4ae057b3327dfa3d445a8f27ad6961925aae5eb16f2d1c12cc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json",
+      "sha256": "sha256:435baf95e7c075db0afa13a980bfc1506cdb647d93493a05902bb5515a94fc3a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sha256": "sha256:16fa10250971894be9097b0f5540a475f2c163e75bcff699ebb4412fbabd81b5"
+    }
+  ],
+  "semantics": "Direct prerequisiteOnly goalEntry overrides the inherited target role of the existing canonicalSubtree. Canonical IDs, source mappings, LK views, mastery and runtime code remain unchanged.",
+  "atlasPath": "goalBookModel.ts compileGoalBookViewSource -> normalizeAtlasApplicability: the authored SekII views supply the course-profile scopes; CrossStage is used for remaining SekI membership and learner navigation. Both variants must be corrected, not only the CrossStage view.",
+  "views": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:03f6225665a6ff2532d4eb54167ac507a695291a49d53626da0854e6da6a2c03",
+      "proposedAfterSha256": "sha256:03f6225665a6ff2532d4eb54167ac507a695291a49d53626da0854e6da6a2c03",
+      "beforeTargetSetSha256": "sha256:e6c236536d5779f06d93c67448e0c6b7995c3a42f6e82d36edcbffa31b3d8bf3",
+      "proposedAfterTargetSetSha256": "sha256:e6c236536d5779f06d93c67448e0c6b7995c3a42f6e82d36edcbffa31b3d8bf3",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:5c0db45a9d9a5429facb848c9d9355faa8ba8a81001c6d15d4459612613a9695",
+      "proposedAfterSha256": "sha256:5c0db45a9d9a5429facb848c9d9355faa8ba8a81001c6d15d4459612613a9695",
+      "beforeTargetSetSha256": "sha256:f99a01b4fdabcf45f701d9289a31f14830f2c3c8320f5d2643485fe9fdba02e5",
+      "proposedAfterTargetSetSha256": "sha256:f99a01b4fdabcf45f701d9289a31f14830f2c3c8320f5d2643485fe9fdba02e5",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:54986d81bd0a22c722a10e17c30a26ddde9333a388199fecd9c832db887ac76c",
+      "proposedAfterSha256": "sha256:54986d81bd0a22c722a10e17c30a26ddde9333a388199fecd9c832db887ac76c",
+      "beforeTargetSetSha256": "sha256:9d4948a55c153c75cd1008527e963b686614a343b83889b689d518f01f21961a",
+      "proposedAfterTargetSetSha256": "sha256:9d4948a55c153c75cd1008527e963b686614a343b83889b689d518f01f21961a",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:d21c0b9008726ad8bd7a365f61f09d97703bcc07b029be854ec6b6a1b4de38e4",
+      "proposedAfterSha256": "sha256:d21c0b9008726ad8bd7a365f61f09d97703bcc07b029be854ec6b6a1b4de38e4",
+      "beforeTargetSetSha256": "sha256:5e13cbee54155cace13b87fd94b9123da1b2b30443c5948e055a1676087319c5",
+      "proposedAfterTargetSetSha256": "sha256:5e13cbee54155cace13b87fd94b9123da1b2b30443c5948e055a1676087319c5",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:618266cfffd269ab1fb306b8f716dacd542800262013ca64d3f3bcd26d0e2383",
+      "proposedAfterSha256": "sha256:618266cfffd269ab1fb306b8f716dacd542800262013ca64d3f3bcd26d0e2383",
+      "beforeTargetSetSha256": "sha256:e6c236536d5779f06d93c67448e0c6b7995c3a42f6e82d36edcbffa31b3d8bf3",
+      "proposedAfterTargetSetSha256": "sha256:e6c236536d5779f06d93c67448e0c6b7995c3a42f6e82d36edcbffa31b3d8bf3",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:3f69f784b1c7b7f5e063438af2b86f88eba099b282016995fd2efcb64d0cc4df",
+      "proposedAfterSha256": "sha256:3f69f784b1c7b7f5e063438af2b86f88eba099b282016995fd2efcb64d0cc4df",
+      "beforeTargetSetSha256": "sha256:f99a01b4fdabcf45f701d9289a31f14830f2c3c8320f5d2643485fe9fdba02e5",
+      "proposedAfterTargetSetSha256": "sha256:f99a01b4fdabcf45f701d9289a31f14830f2c3c8320f5d2643485fe9fdba02e5",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:69b0144fcecdfafdf5e34b59e5665fbe002db42e73a008cc3735d69a14d2e6a5",
+      "proposedAfterSha256": "sha256:69b0144fcecdfafdf5e34b59e5665fbe002db42e73a008cc3735d69a14d2e6a5",
+      "beforeTargetSetSha256": "sha256:9d4948a55c153c75cd1008527e963b686614a343b83889b689d518f01f21961a",
+      "proposedAfterTargetSetSha256": "sha256:9d4948a55c153c75cd1008527e963b686614a343b83889b689d518f01f21961a",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:bbfe838e1eb3cff58cf78fd450da01b18fbab78d94e34ccb8f1733469a63fddc",
+      "proposedAfterSha256": "sha256:bbfe838e1eb3cff58cf78fd450da01b18fbab78d94e34ccb8f1733469a63fddc",
+      "beforeTargetSetSha256": "sha256:5e13cbee54155cace13b87fd94b9123da1b2b30443c5948e055a1676087319c5",
+      "proposedAfterTargetSetSha256": "sha256:5e13cbee54155cace13b87fd94b9123da1b2b30443c5948e055a1676087319c5",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:8cec8f2710ea10a666353ccfbb816ef95e2163846861802718e3a3c4ba58bdde",
+      "proposedAfterSha256": "sha256:8cec8f2710ea10a666353ccfbb816ef95e2163846861802718e3a3c4ba58bdde",
+      "beforeTargetSetSha256": "sha256:8a3c314ab581266cda71fb56db80677312ff5907370b10fb96318bf839616dca",
+      "proposedAfterTargetSetSha256": "sha256:8a3c314ab581266cda71fb56db80677312ff5907370b10fb96318bf839616dca",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:b042a1a32d5e73c5064e0e22040673407249b21974fe4abcd4f7e3ef8c7ffb63",
+      "proposedAfterSha256": "sha256:b042a1a32d5e73c5064e0e22040673407249b21974fe4abcd4f7e3ef8c7ffb63",
+      "beforeTargetSetSha256": "sha256:3296775b9a92eb2b54cfdef581ae001b5522a9ec4d21ef7d9a544b98f99945b5",
+      "proposedAfterTargetSetSha256": "sha256:3296775b9a92eb2b54cfdef581ae001b5522a9ec4d21ef7d9a544b98f99945b5",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:8c1780a6ef9076676f66fb8866ad18fdbd1d042f13b10fc368ed179433d48842",
+      "proposedAfterSha256": "sha256:8c1780a6ef9076676f66fb8866ad18fdbd1d042f13b10fc368ed179433d48842",
+      "beforeTargetSetSha256": "sha256:39706e9ee8b91d3fad76b0d874107e27ac8d10f3d4be1a083ec7e7cc5e563922",
+      "proposedAfterTargetSetSha256": "sha256:39706e9ee8b91d3fad76b0d874107e27ac8d10f3d4be1a083ec7e7cc5e563922",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:a262e07f1f43a45c68a97bd3fa7570c619d7a623f6f8276145afaa56bcd39758",
+      "proposedAfterSha256": "sha256:a262e07f1f43a45c68a97bd3fa7570c619d7a623f6f8276145afaa56bcd39758",
+      "beforeTargetSetSha256": "sha256:5deb9fa80d58e486d94bb96a8147607a887abab1b5d8fc2e5261bf82c6fd73cc",
+      "proposedAfterTargetSetSha256": "sha256:5deb9fa80d58e486d94bb96a8147607a887abab1b5d8fc2e5261bf82c6fd73cc",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:6b9d7a1b1d547be8794a9e53648b820169c7ed8b19236585b33ddae762e67d95",
+      "proposedAfterSha256": "sha256:6b9d7a1b1d547be8794a9e53648b820169c7ed8b19236585b33ddae762e67d95",
+      "beforeTargetSetSha256": "sha256:6788021eae9fa1964335281c31f476a3d82eb47fc8bbddba6c21b16733dfca52",
+      "proposedAfterTargetSetSha256": "sha256:6788021eae9fa1964335281c31f476a3d82eb47fc8bbddba6c21b16733dfca52",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:bca82a5f40795100fb07d07113913b6e5623122999b311e6877a31dfeabd7e66",
+      "proposedAfterSha256": "sha256:bca82a5f40795100fb07d07113913b6e5623122999b311e6877a31dfeabd7e66",
+      "beforeTargetSetSha256": "sha256:60708a369d28fa0bdf9b66e60647a97560cff16acadb699b3d0e91b502e88d62",
+      "proposedAfterTargetSetSha256": "sha256:60708a369d28fa0bdf9b66e60647a97560cff16acadb699b3d0e91b502e88d62",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:f3a47a32430416250cfaa74fdd272dafb20aa71298b631e0f25b29bf10310e72",
+      "proposedAfterSha256": "sha256:f3a47a32430416250cfaa74fdd272dafb20aa71298b631e0f25b29bf10310e72",
+      "beforeTargetSetSha256": "sha256:fac167a432646013ea2f424e2d1120024ec0f0c6a1b28d1fd5707f3d4536dcd2",
+      "proposedAfterTargetSetSha256": "sha256:fac167a432646013ea2f424e2d1120024ec0f0c6a1b28d1fd5707f3d4536dcd2",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:562096587894c31de83bee01d943972aabe9d1f18ec6688ae34706da935d6f19",
+      "proposedAfterSha256": "sha256:562096587894c31de83bee01d943972aabe9d1f18ec6688ae34706da935d6f19",
+      "beforeTargetSetSha256": "sha256:80ce136a64504c8100583ce5569d536895eece386a4ff13db67656d8a3aca360",
+      "proposedAfterTargetSetSha256": "sha256:80ce136a64504c8100583ce5569d536895eece386a4ff13db67656d8a3aca360",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:fa8d0e307967dc8bd25705a5eda6f04382baeaab31318286ea12d9d209723888",
+      "proposedAfterSha256": "sha256:fa8d0e307967dc8bd25705a5eda6f04382baeaab31318286ea12d9d209723888",
+      "beforeTargetSetSha256": "sha256:1ab548d2de7c163b0c5f1a48531d10075da51f738c23be8f7496915c6a52d54c",
+      "proposedAfterTargetSetSha256": "sha256:1ab548d2de7c163b0c5f1a48531d10075da51f738c23be8f7496915c6a52d54c",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:461084a0b2c731fc9d70d8d1c79e22d0c597254dff5f996b3b24ee25cee37326",
+      "proposedAfterSha256": "sha256:461084a0b2c731fc9d70d8d1c79e22d0c597254dff5f996b3b24ee25cee37326",
+      "beforeTargetSetSha256": "sha256:8212c956b80e365f953e5a1e0a5ff6dff9bcee0828a3874d475284c67cb91ec1",
+      "proposedAfterTargetSetSha256": "sha256:8212c956b80e365f953e5a1e0a5ff6dff9bcee0828a3874d475284c67cb91ec1",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:ee4c3d6f0eeb28601f2f9e22f5e07f88deb24415b7a04ff9093c8b22d8fdebd2",
+      "proposedAfterSha256": "sha256:ee4c3d6f0eeb28601f2f9e22f5e07f88deb24415b7a04ff9093c8b22d8fdebd2",
+      "beforeTargetSetSha256": "sha256:d3624e0560b9e619d816561394cbb2bc75e8e72dcc1f18dbb1a90967511109bf",
+      "proposedAfterTargetSetSha256": "sha256:d3624e0560b9e619d816561394cbb2bc75e8e72dcc1f18dbb1a90967511109bf",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:135ab812d344631d28c2104663341da70e7874ddc54d721852624cc666247194",
+      "proposedAfterSha256": "sha256:135ab812d344631d28c2104663341da70e7874ddc54d721852624cc666247194",
+      "beforeTargetSetSha256": "sha256:cd495715ef700843da06e962620473f7c041349381ff9b00bb2571dedad6ce33",
+      "proposedAfterTargetSetSha256": "sha256:cd495715ef700843da06e962620473f7c041349381ff9b00bb2571dedad6ce33",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:1d6365b196cdf9a04c604a0bcf125c1883814f6c3fd842540cc6f527c448e699",
+      "proposedAfterSha256": "sha256:48906ea6a925cc1a03d2ff83c9d6a9d4ed3a3ccfcabcd5c03cd4c3f16b86ad5f",
+      "beforeTargetSetSha256": "sha256:e4b625f086a930a5eaafda9e89ca8cf0728a4373f0caab09da1c0c976da4f337",
+      "proposedAfterTargetSetSha256": "sha256:3dececcd5f10dc3ef515550f0c51db1db3bdf3d824a69e39b82676a068a10a23",
+      "removedTargetGoalIds": [
+        "3b50255a-6b01-578b-8f5c-4383536a3221",
+        "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+        "853dbe54-85b0-59ab-8f3a-000c2b7746ec"
+      ],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": false
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:928ea7c03fef82b6783aac4a9e65de2709abbb7a88e82ed433add658ec460a31",
+      "proposedAfterSha256": "sha256:928ea7c03fef82b6783aac4a9e65de2709abbb7a88e82ed433add658ec460a31",
+      "beforeTargetSetSha256": "sha256:39c7334a71d9b3a7e48efb10ab6df73d269dc0939a199476520cf1447cb09968",
+      "proposedAfterTargetSetSha256": "sha256:39c7334a71d9b3a7e48efb10ab6df73d269dc0939a199476520cf1447cb09968",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:1d8b2bb89dbde4b15f242b0fafe96f3d4068e5dae0ed8bb9745d4e2c73bce9cf",
+      "proposedAfterSha256": "sha256:c686b9fbd8a4ebcce59c5c905196975729571d85b6bac77cd4012f214c1dedd0",
+      "beforeTargetSetSha256": "sha256:8324b91753f7cc8d9cdca50d3444ff641d2f348a45731b947f41e576e3e5ac08",
+      "proposedAfterTargetSetSha256": "sha256:eb09edcc45bfd9b33f2ce4e0658743b4125292a591751b30f94b4c30dcda7042",
+      "removedTargetGoalIds": [
+        "3b50255a-6b01-578b-8f5c-4383536a3221",
+        "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+        "853dbe54-85b0-59ab-8f3a-000c2b7746ec"
+      ],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": false
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:dcf29512aa70107f21aa65fee7204b6df47af2a88ddc91d5c7d0e8120e3e4b40",
+      "proposedAfterSha256": "sha256:dcf29512aa70107f21aa65fee7204b6df47af2a88ddc91d5c7d0e8120e3e4b40",
+      "beforeTargetSetSha256": "sha256:4825315744844817deed8609a85abbfe328db1f5fa0df9f1d9fc1f7cd53f1274",
+      "proposedAfterTargetSetSha256": "sha256:4825315744844817deed8609a85abbfe328db1f5fa0df9f1d9fc1f7cd53f1274",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:df04495a230db882250b80fad0ecfcba814b4b797106be29db3267f1e2696d74",
+      "proposedAfterSha256": "sha256:df04495a230db882250b80fad0ecfcba814b4b797106be29db3267f1e2696d74",
+      "beforeTargetSetSha256": "sha256:1ab548d2de7c163b0c5f1a48531d10075da51f738c23be8f7496915c6a52d54c",
+      "proposedAfterTargetSetSha256": "sha256:1ab548d2de7c163b0c5f1a48531d10075da51f738c23be8f7496915c6a52d54c",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:2b7922144c64e9bd7c80ee2278616fde4ca34c0904707569f40fbcebb5750022",
+      "proposedAfterSha256": "sha256:2b7922144c64e9bd7c80ee2278616fde4ca34c0904707569f40fbcebb5750022",
+      "beforeTargetSetSha256": "sha256:8212c956b80e365f953e5a1e0a5ff6dff9bcee0828a3874d475284c67cb91ec1",
+      "proposedAfterTargetSetSha256": "sha256:8212c956b80e365f953e5a1e0a5ff6dff9bcee0828a3874d475284c67cb91ec1",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:1ace622de44940433c293f75fdf58288b02b3072f3d08d6f5430f8dab06f90e3",
+      "proposedAfterSha256": "sha256:1ace622de44940433c293f75fdf58288b02b3072f3d08d6f5430f8dab06f90e3",
+      "beforeTargetSetSha256": "sha256:d3624e0560b9e619d816561394cbb2bc75e8e72dcc1f18dbb1a90967511109bf",
+      "proposedAfterTargetSetSha256": "sha256:d3624e0560b9e619d816561394cbb2bc75e8e72dcc1f18dbb1a90967511109bf",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:077661bbe3d8b60335ddce2379c1ecd18dc33d96f05c368577211f82524720ed",
+      "proposedAfterSha256": "sha256:077661bbe3d8b60335ddce2379c1ecd18dc33d96f05c368577211f82524720ed",
+      "beforeTargetSetSha256": "sha256:cd495715ef700843da06e962620473f7c041349381ff9b00bb2571dedad6ce33",
+      "proposedAfterTargetSetSha256": "sha256:cd495715ef700843da06e962620473f7c041349381ff9b00bb2571dedad6ce33",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:3e86b95fa4b64fbfeec92e7b56ca8907607877090cf5b09c3f2cf5323887bdf9",
+      "proposedAfterSha256": "sha256:3e86b95fa4b64fbfeec92e7b56ca8907607877090cf5b09c3f2cf5323887bdf9",
+      "beforeTargetSetSha256": "sha256:5215f404350c602a641cff162c27ad9f2bb1ea4bbc5d34cf7193e053044880b2",
+      "proposedAfterTargetSetSha256": "sha256:5215f404350c602a641cff162c27ad9f2bb1ea4bbc5d34cf7193e053044880b2",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:c75eb1d8de25e18063391b9d60e8e9cbf159b8597e853d5528c8748e322ebaac",
+      "proposedAfterSha256": "sha256:c75eb1d8de25e18063391b9d60e8e9cbf159b8597e853d5528c8748e322ebaac",
+      "beforeTargetSetSha256": "sha256:33f336e6abf7eebba8fb1dceaac79d749e1fa6dc550f47686fad1679d0694470",
+      "proposedAfterTargetSetSha256": "sha256:33f336e6abf7eebba8fb1dceaac79d749e1fa6dc550f47686fad1679d0694470",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:b38cfb6c146e81f2cd75a8fef7c9d69bcf1ef266e9739755c57e2c14460a9c5d",
+      "proposedAfterSha256": "sha256:b38cfb6c146e81f2cd75a8fef7c9d69bcf1ef266e9739755c57e2c14460a9c5d",
+      "beforeTargetSetSha256": "sha256:930c29b5c0ae52862abb35e5c0071e27d0071d3ad896a66006a3404365d9dd21",
+      "proposedAfterTargetSetSha256": "sha256:930c29b5c0ae52862abb35e5c0071e27d0071d3ad896a66006a3404365d9dd21",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:2af0f1c922d175cd971276f9f1d862770a1d19704bb5e201dcd05e8abd039699",
+      "proposedAfterSha256": "sha256:2af0f1c922d175cd971276f9f1d862770a1d19704bb5e201dcd05e8abd039699",
+      "beforeTargetSetSha256": "sha256:069feea9b09e7ed4dca76041567b4c4d67e8b7642b04831eec3e482618816806",
+      "proposedAfterTargetSetSha256": "sha256:069feea9b09e7ed4dca76041567b4c4d67e8b7642b04831eec3e482618816806",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:7619ce015d8ac3ccb3d9541573c667c2c40a86c0522e7f92ab44eab8030f4d10",
+      "proposedAfterSha256": "sha256:7619ce015d8ac3ccb3d9541573c667c2c40a86c0522e7f92ab44eab8030f4d10",
+      "beforeTargetSetSha256": "sha256:782453549c15748bf617128bfa480b58c0d39e97584070c7757addbb342fbd1a",
+      "proposedAfterTargetSetSha256": "sha256:782453549c15748bf617128bfa480b58c0d39e97584070c7757addbb342fbd1a",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:8b166d513fbfda81dce1d4830847ec03597de4642444ba21d1331b93bd4b9e65",
+      "proposedAfterSha256": "sha256:8b166d513fbfda81dce1d4830847ec03597de4642444ba21d1331b93bd4b9e65",
+      "beforeTargetSetSha256": "sha256:1a3dca799355de395ee7f0d7e10ac9bd2e1abad9740a36279293bc3e4184e5b6",
+      "proposedAfterTargetSetSha256": "sha256:1a3dca799355de395ee7f0d7e10ac9bd2e1abad9740a36279293bc3e4184e5b6",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:731a716e0ff7f9012bd269f0bbb6769e9540656ef6a74219b8e97f18dbcf646b",
+      "proposedAfterSha256": "sha256:731a716e0ff7f9012bd269f0bbb6769e9540656ef6a74219b8e97f18dbcf646b",
+      "beforeTargetSetSha256": "sha256:853d36b72d9e834812c4b1c39c052d650da966a065c5809eb7925b17d45da3f8",
+      "proposedAfterTargetSetSha256": "sha256:853d36b72d9e834812c4b1c39c052d650da966a065c5809eb7925b17d45da3f8",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:e6fc51cc0ed3693b59488b7ee5a2e4ae1f45c6f88e1f158a1fbaffbd7691dc30",
+      "proposedAfterSha256": "sha256:e6fc51cc0ed3693b59488b7ee5a2e4ae1f45c6f88e1f158a1fbaffbd7691dc30",
+      "beforeTargetSetSha256": "sha256:4a0920a5d2a64ec72e6df5b5ca60ce55ec97e69fb21db391d2503b153860cb89",
+      "proposedAfterTargetSetSha256": "sha256:4a0920a5d2a64ec72e6df5b5ca60ce55ec97e69fb21db391d2503b153860cb89",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:bed6c523830895e960e60e5a6cdfc259184e873a56e6054597fa706fea1a5223",
+      "proposedAfterSha256": "sha256:bed6c523830895e960e60e5a6cdfc259184e873a56e6054597fa706fea1a5223",
+      "beforeTargetSetSha256": "sha256:ef36bf0cd0ef4fe7e9fc54bc283e9f912547f0781c1935435114c65f23a9cb8f",
+      "proposedAfterTargetSetSha256": "sha256:ef36bf0cd0ef4fe7e9fc54bc283e9f912547f0781c1935435114c65f23a9cb8f",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:399f8b119ec8d2f2244b5442aaf91175ebb86c3566c18ddc342fe9430e38dd2c",
+      "proposedAfterSha256": "sha256:399f8b119ec8d2f2244b5442aaf91175ebb86c3566c18ddc342fe9430e38dd2c",
+      "beforeTargetSetSha256": "sha256:98361ffe5ac7b8351b89c44fbac183bad8c748804658c598fd98370cf19fd7bb",
+      "proposedAfterTargetSetSha256": "sha256:98361ffe5ac7b8351b89c44fbac183bad8c748804658c598fd98370cf19fd7bb",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:63152232f0d4bce14942b06e71f5da1b025c4b37f0e792ffae44bb79ad164e2f",
+      "proposedAfterSha256": "sha256:63152232f0d4bce14942b06e71f5da1b025c4b37f0e792ffae44bb79ad164e2f",
+      "beforeTargetSetSha256": "sha256:92cde1dd6da4974b6d3c41fccf6d9f6861fa83d91870407ffd6f9ebaf4a2d374",
+      "proposedAfterTargetSetSha256": "sha256:92cde1dd6da4974b6d3c41fccf6d9f6861fa83d91870407ffd6f9ebaf4a2d374",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:47ab1b26b2bd27adc2eba3f0191af900cd4779368ae957c13b3a2d2fc897e33f",
+      "proposedAfterSha256": "sha256:47ab1b26b2bd27adc2eba3f0191af900cd4779368ae957c13b3a2d2fc897e33f",
+      "beforeTargetSetSha256": "sha256:68bcf6c652601de4ad0704a54c3e673f1d20e45980e4190f0d0a777e7df40a6e",
+      "proposedAfterTargetSetSha256": "sha256:68bcf6c652601de4ad0704a54c3e673f1d20e45980e4190f0d0a777e7df40a6e",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "jurisdiction": "DE-RP"
+      },
+      "beforeSha256": "sha256:0b17419d344a783ed380c56f4d676ff40585b376bf137cdb3d91009d73e600d9",
+      "proposedAfterSha256": "sha256:35871d0130ae795fa66bf0d77c47b12b97633ac10a70fb0f3c6db8e56fdee7d1",
+      "beforeTargetSetSha256": "sha256:ca4ab79a9b9c9a005ba09df56e955dc8070c468fcdf0f3d64b5a27475f51503d",
+      "proposedAfterTargetSetSha256": "sha256:6dbdaf86c409d93481d9c7bd4e872cfd9526f8be21883b74227d718037544b32",
+      "removedTargetGoalIds": [
+        "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+      ],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "jurisdiction": "DE-RP"
+      },
+      "beforeSha256": "sha256:4207a02a8ebbc2f31713b7b3b69e3956d32e4cf285a051b357be86338b5beda3",
+      "proposedAfterSha256": "sha256:4207a02a8ebbc2f31713b7b3b69e3956d32e4cf285a051b357be86338b5beda3",
+      "beforeTargetSetSha256": "sha256:31c994e33c6233cba32085f7b9d4e852308b448751d4bfad26f290b4b4fe74e3",
+      "proposedAfterTargetSetSha256": "sha256:31c994e33c6233cba32085f7b9d4e852308b448751d4bfad26f290b4b4fe74e3",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK",
+        "jurisdiction": "DE-RP"
+      },
+      "beforeSha256": "sha256:969cd28299f4ff8e2b3b1471c3e495f9da693c66831fd46111c50e351169cc6a",
+      "proposedAfterSha256": "sha256:ddf4c559cbaebc21b716194b5012ee0e89f951e5b0249203bf9395bc62e7e3a9",
+      "beforeTargetSetSha256": "sha256:ba5aa2c5aab93080cd2fd98908e9cd0ce0a3cbffb869e899a2f4aa31854ccede",
+      "proposedAfterTargetSetSha256": "sha256:bc74c6d5c3f0b6e31e8e68221c1afe6e6c651a9d3c81aa036911e73a8f859fad",
+      "removedTargetGoalIds": [
+        "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+      ],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK",
+        "jurisdiction": "DE-RP"
+      },
+      "beforeSha256": "sha256:ef731f24bd87e532e12e74c4eb4f1c2b8fb1f2e6d366478873856f38c48d04ae",
+      "proposedAfterSha256": "sha256:ef731f24bd87e532e12e74c4eb4f1c2b8fb1f2e6d366478873856f38c48d04ae",
+      "beforeTargetSetSha256": "sha256:f0b5bfe1e18cd8fa214d47cc0617d4424c8574a0fbd135e9c861cb247e71d7a2",
+      "proposedAfterTargetSetSha256": "sha256:f0b5bfe1e18cd8fa214d47cc0617d4424c8574a0fbd135e9c861cb247e71d7a2",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:774e88db6daa896948d0baeebfe78c018d739fc1e29e65b1a4b648b628cfafd2",
+      "proposedAfterSha256": "sha256:774e88db6daa896948d0baeebfe78c018d739fc1e29e65b1a4b648b628cfafd2",
+      "beforeTargetSetSha256": "sha256:abf85000294e148a30b0b03b05a825b1912b3400c5f75afccdb64eb095df7b77",
+      "proposedAfterTargetSetSha256": "sha256:abf85000294e148a30b0b03b05a825b1912b3400c5f75afccdb64eb095df7b77",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:292b3ad82a145167f696391b7bf74d9167fe6a081428ac034c9eac1c1b66adb9",
+      "proposedAfterSha256": "sha256:292b3ad82a145167f696391b7bf74d9167fe6a081428ac034c9eac1c1b66adb9",
+      "beforeTargetSetSha256": "sha256:d293de519f321b6f676e8704039d0239fc68ea5d4b812584b24a34f907f92fca",
+      "proposedAfterTargetSetSha256": "sha256:d293de519f321b6f676e8704039d0239fc68ea5d4b812584b24a34f907f92fca",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:0dab8871d68f73ceacb63d1bbbce193bbfc318d813f4a630dcf738135da9d056",
+      "proposedAfterSha256": "sha256:0dab8871d68f73ceacb63d1bbbce193bbfc318d813f4a630dcf738135da9d056",
+      "beforeTargetSetSha256": "sha256:32f57ae412c115270dcbfccae061bf645c9b68471240572822bc717c7ee6b28e",
+      "proposedAfterTargetSetSha256": "sha256:32f57ae412c115270dcbfccae061bf645c9b68471240572822bc717c7ee6b28e",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:d6226712ebd8ede4bc5c27bec82f8319adcd6c87f0fc09bd560c1dd4ad9ac05d",
+      "proposedAfterSha256": "sha256:d6226712ebd8ede4bc5c27bec82f8319adcd6c87f0fc09bd560c1dd4ad9ac05d",
+      "beforeTargetSetSha256": "sha256:762204198e86ec7e14a28b03711b711f52a5acba495d3e9d6cf3ce8ab4bd474f",
+      "proposedAfterTargetSetSha256": "sha256:762204198e86ec7e14a28b03711b711f52a5acba495d3e9d6cf3ce8ab4bd474f",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:73f8a5ee0ac8a1bd8cb4e76c92ac2966881ffb98b3d2f1f4201586ef9e3f9316",
+      "proposedAfterSha256": "sha256:73f8a5ee0ac8a1bd8cb4e76c92ac2966881ffb98b3d2f1f4201586ef9e3f9316",
+      "beforeTargetSetSha256": "sha256:fbe7d0f5df89f8be594fbe392e2f911885ebec3c2c6583ae7c4a29a2cd4f6a96",
+      "proposedAfterTargetSetSha256": "sha256:fbe7d0f5df89f8be594fbe392e2f911885ebec3c2c6583ae7c4a29a2cd4f6a96",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:bf748d5337999494a4871a1aa6a6be128e9c442a7b0bf9fb5c00ba7eca543c87",
+      "proposedAfterSha256": "sha256:bf748d5337999494a4871a1aa6a6be128e9c442a7b0bf9fb5c00ba7eca543c87",
+      "beforeTargetSetSha256": "sha256:e51ee78e6bf78049aae0c220ff3ed553f3efbb1296e9f1670a042373ea13c4ee",
+      "proposedAfterTargetSetSha256": "sha256:e51ee78e6bf78049aae0c220ff3ed553f3efbb1296e9f1670a042373ea13c4ee",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:b75fc4b79674b4ff2f073d3a1ef46b209d6ae7160fc80082eb4d4bd7a0b3cf3e",
+      "proposedAfterSha256": "sha256:b75fc4b79674b4ff2f073d3a1ef46b209d6ae7160fc80082eb4d4bd7a0b3cf3e",
+      "beforeTargetSetSha256": "sha256:8b428b5ae53bab15f0b8bd70d8177e8c7fd76bc1164684673a000e73d0fab80d",
+      "proposedAfterTargetSetSha256": "sha256:8b428b5ae53bab15f0b8bd70d8177e8c7fd76bc1164684673a000e73d0fab80d",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:eb5c9f5801e62533934cb50fa087ccb549afc7567f3525caed146df32ad4fcfa",
+      "proposedAfterSha256": "sha256:eb5c9f5801e62533934cb50fa087ccb549afc7567f3525caed146df32ad4fcfa",
+      "beforeTargetSetSha256": "sha256:6a4adf4823a92cffa2c6e1868aa31786db6b330aafe02938a8dc7a07c6b14834",
+      "proposedAfterTargetSetSha256": "sha256:6a4adf4823a92cffa2c6e1868aa31786db6b330aafe02938a8dc7a07c6b14834",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:9e14168379c87ceca85d31feb0b263319e35b96274f30f1b8d3f58cda50895cb",
+      "proposedAfterSha256": "sha256:9e14168379c87ceca85d31feb0b263319e35b96274f30f1b8d3f58cda50895cb",
+      "beforeTargetSetSha256": "sha256:46d35a2ea9c7f9b3009677a44370dc4964094c1136be58ce0445a2a2cd4652d4",
+      "proposedAfterTargetSetSha256": "sha256:46d35a2ea9c7f9b3009677a44370dc4964094c1136be58ce0445a2a2cd4652d4",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:f030d19e74422d462e2ee270b733e0de51336fee018da859d27c1c74c3eef05c",
+      "proposedAfterSha256": "sha256:f030d19e74422d462e2ee270b733e0de51336fee018da859d27c1c74c3eef05c",
+      "beforeTargetSetSha256": "sha256:b658e109ef54157f0b9750dd60ae7bd9e1498dee83cc4d0848b3011ec4bcc87f",
+      "proposedAfterTargetSetSha256": "sha256:b658e109ef54157f0b9750dd60ae7bd9e1498dee83cc4d0848b3011ec4bcc87f",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:5b0eeb43e6e4cde132fc6afa972cef15a92f206a8ac0eaedc71d988ab379634c",
+      "proposedAfterSha256": "sha256:5b0eeb43e6e4cde132fc6afa972cef15a92f206a8ac0eaedc71d988ab379634c",
+      "beforeTargetSetSha256": "sha256:6743bb91cb9bc42381ed07f4d6f6d0e93d433b8baa9a39ea7bcae3c7544eb1ab",
+      "proposedAfterTargetSetSha256": "sha256:6743bb91cb9bc42381ed07f4d6f6d0e93d433b8baa9a39ea7bcae3c7544eb1ab",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:32c1d6b298664db4831c464c3443cf8d2d2a0e0d27d13b3273bd563c45579a82",
+      "proposedAfterSha256": "sha256:32c1d6b298664db4831c464c3443cf8d2d2a0e0d27d13b3273bd563c45579a82",
+      "beforeTargetSetSha256": "sha256:e88ccdd8f1bdc1dad496390008bb0d1133e28cf21da50e458c6b1b61472ee108",
+      "proposedAfterTargetSetSha256": "sha256:e88ccdd8f1bdc1dad496390008bb0d1133e28cf21da50e458c6b1b61472ee108",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:8998fa27f7af1e19577375d69851ef96a02d0a86958bd2ed6a32fcd90d5a36a6",
+      "proposedAfterSha256": "sha256:8998fa27f7af1e19577375d69851ef96a02d0a86958bd2ed6a32fcd90d5a36a6",
+      "beforeTargetSetSha256": "sha256:e254a2e68e38c1464f517a8915869cc8b8e1d9bb81862e1808a449c5f42b0104",
+      "proposedAfterTargetSetSha256": "sha256:e254a2e68e38c1464f517a8915869cc8b8e1d9bb81862e1808a449c5f42b0104",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:c0f497355266ce3ac53beb6132933cd9e22522e9f0138842f7a10b67677044da",
+      "proposedAfterSha256": "sha256:c0f497355266ce3ac53beb6132933cd9e22522e9f0138842f7a10b67677044da",
+      "beforeTargetSetSha256": "sha256:ed300f4555c4048e9ad00efad0f90a3e05a0e0c985f897be1438fd087fbc7451",
+      "proposedAfterTargetSetSha256": "sha256:ed300f4555c4048e9ad00efad0f90a3e05a0e0c985f897be1438fd087fbc7451",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:255767f3fabc67ccdaf29d62c5b0f6cb1516115c167b67752fe6982300d83e4e",
+      "proposedAfterSha256": "sha256:255767f3fabc67ccdaf29d62c5b0f6cb1516115c167b67752fe6982300d83e4e",
+      "beforeTargetSetSha256": "sha256:10a23109ca2fc07b77a475beaeb4a205010c5c964a1f2e0191f6a5efef464776",
+      "proposedAfterTargetSetSha256": "sha256:10a23109ca2fc07b77a475beaeb4a205010c5c964a1f2e0191f6a5efef464776",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:dcd601a40e5aa11932820e3b64320ba0491d847b526b945dbe8707d00cde8b2d",
+      "proposedAfterSha256": "sha256:dcd601a40e5aa11932820e3b64320ba0491d847b526b945dbe8707d00cde8b2d",
+      "beforeTargetSetSha256": "sha256:04f400a50d110c26e4ccdeebfcbe8f1f479a0d5346845a8a3efd6cd17f8d6a97",
+      "proposedAfterTargetSetSha256": "sha256:04f400a50d110c26e4ccdeebfcbe8f1f479a0d5346845a8a3efd6cd17f8d6a97",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:eeb16d6a5eb55b3f78cfc373c41d6b71a65b1eae8667b4d1c5d2fcd22d519a0c",
+      "proposedAfterSha256": "sha256:eeb16d6a5eb55b3f78cfc373c41d6b71a65b1eae8667b4d1c5d2fcd22d519a0c",
+      "beforeTargetSetSha256": "sha256:f2288f73d7a57f007e471ec2bc6b1830a8cfb07182eed95042c70ca7d09b44e9",
+      "proposedAfterTargetSetSha256": "sha256:f2288f73d7a57f007e471ec2bc6b1830a8cfb07182eed95042c70ca7d09b44e9",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:73138584e52d6b17d340525a8bcf1f4735c590e96e457ef2f9b49e1b6341534c",
+      "proposedAfterSha256": "sha256:73138584e52d6b17d340525a8bcf1f4735c590e96e457ef2f9b49e1b6341534c",
+      "beforeTargetSetSha256": "sha256:b9f476106627cd8659cbcce3df3f85b47b5cc8b5b5382f0923ba62eaa49eb0c5",
+      "proposedAfterTargetSetSha256": "sha256:b9f476106627cd8659cbcce3df3f85b47b5cc8b5b5382f0923ba62eaa49eb0c5",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "beforeSha256": "sha256:c03dfe6eb7b42ea74d4800e6a52adaa106aafb17f24b7752438d6e50c10f25e3",
+      "proposedAfterSha256": "sha256:c03dfe6eb7b42ea74d4800e6a52adaa106aafb17f24b7752438d6e50c10f25e3",
+      "beforeTargetSetSha256": "sha256:e11247c1a56ec0cb4ace76d22733d7979d7b737e9b9cb14f9c6659e2152c5438",
+      "proposedAfterTargetSetSha256": "sha256:e11247c1a56ec0cb4ace76d22733d7979d7b737e9b9cb14f9c6659e2152c5438",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "beforeSha256": "sha256:3a15a1daa6fd9de85aaa792ff6a08399616cc3232104367d81f2b2cf257b1fea",
+      "proposedAfterSha256": "sha256:3a15a1daa6fd9de85aaa792ff6a08399616cc3232104367d81f2b2cf257b1fea",
+      "beforeTargetSetSha256": "sha256:5e4d429fa27745c0ffaaae5ff3a0c6377fd1817516a2ca72fd84b89ceb07e24c",
+      "proposedAfterTargetSetSha256": "sha256:5e4d429fa27745c0ffaaae5ff3a0c6377fd1817516a2ca72fd84b89ceb07e24c",
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "targetSuccessorsOfChain": [
+        {
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "title": "Nuklidkarten und Zerfallsreihen auswerten",
+          "chainRemainsTarget": true
+        }
+      ],
+      "findings": []
+    }
+  ],
+  "patch": "*** Begin Patch\n*** Update File: curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json\n@@\n     {\n       \"kind\": \"goalEntry\",\n       \"goalId\": \"f6a3a602-1e45-5018-b0ff-3d49933cf634\",\n       \"projectionRole\": \"prerequisiteOnly\"\n-    }\n-  ]\n-}\n+    },\n+    {\n+      \"kind\": \"goalEntry\",\n+      \"goalId\": \"853dbe54-85b0-59ab-8f3a-000c2b7746ec\",\n+      \"projectionRole\": \"prerequisiteOnly\"\n+    },\n+    {\n+      \"kind\": \"goalEntry\",\n+      \"goalId\": \"658cf33d-a0c2-5d47-801a-3dbcd5cac074\",\n+      \"projectionRole\": \"prerequisiteOnly\"\n+    },\n+    {\n+      \"kind\": \"goalEntry\",\n+      \"goalId\": \"3b50255a-6b01-578b-8f5c-4383536a3221\",\n+      \"projectionRole\": \"prerequisiteOnly\"\n+    }\n+  ]\n+}\n*** End of File\n*** Update File: curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json\n@@\n     {\n       \"kind\": \"goalEntry\",\n       \"goalId\": \"f6a3a602-1e45-5018-b0ff-3d49933cf634\",\n       \"projectionRole\": \"prerequisiteOnly\"\n-    }\n-  ]\n-}\n+    },\n+    {\n+      \"kind\": \"goalEntry\",\n+      \"goalId\": \"853dbe54-85b0-59ab-8f3a-000c2b7746ec\",\n+      \"projectionRole\": \"prerequisiteOnly\"\n+    },\n+    {\n+      \"kind\": \"goalEntry\",\n+      \"goalId\": \"658cf33d-a0c2-5d47-801a-3dbcd5cac074\",\n+      \"projectionRole\": \"prerequisiteOnly\"\n+    },\n+    {\n+      \"kind\": \"goalEntry\",\n+      \"goalId\": \"3b50255a-6b01-578b-8f5c-4383536a3221\",\n+      \"projectionRole\": \"prerequisiteOnly\"\n+    }\n+  ]\n+}\n*** End of File\n*** Update File: curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json\n@@\n     {\n       \"kind\": \"goalEntry\",\n       \"goalId\": \"c64820e1-c0ee-4342-9225-f981650f0c52\",\n       \"projectionRole\": \"prerequisiteOnly\"\n-    }\n-  ]\n-}\n+    },\n+    {\n+      \"kind\": \"goalEntry\",\n+      \"goalId\": \"fbecbd60-5db3-51e8-94be-d66b066ffa06\",\n+      \"projectionRole\": \"prerequisiteOnly\"\n+    }\n+  ]\n+}\n*** End of File\n*** Update File: curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json\n@@\n     {\n       \"kind\": \"goalEntry\",\n       \"goalId\": \"c64820e1-c0ee-4342-9225-f981650f0c52\",\n       \"projectionRole\": \"prerequisiteOnly\"\n-    }\n-  ]\n-}\n+    },\n+    {\n+      \"kind\": \"goalEntry\",\n+      \"goalId\": \"fbecbd60-5db3-51e8-94be-d66b066ffa06\",\n+      \"projectionRole\": \"prerequisiteOnly\"\n+    }\n+  ]\n+}\n*** End of File\n*** End Patch\n"
+}

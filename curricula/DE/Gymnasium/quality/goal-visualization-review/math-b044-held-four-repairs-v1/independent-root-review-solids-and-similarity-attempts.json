@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "goal-visualization-independent-raster-review-v1",
+  "reviewer": "/root",
+  "reviewerModel": "Codex (exact underlying model identifier unavailable)",
+  "reviewedAt": "2026-09-07T15:27:50Z",
+  "authority": "AI inspection, not human publication approval",
+  "independence": "Root reviewed originals and received the author's findings before opening actual candidate rasters. Independent calculation/visual inspection, not a blind or fresh-context claim.",
+  "records": [
+    {
+      "goalId": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+      "candidatePath": "tmp/goal-visualizations/d379e28b-d9d5-5cab-b383-318e0499c0c7/generated/d379e28b-d9d5-5cab-b383-318e0499c0c7.generated.2026-09-07T15-25-28-702Z.jpg",
+      "sha256": "de62c355c9e489c16e2bdc17846f3a3d78e7b388bfa9e0eaa3231b454ecf1a15",
+      "decision": "pass",
+      "checks": [
+        "Actual full raster opened. Cube has only a edge labels and correct equal-edge statement. Cuboid uses a only on front width, b on depth and c on height; contradictory vertical a is gone.",
+        "Right and oblique prisms have corresponding parallel congruent base/top faces and appropriately vertical versus slanted side edges in the stated projection.",
+        "Right pyramid apex lies vertically above the projected base center. Oblique pyramid apex is displaced over a base vertex. Hidden edges and all base/apex labels are coherent.",
+        "All six classes from current DE/EN canonical description are present. Removed optional faulty height constructions are not needed for the stated solid-identification competence. No numeric metric claim or false formula remains."
+      ]
+    },
+    {
+      "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "candidatePath": "tmp/goal-visualizations/d6b74b15-1cbc-512b-a160-0f40aecafe8c/generated/d6b74b15-1cbc-512b-a160-0f40aecafe8c.generated.2026-09-07T15-18-13-568Z.jpg",
+      "sha256": "bc234d9d208efa8005b518fd10959abe1d36935f4060b9c801f5a205e4658963",
+      "decision": "reject",
+      "checks": [
+        "Actual full raster opened, not only author report. Small displayed legs are about300wide and356high, large about480wide and570high. Thus drawn enlargement is about1.6, not the stated2, and neither leg ratio is3:4.",
+        "All ratios6/3=8/4=10/5=2 and areas6/24 are arithmetically correct; correct arithmetic does not correct the contradictory metric comparison."
+      ]
+    },
+    {
+      "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "candidatePath": "tmp/goal-visualizations/d6b74b15-1cbc-512b-a160-0f40aecafe8c/generated/d6b74b15-1cbc-512b-a160-0f40aecafe8c.generated.2026-09-07T15-25-14-951Z.jpg",
+      "sha256": "63aa9aab3de7f941d27301acb128807b2ec9241bf2dd3d8556691d501cabbf32",
+      "decision": "reject",
+      "checks": [
+        "Actual full raster opened. Nested triangles achieve a half-size homothety, but both are visibly too wide for the labelled3:4 leg ratio: outer approximately609wide versus664high.",
+        "The same single equality tick marks3cm horizontal half-sides and4cm vertical half-sides, explicitly asserting unequal lengths equal. This is a stronger new mathematical error.",
+        "Right-angle position, 5/10 diagonal labels and numerical ratios/area calculations are otherwise consistent. A further candidate must be reviewed as new bytes."
+      ]
+    }
+  ],
+  "fallbackDecision": "Two actual targeted Nano failures now independently confirmed. If the already running third targeted Nano attempt is also insufficient, a narrow repo-native geometrically computed SVG plus raster and independent verification is authorized for d6 only; no blanket native replacement."
+}

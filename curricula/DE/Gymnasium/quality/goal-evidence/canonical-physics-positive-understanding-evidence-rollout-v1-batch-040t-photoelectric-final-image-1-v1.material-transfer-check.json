@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "OpenAI Codex /root/goal_book_build_generator",
+  "candidateFileSha256": "835164632f721aa921fb60ab6f73b65f4a5ec6c5b1dc92e3e10c6a5606fab954",
+  "reviewNature": "The newly authored third case was reasoned through before materialization and checked again against its actual DE/EN bytes and exact tenths-of-eV arithmetic after materialization. This is not an independent second-agent review or inherited approval of the new case.",
+  "caseId": "fresh-material-transfer",
+  "modelBoundary": "Ordinary single-photon photoelectric emission; maximum kinetic energy applies only where the photon energy reaches the material work function. Intensity at fixed frequency is not photon energy.",
+  "verifiedCases": [
+    { "photonEnergyEv": 3.0, "workFunctionEv": 2.0, "intervention": "initial surface", "emission": true, "maximumKineticEnergyEv": 1.0 },
+    { "photonEnergyEv": 3.0, "workFunctionEv": 3.2, "intervention": "material change at fixed frequency", "emission": false, "maximumKineticEnergyEv": null },
+    { "photonEnergyEv": 3.0, "workFunctionEv": 3.2, "intervention": "double intensity at fixed frequency", "emission": false, "maximumKineticEnergyEv": null },
+    { "photonEnergyEv": 4.0, "workFunctionEv": 3.2, "intervention": "increase frequency", "emission": true, "maximumKineticEnergyEv": 0.8 }
+  ],
+  "thresholdReasoning": "Increasing the work function from 2.0 to 3.2 eV raises f_G=W_A/h at unchanged initial photon frequency. A negative hf-W_A is a failure of the emission threshold, not a negative kinetic energy. Raising photon flux alone cannot fix that threshold within the stated model.",
+  "bilingualMeaning": "DE and EN require the same prior qualitative prediction, controlled intervention comparison and subsequent maximum-energy interpretation.",
+  "preservationCheck": "The two earlier application-case objects, both essential-understanding expectations and the coverage-expectations object are JSON-identical to P040s. Exactly one material-property variation axis and one third application case were added.",
+  "scopeOfPriorReviews": "Both current D040t reviewers independently proposed the material-change transfer before the coordinator read both sealed results. They did not review this subsequently authored concrete profile body. Historical P040s and B034 records remain unchanged."
+}

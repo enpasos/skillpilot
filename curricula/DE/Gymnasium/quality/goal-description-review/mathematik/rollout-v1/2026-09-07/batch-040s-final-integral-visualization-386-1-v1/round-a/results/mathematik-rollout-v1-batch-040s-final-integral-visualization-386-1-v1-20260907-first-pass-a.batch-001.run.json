@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-386-round-a-20260907T123718Z-history-audit",
+  "campaignId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-a",
+  "roundId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:ad826bc8c08f9ed66e1485a74b5c6d483c7dcdbfbdae5bd69e0c0befddd8f9ed",
+  "bundleFingerprint": "sha256:55224e03e0e7977af1ddd02bb5648211178404aa31df0581fc43684e252f6dcf",
+  "bookDigest": "sha256:c166f84d9684a8b48d5b26cb0a970edc00627988532aa0d0a095d7a1e925faa0",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:b3dac35dcce515f9dbec63ad051e1008c6348f0b1c1d4a61f5afdea42cc02902",
+  "independenceGroupId": "mathematik-rollout-v1-batch-040s-final-integral-visualization-386-1-v1-20260907-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3862890e-9ea9-4c62-bcf2-e354c9d8f306"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:1c723ade98a748db1d5f2262b08612636e22ef42db79da152b3c4354a2dfd777"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ad826bc8c08f9ed66e1485a74b5c6d483c7dcdbfbdae5bd69e0c0befddd8f9ed"
+    }
+  ],
+  "startedAt": "2026-09-07T12:37:18Z",
+  "completedAt": "2026-09-07T12:41:12Z",
+  "status": "completed",
+  "outputDigest": "sha256:1f5e72755e99f14360b9d05913c098e8acdef4c9aaaee71b6667288e4a0e79a8",
+  "toolchainVersion": "node-20.20.2-tsx-4.21.0"
+}

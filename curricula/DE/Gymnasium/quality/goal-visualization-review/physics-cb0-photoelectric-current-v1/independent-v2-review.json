@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "physics-cb0-independent-image-followup-20260907T124950Z",
+  "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+  "reviewStatus": "completed",
+  "reviewer": {
+    "agentInstance": "/root/goal_book_pdf_history_audit",
+    "executionKind": "separate image follow-up in existing instance after completed first-pass A",
+    "newThreadClaimed": false,
+    "blindIndependentFirstPassClaimed": false,
+    "modelDiversityClaimed": false,
+    "authority": "AI review candidate only; no human or publication approval"
+  },
+  "provenance": {
+    "startedAt": "2026-09-07T12:49:50Z",
+    "activeImageAssessmentCompletedAt": "2026-09-07T12:51:05Z",
+    "roundBReadOnlyAfterFirstPassACompletion": true,
+    "priorACompletedAt": "2026-09-07T12:47:45Z",
+    "priorARecordSha256": "2656cf40da411cfaeca6f4c0b6a8cd784afc18a4ca6d6347db83a9fb2c6ad50e",
+    "priorARecordsNotRewritten": true,
+    "roundBRecordSha256": "20392354a85ba690761209b1d2707be41862a6d3fc4b346c6f01e49efd584f12",
+    "basis": "Current source image opened at its original 2752x1536 resolution and the completed Physics B record read only after A was sealed. The assessment below is a new, non-blind follow-up judgment, not a retroactive independent first-pass finding."
+  },
+  "activeImage": {
+    "path": "app/public/assets/goal-visualizations/physik/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f.jpg",
+    "sha256": "f29875f092c567d801c1afc690502ea420990cf8e8d2d5bae9026611792fbcac",
+    "verdict": "requires_revision_for_standalone_didactic_use",
+    "roundBClaimAssessment": [
+      {
+        "claim": "The illuminated metal is not visibly connected to the external wire.",
+        "decision": "confirmed",
+        "evidence": "On both halves, the external wire terminates at the left tube neck. No conductor from that neck reaches the illuminated metal. The vertical line under the metal ends above the word Metall and functions as a label leader, not a circuit return.",
+        "consequence": "A sustained measured photocurrent is not established by the drawn connections. An unshown internal connection cannot be assumed for a teaching diagram presented as a measuring circuit."
+      },
+      {
+        "claim": "The battery orientation represents an unexplained retarding field.",
+        "decision": "confirmed_with_scope_qualification",
+        "evidence": "The long battery plate is on the side of the intended illuminated electrode; the short plate is toward the collector. If the missing connection were supplied, the illuminated electrode would be positive relative to the collector and emitted electrons would encounter a retarding potential.",
+        "consequence": "A retarding-field apparatus is physically valid, and sufficiently energetic electrons can still give a current. Thus the mere presence of a counterfield is not a physical impossibility. However, an unspecified potential does not make the shown positive-versus-zero current a uniquely determined frequency-threshold comparison."
+      },
+      {
+        "claim": "E_kin = hf − W_A lacks a maximum-energy qualification.",
+        "decision": "confirmed_notation_defect_with_qualified_interpretation",
+        "evidence": "The visible formula has no max subscript and no text limiting it to the fastest emitted electrons or an idealized representative electron.",
+        "consequence": "Use E_kin,max = hf − W_A for the maximum kinetic energy at emission. The present notation is underspecified; by itself it does not prove the author intended an identical kinetic energy for every emitted electron."
+      }
+    ],
+    "componentAudit": [
+      {
+        "component": "Title and language",
+        "assessment": "Fotoeffekt und Einstein-Deutung is correctly spelled and matches the goal. Photon, Elektron and Metall are readable and label the intended entities."
+      },
+      {
+        "component": "Frequency labels and light sources",
+        "assessment": "The high/low frequency contrast is recognizable. It needs explicit relation to the same material threshold, for example hf > W_A on the emitting side and hf < W_A on the other; merely high and low are not universal emission criteria."
+      },
+      {
+        "component": "Incident photon dots and arrows",
+        "assessment": "Arrowheads point from each lamp toward the illuminated metal. They can serve as schematic incident-light symbols, but should not be presented as directly observed microscopic trajectories or a quantitative photon-count experiment."
+      },
+      {
+        "component": "Emitted electron dots and dashed paths",
+        "assessment": "The blue particles appear only in the emitting panel and are separated in color and label from incident photons. The paths qualitatively indicate outward emission, not a measured energy distribution; a common energy for all particles must not be inferred."
+      },
+      {
+        "component": "Metal plates and glass envelopes",
+        "assessment": "Two electrodes are visible in each tube. The illuminated plate lacks a depicted conducting connection; the collector is visibly connected to the return branch. The neck and the Metall leader must not be treated as hidden electrical connections."
+      },
+      {
+        "component": "Battery polarity and current indicators",
+        "assessment": "The batteries imply a retarding rather than accelerating polarity if the intended cathode connection is assumed. Neither magnitude nor purpose is given. The meters are only implicitly current meters and the right-hand zero alone does not identify why no collected current occurs."
+      },
+      {
+        "component": "Energy and threshold text",
+        "assessment": "The energy formula should specify maximum kinetic energy. The f > f_G condition must be scoped to the emitting case and linked to the material's work function; its central placement currently leaves the non-emitting case implicit."
+      },
+      {
+        "component": "Instructional scope",
+        "assessment": "A simplified energy-and-emission comparison without a measurement circuit would suffice for this goal. If circuitry is retained, all conductive connections, relevant polarity and the distinction between emission and collected current must be explicit. This review does not require regression, a numerical h determination or a complete laboratory protocol."
+      }
+    ]
+  },
+  "candidateV2": {
+    "path": "tmp/goal-visualizations/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f/generated/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f.generated.2026-09-07T12-49-29-234Z.jpg",
+    "sha256": "945377b827f576d3033fe21316f73baeedffb63dc1f6a2417048012889f7a70b",
+    "startedAt": "2026-09-07T12:52:29Z",
+    "completedAt": "2026-09-07 12:54:56 UTC",
+    "inspection": "Actual local JPEG opened at original 2752x1536 resolution, not judged from its generation prompt or another review.",
+    "verdict": "pass_as_schematic_single_photon_teaching_candidate",
+    "blockingFindings": [],
+    "overallAssessment": "The candidate is a scientifically coherent schematic of emission and Einstein's maximum-energy balance in the explicitly named single-photon model. It removes the incomplete measuring circuit rather than implying a measured current, distinguishes a material threshold from generic high or low frequency, and specifies maximum kinetic energy. It is suitable as a teaching illustration for this goal, not an experimental record or a human-approved publication.",
+    "visibleElementAudit": [
+      {
+        "element": "Title: Fotoeffekt und Einstein-Deutung",
+        "result": "pass",
+        "reason": "Correct spelling and direct match to the assigned goal."
+      },
+      {
+        "element": "Left text: f > f_G: Elektronen treten aus",
+        "result": "pass",
+        "reason": "Above the work-function threshold, photoemission is allowed in the stated single-photon model. The sketch shows emitted electrons on this side."
+      },
+      {
+        "element": "Right text: f < f_G: keine Emission",
+        "result": "pass",
+        "reason": "Below the same material threshold, the model predicts no photoemission. No emitted blue electrons are drawn on this side."
+      },
+      {
+        "element": "Two metal plates, each labeled gleiches Metall",
+        "result": "pass",
+        "reason": "Both panels explicitly compare the same material, so the work function and threshold are shared. A bare emitting surface is enough for this conceptual goal; it does not imply a closed measuring circuit."
+      },
+      {
+        "element": "Purple and red incident photon symbols, wavy/dotted rays and incident arrowheads",
+        "result": "pass_as_schematic",
+        "reason": "Both sets are directed toward their respective metal surfaces and identified as photons. Different colors distinguish the two frequency cases. The unscaled waves and dots are pictorial symbols, not a wavelength plot, observed trajectories or quantitative photon-number data."
+      },
+      {
+        "element": "Blue electron symbols, Elektron label and four outward arrows",
+        "result": "pass_as_schematic",
+        "reason": "Blue particles and arrowheads point away from the illuminated surface only above threshold and remain visually distinct from incident photons. The arrows do not claim equal electron energies, a measured angular distribution or a measured current."
+      },
+      {
+        "element": "Removed tube, collectors, wiring, batteries and meters",
+        "result": "pass",
+        "reason": "These components are absent. Consequently the earlier missing conductor, unexplained retarding polarity and current-versus-emission ambiguity are not retained in the candidate."
+      },
+      {
+        "element": "Formula: E_kin,max = hf − W_A (für hf ≥ W_A)",
+        "result": "pass",
+        "reason": "Correct maximum kinetic energy at emission, with the energy threshold limiting the formula's emission domain. It does not assign a negative kinetic energy below threshold or the same energy to every emitted electron. The ideal threshold gives a zero upper kinetic-energy limit; the left emission panel separately uses the strict greater-than condition."
+      },
+      {
+        "element": "Formula: f_G = W_A/h",
+        "result": "pass",
+        "reason": "Correct material threshold frequency, dimensionally energy divided by action."
+      },
+      {
+        "element": "Definitions: W_A: Austrittsarbeit; f_G: Grenzfrequenz",
+        "result": "pass",
+        "reason": "Correct definitions and readable notation. The required photon-energy prerequisite supplies h and hf; no new apparatus quantity is silently introduced."
+      },
+      {
+        "element": "Caption: Bei gleichem f > f_G: mehr Intensität → mehr Elektronen, aber keine größere maximale Elektronenenergie.",
+        "result": "pass_in_stated_regime",
+        "reason": "For comparable illumination area and observation time in the ordinary single-photon regime, greater intensity increases photon arrival and emitted-electron number/rate while hf and maximum electron energy remain unchanged. The caption compares intensity at fixed above-threshold frequency, not the two displayed different-frequency panels as an intensity-controlled measurement."
+      },
+      {
+        "element": "Caption: Unterhalb f_G: auch stärkeres Licht löst keine Elektronen aus. Ein-Photonen-Modell.",
+        "result": "pass_in_stated_regime",
+        "reason": "The stated model qualifier correctly limits the claim; the picture does not assert the absence of all possible nonlinear multiphoton or other emission mechanisms outside this model."
+      },
+      {
+        "element": "Panel divider, background and labels",
+        "result": "pass",
+        "reason": "Decorative geometry does not introduce additional electrical connections, quantitative scales or contradictory physical claims. Text and formulas are readable without collisions."
+      }
+    ],
+    "scopeNotes": [
+      "This is an unscaled conceptual emission sketch, not a measurement of photocurrent, stopping potential, wavelength, electron energy distribution or timing.",
+      "The intensity statement assumes comparable exposure conditions in the usual single-photon regime; the schematic does not certify proportionality under arbitrary high-intensity or space-charge conditions.",
+      "The picture supports the goal's observation/model contrast but is not by itself a learner performance assessment or a complete proof against every classical light description."
+    ],
+    "authority": "Independent technical judgment within this separate follow-up assignment; AI candidate only. No new-thread, model-diversity, human-approval or automatic publication claim."
+  },
+  "completedAt": "2026-09-07 12:54:56 UTC"
+}
