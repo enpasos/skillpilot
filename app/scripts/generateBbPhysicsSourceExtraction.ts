@@ -1,10 +1,8 @@
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { stripHeQuantumOverridesFromClonedView } from './lib/hePhysicsQuantumScope'
-import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
 
 type TopicSpec = {
   code: string
@@ -777,36 +775,37 @@ function buildReview(
   }
 }
 
-function writeCompositionViews(config: JurisdictionConfig) {
+function verifyAuthoredCompositionViews(config: JurisdictionConfig) {
+  // Source extraction owns evidence, not reviewed learner-facing placements.
+  // In particular, HE tree corrections must not silently rewrite BB/BE views.
   const viewPairs = [
-    ['de-he-gk.view.json', `${config.viewFilePrefix}-gk.view.json`, `${config.viewIdPrefix}-gym-physics-gk`],
-    ['de-he-lk.view.json', `${config.viewFilePrefix}-lk.view.json`, `${config.viewIdPrefix}-gym-physics-lk`],
-    ['de-he-sekii-gk.view.json', `${config.viewFilePrefix}-sekii-gk.view.json`, `${config.viewIdPrefix}-gym-sekii-physics-gk`],
-    ['de-he-sekii-lk.view.json', `${config.viewFilePrefix}-sekii-lk.view.json`, `${config.viewIdPrefix}-gym-sekii-physics-lk`],
+    [`${config.viewFilePrefix}-gk.view.json`, `${config.viewIdPrefix}-gym-physics-gk`],
+    [`${config.viewFilePrefix}-lk.view.json`, `${config.viewIdPrefix}-gym-physics-lk`],
+    [`${config.viewFilePrefix}-sekii-gk.view.json`, `${config.viewIdPrefix}-gym-sekii-physics-gk`],
+    [`${config.viewFilePrefix}-sekii-lk.view.json`, `${config.viewIdPrefix}-gym-sekii-physics-lk`],
   ] as const
 
-  for (const [sourceName, targetName, viewId] of viewPairs) {
-    const view = JSON.parse(readFileSync(path.join(repoRoot, compositionViewDir, sourceName), 'utf8')) as {
+  for (const [targetName, viewId] of viewPairs) {
+    const targetPath = path.join(repoRoot, compositionViewDir, targetName)
+    if (!existsSync(targetPath)) {
+      throw new Error(`Missing reviewed Physics composition view ${targetName}; author and validate it separately before source extraction.`)
+    }
+    const view = JSON.parse(readFileSync(targetPath, 'utf8')) as {
       viewId: string
       scope: { jurisdiction: string }
-      rootNodes?: Array<{ children?: Array<{ kind: string; goalId?: string }> }>
     }
-    stripHeQuantumOverridesFromClonedView(view)
-    view.viewId = viewId
-    view.scope.jurisdiction = config.jurisdiction
-    const rootChildren = view.rootNodes?.[0]?.children
-    if (rootChildren && !rootChildren.some((node) => node.goalId === target.society)) {
-      rootChildren.splice(1, 0, {
-        kind: 'canonicalSubtree',
-        goalId: target.society,
-      })
+    if (view.viewId !== viewId || view.scope.jurisdiction !== config.jurisdiction) {
+      throw new Error(`Unexpected reviewed Physics composition scope in ${targetName}`)
     }
-    preservePhysicsB034ViewPlacements(repoRoot, path.join(compositionViewDir, targetName), view)
-    writeFileSync(path.join(repoRoot, compositionViewDir, targetName), `${JSON.stringify(view, null, 2)}\n`)
   }
 }
 
+export function verifyBbBePhysicsCompositionViews(): void {
+  jurisdictionConfigs.forEach(verifyAuthoredCompositionViews)
+}
+
 function main() {
+  verifyBbBePhysicsCompositionViews()
   const canonicalGoals = validateCanonicalTargets()
   for (const config of jurisdictionConfigs) {
     const rawText = execFileSync('pdftotext', ['-layout', path.join(repoRoot, config.sourcePdfPath), '-'], {
@@ -820,13 +819,14 @@ function main() {
     mkdirSync(path.dirname(path.join(repoRoot, config.reviewPath)), { recursive: true })
     writeFileSync(path.join(repoRoot, config.extractionPath), `${JSON.stringify(extraction, null, 2)}\n`)
     writeFileSync(path.join(repoRoot, config.reviewPath), `${JSON.stringify(review, null, 2)}\n`)
-    writeCompositionViews(config)
 
     console.log(`Wrote ${config.extractionPath}`)
     console.log(`Wrote ${config.reviewPath}`)
-    console.log(`Wrote ${config.jurisdiction} physics composition views`)
+    console.log(`Preserved reviewed ${config.jurisdiction} physics composition views`)
     console.log(`Source goals: ${extraction.sourceGoals.length}`)
   }
 }
 
-main()
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  main()
+}

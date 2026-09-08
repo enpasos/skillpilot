@@ -5,6 +5,7 @@ import {pathToFileURL} from 'node:url'
 import {base,paths,ids,children,tasks,landscapeId} from './authoring-spec.mjs'
 const root=process.cwd(),read=p=>JSON.parse(fs.readFileSync(p)),mod=p=>import(pathToFileURL(root+'/'+p)),hash=x=>'sha256:'+createHash('sha256').update(x).digest('hex')
 const {expectedDiodeTargets,diodeOwnedIds}=await mod('app/scripts/lib/physicsFinalDiodeViewPlacements.ts')
+const {repairHessePhysicsTree}=await mod('app/scripts/lib/hessePhysicsTreePlacements.ts')
 const comp=await mod('app/src/utils/authoring/compositionViewAuthoring.ts'),canon=await mod('app/src/utils/authoring/canonicalAuthoring.ts'),rt=await mod('app/src/utils/compositionViewRuntime.ts'),{normalizeLandscape}=await mod('app/src/hooks/useLandscapes.ts')
 const c=read(paths.canonical),k=new Map(read(paths.kinds).decisions.map(d=>[d.goalId,d.semanticKind])),math=read('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'),decorate=x=>({...x,goals:x.goals.map(g=>({...g,semanticKind:g.id===ids.parent&&!g.contains.length?'curricularAtomic':k.get(g.id)}))})
 const receipt=read(base+'/authoring-receipt.json'),old=structuredClone(c);old.goals=old.goals.filter(g=>![...children,...tasks.map(t=>t.id)].includes(g.id));old.goals[old.goals.findIndex(g=>g.id===ids.parent)]=receipt.parentBefore;old.goals[old.goals.findIndex(g=>g.id===ids.switch)]=receipt.switchBefore;for(const g of old.goals)g.contains=g.contains.filter(id=>!tasks.some(t=>t.id===id))
@@ -22,6 +23,7 @@ for(const path of files){const bytes=fs.readFileSync(path,'utf8'),v=JSON.parse(b
  if(!path.includes('goal-books'))wrapper.children.push(...selected.map(i=>({kind:'goalEntry',goalId:tasks[i].id,projectionRole:'target'})))
  siblings.push(wrapper)
  if(selected.includes(1)){for(const goalId of ['28237994-9c24-5a06-82fe-be1f494768ba','f1a078ae-6262-4444-a4bc-a5ab275621cf'])if(!before.targets.includes(goalId))wrapper.children.push({kind:'canonicalSubtree',goalId,projectionRole:'prerequisiteOnly'})}
+ repairHessePhysicsTree(v)
  const after=compiled(c,v),afterRuntime=runtime(c,v),allowed=new Set([ids.parent,...children,...tasks.map(t=>t.id)]),removed=before.targets.filter(id=>!after.targets.includes(id)),added=after.targets.filter(id=>!before.targets.includes(id)),runtimeRemoved=beforeRuntime.filter(id=>!afterRuntime.includes(id)),runtimeAdded=afterRuntime.filter(id=>!beforeRuntime.includes(id))
  const issueKey=e=>JSON.stringify({code:e.code,goalId:e.goalId,message:e.message})
  if(after.errors.some(e=>!before.errors.some(b=>issueKey(e)===issueKey(b))))throw Error('New native CPV errors '+path+' '+JSON.stringify(after.errors))

@@ -19,6 +19,7 @@ import {
 } from '../src/utils/compositionViewRuntime'
 import { applyGoalPlacementProjection } from '../src/utils/goalPlacementProjection'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
+import './testHessePhysicsTree'
 
 const createGoal = (
   id: string,

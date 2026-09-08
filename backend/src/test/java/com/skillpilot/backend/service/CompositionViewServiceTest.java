@@ -1545,6 +1545,70 @@ class CompositionViewServiceTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
+    void findMatchingView_keepsHessianPhysicsStageTreeForEveryCourseAndDuration() {
+        CompositionViewService service = createService();
+        Map<String, String> exams = Map.of(
+                "GK", "61684ca7-b725-534f-944b-c7645cea1792",
+                "LK", "79028c45-90ae-57eb-8016-f5a96af18fa2");
+        for (String durationModel : List.of("G8", "G9")) {
+            for (String profile : List.of("GK", "LK", "GK+LK")) {
+                String context = "Hessen Physics " + durationModel + " " + profile;
+                Map<String, Object> match = service.findMatchingView(
+                        CANONICAL_PHYSICS_ID,
+                        Map.of("schoolForm", "Gymnasium", "jurisdiction", "DE-HE", "stage", "SekII",
+                                "courseProfile", profile, "durationModel", durationModel));
+                assertThat(match).as(context).isNotNull();
+                assertThat(match.get("viewId")).as(context + " source view").isEqualTo(
+                        "GK+LK".equals(profile)
+                                ? "merged:de-he-gym-sekii-physics-lk+de-he-gym-sekii-physics-gk"
+                                : "de-he-gym-sekii-physics-" + profile.toLowerCase(java.util.Locale.ROOT));
+                List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
+                List<Map<String, Object>> stages = roots.stream()
+                        .filter(node -> "structure".equals(node.get("kind"))).toList();
+                assertThat(stages).as(context + " sole stage wrapper").singleElement().satisfies(stage -> {
+                    assertThat(stage).containsEntry("id", "physics-root")
+                            .containsEntry("labelEn", "Upper Secondary")
+                            .containsEntry("label", "Sekundarstufe II ("
+                                    + ("GK+LK".equals(profile) ? "GK + LK" : profile) + ")");
+                    List<Map<String, Object>> children = (List<Map<String, Object>>) stage.get("children");
+                    assertThat(children).filteredOn(node -> "structure".equals(node.get("kind")))
+                            .extracting(node -> node.get("id"))
+                            .containsExactly("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4");
+                    List<Map<String, Object>> examEntries = children.stream()
+                            .filter(node -> node.get("goalId") instanceof String id && exams.containsValue(id)).toList();
+                    List<String> expectedProfiles = "GK+LK".equals(profile) ? List.of("GK", "LK") : List.of(profile);
+                    assertThat(examEntries).extracting(node -> node.get("displayLabel"))
+                            .containsExactlyInAnyOrderElementsOf(expectedProfiles.stream()
+                                    .map(course -> "Abiturprüfung Physik (" + course + ")").toList());
+                    assertThat(examEntries).extracting(node -> node.get("goalId"))
+                            .containsExactlyInAnyOrderElementsOf(expectedProfiles.stream().map(exams::get).toList());
+                });
+                Map<String, Object> stage = stages.getFirst();
+                List<Map<String, Object>> allNodes = flattenCompositionNodes(List.of(stage));
+                Map<String, String> expectedParents = Map.of(
+                        "physics-b034-transistor", "b034-preserved-rootNodes-0-children-13-children-6",
+                        "physics-final-diode-sekii", "b034-preserved-rootNodes-0-children-13-children-6",
+                        "physics-b034-stars", "b034-preserved-rootNodes-0-children-13-children-7",
+                        "physics-b034-nuclear", "b034-preserved-rootNodes-0-children-13-children-3",
+                        "physics-b034-assessments", "physics-q4");
+                expectedParents.forEach((childId, parentId) -> {
+                    Map<String, Object> parent = allNodes.stream()
+                            .filter(node -> parentId.equals(node.get("id"))).findFirst().orElseThrow();
+                    assertThat((List<Map<String, Object>>) parent.get("children"))
+                            .as(context + " placement of " + childId)
+                            .filteredOn(node -> childId.equals(node.get("id"))).hasSize(1);
+                });
+                assertThat(allNodes).extracting(node -> node.get("label"))
+                        .doesNotContain("Physik", "Dioden: belegte Quellenanteile", "Materialgestützte Prüfungsaufgaben");
+                List<String> structures = new ArrayList<>();
+                collectStructureIds(roots, structures);
+                assertThat(structures).as(context + " unique structures").doesNotHaveDuplicates();
+            }
+        }
+    }
+
+    @Test
     void findMatchingView_prefersBySpecificSekTwoPhysicsViewOverDeWideFallbackForLk() {
         CompositionViewService service = createService();
 
@@ -1564,6 +1628,18 @@ class CompositionViewServiceTest {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(resolveCurriculaDir().toString());
         return new CompositionViewService(properties, new ObjectMapper());
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<Map<String, Object>> flattenCompositionNodes(List<Map<String, Object>> nodes) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (Map<String, Object> node : nodes) {
+            result.add(node);
+            if (node.get("children") instanceof List<?> children) {
+                result.addAll(flattenCompositionNodes((List<Map<String, Object>>) children));
+            }
+        }
+        return result;
     }
 
     private static LearningGoal goal(

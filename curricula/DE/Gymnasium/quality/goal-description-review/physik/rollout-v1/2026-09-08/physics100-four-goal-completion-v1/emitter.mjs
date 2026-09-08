@@ -36,6 +36,7 @@ function put(doc,path,next){const l=location(doc,path);if(next.state==='missing'
 const goalBook=await import(pathToFileURL(resolve(repo,'app/scripts/goalBookModel.ts')))
 const comp=await import(pathToFileURL(resolve(repo,'app/src/utils/authoring/compositionViewAuthoring.ts')))
 const canonical=await import(pathToFileURL(resolve(repo,'app/src/utils/authoring/canonicalAuthoring.ts')))
+const {repairHessePhysicsTree}=await import(pathToFileURL(resolve(repo,'app/scripts/lib/hessePhysicsTreePlacements.ts')))
 const mode=process.argv[2]??'--check'
 const modes=['--capture-initial','--capture-patch','--check','--emit-patch','--outputs-json']
 if(!modes.includes(mode)||process.argv.length>3)throw Error('Use '+modes.join(' | '))
@@ -203,6 +204,7 @@ function capture(){
   for(const group of sourceGroups){const go=group.ids.filter(id=>additions.includes(id));if(!go.length)continue
    add(p,['rootNodes',{kind:'structure',id:'physics-b034-'+group.key}],{kind:'structure',id:'physics-b034-'+group.key,label:group.label,children:go.map(goalId=>({kind:'goalEntry',goalId}))},'Explicit unique reviewed scope placement; existing independent canonical locations are reused when already rendered.')
   }
+  add(p,['rootNodes'],repairHessePhysicsTree(clone(v)).rootNodes,'HE SekII supplements belong inside the reviewed Q4 subjects and exercises, with an explicit stage wrapper and distinct GK/LK exam labels. No target or prerequisite-role change.')
   viewAudit.push({file:p,sourceScope:scope,addedTargets:additions,baselineErrors:before.findings.filter(f=>f.severity==='error')})
  }
  const date='2026-09-08',reviewer='codex-physics-b034-informed-implementation-a-20260908'

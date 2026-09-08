@@ -11,7 +11,7 @@
     {
       "kind": "structure",
       "id": "physics-root",
-      "label": "Physik",
+      "label": "Sekundarstufe II (GK)",
       "children": [
         {
           "kind": "goalEntry",
@@ -437,6 +437,29 @@
                 {
                   "kind": "canonicalSubtree",
                   "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e"
+                },
+                {
+                  "kind": "structure",
+                  "id": "physics-b034-nuclear",
+                  "label": "Kernreaktionen: Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "50877233-7abf-54df-b347-6d3224678fc9"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "7e719cc2-0866-5267-a252-e7e7ac0d03f1"
+                    }
+                  ]
                 }
               ]
             },
@@ -472,6 +495,59 @@
                 {
                   "kind": "canonicalSubtree",
                   "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+                },
+                {
+                  "kind": "structure",
+                  "id": "physics-b034-transistor",
+                  "label": "Transistorschaltungen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a"
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
+                  "id": "physics-final-diode-sekii",
+                  "label": "Dioden",
+                  "labelEn": "Diodes",
+                  "children": [
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+                      "projectionRole": "prerequisiteOnly"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+                      "projectionRole": "target"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+                      "projectionRole": "target"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+                      "projectionRole": "target"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "28237994-9c24-5a06-82fe-be1f494768ba",
+                      "projectionRole": "prerequisiteOnly"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+                      "projectionRole": "prerequisiteOnly"
+                    }
+                  ]
                 }
               ]
             },
@@ -612,6 +688,17 @@
                 {
                   "kind": "canonicalSubtree",
                   "goalId": "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162"
+                },
+                {
+                  "kind": "structure",
+                  "id": "physics-b034-stars",
+                  "label": "Sternentwicklung und Materiekreislauf",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba"
+                    }
+                  ]
                 }
               ]
             },
@@ -621,42 +708,75 @@
               "displayLabel": "Lernkarten"
             },
             {
-              "kind": "goalEntry",
-              "goalId": "85bbad98-2f48-5d64-85c4-ab6cf67f24c2",
-              "displayLabel": "Übungen"
-            },
-            {
-              "kind": "goalEntry",
-              "goalId": "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8"
-            },
-            {
-              "kind": "goalEntry",
-              "goalId": "2874902d-eccd-513e-ab60-98892497911d"
-            },
-            {
-              "kind": "goalEntry",
-              "goalId": "c518e9dc-8514-5fde-9811-19caa85cfb1a"
-            },
-            {
-              "kind": "goalEntry",
-              "goalId": "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3"
-            },
-            {
-              "kind": "goalEntry",
-              "goalId": "04832ee1-648a-5421-a01d-0a15c3536c5f"
-            },
-            {
-              "kind": "goalEntry",
-              "goalId": "71af215d-c6d5-59ce-a3f6-4a2e60f1216d"
+              "kind": "structure",
+              "id": "physics-b034-assessments",
+              "label": "Übungen Q4",
+              "children": [
+                {
+                  "kind": "goalEntry",
+                  "goalId": "85bbad98-2f48-5d64-85c4-ab6cf67f24c2",
+                  "displayLabel": "Übergreifende Übungen Q4"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "2874902d-eccd-513e-ab60-98892497911d"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "c518e9dc-8514-5fde-9811-19caa85cfb1a"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "04832ee1-648a-5421-a01d-0a15c3536c5f"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "71af215d-c6d5-59ce-a3f6-4a2e60f1216d"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "5902ebe8-2025-5a7c-b95d-13057398d6e6"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+                  "projectionRole": "target"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "c61b2a69-b5cd-5785-bb04-5d6bca53b218",
+                  "projectionRole": "target"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "4ac5a07c-fff0-5eae-890d-89e13eaf69c3",
+                  "projectionRole": "target"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "18fb1470-5a03-5277-9486-ae74c63c8a8c",
+                  "projectionRole": "target"
+                }
+              ],
+              "labelEn": "Q4 Practice"
             }
           ]
         },
         {
           "kind": "goalEntry",
           "goalId": "61684ca7-b725-534f-944b-c7645cea1792",
-          "displayLabel": "Abiturprüfung Physik"
+          "displayLabel": "Abiturprüfung Physik (GK)"
         }
-      ]
+      ],
+      "labelEn": "Upper Secondary"
     },
     {
       "kind": "goalEntry",
@@ -777,124 +897,6 @@
       "kind": "goalEntry",
       "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
       "projectionRole": "prerequisiteOnly"
-    },
-    {
-      "kind": "structure",
-      "id": "physics-b034-transistor",
-      "label": "Transistorschaltungen",
-      "children": [
-        {
-          "kind": "goalEntry",
-          "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a"
-        }
-      ]
-    },
-    {
-      "kind": "structure",
-      "id": "physics-b034-stars",
-      "label": "Sternentwicklung und Materiekreislauf",
-      "children": [
-        {
-          "kind": "goalEntry",
-          "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba"
-        }
-      ]
-    },
-    {
-      "kind": "structure",
-      "id": "physics-b034-nuclear",
-      "label": "Kernreaktionen: Grundlagen",
-      "children": [
-        {
-          "kind": "goalEntry",
-          "goalId": "50877233-7abf-54df-b347-6d3224678fc9"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "7e719cc2-0866-5267-a252-e7e7ac0d03f1"
-        }
-      ]
-    },
-    {
-      "kind": "structure",
-      "id": "physics-b034-assessments",
-      "label": "Materialgestützte Prüfungsaufgaben",
-      "children": [
-        {
-          "kind": "goalEntry",
-          "goalId": "5902ebe8-2025-5a7c-b95d-13057398d6e6"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "88f27aab-8724-5a4d-8543-e49ebcb54b8e",
-          "projectionRole": "target"
-        }
-      ]
-    },
-    {
-      "kind": "structure",
-      "id": "physics-final-diode-sekii",
-      "label": "Dioden: belegte Quellenanteile",
-      "labelEn": "Diodes: Source-Supported Components",
-      "children": [
-        {
-          "kind": "canonicalSubtree",
-          "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
-          "projectionRole": "target"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
-          "projectionRole": "target"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
-          "projectionRole": "target"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "c61b2a69-b5cd-5785-bb04-5d6bca53b218",
-          "projectionRole": "target"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "4ac5a07c-fff0-5eae-890d-89e13eaf69c3",
-          "projectionRole": "target"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "18fb1470-5a03-5277-9486-ae74c63c8a8c",
-          "projectionRole": "target"
-        },
-        {
-          "kind": "canonicalSubtree",
-          "goalId": "28237994-9c24-5a06-82fe-be1f494768ba",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "canonicalSubtree",
-          "goalId": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
-          "projectionRole": "prerequisiteOnly"
-        }
-      ]
     }
   ]
 }

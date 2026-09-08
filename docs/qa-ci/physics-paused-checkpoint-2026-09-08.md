@@ -153,3 +153,49 @@ Registry-Teilübernahmen und ausgeschlossene veraltete Bindungen sind in
 `curricula/DE/Gymnasium/quality/deep-understanding-rollout/physics-paused-checkpoint-20260908-v1/`
 dokumentiert. Historische Apply-Skripte nicht blind erneut ausführen: Ihre
 Hash-Vorbedingungen beziehen sich auf frühere Zwischenstände.
+
+## Nachtrag: Hessen-Sek-II-Baumkorrektur
+
+Separater Fehlerfix nach dem pausierten QS-Meilenstein, keine Wiederaufnahme des
+100-Prozent-Goals und keine neue fachliche oder menschliche QS-Freigabe.
+
+Die produktive Ansicht für Hessen, Sek II, GK+LK zeigte `Physik → Physik`
+sowie fünf Ergänzungszweige neben dem eigentlichen Hauptzweig. Die B034- und
+Dioden-Ergänzungen waren auf Wurzelebene platziert; dadurch griff die bestehende
+Zusammenfassung der gleichnamigen Einzelwurzel nicht mehr. Zwei unterschiedliche
+GK-/LK-Abiturreferenzen überschrieben außerdem ihre aussagekräftigen Titel mit
+demselben Anzeigetext.
+
+Die beiden bestehenden Hessen-Sek-II-Views behalten ihre View-, Struktur- und
+Lernziel-IDs. Der Hauptzweig heißt nun `Sekundarstufe II (GK)` beziehungsweise
+`Sekundarstufe II (LK)`; der unveränderte Backend-Merger verbindet beide zu
+`Sekundarstufe II (GK + LK)`. Das englische `labelEn` bleibt profilneutral,
+weil der bestehende Merger außerhalb des deutschen Labels identische Metadaten
+verlangt.
+
+Die Ergänzungen sind innerhalb der bestehenden Q4-Gliederung eingeordnet:
+Transistoren und Dioden unter Festkörperphysik, Sternentwicklung unter
+Astrophysik und Kernreaktionen unter Kernphysik. Die konkreten neuen und zuvor
+einzeln platzierten Q4-Aufgaben stehen gemeinsam unter `Übungen Q4`. Die beiden
+Abitureinträge unterscheiden GK und LK; die interne Dioden-Quellenbezeichnung ist
+durch `Dioden` ersetzt. Ziel- und Voraussetzungsmengen sowie kanonische
+`requires`/`contains`, Mastery und gespeicherte Lernzustände werden nicht geändert.
+
+Die Quellenzuordnung des bestehenden Kernphysikziels
+`7e719cc2-0866-5267-a252-e7e7ac0d03f1` zu Hessen Sek II ist damit ausdrücklich
+nicht neu bestätigt. Das Ziel bleibt im bisherigen Zielumfang; seine genaue
+Geltung ist separat fachlich zu prüfen. Auch Wahlthemen werden durch die neue
+Platzierung nicht zu allgemeinem Pflichtstoff erklärt.
+
+Die Platzierungskorrektur ist in
+`app/scripts/lib/hessePhysicsTreePlacements.ts` zentralisiert und in die
+B034-Neuerfassung und Dioden-Aufbereitung eingebunden. Alte feldgebundene
+Apply-Pläne und Receipts bleiben unverändert und dürfen nicht auf neue
+Zwischenstände umgebunden werden. Der BB/BE-Quellengenerator prüft vorhandene
+begutachtete Views, statt sie erneut aus der Hessen-Vorlage zu überschreiben;
+fehlende Views erfordern separate Erstellung und Prüfung.
+
+Regressionen prüfen die native Lernendenprojektion, exakte Referenz-/Rollen-
+und Voraussetzungserhaltung, idempotente Aufbereitung, Q4-Platzierungen und
+den echten Backend-Merge für GK, LK und GK+LK jeweils mit G8 und G9. Es werden
+keine Laufzeit-Heuristiken oder Plugin-Verträge geändert.
