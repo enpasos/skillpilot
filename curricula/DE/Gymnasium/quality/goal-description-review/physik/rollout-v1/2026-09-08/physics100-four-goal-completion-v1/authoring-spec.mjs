@@ -1,0 +1,37 @@
+// Current informed authoring after independent original-source and task-body audit.
+import * as old from '../../2026-09-06/batch-034-next-unresolved-20-v1/physics100-four-goal-consolidation-v1/authoring-spec.mjs'
+import {createHash} from 'node:crypto'
+export const uuid=key=>{const h=createHash('sha1').update('DE-GYM-CANONICAL-PHYSICS:'+key).digest('hex');return h.slice(0,8)+'-'+h.slice(8,12)+'-5'+h.slice(13,16)+'-'+((parseInt(h[16],16)&3)|8).toString(16)+h.slice(17,20)+'-'+h.slice(20,32)}
+export const {base,landscapeId,paths,amplifierAfter,originalSources}=old
+export const packageId='physics100-four-goal-completion-v1'
+export const ids={...old.ids,reactor:uuid('canonical_physics_thermal_reactor_function')}
+export const newGoals=structuredClone(old.newGoals)
+const multi=newGoals.find(g=>g.id===ids.multiplex)
+multi.title='Einen Modellversuch zu optischem Multiplexing entwickeln'
+multi.titleEn='Develop a Model Experiment for Optical Multiplexing'
+multi.description='Die lernende Person kann mithilfe vorgegebener Quellen einen Modellversuch zur gemeinsamen optischen Übertragung mehrerer unterscheidbarer Signalkanäle entwickeln und daran erklären und prüfen, wie die Kanäle zusammengeführt und am Empfänger wieder getrennt werden.'
+multi.descriptionEn='The learner can use supplied sources to develop a model experiment for transmitting several distinguishable signal channels together optically, and use it to explain and test how the channels are combined and separated again at the receiver.'
+const sw=newGoals.find(g=>g.id===ids.switch)
+sw.title='Einen bipolaren Transistor als Schalter funktional untersuchen'
+sw.titleEn='Investigate the Switching Function of a Bipolar Transistor'
+sw.description='Die lernende Person kann an einem vorgegebenen npn- oder pnp-Transistoraufbau die Funktion von Basis, Kollektor und Emitter mithilfe eines einfachen Halbleitermodells erklären und daraus das Ein- und Ausschalten des Laststromkreises begründen; wenn die Anwendung als Schülerexperiment vorgesehen ist, kann sie den Aufbau nach Plan herstellen und die Schaltwirkung selbst untersuchen.'
+sw.descriptionEn='The learner can use a simple semiconductor model to explain the roles of base, collector and emitter in a supplied npn or pnp transistor setup and justify how it switches the load circuit on and off; when the application is designated a student experiment, they can assemble the specified setup and investigate its switching action themselves.'
+sw.dimensionTags.processCompetencies=['PK1_EXPERIMENTIEREN','PK2_MODELLIEREN']
+sw.competencyRefs=sw.dimensionTags.processCompetencies.map(x=>'PROCESS.'+x)
+newGoals.push({id:ids.reactor,shortKey:'canonical_physics_thermal_reactor_function',title:'Die Funktion eines thermischen Kernreaktors erklären',titleEn:'Explain the Operation of a Thermal Nuclear Reactor',description:'Die lernende Person kann an einem vorgegebenen vereinfachten Schema eines thermischen Kernreaktors erklären, wie Brennstoff, Moderator, Steuerstäbe und Kühlmittel zusammenwirken, um eine kontrollierte Kettenreaktion und die Abfuhr der frei werdenden Wärme zu ermöglichen.',descriptionEn:'The learner can use a supplied simplified thermal-reactor diagram to explain how fuel, moderator, control rods and coolant work together to permit a controlled chain reaction and removal of the released heat.',weight:1,tags:['GK','LK','canonical'],contains:[],requires:[ids.comparison,ids.energy],type:'atomic',dimensionTags:{framework:'canonical-gymnasium-physics',demandLevel:'AB2',processCompetencies:['PK2_MODELLIEREN'],guidingIdeas:['LI_TECHNIK'],phase:'GLOBAL',area:'Kernphysik',topicCode:'CANONICAL_PHYSICS_THERMAL_REACTOR_FUNCTION'},competencyRefs:['PROCESS.PK2_MODELLIEREN'],applicability:{jurisdiction:['DE-BY']},extendedData:{applicabilityMappingInheritance:'boundary',applicabilityOverrides:{jurisdiction:['DE-BY']}}})
+export const clusters=structuredClone(old.clusters)
+const nc=clusters.find(g=>g.id===ids.nuclear)
+nc.contains.push(ids.reactor)
+nc.description=nc.description.replace(' sowie die Beurteilung',', die Funktionsdeutung eines thermischen Kernreaktors sowie die Beurteilung')
+nc.descriptionEn=nc.descriptionEn.replace('assessment of radiation risks','interpretation of a thermal reactor, assessment of radiation risks')
+export const mappingChanges=structuredClone(old.mappingChanges)
+for(const m of mappingChanges)if(['1294d659-60f1-5ef4-b19a-3726cd2e09e4','d5355d5d-1db0-5a96-b769-c855fa127daf','096063c6-8853-5a36-9e20-ba7a81cd845c'].includes(m.source)&&m.old===ids.nuclear){m.next=[ids.reactor];m.reason='Original BY Ph10.4.3 / Ph13 GA4.8 / EA4.10 explicitly requires reactor function from a schematic. The new narrow thermal-reactor atom supplies this previously missing component; existing energy and, where expressly demanded, criteria-based judgment targets remain separate. Component mapping, not an assertion that all clause aspects are complete.'}
+for(const m of mappingChanges)if(m.source==='a4461a25-8e68-5f80-ab23-0c3f61af59db')m.reason='BY Ph10.5.1 belongs to the NTG profile. The specified semiconductor application requires real independent assembly and investigation, carried by the transistor-switch goal with its hands-on condition and assessment 88f; existing diode experiment and planning/documentation components remain. NTG is a source-profile annotation, not an implemented view selector.'
+export const mappingAdditions=structuredClone(old.mappingAdditions)
+export const officialByExperimentSelection={...old.officialByExperimentSelection,checkedDate:'2026-09-08'}
+export const originalClauseConstraints=structuredClone(old.originalClauseConstraints).map(x=>({...x,selectionImplementation:'Source-profile annotation only. Existing jurisdiction/stage/course union views do not implement NTG, astronomy-option or optional-topic selection.'}))
+originalClauseConstraints.push({goalIds:[ids.reactor],jurisdiction:'DE-BY',sourceProfile:'Ph10.4.3 / Ph13 GA4.8 / EA4.10',delivery:'Interpret supplied thermal-reactor schematic; no engineering design, reactor construction or safety-operation qualification.'})
+export const reviewReasons=structuredClone(old.reviewReasons)
+reviewReasons[ids.switch]={atomicity:'Ein funktionales Untersuchungsprodukt am vorgegebenen Transistorschalter: einfaches Halbleitermodell, Steuer-/Lastpfad und die tatsächliche Untersuchung desselben Aufbaus im vorgesehenen Schülerexperiment. Verstärker und Speicherfunktion bleiben unabhängig ausgelagert.',memory:'Beschriftetes Bauteilmodell und Anschlussplan werden vorgegeben. Die Leistung besteht im Begründen und tatsächlichen Prüfen der Schaltfunktion; keine zusätzliche isolierte Anschluss- oder Kennwertkarte nötig.'}
+reviewReasons[ids.multiplex].atomicity='Ein quellengestützter Modellversuch mit genau einer Funktion: unabhängige Kanäle auf einem gemeinsamen Weg übertragen und wieder trennen. Kanalplan und Prüfung sind zusammen das Modellierungsprodukt, kein universell geforderter Audio-Aufbau.'
+reviewReasons[ids.reactor]={atomicity:'Eine kausale Funktionsdeutung am vorgegebenen thermischen Reaktorschema. Brennstoff, Neutronenverlangsamung, Absorption und Wärmeabfuhr sind zusammenwirkende Komponenten derselben Funktion, keine zusätzliche gesellschaftliche Bewertung oder technische Bauplanung.',memory:'Das Schema und knappe Materialangaben zu Spaltung, Neutronen und Wärmeübertragung werden vorgegeben. Die prüfbare Leistung verbindet diese Angaben funktional; keine zusätzliche notwendige Bauteil-Namensliste auswendig.'}

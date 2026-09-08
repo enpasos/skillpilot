@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T07:47:31Z",
+  "role": "informed AI author; no human, blind D, or deployment approval",
+  "scope": "Commit consolidation: exact public Layer A mapping and count fixtures only. No production runtime or frozen workflow/assertion semantics changed.",
+  "dataCause": {
+    "duplicateLandscapeSnapshot": "Root renamed the quality-only seven-goal image-candidate-landscape.json to .json.snapshot without changing its bytes. The recursive backend JSON loader had otherwise treated it as the canonical Physics landscape. No loader change was made.",
+    "graphData": "See data-ci-receipt.json for four GFM table delimiters and two assessment phase metadata corrections; semantic task content and scoring were retained."
+  },
+  "fixtureChanges": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java",
+      "sha256": "d1dadd99d2ae55f60067655a1d2e60cdc5416fc76cfa0dd4e89fa63b7ef0bedb",
+      "changes": [
+        "Rheinland-Pfalz Physics upper-secondary: 114 to 117 mapping rows; exact remains 1; partial 113 to 116; the full ordered containsExactly tuple assertion was updated to the current reviewed mappings.",
+        "Hessen Physics pilot: 382 to 383 rows; exact 365 to 364; partial 17 to 19. Existing source e65ea17b-332b-4fe1-922f-57c4f9708332 now has the reviewed two partial canonical mappings."
+      ]
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "sha256": "d86bc79d83826b50b0e701cee11e14562966372365d7a3dde115fe31696ffb5b",
+      "changes": [
+        "Hessen champion totalTopicGoals 192 to 187; masteredCount remains 1. Exact old/current ID evidence is in he-champion-count-proof.json.",
+        "Twenty Physics Sek-I G8/G9 literals only: BW151, BY111, HB142, HE150, HH142, MV148, SL150, SN150, ST148, TH146. All other subjects, filter assertions, fixture identity and workflow remain unchanged."
+      ],
+      "sekIProof": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/seki-backend-count-proof.json"
+    }
+  ],
+  "earlierTargetedRegression": {
+    "result": "125 of 127 passed; the only failures were the two old static count fixtures subsequently corrected from exact ID-set evidence.",
+    "passedClassCounts": {
+      "GoalMappingRepositoryFixtureTest": 87,
+      "ClaudeV1MasteryBackendIntegrationTest": 3,
+      "LandscapeServiceTest_selected_methods": 2,
+      "LearnerControllerIntegrationTest": 33
+    },
+    "xmlTimestampsUtc": "2026-09-08T07:21:01Z through 2026-09-08T07:23:49Z",
+    "limitation": "This earlier targeted run predates the final practice placements; it is not a claim of a full final backend check."
+  },
+  "finalTargetedRegression": {
+    "command": "./gradlew test --tests 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest.registerChampionUsesLearnerFacingLegacyEquivalentPhysicsTotalsForHessenView' --tests 'com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals' --console=plain",
+    "cwd": "backend",
+    "exitCode": 0,
+    "result": "BUILD SUCCESSFUL in 1m 22s",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xmlTimestamp": "2026-09-08T07:46:09.604Z",
+    "xmlPath": "backend/build/test-results/test/TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+    "xmlSha256AtCapture": "530e9ba5265a1e117bd07a4c4d0ea9f4b774e75966d99277992060edeeab0e63",
+    "xmlRetentionNote": "The ordinary Gradle report is build output and will be replaced by subsequent runs; this receipt records the observed result and hash, not a permanent immutable XML attachment.",
+    "canonicalPhysicsSha256": "5b9631c07a8c65b6622ee420c52648443e1178609cf014df898d0cb4a6ce45da"
+  },
+  "handoff": "Gradle released to Root at 2026-09-08T07:47:31Z for the complete final backend check. No further operative canonical, source, view, task, or runtime writes by this author are planned."
+}

@@ -1,0 +1,636 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-08T06:12:15.280Z",
+  "status": "PASS",
+  "scope": "B034 exact explicit references, other generated nodes unchanged, native CPV and honest current-target drift diagnostic; not a whole-generator source-coverage or global M6 approval",
+  "mode": "actual-generator-execution-in-memory-output-filesystem",
+  "realFilesystemWrites": 0,
+  "registryWrites": 0,
+  "helperSha256": "sha256:318a00ccac86653fcba69573d2fc06427158fd7f0027174168ba389e18b4ddc0",
+  "failClosedTests": [
+    {
+      "name": "different jurisdiction is rejected",
+      "status": "PASS",
+      "error": "B034 view protection: source/target scope mismatch"
+    },
+    {
+      "name": "missing existing foreign SekII stage anchor is rejected",
+      "status": "PASS",
+      "error": "B034 view protection: missing reviewed non-B034 stage anchor physics-sekii-gk"
+    }
+  ],
+  "results": [
+    {
+      "state": "Bb",
+      "sourcePath": "app/scripts/generateBbPhysicsSourceExtraction.ts",
+      "sourceSha256": "sha256:9d14cde2e496ed21ef6c0a6848c2e83f0468b6fcac34b63834e8ff6498689f73",
+      "status": "PASS",
+      "error": null,
+      "capturedWrites": 12,
+      "viewCount": 8,
+      "views": [
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json",
+          "currentSha256": "sha256:01eff098654a7ff9d9871203babcd1f22fd0845f909884f04facdbe272e00b38",
+          "generatedSha256": "sha256:55c6b9402bbb6f8d50fb4fff816a71fb12e3fcd558f7050cd50bd4812ddd3350",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [
+            "3b50255a-6b01-578b-8f5c-4383536a3221",
+            "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+            "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+            "71e8936b-fa8a-50dc-8c47-fca015b85ac5",
+            "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+            "f6a3a602-1e45-5018-b0ff-3d49933cf634"
+          ],
+          "currentTargetsAdded": [
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "2874902d-eccd-513e-ab60-98892497911d",
+            "2d3d42ae-492b-4795-a22f-eeca03aaed38",
+            "37013646-f13a-5faf-954c-940f2fd7502f",
+            "3d466956-04fb-58d7-9008-ad8090f8706d",
+            "44ada28b-8635-5481-8d09-2d91686d352b",
+            "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8",
+            "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+            "b60f63b6-e70b-5557-9f54-86d42fa80325",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "c518e9dc-8514-5fde-9811-19caa85cfb1a",
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3",
+            "d27c8860-12a4-4d7d-9849-ccd8b7caca48",
+            "db0394ca-297c-5892-b414-525ec186f928",
+            "ef2bb474-89e1-5deb-81c4-c6b05d174bbd"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json",
+          "currentSha256": "sha256:7b9c7ea29603c6979537f64d49ae8f45597b492b70033cc099d9e751cc8dbc96",
+          "generatedSha256": "sha256:baccbdbfa07fa08ebf558dc216778f6d32ce1486b75c9f0b56e99a615221933d",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "2874902d-eccd-513e-ab60-98892497911d",
+            "2d3d42ae-492b-4795-a22f-eeca03aaed38",
+            "37013646-f13a-5faf-954c-940f2fd7502f",
+            "3d466956-04fb-58d7-9008-ad8090f8706d",
+            "44ada28b-8635-5481-8d09-2d91686d352b",
+            "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8",
+            "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+            "b60f63b6-e70b-5557-9f54-86d42fa80325",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "c518e9dc-8514-5fde-9811-19caa85cfb1a",
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3",
+            "d05a146f-7fcd-56ae-b9b9-b54203328579",
+            "d27c8860-12a4-4d7d-9849-ccd8b7caca48",
+            "db0394ca-297c-5892-b414-525ec186f928",
+            "ef2bb474-89e1-5deb-81c4-c6b05d174bbd",
+            "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json",
+          "currentSha256": "sha256:531533859ba58d239bee05450039d0b1aeb4508121330ea13962f3594d5bfb22",
+          "generatedSha256": "sha256:fa885156bc2eff9ada1661c80a4bfc3a14e9d4999b60476bd71a7fad2ba70e9d",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [
+            "3b50255a-6b01-578b-8f5c-4383536a3221",
+            "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+            "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+            "71e8936b-fa8a-50dc-8c47-fca015b85ac5",
+            "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+            "f6a3a602-1e45-5018-b0ff-3d49933cf634"
+          ],
+          "currentTargetsAdded": [
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "2874902d-eccd-513e-ab60-98892497911d",
+            "37013646-f13a-5faf-954c-940f2fd7502f",
+            "3d466956-04fb-58d7-9008-ad8090f8706d",
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8",
+            "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "c518e9dc-8514-5fde-9811-19caa85cfb1a",
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3",
+            "db0394ca-297c-5892-b414-525ec186f928"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json",
+          "currentSha256": "sha256:b53634f7963ca0c7d0a9b37b37f2b00a72ae8b6386237a85af0c8f938f7a9be3",
+          "generatedSha256": "sha256:303fc7e0fcefc1a2d921058d20c73996b39794637474eed1b92acf05f37733a6",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "2874902d-eccd-513e-ab60-98892497911d",
+            "37013646-f13a-5faf-954c-940f2fd7502f",
+            "3d466956-04fb-58d7-9008-ad8090f8706d",
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8",
+            "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "c518e9dc-8514-5fde-9811-19caa85cfb1a",
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3",
+            "d05a146f-7fcd-56ae-b9b9-b54203328579",
+            "db0394ca-297c-5892-b414-525ec186f928",
+            "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json",
+          "currentSha256": "sha256:859a4b83b1270c4323f4cf4d391217d747fc6902bed4525f1c885a56db3e1a09",
+          "generatedSha256": "sha256:8424eda8a773f6408fe9b60513c8724d5677fbf791aeb3675eb925016d11bc08",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [
+            "3b50255a-6b01-578b-8f5c-4383536a3221",
+            "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+            "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+            "71e8936b-fa8a-50dc-8c47-fca015b85ac5",
+            "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+            "f6a3a602-1e45-5018-b0ff-3d49933cf634"
+          ],
+          "currentTargetsAdded": [
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "2874902d-eccd-513e-ab60-98892497911d",
+            "2d3d42ae-492b-4795-a22f-eeca03aaed38",
+            "37013646-f13a-5faf-954c-940f2fd7502f",
+            "3d466956-04fb-58d7-9008-ad8090f8706d",
+            "44ada28b-8635-5481-8d09-2d91686d352b",
+            "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8",
+            "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+            "b60f63b6-e70b-5557-9f54-86d42fa80325",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "c518e9dc-8514-5fde-9811-19caa85cfb1a",
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3",
+            "d27c8860-12a4-4d7d-9849-ccd8b7caca48",
+            "db0394ca-297c-5892-b414-525ec186f928",
+            "ef2bb474-89e1-5deb-81c4-c6b05d174bbd"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json",
+          "currentSha256": "sha256:ff15d96c3f81b679450693e272386a722240654879bc15c22503bf3e5cff6943",
+          "generatedSha256": "sha256:1b804beed972b7444adb7f32232ba8e7b8b2e3360d0e61115c2808f3595210c6",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "2874902d-eccd-513e-ab60-98892497911d",
+            "2d3d42ae-492b-4795-a22f-eeca03aaed38",
+            "37013646-f13a-5faf-954c-940f2fd7502f",
+            "3d466956-04fb-58d7-9008-ad8090f8706d",
+            "44ada28b-8635-5481-8d09-2d91686d352b",
+            "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8",
+            "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+            "b60f63b6-e70b-5557-9f54-86d42fa80325",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "c518e9dc-8514-5fde-9811-19caa85cfb1a",
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3",
+            "d05a146f-7fcd-56ae-b9b9-b54203328579",
+            "d27c8860-12a4-4d7d-9849-ccd8b7caca48",
+            "db0394ca-297c-5892-b414-525ec186f928",
+            "ef2bb474-89e1-5deb-81c4-c6b05d174bbd",
+            "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json",
+          "currentSha256": "sha256:ff6fbd15b31444379b0c8017f1e0f1c3845774fecf20659b962c1f5b46c692d1",
+          "generatedSha256": "sha256:8165d2a271f10551a68e5c537366749f083f401d7afd95310c276d2df2bbe55e",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [
+            "3b50255a-6b01-578b-8f5c-4383536a3221",
+            "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+            "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+            "71e8936b-fa8a-50dc-8c47-fca015b85ac5",
+            "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+            "f6a3a602-1e45-5018-b0ff-3d49933cf634"
+          ],
+          "currentTargetsAdded": [
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "2874902d-eccd-513e-ab60-98892497911d",
+            "37013646-f13a-5faf-954c-940f2fd7502f",
+            "3d466956-04fb-58d7-9008-ad8090f8706d",
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8",
+            "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "c518e9dc-8514-5fde-9811-19caa85cfb1a",
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3",
+            "db0394ca-297c-5892-b414-525ec186f928"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json",
+          "currentSha256": "sha256:17af59eeabb4883ef2fa99426b0fee0c6963949ccbf0d777562a124650799f4f",
+          "generatedSha256": "sha256:7b3a3319477093691ae70368c7abec50562d74e8f467b5edf1b9a3a6414c957a",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "2874902d-eccd-513e-ab60-98892497911d",
+            "37013646-f13a-5faf-954c-940f2fd7502f",
+            "3d466956-04fb-58d7-9008-ad8090f8706d",
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8",
+            "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "c518e9dc-8514-5fde-9811-19caa85cfb1a",
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3",
+            "d05a146f-7fcd-56ae-b9b9-b54203328579",
+            "db0394ca-297c-5892-b414-525ec186f928",
+            "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+          ]
+        }
+      ],
+      "retainedViews": [],
+      "logs": [
+        "Wrote curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_PHYSIK_SEKII_RLP_GOST_2022.source-extraction.json",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+        "Wrote DE-BB physics composition views",
+        "Source goals: 175",
+        "Wrote curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_PHYSIK_SEKII_RLP_GOST_2022.source-extraction.json",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+        "Wrote DE-BE physics composition views",
+        "Source goals: 175"
+      ]
+    },
+    {
+      "state": "Hh",
+      "sourcePath": "app/scripts/generateHhPhysicsSourceExtraction.ts",
+      "sourceSha256": "sha256:44e382434184f44c530b847e3a014ac4c9e03a690c246ae78ca8c5e12d1ede9d",
+      "status": "PASS",
+      "error": null,
+      "capturedWrites": 8,
+      "viewCount": 4,
+      "views": [
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+          "currentSha256": "sha256:2a5791d3677dcf56933ee01c2852e0bb83c3a248f6a2f080e9f064c75bad6771",
+          "generatedSha256": "sha256:818fa394cfd61f4850c9f22494536b7db016e144157fba51fb186afdd145ddbc",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "bf8517a9-142b-5789-826a-767f3b277998"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+          "currentSha256": "sha256:6e9cb232a917ffe83dff9894a47580d1d56e2b22497f41a735ffc30610f2a9bd",
+          "generatedSha256": "sha256:9b902e66904d97e15cb53590b60aa1d4e6c5dd3b46421f8b5f775e37ac966e45",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "bf8517a9-142b-5789-826a-767f3b277998"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-gk.view.json",
+          "currentSha256": "sha256:8b574b2b5fac77436d802cdf724ed345497d00cf650e0851c6411b6edf46afc0",
+          "generatedSha256": "sha256:7ab4c3261f9aa786bb62c8348d5d73f0862191dcc8de7b2137544af5b939c0a7",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "bf8517a9-142b-5789-826a-767f3b277998"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-lk.view.json",
+          "currentSha256": "sha256:9760d1bdf03b5c4e8ffdb2ab3e300b75571c36a160a4eb86a985dbb24b90d438",
+          "generatedSha256": "sha256:57c71f9c0b98b9c9863c55d1cd556d9236ae4168325f9b5979cba7f8ab8f68b8",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "bf8517a9-142b-5789-826a-767f3b277998"
+          ]
+        }
+      ],
+      "retainedViews": [],
+      "logs": [
+        "Wrote curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_PHYSIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json (154 source goals)",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_physics_upper_secondary_source_extraction_to_canonical_physics.review.json (220 mapping rows)",
+        "Updated Hamburg registry entry and composition views"
+      ]
+    },
+    {
+      "state": "Rp",
+      "sourcePath": "app/scripts/generateRpPhysicsSourceExtraction.ts",
+      "sourceSha256": "sha256:0cfe7a6f16063fcb2f80d22d0b399f5d0ff34b862b81bc90c1364c441de5809f",
+      "status": "PASS",
+      "error": null,
+      "capturedWrites": 8,
+      "viewCount": 4,
+      "views": [
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+          "currentSha256": "sha256:ffbfc0f27c25d2d4f7a9427174765bb181c7421dea1cf10b0bbf1c5af8f43565",
+          "generatedSha256": "sha256:3097ee7171ba74f6d5e9522789a9d8415b606dad5926cf3d15c3386b650cf5e3",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "d05a146f-7fcd-56ae-b9b9-b54203328579"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+          "currentSha256": "sha256:7666f6d739fa537e078bfc3e208edefdb54f4ce47ca8837efb7b5fef0a8dccbd",
+          "generatedSha256": "sha256:a3ace174ca1abf54c5b8fdfb942c9fe1a68d9120601e9955a22961485fd430e9",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "d05a146f-7fcd-56ae-b9b9-b54203328579",
+            "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json",
+          "currentSha256": "sha256:d663f780707490645fc91dd3dd91dcfe4b5a6752326185620fd49a71353469f9",
+          "generatedSha256": "sha256:c0c997d28f999c9422e81ddd4001b983250a86ef4e1ed5e0844aa94686e1f1e8",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "d05a146f-7fcd-56ae-b9b9-b54203328579"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-lk.view.json",
+          "currentSha256": "sha256:f0a7bee7b1cd94a108780cd1203a4cd76185bbfdad3dd52820088f4d40a06c83",
+          "generatedSha256": "sha256:65a1aebdcc6e5757816d47566a8166c4f1e89658c673bdf9d8d986b742ce52c0",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "d05a146f-7fcd-56ae-b9b9-b54203328579",
+            "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+          ]
+        }
+      ],
+      "retainedViews": [],
+      "logs": [
+        "Wrote curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json (193 source goals)",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json (268 mapping rows)",
+        "Updated curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+        "Wrote RP composition views and curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/PHYSIK.md"
+      ]
+    },
+    {
+      "state": "Sn",
+      "sourcePath": "app/scripts/generateSnPhysicsSourceExtraction.ts",
+      "sourceSha256": "sha256:3e5a36a0e6392875d5168a9af0411864564f64215870ee73b41b80f358828cf4",
+      "status": "PASS",
+      "error": null,
+      "capturedWrites": 11,
+      "viewCount": 4,
+      "views": [
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json",
+          "currentSha256": "sha256:f3b7b5063f7de99eb5ea9d02a2f475f24ce1b19e905da8f9344352417ef736e1",
+          "generatedSha256": "sha256:4307816e8f734344d2354dc12c7ac92be54da5cc20b34bec9fa99a693dc86f68",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": []
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+          "currentSha256": "sha256:3c617a6ecacaa5b99997a2c85752b1d0ea79f04b0fb04944f548ab72f8dfd254",
+          "generatedSha256": "sha256:6a1464e5a4b93d453a11bcefd6c638edd63fc137d0003dbacad01ca27fdebb2f",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": []
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-gk.view.json",
+          "currentSha256": "sha256:51a71ce82838ae160afcd39fa371c6e6bb1c742aacac3ecd7425368fe072a879",
+          "generatedSha256": "sha256:4d803600473e1bc71f7ccadb17c9a031a99375215f22f14ad6e5dfd632f9500f",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": []
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-lk.view.json",
+          "currentSha256": "sha256:0aaced10ba5bb00b8b76a9046f65e994ea6d136b88f42ea1917484462cafd8d0",
+          "generatedSha256": "sha256:3c1693ef95b115039c74ba430906d9441c8160db196cda466734d1a31aab58ca",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": []
+        }
+      ],
+      "retainedViews": [],
+      "logs": [
+        "Wrote curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json (276 source goals)",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json (1301 mapping rows)",
+        "Wrote curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_PHYSIK_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json (318 source goals)",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_source_extraction_to_canonical_physics.review.json (1768 mapping rows)",
+        "Updated SN registry entries and 119 canonical target IDs in composition views"
+      ]
+    },
+    {
+      "state": "Sl",
+      "sourcePath": "app/scripts/generateSlPhysicsSourceExtraction.ts",
+      "sourceSha256": "sha256:bb9d89371fa03c96b67d85745e93b996fd42e1d3ab60c8374b24ebf567aa392f",
+      "status": "PASS",
+      "error": null,
+      "capturedWrites": 11,
+      "viewCount": 4,
+      "views": [
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json",
+          "currentSha256": "sha256:652315b22bb174ab655ab34543dbf0b8aa7320e8a7bfcd6adb7024f12048e500",
+          "generatedSha256": "sha256:31c4d087a1185ba91dbab6d6fa177b1a6b28953f6194a624b78da4ae5980592f",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": []
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+          "currentSha256": "sha256:cc8f9d21c279100ed5dcce51c496fb85ce72d73355edd13287cfbfc0b99b16d2",
+          "generatedSha256": "sha256:ca862e1218085197bcb1043279da489cd091a4480f4ac1841d459cfe163c887c",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": []
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-gk.view.json",
+          "currentSha256": "sha256:1cffb680a7a16241634b190f143b19c101a8e9acfb9cd00c44c8d3025fd67910",
+          "generatedSha256": "sha256:b73fbe77d258d3bc4d7b20e51864e5364baaf7a68a529ee714cbf9df41e733cf",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": []
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-lk.view.json",
+          "currentSha256": "sha256:1d115546fc58ba8537a78a0154045e8e14ddd82c4c3e58b60ea33e60edd37503",
+          "generatedSha256": "sha256:11aff2c7f12ffa139a938ba130f6370ed47c8737d1417c7581459e30284bfc74",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": []
+        }
+      ],
+      "retainedViews": [],
+      "logs": [
+        "Wrote curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json (670 source goals)",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json (2341 mapping rows)",
+        "Wrote curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_PHYSIK_SEKII_GOS_2023.source-extraction.json (854 source goals)",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_physics_upper_secondary_source_extraction_to_canonical_physics.review.json (3047 mapping rows)",
+        "Updated SL registry entries and 104 canonical target IDs in composition views"
+      ]
+    },
+    {
+      "state": "Th",
+      "sourcePath": "app/scripts/generateThPhysicsSourceExtraction.ts",
+      "sourceSha256": "sha256:79057f5b104ec81f63875b49402218f2c95d006eb75d82cf29a94c77e145530a",
+      "status": "PASS",
+      "error": null,
+      "capturedWrites": 7,
+      "viewCount": 0,
+      "views": [],
+      "retainedViews": [
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json",
+          "sha256": "sha256:47c7de60ea38e0f6cd86d9c387085f886a6355bc8da819d2d68560890f503d07",
+          "nativeExistingViewSkip": true,
+          "nativeErrors": [],
+          "currentIdentityRoundTrip": true
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+          "sha256": "sha256:1df6b5034e87066790a98685de7f4f937e91a3719fae501c0a7c87e66ace56aa",
+          "nativeExistingViewSkip": true,
+          "nativeErrors": [],
+          "currentIdentityRoundTrip": true
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-gk.view.json",
+          "sha256": "sha256:e1f1a56d8c19d7431f08df0c26882caeea910850cca2da961d192b784e047e7b",
+          "nativeExistingViewSkip": true,
+          "nativeErrors": [],
+          "currentIdentityRoundTrip": true
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-lk.view.json",
+          "sha256": "sha256:e88e0e29598b77a990a594a6f760dc19adfc94cbfa3694d88dee7cdd0f1e33e0",
+          "nativeExistingViewSkip": true,
+          "nativeErrors": [],
+          "currentIdentityRoundTrip": true
+        }
+      ],
+      "logs": [
+        "Wrote curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json (179 source goals)",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_source_extraction_to_canonical_physics.review.json (385 mapping rows)",
+        "Wrote curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_PHYSIK_SEKII_LEHRPLAN_GYMNASIUM_2012_2024.source-extraction.json (240 source goals)",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_source_extraction_to_canonical_physics.review.json (734 mapping rows)",
+        "Updated TH registry entries and 47 canonical target IDs in composition views"
+      ]
+    }
+  ]
+}

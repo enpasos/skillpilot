@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "scope": "Paused-goal commit-ready consolidation; informed AI implementation and native validation, not blind D or human approval.",
+  "humanApproval": false,
+  "checkedAt": "2026-09-08T07:46:19.188Z",
+  "statusGeneratedAt": "2026-09-08T07:44:52.623Z",
+  "physicsMaturity": "M6",
+  "canonicalGoalCount": 764,
+  "rules": [
+    {
+      "id": "CQR-003",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 16,
+        "fullCoverageJurisdictions": 16,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 0,
+        "unsupportedAssignmentJurisdictions": 0,
+        "sourceUnmappedJurisdictions": 0,
+        "unsupportedAssignedAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceAtomicGoals": 6289,
+        "sourceMappedToViewAtomicGoals": 6289,
+        "sourceOriginalGoals": 6289,
+        "sourceFullyCoveredOriginalGoals": 6289,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "surrogateBackedAtomicGoals": 0,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 16,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 0,
+        "minSourceBackedAtomicGoals": 219,
+        "maxVisibleAtomicGoals": 426,
+        "maxSourceBackedAtomicGoals": 426,
+        "totalAtomicGoals": 445
+      }
+    },
+    {
+      "id": "CQR-301",
+      "status": "pass",
+      "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+      "metrics": {
+        "configs": 1,
+        "leafGoals": 478,
+        "atomic": 478,
+        "needsDeveloperReview": 0,
+        "nonAtomic": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0
+      }
+    },
+    {
+      "id": "CQR-302",
+      "status": "pass",
+      "summary": "Memory-card review is current: 129/478 ordinary atomic goals intentionally use memorization support, 146/146 primary cards are kept with origin traces, all 5 memory goals are traced, and 258 view-visible memory-required goals resolve to visible memory nodes.",
+      "metrics": {
+        "configs": 1,
+        "reviewedGoals": 478,
+        "noMemoryNeeded": 349,
+        "memoryRequired": 129,
+        "needsDeveloperReview": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0,
+        "duplicateRecords": 0,
+        "invalidRecords": 0,
+        "primaryCards": 146,
+        "keptCards": 146,
+        "cardsMarkedRemove": 0,
+        "cardNeedsDeveloperReview": 0,
+        "missingCardReviews": 0,
+        "staleCardReviews": 0,
+        "obsoleteCardReviews": 0,
+        "duplicateCardReviewRecords": 0,
+        "invalidCardReviewRecords": 0,
+        "untracedMemoryRequiredGoals": 0,
+        "visibilityScopes": 2,
+        "visibilityCheckedMemoryRequiredGoals": 258,
+        "visibilityMissingVisibleMemoryGoals": 0,
+        "visibilityErrors": 0,
+        "memoryGoals": 5,
+        "tracedMemoryGoals": 5,
+        "untracedMemoryGoals": 0,
+        "deckIds": 5,
+        "deckFiles": 6,
+        "cardRows": 233
+      },
+      "details": [
+        "canonical-physics-full: audit report docs/qa-ci/status/memory-card-review-canonical-physics-full.md"
+      ]
+    },
+    {
+      "id": "CQR-501",
+      "status": "pass",
+      "summary": "1 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+      "metrics": {
+        "activeWarnings": 0,
+        "rawActiveWarnings": 0,
+        "diagnosticPartialOnlyWarnings": 6341,
+        "acceptedWarnings": 1,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 6341",
+        "diagnostic finding type APV-202: 6341",
+        "accepted current warning type APV-201: 1"
+      ]
+    }
+  ],
+  "route": {
+    "id": "CQR-104",
+    "status": "pass",
+    "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+    "metrics": {
+      "relevantCompositionViews": 35,
+      "evaluatedProjectionScopes": 80,
+      "requiredMotivationAnchors": 1,
+      "minimumRequiredTerminalAutonomyGoals": 34,
+      "requiredTerminalAutonomyGoals": 55,
+      "projectionScopesMissingMotivationAnchors": 0,
+      "projectionScopesMissingTerminalAutonomyGoals": 0,
+      "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+      "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+      "terminalGoalsMissingCompiledApplicability": 0,
+      "projectionScopesWithInvalidStageStructure": 0,
+      "nationalProjectionScopesUsingJurisdictionStageAuthority": 48,
+      "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+      "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+      "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 1395,
+      "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 159,
+      "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 297,
+      "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+      "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+      "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+      "projectionLocalRouteChecksEnabled": 1,
+      "visibleSelectedAtomicGoalOccurrences": 6371,
+      "visibleProfileSelectedAtomicGoalOccurrences": 6136,
+      "visibleProjectedRouteTargetGoalOccurrences": 6371,
+      "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 235,
+      "uniqueProjectedRouteTargetsExcludedByProfileSelector": 61,
+      "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+      "projectionScopesMissingEffectiveMotivationRoutes": 0,
+      "projectionScopesMissingDirectMotivationRoutes": 0,
+      "projectionScopesMissingEffectiveTerminalRoutes": 0,
+      "projectionScopesMissingDirectTerminalRoutes": 0,
+      "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+      "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+      "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+      "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+      "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+      "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+      "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+      "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+      "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+      "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+      "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+      "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+    }
+  },
+  "fileBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:5b9631c07a8c65b6622ee420c52648443e1178609cf014df898d0cb4a6ce45da"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "sha256": "sha256:43645e2eb6edc07f048f3d29ee85dc5e8aea67edf2634135acc1224491b0154c"
+    },
+    {
+      "path": "app/scripts/lib/physicsFinalDiodeViewPlacements.ts",
+      "sha256": "sha256:0b9dcf0842054640dde4d6428208e37a319b7b97f397645efef66407452b304e"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "sha256:6d2083a07a36b456f3dfd24d51be60204843fa11b50c41c7d6e64b7e15bdb45b"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "sha256:703921f7f6da36a663f0e01b9a1aef2e78e144928288eb1e9e757143bb040085"
+    },
+    {
+      "path": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+      "sha256": "sha256:d665abad4f5c88b5944764755914cd36c225be6f59681ce93968e246575161e2"
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-physics-full.md",
+      "sha256": "sha256:ec45b37575615e6b2080e7256c60e830630d79645f8fd25bb5be68e3e7bcd0a2"
+    }
+  ],
+  "metadataConsolidation": {
+    "redundantOverridesRemoved": 10,
+    "derivedApplicabilityFieldsSynchronized": 31,
+    "compiledJurisdictionSetCacheDifferences": 27,
+    "orderOnlyCacheDifferences": 4,
+    "semanticKindFingerprintsSynchronized": 10,
+    "allCanonicalCompiledApplicabilitySetsCompared": 5798,
+    "compiledApplicabilityChanges": 0,
+    "complete70CompilerAndRuntimeTargetSetsIdentical": true,
+    "initialRepeatedContextPlacementDefectDetectedAndExactlyRepaired": true,
+    "exactRepairReceipt": "pause-metadata-hunk-repair-receipt-a-20260908.json"
+  },
+  "routeCompletion": {
+    "existingTaskContainsLinksAdded": 3,
+    "clusterId": "21ab0854-4d67-5233-9495-ae208e152a3c",
+    "existingPrerequisiteOnlyRefsAdded": 16,
+    "supportViews": 8,
+    "existingAssessmentTargetRefsAdded": 26,
+    "assessmentGoalIds": [
+      "c61b2a69-b5cd-5785-bb04-5d6bca53b218",
+      "1abfd5ef-1f42-5b71-8c9a-80c0a6b0322e"
+    ],
+    "ordinaryCurricularTargetChanges": 0,
+    "sourceChanges": 0,
+    "ordinaryTextChanges": 0,
+    "ordinaryPrerequisiteChanges": 0,
+    "assessmentBodyChanges": 0,
+    "helperContextOwnership": "Only df010/7bad prerequisiteOnly inside physics-final-diode-seki, and 1abf target inside physics-final-diode-prerequisite-practice; collect/remove have identical ownership.",
+    "native69ViewHelperIdentity": "PASS"
+  },
+  "checks": [
+    {
+      "command": "npm --prefix app run quality:curriculum-status",
+      "exitCode": 0
+    },
+    {
+      "command": "npm --prefix app run check:curriculum-maturity-floors",
+      "exitCode": 0,
+      "output": "> skillpilot@0.0.0 check:curriculum-maturity-floors\n> tsx scripts/checkCurriculumMaturityFloors.ts\n\ncurriculum maturity floors passed: 9 protected curricula"
+    },
+    {
+      "command": "npm --prefix app run report:gymnasium-duration-readiness -- --write",
+      "exitCode": 0
+    },
+    {
+      "command": "npm --prefix app run check:m6-duration-policy-readiness",
+      "exitCode": 0,
+      "output": "ok docs/qa-ci/status/gymnasium-duration-model-readiness.md\nM6 subjects: 9; source scopes touching Sek I: 134; all source scopes: 247"
+    },
+    {
+      "command": "npm --prefix app run quality:memory-card-review:report -- --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/check_openai_plugin_review_freeze.mjs",
+      "exitCode": 0,
+      "result": "IN_REVIEW,6trees,22files"
+    },
+    {
+      "command": "git diff --check (own shared data/helper paths)",
+      "exitCode": 0
+    }
+  ],
+  "unchangedNativeGuardsAndBaselines": [
+    "app/scripts/applicabilityCompiler.ts",
+    "app/scripts/checkCurriculumMaturityFloors.ts",
+    "app/scripts/config/curriculum-maturity-floor-policy.json",
+    "app/scripts/config/applicability-review-baseline.json"
+  ],
+  "noClaim": [
+    "No new warning acceptance.",
+    "No runtime or validator weakening.",
+    "No fresh blind D review or rebinding.",
+    "No human approval.",
+    "No deployment or completion of the paused overall goal."
+  ],
+  "handoff": "Canonical/Source/Views/metadata frozen after hash-checked apply. Root owns final build, duration-offerings generation, D/P registry recognition and backend-count integration."
+}

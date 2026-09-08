@@ -4,11 +4,11 @@
 
 - SkillPilot-ID: `e6a50c74-c922-508c-aa27-07bac2566955`
 - Titel: Strahlendosis und Schutz
-- Beschreibung: Dosismaße und Abschirmung berechnen/bewerten.
+- Beschreibung: Die lernende Person kann Energiedosis, Äquivalentdosis und effektive Dosis unterscheiden, die zur Fragestellung passende Dosisgröße unter benannten Modellannahmen aus gegebenen Daten bestimmen und die Wirksamkeit einer Abschirmung unter sonst vergleichbaren Expositionsbedingungen anhand der Dosisreduktion beurteilen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `e6a50c74-c922-508c-aa27-07bac2566955.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/e6a50c74-c922-508c-aa27-07bac2566955/e6a50c74-c922-508c-aa27-07bac2566955.jpg`
@@ -28,15 +28,26 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Strahlendosis und Schutz
-Beschreibung: Dosismaße und Abschirmung berechnen/bewerten.
+Beschreibung: Die lernende Person kann Energiedosis, Äquivalentdosis und effektive Dosis unterscheiden, die zur Fragestellung passende Dosisgröße unter benannten Modellannahmen aus gegebenen Daten bestimmen und die Wirksamkeit einer Abschirmung unter sonst vergleichbaren Expositionsbedingungen anhand der Dosisreduktion beurteilen.
 
 Zusatzanweisung:
-Correct the existing German educational infographic while retaining its correct dose formulas and protection principles.
+# Einziger Edit: verdoppeltes Wort in der mittleren Karte
 
-Visible title: `Strahlendosis und Schutz`.
-Keep `D = E/m` with unit `Gy = J/kg` and `H = D · w_R` with unit `Sv`. Preserve the three protection ideas `Zeit kurz`, `Abstand groß`, and `Abschirmung passend`.
+Das Referenzbild ist die ansonsten fertige und fachlich kontrollierte Grafik.
+Bitte NICHT neu gestalten. Keine Formeln, Diagramme, Farben oder anderen
+Textfelder verändern. Ausschließlich den zweizeiligen Erklärungstext direkt
+unter der Summenformel in der MITTLEREN Karte ersetzen.
 
-The word `groß` must use `ß` everywhere; never write `gross`. Keep all symbols, subscripts and units exact. Do not equate activity with dose and do not add invented risk thresholds. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
+Der aktuelle Text enthält den Fehler „Strahlungsarten R im im Gewebe T gewichten“.
+Lösche diesen Text komplett und schreibe an genau dieselbe Stelle:
+
+„Strahlungsarten im Gewebe gewichten“
+
+Genau EIN „im“. Diese kurze Form vermeidet überlange Zeilen. Die Indizes R und T
+sind in der Formel, der direkt folgenden D_T,R-Legende und der gemeinsamen
+Gewichtungslegende bereits erklärt und bleiben dort unverändert bestehen.
+Die sonstige Grafik einschließlich der drei Dosisgrößen, Einheiten,
+Prozentrechnung und letzten Sicherheitsabgrenzung bleibt exakt unverändert.
 ```
 
 ## Review-Notiz

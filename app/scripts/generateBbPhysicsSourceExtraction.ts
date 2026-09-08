@@ -3,6 +3,8 @@ import { execFileSync } from 'node:child_process'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { stripHeQuantumOverridesFromClonedView } from './lib/hePhysicsQuantumScope'
+import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
 
 type TopicSpec = {
   code: string
@@ -789,6 +791,7 @@ function writeCompositionViews(config: JurisdictionConfig) {
       scope: { jurisdiction: string }
       rootNodes?: Array<{ children?: Array<{ kind: string; goalId?: string }> }>
     }
+    stripHeQuantumOverridesFromClonedView(view)
     view.viewId = viewId
     view.scope.jurisdiction = config.jurisdiction
     const rootChildren = view.rootNodes?.[0]?.children
@@ -798,6 +801,7 @@ function writeCompositionViews(config: JurisdictionConfig) {
         goalId: target.society,
       })
     }
+    preservePhysicsB034ViewPlacements(repoRoot, path.join(compositionViewDir, targetName), view)
     writeFileSync(path.join(repoRoot, compositionViewDir, targetName), `${JSON.stringify(view, null, 2)}\n`)
   }
 }

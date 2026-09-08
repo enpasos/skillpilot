@@ -1,0 +1,240 @@
+{
+  "status": "READ_ONLY_NATIVE_ROUTE_SHADOW",
+  "actualProposedNeedsReviewState": [
+    {
+      "scopeId": "canonical-physics-sek1",
+      "label": "Sekundarstufe I",
+      "selectedAtomicGoals": 96,
+      "maturity": "M2",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 96,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 96,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-104",
+          "status": "fail",
+          "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+          "metrics": {
+            "relevantCompositionViews": 35,
+            "evaluatedProjectionScopes": 80,
+            "requiredMotivationAnchors": 1,
+            "minimumRequiredTerminalAutonomyGoals": 30,
+            "requiredTerminalAutonomyGoals": 56,
+            "projectionScopesMissingMotivationAnchors": 0,
+            "projectionScopesMissingTerminalAutonomyGoals": 30,
+            "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+            "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+            "terminalGoalsMissingCompiledApplicability": 0,
+            "projectionScopesWithInvalidStageStructure": 0,
+            "nationalProjectionScopesUsingJurisdictionStageAuthority": 48,
+            "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 15,
+            "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 1221,
+            "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 156,
+            "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 704,
+            "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 4,
+            "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 6,
+            "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 2,
+            "projectionLocalRouteChecksEnabled": 1,
+            "visibleSelectedAtomicGoalOccurrences": 6235,
+            "visibleProfileSelectedAtomicGoalOccurrences": 6063,
+            "visibleProjectedRouteTargetGoalOccurrences": 6235,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 172,
+            "uniqueProjectedRouteTargetsExcludedByProfileSelector": 57,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+            "projectionScopesMissingEffectiveMotivationRoutes": 0,
+            "projectionScopesMissingDirectMotivationRoutes": 0,
+            "projectionScopesMissingEffectiveTerminalRoutes": 0,
+            "projectionScopesMissingDirectTerminalRoutes": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+          },
+          "details": [
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-BW]: curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-HE]: curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-BB]: curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-BE]: curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-NI]: curricula/DE/Gymnasium/composition-views/physik/de-ni-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-ni-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-NW]: curricula/DE/Gymnasium/composition-views/physik/de-nw-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-nw-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-SH]: curricula/DE/Gymnasium/composition-views/physik/de-sh-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-sh-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-HB]: curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-HH]: curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-MV]: curricula/DE/Gymnasium/composition-views/physik/de-mv-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-mv-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-RP]: curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-SL]: curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-SN]: curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-ST]: curricula/DE/Gymnasium/composition-views/physik/de-st-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-st-lk.view.json",
+            "Ambiguous jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-TH]: curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json, curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json [DE-BB]: a77138b8-3924-4a17-a22e-d2625ab19bd6, a77e53d5-246d-52df-86a2-d14f7a08fb77, 88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json [DE-BB]: a77138b8-3924-4a17-a22e-d2625ab19bd6, a77e53d5-246d-52df-86a2-d14f7a08fb77, 88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json [DE-BE]: a77138b8-3924-4a17-a22e-d2625ab19bd6, a77e53d5-246d-52df-86a2-d14f7a08fb77, 88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json [DE-BE]: a77138b8-3924-4a17-a22e-d2625ab19bd6, a77e53d5-246d-52df-86a2-d14f7a08fb77, 88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json [DE-BW]: a77138b8-3924-4a17-a22e-d2625ab19bd6, 88f27aab-8724-5a4d-8543-e49ebcb54b8e"
+          ]
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 61,
+            "terminalAutonomyGoalsWithExamData": 61,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "fail",
+          "summary": "1 terminal autonomy examData item(s) are placeholders or incomplete.",
+          "metrics": {
+            "terminalAutonomyGoals": 61,
+            "concreteExamData": 60,
+            "weakExamData": 1
+          },
+          "details": [
+            "Weak examData: Prüfungsaufgabe: Einen Transistor als Schalter deuten [88f27aab-8724-5a4d-8543-e49ebcb54b8e] (reviewStatus=draft)"
+          ]
+        },
+        {
+          "id": "CQR-203",
+          "status": "warn",
+          "summary": "1 terminal autonomy examData item(s) lack release or coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 61,
+            "releasedCoverageCompleteExamData": 60,
+            "releaseCoverageIncompleteExamData": 1
+          },
+          "details": [
+            "Incomplete exam release/coverage: Prüfungsaufgabe: Einen Transistor als Schalter deuten [88f27aab-8724-5a4d-8543-e49ebcb54b8e] (reviewStatus is not released)"
+          ]
+        }
+      ]
+    },
+    {
+      "scopeId": "canonical-physics-sek2",
+      "label": "Sekundarstufe II",
+      "selectedAtomicGoals": 303,
+      "maturity": "M2",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 303,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 303,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 70,
+            "terminalAutonomyGoalsWithExamData": 70,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "fail",
+          "summary": "7 terminal autonomy examData item(s) are placeholders or incomplete.",
+          "metrics": {
+            "terminalAutonomyGoals": 70,
+            "concreteExamData": 63,
+            "weakExamData": 7
+          },
+          "details": [
+            "Weak examData: Prüfungsaufgabe: Einen Ton über Licht übertragen [51af53cb-8866-52cd-b2ca-af8bd8a836e0] (reviewStatus=draft)",
+            "Weak examData: Prüfungsaufgabe: Zwei Lichtkanäle auf einem Weg trennen [4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65] (reviewStatus=draft)",
+            "Weak examData: Prüfungsaufgabe: Einen gespeicherten Schaltzustand ändern [5902ebe8-2025-5a7c-b95d-13057398d6e6] (reviewStatus=draft)",
+            "Weak examData: Prüfungsaufgabe: Eine Elemententstehungs-Behauptung prüfen [6da29199-f086-512c-89f2-1b5ca865eef9] (reviewStatus=draft)",
+            "Weak examData: Prüfungsaufgabe: Bedingte Stern-Endstadien prognostizieren [6c87a996-9166-5c6e-8cda-01d40720f9c8] (reviewStatus=draft)",
+            "Weak examData: Prüfungsaufgabe: Neutronensteuerung und Wärmeabfuhr im Reaktor [74a32716-2b46-5d96-8b57-3f6edb90e088] (reviewStatus=draft)",
+            "Weak examData: Prüfungsaufgabe: Arbeitspunkt und Verzerrung einer Emitterschaltung [144007cb-e2bc-5c82-bf9d-dda705b15257] (reviewStatus=draft)"
+          ]
+        },
+        {
+          "id": "CQR-203",
+          "status": "warn",
+          "summary": "7 terminal autonomy examData item(s) lack release or coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 70,
+            "releasedCoverageCompleteExamData": 63,
+            "releaseCoverageIncompleteExamData": 7
+          },
+          "details": [
+            "Incomplete exam release/coverage: Prüfungsaufgabe: Einen Ton über Licht übertragen [51af53cb-8866-52cd-b2ca-af8bd8a836e0] (reviewStatus is not released)",
+            "Incomplete exam release/coverage: Prüfungsaufgabe: Zwei Lichtkanäle auf einem Weg trennen [4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65] (reviewStatus is not released)",
+            "Incomplete exam release/coverage: Prüfungsaufgabe: Einen gespeicherten Schaltzustand ändern [5902ebe8-2025-5a7c-b95d-13057398d6e6] (reviewStatus is not released)",
+            "Incomplete exam release/coverage: Prüfungsaufgabe: Eine Elemententstehungs-Behauptung prüfen [6da29199-f086-512c-89f2-1b5ca865eef9] (reviewStatus is not released)",
+            "Incomplete exam release/coverage: Prüfungsaufgabe: Bedingte Stern-Endstadien prognostizieren [6c87a996-9166-5c6e-8cda-01d40720f9c8] (reviewStatus is not released)",
+            "Incomplete exam release/coverage: Prüfungsaufgabe: Neutronensteuerung und Wärmeabfuhr im Reaktor [74a32716-2b46-5d96-8b57-3f6edb90e088] (reviewStatus is not released)",
+            "Incomplete exam release/coverage: Prüfungsaufgabe: Arbeitspunkt und Verzerrung einer Emitterschaltung [144007cb-e2bc-5c82-bf9d-dda705b15257] (reviewStatus is not released)"
+          ]
+        }
+      ]
+    }
+  ],
+  "nativeFunctionsUnmodified": true,
+  "cliMainNotExecuted": true,
+  "operativeWrites": 0,
+  "releaseCaveat": "Individual task release decisions are separately content-hash-bound and explicitly Root-authorized. This shadow changes no native gate or threshold.",
+  "applicabilityFindings": [],
+  "beforeGoals": 733,
+  "afterGoals": 750
+}

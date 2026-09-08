@@ -1,4 +1,4 @@
-// DRAFT / PENDING / STOPPED by user on 2026-09-08. No content counterreview or operative adoption.
+// Resumed bounded authoring on 2026-09-08. Publication requires a separate bound content decision.
 import { createHash } from 'node:crypto'
 
 export const ids = {
@@ -14,19 +14,24 @@ const uuid = name => {
   b[6] = (b[6] & 15) | 80; b[8] = (b[8] & 63) | 128
   const h = b.toString('hex'); return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`
 }
-export const assessmentIds = Object.fromEntries(['S','G','T','DM','DE','U'].map(key => [key, uuid(key)]))
-const task = (key, title, titleEn, jurisdictions, phase, de, en, solution, solutionEn, rubric) => ({
+export const extraAssessmentCoverage = {
+  GW: ['ba16948b-5e07-54af-b77b-776e677c6906'],
+  ST: ['da3169ae-c72a-5782-ad95-408167a5c6da'],
+  EX: ['49bb609a-bfb7-5391-9120-f5fc737efb9a','6dca3b0a-c872-543b-808f-97e855f5fafd','e28381b4-50ef-5cac-bfa4-b7c8e03aef82'],
+}
+export const assessmentIds = Object.fromEntries(['S','G','T','DM','DE','U','B','GW','ST','EX'].map(key => [key, uuid(key)]))
+export const task = (key, title, titleEn, jurisdictions, phase, de, en, solution, solutionEn, rubric) => ({
   id: assessmentIds[key], shortKey: 'canonical_physics_astro_assessment_' + key.toLowerCase(),
   title, titleEn,
   description: `Die lernende Person kann die bereitgestellte Aufgabe „${title}“ selbstständig bearbeiten und ihre Einordnung anhand des Materials fachlich begründen.`,
   descriptionEn: `The learner can independently complete the supplied task “${titleEn}” and justify the interpretation using the material.`,
   type: 'atomic', weight: 1, tags: ['GK', 'LK', 'Practice', 'Assessment', 'canonical'],
-  contains: [], requires: [ids[key]],
+  contains: [], requires: extraAssessmentCoverage[key] ?? [ids[key]],
   dimensionTags: { framework: 'canonical-gymnasium-physics', phase, demandLevel: 'AB2', guidingIdeas: ['LI_KOSMOS'], processCompetencies: ['PK2_MODELLIEREN','PK4_KOMMUNIZIEREN'] },
-  applicability: { jurisdiction: jurisdictions },
-  extendedData: { applicabilityMappingInheritance: 'boundary' },
+  ...(jurisdictions.length ? { applicability: { jurisdiction: jurisdictions } } : {}),
+  extendedData: { applicabilityMappingInheritance: 'boundary', applicabilityFromRequires: true },
   examData: {
-    reviewStatus: 'needs_review', coveredGoalIds: [ids[key]], coveredStrands: ['LI_KOSMOS'], demandLevels: ['AB1','AB2','AB3'],
+    reviewStatus: 'needs_review', coveredGoalIds: extraAssessmentCoverage[key] ?? [ids[key]], coveredStrands: ['LI_KOSMOS'], demandLevels: ['AB1','AB2','AB3'],
     sourceArtifactPath: packagePath + '/assessments/' + key + '.md',
     taskContent: de, taskContentEn: en, solutionContent: solution, solutionContentEn: solutionEn,
     scoring: { maxPoints: rubric.reduce((n,r)=>n+r[0],0), passingPoints: Math.ceil(rubric.reduce((n,r)=>n+r[0],0)*0.6),
@@ -35,7 +40,37 @@ const task = (key, title, titleEn, jurisdictions, phase, de, en, solution, solut
 })
 
 export const newAssessments = [
-  task('S', 'Sonne, Planet und Komet im Bahnmodell zuordnen', 'Classify Sun, planet and comet in an orbital model', ['DE-SL','DE-SN'], '10',
+  task('B', 'Rotverschiebung und Hintergrundstrahlung gemeinsam deuten', 'Interpret redshift and background radiation together', ['DE-BY'], 'Q4',
+`## Material: Zwei kosmologische Beobachtungen
+
+A: Bei vielen fernen Galaxien werden identifizierte Spektrallinien gegenüber denselben Linien im Labor systematisch zu größeren Wellenlängen beobachtet. Ein Expansionsmodell beschreibt, dass sich mit dem Raum auch die Wellenlänge frei laufenden Lichts vergrößert. Einzelne Galaxien können zusätzlich lokale Eigenbewegungen besitzen.
+
+B: Aus nahezu allen Himmelsrichtungen wird Mikrowellenstrahlung mit einem sehr genau thermischen Spektrum und einer heutigen Temperatur von ungefähr 2,7 K beobachtet. Im heißen Urknallmodell ist sie das durch die Expansion abgekühlte Strahlungsrelikt einer früheren heißen, dichten Phase; die Strahlung konnte nach dem Durchsichtigwerden des Universums frei weiterlaufen.
+
+Die knappe Darstellung fasst Beobachtungsarten zusammen, keine neue Messreihe. Quelle für B: ESA, Planck and the cosmic microwave background, https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background (eigene Zusammenfassung).
+
+1. Erklären Sie anhand von A den Zusammenhang zwischen Expansion und kosmologischer Rotverschiebung. Warum wäre die Aussage „Jede einzelne Rotverschiebung beweist allein die kosmische Expansion“ zu stark? (4 BE)
+2. Eine Erklärung behauptet, ein Universum könne expandieren, ohne jemals heiß und dicht gewesen zu sein. Welchen zusätzlichen Gesichtspunkt liefert B für die Beurteilung? Verknüpfen Sie Temperatur und Expansion mit der heutigen Beobachtung. (4 BE)
+3. Prüfen Sie: „Der Urknall war eine Explosion von einem ausgezeichneten räumlichen Zentrum in vorhandenen leeren Außenraum; A und B legen auch eine bestimmte Ursache dunkler Energie fest.“ Begründen Sie beide Korrekturen. (4 BE)`,
+`## Material: Two cosmological observations
+
+A: Identified spectral lines in many distant galaxies are systematically observed at longer wavelengths than the same laboratory lines. An expansion model describes how the wavelength of freely travelling light grows as space expands. Individual galaxies can also have local peculiar motions.
+
+B: Microwave radiation is observed from almost every sky direction, with a closely thermal spectrum and a present temperature of about 2.7 K. In the hot Big Bang model it is the expansion-cooled radiation relic of an earlier hot, dense phase; it travelled freely after the universe became transparent.
+
+This brief account summarizes types of observation, not a new measurement series. Source for B: ESA, Planck and the cosmic microwave background, https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background (brief paraphrase).
+
+1. Use A to explain how expansion relates to cosmological redshift. Why is “Every individual redshift alone proves cosmic expansion” too strong? (4 marks)
+2. One account proposes that a universe could expand without ever having been hot and dense. What additional consideration does B provide? Relate temperature and expansion to the present observation. (4 marks)
+3. Assess: “The Big Bang was an explosion from a distinguished spatial centre into pre-existing empty surroundings; A and B also establish a specific cause of dark energy.” Justify both corrections. (4 marks)`,
+`1. Wachsende physikalische Abstände zwischen mitbewegten, nicht lokal gebundenen Galaxien gehen im Modell mit einer Dehnung frei laufender Lichtwellenlängen einher; ihre mitbewegten Koordinaten bleiben dabei unverändert. Der systematische Befund vieler Galaxien passt zur kosmischen Expansion. Eine einzelne Verschiebung kann zusätzlich oder allein lokale Bewegungsbeiträge enthalten; ihre Messung ist noch keine vollständige Modellprüfung.
+2. Expansion allein legt keine frühere Temperatur fest. Das nahezu allseitige thermische Relikt liefert eine zusätzliche, eigenständige Beobachtung für die frühere heiße Phase. Expansion vergrößert seine Wellenlängen und senkt die heutige Strahlungstemperatur; die gemeinsame Deutung von A und B stützt das heiße expandierende Modell, ohne es allein abschließend zu beweisen.
+3. Das Modell beschreibt die Expansion des Raums aus einer früheren heißen, dichten Phase, keinen ausgezeichneten Explosionsort mit leerem Außenraum. Diese beiden Beobachtungsarten identifizieren keine Ursache dunkler Energie; dazu wären andere bzw. zusätzliche Beobachtungen und Modelle nötig. Keine eigenständige DE-Analyse wird verlangt.`,
+`1. In the model, increasing physical separations between comoving galaxies that are not locally bound accompany stretching of freely travelling light wavelengths; their comoving coordinates remain unchanged. The systematic pattern across many galaxies is consistent with cosmic expansion. One shift can include or arise from local motion; measuring it is not a complete model test.
+2. Expansion alone does not establish an earlier temperature. The nearly all-sky thermal relic is an additional independent observation supporting an earlier hot phase. Expansion stretches its wavelengths and lowers its present radiation temperature. The joint interpretation supports the hot expanding model without conclusively proving it by these observations alone.
+3. The model describes expansion of space from an earlier hot, dense phase, not a distinguished explosion site with empty exterior. These observations do not identify a cause of dark energy; other or additional observations and models would be needed. No independent dark-energy analysis is required.`,
+[[4,'Wellenlängendehnung im Expansionsmodell (2), systematisches Muster von Einzelbefund/Eigenbewegung unterscheiden (2).','Wavelength stretching in the expansion model (2), systematic pattern versus individual/peculiar motion distinguished (2).'],[4,'Expansion allein belegt keine heiße Phase (1), thermisches Relikt als zusätzliche Evidenz (2), Abkühlung/Wellenlängendehnung verknüpft (1).','Expansion alone does not establish a hot phase (1), thermal relic as additional evidence (2), cooling linked to wavelength stretching (1).'],[4,'Keine zentrale Explosion in Außenraum (2), kein Schluss auf eine bestimmte Ursache dunkler Energie (2).','No central explosion into an exterior (2), no inference to a specific cause of dark energy (2).']]),
+  task('S', 'Sonne, Planet und Komet im Bahnmodell zuordnen', 'Classify Sun, planet and comet in an orbital model', ['DE-SL','DE-SN'], 'GLOBAL',
 `## Material: Drei Körper in einem vereinfachten Sonnensystemmodell
 
 Die Daten sind eigens für die Aufgabe zusammengestellte qualitative Merkmale, keine neue Messreihe. A ist der mit Abstand massereichste Körper und strahlt durch Energieumwandlung in seinem Inneren selbst Licht ab. B ist ein annähernd kugelförmiger Körper, der A auf einer nahezu kreisförmigen Bahn umläuft und dessen Licht überwiegend reflektiert. C ist ein kleiner eis- und staubhaltiger Körper mit einer stark langgestreckten Bahn um A; in Sonnennähe kann eine Gashülle mit Schweif entstehen. Die Bahnen sind stark vereinfacht; nicht alle Planeten- oder Kometenbahnen haben dieselbe Form.
@@ -57,7 +92,7 @@ These qualitative features were compiled for this task; they are not a new measu
 2. The Sun is the central mass-dominant body; planets and comets are orbiting Solar System members. Brightness alone does not make B a star because reflected sunlight suffices. The material says that C orbits A, not B. The Sun is not mathematically immobile: more detailed models use the common centre of mass; this refinement is not required.
 3. Examples include omitted planets, moons, asteroids or dwarf planets, missing sizes/distances and orbital inclinations. Accept other valid limits. Do not claim every comet has a tail or all planetary orbits are perfect circles.`,
 [[6,'Drei richtige Klassen mit je passendem Merkmal (je 2).','Three correct classes with an appropriate feature each (2 each).'],[4,'Massedominante Sonne und Umlaufstruktur (2); Helligkeit/Reflexion und C-Bahn korrekt berichtigt (je 1).','Mass-dominant Sun and orbital structure (2); correct reflection and C-orbit corrections (1 each).'],[2,'Zwei konkrete Modellgrenzen (je 1).','Two concrete model limitations (1 each).']]),
-  task('G', 'Unser Sonnensystem in der Milchstraße verorten', 'Locate the Solar System within the Milky Way', ['DE-SL'], '10',
+  task('G', 'Unser Sonnensystem in der Milchstraße verorten', 'Locate the Solar System within the Milky Way', ['DE-SL'], 'GLOBAL',
 `## Material: Ein Planetariumsplakat
 
 Das Plakat zeigt drei beschriftete Ausschnitte: I „Sonne mit Planeten und kleineren Begleitern“; II „Milchstraße: sehr viele Sterne, Sternsysteme, Gas und Staub“; III „Mehrere voneinander verschiedene Galaxien“. Die Größenverhältnisse sind nicht maßstäblich. Für die Aufgabe gilt als gesicherte Zusatzinformation: Die Sonne liegt in der Scheibe der Milchstraße, deutlich außerhalb des galaktischen Zentrums.
@@ -104,14 +139,14 @@ The Moon is to Earth's right. In a simplified instantaneous model, three freely 
   task('DM', 'Galaxienbewegung und bekannte Materie vergleichen', 'Compare galactic motion with known matter', ['DE-HE','DE-BW','DE-BY'], 'Q4',
 `## Material: Modellvergleich für eine Galaxie
 
-Die folgende Tabelle ist ein konstruierter Lehrdatensatz. Ein Newton-Modell verwendet die unabhängig abgeschätzte bekannte gewöhnliche Materie: Sterne sowie auch nicht selbstleuchtendes Gas und Staub. Bei drei Radien erwartet es Kreisbahngeschwindigkeiten von 180, 145 und 120 km/s; beobachtungsähnliche Vergleichswerte betragen 185, 190 und 188 km/s. Die gemeinsame relevante Unsicherheit sei jeweils höchstens 5 km/s. Die Kreisbahnannahme und die Materieabschätzung müssen in einer wirklichen Untersuchung gesondert geprüft werden.
+Die folgende Tabelle ist ein konstruierter Lehrdatensatz. Ein Newton-Modell verwendet die unabhängig abgeschätzte bekannte gewöhnliche Materie: Sterne sowie auch nicht selbstleuchtendes Gas und Staub. Bei drei Radien erwartet es Kreisbahngeschwindigkeiten von 180, 145 und 120 km/s; beobachtungsähnliche Vergleichswerte betragen 185, 190 und 188 km/s. Die für den Vergleich verwendete kombinierte Unsicherheitsgrenze beträgt jeweils ±5 km/s. Die Kreisbahnannahme und die Materieabschätzung müssen in einer wirklichen Untersuchung gesondert geprüft werden.
 
 1. Vergleichen Sie die Reihen. An welchen Stellen reicht das Modell im Rahmen der angegebenen Unsicherheit nicht aus? (4 BE)
 2. Erläutern Sie, wie zusätzliche gravitativ wirksame dunkle Materie diesen Befund im verwendeten Gravitationsmodell erklären kann. Warum genügt die Aussage „Gas und Staub leuchten nicht selbst“ noch nicht als Argument für dunkle Materie? (6 BE)
 3. Beurteilen Sie die Folgerung: „Diese Tabelle beweist eine bestimmte neue Teilchenart.“ Unterscheiden Sie Beobachtung, Modellschluss und noch offene Erklärung; nennen Sie eine zu prüfende Annahme. (6 BE)`,
 `## Material: Comparing models for a galaxy
 
-The table below is a constructed teaching dataset. A Newtonian model uses independently estimated known ordinary matter: stars and also non-self-luminous gas and dust. At three radii it predicts circular orbital speeds of 180, 145 and 120 km/s; observation-like comparison values are 185, 190 and 188 km/s. The relevant combined uncertainty is at most 5 km/s in each case. Circular-orbit assumptions and matter estimates require separate checking in a real investigation.
+The table below is a constructed teaching dataset. A Newtonian model uses independently estimated known ordinary matter: stars and also non-self-luminous gas and dust. At three radii it predicts circular orbital speeds of 180, 145 and 120 km/s; observation-like comparison values are 185, 190 and 188 km/s. Use a combined uncertainty bound of ±5 km/s for each comparison. Circular-orbit assumptions and matter estimates require separate checking in a real investigation.
 
 1. Compare the series. Where does the model fail within the stated uncertainty? (4 marks)
 2. Explain how additional gravitationally effective dark matter can account for this result within the adopted gravity model. Why is “gas and dust do not emit their own light” insufficient evidence for dark matter? (6 marks)
@@ -186,3 +221,8 @@ This qualitative model task supplies rounded information: the standard cosmologi
 export const coverageJudgments = newAssessments.map(g => ({ assessmentGoalId: g.id, coveredGoalIds: g.requires,
   rationale: 'All questions, material, solution and scoring above were individually authored for this named goal. Related background and model-limit statements are not extra coverage claims.',
   status: 'ai_candidate_needs_content_counterreview', humanApproval: false }))
+
+export function renderAssessmentMaterial(goal) {
+  const e = goal.examData
+  return `# ${goal.title}\n\nStatus: ${e.reviewStatus}. AI-authored curriculum task; no human approval claimed.\nGoal ID: ${goal.id}\nActual covered goal IDs: ${e.coveredGoalIds.join(', ')}\n\n${e.taskContent}\n\n## Lösung / Deutsch\n\n${e.solutionContent}\n\n${e.taskContentEn}\n\n## Solution / English\n\n${e.solutionContentEn}\n\n## Bewertungsraster / Scoring\n\nMaximum: ${e.scoring.maxPoints}; passing threshold: ${e.scoring.passingPoints}.\n\n${e.scoring.steps.map(s => `- ${s.id}: ${s.points} BE / marks — ${s.description}`).join('\n')}\n`
+}

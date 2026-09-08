@@ -1,0 +1,839 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "p047-informed-body-counterreview-b-20260908",
+  "reviewer": "OpenAI Codex /root/physics_d043s_blind_b",
+  "reviewedAt": "2026-09-08T04:54:45.221Z",
+  "mode": "informed-full-content-counterreview-not-blind-description-review",
+  "reviewAuthority": "ai_candidate",
+  "provenance": {
+    "fullCurrentCanonicalDeEnRead": 15,
+    "fullProfileBodiesRead": 15,
+    "applicationCasesRead": 30,
+    "authoringSpecRead": true,
+    "fullOriginalRasterImagesViewed": 3,
+    "imageDetail": "original",
+    "readOtherD044rFiles": false,
+    "claimedHumanApproval": false,
+    "claimedFreshBlindDReview": false,
+    "claimedObservedLearnerMastery": false,
+    "modelParametersNotInvented": true,
+    "subagentDelegation": "No free team slot; all individual judgments and image views performed by this reviewer."
+  },
+  "scope": {
+    "profileConfig": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-047-current-nuclear-electronics-mechanics-15-v1.config.json",
+    "authoringSpec": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/p047-authoring.mjs",
+    "goalIds": [
+      "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "f67550ac-df22-5a3e-8172-f04642efca64",
+      "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+      "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "6e7c35e0-7a38-5996-a42e-005038eff0db",
+      "e6a50c74-c922-508c-aa27-07bac2566955",
+      "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+      "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "12260012-cf04-5409-b57d-f5b3a46d9126",
+      "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "1232febe-868a-4dac-b4c2-e35789434601",
+      "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+    ],
+    "reviewedResourceTypesInPConfig": [],
+    "imageReview": "Separate explicitly assigned original-raster counterreview, with hashes below; not an image binding added to P records."
+  },
+  "summary": {
+    "currentProfiles": 15,
+    "keepBody": 15,
+    "reviseBody": 0,
+    "blockingContentFindings": 0,
+    "originalImagesKeep": 3,
+    "originalImagesRevise": 0,
+    "openProvenanceFindings": 0,
+    "resolvedProvenanceFindings": 1,
+    "nativeMaterializerPassed": true,
+    "nativePValidatorBlockingIssues": 0,
+    "approvedRecords": 0,
+    "needsHumanReviewRecords": 15
+  },
+  "resolvedFindings": [
+    {
+      "id": "p047-reviewed-at-future",
+      "type": "provenance",
+      "observedAt": "2026-09-08T04:52:37Z",
+      "originalValue": "2026-09-08T05:10:00Z",
+      "finding": "The declared review time was17 minutes23 seconds in the future relative to the current clock.",
+      "resolution": "Root corrected authoring-spec/candidates and natively rematerialized to2026-09-08T04:52:59Z. This reviewer re-read the current15 record times and verified every profileFingerprint unchanged.",
+      "currentValue": "2026-09-08T04:52:59Z",
+      "status": "resolved",
+      "profileBodiesChanged": false
+    }
+  ],
+  "individualReviews": [
+    {
+      "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "goalFingerprint": "sha256:c7b577e868c4af0f46e942775b65bf8c123323939eaf18d77bf23972206d8dbb",
+      "reviewInputFingerprint": "sha256:2afc9bd5e1da4c020ff74cde1736639eaddc9c5a1231ba385e11322d408c73f3",
+      "profileFingerprint": "sha256:890df899090ee1e3d9ac64e52b45ce5b029d374085bb028a23eaf7ddca9a9570",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Exoplaneten-Nachweise erlaeutern",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "modeling",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Transit und Stern-Radialbewegung werden als verschiedene Messgrößen korrekt erklärt; die veränderte Beobachtungsgeometrie ist eine echte Variation, keine Radialgeschwindigkeits-Massenformel wird zusätzlich gefordert.",
+      "caseChecks": [
+        {
+          "caseId": "recurrent-dips",
+          "decision": "keep",
+          "rationale": "Periodische größere Bedeckung → tiefere Einbrüche unter sonst gleichen Bedingungen; alternative Ursachen und unabhängige Kontrolle sind angemessen."
+        },
+        {
+          "caseId": "rv-without-transit",
+          "decision": "keep",
+          "rationale": "RV ohne Transit ist bei geeigneter Neigung möglich; die orbitale Sichtlinienkomponente verschwindet beim exakt von oben gesehenen Kreisorbit, nicht die Bewegung."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "f67550ac-df22-5a3e-8172-f04642efca64",
+      "goalFingerprint": "sha256:cd0300cc0f06a03c86272a1736c16d5d58599cdd9f7bce2cc8615b7b586f86f7",
+      "reviewInputFingerprint": "sha256:bd3c1f68dbfe2f7200d573fc6b8fe4cebcc369d9c3e7cde412b13d984c32ef7a",
+      "profileFingerprint": "sha256:d9febcdeb79ec2cc53c986cfbb46ec6c79f7baca2ddc05e69fd47527646c865e",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "HR-Diagramm quantitativ für Sternentwicklung nutzen",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "modeling",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "HR-Parameterrechnung ist mit den ausdrücklich gegebenen Modellbeziehungen konsistent. Intrinsische Leuchtkraft, beobachteter Fluss, Hauptreihenzeit und tatsächliches Sternalter bleiben getrennt; die Regimeprüfung ist echter Transfer.",
+      "caseChecks": [
+        {
+          "caseId": "specified-main-sequence",
+          "decision": "keep",
+          "rationale": "R=1 R☉; F/F₀=(L/L☉)(10 pc/d)² liefert d=100 pc, M=2 M☉, t=1,25 Gyr. Die Flussreferenz ist definiert, nicht fälschlich der Sonnenfluss an der Erde."
+        },
+        {
+          "caseId": "giant-and-dust",
+          "decision": "keep",
+          "rationale": "Riese: R=40 R☉. Hauptreihen-Masse-/Zeitformeln sind ausdrücklich nicht anwendbar; Viertelfluss ohne Staubkorrektur überschätzt d um Faktor2."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "goalFingerprint": "sha256:274b12c77c1772bd09b16c12307ecad61b415709316518afbc17d712a27b80a9",
+      "reviewInputFingerprint": "sha256:290733668953f83e0c159a9b47a9a52d74a2d41f2fe54122dd79efcc05967141",
+      "profileFingerprint": "sha256:4a8a3b664ba7cdbfbb9683015ea33b2278cbc5b81d10e18b84cb74fb72d04f7d",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Zerfallsgesetze anwenden",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "modeling",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Einzelisotop-Zerfall und Hintergrundkorrektur bleiben im engen aktuellen Goal; es wird keine Tochterkettenkompetenz übertragen. Zufälliges Einzelereignis und erwarteter Verlauf bleiben getrennt.",
+      "caseChecks": [
+        {
+          "caseId": "remaining-activity",
+          "decision": "keep",
+          "rationale": "800→400→200→100 Bq in jeweils6 h; gleiche relative statt absolute Abnahme, kein vorbestimmtes Kernschicksal."
+        },
+        {
+          "caseId": "background-corrected-series",
+          "decision": "keep",
+          "rationale": "Rohzählraten110/60/35 minus10 ergeben100/50/25 min⁻¹, T=4 h, Prognose22,5 min⁻¹ insgesamt. Effizienzgrenze verhindert Gleichsetzung von Zählrate und absoluter Aktivität."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+      "goalFingerprint": "sha256:3a2f5468bd679eebf4ebc097dfce6cbe7fa40a2851eeae9f9784e11e18922d53",
+      "reviewInputFingerprint": "sha256:f073f7fe1b5e359f78f57df4e4520927c02e9e6e556fb4799d5a6df2f168ef6c",
+      "profileFingerprint": "sha256:eb6dcad74bf56171cd311a2b79c62cbe053d3b57580e49e5f4654830dceecf80",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Bindungsenergie und Massendefekt",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "modeling",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Massenkonvention, Energiezeichen und Bindungsbezug sind konsistent. Einfache Differenzen und E/A konkretisieren denselben Massen-Energie-Zusammenhang; keine zusätzliche Schwellenkinematik.",
+      "caseChecks": [
+        {
+          "caseId": "nucleon-binding",
+          "decision": "keep",
+          "rationale": "Δm=0,0300 u, E_B=27,945 MeV und E_B/A≈6,99 MeV; Zerlegung erfordert Gesamtenergiezufuhr."
+        },
+        {
+          "caseId": "reaction-sign",
+          "decision": "keep",
+          "rationale": "Q_R=+9,315 MeV, Q_S=−4,6575 MeV. Vollständige Elektronenbilanz ist vorausgesetzt; fehlende Elektroneninformation wird nicht durch Vorzeichenwechsel ersetzt."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "goalFingerprint": "sha256:8ffe9d76f231ad79cd5c470e50dcd9d407fdccb6800f6aa1ff254c738928c4de",
+      "reviewInputFingerprint": "sha256:36135ca5856d3547f6af3a3d75fea2cf6b93fb45693de7aa8a9d79869207178b",
+      "profileFingerprint": "sha256:0c350620c60d6cb0336c2adbaa2eb0f1fbeab9032ecb3697b971743bd8210079",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Zerfallsreihen analysieren",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "representation",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Repräsentationsprofil bleibt bei der Konsistenz vorgegebener Reihen. Eigene Korrektur/Zeichnung und Grenzen der A/Z-Buchhaltung decken Interpretation und Konstruktion ab; keine digitale Recherche oder reale Verzweigungswahrscheinlichkeit wird gespendet.",
+      "caseChecks": [
+        {
+          "caseId": "supplied-alpha-beta",
+          "decision": "keep",
+          "rationale": "(220,86)→(216,84)→(216,85)→(212,83) für α/β⁻/α; Folgefehler wird konsequent korrigiert."
+        },
+        {
+          "caseId": "supplied-beta-plus-gamma",
+          "decision": "keep",
+          "rationale": "β⁺ senkt Z bei gleichem A; γ lässt A/Z unverändert. Zustandstern bezeichnet Anregung; hypothetische Konsistenz ist kein empirischer Zerfallsnachweis."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "6e7c35e0-7a38-5996-a42e-005038eff0db",
+      "goalFingerprint": "sha256:745ffa7893a9e56d09821d6f24a96306a1b8acc7f4afcceaffe5ce75d35cc8f7",
+      "reviewInputFingerprint": "sha256:20a4e98774a359900c61ea68816af5de81ee63340599efa2bd24875a965cde5d",
+      "profileFingerprint": "sha256:9dc53e8916fb6bf173c2aa9c22b0f50429ad0c538ecb438d35861bdbe9d75727",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Potenzialtopfmodell für Kerne",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "representation",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Qualitatives Kern-Topfmodell bleibt von quantitativer Elektronen-Eigenwertrechnung getrennt. Kleine gegebene Energiedifferenzen dienen der Modellskizze und führen keine Schrödingergleichung ein.",
+      "caseChecks": [
+        {
+          "caseId": "separation-arrow",
+          "decision": "keep",
+          "rationale": "U_innen=−40, E=−8, U_außen=0 MeV: Ablöseenergie8 MeV, nicht40 MeV; Niveau und Potential sind unterschiedliche Größen."
+        },
+        {
+          "caseId": "shallower-level-and-new-zero",
+          "decision": "keep",
+          "rationale": "Anhebung auf−3 MeV reduziert Abstand auf3 MeV. Gemeinsame Verschiebung+20 lässt17<20 gebunden; ein Teilchenniveau ist keine vollständige Kernbindungsbilanz."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+      "goalFingerprint": "sha256:615b89384cd6d8b0995a873e37353b8afd66e231a347b6a5df235254e12f31bc",
+      "reviewInputFingerprint": "sha256:372bbaaff55c58469903b3a651974c9a0ed6c50f15472f1651bb496d277969f0",
+      "profileFingerprint": "sha256:2853faf38c8a6ab132e776af3d29b36dd5bc5ad116336d039acf43dacaeba1ef",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Strahlendosis und Schutz",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "modeling",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Dosisarten, Gewebe-/Strahlungsgewichtung und zeitnormierter Schutzvergleich passen exakt zum aktuellen Goal. Die gegebenen w_T=0,2/0,1 sind künstliche Modellgewichte, keine Behauptung amtlicher Gewebefaktoren; übrige Gewebedosen sind ausdrücklich null.",
+      "caseChecks": [
+        {
+          "caseId": "three-dose-levels",
+          "decision": "keep",
+          "rationale": "H_A=12 µSv, H_B=4 µSv, E_eff=2,8 µSv; ungewichtete D_A=2,5 µGy. Einheiten und gewichtete/ungewichtete Größen bleiben getrennt."
+        },
+        {
+          "caseId": "shield-and-time",
+          "decision": "keep",
+          "rationale": "8→2 µGy bei gleicher Dauer:6 µGy/75% Reduktion. Bei2 µGy in5 min statt10 min ist die gleiche-Zeit-Dosis4 µGy, also50% Reduktion. Keine Sicherheits- oder individuelle Risikogarantie."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+      "goalFingerprint": "sha256:85afe660e3df030005a91e0287620b71c0ab0d174b28b8d94fa686a90831e8e8",
+      "reviewInputFingerprint": "sha256:95d0d6561cb1d49de3569389714fc0542c4ab287fb42549c945c6df34244e79c",
+      "profileFingerprint": "sha256:3a298811ab1aa5101ab6d6606fd16a70e5a140ef77e045384dee365484311aa8",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Nuklidkarten und Zerfallsreihen auswerten",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "data",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Das Datenprofil verlangt tatsächlich digitale Quelle und geöffnete Nukliddatensätze, nicht nur auswendig bekannte A/Z-Regeln. Legende, Zustand, Unsicherheit und Verzweigung sind überprüfbare Datenarbeit; fehlende Werte dürfen offenbleiben.",
+      "caseChecks": [
+        {
+          "caseId": "live-chart-short-chain",
+          "decision": "keep",
+          "rationale": "Quelle/Abruf, Z,N,T und Zweige werden dokumentiert, Töchter geöffnet und Reihe selbst rekonstruiert. β⁻:Z+1/N−1 bei konstantem A."
+        },
+        {
+          "caseId": "branch-audit",
+          "decision": "keep",
+          "rationale": "Verzweigter oder metastabiler Datensatz verändert die Datenanforderung substanziell. IT darf A/Z erhalten und den Zustand ändern; Farben beweisen keine Zweiganteile. API-Machbarkeitsprobe mit14C/14N und40K erfolgreich."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "goalFingerprint": "sha256:dcf37bb6f4400c58c2a7582ffd7c8fb090d141753719de82ecfb9e30228ae0eb",
+      "reviewInputFingerprint": "sha256:004cb001b51968185c0fa3ef7358cd7f3467a420581a2aa9efd29941af991cd8",
+      "profileFingerprint": "sha256:49998852d2b4f047428dc7dd224fda8af790bad8a438cea9ab60d209140fbc3d",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "p-n-Übergang und Diode",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "experiment",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Experiment-Archetyp passt zur geforderten realen Diodenkennlinie. Beide Sprachen verlangen eigene Messung, Messgrenzen und qualitative Halbleiterdeutung; die Ausgangswelle ist ein sinnvoller Anwendungstransfer.",
+      "caseChecks": [
+        {
+          "caseId": "supervised-iv",
+          "decision": "keep",
+          "rationale": "Geprüfte0–5-V-Quelle,1 kΩ und strombegrenzter Aufbau sind verhältnismäßig abgesichert; A in Reihe/V an Diode, signierte Achsen, Sperrstrom unter Auflösung und keine feste universelle0,7-V-Schwelle."
+        },
+        {
+          "caseId": "reverse-the-rectifier",
+          "decision": "keep",
+          "rationale": "±2-V-Eingang, reale Kennlinie und umgekehrte Diode liefern die andere Halbwelle, keine geglättete konstante Ausgangsspannung; Last/Frequenz/Eingang bleiben kontrolliert."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "goalFingerprint": "sha256:741a4c9f9bbf4a5331ecb5acc8ca988727ac6a3f11275e5d6e80eb318294eee9",
+      "reviewInputFingerprint": "sha256:333f50783602cd4fbd1f629361060ed6dd8941a9d44d8a24900186b9f7724ff4",
+      "profileFingerprint": "sha256:491ba891366768f64f29121c4e8b43666e55d984a3bab8992282499548129594",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Waagerechter Wurf analysieren",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "experiment",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Beide Fälle verlangen tatsächliche eigene Videodaten und nicht nur ideale Wurfkoordinaten. Kalibrierung, Koordinaten, Auflösung und eine kontrollierte Variation erfüllen die experimentelle Goal-Fassung.",
+      "caseChecks": [
+        {
+          "caseId": "low-height-video",
+          "decision": "keep",
+          "rationale": "Seitliche Aufnahme, Maßstab/Bildzeiten, mindestens5 Orte und x(t)/y(t)/x-y-Repräsentationen erlauben getrennte Prüfung der Komponenten; kleiner gesicherter Aufbau und freie Flugrichtung sind benannt."
+        },
+        {
+          "caseId": "changed-horizontal-launch",
+          "decision": "keep",
+          "rationale": "Andere horizontale Geschwindigkeit bei gleicher Höhe/v_y0=0 verändert die ideale Fallzeit nicht; Reichweite und Unsicherheit werden verglichen. Aufwärts gerichteter Fehlstart verletzt die Bedingung statt die Überlagerung zu widerlegen."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "12260012-cf04-5409-b57d-f5b3a46d9126",
+      "goalFingerprint": "sha256:8a25b596232929d9715ddd79f1163f4910f31d437be914e82a7031fc37155c99",
+      "reviewInputFingerprint": "sha256:e85efbbb0bcf960387fbc3f54d9c05e8831cbc727ba67c42cac9f2d410049266",
+      "profileFingerprint": "sha256:84aabd16d9216dddbdb180aa27be6bddb5d66fd6f7decea38680ce3e33fd92b5",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Freier Fall mit Luftreibung und Grenzgeschwindigkeit",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "modeling",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Einfaches angegebenes Widerstandsmodell wird sinntragend zur Erklärung der Grenzgeschwindigkeit verwendet; Vorzeichen von v und a bleiben getrennt. Keine Differentialgleichung oder reale Sprunganleitung.",
+      "caseChecks": [
+        {
+          "caseId": "quadratic-model",
+          "decision": "keep",
+          "rationale": "m g=2 N, k=0,020: v_G=10 m/s. Widerstand wächst vonnull, Beschleunigung nimmt ab, Kräftegleichgewicht bedeutet nicht Stillstand."
+        },
+        {
+          "caseId": "drag-step",
+          "decision": "keep",
+          "rationale": "Nach k×4: Widerstand8 N, Gewicht2 N; resultierende Kraft aufwärts bei zunächst abwärts gerichteter Bewegung. Neue Grenzgeschwindigkeit5 m/s, keine sofortige Umkehr."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "goalFingerprint": "sha256:d957c84a1c98a0c86bb5e3f2ad78f743a55f6ced59217429f31e5760223b9f99",
+      "reviewInputFingerprint": "sha256:f27d6050807e5ba935f4a0a2e2eeb3fa9a74a62e6afd046bc4f60a6d84bfefda",
+      "profileFingerprint": "sha256:7ff508bcf6297f6a8b2bde91225d867efe56a37e57307fc2d1254da297c3e9b7",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Supraleitung qualitativ verstehen",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "concept",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Den wiederverwendeten Body selbst vollständig gegengelesen: Widerstandsübergang, Meissner-Effekt und Beobachtungsgrenzen bleiben korrekt. Ein unspezifisches Schweben ist kein Supraleitungsbeweis; keine Kryoarbeit durch Lernende verlangt.",
+      "caseChecks": [
+        {
+          "caseId": "resistance-transition",
+          "decision": "keep",
+          "rationale": "80<90 K erlaubt den gegebenen supraleitenden Modellbetrieb;95>90 K hebt ihn auf. Idealisierter Nullwiderstand wird von unterhalb Messgrenze unterschieden."
+        },
+        {
+          "caseId": "levitation-comparison",
+          "decision": "keep",
+          "rationale": "Dokumentierte Flussverdrängung unter T_c unterstützt Meissner-Zuordnung; unbekanntes Video B braucht zusätzliche Belege. Die Evidenzqualität, nicht nur die Temperaturzahl, ändert sich."
+        }
+      ],
+      "notes": [
+        "Historical dissent was read as retained provenance, not adopted as evidence of current consensus or as a current independent-D outcome."
+      ]
+    },
+    {
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "goalFingerprint": "sha256:6d8a7ccb7de4314f36beeb1de5be33558faefe769a12772da76b97017b1ad929",
+      "reviewInputFingerprint": "sha256:0e9ba82937de946b2dbdfe234d2727f7a95e8456cacbbe07d08e5e064c4edc1a",
+      "profileFingerprint": "sha256:b5ae15a9b9e1aba7f95b0af2b8054bb10fe28950e9755abc1c1add30af4a6791",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Quantenphysikalische Bändermodelle",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "representation",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Den wiederverwendeten Body gegen die neue explizite DE/EN-Fassung selbst geprüft: Zustandsangebot und Besetzung erklären Leitfähigkeit, nicht die Bandentstehung. Eigenes Schema und Temperaturvariation bleiben qualitativ.",
+      "caseChecks": [
+        {
+          "caseId": "complete-band-schema",
+          "decision": "keep",
+          "rationale": "M:0–2 eV besetzt,2–4 eV erlaubt/leergeblieben; S:Valenz0–1 voll,1–3 Lücke ohne erlaubte Zustände,3–5 leer. E_F=2 in der Lücke ist kein Elektronenzustand."
+        },
+        {
+          "caseId": "thermal-excitation",
+          "decision": "keep",
+          "rationale": "Endliche Temperatur erzeugt im angegebenen intrinsischen Modell thermische Besetzungsänderung samt Elektron-Loch-Paaren; erlaubt/leere Zustände bleiben von der Lücke getrennt. Keine Fermi-Dirac-Rechenpflicht."
+        }
+      ],
+      "notes": [
+        "Historical dissent was read as retained provenance, not adopted as evidence of current consensus or as a current independent-D outcome."
+      ]
+    },
+    {
+      "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
+      "goalFingerprint": "sha256:7cc528ad03e33f019932f86d890e04ad485deed506a41b826a1795564e1e01cb",
+      "reviewInputFingerprint": "sha256:a1834cb9c602e488f392ba45c7e935dff947e7c51a84899af4da74600cdb6065",
+      "profileFingerprint": "sha256:dfb7f463fff020663eb7856a707d091b7f8198fe7987f05561712ae974fe9132",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Unfallphysik: Kraftstoß und Knautschzone",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "modeling",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Den wiederverwendeten Body und alle Zahlen selbst nachgerechnet. Mittlere Kraft, Spitzenkraft und medizinische Wirkung bleiben getrennt; vorheriges Bremsen und längere Aufprallzeit ändern verschiedene Modellparameter.",
+      "caseChecks": [
+        {
+          "caseId": "crumpling-time",
+          "decision": "keep",
+          "rationale": "1000 kg,+6→0 m/s:Δp=−6000 Ns;0,10/0,30 s liefern−60000/−20000 N. Deformationszeit verändert nicht den vorgegebenen Gesamtimpuls."
+        },
+        {
+          "caseId": "spacing-before-impact",
+          "decision": "keep",
+          "rationale": "Bei gleicher0,10 s liefert3 statt6 m/s−3000 statt−6000 Ns und30000 statt60000 N Betrag. Stopp vor Hindernis bedeutet keinen Aufprallimpuls, aber weiterhin Bremsimpuls."
+        }
+      ],
+      "notes": [
+        "Historical dissent was read as retained provenance, not adopted as evidence of current consensus or as a current independent-D outcome."
+      ]
+    },
+    {
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "goalFingerprint": "sha256:eb057cbd36e2324347f60f0c31df17a80b6163948aab8cefb6f0a86b59ca9778",
+      "reviewInputFingerprint": "sha256:8c2cfc26ba4fad169008c70622e151068125c0f07fea238ff33e5de65696491f",
+      "profileFingerprint": "sha256:084c984a81c405c617ae91bf5e662816ed9c674a2ea0ed1a56a79fdca02291b4",
+      "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "reviewedAt": "2026-09-08T04:52:59Z",
+      "title": "Schiefen Wurf beschreiben",
+      "contentDecision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "archetype": "representation",
+      "archetypeFit": "pass",
+      "coverage": {
+        "expectations": 2,
+        "independentCases": 2,
+        "freshVariation": true,
+        "independentTransfer": true,
+        "scopeExpansionRequired": false
+      },
+      "rationale": "Den wiederverwendeten Body anhand der aktuellen qualitativen DE/EN-Beschreibung und jeder Tabellenzeile geprüft. Keine Pflicht zu Winkeloptimierung/Trigonometrie; gemeinsame Zeit und einmalige Gravitationsbeschleunigung sind konsistent.",
+      "caseChecks": [
+        {
+          "caseId": "upward-components",
+          "decision": "keep",
+          "rationale": "Tabelle erfüllt x=3t, y=4t−5t², v_y=4−10t. Am Scheitel t=0,4 s ist v_y=0, v_x=3 m/s und a_y=−10 m/s² bleiben ungleichnull."
+        },
+        {
+          "caseId": "downward-launch",
+          "decision": "keep",
+          "rationale": "Negativer vertikaler Startanteil bei positiver Höhe erzeugt sofort sinkende, steiler werdende Bahn. Kein nachträglicher Scheitel oberhalb des Starts und keine doppelte Fallbeschleunigung."
+        }
+      ],
+      "notes": [
+        "Historical dissent was read as retained provenance, not adopted as evidence of current consensus or as a current independent-D outcome."
+      ]
+    }
+  ],
+  "imageReviews": [
+    {
+      "goalId": "f322c268-dc16-5d50-82dd-209834f20208",
+      "canonicalPath": "curricula/DE/Gymnasium/visualizations/physik/f322c268-dc16-5d50-82dd-209834f20208/f322c268-dc16-5d50-82dd-209834f20208.jpg",
+      "canonicalSha256": "sha256:7e23746b3c6fca6100e7746ad0820a2d8be73c54528f0f3a799e6cd910080863",
+      "publicSha256": "sha256:7e23746b3c6fca6100e7746ad0820a2d8be73c54528f0f3a799e6cd910080863",
+      "receiptAfterHash": "sha256:7e23746b3c6fca6100e7746ad0820a2d8be73c54528f0f3a799e6cd910080863",
+      "viewedFullOriginal": true,
+      "decision": "keep_as_illustration",
+      "humanApproval": false,
+      "requiredChanges": [],
+      "rationale": "All four rows and final note inspected. CO2e=energy demand×emission factor and E_input=E_useful/eta are correct. Lower-emission comparisons state equal emission factor and, for efficiency, equal utility; reference quantity/boundary replace a universal equal-useful-energy claim. Qualitative fossil/renewable icons give no numerical emissions or absolute zero-emission promise. All labels/formulas readable."
+    },
+    {
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "canonicalPath": "curricula/DE/Gymnasium/visualizations/physik/658cf33d-a0c2-5d47-801a-3dbcd5cac074/658cf33d-a0c2-5d47-801a-3dbcd5cac074.jpg",
+      "canonicalSha256": "sha256:2fe6bae6f26cb1eca354dc7ffdaa9e5df40c551ab2beb1c3e65be9e2ea96e9f7",
+      "publicSha256": "sha256:2fe6bae6f26cb1eca354dc7ffdaa9e5df40c551ab2beb1c3e65be9e2ea96e9f7",
+      "receiptAfterHash": "sha256:2fe6bae6f26cb1eca354dc7ffdaa9e5df40c551ab2beb1c3e65be9e2ea96e9f7",
+      "viewedFullOriginal": true,
+      "decision": "keep_as_illustration",
+      "humanApproval": false,
+      "requiredChanges": [],
+      "rationale": "All three panels, axes, legend and footer inspected at original resolution. Explicit T=0 K; metal is one partly occupied band without a gap, while intrinsic semiconductor/insulator have full valence and empty conduction bands separated by no-state gaps. EF in a gap is an occupation reference, not an available state. Finite-temperature note is appropriately qualitative; no claim that EF creates bands."
+    },
+    {
+      "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+      "canonicalPath": "curricula/DE/Gymnasium/visualizations/physik/e6a50c74-c922-508c-aa27-07bac2566955/e6a50c74-c922-508c-aa27-07bac2566955.jpg",
+      "canonicalSha256": "sha256:a6d27a0127e66ad16e2bf338cfc5606d1408e9071bf4ea5d6fa4db50c60d7b25",
+      "publicSha256": "sha256:a6d27a0127e66ad16e2bf338cfc5606d1408e9071bf4ea5d6fa4db50c60d7b25",
+      "receiptAfterHash": "sha256:a6d27a0127e66ad16e2bf338cfc5606d1408e9071bf4ea5d6fa4db50c60d7b25",
+      "viewedFullOriginal": true,
+      "decision": "keep_as_illustration",
+      "humanApproval": false,
+      "requiredChanges": [],
+      "rationale": "All formulas, indices, units, model statement and shielding comparison inspected. D=Eabs/m in Gy=J/kg; HT sums radiation-weighted tissue doses; Eeff sums tissue weights, both Sv. Dimensionless supplied weights and tissue/radiation indices are visible. Illustrative4→1 µGy gives3 µGy and75% reduction; equal source/duration/geometry and no safety guarantee are explicit. No incorrect equality between dose units and percentages."
+    }
+  ],
+  "calculationCrossChecks": {
+    "hr": {
+      "radiusSolar": 1,
+      "distancePc": 100,
+      "massSolar": 2,
+      "lifeGyr": 1.25,
+      "giantRadiusSolar": 40,
+      "dustDistanceFactor": 2
+    },
+    "decay": {
+      "activity18h": 100,
+      "correctedCounts": [
+        100,
+        50,
+        25
+      ],
+      "nextRaw": 22.5
+    },
+    "binding": {
+      "defectU": 0.03000000000000025,
+      "bindingMeV": 27.945,
+      "perNucleonMeV": 6.98625,
+      "qRMeV": 9.315,
+      "qSMeV": -4.6575
+    },
+    "dose": {
+      "hA": 12,
+      "hB": 4,
+      "effective": 2.8000000000000003,
+      "dA": 2.5,
+      "firstReduction": 6,
+      "firstFraction": 0.75,
+      "equalTimeShielded": 4,
+      "equalTimeFraction": 0.5
+    },
+    "drag": {
+      "weight": 2,
+      "terminal": 10,
+      "afterStepDrag": 8,
+      "newTerminal": 5
+    },
+    "crash": {
+      "momentum1000at6": -6000,
+      "force01": -60000,
+      "force03": -20000,
+      "prebrakedForce": -30000
+    },
+    "oblique": {
+      "times": [
+        0,
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "positions": [
+        [
+          0,
+          0
+        ],
+        [
+          0.6000000000000001,
+          0.6000000000000001
+        ],
+        [
+          1.2000000000000002,
+          0.8
+        ],
+        [
+          1.7999999999999998,
+          0.6000000000000001
+        ],
+        [
+          2.4000000000000004,
+          0
+        ]
+      ],
+      "verticalSpeeds": [
+        4,
+        2,
+        0,
+        -2,
+        -4
+      ]
+    }
+  },
+  "externalReadOnlyChecks": [
+    {
+      "url": "https://science.nasa.gov/exoplanets/how-we-find-and-characterize/",
+      "support": "NASA's transit and radial-velocity descriptions support the two distinct observables; no mass formula imported."
+    },
+    {
+      "url": "https://www.gesetze-im-internet.de/strlschv_2018/anlage_18.html",
+      "support": "Section B supports radiation weighting into tissue equivalent dose and tissue weighting into effective dose. Only terminology/model structure checked, not legal or clinical compliance; P's artificial tissue weights are not asserted official values."
+    },
+    {
+      "url": "https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html",
+      "support": "Official digital chart entrypoint reachable. Text view exposes a JavaScript-loading shell; no interactive browser manipulation is claimed."
+    },
+    {
+      "url": "https://www-nds.iaea.org/relnsd/vcharthtml/api_v0_guide.html",
+      "support": "Official API documentation distinguishes ground states/levels, decay modes, percentages and uncertainties. Access route tested with the documented User-Agent."
+    },
+    {
+      "url": "https://www-nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=14c",
+      "httpStatus": 200,
+      "observed": {
+        "Z": 6,
+        "N": 8,
+        "halfLife": 5700,
+        "halfLifeUnit": "Y",
+        "halfLifeUncertainty": 30,
+        "decay": "B-",
+        "branchPercent": 100,
+        "extractionDate": "2026-09-08"
+      }
+    },
+    {
+      "url": "https://www-nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=14n",
+      "httpStatus": 200,
+      "observed": {
+        "Z": 7,
+        "N": 7,
+        "halfLife": "STABLE",
+        "extractionDate": "2026-09-08"
+      }
+    },
+    {
+      "url": "https://www-nds.iaea.org/relnsd/v1/data?fields=ground_states&nuclides=40k",
+      "httpStatus": 200,
+      "observed": {
+        "Z": 19,
+        "N": 21,
+        "decay1": "B-",
+        "branch1Percent": 89.28,
+        "branch1UncertaintyPercent": 0.11,
+        "decay2": "EC+B+",
+        "branch2Percent": 10.72,
+        "branch2UncertaintyPercent": 0.11,
+        "extractionDate": "2026-09-08"
+      },
+      "limit": "The combined EC+B+ entry is retained, not split into invented separate probabilities; successful retrieval checks case feasibility, not actual learner work."
+    }
+  ],
+  "nativeChecks": [
+    {
+      "tool": "materializePositiveGoalEvidenceCandidates.ts (read-only verify)",
+      "exitCode": 0,
+      "output": "Verified curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-047-current-nuclear-electronics-mechanics-15-v1.review.jsonl: 15 current AI candidate profile(s)."
+    },
+    {
+      "tool": "positiveGoalEvidenceReview.ts --mode=check",
+      "exitCode": 0,
+      "output": "# Positive Goal Evidence Review: canonical-physics-positive-evidence-v1-b047-current-15-v1\nScope: P047 current individual nuclear, electronics, mechanics and astronomy profiles; AI E1/G1\nConfigured goals: 15\nApproved: 0\nNeeds human review: 15\nRejected: 0\nBlocking issues: 0"
+    }
+  ],
+  "artifactHashes": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-047-current-nuclear-electronics-mechanics-15-v1.config.json",
+      "sha256": "sha256:af8c83fc8e8ae059c68a13c3ac3cb335560c5b6995cd3850688ddf5e615c110c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-047-current-nuclear-electronics-mechanics-15-v1.candidates.json",
+      "sha256": "sha256:bc06213db6b1dfaeb17b1ee9f6f7ed20af73c791a3a18fa8b4e3ca296fc615c7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-047-current-nuclear-electronics-mechanics-15-v1.review.jsonl",
+      "sha256": "sha256:7aed343001b3a3a84e51329944e8278bc91af7e15ae987898e6444a671365fbe"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/p047-authoring.mjs",
+      "sha256": "sha256:f94b51e64f27f35936aa3b35b647f6f6bb6e72c17acd4589b165042458ded6d6"
+    }
+  ],
+  "mutationsByThisReviewer": [
+    "Only this new p047-informed-body-counterreview.json"
+  ],
+  "noCanonicalSourceRegistryProfileOrImageWrites": true
+}
+

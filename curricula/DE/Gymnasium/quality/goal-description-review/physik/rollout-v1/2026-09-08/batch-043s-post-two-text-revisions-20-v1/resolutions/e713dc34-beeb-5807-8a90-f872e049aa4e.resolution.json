@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-resolution-e713dc34-beeb-5807-8a90-f872e049aa4e",
+  "goal": {
+    "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:55c42a096e6edafe005c5e481ccfac675008f975daffff86733ba23a8c84b3db",
+    "pageFingerprint": "sha256:1cde8fb2f35c0d5e5174b70fbd2a0d57ab234dbdb5e5b8339aa8488a2705b682",
+    "goalReviewContextFingerprint": "sha256:3b8f95556f07840fb43de8317a57ec188f661cb56d9ce09a0f0c03704829d3ab",
+    "finalText": {
+      "titleDe": "Entropie E04: Makroskopische Definition (Clausius)",
+      "titleEn": "Entropy E04: Macroscopic Definition (Clausius)",
+      "descriptionDe": "Die lernende Person nutzt die Definition $dS = \\frac{\\delta Q_{\\mathrm{rev}}}{T}$ und erklärt, warum zur Berechnung von $\\Delta S$ ein reversibler Ersatzweg verwendet werden darf (weil $S$ eine Zustandsgröße ist).",
+      "descriptionEn": "The learner uses the definition $dS = \\frac{\\delta Q_{\\mathrm{rev}}}{T}$ and explains why a reversible substitute path may be used to compute $\\Delta S$ (because $S$ is a state variable)."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-a",
+      "campaignDigest": "sha256:391cf1a5e42f247d296d7dabee51f19e8d8d42cde19225606a4c67a93d68f0a2",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:3b8f95556f07840fb43de8317a57ec188f661cb56d9ce09a0f0c03704829d3ab",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:015f4baff90e3e2c7ca94d4801524bdc56802dcddc05ef51acb75c4baa6bbcf9",
+      "resultsDigest": "sha256:8e089b9ab62e641fb5fe1a0bce9351689c3b156cfdf0ee7cb0d6909ddf9ab583",
+      "recordId": "physik-b043s-a-e713dc34-beeb-5807-8a90-f872e049aa4e",
+      "recordDigest": "sha256:dd8f2c58cf573f1749e6811d170a1eace3e374eb25700c2e6392aca7acf08524"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-b",
+      "campaignDigest": "sha256:20cbf219fae84e213a2c7fde01532c57fcbb83cbe5d68fddf79962e7e39e1c13",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:3b8f95556f07840fb43de8317a57ec188f661cb56d9ce09a0f0c03704829d3ab",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.reviewer-b",
+      "runManifestDigest": "sha256:bc1f2ec2b93b9798902669a63ab9c39a1533c2e87b00c82dff05c26da73e7d02",
+      "resultsDigest": "sha256:3a1d9386c4be6a741d80994120ec26bee4eb70d13927517372854bd17abc64cf",
+      "recordId": "physics-d043s-blind-b.007",
+      "recordDigest": "sha256:13982ab3f1c380d070f7c963d9d8503efba739bcbfc1608d1dfba86b20208b68"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:0ac2e7783c408851408df0dd36fc27be364a3ffdc36d4604cd881aac73100c15"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b043s-current-twenty-synthesis-v1-20260908",
+    "manifestDigest": "sha256:e2fc84088dfaa354c9bc4a7cce395f03dbfcc6f059074984cbc301190cc005a2",
+    "manifestFingerprint": "sha256:15f06eb11133becc54c3c83fa62087609fda37421d4bffef2ec5871e58fe54b9",
+    "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-007"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-007",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex /root; explicit per-goal comparison of two newly isolated current-context reviews; AI candidate evidence only",
+    "synthesizedAt": "2026-09-08T03:59:05.504Z",
+    "rationaleDe": "Beide Runden bestätigen reversible Ersatzwege mit denselben Endzuständen und absoluter Temperatur. A prüft ausdrücklich, warum ein realer adiabatischer irreversibler Weg trotz Q=0 keine verschwindende Entropieänderung erzwingt.",
+    "rationaleEn": "Both rounds confirm reversible substitute paths with identical endpoints and absolute temperature. A explicitly tests why an actual adiabatic irreversible path with Q=0 need not have zero entropy change.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Entropie ist eine Zustandsgröße. Ihre Änderung zwischen denselben Gleichgewichtszuständen kann mit δQrev/T entlang eines reversiblen Ersatzwegs bestimmt werden; die tatsächlich übertragene Wärme eines irreversiblen Wegs darf nicht beliebig eingesetzt werden.",
+      "essentialUnderstandingEn": "Entropy is a state variable. Its change between the same equilibrium states can be calculated from δQrev/T along a reversible substitute path; actual heat transferred along an irreversible path cannot simply be substituted.",
+      "observablePerformanceDe": "Die lernende Person erklärt die Bedeutung von δQrev und absoluter Temperatur, wählt einen Ersatzweg mit denselben Endzuständen und bestimmt aus bereitgestellten reversiblen Wärmeschritten die Entropieänderung samt Vorzeichen.",
+      "observablePerformanceEn": "The learner explains δQrev and absolute temperature, selects a substitute path with the same endpoints and determines entropy change and its sign from supplied reversible heat steps.",
+      "transferExpectationDe": "Eine neue Aufgabe gibt einen realen adiabatischen irreversiblen Weg und einen reversiblen Ersatzweg mit Wärmeaufnahme zwischen denselben Endzuständen vor. Die lernende Person begründet, warum Qreal = 0 nicht ΔS = 0 bedeutet.",
+      "transferExpectationEn": "A fresh task supplies an actual adiabatic irreversible path and a reversible substitute path with heat absorption between the same endpoints. The learner explains why Qactual = 0 does not imply ΔS = 0."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-0536db50ca8a0053fd43117ddbf9c7fcb9a5a320193897a3b2b0d19f28001d96",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d1a3b0ac91490ffb9fba49f766e7974482776cde51eebb11702635f16eff3f13"
+}

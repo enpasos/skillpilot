@@ -1,3 +1,7 @@
+import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { preservePhysicsB040ViewPlacements } from './lib/physicsB040ViewPlacements'
+import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
+import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -893,6 +897,8 @@ const buildExtraction = (config: ExtractionConfig) => {
     }
   }
 
+  applyPhysicsB040AstroSplitMappings(decisions, mappings)
+  applyPhysicsFinalDiodeMappings(decisions, mappings)
   const uniqueTargetIds = [...new Set(mappings.map((mapping) => mapping.canonicalGoalId))]
   const missingCanonicalGoalIds = uniqueTargetIds.filter((goalId) => !canonicalTitleById.has(goalId))
   if (missingCanonicalGoalIds.length > 0) {
@@ -1167,6 +1173,8 @@ for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
   template.viewId = String(template.viewId).replace('de-bb', 'de-th')
   template.scope = { ...(template.scope as Record<string, unknown>), jurisdiction }
   addMissingMappedGoalsToView(template, suffix)
+  preservePhysicsB040ViewPlacements(repoRoot, thViewPath, template)
+  preservePhysicsB034ViewPlacements(repoRoot, thViewPath, template)
   writeJson(thViewPath, template)
 }
 

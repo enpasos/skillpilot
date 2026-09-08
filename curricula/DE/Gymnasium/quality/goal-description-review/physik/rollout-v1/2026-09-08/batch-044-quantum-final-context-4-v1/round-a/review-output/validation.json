@@ -1,0 +1,29 @@
+{
+  "artifactType": "goal-description-review-native-validation-receipt",
+  "schemaVersion": 1,
+  "runId": "physik-b044-quantum-final-context-4-v1-20260908-run-a",
+  "validatedAt": "2026-09-08T03:47:17Z",
+  "validator": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+  "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH npm --prefix app run validate:goal-description-review -- --bundle ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/review-bundle-manifest.json --input ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/description-review-input.json --campaign ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/description-review-campaign.json --run ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/review-output/run-manifest.json --batch-input ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/batches/physik-rollout-v1-batch-044-quantum-final-context-4-v1-20260908-first-pass-a.batch-001.input.jsonl --records ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/review-output/description-records.jsonl",
+  "exitCode": 0,
+  "stdout": "\n> skillpilot@0.0.0 validate:goal-description-review\n> tsx scripts/validateGoalDescriptionReviewCampaign.ts --bundle ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/review-bundle-manifest.json --input ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/description-review-input.json --campaign ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/description-review-campaign.json --run ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/review-output/run-manifest.json --batch-input ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/batches/physik-rollout-v1-batch-044-quantum-final-context-4-v1-20260908-first-pass-a.batch-001.input.jsonl --records ../curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/round-a/review-output/description-records.jsonl\n\nGoal-description review batch valid: 4\n",
+  "result": "pass",
+  "recordCount": 4,
+  "nativeValidationScope": "Bound bundle, complete bilingual/contextual input, complete campaign batch, run manifest, exact current DE/EN text, goal/page fingerprints, ordered one-record-per-goal coverage, candidate/ai_candidate authority and output digest.",
+  "supplementaryBindingChecks": {
+    "inspectedRastersBoundAndCurrent": 4,
+    "recordDigestMatchesRun": true,
+    "generationParametersDigestMatchesRun": true,
+    "fileDigests": {
+      "description-review-input.json": "sha256:1772b764f37143b120f9225498113d0b3ef21a1b0d2a313424f67a2d8259c776",
+      "description-review-campaign.json": "sha256:139dc6c1a1850a71e957fae9b5dd267a25a17842141ad22f23b35fce25cdea32",
+      "review-bundle-manifest.json": "sha256:8a28b05610d54141990edb59b20fe71526fd8863078bbb3783667f31cd33a39d",
+      "review-output/description-records.jsonl": "sha256:51ddf7ad65f5783848944215f3a7052fc69c3498bf11f4d613af704497179660",
+      "review-output/run-manifest.json": "sha256:5873dab56492fc4c033b0a1bd01b3370e6d8f4850dd3ab54bb093721cf710af6",
+      "inspection-authoring.json": "sha256:6daacdc29011eed49f657fde4534665edd2e341324f87383c267f89b92338f04",
+      "review-provenance.json": "sha256:ba31ac3006819ebc3ac7751e7db53bc242b81ac8b0154e10472fc00edcc89d9e"
+    }
+  },
+  "supplementaryChecksScope": "Read-only assertions of the four actually inspected raster bytes against bound page digests and inspection notes; generation-parameters and record-output digests; scoped git diff --check.",
+  "limitations": "Technical validation is not human approval, publication approval, learner assessment or proof of lifetime-blind review. Thread reuse and timing/metadata limitations are disclosed in review-provenance.json."
+}

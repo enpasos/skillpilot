@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-resolution-73b5af24-7750-520a-bb16-43136ce19a5c",
+  "goal": {
+    "goalId": "73b5af24-7750-520a-bb16-43136ce19a5c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:61c645f0216b83b90dd87687aced1c30c71632bb24729155bd9504a6894c576e",
+    "pageFingerprint": "sha256:ccd589922ba442504f71a57a97aad94f7a5748071ce33b1d1d5fb7c42e48b2de",
+    "goalReviewContextFingerprint": "sha256:06af32358f0cc5e791788a0395a54094b99a83e8803967a7f3052c8f22fa9d5d",
+    "finalText": {
+      "titleDe": "Wirkungsgrad und Carnot-Grenze quantitativ vergleichen",
+      "titleEn": "Quantitatively Compare Efficiency and Carnot Limit",
+      "descriptionDe": "Die lernende Person kann den Wirkungsgrad einer realen zyklischen Wärmekraftmaschine aus Messdaten bestimmen, mit der Carnot-Grenze für dieselben heißen und kalten Reservoirtemperaturen vergleichen und Abweichungen unter Berücksichtigung von Irreversibilitäten und Messunsicherheiten physikalisch beurteilen.",
+      "descriptionEn": "The learner can determine the efficiency of a real cyclic heat engine from measured data, compare it with the Carnot limit for the same hot and cold reservoir temperatures, and physically assess deviations while considering irreversibilities and measurement uncertainties."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-a",
+      "campaignDigest": "sha256:391cf1a5e42f247d296d7dabee51f19e8d8d42cde19225606a4c67a93d68f0a2",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:06af32358f0cc5e791788a0395a54094b99a83e8803967a7f3052c8f22fa9d5d",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:015f4baff90e3e2c7ca94d4801524bdc56802dcddc05ef51acb75c4baa6bbcf9",
+      "resultsDigest": "sha256:8e089b9ab62e641fb5fe1a0bce9351689c3b156cfdf0ee7cb0d6909ddf9ab583",
+      "recordId": "physik-b043s-a-73b5af24-7750-520a-bb16-43136ce19a5c",
+      "recordDigest": "sha256:b9205a60cc990f5a085287a9d6c8534d9c54dbdd5958e9785dd574eb44486b5c"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-b",
+      "campaignDigest": "sha256:20cbf219fae84e213a2c7fde01532c57fcbb83cbe5d68fddf79962e7e39e1c13",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:06af32358f0cc5e791788a0395a54094b99a83e8803967a7f3052c8f22fa9d5d",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.reviewer-b",
+      "runManifestDigest": "sha256:bc1f2ec2b93b9798902669a63ab9c39a1533c2e87b00c82dff05c26da73e7d02",
+      "resultsDigest": "sha256:3a1d9386c4be6a741d80994120ec26bee4eb70d13927517372854bd17abc64cf",
+      "recordId": "physics-d043s-blind-b.020",
+      "recordDigest": "sha256:59be7b43f59c9ca31041463faa36afa4f8511d0b17495507b4e659eb80cbb28c"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:0ac2e7783c408851408df0dd36fc27be364a3ffdc36d4604cd881aac73100c15"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b043s-current-twenty-synthesis-v1-20260908",
+    "manifestDigest": "sha256:e2fc84088dfaa354c9bc4a7cce395f03dbfcc6f059074984cbc301190cc005a2",
+    "manifestFingerprint": "sha256:15f06eb11133becc54c3c83fa62087609fda37421d4bffef2ec5871e58fe54b9",
+    "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-020"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-020",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex /root; explicit per-goal comparison of two newly isolated current-context reviews; AI candidate evidence only",
+    "synthesizedAt": "2026-09-08T03:59:05.504Z",
+    "rationaleDe": "A/B bestätigen die gemeinsame Kompetenz aus Messdatenvergleich und physikalischer Bewertung bei denselben Temperaturen. B prüft nominelle Grenzüberschreitung anhand Unsicherheiten und systematischer Fehler; korrekte Bildwerte allein werden nicht als Leistungsbeleg gewertet.",
+    "rationaleEn": "Both rounds confirm the unified competence of measured-data comparison and physical assessment at the same temperatures. B tests nominal exceedance against uncertainty and systematic errors; correct image numbers alone are not counted as performance evidence.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der reale Wirkungsgrad ist das Verhältnis abgegebener Nutzarbeit zur aufgenommenen Wärme. Für dieselben konstanten Reservoirtemperaturen begrenzt 1 − Tc/Th dieses Verhältnis; Irreversibilität vermindert erreichbare Werte, während Messunsicherheit die Schlussfolgerung aus Daten begrenzt.",
+      "essentialUnderstandingEn": "Real efficiency is the ratio of useful work output to absorbed heat. For the same constant reservoir temperatures, 1 − Tc/Th bounds this ratio; irreversibility lowers achievable values, while measurement uncertainty limits conclusions drawn from data.",
+      "observablePerformanceDe": "Die lernende Person berechnet selbstständig aus bereitgestellten Messwerten und Unsicherheiten einen realen Wirkungsgrad und die zugehörige Carnot-Grenze, prüft die Energiebilanz und unterscheidet eine physikalische Abweichung von einem bloß unsicheren Vergleich.",
+      "observablePerformanceEn": "The learner independently calculates real efficiency and the corresponding Carnot limit from supplied measurements and uncertainties, checks the energy balance, and distinguishes a physical deviation from a merely uncertain comparison.",
+      "transferExpectationDe": "In einer neuen Messaufgabe liegt der nominelle Wirkungsgrad knapp über der berechneten Carnot-Grenze. Sie prüft Unsicherheitsbereiche und mögliche systematische Fehler bei Wärme-, Arbeits- und Temperaturmessung und begründet, welche Aussage die Daten tragen.",
+      "transferExpectationEn": "In a fresh measurement task, nominal efficiency lies slightly above the calculated Carnot limit. The learner checks uncertainty ranges and possible systematic errors in heat, work and temperature measurement, and justifies which conclusion the data support."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-1b82d5751b117f49f7b663c74a36c679f3d8bae52d4dadd59e07f878ef11922b",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:fc1fbc47e31e5ad7a1ba3ab0dd16e631534aa3b7f9ca599381d3a9b08c279237"
+}

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-08T06:38:19.725Z",
+  "status": "PASS",
+  "scope": "Traffic consolidation: actual RP generator replay preserves every current exact 4a2 stage/ref/role plus prior B034 refs; native compiler checks and honest unrelated target drift diagnostic, no global M6 claim",
+  "mode": "actual-generator-execution-in-memory-output-filesystem",
+  "realFilesystemWrites": 0,
+  "registryWrites": 0,
+  "helperSha256": "sha256:318a00ccac86653fcba69573d2fc06427158fd7f0027174168ba389e18b4ddc0",
+  "failClosedTests": [
+    {
+      "name": "different jurisdiction is rejected",
+      "status": "PASS",
+      "error": "B034 view protection: source/target scope mismatch"
+    },
+    {
+      "name": "missing existing foreign SekII stage anchor is rejected",
+      "status": "PASS",
+      "error": "B034 view protection: missing reviewed non-B034 stage anchor physics-sekii-gk"
+    }
+  ],
+  "results": [
+    {
+      "state": "Rp",
+      "sourcePath": "app/scripts/generateRpPhysicsSourceExtraction.ts",
+      "sourceSha256": "sha256:0cfe7a6f16063fcb2f80d22d0b399f5d0ff34b862b81bc90c1364c441de5809f",
+      "status": "PASS",
+      "error": null,
+      "capturedWrites": 8,
+      "viewCount": 4,
+      "views": [
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+          "currentSha256": "sha256:0dedb150c5583a7651388d11792a96139a57b4b32bb684f8646cd3e7eb184d12",
+          "generatedSha256": "sha256:04ef7aa69fb5d0aa587703ba4426c1a174c38962558f28a9cb1e840d1139c9b7",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "d05a146f-7fcd-56ae-b9b9-b54203328579"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+          "currentSha256": "sha256:73d45e2e3d6cc68de55b4b1fb6ac20829caa51c22e0d22c6c3a30f37760d9c4f",
+          "generatedSha256": "sha256:864568ecc9d6b6c304053d77c5ca6bc2a54eb5f459f93426628b383e430d545a",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "d05a146f-7fcd-56ae-b9b9-b54203328579",
+            "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json",
+          "currentSha256": "sha256:d663f780707490645fc91dd3dd91dcfe4b5a6752326185620fd49a71353469f9",
+          "generatedSha256": "sha256:c0c997d28f999c9422e81ddd4001b983250a86ef4e1ed5e0844aa94686e1f1e8",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "d05a146f-7fcd-56ae-b9b9-b54203328579"
+          ]
+        },
+        {
+          "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-lk.view.json",
+          "currentSha256": "sha256:f0a7bee7b1cd94a108780cd1203a4cd76185bbfdad3dd52820088f4d40a06c83",
+          "generatedSha256": "sha256:65a1aebdcc6e5757816d47566a8166c4f1e89658c673bdf9d8d986b742ce52c0",
+          "ownPlacementsExact": true,
+          "otherGeneratedNodesUnchanged": true,
+          "currentIdentityRoundTrip": true,
+          "capturedEqualsHelperResult": true,
+          "nativeErrors": [],
+          "currentTargetsRemoved": [],
+          "currentTargetsAdded": [
+            "d05a146f-7fcd-56ae-b9b9-b54203328579",
+            "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+          ]
+        }
+      ],
+      "retainedViews": [],
+      "logs": [
+        "Wrote curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json (193 source goals)",
+        "Wrote curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json (268 mapping rows)",
+        "Updated curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+        "Wrote RP composition views and curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/PHYSIK.md"
+      ]
+    }
+  ]
+}

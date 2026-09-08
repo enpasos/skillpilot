@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 1,
+  "auditId": "physics-b046-fluid-and-nerve-implementation-reviewer-b",
+  "recordedAt": "2026-09-08T04:44:09.172Z",
+  "reviewer": "codex-physics-b046-informed-author-reviewer-b",
+  "reviewMode": "informed-individual-authoring",
+  "authority": "ai_candidate",
+  "provenance": {
+    "priorEvidenceRead": [
+      "B036/B037 exact historical findings for these goals",
+      "individual-audit-b036h-b037h-20260908-reviewer-b.md",
+      "current canonical DE/EN, prerequisites, placements and full original images for these goals",
+      "RP original PDF pages 45 and 75",
+      "BY original LehrplanPLUS page 310657 and exact source paragraph"
+    ],
+    "blindReviewClaim": false,
+    "humanApprovalClaim": false,
+    "unexposedModelParametersInvented": false,
+    "forbiddenD044rRead": false
+  },
+  "scopeGoalIds": [
+    "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+    "2825b528-00ee-52d0-870e-686890cb1195"
+  ],
+  "canonicalChanges": [
+    {
+      "goalId": "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+      "fieldsChanged": [],
+      "decision": "keep current DE/EN selected-example competence"
+    },
+    {
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "fieldsChanged": [
+        "description",
+        "descriptionEn"
+      ],
+      "decision": "method-relevant fields; induced voltage only where applicable; explicit time variation of magnetic flux"
+    }
+  ],
+  "sourceReconciliation": {
+    "rp": {
+      "sourcePdf": "curricula/DE/Gymnasium/input/RP/Physik_Sekundarstufe_II_MSS.pdf",
+      "pdfSha256": "3bf220e5e409fc4ae057b3327dfa3d445a8f27ad6961925aae5eb16f2d1c12cc",
+      "verifiedPrintedAndPdfPages": [
+        45,
+        75
+      ],
+      "sourceTopicCode": "FLUID-DYNAMICS-LF",
+      "sharedPassagesChanged": 1,
+      "sourceRowsChanged": 4,
+      "selectionContextRestored": true,
+      "sourceIdsAndCourseMetadataPreserved": true,
+      "existingPartialEdgesPreserved": true,
+      "exactCoverageOrPracticumCompletionClaimed": false
+    },
+    "by": {
+      "originalUrl": "https://www.lehrplanplus.bayern.de/fachlehrplan/lernbereich/310657",
+      "originalScope": "Gymnasium Physik 12, grundlegendes Anforderungsniveau Biophysik, Lernbereich 4",
+      "sourceGoalId": "9ebc77ee-90cf-5540-aed7-02d9b4140f4c",
+      "sourceSpan": "Ph12-GA-BIO.4.2",
+      "addedCanonicalGoalId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+      "addedEdgeMatchType": "partial",
+      "currentPartialEdges": 4,
+      "quantitativeInductionAddedToNerveGoal": false,
+      "lenzCompetenceAttributedToThisSource": false,
+      "otherCourseOrStateApprovalClaimed": false
+    },
+    "generatorReplay": false,
+    "method": "Targeted apply_patch edits in the exact RP/BY blocks; read-only syntax and exact expected-data validation."
+  },
+  "individualDecisions": {
+    "semanticAtomicity": {
+      "reviewed": 2,
+      "atomic": 2
+    },
+    "memory": {
+      "reviewed": 2,
+      "noMemoryNeeded": 2,
+      "deckOrCardChanges": 0
+    },
+    "semanticKind": {
+      "reviewed": 2,
+      "semanticKind": "curricularAtomic",
+      "classChanged": false,
+      "nativeFingerprintExport": "fingerprintSemanticKindSourceGoal",
+      "record": "semantic-kind-individual-review.json"
+    }
+  },
+  "evidenceProfiles": {
+    "config": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.config.json",
+    "candidates": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.candidates.json",
+    "records": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.review.jsonl",
+    "profileCount": 2,
+    "bilingualIndependentApplicationCasesPerGoal": 2,
+    "nativeSchemaHints": [
+      "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json"
+    ],
+    "nativeMaterializerVerified": true,
+    "nativeValidatorBlockingIssues": 0,
+    "approved": 0,
+    "needsHumanReview": 2,
+    "reviewAuthority": "ai_candidate",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "bindings": [
+      {
+        "goalId": "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+        "goalFingerprint": "sha256:542d71da79d96b977d5b3b35e38ca9f2cee65c7bf8fab281add25dbc6b8de0e0",
+        "reviewInputFingerprint": "sha256:6c0448ed2bafa167258ff9b30c7ca633ea5d6448891cced138fc28a26918b359",
+        "profileFingerprint": "sha256:c6b10988d4298c4ae0f103240175af8c5a09a71c1c515ee10d5eea4860f8eb5a",
+        "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460"
+      },
+      {
+        "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+        "goalFingerprint": "sha256:2ef62e5f9cc8d69cf635e385746768f1935de1d4259f2724ba4cb1c53864d0f8",
+        "reviewInputFingerprint": "sha256:08952e8a62d52391aba05b260db628e39b947cd5e5b718088ff418b6793a7523",
+        "profileFingerprint": "sha256:825b36fa1d42bd7850e47e04b7ac8c2a84164bc06435a353fc071e5ef25dc0ee",
+        "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460"
+      }
+    ]
+  },
+  "images": {
+    "inspectedOriginalFullResolution": true,
+    "changed": 0,
+    "individualFindings": "individual-content-review.md",
+    "scope": "Illustrative image correctness and limits checked; images alone do not prove independent transfer or integrated method evaluation."
+  },
+  "checks": [
+    {
+      "command": "node curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-046-fluid-and-nerve-v1/validate-source-bindings.mjs",
+      "exitCode": 0,
+      "result": "Current field boundary, original RP pages45/75, exact repaired passage/four rows, matching source/generator decisions and preserved three BY partial edges plus quantitative fourth edge; generator syntax passes."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.config.json --candidates curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.candidates.json",
+      "exitCode": 0,
+      "result": "2 current AI candidate profiles verified without writing."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.config.json --mode=check",
+      "exitCode": 0,
+      "result": "2 configured; 2 needs human review; 0 blocking."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-046-fluid-and-nerve-v1/semantic-atomicity.config.json --mode=check",
+      "exitCode": 0,
+      "result": "# Semantic Atomicity Review: canonical-physics-full\nScope: B046 individuell erneut geprüfte zwei aktuelle Ziele\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 2\nCurrent reviewed atomic: 2\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-046-fluid-and-nerve-v1/memory-card.config.json --mode=check",
+      "exitCode": 0,
+      "result": "# Memory Card Review: canonical-physics-full\nScope: B046 individuell erneut geprüfte zwei aktuelle Ziele\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 2\nCurrent no-memory decisions: 2\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 5\nDeck files: 6\nCard rows: 234\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json --mode=check",
+      "exitCode": 0,
+      "result": "466 current atomic; 0 missing/stale/obsolete."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json --mode=check",
+      "exitCode": 0,
+      "result": "466 ordinary goals; 336 no-memory,130 memory-required; 147/147 primary cards and5/5 memory goals traced;260 visibility checks; no missing/stale/obsolete or visibility debt."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/checkSourceLandscapeRegistry.ts",
+      "exitCode": 0,
+      "result": "Passed302 registry entries."
+    },
+    {
+      "nativeFunction": "loadGoalBookBuildInputs('app/scripts/config/goal-books/de-gym-physics-national-atlas.json')",
+      "exitCode": 0,
+      "result": "Current native atlas built read-only,466 pages, including K/source/projection bindings."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-046-fluid-and-nerve-v1/native-quality-snapshot.mts",
+      "exitCode": 0,
+      "result": "Fresh unmodified native quality generator and maturity-floor checker; output captured in-process, no shared report writes."
+    },
+    {
+      "command": "git diff --check -- [the nine modified shared source/canonical/A/M/K files]",
+      "exitCode": 0,
+      "result": "No whitespace errors."
+    }
+  ],
+  "nativeQualitySnapshot": {
+    "checkedAt": "2026-09-08T04:40:33.568Z",
+    "nativeGeneratedAt": "2026-09-08T04:40:33.420Z",
+    "nativeStatusSha256": "da30b0130f035274c75a27a192f2256f3776c50207ecb7e99bf3342554e6a674",
+    "physicsMaturity": "M6",
+    "goalCount": 718,
+    "atomicGoalCount": 603,
+    "rules": [
+      {
+        "id": "CQR-001",
+        "status": "pass",
+        "summary": "Basic graph integrity checks pass.",
+        "metrics": {
+          "goals": 718,
+          "localReferenceIssues": 0
+        }
+      },
+      {
+        "id": "CQR-002",
+        "status": "pass",
+        "summary": "Explicit type metadata matches graph structure.",
+        "metrics": {
+          "mismatches": 0
+        }
+      },
+      {
+        "id": "CQR-000",
+        "status": "pass",
+        "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "completeSourceJurisdictions": 16,
+          "emptySourceJurisdictions": 0,
+          "missingReadableSourceInventoryJurisdictions": 0,
+          "originalSourceUrlIssues": 0,
+          "sourceExtractedGoals": 6289,
+          "sourceOriginalGoals": 6289,
+          "sourceUnregisteredGoals": 0,
+          "sourceExtractedAtomicGoals": 6289,
+          "sourceUnregisteredAtomicGoals": 0
+        }
+      },
+      {
+        "id": "CQR-003",
+        "status": "pass",
+        "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "coveredJurisdictions": 16,
+          "sourceBackedJurisdictions": 16,
+          "sourceCompleteJurisdictions": 16,
+          "fullCoverageJurisdictions": 16,
+          "uncoveredJurisdictions": 0,
+          "incompleteJurisdictions": 0,
+          "unsupportedAssignmentJurisdictions": 0,
+          "sourceUnmappedJurisdictions": 0,
+          "unsupportedAssignedAtomicGoals": 0,
+          "unmappedSourceAtomicGoals": 0,
+          "sourceAtomicGoals": 6289,
+          "sourceMappedToViewAtomicGoals": 6289,
+          "sourceOriginalGoals": 6289,
+          "sourceFullyCoveredOriginalGoals": 6289,
+          "sourcePartiallyCoveredOriginalGoals": 0,
+          "sourceUncoveredOriginalGoals": 0,
+          "surrogateBackedAtomicGoals": 0,
+          "partialSourceLinkedAtomicGoals": 0,
+          "warningedJurisdictions": 0,
+          "cleanJurisdictions": 16,
+          "partialJurisdictions": 0,
+          "errorJurisdictions": 0,
+          "minSourceBackedAtomicGoals": 216,
+          "maxVisibleAtomicGoals": 424,
+          "maxSourceBackedAtomicGoals": 424,
+          "totalAtomicGoals": 433
+        }
+      },
+      {
+        "id": "CQR-004",
+        "status": "pass",
+        "summary": "Course-level mapping is clean for 759 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+        "metrics": {
+          "configuredMappingFiles": 25,
+          "sourceGoals": 3989,
+          "sourceGoalsWithCourseLevel": 3989,
+          "gkLkSourceGoals": 1770,
+          "lkSourceGoals": 1427,
+          "unspecifiedSourceGoals": 0,
+          "checkedMappingEdges": 759,
+          "defaultedUnspecifiedMappingEdges": 0,
+          "reviewedCourseLevelExceptions": 0,
+          "mismatches": 0,
+          "missingSourceGoals": 0,
+          "missingTargetGoals": 0,
+          "unmappedCourseLevelSourceGoals": 0
+        }
+      },
+      {
+        "id": "CQR-005",
+        "status": "pass",
+        "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+        "metrics": {
+          "sourceExtractionSources": 25,
+          "peerBaselineChecks": 21,
+          "failedPeerBaselineChecks": 0,
+          "granularityChecks": 0,
+          "failedGranularityChecks": 0
+        }
+      },
+      {
+        "id": "CQR-301",
+        "status": "pass",
+        "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+        "metrics": {
+          "configs": 1,
+          "leafGoals": 466,
+          "atomic": 466,
+          "needsDeveloperReview": 0,
+          "nonAtomic": 0,
+          "missing": 0,
+          "stale": 0,
+          "obsolete": 0
+        }
+      },
+      {
+        "id": "CQR-302",
+        "status": "pass",
+        "summary": "Memory-card review is current: 130/466 ordinary atomic goals intentionally use memorization support, 147/147 primary cards are kept with origin traces, all 5 memory goals are traced, and 260 view-visible memory-required goals resolve to visible memory nodes.",
+        "metrics": {
+          "configs": 1,
+          "reviewedGoals": 466,
+          "noMemoryNeeded": 336,
+          "memoryRequired": 130,
+          "needsDeveloperReview": 0,
+          "missing": 0,
+          "stale": 0,
+          "obsolete": 0,
+          "duplicateRecords": 0,
+          "invalidRecords": 0,
+          "primaryCards": 147,
+          "keptCards": 147,
+          "cardsMarkedRemove": 0,
+          "cardNeedsDeveloperReview": 0,
+          "missingCardReviews": 0,
+          "staleCardReviews": 0,
+          "obsoleteCardReviews": 0,
+          "duplicateCardReviewRecords": 0,
+          "invalidCardReviewRecords": 0,
+          "untracedMemoryRequiredGoals": 0,
+          "visibilityScopes": 2,
+          "visibilityCheckedMemoryRequiredGoals": 260,
+          "visibilityMissingVisibleMemoryGoals": 0,
+          "visibilityErrors": 0,
+          "memoryGoals": 5,
+          "tracedMemoryGoals": 5,
+          "untracedMemoryGoals": 0,
+          "deckIds": 5,
+          "deckFiles": 6,
+          "cardRows": 234
+        }
+      },
+      {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Goal-visualization rollout or human approval is still incomplete.",
+        "metrics": {
+          "expectedGoals": 468,
+          "linkedGoals": 418,
+          "missingLinks": 50,
+          "qaRecords": 490,
+          "missingRecords": 2,
+          "staleRecords": 0,
+          "duplicateRecords": 0,
+          "missingAssets": 0,
+          "currentRecords": 416,
+          "chatGptReady": 281,
+          "chatGptOpen": 135,
+          "aiApproved": 416,
+          "aiNotApproved": 0,
+          "humanApproved": 7,
+          "humanNotApproved": 409,
+          "humanIssues": 0
+        }
+      },
+      {
+        "id": "CQR-401",
+        "status": "pass",
+        "summary": "69 composition view(s) are registered.",
+        "metrics": {
+          "compositionViews": 69
+        }
+      },
+      {
+        "id": "CQR-501",
+        "status": "pass",
+        "summary": "1 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+        "metrics": {
+          "activeWarnings": 0,
+          "rawActiveWarnings": 0,
+          "diagnosticPartialOnlyWarnings": 6458,
+          "acceptedWarnings": 1,
+          "obsoleteAcceptedWarnings": 0
+        }
+      }
+    ],
+    "scopes": [
+      {
+        "scopeId": "canonical-physics-sek1",
+        "maturity": "M4",
+        "nonPassingRules": []
+      },
+      {
+        "scopeId": "canonical-physics-sek2",
+        "maturity": "M4",
+        "nonPassingRules": []
+      }
+    ],
+    "protectedCurricula": 9,
+    "floorPassed": true,
+    "sharedReportsWritten": false,
+    "interpretation": "Native technical integrity and maturity checks, not a new semantic blanket endorsement of source inventories, course scopes or all Bundesländer. CQR-303 remains an existing optional M7 warning; M6 floors pass."
+  },
+  "preservation": {
+    "centralRolloutRegistryChanged": false,
+    "descriptionCampaignsChanged": false,
+    "canonicalEdgesIdsPlacementsTagsChanged": false,
+    "viewsChanged": false,
+    "otherAgentsChangesReverted": false,
+    "activeImagesChanged": false,
+    "globalReportsChanged": false,
+    "commitCreated": false
+  },
+  "artifactHashes": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.config.json",
+      "sha256": "08d1bcad8ed6ac34f33671f92a166f4c94861a099efa7fdf07cd974329f29e64"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.candidates.json",
+      "sha256": "f5327e8cc3b492d1bfec81a484cb69ca46bd16bf3f38e7be5459be202790226e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.review.jsonl",
+      "sha256": "5f3e0048147428dfd06fac38c531907f93d4c63326cac41a6d3873dd63e984a3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-046-fluid-and-nerve-v1/semantic-atomicity.review.jsonl",
+      "sha256": "40a08802f2b4e381a540b816925184e9635ee911e0abaa95b327c3ff5199afbf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-046-fluid-and-nerve-v1/memory-card.review.jsonl",
+      "sha256": "7593d7631e6bd107414c2eb82cac75c303d7aee76c3222b0e17e71c5174d2439"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-046-fluid-and-nerve-v1/semantic-kind-individual-review.json",
+      "sha256": "43462fbdb6228ae94861910723e155ff3069f445d44b357be2ff42104df7aaf7"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/physik/333ca92b-a92c-46a9-86be-dea8ddbd43e0/333ca92b-a92c-46a9-86be-dea8ddbd43e0.jpg",
+      "sha256": "9c38b7ea32a8e2b8639949bec8783ca538c9d17b7978d4d73595eb7fdb45f177"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/physik/2825b528-00ee-52d0-870e-686890cb1195/2825b528-00ee-52d0-870e-686890cb1195.jpg",
+      "sha256": "67381efe80f8cfd2fe759cbd5664f9512c8a50156343066762609645886d530f"
+    }
+  ],
+  "supportingArtifacts": [
+    "implementation-scope-fixture.json",
+    "validate-source-bindings.mjs",
+    "native-quality-snapshot.mts",
+    "individual-content-review.md",
+    "semantic-kind-individual-review.json"
+  ],
+  "handoff": "Implementation is complete and locally natively validated. Root owns subsequent central registry/D orchestration. P records retain AI candidate/human-review-required status."
+}
+

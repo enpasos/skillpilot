@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "informed-positive-profile-body-counterreview",
+  "reviewedAt": "2026-09-08 03:54:08 UTC",
+  "reviewer": "OpenAI Codex /root/physics_b043_blind_a; reused thread, informed subject counterreview",
+  "model": "unknown",
+  "status": "FOUR_PROFILE_BODIES_PASS_NO_HUMAN_APPROVAL_EXTERNAL_SCOPE_NOT_CLEARED",
+  "sequence": "P044 candidates were opened only after D044 B records had been independently authored and sealed; D044 B is separately documented as reused-thread work and not a strict clean-thread completion review. This is a distinct substantive P-body examination, not a transfer of D decisions.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-044-quantum-final-4-v1.candidates.json",
+  "candidateSha256": "sha256:bd65b30d702422414870d8223c409786e2077196158067fc19c5a1cdac7e5d84",
+  "reviewSha256": "sha256:10433f8f2e2e61bd1a8af5893f74ebe8f25ba61b2eb282b67c2da6eba986a341",
+  "canonicalDescriptionScope": "All four current DE/EN descriptions and supplied contexts were read; no canonical or profile bytes changed.",
+  "goals": [
+    {
+      "goalId": "bacae732-2016-5a83-bc61-d0f94ed5a0e4",
+      "verdict": "body_pass",
+      "calculations": {
+        "Li2Plus_n1_eV": -122.4,
+        "Li2Plus_n3_eV": -13.6,
+        "H_n3_eV": -1.511111111111111,
+        "HePlus_n2_eV": -13.6,
+        "HePlus_n2_ionization_eV": 13.6
+      },
+      "reason": "Case 1 calculates and interprets negative levels and Z², while case 2 changes electron count/model admissibility and distinguishes negative level energy from positive removal energy. This is not merely a number swap. Both languages preserve one electron, nonrelativistic Coulomb model, stationary-nucleus approximation and 0-eV threshold; no many-electron energy calculation required.",
+      "sourceBoundary": "HE original Q3.3 S42 identifies hydrogen-like energies as LK; no sibling X-ray/laser clause is imported."
+    },
+    {
+      "goalId": "badb0ef3-233d-560e-bc2a-9df99f09fe7d",
+      "verdict": "body_pass",
+      "calculations": {
+        "case1ElectronCount": 3,
+        "case2ElectronCount": 4,
+        "threeOrbitalMaximum": 6
+      },
+      "reason": "The first independent construction repairs duplicate complete states without changing electron count; the second changes from distinct energy levels to degenerate spatial orbitals. Opposite spins share one spatial orbital, while equal energy does not identify a complete state. The example with unlike unpaired spins is Pauli-allowed even if not energetically preferred; the text explicitly avoids claiming Pauli selects the ground state. DE/EN parity and representation meaning are sound.",
+      "sourceBoundary": "Qualitative Pauli/occupation and energy-level schema only; no Hund/Aufbau derivation, independent spectroscopy calculation or orbital differential equation."
+    },
+    {
+      "goalId": "d05a146f-7fcd-56ae-b9b9-b54203328579",
+      "verdict": "body_pass",
+      "calculations": {
+        "E1J": 6.024793610714677e-20,
+        "E1eV": 0.376079501293051,
+        "E2eV": 1.504318005172204,
+        "E2_2L_over_E1_L": 1,
+        "E1_2L_over_E1_L": 0.25
+      },
+      "reason": "The first case requires dimensional numerical work, energy reference and nonzero standing-wave reasoning. The second jointly varies state and confinement and tests the formula's infinite-wall boundary; no finite-well solution is demanded. The n=0 nonnormalizable zero function is a model explanation, not a separate normalization calculation. No probability integration or sibling prerequisite is introduced; both language versions match.",
+      "sourceBoundary": "HE original S45 binds discrete energies; BW original 3.6.6(12) explicitly binds infinite-well energies and limitations; BY retained imported clauses 22c3cc6f/bfe30e7f require quantitative level locations, not interval integration."
+    },
+    {
+      "goalId": "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+      "verdict": "body_pass",
+      "calculations": {
+        "P_n2_central_3L8_5L8": 0.09084505690810465,
+        "P_n1_0_L4": 0.09084505690810465,
+        "P_n1_L4_L2": 0.4091549430918953,
+        "normalization_n1": 1,
+        "normalization_n2": 1,
+        "normalization_2psi": 4,
+        "globalMinusSignEffect": 0
+      },
+      "reason": "Direct integration with F_n(u)=u−sin(2nπu)/(2nπ) confirms every reported value. The changed nodal state and different equal-width ground-state windows expose density shape rather than lookup. Minus psi leaves density invariant; 2psi fails the given-normalization assumption, and the case rejects raw integrals rather than requiring a new normalization procedure. Ensemble statements avoid classical dwell time or a certain single outcome. DE/EN, density units and interval bounds agree.",
+      "sourceBoundary": "HE original S45 explicitly contains interval probabilities. The task stays on supplied normalized wavefunctions; it neither derives eigenfunctions nor calculates energies. No BY/BW interval claim made."
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "sha256": "sha256:46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+      "read": "Original PDF text of Q3.3 S42 and Q4.1 S45."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH_V2.pdf",
+      "sha256": "sha256:78933aa2f00d4e293ba62fe3e8a5c553565143b8adbae95bb1be40baaa12e450",
+      "read": "Original PDF clauses 3.6.6(10), (12), (13), plus matching retained extraction scope LK."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+      "sha256": "sha256:6b49157703e7bad2685e09684d94248447da2f066a1c9cafc48bf11e758cbdfc",
+      "read": "Retained imported source clauses only; no fresh live original-source or full composition-matrix verification."
+    }
+  ],
+  "externalScopeCaution": "The supplied D044 page contexts list HE GK as well as LK for baca and badb, while the read HE original S42 places the specific hydrogen-like/Pauli clauses in LK. This counterreview does not clear that external projection discrepancy. Parent must establish the current source/role/placement interpretation separately; do not interpret body-pass as nationwide source/projection approval.",
+  "nativeChecks": [
+    {
+      "command": "quality:positive-goal-evidence-candidates --config <P044.config> --candidates <P044.candidates>",
+      "exitCode": 0,
+      "result": "Verified four current AI candidate profiles; no write."
+    },
+    {
+      "command": "quality:positive-goal-evidence:check --config=<P044.config>",
+      "exitCode": 0,
+      "result": "4 configured, 0 approved, 4 needs_human_review, 0 blocking issues."
+    }
+  ],
+  "changes": [],
+  "authority": "Informed AI counterreview only; E1/G1 candidate boundaries unchanged, no learner performance observed, no human approval or registry change."
+}

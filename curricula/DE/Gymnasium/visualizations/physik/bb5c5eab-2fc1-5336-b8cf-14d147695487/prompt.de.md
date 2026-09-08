@@ -4,11 +4,11 @@
 
 - SkillPilot-ID: `bb5c5eab-2fc1-5336-b8cf-14d147695487`
 - Titel: Strahlungsrisiken mit physikalischen Größen beurteilen
-- Beschreibung: Die lernende Person kann Strahlungsrisiken anhand physikalischer Größen wie Dosis, Aktivität und Abschirmung fachlich beurteilen.
+- Beschreibung: Die lernende Person kann Strahlungsrisiken fachlich beurteilen, indem sie Aktivität als Quellenkenngröße von einer zur Fragestellung passenden Dosisgröße unterscheidet, die Energiedeposition pro Masseneinheit oder eine daraus abgeleitete strahlenschutzbezogene Gewichtung beschreibt, und dabei je nach Expositionssituation Strahlungsart, Expositionsdauer, Geometrie und Abstand, Abschirmung sowie Unsicherheit berücksichtigt.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `bb5c5eab-2fc1-5336-b8cf-14d147695487.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/bb5c5eab-2fc1-5336-b8cf-14d147695487/bb5c5eab-2fc1-5336-b8cf-14d147695487.jpg`
@@ -28,21 +28,10 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Strahlungsrisiken mit physikalischen Größen beurteilen
-Beschreibung: Die lernende Person kann Strahlungsrisiken anhand physikalischer Größen wie Dosis, Aktivität und Abschirmung fachlich beurteilen.
+Beschreibung: Die lernende Person kann Strahlungsrisiken fachlich beurteilen, indem sie Aktivität als Quellenkenngröße von einer zur Fragestellung passenden Dosisgröße unterscheidet, die Energiedeposition pro Masseneinheit oder eine daraus abgeleitete strahlenschutzbezogene Gewichtung beschreibt, und dabei je nach Expositionssituation Strahlungsart, Expositionsdauer, Geometrie und Abstand, Abschirmung sowie Unsicherheit berücksichtigt.
 
 Zusatzanweisung:
-Create a visual German educational decision diagram titled `Strahlungsrisiken physikalisch beurteilen`.
-
-At the center show `Risiko der Exposition`. Feed into it five clearly separate factors:
-1. `Aktivität A in Bq`: decays per second, a source property.
-2. `Strahlenart und Energie`: influence penetration and biological weighting.
-3. `Geometrie und Abstand`: determine how much radiation reaches the body.
-4. `Expositionszeit und Abschirmung`.
-5. `Aufgenommene Dosis D in Gy` and `Äquivalentdosis H = D · w_R in Sv`.
-
-Make the key conclusion visually prominent: `Aktivität allein bestimmt das Risiko nicht.` Show one simple comparison in which the same activity produces different dose due to different distance or shielding, without inventing numerical dose values.
-
-Use the exact spelling `Aktivität` and correct units. Do not equate becquerel directly with sievert. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
+Lösche ausschließlich den am unteren Bildrand abgeschnittenen Satz "Modellvergleich; keine Aussage über einen konkreten Gesundheitsschaden." vollständig. Er ist redundant, denn im rechten oberen Kasten steht bereits korrekt "Strahlenschutzgröße, keine individuelle Schadensprognose" und die Vergleichsbedingungen sind explizit genannt. An seiner Stelle soll nur ein mindestens 35 Pixel hoher leerer hellblauer unterer Rand verbleiben. Dazu bei Bedarf beide unteren Szenarien geringfügig verkleinern. KEIN Text darf den Bildrand berühren oder angeschnitten sein. Alle übrigen Bildinhalte und Texte unverändert lassen, vor allem den gelben Merksatz, die gemeinsame blaue Bedingungszeile und die vollständig qualifizierte Dosisformel. Keine neuen Inhalte hinzufügen.
 ```
 
 ## Review-Notiz

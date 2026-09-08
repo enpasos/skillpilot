@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-resolution-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+  "goal": {
+    "goalId": "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7a0efe091aeb6135fb50c1541d33fc90add2f585ce73cbc472b5a21d22273559",
+    "pageFingerprint": "sha256:5eb6347e731b5570e47da7795ad69cceea8327641b5fc2f70203c1955af117b7",
+    "goalReviewContextFingerprint": "sha256:06e09094e3d4f6ce6447acd44968c35b18e643423e93ed6c2ab7f0ce443fb660",
+    "finalText": {
+      "titleDe": "Zweiten Hauptsatz verstehen und mit Entropie-Formulierung angeben",
+      "titleEn": "Understand and State the Second Law with Entropy Formulation",
+      "descriptionDe": "Die lernende Person kann den zweiten Hauptsatz für ein isoliertes Gesamtsystem als $\\Delta S_{\\mathrm{ges}} \\ge 0$ formulieren, reversible und irreversible Prozesse durch $\\Delta S_{\\mathrm{ges}} = 0$ beziehungsweise $\\Delta S_{\\mathrm{ges}} > 0$ unterscheiden und daraus die Richtung spontaner Abläufe begründen.",
+      "descriptionEn": "The learner can state the second law for an isolated total system as $\\Delta S_{\\mathrm{tot}} \\ge 0$, distinguish reversible and irreversible processes through $\\Delta S_{\\mathrm{tot}} = 0$ and $\\Delta S_{\\mathrm{tot}} > 0$, respectively, and use this to justify the direction of spontaneous processes."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-a",
+      "campaignDigest": "sha256:391cf1a5e42f247d296d7dabee51f19e8d8d42cde19225606a4c67a93d68f0a2",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:06e09094e3d4f6ce6447acd44968c35b18e643423e93ed6c2ab7f0ce443fb660",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:015f4baff90e3e2c7ca94d4801524bdc56802dcddc05ef51acb75c4baa6bbcf9",
+      "resultsDigest": "sha256:8e089b9ab62e641fb5fe1a0bce9351689c3b156cfdf0ee7cb0d6909ddf9ab583",
+      "recordId": "physik-b043s-a-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+      "recordDigest": "sha256:766040b0736785d713ee0fe047785e259dfa9a207cbee7d67e2bbcfd13106c52"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-b",
+      "campaignDigest": "sha256:20cbf219fae84e213a2c7fde01532c57fcbb83cbe5d68fddf79962e7e39e1c13",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:06e09094e3d4f6ce6447acd44968c35b18e643423e93ed6c2ab7f0ce443fb660",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.reviewer-b",
+      "runManifestDigest": "sha256:bc1f2ec2b93b9798902669a63ab9c39a1533c2e87b00c82dff05c26da73e7d02",
+      "resultsDigest": "sha256:3a1d9386c4be6a741d80994120ec26bee4eb70d13927517372854bd17abc64cf",
+      "recordId": "physics-d043s-blind-b.004",
+      "recordDigest": "sha256:3c9aef7ffe8ff02e9abeb0be33a3706bbe02b1c0e670464ee1d567b0bc0e72be"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:0ac2e7783c408851408df0dd36fc27be364a3ffdc36d4604cd881aac73100c15"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b043s-current-twenty-synthesis-v1-20260908",
+    "manifestDigest": "sha256:e2fc84088dfaa354c9bc4a7cce395f03dbfcc6f059074984cbc301190cc005a2",
+    "manifestFingerprint": "sha256:15f06eb11133becc54c3c83fa62087609fda37421d4bffef2ec5871e58fe54b9",
+    "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-004"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-004",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex /root; explicit per-goal comparison of two newly isolated current-context reviews; AI candidate evidence only",
+    "synthesizedAt": "2026-09-08T03:59:05.504Z",
+    "rationaleDe": "A/B sehen isoliertes Gesamtsystem und Gleichheits-/Ungleichheitsfall korrekt begrenzt. B fordert eigenständige Begründung der spontanen Wärmeflussrichtung und ergänzt eine lokale Teilentropieabnahme zur Gesamtbilanz; kein Split nötig.",
+    "rationaleEn": "Both rounds find the isolated-total-system boundary and equality/inequality cases correct. B requires independently justified spontaneous heat-flow direction and incorporates a local entropy decrease into the total balance; no split is needed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Entropie eines isolierten Gesamtsystems nimmt bei irreversiblen Prozessen zu und bleibt im reversiblen Grenzfall konstant. Diese Gesamtbilanz begrenzt die Richtung spontaner makroskopischer Abläufe.",
+      "essentialUnderstandingEn": "The entropy of an isolated total system increases in irreversible processes and remains constant in the reversible limit. This total balance constrains the direction of spontaneous macroscopic processes.",
+      "observablePerformanceDe": "Die lernende Person formuliert selbstständig ΔS_ges ≥ 0, erläutert die Fälle Gleichheit und strikte Zunahme und begründet die Richtung eines Temperaturausgleichs für beide Körper gemeinsam.",
+      "observablePerformanceEn": "The learner independently states ΔS_tot ≥ 0, explains equality and strict increase, and justifies the direction of thermal equilibration for both bodies taken together.",
+      "transferExpectationDe": "In einer neuen Aufgabe ist nur die Entropieabnahme des wärmeren Körpers angegeben. Sie ergänzt die notwendige Betrachtung des kälteren Körpers und erklärt, weshalb die Teilabnahme allein keinen Verstoß gegen den zweiten Hauptsatz zeigt.",
+      "transferExpectationEn": "In a fresh task, only the warmer body's entropy decrease is given. The learner adds the necessary consideration of the colder body and explains why the subsystem decrease alone does not violate the second law."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-4b86e1f5f64480fe96e3a21a28294b430b3748bb99619a22c721d35bb73af12f",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:11ad7f2771dc168072f612b9524757335d1fb6f43c6286c37db5c28aaa4e0dfc"
+}

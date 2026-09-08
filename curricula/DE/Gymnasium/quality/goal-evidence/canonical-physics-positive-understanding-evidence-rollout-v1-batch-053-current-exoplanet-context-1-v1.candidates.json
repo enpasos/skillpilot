@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b053-current-exoplanet-1-v1",
+  "reviewedAt": "2026-09-08T05:48:49Z",
+  "reviewer": "codex-p053-informed-individual-context-rereview-20260908",
+  "goals": [
+    {
+      "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "reason": "DE: Aktuelles Ziel und engerer Sonnensystem-Aufbau af5dfdbc vollständig DE/EN gelesen. Zwei unterschiedliche Nachweise bleiben passend: wiederkehrende Bedeckung mit Kontrollbeobachtung sowie stellare Dopplerverschiebung ohne Transit mit veränderter Blickrichtung. Schwerpunktbewegung, Messsignal und Geometrie sind qualitative Zielinhalte; Kepler-Rechnungen, Gezeiten, Masseninversion und Atmosphärenanalyse werden nicht als Vorwissen oder Pflicht hinzugefügt. Profilkörper nach Einzelprüfung unverändert aus P047 übernommen; keine neue blinde D-Prüfung. EN: Full current goal and narrower Solar-System prerequisite read in both languages. Recurrent occultation with an independent check and stellar Doppler shifts without transit under changed viewing geometry remain distinct appropriate demonstrations. Qualitative barycentric motion is target content; no Kepler calculation, tides, mass inversion, or atmospheric analysis is added. Individually re-reviewed P047 body retained; AI E1/G1 only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "occultation-versus-stellar-motion",
+            "essentialUnderstandingDe": "Ein Transit verringert die beobachtete Sternhelligkeit durch Bedeckung; die Radialgeschwindigkeitsmethode beobachtet Dopplerverschiebungen des Sternlichts durch die gemeinsame Bewegung um den Schwerpunkt.",
+            "essentialUnderstandingEn": "A transit reduces observed stellar brightness through occultation; radial velocity measures Doppler shifts in starlight caused by motion about the shared centre of mass.",
+            "observablePerformanceDe": "Skizziert Beobachtungsgeometrie und Messgröße beider Methoden und erklärt einen wiederkehrenden Befund, ohne Stern- und Planetenbewegung zu verwechseln.",
+            "observablePerformanceEn": "Sketches viewing geometry and observable for both methods and explains recurrence without confusing stellar and planetary motion."
+          },
+          {
+            "id": "geometry-and-alternatives",
+            "essentialUnderstandingDe": "Sichtbarkeit hängt von Bahnneigung und Messqualität ab; ein fehlender Transit schließt einen Planeten nicht aus und ein einzelner Helligkeitseinbruch beweist ihn nicht.",
+            "essentialUnderstandingEn": "Detectability depends on inclination and measurement quality; absence of a transit does not exclude a planet and one dip does not prove one.",
+            "observablePerformanceDe": "Prognostiziert bei geänderter Blickrichtung den Befund und nennt eine passende unabhängige Kontrollbeobachtung.",
+            "observablePerformanceEn": "Predicts observations for a changed viewing direction and proposes a suitable independent check."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "occultation-versus-stellar-motion",
+            "geometry-and-alternatives"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "observable",
+            "textDe": "Von einer Lichtkurve zu periodischen Spektrallinienverschiebungen wechseln.",
+            "textEn": "Switch from a light curve to periodic spectral-line shifts."
+          },
+          {
+            "id": "inclination",
+            "textDe": "Eine nahezu kantennahe Bahn mit einer geneigten oder von oben gesehenen Bahn vergleichen.",
+            "textEn": "Compare a nearly edge-on orbit with an inclined or face-on orbit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "recurrent-dips",
+            "taskDemandDe": "Ein Stern zeigt drei ähnlich geformte Helligkeitseinbrüche im Abstand von jeweils drei Tagen. Erkläre mit einer eigenen Skizze ein Transitmodell, benenne eine alternative Ursache und eine Beobachtung zur Prüfung. Welche Änderung erwartest du bei größerer verdeckter Sternfläche unter sonst gleichen Bedingungen?",
+            "taskDemandEn": "A star has three similarly shaped dips three days apart. Explain a transit model with your own sketch, name an alternative cause and an observation to test it. What changes if a larger fraction of the stellar disc is covered, all else equal?",
+            "expectedPerformanceDe": "Verknüpft den Umlauf mit periodischer Bedeckung und tieferen Einbrüchen bei größerer bedeckter Fläche. Beispielsweise ein bedeckender stellarer Begleiter oder Sternaktivität verlangt weitere Spektral-/Lichtkurvendaten; die Wiederholung allein beweist keinen Planeten.",
+            "expectedPerformanceEn": "Links orbital motion to repeated occultation and deeper dips for greater obscuration. An eclipsing stellar companion or stellar activity, for example, calls for further spectra/light-curve data; repetition alone does not prove a planet.",
+            "understandingFocusDe": "Messsignal und Modellbehauptung trennen.",
+            "understandingFocusEn": "Separate the measured signal from the model claim."
+          },
+          {
+            "id": "rv-without-transit",
+            "taskDemandDe": "Mehrere Spektrallinien eines Sterns verschieben sich gemeinsam periodisch nach Rot und Blau, aber die Helligkeit bleibt innerhalb der Messgenauigkeit konstant. Erkläre ein mögliches Planetensystem und die fehlenden Transits. Sage qualitativ voraus, was bei einer genau von oben gesehenen kreisförmigen Bahn aus dem orbitalen Radialgeschwindigkeitssignal wird.",
+            "taskDemandEn": "Several stellar lines shift together periodically redward and blueward while brightness is constant within measurement precision. Explain a possible planetary system and the absent transits. Predict qualitatively the orbital radial-velocity signal of an exactly face-on circular orbit.",
+            "expectedPerformanceDe": "Erklärt die wechselnde Sichtlinienkomponente der Sternbewegung um den Schwerpunkt; eine nicht vor der Sternscheibe verlaufende Planetenbahn kann Transits vermeiden. Genau von oben verschwindet die orbitale Sichtlinienkomponente; dies bedeutet nicht fehlende Bewegung oder fehlende Planeten. Aktivität/weitere Begleiter sind als Alternativen zu kontrollieren.",
+            "expectedPerformanceEn": "Explains the alternating line-of-sight component of stellar motion about the barycentre; an orbit missing the stellar disc can avoid transits. Exactly face-on, the orbital line-of-sight component vanishes, not the motion or planets. Activity/other companions require checks.",
+            "understandingFocusDe": "Geometrie verändert Nachweisbarkeit, nicht die Existenz des Systems.",
+            "understandingFocusEn": "Geometry changes detectability, not the existence of the system."
+          }
+        ]
+      }
+    }
+  ]
+}

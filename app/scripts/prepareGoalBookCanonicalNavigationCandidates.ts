@@ -13,6 +13,7 @@ import {
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import type { GoalBookModel } from './goalBookModel'
+import { assertFinalPhysicsAtlasPublishedTargets, assertFinalPhysicsAtlasDraftTargets } from './lib/physicsFinalGoalBookAtlasTargets'
 
 interface CandidateConfig {
   subjectSlug: 'math' | 'physics'
@@ -216,6 +217,7 @@ const prepareCandidate = async (config: CandidateConfig) => {
   const goalById = new Map(goalUniverse.goals.map((goal) => [goal.id, goal] as const))
   const publishedModel = await readJson<GoalBookModel>(config.publishedModelPath)
   const atlasGoalIds = new Set(publishedModel.pages.map(({ goalId }) => goalId))
+  if (config.subjectSlug === 'physics') assertFinalPhysicsAtlasPublishedTargets(atlasGoalIds)
 
   const baseView = normalizeCompositionView(await readJson(config.baseViewPath))
   const baseCompilation = compileCompositionView(baseView, primaryLandscape, goalUniverse)
@@ -287,6 +289,7 @@ const prepareCandidate = async (config: CandidateConfig) => {
     },
     rootNodes: explicitRoots,
   }
+  if (config.subjectSlug === 'physics') assertFinalPhysicsAtlasDraftTargets(candidate.rootNodes)
   await mkdir(dirname(resolve(REPOSITORY_ROOT, config.outputPath)), { recursive: true })
   await writeFile(resolve(REPOSITORY_ROOT, config.outputPath), `${JSON.stringify(candidate, null, 2)}\n`)
   console.log(`${config.outputPath}: ${backboneGoalIds.size} backbone + ${profileAdditions.length} profile + ${supplementPages.length} supplement = ${atlasGoalIds.size}`)

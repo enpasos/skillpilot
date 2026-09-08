@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "informed-positive-evidence-body-counterreview",
+  "status": "FOUR_PROFILE_BODIES_PASS_NO_HUMAN_APPROVAL",
+  "recordedAt": "2026-09-08T04:08:18Z",
+  "reviewer": "OpenAI Codex /root/physics_b043_blind_a",
+  "model": "unknown",
+  "reviewAuthority": "ai_candidate",
+  "method": "Read all four complete candidate bodies, DE/EN current descriptions and immediate prerequisites, general and Physics P criteria, and all four current original images. Independently recalculated every numerical result. Informed reused-thread review, not a new blind D review or observed learner performance. No D045 review files were opened.",
+  "bindings": {
+    "prefix": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-045-e-methods-and-entropy-4-v1",
+    "configSha256": "sha256:3eb33d309e753cb8ffbc4bd15a626e72f3655a9013f7e695f5c2f2d61b687fcc",
+    "candidatesSha256": "sha256:157881cabb27c08b877c079b84073aeb3bd6f130528c791bc99d8057bcb0cfaf",
+    "reviewJsonlSha256": "sha256:7b6ddd5b77f26e9648c7782c9706e6a31a6bdf834fab246c0e0421805c88e60e",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeSha256": "sha256:3f1cf980088f74e9445ab27c326cea49a6bfec20467968f88f032f9527726f5b",
+    "heOriginalPdfPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+    "heOriginalPdfSha256": "sha256:46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f"
+  },
+  "goals": [
+    {
+      "goalId": "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+      "bodyDecision": "pass",
+      "archetype": "modeling",
+      "imageSha256": "sha256:29bd8295e43ecc1039d1591669add99755cc4edd96ed05f954a768fc730927da",
+      "numericalEvidence": "Drag-only explicit Euler: a_i=−0.5v_i, (x1,v1)=(2,3), (x2,v2)=(3.5,2.25) in SI units. dt=3 yields v1=−2, an unphysical reversal of the specified drag-only motion. Falling model a_i=10−v_i yields v=5,7.5,8.75; terminal speed10 and dt1 comparison10 versus7.5 at the same final time are correct.",
+      "scopeAndIndependence": "HE E.4 original includes friction, terminal speed, difference-quotient models and spreadsheet calculation. The cases change forces and limiting behavior, not merely numbers; spreadsheet construction and step-size checks make performance independent of the image table. No analytic differential-equation solution is required. The named Euler procedure belongs to these supplied concrete cases, not a claim that all numerical models must use it.",
+      "bilingualFinding": "DE/EN requirements, signs, initial values, units and outcomes agree.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+      "bodyDecision": "pass",
+      "archetype": "proof",
+      "imageSha256": "sha256:55fcf4f7d59f9b73ed44f34b26e11fb51f7011574742dce8ecd37bf8414b6245",
+      "numericalEvidence": "Case1: Qc400, ΔS=400/450−1000/900=−2/9 J/K; Qc≥500, W≤500, eta≤0.5. Case2: Qc=300(0.2+800/600)=460 J; W340 J, eta0.425; reversible Qc=W400 J; extra rejected heat60 J.",
+      "scopeAndIndependence": "Both cases explicitly bind complete cycles, two constant absolute-temperature reservoirs and no other heat/mass flows. Expectations distinguish medium from reservoirs and ideal work storage. The first rejects an energy-conserving but impossible engine; the second quantifies irreversibility at fixed heat input. Both require the currently described energy/entropy derivation, not a new heat-engine duty or merely copied Carnot substitution.",
+      "bilingualFinding": "DE/EN premises, rejected-heat signs, bounds, reversibility and Celsius limitation agree.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "161502b8-e52d-58d0-8f01-9f777b56d392",
+      "bodyDecision": "pass",
+      "archetype": "concept",
+      "imageSha256": "sha256:cbd658b027b20ff855b518ba8a5ce512d436b458899bc9ed7b2eca725e12700e",
+      "numericalEvidence": "Reversible isothermal half-volume compression: subsystem −NkBln2 plus bath +NkBln2 totals0; ideal work storage contributes no entropy. Equiprobable states16→4 give −kBln4; surroundings+2kB give total(2−ln4)kB=0.6137056388801094kB>0.",
+      "scopeAndIndependence": "Compression and abstract explicitly equiprobable state counting change the physical/model context and the total change from zero to positive. Both require local/total boundary reasoning; the second rejects an unsupported photograph-based order claim. Supplied formulas and idealizations support the existing competence without importing the refrigerator image numbers or requiring a new statistical-mechanics derivation.",
+      "bilingualFinding": "DE/EN subsystem/environment boundaries, equal-probability assumption, equations and limits agree.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "f322c268-dc16-5d50-82dd-209834f20208",
+      "bodyDecision": "pass",
+      "archetype": "data",
+      "imageSha256": "sha256:783e040636428f34dfd7a2d73cfa759521996216db1a71bd729db10987cb5083",
+      "numericalEvidence": "Equal10kWh useful heat: A2.5kgCO2e, B1.6–3.2kgCO2e, hence ranking not robust. Extended account: at5years A500/B620kg; at20years A1100/B980kg. B saves16kg annually but has200kg higher manufacturing emissions.",
+      "scopeAndIndependence": "The first case analyzes an uncertain operational emission factor; the second changes the accounting boundary and duration using complete hypothetical data for that expressly limited account. Both require equal service and conditional data-based conclusions. Simple supplied arithmetic remains accessible across stages; no external product research, full life-cycle methodology, technology recommendation or advanced thermodynamic derivation is required.",
+      "bilingualFinding": "DE/EN equal-service conditions, hypothetical data, excluded contributions, no-replacement premise and conclusions agree.",
+      "requiredBodyChanges": []
+    }
+  ],
+  "limitations": [
+    "This is a substantive four-profile body counterreview, not a new nationwide source/projection audit or human approval.",
+    "The author's two invalid reasoning archetypes were corrected by Root to concept and data; the final bound bodies were checked with those valid archetypes.",
+    "No canonical, picture, registry, D-record or historical P-record changes were made by this counterreview. Native materializer PASS4 was reported by Root, not rerun here."
+  ]
+}

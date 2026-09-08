@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-resolution-81a45dec-37be-529b-89ce-2f3101237293",
+  "goal": {
+    "goalId": "81a45dec-37be-529b-89ce-2f3101237293",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:86e5411d1dcd3bb3b364ff3eaceeafe082969c8b10045b236974e41037b1bbd2",
+    "pageFingerprint": "sha256:ec618fb43cab6a78e49712ebc782fe061b00f016f4729920f499b5bc9d0c0a4d",
+    "goalReviewContextFingerprint": "sha256:d56f03d650dba03e659e47f28f16e5acf0ae0a0cc1ee264456823bb204dd5019",
+    "finalText": {
+      "titleDe": "Entropie E10: Clausius-Ungleichung (Kreisprozess)",
+      "titleEn": "Entropy E10: Clausius Inequality (Cycle)",
+      "descriptionDe": "Die lernende Person kann die Clausius-Ungleichung $\\oint \\frac{\\delta Q}{T} \\le 0$ für Kreisprozesse mit Wärme positiv zum System und $T$ als absoluter Temperatur des jeweiligen Wärmereservoirs deuten und daraus begründen, warum die vollständige Umwandlung von Wärme aus einem einzigen Reservoir in Arbeit als einzige Wirkung unmöglich ist.",
+      "descriptionEn": "The learner can interpret the Clausius inequality $\\oint \\frac{\\delta Q}{T} \\le 0$ for cycles, with heat positive into the system and $T$ the absolute temperature of the respective heat reservoir, and use it to explain why complete conversion of heat from a single reservoir into work as the sole effect is impossible."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-a",
+      "campaignDigest": "sha256:391cf1a5e42f247d296d7dabee51f19e8d8d42cde19225606a4c67a93d68f0a2",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:d56f03d650dba03e659e47f28f16e5acf0ae0a0cc1ee264456823bb204dd5019",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:015f4baff90e3e2c7ca94d4801524bdc56802dcddc05ef51acb75c4baa6bbcf9",
+      "resultsDigest": "sha256:8e089b9ab62e641fb5fe1a0bce9351689c3b156cfdf0ee7cb0d6909ddf9ab583",
+      "recordId": "physik-b043s-a-81a45dec-37be-529b-89ce-2f3101237293",
+      "recordDigest": "sha256:9413775ae9d703411bd24bfdc4217e059484068a8843da619cb855b613d2ba8b"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-b",
+      "campaignDigest": "sha256:20cbf219fae84e213a2c7fde01532c57fcbb83cbe5d68fddf79962e7e39e1c13",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:d56f03d650dba03e659e47f28f16e5acf0ae0a0cc1ee264456823bb204dd5019",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.reviewer-b",
+      "runManifestDigest": "sha256:bc1f2ec2b93b9798902669a63ab9c39a1533c2e87b00c82dff05c26da73e7d02",
+      "resultsDigest": "sha256:3a1d9386c4be6a741d80994120ec26bee4eb70d13927517372854bd17abc64cf",
+      "recordId": "physics-d043s-blind-b.012",
+      "recordDigest": "sha256:1d35e9275284bf88c4258a8d8993b6c3276561a6ea25cecaaecbd8509009f554"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:0ac2e7783c408851408df0dd36fc27be364a3ffdc36d4604cd881aac73100c15"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b043s-current-twenty-synthesis-v1-20260908",
+    "manifestDigest": "sha256:e2fc84088dfaa354c9bc4a7cce395f03dbfcc6f059074984cbc301190cc005a2",
+    "manifestFingerprint": "sha256:15f06eb11133becc54c3c83fa62087609fda37421d4bffef2ec5871e58fe54b9",
+    "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-012"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-012",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex /root; explicit per-goal comparison of two newly isolated current-context reviews; AI candidate evidence only",
+    "synthesizedAt": "2026-09-08T03:59:05.504Z",
+    "rationaleDe": "Beide Runden bestätigen Kreisprozess, Wärme positiv zum Arbeitsmedium und einzige Wirkung. A grenzt die unzulässige Einreservoir-Arbeitsgewinnung von zulässiger Arbeitszufuhr mit Wärmeabgabe ab; keine pauschale Aussage über einmalige Expansion.",
+    "rationaleEn": "Both rounds confirm a full cycle, heat positive into the working medium and the sole-effect condition. A contrasts forbidden single-reservoir work extraction with permitted work input and heat rejection, without overgeneralising to one-off expansion.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im Kreisprozess kehrt das Arbeitsmedium in seinen Anfangszustand zurück. Die temperaturgewichtete Wärmeaufnahme erfüllt die Clausius-Ungleichung; positive Netto-Wärmeaufnahme aus nur einem Reservoir als einzige Quelle von Nettoarbeit würde sie verletzen.",
+      "essentialUnderstandingEn": "In a cycle, the working substance returns to its initial state. Temperature-weighted heat input satisfies the Clausius inequality; positive net heat uptake from a single reservoir as the sole source of net work would violate it.",
+      "observablePerformanceDe": "Die lernende Person interpretiert das Umlaufintegral mit positiver Wärmeaufnahme und Reservoirtemperaturen und zeigt eigenständig, weshalb ein behaupteter Ein-Reservoir-Kreisprozess mit Nettoarbeitsabgabe einen positiven, unzulässigen Wert ergäbe.",
+      "observablePerformanceEn": "The learner interprets the cyclic integral using positive heat input and reservoir temperatures, independently showing why a claimed single-reservoir cycle producing net work would give an inadmissible positive value.",
+      "transferExpectationDe": "In einer frischen Aufgabe wird Arbeit in einen zyklisch betriebenen Apparat hineingesteckt und als Wärme an ein Reservoir abgegeben. Die lernende Person begründet, warum dieses umgekehrte Vorzeichenbild die Ungleichung erfüllt.",
+      "transferExpectationEn": "In a fresh task, work is supplied to a cyclic device and released as heat to a reservoir. The learner explains why this reversed sign pattern satisfies the inequality."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-2d5669a735af802eb0f51686c26b5a46a2f0b693f017a75348b695c09c844178",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:08165a2d27087fe45e7eae18b2a08fe36d31e6947a15c0de4cf8f828aacbbfb7"
+}

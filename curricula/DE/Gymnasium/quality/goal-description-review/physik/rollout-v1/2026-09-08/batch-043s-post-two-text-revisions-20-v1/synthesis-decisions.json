@@ -1,0 +1,608 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-b043s-current-twenty-synthesis-v1-20260908",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex /root; explicit per-goal comparison of two newly isolated current-context reviews; AI candidate evidence only",
+  "synthesizedAt": "2026-09-08T03:59:05.504Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908",
+    "batchManifestDigest": "sha256:b09d5d6fc13be60979afed9438ab24e743c1ef121b489db232a36740a92f5c9f",
+    "configDigest": "sha256:41bd5a2f53a4d52e5070e322f4ff68a84528719180410b7a5ed8f23facc6746a",
+    "bundleFingerprint": "sha256:37691e70b2abe54a8b96031638f2fd0513e76d981635d80ef7e1894d446ad0ec",
+    "bookDigest": "sha256:de17082046b7b4808e1a9649c0f9ef0590169b04cb6517910ce347c60c76d45d",
+    "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+    "dualSummaryDigest": "sha256:0ac2e7783c408851408df0dd36fc27be364a3ffdc36d4604cd881aac73100c15",
+    "canonicalLandscapeDigest": "sha256:3f1cf980088f74e9445ab27c326cea49a6bfec20467968f88f032f9527726f5b"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-a",
+      "campaignDigest": "sha256:391cf1a5e42f247d296d7dabee51f19e8d8d42cde19225606a4c67a93d68f0a2",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:5c0c604a377ed297d2585d1801936126442334f62ac8e47e982a9a7ecd9e41ff",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:015f4baff90e3e2c7ca94d4801524bdc56802dcddc05ef51acb75c4baa6bbcf9",
+      "resultsDigest": "sha256:8e089b9ab62e641fb5fe1a0bce9351689c3b156cfdf0ee7cb0d6909ddf9ab583"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-b",
+      "campaignDigest": "sha256:20cbf219fae84e213a2c7fde01532c57fcbb83cbe5d68fddf79962e7e39e1c13",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:aef0ad318204c2d61de0b8dffb657f60239b992860a30cc9b5db567d49aa2cd4",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.reviewer-b",
+      "runManifestDigest": "sha256:bc1f2ec2b93b9798902669a63ab9c39a1533c2e87b00c82dff05c26da73e7d02",
+      "resultsDigest": "sha256:3a1d9386c4be6a741d80994120ec26bee4eb70d13927517372854bd17abc64cf"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-001",
+      "goalId": "37b33812-d428-5953-852e-57a53a4347fe",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5d384335f8c7ca45a1f50ab23ebbbf5d0ee71459a3504561380fadb1364c851c",
+      "pageFingerprint": "sha256:c7eef6bb9c6215e16f31ae971c7d9dc35e59e21e0e95b1a4e62e0c258ab8575b",
+      "goalReviewContextFingerprint": "sha256:d7f98b080e0425ee2d8ff372bda05204f8ac09aa6d7ce96df1c2c3f614f9ffc5",
+      "finalText": {
+        "titleDe": "Kinetische Gastheorie & Temperatur",
+        "titleEn": "Kinetic Gas Theory & Temperature",
+        "descriptionDe": "Die lernende Person kann im klassischen Modell eines idealen Gases erklären, wie die absolute Temperatur mit der mittleren kinetischen Energie der ungeordneten Translationsbewegung der Teilchen zusammenhängt.",
+        "descriptionEn": "The learner can explain, within the classical ideal-gas model, how absolute temperature relates to the mean kinetic energy of the particles' random translational motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-37b33812-d428-5953-852e-57a53a4347fe",
+          "recordDigest": "sha256:d85808dae3476c9e6b7440597b918d8ee4e178a46af0c0bfd51b125e49c34a95"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.001",
+          "recordDigest": "sha256:1a7d85fc2ee28fe0693f998a44119e6e1d954b743485545d2436fd64d1f4e6d9"
+        }
+      },
+      "rationaleDe": "A/B bestätigen den klassischen idealen Gasrahmen und die mittlere ungeordnete Translationsenergie pro Teilchen. A konkretisiert den Transfer auf unterschiedliche Teilchenmassen bei gleicher Temperatur, ohne quantitative Herleitung für alle Stufen zu verlangen.",
+      "rationaleEn": "Both rounds confirm the classical ideal-gas boundary and mean random translational energy per particle. A specifies transfer to different particle masses at equal temperature without imposing a quantitative derivation across all stages."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-002",
+      "goalId": "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:28a701c557a81c947d3ec5d6430e6083c3de966758dbb6ace73ddd9e93f33a80",
+      "pageFingerprint": "sha256:fd148b725838575633397812c78673f72bde07452e83f67bf58965e7d8883dc8",
+      "goalReviewContextFingerprint": "sha256:18a9b24b37e3b9ad817d2dccfdd2fa7ba5fd0dd1a6f76a5f2ee05bd802c7f264",
+      "finalText": {
+        "titleDe": "Reversible und irreversible Vorgänge unterscheiden",
+        "titleEn": "Distinguish Reversible and Irreversible Processes",
+        "descriptionDe": "Die lernende Person kann reversible und irreversible thermodynamische Vorgänge an Beispielen unterscheiden und Konsequenzen für die Energieumwandlung beschreiben.",
+        "descriptionEn": "The learner can distinguish reversible and irreversible thermodynamic processes using examples and describe consequences for energy conversion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-2088ccf0-48f4-51d4-be5f-67affd0fb099",
+          "recordDigest": "sha256:d836b5b0d1f40da4e2ab2e930644b1e9e1f6f7faf72dc282f909faa2882807aa"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.002",
+          "recordDigest": "sha256:6e7d80853c29dd454bc0c162fdb44efbeba19f186193d539d46e0eb48f44fd47"
+        }
+      },
+      "rationaleDe": "Die frischen Runden bestätigen den qualitativen Zusammenhang zwischen Rückführung von System samt Umgebung und nutzbarer Energie. B prüft freie Expansion mit anschließender Kompression; quasistatische Detailanalyse bleibt beim eigenen Nachfolger. Kein Grund, die Beschreibung zu erweitern.",
+      "rationaleEn": "Fresh rounds confirm the qualitative connection between restoring system plus surroundings and useful energy. B tests free expansion followed by compression; detailed quasi-static analysis remains a separate successor. No description expansion is warranted."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-003",
+      "goalId": "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f33e34c61c21d571b8b360c7d598fe64712d5c4664aea2c8feb00586f1601bd9",
+      "pageFingerprint": "sha256:457be1985995bd4bdc135c318869c7696b1386f7b3cfd33d532126090fff089e",
+      "goalReviewContextFingerprint": "sha256:ed20f785be010930f3ef78ca43bcdb83546bce51a80f135b8bab5ae412d99378",
+      "finalText": {
+        "titleDe": "Ersten Hauptsatz verstehen und mit Formel angeben",
+        "titleEn": "Understand and State the First Law with Formula",
+        "descriptionDe": "Die lernende Person kann den ersten Hauptsatz $\\Delta U = Q + W$ als Energiebilanz eines geschlossenen Systems erklären und formulieren: $Q$ ist die zugeführte Wärme und $W$ die am System verrichtete Arbeit, jeweils mit Vorzeichen.",
+        "descriptionEn": "The learner can explain and state the first law $\\Delta U = Q + W$ as the energy balance of a closed system: $Q$ is heat supplied to the system and $W$ is work done on it, each with its sign."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-5f17e992-fd07-56ee-80a0-567f45bbd10c",
+          "recordDigest": "sha256:dca7c0c54d613e85f3e88d6d6e9d95c29408f7898fd9ca92e934a8ac74505919"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.003",
+          "recordDigest": "sha256:4855391c4ce813bb9546b83380819dd6c06731023d3800eb8315b05cb7f851ff"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen geschlossenes System und ausdrücklich positive Arbeit am System. A verbindet Zustandsgröße mit Übertragungen und prüft isochore Erwärmung gegen adiabatische Expansion; keine zweite quantitative Prozesskompetenz wird eingeführt.",
+      "rationaleEn": "Both reviews confirm a closed system and explicitly positive work on the system. A connects the state variable with energy transfers and tests fixed-volume heating against adiabatic expansion without introducing a second quantitative process competence."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-004",
+      "goalId": "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7a0efe091aeb6135fb50c1541d33fc90add2f585ce73cbc472b5a21d22273559",
+      "pageFingerprint": "sha256:5eb6347e731b5570e47da7795ad69cceea8327641b5fc2f70203c1955af117b7",
+      "goalReviewContextFingerprint": "sha256:06e09094e3d4f6ce6447acd44968c35b18e643423e93ed6c2ab7f0ce443fb660",
+      "finalText": {
+        "titleDe": "Zweiten Hauptsatz verstehen und mit Entropie-Formulierung angeben",
+        "titleEn": "Understand and State the Second Law with Entropy Formulation",
+        "descriptionDe": "Die lernende Person kann den zweiten Hauptsatz für ein isoliertes Gesamtsystem als $\\Delta S_{\\mathrm{ges}} \\ge 0$ formulieren, reversible und irreversible Prozesse durch $\\Delta S_{\\mathrm{ges}} = 0$ beziehungsweise $\\Delta S_{\\mathrm{ges}} > 0$ unterscheiden und daraus die Richtung spontaner Abläufe begründen.",
+        "descriptionEn": "The learner can state the second law for an isolated total system as $\\Delta S_{\\mathrm{tot}} \\ge 0$, distinguish reversible and irreversible processes through $\\Delta S_{\\mathrm{tot}} = 0$ and $\\Delta S_{\\mathrm{tot}} > 0$, respectively, and use this to justify the direction of spontaneous processes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+          "recordDigest": "sha256:766040b0736785d713ee0fe047785e259dfa9a207cbee7d67e2bbcfd13106c52"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.004",
+          "recordDigest": "sha256:3c9aef7ffe8ff02e9abeb0be33a3706bbe02b1c0e670464ee1d567b0bc0e72be"
+        }
+      },
+      "rationaleDe": "A/B sehen isoliertes Gesamtsystem und Gleichheits-/Ungleichheitsfall korrekt begrenzt. B fordert eigenständige Begründung der spontanen Wärmeflussrichtung und ergänzt eine lokale Teilentropieabnahme zur Gesamtbilanz; kein Split nötig.",
+      "rationaleEn": "Both rounds find the isolated-total-system boundary and equality/inequality cases correct. B requires independently justified spontaneous heat-flow direction and incorporates a local entropy decrease into the total balance; no split is needed."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-005",
+      "goalId": "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:03af0ce68f04658f30459f527cc1f87d268ab50a3ac1a137bac4c30913a9bfce",
+      "pageFingerprint": "sha256:b5f4718fff3253d1ef534b35fb8ff82b8e4359a20000363a0090d6b81d7e63b1",
+      "goalReviewContextFingerprint": "sha256:fd646372c32309f338ee134ec39da3e123b275018d7f32e5f77c00c69ccef8d6",
+      "finalText": {
+        "titleDe": "Entropie E02: Reversibel, irreversibel, quasistatisch",
+        "titleEn": "Entropy E02: Reversible, Irreversible, Quasi-static",
+        "descriptionDe": "Die lernende Person kann reversible, irreversible und quasistatische Prozesse an Reibung, Wärmeübertragung bei endlicher Temperaturdifferenz und freier Expansion unterscheiden und erklären, warum quasistatischer Ablauf allein keine Reversibilität garantiert und Reversibilität ein idealer Grenzfall ist.",
+        "descriptionEn": "The learner can distinguish reversible, irreversible and quasi-static processes using friction, heat transfer across a finite temperature difference and free expansion, and explain why a quasi-static process alone does not guarantee reversibility and why reversibility is an ideal limiting case."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+          "recordDigest": "sha256:995887b80223130a7e97fbe5e64b7485abb45966ff855763b4f2468872b10ad3"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.005",
+          "recordDigest": "sha256:091d1bfd1a351fd670c2b244b8069715f71557da3b514daf61eae8e835ee33bf"
+        }
+      },
+      "rationaleDe": "A/B bestätigen genau die Nichtgleichsetzung quasistatisch und reversibel. Der langsame reibungsbehaftete Kolben in A zeigt eigenständigen Transfer; Prozessbeispiele sind Anwendungen derselben Abgrenzung und kein Mehrfachziel.",
+      "rationaleEn": "Both rounds confirm the crucial distinction between quasi-static and reversible. A's slowly moving frictional piston provides independent transfer; process examples instantiate one distinction rather than multiple goals."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-006",
+      "goalId": "239aac49-1137-5df5-b197-49e72292e40c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a19de1e7de56e3c947f50956469aa705c8eb5706b5ff625999e00189f0008042",
+      "pageFingerprint": "sha256:126a660342802ea2954fdd38b112bcbdba4d572930161edeed3d24669a57c491",
+      "goalReviewContextFingerprint": "sha256:8f23a9487b495a1ca365a1a40bda18000190d64b77f89bb58316eb6f72decbe8",
+      "finalText": {
+        "titleDe": "Entropie E03: Warum Entropie überhaupt?",
+        "titleEn": "Entropy E03: Why Entropy at All?",
+        "descriptionDe": "Die lernende Person begründet, warum Energieerhaltung allein die Richtung realer Prozesse nicht festlegt, und formuliert die Leitfrage: Warum läuft Wärme spontan von heiß nach kalt?",
+        "descriptionEn": "The learner explains why energy conservation alone does not determine the direction of real processes and formulates the guiding question: Why does heat flow spontaneously from hot to cold?"
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-239aac49-1137-5df5-b197-49e72292e40c",
+          "recordDigest": "sha256:536a65b7db611012b85a0bb995ee7fd03789594bf48c1537a5e7239c7692b745"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.006",
+          "recordDigest": "sha256:0bfdd1bfbd4383f929093ceec75e5e642de0c562fa148f41bb0450a6285524c4"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen eine fachliche Begründung der Grenze der Energieerhaltung, nicht bloß Motivation. B verlangt eigene Vorwärts-/Rückwärtsbilanz und Reibungstransfer; die quantitative Entropiedefinition bleibt getrennt.",
+      "rationaleEn": "Both rounds confirm substantive reasoning about the limits of energy conservation, not mere motivation. B requires independent forward/reverse balances and friction transfer, leaving quantitative entropy definition separate."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-007",
+      "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:55c42a096e6edafe005c5e481ccfac675008f975daffff86733ba23a8c84b3db",
+      "pageFingerprint": "sha256:1cde8fb2f35c0d5e5174b70fbd2a0d57ab234dbdb5e5b8339aa8488a2705b682",
+      "goalReviewContextFingerprint": "sha256:3b8f95556f07840fb43de8317a57ec188f661cb56d9ce09a0f0c03704829d3ab",
+      "finalText": {
+        "titleDe": "Entropie E04: Makroskopische Definition (Clausius)",
+        "titleEn": "Entropy E04: Macroscopic Definition (Clausius)",
+        "descriptionDe": "Die lernende Person nutzt die Definition $dS = \\frac{\\delta Q_{\\mathrm{rev}}}{T}$ und erklärt, warum zur Berechnung von $\\Delta S$ ein reversibler Ersatzweg verwendet werden darf (weil $S$ eine Zustandsgröße ist).",
+        "descriptionEn": "The learner uses the definition $dS = \\frac{\\delta Q_{\\mathrm{rev}}}{T}$ and explains why a reversible substitute path may be used to compute $\\Delta S$ (because $S$ is a state variable)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-e713dc34-beeb-5807-8a90-f872e049aa4e",
+          "recordDigest": "sha256:dd8f2c58cf573f1749e6811d170a1eace3e374eb25700c2e6392aca7acf08524"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.007",
+          "recordDigest": "sha256:13982ab3f1c380d070f7c963d9d8503efba739bcbfc1608d1dfba86b20208b68"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen reversible Ersatzwege mit denselben Endzuständen und absoluter Temperatur. A prüft ausdrücklich, warum ein realer adiabatischer irreversibler Weg trotz Q=0 keine verschwindende Entropieänderung erzwingt.",
+      "rationaleEn": "Both rounds confirm reversible substitute paths with identical endpoints and absolute temperature. A explicitly tests why an actual adiabatic irreversible path with Q=0 need not have zero entropy change."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-008",
+      "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d134109eed45f917f14e6f2d7e85b6c4f674e8e0dafe3bd9e722bbc2b4c65b0b",
+      "pageFingerprint": "sha256:fc26ee1030fbdb4121b031dbc7b513cfb32967902fc3a0f935ae0d21d26eda1b",
+      "goalReviewContextFingerprint": "sha256:748b4db6fe9c577671ec608f9d746f49b784bbddb087df9a09b8070364ef31f5",
+      "finalText": {
+        "titleDe": "Entropie E05: Einheiten und Bedeutung von S",
+        "titleEn": "Entropy E05: Units and Meaning of S",
+        "descriptionDe": "Die lernende Person kann die Einheit $\\mathrm{J/K}$ der Entropie anhand von $\\Delta S = Q_{\\mathrm{rev}}/T$ deuten und erklären, warum dieselbe reversibel zugeführte Wärmemenge bei niedrigerer konstanter absoluter Temperatur eine größere Entropiezunahme bewirkt.",
+        "descriptionEn": "The learner can interpret the entropy unit $\\mathrm{J/K}$ using $\\Delta S = Q_{\\mathrm{rev}}/T$ and explain why the same amount of heat supplied reversibly at a lower constant absolute temperature produces a larger entropy increase."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-6e79ef4a-2666-5f7a-885c-b175954506f8",
+          "recordDigest": "sha256:ca3327b2b56ecf8476221136e0b12ee0fc612c97f5bd8ecd12f0d921c4a8e51c"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.008",
+          "recordDigest": "sha256:2256aeba975b96a323cdf4d441e891974cfc2f0b643ca3222a51cf0339d719b7"
+        }
+      },
+      "rationaleDe": "A/B bestätigen J/K und die Bedeutung von Qrev/T bei konstanter absoluter Temperatur. A überträgt den Vergleich auf Wärmeabgabe mit negativem Vorzeichen. Kein Bild ist gebunden; daraus wird weder Bildprüfung noch Textmangel erfunden.",
+      "rationaleEn": "Both rounds confirm J/K and the meaning of Qrev/T at constant absolute temperature. A transfers the comparison to heat rejection and negative signs. No image is bound; neither an image review nor a text defect is invented."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-009",
+      "goalId": "741e7056-69e4-59be-a159-0e2583d748d1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a318894efa4ba565eb523ae0e79387162421f14841c8d57f154ed426e67d4292",
+      "pageFingerprint": "sha256:131220da4bb47047ff413a895d5048165b10291e138f2aa630f8f830948805d7",
+      "goalReviewContextFingerprint": "sha256:1462513c15fee7a26164463b7acdf71ebe89d265a232826ff6550cfadaca4a04",
+      "finalText": {
+        "titleDe": "Entropie E06: Standardfälle sicher rechnen",
+        "titleEn": "Entropy E06: Compute Standard Cases Reliably",
+        "descriptionDe": "Die lernende Person kann die Entropieänderung eines Wärmereservoirs mit $\\Delta S = Q/T$ und bei einem reversiblen Phasenübergang mit $\\Delta S = L/T$ berechnen und deuten; $T$ ist die konstante absolute Temperatur, $Q$ beziehungsweise $L$ die vorzeichenbehaftete aufgenommene Wärmemenge in Joule.",
+        "descriptionEn": "The learner can calculate and interpret the entropy change of a heat reservoir using $\\Delta S = Q/T$ and of a reversible phase transition using $\\Delta S = L/T$; $T$ is the constant absolute temperature, and $Q$ or $L$ is the signed amount of heat absorbed in joules."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-741e7056-69e4-59be-a159-0e2583d748d1",
+          "recordDigest": "sha256:4093111fa0e407a17a60e6ee82d3231436318ddc0b4819c75072164590e57066"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.009",
+          "recordDigest": "sha256:5616f852d9f5212bfdbfa69c2c82d06ec695cbf73256a383fdba3375e42b940b"
+        }
+      },
+      "rationaleDe": "A/B bestätigen Reservoir und reversiblen Phasenübergang als Fälle derselben Beziehung sowie L als gesamte Übergangswärme. B trennt in einer neuen Erstarrungsaufgabe den isothermen Abschnitt von zusätzlicher Abkühlung.",
+      "rationaleEn": "Both rounds confirm reservoirs and reversible phase changes as cases of one relation, with L denoting total transition heat. B distinguishes the isothermal interval from additional cooling in a fresh freezing task."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-010",
+      "goalId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7ea18dbae997743bab787a10b62a6fbffcc44f9074f59052aa771309a3d507d9",
+      "pageFingerprint": "sha256:676c489429134197b80c2489e626ce39a846506a0a75d0539ed227df55fe6570",
+      "goalReviewContextFingerprint": "sha256:0b0c890ab6ae1a7836f892151ed052fb8b3f8325188bab264804b02c05f6e8b5",
+      "finalText": {
+        "titleDe": "Entropie E07: Entropieänderung idealer Gase",
+        "titleEn": "Entropy E07: Entropy Change of Ideal Gases",
+        "descriptionDe": "Die lernende Person kann Entropieänderungen einer festen Menge idealen Gases bei einfachen Zustandsänderungen berechnen und physikalisch deuten, insbesondere isotherm mit $\\Delta S = nR\\ln(V_2/V_1)$, und die Größen $n$, $R$, $V$ und $T$ sowie die Gültigkeitsbedingungen zuordnen.",
+        "descriptionEn": "The learner can calculate and physically interpret entropy changes of a fixed amount of ideal gas in simple changes of state, especially isothermal ones using $\\Delta S = nR\\ln(V_2/V_1)$, and identify the quantities $n$, $R$, $V$ and $T$ and the conditions of validity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+          "recordDigest": "sha256:22d6d5fcfcade1625f1808d5bb962a17fab5b97204db554f2c856583f2ceadcc"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.010",
+          "recordDigest": "sha256:fcf0abb74fdd5791bc380348906c4b841318204f26ebe17f1cf5fb70074c524e"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen feste ideale Gasmenge und isotherme Modellgrenze. A stellt einen isochoren Erwärmungsweg dagegen: ln(V2/V1)=0 reicht dann nicht für ΔS=0. Dies passt zum separat korrigierten P-Fall ohne Stoffmengenwechsel.",
+      "rationaleEn": "Both rounds confirm a fixed amount of ideal gas and the isothermal model limit. A contrasts constant-volume heating: ln(V2/V1)=0 then does not establish ΔS=0. This agrees with the separately corrected P case without changing gas amount."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-011",
+      "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4db43a46de920f19f74945d6aba58faa5995c220ba6a284d2f992ec70804f96d",
+      "pageFingerprint": "sha256:9c760bcf2ea8d022a5e8041f2a630a371aeee385b526564f583f246b6616541a",
+      "goalReviewContextFingerprint": "sha256:9343ae092fca73c2923a5ae353d391db22a51109be3cf261c0a1262188ee48a8",
+      "finalText": {
+        "titleDe": "Entropie E08: Entropiebilanz für System + Umgebung",
+        "titleEn": "Entropy E08: Entropy Balance for System + Surroundings",
+        "descriptionDe": "Die lernende Person kann die Entropieänderungen von System und Umgebung zu $\\Delta S_{\\mathrm{ges}}$ addieren und für Wärmeübertragung zwischen zwei sonst isolierten Reservoiren bei konstanten absoluten Temperaturen $T_h > T_c$ rechnerisch begründen, warum Wärmefluss von heiß nach kalt die Gesamtentropie erhöht.",
+        "descriptionEn": "The learner can add the entropy changes of a system and its surroundings to obtain $\\Delta S_{\\mathrm{tot}}$ and calculate why heat flow from hot to cold increases total entropy when heat is transferred between two otherwise isolated reservoirs at constant absolute temperatures $T_h > T_c$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-14099861-897c-53f4-8c6c-48d088ee9f01",
+          "recordDigest": "sha256:c9244af6a2397199a1299e9370bbb773e0b3812469363b59249ae6c207006a99"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.011",
+          "recordDigest": "sha256:2049b575f0905a3ed3430214b200dbc5a7fa29cba56e5ac1be4a58aff18f8218"
+        }
+      },
+      "rationaleDe": "A/B bestätigen zwei sonst isolierte Reservoire bei konstanten Temperaturen und signierte Teilbeiträge. B prüft die Unabhängigkeit der Gesamtbilanz von der Wahl, welches Reservoir System heißt, samt physikalischer Prozessrichtung.",
+      "rationaleEn": "Both rounds confirm two otherwise isolated constant-temperature reservoirs and signed contributions. B tests that total entropy and physical process direction do not depend on which reservoir is labelled the system."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-012",
+      "goalId": "81a45dec-37be-529b-89ce-2f3101237293",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:86e5411d1dcd3bb3b364ff3eaceeafe082969c8b10045b236974e41037b1bbd2",
+      "pageFingerprint": "sha256:ec618fb43cab6a78e49712ebc782fe061b00f016f4729920f499b5bc9d0c0a4d",
+      "goalReviewContextFingerprint": "sha256:d56f03d650dba03e659e47f28f16e5acf0ae0a0cc1ee264456823bb204dd5019",
+      "finalText": {
+        "titleDe": "Entropie E10: Clausius-Ungleichung (Kreisprozess)",
+        "titleEn": "Entropy E10: Clausius Inequality (Cycle)",
+        "descriptionDe": "Die lernende Person kann die Clausius-Ungleichung $\\oint \\frac{\\delta Q}{T} \\le 0$ für Kreisprozesse mit Wärme positiv zum System und $T$ als absoluter Temperatur des jeweiligen Wärmereservoirs deuten und daraus begründen, warum die vollständige Umwandlung von Wärme aus einem einzigen Reservoir in Arbeit als einzige Wirkung unmöglich ist.",
+        "descriptionEn": "The learner can interpret the Clausius inequality $\\oint \\frac{\\delta Q}{T} \\le 0$ for cycles, with heat positive into the system and $T$ the absolute temperature of the respective heat reservoir, and use it to explain why complete conversion of heat from a single reservoir into work as the sole effect is impossible."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-81a45dec-37be-529b-89ce-2f3101237293",
+          "recordDigest": "sha256:9413775ae9d703411bd24bfdc4217e059484068a8843da619cb855b613d2ba8b"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.012",
+          "recordDigest": "sha256:1d35e9275284bf88c4258a8d8993b6c3276561a6ea25cecaaecbd8509009f554"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Kreisprozess, Wärme positiv zum Arbeitsmedium und einzige Wirkung. A grenzt die unzulässige Einreservoir-Arbeitsgewinnung von zulässiger Arbeitszufuhr mit Wärmeabgabe ab; keine pauschale Aussage über einmalige Expansion.",
+      "rationaleEn": "Both rounds confirm a full cycle, heat positive into the working medium and the sole-effect condition. A contrasts forbidden single-reservoir work extraction with permitted work input and heat rejection, without overgeneralising to one-off expansion."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-013",
+      "goalId": "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:749cc79ebc2218407d1a78f29e383099cb2c76126d73e2a8173fb0cdf5236816",
+      "pageFingerprint": "sha256:cd0159b0c6095e7950005c8905e77ff97b089a1574bf8b73a708e4c910b4e349",
+      "goalReviewContextFingerprint": "sha256:1db829c6e0049365a1047a06de4b549095d6556aa50371abf318a5ea8f03b4c8",
+      "finalText": {
+        "titleDe": "Entropie E11: Entropieproduktion und Irreversibilität",
+        "titleEn": "Entropy E11: Entropy Production and Irreversibility",
+        "descriptionDe": "Die lernende Person kann Reibung, Mischung beziehungsweise Diffusion, Wärmeaustausch bei endlicher Temperaturdifferenz und freie Expansion als Ursachen von Entropieproduktion erklären und begründen, warum sie sich nicht ohne bleibende Änderungen in System und Umgebung vollständig umkehren lassen.",
+        "descriptionEn": "The learner can explain friction, mixing or diffusion, heat exchange across a finite temperature difference and free expansion as causes of entropy production, and justify why they cannot be completely reversed without lasting changes in the system and surroundings."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-616ac6cf-901b-509a-8cbb-bd422ddecf05",
+          "recordDigest": "sha256:4c9e79ca3c44c40c381ce6cef38017037bb16d62316d5c133cf3abf571a9822e"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.013",
+          "recordDigest": "sha256:4deabdad2e1fd406416d1dffacef093fc28ad2cdf710b6e375a31642f528af9e"
+        }
+      },
+      "rationaleDe": "A/B bestätigen Entropieproduktion als einheitlichen Kern der genannten irreversiblen Beispiele. B prüft einen konkreten Rückführungsversuch nach freier Expansion einschließlich bleibender Umgebungsfolgen; kein bloßes Aufzählen nötig.",
+      "rationaleEn": "Both rounds confirm entropy production as the common core of the irreversible examples. B tests a concrete attempted restoration after free expansion including lasting environmental effects rather than mere enumeration."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-014",
+      "goalId": "b61d233a-1902-526b-a9b5-6b3d553f4013",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cd24972dedf21d9c9209e0e381a80c374eddc81d0cd09d1204ad8dc3d80b9d64",
+      "pageFingerprint": "sha256:469beb8232eaf4e57e60990d620d770e3285105ea489ad519af6fbb0dcd9fd7e",
+      "goalReviewContextFingerprint": "sha256:7e853c636d01f7773f9d6b123ccde2fa826da394061a662a2927fe49a71edf4b",
+      "finalText": {
+        "titleDe": "Entropie E12: Makrozustand und Mikrozustände",
+        "titleEn": "Entropy E12: Macrostate and Microstates",
+        "descriptionDe": "Die lernende Person kann Makrozustände (z. B. beschrieben durch $p, V, T$) von Mikrozuständen (Teilchenzuständen) unterscheiden und an einem Teilchenmodell erklären, wie verschiedene Mikrozustände demselben Makrozustand entsprechen können.",
+        "descriptionEn": "The learner can distinguish macrostates (e.g., described by $p, V, T$) from microstates (particle states) and use a particle model to explain how different microstates can correspond to the same macrostate."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-b61d233a-1902-526b-a9b5-6b3d553f4013",
+          "recordDigest": "sha256:00592b7ad267e6ae9c02fe5cd8be808aea58cafbebddf0d09847b8947a6f8fd0"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.014",
+          "recordDigest": "sha256:4f099c972a4af3f76522d3a4d3cba526647a695441ab8dc1e484bed14d5e1047"
+        }
+      },
+      "rationaleDe": "Auf der tatsächlich revidierten DE/EN-Fassung bestätigen beide neuen Runden die explizite Viele-zu-eins-Erklärung im Teilchenmodell. B variiert die Grobbeschreibung um einen dritten Raumabschnitt. Alte vorrevidierte Urteile werden nicht umetikettiert.",
+      "rationaleEn": "On the actually revised DE/EN text, both new rounds confirm the explicit many-to-one explanation in a particle model. B varies the coarse description by adding a third spatial region. Old pre-revision judgements are not relabelled."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-015",
+      "goalId": "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:94c475274979ddc27d1a1eb676c59925fc2d187acee1150ba75cf338bcf669bb",
+      "pageFingerprint": "sha256:8ba6f4cdfecdfbc34ba220a29f482850692cf035a96b67354393097b936d4a42",
+      "goalReviewContextFingerprint": "sha256:c7d2e6ae2d21ee8a3f9cb2a42d11cc49e0b4f49730a442224de6769a78628b7e",
+      "finalText": {
+        "titleDe": "Entropie E13: Boltzmann-Formel und Zählmodelle",
+        "titleEn": "Entropy E13: Boltzmann Formula and Counting Models",
+        "descriptionDe": "Die lernende Person kann mit $S = k_B\\ln\\Omega$ und einfachen Zählmodellen, etwa $\\Omega=\\binom{N}{n}$ für gleich wahrscheinliche Links-rechts-Zuordnungen, die Entropien verschiedener Makrozustände vergleichen und erklären, warum bei großer Teilchenzahl annähernd gleichmäßige Verteilungen gegenüber stark ungleichmäßigen überwiegen.",
+        "descriptionEn": "The learner can use $S = k_B\\ln\\Omega$ and simple counting models, such as $\\Omega=\\binom{N}{n}$ for equally likely left-right assignments, to compare the entropies of different macrostates and explain why approximately even distributions predominate over strongly uneven ones for large particle numbers."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+          "recordDigest": "sha256:c1d130878b9d1b31c733906192df9ba45b2731ef401380d5c303b7b7ac86367c"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.015",
+          "recordDigest": "sha256:a020bfc2fe1047d724ac6ee0bf9b2d2cc00e95e761b51a033a16e480ea532595"
+        }
+      },
+      "rationaleDe": "A/B bestätigen gleich wahrscheinliche Zuordnungen und nur annähernde Gleichverteilung. A prüft Summen benachbarter Makrozustände und trennt Bereichsdominanz von Gewissheit exakt halber Besetzung; dies bewahrt die statistische Modellgrenze.",
+      "rationaleEn": "Both rounds confirm equiprobable assignments and only approximately even distributions. A tests sums over adjacent macrostates and distinguishes range dominance from certainty of exact half occupancy, preserving the statistical model boundary."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-016",
+      "goalId": "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b56c4b7e5cc43befcb4a02e1a6fbfcb68fc91b23f150d57cb67d7d31e5bb9a24",
+      "pageFingerprint": "sha256:7c772bbac4abc1d8fd8d4d087efaa0b4ccb574b505033812a058e52c1f75bf06",
+      "goalReviewContextFingerprint": "sha256:0269be3a34d90ae96a6c4c3a2087e7b4f144b714f365d9ceccc2818af9dc976f",
+      "finalText": {
+        "titleDe": "Entropie E14: Brücke Makro ↔ Mikro",
+        "titleEn": "Entropy E14: Bridge Macro ↔ Micro",
+        "descriptionDe": "Die lernende Person kann für eine feste Teilchenzahl $N$ eines klassischen idealen Gases bei unveränderter Temperatur den Zusammenhang $\\Omega_2/\\Omega_1 = (V_2/V_1)^N$ im Teilchenmodell begründen und daraus $\\Delta S = Nk_B\\ln(V_2/V_1) = nR\\ln(V_2/V_1)$ als Verbindung von mikroskopischer und makroskopischer Entropiebeschreibung herleiten.",
+        "descriptionEn": "The learner can justify $\\Omega_2/\\Omega_1 = (V_2/V_1)^N$ in the particle model for a fixed number $N$ of particles of a classical ideal gas at unchanged temperature, and derive $\\Delta S = Nk_B\\ln(V_2/V_1) = nR\\ln(V_2/V_1)$ as a link between microscopic and macroscopic entropy descriptions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+          "recordDigest": "sha256:79c43daa98502827d7cf6c9fee0d6ce8874aa8373c4c6bfd0422ad693d010868"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.016",
+          "recordDigest": "sha256:791d5db2dfbc4c8b35acc541d9d12559341229586cb7f3acbe99e5390d498d0e"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen festes N und T im klassischen idealen Gas sowie die echte Herleitung über Ω-Verhältnisse. A überträgt auf aufeinanderfolgende Volumenänderungen und erklärt Produktverhältnis versus additive Entropie.",
+      "rationaleEn": "Both reviews confirm fixed N and T in a classical ideal gas and a genuine derivation through multiplicity ratios. A transfers to successive volume changes and explains multiplicative ratios versus additive entropy."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-017",
+      "goalId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a6424845c4fcc99bd34cacd3dd77eae8b327d50a9a9909b32235945374cde5eb",
+      "pageFingerprint": "sha256:c65aa89b4a4cd2ce94b7a7e3ac1d250a0b0deb0502932940119da67ae8ce3118",
+      "goalReviewContextFingerprint": "sha256:145584e761e4470c24393af3527359ae65fa8518314d28cd8f17f8cd07279bb0",
+      "finalText": {
+        "titleDe": "Ersten Hauptsatz in Prozessen quantitativ bilanzieren",
+        "titleEn": "Quantitatively Balance the First Law in Processes",
+        "descriptionDe": "Die lernende Person kann für einfache Gasprozesse Energiegrößen konsistent bilanzieren (Q, W, ΔU) und den ersten Hauptsatz rechnerisch anwenden.",
+        "descriptionEn": "The learner can consistently balance energy quantities (Q, W, ΔU) for simple gas processes and apply the first law computationally."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-23c5382a-4b0f-5715-84b5-cf87b8323152",
+          "recordDigest": "sha256:624121b933f371db7ccc58be4a2a57a149af5f0a3095e1a3f50a106fb9211220"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.017",
+          "recordDigest": "sha256:9fabea088a5e667765c7845efe3571b718fd23ef06a5dc787ea43ebaa6c2231b"
+        }
+      },
+      "rationaleDe": "A/B bestätigen konsistentes quantitatives Bilanzieren als physikalische Kompetenz. Die Grafik verwendet korrekt Arbeit des Gases mit Minuszeichen, der Vorgänger Arbeit am Gas mit Pluszeichen. A verlangt explizite Übersetzung beider Konventionen ohne Änderung von ΔU; kein inhaltlicher Widerspruch.",
+      "rationaleEn": "Both rounds confirm consistent quantitative balancing as a physical competence. The image correctly uses work by the gas with a minus sign, while the predecessor uses work on the gas with a plus sign. A explicitly translates both conventions without changing ΔU; there is no substantive contradiction."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-018",
+      "goalId": "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e6a286e7077efc51301807195009c73aa40d331a03a6abbdba4f474b7d86d1c5",
+      "pageFingerprint": "sha256:8fc830ede0d036240c82a80b1d73a93d0a05afaf8357e5d4707a386200f13014",
+      "goalReviewContextFingerprint": "sha256:995a5665cd8f1e76042fa70519768bee7d42d69d21b8c15d5ed3cf31eefcd7bd",
+      "finalText": {
+        "titleDe": "Zweiten Hauptsatz auf Entropieerzeugung und Zeitpfeil anwenden",
+        "titleEn": "Apply the Second Law to Entropy Generation and Arrow of Time",
+        "descriptionDe": "Die lernende Person kann bei einfachen irreversiblen Prozessen eines isolierten Gesamtsystems die Entropieerzeugung mit $\\Delta S_{\\mathrm{ges}}>0$ begründen und die damit ausgezeichnete Richtung makroskopischer Abläufe als thermodynamischen Zeitpfeil erklären.",
+        "descriptionEn": "The learner can justify entropy generation through $\\Delta S_{\\mathrm{tot}}>0$ for simple irreversible processes in an isolated total system and explain the resulting preferred direction of macroscopic processes as the thermodynamic arrow of time."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-91b20476-12cf-50d6-880a-ea509ffe8a9a",
+          "recordDigest": "sha256:945f4d7fcba6ff3bf4664605340654336e2583d3d78ef5e141c2c8d272daf879"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.018",
+          "recordDigest": "sha256:9273d1c2fd31e6f62a6d8b32c25163b5b487cfb12a24cb33187be54e5ff87fb6"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen isoliertes Ganzes und makroskopischen thermodynamischen Zeitpfeil. B schließt beim Reibungstransfer Unterlage und Umgebung ein; weder Energievernichtung noch universelle lokale Entropiezunahme oder mikroskopische Zeitbehauptung wird zugelassen.",
+      "rationaleEn": "Both rounds confirm the isolated whole and macroscopic thermodynamic arrow. B includes surface and surroundings in friction transfer, allowing neither energy destruction nor universally increasing local entropy or claims about microscopic time."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-019",
+      "goalId": "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2714a779b9df893a9ce749e7777d0dcad9b8eaf1d5081fa26a2f43df819a0b9b",
+      "pageFingerprint": "sha256:1114883465914b216ef7f0b792fd1ab3815d87a77ce068e55648cf0aeb9e2bf2",
+      "goalReviewContextFingerprint": "sha256:48d79177e772722e4ceeb903e98be58c586ce3dc6492bbf9b2de6fae64d26916",
+      "finalText": {
+        "titleDe": "Zweiten Hauptsatz auf Wärmekraftmaschinen anwenden",
+        "titleEn": "Apply the Second Law to Heat Engines",
+        "descriptionDe": "Die lernende Person kann mit dem zweiten Hauptsatz erklären, warum eine zyklische Wärmekraftmaschine zwischen einem heißen und einem kalten Reservoir mit jeweils konstanter Temperatur Abwärme abgeben muss, und die Carnot-Grenze als maximal möglichen Wirkungsgrad bei diesen Temperaturen im reversiblen Grenzfall qualitativ deuten.",
+        "descriptionEn": "The learner can use the second law to explain why a cyclic heat engine operating between a hot and a cold reservoir, each at constant temperature, must reject heat, and qualitatively interpret the Carnot limit as the maximum possible efficiency at those temperatures in the reversible limit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+          "recordDigest": "sha256:cb14dfaf0e79573b48cc375453b47312b6a76602d8bf517ede2c86155075053b"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.019",
+          "recordDigest": "sha256:d6ebf1b297e549eda77500adcb05971f4d8cc70e44d92300bef6576f4885f963"
+        }
+      },
+      "rationaleDe": "Beide neu isolierten Runden bestätigen auf der aktuellen Revision den vollständigen Zyklus, zwei konstante Reservoirtemperaturen und reversiblen Grenzfall. A erklärt weniger Reibung bei gemeinsamer Carnot-Grenze und notwendiger Abwärme. Quantitative Messdatenbewertung bleibt separat.",
+      "rationaleEn": "Both newly isolated rounds confirm the complete cycle, two constant reservoir temperatures and reversible limit on the current revision. A explains reduced friction under a shared Carnot bound and continued heat rejection. Quantitative measurement assessment remains separate."
+    },
+    {
+      "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-020",
+      "goalId": "73b5af24-7750-520a-bb16-43136ce19a5c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:61c645f0216b83b90dd87687aced1c30c71632bb24729155bd9504a6894c576e",
+      "pageFingerprint": "sha256:ccd589922ba442504f71a57a97aad94f7a5748071ce33b1d1d5fb7c42e48b2de",
+      "goalReviewContextFingerprint": "sha256:06af32358f0cc5e791788a0395a54094b99a83e8803967a7f3052c8f22fa9d5d",
+      "finalText": {
+        "titleDe": "Wirkungsgrad und Carnot-Grenze quantitativ vergleichen",
+        "titleEn": "Quantitatively Compare Efficiency and Carnot Limit",
+        "descriptionDe": "Die lernende Person kann den Wirkungsgrad einer realen zyklischen Wärmekraftmaschine aus Messdaten bestimmen, mit der Carnot-Grenze für dieselben heißen und kalten Reservoirtemperaturen vergleichen und Abweichungen unter Berücksichtigung von Irreversibilitäten und Messunsicherheiten physikalisch beurteilen.",
+        "descriptionEn": "The learner can determine the efficiency of a real cyclic heat engine from measured data, compare it with the Carnot limit for the same hot and cold reservoir temperatures, and physically assess deviations while considering irreversibilities and measurement uncertainties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-b043s-a-73b5af24-7750-520a-bb16-43136ce19a5c",
+          "recordDigest": "sha256:b9205a60cc990f5a085287a9d6c8534d9c54dbdd5958e9785dd574eb44486b5c"
+        },
+        "second": {
+          "recordId": "physics-d043s-blind-b.020",
+          "recordDigest": "sha256:59be7b43f59c9ca31041463faa36afa4f8511d0b17495507b4e659eb80cbb28c"
+        }
+      },
+      "rationaleDe": "A/B bestätigen die gemeinsame Kompetenz aus Messdatenvergleich und physikalischer Bewertung bei denselben Temperaturen. B prüft nominelle Grenzüberschreitung anhand Unsicherheiten und systematischer Fehler; korrekte Bildwerte allein werden nicht als Leistungsbeleg gewertet.",
+      "rationaleEn": "Both rounds confirm the unified competence of measured-data comparison and physical assessment at the same temperatures. B tests nominal exceedance against uncertainty and systematic errors; correct image numbers alone are not counted as performance evidence."
+    }
+  ],
+  "manifestFingerprint": "sha256:15f06eb11133becc54c3c83fa62087609fda37421d4bffef2ec5871e58fe54b9"
+}

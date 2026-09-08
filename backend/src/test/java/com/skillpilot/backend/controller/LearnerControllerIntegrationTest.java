@@ -575,7 +575,7 @@ public class LearnerControllerIntegrationTest {
                         CANONICAL_PHYSICS_ROOT_ID));
 
         assertThat(response.champion().masteredCount()).isEqualTo(1);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(192);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(187);
     }
 
     @Test
@@ -1443,16 +1443,16 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "58", "58" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "141", "141" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "100", "100" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "134", "134" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "138", "138" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "134", "134" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "141", "141" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "138", "138" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "138", "138" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "141", "141" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "138", "138" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "151", "151" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "111", "111" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "142", "142" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "150", "150" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "142", "142" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "148", "148" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "150", "150" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "150", "150" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "148", "148" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "146", "146" }
         };
         SoftAssertions softly = new SoftAssertions();
 

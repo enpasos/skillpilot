@@ -1,4 +1,20 @@
-# B040 Astrophysik-Fortsetzung — DRAFT / PENDING / STOPPED
+# B040 Astrophysik-Fortsetzung — autorisierte aktuelle Wiederaufnahme
+
+Am 8. September 2026 erneut ausdrücklich beauftragt. Der aktuelle Kandidat enthält sieben archivierte Inhaltsatome, zehn neue konkrete Aufgaben sowie die eng korrigierte bestehende335a-Aufgabe. Alle elf Aufgaben wurden einzeln DE/EN mit Material, Lösung und BE-Rubrik geprüft und durch Root ausdrücklich zur fachlichen Umsetzung freigegeben; dies ist keine erfundene menschliche QA-Freigabe. Die inhaltsgebundenen Einzelentscheidungen stehen in `current-assessment-decisions.json`, die tatsächlich materialisierten Texte unter `assessments/` und im Index `assessments.md`.
+
+Quellenkorrekturen, aktuelle Feld-Reconciliation, individuelle K/A/M-Entscheidungen und sieben persönliche Bildsichtungen sind separat dokumentiert. Die echten fehlgeschlagenen Routenläufe bleiben unverändert als Fehlerbelege erhalten. Root hat die unabhängig geprüfte Astro-Anwendung trotz ausdrücklich noch offener, separat bearbeiteter B034-Stufenplatzierung freigegeben; dies war keine globale M6-Freigabe. Kein D-/P-Register und keine historischen Reviewbytes wurden durch dieses Paket geändert. Der folgende Stop-Abschnitt dokumentiert ausdrücklich den früheren Zwischenstand, nicht den Stand der autorisierten Wiederaufnahme.
+
+## Tatsächlicher Anwendungsstand
+
+`implementation-receipt.json` bindet den angewandten Plan, die erfolgreiche Prüfung aller 102 Posthashes am Anwendungszeitpunkt und die noch erforderliche gemeinsame M6-Endprüfung. Canonical/K enthalten nun 750 Ziele, davon 473 Inhaltsatome und 156 Assessments. Der Plan enthält 1.684 konkrete JSON-Feldoperationen und 15 eng verankerte Generator-Splices; nachfolgende fremde Platzierungskorrekturen bleiben separat nachvollziehbar.
+
+Native Einzelchecks bestanden: A 473/473 aktuell; M 473 aktuelle Entscheidungen, 129 mit notwendigem Recall, 146/146 aktive Primärkarten und keine fehlenden, veralteten oder obsoleten Bindungen; Visual-QA 502 aktuelle Datensätze. Sieben archivierte Raster wurden über den nativen Importer bytegleich nach Quelle, Public und Backend übernommen, mit sieben separaten aktuellen KI-Sichtungsbindungen und ohne menschliche Freigabefelder (`native-import-receipt.json`, `qa-seven-adoption-receipt.json`). Die entfernte c15-Karte bleibt vollständig in den Feld-/Ledgerreceipts rekonstruierbar.
+
+Die sieben bestehenden P-Bodies wurden vollständig inhaltlich DE/EN gegengeprüft und unverändert in einer neuen Current-Version materialisiert; der native Wiederholungscheck besteht. `p-seven-informed-counterreview.json` enthält konkrete individuelle Befunde und tatsächliche Hashes. Alle sieben Records bleiben `ai_candidate` / `needs_human_review`, E1/G1. Root besitzt Registrierung und die frischen D-Runden.
+
+Wichtig für die Wiederaufnahme der D/P-Currency-Prüfung: 13 bestehende `requires`-Felder änderten sich, nämlich zwölf Inhaltsatome einschließlich5b8 und der Memoryknoten266. Ohne5b8 bleiben elf zusätzliche Inhaltsatome, nicht zwölf. Die vollständige ID-/Titel-/Before-/After-Liste steht im `implementation-receipt.json`. Nachbarkontexte können weitere historische D-Bindungen beeinflussen; keine alten Reviewbytes wurden automatisch umgestempelt. Globale Reports, gemeinsamer M6/Floor-PASS und der vollständige Physik-Rollout bleiben ausdrücklich Root-Aufgabe.
+
+## Historischer Stopp vor erneuter Beauftragung
 
 Am 8. September 2026 auf ausdrückliche neue Nutzeranweisung angehalten. Dieses Verzeichnis enthält ausschließlich unvollständig geprüfte Vorbereitung. Kein vollständiges Anwendungspaket, keine Freigabe und kein Physik-100-Abschluss. Exakte Modellkennung: unknown. Alle Arbeiten waren informiert, nicht blind.
 

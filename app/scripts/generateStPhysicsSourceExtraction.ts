@@ -1,3 +1,4 @@
+import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -846,6 +847,7 @@ const buildExtraction = (config: ExtractionConfig) => {
     })),
   )
 
+  applyPhysicsFinalDiodeMappings(decisions, mappings)
   const uniqueTargetIds = [...new Set(mappings.map((mapping) => mapping.canonicalGoalId))]
   const missingCanonicalGoalIds = uniqueTargetIds.filter((goalId) => !canonicalTitleById.has(goalId))
   if (missingCanonicalGoalIds.length > 0) {

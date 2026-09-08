@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-first-pass-a.run-001",
+  "campaignId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-a",
+  "roundId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:3567ff3ba45a771dd61cbdc62b530f9b4b8cdfdf317b184eca2e6c065039a638",
+  "bundleFingerprint": "sha256:b6d1837afdd1e93312f37db0b66a45f5aff11b5c862a6e33cfcadb5903c4bd6e",
+  "bookDigest": "sha256:09413f6f0afab337251e462070dc0aa8f8abbabc047865a1e4175198f14e4bc8",
+  "provider": "OpenAI",
+  "model": "Codex delegated AI agent; exact serving model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:cb771bd8c464c196659e8a9f6a482e9faa30d20017b95dfffaea693d7a5164c6",
+  "independenceGroupId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+    "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+    "161502b8-e52d-58d0-8f01-9f777b56d392",
+    "f322c268-dc16-5d50-82dd-209834f20208"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:3567ff3ba45a771dd61cbdc62b530f9b4b8cdfdf317b184eca2e6c065039a638"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-08T04:03:37.649Z",
+  "completedAt": "2026-09-08T04:08:47.730Z",
+  "status": "completed",
+  "outputDigest": "sha256:5ffeacdc2a473fbca52b0f1cadc0c43c82d10ba2dea41856c2c7bfcdcb34c560",
+  "toolchainVersion": "codex-independent-description-review-v2"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-resolution-14099861-897c-53f4-8c6c-48d088ee9f01",
+  "goal": {
+    "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:4db43a46de920f19f74945d6aba58faa5995c220ba6a284d2f992ec70804f96d",
+    "pageFingerprint": "sha256:9c760bcf2ea8d022a5e8041f2a630a371aeee385b526564f583f246b6616541a",
+    "goalReviewContextFingerprint": "sha256:9343ae092fca73c2923a5ae353d391db22a51109be3cf261c0a1262188ee48a8",
+    "finalText": {
+      "titleDe": "Entropie E08: Entropiebilanz für System + Umgebung",
+      "titleEn": "Entropy E08: Entropy Balance for System + Surroundings",
+      "descriptionDe": "Die lernende Person kann die Entropieänderungen von System und Umgebung zu $\\Delta S_{\\mathrm{ges}}$ addieren und für Wärmeübertragung zwischen zwei sonst isolierten Reservoiren bei konstanten absoluten Temperaturen $T_h > T_c$ rechnerisch begründen, warum Wärmefluss von heiß nach kalt die Gesamtentropie erhöht.",
+      "descriptionEn": "The learner can add the entropy changes of a system and its surroundings to obtain $\\Delta S_{\\mathrm{tot}}$ and calculate why heat flow from hot to cold increases total entropy when heat is transferred between two otherwise isolated reservoirs at constant absolute temperatures $T_h > T_c$."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-a",
+      "campaignDigest": "sha256:391cf1a5e42f247d296d7dabee51f19e8d8d42cde19225606a4c67a93d68f0a2",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:9343ae092fca73c2923a5ae353d391db22a51109be3cf261c0a1262188ee48a8",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:015f4baff90e3e2c7ca94d4801524bdc56802dcddc05ef51acb75c4baa6bbcf9",
+      "resultsDigest": "sha256:8e089b9ab62e641fb5fe1a0bce9351689c3b156cfdf0ee7cb0d6909ddf9ab583",
+      "recordId": "physik-b043s-a-14099861-897c-53f4-8c6c-48d088ee9f01",
+      "recordDigest": "sha256:c9244af6a2397199a1299e9370bbb773e0b3812469363b59249ae6c207006a99"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-b",
+      "campaignDigest": "sha256:20cbf219fae84e213a2c7fde01532c57fcbb83cbe5d68fddf79962e7e39e1c13",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:9343ae092fca73c2923a5ae353d391db22a51109be3cf261c0a1262188ee48a8",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.reviewer-b",
+      "runManifestDigest": "sha256:bc1f2ec2b93b9798902669a63ab9c39a1533c2e87b00c82dff05c26da73e7d02",
+      "resultsDigest": "sha256:3a1d9386c4be6a741d80994120ec26bee4eb70d13927517372854bd17abc64cf",
+      "recordId": "physics-d043s-blind-b.011",
+      "recordDigest": "sha256:2049b575f0905a3ed3430214b200dbc5a7fa29cba56e5ac1be4a58aff18f8218"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:0ac2e7783c408851408df0dd36fc27be364a3ffdc36d4604cd881aac73100c15"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b043s-current-twenty-synthesis-v1-20260908",
+    "manifestDigest": "sha256:e2fc84088dfaa354c9bc4a7cce395f03dbfcc6f059074984cbc301190cc005a2",
+    "manifestFingerprint": "sha256:15f06eb11133becc54c3c83fa62087609fda37421d4bffef2ec5871e58fe54b9",
+    "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-011"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-011",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex /root; explicit per-goal comparison of two newly isolated current-context reviews; AI candidate evidence only",
+    "synthesizedAt": "2026-09-08T03:59:05.504Z",
+    "rationaleDe": "A/B bestätigen zwei sonst isolierte Reservoire bei konstanten Temperaturen und signierte Teilbeiträge. B prüft die Unabhängigkeit der Gesamtbilanz von der Wahl, welches Reservoir System heißt, samt physikalischer Prozessrichtung.",
+    "rationaleEn": "Both rounds confirm two otherwise isolated constant-temperature reservoirs and signed contributions. B tests that total entropy and physical process direction do not depend on which reservoir is labelled the system.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Beim Wärmeaustausch zweier sonst isolierter Reservoire ist der abgegebene Energiebetrag gleich dem aufgenommenen. Ihre Entropieänderungen sind wegen verschiedener Kelvin-Temperaturen jedoch ungleich und ergeben zusammen Q(1/Tc − 1/Th) > 0 für Wärmefluss von heiß nach kalt.",
+      "essentialUnderstandingEn": "When two otherwise isolated reservoirs exchange heat, the energy magnitude rejected equals that absorbed. Their entropy changes differ because their Kelvin temperatures differ, giving Q(1/Tc − 1/Th) > 0 for heat flow from hot to cold.",
+      "observablePerformanceDe": "Die lernende Person legt selbstständig System und Umgebung fest, bilanziert −Q/Th und +Q/Tc mit konstanten Temperaturen und erklärt rechnerisch, warum die Zunahme des kalten Reservoirs die Abnahme des heißen übertrifft.",
+      "observablePerformanceEn": "The learner independently specifies system and surroundings, balances −Q/Th and +Q/Tc at constant temperatures, and explains quantitatively why the cold reservoir's increase exceeds the hot reservoir's decrease.",
+      "transferExpectationDe": "In einer neuen Aufgabe ist das kalte Reservoir als System gewählt und die Übertragungsrichtung zunächst offen. Sie setzt beide Vorzeichen aus der Richtung an, zeigt die Unabhängigkeit der Gesamtsumme von der Benennung und begründet, warum die spontane Umkehr eine negative Gesamtänderung verlangen würde.",
+      "transferExpectationEn": "In a fresh task, the cold reservoir is designated as the system and the transfer direction is initially unspecified. The learner assigns both signs from the direction, shows that the total is independent of the naming and explains why spontaneous reversal would require a negative total change."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-745161446216a5c077d3ac10a6b22b3f4d695ad3cc21a7ee21ee101dbc3e9837",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5a87bec819b15df154c35fefb977b6e30221d9163cf63d7653a6b502709758fb"
+}

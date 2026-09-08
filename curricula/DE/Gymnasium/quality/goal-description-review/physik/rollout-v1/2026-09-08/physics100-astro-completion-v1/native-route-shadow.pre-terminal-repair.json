@@ -1,0 +1,218 @@
+{
+  "status": "READ_ONLY_NATIVE_ROUTE_SHADOW",
+  "actualProposedNeedsReviewState": [
+    {
+      "scopeId": "canonical-physics-sek1",
+      "label": "Sekundarstufe I",
+      "selectedAtomicGoals": 96,
+      "maturity": "M2",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 96,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 96,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-104",
+          "status": "fail",
+          "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+          "metrics": {
+            "relevantCompositionViews": 35,
+            "evaluatedProjectionScopes": 80,
+            "requiredMotivationAnchors": 1,
+            "minimumRequiredTerminalAutonomyGoals": 30,
+            "requiredTerminalAutonomyGoals": 55,
+            "projectionScopesMissingMotivationAnchors": 0,
+            "projectionScopesMissingTerminalAutonomyGoals": 0,
+            "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+            "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+            "terminalGoalsMissingCompiledApplicability": 2,
+            "projectionScopesWithInvalidStageStructure": 0,
+            "nationalProjectionScopesUsingJurisdictionStageAuthority": 48,
+            "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+            "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 1095,
+            "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 156,
+            "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 237,
+            "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+            "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+            "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+            "projectionLocalRouteChecksEnabled": 1,
+            "visibleSelectedAtomicGoalOccurrences": 6314,
+            "visibleProfileSelectedAtomicGoalOccurrences": 6136,
+            "visibleProjectedRouteTargetGoalOccurrences": 6314,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 178,
+            "uniqueProjectedRouteTargetsExcludedByProfileSelector": 59,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+            "projectionScopesMissingEffectiveMotivationRoutes": 0,
+            "projectionScopesMissingDirectMotivationRoutes": 0,
+            "projectionScopesMissingEffectiveTerminalRoutes": 4,
+            "projectionScopesMissingDirectTerminalRoutes": 4,
+            "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 6,
+            "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 6,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 6,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 6,
+            "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 2,
+            "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 2
+          },
+          "details": [
+            "Missing compiled applicability: d44eb772-acb3-5449-accc-36a1fb7a25a5",
+            "Missing compiled applicability: e99d87ac-0024-5f2b-ab47-d4d1cebba027",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json [DE-SL]: 1b060e79-dc2d-5e4e-abb5-42eca39f9cc7, af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json [DE-SL]: 1b060e79-dc2d-5e4e-abb5-42eca39f9cc7, af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json [DE-SN]: af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json [DE-SN]: af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json [DE-SL]: 1b060e79-dc2d-5e4e-abb5-42eca39f9cc7, af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json [DE-SL]: 1b060e79-dc2d-5e4e-abb5-42eca39f9cc7, af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json [DE-SN]: af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json [DE-SN]: af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+          ]
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 61,
+            "terminalAutonomyGoalsWithExamData": 61,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 61,
+            "concreteExamData": 61,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 61,
+            "releasedCoverageCompleteExamData": 61,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    },
+    {
+      "scopeId": "canonical-physics-sek2",
+      "label": "Sekundarstufe II",
+      "selectedAtomicGoals": 305,
+      "maturity": "M0",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "fail",
+          "summary": "Effective route coverage has missing route segments.",
+          "metrics": {
+            "selectedAtomicGoals": 305,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 4
+          },
+          "details": [
+            "No effective terminal path: Gravitationswellen und elektromagnetische Wellen vergleichen [ba16948b-5e07-54af-b77b-776e677c6906]",
+            "No effective terminal path: Stabilität astronomischer Objekte beurteilen [da3169ae-c72a-5782-ad95-408167a5c6da]",
+            "No effective terminal path: Exoplaneten-Nachweise erlaeutern [5b8eaf71-96fe-50eb-b9ea-a8fa392df086]",
+            "No effective terminal path: Planetenatmosphaeren mit Spektren untersuchen [e28381b4-50ef-5cac-bfa4-b7c8e03aef82]"
+          ]
+        },
+        {
+          "id": "CQR-102",
+          "status": "warn",
+          "summary": "Direct atomic route coverage still needs migration work.",
+          "metrics": {
+            "selectedAtomicGoals": 305,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 4
+          },
+          "details": [
+            "No direct atomic terminal path: Gravitationswellen und elektromagnetische Wellen vergleichen [ba16948b-5e07-54af-b77b-776e677c6906]",
+            "No direct atomic terminal path: Stabilität astronomischer Objekte beurteilen [da3169ae-c72a-5782-ad95-408167a5c6da]",
+            "No direct atomic terminal path: Exoplaneten-Nachweise erlaeutern [5b8eaf71-96fe-50eb-b9ea-a8fa392df086]",
+            "No direct atomic terminal path: Planetenatmosphaeren mit Spektren untersuchen [e28381b4-50ef-5cac-bfa4-b7c8e03aef82]"
+          ]
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 59,
+            "terminalAutonomyGoalsWithExamData": 59,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 59,
+            "concreteExamData": 59,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 59,
+            "releasedCoverageCompleteExamData": 59,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    }
+  ],
+  "nativeFunctionsUnmodified": true,
+  "cliMainNotExecuted": true,
+  "operativeWrites": 0,
+  "releaseCaveat": "Individual task release decisions are separately content-hash-bound and explicitly Root-authorized. This shadow changes no native gate or threshold.",
+  "applicabilityFindings": [],
+  "beforeGoals": 718,
+  "afterGoals": 732
+}

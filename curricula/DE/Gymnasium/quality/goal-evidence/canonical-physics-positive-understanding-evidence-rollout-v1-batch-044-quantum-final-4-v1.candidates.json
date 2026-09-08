@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-v1-b044-quantum-final-4-v1",
+  "reviewedAt": "2026-09-08T03:38:20Z",
+  "reviewer": "OpenAI Codex /root; AI author, independent body counterreview pending",
+  "goals": [
+    {
+      "goalId": "bacae732-2016-5a83-bc61-d0f94ed5a0e4",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "negative-bound-levels",
+            "essentialUnderstandingDe": "Für ein einzelnes Elektron im nichtrelativistischen Coulomb-Potential gilt bei vernachlässigter Kernbewegung E_n≈−13,6 eV·Z²/n². Der Nullpunkt ist die Ionisationsgrenze; ein negatives Niveau ist gebunden, nicht eine negative zum Ablösen nötige Energie.",
+            "essentialUnderstandingEn": "For one electron in a nonrelativistic Coulomb potential with nuclear motion neglected, E_n≈−13.6 eV·Z²/n². Zero is the ionisation threshold; a negative level is bound, not a negative energy required for removal.",
+            "observablePerformanceDe": "Wählt das Modell anhand der Elektronenzahl, berechnet und beschriftet Niveaus relativ zu 0 eV und erklärt Vorzeichen und zunehmende Nähe zur Ionisationsgrenze.",
+            "observablePerformanceEn": "Selects the model using electron count, calculates and labels levels relative to 0 eV and explains their signs and convergence towards the ionisation threshold."
+          },
+          {
+            "id": "charge-and-state-scaling",
+            "essentialUnderstandingDe": "Bei gleichem n skaliert der Bindungsbetrag mit Z², bei gleichem Z mit 1/n². Die Formel ist kein unqualifiziertes Modell für neutrale Mehrelektronenatome.",
+            "essentialUnderstandingEn": "At fixed n the binding magnitude scales with Z²; at fixed Z it scales with 1/n². The formula is not an unqualified model for neutral multielectron atoms.",
+            "observablePerformanceDe": "Begründet eine Vorhersage bei verändertem Ion oder angeregtem Zustand und grenzt eine Rechnung für ein System mit mehreren Elektronen ausdrücklich ab.",
+            "observablePerformanceEn": "Justifies a prediction for a different ion or excited state and explicitly rejects an unsupported calculation for a multielectron system."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "negative-bound-levels",
+            "charge-and-state-scaling"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "ion-versus-neutral",
+            "textDe": "Zwischen einem Ein-Elektronen-Ion und einem neutralen Mehrelektronenatom unterscheiden, statt nur Z einzusetzen.",
+            "textEn": "Distinguish a one-electron ion from a neutral multielectron atom rather than merely inserting Z."
+          },
+          {
+            "id": "level-versus-threshold",
+            "textDe": "Von der Niveaulage zur positiven Ablöseenergie und zur Abhängigkeit von n wechseln.",
+            "textEn": "Switch from a level's position to positive removal energy and its dependence on n."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "lithium-ion-levels",
+            "taskDemandDe": "Ohne Buchbild: Li²⁺ besitzt ein Elektron und Z=3. Skizziere die Niveaus n=1 und n=3 relativ zur Ionisationsgrenze, berechne sie und vergleiche n=3 mit Wasserstoff im gleichen Zustand. Begründe Modellwahl und Vorzeichen.",
+            "taskDemandEn": "Without the book image, Li²⁺ has one electron and Z=3. Sketch and calculate levels n=1 and n=3 relative to the ionisation threshold and compare n=3 with hydrogen in the same state. Justify model choice and signs.",
+            "expectedPerformanceDe": "Erhält −122,4 eV und −13,6 eV, gegenüber etwa −1,51 eV für H bei n=3. Der Betrag ist bei gleichem n neunfach, nicht dreifach. Ordnet beide negativen Werte unter 0 ein und nennt Ein-Elektronen-/nichtrelativistische Modellannahmen.",
+            "expectedPerformanceEn": "Obtains −122.4 eV and −13.6 eV, versus about −1.51 eV for H at n=3. At fixed n the magnitude is ninefold, not threefold. Places both negative levels below zero and states one-electron/nonrelativistic assumptions.",
+            "understandingFocusDe": "Eigenständige Modellwahl, Bezugsenergie und quadratische Kernladungsabhängigkeit.",
+            "understandingFocusEn": "Independent model selection, energy reference and quadratic nuclear-charge dependence."
+          },
+          {
+            "id": "invalid-neutral-helium-inference",
+            "taskDemandDe": "Eine Auswertung berechnet für neutrales Helium mit Z=2 pauschal −54,4 eV pro Elektron. Prüfe die Modellannahme. Bestimme stattdessen für He⁺ im Zustand n=2 die Niveaulage und die Energie bis zur Ionisationsgrenze; erkläre, wie sich beide bei größerem n verändern.",
+            "taskDemandEn": "An analysis assigns −54.4 eV per electron to neutral helium with Z=2. Check the model assumption. Instead determine the level and energy needed to reach the ionisation threshold for He⁺ at n=2; explain how both change as n grows.",
+            "expectedPerformanceDe": "Weist das neutrale Zwei-Elektronen-System als nicht von dieser einfachen Formel erfasst zurück. Für He⁺ n=2 gilt E=−13,6 eV, zum Ablösen sind +13,6 eV nötig. Mit wachsendem n nähert sich E von unten 0; der Ablösebetrag sinkt. Keine Behauptung exakter Mehrelektronenenergien.",
+            "expectedPerformanceEn": "Rejects use of the simple formula for neutral two-electron helium. He⁺ at n=2 has E=−13.6 eV and requires +13.6 eV for removal. As n grows, E approaches zero from below and the removal energy decreases. Makes no claim of exact multielectron energies.",
+            "understandingFocusDe": "Transfer an die Modellgrenze und Unterscheidung von negativer Niveaulage und positiver Energiedifferenz.",
+            "understandingFocusEn": "Transfer to a model boundary and distinction between a negative level and positive energy difference."
+          }
+        ]
+      },
+      "reason": "Eigenständiger B044-Kandidat auf dem aktuellen Ein-Elektronen-Ziel. Aktuelles Bild vollständig geprüft; alle Zahlen, Vorzeichen und Modellgrenzen stimmen. Frische Li²⁺- und Neutralatom-Gegenfälle gehen nicht vom Bildabschreiben aus. Keine Mehrelektronenrechnung eingeführt. AI-Kandidat, keine menschliche Freigabe und keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "badb0ef3-233d-560e-bc2a-9df99f09fe7d",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "complete-state-includes-spin",
+            "essentialUnderstandingDe": "Pauli verbietet die doppelte Besetzung eines vollständigen Ein-Elektronenzustands einschließlich Spin. Ein räumliches Orbital kann deshalb zwei Elektronen mit entgegengesetztem Spin aufnehmen; verschiedene Orbitale sind verschiedene räumliche Zustände.",
+            "essentialUnderstandingEn": "Pauli forbids double occupation of a complete one-electron state including spin. A spatial orbital can therefore hold two electrons of opposite spin; different orbitals represent different spatial states.",
+            "observablePerformanceDe": "Konstruiert oder korrigiert ein Besetzungsschema und erklärt an den einzelnen Orbitalen, ob vollständige Zustände doppelt vorkommen.",
+            "observablePerformanceEn": "Constructs or corrects an occupation diagram and explains orbital by orbital whether complete states are duplicated."
+          },
+          {
+            "id": "energy-is-not-state-identity",
+            "essentialUnderstandingDe": "Gleiche Energie bedeutet nicht identischen vollständigen Zustand. Mehrere Orbitale können auf einem Energieniveau liegen; Pauli allein legt nicht die bevorzugte Verteilung zwischen ihnen fest.",
+            "essentialUnderstandingEn": "Equal energy does not imply an identical complete state. Several orbitals may share one energy level; Pauli alone does not determine the preferred distribution among them.",
+            "observablePerformanceDe": "Verknüpft Orbitalbesetzung mit einem gegebenen Niveauschema und unterscheidet Pauli-Zulässigkeit von einer unbegründeten Aussage über die energetisch bevorzugte Konfiguration.",
+            "observablePerformanceEn": "Links orbital occupation to a supplied energy scheme and distinguishes Pauli admissibility from an unsupported claim about the energetically preferred configuration."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "complete-state-includes-spin",
+            "energy-is-not-state-identity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "one-orbital-versus-degenerate-level",
+            "textDe": "Ein einzelnes Orbital mit mehreren verschiedenen Orbitalen gleicher Energie vergleichen.",
+            "textEn": "Compare one orbital with several distinct orbitals of equal energy."
+          },
+          {
+            "id": "allowed-versus-preferred",
+            "textDe": "Eine erlaubte Besetzung begründen, ohne aus Pauli allein einen eindeutigen Grundzustand abzuleiten.",
+            "textEn": "Justify an allowed occupation without deriving a unique ground state from Pauli alone."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "repair-three-electron-scheme",
+            "taskDemandDe": "Gegeben sind drei verschiedene räumliche Orbitale a, b, c mit E_a<E_b<E_c und drei Elektronen. Ein Schema zeigt a:↑↑, b:↓, c:leer. Korrigiere den Pauli-Verstoß bei erhaltener Elektronenzahl, zeichne die Energieordnung mit ein und erkläre, was die Pfeile bedeuten.",
+            "taskDemandEn": "Three distinct spatial orbitals a, b, c have E_a<E_b<E_c and contain three electrons. A diagram shows a:↑↑, b:↓, c:empty. Correct the Pauli violation while preserving electron count, include energy ordering and explain what the arrows represent.",
+            "expectedPerformanceDe": "Zeichnet beispielsweise a:↑↓, b:↓, c:leer. Benennt die doppelte Besetzung von a mit gleichem Spin als Verstoß und entgegengesetzten Spin im selben Orbital als zulässig. Pfeile markieren Spin, nicht Bewegungsbahnen oder Flugrichtungen. Keine Pflicht, eine einzige bevorzugte Verteilung herzuleiten.",
+            "expectedPerformanceEn": "Draws, for example, a:↑↓, b:↓, c:empty. Identifies duplicate occupation of a with the same spin as forbidden and opposite spins within one orbital as allowed. Arrows represent spin, not trajectories or flight directions. No requirement to derive a uniquely preferred distribution.",
+            "understandingFocusDe": "Eine selbst korrigierte Darstellung macht den vollständigen Zustandsbegriff beobachtbar.",
+            "understandingFocusEn": "An independently corrected representation exposes the meaning of a complete state."
+          },
+          {
+            "id": "degenerate-level-capacity",
+            "taskDemandDe": "Ohne Vorlage: Auf einem Energieniveau liegen drei verschiedene Orbitale p_x, p_y, p_z. Zeichne eine Pauli-zulässige Verteilung von vier Elektronen und begründe die maximale Elektronenzahl dieses Niveaus. Prüfe die Aussagen: 'Gleiche Energie erlaubt zusammen nur zwei Elektronen' und 'Pauli wählt eindeutig die bevorzugte Viererbesetzung'.",
+            "taskDemandEn": "Without a template, three distinct orbitals p_x, p_y, p_z share one energy level. Draw a Pauli-allowed distribution of four electrons and justify the maximum electron count for this level. Assess: 'Equal energy allows only two electrons altogether' and 'Pauli uniquely selects the preferred four-electron occupation'.",
+            "expectedPerformanceDe": "Gibt etwa p_x:↑↓, p_y:↑, p_z:↓ an; jedes Orbital ist einzeln Pauli-zulässig. Drei Orbitale ergeben höchstens sechs Elektronen. Weist beide Aussagen zurück: gleiche Energie ist keine Zustandsidentität, und Pauli entscheidet ohne weitere energetische Regeln nicht zwischen allen zulässigen Verteilungen.",
+            "expectedPerformanceEn": "Gives, for example, p_x:↑↓, p_y:↑, p_z:↓, each orbital individually satisfying Pauli. Three orbitals hold at most six electrons. Rejects both statements: equal energy does not identify states, and Pauli alone does not choose between all allowed distributions without further energetic rules.",
+            "understandingFocusDe": "Transfer vom Einzelorbital auf entartete Niveaus; Zulässigkeit bleibt von energetischer Bevorzugung getrennt.",
+            "understandingFocusEn": "Transfer from a single orbital to degenerate levels, keeping admissibility distinct from energetic preference."
+          }
+        ]
+      },
+      "reason": "Eigenständiger B044-Kandidat auf dem aktuellen Pauli-Ziel. Bild vollständig geprüft; Orbital, Spin und Energieniveau werden ausdrücklich getrennt. Zwei neue Besetzungsschemata prüfen nur die erlaubte qualitative Aussage, keine zusätzliche Hund-/Aufbau-Kompetenz. AI-Kandidat, keine menschliche Freigabe und keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "d05a146f-7fcd-56ae-b9b9-b54203328579",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "infinite-well-energy-reference",
+            "essentialUnderstandingDe": "Für ein Elektron mit unendlich hohen Wänden und V=0 im Inneren sind E_n=n²h²/(8m_eL²)>0 für n≥1 erlaubt. Randbedingungen erzwingen diskrete Zustände; n=0 ergäbe keine normierbare Ein-Elektronenwelle.",
+            "essentialUnderstandingEn": "For an electron with infinitely high walls and V=0 inside, allowed energies are E_n=n²h²/(8m_eL²)>0 for n≥1. Boundary conditions enforce discrete states; n=0 would not yield a normalisable one-electron wave.",
+            "observablePerformanceDe": "Begründet Modellbedingungen und das niedrigste erlaubte n, berechnet Energie mit Einheiten und deutet Vorzeichen relativ zum festgelegten Potentialnullpunkt.",
+            "observablePerformanceEn": "Explains model conditions and the lowest permitted n, calculates energy with units and interprets its sign relative to the specified potential zero."
+          },
+          {
+            "id": "confinement-and-quantum-number",
+            "essentialUnderstandingDe": "Die Energie steigt bei gleichem L quadratisch mit n, sinkt bei gleichem n quadratisch mit L. Die beiden Abhängigkeiten beschreiben verschiedene Änderungen des Zustands beziehungsweise der räumlichen Begrenzung.",
+            "essentialUnderstandingEn": "At fixed L energy grows quadratically with n; at fixed n it falls quadratically with L. These dependencies describe distinct changes to the state or to spatial confinement.",
+            "observablePerformanceDe": "Leitet Verhältnisse bei geänderter Topfbreite und Quantenzahl her und begründet, warum die Formel nicht unverändert auf einen endlich hohen Topf übertragen werden darf.",
+            "observablePerformanceEn": "Derives ratios for changed well width and quantum number and explains why the formula cannot be carried unchanged to finite walls."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "infinite-well-energy-reference",
+            "confinement-and-quantum-number"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "state-versus-confinement",
+            "textDe": "Quantenzahl und Topfbreite getrennt sowie gemeinsam verändern; das Vergleichssystem ausdrücklich benennen.",
+            "textEn": "Change quantum number and well width separately and jointly, explicitly naming the comparison system."
+          },
+          {
+            "id": "infinite-versus-finite-walls",
+            "textDe": "Eine gegebene Idealmodellrechnung gegenüber einer unbegründeten Übertragung auf endliche Wände abgrenzen.",
+            "textEn": "Distinguish an ideal-model calculation from unsupported transfer to finite walls."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "one-nanometre-electron",
+            "taskDemandDe": "Ein Elektron befindet sich im eindimensionalen unendlichen Topf mit L=1,00 nm und V=0 innen. Nutze h=6,626·10⁻³⁴ Js, m_e=9,109·10⁻³¹ kg und 1 eV=1,602·10⁻¹⁹ J. Berechne E₁ und E₂, skizziere ihre Lage und begründe, warum E=0 hier kein erlaubter Zustand ist.",
+            "taskDemandEn": "An electron occupies a one-dimensional infinite well with L=1.00 nm and V=0 inside. Use h=6.626·10⁻³⁴ Js, m_e=9.109·10⁻³¹ kg and 1 eV=1.602·10⁻¹⁹ J. Calculate E₁ and E₂, sketch their positions and explain why E=0 is not an allowed state.",
+            "expectedPerformanceDe": "Erhält E₁≈6,02·10⁻²⁰ J≈0,376 eV und E₂≈1,50 eV=4E₁, beide oberhalb V=0. Erklärt stehende Welle mit Knoten an beiden Wänden und nichtverschwindende normierbare Welle; n=0 erfüllt das nicht. Rechnung allein ohne Modellbegründung genügt nicht.",
+            "expectedPerformanceEn": "Obtains E₁≈6.02·10⁻²⁰ J≈0.376 eV and E₂≈1.50 eV=4E₁, both above V=0. Explains a standing wave with nodes at both walls and a nonzero normalisable wave; n=0 cannot meet this. Calculation without model reasoning is insufficient.",
+            "understandingFocusDe": "Diskrete Energie aus räumlicher Begrenzung, Nullpunkt und physikalisch kontrollierter Rechnung.",
+            "understandingFocusEn": "Discrete energy from confinement, energy reference and physically checked calculation."
+          },
+          {
+            "id": "wide-excited-versus-narrow-ground",
+            "taskDemandDe": "Ohne Buchdiagramm: Vergleiche den Zustand n=2 eines Topfs der Breite 2L mit dem Grundzustand eines Topfs der Breite L; beide enthalten ein Elektron und haben unendlich hohe Wände und V=0 innen. Was ändert sich, wenn nur die Breite verdoppelt wird? Prüfe außerdem die Behauptung, dieselbe Formel gelte exakt bei endlich hohen Wänden.",
+            "taskDemandEn": "Without the book diagram, compare n=2 in a well of width 2L with the ground state in a well of width L; each contains one electron and has infinite walls and V=0 inside. What changes if only width is doubled? Also assess the claim that the same formula is exact for finite walls.",
+            "expectedPerformanceDe": "Leitet E₂(2L)=E₁(L) aus dem Faktor 4/4 her, während E₁(2L)=E₁(L)/4 gilt. Trennt Zustandswechsel von veränderter Begrenzung. Endliche Wände ändern die Randbedingungen durch Eindringen in den Außenbereich; die unendliche-Topf-Formel ist dann nicht allgemein exakt. Keine Rechnung des endlichen Topfs erforderlich.",
+            "expectedPerformanceEn": "Derives E₂(2L)=E₁(L) through the factor 4/4, while E₁(2L)=E₁(L)/4. Distinguishes state change from altered confinement. Finite walls change boundary conditions through penetration outside; the infinite-well formula is not generally exact there. No finite-well calculation is required.",
+            "understandingFocusDe": "Unabhängiger kombinierter Skalierungstransfer mit expliziter Gültigkeitsgrenze.",
+            "understandingFocusEn": "Independent combined scaling transfer with an explicit validity boundary."
+          }
+        ]
+      },
+      "reason": "Eigenständiger B044-Kandidat für das bereits getrennte Energieziel. Aktuelles unverändertes Bild vollständig geprüft. Berechnung und kombinierte n/L-Skalierung bleiben bei der Energiekompetenz; kein Intervallintegral oder endliches-Topf-Lösungsverfahren wird ergänzt. AI-Kandidat, keine menschliche Freigabe und keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "normalised-density-integral",
+            "essentialUnderstandingDe": "Die Nachweiswahrscheinlichkeit ist das Integral von |ψ|² über ein Intervall, nicht die Höhe einer Wellenfunktion oder Dichte. Normierung auf [0,L] ergibt Gesamtwahrscheinlichkeit 1; die Dichte hat Einheit 1/Länge, die Wahrscheinlichkeit keine Einheit.",
+            "essentialUnderstandingEn": "Detection probability is the integral of |ψ|² over an interval, not the height of a wave function or density. Normalisation on [0,L] gives total probability 1; density has units of inverse length and probability is dimensionless.",
+            "observablePerformanceDe": "Bildet aus gegebener normierter ψ die Dichte, integriert innerhalb der Topfgrenzen und prüft Einheiten, Grenzen und den Wahrscheinlichkeitsbereich [0,1].",
+            "observablePerformanceEn": "Forms the density from a supplied normalised ψ, integrates within the well and checks units, integration limits and the probability range [0,1]."
+          },
+          {
+            "id": "state-and-interval-shape",
+            "essentialUnderstandingDe": "Gleich breite Intervalle können wegen unterschiedlicher Dichte verschiedene Nachweiswahrscheinlichkeiten haben. Eine globale Vorzeichenänderung von ψ verändert die Dichte nicht; punktweise hohe Dichte ist keine sichere Einzeldetektion.",
+            "essentialUnderstandingEn": "Equal-width intervals can have different detection probabilities because density varies. A global sign change of ψ leaves density unchanged; a high pointwise density does not imply a certain individual detection.",
+            "observablePerformanceDe": "Vergleicht selbst berechnete Intervallflächen bei verändertem Zustand oder Intervall, begründet den Einfluss von Knoten und erklärt Wahrscheinlichkeiten als Aussagen über gleich präparierte Ensembles.",
+            "observablePerformanceEn": "Compares independently calculated interval areas for a changed state or interval, explains the role of nodes and interprets probabilities for identically prepared ensembles."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "normalised-density-integral",
+            "state-and-interval-shape"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "ground-state-versus-node-at-centre",
+            "textDe": "Eine gegebene Wellenfunktion mit Knoten in der Topfmitte statt des Grundzustands untersuchen.",
+            "textEn": "Examine a supplied wave function with a node at the well centre rather than the ground state."
+          },
+          {
+            "id": "equal-width-and-global-sign",
+            "textDe": "Gleich breite Intervalle an unterschiedlichen Orten und eine globale Vorzeichenänderung vergleichen.",
+            "textEn": "Compare equal-width intervals at different positions and a global sign change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "excited-state-central-window",
+            "taskDemandDe": "Gegeben ist ψ(x)=√(2/L) sin(2πx/L) auf [0,L], normiert und außerhalb null. Berechne ohne Buchbild P(3L/8≤x≤5L/8), skizziere die betreffende Dichtefläche und erkläre, warum der zentrale Bereich trotz endlicher Breite wenig Gewicht trägt.",
+            "taskDemandEn": "Given ψ(x)=√(2/L) sin(2πx/L) on [0,L], normalised and zero outside, calculate P(3L/8≤x≤5L/8) without the book image. Sketch the density area involved and explain why this finite central window carries little weight.",
+            "expectedPerformanceDe": "Erhält durch Integration 1/4−1/(2π)≈0,0908. Ordnet den Knoten bei L/2 korrekt zu und deutet etwa 9,1 % als langfristigen Anteil bei gleich präparierten Elektronen, nicht als klassische Aufenthaltsdauer auf einer Bahn oder sichere Aussage über eine einzelne Messung. Normierung und dimensionslose Fläche werden geprüft.",
+            "expectedPerformanceEn": "Integration gives 1/4−1/(2π)≈0.0908. Correctly locates the node at L/2 and interprets about 9.1% as a long-run fraction for identically prepared electrons, not classical time spent on a trajectory or certainty about one measurement. Checks normalisation and dimensionless area.",
+            "understandingFocusDe": "Eigenständige Integration und räumliche Deutung bei einem gegenüber dem Bild veränderten Zustand.",
+            "understandingFocusEn": "Independent integration and spatial interpretation for a state different from the illustrated one."
+          },
+          {
+            "id": "equal-width-ground-state-intervals",
+            "taskDemandDe": "Für die gegebene normierte ψ(x)=√(2/L) sin(πx/L) vergleiche [0,L/4] und [L/4,L/2] quantitativ. Ändern sich die Ergebnisse für −ψ? Ein Vorschlag ersetzt ψ durch 2ψ und verwendet die Integrale unverändert als Wahrscheinlichkeiten; prüfe das mit der Normierung.",
+            "taskDemandEn": "For supplied normalised ψ(x)=√(2/L) sin(πx/L), compare [0,L/4] and [L/4,L/2] quantitatively. Do results change for −ψ? A proposal replaces ψ with 2ψ and uses the integrals unchanged as probabilities; assess this through normalisation.",
+            "expectedPerformanceDe": "Erhält 1/4−1/(2π)≈0,0908 und 1/4+1/(2π)≈0,4092 trotz gleicher Breite. Begründet dies mit dem Dichteverlauf und erhält für −ψ identische Flächen. 2ψ ist nicht normiert: Gesamtintegral 4; rohe Teilintegrale sind daher keine normierten Wahrscheinlichkeiten. Kein neues Energieniveau berechnen.",
+            "expectedPerformanceEn": "Obtains 1/4−1/(2π)≈0.0908 and 1/4+1/(2π)≈0.4092 despite equal widths. Explains the density dependence and identical areas for −ψ. The function 2ψ is not normalised: its total integral is 4, so raw partial integrals are not normalised probabilities. No calculation of an energy level is required.",
+            "understandingFocusDe": "Transfer über Intervalllage und Darstellungsänderung; Normierung verhindert eine rein formale Integralrechnung.",
+            "understandingFocusEn": "Transfer across interval position and representation change; normalisation prevents merely formal integration."
+          }
+        ]
+      },
+      "reason": "Eigenständiger B044-Kandidat für das getrennte HE-LK-Intervallziel. Aktuelles Bild vollständig geprüft. Gegebene normierte Zustände und frisch berechnete Intervalle prüfen Integral, Dichte und Ensembleaussage; Energiewertrechnung wird nicht vorausgesetzt. AI-Kandidat, keine menschliche Freigabe und keine beobachtete Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    }
+  ]
+}

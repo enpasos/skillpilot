@@ -1,3 +1,7 @@
+import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { preservePhysicsB040ViewPlacements } from './lib/physicsB040ViewPlacements'
+import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
+import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -90,7 +94,7 @@ const repoRoot = path.resolve(__dirname, '../..')
 const jurisdiction = 'DE-SN'
 const targetLandscapeId = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 const sourcePdfPath = 'curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf'
-const sourcePdfUrl = 'https://www.schulportal.sachsen.de/lplandb/lehrplan/102'
+const sourcePdfUrl = 'https://www.schulportal.sachsen.de/lplandb/lehrplan/file/125/vo3eXMDs8Ua4hqbRxPxG'
 const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
 const canonicalPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'
 const compositionViewDir = 'curricula/DE/Gymnasium/composition-views/physik'
@@ -429,7 +433,7 @@ const configs: ExtractionConfig[] = [
   {
     stage: 'SekI',
     extractionId: 'DE-SN-PHYSIK-SEKI-LEHRPLAN-GYMNASIUM-2025',
-    title: 'DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)',
+    title: 'DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction)',
     sourceLandscapeId: 'd2e1fbb7-9e42-49a7-a07b-a7973156da12',
     extractionPath:
       'curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json',
@@ -443,7 +447,7 @@ const configs: ExtractionConfig[] = [
   {
     stage: 'SekII',
     extractionId: 'DE-SN-PHYSIK-SEKII-LEHRPLAN-GYMNASIUM-2025',
-    title: 'DE-SN - Physik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)',
+    title: 'DE-SN - Physik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction)',
     sourceLandscapeId: 'e1213911-abd2-4a1e-88ca-7a78a58c2189',
     extractionPath:
       'curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_PHYSIK_SEKII_LEHRPLAN_GYMNASIUM_2025.source-extraction.json',
@@ -880,7 +884,7 @@ const buildExtraction = (config: ExtractionConfig) => {
         sourceText,
         sourceSpan,
         parentBulletText: block.heading,
-        sourceRef: `Lehrplan Gymnasium Physik Sachsen 2025, ${sourceSpan}`,
+        sourceRef: `Lehrplan Gymnasium Physik Sachsen 2019, ${sourceSpan}`,
         courseLevel: block.courseLevel,
         granularity: block.aspects.length > 0 ? 'officialCompetencyAspect' : 'officialCompetencyRow',
         tags: [
@@ -935,6 +939,8 @@ const buildExtraction = (config: ExtractionConfig) => {
     })),
   )
 
+  applyPhysicsB040AstroSplitMappings(decisions, mappings)
+  applyPhysicsFinalDiodeMappings(decisions, mappings)
   const uniqueTargetIds = [...new Set(mappings.map((mapping) => mapping.canonicalGoalId))]
   const missingCanonicalGoalIds = uniqueTargetIds.filter((goalId) => !canonicalTitleById.has(goalId))
   if (missingCanonicalGoalIds.length > 0) {
@@ -951,7 +957,7 @@ const buildExtraction = (config: ExtractionConfig) => {
     stage: config.stage,
     sourceDocument: {
       key: 'SN-PH-2025',
-      title: 'Lehrplan Gymnasium Physik Sachsen 2025',
+      title: 'Lehrplan Gymnasium Physik Sachsen 2019',
       path: sourcePdfPath,
       url: sourcePdfUrl,
       official: true,
@@ -959,7 +965,7 @@ const buildExtraction = (config: ExtractionConfig) => {
     sourceDocuments: [
       {
         key: 'SN-PH-2025',
-        title: 'Lehrplan Gymnasium Physik Sachsen 2025',
+        title: 'Lehrplan Gymnasium Physik Sachsen 2019',
         path: sourcePdfPath,
         url: sourcePdfUrl,
         official: true,
@@ -967,7 +973,7 @@ const buildExtraction = (config: ExtractionConfig) => {
     ],
     method: {
       sourceProvision:
-        'Der amtliche Sachsen-Lehrplan Physik Gymnasium 2025 liegt lokal als PDF vor; der alte Snapshot wird nicht als fachliche Quelle verwendet.',
+        'Der amtliche Sachsen-Lehrplan Physik Gymnasium 2019 liegt lokal als PDF vor; der alte Snapshot wird nicht als fachliche Quelle verwendet.',
       passageExtraction:
         'pdftotext -raw; Passagen werden je Klassen-/Jahrgangsstufe und Lern-/Wahlbereich gebildet.',
       sourceGoalExtraction:
@@ -1089,7 +1095,7 @@ const buildExtraction = (config: ExtractionConfig) => {
     targetLandscapeId,
     sourceExtractionPath: config.extractionPath,
     status: {
-      scope: `${jurisdiction} Physik ${config.stage} / Lehrplan Gymnasium Sachsen 2025`,
+      scope: `${jurisdiction} Physik ${config.stage} / Lehrplan Gymnasium Sachsen 2019`,
       reviewedSourceGoals: sourceGoals.length,
       mappedSourceGoals: sourceGoals.length,
       needsViewPlacementReview: 0,
@@ -1113,7 +1119,7 @@ const buildExtraction = (config: ExtractionConfig) => {
       '',
       'Stand: 2026-05-11',
       '',
-      'Diese Spur ersetzt den alten Pilot-Quellsnapshot durch eine Source-Extraction aus dem amtlichen Sachsen-Lehrplan Physik Gymnasium 2025.',
+      'Diese Spur ersetzt den alten Pilot-Quellsnapshot durch eine Source-Extraction aus dem amtlichen Sachsen-Lehrplan Physik Gymnasium 2019.',
       '',
       `- Quelle: \`${sourcePdfPath}\``,
       `- Source-Extraction: \`${config.extractionPath}\``,
@@ -1138,8 +1144,8 @@ for (const config of configs) {
   if (!registryEntry) throw new Error(`Registry entry not found for ${config.sourceLandscapeId}`)
   registryEntry.title =
     config.stage === 'SekI'
-      ? 'Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)'
-      : 'Physik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction)'
+      ? 'Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction)'
+      : 'Physik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction)'
   registryEntry.sourcePath = sourcePdfPath
   registryEntry.archiveSourcePath = sourcePdfPath
 }
@@ -1291,6 +1297,8 @@ for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
   template.scope = { ...(template.scope as Record<string, unknown>), jurisdiction }
   addMissingMappedGoalsToView(template, suffix)
   ensureBatch025VelocityTargetPlacement(template)
+  preservePhysicsB040ViewPlacements(repoRoot, `${compositionViewDir}/de-sn-${suffix}.view.json`, template)
+  preservePhysicsB034ViewPlacements(repoRoot, `${compositionViewDir}/de-sn-${suffix}.view.json`, template)
   writeJson(`${compositionViewDir}/de-sn-${suffix}.view.json`, template)
 }
 

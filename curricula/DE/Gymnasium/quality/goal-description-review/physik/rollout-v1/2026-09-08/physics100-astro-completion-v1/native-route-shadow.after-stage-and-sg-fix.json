@@ -1,0 +1,276 @@
+{
+  "status": "READ_ONLY_NATIVE_ROUTE_SHADOW",
+  "actualProposedNeedsReviewState": [
+    {
+      "scopeId": "canonical-physics-sek1",
+      "label": "Sekundarstufe I",
+      "selectedAtomicGoals": 96,
+      "maturity": "M2",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 96,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 96,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-104",
+          "status": "fail",
+          "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+          "metrics": {
+            "relevantCompositionViews": 35,
+            "evaluatedProjectionScopes": 80,
+            "requiredMotivationAnchors": 1,
+            "minimumRequiredTerminalAutonomyGoals": 31,
+            "requiredTerminalAutonomyGoals": 56,
+            "projectionScopesMissingMotivationAnchors": 0,
+            "projectionScopesMissingTerminalAutonomyGoals": 6,
+            "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+            "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+            "terminalGoalsMissingCompiledApplicability": 0,
+            "projectionScopesWithInvalidStageStructure": 0,
+            "nationalProjectionScopesUsingJurisdictionStageAuthority": 48,
+            "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+            "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 1362,
+            "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 159,
+            "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 258,
+            "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+            "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+            "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+            "projectionLocalRouteChecksEnabled": 1,
+            "visibleSelectedAtomicGoalOccurrences": 6318,
+            "visibleProfileSelectedAtomicGoalOccurrences": 6136,
+            "visibleProjectedRouteTargetGoalOccurrences": 6318,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 182,
+            "uniqueProjectedRouteTargetsExcludedByProfileSelector": 59,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+            "projectionScopesMissingEffectiveMotivationRoutes": 3,
+            "projectionScopesMissingDirectMotivationRoutes": 3,
+            "projectionScopesMissingEffectiveTerminalRoutes": 0,
+            "projectionScopesMissingDirectTerminalRoutes": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 3,
+            "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 3,
+            "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 3,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 3,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 1,
+            "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 1,
+            "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+          },
+          "details": [
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json [DE-BW]: a77138b8-3924-4a17-a22e-d2625ab19bd6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json [DE-BW]: a77138b8-3924-4a17-a22e-d2625ab19bd6, 74a32716-2b46-5d96-8b57-3f6edb90e088",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json [DE-BY]: ca13e9cd-6377-540e-88c8-0308cddc8a7e",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json [DE-BY]: ca13e9cd-6377-540e-88c8-0308cddc8a7e",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json [DE-RP]: 74a32716-2b46-5d96-8b57-3f6edb90e088",
+            "Missing terminal autonomy goal(s): curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json [DE-RP]: 74a32716-2b46-5d96-8b57-3f6edb90e088",
+            "No projection-local effective motivation route: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json [DE-BY]: 7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+            "No projection-local effective motivation route: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json [DE-BY]: 7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+            "No projection-local effective motivation route: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-BY]: 7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+            "No projection-local direct motivation route: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json [DE-BY]: 7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+            "No projection-local direct motivation route: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json [DE-BY]: 7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+            "No projection-local direct motivation route: curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-BY]: 7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+          ]
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 62,
+            "terminalAutonomyGoalsWithExamData": 62,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 62,
+            "concreteExamData": 62,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 62,
+            "releasedCoverageCompleteExamData": 62,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    },
+    {
+      "scopeId": "canonical-physics-sek2",
+      "label": "Sekundarstufe II",
+      "selectedAtomicGoals": 303,
+      "maturity": "M4",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 303,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 303,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 70,
+            "terminalAutonomyGoalsWithExamData": 70,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 70,
+            "concreteExamData": 70,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 70,
+            "releasedCoverageCompleteExamData": 70,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    }
+  ],
+  "astroStageSupportProof": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json",
+      "stage": "SekI",
+      "sourceLocalTaskSupport": [
+        {
+          "key": "S",
+          "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "assessmentId": "d44eb772-acb3-5449-accc-36a1fb7a25a5",
+          "stageContentTarget": false,
+          "stagePrerequisiteVisible": true,
+          "stageAssessmentTarget": true
+        },
+        {
+          "key": "G",
+          "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "assessmentId": "e99d87ac-0024-5f2b-ab47-d4d1cebba027",
+          "stageContentTarget": false,
+          "stagePrerequisiteVisible": true,
+          "stageAssessmentTarget": true
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json",
+      "stage": "SekI",
+      "sourceLocalTaskSupport": [
+        {
+          "key": "S",
+          "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "assessmentId": "d44eb772-acb3-5449-accc-36a1fb7a25a5",
+          "stageContentTarget": false,
+          "stagePrerequisiteVisible": true,
+          "stageAssessmentTarget": true
+        },
+        {
+          "key": "G",
+          "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "assessmentId": "e99d87ac-0024-5f2b-ab47-d4d1cebba027",
+          "stageContentTarget": false,
+          "stagePrerequisiteVisible": true,
+          "stageAssessmentTarget": true
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json",
+      "stage": "SekI",
+      "sourceLocalTaskSupport": [
+        {
+          "key": "S",
+          "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "assessmentId": "d44eb772-acb3-5449-accc-36a1fb7a25a5",
+          "stageContentTarget": false,
+          "stagePrerequisiteVisible": true,
+          "stageAssessmentTarget": true
+        },
+        {
+          "key": "G",
+          "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "assessmentId": "e99d87ac-0024-5f2b-ab47-d4d1cebba027",
+          "stageContentTarget": false,
+          "stagePrerequisiteVisible": true,
+          "stageAssessmentTarget": true
+        }
+      ]
+    }
+  ],
+  "nativeFunctionsUnmodified": true,
+  "cliMainNotExecuted": true,
+  "operativeWrites": 0,
+  "releaseCaveat": "Individual task release decisions are separately content-hash-bound and explicitly Root-authorized. This shadow changes no native gate or threshold.",
+  "applicabilityFindings": [],
+  "beforeGoals": 733,
+  "afterGoals": 750
+}

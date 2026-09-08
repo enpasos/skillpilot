@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-08T02:28:32.984Z
+Generated: 2026-09-08T07:19:20.087Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,40 +16,41 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 718 |
-| Atomare Ziele im Visualisierungs-Scope | 466 |
-| Ziele mit primaerem Visualisierungslink | 416 |
-| Coverage | 89.3% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 466 |
+| Alle Ziele in der Landschaft | 764 |
+| Atomare Ziele im Visualisierungs-Scope | 478 |
+| Ziele mit primaerem Visualisierungslink | 428 |
+| Coverage | 89.5% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 478 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 92 |
+| Review-Ledger-Dateien | 94 |
 | Offene Provider-Deferred-Ziele | 50 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 3 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 17 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 78 |
-| `pilot` | 338 |
+| `accepted` | 84 |
+| `pilot` | 344 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
+| `accepted_ai_pilot` | 2 |
 | `accepted_cluster_overview_after_atomic_split` | 1 |
 | `accepted_documented_repo_native_fallback` | 1 |
 | `accepted_existing_asset` | 8 |
 | `accepted_existing_asset_as_cluster_overview` | 8 |
 | `accepted_existing_asset_metadata_rebound` | 15 |
 | `accepted_existing_asset_unchanged_goal` | 2 |
-| `accepted_pilot` | 281 |
+| `accepted_pilot` | 284 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
 | `accepted_pilot_after_fresh_ai_review` | 281 |
 | `accepted_pilot_after_fresh_ai_review_correction` | 134 |
@@ -66,7 +67,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_retroactive_nano_banana` | 22 |
 | `accepted_reuse_after_current_visual_review` | 3 |
 | `blocked_provider_quota` | 1 |
-| `deferred_provider_limitation` | 63 |
+| `deferred_provider_limitation` | 66 |
 | `provider_temporary_failure_retried` | 1 |
 | `rejected_after_user_review_replaced` | 8 |
 | `rejected_regenerated` | 227 |
@@ -75,8 +76,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-checkpoint-2026-09-07.md` |
-| Latest ledger status | - |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-2026-09-08-final-diode-panel-reuse.md` |
+| Latest ledger status | `completed` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
 
@@ -107,12 +108,12 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | 074 | `6e79ef4a-2666-5f7a-885c-b175954506f8` | Entropie E05: Einheiten und Bedeutung von S | `deferred_provider_limitation` |
 | 081 | `09995ab9-86aa-5b02-8a58-62b16a37831d` | Entstehung von Gravitationswellen mit begrenzter Analogie erklären | `deferred_provider_limitation` |
 | 089 | `bf559969-a05c-58b5-82c5-3d719d96555d` | Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären | `deferred_provider_limitation` |
+| physik-2026-09-08-final-astro-pause | `49bb609a-bfb7-5391-9120-f5fc737efb9a` | Exoplanetenkandidaten mit der Transitmethode erklären | `deferred_provider_limitation` |
+| physik-2026-09-08-final-astro-pause | `6dca3b0a-c872-543b-808f-97e855f5fafd` | Exoplanetenkandidaten mit Stern-Radialbewegungen erklären | `deferred_provider_limitation` |
 | 081 | `f9c025ce-4327-5de7-8288-a3358e14a576` | Fraunhoferlinien in Sternspektren deuten | `deferred_provider_limitation` |
 | 074 | `f06c581a-7157-584e-a692-99bcd613cff9` | Frequenzspektren von Tönen und Klängen analysieren | `deferred_provider_limitation` |
 | 082 | `206a7d3d-9b11-56be-89ff-73898445c4f5` | Galaxienentfernungen bestimmen und Verfahren beurteilen | `deferred_provider_limitation` |
 | 074 | `b1ad9493-acca-5366-9ecd-4b7bf7edaf4a` | Geiger-Müller-Zählrohr funktional erklären | `deferred_provider_limitation` |
-| 079 | `16b94a12-ecc5-5b5c-85b6-87b4290bebf8` | Halbwertszeit radioaktiver Stoffe deuten | `deferred_provider_limitation` |
-| 074 | `f67550ac-df22-5a3e-8172-f04642efca64` | HR-Diagramm quantitativ für Sternentwicklung nutzen | `deferred_provider_limitation` |
 
 Weitere 30 Eintraege stehen in der JSON-Begleitdatei.
 
@@ -150,9 +151,23 @@ Keine Eintraege.
 
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
+| `e1b21fe9-ab6f-58c4-a0b6-9895061fbabb` | Argumentationen zur Entstehung schwerer Elemente beurteilen | `accepted` | - |
+| `af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93` | Aufbau des Sonnensystems beschreiben | `pilot` | - |
+| `68034218-8f3e-5f7f-ae4e-ed057dd4e44e` | Die Funktion eines thermischen Kernreaktors erklären | `accepted` | - |
 | `d05a146f-7fcd-56ae-b9b9-b54203328579` | Diskrete Energien im unendlichen Potenzialtopf berechnen | `pilot` | - |
+| `b4772b06-b10c-52dd-841b-a96ffb7c7e28` | Dunkle Energie qualitativ einordnen | `pilot` | - |
+| `3d466956-04fb-58d7-9008-ad8090f8706d` | Dunkle Materie qualitativ einordnen | `pilot` | - |
+| `c2af45aa-e3fc-5119-9159-c5a260b4135a` | Eine bistabile Transistor-Flipflop-Schaltung deuten | `accepted` | - |
+| `922f32ba-f214-5a82-be5c-1111aca51d4a` | Einen Audio-Licht-Übertragungsversuch funktional umsetzen | `accepted` | - |
+| `7d4d6a39-0c78-5fb0-b7bf-182ed00972f7` | Einen bipolaren Transistor als Schalter funktional untersuchen | `accepted` | - |
+| `f505f039-3f07-5afe-88b8-f02532e9c2f0` | Einen Modellversuch zu optischem Multiplexing entwickeln | `accepted` | - |
+| `37013646-f13a-5faf-954c-940f2fd7502f` | Gezeiten qualitativ erklären | `pilot` | - |
+| `db0394ca-297c-5892-b414-525ec186f928` | Größe und Alter des Universums qualitativ einordnen | `pilot` | - |
 | `f2538793-8b0a-5c3b-b216-5d329a4e87bd` | Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen | `pilot` | - |
+| `1b060e79-dc2d-5e4e-abb5-42eca39f9cc7` | Kosmische Strukturen einordnen | `pilot` | - |
 | `c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea` | Mittleres Beschleunigungsmoment bestimmen | `pilot` | - |
+| `69280706-5af6-5788-85b7-93287c2ffe74` | Stern-Endstadien aus Anfangsmasse und Massenverlust prognostizieren | `accepted` | - |
+| `c52d55c3-b687-586c-b0f9-8ffcd1069424` | Urknallmodell anhand kosmologischer Beobachtungen erläutern | `pilot` | - |
 
 ### Accepted Review Without Link
 

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-current-subset-37013646-f13a-5faf-954c-940f2fd7502f",
+  "goal": {
+    "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a487883a5e8f940ac6aefa017474be4bf853d27ff11b259eefa8462d45dd4ac7",
+    "pageFingerprint": "sha256:f04c613844c27d95327fa48df539b8e03fa2c735b147198f40ebda63dbcefbea",
+    "goalReviewContextFingerprint": "sha256:ec30adac54fb8a0edc9b3dac5b64b4d423d536045bb8f8649783057def935fa5",
+    "finalText": {
+      "titleDe": "Gezeiten qualitativ erklären",
+      "titleEn": "Explain tides qualitatively",
+      "descriptionDe": "Die lernende Person kann Gezeiten qualitativ durch die unterschiedliche Gravitationswirkung von Mond und Sonne auf verschiedene Bereiche der Erde erklären.",
+      "descriptionEn": "The learner can explain tides qualitatively through the differing gravitational effects of the Moon and Sun on different regions of Earth."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-a",
+      "campaignDigest": "sha256:208fe351b4e761cb6f2baeb4d915c701b5d62766029eae422da77c25b16ced84",
+      "roundId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:49b2c2f7a583ada21e4a8367a14d642046e6906630399d041becf03e0df497c4",
+      "goalReviewContextFingerprint": "sha256:ec30adac54fb8a0edc9b3dac5b64b4d423d536045bb8f8649783057def935fa5",
+      "batchId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:53764453dbb13fd434b53f5b3c7580e146e2300afb49dc3277c8ce4713976b65",
+      "resultsDigest": "sha256:bfe76a42063e7b92be981461f1c3b4779fe5e1d48b357d3f9c5308d790187205",
+      "recordId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-a.run-001.007",
+      "recordDigest": "sha256:6565702c7c67b4fbc20f5333372fff343464bf4436971ff5748262b0bc3837ae"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-b",
+      "campaignDigest": "sha256:9c5c787eb21d56160519a2ae020ee050212c772605d30abd1d8004caaa9e6d5c",
+      "roundId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:49b2c2f7a583ada21e4a8367a14d642046e6906630399d041becf03e0df497c4",
+      "goalReviewContextFingerprint": "sha256:ec30adac54fb8a0edc9b3dac5b64b4d423d536045bb8f8649783057def935fa5",
+      "batchId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-b.run-001",
+      "runManifestDigest": "sha256:697518028e7f7083605e121e69309eb00f04a5161c8d55c6cebe20b05e861095",
+      "resultsDigest": "sha256:ec131a70e62aaf8acc8fd7c3ebf4ae2cc4419ac3ef35b3a201dba0e32e8dabfe",
+      "recordId": "physics-b049-b-007",
+      "recordDigest": "sha256:0803481ea62fbd7b0e07a7965935003cc40ca61d3b5a08dad39d5d15d7faa2f1"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:3a17b9d521abfcc56ba3a91e1edcf4191a214cc672dc77c318e5860941868a2e"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-explicit-synthesis-37013646-f13a-5faf-954c-940f2fd7502f",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex /root; individual comparison of both sealed independent bilingual records; no human approval",
+    "synthesizedAt": "2026-09-08T06:44:46.363Z",
+    "rationaleDe": "Beide Runden erklären die Gezeiten durch Differenzbeschleunigungen relativ zur Erde, nicht durch Mondabstoßung. A bindet solare/lunare Überlagerung ausdrücklich an die Stellung und verweigert genaue örtliche Hochwasserzeiten aus dem Zweibulgenmodell. Damit bleibt dieselbe qualitative Kompetenz fachlich korrekt begrenzt.",
+    "rationaleEn": "Both rounds explain tides through differential acceleration relative to Earth, not lunar repulsion. A explicitly ties solar/lunar superposition to alignment and rejects precise local high-tide predictions from the two-bulge model, preserving a correctly bounded qualitative competence.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Gezeiten entstehen durch räumliche Unterschiede der Gravitationsbeschleunigung relativ zur Beschleunigung der Erde als Ganzes, nicht durch eine abstoßende Kraft des Mondes auf die ferne Erdseite.",
+      "essentialUnderstandingEn": "Tides arise from spatial differences in gravitational acceleration relative to the acceleration of Earth as a whole, not from a repulsive lunar force on Earth's far side.",
+      "observablePerformanceDe": "Die lernende Person vergleicht Mondanziehung an naher Seite, Erdmitte und ferner Seite und erklärt daraus qualitativ beide gegenüberliegenden Deformationsrichtungen im vereinfachten Modell.",
+      "observablePerformanceEn": "The learner compares lunar attraction at the near side, centre and far side of Earth and uses this to explain both opposing deformation directions in the simplified model.",
+      "transferExpectationDe": "Sie begründet, warum sich lunare und solare Gezeitenwirkungen je nach Stellung verstärken oder teilweise abschwächen können, ohne aus dem Zweibulgenmodell genaue örtliche Hochwasserzeiten abzuleiten.",
+      "transferExpectationEn": "They explain why lunar and solar tidal effects can reinforce or partially oppose each other depending on alignment without deriving precise local high-tide times from the two-bulge model."
+    },
+    "dissent": [
+      {
+        "dissentId": "evidence-selection-37013646-f13a-5faf-954c-940f2fd7502f",
+        "source": "both",
+        "textDe": "Beide unabhängigen Urteile sind KEEP; ihre unterschiedlichen Evidenzformulierungen und Begründungen bleiben unverändert erhalten. Die individuelle Synthese wählt die Evidenz der ersten Runde.",
+        "textEn": "Both independent decisions are KEEP; their differing evidence formulations and rationales remain unchanged in the original records. The individual synthesis selects the first round evidence.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:c6684bbefaf089a7c38d7046afa66c4ece25ab6e3202f73c37ddde6f29c73156"
+}

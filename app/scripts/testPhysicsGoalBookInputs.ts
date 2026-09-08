@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { assertFinalPhysicsAtlasPublishedTargets, assertFinalPhysicsAtlasDraftTargets } from './lib/physicsFinalGoalBookAtlasTargets'
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
@@ -20,6 +21,7 @@ import {
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { parseSubjectDurationModelPolicy } from './goalBookModel'
+import { HE_LK_ONLY_QUANTUM_GOAL_IDS, stripHeQuantumOverridesFromClonedView } from './lib/hePhysicsQuantumScope'
 
 type SemanticKind =
   | 'curricularAtomic'
@@ -176,6 +178,24 @@ const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
   '00245a43-eb89-47d2-92d7-21799dbec9f3',
 ] as const
 const SEMANTIC_RECHECK_ATOMIC_GOAL_IDS = new Set([
+  // Individually reviewed current B043/B046 descriptions and B034 split competencies.
+  '2825b528-00ee-52d0-870e-686890cb1195',
+  '333ca92b-a92c-46a9-86be-dea8ddbd43e0',
+  '50877233-7abf-54df-b347-6d3224678fc9',
+  '5492f0e0-cbae-574e-a853-182616205ed3',
+  '6f896466-e0ec-5f8d-82ad-2890433c82ba',
+  '76bcbdcb-3003-5e6a-952e-aa36eb8f97ee',
+  '7d78da7f-6af5-440a-9d6b-6cab4bee8dd2',
+  '7e719cc2-0866-5267-a252-e7e7ac0d03f1',
+  'af50bb9a-fd7b-50f5-9698-48c4efe99032',
+  'bb5c5eab-2fc1-5336-b8cf-14d147695487',
+  '922f32ba-f214-5a82-be5c-1111aca51d4a',
+  'f505f039-3f07-5afe-88b8-f02532e9c2f0',
+  '7d4d6a39-0c78-5fb0-b7bf-182ed00972f7',
+  'c2af45aa-e3fc-5119-9159-c5a260b4135a',
+  'e1b21fe9-ab6f-58c4-a0b6-9895061fbabb',
+  '69280706-5af6-5788-85b7-93287c2ffe74',
+  '68034218-8f3e-5f7f-ae4e-ed057dd4e44e',
   '37b33812-d428-5953-852e-57a53a4347fe',
   '7fe3022f-fad0-5f41-af1c-d55ff214ebc6',
   // B035: individually re-reviewed existing descriptions and the two separate well competencies.
@@ -241,6 +261,11 @@ const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
   'bf8517a9-142b-5789-826a-767f3b277998',
 ])
 const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
+  // B034 keeps the old combined IDs as navigation clusters, not mastery atoms.
+  '49872cc0-401f-5464-9235-4763df4db5cf',
+  '7df923a0-6470-595e-8cea-53126fad9506',
+  'd36727cc-ce42-51a3-9425-41afb0b9acdd',
+  'ea17b0af-3d53-5a10-acda-7fd9348537ce',
   'ad021f2e-6b94-5e6e-a264-3d1110094b87', // B035: groups exactly the energy and interval children.
   '3e33813d-db75-4571-8345-3845b02b956d',
   '1fede37b-6554-5dd3-93d9-08ed1fd09c91',
@@ -269,6 +294,14 @@ const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
   'f203a552-fcf0-560c-baa2-47d4eb2379c8',
 ])
 const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
+  // B034: actual individually counter-reviewed tasks for the separated competencies.
+  '51af53cb-8866-52cd-b2ca-af8bd8a836e0',
+  '4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65',
+  '5902ebe8-2025-5a7c-b95d-13057398d6e6',
+  '6da29199-f086-512c-89f2-1b5ca865eef9',
+  '6c87a996-9166-5c6e-8cda-01d40720f9c8',
+  '74a32716-2b46-5d96-8b57-3f6edb90e088',
+  '144007cb-e2bc-5c82-bf9d-dda705b15257',
   'b585ff81-6332-5d11-ae63-ee6a9928c00d', // B035: actual energy calculation, not interval integration.
   '6d25344c-35d7-5853-925d-2bccbaf50630', // B039: both independent rotation targets assessed.
   '7f83e25c-38f7-5ac2-8f9c-ec54eeef1026', // B039: E-phase terminal route retains both targets.
@@ -383,7 +416,8 @@ const CQR104_ROUTE_ASSESSMENT_EVIDENCE = new Map<string, Map<string, string[]>>(
     ['a12fddce-0215-58d9-bd91-21be8a960d25', ['separat gemessene Aktivität der Mutterkerne', 'Aktivität bereits entstandener Tochterkerne', 'Zerfallsfolge']],
   ])],
   ['a77e53d5-246d-52df-86a2-d14f7a08fb77', new Map([
-    ['49872cc0-401f-5464-9235-4763df4db5cf', ['für Spaltung und Fusion', 'kontrollierte Reaktion', 'Kettenreaktion']],
+    ['50877233-7abf-54df-b347-6d3224678fc9', ['für Spaltung und Fusion', 'Ausgangskerne', 'typische Produkte', 'Kettenreaktion']],
+    ['7d78da7f-6af5-440a-9d6b-6cab4bee8dd2', ['Herkunft der frei werdenden Energie qualitativ']],
     ['7e719cc2-0866-5267-a252-e7e7ac0d03f1', ['physikalische Bewertungskriterien', 'Kennzeichnen Sie mindestens zwei Unsicherheiten']],
   ])],
   ['e1794352-ceee-5c27-8be4-224592ddbb89', new Map([
@@ -430,7 +464,7 @@ const CQR104_ROUTE_ASSESSMENT_EVIDENCE = new Map<string, Map<string, string[]>>(
     ['58fc7852-722c-5a67-be6a-bfd1be0b527e', ['Bedingungen für Totalreflexion', 'optisch dünnerer Mantel', 'Grenzwinkel']],
   ])],
   ['88f27aab-8724-5a4d-8543-e49ebcb54b8e', new Map([
-    ['d36727cc-ce42-51a3-9425-41afb0b9acdd', ['Basis, Kollektor und Emitter', 'Steuer- und Lastkreis', 'Transistor als Schalter']],
+    ['7d4d6a39-0c78-5fb0-b7bf-182ed00972f7', ['Steuer- und Lastpfad', 'dünnen Basis', 'Stelle den Aufbau nach Plan tatsächlich her', 'Eine Textbehauptung ersetzt keinen beobachteten Aufbau', 'elektronische Schaltwirkung']],
   ])],
   ['8f62ab5e-20fc-562f-8121-63c082313e6e', new Map([
     ['41d35667-0296-5f84-bc12-202ffc440be0', ['Zeichnen Sie beide Kräfte', 'Konstruieren Sie die Resultierende', 'Betrag und Richtung']],
@@ -526,19 +560,46 @@ const EXPECTED_JURISDICTIONS = [
 ] as const
 
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 466,
-  curricularArea: 102,
-  practiceAssessment: 138,
+  curricularAtomic: 478,
+  curricularArea: 112,
+  practiceAssessment: 162,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 718,
+  total: 764,
 }
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6308
+// Approved final diode/astronomy splits: exactly eight children replace three
+// mixed content leaves, and six new singleton-coverage assessment tasks are added.
+const FINAL_SPLIT_CHILD_IDS = [
+  '2084b7d4-300d-5fa0-8b8d-c480c40f853e',
+  '3857891b-d328-585b-9936-85c7aff122ee',
+  '3b586f2a-60e2-5019-aa08-6a47616a1f1f',
+  '49bb609a-bfb7-5391-9120-f5fc737efb9a',
+  '6dca3b0a-c872-543b-808f-97e855f5fafd',
+  '6a73cacc-e86d-5248-a180-fd3da8454b0f',
+  '3a4b2f86-5c59-5429-8fb4-75d9b2589cb5',
+  '946ecf7b-0fcf-5776-9fb6-d397423c2f12',
+]
+const FINAL_SPLIT_PARENT_CHILDREN = new Map([
+  ['7f0798cb-5966-5dcb-beb3-84f637ab6139', FINAL_SPLIT_CHILD_IDS.slice(0, 3)],
+  ['5b8eaf71-96fe-50eb-b9ea-a8fa392df086', FINAL_SPLIT_CHILD_IDS.slice(3, 5)],
+  ['f67550ac-df22-5a3e-8172-f04642efca64', FINAL_SPLIT_CHILD_IDS.slice(5, 8)],
+])
+const FINAL_SPLIT_ASSESSMENT_COVERAGE = new Map([
+  ['c61b2a69-b5cd-5785-bb04-5d6bca53b218', FINAL_SPLIT_CHILD_IDS[0]],
+  ['4ac5a07c-fff0-5eae-890d-89e13eaf69c3', FINAL_SPLIT_CHILD_IDS[1]],
+  ['18fb1470-5a03-5277-9486-ae74c63c8a8c', FINAL_SPLIT_CHILD_IDS[2]],
+  ['dfeda6e5-3256-557c-a706-bec0d0c89ff4', FINAL_SPLIT_CHILD_IDS[5]],
+  ['092017a7-1ce1-54b7-a14c-1658b72d70a7', FINAL_SPLIT_CHILD_IDS[6]],
+  ['027d25fc-b609-5383-ac44-5dd3327ca577', FINAL_SPLIT_CHILD_IDS[7]],
+])
+// Native final CQR-104 (2026-09-08 07:44:52Z): exact current projections,
+// including approved split/support route integration; all zero-failure guards remain.
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6371
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6136
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 172
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 57
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 235
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 61
 
 const EXPECTED_DURATION_DECISIONS = new Map<string, {
   stage: 'SekI' | 'SekI+SekII'
@@ -671,10 +732,27 @@ const explicitClassification = (
     return {
       semanticKind: 'curricularAtomic',
       decisionBasis: STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS.has(goal.id)
+        && !['5e9cd796-3887-5457-8a1f-26863ca7eb28', '6f896466-e0ec-5f8d-82ad-2890433c82ba'].includes(goal.id)
         ? 'reviewed-current-structural-split-curricular-atomic'
         : new Set([
+          ...FINAL_SPLIT_CHILD_IDS,
+          '7d4d6a39-0c78-5fb0-b7bf-182ed00972f7', // Narrowed prerequisite: pn model only.
+          // Final astronomy package: four operationalised descriptions and one narrowed prerequisite.
+          '4c5c7cb1-f238-52c8-b82c-159c6c299c0e',
+          'db6b8de4-21e0-58e8-a347-2ae39f538f92',
+          '5e9cd796-3887-5457-8a1f-26863ca7eb28',
+          '6f896466-e0ec-5f8d-82ad-2890433c82ba',
+          'e2014db8-c97f-5ce1-82c5-2a42741f4a61',
           '5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931', // B039: rotational energy, separated from mean torque.
           'c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea', // B039: independent mean-torque goal.
+          // B040: seven separately assessable competencies replace three compound leaves.
+          'af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93',
+          '37013646-f13a-5faf-954c-940f2fd7502f',
+          'c52d55c3-b687-586c-b0f9-8ffcd1069424',
+          '3d466956-04fb-58d7-9008-ad8090f8706d',
+          'b4772b06-b10c-52dd-841b-a96ffb7c7e28',
+          '1b060e79-dc2d-5e4e-abb5-42eca39f9cc7',
+          'db0394ca-297c-5892-b414-525ec186f928',
         ]).has(goal.id)
           ? 'reviewed-current-post-split-curricular-atomic'
           : SEMANTIC_RECHECK_ATOMIC_GOAL_IDS.has(goal.id)
@@ -711,14 +789,22 @@ const explicitClassification = (
     if (goal.contains.every((goalId) => goalsById.get(goalId)?.examData !== undefined)) {
       return {
         semanticKind: 'practiceAssessment',
-        decisionBasis: 'reviewed-current-pilot-practice-assessment',
+        decisionBasis: goal.id === '85bbad98-2f48-5d64-85c4-ab6cf67f24c2'
+          ? 'reviewed-current-post-split-practice-assessment'
+          : 'reviewed-current-pilot-practice-assessment',
       }
     }
     return {
       semanticKind: 'curricularArea',
       decisionBasis: STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS.has(goal.id)
         ? 'reviewed-current-structural-split-curricular-area'
-        : goal.id === '9743baad-9371-52b6-98ee-72bc6dc68701'
+        : new Set([
+          ...FINAL_SPLIT_PARENT_CHILDREN.keys(),
+          '9743baad-9371-52b6-98ee-72bc6dc68701',
+          'c9405043-bdc0-5995-8b4d-5bb56d97d05d',
+          'e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9',
+          '5db07785-8cca-50d5-81a9-e0264d344af9',
+        ]).has(goal.id)
           ? 'reviewed-current-post-split-curricular-area'
           : 'reviewed-current-pilot-curricular-area',
     }
@@ -731,7 +817,9 @@ const explicitClassification = (
   ) {
     return {
       semanticKind: 'practiceAssessment',
-      decisionBasis: POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS.has(goal.id)
+      decisionBasis: (POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS.has(goal.id)
+        || FINAL_SPLIT_ASSESSMENT_COVERAGE.has(goal.id)
+        || ['0f5346d6-de1b-5e38-aaba-68db205e594b', '4a58df57-f791-502f-8b8d-9ba155e46035', 'f61c424e-f091-5f9d-9d58-c1bd29733fc8'].includes(goal.id))
         ? 'reviewed-current-post-split-practice-assessment'
         : 'reviewed-current-pilot-practice-assessment',
     }
@@ -869,6 +957,27 @@ landscape.goals.forEach((goal) => goal.contains.forEach((childId) => {
 }))
 const rawGoalById = new Map(rawLandscape.goals.map((goal) => [String(goal.id), goal]))
 assert.equal(goalById.size, EXPECTED_COUNTS.total, 'canonical Physics goal IDs must be unique')
+// The Fermi competency needs its own real band-model assessment; generic
+// historical exam templates must not claim this newly checked coverage.
+const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
+const fermiAssessmentId = '71e8936b-fa8a-50dc-8c47-fca015b85ac5'
+const fermiAssessment = rawGoalById.get(fermiAssessmentId)
+assert(fermiAssessment, 'the concrete Fermi band-model assessment is required')
+const fermiExam = fermiAssessment.examData as {
+  reviewStatus: string; coveredGoalIds: string[]; taskContent: string
+  solutionContent: string; scoring: { maxPoints: number; steps: Array<{ points: number }> }
+}
+assert.deepEqual(fermiAssessment.requires, [fermiGoalId])
+assert.deepEqual(fermiExam.coveredGoalIds, [fermiGoalId])
+assert.equal(fermiExam.reviewStatus, 'released')
+assert.equal(fermiExam.scoring.maxPoints, 16)
+assert.equal(fermiExam.scoring.steps.reduce((sum, step) => sum + step.points, 0), 16)
+for (const id of ['0f5346d6-de1b-5e38-aaba-68db205e594b', '4a58df57-f791-502f-8b8d-9ba155e46035']) {
+  const historicalTask = rawGoalById.get(id)
+  assert(historicalTask)
+  assert(!(historicalTask.requires as string[]).includes(fermiGoalId))
+  assert(!(historicalTask.examData as { coveredGoalIds: string[] }).coveredGoalIds.includes(fermiGoalId))
+}
 // B035: two independent competencies replace the mixed atomic goal. The old
 // stable ID remains a cluster; interval probability has its own actual task.
 const wellClusterId = 'ad021f2e-6b94-5e6e-a264-3d1110094b87'
@@ -1336,6 +1445,11 @@ const validatedNationalPhysicsViewIds = new Set<string>()
 const validatedStrictBwBySekIViewIds = new Set<string>()
 const validatedGravitationGkViewIds = new Set<string>()
 const validatedGravitationLkViewIds = new Set<string>()
+const ROAD_SAFETY_GOAL_ID = '4a2bf015-052b-4af0-aed7-324259fa1a8a'
+const roadSafetyExplicitUpperViewIds = new Set([
+  'de-de-gym-sekii-physics-gk', 'de-de-gym-sekii-physics-lk',
+  'de-rp-gym-sekii-physics-gk', 'de-rp-gym-sekii-physics-lk',
+])
 
 allPhysicsViewPaths.forEach((viewPath) => {
   const view = normalizeCompositionView(readJson(viewPath))
@@ -1349,6 +1463,26 @@ allPhysicsViewPaths.forEach((viewPath) => {
   assert.deepEqual(errors, [], `invalid Physics composition view ${viewPath}`)
 
   const visibleGoalIds = collectVisibleGoalIds(compilation.compiledRootNodes)
+  assert.equal(
+    visibleGoalIds.has(ROAD_SAFETY_GOAL_ID),
+    view.scope.stage === 'CrossStage'
+      || (view.scope.stage === 'SekII' && !['DE-BW', 'DE-BY'].includes(view.scope.jurisdiction ?? '')),
+    `${view.viewId}: preserve existing road-safety scopes plus the four national/RP additions; SekI and BW/BY SekII remain excluded`,
+  )
+  if (roadSafetyExplicitUpperViewIds.has(view.viewId)) {
+    const directTargets: string[] = []
+    const collectRoadSafetyRefs = (nodes: CompositionViewNode[]) => nodes.forEach((node) => {
+      if (node.kind === 'structure') collectRoadSafetyRefs(node.children)
+      else if ((node.kind === 'goalEntry' || node.kind === 'canonicalSubtree') && node.goalId === ROAD_SAFETY_GOAL_ID && node.projectionRole !== 'prerequisiteOnly') directTargets.push(node.goalId)
+    })
+    collectRoadSafetyRefs(view.rootNodes)
+    assert.deepEqual(directTargets, [ROAD_SAFETY_GOAL_ID], `${view.viewId}: one explicit road-safety target`)
+  }
+  assert.equal(
+    visibleGoalIds.has(fermiAssessmentId),
+    visibleGoalIds.has(fermiGoalId),
+    `${view.viewId}: the Fermi assessment must follow exactly its competency's target scope`,
+  )
   const gravitationRootIsTarget = visibleGoalIds.has(GRAVITATION_ROOT_GOAL_ID)
   const authoredGravitationProjectionRoots = collectAuthoredPrerequisiteRoots(view.rootNodes)
     .filter(({ goalId }) => GRAVITATION_LK_ONLY_PROJECTION_ROOTS.some((root) => root.goalId === goalId))
@@ -1630,6 +1764,22 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
   )
   const errors = compilation.findings.filter(({ severity }) => severity === 'error')
   assert.deepEqual(errors, [], `invalid Physics atlas source ${sourcePath}`)
+  if (view.scope.jurisdiction === 'DE-HE') {
+    const targetIds = new Set(collectAtomicGoalIds(compilation.compiledRootNodes, semanticGoalById))
+    for (const goalId of HE_LK_ONLY_QUANTUM_GOAL_IDS) {
+      assert.equal(targetIds.has(goalId), view.scope.courseProfile === 'LK',
+        `${view.viewId}: HE KC2024 Q3.3 p42 binds hydrogen-like energies and Pauli to LK, not GK`)
+    }
+    const clone = structuredClone(view)
+    stripHeQuantumOverridesFromClonedView(clone)
+    const template = compileCompositionView(clone, landscapeWithSemanticKinds, physicsAndMathGoalUniverse)
+    assert.deepEqual(template.findings.filter(({ severity }) => severity === 'error'), [])
+    const templateIds = new Set(collectAtomicGoalIds(template.compiledRootNodes, semanticGoalById))
+    assert.deepEqual([...targetIds].filter((id) => !templateIds.has(id)), [], 'template cleanup must not remove targets')
+    assert.deepEqual([...templateIds].filter((id) => !targetIds.has(id)).sort(compareCodePoints),
+      view.scope.courseProfile === 'GK' ? [...HE_LK_ONLY_QUANTUM_GOAL_IDS].sort(compareCodePoints) : [],
+      'BB/BE template cloning removes only the two HE-specific quantum exclusions')
+  }
   collectAtomicGoalIds(compilation.compiledRootNodes, semanticGoalById).forEach((goalId) => {
     if (decisionByGoalId.get(goalId)?.semanticKind === 'curricularAtomic') {
       atlasCurricularAtomicGoalIds.add(goalId)
@@ -1658,7 +1808,6 @@ assert.deepEqual(
 )
 
 const canonicalProfileTargetIds = new Set<string>()
-const ROAD_SAFETY_GOAL_ID = '4a2bf015-052b-4af0-aed7-324259fa1a8a'
 for (const profilePath of [
   'curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json',
   'curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json',
@@ -1691,9 +1840,60 @@ for (const profilePath of [
 // Native projection against the pre-B035 checkpoint proved the exact delta:
 // remove the former mixed atom, add energy and interval probability, keep all
 // other target IDs unchanged. Bind that full prior set, not only the new count.
-assert.equal(canonicalProfileTargetIds.size, 393)
+assert.equal(canonicalProfileTargetIds.size, 408)
+FINAL_SPLIT_PARENT_CHILDREN.forEach((children, parentId) => {
+  assert.deepEqual(semanticGoalById.get(parentId)?.contains, children)
+  assert(!canonicalProfileTargetIds.has(parentId), `${parentId}: cluster is not a content atom`)
+})
+FINAL_SPLIT_CHILD_IDS.forEach((id) => assert(canonicalProfileTargetIds.has(id)))
+FINAL_SPLIT_ASSESSMENT_COVERAGE.forEach((coveredId, taskId) => {
+  const task = semanticGoalById.get(taskId)
+  assert.deepEqual(task?.requires, [coveredId])
+  assert.deepEqual(task?.examData?.coveredGoalIds, [coveredId])
+})
+// Undo only the explicit final delta (+8 children, -3 former leaves, +road safety).
+// Keep the independently pinned 402 -> 393 -> 392 full-set proof below intact.
+const preFinalProfileTargetIds = new Set([
+  ...[...canonicalProfileTargetIds].filter((id) => !FINAL_SPLIT_CHILD_IDS.includes(id) && id !== ROAD_SAFETY_GOAL_ID),
+  ...FINAL_SPLIT_PARENT_CHILDREN.keys(),
+])
+assert.equal(preFinalProfileTargetIds.size, 402)
+// The B034 electronics/nuclear and B040 astronomy completion introduces exactly
+// fourteen current atoms in place of five formerly visible mixed atoms. Undo
+// only that reviewed delta before checking the independent B035 conservation
+// proof below; no unrelated profile target may silently enter or disappear.
+const completionAddedProfileTargetIds = [
+  '7d4d6a39-0c78-5fb0-b7bf-182ed00972f7',
+  '68034218-8f3e-5f7f-ae4e-ed057dd4e44e',
+  'af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93',
+  '37013646-f13a-5faf-954c-940f2fd7502f',
+  'c52d55c3-b687-586c-b0f9-8ffcd1069424',
+  '3d466956-04fb-58d7-9008-ad8090f8706d',
+  'b4772b06-b10c-52dd-841b-a96ffb7c7e28',
+  '1b060e79-dc2d-5e4e-abb5-42eca39f9cc7',
+  'db0394ca-297c-5892-b414-525ec186f928',
+  'c2af45aa-e3fc-5119-9159-c5a260b4135a',
+  'e1b21fe9-ab6f-58c4-a0b6-9895061fbabb',
+  '69280706-5af6-5788-85b7-93287c2ffe74',
+  '922f32ba-f214-5a82-be5c-1111aca51d4a',
+  'f505f039-3f07-5afe-88b8-f02532e9c2f0',
+]
+const completionReplacedProfileTargetIds = [
+  'ea17b0af-3d53-5a10-acda-7fd9348537ce',
+  'c9405043-bdc0-5995-8b4d-5bb56d97d05d',
+  'e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9',
+  '5db07785-8cca-50d5-81a9-e0264d344af9',
+  '7df923a0-6470-595e-8cea-53126fad9506',
+]
+completionAddedProfileTargetIds.forEach((id) => assert(canonicalProfileTargetIds.has(id)))
+completionReplacedProfileTargetIds.forEach((id) => assert(!canonicalProfileTargetIds.has(id)))
+const preCompletionProfileTargetIds = new Set([
+  ...[...preFinalProfileTargetIds].filter((id) => !completionAddedProfileTargetIds.includes(id)),
+  ...completionReplacedProfileTargetIds,
+])
+assert.equal(preCompletionProfileTargetIds.size, 393)
 const preWellSplitProfileTargetIds = new Set(
-  [...canonicalProfileTargetIds].filter((goalId) => !wellSplitGoalIds.has(goalId)),
+  [...preCompletionProfileTargetIds].filter((goalId) => !wellSplitGoalIds.has(goalId)),
 )
 preWellSplitProfileTargetIds.add(wellClusterId)
 assert.equal(preWellSplitProfileTargetIds.size, 392)
@@ -1704,11 +1904,24 @@ assert.equal(
 )
 assert.equal(
   canonicalProfileTargetIds.has(ROAD_SAFETY_GOAL_ID),
-  false,
-  'the direct prerequisiteOnly goalEntry for road safety overrides its broader target subtree',
+  true,
+  'the source-supported road-safety goal is explicitly restored to the national CrossStage target union',
 )
 
 const navigationView = normalizeCompositionView(readJson(sourceManifest.navigationViewPath))
+assertFinalPhysicsAtlasPublishedTargets(atlasCurricularAtomicGoalIds)
+assertFinalPhysicsAtlasDraftTargets(navigationView.rootNodes)
+for (const id of FINAL_SPLIT_CHILD_IDS) {
+  const stalePublishedIds = new Set(atlasCurricularAtomicGoalIds)
+  stalePublishedIds.delete(id)
+  assert.throws(() => assertFinalPhysicsAtlasPublishedTargets(stalePublishedIds), /stale published model/u)
+}
+const missingFinalChildDraft = FINAL_SPLIT_CHILD_IDS.slice(1).map((goalId) => ({ kind: 'goalEntry', goalId }))
+assert.throws(() => assertFinalPhysicsAtlasDraftTargets(missingFinalChildDraft), /exactly one explicit target/u)
+assert.throws(() => assertFinalPhysicsAtlasDraftTargets([
+  ...FINAL_SPLIT_CHILD_IDS.map((goalId) => ({ kind: 'goalEntry', goalId })),
+  { kind: 'goalEntry', goalId: FINAL_SPLIT_CHILD_IDS[0] },
+]), /exactly one explicit target/u)
 const combinedProfileBranches = collectCompositionStructures(
   navigationView.rootNodes,
   'goal-book-physics-sekii-gk-lk',

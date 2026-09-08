@@ -1,3 +1,7 @@
+import { preservePhysicsB040ViewPlacements } from './lib/physicsB040ViewPlacements'
+import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
+import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
+import { applyPhysicsB034ConsolidationMappings } from "./physicsB034ConsolidationMappings"
 import { createHash } from 'node:crypto'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -531,6 +535,8 @@ const decisions = rows.map((currentRow, index) => {
   }
 })
 
+applyPhysicsB034ConsolidationMappings(decisions, mappings)
+applyPhysicsB040AstroSplitMappings(decisions, mappings)
 const review = {
   version: 1,
   reviewId: 'DE-HH-PHYSIK-SEKII-BILDUNGSPLAN-2022-MAPPING-3-SOURCE-EXTRACTION-1',
@@ -601,6 +607,8 @@ for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
   const scope = view.scope && typeof view.scope === 'object' ? view.scope as Record<string, unknown> : {}
   view.scope = { ...scope, jurisdiction: 'DE-HH' }
   addHhSpecificViewEntries(view)
+  preservePhysicsB040ViewPlacements(repoRoot, outputPath, view)
+  preservePhysicsB034ViewPlacements(repoRoot, outputPath, view)
   writeFileSync(outputPath, `${JSON.stringify(view, null, 2)}\n`)
 }
 

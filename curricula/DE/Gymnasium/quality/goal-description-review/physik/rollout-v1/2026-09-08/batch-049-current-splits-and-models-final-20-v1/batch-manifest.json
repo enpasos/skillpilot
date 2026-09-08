@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-049-current-splits-and-models-final-20-v1.config.json",
+  "configDigest": "sha256:f7b2a67ede9d5d7fe5b6dd5dde3eeca6f8252fe1f6452b6fff162f456f19676c",
+  "goalIds": [
+    "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+    "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+    "161502b8-e52d-58d0-8f01-9f777b56d392",
+    "f322c268-dc16-5d50-82dd-209834f20208",
+    "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+    "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+    "37013646-f13a-5faf-954c-940f2fd7502f",
+    "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+    "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+    "3d466956-04fb-58d7-9008-ad8090f8706d",
+    "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+    "db0394ca-297c-5892-b414-525ec186f928",
+    "922f32ba-f214-5a82-be5c-1111aca51d4a",
+    "f505f039-3f07-5afe-88b8-f02532e9c2f0",
+    "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+    "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+    "e1b21fe9-ab6f-58c4-a0b6-9895061fbabb",
+    "69280706-5af6-5788-85b7-93287c2ffe74",
+    "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+    "68034218-8f3e-5f7f-ae4e-ed057dd4e44e"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 473,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:7be6fc0924295e4d42c9e6b3fe5a6ba09bd0e18937fe5baf104d82f78c541fdc"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ba640dad665fa63d65a7d148b3053bc281a77710f5f494340fdf17be172b5c81",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:351797ae31c4c6e19f323af7d030ff4ecb67c36352d61f493b416c38c13694f0",
+    "reviewInputFingerprint": "sha256:49b2c2f7a583ada21e4a8367a14d642046e6906630399d041becf03e0df497c4",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-a",
+        "campaignDigest": "sha256:208fe351b4e761cb6f2baeb4d915c701b5d62766029eae422da77c25b16ced84",
+        "roundId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-independent-a",
+        "batchId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:8f37991313a3907ba399f5a32b426acc2e8818bc727328fc72e5af49fd394c5b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-b",
+        "campaignDigest": "sha256:9c5c787eb21d56160519a2ae020ee050212c772605d30abd1d8004caaa9e6d5c",
+        "roundId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-independent-b",
+        "batchId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:ce90b9161ab3337d3840e5c7d362a5298e212180950877a44d1d9ecdbd1ea4ad"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

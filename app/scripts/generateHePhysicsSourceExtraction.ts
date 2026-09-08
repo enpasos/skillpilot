@@ -1,3 +1,6 @@
+import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
+import { applyPhysicsB034ConsolidationMappings } from "./physicsB034ConsolidationMappings"
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
@@ -1511,6 +1514,9 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
         && !explicitlyPartialSourceGoalIds.has(decision.sourceGoalId) ? 'exact' : 'partial',
       reviewDecisionId: decision.sourceGoalId,
     })))
+  applyPhysicsB034ConsolidationMappings(decisions, mappings)
+  applyPhysicsB040AstroSplitMappings(decisions, mappings)
+  applyPhysicsFinalDiodeMappings(decisions, mappings)
   const mappedSourceGoalIds = new Set(mappings.map((mapping) => mapping.legacyGoalId))
   const reviewedSourceGoalIds = new Set(decisions.map((decision) => decision.sourceGoalId))
   const open = Math.max(0, parsed.sourceGoals.length - reviewedSourceGoalIds.size)

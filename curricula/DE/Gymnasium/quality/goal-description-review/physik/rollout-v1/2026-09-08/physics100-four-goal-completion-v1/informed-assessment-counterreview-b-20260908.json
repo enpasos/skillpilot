@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "b034-current-eight-assessments-informed-counterreview-b-20260908",
+  "reviewedAt": "2026-09-08T05:01:37.125Z",
+  "reviewer": "OpenAI Codex /root/physics_d043s_blind_b",
+  "mode": "informed-independent-content-counterreview-not-blind-D",
+  "reviewAuthority": "ai_candidate",
+  "provenance": {
+    "fullCurrentCanonicalTasksRead": 8,
+    "fullCurrentDeEnSolutionsRead": 8,
+    "currentScoringRead": 8,
+    "currentCoveredGoalDeEnRead": 8,
+    "threeAssignedSpecsRead": true,
+    "freshBlindDReviewClaim": false,
+    "humanApprovalClaim": false,
+    "observedLearnerPerformanceClaim": false,
+    "otherD044rRead": false,
+    "canonicalWrites": false
+  },
+  "scope": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "taskGoalIds": [
+      "51af53cb-8866-52cd-b2ca-af8bd8a836e0",
+      "4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65",
+      "5902ebe8-2025-5a7c-b95d-13057398d6e6",
+      "6da29199-f086-512c-89f2-1b5ca865eef9",
+      "6c87a996-9166-5c6e-8cda-01d40720f9c8",
+      "74a32716-2b46-5d96-8b57-3f6edb90e088",
+      "144007cb-e2bc-5c82-bf9d-dda705b15257",
+      "88f27aab-8724-5a4d-8543-e49ebcb54b8e"
+    ],
+    "scopeLimit": "Exactly seven new tasks emitted by the two assessment arrays plus revised88f. There is no separate quantitative fusion-chain assessment among these eight; no review of an unassigned chain task or all-Bundesland release is claimed."
+  },
+  "summary": {
+    "reviewed": 8,
+    "keepBody": 8,
+    "requiredBodyRevisions": 0,
+    "bodySourceEqualityPassed": 8,
+    "pointSumsPassed": 8,
+    "requiresEqualsCoveragePassed": 8,
+    "openNonBodyMetadataNotes": 1
+  },
+  "bodyFingerprintRule": "sha256 over UTF-8 JSON.stringify({taskContent,taskContentEn,solutionContent,solutionContentEn,scoring}), in that fixed key order, retaining the current scoring object key order. This is an audit body hash, not a fabricated native fingerprint version.",
+  "records": [
+    {
+      "goalId": "51af53cb-8866-52cd-b2ca-af8bd8a836e0",
+      "shortKey": "canonical_physics_assessment_audio_light_transmission",
+      "bodySha256": "sha256:fbb7813eea62c9ee783b7fdad4c0f2e5ff57c97f59495082ab09e91738726807",
+      "sourceBodyExact": true,
+      "pointSum": 16,
+      "passingPoints": 10,
+      "requiresEqualsCoverage": true,
+      "title": "Prüfungsaufgabe: Einen Ton über Licht übertragen",
+      "coveredGoalIds": [
+        "922f32ba-f214-5a82-be5c-1111aca51d4a"
+      ],
+      "decision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "summary": "The task assesses the exact audio-over-light competence, with a genuine observed-build requirement only in the preselected student-experiment mode. Sender/receiver conversion, path test and fault diagnosis are coherent.",
+      "material": [
+        "Separate5-V supplies and only an optical link support the intended path-isolation test; visible current-limited LED, DC offset, photodiode conversion and speaker chain are sufficiently specified.",
+        "A constant intensity cannot carry a sustained periodic audio tone; a switching transient is explicitly distinguished."
+      ],
+      "solution": [
+        "401±3 Hz gives[398,404] and798±4 gives[794,802], both containing the respective input400/800 Hz.",
+        "Optical interruption supports the chosen signal path but does not prove unlimited bandwidth/perfect fidelity.",
+        "Missing modulation despite LED DC brightness is a consistent fault; a targeted upstream or driver-output test distinguishes it."
+      ],
+      "scoring": "4+8+4=16, passing10. The middle unit is explicitly8 or0 with all essential evidence requirements. Without observed actual build/own measurements in S (or required interpretation in D), at most8 remains, so the assessment cannot pass under its written scoring contract.",
+      "modes": "Teacher selects S/D before work. S requires real observation and own data, not a textual claim. D is an interpretation assessment and explicitly certifies no personal build.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65",
+      "shortKey": "canonical_physics_assessment_optical_multiplex_model",
+      "bodySha256": "sha256:a53086efab4e43e786a44a5fdcc20ff864a16d6f94e6e718be0487c62514b8cd",
+      "sourceBodyExact": true,
+      "pointSum": 12,
+      "passingPoints": 8,
+      "requiresEqualsCoverage": true,
+      "title": "Prüfungsaufgabe: Zwei Lichtkanäle auf einem Weg trennen",
+      "coveredGoalIds": [
+        "f505f039-3f07-5afe-88b8-f02532e9c2f0"
+      ],
+      "decision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "summary": "A fully specified two-colour model permits independent design and exact reconstruction of two channels, then a meaningful loss-of-distinguishability test. It stays at model-experiment design, not industrial multiplexer construction.",
+      "material": [
+        "Two independently controlled narrow spectral bands, combiner, common fibre, splitter and ideal filters supply the necessary construction choices.",
+        "A supplied model source is appropriate to the source-assisted development competence; actual physical assembly is not falsely claimed."
+      ],
+      "solution": [
+        "Input sequences A=1010,B=0110 give red/blue/red+blue/dark; matching filters recover each original sequence.",
+        "With equal-intensity same-colour sources and no extra coding, the aggregate level cannot distinguish10 from01; the solution explicitly does not rule out different coding schemes.",
+        "Nonideal out-of-band filter transmission is an appropriate crosstalk mechanism."
+      ],
+      "scoring": "5+4+3=12, passing8. Construction, channel evidence and model-limit points correspond to the three tasks; exchanged channel names are properly accepted.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "5902ebe8-2025-5a7c-b95d-13057398d6e6",
+      "shortKey": "canonical_physics_assessment_bistable_transistor_memory",
+      "bodySha256": "sha256:d5b06953e5ba021da8e54ddaa3f75cd41a519ee2b4646a8fc0e6e91ffd1c0442",
+      "sourceBodyExact": true,
+      "pointSum": 12,
+      "passingPoints": 8,
+      "requiresEqualsCoverage": true,
+      "title": "Prüfungsaufgabe: Einen gespeicherten Schaltzustand ändern",
+      "coveredGoalIds": [
+        "c2af45aa-e3fc-5119-9159-c5a260b4135a"
+      ],
+      "decision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "summary": "The supplied cross-coupled npn topology really supports the two stated stable model states and the described set/reset pulse sequence. It does not confuse a bistable latch with an oscillator.",
+      "material": [
+        "C1→47 kΩ→B2 and C2→47 kΩ→B1 form positive mutual feedback through two inverting stages.",
+        "Low collector≈0.2 V keeps the other transistor off; the off collector≈4.8 V can supply the opposite base through its resistor under the explicit adequate-gain assumption. The high level is plausible given the2.2-kΩ/47-kΩ loading, not an ideal unconnected5 V claim.",
+        "Buttons only pull individual bases low; simultaneous activation and detailed start transients are excluded."
+      ],
+      "solution": [
+        "T1 on/T2 off gives Q=C2 high; reversed state gives Q low.",
+        "P1 pulls B1 low, T1 off, C1 high, T2 on, C2 low; feedback retains the new state after release. P2 reverses it.",
+        "Undefined power-on state without initialization is correctly limited; no astable or universal flip-flop claim."
+      ],
+      "scoring": "5+4+3=12, passing8; Q-state, causal sequence and persistence are explicitly credited rather than a memorized label alone.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "6da29199-f086-512c-89f2-1b5ca865eef9",
+      "shortKey": "canonical_physics_assessment_stellar_element_argument",
+      "bodySha256": "sha256:43a054f94c246181d1b3a3dc7527ba7df3bc99a968e08f43704566820d5312be",
+      "sourceBodyExact": true,
+      "pointSum": 12,
+      "passingPoints": 8,
+      "requiresEqualsCoverage": true,
+      "title": "Prüfungsaufgabe: Eine Elemententstehungs-Behauptung prüfen",
+      "coveredGoalIds": [
+        "e1b21fe9-ab6f-58c4-a0b6-9895061fbabb"
+      ],
+      "decision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "summary": "The argument task distinguishes nucleosynthesis from transport and detection location. Its material supports the expected criticism without requiring invented source attribution or memorized full fusion chains.",
+      "material": [
+        "C/O formation in suitable stellar phases and neutron-capture production beyond the iron region are appropriate bounded descriptions.",
+        "M2 arrows denote transport/mixing, not further nuclear reactions. Detection in a younger system is not proof of formation there.",
+        "The text does not assert that every star/supernova creates every heavy element, nor that a single neutron-capture environment is exclusive."
+      ],
+      "solution": [
+        "Co-occurrence of carbon/gold does not establish their direct production by the current star through simple hydrogen fusion.",
+        "Prior synthesis, expulsion/release, mixing and later system formation provide the requested materially supported alternative.",
+        "Abundance/isotope or age information can constrain hypotheses but cannot uniquely name an earlier progenitor from the given material."
+      ],
+      "scoring": "5+4+3=12, passing8; premise/inference, production/transport and evidence limits are meaningfully separated. No quantitative fusion-chain result is claimed by these points.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "6c87a996-9166-5c6e-8cda-01d40720f9c8",
+      "shortKey": "canonical_physics_assessment_stellar_end_state_model",
+      "bodySha256": "sha256:455d82117abbe3e2e9adc0cacd683a94ee78f3314f40486255a8160d4e7d828f",
+      "sourceBodyExact": true,
+      "pointSum": 12,
+      "passingPoints": 8,
+      "requiresEqualsCoverage": true,
+      "title": "Prüfungsaufgabe: Bedingte Stern-Endstadien prognostizieren",
+      "coveredGoalIds": [
+        "69280706-5af6-5788-85b7-93287c2ffe74"
+      ],
+      "decision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "summary": "The quantitative inputs and conditional stellar-remnant predictions are internally consistent and distinguish initial mass, early total remaining mass and compact-remnant mass. The threshold is explicitly a model assumption.",
+      "material": [
+        "Early subtraction gives0.6,10,16 M☉; B/C separately supply1.6/5.0 M☉ compact remnants, so no second subtraction is justified.",
+        "A names a supported C/O core; B names a stable neutron-rich remnant; C states fallback and an assumed2.3-M☉ neutron-star limit."
+      ],
+      "solution": [
+        "A→white dwarf, B→neutron star, C→black hole follow the supplied evolutionary evidence, not initial mass alone.",
+        "Equal initial18 M☉ in B/C can yield different remnants because their loss/core/ejection/fallback histories differ.",
+        "The2.1–2.5 interval straddles2.3; the permissible answer is conditional, with equality explicitly unresolved. No universal initial-mass cutoff is claimed."
+      ],
+      "scoring": "3+5+4=12, passing8. Correct arithmetic is insufficient alone; quantity distinction, evolutionary reasoning and conditional uncertainty carry the majority of points.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "74a32716-2b46-5d96-8b57-3f6edb90e088",
+      "shortKey": "canonical_physics_assessment_thermal_reactor_components",
+      "bodySha256": "sha256:d19f824748c5943cd5094acb619c04da8772c4c2f7c063aafa935c7ae0e387e7",
+      "sourceBodyExact": true,
+      "pointSum": 12,
+      "passingPoints": 8,
+      "requiresEqualsCoverage": true,
+      "title": "Prüfungsaufgabe: Neutronensteuerung und Wärmeabfuhr im Reaktor",
+      "coveredGoalIds": [
+        "68034218-8f3e-5f7f-ae4e-ed057dd4e44e"
+      ],
+      "decision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "summary": "The task correctly separates neutron moderation/control from heat removal in a deliberately simplified thermal-reactor model. It is explanatory paper work, not reactor construction or operation.",
+      "material": [
+        "Fuel fission produces new neutrons and heat; moderation slows rather than predominantly absorbs, while control rods absorb.",
+        "Coolant/pump/heat exchanger form the heat-transfer path; omitted passive safety and real design variation are stated.",
+        "Decay heat after shutdown is explicitly supplied as information, so the safety-limit answer is not an unexplained extra demand."
+      ],
+      "solution": [
+        "Deeper rod insertion increases absorption and reduces chain continuation within the model.",
+        "Pump failure first affects forced heat transport and is not equivalent to neutron absorption; the solution avoids an unjustified specific real-power or feedback prediction.",
+        "Stopping the chain does not immediately eliminate decay heat; quantitative residual-heat and real-system data are absent."
+      ],
+      "scoring": "6+4+2=12, passing8. Four components, causal coordination and neutron-versus-heat distinction are credited; transfer compares distinct component functions.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "144007cb-e2bc-5c82-bf9d-dda705b15257",
+      "shortKey": "canonical_physics_assessment_bipolar_amplifier_operating_point",
+      "bodySha256": "sha256:1fb4a4d248c0312948effe09db7f1855b2138bfc040a2ec7a694f28c51fdf26a",
+      "sourceBodyExact": true,
+      "pointSum": 12,
+      "passingPoints": 8,
+      "requiresEqualsCoverage": true,
+      "title": "Prüfungsaufgabe: Arbeitspunkt und Verzerrung einer Emitterschaltung",
+      "coveredGoalIds": [
+        "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+      ],
+      "decision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "summary": "The supplied common-emitter table, bias points and clipping limits define a solvable amplifier task. All current numerical results are correct; phase inversion is circuit-specific and supply energy is not created in the base branch.",
+      "material": [
+        "For the active model I_C=100 I_B and1-kΩ collector resistor imply U_C=10 V−I_C R_C; every table column matches.",
+        "Output limits0.2/10 V and provided bias avoid an underdetermined bias-network calculation."
+      ],
+      "solution": [
+        "At50 µA:5 V;40/60 µA:6/4 V. A±10-µA change controls±1 mA and inverted±1 V.",
+        "At50±60 µA, unconstrained extrapolation would give−10/110 µA and11/−1 V; cutoff/saturation constrain the actual waveform.",
+        "At80 µA the2-V bias leaves1.8 V downward versus8 V upward. A±30-µA input clips downward; shifting to50 µA yields20–80 µA and8–2 V without clipping. Reducing amplitude is only accepted with explicit surrender of the original amplitude demand."
+      ],
+      "scoring": "5+4+3=12, passing8; limits and bias transfer are assessed in addition to arithmetic.",
+      "requiredBodyChanges": []
+    },
+    {
+      "goalId": "88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+      "shortKey": "canonical_physics_sek1_assessment_by_transistor",
+      "bodySha256": "sha256:c51f654edd95b77fe1862e2eb31263c8903d1d8844d2a11cc1b0d571ba127e67",
+      "sourceBodyExact": true,
+      "pointSum": 16,
+      "passingPoints": 10,
+      "requiresEqualsCoverage": true,
+      "title": "Prüfungsaufgabe: Einen Transistor als Schalter deuten",
+      "coveredGoalIds": [
+        "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+      ],
+      "decision": "keep_body",
+      "bilingualEquivalence": "pass",
+      "summary": "The revised switching task supplies a complete low-voltage npn/LED circuit, a qualitative thin-base transport model and an honest S/D evidence branch. It does not substitute two isolated diodes or a mechanical contact for transistor action.",
+      "material": [
+        "Common0 V, explicit B/C/E pin identification,10-kΩ base and330-Ω LED resistors make both paths explicit.",
+        "Demonstration values are plausible:0.42 mA through10 kΩ leaves about0.8 V at B-E;8.1 mA through330 Ω leaves about2.33 V for LED+C-E. The task does not treat those inferred residuals as universal fixed device values.",
+        "Current-limited checked5-V teaching supply and power-off reconnects are proportionate safeguards."
+      ],
+      "solution": [
+        "Control and load paths, thin-base role and supply energy are correctly distinguished.",
+        "The supplied off/on/open-base observations support electronic switching, not a universal constant gain from two points.",
+        "Sensor5 V in light turns the LED on; reversing the sensor response reverses the states."
+      ],
+      "scoring": "4+8+4=16, passing10. The mode-evidence unit is indivisible8/0; without the observed working setup, own on/off/current data and control test required by S, or full D interpretation, only8 remains.",
+      "modes": "S is designated in advance, including the stated BY student-experiment context; D remains paper/demonstration interpretation and certifies no personal build. This review does not reassign modes or approve other jurisdiction/stage scopes.",
+      "requiredBodyChanges": []
+    }
+  ],
+  "nonBodyMetadataNotes": [
+    {
+      "id": "b034-applied-draft-note",
+      "severity": "minor-provenance",
+      "status": "reported-to-root",
+      "goalIds": [
+        "51af53cb-8866-52cd-b2ca-af8bd8a836e0",
+        "4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65",
+        "5902ebe8-2025-5a7c-b95d-13057398d6e6",
+        "6da29199-f086-512c-89f2-1b5ca865eef9",
+        "6c87a996-9166-5c6e-8cda-01d40720f9c8",
+        "74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "144007cb-e2bc-5c82-bf9d-dda705b15257"
+      ],
+      "field": "examData.reviewNote",
+      "observed": "Unapplied B034 completion candidate, 2026-09-08. Requires independent content review and native scope/route validation before release; no human approval claimed.",
+      "finding": "The seven goals are already present in the current local canonical file. Unapplied is now misleading unless an external deployment distinction is explicitly intended.",
+      "suggestion": "Describe these as locally applied AI-authored draft candidates; retain no-human-approval and any still-open release/source/route conditions. No body change is requested and this reviewer made no canonical/spec change."
+    }
+  ],
+  "scoringGuardChecks": [
+    {
+      "goalId": "51af53cb-8866-52cd-b2ca-af8bd8a836e0",
+      "pointsOutsideIndivisibleUnit": 8,
+      "passingPoints": 10,
+      "canPassWithoutModeEvidence": false,
+      "limit": "Textual authoring/scoring contract checked; no runtime implementation or actual student evidence was changed/tested."
+    },
+    {
+      "goalId": "88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+      "pointsOutsideIndivisibleUnit": 8,
+      "passingPoints": 10,
+      "canPassWithoutModeEvidence": false,
+      "limit": "Textual authoring/scoring contract checked; D is not certified as S."
+    }
+  ],
+  "sourceBodyChecks": {
+    "checkedAt": "2026-09-08T05:01:37.125Z",
+    "method": "TypeScript AST literal extraction only; no source module imported/executed and no writes.",
+    "specFiles": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/assessment-spec.mjs",
+        "sha256": "sha256:869416d1d4af6235e0a27b99a6ba8395bd7307be739f66de0aa2fbaeed3da459"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/additional-assessment-spec.mjs",
+        "sha256": "sha256:dc01865e6ff81cf870f6542a6f7268d028bcdabfb7fb0b10f4e47a2c64de4d1e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/switch-assessment-spec.mjs",
+        "sha256": "sha256:9e3d7f7e20aebcc005e5e90c36b9297f172da8aab526c05cc2759151faa11e87"
+      }
+    ],
+    "allCurrentBodiesExactlyMatchSpecs": true
+  },
+  "readOnlyPrimarySourceChecks": [
+    {
+      "url": "https://science.nasa.gov/mission/webb/star-lifecycle/",
+      "support": "Stellar nucleosynthesis, release and recycling into later systems support the production-versus-transport distinction."
+    },
+    {
+      "url": "https://science.nasa.gov/universe/stars/neutron-stars/magnetars/where-does-gold-come-from-nasa-data-has-clues/",
+      "support": "Heavy-element production in neutron-rich environments is not ordinary simple hydrogen fusion; material avoids exclusivity claims."
+    },
+    {
+      "url": "https://www.nrc.gov/reading-rm/basic-ref/students/for-educators/unit3-nuclear-reactors-energy-generation",
+      "support": "Reactor component functions support the elementary thermal-reactor explanation."
+    },
+    {
+      "url": "https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/3mile-isle",
+      "support": "NRC's decay-heat definition supports persistence after shutdown; no incident-specific operating advice is used."
+    }
+  ],
+  "outputOnly": "This new informed-assessment-counterreview-b-20260908.json; no canonical, source, registry, image, profile or existing review writes."
+}
+

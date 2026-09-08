@@ -1,0 +1,4530 @@
+{
+  "schemaVersion": 1,
+  "mode": "read-only-current-native-CQR501-triage",
+  "checkedAt": "2026-09-08T06:42:29.444Z",
+  "humanApproval": false,
+  "operativeWrites": 0,
+  "baselineChanges": 0,
+  "canonicalSha256": "sha256:6bfb1398e533e3ddd88b2dc1d9bb0753cfb169ada820237c1282dd049c3b3441",
+  "nativeSummary": {
+    "goals": 764,
+    "errors": 0,
+    "warnings": 42,
+    "diagnostics": 6580
+  },
+  "activeWarningCounts": {
+    "APV-201": 10,
+    "APV-203": 31
+  },
+  "records": [
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+      "title": "Sperrschicht und Polung am p-n-Übergang erklären",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY, DE-HE, DE-RP, DE-SL, DE-SN, DE-ST, DE-TH.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "requires": [
+        "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by 7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 3857891b-d328-585b-9936-85c7aff122ee",
+          "jurisdictions": [
+            "DE-BW",
+            "DE-BY",
+            "DE-HE",
+            "DE-SL",
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "provenance",
+          "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#24f2ca0f-b94a-444e-bb70-677cb6f85c02)",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+          "jurisdictions": [
+            "DE-HE",
+            "DE-SL",
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SL"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-ST"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+      "title": "Die Strom-Spannungs-Kennlinie einer Diode experimentell bestimmen",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BW, DE-BY, DE-HE, DE-SL, DE-SN.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW",
+            "DE-BY",
+            "DE-HE",
+            "DE-SL",
+            "DE-SN"
+          ]
+        }
+      },
+      "requires": [
+        "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+        "28237994-9c24-5a06-82fe-be1f494768ba",
+        "f1a078ae-6262-4444-a4bc-a5ab275621cf"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BW"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BW",
+            "DE-BY",
+            "DE-HE",
+            "DE-SL",
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "provenance",
+          "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#24f2ca0f-b94a-444e-bb70-677cb6f85c02)",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SL"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "title": "Die Gleichrichterfunktion einer Diodenschaltung erklären",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-HE, DE-SL, DE-SN.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE",
+            "DE-SL",
+            "DE-SN"
+          ]
+        }
+      },
+      "requires": [
+        "2084b7d4-300d-5fa0-8b8d-c480c40f853e"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-HE",
+            "DE-SL",
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "provenance",
+          "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#24f2ca0f-b94a-444e-bb70-677cb6f85c02)",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SL"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "4996346f-ab5d-4d09-9b9e-b9e559af153d",
+      "title": "Prüfungsaufgabe: Elektrische Energieumwandlungen beurteilen",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BW.",
+      "alreadyAccepted": true,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        }
+      },
+      "requires": [
+        "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BW"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": true,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        },
+        "headRequires": [
+          "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+      "title": "Die Funktion eines thermischen Kernreaktors erklären",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        }
+      },
+      "requires": [
+        "50877233-7abf-54df-b347-6d3224678fc9",
+        "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by 49872cc0-401f-5464-9235-4763df4db5cf",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "69280706-5af6-5788-85b7-93287c2ffe74",
+      "title": "Stern-Endstadien aus Anfangsmasse und Massenverlust prognostizieren",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        }
+      },
+      "requires": [
+        "6f896466-e0ec-5f8d-82ad-2890433c82ba"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "title": "Einen bipolaren Transistor als Schalter funktional untersuchen",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY, DE-HE, DE-RP.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-RP"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        }
+      },
+      "requires": [
+        "2084b7d4-300d-5fa0-8b8d-c480c40f853e"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by af50bb9a-fd7b-50f5-9698-48c4efe99032",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by c2af45aa-e3fc-5119-9159-c5a260b4135a",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "922f32ba-f214-5a82-be5c-1111aca51d4a",
+      "title": "Einen Audio-Licht-Übertragungsversuch funktional umsetzen",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        }
+      },
+      "requires": [
+        "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+        "58fc7852-722c-5a67-be6a-bfd1be0b527e"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+      "title": "Eine bistabile Transistor-Flipflop-Schaltung deuten",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-HE.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "requires": [
+        "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "e1b21fe9-ab6f-58c4-a0b6-9895061fbabb",
+      "title": "Argumentationen zur Entstehung schwerer Elemente beurteilen",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        }
+      },
+      "requires": [
+        "6f896466-e0ec-5f8d-82ad-2890433c82ba"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "f505f039-3f07-5afe-88b8-f02532e9c2f0",
+      "title": "Einen Modellversuch zu optischem Multiplexing entwickeln",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        }
+      },
+      "requires": [
+        "4a7cbe83-b694-57d3-85ce-1eeca418daaf"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "144007cb-e2bc-5c82-bf9d-dda705b15257",
+      "title": "Prüfungsaufgabe: Arbeitspunkt und Verzerrung einer Emitterschaltung",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "assessment-requires",
+          "source": "requires af50bb9a-fd7b-50f5-9698-48c4efe99032",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+      "title": "Kosmische Strukturen einordnen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY",
+          "DE-RP",
+          "DE-SL"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by 826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BW"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 3d466956-04fb-58d7-9008-ad8090f8706d",
+          "jurisdictions": [
+            "DE-BW",
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SL"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+      "title": "Sperrschicht und Polung am p-n-Übergang erklären",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "requires": [
+        "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by 7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 3857891b-d328-585b-9936-85c7aff122ee",
+          "jurisdictions": [
+            "DE-BW",
+            "DE-BY",
+            "DE-HE",
+            "DE-SL",
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "provenance",
+          "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#24f2ca0f-b94a-444e-bb70-677cb6f85c02)",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+          "jurisdictions": [
+            "DE-HE",
+            "DE-SL",
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SL"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-ST"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "335a75b0-f691-5867-8ce3-3c971d541b9f",
+      "title": "Sternentfernungen und kosmologische Beobachtungen auswerten",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-RP"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "treeOrder": 8,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "exact",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "provenance",
+          "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#24f2ca0f-b94a-444e-bb70-677cb6f85c02)",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": false,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "headRequires": [
+          "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+          "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+          "5db07785-8cca-50d5-81a9-e0264d344af9",
+          "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+          "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+          "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+          "14d99a65-8d58-5647-88ab-02137b96d55b",
+          "2b700858-bc2e-5ddf-a791-b14d44160480",
+          "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+          "ba16948b-5e07-54af-b77b-776e677c6906",
+          "da3169ae-c72a-5782-ad95-408167a5c6da",
+          "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+          "e28381b4-50ef-5cac-bfa4-b7c8e03aef82"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+      "title": "Sternentfernungen mit dem HRD abschätzen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {},
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "206fe51d-cc78-5422-b139-32cc97eb1c37",
+        "db6b8de4-21e0-58e8-a347-2ae39f538f92"
+      ],
+      "contains": [],
+      "sourceEvidence": [],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "3df08a2c-0dfb-40e5-9605-8baa6259a08e",
+      "title": "Bayern Ph10.4 Masse-Energie-Äquivalenz und Kernreaktionen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-MV",
+          "DE-RP",
+          "DE-ST"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [],
+      "contains": [
+        "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+      ],
+      "sourceEvidence": [
+        {
+          "kind": "child-union",
+          "source": "1 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": false,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-MV",
+            "DE-ST"
+          ]
+        },
+        "headRequires": [],
+        "headContains": [
+          "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+        ]
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+      "title": "Exoplanetenkandidaten mit der Transitmethode erklären",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "50877233-7abf-54df-b347-6d3224678fc9",
+      "title": "Kernspaltung und Kernfusion qualitativ beschreiben",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "requires": [
+        "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BB"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 49872cc0-401f-5464-9235-4763df4db5cf",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 5492f0e0-cbae-574e-a853-182616205ed3",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BW"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BW"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "exact",
+          "jurisdictions": [
+            "DE-HB"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_physics_lower_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HB"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HB"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_physics_lower_secondary_to_canonical_physics.json",
+          "mappingStrength": "exact",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "exact",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "exact",
+          "jurisdictions": [
+            "DE-HH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_physics_lower_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-MV"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-MV"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-MV"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-NI"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-NW"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SL"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SL"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SL"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-ST"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-ST"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-ST"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": true,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "headRequires": [
+          "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "5902ebe8-2025-5a7c-b95d-13057398d6e6",
+      "title": "Prüfungsaufgabe: Einen gespeicherten Schaltzustand ändern",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "c2af45aa-e3fc-5119-9159-c5a260b4135a"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "assessment-requires",
+          "source": "requires c2af45aa-e3fc-5119-9159-c5a260b4135a",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "title": "Exoplaneten-Nachweise erläutern",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [],
+      "contains": [
+        "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+        "6dca3b0a-c872-543b-808f-97e855f5fafd"
+      ],
+      "sourceEvidence": [
+        {
+          "kind": "child-union",
+          "source": "2 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": false,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "headRequires": [
+          "c9405043-bdc0-5995-8b4d-5bb56d97d05d"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+      "title": "Die Funktion eines thermischen Kernreaktors erklären",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY"
+          ]
+        }
+      },
+      "requires": [
+        "50877233-7abf-54df-b347-6d3224678fc9",
+        "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by 49872cc0-401f-5464-9235-4763df4db5cf",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+      "title": "Sternradien aus HRD-Daten abschätzen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {},
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "206fe51d-cc78-5422-b139-32cc97eb1c37",
+        "89124b92-5769-5e13-8a5d-78497936260f"
+      ],
+      "contains": [],
+      "sourceEvidence": [],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "6dca3b0a-c872-543b-808f-97e855f5fafd",
+      "title": "Exoplanetenkandidaten mit Stern-Radialbewegungen erklären",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "74a32716-2b46-5d96-8b57-3f6edb90e088",
+      "title": "Prüfungsaufgabe: Neutronensteuerung und Wärmeabfuhr im Reaktor",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "68034218-8f3e-5f7f-ae4e-ed057dd4e44e"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "assessment-requires",
+          "source": "requires 68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "title": "Einen bipolaren Transistor als Schalter funktional untersuchen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-RP"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        }
+      },
+      "requires": [
+        "2084b7d4-300d-5fa0-8b8d-c480c40f853e"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by af50bb9a-fd7b-50f5-9698-48c4efe99032",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by c2af45aa-e3fc-5119-9159-c5a260b4135a",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-MV",
+          "DE-ST"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "requires": [
+        "1593d95c-2aac-504c-8527-37cb61877da9"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by 49872cc0-401f-5464-9235-4763df4db5cf",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 5492f0e0-cbae-574e-a853-182616205ed3",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "exact",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-MV"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-ST"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": true,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-MV",
+            "DE-ST"
+          ]
+        },
+        "headRequires": [
+          "1593d95c-2aac-504c-8527-37cb61877da9"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "7df923a0-6470-595e-8cea-53126fad9506",
+      "title": "Materiekreislauf, Elemententstehung und Stern-Endstadien",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [],
+      "contains": [
+        "e1b21fe9-ab6f-58c4-a0b6-9895061fbabb",
+        "69280706-5af6-5788-85b7-93287c2ffe74"
+      ],
+      "sourceEvidence": [
+        {
+          "kind": "child-union",
+          "source": "2 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": false,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "headRequires": [
+          "9b47a758-1b5d-5906-84c9-8621050d5aa5",
+          "49872cc0-401f-5464-9235-4763df4db5cf"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "title": "p-n-Übergang und Diode",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [],
+      "contains": [
+        "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+        "3857891b-d328-585b-9936-85c7aff122ee",
+        "3b586f2a-60e2-5019-aa08-6a47616a1f1f"
+      ],
+      "sourceEvidence": [
+        {
+          "kind": "child-union",
+          "source": "1 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "child-union",
+          "source": "2 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BW",
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "child-union",
+          "source": "3 visible child goal(s)",
+          "jurisdictions": [
+            "DE-HE",
+            "DE-SL",
+            "DE-SN"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": false,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "headRequires": [
+          "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "85bbad98-2f48-5d64-85c4-ab6cf67f24c2",
+      "title": "Übungen Q4",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "treeOrder": 10
+      },
+      "requires": [],
+      "contains": [
+        "b585ff81-6332-5d11-ae63-ee6a9928c00d",
+        "a3e22e70-6629-5c74-a8ae-a8c4f55c72a0",
+        "4daef009-6425-526a-8574-4fa75f28f946",
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340",
+        "f532c772-7b6e-59aa-ad65-e0eeafc3767f",
+        "0f5346d6-de1b-5e38-aaba-68db205e594b",
+        "335a75b0-f691-5867-8ce3-3c971d541b9f",
+        "4a58df57-f791-502f-8b8d-9ba155e46035",
+        "2f8d4250-66c5-54e9-abb8-80735dc408d2",
+        "51af53cb-8866-52cd-b2ca-af8bd8a836e0",
+        "4dbe6eb9-4d77-58a9-a15c-f0b8bb110a65",
+        "5902ebe8-2025-5a7c-b95d-13057398d6e6",
+        "6da29199-f086-512c-89f2-1b5ca865eef9",
+        "6c87a996-9166-5c6e-8cda-01d40720f9c8",
+        "74a32716-2b46-5d96-8b57-3f6edb90e088",
+        "144007cb-e2bc-5c82-bf9d-dda705b15257",
+        "71e8936b-fa8a-50dc-8c47-fca015b85ac5",
+        "b34f3e03-bbe7-5ede-941c-3f26c9b07bb8",
+        "2874902d-eccd-513e-ab60-98892497911d",
+        "c518e9dc-8514-5fde-9811-19caa85cfb1a",
+        "c77d28e5-a03e-5518-8c3a-55e9e9a2cea3",
+        "b3b365f4-4988-57d5-97cd-5d8446483ef7",
+        "04832ee1-648a-5421-a01d-0a15c3536c5f",
+        "71af215d-c6d5-59ce-a3f6-4a2e60f1216d",
+        "f61c424e-f091-5f9d-9d58-c1bd29733fc8",
+        "c61b2a69-b5cd-5785-bb04-5d6bca53b218",
+        "4ac5a07c-fff0-5eae-890d-89e13eaf69c3",
+        "18fb1470-5a03-5277-9486-ae74c63c8a8c",
+        "dfeda6e5-3256-557c-a706-bec0d0c89ff4",
+        "092017a7-1ce1-54b7-a14c-1658b72d70a7",
+        "027d25fc-b609-5383-ac44-5dd3327ca577"
+      ],
+      "sourceEvidence": [
+        {
+          "kind": "child-union",
+          "source": "18 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-HB",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-SH",
+            "DE-ST"
+          ]
+        },
+        {
+          "kind": "child-union",
+          "source": "8 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "child-union",
+          "source": "21 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BW"
+          ]
+        },
+        {
+          "kind": "child-union",
+          "source": "12 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "child-union",
+          "source": "25 visible child goal(s)",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "child-union",
+          "source": "9 visible child goal(s)",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "child-union",
+          "source": "19 visible child goal(s)",
+          "jurisdictions": [
+            "DE-RP",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "child-union",
+          "source": "20 visible child goal(s)",
+          "jurisdictions": [
+            "DE-SL",
+            "DE-SN"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": false,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "headRequires": [],
+        "headContains": [
+          "b585ff81-6332-5d11-ae63-ee6a9928c00d",
+          "a3e22e70-6629-5c74-a8ae-a8c4f55c72a0",
+          "4daef009-6425-526a-8574-4fa75f28f946",
+          "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+          "15cb40f1-e2d3-5754-9e7b-e8888fe78340",
+          "f532c772-7b6e-59aa-ad65-e0eeafc3767f",
+          "0f5346d6-de1b-5e38-aaba-68db205e594b",
+          "335a75b0-f691-5867-8ce3-3c971d541b9f",
+          "4a58df57-f791-502f-8b8d-9ba155e46035",
+          "2f8d4250-66c5-54e9-abb8-80735dc408d2"
+        ]
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "946ecf7b-0fcf-5776-9fb6-d397423c2f12",
+      "title": "Hauptreihenzeiten mit der Masse-Leuchtkraft-Beziehung abschätzen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-RP"
+        ]
+      },
+      "compiledApplicability": {},
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "6f896466-e0ec-5f8d-82ad-2890433c82ba"
+      ],
+      "contains": [],
+      "sourceEvidence": [],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "a77138b8-3924-4a17-a22e-d2625ab19bd6",
+      "title": "Bayern Ph10.4-Aufgabe zur Energiefreisetzung bei Kernreaktionen lösen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-MV",
+          "DE-ST"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "assessment-requires",
+          "source": "requires 7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": true,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-MV",
+            "DE-ST"
+          ]
+        },
+        "headRequires": [
+          "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+      "title": "Aufbau des Sonnensystems beschreiben",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BY",
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by 1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 206fe51d-cc78-5422-b139-32cc97eb1c37",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 49bb609a-bfb7-5391-9120-f5fc737efb9a",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 6dca3b0a-c872-543b-808f-97e855f5fafd",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 982df2f3-e040-5f4b-b668-0fe05d994b29",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by a5031dfc-6d25-5a04-850a-5c7d8a254c21",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by db6b8de4-21e0-58e8-a347-2ae39f538f92",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 37013646-f13a-5faf-954c-940f2fd7502f",
+          "jurisdictions": [
+            "DE-HE",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SL"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-SN"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "b3b365f4-4988-57d5-97cd-5d8446483ef7",
+      "title": "Rotverschiebung und Hintergrundstrahlung gemeinsam deuten",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "requires": [
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "assessment-requires",
+          "source": "requires c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+      "title": "Eine bistabile Transistor-Flipflop-Schaltung deuten",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "requires": [
+        "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "override",
+          "source": "extendedData.applicabilityOverrides",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+      "title": "Urknallmodell anhand kosmologischer Beobachtungen erläutern",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY",
+          "DE-RP"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "2b700858-bc2e-5ddf-a791-b14d44160480"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "requires-closure",
+          "source": "required by 6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BW"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by db0394ca-297c-5892-b414-525ec186f928",
+          "jurisdictions": [
+            "DE-BW",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by 335a75b0-f691-5867-8ce3-3c971d541b9f",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "requires-closure",
+          "source": "required by b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+          "jurisdictions": [
+            "DE-HE"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        },
+        {
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json",
+          "mappingStrength": "partial",
+          "jurisdictions": [
+            "DE-RP"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "c61b2a69-b5cd-5785-bb04-5d6bca53b218",
+      "title": "Warum eine Diode beim Umpolen sperrt",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityFromRequires": true
+      },
+      "requires": [
+        "2084b7d4-300d-5fa0-8b8d-c480c40f853e"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "assessment-requires",
+          "source": "requires 2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "ca13e9cd-6377-540e-88c8-0308cddc8a7e",
+      "title": "Prüfungsaufgabe: Kernspaltung und Kernfusion einordnen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [
+        "50877233-7abf-54df-b347-6d3224678fc9"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "assessment-requires",
+          "source": "requires 50877233-7abf-54df-b347-6d3224678fc9",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": true,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "headRequires": [
+          "50877233-7abf-54df-b347-6d3224678fc9"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "d44eb772-acb3-5449-accc-36a1fb7a25a5",
+      "title": "Sonne, Planet und Komet im Bahnmodell zuordnen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "assessment-requires",
+          "source": "requires af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "e99d87ac-0024-5f2b-ab47-d4d1cebba027",
+      "title": "Unser Sonnensystem in der Milchstraße verorten",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-SL"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "requires": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7"
+      ],
+      "contains": [],
+      "sourceEvidence": [
+        {
+          "kind": "assessment-requires",
+          "source": "requires 1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "jurisdictions": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": false,
+        "wholeGoalUnchanged": false
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "ea17b0af-3d53-5a10-acda-7fd9348537ce",
+      "title": "Optische Audioübertragung und Multiplexing",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [],
+      "contains": [
+        "922f32ba-f214-5a82-be5c-1111aca51d4a",
+        "f505f039-3f07-5afe-88b8-f02532e9c2f0"
+      ],
+      "sourceEvidence": [
+        {
+          "kind": "child-union",
+          "source": "2 visible child goal(s)",
+          "jurisdictions": [
+            "DE-BY"
+          ]
+        }
+      ],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": false,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "headRequires": [
+          "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "58fc7852-722c-5a67-be6a-bfd1be0b527e"
+        ],
+        "headContains": []
+      }
+    },
+    {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "f67550ac-df22-5a3e-8172-f04642efca64",
+      "title": "Sternradien, Entfernungen und Hauptreihenzeiten erschließen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field.",
+      "alreadyAccepted": false,
+      "currentApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-RP"
+        ]
+      },
+      "compiledApplicability": {},
+      "currentGoalExtendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "requires": [],
+      "contains": [
+        "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+        "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+        "946ecf7b-0fcf-5776-9fb6-d397423c2f12"
+      ],
+      "sourceEvidence": [],
+      "headComparison": {
+        "existed": true,
+        "wholeGoalUnchanged": false,
+        "headApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "headRequires": [
+          "206fe51d-cc78-5422-b139-32cc97eb1c37",
+          "9b47a758-1b5d-5906-84c9-8621050d5aa5"
+        ],
+        "headContains": []
+      }
+    }
+  ]
+}

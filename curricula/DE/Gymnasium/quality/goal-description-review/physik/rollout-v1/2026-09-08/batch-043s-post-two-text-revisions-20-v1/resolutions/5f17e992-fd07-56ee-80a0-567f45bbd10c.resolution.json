@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-resolution-5f17e992-fd07-56ee-80a0-567f45bbd10c",
+  "goal": {
+    "goalId": "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:f33e34c61c21d571b8b360c7d598fe64712d5c4664aea2c8feb00586f1601bd9",
+    "pageFingerprint": "sha256:457be1985995bd4bdc135c318869c7696b1386f7b3cfd33d532126090fff089e",
+    "goalReviewContextFingerprint": "sha256:ed20f785be010930f3ef78ca43bcdb83546bce51a80f135b8bab5ae412d99378",
+    "finalText": {
+      "titleDe": "Ersten Hauptsatz verstehen und mit Formel angeben",
+      "titleEn": "Understand and State the First Law with Formula",
+      "descriptionDe": "Die lernende Person kann den ersten Hauptsatz $\\Delta U = Q + W$ als Energiebilanz eines geschlossenen Systems erklären und formulieren: $Q$ ist die zugeführte Wärme und $W$ die am System verrichtete Arbeit, jeweils mit Vorzeichen.",
+      "descriptionEn": "The learner can explain and state the first law $\\Delta U = Q + W$ as the energy balance of a closed system: $Q$ is heat supplied to the system and $W$ is work done on it, each with its sign."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-a",
+      "campaignDigest": "sha256:391cf1a5e42f247d296d7dabee51f19e8d8d42cde19225606a4c67a93d68f0a2",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:ed20f785be010930f3ef78ca43bcdb83546bce51a80f135b8bab5ae412d99378",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:015f4baff90e3e2c7ca94d4801524bdc56802dcddc05ef51acb75c4baa6bbcf9",
+      "resultsDigest": "sha256:8e089b9ab62e641fb5fe1a0bce9351689c3b156cfdf0ee7cb0d6909ddf9ab583",
+      "recordId": "physik-b043s-a-5f17e992-fd07-56ee-80a0-567f45bbd10c",
+      "recordDigest": "sha256:dca7c0c54d613e85f3e88d6d6e9d95c29408f7898fd9ca92e934a8ac74505919"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-b",
+      "campaignDigest": "sha256:20cbf219fae84e213a2c7fde01532c57fcbb83cbe5d68fddf79962e7e39e1c13",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:ed20f785be010930f3ef78ca43bcdb83546bce51a80f135b8bab5ae412d99378",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.reviewer-b",
+      "runManifestDigest": "sha256:bc1f2ec2b93b9798902669a63ab9c39a1533c2e87b00c82dff05c26da73e7d02",
+      "resultsDigest": "sha256:3a1d9386c4be6a741d80994120ec26bee4eb70d13927517372854bd17abc64cf",
+      "recordId": "physics-d043s-blind-b.003",
+      "recordDigest": "sha256:4855391c4ce813bb9546b83380819dd6c06731023d3800eb8315b05cb7f851ff"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:0ac2e7783c408851408df0dd36fc27be364a3ffdc36d4604cd881aac73100c15"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b043s-current-twenty-synthesis-v1-20260908",
+    "manifestDigest": "sha256:e2fc84088dfaa354c9bc4a7cce395f03dbfcc6f059074984cbc301190cc005a2",
+    "manifestFingerprint": "sha256:15f06eb11133becc54c3c83fa62087609fda37421d4bffef2ec5871e58fe54b9",
+    "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex /root; explicit per-goal comparison of two newly isolated current-context reviews; AI candidate evidence only",
+    "synthesizedAt": "2026-09-08T03:59:05.504Z",
+    "rationaleDe": "Beide Reviews bestätigen geschlossenes System und ausdrücklich positive Arbeit am System. A verbindet Zustandsgröße mit Übertragungen und prüft isochore Erwärmung gegen adiabatische Expansion; keine zweite quantitative Prozesskompetenz wird eingeführt.",
+    "rationaleEn": "Both reviews confirm a closed system and explicitly positive work on the system. A connects the state variable with energy transfers and tests fixed-volume heating against adiabatic expansion without introducing a second quantitative process competence.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Für ein geschlossenes thermodynamisches System sind Wärme und Arbeit Energieübertragungen, während die innere Energie eine Zustandsgröße ist. In der angegebenen Konvention zählen Wärmeaufnahme und am System verrichtete Arbeit positiv.",
+      "essentialUnderstandingEn": "For a closed thermodynamic system, heat and work are energy transfers, whereas internal energy is a state variable. In the stated convention, heat absorbed and work done on the system are positive.",
+      "observablePerformanceDe": "Die lernende Person markiert die Systemgrenze, erklärt die Terme von ΔU = Q + W und begründet anhand der Übertragungsrichtungen deren Vorzeichen sowie die resultierende Änderung der inneren Energie.",
+      "observablePerformanceEn": "The learner marks the system boundary, explains the terms in ΔU = Q + W, and justifies their signs from the transfer directions and the resulting change in internal energy.",
+      "transferExpectationDe": "In einer frischen Aufgabe wechselt der Vorgang von Erwärmung bei festem Volumen zu wärmeisolierter Expansion; die lernende Person identifiziert den jeweils verschwindenden Übertragungsterm und begründet das Vorzeichen von ΔU.",
+      "transferExpectationEn": "In a fresh task, the process changes from heating at fixed volume to thermally insulated expansion; the learner identifies the vanishing transfer term in each case and justifies the sign of ΔU."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-920c7b9ce3c17b789f8c5e66621d22ea41f7d28501bfdd8dfba562b1ad2ecc66",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:c305ca6c384c3cfed78fa9070ec41deda5b449dc2097054997bb1042b9d56a8b"
+}

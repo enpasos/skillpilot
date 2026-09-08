@@ -1,4 +1,4 @@
-// DRAFT / PENDING / STOPPED. Historical helper derivative, not a verified reapplication plan.
+// Resumed field-leased candidate. New course claims require the explicit source scope below.
 import { readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
@@ -38,7 +38,10 @@ export async function buildViewCandidates({ root, beforeLandscape, afterLandscap
     const jurisdiction = before.scope.jurisdiction ?? 'DE', stage = before.scope.stage
     const isPureSekI = stage === 'SekI'
     const isStaged = ['DE-SL', 'DE-SN', 'DE-TH'].includes(jurisdiction)
-    const allowed = new Set(isPureSekI || (['DE-SL', 'DE-SN'].includes(jurisdiction) && stage === 'SekII') ? [] : (authoredTargets[jurisdiction] ?? []))
+    // BY GA-ASTRO and BW 3.5.7 Basisfach are not source authority for LK.
+    // Retain unrelated historical branches, but do not promote any new child there.
+    const unsupportedCourse = ['DE-BY', 'DE-BW'].includes(jurisdiction) && before.scope.courseProfile === 'LK'
+    const allowed = new Set(isPureSekI || unsupportedCourse || (['DE-SL', 'DE-SN'].includes(jurisdiction) && stage === 'SekII') ? [] : (authoredTargets[jurisdiction] ?? []))
     const q4Allowed = isStaged ? new Set<string>() : allowed
     let replacements = 0
     const replace = (nodes: any[], ancestors: string[] = []): any[] => nodes.flatMap(node => {
@@ -93,8 +96,11 @@ export async function buildViewCandidates({ root, beforeLandscape, afterLandscap
     for (const id of projected.targetGoalIds) collectRequires(id)
     const prerequisites = !isPureSekI ? [ids.S, ids.G, ids.B].filter(g => required.has(g) && !projected.targetGoalIds.has(g) && !projected.prerequisiteOnlyGoalIds.has(g)) : []
     if (prerequisites.length) {
-      const roots = after.rootNodes.filter((n: any) => n.kind === 'structure')
-      assert(roots.length === 1, path + ': unique structure root anchor changed')
+      // Current B034 adds separate support structures; never overwrite them or
+      // mistake them for the learner's existing subject/stage root.
+      const roots = after.rootNodes.filter((n: any) => n.kind === 'structure' &&
+        ['physics-root', 'physics-sekii', 'physics-bw-sekii', 'physics-national-atlas'].includes(n.id))
+      assert(roots.length === 1, path + ': exact subject/stage structure anchor unavailable ' + roots.map((n: any) => n.id).join(','))
       roots[0].children.push(...prerequisites.map(g => entry(g, 'prerequisiteOnly')))
     }
     const baseProjection = native.collectCompositionProjectionRoleGoalIds(before.rootNodes, beforeById)
@@ -132,9 +138,22 @@ export async function buildViewCandidates({ root, beforeLandscape, afterLandscap
   const leasePath = resolve(root, 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/physics100-split-implementation-v1/view-field-leases.json')
   const boundLeases = JSON.parse(readFileSync(leasePath, 'utf8')).views
   const reconciliation = leases.map((lease: any) => {
-    const prior = boundLeases.find((old: any) => old.path === lease.path
+    let prior = boundLeases.find((old: any) => old.path === lease.path
       && JSON.stringify(old.ancestors ?? []) === JSON.stringify(lease.ancestors ?? [])
       && (old.beforeNode?.goalId ?? old.stageAnchorId) === (lease.beforeNode?.goalId ?? lease.stageAnchorId))
+    if (!prior && parents.includes(lease.beforeNode?.goalId) &&
+      lease.ancestors?.at(-1)?.startsWith('b034-preserved-')) {
+      const outer = lease.ancestors.slice(0, -1)
+      prior = boundLeases.find((old: any) => old.path === lease.path &&
+        old.beforeNode?.goalId === ids.astro && old.beforeNode.kind === 'canonicalSubtree' &&
+        (old.beforeNode.projectionRole ?? 'target') === 'target' &&
+        JSON.stringify(old.ancestors) === JSON.stringify(outer))
+      assert(prior && JSON.stringify(lease.beforeNode) === JSON.stringify({ kind: 'canonicalSubtree', goalId: lease.beforeNode.goalId }),
+        'Current B034-expanded astro child is not the exact prior target reference: ' + lease.path)
+      assert(beforeById.get(ids.astro).contains.includes(lease.beforeNode.goalId), 'Historical astro parent membership changed')
+      return { path: lease.path, historical: prior, current: lease,
+        decision: 'explicit-current-reconciliation: B034 expanded the historically bound astro subtree into a same-stage b034-preserved wrapper; replace only its exact three old parent references, preserving the wrapper and every current sibling. No historical children list is replayed.' }
+    }
     assert(prior, 'No historical lease for ' + lease.path)
     if (lease.beforeNode) assert(JSON.stringify(prior.beforeNode) === JSON.stringify(lease.beforeNode), 'Historical touched node drift: ' + lease.path)
     // A stage-children array is no longer an authoritative whole-field lease.

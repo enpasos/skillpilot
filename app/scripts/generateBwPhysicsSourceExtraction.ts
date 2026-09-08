@@ -1,3 +1,6 @@
+import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
+import { applyPhysicsB034ConsolidationMappings } from "./physicsB034ConsolidationMappings"
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
@@ -735,7 +738,7 @@ mapUpper(['3.5.7:7'], [
   '6f896466-e0ec-5f8d-82ad-2890433c82ba',
   '9b47a758-1b5d-5906-84c9-8621050d5aa5',
 ])
-mapUpper(['3.5.7:8'], ['5b8eaf71-96fe-50eb-b9ea-a8fa392df086'])
+mapUpper(['3.5.7:8'], ['49bb609a-bfb7-5391-9120-f5fc737efb9a', '6dca3b0a-c872-543b-808f-97e855f5fafd'])
 mapUpper(['3.5.7:9'], [
   'e28381b4-50ef-5cac-bfa4-b7c8e03aef82',
   'c14857d3-634f-4a59-9a3f-8d0638fc5784',
@@ -1133,8 +1136,9 @@ function buildExtraction(config: ExtractionConfig, parsedTopics: ParsedTopic[]) 
         sourceText,
         sourceSpan,
         parentBulletText: sourceText,
-        sourceRef: `Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, ${sourceSpan}, S. ${topic.page || '?'}.`,
-        courseLevel: topic.spec.courseLevel,
+        sourceRef: `Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, ${sourceSpan}, S. ${topic.spec.code === '3.5.7' ? (bulletIndex === 9 ? 39 : 38) : topic.spec.code === '3.5.4' && bulletIndex === 8 ? 36 : (topic.page || '?')}.`,
+        // Original p.38 locates this exact clause in the Astrophysik Basisfach.
+        courseLevel: topic.spec.code === '3.5.7' && bulletIndex === 8 ? 'GK' : topic.spec.courseLevel,
         granularity: 'officialCompetency',
         tags: tagsFor(topic.spec),
         rawSourceText: sourceText,
@@ -1463,6 +1467,9 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
         : decision.canonicalGoalIds.length === 1 ? 'exact' : 'partial',
       reviewDecisionId: decision.sourceGoalId,
     })))
+  applyPhysicsB034ConsolidationMappings(decisions, mappings)
+  applyPhysicsB040AstroSplitMappings(decisions, mappings)
+  applyPhysicsFinalDiodeMappings(decisions, mappings)
   const reviewedSourceGoalIds = new Set(decisions.map((decision) => decision.sourceGoalId))
   const mappedSourceGoalIds = new Set(mappings.map((mapping) => mapping.legacyGoalId))
   const open = Math.max(0, parsed.sourceGoals.length - reviewedSourceGoalIds.size)

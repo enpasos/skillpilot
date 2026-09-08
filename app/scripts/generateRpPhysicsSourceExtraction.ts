@@ -1,3 +1,8 @@
+import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { preservePhysicsB040ViewPlacements } from './lib/physicsB040ViewPlacements'
+import { preservePhysicsB034ViewPlacements } from './lib/physicsB034ViewPlacements'
+import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
+import { applyPhysicsB034ConsolidationMappings } from "./physicsB034ConsolidationMappings"
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -244,14 +249,26 @@ const snapshotTopicOverrides = new Map<string, Pick<ExtractedSourceGoal, 'source
   [
     'FLUID-DYNAMICS-LF',
     {
-      sourceSpan: '4.4 und 5.4 Strömungsphysik, S. 44 und 75',
-      sourceRef: 'Rheinland-Pfalz Lehrplan Physik MSS, 4.4 und 5.4 Strömungsphysik, S. 44 und 75',
+      sourceSpan: '4.4 und 5.4 Strömungsphysik, S. 45 und 75',
+      sourceRef: 'Rheinland-Pfalz Lehrplan Physik MSS, 4.4 und 5.4 Strömungsphysik, S. 45 und 75',
       courseLevel: 'GK_LK',
     },
   ],
 ])
 
+// B046: original RP GF p.45 / LF p.75; example selection is source context,
+// not a mandatory four-law catalogue. Retain the source IDs and existing scopes.
+const fluidOriginalRow = "Kontinuitätsgleichung, Strömungsgesetze (z. B. Bernoulli-Gleichung, Gesetz von Stokes, Reynolds-Zahl)"
+const fluidOriginalPassage = "Strömungsphysik\nWahlpflichtbaustein\nStundenansatz: 10\nMögliche Inhalte\nStrömungsphänomene und Strömungsarten\nKontinuitätsgleichung, Strömungsgesetze (z. B. Bernoulli-Gleichung, Gesetz von Stokes, Reynolds-Zahl)\nDynamischer Auftrieb\nHinweise zur unterrichtlichen Umsetzung\na) Einen Einblick in Phänomene, Gesetzmäßigkeiten und Anwendungen der Strömungsphysik an ausgewählten Beispielen geben.\nb) --\nc) Die zu behandelnden Gesetze ergeben sich aus den gewählten Beispielen.\nEin projektartiges Arbeiten bietet sich an.\nPraktikum: Sinkgeschwindigkeiten"
+const fluidSourceTextById: Record<string, string> = {
+  'rp-phys-sek2-flow-phenomena-and-flow-types': 'Strömungsphänomene und Strömungsarten',
+  'rp-phys-sek2-continuity-bernoulli-stokes-reynolds': fluidOriginalRow,
+  'rp-phys-sek2-dynamic-lift': 'Dynamischer Auftrieb',
+  'rp-phys-sek2-sinking-velocities-practicum': 'Praktikum: Sinkgeschwindigkeiten',
+}
+
 const sentenceFor = (goal: SourceGoal): string => {
+  if (goal.id === 'rp-phys-sek2-continuity-bernoulli-stokes-reynolds') return "Die Lernenden erläutern an ausgewählten Strömungsbeispielen die jeweils verwendeten Gesetze oder Kennzahlen und deren Voraussetzungen. Die Gesetzeswahl richtet sich nach den gewählten Beispielen; Bernoulli-Gleichung, Stokes-Gesetz und Reynolds-Zahl sind Beispiele, kein vollständiger Pflichtkatalog."
   if (goal.description?.trim()) return goal.description.trim()
   const title = goal.title.trim()
   const lower = title.charAt(0).toLowerCase() + title.slice(1)
@@ -285,20 +302,22 @@ const snapshotSourceGoals = sourceGoalCandidates
     const parent = goalById.get(parentId)
     const topicCode = parentId.replace(/^rp-phys-sek2-/u, '').toUpperCase()
     const override = snapshotTopicOverrides.get(topicCode)
-    const span = override?.sourceSpan ?? sourceSpan(goal.sourceRef, topicCode)
+    const rawSpan = override?.sourceSpan ?? sourceSpan(goal.sourceRef, topicCode)
+    const span = goal.id === 'rp-phys-sek2-mass-luminosity-stellar-evolution' ? rawSpan.replace('S. 43 und 73', 'S. 44 und 73') : rawSpan
     const courseLevel = override?.courseLevel ?? inferCourseLevel(goal)
-    const sourceRef = override?.sourceRef ?? goal.sourceRef ?? parent?.sourceRef ?? 'Rheinland-Pfalz Lehrplan Physik MSS'
+    const rawRef = override?.sourceRef ?? goal.sourceRef ?? parent?.sourceRef ?? 'Rheinland-Pfalz Lehrplan Physik MSS'
+    const sourceRef = goal.id === 'rp-phys-sek2-mass-luminosity-stellar-evolution' ? rawRef.replace('S. 43 und 73', 'S. 44 und 73') : rawRef
     return {
       id: goal.id,
       passageId: `rp-physics-sekii:${slug(parentId)}`,
       topicCode,
       bulletIndex: index + 1,
       aspectIndex: 1,
-      title: goal.title,
+      title: fluidSourceTextById[goal.id] ?? goal.title,
       description: sentenceFor(goal),
-      sourceText: goal.title,
+      sourceText: fluidSourceTextById[goal.id] ?? goal.title,
       sourceSpan: span,
-      parentBulletText: goal.title,
+      parentBulletText: fluidSourceTextById[goal.id] ?? goal.title,
       sourceRef,
       courseLevel,
       granularity: goal.id === 'rp-phys-sek2-orientation' ? 'officialOrientation' : 'officialCompetencyRow',
@@ -308,9 +327,9 @@ const snapshotSourceGoals = sourceGoalCandidates
         `topic:${topicCode}`,
         `course:${courseLevel}`,
       ],
-      rawSourceText: goal.title,
+      rawSourceText: fluidSourceTextById[goal.id] ?? goal.title,
       rawSourceSpan: span,
-      rawParentBulletText: goal.title,
+      rawParentBulletText: fluidSourceTextById[goal.id] ?? goal.title,
     }
   })
 
@@ -1557,7 +1576,7 @@ const manualSourceGoals = manualSpecs.map<ExtractedSourceGoal>((spec, index) => 
     `topic:${spec.topicCode}`,
     `course:${spec.courseLevel}`,
   ],
-  rawSourceText: spec.title,
+  rawSourceText: spec.id === 'rp-phys-sek2-q-electronics-diode' ? 'Halbleiterdiode' : spec.title,
   rawSourceSpan: spec.sourceSpan,
   rawParentBulletText: spec.title,
 }))
@@ -1578,11 +1597,13 @@ const passages = Array.from(sourceGoalsByPassageId.entries()).map(([passageId, g
   return {
     id: passageId,
     topicCode: firstGoal.topicCode,
-    title: `${firstGoal.topicCode} ${parent?.title ?? firstGoal.title}`,
-    text: goals.map((goal) => `- ${goal.sourceText}`).join('\n'),
+    title: firstGoal.topicCode === 'FLUID-DYNAMICS-LF'
+      ? 'FLUID-DYNAMICS-LF Strömungsphysik: Wahlpflichtbaustein Grundfach und Leistungsfach'
+      : `${firstGoal.topicCode} ${parent?.title ?? firstGoal.title}`,
+    text: firstGoal.topicCode === 'FLUID-DYNAMICS-LF' ? fluidOriginalPassage : goals.map((goal) => `- ${goal.sourceText}`).join('\n'),
     page: sourcePage(firstGoal.sourceRef),
     sourcePath: sourcePdfPath,
-    rawText: goals.map((goal) => `- ${goal.sourceText}`).join('\n'),
+    rawText: firstGoal.topicCode === 'FLUID-DYNAMICS-LF' ? fluidOriginalPassage : goals.map((goal) => `- ${goal.sourceText}`).join('\n'),
     sourceGoalIds: goals.map((goal) => goal.id),
   }
 })
@@ -1635,10 +1656,11 @@ const decisions = sourceGoals.map((sourceGoal) => {
       : canonicalGoalIds.length === 1
         ? 'Das RP-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.'
         : 'Für dieses RP-Source-Ziel fehlt noch ein fachlich passendes kanonisches Physikziel.'),
-    reviewedAt: checkpointRationale ? "2026-09-07" : '2026-05-11',
-    reviewer: checkpointRationale ? "codex-physics-milestone-local-wording-four-v1" : 'codex',
+    reviewedAt: checkpointRationale ? "2026-09-08" : '2026-05-11',
+    reviewer: checkpointRationale ? "codex-physics-b046-fluid-nerve-source-review" : 'codex',
   }
 })
+applyPhysicsB040AstroSplitMappings(decisions, mappings)
 const coveredSourceGoalCount = decisions.filter((decision) => decision.decision === 'mapped').length
 const needsCanonicalGoalCount = decisions.length - coveredSourceGoalCount
 
@@ -1767,6 +1789,8 @@ const extraction = {
   sourceGoals,
 }
 
+applyPhysicsB034ConsolidationMappings(decisions, mappings)
+applyPhysicsFinalDiodeMappings(decisions, mappings)
 const review = {
   version: 1,
   reviewId: 'DE-RP-PHYSIK-SEKII-MSS-DRAFT-MAPPING-3-SOURCE-EXTRACTION-1',
@@ -1888,6 +1912,8 @@ for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
       'Forschungsverantwortung',
     )
   }
+  preservePhysicsB040ViewPlacements(repoRoot, `${compositionViewDir}/de-rp-${suffix}.view.json`, view)
+  preservePhysicsB034ViewPlacements(repoRoot, `${compositionViewDir}/de-rp-${suffix}.view.json`, view)
   writeJson(`${compositionViewDir}/de-rp-${suffix}.view.json`, view)
 }
 

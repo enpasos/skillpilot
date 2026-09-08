@@ -1,3 +1,6 @@
+import { applyPhysicsFinalDiodeMappings } from './physicsFinalDiodeMappings'
+import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'
+import { applyPhysicsB034ConsolidationMappings } from "./physicsB034ConsolidationMappings"
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
@@ -511,6 +514,7 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
     '2825b528-00ee-52d0-870e-686890cb1195',
     '1a037489-3c95-540b-8cae-0acd360358ee',
     'd3c153b9-e09b-5668-8386-73105546a7c1',
+    'eb1ea150-ec6c-5000-bce3-f46c820dccf8',
   ],
   '1e37d0a8-c314-57bd-8e64-26d0f2ec579a': [
     'c2e0fc31-27a2-5727-9025-a824db9150d2',
@@ -1417,7 +1421,9 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
     '904670af-8e4c-543e-bc9b-e6248d87a10d',
   ],
   '38126b26-5efd-5b0e-8c41-ad77111483a6': [
-    'f67550ac-df22-5a3e-8172-f04642efca64',
+    '6a73cacc-e86d-5248-a180-fd3da8454b0f',
+    '3a4b2f86-5c59-5429-8fb4-75d9b2589cb5',
+    '946ecf7b-0fcf-5776-9fb6-d397423c2f12',
     '206fe51d-cc78-5422-b139-32cc97eb1c37',
     'db6b8de4-21e0-58e8-a347-2ae39f538f92',
     '9b47a758-1b5d-5906-84c9-8621050d5aa5',
@@ -1435,7 +1441,8 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   '8c600779-e830-5734-83e8-7e2c46955441': [
     'e2014db8-c97f-5ce1-82c5-2a42741f4a61',
-    '5b8eaf71-96fe-50eb-b9ea-a8fa392df086',
+    '49bb609a-bfb7-5391-9120-f5fc737efb9a',
+    '6dca3b0a-c872-543b-808f-97e855f5fafd',
     'e28381b4-50ef-5cac-bfa4-b7c8e03aef82',
     'd2e6f87d-795b-5631-a7cc-0bfb5dc5142e',
     'b378c8b3-5e83-5abf-8243-b0f345037bfc',
@@ -1805,6 +1812,8 @@ function buildExtraction(source: SourceLandscape): { passages: Passage[], source
 
     childGoals.forEach((goal, index) => {
       const description = normalizeWhitespace(goal.description ?? goal.title)
+      // Bounded original-source correction: these gA-Astrophysik clauses are not eA content.
+      const boundCourseLevel = ['38126b26-5efd-5b0e-8c41-ad77111483a6', '8c600779-e830-5734-83e8-7e2c46955441'].includes(goal.id) ? 'GK' : courseLevel
       sourceGoals.push({
         id: goal.id,
         passageId: passage.id,
@@ -1817,12 +1826,12 @@ function buildExtraction(source: SourceLandscape): { passages: Passage[], source
         sourceSpan: `${topicCode}.${index + 1}`,
         parentBulletText: description,
         sourceRef: sourceRef(topicCode, index + 1),
-        courseLevel,
+        courseLevel: boundCourseLevel,
         granularity: 'officialCompetency',
         tags: [
           'jurisdiction:DE-BY',
           `stage:${stage ?? 'unknown'}`,
-          `courseLevel:${courseLevel}`,
+          `courseLevel:${boundCourseLevel}`,
           `topic:${topicCode}`,
         ],
         rawSourceText: description,
@@ -2388,9 +2397,9 @@ function writeReviewSeed(parsed: { sourceGoals: SourceGoal[] }, sourceLandscapeI
         canonicalTargetsBySourceGoalId.get(sourceGoal.id) ?? [],
       )
       const explicitlyReviewed = explicitlyReviewedSourceGoalIds.has(sourceGoal.id)
-      // Retain the reviewed single-source partial-coverage explanation; target arrays stay unchanged.
+      // B046 binds the source's quantitative induction clause to the existing induction goal.
       const checkpointReview = sourceGoal.id === "9ebc77ee-90cf-5540-aed7-02d9b4140f4c"
-        ? {"rationale":"BY LehrplanPLUS Ph12-GA-BIO.4.2: Ziel282 behandelt die Eignung eines vorgegebenen Messverfahrens mit Feldabschätzungen und einer Erklärung der Induktionsspannung. Die übrigen genannten Grundlagenziele tragen elektrische Feldmodelle und quantitative Fluss-/Induktionsbeziehungen bei. partial-Mappings bleiben erhalten: die integrierte Beurteilung ist keine selbst ausgeführte Untersuchung an Personen; ihre qualitative Induktionsaussage allein deckt den quantitativen Quellenteil nicht vollständig ab.","reviewedAt":"2026-09-07","reviewer":"codex-physics-milestone-local-wording-four-v1"}
+        ? {"rationale":"BY LehrplanPLUS Ph12-GA-BIO.4.2, grundlegendes Anforderungsniveau Biophysik: Ziel282 beurteilt ein vorgegebenes Messverfahren anhand der für dieses Verfahren relevanten Felder und gegebenenfalls auftretender Induktion. Ziel1a037 trägt das Flussmodell und qualitative Induktion, Zield3c153 die generische Messplanung/-auswertung. Das zusätzlich partiell zugeordnete bestehende Ziel eb1ea150 trägt ausdrücklich den quantitativen Quellensatz über die mittlere Induktionsspannung aus der Flussänderungsrate. Dessen weitergehende Lenz-Kompetenz wird dieser Quelle nicht zugeschlagen. Keine Pflichtausweitung des Nervenleitungsziels, keine Untersuchung an Personen, keine pauschale Vollabdeckung anderer BY-Kurse/Bundesländer; alle vier Kanten bleiben partial.","reviewedAt":"2026-09-08","reviewer":"codex-physics-b046-fluid-nerve-source-review"}
         : undefined
       return {
         sourceGoalId: sourceGoal.id,
@@ -2446,6 +2455,9 @@ function writeReviewSeed(parsed: { sourceGoals: SourceGoal[] }, sourceLandscapeI
     }))
   })
 
+  applyPhysicsB034ConsolidationMappings(decisions, mappings)
+  applyPhysicsB040AstroSplitMappings(decisions, mappings)
+  applyPhysicsFinalDiodeMappings(decisions, mappings)
   mkdirSync(path.dirname(reviewAbsolutePath), { recursive: true })
   writeFileSync(reviewAbsolutePath, `${JSON.stringify({
     version: 1,

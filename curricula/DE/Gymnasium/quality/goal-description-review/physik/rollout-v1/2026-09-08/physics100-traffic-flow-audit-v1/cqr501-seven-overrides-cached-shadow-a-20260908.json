@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "mode": "read-only-seven-override-removal-shadow-cached-input-filesystem",
+  "checkedAt": "2026-09-08T06:48:41.102Z",
+  "humanApproval": false,
+  "operativeWrites": 0,
+  "baselineChanges": 0,
+  "beforeCanonicalSha256": "sha256:6bfb1398e533e3ddd88b2dc1d9bb0753cfb169ada820237c1282dd049c3b3441",
+  "realCanonicalUnchanged": true,
+  "snapshotInputFiles": 15725,
+  "allCanonicalGoalApplicabilitySetsCompared": 5798,
+  "allCanonicalApplicabilityDeltas": [],
+  "removedWarnings": [
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+      "title": "Die Funktion eines thermischen Kernreaktors erklären",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY."
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "69280706-5af6-5788-85b7-93287c2ffe74",
+      "title": "Stern-Endstadien aus Anfangsmasse und Massenverlust prognostizieren",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY."
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "title": "Einen bipolaren Transistor als Schalter funktional untersuchen",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY, DE-HE, DE-RP."
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "922f32ba-f214-5a82-be5c-1111aca51d4a",
+      "title": "Einen Audio-Licht-Übertragungsversuch funktional umsetzen",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY."
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+      "title": "Eine bistabile Transistor-Flipflop-Schaltung deuten",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-HE."
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "e1b21fe9-ab6f-58c4-a0b6-9895061fbabb",
+      "title": "Argumentationen zur Entstehung schwerer Elemente beurteilen",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY."
+    },
+    {
+      "code": "APV-201",
+      "severity": "warning",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "f505f039-3f07-5afe-88b8-f02532e9c2f0",
+      "title": "Einen Modellversuch zu optischem Multiplexing entwickeln",
+      "dimension": "jurisdiction",
+      "message": "Goal uses applicability override for DE-BY."
+    }
+  ],
+  "addedWarnings": [],
+  "changes": [
+    {
+      "goalId": "68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+      "removedField": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      }
+    },
+    {
+      "goalId": "69280706-5af6-5788-85b7-93287c2ffe74",
+      "removedField": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      }
+    },
+    {
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "removedField": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-RP"
+        ]
+      }
+    },
+    {
+      "goalId": "922f32ba-f214-5a82-be5c-1111aca51d4a",
+      "removedField": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      }
+    },
+    {
+      "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+      "removedField": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      }
+    },
+    {
+      "goalId": "e1b21fe9-ab6f-58c4-a0b6-9895061fbabb",
+      "removedField": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      }
+    },
+    {
+      "goalId": "f505f039-3f07-5afe-88b8-f02532e9c2f0",
+      "removedField": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      }
+    }
+  ],
+  "ownBeforeSummary": {
+    "goals": 764,
+    "errors": 0,
+    "warnings": 38,
+    "diagnostics": 6588
+  },
+  "ownAfterSummary": {
+    "goals": 764,
+    "errors": 0,
+    "warnings": 31,
+    "diagnostics": 6588
+  },
+  "meaning": "Exact redundant additive overrides can be removed without changing any compiled applicability value; separate APV-203 stale committed fields remain unresolved."
+}

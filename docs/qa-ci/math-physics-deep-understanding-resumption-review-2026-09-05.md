@@ -1,7 +1,9 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
 Der aktuelle Umsetzungsstand und der verbindliche Wiedereinstieg stehen im
-[Commit-Zwischenstand vom 6. September](#commit-zwischenstand-vom-6-september-2026).
+[pausierten Physik-Zwischenstand vom 8. September](physics-paused-checkpoint-2026-09-08.md).
+Das Goal bleibt auf Nutzerwunsch pausiert; der dortige technische Abschlussstatus
+entscheidet über die Commitfähigkeit, nicht das weiterhin offene 100-Prozent-Ziel.
 Die vorangehenden Abschnitte halten die jeweiligen früheren Entscheidungsstände
 fest; insbesondere sind die ursprüngliche Pause und Freigabeanfrage historisch.
 

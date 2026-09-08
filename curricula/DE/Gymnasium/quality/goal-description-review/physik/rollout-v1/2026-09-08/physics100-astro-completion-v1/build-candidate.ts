@@ -4,7 +4,10 @@ import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { createHash } from 'node:crypto'
 import { buildViewCandidates } from './base-view-candidates.ts'
-import { ids, assessmentIds, newAssessments, packagePath } from './assessment-drafts.mjs'
+import { ids, assessmentIds, newAssessments as baseAssessments, packagePath, renderAssessmentMaterial } from './assessment-drafts.mjs'
+import { additionalTerminalTasks } from './additional-terminal-tasks.mjs'
+import { sourceCorrections } from './source-corrections.ts'
+const newAssessments=[...baseAssessments,...additionalTerminalTasks]
 
 const old = 'curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/physics100-split-implementation-v1/'
 const pause = 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/physics-paused-split-deferral-20260907-v1/'
@@ -74,16 +77,16 @@ export async function buildCandidate(root=process.cwd()) {
     const g=clone(archive.goals.find((g:any)=>g.id===prior.id));assert(g&&!byId.has(g.id),'Archived new atom identity/absence '+prior.id)
     for(const k of Object.keys(prior))if(k!=='resourceLinks')assert(same(g[k],prior[k]),'Archived semantic divergence '+g.id+'.'+k)
     assert(pauseReceipt.B040.archivedGoals.some((x:any)=>same(x,g)),'Pause/archive object mismatch '+g.id)
-    for(const link of g.resourceLinks??[]){const filename=link.url.split('/').at(-1),p=assetArchive+'/'+g.id+'/'+filename;assert(existsSync(resolve(root,p)),'Missing archived image '+p);assets.push({goalId:g.id,resourceLink:link,archivedPath:p,sha256:sha(readFileSync(resolve(root,p))),reconstructionPromptPath:assetArchive+'/'+g.id+'/image-reconstruction-prompt.de.md',adoption:'reuse exact archived bytes; no new approval; Root importer required'})}
+    for(const link of g.resourceLinks??[]){const filename=link.url.split('/').at(-1),p=assetArchive+'/'+g.id+'/'+filename;assert(existsSync(resolve(root,p)),'Missing archived image '+p);assets.push({goalId:g.id,resourceLink:link,archivedPath:p,sha256:sha(readFileSync(resolve(root,p))),reconstructionPromptPath:assetArchive+'/'+g.id+'/image-reconstruction-prompt.de.md',adoption:'reuse exact archived bytes; personally visually reviewed in current authoring run; native importer and separate AI QA binding required'})}
     if(g.id===ids.S){reconciliation.push({goalId:g.id,field:'requires',historical:[],candidate:[ids.motivation],reason:'Existing genuine physics orientation explicitly mentions why stars shine; this is an interest-first entry, not a content mastery shortcut. G and downstream solar goals gain their direct motivation path through S.'});g.requires=[ids.motivation]}
     byId.set(g.id,g);after.goals.push(g);return g
   })
   const splitOnly=clone(after)
   const nativeKinds=await import(pathToFileURL(resolve(root,'app/scripts/goalBookModel.ts')).href)
   const ledgerNative=await import(pathToFileURL(resolve(root,old+'ledger-candidate.ts')).href)
-  const judgments=json(old+'individual-am-judgments.json')
-  // The seven individual archived judgments concern unchanged atomic meanings.
-  // Reuse their actual review timestamp; this is not a new review or approval.
+  const judgments=json(packagePath+'/current-individual-judgments.json')
+  // Current individually reasoned A/M decisions include the S motivation edge.
+  // Historical review records and timestamps remain unchanged in their archive.
   const ledger=ledgerNative.buildLedgerCandidates({root,beforeLandscape:before,afterLandscape:splitOnly,authoring,reviewedAt:judgments.reviewedAt,judgments:judgments.decisions})
   for(const f of ledger.files)put(f.path,f.after)
   const oldDrafts=json(oldAssessments+'authoring-input.json')
@@ -91,17 +94,27 @@ export async function buildCandidate(root=process.cwd()) {
   const g335=byId.get(draft335.goalId);for(const [k,v]of Object.entries(draft335))if(k!=='goalId')g335[k]=clone(v)
   g335.examData.sourceArtifactPath=packagePath+'/assessments/335a.md'
   // Written task genuinely includes LK luminosity/uncertainty analysis. No GK promotion.
-  g335.applicability={jurisdiction:['DE-HE','DE-BW','DE-BY','DE-RP']}
+  g335.applicability={jurisdiction:['DE-HE','DE-RP']}
   g335.extendedData={...g335.extendedData,applicabilityMappingInheritance:'boundary'}
   const oldIds=authoring.clusterChanges.map((x:any)=>x.goalId),g4=byId.get('4a58df57-f791-502f-8b8d-9ba155e46035')
   const old4=clone(g4)
   for(const key of ['requires','coveredGoalIds']){const obj=key==='requires'?g4:g4.examData;assert(oldIds.every((id:string)=>obj[key].includes(id)),'All three historical 4a58 astro claims must exist');obj[key]=obj[key].filter((id:string)=>!oldIds.includes(id))}
   reconciliation.push({goalId:g4.id,decision:'Root explicitly authorized narrow removal of exactly three converted astro claims; other current claims preserved, not reviewed or newly endorsed',removedIds:oldIds,remainingClaims:g4.examData.coveredGoalIds,originalTaskSha256:sha(old4.examData.taskContent),preservedTaskSha256:sha(g4.examData.taskContent)})
-  for(const task of newAssessments){const g=clone(task);if(['S','G'].some(k=>assessmentIds[k]===g.id))g.tags.push('SekI');assert(!byId.has(g.id),'New task collision');after.goals.push(g);byId.set(g.id,g)}
+  const assessmentDecisions=json(packagePath+'/current-assessment-decisions.json')
+  const bindAssessment=(g:any)=>{
+    const body={requires:g.requires,taskContent:g.examData.taskContent,taskContentEn:g.examData.taskContentEn,solutionContent:g.examData.solutionContent,solutionContentEn:g.examData.solutionContentEn,scoring:g.examData.scoring}
+    const decision=assessmentDecisions.decisions.find((d:any)=>d.goalId===g.id)
+    assert(decision&&decision.contentSha256===sha(body),'Current individual assessment body decision '+g.id)
+    g.examData.reviewStatus=decision.releaseStatus
+    put(g.examData.sourceArtifactPath,renderAssessmentMaterial(g))
+  }
+  bindAssessment(g335)
+  for(const task of newAssessments){const g=clone(task);if(['S','G'].some(k=>assessmentIds[k]===g.id))g.tags.push('SekI');assert(!byId.has(g.id),'New task collision');bindAssessment(g);after.goals.push(g);byId.set(g.id,g)}
   const sekI=byId.get('21ab0854-4d67-5233-9495-ae208e152a3c'),q4=byId.get('85bbad98-2f48-5d64-85c4-ab6cf67f24c2')
-  sekI.contains.push(assessmentIds.S,assessmentIds.G);q4.contains.push(...['T','DM','DE','U'].map(k=>assessmentIds[k]))
+  sekI.contains.push(assessmentIds.S,assessmentIds.G);q4.contains.push(...['T','DM','DE','U','B','GW','ST','EX'].map(k=>assessmentIds[k]))
   const kDoc=JSON.parse(outputs.get(kindPath)!),kMap=new Map(kDoc.decisions.map((d:any)=>[d.goalId,d]))
-  for(const g of after.goals){const prior:any=kMap.get(g.id);if(!prior){assert(newAssessments.some((x:any)=>x.id===g.id),'Unclassified goal');kMap.set(g.id,{goalId:g.id,semanticKind:'practiceAssessment',sourceFingerprint:nativeKinds.fingerprintSemanticKindSourceGoal(g),decisionStatus:'authoritative',decisionBasis:'explicit-examData-and-practice-assessment-tags; proposed-not-applied'})}else if(prior.sourceFingerprint!==nativeKinds.fingerprintSemanticKindSourceGoal(g)){kMap.set(g.id,{...prior,sourceFingerprint:nativeKinds.fingerprintSemanticKindSourceGoal(g)})}}
+  const assessmentKindChanges=new Set([g335.id,g4.id,sekI.id,q4.id])
+  for(const g of after.goals){const prior:any=kMap.get(g.id);if(!prior){assert(newAssessments.some((x:any)=>x.id===g.id),'Unclassified goal');kMap.set(g.id,{goalId:g.id,semanticKind:'practiceAssessment',sourceFingerprint:nativeKinds.fingerprintSemanticKindSourceGoal(g),decisionStatus:'authoritative',decisionBasis:'reviewed-current-pilot-practice-assessment'})}else if(prior.sourceFingerprint!==nativeKinds.fingerprintSemanticKindSourceGoal(g)){assert(assessmentKindChanges.has(g.id),'Unjudged K mutation '+g.id);kMap.set(g.id,{...prior,sourceFingerprint:nativeKinds.fingerprintSemanticKindSourceGoal(g)})}}
   kDoc.decisions=[...kMap.values()].sort((a:any,b:any)=>a.goalId.localeCompare(b.goalId));for(const k of Object.keys(kDoc.counts))kDoc.counts[k]=k==='total'?kDoc.decisions.length:kDoc.decisions.filter((d:any)=>d.semanticKind===k).length
   put(kindPath,encode(kDoc));put(canonicalPath,encode(after))
   // Frozen source-row leases are checked independently of other concurrent mapping rows.
@@ -120,37 +133,92 @@ export async function buildCandidate(root=process.cwd()) {
   const comp=await import(pathToFileURL(resolve(root,'app/src/utils/authoring/compositionViewAuthoring.ts')).href)
   const allGoals=new Map([...externalGoals,...after.goals].map((g:any)=>[g.id,g]))
   const viewProof:any[]=[]
+  const nationalSekIPath='curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json'
+  assert(!baseViews.files.some(f=>f.path===nationalSekIPath),'Pure SekI baseline unexpectedly changed')
+  baseViews.files.push({path:nationalSekIPath,before:read(nationalSekIPath),after:read(nationalSekIPath)})
+  reconciliation.push({file:nationalSekIPath,reason:'The two genuinely source-local SL/SN assessments must also be available inside the national SekI projection, where their exact applicability-from-requires limits them to the reviewed jurisdictions. This is a new current field lease, not a historical view replay.'})
   for(const f of baseViews.files){const view=JSON.parse(f.after),jur=view.scope.jurisdiction??'DE',course=view.scope.courseProfile,stage=view.scope.stage
     const walk=(nodes:any[],fn:any,anc:any[]=[])=>nodes.forEach(n=>{fn(n,anc);walk(n.children??[],fn,[...anc,n])})
+    const find=(id:string)=>{let got:any;walk(view.rootNodes,(n:any)=>{if(n.id===id)got=n});return got}
     const structures:any[]=[];walk(view.rootNodes,(n:any)=>{if(n.kind==='structure')structures.push(n)})
-    const sekii=structures.find(n=>/^physics-sekii/.test(n.id)),seki=structures.find(n=>n.id==='physics-seki'),rootNode=view.rootNodes.find((n:any)=>n.kind==='structure')
+    const sekii=jur==='DE-BW'?find('physics-bw-sekii'):structures.find(n=>/^physics-sekii/.test(n.id)),seki=find('physics-seki'),rootNode=view.rootNodes.find((n:any)=>n.kind==='structure')
     // Only the newly introduced B040 prerequisites move; unrelated root support stays unchanged.
     if(sekii&&rootNode!==sekii){const moving=rootNode.children.filter((n:any)=>[ids.S,ids.G,ids.B].includes(n.goalId)&&n.projectionRole==='prerequisiteOnly');rootNode.children=rootNode.children.filter((n:any)=>!moving.includes(n));sekii.children.push(...moving)}
     const roles=()=>comp.collectCompositionProjectionRoleGoalIds(view.rootNodes,allGoals)
     const remove335=(nodes:any[]):any[]=>nodes.filter(n=>n.goalId!==g335.id).map(n=>n.children?{...n,children:remove335(n.children)}:n)
     if(course==='GK'||(jur!=='DE'&&!g335.applicability.jurisdiction.includes(jur)))view.rootNodes=remove335(view.rootNodes)
     // Re-find after any filtered tree copy.
-    const find=(id:string)=>{let got:any;walk(view.rootNodes,(n:any)=>{if(n.id===id)got=n});return got}
-    const stage2=sekii?find(sekii.id):rootNode,stage1=seki?find(seki.id):null
+    const stage2=sekii?find(sekii.id):find(rootNode.id),stage1=seki?find(seki.id):null
     const addTask=(anchor:any,key:string)=>{if(!anchor)return;const current=roles();if(current.targetGoalIds.has(assessmentIds[key]))return;anchor.children.push({kind:'goalEntry',goalId:assessmentIds[key]})}
+    if(stage1&&jur==='DE'){
+      const practice=find('physics-seki-practice-assessments')
+      assert(practice,'National SekI practice anchor')
+      addTask(practice,'S');addTask(practice,'G')
+      const support=find('physics-seki-route-prerequisites');assert(support,'National SekI explicit support anchor')
+      const targetBeforeSupport=[...roles().targetGoalIds].sort()
+      // A Q4 target is not visible to the native SekI stage projection. The
+      // source-local SL/SN endpoints therefore need explicit support here even
+      // when S/G remain targets elsewhere in the same national CrossStage view.
+      for(const id of [ids.S,ids.G])if(!support.children.some((n:any)=>n.goalId===id))support.children.push({kind:'goalEntry',goalId:id,projectionRole:'prerequisiteOnly'})
+      assert(same(targetBeforeSupport,[...roles().targetGoalIds].sort()),'S/G support widened or narrowed full target roles '+f.path)
+      reconciliation.push({file:f.path,anchor:support.id,addedSupportIds:[ids.S,ids.G],fullTargetRolesPreserved:true,targetSetSha256:sha(targetBeforeSupport),reason:'Exact stage-local prerequisites for source-local SL/SN tasks; an existing Q4 target is not visible in the SekI stage. Explicit support adds no curricular target.'})
+    }
     if(stage1&&jur==='DE-SL'){const local=find('physics-b040-source-local-astronomy');addTask(local??stage1,'S');addTask(local??stage1,'G')}
     if(stage1&&jur==='DE-SN'){const local=find('physics-b040-source-local-astronomy');addTask(local??stage1,'S')}
-    for(const key of ['T','DM','DE','U'])if(roles().targetGoalIds.has(ids[key])){
-      const anchor=jur==='DE-TH'&&key==='T'?find('physics-e-phase'):structures.find(n=>n.id==='physics-q4')?find('physics-q4'):stage2
+    for(const key of ['T','DM','DE','U','B'])if(roles().targetGoalIds.has(ids[key])){
+      // B has a separate qualitative endpoint only in BY GA-ASTRO. It does not
+      // impose the unrelated luminosity calculation of the LK 335a task.
+      if(key==='B'&&jur!=='DE-BY'&&jur!=='DE')continue
+      const anchor=jur==='DE-TH'&&key==='T'?find('physics-e-phase')
+        :jur==='DE-BW'?find('physics-bw-sekii-3-5-7')
+        :jur==='DE-BY'?find('physics-by-ph13-ga-astro-5')
+        :find('physics-q4')??stage2
+      assert(anchor,'Missing exact source/stage assessment anchor '+f.path+'/'+key)
+      addTask(anchor,key)
+    }
+    for(const task of additionalTerminalTasks)if(task.requires.every((id:string)=>roles().targetGoalIds.has(id))){
+      const key=Object.keys(assessmentIds).find(k=>assessmentIds[k]===task.id)!
+      const anchor=jur==='DE-BW'?find('physics-bw-sekii-3-5-7'):jur==='DE-BY'?find('physics-by-ph13-ga-astro-5'):find('physics-q4')??stage2
+      assert(anchor,'Missing existing-content terminal stage anchor '+f.path+'/'+key)
       addTask(anchor,key)
     }
     const compiled=comp.compileCompositionView(comp.normalizeCompositionView(view),after,{...after,goals:[...allGoals.values()]})
     assert(!compiled.findings.some((x:any)=>x.severity==='error'),'New view error '+f.path+' '+JSON.stringify(compiled.findings))
-    const role=roles();viewProof.push({path:f.path,scope:view.scope,newAtomTargets:Object.values(ids).filter(id=>id!==ids.motivation&&role.targetGoalIds.has(id)),newAssessmentTargets:Object.values(assessmentIds).filter(id=>role.targetGoalIds.has(id)),nativeErrors:compiled.findings.filter((x:any)=>x.severity==='error'),newRootPrerequisiteLeakage:(view.rootNodes[0]?.children??[]).filter((n:any)=>[ids.S,ids.G,ids.B].includes(n.goalId)&&n.projectionRole==='prerequisiteOnly'&&stage==='CrossStage')})
+    const role=roles(),leaks=(view.rootNodes[0]?.children??[]).filter((n:any)=>[ids.S,ids.G,ids.B].includes(n.goalId)&&n.projectionRole==='prerequisiteOnly'&&stage==='CrossStage')
+    assert(!leaks.length,'Root-level cross-stage B040 prerequisite leakage '+f.path)
+    if(['DE-BW','DE-BY'].includes(jur)&&course==='LK')assert(!Object.values(ids).some(id=>id!==ids.motivation&&role.targetGoalIds.has(id)),'Unsupported new LK astronomy target '+f.path)
+    viewProof.push({path:f.path,scope:view.scope,newAtomTargets:Object.values(ids).filter(id=>id!==ids.motivation&&role.targetGoalIds.has(id)),newAssessmentTargets:Object.values(assessmentIds).filter(id=>role.targetGoalIds.has(id)),nativeErrors:compiled.findings.filter((x:any)=>x.severity==='error'),newRootPrerequisiteLeakage:leaks})
     put(f.path,encode(view))
   }
   const atlas='app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json',at=json(atlas),oldK=json(kindPath)
   assert(at.expectedCurricularAtomicGoalCount===oldK.counts.curricularAtomic,'Current atlas/K count lease');at.expectedCurricularAtomicGoalCount=kDoc.counts.curricularAtomic;put(atlas,encode(at))
+  // Apply current bibliographic corrections only AFTER all frozen source leases passed.
+  const sourceFixes=sourceCorrections(root)
+  for(const f of sourceFixes.files)put(f.path,f.after)
+  reconciliation.push(...sourceFixes.reconciliation)
   // Source-only generator hooks: each insertion is uniquely anchored and preserves concurrent text.
   const overlayPath='app/scripts/lib/physicsB040AstroSplitMappings.ts';assert(!existsSync(resolve(root,overlayPath)),'B040 overlay already active');put(overlayPath,read(old+'generator-overlay-candidate.ts'))
   const anchors:any={He:'  const mappedSourceGoalIds = new Set(mappings.map',By:'  mkdirSync(path.dirname(reviewAbsolutePath), { recursive: true })',Bw:'  const reviewedSourceGoalIds = new Set(decisions.map',Rp:'const coveredSourceGoalCount = decisions.filter',Hh:'const review = {',Sl:'  const uniqueTargetIds = [...new Set(mappings.map',Sn:'  const uniqueTargetIds = [...new Set(mappings.map',Th:'  const uniqueTargetIds = [...new Set(mappings.map'}
-  const generatorSplices:any[]=[]
-  for(const [stateName,anchor]of Object.entries<string>(anchors)){const path='app/scripts/generate'+stateName+'PhysicsSourceExtraction.ts',text=read(path);assert(!text.includes('applyPhysicsB040AstroSplitMappings')&&text.split(anchor).length===2,'Unique source hook '+path);const imp="import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'\n",call=(anchor.startsWith('  ')?'  ':'')+'applyPhysicsB040AstroSplitMappings(decisions, mappings)\n';put(path,imp+text.replace(anchor,call+anchor));generatorSplices.push({file:path,type:'anchored-text-splice',before:anchor,after:call+anchor,prepend:imp,beforeFileSha256:sha(text)})}
+  const generatorSplices:any[]=[...sourceFixes.splices]
+  for(const [stateName,anchor]of Object.entries<string>(anchors)){const path='app/scripts/generate'+stateName+'PhysicsSourceExtraction.ts',text=outputs.get(path)??read(path);assert(!text.includes('applyPhysicsB040AstroSplitMappings')&&text.split(anchor).length===2,'Unique source hook '+path);const imp="import { applyPhysicsB040AstroSplitMappings } from './lib/physicsB040AstroSplitMappings'\n",call=(anchor.startsWith('  ')?'  ':'')+'applyPhysicsB040AstroSplitMappings(decisions, mappings)\n';put(path,imp+text.replace(anchor,call+anchor));generatorSplices.push({file:path,type:'anchored-text-splice',before:anchor,after:call+anchor,prepend:imp,beforeFileSha256:sha(text)})}
+  const viewProtectionPath='app/scripts/lib/physicsB040ViewPlacements.ts'
+  assert(!existsSync(resolve(root,viewProtectionPath)),'B040 view protection already active')
+  put(viewProtectionPath,read(packagePath+'/view-generator-protection.ts'))
+  const viewWriters:any={
+    Rp:{anchor:'  writeJson(`${compositionViewDir}/de-rp-${suffix}.view.json`, view)',target:'`${compositionViewDir}/de-rp-${suffix}.view.json`',value:'view'},
+    Sn:{anchor:'  writeJson(`${compositionViewDir}/de-sn-${suffix}.view.json`, template)',target:'`${compositionViewDir}/de-sn-${suffix}.view.json`',value:'template'},
+    Sl:{anchor:'  writeJson(`${compositionViewDir}/de-sl-${suffix}.view.json`, template)',target:'`${compositionViewDir}/de-sl-${suffix}.view.json`',value:'template'},
+    Th:{anchor:'  writeJson(thViewPath, template)',target:'thViewPath',value:'template'},
+    Hh:{anchor:'  writeFileSync(outputPath, `${JSON.stringify(view, null, 2)}\\n`)',target:'outputPath',value:'view'},
+  }
+  for(const [name,spec]of Object.entries<any>(viewWriters)){
+    const path='app/scripts/generate'+name+'PhysicsSourceExtraction.ts',text=outputs.get(path)??read(path)
+    assert(text.split(spec.anchor).length===2,'Exact view-generator protection anchor '+path)
+    const imp="import { preservePhysicsB040ViewPlacements } from './lib/physicsB040ViewPlacements'\n"
+    const call=`  preservePhysicsB040ViewPlacements(repoRoot, ${spec.target}, ${spec.value})\n`
+    put(path,imp+text.replace(spec.anchor,call+spec.anchor))
+    generatorSplices.push({file:path,type:'bounded-current-view-placement-protection',before:spec.anchor,after:call+spec.anchor,prepend:imp})
+  }
   const operations:any[]=[]
   for(const [path,next]of outputs){const prev=originals.get(path);if(prev===next)continue;if(path.endsWith('.json')||path.endsWith('.view.json'))diffJson(path,prev===null?undefined:JSON.parse(prev!),JSON.parse(next),[],operations);else if(path.endsWith('.jsonl')){
     // JSONL row leases preserve all other review bytes; Root must serialize the row delta, never refresh unrelated decisions.
@@ -160,6 +228,6 @@ export async function buildCandidate(root=process.cwd()) {
   for(const p of history)assert(sha(read(p.path))===p.sha256,'Historical artifact changed during build '+p.path)
   for(const [path,prev]of originals)assert(prev===null?!existsSync(resolve(root,path)):read(path)===prev,'Concurrent drift; rerun bounded builder '+path)
   const files=[...outputs].filter(([path,text])=>originals.get(path)!==text).map(([path,after])=>({path,before:originals.get(path)??null,after}))
-  return {files,plan:{schemaVersion:1,status:'AI_CANDIDATE_NOT_APPLIED_NEEDS_CONTENT_AND_SCOPE_COUNTERREVIEW',createdAt:new Date().toISOString(),model:'unknown',historicalBindings:history,leaseContract:'Exact missing/value field state, ID-keyed rows; scalar relation lists are exact whole-field leases. Whole-file hashes are diagnostic only. No automatic rebasing of old leases.',operations,generatorSplices,newTextFiles:[{file:overlayPath,before:state(undefined),after:state(outputs.get(overlayPath))}],reconciliation:[...reconciliation,...baseViews.receipt.reconciliation],counts:{beforeGoals:before.goals.length,afterGoals:after.goals.length,beforeAtoms:oldK.counts.curricularAtomic,afterAtoms:kDoc.counts.curricularAtomic,newAtoms:7,convertedParents:3,newAssessmentTasks:6},assets,viewProof,dag,ledgerReceipt:ledger.receipt,assessmentClaims:{newTasks:newAssessments.map((g:any)=>({id:g.id,covered:g.requires,points:g.examData.scoring.maxPoints})),g335:{id:g335.id,covered:g335.requires},g4:{id:g4.id,removed:oldIds,preservedUnreviewedClaims:g4.examData.coveredGoalIds}},fileDigests:files.map(f=>({path:f.path,before:f.before===null?null:sha(f.before),after:sha(f.after)})),notPerformed:['operative writes','D/P review or registration','asset movement/import','new image approval','whole Q4 assessment review','post-apply M6 claim']},landscape:after,assessment335:g335}
+  return {files,plan:{schemaVersion:1,status:'FIELD_LEASED_CANDIDATE_EXPLICIT_TASK_RELEASES_NOT_APPLIED',createdAt:new Date().toISOString(),model:'unknown',historicalBindings:history,leaseContract:'Exact missing/value field state, ID-keyed rows; scalar relation lists are exact whole-field leases. Whole-file hashes are diagnostic only. No automatic rebasing of old leases.',operations,generatorSplices,newTextFiles:[...outputs].filter(([p])=>originals.get(p)===null&&!p.endsWith('.json')).map(([file,body])=>({file,before:state(undefined),after:state(body)})),reconciliation:[...reconciliation,...baseViews.receipt.reconciliation],counts:{beforeGoals:before.goals.length,afterGoals:after.goals.length,beforeAtoms:oldK.counts.curricularAtomic,afterAtoms:kDoc.counts.curricularAtomic,newAtoms:7,convertedParents:3,newAssessmentTasks:newAssessments.length},assets,viewProof,dag,ledgerReceipt:ledger.receipt,assessmentClaims:{newTasks:newAssessments.map((g:any)=>({id:g.id,covered:g.requires,points:g.examData.scoring.maxPoints})),g335:{id:g335.id,covered:g335.requires},g4:{id:g4.id,removed:oldIds,preservedUnreviewedClaims:g4.examData.coveredGoalIds}},fileDigests:files.map(f=>({path:f.path,before:f.before===null?null:sha(f.before),after:sha(f.after)})),notPerformed:['operative writes','D/P review or registration','asset movement/import','new image approval','whole Q4 assessment review','post-apply M6 claim']},landscape:after,assessment335:g335}
 }
 if(process.argv[1]&&resolve(process.argv[1])===new URL(import.meta.url).pathname)buildCandidate().then(result=>console.log(JSON.stringify(process.argv.includes('--plan-only')?result.plan:result))).catch(e=>{console.error(e.stack);process.exitCode=1})

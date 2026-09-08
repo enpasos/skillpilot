@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `76bcbdcb-3003-5e6a-952e-aa36eb8f97ee.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/76bcbdcb-3003-5e6a-952e-aa36eb8f97ee/76bcbdcb-3003-5e6a-952e-aa36eb8f97ee.jpg`
@@ -31,10 +31,7 @@ Titel: α-Zerfall durch Tunneleffekt
 Beschreibung: Die lernende Person kann den α-Zerfall mithilfe des Tunneleffekts qualitativ deuten.
 
 Zusatzanweisung:
-Use case: scientific-educational
-Primary request: Preserve the clear potential-barrier explanation of alpha decay, but make the emitted alpha particle unambiguously correct.
-Required visual detail: The alpha particle must be one compact cluster of exactly four and only four nucleons: exactly two red protons marked p⁺ and exactly two blue neutrons marked n. No fifth sphere, hidden sphere or decorative dot may touch this cluster.
-Constraints: Show a bound state inside a nuclear potential well, a Coulomb barrier and a tunnelling probability leading to the emitted four-nucleon cluster. Distinguish classical forbidden passage from quantum tunnelling without implying that the particle climbs over the barrier. Use correct German labels, no logos or watermarks.
+Bewahre die beigefügte korrigierte Grafik vollständig. Es ist nur noch eine präzise geometrische Korrektur nötig: Die rechte senkrechte Grenze der orange schattierten Tunnelzone muss EXAKT durch den rechten orangefarbenen Schnittpunkt von U(r) und Eα laufen. Derzeit läuft die Schattierung ein Stück weiter nach rechts und umfasst dadurch fälschlich U(r)<Eα. Ebenso muss das rechte Ende der Klammer "klassisch verboten" exakt unter diesem rechten Schnittpunkt liegen. Linke Schattierungsgrenze und linkes Klammerende bleiben exakt unter dem linken Schnittpunkt. Zeichne dünne senkrechte Hilfslinien von beiden Schnittpunkten zur r-Achse, um die zwei Grenzen eindeutig zu machen. Der Tunnelbereich ist nur das Intervall zwischen diesen beiden Hilfslinien. Sonst keine Änderungen: keine Wellenfunktion ergänzen, Texte, Potentialkurve, Energielinie, Kern und Heliumkern unverändert lassen. Genügend Randabstand für sämtliche Texte.
 ```
 
 ## Review-Notiz

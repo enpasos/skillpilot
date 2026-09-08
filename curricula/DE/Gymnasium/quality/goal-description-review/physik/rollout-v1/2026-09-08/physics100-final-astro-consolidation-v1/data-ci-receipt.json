@@ -1,0 +1,661 @@
+{
+  "capturedAt": "2026-09-08T07:16:19.233Z",
+  "authority": "root-authorized-format-and-task-metadata-only",
+  "before": [
+    {
+      "id": "71af215d-c6d5-59ce-a3f6-4a2e60f1216d",
+      "shortKey": "canonical_physics_astro_assessment_st",
+      "title": "Druckstützung und Stabilität eines Sternmodells beurteilen",
+      "titleEn": "Assess pressure support and stability in a stellar model",
+      "description": "Die lernende Person kann die bereitgestellte Aufgabe „Druckstützung und Stabilität eines Sternmodells beurteilen“ selbstständig bearbeiten und ihre Einordnung anhand des Materials fachlich begründen.",
+      "descriptionEn": "The learner can independently complete the supplied task “Assess pressure support and stability in a stellar model” and justify the interpretation using the material.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "da3169ae-c72a-5782-ad95-408167a5c6da"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "phase": "Q4",
+        "demandLevel": "AB2",
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "da3169ae-c72a-5782-ad95-408167a5c6da"
+        ],
+        "coveredStrands": [
+          "LI_KOSMOS"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-astro-completion-v1/assessments/ST.md",
+        "taskContent": "## Material: Kräfte auf eine kleine kugelförmige Sternschale\n\nAlle Werte sind konstruierte, gleich normierte Kraftbeiträge für dieselbe Schale, keine gemessenen Sternwerte. Nach außen gilt positiv. „Druckkraft“ meint die resultierende Kraft aus einem räumlichen Druckgradienten, nicht den skalaren Druckwert.\nIm Anfangszustand: Gravitation −100, Gasdruckkraft +60, Strahlungsdruckkraft +40; Summe 0. Nach einer angenommenen raschen Änderung betragen die Druckkraftbeiträge zunächst +40 und +30, während die Gravitation im betrachteten Anfangsmoment noch −100 beträgt.\nAllgemeine Einordnung: Gas- und Strahlungsdruck können zur Stützung beitragen. In dicht gepackter Materie kann auch Entartungsdruck beitragen; er beruht nicht auf laufender Kernfusion und wird hier nicht berechnet.\n\nFür eine getrennte Stabilitätsprüfung eines Gleichgewichts sind nach kleinen radialen Störungen folgende resultierende Kräfte vorgegeben:\n\n| Modell | Schale wenig nach außen versetzt | Schale wenig nach innen versetzt |\n| A | −5 | +10 |\n| B | +8 | −6 |\n\nDie Angaben beschreiben nur die unmittelbare Rückwirkung; die beiden kleinen Auslenkungen müssen nicht gleich groß sein. Rotation, Magnetfelder, Energiefluss und große Störungen sind nicht modelliert. Fachlicher Quellenkern: BW V2 3.5.7(4), gedruckt S. 38.\n\n1. Erklären Sie das anfängliche Kräftegleichgewicht und bestimmen Sie die unmittelbare Bewegungsänderung nach der angenommenen Druckänderung. (4 BE)\n2. Beurteilen Sie A und B gegenüber kleinen radialen Störungen. Warum beweist die Kraftsumme 0 im ungestörten Zustand allein noch keine Stabilität? (6 BE)\n3. Beurteilen Sie: „Ohne laufende Kernfusion gibt es grundsätzlich keinen stützenden Druck; jede beginnende Kontraktion endet deshalb sofort als Schwarzes Loch.“ Nennen Sie zwei fachliche Grenzen dieses Schlusses und eine Grenze der vorliegenden Tabelle. (6 BE)",
+        "taskContentEn": "## Material: Forces on a small spherical stellar shell\n\nAll values are constructed force contributions using the same normalization for the same shell, not measured stellar data. Outward is positive. “Pressure force” means the net force from a spatial pressure gradient, not the scalar pressure value.\nInitially: gravity −100, gas-pressure force +60, radiation-pressure force +40; total 0. After an assumed rapid change, the pressure-force contributions are initially +40 and +30 while gravity is still −100 at the instant considered.\nContext: gas and radiation pressure can support an object. Degeneracy pressure can also contribute in densely packed matter; it does not depend on ongoing nuclear fusion and is not calculated here.\n\nFor a separate stability test of an equilibrium, small radial displacements produce these net forces:\n\n| Model | Shell displaced slightly outward | Shell displaced slightly inward |\n| A | −5 | +10 |\n| B | +8 | −6 |\n\nThe data describe only the immediate response; the two small displacements need not have equal magnitudes. Rotation, magnetic fields, energy flow and large perturbations are not modelled. Curriculum basis: BW V2 3.5.7(4), printed p. 38.\n\n1. Explain the initial force balance and determine the immediate change in motion after the assumed pressure change. (4 marks)\n2. Assess A and B for small radial perturbations. Why does zero net force in the unperturbed state alone not establish stability? (6 marks)\n3. Assess: “Without ongoing nuclear fusion there can be no supporting pressure, so any initial contraction immediately ends in a black hole.” Give two physical limits of this conclusion and one limitation of the table. (6 marks)",
+        "solutionContent": "1. +60+40−100=0: Druckgradientkräfte gleichen die Gravitation aus (2 BE). Danach +40+30−100=−30: zunächst Beschleunigung nach innen, nicht bereits ein bestimmter Endzustand (2 BE).\n2. A wirkt für beide Störungen rückstellend: nach Auslenkung nach außen Kraft nach innen und umgekehrt; lokal stabil im betrachteten Modell (2 BE). B verstärkt beide Auslenkungen und ist lokal instabil (2 BE). Gleichgewicht bezeichnet die Kraftbilanz am Ausgangspunkt, Stabilität die Reaktion auf eine Störung (2 BE).\n3. Entartungsdruck kann ohne laufende Fusion stützen; auch thermische Stützung ist nicht gleichbedeutend mit momentan laufender Fusion (2 BE). Bei Kontraktion ändern sich Dichte, Temperatur und Kräfte; aus der Anfangsbeschleunigung folgt weder sofortiger Kollaps noch ein eindeutig bestimmtes Endobjekt (2 BE). Die Tabelle prüft nur kleine radiale Störungen, nicht globale Entwicklung oder die ausdrücklich ausgelassenen Effekte (2 BE).",
+        "solutionContentEn": "1. +60+40−100=0: pressure-gradient forces balance gravity (2). Afterwards +40+30−100=−30: initial inward acceleration, not an already determined final state (2).\n2. A restores both perturbations: inward force after an outward displacement and vice versa, so locally stable within the model (2). B reinforces both displacements and is locally unstable (2). Equilibrium is the initial force balance; stability concerns the response to a perturbation (2).\n3. Degeneracy pressure can support matter without ongoing fusion; thermal support is not identical to fusion occurring at that instant either (2). Contraction changes density, temperature and forces; initial acceleration implies neither immediate collapse nor a unique final object (2). The table tests only small radial perturbations, not global evolution or the explicitly omitted effects (2).",
+        "scoring": {
+          "maxPoints": 16,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 4,
+              "description": "Gleichgewicht und −30 nach innen korrekt als Momentanaussagen.\nEN: Correct equilibrium and −30 inward as instantaneous conclusions."
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "A rückstellend, B destabilisierend; Gleichgewicht von Stabilität getrennt.\nEN: A restoring, B destabilizing; equilibrium distinguished from stability."
+            },
+            {
+              "id": "s3",
+              "points": 6,
+              "description": "Druck nicht mit Fusion gleichgesetzt; Endzustand und Modellgrenzen korrekt.\nEN: Pressure not equated with fusion; final-state and model limits respected."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f61c424e-f091-5f9d-9d58-c1bd29733fc8",
+      "shortKey": "canonical_physics_astro_assessment_ex",
+      "title": "Einen Exoplanetenkandidaten und sein Transmissionsspektrum beurteilen",
+      "titleEn": "Assess an exoplanet candidate and its transmission spectrum",
+      "description": "Die lernende Person kann die bereitgestellte Aufgabe „Einen Exoplanetenkandidaten und sein Transmissionsspektrum beurteilen“ selbstständig bearbeiten und ihre Einordnung anhand des Materials fachlich begründen.",
+      "descriptionEn": "The learner can independently complete the supplied task “Assess an exoplanet candidate and its transmission spectrum” and justify the interpretation using the material.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+        "6dca3b0a-c872-543b-808f-97e855f5fafd",
+        "e28381b4-50ef-5cac-bfa4-b7c8e03aef82"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "phase": "Q4",
+        "demandLevel": "AB2",
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+          "6dca3b0a-c872-543b-808f-97e855f5fafd",
+          "e28381b4-50ef-5cac-bfa4-b7c8e03aef82"
+        ],
+        "coveredStrands": [
+          "LI_KOSMOS"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-astro-completion-v1/assessments/EX.md",
+        "taskContent": "## Material: Ein konstruierter Stern-Planet-Kandidat\n\nA: Die folgenden idealisierten Werte werden über mehrere Umläufe wiederholt. Der normierte Sternfluss außerhalb des kurzen Transits ist 1. Positive Radialgeschwindigkeit bedeutet Bewegung des Sterns von uns weg; die gemeinsame konstante Systemgeschwindigkeit wurde abgezogen.\n\n| Zeit / Tage | 0 | 1,5 | 3 | 4,5 | 6 |\n| Sternfluss | 0,990 | 1,000 | 1,000 | 1,000 | 0,990 |\n| Radialgeschwindigkeit des Sterns / (m/s) | 0 | +20 | 0 | −20 | 0 |\n\nB: Während eines Transits wird ein Spektrum mit dem Spektrum desselben Sterns außerhalb des Transits verglichen. Nach Abzug des grauen Transitanteils und modellierter Stern-/Instrumenteffekte verbleibt zusätzliche Absorption in den Kanälen 620 nm und 760 nm. Bei 810 nm liegt sie unter der angegebenen sicheren Nachweisgrenze. Eine vereinfachte Vergleichsbibliothek enthält nur zwei hypothetische Stoffe: X absorbiert bei 620 und 760 nm; Y absorbiert bei 620 und 810 nm. Nach den vorgegebenen Modellbedingungen wäre die 810 nm-Linie von Y sicher messbar, bei einer zur Erklärung der 620 nm-Linie nötigen Menge von Y. Die Stoffnamen und Wellenlängen sind didaktisch konstruiert, keine realen Laboridentifikationen.\n\nMethodische Einordnung: NASA, How We Find and Characterize, https://science.nasa.gov/exoplanets/how-we-find-and-characterize/; Lehrplankern BW V2 3.5.7(8)/(9), gedruckt S. 38/39. Die Aufgabe verlangt keine Planetenmassen- oder Radiusberechnung.\n\n1. Erklären Sie Transit- und Radialgeschwindigkeitsdeutung von A. Benennen Sie, wessen Licht und wessen Bewegung jeweils untersucht werden, sowie die Umlaufperiode des einfachen Modells. Warum reicht das Fehlen eines Transits bei einem anderen Stern allein nicht aus, einen Planeten auszuschließen? (8 BE)\n2. Erklären Sie, wie B Informationen über eine Atmosphäre liefert, und entscheiden Sie begründet zwischen X und Y innerhalb der vorgegebenen Bibliothek. Warum genügt die einzelne 620 nm-Linie nicht? (8 BE)\n3. Unterscheiden Sie die periodische Verschiebung von Sternlinien in A von der zusätzlichen Absorption in B. Beurteilen Sie die Aussage „Damit sind der Planet, die vollständige Zusammensetzung seiner Atmosphäre und Leben zweifelsfrei nachgewiesen“ und nennen Sie eine geeignete zusätzliche Prüfung. (8 BE)",
+        "taskContentEn": "## Material: A constructed star–planet candidate\n\nA: These idealized values repeat over several orbits. Stellar flux outside the brief transit is normalized to 1. Positive radial velocity means the star moves away from us; the constant systemic velocity has been subtracted.\n\n| Time / days | 0 | 1.5 | 3 | 4.5 | 6 |\n| Stellar flux | 0.990 | 1.000 | 1.000 | 1.000 | 0.990 |\n| Stellar radial velocity / (m/s) | 0 | +20 | 0 | −20 | 0 |\n\nB: A spectrum during transit is compared with the same star's spectrum outside transit. After subtracting the grey transit contribution and modelled stellar/instrument effects, additional absorption remains in the 620 nm and 760 nm channels. At 810 nm it is below the stated reliable detection limit. A simplified library contains only two hypothetical substances: X absorbs at 620 and 760 nm; Y absorbs at 620 and 810 nm. Under the supplied model conditions, Y's 810 nm line would be reliably measurable at the amount of Y needed to explain the 620 nm feature. These names and wavelengths are constructed for teaching, not actual laboratory identifications.\n\nMethod context: NASA, How We Find and Characterize, https://science.nasa.gov/exoplanets/how-we-find-and-characterize/; curriculum basis BW V2 3.5.7(8)/(9), printed pp. 38/39. No planetary mass or radius calculation is requested.\n\n1. Explain the transit and radial-velocity interpretations of A. Identify whose light and whose motion are examined, and the orbital period of the simple model. Why does the absence of a transit around another star not by itself exclude a planet? (8 marks)\n2. Explain how B supplies atmospheric information and choose between X and Y within the given library, with reasons. Why is the 620 nm feature alone insufficient? (8 marks)\n3. Distinguish periodic shifts of stellar lines in A from additional absorption in B. Assess: “This proves the planet, its complete atmospheric composition and life beyond any doubt,” and propose one suitable additional check. (8 marks)",
+        "solutionContent": "1. Der vor dem Stern vorbeiziehende Kandidat verdeckt einen Teil des Sternlichts, wiederkehrende kurze Flussabnahme mit Modellperiode 6 d (3 BE). Die Gravitation eines umlaufenden Begleiters lässt auch den Stern um den gemeinsamen Schwerpunkt laufen; seine Radialbewegung wird aus wechselnder Rot-/Blauverschiebung seiner Linien erschlossen (3 BE). Eine anders orientierte Bahn kann ohne Transit bleiben (2 BE).\n2. Ein kleiner Anteil des Sternlichts durchläuft die Atmosphäre; stoffabhängige zusätzliche Absorption verändert den Transit spektral (3 BE). X passt zu beiden Merkmalen 620/760 nm; Y erklärt 760 nm nicht und würde unter den gesetzten Bedingungen eine nicht gefundene 810 nm-Linie liefern (3 BE). 620 nm allein ist in der Bibliothek nicht eindeutig, weil beide Stoffe dort absorbieren (2 BE).\n3. A betrifft die Lage der Sternlinien durch Sternbewegung; B zusätzliche wellenlängenabhängige Abschwächung im Transit, nicht eine neue Radialgeschwindigkeit (3 BE). Die gemeinsam periodischen Befunde stützen einen Planetenkandidaten; die vereinfachten Daten schließen reale Alternativen nicht vollständig aus. Eine begrenzte Bibliothek bestimmt weder sämtliche Bestandteile noch beweist sie Leben (3 BE). Geeignet ist z.B. unabhängige Wiederholung der Spektren mit Kontrolle der Sternaktivität oder Suche nach weiteren charakteristischen Absorptionsbanden (2 BE).",
+        "solutionContentEn": "1. The candidate crossing the stellar disc blocks some starlight; repeated brief flux dips give a 6-day model period (3). An orbiting companion's gravity also makes the star move around the common centre of mass; alternating shifts of its stellar lines reveal its radial motion (3). A differently oriented orbit may not transit (2).\n2. A small fraction of starlight passes through the atmosphere; substance-dependent additional absorption makes the transit wavelength-dependent (3). X fits 620/760 nm; Y does not explain 760 nm and would, under the stated conditions, produce an absent 810 nm line (3). 620 nm alone is ambiguous because both library substances absorb there (2).\n3. A concerns stellar-line positions changing with stellar motion; B concerns additional wavelength-dependent attenuation during transit, not another radial velocity (3). The jointly periodic signals support a planet candidate but the simplified data do not exclude all real alternatives. A restricted library identifies neither every atmospheric constituent nor life (3). A suitable check is independent repeated spectroscopy controlling stellar activity or a search for additional characteristic absorption bands (2).",
+        "scoring": {
+          "maxPoints": 24,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 8,
+              "description": "Transit, Sternbewegung, 6 d und Sichtgeometrie korrekt.\nEN: Transit, stellar motion, 6 d and viewing geometry correct."
+            },
+            {
+              "id": "s2",
+              "points": 8,
+              "description": "Transmissionsprinzip und Mehrlinienvergleich X/Y einschließlich Nachweisgrenze.\nEN: Transmission principle and multi-line X/Y comparison including detection limit."
+            },
+            {
+              "id": "s3",
+              "points": 8,
+              "description": "Linienverschiebung von Absorption getrennt; Schlussgrenzen und Zusatzprüfung.\nEN: Line shifts distinguished from absorption; conclusion limits and extra check."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d44eb772-acb3-5449-accc-36a1fb7a25a5",
+      "shortKey": "canonical_physics_astro_assessment_s",
+      "title": "Sonne, Planet und Komet im Bahnmodell zuordnen",
+      "titleEn": "Classify Sun, planet and comet in an orbital model",
+      "description": "Die lernende Person kann die bereitgestellte Aufgabe „Sonne, Planet und Komet im Bahnmodell zuordnen“ selbstständig bearbeiten und ihre Einordnung anhand des Materials fachlich begründen.",
+      "descriptionEn": "The learner can independently complete the supplied task “Classify Sun, planet and comet in an orbital model” and justify the interpretation using the material.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "phase": "10",
+        "demandLevel": "AB2",
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ]
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+        ],
+        "coveredStrands": [
+          "LI_KOSMOS"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-astro-completion-v1/assessments/S.md",
+        "taskContent": "## Material: Drei Körper in einem vereinfachten Sonnensystemmodell\n\nDie Daten sind eigens für die Aufgabe zusammengestellte qualitative Merkmale, keine neue Messreihe. A ist der mit Abstand massereichste Körper und strahlt durch Energieumwandlung in seinem Inneren selbst Licht ab. B ist ein annähernd kugelförmiger Körper, der A auf einer nahezu kreisförmigen Bahn umläuft und dessen Licht überwiegend reflektiert. C ist ein kleiner eis- und staubhaltiger Körper mit einer stark langgestreckten Bahn um A; in Sonnennähe kann eine Gashülle mit Schweif entstehen. Die Bahnen sind stark vereinfacht; nicht alle Planeten- oder Kometenbahnen haben dieselbe Form.\n\n1. Ordnen Sie A, B und C Sonne, Planet und Komet zu. Begründen Sie jede Zuordnung mit einem geeigneten Merkmal. (6 BE)\n2. Beschreiben Sie den Aufbau des Sonnensystems mithilfe dieser Körper und ihrer Bahnen. Korrigieren Sie die Aussage: „Weil B von der Erde aus hell erscheint, muss B ein weiterer Stern sein; C umläuft B.“ Begründen Sie beide Korrekturen anhand des Materials. (4 BE)\n3. Nennen Sie zwei Grenzen dieser vereinfachten Darstellung gegenüber dem tatsächlichen Sonnensystem. (2 BE)",
+        "taskContentEn": "## Material: Three bodies in a simplified Solar System model\n\nThese qualitative features were compiled for this task; they are not a new measurement series. A is by far the most massive body and emits its own light through energy conversion inside it. B is approximately spherical, orbits A on a nearly circular path and mainly reflects A's light. C is a small icy, dusty body on a very elongated orbit around A; near the Sun it may develop a gaseous coma and tail. The orbits are simplified; planetary or cometary orbits do not all have identical shapes.\n\n1. Identify A, B and C as Sun, planet or comet. Justify each choice using an appropriate feature. (6 marks)\n2. Describe the Solar System's structure using these bodies and their orbits. Correct the statement: “Because B looks bright from Earth, B must be another star; C orbits B.” Justify both corrections using the material. (4 marks)\n3. State two limitations of this simplified representation of the real Solar System. (2 marks)",
+        "solutionContent": "1. A ist die Sonne: selbstleuchtender, massedominanter Stern. B ist ein Planet: annähernd kugelförmiger Begleiter auf einer Bahn um die Sonne, sichtbar vor allem durch reflektiertes Licht. C ist ein Komet: kleiner eis-/staubhaltiger Körper, hier mit langgestreckter Sonnenumlaufbahn und möglicher Aktivität in Sonnennähe.\n2. Die Sonne ist der zentrale massedominante Körper; Planeten und Kometen gehören als umlaufende Körper zum Sonnensystem. Helligkeit allein macht B nicht zum Stern, weil reflektiertes Sonnenlicht genügt. C umläuft laut Material A, nicht B. Die Sonne ist nicht mathematisch unbeweglich: genauere Modelle beziehen den gemeinsamen Schwerpunkt ein; das wird hier nicht verlangt.\n3. Beispielsweise fehlen weitere Planeten, Monde, Asteroiden und Zwergplaneten; Größen/Entfernungen und räumliche Bahnneigungen sind nicht dargestellt. Gültige alternative Grenzen zählen. Nicht behaupten, jeder Komet habe einen Schweif oder alle Planetenbahnen seien perfekte Kreise.",
+        "solutionContentEn": "1. A is the Sun: a self-luminous, mass-dominant star. B is a planet: an approximately spherical companion orbiting the Sun, mainly seen in reflected light. C is a comet: a small icy/dusty body, here on an elongated solar orbit with possible activity near the Sun.\n2. The Sun is the central mass-dominant body; planets and comets are orbiting Solar System members. Brightness alone does not make B a star because reflected sunlight suffices. The material says that C orbits A, not B. The Sun is not mathematically immobile: more detailed models use the common centre of mass; this refinement is not required.\n3. Examples include omitted planets, moons, asteroids or dwarf planets, missing sizes/distances and orbital inclinations. Accept other valid limits. Do not claim every comet has a tail or all planetary orbits are perfect circles.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 6,
+              "description": "Drei richtige Klassen mit je passendem Merkmal (je 2).\nEN: Three correct classes with an appropriate feature each (2 each)."
+            },
+            {
+              "id": "s2",
+              "points": 4,
+              "description": "Massedominante Sonne und Umlaufstruktur (2); Helligkeit/Reflexion und C-Bahn korrekt berichtigt (je 1).\nEN: Mass-dominant Sun and orbital structure (2); correct reflection and C-orbit corrections (1 each)."
+            },
+            {
+              "id": "s3",
+              "points": 2,
+              "description": "Zwei konkrete Modellgrenzen (je 1).\nEN: Two concrete model limitations (1 each)."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e99d87ac-0024-5f2b-ab47-d4d1cebba027",
+      "shortKey": "canonical_physics_astro_assessment_g",
+      "title": "Unser Sonnensystem in der Milchstraße verorten",
+      "titleEn": "Locate the Solar System within the Milky Way",
+      "description": "Die lernende Person kann die bereitgestellte Aufgabe „Unser Sonnensystem in der Milchstraße verorten“ selbstständig bearbeiten und ihre Einordnung anhand des Materials fachlich begründen.",
+      "descriptionEn": "The learner can independently complete the supplied task “Locate the Solar System within the Milky Way” and justify the interpretation using the material.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "phase": "10",
+        "demandLevel": "AB2",
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ]
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SL"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7"
+        ],
+        "coveredStrands": [
+          "LI_KOSMOS"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-astro-completion-v1/assessments/G.md",
+        "taskContent": "## Material: Ein Planetariumsplakat\n\nDas Plakat zeigt drei beschriftete Ausschnitte: I „Sonne mit Planeten und kleineren Begleitern“; II „Milchstraße: sehr viele Sterne, Sternsysteme, Gas und Staub“; III „Mehrere voneinander verschiedene Galaxien“. Die Größenverhältnisse sind nicht maßstäblich. Für die Aufgabe gilt als gesicherte Zusatzinformation: Die Sonne liegt in der Scheibe der Milchstraße, deutlich außerhalb des galaktischen Zentrums.\n\n1. Ordnen Sie die Ausschnitte als räumliche Einschachtelung vom Sonnensystem über die Galaxie zur Gruppe mehrerer Galaxien. Beschreiben Sie jeweils, was zum größeren System gehört. (4 BE)\n2. Ein Besucher sagt: „Unsere Sonne ist der Mittelpunkt der Milchstraße; die Milchstraße ist nur die Umlaufbahn der Erde.“ Korrigieren Sie beide Aussagen und beschreiben Sie den Unterschied zwischen Sternsystem und Galaxie. (6 BE)\n3. Warum kann man aus dem Plakat weder das Alter noch die Gesamtausdehnung des Universums bestimmen? (2 BE)",
+        "taskContentEn": "## Material: A planetarium poster\n\nThe poster has three labelled panels: I “Sun with planets and smaller companions”; II “Milky Way: very many stars, stellar systems, gas and dust”; III “Several distinct galaxies”. Sizes are not to scale. Use this established additional information: the Sun lies in the Milky Way's disc, well outside the galactic centre.\n\n1. Order the panels as spatial nesting from Solar System through galaxy to a group of galaxies. Describe what belongs to each larger system. (4 marks)\n2. A visitor says: “Our Sun is the centre of the Milky Way; the Milky Way is just Earth's orbit.” Correct both statements and distinguish a stellar system from a galaxy. (6 marks)\n3. Why can neither the universe's age nor its total spatial extent be determined from this poster? (2 marks)",
+        "solutionContent": "1. I gehört zu II; II ist eine der Galaxien in III. Ein Sonnensystem besteht hier aus einem Stern und seinen Begleitern; eine Galaxie umfasst sehr viele Sterne/Sternsysteme und interstellare Materie. III enthält mehrere Galaxien, nicht bloß mehrere Planeten.\n2. Die Sonne ist ein Stern in der Scheibe der Milchstraße außerhalb ihres Zentrums. Die Erdbahn gehört zum Sonnensystem; sie ist keine Galaxie. Die Milchstraße ist ein sehr viel größeres zusammengesetztes System mit vielen Sternen und Sternsystemen sowie Gas/Staub. Nicht verlangen, jedes Sternsystem müsse genau einen Stern besitzen.\n3. Eine räumliche, unmaßstäbliche Hierarchie enthält keine Zeitmessung und keine Information über das gesamte Universum. Die Aufgabe prüft G, nicht eigenständig U.",
+        "solutionContentEn": "1. I belongs within II; II is one galaxy in III. Here a solar system consists of a star and its companions; a galaxy contains very many stars/stellar systems and interstellar matter. III contains several galaxies, not merely planets.\n2. The Sun is a star in the Milky Way's disc outside its centre. Earth's orbit belongs to the Solar System; it is not a galaxy. The Milky Way is a much larger composite system containing many stars and stellar systems plus gas/dust. Do not require every stellar system to contain exactly one star.\n3. A non-scale spatial hierarchy supplies neither a time measurement nor information about the whole universe. This task assesses G, not U independently.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 4,
+              "description": "Richtige Einschachtelung I in II in III (2), Mitgliederbeziehungen erklärt (2).\nEN: Correct nesting I in II in III (2), membership relations explained (2)."
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "Sonnenposition richtig (2), Erdbahn von Galaxie unterschieden (2), Systemvergleich (2).\nEN: Correct solar location (2), orbit/galaxy distinction (2), system comparison (2)."
+            },
+            {
+              "id": "s3",
+              "points": 2,
+              "description": "Keine Zeitmessung (1), keine Gesamtausdehnung aus unmaßstäblichem Ausschnitt (1).\nEN: No time measurement (1), no total extent from a non-scale excerpt (1)."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "after": [
+    {
+      "id": "71af215d-c6d5-59ce-a3f6-4a2e60f1216d",
+      "shortKey": "canonical_physics_astro_assessment_st",
+      "title": "Druckstützung und Stabilität eines Sternmodells beurteilen",
+      "titleEn": "Assess pressure support and stability in a stellar model",
+      "description": "Die lernende Person kann die bereitgestellte Aufgabe „Druckstützung und Stabilität eines Sternmodells beurteilen“ selbstständig bearbeiten und ihre Einordnung anhand des Materials fachlich begründen.",
+      "descriptionEn": "The learner can independently complete the supplied task “Assess pressure support and stability in a stellar model” and justify the interpretation using the material.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "da3169ae-c72a-5782-ad95-408167a5c6da"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "phase": "Q4",
+        "demandLevel": "AB2",
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "da3169ae-c72a-5782-ad95-408167a5c6da"
+        ],
+        "coveredStrands": [
+          "LI_KOSMOS"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-astro-completion-v1/assessments/ST.md",
+        "taskContent": "## Material: Kräfte auf eine kleine kugelförmige Sternschale\n\nAlle Werte sind konstruierte, gleich normierte Kraftbeiträge für dieselbe Schale, keine gemessenen Sternwerte. Nach außen gilt positiv. „Druckkraft“ meint die resultierende Kraft aus einem räumlichen Druckgradienten, nicht den skalaren Druckwert.\nIm Anfangszustand: Gravitation −100, Gasdruckkraft +60, Strahlungsdruckkraft +40; Summe 0. Nach einer angenommenen raschen Änderung betragen die Druckkraftbeiträge zunächst +40 und +30, während die Gravitation im betrachteten Anfangsmoment noch −100 beträgt.\nAllgemeine Einordnung: Gas- und Strahlungsdruck können zur Stützung beitragen. In dicht gepackter Materie kann auch Entartungsdruck beitragen; er beruht nicht auf laufender Kernfusion und wird hier nicht berechnet.\n\nFür eine getrennte Stabilitätsprüfung eines Gleichgewichts sind nach kleinen radialen Störungen folgende resultierende Kräfte vorgegeben:\n\n| Modell | Schale wenig nach außen versetzt | Schale wenig nach innen versetzt |\n| --- | --- | --- |\n| A | −5 | +10 |\n| B | +8 | −6 |\n\nDie Angaben beschreiben nur die unmittelbare Rückwirkung; die beiden kleinen Auslenkungen müssen nicht gleich groß sein. Rotation, Magnetfelder, Energiefluss und große Störungen sind nicht modelliert. Fachlicher Quellenkern: BW V2 3.5.7(4), gedruckt S. 38.\n\n1. Erklären Sie das anfängliche Kräftegleichgewicht und bestimmen Sie die unmittelbare Bewegungsänderung nach der angenommenen Druckänderung. (4 BE)\n2. Beurteilen Sie A und B gegenüber kleinen radialen Störungen. Warum beweist die Kraftsumme 0 im ungestörten Zustand allein noch keine Stabilität? (6 BE)\n3. Beurteilen Sie: „Ohne laufende Kernfusion gibt es grundsätzlich keinen stützenden Druck; jede beginnende Kontraktion endet deshalb sofort als Schwarzes Loch.“ Nennen Sie zwei fachliche Grenzen dieses Schlusses und eine Grenze der vorliegenden Tabelle. (6 BE)",
+        "taskContentEn": "## Material: Forces on a small spherical stellar shell\n\nAll values are constructed force contributions using the same normalization for the same shell, not measured stellar data. Outward is positive. “Pressure force” means the net force from a spatial pressure gradient, not the scalar pressure value.\nInitially: gravity −100, gas-pressure force +60, radiation-pressure force +40; total 0. After an assumed rapid change, the pressure-force contributions are initially +40 and +30 while gravity is still −100 at the instant considered.\nContext: gas and radiation pressure can support an object. Degeneracy pressure can also contribute in densely packed matter; it does not depend on ongoing nuclear fusion and is not calculated here.\n\nFor a separate stability test of an equilibrium, small radial displacements produce these net forces:\n\n| Model | Shell displaced slightly outward | Shell displaced slightly inward |\n| --- | --- | --- |\n| A | −5 | +10 |\n| B | +8 | −6 |\n\nThe data describe only the immediate response; the two small displacements need not have equal magnitudes. Rotation, magnetic fields, energy flow and large perturbations are not modelled. Curriculum basis: BW V2 3.5.7(4), printed p. 38.\n\n1. Explain the initial force balance and determine the immediate change in motion after the assumed pressure change. (4 marks)\n2. Assess A and B for small radial perturbations. Why does zero net force in the unperturbed state alone not establish stability? (6 marks)\n3. Assess: “Without ongoing nuclear fusion there can be no supporting pressure, so any initial contraction immediately ends in a black hole.” Give two physical limits of this conclusion and one limitation of the table. (6 marks)",
+        "solutionContent": "1. +60+40−100=0: Druckgradientkräfte gleichen die Gravitation aus (2 BE). Danach +40+30−100=−30: zunächst Beschleunigung nach innen, nicht bereits ein bestimmter Endzustand (2 BE).\n2. A wirkt für beide Störungen rückstellend: nach Auslenkung nach außen Kraft nach innen und umgekehrt; lokal stabil im betrachteten Modell (2 BE). B verstärkt beide Auslenkungen und ist lokal instabil (2 BE). Gleichgewicht bezeichnet die Kraftbilanz am Ausgangspunkt, Stabilität die Reaktion auf eine Störung (2 BE).\n3. Entartungsdruck kann ohne laufende Fusion stützen; auch thermische Stützung ist nicht gleichbedeutend mit momentan laufender Fusion (2 BE). Bei Kontraktion ändern sich Dichte, Temperatur und Kräfte; aus der Anfangsbeschleunigung folgt weder sofortiger Kollaps noch ein eindeutig bestimmtes Endobjekt (2 BE). Die Tabelle prüft nur kleine radiale Störungen, nicht globale Entwicklung oder die ausdrücklich ausgelassenen Effekte (2 BE).",
+        "solutionContentEn": "1. +60+40−100=0: pressure-gradient forces balance gravity (2). Afterwards +40+30−100=−30: initial inward acceleration, not an already determined final state (2).\n2. A restores both perturbations: inward force after an outward displacement and vice versa, so locally stable within the model (2). B reinforces both displacements and is locally unstable (2). Equilibrium is the initial force balance; stability concerns the response to a perturbation (2).\n3. Degeneracy pressure can support matter without ongoing fusion; thermal support is not identical to fusion occurring at that instant either (2). Contraction changes density, temperature and forces; initial acceleration implies neither immediate collapse nor a unique final object (2). The table tests only small radial perturbations, not global evolution or the explicitly omitted effects (2).",
+        "scoring": {
+          "maxPoints": 16,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 4,
+              "description": "Gleichgewicht und −30 nach innen korrekt als Momentanaussagen.\nEN: Correct equilibrium and −30 inward as instantaneous conclusions."
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "A rückstellend, B destabilisierend; Gleichgewicht von Stabilität getrennt.\nEN: A restoring, B destabilizing; equilibrium distinguished from stability."
+            },
+            {
+              "id": "s3",
+              "points": 6,
+              "description": "Druck nicht mit Fusion gleichgesetzt; Endzustand und Modellgrenzen korrekt.\nEN: Pressure not equated with fusion; final-state and model limits respected."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f61c424e-f091-5f9d-9d58-c1bd29733fc8",
+      "shortKey": "canonical_physics_astro_assessment_ex",
+      "title": "Einen Exoplanetenkandidaten und sein Transmissionsspektrum beurteilen",
+      "titleEn": "Assess an exoplanet candidate and its transmission spectrum",
+      "description": "Die lernende Person kann die bereitgestellte Aufgabe „Einen Exoplanetenkandidaten und sein Transmissionsspektrum beurteilen“ selbstständig bearbeiten und ihre Einordnung anhand des Materials fachlich begründen.",
+      "descriptionEn": "The learner can independently complete the supplied task “Assess an exoplanet candidate and its transmission spectrum” and justify the interpretation using the material.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+        "6dca3b0a-c872-543b-808f-97e855f5fafd",
+        "e28381b4-50ef-5cac-bfa4-b7c8e03aef82"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "phase": "Q4",
+        "demandLevel": "AB2",
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+          "6dca3b0a-c872-543b-808f-97e855f5fafd",
+          "e28381b4-50ef-5cac-bfa4-b7c8e03aef82"
+        ],
+        "coveredStrands": [
+          "LI_KOSMOS"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-astro-completion-v1/assessments/EX.md",
+        "taskContent": "## Material: Ein konstruierter Stern-Planet-Kandidat\n\nA: Die folgenden idealisierten Werte werden über mehrere Umläufe wiederholt. Der normierte Sternfluss außerhalb des kurzen Transits ist 1. Positive Radialgeschwindigkeit bedeutet Bewegung des Sterns von uns weg; die gemeinsame konstante Systemgeschwindigkeit wurde abgezogen.\n\n| Zeit / Tage | 0 | 1,5 | 3 | 4,5 | 6 |\n| --- | --- | --- | --- | --- | --- |\n| Sternfluss | 0,990 | 1,000 | 1,000 | 1,000 | 0,990 |\n| Radialgeschwindigkeit des Sterns / (m/s) | 0 | +20 | 0 | −20 | 0 |\n\nB: Während eines Transits wird ein Spektrum mit dem Spektrum desselben Sterns außerhalb des Transits verglichen. Nach Abzug des grauen Transitanteils und modellierter Stern-/Instrumenteffekte verbleibt zusätzliche Absorption in den Kanälen 620 nm und 760 nm. Bei 810 nm liegt sie unter der angegebenen sicheren Nachweisgrenze. Eine vereinfachte Vergleichsbibliothek enthält nur zwei hypothetische Stoffe: X absorbiert bei 620 und 760 nm; Y absorbiert bei 620 und 810 nm. Nach den vorgegebenen Modellbedingungen wäre die 810 nm-Linie von Y sicher messbar, bei einer zur Erklärung der 620 nm-Linie nötigen Menge von Y. Die Stoffnamen und Wellenlängen sind didaktisch konstruiert, keine realen Laboridentifikationen.\n\nMethodische Einordnung: NASA, How We Find and Characterize, https://science.nasa.gov/exoplanets/how-we-find-and-characterize/; Lehrplankern BW V2 3.5.7(8)/(9), gedruckt S. 38/39. Die Aufgabe verlangt keine Planetenmassen- oder Radiusberechnung.\n\n1. Erklären Sie Transit- und Radialgeschwindigkeitsdeutung von A. Benennen Sie, wessen Licht und wessen Bewegung jeweils untersucht werden, sowie die Umlaufperiode des einfachen Modells. Warum reicht das Fehlen eines Transits bei einem anderen Stern allein nicht aus, einen Planeten auszuschließen? (8 BE)\n2. Erklären Sie, wie B Informationen über eine Atmosphäre liefert, und entscheiden Sie begründet zwischen X und Y innerhalb der vorgegebenen Bibliothek. Warum genügt die einzelne 620 nm-Linie nicht? (8 BE)\n3. Unterscheiden Sie die periodische Verschiebung von Sternlinien in A von der zusätzlichen Absorption in B. Beurteilen Sie die Aussage „Damit sind der Planet, die vollständige Zusammensetzung seiner Atmosphäre und Leben zweifelsfrei nachgewiesen“ und nennen Sie eine geeignete zusätzliche Prüfung. (8 BE)",
+        "taskContentEn": "## Material: A constructed star–planet candidate\n\nA: These idealized values repeat over several orbits. Stellar flux outside the brief transit is normalized to 1. Positive radial velocity means the star moves away from us; the constant systemic velocity has been subtracted.\n\n| Time / days | 0 | 1.5 | 3 | 4.5 | 6 |\n| --- | --- | --- | --- | --- | --- |\n| Stellar flux | 0.990 | 1.000 | 1.000 | 1.000 | 0.990 |\n| Stellar radial velocity / (m/s) | 0 | +20 | 0 | −20 | 0 |\n\nB: A spectrum during transit is compared with the same star's spectrum outside transit. After subtracting the grey transit contribution and modelled stellar/instrument effects, additional absorption remains in the 620 nm and 760 nm channels. At 810 nm it is below the stated reliable detection limit. A simplified library contains only two hypothetical substances: X absorbs at 620 and 760 nm; Y absorbs at 620 and 810 nm. Under the supplied model conditions, Y's 810 nm line would be reliably measurable at the amount of Y needed to explain the 620 nm feature. These names and wavelengths are constructed for teaching, not actual laboratory identifications.\n\nMethod context: NASA, How We Find and Characterize, https://science.nasa.gov/exoplanets/how-we-find-and-characterize/; curriculum basis BW V2 3.5.7(8)/(9), printed pp. 38/39. No planetary mass or radius calculation is requested.\n\n1. Explain the transit and radial-velocity interpretations of A. Identify whose light and whose motion are examined, and the orbital period of the simple model. Why does the absence of a transit around another star not by itself exclude a planet? (8 marks)\n2. Explain how B supplies atmospheric information and choose between X and Y within the given library, with reasons. Why is the 620 nm feature alone insufficient? (8 marks)\n3. Distinguish periodic shifts of stellar lines in A from additional absorption in B. Assess: “This proves the planet, its complete atmospheric composition and life beyond any doubt,” and propose one suitable additional check. (8 marks)",
+        "solutionContent": "1. Der vor dem Stern vorbeiziehende Kandidat verdeckt einen Teil des Sternlichts, wiederkehrende kurze Flussabnahme mit Modellperiode 6 d (3 BE). Die Gravitation eines umlaufenden Begleiters lässt auch den Stern um den gemeinsamen Schwerpunkt laufen; seine Radialbewegung wird aus wechselnder Rot-/Blauverschiebung seiner Linien erschlossen (3 BE). Eine anders orientierte Bahn kann ohne Transit bleiben (2 BE).\n2. Ein kleiner Anteil des Sternlichts durchläuft die Atmosphäre; stoffabhängige zusätzliche Absorption verändert den Transit spektral (3 BE). X passt zu beiden Merkmalen 620/760 nm; Y erklärt 760 nm nicht und würde unter den gesetzten Bedingungen eine nicht gefundene 810 nm-Linie liefern (3 BE). 620 nm allein ist in der Bibliothek nicht eindeutig, weil beide Stoffe dort absorbieren (2 BE).\n3. A betrifft die Lage der Sternlinien durch Sternbewegung; B zusätzliche wellenlängenabhängige Abschwächung im Transit, nicht eine neue Radialgeschwindigkeit (3 BE). Die gemeinsam periodischen Befunde stützen einen Planetenkandidaten; die vereinfachten Daten schließen reale Alternativen nicht vollständig aus. Eine begrenzte Bibliothek bestimmt weder sämtliche Bestandteile noch beweist sie Leben (3 BE). Geeignet ist z.B. unabhängige Wiederholung der Spektren mit Kontrolle der Sternaktivität oder Suche nach weiteren charakteristischen Absorptionsbanden (2 BE).",
+        "solutionContentEn": "1. The candidate crossing the stellar disc blocks some starlight; repeated brief flux dips give a 6-day model period (3). An orbiting companion's gravity also makes the star move around the common centre of mass; alternating shifts of its stellar lines reveal its radial motion (3). A differently oriented orbit may not transit (2).\n2. A small fraction of starlight passes through the atmosphere; substance-dependent additional absorption makes the transit wavelength-dependent (3). X fits 620/760 nm; Y does not explain 760 nm and would, under the stated conditions, produce an absent 810 nm line (3). 620 nm alone is ambiguous because both library substances absorb there (2).\n3. A concerns stellar-line positions changing with stellar motion; B concerns additional wavelength-dependent attenuation during transit, not another radial velocity (3). The jointly periodic signals support a planet candidate but the simplified data do not exclude all real alternatives. A restricted library identifies neither every atmospheric constituent nor life (3). A suitable check is independent repeated spectroscopy controlling stellar activity or a search for additional characteristic absorption bands (2).",
+        "scoring": {
+          "maxPoints": 24,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 8,
+              "description": "Transit, Sternbewegung, 6 d und Sichtgeometrie korrekt.\nEN: Transit, stellar motion, 6 d and viewing geometry correct."
+            },
+            {
+              "id": "s2",
+              "points": 8,
+              "description": "Transmissionsprinzip und Mehrlinienvergleich X/Y einschließlich Nachweisgrenze.\nEN: Transmission principle and multi-line X/Y comparison including detection limit."
+            },
+            {
+              "id": "s3",
+              "points": 8,
+              "description": "Linienverschiebung von Absorption getrennt; Schlussgrenzen und Zusatzprüfung.\nEN: Line shifts distinguished from absorption; conclusion limits and extra check."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d44eb772-acb3-5449-accc-36a1fb7a25a5",
+      "shortKey": "canonical_physics_astro_assessment_s",
+      "title": "Sonne, Planet und Komet im Bahnmodell zuordnen",
+      "titleEn": "Classify Sun, planet and comet in an orbital model",
+      "description": "Die lernende Person kann die bereitgestellte Aufgabe „Sonne, Planet und Komet im Bahnmodell zuordnen“ selbstständig bearbeiten und ihre Einordnung anhand des Materials fachlich begründen.",
+      "descriptionEn": "The learner can independently complete the supplied task “Classify Sun, planet and comet in an orbital model” and justify the interpretation using the material.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "phase": "GLOBAL",
+        "demandLevel": "AB2",
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ]
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+        ],
+        "coveredStrands": [
+          "LI_KOSMOS"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-astro-completion-v1/assessments/S.md",
+        "taskContent": "## Material: Drei Körper in einem vereinfachten Sonnensystemmodell\n\nDie Daten sind eigens für die Aufgabe zusammengestellte qualitative Merkmale, keine neue Messreihe. A ist der mit Abstand massereichste Körper und strahlt durch Energieumwandlung in seinem Inneren selbst Licht ab. B ist ein annähernd kugelförmiger Körper, der A auf einer nahezu kreisförmigen Bahn umläuft und dessen Licht überwiegend reflektiert. C ist ein kleiner eis- und staubhaltiger Körper mit einer stark langgestreckten Bahn um A; in Sonnennähe kann eine Gashülle mit Schweif entstehen. Die Bahnen sind stark vereinfacht; nicht alle Planeten- oder Kometenbahnen haben dieselbe Form.\n\n1. Ordnen Sie A, B und C Sonne, Planet und Komet zu. Begründen Sie jede Zuordnung mit einem geeigneten Merkmal. (6 BE)\n2. Beschreiben Sie den Aufbau des Sonnensystems mithilfe dieser Körper und ihrer Bahnen. Korrigieren Sie die Aussage: „Weil B von der Erde aus hell erscheint, muss B ein weiterer Stern sein; C umläuft B.“ Begründen Sie beide Korrekturen anhand des Materials. (4 BE)\n3. Nennen Sie zwei Grenzen dieser vereinfachten Darstellung gegenüber dem tatsächlichen Sonnensystem. (2 BE)",
+        "taskContentEn": "## Material: Three bodies in a simplified Solar System model\n\nThese qualitative features were compiled for this task; they are not a new measurement series. A is by far the most massive body and emits its own light through energy conversion inside it. B is approximately spherical, orbits A on a nearly circular path and mainly reflects A's light. C is a small icy, dusty body on a very elongated orbit around A; near the Sun it may develop a gaseous coma and tail. The orbits are simplified; planetary or cometary orbits do not all have identical shapes.\n\n1. Identify A, B and C as Sun, planet or comet. Justify each choice using an appropriate feature. (6 marks)\n2. Describe the Solar System's structure using these bodies and their orbits. Correct the statement: “Because B looks bright from Earth, B must be another star; C orbits B.” Justify both corrections using the material. (4 marks)\n3. State two limitations of this simplified representation of the real Solar System. (2 marks)",
+        "solutionContent": "1. A ist die Sonne: selbstleuchtender, massedominanter Stern. B ist ein Planet: annähernd kugelförmiger Begleiter auf einer Bahn um die Sonne, sichtbar vor allem durch reflektiertes Licht. C ist ein Komet: kleiner eis-/staubhaltiger Körper, hier mit langgestreckter Sonnenumlaufbahn und möglicher Aktivität in Sonnennähe.\n2. Die Sonne ist der zentrale massedominante Körper; Planeten und Kometen gehören als umlaufende Körper zum Sonnensystem. Helligkeit allein macht B nicht zum Stern, weil reflektiertes Sonnenlicht genügt. C umläuft laut Material A, nicht B. Die Sonne ist nicht mathematisch unbeweglich: genauere Modelle beziehen den gemeinsamen Schwerpunkt ein; das wird hier nicht verlangt.\n3. Beispielsweise fehlen weitere Planeten, Monde, Asteroiden und Zwergplaneten; Größen/Entfernungen und räumliche Bahnneigungen sind nicht dargestellt. Gültige alternative Grenzen zählen. Nicht behaupten, jeder Komet habe einen Schweif oder alle Planetenbahnen seien perfekte Kreise.",
+        "solutionContentEn": "1. A is the Sun: a self-luminous, mass-dominant star. B is a planet: an approximately spherical companion orbiting the Sun, mainly seen in reflected light. C is a comet: a small icy/dusty body, here on an elongated solar orbit with possible activity near the Sun.\n2. The Sun is the central mass-dominant body; planets and comets are orbiting Solar System members. Brightness alone does not make B a star because reflected sunlight suffices. The material says that C orbits A, not B. The Sun is not mathematically immobile: more detailed models use the common centre of mass; this refinement is not required.\n3. Examples include omitted planets, moons, asteroids or dwarf planets, missing sizes/distances and orbital inclinations. Accept other valid limits. Do not claim every comet has a tail or all planetary orbits are perfect circles.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 6,
+              "description": "Drei richtige Klassen mit je passendem Merkmal (je 2).\nEN: Three correct classes with an appropriate feature each (2 each)."
+            },
+            {
+              "id": "s2",
+              "points": 4,
+              "description": "Massedominante Sonne und Umlaufstruktur (2); Helligkeit/Reflexion und C-Bahn korrekt berichtigt (je 1).\nEN: Mass-dominant Sun and orbital structure (2); correct reflection and C-orbit corrections (1 each)."
+            },
+            {
+              "id": "s3",
+              "points": 2,
+              "description": "Zwei konkrete Modellgrenzen (je 1).\nEN: Two concrete model limitations (1 each)."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e99d87ac-0024-5f2b-ab47-d4d1cebba027",
+      "shortKey": "canonical_physics_astro_assessment_g",
+      "title": "Unser Sonnensystem in der Milchstraße verorten",
+      "titleEn": "Locate the Solar System within the Milky Way",
+      "description": "Die lernende Person kann die bereitgestellte Aufgabe „Unser Sonnensystem in der Milchstraße verorten“ selbstständig bearbeiten und ihre Einordnung anhand des Materials fachlich begründen.",
+      "descriptionEn": "The learner can independently complete the supplied task “Locate the Solar System within the Milky Way” and justify the interpretation using the material.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "phase": "GLOBAL",
+        "demandLevel": "AB2",
+        "guidingIdeas": [
+          "LI_KOSMOS"
+        ],
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ]
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SL"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7"
+        ],
+        "coveredStrands": [
+          "LI_KOSMOS"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-astro-completion-v1/assessments/G.md",
+        "taskContent": "## Material: Ein Planetariumsplakat\n\nDas Plakat zeigt drei beschriftete Ausschnitte: I „Sonne mit Planeten und kleineren Begleitern“; II „Milchstraße: sehr viele Sterne, Sternsysteme, Gas und Staub“; III „Mehrere voneinander verschiedene Galaxien“. Die Größenverhältnisse sind nicht maßstäblich. Für die Aufgabe gilt als gesicherte Zusatzinformation: Die Sonne liegt in der Scheibe der Milchstraße, deutlich außerhalb des galaktischen Zentrums.\n\n1. Ordnen Sie die Ausschnitte als räumliche Einschachtelung vom Sonnensystem über die Galaxie zur Gruppe mehrerer Galaxien. Beschreiben Sie jeweils, was zum größeren System gehört. (4 BE)\n2. Ein Besucher sagt: „Unsere Sonne ist der Mittelpunkt der Milchstraße; die Milchstraße ist nur die Umlaufbahn der Erde.“ Korrigieren Sie beide Aussagen und beschreiben Sie den Unterschied zwischen Sternsystem und Galaxie. (6 BE)\n3. Warum kann man aus dem Plakat weder das Alter noch die Gesamtausdehnung des Universums bestimmen? (2 BE)",
+        "taskContentEn": "## Material: A planetarium poster\n\nThe poster has three labelled panels: I “Sun with planets and smaller companions”; II “Milky Way: very many stars, stellar systems, gas and dust”; III “Several distinct galaxies”. Sizes are not to scale. Use this established additional information: the Sun lies in the Milky Way's disc, well outside the galactic centre.\n\n1. Order the panels as spatial nesting from Solar System through galaxy to a group of galaxies. Describe what belongs to each larger system. (4 marks)\n2. A visitor says: “Our Sun is the centre of the Milky Way; the Milky Way is just Earth's orbit.” Correct both statements and distinguish a stellar system from a galaxy. (6 marks)\n3. Why can neither the universe's age nor its total spatial extent be determined from this poster? (2 marks)",
+        "solutionContent": "1. I gehört zu II; II ist eine der Galaxien in III. Ein Sonnensystem besteht hier aus einem Stern und seinen Begleitern; eine Galaxie umfasst sehr viele Sterne/Sternsysteme und interstellare Materie. III enthält mehrere Galaxien, nicht bloß mehrere Planeten.\n2. Die Sonne ist ein Stern in der Scheibe der Milchstraße außerhalb ihres Zentrums. Die Erdbahn gehört zum Sonnensystem; sie ist keine Galaxie. Die Milchstraße ist ein sehr viel größeres zusammengesetztes System mit vielen Sternen und Sternsystemen sowie Gas/Staub. Nicht verlangen, jedes Sternsystem müsse genau einen Stern besitzen.\n3. Eine räumliche, unmaßstäbliche Hierarchie enthält keine Zeitmessung und keine Information über das gesamte Universum. Die Aufgabe prüft G, nicht eigenständig U.",
+        "solutionContentEn": "1. I belongs within II; II is one galaxy in III. Here a solar system consists of a star and its companions; a galaxy contains very many stars/stellar systems and interstellar matter. III contains several galaxies, not merely planets.\n2. The Sun is a star in the Milky Way's disc outside its centre. Earth's orbit belongs to the Solar System; it is not a galaxy. The Milky Way is a much larger composite system containing many stars and stellar systems plus gas/dust. Do not require every stellar system to contain exactly one star.\n3. A non-scale spatial hierarchy supplies neither a time measurement nor information about the whole universe. This task assesses G, not U independently.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 4,
+              "description": "Richtige Einschachtelung I in II in III (2), Mitgliederbeziehungen erklärt (2).\nEN: Correct nesting I in II in III (2), membership relations explained (2)."
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "Sonnenposition richtig (2), Erdbahn von Galaxie unterschieden (2), Systemvergleich (2).\nEN: Correct solar location (2), orbit/galaxy distinction (2), system comparison (2)."
+            },
+            {
+              "id": "s3",
+              "points": 2,
+              "description": "Keine Zeitmessung (1), keine Gesamtausdehnung aus unmaßstäblichem Ausschnitt (1).\nEN: No time measurement (1), no total extent from a non-scale excerpt (1)."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "reason": "S/G assess stufenübergreifend reusable qualitative Solar-System/Galaxy material; GLOBAL is compatibility metadata, not a new curriculum placement. Their exact authored composition references, applicability, tags, requires and coverage stay unchanged. This avoids falsely ordering the assessment before the Q4-labelled reusable content atoms; those reviewed atoms are untouched. ST/EX gain only GFM separator rows. All existing task content review judgments remain semantically unchanged.",
+  "activeViewWrites": 0,
+  "contentGoalWrites": 0
+}

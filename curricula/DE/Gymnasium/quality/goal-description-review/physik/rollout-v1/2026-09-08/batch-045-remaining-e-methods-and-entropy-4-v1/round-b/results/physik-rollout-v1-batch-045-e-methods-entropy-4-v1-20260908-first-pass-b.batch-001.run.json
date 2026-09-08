@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-first-pass-b.reviewer-b",
+  "campaignId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-b",
+  "roundId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:f878fcf54e6c295b6424efc25ffb11cf98dba9761d0f18127d86201692578e2a",
+  "bundleFingerprint": "sha256:b6d1837afdd1e93312f37db0b66a45f5aff11b5c862a6e33cfcadb5903c4bd6e",
+  "bookDigest": "sha256:09413f6f0afab337251e462070dc0aa8f8abbabc047865a1e4175198f14e4bc8",
+  "provider": "OpenAI",
+  "model": "Codex; exact runtime model identifier unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:ea9f6dec5895241b42dd83188b320be402ac7f77ba76451da37223a3b5e45f5d",
+  "independenceGroupId": "physik-rollout-v1-batch-045-e-methods-entropy-4-v1-20260908-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+    "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+    "161502b8-e52d-58d0-8f01-9f777b56d392",
+    "f322c268-dc16-5d50-82dd-209834f20208"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f878fcf54e6c295b6424efc25ffb11cf98dba9761d0f18127d86201692578e2a"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-08T03:57:32.352Z",
+  "completedAt": "2026-09-08T04:03:23.127Z",
+  "status": "completed",
+  "outputDigest": "sha256:4a838346dbbf329a45caeeda30a171ce72e7a96826c9a2f36fd8b63717050307",
+  "toolchainVersion": "codex-manual-review-v1"
+}

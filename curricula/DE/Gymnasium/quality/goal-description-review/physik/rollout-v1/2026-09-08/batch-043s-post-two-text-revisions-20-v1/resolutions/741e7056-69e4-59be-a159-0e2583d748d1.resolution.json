@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-resolution-741e7056-69e4-59be-a159-0e2583d748d1",
+  "goal": {
+    "goalId": "741e7056-69e4-59be-a159-0e2583d748d1",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a318894efa4ba565eb523ae0e79387162421f14841c8d57f154ed426e67d4292",
+    "pageFingerprint": "sha256:131220da4bb47047ff413a895d5048165b10291e138f2aa630f8f830948805d7",
+    "goalReviewContextFingerprint": "sha256:1462513c15fee7a26164463b7acdf71ebe89d265a232826ff6550cfadaca4a04",
+    "finalText": {
+      "titleDe": "Entropie E06: Standardfälle sicher rechnen",
+      "titleEn": "Entropy E06: Compute Standard Cases Reliably",
+      "descriptionDe": "Die lernende Person kann die Entropieänderung eines Wärmereservoirs mit $\\Delta S = Q/T$ und bei einem reversiblen Phasenübergang mit $\\Delta S = L/T$ berechnen und deuten; $T$ ist die konstante absolute Temperatur, $Q$ beziehungsweise $L$ die vorzeichenbehaftete aufgenommene Wärmemenge in Joule.",
+      "descriptionEn": "The learner can calculate and interpret the entropy change of a heat reservoir using $\\Delta S = Q/T$ and of a reversible phase transition using $\\Delta S = L/T$; $T$ is the constant absolute temperature, and $Q$ or $L$ is the signed amount of heat absorbed in joules."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-a",
+      "campaignDigest": "sha256:391cf1a5e42f247d296d7dabee51f19e8d8d42cde19225606a4c67a93d68f0a2",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:1462513c15fee7a26164463b7acdf71ebe89d265a232826ff6550cfadaca4a04",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:015f4baff90e3e2c7ca94d4801524bdc56802dcddc05ef51acb75c4baa6bbcf9",
+      "resultsDigest": "sha256:8e089b9ab62e641fb5fe1a0bce9351689c3b156cfdf0ee7cb0d6909ddf9ab583",
+      "recordId": "physik-b043s-a-741e7056-69e4-59be-a159-0e2583d748d1",
+      "recordDigest": "sha256:4093111fa0e407a17a60e6ee82d3231436318ddc0b4819c75072164590e57066"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-b",
+      "campaignDigest": "sha256:20cbf219fae84e213a2c7fde01532c57fcbb83cbe5d68fddf79962e7e39e1c13",
+      "roundId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:ec167e1b7bb8769ff07d25618e32a0a80e41d8360be288c913167c25495ef382",
+      "goalReviewContextFingerprint": "sha256:1462513c15fee7a26164463b7acdf71ebe89d265a232826ff6550cfadaca4a04",
+      "batchId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-043s-post-two-text-revisions-20-v1-20260908-first-pass-b.reviewer-b",
+      "runManifestDigest": "sha256:bc1f2ec2b93b9798902669a63ab9c39a1533c2e87b00c82dff05c26da73e7d02",
+      "resultsDigest": "sha256:3a1d9386c4be6a741d80994120ec26bee4eb70d13927517372854bd17abc64cf",
+      "recordId": "physics-d043s-blind-b.009",
+      "recordDigest": "sha256:5616f852d9f5212bfdbfa69c2c82d06ec695cbf73256a383fdba3375e42b940b"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:0ac2e7783c408851408df0dd36fc27be364a3ffdc36d4604cd881aac73100c15"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physik-b043s-current-twenty-synthesis-v1-20260908",
+    "manifestDigest": "sha256:e2fc84088dfaa354c9bc4a7cce395f03dbfcc6f059074984cbc301190cc005a2",
+    "manifestFingerprint": "sha256:15f06eb11133becc54c3c83fa62087609fda37421d4bffef2ec5871e58fe54b9",
+    "decisionId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "physik-b043s-current-twenty-synthesis-v1-20260908-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex /root; explicit per-goal comparison of two newly isolated current-context reviews; AI candidate evidence only",
+    "synthesizedAt": "2026-09-08T03:59:05.504Z",
+    "rationaleDe": "A/B bestätigen Reservoir und reversiblen Phasenübergang als Fälle derselben Beziehung sowie L als gesamte Übergangswärme. B trennt in einer neuen Erstarrungsaufgabe den isothermen Abschnitt von zusätzlicher Abkühlung.",
+    "rationaleEn": "Both rounds confirm reservoirs and reversible phase changes as cases of one relation, with L denoting total transition heat. B distinguishes the isothermal interval from additional cooling in a fresh freezing task.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei einem idealen Wärmereservoir und einem reversiblen Phasenübergang ist die Temperatur konstant. Die Entropieänderung ergibt sich aus der vorzeichenbehafteten aufgenommenen Wärme in Joule geteilt durch diese Kelvin-Temperatur.",
+      "essentialUnderstandingEn": "For an ideal heat reservoir and a reversible phase transition, temperature is constant. Entropy change equals the signed heat absorbed in joules divided by that Kelvin temperature.",
+      "observablePerformanceDe": "Die lernende Person berechnet und deutet selbstständig Entropieänderungen eines Wärme abgebenden Reservoirs und eines reversiblen Schmelzvorgangs, benennt die betrachteten Systeme und prüft Vorzeichen sowie J/K.",
+      "observablePerformanceEn": "The learner independently calculates and interprets entropy changes of a heat-rejecting reservoir and a reversible melting process, identifies the systems considered and checks signs and J/K.",
+      "transferExpectationDe": "In einer neuen Aufgabe zum reversiblen Erstarren ordnet sie L als gesamte vorzeichenbehaftete Übergangswärme zu, begründet die Entropieabnahme und grenzt den konstanten Temperaturabschnitt von einem zusätzlich beschriebenen Abkühlabschnitt ab.",
+      "transferExpectationEn": "In a fresh reversible-freezing task, the learner identifies L as the total signed transition heat, explains the entropy decrease and separates the constant-temperature interval from an additionally described cooling interval."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-7615f3703dd3ef7d206d84b594c7e04f1e9958c2cfe05747308d65a0da7ad15d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:6f3ade8339f177f64fc3dbb8fc597ba6c30e6c197ddd47cd496eaf0e08297971"
+}

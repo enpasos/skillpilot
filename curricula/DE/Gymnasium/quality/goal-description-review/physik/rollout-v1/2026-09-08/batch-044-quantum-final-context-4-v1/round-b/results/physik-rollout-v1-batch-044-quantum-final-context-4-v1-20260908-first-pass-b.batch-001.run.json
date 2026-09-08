@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b044-current-b-20260908-physics-b043-thread",
+  "campaignId": "physik-rollout-v1-batch-044-quantum-final-context-4-v1-20260908-b",
+  "roundId": "physik-rollout-v1-batch-044-quantum-final-context-4-v1-20260908-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-044-quantum-final-context-4-v1-20260908-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:68d8d861b1e7f9e20d57c17a0124a8aa7d047eeb060c04040934cf6b4bb25e9e",
+  "bundleFingerprint": "sha256:72f1e7efa9b1001d009bfc186e70e824c3b0b6f33aa427eea0e9dde476fe7c39",
+  "bookDigest": "sha256:70a49cf46af5370b9d9d5f58bc1267d4e424a2ab22f7cc28dfadca1912e24784",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:33ed0d001dda66c6c66a9acedd498c068cf4e5b11cfdbaa43278cd9a2f2d4f23",
+  "independenceGroupId": "physik-rollout-v1-batch-044-quantum-final-context-4-v1-20260908-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "bacae732-2016-5a83-bc61-d0f94ed5a0e4",
+    "badb0ef3-233d-560e-bc2a-9df99f09fe7d",
+    "d05a146f-7fcd-56ae-b9b9-b54203328579",
+    "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:11bbf2da9199cd44abdd1ff19befbbcd65b5c42a3f9c926d389d4a48d28654ba"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:68d8d861b1e7f9e20d57c17a0124a8aa7d047eeb060c04040934cf6b4bb25e9e"
+    }
+  ],
+  "startedAt": "2026-09-08T03:45:40Z",
+  "completedAt": "2026-09-08T03:49:25Z",
+  "status": "completed",
+  "outputDigest": "sha256:96bc9ca67daf6b5d37491f4de1102065f40f42f0a5f23573502792fe7dfa7869",
+  "toolchainVersion": "node-20.20.2-native-description-review-v2"
+}
