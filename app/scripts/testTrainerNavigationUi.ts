@@ -184,6 +184,156 @@ const installApi = async (page: Page) => {
   })
 }
 
+const testPlanningSubjectNavigation = async (browser: Browser, baseUrl: string) => {
+  const rootLandscapeId = 'trainer-navigation-curriculum'
+  const physicsLandscapeId = 'trainer-navigation-physics'
+  const learnerId = '11111111-2222-4333-8444-555555555555'
+  const personalConfig = {
+    [rootLandscapeId]: { selected: true, filterId: 'DE-HE', stage: 'sek2' },
+    [landscapeId]: { selected: true, filterId: 'GK' },
+    [physicsLandscapeId]: { selected: true, filterId: 'GK' },
+  }
+  const makeLandscape = (id: string, subject: string, childIds: string[]) => ({
+    ...landscape,
+    landscapeId: id,
+    subject,
+    title: subject,
+    frameworkId: 'canonical-gymnasium-navigation-test',
+    goals: [
+      { ...goal(`${id}-root`, subject, childIds), tags: ['root', 'GK', 'DE-HE'] },
+      ...childIds.map((childId) => ({ ...goal(childId, `${subject} Lernziel`), tags: ['GK', 'DE-HE'] })),
+    ],
+  })
+  const subjectLandscapes = [
+    makeLandscape(landscapeId, 'Mathematik', [`${landscapeId}-atomic`]),
+    makeLandscape(physicsLandscapeId, 'Physik', [`${physicsLandscapeId}-atomic`]),
+  ]
+  const rootLandscape = makeLandscape(rootLandscapeId, 'Gymnasium', [])
+  rootLandscape.goals[0].contains = subjectLandscapes.map(({ landscapeId: id }) => `${id}-root`)
+  const allLandscapes = [rootLandscape, ...subjectLandscapes]
+  const context = await browser.newContext({ locale: 'de-DE' })
+  await context.addInitScript((seed) => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_role', 'trainer')
+    localStorage.setItem('skillpilot_classes', JSON.stringify([{
+      id: seed.classId,
+      name: 'Fächerübergreifende Planung',
+      landscapeId: seed.landscapeId,
+      rootLandscapeId: seed.rootLandscapeId,
+      activeFilter: 'DE-HE',
+      personalConfig: seed.personalConfig,
+      students: [{ id: seed.learnerId, name: 'Alex', accessMode: 'learner-id' }],
+      source: 'existing-learner',
+    }]))
+  }, { classId, landscapeId, rootLandscapeId, learnerId, personalConfig })
+  const page = await context.newPage()
+  const browserErrors: string[] = []
+  page.on('pageerror', (error) => browserErrors.push(error.message))
+  let delayCompositionLandscapeId: string | null = null
+  let releaseComposition: (() => void) | undefined
+  let compositionResponse: Promise<void> | undefined
+  await page.route('**/api/ui/**', async (route) => {
+    const url = new URL(route.request().url())
+    const json = (body: unknown) => route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(body),
+    })
+    if (url.pathname === '/api/ui/curriculum-catalog') {
+      await route.fulfill({ status: 404, body: '' })
+    } else if (url.pathname === '/api/ui/landscapes') {
+      await json({ summaries: allLandscapes })
+    } else if (url.pathname.endsWith('/closure')) {
+      await json(allLandscapes)
+    } else if (url.pathname === '/api/ui/composition-views/match') {
+      const requestedLandscapeId = url.searchParams.get('landscapeId')!
+      if (requestedLandscapeId === delayCompositionLandscapeId) {
+        await compositionResponse
+      }
+      await json({
+        viewId: `navigation-${requestedLandscapeId}`,
+        landscapeId: requestedLandscapeId,
+        scope: { jurisdiction: 'DE-HE', schoolForm: 'Gymnasium', stage: 'SekII', courseProfile: 'GK' },
+        rootNodes: [{
+          kind: 'structure', id: 'sek2', label: 'Sekundarstufe II',
+          children: [{ kind: 'canonicalSubtree', goalId: `${requestedLandscapeId}-root` }],
+        }],
+      })
+    } else if (url.pathname === `/api/ui/learners/${learnerId}`) {
+      await json({ skillpilotId: learnerId, personalCurriculum: JSON.stringify(personalConfig) })
+    } else if (url.pathname === `/api/ui/learners/${learnerId}/mastery`) {
+      await json({ mastery: {} })
+    } else if (url.pathname === `/api/ui/learners/${learnerId}/planning-scope`) {
+      const requestedLandscapeId = url.searchParams.get('landscapeId')!
+      await json({
+        curriculumId: rootLandscapeId,
+        landscapeId: requestedLandscapeId,
+        scopeAtomicGoalIds: [`${requestedLandscapeId}-atomic`],
+        openAtomicGoalIds: [`${requestedLandscapeId}-atomic`],
+        totalAtomicGoalCount: 1,
+        masteredAtomicGoalCount: 0,
+        capturedAt: new Date().toISOString(),
+      })
+    } else if (url.pathname === `/api/ui/learners/${learnerId}/learning-plans`) {
+      await json({ asOf: url.searchParams.get('asOf'), followLearningPlans: false, plans: [] })
+    } else {
+      await route.fulfill({ status: 404, body: '' })
+    }
+  })
+
+  try {
+    await page.goto(`${baseUrl}/scripts/fixtures/trainerNavigationUi.html`)
+    await page.getByText('Fächerübergreifende Planung', { exact: true }).click()
+    await page.getByRole('button', { name: 'Planung', exact: true }).click()
+    const activation = page.getByTestId('trainer-learning-plan-activation')
+    await activation.getByRole('button', { name: 'Fachplan bearbeiten: Physik', exact: true }).waitFor()
+
+    for (const [subjectId, subject] of [[physicsLandscapeId, 'Physik'], [landscapeId, 'Mathematik']]) {
+      delayCompositionLandscapeId = subjectId
+      const requestObserved = page.waitForRequest((request) => {
+        const url = new URL(request.url())
+        return url.pathname === '/api/ui/composition-views/match'
+          && url.searchParams.get('landscapeId') === subjectId
+      })
+      compositionResponse = new Promise<void>((resolve) => { releaseComposition = resolve })
+      await activation.getByRole('button', { name: `Fachplan bearbeiten: ${subject}`, exact: true }).click()
+      await requestObserved
+      await page.getByTestId('trainer-course-plan-view').waitFor()
+      assert(
+        await page.getByRole('heading', { name: 'Kursorganisation', exact: true }).count() === 0,
+        `switching to ${subject} keeps the course open while its composition is loading`,
+      )
+      delayCompositionLandscapeId = null
+      releaseComposition?.()
+      await activation.getByRole('button', { name: `Fachplan bearbeiten: ${subject}`, exact: true }).waitFor()
+      await page.waitForFunction((id) => {
+        const url = new URL(location.href)
+        return url.searchParams.get('l') === id
+          && url.searchParams.get('view') === 'plan'
+          && decodeURIComponent(url.pathname).startsWith('/trainer/')
+          && decodeURIComponent(url.pathname).includes(id)
+      }, subjectId)
+      assert(
+        await activation.getByRole('button', { name: `Fachplan bearbeiten: ${subject}`, exact: true }).getAttribute('aria-pressed') === 'true',
+        `the ${subject} plan is active after its delayed composition resolves`,
+      )
+      assert(
+        await page.getByRole('button', { name: 'Planung', exact: true }).getAttribute('aria-current') === 'page',
+        'the selected planning workspace survives the subject switch',
+      )
+    }
+    await page.getByRole('button', { name: /Alle Klassen$/u }).click()
+    await page.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
+    assert(browserErrors.length === 0, `planning subject navigation browser errors:\n${browserErrors.join('\n')}`)
+  } catch (error) {
+    throw new Error(`${error instanceof Error ? error.message : String(error)}\nCurrent URL: ${page.url()}\nVisible body: ${(await page.locator('body').innerText()).slice(0, 4_000)}`)
+  } finally {
+    releaseComposition?.()
+    await context.close()
+  }
+}
+
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const server = await startViteTestServer(
   appRoot,
@@ -348,6 +498,7 @@ try {
   )
 
   await context.close()
+  await testPlanningSubjectNavigation(browser, server.baseUrl)
   console.log('Trainer navigation UI regression test passed.')
 } finally {
   await browser?.close()

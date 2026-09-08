@@ -4144,8 +4144,92 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "610ba35efa74917c152e6fc0ca9f602650cd911309900a82228cf95a9f6ea250"
         }
       ]
+    },
+    {
+      "id": "2026-09-08-trainer-plan-snapshot-compatibility-and-subject-navigation",
+      "approvedAt": "2026-09-08",
+      "approvedBy": "product-owner",
+      "reason": "Correct the reported post-update Trainer regressions: valid subject schedules require review and refuse section saves after historical atom changes, while switching to Physics unexpectedly opens course organization.",
+      "scope": "Only existing first-party Trainer plan calculation, explicit local section save and subject navigation, their focused regression evidence and section 6.65 documentation. Treat the landscape planning baseline atom catalogue as historical: resolve every authored section against the current visible graph and retain only its captured scope/open subset, without invalidating unrelated sections for retired or reclassified snapshot atoms. Preserve strict baseline shape, legacy focus-baseline references, current section/edge integrity, prerequisite scheduling and errors for sections outside captured scope. Never silently include new atoms or rewrite baselines, blocks, dates, revisions or personal plans on reads; preserve exact activation status and confirmed publication guards. Keep the course workspace open during subject composition loading until the route resolves inside the requested subject configuration; retain unsaved-form and explicit navigation guards. Advance only the four existing source/test supplemental bindings and documentation below; keep the navigation browser test unbound, previous exceptions and primary runtime/tree chains unchanged. No backend, package, OpenAI 1.0.0 or Claude 1.1.1 contract, MCP/OAuth/tool/schema/MCP-Apps resource, provider launch, prepared-message, session/identity/locale/learning-state/privacy/storage/security, portal, review case/fixture/artifact, deployment or general curriculum QA change.",
+      "target": "current-first-party-trainer-plan-compatibility-and-subject-navigation-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-trainer-regression-fix-with-unchanged-submitted-contract",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/src/utils/localTeacherCoursePlan.ts",
+          "priorAuthorizedSha256": "73351a50f70e08451ff9413f07952f8c9994ddf8c995125f742e02965d0afc87",
+          "authorizedSha256": "da2797101b557a2545bcc17cf50e2ae40bb98f0976619b080bcc033c135cecfe"
+        },
+        {
+          "path": "app/src/utils/localTeacherCoursePlan.test.ts",
+          "priorAuthorizedSha256": "1f35b4c85b8e34cd475cff8c25a918d9ab72468472e53755fef00a66fe8ae241",
+          "authorizedSha256": "d1e790c673242ff43b29b1e77ca8fed2829db23499a510b00789d25570a3c04c"
+        },
+        {
+          "path": "app/scripts/testTrainerCoursePlanUi.ts",
+          "priorAuthorizedSha256": "61ca11d28486cd931baf2afbecae0b336b1562475a808f36c041090255bae153",
+          "authorizedSha256": "ef05e04e0fd55ab4e0b3eb0bc01c0d3c5047078f67ad9a5e4de0d23d2dae3067"
+        },
+        {
+          "path": "app/src/views/TrainerView.tsx",
+          "priorAuthorizedSha256": "72524c9b1d650e8d3f6f9cdbc2fcd2cdf350abda672a83f72fb56b7905dfdb23",
+          "authorizedSha256": "0bb4a79f3b9803a5e5f493fa2b61d88e807838c68a8fd905775727624a731cd4"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "610ba35efa74917c152e6fc0ca9f602650cd911309900a82228cf95a9f6ea250",
+          "authorizedSha256": "f14546e8abd917de55a23d7c08f1dac8b192c482ab412d340fa3ddc8e9328599"
+        }
+      ]
     }
   ]);
+});
+
+test("Trainer plan regression repair advances existing supplemental bindings without expanding the freeze", () => {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  const index = freeze.authorizedRuntimeExceptions.findIndex(
+    ({ id }) => id === "2026-09-08-trainer-plan-snapshot-compatibility-and-subject-navigation",
+  );
+  assert.ok(index > 0);
+  const exception = freeze.authorizedRuntimeExceptions[index];
+  assert.equal(exception.supplementalOnly, true);
+  assert.equal(Object.hasOwn(exception, "protectedFile"), false);
+  assert.equal(Object.hasOwn(exception, "protectedTree"), false);
+  assert.deepEqual(exception.additionalFiles.map(({ path }) => path), [
+    "app/src/utils/localTeacherCoursePlan.ts",
+    "app/src/utils/localTeacherCoursePlan.test.ts",
+    "app/scripts/testTrainerCoursePlanUi.ts",
+    "app/src/views/TrainerView.tsx",
+    "docs/deploy/openai-plugin-v1-review-freeze.md",
+  ]);
+  const before = freeze.authorizedRuntimeExceptions.slice(0, index);
+  const after = freeze.authorizedRuntimeExceptions.slice(0, index + 1);
+  const priorFiles = resolveAuthorizedSupplementalFileChains(before, freeze.authorizedCopyClarifications);
+  const currentFiles = resolveAuthorizedSupplementalFileChains(after, freeze.authorizedCopyClarifications);
+  assert.deepEqual([...currentFiles.keys()], [...priorFiles.keys()]);
+  assert.equal(currentFiles.has("app/scripts/testTrainerNavigationUi.ts"), false);
+  for (const file of exception.additionalFiles) {
+    assert.equal(file.priorAuthorizedSha256, priorFiles.get(file.path)?.authorizedSha256);
+    assert.notEqual(file.authorizedSha256, file.priorAuthorizedSha256);
+  }
+  assert.deepEqual(
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, after),
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, before),
+  );
+  assert.deepEqual(
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, after),
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, before),
+  );
+  const documentation = exception.additionalFiles.at(-1);
+  const currentText = readFileSync(resolve(repositoryRoot, documentation.path), "utf8");
+  const appendix = "\n### 6.65 Stabile Kursplanung nach fachlichen Updates und beim Fachwechsel\n";
+  assert.equal(currentText.split(appendix).length, 2);
+  assert.equal(
+    createHash("sha256").update(currentText.split(appendix)[0]).digest("hex"),
+    documentation.priorAuthorizedSha256,
+    "The Trainer fix must leave every earlier freeze-documentation byte unchanged.",
+  );
 });
 
 test("four-subject feedback exception advances existing supplemental bindings only", () => {

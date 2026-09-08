@@ -785,7 +785,9 @@ assert.deepEqual(
   ['long-1', 'long-2', 'short-1', 'short-2'],
 )
 
-// Baseline shape and referential integrity both fail closed.
+// Baseline shape remains strict, but historical landscape atoms are not a
+// contract on future curriculum bytes. A removed atom elsewhere in the
+// snapshot must not invalidate a section whose current references resolve.
 const malformedBaselinePlan = structuredClone(sekOnePlan)
 malformedBaselinePlan.planningBaseline!.totalAtomicGoalCount = 258
 assert.equal(normalizeTeacherCoursePlan(malformedBaselinePlan).plan, null)
@@ -798,11 +800,99 @@ const missingBaselineGoalEvaluation = evaluateTeacherCoursePlan(
   sekOneGoalIndex,
   '2026-09-01',
 )
-assert.equal(missingBaselineGoalEvaluation.quality.status, 'invalid')
-assert.equal(missingBaselineGoalEvaluation.metrics, null)
-assert(
-  missingBaselineGoalEvaluation.quality.issues.some(({ code }) => code === 'CP-BASELINE-GOAL'),
+assert.notEqual(missingBaselineGoalEvaluation.quality.status, 'invalid')
+assert.equal(missingBaselineGoalEvaluation.metrics?.plannedGoalCount, 53)
+assert.deepEqual(missingBaselineGoalEvaluation.assignments[0]?.atomicGoalIds, sekOneOpenAtomicGoalIds)
+
+// Legacy focus-bound snapshots keep their exact referential checks until the
+// existing explicit migration to a landscape baseline.
+const missingLegacyBaselineGoalPlan = structuredClone(missingBaselineGoalPlan)
+missingLegacyBaselineGoalPlan.planningBaseline = {
+  ...missingLegacyBaselineGoalPlan.planningBaseline!,
+  source: 'learner-planning-scope-v1',
+  scopeGoalId: 'sek1-root',
+  focusGoalIds: ['sek1-root'],
+}
+const missingLegacyBaselineGoalEvaluation = evaluateTeacherCoursePlan(
+  missingLegacyBaselineGoalPlan,
+  sekOneGoalIndex,
+  '2026-09-01',
 )
+assert.equal(missingLegacyBaselineGoalEvaluation.quality.status, 'invalid')
+assert.equal(missingLegacyBaselineGoalEvaluation.metrics, null)
+assert(missingLegacyBaselineGoalEvaluation.quality.issues.some(({ code }) => code === 'CP-BASELINE-GOAL'))
+
+// A curriculum update can split an atom under the selected section and remove
+// or reclassify atoms in other branches. Surviving captured open atoms remain
+// schedulable, captured mastery stays excluded, and new atoms are never added
+// silently to the existing plan's publication subset.
+const evolvingBaseline: LearnerCoursePlanLandscapeBaseline = {
+  source: 'learner-planning-landscape-v1',
+  curriculumId: 'canonical-science',
+  landscapeId: 'canonical-science',
+  scopeAtomicGoalIds: ['mastered', 'open', 'split-old', 'removed-elsewhere', 'reclassified'],
+  openAtomicGoalIds: ['open', 'split-old', 'removed-elsewhere', 'reclassified'],
+  totalAtomicGoalCount: 5,
+  masteredAtomicGoalCount: 1,
+  capturedAt: '2026-09-01T07:00:00.000Z',
+}
+const evolvingPlan = requirePlan(reviseTeacherCoursePlan(createPlan('evolving-curriculum'), {
+  planningBaseline: evolvingBaseline,
+  blocks: [{
+    id: 'evolving-section',
+    kind: 'learning',
+    goalId: 'section',
+    title: 'Sek II',
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
+  }],
+  changedOn: '2026-09-01',
+  recordedAt: '2026-09-01T08:00:00.000Z',
+}))
+const evolvingPlanBefore = structuredClone(evolvingPlan)
+const evolvedIndex = goalMap(
+  uiGoal('section', ['mastered', 'open', 'split-first', 'split-second']),
+  uiGoal('mastered'),
+  uiGoal('open'),
+  uiGoal('split-first'),
+  uiGoal('split-second'),
+  uiGoal('reclassified', ['other-atom']),
+  uiGoal('other-atom'),
+)
+const evolvedEvaluation = evaluateTeacherCoursePlan(evolvingPlan, evolvedIndex, '2026-09-08')
+assert.notEqual(evolvedEvaluation.quality.status, 'invalid')
+assert.equal(evolvedEvaluation.metrics?.scopeAtomicGoalCount, 2)
+assert.equal(evolvedEvaluation.metrics?.plannedGoalCount, 1)
+assert.deepEqual(evolvedEvaluation.assignments[0]?.scopeAtomicGoalIds, ['mastered', 'open'])
+assert.deepEqual(evolvedEvaluation.assignments[0]?.atomicGoalIds, ['open'])
+assert.deepEqual(evolvingPlan, evolvingPlanBefore, 'evaluation cannot rewrite the captured plan or its baseline')
+
+const resavedEvolvingPlan = requirePlan(reviseTeacherCoursePlan(evolvingPlan, {
+  blocks: evolvingPlan.blocks.map((block) => ({ ...block, title: 'Sekundarstufe II' })),
+  changedOn: '2026-09-08',
+  recordedAt: '2026-09-08T08:00:00.000Z',
+}))
+assert.notEqual(evaluateTeacherCoursePlan(resavedEvolvingPlan, evolvedIndex, '2026-09-08').quality.status, 'invalid')
+assert.deepEqual(resavedEvolvingPlan.planningBaseline, evolvingBaseline)
+assert.deepEqual(resavedEvolvingPlan.revisionHistory.at(-1)?.blocks, evolvingPlan.blocks)
+
+for (const missingReferenceIndex of [
+  new Map([...evolvedIndex].filter(([id]) => id !== 'section')),
+  new Map([...evolvedIndex].filter(([id]) => id !== 'open')),
+]) {
+  const invalid = evaluateTeacherCoursePlan(evolvingPlan, missingReferenceIndex, '2026-09-08')
+  assert.equal(invalid.quality.status, 'invalid')
+  assert.equal(invalid.metrics, null)
+  assert(invalid.quality.issues.some(({ code, blockId }) => code === 'CP-GOAL-MISSING' && blockId === 'evolving-section'))
+}
+
+const onlyNewAtomsIndex = goalMap(
+  uiGoal('section', ['new-only']),
+  uiGoal('new-only'),
+)
+const outsideBaselineEvaluation = evaluateTeacherCoursePlan(evolvingPlan, onlyNewAtomsIndex, '2026-09-08')
+assert.equal(outsideBaselineEvaluation.quality.status, 'invalid')
+assert(outsideBaselineEvaluation.quality.issues.some(({ code }) => code === 'CP-GOAL-OUTSIDE-BASELINE'))
 
 // Revisions archive their complete prior plan state; undo is itself a new revision.
 const undoLearningBlock: TeacherCoursePlanBlock = {

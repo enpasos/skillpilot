@@ -1202,10 +1202,31 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   ])
 
   useEffect(() => {
-    if (routeGoalId && openingClassId) {
-      setOpeningClassId(null)
-    }
-  }, [openingClassId, routeGoalId])
+    if (
+      !activeClass
+      || openingClassId !== activeClass.id
+      || !routeGoalId
+      || isTrainerCompositionPending
+      || isTrainerCompositionUnavailable
+    ) return
+
+    // During a subject switch the previous route can survive one render while
+    // the next subject's composition loads. Keep the course open until its own
+    // valid goal route has arrived, otherwise /trainer becomes the overview.
+    const routeGoal = classGoalIndexAll.get(routeGoalId)
+    if (
+      routeGoal?.landscapeId === activeClass.landscapeId
+      && goalMatchesActiveClassConfig(routeGoal)
+    ) setOpeningClassId(null)
+  }, [
+    activeClass,
+    classGoalIndexAll,
+    goalMatchesActiveClassConfig,
+    isTrainerCompositionPending,
+    isTrainerCompositionUnavailable,
+    openingClassId,
+    routeGoalId,
+  ])
 
   useEffect(() => {
     if (classes.length === 0) {

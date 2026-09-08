@@ -3495,3 +3495,53 @@ MCP-Apps-Ressourcen, Start-/Session-/Identitäts-/Locale-/Lernzustandsverträge,
 Speicher-/Sicherheitssemantik, Portalwerte, Reviewfälle, Fixtures und
 Reviewartefakte bleiben unverändert. Keine weitere Historienumschreibung,
 keine Neueinreichung und keine Wiederaufnahme der allgemeinen Curriculum-QS.
+
+### 6.65 Stabile Kursplanung nach fachlichen Updates und beim Fachwechsel
+
+Am **8. September 2026** meldet der Product Owner nach dem Update weiterhin
+inhaltlich gültige Mathematik- und Physikpläne als fälschlich nicht berechenbar,
+einen dadurch abgewiesenen Abschnittsspeichervorgang und den Rücksprung zur
+Kursorganisation beim Fachwechsel. Die angeforderte Korrektur betrifft
+ausschließlich diese bestehenden First-Party-Trainerabläufe und ihre
+Regressionsevidenz; sie ergänzt die Kompatibilitätskorrektur aus Abschnitt 6.54.
+
+Die lokale landschaftsweite Planungsbasis speichert den früheren Katalog samt
+damaliger Offen-/Gemeistert-Zuordnung. Ein inzwischen entfallenes oder in einen
+Cluster umgewandeltes Atom dieses historischen Katalogs macht nicht mehr
+pauschal jeden Abschnitt ungültig. Jeder geplante Abschnitt wird weiterhin
+gegen seine heutige Zielreferenz und die aktuellen sichtbaren Hierarchiekanten
+aufgelöst. Für die Berechnung bleiben ausschließlich die dabei enthaltenen
+ursprünglich erfassten Ziele und deren erfasste Offen-Zuordnung maßgeblich.
+Neue Atome werden nicht stillschweigend aufgenommen. Fehlende tatsächlich
+referenzierte Ziele, ungültige Hierarchien und Abschnitte ohne passende
+erfasste Ziele bleiben Fehler. Die Formprüfung der Basis und die strengere
+Referenzprüfung alter fokusgebundener Basen bleiben erhalten.
+
+Lesen und Vorschau verändern weder Basis, Blöcke, Titel, Termine, Revisionen
+noch persönliche Lernpläne. Das ausdrücklich ausgelöste lokale Speichern
+funktioniert wieder für gültige Abschnitte und behält seine bisherige
+Revisionshistorie. Die Übernahme beim Schüler bleibt eine getrennte bestätigte
+Aktion; Statusvergleich, Aktivierungsprüfung und Backend-Verträge bleiben
+unverändert. Die Browserregression prüft einen inzwischen entfallenen, früher
+gemeisterten Basiseintrag, unveränderten Aktivierungsstatus und Kennzahlen,
+unveränderte Daten beim Öffnen sowie genau eine lokale Speicherrevision ohne
+erneute Publikation.
+
+Beim Wechsel zwischen Mathematik und Physik bleibt der bestehende Kursraum
+geöffnet, bis die Zielroute zur angeforderten Fachkonfiguration gehört und
+deren Komposition verfügbar ist. Eine kurzzeitig noch vorhandene Route des
+vorherigen Fachs darf den Öffnungszustand nicht vorzeitig aufheben. Die echte
+App-Browserregression prüft den Fachwechsel mit verzögert eintreffenden
+Kompositionsdaten sowie die bestehenden Entwurfs- und Navigationsgrenzen.
+
+Record, Runtime-Checker und Regression setzen ausschließlich die bestehenden
+Supplemental-Bindungen von `localTeacherCoursePlan.ts`, seinem Unit-Test,
+`testTrainerCoursePlanUi.ts`, `TrainerView.tsx` und diesem Nachtrag append-only
+fort. Der bisher ungebundene `testTrainerNavigationUi.ts` bleibt ungebunden.
+Frühere Ausnahmen, primäre Runtime- und Baumketten sowie die Menge geschützter
+Dateien bleiben unverändert. OpenAI `1.0.0`, Claude `1.1.1`, ihre Pakete,
+MCP/OAuth, Tools, Schemas, MCP-Apps-Ressourcen, Provider-Startabläufe,
+Prepared Messages, Session-/Identitäts-/Locale-/Lernzustandsverträge,
+Berechtigungen, Speicherung, Portalwerte, Reviewfälle, Fixtures und
+Reviewartefakte bleiben unverändert. Kein Deployment, keine Portalaktion,
+keine Neueinreichung und keine Wiederaufnahme der allgemeinen Curriculum-QS.

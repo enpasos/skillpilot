@@ -8,6 +8,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 
 import { startViteTestServer } from './viteTestServer'
 import { CoursePlanLearningBook } from '../src/components/CoursePlanLearningBook'
+import type { TeacherCoursePlan } from '../src/coursePlanTypes'
 import { convertLearningGoal } from '../src/goalTypes'
 import { GOAL_BOOK_PUBLICATION_REGISTRY, goalBookRoute } from '../src/utils/goalBookPublicationRegistry'
 import {
@@ -942,6 +943,7 @@ try {
       blocks,
     }
   }
+  let currentServerPlan: ReturnType<typeof learnerPlanDetail> | null = null
   personalizedPage.on('pageerror', (error) => personalizedBrowserErrors.push(error.message))
   let releasePlanningScope: (() => void) | undefined
   const planningScopeHold = new Promise<void>((resolve) => {
@@ -1034,7 +1036,7 @@ try {
         body: JSON.stringify({
           asOf: personalizedToday,
           followLearningPlans: true,
-          plans: [learnerPlanDetail({
+          plans: [currentServerPlan ?? learnerPlanDetail({
             revision: existingLearnerPlanRevision,
             planLabel: 'Bestehender Fachplan',
             blocks: [],
@@ -1095,7 +1097,7 @@ try {
           status: 200,
           contentType: 'application/json',
           headers: { 'Cache-Control': 'no-store' },
-          body: JSON.stringify(learnerPlanDetail({
+          body: JSON.stringify(currentServerPlan ?? learnerPlanDetail({
             revision: existingLearnerPlanRevision,
             planLabel: 'Bestehender Fachplan',
             blocks: [],
@@ -1364,6 +1366,66 @@ try {
   ]) {
     assert(!serializedLearnerPlanWrite.includes(forbidden), `learner-plan write excludes ${forbidden}`)
   }
+
+  // Reopen an unchanged plan after a curriculum update removed an unrelated
+  // atom from its historical, landscape-wide capture. The planned clusters
+  // and every atom in the already activated learner plan still exist.
+  currentServerPlan = learnerPlanDetail({
+    revision: existingLearnerPlanRevision + 1,
+    planLabel: '2026/27',
+    blocks: learnerPlanWrite.blocks ?? [],
+  })
+  await personalizedPage.getByTestId('trainer-goals-tab').click()
+  const historicalPlan = await personalizedPage.evaluate((coursePlanId) => {
+    const key = 'skillpilot_teacher_course_plans_v1'
+    const store = JSON.parse(localStorage.getItem(key)!) as {
+      plansByClassId: Record<string, TeacherCoursePlan>
+    }
+    const plan = store.plansByClassId[coursePlanId]!
+    const baseline = plan.planningBaseline!
+    baseline.scopeAtomicGoalIds.push('retired-unplanned-curriculum-atom')
+    baseline.totalAtomicGoalCount += 1
+    baseline.masteredAtomicGoalCount += 1
+    localStorage.setItem(key, JSON.stringify(store))
+    return plan
+  }, personalizedCoursePlanId)
+  await personalizedPage.getByTestId('trainer-plan-tab').click()
+  const sharedPlanning = personalizedPage.getByTestId('trainer-learning-plan-activation')
+  await sharedPlanning.getByRole('button', { name: 'Fachplan bearbeiten: Mathematik', exact: true })
+    .getByText('Aktiv für den Schüler', { exact: true }).waitFor()
+  assert(await sharedPlanning.getByText('Prüfung nötig', { exact: true }).count() === 0,
+    'an unrelated retired baseline atom does not demand reactivation of a current subject plan')
+  await personalizedPage.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
+  await personalizedPage.getByText('57 offene von 263 atomaren Zielen verplant', { exact: true }).waitFor()
+  assert(await personalizedPage.getByText('Planlage nicht berechenbar', { exact: true }).count() === 0,
+    'historical atoms outside the current plan do not invalidate its calculation')
+  const readPersonalizedPlan = () => personalizedPage.evaluate((coursePlanId) => {
+    const store = JSON.parse(localStorage.getItem('skillpilot_teacher_course_plans_v1')!) as {
+      plansByClassId: Record<string, TeacherCoursePlan>
+    }
+    return store.plansByClassId[coursePlanId]!
+  }, personalizedCoursePlanId)
+  assertJsonEqual(await readPersonalizedPlan(), historicalPlan,
+    'reading the repaired plan does not rewrite the baseline, revisions, blocks, or history')
+  await personalizedPage.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
+  const sekTwoBlock = personalizedPage.getByTestId('course-plan-block').filter({
+    has: personalizedPage.getByRole('heading', { name: 'Sekundarstufe II (GK + LK)', exact: true }),
+  })
+  await sekTwoBlock.getByRole('button', { name: 'Bearbeiten', exact: true }).click()
+  const reopenedForm = personalizedPage.getByRole('heading', { name: 'Planabschnitt bearbeiten', exact: true })
+    .locator('..').locator('..')
+  const reopenedSelect = reopenedForm.getByRole('combobox', { name: 'Lernziel oder Cluster' })
+  assert(await reopenedSelect.inputValue() === sekTwoScopeGoalId,
+    'editing preserves the existing synthetic Sek-II cluster reference')
+  assert((await reopenedSelect.locator('option:checked').textContent())?.includes('4 offen von 4 atomaren Zielen'),
+    'the selected cluster remains visibly plannable after the curriculum update')
+  await reopenedForm.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
+  await reopenedForm.waitFor({ state: 'detached' })
+  const resavedPlan = await readPersonalizedPlan()
+  assert(resavedPlan.revision === historicalPlan.revision + 1, 'explicit section saving succeeds in one local revision')
+  assertJsonEqual(resavedPlan.blocks, historicalPlan.blocks, 'resaving keeps the existing clusters and dates')
+  assertJsonEqual(resavedPlan.planningBaseline, historicalPlan.planningBaseline, 'resaving retains the historical planning capture')
+  assert(learnerPlanWrites.length === 1, 'reading and locally resaving after an update never republishes the learner plan')
   assert(
     personalizedBrowserErrors.length === 0,
     `focus-independent course-plan browser errors:\n${personalizedBrowserErrors.join('\n')}`,

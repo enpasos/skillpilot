@@ -1936,7 +1936,7 @@ export function assignAtomicGoalsToLearningBlocks(
   const baseline = normalized.plan.planningBaseline
   const baselineScope = baseline ? new Set(baseline.scopeAtomicGoalIds) : null
   const baselineOpen = baseline ? new Set(baseline.openAtomicGoalIds) : null
-  if (baseline) {
+  if (baseline?.source === 'learner-planning-scope-v1') {
     for (const goalId of baseline.scopeAtomicGoalIds) {
       const goal = goalIndex.get(goalId)
       const children = goal ? childrenForGoal(goal, visibleChildren) : []
@@ -1949,6 +1949,12 @@ export function assignAtomicGoalsToLearningBlocks(
       }
     }
   }
+  // A landscape baseline records the initial open/mastered split. Its atom
+  // catalogue is historical: curriculum updates may remove or split an atom
+  // without changing the authored section. Resolve each section against the
+  // current projected graph below, then retain its captured scope/open subset.
+  // Obsolete snapshot atoms cannot invalidate a still-resolvable section;
+  // missing section roots or current hierarchy edges remain explicit errors.
   for (const { block } of chronologicalLearningBlocks(normalized.plan)) {
     const resolution = resolveAtomicGoalDescendants(block.goalId, goalIndex, visibleChildren)
     if (resolution.quality.status !== 'complete') {
