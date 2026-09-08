@@ -6,6 +6,13 @@ für Beta-Nutzer vereinfachen. Betrachtet werden persönliche Claude-Pro-Konten
 und die bestehenden, unveränderten SkillPilot-Pluginpakete. Team/Enterprise
 und Änderungen am Zuschnitt des Plugins gehören nicht zu diesem Vorhaben.
 
+Der aktuelle Betatester nutzt ein **iPhone**; die **Entwicklertests laufen
+weiterhin auf Android**. Beide Geräte gehören damit zum tatsächlichen
+Nutzungskontext. Die Gerätezuordnung ändert die bestehenden Entwicklertests
+nicht. Der angestrebte einfache Installations- und Updateablauf gilt für beide;
+die öffentliche Anleitung bleibt geräteneutral. Ein erfolgreicher Desktoptest
+oder eine schmale Chromium-Ansicht bestätigt keinen realen Mobilgeräteablauf.
+
 ## Sofort nutzbarer Weg
 
 Die angepasste `/plugins`-Seite führt durch fünf Schritte: aktuelle Datei
@@ -140,7 +147,12 @@ kein authentifizierter persönlicher Claude-Browser zur Verfügung. Die lokalen
 Browserprüfungen verifizieren unsere Anleitung und Dateiauslieferung, nicht
 Claudes Verhalten beim Ersetzen eines installierten Plugins.
 
-## Priorität 2: ein einmal eingerichteter Browserhelfer
+## Option: ein einmal eingerichteter Browserhelfer
+
+Ein nur am Desktop nachgewiesener Browserhelfer löst die mobile Installation
+und Aktualisierung auf Android oder iPhone noch nicht. Seine Bewertung muss
+die tatsächlich verwendeten mobilen Abläufe berücksichtigen; ein zusätzlicher
+Computer darf dabei nicht stillschweigend vorausgesetzt werden.
 
 Wenn der native Uploadweg zuverlässig ersetzt, ist ein eng begrenzter
 Browserhelfer ein konkreter Prototypkandidat. Der Nutzer richtet ihn einmal ein

@@ -6,9 +6,7 @@ import {
   ExternalLink,
   RefreshCw,
   ShieldCheck,
-  Smartphone,
   Store,
-  Volume2,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -85,13 +83,8 @@ const copy = {
     planDetail: 'Anthropic bietet Plugins auch in weiteren bezahlten Tarifen an. Die kandidatengenaue Abnahme von SkillPilot 1.1.1 mit Claude Pro steht noch aus.',
     install: 'Einrichtung und derzeitige Updates in Claude Web: aktuelle Plugin-Datei herunterladen → bei Bedarf nur die alte SkillPilot-Installation entfernen → Datei hochladen → Version 1.1.1 prüfen → enthaltenen Konnektor verbinden.',
     connectAndStart: 'Erst wenn „SkillPilot Coach v1“ in Version 1.1.1 angezeigt wird und sein enthaltener SkillPilot-Konnektor verbunden ist, ist die Einrichtung abgeschlossen. Jede Lernsession startest du anschließend wieder auf SkillPilot.com.',
-    android: 'Claude für Android ist als anschließender Nutzungspfad mit demselben Claude-Konto vorgesehen. Die kandidatengenaue Abnahme von Version 1.1.1 auf Android steht noch aus.',
-    voiceTested: 'Der Voice Mode ist für Version 1.1.1 kandidatengenau bestätigt. Interaktive UI-Komponenten werden darin nicht durchgängig garantiert. Das ist keine Funktionsgarantie von Anthropic.',
-    voiceUntested: 'Die kandidatengenaue Abnahme des Voice Mode für Version 1.1.1 steht noch aus.',
     independentTitle: 'Unabhängiger Beta-Kandidat',
     independentText: 'Dieses Plugin wird von SkillPilot bereitgestellt. Es ist nicht offiziell von Anthropic verifiziert, gesponsert oder garantiert.',
-    testedSurfaces: 'Kandidatengenau bestätigte Oberflächen',
-    noTestedSurfaces: 'Für Version 1.1.1 noch ausstehend.',
     links: 'Dokumentation und Kontakt',
     source: 'Quellcode',
     privacy: 'Datenschutz',
@@ -166,13 +159,8 @@ const copy = {
     planDetail: 'Anthropic also offers plugins on other paid plans. Exact-candidate acceptance of SkillPilot 1.1.1 with Claude Pro is still pending.',
     install: 'Setup and current updates in Claude Web: download the current plugin file → remove only the old SkillPilot installation if needed → upload the file → check version 1.1.1 → connect the bundled connector.',
     connectAndStart: 'Setup is complete only after SkillPilot Coach v1 displays version 1.1.1 and its bundled SkillPilot connector is connected. Start every learning session on SkillPilot.com afterwards.',
-    android: 'Claude for Android is the intended subsequent-use route with the same Claude account. Exact-candidate acceptance of version 1.1.1 on Android is still pending.',
-    voiceTested: 'Voice mode is confirmed for the exact 1.1.1 candidate. Interactive UI components are not guaranteed consistently there. This is not a functionality guarantee from Anthropic.',
-    voiceUntested: 'Exact-candidate acceptance of voice mode for version 1.1.1 is still pending.',
     independentTitle: 'Independent beta candidate',
     independentText: 'This plugin is provided by SkillPilot. It is not officially verified, sponsored, or guaranteed by Anthropic.',
-    testedSurfaces: 'Exact-candidate confirmed surfaces',
-    noTestedSurfaces: 'Still pending for version 1.1.1.',
     links: 'Documentation and contact',
     source: 'Source code',
     privacy: 'Privacy',
@@ -461,24 +449,6 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
                 <p className="mt-2 text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.install}</p>
                 <p className="mt-2 text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.connectAndStart}</p>
               </div>
-            </li>
-            <li className="flex gap-3 rounded-2xl border border-border-color p-4">
-              <Smartphone className="mt-0.5 shrink-0 text-violet-700 dark:text-violet-400" size={22} aria-hidden="true" />
-              <div>
-                <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.android}</p>
-                <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.testedSurfaces}</p>
-                <p className="mt-1 text-sm text-text-secondary">
-                  {requirements.testedSurfaces.length > 0
-                    ? requirements.testedSurfaces.map((surface) => formatSurface(surface, language)).join(' · ')
-                    : text.noTestedSurfaces}
-                </p>
-              </div>
-            </li>
-            <li className="flex gap-3 rounded-2xl border border-border-color p-4">
-              <Volume2 className="mt-0.5 shrink-0 text-amber-700 dark:text-amber-400" size={22} aria-hidden="true" />
-              <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-100">
-                {requirements.voiceMode ? text.voiceTested : text.voiceUntested}
-              </p>
             </li>
             </ul>
         </section>

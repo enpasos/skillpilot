@@ -4255,8 +4255,97 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "f0db48f582afa02b5b5d5de234d3bf1feb7623eaf1cecca796f60a5eb203644b"
         }
       ]
+    },
+    {
+      "id": "2026-09-08-claude-install-guide-remove-platform-and-voice-cards",
+      "approvedAt": "2026-09-08",
+      "approvedBy": "product-owner",
+      "reason": "Remove the two screenshot-identified Android/tested-surface and Voice Mode acceptance cards from the first-party plugin guide without replacement, as explicitly requested by the Product Owner whose beta tester uses an iPhone.",
+      "scope": "Only remove the two /plugins presentation list items, their ten exclusive German/English copy fields and unused Smartphone/Volume2 imports in PluginCatalogView.tsx, remove only the two corresponding obsolete positive text assertions in claudePluginPublication.test.ts while retaining every parser/metadata assertion, and append section 6.67 documentation. Add no replacement card, iPhone/iOS support promise or platform acceptance claim. Preserve the existing download/upload sequence, version/integrity validation, bundled connector, return flow and every other guide disclosure. Leave publication parsers and metadata including testedSurfaces and voiceMode, actual acceptance/readiness states, evidence and the Marketplace guide decision unchanged. Device clarification in the existing research document remains unbound and does not change support or runtime contracts. Advance only the three existing supplemental bindings below; preserve section 6.66, all historical exceptions, primary runtime/tree chains and the frozen-path set. Preserve submitted OpenAI 1.0.0 and Claude 1.1.1 packages and artifacts, MCP/OAuth/tools/schemas/MCP-Apps resources, provider launch handlers, prepared messages, session/identity/locale/learning-state/privacy/storage/security contracts, portal, review cases, fixtures and artifacts. No deployment, external publication, portal mutation or general curriculum QA resumption.",
+      "target": "current-first-party-plugin-guide-two-card-removal-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-requested-guide-presentation-removal-with-unchanged-submitted-contract",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/src/views/PluginCatalogView.tsx",
+          "priorAuthorizedSha256": "0e669349faf34e99afb97986203e04c92a3484e54d4871d360dec0ac544d4873",
+          "authorizedSha256": "8c08239bab4bd2600f60665fb739ed1ccd8bd507e8dcd7314c00791eb58f286f"
+        },
+        {
+          "path": "app/src/utils/claudePluginPublication.test.ts",
+          "priorAuthorizedSha256": "f75deb625fbd717fac1308388b3b3444215b0abb8c6b7703daf60e91a722175c",
+          "authorizedSha256": "68d1e60dd2681b0e139d862ca0d6b7186d2b07c5c95a9abc7539a602b1511dc2"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "f0db48f582afa02b5b5d5de234d3bf1feb7623eaf1cecca796f60a5eb203644b",
+          "authorizedSha256": "915b4b05ce547008c034253afca6647389ebdc9cb0c20c5d8b7ecbcb8da4facf"
+        }
+      ]
     }
   ]);
+});
+
+test("Claude guide card removal changes only existing presentation, test and documentation bindings", () => {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  const index = freeze.authorizedRuntimeExceptions.findIndex(
+    ({ id }) => id === "2026-09-08-claude-install-guide-remove-platform-and-voice-cards",
+  );
+  assert.ok(index > 0);
+  const exception = freeze.authorizedRuntimeExceptions[index];
+  assert.equal(exception.supplementalOnly, true);
+  assert.equal(Object.hasOwn(exception, "protectedFile"), false);
+  assert.equal(Object.hasOwn(exception, "protectedTree"), false);
+  assert.deepEqual(exception.additionalFiles.map(({ path }) => path), [
+    "app/src/views/PluginCatalogView.tsx",
+    "app/src/utils/claudePluginPublication.test.ts",
+    "docs/deploy/openai-plugin-v1-review-freeze.md",
+  ]);
+  const before = freeze.authorizedRuntimeExceptions.slice(0, index);
+  const after = freeze.authorizedRuntimeExceptions.slice(0, index + 1);
+  const priorFiles = resolveAuthorizedSupplementalFileChains(before, freeze.authorizedCopyClarifications);
+  const currentFiles = resolveAuthorizedSupplementalFileChains(after, freeze.authorizedCopyClarifications);
+  assert.deepEqual([...currentFiles.keys()], [...priorFiles.keys()]);
+  assert.equal(currentFiles.has("docs/deploy/claude-personal-plugin-update-options.md"), false);
+  const changedPaths = new Set(exception.additionalFiles.map(({ path }) => path));
+  for (const file of exception.additionalFiles) {
+    assert.equal(file.priorAuthorizedSha256, priorFiles.get(file.path)?.authorizedSha256);
+    assert.notEqual(file.authorizedSha256, file.priorAuthorizedSha256);
+  }
+  for (const [path, file] of priorFiles) {
+    if (!changedPaths.has(path)) assert.deepEqual(currentFiles.get(path), file);
+  }
+  assert.deepEqual(
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, after),
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, before),
+  );
+  assert.deepEqual(
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, after),
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, before),
+  );
+  const publicationTest = exception.additionalFiles[1];
+  const currentTest = readFileSync(resolve(repositoryRoot, publicationTest.path), "utf8");
+  const preservedAssertion = "assert.match(pluginCatalogSource, /Claude Pro/u)\n";
+  const removedAssertions = "assert.match(pluginCatalogSource, /Android/u)\n"
+    + "assert.match(pluginCatalogSource, /Voice Mode|Voice mode/u)\n";
+  assert.equal(currentTest.split(preservedAssertion).length, 2);
+  assert.equal(
+    createHash("sha256")
+      .update(currentTest.replace(preservedAssertion, preservedAssertion + removedAssertions))
+      .digest("hex"),
+    publicationTest.priorAuthorizedSha256,
+    "Only the two obsolete card-presence assertions may be removed; parser and metadata assertions stay exact.",
+  );
+  const documentation = exception.additionalFiles.at(-1);
+  const currentText = readFileSync(resolve(repositoryRoot, documentation.path), "utf8");
+  const appendix = "\n### 6.67 Zwei Claude-Hinweiskarten ersatzlos entfernen\n";
+  assert.equal(currentText.split(appendix).length, 2);
+  assert.equal(
+    createHash("sha256").update(currentText.split(appendix)[0]).digest("hex"),
+    documentation.priorAuthorizedSha256,
+    "Removing guide cards must preserve section 6.66 and all earlier freeze-documentation bytes.",
+  );
 });
 
 test("Claude file-install guide withdraws promotion without changing published evidence or freeze boundaries", () => {

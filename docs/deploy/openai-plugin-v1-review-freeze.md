@@ -3610,3 +3610,40 @@ Berechtigungssemantik, Portalwerte, Reviewfälle, Fixtures und Reviewartefakte
 bleiben unverändert. Kein Deployment, keine externe Veröffentlichung,
 keine Portalaktion, keine Neueinreichung und keine Wiederaufnahme der
 allgemeinen Curriculum-QS.
+
+### 6.67 Zwei Claude-Hinweiskarten ersatzlos entfernen
+
+Der Product Owner verlangt am **8. September 2026** ausdrücklich, die
+gezeigte Android-/Oberflächenkarte und die Voice-Mode-Abnahmekarte unter
+`/plugins` ersatzlos zu entfernen. Sein Hinweis auf das tatsächlich verwendete
+iPhone des Betatesters beschreibt dessen Gerät; er ist keine neue
+iOS-Supportzusage oder kandidatengenaue Plattformabnahme.
+
+Die Korrektur beschränkt sich in `PluginCatalogView.tsx` auf die beiden
+Listeneinträge, die ausschließlich dafür verwendeten deutschen und englischen
+Copyfelder sowie die dadurch ungenutzten `Smartphone`- und `Volume2`-Imports.
+Der zugehörige Publikationstest entfernt ausschließlich die zwei bisherigen
+Assertions, die diese Android- und Voice-Mode-Texte auf der Seite verlangten;
+seine Parser- und Metadatenassertions bleiben unverändert. Es gibt keine
+Ersatzkarte. Der vorhandene Download-/Upload-Ablauf, seine
+Versions- und Integritätsprüfung, Konnektor-Verbindung, Rückkehr zu SkillPilot
+und alle übrigen Hinweise bleiben unverändert.
+
+Die Publikationsparser und -metadaten einschließlich `testedSurfaces` und
+`voiceMode`, die tatsächlichen Abnahme- und Readiness-Zustände, gespeicherte
+Nachweise und die Marketplace-Guide-Entscheidung bleiben unverändert. Eine
+ergänzende Gerätedokumentation im ungebundenen Recherchetext ändert ebenfalls
+keine dieser Freigaben oder Laufzeitverträge.
+
+Record, Runtime-Checker und Regression ergänzen ausschließlich eine neue
+Supplemental-Exception für die drei bereits gebundenen Dateien
+`PluginCatalogView.tsx`, `claudePluginPublication.test.ts` und diesen Nachtrag.
+Abschnitt 6.66, alle historischen
+Ausnahmen, primären Runtime- und Baumketten sowie die Menge geschützter
+Dateien bleiben unverändert. OpenAI `1.0.0`, Claude `1.1.1`, ihre Paket- und
+Artefaktbytes, MCP/OAuth, Tools, Schemas, MCP-Apps-Ressourcen, Provider-Start,
+Prepared Messages, Session-, Identitäts-, Locale-, Lernzustands-, Datenschutz-,
+Speicher- und Berechtigungssemantik, Portalwerte, Reviewfälle, Fixtures und
+Reviewartefakte bleiben unverändert. Kein Deployment, keine externe
+Veröffentlichung oder Portalaktion, keine Neueinreichung und keine
+Wiederaufnahme der allgemeinen Curriculum-QS.

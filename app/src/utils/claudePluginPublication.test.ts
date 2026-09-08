@@ -339,8 +339,6 @@ for (const requiredNavigationCopy of [
 }
 assert.match(pluginCatalogSource, /to="\/"/u)
 assert.match(pluginCatalogSource, /Claude Pro/u)
-assert.match(pluginCatalogSource, /Android/u)
-assert.match(pluginCatalogSource, /Voice Mode|Voice mode/u)
 assert.doesNotMatch(pluginCatalogSource, /claude-plugin-marketplace|stepMarketplace|CLAUDE_MARKETPLACE_REPOSITORY_URL/u,
   'the withdrawn Marketplace guide must not retain hidden installation instructions')
 assert.doesNotMatch(pluginCatalogSource, /mcp-claude-v1\.skillpilot\.com/u)
