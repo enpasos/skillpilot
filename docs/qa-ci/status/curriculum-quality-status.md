@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-09-07T21:06:02.165Z
+Generated: 2026-09-08T02:22:01.428Z
 Rules version: curriculum-quality-v4
 
 ## Summary
@@ -42,7 +42,7 @@ Rules version: curriculum-quality-v4
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
 | Mathematik (Gymnasium, DE) | M6 | 1183 | 925 | 31/31 | 16/16 | 2 | 1 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Physik (Gymnasium, DE) | M6 | 715 | 601 | 25/25 | 16/16 | 2 | 1 | 0 |
+| Physik (Gymnasium, DE) | M6 | 718 | 603 | 25/25 | 16/16 | 2 | 1 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
@@ -375,7 +375,7 @@ Rules version: curriculum-quality-v4
 | Latein (Gymnasium, DE) | 16/16 | 115 | 136 | 16 | 8481 | 8481 | 8481 | 0 | 8481 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
 | Mathematik (Gymnasium, DE) | 16/16 | 715 | 925 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 715 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
-| Physik (Gymnasium, DE) | 16/16 | 432 | 601 | 16 | 6289 | 6289 | 6289 | 0 | 6289 | 0 | 0 | 0 | 0 | 0 | 424 (100%) |
+| Physik (Gymnasium, DE) | 16/16 | 433 | 603 | 16 | 6289 | 6289 | 6289 | 0 | 6289 | 0 | 0 | 0 | 0 | 0 | 424 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |
 | Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |

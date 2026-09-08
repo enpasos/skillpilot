@@ -1,0 +1,500 @@
+{
+  "recordType": "current-layer-a-conformance-expectation-refresh",
+  "status": "PASS-all-constituent-false-branch-steps-resumed-after-diagnosed-failure",
+  "scope": "Mechanical current Mathematik Layer A publication-evidence and release-model expectation refresh, followed by separately authorized narrow redistribution schema/generator support for exact AI-assisted repository-native provenance claims. No curriculum, asset, QA, approval, provider, runtime, package-version or publication changes. The new provenance claim creates neither deterministic-render evidence nor redistribution permission.",
+  "baseline": {
+    "commit": "182eac641",
+    "laterQaChangeCommit": "74adc6a74",
+    "reason": "The expectation profiles predate already committed image replacements. Their expected human-approved count and embedded byte total became stale."
+  },
+  "changes": [
+    {
+      "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+      "pointer": "/expectedCounts/quality/humanApprovedVisualizations",
+      "before": 143,
+      "after": 137
+    },
+    {
+      "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+      "pointer": "/expectedCounts/quality/openVisualizations",
+      "before": 581,
+      "after": 587
+    },
+    {
+      "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json",
+      "pointer": "/contracts/publicationEvidenceProfileSha256",
+      "before": "19190f68f5663c86d4adca11e08041aa7c02cae3791c7829fdc52dac732a906a",
+      "after": "ef1112dbb562c850dc8b1423b637d16e854348c4fa4737936163b975d388aafc"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json",
+      "pointer": "/expectedCounts/embeddedImageBytes",
+      "before": 1594557080,
+      "after": 1584057754
+    }
+  ],
+  "hashBindings": {
+    "qaPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+    "baselineCommit": "182eac641",
+    "baselineQaRawSha256": "sha256:da5a99c6950fcc5ac00c7b8ca30d356a25b353c853cee7837c6bca2840321427",
+    "currentQaRawSha256": "sha256:381a34e2f6d9ee9916cd413f315093b559fd865a4261b4a8f5043517346725d8",
+    "headQaRawSha256": "sha256:381a34e2f6d9ee9916cd413f315093b559fd865a4261b4a8f5043517346725d8",
+    "profileHashes": {
+      "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json": {
+        "beforeRawSha256": "sha256:19190f68f5663c86d4adca11e08041aa7c02cae3791c7829fdc52dac732a906a",
+        "afterRawSha256": "sha256:ef1112dbb562c850dc8b1423b637d16e854348c4fa4737936163b975d388aafc"
+      },
+      "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json": {
+        "beforeRawSha256": "sha256:5d66b28069b6caa755d5e9cf4ad08f43d0ae08828b8b886a53d3fdbb10ad80e0",
+        "afterRawSha256": "sha256:0be8b2dcee63331ff9d86fdec0e9009a4753880646245f97ae49887e4901b08a"
+      }
+    }
+  },
+  "hashConventions": {
+    "contractBinding": "SHA-256 of exact raw UTF-8 file bytes, not normalized JSON.",
+    "publicationProfileCanonicalSortedCompactNoNewline": {
+      "before": "sha256:63620ece32f488bbe53f9bdf2377367a285431ce40931c28a245fdd8f664cc85",
+      "after": "sha256:f46eb54cb2d7efe32991c2e7db69e96c15531c4205501d3e281621315c576c02"
+    },
+    "historicalFixturePolicy": "Historical synthetic fixture/candidate hashes were not rewritten. Current native contract and builder tests accept their existing internally consistent bindings."
+  },
+  "approvalEvidence": {
+    "source": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+    "baselineAtomicHumanApproved": 143,
+    "currentAtomicHumanApproved": 137,
+    "lostCount": 6,
+    "gainedCount": 0,
+    "interpretation": "All six current images have changed SHA bindings and explicitly lack current human approval. AI approval is not human approval. Open publication debt remains open; this refresh creates no approval.",
+    "cases": [
+      {
+        "id": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+        "title": "Ähnlichkeitsbeziehungen ebener Figuren untersuchen",
+        "before": {
+          "kind": "curricularAtomic",
+          "humanApproved": "yes",
+          "sha": "sha256:03167682b0e6822d7314e8cdc284177e7fcc5e54994a307783f9b7fe0871284a",
+          "reviewedAt": "2026-07-06T15:19:48.921Z"
+        },
+        "after": {
+          "kind": "curricularAtomic",
+          "humanApproved": "no",
+          "sha": "sha256:bfbdcb7a5d25c32facec4dc351964925d9000265b789c5c1eb89b64e44829f4c",
+          "reviewedAt": null,
+          "aiApproved": "yes"
+        }
+      },
+      {
+        "id": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+        "title": "Analysisgrundlagen in Q1-Anschlussaufgaben nutzen",
+        "before": {
+          "kind": "curricularAtomic",
+          "humanApproved": "yes",
+          "sha": "sha256:4ef85ed77276a421e32056bc58557d7e386e3ec0d39fc8404242bc5c70118c32",
+          "reviewedAt": "2026-07-06T15:19:48.921Z"
+        },
+        "after": {
+          "kind": "curricularAtomic",
+          "humanApproved": "no",
+          "sha": "sha256:bab37f3c1a277c7534d31cf737ebef80ec7763a48d98d803f19ae8169642a64c",
+          "reviewedAt": null,
+          "aiApproved": "yes"
+        }
+      },
+      {
+        "id": "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+        "title": "Asymptotisches Verhalten begrenzten Wachstums beschreiben",
+        "before": {
+          "kind": "curricularAtomic",
+          "humanApproved": "yes",
+          "sha": "sha256:5a1d076573527274e7ff29dc33545f4d39ae1b0beed04402ca41ba31101a58a4",
+          "reviewedAt": "2026-07-07T05:10:01.854Z"
+        },
+        "after": {
+          "kind": "curricularAtomic",
+          "humanApproved": "no",
+          "sha": "sha256:001b1c50b36cf0f7981913412c0b24e092923a464d1488b6b68403dccc6f7673",
+          "reviewedAt": null,
+          "aiApproved": "yes"
+        }
+      },
+      {
+        "id": "ef1524f1-0b2f-59f7-a001-5ab3e3dececb",
+        "title": "Eigenschaften geometrischer Figuren begründen",
+        "before": {
+          "kind": "curricularAtomic",
+          "humanApproved": "yes",
+          "sha": "sha256:4eb68aa55ef27e3a5ed3e1cd2f40186791cc072bc7c6041b6770ec9d6aecc48c",
+          "reviewedAt": "2026-07-09T18:40:51.844Z"
+        },
+        "after": {
+          "kind": "curricularAtomic",
+          "humanApproved": "no",
+          "sha": "sha256:8b6fad21e5ae75fbdaf80df2ed088381978f5ff36538756904040f9836514cfa",
+          "reviewedAt": null,
+          "aiApproved": "yes"
+        }
+      },
+      {
+        "id": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+        "title": "Einfache geometrische Figuren beschreiben",
+        "before": {
+          "kind": "curricularAtomic",
+          "humanApproved": "yes",
+          "sha": "sha256:999417e0855b5fed4a07ac9b14969c62d838a9a13f44d5a7f188c7ad1cb5bf64",
+          "reviewedAt": "2026-07-09T20:03:02.085Z"
+        },
+        "after": {
+          "kind": "curricularAtomic",
+          "humanApproved": "no",
+          "sha": "sha256:623431c71b7a84b638f96d723fe6ba1462bfdb2e5d35b77c297135e0505beb02",
+          "reviewedAt": null,
+          "aiApproved": "yes"
+        }
+      },
+      {
+        "id": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "title": "Einfache geometrische Körper im Raum beschreiben",
+        "before": {
+          "kind": "curricularAtomic",
+          "humanApproved": "yes",
+          "sha": "sha256:b48d978f2dcad578150b031d5ba2df38e40f962c3f5a56e1e19844e1646cfd6e",
+          "reviewedAt": "2026-07-08T04:32:34.157Z"
+        },
+        "after": {
+          "kind": "curricularAtomic",
+          "humanApproved": "no",
+          "sha": "sha256:de62c355c9e489c16e2bdc17846f3a3d78e7b388bfa9e0eaa3231b454ecf1a15",
+          "reviewedAt": null,
+          "aiApproved": "yes"
+        }
+      }
+    ]
+  },
+  "imageByteEvidence": {
+    "method": "Resolve every active goal-visualization link in the baseline and current canonical landscape. Baseline sizes are exact git ls-tree -rl object sizes at 182eac641; current sizes are filesystem stat sizes. The native compiler independently hashes and sizes the same referenced assets.",
+    "sourceLandscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "beforeCount": 742,
+    "afterCount": 742,
+    "beforeBytes": 1594557080,
+    "afterBytes": 1584057754,
+    "deltaBytes": -10499326,
+    "sumOfIndividualDeltas": -10499326,
+    "removedGoals": [],
+    "changes": [
+      {
+        "goalId": "281e0c6e-d06d-580f-8443-4369f0ea524b",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/281e0c6e-d06d-580f-8443-4369f0ea524b/281e0c6e-d06d-580f-8443-4369f0ea524b.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/281e0c6e-d06d-580f-8443-4369f0ea524b/281e0c6e-d06d-580f-8443-4369f0ea524b.jpg",
+        "beforeBytes": 2232957,
+        "afterBytes": 1841865,
+        "deltaBytes": -391092
+      },
+      {
+        "goalId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.png",
+        "beforeBytes": 2106366,
+        "afterBytes": 148071,
+        "deltaBytes": -1958295
+      },
+      {
+        "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/2713980f-75d2-5455-a8cb-bcd3888c49a0/2713980f-75d2-5455-a8cb-bcd3888c49a0.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/2713980f-75d2-5455-a8cb-bcd3888c49a0/2713980f-75d2-5455-a8cb-bcd3888c49a0.png",
+        "beforeBytes": 2485347,
+        "afterBytes": 149020,
+        "deltaBytes": -2336327
+      },
+      {
+        "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c/e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c.jpg",
+        "beforeBytes": 2662400,
+        "afterBytes": 2102777,
+        "deltaBytes": -559623
+      },
+      {
+        "goalId": "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/ccd83f05-a0ae-4cd1-8917-24793a219fee/ccd83f05-a0ae-4cd1-8917-24793a219fee.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/ccd83f05-a0ae-4cd1-8917-24793a219fee/ccd83f05-a0ae-4cd1-8917-24793a219fee.jpg",
+        "beforeBytes": 2397354,
+        "afterBytes": 1961865,
+        "deltaBytes": -435489
+      },
+      {
+        "goalId": "848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/848af536-c7e5-4df0-a4e9-d5d0ff15244c/848af536-c7e5-4df0-a4e9-d5d0ff15244c.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/848af536-c7e5-4df0-a4e9-d5d0ff15244c/848af536-c7e5-4df0-a4e9-d5d0ff15244c.jpg",
+        "beforeBytes": 1801313,
+        "afterBytes": 1791942,
+        "deltaBytes": -9371
+      },
+      {
+        "goalId": "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/df7338ef-65ba-5ece-8aec-7f520dfe5710/df7338ef-65ba-5ece-8aec-7f520dfe5710.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/df7338ef-65ba-5ece-8aec-7f520dfe5710/df7338ef-65ba-5ece-8aec-7f520dfe5710.png",
+        "beforeBytes": 2176941,
+        "afterBytes": 178240,
+        "deltaBytes": -1998701
+      },
+      {
+        "goalId": "5ccf0d90-2967-576e-8f72-f002792d8515",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/5ccf0d90-2967-576e-8f72-f002792d8515/5ccf0d90-2967-576e-8f72-f002792d8515.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/5ccf0d90-2967-576e-8f72-f002792d8515/5ccf0d90-2967-576e-8f72-f002792d8515.jpg",
+        "beforeBytes": 2096267,
+        "afterBytes": 1789471,
+        "deltaBytes": -306796
+      },
+      {
+        "goalId": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/d379e28b-d9d5-5cab-b383-318e0499c0c7/d379e28b-d9d5-5cab-b383-318e0499c0c7.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/d379e28b-d9d5-5cab-b383-318e0499c0c7/d379e28b-d9d5-5cab-b383-318e0499c0c7.jpg",
+        "beforeBytes": 2288478,
+        "afterBytes": 1861598,
+        "deltaBytes": -426880
+      },
+      {
+        "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/4af3dfb9-7e15-5da5-8b86-0aac6c80e266/4af3dfb9-7e15-5da5-8b86-0aac6c80e266.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/4af3dfb9-7e15-5da5-8b86-0aac6c80e266/4af3dfb9-7e15-5da5-8b86-0aac6c80e266.jpg",
+        "beforeBytes": 1919110,
+        "afterBytes": 2147275,
+        "deltaBytes": 228165
+      },
+      {
+        "goalId": "ef1524f1-0b2f-59f7-a001-5ab3e3dececb",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/ef1524f1-0b2f-59f7-a001-5ab3e3dececb/ef1524f1-0b2f-59f7-a001-5ab3e3dececb.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/ef1524f1-0b2f-59f7-a001-5ab3e3dececb/ef1524f1-0b2f-59f7-a001-5ab3e3dececb.jpg",
+        "beforeBytes": 1847847,
+        "afterBytes": 1626719,
+        "deltaBytes": -221128
+      },
+      {
+        "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+        "beforePath": "app/public/assets/goal-visualizations/mathematik/d6b74b15-1cbc-512b-a160-0f40aecafe8c/d6b74b15-1cbc-512b-a160-0f40aecafe8c.jpg",
+        "afterPath": "app/public/assets/goal-visualizations/mathematik/d6b74b15-1cbc-512b-a160-0f40aecafe8c/d6b74b15-1cbc-512b-a160-0f40aecafe8c.png",
+        "beforeBytes": 2190982,
+        "afterBytes": 107193,
+        "deltaBytes": -2083789
+      }
+    ]
+  },
+  "unchanged": {
+    "visualizationDecisions": 724,
+    "visualizationScope": 797,
+    "missingVisualizations": 73,
+    "publishedQualityDecisions": 2382,
+    "publicationEvidenceVersion": "1.1.1",
+    "packageVersion": "0.1.0-conformance.3",
+    "qaMatchesHead": true
+  },
+  "existingNegativeProtection": {
+    "source": "scripts/validate_curriculum_release_model_fixtures.py",
+    "assertion": "The existing publication-overclaim adversarial case rejects publicationStatus=ready while quality decisions remain pending.",
+    "result": "PASS among 22 adversarial cases; no new approval or relaxed assertion."
+  },
+  "environment": {
+    "sourcePdfMode": "committed-bindings",
+    "fullPackageConformance": false,
+    "javaHome": "/tmp/skillpilot-amazon-corretto-25.0.2.10.1",
+    "nodePath": "/home/enpasos/.nvm/versions/node/v20.20.2/bin",
+    "installationsPerformed": false,
+    "initialConsumerSelfTest": "The initial consumer self-test used the wrong default JDK; rerunning with the already installed exact pinned Corretto passed.",
+    "bubblewrapIsolationProbe": "PASS with unshare-user/pid/net/ipc/uts and read-only root binding.",
+    "fullStandaloneRealPackageConformance": "Not executed; this is the CI false branch plus the requested independent builder self-test, not a claim about true-mode publication readiness."
+  },
+  "validation": {
+    "targetedContractChecksAfterHumanCountCorrection": [
+      {
+        "command": "python -B scripts/validate_curriculum_runtime_catalog_contract.py",
+        "exitCode": 0
+      },
+      {
+        "command": "python -B scripts/validate_curriculum_package_contracts.py",
+        "exitCode": 0
+      },
+      {
+        "command": "python -B scripts/validate_curriculum_release_model_fixtures.py",
+        "exitCode": 0
+      },
+      {
+        "command": "npm --prefix app run test:full-standalone-package-builder",
+        "exitCode": 0
+      },
+      {
+        "command": "python -B scripts/evaluate_curriculum_package_readiness.py --self-test",
+        "exitCode": 0
+      },
+      {
+        "command": "python -B scripts/validate_curriculum_schema_catalog_contract.py",
+        "exitCode": 0
+      },
+      {
+        "command": "python -B scripts/validate_full_standalone_curriculum_package.py --self-test",
+        "exitCode": 0
+      }
+    ],
+    "targetedChecksAfterByteCountCorrection": [
+      {
+        "command": "python -B scripts/validate_curriculum_package_contracts.py",
+        "exitCode": 0,
+        "output": "Curriculum package contract validation passed: trusted schema/profile, 1 valid fixture(s), 62 invalid fixture case(s); operational provisioning/consumer schemas, 3 provisioner document(s), 23 invalid case(s).\n",
+        "endedAt": "2026-09-08 02:59:38 UTC"
+      },
+      {
+        "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH npm --prefix app run test:full-standalone-package-builder",
+        "exitCode": 0,
+        "output": "\n> skillpilot@0.0.0 test:full-standalone-package-builder\n> tsx scripts/testFullStandaloneCurriculumPackageBuilder.ts\n\nFull-standalone package builder self-test passed: 48 entries, 8 logical artifacts, 1 binary asset, 2 byte-identical independent ZIPs.\n",
+        "endedAt": "2026-09-08 02:59:43 UTC"
+      }
+    ],
+    "completeNativeConformance": {
+      "status": "FAIL",
+      "command": "SKILLPILOT_SOURCE_PDF_MODE=committed-bindings SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false bash scripts/run_curriculum_release_model_conformance.sh",
+      "exitCode": 1,
+      "endedAt": "2026-09-08 03:04:25 UTC",
+      "modelCompilation": "PASS",
+      "independentModelValidation": "PASS: 49 adversarial cases, 111 logical artifacts, 742 binary resources, 2499 definitions, 21983 references.",
+      "contentDigest": "sha256:e5fd0ab8f2b5fc11fca1bc1ab37549395b0d4a269122e3e6addac403e366b299",
+      "publicationStatus": "not-ready",
+      "blockingCommand": "python3 -B scripts/generate_curriculum_package_redistribution_review.py --check --release-root tmp/curriculum-release-model/mathematik-a",
+      "blockingError": "Unexpected legacy image license/provenance note on goal-resource:f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d:0: AI-assisted repository-native visualization; redistribution review required",
+      "affectedCurrentGoals": [
+        "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+        "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+        "df7338ef-65ba-5ece-8aec-7f520dfe5710"
+      ],
+      "scopeBoundary": "Historical failed monolithic run retained unchanged as exit 1. The then-unsupported native provenance was handled by the separately authorized narrow schema/generator extension documented below. The source checks and second model build were subsequently completed by the coordinating agents; no successful monolithic rerun is claimed."
+    }
+  },
+  "createdAt": "2026-09-08 03:00:53 UTC",
+  "provenanceSupport": {
+    "authorization": "Root explicitly approved the closed new provenance class, the two exact native notes, and subsequently the exact native-provider plus legacy-note compatibility case. No source metadata was rewritten.",
+    "provenanceClass": "ai-assisted-repository-native",
+    "provenanceSource": "provider-pipeline-claim",
+    "exactProvider": "Repository-native SVG / Playwright Chromium (reviewed Nano fallback)",
+    "exactNativeNotes": [
+      "AI-assisted repository-native visualization; redistribution review required",
+      "Repository-native, SkillPilot-curated (AI-assisted)"
+    ],
+    "legacyCompatibility": {
+      "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "unchangedNote": "AI-generated, SkillPilot-curated",
+      "rule": "This legacy note is accepted as an AI-assisted native claim only with the exact native provider. Ordinary Gemini and user-provided providers with the same legacy note remain in their unchanged original branches.",
+      "evidencePath": "curricula/DE/Gymnasium/visualizations/mathematik/d6b74b15-1cbc-512b-a160-0f40aecafe8c/prompt.de.md"
+    },
+    "nativeGoalIds": [
+      "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+      "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+      "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d"
+    ],
+    "nativeGoalCount": 4,
+    "rightsBoundary": "The provider metadata asserts no deterministic-render proof, human authorship or redistribution rights. New records use pending-human-review, review-required and null license/reviewer/date with no review evidence. Automatic asset approval remains forbidden. Both new notes and the legacy note are rejected as licenseExpression values, even in a purported human-approved decision.",
+    "generatedLedger": {
+      "path": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json",
+      "method": "Native build_review and validate_review over actual current sources, followed by explicit apply_patch of the computed delta; no generator write mode used.",
+      "changedAssetIds": [
+        "goal-resource:2713980f-75d2-5455-a8cb-bcd3888c49a0:0",
+        "goal-resource:281e0c6e-d06d-580f-8443-4369f0ea524b:0",
+        "goal-resource:4af3dfb9-7e15-5da5-8b86-0aac6c80e266:0",
+        "goal-resource:5ccf0d90-2967-576e-8f72-f002792d8515:0",
+        "goal-resource:848af536-c7e5-4df0-a4e9-d5d0ff15244c:0",
+        "goal-resource:ccd83f05-a0ae-4cd1-8917-24793a219fee:0",
+        "goal-resource:d379e28b-d9d5-5cab-b383-318e0499c0c7:0",
+        "goal-resource:d6b74b15-1cbc-512b-a160-0f40aecafe8c:0",
+        "goal-resource:df7338ef-65ba-5ece-8aec-7f520dfe5710:0",
+        "goal-resource:e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c:0",
+        "goal-resource:ef1524f1-0b2f-59f7-a001-5ab3e3dececb:0",
+        "goal-resource:f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d:0"
+      ],
+      "decisionFieldsUnchanged": true,
+      "classDecisionsUnchanged": true,
+      "summary": {
+        "classDecisionCount": 4,
+        "automaticAllowedClassCount": 1,
+        "pendingClassCount": 3,
+        "humanApprovedClassCount": 0,
+        "prohibitedClassCount": 0,
+        "assetCount": 742,
+        "externalResourceCount": 74,
+        "userProvidedAssetCount": 6,
+        "pendingAssetCount": 742,
+        "humanApprovedAssetCount": 0,
+        "prohibitedAssetCount": 0,
+        "humanReviewItemCount": 745,
+        "publicationReady": false
+      },
+      "verification": "Local generation guards and Root's independent full decision-field comparison passed."
+    },
+    "rawHashChanges": [
+      {
+        "path": "scripts/generate_curriculum_package_redistribution_review.py",
+        "before": "sha256:8ee5ec64c82307887d03e2f8d667f14ea3f4aaa3d4cdcd22a52da57dc7e26c55",
+        "after": "sha256:2c4c133f96471c4c4be327cfcabe0fb65e7f53694a4e374c2c83901b885068e0"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/package-redistribution-review.schema.json",
+        "before": "sha256:3a04df671275af85eeb781fdd976ae55183db17485a9a1428019b18c0f5fa501",
+        "after": "sha256:d602ef2396f2d0fc0f0fa4064faa9f98ac4a68f52d25afea0b444b32c6d8a6bb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json",
+        "before": "sha256:6070b6d919cc67adc479ed48f93bd2c89a1af5e4969820f57e4633c313a62b37",
+        "after": "sha256:7a8174ba0988be66eb17c5bf85d29a0365a09397bd1b4c3b01e66f8cdcb9919c"
+      }
+    ],
+    "schemaHashBindings": "Read-only audit found no operative pinned raw or normalized schema/generator hash requiring modification. The review schema is not part of the compiled release model; historical fixture/candidate hashes remain unchanged."
+  },
+  "resumedFalseBranchValidation": {
+    "status": "PASS",
+    "interpretation": "All constituent steps passed; resumed after diagnosed failure. The historical monolithic command exited 1 and was not rerun as a whole. This is not full-package true-mode execution or publication readiness.",
+    "localChecks": [
+      {
+        "command": "python -B scripts/generate_curriculum_package_redistribution_review.py --check --release-root tmp/curriculum-release-model/mathematik-a",
+        "exitCode": 0,
+        "output": "Redistribution review: org.skillpilot.curriculum.de.gymnasium.mathematik sha256:e5fd0ab8f2b5fc11fca1bc1ab37549395b0d4a269122e3e6addac403e366b299\nClasses: 4 total, 1 automatic Apache-2.0, 3 pending, 0 prohibited\nImages: 742 total, 742 pending, 6 user-provided claims, 0 prohibited\nExternal metadata-only resources: 74; human review items: 745\nPublication redistribution: BLOCKED\nRedistribution review ledger is current and internally consistent.\n",
+        "endedAt": "2026-09-08 03:14:49 UTC"
+      },
+      {
+        "command": "python -B scripts/generate_curriculum_package_redistribution_review.py --self-test --release-root tmp/curriculum-release-model/mathematik-a",
+        "exitCode": 0,
+        "output": "Redistribution review self-test passed: 29 fail-closed mutations, 6 rejected native metadata pairs, exact native pending claims and stale completed-review guard\n",
+        "endedAt": "2026-09-08 03:15:11 UTC"
+      },
+      {
+        "command": "python -B scripts/validate_curriculum_package_contracts.py",
+        "exitCode": 0,
+        "output": "Curriculum package contract validation passed: trusted schema/profile, 1 valid fixture(s), 62 invalid fixture case(s); operational provisioning/consumer schemas, 3 provisioner document(s), 23 invalid case(s).\n",
+        "endedAt": "2026-09-08 03:14:03 UTC"
+      },
+      {
+        "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH npm --prefix app run test:full-standalone-package-builder",
+        "exitCode": 0,
+        "output": "\n> skillpilot@0.0.0 test:full-standalone-package-builder\n> tsx scripts/testFullStandaloneCurriculumPackageBuilder.ts\n\nFull-standalone package builder self-test passed: 48 entries, 8 logical artifacts, 1 binary asset, 2 byte-identical independent ZIPs.\n",
+        "endedAt": "2026-09-08 03:14:08 UTC"
+      }
+    ],
+    "coordinatorReportedChecks": [
+      {
+        "reportedBy": "root",
+        "step": "Second independent model build B and diff -qr mathematik-a mathematik-b",
+        "status": "PASS",
+        "exitCode": 0,
+        "contentDigest": "sha256:e5fd0ab8f2b5fc11fca1bc1ab37549395b0d4a269122e3e6addac403e366b299"
+      },
+      {
+        "reportedBy": "root, citing source-check agent",
+        "step": "Source verification --check and --self-test with committed-bindings mode",
+        "status": "PASS"
+      },
+      {
+        "reportedBy": "root",
+        "step": "Review freeze and diff checks",
+        "status": "PASS"
+      }
+    ],
+    "earlierUnchangedSteps": "Pinned FWU verification, release fixtures, dependency-emission self-test, symlink safety, model A compilation and independent 49-case validation passed in the retained monolithic run.",
+    "completedAt": "2026-09-08 03:17:23 UTC"
+  }
+}

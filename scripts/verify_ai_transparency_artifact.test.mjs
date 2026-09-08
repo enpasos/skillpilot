@@ -129,3 +129,6 @@ try {
     })
   })
 }
+
+// Keep the measured Layer-A inventory regression in the existing CI test lane.
+await import('./check_ai_transparency_inventory.test.mjs')

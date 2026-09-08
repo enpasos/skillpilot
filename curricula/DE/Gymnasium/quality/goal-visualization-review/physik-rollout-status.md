@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-07T21:03:55.708Z
+Generated: 2026-09-08T02:28:32.984Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 715 |
-| Atomare Ziele im Visualisierungs-Scope | 465 |
-| Ziele mit primaerem Visualisierungslink | 415 |
-| Coverage | 89.2% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 465 |
+| Alle Ziele in der Landschaft | 718 |
+| Atomare Ziele im Visualisierungs-Scope | 466 |
+| Ziele mit primaerem Visualisierungslink | 416 |
+| Coverage | 89.3% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 466 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -29,7 +29,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 1 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 3 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -37,7 +37,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 78 |
-| `pilot` | 337 |
+| `pilot` | 338 |
 
 ## Ledger Decisions
 
@@ -150,6 +150,8 @@ Keine Eintraege.
 
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
+| `d05a146f-7fcd-56ae-b9b9-b54203328579` | Diskrete Energien im unendlichen Potenzialtopf berechnen | `pilot` | - |
+| `f2538793-8b0a-5c3b-b216-5d329a4e87bd` | Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen | `pilot` | - |
 | `c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea` | Mittleres Beschleunigungsmoment bestimmen | `pilot` | - |
 
 ### Accepted Review Without Link

@@ -175,12 +175,14 @@ const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
   'a0aaedcb-41f8-4891-af77-a69a76b8c10d',
   '00245a43-eb89-47d2-92d7-21799dbec9f3',
 ] as const
-const BILINGUAL_COMPLETENESS_RECHECK_GOAL_IDS = new Set([
+const SEMANTIC_RECHECK_ATOMIC_GOAL_IDS = new Set([
   '37b33812-d428-5953-852e-57a53a4347fe',
   '7fe3022f-fad0-5f41-af1c-d55ff214ebc6',
-  // B035 checkpoint retains only the two individually re-reviewed existing atom descriptions.
+  // B035: individually re-reviewed existing descriptions and the two separate well competencies.
   'bacae732-2016-5a83-bc61-d0f94ed5a0e4',
   'badb0ef3-233d-560e-bc2a-9df99f09fe7d',
+  'd05a146f-7fcd-56ae-b9b9-b54203328579', // Discrete energies; no interval integration claim.
+  'f2538793-8b0a-5c3b-b216-5d329a4e87bd', // Normalized interval probability; no energy calculation claim.
 ])
 const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
   '2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c',
@@ -239,6 +241,7 @@ const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
   'bf8517a9-142b-5789-826a-767f3b277998',
 ])
 const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
+  'ad021f2e-6b94-5e6e-a264-3d1110094b87', // B035: groups exactly the energy and interval children.
   '3e33813d-db75-4571-8345-3845b02b956d',
   '1fede37b-6554-5dd3-93d9-08ed1fd09c91',
   '10bb8262-fb0f-40cf-94ef-408420ec7cf2',
@@ -266,6 +269,7 @@ const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
   'f203a552-fcf0-560c-baa2-47d4eb2379c8',
 ])
 const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
+  'b585ff81-6332-5d11-ae63-ee6a9928c00d', // B035: actual energy calculation, not interval integration.
   '6d25344c-35d7-5853-925d-2bccbaf50630', // B039: both independent rotation targets assessed.
   '7f83e25c-38f7-5ac2-8f9c-ec54eeef1026', // B039: E-phase terminal route retains both targets.
   '879491c0-7153-570b-91f4-c61d9fe8a143', // B039: rotation assessment covers the separated mean-torque atom.
@@ -522,14 +526,14 @@ const EXPECTED_JURISDICTIONS = [
 ] as const
 
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 465,
-  curricularArea: 101,
-  practiceAssessment: 137,
+  curricularAtomic: 466,
+  curricularArea: 102,
+  practiceAssessment: 138,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 715,
+  total: 718,
 }
 const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6308
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6136
@@ -673,7 +677,7 @@ const explicitClassification = (
           'c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea', // B039: independent mean-torque goal.
         ]).has(goal.id)
           ? 'reviewed-current-post-split-curricular-atomic'
-          : BILINGUAL_COMPLETENESS_RECHECK_GOAL_IDS.has(goal.id)
+          : SEMANTIC_RECHECK_ATOMIC_GOAL_IDS.has(goal.id)
           ? 'reviewed-current-semantic-recheck-curricular-atomic'
           : 'reviewed-current-pilot-curricular-atomic',
     }
@@ -865,6 +869,50 @@ landscape.goals.forEach((goal) => goal.contains.forEach((childId) => {
 }))
 const rawGoalById = new Map(rawLandscape.goals.map((goal) => [String(goal.id), goal]))
 assert.equal(goalById.size, EXPECTED_COUNTS.total, 'canonical Physics goal IDs must be unique')
+// B035: two independent competencies replace the mixed atomic goal. The old
+// stable ID remains a cluster; interval probability has its own actual task.
+const wellClusterId = 'ad021f2e-6b94-5e6e-a264-3d1110094b87'
+const wellEnergyId = 'd05a146f-7fcd-56ae-b9b9-b54203328579'
+const wellProbabilityId = 'f2538793-8b0a-5c3b-b216-5d329a4e87bd'
+assert.deepEqual(
+  goalById.get(wellClusterId)?.contains,
+  [wellEnergyId, wellProbabilityId],
+)
+for (const goalId of [wellEnergyId, wellProbabilityId]) {
+  assert.deepEqual(goalById.get(goalId)?.contains, [])
+  assert.deepEqual(goalById.get(goalId)?.requires, ['51bc5513-6879-548f-b19a-9746b667f1a3'])
+}
+const wellProbabilityAssessment = rawGoalById.get('2f8d4250-66c5-54e9-abb8-80735dc408d2')
+assert(wellProbabilityAssessment, 'a genuine terminal task for interval probability is required')
+const wellProbabilityExam = wellProbabilityAssessment.examData as {
+  reviewStatus: string; coveredGoalIds: string[]; taskContent: string
+  solutionContent: string; scoring: { maxPoints: number; steps: Array<{ points: number }> }
+}
+assert.deepEqual(wellProbabilityAssessment.requires, [wellProbabilityId])
+assert.deepEqual(wellProbabilityExam.coveredGoalIds, [wellProbabilityId])
+assert.equal(wellProbabilityExam.reviewStatus, 'released')
+assert(wellProbabilityExam.taskContent.includes('L/4'))
+assert(wellProbabilityExam.solutionContent.includes('1/2+1/\\pi'))
+assert.equal(wellProbabilityExam.scoring.maxPoints, 10)
+assert.equal(wellProbabilityExam.scoring.steps.reduce((sum, step) => sum + step.points, 0), 10)
+const wellEnergyAssessmentId = 'b585ff81-6332-5d11-ae63-ee6a9928c00d'
+const wellEnergyAssessment = goalById.get(wellEnergyAssessmentId)
+const wellEnergyExam = rawGoalById.get(wellEnergyAssessmentId)?.examData as {
+  coveredGoalIds: string[]; taskContent: string
+} | undefined
+assert(wellEnergyAssessment && wellEnergyExam, 'the existing energy calculation task must remain present')
+const wellSplitGoalIds = new Set([wellClusterId, wellEnergyId, wellProbabilityId])
+assert.deepEqual(
+  wellEnergyAssessment.requires.filter((goalId) => wellSplitGoalIds.has(goalId)),
+  [wellEnergyId],
+  'the existing task requires the energy child, not the former cluster or the unassessed interval child',
+)
+assert.deepEqual(
+  wellEnergyExam.coveredGoalIds.filter((goalId) => wellSplitGoalIds.has(goalId)),
+  [wellEnergyId],
+  'the existing task must claim only its actual B035 energy calculation',
+)
+assert(wellEnergyExam.taskContent.includes('Berechnen Sie die Energien $E_1$ und $E_2$'))
 const bavariaMotorTransformerAssessment = rawGoalById.get(BAVARIA_MOTOR_TRANSFORMER_ASSESSMENT_ID)
 assert(bavariaMotorTransformerAssessment, 'Bavaria motor/transformer assessment is missing')
 assert.deepEqual(
@@ -1626,14 +1674,34 @@ for (const profilePath of [
     [],
     `invalid canonical Physics profile ${profilePath}`,
   )
+  const profileTargetIds = new Set<string>()
   collectAtomicGoalIds(compilation.compiledRootNodes, semanticGoalById).forEach((goalId) => {
     if (decisionByGoalId.get(goalId)?.semanticKind === 'curricularAtomic') {
       canonicalProfileTargetIds.add(goalId)
+      profileTargetIds.add(goalId)
     }
   })
+  assert.deepEqual(
+    [...profileTargetIds].filter((goalId) => wellSplitGoalIds.has(goalId)).sort(compareCodePoints),
+    (view.scope.courseProfile === 'GK' ? [wellEnergyId] : [wellEnergyId, wellProbabilityId])
+      .sort(compareCodePoints),
+    `${view.viewId}: B035 projects energy in GK/LK and interval probability only in LK, never the cluster as an atom`,
+  )
 }
-// The reviewed torque split adds one distinct curricular target.
-assert.equal(canonicalProfileTargetIds.size, 392)
+// Native projection against the pre-B035 checkpoint proved the exact delta:
+// remove the former mixed atom, add energy and interval probability, keep all
+// other target IDs unchanged. Bind that full prior set, not only the new count.
+assert.equal(canonicalProfileTargetIds.size, 393)
+const preWellSplitProfileTargetIds = new Set(
+  [...canonicalProfileTargetIds].filter((goalId) => !wellSplitGoalIds.has(goalId)),
+)
+preWellSplitProfileTargetIds.add(wellClusterId)
+assert.equal(preWellSplitProfileTargetIds.size, 392)
+assert.equal(
+  sha256(`${[...preWellSplitProfileTargetIds].sort(compareCodePoints).join('\n')}\n`),
+  '04cd2a9e19a6e49001f6fe1f322af35011f116131004159ca28cc0213cabfed5',
+  'B035 must preserve every other canonical GK/LK target ID from the verified pre-split projection',
+)
 assert.equal(
   canonicalProfileTargetIds.has(ROAD_SAFETY_GOAL_ID),
   false,
@@ -1672,7 +1740,7 @@ const navigationGoalIds = new Set([...collectAtomicGoalIds(
 assert.deepEqual(
   [...navigationGoalIds].sort(compareCodePoints),
   [...atlasCurricularAtomicGoalIds].sort(compareCodePoints),
-  'canonical goal-book navigation must place all 465 atlas goals exactly once',
+  'canonical goal-book navigation must place all current atlas goals exactly once',
 )
 
 const durationPolicy = readJson<{

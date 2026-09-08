@@ -1271,7 +1271,7 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   '22c3cc6f-5468-508f-816e-56eb634f6f41': [
     'cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7',
-    'ad021f2e-6b94-5e6e-a264-3d1110094b87',
+    'd05a146f-7fcd-56ae-b9b9-b54203328579',
     '51bc5513-6879-548f-b19a-9746b667f1a3',
   ],
   '934b3728-ba2b-5b65-815a-6041602c018a': [
@@ -1529,7 +1529,7 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   'bfe30e7f-3319-5a1f-bcc6-8a4513c10911': [
     'cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7',
-    'ad021f2e-6b94-5e6e-a264-3d1110094b87',
+    'd05a146f-7fcd-56ae-b9b9-b54203328579',
     '51bc5513-6879-548f-b19a-9746b667f1a3',
   ],
   '8d720664-de81-58fe-ba75-15e3ab35af32': [

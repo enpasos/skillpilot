@@ -694,6 +694,7 @@
             "provenanceClass": {
               "enum": [
                 "ai-generated-curated",
+                "ai-assisted-repository-native",
                 "user-provided-generated-claim",
                 "skillpilot-authored-deterministic-render"
               ]
@@ -730,6 +731,30 @@
             "reviewer": {},
             "reviewedAt": {},
             "reviewEvidence": {}
+          }
+        },
+        {
+          "if": {
+            "required": ["provenanceClass"],
+            "properties": {
+              "provenanceClass": {"const": "ai-assisted-repository-native"}
+            }
+          },
+          "then": {
+            "properties": {
+              "provider": {
+                "const": "Repository-native SVG / Playwright Chromium (reviewed Nano fallback)"
+              },
+              "legacyLicenseNote": {
+                "enum": [
+                  "AI-assisted repository-native visualization; redistribution review required",
+                  "Repository-native, SkillPilot-curated (AI-assisted)",
+                  "AI-generated, SkillPilot-curated"
+                ]
+              },
+              "provenanceSource": {"const": "provider-pipeline-claim"},
+              "userProvided": {"const": false}
+            }
           }
         },
         {

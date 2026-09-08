@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physik-d036r-current-three-compatibility-v1-20260908",
+  "purpose": "Current description-resolution carryover for exactly three unchanged goals from one original four-goal batch; no claim that the original V2 batch is currently complete.",
+  "createdAt": "2026-09-08T02:12:04.245Z",
+  "source": {
+    "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036r-four-translations-current-4-v1/resolution-index.json",
+    "indexDigest": "sha256:2ec54c722626a6ebada6ef7d6bfd0ca403c9ab6ee19acbf3338ef056badaa3d0",
+    "dualSummaryPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036r-four-translations-current-4-v1/dual-summary.json",
+    "dualSummaryDigest": "sha256:d633b87c974383a01e372b753a8aded58faec9ed36bf807d8a34f2bdf714e294",
+    "campaignGoalCount": 4,
+    "originalResolutionBytesUnchanged": true,
+    "originalCampaignsUnchanged": true,
+    "originalSynthesisManifestUnchanged": true
+  },
+  "includedGoalIds": [
+    "84ddb244-e560-592f-9d43-e84c801fe5b4",
+    "8ac61062-f63e-5935-96ae-84014906c368",
+    "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+  ],
+  "excluded": [
+    {
+      "goalId": "badb0ef3-233d-560e-bc2a-9df99f09fe7d",
+      "reason": "The original resolution fails current canonical-context, goal-fingerprint and final bilingual-text bindings; the other three original resolutions remain fully current.",
+      "disposition": "excluded_from_this_current_view",
+      "strictCompleteClaimed": false
+    }
+  ],
+  "derivedView": {
+    "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036r-four-translations-current-4-v1/resolution-index.current-three-v1.json",
+    "schemaVersion": 1,
+    "groupCount": 1,
+    "campaignGoalCount": 4,
+    "resolvedGoalCount": 3,
+    "noCrossBatchAggregation": true,
+    "originalV2BatchCompleteClaimed": false,
+    "authority": "ai_synthesis",
+    "humanApprovalClaimed": false
+  },
+  "denominatorSnapshot": {
+    "count": 465,
+    "observedAt": "2026-09-08T02:12:04.245Z",
+    "semanticKind": "curricularAtomic",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "semanticKindLedgerDigest": "sha256:8fac01d5c7cc6bd4d86b01c96d088ffe307c059639d6083eaaddf124ee179bc3",
+    "interpretation": "Historical V1 snapshot metadata, not the live curriculum denominator. Preserve 465 and 0.6% after unrelated curriculum growth; the central reporter computes its own current denominator.",
+    "nativeContract": "validateLegacyResolutionIndexSnapshot validates internal snapshot count/percentage consistency without requiring equality to the live denominator."
+  },
+  "validation": {
+    "checkerPath": "app/scripts/checkPhysicsD036rCurrentThreeResolutionIndex.ts",
+    "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036r-four-translations-current-4-v1/current-three-v1.validation-config.json",
+    "descriptionGateOnly": true,
+    "positiveEvidenceProfilesClaimed": false,
+    "centralRegistryChanged": false,
+    "checkedAt": "2026-09-08T02:22:05Z",
+    "command": "PATH=/home/enpasos/.nvm/versions/node/v20.20.2/bin:$PATH app/node_modules/.bin/tsx app/scripts/checkPhysicsD036rCurrentThreeResolutionIndex.ts",
+    "exitCode": 0,
+    "nativeResult": {
+      "check": "physics-d036r-current-three-index",
+      "status": "PASS",
+      "indexDigest": "sha256:cc1ca24ef7e3d18c68fdb7766bcd67094a0682a2a3a4ee58f54d401890d48abb",
+      "sourceIndexDigest": "sha256:2ec54c722626a6ebada6ef7d6bfd0ca403c9ab6ee19acbf3338ef056badaa3d0",
+      "originalCampaignGoalCount": 4,
+      "currentDescriptionResolutions": 3,
+      "snapshotDenominator": 465,
+      "liveDenominator": 466,
+      "blockingIssueCount": 0,
+      "centralRegistryChanged": false,
+      "fullFiveGateCompletionClaimed": false
+    },
+    "operationalRegistration": "not_registered_nonoperative_preparation"
+  }
+}

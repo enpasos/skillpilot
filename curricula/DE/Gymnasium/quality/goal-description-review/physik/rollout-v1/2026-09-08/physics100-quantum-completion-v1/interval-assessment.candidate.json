@@ -1,0 +1,46 @@
+{
+  "id": "2f8d4250-66c5-54e9-abb8-80735dc408d2",
+  "shortKey": "canonical_physics_assessment_infinite_well_interval_probability",
+  "title": "Prüfungsaufgabe: Nachweisbereiche im Potenzialtopf vergleichen",
+  "titleEn": "Assessment task: Compare detection intervals in a potential well",
+  "description": "Die lernende Person kann eine materialgestützte Q4-Prüfungsaufgabe zu Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf selbstständig lösen und ihre Ergebnisse anhand der Wahrscheinlichkeitsdichte begründen.",
+  "descriptionEn": "The learner can independently solve a material-based Q4 assessment task on interval probabilities in an infinite potential well and justify the results using the probability density.",
+  "weight": 1,
+  "tags": ["LK", "Practice", "Assessment"],
+  "contains": [],
+  "requires": ["f2538793-8b0a-5c3b-b216-5d329a4e87bd"],
+  "applicability": {"jurisdiction": ["DE-HE"]},
+  "type": "atomic",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "demandLevel": "AB3",
+    "processCompetencies": ["PK2_MODELLIEREN", "PK3_MATHEMATISIEREN"],
+    "guidingIdeas": ["LI_MATERIE"],
+    "phase": "Q4",
+    "area": "Klausurtraining"
+  },
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "examData": {
+    "reviewStatus": "draft",
+    "reviewNote": "Unapplied assessment candidate, 2026-09-08. Based on the separately authored interval-assessment-candidate.md; requires independent content review and native scope/route checks before release. No human or external validation claimed.",
+    "coveredGoalIds": ["f2538793-8b0a-5c3b-b216-5d329a4e87bd"],
+    "coveredStrands": ["LI_MATERIE"],
+    "demandLevels": ["AB1", "AB2", "AB3"],
+    "taskContent": "**Material:** Ein Elektron befindet sich im Grundzustand eines eindimensionalen Potenzialtopfs der Breite $L$ mit unendlich hohen Wänden. Gegeben ist die auf $[0,L]$ normierte Wellenfunktion $\\psi_1(x)=\\sqrt{2/L}\\sin(\\pi x/L)$; außerhalb des Topfs ist sie null. Bei Bedarf darf $\\sin^2(u)=(1-\\cos(2u))/2$ verwendet werden.\n\n1. Stelle das Integral für $P(L/4\\le x\\le 3L/4)$ auf und berechne den Wert. Prüfe, ob das Ergebnis als Wahrscheinlichkeit plausibel ist. (5 BE)\n2. Für das Randintervall gilt $P(0\\le x\\le L/2)=1/2$. Vergleiche diesen Wert mit deinem Ergebnis. Erkläre den Unterschied trotz gleicher Intervallbreite anhand der Wahrscheinlichkeitsdichte. (3 BE)\n3. Eine Person setzt $|\\psi_1(L/2)|^2$ als Wahrscheinlichkeit ein, das Elektron exakt bei $L/2$ nachzuweisen. Beurteile diese Aussage, auch anhand der Einheiten. (2 BE)",
+    "taskContentEn": "**Material:** An electron is in the ground state of a one-dimensional potential well of width $L$ with infinitely high walls. The supplied wave function $\\psi_1(x)=\\sqrt{2/L}\\sin(\\pi x/L)$ is normalized on $[0,L]$ and zero outside the well. If needed, use $\\sin^2(u)=(1-\\cos(2u))/2$.\n\n1. Set up and evaluate the integral for $P(L/4\\le x\\le 3L/4)$. Check that the result is plausible as a probability. (5 points)\n2. For the edge interval, $P(0\\le x\\le L/2)=1/2$. Compare this with your result. Explain the difference despite equal interval widths using the probability density. (3 points)\n3. Someone treats $|\\psi_1(L/2)|^2$ as the probability of detecting the electron exactly at $L/2$. Assess this claim, including the units. (2 points)",
+    "solutionContent": "1. $P=\\int_{L/4}^{3L/4}(2/L)\\sin^2(\\pi x/L)\\,dx=[x/L-\\sin(2\\pi x/L)/(2\\pi)]_{L/4}^{3L/4}=1/2+1/\\pi\\approx0{,}81831$. Die Wahrscheinlichkeit ist dimensionslos und liegt zwischen 0 und 1. Integrand und Grenzen: 2 BE; Stammfunktion und Auswertung: 2 BE; Plausibilitätsprüfung: 1 BE.\n2. Im Zentralintervall ergibt sich ungefähr 81,8 %, im gleich breiten Randintervall 50 %. Das Zentralintervall umfasst die höhere Dichte um die Topfmitte; gleiche Breite bedeutet bei nichtkonstanter Dichte nicht gleiche Fläche. Vergleich: 1 BE; begründeter Zusammenhang zwischen Lage, Dichte und Fläche: 2 BE.\n3. $|\\psi_1(L/2)|^2=2/L$ hat die Einheit inverse Länge und ist eine Dichte, keine dimensionslose Wahrscheinlichkeit. Bei dieser kontinuierlichen Ortsverteilung hat ein einzelner Punkt Wahrscheinlichkeit null; erst das Integral über einen Bereich liefert eine Nachweiswahrscheinlichkeit. Dichte und Einheit: 1 BE; Punkt versus Intervall: 1 BE.",
+    "solutionContentEn": "1. $P=\\int_{L/4}^{3L/4}(2/L)\\sin^2(\\pi x/L)\\,dx=[x/L-\\sin(2\\pi x/L)/(2\\pi)]_{L/4}^{3L/4}=1/2+1/\\pi\\approx0.81831$. The result is dimensionless and between 0 and 1. Integrand and limits: 2 points; antiderivative and evaluation: 2 points; plausibility check: 1 point.\n2. The central interval gives approximately 81.8 %, while the equally wide edge interval gives 50 %. The central interval includes the higher density near the well centre; equal width does not imply equal area under a nonconstant density. Comparison: 1 point; justified relationship between position, density and area: 2 points.\n3. $|\\psi_1(L/2)|^2=2/L$ has units of inverse length and is a density, not a dimensionless probability. A single point has zero probability in this continuous position distribution; an interval integral gives a detection probability. Density and units: 1 point; point versus interval: 1 point.",
+    "scoring": {
+      "maxPoints": 10,
+      "passingPoints": 6,
+      "steps": [
+        {"id": "interval-integral", "points": 5, "description": "Integrand und Grenzen (2), Stammfunktion und Auswertung (2), dimensionsloser Wert im Bereich [0,1] (1)."},
+        {"id": "interval-comparison", "points": 3, "description": "Werte vergleichen (1), unterschiedliche Dichteflächen bei gleicher Intervallbreite begründen (2). Nachvollziehbare Folgefehler nicht mehrfach werten."},
+        {"id": "density-versus-probability", "points": 2, "description": "Dichte mit Einheit 1/L von Wahrscheinlichkeit unterscheiden (1), Punkt- und Intervallwahrscheinlichkeit einordnen (1)."}
+      ]
+    }
+  }
+}

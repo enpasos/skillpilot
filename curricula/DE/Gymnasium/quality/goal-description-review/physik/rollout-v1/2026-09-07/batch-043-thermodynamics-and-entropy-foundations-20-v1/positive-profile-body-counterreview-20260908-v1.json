@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent-positive-profile-body-counterreview",
+  "reviewedAt": "2026-09-08T02:01:24.654Z",
+  "baselineCommit": "f5f5a8b3bbb8e3fa2d4f68077a19812135cd6c9c",
+  "reviewer": "/root/goal_book_pdf_history_audit",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "authority": "report-only AI content counterreview; no approval, registration, learner evidence or runtime changes",
+  "provenance": "Existing agent instance with prior repository/history/deployment/font work, other Math/Physics D/P and image reviews and B040 authorship. This is not a fresh thread or a blind/model-diverse run. Current P043 candidate/profile bodies and their author provenance were read as explicitly requested; historical D A/B verdict files and counterreview-overrides were not opened in this task. Current judgments are this agent's own body review, not inherited prior passes.",
+  "instructionPaths": [
+    "AGENTS.md",
+    "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/prompts/physics-positive-understanding-evidence-profile-criteria-v1.md",
+    "curricula/DE/Gymnasium/quality/goal-evidence/prompts/positive-understanding-evidence-profile-authoring-v2.md"
+  ],
+  "inputArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-043-thermodynamics-current-v1.config.json",
+      "sha256": "7b871fe64cb311e0675f4220c432a640716b2c1402444963dd8fe7075e15ad06"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-043-thermodynamics-current-v1.candidates.json",
+      "sha256": "6fcc30fef73f43fa3f70b493f35405b20cb94d6d6a607a865a60d547f57c32d2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-043-thermodynamics-current-v1.review.jsonl",
+      "sha256": "760d3d699193d9b1175e08e5f8be4fa24298b1866657a65a0e289f082707478b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "71619783d2755917238c1c95240941905dc89e62dcaa109400172fb77fb44b3a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-043r-current-thermodynamics-20-v1/round-a/description-review-input.json",
+      "sha256": "fcbb45ec6bfe28c11364010defc1d6b8e30dc772cbfb014af40096cf59d57796"
+    },
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "sha256": "331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/physics-positive-understanding-evidence-profile-criteria-v1.md",
+      "sha256": "8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460"
+    }
+  ],
+  "inputChecks": {
+    "candidateAndReviewProfileBodiesIdentical": 20,
+    "currentCanonicalTextsAndDirectRequiresMatchPreparedContext": 20,
+    "canonicalGoalCount": 715,
+    "profiles": 20,
+    "applicationCaseBriefs": 41,
+    "bilingualBodiesRead": 20,
+    "nativeCurrentStateCheck": {
+      "command": "PATH=<Node20>:$PATH app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-043-thermodynamics-current-v1.config.json --mode=check",
+      "exitCode": 0,
+      "blockingIssues": 0,
+      "approved": 0,
+      "needsHumanReview": 20
+    },
+    "allCandidateClaimBounds": "needs_human_review / ai_candidate / E1 / G1 / reviewRunIds=[]"
+  },
+  "scopeReview": "Actual current DE/EN descriptions, current direct prerequisite descriptions, parent context and existing prepared page relations/effective scopes were examined; 20 descriptions and direct requires match current canonical bytes. The first two goals include SekI/SekII and remain qualitative; the others are SekII. This is not a new 16-state normative mapping audit, a new book build, or a new image-quality review. Profiles are case briefs, not actual learner demonstrations.",
+  "summary": {
+    "pass": 18,
+    "needsRevision": 2,
+    "all20CurrentlyDefensiblyUsable": false,
+    "noIncorrectExistingNumericalResultsFound": true,
+    "noDEENCompetenceAsymmetryFound": true,
+    "noUnsafePracticalInstructionsFound": true
+  },
+  "goalReviews": [
+    {
+      "goalId": "37b33812-d428-5953-852e-57a53a4347fe",
+      "goalFingerprint": "sha256:5d384335f8c7ca45a1f50ab23ebbbf5d0ee71459a3504561380fadb1364c851c",
+      "profileFingerprint": "sha256:3bc2ea8e4bf2b0d01fc6397cffb4d12d4fc974e2da51a50ce05bddec91d9da54",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Temperatur–Mittelenergie korrekt; 300→600 K verdoppelt die mittlere Translation, nicht jede Geschwindigkeit. Gleiche Temperatur bei verschiedener Teilchenmasse prüft Energie versus typische Geschwindigkeit. Teilchenzahländerung und Einzelteilchen werden getrennt; gemeinsamer SekI/SekII-Kern bleibt qualitativ.",
+      "negativeControlOrNonblockingNote": "Masse ist nicht proportional zur Temperatur; doppelte Teilchenzahl bei gleicher mittlerer Energie ist keine Temperaturerhöhung.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+      "goalFingerprint": "sha256:28a701c557a81c947d3ec5d6430e6083c3de966758dbb6ace73ddd9e93f33a80",
+      "profileFingerprint": "sha256:d2693c8eabb5623a6a89aa5b90ca503db278db2a248d9b2fe72032f4022a895c",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Räumliche Rückkehr wird von vollständiger thermodynamischer Rückführung getrennt; Reibung und freie Expansion liefern zwei verschiedene irreversible Mechanismen. System und antreibende Umgebung sind ausdrücklich einbezogen; kein Entropierechnen als zusätzliche SekI-Anforderung.",
+      "negativeControlOrNonblockingNote": "Zurückschieben allein löscht Erwärmung/Arbeitsaufwand nicht.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+      "goalFingerprint": "sha256:f33e34c61c21d571b8b360c7d598fe64712d5c4664aea2c8feb00586f1601bd9",
+      "profileFingerprint": "sha256:69b84c0b8251da995d11e6d462a4db5a4afbd13f18f1e48867cc9dce4de05a17",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Geschlossenes ruhendes Gas, starre Wand und Ausschluss weiterer Arbeitsformen sichern W=0; Heizen/Kühlen wechselt Q. Isolierte Kompression prüft unabhängig Q=0 bei W>0. U als Zustand, Q/W als Übertragung und Vorzeichen sind sauber.",
+      "negativeControlOrNonblockingNote": "Starres Volumen allein würde elektrische/Rührarbeit nicht ausschließen; der Text schließt andere Arbeitsübertragung ausdrücklich aus.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+      "goalFingerprint": "sha256:7a0efe091aeb6135fb50c1541d33fc90add2f585ce73cbc472b5a21d22273559",
+      "profileFingerprint": "sha256:41c54c4931542762b8cf12fac4cd4efc4f7da35cce59ffe88160a96617251174",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Isoliertes Ganzes und Teilsystementropien werden getrennt. Wärmeausgleich: heißes Teil ΔS<0, kaltes Teil ΔS>0, Gesamt ΔS>0. Angetriebene Kühlung verändert die Systemgrenze und ist keine spontane Umkehr; reversibler Grenzfall ΔSges=0.",
+      "negativeControlOrNonblockingNote": "Keine pauschale Forderung, dass jedes Teilsystem Entropie gewinnt.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+      "goalFingerprint": "sha256:03af0ce68f04658f30459f527cc1f87d268ab50a3ac1a137bac4c30913a9bfce",
+      "profileFingerprint": "sha256:89efeaab929828bfdf4c6d2527312ec6b19fbe011e4a9b6b011e90288318499c",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Quasistatik wird nicht mit Reversibilität gleichgesetzt. Langsamer reibender Kolben, schlechter Wärmeleiter bei endlichem Temperaturunterschied und freie Expansion sind präzise Gegenfälle. Reversibler Kolbengrenzfall schließt reversible Wärmeführung ausdrücklich ein.",
+      "negativeControlOrNonblockingNote": "Langsamkeit bzw. ausbleibende äußere Bewegung allein garantiert weder Reversibilität noch quasistatische freie Expansion.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "239aac49-1137-5df5-b197-49e72292e40c",
+      "goalFingerprint": "sha256:a19de1e7de56e3c947f50956469aa705c8eb5706b5ff625999e00189f0008042",
+      "profileFingerprint": "sha256:33095091f5011c73e7a4c764b87fdd1a24616279e64b7f311bb5f501099edb6a",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Energiepfeile und gedachte Umkehr prüfen die fehlende Richtungsinformation der ersten Bilanz. Reibung statt Wärmeausgleich ist eine inhaltliche Variation; die offene Leitfrage wird ausdrücklich verlangt, ohne die spätere Entropiebilanz zu einer neuen Pflicht zu machen.",
+      "negativeControlOrNonblockingNote": "Energieerhaltung allein verbietet den gedachten Rückprozess nicht.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
+      "goalFingerprint": "sha256:55c42a096e6edafe005c5e481ccfac675008f975daffff86733ba23a8c84b3db",
+      "profileFingerprint": "sha256:586d1a137843d24b9289f4cedebe0d960aa73ed5e03c5a133172df8d8d583342",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Beide Fälle verlangen selbst gewählten reversiblen Ersatzweg und actual Clausius-Anwendung. Isotherme Ideal-Gas-Expansion ergibt nR ln2 bei Qreal=0; variabel temperierter Festkörper ergibt C ln(T2/T1), nicht Qreal/T2. Aufgaben und DE/EN stimmen.",
+      "negativeControlOrNonblockingNote": "Qreal=0 impliziert beim irreversiblen Weg nicht ΔS=0; konstantes C rechtfertigt den logarithmischen Temperaturterm.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "goalFingerprint": "sha256:d134109eed45f917f14e6f2d7e85b6c4f674e8e0dafe3bd9e722bbc2b4c65b0b",
+      "profileFingerprint": "sha256:53a39dcb5a237180a9a16e5ca8043fc02b4f62a2168696a82b6cf3c93f787cba",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "60 J bei 300/600 K ergibt 0,20/0,10 J/K; Wärmeabgabe gibt −0,20 J/K. Reversible adiabatische Arbeit ergibt ΔS=0, ohne Arbeit als Q einzusetzen. Einheiten- und Systemdeutung macht die Rechnungen mehr als Substitution.",
+      "negativeControlOrNonblockingNote": "Reversibles Adiabat ist isentrop, nicht beliebige isolierte irreversible Arbeitszufuhr.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "741e7056-69e4-59be-a159-0e2583d748d1",
+      "goalFingerprint": "sha256:a318894efa4ba565eb523ae0e79387162421f14841c8d57f154ed426e67d4292",
+      "profileFingerprint": "sha256:b38047f17dd4f980962239f08386ceffec406aa2b3cd1b59cd06d476435b9315",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Reservoir und separate Phasenprobe sind klar getrennt. −900/300=−3 J/K; +1000/250=+4 J/K. 0,50 kg×20 kJ/kg führt beim Erstarren zu −10 kJ und −40 J/K. Spezifische versus gesamte Übergangswärme, Vorzeichenwechsel und Gesamtsystem sind korrekt.",
+      "negativeControlOrNonblockingNote": "Keine irrtümliche Bilanz der zwei unabhängigen Erstfälle; L bedeutet Gesamtwärme in J.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+      "goalFingerprint": "sha256:7ea18dbae997743bab787a10b62a6fbffcc44f9074f59052aa771309a3d507d9",
+      "profileFingerprint": "sha256:1d144a51b370eac07b50afe19ff8a3f9cbfcadb755a5aeb11f661c48ad482bc2",
+      "verdict": "NEEDS_REVISION",
+      "positiveAndScopeControls": "Rechnung und Hauptvariation sind korrekt: ±nR ln2, Summe null, festes n, gleiches T; veränderte Endtemperatur erfordert zusätzliches T-Glied. Der zweite understandingFocus nennt dagegen veränderte Gasmenge und bindet einen anderen, im aktuellen Ziel ausgeschlossenen Fall. Nur dieses DE/EN-Feldpaar korrigieren.",
+      "negativeControlOrNonblockingNote": "Änderung der Stoffmenge darf nicht stillschweigend als Aufgabe für das Ziel einer festen Gasmenge auftreten.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+      "goalFingerprint": "sha256:4db43a46de920f19f74945d6aba58faa5995c220ba6a284d2f992ec70804f96d",
+      "profileFingerprint": "sha256:b2047dc38c772366574aa5ce1e0c49cfd762e128e554a82e0631577b590292fa",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "100 J von 400→300 K gibt −1/4+1/3=+1/12 J/K; umgekehrte 80 J von 250→500 K ergäben −0,16 J/K und werden als spontan isoliert unmöglich verworfen. Bloße Umbenennung lässt die Summe invariant.",
+      "negativeControlOrNonblockingNote": "Energiemengen heben sich auf, temperaturgewichtete Entropien nicht; angetriebener Kühler ist anderer Gesamtscope.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "81a45dec-37be-529b-89ce-2f3101237293",
+      "goalFingerprint": "sha256:86e5411d1dcd3bb3b364ff3eaceeafe082969c8b10045b236974e41037b1bbd2",
+      "profileFingerprint": "sha256:b02c97a5b1a7c9a8770e7a24495bb90698f8fb4bf315cd3dc553f8a1fb426236",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Zyklische Einreservoir-Maschine: 100 J/400 K=+0,25 J/K widerspricht der Clausius-Ungleichung. Einmalige reversible isotherme Expansion ist ein sinnvoller Grenzfall: ΔU=0, Wärme vollständig als Arbeit, aber geändertes Endvolumen und deshalb kein Zyklus.",
+      "negativeControlOrNonblockingNote": "Der zyklische Satz darf nicht auf einen einzelnen nichtzyklischen Arbeitsschritt übertragen werden.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+      "goalFingerprint": "sha256:749cc79ebc2218407d1a78f29e383099cb2c76126d73e2a8173fb0cdf5236816",
+      "profileFingerprint": "sha256:9084aa485f0930805f9e96917c0f604fb1c7cc7c14702951638e82865395d891",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Alle kanonisch genannten Mechanismen sind tatsächlich in drei Fällen vertreten: freie Expansion, Diffusionsmischung/Trennung sowie Reibung und endlicher Temperaturausgleich. Entropietransport, Produktion und spätere Teilsystem-Rückführung sind getrennt.",
+      "negativeControlOrNonblockingNote": "Mindestens zwei Demonstrationen hebt die separat erforderliche Gesamt-Erwartung über die vier Mechanismen nicht auf; nicht nur zwei beliebige Mechanismen als Vollabdeckung wählen.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "b61d233a-1902-526b-a9b5-6b3d553f4013",
+      "goalFingerprint": "sha256:432cec7d3592b00bc064acc5423a8eec7401c4fdb161602d581b23db4d250aa2",
+      "profileFingerprint": "sha256:a58a7f1185c0e883715e67af87ad66918d3e6ec48b309a19590b0f9b968115bc",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Markierte Links-rechts-Zuordnungen bieten konstruktive Mikro/Makro-Trennung; zweiter Fall variiert Position und ungeordnete Richtung bei festem N,V und mittlerer Translationsenergie. Stationäres klassisches Gleichgewichtsmodell rechtfertigt gleiches T und makroskopisches p.",
+      "negativeControlOrNonblockingNote": "Die links/rechts-Zuordnung ist ausdrücklich das vereinfachte Modell; ein Mikrobild wird nicht mit vollständiger makroskopischer Festlegung verwechselt.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+      "goalFingerprint": "sha256:94c475274979ddc27d1a1eb676c59925fc2d187acee1150ba75cf338bcf669bb",
+      "profileFingerprint": "sha256:933f355a8791ab6bff908ffa55b7eb23c52a14d181ef12b7bb48ab77035b67c9",
+      "verdict": "NEEDS_REVISION",
+      "positiveAndScopeControls": "N=4 liefert 1,4,6 von16, N=5 liefert 20/32 im Bereich2–3 gegenüber2/32 einseitig; Gleichwahrscheinlichkeit und ungleiche Volumina werden richtig geprüft. Die kanonisch wesentliche Aussage zu großer Teilchenzahl steht jedoch nur im Verständnistext/Variationslabel, nicht als beobachtbare Aufgabe der zwei kleinen Fälle. Enge Ergänzung der Groß-N-Generalisation, keine neue Statistikkompetenz.",
+      "negativeControlOrNonblockingNote": "Aus N=4 und5 allein ist die große-N-Erklärung noch keine tatsächlich verlangte unabhängige Leistung; exakte Mitte darf nicht als nahezu sicher behauptet werden.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+      "goalFingerprint": "sha256:b56c4b7e5cc43befcb4a02e1a6fbfcb68fc91b23f150d57cb67d7d31e5bb9a24",
+      "profileFingerprint": "sha256:295a7c915b9085e4e4d0af8f263c733830d786c71912961fd2844fc5690d2c10",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Volumenfaktoren multiplizieren sich für feste N,T; Logarithmieren ergibt NkB ln(V2/V1)=nR ln(V2/V1). Zweiter symbolischer Fall zerlegt denselben Volumenschritt und prüft Multiplikation versus additive Entropie ohne Bildkopie.",
+      "negativeControlOrNonblockingNote": "Kleine redaktionelle Option: im ersten Erwartungssatz nur das im Task verlangte Expansionsvorzeichen nennen, statt zusätzlich eine Kompression zu verlangen; kein fachlicher Kernblocker.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
+      "goalFingerprint": "sha256:a6424845c4fcc99bd34cacd3dd77eae8b327d50a9a9909b32235945374cde5eb",
+      "profileFingerprint": "sha256:afb1c3ebd8ba052f4da111a4c9c80b1422ad2cc38af14d438779fe930be4004c",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "120 J hinein und50 J Arbeit hinaus ergibt ΔU=70 J in beiden Konventionen. Unabhängig verglichene starre Wärmeaufnahme und isolierte Kolbenkompression ergeben je40 J bei verschiedenen Nulltermen. Ruhendes geschlossenes System und keine anderen Arbeitsformen sind angegeben.",
+      "negativeControlOrNonblockingNote": "Gleiche Zustandsgrößenänderung ist kein gleicher Prozess; Vorzeichenwechsel darf Ergebnis nicht ändern.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+      "goalFingerprint": "sha256:e6a286e7077efc51301807195009c73aa40d331a03a6abbdba4f474b7d86d1c5",
+      "profileFingerprint": "sha256:6162487028a031b2e0b09076129454cf535998b39c8644d3c56fde6f12ad0bd0",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Ungeordnete neue Temperaturfolgen verlangen Begründung statt bloßer Wiedererkennung. Reibungsfilm mit Unterlage als vergrößertem System ist inhaltliche Variation. Lokale Abkühlung und positiver Gesamtentropiezuwachs sind korrekt getrennt.",
+      "negativeControlOrNonblockingNote": "Eine fertige aktive Zeitpfeilgrafik darf die neue ungeordnete Aufgabenfolge nicht ersetzen; Brief verlangt eigene Reihenfolge/Begründung.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+      "goalFingerprint": "sha256:a2b6c7e5bfae92b3e679f7b94fe8448746b4dab42bd6367524097d4dced52026",
+      "profileFingerprint": "sha256:37729e6aaf0be3273ebe3939571be49aad48a0720b167883e8c0ac5975959441",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Zyklische Maschine, zwei Reservoire, Abwärme/Entropieabgabe und reversible Grenze sind korrekt. Geändertes kaltes Reservoir bei gleichem heißen Reservoir verändert die Grenze qualitativ; keine zusätzliche numerische Carnot-Pflicht.",
+      "negativeControlOrNonblockingNote": "Die Variation nennt zusätzlich innere Reibung; sie ist kein eigenständiger Pflichtfall. Für spätere Aufgabeninstanziierung muss die geänderte Reservoirtemperatur tatsächlich gegeben sein.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    },
+    {
+      "goalId": "73b5af24-7750-520a-bb16-43136ce19a5c",
+      "goalFingerprint": "sha256:61c645f0216b83b90dd87687aced1c30c71632bb24729155bd9504a6894c576e",
+      "profileFingerprint": "sha256:3e84993c3befb5c4ab12b9d015bbd96271ad2a260439cac16bba8bf3fcc933eb",
+      "verdict": "PASS",
+      "positiveAndScopeControls": "Datenfall trennt gemessenen Wirkungsgrad und temperaturabhängige Grenze samt Unsicherheiten. η=0,30 liegt auch mit Randwerten0,2843–0,3163 sicher unter ηC=0,50 mit Bereich0,4950–0,5050. Scheinbare Grenzüberschreitung ist ein echter Regimewechsel; Ursachenprüfung statt voreiliger Hauptsatzwiderlegung.",
+      "negativeControlOrNonblockingNote": "Für die spätere Instanziierung des zweiten Briefs sind konkrete Messdaten/Unsicherheiten zu liefern; der jetzige Profilbrief ist keine bereits ausgeführte zweite Messreihe.",
+      "deEnParity": "Equivalent substantive demands in the read fields.",
+      "safety": "Thought/model/data work; no unsupervised physical procedure required."
+    }
+  ],
+  "suggestedChanges": [
+    {
+      "goalId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+      "reason": "Replace stale amount-of-gas focus by the actual fixed-amount/end-temperature variation; no canonical change.",
+      "replacements": [
+        {
+          "path": "profile.applicationCaseBriefs[1].understandingFocusDe",
+          "before": "Isotherme Expansion versus Kompression; feste versus veränderte Gasmenge.",
+          "after": "Isotherme Expansion versus Kompression; gleiche versus veränderte Endtemperatur bei fester Gasmenge."
+        },
+        {
+          "path": "profile.applicationCaseBriefs[1].understandingFocusEn",
+          "before": "Isothermal expansion versus compression; fixed versus changed amount of gas.",
+          "after": "Isothermal expansion versus compression; unchanged versus changed final temperature at a fixed amount of gas."
+        }
+      ]
+    },
+    {
+      "goalId": "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+      "reason": "Retain both valid small-N cases and add an explicit, explanation-based large-N transfer within the current canonical claim. Do not demand a new asymptotic derivation or full large-N enumeration.",
+      "replacements": [
+        {
+          "path": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "Ein frisches Modell hat fünf markierte Teilchen in zwei gleich großen Hälften mit unabhängigen gleich wahrscheinlichen Links-rechts-Zuordnungen. Als annähernd ausgeglichen gelten n_links=2 oder 3. Vergleiche diesen Bereich mit den beiden einseitigen Zuständen und erkläre, warum exakte Halbierung hier unmöglich ist. Beurteile außerdem, welche Wahrscheinlichkeitsaussagen bei ungleichen Raumhälften neu geprüft werden müssten.",
+          "after": "Ein frisches Modell hat fünf markierte Teilchen in zwei gleich großen Hälften mit unabhängigen gleich wahrscheinlichen Links-rechts-Zuordnungen. Als annähernd ausgeglichen gelten n_links=2 oder 3. Vergleiche diesen Bereich mit den beiden einseitigen Zuständen und erkläre, warum exakte Halbierung hier unmöglich ist. Beurteile außerdem, welche Wahrscheinlichkeitsaussagen bei ungleichen Raumhälften neu geprüft werden müssten. Übertrage die Zählidee anschließend auf deutlich größere Teilchenzahlen: Begründe mithilfe von Ω=binom(N,n), warum ein Bereich annähernd gleicher Besetzungen gegenüber stark einseitigen Besetzungen überwiegt und warum daraus keine Wahrscheinlichkeit nahe 1 für genau n=N/2 folgt. Eine vollständige Aufzählung oder asymptotische Rechnung ist nicht verlangt."
+        },
+        {
+          "path": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "A fresh model has five labeled particles in two equal-volume halves with independent equally likely left-right assignments. Approximate balance means n_left=2 or 3. Compare this range with the two one-sided states and explain why exact halving is impossible here. Also assess which probability claims would need reconsideration for unequal-volume halves.",
+          "after": "A fresh model has five labeled particles in two equal-volume halves with independent equally likely left-right assignments. Approximate balance means n_left=2 or 3. Compare this range with the two one-sided states and explain why exact halving is impossible here. Also assess which probability claims would need reconsideration for unequal-volume halves. Then extend the counting idea to substantially larger particle numbers: use Ω=binom(N,n) to explain why a range of approximately equal occupancies predominates over strongly one-sided occupancies and why this does not imply a probability near 1 for exactly n=N/2. A complete enumeration or asymptotic calculation is not required."
+        },
+        {
+          "path": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "Die lernende Person erhält 10+10=20 von 32 Zuordnungen im ausgeglichenen Bereich gegenüber 1+1=2 einseitigen. Sie trennt den Bereich von einem einzelnen Makrozustand, vergleicht dessen jeweilige Entropie über k_B ln Ω und erklärt, dass ungleiche Teilvolumina die gleiche Wahrscheinlichkeit jeder Links-rechts-Zuordnung aufheben.",
+          "after": "Die lernende Person erhält 10+10=20 von 32 Zuordnungen im ausgeglichenen Bereich gegenüber 1+1=2 einseitigen. Sie trennt den Bereich von einem einzelnen Makrozustand, vergleicht dessen jeweilige Entropie über k_B ln Ω und erklärt, dass ungleiche Teilvolumina die gleiche Wahrscheinlichkeit jeder Links-rechts-Zuordnung aufheben. Für größere N begründet sie mit der kombinatorisch größeren Zahl von Zuordnungen im zentralen Besetzungsbereich dessen Überwiegen gegenüber stark einseitigen Besetzungen. Sie unterscheidet die zusammengefasste Wahrscheinlichkeit eines Bereichs von der Wahrscheinlichkeit eines einzelnen exakten Makrozustands und behauptet für Letztere keine Annäherung an 1."
+        },
+        {
+          "path": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "The learner obtains 10+10=20 out of 32 assignments in the balanced range versus 1+1=2 one-sided assignments. They distinguish the range from one macrostate, compare each macrostate's entropy through k_B ln Ω, and explain that unequal subvolumes remove equal probability of every left-right assignment.",
+          "after": "The learner obtains 10+10=20 out of 32 assignments in the balanced range versus 1+1=2 one-sided assignments. They distinguish the range from one macrostate, compare each macrostate's entropy through k_B ln Ω, and explain that unequal subvolumes remove equal probability of every left-right assignment. For larger N, they explain the predominance of the central occupancy range over strongly one-sided occupancies through its combinatorially larger number of assignments. They distinguish the combined probability of a range from the probability of one exact macrostate and do not claim that the latter approaches 1."
+        }
+      ]
+    }
+  ],
+  "arithmeticControl": {
+    "idealGasMeanEnergyRatio600Kto300K": 2,
+    "entropyEqualHeat60JAt300Kand600K": [
+      0.2,
+      0.1
+    ],
+    "reservoirMinus900JAt300K": -3,
+    "phasePlus1000JAt250K": 4,
+    "freezingHalfKg20kJperKgAt250K": -40,
+    "heat100J400Kto300K": {
+      "exactTotal": "1/12 J/K",
+      "decimalTotal": 0.08333333333333333
+    },
+    "reverseHeat80J250Kto500K": -0.16,
+    "oneReservoirClausius100J400K": 0.25,
+    "binomialN4": [
+      1,
+      4,
+      6
+    ],
+    "binomialN5Balanced20of32": 0.625,
+    "gasEnergy120minus50": 70,
+    "engine": {
+      "efficiency": 0.3,
+      "efficiencyRange": [
+        0.28431372549019607,
+        0.3163265306122449
+      ],
+      "carnot": 0.5,
+      "carnotRange": [
+        0.49498327759197325,
+        0.5049833887043189
+      ]
+    },
+    "additionalReviewerOnlyLargeNControl": {
+      "N": 100,
+      "probability40through60": 0.9647997997822951,
+      "probabilityExactly50": 0.07958923738717877,
+      "probability0or100": 1.5777218104420236e-30,
+      "method": "BigInt binomial recurrence C(N,k)=C(N,k-1)*(N-k+1)/k; sum and divide by 2^N. These are review controls, not newly required learner calculations."
+    }
+  },
+  "writes": "Only this new findings artifact. Existing candidates, review records, canonical files and registrations were not changed."
+}

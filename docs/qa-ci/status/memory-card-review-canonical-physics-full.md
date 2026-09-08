@@ -22,16 +22,16 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 465 |
+| ordinary atomic goals reviewed | 466 |
 | goals without memory need | 336 |
-| goals with intentional memory support | 129 |
+| goals with intentional memory support | 130 |
 | goals needing developer review | 0 |
-| primary cards in scope | 148 |
-| kept primary cards with origin trace | 148 |
-| cards removed from active decks | 15 |
+| primary cards in scope | 147 |
+| kept primary cards with origin trace | 147 |
+| cards removed from active decks | 16 |
 | memory goals traced | 5/5 |
 | composition visibility scopes | 2 |
-| memory-required goals checked in views | 258 |
+| memory-required goals checked in views | 260 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 556 | 5 | 129 | 0 |
-| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 556 | 5 | 129 | 0 |
+| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 558 | 5 | 130 | 0 |
+| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 558 | 5 | 130 | 0 |
 
 ## Memory-Required Goals
 
@@ -163,9 +163,10 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | Q3: Polarisation und Schwingungsebene (`549269d3-1aef-5c55-9640-ee2a8e2ee9a1`) | `de_gymnasium_physics_quantum_q3` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | Q3: Röntgenspektren deuten (`48e77690-17f7-5ebe-a8f7-87b2ee9820da`) | `de_gymnasium_physics_quantum_q3` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | Q4: Bändermodell und Dotierung (`df010b2b-b182-5f7e-bbe4-49b72e48c27a`) | `de_gymnasium_physics_structure_q4` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
-| Q4: Berechnungen im Potenzialtopf (LK) (`ad021f2e-6b94-5e6e-a264-3d1110094b87`) | `de_gymnasium_physics_structure_q4` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | Q4: Bindungsenergie und Massendefekt (`cde9b548-2cf4-59ad-b5d4-a71872afbe56`) | `de_gymnasium_physics_structure_q4` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | Q4: Delayed-Choice-Experimente messkontextbezogen deuten (`8c97c234-a932-5e84-aed5-237b4e2a8336`) | `de_gymnasium_physics_structure_q4` | Begriffe zur Komplementarität dürfen gestützt werden; die eigentliche Leistung ist jedoch das Deuten neuer Versuchsanordnungen und kein isoliertes Erinnern. |
+| Q4: Diskrete Energien im unendlichen Potenzialtopf berechnen (`d05a146f-7fcd-56ae-b9b9-b54203328579`) | `de_gymnasium_physics_structure_q4` | Die kompakte konditionierte Beziehung E_n=n2h2/(8m_eL2), n≥1 und V=0 im Inneren rechtfertigt eine Abrufkarte c04. Modellwahl, Einheitenprüfung und Skalierungsbegründung bleiben Aufgabenpraxis. |
+| Q4: Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen (`f2538793-8b0a-5c3b-b216-5d329a4e87bd`) | `de_gymnasium_physics_structure_q4` | Die normierungsgebundene Born-Integralbeziehung rechtfertigt eine kompakte Abrufkarte c06; Integralwahl, Auswertung und Plausibilitätsprüfung werden am normalen Ziel geübt. |
 | Q4: Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern (`6031bed0-9baa-4f45-b2a5-57ffb00d39cc`) | `de_gymnasium_physics_structure_q4` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | Q4: Kosmologie und Urknall (`e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9`) | `de_gymnasium_physics_structure_q4` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | Q4: Längenkontraktion erläutern (`0c305cf9-3923-51cf-a9ae-5849edc99c9f`) | `de_gymnasium_physics_structure_q4` | Die kompakte Längenkontraktionsbeziehung ist für sicheren Abruf geeignet; Bezugssystem, Deutung und Evidenz bleiben Teil der normalen Aufgabenpraxis. |
@@ -298,10 +299,9 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | `de_gymnasium_physics_quantum_q3` | `physics_q3_c15` | Moseley-Gesetz (Qualitativ) | Zusammenhang zwischen der Frequenz der charakteristischen Röntgenlinien und der Ordnungszahl $Z$ des Anodenmaterials. | Q3: Röntgenspektren deuten (`48e77690-17f7-5ebe-a8f7-87b2ee9820da`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_structure_q4` | `physics_q4_c01` | Born'sche Wahrscheinlichkeitsdeutung ($\\|\Psi\\|^2$) | Das Betragsquadrat der Wellenfunktion $\|\Psi(\vec{r}, t)\|^2$ gibt die Wahrscheinlichkeitsdichte an, ein Quantenobjekt zu einem bestimmten Zeitpunkt an einem bestimmten Ort anzutreffen. | Q4: Wellenfunktion und Wahrscheinlichkeitsdeutung (`51bc5513-6879-548f-b19a-9746b667f1a3`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_structure_q4` | `physics_q4_c02` | Heisenbergsche Unschärferelation (Orts-Impuls) | $\Delta x \cdot \Delta p_x \ge \frac{h}{4\pi}$ (bzw. $\frac{\hbar}{2}$) Es ist prinzipiell unmöglich, Ort und Impuls eines Quantenobjekts gleichzeitig beliebig genau zu bestimmen (bzw. den Zustand so zu präparieren). | Q4: Orts-Impuls-Unbestimmtheit (`9e881b3b-68cd-5f52-819f-c2e33b5ba631`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
-| `de_gymnasium_physics_structure_q4` | `physics_q4_c03` | Modell des unendlichen Potenzialtopfs (1D) | Vereinfachtes Atommodell: Ein Elektron ist in einem Bereich der Breite $L$ eingeschlossen (Potenzialwände unendlich hoch). Führt zu diskreten Energieniveaus durch stehende Wellen. | Q4: Berechnungen im Potenzialtopf (LK) (`ad021f2e-6b94-5e6e-a264-3d1110094b87`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
-| `de_gymnasium_physics_structure_q4` | `physics_q4_c04` | Energiewerte im unendlichen Potenzialtopf (Formel) | $E_n = \frac{h^2}{8 \cdot m \cdot L^2} \cdot n^2$ Energie hängt quadratisch von der Quantenzahl $n$ ab. | Q4: Berechnungen im Potenzialtopf (LK) (`ad021f2e-6b94-5e6e-a264-3d1110094b87`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
+| `de_gymnasium_physics_structure_q4` | `physics_q4_c04` | Energiewerte im unendlichen Potenzialtopf (Formel) | Für ein Elektron im 1D-Topf der Breite $L$ mit unendlich hohen Wänden und $V=0$ im Inneren gilt: $E_n=\frac{h^2}{8m_eL^2}\,n^2$, $n=1,2,\ldots$. Bei gleichem $L$ ist $E_n\propto n^2$; bei gleichem $n$ ist $E_n\propto 1/L^2$. | Q4: Diskrete Energien im unendlichen Potenzialtopf berechnen (`d05a146f-7fcd-56ae-b9b9-b54203328579`) | Behalten, ausschließlich Energiekind: eine kompakte Energiebeziehung mit n≥1, Elektronenmasse, Topfbreite und explizitem Energiebezug. Keine Wahrscheinlichkeitsintegration oder universelle reale Atomenergie als Kartenanspruch. |
 | `de_gymnasium_physics_structure_q4` | `physics_q4_c05` | Komplementarität (Begriff) | Eigenschaften wie Wellen- und Teilchencharakter schließen sich gegenseitig aus (treten nie gleichzeitig im selben Experiment auf), ergänzen sich aber zur vollständigen Beschreibung (z. B. Weginformation vs. Interferenzmuster). | Q4: Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern (`6031bed0-9baa-4f45-b2a5-57ffb00d39cc`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
-| `de_gymnasium_physics_structure_q4` | `physics_q4_c06` | Wahrscheinlichkeit im Potenzialtopf berechnen (Integral) | $P(x_1 \le x \le x_2) = \int_{x_1}^{x_2} \|\Psi(x)\|^2 dx$ Berechnung der Aufenthaltswahrscheinlichkeit in einem Intervall. | Q4: Berechnungen im Potenzialtopf (LK) (`ad021f2e-6b94-5e6e-a264-3d1110094b87`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
+| `de_gymnasium_physics_structure_q4` | `physics_q4_c06` | Wahrscheinlichkeit im Potenzialtopf berechnen (Integral) | Für eine auf $[0,L]$ normierte Wellenfunktion und $0\le x_1\le x_2\le L$ gilt: $P(x_1\le x\le x_2)=\int_{x_1}^{x_2}\|\psi(x)\|^2\,dx$. $\|\psi\|^2$ ist die Wahrscheinlichkeitsdichte; ihre Fläche ist die dimensionslose Wahrscheinlichkeit. Über den ganzen Topf ist das Integral $1$. | Q4: Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen (`f2538793-8b0a-5c3b-b216-5d329a4e87bd`) | Behalten, ausschließlich Intervallkind: die normierte Born-Integralbeziehung und Dichte/Wahrscheinlichkeits-Unterscheidung bilden den kompakten Abrufkern. Normierung und Grenzen präzisiert; keine Energiekompetenz als Ursprung. |
 | `de_gymnasium_physics_structure_q4` | `physics_q4_c07` | Delayed-Choice-Experiment (Erkenntnis) | Zeigt, dass die Entscheidung, ob Wellen- oder Teilcheneigenschaften gemessen werden, auch noch getroffen werden kann, nachdem das Quantenobjekt den Doppelspalt bereits passiert hat. | Q4: Delayed-Choice-Experimente messkontextbezogen deuten (`8c97c234-a932-5e84-aed5-237b4e2a8336`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_structure_q4` | `physics_q4_c08` | Besetzungsinversion (Laser) | Ein Zustand, in dem sich mehr Elektronen in einem höheren Energieniveau befinden als im niedrigeren. Notwendig für den Laserbetrieb (verhindert reine Absorption). | Q4: Laserprinzip und Anwendungen (`75f7139f-0f07-5cec-bcea-4f139502b528`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_structure_q4` | `physics_q4_c09` | Stimulierte Emission | Ein einfallendes Photon löst den Übergang eines angeregten Elektrons aus. Das emittierte Photon hat gleiche Energie, Phase und Richtung wie das auslösende (Lichtverstärkung). | Q4: Laserprinzip und Anwendungen (`75f7139f-0f07-5cec-bcea-4f139502b528`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
@@ -350,6 +350,7 @@ Entfernte Karten bleiben im Card-Ledger als negative Entscheidung erhalten. Sie 
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_c11` | removed | Entfernt: ältere E-Phase-Zusatzkarte ohne eigenständige notwendige Memory-Funktion; der Inhalt wird durch zielgetaggte Karten oder durch Aufgabenpraxis abgedeckt. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_c12` | removed | Entfernt: ältere E-Phase-Zusatzkarte ohne eigenständige notwendige Memory-Funktion; der Inhalt wird durch zielgetaggte Karten oder durch Aufgabenpraxis abgedeckt. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_c13` | removed | Entfernt: ältere E-Phase-Zusatzkarte ohne eigenständige notwendige Memory-Funktion; der Inhalt wird durch zielgetaggte Karten oder durch Aufgabenpraxis abgedeckt. |
+| `de_gymnasium_physics_structure_q4` | `physics_q4_c03` | removed | Entfernen: Der allgemeine qualitative Modellsatz ist eine Erklärung, kein zusätzlicher notwendiger harter Abruf neben der konditionierten Energiebeziehung. Modellbedingungen stehen in c04; Modellarbeit bleibt am normalen Ziel. Keine neue Sammelursprungsbindung. |
 
 ## Blocking Issues
 

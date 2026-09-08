@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/reportGoalSourceRationaleMappingBatch.ts`
 > Source of truth: `docs/qa-ci/status/goal-source-rationale-gap-issues.json`
 
-Generated: 2026-09-07T05:44:09.692Z
+Generated: 2026-09-08T02:27:15.056Z
 
 Dieser Batch ist eine Review-Vorlage fuer naheliegende Mapping-Ergaenzungen. Er schreibt keine Mapping-Dateien um. Jeder Eintrag muss fachlich geprueft werden, bevor eine Mapping-Review-Entscheidung erweitert oder ein Source-Beleg gesplittet wird.
 
@@ -58,5 +58,5 @@ Dieser Batch ist eine Review-Vorlage fuer naheliegende Mapping-Ergaenzungen. Er 
 ## Sources
 
 - Gap issues: `docs/qa-ci/status/goal-source-rationale-gap-issues.json`
-- Gap issues generated: 2026-09-07T05:44:08.933Z
+- Gap issues generated: 2026-09-07T21:09:23.970Z
 

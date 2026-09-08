@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "status": "AUTHOR_DECISIONS_PENDING_CURRENT_D_REVIEW",
+  "applied": false,
+  "pauseReason": "The user requested the CI/rollout stabilization milestone before these two proposed text revisions were applied. Current canonical descriptions and their existing ledgers are unchanged.",
+  "reviewedAt": "2026-09-08",
+  "reviewer": "codex-root-current-physics-author",
+  "authority": "Individual internal AI author decisions after reading both independent B043r rounds; no human approval or fresh D consensus claimed.",
+  "cases": [
+    {
+      "goalId": "b61d233a-1902-526b-a9b5-6b3d553f4013",
+      "beforeDe": "Die lernende Person erklärt den Unterschied zwischen Makrozustand (z. B. $p, V, T$) und Mikrozustand (Teilchenzustände) und erkennt: Viele Mikrozustände können zum gleichen Makrozustand gehören.",
+      "beforeEn": "The learner explains the difference between macrostate (e.g., $p, V, T$) and microstate (particle states) and recognizes that many microstates can correspond to the same macrostate.",
+      "afterDe": "Die lernende Person kann Makrozustände (z. B. beschrieben durch $p, V, T$) von Mikrozuständen (Teilchenzuständen) unterscheiden und an einem Teilchenmodell erklären, wie verschiedene Mikrozustände demselben Makrozustand entsprechen können.",
+      "afterEn": "The learner can distinguish macrostates (e.g., described by $p, V, T$) from microstates (particle states) and use a particle model to explain how different microstates can correspond to the same macrostate.",
+      "atomicityReason": "Eine Modellunterscheidung mit ihrer beobachtbaren Erklärung. Verschiedene Teilchenanordnungen bei unverändertem grobem Makrozustand sind derselbe Kompetenzkern; keine Zählrechnung oder neue Entropieformel ergänzt.",
+      "memoryReason": "No memory remains appropriate: the individual competence is constructing and explaining the coarse-to-fine model relationship. A memorized definition cannot replace this. No deck/card is required or added.",
+      "visualReview": "Existing full raster inspected: each of the three right-hand arrangements contains exactly two particles on each side, with differing positions. The left-hand coarse count is also 2+2; p,V,T are example macro descriptors. The image illustrates a simplified positional model, not complete phase-space states. The unchanged illustration remains compatible with the more observable wording.",
+      "positiveProfileReview": "The existing P043 body already demands constructing distinct microstates for one macrostate and separating coarse measurements from particle detail. The new wording makes this same performance explicit; no profile demand is removed."
+    },
+    {
+      "goalId": "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+      "beforeDe": "Die lernende Person kann den zweiten Hauptsatz auf Wärmekraftmaschinen anwenden, den Zusammenhang zwischen Abwärme und begrenztem Wirkungsgrad erläutern und die Carnot-Grenze qualitativ einordnen.",
+      "beforeEn": "The learner can apply the second law to heat engines, explain the relation between waste heat and limited efficiency, and qualitatively classify the Carnot limit.",
+      "afterDe": "Die lernende Person kann mit dem zweiten Hauptsatz erklären, warum eine zyklische Wärmekraftmaschine zwischen einem heißen und einem kalten Reservoir mit jeweils konstanter Temperatur Abwärme abgeben muss, und die Carnot-Grenze als maximal möglichen Wirkungsgrad bei diesen Temperaturen im reversiblen Grenzfall qualitativ deuten.",
+      "afterEn": "The learner can use the second law to explain why a cyclic heat engine operating between a hot and a cold reservoir, each at constant temperature, must reject heat, and qualitatively interpret the Carnot limit as the maximum possible efficiency at those temperatures in the reversible limit.",
+      "atomicityReason": "Eine zusammenhängende Anwendung des zweiten Hauptsatzes auf die zyklische Zwei-Reservoir-Maschine: notwendige Wärmeabgabe und deren Wirkungsgradgrenze. Quantitative Carnot-Rechnung bleibt im Nachbarziel; keine zusätzliche Maschinenart oder experimentelle Leistung ergänzt.",
+      "memoryReason": "The actual DE/EN card physics_e_cov_063 was read: eta=W_useful/Q_in<1 and the remaining rejected heat are the compact recall core. It is still applicable within the now explicit cyclic two-reservoir scope. Existing deck, memory goal and sole card origin remain unchanged; model conditions and explanation stay ordinary understanding work.",
+      "visualReview": "Existing full raster inspected: hot/cold reservoirs, Qh=W+Qc, Qc>0, eta=W/Qh and eta<=1-Tc/Th are consistent for the named cycle. 600 K/300 K gives eta<=0.50. The footer explicitly names the cycle. No image bytes changed and no human approval claimed.",
+      "positiveProfileReview": "The existing P043 body already specifies cyclic operation, constant-temperature hot/cold reservoirs and the reversible bound. Its case demands remain compatible with the narrower, explicit description."
+    }
+  ]
+}

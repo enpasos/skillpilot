@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "reviewedAt": "2026-09-08T02:05:12.521Z",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-quantum-completion-v1/interval-assessment.candidate.json",
+  "candidateSha256": "sha256:79ca67b6328f65d10a186011ebb9a39e639f6c18186fc1df51acfc571dd5c83e",
+  "assessmentGoalId": "2f8d4250-66c5-54e9-abb8-80735dc408d2",
+  "reviewer": "/root/goal_book_pdf_history_audit",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "authority": "Independent current AI content counterreview only; no human approval, release, canonical write or actual learner-performance evidence.",
+  "provenance": "Existing agent instance; prior physics/curriculum work disclosed. The actual current candidate was read in both languages, and its mathematical solution was rederived here. Root disclosed that the task derives from an older separately authored candidate; no new-thread, blind-review or model-diversity claim is made.",
+  "scope": {
+    "coveredGoalIds": [
+      "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+    ],
+    "requires": [
+      "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+    ],
+    "comparedGoalArchive": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/physics-paused-split-deferral-20260907-v1/nine-current-goals.json.snapshot",
+    "comparedGoalArchiveSha256": "sha256:64b1da69c1aba23050f20d94bcc0ce836999096d7f2df845e11e9383084681eb",
+    "assessmentScope": "HE / LK / Q4; supplied normalized wave function in a one-dimensional infinite well.",
+    "contentMatch": "The archived f253 description requires interval probability calculation from a supplied normalized wave function and interpretation as area under probability density. Tasks 1–2 directly test these, and task 3 checks the same density-versus-probability interpretation. No normalization derivation, eigenvalue calculation, tunneling or unrelated sibling mastery is claimed.",
+    "applicabilityLimit": "f253 is not currently canonical at this review baseline. PASS concerns the proposed content against the exact archived successor, not graph activation. Native HE-LK projection, prerequisite/terminal-route and canonical consistency gates remain necessary at reintegration.",
+    "sourceLimit": "Root reports independently checking the official HE source p.45. This report makes no new independent normative-source-verification claim."
+  },
+  "mathematicalChecks": [
+    {
+      "check": "Normalization and physical domain",
+      "result": "For L>0, |psi|²=(2/L)sin²(pi*x/L), integral from0 toL equals1; zero outside the infinite well. Ground-state n=1 form is consistent.",
+      "numericNormalization": 1
+    },
+    {
+      "check": "Central interval",
+      "result": "F(x)=x/L−sin(2pi*x/L)/(2pi); F(3L/4)=3/4+1/(2pi), F(L/4)=1/4−1/(2pi); difference=1/2+1/pi≈0.8183098861837907.",
+      "analytic": 0.8183098861837907,
+      "numericalCrossCheck": 0.8183098861837913,
+      "method": "Independent composite Simpson integration of 2 sin²(pi*u), u=x/L, over[1/4,3/4] with20000 panels."
+    },
+    {
+      "check": "Equal-width comparison",
+      "result": "The edge interval[0,L/2] and central interval[L/4,3L/4] each have lengthL/2. Edge probability is1/2 by integration/symmetry, central probability≈0.8183 is larger because it contains more area beneath the nonuniform central density.",
+      "edgeProbability": 0.5
+    },
+    {
+      "check": "Density, dimensions and point probability",
+      "result": "|psi(L/2)|²=2/L has inverse-length units; an interval integral multiplies by dx and is dimensionless. The specified continuous position distribution assigns exactly one point zero probability. No claim about finite-resolution physical detectors is needed."
+    }
+  ],
+  "scoring": {
+    "status": "PASS",
+    "maxPoints": 10,
+    "passingPoints": 6,
+    "sumOfSteps": 10,
+    "allocation": "5+3+2; solution suballocations2+2+1,1+2,1+1 match. Follow-on errors in comparison are explicitly not double-penalized. The threshold is an authored assessment threshold, not independent proof of whole-goal mastery."
+  },
+  "deEn": {
+    "status": "PASS",
+    "checks": "Material, normalized domain, optional trig identity, integration bounds, all task demands, numerical solutions, probability/density distinction and point allocations are equivalent. English scoring explanations appear in solutionContentEn; no extra language-specific competence or method is required."
+  },
+  "safety": {
+    "status": "PASS",
+    "reason": "Material-based calculation and interpretation only; no operational experiment or hazardous activity."
+  },
+  "blockers": [],
+  "releaseAuthorized": false
+}

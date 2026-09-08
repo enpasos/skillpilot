@@ -20,6 +20,28 @@ const memoryDeckDir = path.join(
 const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp'])
 const audioExtensions = new Set(['.m4a', '.mp3', '.ogg', '.wav'])
 const failures = []
+const emitLayerAPatch = process.argv.length === 3
+  && process.argv[2] === '--emit-layer-a-patch'
+if (process.argv.length > 2 && !emitLayerAPatch) {
+  console.error('Usage: check_ai_transparency_inventory.mjs [--emit-layer-a-patch]')
+  process.exit(2)
+}
+// Only measured, live Layer-A fields are eligible for an intentional refresh.
+// Policies, provenance conclusions, other media hashes and review values stay bound.
+const layerAFields = new Set([
+  'goalVisualizations.canonicalLandscapeFiles',
+  'goalVisualizations.canonicalGoalCount',
+  'goalVisualizations.count',
+  'goalVisualizations.fileExtensions',
+  'goalVisualizations.providerCounts',
+  'goalVisualizations.c2paStructure.detected',
+  'goalVisualizations.c2paStructure.notDetectedUrls',
+  'canonicalLearningContent.memoryDeckFiles',
+  'canonicalLearningContent.cardRecords',
+  'canonicalLearningContent.uniqueCardIds',
+])
+const layerAObservations = new Map()
+const layerADrift = new Set()
 
 function repoPath(relativePath) {
   return path.join(repoRoot, relativePath)
@@ -54,10 +76,11 @@ function stable(value) {
 }
 
 function expectEqual(label, actual, expected) {
+  if (layerAFields.has(label)) layerAObservations.set(label, actual)
   if (JSON.stringify(stable(actual)) !== JSON.stringify(stable(expected))) {
-    failures.push(
-      `${label}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`,
-    )
+    const message = `${label}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`
+    failures.push(message)
+    if (layerAFields.has(label)) layerADrift.add(message)
   }
 }
 
@@ -121,7 +144,8 @@ function hasC2paStructure(filePath) {
   return false
 }
 
-const inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'))
+const inventoryText = fs.readFileSync(inventoryPath, 'utf8')
+const inventory = JSON.parse(inventoryText)
 
 if (inventory.schemaVersion !== 1) {
   failures.push(
@@ -351,12 +375,49 @@ expectEqual(
   inventoriedBackendAudio,
 )
 
-if (failures.length > 0) {
+// This mode emits a reviewable patch, never writes it or runs during a build.
+// Missing/mismatched copies, non-Layer-A hash drift and schema failures still block it.
+const blockingFailures = emitLayerAPatch
+  ? failures.filter((failure) => !layerADrift.has(failure))
+  : failures
+if (blockingFailures.length > 0) {
   console.error(
-    `AI transparency inventory check failed with ${failures.length} issue(s):`,
+    `AI transparency inventory check failed with ${blockingFailures.length} issue(s):`,
   )
-  failures.forEach((failure) => console.error(`- ${failure}`))
+  blockingFailures.forEach((failure) => console.error(`- ${failure}`))
   process.exit(1)
+}
+
+if (emitLayerAPatch) {
+  if (layerAObservations.size !== layerAFields.size) {
+    throw new Error('Incomplete Layer-A inventory measurement; refusing a patch')
+  }
+  const updated = structuredClone(inventory)
+  for (const [field, actual] of layerAObservations) {
+    const keys = field.split('.')
+    const parent = keys.slice(0, -1)
+      .reduce((value, key) => value[key], updated.artifactClasses)
+    const key = keys.at(-1)
+    // Do not reorder already equal fields or refresh unrelated snapshot metadata.
+    if (JSON.stringify(stable(parent[key])) !== JSON.stringify(stable(actual))) {
+      parent[key] = stable(actual)
+    }
+  }
+  const lines = ['*** Begin Patch']
+  if (layerADrift.size > 0) {
+    lines.push(
+      '*** Update File: docs/legal/ai-transparency-inventory.json',
+      '@@',
+      ...inventoryText.replace(/\n$/u, '').split('\n').map((line) => `-${line}`),
+      ...JSON.stringify(updated, null, 2).split('\n').map((line) => `+${line}`),
+    )
+  }
+  lines.push('*** End Patch')
+  console.error(`Layer-A inventory patch: ${layerADrift.size} measured field(s); not applied. Review before applying, then rerun the normal check.`)
+  await new Promise((resolve, reject) => {
+    process.stdout.write(`${lines.join('\n')}\n`, (error) => error ? reject(error) : resolve())
+  })
+  process.exit(0)
 }
 
 console.log(

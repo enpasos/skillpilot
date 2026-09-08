@@ -27,11 +27,12 @@
     {
       "id": "physics_q4_c04",
       "front": "Energiewerte im unendlichen Potenzialtopf (Formel)",
-      "back": "$E_n = \\frac{h^2}{8 \\cdot m \\cdot L^2} \\cdot n^2$\n\nEnergie hängt quadratisch von der Quantenzahl $n$ ab.",
+      "back": "Für ein Elektron im 1D-Topf der Breite $L$ mit unendlich hohen Wänden und $V=0$ im Inneren gilt:\n$E_n=\\frac{h^2}{8m_eL^2}\\,n^2$, $n=1,2,\\ldots$.\n\nBei gleichem $L$ ist $E_n\\propto n^2$; bei gleichem $n$ ist $E_n\\propto 1/L^2$.",
       "category": "Q4.1 Quantenobjekte (Pflicht)",
       "tags": [
+        "GK",
         "LK",
-        "goal:ad021f2e-6b94-5e6e-a264-3d1110094b87"
+        "goal:d05a146f-7fcd-56ae-b9b9-b54203328579"
       ]
     },
     {
@@ -48,11 +49,11 @@
     {
       "id": "physics_q4_c06",
       "front": "Wahrscheinlichkeit im Potenzialtopf berechnen (Integral)",
-      "back": "$P(x_1 \\le x \\le x_2) = \\int_{x_1}^{x_2} |\\Psi(x)|^2 dx$\n\nBerechnung der Aufenthaltswahrscheinlichkeit in einem Intervall.",
+      "back": "Für eine auf $[0,L]$ normierte Wellenfunktion und $0\\le x_1\\le x_2\\le L$ gilt:\n$P(x_1\\le x\\le x_2)=\\int_{x_1}^{x_2}|\\psi(x)|^2\\,dx$.\n\n$|\\psi|^2$ ist die Wahrscheinlichkeitsdichte; ihre Fläche ist die dimensionslose Wahrscheinlichkeit. Über den ganzen Topf ist das Integral $1$.",
       "category": "Q4.1 Quantenobjekte (Pflicht)",
       "tags": [
         "LK",
-        "goal:ad021f2e-6b94-5e6e-a264-3d1110094b87"
+        "goal:f2538793-8b0a-5c3b-b216-5d329a4e87bd"
       ]
     },
     {
@@ -161,17 +162,6 @@
         "GK",
         "LK",
         "goal:e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9"
-      ]
-    },
-    {
-      "id": "physics_q4_c03",
-      "front": "Modell des unendlichen Potenzialtopfs (1D)",
-      "back": "Vereinfachtes Atommodell: Ein Elektron ist in einem Bereich der Breite $L$ eingeschlossen (Potenzialwände unendlich hoch).\nFührt zu diskreten Energieniveaus durch stehende Wellen.",
-      "category": "Q4.1 Quantenobjekte (Pflicht)",
-      "tags": [
-        "GK",
-        "LK",
-        "goal:ad021f2e-6b94-5e6e-a264-3d1110094b87"
       ]
     }
   ],

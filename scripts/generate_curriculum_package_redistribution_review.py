@@ -57,6 +57,14 @@ ROOT_APACHE_LICENSE_SHA256 = (
 )
 LEGACY_IMAGE_LICENSE_NOTE = "AI-generated, SkillPilot-curated"
 SKILLPILOT_AUTHORED_LICENSE_NOTE = "SkillPilot-authored"
+AI_ASSISTED_NATIVE_PROVIDER = (
+    "Repository-native SVG / Playwright Chromium (reviewed Nano fallback)"
+)
+AI_ASSISTED_NATIVE_LICENSE_NOTES = (
+    "AI-assisted repository-native visualization; redistribution review required",
+    "Repository-native, SkillPilot-curated (AI-assisted)",
+)
+AI_ASSISTED_NATIVE_PROVENANCE_CLASS = "ai-assisted-repository-native"
 DETERMINISTIC_RENDER_PROVIDER = (
     "Deterministically rendered from reviewed SVG assessment source"
 )
@@ -148,6 +156,20 @@ DECISION_FIELDS = (
 
 class ReviewError(RuntimeError):
     """The trusted local input cannot support a redistribution review."""
+
+
+def ai_assisted_native_claim(provider: str, note: str, resource_id: str) -> bool:
+    """Recognize only the closed metadata pair, without inferring rights or rendering proof."""
+    native_note = note in AI_ASSISTED_NATIVE_LICENSE_NOTES
+    if provider == AI_ASSISTED_NATIVE_PROVIDER or native_note:
+        if provider != AI_ASSISTED_NATIVE_PROVIDER or not (
+            native_note or note == LEGACY_IMAGE_LICENSE_NOTE
+        ):
+            raise ReviewError(
+                f"AI-assisted native provider/provenance pair differs on {resource_id!r}"
+            )
+        return True
+    return False
 
 
 @dataclass(frozen=True, order=True)
@@ -482,7 +504,10 @@ def load_source_model(release_root: Path) -> SourceModel:
         if artifact_path in artifact_paths:
             raise ReviewError(f"Duplicate embedded artifactPath {artifact_path!r}")
         artifact_paths.add(artifact_path)
-        if legacy_license_note not in {
+        ai_assisted_native = ai_assisted_native_claim(
+            provider, legacy_license_note, resource_id
+        )
+        if not ai_assisted_native and legacy_license_note not in {
             LEGACY_IMAGE_LICENSE_NOTE,
             SKILLPILOT_AUTHORED_LICENSE_NOTE,
         }:
@@ -536,6 +561,10 @@ def load_source_model(release_root: Path) -> SourceModel:
                 byte_count,
                 asset_sha256,
             )
+        elif ai_assisted_native:
+            user_provided = False
+            provenance_class = AI_ASSISTED_NATIVE_PROVENANCE_CLASS
+            provenance_source = "provider-pipeline-claim"
         else:
             if provider == DETERMINISTIC_RENDER_PROVIDER:
                 raise ReviewError(
@@ -883,7 +912,10 @@ def validate_decision_policy(
         if (
             not isinstance(expression, str)
             or not expression.strip()
-            or expression in {"NONE", "NOASSERTION", LEGACY_IMAGE_LICENSE_NOTE}
+            or expression in {
+                "NONE", "NOASSERTION", LEGACY_IMAGE_LICENSE_NOTE,
+                *AI_ASSISTED_NATIVE_LICENSE_NOTES,
+            }
         ):
             diagnostics.append(
                 Diagnostic(
@@ -1256,10 +1288,107 @@ def run_self_test(
             + "; ".join(f"{item.code} {item.path}" for item in baseline[:10])
         )
 
+    for note in (*AI_ASSISTED_NATIVE_LICENSE_NOTES, LEGACY_IMAGE_LICENSE_NOTE):
+        if not ai_assisted_native_claim(AI_ASSISTED_NATIVE_PROVIDER, note, "fixture"):
+            raise ReviewError("Self-test rejected an exact AI-assisted native claim")
+    for provider in (
+        "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+        "user-provided generated image",
+    ):
+        if ai_assisted_native_claim(provider, LEGACY_IMAGE_LICENSE_NOTE, "fixture"):
+            raise ReviewError("Self-test reclassified an unchanged legacy provider claim")
+    invalid_native_pairs = [
+        ("unknown provider", AI_ASSISTED_NATIVE_LICENSE_NOTES[0]),
+        ("unknown provider", AI_ASSISTED_NATIVE_LICENSE_NOTES[1]),
+        (DETERMINISTIC_RENDER_PROVIDER, AI_ASSISTED_NATIVE_LICENSE_NOTES[0]),
+        (AI_ASSISTED_NATIVE_PROVIDER + " ", AI_ASSISTED_NATIVE_LICENSE_NOTES[0]),
+        (AI_ASSISTED_NATIVE_PROVIDER, SKILLPILOT_AUTHORED_LICENSE_NOTE),
+        (AI_ASSISTED_NATIVE_PROVIDER, "unknown provenance"),
+    ]
+    for provider, note in invalid_native_pairs:
+        try:
+            ai_assisted_native_claim(provider, note, "fixture")
+        except ReviewError:
+            pass
+        else:
+            raise ReviewError("Self-test accepted a mismatched AI-assisted native pair")
+
+    fresh_review = build_review(source)
+    native_indexes = [
+        index for index, item in enumerate(fresh_review["assetDecisions"])
+        if item["provenanceClass"] == AI_ASSISTED_NATIVE_PROVENANCE_CLASS
+    ]
+    if not native_indexes:
+        raise ReviewError("Self-test has no current AI-assisted native asset")
+    for index in native_indexes:
+        item = fresh_review["assetDecisions"][index]
+        if (
+            {key: item[key] for key in DECISION_FIELDS} != pending_decision()
+            or item["provenanceSource"] != "provider-pipeline-claim"
+            or "deterministicRenderEvidence" in item
+        ):
+            raise ReviewError("AI-assisted native metadata inferred rights or rendering proof")
+    if validate_review(fresh_review, source, schema):
+        raise ReviewError("Fresh pending AI-assisted native evidence failed validation")
+
     cases: list[tuple[str, str, Any]] = []
 
     def case(name: str, expected_code: str, mutation: Any) -> None:
         cases.append((name, expected_code, mutation))
+
+    native_index = native_indexes[0]
+    case(
+        "native-provider-pair-drift", "SCHEMA",
+        lambda value: value["assetDecisions"][native_index].update(
+            {"provider": "unknown provider"}
+        ),
+    )
+    case(
+        "native-provenance-note-pair-drift", "SCHEMA",
+        lambda value: value["assetDecisions"][native_index].update(
+            {"legacyLicenseNote": SKILLPILOT_AUTHORED_LICENSE_NOTE}
+        ),
+    )
+    case(
+        "native-authored-provenance-overclaim", "ASSET_PROVENANCE_DRIFT",
+        lambda value: value["assetDecisions"][native_index].update(
+            {"provenanceClass": DETERMINISTIC_RENDER_PROVENANCE_CLASS}
+        ),
+    )
+    case(
+        "native-render-proof-overclaim", "SCHEMA",
+        lambda value: value["assetDecisions"][native_index].update(
+            {"provenanceSource": "hash-bound-skillpilot-source-render"}
+        ),
+    )
+    case(
+        "native-pending-license-overclaim", "PENDING_DECISION_NOT_CLOSED",
+        lambda value: value["assetDecisions"][native_index].update(
+            {"licenseExpression": "Apache-2.0"}
+        ),
+    )
+    case(
+        "native-automatic-approval", "ASSET_AUTOMATIC_ALLOWED_FORBIDDEN",
+        lambda value: value["assetDecisions"][native_index].update(
+            automatic_apache_decision(source.root_license)
+        ),
+    )
+    for note_index, note in enumerate(AI_ASSISTED_NATIVE_LICENSE_NOTES):
+        case(
+            f"native-provenance-note-is-not-license-{note_index}",
+            "ALLOWED_LICENSE_INVALID",
+            lambda value, note=note: value["assetDecisions"][native_index].update({
+                "decisionStatus": "human-approved",
+                "redistributionStatus": "allowed",
+                "licenseExpression": note,
+                "reviewer": "fixture-reviewer",
+                "reviewedAt": "2026-07-11T00:00:00Z",
+                "reviewEvidence": [
+                    {"kind": kind, "reference": "fixture", "sha256": None}
+                    for kind in ("project-license-decision", "provider-terms-review")
+                ],
+            }),
+        )
 
     case(
         "duplicate-asset",
@@ -1462,7 +1591,8 @@ def run_self_test(
             )
     print(
         "Redistribution review self-test passed: "
-        f"{len(cases)} fail-closed mutations and stale completed-review guard"
+        f"{len(cases)} fail-closed mutations, {len(invalid_native_pairs)} rejected native "
+        "metadata pairs, exact native pending claims and stale completed-review guard"
     )
 
 

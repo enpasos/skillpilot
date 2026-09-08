@@ -24586,18 +24586,20 @@
     },
     {
       "id": "ad021f2e-6b94-5e6e-a264-3d1110094b87",
-      "title": "Berechnungen im Potenzialtopf (LK)",
-      "titleEn": "Calculations in the Potential Well (advanced course)",
-      "description": "Die lernende Person kann für den unendlichen Potenzialtopf diskrete Energiewerte $E_n$ bestimmen und Wahrscheinlichkeiten $P(x_1 \\le x \\le x_2)=\\int_{x_1}^{x_2} |\\psi(x)|^2\\,dx$ berechnen.",
-      "descriptionEn": "The learner can determine discrete energy values $E_n$ for the infinite potential well and calculate probabilities $P(x_1 \\le x \\le x_2)=\\int_{x_1}^{x_2} |\\psi(x)|^2\\,dx$.",
-      "weight": 1.15,
+      "title": "Unendlicher Potenzialtopf: Energien und Intervallwahrscheinlichkeiten",
+      "titleEn": "Infinite Potential Well: Energies and Interval Probabilities",
+      "description": "Dieser fachliche Cluster bündelt das Berechnen diskreter Energiewerte und normierter Intervallwahrscheinlichkeiten für ein Elektron im eindimensionalen Potenzialtopf mit unendlich hohen Wänden.",
+      "descriptionEn": "This subject cluster groups the calculation of discrete energy values and normalized interval probabilities for an electron in a one-dimensional potential well with infinitely high walls.",
+      "weight": 2,
       "tags": [
+        "GK",
         "LK"
       ],
-      "contains": [],
-      "requires": [
-        "51bc5513-6879-548f-b19a-9746b667f1a3"
+      "contains": [
+        "d05a146f-7fcd-56ae-b9b9-b54203328579",
+        "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
       ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
         "demandLevel": "AB3",
@@ -24625,7 +24627,7 @@
           "DE-TH"
         ]
       },
-      "type": "atomic",
+      "type": "cluster",
       "resourceLinks": [
         {
           "type": "goal-visualization",
@@ -24641,7 +24643,10 @@
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
         }
-      ]
+      ],
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
     },
     {
       "id": "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
@@ -30295,7 +30300,7 @@
       "titleEn": "Practice Set Q4",
       "description": "Buendelt materialgestuetzte Q4-Klausuraufgaben mit normalem Klausurcharakter zu Quantenobjekten, Relativitaet, Kernphysik, Festkoerperphysik und Astrophysik. Abiturvorschlaege bleiben davon getrennt modelliert.",
       "descriptionEn": "Bundles material-based Q4 written-test tasks with regular classroom-assessment character on quantum objects, relativity, nuclear physics, solid-state physics, and astrophysics. Abitur proposals remain modeled separately.",
-      "weight": 8,
+      "weight": 10,
       "tags": [
         "GK",
         "LK"
@@ -30309,7 +30314,8 @@
         "f532c772-7b6e-59aa-ad65-e0eeafc3767f",
         "0f5346d6-de1b-5e38-aaba-68db205e594b",
         "335a75b0-f691-5867-8ce3-3c971d541b9f",
-        "4a58df57-f791-502f-8b8d-9ba155e46035"
+        "4a58df57-f791-502f-8b8d-9ba155e46035",
+        "2f8d4250-66c5-54e9-abb8-80735dc408d2"
       ],
       "requires": [],
       "dimensionTags": {
@@ -30370,7 +30376,7 @@
       "contains": [],
       "requires": [
         "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
-        "ad021f2e-6b94-5e6e-a264-3d1110094b87",
+        "d05a146f-7fcd-56ae-b9b9-b54203328579",
         "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
         "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
         "8c97c234-a932-5e84-aed5-237b4e2a8336",
@@ -30419,7 +30425,7 @@
         "reviewStatus": "released",
         "coveredGoalIds": [
           "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
-          "ad021f2e-6b94-5e6e-a264-3d1110094b87",
+          "d05a146f-7fcd-56ae-b9b9-b54203328579",
           "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
           "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
           "8c97c234-a932-5e84-aed5-237b4e2a8336",
@@ -52023,6 +52029,251 @@
               "id": "single-fraunhofer-model-3",
               "points": 3,
               "description": "Teilaufgabe 3: nur die zugehörige begründete Leistung der Musterlösung; Teilpunkte für nachvollziehbare Ansätze, Folgefehler nicht mehrfach werten."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d05a146f-7fcd-56ae-b9b9-b54203328579",
+      "shortKey": "canonical_physics_infinite_well_discrete_energy_calculate",
+      "title": "Diskrete Energien im unendlichen Potenzialtopf berechnen",
+      "titleEn": "Calculate Discrete Energies in the Infinite Potential Well",
+      "description": "Die lernende Person kann für ein Elektron im eindimensionalen Potenzialtopf der Breite $L$ mit unendlich hohen Wänden und $V=0$ im Inneren die erlaubten Energien $E_n=n^2h^2/(8m_eL^2)$ für $n=1,2,\\ldots$ berechnen und ihre Abhängigkeit von Topfbreite und Quantenzahl physikalisch deuten.",
+      "descriptionEn": "The learner can calculate the allowed energies $E_n=n^2h^2/(8m_eL^2)$, with $n=1,2,\\ldots$, for an electron in a one-dimensional potential well of width $L$ with infinitely high walls and $V=0$ inside, and physically interpret their dependence on well width and quantum number.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "51bc5513-6879-548f-b19a-9746b667f1a3"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q4",
+        "area": "Quantenphysik",
+        "topicCode": "CANONICAL_PHYSICS_INFINITE_WELL_DISCRETE_ENERGY_CALCULATE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "competencyRefs": [
+        "PROCESS.PK2_MODELLIEREN",
+        "PROCESS.PK3_MATHEMATISIEREN"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d05a146f-7fcd-56ae-b9b9-b54203328579",
+          "title": "Visualisierung: Diskrete Energien im unendlichen Potenzialtopf berechnen",
+          "url": "/assets/goal-visualizations/physik/d05a146f-7fcd-56ae-b9b9-b54203328579/d05a146f-7fcd-56ae-b9b9-b54203328579.png",
+          "provider": "Repository-native SVG diagram; deterministic PNG rendering",
+          "description": "Visualisierung zum Lernziel: Diskrete Energien im unendlichen Potenzialtopf berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Diskrete Energien im unendlichen Potenzialtopf berechnen\". Die lernende Person kann für ein Elektron im eindimensionalen Potenzialtopf der Breite $L$ mit unendlich hohen Wänden und $V=0$ im Inneren die erlaubten Energien $E_n=n^2h^2/(8m_eL^2)$ für $n=1,2,\\ldots$ berechnen und ihre Abhängigkeit von Topfbreite und Quantenzahl physikalisch deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+      "shortKey": "canonical_physics_infinite_well_normalized_interval_probability",
+      "title": "Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen",
+      "titleEn": "Calculate Interval Probabilities in the Infinite Potential Well",
+      "description": "Die lernende Person kann für eine gegebene, auf $[0,L]$ normierte Wellenfunktion eines Elektrons im eindimensionalen Potenzialtopf mit unendlich hohen Wänden die Nachweiswahrscheinlichkeit in einem Intervall durch $P(x_1\\le x\\le x_2)=\\int_{x_1}^{x_2}|\\psi(x)|^2\\,dx$ mit $0\\le x_1\\le x_2\\le L$ berechnen und als Fläche unter der Wahrscheinlichkeitsdichte deuten.",
+      "descriptionEn": "The learner can calculate the detection probability in an interval for a given electron wave function normalized on $[0,L]$ in a one-dimensional potential well with infinitely high walls, using $P(x_1\\le x\\le x_2)=\\int_{x_1}^{x_2}|\\psi(x)|^2\\,dx$ with $0\\le x_1\\le x_2\\le L$, and interpret it as the area under the probability density.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "51bc5513-6879-548f-b19a-9746b667f1a3"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q4",
+        "area": "Quantenphysik",
+        "topicCode": "CANONICAL_PHYSICS_INFINITE_WELL_NORMALIZED_INTERVAL_PROBABILITY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "competencyRefs": [
+        "PROCESS.PK2_MODELLIEREN",
+        "PROCESS.PK3_MATHEMATISIEREN"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+          "title": "Visualisierung: Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen",
+          "url": "/assets/goal-visualizations/physik/f2538793-8b0a-5c3b-b216-5d329a4e87bd/f2538793-8b0a-5c3b-b216-5d329a4e87bd.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen\". Die lernende Person kann für eine gegebene, auf $[0,L]$ normierte Wellenfunktion eines Elektrons im eindimensionalen Potenzialtopf mit unendlich hohen Wänden die Nachweiswahrscheinlichkeit in einem Intervall durch $P(x_1\\le x\\le x_2)=\\int_{x_1}^{x_2}|\\psi(x)|^2\\,dx$ mit $0\\le x_1\\le x_2\\le L$ berechnen und als Fläche unter der Wahrscheinlichkeitsdichte deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "2f8d4250-66c5-54e9-abb8-80735dc408d2",
+      "shortKey": "canonical_physics_assessment_infinite_well_interval_probability",
+      "title": "Prüfungsaufgabe: Nachweisbereiche im Potenzialtopf vergleichen",
+      "titleEn": "Assessment task: Compare detection intervals in a potential well",
+      "description": "Die lernende Person kann eine materialgestützte Q4-Prüfungsaufgabe zu Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf selbstständig lösen und ihre Ergebnisse anhand der Wahrscheinlichkeitsdichte begründen.",
+      "descriptionEn": "The learner can independently solve a material-based Q4 assessment task on interval probabilities in an infinite potential well and justify the results using the probability density.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q4",
+        "area": "Klausurtraining"
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Released after internal AI author review and independent content counterreview on 2026-09-08; no human or external validation claimed. Evidence: curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-quantum-completion-v1/interval-assessment-review.json",
+        "coveredGoalIds": [
+          "f2538793-8b0a-5c3b-b216-5d329a4e87bd"
+        ],
+        "coveredStrands": [
+          "LI_MATERIE"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "**Material:** Ein Elektron befindet sich im Grundzustand eines eindimensionalen Potenzialtopfs der Breite $L$ mit unendlich hohen Wänden. Gegeben ist die auf $[0,L]$ normierte Wellenfunktion $\\psi_1(x)=\\sqrt{2/L}\\sin(\\pi x/L)$; außerhalb des Topfs ist sie null. Bei Bedarf darf $\\sin^2(u)=(1-\\cos(2u))/2$ verwendet werden.\n\n1. Stelle das Integral für $P(L/4\\le x\\le 3L/4)$ auf und berechne den Wert. Prüfe, ob das Ergebnis als Wahrscheinlichkeit plausibel ist. (5 BE)\n2. Für das Randintervall gilt $P(0\\le x\\le L/2)=1/2$. Vergleiche diesen Wert mit deinem Ergebnis. Erkläre den Unterschied trotz gleicher Intervallbreite anhand der Wahrscheinlichkeitsdichte. (3 BE)\n3. Eine Person setzt $|\\psi_1(L/2)|^2$ als Wahrscheinlichkeit ein, das Elektron exakt bei $L/2$ nachzuweisen. Beurteile diese Aussage, auch anhand der Einheiten. (2 BE)",
+        "taskContentEn": "**Material:** An electron is in the ground state of a one-dimensional potential well of width $L$ with infinitely high walls. The supplied wave function $\\psi_1(x)=\\sqrt{2/L}\\sin(\\pi x/L)$ is normalized on $[0,L]$ and zero outside the well. If needed, use $\\sin^2(u)=(1-\\cos(2u))/2$.\n\n1. Set up and evaluate the integral for $P(L/4\\le x\\le 3L/4)$. Check that the result is plausible as a probability. (5 points)\n2. For the edge interval, $P(0\\le x\\le L/2)=1/2$. Compare this with your result. Explain the difference despite equal interval widths using the probability density. (3 points)\n3. Someone treats $|\\psi_1(L/2)|^2$ as the probability of detecting the electron exactly at $L/2$. Assess this claim, including the units. (2 points)",
+        "solutionContent": "1. $P=\\int_{L/4}^{3L/4}(2/L)\\sin^2(\\pi x/L)\\,dx=[x/L-\\sin(2\\pi x/L)/(2\\pi)]_{L/4}^{3L/4}=1/2+1/\\pi\\approx0{,}81831$. Die Wahrscheinlichkeit ist dimensionslos und liegt zwischen 0 und 1. Integrand und Grenzen: 2 BE; Stammfunktion und Auswertung: 2 BE; Plausibilitätsprüfung: 1 BE.\n2. Im Zentralintervall ergibt sich ungefähr 81,8 %, im gleich breiten Randintervall 50 %. Das Zentralintervall umfasst die höhere Dichte um die Topfmitte; gleiche Breite bedeutet bei nichtkonstanter Dichte nicht gleiche Fläche. Vergleich: 1 BE; begründeter Zusammenhang zwischen Lage, Dichte und Fläche: 2 BE.\n3. $|\\psi_1(L/2)|^2=2/L$ hat die Einheit inverse Länge und ist eine Dichte, keine dimensionslose Wahrscheinlichkeit. Bei dieser kontinuierlichen Ortsverteilung hat ein einzelner Punkt Wahrscheinlichkeit null; erst das Integral über einen Bereich liefert eine Nachweiswahrscheinlichkeit. Dichte und Einheit: 1 BE; Punkt versus Intervall: 1 BE.",
+        "solutionContentEn": "1. $P=\\int_{L/4}^{3L/4}(2/L)\\sin^2(\\pi x/L)\\,dx=[x/L-\\sin(2\\pi x/L)/(2\\pi)]_{L/4}^{3L/4}=1/2+1/\\pi\\approx0.81831$. The result is dimensionless and between 0 and 1. Integrand and limits: 2 points; antiderivative and evaluation: 2 points; plausibility check: 1 point.\n2. The central interval gives approximately 81.8 %, while the equally wide edge interval gives 50 %. The central interval includes the higher density near the well centre; equal width does not imply equal area under a nonconstant density. Comparison: 1 point; justified relationship between position, density and area: 2 points.\n3. $|\\psi_1(L/2)|^2=2/L$ has units of inverse length and is a density, not a dimensionless probability. A single point has zero probability in this continuous position distribution; an interval integral gives a detection probability. Density and units: 1 point; point versus interval: 1 point.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 6,
+          "steps": [
+            {
+              "id": "interval-integral",
+              "points": 5,
+              "description": "Integrand und Grenzen (2), Stammfunktion und Auswertung (2), dimensionsloser Wert im Bereich [0,1] (1)."
+            },
+            {
+              "id": "interval-comparison",
+              "points": 3,
+              "description": "Werte vergleichen (1), unterschiedliche Dichteflächen bei gleicher Intervallbreite begründen (2). Nachvollziehbare Folgefehler nicht mehrfach werten."
+            },
+            {
+              "id": "density-versus-probability",
+              "points": 2,
+              "description": "Dichte mit Einheit 1/L von Wahrscheinlichkeit unterscheiden (1), Punkt- und Intervallwahrscheinlichkeit einordnen (1)."
             }
           ]
         }

@@ -742,13 +742,15 @@ const upperCanonicalTargetsByTopicBullet: Record<string, string[]> = {
   ],
   'Q4.1:9': ['defe44d2-c3d3-456b-a786-fad2cef13fe8'],
   'Q4.1:10': [
-    'ad021f2e-6b94-5e6e-a264-3d1110094b87',
+    'd05a146f-7fcd-56ae-b9b9-b54203328579',
+    'f2538793-8b0a-5c3b-b216-5d329a4e87bd',
     'cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7',
   ],
   'Q4.1:11': [
     'cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7',
     '51bc5513-6879-548f-b19a-9746b667f1a3',
-    'ad021f2e-6b94-5e6e-a264-3d1110094b87',
+    'd05a146f-7fcd-56ae-b9b9-b54203328579',
+    'f2538793-8b0a-5c3b-b216-5d329a4e87bd',
     'ef6d5067-96b0-5388-87dd-5ac4e6a3e313',
     'f6e5929f-d52a-42a4-a5d2-ff498ee7083f',
   ],

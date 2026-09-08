@@ -66,6 +66,31 @@ running `/home/enpasos/deploy_skillpilot.sh` still executes the checked-in
 deployment engine from `/home/enpasos/skillpilot`. There is no second copy of
 the deployment logic to maintain.
 
+## Reviewed curriculum asset changes and transparency inventory
+
+After approved Layer A curriculum or image changes, prepare the runtime assets
+and check the inventory before committing:
+
+```bash
+npm --prefix app run prepare:runtime-assets
+node scripts/check_ai_transparency_inventory.mjs
+```
+
+If measured curriculum/image counts differ, inspect an explicit patch proposal:
+
+```bash
+node scripts/check_ai_transparency_inventory.mjs --emit-layer-a-patch
+```
+
+This command only prints a patch; it does not write files or approve content.
+Review every proposed change, apply the accepted patch and rerun the normal
+check. The proposal is restricted to measured Layer A inventory fields; policy
+and review statements remain unchanged. Missing or unequal asset copies, changed
+fixed media hashes, and unsupported schema versions still block the proposal.
+A normal CI/build/deploy never silently refreshes the inventory.
+C2PA container-marker detection is not verification of a credential or its
+authenticity.
+
 ## Overview
 
 The deployment process currently does all of the following:
