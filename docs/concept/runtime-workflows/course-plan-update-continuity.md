@@ -218,14 +218,14 @@ bei langsamen Antworten, Fehlern und älteren gespeicherten Plänen.
 
 ## Anschluss an die aktuelle Implementierung
 
-- [Lokale Planung](../../../app/src/utils/localTeacherCoursePlan.ts),
-  [Planeditor](../../../app/src/components/CoursePlanPilotView.tsx) und
-  [Fachnavigation](../../../app/src/views/TrainerView.tsx).
-- [Fachstatus und Entwurfsvergleich](../../../app/src/utils/teacherLearningPlanActivation.ts)
-  sowie [gemeinsame Fachübersicht](../../../app/src/components/TrainerLearningPlanActivation.tsx).
-- [Backend-Kompatibilität](../../../backend/src/main/java/com/skillpilot/backend/service/LearnerService.java),
-  [Planberechnung](../../../backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java)
-  und [Schülertexte](../../../app/src/utils/learnerLearningPlanCopy.ts).
+- [Lokale Planung](https://github.com/enpasos/skillpilot/blob/main/app/src/utils/localTeacherCoursePlan.ts),
+  [Planeditor](https://github.com/enpasos/skillpilot/blob/main/app/src/components/CoursePlanPilotView.tsx) und
+  [Fachnavigation](https://github.com/enpasos/skillpilot/blob/main/app/src/views/TrainerView.tsx).
+- [Fachstatus und Entwurfsvergleich](https://github.com/enpasos/skillpilot/blob/main/app/src/utils/teacherLearningPlanActivation.ts)
+  sowie [gemeinsame Fachübersicht](https://github.com/enpasos/skillpilot/blob/main/app/src/components/TrainerLearningPlanActivation.tsx).
+- [Backend-Kompatibilität](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java),
+  [Planberechnung](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java)
+  und [Schülertexte](https://github.com/enpasos/skillpilot/blob/main/app/src/utils/learnerLearningPlanCopy.ts).
 - [Bestehende lokale Ablage und Übernahmegrenzen](existing-learner-teacher-view.md),
   [Lernzielbuch und Zeitplanung](../skill-graph/teacher-goal-book-time-planning.md)
   und [Review-Freeze, Abschnitte 6.54 und 6.65](../../deploy/openai-plugin-v1-review-freeze.md).

@@ -451,8 +451,8 @@ const App: React.FC = () => {
         : 'Lernendengerechter Vergleich von SkillPilot-Zugängen, Altersgrenzen, sicherem Start und unterstützten Geräten.'
     const pluginCatalogDescription =
       language === 'en'
-        ? 'Guided setup and updates for the SkillPilot Claude Coach through the SkillPilot Marketplace.'
-        : 'Geführte Einrichtung und Updates des SkillPilot Claude Coach über den SkillPilot Marketplace.'
+        ? 'Download and upload setup and updates for the SkillPilot Claude Coach.'
+        : 'Einrichtung und Updates des SkillPilot Claude Coach per Plugin-Download und Upload.'
 
     let title = baseTitle
     let description = defaultDescription
@@ -550,7 +550,7 @@ const App: React.FC = () => {
         title = `${language === 'en' ? 'Access options' : 'Zugang und Varianten'} | ${baseTitle}`
         description = coachSetupDescription
       } else if (path === '/plugins') {
-        title = `${language === 'en' ? 'Claude Marketplace beta' : 'Claude-Marketplace-Beta'} | ${baseTitle}`
+        title = `${language === 'en' ? 'Claude plugin beta' : 'Claude-Plugin-Beta'} | ${baseTitle}`
         description = pluginCatalogDescription
       } else if (path === '/faq') {
         title = `${t.startPage.links.faq} | ${baseTitle}`

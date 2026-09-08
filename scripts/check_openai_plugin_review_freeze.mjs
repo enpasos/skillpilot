@@ -4012,6 +4012,79 @@ const expectedAuthorizedRuntimeExceptions = [
         "authorizedSha256": "f14546e8abd917de55a23d7c08f1dac8b192c482ab412d340fa3ddc8e9328599"
       }
     ]
+  },
+  {
+    "id": "2026-09-08-claude-file-install-guide-and-marketplace-withdrawal",
+    "approvedAt": "2026-09-08",
+    "approvedBy": "product-owner",
+    "reason": "Replace the unreliable personal Marketplace installation and update recommendation with the explicitly requested plugin download and upload guide for the unchanged Claude 1.1.1 candidate.",
+    "scope": "Only the German and English first-party /plugins guide, its exact current-artifact helper and regression, matching route SEO and regression, Marketplace guide-decision metadata and validator regression, deployment runbook and section 6.66 documentation. Present one visible download/upload sequence with an explicit current-version check, scoped replacement of older SkillPilot installations, the existing bundled connector and return to SkillPilot; preserve other plugins/connectors and add no manual MCP setup. Remove Marketplace recommendation and repository-copy capability; do not claim automatic installed-version detection or uploaded-file updates. Set the existing Marketplace guide decision to withdrawn while preserving and still validating its original candidate/repository approval provenance; derive controlled_direct_install_beta with marketplaceUiSwitchAllowed false. Preserve published_pending_acceptance, every external evidence entry, all readiness blockers, the published repository history and exact immutable 1.1.1 download bytes. Version/update options remain research only; add no version signal, backend field, API or architecture. Connect the new browser regression through the existing test:claude-plugin-publication npm/CI command without changing dependencies, lockfiles or the CI workflow. Add only the missing concept-index link to the existing course-plan update continuity note, without changing plan, curriculum or runtime semantics. Advance only the twelve existing supplemental bindings below; keep new browser fixtures/tests and research documentation unbound, all prior exceptions and primary runtime/tree chains unchanged. Preserve submitted OpenAI 1.0.0 and Claude 1.1.1 packages, MCP/OAuth/tools/schemas/MCP-Apps resources, provider launch handlers, prepared messages, session/identity/locale/learning-state/privacy/storage/security contracts, portal, review cases, fixtures and artifacts. No deployment, external publication or general curriculum QA resumption.",
+    "target": "current-first-party-claude-1.1.1-file-install-guide-only",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-current-guide-correction-with-unchanged-submitted-contract",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "app/src/views/PluginCatalogView.tsx",
+        "priorAuthorizedSha256": "77d26d3c572b41ea24066aec6b08c119c505b031b7a0b1edf99af4da78d389cb",
+        "authorizedSha256": "0e669349faf34e99afb97986203e04c92a3484e54d4871d360dec0ac544d4873"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.ts",
+        "priorAuthorizedSha256": "ed46297a44a25cb0395e186c377430df93ddc740ae4110d35a0efaad6651fa56",
+        "authorizedSha256": "3637e69d2aa298275b44a3b13bf1fe411b7be344e383cff8a149ea94686a2f58"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.test.ts",
+        "priorAuthorizedSha256": "2a14208a19c5f33ebd66625ef880926deefb602d52b66a4f40dd93afb112beda",
+        "authorizedSha256": "f75deb625fbd717fac1308388b3b3444215b0abb8c6b7703daf60e91a722175c"
+      },
+      {
+        "path": "app/src/App.tsx",
+        "priorAuthorizedSha256": "86acdb6813795da03dd42b0c0080862de0d0fd099cd5f9ead07c1e6952566306",
+        "authorizedSha256": "53e7826316b8eff35eaf61f9f9e1565e52be18664ed09d01eaf2c8a486739c7d"
+      },
+      {
+        "path": "app/scripts/testRootRoutePolicy.ts",
+        "priorAuthorizedSha256": "c7d436e1c87ecd2a60305018a83b5e1457b40f28cc90c35e76e6c2576775e9f6",
+        "authorizedSha256": "a18e6936352184d01a78e85ba9ca7333d0c538706f32baeb4e2ef183f2e794e8"
+      },
+      {
+        "path": "app/package.json",
+        "priorAuthorizedSha256": "3a8da0afa5791eacc4c398661eea59b99dd020c635efdc0892177c86ce9abd15",
+        "authorizedSha256": "94ef2cbcf7f737239a39b4d6bfc5f63172fd61f06fba6b45cab1072a1ed61bcb"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json",
+        "priorAuthorizedSha256": "af0645ea06200122e4d1144e1a4b1d73c769cd0292743e5be623df471363aa01",
+        "authorizedSha256": "b91fad118dd87d119eb71a5092bdb080113b24c5bf58c3022381f5fd4cb27a56"
+      },
+      {
+        "path": "scripts/claude_marketplace_release.mjs",
+        "priorAuthorizedSha256": "0f42665fc0778fe87758889995f54d726234191cacae38aba8a7f40d6bd7d7dd",
+        "authorizedSha256": "94d8360e7f22f8e3f7b56fab218a9c412c4a208143f303a5beb0473b81bccc57"
+      },
+      {
+        "path": "scripts/claude_marketplace_release.test.mjs",
+        "priorAuthorizedSha256": "7bd98278771763d95518bf486a399264e0d0a68e91ae7aba3ebc96ef8aab5bb0",
+        "authorizedSha256": "a5a1a76de3ef47801a3e30e86442aecb2244fc5fb947adb6b2750242f6da7123"
+      },
+      {
+        "path": "docs/deploy/claude-personal-marketplace-release.md",
+        "priorAuthorizedSha256": "4222145a7a7feebb22c5657499ca5f527ce35649eeb195ad6d1ff46357a75201",
+        "authorizedSha256": "689f3fd36229b2324778da53361713586fd9ab92cf22b11bff5f20883392ca41"
+      },
+      {
+        "path": "docs/concept/index.md",
+        "priorAuthorizedSha256": "a98411c6055b4c554043154266831263c2395f89c60fff71ae21b9a476420c40",
+        "authorizedSha256": "91b8371902a07c985a55ac79a5207340af8f6373ad3983283aec3e41b34dcc8e"
+      },
+      {
+        "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+        "priorAuthorizedSha256": "f14546e8abd917de55a23d7c08f1dac8b192c482ab412d340fa3ddc8e9328599",
+        "authorizedSha256": "f0db48f582afa02b5b5d5de234d3bf1feb7623eaf1cecca796f60a5eb203644b"
+      }
+    ]
   }
 ];
 

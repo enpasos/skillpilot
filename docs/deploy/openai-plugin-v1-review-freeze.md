@@ -3545,3 +3545,68 @@ Prepared Messages, Session-/Identitäts-/Locale-/Lernzustandsverträge,
 Berechtigungen, Speicherung, Portalwerte, Reviewfälle, Fixtures und
 Reviewartefakte bleiben unverändert. Kein Deployment, keine Portalaktion,
 keine Neueinreichung und keine Wiederaufnahme der allgemeinen Curriculum-QS.
+
+### 6.66 Claude-Installation wieder per Download und Upload
+
+Der Product Owner hat am **8. September 2026** die weiterhin unzuverlässige
+Marketplace-Installation beanstandet und ausdrücklich verlangt, die
+First-Party-Anleitung unter `/plugins` wieder auf Herunterladen und Hochladen
+der Plugin-Datei umzustellen. Diese konkrete Guide-Entscheidung ersetzt die
+Marketplace-Empfehlung aus Abschnitt 6.51. Dessen damalige Freigabe,
+Veröffentlichung und Nachweise bleiben unverändert dokumentiert.
+
+Die deutsche und englische Anleitung führt durch den vorhandenen Download des
+unveränderlichen Claude-Pakets **1.1.1**, das gezielte Entfernen einer älteren
+SkillPilot-Installation bei einem Wechsel, den Datei-Upload in Claude, die
+Verbindung des gebündelten SkillPilot-Konnektors und die Rückkehr zu SkillPilot
+für einen neuen Chat. Andere Plugins und Konnektoren bleiben unberührt. Es
+gibt keinen zusätzlichen manuellen MCP-Eintrag. Die bisherige
+Marketplace-Empfehlung und die Repository-Kopieraktion entfallen; die
+Suchmaschinenbeschreibung der vorhandenen `/plugins`-Route beschreibt
+denselben Dateiablauf. Die Downloadprüfung bindet weiterhin exakt Version
+`1.1.1` und SHA-256
+`b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351`.
+
+Im bestehenden Marketplace-Record erhält ausschließlich die aktuelle
+Guide-Entscheidung den Status `withdrawn`. Ihr ursprünglicher
+Freigabezeitpunkt, Entscheider, Kandidat, Paketdigest, Repository-Commit,
+Tree-Digest und Belegverweis bleiben erhalten. Der Validator prüft diese
+Herkunftsbindungen auch im zurückgezogenen Zustand vollständig. Daraus folgen
+`marketplaceUiSwitchAllowed = false` und
+`firstPartyUiRoute = controlled_direct_install_beta`; ein zurückgezogener
+Guide kann den Marketplace nicht erneut aktivieren. Die Rücknahme betrifft
+die Empfehlung, nicht die veröffentlichte Repository-Historie. Der Status
+`published_pending_acceptance`, sämtliche externen Evidenzeinträge und alle
+offenen Abnahme- und Readiness-Gates bleiben unverändert.
+
+Die Anleitung verlangt den manuellen Vergleich der installierten Version in
+Claude mit der angezeigten Downloadversion. Sie behauptet weder, die Webseite
+könne die im Claude-Account installierte Version auslesen, noch automatische
+Updates hochgeladener Dateien. Die zusätzlich angefragte Untersuchung einer
+Versionserkennung oder Aktualisierung bleibt reine Recherche. Diese Änderung
+ergänzt keine Versionssignale, API, Konnektor-Metadaten, Backend-Felder oder
+Laufzeitverträge und veröffentlicht keinen neuen Plugin-Kandidaten.
+
+Record, Runtime-Checker und Regression setzen ausschließlich die bestehenden
+Supplemental-Bindungen der Anleitung, ihrer Veröffentlichungslogik und Tests,
+der `/plugins`-Metadaten in `App.tsx` und ihrer Routenregression, des
+Marketplace-Records, Validators und seiner Tests, des Marketplace-Runbooks
+sowie dieses Nachtrags append-only fort. Die bestehende Bindung von
+`app/package.json` wird ebenfalls fortgeführt: Der bereits in CI ausgeführte
+Befehl `test:claude-plugin-publication` startet nach der Copy-Regression auch
+den neuen Browsertest. Der vorhandene CI-Job installiert Chromium bereits
+vorher; Dependencies, Lockfiles und CI-Workflow bleiben unverändert. Neue
+Browser- oder Recherchedateien bleiben ungebunden. Der bestehende
+Konzeptindex erhält ausschließlich den fehlenden Link auf
+`runtime-workflows/course-plan-update-continuity.md`; auch seine vorhandene
+Supplemental-Bindung wird fortgeführt. Der Link ändert keine Planungs-,
+Curriculum- oder Laufzeitsemantik. Frühere Ausnahmen,
+primäre Runtime- und Baumketten sowie
+die Menge geschützter Dateien bleiben unverändert. OpenAI `1.0.0`, Claude
+`1.1.1`, ihre Paket- und Artefaktbytes, MCP/OAuth, Tools, Schemas,
+MCP-Apps-Ressourcen, Provider-Start-Handler, Prepared Messages, Session-,
+Identitäts-, Locale-, Lernzustands-, Datenschutz-, Speicher- und
+Berechtigungssemantik, Portalwerte, Reviewfälle, Fixtures und Reviewartefakte
+bleiben unverändert. Kein Deployment, keine externe Veröffentlichung,
+keine Portalaktion, keine Neueinreichung und keine Wiederaufnahme der
+allgemeinen Curriculum-QS.

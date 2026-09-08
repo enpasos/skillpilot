@@ -9,6 +9,39 @@ and automatic backend-authorized plan resume without changing the frozen
 OpenAI v1 lane. Version 1.0.4 and its evidence remain historical records only;
 they are not a supported installation or rollback fallback.
 
+## Current first-party guide: download and upload, 8 September 2026
+
+On **8 September 2026**, the Product Owner reported that the Marketplace path
+still did not work reliably and explicitly requested the direct download and
+upload instructions on `/plugins`. This decision supersedes the first-party
+Marketplace recommendation recorded on 5 September; the publication and its
+original evidence below remain historical facts.
+
+The current guide uses the existing immutable **1.1.1** `.plugin` file only.
+Download it from SkillPilot, remove only an older SkillPilot installation when
+replacing it, upload the downloaded file in Claude, connect the plugin's bundled
+SkillPilot connector, then return to SkillPilot and start a fresh chat. Other
+plugins and connectors remain untouched. A separate manual MCP connection is
+not part of the installation. Check the installed version in Claude against the
+version shown beside the SkillPilot download; the page cannot read the plugin
+version installed in the user's Claude account and does not promise automatic
+updates for uploaded files.
+
+`activation.firstPartyGuideDecision.status = withdrawn` retains every original
+approval timestamp, approver, candidate digest, repository revision, tree digest
+and evidence reference. The validator still checks those exact bindings. The
+withdrawal sets `marketplaceUiSwitchAllowed = false` and
+`firstPartyUiRoute = controlled_direct_install_beta`; it does not unpublish the
+repository or change `published_pending_acceptance`. All repository, installation
+and migration evidence, direct-install readiness blockers, published artifact
+bytes and acceptance status remain unchanged. New Marketplace promotion would
+need a new explicit decision and current matching evidence.
+
+The authorization and its precise first-party boundary are recorded in
+[freeze appendix 6.66](openai-plugin-v1-review-freeze.md#666-claude-installation-wieder-per-download-und-upload).
+
+## Marketplace publication context
+
 The canonical target is:
 
 ```text

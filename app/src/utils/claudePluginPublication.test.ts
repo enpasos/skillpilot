@@ -255,16 +255,16 @@ assert.equal(marketplaceLane.plugin?.directInstallSha256, productionIndex.plugin
 assert.equal(marketplaceLane.activation?.state, 'published_pending_acceptance')
 assert.equal(
   marketplaceLane.activation?.firstPartyUiRoute,
-  'personal_git_marketplace',
-  'Claude 1.1.1 installation and updates must use the verified marketplace',
+  'controlled_direct_install_beta',
+  'Claude 1.1.1 installation and updates use the current file while Marketplace is unreliable',
 )
 assert.equal(
   marketplaceLane.activation?.marketplaceUiSwitchAllowed,
-  true,
-  'the marketplace guide needs the candidate-bound Product Owner decision',
+  false,
+  'the withdrawn guide decision must not enable Marketplace installation',
 )
 const guideDecision = marketplaceLane.activation?.firstPartyGuideDecision
-assert.equal(guideDecision?.status, 'approved')
+assert.equal(guideDecision?.status, 'withdrawn')
 assert.equal(guideDecision?.candidateVersion, CLAUDE_PLUGIN_CURRENT_VERSION)
 assert.equal(guideDecision?.candidateSha256, productionIndex.plugins[0]?.sha256)
 assert.match(guideDecision?.repositoryRevision ?? '', /^[a-f0-9]{40}$/u)
@@ -291,7 +291,7 @@ for (const pendingEvidenceId of [
     'repository publication must not claim unperformed real-client acceptance',
   )
 }
-assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, true)
+assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, false)
 
 const pluginCatalogSource = readFileSync(
   resolve(
@@ -301,91 +301,50 @@ const pluginCatalogSource = readFileSync(
   'utf8',
 )
 const directGuideIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-direct-upload-guide"')
-const marketplaceGuideIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-guide"')
-const marketplaceUpdateIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-marketplace-update-guide"')
+const updateGuideIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-update-guide"')
 const requirementsIndex = pluginCatalogSource.indexOf('aria-labelledby={`${cardId}-requirements`}')
-assert(
-  marketplaceUpdateIndex >= 0
-  && marketplaceGuideIndex > marketplaceUpdateIndex
-  && directGuideIndex > marketplaceGuideIndex
-  && requirementsIndex > directGuideIndex,
-  'marketplace updates and installation must precede secondary requirements',
-)
-assert.match(
-  pluginCatalogSource,
-  /!CLAUDE_MARKETPLACE_INSTALLATION_ENABLED && \(\s*<section\s*data-testid="claude-plugin-direct-upload-guide"/u,
-  'the direct-upload guide must be hidden while marketplace installation is enabled',
-)
+assert(updateGuideIndex >= 0 && directGuideIndex > updateGuideIndex && requirementsIndex > directGuideIndex,
+  'version comparison and the primary upload guide precede secondary requirements')
 assert.match(pluginCatalogSource, /download=\{plugin\.filename\}/u)
-assert.match(pluginCatalogSource, /CLAUDE_MARKETPLACE_INSTALLATION_ENABLED &&/u)
-assert.match(pluginCatalogSource, /navigator\.clipboard\.writeText\(CLAUDE_MARKETPLACE_REPOSITORY_URL\)/u)
-assert.doesNotMatch(pluginCatalogSource, /navigator\.clipboard\.read/u)
+assert.match(pluginCatalogSource, /href=\{plugin\.downloadUrl\}/u)
+assert.doesNotMatch(pluginCatalogSource, /navigator\.clipboard/u)
 assert.match(pluginCatalogSource, /const requirements = plugin\?\.requirements \?\? CLAUDE_PLUGIN_BETA_REQUIREMENTS/u)
 assert.doesNotMatch(pluginCatalogSource, /\{plugin && \(\s*<section aria-labelledby=\{`\$\{cardId\}-requirements`\}/u)
-assert.match(pluginCatalogSource, /testId="claude-plugin-marketplace-install-navigation"/u)
 for (const requiredNavigationCopy of [
-  'Claude-Beta 1.1.1',
-  'planorientierte Version 1.1.1 ersetzt die bisherige Claude-Variante vollständig',
-  'Version 1.1.1 wird über den persönlichen SkillPilot Marketplace bereitgestellt',
-  'Marketplace hinzufügen',
-  'Neue Marketplace-Einrichtung',
-  'Diese fünf Schritte gelten für eine neue Marketplace-Einrichtung',
-  'Aus einem Repository hinzufügen',
-  'Lass „Automatisch synchronisieren“ eingeschaltet',
-  'Klicke anschließend auf „Synchronisieren“',
-  'Bestehende Installation: Version prüfen',
-  'Das erneute Hinzufügen meldet „Dieser Marketplace wurde bereits hinzugefügt“ und bestätigt kein Update',
-  'Ein manueller Aktualisierungsweg für bestehende Quellen in Claude Web ist noch nicht bestätigt',
-  'Erst mit 1.1.1 und verbundenem SkillPilot-Konnektor kehrst du zu SkillPilot zurück',
-  'Wird weiterhin 1.0.4 angezeigt, verwende diese Installation nicht als aktuelle Version',
-  'Löschen, Neuinstallieren oder Datei-Upload sind keine bestätigten Updatewege',
+  'Einrichtung mit Plugin-Datei',
+  'Lade zuerst die aktuelle Datei herunter, bevor du eine alte Installation entfernst',
+  'Marketplace-Einrichtung und ihre Updates funktionieren noch nicht zuverlässig',
+  'Bereits installiert? Version vergleichen',
+  'Wird 1.1.1 angezeigt, ist kein erneuter Upload nötig',
+  'die zuvor heruntergeladene .plugin-Datei unverändert hoch',
+  'auch wenn sie aus dem Marketplace stammt',
   'Andere Plugins und Konnektoren bleiben unverändert',
   'keinen zweiten manuellen SkillPilot-Konnektor',
   'keine MCP-URL',
-  'kandidatengenaue Abnahme von Installation, Migration und Updates in Claude steht noch aus',
-  'Claude beta 1.1.1',
-  'plan-first version 1.1.1 fully replaces the previous Claude variant',
-  'Version 1.1.1 is provided through the personal SkillPilot Marketplace',
-  'Add marketplace',
-  'New marketplace setup',
-  'English control names below translate the observed German dialog',
-  'Keep automatic synchronization enabled',
-  'Then choose Synchronize (“Synchronisieren”)',
-  'Existing installation: check the version',
-  'this does not confirm an update',
-  'A manual update route for existing sources in Claude Web is not yet confirmed',
-  'return to SkillPilot and start a new session only with version 1.1.1',
-  'If version 1.0.4 is still displayed, do not use that installation as the current version',
-  'Removal, reinstallation, or file upload are not confirmed update routes',
+  'nicht automatisch auslesen',
+  'Zurück zu SkillPilot',
+  'Set up with the plugin file',
+  'Download the current file before removing an older installation',
+  'Marketplace setup and updates are not yet reliable',
+  'If it shows 1.1.1, no new upload is needed',
+  'including a marketplace installation',
   'Leave other plugins and connectors unchanged',
+  'Upload the previously downloaded .plugin file without modifying it',
   'Do not add a second manual SkillPilot connector',
-  'enter an MCP URL',
-  'Exact-candidate acceptance of installation, migration, and updates in Claude is still pending',
+  'cannot currently read the plugin version installed in your Claude account automatically',
+  'Return to SkillPilot',
 ]) {
-  assert(
-    pluginCatalogSource.includes(requiredNavigationCopy),
-    `plugin guide contains the required Claude Web navigation copy: ${requiredNavigationCopy}`,
-  )
+  assert(pluginCatalogSource.includes(requiredNavigationCopy),
+    `plugin guide contains the required Claude Web navigation copy: ${requiredNavigationCopy}`)
 }
 assert.match(pluginCatalogSource, /to="\/"/u)
 assert.match(pluginCatalogSource, /Claude Pro/u)
 assert.match(pluginCatalogSource, /Android/u)
 assert.match(pluginCatalogSource, /Voice Mode|Voice mode/u)
-assert.doesNotMatch(pluginCatalogSource, /claude-plugin-direct-upload-fallback/u)
+assert.doesNotMatch(pluginCatalogSource, /claude-plugin-marketplace|stepMarketplace|CLAUDE_MARKETPLACE_REPOSITORY_URL/u,
+  'the withdrawn Marketplace guide must not retain hidden installation instructions')
 assert.doesNotMatch(pluginCatalogSource, /mcp-claude-v1\.skillpilot\.com/u)
 assert.doesNotMatch(pluginCatalogSource, /benutzerdefinierten Konnektor hinzufügen|Add custom connector/u)
-assert.doesNotMatch(pluginCatalogSource, /Beta-Download|Beta download/u)
-assert.doesNotMatch(pluginCatalogSource, /aktuell von SkillPilot unterstützte Beta-Weg|beta route currently supported/u)
-assert.equal(
-  [...pluginCatalogSource.matchAll(/1\.0\.4/gu)].length,
-  2,
-  'historical 1.0.4 appears only in the DE/EN notices that it is not the current version',
-)
-assert.doesNotMatch(
-  pluginCatalogSource,
-  /wähle „Aktualisieren“|select Update|den vorhandenen „SkillPilot Marketplace“|open the existing SkillPilot Marketplace|öffne den bestehenden Eintrag|open the existing entry/u,
-  'the guide must not invent a Web update control or an existing-marketplace entry path',
-)
-assert.doesNotMatch(pluginCatalogSource, /Updates erfolgen.*erneuten Download und Upload|updates require downloading and uploading/u)
+assert.doesNotMatch(pluginCatalogSource, /Löschen, Neuinstallieren oder Datei-Upload sind keine bestätigten Updatewege|Removal, reinstallation, or file upload are not confirmed update routes/u)
 
 console.log('Claude plugin publication index tests passed')

@@ -59,10 +59,10 @@ test("production marketplace lane binds published 1.1.1 without claiming real-cl
   );
   assert.deepEqual(lane.activation, {
     state: "published_pending_acceptance",
-    firstPartyUiRoute: "personal_git_marketplace",
-    marketplaceUiSwitchAllowed: true,
+    firstPartyUiRoute: "controlled_direct_install_beta",
+    marketplaceUiSwitchAllowed: false,
     firstPartyGuideDecision: {
-      status: "approved",
+      status: "withdrawn",
       approvedAt: "2026-09-05T06:38:00.000Z",
       approvedBy: "product-owner",
       candidateVersion: "1.1.1",
@@ -104,6 +104,49 @@ test("production marketplace lane binds published 1.1.1 without claiming real-cl
       },
     ],
   });
+});
+
+test("withdrawing Marketplace guidance retains provenance and cannot activate or loosen acceptance", () => {
+  const withdrawn = loadClaudeMarketplaceLane(repositoryRoot);
+  const original = structuredClone(withdrawn);
+  validateClaudeMarketplaceLane(withdrawn);
+  assert.deepEqual(withdrawn, original, "validation must not rewrite published evidence");
+
+  const approved = structuredClone(withdrawn);
+  approved.activation.firstPartyGuideDecision.status = "approved";
+  approved.activation.marketplaceUiSwitchAllowed = true;
+  approved.activation.firstPartyUiRoute = "personal_git_marketplace";
+  validateClaudeMarketplaceLane(approved);
+  assert.deepEqual(approved.activation.evidence, withdrawn.activation.evidence);
+  assert.deepEqual(approved.plugin, withdrawn.plugin);
+  assert.equal(approved.activation.state, withdrawn.activation.state);
+
+  const unauthorizedSwitch = structuredClone(withdrawn);
+  unauthorizedSwitch.activation.marketplaceUiSwitchAllowed = true;
+  unauthorizedSwitch.activation.firstPartyUiRoute = "personal_git_marketplace";
+  assert.throws(
+    () => validateClaudeMarketplaceLane(unauthorizedSwitch),
+    /must be derived from repository verification and the Product Owner guide decision/u,
+  );
+
+  const staleCandidate = structuredClone(withdrawn);
+  staleCandidate.activation.firstPartyGuideDecision.candidateVersion = "1.0.4";
+  assert.throws(
+    () => validateClaudeMarketplaceLane(staleCandidate),
+    /firstPartyGuideDecision\.candidateVersion mismatch/u,
+  );
+  const staleRepository = structuredClone(withdrawn);
+  staleRepository.activation.firstPartyGuideDecision.repositoryRevision = "a".repeat(40);
+  assert.throws(
+    () => validateClaudeMarketplaceLane(staleRepository),
+    /first-party guide decision and repository evidence revision/u,
+  );
+  const staleTree = structuredClone(withdrawn);
+  staleTree.activation.firstPartyGuideDecision.repositoryTreeSha256 = "a".repeat(64);
+  assert.throws(
+    () => validateClaudeMarketplaceLane(staleTree),
+    /first-party guide decision and repository evidence tree SHA-256/u,
+  );
 });
 
 test("marketplace manifest keeps one stable plugin identity and one version authority", () => {

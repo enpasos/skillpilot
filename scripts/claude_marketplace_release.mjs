@@ -178,7 +178,7 @@ export function validateClaudeMarketplaceLane(lane) {
   const guideDecision = lane.activation.firstPartyGuideDecision;
   assertOneOf(
     guideDecision.status,
-    ["pending", "approved"],
+    ["pending", "approved", "withdrawn"],
     "lane.activation.firstPartyGuideDecision.status",
   );
   if (guideDecision.status === "pending") {
@@ -327,7 +327,9 @@ export function validateClaudeMarketplaceLane(lane) {
   const repositoryPublished =
     lane.activation.evidence[0]?.status === "pass";
   const guideSwitchApproved = guideDecision.status === "approved";
-  if (guideSwitchApproved) {
+  // A withdrawn guide retains its exact original approval provenance. It
+  // cannot promote the Marketplace, and withdrawal cannot weaken that binding.
+  if (guideDecision.status !== "pending") {
     assertEqual(
       repositoryPublished,
       true,

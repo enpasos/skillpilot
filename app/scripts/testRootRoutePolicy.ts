@@ -140,18 +140,18 @@ assert.match(
 )
 assert.match(
   appSource,
-  /'Claude Marketplace beta'\s*:\s*'Claude-Marketplace-Beta'/u,
-  'the plugin guide metadata must describe the Marketplace beta rather than the retired primary download route',
+  /'Claude plugin beta'\s*:\s*'Claude-Plugin-Beta'/u,
+  'the plugin guide metadata must describe the current plugin beta',
 )
 assert.match(
   appSource,
-  /Guided setup and updates for the SkillPilot Claude Coach through the SkillPilot Marketplace/u,
-  'the English plugin guide description must identify Marketplace setup and updates',
+  /Download and upload setup and updates for the SkillPilot Claude Coach/u,
+  'the English plugin guide description must identify the download and upload setup and updates',
 )
 assert.match(
   appSource,
-  /Geführte Einrichtung und Updates des SkillPilot Claude Coach über den SkillPilot Marketplace/u,
-  'the German plugin guide description must identify Marketplace setup and updates',
+  /Einrichtung und Updates des SkillPilot Claude Coach per Plugin-Download und Upload/u,
+  'the German plugin guide description must identify the download and upload setup and updates',
 )
 assert.doesNotMatch(
   coachSetupSource,

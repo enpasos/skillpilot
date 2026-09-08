@@ -55,6 +55,7 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 ## Runtime Workflows
 
 - [Learning Workflow](runtime-workflows/learning-workflow.md)
+- [Kursplanung nach Curriculum-Updates](runtime-workflows/course-plan-update-continuity.md)
 - [Existing-Learner Teacher View by SkillPilot ID](runtime-workflows/existing-learner-teacher-view.md)
   Functionally read-only local teacher view over the normal learner endpoints,
   including local ID/personalization storage, encrypted class files, and the
