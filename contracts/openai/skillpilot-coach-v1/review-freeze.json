@@ -4013,6 +4013,29 @@
           "authorizedSha256": "915b4b05ce547008c034253afca6647389ebdc9cb0c20c5d8b7ecbcb8da4facf"
         }
       ]
+    },
+    {
+      "id": "2026-09-08-trainer-course-plan-ci-synchronization",
+      "approvedAt": "2026-09-08",
+      "approvedBy": "product-owner",
+      "reason": "Fix the reported Frontend CI failure in the existing Trainer course-plan browser regression, as explicitly requested by the Product Owner, while retaining the section 6.65 regression scope and every existing assertion.",
+      "scope": "Only synchronize the existing testTrainerCoursePlanUi.ts mock and workspace transition: persist the mocked learner plan before acknowledging PUT so collection/detail reads share its revision; await the old planning workspace unmount and visible goal tree before editing the historical fixture and reopening the plan. Retain the activation-status assertion, all integrity checks and existing timeout; add failure-only diagnostics for the synthetic session. Append section 6.68 documentation and advance only these two existing supplemental bindings. Preserve all prior exceptions, primary runtime/tree chains and the frozen-path set. No product/runtime code, curriculum, plan comparison, navigation or storage contract, submitted OpenAI 1.0.0 or Claude 1.1.1 package, MCP/OAuth/tool/schema/MCP-Apps resource, provider launch, prepared-message, session/identity/locale/learning-state/privacy/security contract, portal, review case/fixture/artifact, deployment or general curriculum QA change. No new plugin version, weakened assertion, fixed sleep or CI retry.",
+      "target": "existing-trainer-course-plan-browser-regression-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-requested-test-synchronization-with-unchanged-submitted-contract",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/scripts/testTrainerCoursePlanUi.ts",
+          "priorAuthorizedSha256": "ef05e04e0fd55ab4e0b3eb0bc01c0d3c5047078f67ad9a5e4de0d23d2dae3067",
+          "authorizedSha256": "88bfdcb88ad500e20a930b80d4cdd84cd9b86c83ad8d8094f62acd3b57872101"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "915b4b05ce547008c034253afca6647389ebdc9cb0c20c5d8b7ecbcb8da4facf",
+          "authorizedSha256": "148c203f89f3de6c09b7a9a12d64b6ca113e45c3c28b2454263b0af164badffd"
+        }
+      ]
     }
   ],
   "evolvablePresentationIslands": [

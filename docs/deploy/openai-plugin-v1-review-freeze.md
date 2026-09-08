@@ -3647,3 +3647,31 @@ Speicher- und Berechtigungssemantik, Portalwerte, Reviewfälle, Fixtures und
 Reviewartefakte bleiben unverändert. Kein Deployment, keine externe
 Veröffentlichung oder Portalaktion, keine Neueinreichung und keine
 Wiederaufnahme der allgemeinen Curriculum-QS.
+
+### 6.68 Synchronisierter Kursplan-Browsertest in CI
+
+Der Product Owner beauftragt am **8. September 2026** die Korrektur des
+fehlgeschlagenen Frontend-CI-Schritts. Im Lauf `34219162158` wartet
+`testTrainerCoursePlanUi.ts` nach dem erneuten Öffnen der Planung vergeblich
+auf den bestehenden Aktivierungsstatus. Derselbe Test läuft lokal wiederholt
+durch, auch mit gedrosselter Browser-CPU; ein deterministischer fachlicher
+Statusfehler ist damit nicht nachgewiesen.
+
+Die eng begrenzte Testkorrektur schließt zwei Synchronisationslücken: Der
+simulierte Server speichert die bestätigte Planrevision vor seiner PUT-Antwort,
+sodass nachfolgende Listen- und Detailabfragen denselben Stand liefern. Beim
+Wechsel zu den Lernzielen wartet der Test auf das tatsächliche Unmounten des
+Planungsbereichs und den sichtbaren Lernzielbaum, bevor er seine lokale
+historische Testbasis verändert und die Planung erneut öffnet. Die bestehende
+Assertion „Aktiv für den Schüler“, sämtliche Datenintegritätsprüfungen und das
+Zeitlimit bleiben erhalten. Bei einem erneuten Fehler werden zusätzlich Route,
+Aktivierungstext und Browserfehler der rein synthetischen Testsession gemeldet.
+
+Record, Runtime-Checker und Regression führen ausschließlich die vorhandenen
+Supplemental-Bindungen dieses Browsertests und dieses Nachtrags append-only
+fort. Produktcode, Curriculum, Planvergleich, Navigation, Speicherverträge,
+OpenAI- und Claude-Pakete, Providerabläufe, Reviewartefakte, frühere Ausnahmen,
+primäre Runtime-/Baumketten und die Menge geschützter Dateien bleiben
+unverändert. Keine Abschwächung einer Assertion, keine neuen Wartepausen oder
+Testwiederholungen in CI, kein Deployment und keine Wiederaufnahme des
+pausierten Curriculum-Goals.

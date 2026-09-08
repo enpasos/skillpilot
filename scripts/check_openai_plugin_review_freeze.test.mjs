@@ -4283,8 +4283,77 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "authorizedSha256": "915b4b05ce547008c034253afca6647389ebdc9cb0c20c5d8b7ecbcb8da4facf"
         }
       ]
+    },
+    {
+      "id": "2026-09-08-trainer-course-plan-ci-synchronization",
+      "approvedAt": "2026-09-08",
+      "approvedBy": "product-owner",
+      "reason": "Fix the reported Frontend CI failure in the existing Trainer course-plan browser regression, as explicitly requested by the Product Owner, while retaining the section 6.65 regression scope and every existing assertion.",
+      "scope": "Only synchronize the existing testTrainerCoursePlanUi.ts mock and workspace transition: persist the mocked learner plan before acknowledging PUT so collection/detail reads share its revision; await the old planning workspace unmount and visible goal tree before editing the historical fixture and reopening the plan. Retain the activation-status assertion, all integrity checks and existing timeout; add failure-only diagnostics for the synthetic session. Append section 6.68 documentation and advance only these two existing supplemental bindings. Preserve all prior exceptions, primary runtime/tree chains and the frozen-path set. No product/runtime code, curriculum, plan comparison, navigation or storage contract, submitted OpenAI 1.0.0 or Claude 1.1.1 package, MCP/OAuth/tool/schema/MCP-Apps resource, provider launch, prepared-message, session/identity/locale/learning-state/privacy/security contract, portal, review case/fixture/artifact, deployment or general curriculum QA change. No new plugin version, weakened assertion, fixed sleep or CI retry.",
+      "target": "existing-trainer-course-plan-browser-regression-only",
+      "frozenPluginVersion": "1.0.0",
+      "portalReviewAction": "none-required-requested-test-synchronization-with-unchanged-submitted-contract",
+      "supplementalOnly": true,
+      "additionalFiles": [
+        {
+          "path": "app/scripts/testTrainerCoursePlanUi.ts",
+          "priorAuthorizedSha256": "ef05e04e0fd55ab4e0b3eb0bc01c0d3c5047078f67ad9a5e4de0d23d2dae3067",
+          "authorizedSha256": "88bfdcb88ad500e20a930b80d4cdd84cd9b86c83ad8d8094f62acd3b57872101"
+        },
+        {
+          "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+          "priorAuthorizedSha256": "915b4b05ce547008c034253afca6647389ebdc9cb0c20c5d8b7ecbcb8da4facf",
+          "authorizedSha256": "148c203f89f3de6c09b7a9a12d64b6ca113e45c3c28b2454263b0af164badffd"
+        }
+      ]
     }
   ]);
+});
+
+test("Trainer CI synchronization preserves prior freeze chains and advances only two existing supplemental bindings", () => {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  const index = freeze.authorizedRuntimeExceptions.findIndex(
+    ({ id }) => id === "2026-09-08-trainer-course-plan-ci-synchronization",
+  );
+  assert.ok(index > 0);
+  const exception = freeze.authorizedRuntimeExceptions[index];
+  assert.equal(exception.supplementalOnly, true);
+  assert.equal(Object.hasOwn(exception, "protectedFile"), false);
+  assert.equal(Object.hasOwn(exception, "protectedTree"), false);
+  assert.deepEqual(exception.additionalFiles.map(({ path }) => path), [
+    "app/scripts/testTrainerCoursePlanUi.ts",
+    "docs/deploy/openai-plugin-v1-review-freeze.md",
+  ]);
+  const before = freeze.authorizedRuntimeExceptions.slice(0, index);
+  const after = freeze.authorizedRuntimeExceptions.slice(0, index + 1);
+  const priorFiles = resolveAuthorizedSupplementalFileChains(before, freeze.authorizedCopyClarifications);
+  const currentFiles = resolveAuthorizedSupplementalFileChains(after, freeze.authorizedCopyClarifications);
+  assert.deepEqual([...currentFiles.keys()], [...priorFiles.keys()]);
+  const changedPaths = new Set(exception.additionalFiles.map(({ path }) => path));
+  for (const file of exception.additionalFiles) {
+    assert.equal(file.priorAuthorizedSha256, priorFiles.get(file.path)?.authorizedSha256);
+    assert.notEqual(file.authorizedSha256, file.priorAuthorizedSha256);
+  }
+  for (const [path, file] of priorFiles) {
+    if (!changedPaths.has(path)) assert.deepEqual(currentFiles.get(path), file);
+  }
+  assert.deepEqual(
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, after),
+    resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, before),
+  );
+  assert.deepEqual(
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, after),
+    resolveAuthorizedProtectedTreeExceptionChains(freeze.protectedTrees, before),
+  );
+  const documentation = exception.additionalFiles.at(-1);
+  const currentText = readFileSync(resolve(repositoryRoot, documentation.path), "utf8");
+  const appendix = "\n### 6.68 Synchronisierter Kursplan-Browsertest in CI\n";
+  assert.equal(currentText.split(appendix).length, 2);
+  assert.equal(
+    createHash("sha256").update(currentText.split(appendix)[0]).digest("hex"),
+    documentation.priorAuthorizedSha256,
+    "The CI synchronization must preserve every earlier freeze-documentation byte.",
+  );
 });
 
 test("Claude guide card removal changes only existing presentation, test and documentation bindings", () => {

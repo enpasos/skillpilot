@@ -1111,14 +1111,17 @@ try {
         blocks?: unknown[]
       }
       learnerPlanWrites.push(body)
+      // Persist the mock before acknowledging the write, just like the API.
+      // Every subsequent collection/detail read must see this same revision.
+      currentServerPlan = learnerPlanDetail({
+        revision: existingLearnerPlanRevision + 1,
+        planLabel: body.planLabel ?? '',
+        blocks: body.blocks ?? [],
+      })
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
-        body: JSON.stringify(learnerPlanDetail({
-          revision: existingLearnerPlanRevision + 1,
-          planLabel: body.planLabel ?? '',
-          blocks: body.blocks ?? [],
-        })),
+        body: JSON.stringify(currentServerPlan),
       })
       return
     }
@@ -1370,12 +1373,11 @@ try {
   // Reopen an unchanged plan after a curriculum update removed an unrelated
   // atom from its historical, landscape-wide capture. The planned clusters
   // and every atom in the already activated learner plan still exist.
-  currentServerPlan = learnerPlanDetail({
-    revision: existingLearnerPlanRevision + 1,
-    planLabel: '2026/27',
-    blocks: learnerPlanWrite.blocks ?? [],
-  })
   await personalizedPage.getByTestId('trainer-goals-tab').click()
+  // A click dispatch is not a completed router transition. Do not modify the
+  // stored fixture or return to planning until the old workspace is unmounted.
+  await personalizedPage.getByTestId('trainer-course-plan-view').waitFor({ state: 'detached' })
+  await personalizedPage.getByTestId('trainer-competence-tree-panel').waitFor()
   const historicalPlan = await personalizedPage.evaluate((coursePlanId) => {
     const key = 'skillpilot_teacher_course_plans_v1'
     const store = JSON.parse(localStorage.getItem(key)!) as {
@@ -1392,7 +1394,14 @@ try {
   await personalizedPage.getByTestId('trainer-plan-tab').click()
   const sharedPlanning = personalizedPage.getByTestId('trainer-learning-plan-activation')
   await sharedPlanning.getByRole('button', { name: 'Fachplan bearbeiten: Mathematik', exact: true })
-    .getByText('Aktiv für den Schüler', { exact: true }).waitFor()
+    .getByText('Aktiv für den Schüler', { exact: true }).waitFor().catch(async (error) => {
+      console.error('Reopened course-plan activation state:', {
+        url: personalizedPage.url(),
+        panel: await sharedPlanning.innerText().catch(() => 'Activation panel missing'),
+        browserErrors: personalizedBrowserErrors,
+      })
+      throw error
+    })
   assert(await sharedPlanning.getByText('Prüfung nötig', { exact: true }).count() === 0,
     'an unrelated retired baseline atom does not demand reactivation of a current subject plan')
   await personalizedPage.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
