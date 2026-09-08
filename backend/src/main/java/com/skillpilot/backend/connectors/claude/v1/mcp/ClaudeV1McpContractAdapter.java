@@ -136,8 +136,11 @@ public class ClaudeV1McpContractAdapter {
     static final String PLAN_RESUME_CONTINUATION_INSTRUCTION =
             "Use the returned context as the authoritative canonical backend state; do not reload it. "
                     + "If that context contains goalVisualization, follow its presentationInstruction before "
-                    + "any learner-facing response. Then briefly state today's learning-plan counts for every "
-                    + "subject and continue immediately with the returned active goal. Do not ask for another "
+                    + "any learner-facing response. Then give the compact one-line daily-plan summary from "
+                    + "the newest context using the daily learning-plan presentation rule: totals once, only "
+                    + "openToday per valid subject, and overdue backlog only when positive. Keep unavailable-plan "
+                    + "warnings and do not repeat a summary already given from this context in the same response. "
+                    + "Continue immediately with the returned active goal. Do not ask for another "
                     + "confirmation and do not expose identifiers, state revisions or plan mechanics.";
     static final String PLAN_SUBJECT_SWITCH_CONTINUATION_INSTRUCTION =
             "Use the returned context as the authoritative canonical backend state; do not reload it. "
@@ -263,11 +266,23 @@ public class ClaudeV1McpContractAdapter {
                 subject, date or goal yourself. Treat the full context returned by that write as the
                 newest context and perform its required goalVisualization render before speaking.
                 Never call the resume tool while an activeGoal is present. Only when no such immediate
-                tool call remains, briefly say for every subject in the newest context how many goals
-                are due today, how many of those are already completed, and how many remain open.
-                State openOverdue separately as backlog; never add it to dueToday a second time. Then
-                continue the returned activeGoal. If these counts later change, report the updated
-                counts naturally. Do not repeat unchanged counts on every turn.
+                tool call remains, use the compact daily-plan presentation rule when plan following is
+                active: one line with learningPlanToday.totals.completedToday of totals.dueToday once,
+                then only openToday and the localized subject for every valid learningPlanToday.subjects
+                entry. German example: "Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik."
+                English example: "Today: 2 of 48 done · still open: 19 Maths, 27 Physics."
+                Use actual current counts, never the example numbers. Append "+ N überfällig" in German
+                or "+ N overdue" in English only when totals.openOverdue is greater than zero; omit zero
+                backlog entirely and never add backlog to today's counts. Use detailed per-subject
+                counters only on explicit request; no second totals paragraph or bullet list by default.
+                "Mathe" is a display alias only; tool arguments still use the exact published subject.
+                completedToday counts goals newly due today that are currently mastered, not mastery
+                events that necessarily happened today. If unavailablePlanCount is greater than zero,
+                briefly warn that one or more plans could not be evaluated and the totals exclude them.
+                In that unavailable-plan case, if no valid subject remains, say only that today's plan
+                could not be evaluated, not "0 of 0 done". Never expose plan IDs or internal error details.
+                Give the summary at most once per response. Then continue the returned activeGoal. If these counts later change,
+                report the updated counts naturally. Do not repeat unchanged counts on every turn.
 
                 For guidance.state=complete, clearly say that today's work including backlog is done
                 and no more plan goals are required today. Do not automatically start future goals,

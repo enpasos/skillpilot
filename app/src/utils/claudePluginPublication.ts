@@ -1,7 +1,7 @@
 export const CLAUDE_PLUGIN_PUBLICATION_INDEX_URL = '/api/public/claude/plugins/index.json'
 export const CLAUDE_MARKETPLACE_REPOSITORY_URL = 'https://github.com/enpasos/skillpilot-claude-marketplace'
 export const CLAUDE_CONNECTOR_PRIVACY_URL = 'https://mcp-claude-v1.skillpilot.com/privacy'
-export const CLAUDE_PLUGIN_CURRENT_VERSION = '1.1.1'
+export const CLAUDE_PLUGIN_CURRENT_VERSION = '1.1.2'
 // The Marketplace guide is withdrawn while personal installation and updates
 // are unreliable. The unchanged current file is the controlled beta route.
 // Release metadata and regression checks bind this guide decision.

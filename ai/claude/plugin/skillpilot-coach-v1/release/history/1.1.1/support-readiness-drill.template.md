@@ -12,8 +12,8 @@
 | Field | Value |
 | --- | --- |
 | Drill status | `pending` |
-| Candidate version | `1.1.2` |
-| Candidate SHA-256 | `835c91844f950d9101f74ef245916fc6a7d65f53426ae3939f3a224f7ab827ca` |
+| Candidate version | `1.1.1` |
+| Candidate SHA-256 | `b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351` |
 | Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
 | Remote marketplace revision (40 characters) | `NOT YET AVAILABLE - PREPUBLICATION`; replace in later activation evidence |
 | Marketplace tree SHA-256 | `UNASSIGNED - BLOCKING` |
@@ -84,7 +84,7 @@ check. The personal-marketplace beta has no proactive per-operation monitor,
 real-time detection promise or SLA. This template neither satisfies nor
 duplicates the separate exact-client acceptance gate.
 
-The 1.1.2 exact-client gate remains `pending` until a fresh Marketplace or
+The 1.1.1 exact-client gate remains `pending` until a fresh Marketplace or
 explicit exact-candidate install on the controlled Web and Android Voice
 clients independently completes the daily-plan, automatic-resume and
 orientation scenarios. No earlier package or evidence satisfies this gate.
@@ -100,9 +100,8 @@ rendered card, or a conversational claim alone.
 
 - [ ] Claude Web completed the exact orientation scenario without policy,
       instruction or private-deliberation narration.
-- [ ] Claude Web gave one compact daily summary with total completed out of
-      today's due goals and the open count per subject; overdue work appeared
-      only when positive, without redundant per-subject count lists.
+- [ ] Claude Web reported every valid subject's today-due, currently mastered,
+      still-open and overdue counts plus totals before coaching.
 - [ ] Claude Web warned safely about unavailable plans without exposing plan or
       landscape identifiers or presenting partial totals as complete.
 - [ ] Claude Web resumed the backend-selected plan goal only when the

@@ -26,7 +26,7 @@ const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.1.1";
+const expectedPluginVersion = "1.1.2";
 const expectedHistoricalReleaseFiles = new Map([
   [
     "1.0.0/contract-baseline.json",
@@ -63,6 +63,13 @@ const expectedHistoricalReleaseFiles = new Map([
   ["1.1.0/marketplace-publication.json", "eceae94c85c47a575310d1a9b6a08be9163e19e67486dcda8bcb30d1ecdba363"],
   ["1.1.0/release-gates.json", "de71f6fdf93515cbdb4982ecd1affefe925ea9c1d75414c8347d7b69065016e8"],
   ["1.1.0/support-readiness-drill.template.md", "77146c1b97cb995a65226105ab69812248a68828ba072e1c75afe8805ffd92ba"],
+  ["1.1.1/contract-baseline.json", "223d81c06a912d245f1398a49480f6dc3c98f2c00749854fa39113dfd79de4d6"],
+  ["1.1.1/direct-install-beta.json", "adbf4f050116d855e87897a7e532771cf2d6944e6396d0c652acf724781bb86f"],
+  ["1.1.1/evidence-manifest.json", "4511ac93c6121dd1b4f93773ac630e866b43ea14c44938962056a858dc4ef1a3"],
+  ["1.1.1/lifecycle.json", "39dc2a5fddba686f910dfdd55b19de0116f309259650b3fa273f11a756b74c4a"],
+  ["1.1.1/marketplace-publication.json", "b91fad118dd87d119eb71a5092bdb080113b24c5bf58c3022381f5fd4cb27a56"],
+  ["1.1.1/release-gates.json", "1f681bafad9422f6a6fe7622e821dcbbb93b2db88973ef5f6fb110c09eff18d5"],
+  ["1.1.1/support-readiness-drill.template.md", "161fc615a5a2aa947c8ec2c056e8caf0efea9946573254816be975a9db7be787"],
 ]);
 const expectedEndpoint = "https://mcp-claude-v1.skillpilot.com/mcp";
 const expectedTools = [
@@ -171,7 +178,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.1.1.",
+      "Every plugin release document must use Claude plugin version 1.1.2.",
     );
   }
 
@@ -231,9 +238,10 @@ export function verifyClaudePluginV1Release({
     "Plugin lifecycle must exclude Claude Free, iOS, Android in-app installation, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
   );
   check(
-    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-04"
+    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-08"
       && lifecycle?.productOwnerAuthorization?.approvedBy === "product-owner"
-      && /Claude public plugin v1/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /Prepare Claude plugin 1\.1\.2 locally only for the compact daily-plan summary/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /No publication, deployment, marketplace promotion or OpenAI V1 change is authorized/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && Array.isArray(lifecycle?.productOwnerAuthorization?.excludes)
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /OpenAI/u.test(entry))
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Connector Directory/u.test(entry)),

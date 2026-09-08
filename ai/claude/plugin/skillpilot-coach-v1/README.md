@@ -2,16 +2,18 @@
 
 SkillPilot Coach v1 is the public-plugin candidate for curriculum-grounded
 SkillPilot learning coaching. Its product scope is limited to eligible paid
-Claude Chat on the Web and the native Android app. Version 1.1.1 is the sole
-current replacement candidate; earlier package versions remain historical
-evidence and are not an installation fallback.
+Claude Chat on the Web and the native Android app. Version 1.1.2 is the sole
+current replacement candidate, prepared locally only. It has not been published
+or deployed. The existing 1.1.1 release and its immutable download remain
+unchanged until a separately authorized rollout; older packages are not a
+fallback for testing this candidate.
 
 Earlier v1 direct-install packages were demonstrated in paid Claude Web chat.
 The Product Owner also used an earlier account-level direct installation with a
 Claude Pro account in the native Claude app on Android. Those observations do
-not transfer to the 1.1.1 candidate. Exact-candidate direct-install,
+not transfer to the 1.1.2 candidate. Exact-candidate direct-install,
 public-listing installation and the complete Android learning flow remain
-pending until they are verified for 1.1.1. The earlier Android observation also
+pending until they are verified for 1.1.2. The earlier Android observation also
 does not establish that the package can be installed from Android itself or
 that a public listing will reach Android. iOS, Claude Desktop Chat, Cowork and
 public Claude Code remain outside this candidate's claims.
@@ -42,10 +44,13 @@ remote SkillPilot connector. All fourteen MCP tools and both interactive MCP App
 come from that connector; the plugin does not duplicate their schemas,
 resources, or UI bytes.
 
-Version 1.1.1 makes the chat plan-first. At the beginning of a learning session,
-Claude reports today's requirements and progress for every valid subject plan,
-including overdue work, and then continues or resumes the backend-selected goal
-without requiring a Web-app button.
+Version 1.1.2 keeps the chat plan-first with a compact daily summary. For example:
+“Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik.” Mention overdue
+work only when present, for example “+ 5 überfällig”, and keep unavailable-plan
+warnings explicit. The completed figure describes currently mastered goals
+that are due today, not an event log of goals completed during that day.
+Then continue or resume the backend-selected goal without requiring a Web-app
+button. No planning calculations or tool contracts change.
 An explicit request such as “switch to Physics” changes the current planned
 subject through the connector while every valid subject plan continues to
 contribute to the day's requirements. The backend parks an unfinished goal and
@@ -65,7 +70,7 @@ from inside the Android app, Claude Desktop Chat, Cowork, hooks, subagents, or
 public Claude Code. Those surfaces require their own acceptance evidence and a
 later reviewed release before SkillPilot can advertise them.
 
-The historical direct-install observations are not evidence for 1.1.1 or public
+The historical direct-install observations are not evidence for 1.1.2 or public
 Directory availability. Submission readiness requires this exact candidate to
 complete the dedicated Web and Android real-client acceptance gates.
 Public-listing reach on Android remains a publication verification, not a

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.2 - 2026-09-08 (locally prepared, not published)
+
+- Keep the daily overview to one line: total completed out of today's due
+  goals, followed by the open count per subject; show overdue work only when
+  present and retain unavailable-plan warnings.
+- Preserve all plan calculations, fourteen tools, learner-session semantics,
+  backend-selected continuation and the frozen OpenAI lane.
+- Keep the existing 1.1.1 artifact and publication evidence immutable. All
+  1.1.2 external acceptance and publication decisions remain pending.
+
 ## 1.1.1 - 2026-09-04
 
 - Guide the learner directly from the daily overview to the current planned

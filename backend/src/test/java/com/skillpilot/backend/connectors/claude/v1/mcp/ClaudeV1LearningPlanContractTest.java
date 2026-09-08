@@ -106,6 +106,43 @@ class ClaudeV1LearningPlanContractTest {
     }
 
     @Test
+    void compactDailyPlanPresentationKeepsCurrentCountsAndSafetyWarnings() {
+        String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+
+        assertThat(instructions)
+                .contains(
+                        "one line with learningPlanToday.totals.completedToday of totals.dueToday once",
+                        "only openToday and the localized subject for every valid learningPlanToday.subjects entry",
+                        "Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik.",
+                        "Today: 2 of 48 done · still open: 19 Maths, 27 Physics.",
+                        "only when totals.openOverdue is greater than zero",
+                        "omit zero backlog entirely and never add backlog to today's counts",
+                        "Use detailed per-subject counters only on explicit request",
+                        "no second totals paragraph or bullet list by default",
+                        "\"Mathe\" is a display alias only; tool arguments still use the exact published subject",
+                        "goals newly due today that are currently mastered, not mastery events",
+                        "If unavailablePlanCount is greater than zero",
+                        "the totals exclude them",
+                        "In that unavailable-plan case, if no valid subject remains, say only that today's plan could not be evaluated",
+                        "Give the summary at most once per response",
+                        "Do not repeat unchanged counts on every turn",
+                        "Answer a status-only question or respect a pause without starting a goal or exercise",
+                        "For blocked or unavailable, explain the remaining work or missing plan status without claiming completion")
+                .doesNotContain("briefly say for every subject in the newest context how many goals are due today");
+
+        assertThat(ClaudeV1McpContractAdapter.PLAN_RESUME_CONTINUATION_INSTRUCTION)
+                .contains(
+                        "compact one-line daily-plan summary",
+                        "totals once, only openToday per valid subject",
+                        "overdue backlog only when positive",
+                        "Keep unavailable-plan warnings",
+                        "do not repeat a summary already given from this context in the same response",
+                        "follow its presentationInstruction before any learner-facing response",
+                        "Continue immediately with the returned active goal")
+                .doesNotContain("state today's learning-plan counts for every subject");
+    }
+
+    @Test
     void coachContextReadsDailyPlanStatusWithoutReconcilingOrAdvancingState() throws Exception {
         McpSchema.CallToolResult result = call(
                 ClaudeV1Contract.TOOL_GET_COACH_CONTEXT,

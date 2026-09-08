@@ -23,12 +23,12 @@ const validIndex = {
     {
       id: 'skillpilot-coach-v1',
       name: 'SkillPilot Claude Coach',
-      version: '1.1.2',
+      version: '1.1.1',
       status: 'beta',
-      filename: 'skillpilot-coach-v1-1.1.2.plugin',
+      filename: 'skillpilot-coach-v1-1.1.1.plugin',
       bytes: 42_000,
       sha256: digest,
-      downloadUrl: `/api/public/claude/plugins/skillpilot-coach-v1/1.1.2/sha256-${digest}/skillpilot-coach-v1-1.1.2.plugin`,
+      downloadUrl: `/api/public/claude/plugins/skillpilot-coach-v1/1.1.1/sha256-${digest}/skillpilot-coach-v1-1.1.1.plugin`,
       sourceUrl: 'https://github.com/enpasos/skillpilot',
       privacyUrl: 'https://skillpilot.com/privacy',
       termsUrl: 'https://skillpilot.com/legal',
@@ -155,7 +155,7 @@ assert.throws(
 )
 
 const nonCanonicalDownload = cloneValidIndex()
-nonCanonicalDownload.plugins[0]!.downloadUrl = '/api/public/claude/plugins/skillpilot-coach-v1-1.1.2.plugin'
+nonCanonicalDownload.plugins[0]!.downloadUrl = '/api/public/claude/plugins/skillpilot-coach-v1-1.1.1.plugin'
 assert.throws(
   () => parseClaudePluginPublicationIndex(nonCanonicalDownload),
   /downloadUrl must match the versioned SHA-256 artifact path/u,
@@ -182,22 +182,22 @@ assert.throws(
   /sha256 must contain 64 hexadecimal characters/u,
 )
 
-for (const retiredVersion of ['1.0.4', '1.1.0', '1.1.1']) {
+for (const retiredVersion of ['1.0.4', '1.1.0']) {
   const staleVersion = cloneValidIndex()
   staleVersion.plugins[0]!.version = retiredVersion
   staleVersion.plugins[0]!.filename = `skillpilot-coach-v1-${retiredVersion}.plugin`
   staleVersion.plugins[0]!.downloadUrl = `/api/public/claude/plugins/skillpilot-coach-v1/${retiredVersion}/sha256-${digest}/skillpilot-coach-v1-${retiredVersion}.plugin`
   assert.throws(
     () => parseClaudePluginPublicationIndex(staleVersion),
-    /version must equal 1\.1\.2/u,
+    /version must equal 1\.1\.1/u,
     `the first-party guide must fail closed instead of offering historical Claude ${retiredVersion}`,
   )
 }
 
 const wrongPlugin = cloneValidIndex()
 wrongPlugin.plugins[0]!.id = 'different-plugin'
-wrongPlugin.plugins[0]!.filename = 'different-plugin-1.1.2.plugin'
-wrongPlugin.plugins[0]!.downloadUrl = `/api/public/claude/plugins/different-plugin/1.1.2/sha256-${digest}/different-plugin-1.1.2.plugin`
+wrongPlugin.plugins[0]!.filename = 'different-plugin-1.1.1.plugin'
+wrongPlugin.plugins[0]!.downloadUrl = `/api/public/claude/plugins/different-plugin/1.1.1/sha256-${digest}/different-plugin-1.1.1.plugin`
 assert.throws(
   () => parseClaudePluginPublicationIndex(wrongPlugin),
   /id must equal skillpilot-coach-v1/u,
@@ -221,14 +221,6 @@ const marketplaceLanePath = resolve(
   dirname(fileURLToPath(import.meta.url)),
   '../../../ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json',
 )
-interface MarketplaceEvidence {
-  id?: string
-  status?: string
-  candidateVersion?: string | null
-  candidateSha256?: string | null
-  revision?: string | null
-  treeSha256?: string | null
-}
 const marketplaceLane = JSON.parse(readFileSync(marketplaceLanePath, 'utf8')) as {
   target?: { repositoryUrl?: string }
   plugin?: { version?: string, directInstallSha256?: string }
@@ -243,7 +235,14 @@ const marketplaceLane = JSON.parse(readFileSync(marketplaceLanePath, 'utf8')) as
       repositoryRevision?: string
       repositoryTreeSha256?: string
     }
-    evidence?: MarketplaceEvidence[]
+    evidence?: Array<{
+      id?: string
+      status?: string
+      candidateVersion?: string
+      candidateSha256?: string
+      revision?: string
+      treeSha256?: string
+    }>
   }
 }
 assert.equal(
@@ -253,76 +252,46 @@ assert.equal(
 )
 assert.equal(marketplaceLane.plugin?.version, CLAUDE_PLUGIN_CURRENT_VERSION)
 assert.equal(marketplaceLane.plugin?.directInstallSha256, productionIndex.plugins[0]?.sha256)
-assert.equal(marketplaceLane.activation?.state, 'prepared_not_published')
+assert.equal(marketplaceLane.activation?.state, 'published_pending_acceptance')
 assert.equal(
   marketplaceLane.activation?.firstPartyUiRoute,
   'controlled_direct_install_beta',
-  'Claude 1.1.2 installation and updates use the current file while Marketplace is unreliable',
+  'Claude 1.1.1 installation and updates use the current file while Marketplace is unreliable',
 )
 assert.equal(
   marketplaceLane.activation?.marketplaceUiSwitchAllowed,
   false,
-  'the pending candidate guide decision must not enable Marketplace installation',
+  'the withdrawn guide decision must not enable Marketplace installation',
 )
 const guideDecision = marketplaceLane.activation?.firstPartyGuideDecision
-assert.equal(guideDecision?.status, 'pending')
-assert.equal(guideDecision?.candidateVersion, null)
-assert.equal(guideDecision?.candidateSha256, null)
-assert.equal(guideDecision?.repositoryRevision, null)
-assert.equal(guideDecision?.repositoryTreeSha256, null)
-for (const pendingEvidenceId of [
-  'public-repository-default-branch',
-  'clean-account-marketplace-install',
-  'uploaded-plugin-migration-and-marketplace-refresh',
-]) {
-  const evidence: MarketplaceEvidence | undefined = marketplaceLane.activation?.evidence?.find(
-    entry => entry.id === pendingEvidenceId,
-  )
-  assert.equal(
-    evidence?.status,
-    'pending',
-    'the local candidate must not claim publication or unperformed real-client acceptance',
-  )
-  assert.equal(evidence?.candidateVersion, null)
-  assert.equal(evidence?.candidateSha256, null)
-  assert.equal(evidence?.revision, null)
-  assert.equal(evidence?.treeSha256, null)
-}
-assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, false)
-
-// Preparing a replacement must not rewrite the actual 1.1.1 publication or
-// turn its withdrawn guide into evidence for the new candidate.
-const historicalMarketplaceLane = JSON.parse(readFileSync(
-  resolve(dirname(marketplaceLanePath), 'history/1.1.1/marketplace-publication.json'),
-  'utf8',
-)) as typeof marketplaceLane
-assert.equal(historicalMarketplaceLane.plugin?.version, '1.1.1')
-assert.equal(historicalMarketplaceLane.activation?.state, 'published_pending_acceptance')
-assert.equal(historicalMarketplaceLane.activation?.firstPartyUiRoute, 'controlled_direct_install_beta')
-assert.equal(historicalMarketplaceLane.activation?.marketplaceUiSwitchAllowed, false)
-const historicalGuideDecision = historicalMarketplaceLane.activation?.firstPartyGuideDecision
-assert.equal(historicalGuideDecision?.status, 'withdrawn')
-assert.equal(historicalGuideDecision?.candidateVersion, '1.1.1')
-assert.equal(historicalGuideDecision?.candidateSha256, historicalMarketplaceLane.plugin?.directInstallSha256)
-assert.match(historicalGuideDecision?.repositoryRevision ?? '', /^[a-f0-9]{40}$/u)
-assert.equal(historicalGuideDecision?.repositoryTreeSha256,
-  '8c6c67b46763224d901a65b35408dad7752f6c7db08203fd38cf0f568a74c5d3')
-const historicalRepositoryEvidence = historicalMarketplaceLane.activation?.evidence?.find(
+assert.equal(guideDecision?.status, 'withdrawn')
+assert.equal(guideDecision?.candidateVersion, CLAUDE_PLUGIN_CURRENT_VERSION)
+assert.equal(guideDecision?.candidateSha256, productionIndex.plugins[0]?.sha256)
+assert.match(guideDecision?.repositoryRevision ?? '', /^[a-f0-9]{40}$/u)
+assert.equal(
+  guideDecision?.repositoryTreeSha256,
+  '8c6c67b46763224d901a65b35408dad7752f6c7db08203fd38cf0f568a74c5d3',
+  'the guide must be bound to the exact immutable 1.1.1 marketplace tree',
+)
+const repositoryEvidence = marketplaceLane.activation?.evidence?.find(
   evidence => evidence.id === 'public-repository-default-branch',
 )
-assert.equal(historicalRepositoryEvidence?.status, 'pass')
-assert.equal(historicalRepositoryEvidence?.candidateVersion, '1.1.1')
-assert.equal(historicalRepositoryEvidence?.candidateSha256, historicalGuideDecision?.candidateSha256)
-assert.equal(historicalRepositoryEvidence?.revision, historicalGuideDecision?.repositoryRevision)
-assert.equal(historicalRepositoryEvidence?.treeSha256, historicalGuideDecision?.repositoryTreeSha256)
+assert.equal(repositoryEvidence?.status, 'pass')
+assert.equal(repositoryEvidence?.candidateVersion, CLAUDE_PLUGIN_CURRENT_VERSION)
+assert.equal(repositoryEvidence?.candidateSha256, productionIndex.plugins[0]?.sha256)
+assert.equal(repositoryEvidence?.revision, guideDecision?.repositoryRevision)
+assert.equal(repositoryEvidence?.treeSha256, guideDecision?.repositoryTreeSha256)
 for (const pendingEvidenceId of [
   'clean-account-marketplace-install',
   'uploaded-plugin-migration-and-marketplace-refresh',
 ]) {
-  assert.equal(historicalMarketplaceLane.activation?.evidence?.find(
-    evidence => evidence.id === pendingEvidenceId,
-  )?.status, 'pending')
+  assert.equal(
+    marketplaceLane.activation?.evidence?.find(evidence => evidence.id === pendingEvidenceId)?.status,
+    'pending',
+    'repository publication must not claim unperformed real-client acceptance',
+  )
 }
+assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, false)
 
 const pluginCatalogSource = readFileSync(
   resolve(
@@ -346,7 +315,7 @@ for (const requiredNavigationCopy of [
   'Lade zuerst die aktuelle Datei herunter, bevor du eine alte Installation entfernst',
   'Marketplace-Einrichtung und ihre Updates funktionieren noch nicht zuverlässig',
   'Bereits installiert? Version vergleichen',
-  'Wird 1.1.2 angezeigt, ist kein erneuter Upload nötig',
+  'Wird 1.1.1 angezeigt, ist kein erneuter Upload nötig',
   'die zuvor heruntergeladene .plugin-Datei unverändert hoch',
   'auch wenn sie aus dem Marketplace stammt',
   'Andere Plugins und Konnektoren bleiben unverändert',
@@ -357,7 +326,7 @@ for (const requiredNavigationCopy of [
   'Set up with the plugin file',
   'Download the current file before removing an older installation',
   'Marketplace setup and updates are not yet reliable',
-  'If it shows 1.1.2, no new upload is needed',
+  'If it shows 1.1.1, no new upload is needed',
   'including a marketplace installation',
   'Leave other plugins and connectors unchanged',
   'Upload the previously downloaded .plugin file without modifying it',

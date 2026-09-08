@@ -12,15 +12,15 @@ test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.1", () => {
+test("rejects a replacement candidate version other than 1.1.2", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.1"',
+      '"version": "1.1.2"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.1/u,
+      /replacement candidate must be version 1\.1\.2/u,
     );
   });
 });
@@ -248,6 +248,50 @@ test("rejects a provider-internal subject label field in the public plan contrac
   });
 });
 
+for (const path of [
+  "skills/skillpilot-coach-v1/SKILL.md",
+  "skills/skillpilot-coach-v1/references/coaching-policy.md",
+]) {
+  test(`rejects verbose default per-subject counters in ${path}`, () => {
+    withPackageCopy((root) => {
+      mutate(root, path, (value) => value.replace(
+        /Use detailed per-subject\s+counters only on explicit\s+request/u,
+        "Use detailed per-subject counters by default",
+      ));
+      assert.match(
+        validateClaudePluginPackage(root).errors.join("\n"),
+        /one compact daily-plan line with totals once/u,
+      );
+    });
+  });
+
+  test(`rejects a zero-backlog announcement in ${path}`, () => {
+    withPackageCopy((root) => {
+      mutate(root, path, (value) => value.replace(
+        /omit zero backlog\s+entirely/u,
+        "always announce zero backlog",
+      ));
+      assert.match(
+        validateClaudePluginPackage(root).errors.join("\n"),
+        /omit zero backlog, keep positive overdue separate/u,
+      );
+    });
+  });
+
+  test(`rejects treating entirely unavailable plans as zero workload in ${path}`, () => {
+    withPackageCopy((root) => {
+      mutate(root, path, (value) => value.replace(
+        /In that unavailable-plan case, if no valid subject\s+remains, say only\s+that today's plan could not be evaluated, not "0 of 0 done"/u,
+        'In that unavailable-plan case, if no valid subject remains, say "0 of 0 done"',
+      ));
+      assert.match(
+        validateClaudePluginPackage(root).errors.join("\n"),
+        /warn about partial or unavailable plans/u,
+      );
+    });
+  });
+}
+
 test("rejects event-history claims for completedToday", () => {
   withPackageCopy((root) => {
     mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
@@ -381,7 +425,7 @@ test("rejects stale memory-goal continuation after confirmed Recall completion",
 test("rejects silent omission of unavailable plan status", () => {
   withPackageCopy((root) => {
     mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
-      /that one or more plans could\s+not be\s+evaluated;\s+expose\s+no plan identifiers/u,
+      /that one or more plans could\s+not be\s+evaluated and the totals exclude them;\s+expose\s+no plan identifiers/u,
       "that every plan was evaluated successfully",
     ));
     assert.match(
@@ -559,15 +603,15 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.1 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.2 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
-      "The 1.1.1 package already passed every exact-client check",
+      "The 1.1.2 package already passed every exact-client check",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.1 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.2 exact-candidate acceptance/u,
     );
   });
 });

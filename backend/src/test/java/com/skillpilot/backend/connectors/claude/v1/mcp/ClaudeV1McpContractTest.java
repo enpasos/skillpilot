@@ -89,7 +89,7 @@ class ClaudeV1McpContractTest {
 
     @Test
     void publishesTheGuidedClaudeBackendAsVersionOneOneOne() {
-        assertEquals("1.1.1", properties.getServerVersion());
+        assertEquals("1.1.2", properties.getServerVersion());
     }
 
     @Test

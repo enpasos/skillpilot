@@ -59,6 +59,10 @@ try {
     assert(!body.includes('Marketplace hinzufügen') && !body.includes('Add marketplace'))
     assert(body.includes(language === 'de' ? 'nicht automatisch auslesen' : 'cannot currently read'))
     assert(body.includes(language === 'de' ? 'ist kein erneuter Upload nötig' : 'no new upload is needed'))
+    assert(body.includes(language === 'de'
+      ? `Wird ${plugin.version} angezeigt, ist kein erneuter Upload nötig`
+      : `If it shows ${plugin.version}, no new upload is needed`),
+    'the update advice must name the version of the actual downloadable artifact')
     assert((await page.title()).includes(language === 'de' ? 'Claude-Plugin-Beta' : 'Claude plugin beta'))
     assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'), 'noindex, nofollow')
     const storageBeforeDownload = await page.evaluate(() => JSON.stringify(localStorage))

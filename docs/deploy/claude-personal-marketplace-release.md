@@ -3,11 +3,34 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.1 is the sole
-current replacement candidate. It adds plan-first multi-subject daily guidance
-and automatic backend-authorized plan resume without changing the frozen
-OpenAI v1 lane. Version 1.0.4 and its evidence remain historical records only;
-they are not a supported installation or rollback fallback.
+Anthropic-curated or Anthropic-verified listing. Version 1.1.2 is the sole
+locally prepared replacement candidate. It shortens the daily-plan overview
+without changing the plan calculations, tools, learner sessions or frozen
+OpenAI v1 lane. Preparation does not publish or deploy the candidate.
+
+## 1.1.2 local preparation, 8 September 2026
+
+The Product Owner authorized only the compact daily summary, matching
+Claude-only server instructions, tests and local patch preparation:
+“Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik.” Mention backlog
+only when present, for example “+ 5 überfällig”. The completed count remains the
+currently mastered subset of today's due goals, not a same-day event log.
+Warnings about unavailable plans remain explicit.
+
+The current source manifests and locally prepared publication index name
+1.1.2. The repository checker requires that index to match the current source
+and deterministic package; it is not a record of deployment. The deployed
+index, immutable 1.1.1 download and external Marketplace repository remain
+unchanged until a separately authorized rollout. The 1.1.1 release dossier is
+archived byte-for-byte under `release/history/1.1.1/`; its published repository
+evidence and withdrawn guide decision are not transferred to the new candidate.
+
+For 1.1.2, Marketplace state is `prepared_not_published`; repository, client,
+migration and guide-decision evidence is `pending`. Direct-install external
+acceptance and privacy evidence are also candidate-bound and pending. No
+publication, deployment, account update, new support claim or Marketplace
+promotion is authorized by this preparation. Do not run public verification
+as an acceptance check before rollout: the public version intentionally differs.
 
 ## Current first-party guide: download and upload, 8 September 2026
 
@@ -17,7 +40,7 @@ upload instructions on `/plugins`. This decision supersedes the first-party
 Marketplace recommendation recorded on 5 September; the publication and its
 original evidence below remain historical facts.
 
-The current guide uses the existing immutable **1.1.1** `.plugin` file only.
+The currently deployed guide uses the existing immutable **1.1.1** `.plugin` file only.
 Download it from SkillPilot, remove only an older SkillPilot installation when
 replacing it, upload the downloaded file in Claude, connect the plugin's bundled
 SkillPilot connector, then return to SkillPilot and start a fresh chat. Other
@@ -52,7 +75,7 @@ As long as
 `ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json`
 has `activation.state = prepared_not_published`, that repository is not a
 supported installation source. The first-party `/plugins` page must keep every
-Claude installation route unavailable until the exact 1.1.1 direct-install or
+Claude installation route unavailable for a new candidate until its exact direct-install or
 Marketplace route is deliberately opened for testing. It must not offer 1.0.4
 as a fallback. A Marketplace route additionally requires a verified repository
 and a candidate- and revision-bound Product Owner approval in
@@ -90,12 +113,13 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.1`
+- Current candidate version: `1.1.2` (local preparation only)
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
-- Current direct-install SHA-256:
-  `b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351`
+- Current candidate SHA-256: the exact binding in
+  `ai/claude/plugin/skillpilot-coach-v1/release/direct-install-beta.json`;
+  the published 1.1.1 binding remains in its archived release dossier.
 
 Anthropic allows a marketplace entry name to differ from the embedded plugin
 name. SkillPilot intentionally keeps the technical name equal, but Claude still
@@ -103,7 +127,7 @@ stores a marketplace-qualified installation record. That is why migration from
 an uploaded copy remains explicit. No `version` is repeated in
 `marketplace.json`.
 
-## 1.1.1 hard cutover
+## Historical 1.1.1 hard cutover
 
 Version 1.1.1 fully replaces every earlier package. The public Marketplace
 repository and the direct-install registry may retain old Git or immutable
@@ -376,8 +400,10 @@ revision before activation:
    not add a second custom connector or enter the MCP URL manually.
 4. Return to `https://skillpilot.com/` and start a new learning session through
    the established first-party handoff.
-5. Confirm that the initial response reports every valid subject plan with
-   today-due, currently mastered, still-open and overdue counts plus totals.
+5. Confirm that the initial response gives one compact daily summary with
+   total currently mastered out of today's due goals and the open count for
+   each subject. Mention overdue work only when positive; do not repeat three
+   counts per subject or a sentence stating there is no backlog.
    Prove that an unavailable plan produces only the safe partial-data warning
    and no plan or landscape identifier, and that the mastered-today figure is
    not described as a same-day event log.
@@ -435,7 +461,7 @@ as:
 }
 ```
 
-Only a new 1.1.1 decision may make the first-party `/plugins` guide
+Only a new exact-candidate decision may make the first-party `/plugins` guide
 Marketplace-first. It must preserve the scoped cleanup, connector OAuth, and
 return-to-SkillPilot steps. No 1.0.4 direct-download fallback is permitted.
 Because those WebGUI files are hash-bound by the active OpenAI review freeze,

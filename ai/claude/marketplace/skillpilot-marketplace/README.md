@@ -6,10 +6,10 @@ package, but distributes them through a repository that Claude can update.
 This personal marketplace is published independently by SkillPilot. It is not
 reviewed, endorsed, curated, or verified by Anthropic.
 
-Version 1.1.1 completely replaces earlier versions. Do not retain or reinstall
-1.0.4 as a fallback. The 1.1.1 Marketplace update and its exact-client
-acceptance must be verified before SkillPilot presents this repository as an
-available installation route.
+Version 1.1.2 is a locally prepared replacement candidate, not yet published or
+deployed. The existing 1.1.1 repository release remains unchanged. The 1.1.2
+Marketplace update and its exact-client acceptance must be verified before
+SkillPilot offers this candidate as an available installation route.
 
 ## Install in Claude
 
@@ -30,7 +30,8 @@ MCP URL manually.
 Then return to <https://skillpilot.com/> and start each new learning session
 there through the established SkillPilot handoff.
 
-In the resulting chat, SkillPilot first reports every valid subject plan and
+In the resulting chat, SkillPilot first summarizes every valid subject plan in
+one compact line, mentioning overdue work only when present, and
 can resume the backend-selected goal automatically. An explicit request such as
 “switch to Physics” changes only the current learning subject; all valid plans
 continue to contribute to today's requirements.

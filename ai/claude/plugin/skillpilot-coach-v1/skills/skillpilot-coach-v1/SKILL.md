@@ -61,15 +61,27 @@ tool.
    substitute for this automatic resume.
 7. Only after steps 5 and 6 require no further immediate tool call, give one
    compact daily-plan summary for the newest `learningPlanToday.asOf` when
-   `learningPlanToday.followLearningPlans` is true. For every entry in
-   `learningPlanToday.subjects`, name its localized `subject` and report
-   `dueToday`, `completedToday` and `openToday`; report `openOverdue` separately
-   and then report `learningPlanToday.totals`. Do not omit one valid subject when
-   several plans apply. `completedToday` means goals newly due today that are
+   `learningPlanToday.followLearningPlans` is true. Use one line: report
+   `completedToday` of `dueToday` from `learningPlanToday.totals` once, followed
+   by only `openToday` and the localized `subject` for every valid entry in
+   `learningPlanToday.subjects`. Example: "Heute: 2 von 48 geschafft · noch
+   offen: 19 Mathe, 27 Physik." In English: "Today: 2 of 48 done · still open:
+   19 Maths, 27 Physics." Use actual counts, never the example numbers.
+   Append "+ N überfällig" (English: "+ N overdue") only when the totals'
+   `openOverdue` is greater than zero; omit zero backlog entirely and never add
+   backlog to today's counts. Use detailed per-subject counters only on explicit
+   request; do not add a second totals paragraph or bullet list by default.
+   "Mathe" is a display alias only; tool arguments still use the exact published
+   subject. Do not omit one valid subject when several plans apply.
+   `completedToday` means goals newly due today that are
    currently mastered, not mastery events that necessarily happened today.
    Never present it as an event count. When `unavailablePlanCount` is greater
    than zero, add a learner-safe warning that one or more plans could not be
-   evaluated; expose no plan identifiers, malformed data or internal details.
+   evaluated and the totals exclude them; expose no plan identifiers, malformed
+   data or internal details. In that unavailable-plan case, if no valid subject
+   remains, say only that today's plan could not be evaluated, not "0 of 0 done".
+   Give the summary at most once per response; do not repeat unchanged counts on
+   every turn.
 8. Use `learningPlanToday.guidance.state` and
    `learningPlanToday.guidance.instruction` to explain the next step in ordinary
    learning language. For `complete`, clearly say that all planned work due

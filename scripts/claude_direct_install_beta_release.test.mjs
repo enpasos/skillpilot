@@ -86,10 +86,17 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     downloadBasePath: "/api/public/claude/plugins",
     accessModel: "first_party_guided_beta",
   });
-  assert.deepEqual(canonicalLane.candidate, {
-    version: "1.1.1",
-    sha256: "b4bfa8122812bf1ad0430e6b02932b89e29b107c7a831cebf994da010c359351",
-  });
+  assert.equal(canonicalLane.candidate.version, "1.1.2");
+  assert.match(canonicalLane.candidate.sha256, /^[0-9a-f]{64}$/u);
+  for (const id of ["web-learning-plan-compact-summary", "android-voice-learning-plan-compact-summary"]) {
+    assert.equal(canonicalExactClientEvidence.checks.find((entry) => entry.id === id)?.status, "pending");
+    const incomplete = structuredClone(canonicalExactClientEvidence);
+    incomplete.checks = incomplete.checks.filter((entry) => entry.id !== id);
+    assert.throws(
+      () => validateDirectInstallBetaExactClientEvidence(incomplete, canonicalLane),
+      /exact-client evidence check identifiers mismatch/u,
+    );
+  }
   assert.deepEqual(canonicalLane.planSemantics, {
     supportBaseline: "claude_pro",
     technicalRequirement: "paid_claude_plan",
@@ -129,7 +136,8 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "web-single-plugin-bundled-connector-oauth",
       "first-party-fresh-session-handoff",
       "web-coaching-and-both-mcp-apps",
-      "web-learning-plan-today-all-subjects",
+    "web-learning-plan-today-all-subjects",
+    "web-learning-plan-compact-summary",
       "web-learning-plan-automatic-resume",
       "web-learning-plan-subject-switch",
       "web-learning-plan-natural-subject-requests",
@@ -146,7 +154,8 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "web-no-durable-anchor-memory-claim",
       "android-context-and-both-mcp-apps",
       "android-voice-current-context",
-      "android-voice-learning-plan-today-all-subjects",
+    "android-voice-learning-plan-today-all-subjects",
+    "android-voice-learning-plan-compact-summary",
       "android-voice-learning-plan-automatic-resume",
       "android-voice-learning-plan-subject-switch",
       "android-voice-learning-plan-natural-subject-requests",

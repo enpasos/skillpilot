@@ -3675,3 +3675,54 @@ primäre Runtime-/Baumketten und die Menge geschützter Dateien bleiben
 unverändert. Keine Abschwächung einer Assertion, keine neuen Wartepausen oder
 Testwiederholungen in CI, kein Deployment und keine Wiederaufnahme des
 pausierten Curriculum-Goals.
+
+### 6.69 Kompakte Tagesübersicht im Claude Coach 1.1.2
+
+Der Product Owner genehmigt am **8. September 2026** ausdrücklich den lokal
+vorzubereitenden Patch **Claude Coach 1.1.2** ausschließlich für die kompakte
+Tagesübersicht einschließlich passender Serveranweisungen und Regressionen.
+Die Standarddarstellung nennt einmal die insgesamt aktuell beherrschten von
+den heute neu fälligen Zielen und danach nur die offenen Ziele je Fach, etwa:
+„Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik.“ Ein positiver
+Rückstand wird separat angehängt; Null-Rückstände und redundante Fachzähler
+entfallen. Ausführliche Fachzahlen gibt es auf ausdrückliche Nachfrage.
+
+Die Zahlen stammen unverändert aus dem neuesten autoritativen Kontext.
+`completedToday` bleibt eine Bestandszahl, keine Historie heutiger Lernereignisse.
+Nicht auswertbare Pläne bleiben als fehlende Anteile erkennbar; ihre internen
+Details werden nicht offengelegt. Die Regeln für Visualisierung vor Sprache,
+Statusfragen, Pause, Fortsetzen, Fachwechsel und tatsächlichen Tagesabschluss
+bleiben unverändert. Die Kurzform „Mathe“ ist ausschließlich Darstellung;
+Toolargumente behalten den exakten vom Backend veröffentlichten Fachnamen.
+
+Die Änderung betrifft nur die Claude-Skill-/Policytexte, die entsprechenden
+isolierten Claude-Serveranweisungen und ihre Tests. Manifest, Dokumentation,
+Versionsanzeige und lokale Artefakt-/Vertragsbindungen werden für 1.1.2
+konsistent fortgeführt. Der lokale Downloadindex verweist nach Vorbereitung
+auf das neue additive Artefakt; dies ist noch keine Produktionsaktivierung.
+Die veröffentlichten 1.1.1-Artefaktbytes bleiben unverändert, die bisherigen
+Release-Metadaten werden als unveränderliche Historie archiviert. Externe,
+kandidatengenaue Abnahmen und Marketplace-Veröffentlichung für 1.1.2 bleiben
+offen; alte Freigaben werden nicht übertragen.
+
+Die neue Connector-Baseline übernimmt außerdem die bereits zuvor genehmigten
+und unverändert eingecheckten Hashes von `app/package.json`,
+`app/scripts/testRootRoutePolicy.ts` und `app/src/App.tsx`. Ihre alten
+Connector-Bindungen waren hinter der bestehenden Freeze-Kette zurückgeblieben;
+die drei Dateien selbst werden in diesem Paket nicht geändert.
+
+Die historischen Guide-Regressionen prüfen weiterhin dieselben vollständigen
+Rückwärts-Hashvergleiche gegen die archivierten 1.1.1-Marketplace-Metadaten
+und eine bytegleiche Testquell-Fixture. Die aktuellen 1.1.2-Parser- und
+Browserregressionen werden unabhängig davon ausgeführt.
+
+Record, Runtime-Checker und Regression ergänzen eine eng begrenzte
+Supplemental-Exception mit den konkreten geänderten und neuen
+Claude-Kandidaten-, Test-, Release- und Dokumentationsdateien. Alle früheren
+Ausnahmen und primären OpenAI-Runtime-/Baumketten bleiben unverändert. Der
+eingereichte OpenAI Coach 1.0.0 und der ruhende OpenAI-1.1-Kandidat bleiben
+unverändert, ebenso Tooldaten und -schemas, MCP/OAuth, Provider-Start,
+Prepared Messages, Session, Identität, Locale, Lernzustand, Datenschutz,
+Speicherung, Berechtigungen, Portal, Reviewfälle, Fixtures und Reviewartefakte.
+Keine externe Veröffentlichung, kein Push, kein Deployment und keine
+Wiederaufnahme des pausierten Curriculum-Goals.
