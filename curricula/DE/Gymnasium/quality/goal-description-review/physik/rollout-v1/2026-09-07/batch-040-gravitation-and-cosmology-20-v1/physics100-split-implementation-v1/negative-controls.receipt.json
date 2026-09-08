@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "READ_ONLY_NEGATIVE_CONTROLS_PASS",
+  "executedAt": "2026-09-07T19:44:40.780Z",
+  "filesWritten": 0,
+  "positiveLedgerScope": {
+    "ordinaryLeaves": 470,
+    "aRecords": 470,
+    "mRecords": 470,
+    "obsoleteA": 0,
+    "obsoleteM": 0
+  },
+  "negativeControls": [
+    {
+      "name": "exact old-parent wording lease",
+      "status": "PASS_REJECTED"
+    },
+    {
+      "name": "exact planned requires-after lease",
+      "status": "PASS_REJECTED"
+    },
+    {
+      "name": "duplicate new UUID",
+      "status": "PASS_REJECTED"
+    },
+    {
+      "name": "changed source wording cannot keep static generator reconciliation",
+      "status": "PASS_REJECTED"
+    },
+    {
+      "name": "native duplicate learner-visible target",
+      "status": "PASS_REJECTED",
+      "code": "CPV-005"
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "packageId": "physics100-quantum-consolidation-v1",
+  "appliedAt": "2026-09-07T19:34:48.752Z",
+  "appliedBy": "/root",
+  "mechanism": "apply_patch after current-file field leases and independent semantic review; no commit or push",
+  "planSha256": "sha256:0dffad609831d7aa9d1c168c2bd21aaee63d0aca7d4856a8e1b28decc7d047fa",
+  "leasedOperations": 232,
+  "outputFiles": 77,
+  "checksBeforeApplication": [
+    "232 fixed field/snippet leases",
+    "source original hashes",
+    "DAG",
+    "native K schema/fingerprints",
+    "A/M shape/fingerprints",
+    "card origins",
+    "13 positive scope projections"
+  ],
+  "sourceOnlyAcceptance": true,
+  "humanApprovalClaimed": false,
+  "DPRegistration": false,
+  "requiresFinalGlobalValidation": true,
+  "postApplicationBindings": [
+    {
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:53ae0e29ed5b374303fb614cf6ce0ea4bd8c4b9487954344dfa400e3658c14aa"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sha256": "sha256:7d61600bff25b51e1a4ad82845ae465f00368992a280b54398ecc442ec8167b3"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sha256": "sha256:bd96bd4b5939e838a9117c7e3401511eb8bb5922ab53835310393ea242635fb0"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "sha256": "sha256:b00b4bbee9cb3865fff7543017bf66946a1b1351996f1459004356274cb1e9cf"
+    },
+    {
+      "file": "app/scripts/generateHePhysicsSourceExtraction.ts",
+      "sha256": "sha256:0f9f5fcc505ca25606014e117bad7ea5fa9c52362437742d7bfae44fd6dcdb8f"
+    },
+    {
+      "file": "app/scripts/generateBwPhysicsSourceExtraction.ts",
+      "sha256": "sha256:9d790fc270ee79615f393af19bc84d4659260b54907bc8fb1cc78fd435b9b57c"
+    },
+    {
+      "file": "app/scripts/generateByPhysicsSourceExtraction.ts",
+      "sha256": "sha256:4f98688720d62174e7a93128df30283d5c8c45bf8c4905793490f26a660ef53c"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json",
+      "sha256": "sha256:32b4a5aa687e52a1f4166ce80d05c97d85fd0fc8156c7ae8df315a8a47811ad1"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json",
+      "sha256": "sha256:363341f1791f8c027a071f5df4ff0eb1d9eb917d8f23c0466fa6a23ffb49e20e"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json",
+      "sha256": "sha256:a4a978dd3859cfc826a1a636ab54abf5d08e52c3a83f1470c3e912b131cf4629"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json",
+      "sha256": "sha256:57c9fad5a1d9b473f35cfd7b39df9bc42fa2ee0e864578e183c320cb4fa7cd30"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json",
+      "sha256": "sha256:6fcd315f4f3da9b61c1c7a861cacc855a1158397953af23935dd8476ceb773c6"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json",
+      "sha256": "sha256:02e2b3d7d64317804ab8871dffb7c0e07e6436324ca0bd28adf2944fa24b45dc"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json",
+      "sha256": "sha256:00bd100d1b363cf08b429d89f665332f05cd0df77f0631e8a2043c8b28142d01"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json",
+      "sha256": "sha256:49054f72376bb6e552e30843f5208d1fe9cdcda9588d912cb48e2ef44e137e66"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "sha256": "sha256:a7717a75ca8a2c8040989f13a848dc3b6c1922f55b40ee95bd300711bae1f9c2"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json",
+      "sha256": "sha256:a3a4be6d54536bde832375165664ea4bd882f1e4a06e739603cb91186f0075b4"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+      "sha256": "sha256:77cdce864f7bd37c61a7ac54122ccc79574c98b1e55cc3a80ddcca099a6b1f8d"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+      "sha256": "sha256:ccdbbe45a78c386af83209a0d2bc14156e719c5bc02128ac6dd39161799b44f0"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json",
+      "sha256": "sha256:663bd6b7207955b917a1075660337ea117a77ada128c0593f6f938e5129f3493"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json",
+      "sha256": "sha256:f1d681d59e4bc6a07ba62b861530bfed0d4719ac6acd3e377f7f458528f421c1"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json",
+      "sha256": "sha256:d5ab3d6d57f4565d3091c5e62aa0e14c2ac32bfb562de291cb813c98d94d5c81"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-gk.view.json",
+      "sha256": "sha256:5ad56824103b6abae93487964471ed78c24921bd1a5f7ccc263faeb9a6ddcb9d"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json",
+      "sha256": "sha256:917392bf8a182011882197ce898329df4f1cd93edc5ace3595fdcd2645f4cb3f"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json",
+      "sha256": "sha256:0c699611fca75a1c64373ffd7b36f5372de4a6d190d1c96ff858c330352c1053"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-gk.view.json",
+      "sha256": "sha256:1278585e541b923d64d6f4ae8a0a5abaf37a5131b80b308e138a7b18d8082fc7"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-lk.view.json",
+      "sha256": "sha256:58d467d8dd8b5120788d83bd4854912a0d591d9db144edf58a93e1479bd61502"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "sha256": "sha256:1750f566eed1378d5a5e31598bf47e041a053c864b8dc68c047ccd5f7c5db077"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "sha256": "sha256:4004ad51a4307ef40e238b46a04a726fc01028f7bcd0352cbc20ffa209136a1f"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+      "sha256": "sha256:1f667775467f7412190a0a643e10b63e68dc7eb875bc6cf79902e0b023b3d5d2"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+      "sha256": "sha256:257937061ddc30eaa63d165bd814606c12919b66e30e52a0cd741e4c9887561c"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-gk.view.json",
+      "sha256": "sha256:bc2371e8aca616cb7d247abdde6382ef46ea4973cf0bdddef3c682bca37d3c1d"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-lk.view.json",
+      "sha256": "sha256:92dc71a838e521237d6a5f45dbff1acb907c56402c5223007cf984cbc2cf6581"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-mv-gk.view.json",
+      "sha256": "sha256:1bad2ca86a3df007b9d0f19a2e03ff8c78e12b614c94c1556340b5d19a8edf6d"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-mv-lk.view.json",
+      "sha256": "sha256:f32743a6fc77bd76910454cec3fcacef02f439415c76dde03892d7cc92eb9eac"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-gk.view.json",
+      "sha256": "sha256:4999e38d15972faee469d2d9991f2bcc4f2fe973d87837e9008caad9b2be74a0"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-lk.view.json",
+      "sha256": "sha256:d33384c1064b0c48d4f4075920ac3fa250db131323e6876da29c1e7722fccdea"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-ni-gk.view.json",
+      "sha256": "sha256:a831eaca47b4f1f87eaf3ecc5196f41f99aec291eef82776381a24a202600e12"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-ni-lk.view.json",
+      "sha256": "sha256:1e55b89eac2ba67efa9031a21a392d846ace47055b76f4742b6dc96706e9e7c5"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-gk.view.json",
+      "sha256": "sha256:911e1b8142cf575abad4567491650331a199ef8015b039fd252b378ef6a03424"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-lk.view.json",
+      "sha256": "sha256:314b162db0fa9200a17e353ec1285d224eb140d07f98f98a258b1eda7932581a"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-nw-gk.view.json",
+      "sha256": "sha256:acb9b10beeda030c5b0dd82476e629f16e95507997bde42bc1cc488d1dce5695"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-nw-lk.view.json",
+      "sha256": "sha256:466f18b36b54c959301c2f7ddb10b6460a09cd86220f345c376581fd9a14cedc"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-gk.view.json",
+      "sha256": "sha256:b57ffe2c9660614d30d4176cc13f812558dc840874509f7c0da7d310e10e31cd"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-lk.view.json",
+      "sha256": "sha256:7cfc13ca087e47f304bde96665787193d67f2f7cdcab3a3baae60aaa046e4981"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+      "sha256": "sha256:d57d75dad0c438bec3d78ab3593bee425808d021b7d337e0cebc342d5a1e21de"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+      "sha256": "sha256:147ee929b8b6c364f27adf87a5576a1fa01119305686fa1631527f6e474642e4"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json",
+      "sha256": "sha256:db1170cd237c853139b42502add0b88a32a7785fac6a911be7bdc9510fde5bbe"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-lk.view.json",
+      "sha256": "sha256:cd84f0049b09d18339304d018dbd0eae5ed1f50de23330ecfc83d53a7d1e175c"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sh-gk.view.json",
+      "sha256": "sha256:db0615a1a206d1483ceb7ac3b068b37094890f633ebc79975a396992963ff824"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sh-lk.view.json",
+      "sha256": "sha256:3ffb7904e59392554ccfbd7a0b26f62d03275ead0fdb62043cc7890e3aabfb2b"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-gk.view.json",
+      "sha256": "sha256:75d6512bb3d6dcf25201de25e53abf7361d26e514996c8875492cde8deff8f4c"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-lk.view.json",
+      "sha256": "sha256:eb6c6f369400bedbdc1beb6f095c4b6952bd45cca4b1858253b4d9c0b242701e"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json",
+      "sha256": "sha256:ee0fba95613da8b5cc75890a5d7fc5f294c686b564f5fd6b702c85383c1ae9a0"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+      "sha256": "sha256:6158fda92beab0402b7775b80959b06688a57d7bd1e5fb4fae3b6ad1163f32f2"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-gk.view.json",
+      "sha256": "sha256:18a298ed6deccabb4fb4c6b344267b857849c2bf9a9e9291c711d1dfe488127a"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-lk.view.json",
+      "sha256": "sha256:8359360bdf18efc46ffc460a136b02b5be647a01901e42be12c6b8b2a8a72b17"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json",
+      "sha256": "sha256:8ddef1f1dc3d4bea44280b6f160eeff546b81860557a824fa2a8c1e14374b345"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+      "sha256": "sha256:77cfaa839932bcffe53c598cf568f3e4303dc64428ec6de02ffc9a86b1c93a1a"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-gk.view.json",
+      "sha256": "sha256:abb2927de2202e73b924050b7268771058f65bbe6b0aee52227a747545ae3ac8"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-lk.view.json",
+      "sha256": "sha256:8b7be6bfc206c9b4e4cb27fb8a1a209b510e680dd485f3a9d8d2d2384947d7fb"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-st-gk.view.json",
+      "sha256": "sha256:933f5ff04f4ebd31753329dc7bd50583f579238831ddcfc27f822322febb8c30"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-st-lk.view.json",
+      "sha256": "sha256:a79d085e56b78d3237fcedd84ffa202c5a70535ba24e0d57e0691d36deb5ff37"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-gk.view.json",
+      "sha256": "sha256:3b7d6566618a406dd39a26c9a24b30c1391c2baa4c76bde8071f110b836cefac"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-lk.view.json",
+      "sha256": "sha256:71680b5a9d326ae3986c6cf44325ea85a3c9026f257117cd49c1a84073ce67af"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json",
+      "sha256": "sha256:f51b6964774ebac6a1ce770d9b5ee2376f612be465470310f529469382b05398"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+      "sha256": "sha256:2ad3eee88ce4e6b662bb53a38b9a5a4e6dcabd6786add6dbc96a486478b2739a"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-gk.view.json",
+      "sha256": "sha256:0a2ba21beaa99643f7bd9ed037981601adbfd3b6254ff9aa44dfb74ba54a5dd5"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-lk.view.json",
+      "sha256": "sha256:58f2ada7c34f5bfb758e3375d92d62ddcde58fdb9ae9a17c9ff12afc21da2506"
+    },
+    {
+      "file": "app/scripts/config/goal-books/navigation/de-gym-physics-national-atlas.view.json",
+      "sha256": "sha256:eb2882d80a068955380d368f7aadca246d85cc98e1d4fc4a3814431def070524"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "sha256": "sha256:374c9a044f3c66ff26b2394c6aa371cf42d8ac65dd59e2f50a4f5b7534ee76a3"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+      "sha256": "sha256:d35defc81c2d64536727f254420a82b49bf88cbdafd5cb05302c3c7cce607a66"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_structure_q4.de.json",
+      "sha256": "sha256:c06a10c5a567db0656ad5b5261f424cc091944e544faafc5c2167bb4ac143131"
+    },
+    {
+      "file": "app/public/data/de_gymnasium_physics_flashcards_structure_q4.de.json",
+      "sha256": "sha256:c06a10c5a567db0656ad5b5261f424cc091944e544faafc5c2167bb4ac143131"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.cards.review.jsonl",
+      "sha256": "sha256:921bbdf55882feae13c41ba6b8fa68c448797d99f202cc66e9548fa330700b54"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "sha256": "sha256:a308ed4362b61aebb263356b1118684138557c3a87a75ae5539211a2564d2292"
+    },
+    {
+      "file": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+      "sha256": "sha256:97e42652267a396ca86f87c50b5ca93d1264b2a6442ee12c8eca35ae14ca4e7e"
+    }
+  ]
+}

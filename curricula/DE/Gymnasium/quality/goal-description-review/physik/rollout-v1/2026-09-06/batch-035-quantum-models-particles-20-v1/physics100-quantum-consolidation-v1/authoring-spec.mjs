@@ -1,0 +1,105 @@
+import { createHash } from 'node:crypto'
+export const landscapeId='7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
+export const ids={hydrogen:'bacae732-2016-5a83-bc61-d0f94ed5a0e4',pauli:'badb0ef3-233d-560e-bc2a-9df99f09fe7d',historicWell:'ad021f2e-6b94-5e6e-a264-3d1110094b87',born:'51bc5513-6879-548f-b19a-9746b667f1a3',hydrogenBasics:'d7244ce4-5409-58d1-a1b4-bfae35f391e1',quantumAssessment:'b585ff81-6332-5d11-ae63-ee6a9928c00d',capstone:'4a58df57-f791-502f-8b8d-9ba155e46035',memory:'266b6cf8-d49d-5197-862c-9998fcf179a5'}
+export const newKeys={energy:'canonical_physics_infinite_well_discrete_energy_calculate',probability:'canonical_physics_infinite_well_normalized_interval_probability'}
+export function deterministicId(shortKey){const h=createHash('sha1').update('DE-GYM-CANONICAL-PHYSICS:'+shortKey).digest('hex');return h.slice(0,8)+'-'+h.slice(8,12)+'-5'+h.slice(13,16)+'-'+((parseInt(h[16],16)&3)|8).toString(16)+h.slice(17,20)+'-'+h.slice(20,32)}
+ids.energy=deterministicId(newKeys.energy);ids.probability=deterministicId(newKeys.probability)
+export const base='curricula/DE/Gymnasium/'
+export const paths={
+canonical:base+'canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json',
+atomicity:base+'quality/semantic-atomicity/canonical-physics-full.review.jsonl',
+memory:base+'quality/memory-card-review/canonical-physics-full.review.jsonl',
+cards:base+'quality/memory-card-review/canonical-physics-full.cards.review.jsonl',
+kinds:base+'quality/release-model/physik.semantic-kinds.json',
+deck:base+'memory-decks/de_gymnasium_physics_flashcards_structure_q4.de.json',
+publicDeck:'app/public/data/de_gymnasium_physics_flashcards_structure_q4.de.json',
+he:base+'mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json',
+bw:base+'mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_source_extraction_to_canonical_physics.review.json',
+by:base+'mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json',
+heGenerator:'app/scripts/generateHePhysicsSourceExtraction.ts',bwGenerator:'app/scripts/generateBwPhysicsSourceExtraction.ts',byGenerator:'app/scripts/generateByPhysicsSourceExtraction.ts'}
+export const originalSources=[
+{path:base+'input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf',locator:'Printed pp.42,44-45. Q3.3 LK separates energies and Pauli; Q4.1 quantitative LK explicitly includes length intervals. The integral is an operationalization, not a verbatim source formula.'},
+{path:base+'input/BW/BP2016BW_ALLG_GYM_PH_V2.pdf',locator:'Printed p.47/PDF49. 3.6.6(10) hydrogen-like energies; (12) well energies and model limits, no interval integration; (13) multi-electron/Pauli overview.'},
+{path:base+'input/BY/gymnasium/Physik.json',locator:'Ph13 GA.2.1/EA.2.1: quantitative energies, sketches of functions/densities, not interval integration. EA.2.4: hydrogen-like model transfer. EA.2.5: Pauli. GA.2.5: whole-shell diagrams, no explicit Pauli.'}]
+const tex=s=>s.replaceAll('§',String.fromCharCode(92))
+export const hydrogenAfter={
+title:'Energien wasserstoffähnlicher Ein-Elektronensysteme',titleEn:'Energies of Hydrogen-like One-Electron Systems',
+description:tex('Die lernende Person kann für wasserstoffähnliche Ein-Elektronensysteme Energieniveaus im nichtrelativistischen Coulomb-Modell bei vernachlässigter Kernbewegung mit $E_n§approx-13{,}6§,§mathrm{eV}§,Z^2/n^2$ relativ zur Ionisationsgrenze berechnen und die Abhängigkeit von Kernladungszahl $Z$ und Hauptquantenzahl $n$ physikalisch deuten.'),
+descriptionEn:tex('The learner can calculate energy levels of hydrogen-like one-electron systems relative to the ionization threshold using $E_n§approx-13.6§,§mathrm{eV}§,Z^2/n^2$ in the nonrelativistic Coulomb model with nuclear motion neglected, and physically interpret their dependence on nuclear charge number $Z$ and principal quantum number $n$.')}
+export const pauliAfter={
+description:'Die lernende Person kann Mehrelektronensysteme qualitativ deuten, indem sie die Besetzung von Energieniveaus nach dem Pauli-Prinzip (kein vollständiger Ein-Elektronenzustand einschließlich Spin ist doppelt besetzt) mit einem Energieniveauschema der Atomhülle verknüpft.',
+descriptionEn:'The learner can qualitatively interpret multi-electron systems by relating the occupation of energy levels under the Pauli exclusion principle (no complete one-electron state, including spin, is occupied twice) to an energy-level diagram of the electron shell.',
+requires:[ids.hydrogenBasics,'904670af-8e4c-543e-bc9b-e6248d87a10d']}
+const dimension={framework:'canonical-gymnasium-physics',demandLevel:'AB2',processCompetencies:['PK2_MODELLIEREN','PK3_MATHEMATISIEREN'],guidingIdeas:['LI_MATERIE'],phase:'Q4',area:'Quantenphysik'}
+export const newGoals=[
+{id:ids.energy,shortKey:newKeys.energy,title:'Diskrete Energien im unendlichen Potenzialtopf berechnen',titleEn:'Calculate Discrete Energies in the Infinite Potential Well',
+description:tex('Die lernende Person kann für ein Elektron im eindimensionalen Potenzialtopf der Breite $L$ mit unendlich hohen Wänden und $V=0$ im Inneren die erlaubten Energien $E_n=n^2h^2/(8m_eL^2)$ für $n=1,2,§ldots$ berechnen und ihre Abhängigkeit von Topfbreite und Quantenzahl physikalisch deuten.'),
+descriptionEn:tex('The learner can calculate the allowed energies $E_n=n^2h^2/(8m_eL^2)$, with $n=1,2,§ldots$, for an electron in a one-dimensional potential well of width $L$ with infinitely high walls and $V=0$ inside, and physically interpret their dependence on well width and quantum number.'),
+weight:1,tags:['GK','LK','canonical'],contains:[],requires:[ids.born],dimensionTags:{...dimension,topicCode:newKeys.energy.toUpperCase()},applicability:{jurisdiction:['DE-BW','DE-BY','DE-HE']},extendedData:{applicabilityMappingInheritance:'boundary',applicabilityOverrides:{jurisdiction:['DE-BW','DE-BY','DE-HE']}},type:'atomic',competencyRefs:['PROCESS.PK2_MODELLIEREN','PROCESS.PK3_MATHEMATISIEREN']},
+{id:ids.probability,shortKey:newKeys.probability,title:'Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen',titleEn:'Calculate Interval Probabilities in the Infinite Potential Well',
+description:tex('Die lernende Person kann für eine gegebene, auf $[0,L]$ normierte Wellenfunktion eines Elektrons im eindimensionalen Potenzialtopf mit unendlich hohen Wänden die Nachweiswahrscheinlichkeit in einem Intervall durch $P(x_1§le x§le x_2)=§int_{x_1}^{x_2}|§psi(x)|^2§,dx$ mit $0§le x_1§le x_2§le L$ berechnen und als Fläche unter der Wahrscheinlichkeitsdichte deuten.'),
+descriptionEn:tex('The learner can calculate the detection probability in an interval for a given electron wave function normalized on $[0,L]$ in a one-dimensional potential well with infinitely high walls, using $P(x_1§le x§le x_2)=§int_{x_1}^{x_2}|§psi(x)|^2§,dx$ with $0§le x_1§le x_2§le L$, and interpret it as the area under the probability density.'),
+weight:1,tags:['LK','canonical'],contains:[],requires:[ids.born],dimensionTags:{...dimension,topicCode:newKeys.probability.toUpperCase()},applicability:{jurisdiction:['DE-HE']},extendedData:{applicabilityMappingInheritance:'boundary',applicabilityOverrides:{jurisdiction:['DE-HE']}},type:'atomic',competencyRefs:['PROCESS.PK2_MODELLIEREN','PROCESS.PK3_MATHEMATISIEREN']}
+]
+export const evidence=[
+{goalId:ids.hydrogen,
+essentialUnderstandingDe:'Wasserstoffähnlich bedeutet genau ein gebundenes Elektron im Coulombfeld der Kernladung Ze. Bei der Ionisationsgrenze E=0 sind gebundene Energien negativ. Die Näherung ohne Kernbewegung und relativistische Korrekturen ergibt Z²/n²-Skalierung, keine allgemeine Mehrelektronenformel.',
+essentialUnderstandingEn:'Hydrogen-like means exactly one bound electron in the Coulomb field of charge Ze. With the ionization threshold at E=0, bound energies are negative. Neglecting nuclear motion and relativistic corrections gives Z²/n² scaling, not a general multi-electron formula.',
+evidenceOfUnderstandingDe:'Für He+ bei n=2 erhält die lernende Person −13,6 eV, begründet den Faktor vier gegenüber Wasserstoff bei gleichem n und unterscheidet Niveauenergie und positive Ionisationsenergie. Sie erklärt, weshalb neutrales Helium nicht dieses Ein-Elektronensystem ist.',
+evidenceOfUnderstandingEn:'For He+ at n=2, the learner obtains −13.6 eV, explains the factor of four relative to hydrogen at the same n, and distinguishes level energy from positive ionization energy. They explain why neutral helium is not this one-electron system.',
+transferEvidenceDe:'Bei verändertem Z oder n prognostiziert die lernende Person vor der Rechnung Richtung und Größenordnung der Energieänderung und prüft das Ergebnis anhand der Ionisationsgrenze; das Übertragen bleibt im angegebenen Modell.',
+transferEvidenceEn:'When Z or n changes, the learner predicts the direction and scale of the energy change before calculating and checks against the ionization threshold; the transfer stays within the stated model.'},
+{goalId:ids.pauli,
+essentialUnderstandingDe:'Pauli verbietet zwei Elektronen im identischen vollständigen Ein-Elektronenzustand einschließlich Spin. Zwei entgegengesetzte Spins dürfen dasselbe räumliche Orbital besetzen; ein Energieniveau kann mehrere Orbitale enthalten. Die Regel allein bestimmt weder sämtliche Energien noch das vollständige Aufbauschema.',
+essentialUnderstandingEn:'Pauli forbids two electrons in the identical complete one-electron state, including spin. Two opposite spins may occupy the same spatial orbital; one energy level may contain several orbitals. This rule alone determines neither all energies nor the complete filling sequence.',
+evidenceOfUnderstandingDe:'An einem vorgegebenen Orbitalschema erkennt die lernende Person die verbotene gleichspinige Doppelbesetzung, begründet eine zulässige Paarbesetzung und verknüpft Zustandsbesetzung mit dem Energieniveauschema der Atomhülle. Sie behauptet nicht höchstens zwei Elektronen pro Energieniveau.',
+evidenceOfUnderstandingEn:'In a supplied orbital diagram, the learner identifies forbidden identical-spin double occupation, justifies allowed paired occupation, and relates occupation to the shell energy-level diagram. They do not claim a limit of two electrons per energy level.',
+transferEvidenceDe:'Bei einer zusätzlichen vorgegebenen Besetzung prüft die lernende Person Orbital und Spin erneut und erläutert die geänderte Zustandsbelegung. Sie berechnet daraus keine exakte Mehrelektronenenergie mit der Wasserstoffformel.',
+transferEvidenceEn:'For an additional supplied occupation, the learner checks orbital and spin again and explains the changed state occupation. They do not calculate exact multi-electron energies with the hydrogen formula.'},
+{goalId:ids.energy,
+essentialUnderstandingDe:'Unendlich hohe Wände bei 0 und L erzwingen verschwindende Randwerte und diskrete stationäre Zustände. Bei V=0 im Inneren sind erlaubte Energien proportional zu n²/L² positiv; n beginnt bei 1. Der Grundzustand liegt oberhalb des Topfbodens.',
+essentialUnderstandingEn:'Infinitely high walls at 0 and L impose vanishing boundary values and discrete stationary states. With V=0 inside, allowed energies are positive and proportional to n²/L²; n starts at 1. Ground-state energy lies above the well bottom.',
+evidenceOfUnderstandingDe:'Die lernende Person berechnet E1 und E2 mit konsistenten SI-Einheiten, prüft E2=4E1 und erklärt, weshalb n=0 keinen normierbaren Elektronenzustand liefert. Topfbreite, Masse und Energiebezug werden in der Deutung benannt.',
+evidenceOfUnderstandingEn:'The learner calculates E1 and E2 in consistent SI units, checks E2=4E1, and explains why n=0 supplies no normalizable electron state. Their interpretation identifies well width, mass, and energy reference.',
+transferEvidenceDe:'Für doppeltes L bei gleichem n prognostiziert und begründet die lernende Person ein Viertel der Energie; bei n=3 folgt 9E1. Sie überträgt die Beziehung nicht unverändert auf endliche Wände oder reale Coulomb-Potenziale.',
+transferEvidenceEn:'For doubled L at fixed n, the learner predicts and justifies one quarter of the energy; n=3 gives 9E1. They do not transfer the relationship unchanged to finite walls or real Coulomb potentials.'},
+{goalId:ids.probability,
+essentialUnderstandingDe:'Bei einer auf [0,L] normierten Wellenfunktion ist |ψ|² eine Dichte mit Einheit 1/Länge, nicht die Wahrscheinlichkeit eines einzelnen Punktes. Ihr Integral über ein Intervall ist dimensionslos und liegt zwischen 0 und 1; über den ganzen Topf ergibt es 1.',
+essentialUnderstandingEn:'For a wave function normalized on [0,L], |ψ|² is a density with units of inverse length, not a single-point probability. Its integral over an interval is dimensionless and between 0 and 1; over the entire well it equals 1.',
+evidenceOfUnderstandingDe:'Für die gegebene normierte Funktion ψ1(x)=√(2/L)sin(πx/L) berechnet die lernende Person eine Intervallwahrscheinlichkeit mit richtigen Grenzen und Betragsquadrat. Sie deutet die Fläche, prüft Normierung und Ergebnisbereich und unterscheidet Dichtemaximum und Punktwahrscheinlichkeit.',
+evidenceOfUnderstandingEn:'For the given normalized function ψ1(x)=√(2/L)sin(πx/L), the learner calculates an interval probability with correct bounds and squared modulus. They interpret the area, check normalization and result range, and distinguish density maximum from point probability.',
+transferEvidenceDe:'Die lernende Person vergleicht gleich breite Rand- und Zentralintervalle anhand der Dichte und prüft durch Rechnung ihre unterschiedlichen Wahrscheinlichkeiten. Ein globaler Vorzeichenwechsel von ψ ändert P nicht; ein unnormierter Ansatz darf nicht ungeprüft als Wahrscheinlichkeit dienen.',
+transferEvidenceEn:'The learner compares equally wide edge and central intervals using the density and checks their different probabilities by calculation. A global sign change of ψ does not change P; an unnormalized expression must not be used uncritically as a probability.'}
+]
+export const reviewReasons={
+[ids.hydrogen]:{atomicity:'Eine einzelne Modellkompetenz: Coulomb-Energien wasserstoffähnlicher Ein-Elektronensysteme berechnen und Z/n-Skalierung samt Energiebezug deuten. Pauli liegt vollständig am vorhandenen Mehrelektronenziel.',memory:'Kein neues Erinnerungsziel: begründete Übertragung des Wasserstoffmodells auf Z und n samt Gültigkeitsprüfung, nicht isolierter Abruf eines weiteren Formelfragments.'},
+[ids.pauli]:{atomicity:'Eine qualitative Zustandsbesetzungs- und Modelldeutung: der Ausschluss vollständiger Zustandsdopplung begründet zulässige Besetzungen im vorgegebenen Atomhüllenschema. Keine zusätzliche Wasserstoffenergieberechnung oder vollständige Konfigurationsroutine.',memory:'Keine neue Karte: vorgegebene Zustandsbilder, Spinunterscheidung und zulässige Besetzung werden begründet, nicht als Konfigurationslisten memoriert; die Pauli-Regel dient der normalen Modellanwendung.'},
+[ids.energy]:{atomicity:'Eine quantitative Modellkompetenz: erlaubte Topfenergien berechnen und dieselbe Beziehung anhand von L und n deuten. Intervallintegration liegt im unabhängigen Geschwisterziel; keine künstliche requires-Kette zwischen Geschwistern.',memory:'Die kompakte konditionierte Beziehung E_n=n²h²/(8m_eL²), n≥1 und V=0 im Inneren rechtfertigt eine Abrufkarte c04. Modellwahl, Einheitenprüfung und Skalierungsbegründung bleiben Aufgabenpraxis.'},
+[ids.probability]:{atomicity:'Eine quantitative Born-Anwendung: aus einer gegebenen normierten Wellenfunktion die Wahrscheinlichkeit eines Intervalls bestimmen und als Dichtefläche deuten. Energieberechnung und eigenständiges Lösen der Schrödinger-Gleichung sind nicht gefordert.',memory:'Die normierungsgebundene Born-Integralbeziehung rechtfertigt eine kompakte Abrufkarte c06; Integralwahl, Auswertung und Plausibilitätsprüfung werden am normalen Ziel geübt.'}}
+export const deckId='de_gymnasium_physics_structure_q4'
+export const cardChanges={
+physics_q4_c03:null,
+physics_q4_c04:{back:tex('Für ein Elektron im 1D-Topf der Breite $L$ mit unendlich hohen Wänden und $V=0$ im Inneren gilt:\n$E_n=§frac{h^2}{8m_eL^2}§,n^2$, $n=1,2,§ldots$.\n\nBei gleichem $L$ ist $E_n§propto n^2$; bei gleichem $n$ ist $E_n§propto 1/L^2$.'),tags:['GK','LK','goal:'+ids.energy]},
+physics_q4_c06:{back:tex('Für eine auf $[0,L]$ normierte Wellenfunktion und $0§le x_1§le x_2§le L$ gilt:\n$P(x_1§le x§le x_2)=§int_{x_1}^{x_2}|§psi(x)|^2§,dx$.\n\n$|§psi|^2$ ist die Wahrscheinlichkeitsdichte; ihre Fläche ist die dimensionslose Wahrscheinlichkeit. Über den ganzen Topf ist das Integral $1$.'),tags:['LK','goal:'+ids.probability]}}
+export const cardReasons={
+physics_q4_c03:'Entfernen: Der allgemeine qualitative Modellsatz ist eine Erklärung, kein zusätzlicher notwendiger harter Abruf neben der konditionierten Energiebeziehung. Modellbedingungen stehen in c04; Modellarbeit bleibt am normalen Ziel. Keine neue Sammelursprungsbindung.',
+physics_q4_c04:'Behalten, ausschließlich Energiekind: eine kompakte Energiebeziehung mit n≥1, Elektronenmasse, Topfbreite und explizitem Energiebezug. Keine Wahrscheinlichkeitsintegration oder universelle reale Atomenergie als Kartenanspruch.',
+physics_q4_c06:'Behalten, ausschließlich Intervallkind: die normierte Born-Integralbeziehung und Dichte/Wahrscheinlichkeits-Unterscheidung bilden den kompakten Abrufkern. Normierung und Grenzen präzisiert; keine Energiekompetenz als Ursprung.'}
+export const mappingChanges=[
+{file:'he',source:'he-phys-sekii-q3-3-b11-a01-84ad2fad',old:ids.hydrogen,next:[ids.pauli],reason:'HE Q3.3 LK, S.42: Mehrelektronensysteme/Pauli-Ausblick wird am vorhandenen badb konsolidiert. Partial: qualitativer Grundlagenumfang, keine Ein-Elektronenenergiekompetenz.'},
+{file:'he',source:'he-phys-sekii-q4-1-b10-a01-55f5b2b0',old:ids.historicWell,next:[ids.energy,ids.probability],reason:'HE Q4.1 LK S.45: quantitative Betrachtung, durch den unmittelbar folgenden Topf-Unterpunkt konkretisiert. Partielle Zuordnung zu beiden getrennten Leistungen; keine pauschale GK- oder Atommodellvererbung.'},
+{file:'he',source:'he-phys-sekii-q4-1-b11-a01-543bc81b',old:ids.historicWell,next:[ids.energy,ids.probability],reason:'HE Q4.1 LK S.45 nennt diskrete Energiewerte und Wahrscheinlichkeiten in bestimmten Längenintervallen im unendlichen 1D-Topf. Das normierte Born-Integral ist kanonische quantitative Operationalisierung, keine wörtlich gedruckte Formel. Beide Kinder partial wegen weiterer Quellinhalte.'},
+{file:'bw',source:'bw-phys-sekii-3-6-6-b12-a01-e33de11b',old:ids.historicWell,next:[ids.energy],reason:'BW 3.6.6(12), S.47/PDF49, Leistungsfach: ausdrücklich Energieberechnung und Modellgrenzen. Partial nur Energie; keine Pflicht zur Intervallintegration.'},
+{file:'bw',source:'bw-phys-sekii-3-6-6-b13-a01-d20a06bc',old:ids.hydrogen,next:[ids.pauli],reason:'BW 3.6.6(13), S.47/PDF49: Überblick zu Mehrelektronensystemen/Pauli; diese Teilklausel bindet badb partial. Wasserstoffähnliche Energien stehen separat in (10).'},
+{file:'by',source:'22c3cc6f-5468-508f-816e-56eb634f6f41',old:ids.historicWell,next:[ids.energy],reason:'BY Ph13 GA.2.1: Funktionen/Dichten skizzieren und Energielagen quantitativ betrachten. Partial Energie; eine Dichteskizze belegt keine quantitative Intervallintegration.'},
+{file:'by',source:'bfe30e7f-3319-5a1f-bcc6-8a4513c10911',old:ids.historicWell,next:[ids.energy],reason:'BY Ph13 EA.2.1: aus vorliegenden Schrödinger-Lösungen Funktionen/Dichten skizzieren und Energielagen quantitativ betrachten. Partial Energie; kein ausdrücklich gefordertes Intervallintegral.'},
+{file:'by',source:'190fa5fa-325d-59a5-8a12-34ed99a74e82',old:ids.hydrogen,next:[],reason:'BY Ph13 EA.2.5: Pauli-Besetzung und Ganzhüllenschema. Bestehende badb-Teilzuordnung bleibt; zusätzliche baca-Zuordnung entfernt. Wasserstoffähnliche Modellübertragung steht separat in EA.2.4.'}]
+export const generatorReplacements=[
+['heGenerator',"'Q3.3:11': ['"+ids.hydrogen+"']","'Q3.3:11': ['"+ids.pauli+"']"],
+['heGenerator',"'Q4.1:10': [\n    '"+ids.historicWell+"',","'Q4.1:10': [\n    '"+ids.energy+"',\n    '"+ids.probability+"',"],
+['heGenerator',"'Q4.1:11': [\n    'cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7',\n    '"+ids.born+"',\n    '"+ids.historicWell+"',","'Q4.1:11': [\n    'cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7',\n    '"+ids.born+"',\n    '"+ids.energy+"',\n    '"+ids.probability+"',"],
+['bwGenerator',"mapUpper(['3.6.6:12'], [\n  '"+ids.historicWell+"',","mapUpper(['3.6.6:12'], [\n  '"+ids.energy+"',"],
+['bwGenerator',"mapUpper(['3.6.6:13'], [\n  '8ea46612-7f0d-4ef4-a732-9428e640ae92',\n  '"+ids.hydrogen+"',","mapUpper(['3.6.6:13'], [\n  '8ea46612-7f0d-4ef4-a732-9428e640ae92',\n  '"+ids.pauli+"',"],
+...['22c3cc6f-5468-508f-816e-56eb634f6f41','bfe30e7f-3319-5a1f-bcc6-8a4513c10911'].map(s=>['byGenerator',"'"+s+"': [\n    'cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7',\n    '"+ids.historicWell+"',","'"+s+"': [\n    'cc2d5e8e-4599-54ac-b8de-87c8cfd39ea7',\n    '"+ids.energy+"',"]),
+['byGenerator',"'190fa5fa-325d-59a5-8a12-34ed99a74e82': [\n    '"+ids.pauli+"',\n    '"+ids.hydrogen+"',","'190fa5fa-325d-59a5-8a12-34ed99a74e82': [\n    '"+ids.pauli+"',"]]
+

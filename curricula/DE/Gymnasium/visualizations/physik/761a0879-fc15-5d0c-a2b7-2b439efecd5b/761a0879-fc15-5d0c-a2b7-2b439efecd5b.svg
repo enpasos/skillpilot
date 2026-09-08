@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Numerische Simulation einer Bewegung mit Reibung</title>
+<desc id="desc">Explizites Euler-Verfahren für einen Körper mit Masse zwei Kilogramm und linearer Reibung mit Koeffizient null Komma vier Kilogramm pro Sekunde. Anfangsort null, Anfangsgeschwindigkeit zehn Meter pro Sekunde. Kraft und Geschwindigkeit sind entgegengesetzt; ein Zeitschritt beträgt eine Sekunde.</desc>
+<rect width="1600" height="900" fill="#f6f9fc"/>
+<defs>
+<marker id="axis" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#183249"/></marker>
+<marker id="velocity" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#147fa9"/></marker>
+<marker id="force" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#b74439"/></marker>
+</defs>
+<g font-family="Arial, sans-serif" fill="#183249">
+<text x="60" y="68" font-size="41" font-weight="700">Numerische Simulation einer Bewegung mit Reibung</text>
+<rect x="60" y="110" width="750" height="350" rx="18" fill="#fff0df" stroke="#c6bba9"/>
+<text x="85" y="153" font-size="27" font-weight="700">Anfangszustand: t = 0 s</text>
+<text x="100" y="210" font-size="28" fill="#b74439">F = −k v</text>
+<text x="500" y="210" font-size="28" fill="#147fa9">v₀ = 10 m/s</text>
+<line x1="360" y1="250" x2="155" y2="250" stroke="#b74439" stroke-width="6" marker-end="url(#force)"/>
+<line x1="360" y1="250" x2="690" y2="250" stroke="#147fa9" stroke-width="6" marker-end="url(#velocity)"/>
+<circle id="initial-position" cx="360" cy="250" r="10" fill="#183249"/>
+<line x1="360" y1="265" x2="360" y2="338" stroke="#777" stroke-width="2" stroke-dasharray="5 5"/>
+<line x1="100" y1="335" x2="760" y2="335" stroke="#183249" stroke-width="3" marker-end="url(#axis)"/>
+<line id="origin-tick" x1="360" y1="325" x2="360" y2="345" stroke="#183249" stroke-width="3"/>
+<text x="298" y="375" font-size="28">x₀ = 0 m</text><text x="699" y="375" font-size="26">x / m</text>
+<text x="88" y="429" font-size="28">m = 2,0 kg       k = 0,40 kg/s</text>
+<text x="875" y="147" font-size="31" font-weight="700">Explizites Euler-Verfahren</text>
+<text x="875" y="205" font-size="28">Δt = 1,0 s</text>
+<text x="875" y="265" font-size="29">aₙ = Fₙ / m = −(0,20 s⁻¹) vₙ</text>
+<text x="875" y="325" font-size="29">xₙ₊₁ = xₙ + vₙ Δt</text>
+<text x="875" y="385" font-size="29">vₙ₊₁ = vₙ + aₙ Δt</text>
+<text x="875" y="438" font-size="24">Vorige Zeile für beide Updates verwenden.</text>
+<text x="62" y="505" font-size="25">Näherung im gegebenen Reibungsmodell: kleinere Zeitschritte vergleichen und Plausibilität prüfen.</text>
+<rect x="60" y="540" width="1480" height="325" rx="12" fill="#e8f2f9" stroke="#658ba5" stroke-width="2"/>
+<path d="M60,605 H1540 M60,670 H1540 M60,735 H1540 M60,800 H1540 M356,540 V865 M652,540 V865 M948,540 V865 M1244,540 V865" stroke="#abc5d5" stroke-width="2"/>
+<g text-anchor="middle" font-size="29">
+<text x="208" y="582">n</text><text x="504" y="582">t / s</text><text x="800" y="582">x / m</text><text x="1096" y="582">v / (m/s)</text><text x="1392" y="582">a / (m/s²)</text>
+<g data-n="0" data-t="0" data-x="0" data-v="10" data-a="-2"><text x="208" y="648">0</text><text x="504" y="648">0</text><text x="800" y="648">0</text><text x="1096" y="648">10</text><text x="1392" y="648">−2</text></g>
+<g data-n="1" data-t="1" data-x="10" data-v="8" data-a="-1.6"><text x="208" y="713">1</text><text x="504" y="713">1</text><text x="800" y="713">10</text><text x="1096" y="713">8</text><text x="1392" y="713">−1,6</text></g>
+<g data-n="2" data-t="2" data-x="18" data-v="6.4" data-a="-1.28"><text x="208" y="778">2</text><text x="504" y="778">2</text><text x="800" y="778">18</text><text x="1096" y="778">6,4</text><text x="1392" y="778">−1,28</text></g>
+<g data-n="3" data-t="3" data-x="24.4" data-v="5.12" data-a="-1.024"><text x="208" y="843">3</text><text x="504" y="843">3</text><text x="800" y="843">24,4</text><text x="1096" y="843">5,12</text><text x="1392" y="843">−1,024</text></g>
+</g></g></svg>

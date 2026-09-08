@@ -178,6 +178,9 @@ const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
 const BILINGUAL_COMPLETENESS_RECHECK_GOAL_IDS = new Set([
   '37b33812-d428-5953-852e-57a53a4347fe',
   '7fe3022f-fad0-5f41-af1c-d55ff214ebc6',
+  // B035 checkpoint retains only the two individually re-reviewed existing atom descriptions.
+  'bacae732-2016-5a83-bc61-d0f94ed5a0e4',
+  'badb0ef3-233d-560e-bc2a-9df99f09fe7d',
 ])
 const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
   '2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c',
@@ -521,12 +524,12 @@ const EXPECTED_JURISDICTIONS = [
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 465,
   curricularArea: 101,
-  practiceAssessment: 133,
+  practiceAssessment: 137,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 2,
-  total: 711,
+  total: 715,
 }
 const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 6308
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 6136

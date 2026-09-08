@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-043-thermodynamics-and-entropy-foundations-20-v1-20260907",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-043-thermodynamics-and-entropy-foundations-20-v1.config.json",
+  "configDigest": "sha256:1777d1ed076533fe96dee016160b46319ce7018f64b871063cd0e83bb4253288",
+  "goalIds": [
+    "37b33812-d428-5953-852e-57a53a4347fe",
+    "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+    "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+    "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+    "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+    "239aac49-1137-5df5-b197-49e72292e40c",
+    "e713dc34-beeb-5807-8a90-f872e049aa4e",
+    "6e79ef4a-2666-5f7a-885c-b175954506f8",
+    "741e7056-69e4-59be-a159-0e2583d748d1",
+    "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+    "14099861-897c-53f4-8c6c-48d088ee9f01",
+    "81a45dec-37be-529b-89ce-2f3101237293",
+    "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+    "b61d233a-1902-526b-a9b5-6b3d553f4013",
+    "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+    "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+    "23c5382a-4b0f-5715-84b5-cf87b8323152",
+    "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+    "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+    "73b5af24-7750-520a-bb16-43136ce19a5c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 465,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:dd7fe30fd990a9d87d1be1d04effd8c7ea214115ba71feb938b5c8e39f5cbcc0"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:894d53dd851288583ce157b2020d27e10d712f29b27179d0fbffa7dcec035674",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e51b5232477d04713275cac7fb533b8662ff7852eecc4d9170c4324ec4a69543",
+    "reviewInputFingerprint": "sha256:99e6e35a5fef95a557cc90c55db31dd7d80626d40a45ccd6ac84ba99caefdf05",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-043-thermodynamics-and-entropy-foundations-20-v1-20260907-a",
+        "campaignDigest": "sha256:12c16e50bd020bbaa71cfde9b513ba72f70289ce5b2e80d32cc3410896ea609f",
+        "roundId": "physik-rollout-v1-batch-043-thermodynamics-and-entropy-foundations-20-v1-20260907-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-043-thermodynamics-and-entropy-foundations-20-v1-20260907-independent-a",
+        "batchId": "physik-rollout-v1-batch-043-thermodynamics-and-entropy-foundations-20-v1-20260907-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:d533bc403458c5304f6fcc380906315991d5557ead5d9f81e21a64dd1788b549"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-043-thermodynamics-and-entropy-foundations-20-v1-20260907-b",
+        "campaignDigest": "sha256:15581de9dc67f25685711bb570bfdc0380eec2e5b85c46739a434a79050b6229",
+        "roundId": "physik-rollout-v1-batch-043-thermodynamics-and-entropy-foundations-20-v1-20260907-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-043-thermodynamics-and-entropy-foundations-20-v1-20260907-independent-b",
+        "batchId": "physik-rollout-v1-batch-043-thermodynamics-and-entropy-foundations-20-v1-20260907-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:11abd724fa4694bc3e5829963ec3eccb23b22a6a75314c02d87e7ccd26ccf974"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

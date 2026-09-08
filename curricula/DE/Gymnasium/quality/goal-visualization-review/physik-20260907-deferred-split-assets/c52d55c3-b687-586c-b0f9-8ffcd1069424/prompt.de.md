@@ -1,0 +1,34 @@
+# Lernzielvisualisierung: Urknallmodell anhand kosmologischer Beobachtungen erläutern
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `c52d55c3-b687-586c-b0f9-8ffcd1069424`
+- Titel: Urknallmodell anhand kosmologischer Beobachtungen erläutern
+- Beschreibung: Die lernende Person kann das heiße Urknallmodell qualitativ erläutern und kosmologische Rotverschiebung sowie Hintergrundstrahlung als Beobachtungsbelege dafür einordnen.
+
+## Generator
+
+- Provider: Repository-native SVG (Codex-authored); Playwright rasterization
+- Status: pilot
+- Quellbild: `c52d55c3-b687-586c-b0f9-8ffcd1069424.png`
+- Public Asset: `/assets/goal-visualizations/physik/c52d55c3-b687-586c-b0f9-8ffcd1069424/c52d55c3-b687-586c-b0f9-8ffcd1069424.png`
+
+## Prompt
+
+```text
+Konstruiere eine gut lesbare deutsche Lerninfografik im Format1600×900 auf weißem Hintergrund, mit zwei hellblauen Panels. Titel: "Beobachtungsbelege für das heiße Urknallmodell".
+
+Linkes Panel: "Kosmologische Rotverschiebung". Zwei räumliche Sinuswellen über genau derselben horizontalen Strecke x140 bis700. Oben blau: y=350−32 sin(2π(x−140)/140), vier vollständige Perioden. Unten rötlich: y=540−32 sin(2π(x−140)/280), zwei vollständige Perioden. Beschriftungen "emittiertes Licht" beziehungsweise "beobachtetes Licht". Die obere Wellenlängenklammer reicht von x175 bis315 und trägt "λ emittiert"; die untere von x210 bis490 und trägt "λ beobachtet". Beide markieren exakt zwei benachbarte Wellenberge. Gemeinsame Streckenmarkierung mit Text "Gleiche Vergleichsstrecke". Darunter als eindeutiger Bruch: z = (λ beobachtet − λ emittiert) / (λ emittiert) > 0. Konstruktionskoordinaten und Wellengleichungen nicht als zusätzliche Bildformeln drucken.
+
+Rechtes Panel: "Kosmische Hintergrundstrahlung". Ein kleines hellblaues Beobachtersymbol bei(1190,425). Acht wellenförmige Strahlungspfeile beginnen gleichmäßig verteilt außerhalb und zeigen EINWÄRTS zum Beobachter. Sie laufen von einem radialen Abstand170 auf Abstand60 zu; die Pfeilspitzen sitzen jeweils am inneren Ende. Kein ausstrahlendes Zentrum oder Explosion. Beschriftungen: "Beobachter", "Mikrowellen aus allen Richtungen", "Relikt der heißen, dichten Phase".
+
+Unter beiden Panels die reine Textfolge: "Früher heiß und dicht → Expansion und Abkühlung → heute kühler".
+Darunter: "Beide Beobachtungen stützen das heiße Urknallmodell."
+Footer: "Qualitative Schemata; kein zentraler Explosionsort."
+
+Keine Teilchenchronologie, Atom- oder Molekülzerlegung, keine erfundene Messkarte, kein räumliches Zentrum des gesamten Universums. Die Pfeile rechts stellen ankommende Strahlung dar, nicht eine Kraftrichtung; die Wellen links sind keine Spektralintensitätskurven. Alle Texte und der Bruch vollständig lesbar.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

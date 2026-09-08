@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "status": "PAUSED_CHECKPOINT_VERIFIED_NOT_PHYSICS100",
+  "verifiedAt": "2026-09-07 21:07:37 UTC",
+  "rollout": {
+    "nativeFunction": "generateDeepUnderstandingRollout",
+    "configPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "exitCode": 0,
+    "blockingIssueCount": 0,
+    "subjects": [
+      {
+        "subject": "mathematik",
+        "label": "Mathematik",
+        "denominator": 797,
+        "strictComplete": 424,
+        "percentage": "53.2%",
+        "remaining": 373,
+        "gates": {
+          "currentDescriptionResolutions": 424,
+          "currentPositiveEvidenceProfiles": 424,
+          "currentSemanticAtomicityDecisions": 797,
+          "currentMemoryReviewDecisions": 797,
+          "currentVisualizationQaRecords": 797
+        },
+        "issues": []
+      },
+      {
+        "subject": "physik",
+        "label": "Physik",
+        "denominator": 465,
+        "strictComplete": 410,
+        "percentage": "88.2%",
+        "remaining": 55,
+        "gates": {
+          "currentDescriptionResolutions": 410,
+          "currentPositiveEvidenceProfiles": 413,
+          "currentSemanticAtomicityDecisions": 465,
+          "currentMemoryReviewDecisions": 465,
+          "currentVisualizationQaRecords": 465
+        },
+        "issues": []
+      }
+    ],
+    "inFlight": {
+      "activeBatches": 13,
+      "physicsClaimCount": 47,
+      "strictCompleteClaims": []
+    }
+  },
+  "maturity": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "sha256:99a27f1c10bb8c57d7b192847e2c374dc420bb25ae6c31893fd3eaa3d6197650",
+    "generatedAt": "2026-09-07T21:06:02.165Z",
+    "maturity": "M6",
+    "scopes": [
+      {
+        "id": "canonical-physics-sek1",
+        "maturity": "M4",
+        "notPass": []
+      },
+      {
+        "id": "canonical-physics-sek2",
+        "maturity": "M4",
+        "notPass": []
+      }
+    ]
+  },
+  "floor": {
+    "exitCode": 0,
+    "stdout": "curriculum maturity floors passed: 9 protected curricula",
+    "policyChanged": false
+  },
+  "atomicity": {
+    "exitCode": 0,
+    "current": 465,
+    "missing": 0,
+    "stale": 0,
+    "obsolete": 0
+  },
+  "memory": {
+    "exitCode": 0,
+    "currentGoalDecisions": 465,
+    "primaryCards": 148,
+    "missing": 0,
+    "stale": 0,
+    "obsolete": 0
+  },
+  "historicalArtifacts": {
+    "verified": 95,
+    "result": "PASS",
+    "bindingReceipt": "PAUSED_DEFERRED.receipt.json"
+  },
+  "gitDiffCheck": {
+    "exitCode": 0
+  },
+  "freeze": {
+    "exitCode": 0,
+    "stdout": "CHECK openai_plugin_review_freeze PASS skillpilot-coach-v1 1.0.0 state=IN_REVIEW trees=6 files=22"
+  },
+  "registry": {
+    "sha256": "sha256:08a1fb2a9d4de5895557cdd79a36f924fd6acb122a1877282360e890d5639046",
+    "physicsDescriptionIndexCount": 72,
+    "physicsPositiveEvidenceConfigCount": 57,
+    "nonPhysicsConfigPreserved": true
+  },
+  "countDeltas": {
+    "structuralDeferral": {
+      "currentOrdinaryAtoms": {
+        "before": 470,
+        "after": 465,
+        "reason": "Nine deferred new goals removed and four historical broad goals restored; real native kind inventory, not denominator exclusion."
+      },
+      "descriptionGate": {
+        "beforeFilteredCheckpoint": 399,
+        "afterDeferral": 410
+      },
+      "positiveEvidenceGate": {
+        "beforeFilteredCheckpoint": 402,
+        "afterDeferral": 413
+      }
+    },
+    "finalRelativeToBeforeInitialConsolidation": {
+      "descriptionIndexes": {
+        "before": 73,
+        "after": 72
+      },
+      "positiveConfigs": {
+        "before": 57,
+        "after": 57
+      },
+      "permanentlyPendingWithinThisCheckpoint": {
+        "P": [
+          "badb0ef3-233d-560e-bc2a-9df99f09fe7d"
+        ],
+        "D": [
+          "badb0ef3-233d-560e-bc2a-9df99f09fe7d",
+          "84ddb244-e560-592f-9d43-e84c801fe5b4",
+          "8ac61062-f63e-5935-96ae-84014906c368",
+          "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+        ]
+      }
+    }
+  },
+  "derivedReportsRefreshed": [
+    "docs/qa-ci/status/curriculum-quality-status.json",
+    "docs/qa-ci/status/curriculum-quality-status.md",
+    "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+    "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+    "docs/qa-ci/status/memory-card-review-canonical-physics-full.md"
+  ],
+  "stop": true
+}

@@ -1614,7 +1614,14 @@ for (const mapping of mappings) {
   mappingsBySourceGoalId.set(mapping.legacyGoalId, current)
 }
 
+// Two current source-specific explanations; existing partial mapping edges are preserved.
+const checkpointRationales: Record<string, string> = {
+  "rp-phys-sek2-continuity-bernoulli-stokes-reynolds": "RP-Original Strömungsphysik S.45/75: Die Auswahl der Gesetze richtet sich nach den gewählten Beispielen. Ziel333 bildet deren qualitative Aussage und Voraussetzungen im jeweiligen Beispiel ab, nicht einen verpflichtenden vollständigen Vier-Gesetze-Katalog. Die vorhandene partial-Zuordnung wird nicht zu einer exact-Abdeckung hochgestuft.",
+  "rp-phys-sek2-sinking-velocities-practicum": "Partielle fachliche Zuordnung: Ziel333 unterstützt die qualitative Erklärung des gewählten Sink-/Strömungsmodells. Die Durchführung eines Praktikums zur Messung von Sinkgeschwindigkeiten und dessen eigenständige Messauswertung werden dadurch nicht nachgewiesen. Keine Vollabdeckung oder praktische Lernleistung behauptet.",
+}
+
 const decisions = sourceGoals.map((sourceGoal) => {
+  const checkpointRationale = checkpointRationales[sourceGoal.id]
   const sourceMappings = mappingsBySourceGoalId.get(sourceGoal.id) ?? []
   const canonicalGoalIds = Array.from(new Set(sourceMappings.map((mapping) => mapping.canonicalGoalId)))
   return {
@@ -1623,13 +1630,13 @@ const decisions = sourceGoals.map((sourceGoal) => {
     sourceSpan: sourceGoal.sourceSpan,
     decision: canonicalGoalIds.length > 0 ? 'mapped' : 'needsCanonicalGoal',
     canonicalGoalIds,
-    rationale: canonicalGoalIds.length > 1
+    rationale: checkpointRationale ?? (canonicalGoalIds.length > 1
       ? 'Das RP-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die passende Zuordnungsform.'
       : canonicalGoalIds.length === 1
         ? 'Das RP-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.'
-        : 'Für dieses RP-Source-Ziel fehlt noch ein fachlich passendes kanonisches Physikziel.',
-    reviewedAt: '2026-05-11',
-    reviewer: 'codex',
+        : 'Für dieses RP-Source-Ziel fehlt noch ein fachlich passendes kanonisches Physikziel.'),
+    reviewedAt: checkpointRationale ? "2026-09-07" : '2026-05-11',
+    reviewer: checkpointRationale ? "codex-physics-milestone-local-wording-four-v1" : 'codex',
   }
 })
 const coveredSourceGoalCount = decisions.filter((decision) => decision.decision === 'mapped').length
@@ -1854,6 +1861,20 @@ for (const suffix of ['gk', 'lk', 'sekii-gk', 'sekii-lk']) {
     'Strömungsphysik',
   )
   if (suffix.endsWith('gk')) {
+    // Keep this reviewed prerequisite in Sek II; a mixed-stage root entry has ambiguous stage scope.
+    let prerequisiteContainer = compositionRootNodes(view)
+    if (suffix === 'gk') {
+      let secondaryStage: CompositionNode | undefined
+      walkCompositionNodes(prerequisiteContainer, (node) => {
+        if (node.kind === 'structure' && node.id === 'physics-sekii-gk') secondaryStage = node
+      })
+      if (!secondaryStage) throw new Error('RP GK template is missing its reviewed Sek II structure')
+      secondaryStage.children = Array.isArray(secondaryStage.children) ? secondaryStage.children : []
+      prerequisiteContainer = secondaryStage.children
+    }
+    if (!prerequisiteContainer.some((node) => node.kind === 'goalEntry' && node.goalId === 'fbecbd60-5db3-51e8-94be-d66b066ffa06')) {
+      prerequisiteContainer.push({ kind: 'goalEntry', goalId: 'fbecbd60-5db3-51e8-94be-d66b066ffa06', projectionRole: 'prerequisiteOnly' })
+    }
     appendGoalEntryToStructure(
       view,
       'physics-q4',

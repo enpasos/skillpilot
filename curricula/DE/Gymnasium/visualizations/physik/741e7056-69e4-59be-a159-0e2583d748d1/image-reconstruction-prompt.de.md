@@ -1,0 +1,36 @@
+# Bildrekonstruktionsprompt: Entropie E06: Standardfälle sicher rechnen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `741e7056-69e4-59be-a159-0e2583d748d1`
+- Titel: Entropie E06: Standardfälle sicher rechnen
+- Beschreibung: Die lernende Person kann die Entropieänderung eines Wärmereservoirs mit $\Delta S = Q/T$ und bei einem reversiblen Phasenübergang mit $\Delta S = L/T$ berechnen und deuten; $T$ ist die konstante absolute Temperatur, $Q$ beziehungsweise $L$ die vorzeichenbehaftete aufgenommene Wärmemenge in Joule.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Quellbild: `741e7056-69e4-59be-a159-0e2583d748d1.jpg`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Ein Lernposter im Stil einer Präsentationsfolie mit einem hellen, fast weißen Hintergrund. Oben mittig steht der große, fette, schwarze Text "Entropie: Standardfaelle rechnen" in einer serifenlosen Schriftart. Darunter sind zwei nebeneinanderliegende, abgerundete Rechtecke platziert, die jeweils Informationen zu einem Thema präsentieren.
+
+Das linke Rechteck hat einen dünnen, dunkelblauen Rand und einen dunkelblauen Kopfbereich mit abgerundeten oberen Ecken. Im Kopfbereich steht der weiße, fette Text "Entropieänderung eines Reservoirs". Der Inhalt dieses Rechtecks ist in mehrere Abschnitte unterteilt:
+1. Eine große, zentrierte mathematische Formel in Schwarz: "ΔS_R = Q_R / T_R".
+2. Ein horizontaler, hellorangefarbener Kasten mit abgerundeten Ecken. Links darin befindet sich ein orangefarbenes rundes Symbol mit einem weißen Ausrufezeichen. Rechts daneben steht der schwarze Text "T immer in Kelvin".
+3. Ein horizontaler, hellgrüner Kasten mit abgerundeten Ecken. Darin steht der schwarze Text "Q_R > 0: Wärme ins Reservoir; T_R konstant". Der Text "Wärme ins Reservoir;" und "T_R konstant" sind in zwei Zeilen umbrochen.
+4. Ein horizontaler, hellblauer Kasten mit abgerundeten Ecken. Links darin befindet sich ein grünes rundes Symbol mit einem weißen Häkchen. Rechts daneben steht der schwarze Text "Beispiel:". Darunter, ebenfalls in Schwarz, die mathematische Notation und Berechnung: "Q_R = 500 J T_R = 250 K" auf einer Zeile, gefolgt von einer horizontalen Linie, und darunter "ΔS_R = 2,0 J/K".
+
+Das rechte Rechteck ist dem linken ähnlich, hat aber einen dünnen, hellgrünen Rand und einen hellgrünen Kopfbereich mit abgerundeten oberen Ecken. Im Kopfbereich steht der weiße, fette Text "Phasenuebergang bei konstantem T". Der Inhalt dieses Rechtecks ist ebenfalls in mehrere Abschnitte unterteilt:
+1. Eine große, zentrierte mathematische Formel in Schwarz: "ΔS = L / T".
+2. Ein horizontaler, hellorangefarbener Kasten mit abgerundeten Ecken. Links darin befindet sich ein orangefarbenes rundes Symbol mit einem weißen Ausrufezeichen. Rechts daneben steht der schwarze Text "T immer in Kelvin".
+3. Ein horizontaler, hellgrüner Kasten mit abgerundeten Ecken. Darin steht der schwarze Text "L: gesamte zugeführte Übergangswärme (in J)".
+4. Ein horizontaler, hellblauer Kasten mit abgerundeten Ecken. Links darin befindet sich ein grünes rundes Symbol mit einem weißen Häkchen. Rechts daneben steht der schwarze Text "Beispiel: 1 kg Eis schmelzen". Darunter, ebenfalls in Schwarz, die mathematische Notation und Berechnung: "L = 334 kJ T = 273 K" auf einer Zeile, gefolgt von einer horizontalen Linie, und darunter "ΔS = 1,22 kJ/K".
+
+Alle Texte sind in einer klaren, serifenlosen Schriftart gehalten. Mathematische Symbole wie Delta, S, Q, T, L sind kursiv dargestellt, während Zahlen und Einheiten nicht kursiv sind. Die Kästen innerhalb der Hauptrechtecke sind jeweils linksbündig ausgerichtet und haben einen kleinen Abstand zueinander.
+```

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "backend-final-check-evidence",
+  "status": "passed",
+  "scope": "Full backend verification after applied B040 rollback and B035 structural rollback; no source or test edits and no further test run.",
+  "command": "./gradlew check --console=plain",
+  "workingDirectory": "backend",
+  "startedAtUtc": "2026-09-07T21:03:00Z",
+  "logLastModifiedAtUtc": "2026-09-07T21:19:06.151Z",
+  "verifiedAtUtc": "2026-09-07T21:19:34Z",
+  "headAtStart": "74adc6a743d722420413ebce1c8e7e60074de3c2",
+  "headAtVerification": "74adc6a743d722420413ebce1c8e7e60074de3c2",
+  "environment": {
+    "javaHome": "/tmp/skillpilot-amazon-corretto-25.0.2.10.1",
+    "javaVersion": "25.0.2",
+    "javaRuntime": "Corretto-25.0.2.10.1",
+    "nodePath": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+    "nodeVersion": "v20.20.2"
+  },
+  "build": {
+    "exitCode": 0,
+    "reportedResult": "BUILD SUCCESSFUL",
+    "reportedDuration": "16m 5s",
+    "actionableTasks": 5,
+    "executedTasks": 2,
+    "upToDateTasks": 3
+  },
+  "tests": {
+    "suites": 178,
+    "testsIncludingSkipped": 1566,
+    "passed": 1565,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "firstSuiteTimestampUtc": "2026-09-07T21:03:20.688Z",
+    "lastSuiteTimestampUtc": "2026-09-07T21:19:04.165Z",
+    "reportsOlderThanRunStart": 0,
+    "reportsDirectory": "backend/build/test-results/test",
+    "reportManifestSha256": "sha256:a417bb8df8c1bc6c15dc493c1402ffd9aab251d4cb9de502c5b351acf08c391d",
+    "reportManifestHashMethod": "SHA-256 of UTF-8 JSON.stringify of the filename-sorted array of {path,sha256}; path is repo-relative and each sha256 is the lowercase unprefixed digest of exact XML bytes.",
+    "skippedTest": "com.skillpilot.backend.curriculumpackage.ProvisionedCurriculumPackageConformanceTest.loadsTheRealProvisionedMathematicsReleaseWithoutRepositoryDiscovery()",
+    "skippedReason": "Assumption failed: real package store is supplied only by repository-wide conformance"
+  },
+  "priorRegressionTests": [
+    {
+      "test": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.registerChampionUsesLearnerFacingLegacyEquivalentPhysicsTotalsForHessenView()",
+      "status": "passed",
+      "durationSeconds": 5.567,
+      "suiteTimestampUtc": "2026-09-07T21:03:20.688Z",
+      "suiteTests": 35,
+      "suiteFailures": 0,
+      "suiteErrors": 0,
+      "unchangedExpectedLegacyEquivalentGoalCount": 192,
+      "reportPath": "backend/build/test-results/test/TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+      "reportSha256": "sha256:da7dab5d4879fda8a97e29a9e982e49d25a80beb096cb9aa47192fd07824d46a"
+    },
+    {
+      "test": "com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest.parsesRepositoryBackedCanonicalPhysicsRheinlandPfalzUpperSecondaryMappingFixture()",
+      "status": "passed",
+      "durationSeconds": 0.004,
+      "suiteTimestampUtc": "2026-09-07T21:06:10.792Z",
+      "suiteTests": 87,
+      "suiteFailures": 0,
+      "suiteErrors": 0,
+      "unchangedExpectedMappingCount": 114,
+      "reportPath": "backend/build/test-results/test/TEST-com.skillpilot.backend.landscape.GoalMappingRepositoryFixtureTest.xml",
+      "reportSha256": "sha256:aaa526f5cf7add8139bd6a758d64b6c6a13d384fb640b4fa18d40bcd7748c3c2"
+    }
+  ],
+  "unchangedInputSnapshot": {
+    "canonicalGoalCount": 715,
+    "curricularAtomicCount": 465,
+    "verifiedSameBytesAtEarlyAndPostRunCapture": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "sha256:71619783d2755917238c1c95240941905dc89e62dcaa109400172fb77fb44b3a"
+      },
+      {
+        "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+        "sha256": "sha256:ea64a81e0d264efd20d3e4cea4fa79b853492d8a3ea8a4ccdeb07e95ae950755"
+      },
+      {
+        "path": "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java",
+        "sha256": "sha256:0ce1c6c4909cdea686709dcea683d1a50f9c3bab008f4db9aa84dd8b8f927c30"
+      }
+    ],
+    "qualification": "Snapshot binds current uncommitted workspace data, not only HEAD. No claim that unrelated workspace files remained unchanged. The first input digests were captured after Gradle start and before the test-task output."
+  },
+  "log": {
+    "path": "/tmp/skillpilot-backend-check-20260907-kGvb3n.log",
+    "sha256": "sha256:68c08eee52a0b3e201480e98b5e73b0cfc21411be9da15e26c2ad80a3f9da476"
+  },
+  "limitations": [
+    "One provisioned-mathematics-package test was skipped; no assertion of its execution or conformance is made.",
+    "Native-access, Byte Buddy deprecation and filesystem-watcher warnings occurred without failing the check.",
+    "This is local backend test evidence, not deployment evidence or new subject-matter approval."
+  ]
+}

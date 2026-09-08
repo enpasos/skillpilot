@@ -1,0 +1,2105 @@
+{
+  "artifactType": "read-only-assessment-route-delta",
+  "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "sourceFileSha256": "sha256:73c06ca764032e15674abca6a30e50270f7f1cb97f31cdee30e17634b5fb2180",
+  "kindPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+  "kindFileSha256": "sha256:fcf8f5a418979873ff2fae87fcc377f43c83be29bb11e398c270a0393f43e24c",
+  "assumptions": [
+    "No canonical, source mapping, view, ledger or release write was performed.",
+    "Direct route means reachability through authored requires between semantic orientation/curricularAtomic/memory/practiceAssessment leaves; cluster inheritance and contains expansion are excluded.",
+    "Q4 terminal universe is the nine current Q4 practiceAssessment goals with examData, not global final-exam goals.",
+    "Structural-after treats the two proposed tasks as graph endpoints independent of release; released-after separately excludes them because needs_review blocks hard exam mode.",
+    "Per-view rows use native authored target/prerequisiteOnly role resolution, not an end-to-end runtime/applicability rebuild; retained source applicability and course-tag conflicts are reported separately.",
+    "No Physics scopedFullRouteCoverageProfile is configured in validateGraph.ts; this is an explicit read-only shadow audit, not a claimed native Physics full-route PASS.",
+    "Existing graph paths and declared coveredGoalIds are not proof of substantive assessment coverage."
+  ],
+  "counts": {
+    "q4CurricularAtoms": 77,
+    "q4AssessmentTerminals": 9,
+    "beforeDirectRouteCount": 72,
+    "afterStructuralDirectRouteCount": 52,
+    "afterReleasedEndpointDirectRouteCount": 47,
+    "lostStructuralRouteCount": 20,
+    "gainedStructuralRouteCount": 0,
+    "remainingStructuralRouteDebtCount": 25
+  },
+  "losesStructuralRoute": [
+    {
+      "goalId": "a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+      "title": "Photonen und Elektronen als Quantenobjekte beschreiben"
+    },
+    {
+      "goalId": "defe44d2-c3d3-456b-a786-fad2cef13fe8",
+      "title": "Die Bedeutung von Modellen an Photon und Elektron reflektieren"
+    },
+    {
+      "goalId": "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+      "title": "Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden"
+    },
+    {
+      "goalId": "512f81af-1480-56a8-ae52-af3aa1a6a859",
+      "title": "Michelson-Morley-Nullbefund historisch einordnen"
+    },
+    {
+      "goalId": "0c305cf9-3923-51cf-a9ae-5849edc99c9f",
+      "title": "Längenkontraktion erläutern"
+    },
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "title": "Hertzsprung-Russell-Diagramm (HRD)"
+    },
+    {
+      "goalId": "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+      "title": "Relativistische Geschwindigkeitsaddition anwenden"
+    },
+    {
+      "goalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "title": "Energieumwandlung in der Sonne"
+    },
+    {
+      "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+      "title": "Sterntypen und Entwicklung"
+    },
+    {
+      "goalId": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+      "title": "Elementare Bestandteile der Materie mit Strukturmodellen ordnen"
+    },
+    {
+      "goalId": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+      "title": "Kosmologie vertieft"
+    },
+    {
+      "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "title": "Masse-Energie-Äquivalenz einordnen"
+    },
+    {
+      "goalId": "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+      "title": "Strömungsbeispiele mit passenden Modellen erklären"
+    },
+    {
+      "goalId": "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+      "title": "Astronomische Groessenordnungen und Einheiten"
+    },
+    {
+      "goalId": "ba16948b-5e07-54af-b77b-776e677c6906",
+      "title": "Gravitationswellen und elektromagnetische Wellen vergleichen"
+    },
+    {
+      "goalId": "da3169ae-c72a-5782-ad95-408167a5c6da",
+      "title": "Stabilität astronomischer Objekte beurteilen"
+    },
+    {
+      "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "title": "Exoplaneten-Nachweise erlaeutern"
+    },
+    {
+      "goalId": "e28381b4-50ef-5cac-bfa4-b7c8e03aef82",
+      "title": "Planetenatmosphaeren mit Spektren untersuchen"
+    },
+    {
+      "goalId": "14ec85b9-68f6-5400-ad43-5e8dddfddf44",
+      "title": "Ausgewaehltes Forschungsgebiet beschreiben"
+    },
+    {
+      "goalId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+      "title": "Physikalische Methoden im Forschungsgebiet anwenden"
+    }
+  ],
+  "gainsStructuralRoute": [],
+  "remainingStructuralRouteDebt": [
+    {
+      "goalId": "a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+      "title": "Photonen und Elektronen als Quantenobjekte beschreiben"
+    },
+    {
+      "goalId": "defe44d2-c3d3-456b-a786-fad2cef13fe8",
+      "title": "Die Bedeutung von Modellen an Photon und Elektron reflektieren"
+    },
+    {
+      "goalId": "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+      "title": "Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden"
+    },
+    {
+      "goalId": "512f81af-1480-56a8-ae52-af3aa1a6a859",
+      "title": "Michelson-Morley-Nullbefund historisch einordnen"
+    },
+    {
+      "goalId": "0c305cf9-3923-51cf-a9ae-5849edc99c9f",
+      "title": "Längenkontraktion erläutern"
+    },
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "title": "Hertzsprung-Russell-Diagramm (HRD)"
+    },
+    {
+      "goalId": "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+      "title": "Relativistische Geschwindigkeitsaddition anwenden"
+    },
+    {
+      "goalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "title": "Energieumwandlung in der Sonne"
+    },
+    {
+      "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+      "title": "Sterntypen und Entwicklung"
+    },
+    {
+      "goalId": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+      "title": "Elementare Bestandteile der Materie mit Strukturmodellen ordnen"
+    },
+    {
+      "goalId": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+      "title": "Kosmologie vertieft"
+    },
+    {
+      "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+      "title": "Masse-Energie-Äquivalenz einordnen"
+    },
+    {
+      "goalId": "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+      "title": "Strömungsbeispiele mit passenden Modellen erklären"
+    },
+    {
+      "goalId": "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+      "title": "Astronomische Groessenordnungen und Einheiten"
+    },
+    {
+      "goalId": "ba16948b-5e07-54af-b77b-776e677c6906",
+      "title": "Gravitationswellen und elektromagnetische Wellen vergleichen"
+    },
+    {
+      "goalId": "da3169ae-c72a-5782-ad95-408167a5c6da",
+      "title": "Stabilität astronomischer Objekte beurteilen"
+    },
+    {
+      "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+      "title": "Exoplaneten-Nachweise erlaeutern"
+    },
+    {
+      "goalId": "e28381b4-50ef-5cac-bfa4-b7c8e03aef82",
+      "title": "Planetenatmosphaeren mit Spektren untersuchen"
+    },
+    {
+      "goalId": "14ec85b9-68f6-5400-ad43-5e8dddfddf44",
+      "title": "Ausgewaehltes Forschungsgebiet beschreiben"
+    },
+    {
+      "goalId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+      "title": "Physikalische Methoden im Forschungsgebiet anwenden"
+    },
+    {
+      "goalId": "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+      "title": "Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen"
+    },
+    {
+      "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+      "title": "Gezeiten qualitativ erklären"
+    },
+    {
+      "goalId": "3d466956-04fb-58d7-9008-ad8090f8706d",
+      "title": "Dunkle Materie qualitativ einordnen"
+    },
+    {
+      "goalId": "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+      "title": "Dunkle Energie qualitativ einordnen"
+    },
+    {
+      "goalId": "db0394ca-297c-5892-b414-525ec186f928",
+      "title": "Größe und Alter des Universums qualitativ einordnen"
+    }
+  ],
+  "declaredCoverageDeltas": [
+    {
+      "assessmentGoalId": "335a75b0-f691-5867-8ce3-3c971d541b9f",
+      "beforeDeclaredCount": 14,
+      "proposedDeclaredCount": 2,
+      "removedDeclaredClaims": [
+        {
+          "goalId": "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+          "title": "Sonnensystem und Kepler-Gesetze",
+          "semanticKind": "curricularArea"
+        },
+        {
+          "goalId": "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+          "title": "Kosmologie und Urknall",
+          "semanticKind": "curricularArea"
+        },
+        {
+          "goalId": "5db07785-8cca-50d5-81a9-e0264d344af9",
+          "title": "Struktur und Alter des Universums",
+          "semanticKind": "curricularArea"
+        },
+        {
+          "goalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "title": "Energieumwandlung in der Sonne",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+          "title": "Sterntypen und Entwicklung",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+          "title": "Kosmologie vertieft",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "14d99a65-8d58-5647-88ab-02137b96d55b",
+          "title": "Allgemeine Relativitätstheorie (Qualitativ)",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+          "title": "Astronomische Beobachtungsmethoden",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+          "title": "Astronomische Groessenordnungen und Einheiten",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "ba16948b-5e07-54af-b77b-776e677c6906",
+          "title": "Gravitationswellen und elektromagnetische Wellen vergleichen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "da3169ae-c72a-5782-ad95-408167a5c6da",
+          "title": "Stabilität astronomischer Objekte beurteilen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+          "title": "Exoplaneten-Nachweise erlaeutern",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "e28381b4-50ef-5cac-bfa4-b7c8e03aef82",
+          "title": "Planetenatmosphaeren mit Spektren untersuchen",
+          "semanticKind": "curricularAtomic"
+        }
+      ],
+      "addedExplicitlyTestedAtoms": [
+        {
+          "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "title": "Urknallmodell anhand kosmologischer Beobachtungen erläutern"
+        }
+      ]
+    },
+    {
+      "assessmentGoalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
+      "beforeDeclaredCount": 65,
+      "proposedDeclaredCount": 3,
+      "removedDeclaredClaims": [
+        {
+          "goalId": "a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+          "title": "Photonen und Elektronen als Quantenobjekte beschreiben",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "defe44d2-c3d3-456b-a786-fad2cef13fe8",
+          "title": "Die Bedeutung von Modellen an Photon und Elektron reflektieren",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+          "title": "Wahrscheinlichkeitsaussagen statt klassischem Determinismus erlaeutern",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+          "title": "Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+          "title": "Grenzen des Potentialtopf-Modells",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+          "title": "Wellenfunktion und Wahrscheinlichkeitsdeutung",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "ad021f2e-6b94-5e6e-a264-3d1110094b87",
+          "title": "Unendlicher Potenzialtopf: Energien und Intervallwahrscheinlichkeiten",
+          "semanticKind": "curricularArea"
+        },
+        {
+          "goalId": "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
+          "title": "Orts-Impuls-Unbestimmtheit",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
+          "title": "Das Messproblem in der Quantenphysik",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "8c97c234-a932-5e84-aed5-237b4e2a8336",
+          "title": "Delayed-Choice-Experimente messkontextbezogen deuten",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "aef1e312-6a0c-5323-9202-c22ae84086f2",
+          "title": "Koinzidenznachweis einzelner Photonen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+          "title": "Antimaterie und Paarvernichtung",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "75f7139f-0f07-5cec-bcea-4f139502b528",
+          "title": "Laserprinzip und Anwendungen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "2ec48368-ac5b-55f9-a396-5a5fe4e1e874",
+          "title": "Tunneleffekt und Rastertunnelmikroskop",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+          "title": "Anwendungen ionisierender Strahlung qualitativ beurteilen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+          "title": "Zerfallsgesetze anwenden",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+          "title": "Bindungsenergie und Massendefekt",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "49872cc0-401f-5464-9235-4763df4db5cf",
+          "title": "Kernreaktionen, Spaltung und Fusion",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a684bec1-ba59-59d0-98d2-4ca37236f64c",
+          "title": "Relativitätspostulate formulieren und erläutern",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "512f81af-1480-56a8-ae52-af3aa1a6a859",
+          "title": "Michelson-Morley-Nullbefund historisch einordnen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "19aef2ed-eb46-55b1-9486-ee83f7520bb6",
+          "title": "Zeitdilatation erläutern",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "0c305cf9-3923-51cf-a9ae-5849edc99c9f",
+          "title": "Längenkontraktion erläutern",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+          "title": "GPS und Relativitätstheorie",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "6ebb6182-f221-5f4c-b112-4ac72b104321",
+          "title": "Minkowski-Diagramme nutzen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "70b358bf-da6d-53ba-8393-51d5c2365b04",
+          "title": "Vom Sand zum Smartphone: Die digitale Revolution",
+          "semanticKind": "orientation"
+        },
+        {
+          "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+          "title": "Leiter, Nichtleiter und Halbleiter",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+          "title": "Bändermodell und Dotierung",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+          "title": "p-n-Übergang und Diode",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+          "title": "Transistor und einfache Schaltungen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "title": "Supraleitung qualitativ verstehen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "14d99a65-8d58-5647-88ab-02137b96d55b",
+          "title": "Allgemeine Relativitätstheorie (Qualitativ)",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+          "title": "Sonnensystem und Kepler-Gesetze",
+          "semanticKind": "curricularArea"
+        },
+        {
+          "goalId": "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+          "title": "Kosmologie und Urknall",
+          "semanticKind": "curricularArea"
+        },
+        {
+          "goalId": "5db07785-8cca-50d5-81a9-e0264d344af9",
+          "title": "Struktur und Alter des Universums",
+          "semanticKind": "curricularArea"
+        },
+        {
+          "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+          "title": "Hertzsprung-Russell-Diagramm (HRD)",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+          "title": "Zerfallsreihen analysieren",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "6e7c35e0-7a38-5996-a42e-005038eff0db",
+          "title": "Potenzialtopfmodell für Kerne",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
+          "title": "α-Zerfall durch Tunneleffekt",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+          "title": "Lorentztransformationen anwenden",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "2239cb67-82cb-585f-ab82-e1f2510eb4f7",
+          "title": "Relativistische Geschwindigkeitsaddition anwenden",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "79da5c34-86b2-5c10-9726-9de886ccef7d",
+          "title": "Geschwindigkeitsabhängige „relativistische Masse“ herleiten und einordnen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+          "title": "Quantenphysikalische Bändermodelle",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+          "title": "Transistorverstärker analysieren",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+          "title": "Energieumwandlung in der Sonne",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+          "title": "Sterntypen und Entwicklung",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+          "title": "Strahlendosis und Schutz",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "5492f0e0-cbae-574e-a853-182616205ed3",
+          "title": "Kernreaktionen und Q-Werte",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+          "title": "Strahlungsrisiken mit physikalischen Größen beurteilen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+          "title": "Kernenergieoptionen mit physikalischen Kriterien bewerten",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61",
+          "title": "Elementare Bestandteile der Materie mit Strukturmodellen ordnen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "4e046c1c-bcc7-5e3c-9f71-f80d69027483",
+          "title": "Standardmodell: Teilchenfamilien",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+          "title": "Hadronen aus Quarks deuten",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "8eb6456b-d915-50ed-a076-2b23c2e5420c",
+          "title": "Fundamentale Wechselwirkungen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "2fab2e3a-1558-5e67-aed0-15fc51c737cd",
+          "title": "Teilchenphysik in der Forschung (CERN)",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745",
+          "title": "Kosmologie vertieft",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+          "title": "Entfernungsbestimmung",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+          "title": "Masse-Energie-Äquivalenz einordnen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+          "title": "Strömungsbeispiele mit passenden Modellen erklären",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+          "title": "Zeitentwicklung von Quantenzuständen einordnen",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "a08e33db-d821-457b-86dd-870e7648c5f4",
+          "title": "Einstein-Synchronisation erläutern",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "14ec85b9-68f6-5400-ad43-5e8dddfddf44",
+          "title": "Ausgewaehltes Forschungsgebiet beschreiben",
+          "semanticKind": "curricularAtomic"
+        },
+        {
+          "goalId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
+          "title": "Physikalische Methoden im Forschungsgebiet anwenden",
+          "semanticKind": "curricularAtomic"
+        }
+      ],
+      "addedExplicitlyTestedAtoms": []
+    }
+  ],
+  "applicabilityChecks": [
+    {
+      "assessmentGoalId": "335a75b0-f691-5867-8ce3-3c971d541b9f",
+      "currentAssessmentJurisdictions": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "proposedPrerequisiteJurisdictionIntersectionUsingCurrentCanonicalMetadata": [
+        "DE-BW",
+        "DE-BY",
+        "DE-HE",
+        "DE-RP"
+      ],
+      "currentAssessmentJurisdictionsOutsideIntersection": [
+        "DE-BB",
+        "DE-BE",
+        "DE-HB",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "applicabilityFromRequiresBefore": null,
+      "proposedApplicabilityWrite": false
+    },
+    {
+      "assessmentGoalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
+      "currentAssessmentJurisdictions": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "proposedPrerequisiteJurisdictionIntersectionUsingCurrentCanonicalMetadata": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "currentAssessmentJurisdictionsOutsideIntersection": [],
+      "applicabilityFromRequiresBefore": null,
+      "proposedApplicabilityWrite": false
+    }
+  ],
+  "otherQ4Assessments": [
+    {
+      "goalId": "b585ff81-6332-5d11-ae63-ee6a9928c00d",
+      "title": "Quantenobjekte, Unbestimmtheit und Messproblem",
+      "taskSha256": "sha256:ba37b2180156ec6201cecf2a762fc21049756c407d7a8059b4f82c2aa81bc43c",
+      "solutionSha256": "sha256:aec847389f309f22fadbcb45e122bd7a246d6e5351d90041a62037dceb84968e",
+      "declaredCoverage": [
+        "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+        "d05a146f-7fcd-56ae-b9b9-b54203328579",
+        "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
+        "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
+        "8c97c234-a932-5e84-aed5-237b4e2a8336",
+        "aef1e312-6a0c-5323-9202-c22ae84086f2",
+        "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+        "d5bff282-741f-4cc5-9622-b77584fdcc5a",
+        "727d0946-7019-50ed-8fc6-85db12508733",
+        "b9fcbad4-a855-54b7-8017-4caac1e2ffb7"
+      ],
+      "actualTextInspected": true,
+      "placeholder": false,
+      "packageApproval": "not_granted",
+      "conclusion": "Concrete materials exist, but declared scope is overbroad; consult individual counterreview notes. Do not count all declared IDs as verified coverage."
+    },
+    {
+      "goalId": "a3e22e70-6629-5c74-a8ae-a8c4f55c72a0",
+      "title": "Laser, Tunneleffekt und Quantenanwendungen",
+      "taskSha256": "sha256:fa516171993f6cb9bdc2a342eb13958e169f9a47c745faf2bae9490594659321",
+      "solutionSha256": "sha256:ae77a904300155b36f1f0d0194a304fb44c0bdda9e6fb726f4b665a826f3cf6f",
+      "declaredCoverage": [
+        "75f7139f-0f07-5cec-bcea-4f139502b528",
+        "2ec48368-ac5b-55f9-a396-5a5fe4e1e874"
+      ],
+      "actualTextInspected": true,
+      "placeholder": true,
+      "packageApproval": "not_granted",
+      "conclusion": "No supplied data/materials or worked solution: a graph terminal only, not substantive replacement coverage."
+    },
+    {
+      "goalId": "4daef009-6425-526a-8574-4fa75f28f946",
+      "title": "Radioaktivitaet, Zerfall und Strahlenschutz",
+      "taskSha256": "sha256:81f7c194a236ad730f4345eb791a9c9f13d5c080a4db8ef9e88a0ae4eceea13c",
+      "solutionSha256": "sha256:362abac2c5f934451c283083591eae4391344d3ffc768b9b4d6ccd20afdb3a09",
+      "declaredCoverage": [
+        "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+        "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "3b50255a-6b01-578b-8f5c-4383536a3221",
+        "e6a50c74-c922-508c-aa27-07bac2566955",
+        "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+        "7e719cc2-0866-5267-a252-e7e7ac0d03f1"
+      ],
+      "actualTextInspected": true,
+      "placeholder": false,
+      "packageApproval": "not_granted",
+      "conclusion": "Concrete materials exist, but declared scope is overbroad; consult individual counterreview notes. Do not count all declared IDs as verified coverage."
+    },
+    {
+      "goalId": "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+      "title": "Kernreaktionen und Kernmodelle",
+      "taskSha256": "sha256:ec2566737116dcbf31fc15888eea53eb297a009a348d2475e410bae46cf737ec",
+      "solutionSha256": "sha256:4f2ecbb84d3b6d00505cc8a01052bb68c1a3235d29625ea3acbdb82677fe8bde",
+      "declaredCoverage": [
+        "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+        "49872cc0-401f-5464-9235-4763df4db5cf",
+        "5492f0e0-cbae-574e-a853-182616205ed3",
+        "6e7c35e0-7a38-5996-a42e-005038eff0db",
+        "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee"
+      ],
+      "actualTextInspected": true,
+      "placeholder": true,
+      "packageApproval": "not_granted",
+      "conclusion": "No supplied data/materials or worked solution: a graph terminal only, not substantive replacement coverage."
+    },
+    {
+      "goalId": "15cb40f1-e2d3-5754-9e7b-e8888fe78340",
+      "title": "Standardmodell und Teilchenphysik",
+      "taskSha256": "sha256:afff9c8dde3685ab38e6d50019fb8fd77b55e0f1fc093f291876bbf4e83803dc",
+      "solutionSha256": "sha256:ce398ac0c6d50ab4d1a0f6580d4b4e47b6c23a9b8d3d2a395462cac791ed7397",
+      "declaredCoverage": [
+        "4e046c1c-bcc7-5e3c-9f71-f80d69027483",
+        "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd",
+        "8eb6456b-d915-50ed-a076-2b23c2e5420c",
+        "2fab2e3a-1558-5e67-aed0-15fc51c737cd"
+      ],
+      "actualTextInspected": true,
+      "placeholder": true,
+      "packageApproval": "not_granted",
+      "conclusion": "No supplied data/materials or worked solution: a graph terminal only, not substantive replacement coverage."
+    },
+    {
+      "goalId": "f532c772-7b6e-59aa-ad65-e0eeafc3767f",
+      "title": "Relativitaet und Raumzeit",
+      "taskSha256": "sha256:0dcf33ee57c856f0e7d2ed1dc5278fc7cb6863fde2871d1abacef4d4c1660950",
+      "solutionSha256": "sha256:01bc222f6e964cf7ddb6b6e27333174573779d5694b33d233abed5aa1edc1ca8",
+      "declaredCoverage": [
+        "19aef2ed-eb46-55b1-9486-ee83f7520bb6",
+        "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+        "6ebb6182-f221-5f4c-b112-4ac72b104321",
+        "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+        "79da5c34-86b2-5c10-9726-9de886ccef7d",
+        "14d99a65-8d58-5647-88ab-02137b96d55b",
+        "a08e33db-d821-457b-86dd-870e7648c5f4"
+      ],
+      "actualTextInspected": true,
+      "placeholder": false,
+      "packageApproval": "not_granted",
+      "conclusion": "Concrete materials exist, but declared scope is overbroad; consult individual counterreview notes. Do not count all declared IDs as verified coverage."
+    },
+    {
+      "goalId": "0f5346d6-de1b-5e38-aaba-68db205e594b",
+      "title": "Festkoerperphysik und Halbleiterelektronik",
+      "taskSha256": "sha256:ac68af6d2cb319b6767aff893c7f345d3c0ee2c0c3506657bff28a1aaffdc33f",
+      "solutionSha256": "sha256:af951e79654e3756e7ee802ea3b045df1c929b2dcb2a5328b25a14a2c4decabe",
+      "declaredCoverage": [
+        "70b358bf-da6d-53ba-8393-51d5c2365b04",
+        "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+        "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+        "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+        "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+        "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+        "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+      ],
+      "actualTextInspected": true,
+      "placeholder": true,
+      "packageApproval": "not_granted",
+      "conclusion": "No supplied data/materials or worked solution: a graph terminal only, not substantive replacement coverage."
+    }
+  ],
+  "authoredViewRows": [
+    {
+      "viewId": "de-bb-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-bb-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-bb-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-bb-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-be-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-be-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-be-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-be-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-bw-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 24,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-bw-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 34,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-bw-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 20,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-bw-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 30,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-by-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 53,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-by-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 57,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-by-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 50,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-by-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 54,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-de-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 66,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-de-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 67,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-de-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 73,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-de-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 74,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-hb-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 6,
+      "afterStructuralDirectRouteCount": 6,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-hb-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 6,
+      "afterStructuralDirectRouteCount": 6,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-hb-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 6,
+      "afterStructuralDirectRouteCount": 6,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-hb-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 6,
+      "afterStructuralDirectRouteCount": 6,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-he-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 69,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-he-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 74,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-he-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 69,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-he-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 74,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-hh-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 6,
+      "afterStructuralDirectRouteCount": 6,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-hh-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 6,
+      "afterStructuralDirectRouteCount": 6,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-hh-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 6,
+      "afterStructuralDirectRouteCount": 6,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-hh-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 6,
+      "afterStructuralDirectRouteCount": 6,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-mv-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-mv-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-mv-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-mv-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-ni-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-ni-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-ni-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-ni-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-nw-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-nw-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-nw-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-nw-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-rp-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "jurisdiction": "DE-RP"
+      },
+      "authoredTargetQ4AtomCount": 62,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-rp-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "jurisdiction": "DE-RP"
+      },
+      "authoredTargetQ4AtomCount": 62,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-rp-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK",
+        "jurisdiction": "DE-RP"
+      },
+      "authoredTargetQ4AtomCount": 69,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-rp-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK",
+        "jurisdiction": "DE-RP"
+      },
+      "authoredTargetQ4AtomCount": 69,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sh-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sh-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sh-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sh-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sl-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 67,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sl-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 67,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sl-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sl-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sn-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 66,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 7,
+      "afterStructuralDirectRouteCount": 7,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sn-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 66,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sn-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 7,
+      "afterStructuralDirectRouteCount": 7,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-sn-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [
+        "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+        "15cb40f1-e2d3-5754-9e7b-e8888fe78340"
+      ],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 12,
+      "afterStructuralDirectRouteCount": 12,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-st-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-st-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-st-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-st-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 65,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-th-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 66,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-th-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 66,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-th-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "authoredTargetQ4AtomCount": 66,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    },
+    {
+      "viewId": "de-th-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "authoredTargetQ4AtomCount": 66,
+      "targetTerminalIds": [],
+      "changedAssessmentsAuthoredAsTarget": [],
+      "proposedPrerequisitesMissingFromAuthoredTargetAndSupport": [],
+      "beforeDirectRouteCount": 0,
+      "afterStructuralDirectRouteCount": 0,
+      "lostDirectRouteGoalIds": [],
+      "courseTagConflict": null
+    }
+  ]
+}

@@ -1550,7 +1550,6 @@ const reviewedCanonicalTargetsBySourceGoalId: Record<string, string[]> = {
   ],
   '190fa5fa-325d-59a5-8a12-34ed99a74e82': [
     'badb0ef3-233d-560e-bc2a-9df99f09fe7d',
-    'bacae732-2016-5a83-bc61-d0f94ed5a0e4',
     '904670af-8e4c-543e-bc9b-e6248d87a10d',
   ],
   '89e872f5-2bf9-5278-9d9d-52ff010f6fa3': [
@@ -2389,17 +2388,21 @@ function writeReviewSeed(parsed: { sourceGoals: SourceGoal[] }, sourceLandscapeI
         canonicalTargetsBySourceGoalId.get(sourceGoal.id) ?? [],
       )
       const explicitlyReviewed = explicitlyReviewedSourceGoalIds.has(sourceGoal.id)
+      // Retain the reviewed single-source partial-coverage explanation; target arrays stay unchanged.
+      const checkpointReview = sourceGoal.id === "9ebc77ee-90cf-5540-aed7-02d9b4140f4c"
+        ? {"rationale":"BY LehrplanPLUS Ph12-GA-BIO.4.2: Ziel282 behandelt die Eignung eines vorgegebenen Messverfahrens mit Feldabschätzungen und einer Erklärung der Induktionsspannung. Die übrigen genannten Grundlagenziele tragen elektrische Feldmodelle und quantitative Fluss-/Induktionsbeziehungen bei. partial-Mappings bleiben erhalten: die integrierte Beurteilung ist keine selbst ausgeführte Untersuchung an Personen; ihre qualitative Induktionsaussage allein deckt den quantitativen Quellenteil nicht vollständig ab.","reviewedAt":"2026-09-07","reviewer":"codex-physics-milestone-local-wording-four-v1"}
+        : undefined
       return {
         sourceGoalId: sourceGoal.id,
         topicCode: sourceGoal.topicCode,
         sourceSpan: sourceGoal.sourceSpan,
         decision: 'mapped',
         canonicalGoalIds: targets.map((target) => target.canonicalGoalId),
-        rationale: explicitlyReviewed
+        rationale: checkpointReview?.rationale ?? (explicitlyReviewed
           ? 'Fachliche BY-Physik-M3-Review: Das Source-Ziel ist durch die angegebenen kanonischen SkillPilot-Ziele inhaltlich vollständig abgedeckt; mehrere Ziele beschreiben nur eine 1:n-Zuordnungsform.'
-          : 'Vorgefundene BY-Physik-Legacy-Mappingkante als M3-Startpunkt übernommen; diese Entscheidung zählt nicht als abgeschlossene Gesamt-Review der Source-Extraction.',
-        reviewedAt: '2026-05-10',
-        reviewer: explicitlyReviewed ? 'codex' : 'codex-seed',
+          : 'Vorgefundene BY-Physik-Legacy-Mappingkante als M3-Startpunkt übernommen; diese Entscheidung zählt nicht als abgeschlossene Gesamt-Review der Source-Extraction.'),
+        reviewedAt: checkpointReview?.reviewedAt ?? '2026-05-10',
+        reviewer: checkpointReview?.reviewer ?? (explicitlyReviewed ? 'codex' : 'codex-seed'),
       }
     })
 

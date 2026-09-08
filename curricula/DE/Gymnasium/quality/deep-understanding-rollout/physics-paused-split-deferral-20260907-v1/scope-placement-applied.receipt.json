@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "status": "SCOPE_PLACEMENT_APPLIED",
+  "generatedAt": "2026-09-07T21:01:32.751Z",
+  "purpose": "Keep prerequisiteOnly authority; locate upper-secondary-only exclusions inside upper-secondary structure so they are not imported into national SekI authority.",
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "ids": [
+        "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+        "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+        "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+        "3b50255a-6b01-578b-8f5c-4383536a3221",
+        "64b30d2e-cbe1-55d8-915a-a050d736b96e"
+      ],
+      "beforeSha256": "sha256:5183e1e91904a1f2edc02eaea5585f4119d01d76cdd6c10464a45a0b3c8d2a8a",
+      "afterSha256": "sha256:dccb24937b9d56bb8ce311372287bfdbb4565a57edd3defa3b6732acc3e2af68",
+      "beforeNodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "fromPath": [
+        "rootNodes"
+      ],
+      "toPath": [
+        "rootNodes",
+        {
+          "id": "physics-root"
+        },
+        "children",
+        {
+          "id": "physics-sekii-gk"
+        },
+        "children"
+      ],
+      "projectionRolesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+      "ids": [
+        "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+      ],
+      "beforeSha256": "sha256:35871d0130ae795fa66bf0d77c47b12b97633ac10a70fb0f3c6db8e56fdee7d1",
+      "afterSha256": "sha256:e71f96cfe762128158e0a463f8fab5d3b803c09cd2d09db7177faf64a8fbe837",
+      "beforeNodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "fromPath": [
+        "rootNodes"
+      ],
+      "toPath": [
+        "rootNodes",
+        {
+          "id": "physics-root"
+        },
+        "children",
+        {
+          "id": "physics-sekii-gk"
+        },
+        "children"
+      ],
+      "projectionRolesUnchanged": true
+    }
+  ],
+  "maturityAfter": {
+    "generatedAt": "2026-09-07T21:02:03.699Z",
+    "maturity": "M6",
+    "scopes": [
+      {
+        "id": "canonical-physics-sek1",
+        "maturity": "M4",
+        "notPass": []
+      },
+      {
+        "id": "canonical-physics-sek2",
+        "maturity": "M4",
+        "notPass": []
+      }
+    ]
+  },
+  "maturityFloorOutput": "curriculum maturity floors passed: 9 protected curricula"
+}

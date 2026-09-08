@@ -1,0 +1,43 @@
+# Bildrekonstruktionsprompt: Entropie E14: Brücke Makro ↔ Mikro
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `77604656-7ffe-516c-8af3-7cbe7de2f2a4`
+- Titel: Entropie E14: Brücke Makro ↔ Mikro
+- Beschreibung: Die lernende Person kann für eine feste Teilchenzahl $N$ eines klassischen idealen Gases bei unveränderter Temperatur den Zusammenhang $\Omega_2/\Omega_1 = (V_2/V_1)^N$ im Teilchenmodell begründen und daraus $\Delta S = Nk_B\ln(V_2/V_1) = nR\ln(V_2/V_1)$ als Verbindung von mikroskopischer und makroskopischer Entropiebeschreibung herleiten.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Quellbild: `77604656-7ffe-516c-8af3-7cbe7de2f2a4.jpg`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Ein wissenschaftliches Diagramm auf weißem Hintergrund im Stil einer Präsentationsfolie. Oben mittig steht der Titel in großer, fetter, schwarzer Schrift: "Entropie: Makro und Mikro verbinden". Darunter, ebenfalls mittig, steht der Untertitel in schwarzer Schrift: "Klassisches ideales Gas: N konstant, T₁ = T₂".
+
+Unter dem Untertitel befindet sich ein Hauptdiagramm, das aus zwei nebeneinanderliegenden, hellblauen, oben offenen Rechteckbehältern mit dunkelblauer Umrandung besteht, getrennt durch eine dünne vertikale schwarze Linie.
+
+Der linke Behälter ist schmaler und trägt links davon die schwarze Beschriftung "V₁". Er enthält acht rote Kreise (Partikel), die in zwei Reihen zu je vier Kreisen angeordnet sind. Rechts neben diesem Behälter steht in schwarzer Schrift der Text: "Ortszustände; Impulsanteil unverändert". Unterhalb dieses linken Behälters steht in schwarzer Schrift die Gleichung "Omega proportional Vᴺ". Darunter steht die Gleichung "Omega₂ / Omega₁ = (V₂ / V₁)ᴺ".
+
+Der rechte Behälter ist breiter als der linke und enthält ebenfalls acht rote Kreise (Partikel), die in zwei Reihen zu je vier Kreisen angeordnet sind, jedoch weiter voneinander entfernt als im linken Behälter. Rechts neben diesem Behälter steht in schwarzer Schrift die Ungleichung "V₂ > V₁".
+
+Unterhalb des Hauptdiagramms sind drei mathematische Gleichungen vertikal übereinander angeordnet, jeweils in einem abgerundeten, orangefarbenen Rechteck mit dunkelorangefarbener Umrandung. Die Gleichungen sind von oben nach unten:
+1. "ΔS = k_B ln(Ω₂ / Ω₁)"
+2. "ΔS = N k_B ln(V₂ / V₁)"
+3. "ΔS = n R ln(V₂ / V₁)"
+
+Unter diesen Gleichungen steht zentriert in schwarzer Schrift der Satz: "Mehr Volumen bedeutet mehr mögliche Mikrozustände".
+
+Ganz unten sind vier weitere abgerundete, hellblaue Rechtecke mit dunkelblauer Umrandung horizontal nebeneinander angeordnet, die eine Legende bilden. Von links nach rechts sind die Beschriftungen in schwarzer Schrift:
+1. "V: Volumen"
+2. "N: Teilchenzahl"
+3. "n: Stoffmenge"
+4. "R = N_A k_B"
+
+Der gesamte Text ist in einer klaren, modernen serifenlosen Schriftart gehalten.
+```

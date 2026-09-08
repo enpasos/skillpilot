@@ -1,0 +1,45 @@
+# Bildrekonstruktionsprompt: Reversible und irreversible Vorgänge unterscheiden
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `2088ccf0-48f4-51d4-be5f-67affd0fb099`
+- Titel: Reversible und irreversible Vorgänge unterscheiden
+- Beschreibung: Die lernende Person kann reversible und irreversible thermodynamische Vorgänge an Beispielen unterscheiden und Konsequenzen für die Energieumwandlung beschreiben.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Quellbild: `2088ccf0-48f4-51d4-be5f-67affd0fb099.jpg`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Ein Lehrdiagramm mit dem Titel "Reversibel und irreversibel" in schwarzer, serifenloser Schrift oben mittig auf weißem Hintergrund. Darunter ist der Inhalt in zwei Hauptspalten organisiert.
+
+Die linke Spalte hat einen hellblauen (#99CCFF) abgerundeten Rechteck-Header mit dem zentrierten Text "Reversibel" in Schwarz. Der Hintergrund dieser Spalte ist hellblau (#E0F0FF).
+In dieser linken Spalte befinden sich zwei schematische Darstellungen eines Kolben-Zylinder-Systems.
+Die obere Darstellung ist links mit "Anfang" in Schwarz beschriftet. Sie zeigt einen grauen, rechteckigen Zylinder mit einem beweglichen grauen Kolben auf der rechten Seite. Im Zylinder, links vom Kolben, sind genau zehn hellblaue Kreise (Partikel) verteilt. Inmitten dieser Partikel steht der Text "p₁, V₁" in Schwarz. Eine schwarze Linie zeigt vom Kolben auf die Beschriftung "Kolben" in Schwarz.
+Die untere Darstellung ist links mit "Ende" in Schwarz beschriftet. Sie zeigt denselben grauen Zylinder, mit einem größeren dargestellten Innenraum links vom Kolben; die zehn hellblauen Teilchen sind weniger dicht verteilt. Inmitten dieser Partikel steht der Text "p₂, V₂" in Schwarz.
+Zwischen diesen beiden Darstellungen befindet sich ein doppelseitiger Pfeil mit blauer Umrandung und weißer Füllung, der von der unteren Darstellung schräg nach oben links zur oberen Darstellung zeigt, um die Reversibilität zu kennzeichnen.
+Unter den Diagrammen folgen vier Textzeilen, jede auf einem leicht dunkleren blauen horizontalen Streifen (#C0E0FF):
+1. "Gleichgewichtszustände"
+2. "idealisiert und quasistatisch"
+3. "ohne Entropieerzeugung"
+4. "vollständig umkehrbar"
+
+Die rechte Spalte hat einen hellorangen (#FFCC99) abgerundeten Rechteck-Header mit dem zentrierten Text "Irreversibel" in Schwarz. Der Hintergrund dieser Spalte ist hellorange (#FFF0E0).
+In dieser rechten Spalte befinden sich zwei schematische Darstellungen einer Gasausdehnung ins Vakuum.
+Die obere Darstellung ist links mit "Anfang" in Schwarz beschriftet. Sie zeigt einen hellorangen, rechteckigen Behälter, der durch eine dünne graue Trennwand in zwei gleiche Hälften geteilt ist. Die linke Hälfte enthält genau fünfzehn hellblaue Kreise (Partikel). Die rechte Hälfte ist leer und mit "Vakuum" in Schwarz beschriftet, wobei ein graues 'X'-Symbol über der Trennwand eine Barriere andeutet.
+Die untere Darstellung ist links mit "Ende" in Schwarz und rechts daneben mit "spontan" in Schwarz beschriftet. Sie zeigt denselben hellorangen Behälter, aber die Trennwand hat nun eine Öffnung in der Mitte. Die fünfzehn hellblauen Teilchen befinden sich nun in beiden Hälften: sieben links und acht rechts.
+Zwischen diesen beiden Darstellungen befindet sich ein einseitiger Pfeil mit oranger Umrandung und weißer Füllung, der von der oberen Darstellung schräg nach unten rechts zur unteren Darstellung zeigt, um die Prozessrichtung zu kennzeichnen.
+Unter den Diagrammen folgen zwei Textzeilen, jede auf einem leicht dunkleren orangen horizontalen Streifen (#FFDDAA):
+1. "Entropie wird erzeugt"
+2. "nicht vollständig rückgängig"
+
+Am unteren Rand des gesamten Diagramms befindet sich ein breiter, abgerundeter, violetter (#CC99FF) horizontaler Banner, der sich über die gesamte Breite beider Spalten erstreckt. Darauf steht zentriert der schwarze Text: "Irreversibilität begrenzt nutzbare Energieumwandlung".
+Der Gesamtstil ist ein klares, flaches, lehrreiches Diagramm mit serifenloser Schrift.
+```

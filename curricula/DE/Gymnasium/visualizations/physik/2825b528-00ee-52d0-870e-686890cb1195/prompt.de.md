@@ -1,56 +1,28 @@
-# Lernzielvisualisierung: Signalleitungsgeschwindigkeit in Nervenzellen messen und feldphysikalisch einordnen
+# Lernzielvisualisierung: Nervenleitungs-Messverfahren physikalisch beurteilen
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `2825b528-00ee-52d0-870e-686890cb1195`
-- Titel: Signalleitungsgeschwindigkeit in Nervenzellen messen und feldphysikalisch einordnen
-- Beschreibung: Die lernende Person kann Messverfahren zur Signalleitungsgeschwindigkeit in Nervenzellen beschreiben, elektrische und magnetische Felder abschaetzen und Induktionsspannungen ueber magnetischen Fluss erklaeren.
+- Titel: Nervenleitungs-Messverfahren physikalisch beurteilen
+- Beschreibung: Die lernende Person kann die Eignung eines vorgegebenen Verfahrens zur Messung der Signalleitungsgeschwindigkeit in Nervenzellen begründen, indem sie die verwendeten elektrischen oder magnetischen Felder abschätzt und eine dabei auftretende Induktionsspannung mithilfe der Änderung des magnetischen Flusses erklärt.
 
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `2825b528-00ee-52d0-870e-686890cb1195.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/2825b528-00ee-52d0-870e-686890cb1195/2825b528-00ee-52d0-870e-686890cb1195.jpg`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Use the reference only as the edit target. Keep the three-panel teaching scope, all numerical data, equations and the two correctly delayed signals. Correct two specific physical drawing errors; no decorative additions.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Panel 2 MUST NOT show capacitor plates, battery, wires, membrane, charge symbols or any experiment. Replace the whole central drawing by TWO abstract measurement positions on ONE horizontal line: left position labelled V_A, right position labelled V_B, V_A > V_B. One double-headed horizontal distance arrow between exactly these positions labelled ℓ = 1,0 mm. A separate horizontal field arrow from LEFT to RIGHT labelled E. Text ΔV = V_A − V_B = 10 mV. Below E ≈ ΔV/ℓ = 10 V/m and 'Nur homogene Modellabschätzung, kein allgemeines Gewebefeld'. The distance must be parallel to the field. No vertical field, no perpendicular distance, no purported tissue geometry.
 
-Titel: Signalleitungsgeschwindigkeit in Nervenzellen messen und feldbezogen einordnen
-Beschreibung: Die lernende Person kann Messverfahren zur Signalleitungsgeschwindigkeit in Nervenzellen beschreiben, elektrische und magnetische Felder abschaetzen und Induktionsspannungen ueber magnetischen Fluss erklaeren.
+Panel 3: retain the stationary single-turn measurement loop and consistent green dots for magnetic field perpendicular OUT OF THE PAGE. REMOVE the large horizontal green arrow entirely; there must be NO arrow in the plane of the loop. Add a short dot-symbol legend 'Magnetfeld senkrecht aus der Bildebene'. Keep A = 10 cm² = 0,001 m², ΔB = 2,0 mT in Δt = 1,0 ms, |U_ind| ≈ A |ΔB/Δt| = 2,0 mV. Label inductive measurement interference, not nerve excitation. The magnetic-field change is supplied data; the loop is stationary and only the flux changes.
 
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Leitungsgeschwindigkeit messen`.
-- Show a long axon or nerve fibre as the main object.
-- Mark two recording electrodes at two positions on the fibre. Label the distance between them `s`.
-- Show an oscilloscope display with two similar voltage peaks: first peak labelled `t1`, second peak labelled `t2`, and the horizontal separation labelled `Delta t`.
-- Show the relation `v = s / Delta t` in a small formula bubble.
-- Add one small field-measurement inset: a tiny coil around the fibre labelled `Induktion` and `Delta Phi`. The inset must not imply that the coil drives the nerve signal.
-- Use no propagation arrow unless it clearly points from the first electrode position toward the second electrode position and matches `t1` before `t2`.
-- Visible learner text must be limited to the title and the labels listed above.
-
-Vermeiden:
-
-- Do not swap the time order; the signal must reach the first electrode before the second.
-- Do not draw arrows from the oscilloscope into the nerve.
-- Do not draw a magnetic field as if it were the main transport mechanism of the nerve signal.
-- Do not show a single electrode measurement pretending to give speed.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Keep all three panels complete and legible. Fictional supplied/model data, no human experiment or diagnosis. Do not invent a clinical procedure. Keep the conclusion distinguishing measured signal delay from induced interference.
 ```
 
 ## Review-Notiz

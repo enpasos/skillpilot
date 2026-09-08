@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "status": "root_informed_image_review_no_human_or_DP_claim",
+  "targets": [
+    {
+      "goalId": "2825b528-00ee-52d0-870e-686890cb1195",
+      "source": "tmp/goal-visualizations/2825b528-00ee-52d0-870e-686890cb1195/generated/2825b528-00ee-52d0-870e-686890cb1195.generated.2026-09-07T20-18-43-384Z.jpg",
+      "sha256": "sha256:67381efe80f8cfd2fe759cbd5664f9512c8a50156343066762609645886d530f",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "prompt": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics100-final-six-image-repairs-v1/2825b528-00ee-52d0-870e-686890cb1195.prompt.v2.md",
+      "reconstruction": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics100-final-six-image-repairs-v1/curated-reconstruction/2825b528-00ee-52d0-870e-686890cb1195.de.md",
+      "reason": "Actual full-resolution V2 inspected: horizontal signal delay gives 50m/s; abstract positive potential drop and E direction give 10V/m; normal B-dot legend and single loop give 2mV interference. No capacitor plate inconsistency or in-plane B vector."
+    },
+    {
+      "goalId": "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+      "source": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics100-final-six-image-repairs-v1/761a0879-fc15-5d0c-a2b7-2b439efecd5b.png",
+      "sha256": "sha256:29bd8295e43ecc1039d1591669add99755cc4edd96ed05f954a768fc730927da",
+      "provider": "Codex native SVG with PNG export (documented repeated Nano Banana failure)",
+      "prompt": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics100-final-six-image-repairs-v1/curated-reconstruction/761a0879-fc15-5d0c-a2b7-2b439efecd5b.de.md",
+      "reconstruction": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics100-final-six-image-repairs-v1/curated-reconstruction/761a0879-fc15-5d0c-a2b7-2b439efecd5b.de.md",
+      "reason": "Actual full-resolution SVG export inspected: initial point and origin share x=360; opposite velocity/drag; Euler recurrence, units and every table cell independently recomputed. Two Nano Banana attempts placed the initial body away from x0 despite t=0; no new generation at pause."
+    }
+  ],
+  "rejected": [
+    {
+      "path": "tmp/goal-visualizations/761a0879-fc15-5d0c-a2b7-2b439efecd5b/generated/761a0879-fc15-5d0c-a2b7-2b439efecd5b.generated.2026-09-07T20-01-50-714Z.jpg",
+      "sha256": "sha256:7c8a1e034e71654eedf602cf6e071102fef4594f5cb7084f6e68d082f933803a",
+      "verdict": "rejected",
+      "reason": "Initial body at t=0 is displaced from the labelled x0=0; V2 repeats the contradiction. Numeric table alone is not sufficient."
+    },
+    {
+      "path": "tmp/goal-visualizations/761a0879-fc15-5d0c-a2b7-2b439efecd5b/generated/761a0879-fc15-5d0c-a2b7-2b439efecd5b.generated.2026-09-07T20-19-59-461Z.jpg",
+      "sha256": "sha256:691c87a6b17934ffc15f079d2157f3f4b9241dcb90d2c7b43cb2b39b33db104f",
+      "verdict": "rejected",
+      "reason": "Initial body at t=0 is displaced from the labelled x0=0; V2 repeats the contradiction. Numeric table alone is not sufficient."
+    }
+  ]
+}

@@ -1,0 +1,505 @@
+{
+  "schemaVersion": 1,
+  "status": "PAUSED_DEFERRED_SNAPSHOT_NOT_ACTIVE_CURRICULUM",
+  "capturedAt": "2026-09-07T20:55:32.207Z",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "canonicalBeforeSha256": "sha256:6abb112d5ae4a2759e9079c402e1f9872008b93d6a849522c22f78e1ba7146d4",
+  "goalCount": 9,
+  "goals": [
+    {
+      "id": "d05a146f-7fcd-56ae-b9b9-b54203328579",
+      "shortKey": "canonical_physics_infinite_well_discrete_energy_calculate",
+      "title": "Diskrete Energien im unendlichen Potenzialtopf berechnen",
+      "titleEn": "Calculate Discrete Energies in the Infinite Potential Well",
+      "description": "Die lernende Person kann für ein Elektron im eindimensionalen Potenzialtopf der Breite $L$ mit unendlich hohen Wänden und $V=0$ im Inneren die erlaubten Energien $E_n=n^2h^2/(8m_eL^2)$ für $n=1,2,\\ldots$ berechnen und ihre Abhängigkeit von Topfbreite und Quantenzahl physikalisch deuten.",
+      "descriptionEn": "The learner can calculate the allowed energies $E_n=n^2h^2/(8m_eL^2)$, with $n=1,2,\\ldots$, for an electron in a one-dimensional potential well of width $L$ with infinitely high walls and $V=0$ inside, and physically interpret their dependence on well width and quantum number.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "51bc5513-6879-548f-b19a-9746b667f1a3"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q4",
+        "area": "Quantenphysik",
+        "topicCode": "CANONICAL_PHYSICS_INFINITE_WELL_DISCRETE_ENERGY_CALCULATE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW",
+            "DE-BY",
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic",
+      "competencyRefs": [
+        "PROCESS.PK2_MODELLIEREN",
+        "PROCESS.PK3_MATHEMATISIEREN"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d05a146f-7fcd-56ae-b9b9-b54203328579",
+          "title": "Visualisierung: Diskrete Energien im unendlichen Potenzialtopf berechnen",
+          "url": "/assets/goal-visualizations/physik/d05a146f-7fcd-56ae-b9b9-b54203328579/d05a146f-7fcd-56ae-b9b9-b54203328579.png",
+          "provider": "Repository-native SVG diagram; deterministic PNG rendering",
+          "description": "Visualisierung zum Lernziel: Diskrete Energien im unendlichen Potenzialtopf berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Diskrete Energien im unendlichen Potenzialtopf berechnen\". Die lernende Person kann für ein Elektron im eindimensionalen Potenzialtopf der Breite $L$ mit unendlich hohen Wänden und $V=0$ im Inneren die erlaubten Energien $E_n=n^2h^2/(8m_eL^2)$ für $n=1,2,\\ldots$ berechnen und ihre Abhängigkeit von Topfbreite und Quantenzahl physikalisch deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+      "shortKey": "canonical_physics_infinite_well_normalized_interval_probability",
+      "title": "Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen",
+      "titleEn": "Calculate Interval Probabilities in the Infinite Potential Well",
+      "description": "Die lernende Person kann für eine gegebene, auf $[0,L]$ normierte Wellenfunktion eines Elektrons im eindimensionalen Potenzialtopf mit unendlich hohen Wänden die Nachweiswahrscheinlichkeit in einem Intervall durch $P(x_1\\le x\\le x_2)=\\int_{x_1}^{x_2}|\\psi(x)|^2\\,dx$ mit $0\\le x_1\\le x_2\\le L$ berechnen und als Fläche unter der Wahrscheinlichkeitsdichte deuten.",
+      "descriptionEn": "The learner can calculate the detection probability in an interval for a given electron wave function normalized on $[0,L]$ in a one-dimensional potential well with infinitely high walls, using $P(x_1\\le x\\le x_2)=\\int_{x_1}^{x_2}|\\psi(x)|^2\\,dx$ with $0\\le x_1\\le x_2\\le L$, and interpret it as the area under the probability density.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "51bc5513-6879-548f-b19a-9746b667f1a3"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_MATERIE"
+        ],
+        "phase": "Q4",
+        "area": "Quantenphysik",
+        "topicCode": "CANONICAL_PHYSICS_INFINITE_WELL_NORMALIZED_INTERVAL_PROBABILITY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        }
+      },
+      "type": "atomic",
+      "competencyRefs": [
+        "PROCESS.PK2_MODELLIEREN",
+        "PROCESS.PK3_MATHEMATISIEREN"
+      ],
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+          "title": "Visualisierung: Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen",
+          "url": "/assets/goal-visualizations/physik/f2538793-8b0a-5c3b-b216-5d329a4e87bd/f2538793-8b0a-5c3b-b216-5d329a4e87bd.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen\". Die lernende Person kann für eine gegebene, auf $[0,L]$ normierte Wellenfunktion eines Elektrons im eindimensionalen Potenzialtopf mit unendlich hohen Wänden die Nachweiswahrscheinlichkeit in einem Intervall durch $P(x_1\\le x\\le x_2)=\\int_{x_1}^{x_2}|\\psi(x)|^2\\,dx$ mit $0\\le x_1\\le x_2\\le L$ berechnen und als Fläche unter der Wahrscheinlichkeitsdichte deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+      "shortKey": "canonical_physics_astro_solar_system_structure",
+      "title": "Aufbau des Sonnensystems beschreiben",
+      "titleEn": "Describe the structure of the Solar System",
+      "description": "Die lernende Person kann den Aufbau des Sonnensystems beschreiben und Sonne, Planeten und Kometen anhand ihrer Rolle und ihrer Bahnen einordnen.",
+      "descriptionEn": "The learner can describe the structure of the Solar System and classify the Sun, planets, and comets by their roles and orbits.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BY",
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "title": "Visualisierung: Aufbau des Sonnensystems beschreiben",
+          "url": "/assets/goal-visualizations/physik/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93.png",
+          "provider": "Repository-native SVG (Codex-authored); Playwright rasterization",
+          "description": "Visualisierung zum Lernziel: Aufbau des Sonnensystems beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Aufbau des Sonnensystems beschreiben\". Die lernende Person kann den Aufbau des Sonnensystems beschreiben und Sonne, Planeten und Kometen anhand ihrer Rolle und ihrer Bahnen einordnen.",
+          "lang": "de",
+          "license": "Original repository-native diagram; no third-party assets",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "37013646-f13a-5faf-954c-940f2fd7502f",
+      "shortKey": "canonical_physics_astro_tides_qualitative",
+      "title": "Gezeiten qualitativ erklären",
+      "titleEn": "Explain tides qualitatively",
+      "description": "Die lernende Person kann Gezeiten qualitativ durch die unterschiedliche Gravitationswirkung von Mond und Sonne auf verschiedene Bereiche der Erde erklären.",
+      "descriptionEn": "The learner can explain tides qualitatively through the differing gravitational effects of the Moon and Sun on different regions of Earth.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "37013646-f13a-5faf-954c-940f2fd7502f",
+          "title": "Visualisierung: Gezeiten qualitativ erklären",
+          "url": "/assets/goal-visualizations/physik/37013646-f13a-5faf-954c-940f2fd7502f/37013646-f13a-5faf-954c-940f2fd7502f.png",
+          "provider": "Repository-native SVG (Codex-authored); Playwright rasterization",
+          "description": "Visualisierung zum Lernziel: Gezeiten qualitativ erklären.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Gezeiten qualitativ erklären\". Die lernende Person kann Gezeiten qualitativ durch die unterschiedliche Gravitationswirkung von Mond und Sonne auf verschiedene Bereiche der Erde erklären.",
+          "lang": "de",
+          "license": "Original repository-native diagram; no third-party assets",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+      "shortKey": "canonical_physics_astro_big_bang_redshift_cmb",
+      "title": "Urknallmodell anhand kosmologischer Beobachtungen erläutern",
+      "titleEn": "Explain the Big Bang model using cosmological observations",
+      "description": "Die lernende Person kann das heiße Urknallmodell qualitativ erläutern und kosmologische Rotverschiebung sowie Hintergrundstrahlung als Beobachtungsbelege dafür einordnen.",
+      "descriptionEn": "The learner can explain the hot Big Bang model qualitatively and interpret cosmological redshift and the cosmic microwave background as observational evidence for it.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "2b700858-bc2e-5ddf-a791-b14d44160480"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY",
+          "DE-RP"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "title": "Visualisierung: Urknallmodell anhand kosmologischer Beobachtungen erläutern",
+          "url": "/assets/goal-visualizations/physik/c52d55c3-b687-586c-b0f9-8ffcd1069424/c52d55c3-b687-586c-b0f9-8ffcd1069424.png",
+          "provider": "Repository-native SVG (Codex-authored); Playwright rasterization",
+          "description": "Visualisierung zum Lernziel: Urknallmodell anhand kosmologischer Beobachtungen erläutern.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Urknallmodell anhand kosmologischer Beobachtungen erläutern\". Die lernende Person kann das heiße Urknallmodell qualitativ erläutern und kosmologische Rotverschiebung sowie Hintergrundstrahlung als Beobachtungsbelege dafür einordnen.",
+          "lang": "de",
+          "license": "Original repository-native diagram; no third-party assets",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "3d466956-04fb-58d7-9008-ad8090f8706d",
+      "shortKey": "canonical_physics_astro_dark_matter_qualitative",
+      "title": "Dunkle Materie qualitativ einordnen",
+      "titleEn": "Interpret dark matter qualitatively",
+      "description": "Die lernende Person kann dunkle Materie als Modellbestandteil zur Erklärung von Gravitationswirkungen erläutern, die sich nicht durch die bekannte gewöhnliche Materie allein erklären lassen.",
+      "descriptionEn": "The learner can explain dark matter as a model component accounting for gravitational effects that cannot be explained by the known ordinary matter alone.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3d466956-04fb-58d7-9008-ad8090f8706d",
+          "title": "Visualisierung: Dunkle Materie qualitativ einordnen",
+          "url": "/assets/goal-visualizations/physik/3d466956-04fb-58d7-9008-ad8090f8706d/3d466956-04fb-58d7-9008-ad8090f8706d.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Dunkle Materie qualitativ einordnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Dunkle Materie qualitativ einordnen\". Die lernende Person kann dunkle Materie als Modellbestandteil zur Erklärung von Gravitationswirkungen erläutern, die sich nicht durch die bekannte gewöhnliche Materie allein erklären lassen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+      "shortKey": "canonical_physics_astro_dark_energy_qualitative",
+      "title": "Dunkle Energie qualitativ einordnen",
+      "titleEn": "Interpret dark energy qualitatively",
+      "description": "Die lernende Person kann dunkle Energie als Modellbegriff zur Beschreibung der beobachteten beschleunigten Expansion des Universums einordnen.",
+      "descriptionEn": "The learner can interpret dark energy as a model concept used to describe the observed accelerated expansion of the universe.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+          "title": "Visualisierung: Dunkle Energie qualitativ einordnen",
+          "url": "/assets/goal-visualizations/physik/b4772b06-b10c-52dd-841b-a96ffb7c7e28/b4772b06-b10c-52dd-841b-a96ffb7c7e28.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Dunkle Energie qualitativ einordnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Dunkle Energie qualitativ einordnen\". Die lernende Person kann dunkle Energie als Modellbegriff zur Beschreibung der beobachteten beschleunigten Expansion des Universums einordnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+      "shortKey": "canonical_physics_astro_universe_structural_hierarchy",
+      "title": "Kosmische Strukturen einordnen",
+      "titleEn": "Classify cosmic structures",
+      "description": "Die lernende Person kann größere kosmische Strukturen wie Galaxien beschreiben und Sternsysteme darin einordnen.",
+      "descriptionEn": "The learner can describe larger cosmic structures such as galaxies and locate stellar systems within them.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-BY",
+          "DE-RP",
+          "DE-SL"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "title": "Visualisierung: Kosmische Strukturen einordnen",
+          "url": "/assets/goal-visualizations/physik/1b060e79-dc2d-5e4e-abb5-42eca39f9cc7/1b060e79-dc2d-5e4e-abb5-42eca39f9cc7.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Kosmische Strukturen einordnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Kosmische Strukturen einordnen\". Die lernende Person kann größere kosmische Strukturen wie Galaxien beschreiben und Sternsysteme darin einordnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "db0394ca-297c-5892-b414-525ec186f928",
+      "shortKey": "canonical_physics_astro_universe_size_age_qualitative",
+      "title": "Größe und Alter des Universums qualitativ einordnen",
+      "titleEn": "Interpret the size and age of the universe qualitatively",
+      "description": "Die lernende Person kann qualitative Aussagen zu Größe und Alter des Universums einordnen und dabei räumliche Ausdehnung und vergangene Zeit sowie das beobachtbare und das gesamte Universum unterscheiden.",
+      "descriptionEn": "The learner can interpret qualitative statements about the size and age of the universe, distinguishing spatial extent from elapsed time and the observable universe from the universe as a whole.",
+      "type": "atomic",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+        "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-BW",
+          "DE-RP"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "db0394ca-297c-5892-b414-525ec186f928",
+          "title": "Visualisierung: Größe und Alter des Universums qualitativ einordnen",
+          "url": "/assets/goal-visualizations/physik/db0394ca-297c-5892-b414-525ec186f928/db0394ca-297c-5892-b414-525ec186f928.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Größe und Alter des Universums qualitativ einordnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Größe und Alter des Universums qualitativ einordnen\". Die lernende Person kann qualitative Aussagen zu Größe und Alter des Universums einordnen und dabei räumliche Ausdehnung und vergangene Zeit sowie das beobachtbare und das gesamte Universum unterscheiden.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ]
+}

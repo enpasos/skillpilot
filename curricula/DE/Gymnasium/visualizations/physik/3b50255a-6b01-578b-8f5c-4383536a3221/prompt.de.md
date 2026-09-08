@@ -4,11 +4,11 @@
 
 - SkillPilot-ID: `3b50255a-6b01-578b-8f5c-4383536a3221`
 - Titel: Zerfallsreihen analysieren
-- Beschreibung: Die lernende Person kann Zerfallsreihen qualitativ diskutieren und berechnen.
+- Beschreibung: Die lernende Person kann in einer vorgegebenen Zerfallsreihe die Änderungen von Massenzahl und Kernladungszahl bei den angegebenen Zerfallsarten prüfen und die Konsistenz der aufeinanderfolgenden Nuklide begründen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `3b50255a-6b01-578b-8f5c-4383536a3221.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/3b50255a-6b01-578b-8f5c-4383536a3221/3b50255a-6b01-578b-8f5c-4383536a3221.jpg`
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -28,28 +28,10 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Zerfallsreihen analysieren
-Beschreibung: Die lernende Person kann Zerfallsreihen qualitativ diskutieren und berechnen.
+Beschreibung: Die lernende Person kann in einer vorgegebenen Zerfallsreihe die Änderungen von Massenzahl und Kernladungszahl bei den angegebenen Zerfallsarten prüfen und die Konsistenz der aufeinanderfolgenden Nuklide begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Zerfallsreihen analysieren`.
-- Show one clean decay-chain diagram from left to right: `Mutterkern -> Tochterkern -> Enkelkern -> stabil`.
-- Use two decay steps labelled `alpha` and `beta-`.
-- Under the chain, show a small `N-Z` grid or chart with each step moving consistently: `alpha` moves two left and two down, `beta-` moves one right and one down in neutron-proton representation.
-- Add a small calculation card exactly as: `A: -4 bei alpha`.
-- Add a second small calculation card exactly as: `Z: -2 bei alpha, +1 bei beta-`.
-- Visible learner text must be limited to the title, `Mutterkern`, `Tochterkern`, `Enkelkern`, `stabil`, `alpha`, `beta-`, `N`, `Z`, `A: -4 bei alpha`, and `Z: -2 bei alpha, +1 bei beta-`.
-
-Vermeiden:
-
-- Do not reverse decay-chain arrows.
-- Do not make alpha decay increase `A` or `Z`.
-- Do not make beta-minus decay decrease `Z`.
-- Do not draw many unlabeled arrows; every decay arrow must have a source and target nucleus.
-- Do not mix beta-plus and beta-minus labels.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Create a minimal corrected replacement for the supplied reference in German, 16:9. Keep exactly the correct chain ²³²₉₀Th → ²²⁸₈₈Ra → ²²⁸₈₉Ac, first arrow α, second β⁻. KEEP correct A/Z/N rows 232/90/142; 228/88/140; 228/89/139. Caption: Ausschnitt einer vorgegebenen Zerfallsreihe; Ac ist nicht das stabile Ende. Keep a simple two-row RULE TABLE: alpha A−4,Z−2,N−2; beta-minus A unchanged,Z+1,N−1. Definition N=A−Z. REMOVE ALL individual particle cartoons, flying helium clusters, neutron-proton-electron sketches and emitted-particle drawings. This image ONLY tracks changes of the nuclear identities and does NOT depict complete decay reactions or all emitted particles. State explicitly: Dargestellt sind nur die Nuklidänderungen, nicht alle Zerfallsprodukte. No duplicate decorative checkmarks or boxes. One chain, one rule table, correct typography, no new physical information or icons.
 ```
 
 ## Review-Notiz

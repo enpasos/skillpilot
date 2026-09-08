@@ -1,0 +1,39 @@
+# Bildrekonstruktionsprompt: Numerische Simulation von Bewegungen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `761a0879-fc15-5d0c-a2b7-2b439efecd5b`
+- Titel: Numerische Simulation von Bewegungen
+- Beschreibung: Die lernende Person kann Bewegungen mit Reibung durch Differenzenquotienten modellieren und mithilfe einer Tabellenkalkulation oder ähnlicher Werkzeuge numerisch simulieren.
+
+## Generator
+
+- Provider: Codex native SVG with PNG export (documented repeated Nano Banana failure)
+- Quellbild: `761a0879-fc15-5d0c-a2b7-2b439efecd5b.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+# Rekonstruktion der geprüften nativen Euler-Grafik
+
+Deutsche Lehrgrafik, 1600 × 900, weißlich-blauer Hintergrund. Titel: „Numerische Simulation einer Bewegung mit Reibung“. Die gleichnamige SVG-Quelldatei enthält die exakten Vektoren und Tabellenwerte; das PNG ist ihr unverändert gerenderter Export für das Lernzielbuch.
+
+Links der Anfangszustand t = 0 s: Massenpunkt bei x₀ = 0 m. Punkt und markierter Achsenursprung müssen exakt dieselbe horizontale Koordinate haben (SVG x = 360); gestrichelte senkrechte Projektionslinie dazwischen. Geschwindigkeit v₀ = 10 m/s zeigt rechts, Reibungskraft F = −k v zeigt links. m = 2,0 kg und k = 0,40 kg/s. Vektorarten haben getrennte Farben und keinen gemeinsamen Zahlenmaßstab.
+
+Rechts explizites Euler-Verfahren: Δt = 1,0 s; aₙ = Fₙ/m = −(0,20 s⁻¹) vₙ; xₙ₊₁ = xₙ + vₙ Δt; vₙ₊₁ = vₙ + aₙ Δt. Sichtbarer Hinweis: „Vorige Zeile für beide Updates verwenden.“
+
+Darunter Hinweis auf eine Näherung im gegebenen Reibungsmodell, Vergleich kleinerer Zeitschritte und Plausibilitätsprüfung. Tabelle mit Spalten n, t/s, x/m, v/(m/s), a/(m/s²):
+
+| n | t | x | v | a |
+|---|---|---|---|---|
+| 0 | 0 | 0 | 10 | −2 |
+| 1 | 1 | 10 | 8 | −1,6 |
+| 2 | 2 | 18 | 6,4 | −1,28 |
+| 3 | 3 | 24,4 | 5,12 | −1,024 |
+
+Kein Endpunkt weiter rechts im Anfangszustand, kein zweiter vermeintlicher Ursprung. Die native Fassung ersetzt zwei Nano-Banana-Fassungen mit widersprüchlichem Anfangsort. Informierte AI-Prüfung, keine unabhängige oder menschliche Freigabe.
+```

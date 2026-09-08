@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<title>Fallen mit Luftwiderstand: Wie entsteht Grenzgeschwindigkeit?</title>
+<desc>Drei maßstäbliche Kräftebilder desselben Körpers: überall gleich lange Gewichtskraft, zuerst kein Luftwiderstand, dann halbe Gegenkraft, schließlich gleich große entgegengesetzte Kräfte. Die positive Fallgeschwindigkeit nähert sich einem Grenzwert.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+<path d="M0 0L10 5L0 10Z" fill="#183249"/>
+</marker>
+<linearGradient id="spectrum">
+<stop stop-color="#8374b6"/>
+<stop offset=".3" stop-color="#60b9cd"/>
+<stop offset=".52" stop-color="#a8c970"/>
+<stop offset=".73" stop-color="#e9c758"/>
+<stop offset="1" stop-color="#d96756"/>
+</linearGradient>
+</defs>
+<style>text{font-family:"DejaVu Sans",sans-serif;fill:#183249}line,path{stroke-linecap:round;stroke-linejoin:round}.title{font-weight:700}.muted{fill:#45647a}</style>
+<rect width="1600" height="900" fill="#f3f8fb"/>
+<text x="42" y="66" font-size="36" class="title">Fallen mit Luftwiderstand: Wie entsteht Grenzgeschwindigkeit?</text>
+<text x="43" y="100" font-size="22">Blau: Gewichtskraft F_G · Orange: Luftwiderstand F_L</text>
+<rect x="40" y="118" width="490" height="447" rx="18" fill="#fff" stroke="#bfd2df" stroke-width="2"/>
+<text x="285" y="166" font-size="28" text-anchor="middle" class="title">Beim Loslassen</text>
+<circle cx="285" cy="335" r="30" fill="#98bfd6" stroke="#183249" stroke-width="3"/>
+<path data-force="FG-0" data-origin-x="285" data-origin-y="335" data-length="130" data-direction="down" d="M279 335L291 335L291 443L303 443L285 465L267 443L279 443Z" fill="#17658a" stroke="#183249" stroke-width="2"/>
+<text x="315" y="420" font-size="25" style="fill:#17658a">F_G</text>
+<text x="285" y="516" font-size="25" text-anchor="middle">v = 0; F_L = 0; a = g</text>
+<rect x="555" y="118" width="490" height="447" rx="18" fill="#fff" stroke="#bfd2df" stroke-width="2"/>
+<text x="800" y="166" font-size="28" text-anchor="middle" class="title">Beschleunigter Fall</text>
+<circle cx="800" cy="335" r="30" fill="#98bfd6" stroke="#183249" stroke-width="3"/>
+<path data-force="FG-1" data-origin-x="800" data-origin-y="335" data-length="130" data-direction="down" d="M794 335L806 335L806 443L818 443L800 465L782 443L794 443Z" fill="#17658a" stroke="#183249" stroke-width="2"/>
+<text x="830" y="420" font-size="25" style="fill:#17658a">F_G</text>
+<path data-force="FL-1" data-origin-x="800" data-origin-y="335" data-length="65" data-direction="up" d="M794 335L806 335L806 292L818 292L800 270L782 292L794 292Z" fill="#aa541d" stroke="#183249" stroke-width="2"/>
+<text x="831" y="283" font-size="25" style="fill:#aa541d">F_L</text>
+<text x="800" y="507" font-size="25" text-anchor="middle">0 &lt; F_L &lt; F_G</text>
+<text x="800" y="544" font-size="24" text-anchor="middle">v nimmt zu; 0 &lt; a &lt; g</text>
+<rect x="1070" y="118" width="490" height="447" rx="18" fill="#fff" stroke="#bfd2df" stroke-width="2"/>
+<text x="1315" y="166" font-size="28" text-anchor="middle" class="title">Grenzzustand</text>
+<circle cx="1315" cy="335" r="30" fill="#98bfd6" stroke="#183249" stroke-width="3"/>
+<path data-force="FG-2" data-origin-x="1315" data-origin-y="335" data-length="130" data-direction="down" d="M1309 335L1321 335L1321 443L1333 443L1315 465L1297 443L1309 443Z" fill="#17658a" stroke="#183249" stroke-width="2"/>
+<text x="1345" y="420" font-size="25" style="fill:#17658a">F_G</text>
+<path data-force="FL-2" data-origin-x="1315" data-origin-y="335" data-length="130" data-direction="up" d="M1309 335L1321 335L1321 227L1333 227L1315 205L1297 227L1309 227Z" fill="#aa541d" stroke="#183249" stroke-width="2"/>
+<text x="1346" y="237" font-size="25" style="fill:#aa541d">F_L</text>
+<text x="1315" y="507" font-size="25" text-anchor="middle">F_L = F_G  ⇒  a = 0</text>
+<text x="1315" y="544" font-size="24" text-anchor="middle">v = v_G (konstant)</text>
+<text x="61" y="606" font-size="25" >Gleicher Kraftmaßstab: F_G bleibt gleich, F_L wächst mit der Fallgeschwindigkeit.</text>
+<rect x="40" y="635" width="895" height="215" rx="18" fill="#e8f2f8" stroke="#bfd2df" stroke-width="2"/>
+<text x="66" y="674" font-size="27" class="title">Kräftebilanz erklärt die Bewegung</text>
+<text x="66" y="717" font-size="23" >m · a = F_G − F_L     (positive Richtung: nach unten)</text>
+<text x="66" y="758" font-size="22" >Mit wachsendem Luftwiderstand wird die Beschleunigung kleiner.</text>
+<text x="66" y="797" font-size="22" >Im Grenzzustand: Kräftegleichgewicht, aber kein Stillstand.</text>
+<text x="66" y="832" font-size="20" >Modell: konstante Masse und Gewichtskraft; Auftrieb vernachlässigt.</text>
+<text x="997" y="642" font-size="22" >Fallgeschwindigkeit v (schematisch)</text>
+<line x1="1045" y1="827" x2="1534" y2="827" stroke="#183249" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1045" y1="827" x2="1045" y2="661" stroke="#183249" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1045" y1="678" x2="1515" y2="678" stroke="#183249" stroke-width="2" stroke-dasharray="7 7"/>
+<text x="995" y="687" font-size="22" >v_G</text>
+<text x="1015" y="847" font-size="21" >0</text>
+<text x="1506" y="863" font-size="21" text-anchor="end">Zeit t</text>
+<path d="M1045.000,827.000 L1047.938,822.416 L1050.875,817.973 L1053.813,813.666 L1056.750,809.492 L1059.688,805.446 L1062.625,801.525 L1065.563,797.725 L1068.500,794.041 L1071.438,790.471 L1074.375,787.011 L1077.313,783.657 L1080.250,780.406 L1083.188,777.255 L1086.125,774.202 L1089.063,771.242 L1092.000,768.373 L1094.938,765.593 L1097.875,762.898 L1100.813,760.286 L1103.750,757.754 L1106.688,755.300 L1109.625,752.922 L1112.563,750.617 L1115.500,748.383 L1118.438,746.217 L1121.375,744.118 L1124.313,742.084 L1127.250,740.112 L1130.188,738.201 L1133.125,736.349 L1136.063,734.554 L1139.000,732.814 L1141.938,731.128 L1144.875,729.493 L1147.813,727.909 L1150.750,726.373 L1153.688,724.885 L1156.625,723.442 L1159.563,722.044 L1162.500,720.689 L1165.438,719.376 L1168.375,718.103 L1171.313,716.869 L1174.250,715.673 L1177.188,714.514 L1180.125,713.391 L1183.063,712.302 L1186.000,711.246 L1188.938,710.224 L1191.875,709.232 L1194.813,708.271 L1197.750,707.340 L1200.688,706.437 L1203.625,705.562 L1206.563,704.714 L1209.500,703.892 L1212.438,703.096 L1215.375,702.324 L1218.313,701.575 L1221.250,700.850 L1224.188,700.147 L1227.125,699.465 L1230.063,698.805 L1233.000,698.165 L1235.938,697.545 L1238.875,696.943 L1241.813,696.360 L1244.750,695.796 L1247.688,695.248 L1250.625,694.717 L1253.563,694.203 L1256.500,693.704 L1259.438,693.221 L1262.375,692.753 L1265.313,692.299 L1268.250,691.859 L1271.188,691.433 L1274.125,691.019 L1277.063,690.619 L1280.000,690.231 L1282.938,689.854 L1285.875,689.490 L1288.813,689.136 L1291.750,688.794 L1294.688,688.461 L1297.625,688.140 L1300.563,687.828 L1303.500,687.525 L1306.438,687.232 L1309.375,686.948 L1312.313,686.673 L1315.250,686.406 L1318.188,686.147 L1321.125,685.897 L1324.063,685.654 L1327.000,685.418 L1329.938,685.190 L1332.875,684.969 L1335.813,684.754 L1338.750,684.547 L1341.688,684.345 L1344.625,684.150 L1347.563,683.961 L1350.500,683.777 L1353.438,683.600 L1356.375,683.427 L1359.313,683.260 L1362.250,683.098 L1365.188,682.942 L1368.125,682.790 L1371.063,682.642 L1374.000,682.499 L1376.938,682.361 L1379.875,682.227 L1382.813,682.097 L1385.750,681.971 L1388.688,681.849 L1391.625,681.730 L1394.563,681.615 L1397.500,681.504 L1400.438,681.396 L1403.375,681.292 L1406.313,681.191 L1409.250,681.092 L1412.188,680.997 L1415.125,680.905 L1418.063,680.816 L1421.000,680.729 L1423.938,680.645 L1426.875,680.564 L1429.813,680.485 L1432.750,680.408 L1435.688,680.334 L1438.625,680.262 L1441.563,680.193 L1444.500,680.125 L1447.438,680.060 L1450.375,679.997 L1453.313,679.935 L1456.250,679.876 L1459.188,679.818 L1462.125,679.762 L1465.063,679.708 L1468.000,679.655 L1470.938,679.604 L1473.875,679.555 L1476.813,679.507 L1479.750,679.461 L1482.688,679.416 L1485.625,679.372 L1488.563,679.330 L1491.500,679.289 L1494.438,679.249 L1497.375,679.211 L1500.313,679.174 L1503.250,679.138 L1506.188,679.103 L1509.125,679.069 L1512.063,679.036 L1515.000,679.004" fill="none" stroke="#17658a" stroke-width="4" />
+</svg>

@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Status: accepted
 - Quellbild: `cde9b548-2cf4-59ad-b5d4-a71872afbe56.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/cde9b548-2cf4-59ad-b5d4-a71872afbe56/cde9b548-2cf4-59ad-b5d4-a71872afbe56.jpg`
 
@@ -31,17 +31,24 @@ Titel: Bindungsenergie und Massendefekt
 Beschreibung: Die lernende Person kann Bindungsenergie pro Nukleon und Massendefekt qualitativ erklären und in einfachen Fällen die bei Kernreaktionen freigesetzte Energie berechnen.
 
 Zusatzanweisung:
-Use case: scientific-educational.
-Regenerate the complete image as a precise German infographic titled `Massendefekt und Bindungsenergie`.
+Pflichtinhalt:
+Präzise, übersichtliche deutsche Lehrgrafik „Massendefekt und Bindungsenergie“. Keine überfüllten Nukleonhaufen.
+Links VIER einzeln und vollständig sichtbare Teilchen: genau ZWEI rote Protonen p⁺ und genau ZWEI blaue Neutronen n⁰, frei getrennt. Text „2 freie Protonen + 2 freie Neutronen“. Rechts genau dieselben VIER Teilchen, wiederum zwei rot p⁺ und zwei blau n⁰, nah beieinander in einer gemeinsamen Umrandung, aber kein Teilchen durch ein anderes verdeckt. Text „Helium-4-Kern: 2 Protonen + 2 Neutronen; A=4“. Keine Elektronen. Zwischen beiden ein Richtungspfeil „Kernbildung“; ein gesonderter Energiepfeil verlässt den entstehenden Kern nach außen und trägt „freiwerdende Energie E_B“. Die Energie wird nicht zugeführt, um den gebundenen Kern zu bilden.
+Darunter:
+„m_frei = 2m_p + 2m_n“
+„Δm = m_frei − m_Kern > 0“
+„E_B = Δm·c²“
+„Zum vollständigen Zerlegen in freie Nukleonen muss E_B wieder zugeführt werden.“
+Rechenbeispiel mit ausdrücklich gerundetem Modellwert:
+„Δm ≈ 0,0304 u“
+„1 u·c² ≈ 931,5 MeV“
+„E_B ≈ 28,3 MeV“
+„Bindungsenergie pro Nukleon: E_B/A ≈ 28,3/4 MeV ≈ 7,08 MeV“
+Eine kleine qualitative Erklärung „Stärker gebunden heißt kleinere Ruhemasse bei gleicher Zusammensetzung.“ Keine Behauptung, dass einzelne Protonen ihre intrinsische Masse verlieren.
+Alle Zahlen und Einheiten stimmen; Zeichen u für atomare Masseneinheit nicht μ oderU. Keine Mischung atomarer Helium-Gesamtmasse und Kernmasse. Einfacher heller Lehrstil, große Schrift.
 
-Use a consistent particle key everywhere:
-- Proton: red circle labeled `p⁺` or `+`.
-- Neutron: blue circle labeled `n⁰` or `0`; a neutron must never carry a minus sign.
-- Do not swap these colors or charges between free nucleons and the bound nucleus.
-
-Show `freie Nukleonen` and `gebundener Kern` with the correct comparison `m_frei > m_Kern`. Write exactly `Δm = m_frei − m_Kern > 0` and `E_B = Δm · c²`. If a balance is shown, the heavier free-nucleon side must be lower. A small binding-energy curve may show `E_B/A` against `Massenzahl A` with a broad maximum near Eisen/Nickel, without invented numeric values.
-
-Use correct German spelling and sparse text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
+Vermeiden:
+Keine unterschiedlichen Protonen-/Neutronenzahlen links/rechts. Keine unsichtbaren/teilverdeckten Zusatzkugeln. Kein Energiepfeil als Zufuhr beim Binden. Kein negatives Δm bei dieser Definition. Keine künstliche Bindungsenergiekurve mit falschen Fe/Ni-Positionen.
 ```
 
 ## Review-Notiz

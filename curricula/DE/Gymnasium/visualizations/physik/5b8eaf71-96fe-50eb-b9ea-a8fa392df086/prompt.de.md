@@ -8,42 +8,29 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `5b8eaf71-96fe-50eb-b9ea-a8fa392df086.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/5b8eaf71-96fe-50eb-b9ea-a8fa392df086.jpg`
+- Provider: SkillPilot / reviewed repo-native SVG
+- Status: accepted
+- Quellbild: `5b8eaf71-96fe-50eb-b9ea-a8fa392df086.png`
+- Public Asset: `/assets/goal-visualizations/physik/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/5b8eaf71-96fe-50eb-b9ea-a8fa392df086.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erstelle eine eigenständige, vollständig lesbare deutschsprachige Physik-Lernübersicht im Querformat 1600 × 900 Pixel. Sehr heller blaugrauer Hintergrund, weiße abgerundete Inhaltsfelder mit dünnen blaugrauen Rändern. Dunkelblaue serifenlose Schrift, bevorzugt DejaVu Sans; Titel etwa 36 Pixel, Paneltitel 26–30 Pixel, Erklärungstexte überwiegend 20–23 Pixel. Funktionskurven blau, ausgewählte Gegenkräfte beziehungsweise Ausgangssignale orange. Keine Fotografien, dekorativen Formeln, Logos, technischen IDs oder internen Layoutmaße im Bild. Alle Wörter, Indizes und mathematischen Zeichen vollständig und ohne Überlagerung rendern. Die folgenden Angaben beschreiben eine bereits tatsächlich betrachtete kontrollierte Diagrammfassung; ihre Beziehungen dürfen nicht durch bloß plausible Freihandgeometrie ersetzt werden.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Titel: „Exoplaneten: zwei indirekte Nachweise“. Zwei große nebeneinanderstehende Panels.
 
-Titel: Exoplaneten-Nachweise erlaeutern
-Beschreibung: Die lernende Person kann grundlegende Methoden zum Nachweis von Exoplaneten, insbesondere Transit- und Radialgeschwindigkeitsmethode, qualitativ erklaeren.
+LINKS: Überschrift „Transitmethode“, darunter „Seitenansicht: Planet zwischen Stern und Teleskop“. Zeige horizontal von links nach rechts ein kleines Teleskop mit zur rechten Seite gerichtetem Objektiv, einen dunklen Planeten und einen deutlich größeren gelben Stern. Die drei Zentren liegen auf derselben Sichtlinie. Ein mittlerer nach links gerichteter Lichtpfeil vom Stern endet vor dem Planeten: dieser Lichtanteil wird verdeckt. Zwei weitere nach links gerichtete Strahlen vom oberen und unteren Sternrand passieren den Planeten außerhalb seiner Scheibe und erreichen die beiden Ränder der Teleskopöffnung. Kein Strahl durchdringt den Planeten. Beschrifte „Teleskop“, „Planet“, „Stern“.
+Darunter: „Der Planet verdeckt einen Teil des Sternlichts.“
+Zeige anschließend ein schematisches Helligkeit-Zeit-Diagramm: waagerechte Zeitachse mit Pfeil nach rechts, senkrechte Helligkeitsachse mit Pfeil nach oben; keine numerischen Skalen. Die blaue Kurve liegt zunächst auf einer konstanten hohen Grundlinie, fällt für einen kurzen Transit in eine deutlich niedrigere flache Senke und steigt wieder auf exakt dieselbe Grundlinie. Kein Helligkeitsanstieg über die Grundlinie.
+Texte darunter: „Kurzzeitige Abschwächung bei passender Sichtlinie.“ und „Schematisch; nicht jeder Planet erzeugt für uns einen Transit.“
 
-Zusatzanweisung:
-Use case: scientific-educational.
-Regenerate the complete image as a clean German cartoon infographic titled `Exoplaneten nachweisen` with two clearly separated panels.
-
-Panel `Transitmethode`:
-- Show a planet crossing in front of its star as seen by an observer.
-- Below it, show a brightness curve with one shallow, symmetric dip labeled `Helligkeit` and `Zeit`.
-
-Panel `Radialgeschwindigkeitsmethode`:
-- Show a star and a smaller planet both orbiting their shared point labeled `gemeinsamer Schwerpunkt`.
-- The star must execute a visibly small wobble around that point; do not draw only the planet orbiting a fixed star.
-- Add two small spectral-line examples labeled `Blauverschiebung` and `Rotverschiebung`, connected to the star moving toward and away from the observer.
-
-Use correct German spelling and sparse, legible text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
+RECHTS: Überschrift „Radialgeschwindigkeitsmethode“, darunter „Kreisbahn-Modell · Ansicht von oben · nicht maßstäblich“. Zeichne zwei getrennte konzentrische Kreisbahnen um einen mit Kreuz markierten Schwerpunkt. Die kleine Bahn trägt links einen gelben Stern, die große Bahn rechts einen kleineren dunklen Planeten. Sternzentrum, Schwerpunkt und Planetenzentrum liegen auf einer gemeinsamen waagerechten gestrichelten Geraden. Der Schwerpunkt liegt zwischen den Körpern und deutlich näher am Stern. Für kontrollierte Layoutgeometrie sind die Kreisradien 45 und 133 Pixel geeignet; diese Zahlen sind keine Beschriftung und keine behaupteten astronomischen Messwerte. Beschrifte „Stern“, „Planet“ und über eine eindeutige Verbindungslinie „Schwerpunkt“.
+Setze auf jede Bahn genau einen Umlaufpfeil. Beide Pfeile laufen gegen den Uhrzeigersinn; ihre oberen Kreisbögen führen von rechts nach links. Keinen zweiten, gegenläufigen Pfeil ergänzen.
+Unter dem Modell: „Beide Körper umlaufen den Schwerpunkt im gleichen Drehsinn.“ und „Sternbewegung entlang der Sichtlinie verschiebt Spektrallinien.“
+Darunter drei gleich breite, exakt horizontal ausgerichtete Spektralbänder mit Regenbogen von Violett links bis Rot rechts. Beschriftungen von oben nach unten „Annäherung“, „Ruhe“, „Entfernung“. Jedes Band hat eine dunkle Absorptionslinie. Eine gemeinsame senkrechte gestrichelte Bezugslinie markiert die Ruhewellenlänge λ₀: Die Linie für Annäherung liegt links davon, die Ruhelinie darauf, die Linie für Entfernung rechts davon. Rechts daneben stehen „λ < λ₀“, „λ = λ₀“, „λ > λ₀“. Eine gemeinsame λ-Achse unter den Bändern wächst nach rechts und markiert λ₀ unter der Bezugslinie.
+Abschlusssatz: „Periodischer Wechsel: Der Stern bewegt sich auf uns zu und weg.“
+Kein Doppler-Vorzeichen vertauschen; die Orbitansicht und die Spektren bleiben getrennte schematische Erklärungen, keine behauptete maßstäbliche Beobachterprojektion.
 ```
 
 ## Review-Notiz

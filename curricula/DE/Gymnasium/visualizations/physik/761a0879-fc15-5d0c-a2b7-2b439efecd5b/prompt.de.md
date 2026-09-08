@@ -8,53 +8,32 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Codex native SVG with PNG export (documented repeated Nano Banana failure)
 - Status: pilot
-- Quellbild: `761a0879-fc15-5d0c-a2b7-2b439efecd5b.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/761a0879-fc15-5d0c-a2b7-2b439efecd5b/761a0879-fc15-5d0c-a2b7-2b439efecd5b.jpg`
+- Quellbild: `761a0879-fc15-5d0c-a2b7-2b439efecd5b.png`
+- Public Asset: `/assets/goal-visualizations/physik/761a0879-fc15-5d0c-a2b7-2b439efecd5b/761a0879-fc15-5d0c-a2b7-2b439efecd5b.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+# Rekonstruktion der geprüften nativen Euler-Grafik
 
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Deutsche Lehrgrafik, 1600 × 900, weißlich-blauer Hintergrund. Titel: „Numerische Simulation einer Bewegung mit Reibung“. Die gleichnamige SVG-Quelldatei enthält die exakten Vektoren und Tabellenwerte; das PNG ist ihr unverändert gerenderter Export für das Lernzielbuch.
 
-Titel: Numerische Simulation von Bewegungen
-Beschreibung: Die lernende Person kann Bewegungen mit Reibung durch Differenzenquotienten modellieren und mithilfe einer Tabellenkalkulation oder ähnlicher Werkzeuge numerisch simulieren.
+Links der Anfangszustand t = 0 s: Massenpunkt bei x₀ = 0 m. Punkt und markierter Achsenursprung müssen exakt dieselbe horizontale Koordinate haben (SVG x = 360); gestrichelte senkrechte Projektionslinie dazwischen. Geschwindigkeit v₀ = 10 m/s zeigt rechts, Reibungskraft F = −k v zeigt links. m = 2,0 kg und k = 0,40 kg/s. Vektorarten haben getrennte Farben und keinen gemeinsamen Zahlenmaßstab.
 
-Zusatzanweisung:
-Pflichtinhalt:
+Rechts explizites Euler-Verfahren: Δt = 1,0 s; aₙ = Fₙ/m = −(0,20 s⁻¹) vₙ; xₙ₊₁ = xₙ + vₙ Δt; vₙ₊₁ = vₙ + aₙ Δt. Sichtbarer Hinweis: „Vorige Zeile für beide Updates verwenden.“
 
-- Do not include technical identifiers, filenames, watermarks, platform names, or product names.
-- Show a numerical simulation of straight-line motion with velocity-dependent friction.
-- Required physical model:
-  - `m = 2 kg`
-  - `Delta t = 1 s`
-  - `F_R = -k*v`
-  - `k = 0,4 kg/s`
-  - `a_n = F_R/m = -0,2*v_n`
-  - `v_{n+1} = v_n + a_n*Delta t`
-  - `x_{n+1} = x_n + v_n*Delta t`
-- Required table:
-  - row `n=0`: `x=0`, `v=10`, `a=-2,0`
-  - row `n=1`: `x=10`, `v=8`, `a=-1,6`
-  - row `n=2`: `x=18`, `v=6,4`, `a=-1,28`
-  - row `n=3`: `x=24,4`, `v=5,12`
-- Draw one block moving to the right. The velocity arrow `v` starts at the block and points right. The friction arrow `F_R` starts at the block and points left. Do not draw any other force arrows.
-- The small velocity-time plot must decrease monotonically and stay positive.
-- Add note: `Reibung bremst: v wird kleiner`.
+Darunter Hinweis auf eine Näherung im gegebenen Reibungsmodell, Vergleich kleinerer Zeitschritte und Plausibilitätsprüfung. Tabelle mit Spalten n, t/s, x/m, v/(m/s), a/(m/s²):
 
-Vermeiden:
+| n | t | x | v | a |
+|---|---|---|---|---|
+| 0 | 0 | 0 | 10 | −2 |
+| 1 | 1 | 10 | 8 | −1,6 |
+| 2 | 2 | 18 | 6,4 | −1,28 |
+| 3 | 3 | 24,4 | 5,12 | −1,024 |
 
-- Do not show friction in the same direction as motion.
+Kein Endpunkt weiter rechts im Anfangszustand, kein zweiter vermeintlicher Ursprung. Die native Fassung ersetzt zwei Nano-Banana-Fassungen mit widersprüchlichem Anfangsort. Informierte AI-Prüfung, keine unabhängige oder menschliche Freigabe.
 ```
 
 ## Review-Notiz

@@ -8,68 +8,39 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.jpg`
+- Provider: SkillPilot / reviewed repo-native SVG
+- Status: accepted
+- Quellbild: `89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.png`
+- Public Asset: `/assets/goal-visualizations/physik/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erstelle eine eigenständige, vollständig lesbare deutschsprachige Physik-Lernübersicht im Querformat 1600 × 900 Pixel. Sehr heller blaugrauer Hintergrund, weiße abgerundete Inhaltsfelder mit dünnen blaugrauen Rändern. Dunkelblaue serifenlose Schrift, bevorzugt DejaVu Sans; Titel etwa 36 Pixel, Paneltitel 26–30 Pixel, Erklärungstexte überwiegend 20–23 Pixel. Funktionskurven blau, ausgewählte Gegenkräfte beziehungsweise Ausgangssignale orange. Keine Fotografien, dekorativen Formeln, Logos, technischen IDs oder internen Layoutmaße im Bild. Alle Wörter, Indizes und mathematischen Zeichen vollständig und ohne Überlagerung rendern. Die folgenden Angaben beschreiben eine bereits tatsächlich betrachtete kontrollierte Diagrammfassung; ihre Beziehungen dürfen nicht durch bloß plausible Freihandgeometrie ersetzt werden.
 
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Titel: „Waagerechter Wurf: zwei Teilbewegungen, eine Zeit“. Direkt darunter ein breites hellblaues Modellband mit zwei vollständigen Zeilen:
+„Modell: Start (0, 0); vₓ = 2 m/s konstant; vᵧ(0) = 0; g = 10 m/s² (vereinfacht).“
+„Luftwiderstand vernachlässigt. Die positive y-Richtung zeigt nach unten.“
 
-Titel: Waagerechter Wurf analysieren
-Beschreibung: Die lernende Person kann den waagerechten Wurf experimentell untersuchen, als Überlagerung von horizontaler und vertikaler Bewegung deuten und die Flugbahn im x-y-Diagramm darstellen.
+LINKS ein großes quantitatives x-y-Diagramm. Ursprung im oberen linken Diagrammbereich, x nach rechts, positive y-Richtung ausdrücklich nach unten. x-Achse gleichmäßig von 0 bis mindestens 6 m, y-Achse gleichmäßig von 0 bis 50 m mit 5-m-Schritten; Achsenbeschriftungen „x / m“ und „y / m“ dürfen nicht mit Hilfslinien oder Zahlen kollidieren. Unterschiedliche physikalische Einheiten pro Pixel auf den beiden Achsen sind erlaubt; jede einzelne Achse muss linear und gleichmäßig skaliert sein.
+Zeichne die blaue Flugbahn exakt als y = 1,25 x² im angegebenen Modell, mit waagerechter Tangente am Start und zunehmend steilerem Verlauf nach rechts unten. Sie beginnt exakt bei (0, 0) und reicht etwas über (6, 45) bis zur unteren Diagrammgrenze.
+Markiere vier Punkte mit zugehörigen Zeitangaben: t = 0 s bei (0, 0), t = 1 s bei (2, 5), t = 2 s bei (4, 20), t = 3 s bei (6, 45). Gestrichelte waagerechte und senkrechte Hilfslinien müssen für jeden Punkt exakt die richtigen Achsenwerte treffen. Kontrollierbare Layoutabbildung bei einer 1600-Pixel-Grafik: Pixel-x = 140 + 85·x, Pixel-y = 233 + 9·y; diese internen Pixelregeln nicht ins Bild schreiben.
+Unter dem Diagramm die beiden Sätze „x wächst gleichmäßig; y wächst quadratisch.“ und „Alle Punkte gehören zum selben Zeitparameter.“
 
-Zusatzanweisung:
-Pflichtinhalt:
+RECHTS oben ein eigenes Tabellenfeld mit Titel „Berechnete Modellwerte“. Spalten „t / s“, „x / m“, „y / m“. Exakt vier Datenzeilen:
+0 | 0 | 0
+1 | 2 | 5
+2 | 4 | 20
+3 | 6 | 45
+Keine erfundenen Messwerte oder vom Diagramm abweichende Startzeile. Die Daten sind berechnet und werden nicht als Experiment ausgegeben.
 
-Show horizontal projectile motion as superposition of constant horizontal motion and vertical free fall.
-
-Title: `Waagerechter Wurf`
-
-Main diagram:
-- coordinate grid with horizontal axis `x/m` and vertical axis `y/m`
-- origin at launch point, y positive downward for this diagram
-- draw one smooth parabolic trajectory from the launch point toward the lower right
-- mark equal-time points `t=0 s`, `t=1 s`, `t=2 s`, `t=3 s`
-- points must sit exactly on these grid intersections:
-  - `(0,0)`
-  - `(2,5)`
-  - `(4,20)`
-  - `(6,45)`
-- the horizontal spacing between consecutive marked points must be exactly `2 m`
-- no arrowheads on the trajectory
-
-Component table:
-- `x = v_x * t`
-- `v_x = 2 m/s konstant`
-- `y = 1/2 * g * t^2`
-- `g = 10 m/s^2`
-
-Arrows:
-- draw no physical arrows except the two coordinate-axis arrowheads
-- do not draw a curved connector arrow from the text box to the graph
-
-Vermeiden:
-
-Do not draw a straight-line trajectory.
-Do not make horizontal spacing unequal for equal time steps.
-Do not put `t=2 s` at `x=5 m` or `t=3 s` at `x=7 m`.
-Do not make vertical spacing linear; it must grow like `t^2`.
-Do not draw a horizontal force arrow.
-Do not draw a diagonal force arrow along the trajectory.
-Do not use upward-positive y labels while plotting downward-positive y values.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Rechts darunter ein Erklärfeld „Überlagerung und Flugbahn“ mit den drei korrekt gesetzten Formeln
+x = vₓ · t
+y = ½ g · t²
+y = [g / (2 vₓ²)] · x²
+Die letzte Formel folgt aus t = x/vₓ; das Quadrat gehört sowohl zu vₓ im Nenner als auch zu x rechts außerhalb der Klammer. Die Modellwerte ergeben y in Metern für x in Metern.
+Darunter gut lesbar: „Gleiche Zeiten: gleiche x-Zuwächse,“ / „aber wachsende y-Zuwächse.“ / „Die Flugbahn ist eine Parabel.“
+Keinen zusätzlichen vertikalen Anfangsgeschwindigkeitsanteil, keine nach oben positive y-Achse und keinen Luftwiderstand ergänzen. Alle vier Graphpunkte, Tabellenzeilen, Zeitlabels und Formeln müssen dasselbe Modell beschreiben.
 ```
 
 ## Review-Notiz

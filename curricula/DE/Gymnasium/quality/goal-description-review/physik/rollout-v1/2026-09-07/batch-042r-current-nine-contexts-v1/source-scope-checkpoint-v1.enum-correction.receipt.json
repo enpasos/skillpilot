@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "status": "metadata_schema_correction_no_new_subject_approval",
+  "reviewedAt": "2026-09-07",
+  "originalReceiptPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042r-current-nine-contexts-v1/source-scope-checkpoint-v1.receipt.json",
+  "originalReceiptSha256": "sha256:4a67d26154f70fc7f212aa14759250c46018cc6a7a1f410451a1ffb2b3c2f781",
+  "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+  "beforeSha256": "sha256:83fd65d1db97528221a9a6b38e17d605e2187e9d7aaae3056e53c3742376d121",
+  "afterSha256": "sha256:1616dba7fa905edafefe464ba4a9a736d30370d949b18521eeaa73ff9b09c969",
+  "changes": [
+    {
+      "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "field": "decisionBasis",
+      "before": "reviewed-current-2026-09-07-b042-source-scope-clarifications-v1; exact goal reasoning in source-scope-checkpoint-v1.receipt.json",
+      "after": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+      "field": "decisionBasis",
+      "before": "reviewed-current-2026-09-07-b042-source-scope-clarifications-v1; exact goal reasoning in source-scope-checkpoint-v1.receipt.json",
+      "after": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "6e7c35e0-7a38-5996-a42e-005038eff0db",
+      "field": "decisionBasis",
+      "before": "reviewed-current-2026-09-07-b042-source-scope-clarifications-v1; exact goal reasoning in source-scope-checkpoint-v1.receipt.json",
+      "after": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "field": "decisionBasis",
+      "before": "reviewed-current-2026-09-07-b042-source-scope-clarifications-v1; exact goal reasoning in source-scope-checkpoint-v1.receipt.json",
+      "after": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+      "field": "decisionBasis",
+      "before": "reviewed-current-2026-09-07-b042-source-scope-clarifications-v1; exact goal reasoning in source-scope-checkpoint-v1.receipt.json",
+      "after": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "f67550ac-df22-5a3e-8172-f04642efca64",
+      "field": "decisionBasis",
+      "before": "reviewed-current-2026-09-07-b042-source-scope-clarifications-v1; exact goal reasoning in source-scope-checkpoint-v1.receipt.json",
+      "after": "reviewed-current-pilot-curricular-atomic"
+    }
+  ],
+  "error": "The checkpoint author incorrectly used free text in the closed decisionBasis enum. Standalone atomicity/memory checks did not catch this; parent native book preparation did. Restore the pre-existing valid curricularAtomic enum; individual reasoning remains in the unchanged original receipt.",
+  "unchanged": "Canonical, mapping/view, semantic decisions, source fingerprints, D/P records, images and schema are unchanged by this correction.",
+  "validation": {
+    "nativeLoader": "loadGoalBookBuildInputs('app/scripts/config/goal-books/de-gym-physics-national-atlas.json')",
+    "nativeLoaderExitCode": 0,
+    "nativeLoaderPages": 465,
+    "nativeLoaderModelDigest": "sha256:dd7fe30fd990a9d87d1be1d04effd8c7ea214115ba71feb938b5c8e39f5cbcc0",
+    "exactCheckpointHelperCheckExitCode": 0,
+    "exactCheckpointFiles": 10,
+    "compiledViews": 64,
+    "scope": "The native loader, including its closed semantic-kind schema validation, passed on this corrected source checkpoint. No PDF rendering or D/P completion is claimed."
+  }
+}

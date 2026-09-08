@@ -8,30 +8,33 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `12260012-cf04-5409-b57d-f5b3a46d9126.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/12260012-cf04-5409-b57d-f5b3a46d9126/12260012-cf04-5409-b57d-f5b3a46d9126.jpg`
+- Provider: SkillPilot / reviewed repo-native SVG
+- Status: accepted
+- Quellbild: `12260012-cf04-5409-b57d-f5b3a46d9126.png`
+- Public Asset: `/assets/goal-visualizations/physik/12260012-cf04-5409-b57d-f5b3a46d9126/12260012-cf04-5409-b57d-f5b3a46d9126.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erstelle eine eigenständige, vollständig lesbare deutschsprachige Physik-Lernübersicht im Querformat 1600 × 900 Pixel. Sehr heller blaugrauer Hintergrund, weiße abgerundete Inhaltsfelder mit dünnen blaugrauen Rändern. Dunkelblaue serifenlose Schrift, bevorzugt DejaVu Sans; Titel etwa 36 Pixel, Paneltitel 26–30 Pixel, Erklärungstexte überwiegend 20–23 Pixel. Funktionskurven blau, ausgewählte Gegenkräfte beziehungsweise Ausgangssignale orange. Keine Fotografien, dekorativen Formeln, Logos, technischen IDs oder internen Layoutmaße im Bild. Alle Wörter, Indizes und mathematischen Zeichen vollständig und ohne Überlagerung rendern. Die folgenden Angaben beschreiben eine bereits tatsächlich betrachtete kontrollierte Diagrammfassung; ihre Beziehungen dürfen nicht durch bloß plausible Freihandgeometrie ersetzt werden.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Titel: „Fallen mit Luftwiderstand: Wie entsteht Grenzgeschwindigkeit?“ Direkt darunter die Farblegende „Blau: Gewichtskraft F_G · Orange: Luftwiderstand F_L“. Tiefgestellte G und L sind bevorzugt; kein Buchstabe darf fehlen.
 
-Titel: Freier Fall mit Luftreibung und Grenzgeschwindigkeit
-Beschreibung: Die lernende Person kann den freien Fall mit Luftreibung qualitativ und mithilfe einfacher Modelle beschreiben und den Begriff der Grenzgeschwindigkeit erläutern.
+Obere Bildhälfte: drei gleich große Felder mit den Überschriften „Beim Loslassen“, „Beschleunigter Fall“, „Grenzzustand“. In jedem Feld derselbe fallende Körper auf exakt gleicher Ausgangshöhe, ohne Bodenberührung. Kräftepfeile beginnen jeweils im Körperzentrum. Alle drei blauen Gewichtskraftpfeile zeigen nach unten und sind vom Anfang bis zur Spitze exakt gleich lang. Verwende intern beispielsweise 130 Pixel; diese Layoutzahl gehört nicht ins Bild.
+Im ersten Feld gibt es keinen orangefarbenen Pfeil, weil beim Loslassen aus Ruhe der Luftwiderstand im vereinfachten Modell null ist. Text: „v = 0; F_L = 0; a = g“.
+Im zweiten Feld zeigt ein orangefarbener Luftwiderstandspfeil nach oben und ist deutlich kürzer als der blaue Gewichtskraftpfeil, intern beispielsweise halb so lang. Texte: „0 < F_L < F_G“ und „v nimmt zu; 0 < a < g“.
+Im dritten Feld ist der orangefarbene Aufwärtspfeil exakt gleich lang wie der blaue Abwärtspfeil, bei gleicher Pfeilbreite und gleichem Kraftmaßstab. Texte: „F_L = F_G ⇒ a = 0“ und „v = v_G (konstant)“.
+Darunter über die ganze Breite: „Gleicher Kraftmaßstab: F_G bleibt gleich, F_L wächst mit der Fallgeschwindigkeit.“ Keine Änderung der blauen Pfeillänge zwischen den Feldern, keine ungleichen Pfeile unter einem Gleichheitszeichen, keine sichtbaren internen Pixelangaben.
 
-Zusatzanweisung:
-Create a fresh German educational cartoon infographic with exactly three successive stages of a fall from rest through air. Stage 1 must state v = 0 and F_Luft = 0 while weight F_G points downward. Stage 2 must show 0 < F_Luft < F_G and downward acceleration. Stage 3 must show F_Luft = F_G, a = 0 and constant terminal velocity v_G. Keep the upward drag arrow smaller than weight in stage 2 and equal in stage 3. Add a small velocity-time graph approaching a horizontal asymptote. Do not show nonzero drag at the instant of release.
+Unten links ein Erklärfeld mit Überschrift „Kräftebilanz erklärt die Bewegung“ und folgender Kräftebilanz:
+„m · a = F_G − F_L (positive Richtung: nach unten)“
+Darunter die vollständigen Sätze:
+„Mit wachsendem Luftwiderstand wird die Beschleunigung kleiner.“
+„Im Grenzzustand: Kräftegleichgewicht, aber kein Stillstand.“
+„Modell: konstante Masse und Gewichtskraft; Auftrieb vernachlässigt.“
+
+Unten rechts ein schematisches v(t)-Diagramm. Zeitachse nach rechts, senkrechte Achse für den positiven Betrag der Fallgeschwindigkeit nach oben. Diese Diagrammachse ist keine räumliche Aufwärtsrichtung; der positive Bewegungsbezug bleibt nach unten. Markiere den Ursprung mit 0 und eine waagerechte gestrichelte Grenzgeschwindigkeit v_G. Eine blaue Kurve beginnt bei v = 0, wächst zunächst steil, wird stetig flacher und nähert sich v_G von unten ohne Überschwingen. Keine numerische Zeit- oder Geschwindigkeitsskala und keine allgemeingültige konkrete Widerstandsformel behaupten. Eine kontrollierte konkav fallende Steigung einer Sättigungskurve ist geeignet; keine lineare Kurve mit abruptem Knick.
+Das gemeinsame Verständnis muss sichtbar sein: anfangs maximale Beschleunigung, später geringere positive Beschleunigung, im Grenzzustand konstante nichtverschwindende Geschwindigkeit bei verschwindender resultierender Kraft.
 ```
 
 ## Review-Notiz

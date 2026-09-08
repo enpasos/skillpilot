@@ -1960,3 +1960,19 @@ fachlichen Nachweise bleiben mit diesem Dokument im Repository erhalten.
 Nach dem Nutzer-Commit zunächst dessen CI prüfen. Erst nach erneuter
 Fortsetzungsfreigabe an den reservierten offenen Fällen weiterarbeiten;
 keinen historischen Gesamtneustart ausführen.
+
+## Erneute Nutzerpause: Physik-Zwischenabschluss am 7. September 2026
+
+Der spätere Arbeitsauftrag auf Grundlage von `74adc6a74` wurde vom Nutzer
+erneut pausiert. Der verbindliche aktuelle Umfang, die bewusst zurückgestellten
+B035-/B040-Strukturen und die Abschlussprüfungen stehen im
+[Physik-Pausencheckpoint](physics-paused-checkpoint-2026-09-07.md).
+Physik steht bei 410/465 streng abgeschlossenen Zielen (88,2 %), Mathematik
+unverändert bei 424/797 (53,2 %). Vier frühere Physik-Abschlüsse sind durch
+die ungültig gewordene Gesamtbindung des D036r-Batches wieder offen; nur das
+Pauli-Ziel darin wurde geändert, die drei Geschwister werden nicht als falsch
+bewertet. Die aktuelle Gesamtbindung muss vor der Registrierung wieder stehen.
+Die neun neuen Strukturentwürfe einschließlich geprüfter Bilder bleiben
+archiviert, nicht aktiv; das geschützte M6-Niveau ist wiederhergestellt.
+Der historische Abschlussbericht direkt oberhalb beschreibt den vorigen
+Checkpoint und ist keine Behauptung über die Prüfungen dieses neuen Pakets.

@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Quellbild: `12260012-cf04-5409-b57d-f5b3a46d9126.jpg`
+- Provider: SkillPilot / reviewed repo-native SVG
+- Quellbild: `12260012-cf04-5409-b57d-f5b3a46d9126.png`
 
 ## Zweck
 
@@ -18,15 +18,23 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Eine lehrreiche Illustration im Cartoon-Stil, die den freien Fall mit Luftreibung und Grenzgeschwindigkeit darstellt. Das Bild ist in vier Hauptbereiche unterteilt: ein großer Titel oben, drei vertikale Panels nebeneinander in der Mitte und ein Geschwindigkeits-Zeit-Diagramm rechts davon.
+Erstelle eine eigenständige, vollständig lesbare deutschsprachige Physik-Lernübersicht im Querformat 1600 × 900 Pixel. Sehr heller blaugrauer Hintergrund, weiße abgerundete Inhaltsfelder mit dünnen blaugrauen Rändern. Dunkelblaue serifenlose Schrift, bevorzugt DejaVu Sans; Titel etwa 36 Pixel, Paneltitel 26–30 Pixel, Erklärungstexte überwiegend 20–23 Pixel. Funktionskurven blau, ausgewählte Gegenkräfte beziehungsweise Ausgangssignale orange. Keine Fotografien, dekorativen Formeln, Logos, technischen IDs oder internen Layoutmaße im Bild. Alle Wörter, Indizes und mathematischen Zeichen vollständig und ohne Überlagerung rendern. Die folgenden Angaben beschreiben eine bereits tatsächlich betrachtete kontrollierte Diagrammfassung; ihre Beziehungen dürfen nicht durch bloß plausible Freihandgeometrie ersetzt werden.
 
-Der Haupttitel lautet in schwarzer, serifenloser Schrift: "Freier Fall mit Luftreibung und Grenzgeschwindigkeit".
+Titel: „Fallen mit Luftwiderstand: Wie entsteht Grenzgeschwindigkeit?“ Direkt darunter die Farblegende „Blau: Gewichtskraft F_G · Orange: Luftwiderstand F_L“. Tiefgestellte G und L sind bevorzugt; kein Buchstabe darf fehlen.
 
-Das erste Panel links ist mit einem hellgelben Banner und schwarzem Rand überschrieben: "Start (Ruhe)". Es zeigt einen hellblauen Himmel und eine braune Klippe mit grünem Gras oben links. Ein roter, lächelnder Cartoon-Ball mit schwarzen Augen und Mund balanciert am Rand der Klippe. Links über dem Ball ist eine weiße analoge Uhr mit schwarzen Zeigern, die auf 12 Uhr zeigen, und daneben der schwarze Text "t = 0". Unter dem Ball zeigt ein dicker, dunkelblauer Pfeil nach unten, beschriftet mit "F_G (Gewichtskraft)". Rechts vom Fallweg des Balls befindet sich ein weißes Rechteck mit schwarzem Rand, das den schwarzen Text enthält: "v = 0", "F_Luft = 0", "(Luftwiderstand)".
+Obere Bildhälfte: drei gleich große Felder mit den Überschriften „Beim Loslassen“, „Beschleunigter Fall“, „Grenzzustand“. In jedem Feld derselbe fallende Körper auf exakt gleicher Ausgangshöhe, ohne Bodenberührung. Kräftepfeile beginnen jeweils im Körperzentrum. Alle drei blauen Gewichtskraftpfeile zeigen nach unten und sind vom Anfang bis zur Spitze exakt gleich lang. Verwende intern beispielsweise 130 Pixel; diese Layoutzahl gehört nicht ins Bild.
+Im ersten Feld gibt es keinen orangefarbenen Pfeil, weil beim Loslassen aus Ruhe der Luftwiderstand im vereinfachten Modell null ist. Text: „v = 0; F_L = 0; a = g“.
+Im zweiten Feld zeigt ein orangefarbener Luftwiderstandspfeil nach oben und ist deutlich kürzer als der blaue Gewichtskraftpfeil, intern beispielsweise halb so lang. Texte: „0 < F_L < F_G“ und „v nimmt zu; 0 < a < g“.
+Im dritten Feld ist der orangefarbene Aufwärtspfeil exakt gleich lang wie der blaue Abwärtspfeil, bei gleicher Pfeilbreite und gleichem Kraftmaßstab. Texte: „F_L = F_G ⇒ a = 0“ und „v = v_G (konstant)“.
+Darunter über die ganze Breite: „Gleicher Kraftmaßstab: F_G bleibt gleich, F_L wächst mit der Fallgeschwindigkeit.“ Keine Änderung der blauen Pfeillänge zwischen den Feldern, keine ungleichen Pfeile unter einem Gleichheitszeichen, keine sichtbaren internen Pixelangaben.
 
-Das mittlere Panel ist mit einem hellgelben Banner und schwarzem Rand überschrieben: "Beschleunigung". Es zeigt einen hellblauen Himmel. Der rote, lächelnde Cartoon-Ball fällt in der Mitte des Panels, mit zwei kleinen geschwungenen Linien hinter ihm, die Bewegung andeuten. Vom Ball zeigt ein dicker, dunkelblauer Pfeil nach unten, beschriftet mit "F_G" rechts davon. Ein dünnerer, hellgrauer Pfeil zeigt vom Ball nach oben, beschriftet mit "F_Luft" rechts davon. Der Abwärtspfeil ist deutlich länger als der Aufwärtspfeil, was F_G > F_Luft symbolisiert. Rechts oben im Panel befindet sich ein weißes Rechteck mit schwarzem Rand, das den schwarzen Text enthält: "v > 0", "0 < F_Luft < F_G". Unten in der Mitte des Panels ist ein weiteres weißes Rechteck mit schwarzem Rand, das den schwarzen Text enthält: "a > 0", "(Beschleunigung)".
+Unten links ein Erklärfeld mit Überschrift „Kräftebilanz erklärt die Bewegung“ und folgender Kräftebilanz:
+„m · a = F_G − F_L (positive Richtung: nach unten)“
+Darunter die vollständigen Sätze:
+„Mit wachsendem Luftwiderstand wird die Beschleunigung kleiner.“
+„Im Grenzzustand: Kräftegleichgewicht, aber kein Stillstand.“
+„Modell: konstante Masse und Gewichtskraft; Auftrieb vernachlässigt.“
 
-Das dritte Panel rechts ist mit einem hellgelben Banner und schwarzem Rand überschrieben: "Grenzgeschwindigkeit". Es zeigt einen hellblauen Himmel. Der rote, lächelnde Cartoon-Ball fällt in der Mitte des Panels, mit zwei kleinen geschwungenen Linien hinter ihm, die Bewegung andeuten. Vom Ball zeigt ein dicker, dunkelblauer Pfeil nach unten, beschriftet mit "F_G" rechts davon. Ein dicker, dunkelgrauer Pfeil zeigt vom Ball nach oben, beschriftet mit "F_Luft" rechts davon. Beide Pfeile sind gleich lang, was F_G = F_Luft symbolisiert. Rechts oben im Panel befindet sich ein weißes Rechteck mit schwarzem Rand, das den schwarzen Text enthält: "v = V_G", "(konstant)", "F_Luft = F_G". Unten in der Mitte des Panels ist ein weiteres weißes Rechteck mit schwarzem Rand, das den schwarzen Text enthält: "a = 0".
-
-Rechts neben den drei Panels befindet sich ein Geschwindigkeits-Zeit-Diagramm. Der Titel über dem Diagramm lautet in schwarzer Schrift: "Geschwindigkeits-Zeit-Diagramm (v-t)". Die horizontale Achse ist mit "t" (Zeit) beschriftet und hat einen Pfeil nach rechts. Die vertikale Achse ist mit "v" (Geschwindigkeit) beschriftet und hat einen Pfeil nach oben. Der Ursprung ist mit "0" beschriftet. Eine glatte, blaue Kurve beginnt am Ursprung (0,0), steigt zunächst schnell an und flacht dann allmählich ab, um sich einer horizontalen Asymptote zu nähern. Eine gestrichelte horizontale Linie, die die Asymptote darstellt, ist auf der vertikalen Achse mit "V_G" beschriftet. Über der gestrichelten Linie und links von der Kurve steht der schwarze Text "(Grenzgeschwindigkeit)". Alle Linien und Beschriftungen des Diagramms sind schwarz, außer der blauen Kurve.
+Unten rechts ein schematisches v(t)-Diagramm. Zeitachse nach rechts, senkrechte Achse für den positiven Betrag der Fallgeschwindigkeit nach oben. Diese Diagrammachse ist keine räumliche Aufwärtsrichtung; der positive Bewegungsbezug bleibt nach unten. Markiere den Ursprung mit 0 und eine waagerechte gestrichelte Grenzgeschwindigkeit v_G. Eine blaue Kurve beginnt bei v = 0, wächst zunächst steil, wird stetig flacher und nähert sich v_G von unten ohne Überschwingen. Keine numerische Zeit- oder Geschwindigkeitsskala und keine allgemeingültige konkrete Widerstandsformel behaupten. Eine kontrollierte konkav fallende Steigung einer Sättigungskurve ist geeignet; keine lineare Kurve mit abruptem Knick.
+Das gemeinsame Verständnis muss sichtbar sein: anfangs maximale Beschleunigung, später geringere positive Beschleunigung, im Grenzzustand konstante nichtverschwindende Geschwindigkeit bei verschwindender resultierender Kraft.
 ```

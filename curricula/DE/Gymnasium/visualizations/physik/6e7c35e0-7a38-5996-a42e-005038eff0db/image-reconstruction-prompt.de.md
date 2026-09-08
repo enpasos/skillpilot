@@ -1,0 +1,31 @@
+# Bildrekonstruktionsprompt: Potenzialtopfmodell für Kerne
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `6e7c35e0-7a38-5996-a42e-005038eff0db`
+- Titel: Potenzialtopfmodell für Kerne
+- Beschreibung: Die lernende Person kann Potenzialtopfmodelle zur Bindungsenergie qualitativ beschreiben.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro
+- Quellbild: `6e7c35e0-7a38-5996-a42e-005038eff0db.jpg`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Erstelle eine deutsche Lehrbuchgrafik „Potenzialtopfmodell für Kerne“ als
+ausdrücklich vereinfachtes Einteilchenmodell. Waagerechte Achse Ort x,
+senkrechte Achse Energie/MeV. Zeichne einen endlichen rechteckigen Topf mit
+U=0 außerhalb und U=−10 MeV im Inneren. Ein grünes gebundenes Energieniveau
+liegt bei E=−4 MeV. Die Markierung der Bindungsenergie reicht von −4 bis0
+und heißt E_B=4 MeV; ein davon getrennter Pfeil zeigt die Topftiefe10 MeV
+von −10 bis0. Rechne E_B=0−(−4 MeV)=4 MeV. Der Nullpunkt entspricht dem
+freien Teilchen in Ruhe außerhalb. Erkläre klar: Die Bindungsenergie dieses
+Zustands ist nicht die gesamte Topftiefe. Keine maßstäbliche Darstellung
+eines realen Kerns, keine zusätzlich behaupteten Kerndaten, keine technischen IDs.
+```

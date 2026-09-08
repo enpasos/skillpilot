@@ -1,0 +1,36 @@
+# Bildrekonstruktionsprompt: Entropie E13: Boltzmann-Formel und Zählmodelle
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8`
+- Titel: Entropie E13: Boltzmann-Formel und Zählmodelle
+- Beschreibung: Die lernende Person kann mit $S = k_B\ln\Omega$ und einfachen Zählmodellen, etwa $\Omega=\binom{N}{n}$ für gleich wahrscheinliche Links-rechts-Zuordnungen, die Entropien verschiedener Makrozustände vergleichen und erklären, warum bei großer Teilchenzahl annähernd gleichmäßige Verteilungen gegenüber stark ungleichmäßigen überwiegen.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Quellbild: `b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8.jpg`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Ein klares, modernes, pädagogisches Infografik-Design auf weißem Hintergrund. Oben mittig steht der große, fette, schwarze Titel: "Boltzmann-Formel und Zählen". Darunter, mittig, befindet sich ein rechteckiger Kasten mit abgerundeten Ecken und schwarzem Rand, der die große, fette, schwarze mathematische Formel "S = k_B ln(Ω)" enthält.
+
+Direkt unter diesem Formelkasten sind zwei kleinere, horizontale, rechteckige Kästen mit abgerundeten Ecken und schwarzem Rand nebeneinander angeordnet. Der linke Kasten hat einen hellgrauen Hintergrund und zeigt links ein graues Zahnrad-Symbol, gefolgt vom schwarzen Text "k_B: Boltzmann-Konstante". Der rechte Kasten hat ebenfalls einen hellgrauen Hintergrund und zeigt links ein Symbol aus vier orange-braunen Würfeln, die pyramidenförmig gestapelt sind (drei unten, einer oben), gefolgt vom schwarzen Text "Ω: Anzahl der Mikrozustände".
+
+Links im Bild befindet sich ein großer, vertikaler, rechteckiger Kasten mit abgerundeten Ecken und schwarzem Rand, der einen hellgrauen Hintergrund hat. Oben links in diesem Kasten steht der fette, schwarze Text "Zählmodell für N = 4 Teilchen". Darunter sind zwei kleine, horizontale, rechteckige Schaltflächen zu sehen: die linke Schaltfläche hat einen hellblauen Hintergrund, schwarzen Rand und den schwarzen Text "links"; die rechte Schaltfläche hat einen hellgrauen Hintergrund, schwarzen Rand und den schwarzen Text "rechts". Unter diesen Schaltflächen befindet sich eine Tabelle mit 5 Zeilen und 4 Spalten. Die Kopfzeile der Tabelle hat einen weißen Hintergrund und schwarze Ränder, mit den Spaltenüberschriften "n (Anzahl links)", "Darstellung", "Mikrozustände" und "Omega".
+
+Die erste Zeile der Tabelle (n=0) hat einen weißen Hintergrund. Spalte 1: "n=0". Spalte 2 (Darstellung): Ein horizontales Rechteck, geteilt in einen hellblauen linken Teil und einen hellgrauen rechten Teil, wobei vier orange-braune Kreise im hellgrauen Teil sind. Spalte 3: "RRRR". Spalte 4: "1".
+Die zweite Zeile der Tabelle (n=1) hat einen weißen Hintergrund. Spalte 1: "n=1". Spalte 2 (Darstellung): Ein horizontales Rechteck, geteilt in einen hellblauen linken Teil und einen hellgrauen rechten Teil, wobei ein orange-brauner Kreis im hellblauen Teil und drei orange-braune Kreise im hellgrauen Teil sind. Spalte 3: "LRRR, RLRR, RRLR, RRRL". Spalte 4: "4".
+Die dritte Zeile der Tabelle (n=2) ist vollständig mit einem hellorangen Hintergrund hervorgehoben. Spalte 1: "n=2". Spalte 2 (Darstellung): Ein horizontales Rechteck, geteilt in einen hellblauen linken Teil und einen hellgrauen rechten Teil, wobei zwei orange-braune Kreise im hellblauen Teil und zwei orange-braune Kreise im hellgrauen Teil sind. Spalte 3: "LLRR, LRLR, LRRL, RLLR, RLRL, RRLL". Spalte 4: "6".
+Die vierte Zeile der Tabelle (n=3) hat einen weißen Hintergrund. Spalte 1: "n=3". Spalte 2 (Darstellung): Ein horizontales Rechteck, geteilt in einen hellblauen linken Teil und einen hellgrauen rechten Teil, wobei drei orange-braune Kreise im hellblauen Teil und ein orange-brauner Kreis im hellgrauen Teil sind. Spalte 3: "LLLR, LLRL, LRLL, RLLL". Spalte 4: "4".
+Die fünfte Zeile der Tabelle (n=4) hat einen weißen Hintergrund. Spalte 1: "n=4". Spalte 2 (Darstellung): Ein horizontales Rechteck, geteilt in einen hellblauen linken Teil und einen hellgrauen rechten Teil, wobei vier orange-braune Kreise im hellblauen Teil sind. Spalte 3: "LLLL". Spalte 4: "1".
+
+Rechts neben dem großen "Zählmodell"-Kasten sind zwei kleinere, vertikale, rechteckige Kästen mit abgerundeten Ecken und schwarzem Rand übereinander angeordnet, beide mit hellgrauem Hintergrund.
+Der obere rechte Kasten enthält den fetten, schwarzen Text "Kombinatorik-Formel", darunter eine horizontale graue Linie und darunter die schwarze mathematische Formel "Ω = binom(N, n)".
+Der untere rechte Kasten enthält den fetten, schwarzen Text "Schlussfolgerung:", darunter den normalen schwarzen Text "Gleichverteilung hat die meisten Mikrozustände". Darunter ist ein Symbol einer schwarzen Waage mit zwei leeren, orange-braunen Waagschalen zu sehen, die sich im Gleichgewicht befindet. Die orange hervorgehobene Zeile "n=2" in der Tabelle, die eine gleichmäßige Verteilung von zwei Kreisen links und zwei Kreisen rechts zeigt, korreliert mit dem höchsten "Omega"-Wert von 6 und unterstützt die Schlussfolgerung der Waage.
+```

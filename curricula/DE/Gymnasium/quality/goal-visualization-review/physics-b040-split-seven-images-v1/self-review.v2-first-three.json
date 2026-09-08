@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-07 20:09:32 UTC",
+  "reviewer": "Codex /root/goal_book_pdf_history_audit (exact underlying model identifier unavailable)",
+  "status": "SEALED_OWN_S_T_B_V2_FINDINGS_BEFORE_CURRENT_ROOT_V2_FINDINGS",
+  "provenance": {
+    "authorOfSplitAndPrompts": true,
+    "readV1RootCounterreview": true,
+    "currentV2PeerFindingsRead": false,
+    "blind": false,
+    "humanApproval": false,
+    "actualRasterViewed": true
+  },
+  "records": [
+    {
+      "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+      "imagePath": "tmp/goal-visualizations/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/generated/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93.generated.2026-09-07T20-06-50-837Z.jpg",
+      "sha256": "1ac72c0744d835702350161634f9708f356dc5fa067377cc7b7185fd6ec0afa7",
+      "verdict": "NEEDS_REVISION",
+      "positiveControls": [
+        "Sonne als Stern und umlaufende Planeten korrekt; getrennte Panels; alle vier Planeten liegen ungefähr auf Bahnen; Komet rechts auf Ellipsenlinie; keine falschen Bewegungsrichtungen; sämtliche Texte lesbar."
+      ],
+      "negativeControls": [
+        "Die Kometenellipse hat in der tatsächlich geöffneten 2048px-Rasteransicht ungefähr x=1083..1928 und y=371..772, also Mittelpunkt x≈1505.5, a≈422.5, b≈200.5; linker Brennpunkt daher x≈1133.6. Das Sonnenzentrum liegt x≈1215, klar nicht im Brennpunkt. Die Verkleinerung ändert dieses Verhältnis nicht.",
+        "Erneut vier statt genau drei Planeten auf drei Bahnen: zwei Körper auf der äußeren Bahn. Dies ist eine verletzte Vereinfachungsvorgabe; der eigenständige fachliche Ablehnungsgrund bleibt die klar falsche Brennpunktlage."
+      ]
+    },
+    {
+      "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+      "imagePath": "tmp/goal-visualizations/37013646-f13a-5faf-954c-940f2fd7502f/generated/37013646-f13a-5faf-954c-940f2fd7502f.generated.2026-09-07T20-06-52-550Z.jpg",
+      "sha256": "25fc2fe3d6c5f8662116eeb7661a2e1785e0f54dcf5e405742e1b41a70c4277b",
+      "verdict": "NEEDS_REVISION",
+      "positiveControls": [
+        "Mondferner und mondnaher Punkt nun am Erdrand; absolute Pfeile alle nach rechts; relative Pfeile außen entgegengesetzt und Mittelpunkt pfeilfrei; beide Gezeitenwölbungen und Sonnenüberlagerung korrekt; irreführende Sonnenminiatur entfernt."
+      ],
+      "negativeControls": [
+        "Die absoluten Pfeile am mondfernen Punkt (etwa x=100..232) und Mittelpunkt (etwa x=300..433) sind praktisch gleich lang. Damit fehlt genau der ungleich starke Anzug zwischen mondferner Oberfläche und Erdmitte, der im rechten Panel die linke Differenzwirkung begründen soll. Mondnah ist zwar länger, aber die Dreipunkt-Begründung bleibt widersprüchlich.",
+        "Beide Mondbeschriftungen sind trotz expliziter Korrektur erneut englisch 'Moon' statt 'Mond'. Dies allein ist kein neuer physikalischer Fehler, aber eine weiterhin verletzte enge Sprachkorrektur."
+      ]
+    },
+    {
+      "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+      "imagePath": "tmp/goal-visualizations/c52d55c3-b687-586c-b0f9-8ffcd1069424/generated/c52d55c3-b687-586c-b0f9-8ffcd1069424.generated.2026-09-07T20-06-52-198Z.jpg",
+      "sha256": "ebe66a1e9ca44ac01fce9f25319092f1de33f928fd58ee04257419cbca084b0c",
+      "verdict": "NEEDS_REVISION",
+      "positiveControls": [
+        "Die Wellenlängenmarkierungen verbinden tatsächlich benachbarte Berge; beobachtete Wellenlänge größer, z-Definition mit korrekt gruppiertem Nenner positiv; Expansion/Abkühlung und stützende statt beweisende Beobachtungsaussage korrekt; problematische Teilchenchronik entfernt."
+      ],
+      "negativeControls": [
+        "Das Symbol zur Hintergrundstrahlung zeigt acht WELLENPFEILE VOM gemeinsamen hellen Zentrum NACH AUSSEN, während das Label Strahlung 'aus allen Richtungen' ankündigt. Dies stellt die Strahlungsrichtung am Beobachter umgekehrt dar und erinnert an einen zentralen Emissions-/Explosionsort. Der vereinfachte Beobachtungsbeleg darf diese neue Richtungsfehlvorstellung nicht vermitteln.",
+        "Obere und untere Wellenzüge sind nicht exakt gleich lang; die Wellenzahl entspricht nicht genau drei zu zwei Perioden. Ohne numerische Wertbehauptung ist die qualitative größere Wellenlänge dadurch noch nicht falsch; dieser Promptdrift ist nicht der entscheidende Ablehnungsgrund."
+      ]
+    }
+  ]
+}

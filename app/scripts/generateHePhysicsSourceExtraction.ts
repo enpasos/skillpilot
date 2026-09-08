@@ -703,7 +703,7 @@ const upperCanonicalTargetsByTopicBullet: Record<string, string[]> = {
   ],
   'Q3.3:9': ['ce89fa04-bbd8-53b2-be01-812e3b3044ed'],
   'Q3.3:10': ['bacae732-2016-5a83-bc61-d0f94ed5a0e4'],
-  'Q3.3:11': ['bacae732-2016-5a83-bc61-d0f94ed5a0e4'],
+  'Q3.3:11': ['badb0ef3-233d-560e-bc2a-9df99f09fe7d'],
   'Q3.3:12': [
     '7e9e814c-fe12-42a9-8d80-e09e7fb52964',
     '48e77690-17f7-5ebe-a8f7-87b2ee9820da',
@@ -789,7 +789,7 @@ const upperCanonicalTargetsByTopicBullet: Record<string, string[]> = {
     'bfea7a23-1ce1-4a42-badd-1fc9bf30124a',
   ],
   'Q4.3:10': ['49872cc0-401f-5464-9235-4763df4db5cf'],
-  'Q4.3:11': ['a12fddce-0215-58d9-bd91-21be8a960d25'],
+  'Q4.3:11': ['3b50255a-6b01-578b-8f5c-4383536a3221'], // Reviewed LK decay-series scope; GK time-law rows stay unchanged.
   'Q4.3:12': ['3b50255a-6b01-578b-8f5c-4383536a3221'],
   'Q4.3:13': ['6e7c35e0-7a38-5996-a42e-005038eff0db'],
   'Q4.3:14': ['6e7c35e0-7a38-5996-a42e-005038eff0db'],
@@ -1462,6 +1462,10 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
     ],
   ])
   const decisions = parsed.sourceGoals.flatMap((sourceGoal) => {
+    // Exact current HE Q4.3 decision; no blanket remapping or coverage upgrade.
+    const checkpointReview = sourceGoal.id === "he-phys-sekii-q4-3-b11-a01-3f3a940f"
+      ? {"rationale":"HE KC2024 Q4.3: Die LK-Überschrift Zerfallsgesetze wird auf der tatsächlichen Originalseite46 ausschließlich durch Zerfallsreihen konkretisiert. Deshalb Zuordnung zum bestehenden A/Z-Reihenziel3b; GK-Zeitgesetz-Einträge303–305 bleiben a12.","reviewedAt":"2026-09-07","reviewer":"codex-b042-current-source-scope-checkpoint"}
+      : undefined
     const sourceKey = `${sourceGoal.topicCode}:${sourceGoal.bulletIndex}`
     const targetIds = applyPhysicsBatch015Targets(sourceGoal.id, targetLookup[sourceKey] ?? [])
     const isExplicitUpperGap = config.stage === 'SekII' && upperNeedsCanonicalGoalByTopicBullet.has(sourceKey)
@@ -1476,25 +1480,25 @@ function writeReview(config: ExtractionConfig, parsed: { sourceGoals: SourceGoal
       sourceSpan: sourceGoal.sourceSpan,
       decision: targetIds.length > 0 ? 'mapped' : 'needsCanonicalGoal',
       canonicalGoalIds: targetIds,
-      rationale: targetIds.length === 0
+      rationale: checkpointReview?.rationale ?? (targetIds.length === 0
         ? `Der amtliche ${sourceLabel} benötigt noch fachliche M3-Review oder ein neues kanonisches Physikziel.`
         : explicitlyPartialSourceGoalIds.has(sourceGoal.id)
           ? batch025Rationale ?? batch019Rationale ?? partialRationalesBySourceKey.get(sourceKey)
         : targetIds.length > 1
           ? `Der amtliche ${sourceLabel} wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.`
-          : `Der amtliche ${sourceLabel} wird durch das kanonische Physikziel inhaltlich abgedeckt.`,
-      reviewedAt: batch025Rationale
+          : `Der amtliche ${sourceLabel} wird durch das kanonische Physikziel inhaltlich abgedeckt.`),
+      reviewedAt: checkpointReview?.reviewedAt ?? (batch025Rationale
         ? '2026-08-29'
         : batch019Rationale
           ? '2026-08-28'
-          : new Set(['8.3b:4', '8.3b:5']).has(sourceKey) ? '2026-08-27' : '2026-05-09',
-      reviewer: batch025Rationale
+          : new Set(['8.3b:4', '8.3b:5']).has(sourceKey) ? '2026-08-27' : '2026-05-09'),
+      reviewer: checkpointReview?.reviewer ?? (batch025Rationale
         ? 'codex-physics-batch-025-motion-split-2026-08-29'
         : batch019Rationale
           ? 'codex-physics-batch-019-mapping-adjudication'
           : new Set(['8.3b:4', '8.3b:5']).has(sourceKey)
             ? 'codex-physics-batch-007-split-synthesis'
-            : 'codex',
+            : 'codex'),
     }]
   })
   const mappings = decisions.flatMap((decision) =>

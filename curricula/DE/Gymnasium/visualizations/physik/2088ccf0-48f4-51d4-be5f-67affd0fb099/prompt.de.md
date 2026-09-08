@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `2088ccf0-48f4-51d4-be5f-67affd0fb099.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/2088ccf0-48f4-51d4-be5f-67affd0fb099/2088ccf0-48f4-51d4-be5f-67affd0fb099.jpg`
@@ -16,32 +16,14 @@
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Use case: precise-object-edit
+Input images: Bild 1 ist das einzige Edit-Ziel, der aktuelle erste Reparaturkandidat.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Erforderlich:
+Im rechten orangefarbenen Abschnitt ist die Teilchenzahl noch falsch. Bearbeite nur die blauen Teilchen in dessen beiden Gefäßen; lösche dort zuerst sämtliche vorhandenen blauen Punkte. Zeichne im oberen Anfangsgefäß links exakt ACHT Punkte, angeordnet als zwei Reihen zu vier Punkten; rechte Vakuumhälfte bleibt leer. Zeichne im unteren Endgefäß exakt ACHT Punkte: vier links und vier rechts, jeweils zwei Reihen zu zwei Punkten. Zähle: vorher 8, nachher 4+4=8. Keine zusätzlichen Punkte oder Kreise. Bestehende Gefäßwände und die geöffnete innere Trennwand bleiben unverändert. Der komplette blaue linke Abschnitt und alle Texte bleiben exakt unverändert.
 
-Titel: Reversible und irreversible Vorgänge unterscheiden
-Beschreibung: Die lernende Person kann reversible und irreversible thermodynamische Vorgänge an Beispielen unterscheiden und Konsequenzen für die Energieumwandlung beschreiben.
-
-Zusatzanweisung:
-Regenerate the complete image as a clear German cartoon comparison titled `Reversibel und irreversibel`.
-
-Mandatory scientific distinction:
-- Left: an idealized reversible process, labeled `idealisiert und quasistatisch`, `ohne Entropieerzeugung`, and `vollständig umkehrbar`.
-- Right: an irreversible process such as free expansion or friction, labeled `Entropie wird erzeugt` and `nicht vollständig rückgängig`.
-- Do not imply that ordinary real processes are perfectly reversible.
-- In the reversible panel, use one unambiguous double-headed arrow between two equilibrium states. Do not place contradictory one-way arrows around the same piston.
-- If a concluding sentence is shown, spell it exactly `Irreversibilität begrenzt nutzbare Energieumwandlung`.
-- Spell the plural exactly `Gleichgewichtszustände`. The malformed spelling `Gleichgewichtszustäende` is forbidden. If exact spelling is uncertain, omit this label rather than misspell it.
-
-Use correct German umlauts, including `Gleichgewichtszustände` and `rückgängig`; never use ae/oe/ue substitutions. Keep visible text sparse. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
+Erhalten / vermeiden:
+Nur diese lokale Korrektur; kein Layoutwechsel, keine neue Beschriftung außerhalb des Auftrags, kein Wasserzeichen, keine technischen Kennungen.
 ```
 
 ## Review-Notiz

@@ -4,12 +4,12 @@
 
 - SkillPilot-ID: `6e7c35e0-7a38-5996-a42e-005038eff0db`
 - Titel: Potenzialtopfmodell für Kerne
-- Beschreibung: Die lernende Person kann Potenzialtopfmodelle zur Bindungsenergie qualitativer beschreiben.
+- Beschreibung: Die lernende Person kann Potenzialtopfmodelle zur Bindungsenergie qualitativ beschreiben.
 
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Status: accepted
 - Quellbild: `6e7c35e0-7a38-5996-a42e-005038eff0db.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/6e7c35e0-7a38-5996-a42e-005038eff0db/6e7c35e0-7a38-5996-a42e-005038eff0db.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -32,24 +32,16 @@ Beschreibung: Die lernende Person kann Potenzialtopfmodelle zur Bindungsenergie 
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Potenzialtopfmodell fuer Kerne`.
-- Show a qualitative finite square well: vertical energy axis `E`, two finite well walls, flat bottom below `E = 0`, and outside region at `E = 0`.
-- Draw two bound levels inside the well below `E = 0`, labelled `gebunden`.
-- Draw one level above `E = 0`, labelled `frei`.
-- Shade the depth from `E = 0` down to the bottom and label it `Bindungsenergie`.
-- Add a small comparison sketch of a nucleus labelled `Kern` beside the well.
-- Visible learner text must be limited to the title, `E`, `E = 0`, `gebunden`, `frei`, `Bindungsenergie`, and `Kern`.
+Deutschsprachige präzise Lehrgrafik „Potenzialtopfmodell für Kerne“. Zeichne ein ausdrücklich stark vereinfachtes eindimensionales Einteilchenmodell, z.B. Neutron, ohne Coulombbarriere. Waagerechte Achse „Ort x“, senkrechte Energieachse „Energie / MeV“, lineare Energieskala.
+Endlicher Rechtecktopf: außerhalb U=0; innerhalb U=−10 MeV. Beide Außenplateaus tatsächlich auf0, der durchgehende Topfboden tatsächlich auf−10. Zeichne GENAU EIN beispielhaftes gebundenes Energieniveau als grüne waagerechte Linie beiE=−4 MeV zwischen den Wänden. Eigenes Label „Beispiel: gebundener Zustand E=−4 MeV“. Nullniveau als gestrichelte Linie durch den ganzen Graphen, „E=0: freies Teilchen in Ruhe außerhalb“.
+Rechts zwei sauber getrennte vertikale Doppelpfeile mit klaren Endpunkten:
+1. Blau „Topftiefe10MeV“ von0 bis−10.
+2. Lila „Zum Lösen aus diesem Zustand: E_B=4MeV“ von−4 bis0, Enden EXAKT am grünen Zustandsniveau und Nullniveau, NICHT amTopfboden. Deutlich unterschiedliche Längen6:10? Nein:4zu10! Kontrolliere maßstäblich4/10. Beide Pfeile dürfen sich nicht überlagern.
+Text darunter „E_B = 0 − (−4 MeV) = 4 MeV“. „Die Bindungsenergie dieses Zustands ist nicht die gesamte Topftiefe.“ „Vereinfachtes Einteilchenmodell; keine maßstäbliche Darstellung eines realen Kerns.“
+Keine zusätzlichen frei- odergebundenen Niveaus ohneNotwendigkeit. Labels außerhalbderGraphkanten; guter Kontrast.
 
 Vermeiden:
-
-- Do not draw the bottom of the well above `E = 0`.
-- Do not put bound states above `E = 0`.
-- Do not draw an infinite-well-only model with infinitely high walls.
-- Do not add particle trajectory arrows or bouncing balls.
-- Do not label the well depth as kinetic energy.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Kein Bindungsenergiepfeil vomNullniveau bisTopfboden. Kein E=−4 unter−10. Keine positiven Energien alsgebunden. KeineendlosenunbeschriftetenMauern undkeine behaupteteexakteMehrteilchen-Kernenergie ausdiesemModell. KeineKugelbildermitzuverlässigkeitspflichtigenNukleonzahlen.
 ```
 
 ## Review-Notiz

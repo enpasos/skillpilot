@@ -4,55 +4,27 @@
 
 - SkillPilot-ID: `91b20476-12cf-50d6-880a-ea509ffe8a9a`
 - Titel: Zweiten Hauptsatz auf Entropieerzeugung und Zeitpfeil anwenden
-- Beschreibung: Die lernende Person kann den zweiten Hauptsatz auf einfache Prozesse anwenden, Entropieerzeugung bei irreversiblen Abläufen mit $\Delta S_{\mathrm{ges}} > 0$ begründen und daraus den Zeitpfeil fachlich erklären.
+- Beschreibung: Die lernende Person kann bei einfachen irreversiblen Prozessen eines isolierten Gesamtsystems die Entropieerzeugung mit $\Delta S_{\mathrm{ges}}>0$ begründen und die damit ausgezeichnete Richtung makroskopischer Abläufe als thermodynamischen Zeitpfeil erklären.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: SkillPilot repository-native SVG (documented Nano Banana correctness exception)
 - Status: pilot
-- Quellbild: `91b20476-12cf-50d6-880a-ea509ffe8a9a.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/91b20476-12cf-50d6-880a-ea509ffe8a9a/91b20476-12cf-50d6-880a-ea509ffe8a9a.jpg`
+- Quellbild: `91b20476-12cf-50d6-880a-ea509ffe8a9a.png`
+- Public Asset: `/assets/goal-visualizations/physik/91b20476-12cf-50d6-880a-ea509ffe8a9a/91b20476-12cf-50d6-880a-ea509ffe8a9a.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erstelle eine präzise deutschsprachige Physik-Lerngrafik im Format 1600×900 (16:9), hellblauer Hintergrund, dunkelblaue gut lesbare Schrift. Titel: „Entropieerzeugung und thermodynamischer Zeitpfeil“.
 
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Oben ein Kasten: „Isoliertes Gesamtsystem: System + Umgebung“ und „ΔS_ges = S_erzeugt ≥ 0“. Darunter umfasst eine gestrichelte geschlossene Grenze zwei ideale Wärmereservoire. Beschriftung: „Nach außen kein Energie- oder Stoffaustausch · ideale Reservoire bei konstanten Kelvin-Temperaturen“. Links ein orangefarbenes heißes Reservoir mit T_h > T_c; rechts ein blaues kaltes Reservoir mit T_c > 0 K. Dazwischen zeigt genau ein orangefarbener, deutlich gerichteter Wärmepfeil von links nach rechts, beschriftet „Wärme Q > 0“. Es gibt keine äußere Wärmequelle, keine Flamme und keine Stoffpfeile.
 
-Titel: Zweiten Hauptsatz auf Entropieerzeugung und Zeitpfeil anwenden
-Beschreibung: Die lernende Person kann den zweiten Hauptsatz auf einfache Prozesse anwenden, Entropieerzeugung bei irreversiblen Abläufen mit $\Delta S_{\mathrm{ges}} > 0$ begründen und daraus den Zeitpfeil fachlich erklären.
+Unter dem heißen Reservoir: ΔU_h = −Q und ΔS_h = −Q/T_h. Unter dem kalten: ΔU_c = +Q und ΔS_c = +Q/T_c. Die Reservoire tauschen nur Wärme aus; Q bezeichnet hier den positiven Betrag der von heiß nach kalt übertragenen Wärme. Darunter hervorgehoben: ΔS_ges = Q (1/T_c − 1/T_h) > 0. Sämtliche Temperaturen sind absolut und während der betrachteten Übertragung konstant.
 
-Zusatzanweisung:
-Pflichtinhalt:
+Abschlusstexte: „Diese irreversible Richtung zeichnet den makroskopischen Zeitpfeil aus.“ „Die spontane Umkehr als einzige Wirkung hätte ΔS_ges < 0: im isolierten Ganzen unmöglich.“ „Reversibler Grenzfall: S_erzeugt = 0 · Die Entropie eines einzelnen Teilsystems darf abnehmen.“
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `2. Hauptsatz: Entropieerzeugung und Zeitpfeil`.
-- Show the rule prominently: `Delta S_ges >= 0`.
-- Use a decision table:
-  - `reversibel` | `S_erzeugt = 0` | `kein bevorzugter Zeitpfeil im Idealmodell`
-  - `irreversibel` | `S_erzeugt > 0` | `Zeitpfeil der realen Richtung`
-- Add example cards:
-  - `Reibung`
-  - `Mischung`
-  - `Waerme von warm nach kalt`
-- Add conclusion: `Irreversible Prozesse markieren die Richtung der Zeit`.
-- Strict arrow rule: no arrows anywhere in the image. Use table rows and static example cards only.
-
-Vermeiden:
-
-- Do not draw process arrows, reverse arrows, time arrows, heat arrows, or connector arrows.
-- Do not show `S_erzeugt < 0`.
-- Do not show `Delta S_ges < 0` as possible for an isolated system.
-- Do not claim entropy is energy.
-- Do not imply friction or mixing runs backward by itself.
+Keine zählbaren Teilchen, keine Mischgefäße, keine dekorativen Energiequellen. Keine technischen IDs, keine Freigabestempel oder Leistungsbehauptungen. Mathematische Indizes korrekt setzen. Der ganze Inhalt muss ohne Überlagerung oder Anschnitt sichtbar bleiben. Die Zeichnung ist ein ideales Schema, kein beobachteter Versuchsfilm.
 ```
 
 ## Review-Notiz

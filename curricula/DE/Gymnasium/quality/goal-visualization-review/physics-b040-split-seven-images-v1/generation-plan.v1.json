@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "status": "SEVEN_CANDIDATES_REQUESTED_IN_CONTROLLED_WAVES_NOT_IMPORTED",
+  "preparedAt": "2026-09-07T19:52:51.389Z",
+  "author": {
+    "agent": "/root/goal_book_pdf_history_audit",
+    "model": "Codex (exact underlying model identifier unavailable)",
+    "freshThread": false,
+    "blindReview": false,
+    "humanApproval": false,
+    "priorInvolvement": "B040 source-grounded split author and prompt author; subject-matter image review is self-review, Root performs a separate current visual counterreview."
+  },
+  "pipeline": {
+    "command": "scripts/generate_goal_visualization_nano_banana.mjs",
+    "modelRequested": "gemini-3-pro-image",
+    "reconstructionPromptModelRequested": "gemini-2.5-flash",
+    "maxParallelThisAgent": 3,
+    "noImport": true,
+    "normalReconstructionEnabled": true
+  },
+  "dryRun": {
+    "checkedAt": "2026-09-07T19:51:52.417Z",
+    "goals": 7,
+    "providerBodyHasNoIdsOrBrand": true,
+    "secretLikeMetadataKeys": 0
+  },
+  "inputSnapshots": [
+    {
+      "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+      "goal": {
+        "id": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+        "shortKey": "canonical_physics_astro_solar_system_structure",
+        "title": "Aufbau des Sonnensystems beschreiben",
+        "titleEn": "Describe the structure of the Solar System",
+        "description": "Die lernende Person kann den Aufbau des Sonnensystems beschreiben und Sonne, Planeten und Kometen anhand ihrer Rolle und ihrer Bahnen einordnen.",
+        "descriptionEn": "The learner can describe the structure of the Solar System and classify the Sun, planets, and comets by their roles and orbits.",
+        "type": "atomic",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE",
+            "DE-BY",
+            "DE-SL",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "resourceLinks": []
+      },
+      "goalObjectDigest": "sha256:1641225d67babee3d8919cc7a1e8ee2084d67f73d97c504c61b302fa9ffb998e",
+      "approvedPromptPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/physics100-split-implementation-v1/prompts/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93.nano-banana-prompt.de.md",
+      "approvedPromptDigest": "sha256:859744bcab1e8f8b07902588251a05b0cafb06b33c839cf3f8385307cc043bf0",
+      "dryRunRequestPath": "tmp/goal-visualizations/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/nano-banana-request.json",
+      "dryRunRequestDigest": "sha256:4c7c8aef50b625c7f990fa323810b2870c6eae3d146e2baeacf32b676d582f55"
+    },
+    {
+      "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+      "goal": {
+        "id": "37013646-f13a-5faf-954c-940f2fd7502f",
+        "shortKey": "canonical_physics_astro_tides_qualitative",
+        "title": "Gezeiten qualitativ erklären",
+        "titleEn": "Explain tides qualitatively",
+        "description": "Die lernende Person kann Gezeiten qualitativ durch die unterschiedliche Gravitationswirkung von Mond und Sonne auf verschiedene Bereiche der Erde erklären.",
+        "descriptionEn": "The learner can explain tides qualitatively through the differing gravitational effects of the Moon and Sun on different regions of Earth.",
+        "type": "atomic",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+          "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "resourceLinks": []
+      },
+      "goalObjectDigest": "sha256:d2afc8da857d9e95348cffe92079c9317e0abc0db8ef632e811c74b113cdafaa",
+      "approvedPromptPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/physics100-split-implementation-v1/prompts/37013646-f13a-5faf-954c-940f2fd7502f.nano-banana-prompt.de.md",
+      "approvedPromptDigest": "sha256:ea9c41854c2684258f592137ea5a722808122111a692b3fa75d73bd2afdc3ecf",
+      "dryRunRequestPath": "tmp/goal-visualizations/37013646-f13a-5faf-954c-940f2fd7502f/nano-banana-request.json",
+      "dryRunRequestDigest": "sha256:a9d54f5e3d7431276d78f67258ad9ac7e12d51ae18bebda5b194b483a07519c6"
+    },
+    {
+      "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+      "goal": {
+        "id": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+        "shortKey": "canonical_physics_astro_big_bang_redshift_cmb",
+        "title": "Urknallmodell anhand kosmologischer Beobachtungen erläutern",
+        "titleEn": "Explain the Big Bang model using cosmological observations",
+        "description": "Die lernende Person kann das heiße Urknallmodell qualitativ erläutern und kosmologische Rotverschiebung sowie Hintergrundstrahlung als Beobachtungsbelege dafür einordnen.",
+        "descriptionEn": "The learner can explain the hot Big Bang model qualitatively and interpret cosmological redshift and the cosmic microwave background as observational evidence for it.",
+        "type": "atomic",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "2b700858-bc2e-5ddf-a791-b14d44160480"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE",
+            "DE-BW",
+            "DE-BY",
+            "DE-RP"
+          ]
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "resourceLinks": []
+      },
+      "goalObjectDigest": "sha256:0763806f9eb1b5f8741696e73e59d0263fcd9d2f133f6f7d914ed28cd6ac61f9",
+      "approvedPromptPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/physics100-split-implementation-v1/prompts/c52d55c3-b687-586c-b0f9-8ffcd1069424.nano-banana-prompt.de.md",
+      "approvedPromptDigest": "sha256:6b0acc3f896dc1472a4e691d904e74a00526e368cadd9b97f379fc9381380758",
+      "dryRunRequestPath": "tmp/goal-visualizations/c52d55c3-b687-586c-b0f9-8ffcd1069424/nano-banana-request.json",
+      "dryRunRequestDigest": "sha256:be44d9f60199ca15d8c391230e7bb7dc08cd455e9ecb08369541c7e2b2e4a4cb"
+    },
+    {
+      "goalId": "3d466956-04fb-58d7-9008-ad8090f8706d",
+      "goal": {
+        "id": "3d466956-04fb-58d7-9008-ad8090f8706d",
+        "shortKey": "canonical_physics_astro_dark_matter_qualitative",
+        "title": "Dunkle Materie qualitativ einordnen",
+        "titleEn": "Interpret dark matter qualitatively",
+        "description": "Die lernende Person kann dunkle Materie als Modellbestandteil zur Erklärung von Gravitationswirkungen erläutern, die sich nicht durch die bekannte gewöhnliche Materie allein erklären lassen.",
+        "descriptionEn": "The learner can explain dark matter as a model component accounting for gravitational effects that cannot be explained by the known ordinary matter alone.",
+        "type": "atomic",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+          "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE",
+            "DE-BW",
+            "DE-BY"
+          ]
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "resourceLinks": []
+      },
+      "goalObjectDigest": "sha256:7eda8aae3abe0e8f698b10cb0288c5864ea106a16f4b2c67a9a49f7649a3193f",
+      "approvedPromptPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/physics100-split-implementation-v1/prompts/3d466956-04fb-58d7-9008-ad8090f8706d.nano-banana-prompt.de.md",
+      "approvedPromptDigest": "sha256:489b9d9c691f565f35c5d3a3134b19acbc7e57bdab71b05e444fc8278636d7c5",
+      "dryRunRequestPath": "tmp/goal-visualizations/3d466956-04fb-58d7-9008-ad8090f8706d/nano-banana-request.json",
+      "dryRunRequestDigest": "sha256:5b97a1ea00d26434f7832a671e36b5e51eb388c7b5647e1dd7f2e5be29238488"
+    },
+    {
+      "goalId": "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+      "goal": {
+        "id": "b4772b06-b10c-52dd-841b-a96ffb7c7e28",
+        "shortKey": "canonical_physics_astro_dark_energy_qualitative",
+        "title": "Dunkle Energie qualitativ einordnen",
+        "titleEn": "Interpret dark energy qualitatively",
+        "description": "Die lernende Person kann dunkle Energie als Modellbegriff zur Beschreibung der beobachteten beschleunigten Expansion des Universums einordnen.",
+        "descriptionEn": "The learner can interpret dark energy as a model concept used to describe the observed accelerated expansion of the universe.",
+        "type": "atomic",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "resourceLinks": []
+      },
+      "goalObjectDigest": "sha256:758ac951f6ba009ed94100dd0ea0117a98544d2b5b6eaccd55b022ed10c8af39",
+      "approvedPromptPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/physics100-split-implementation-v1/prompts/b4772b06-b10c-52dd-841b-a96ffb7c7e28.nano-banana-prompt.de.md",
+      "approvedPromptDigest": "sha256:6ece9e3c8a93b21460fb093dde4b7064b1f9630bfc4aff91593d866e8c171345",
+      "dryRunRequestPath": "tmp/goal-visualizations/b4772b06-b10c-52dd-841b-a96ffb7c7e28/nano-banana-request.json",
+      "dryRunRequestDigest": "sha256:af9bff61bdaeb2947e1229540ca22f1c15a4b14a191d3a8f41ff5456616ec222"
+    },
+    {
+      "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+      "goal": {
+        "id": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+        "shortKey": "canonical_physics_astro_universe_structural_hierarchy",
+        "title": "Kosmische Strukturen einordnen",
+        "titleEn": "Classify cosmic structures",
+        "description": "Die lernende Person kann größere kosmische Strukturen wie Galaxien beschreiben und Sternsysteme darin einordnen.",
+        "descriptionEn": "The learner can describe larger cosmic structures such as galaxies and locate stellar systems within them.",
+        "type": "atomic",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE",
+            "DE-BW",
+            "DE-BY",
+            "DE-RP",
+            "DE-SL"
+          ]
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "resourceLinks": []
+      },
+      "goalObjectDigest": "sha256:8b09ea3a5e5ed316613051896b9d896c0d471e5689e5f9fca7b70b0a60bf81ee",
+      "approvedPromptPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/physics100-split-implementation-v1/prompts/1b060e79-dc2d-5e4e-abb5-42eca39f9cc7.nano-banana-prompt.de.md",
+      "approvedPromptDigest": "sha256:9f8b082b029efa66459aad7e060bd518f6885e27230602d7f656359ef773dd9c",
+      "dryRunRequestPath": "tmp/goal-visualizations/1b060e79-dc2d-5e4e-abb5-42eca39f9cc7/nano-banana-request.json",
+      "dryRunRequestDigest": "sha256:b99be48dcf834935642b75d1ced54720e4c31b771ddb552cf4ab52ff759260c2"
+    },
+    {
+      "goalId": "db0394ca-297c-5892-b414-525ec186f928",
+      "goal": {
+        "id": "db0394ca-297c-5892-b414-525ec186f928",
+        "shortKey": "canonical_physics_astro_universe_size_age_qualitative",
+        "title": "Größe und Alter des Universums qualitativ einordnen",
+        "titleEn": "Interpret the size and age of the universe qualitatively",
+        "description": "Die lernende Person kann qualitative Aussagen zu Größe und Alter des Universums einordnen und dabei räumliche Ausdehnung und vergangene Zeit sowie das beobachtbare und das gesamte Universum unterscheiden.",
+        "descriptionEn": "The learner can interpret qualitative statements about the size and age of the universe, distinguishing spatial extent from elapsed time and the observable universe from the universe as a whole.",
+        "type": "atomic",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+          "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE",
+            "DE-BW",
+            "DE-RP"
+          ]
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "resourceLinks": []
+      },
+      "goalObjectDigest": "sha256:fa7ea9756d952eb9389042cb92e816facc2a029ea066ae179929020d0d737c43",
+      "approvedPromptPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/physics100-split-implementation-v1/prompts/db0394ca-297c-5892-b414-525ec186f928.nano-banana-prompt.de.md",
+      "approvedPromptDigest": "sha256:bba0b2c0c743284551f29eb9a603369d479fce111519ea44aa8bbafb61beb581",
+      "dryRunRequestPath": "tmp/goal-visualizations/db0394ca-297c-5892-b414-525ec186f928/nano-banana-request.json",
+      "dryRunRequestDigest": "sha256:c0ec83163b61f7c6ac2fc1607084d461ecbeaa29f66d2796cf4878e9dac8b386"
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-09-07 20:34:25 UTC",
+  "status": "PAUSED_REVIEWABLE_NATIVE_CANDIDATES_NOT_IMPORTED",
+  "rule": "AGENTS.md 7.3: narrow documented native fallback after repeated targeted Nano Banana Pro correctness failures",
+  "authorization": "Root explicitly authorized native source diagrams after two documented Nano Banana failures per goal; subsequent user instruction requires finalizing only this current package and stopping.",
+  "scope": [
+    "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+    "37013646-f13a-5faf-954c-940f2fd7502f",
+    "c52d55c3-b687-586c-b0f9-8ffcd1069424"
+  ],
+  "providerPriorityPreserved": true,
+  "originalCodeNativeArtwork": true,
+  "rasterRetouching": false,
+  "externalAssetsUsed": false,
+  "canonicalWritesInThisNativePackage": false,
+  "qaWritesInThisNativePackage": false,
+  "humanApproval": false,
+  "blindReview": false,
+  "sourceAuthorAndSelfReviewer": "Codex /root/goal_book_pdf_history_audit (exact underlying model identifier unavailable)",
+  "technicalProof": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/technical-checks.json",
+  "selfReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/author-visual-review.json",
+  "independentRootReview": "Separate Root visual review required before any import; not claimed by this author record.",
+  "records": [
+    {
+      "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+      "necessity": "Die ursprüngliche zusammengefasste Bahnzeichnung und die gezielt auf zwei Diagramme mit numerisch beschriebenem Fokus reduzierte Referenzkorrektur platzieren die Sonne weiterhin fachlich falsch. Eine exakte native Ellipse plus geprüfte Kreispositionen ist notwendig, um die sichtbare Umlaufgeometrie korrekt zu halten.",
+      "attempts": [
+        {
+          "version": "V1",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "requestedModel": "gemini-3-pro-image",
+          "referenceStrategy": "new atomic image from current goal and individual approved prompt",
+          "image": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93.generated.2026-09-07T19-52-33-190Z.jpg",
+            "sha256": "97cb243315d7e9b685544501774c249a14f9b3956772474d479c03123a896ed2"
+          },
+          "actualSentPrompt": {
+            "originalPath": "tmp/goal-visualizations/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/nano-banana-prompt.de.md",
+            "persistentPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/nano-banana-prompt.de.md",
+            "sha256": "f105a6dd26b95d5ce98c82b163065647fdc2e53c3f48d49c68c9ba07bdbdda1a",
+            "bytes": 3493
+          },
+          "actualRequest": {
+            "originalPath": "tmp/goal-visualizations/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/nano-banana-request.json",
+            "persistentPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/nano-banana-request.json",
+            "sha256": "4c7c8aef50b625c7f990fa323810b2870c6eae3d146e2baeacf32b676d582f55",
+            "bytes": 2825
+          },
+          "reviewFile": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/self-review.v1.json",
+          "verdict": "NEEDS_REVISION",
+          "defects": [
+            "Der zusätzliche blaue Planet links unten besitzt keine eindeutig zugeordnete Bahn; die gemeinsame Systemdarstellung wird dadurch unklar.",
+            "Die Sonne liegt im Bild nicht nachvollziehbar im Brennpunkt der schrägen Kometenellipse. Ein richtiger Captiontext rettet diese räumlich irreführende Umlaufdarstellung nicht."
+          ]
+        },
+        {
+          "version": "V2",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "requestedModel": "gemini-3-pro-image",
+          "referenceStrategy": "explicit V1 JPEG reference plus narrow correction prompt",
+          "referenceImage": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93.generated.2026-09-07T19-52-33-190Z.jpg",
+            "sha256": "97cb243315d7e9b685544501774c249a14f9b3956772474d479c03123a896ed2"
+          },
+          "image": {
+            "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v2-evidence/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93.generated.2026-09-07T20-06-50-837Z.jpg",
+            "sha256": "1ac72c0744d835702350161634f9708f356dc5fa067377cc7b7185fd6ec0afa7",
+            "bytes": 1524265
+          },
+          "actualSentPrompt": {
+            "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v2-evidence/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/nano-banana-prompt.de.md",
+            "sha256": "16e13c56cbecd2606f57f080d741ed8105f11568a528c01b155714f83bbe1d71",
+            "bytes": 3734
+          },
+          "actualRequest": {
+            "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v2-evidence/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93/nano-banana-request.json",
+            "sha256": "d06ee6b5fec28f6ffa3a96cc956440a486d738b88c77afeead881c63519d0c66",
+            "bytes": 2572172
+          },
+          "reviewFile": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/self-review.v2-first-three.json",
+          "verdict": "NEEDS_REVISION",
+          "defects": [
+            "Die Kometenellipse hat in der tatsächlich geöffneten 2048px-Rasteransicht ungefähr x=1083..1928 und y=371..772, also Mittelpunkt x≈1505.5, a≈422.5, b≈200.5; linker Brennpunkt daher x≈1133.6. Das Sonnenzentrum liegt x≈1215, klar nicht im Brennpunkt. Die Verkleinerung ändert dieses Verhältnis nicht.",
+            "Erneut vier statt genau drei Planeten auf drei Bahnen: zwei Körper auf der äußeren Bahn. Dies ist eine verletzte Vereinfachungsvorgabe; der eigenständige fachliche Ablehnungsgrund bleibt die klar falsche Brennpunktlage."
+          ]
+        }
+      ],
+      "candidate": {
+        "svgPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93.svg",
+        "svgSha256": "sha256:96b8e2156d27f4b493c8f52e40d92373e1260a712696ea855f820bd77abd5823",
+        "pngPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93.png",
+        "pngSha256": "sha256:d3960431df17d70231a2e089d669bce973b79678842efa9346c87bedff4ad3ff",
+        "reconstructionPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93.image-reconstruction-prompt.de.md"
+      },
+      "authorVerdict": "PASS",
+      "imported": false
+    },
+    {
+      "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+      "necessity": "Die Referenzkorrektur beseitigt zwar falsche Ortspunkte und Sonnenminiatur, stellt mondferne und mittlere absolute Anziehung aber weiterhin gleich stark dar. Ein eigenständig aus demselben Abstandsgesetz berechnetes absolutes und relatives Pfeilmodell ist notwendig, um die behauptete Differenzwirkung wirklich abzubilden.",
+      "attempts": [
+        {
+          "version": "V1",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "requestedModel": "gemini-3-pro-image",
+          "referenceStrategy": "new atomic image from current goal and individual approved prompt",
+          "image": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/37013646-f13a-5faf-954c-940f2fd7502f/37013646-f13a-5faf-954c-940f2fd7502f.generated.2026-09-07T19-52-37-717Z.jpg",
+            "sha256": "dbbd805e8c303a160fd6d11233579f5fcf38270379f25be310e0623716efd7dc"
+          },
+          "actualSentPrompt": {
+            "originalPath": "tmp/goal-visualizations/37013646-f13a-5faf-954c-940f2fd7502f/nano-banana-prompt.de.md",
+            "persistentPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/37013646-f13a-5faf-954c-940f2fd7502f/nano-banana-prompt.de.md",
+            "sha256": "9f48c61893f5bc0d9adfbcd9b6b88ea99843a159908df32941668349c6f6c75e",
+            "bytes": 3974
+          },
+          "actualRequest": {
+            "originalPath": "tmp/goal-visualizations/37013646-f13a-5faf-954c-940f2fd7502f/nano-banana-request.json",
+            "persistentPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/37013646-f13a-5faf-954c-940f2fd7502f/nano-banana-request.json",
+            "sha256": "a9d54f5e3d7431276d78f67258ad9ac7e12d51ae18bebda5b194b483a07519c6",
+            "bytes": 3315
+          },
+          "reviewFile": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/self-review.v1.json",
+          "verdict": "NEEDS_REVISION",
+          "defects": [
+            "Die untere Sonnenminiatur zeigt einen linksgerichteten F_Sonne-Pfeil an der rechts stehenden Sonne, während Mond und Sonne beide rechts der Erde liegen. Damit wird keine konsistente Überlagerung der Kräfte auf dieselben Erdbereiche gezeigt.",
+            "Die Benennung 'erdfern' ist für den mondfernen Punkt ungeeignet; sie stammt bereits aus meinem V1-Prompt und muss ehrlich als Promptfehler korrigiert werden.",
+            "Zweimal englisches 'Moon' statt deutscher Beschriftung. Der linke Bezugspunkt liegt nicht eindeutig auf der bezeichneten Erdoberfläche; bei einer präzisierten Oberflächengegenüberstellung ist er nach außen zu versetzen."
+          ]
+        },
+        {
+          "version": "V2",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "requestedModel": "gemini-3-pro-image",
+          "referenceStrategy": "explicit V1 JPEG reference plus narrow correction prompt",
+          "referenceImage": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/37013646-f13a-5faf-954c-940f2fd7502f/37013646-f13a-5faf-954c-940f2fd7502f.generated.2026-09-07T19-52-37-717Z.jpg",
+            "sha256": "dbbd805e8c303a160fd6d11233579f5fcf38270379f25be310e0623716efd7dc"
+          },
+          "image": {
+            "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v2-evidence/37013646-f13a-5faf-954c-940f2fd7502f/37013646-f13a-5faf-954c-940f2fd7502f.generated.2026-09-07T20-06-52-550Z.jpg",
+            "sha256": "25fc2fe3d6c5f8662116eeb7661a2e1785e0f54dcf5e405742e1b41a70c4277b",
+            "bytes": 1693952
+          },
+          "actualSentPrompt": {
+            "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v2-evidence/37013646-f13a-5faf-954c-940f2fd7502f/nano-banana-prompt.de.md",
+            "sha256": "94300da17becc002124668f895ea1582230b56a0790256f514a6b10a298639e5",
+            "bytes": 3880
+          },
+          "actualRequest": {
+            "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v2-evidence/37013646-f13a-5faf-954c-940f2fd7502f/nano-banana-request.json",
+            "sha256": "52a55efe7876e957e5ced35af61429decc6bd5a3731c327839b8d8354054c616",
+            "bytes": 2716440
+          },
+          "reviewFile": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/self-review.v2-first-three.json",
+          "verdict": "NEEDS_REVISION",
+          "defects": [
+            "Die absoluten Pfeile am mondfernen Punkt (etwa x=100..232) und Mittelpunkt (etwa x=300..433) sind praktisch gleich lang. Damit fehlt genau der ungleich starke Anzug zwischen mondferner Oberfläche und Erdmitte, der im rechten Panel die linke Differenzwirkung begründen soll. Mondnah ist zwar länger, aber die Dreipunkt-Begründung bleibt widersprüchlich.",
+            "Beide Mondbeschriftungen sind trotz expliziter Korrektur erneut englisch 'Moon' statt 'Mond'. Dies allein ist kein neuer physikalischer Fehler, aber eine weiterhin verletzte enge Sprachkorrektur."
+          ]
+        }
+      ],
+      "candidate": {
+        "svgPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/37013646-f13a-5faf-954c-940f2fd7502f.svg",
+        "svgSha256": "sha256:a9267077bb0b8e5ed7d4dd7dfab4416c6a09b6fc301ed8dc5691622e12676ad1",
+        "pngPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/37013646-f13a-5faf-954c-940f2fd7502f.png",
+        "pngSha256": "sha256:a658b2d83ad4a0ace800f8730b9a49f581a8ee59cf83115f9a56f208d1172e85",
+        "reconstructionPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/37013646-f13a-5faf-954c-940f2fd7502f.image-reconstruction-prompt.de.md"
+      },
+      "authorVerdict": "PASS",
+      "imported": false
+    },
+    {
+      "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+      "necessity": "Die erste Fassung verzerrt den Spektralvergleich und die Teilchenchronik; die gezielte Wellenkorrektur führt neue, vom Zentrum ausgehende CMB-Pfeile ein. Ein originäres, berechnetes Wellenschema und explizit einfallende Strahlung sind notwendig, um Rotverschiebung und Hintergrundstrahlung ohne diese Fehlvorstellungen zu erläutern.",
+      "attempts": [
+        {
+          "version": "V1",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "requestedModel": "gemini-3-pro-image",
+          "referenceStrategy": "new atomic image from current goal and individual approved prompt",
+          "image": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/c52d55c3-b687-586c-b0f9-8ffcd1069424/c52d55c3-b687-586c-b0f9-8ffcd1069424.generated.2026-09-07T19-52-35-979Z.jpg",
+            "sha256": "570932b4b61e8f7059e9f72e7060af4828c6c024efac000ac7f5a08e5775d7ec"
+          },
+          "actualSentPrompt": {
+            "originalPath": "tmp/goal-visualizations/c52d55c3-b687-586c-b0f9-8ffcd1069424/nano-banana-prompt.de.md",
+            "persistentPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/c52d55c3-b687-586c-b0f9-8ffcd1069424/nano-banana-prompt.de.md",
+            "sha256": "87785f911e95e44190aadd057e317e7195d56162d6e6de6a19519603f05360e0",
+            "bytes": 3950
+          },
+          "actualRequest": {
+            "originalPath": "tmp/goal-visualizations/c52d55c3-b687-586c-b0f9-8ffcd1069424/nano-banana-request.json",
+            "persistentPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/c52d55c3-b687-586c-b0f9-8ffcd1069424/nano-banana-request.json",
+            "sha256": "be44d9f60199ca15d8c391230e7bb7dc08cd455e9ecb08369541c7e2b2e4a4cb",
+            "bytes": 3214
+          },
+          "reviewFile": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/self-review.v1.json",
+          "verdict": "NEEDS_REVISION",
+          "defects": [
+            "Die beiden Spektren haben unterschiedliche Darstellungsbreiten und kein nachvollziehbares gemeinsames Wellenlängenmaß. Die Abstände korrespondierender Linien werden nicht einheitlich gestreckt; besonders der letzte Abstand ändert sich unverhältnismäßig.",
+            "Die frühe Darstellung berührender Teilchengruppen und spätere Einzelteilchen bleibt als Mikroprozess missverständlich; diesen ergänzenden Root-Hinweis übernehme ich nach eigener erneuter Sichtung, nicht als vorab blinden Befund."
+          ]
+        },
+        {
+          "version": "V2",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "requestedModel": "gemini-3-pro-image",
+          "referenceStrategy": "explicit V1 JPEG reference plus narrow correction prompt",
+          "referenceImage": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v1-evidence/c52d55c3-b687-586c-b0f9-8ffcd1069424/c52d55c3-b687-586c-b0f9-8ffcd1069424.generated.2026-09-07T19-52-35-979Z.jpg",
+            "sha256": "570932b4b61e8f7059e9f72e7060af4828c6c024efac000ac7f5a08e5775d7ec"
+          },
+          "image": {
+            "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v2-evidence/c52d55c3-b687-586c-b0f9-8ffcd1069424/c52d55c3-b687-586c-b0f9-8ffcd1069424.generated.2026-09-07T20-06-52-198Z.jpg",
+            "sha256": "ebe66a1e9ca44ac01fce9f25319092f1de33f928fd58ee04257419cbca084b0c",
+            "bytes": 1908484
+          },
+          "actualSentPrompt": {
+            "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v2-evidence/c52d55c3-b687-586c-b0f9-8ffcd1069424/nano-banana-prompt.de.md",
+            "sha256": "d9461fbd341a6e5f88031bb6609f75c451fdb4702ae0317d6de08be6ec075e60",
+            "bytes": 4126
+          },
+          "actualRequest": {
+            "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/v2-evidence/c52d55c3-b687-586c-b0f9-8ffcd1069424/nano-banana-request.json",
+            "sha256": "ba4328626c005e71b875cbf6c209180ae13eeba896b81f891281535a0af5af9e",
+            "bytes": 3134624
+          },
+          "reviewFile": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/self-review.v2-first-three.json",
+          "verdict": "NEEDS_REVISION",
+          "defects": [
+            "Das Symbol zur Hintergrundstrahlung zeigt acht WELLENPFEILE VOM gemeinsamen hellen Zentrum NACH AUSSEN, während das Label Strahlung 'aus allen Richtungen' ankündigt. Dies stellt die Strahlungsrichtung am Beobachter umgekehrt dar und erinnert an einen zentralen Emissions-/Explosionsort. Der vereinfachte Beobachtungsbeleg darf diese neue Richtungsfehlvorstellung nicht vermitteln.",
+            "Obere und untere Wellenzüge sind nicht exakt gleich lang; die Wellenzahl entspricht nicht genau drei zu zwei Perioden. Ohne numerische Wertbehauptung ist die qualitative größere Wellenlänge dadurch noch nicht falsch; dieser Promptdrift ist nicht der entscheidende Ablehnungsgrund."
+          ]
+        }
+      ],
+      "candidate": {
+        "svgPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/c52d55c3-b687-586c-b0f9-8ffcd1069424.svg",
+        "svgSha256": "sha256:6cca55a58058f82caf4c1105d110575c370b21ffc7ee955149ab322098133b47",
+        "pngPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/c52d55c3-b687-586c-b0f9-8ffcd1069424.png",
+        "pngSha256": "sha256:fcb72bb4a1608fb030f1b4e6c37cff15f617d99a85111e3a4e50b1a120902593",
+        "reconstructionPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-b040-split-seven-images-v1/native-fallback-candidates-v1/c52d55c3-b687-586c-b0f9-8ffcd1069424.image-reconstruction-prompt.de.md"
+      },
+      "authorVerdict": "PASS",
+      "imported": false
+    }
+  ]
+}

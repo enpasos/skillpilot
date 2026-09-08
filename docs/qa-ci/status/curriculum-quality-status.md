@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-09-07T15:48:59.036Z
+Generated: 2026-09-07T21:06:02.165Z
 Rules version: curriculum-quality-v4
 
 ## Summary
@@ -270,7 +270,7 @@ Rules version: curriculum-quality-v4
 | Physik (Gymnasium, DE) | DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 42 | 301 | 24 | 277 | 8% | - |  |
 | Physik (Gymnasium, DE) | DE-HB - Physik Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 7 | 68 | 35 | 33 | 51% | - |  |
 | Physik (Gymnasium, DE) | Physik Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 10 | 214 | 146 | 68 | 68% | - |  |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 21 | 274 | 186 | 88 | 68% | - |  |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 21 | 274 | 185 | 89 | 68% | - |  |
 | Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 48 | 35 | 13 | 73% | - |  |
 | Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 8 | 128 | 57 | 71 | 45% | - |  |
 | Physik (Gymnasium, DE) | Physik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 10 | 154 | 89 | 65 | 58% | - |  |

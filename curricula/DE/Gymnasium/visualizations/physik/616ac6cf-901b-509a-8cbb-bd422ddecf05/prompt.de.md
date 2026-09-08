@@ -4,55 +4,31 @@
 
 - SkillPilot-ID: `616ac6cf-901b-509a-8cbb-bd422ddecf05`
 - Titel: Entropie E11: Entropieproduktion und Irreversibilität
-- Beschreibung: Die lernende Person identifiziert typische Ursachen für Entropieproduktion (Reibung, Mischung/Diffusion, endliche Temperaturdifferenzen, freie Expansion) und erklärt qualitativ, warum diese Prozesse nicht rückwärts laufen.
+- Beschreibung: Die lernende Person kann Reibung, Mischung beziehungsweise Diffusion, Wärmeaustausch bei endlicher Temperaturdifferenz und freie Expansion als Ursachen von Entropieproduktion erklären und begründen, warum sie sich nicht ohne bleibende Änderungen in System und Umgebung vollständig umkehren lassen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: SkillPilot repository-native SVG (documented Nano Banana correctness exception)
 - Status: pilot
-- Quellbild: `616ac6cf-901b-509a-8cbb-bd422ddecf05.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/616ac6cf-901b-509a-8cbb-bd422ddecf05/616ac6cf-901b-509a-8cbb-bd422ddecf05.jpg`
+- Quellbild: `616ac6cf-901b-509a-8cbb-bd422ddecf05.png`
+- Public Asset: `/assets/goal-visualizations/physik/616ac6cf-901b-509a-8cbb-bd422ddecf05/616ac6cf-901b-509a-8cbb-bd422ddecf05.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erstelle eine präzise deutschsprachige Physik-Lerngrafik im Format 1600×900 (16:9), heller Hintergrund, dunkelblaue gut lesbare Schrift. Titel: „Entropieproduktion und Irreversibilität“.
 
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Oben eindeutig die betrachtete Grenze nennen: „Isoliertes Gesamtsystem: alle beteiligten Körper + Umgebung“. Daneben beziehungsweise darunter gilt für die dargestellten irreversiblen Vorgänge „ΔS_ges = S_erzeugt > 0“. Es darf nicht die Entropie jedes beliebigen Teilsystems pauschal als zunehmend bezeichnet werden.
 
-Titel: Entropie E11: Entropieproduktion und Irreversibilität
-Beschreibung: Die lernende Person identifiziert typische Ursachen für Entropieproduktion (Reibung, Mischung/Diffusion, endliche Temperaturdifferenzen, freie Expansion) und erklärt qualitativ, warum diese Prozesse nicht rückwärts laufen.
+Vier klar getrennte Felder in einem 2×2-Raster:
+1. „Reibung“: Ein Block auf einer rauen Unterlage, Bewegungspfeil nach rechts mit „v nimmt ab“. Keine externe Heizung. Erklärung: „Geordnete Bewegung → innere Energie“. „Körper und Unterlage erwärmen sich.“ „Energie bleibt erhalten; Entropie wird erzeugt.“
+2. „Mischung / Diffusion“: Ein geschlossenes Gefäß mit einer inneren Trennwand, links gleichmäßig orangefarbene Fläche „Gas A“, rechts gleichmäßig blaue Fläche „Gas B“. Ein Prozesspfeil führt zu einem exakt gleich großen geschlossenen Gefäß mit einheitlich violetter Fläche „homogenes Gemisch“, ohne innere Trennwand. Beide Gefäße müssen identische Außenabmessungen haben. Keine einzeln zählbaren Teilchenpunkte. Texte: „Verschiedene ideale Gase, anfangs gleiches T und p.“ „Trennwand entfernt; Stoffmengen und Gesamtvolumen gleich.“
+3. „Endliche Temperaturdifferenz“: Ein orangefarbenes warmes Teil „heiß: T_h“ und ein blaues „kalt: T_c“. Genau ein gerichteter Wärmepfeil zeigt von heiß nach kalt. Text: „T_h > T_c: Wärme fließt spontan von heiß nach kalt.“ Keine Flamme, keine dritte Wärmequelle; keine fehlleitenden ungerichteten Heizsymbole.
+4. „Freie Expansion“: Anfangs ein geschlossenes starres Gefäß mit innerer Trennwand: eine Hälfte als kontinuierliche blaue Gasfläche, die andere weiß als „Vakuum“. Ein Prozesspfeil führt zu einem exakt gleich großen geschlossenen Gefäß mit gleichmäßig hellblauer Füllung „Gas im ganzen Raum“. Keine Teilchenpunkte. Nur die innere Trennwand wird entfernt; die Außenwand bleibt durchgehend geschlossen. Texte: „Isoliertes geschlossenes Gefäß; Teilchenzahl bleibt gleich.“ „Nur die innere Trennwand entfällt, nicht die Außenwand.“
 
-Zusatzanweisung:
-Pflichtinhalt:
+Abschluss: „Ein Teilsystem zurückzuführen bedeutet nicht, das Ganze vollständig umzukehren.“ „Entropieproduktion ist nicht bloß Entropietransport. Im isolierten Ganzen gibt es keinen Transport nach außen.“
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Entropieproduktion und Irreversibilitaet`.
-- Show the formula idea: `Delta S_ges = Delta S_Austausch + S_erzeugt`.
-- State clearly: `irreversibel: S_erzeugt > 0`.
-- Use four text-and-icon cards for typical causes:
-  1. `Reibung`
-  2. `Mischung / Diffusion`
-  3. `endliche Temperaturdifferenz`
-  4. `freie Expansion`
-- Add conclusion: `Diese Prozesse laufen nicht von selbst rueckwaerts`.
-- Icons may be static and symbolic only; no motion or process direction may be encoded.
-- Strict arrow rule: no arrows anywhere in the image. Use static cards and text only.
-
-Vermeiden:
-
-- Do not draw process arrows, diffusion arrows, heat arrows, expansion arrows, or rewind arrows.
-- Do not claim entropy is destroyed.
-- Do not show `S_erzeugt < 0`.
-- Do not imply a real irreversible process can run backward by itself.
-- Do not use broken glass, spills, or messy irreversible icons if they distract from the thermodynamics.
+Keine technischen IDs, keine Freigabestempel oder Leistungsbehauptungen. Alle vier Modelle sind Schemata; Farben stehen für Gase beziehungsweise warme/kalte Körper, nicht für zusätzliche zählbare Teilchen oder äußere Energiequellen. Alles muss lesbar und ohne Anschnitt sichtbar sein.
 ```
 
 ## Review-Notiz

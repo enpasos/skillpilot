@@ -1,0 +1,931 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "informed_content_counterreview_not_blind",
+  "reviewer": "/root/physics_b043_blind_a",
+  "exactModelIdentity": "unknown",
+  "status": "ai_candidate_content_review_complete_not_human_approval",
+  "reviewedGoalCount": 20,
+  "revisedProfileCount": 16,
+  "unchangedProfileCount": 4,
+  "criteriaPath": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/physics-positive-understanding-evidence-profile-criteria-v1.md",
+  "beforeReviewSha256": "sha256:0cc593cd4e0ef5553c967674bc4ee9d96d9448dbb2acfe08206d5e638d65e281",
+  "beforeCandidateSha256": "sha256:541c98218b59ed272e04fea0e2995f2d49e93a75fe52f528043709059de72cd0",
+  "afterHashes": {
+    "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-043-thermodynamics-current-v1.config.json": "sha256:7b871fe64cb311e0675f4220c432a640716b2c1402444963dd8fe7075e15ad06",
+    "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-043-thermodynamics-current-v1.candidates.json": "sha256:6fcc30fef73f43fa3f70b493f35405b20cb94d6d6a607a865a60d547f57c32d2",
+    "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-043-thermodynamics-current-v1.review.jsonl": "sha256:a66b17ae385db41fdfcb34fef43a435d608915d2b377d8554e7fc34a661f2df7"
+  },
+  "validation": {
+    "nativeMaterializerWrite": "PASS: Wrote 20 current AI candidate profiles.",
+    "nativeMaterializerReadOnlyVerification": "PASS: Verified 20 current AI candidate profiles.",
+    "emitHelperSyntax": "PASS: node --check",
+    "allAiCandidateE1G1NoRunClaims": true
+  },
+  "authorityLimitations": [
+    "No canonical D text, source, composition-view, active A/M/card ledger, central P registration or runtime contract was written by this counterreview.",
+    "The actual 20 profile texts and canonical DE/EN descriptions were read; all criteria, model limits, task/expectation alignment and fresh transfer checks are addressed per goal.",
+    "No compiled source/projection evidence was independently reverified in this informed counterreview. No human approval, learner mastery, empirical trial, blind new review run or exact model identity is claimed.",
+    "New transfer checks are reviewer-created thought/calculation checks, not actual learner demonstrations.",
+    "Image import decisions belong to root; image-resource digests are technical input bindings, not a content approval of the raster."
+  ],
+  "records": [
+    {
+      "i": 0,
+      "goalId": "37b33812-d428-5953-852e-57a53a4347fe",
+      "beforeFinding": "Both cases compared unequal particle masses at equal T; case 1 instead expected a higher-T comparison.",
+      "afterDecision": "Revise case 1 to temperature change versus particle-number change; retain independent mass-at-equal-T case.",
+      "freshIndependentCheck": "At 450 K, helium and neon have equal mean translational energy; doubling only N doubles total translational energy but leaves T unchanged.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann im klassischen Modell eines idealen Gases erklären, wie die absolute Temperatur mit der mittleren kinetischen Energie der ungeordneten Translationsbewegung der Teilchen zusammenhängt.",
+      "canonicalDescriptionEn": "The learner can explain, within the classical ideal-gas model, how absolute temperature relates to the mean kinetic energy of the particles' random translational motion.",
+      "beforeProfileFingerprint": "sha256:efa47bc1bfb11f0185216ce4ac975b83891327a4aa7f4219698060d5ec4fa364",
+      "afterProfileFingerprint": "sha256:3bc2ea8e4bf2b0d01fc6397cffb4d12d4fc974e2da51a50ce05bddec91d9da54",
+      "currentGoalFingerprint": "sha256:5d384335f8c7ca45a1f50ab23ebbbf5d0ee71459a3504561380fadb1364c851c",
+      "changes": [
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Zwei klassische ideale Gase unterschiedlicher Teilchenmasse haben dieselbe Kelvin-Temperatur. Erkläre ohne Bildvorlage, welche Aussage über die mittlere kinetische Translationsenergie möglich ist und warum daraus weder gleiche Teilchengeschwindigkeiten noch identische Einzelenergien folgen.",
+          "after": "Eine feste Menge eines klassischen idealen Gases wird von 300 K auf 600 K erwärmt. Konstruiere ohne Vorlage zwei schematische Teilchenbilder und begründe, wie sich die mittlere kinetische Translationsenergie verändert. Erkläre außerdem, ob bloßes Verdoppeln der Teilchenzahl bei 300 K denselben Temperatureffekt hätte."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "Two classical ideal gases with different particle masses have the same temperature in kelvin. Without a supplied diagram, explain what can be said about their mean translational kinetic energy and why neither equal particle speeds nor identical individual energies follow.",
+          "after": "A fixed amount of a classical ideal gas is heated from 300 K to 600 K. Construct two schematic particle diagrams without a template and explain how the mean translational kinetic energy changes. Also explain whether merely doubling particle number at 300 K would have the same temperature effect."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person erklärt ohne Vorlage anhand zweier Teilchenmodelle, warum eine höhere Temperatur eine höhere mittlere Bewegungsenergie bedeutet, und unterscheidet diese Mittelwertaussage von Aussagen über einzelne Teilchen oder die Teilchenanzahl.",
+          "after": "Die lernende Person begründet die Verdopplung der mittleren Translationsenergie, kennzeichnet unterschiedliche Einzelbewegungen statt einer gemeinsamen Teilchengeschwindigkeit und erklärt, dass mehr Teilchen bei gleicher mittlerer Energie die Temperatur nicht erhöhen."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "Without a template, the learner explains using two particle models why a higher temperature means higher mean kinetic energy, and distinguishes this statement about an average from claims about individual particles or particle number.",
+          "after": "The learner justifies doubling the mean translational energy, depicts varied individual motions rather than one shared particle speed, and explains that more particles at unchanged mean energy do not raise the temperature."
+        }
+      ]
+    },
+    {
+      "i": 1,
+      "goalId": "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+      "beforeFinding": "Rough-body task incorrectly expected an independently analyzed piston.",
+      "afterDecision": "Align general observable performance and first-case expectation to rough body, heated surface, driving surroundings and recoverable work; retain free-expansion transfer.",
+      "freshIndependentCheck": "Compressing freely expanded gas restores V, but external work and any released heat prevent restoration of system plus surroundings as the sole effect.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann reversible und irreversible thermodynamische Vorgänge an Beispielen unterscheiden und Konsequenzen für die Energieumwandlung beschreiben.",
+      "canonicalDescriptionEn": "The learner can distinguish reversible and irreversible thermodynamic processes using examples and describe consequences for energy conversion.",
+      "beforeProfileFingerprint": "sha256:4123d76f00a7678b1ed922b1453d0e10cdc4755cf0ae8f319e20ce98837ca592",
+      "afterProfileFingerprint": "sha256:d2693c8eabb5623a6a89aa5b90ca503db278db2a248d9b2fe72032f4022a895c",
+      "currentGoalFingerprint": "sha256:28a701c557a81c947d3ec5d6430e6083c3de966758dbb6ace73ddd9e93f33a80",
+      "changes": [
+        {
+          "field": "profile.expectations[0].observablePerformanceDe",
+          "before": "Die lernende Person unterscheidet selbstständig eine idealisiert umkehrbare Kolbenbewegung von reibungsbedingter Erwärmung und beschreibt, welche Änderung beim versuchten Rückgängigmachen in der Umgebung verbleibt und was das für nutzbare Arbeit bedeutet.",
+          "after": "Die lernende Person unterscheidet an selbstständig erläuterten Beispielen reversible Grenzfälle von Reibung oder freier Expansion, betrachtet System und Umgebung gemeinsam und begründet die verbleibenden Änderungen sowie deren Bedeutung für nutzbare Arbeit."
+        },
+        {
+          "field": "profile.expectations[0].observablePerformanceEn",
+          "before": "The learner independently distinguishes an idealized reversible piston motion from frictional heating, describing what change remains in the surroundings after an attempted reversal and what this implies for useful work.",
+          "after": "Using independently explained examples, the learner distinguishes reversible limits from friction or free expansion, considers system and surroundings together, and justifies lasting changes and their significance for useful work."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Ein Körper wird über eine raue Unterlage geschoben und an den Ausgangsort zurückgebracht. Erkläre selbstständig, ob damit auch der thermodynamische Ausgangszustand wiederhergestellt ist; vergleiche mit einem ideal reibungsfreien Grenzfall.",
+          "after": "Ein Körper wird über eine raue Unterlage geschoben und an den Ausgangsort zurückgebracht. Betrachte Körper, Unterlage und antreibende Umgebung: Ist damit der thermodynamische Ausgangszustand insgesamt wiederhergestellt? Begründe die Folgen für zurückgewinnbare Arbeit und vergleiche einen ideal reibungsfreien Grenzfall."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "A body is pushed over a rough surface and returned to its starting position. Independently explain whether this also restores the initial thermodynamic state; compare with an ideal frictionless limiting case.",
+          "after": "A body is pushed over a rough surface and returned to its starting position. Consider the body, surface and driving surroundings: has the overall initial thermodynamic state been restored? Justify the implications for recoverable work and compare an ideal frictionless limit."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person unterscheidet selbstständig eine idealisiert umkehrbare Kolbenbewegung von reibungsbedingter Erwärmung und beschreibt, welche Änderung beim versuchten Rückgängigmachen in der Umgebung verbleibt und was das für nutzbare Arbeit bedeutet.",
+          "after": "Die lernende Person unterscheidet räumliche Rückkehr von thermodynamischer Rückführung, benennt Erwärmung und äußeren Arbeitsaufwand und erklärt, warum deren Folgen nicht durch Zurückschieben verschwinden."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "The learner independently distinguishes an idealized reversible piston motion from frictional heating, describing what change remains in the surroundings after an attempted reversal and what this implies for useful work.",
+          "after": "The learner distinguishes returning to the same position from thermodynamic restoration, identifies warming and external work input, and explains why pushing the body back does not eliminate their effects."
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "goalId": "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+      "beforeFinding": "Case supplied ΔU=Q+W while requiring formulation without a supplied equation; storage-versus-transfer distinction was not demanded.",
+      "afterDecision": "Remove equation leakage and ask explicitly for transfer meaning; separate rigid heating/cooling from independent insulated compression.",
+      "freshIndependentCheck": "Insulated compression with 40 J work on stationary gas yields Q=0, ΔU=+40 J; no stored 'work content' results.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann den ersten Hauptsatz $\\Delta U = Q + W$ als Energiebilanz eines geschlossenen Systems erklären und formulieren: $Q$ ist die zugeführte Wärme und $W$ die am System verrichtete Arbeit, jeweils mit Vorzeichen.",
+      "canonicalDescriptionEn": "The learner can explain and state the first law $\\Delta U = Q + W$ as the energy balance of a closed system: $Q$ is heat supplied to the system and $W$ is work done on it, each with its sign.",
+      "beforeProfileFingerprint": "sha256:6b0d406239050cfefa4c40e93726e7aa60175e5f442dd00d99096b7c167d98af",
+      "afterProfileFingerprint": "sha256:69b84c0b8251da995d11e6d462a4db5a4afbd13f18f1e48867cc9dce4de05a17",
+      "currentGoalFingerprint": "sha256:f33e34c61c21d571b8b360c7d598fe64712d5c4664aea2c8feb00586f1601bd9",
+      "changes": [
+        {
+          "field": "profile.expectations[0].observablePerformanceDe",
+          "before": "Die lernende Person formuliert ohne vorgegebene Gleichung die Bilanz für ein Gas im Kolben, ordnet Wärmezufuhr, Wärmeabgabe, Kompression und Expansion den Größen und Vorzeichen zu und erklärt, warum Q und W keine im Gas gespeicherten Bestände sind.",
+          "after": "Die lernende Person formuliert ohne vorgegebene Gleichung die Energiebilanz des geschlossenen Gases mit einer erklärten Arbeitskonvention, begründet Vorzeichen für Heizen, Kühlen oder Kompression und unterscheidet innere Energie als Zustandsgröße von Wärme und Arbeit als Übertragungen."
+        },
+        {
+          "field": "profile.expectations[0].observablePerformanceEn",
+          "before": "Without a supplied equation, the learner states the balance for gas in a piston, assigns heat input, heat output, compression and expansion to the quantities and signs, and explains why Q and W are not stored contents of the gas.",
+          "after": "Without a supplied equation, the learner states the closed gas's energy balance with an explained work convention, justifies signs for heating, cooling or compression, and distinguishes internal energy as a state variable from heat and work as transfers."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Ein ruhender geschlossener Gasbehälter wird einmal geheizt und in einem zweiten Fall durch einen Kolben komprimiert. Zeichne eigene Energiepfeile, erläutere ΔU=Q+W und ordne positive und negative Übertragungen der Konvention Arbeit am Gas zu.",
+          "after": "Ein ruhender starrer geschlossener Gasbehälter ohne andere Arbeitsübertragung wird geheizt; anschließend kühlt er wieder ab. Formuliere ohne vorgegebene Gleichung die Bilanz zwischen innerer Energie, Wärme und Arbeit mit Arbeit am Gas als positiver Größe. Zeichne eigene Energiepfeile, begründe die Vorzeichen und erläutere, ob Wärme und Arbeit gespeicherte Bestände des Gases sind."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "A stationary closed gas container is heated in one case and compressed by a piston in a second case. Draw your own energy arrows, explain ΔU=Q+W, and assign positive and negative transfers using work on the gas as the convention.",
+          "after": "A stationary rigid closed gas container without other work transfer is heated and then cools again. Without a supplied equation, state the balance between internal energy, heat and work, with work on the gas positive. Draw your own energy arrows, justify the signs, and explain whether heat and work are stored contents of the gas."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person formuliert ohne vorgegebene Gleichung die Bilanz für ein Gas im Kolben, ordnet Wärmezufuhr, Wärmeabgabe, Kompression und Expansion den Größen und Vorzeichen zu und erklärt, warum Q und W keine im Gas gespeicherten Bestände sind.",
+          "after": "Die lernende Person formuliert ΔU=Q+W mit Arbeit am Gas positiv; bei einem starren Behälter ohne andere Arbeitsübertragung gilt W=0. Sie begründet Q>0 beim Heizen und Q<0 beim Kühlen und unterscheidet die Zustandsgröße U von den Übertragungsgrößen Q und W."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "Without a supplied equation, the learner states the balance for gas in a piston, assigns heat input, heat output, compression and expansion to the quantities and signs, and explains why Q and W are not stored contents of the gas.",
+          "after": "The learner states ΔU=Q+W with work on the gas positive; for a rigid vessel without other work transfer, W=0. They justify Q>0 for heating and Q<0 for cooling and distinguish the state variable U from transfer quantities Q and W."
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "goalId": "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+      "beforeFinding": "Case 1 only sorted given signs, but expected autonomous system choice and direction prediction for two bodies.",
+      "afterDecision": "Replace sign recognition with two-body prediction, local versus total entropy and reversible-limit comparison; retain externally powered cooling transfer.",
+      "freshIndependentCheck": "A freezer can lower its interior entropy while releasing greater entropy to the room; it does not reverse isolated spontaneous equalization.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann den zweiten Hauptsatz für ein isoliertes Gesamtsystem als $\\Delta S_{\\mathrm{ges}} \\ge 0$ formulieren, reversible und irreversible Prozesse durch $\\Delta S_{\\mathrm{ges}} = 0$ beziehungsweise $\\Delta S_{\\mathrm{ges}} > 0$ unterscheiden und daraus die Richtung spontaner Abläufe begründen.",
+      "canonicalDescriptionEn": "The learner can state the second law for an isolated total system as $\\Delta S_{\\mathrm{tot}} \\ge 0$, distinguish reversible and irreversible processes through $\\Delta S_{\\mathrm{tot}} = 0$ and $\\Delta S_{\\mathrm{tot}} > 0$, respectively, and use this to justify the direction of spontaneous processes.",
+      "beforeProfileFingerprint": "sha256:3cac395df344aeaa69b8e3f6c31a894d6d4e2a06f11eb628a9468dcfd2275d75",
+      "afterProfileFingerprint": "sha256:41c54c4931542762b8cf12fac4cd4efc4f7da35cce59ffe88160a96617251174",
+      "currentGoalFingerprint": "sha256:7a0efe091aeb6135fb50c1541d33fc90add2f585ce73cbc472b5a21d22273559",
+      "changes": [
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Für ein nach außen isoliertes System werden zwei Prozessbilanzen vorgelegt: ΔS_ges=0 und ΔS_ges>0. Ordne beide dem reversiblen Grenzfall oder einem irreversiblen Vorgang zu und erkläre, warum eine negative Entropieänderung eines einzelnen Teils nicht genügt, den zweiten Hauptsatz zu widerlegen.",
+          "after": "Zwei verschieden warme Körper sind zusammen nach außen isoliert. Wähle die Grenze des Gesamtsystems und begründe mit dem zweiten Hauptsatz die spontane Richtung des Temperaturausgleichs. Erkläre die Vorzeichen der Entropieänderungen beider Teile und des Ganzen sowie den Unterschied zum reversiblen Grenzfall."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "Two process balances are supplied for a system isolated from the outside: ΔS_tot=0 and ΔS_tot>0. Assign them to the reversible limit or an irreversible process and explain why a negative entropy change in one part alone does not refute the second law.",
+          "after": "Two bodies at different temperatures are jointly isolated from the outside. Choose the total-system boundary and use the second law to justify the spontaneous direction of temperature equalization. Explain the signs of the entropy changes of each part and the whole, and the difference from the reversible limit."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person wählt selbstständig das Gesamtsystem zweier thermisch kontaktierter Körper, unterscheidet deren Entropieänderungen von der Gesamtänderung und erklärt mit dem zweiten Hauptsatz, welche Richtung des spontanen Temperaturausgleichs möglich ist.",
+          "after": "Die lernende Person sagt Wärmefluss von heiß nach kalt voraus, trennt die Entropieabnahme des heißen von der Zunahme des kalten Körpers und begründet ΔS_ges>0 für den irreversiblen Ausgleich gegenüber ΔS_ges=0 im reversiblen Grenzfall."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "The learner independently selects the total system consisting of two bodies in thermal contact, distinguishes their entropy changes from the total change, and uses the second law to explain the possible direction of spontaneous temperature equalization.",
+          "after": "The learner predicts heat flow from hot to cold, distinguishes the hot body's entropy decrease from the cold body's increase, and justifies ΔS_tot>0 for irreversible equalization versus ΔS_tot=0 in the reversible limit."
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "goalId": "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+      "beforeFinding": "Both cases repeated slow piston with/without friction; finite-temperature heat transfer and free expansion named in the goal were not tested.",
+      "afterDecision": "Retain piston comparison and replace duplicate with slow finite-gradient heat transfer plus free expansion; align expectation to each task.",
+      "freshIndependentCheck": "A low-conductivity barrier slows heat flow but cannot make a finite temperature jump reversible; a free expansion is not quasi-static.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann reversible, irreversible und quasistatische Prozesse an Reibung, Wärmeübertragung bei endlicher Temperaturdifferenz und freier Expansion unterscheiden und erklären, warum quasistatischer Ablauf allein keine Reversibilität garantiert und Reversibilität ein idealer Grenzfall ist.",
+      "canonicalDescriptionEn": "The learner can distinguish reversible, irreversible and quasi-static processes using friction, heat transfer across a finite temperature difference and free expansion, and explain why a quasi-static process alone does not guarantee reversibility and why reversibility is an ideal limiting case.",
+      "beforeProfileFingerprint": "sha256:52d67d1a561d4ff8279ee302425a82064a0be8e17aca16985b6bd62455bc72d3",
+      "afterProfileFingerprint": "sha256:89efeaab929828bfdf4c6d2527312ec6b19fbe011e4a9b6b011e90288318499c",
+      "currentGoalFingerprint": "sha256:03af0ce68f04658f30459f527cc1f87d268ab50a3ac1a137bac4c30913a9bfce",
+      "changes": [
+        {
+          "field": "profile.expectations[0].observablePerformanceDe",
+          "before": "Die lernende Person erläutert an einem vorgegebenen Kolbenmodell selbstständig, ob Gleichgewichtsnähe und vollständige Umkehrbarkeit vorliegen, und begründet getrennt, welche Rolle langsame Bewegung, Reibung und endliche Temperaturdifferenzen spielen.",
+          "after": "Die lernende Person beurteilt Gleichgewichtsnähe und vollständige Umkehrbarkeit getrennt an einem langsamen Kolben, Wärmeübertragung bei endlicher Temperaturdifferenz und freier Expansion und begründet, warum Langsamkeit allein Reversibilität nicht garantiert."
+        },
+        {
+          "field": "profile.expectations[0].observablePerformanceEn",
+          "before": "Using a supplied piston model, the learner independently explains whether near-equilibrium behavior and complete reversibility apply, separately justifying the roles of slow motion, friction and finite temperature differences.",
+          "after": "The learner assesses near-equilibrium behavior and complete reversibility separately for a slow piston, heat transfer across a finite temperature difference and free expansion, explaining why slowness alone does not guarantee reversibility."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Ein Kolben wird sehr langsam bewegt, besitzt aber Reibung. Beurteile getrennt Gleichgewichtsnähe und vollständige Umkehrbarkeit. Vergleiche mit einem ideal reibungsfreien Kolben unter infinitesimalen Druckunterschieden.",
+          "after": "Ein Kolben wird sehr langsam bewegt, besitzt aber Reibung. Beurteile getrennt Gleichgewichtsnähe und vollständige Umkehrbarkeit. Vergleiche mit einem ideal reibungsfreien Kolben unter infinitesimalen Druckunterschieden. Setze für den Grenzfall außerdem reversible Wärmeführung voraus."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "A piston moves very slowly but has friction. Assess near-equilibrium behavior and complete reversibility separately. Compare it with an ideal frictionless piston subject to infinitesimal pressure differences.",
+          "after": "A piston moves very slowly but has friction. Assess near-equilibrium behavior and complete reversibility separately. Compare it with an ideal frictionless piston subject to infinitesimal pressure differences. Also assume reversible heat transfer for the limiting case."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person erläutert an einem vorgegebenen Kolbenmodell selbstständig, ob Gleichgewichtsnähe und vollständige Umkehrbarkeit vorliegen, und begründet getrennt, welche Rolle langsame Bewegung, Reibung und endliche Temperaturdifferenzen spielen.",
+          "after": "Die lernende Person erklärt, dass langsame Kolbenbewegung näherungsweise quasistatisch sein kann, aber Reibung bleibende Änderungen bewirkt. Der reibungsfreie Grenzfall mit infinitesimalem Druckunterschied kann bei ebenfalls reversibler Wärmeführung vollständig umkehrbar sein."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "Using a supplied piston model, the learner independently explains whether near-equilibrium behavior and complete reversibility apply, separately justifying the roles of slow motion, friction and finite temperature differences.",
+          "after": "The learner explains that slow piston motion can be approximately quasi-static, while friction causes lasting changes. The frictionless limit with an infinitesimal pressure difference can be completely reversible if any heat transfer is also reversible."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "In einer neu gestellten Aufgabe wird ein zunächst ideal reibungsfreier langsamer Kolben mit Reibung versehen. Die lernende Person erklärt, weshalb Gleichgewichtsnähe bestehen bleiben kann, obwohl die vollständige Umkehrbarkeit verloren geht.",
+          "after": "Ein Körper nimmt durch einen schlecht leitenden Kontakt sehr langsam Wärme aus einem deutlich heißeren Reservoir auf. Beurteile, ob Langsamkeit allein Reversibilität sichert, und erläutere den reversiblen Grenzfall. Vergleiche anschließend die freie Expansion eines Gases in ein Vakuum innerhalb eines isolierten Gefäßes hinsichtlich Gleichgewichtsnähe und vollständiger Umkehrbarkeit."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "In a fresh task, friction is added to an initially ideal frictionless slow-moving piston. The learner explains why near-equilibrium behavior can remain while complete reversibility is lost.",
+          "after": "A body absorbs heat very slowly through a poorly conducting contact from a substantially hotter reservoir. Assess whether slowness alone guarantees reversibility and explain the reversible limit. Then compare free expansion of a gas into a vacuum inside an isolated vessel in terms of near-equilibrium behavior and complete reversibility."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "In einer neu gestellten Aufgabe wird ein zunächst ideal reibungsfreier langsamer Kolben mit Reibung versehen. Die lernende Person erklärt, weshalb Gleichgewichtsnähe bestehen bleiben kann, obwohl die vollständige Umkehrbarkeit verloren geht.",
+          "after": "Die lernende Person identifiziert die endliche Temperaturdifferenz trotz geringer Übertragungsrate als Ursache der Irreversibilität und beschreibt den Grenzfall verschwindender Temperaturdifferenz. Die freie Expansion ordnet sie als nicht quasistatisch und irreversibel ein; langsame oder fehlende äußere Bewegung genügt nicht als Umkehrbarkeitskriterium."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "In a fresh task, friction is added to an initially ideal frictionless slow-moving piston. The learner explains why near-equilibrium behavior can remain while complete reversibility is lost.",
+          "after": "The learner identifies the finite temperature difference as the cause of irreversibility despite a low transfer rate and describes the limit of a vanishing temperature difference. They classify free expansion as non-quasi-static and irreversible; slow or absent external motion alone is not a reversibility criterion."
+        }
+      ]
+    },
+    {
+      "i": 5,
+      "goalId": "239aac49-1137-5df5-b197-49e72292e40c",
+      "beforeFinding": "Physics and transfer sound; expected formulation of the guiding question was not explicitly requested.",
+      "afterDecision": "Add the already intended guiding-question demand; retain energy-arrow construction and independent friction reversal.",
+      "freshIndependentCheck": "A 20 J transfer from cold to hot can conserve energy mathematically; that balance alone gives no reason for its absence as a spontaneous process.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person begründet, warum Energieerhaltung allein die Richtung realer Prozesse nicht festlegt, und formuliert die Leitfrage: Warum läuft Wärme spontan von heiß nach kalt?",
+      "canonicalDescriptionEn": "The learner explains why energy conservation alone does not determine the direction of real processes and formulates the guiding question: Why does heat flow spontaneously from hot to cold?",
+      "beforeProfileFingerprint": "sha256:cc1bff950d829c36cd9534a013bd88c5084314ffcb8b122aab43a60519c0f8b1",
+      "afterProfileFingerprint": "sha256:33095091f5011c73e7a4c764b87fdd1a24616279e64b7f311bb5f501099edb6a",
+      "currentGoalFingerprint": "sha256:a19de1e7de56e3c947f50956469aa705c8eb5706b5ff625999e00189f0008042",
+      "changes": [
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Zwei thermisch verbundene Körper sind zusammen nach außen isoliert. Entwirf für jede gedachte Wärmeübertragungsrichtung eigene Energiepfeile und erkläre, weshalb die Energieerhaltung allein die spontan beobachtete Richtung nicht auswählt.",
+          "after": "Zwei thermisch verbundene Körper sind zusammen nach außen isoliert. Entwirf für jede gedachte Wärmeübertragungsrichtung eigene Energiepfeile und erkläre, weshalb die Energieerhaltung allein die spontan beobachtete Richtung nicht auswählt. Formuliere die dadurch noch offene physikalische Leitfrage."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "Two thermally connected bodies are jointly isolated from the outside. Construct energy arrows for each imagined heat-transfer direction and explain why energy conservation alone does not select the spontaneously observed direction.",
+          "after": "Two thermally connected bodies are jointly isolated from the outside. Construct energy arrows for each imagined heat-transfer direction and explain why energy conservation alone does not select the spontaneously observed direction. State the resulting unresolved guiding question in physics."
+        }
+      ]
+    },
+    {
+      "i": 6,
+      "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
+      "beforeFinding": "First task assumed a substitute path rather than asking learners to construct it; second case repeated adiabatic free-expansion idea.",
+      "afterDecision": "Require autonomous substitute paths and actual Clausius use: constant-T ideal-gas expansion versus variable-T solid heating.",
+      "freshIndependentCheck": "For C=10 J/K, heating 300→600 K gives ΔS=10 ln 2 J/K, not C(600−300)/600=5 J/K.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person nutzt die Definition $dS = \\frac{\\delta Q_{\\mathrm{rev}}}{T}$ und erklärt, warum zur Berechnung von $\\Delta S$ ein reversibler Ersatzweg verwendet werden darf (weil $S$ eine Zustandsgröße ist).",
+      "canonicalDescriptionEn": "The learner uses the definition $dS = \\frac{\\delta Q_{\\mathrm{rev}}}{T}$ and explains why a reversible substitute path may be used to compute $\\Delta S$ (because $S$ is a state variable).",
+      "beforeProfileFingerprint": "sha256:14168cc5ea96055e3124b266eb5cecc74b66802f5572fd10df58648e1aed7517",
+      "afterProfileFingerprint": "sha256:586d1a137843d24b9289f4cedebe0d960aa73ed5e03c5a133172df8d8d583342",
+      "currentGoalFingerprint": "sha256:55c42a096e6edafe005c5e481ccfac675008f975daffff86733ba23a8c84b3db",
+      "changes": [
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Ein ideales Gas erreicht denselben Endzustand einmal durch freie Expansion und einmal über einen geeigneten reversiblen Vergleichsweg. Erläutere, welche Wärme in dS=δQ_rev/T eingesetzt wird und warum gleiche ΔS nicht gleiche tatsächliche Wärmeübertragung bedeuten.",
+          "after": "Eine feste Menge klassischen idealen Gases expandiert frei in einem isolierten geschlossenen Gefäß von V nach 2V; Anfangs- und Endzustand sind Gleichgewichtszustände bei derselben Temperatur T. Entwirf selbst einen reversiblen Ersatzweg zwischen genau diesen Zuständen, benutze dS=δQ_rev/T zur Bestimmung von ΔS und vergleiche die Wärme auf beiden Wegen."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "An ideal gas reaches the same final state once by free expansion and once along a suitable reversible comparison path. Explain which heat enters dS=δQ_rev/T and why equal ΔS does not mean equal actual heat transfer.",
+          "after": "A fixed amount of classical ideal gas freely expands inside an isolated closed vessel from V to 2V; the initial and final states are equilibrium states at the same temperature T. Independently construct a reversible substitute path between exactly these states, use dS=δQ_rev/T to determine ΔS, and compare the heat along both paths."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person wählt zu beschriebenen Anfangs- und Endzuständen eigenständig einen passenden reversiblen Ersatzweg, erläutert die Bedeutung von δQ_rev und T und begründet, weshalb der berechnete Entropieunterschied auch für einen irreversiblen realen Weg gilt.",
+          "after": "Die lernende Person wählt eine reversible isotherme Expansion, begründet Q_real=0 und Q_rev>0 und gewinnt ΔS=nR ln 2>0 durch Integration oder eine gleichwertig begründete Clausius-Anwendung. Sie erklärt, dass gleiche Endpunkte gleiche ΔS, aber nicht gleiche Q verlangen."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "Given initial and final states, the learner independently selects a suitable reversible substitute path, explains the meaning of δQ_rev and T, and justifies why the calculated entropy difference also applies to an irreversible actual path.",
+          "after": "The learner selects a reversible isothermal expansion, justifies Q_actual=0 and Q_rev>0, and obtains ΔS=nR ln 2>0 by integration or an equivalently justified application of Clausius's relation. They explain that identical endpoints require equal ΔS but not equal Q."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "In einer neuen Aufgabe wird der reale Weg bei gleichbleibenden Endzuständen thermisch isoliert statt wärmeaustauschend gewählt. Die lernende Person erklärt, warum Q_real = 0 nicht automatisch ΔS = 0 bedeutet und der reversible Ersatzweg weiter benötigt wird.",
+          "after": "Ein fester Körper mit konstanter Wärmekapazität C wird von T_1 auf T_2>T_1 erwärmt, real durch Kontakt mit einem deutlich heißeren Reservoir. Konstruiere einen reversiblen Vergleichsweg, erläutere die Rolle der veränderlichen Temperatur im Quotienten δQ_rev/T und bestimme ΔS. Begründe, warum Q_real/T_2 im Allgemeinen nicht das Ergebnis liefert."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "In a fresh task, the actual path between unchanged endpoints is thermally insulated instead of exchanging heat. The learner explains why Q_actual = 0 does not automatically imply ΔS = 0 and why a reversible substitute path is still needed.",
+          "after": "A solid body with constant heat capacity C is heated from T_1 to T_2>T_1 by actual contact with a substantially hotter reservoir. Construct a reversible comparison path, explain the role of the changing temperature in δQ_rev/T, and determine ΔS. Justify why Q_actual/T_2 generally does not give the result."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "In einer neuen Aufgabe wird der reale Weg bei gleichbleibenden Endzuständen thermisch isoliert statt wärmeaustauschend gewählt. Die lernende Person erklärt, warum Q_real = 0 nicht automatisch ΔS = 0 bedeutet und der reversible Ersatzweg weiter benötigt wird.",
+          "after": "Die lernende Person beschreibt infinitesimale Wärmeübertragung bei jeweils nahezu gleicher Temperatur, setzt δQ_rev=C dT an und erhält ΔS=C ln(T_2/T_1). Sie begründet die Integration über T und die Zustandsabhängigkeit von ΔS trotz irreversibler tatsächlicher Erwärmung."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "In a fresh task, the actual path between unchanged endpoints is thermally insulated instead of exchanging heat. The learner explains why Q_actual = 0 does not automatically imply ΔS = 0 and why a reversible substitute path is still needed.",
+          "after": "The learner describes infinitesimal heat transfer at successively nearly equal temperatures, uses δQ_rev=C dT and obtains ΔS=C ln(T_2/T_1). They justify integrating over T and the state dependence of ΔS despite actual irreversible heating."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].understandingFocusDe",
+          "before": "Gleiche Gleichgewichts-Endpunkte bei verschiedenen tatsächlichen Prozesswegen.",
+          "after": "Entropie als Zustandsgröße erlaubt einen reversiblen Ersatzweg; eine wechselnde Temperatur darf nicht unbesehen durch einen Endwert ersetzt werden."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].understandingFocusEn",
+          "before": "Identical equilibrium endpoints with different actual process paths.",
+          "after": "Entropy as a state variable permits a reversible substitute path; a varying temperature must not be replaced indiscriminately by an endpoint value."
+        }
+      ]
+    },
+    {
+      "i": 7,
+      "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "beforeFinding": "Second case incorrectly said the Q_rev/T statement applies only to the heat route; the definition also applies to the reversible adiabat with Q_rev=0.",
+      "afterDecision": "Explicitly preserve validity on both routes and distinguish negative entropy change during heat release from zero during reversible adiabatic work.",
+      "freshIndependentCheck": "Reversible adiabatic compression with 60 J work produces ΔS=0 even while U rises; a reversible 60 J heat release at 300 K gives −0.20 J/K.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann die Einheit $\\mathrm{J/K}$ der Entropie anhand von $\\Delta S = Q_{\\mathrm{rev}}/T$ deuten und erklären, warum dieselbe reversibel zugeführte Wärmemenge bei niedrigerer konstanter absoluter Temperatur eine größere Entropiezunahme bewirkt.",
+      "canonicalDescriptionEn": "The learner can interpret the entropy unit $\\mathrm{J/K}$ using $\\Delta S = Q_{\\mathrm{rev}}/T$ and explain why the same amount of heat supplied reversibly at a lower constant absolute temperature produces a larger entropy increase.",
+      "beforeProfileFingerprint": "sha256:ef0d665cac4baa786cfbe7e89267481f67a6cccd72651dce9b50bcb5d3e2822a",
+      "afterProfileFingerprint": "sha256:53a39dcb5a237180a9a16e5ca8043fc02b4f62a2168696a82b6cf3c93f787cba",
+      "currentGoalFingerprint": "sha256:d134109eed45f917f14e6f2d7e85b6c4f674e8e0dafe3bd9e722bbc2b4c65b0b",
+      "changes": [
+        {
+          "field": "profile.variationAxes[0].textDe",
+          "before": "Gleiche reversible Wärme bei verschiedenen konstanten absoluten Temperaturen.",
+          "after": "Gleiche reversible Wärme bei verschiedenen konstanten absoluten Temperaturen; Wärmeaufnahme, Wärmeabgabe und reversible adiabatische Arbeit."
+        },
+        {
+          "field": "profile.variationAxes[0].textEn",
+          "before": "Equal reversible heat at different constant absolute temperatures.",
+          "after": "Equal reversible heat at different constant absolute temperatures; heat absorption, heat release and reversible adiabatic work."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Je 60 J werden reversibel bei konstant 300 K beziehungsweise 600 K zugeführt. Deute die Einheit der Entropieänderung und begründe die unterschiedliche Zunahme aus der Clausius-Beziehung; erkläre, weshalb beliebige Arbeitszufuhr nicht einfach als Q eingesetzt werden darf.",
+          "after": "Zwei getrennte Systeme nehmen jeweils 60 J als Wärme reversibel bei konstant 300 K beziehungsweise 600 K auf. Benenne, wessen Entropieänderung berechnet wird, deute deren Einheit und begründe die unterschiedliche Zunahme aus der Clausius-Beziehung; erkläre, weshalb Arbeitszufuhr nicht einfach als Q eingesetzt werden darf."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "60 J is supplied reversibly at constant temperatures of 300 K and 600 K. Interpret the unit of entropy change and justify the different increases using the Clausius relation; explain why arbitrary work input cannot simply be substituted for Q.",
+          "after": "Two separate systems each absorb 60 J as heat reversibly at constant temperatures of 300 K and 600 K, respectively. Identify whose entropy change is calculated, interpret its unit and justify the different increases using the Clausius relation; explain why work input cannot simply be substituted for Q."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person erklärt selbstständig mit Einheiten und einer qualitativen Verhältnisbetrachtung, weshalb zwei reversible isotherme Wärmezufuhren gleicher Größe unterschiedliche Entropiezunahmen ergeben, und benennt die jeweils betrachteten Systeme.",
+          "after": "Die lernende Person erhält für die jeweils wärmeaufnehmenden Systeme 0,20 J/K und 0,10 J/K, erklärt den Faktor zwei über die absolute Temperatur und trennt die Einheit J/K von Joule. Sie unterscheidet Wärme von Arbeitsübertragung."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "Using units and a qualitative ratio argument, the learner independently explains why two equal reversible isothermal heat inputs produce different entropy increases and identifies the systems considered.",
+          "after": "The learner obtains 0.20 J/K and 0.10 J/K for the respective heat-absorbing systems, explains the factor of two using absolute temperature and distinguishes J/K from joules. They distinguish heat from work transfer."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "In einem neuen Fall wird dieselbe Energie einmal durch reversible isotherme Wärmezufuhr und einmal durch reversible adiabatische Arbeit übertragen. Die lernende Person erklärt, weshalb sich die Q_rev/T-Aussage nur auf den ersten Übertragungsweg bezieht.",
+          "after": "Ein System gibt reversibel 60 J Wärme bei konstant 300 K ab. In einem getrennten Fall werden einem thermisch isolierten System reversibel 60 J als Arbeit zugeführt. Bestimme beziehungsweise begründe beide Entropieänderungen, erkläre ihre Einheiten und die Rolle von Q_rev; darf die Arbeit als Wärmemenge eingesetzt werden?"
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "In a fresh case, equal energy is transferred once by reversible isothermal heat input and once by reversible adiabatic work. The learner explains why the Q_rev/T statement applies only to the first transfer route.",
+          "after": "A system reversibly releases 60 J of heat at constant 300 K. In a separate case, a thermally insulated system reversibly receives 60 J as work. Determine or justify both entropy changes, explain their units and the role of Q_rev; may the work be substituted for heat?"
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "In einem neuen Fall wird dieselbe Energie einmal durch reversible isotherme Wärmezufuhr und einmal durch reversible adiabatische Arbeit übertragen. Die lernende Person erklärt, weshalb sich die Q_rev/T-Aussage nur auf den ersten Übertragungsweg bezieht.",
+          "after": "Die lernende Person begründet ΔS=−0,20 J/K bei Wärmeabgabe und ΔS=0 beim reversiblen adiabatischen Arbeitsprozess. Die Clausius-Definition bleibt im zweiten Fall gültig, dort gilt δQ_rev=0; Arbeit ist kein ersatzweise einzusetzendes Q_rev."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "In a fresh case, equal energy is transferred once by reversible isothermal heat input and once by reversible adiabatic work. The learner explains why the Q_rev/T statement applies only to the first transfer route.",
+          "after": "The learner justifies ΔS=−0.20 J/K for heat release and ΔS=0 for the reversible adiabatic work process. Clausius's definition remains valid in the second case, where δQ_rev=0; work cannot be substituted for Q_rev."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].understandingFocusDe",
+          "before": "Gleiche reversible Wärme bei verschiedenen konstanten absoluten Temperaturen.",
+          "after": "Vorzeichen der reversiblen Wärmeübertragung und Abgrenzung von reversibler adiabatischer Arbeitszufuhr."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].understandingFocusEn",
+          "before": "Equal reversible heat at different constant absolute temperatures.",
+          "after": "Sign of reversible heat transfer and distinction from reversible adiabatic work input."
+        }
+      ]
+    },
+    {
+      "i": 8,
+      "goalId": "741e7056-69e4-59be-a159-0e2583d748d1",
+      "beforeFinding": "First case expected numerical mass-specific conversion although it supplied only total heats.",
+      "afterDecision": "Keep first case's valid −3/+4 J/K calculation and fit its expectation; make independent freezing case supply mass and specific latent heat for the expected conversion.",
+      "freshIndependentCheck": "0.50 kg freezing with 20 kJ/kg at 250 K gives signed L=−10 kJ and ΔS=−40 J/K, not −80 J/K.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann die Entropieänderung eines Wärmereservoirs mit $\\Delta S = Q/T$ und bei einem reversiblen Phasenübergang mit $\\Delta S = L/T$ berechnen und deuten; $T$ ist die konstante absolute Temperatur, $Q$ beziehungsweise $L$ die vorzeichenbehaftete aufgenommene Wärmemenge in Joule.",
+      "canonicalDescriptionEn": "The learner can calculate and interpret the entropy change of a heat reservoir using $\\Delta S = Q/T$ and of a reversible phase transition using $\\Delta S = L/T$; $T$ is the constant absolute temperature, and $Q$ or $L$ is the signed amount of heat absorbed in joules.",
+      "beforeProfileFingerprint": "sha256:12bbae0b31dde3c175b4811d47f0e1c93790b95128c09d7af87ed8b5a787dba3",
+      "afterProfileFingerprint": "sha256:b38047f17dd4f980962239f08386ceffec406aa2b3cd1b59cd06d476435b9315",
+      "currentGoalFingerprint": "sha256:a318894efa4ba565eb523ae0e79387162421f14841c8d57f154ed426e67d4292",
+      "changes": [
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person legt eigenständig fest, wessen Entropie berechnet wird, bestimmt aus gegebenen Wärmemengen die Reservoir- beziehungsweise Phasenübergangsänderung und erklärt Vorzeichen und Einheit. Sie wandelt eine angegebene spezifische Übergangswärme mit der Masse in die Gesamtwärme um.",
+          "after": "Die lernende Person verwendet für das wärmeabgebende Reservoir Q=−900 J und erhält ΔS_R=−3 J/K; für die getrennte wärmeaufnehmende Probe erhält sie ΔS=+4 J/K. Sie begründet Kelvin und die Vorzeichen und erklärt, dass eine spezifische Übergangswärme in J/kg erst mit der Masse zur Gesamtwärme in J wird."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "The learner independently specifies whose entropy is calculated, determines the reservoir or phase-transition change from supplied heat quantities, and explains the sign and unit. They convert a supplied specific latent heat into total heat using the mass.",
+          "after": "The learner uses Q=−900 J for the heat-releasing reservoir and obtains ΔS_R=−3 J/K; for the separate heat-absorbing sample they obtain ΔS=+4 J/K. They justify kelvin and the signs and explain that specific latent heat in J/kg must first be multiplied by mass to give total heat in J."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "In einer frisch gestellten Aufgabe wird ein Schmelzvorgang durch Erstarren ersetzt und die Übergangswärme massenspezifisch angegeben. Die lernende Person begründet die negative Entropieänderung des Stoffes und wählt vor der Quotientenbildung die passende Gesamtwärme.",
+          "after": "Eine Probe von 0,50 kg erstarrt reversibel bei konstant 250 K; die spezifische Übergangswärme beträgt betragsmäßig 20 kJ/kg. Lege die Probe als System fest, bestimme die vorzeichenbehaftete Gesamtwärme und ihre Entropieänderung und begründe das Vorzeichen. Vergleiche den umgekehrten reversiblen Übergang."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "In a fresh task, melting is replaced by freezing and latent heat is given per unit mass. The learner justifies the material's negative entropy change and selects the appropriate total heat before forming the quotient.",
+          "after": "A 0.50 kg sample freezes reversibly at constant 250 K; the magnitude of its specific latent heat is 20 kJ/kg. Define the sample as the system, determine the signed total heat and its entropy change, and justify the sign. Compare the reverse reversible transition."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "In einer frisch gestellten Aufgabe wird ein Schmelzvorgang durch Erstarren ersetzt und die Übergangswärme massenspezifisch angegeben. Die lernende Person begründet die negative Entropieänderung des Stoffes und wählt vor der Quotientenbildung die passende Gesamtwärme.",
+          "after": "Die lernende Person rechnet 0,50 kg·20 kJ/kg=10 kJ, setzt bei Erstarren L=−10 000 J an und erhält ΔS=−40 J/K. Beim umgekehrten reversiblen Übergang wechseln beide Vorzeichen; die Entropieabnahme der Probe ist keine Aussage über eine Abnahme des isolierten Ganzen."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "In a fresh task, melting is replaced by freezing and latent heat is given per unit mass. The learner justifies the material's negative entropy change and selects the appropriate total heat before forming the quotient.",
+          "after": "The learner calculates 0.50 kg·20 kJ/kg=10 kJ, uses L=−10,000 J for freezing and obtains ΔS=−40 J/K. Both signs reverse for the reverse reversible transition; the sample's entropy decrease does not imply a decrease for the isolated whole."
+        }
+      ]
+    },
+    {
+      "i": 9,
+      "goalId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+      "beforeFinding": "First task omitted requested temperature-role explanation and units; variation axis mentioned changed n while actual transfer changed T.",
+      "afterDecision": "Demand symbols, units and fixed-T rationale explicitly; align axis with the actual heated-endpoint transfer.",
+      "freshIndependentCheck": "If V doubles and endpoint T also rises, nR ln 2 alone omits the thermal entropy contribution; for isothermal compression V→V/2, ΔS=−nR ln 2.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann Entropieänderungen einer festen Menge idealen Gases bei einfachen Zustandsänderungen berechnen und physikalisch deuten, insbesondere isotherm mit $\\Delta S = nR\\ln(V_2/V_1)$, und die Größen $n$, $R$, $V$ und $T$ sowie die Gültigkeitsbedingungen zuordnen.",
+      "canonicalDescriptionEn": "The learner can calculate and physically interpret entropy changes of a fixed amount of ideal gas in simple changes of state, especially isothermal ones using $\\Delta S = nR\\ln(V_2/V_1)$, and identify the quantities $n$, $R$, $V$ and $T$ and the conditions of validity.",
+      "beforeProfileFingerprint": "sha256:5c6a66d2bac7096bc95b16c998bdddefb11b144fa34aa31ccbcd5423d2a4228b",
+      "afterProfileFingerprint": "sha256:1d144a51b370eac07b50afe19ff8a3f9cbfcadb755a5aeb11f661c48ad482bc2",
+      "currentGoalFingerprint": "sha256:7ea18dbae997743bab787a10b62a6fbffcc44f9074f59052aa771309a3d507d9",
+      "changes": [
+        {
+          "field": "profile.variationAxes[0].textDe",
+          "before": "Isotherme Expansion versus Kompression; feste versus veränderte Gasmenge.",
+          "after": "Expansion versus Kompression; gleiche versus veränderte Endtemperatur bei festem n."
+        },
+        {
+          "field": "profile.variationAxes[0].textEn",
+          "before": "Isothermal expansion versus compression; fixed versus changed amount of gas.",
+          "after": "Expansion versus compression; unchanged versus changed final temperature at fixed n."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Eine feste Menge idealen Gases wird isotherm auf das doppelte Volumen gebracht und anschließend isotherm zurückkomprimiert. Wähle die passende Entropiebeziehung, bestimme die beiden Änderungen symbolisch und erläutere deren Vorzeichen und Summe.",
+          "after": "Eine feste Menge idealen Gases wird isotherm auf das doppelte Volumen gebracht und anschließend isotherm zurückkomprimiert. Wähle die passende Entropiebeziehung, bestimme die beiden Änderungen symbolisch und erläutere deren Vorzeichen und Summe. Benenne n, R, V und T, prüfe die Einheit und erkläre, warum konstante Temperatur trotz fehlendem T in der Spezialformel vorausgesetzt wird."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "A fixed amount of ideal gas is taken isothermally to twice its volume and then compressed isothermally back. Select the appropriate entropy relation, determine both changes symbolically, and explain their signs and sum.",
+          "after": "A fixed amount of ideal gas is taken isothermally to twice its volume and then compressed isothermally back. Select the appropriate entropy relation, determine both changes symbolically, and explain their signs and sum. Identify n, R, V and T, check the unit, and explain why constant temperature is assumed even though T does not appear in the special formula."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person erkennt eigenständig die isothermen Randbedingungen eines gegebenen Gasprozesses, sagt das Vorzeichen von ΔS vor der Rechnung voraus, berechnet die Änderung und erklärt die Rolle des konstanten T trotz seines Fehlens in der speziellen Formel.",
+          "after": "Die lernende Person wählt ΔS=nR ln(V_2/V_1), prognostiziert die Vorzeichen und erhält nR ln 2 sowie −nR ln 2 mit Summe null. Sie erklärt n als Stoffmenge, R als molare Gaskonstante, V als Volumen und T als absolute Temperatur; der Logarithmus ist dimensionslos, ΔS hat die Einheit J/K und die feste Gasmenge kehrt bei gleichem T zum Anfangszustand zurück."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "The learner independently identifies the isothermal conditions of a supplied gas process, predicts the sign of ΔS before calculating it, computes the change, and explains the role of constant T despite its absence from the special formula.",
+          "after": "The learner selects ΔS=nR ln(V_2/V_1), predicts the signs and obtains nR ln 2 and −nR ln 2, summing to zero. They identify n as amount of substance, R as the molar gas constant, V as volume and T as absolute temperature; the logarithm is dimensionless, ΔS is in J/K and the fixed gas amount returns to its initial state at equal T."
+        }
+      ]
+    },
+    {
+      "i": 10,
+      "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
+      "beforeFinding": "Second 'fresh' case only relabeled system and surroundings; this is not a changed physical condition.",
+      "afterDecision": "Add actual reversed transfer with a quantitative negative total; relabeling remains a separate invariance check.",
+      "freshIndependentCheck": "80 J from 250 K to 500 K produces −0.16 J/K for the otherwise isolated pair; external work cannot be silently omitted.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann die Entropieänderungen von System und Umgebung zu $\\Delta S_{\\mathrm{ges}}$ addieren und für Wärmeübertragung zwischen zwei sonst isolierten Reservoiren bei konstanten absoluten Temperaturen $T_h > T_c$ rechnerisch begründen, warum Wärmefluss von heiß nach kalt die Gesamtentropie erhöht.",
+      "canonicalDescriptionEn": "The learner can add the entropy changes of a system and its surroundings to obtain $\\Delta S_{\\mathrm{tot}}$ and calculate why heat flow from hot to cold increases total entropy when heat is transferred between two otherwise isolated reservoirs at constant absolute temperatures $T_h > T_c$.",
+      "beforeProfileFingerprint": "sha256:63b3cda6f93cb5fb93b58ce91c07c9fd71ea4f633babd26dabf8286e503c3773",
+      "afterProfileFingerprint": "sha256:b2047dc38c772366574aa5ce1e0c49cfd762e128e554a82e0631577b590292fa",
+      "currentGoalFingerprint": "sha256:4db43a46de920f19f74945d6aba58faa5995c220ba6a284d2f992ec70804f96d",
+      "changes": [
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "100 J fließen zwischen zwei sonst isolierten idealen Reservoiren von 400 K zu 300 K. Definiere die beiden Teilbilanzen, berechne ΔS_ges ohne vorzeitiges Runden und erkläre, weshalb die Energieänderungen sich aufheben, die Entropieänderungen aber nicht.",
+          "after": "100 J fließen zwischen zwei sonst isolierten idealen Reservoiren von 400 K zu 300 K. Definiere die beiden Teilbilanzen, berechne ΔS_ges ohne vorzeitiges Runden und erkläre, weshalb die Energieänderungen sich aufheben, die Entropieänderungen aber nicht. Zeichne dazu eigene Energiepfeile."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "100 J flows between two otherwise isolated ideal reservoirs from 400 K to 300 K. Define the two component balances, calculate ΔS_tot without premature rounding, and explain why the energy changes cancel while the entropy changes do not.",
+          "after": "100 J flows between two otherwise isolated ideal reservoirs from 400 K to 300 K. Define the two component balances, calculate ΔS_tot without premature rounding, and explain why the energy changes cancel while the entropy changes do not. Draw your own energy arrows."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person definiert beide Reservoirgrenzen, zeichnet selbstständig gegenläufige Energieänderungen, berechnet die beiden vorzeichenbehafteten Entropieänderungen und ihre Summe und begründet rechnerisch und sprachlich, weshalb sich Energieübertragungen aufheben, Entropieänderungen aber nicht.",
+          "after": "Die lernende Person grenzt beide Reservoire und ihr isoliertes Ganzes ab, zeichnet 100 J vom heißen zum kalten Reservoir und erhält −0,25 J/K sowie +1/3 J/K, zusammen +1/12 J/K≈+0,0833 J/K. Sie begründet, warum gleiche entgegengesetzte Energien wegen verschiedener Temperaturen keine entgegengesetzt gleichen Entropien ergeben."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "The learner defines both reservoir boundaries, independently draws opposite energy changes, calculates the two signed entropy changes and their sum, and explains mathematically and verbally why energy transfers cancel but entropy changes do not.",
+          "after": "The learner defines each reservoir and their isolated whole, draws 100 J from the hot to the cold reservoir and obtains −0.25 J/K and +1/3 J/K, totaling +1/12 J/K≈+0.0833 J/K. They explain why equal opposite energy transfers at different temperatures do not give equal opposite entropy changes."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "Eine frische Aufgabe vertauscht, welches Reservoir als System und welches als Umgebung bezeichnet wird; die lernende Person ordnet die Teilbeiträge neu zu und weist nach, dass sich weder Gesamtentropieänderung noch physikalische Prozessrichtung durch die Benennung ändern.",
+          "after": "Zwei ideale Reservoire bei 500 K und 250 K sind sonst isoliert. Prüfe rechnerisch die Behauptung, 80 J könnten ohne weitere Wirkung spontan vom kalten zum heißen Reservoir fließen. Vertausche anschließend nur die Bezeichnungen System und Umgebung: Ändert das den physikalischen Befund?"
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "A fresh task swaps which reservoir is called the system and which is called the surroundings; the learner reassigns the component contributions and shows that neither total entropy change nor physical process direction changes with the labels.",
+          "after": "Two ideal reservoirs at 500 K and 250 K are otherwise isolated. Test quantitatively the claim that 80 J could spontaneously flow from the cold to the hot reservoir with no other effect. Then swap only the labels system and surroundings: does this change the physical conclusion?"
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "Eine frische Aufgabe vertauscht, welches Reservoir als System und welches als Umgebung bezeichnet wird; die lernende Person ordnet die Teilbeiträge neu zu und weist nach, dass sich weder Gesamtentropieänderung noch physikalische Prozessrichtung durch die Benennung ändern.",
+          "after": "Die lernende Person erhält für den behaupteten Rückfluss ΔS_kalt=−0,32 J/K und ΔS_heiß=+0,16 J/K, also ΔS_ges=−0,16 J/K. Sie verwirft den spontanen isolierten Vorgang und erklärt, dass Umbenennung die Summe nicht verändert; ein angetriebener Kühler wäre ein anderes Gesamtsystem."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "A fresh task swaps which reservoir is called the system and which is called the surroundings; the learner reassigns the component contributions and shows that neither total entropy change nor physical process direction changes with the labels.",
+          "after": "The learner obtains ΔS_cold=−0.32 J/K and ΔS_hot=+0.16 J/K for the claimed reverse flow, giving ΔS_tot=−0.16 J/K. They reject the isolated spontaneous process and explain that relabeling does not change the sum; a powered refrigerator would be a different total system."
+        }
+      ]
+    },
+    {
+      "i": 11,
+      "goalId": "81a45dec-37be-529b-89ce-2f3101237293",
+      "beforeFinding": "Proof first case sound; second case claimed isothermal heat→work for unspecified gas, and 'contact temperature' was less precise than canonical reservoir T.",
+      "afterDecision": "Specify fixed ideal gas and reversible single step; distinguish endpoint volume change from a full cycle; make reservoir-temperature wording exact.",
+      "freshIndependentCheck": "For the cyclic 100 J/400 K proposal, ∮δQ/T=+0.25 J/K contradicts ≤0; one ideal-gas isothermal expansion has ΔU=0 but no cyclic restoration.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann die Clausius-Ungleichung $\\oint \\frac{\\delta Q}{T} \\le 0$ für Kreisprozesse mit Wärme positiv zum System und $T$ als absoluter Temperatur des jeweiligen Wärmereservoirs deuten und daraus begründen, warum die vollständige Umwandlung von Wärme aus einem einzigen Reservoir in Arbeit als einzige Wirkung unmöglich ist.",
+      "canonicalDescriptionEn": "The learner can interpret the Clausius inequality $\\oint \\frac{\\delta Q}{T} \\le 0$ for cycles, with heat positive into the system and $T$ the absolute temperature of the respective heat reservoir, and use it to explain why complete conversion of heat from a single reservoir into work as the sole effect is impossible.",
+      "beforeProfileFingerprint": "sha256:7e7df0fd13a2d7b56b4a87ed30c8d39a548ca21ee9de7577c0798bef96e1173f",
+      "afterProfileFingerprint": "sha256:b02c97a5b1a7c9a8770e7a24495bb90698f8fb4bf315cd3dc553f8a1fb426236",
+      "currentGoalFingerprint": "sha256:86e5411d1dcd3bb3b364ff3eaceeafe082969c8b10045b236974e41037b1bbd2",
+      "changes": [
+        {
+          "field": "profile.expectations[0].essentialUnderstandingDe",
+          "before": "Über einen Kreisprozess kehrt das Arbeitsmedium in seinen Anfangszustand zurück. Die Summe der vorzeichenbehafteten Wärmen geteilt durch die jeweiligen absoluten Kontakttemperaturen ist nicht positiv; ausschließlich positive Wärmeaufnahme aus einem Reservoir würde dem widersprechen.",
+          "after": "Über einen Kreisprozess kehrt das Arbeitsmedium in seinen Anfangszustand zurück. Die Summe der vorzeichenbehafteten Wärmen geteilt durch die jeweiligen absoluten Temperaturen der jeweiligen Wärmereservoire ist nicht positiv; ausschließlich positive Wärmeaufnahme aus einem Reservoir würde dem widersprechen."
+        },
+        {
+          "field": "profile.expectations[0].essentialUnderstandingEn",
+          "before": "Over a cycle, the working substance returns to its initial state. The sum of signed heat transfers divided by their respective absolute contact temperatures is non-positive; exclusively positive heat input from one reservoir would contradict this.",
+          "after": "Over a cycle, the working substance returns to its initial state. The sum of signed heat transfers divided by their respective absolute temperatures of the respective heat reservoirs is non-positive; exclusively positive heat input from one reservoir would contradict this."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].understandingFocusDe",
+          "before": "Über einen Kreisprozess kehrt das Arbeitsmedium in seinen Anfangszustand zurück. Die Summe der vorzeichenbehafteten Wärmen geteilt durch die jeweiligen absoluten Kontakttemperaturen ist nicht positiv; ausschließlich positive Wärmeaufnahme aus einem Reservoir würde dem widersprechen.",
+          "after": "Über einen Kreisprozess kehrt das Arbeitsmedium in seinen Anfangszustand zurück. Die Summe der vorzeichenbehafteten Wärmen geteilt durch die jeweiligen absoluten Temperaturen der jeweiligen Wärmereservoire ist nicht positiv; ausschließlich positive Wärmeaufnahme aus einem Reservoir würde dem widersprechen."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].understandingFocusEn",
+          "before": "Over a cycle, the working substance returns to its initial state. The sum of signed heat transfers divided by their respective absolute contact temperatures is non-positive; exclusively positive heat input from one reservoir would contradict this.",
+          "after": "Over a cycle, the working substance returns to its initial state. The sum of signed heat transfers divided by their respective absolute temperatures of the respective heat reservoirs is non-positive; exclusively positive heat input from one reservoir would contradict this."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "In einer neuen Aufgabe wird die Maschine durch eine einmalige isotherme Gasexpansion ersetzt. Die lernende Person erklärt, weshalb vollständige Umwandlung der aufgenommenen Wärme in Arbeit in diesem nichtzyklischen Schritt den Satz nicht widerlegt und die Rückführung mitbetrachtet werden muss.",
+          "after": "Eine feste Menge idealen Gases expandiert einmalig reversibel isotherm gegen einen Kolben und nimmt dabei Wärme aus einem Reservoir auf. Nutze Energiebilanz und Zustandsänderung, um zu prüfen, ob vollständige Umwandlung dieser Wärme in Arbeit den zyklischen Ein-Reservoir-Satz widerlegt; betrachte auch die nötige Rückführung."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "In a fresh task, the machine is replaced by a single isothermal gas expansion. The learner explains why full conversion of absorbed heat into work in this non-cyclic step does not refute the statement and why restoration must also be considered.",
+          "after": "A fixed amount of ideal gas undergoes a single reversible isothermal expansion against a piston while absorbing heat from one reservoir. Use the energy balance and change of state to assess whether full conversion of this heat into work refutes the cyclic one-reservoir statement; also consider the required restoration."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "In einer neuen Aufgabe wird die Maschine durch eine einmalige isotherme Gasexpansion ersetzt. Die lernende Person erklärt, weshalb vollständige Umwandlung der aufgenommenen Wärme in Arbeit in diesem nichtzyklischen Schritt den Satz nicht widerlegt und die Rückführung mitbetrachtet werden muss.",
+          "after": "Die lernende Person begründet ΔU=0 für das ideale Gas bei gleichem T und daher W_ab=Q_auf für diesen Schritt. Das größere Endvolumen zeigt jedoch, dass kein Kreisprozess vorliegt. Eine vollständige Rückführung muss in Energie- und Clausius-Bilanz aufgenommen werden."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "In a fresh task, the machine is replaced by a single isothermal gas expansion. The learner explains why full conversion of absorbed heat into work in this non-cyclic step does not refute the statement and why restoration must also be considered.",
+          "after": "The learner justifies ΔU=0 for the ideal gas at equal T and hence W_out=Q_in for this step. The larger final volume shows that it is not a cycle. Complete restoration must be included in the energy and Clausius balances."
+        }
+      ]
+    },
+    {
+      "i": 12,
+      "goalId": "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+      "beforeFinding": "Free-expansion first case incorrectly expected friction and thermal-contact mechanisms; all four named mechanisms lacked case coverage.",
+      "afterDecision": "Match free-expansion expectation to its system; keep independent mixture separation and add friction/thermal-contact comparison.",
+      "freshIndependentCheck": "Insulated free expansion produces entropy without entropy transport; subsequent isothermal compression can lower gas S only by exporting entropy and changing surroundings.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann Reibung, Mischung beziehungsweise Diffusion, Wärmeaustausch bei endlicher Temperaturdifferenz und freie Expansion als Ursachen von Entropieproduktion erklären und begründen, warum sie sich nicht ohne bleibende Änderungen in System und Umgebung vollständig umkehren lassen.",
+      "canonicalDescriptionEn": "The learner can explain friction, mixing or diffusion, heat exchange across a finite temperature difference and free expansion as causes of entropy production, and justify why they cannot be completely reversed without lasting changes in the system and surroundings.",
+      "beforeProfileFingerprint": "sha256:dbdad107904ac9c4c378309f18f6a1a7e4543bec0127dc9f832467068408e55e",
+      "afterProfileFingerprint": "sha256:9084aa485f0930805f9e96917c0f604fb1c7cc7c14702951638e82865395d891",
+      "currentGoalFingerprint": "sha256:749cc79ebc2218407d1a78f29e383099cb2c76126d73e2a8173fb0cdf5236816",
+      "changes": [
+        {
+          "field": "profile.expectations[0].observablePerformanceDe",
+          "before": "Die lernende Person erklärt eigenständig bei Reibung und beim Kontakt verschieden warmer Körper den jeweiligen Entropieproduktionsmechanismus, benennt System und Umgebung und unterscheidet eine bloße Rückführung des Teilsystems von vollständiger thermodynamischer Umkehr.",
+          "after": "Die lernende Person erklärt an Reibung, Mischung oder Diffusion, endlichem Temperaturausgleich und freier Expansion jeweils den irreversiblen Mechanismus, benennt System und Umgebung und unterscheidet erzeugte Entropie von Entropieübertragung sowie bloße Teilsystem-Rückführung von vollständiger Umkehr."
+        },
+        {
+          "field": "profile.expectations[0].observablePerformanceEn",
+          "before": "The learner independently explains the entropy-production mechanism in friction and in contact between bodies at different temperatures, identifies system and surroundings, and distinguishes merely restoring the subsystem from complete thermodynamic reversal.",
+          "after": "For friction, mixing or diffusion, finite-temperature equalization and free expansion, the learner explains the irreversible mechanism, identifies system and surroundings, and distinguishes generated entropy from entropy transfer and merely restoring a subsystem from complete reversal."
+        },
+        {
+          "field": "profile.applicationCaseBriefs",
+          "before": [
+            {
+              "id": "fresh-independent-case",
+              "taskDemandDe": "Gas expandiert frei in die zweite Hälfte eines isolierten geschlossenen Gefäßes. Anschließend wird sein ursprüngliches Volumen durch äußeren Aufwand wiederhergestellt. Erkläre die Entropieproduktion im ersten Schritt und weshalb die Rückkompression allein keine vollständige thermodynamische Umkehr beweist.",
+              "taskDemandEn": "Gas expands freely into the second half of an isolated closed vessel. Its original volume is then restored using external effort. Explain entropy production in the first step and why recompression alone does not prove complete thermodynamic reversal.",
+              "expectedPerformanceDe": "Die lernende Person erklärt eigenständig bei Reibung und beim Kontakt verschieden warmer Körper den jeweiligen Entropieproduktionsmechanismus, benennt System und Umgebung und unterscheidet eine bloße Rückführung des Teilsystems von vollständiger thermodynamischer Umkehr.",
+              "expectedPerformanceEn": "The learner independently explains the entropy-production mechanism in friction and in contact between bodies at different temperatures, identifies system and surroundings, and distinguishes merely restoring the subsystem from complete thermodynamic reversal.",
+              "understandingFocusDe": "Irreversible Vorgänge erzeugen Entropie; das ist von Entropietransport über eine Systemgrenze zu unterscheiden. Ein Teilsystem lässt sich durch äußeren Aufwand zurückführen, aber die produzierte Gesamtentropie kann dabei nicht ohne weitere Änderungen beseitigt werden.",
+              "understandingFocusEn": "Irreversible processes generate entropy; this differs from entropy transfer across a system boundary. External effort can restore a subsystem, but the generated total entropy cannot thereby be removed without other changes."
+            },
+            {
+              "id": "independent-changed-case",
+              "taskDemandDe": "Eine frische Aufgabe beschreibt das anschließende Trennen einer zuvor durch Diffusion entstandenen Mischung durch äußeren Arbeitsaufwand. Die lernende Person erklärt, weshalb die erfolgreiche Trennung die Irreversibilität des ursprünglichen Vorgangs nicht widerlegt.",
+              "taskDemandEn": "A fresh task describes separating a mixture previously produced by diffusion using external work. The learner explains why successful separation does not disprove the irreversibility of the original process.",
+              "expectedPerformanceDe": "Eine frische Aufgabe beschreibt das anschließende Trennen einer zuvor durch Diffusion entstandenen Mischung durch äußeren Arbeitsaufwand. Die lernende Person erklärt, weshalb die erfolgreiche Trennung die Irreversibilität des ursprünglichen Vorgangs nicht widerlegt.",
+              "expectedPerformanceEn": "A fresh task describes separating a mixture previously produced by diffusion using external work. The learner explains why successful separation does not disprove the irreversibility of the original process.",
+              "understandingFocusDe": "Wiederhergestellter Teilsystemzustand versus bleibende Umgebungsänderung.",
+              "understandingFocusEn": "Restored subsystem state versus a lasting change in the surroundings."
+            }
+          ],
+          "after": [
+            {
+              "id": "fresh-independent-case",
+              "taskDemandDe": "Eine feste Menge idealen Gases expandiert frei in die anfangs leere zweite Hälfte eines isolierten geschlossenen Gefäßes. Anschließend wird sein ursprüngliches Volumen durch äußeren Aufwand wiederhergestellt. Erkläre die Entropieproduktion im ersten Schritt und weshalb die Rückkompression allein keine vollständige thermodynamische Umkehr beweist.",
+              "taskDemandEn": "A fixed amount of ideal gas expands freely into the initially empty second half of an isolated closed vessel. Its original volume is then restored using external effort. Explain entropy production in the first step and why recompression alone does not prove complete thermodynamic reversal.",
+              "expectedPerformanceDe": "Die lernende Person identifiziert das Gas im isolierten geschlossenen Gefäß als System: kein Entropietransport über die Außenwand, aber positive Entropieproduktion durch freie Expansion. Äußere Rückkompression stellt höchstens einen Teilzustand wieder her; Arbeit und mögliche Wärmeabgabe ändern die Umgebung.",
+              "expectedPerformanceEn": "The learner identifies the gas inside the isolated closed vessel as the system: no entropy transfer across the outer wall, but positive entropy generation by free expansion. External recompression restores at most a subsystem state; work and any rejected heat change the surroundings.",
+              "understandingFocusDe": "Irreversible Vorgänge erzeugen Entropie; das ist von Entropietransport über eine Systemgrenze zu unterscheiden. Ein Teilsystem lässt sich durch äußeren Aufwand zurückführen, aber die produzierte Gesamtentropie kann dabei nicht ohne weitere Änderungen beseitigt werden.",
+              "understandingFocusEn": "Irreversible processes generate entropy; this differs from entropy transfer across a system boundary. External effort can restore a subsystem, but the generated total entropy cannot thereby be removed without other changes."
+            },
+            {
+              "id": "independent-changed-case",
+              "taskDemandDe": "Eine frische Aufgabe beschreibt das anschließende Trennen einer zuvor durch Diffusion entstandenen Mischung durch äußeren Arbeitsaufwand. Die lernende Person erklärt, weshalb die erfolgreiche Trennung die Irreversibilität des ursprünglichen Vorgangs nicht widerlegt.",
+              "taskDemandEn": "A fresh task describes separating a mixture previously produced by diffusion using external work. The learner explains why successful separation does not disprove the irreversibility of the original process.",
+              "expectedPerformanceDe": "Eine frische Aufgabe beschreibt das anschließende Trennen einer zuvor durch Diffusion entstandenen Mischung durch äußeren Arbeitsaufwand. Die lernende Person erklärt, weshalb die erfolgreiche Trennung die Irreversibilität des ursprünglichen Vorgangs nicht widerlegt.",
+              "expectedPerformanceEn": "A fresh task describes separating a mixture previously produced by diffusion using external work. The learner explains why successful separation does not disprove the irreversibility of the original process.",
+              "understandingFocusDe": "Wiederhergestellter Teilsystemzustand versus bleibende Umgebungsänderung.",
+              "understandingFocusEn": "Restored subsystem state versus a lasting change in the surroundings."
+            },
+            {
+              "id": "friction-and-thermal-transfer",
+              "taskDemandDe": "Vergleiche zwei getrennte, nach außen isolierte Anordnungen: einen auf rauer Unterlage auslaufenden Körper und zwei thermisch kontaktierte Körper verschiedener Temperatur. Erkläre jeweils die Ursache der Entropieproduktion, die Rolle von Energieerhaltung und was bei einer vollständigen Rückführung von Körpern und Umgebung nötig wäre.",
+              "taskDemandEn": "Compare two separate arrangements isolated from the outside: a body slowing on a rough surface, and two bodies at different temperatures in thermal contact. In each case explain the cause of entropy generation, the role of energy conservation, and what complete restoration of bodies and surroundings would require.",
+              "expectedPerformanceDe": "Die lernende Person beschreibt Umwandlung geordneter Bewegung in innere Energie bei Reibung und Wärmeübertragung bei endlicher Temperaturdifferenz. Sie begründet positive Entropieproduktion des jeweiligen isolierten Ganzen trotz Energieerhaltung und erklärt, weshalb Rückbeschleunigung oder erneutes Aufheizen eines Teils allein nicht das Ganze zurückführt.",
+              "expectedPerformanceEn": "The learner describes conversion of ordered motion into internal energy by friction and heat transfer across a finite temperature difference. They justify positive entropy generation in each isolated whole despite energy conservation and explain why reaccelerating or reheating one part alone does not restore the whole.",
+              "understandingFocusDe": "Reibung und endlicher Temperaturausgleich erzeugen Entropie, auch wenn Energie erhalten bleibt und ein Teilzustand später wiederhergestellt wird.",
+              "understandingFocusEn": "Friction and finite-temperature equalization generate entropy even when energy is conserved and a subsystem state is later restored."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 13,
+      "goalId": "b61d233a-1902-526b-a9b5-6b3d553f4013",
+      "beforeFinding": "First construction is valid; second ideal-gas example did not explicitly fix particle count or equilibrium/no-flow conditions.",
+      "afterDecision": "Keep labeled-particle construction and make ideal-gas endpoint constraints explicit; no probability calculus added.",
+      "freshIndependentCheck": "Exchanging two labeled particles between halves changes the toy microstate but leaves the macro count 2/2; fixed N,V,mean energy can preserve equilibrium p,T.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person erklärt den Unterschied zwischen Makrozustand (z. B. $p, V, T$) und Mikrozustand (Teilchenzustände) und erkennt: Viele Mikrozustände können zum gleichen Makrozustand gehören.",
+      "canonicalDescriptionEn": "The learner explains the difference between macrostate (e.g., $p, V, T$) and microstate (particle states) and recognizes that many microstates can correspond to the same macrostate.",
+      "beforeProfileFingerprint": "sha256:ab2a14f7c2344379fd7112c7dbd18700618f5d093841ca1a4fb5a955c2f4756d",
+      "afterProfileFingerprint": "sha256:a58a7f1185c0e883715e67af87ad66918d3e6ec48b309a19590b0f9b968115bc",
+      "currentGoalFingerprint": "sha256:432cec7d3592b00bc064acc5423a8eec7401c4fdb161602d581b23db4d250aa2",
+      "changes": [
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "In einer neuen Aufgabe bleibt das Volumen und die mittlere Bewegungsenergie eines idealen Gasmodells gleich, während einzelne Teilchenpositionen und Bewegungsrichtungen verändert werden. Die lernende Person begründet, wie der Mikrozustand wechseln kann, ohne damit einen neuen Makrozustand festzulegen.",
+          "after": "In einem neuen Gleichgewichtsmodell eines ruhenden klassischen idealen Gases bleiben Teilchenzahl, Volumen und mittlere kinetische Translationsenergie gleich; es gibt keine makroskopische Strömung. Konstruiere zwei unterschiedliche schematische Anordnungen von Positionen und ungeordneten Bewegungsrichtungen. Begründe, welche makroskopischen Größen gleich bleiben und welche Einzelinformationen verschieden sind."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "In a fresh task, the volume and mean kinetic energy of an ideal-gas model remain the same while individual particle positions and directions of motion change. The learner explains how the microstate can change without thereby establishing a different macrostate.",
+          "after": "In a fresh equilibrium model of a stationary classical ideal gas, particle number, volume and mean translational kinetic energy remain fixed; there is no macroscopic flow. Construct two different schematic arrangements of positions and random directions of motion. Explain which macroscopic quantities remain equal and which individual details differ."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "In einer neuen Aufgabe bleibt das Volumen und die mittlere Bewegungsenergie eines idealen Gasmodells gleich, während einzelne Teilchenpositionen und Bewegungsrichtungen verändert werden. Die lernende Person begründet, wie der Mikrozustand wechseln kann, ohne damit einen neuen Makrozustand festzulegen.",
+          "after": "Die lernende Person variiert mikroskopische Positionen und ungeordnete Richtungen unter den festen Modellbedingungen, erklärt gleiches T durch gleiche mittlere Translationsenergie und gleiches p durch feste N,V,T und trennt diese makroskopischen Angaben von den Einzelzuständen."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "In a fresh task, the volume and mean kinetic energy of an ideal-gas model remain the same while individual particle positions and directions of motion change. The learner explains how the microstate can change without thereby establishing a different macrostate.",
+          "after": "The learner varies microscopic positions and random directions under the fixed model constraints, explains equal T through equal mean translational energy and equal p through fixed N,V,T, and distinguishes those macroscopic data from individual states."
+        }
+      ]
+    },
+    {
+      "i": 14,
+      "goalId": "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+      "beforeFinding": "Case 1 leaked 6/16 before requiring independent counting; modeling archetype lacked explicit model justification and validity challenge.",
+      "afterDecision": "Remove answer leakage, require assumptions and constructed counts, specify odd-N balanced range and challenge equal likelihood with unequal subvolumes.",
+      "freshIndependentCheck": "N=5 gives Ω2=Ω3=10, balanced-range probability20/32 versus two-extremes2/32; no single exact half state exists.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified after the stated correction.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann mit $S = k_B\\ln\\Omega$ und einfachen Zählmodellen, etwa $\\Omega=\\binom{N}{n}$ für gleich wahrscheinliche Links-rechts-Zuordnungen, die Entropien verschiedener Makrozustände vergleichen und erklären, warum bei großer Teilchenzahl annähernd gleichmäßige Verteilungen gegenüber stark ungleichmäßigen überwiegen.",
+      "canonicalDescriptionEn": "The learner can use $S = k_B\\ln\\Omega$ and simple counting models, such as $\\Omega=\\binom{N}{n}$ for equally likely left-right assignments, to compare the entropies of different macrostates and explain why approximately even distributions predominate over strongly uneven ones for large particle numbers.",
+      "beforeProfileFingerprint": "sha256:756d6f41846f0fa6bc409dae19c427c43b07c9ead0061661646837359df14daa",
+      "afterProfileFingerprint": "sha256:933f355a8791ab6bff908ffa55b7eb23c52a14d181ef12b7bb48ab77035b67c9",
+      "currentGoalFingerprint": "sha256:94c475274979ddc27d1a1eb676c59925fc2d187acee1150ba75cf338bcf669bb",
+      "changes": [
+        {
+          "field": "profile.expectations[0].observablePerformanceDe",
+          "before": "Die lernende Person zählt ohne vorgefertigte Tabelle die Zuordnungen eines kleinen markierten Teilchenmodells, berechnet Ω und relative Entropieunterschiede mit dem Logarithmus und erklärt, weshalb ein einzelner exakt ausgeglichener Makrozustand nicht mit allen möglichen Mikrozuständen gleichgesetzt werden darf.",
+          "after": "Die lernende Person begründet im abgegrenzten Zählmodell feste Teilchenzahl, unabhängige Zuordnungen und Gleichwahrscheinlichkeit, konstruiert eigene Zählungen und Entropievergleiche und prüft die Vorhersage annähernder Gleichverteilung gegen die gewonnenen Multiplikitäten sowie die Grenze bei ungleichen Teilvolumina."
+        },
+        {
+          "field": "profile.expectations[0].observablePerformanceEn",
+          "before": "Without a prefilled table, the learner counts assignments in a small labeled-particle model, calculates Ω and relative entropy differences using the logarithm, and explains why one exactly balanced macrostate must not be identified with all possible microstates.",
+          "after": "The learner justifies fixed particle number, independent assignments and equal likelihood in the defined counting model, constructs their own counts and entropy comparisons, and checks the approximate-balance prediction against the resulting multiplicities and the limitation for unequal subvolumes."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Zähle für vier markierte, unabhängig und gleich wahrscheinlich links/rechts zugeordnete Teilchen die Fälle für n_links=0,1,2. Vergleiche Ω und die Entropien und erläutere, weshalb 6 von 16 Fällen für n_links=2 keine überwältigende Wahrscheinlichkeit sind.",
+          "after": "Vier markierte Teilchen befinden sich in einem geschlossenen Modell mit zwei gleich großen Raumhälften; die unabhängigen Links-rechts-Zuordnungen seien gleich wahrscheinlich. Begründe dieses Zählmodell, zähle ohne Vorlage die Fälle für n_links=0,1,2 und alle möglichen Zuordnungen und vergleiche die Entropien. Beurteile aus Deiner Zählung, ob exakte Gleichverteilung überwältigend wahrscheinlich ist."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "For four labeled particles independently and equally likely to be assigned left or right, count the cases for n_left=0,1,2. Compare Ω and the entropies and explain why 6 out of 16 cases for n_left=2 is not an overwhelming probability.",
+          "after": "Four labeled particles occupy a closed model with two equal-volume halves; independent left-right assignments are equally likely. Justify this counting model, count without a template the cases for n_left=0,1,2 and all possible assignments, and compare the entropies. Use your own count to assess whether exact balance is overwhelmingly probable."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person zählt ohne vorgefertigte Tabelle die Zuordnungen eines kleinen markierten Teilchenmodells, berechnet Ω und relative Entropieunterschiede mit dem Logarithmus und erklärt, weshalb ein einzelner exakt ausgeglichener Makrozustand nicht mit allen möglichen Mikrozuständen gleichgesetzt werden darf.",
+          "after": "Die lernende Person begründet die zwei gleich wahrscheinlichen unabhängigen Raummöglichkeiten pro Teilchen, gewinnt Ω=1,4,6 bei insgesamt 16 Zuordnungen und vergleicht S=0,k_B ln 4,k_B ln 6 relativ zum selben Bezug. Sie deutet 6/16 als größte einzelne, aber nicht überwältigende Wahrscheinlichkeit und nennt die Modellbedingungen."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "Without a prefilled table, the learner counts assignments in a small labeled-particle model, calculates Ω and relative entropy differences using the logarithm, and explains why one exactly balanced macrostate must not be identified with all possible microstates.",
+          "after": "The learner justifies two equally likely independent spatial possibilities per particle, obtains Ω=1,4,6 out of 16 total assignments and compares S=0,k_B ln 4,k_B ln 6 with the same reference. They interpret 6/16 as the largest individual but not overwhelming probability and state the model conditions."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "In einer neuen Aufgabe erhält das Modell eine ungerade Teilchenzahl und eine Definition eines annähernd ausgeglichenen Bereichs. Die lernende Person vergleicht die zugehörigen Multiplikitäten mit einem extremen Makrozustand und erklärt die Rolle von Modellgröße und Gleichwahrscheinlichkeit.",
+          "after": "Ein frisches Modell hat fünf markierte Teilchen in zwei gleich großen Hälften mit unabhängigen gleich wahrscheinlichen Links-rechts-Zuordnungen. Als annähernd ausgeglichen gelten n_links=2 oder 3. Vergleiche diesen Bereich mit den beiden einseitigen Zuständen und erkläre, warum exakte Halbierung hier unmöglich ist. Beurteile außerdem, welche Wahrscheinlichkeitsaussagen bei ungleichen Raumhälften neu geprüft werden müssten."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "In a fresh task, the model has an odd particle number and a defined approximately balanced range. The learner compares the corresponding multiplicities with an extreme macrostate and explains the roles of model size and equal likelihood.",
+          "after": "A fresh model has five labeled particles in two equal-volume halves with independent equally likely left-right assignments. Approximate balance means n_left=2 or 3. Compare this range with the two one-sided states and explain why exact halving is impossible here. Also assess which probability claims would need reconsideration for unequal-volume halves."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "In einer neuen Aufgabe erhält das Modell eine ungerade Teilchenzahl und eine Definition eines annähernd ausgeglichenen Bereichs. Die lernende Person vergleicht die zugehörigen Multiplikitäten mit einem extremen Makrozustand und erklärt die Rolle von Modellgröße und Gleichwahrscheinlichkeit.",
+          "after": "Die lernende Person erhält 10+10=20 von 32 Zuordnungen im ausgeglichenen Bereich gegenüber 1+1=2 einseitigen. Sie trennt den Bereich von einem einzelnen Makrozustand, vergleicht dessen jeweilige Entropie über k_B ln Ω und erklärt, dass ungleiche Teilvolumina die gleiche Wahrscheinlichkeit jeder Links-rechts-Zuordnung aufheben."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "In a fresh task, the model has an odd particle number and a defined approximately balanced range. The learner compares the corresponding multiplicities with an extreme macrostate and explains the roles of model size and equal likelihood.",
+          "after": "The learner obtains 10+10=20 out of 32 assignments in the balanced range versus 1+1=2 one-sided assignments. They distinguish the range from one macrostate, compare each macrostate's entropy through k_B ln Ω, and explain that unequal subvolumes remove equal probability of every left-right assignment."
+        }
+      ]
+    },
+    {
+      "i": 15,
+      "goalId": "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+      "beforeFinding": "No necessary content correction: fixed N, classical ideal gas, unchanged T, product counting, logarithm and Nk_B=nR are present; two-step transfer is physically different from one-step derivation.",
+      "afterDecision": "Keep profile unchanged; first task derives the factor, independent second task tests multiplicativity versus additivity without dependence on the image layout.",
+      "freshIndependentCheck": "Compression V→V/2→V/4 gives factors(1/2)^N each, total(1/4)^N and ΔS=−Nk_B ln4; two entropy steps add to the direct result.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified.",
+      "decision": "keep",
+      "canonicalDescriptionDe": "Die lernende Person kann für eine feste Teilchenzahl $N$ eines klassischen idealen Gases bei unveränderter Temperatur den Zusammenhang $\\Omega_2/\\Omega_1 = (V_2/V_1)^N$ im Teilchenmodell begründen und daraus $\\Delta S = Nk_B\\ln(V_2/V_1) = nR\\ln(V_2/V_1)$ als Verbindung von mikroskopischer und makroskopischer Entropiebeschreibung herleiten.",
+      "canonicalDescriptionEn": "The learner can justify $\\Omega_2/\\Omega_1 = (V_2/V_1)^N$ in the particle model for a fixed number $N$ of particles of a classical ideal gas at unchanged temperature, and derive $\\Delta S = Nk_B\\ln(V_2/V_1) = nR\\ln(V_2/V_1)$ as a link between microscopic and macroscopic entropy descriptions.",
+      "beforeProfileFingerprint": "sha256:295a7c915b9085e4e4d0af8f263c733830d786c71912961fd2844fc5690d2c10",
+      "afterProfileFingerprint": "sha256:295a7c915b9085e4e4d0af8f263c733830d786c71912961fd2844fc5690d2c10",
+      "currentGoalFingerprint": "sha256:b56c4b7e5cc43befcb4a02e1a6fbfcb68fc91b23f150d57cb67d7d31e5bb9a24",
+      "changes": []
+    },
+    {
+      "i": 16,
+      "goalId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
+      "beforeFinding": "Case 1 expected vanishing terms though both supplied transfers were nonzero; rigidity alone was not enough to exclude every possible work form in case 2.",
+      "afterDecision": "Fit first expectation to signed70 J balance and move explicit zero-term reasoning to rigid/no-other-work versus insulated-piston transfer.",
+      "freshIndependentCheck": "120 J heat in and50 J work out gives+70 J in both conventions; electrical work would invalidate inferring W=0 from rigidity alone.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified.",
+      "decision": "revise",
+      "canonicalDescriptionDe": "Die lernende Person kann für einfache Gasprozesse Energiegrößen konsistent bilanzieren (Q, W, ΔU) und den ersten Hauptsatz rechnerisch anwenden.",
+      "canonicalDescriptionEn": "The learner can consistently balance energy quantities (Q, W, ΔU) for simple gas processes and apply the first law computationally.",
+      "beforeProfileFingerprint": "sha256:1ab73d16e26f0d1587dcfa7d94a765a55885ccfbc3d7f89c2fd94eabff3d9ee4",
+      "afterProfileFingerprint": "sha256:afb1c3ebd8ba052f4da111a4c9c80b1422ad2cc38af14d438779fe930be4004c",
+      "currentGoalFingerprint": "sha256:a6424845c4fcc99bd34cacd3dd77eae8b327d50a9a9909b32235945374cde5eb",
+      "changes": [
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandDe",
+          "before": "Ein geschlossenes Gas nimmt 120 J Wärme auf und verrichtet 50 J Arbeit an der Umgebung. Stelle mit ausdrücklich gewählter Arbeitskonvention die Energiebilanz auf, berechne ΔU und zeige, dass die alternative Vorzeichenkonvention dieselbe physikalische Änderung ergibt.",
+          "after": "Ein ruhendes geschlossenes Gas nimmt 120 J Wärme auf und verrichtet 50 J Arbeit an der Umgebung; makroskopische Bewegungs- und Lageenergieänderungen sind vernachlässigbar. Benenne die Systemgrenze, stelle mit ausdrücklich gewählter Arbeitskonvention die Energiebilanz auf, berechne ΔU mit Einheiten und zeige, dass die alternative Vorzeichenkonvention dieselbe physikalische Änderung ergibt."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].taskDemandEn",
+          "before": "A closed gas absorbs 120 J of heat and does 50 J of work on its surroundings. Set up the energy balance with an explicitly chosen work convention, calculate ΔU, and show that the alternative sign convention gives the same physical change.",
+          "after": "A stationary closed gas absorbs 120 J of heat and does 50 J of work on its surroundings; changes in macroscopic kinetic and potential energy are negligible. Identify the system boundary, set up the energy balance with an explicitly chosen work convention, calculate ΔU with units and show that the alternative sign convention gives the same physical change."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+          "before": "Die lernende Person benennt bei einem einfachen Gasprozess eigenständig Systemgrenze und Arbeitskonvention, sagt anhand der Prozessbedingungen verschwindende Terme voraus und bestimmt die fehlende Bilanzgröße mit begründeten Vorzeichen und einer Kontrolle in Joule.",
+          "after": "Die lernende Person grenzt das Gas ab, setzt bei Arbeit am Gas Q=+120 J und W=−50 J und erhält ΔU=+70 J. Mit Arbeit des Gases W_ab=+50 J ergibt ΔU=Q−W_ab dasselbe Ergebnis; sie begründet beide Vorzeichen und die Einheit Joule."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[0].expectedPerformanceEn",
+          "before": "For a simple gas process, the learner independently identifies the system boundary and work convention, predicts vanishing terms from the process conditions, and determines the missing balance quantity with justified signs and a check in joules.",
+          "after": "The learner defines the gas boundary, uses Q=+120 J and W=−50 J for work on the gas, and obtains ΔU=+70 J. With work by the gas W_out=+50 J, ΔU=Q−W_out gives the same result; they justify both sign conventions and the unit joule."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandDe",
+          "before": "In einer neuen Aufgabe wird ein beheizter starrer Gasbehälter durch ein thermisch isoliertes Gas mit beweglichem Kolben ersetzt. Die lernende Person erklärt, welcher Bilanzterm jeweils entfällt und wie sich die Ursache einer Änderung der inneren Energie dadurch verändert.",
+          "after": "Vergleiche in einer neuen Aufgabe zwei ruhende geschlossene Gase ohne weitere Arbeitsformen: Ein starrer Behälter nimmt 40 J Wärme auf; ein thermisch isoliertes Gas mit beweglichem Kolben wird durch 40 J Arbeit am Gas komprimiert. Begründe jeweils den verschwindenden Bilanzterm und bestimme ΔU, ohne die Ursache der Änderungen gleichzusetzen."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].taskDemandEn",
+          "before": "In a fresh task, a heated rigid gas container is replaced by thermally insulated gas with a movable piston. The learner explains which balance term vanishes in each case and how this changes the cause of a change in internal energy.",
+          "after": "In a fresh task, compare two stationary closed gases with no other forms of work: a rigid vessel absorbs 40 J of heat; thermally insulated gas with a movable piston is compressed by 40 J of work on the gas. Justify the vanishing balance term in each case and determine ΔU without equating the causes of the changes."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceDe",
+          "before": "In einer neuen Aufgabe wird ein beheizter starrer Gasbehälter durch ein thermisch isoliertes Gas mit beweglichem Kolben ersetzt. Die lernende Person erklärt, welcher Bilanzterm jeweils entfällt und wie sich die Ursache einer Änderung der inneren Energie dadurch verändert.",
+          "after": "Die lernende Person begründet W=0 im starren Behälter ohne andere Arbeitsformen und Q=0 beim isolierten Kolbenprozess. Beide Bilanzen ergeben ΔU=+40 J, einmal durch Wärme, einmal durch Arbeit; gleiche Zustandsgrößenänderung bedeutet nicht gleichen Prozess."
+        },
+        {
+          "field": "profile.applicationCaseBriefs[1].expectedPerformanceEn",
+          "before": "In a fresh task, a heated rigid gas container is replaced by thermally insulated gas with a movable piston. The learner explains which balance term vanishes in each case and how this changes the cause of a change in internal energy.",
+          "after": "The learner justifies W=0 in the rigid vessel with no other work forms and Q=0 in the insulated piston process. Both balances give ΔU=+40 J, once from heat and once from work; equal changes in a state variable do not mean identical processes."
+        }
+      ]
+    },
+    {
+      "i": 17,
+      "goalId": "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+      "beforeFinding": "No necessary content correction: total isolation, subsystem distinction and chronological prediction are explicit; friction transfer changes mechanism and boundary.",
+      "afterDecision": "Keep profile unchanged; proposed evidence is independent ordering/explanation, not copying a completed arrow-of-time graphic.",
+      "freshIndependentCheck": "A freely slowing block warms the included rough track; reversing only the block's position sequence omits the entropy-generating track. A written case can test this without the original raster.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified.",
+      "decision": "keep",
+      "canonicalDescriptionDe": "Die lernende Person kann bei einfachen irreversiblen Prozessen eines isolierten Gesamtsystems die Entropieerzeugung mit $\\Delta S_{\\mathrm{ges}}>0$ begründen und die damit ausgezeichnete Richtung makroskopischer Abläufe als thermodynamischen Zeitpfeil erklären.",
+      "canonicalDescriptionEn": "The learner can justify entropy generation through $\\Delta S_{\\mathrm{tot}}>0$ for simple irreversible processes in an isolated total system and explain the resulting preferred direction of macroscopic processes as the thermodynamic arrow of time.",
+      "beforeProfileFingerprint": "sha256:6162487028a031b2e0b09076129454cf535998b39c8644d3c56fde6f12ad0bd0",
+      "afterProfileFingerprint": "sha256:6162487028a031b2e0b09076129454cf535998b39c8644d3c56fde6f12ad0bd0",
+      "currentGoalFingerprint": "sha256:e6a286e7077efc51301807195009c73aa40d331a03a6abbdba4f474b7d86d1c5",
+      "changes": []
+    },
+    {
+      "i": 18,
+      "goalId": "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+      "beforeFinding": "No necessary content correction: cyclic working medium, hot/cold reservoirs, necessary heat rejection and qualitative reversible maximum align with the goal.",
+      "afterDecision": "Keep profile unchanged; transfer changes cold-reservoir temperature and asks a qualitative bound prediction, not extra calculation.",
+      "freshIndependentCheck": "At fixed hot-reservoir temperature, a warmer sink lowers the reversible maximum; reduced friction can improve a real engine at unchanged temperatures but cannot raise that maximum.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified.",
+      "decision": "keep",
+      "canonicalDescriptionDe": "Die lernende Person kann den zweiten Hauptsatz auf Wärmekraftmaschinen anwenden, den Zusammenhang zwischen Abwärme und begrenztem Wirkungsgrad erläutern und die Carnot-Grenze qualitativ einordnen.",
+      "canonicalDescriptionEn": "The learner can apply the second law to heat engines, explain the relation between waste heat and limited efficiency, and qualitatively classify the Carnot limit.",
+      "beforeProfileFingerprint": "sha256:37729e6aaf0be3273ebe3939571be49aad48a0720b167883e8c0ac5975959441",
+      "afterProfileFingerprint": "sha256:37729e6aaf0be3273ebe3939571be49aad48a0720b167883e8c0ac5975959441",
+      "currentGoalFingerprint": "sha256:a2b6c7e5bfae92b3e679f7b94fe8448746b4dab42bd6367524097d4dced52026",
+      "changes": []
+    },
+    {
+      "i": 19,
+      "goalId": "73b5af24-7750-520a-bb16-43136ce19a5c",
+      "beforeFinding": "No necessary content correction: fresh numerical data, matched reservoirs, uncertainty ranges and cautious attribution are demanded; second case challenges an apparent bound exceedance.",
+      "afterDecision": "Keep profile unchanged; data archetype has independent quantitative processing plus uncertainty/model checks rather than bare substitution.",
+      "freshIndependentCheck": "Case1 η lies[290/1020,310/980]=[0.2843,0.3163]; Carnot bound lies[1−302/598,1−298/602]=[0.4950,0.5050], so intervals remain separated. Fresh check with W=510±20 J,Q=1000±20 J and same temperatures givesη∈[0.4804,0.5408], overlapping the bound: no established violation.",
+      "bilingualCheck": "DE/EN semantics, assumptions and demanded performance compared directly; no translation drift identified.",
+      "decision": "keep",
+      "canonicalDescriptionDe": "Die lernende Person kann den Wirkungsgrad einer realen zyklischen Wärmekraftmaschine aus Messdaten bestimmen, mit der Carnot-Grenze für dieselben heißen und kalten Reservoirtemperaturen vergleichen und Abweichungen unter Berücksichtigung von Irreversibilitäten und Messunsicherheiten physikalisch beurteilen.",
+      "canonicalDescriptionEn": "The learner can determine the efficiency of a real cyclic heat engine from measured data, compare it with the Carnot limit for the same hot and cold reservoir temperatures, and physically assess deviations while considering irreversibilities and measurement uncertainties.",
+      "beforeProfileFingerprint": "sha256:3e84993c3befb5c4ab12b9d015bbd96271ad2a260439cac16bba8bf3fcc933eb",
+      "afterProfileFingerprint": "sha256:3e84993c3befb5c4ab12b9d015bbd96271ad2a260439cac16bba8bf3fcc933eb",
+      "currentGoalFingerprint": "sha256:61c645f0216b83b90dd87687aced1c30c71632bb24729155bd9504a6894c576e",
+      "changes": []
+    }
+  ]
+}

@@ -1,14 +1,14 @@
-# Lernzielvisualisierung: Energien wasserstoffähnlicher Atome
+# Lernzielvisualisierung: Energien wasserstoffähnlicher Ein-Elektronensysteme
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `bacae732-2016-5a83-bc61-d0f94ed5a0e4`
-- Titel: Energien wasserstoffähnlicher Atome
-- Beschreibung: Die lernende Person kann Energieniveaus wasserstoffähnlicher Atome berechnen und das Pauli-Prinzip einordnen.
+- Titel: Energien wasserstoffähnlicher Ein-Elektronensysteme
+- Beschreibung: Die lernende Person kann für wasserstoffähnliche Ein-Elektronensysteme Energieniveaus im nichtrelativistischen Coulomb-Modell bei vernachlässigter Kernbewegung mit $E_n\approx-13{,}6\,\mathrm{eV}\,Z^2/n^2$ relativ zur Ionisationsgrenze berechnen und die Abhängigkeit von Kernladungszahl $Z$ und Hauptquantenzahl $n$ physikalisch deuten.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `bacae732-2016-5a83-bc61-d0f94ed5a0e4.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/bacae732-2016-5a83-bc61-d0f94ed5a0e4/bacae732-2016-5a83-bc61-d0f94ed5a0e4.jpg`
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -27,32 +27,11 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Energien wasserstoffähnlicher Atome
-Beschreibung: Die lernende Person kann Energieniveaus wasserstoffähnlicher Atome berechnen und das Pauli-Prinzip einordnen.
+Titel: Energien wasserstoffähnlicher Ein-Elektronensysteme
+Beschreibung: Die lernende Person kann für wasserstoffähnliche Ein-Elektronensysteme Energieniveaus im nichtrelativistischen Coulomb-Modell bei vernachlässigter Kernbewegung mit $E_n\approx-13{,}6\,\mathrm{eV}\,Z^2/n^2$ relativ zur Ionisationsgrenze berechnen und die Abhängigkeit von Kernladungszahl $Z$ und Hauptquantenzahl $n$ physikalisch deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Energien wasserstoffaehnlicher Atome`.
-- Show a vertical energy-level diagram with horizontal levels below `E = 0`.
-- Place `E = 0` at the top as the ionization limit.
-- Draw levels `n = 1`, `n = 2`, and `n = 3` below zero; `n = 1` must be lowest and most negative, `n = 2` higher, `n = 3` closer to `E = 0`.
-- If you draw an energy axis, its positive direction must point upward; alternatively omit the axis arrow entirely.
-- Add a formula card exactly as: `E_n = -13.6 eV * Z^2 / n^2`.
-- Add one small downward transition from `n = 3` to `n = 2` labelled `Photon`.
-- Add a small note `Pauli: Zustand nur begrenzt besetzbar`.
-- Visible learner text must be limited to the title, `E = 0`, `n = 1`, `n = 2`, `n = 3`, `Photon`, `E_n = -13.6 eV * Z^2 / n^2`, and `Pauli: Zustand nur begrenzt besetzbar`.
-
-Vermeiden:
-
-- Do not place bound levels above `E = 0`.
-- Do not make `n = 1` the highest level.
-- Do not omit the negative sign in the energy formula.
-- Do not draw an energy-axis arrow pointing downward.
-- Do not draw arbitrary electron orbits with misleading classical trajectories.
-- Do not draw upward photon emission arrows.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Energien wasserstoffähnlicher Ein-Elektronensysteme. Create a clear German physics teaching diagram, minimal, no decorative atom or Pauli panel. Show one exact numeric TABLE of energies in eV for two ONE-ELECTRON systems: columns n, Wasserstoff H (Z=1), Helium-Ion He⁺ (Z=2); rows n=1: −13,6; −54,4. n=2: −3,40; −13,6. n=3: −1,51; −6,04. Limit n→∞: 0; 0. Formula once Eₙ≈−13,6 eV·Z²/n². Explain zero is the Ionisationsgrenze; bound energies negative and approach zero as n increases. At fixed n doubling Z makes the magnitude four times larger. Conditions: Nichtrelativistisches Coulomb-Modell; ein Elektron; Kernbewegung vernachlässigt. No neutral helium as one electron, no Pauli rule, no probabilities, no infinity bound state, no diagram with false energy spacing. German umlauts, all minus signs and row-column associations exact. 16:9.
 ```
 
 ## Review-Notiz
