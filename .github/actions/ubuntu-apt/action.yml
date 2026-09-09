@@ -1,0 +1,16 @@
+name: Use Ubuntu package sources
+description: Keep CI package installation independent of unused third-party repositories
+runs:
+  using: composite
+  steps:
+    - name: Restrict APT to the runner's Ubuntu sources
+      shell: bash
+      env:
+        SKILLPILOT_APT_POLICY: ${{ github.action_path }}/apt.conf
+      run: |
+        set -euo pipefail
+        # GitHub's Ubuntu runners also enable third-party Chrome/Microsoft
+        # repositories. Our OS packages (including Playwright dependencies)
+        # need only Ubuntu. Preserve all source files and signature/hash checks.
+        test -s /etc/apt/sources.list.d/ubuntu.sources
+        sudo install -m 644 "$SKILLPILOT_APT_POLICY" /etc/apt/apt.conf.d/99skillpilot-ubuntu-sources

@@ -61,6 +61,8 @@ jobs:
           echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
           echo "${install_dir}/bin" >> "${GITHUB_PATH}"
           "${install_dir}/bin/java" -version
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
       - name: Install isolation and archive tools
         run: sudo apt-get update && sudo apt-get install -y bubblewrap strace zip unzip
       - name: Enable and verify bubblewrap isolation
@@ -135,6 +137,8 @@ jobs:
           echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
           echo "${install_dir}/bin" >> "${GITHUB_PATH}"
           "${install_dir}/bin/java" -version
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
       - name: Install isolation and archive tools
         run: sudo apt-get update && sudo apt-get install -y bubblewrap strace zip unzip
       - name: Enable and verify bubblewrap isolation

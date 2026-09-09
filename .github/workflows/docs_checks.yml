@@ -29,6 +29,8 @@ on:
       - 'scripts/claude_direct_install_beta_release.test.mjs'
       - 'scripts/claude_v1_revoke.py'
       - 'scripts/test_claude_v1_revoke.py'
+      - '.github/actions/ubuntu-apt/**'
+      - 'scripts/ci_ubuntu_apt.test.mjs'
       - '.github/workflows/docs_checks.yml'
   pull_request:
     branches: [ main ]
@@ -54,6 +56,8 @@ on:
       - 'scripts/claude_direct_install_beta_release.test.mjs'
       - 'scripts/claude_v1_revoke.py'
       - 'scripts/test_claude_v1_revoke.py'
+      - '.github/actions/ubuntu-apt/**'
+      - 'scripts/ci_ubuntu_apt.test.mjs'
       - '.github/workflows/docs_checks.yml'
 
 permissions:
@@ -128,6 +132,8 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
       - name: Install PostgreSQL client
         run: |
           sudo apt-get update

@@ -43,7 +43,7 @@ werden nicht durch Sprechertext kaschiert. KI-Sprache wird als solche benannt.
    lokal in der privaten `skillpilot-review.json` hinterlegen; nichts davon in
    Chat, Git, Shell-Befehle oder Video kopieren. Datei mit Modus `0600`,
    Profilverzeichnis mit `0700`; genaue Form und Befehle stehen in der
-   [Aufnahmeanleitung](../../tools/demo-video/README.md#skillpilot-openai-review-demo).
+   [Aufnahmeanleitung](https://github.com/enpasos/skillpilot/blob/main/tools/demo-video/README.md#skillpilot-openai-review-demo).
 4. Den vollständigen **deployed `serverBuild`-Commit** bereithalten.
    Der lokale HEAD allein beweist keinen Deploymentstand.
 

@@ -210,6 +210,10 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
+      - name: Test CI package source isolation
+        run: node --test ../scripts/ci_ubuntu_apt.test.mjs
       - name: Install PDF and font tools
         run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
@@ -264,6 +268,8 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
       - name: Install FFmpeg and PDF validation tools
         run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
@@ -394,6 +400,8 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
       - name: Install PDF validation tools
         run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
