@@ -239,6 +239,57 @@ try {
     await h.context.close()
   }
 
+  // A plan switch owns both the active goal and the saved focus even when a
+  // same-learner /state refresh was already in flight before the transition.
+  {
+    const h = await open()
+    await waitReady(h.page, mathTitle)
+    let switchRequests = 0
+    await h.page.route(`**/api/ui/learners/${learnerA}/learning-plans/physics-upper-plan/switch`, async (route) => {
+      switchRequests += 1
+      assert.equal(route.request().method(), 'POST')
+      assert.deepEqual(route.request().postDataJSON(), { expectedRevision: 1, asOf: '2026-09-09' })
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          planId: 'physics-upper-plan', revision: 1, landscapeId: physicsId,
+          focusGoalId: 'physics-upper', activeGoalId: 'physics-upper', changed: true,
+          state: state(learnerB).body,
+        }),
+      })
+    })
+    const oldStateGate = gate()
+    h.replies[learnerA]!.state = oldStateGate.promise
+    const pendingStateRequest = h.page.waitForRequest((request) => (
+      new URL(request.url()).pathname === `/api/ui/learners/${learnerA}/state`
+    ))
+    await emit(h.page, learnerA, 'ACTIVE_GOAL_CHANGED')
+    await pendingStateRequest
+    await h.page.getByRole('button', { name: 'Zu Physik wechseln' }).click()
+    await waitReady(h.page, physicsTitle)
+    const focus = h.page.locator('#learner-goal-sidebar button[aria-pressed="true"]')
+    assert.equal(await focus.count(), 1)
+    assert.match(await focus.locator('..').innerText(), /Elektrische Felder/u)
+    assert.equal(switchRequests, 1)
+
+    const oldStateResponse = h.page.waitForResponse((response) => (
+      new URL(response.url()).pathname === `/api/ui/learners/${learnerA}/state`
+    ))
+    oldStateGate.resolve(state(learnerA))
+    await oldStateResponse
+    await settledFrame(h.page)
+    await waitReady(h.page, physicsTitle)
+    assert.equal(await focus.count(), 1)
+    assert.match(await focus.locator('..').innerText(), /Elektrische Felder/u,
+      'an older same-scope /state response must not restore the previous focus after a plan switch')
+    await h.page.getByTestId('learner-plan-today-overview').getByText(/Du lernst gerade · Physik/u).waitFor()
+    await assertNoFalseSetup(h.page)
+    assert.deepEqual(h.unexpected, [])
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+
   // A real scope error remains actionable and is not disguised as loading.
   {
     const h = await open({ profile: { status: 503, body: { error: 'Controlled profile outage' } } })

@@ -345,27 +345,29 @@ const transitionApplyEnd = learnerViewSource.indexOf(
 )
 assert.ok(transitionApplyStart >= 0 && transitionApplyEnd > transitionApplyStart)
 const transitionApplySource = learnerViewSource.slice(transitionApplyStart, transitionApplyEnd)
-const transitionPlannedInvalidationIndex = transitionApplySource.indexOf(
-  'invalidateLatestRequest(plannedGoalsRequestSequenceRef)',
+// Focus and active-goal state now share the authoritative /state response;
+// there is no separate planned-goals GET request to invalidate.
+const transitionStateInvalidationIndex = transitionApplySource.indexOf(
+  'invalidateLatestRequest(learnerStateRequestSequenceRef)',
 )
 const transitionEmbeddedStateApplyIndex = transitionApplySource.indexOf('applyLearnerStatePayload(')
 assert.ok(
-  transitionPlannedInvalidationIndex >= 0
-    && transitionEmbeddedStateApplyIndex > transitionPlannedInvalidationIndex,
-  'A learning-plan transition must invalidate an older planned-goals request before applying its authoritative state.',
+  transitionStateInvalidationIndex >= 0
+    && transitionEmbeddedStateApplyIndex > transitionStateInvalidationIndex,
+  'A learning-plan transition must invalidate an older learner-state request before applying its authoritative focus and active goal.',
 )
-const plannedGoalsSequence = { current: 0 }
-const pendingPlannedGoalsRefresh = beginLatestRequest(plannedGoalsSequence)
-invalidateLatestRequest(plannedGoalsSequence)
+const learnerStateSequence = { current: 0 }
+const pendingLearnerStateRefresh = beginLatestRequest(learnerStateSequence)
+invalidateLatestRequest(learnerStateSequence)
 assert.equal(
   isLatestRequestForScope(
-    plannedGoalsSequence,
-    pendingPlannedGoalsRefresh,
+    learnerStateSequence,
+    pendingLearnerStateRefresh,
     'learner-a|root-a',
     'learner-a|root-a',
   ),
   false,
-  'An older planned-goals response must fail closed after a learning-plan transition in the same scope.',
+  'An older learner-state response must not overwrite focus or the active goal after a learning-plan transition in the same scope.',
 )
 const planContinueSequence = { current: 0 }
 const pendingPlanContinue = beginLatestRequest(planContinueSequence)
