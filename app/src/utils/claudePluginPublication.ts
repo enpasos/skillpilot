@@ -1,7 +1,9 @@
 export const CLAUDE_PLUGIN_PUBLICATION_INDEX_URL = '/api/public/claude/plugins/index.json'
 export const CLAUDE_MARKETPLACE_REPOSITORY_URL = 'https://github.com/enpasos/skillpilot-claude-marketplace'
 export const CLAUDE_CONNECTOR_PRIVACY_URL = 'https://mcp-claude-v1.skillpilot.com/privacy'
-export const CLAUDE_PLUGIN_CURRENT_VERSION = '1.1.2'
+// This is a compatibility floor, not the current publication. The public index
+// selects the version; incompatible major versions require a new guide contract.
+const CLAUDE_PLUGIN_MINIMUM_VERSION = [1, 1, 2] as const
 // The Marketplace guide is withdrawn while personal installation and updates
 // are unreliable. The unchanged current file is the controlled beta route.
 // Release metadata and regression checks bind this guide decision.
@@ -184,11 +186,18 @@ const parsePlugin = (value: unknown, index: number): ClaudePluginPublication => 
   }
 
   const version = requiredString(value, 'version', path)
-  if (!/^[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z]+(?:\.[0-9A-Za-z]+)*)?$/u.test(version)) {
-    return publicationError(`${path}.version must be a semantic version`)
+  if (!/^(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)$/u.test(version)) {
+    return publicationError(`${path}.version must be a canonical stable semantic version`)
   }
-  if (version !== CLAUDE_PLUGIN_CURRENT_VERSION) {
-    return publicationError(`${path}.version must equal ${CLAUDE_PLUGIN_CURRENT_VERSION}`)
+  const [major, minor, patch] = version.split('.').map(Number)
+  const [minimumMajor, minimumMinor, minimumPatch] = CLAUDE_PLUGIN_MINIMUM_VERSION
+  if (
+    ![major, minor, patch].every(Number.isSafeInteger)
+    || major !== minimumMajor
+    || minor! < minimumMinor
+    || (minor === minimumMinor && patch! < minimumPatch)
+  ) {
+    return publicationError(`${path}.version must be a compatible 1.x release at least 1.1.2`)
   }
 
   const status = requiredString(value, 'status', path)

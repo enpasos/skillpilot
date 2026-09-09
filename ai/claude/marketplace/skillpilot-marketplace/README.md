@@ -6,10 +6,14 @@ package, but distributes them through a repository that Claude can update.
 This personal marketplace is published independently by SkillPilot. It is not
 reviewed, endorsed, curated, or verified by Anthropic.
 
-Version 1.1.2 is a locally prepared replacement candidate, not yet published or
-deployed. The existing 1.1.1 repository release remains unchanged. The 1.1.2
-Marketplace update and its exact-client acceptance must be verified before
-SkillPilot offers this candidate as an available installation route.
+Version **1.1.2** is the current Marketplace package. Its normal display name is
+**SkillPilot Coach v1**; it replaces the temporary catalog-test label. The six
+plugin files are byte-identical to the immutable SkillPilot 1.1.2 download.
+The packaged README and setup guide retain their preparation-time status;
+this repository README and changelog describe the subsequent publication.
+Exact-client installation and update acceptance remain pending. Repository
+publication does not establish reliable automatic updates in Claude or change
+the first-party installation guide.
 
 ## Install in Claude
 
@@ -49,8 +53,12 @@ Technical installation ID: `skillpilot-coach-v1@skillpilot-marketplace`.
 
 ## Updates
 
-Use **Update** on the SkillPilot Marketplace in Claude, then start a new Claude
-session. The plugin version is maintained only in
+Check the version offered in the plugin's **Contents** view and the version of
+your installed plugin. Both should read **1.1.2** before starting a new Claude
+session. A GitHub release alone does not prove that Claude has synchronized or
+updated your installation; the available synchronization controls vary by
+Claude surface. If the catalog is stale, contact <support@skillpilot.com>.
+The plugin version is maintained only in
 `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json`.
 
 ## Trust and support

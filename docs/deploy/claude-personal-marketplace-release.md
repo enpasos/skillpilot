@@ -4,11 +4,67 @@ This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
 Anthropic-curated or Anthropic-verified listing. Version 1.1.2 is the sole
-locally prepared replacement candidate. It shortens the daily-plan overview
+current replacement candidate. It shortens the daily-plan overview
 without changing the plan calculations, tools, learner sessions or frozen
-OpenAI v1 lane. Preparation does not publish or deploy the candidate.
+OpenAI v1 lane. Its immutable direct-install artifact is publicly available;
+the separately authorized Marketplace publication is tracked below.
 
-## 1.1.2 local preparation, 8 September 2026
+## 1.1.2 Marketplace publication, 9 September 2026
+
+The Product Owner explicitly requested publication of the actual 1.1.2 plugin
+through the existing Marketplace under its normal name. This authorizes the
+bounded repository publication of the already prepared six-file package,
+normal publication wording in the Marketplace README and changelog, and exact
+repository evidence. It supersedes the preparation-only publication boundary
+below for this release. It does not change the first-party installation guide
+or approve any real-account installation or update acceptance.
+
+The Marketplace remains `skillpilot-marketplace`, with plugin name
+`skillpilot-coach-v1` and the familiar title **SkillPilot Coach v1**. There is no
+diagnostic version or timestamp in the catalog name. The canonical repository
+URL remains `https://github.com/enpasos/skillpilot-claude-marketplace`.
+
+The exact public direct-install index and artifact were verified on
+9 September: version `1.1.2`, 55,266 bytes, SHA-256
+`835c91844f950d9101f74ef245916fc6a7d65f53426ae3939f3a224f7ab827ca`.
+The credential-free public synthetic passed all eight checks. These results
+establish artifact availability and the checked public endpoints only.
+
+The generated publication tree was merged in
+[PR #4](https://github.com/enpasos/skillpilot-claude-marketplace/pull/4).
+`verify-repository` passed at `2026-09-09T04:24:02.000Z` against the actual
+public `main` branch:
+
+- revision: `25bf4d8272030a3701008f7b5a09d4a18cba15c5`;
+- closed publication inventory: 11 files;
+- tree SHA-256: `690e57846a250b49bb8ac2ac30b5bda0f7f4c1eaf50edc3c8de2561e1b03da66`;
+- exact 1.1.2 package parity, both strict CLI validations and installation from
+  the actual HTTPS repository in an isolated profile: passed;
+- [default-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/34310773587): passed.
+
+Only `public-repository-default-branch` is recorded as `pass`; the state is
+`published_pending_acceptance`. Clean-account install, existing-account
+migration/refresh, first-party guide approval and all other exact-client and
+readiness decisions remain pending.
+
+The Product Owner clarified that the reported 1.1.1 synchronization occurred
+only after adding the repository URL with `?v=2`. This is a user-reported
+workaround for that account, not proof that changing a catalog name triggers
+automatic synchronization, nor a verified update route for 1.1.2. The canonical
+URL and catalog identity are unchanged.
+
+The six packaged files, both immutable 1.1.1 and 1.1.2 artifacts, and previous
+release dossiers remain byte-identical. The packaged README and SETUP retain
+their preparation-time wording because it belongs to the immutable artifact;
+this runbook and the Marketplace-root README describe the later publication
+state. The current `/plugins` guide continues to use download and upload, now
+with the exact 1.1.2 artifact. No application deployment is part of this
+Marketplace publication.
+
+The exact authorization boundary is recorded in
+[freeze appendix 6.70](openai-plugin-v1-review-freeze.md#670-claude-112-im-bestehenden-marketplace-veroffentlichen).
+
+## Historical 1.1.2 local preparation, 8 September 2026
 
 The Product Owner authorized only the compact daily summary, matching
 Claude-only server instructions, tests and local patch preparation:
@@ -32,7 +88,7 @@ publication, deployment, account update, new support claim or Marketplace
 promotion is authorized by this preparation. Do not run public verification
 as an acceptance check before rollout: the public version intentionally differs.
 
-## Current first-party guide: download and upload, 8 September 2026
+## Historical first-party guide decision: download and upload, 8 September 2026
 
 On **8 September 2026**, the Product Owner reported that the Marketplace path
 still did not work reliably and explicitly requested the direct download and
@@ -40,7 +96,7 @@ upload instructions on `/plugins`. This decision supersedes the first-party
 Marketplace recommendation recorded on 5 September; the publication and its
 original evidence below remain historical facts.
 
-The currently deployed guide uses the existing immutable **1.1.1** `.plugin` file only.
+The guide at that decision used the existing immutable **1.1.1** `.plugin` file only.
 Download it from SkillPilot, remove only an older SkillPilot installation when
 replacing it, upload the downloaded file in Claude, connect the plugin's bundled
 SkillPilot connector, then return to SkillPilot and start a fresh chat. Other
@@ -113,7 +169,7 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.2` (local preparation only)
+- Current candidate version: `1.1.2`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only

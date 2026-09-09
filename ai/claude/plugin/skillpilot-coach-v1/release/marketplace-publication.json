@@ -27,7 +27,7 @@
     "directInstallSha256": "835c91844f950d9101f74ef245916fc6a7d65f53426ae3939f3a224f7ab827ca"
   },
   "activation": {
-    "state": "prepared_not_published",
+    "state": "published_pending_acceptance",
     "firstPartyUiRoute": "controlled_direct_install_beta",
     "marketplaceUiSwitchAllowed": false,
     "firstPartyGuideDecision": {
@@ -43,13 +43,13 @@
     "evidence": [
       {
         "id": "public-repository-default-branch",
-        "status": "pending",
-        "revision": null,
-        "treeSha256": null,
-        "candidateVersion": null,
-        "candidateSha256": null,
-        "verifiedAt": null,
-        "evidenceRef": null
+        "status": "pass",
+        "revision": "25bf4d8272030a3701008f7b5a09d4a18cba15c5",
+        "treeSha256": "690e57846a250b49bb8ac2ac30b5bda0f7f4c1eaf50edc3c8de2561e1b03da66",
+        "candidateVersion": "1.1.2",
+        "candidateSha256": "835c91844f950d9101f74ef245916fc6a7d65f53426ae3939f3a224f7ab827ca",
+        "verifiedAt": "2026-09-09T04:24:02.000Z",
+        "evidenceRef": "https://github.com/enpasos/skillpilot-claude-marketplace/pull/4"
       },
       {
         "id": "clean-account-marketplace-install",

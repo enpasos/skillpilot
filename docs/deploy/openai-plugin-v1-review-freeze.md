@@ -3726,3 +3726,98 @@ Prepared Messages, Session, Identität, Locale, Lernzustand, Datenschutz,
 Speicherung, Berechtigungen, Portal, Reviewfälle, Fixtures und Reviewartefakte.
 Keine externe Veröffentlichung, kein Push, kein Deployment und keine
 Wiederaufnahme des pausierten Curriculum-Goals.
+
+### 6.70 Claude 1.1.2 im bestehenden Marketplace veröffentlichen
+
+Der Product Owner verlangt am **9. September 2026** ausdrücklich, die bereits
+vorbereitete Version **Claude Coach 1.1.2** tatsächlich über den bestehenden
+Marketplace und unter dem normalen Namen bereitzustellen. Die Freigabe aus
+Abschnitt 6.69 wird dafür ausschließlich um die Veröffentlichung des
+unveränderten Pakets im Repository
+`https://github.com/enpasos/skillpilot-claude-marketplace` und die zugehörige
+Release-Dokumentation und Repository-Evidenz erweitert.
+
+Die Identitäten bleiben `skillpilot-marketplace`, `skillpilot-coach-v1` und
+**SkillPilot Coach v1**. Ein diagnostischer Katalogname mit Versionsnummer oder
+Zeitstempel ist nicht Bestandteil der Veröffentlichung. Der Product Owner
+stellt klar, dass die gemeldete Synchronisierung auf 1.1.1 erst nach Verwendung
+der Repository-URL mit `?v=2` erfolgte. Das bleibt ein berichteter Workaround
+dieses Accounts und belegt weder automatische Synchronisierung durch einen
+geänderten Katalognamen noch eine erfolgreiche 1.1.2-Aktualisierung.
+
+Freigegeben sind ausschließlich die normalen Veröffentlichungstexte in den
+Marketplace-Templates `README.md` und `CHANGELOG.md`, das Marketplace-Runbook,
+der aktuelle Marketplace-Evidenzrecord und seine Regression. Die sechs
+Paketdateien sowie die unveränderlichen 1.1.1- und 1.1.2-Downloadartefakte
+bleiben bytegleich. Für 1.1.2 gilt weiterhin SHA-256
+`835c91844f950d9101f74ef245916fc6a7d65f53426ae3939f3a224f7ab827ca` bei
+55.266 Bytes. Die öffentlichen Downloadbytes und der Index wurden bereits
+geprüft; dieses Änderungspaket führt kein Deployment aus.
+
+Nach grünen lokalen, Integritäts- und öffentlichen Prüfungen darf der erzeugte
+geschlossene Publikationsbaum über einen Repository-Pull-Request veröffentlicht
+werden. Erst die anschließende erfolgreiche Prüfung des tatsächlichen
+öffentlichen Default-Branch erlaubt, ausschließlich
+`public-repository-default-branch` mit seinem exakten Commit, Tree-Digest,
+Kandidatendigest und Beleg auf `pass` zu setzen. Der Status lautet dann
+`published_pending_acceptance`. Accountinstallation, Migration und
+Aktualisierung, kandidatengenaue Client-Abnahmen, Datenschutz-, Legal- und
+Support-Gates bleiben offen. Die First-Party-Guide-Entscheidung bleibt
+`pending`, die Download-/Upload-Anleitung unverändert; es gibt keine erneute
+Marketplace-Empfehlung im WebGUI.
+
+Record, Runtime-Checker und Regression ergänzen eine einzige eng begrenzte
+Supplemental-Exception für diese Release-Dateien und diesen Nachtrag. Alle
+früheren Ausnahmen, primären Runtime-/Baumketten und vorhandenen Paket- und
+Release-Baselines bleiben erhalten. OpenAI Coach 1.0.0 sowie der ruhende
+OpenAI-1.1-Kandidat, MCP/OAuth, Tools, Schemas, MCP-Apps-UI, Provider-Start,
+Prepared Messages, Session-, Identitäts-, Locale-, Lernzustands-, Datenschutz-,
+Speicher- und Berechtigungsverträge, Portalwerte, Reviewfälle, Fixtures und
+Reviewartefakte bleiben unverändert. Der OpenAI-Portalreview wird weder
+zurückgezogen noch neu eingereicht. Kein App-Deployment und keine
+Wiederaufnahme des pausierten Curriculum-Goals.
+
+### 6.71 Aktuelle veröffentlichte Claude-Version im WebGUI anzeigen
+
+Der Product Owner verlangt am **9. September 2026** zusätzlich, dass das
+WebGUI die jeweils aktuell veröffentlichte Claude-Plugin-Version anzeigt. Die
+Versionsangaben der bestehenden `/plugins`-Anleitung werden deshalb aus dem
+bereits vorhandenen, validierten öffentlichen Veröffentlichungsindex abgeleitet.
+Ein neuer kompatibler Indexstand benötigt danach keine manuelle Aktualisierung
+der deutschen und englischen Versionsliterale im Frontend.
+
+Die Änderung ist auf `PluginCatalogView.tsx`,
+`app/src/utils/claudePluginPublication.ts`, dessen bestehende Regression und
+`app/scripts/testClaudePluginInstallUi.ts` begrenzt. Sämtliche sichtbaren
+Versionsangaben einschließlich Titelzusatz, Badge, Vergleichs-, Download- und
+Einrichtungstexten verwenden dieselbe validierte Indexversion. Lade-, Fehler-
+und Leerzustände zeigen keine erfundene oder veraltete Versionsnummer.
+
+Der Parser akzeptiert kanonische stabile Versionen der kompatiblen Linie
+`1.x` ab `1.1.2`; diese Untergrenze ist ein Kompatibilitätslimit und keine
+Behauptung über die aktuelle Veröffentlichung. Frühere, nichtkanonische,
+Vorab- und inkompatible Major-Versionen werden weiterhin abgewiesen. Die
+Prüfungen für Pluginidentität, Kandidatenpfad, Versions-, Dateinamen- und
+SHA-256-Bindung, Herkunft, HTTPS-/Downloadgrenzen und bestehende
+Betaanforderungen bleiben erhalten. Die Regressionen prüfen die exakte lokale
+Releasebindung getrennt von der Annahme eines späteren kompatiblen Indexstands.
+
+Die Webseite liest damit ausschließlich die von SkillPilot bereitgestellte
+Version. Sie erkennt weiterhin nicht die im Claude-Account installierte
+Version und aktualisiert kein installiertes Plugin. Die fünf vorhandenen
+Download-/Upload-Schritte, der gebündelte Konnektor, die manuelle Prüfung in
+Claude und die Rückkehr zu SkillPilot bleiben bestehen. Die Marketplace-
+Veröffentlichung und ihre Evidenz aus Abschnitt 6.70 sowie alle offenen
+Account-, Guide- und Abnahmeentscheidungen bleiben unverändert.
+
+Record, Runtime-Checker und Regression ergänzen eine getrennte
+Supplemental-Exception für genau diese vier bereits gebundenen Dateien und
+diesen Nachtrag. Sie schreiben keine frühere Ausnahme oder historische
+Hashbindung um und ändern weder die Menge geschützter Dateien noch primäre
+Runtime-/Baumketten. Pluginpakete und Release-Baselines, OpenAI Coach 1.0.0 und
+der ruhende OpenAI-1.1-Kandidat, MCP/OAuth, Tools, Schemas, MCP-Apps-UI,
+Provider-Start, Prepared Messages, Session-, Identitäts-, Locale-, Lernzustands-,
+Datenschutz-, Speicher- und Berechtigungsverträge, Portalwerte, Reviewfälle,
+Fixtures und Reviewartefakte bleiben unverändert. Der OpenAI-Portalreview
+benötigt weder Rücknahme noch Neueinreichung. Kein neues Pluginpaket und kein
+App-Deployment sind Teil dieses lokalen Änderungspakets.

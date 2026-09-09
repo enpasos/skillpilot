@@ -54,12 +54,15 @@ const marketplaceTemplate = JSON.parse(
   ),
 );
 
-test("local 1.1.2 marketplace candidate is prepared without publication or acceptance", () => {
+test("published 1.1.2 marketplace keeps the normal identity and pending account acceptance", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
+  assert.equal(lane.target.marketplaceName, "skillpilot-marketplace");
+  assert.equal(lane.target.repositoryUrl, "https://github.com/enpasos/skillpilot-claude-marketplace");
+  assert.equal(lane.plugin.name, "skillpilot-coach-v1");
   assert.equal(lane.plugin.version, "1.1.2");
   assert.match(lane.plugin.directInstallSha256, /^[0-9a-f]{64}$/u);
-  assert.equal(lane.activation.state, "prepared_not_published");
+  assert.equal(lane.activation.state, "published_pending_acceptance");
   assert.equal(lane.activation.firstPartyUiRoute, "controlled_direct_install_beta");
   assert.equal(lane.activation.marketplaceUiSwitchAllowed, false);
   for (const [key, value] of Object.entries(lane.activation.firstPartyGuideDecision)) {
@@ -69,7 +72,17 @@ test("local 1.1.2 marketplace candidate is prepared without publication or accep
     lane.activation.evidence.map(({ id }) => id),
     ["public-repository-default-branch", "clean-account-marketplace-install", "uploaded-plugin-migration-and-marketplace-refresh"],
   );
-  for (const evidence of lane.activation.evidence) {
+  assert.deepEqual(lane.activation.evidence[0], {
+    id: "public-repository-default-branch",
+    status: "pass",
+    revision: "25bf4d8272030a3701008f7b5a09d4a18cba15c5",
+    treeSha256: "690e57846a250b49bb8ac2ac30b5bda0f7f4c1eaf50edc3c8de2561e1b03da66",
+    candidateVersion: "1.1.2",
+    candidateSha256: "835c91844f950d9101f74ef245916fc6a7d65f53426ae3939f3a224f7ab827ca",
+    verifiedAt: "2026-09-09T04:24:02.000Z",
+    evidenceRef: "https://github.com/enpasos/skillpilot-claude-marketplace/pull/4",
+  });
+  for (const evidence of lane.activation.evidence.slice(1)) {
     for (const [key, value] of Object.entries(evidence)) {
       if (key !== "id") assert.equal(value, key === "status" ? "pending" : null, key);
     }

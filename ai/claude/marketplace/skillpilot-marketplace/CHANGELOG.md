@@ -1,14 +1,17 @@
 # Changelog
 
-## 1.1.2 - 2026-09-08 (locally prepared, not published)
+## 1.1.2 - 2026-09-09
 
 - Keep the daily overview to one line: total completed out of today's due
   goals, followed by the open count per subject; show overdue work only when
   present and retain unavailable-plan warnings.
 - Preserve all plan calculations, fourteen tools, learner-session semantics,
   backend-selected continuation and the frozen OpenAI lane.
-- Keep the existing 1.1.1 artifact and publication evidence immutable. All
-  1.1.2 external acceptance and publication decisions remain pending.
+- Publish the exact prepared 1.1.2 package and restore the normal display name
+  **SkillPilot Coach v1**, without the temporary catalog-test suffix.
+- Keep the existing 1.1.1 artifact and publication evidence immutable.
+  Exact-client installation and update acceptance for 1.1.2 remain pending;
+  this publication does not prove automatic Marketplace synchronization.
 
 ## 1.1.1 - 2026-09-04
 

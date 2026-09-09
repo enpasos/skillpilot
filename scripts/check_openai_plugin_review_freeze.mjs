@@ -4362,6 +4362,87 @@ const expectedAuthorizedRuntimeExceptions = [
         "authorizedSha256": "1352e4a44f8022552dd67ccc8d6f343cd4953c2e5eff3c6156d0463693ac2f3b"
       }
     ]
+  },
+  {
+    "id": "2026-09-09-claude-1-1-2-marketplace-publication",
+    "approvedAt": "2026-09-09",
+    "approvedBy": "product-owner",
+    "reason": "Publish the actual already prepared Claude plugin 1.1.2 through the existing personal Marketplace under its normal name, as explicitly requested by the Product Owner.",
+    "scope": "Publish only the existing six-file 1.1.2 plugin payload through a generated target-repository pull request, preserving its 835c91844f950d9101f74ef245916fc6a7d65f53426ae3939f3a224f7ab827ca artifact digest and stable skillpilot-marketplace / skillpilot-coach-v1 identities. Update only Marketplace README/CHANGELOG publication wording, the release runbook, repository publication evidence and its regression; append section 6.70 and these exact supplemental bindings. After successful verification of the actual public default branch, record only public-repository-default-branch as pass with exact revision/tree/candidate bindings and derive published_pending_acceptance. Keep account installation/update, first-party guide approval and exact-client/privacy/legal/support readiness pending; the existing download/upload guide remains unchanged. Record the reported ?v=2 synchronization workaround only as a user report, without claiming that catalog-name changes cause automatic synchronization. Preserve all six plugin files, immutable 1.1.1 and 1.1.2 artifacts, historical dossiers, existing release baselines, earlier exceptions and primary OpenAI runtime/tree chains. No OpenAI 1.0.0 or inactive 1.1 package/contract/UI, MCP/OAuth/tool/schema, provider launch, prepared message, session/identity/locale/learning-state/privacy/storage/security, portal, review case/fixture/artifact, application deployment or curriculum-goal resumption.",
+    "target": "claude-coach-1.1.2-existing-personal-marketplace-publication",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-unchanged-plugin-bytes-and-submitted-openai-contract",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "ai/claude/marketplace/skillpilot-marketplace/CHANGELOG.md",
+        "priorAuthorizedSha256": "50e3a4330e9f0a597ef5a0ff3910c488843170fe530800f35480adad745fc782",
+        "authorizedSha256": "2ddb188bfddb7a5043cc6fd3af2b4c6f97c90f08d7f43bd5b88646f2859f61ac"
+      },
+      {
+        "path": "ai/claude/marketplace/skillpilot-marketplace/README.md",
+        "priorAuthorizedSha256": "74b14c38f0bb2ec6c7ddc9a4bfe4f41b2c819cf81f742c475f0567f55d6c1228",
+        "authorizedSha256": "7febee37bc3601b725af8ef46c114063c72a4174cf57232595fc1289598a3f7f"
+      },
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json",
+        "priorAuthorizedSha256": "bc03deb46691e7650ae7c87b3a429d00a5dd61d70625c00507fc255bd6475d98",
+        "authorizedSha256": "a5e06627828d3ae428e2d16ce405c8f6d2850d277575e19c42977028b48866fa"
+      },
+      {
+        "path": "docs/deploy/claude-personal-marketplace-release.md",
+        "priorAuthorizedSha256": "32fb463b50ce659c5275100c754d83fcce339277fad4cf32b22a62646709b3d6",
+        "authorizedSha256": "ae3c32da2e4b4186f94a4395109d4dc5aec64d77d56d64c2d4d90724ac76a9a4"
+      },
+      {
+        "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+        "priorAuthorizedSha256": "8a91b4a1dcf0a76e17e03323b170cd1f7bfebde6f51a5e3debded42658bebcc3",
+        "authorizedSha256": "9191ab4cf610da5dddd769ed3d07dac27fc80e77a3b8c27896b075ac96adf26e"
+      },
+      {
+        "path": "scripts/claude_marketplace_release.test.mjs",
+        "priorAuthorizedSha256": "1352e4a44f8022552dd67ccc8d6f343cd4953c2e5eff3c6156d0463693ac2f3b",
+        "authorizedSha256": "e652887d8142d7b949da8725d462a08cc73814942530ca0c94448d1f36718a3d"
+      }
+    ]
+  },
+  {
+    "id": "2026-09-09-claude-plugin-guide-dynamic-publication-version",
+    "approvedAt": "2026-09-09",
+    "approvedBy": "product-owner",
+    "reason": "Display the current published Claude plugin version dynamically in the WebGUI from the existing validated public publication index, as explicitly requested by the Product Owner.",
+    "scope": "Only derive all German/English /plugins version copy from the already fetched and validated public index, with neutral loading/error/empty states and no guessed version. Replace the frontend exact-current-version literal with a compatible canonical stable 1.x floor of 1.1.2; reject retired, prerelease, noncanonical and incompatible-major versions while retaining identity, version/filename/SHA-256 download path, origin, size and beta-requirement checks. Extend the existing parser and browser regressions for current and later compatible versions, unavailable/malformed metadata, immutable download integrity and no installation claim; retain exact local manifest/index/release evidence checks independently. Advance only the four existing supplemental frontend/test bindings and append section 6.71. Preserve the complete section 6.70 Marketplace publication/evidence, every earlier exception/hash binding, primary OpenAI runtime/tree chains and frozen-path inventory. The download/upload sequence, bundled connector, manual installed-version check, return-to-SkillPilot flow, guide decision and all pending account/acceptance gates remain unchanged. No plugin package or release-baseline changes, no automatic account-version detection or plugin update, no OpenAI 1.0.0 or inactive 1.1 package/contract/UI, MCP/OAuth/tool/schema, provider launch, prepared message, session/identity/locale/learning-state/privacy/storage/security, portal, review case/fixture/artifact or application deployment.",
+    "target": "existing-first-party-claude-plugin-guide-dynamic-publication-version",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-published-version-display-with-unchanged-submitted-openai-contract",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "app/scripts/testClaudePluginInstallUi.ts",
+        "priorAuthorizedSha256": "a5b55d9ad871134f0d3ed9c0ecf36c7fd547993daca647de5c9fac9dccdaffa5",
+        "authorizedSha256": "a1f9996272dc46be16bc87d2533d905b9aa70066300db93045757306471be68d"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.test.ts",
+        "priorAuthorizedSha256": "4c302514203c0ec0f79b43118a0a47912c8dcdbb7591a86addae5394e7586755",
+        "authorizedSha256": "3e894955f1cdfe7fb4fa2614217e141bab0326c2568e9b516b84d095d8077f82"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.ts",
+        "priorAuthorizedSha256": "fcb2cd82cc8689f431d61ad3d8b15f9b67f338e486b1c96d3350e5e9441a0807",
+        "authorizedSha256": "6be53a7b5568ca5875bfc2b2a050893de39e1222377f7bd1fa0ead16986dab3d"
+      },
+      {
+        "path": "app/src/views/PluginCatalogView.tsx",
+        "priorAuthorizedSha256": "f4effe721a1408023bbdb0b84758e422fd5f0b2b7271cc1e143505839c94ee0e",
+        "authorizedSha256": "3c996de24c666f7f3a40d99f190d96111d52ed235cc30e2325de4adf7a754353"
+      },
+      {
+        "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+        "priorAuthorizedSha256": "9191ab4cf610da5dddd769ed3d07dac27fc80e77a3b8c27896b075ac96adf26e",
+        "authorizedSha256": "2a0f99da3a9c39fc1cb6398c611393f5642ef7a908e4ea0af561889de4ffa83a"
+      }
+    ]
   }
 ];
 

@@ -8,7 +8,6 @@ import {
   CLAUDE_MARKETPLACE_INSTALLATION_ENABLED,
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
   CLAUDE_PLUGIN_BETA_REQUIREMENTS,
-  CLAUDE_PLUGIN_CURRENT_VERSION,
   CLAUDE_PLUGIN_PUBLICATION_INDEX_URL,
   loadClaudePluginPublicationIndex,
   parseClaudePluginPublicationIndex,
@@ -45,6 +44,14 @@ const validIndex = {
 }
 
 const cloneValidIndex = () => JSON.parse(JSON.stringify(validIndex)) as typeof validIndex
+const indexForVersion = (version: string) => {
+  const index = cloneValidIndex()
+  const plugin = index.plugins[0]!
+  plugin.version = version
+  plugin.filename = `${plugin.id}-${version}.plugin`
+  plugin.downloadUrl = `/api/public/claude/plugins/${plugin.id}/${version}/sha256-${plugin.sha256}/${plugin.filename}`
+  return index
+}
 
 const parsed = parseClaudePluginPublicationIndex(validIndex)
 assert.equal(CLAUDE_PLUGIN_PUBLICATION_INDEX_URL, '/api/public/claude/plugins/index.json')
@@ -53,6 +60,11 @@ assert.equal(parsed.channel, 'beta')
 assert.equal(parsed.plugins[0]?.requirements.minimumAge, 18)
 assert.equal(parsed.plugins[0]?.requirements.voiceMode, false)
 assert.deepEqual(parsed.plugins[0]?.requirements.testedSurfaces, [])
+for (const version of ['1.1.2', '1.1.3', '1.2.0']) {
+  const current = parseClaudePluginPublicationIndex(indexForVersion(version)).plugins[0]!
+  assert.equal(current.version, version, 'the publication index selects compatible newer versions without a frontend rebuild')
+  assert.equal(current.filename, `skillpilot-coach-v1-${version}.plugin`)
+}
 
 const originalFetch = globalThis.fetch
 let requestedUrl = ''
@@ -68,7 +80,13 @@ globalThis.fetch = async (input, init) => {
 try {
   const loaded = await loadClaudePluginPublicationIndex()
   assert.equal(requestedUrl, CLAUDE_PLUGIN_PUBLICATION_INDEX_URL)
-  assert.equal(loaded.plugins[0]?.version, CLAUDE_PLUGIN_CURRENT_VERSION)
+  assert.equal(loaded.plugins[0]?.version, validIndex.plugins[0]!.version)
+  globalThis.fetch = async () => new Response('{}', { status: 503 })
+  await assert.rejects(loadClaudePluginPublicationIndex(), /HTTP 503/u)
+  globalThis.fetch = async () => new Response('not json', { status: 200 })
+  await assert.rejects(loadClaudePluginPublicationIndex(), SyntaxError)
+  globalThis.fetch = async () => new Response(JSON.stringify(indexForVersion('2.0.0')), { status: 200 })
+  await assert.rejects(loadClaudePluginPublicationIndex(), /compatible 1\.x release/u)
 } finally {
   globalThis.fetch = originalFetch
 }
@@ -174,6 +192,11 @@ assert.throws(
   () => parseClaudePluginPublicationIndex(zeroBytes),
   /bytes must be a positive safe integer/u,
 )
+for (const bytes of [50 * 1024 * 1024 + 1, 1.5, Number.MAX_SAFE_INTEGER + 1]) {
+  const oversized = cloneValidIndex()
+  oversized.plugins[0]!.bytes = bytes
+  assert.throws(() => parseClaudePluginPublicationIndex(oversized), /bytes must be a positive safe integer/u)
+}
 
 const malformedDigest = cloneValidIndex()
 malformedDigest.plugins[0]!.sha256 = 'not-a-sha256'
@@ -182,16 +205,42 @@ assert.throws(
   /sha256 must contain 64 hexadecimal characters/u,
 )
 
-for (const retiredVersion of ['1.0.4', '1.1.0', '1.1.1']) {
-  const staleVersion = cloneValidIndex()
-  staleVersion.plugins[0]!.version = retiredVersion
-  staleVersion.plugins[0]!.filename = `skillpilot-coach-v1-${retiredVersion}.plugin`
-  staleVersion.plugins[0]!.downloadUrl = `/api/public/claude/plugins/skillpilot-coach-v1/${retiredVersion}/sha256-${digest}/skillpilot-coach-v1-${retiredVersion}.plugin`
+for (const retiredVersion of ['0.9.9', '1.0.4', '1.1.0', '1.1.1', '2.0.0']) {
   assert.throws(
-    () => parseClaudePluginPublicationIndex(staleVersion),
-    /version must equal 1\.1\.2/u,
-    `the first-party guide must fail closed instead of offering historical Claude ${retiredVersion}`,
+    () => parseClaudePluginPublicationIndex(indexForVersion(retiredVersion)),
+    /version must be a compatible 1\.x release at least 1\.1\.2/u,
+    `the first-party guide must reject retired or incompatible Claude ${retiredVersion}`,
   )
+}
+for (const version of ['01.1.2', '1.01.2', '1.1.02', '1.1.3-beta', '1.1.3+build', '1.2', '1.1.3/other']) {
+  assert.throws(
+    () => parseClaudePluginPublicationIndex(indexForVersion(version)),
+    /version must be a canonical stable semantic version/u,
+  )
+}
+assert.throws(
+  () => parseClaudePluginPublicationIndex(indexForVersion('1.9007199254740992.0')),
+  /version must be a compatible 1\.x release/u,
+)
+const mismatchedVersion = indexForVersion('1.2.0')
+mismatchedVersion.plugins[0]!.filename = validIndex.plugins[0]!.filename
+assert.throws(() => parseClaudePluginPublicationIndex(mismatchedVersion), /filename must equal/u)
+const mismatchedVersionPath = indexForVersion('1.2.0')
+mismatchedVersionPath.plugins[0]!.downloadUrl = validIndex.plugins[0]!.downloadUrl
+assert.throws(() => parseClaudePluginPublicationIndex(mismatchedVersionPath), /versioned SHA-256 artifact path/u)
+const mismatchedDigestPath = cloneValidIndex()
+mismatchedDigestPath.plugins[0]!.sha256 = 'b'.repeat(64)
+assert.throws(() => parseClaudePluginPublicationIndex(mismatchedDigestPath), /versioned SHA-256 artifact path/u)
+for (const downloadUrl of [
+  `https://example.com${validIndex.plugins[0]!.downloadUrl}`,
+  `//example.com${validIndex.plugins[0]!.downloadUrl}`,
+  `${validIndex.plugins[0]!.downloadUrl}?version=1.2.0`,
+  `${validIndex.plugins[0]!.downloadUrl}#download`,
+  '/api/public/claude/plugins/%2e%2e/other.plugin',
+]) {
+  const unsafePath = cloneValidIndex()
+  unsafePath.plugins[0]!.downloadUrl = downloadUrl
+  assert.throws(() => parseClaudePluginPublicationIndex(unsafePath), /canonical root-relative URL/u)
 }
 
 const wrongPlugin = cloneValidIndex()
@@ -212,7 +261,13 @@ const productionIndex = parseClaudePluginPublicationIndex(
 )
 assert.equal(productionIndex.plugins.length, 1)
 assert.equal(productionIndex.plugins[0]?.id, 'skillpilot-coach-v1')
-assert.equal(productionIndex.plugins[0]?.version, CLAUDE_PLUGIN_CURRENT_VERSION)
+const candidateManifest = JSON.parse(readFileSync(resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  '../../../ai/claude/plugin/skillpilot-coach-v1/.claude-plugin/plugin.json',
+), 'utf8')) as { name: string, version: string }
+assert.equal(productionIndex.plugins[0]?.id, candidateManifest.name)
+assert.equal(productionIndex.plugins[0]?.version, candidateManifest.version,
+  'release preparation still binds the local index to the exact candidate manifest')
 assert.equal(productionIndex.plugins[0]?.requirements.plan, 'claude-pro')
 assert.deepEqual(productionIndex.plugins[0]?.requirements, CLAUDE_PLUGIN_BETA_REQUIREMENTS)
 assert.equal(productionIndex.plugins[0]?.privacyUrl, CLAUDE_CONNECTOR_PRIVACY_URL)
@@ -251,13 +306,13 @@ assert.equal(
   marketplaceLane.target?.repositoryUrl,
   'the marketplace guide must use the verified canonical repository URL',
 )
-assert.equal(marketplaceLane.plugin?.version, CLAUDE_PLUGIN_CURRENT_VERSION)
+assert.equal(marketplaceLane.plugin?.version, candidateManifest.version)
 assert.equal(marketplaceLane.plugin?.directInstallSha256, productionIndex.plugins[0]?.sha256)
-assert.equal(marketplaceLane.activation?.state, 'prepared_not_published')
+assert.equal(marketplaceLane.activation?.state, 'published_pending_acceptance')
 assert.equal(
   marketplaceLane.activation?.firstPartyUiRoute,
   'controlled_direct_install_beta',
-  'Claude 1.1.2 installation and updates use the current file while Marketplace is unreliable',
+  'Claude installation and updates use the current file while Marketplace is unreliable',
 )
 assert.equal(
   marketplaceLane.activation?.marketplaceUiSwitchAllowed,
@@ -270,8 +325,15 @@ assert.equal(guideDecision?.candidateVersion, null)
 assert.equal(guideDecision?.candidateSha256, null)
 assert.equal(guideDecision?.repositoryRevision, null)
 assert.equal(guideDecision?.repositoryTreeSha256, null)
+const repositoryEvidence = marketplaceLane.activation?.evidence?.find(
+  entry => entry.id === 'public-repository-default-branch',
+)
+assert.equal(repositoryEvidence?.status, 'pass')
+assert.equal(repositoryEvidence?.candidateVersion, candidateManifest.version)
+assert.equal(repositoryEvidence?.candidateSha256, productionIndex.plugins[0]?.sha256)
+assert.match(repositoryEvidence?.revision ?? '', /^[a-f0-9]{40}$/u)
+assert.match(repositoryEvidence?.treeSha256 ?? '', /^[a-f0-9]{64}$/u)
 for (const pendingEvidenceId of [
-  'public-repository-default-branch',
   'clean-account-marketplace-install',
   'uploaded-plugin-migration-and-marketplace-refresh',
 ]) {
@@ -281,7 +343,7 @@ for (const pendingEvidenceId of [
   assert.equal(
     evidence?.status,
     'pending',
-    'the local candidate must not claim publication or unperformed real-client acceptance',
+    'repository publication must not claim unperformed real-client acceptance',
   )
   assert.equal(evidence?.candidateVersion, null)
   assert.equal(evidence?.candidateSha256, null)
@@ -338,6 +400,8 @@ assert(updateGuideIndex >= 0 && directGuideIndex > updateGuideIndex && requireme
   'version comparison and the primary upload guide precede secondary requirements')
 assert.match(pluginCatalogSource, /download=\{plugin\.filename\}/u)
 assert.match(pluginCatalogSource, /href=\{plugin\.downloadUrl\}/u)
+assert.doesNotMatch(pluginCatalogSource, /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
+  'the guide must not hardcode a current publication version')
 assert.doesNotMatch(pluginCatalogSource, /navigator\.clipboard/u)
 assert.match(pluginCatalogSource, /const requirements = plugin\?\.requirements \?\? CLAUDE_PLUGIN_BETA_REQUIREMENTS/u)
 assert.doesNotMatch(pluginCatalogSource, /\{plugin && \(\s*<section aria-labelledby=\{`\$\{cardId\}-requirements`\}/u)
@@ -346,7 +410,7 @@ for (const requiredNavigationCopy of [
   'Lade zuerst die aktuelle Datei herunter, bevor du eine alte Installation entfernst',
   'Marketplace-Einrichtung und ihre Updates funktionieren noch nicht zuverlässig',
   'Bereits installiert? Version vergleichen',
-  'Wird 1.1.2 angezeigt, ist kein erneuter Upload nötig',
+  'Wird ${version} angezeigt, ist kein erneuter Upload nötig',
   'die zuvor heruntergeladene .plugin-Datei unverändert hoch',
   'auch wenn sie aus dem Marketplace stammt',
   'Andere Plugins und Konnektoren bleiben unverändert',
@@ -357,7 +421,7 @@ for (const requiredNavigationCopy of [
   'Set up with the plugin file',
   'Download the current file before removing an older installation',
   'Marketplace setup and updates are not yet reliable',
-  'If it shows 1.1.2, no new upload is needed',
+  'If it shows ${version}, no new upload is needed',
   'including a marketplace installation',
   'Leave other plugins and connectors unchanged',
   'Upload the previously downloaded .plugin file without modifying it',

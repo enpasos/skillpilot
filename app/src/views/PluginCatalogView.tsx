@@ -22,19 +22,21 @@ import {
   type ClaudePluginPublicationIndex,
 } from '../utils/claudePluginPublication'
 
-const copy = {
+const copy = (version?: string) => ({
   de: {
     back: 'Zurück zur Startseite',
     title: 'SkillPilot-Plugins',
-    subtitle: 'Plugin herunterladen und in Claude hochladen: Einrichtung der SkillPilot-Claude-1.1.2-Beta mit Claude Pro.',
+    subtitle: version
+      ? `Plugin herunterladen und in Claude hochladen: Einrichtung der SkillPilot-Claude-${version}-Beta mit Claude Pro.`
+      : 'Plugin herunterladen und in Claude hochladen: Einrichtung der SkillPilot-Claude-Beta mit Claude Pro.',
     cardTitle: 'SkillPilot Coach v1',
-    betaNotice: 'Claude-Beta 1.1.2',
-    betaDescription: 'Die planorientierte Version 1.1.2 ersetzt die bisherige Claude-Variante vollständig. Nutze derzeit die Plugin-Datei zum Herunterladen und Hochladen in Claude. Die Marketplace-Einrichtung und ihre Updates funktionieren noch nicht zuverlässig.',
+    betaNotice: version ? `Claude-Beta ${version}` : 'Claude-Beta',
+    betaDescription: `${version ? `Die planorientierte Version ${version}` : 'Die planorientierte Claude-Beta'} ersetzt die bisherige Claude-Variante vollständig. Nutze derzeit die Plugin-Datei zum Herunterladen und Hochladen in Claude. Die Marketplace-Einrichtung und ihre Updates funktionieren noch nicht zuverlässig.`,
     loading: 'Aktuelle Plugin-Version wird geladen …',
     loadErrorTitle: 'Die aktuelle Plugin-Datei konnte nicht geladen werden.',
     loadErrorText: 'Bitte versuche es später erneut. Ohne gültigen Veröffentlichungsindex bieten wir aus Sicherheitsgründen weder eine ältere Datei noch einen anderen Installationsweg an.',
     retry: 'Erneut versuchen',
-    emptyTitle: 'Derzeit steht keine aktuelle 1.1.2-Plugin-Datei bereit.',
+    emptyTitle: 'Derzeit steht keine aktuelle Plugin-Datei bereit.',
     emptyText: 'Eine ältere Claude-Variante wird nicht als Ersatz angeboten.',
     guideTitle: 'Einrichtung mit Plugin-Datei',
     guideIntro: 'Diese fünf Schritte führen dich durch die Installation. Lass deinen ursprünglichen SkillPilot-Tab geöffnet. Lade zuerst die aktuelle Datei herunter, bevor du eine alte Installation entfernst.',
@@ -42,7 +44,9 @@ const copy = {
     stepOpenBody: 'Öffne Claude Web, nachdem die aktuelle Plugin-Datei heruntergeladen ist:',
     stepOpenActions: [
       'Öffne „Anpassen“ (Customize) → „Plugins“ und deine installierten Plugins.',
-      'Wenn bereits „SkillPilot Coach v1“ in Version 1.1.2 installiert und aktiviert ist, prüfe direkt seinen Konnektor in Schritt 4.',
+      version
+        ? `Wenn bereits „SkillPilot Coach v1“ in Version ${version} installiert und aktiviert ist, prüfe direkt seinen Konnektor in Schritt 4.`
+        : 'Warte auf die aktuelle Versionsangabe, bevor du eine bestehende SkillPilot-Installation vergleichst.',
       'Wenn eine ältere SkillPilot-Version installiert ist, entferne nur diese SkillPilot-Coach-Installation – auch wenn sie aus dem Marketplace stammt. Andere Plugins und Konnektoren bleiben unverändert.',
     ],
     stepOpenCheck: 'Installiere SkillPilot nur einmal. Für eine neue Einrichtung muss nichts entfernt werden.',
@@ -52,7 +56,9 @@ const copy = {
       'Klicke auf „Hinzufügen“ und wähle den Datei-Upload. Lade die zuvor heruntergeladene .plugin-Datei unverändert hoch.',
       'Aktiviere „SkillPilot Coach v1“, falls Claude einen Schalter dafür anzeigt.',
     ],
-    stepInstallCheck: 'Fahre erst fort, wenn „SkillPilot Coach v1“ genau einmal unter „Deine Plugins“ erscheint und dort Version 1.1.2 angezeigt wird. Solange eine ältere Version angezeigt wird, ist die Aktualisierung nicht bestätigt.',
+    stepInstallCheck: version
+      ? `Fahre erst fort, wenn „SkillPilot Coach v1“ genau einmal unter „Deine Plugins“ erscheint und dort Version ${version} angezeigt wird. Solange eine ältere Version angezeigt wird, ist die Aktualisierung nicht bestätigt.`
+      : 'Die aktuelle Versionsangabe muss geladen sein, bevor du die Version in Claude prüfen und fortfahren kannst.',
     stepConnectorTitle: 'Enthaltenen SkillPilot-Konnektor verbinden',
     stepConnectorBody: 'Prüfe anschließend den im Plugin enthaltenen Konnektor:',
     stepConnectorActions: [
@@ -63,10 +69,12 @@ const copy = {
     stepConnectorCheck: 'Verwende ausschließlich den im Plugin enthaltenen SkillPilot-Konnektor. Füge keinen zweiten manuellen SkillPilot-Konnektor hinzu und trage keine MCP-URL ein.',
     openClaudeWeb: 'Claude Web öffnen',
     stepReturnTitle: 'Zu SkillPilot zurückkehren',
-    stepReturnBody: 'Erst wenn beim installierten Plugin Version 1.1.2 angezeigt wird und sein enthaltener SkillPilot-Konnektor verbunden ist, wechsle zurück zum ursprünglichen SkillPilot-Tab. Prüfe dort dein Lernprofil und Curriculum und wähle anschließend „Mit Claude starten“. Beginne auch spätere neue Lernsessions immer auf SkillPilot.com.',
+    stepReturnBody: `Erst wenn beim installierten Plugin ${version ? `Version ${version}` : 'die hier bereitgestellte Version'} angezeigt wird und sein enthaltener SkillPilot-Konnektor verbunden ist, wechsle zurück zum ursprünglichen SkillPilot-Tab. Prüfe dort dein Lernprofil und Curriculum und wähle anschließend „Mit Claude starten“. Beginne auch spätere neue Lernsessions immer auf SkillPilot.com.`,
     returnToSkillPilot: 'Zurück zu SkillPilot',
     updateTitle: 'Bereits installiert? Version vergleichen',
-    updateBody: 'Prüfe in Claude die Version von „SkillPilot Coach v1“. Wird 1.1.2 angezeigt, ist kein erneuter Upload nötig. Bei einer älteren Version verwende die folgenden Download- und Upload-Schritte. Das erneute Hinzufügen des Marketplace bestätigt kein Update.',
+    updateBody: version
+      ? `Prüfe in Claude die Version von „SkillPilot Coach v1“. Wird ${version} angezeigt, ist kein erneuter Upload nötig. Bei einer älteren Version verwende die folgenden Download- und Upload-Schritte. Das erneute Hinzufügen des Marketplace bestätigt kein Update.`
+      : 'Sobald die aktuelle Versionsangabe geladen ist, kannst du sie mit der Version von „SkillPilot Coach v1“ in Claude vergleichen.',
     technicalDetails: 'Version und Integritätsdaten',
     status: 'Status',
     betaStatus: 'Beta',
@@ -79,10 +87,10 @@ const copy = {
     supportedPlan: 'Unterstützter Beta-Tarif',
     installationSurface: 'Installation',
     age: (minimumAge: number) => `Nur für Personen ab ${minimumAge} Jahren.`,
-    plan: 'Claude Pro ist der für den 1.1.2-Betatest vorgesehene und technisch unterstützte Pfad.',
-    planDetail: 'Anthropic bietet Plugins auch in weiteren bezahlten Tarifen an. Die kandidatengenaue Abnahme von SkillPilot 1.1.2 mit Claude Pro steht noch aus.',
-    install: 'Einrichtung und derzeitige Updates in Claude Web: aktuelle Plugin-Datei herunterladen → bei Bedarf nur die alte SkillPilot-Installation entfernen → Datei hochladen → Version 1.1.2 prüfen → enthaltenen Konnektor verbinden.',
-    connectAndStart: 'Erst wenn „SkillPilot Coach v1“ in Version 1.1.2 angezeigt wird und sein enthaltener SkillPilot-Konnektor verbunden ist, ist die Einrichtung abgeschlossen. Jede Lernsession startest du anschließend wieder auf SkillPilot.com.',
+    plan: `Claude Pro ist der für den ${version ? `${version}-` : ''}Betatest vorgesehene und technisch unterstützte Pfad.`,
+    planDetail: `Anthropic bietet Plugins auch in weiteren bezahlten Tarifen an. Die kandidatengenaue Abnahme von SkillPilot${version ? ` ${version}` : ''} mit Claude Pro steht noch aus.`,
+    install: `Einrichtung und derzeitige Updates in Claude Web: aktuelle Plugin-Datei herunterladen → bei Bedarf nur die alte SkillPilot-Installation entfernen → Datei hochladen → ${version ? `Version ${version}` : 'aktuelle Version'} prüfen → enthaltenen Konnektor verbinden.`,
+    connectAndStart: `Erst wenn „SkillPilot Coach v1“ in ${version ? `Version ${version}` : 'der hier bereitgestellten Version'} angezeigt wird und sein enthaltener SkillPilot-Konnektor verbunden ist, ist die Einrichtung abgeschlossen. Jede Lernsession startest du anschließend wieder auf SkillPilot.com.`,
     independentTitle: 'Unabhängiger Beta-Kandidat',
     independentText: 'Dieses Plugin wird von SkillPilot bereitgestellt. Es ist nicht offiziell von Anthropic verifiziert, gesponsert oder garantiert.',
     links: 'Dokumentation und Kontakt',
@@ -95,21 +103,23 @@ const copy = {
     adFreeSource: 'Anthropic-Hinweis zu Werbung',
     publicationIndex: 'Maschinenlesbarer Veröffentlichungsindex',
     stepDownloadTitle: 'Aktuelle Plugin-Datei herunterladen',
-    stepDownloadBody: 'Lade die hier bereitgestellte Version 1.1.2 herunter und behalte die Datei für den Upload in Claude. Der Download allein installiert das Plugin noch nicht.',
+    stepDownloadBody: version
+      ? `Lade die hier bereitgestellte Version ${version} herunter und behalte die Datei für den Upload in Claude. Der Download allein installiert das Plugin noch nicht.`
+      : 'Sobald die aktuelle Plugin-Datei verfügbar ist, kannst du sie für den Upload in Claude herunterladen. Der Download allein installiert das Plugin noch nicht.',
     versionCheckLimit: 'SkillPilot kann die in deinem Claude-Konto installierte Plugin-Version derzeit nicht automatisch auslesen. Maßgeblich ist die Versionsanzeige in Claude.',
   },
   en: {
     back: 'Back to the home page',
     title: 'SkillPilot plugins',
-    subtitle: 'Download the plugin and upload it to Claude: setup for the SkillPilot Claude 1.1.2 beta with Claude Pro.',
+    subtitle: `Download the plugin and upload it to Claude: setup for the SkillPilot Claude${version ? ` ${version}` : ''} beta with Claude Pro.`,
     cardTitle: 'SkillPilot Coach v1',
-    betaNotice: 'Claude beta 1.1.2',
-    betaDescription: 'The plan-first version 1.1.2 fully replaces the previous Claude variant. For now, download the plugin file and upload it to Claude. Marketplace setup and updates are not yet reliable.',
+    betaNotice: version ? `Claude beta ${version}` : 'Claude beta',
+    betaDescription: `${version ? `The plan-first version ${version}` : 'The plan-first Claude beta'} fully replaces the previous Claude variant. For now, download the plugin file and upload it to Claude. Marketplace setup and updates are not yet reliable.`,
     loading: 'Loading the current plugin version …',
     loadErrorTitle: 'The current plugin file could not be loaded.',
     loadErrorText: 'Please try again later. Without a valid publication index, no older file or alternative installation route is offered for security reasons.',
     retry: 'Try again',
-    emptyTitle: 'There is currently no current 1.1.2 plugin file available.',
+    emptyTitle: 'There is currently no current plugin file available.',
     emptyText: 'An older Claude variant is not offered as a substitute.',
     guideTitle: 'Set up with the plugin file',
     guideIntro: 'These five steps guide you through installation. Keep your original SkillPilot tab open. Download the current file before removing an older installation.',
@@ -117,7 +127,9 @@ const copy = {
     stepOpenBody: 'After downloading the current plugin file, open Claude Web:',
     stepOpenActions: [
       'Open Customize → Plugins and your installed plugins.',
-      'If SkillPilot Coach v1 version 1.1.2 is already installed and enabled, go directly to its connector in step 4.',
+      version
+        ? `If SkillPilot Coach v1 version ${version} is already installed and enabled, go directly to its connector in step 4.`
+        : 'Wait for the current version information before comparing an existing SkillPilot installation.',
       'If an older SkillPilot version is installed, remove only that SkillPilot Coach installation, including a marketplace installation. Leave other plugins and connectors unchanged.',
     ],
     stepOpenCheck: 'Install SkillPilot only once. There is nothing to remove for a new setup.',
@@ -127,7 +139,9 @@ const copy = {
       'Select Add, then choose the file upload. Upload the previously downloaded .plugin file without modifying it.',
       'Enable SkillPilot Coach v1 if Claude displays an enable switch.',
     ],
-    stepInstallCheck: 'Continue only when SkillPilot Coach v1 appears exactly once under Your plugins and displays version 1.1.2. If an older version is still displayed, the update is not confirmed.',
+    stepInstallCheck: version
+      ? `Continue only when SkillPilot Coach v1 appears exactly once under Your plugins and displays version ${version}. If an older version is still displayed, the update is not confirmed.`
+      : 'The current version information must be loaded before you can check the version in Claude and continue.',
     stepConnectorTitle: 'Connect the bundled SkillPilot connector',
     stepConnectorBody: 'Next, check the connector included in the plugin:',
     stepConnectorActions: [
@@ -138,10 +152,12 @@ const copy = {
     stepConnectorCheck: 'Use only the SkillPilot connector bundled with the plugin. Do not add a second manual SkillPilot connector or enter an MCP URL.',
     openClaudeWeb: 'Open Claude Web',
     stepReturnTitle: 'Return to SkillPilot',
-    stepReturnBody: 'Return to your original SkillPilot tab only after the installed plugin displays version 1.1.2 and its bundled SkillPilot connector is connected. Check your learning profile and curriculum, then select “Start with Claude.” Start every later new learning session at SkillPilot.com as well.',
+    stepReturnBody: `Return to your original SkillPilot tab only after the installed plugin displays ${version ? `version ${version}` : 'the version provided here'} and its bundled SkillPilot connector is connected. Check your learning profile and curriculum, then select “Start with Claude.” Start every later new learning session at SkillPilot.com as well.`,
     returnToSkillPilot: 'Return to SkillPilot',
     updateTitle: 'Already installed? Compare versions',
-    updateBody: 'Check the SkillPilot Coach v1 version in Claude. If it shows 1.1.2, no new upload is needed. For an older version, follow the download and upload steps below. Adding the marketplace again does not confirm an update.',
+    updateBody: version
+      ? `Check the SkillPilot Coach v1 version in Claude. If it shows ${version}, no new upload is needed. For an older version, follow the download and upload steps below. Adding the marketplace again does not confirm an update.`
+      : 'Once the current version information is loaded, you can compare it with the SkillPilot Coach v1 version in Claude.',
 
     technicalDetails: 'Version and integrity details',
     status: 'Status',
@@ -155,10 +171,10 @@ const copy = {
     supportedPlan: 'Supported beta plan',
     installationSurface: 'Installation',
     age: (minimumAge: number) => `Only for people aged ${minimumAge} or older.`,
-    plan: 'Claude Pro is the intended and technically supported route for the 1.1.2 beta test.',
-    planDetail: 'Anthropic also offers plugins on other paid plans. Exact-candidate acceptance of SkillPilot 1.1.2 with Claude Pro is still pending.',
-    install: 'Setup and current updates in Claude Web: download the current plugin file → remove only the old SkillPilot installation if needed → upload the file → check version 1.1.2 → connect the bundled connector.',
-    connectAndStart: 'Setup is complete only after SkillPilot Coach v1 displays version 1.1.2 and its bundled SkillPilot connector is connected. Start every learning session on SkillPilot.com afterwards.',
+    plan: `Claude Pro is the intended and technically supported route for the ${version ? `${version} ` : ''}beta test.`,
+    planDetail: `Anthropic also offers plugins on other paid plans. Exact-candidate acceptance of SkillPilot${version ? ` ${version}` : ''} with Claude Pro is still pending.`,
+    install: `Setup and current updates in Claude Web: download the current plugin file → remove only the old SkillPilot installation if needed → upload the file → check ${version ? `version ${version}` : 'the current version'} → connect the bundled connector.`,
+    connectAndStart: `Setup is complete only after SkillPilot Coach v1 displays ${version ? `version ${version}` : 'the version provided here'} and its bundled SkillPilot connector is connected. Start every learning session on SkillPilot.com afterwards.`,
     independentTitle: 'Independent beta candidate',
     independentText: 'This plugin is provided by SkillPilot. It is not officially verified, sponsored, or guaranteed by Anthropic.',
     links: 'Documentation and contact',
@@ -171,12 +187,14 @@ const copy = {
     adFreeSource: 'Anthropic statement on ads',
     publicationIndex: 'Machine-readable publication index',
     stepDownloadTitle: 'Download the current plugin file',
-    stepDownloadBody: 'Download version 1.1.2 provided here and keep the file for uploading to Claude. Downloading alone does not install the plugin.',
+    stepDownloadBody: version
+      ? `Download version ${version} provided here and keep the file for uploading to Claude. Downloading alone does not install the plugin.`
+      : 'Once the current plugin file is available, you can download it for uploading to Claude. Downloading alone does not install the plugin.',
     versionCheckLimit: 'SkillPilot cannot currently read the plugin version installed in your Claude account automatically. Check the version displayed in Claude.',
   },
-} as const
+} as const)
 
-type SupportedLanguage = keyof typeof copy
+type SupportedLanguage = keyof ReturnType<typeof copy>
 
 const formatBytes = (bytes: number, language: SupportedLanguage) => {
   if (bytes < 1024) return `${bytes} B`
@@ -274,8 +292,8 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
   onRetry,
   language,
 }) => {
-  const text = copy[language]
   const plugin = publication?.plugins[0]
+  const text = copy(plugin?.version)[language]
   const requirements = plugin?.requirements ?? CLAUDE_PLUGIN_BETA_REQUIREMENTS
   const cardId = plugin?.id ?? 'skillpilot-coach-v1'
   const supportHref = `mailto:${plugin?.supportEmail ?? 'support@skillpilot.com'}`
@@ -299,13 +317,13 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
       <div className="border-b border-border-color bg-gradient-to-r from-sky-50 to-emerald-50 px-6 py-6 dark:from-sky-950/45 dark:to-emerald-950/35 sm:px-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <span className="inline-flex rounded-full border border-amber-300 bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-900 dark:border-amber-700 dark:bg-amber-950/70 dark:text-amber-200">
+            <span data-testid="claude-plugin-version-badge" className="inline-flex rounded-full border border-amber-300 bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-900 dark:border-amber-700 dark:bg-amber-950/70 dark:text-amber-200">
               {text.betaNotice}
             </span>
             <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">
               {text.cardTitle}
             </h2>
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+            <p data-testid="claude-plugin-description" className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700 dark:text-slate-200">
               {text.betaDescription}
             </p>
           </div>
@@ -483,8 +501,8 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
 export const PluginCatalogView: React.FC = () => {
   const { language } = useLanguage()
   const selectedLanguage: SupportedLanguage = language === 'en' ? 'en' : 'de'
-  const text = copy[selectedLanguage]
   const [publication, setPublication] = useState<ClaudePluginPublicationIndex | null>(null)
+  const text = copy(publication?.plugins[0]?.version)[selectedLanguage]
   const [loadError, setLoadError] = useState(false)
   const [requestVersion, setRequestVersion] = useState(0)
 
