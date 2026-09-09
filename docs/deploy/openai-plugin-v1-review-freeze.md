@@ -1,3 +1,34 @@
+# OpenAI review retirement and historical freeze record
+
+**Current status — 9 September 2026:** OpenAI rejected `1.0.0`. The Product
+Owner has explicitly lifted **all ChatGPT/OpenAI review development freezes**
+and authorized current plugin, submission and test development toward **1.1.0**.
+The raw portal export was inspected for `status: REJECTED` and
+`version: 1.0.0`; only its digest and a non-secret summary are recorded.
+It is not committed because it contains account/reviewer metadata.
+
+The former freeze record is preserved byte-for-byte at
+`contracts/openai/skillpilot-coach-v1/review-history/1.0.0-rejected/review-freeze.json`.
+The active record uses schema 2 and `developmentFreezeActive: false`.
+The checker validates this explicit retirement, the archived record, the
+rejected snapshot and historical content-addressed review video. It does **not**
+compare current source, runtime, UI, tests or documentation with the old hashes.
+The old chain resolvers are retained for historical auditing, not enforcement.
+
+Local successor preparation is permitted. Rejected 1.0.0 and actually published
+versions cannot be overwritten. Publication, deployment, resubmission and
+account changes remain separate actions requiring their own authorization and
+evidence; `record-published` remains blocked. Release reproducibility, retained
+resource continuity, security/privacy/state tests and independently published
+Claude artifacts/acceptance gates remain effective.
+
+**Everything below is historical documentation of the retired review, including
+its former STOP instructions and sections 6.1–6.72. None of those review-time
+live-file freezes or exception procedures remains an active development stop.**
+See the [current release runbook](openai-plugin-v1-release.md).
+
+---
+
 # SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre
 
 **Stand:** 31. August 2026

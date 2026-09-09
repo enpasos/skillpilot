@@ -9705,7 +9705,7 @@ public class LearnerService {
     private record CompositionProjectionAssignment(
             ProjectionRole role,
             boolean direct,
-            int subtreeDepth) {
+            int distance) {
     }
 
     private void addFilteredLandscapeGoalIds(
@@ -10056,7 +10056,6 @@ public class LearnerService {
                 || goals.isEmpty()) {
             return assignments;
         }
-        Map<String, Integer> subtreeDepths = calculateCompositionSubtreeDepths(goals);
         references.forEach((referencedGoalId, reference) -> {
             if (reference == null || reference.sources().isEmpty()) {
                 return;
@@ -10065,23 +10064,20 @@ public class LearnerService {
             if (exactGoalId == null || !goals.containsKey(exactGoalId)) {
                 return;
             }
-            int subtreeDepth = subtreeDepths.getOrDefault(exactGoalId, 0);
             for (CompositionProjectionSource source : reference.sources()) {
                 if (source.includeDescendants()) {
                     assignCompositionSubtreeProjection(
                             exactGoalId,
                             source.role(),
-                            subtreeDepth,
                             goals,
-                            assignments,
-                            new HashSet<>());
+                            assignments);
                 } else {
                     mergeCompositionProjectionAssignment(
                             exactGoalId,
                             new CompositionProjectionAssignment(
                                     source.role(),
                                     true,
-                                    subtreeDepth),
+                                    0),
                             assignments);
                 }
             }
@@ -10089,70 +10085,38 @@ public class LearnerService {
         return assignments;
     }
 
-    private Map<String, Integer> calculateCompositionSubtreeDepths(
-            Map<String, LearningGoal> goals) {
-        Map<String, Integer> depths = new HashMap<>();
-        goals.keySet().forEach(goalId -> depths.put(goalId, 0));
-        for (int iteration = 0; iteration < goals.size(); iteration++) {
-            boolean changed = false;
-            for (LearningGoal parent : goals.values()) {
-                if (parent == null || parent.getId() == null || parent.getContains() == null) {
-                    continue;
-                }
-                int parentDepth = depths.getOrDefault(parent.getId(), 0);
-                for (String childRef : parent.getContains()) {
-                    String childId = resolveGoalRef(childRef, goals);
-                    if (childId == null || !goals.containsKey(childId)) {
-                        continue;
-                    }
-                    int candidateDepth = parentDepth + 1;
-                    if (candidateDepth > depths.getOrDefault(childId, 0)) {
-                        depths.put(childId, candidateDepth);
-                        changed = true;
-                    }
-                }
-            }
-            if (!changed) {
-                break;
-            }
-        }
-        return depths;
-    }
-
     private void assignCompositionSubtreeProjection(
             String goalId,
             ProjectionRole role,
-            int subtreeDepth,
             Map<String, LearningGoal> goals,
-            Map<String, CompositionProjectionAssignment> assignments,
-            Set<String> visiting) {
-        if (goalId == null || !visiting.add(goalId)) {
+            Map<String, CompositionProjectionAssignment> assignments) {
+        if (goalId == null || !goals.containsKey(goalId)) {
             return;
         }
-        LearningGoal goal = goals.get(goalId);
-        if (goal == null) {
-            visiting.remove(goalId);
-            return;
-        }
-        mergeCompositionProjectionAssignment(
-                goalId,
-                new CompositionProjectionAssignment(role, false, subtreeDepth),
-                assignments);
-        if (goal.getContains() != null) {
-            for (String childRef : goal.getContains()) {
+        // Specificity is the shortest distance from this authored reference to
+        // each goal, not its root's global depth. A shared descendant in a DAG
+        // must not change roles because an unrelated branch has more ancestors.
+        Map<String, Integer> distances = new HashMap<>();
+        Deque<String> pending = new ArrayDeque<>();
+        distances.put(goalId, 0);
+        pending.add(goalId);
+        while (!pending.isEmpty()) {
+            String currentId = pending.removeFirst();
+            LearningGoal goal = goals.get(currentId);
+            if (goal == null) continue;
+            int distance = distances.get(currentId);
+            mergeCompositionProjectionAssignment(
+                    currentId,
+                    new CompositionProjectionAssignment(role, false, distance),
+                    assignments);
+            for (String childRef : goal.getContains() == null ? List.<String>of() : goal.getContains()) {
                 String childId = resolveGoalRef(childRef, goals);
-                if (childId != null) {
-                    assignCompositionSubtreeProjection(
-                            childId,
-                            role,
-                            subtreeDepth,
-                            goals,
-                            assignments,
-                            visiting);
+                if (childId != null && goals.containsKey(childId) && !distances.containsKey(childId)) {
+                    distances.put(childId, distance + 1);
+                    pending.addLast(childId);
                 }
             }
         }
-        visiting.remove(goalId);
     }
 
     private void mergeCompositionProjectionAssignment(
@@ -10163,8 +10127,8 @@ public class LearnerService {
             if (current.direct() != incoming.direct()) {
                 return incoming.direct() ? incoming : current;
             }
-            if (!current.direct() && current.subtreeDepth() != incoming.subtreeDepth()) {
-                return incoming.subtreeDepth() > current.subtreeDepth()
+            if (!current.direct() && current.distance() != incoming.distance()) {
+                return incoming.distance() < current.distance()
                         ? incoming
                         : current;
             }
@@ -10173,7 +10137,7 @@ public class LearnerService {
                 return new CompositionProjectionAssignment(
                         ProjectionRole.TARGET,
                         current.direct(),
-                        Math.max(current.subtreeDepth(), incoming.subtreeDepth()));
+                        Math.min(current.distance(), incoming.distance()));
             }
             return current;
         });

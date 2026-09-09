@@ -111,6 +111,17 @@ class OpenAiDeCoachMcpContractTest {
     private SimpleMeterRegistry meterRegistry;
     private OpenAiDeV1McpSessionCoordinator sessionCoordinator;
     private String sessionCommunicationLocale;
+    private String sessionWorkflowVersion = "coach@1.0";
+
+    /** Replay the established behavior fixtures against the current 1.1 surface. */
+    void useCurrentContract() {
+        sessionWorkflowVersion = OpenAiDeV1ContractMetadata.WORKFLOW_VERSION;
+        contract = new OpenAiDeV1McpContractAdapter(coachTools,
+                new CoachStateProjection("https://skillpilot.test"), identityResolver,
+                new OpenAiDeMcpTelemetry(meterRegistry, new OpenAiDeOperationalTelemetry(meterRegistry)),
+                sessionCoordinator, "https://skillpilot.test", SERVER_BUILD,
+                "skillpilot-memory-practice-contract-test-secret", true);
+    }
 
     @BeforeEach
     void setUp() {
@@ -923,7 +934,8 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(result.content()).singleElement().isInstanceOfSatisfying(
                 McpSchema.TextContent.class,
                 text -> assertThat(text.text())
-                        .contains("SkillPilot-Kontext geladen")
+                        .contains(contract.toolSpecifications().size() == 14
+                                ? "Tagesplan nicht auswertbar" : "SkillPilot-Kontext geladen")
                         .doesNotContain(LEARNER_ID, CONNECTION_SECRET, "SECRET SOLUTION"));
         assertThat(result.structuredContent()).isInstanceOf(Map.class);
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_CONTEXT, result);
@@ -3471,7 +3483,7 @@ class OpenAiDeCoachMcpContractTest {
                 1,
                 stateVersion,
                 1,
-                "coach@1.0",
+                sessionWorkflowVersion,
                 "curricula-tree@test",
                 sessionCommunicationLocale,
                 Map.of()));

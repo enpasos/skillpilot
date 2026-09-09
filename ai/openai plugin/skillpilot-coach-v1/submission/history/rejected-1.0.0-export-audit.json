@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-09-09",
+  "source": {
+    "kind": "Product-owner-provided private portal export",
+    "sha256": "f5556e5ba8bbd9423f0d5342a49bc0c8aebd4de362012a0cdbf3d747ec70795b",
+    "bytes": 269764,
+    "retention": "Original contains OAuth and reviewer credentials; do not commit, copy into generated artifacts, or print its values."
+  },
+  "observedCandidateVersion": "1.0.0",
+  "observedPortalStatus": "REJECTED",
+  "rejectionReasonAvailable": false,
+  "failedCaseAvailable": false,
+  "reviewerTraceAvailable": false,
+  "confirmedFindings": [
+    { "caseId": "P3", "field": "expected_output", "finding": "Exactly duplicates tools_triggered rather than a visible-result oracle." },
+    { "caseId": "P3", "field": "user_prompt", "finding": "Answer 2 gives vertex form without the requested vertex coordinates S(d|e)." },
+    { "caseId": "P4", "field": "user_prompt", "finding": "The sample states the limit 500 without the bounded covered-area interpretation, while expecting all 25 points." },
+    { "caseId": "P5", "field": "expected_output", "finding": "Exactly 300 characters and ends mid-sentence/mid-word; not a complete outcome." },
+    { "caseId": "N1", "field": "expected_output", "finding": "Null; no standalone visible safe-result oracle." },
+    { "caseId": "N2", "field": "expected_output", "finding": "Null; no standalone visible safe-result oracle." },
+    { "caseId": "N3", "field": "expected_output", "finding": "Null; no standalone visible safe-result oracle." }
+  ],
+  "interpretation": "Confirmed export defects, not evidence of which issue caused rejection. The 300-character observation is not an official platform field-limit claim."
+}

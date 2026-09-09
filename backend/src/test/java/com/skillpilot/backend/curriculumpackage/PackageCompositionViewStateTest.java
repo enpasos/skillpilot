@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class PackageCompositionViewStateTest {
 
@@ -148,8 +150,9 @@ class PackageCompositionViewStateTest {
         });
     }
 
-    @Test
-    void deduplicatesStrictlyContainedSiblingSubtreeAcrossCourseProfiles() throws Exception {
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void deduplicatesStrictlyContainedSiblingSubtreeAcrossCourseProfiles(boolean directGkExclusion) throws Exception {
         CurriculumPackageTestFixture.PackageSpec base =
                 CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a');
         CurriculumPackageTestFixture.PackageSpec merge = new CurriculumPackageTestFixture.PackageSpec(
@@ -193,6 +196,11 @@ class PackageCompositionViewStateTest {
         Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = new LinkedHashMap<>();
         for (CurriculumRuntimeSnapshot.ViewDescriptor descriptor : snapshot.viewsById().values()) {
             boolean isLk = descriptor.viewId().endsWith("secondary");
+            List<Map<String, Object>> references = directGkExclusion && !isLk
+                    ? List.of(
+                            Map.of("kind", "canonicalSubtree", "goalId", "broad-goal"),
+                            Map.of("kind", "goalEntry", "goalId", "narrow-goal", "projectionRole", "prerequisiteOnly"))
+                    : List.of(Map.of("kind", "canonicalSubtree", "goalId", isLk ? "broad-goal" : "narrow-goal"));
             String document = mapper.writeValueAsString(Map.of(
                     "viewId", descriptor.viewId(),
                     "landscapeId", descriptor.landscapeId(),
@@ -200,9 +208,7 @@ class PackageCompositionViewStateTest {
                     "rootNodes", List.of(Map.of(
                             "kind", "structure",
                             "id", isLk ? "branch-lk" : "branch-gk",
-                            "children", List.of(Map.of(
-                                    "kind", "canonicalSubtree",
-                                    "goalId", isLk ? "broad-goal" : "narrow-goal"))))));
+                            "children", references))));
             views.put(descriptor.viewId(), new CurriculumRuntimeSnapshot.ViewDescriptor(
                     descriptor.packageId(),
                     descriptor.viewId(),

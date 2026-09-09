@@ -62,7 +62,9 @@ public final class OpenAiDeMcpTelemetry {
             OpenAiDeV1McpContractAdapter.START_RECALL,
             OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
             OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
-            OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION);
+            OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION,
+            OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN,
+            OpenAiDeV1McpContractAdapter.SWITCH_LEARNING_PLAN_SUBJECT);
     private static final Set<String> KNOWN_RESULT_CODES =
             java.util.Arrays.stream(OpenAiDeV1ErrorCode.values())
                     .map(OpenAiDeV1ErrorCode::code)

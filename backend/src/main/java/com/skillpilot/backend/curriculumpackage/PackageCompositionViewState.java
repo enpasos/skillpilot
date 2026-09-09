@@ -486,11 +486,12 @@ public final class PackageCompositionViewState {
             merged.put(
                     "rootNodes",
                     "courseProfile".equals(offering.mergeDimension())
-                            ? CourseProfileCompositionViewMerger.merge(
-                                    roots,
-                                    (kind, goalId) -> "canonicalSubtree".equals(kind)
-                                            ? graph.goalAndDescendants(goalId)
-                                            : Set.of(LandscapeGraph.localId(goalId)))
+                            ? CourseProfileCompositionViewMerger.mergeViews(
+                                    offering.viewIds().stream()
+                                            .map(viewId -> nodeMaps(views.get(viewId).document().get("rootNodes")))
+                                            .toList(),
+                                    graph.containsByGoalId(),
+                                    true)
                             : mergeNodes(roots));
         } catch (IllegalStateException exception) {
             throw failure(exception.getMessage(), exception);

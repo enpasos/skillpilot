@@ -26,6 +26,19 @@ import org.slf4j.LoggerFactory;
 class OpenAiDeMcpTelemetryTest {
 
     @Test
+    void currentPlanToolsHaveBoundedDedicatedTelemetryAndRetiredReadIsUnknown() {
+        SimpleMeterRegistry registry = new SimpleMeterRegistry();
+        OpenAiDeMcpTelemetry telemetry = new OpenAiDeMcpTelemetry(registry);
+        for (String tool : List.of(OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN,
+                OpenAiDeV1McpContractAdapter.SWITCH_LEARNING_PLAN_SUBJECT)) {
+            telemetry.record(tool, () -> result(false));
+            assertThat(timer(registry, tool, "success", "OK").count()).isEqualTo(1);
+        }
+        telemetry.record("get_skillpilot_daily_plan", () -> result(false));
+        assertThat(timer(registry, "unknown", "success", "OK").count()).isEqualTo(1);
+    }
+
+    @Test
     void recordsOnlyBoundedToolAndStatusTagsForSuccessfulAndFailedResults() {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         OpenAiDeMcpTelemetry telemetry = new OpenAiDeMcpTelemetry(registry);

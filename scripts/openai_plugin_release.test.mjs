@@ -32,6 +32,7 @@ import {
   createReproducibleTrackedArchive,
   pluginInstallBundleArchiveName,
 } from "./lib/reproducible_plugin_archive.mjs";
+import { assertOpenAiPluginReleaseMutationAllowed } from "./check_openai_plugin_review_freeze.mjs";
 
 const fixturePath = fileURLToPath(
   new URL(
@@ -45,20 +46,13 @@ const releaseScriptPath = fileURLToPath(
 );
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 
-test("submitted V1 draft cannot be prepared while portal review is active", () => {
-  const result = spawnSync(
-    process.execPath,
-    [releaseScriptPath, "prepare"],
-    { cwd: repositoryRoot, encoding: "utf8", stdio: "pipe" },
-  );
-  assert.notEqual(result.status, 0);
-  assert.match(
-    `${result.stdout}\n${result.stderr}`,
-    /release mutation prepare is forbidden/u,
-  );
+test("successor preparation preserves existing release archives", () => {
+  const options = { repositoryRoot, pluginIdentity: "skillpilot-coach-v1", command: "prepare" };
+  assert.doesNotThrow(() => assertOpenAiPluginReleaseMutationAllowed({ ...options, pluginVersion: "1.1.0" }));
+  assert.throws(() => assertOpenAiPluginReleaseMutationAllowed({ ...options, pluginVersion: "1.0.0" }), /cannot be rewritten/u);
 });
 
-test("submitted V1 cannot be recorded as published while portal review is active", () => {
+test("development authorization does not grant publication permission", () => {
   const result = spawnSync(
     process.execPath,
     [
@@ -72,7 +66,7 @@ test("submitted V1 cannot be recorded as published while portal review is active
   assert.notEqual(result.status, 0);
   assert.match(
     `${result.stdout}\n${result.stderr}`,
-    /release mutation record-published is forbidden/u,
+    /Actual OpenAI publication and separate publication-recording authorization/u,
   );
 });
 
@@ -625,6 +619,42 @@ test("plugin archive is reproducible across source modes and umasks", () => {
       listing,
       /^-rwxr-xr-x .* skillpilot-coach-v1\/bin\/coach$/m,
     );
+  });
+});
+
+test("an explicit install allowlist excludes tracked and untracked submission material", () => {
+  withTemporaryGitRepository(({ root, pluginRoot }) => {
+    mkdirSync(resolve(pluginRoot, "submission"));
+    writeFileSync(resolve(pluginRoot, "submission/reviewer.json"), "private-review-fixture");
+    git(root, "add", ".");
+    writeFileSync(resolve(pluginRoot, "submission/local.json"), "untracked-private-review-fixture");
+    const options = { repositoryRoot: root, sourceRoot: pluginRoot, includePaths: ["plugin.json"] };
+    const archivePath = resolve(root, "public.tar");
+    createReproducibleTrackedArchive({ ...options, archivePath });
+    assert.deepEqual(run("tar", ["-tf", archivePath], root).stdout.trim().split("\n"), [
+      "skillpilot-coach-v1", "skillpilot-coach-v1/plugin.json",
+    ]);
+    const originalHash = fileSha256(archivePath);
+    writeFileSync(resolve(pluginRoot, "submission/reviewer.json"), "changed-private-review-fixture");
+    createReproducibleTrackedArchive({ ...options, archivePath });
+    assert.equal(fileSha256(archivePath), originalHash);
+  });
+});
+
+test("install allowlists cannot include missing, untracked, duplicate or unsafe input", () => {
+  withTemporaryGitRepository(({ root, pluginRoot }) => {
+    git(root, "add", ".");
+    writeFileSync(resolve(pluginRoot, "untracked.json"), "{}");
+    for (const includePaths of [[], ["missing.json"], ["untracked.json"], ["plugin.json", "plugin.json"], ["../secret"], ["/secret"]]) {
+      assert.throws(() => createReproducibleTrackedArchive({
+        repositoryRoot: root, sourceRoot: pluginRoot, archivePath: resolve(root, "invalid.tar"), includePaths,
+      }), /allowlist|not Git-tracked|Unsafe/u);
+    }
+    rmSync(resolve(pluginRoot, "plugin.json"));
+    symlinkSync("untracked.json", resolve(pluginRoot, "plugin.json"));
+    assert.throws(() => createReproducibleTrackedArchive({
+      repositoryRoot: root, sourceRoot: pluginRoot, archivePath: resolve(root, "symlink.tar"), includePaths: ["plugin.json"],
+    }), /regular file/u);
   });
 });
 

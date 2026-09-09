@@ -2140,6 +2140,51 @@ public class LearnerServiceTest {
     }
 
     @Test
+    void compositionRolesUseNearestReferenceAtSharedDagDescendants() {
+        Map<String, LearningGoal> goals = new LinkedHashMap<>();
+        List.of(
+                goal("root", List.of(), List.of("near", "chain")),
+                goal("chain", List.of(), List.of("far")),
+                goal("far", List.of(), List.of("middle")),
+                goal("middle", List.of(), List.of("shared")),
+                goal("near", List.of(), List.of("shared")),
+                goal("shared", List.of(), List.of()))
+                .forEach(goal -> goals.put(goal.getId(), goal));
+        Map<String, Object> nearTarget = Map.of(
+                "kind", "canonicalSubtree", "goalId", "near", "projectionRole", "target");
+        Map<String, Object> farExclusion = Map.of(
+                "kind", "canonicalSubtree", "goalId", "far", "projectionRole", "prerequisiteOnly");
+        for (List<Map<String, Object>> nodes : List.of(
+                List.of(nearTarget, farExclusion), List.of(farExclusion, nearTarget))) {
+            assertThat(compositionRoleForGoal(nodes, goals, "shared"))
+                    .as("Near target wins over the globally deeper but farther exclusion, independent of order")
+                    .isEqualTo("TARGET");
+        }
+        goals.get("far").setContains(List.of("shared"));
+        assertThat(compositionRoleForGoal(List.of(nearTarget, farExclusion), goals, "shared"))
+                .as("Target wins at equal reference distance despite unequal global root depths")
+                .isEqualTo("TARGET");
+        Map<String, Object> directExclusion = Map.of(
+                "kind", "goalEntry", "goalId", "shared", "projectionRole", "prerequisiteOnly");
+        assertThat(compositionRoleForGoal(List.of(nearTarget, farExclusion, directExclusion), goals, "shared"))
+                .as("A direct goalEntry still outranks inherited subtree roles")
+                .isEqualTo("PREREQUISITE_ONLY");
+    }
+
+    private String compositionRoleForGoal(
+            List<Map<String, Object>> nodes, Map<String, LearningGoal> goals, String goalId) {
+        Map<String, Object> references = new LinkedHashMap<>();
+        ReflectionTestUtils.invokeMethod(learnerService, "collectCompositionViewGoalReferences", nodes, references);
+        Map<?, ?> assignments = ReflectionTestUtils.invokeMethod(
+                learnerService, "resolveCompositionProjectionAssignments", references, goals);
+        assertThat(assignments).isNotNull();
+        Object assignment = assignments.get(goalId);
+        assertThat(assignment).isNotNull();
+        Object role = ReflectionTestUtils.invokeMethod(assignment, "role");
+        return String.valueOf(role);
+    }
+
+    @Test
     @SuppressWarnings("unchecked")
     void initialScopeKeepsWritableTargetFallbackWhenCompositionHasNoViewId() throws Exception {
         LearningGoal spanishRoot = landscapeService.getById(CANONICAL_SPANISH_LANDSCAPE_ID)

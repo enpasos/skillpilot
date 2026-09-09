@@ -157,6 +157,27 @@ assert.equal(
   'insufficient',
 )
 
+// Explicit role projection can remove every child of a valid canonical cluster.
+// It contributes no targets, but must not hide the enclosing school stage.
+const roleFilteredCluster = {
+  ...uiGoal('role-filtered-cluster', [], 'cluster'),
+  extendedData: { compositionEmptyAfterRoleProjection: true },
+}
+const roleFilteredIndex = goalMap(
+  uiGoal('sek-ii', ['a', roleFilteredCluster.id]),
+  uiGoal('a'),
+  roleFilteredCluster,
+)
+assert.deepEqual(resolveAtomicGoalDescendants('sek-ii', roleFilteredIndex).atomicGoalIds, ['a'])
+assert.equal(resolveAtomicGoalDescendants('sek-ii', roleFilteredIndex).quality.status, 'complete')
+assert.deepEqual(resolveAtomicGoalDescendants(roleFilteredCluster.id, roleFilteredIndex).atomicGoalIds, [])
+// The marker is not permission to ignore a broken sibling or missing reference.
+roleFilteredIndex.set('broken-section', uiGoal('broken-section', [roleFilteredCluster.id, 'missing']))
+assert.equal(resolveAtomicGoalDescendants('broken-section', roleFilteredIndex).quality.status, 'invalid')
+roleFilteredIndex.set('empty-source', uiGoal('empty-source', [], 'cluster'))
+roleFilteredIndex.set('broken-section', uiGoal('broken-section', [roleFilteredCluster.id, 'empty-source']))
+assert.equal(resolveAtomicGoalDescendants('broken-section', roleFilteredIndex).quality.status, 'insufficient')
+
 const staleMilestonePlan = addBlocks(createPlan('stale-milestone'), [{
   id: 'stale-milestone-block',
   kind: 'milestone',

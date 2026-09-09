@@ -46,7 +46,7 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
             Optional<OpenAiDeV1McpContractAdapter> contract,
             Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
             @Value("${skillpilot.openai.coach.v1.mcp.enabled:false}") boolean mcpEnabled,
-            @Value("${skillpilot.openai.coach.v1.daily-plan-tools-enabled:false}")
+            @Value("${skillpilot.openai.coach.v1.daily-plan-tools-enabled:true}")
                     boolean dailyPlanToolsEnabled) {
         this.properties = properties;
         this.contractAvailable = contract.isPresent();

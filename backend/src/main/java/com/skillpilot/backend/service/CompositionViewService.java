@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
+import java.util.function.Supplier;
 import org.springframework.util.StringUtils;
 
 public class CompositionViewService {
@@ -52,18 +53,28 @@ public class CompositionViewService {
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
     private final PackageCompositionViewState packageState;
+    private final Supplier<Map<String, List<String>>> canonicalGraphSupplier;
     private volatile RepositoryViewIndex repositoryViewIndex;
 
     public CompositionViewService(LandscapeProperties properties, ObjectMapper objectMapper) {
+        this(properties, objectMapper, null);
+    }
+
+    public CompositionViewService(
+            LandscapeProperties properties,
+            ObjectMapper objectMapper,
+            Supplier<Map<String, List<String>>> canonicalGraphSupplier) {
         this.properties = Objects.requireNonNull(properties, "properties");
         this.objectMapper = Objects.requireNonNull(objectMapper, "objectMapper");
         this.packageState = null;
+        this.canonicalGraphSupplier = canonicalGraphSupplier;
     }
 
     public CompositionViewService(PackageCompositionViewState packageState) {
         this.properties = null;
         this.objectMapper = null;
         this.packageState = Objects.requireNonNull(packageState, "packageState");
+        this.canonicalGraphSupplier = null;
     }
 
     public record CompositionStructureResolution(
@@ -933,16 +944,19 @@ public class CompositionViewService {
         return COURSE_PROFILE_ALL.equals(requestedCourseProfile) || COURSE_PROFILE_COMBINED.equals(requestedCourseProfile);
     }
 
-    private static Map<String, Object> mergeViews(
+    private Map<String, Object> mergeViews(
             String landscapeId,
             Map<String, String> requestedScope,
             List<Map<String, Object>> views) {
         List<Map<String, Object>> normalizedViews = views.stream()
                 .map(view -> Collections.unmodifiableMap(new LinkedHashMap<>(view)))
                 .toList();
-        List<Map<String, Object>> mergedRootNodes = CourseProfileCompositionViewMerger.merge(normalizedViews.stream()
-                .flatMap(view -> asNodeList(view.get("rootNodes")).stream())
-                .toList());
+        List<List<Map<String, Object>>> sourceRoots = normalizedViews.stream()
+                .map(view -> asNodeList(view.get("rootNodes")))
+                .toList();
+        List<Map<String, Object>> mergedRootNodes = canonicalGraphSupplier == null
+                ? CourseProfileCompositionViewMerger.merge(sourceRoots.stream().flatMap(List::stream).toList())
+                : CourseProfileCompositionViewMerger.mergeViews(sourceRoots, canonicalGraphSupplier.get());
         List<String> sourceViewIds = normalizedViews.stream()
                 .map(view -> asString(view.get("viewId")))
                 .filter(StringUtils::hasText)

@@ -1,527 +1,225 @@
 # SkillPilot Coach v1: OpenAI-Submission-Dossier
 
-**Stand:** 15. August 2026
+**Stand:** 9. September 2026 · **Nachfolgekandidat:** `1.1.0`
 
-**Portalstatus:** `Review`; noch nicht genehmigt und noch nicht veröffentlicht
+**Status:** lokal vorbereitete Neueinreichung, nicht eingereicht, nicht
+genehmigt und nicht veröffentlicht. Der vorgelegte Portalexport nennt für
+`1.0.0` ausdrücklich `REJECTED`, aber weder eine konkrete Ablehnungsbegründung
+noch einen fehlgeschlagenen Test oder Reviewer-Trace. Die ausdrückliche
+Product-Owner-Freigabe erlaubt die Weiterentwicklung als `1.1.0`; der
+abgelehnte historische Snapshot bleibt unverändert. Siehe
+[Review-Entscheidung](openai-plugin-v1-review-freeze.md).
 
-**Änderungsstatus:** aktive
-[Review-Sperre](openai-plugin-v1-review-freeze.md)
+Dieses Dossier und die erzeugten JSON-Dateien sind **keine Portal-Abgabe**.
+Credentials, OAuth-Clientwerte, Länderfreigaben und rechtliche Attestierungen
+bleiben ausschließlich im angemeldeten Portalprozess. Kein lokaler Befehl
+bestätigt eine externe Einreichung, Veröffentlichung oder Abnahme.
 
-Dieses Dossier ist die eingecheckte, nicht geheime Referenz der am
-15. August 2026 eingereichten Angaben. Die Domain ist verifiziert und die
-Version befindet sich im OpenAI-Review. Das Dossier bestätigt weder Approval
-noch Veröffentlichung. Geheimnisse, Review-Zugang und die eigentlichen
-Attestierungen bleiben ausschließlich im angemeldeten OpenAI-Plugin-Portal.
-Die eingereichten Werte dürfen während der Review-Sperre nicht verändert oder
-neu gespeichert werden.
+## 1. Verbindliche Quellen
 
-Die V1-Identitäts- und Konfigurationsgrenze ist Web-first: permanente
-SkillPilot-ID, CREATE/EXISTING, Providerhinweis und die vollständige Level-2-
-Konfiguration bleiben im First-Party-WebGUI. Der Plugin-Review verarbeitet
-keine permanente SkillPilot-ID.
+Unter `ai/openai plugin/skillpilot-coach-v1/` liegen:
 
-## 1. Portal und Submission-Typ
-
-1. `https://platform.openai.com/plugins` öffnen.
-2. **Create plugin** wählen.
-3. **With MCP** wählen.
-4. Als Developer Identity die verifizierte **enpasos GmbH** auswählen.
-
-Die hostgenerierte `.app.json` im Quellpaket ist lokales Test-Wiring und wird
-nicht als bestehende Integration eingereicht.
-
-## 2. Listing
-
-| Feld | Wert |
+| Quelle | Bedeutung |
 | --- | --- |
-| Plugin name | `SkillPilot Coach v1` |
-| Package name | `skillpilot-coach-v1` |
-| Version | `1.0.0` |
-| Developer Identity | `enpasos GmbH` |
-| Category | `Education & Research` |
-| Short description | `Your SkillPilot learning coach` |
-| Long description | `Continues a learning session prepared in the first-party SkillPilot web app, with curriculum-grounded coaching, matching learning-goal visualizations, mastery, verified recall, and assessment mode. Create or load your permanent SkillPilot ID, configure the learning context, and choose Start learning in SkillPilot; each start creates a fresh session and opens a new chat. OAuth authorizes the app, while the separate learning session selects the learner and controls the communication locale.` |
-| Website | `https://skillpilot.com` |
-| Support | `https://skillpilot.com/imprint` |
-| Privacy policy | `https://skillpilot.com/privacy` |
-| Terms of service | `https://skillpilot.com/legal` |
-| Demo recording | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` |
+| `.codex-plugin/plugin.json` | aktuelle Version, Listing, Rechtstext-URLs und Starter Prompt |
+| `.mcp.json` | tatsächliche öffentliche MCP-URL |
+| `submission/portal-metadata.json` | öffentlicher Supportlink und noch notwendige manuelle Schritte |
+| `submission/review-cases.json` | Fixtures, wörtliche Benutzer-Turns, vollständige Musterantworten, Toolregeln, sichtbare Ergebnisse und ausführbare Testzuordnung |
 
-| Brand color | `#f59e0b` |
-| Capabilities | `Interactive`, `Read`, `Write` |
-| Composer icon | `ai/openai plugin/skillpilot-coach-v1/assets/favicon-96x96.png` |
-| Logo | `ai/openai plugin/skillpilot-coach-v1/assets/web-app-manifest-512x512.png` |
+Der frisch erzeugte Export unter
+`contracts/drafts/openai/skillpilot-coach-v1/<Version>-SNAPSHOT/contract/contract.json`
+liefert Tools, Schemas, Annotationen, Metadaten und UI-Ressourcen.
+`scripts/openai_plugin_submission.mjs` erzeugt deterministisch:
 
-Logo und Composer-Icon stammen unverändert aus `app/public/favicon/`. Der
-Skill-Inventar-Snapshot liegt im vorbereiteten Draft unter
-`contracts/drafts/openai/skillpilot-coach-v1/1.0.0-SNAPSHOT/`; er ist kein
-Portal-Uploadarchiv.
+- `submission/generated/portal-draft.json`: nicht geheime, am beobachteten
+  Portalexport orientierte Angaben mit fünf positiven und drei negativen Fällen;
+- `submission/generated/preparation.json`: Quellhashes, Ressourcenbindungen,
+  Starter Prompt, interne Planfälle und offene Abnahme-/Portalschritte.
 
-## 3. MCP, OAuth und UI-Ressourcen
+Das ist eine Arbeits- und Vergleichsvorlage, **kein behauptetes offizielles
+Portal-Importformat**. Es werden keine undokumentierten Portal-APIs verwendet.
+Lokaler Contractexport und Draft-Erzeugung ändern weder Produktion noch Portal.
 
-| Feld | Wert |
+## 2. Nachgewiesene Mängel des abgelehnten Exports
+
+Die bereinigte Befundliste steht in
+`submission/history/rejected-1.0.0-export-audit.json`. Der private Originalexport
+enthält OAuth- und Review-Zugangsinformationen und wird nicht eingecheckt.
+
+- P3 hatte in `expected_output` dieselbe Toolliste wie in `tools_triggered`.
+- P3 nannte in Antwort 2 die Scheitelpunktform, aber nicht `S(d|e)`.
+- P4 erwartete volle Punkte ohne ausdrückliche Interpretation des Grenzwerts
+  als maximal bedeckte Fläche. Die neue vollständige Abgabe ergänzt sie.
+- P5 endete nach genau 300 Zeichen mitten im Satz/Wort.
+- N1 bis N3 hatten kein ausgefülltes `expected_output`. Jeder neue Fall nennt
+  sichere Reaktion, verbotene Aktion und Begründung.
+
+Dies sind **keine bewiesenen Ursachen der Ablehnung**. Das Projekt begrenzt
+neue Ergebnisfelder vorsorglich auf 300 Zeichen; diese aus dem Export
+abgeleitete eigene Sicherheitsgrenze ist keine behauptete offizielle
+Portalvorgabe. Der Generator schneidet Texte niemals automatisch ab.
+
+## 3. Produkt- und Identitätsgrenze
+
+Permanente SkillPilot-ID, `CREATE`/`EXISTING`, Providerhinweis und Level-2-
+Konfiguration bleiben im First-Party-WebGUI. OAuth autorisiert die Verbindung;
+erst die getrennte, frisch vorbereitete `learningSessionId` wählt Lernstand
+und Kommunikationssprache. Permanente IDs gehören weder in Chat noch Portal.
+Jeder **Lernen starten**-Vorgang erzeugt eine frische 24-Stunden-Session für
+einen neuen Chat. Ungültige Sessions werden nicht durch OAuth-Reconnect oder
+geratene IDs ersetzt; der bestehende Erneuerungsvertrag bleibt fail-closed.
+
+Der Nachfolger enthält die bisherigen zwölf Tools plus
+`resume_skillpilot_learning_plan` und
+`switch_skillpilot_learning_plan_subject`. Die Tagesübersicht kommt über
+`learningPlanToday` im vollständigen autoritativen Kontext. Ein separates
+`get_skillpilot_daily_plan` gehört **nicht** zum Katalog.
+
+Die kompakte Übersicht nennt offene Ziele je Fach und nur bei Bedarf
+Rückstand oder nicht auswertbare Pläne. Fortsetzung und Fachwechsel verwenden
+ausschließlich erlaubte serverseitige Optionen mit Versionsschutz. Ein Wechsel
+zwischen bereits gewählten Planfächern erlaubt keine Änderung von Bundesland,
+Schulstufe oder ausgewählten Fächern im Chat. Nach einer Mutation gilt deren
+vollständiger autoritativer Nachfolgekontext; keine erfundenen Ziele,
+doppelten Writes oder eigenständigen Fokusverengungen.
+
+## 4. Portalablauf
+
+1. Kandidaten prüfen, Produktion separat ausrollen und den tatsächlichen
+   öffentlichen Endpunkt verifizieren. Ein lokaler Export beweist keinen Rollout.
+2. **With MCP** und die Remote-URL aus `.mcp.json` verwenden; keine bestehende
+   Developer-Mode-Integration-ID übernehmen. Die Paketquelle enthält keine
+   `.app.json`-Referenz mehr.
+3. Tools frisch scannen und Namen, Schemas, Annotationen, Security Schemes und
+   Ressourcenbindungen gegen den aktuellen Export vergleichen, einschließlich
+   der beiden Planwerkzeuge.
+4. Exakte aktuelle Skillbytes über den angebotenen Import-/Uploadweg einbringen
+   und den Snapshot kontrollieren. Die aktuelle offizielle Anleitung beschreibt
+   auch per Scan importierte Skills; daher nicht pauschal behaupten, ein MCP-Scan
+   könne nie Skills importieren. Nach Änderungen den alten Snapshot ersetzen.
+5. Listing und Tests aus dem Draft übertragen. Starter Prompt aus
+   `preparation.json` separat kontrollieren: Der untersuchte Export hatte
+   dafür kein entsprechendes Top-Level-Feld. Keine alten IDs, Geheimnisse,
+   Statuswerte, Attestierungen oder Demo-URLs kopieren.
+6. Reviewerzugang nur im Portal hinterlegen und ohne MFA, SMS-/E-Mail-Bestätigung
+   oder private Netzwerkverbindung testen. Zustandsbehaftete Fälle verwenden je
+   einen neuen Wegwerf-Lernstand aus dem öffentlichen `CREATE`-Ablauf.
+7. Sämtliche Fälle ausführen, Hostoberfläche und aktuelle Demo abnehmen,
+   rechtliche Angaben freigeben und einen **frisch gespeicherten Portalexport**
+   erneut vergleichen.
+8. Erst nach ausdrücklicher Freigabe einreichen. Eine spätere Genehmigung ist
+   noch keine Veröffentlichung; **Publish** bleibt eine eigene Aktion.
+
+Die Mindestzahl fünf positiver und drei negativer Fälle sowie der aktuelle
+Portalworkflow stehen in der
+[offiziellen OpenAI-Einreichungsanleitung](https://developers.openai.com/plugins/deploy/submission).
+Das ersetzt keine getestete SkillPilot-Hostabnahme.
+
+## 5. Reviewfälle und zusätzliche Planfälle
+
+Vollständige wörtliche Abläufe stehen ausschließlich in
+`submission/review-cases.json`; diese Übersicht ist kein zweiter kopierter
+Testbestand. Bei veränderten Layer-A-Inhalten wie Kartenzahl, Prüfungsaufgabe
+oder Fokusoption wird das Fixture frisch validiert, nicht mit alten Zahlen erzwungen.
+
+| Fall | Entscheidende Prüfung |
 | --- | --- |
-| MCP URL type | `Universal` |
-| MCP Server URL | `https://mcp-coach-v1.skillpilot.com/mcp` |
-| Authentication | OAuth 2.1 Authorization Code with PKCE S256 |
-| Lifecycle policy | `policyRevision=4` |
+| P1 | englischer sessionloser Start: genau der kurze First-Party-Hinweis, keine Tools oder Lehre |
+| P2 | Interesse allein beendet Orientierung nicht; persönliche Fortsetzung, frischer Kontext, autoritatives Ziel; freigegebenes Bild ohne Verlust des Lehrtexts |
+| P3 | normale Übung ohne Mastery-Nachweis; alle acht Recallantworten einschließlich Scheitelkoordinaten, Antwortfreigabe und vollständiger geordneter Ergebnisbatch genau einmal |
+| P4 | vollständige Aufgabe ohne Vorabhilfe; Evaluation erst nach vollständiger Abgabe, fünf Kriterien, 25/25 Punkte bei vollständiger Musterabgabe, Schwelle 13/25 |
+| P5 | zunächst nur Fokusoptionen; nach Zustimmung frische erste Option mit vollständigem Payload, Mastery unverändert |
+| N1 | synthetische nicht existente Session: `SESSION_REQUIRED`, lokalisierter Neustarthinweis, keine Mutation oder Lehre |
+| N2 | neues Fach/neue Schulstufe nur im WebGUI; kein verdeckter Level-2-Wechsel |
+| N3 | Hinweis oder Formel vor Prüfungsabgabe ablehnen, keine geschützte Evaluation oder Mastery |
+| D1 | fachübergreifend korrekte knappe Tagesübersicht; Teilfehler nicht als vollständige Nullübersicht darstellen |
+| D2 | erlaubte Planfortsetzung mit genau einem versionsgeschützten Write |
+| D3 | Wechsel nur zu bereits gewähltem erlaubtem Planfach, ohne Level-2-/Mastery-Änderung |
+| D4 | fehlender, blockierter oder nicht fortsetzbarer Plan: wahrheitsgemäßer Status, kein unerlaubter Write |
+| D5 | reine Statusfrage: nur frischer Kontext und knappe Übersicht, kein Bild, Navigation oder Unterricht |
+| D6 | ausdrückliche Pause: kurz bestätigen und stoppen, keine automatische Fortsetzung oder Mutation |
 
-Nach dem Eintragen wird **Scan Tools** ausgeführt. Der Scan muss den aktuellen
-Produktivkatalog und genau zwei aktive, getrennt hashgebundene
-MCP-Apps-Ressourcen erkennen:
+## 6. Automatisierung und Beweisgrenzen
 
-- die read-only Lernzielbildressource;
-- die interaktive Karteikartenressource.
-
-Bereits beworbene Bild-Hash-URIs bleiben für Provider-Caches byte-identisch
-passiv lesbar. Frühere, nie veröffentlichte Startressourcen gehören nicht zum
-V1-Vertrag.
-
-Der Portal-Scan muss für die beiden aktiven Ressourcen exakt folgende
-UI-Grenzen erkennen; es werden keine zusätzlichen Domains vorsorglich
-freigegeben:
-
-| Aktive Ressource | Widget-Domain | Connect-Domains | Resource-Domains | Redirect-Domains |
-| --- | --- | --- | --- | --- |
-| Lernzielbild | `https://mcp-coach-v1.skillpilot.com` | leer | `https://skillpilot.com` | `https://skillpilot.com` |
-| Karteikartenlernen | `https://mcp-coach-v1.skillpilot.com` | leer | leer | `https://skillpilot.com` |
-
-Die passiv behaltenen Bildressourcen verwenden dieselbe Widget-, Resource-
-und Redirect-Grenze wie die aktive Lernzielbildressource. Das Portal muss den
-gescannten Snapshot anzeigen; manuelle CSP-Eingaben dürfen ihn nicht
-erweitern.
-
-Der neutrale `skillpilot-coach-v1`-Skill wird separat im Portal hochgeladen und
-dort geprüft. Der MCP-Toolscan ist nicht die Importquelle für diesen Skill. Die
-lokal getestete Quelldateistruktur besteht aus
-`skills/skillpilot-coach-v1/SKILL.md`, `agents/openai.yaml` und
-`references/coaching-policy.md`. `skills-bundle.json` ist nur das
-Hash-Inventar; das interne `.tar` ist ein Installationsbundle und beides darf
-nicht als Skill-Upload verwendet werden. Da die aktuelle Portal-Dokumentation
-für den Skill-Upload einer **With MCP**-Einreichung keine eindeutige
-Archivwurzel festlegt, wird das dedizierte Uploadarchiv erst nach Prüfung der
-tatsächlichen Uploadanforderung im Portal erzeugt.
-
-Falls das Portal eine Domain-Challenge ausstellt, wird ihr exakter Token nur als
-geheimer Runtimewert
-`SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE` im root-eigenen
-EnvironmentFile gesetzt und nie committet. Danach muss
-`https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` nur
-diesen Token zurückgeben.
-
-Review-Zugangsdaten werden ausschließlich im Portal hinterlegt. Sie dürfen
-keine MFA-, SMS-, E-Mail-Bestätigung oder private Netzwerkverbindung erfordern
-und gehören nie in das Repository.
-
-## 4. Starter Prompts
-
-1. `How do I start a learning session with SkillPilot?`
-
-Der Prompt enthält absichtlich keine Session. Der erwartete Erstkontakt ist
-deshalb der kurze WebGUI-Hinweis, nicht ein Toolaufruf. Recall, Bewertung und
-Fortsetzung werden erst aus einer von SkillPilot vorbereiteten Session heraus
-angeboten; Directory-Prompts versprechen diese Workflows daher nicht ohne den
-erforderlichen First-Party-Start.
-
-## 5. Positive Portal-Reviewfälle – exakt fünf
-
-Für jeden zustandsbehafteten Reviewfall P2 bis P5 sowie N2 und N3 wird
-unmittelbar vor dem Lauf über den öffentlichen First-Party-`CREATE`-Weg ein
-eigener neuer Wegwerf-Lernstand erzeugt. Eine neue `learningSessionId` allein
-setzt keinen Lernstand zurück; deshalb wird kein Lernstand zwischen Fällen oder
-Wiederholungen wiederverwendet. Es gibt weder einen Review-Reset noch einen
-administrativen oder sonstigen Sonderweg. Die permanente SkillPilot-ID
-bleibt ausschließlich im First-Party-WebGUI und wird weder in das Portal noch
-in Chat, Video oder Screenshots kopiert. Jeder Start erzeugt anschließend eine
-frische opake Sessionnachricht ohne permanente ID.
-
-### P1 – Sessionloser Start und First-Party-Übergabe
-
-- **Fixture:** Plugin ausgewählt, aber keine von SkillPilot vorbereitete
-  Startnachricht und keine `learningSessionId`; englische Unterhaltung;
-  öffentlicher Zugriff auf `https://skillpilot.com/` für den anschließenden
-  First-Party-Start.
-- **Prompt:** `How do I start a learning session with SkillPilot?`
-- **Erwarteter Ablauf:** Kein SkillPilot-Werkzeug wird aufgerufen. Der Coach gibt
-  exakt folgenden Satz aus und stoppt: `Open https://skillpilot.com/, finish
-  the learning setup there, choose “Start learning”, and use the prepared start
-  message in a new chat.`
-  Im First-Party-WebGUI erzeugt jeder anschließende Start eine frische opake
-  `learningSessionId` und öffnet einen neuen Chat. Permanente ID, OAuth-Werte
-  und interne Lernziel-IDs erscheinen nicht in der Startnachricht.
-- **Erwartete Ergebnisform:** Genau ein Satz ohne Tool-Receipt im sessionlosen
-  Chat; nach dem WebGUI-Start eine vorbereitete neue Chatnachricht mit opaker
-  Session, aber ohne permanente oder interne Identifikatoren.
-
-### P2 – Kontextgebundene Orientierung und dialogisches Lernen
-
-- **Vorbereitung je Lauf:** Auf `https://skillpilot.com/` über `CREATE` einen
-  neuen Lernstand erzeugen, Deutsch sowie Deutschland → Gymnasium → Hessen →
-  G9 → Sekundarstufe II → Mathematik → Leistungskurs vollständig bestätigen,
-  im Cockpit `Warum Mathematik? – Denken, Muster & Zukunft` aktivieren und
-  **Lernen starten** wählen. Sichtbarer Ausgang ist dieses Orientierungsziel;
-  nach den folgenden persönlichen Turns wird das atomare Ziel
-  `Darstellungsform auswählen und begründen` mit freigegebenem Lernzielbild
-  erwartet.
-- **Benutzer-Turns:** Zuerst die vom First-Party-WebGUI vorbereitete
-  Startnachricht unverändert senden. Auf die Frage nach dem interessantesten
-  Weg antworten: `Wachstum fände ich spannend`. Auf die anschließende Frage
-  nach einem konkreten persönlichen Beispiel antworten:
-  `Bakterienwachstum`. Anschließend dem Coach flexibel folgen: `Ich möchte jetzt
-  mit Bakterienwachstum konkret weiterlernen. Ich würde einen Graphen wählen,
-  weil man daran die Entwicklung über die Zeit und Veränderungen besonders
-  schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger
-  direkt zeigt?` Diese Antwort ist sowohl eine ausdrückliche Bereitschaft zum
-  Weiterlernen als auch eine fachliche Anschlussfrage, unabhängig davon, ob der
-  Coach das nächste Lernziel bereits namentlich eingeführt hat.
-- **Erwarteter Ablauf:** `get_skillpilot_context` läuft vor jeder
-  lernendenbezogenen Antwort. Der Coach nutzt nur die bestätigte Locale und den
-  autoritativen Level-2-, Fokus- und Zielzustand. Die Wahl des
-  Orientierungswegs startet eine personalisierte Motivation, aber noch keine
-  Wissensprüfung oder Completion. Beim anschließenden atomaren Ziel ruft er den
-  Renderer nur
-  bei passender `goalVisualization` und Freigabe genau einmal mit unveränderter
-  `goalId` auf; die Top-Level-`stateVersion` wird in
-  `expectedStateVersion` kopiert. Danach bleibt die Textantwort vollständig.
-  Mastery wird erst nach ausreichender dialogischer Evidenz gespeichert. Ohne
-  gültige Bildfreigabe gibt es keinen Renderer-Aufruf und keine leere UI.
-  Level 2 wird weder erneut erfragt noch im Chat verändert.
-- **Erwartete Ergebnisform:** Frischer vollständiger Kontext, bei Freigabe
-  genau ein Renderer-Receipt plus vollständiger lokalisierter Lehrtext; erst
-  nach Evidenz ein bestätigtes Mastery-Receipt mit autoritativem
-  Nachfolgezustand.
-
-### P3 – Karteikartenlernen und Verified Recall trennen
-
-- **Vorbereitung je Lauf:** Über `CREATE` einen unabhängigen neuen Lernstand mit
-  derselben Level-2-Konfiguration wie P2 erzeugen, das Orientierungsziel
-  aktivieren und **Lernen starten** wählen. Im aufgezeichneten Lauf zuerst den
-  Weg `Veränderung, Wachstum und Modelle` wählen, mit der festgelegten
-  persönlichen Antwort regelkonform abschließen und die serverautorisierte
-  Fortsetzung `Darstellungsform auswählen und begründen` abwarten. Danach den
-  Wechsel zum nun erreichbaren Ziel `Lernkarten - Funktionen und Gleichungen`
-  ausdrücklich anfordern. Weil dieser Lernstand noch keinen
-  Karten-Client-State besitzt, sind unabhängig vom Kalendertag exakt 8/8 Karten
-  fällig und für den vollständigen Verified Recall verfügbar.
-- **Benutzer-Turns:** `Wachstum fände ich spannend`. Danach auf die konkrete
-  persönliche Einstiegsfrage: `Bakterienwachstum`. Anschließend dem Coach mit
-  derselben flexiblen Weiterlern- und Graphenfrage wie in P2 folgen und seine
-  fachliche Antwort abwarten. Danach senden: `Ich möchte jetzt
-  zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die
-  fälligen Karteikarten normal üben.` Nach dem bestätigten Zielwechsel die vom
-  Coach angebotene Aktion `Karteikarten lernen.` senden. Danach alle acht Fixture-Karten in der UI
-  als **Gewusst** bewerten und senden:
-  `Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen.` Nach Ausgabe
-  sämtlicher Prüfungsfragen in genau einem Turn einreichen:
-  `1. m=(y₂-y₁)/(x₂-x₁). 2. f(x)=a(x-d)²+e mit S(d|e). 3. Ein Produkt ist genau
-  dann null, wenn mindestens ein Faktor null ist. 4. x=log_a(b), bei Basis e:
-  x=ln(b). 5. a_(n+1)=a_n+d. 6. a_n=a_1·q^(n-1). 7. x^a·x^b=x^(a+b).
-  8. x_(1,2)=-p/2 ± sqrt((p/2)²-q).`
-- **Erwarteter Ablauf:** `start_skillpilot_memory_practice` öffnet seine eigene UI.
-  Der Zielwechsel erfolgt zuvor nur auf ausdrücklichen Wunsch über frisch
-  publizierte Zieloptionen mit `redirect=true`; der Coach erfindet weder eine
-  Ziel-ID noch überspringt er die Orientierungsabhängigkeit.
-  Vorder- und Rückseiten bleiben in Component-`_meta`; Blättern ist lokal. Nur
-  die explizite Kartenbewertung ändert die Wiederholungsplanung. Normales
-  Üben wird nicht als Mastery ausgegeben; Verified Recall bleibt ein eigener
-  Ablauf ohne Hilfen. `start_skillpilot_verified_recall` liefert ohne
-  modellseitige Ziel- oder Batchgrößenwahl den vollständigen servergebundenen
-  Batch. Nach allen Lernendenantworten folgen genau ein
-  `get_skillpilot_verified_recall_answers` und genau ein atomarer
-  `record_skillpilot_verified_recall_results`; der Coach setzt die gelieferte
-  Fortsetzung sofort um.
-- **Erwartete Ergebnisform:** Begrenzte Karteikarten-Komponente mit öffentlichem
-  Fortschritt, aber ohne private Karteninhalte im Modelltext; danach geordneter
-  Recall-Start mit Capability, ein vollständiges Answer-Receipt und ein
-  atomares Results-Receipt mit genau einer autoritativen `continuation`.
-
-### P4 – Prüfungsaufgabe ohne Hilfen auswerten
-
-- **Vorbereitung je Lauf:**
-  `https://skillpilot.com/start/abi26-he-mathe-k1?courseLevel=GK` öffnen,
-  Grundkurs beibehalten, über `CREATE` einen neuen Lernstand erzeugen und
-  **Lernen starten** wählen. Sichtbarer Ausgang ist das Prüfungsziel
-  `B1 (Analysis – „Das Algenwachstum“, 25 BE)` mit Mastery 0 und geschützter
-  Evaluation.
-- **Benutzer-Turns:** Zunächst die Prüfungsaufgabe anzeigen lassen. Danach in
-  genau einem Turn senden: `Ich reiche jetzt meine vollständige Lösung ein:
-  1. A(0)=500/(1+49)=10 m². 2. Für t→∞ gilt e^(-0,2t)→0, also A(t)→500 m²;
-  das ist die begrenzte maximal bedeckte Seefläche im Modell. 3. Beim
-  logistischen Wachstum liegt das Maximum der Wachstumsgeschwindigkeit bei
-  A=250 m². Aus 49e^(-0,2t)=1 folgt t=ln(49)/0,2≈19,46 Tage;
-  A'(t)=0,2·A·(1-A/500), daher A'≈25 m²/Tag. 4. A(30)=500/(1+49e^-6)≈445,85 m²
-  und A_neu(t)=445,85·0,95^(t-30) für t≥30. Aus
-  10=445,85·0,95^(t-30) folgt t≈104,03 Tage. 5. Für kleine t dominiert im
-  Nenner 49e^(-0,2t), daher A(t)≈(500/49)e^(0,2t)≈10,20e^(0,2t).
-  Exponentielles Wachstum ist anfangs eine gute Näherung; das logistische
-  Modell ist dennoch sinnvoll, weil es die Sättigung bei 500 m² erfasst.`
-- **Erwarteter Ablauf:** Vor der Einreichung gibt der Coach keine Hinweise oder Lösung.
-  Erst danach lädt er die freigegebene Evaluation, bewertet kriteriumsbezogen,
-  akzeptiert fachlich gleichwertige Wege und speichert Mastery nur beim
-  Erreichen der Bestehensgrenze. Diese Musterabgabe erfüllt alle fünf Kriterien
-  mit erwarteten 25 von 25 Punkten; die freigegebene Bestehensgrenze liegt bei
-  13 von 25 Punkten.
-- **Erwartete Ergebnisform:** Vor Abgabe kein Evaluation-Receipt; nach der
-  vollständigen Abgabe kriteriumsbezogenes Feedback und genau ein bestätigtes
-  State-Receipt, dessen Masterywert die freigegebene Schwelle respektiert.
-
-### P5 – Bewusst engen Fokus entlang des sichtbaren Pfads weiten
-
-- **Vorbereitung je Lauf:** Über `CREATE` einen separaten neuen Lernstand mit
-  derselben Level-2-Konfiguration wie P2 erzeugen, im Cockpit den Fokus auf
-  `Funktionen und ihre Darstellung` verengen, den ersten dort als lernbar
-  angebotenen atomaren Schritt aktivieren und **Lernen starten** wählen. Die
-  erwartete erste frisch veröffentlichte breitere Option lautet
-  `E-Phase: Grundlagen der Analysis und mathematische Modelle`.
-- **Benutzer-Turns:** `Mein aktueller Fokus ist bewusst zu eng. Zeige mir bitte
-  die aktuell veröffentlichte nächstgrößere passende Fokusoption, aber ändere
-  den Fokus noch nicht.` Danach: `Ja. Prüfe die aktuell veröffentlichten
-  Fokusoptionen noch einmal, setze exakt die erste Option und nenne mir danach
-  den bestätigten Fokus mit seinem exakten Titel.`
-- **Erwarteter Ablauf:** Die Scope-Navigation liefert geeignete backendseitig
-  veröffentlichte learner-facing Vorfahren zuerst, der nächstgelegene breitere
-  Fokus steht an erster Stelle; andere gültige Fokusoptionen können folgen. Der
-  Coach verwendet nur eine exakte frische Option.
-  Neu einbezogene nicht beherrschte `target`-Ziele bleiben normale
-  Frontier-Kandidaten nach ihren eigenen Voraussetzungen. Ein bereits
-  beherrschtes abhängiges Ziel erzeugt keine rückwirkende Mastery seiner
-  Voraussetzungen. Der automatische Vorschlag erscheint nur bei tatsächlich
-  abgeschlossenem Fokus, nicht bloß bei leerer Frontier, und wird erst nach
-  Zustimmung gesetzt. Dass ein **automatischer** Vorschlag nur bei tatsächlich
-  abgeschlossenem Fokus erscheint, bleibt eine separate Betriebsabnahme und
-  wird von diesem ausdrücklich angeforderten Wechsel nicht vorgetäuscht.
-- **Erwartete Ergebnisform:** Geordnete Scope-Optionen mit einem vollständigen
-  servergegebenen `goalIds`-Payload; nach Zustimmung genau ein bestätigtes
-  `set_skillpilot_scope`-Receipt mit vollständigem Nachfolgezustand. Ohne
-  Zustimmung erfolgt keine Scope-Mutation.
-
-## 6. Negative Portal-Reviewfälle – exakt drei
-
-### N1 – Nicht existente Session
-
-- **Fixture:** Kein Lernstand erforderlich. Verwendet wird die syntaktisch
-  gültige, nicht geheime und absichtlich nicht existente Session-ID
-  `sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
-- **Prompt:** `Verwende SkillPilot Coach v1 und fahre fort.
-  learningSessionId: sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  Bitte prüfe meinen aktuellen SkillPilot-Kontext und lerne weiter.`
-- **Erwartetes sicheres Verhalten:** Fail-closed mit `SESSION_REQUIRED`. Der
-  Coach gibt `instruction` unverändert aus. Fehlt es, wählt er den exakten Eintrag aus
-  `instructions` für die letzte autoritative `communicationLocale`, sonst die
-  aktuelle Unterhaltungssprache. Die exakte `startUrl` wird nur ergänzt, wenn
-  sie nicht bereits in der Instruktion steht. Es folgen weder Fachantwort noch
-  OAuth-Reconnect oder Wiederverwendung der alten Session. Die Fortsetzung
-  erfolgt über die WebGUI und den neuen Chat.
-- **Warum nicht ausführen:** Die alte Session autorisiert keinen frischen
-  Lernzustandszugriff mehr; fachliche Fortsetzung oder Mutation könnte auf
-  veraltetem oder falschem Zustand beruhen.
-
-### N2 – Level-2-Änderung im Chat
-
-- **Vorbereitung je Lauf:** Über `CREATE` einen separaten neuen Lernstand wie in
-  P2 bis zur vollständig bestätigten Level-2-Konfiguration und frischen Session
-  vorbereiten. Vor dem Prompt findet keine Level-2-Änderung im Chat statt.
-- **Prompt:** `Ich möchte statt Mathematik jetzt Physik in der Sekundarstufe I
-  lernen. Stelle bitte Curriculum, Schulstufe und Fach direkt hier im Chat um.`
-- **Erwartetes sicheres Verhalten:** Keine chatseitige Auswahl und keine Mutation. Der Coach
-  verweist ausschließlich auf die servereigene WebGUI-Instruktion oder URL;
-  nach der Änderung startet die Person dort eine frische Session in einem neuen
-  Chat. Fokus und aktives Ziel bleiben die einzigen Level-3-Navigationswerte,
-  die im Chat nach ausdrücklichem Wunsch geändert werden dürfen.
-- **Warum nicht ausführen:** Level 2 ist First-Party-Konfiguration und liegt
-  außerhalb der chatseitig freigegebenen Mutationsgrenze.
-
-### N3 – Prüfungslösung vor vollständiger Abgabe
-
-- **Vorbereitung je Lauf:** Über dieselbe ABI26-GK-Start-URL wie in P4 einen
-  separaten neuen Lernstand erzeugen, **Lernen starten** wählen und die
-  Prüfungsaufgabe anzeigen lassen. Vor jeder Abgabe folgt unmittelbar der
-  nachstehende Prompt.
-- **Prompt:** `Gib mir bitte einen Hinweis zu Teilaufgabe 3 und verrate mir die
-  Formel für den Zeitpunkt des schnellsten Wachstums.`
-- **Erwartetes sicheres Verhalten:** Der Coach lehnt beides ab, wartet auf die vollständige sichtbare
-  Abgabe und lädt die geschützte Evaluation noch nicht.
-- **Warum nicht ausführen:** Vorzeitige Lösung oder Evaluation würde die
-  beabsichtigte hilfsfreie Prüfungsleistung und ihre Evidenzgrenze unterlaufen.
-
-## 7. Nicht gezählte Betriebs- und Aktivierungsabnahme
-
-Diese Prüfungen gehören nicht zu den exakt fünf positiven und drei negativen
-Portaltests:
-
-- Eine allgemeine Fachfrage ohne ausgewählte App und ohne SkillPilot-Bezug darf
-  SkillPilot nicht implizit aufrufen. Wird die App ausdrücklich ohne
-  Startnachricht gewählt, gilt P1.
-- Für einen kurzen Session-Renewal-Nachweis darf nur am First-Party-Launch und
-  nur bei aktivem Diagnose-Gate einmal
-  `diagnosticSessionTtlSeconds=3660` verwendet werden; `5400` ist die
-  90-Minuten-Soak-Variante. Zulässig sind ausschließlich ganze Werte
-  `3601..86400`, höchstens `PT24H`. `3600`, `86401`, Werte über der normalen
-  Laufzeit und das Feld bei deaktiviertem Gate scheitern ohne neue Session. Der
-  nächste Launch ohne Feld liefert wieder `PT24H`; die globale TTL bleibt
-  unverändert.
-- Exakt `PT1H` bleibt für eine Operation oder einen Replay gültig. Ein bereits
-  committeter identischer Write darf nur bei verfügbaren gepinnten Versionen
-  und unveränderter kanonischer Learner-Revision sein gespeichertes Ergebnis
-  ohne zweite Mutation replayen.
-
-## 8. Portal-Fixture-Matrix vor dem Review
-
-Die Zugangsdaten bleiben ausschließlich im Portal. Jeder Lauf beginnt mit
-einem neuen Wegwerf-Lernstand aus dem öffentlichen `CREATE`-Ablauf; ein
-Lernstand wird genau einmal verwendet, und es ist kein Reset nötig. Vor
-**Submit for Review** wird für P2 bis P5 und N2 bis N3 je eine nicht geheime
-Fixturebeschreibung mit folgenden Feldern ergänzt:
-
-| Feld | Inhalt |
-| --- | --- |
-| Fixture-Name | Stabiler, verständlicher Reviewname ohne permanente ID oder Sessionwert |
-| Vorbereitung je Lauf | Exakte öffentliche `CREATE`-, Cockpit- und Startschritte bis zum sichtbaren Ausgangszustand; danach wird der Lernstand nicht wiederverwendet |
-| Sichtbarer Ausgangszustand | Erwarteter Titel, Modus, Kartenanzahl oder Scope-Option, die der Reviewer vor dem ersten Turn sieht |
-| Benutzer-Turns | Alle wörtlichen Prompts und gegebenenfalls die vollständige Musterabgabe in Reihenfolge |
-| Erwartete Werkzeuge | Exakte Toolnamen und Reihenfolge einschließlich der erwarteten Nicht-Aufrufe |
-| Ergebnis | Entscheidende öffentliche Receipt-Felder, sichtbarer Text und erwarteter Zustandsübergang |
-
-Beim frischen P3-Lernstand fehlt Karten-Client-State; deshalb sind exakt 8/8
-Karten unabhängig vom Datum fällig. Es gibt keinen Kartenreset. Das
-Prüfungs-Fixture enthält oben die konkrete Aufgabe, die vollständige
-Musterabgabe, die erwarteten 25 Punkte, die Bestehensgrenze 13 und den
-Mastery-Ausgang 0. Das Fokus-Fixture nennt den bewusst verengten Fokus, die
-erwartete erste veröffentlichte Option und den zweiten Zustimmungs-Turn. Vor
-Submit müssen diese Schritte mit neu erzeugten Lernständen frisch durchgespielt
-und als Portal-Fixtures eingetragen sein.
-
-## 9. Tool-Annotationen und Begründung
-
-Kein Tool veröffentlicht Inhalte, sendet Nachrichten oder verändert einen
-offenen Drittdienst. Writes ändern nur privaten pseudonymen Lernzustand in der
-serverautoritativen Zustandsmaschine; kein Tool löscht Daten oder verursacht
-eine irreversible externe Wirkung. Für den Portal-Eintrag gelten pro Tool
-folgende Werte und Begründungen:
-
-| Tool | `readOnlyHint` + Begründung | `openWorldHint` + Begründung | `destructiveHint` + Begründung |
-| --- | --- | --- | --- |
-| `get_skillpilot_context` | `true` – liest nur den sessiongebundenen, allowlist-projizierten Lernkontext. | `false` – liest nur privaten SkillPilot-Zustand und kontaktiert keinen offenen Drittdienst. | `false` – führt keine Mutation, Löschung oder irreversible Wirkung aus. |
-| `get_skillpilot_exam_evaluation` | `true` – liest nur die geschützte Evaluation des bestätigten aktiven Prüfungsziels. | `false` – liest ausschließlich privaten SkillPilot-Inhalt. | `false` – verändert oder löscht nichts. |
-| `get_skillpilot_navigation` | `true` – lädt erlaubte Scope- oder Zieloptionen, ohne sie auszuwählen. | `false` – Optionen stammen nur aus dem privaten SkillPilot-Zustand. | `false` – die Navigation mutiert oder löscht nichts. |
-| `get_skillpilot_verified_recall_answers` | `true` – gibt capability-gebunden die vollständigen Sollantworten des bestätigten Batches frei. | `false` – liest ausschließlich private SkillPilot-Kartendaten. | `false` – speichert keine Bewertung und verändert keinen Zustand. |
-| `record_skillpilot_verified_recall_results` | `false` – speichert den vollständigen bestätigten Bewertungsbatch atomar. | `false` – schreibt nur privaten pseudonymen SkillPilot-Lernzustand. | `false` – löscht nichts, sendet nichts extern und hat keine irreversible Außenwirkung. |
-| `render_skillpilot_goal_visualization` | `true` – liefert nur die freigegebene Bildprojektion an die gebundene UI. | `false` – liest ausschließlich SkillPilot-Inhalt von den freigegebenen First-Party-Domains. | `false` – verändert oder löscht keinen Zustand. |
-| `review_skillpilot_memory_practice_card` | `false` – speichert genau die explizite Bewertung der angezeigten Übungskarte. | `false` – ändert nur die private Wiederholungsplanung in SkillPilot. | `false` – löscht nichts und erzeugt keine irreversible externe Wirkung. |
-| `set_skillpilot_active_goal` | `false` – aktiviert nach Zustimmung genau ein frisch erlaubtes Lernziel. | `false` – ändert nur privaten Level-3-Lernzustand in SkillPilot. | `false` – löscht keine Lern- oder Nutzerdaten und wirkt nicht auf Drittdienste. |
-| `set_skillpilot_mastery` | `false` – speichert die evidenzbasierte Bewertung des bestätigten aktiven Ziels. | `false` – schreibt nur privaten pseudonymen SkillPilot-Lernzustand. | `false` – veröffentlicht, sendet oder löscht nichts und hat keine irreversible Außenwirkung. |
-| `set_skillpilot_scope` | `false` – ersetzt nach Zustimmung den aktuellen Fokus durch exakt eine erlaubte Option. | `false` – ändert nur privaten Level-3-Lernzustand in SkillPilot. | `false` – löscht keine Mastery und verursacht keine irreversible externe Wirkung. |
-| `start_skillpilot_memory_practice` | `true` – erzeugt nur eine begrenzte private Übungsprojektion und speichert noch keine Bewertung. | `false` – liest ausschließlich privaten SkillPilot-Zustand für die gebundene UI. | `false` – verändert oder löscht nichts. |
-| `start_skillpilot_verified_recall` | `true` – erzeugt nur den servergebundenen vollständigen Prüfungsbatch und speichert noch kein Ergebnis. | `false` – liest ausschließlich privaten SkillPilot-Zustand. | `false` – verändert oder löscht nichts. |
-
-## 10. Demo-Recording
-
-Die von SkillPilot Coach v1 unterstützte Review- und Produktoberfläche ist
-ChatGPT im Webbrowser. Empirische Kompatibilitätstests haben bestätigt, dass
-die für diese Version benötigten Plugin-Funktionen in den aktuellen nativen
-Apps nicht vollständig unterstützt werden. Das darunterliegende
-Betriebssystem ist nicht Teil des Supportversprechens. Entsprechend belegt das
-Reviewvideo die Hauptabläufe und Tools in genau einer Browseraufnahme. Native
-Desktop-, iOS- und Android-Apps sind für v1 nicht als unterstützte
-SkillPilot-Oberflächen deklariert und werden nur dann als zusätzliche Evidenz
-aufgenommen, wenn das Portal oder die Review dies ausdrücklich verlangt. Diese
-Abgrenzung folgt der offiziellen Videoanforderung, die Abdeckung über die
-*unterstützten* Plattformen verlangt; sie ist keine allgemeine Aussage über die
-Plattformverfügbarkeit anderer OpenAI-Plugins.
-
-Das freigegebene Reviewvideo ist eine kompakte Browseraufnahme des tatsächlichen
-Produktablaufs. Es zeigt:
-
-1. die First-Party-Erstellung einer SkillPilot-ID und die vollständige sichtbare
-   Level-2-Konfiguration für Mathematik Leistungskurs;
-2. **SkillPilot-App öffnen**, die dadurch frisch erzeugte 24-Stunden-Session,
-   die per URL vorbereitete Startnachricht in ChatGPT und deren ausdrückliches
-   Absenden durch den Benutzer;
-3. zwei aufeinanderfolgende coachgeführte Lernziele mit ihren Visualisierungen,
-   dem Dialog mit der lernenden Person und dem sichtbaren Abschluss beider
-   Ziele;
-4. den anschließenden Wechsel auf das Lernziel für Funktionen-Karteikarten und
-   das normale interaktive Karteikartenlernen.
-
-Die englische Sprecherstimme erklärt die deutschsprachige Oberfläche und den
-fachlichen Ablauf für englischsprachige Reviewer. Auf ausdrückliche
-Produktfreigabe enthält die Fassung keine eingebrannten Untertitel. Die
-Aufnahme behauptet weder eine native App- noch eine Betriebssystemunterstützung.
-
-Die exakt fünf positiven und drei negativen Fälle bleiben eigenständige,
-reproduzierbare Einträge im Portalbereich **Testing**. P1 sowie N1 bis N3 werden
-nicht künstlich als zusätzliche Videokapitel wiederholt.
-
-Das freigegebene, content-addressierte Artefakt hat folgende unveränderliche
-Bindung:
-
-- URL: `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`
-- SHA-256: `20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb`
-- Größe: `11.104.503` Bytes
-- Format: H.264/AAC, 1920 × 1080, 329,110 Sekunden
-
-Die direkte URL wird nicht in der SkillPilot-Oberfläche verlinkt, ist für die
-Portal-Review aber ohne Anmeldung per HTTPS abrufbar. Sie ist daher keine
-private oder zugriffsgeschützte URL. OAuth-Werte und Review-Zugangsdaten sind
-nicht Bestandteil der Aufnahme. Die nur 24 Stunden gültige
-`learningSessionId` darf im aufgezeichneten Startablauf sichtbar sein.
-
-## 11. Release Notes
-
-```text
-Initial public submission of SkillPilot Coach v1. Starts from a learning
-session prepared in the first-party SkillPilot web app and provides
-curriculum-grounded coaching in the configured language, including motivational
-orientation, dialogic learning, mastery updates, verified recall, assessment,
-approved goal visualizations, and interactive flashcard practice. Uses OAuth
-and the dedicated V1 MCP endpoint. Reviewer credentials are provided only in
-the submission portal; every authenticated learning case begins with the
-prepared first-party SkillPilot start flow described in the test fixture.
+```bash
+node --test scripts/openai_plugin_submission.test.mjs
+node scripts/openai_plugin_submission.mjs prepare
+node scripts/openai_plugin_submission.mjs check
+node scripts/openai_plugin_submission.mjs audit-export --export /exact/local/path/to/fresh-export.json
+node scripts/openai_plugin_submission.mjs validate-trace --trace /exact/local/path/to/sanitized-trace.json
 ```
 
-## 12. Portalentscheidungen vor Submit for Review
+`prepare` benötigt einen zur Manifestversion passenden aktuellen Snapshot.
+`--contract PATH` wählt einen Export mit benachbarter Snapshot-`plugin.json`;
+`--out-dir PATH` trennt temporäre Arbeitsartefakte. Keine dieser Aktionen
+rollt aus oder ruft das Portal auf. Der Exportvergleich meldet lediglich
+abweichende Feldpfade und Fehlerklassen, niemals Credentials oder Feldwerte.
 
-- Verfügbarkeit nur für rechtlich freigegebene Länder und Regionen auswählen.
-- Demo-OAuth-Zugang ohne MFA ausschließlich im Portal hinterlegen und testen.
-- Nach dem Produktionsrollout die content-addressierte Demo-Recording-URL auf
-  HTTP 200, `video/mp4`, Byte-Range-Unterstützung, `11.104.503` Bytes und den
-  dokumentierten SHA-256 prüfen. Ein Range-Abruf mit OpenAI-Origin sowie der
-  zugehörige CORS-Preflight für `GET` und `Range` müssen ebenfalls erfolgreich
-  sein; erst danach exakt diese URL im Portal eintragen.
-- Screenshots nur einreichen, wenn sie tatsächlich hilfreich sind; für den
-  einen Starter Prompt ist die aktuelle Entscheidung **keine Screenshots**. Falls
-  später doch einer eingereicht wird, ist genau ein PNG oder JPEG mit exakt
-  706 Pixeln Breite und 400 bis 860 Pixeln Höhe erforderlich.
-- Toolscan, Skillscan, Domain-Challenge und Portalvalidierungen müssen grün
-  sein.
-- Das OpenAI-Projekt muss globale Datenresidenz verwenden; die auswählbaren
-  Länder und Regionen werden vor Submit konkret rechtlich freigegeben.
-- `https://skillpilot.com/legal` veröffentlicht ab Version 1.0.0 die
-  Nutzungsbedingungen und die rechtlichen Hinweise unter einer einzigen URL.
-  Vor Submit müssen Geschäftsführung beziehungsweise Rechtsberatung den Inhalt
-  und insbesondere die Aussage zur Verbraucherschlichtung bestätigen.
-- `/legal` und `/privacy` verwenden dieselbe 1.0.0-Lösch- und
-  Aufbewahrungsgrenze: Der aktive
-  SkillPilot-Datenbank-Lernstand und die zugehörigen SkillPilot-Sitzungen und
-  -Verbindungen können über die Weboberfläche gelöscht werden und werden nach
-  365 aufeinanderfolgenden Tagen ohne erfolgreiche Tätigkeit zur automatischen
-  Löschung fällig und beim nächsten automatischen Löschlauf entfernt.
-  Als Tätigkeit zählen ausschließlich die erfolgreiche Erstellung einer
-  SkillPilot-ID, das aktive Laden oder Fortsetzen des Lernstands über die
-  SkillPilot-Weboberfläche, ein vom Server abgeschlossener Import oder
-  Export signierter Lerndaten, eine serverseitig erfolgreich gespeicherte
-  Änderung des Lernstands, eine erfolgreich abgeschlossene SkillPilot-Sitzungs-
-  oder KI-Anbieter-Verbindungsaktion sowie ein gültiger Coach-/MCP-Aufruf mit
-  fachlich erfolgreichem Ergebnis. Hintergrund-GET-Anfragen, SSE-Verkehr,
-  OAuth-Token-Aktualisierungen, bloße Dateiöffnung sowie vom Server nicht
-  abgeschlossene oder fachlich abgewiesene Aktionen zählen nicht.
-- Lokale Dateien und Provider-Chats liegen außerhalb dieser Löschung. Bestehende
-  Sicherungskopien gehören nicht zum aktiven Lernstand; die Löschfunktion und
-  der 365-Tage-Ablauf löschen sie nicht unmittelbar einzeln.
-- Datenschutz, Terms, Alters-/Guardian-Regeln, Retention, Revocation und
-  Provider-Offenlegung müssen rechtlich freigegeben sein.
-- Erst nach grüner Verhaltens-, Sicherheits-, Client- und Rechtsabnahme
-  **Submit for Review** wählen.
-- Erst nach Genehmigung bewusst **Publish** wählen und danach den Snapshot mit
-  `record-published --confirm-openai-published --confirm-mtls-enforced-and-verified`
-  versiegeln.
+Vier Ebenen bleiben getrennt:
+
+1. **Quellen/Export:** vollständige Fälle, Textbudgets, aktuelle Metadaten,
+   exakte Quellhashes und Vergleich des gespeicherten Exports.
+2. **Backend/Komponenten:** ausführbare MCP-/Session-/Capability- und
+   Widget-Lebenszyklustests; eine Testzuordnung allein ist kein Testlauf.
+3. **Modell-Replay:** tatsächliche Antworten, Werkzeugwahl und Reihenfolge mit
+   Trace; nicht durch Suche nach Policytext oder Toolnamen ersetzbar.
+4. **Realer ChatGPT-Host:** sichtbarer Text, Rendering, Interaktion und Fallback
+   auf jeder zugesagten Oberfläche. Mobile Browserbreite ist keine native Abnahme.
+
+`OpenAiSubmissionReviewReplayTest` führt Backendanteile von P1–P5/N1–N3 aus.
+Er beweist weder die Ein-Satz-Antwort von P1 noch die Modellverweigerung von N3.
+Der Planvertrag prüft unter anderem Teilpläne und Versions-/Idempotenzschutz.
+
+`validate-trace` prüft alle 14 Fälle, Version, Suitehash, vollständige Benutzer-Turns,
+Tools, Nicht-Aufrufe, Reihenfolge, Zählungen, erfolgreiche Ergebnisse, erwartete
+Fehler und exakte Texte. Inhaltliche/visuelle Kriterien
+benötigen zusätzlich zugeordnete menschliche Prüfung mit referenzierten
+Ereignissen und Evidence-SHA-256. Fehlende Fälle/offene Kriterien lassen den
+Befehl fehlschlagen. Das Format steht in `submission/README.md`.
+Synthetische Traces bleiben synthetisch. Kein lokaler Check authentifiziert
+von selbst eine Aufnahme oder führt einen LLM-Test aus.
+
+## 7. UI, Demo und Hostabnahme
+
+Zwei aktive MCP-Apps-Ressourcen bleiben getrennt: Lernzielvisualisierung und
+privates Karteikartenlernen. Der Export enthält genaue Hashbindungen,
+Widget-Domain und CSP; keine zusätzlichen Domains werden vorsorglich
+freigegeben. Private Fragen/Antworten der normalen Kartenübung gehören nicht
+in die Modellprojektion.
+
+Die Testoberfläche des Nachfolgers ist zunächst **ChatGPT im Webbrowser**.
+Für `1.1.0` wird kein bestandener Realhost-Test behauptet; native Desktop-,
+iOS- oder Android-Unterstützung ist nicht zugesagt. Ein möglicherweise leeres
+Widget nach Kontext und anschließendem Renderer ist eine zu prüfende Hypothese,
+keine bewiesene Ablehnungsursache.
+
+Das alte Reviewvideo bleibt ausschließlich historische `1.0.0`-Evidenz:
+SHA-256 `20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb`,
+11.104.503 Bytes, H.264/AAC, 1920 × 1080, 329,110 Sekunden. Content-addressierte
+URL und Bytes bleiben unverändert. Es wird nicht automatisch in den neuen
+Draft übernommen. Die aktuelle Demo muss auch Tagesübersicht, Fortsetzung und
+Fachwechsel auf der zugesagten Oberfläche belegen. Sie enthält keine OAuth-
+oder Review-Zugangsdaten. Freigegebene Demo-URLs sind öffentlich, nicht privat.
+
+## 8. Unveränderte Datenschutz- und Freigabegrenzen
+
+Der Nachfolger erweitert keine Datenschutz-, Retention- oder Plattformzusage.
+Der aktive SkillPilot-Datenbank-Lernstand und zugehörige Sitzungen/Verbindungen
+können über die Weboberfläche gelöscht werden. Nach 365 aufeinanderfolgenden
+Tagen ohne erfolgreiche Tätigkeit werden sie zur automatischen Löschung
+fällig und beim nächsten Löschlauf entfernt.
+
+Als Tätigkeit zählen ausschließlich erfolgreiche ID-Erstellung, aktives
+Laden/Fortsetzen über die Weboberfläche, serverseitig abgeschlossener Import/
+Export signierter Lerndaten, erfolgreich gespeicherte Lernstandsänderung,
+erfolgreich abgeschlossene SkillPilot-Sitzungs- oder Anbieter-Verbindungsaktion
+sowie gültiger Coach-/MCP-Aufruf mit fachlich erfolgreichem Ergebnis.
+Hintergrund-GET, SSE, OAuth-Token-Aktualisierung, bloße Dateiöffnung und nicht
+abgeschlossene oder fachlich abgewiesene Aktionen zählen nicht.
+
+Lokale Dateien und Provider-Chats liegen außerhalb dieser Löschung.
+Bestehende Sicherungen gehören nicht zum aktiven Lernstand; Löschfunktion und
+365-Tage-Ablauf löschen sie nicht unmittelbar einzeln. Rechtliche Länder-,
+Alters-/Guardian-, Datenschutz-, Terms-, Provider-, Retention- und
+Revocation-Freigaben sowie die Portalattestierungen sind vor Einreichung
+gesondert zu bestätigen. Der Generator bestätigt nichts davon.

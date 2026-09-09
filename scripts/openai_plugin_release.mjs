@@ -352,7 +352,13 @@ function buildCandidate(output) {
     resolve(pluginRoot, ".codex-plugin/plugin.json"),
     resolve(output, "plugin.json"),
   );
-  cpSync(resolve(pluginRoot, ".app.json"), resolve(output, "app.json"));
+  if (manifest.apps !== undefined) {
+    assert.equal(manifest.apps, "./.app.json", "Unexpected app companion path.");
+    cpSync(resolve(pluginRoot, ".app.json"), resolve(output, "app.json"));
+  } else {
+    assert.equal(existsSync(resolve(pluginRoot, ".app.json")), false,
+      "An MCP-only plugin must not carry an unreferenced app companion.");
+  }
   cpSync(resolve(pluginRoot, ".mcp.json"), resolve(output, "mcp.json"));
   cpSync(resolve(pluginRoot, "release/line.json"), resolve(output, "line.json"));
   cpSync(
@@ -427,6 +433,17 @@ function buildCandidate(output) {
     repositoryRoot,
     sourceRoot: pluginRoot,
     archivePath: archive,
+    // Release/portal evidence is not part of the public installable plugin.
+    includePaths: [
+      ".codex-plugin/plugin.json",
+      ".mcp.json",
+      ...(manifest.apps === undefined ? [] : [".app.json"]),
+      "skills/skillpilot-coach-v1/SKILL.md",
+      "skills/skillpilot-coach-v1/agents/openai.yaml",
+      "skills/skillpilot-coach-v1/references/coaching-policy.md",
+      "assets/favicon-96x96.png",
+      "assets/web-app-manifest-512x512.png",
+    ],
   });
 
   const files = listFiles(output)

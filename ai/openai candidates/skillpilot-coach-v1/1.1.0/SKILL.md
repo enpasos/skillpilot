@@ -5,6 +5,12 @@ description: Local-only SkillPilot Coach 1.1 candidate overlay for daily multi-s
 
 # SkillPilot Coach 1.1 local candidate overlay
 
+> Historical proposal, retired on 9 September 2026. Do not load this overlay.
+> The current installable skill is maintained under
+> `ai/openai plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md`.
+> The former extra daily-plan read below was replaced by `learningPlanToday`
+> in full context. This text records the old proposal, not current instructions.
+
 This local overlay adds only the daily-plan workflow below. Every instruction
 in the frozen SkillPilot Coach 1.0 skill and coaching policy remains binding.
 This file is not a published or installable replacement package.

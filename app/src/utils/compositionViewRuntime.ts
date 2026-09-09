@@ -901,12 +901,25 @@ export const applyCompositionViewProjection = (
     )
 
     const strippedGoals = entry.goals.map((goal) => {
+      const originalChildren = goal.contains ?? []
+      const targetChildren = originalChildren.filter((childId) => !prerequisiteOnlyGoalIds.has(childId))
       const strippedGoal = stripRootTag({
         ...goal,
-        contains: (goal.contains ?? []).filter((childId) => !prerequisiteOnlyGoalIds.has(childId)),
+        contains: targetChildren,
+        // Preserve the distinction between malformed source clusters and valid
+        // branches with no targets in this authored course profile. Planning
+        // must not reject their entire school stage as an empty-source error.
+        ...(originalChildren.length > 0 && targetChildren.length === 0 ? {
+          extendedData: {
+            ...(goal.extendedData ?? {}),
+            compositionEmptyAfterRoleProjection: true,
+          },
+        } : {}),
       })
       const presentation = presentationByGoalId.get(strippedGoal.id)
-      const withRootTag = authoredRootGoal?.id === strippedGoal.id && !(strippedGoal.tags ?? []).includes(ROOT_TAG)
+      const withRootTag = authoredRootGoal?.id === strippedGoal.id
+        && !prerequisiteOnlyGoalIds.has(strippedGoal.id)
+        && !(strippedGoal.tags ?? []).includes(ROOT_TAG)
         ? {
           ...strippedGoal,
           tags: [...(strippedGoal.tags ?? []), ROOT_TAG],
@@ -931,9 +944,16 @@ export const applyCompositionViewProjection = (
         },
       }
     })
-    const strippedGoalById = new Map(strippedGoals.map((goal) => [goal.id, goal]))
-    const projectedGoalById = new Map(goalByIdAcrossEntries)
-    strippedGoals.forEach((goal) => projectedGoalById.set(goal.id, goal))
+    // Structure references must obey the resolved roles too: a direct
+    // prerequisite-only goalEntry can override a broader target subtree.
+    // Keep support goals in the returned data for prerequisite checks, but
+    // never rematerialize them as visible children through a structure node.
+    const strippedGoalById = new Map(strippedGoals
+      .filter((goal) => !prerequisiteOnlyGoalIds.has(goal.id))
+      .map((goal) => [goal.id, goal]))
+    const projectedGoalById = new Map([...goalByIdAcrossEntries]
+      .filter(([goalId]) => !prerequisiteOnlyGoalIds.has(goalId)))
+    strippedGoalById.forEach((goal, goalId) => projectedGoalById.set(goalId, goal))
 
     if (authoredRootGoal) {
       const rootProjectionNodes = view.rootNodes.length === 1

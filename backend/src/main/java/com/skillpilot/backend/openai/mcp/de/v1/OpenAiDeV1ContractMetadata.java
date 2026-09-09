@@ -14,9 +14,9 @@ import java.util.List;
 public final class OpenAiDeV1ContractMetadata {
 
     public static final String PLUGIN_IDENTITY = "skillpilot-coach-v1";
-    public static final String PLUGIN_VERSION = "1.0.0";
+    public static final String PLUGIN_VERSION = "1.1.0";
     public static final int CONTRACT_MAJOR = 1;
-    public static final long POLICY_REVISION = 4L;
+    public static final long POLICY_REVISION = 5L;
     public static final String SUPPORT_LIFECYCLE = "CURRENT";
     public static final String PUBLICATION_STATUS = "DRAFT";
     public static final String NEW_SESSION_POLICY = "ALLOW";
@@ -78,7 +78,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String INTERNAL_OPENAI_APPS_CHALLENGE_PATH =
             "/internal/openai/v1/openai-apps-challenge";
     public static final int STATE_SCHEMA_VERSION = 1;
-    public static final String WORKFLOW_VERSION = "coach@1.0";
+    public static final String WORKFLOW_VERSION = "coach@1.1";
     public static final String DEFAULT_SERVER_BUILD = "dev";
     public static final Duration MINIMUM_ACTION_SESSION_REMAINING = Duration.ofHours(1);
 

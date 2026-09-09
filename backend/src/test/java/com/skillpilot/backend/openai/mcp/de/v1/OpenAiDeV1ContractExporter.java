@@ -42,7 +42,11 @@ public final class OpenAiDeV1ContractExporter {
                 new CoachStateProjection("https://skillpilot.com"),
                 mock(OpenAiDeCoachIdentityResolver.class),
                 new OpenAiDeMcpTelemetry(new SimpleMeterRegistry()),
-                "https://skillpilot.com");
+                null,
+                "https://skillpilot.com",
+                OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD,
+                "skillpilot-public-contract-export-only-secret",
+                true);
         Map<String, Object> publicContract =
                 OpenAiDeCoachContractFingerprint.canonicalContract(contract);
         @SuppressWarnings("unchecked")

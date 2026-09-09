@@ -8,7 +8,6 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
-import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MemoryPracticeCard;
 import com.skillpilot.backend.api.MemoryPracticeProgress;
@@ -31,6 +30,7 @@ import com.skillpilot.backend.mcp.SkillPilotMcpToolResults;
 import com.skillpilot.backend.openai.OpenAiCoachLocale;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry.Event;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachContext;
+import com.skillpilot.backend.openai.mcp.de.OpenAiDeLearningPlanToday;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachContextProjector;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachIdentityResolver;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpTelemetry;
@@ -106,7 +106,7 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String GET_RECALL_ANSWERS = "get_skillpilot_verified_recall_answers";
     public static final String RECORD_RECALL_RESULTS = "record_skillpilot_verified_recall_results";
     public static final String GET_EXAM_EVALUATION = "get_skillpilot_exam_evaluation";
-    public static final String GET_DAILY_PLAN = "get_skillpilot_daily_plan";
+    public static final String SWITCH_LEARNING_PLAN_SUBJECT = "switch_skillpilot_learning_plan_subject";
     public static final String RESUME_LEARNING_PLAN = "resume_skillpilot_learning_plan";
     public static final String LEARNING_SESSION_ID = "learningSessionId";
     public static final String EXPECTED_STATE_VERSION = "expectedStateVersion";
@@ -131,14 +131,9 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final SecureRandom RECALL_CAPABILITY_RANDOM = new SecureRandom();
     private static final int MAX_WORK_FEEDBACK_LENGTH = 1_600;
     private static final int MAX_OUTCOME_FEEDBACK_LENGTH = 800;
-    private static final int MAX_DAILY_PLAN_SUBJECT_LABEL_LENGTH = 120;
 
     private static final Pattern LEARNING_SESSION_PATTERN =
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
-    private static final Pattern DAILY_PLAN_LABEL_CONTROL_PATTERN =
-            Pattern.compile("[\\p{Cc}\\p{Cf}]+");
-    private static final Pattern DAILY_PLAN_LABEL_WHITESPACE_PATTERN =
-            Pattern.compile("\\s+");
     private static final ObjectMapper PUBLIC_OUTPUT_MAPPER = new ObjectMapper();
     private static final Map<String, String> UI_TOOL_RESOURCE_BINDINGS = Map.of(
             RENDER_GOAL_VISUALIZATION,
@@ -208,7 +203,7 @@ public final class OpenAiDeV1McpContractAdapter {
             @Value("${skillpilot.openai.coach.v1.server-build:dev}") String serverBuild,
             @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}")
                     String signingSecret,
-            @Value("${skillpilot.openai.coach.v1.daily-plan-tools-enabled:false}")
+            @Value("${skillpilot.openai.coach.v1.daily-plan-tools-enabled:true}")
                     boolean dailyPlanToolsEnabled) {
         this.coachTools = coachTools;
         this.stateProjection = stateProjection;
@@ -288,8 +283,34 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     public String serverInstructions() {
-        return SERVER_INSTRUCTIONS;
+        return dailyPlanToolsEnabled
+                ? LEARNING_PLAN_INSTRUCTIONS + "\n\n" + SERVER_INSTRUCTIONS.replace(
+                        "When the newest full result is get_skillpilot_context",
+                        "Only after the higher-priority status/pause/subject-request checks above permit teaching, "
+                                + "when the newest full result is get_skillpilot_context")
+                : SERVER_INSTRUCTIONS;
     }
+
+    private static final String LEARNING_PLAN_INSTRUCTIONS =
+            "PRIORITY BEFORE ALL RENDERING, NAVIGATION AND TEACHING: After obtaining one fresh context, "
+                    + "a status-only question needs only the concise requested status; an explicit pause needs "
+                    + "only a short acknowledgement. Neither permits an unsolicited visualization, memory mode, "
+                    + "navigation, new exercise or state write. Resolve an explicit subject request before "
+                    + "rendering the old active goal: switch the available requested subject first and render "
+                    + "only its fresh successor, or clarify the request without rendering. An active exam "
+                    + "cannot be interrupted. These intent checks override automatic goal/renderer/mode steps. "
+                    + "The fresh full context includes authoritative learningPlanToday. Never call a separate daily-plan "
+                    + "read. For a normal learning start, follow its guidance and resume only with no active goal "
+                    + "and resumeAvailable=true. An explicit available-subject request takes priority over generic "
+                    + "resume. Status-only questions and pauses require no new exercise and no state write. "
+                    + "Use switch_skillpilot_learning_plan_subject only for a requested, published, non-current "
+                    + "subject with canContinue=true; never interrupt an active exam. Report daily counts once "
+                    + "in one compact line: completedToday/dueToday and each subject's openToday. Include "
+                    + "backlog only when openOverdue>0 and always warn about unavailablePlanCount>0. "
+                    + "completedToday means current mastery in the newly-due set, not activity performed today. "
+                    + "No valid daily status is unavailable, never an invented 0/0 completion. Do not choose "
+                    + "future goals or widen focus automatically when today's plan is complete or blocked. "
+                    + "Use fresh mutation successor context and its visualization without reloading context.";
 
     public List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications() {
         return toolSpecifications;
@@ -304,32 +325,6 @@ public final class OpenAiDeV1McpContractAdapter {
             String target,
             String requiredAction,
             List<OpenAiDeCoachContext.Option> options,
-            String instruction) {
-    }
-
-    /** Sanitized per-subject counts; internal plan and landscape IDs are omitted. */
-    public record DailyPlanSubject(
-            String subject,
-            int dueToday,
-            int completedToday,
-            int openToday,
-            int openOverdue) {
-    }
-
-    public record DailyPlanTotals(
-            int dueToday,
-            int completedToday,
-            int openToday,
-            int openOverdue) {
-    }
-
-    public record DailyPlanResult(
-            String asOf,
-            boolean followLearningPlans,
-            boolean resumeAvailable,
-            List<DailyPlanSubject> subjects,
-            DailyPlanTotals totals,
-            int unavailablePlanCount,
             String instruction) {
     }
 
@@ -745,26 +740,12 @@ public final class OpenAiDeV1McpContractAdapter {
         List<McpStatelessServerFeatures.SyncToolSpecification> extended =
                 new ArrayList<>(v1Tools);
         extended.add(tool(
-                GET_DAILY_PLAN,
-                "Load today's learning-plan status",
-                "After the fresh full SkillPilot context, loads today's additive workload across every valid "
-                        + "subject plan. Report dueToday, completedToday, openToday and openOverdue separately "
-                        + "for every returned subject; never compare subjects by pace. This read never selects "
-                        + "or changes a learning goal. If resumeAvailable=true and the full context has no active "
-                        + "goal, immediately call resume_skillpilot_learning_plan with that context's "
-                        + "stateVersion before the learner-facing response.",
-                emptyObjectSchema(),
-                dailyPlanSchema(),
-                true,
-                true,
-                false,
-                this::getDailyPlan));
-        extended.add(tool(
                 RESUME_LEARNING_PLAN,
                 "Resume today's learning plan",
                 "Idempotently reconciles all valid subject plans and selects the next due, open and "
-                        + "prerequisite-satisfied goal only after get_skillpilot_daily_plan returned "
-                        + "resumeAvailable=true and the fresh full context had no active goal. Copy "
+                        + "prerequisite-satisfied goal only when fresh context.learningPlanToday returned "
+                        + "resumeAvailable=true and the context had no active goal. Never resume for a "
+                        + "status-only question, pause or a requested specific subject. Copy "
                         + "expectedStateVersion from that context and create one clientRequestId for the write. "
                         + "On success, continue context.activeGoal immediately without loading another context.",
                 emptyObjectSchema(),
@@ -773,6 +754,20 @@ public final class OpenAiDeV1McpContractAdapter {
                 true,
                 true,
                 this::resumeLearningPlan));
+        extended.add(tool(
+                SWITCH_LEARNING_PLAN_SUBJECT,
+                "Continue another learning-plan subject",
+                "Only after the learner requests another subject: copy its exact published subject label "
+                        + "from fresh context.learningPlanToday.subjects with current=false and canContinue=true. "
+                        + "Park, never master, the former active goal. An active exam cannot be interrupted. "
+                        + "Copy expectedStateVersion and create one clientRequestId. Continue only the fresh "
+                        + "returned context, without another context read.",
+                objectSchema(Map.of("subject", boundedNonEmptyStringSchema(120)), List.of("subject")),
+                learningPlanTransitionSchema("switched"),
+                false,
+                true,
+                true,
+                this::switchLearningPlanSubject));
         return List.copyOf(extended);
     }
 
@@ -786,6 +781,11 @@ public final class OpenAiDeV1McpContractAdapter {
             boolean idempotent,
             boolean writeScope,
             ToolOperation operation) {
+        if (dailyPlanToolsEnabled && RENDER_GOAL_VISUALIZATION.equals(name)) {
+            description = "Do not render for status-only questions or pauses. Resolve an explicit subject "
+                    + "request before rendering the old goal; after a successful switch use only the new "
+                    + "successor pair. For normal teaching only: " + description;
+        }
         List<Map<String, Object>> securitySchemes = writeScope
                 ? List.of(oauthScheme(READ_SCOPE, WRITE_SCOPE))
                 : List.of(oauthScheme(READ_SCOPE));
@@ -1218,222 +1218,61 @@ public final class OpenAiDeV1McpContractAdapter {
         return successResult(contextSummary(context, metadata), context);
     }
 
-    private McpSchema.CallToolResult getDailyPlan(
-            String skillpilotId,
-            Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata) {
-        LearnerPlanTodayStatus source = coachTools.getLearningPlanTodayStatus(
-                skillpilotId,
-                communicationLocale(metadata));
-        if (source == null || source.asOf() == null) {
-            throw new IllegalStateException("Learning-plan status is unavailable.");
-        }
-        Map<String, DailyPlanCountAccumulator> countsBySubject = new java.util.TreeMap<>(
-                String.CASE_INSENSITIVE_ORDER.thenComparing(java.util.Comparator.naturalOrder()));
-        int unavailablePlanCount = Math.max(0, source.unavailablePlanCount());
-        List<LearnerPlanTodayStatus.SubjectStatus> rawSubjects =
-                source.subjects() == null ? List.of() : source.subjects();
-        for (LearnerPlanTodayStatus.SubjectStatus subject : rawSubjects) {
-            String subjectLabel = subject == null
-                    ? null
-                    : safeDailyPlanSubjectLabel(subject.subjectLabel());
-            if (subjectLabel == null || !validDailyPlanCounts(subject)) {
-                unavailablePlanCount = Math.addExact(unavailablePlanCount, 1);
-                continue;
-            }
-            countsBySubject.merge(
-                    subjectLabel,
-                    DailyPlanCountAccumulator.from(subject),
-                    DailyPlanCountAccumulator::add);
-        }
-
-        List<DailyPlanSubject> subjects = new ArrayList<>();
-        DailyPlanCountAccumulator totals = DailyPlanCountAccumulator.empty();
-        for (Map.Entry<String, DailyPlanCountAccumulator> entry : countsBySubject.entrySet()) {
-            DailyPlanCountAccumulator counts = entry.getValue();
-            if (!counts.fitsPublicIntegers()) {
-                unavailablePlanCount = Math.addExact(unavailablePlanCount, counts.planCount());
-                continue;
-            }
-            subjects.add(new DailyPlanSubject(
-                    entry.getKey(),
-                    Math.toIntExact(counts.dueToday()),
-                    Math.toIntExact(counts.completedToday()),
-                    Math.toIntExact(counts.openToday()),
-                    Math.toIntExact(counts.openOverdue())));
-            totals = totals.add(counts);
-        }
-        if (!totals.fitsPublicIntegers()) {
-            throw new IllegalStateException("Learning-plan totals exceed the public contract.");
-        }
-        boolean resumeAvailable = source.followLearningPlans()
-                && source.resumeAvailable()
-                && !subjects.isEmpty();
-        String instruction = dailyPlanInstruction(
-                source.followLearningPlans(),
-                resumeAvailable,
-                !subjects.isEmpty(),
-                metadata);
-        DailyPlanResult result = new DailyPlanResult(
-                source.asOf().toString(),
-                source.followLearningPlans(),
-                resumeAvailable,
-                List.copyOf(subjects),
-                new DailyPlanTotals(
-                        Math.toIntExact(totals.dueToday()),
-                        Math.toIntExact(totals.completedToday()),
-                        Math.toIntExact(totals.openToday()),
-                        Math.toIntExact(totals.openOverdue())),
-                unavailablePlanCount,
-                instruction);
-        return successResult(dailyPlanSummary(result, metadata), result);
-    }
-
     private McpSchema.CallToolResult resumeLearningPlan(
-            String skillpilotId,
-            Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata) {
+            String skillpilotId, Map<String, Object> arguments, OpenAiDeV1SessionMetadata metadata) {
+        UnifiedLearnerStateResponse before = coachTools.getLearnerState(skillpilotId);
+        requireWebFirstContextConfigured(before);
+        OpenAiDeLearningPlanToday today = projectLearningPlanToday(skillpilotId, before, metadata);
+        if (activeGoal(before) != null || !today.resumeAvailable()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "No due learning-plan goal can currently be resumed. Keep the current goal unchanged.");
+        }
         LearnerLearningPlanApi.TransitionResponse transition = coachTools.resumeLearningPlan(
-                skillpilotId,
-                communicationLocale(metadata));
-        OpenAiDeCoachContext context = projectContext(
-                skillpilotId,
-                transition.state(),
-                metadata);
+                skillpilotId, communicationLocale(metadata));
+        return learningPlanTransitionResult(skillpilotId, transition, "resumed", metadata);
+    }
+
+    private McpSchema.CallToolResult switchLearningPlanSubject(
+            String skillpilotId, Map<String, Object> arguments, OpenAiDeV1SessionMetadata metadata) {
+        String subject = requiredString(arguments, "subject");
+        UnifiedLearnerStateResponse before = coachTools.getLearnerState(skillpilotId);
+        requireWebFirstContextConfigured(before);
+        OpenAiDeLearningPlanToday today = projectLearningPlanToday(skillpilotId, before, metadata);
+        if (isExamGoal(activeGoal(before)) || !today.followLearningPlans()
+                || today.subjects().stream().noneMatch(candidate -> subject.equals(candidate.subject())
+                        && !candidate.current() && candidate.canContinue())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "The requested subject cannot currently be continued. Keep the current goal unchanged.");
+        }
+        LearnerLearningPlanApi.TransitionResponse transition = coachTools.switchLearningPlanSubject(
+                skillpilotId, communicationLocale(metadata), subject);
+        return learningPlanTransitionResult(skillpilotId, transition, "switched", metadata);
+    }
+
+    private McpSchema.CallToolResult learningPlanTransitionResult(
+            String skillpilotId, LearnerLearningPlanApi.TransitionResponse transition,
+            String status, OpenAiDeV1SessionMetadata metadata) {
+        if (transition == null || !transition.changed() || transition.state() == null
+                || activeGoal(transition.state()) == null
+                || !Objects.equals(transition.activeGoalId(), activeGoal(transition.state()).id())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "The learning-plan transition did not confirm a fresh active goal.");
+        }
+        OpenAiDeCoachContext context = projectContext(skillpilotId, transition.state(), metadata);
         String instruction = localized(metadata,
-                "Setze jetzt unmittelbar das Lernziel aus context.activeGoal fort. Lade den SkillPilot-Kontext "
-                        + "nicht erneut.",
-                "Immediately continue the learning goal in context.activeGoal now. Do not reload the "
-                        + "SkillPilot context.");
-        return successResult(
-                localized(metadata,
-                        "Der persönliche Lernplan wurde fortgesetzt.",
-                        "The personal learning plan was resumed."),
-                new LearningPlanResumeResult(
-                        "resumed",
-                        true,
-                        context,
-                        instruction));
+                "Setze nur context.activeGoal unmittelbar fort. Verwende den aktuellen Tagesstand und die "
+                        + "Bildfreigabe aus diesem Kontext ohne erneutes Laden.",
+                "Continue only context.activeGoal immediately. Use this context's fresh daily status and "
+                        + "visualization authorization without reloading context.");
+        return successResult(localized(metadata, "Lernplan fortgesetzt.", "Learning plan continued."),
+                new LearningPlanResumeResult(status, true, context, instruction));
     }
 
-    private String dailyPlanInstruction(
-            boolean followLearningPlans,
-            boolean resumeAvailable,
-            boolean hasAvailableSubjects,
-            OpenAiDeV1SessionMetadata metadata) {
-        if (!followLearningPlans) {
-            return localized(metadata,
-                    "Nach Plan lernen ist ausgeschaltet. Berichte die Werte, aber starte keinen Plan automatisch.",
-                    "Learning by plan is switched off. Report the counts, but do not resume a plan automatically.");
-        }
-        if (!hasAvailableSubjects) {
-            return localized(metadata,
-                    "Es ist derzeit kein gültiger Fachplan verfügbar. Erfinde keine Planaufgaben.",
-                    "No valid subject plan is currently available. Do not invent plan tasks.");
-        }
-        if (resumeAvailable) {
-            return localized(metadata,
-                    "Berichte die heutigen Werte je Fach. Da kein Lernziel läuft und ein Planziel fortgesetzt "
-                            + "werden kann, rufe jetzt resume_skillpilot_learning_plan auf.",
-                    "Report today's counts for each subject. Because no goal is active and a plan goal can be "
-                            + "resumed, call resume_skillpilot_learning_plan now.");
-        }
-        return localized(metadata,
-                "Berichte die heutigen Werte je Fach. completedToday bezeichnet die aktuell beherrschten Ziele "
-                        + "aus der heute neu fälligen Menge; Rückstände stehen getrennt in openOverdue.",
-                "Report today's counts for each subject. completedToday means goals currently mastered within "
-                        + "the set newly due today; backlog is reported separately as openOverdue.");
-    }
-
-    private static boolean validDailyPlanCounts(
-            LearnerPlanTodayStatus.SubjectStatus subject) {
-        return subject != null
-                && subject.dueToday() >= 0
-                && subject.completedToday() >= 0
-                && subject.openToday() >= 0
-                && subject.openOverdue() >= 0
-                && (long) subject.completedToday() + subject.openToday()
-                        == subject.dueToday();
-    }
-
-    private static String safeDailyPlanSubjectLabel(String rawLabel) {
-        if (rawLabel == null) {
-            return null;
-        }
-        String label = DAILY_PLAN_LABEL_CONTROL_PATTERN.matcher(rawLabel)
-                .replaceAll(" ");
-        label = DAILY_PLAN_LABEL_WHITESPACE_PATTERN.matcher(label)
-                .replaceAll(" ")
-                .trim();
-        if (label.isEmpty()) {
-            return null;
-        }
-        return label.length() <= MAX_DAILY_PLAN_SUBJECT_LABEL_LENGTH
-                ? label
-                : label.substring(0, MAX_DAILY_PLAN_SUBJECT_LABEL_LENGTH);
-    }
-
-    private record DailyPlanCountAccumulator(
-            long dueToday,
-            long completedToday,
-            long openToday,
-            long openOverdue,
-            int planCount) {
-
-        private static DailyPlanCountAccumulator empty() {
-            return new DailyPlanCountAccumulator(0, 0, 0, 0, 0);
-        }
-
-        private static DailyPlanCountAccumulator from(
-                LearnerPlanTodayStatus.SubjectStatus subject) {
-            return new DailyPlanCountAccumulator(
-                    subject.dueToday(),
-                    subject.completedToday(),
-                    subject.openToday(),
-                    subject.openOverdue(),
-                    1);
-        }
-
-        private DailyPlanCountAccumulator add(DailyPlanCountAccumulator other) {
-            return new DailyPlanCountAccumulator(
-                    Math.addExact(dueToday, other.dueToday),
-                    Math.addExact(completedToday, other.completedToday),
-                    Math.addExact(openToday, other.openToday),
-                    Math.addExact(openOverdue, other.openOverdue),
-                    Math.addExact(planCount, other.planCount));
-        }
-
-        private boolean fitsPublicIntegers() {
-            return dueToday <= Integer.MAX_VALUE
-                    && completedToday <= Integer.MAX_VALUE
-                    && openToday <= Integer.MAX_VALUE
-                    && openOverdue <= Integer.MAX_VALUE;
-        }
-    }
-
-    private String dailyPlanSummary(
-            DailyPlanResult result,
-            OpenAiDeV1SessionMetadata metadata) {
-        boolean english = OpenAiCoachLocale.isEnglish(communicationLocale(metadata));
-        if (result.subjects().isEmpty()) {
-            return english
-                    ? "Today's SkillPilot plan has no available subject counts."
-                    : "Für den heutigen SkillPilot-Plan sind keine Fachwerte verfügbar.";
-        }
-        String details = result.subjects().stream()
-                .map(subject -> english
-                        ? subject.subject() + ": " + subject.completedToday() + " of "
-                                + subject.dueToday() + " newly due goals are currently mastered, "
-                                + subject.openToday() + " still open today, "
-                                + subject.openOverdue() + " overdue"
-                        : subject.subject() + ": " + subject.completedToday() + " von "
-                                + subject.dueToday() + " heute neu fälligen Zielen werden aktuell beherrscht, "
-                                + subject.openToday() + " heute noch offen, "
-                                + subject.openOverdue() + " im Rückstand")
-                .collect(java.util.stream.Collectors.joining("; "));
-        return (english ? "Today's SkillPilot plan: " : "Heutiger SkillPilot-Plan: ")
-                + details
-                + ".";
+    private OpenAiDeLearningPlanToday projectLearningPlanToday(
+            String skillpilotId, UnifiedLearnerStateResponse state, OpenAiDeV1SessionMetadata metadata) {
+        FrontierGoal active = activeGoal(state);
+        return OpenAiDeLearningPlanToday.project(coachTools.getLearningPlanTodayStatus(
+                skillpilotId, communicationLocale(metadata)), active != null, isExamGoal(active));
     }
 
     private McpSchema.CallToolResult renderGoalVisualization(
@@ -2673,7 +2512,8 @@ public final class OpenAiDeV1McpContractAdapter {
                 context.progress(),
                 context.completion(),
                 context.policies(),
-                null);
+                null,
+                context.learningPlanToday());
     }
 
     private McpSchema.CallToolResult getExamEvaluation(
@@ -2755,12 +2595,37 @@ public final class OpenAiDeV1McpContractAdapter {
         OrientationOutlook orientationOutlook = isOrientationGoal(active)
                 ? coachTools.getOrientationOutlook(skillpilotId, communicationLocale(metadata))
                 : null;
-        return contextProjector.project(
+        OpenAiDeCoachContext context = contextProjector.project(
                 state,
                 plan,
                 coachTools.showGoalVisualizationsInChat(skillpilotId),
                 communicationLocale(metadata),
                 orientationOutlook);
+        if (!dailyPlanToolsEnabled) {
+            return context;
+        }
+        OpenAiDeLearningPlanToday today = projectLearningPlanToday(skillpilotId, state, metadata);
+        boolean guidedPlan = today.followLearningPlans();
+        boolean awaitingPlan = guidedPlan && active == null;
+        List<String> nextTools = new ArrayList<>(context.nextAllowedTools());
+        if (guidedPlan) {
+            nextTools.remove(SET_SCOPE);
+            nextTools.remove(SET_ACTIVE_GOAL);
+        }
+        if (today.resumeAvailable()) nextTools.add(RESUME_LEARNING_PLAN);
+        if (today.subjects().stream().anyMatch(subject -> !subject.current() && subject.canContinue())) {
+            nextTools.add(SWITCH_LEARNING_PLAN_SUBJECT);
+        }
+        return new OpenAiDeCoachContext(
+                awaitingPlan ? "learningPlan" : context.learningState(),
+                awaitingPlan ? today.guidance().state() : context.requiredAction(),
+                awaitingPlan ? "learningPlan" : context.interactionMode(),
+                context.curriculum(), context.orientation(), context.orientationOutlook(), context.activeGoal(),
+                guidedPlan ? List.of() : context.options(), context.curriculumCatalog(),
+                context.personalizationHistory(), context.decision(),
+                guidedPlan ? List.of() : context.frontier(), context.resources(), context.goalVisualization(),
+                List.copyOf(nextTools), context.progress(), context.completion(), context.policies(),
+                awaitingPlan ? today.guidance().instruction() : context.instruction(), today);
     }
 
     private void requireWebFirstContextConfigured(UnifiedLearnerStateResponse state) {
@@ -3258,6 +3123,11 @@ public final class OpenAiDeV1McpContractAdapter {
                     ? "The SkillPilot context is currently unavailable."
                     : "SkillPilot-Kontext ist derzeit nicht verfügbar.";
         }
+        OpenAiDeLearningPlanToday today = context.learningPlanToday();
+        if (today != null && (today.followLearningPlans() || !today.subjects().isEmpty()
+                || today.unavailablePlanCount() > 0 || "unavailable".equals(today.guidance().state()))) {
+            return today.summary(english);
+        }
         if (context.orientation() != null) {
             String establishedContext = context.orientation().establishedContext();
             String openTopics = context.orientation().openQuestions() == null
@@ -3547,7 +3417,7 @@ public final class OpenAiDeV1McpContractAdapter {
         return objectSchema(properties, List.copyOf(required));
     }
 
-    private static Map<String, Object> contextSchema() {
+    private Map<String, Object> contextSchema() {
         Map<String, Object> properties = new LinkedHashMap<>();
         properties.put("learningState", stringSchema());
         properties.put("requiredAction", stringSchema());
@@ -3564,6 +3434,7 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("completion", completionSchema());
         properties.put("policies", stringArraySchema(0));
         properties.put("instruction", stringSchema());
+        if (dailyPlanToolsEnabled) properties.put("learningPlanToday", dailyPlanSchema());
         return objectSchema(
                 properties,
                 List.of(
@@ -3600,27 +3471,32 @@ public final class OpenAiDeV1McpContractAdapter {
                         "subjects", objectArraySchema(dailyPlanSubjectSchema()),
                         "totals", dailyPlanTotalsSchema(),
                         "unavailablePlanCount", integerSchema(0, null),
-                        "instruction", nonEmptyStringSchema()),
+                        "guidance", objectSchema(Map.of("state", enumStringSchema(
+                                "continue", "resume", "complete", "blocked", "paused", "unavailable"),
+                                "instruction", nonEmptyStringSchema()), List.of("state", "instruction"))),
                 List.of(
-                        "asOf",
                         "followLearningPlans",
                         "resumeAvailable",
                         "subjects",
                         "totals",
                         "unavailablePlanCount",
-                        "instruction"));
+                        "guidance"));
     }
 
     private static Map<String, Object> dailyPlanSubjectSchema() {
         return objectSchema(
                 Map.of(
                         "subject", nonEmptyStringSchema(),
+                        "current", booleanSchema(),
+                        "canContinue", booleanSchema(),
                         "dueToday", integerSchema(0, null),
                         "completedToday", integerSchema(0, null),
                         "openToday", integerSchema(0, null),
                         "openOverdue", integerSchema(0, null)),
                 List.of(
                         "subject",
+                        "current",
+                        "canContinue",
                         "dueToday",
                         "completedToday",
                         "openToday",
@@ -3641,10 +3517,14 @@ public final class OpenAiDeV1McpContractAdapter {
                         "openOverdue"));
     }
 
-    private static Map<String, Object> learningPlanResumeSchema() {
+    private Map<String, Object> learningPlanResumeSchema() {
+        return learningPlanTransitionSchema("resumed");
+    }
+
+    private Map<String, Object> learningPlanTransitionSchema(String status) {
         return objectSchema(
                 Map.of(
-                        "status", enumStringSchema("resumed"),
+                        "status", enumStringSchema(status),
                         "changed", booleanSchema(),
                         "context", contextSchema(),
                         "instruction", nonEmptyStringSchema()),
@@ -3696,7 +3576,7 @@ public final class OpenAiDeV1McpContractAdapter {
                         "representativeGoalTitles"));
     }
 
-    private static Map<String, Object> masterySchema() {
+    private Map<String, Object> masterySchema() {
         return objectSchema(
                 Map.of(
                         "status", stringSchema(),
@@ -3785,7 +3665,7 @@ public final class OpenAiDeV1McpContractAdapter {
                 List.of("answers", RECALL_GRADING_CAPABILITY));
     }
 
-    private static Map<String, Object> recallResultSchema() {
+    private Map<String, Object> recallResultSchema() {
         Map<String, Object> properties = new LinkedHashMap<>();
         properties.put("savedAssessments", integerSchema(1, 20));
         properties.put("passedAssessments", integerSchema(0, 20));
@@ -3823,7 +3703,7 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     @SuppressWarnings("unchecked")
-    private static Map<String, Object> recallSuccessorContextSchema() {
+    private Map<String, Object> recallSuccessorContextSchema() {
         Map<String, Object> full = contextSchema();
         Map<String, Object> properties = new LinkedHashMap<>(
                 (Map<String, Object>) full.get("properties"));

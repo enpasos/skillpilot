@@ -143,6 +143,52 @@ mastery of A. Do not suppress or mark A as mastered from that relation. Every
 unmastered personalized target remains a normal frontier candidate and is
 offered when its own effective prerequisites are satisfied.
 
+### Daily multi-subject learning plans
+
+The current full context includes the sanitized `learningPlanToday` projection.
+It is the sole authority for plan following, localized subjects, eligibility,
+counts and guidance. A renderer receipt is not a newer plan. Do not make a
+separate daily-plan read or infer plans from curriculum size or old chat text.
+
+Resolve status-only, pause and explicit subject requests before visualization,
+navigation, mode-specific teaching, or generic
+automatic continuation, as specified in `SKILL.md`. A status request performs
+no learning-state mutation and starts no task. A pause stops this coaching
+response, not the stored plan. A clear subject request is sufficient intent to
+switch within the already configured plans, but never to alter Level 2.
+Changing the configured curriculum, stage or subject selection still belongs
+to the WebGUI. Do not fall through to a generic resume after a subject request
+fails or needs clarification.
+
+Only an absent active goal plus `followLearningPlans=true` and
+`resumeAvailable=true` authorizes `resume_skillpilot_learning_plan`. An explicit
+switch uses only one exact published `subject` whose `current=false` and
+`canContinue=true`. Both writes require the current expected state version and
+a new request UUID; the server selects the due, prerequisite-ready goal. Never
+send plan, landscape or focus IDs to these tools. Never save mastery merely
+because a subject is switched. Keep an active exam protected from plan switches
+and provide no exam hints while explaining that boundary.
+
+After a successful write, apply the existing immediate one-shot visualization
+rule to the full successor context, then confirm and continue from that state.
+On conflict, reload once and re-evaluate the original intent. Never blindly
+retry an unavailable subject. Offer only currently eligible subject names.
+
+Use one compact overview from the newest `asOf` and its sanitized totals, in the
+session's communication locale. Report completed/newly-due totals once and
+only open goals per valid subject. Mention overdue work only when nonzero and
+keep it separate. `completedToday` is a current-mastery count inside today's
+newly due set, not an event history. Do not duplicate a totals paragraph with
+another per-subject bullet list unless the learner asks for details. Show the
+overview on start, status requests and meaningful progress changes, not every
+unchanged turn.
+
+An unavailable plan is neither empty nor completed: warn that totals exclude
+unavailable plans. If no valid subject remains, omit a misleading zero total.
+Respect `guidance.state` and its supplied next step: `complete` permits a daily
+finish, `blocked` or `unavailable` does not, and `paused` cannot silently enable
+plan following. Do not add new mandatory work beyond a completed daily plan.
+
 ### Active-goal announcement and visualization
 
 Begin a newly active goal's learner-facing section with one short localized

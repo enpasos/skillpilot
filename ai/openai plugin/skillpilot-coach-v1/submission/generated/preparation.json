@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "state": "PREPARED_NOT_SUBMITTED",
+  "pluginIdentity": "skillpilot-coach-v1",
+  "candidateVersion": "1.1.0",
+  "format": "Portal-shaped non-secret review worksheet; no documented portal JSON import/API is assumed.",
+  "sourceBindings": {
+    "contractPath": "contracts/drafts/openai/skillpilot-coach-v1/1.1.0-SNAPSHOT/contract/contract.json",
+    "suitePath": "ai/openai plugin/skillpilot-coach-v1/submission/review-cases.json",
+    "manifestPath": "ai/openai plugin/skillpilot-coach-v1/.codex-plugin/plugin.json",
+    "metadataPath": "ai/openai plugin/skillpilot-coach-v1/submission/portal-metadata.json",
+    "suiteSha256": "8fb58b47989829f8a5bfe0c3a9015924241dbe4b1c99491cda1eda564dba80d2",
+    "contractSha256": "6808924581ff4b00e25aede3010a9624b387c223940a116c81183feb77d1cf00",
+    "manifestSha256": "0d86a24c565e7461b5c45698fd21541f2b33fa92c4bca76e35e07afb5dbd63f9",
+    "mcpSha256": "951550967891b1091b27f175fa9c83c5b3f47eb45cffd4b5654423039a06829c",
+    "metadataSha256": "a5951b312c518d87e5aedcaa6df50ac73a7299fb3d699cede2ee058b0c3033e1"
+  },
+  "generatedDraftSha256": "e2a26e9718ea4d5b33c6e31b42383f3e4c18b18d02d05a8f94ce17bb5c87d849",
+  "starterPrompts": [
+    "How do I start a learning session with SkillPilot?"
+  ],
+  "portalCaseIds": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "N1",
+    "N2",
+    "N3"
+  ],
+  "internalCaseIds": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6"
+  ],
+  "resourceBindings": [
+    {
+      "description": "Displays the approved image for the active atomic learning goal.",
+      "icons": [],
+      "meta": {
+        "openai/widgetCSP": {
+          "redirect_domains": [
+            "https://skillpilot.com"
+          ],
+          "resource_domains": [
+            "https://skillpilot.com"
+          ]
+        },
+        "openai/widgetDescription": "Approved didactic visualisation for the active SkillPilot learning goal.",
+        "openai/widgetDomain": "https://mcp-coach-v1.skillpilot.com",
+        "openai/widgetPrefersBorder": false,
+        "ui": {
+          "csp": {
+            "resourceDomains": [
+              "https://skillpilot.com"
+            ]
+          },
+          "domain": "https://mcp-coach-v1.skillpilot.com",
+          "prefersBorder": false
+        }
+      },
+      "mimeType": "text/html;profile=mcp-app",
+      "name": "skillpilot-goal-visualization-v1-legacy-1.0.0",
+      "title": "SkillPilot learning-goal image",
+      "uri": "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html"
+    },
+    {
+      "description": "Displays the approved image for the active atomic learning goal.",
+      "icons": [],
+      "meta": {
+        "openai/widgetCSP": {
+          "redirect_domains": [
+            "https://skillpilot.com"
+          ],
+          "resource_domains": [
+            "https://skillpilot.com"
+          ]
+        },
+        "openai/widgetDescription": "Approved didactic visualisation for the active SkillPilot learning goal.",
+        "openai/widgetDomain": "https://mcp-coach-v1.skillpilot.com",
+        "openai/widgetPrefersBorder": false,
+        "ui": {
+          "csp": {
+            "resourceDomains": [
+              "https://skillpilot.com"
+            ]
+          },
+          "domain": "https://mcp-coach-v1.skillpilot.com",
+          "prefersBorder": false
+        }
+      },
+      "mimeType": "text/html;profile=mcp-app",
+      "name": "skillpilot-goal-visualization-v1-retained-12f95e37",
+      "title": "SkillPilot learning-goal image",
+      "uri": "ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html"
+    },
+    {
+      "description": "Displays the approved image for the active atomic learning goal.",
+      "icons": [],
+      "meta": {
+        "openai/widgetCSP": {
+          "redirect_domains": [
+            "https://skillpilot.com"
+          ],
+          "resource_domains": [
+            "https://skillpilot.com"
+          ]
+        },
+        "openai/widgetDescription": "Approved didactic visualisation for the active SkillPilot learning goal.",
+        "openai/widgetDomain": "https://mcp-coach-v1.skillpilot.com",
+        "openai/widgetPrefersBorder": false,
+        "ui": {
+          "csp": {
+            "resourceDomains": [
+              "https://skillpilot.com"
+            ]
+          },
+          "domain": "https://mcp-coach-v1.skillpilot.com",
+          "prefersBorder": false
+        }
+      },
+      "mimeType": "text/html;profile=mcp-app",
+      "name": "skillpilot-goal-visualization-v1-retained-157aab83",
+      "title": "SkillPilot learning-goal image",
+      "uri": "ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html"
+    },
+    {
+      "description": "Displays the approved image for the active atomic learning goal.",
+      "icons": [],
+      "meta": {
+        "openai/widgetCSP": {
+          "redirect_domains": [
+            "https://skillpilot.com"
+          ],
+          "resource_domains": [
+            "https://skillpilot.com"
+          ]
+        },
+        "openai/widgetDescription": "Approved didactic visualisation for the active SkillPilot learning goal.",
+        "openai/widgetDomain": "https://mcp-coach-v1.skillpilot.com",
+        "openai/widgetPrefersBorder": false,
+        "ui": {
+          "csp": {
+            "resourceDomains": [
+              "https://skillpilot.com"
+            ]
+          },
+          "domain": "https://mcp-coach-v1.skillpilot.com",
+          "prefersBorder": false
+        }
+      },
+      "mimeType": "text/html;profile=mcp-app",
+      "name": "skillpilot-goal-visualization-v1-retained-45e1f58d",
+      "title": "SkillPilot learning-goal image",
+      "uri": "ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html"
+    },
+    {
+      "description": "Displays the approved image for the active atomic learning goal.",
+      "icons": [],
+      "meta": {
+        "openai/widgetCSP": {
+          "redirect_domains": [
+            "https://skillpilot.com"
+          ],
+          "resource_domains": [
+            "https://skillpilot.com"
+          ]
+        },
+        "openai/widgetDescription": "Approved didactic visualisation for the active SkillPilot learning goal.",
+        "openai/widgetDomain": "https://mcp-coach-v1.skillpilot.com",
+        "openai/widgetPrefersBorder": false,
+        "ui": {
+          "csp": {
+            "resourceDomains": [
+              "https://skillpilot.com"
+            ]
+          },
+          "domain": "https://mcp-coach-v1.skillpilot.com",
+          "prefersBorder": false
+        }
+      },
+      "mimeType": "text/html;profile=mcp-app",
+      "name": "skillpilot-goal-visualization-v1-retained-5564f42d",
+      "title": "SkillPilot learning-goal image",
+      "uri": "ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html"
+    },
+    {
+      "description": "Interactive, private flashcard practice for the active memory goal.",
+      "icons": [],
+      "meta": {
+        "openai/widgetCSP": {
+          "redirect_domains": [
+            "https://skillpilot.com"
+          ],
+          "resource_domains": []
+        },
+        "openai/widgetDescription": "Interactive SkillPilot flashcard learning for the active memory goal.",
+        "openai/widgetDomain": "https://mcp-coach-v1.skillpilot.com",
+        "openai/widgetPrefersBorder": true,
+        "ui": {
+          "csp": {
+            "redirectDomains": [
+              "https://skillpilot.com"
+            ]
+          },
+          "domain": "https://mcp-coach-v1.skillpilot.com",
+          "prefersBorder": true
+        }
+      },
+      "mimeType": "text/html;profile=mcp-app",
+      "name": "skillpilot-memory-card-practice-v1-current",
+      "title": "SkillPilot flashcard learning",
+      "uri": "ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html"
+    },
+    {
+      "description": "Displays the approved image for the active atomic learning goal.",
+      "icons": [],
+      "meta": {
+        "openai/widgetCSP": {
+          "redirect_domains": [
+            "https://skillpilot.com"
+          ],
+          "resource_domains": [
+            "https://skillpilot.com"
+          ]
+        },
+        "openai/widgetDescription": "Approved didactic visualisation for the active SkillPilot learning goal.",
+        "openai/widgetDomain": "https://mcp-coach-v1.skillpilot.com",
+        "openai/widgetPrefersBorder": false,
+        "ui": {
+          "csp": {
+            "resourceDomains": [
+              "https://skillpilot.com"
+            ]
+          },
+          "domain": "https://mcp-coach-v1.skillpilot.com",
+          "prefersBorder": false
+        }
+      },
+      "mimeType": "text/html;profile=mcp-app",
+      "name": "skillpilot-goal-visualization-v1-retained-bed59e4c",
+      "title": "SkillPilot learning-goal image",
+      "uri": "ui://skillpilot/coach/v1/sha256-bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c/goal-visualization.html"
+    },
+    {
+      "description": "Displays the approved image for the active atomic learning goal.",
+      "icons": [],
+      "meta": {
+        "openai/widgetCSP": {
+          "redirect_domains": [
+            "https://skillpilot.com"
+          ],
+          "resource_domains": [
+            "https://skillpilot.com"
+          ]
+        },
+        "openai/widgetDescription": "Approved didactic visualisation for the active SkillPilot learning goal.",
+        "openai/widgetDomain": "https://mcp-coach-v1.skillpilot.com",
+        "openai/widgetPrefersBorder": false,
+        "ui": {
+          "csp": {
+            "resourceDomains": [
+              "https://skillpilot.com"
+            ]
+          },
+          "domain": "https://mcp-coach-v1.skillpilot.com",
+          "prefersBorder": false
+        }
+      },
+      "mimeType": "text/html;profile=mcp-app",
+      "name": "skillpilot-goal-visualization-v1-current",
+      "title": "SkillPilot learning-goal image",
+      "uri": "ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html"
+    }
+  ],
+  "manualStepsRequired": [
+    "Roll out and verify the actual current candidate at the source-defined public MCP endpoint before a fresh portal scan; a local export does not update production.",
+    "Use With MCP and the public remote URL; do not reuse a development integration ID or OAuth client from a previous export.",
+    "Verify the current portal's skill import/upload workflow and rescan/reimport the exact reviewed skill bytes. Scanned skills are snapshots.",
+    "Provide working reviewer credentials only in the authenticated portal; test without MFA, SMS, email verification or private network access.",
+    "Run every positive, negative and internal daily-plan case against the current backend and the real claimed ChatGPT host; retain sanitized evidence.",
+    "Record or explicitly approve a current-candidate demo. The rejected 1.0.0 recording is historical evidence, not 1.1.0 acceptance.",
+    "Decide countries, age/guardian boundaries and legal attestations separately; this generator makes no attestations and grants no approval.",
+    "Compare a fresh saved portal export with the generated draft, resolve every mismatch and re-check the saved values before an explicitly authorized submission.",
+    "Approval, submission and publication are external actions; none is performed or inferred by this generator."
+  ],
+  "evidence": {
+    "sourceValidation": "generated",
+    "backendAndComponentTests": "run separately and retain their actual reports",
+    "liveModelReplay": "not run by generator",
+    "chatgptWebAcceptance": "pending",
+    "nativeMobileAcceptance": "not claimed",
+    "submission": "not performed",
+    "publication": "not performed"
+  }
+}

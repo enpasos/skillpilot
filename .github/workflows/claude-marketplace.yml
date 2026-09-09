@@ -49,5 +49,3 @@ jobs:
           node scripts/claude_marketplace_release.mjs prepare
           node scripts/claude_marketplace_release.mjs validate-cli
           node scripts/claude_marketplace_release.mjs smoke-local
-      - name: Verify submitted OpenAI V1 review freeze
-        run: node scripts/check_openai_plugin_review_freeze.mjs

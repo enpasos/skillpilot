@@ -1,14 +1,12 @@
 # SkillPilot Coach v1: Release, Rollback und Stilllegung
 
-**Stand:** 15. August 2026
+**Stand:** 9. September 2026
 
-**Status:** Portalstatus `Review`; noch nicht veröffentlicht; aktive
-[Review-Sperre](openai-plugin-v1-review-freeze.md)
-
-> **STOP:** Solange die Review-Sperre aktiv ist, sind die eingereichte V1 und
-> ihr beobachtbares Produktionsverhalten unveränderlich. Insbesondere darf
-> `prepare` nicht ausgeführt werden. `DRAFT` bezeichnet hier ausschließlich
-> den noch nicht veröffentlichten Lifecycle-Status.
+**Status:** 1.0.0 wurde abgelehnt; sämtliche ChatGPT/OpenAI-Review-
+Entwicklungssperren sind ausdrücklich aufgehoben. Neuer unveröffentlichter
+Kandidat: **1.1.0**. Lokale Vorbereitung ist erlaubt; Deployment und erneute
+Portal-Einreichung sind nicht Bestandteil dieser Freigabe.
+Die [Review-Historie](openai-plugin-v1-review-freeze.md) bleibt nachvollziehbar.
 
 Dieses Runbook setzt den
 [Versionierungs- und Lebenszyklusplan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
@@ -20,16 +18,16 @@ operativ um. Es gilt für `skillpilot-coach-v1`.
 | --- | --- |
 | Plugin-Identität | `skillpilot-coach-v1` |
 | Anzeigename | `SkillPilot Coach v1` |
-| aktueller Paketstand | `1.0.0` |
+| aktueller Paketstand | `1.1.0` (unveröffentlichter Nachfolger) |
 | Contract Major | `1` |
-| Lifecycle-Policy | `policyRevision=4` |
+| Lifecycle-Policy | `policyRevision=5` |
 | öffentlicher MCP-Endpunkt und OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | aktive MCP-Apps-UIs | genau zwei: Lernzielbild und Karteikartenlernen |
 | Support-URL | `https://skillpilot.com/imprint` |
-| Reviewvideo | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` |
-| Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
+| Historisches Reviewvideo | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` (keine neue 1.1.0-Abnahme) |
+| Veröffentlichungsstatus | noch nicht veröffentlicht; neuer Draft `1.1.0-SNAPSHOT`; abgelehntes `1.0.0-SNAPSHOT` bleibt historisch unverändert |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
 Permanente SkillPilot-ID, CREATE/EXISTING, Providerhinweis sowie Curriculum,
@@ -61,6 +59,14 @@ Der Draft bindet genau zwei aktive content-addressierte MCP-Apps-Ressourcen:
 - `start_skillpilot_memory_practice` bindet ausschließlich die aktive
   Karteikartenressource; die Kartenbewertung bleibt app-only und ungebunden.
 
+Der aktuelle 1.1.0-Kandidat hat 14 Werkzeuge. Vollständige Kontextantworten
+enthalten den fachübergreifenden Tagesplan als `learningPlanToday`;
+`resume_skillpilot_learning_plan` und `switch_skillpilot_learning_plan_subject` ergänzen
+die planorientierte Fortsetzung beziehungsweise den expliziten Fachwechsel.
+Der früher nur lokal entworfene `get_skillpilot_daily_plan`-Aufruf gehört
+nicht zur aktuellen Oberfläche. Für die neue Einreichung müssen genau dieser
+Export, die aktuellen Testfälle und das tatsächliche Verhalten übereinstimmen.
+
 Alle bereits an reale Test-Clients beworbenen Bild-Hash-URIs bleiben mit ihren
 exakten Bytes passiv lesbar. Bei einer frischen `goalVisualization` plus
 Renderer-Freigabe läuft der Renderer einmal als unmittelbar nächster
@@ -90,28 +96,31 @@ Maschinenlesbare Quellen der Wahrheit sind:
 - `release/lifecycle.json` für Support-, Publikations- und Startstatus sowie
   die monotone `policyRevision`;
 - `contracts/drafts/openai/skillpilot-coach-v1/<version>-SNAPSHOT/` für den
-  vor der Einreichung fortschreibbaren Draft; während eines Portal-Reviews ist
-  dieser Snapshot durch die separate Review-Sperre eingefroren;
+  fortschreibbaren aktuellen Draft; das abgelehnte `1.0.0-SNAPSHOT` bleibt
+  als historische Evidenz separat unveränderlich;
 - `contracts/published/openai/skillpilot-coach-v1/<version>/` und
   `contracts/openai/skillpilot-coach-v1/release-index.json` ausschließlich für
   tatsächlich im OpenAI-Portal veröffentlichte Versionen.
 
-Vor der Portal-Einreichung durfte derselbe unveröffentlichte Draft kohärent
-aktualisiert werden. Seit **Submit for Review** ist auch dieser Draft operativ
-eingefroren. Approval oder Rejection beendet die Sperre nicht automatisch;
-maßgeblich ist ausschließlich das Verfahren in der
-[Review-Sperre](openai-plugin-v1-review-freeze.md). Eine reale
-Veröffentlichung versiegelt `1.0.0` anschließend dauerhaft.
+Der Product Owner hat die Review-Sperre nach der Ablehnung ausdrücklich
+beendet. `1.1.0` erhält einen neuen kohärenten Draft; `1.0.0` wird nicht
+umetikettiert oder überschrieben. Eine künftige reale Veröffentlichung
+versiegelt genau die veröffentlichte Version dauerhaft. Aktuelle fachliche,
+Sicherheits- und Kompatibilitätstests ersetzen keine echte Client-Abnahme.
 
 ## 2. Release vorbereiten
 
-> Die folgenden Vorbereitungsschritte sind während der aktiven Review-Sperre
-> nicht auszuführen. Sie gelten erst nach einer ausdrücklich dokumentierten
-> Freigabe; `prepare` wird zusätzlich maschinell verweigert.
+Die folgenden lokalen Vorbereitungsschritte sind für den neuen Nachfolger
+freigegeben. Der maschinelle Guard schützt weiterhin die abgelehnte Historie
+und tatsächlich veröffentlichte Versionen, nicht alte Live-Dateihashes.
 
-1. Release Notes, Lifecycle, Listing, Skill, Policy, Serververtrag und zentrale
-   Dokumentation gemeinsam aktualisieren. Innerhalb des unveröffentlichten
-   Drafts wird keine künstliche Patchversion erzeugt.
+1. Release Notes, Lifecycle, Listing, Skill, Policy, Serververtrag, aktuelle
+   Testfälle und zentrale Dokumentation gemeinsam für `1.1.0` aktualisieren.
+   Die aktuelle Veröffentlichung verwendet ausschließlich den MCP-Server;
+   die frühere `.app.json`-Referenz gehört nicht in das neue Installationspaket.
+   `submission/**` und andere Review-/Release-Unterlagen werden niemals mit
+   dem öffentlichen Installationspaket ausgeliefert: dessen Allowlist enthält
+   nur Pluginmanifest, MCP-Konfiguration, Skilldateien und öffentliche Icons.
 2. Die V1-URLs bleiben feste Vertragswerte im Backend-Artefakt. Geheimnisse und
    OAuth-Clientwerte bleiben ausschließlich in geschützter Konfiguration.
 3. Generische und versionsspezifische Gates ausführen:
@@ -131,10 +140,10 @@ Veröffentlichung versiegelt `1.0.0` anschließend dauerhaft.
    node scripts/openai_plugin_release.mjs prepare
    ```
 
-   Außerhalb einer Review-Sperre ersetzt `prepare` nur den unveröffentlichten
-   Snapshot. Es ändert weder SemVer noch Published-Index und stoppt bei einer
-   eingereichten, bereits veröffentlichten oder anderweitig gesperrten
-   Version, unversionierten Plugin-Datei oder einem Symlink.
+   `prepare` ersetzt nur den aktuellen unveröffentlichten Nachfolger-Snapshot.
+   Es ändert weder SemVer noch Published-Index und stoppt bei der abgelehnten
+   `1.0.0`, tatsächlich veröffentlichten Versionen, fehlenden versionierten
+   Installationsdateien oder Symlinks. Alte Snapshot-/Video-Bytes bleiben exakt.
 5. Quellen und Draft reproduzierbar prüfen:
 
    ```bash
@@ -144,7 +153,8 @@ Veröffentlichung versiegelt `1.0.0` anschließend dauerhaft.
    git diff --check
    ```
 
-6. Erst danach Backend und V1-Edge geordnet ausrollen: In der geschützten
+6. Nur nach separater Rollout-Freigabe Backend und V1-Edge geordnet ausrollen:
+   Die aktuelle Entwicklungsfreigabe umfasst dies nicht. In der geschützten
    Backend-EnvironmentFile zunächst `observe` vorbereiten; CA-Bundle,
    root-eigene Modusdatei und Loopback-Verifier mit
    `install_openai_v1_mtls_edge.sh --mode observe` staged installieren und
@@ -209,21 +219,21 @@ Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
     dokumentiert. Dieses Runbook behauptet keinen zusätzlichen
     ID-in-Komponente-Submission-Blocker; die V1-Identitätsverarbeitung liegt im
     First-Party-WebGUI.
-14. Das freigegebene Reviewvideo ist ohne Anmeldung unter
+14. Das historische 1.0.0-Reviewvideo bleibt ohne Anmeldung unter
     `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`
-    erreichbar, liefert
-    `video/mp4` mit Byte-Range-Unterstützung und stimmt vor dem Portal-Submit in
-    Größe und SHA-256 exakt mit dem geprüften Repositoryartefakt überein. Ein
-    Range-Abruf mit OpenAI-Origin und der zugehörige CORS-Preflight für `GET`
-    und `Range` sind ebenfalls grün.
+    erreichbar und byte-identisch. Es ist keine Verhaltensabnahme des neuen
+    1.1.0-Kandidaten. Vor einer erneuten Einreichung muss eine passende aktuelle
+    Aufnahme gesondert erstellt, geprüft und unter eigener content-addressierter
+    URL bereitgestellt werden; Größe, SHA-256, `video/mp4`, Byte-Range-Abruf und
+    OpenAI-Origin/CORS-Preflight für `GET` und `Range` sind erneut nachzuweisen.
 
 Erst nach erfolgreichem **Publish** im OpenAI-Portal wird der geprüfte Draft
 unveränderlich registriert:
 
-> Solange der maschinenlesbare Status noch `IN_REVIEW` lautet, verweigert der
-> Release-Befehl auch `record-published`. Nach dem realen Portal-Publish muss
-> der Product Owner zuerst ausdrücklich den begrenzten Übergang zur dauerhaften
-> Published-Sperre autorisieren.
+> Die jetzige Entwicklungsfreigabe enthält ausdrücklich keine
+> Publikationsregistrierung. `record-published` bleibt auch mit beiden Flags
+> gesperrt. Erst nach realem Portal-Publish und separater Autorisierung darf
+> der Status mit dem aktuellen Kandidaten und Nachweisen fortgeschrieben werden.
 
 ```bash
 node scripts/openai_plugin_release.mjs record-published \

@@ -24,7 +24,8 @@ public record OpenAiDeCoachContext(
         Progress progress,
         Completion completion,
         List<String> policies,
-        String instruction) {
+        String instruction,
+        OpenAiDeLearningPlanToday learningPlanToday) {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record Curriculum(

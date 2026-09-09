@@ -1,16 +1,18 @@
 # ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover
 
-**Stand:** 15. August 2026
+**Stand:** 9. September 2026
 
-**Status:** Version `1.0.0` befindet sich im OpenAI-Portal im Status `Review`
-und ist noch nicht veröffentlicht. Der V1-Vertrag läuft auf dem dedizierten
+**Status:** Die Einlieferung `1.0.0` wurde abgelehnt (`REJECTED`). Der Product
+Owner hat die ChatGPT-Entwicklungssperren ausdrücklich aufgehoben; der aktuelle
+Nachfolger ist der noch unveröffentlichte Entwurf `1.1.0`. Siehe
+[Freigabe und Review-Historie](openai-plugin-v1-review-freeze.md).
+Die lokale Vorbereitung ist weder Deployment noch erneute Einlieferung.
+Der V1-Vertrag verwendet weiterhin den dedizierten
 `mcp-coach-v1.skillpilot.com`-Origin mit serverauthentisiertem HTTPS,
-OpenAI-Connector-mTLS im Modus `enforce` und OAuth/PKCE. Bis zum Ende des
-Reviews gilt die aktive
-[Review-Sperre](openai-plugin-v1-review-freeze.md): Vertrag,
-Produktionsverhalten und Portalwerte bleiben unverändert. Permanente ID,
-Providerhinweis und Level-2-Konfiguration bleiben ausschließlich im
-First-Party-WebGUI.
+OpenAI-Connector-mTLS und OAuth/PKCE. Der tatsächliche Produktionsstand und
+der erforderliche Modus `enforce` sind vor einer Einlieferung erneut zu prüfen.
+Permanente ID, Providerhinweis und Level-2-Konfiguration bleiben ausschließlich
+im First-Party-WebGUI.
 
 Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit zwei
 getrennt gebundenen MCP Apps UIs: der read-only Lernzielbildanzeige und dem
@@ -790,7 +792,7 @@ Bei `SKILLPILOT_OPENAI_COACH_V1_ENABLED=true` registriert Spring den Health-Cont
 `openAiDeCoach`. Er fließt in die Actuator-Gruppe `readiness` ein. Der Beitrag
 ist nur `UP`, wenn MCP und OAuth aktiviert sind, die erforderlichen Client- und
 Callback-Werte gesetzt sind, die öffentlichen MCP-/Metadata-Ziele gültiges
-HTTPS verwenden und der erwartete Vertrag mit genau zwölf Werkzeugen geladen ist.
+HTTPS verwenden und der aktuelle Vertrag mit genau 14 Werkzeugen geladen ist.
 Die Readiness-Gruppe enthält zusätzlich den Datenbank-Health-Check `db`; ein
 nicht erreichbarer Persistenzdienst darf daher nicht als einsatzbereiter Coach
 gemeldet werden.
@@ -821,7 +823,7 @@ skillpilot.openai.coach.v1.operational.event
 ```
 
 Der Timer besitzt aus dem Anwendungscode ausschließlich die begrenzten Tags `tool`
-(zwölf bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
+(14 bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
 `exception`). Der Timer liefert Aufrufzahl und Dauer. Argumente, Prompts,
 Antworten, Lernenden- oder Verbindungskennungen und OAuth-Werte sind weder Tags
 noch Messdaten. Ein konfigurierter Exporter kann zusätzliche globale
@@ -902,7 +904,31 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 (keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
-Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert genau zwei
+### Tagespläne im aktuellen Entwurf 1.1.0
+
+Der vollständige Kontext enthält jetzt direkt `learningPlanToday`: gekürzte,
+validierte Summen, Fachübersichten, `current`/`canContinue` und autoritative
+Fortsetzungshinweise. Es gibt keinen separaten `get_skillpilot_daily_plan`-Call.
+Die beiden zusätzlichen Werkzeuge sind `resume_skillpilot_learning_plan` und
+`switch_skillpilot_learning_plan_subject`; die Spring-Konfiguration aktiviert
+sie für den aktuellen Entwurf. Der Workflow heißt `coach@1.1`.
+
+Statusfragen und Pausen lösen keine Lernmutation aus. Ein ausdrücklicher
+Fachwunsch hat Vorrang vor automatischer Fortsetzung; der Wechsel akzeptiert
+nur einen passenden aktuellen `subject`-Wert mit `canContinue: true`. Ein
+unfertiges Ziel wird geparkt, nicht als beherrscht markiert. Laufende Prüfungen
+bleiben geschützt. Nur bei normaler Lernfortsetzung, ohne aktives Ziel und mit
+autorisiertem `resumeAvailable` darf das Backend das nächste Planziel wählen.
+Beide Writes verwenden die aktuelle Zustandsversion und eine Request-ID.
+
+Die sichtbare Tagesübersicht bleibt eine Zeile: Gesamtergebnis einmal, offene
+Ziele je Fach und nur ein tatsächlich vorhandener Rückstand zusätzlich.
+Nicht auswertbare Pläne sind ausdrücklich unvollständig und niemals `0/0`
+oder erledigt. Die generierten Reviewfälle und die vier Planfälle stehen im
+[Einlieferungsdossier](openai-plugin-v1-submission.md); Backend-Replay,
+Komponententests und tatsächliche ChatGPT-Abnahme sind getrennte Prüfschichten.
+
+Der unveröffentlichte Arbeitsstand `1.1.0-SNAPSHOT` registriert genau zwei
 aktive MCP Apps UI-Ressourcen: eine read-only Bildressource für das aktive
 atomare Lernziel und eine interaktive Ressource für Karteikartenlernen im Chat.
 Zuvor ausgelieferte Bild-Hash-URIs bleiben byte-identisch passiv lesbar und

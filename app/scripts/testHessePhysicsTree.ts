@@ -3,9 +3,15 @@ import { readFileSync } from 'node:fs'
 
 import { normalizeLandscape, type LandscapeEntry } from '../src/hooks/useLandscapes'
 import type { SkillLandscape } from '../src/landscapeTypes'
-import type { CompositionStructureNode, CompositionView, CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
+import {
+  collectCompositionProjectionRoleGoalIds,
+  type CompositionStructureNode,
+  type CompositionView,
+  type CompositionViewNode,
+} from '../src/utils/authoring/compositionViewAuthoring'
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
+import { resolveAtomicGoalDescendants } from '../src/utils/localTeacherCoursePlan'
 import { repairHessePhysicsTree } from './lib/hessePhysicsTreePlacements'
 import type { PhysicsPlacementView } from './lib/physicsViewPlacementTypes'
 import { verifyBbBePhysicsCompositionViews } from './generateBbPhysicsSourceExtraction'
@@ -82,6 +88,134 @@ const reachableIds = (entry: LandscapeEntry): Set<string> => {
   }
   entry.goals.filter((goal) => goal.tags?.includes('root')).forEach((goal) => visit(goal.id))
   return ids
+}
+
+const roleOverrideLandscape = normalizeLandscape({
+  landscapeId: 'planning-role-override', locale: 'de', title: 'Physik', description: 'Projection-role regression',
+  goals: ['ROOT', 'TARGET', 'SUPPORT'].map((id) => ({
+    id, title: id, description: id, weight: 1,
+    type: id === 'ROOT' ? 'cluster' : 'atomic',
+    tags: id === 'ROOT' ? ['root'] : [],
+    contains: id === 'ROOT' ? ['TARGET', 'SUPPORT'] : [],
+    requires: id === 'TARGET' ? ['SUPPORT'] : [],
+    dimensionTags: {
+      framework: 'test', demandLevel: 'AB1', processCompetencies: [], guidingIdeas: [], phase: 'Q3',
+    },
+  })),
+})
+assert(roleOverrideLandscape)
+const roleOverrideNodes: CompositionViewNode[] = [
+  { kind: 'canonicalSubtree', goalId: 'TARGET', projectionRole: 'target' },
+  { kind: 'canonicalSubtree', goalId: 'SUPPORT', projectionRole: 'target' },
+  { kind: 'goalEntry', goalId: 'SUPPORT', projectionRole: 'prerequisiteOnly' },
+]
+for (const children of [roleOverrideNodes, [...roleOverrideNodes].reverse()]) {
+  const [projected] = applyCompositionViewProjection([roleOverrideLandscape], {
+    viewId: 'planning-role-override-view', landscapeId: roleOverrideLandscape.meta.landscapeId,
+    scope: { schoolForm: 'Gymnasium', stage: 'Sekundarstufe II' },
+    rootNodes: [{ kind: 'structure', id: 'sekii', label: 'Sekundarstufe II', children }],
+  })
+  const byId = new Map(projected.goals.map((goal) => [goal.id, goal]))
+  const root = projected.goals.find((goal) => goal.tags?.includes('root'))
+  assert(root)
+  assert.deepEqual(projected.goals.filter((goal) => goal.tags?.includes('root')).map((goal) => goal.id), ['ROOT'],
+    'The normal target projection retains exactly one authored root.')
+  assert(!reachableIds(projected).has('SUPPORT'),
+    'A direct prerequisite-only goalEntry overrides an explicit target subtree reference, regardless of order.')
+  assert(byId.has('SUPPORT'), 'Excluded support must retain its canonical ID for prerequisite/mastery access.')
+  assert.deepEqual(byId.get('TARGET')?.requires, ['SUPPORT'], 'Projection must preserve prerequisite dependencies.')
+  assert.deepEqual(resolveAtomicGoalDescendants(root.id, byId).atomicGoalIds, ['TARGET'],
+    'Synthetic stage references must not reintroduce prerequisite-only atoms into planning.')
+}
+
+const [rootExcludedProjection] = applyCompositionViewProjection([roleOverrideLandscape], {
+  viewId: 'planning-root-excluded-view', landscapeId: roleOverrideLandscape.meta.landscapeId,
+  scope: { schoolForm: 'Gymnasium', stage: 'Sekundarstufe II' },
+  rootNodes: [{
+    kind: 'structure', id: 'sekii', label: 'Sekundarstufe II', children: [
+      { kind: 'canonicalSubtree', goalId: 'ROOT', projectionRole: 'prerequisiteOnly' },
+      { kind: 'goalEntry', goalId: 'TARGET', projectionRole: 'target' },
+    ],
+  }],
+})
+const rootExcludedGoals = new Map(rootExcludedProjection.goals.map((goal) => [goal.id, goal]))
+const rootExcludedRoots = rootExcludedProjection.goals.filter((goal) => goal.tags?.includes('root'))
+assert.deepEqual(rootExcludedRoots.map((goal) => goal.id), ['composition:planning-root-excluded-view:structure:sekii'],
+  'An excluded canonical root must not become a second visible root beside its synthetic target stage.')
+assert(!reachableIds(rootExcludedProjection).has('ROOT'), 'The prerequisite-only root stays outside the visible target tree.')
+assert(!reachableIds(rootExcludedProjection).has('SUPPORT'), 'The prerequisite-only sibling stays outside the visible target tree.')
+assert(rootExcludedGoals.has('ROOT') && rootExcludedGoals.has('SUPPORT'),
+  'Excluded root and support IDs remain addressable for prerequisite/mastery access.')
+assert.deepEqual(rootExcludedGoals.get('TARGET')?.requires, ['SUPPORT'])
+assert.deepEqual(resolveAtomicGoalDescendants(rootExcludedRoots[0].id, rootExcludedGoals).atomicGoalIds, ['TARGET'],
+  'Only the explicitly restored target descendant enters planning.')
+
+// Trainer planning consumes the unnormalized Level 2 projection, not the
+// presentation-only learner tree. An intentionally empty GK branch must not
+// hide the entire Sek II stage from the plan-section selector.
+for (const profile of ['gk', 'lk'] as const) {
+  for (const stagePrefix of ['', 'sekii-']) {
+    const view = readJson(
+      `../../curricula/DE/Gymnasium/composition-views/physik/de-he-${stagePrefix}${profile}.view.json`,
+    ) as CompositionView
+    const [entry] = applyCompositionViewProjection([canonicalPhysics], view)
+    const allGoals = new Map(entry.goals.map((goal) => [goal.id, goal]))
+    const collectDescendants = (rootId: string): Set<string> => {
+      const ids = new Set<string>()
+      const visit = (id: string) => {
+        if (ids.has(id)) return
+        ids.add(id)
+        const goal = allGoals.get(id)
+        assert(goal, `${view.viewId}: projected reference ${id} must exist.`)
+        goal.contains.forEach(visit)
+      }
+      visit(rootId)
+      return ids
+    }
+    const root = entry.goals.find((goal) => goal.tags?.includes('root'))
+    assert(root)
+    const visibleIds = collectDescendants(root.id)
+    const planningGoals = new Map([...allGoals].filter(([id]) => visibleIds.has(id)))
+    const planningChildren = new Map([...planningGoals].map(([id, goal]) => [
+      id, goal.contains.filter((childId) => planningGoals.has(childId)),
+    ]))
+    const stages = [...planningGoals.values()].filter((goal) => /^Sekundarstufe II\b/.test(goal.title))
+    assert.equal(stages.length, 1, `${view.viewId}: exactly one Sek II stage must be discoverable.`)
+    if (stagePrefix === '') {
+      assert([...planningGoals.values()].some((goal) => goal.title === 'Sekundarstufe I'),
+        `${view.viewId}: CrossStage planning must also retain Sek I.`)
+    }
+    const canonicalGoals = new Map(canonicalPhysics.goals.map((goal) => [goal.id, goal]))
+    const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
+      view.rootNodes, canonicalGoals,
+    )
+    for (const stage of [root, ...stages]) {
+      const resolution = resolveAtomicGoalDescendants(stage.id, planningGoals, planningChildren)
+      assert.equal(resolution.quality.status, 'complete',
+        `${view.viewId}: ${stage.title} must remain plannable: ${JSON.stringify(resolution.quality.issues)}`)
+      assert(resolution.atomicGoalIds.length > 0, `${view.viewId}: ${stage.title} must contain learning targets.`)
+      const expectedAtoms = [...collectDescendants(stage.id)]
+        .filter((id) => allGoals.get(id)?.type === 'atomic')
+      assert.deepEqual([...resolution.atomicGoalIds].sort(), expectedAtoms.sort(),
+        `${view.viewId}: planning must retain every projected target atom exactly once.`)
+      resolution.atomicGoalIds.forEach((id) => {
+        assert(targetGoalIds.has(id), `${view.viewId}: ${id} must have an authored target role.`)
+        assert(!prerequisiteOnlyGoalIds.has(id), `${view.viewId}: prerequisite-only ${id} must never enter a plan.`)
+      })
+    }
+    if (profile === 'gk') {
+      const projectedEmpty = planningGoals.get('ad021f2e-6b94-5e6e-a264-3d1110094b87')
+      assert(projectedEmpty, `${view.viewId}: retain the reported projected GK cluster as regression coverage.`)
+      assert.equal(projectedEmpty.type, 'cluster')
+      assert.deepEqual(projectedEmpty.contains, [])
+      const sourceChildren = canonicalGoals.get(projectedEmpty.id)?.contains ?? []
+      assert(sourceChildren.length > 0, 'The reported GK cluster is not empty in the canonical source.')
+      assert(sourceChildren.every((id) => prerequisiteOnlyGoalIds.has(id)),
+        'The reported GK cluster is empty only because its children are authored prerequisite-only.')
+      assert.deepEqual(resolveAtomicGoalDescendants(projectedEmpty.id, planningGoals, planningChildren).atomicGoalIds, [],
+        'An intentionally empty projected cluster must not become an atomic learning target.')
+    }
+  }
 }
 
 for (const profile of ['GK', 'LK'] as const) {
@@ -209,4 +343,4 @@ independentViewPaths.forEach((path, index) => {
     `BB/BE source extraction preflight must preserve reviewed view bytes: ${path.pathname}`)
 })
 
-console.log('Hessen Physics tree tests passed (GK/LK, projection, generator replay and BB/BE isolation).')
+console.log('Hessen Physics tree tests passed (GK/LK stage planning, projection, generator replay and BB/BE isolation).')

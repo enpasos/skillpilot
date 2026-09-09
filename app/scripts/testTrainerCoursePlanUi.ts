@@ -43,6 +43,8 @@ const personalizedCompositionViewId = 'merged:de-he-gym-math-lk-g9+de-he-gym-mat
 const sekOneClusterGoalId = 'trainer-course-plan-sek-one'
 const sekTwoClusterGoalId = 'trainer-course-plan-sek-two'
 const sekTwoEClusterGoalId = 'trainer-course-plan-sek-two-e-phase'
+const roleFilteredClusterGoalId = 'trainer-course-plan-role-filtered-cluster'
+const prerequisiteOnlyGoalId = 'trainer-course-plan-prerequisite-only-atom'
 const sekOneScopeGoalId = `composition:${personalizedCompositionViewId}:structure:sek1-g9`
 const sekTwoScopeGoalId = `composition:${personalizedCompositionViewId}:structure:sek2-gk-lk`
 const sekOneAtomicGoalIds = Array.from(
@@ -204,7 +206,7 @@ const personalizedMathLandscape = {
       sekTwoClusterGoalId,
       'Sekundarstufe II',
       'GLOBAL',
-      [sekTwoEClusterGoalId, ...sekTwoAtomicGoalIds.slice(1)],
+      [sekTwoEClusterGoalId, ...sekTwoAtomicGoalIds.slice(1), roleFilteredClusterGoalId],
       ['GK', 'LK'],
     ),
     personalizedGoal(
@@ -224,6 +226,10 @@ const personalizedMathLandscape = {
       [],
       ['LK'],
     ),
+    // Regression: a valid canonical branch becomes empty in this course profile.
+    // It must neither hide Sek II in the picker nor contribute a planned target.
+    personalizedGoal(roleFilteredClusterGoalId, 'Ausgeblendeter Teilbereich', 'Q3', [prerequisiteOnlyGoalId]),
+    personalizedGoal(prerequisiteOnlyGoalId, 'Nur als Voraussetzung verfügbar', 'Q3'),
   ],
 }
 
@@ -269,7 +275,10 @@ const personalizedCompositionView = {
         kind: 'structure',
         id: 'sek2-gk-lk',
         label: 'Sekundarstufe II (GK + LK)',
-        children: [{ kind: 'canonicalSubtree', goalId: sekTwoClusterGoalId }],
+        children: [
+          { kind: 'canonicalSubtree', goalId: sekTwoClusterGoalId },
+          { kind: 'goalEntry', goalId: prerequisiteOnlyGoalId, projectionRole: 'prerequisiteOnly' },
+        ],
       },
     ],
   }],
@@ -1177,6 +1186,14 @@ try {
     'Sek II is selectable from the full Level-2 personalization despite the Sek-I route',
   )
   assert(preBaselineGoalValues.includes(sekOneScopeGoalId), 'the existing synthetic Sek-I target remains selectable')
+  assert(!preBaselineGoalValues.includes(roleFilteredClusterGoalId), 'an empty profile branch is not a planning target')
+  assert(!preBaselineGoalValues.includes(prerequisiteOnlyGoalId), 'prerequisite-only atoms stay outside the plan picker')
+  await preBaselineForm.getByRole('searchbox', { name: 'Lernziel oder Cluster' }).fill('Sekun')
+  assert(
+    await preBaselineForm.getByRole('combobox', { name: 'Lernziel oder Cluster' })
+      .locator(`option[value="${sekTwoScopeGoalId}"]`).count() === 1,
+    'searching Sekun still offers Sek II when a nested cluster has no targets in this profile',
+  )
   await preBaselineForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
   releasePlanningScope?.()
 

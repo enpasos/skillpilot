@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.ArrayDeque;
 import java.util.function.BiFunction;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,6 +34,223 @@ public final class CourseProfileCompositionViewMerger {
             Pattern.compile("(?iu)\\b(?:Grundkurs|Leistungskurs)\\b");
 
     private CourseProfileCompositionViewMerger() {
+    }
+
+    /**
+     * Merges complete course-profile views, preserving the union of their
+     * independently resolved targets. Specificity is local to a source view:
+     * a direct GK exclusion must not override an inherited LK target.
+     *
+     * <p>Only redundant prerequisite-only references are removed, and only
+     * after resolving the actual canonical graph proves that doing so adds
+     * intended targets without introducing any other target. No goal, parent,
+     * or authored structure identity is invented. Conflicts that cannot be
+     * represented by that lossless merge fail closed.</p>
+     */
+    public static List<Map<String, Object>> mergeViews(
+            List<List<Map<String, Object>>> sourceRoots,
+            Map<String, List<String>> canonicalChildren) {
+        return mergeViews(sourceRoots, canonicalChildren, false);
+    }
+
+    public static List<Map<String, Object>> mergeViews(
+            List<List<Map<String, Object>>> sourceRoots,
+            Map<String, List<String>> canonicalChildren,
+            boolean removeRedundantSubtrees) {
+        if (sourceRoots == null || canonicalChildren == null) {
+            throw new IllegalArgumentException("Source views and canonical graph are required");
+        }
+        ProjectionGraph graph = new ProjectionGraph(canonicalChildren);
+        Set<String> expectedTargets = new LinkedHashSet<>();
+        for (List<Map<String, Object>> source : sourceRoots) {
+            expectedTargets.addAll(graph.targets(source));
+        }
+        List<Map<String, Object>> merged = mergeSiblings(
+                sourceRoots.stream().flatMap(List::stream).toList(), new MergeState());
+        merged = preserveCommonExclusions(merged, expectedTargets, graph);
+        Set<String> actualTargets = graph.targets(merged);
+        boolean changed;
+        do {
+            changed = false;
+            List<Map<String, Object>> exclusions = new ArrayList<>();
+            collectExclusions(merged, exclusions);
+            for (Map<String, Object> exclusion : exclusions) {
+                List<Map<String, Object>> candidate = withoutNode(merged, exclusion);
+                Set<String> candidateTargets = graph.targets(candidate);
+                if (candidateTargets.size() > actualTargets.size()
+                        && candidateTargets.containsAll(actualTargets)
+                        && expectedTargets.containsAll(candidateTargets)) {
+                    merged = candidate;
+                    actualTargets = candidateTargets;
+                    changed = true;
+                    break;
+                }
+            }
+        } while (changed && !actualTargets.equals(expectedTargets));
+        if (!actualTargets.equals(expectedTargets)) {
+            Set<String> missing = new LinkedHashSet<>(expectedTargets);
+            missing.removeAll(actualTargets);
+            Set<String> added = new LinkedHashSet<>(actualTargets);
+            added.removeAll(expectedTargets);
+            throw new IllegalStateException("Course-profile merge cannot preserve resolved target union; missing="
+                    + missing + ", added=" + added);
+        }
+        List<Map<String, Object>> result = removeRedundantSubtrees
+                ? removeRedundantNestedReferences(merged,
+                        (kind, id) -> "canonicalSubtree".equals(kind)
+                                ? graph.descendants(id) : Set.of(ProjectionGraph.localId(id)))
+                : merged;
+        if (!graph.targets(result).equals(expectedTargets)) {
+            throw new IllegalStateException("Subtree deduplication changes resolved course-profile target union");
+        }
+        return freeze(result);
+    }
+
+    private static List<Map<String, Object>> preserveCommonExclusions(
+            List<Map<String, Object>> nodes, Set<String> expectedTargets, ProjectionGraph graph) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (Map<String, Object> node : nodes) {
+            Map<String, Object> copy = new LinkedHashMap<>(node);
+            String kind = text(node.get("kind"));
+            if ("structure".equals(kind)) {
+                copy.put("children", preserveCommonExclusions(nodeMaps(node.get("children")), expectedTargets, graph));
+            } else if (supportsProjectionRole(kind) && isTarget(node)) {
+                Set<String> covered = "canonicalSubtree".equals(kind)
+                        ? graph.descendants(text(node.get("goalId")))
+                        : Set.of(ProjectionGraph.localId(text(node.get("goalId"))));
+                if (Collections.disjoint(covered, expectedTargets)) {
+                    // Same-view direct exclusions can otherwise be lost when
+                    // the structural merge coalesces them with subtree refs.
+                    copy.put("projectionRole", "prerequisiteOnly");
+                }
+            }
+            result.add(copy);
+        }
+        return result;
+    }
+
+    private static void collectExclusions(
+            List<Map<String, Object>> nodes, List<Map<String, Object>> exclusions) {
+        for (Map<String, Object> node : nodes) {
+            if ("structure".equals(node.get("kind"))) {
+                collectExclusions(nodeMaps(node.get("children")), exclusions);
+            } else if (supportsProjectionRole(text(node.get("kind"))) && !isTarget(node)) {
+                exclusions.add(node);
+            }
+        }
+    }
+
+    private static List<Map<String, Object>> withoutNode(
+            List<Map<String, Object>> nodes, Map<String, Object> excluded) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (Map<String, Object> node : nodes) {
+            if (node.equals(excluded)) continue;
+            if ("structure".equals(node.get("kind"))) {
+                Map<String, Object> copy = new LinkedHashMap<>(node);
+                copy.put("children", withoutNode(nodeMaps(node.get("children")), excluded));
+                result.add(copy);
+            } else {
+                result.add(node);
+            }
+        }
+        return result;
+    }
+
+    private record RoleAssignment(boolean target, boolean direct, int distance) {
+        private RoleAssignment combine(RoleAssignment other) {
+            if (direct != other.direct) return other.direct ? other : this;
+            if (!direct && distance != other.distance) return other.distance < distance ? other : this;
+            return new RoleAssignment(target || other.target, direct, Math.min(distance, other.distance));
+        }
+    }
+
+    private static final class ProjectionGraph {
+        private final Map<String, List<String>> children;
+        private final Set<String> validated = new HashSet<>();
+        private final Map<String, Map<String, Integer>> distances = new HashMap<>();
+
+        private ProjectionGraph(Map<String, List<String>> children) {
+            this.children = children;
+            for (String id : children.keySet()) validateDag(id, new HashSet<>());
+        }
+
+        private void validateDag(String id, Set<String> visiting) {
+            if (validated.contains(id)) return;
+            if (!visiting.add(id)) throw new IllegalStateException("Canonical contains cycle at " + id);
+            for (String child : children.getOrDefault(id, List.of())) {
+                if (children.containsKey(localId(child))) validateDag(localId(child), visiting);
+            }
+            visiting.remove(id);
+            validated.add(id);
+        }
+
+        private Set<String> descendants(String reference) {
+            return distances(reference).keySet();
+        }
+
+        private Map<String, Integer> distances(String reference) {
+            String id = localId(reference);
+            if (!children.containsKey(id)) {
+                throw new IllegalStateException("Unknown canonical goal in course-profile merge: " + reference);
+            }
+            Map<String, Integer> cached = distances.get(id);
+            if (cached != null) return cached;
+            Map<String, Integer> result = new LinkedHashMap<>();
+            ArrayDeque<String> queue = new ArrayDeque<>();
+            result.put(id, 0);
+            queue.add(id);
+            while (!queue.isEmpty()) {
+                String current = queue.removeFirst();
+                for (String childRef : children.get(current)) {
+                    String child = localId(childRef);
+                    if (!children.containsKey(child)) {
+                        throw new IllegalStateException("Unknown canonical goal in course-profile merge: " + childRef);
+                    }
+                    if (!result.containsKey(child)) {
+                        result.put(child, result.get(current) + 1);
+                        queue.addLast(child);
+                    }
+                }
+            }
+            distances.put(id, result);
+            return result;
+        }
+
+        private Set<String> targets(List<Map<String, Object>> nodes) {
+            Map<String, RoleAssignment> assignments = new LinkedHashMap<>();
+            assign(nodes, assignments);
+            Set<String> result = new LinkedHashSet<>();
+            assignments.forEach((id, role) -> { if (role.target()) result.add(id); });
+            return result;
+        }
+
+        private void assign(List<Map<String, Object>> nodes, Map<String, RoleAssignment> assignments) {
+            for (Map<String, Object> node : nodes) {
+                String kind = text(node.get("kind"));
+                if ("structure".equals(kind)) {
+                    assign(nodeMaps(node.get("children")), assignments);
+                } else if (supportsProjectionRole(kind)) {
+                    String id = localId(text(node.get("goalId")));
+                    boolean direct = "goalEntry".equals(kind);
+                    // Resolve even direct references, so missing graph data never
+                    // silently authorizes a role change.
+                    Set<String> covered = direct ? Set.of(id) : descendants(id);
+                    if (!children.containsKey(id)) {
+                        throw new IllegalStateException("Unknown canonical goal in course-profile merge: " + id);
+                    }
+                    covered.forEach(goalId -> assignments.merge(goalId,
+                            new RoleAssignment(isTarget(node), direct, direct ? 0 : distances(id).get(goalId)),
+                            RoleAssignment::combine));
+                } else if ("landscapeEntry".equals(kind)) {
+                    throw new IllegalStateException("Course-profile merge requires explicit canonical goal references");
+                }
+            }
+        }
+
+        private static String localId(String ref) {
+            int separator = ref.indexOf(':');
+            return separator >= 0 ? ref.substring(separator + 1) : ref;
+        }
     }
 
     public static List<Map<String, Object>> merge(List<Map<String, Object>> nodes) {

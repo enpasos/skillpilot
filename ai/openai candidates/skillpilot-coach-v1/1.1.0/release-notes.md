@@ -1,5 +1,11 @@
 # SkillPilot Coach v1 - lokaler Kandidat 1.1.0
 
+> Historischer Vorschlag, abgelöst am 9. September 2026. Der Product Owner hat
+> nach der Ablehnung von 1.0.0 die Entwicklungssperren aufgehoben. 1.1.0 wird
+> jetzt im regulären Plugin-Verzeichnis vorbereitet; dessen Release Notes und
+> `candidate.json` beschreiben den aktuellen Stand. Die folgenden Aussagen
+> über Sperren und den zusätzlichen Tagesplan-Leseaufruf gelten nicht mehr.
+
 Dieser Stand ist ausschliesslich ein lokaler, nicht publizierbarer Kandidat.
 Er wurde weder vorbereitet noch in ein Portal hochgeladen oder fuer Produktion
 aktiviert. Der eingereichte Baum `ai/openai plugin/skillpilot-coach-v1` bleibt

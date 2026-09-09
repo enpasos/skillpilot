@@ -557,8 +557,10 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 """);
         assertMcpPayloadDoesNotExposeIdentity(tools, applicationSubject);
         assertThat(toolNames(tools))
-                .hasSize(12)
+                .hasSize(14)
                 .contains(
+                        OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN,
+                        OpenAiDeV1McpContractAdapter.SWITCH_LEARNING_PLAN_SUBJECT,
                         OpenAiDeV1McpContractAdapter.GET_CONTEXT,
                         OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
                         OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
@@ -739,7 +741,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                             .isEqualTo(Duration.ofHours(24));
                     assertThat(session.getContractMajor()).isEqualTo(1);
                     assertThat(session.getStateSchemaVersion()).isEqualTo(1);
-                    assertThat(session.getWorkflowVersion()).isEqualTo("coach@1.0");
+                    assertThat(session.getWorkflowVersion()).isEqualTo("coach@1.1");
                     assertThat(session.getCurriculumRevision()).isNotBlank();
                 });
         assertLegacyStateIsEmpty();
@@ -763,7 +765,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(initialContext.path("decision").isMissingNode()).isTrue();
         assertThat(initialContext.path("contractMajor").asInt()).isEqualTo(1);
         assertThat(initialContext.path("stateSchemaVersion").asInt()).isEqualTo(1);
-        assertThat(initialContext.path("workflowVersion").asText()).isEqualTo("coach@1.0");
+        assertThat(initialContext.path("workflowVersion").asText()).isEqualTo("coach@1.1");
         assertThat(initialContext.path("curriculumRevision").asText()).isNotBlank();
         assertThat(initialContext.path("extensions").isObject()).isTrue();
 

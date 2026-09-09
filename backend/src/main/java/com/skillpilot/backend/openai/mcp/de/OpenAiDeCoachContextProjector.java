@@ -141,7 +141,8 @@ public final class OpenAiDeCoachContextProjector {
                         orientation,
                         completion,
                         examHasImage,
-                        communicationLocale));
+                        communicationLocale),
+                null);
     }
 
     private OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog(

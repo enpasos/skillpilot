@@ -1,76 +1,43 @@
 # AGENTS.md – Skill Graph Memory & Design Guide
 
-## 0. ACTIVE STOP — SkillPilot Coach v1.0.0 is under OpenAI review
+## 0. OpenAI review retired — successor development is authorized
 
-Since **15 August 2026**, the submitted `skillpilot-coach-v1` version `1.0.0`,
-its portal metadata, review fixtures, demo recording, and observable V1 contract
-behaviour are frozen. Repository `publicationStatus: DRAFT` means “not yet
-published”; it does **not** mean that the submitted review candidate remains
-mutable.
+The submitted `skillpilot-coach-v1` **1.0.0** was **REJECTED**. On
+**9 September 2026**, the Product Owner explicitly lifted **all ChatGPT/OpenAI
+review development freezes** and authorized updating the current plugin,
+submission preparation and tests. The successor target is **1.1.0**.
 
-Before any write that could affect the submitted app, read
-[`docs/deploy/openai-plugin-v1-review-freeze.md`](docs/deploy/openai-plugin-v1-review-freeze.md)
-and run:
+Do not require new review-time hash exceptions for current OpenAI package,
+MCP, UI, instructions, shared first-party WebGUI, tests or documentation.
+The former runtime/supplemental hash chains are historical audit data, not
+constraints on current development. The earlier presentation-island restriction
+was a review-time boundary, not a perpetual development stop.
+
+Keep the rejected `1.0.0-SNAPSHOT`, its old archive/manifest/contract and
+content-addressed review video intact as history. The complete former freeze
+record is archived under
+`contracts/openai/skillpilot-coach-v1/review-history/1.0.0-rejected/`.
+The active `review-freeze.json` now records the rejection and explicit
+retirement; the checker verifies this decision and historical evidence without
+hash-pinning live source files:
 
 ```bash
 node scripts/check_openai_plugin_review_freeze.mjs
 ```
 
-The freeze is **effect-based, not path-based**. Do not change or regenerate the
-V1 package, MCP/OAuth contract, tools, schemas, annotations, instructions,
-resources, UI bytes or hashes, session/identity/locale/state semantics,
-first-party launch flow, portal values, test cases, reviewer credentials,
-review fixtures, legal promises, demo-video bytes/hash/URL, or production edge
-configuration. Do not run `openai_plugin_release.mjs prepare` or
-`record-published`, rescan/re-upload the MCP or Skill, save altered portal
-fields, or replace review artifacts.
+Local successor `candidate`, `prepare` and `verify` work is permitted.
+Do not overwrite rejected 1.0.0 or any actually published release. Published
+Claude artifacts and their independent evidence/acceptance gates remain intact;
+the OpenAI unfreeze does not rebind a Claude release or claim client acceptance.
+Previously advertised content-addressed UI resources retain their exact bytes.
 
-The public **Layer A curriculum is explicitly outside this byte freeze**.
-Exact curriculum, learning-goal, assessment, and curriculum-visualization
-bytes, hashes, IDs, edges, and counts are live fachliche data; they are not part
-of the V1 plugin contract or its SemVer. Review cases may read the current
-Layer A data through the unchanged V1 interfaces. Their workflow, access,
-fixture setup and identity, assertions, and the Plugin/MCP/OAuth/tool/schema/UI/
-session/state contracts remain frozen, not arbitrary current goal bytes or
-counts. This exclusion does not cover MCP Apps UI/widget/resource bytes or
-assessment, visualization, and learning-state workflow semantics.
-
-Read-only audits, tests, monitoring, and documentation-only corrections that
-describe the frozen behaviour exactly are allowed. Quickstart text and
-screenshots may be updated only as documentation: they must not change the
-actual V1 flow or expand its browser/platform, privacy, retention, OAuth,
-session, locale, or tool claims. If impact is uncertain, treat the change as
-frozen and ask the product owner before writing.
-
-The Product Owner clarified on **24 August 2026** that the shared first-party
-WebGUI may present the independently isolated Claude v1 coach next to the
-unchanged ChatGPT v1 start choice on the normal root route. This narrowly
-approved WebGUI exception also covers provider-neutral account guidance and
-removal of the former hidden `?coach=claude` gate. It does **not** authorize any
-change to the submitted ChatGPT launch handler, prepared-message/session
-semantics, package, MCP/OAuth/tools/schemas, MCP Apps UI, review cases, portal
-values, fixtures, or review artifacts. The exact source and regression hashes
-remain fail-closed in the review-freeze record.
-
-The Product Owner clarified on **1 September 2026** that the public root-page
-information architecture and presentation may evolve inside the explicitly
-declared capability-poor landing island. The island currently consists only of
-`PublicLandingPanels.tsx`, `PublicLandingFooter.tsx`, and
-`publicLandingCopy.ts`. It may receive the fixed language/access copy and the
-three role-entry callbacks exposed by the still hash-bound `SessionSetup`, but
-it must not acquire network, storage, cookie, browser-window, provider URL,
-learner-ID, Terms, prepared-message, or session capabilities. The freeze
-checker enforces its exact import/prop/effect boundary and the stable public
-landing browser contract. This presentation freedom does **not** release the
-ChatGPT or Claude handlers, access-status disclosure, Terms/ID gate, prepared
-message, session lifecycle, `SessionSetup` composition seam, OpenAI package,
-MCP/OAuth/tools/schemas/UI, review cases, fixtures, portal values, or review
-artifacts.
-
-Approval, rejection, or a security incident does not silently remove this
-stop. An unfreeze requires an explicit product-owner decision naming the
-reason, exact scope, and target version. After actual publication, `1.0.0`
-remains permanently immutable; later work starts as a new SemVer candidate.
+This authorization does **not** publish, deploy or resubmit anything and does
+not authorize portal writes, credential changes or `record-published`.
+Security, OAuth/session separation, authorization, privacy, state integrity,
+artifact reproducibility and truthful acceptance tests remain required.
+`DRAFT` still means unpublished; local tests are not real-host acceptance.
+See [review retirement and history](docs/deploy/openai-plugin-v1-review-freeze.md)
+and the [release runbook](docs/deploy/openai-plugin-v1-release.md).
 
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.
@@ -1252,7 +1219,7 @@ Provider-facing contracts must use derived temporary context instead:
   reserved and fail closed with `404`; only V1 is active. Earlier
   `mcp-coach-de-v*` and
   `mcp-coach-en-v*` names were unpublished local infrastructure and are not
-  compatibility routes. The still-unpublished `1.0.0` draft binds exactly two
+  compatibility routes. The current unpublished `1.1.0` draft binds exactly two
   active, hash-bound MCP Apps resources: the image-only goal renderer and the
   interactive memory-practice launcher. Previously advertised image hash URIs
   remain byte-identically readable as passive resources. The unpublished
@@ -1371,8 +1338,8 @@ provider policy and product review explicitly permit it.
   server Recall instruction longer than the concise cross-tool invariant.
 - **Target OpenAI plugins:** maintain one public submission per contract major,
   not per language. V1 combines one neutral English coach-control skill with one
-  directly submitted MCP server, stable tool names and descriptions, endpoint,
-  App registration and test suite. The backend-owned
+  directly submitted MCP server, versioned tool contract, stable endpoint,
+  and generated submission test suite. The backend-owned
   learning session pins the interaction language; all learner-facing payloads
   arrive in that language and the model must use it exclusively. Local pilot
   packages may reference the registered connection through `.app.json`.
@@ -1483,17 +1450,14 @@ provider policy and product review explicitly permit it.
   independent new GPTs named `SkillPilot GPT Coach (de)` and
   `SkillPilot GPT Coach (en)` from empty Builder configurations.
 - **OpenAI MCP Apps:** See `ai/openai app/README.md`. The versioned multilingual source
-  plugin lives under `ai/openai plugin/skillpilot-coach-v1`, directly declares
+  plugin lives under `ai/openai plugin/skillpilot-coach-v1` and directly declares
   the production MCP server plus its language-neutral English control-plane
-  skill, and contains the real host-generated mapping for the registered V1
-  pilot App. Preserve
-  the App alias and `asdk_app...` value in `.app.json` exactly; the separate
-  `plugin_asdk_app...` value identifies the remote plugin registration and must
-  not be substituted into that file. The mapping is local pilot wiring, not the
-  public MCP submission. Because the pilot package also retains its direct
-  `.mcp.json` binding, host acceptance must prove from the tool trace that the
-  registered App connection was used; a successful direct-MCP fallback alone
-  is not combined Plugin-plus-App evidence.
+  skill. The current public submission package is MCP-only: it must not carry
+  an old pilot `.app.json` mapping or a manifest `apps` reference. The rejected
+  snapshot retains that historical wiring only as evidence. Host acceptance
+  must verify the current direct MCP contract and both declared widget flows.
+  Authored review cases and portal metadata live in `submission/`; these
+  non-secret review worksheets are not included in the installable archive.
   Package SemVer, Contract Major, release drafts, published snapshots,
   lifecycle states and major-line retirement follow
   `docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md`;

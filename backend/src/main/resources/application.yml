@@ -89,6 +89,8 @@ skillpilot:
         enabled: ${SKILLPILOT_OPENAI_COACH_V1_ENABLED:false}
         bootstrap-enabled: ${SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED:false}
         writes-enabled: ${SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED:false}
+        # Current 1.1 draft: sanitized plans in full context, resume and subject switch.
+        daily-plan-tools-enabled: true
         learning-session-ttl: ${SKILLPILOT_OPENAI_LEARNING_SESSION_TTL:PT24H}
         # Live E2E only: permits one request to shorten, never extend, its session TTL.
         diagnostic-session-ttl-enabled: ${SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED:false}
@@ -103,7 +105,7 @@ skillpilot:
         # Optional assertion only. The effective revision is derived from the
         # loaded repository JSON or active package generation at startup.
         curriculum-revision: ${SKILLPILOT_CURRICULUM_REVISION:}
-        workflow-version: ${SKILLPILOT_OPENAI_COACH_V1_WORKFLOW_VERSION:coach@1.0}
+        workflow-version: ${SKILLPILOT_OPENAI_COACH_V1_WORKFLOW_VERSION:coach@1.1}
         open-ai-apps-challenge: ${SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE:}
         chatgpt-url: ${SKILLPILOT_OPENAI_CHATGPT_URL:https://chatgpt.com/}
         security:

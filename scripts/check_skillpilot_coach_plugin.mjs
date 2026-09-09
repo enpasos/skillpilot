@@ -23,7 +23,7 @@ const reviewVideoArtifact = resolve(
 assert.equal(
   existsSync(reviewVideoArtifact),
   true,
-  "The approved OpenAI review video must be present as a tracked backend resource.",
+  "The historical rejected OpenAI review video must remain available as audit evidence.",
 );
 validateOpenAiReviewVideoBytes(readFileSync(reviewVideoArtifact));
 const goalVisualizationWidget = resolve(
@@ -109,7 +109,6 @@ const readJson = (path) => JSON.parse(read(path));
 
 const manifestSource = read(resolve(pluginRoot, ".codex-plugin/plugin.json"));
 const manifest = JSON.parse(manifestSource);
-const appConfig = readJson(resolve(pluginRoot, ".app.json"));
 const mcpConfig = readJson(resolve(pluginRoot, ".mcp.json"));
 const releaseLine = readJson(resolve(pluginRoot, "release/line.json"));
 const lifecycle = readJson(resolve(pluginRoot, "release/lifecycle.json"));
@@ -190,54 +189,26 @@ const completeBehavioralSurface =
 const runtimeCurriculumRevision = computeRepositoryCurriculumRevision();
 assert.match(runtimeCurriculumRevision, /^curricula-sha256@[0-9a-f]{64}$/);
 
-const positiveReviewCases = [...submissionDossier.matchAll(/^### (P\d+) – /gmu)]
-  .map((match) => match[1]);
-const negativeReviewCases = [...submissionDossier.matchAll(/^### (N\d+) – /gmu)]
-  .map((match) => match[1]);
+// Current cases are machine-readable; prose from the rejected dossier is not
+// an active contract. The submission generator separately validates all case
+// oracles, executable mappings and the freshly exported tool schemas in CI.
+const reviewSuite = readJson(resolve(pluginRoot, "submission/review-cases.json"));
+assert.equal(reviewSuite.pluginIdentity, manifest.name);
+assert.equal(reviewSuite.candidateVersion, manifest.version);
+const positiveReviewCases = reviewSuite.cases.filter(entry => entry.portal && entry.kind === "positive").map(entry => entry.id);
+const negativeReviewCases = reviewSuite.cases.filter(entry => entry.portal && entry.kind === "negative").map(entry => entry.id);
 assert.deepEqual(positiveReviewCases, ["P1", "P2", "P3", "P4", "P5"]);
 assert.deepEqual(negativeReviewCases, ["N1", "N2", "N3"]);
-assert.doesNotMatch(submissionDossier, /rücksetzbar|rücksetzbarer|\| Reset \|/u);
-assert.doesNotMatch(submissionDossier, /<festgelegte|<Fixture|<Antwort/u);
-assert.match(submissionDossier, /neuen Wegwerf-Lernstand/u);
-assert.match(
-  submissionDossier,
-  /sps_A{43}/u,
-  "The missing-session review case must use one deterministic non-secret opaque fixture value.",
-);
-assert.match(submissionDossier, /exakt 8\/8 Karten/u);
-assert.match(submissionDossier, /a_\(n\+1\)=a_n\+d/u);
-assert.match(submissionDossier, /start\/abi26-he-mathe-k1\?courseLevel=GK/u);
-assert.match(submissionDossier, /25 von 25 Punkten/u);
-assert.match(submissionDossier, /13 von 25 Punkten/u);
-assert.match(
-  submissionDossier,
-  /unterstützte Review- und Produktoberfläche ist\s+ChatGPT im Webbrowser/u,
-  "The V1 dossier must declare the supported SkillPilot review surface as ChatGPT in a browser.",
-);
-assert.match(
-  submissionDossier,
-  /benötigten Plugin-Funktionen in den aktuellen nativen\s+Apps nicht vollständig unterstützt/u,
-  "The browser-only boundary must remain tied to the empirically verified SkillPilot V1 feature set.",
-);
-assert.match(
-  submissionDossier,
-  /Betriebssystem ist nicht Teil des\s+Supportversprechens/u,
-  "The V1 review contract must not claim support for an underlying operating system.",
-);
-assert.match(
-  submissionDossier,
-  /keine allgemeine Aussage über die\s+Plattformverfügbarkeit anderer\s+OpenAI-Plugins/u,
-  "The project-specific browser boundary must not be generalized to other OpenAI plugins.",
-);
-assert.equal(
-  submissionDossier.includes(OPENAI_REVIEW_VIDEO.publicUrl),
-  true,
-  "The submission dossier must bind the exact public review-video URL.",
-);
+assert.match(submissionDossier, /submission\/review-cases\.json/u);
+assert.match(submissionDossier, /openai_plugin_submission\.mjs/u);
+assert.match(submissionDossier, /ChatGPT im Webbrowser/u);
+assert.match(submissionDossier, /kein bestandener Realhost-Test/u);
+assert.match(submissionDossier, /Android-Unterstützung ist nicht zugesagt/u);
+assert.match(submissionDossier, /Reviewvideo bleibt ausschließlich historische/u);
 assert.equal(
   submissionDossier.includes(OPENAI_REVIEW_VIDEO.sha256),
   true,
-  "The submission dossier must bind the approved review-video SHA-256.",
+  "The dossier must identify historical video evidence without reusing it as current acceptance.",
 );
 assert.match(legalTermsVersion, /CURRENT_TERMS_VERSION = '1\.0\.0'/u);
 for (const [label, source] of [
@@ -330,23 +301,24 @@ for (const learnerCopyExclusionPattern of [
   assert.match(legalTermsCopy, learnerCopyExclusionPattern);
   assert.match(learnerDataManagementCopy, learnerCopyExclusionPattern);
 }
-assert.match(submissionDossier, /dieselbe 1\.0\.0-Lösch- und\s+Aufbewahrungsgrenze/u);
+assert.match(submissionDossier, /erweitert keine Datenschutz-, Retention- oder Plattformzusage/u);
+assert.match(submissionDossier, /Nach 365 aufeinanderfolgenden\s+Tagen/u);
 for (const submissionActivityPattern of [
-  /erfolgreiche Erstellung einer\s+SkillPilot-ID/u,
-  /aktive Laden oder Fortsetzen des Lernstands über\s+die\s+SkillPilot-Weboberfläche/u,
-  /vom Server abgeschlossener Import oder\s+Export signierter Lerndaten/u,
-  /serverseitig erfolgreich gespeicherte\s+Änderung des Lernstands/u,
-  /SkillPilot-Sitzungs-\s+oder KI-Anbieter-Verbindungsaktion/u,
+  /erfolgreiche ID-Erstellung/u,
+  /aktives\s+Laden\/Fortsetzen über die Weboberfläche/u,
+  /serverseitig abgeschlossener Import\/\s+Export signierter Lerndaten/u,
+  /erfolgreich gespeicherte Lernstandsänderung/u,
+  /SkillPilot-Sitzungs- oder Anbieter-Verbindungsaktion/u,
   /gültiger Coach-\/MCP-Aufruf mit\s+fachlich erfolgreichem Ergebnis/u,
-  /Hintergrund-GET-Anfragen/u,
-  /SSE-Verkehr/u,
-  /OAuth-Token-Aktualisierungen/u,
+  /Hintergrund-GET/u,
+  /SSE/u,
+  /OAuth-Token-Aktualisierung/u,
   /bloße Dateiöffnung/u,
-  /vom Server nicht\s+abgeschlossene oder fachlich abgewiesene Aktionen/u,
+  /nicht\s+abgeschlossene oder fachlich abgewiesene Aktionen zählen nicht/u,
 ]) {
   assert.match(submissionDossier, submissionActivityPattern);
 }
-assert.match(submissionDossier, /Sicherungskopien gehören nicht zum aktiven Lernstand/u);
+assert.match(submissionDossier, /Sicherungen gehören nicht zum aktiven Lernstand/u);
 assert.match(submissionDossier, /365-Tage-Ablauf löschen sie nicht unmittelbar einzeln/u);
 assert.doesNotMatch(
   submissionDossier,
@@ -407,7 +379,7 @@ assert.equal(releaseLine.schemaVersion, 1);
 assert.equal(releaseLine.pluginIdentity, "skillpilot-coach-v1");
 assert.equal(releaseLine.contractMajor, 1);
 assert.equal(releaseLine.stateSchemaVersion, 1);
-assert.equal(releaseLine.workflowVersion, "coach@1.0");
+assert.equal(releaseLine.workflowVersion, "coach@1.1");
 assert.match(releaseScript, /"exportOpenAiCoachV1Contract"/u);
 assert.equal(
   releaseScript.includes("exportOpenAiDeV1Contract"),
@@ -425,15 +397,10 @@ requireString(manifest.author?.name, "author.name", 120);
 requireHttpsUrl(manifest.author?.url, "author.url", 2048);
 assert.equal(manifest.skills, "./skills/");
 assert.equal(manifest.mcpServers, "./.mcp.json");
-assert.equal(manifest.apps, "./.app.json");
-assert.equal(existsSync(resolve(pluginRoot, ".app.json")), true);
-assert.deepEqual(appConfig, {
-  apps: {
-    "dev-6a6fac62910881919c90d06bffbe26c9": {
-      id: "asdk_app_6a6fac62910881919c90d06bffbe26c9",
-    },
-  },
-});
+assert.equal(Object.hasOwn(manifest, "apps"), false,
+  "The With MCP submission must use its server directly, not an existing development app reference.");
+assert.equal(existsSync(resolve(pluginRoot, ".app.json")), false,
+  "The current public-submission package must not include a development app reference.");
 
 const pluginInterface = manifest.interface;
 requireString(pluginInterface?.displayName, "interface.displayName", 30);
@@ -463,7 +430,6 @@ assert.ok(
 );
 for (const field of [
   "websiteURL",
-  "supportURL",
   "privacyPolicyURL",
   "termsOfServiceURL",
 ]) {
@@ -473,7 +439,8 @@ for (const field of [
     1024,
   );
 }
-assert.equal(pluginInterface.supportURL, "https://skillpilot.com/imprint");
+assert.equal(Object.hasOwn(pluginInterface, "supportURL"), false,
+  "The plugin manifest schema does not accept supportURL; submission branding owns the support contact.");
 assert.equal(pluginInterface.brandColor, "#f59e0b");
 assert.equal(pluginInterface.composerIcon, "./assets/favicon-96x96.png");
 assert.equal(pluginInterface.logo, "./assets/web-app-manifest-512x512.png");
@@ -784,7 +751,7 @@ assert.deepEqual(skillAgent, {
         type: "mcp",
         value: "skillpilot-coach-v1",
         description:
-          "Session validation, learning state, focus, active goals, mastery, verified recall, and assessments",
+          "Session validation, daily learning plans, subject switching, learning state, focus, active goals, mastery, verified recall, and assessments",
         transport: "streamable_http",
         url: "https://mcp-coach-v1.skillpilot.com/mcp",
       },
@@ -1032,10 +999,11 @@ assert.match(
   /new RecallToolCall\([\s\S]+RENDER_GOAL_VISUALIZATION[\s\S]+Map\.of\([\s\S]+"goalId"[\s\S]+EXPECTED_STATE_VERSION/u,
   "The terminal Recall image continuation must fill renderer name, goal, and successor state server-side.",
 );
-const recallResultSchemaSource = mcpContract.slice(
-  mcpContract.indexOf("private static Map<String, Object> recallResultSchema()"),
-  mcpContract.indexOf("private static Map<String, Object> recallSuccessorContextSchema()"),
-);
+const recallResultSchemaStart = mcpContract.search(/private (?:static )?Map<String, Object> recallResultSchema\(\)/u);
+const recallSuccessorSchemaStart = mcpContract.search(/private (?:static )?Map<String, Object> recallSuccessorContextSchema\(\)/u);
+assert.ok(recallResultSchemaStart >= 0 && recallSuccessorSchemaStart > recallResultSchemaStart,
+  "Could not locate the ordered Recall schema declarations.");
+const recallResultSchemaSource = mcpContract.slice(recallResultSchemaStart, recallSuccessorSchemaStart);
 assert.ok(
   recallResultSchemaSource.length > 0,
   "Could not isolate the Recall result schema.",

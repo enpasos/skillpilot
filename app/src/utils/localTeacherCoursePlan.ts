@@ -1055,11 +1055,14 @@ export function resolveAtomicGoalDescendants(
     if (children.length === 0) {
       if (
         goal.type === 'cluster'
-        && goal.extendedData?.compositionEntryKind === 'goalEntry'
+        && (
+          goal.extendedData?.compositionEntryKind === 'goalEntry'
+          || goal.extendedData?.compositionEmptyAfterRoleProjection === true
+        )
       ) {
-        // A direct composition goalEntry can intentionally present a canonical
-        // cluster as an opaque leaf. It remains non-atomic for planning and must
-        // not invalidate otherwise plannable atomic siblings.
+        // Authored projection may hide a cluster's children either as an opaque
+        // goalEntry or because all children are prerequisite-only. Such a
+        // cluster remains non-atomic and must not invalidate target siblings.
         visited.add(goalId)
         return
       }

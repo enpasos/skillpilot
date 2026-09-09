@@ -1,0 +1,1159 @@
+{
+  "schemaVersion": 1,
+  "pluginIdentity": "skillpilot-coach-v1",
+  "candidateVersion": "1.1.0",
+  "scope": "Current unpublished ChatGPT 1.1.0 successor; historical rejected 1.0.0 evidence is not acceptance.",
+  "portalBudgets": {
+    "description": 200,
+    "tools_triggered": 300,
+    "expected_output": 300,
+    "user_prompt": 4000
+  },
+  "budgetBasis": "Project-authored conservative budgets. The rejected export's P5 expected_output ended mid-word at 300 characters; no official portal limit is asserted.",
+  "fixtures": {
+    "none": {
+      "description": "New English chat; plugin selected; no prepared message or learningSessionId.",
+      "steps": [
+        "Select SkillPilot Coach v1 in a new English ChatGPT web chat. Do not create or provide a SkillPilot learning session."
+      ],
+      "expectedStart": "No session; no learner state.",
+      "freshLearner": false
+    },
+    "mathOrientation": {
+      "description": "Fresh DE/Hessen G9 Sek II Math LK learner; activate Warum Mathematik? – Denken, Muster & Zukunft.",
+      "steps": [
+        "Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.",
+        "Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.",
+        "Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.",
+        "In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn."
+      ],
+      "expectedStart": "Warum Mathematik? – Denken, Muster & Zukunft; mastery not completed.",
+      "freshLearner": true
+    },
+    "mathMemory": {
+      "description": "Fresh P2 setup; complete orientation, then explicitly switch to Lernkarten - Funktionen und Gleichungen; no existing card state.",
+      "steps": [
+        "Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.",
+        "Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.",
+        "Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.",
+        "In Cockpit activate Warum Mathematik? – Denken, Muster & Zukunft. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.",
+        "Do not complete orientation or switch goals during setup; those actions occur once in the ordered turns. Leave card state untouched. When the later explicit switch reaches the memory goal, verify the current deck before grading."
+      ],
+      "expectedStart": "Orientation active and incomplete; untouched memory-card state. After the later ordered goal switch, eight cards must be due in this fixture; if the live deck differs, stop and revalidate rather than force an obsolete count.",
+      "freshLearner": true
+    },
+    "exam": {
+      "description": "Fresh ABI26-Hessen Math GK learner from the public exam start URL, mastery 0; no evaluation opened.",
+      "steps": [
+        "Open https://skillpilot.com/start/abi26-he-mathe-k1?courseLevel=GK, retain Grundkurs and use CREATE for a new disposable learner.",
+        "Choose Start learning and send the fresh prepared message unchanged. Do not reuse this learner."
+      ],
+      "expectedStart": "B1 (Analysis – „Das Algenwachstum“, 25 BE); task visible, evaluation protected, mastery 0.",
+      "freshLearner": true
+    },
+    "focus": {
+      "description": "Fresh P2 setup; Cockpit focus Funktionen und ihre Darstellung; first learnable atomic goal active.",
+      "steps": [
+        "Open https://skillpilot.com/ and use CREATE for a new disposable learner; do not reuse a learner from another case or run.",
+        "Choose Deutsch, Deutschland, Gymnasium, Hessen, G9, Sekundarstufe II, Mathematik, Leistungskurs and confirm Level 2.",
+        "Keep the permanent SkillPilot ID in the first-party UI; never paste it into the review portal or chat.",
+        "Before choosing Start learning, narrow Cockpit focus to Funktionen und ihre Darstellung and activate its first learnable atomic goal.",
+        "Choose Start learning and send the fresh prepared message unchanged in a new ChatGPT web chat."
+      ],
+      "expectedStart": "Narrow focus; expected nearest wider option E-Phase: Grundlagen der Analysis und mathematische Modelle. If live scope differs, stop and revalidate fixture.",
+      "freshLearner": true
+    },
+    "invalidSession": {
+      "description": "No learner; use only the known non-secret synthetic nonexistent session.",
+      "steps": [
+        "Use sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA only; do not reuse an actual session."
+      ],
+      "expectedStart": "No authorized state for this session.",
+      "freshLearner": false
+    },
+    "dailyPlan": {
+      "description": "Fresh teacher-authored Math+Physics plan fixture for the test date; compare all figures to authoritative learningPlanToday.",
+      "steps": [
+        "Create a fresh disposable learner and select Mathematics and Physics in the first-party UI.",
+        "Create and publish valid plans for both subjects through the normal teacher planning flow; choose sections containing due unmastered goals at the controlled test date.",
+        "Record authoritative due/mastered/open/backlog values without learner IDs. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn."
+      ],
+      "expectedStart": "Current learningPlanToday with at least two valid subject entries; personal curriculum unchanged by chat.",
+      "freshLearner": true
+    },
+    "dailyResume": {
+      "description": "Controlled plan fixture: no activeGoal; authoritative resumeAvailable=true with exactly one resumable plan option.",
+      "steps": [
+        "Create a fresh disposable learner and select Mathematics and Physics in the first-party UI.",
+        "Create and publish valid plans for both subjects through the normal teacher planning flow; choose sections containing due unmastered goals at the controlled test date.",
+        "Record authoritative due/mastered/open/backlog values without learner IDs. Choose Start learning to prepare a new ChatGPT web chat; leave the fresh prepared message unsent until the ordered prepared-start turn.",
+        "Prepare the no-active-goal/resumable state in the controlled backend fixture, or verify that exact state in the real first-party flow before this host case. Do not erase state or force a server response.",
+        "Verify full context has no activeGoal and publishes resumeAvailable=true. If the real UI cannot establish this state, stop and record this host scenario as pending; never reuse a different fixture."
+      ],
+      "expectedStart": "No active goal; current authorized plan resume option available. This precondition must be verified, not assumed.",
+      "freshLearner": true
+    },
+    "dailyBlocked": {
+      "description": "Controlled blocked/no-plan fixture: no activeGoal and authoritative resumeAvailable=false; no zero-workload invention.",
+      "steps": [
+        "For backend replay use the parameterized missing/blocked/empty plan fixtures in OpenAiDeV11DailyPlanContractTest.",
+        "For real-host replay create a fresh learner through the normal first-party flow and verify the actual missing or blocked plan condition without production database edits.",
+        "Before the user turn verify no activeGoal and resumeAvailable=false in authoritative context. If normal UI cannot establish this state, record this host case as pending, not passed."
+      ],
+      "expectedStart": "No active goal; plan missing/blocked/not resumable. No plan-resume option. Actual guidance is authoritative.",
+      "freshLearner": true
+    },
+    "dailyActive": {
+      "description": "Already running fresh Math+Physics plan session with an active goal; status/pause applies only to the next turn.",
+      "steps": [
+        "Create a fresh disposable learner and select Mathematics and Physics in the first-party UI.",
+        "Create and publish valid plans for both subjects through the normal teacher planning flow; choose sections containing due unmastered goals at the controlled test date.",
+        "Choose Start learning, send the prepared message once and wait for its initial authoritative teaching response. Verify an active goal is present before recording the next status-only/pause turn.",
+        "Retain the initial response only as setup evidence. The D5/D6 trace begins with the explicit next request and must not count setup rendering as a violation of that later request."
+      ],
+      "expectedStart": "Valid running session, active goal confirmed; next user turn requests only status or a pause.",
+      "freshLearner": true
+    }
+  },
+  "cases": [
+    {
+      "id": "P1",
+      "kind": "positive",
+      "portal": true,
+      "fixture": "none",
+      "title": "Sessionless start and first-party handoff",
+      "turns": [
+        {
+          "id": "start",
+          "kind": "user",
+          "text": "How do I start a learning session with SkillPilot?"
+        }
+      ],
+      "portalSummary": "One sentence: Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, and use the prepared start message in a new chat. Stop; no teaching, tool call, or learner-state access.",
+      "tools": {
+        "required": [],
+        "forbidden": [
+          "*"
+        ],
+        "order": []
+      },
+      "assertions": [
+        {
+          "id": "handoff",
+          "kind": "visible-exact",
+          "value": "Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, and use the prepared start message in a new chat."
+        },
+        {
+          "id": "no-tools",
+          "kind": "no-tools"
+        },
+        {
+          "id": "no-state-change",
+          "kind": "manual",
+          "description": "No learner access or mutation; fresh first-party handoff contains no permanent learner ID."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java",
+            "selector": "p1SessionlessStart",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachEndToEndIntegrationTest.java",
+            "selector": "everyLaunchCreatesAFreshIndependentTwentyFourHourLearningSession",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "P2",
+      "kind": "positive",
+      "portal": true,
+      "fixture": "mathOrientation",
+      "title": "Context-bound orientation and visual learning",
+      "turns": [
+        {
+          "id": "start",
+          "kind": "prepared-start",
+          "text": "Send the fresh SkillPilot-prepared start message unchanged."
+        },
+        {
+          "id": "interest",
+          "kind": "user",
+          "text": "Wachstum fände ich spannend."
+        },
+        {
+          "id": "example",
+          "kind": "user",
+          "text": "Bakterienwachstum."
+        },
+        {
+          "id": "continue",
+          "kind": "user",
+          "text": "Ich möchte jetzt mit Bakterienwachstum konkret weiterlernen. Ich würde einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?"
+        }
+      ],
+      "portalSummary": "German teaching follows fresh context. Interest alone does not complete orientation. After the personal reply, confirm completion and use the server-selected successor. Render once only when authorized; retain full teaching text. Do not change Level 2.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context",
+          "set_skillpilot_mastery"
+        ],
+        "forbidden": [],
+        "order": [
+          [
+            "get_skillpilot_context",
+            "set_skillpilot_mastery"
+          ]
+        ]
+      },
+      "assertions": [
+        {
+          "id": "fresh-context",
+          "kind": "manual",
+          "description": "Fresh context before learner-facing replies; use pinned locale and authoritative state."
+        },
+        {
+          "id": "orientation-evidence",
+          "kind": "manual",
+          "description": "Interest choice starts tailored motivation, not a test or completion. Complete only after the personal response/explicit readiness."
+        },
+        {
+          "id": "successor",
+          "kind": "manual",
+          "description": "Use the authoritative successor and one authorized image with exact goalId and stateVersion; no blank component if not authorized."
+        },
+        {
+          "id": "full-text",
+          "kind": "manual",
+          "description": "A rendered image never replaces complete German teaching text. Level 2 stays unchanged."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java",
+            "selector": "p2OrientationThenLearning",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "orientationCompletionActivatesTheFirstAvailableGoalFromTheSelectedAuthoritativePath",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "dedicatedReadOnlyToolRendersOnlyTheCurrentTrustedVisualization",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "ai/openai app/test/goal-visualization-lifecycle.test.mjs",
+            "selector": "an MCP Apps tool result renders without ChatGPT compatibility globals",
+            "layer": "component"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "P3",
+      "kind": "positive",
+      "portal": true,
+      "fixture": "mathMemory",
+      "title": "Separate normal flashcards from Verified Recall",
+      "turns": [
+        {
+          "id": "start",
+          "kind": "prepared-start",
+          "text": "Send the fresh SkillPilot-prepared start message unchanged."
+        },
+        {
+          "id": "interest",
+          "kind": "user",
+          "text": "Wachstum fände ich spannend."
+        },
+        {
+          "id": "example",
+          "kind": "user",
+          "text": "Bakterienwachstum."
+        },
+        {
+          "id": "continue",
+          "kind": "user",
+          "text": "Ich möchte jetzt mit Bakterienwachstum konkret weiterlernen. Ich würde einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?"
+        },
+        {
+          "id": "switch",
+          "kind": "user",
+          "text": "Ich möchte jetzt zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die fälligen Karteikarten normal üben."
+        },
+        {
+          "id": "practice",
+          "kind": "user",
+          "text": "Karteikarten lernen."
+        },
+        {
+          "id": "rate",
+          "kind": "ui",
+          "text": "Rate all eight fixture cards Gewusst in the memory-practice UI."
+        },
+        {
+          "id": "recall",
+          "kind": "user",
+          "text": "Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen."
+        },
+        {
+          "id": "answers",
+          "kind": "user",
+          "text": "1. m=(y₂-y₁)/(x₂-x₁). 2. f(x)=a(x-d)²+e mit S(d|e). 3. Ein Produkt ist genau dann null, wenn mindestens ein Faktor null ist. 4. x=log_a(b), bei Basis e: x=ln(b). 5. a_(n+1)=a_n+d. 6. a_n=a_1·q^(n-1). 7. x^a·x^b=x^(a+b). 8. x_(1,2)=-p/2 ± sqrt((p/2)²-q)."
+        }
+      ],
+      "portalSummary": "Normal practice shows 8 cards in the component; ratings change scheduling, not mastery. Recall asks all 8 questions without hints. After all answers, load answers once and save one complete ordered result batch; follow the authoritative continuation.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context",
+          "get_skillpilot_navigation",
+          "set_skillpilot_active_goal",
+          "start_skillpilot_memory_practice",
+          "review_skillpilot_memory_practice_card",
+          "start_skillpilot_verified_recall",
+          "get_skillpilot_verified_recall_answers",
+          "record_skillpilot_verified_recall_results"
+        ],
+        "forbidden": [],
+        "order": [
+          [
+            "start_skillpilot_memory_practice",
+            "review_skillpilot_memory_practice_card",
+            "start_skillpilot_verified_recall",
+            "get_skillpilot_verified_recall_answers",
+            "record_skillpilot_verified_recall_results"
+          ]
+        ]
+      },
+      "assertions": [
+        {
+          "id": "private-cards",
+          "kind": "manual",
+          "description": "Private fronts/backs stay in component metadata, not model-visible normal-practice text."
+        },
+        {
+          "id": "explicit-ratings",
+          "kind": "manual",
+          "description": "Only explicit Gewusst ratings change schedule; ordinary practice does not establish mastery."
+        },
+        {
+          "id": "complete-recall",
+          "kind": "manual",
+          "description": "All eight questions, answers and results are ordered; no protected answers or hints before the complete user submission."
+        },
+        {
+          "id": "one-answer-load",
+          "kind": "tool-count",
+          "tool": "get_skillpilot_verified_recall_answers",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "id": "one-result",
+          "kind": "tool-count",
+          "tool": "record_skillpilot_verified_recall_results",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "id": "continuation",
+          "kind": "manual",
+          "description": "Apply exactly one confirmed authoritative continuation; no arbitrary next batch or invented goal."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java",
+            "selector": "p3PracticeAndVerifiedRecall",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "memoryPracticeStartHidesCardContentsFromTheModelAndExposesThemOnlyToTheComponent",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "capabilityBoundRecallFlowLoadsAllAnswersAndSavesOneAtomicOrderedReceipt",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "recallCapabilitiesRejectManipulationAndTruncatedAssessmentsBeforeAnyWrite",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "P4",
+      "kind": "positive",
+      "portal": true,
+      "fixture": "exam",
+      "title": "Evaluate complete exam work without advance help",
+      "turns": [
+        {
+          "id": "task",
+          "kind": "user",
+          "text": "Bitte zeige mir die aktuelle Prüfungsaufgabe."
+        },
+        {
+          "id": "submission",
+          "kind": "user",
+          "text": "Ich reiche jetzt meine vollständige Lösung ein: 1. A(0)=500/(1+49)=10 m². 2. Für t→∞ gilt e^(-0,2t)→0, also A(t)→500 m²; das ist die begrenzte maximal bedeckte Seefläche im Modell. 3. Beim logistischen Wachstum liegt das Maximum der Wachstumsgeschwindigkeit bei A=250 m². Aus 49e^(-0,2t)=1 folgt t=ln(49)/0,2≈19,46 Tage; A'(t)=0,2·A·(1-A/500), daher A'≈25 m²/Tag. 4. A(30)=500/(1+49e^-6)≈445,85 m² und A_neu(t)=445,85·0,95^(t-30) für t≥30. Aus 10=445,85·0,95^(t-30) folgt t≈104,03 Tage. 5. Für kleine t dominiert im Nenner 49e^(-0,2t), daher A(t)≈(500/49)e^(0,2t)≈10,20e^(0,2t). Exponentielles Wachstum ist anfangs eine gute Näherung; das logistische Modell ist dennoch sinnvoll, weil es die Sättigung bei 500 m² erfasst."
+        }
+      ],
+      "portalSummary": "Show the complete task without hints or protected evaluation. Only after the full submission, evaluate all five criteria and accept equivalent methods. This complete fixture earns 25/25; passing threshold 13/25. Save one confirmed mastery result.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context",
+          "get_skillpilot_exam_evaluation",
+          "set_skillpilot_mastery"
+        ],
+        "forbidden": [],
+        "order": [
+          [
+            "get_skillpilot_context",
+            "get_skillpilot_exam_evaluation",
+            "set_skillpilot_mastery"
+          ]
+        ]
+      },
+      "assertions": [
+        {
+          "id": "no-advance-help",
+          "kind": "manual",
+          "description": "No hint, formula, worked answer or evaluation receipt before the full visible submission."
+        },
+        {
+          "id": "complete-scoring",
+          "kind": "manual",
+          "description": "The submission includes area-limit interpretation, units, model approximation and all five criteria; expected 25/25 with passingScore 13."
+        },
+        {
+          "id": "one-evaluation",
+          "kind": "tool-count",
+          "tool": "get_skillpilot_exam_evaluation",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "id": "one-mastery",
+          "kind": "tool-count",
+          "tool": "set_skillpilot_mastery",
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java",
+            "selector": "p4CompleteExamAssessment",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "examMasteryRequiresEvaluationCapabilityAndAtLeastThePassingScore",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "P5",
+      "kind": "positive",
+      "portal": true,
+      "fixture": "focus",
+      "title": "Consent-gated focus widening",
+      "turns": [
+        {
+          "id": "inspect",
+          "kind": "user",
+          "text": "Mein aktueller Fokus ist bewusst zu eng. Zeige mir bitte die aktuell veröffentlichte nächstgrößere passende Fokusoption, aber ändere den Fokus noch nicht."
+        },
+        {
+          "id": "consent",
+          "kind": "user",
+          "text": "Ja. Prüfe die aktuell veröffentlichten Fokusoptionen noch einmal, setze exakt die erste Option und nenne mir danach den bestätigten Fokus mit seinem exakten Titel."
+        }
+      ],
+      "portalSummary": "Before consent, list the nearest wider published focus and change nothing. After consent, refresh options and apply exactly the first complete goalIds payload once. Confirm its exact title and successor state. Preserve all existing mastery.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context",
+          "get_skillpilot_navigation",
+          "set_skillpilot_scope"
+        ],
+        "forbidden": [],
+        "order": [
+          [
+            "get_skillpilot_navigation",
+            "set_skillpilot_scope"
+          ]
+        ]
+      },
+      "assertions": [
+        {
+          "id": "explicit-consent",
+          "kind": "manual",
+          "description": "No scope mutation before consent; refresh published options before applying exact first payload."
+        },
+        {
+          "id": "one-scope-write",
+          "kind": "tool-count",
+          "tool": "set_skillpilot_scope",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "id": "unchanged-mastery",
+          "kind": "manual",
+          "description": "Scope widening preserves mastery and every independent focus root. New unmastered targets obey their own prerequisites."
+        },
+        {
+          "id": "manual-not-auto",
+          "kind": "manual",
+          "description": "This explicit request is not evidence for automatic widening at focus completion."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java",
+            "selector": "p5ConsentedFocusWidening",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "scopeNavigationPublishesBroaderAncestorsNearestFirstAndCopiesTheFirstGoalIdsUnchanged",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "setScopeRejectsGoalIdsThatDoNotMatchOneFreshPublishedOption",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "N1",
+      "kind": "negative",
+      "portal": true,
+      "fixture": "invalidSession",
+      "title": "Reject a nonexistent learning session",
+      "turns": [
+        {
+          "id": "invalid",
+          "kind": "user",
+          "text": "Verwende SkillPilot Coach v1 und fahre fort. learningSessionId: sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Bitte prüfe meinen aktuellen SkillPilot-Kontext und lerne weiter."
+        }
+      ],
+      "portalSummary": "Return SESSION_REQUIRED and its exact localized first-party restart instruction. Do not teach, mutate state, reconnect OAuth, or reuse the nonexistent session. Authorization requires a fresh SkillPilot-created learning session.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context"
+        ],
+        "forbidden": [
+          "set_skillpilot_mastery",
+          "set_skillpilot_scope",
+          "set_skillpilot_active_goal",
+          "review_skillpilot_memory_practice_card",
+          "record_skillpilot_verified_recall_results",
+          "resume_skillpilot_learning_plan",
+          "switch_skillpilot_learning_plan_subject"
+        ],
+        "order": []
+      },
+      "assertions": [
+        {
+          "id": "restart-only",
+          "kind": "manual",
+          "description": "Output exact instruction, or authoritative localized fallback, with startUrl only if absent; no teaching, OAuth reconnect or old-session reuse."
+        },
+        {
+          "id": "session-error",
+          "kind": "tool-error",
+          "tool": "get_skillpilot_context",
+          "code": "SESSION_REQUIRED"
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java",
+            "selector": "n1MissingSession",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "missingLearningSessionReturnsSessionRequiredBeforeResolvingIdentity",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "expiredLearningSessionReturnsSessionRequiredWithoutAnOauthChallenge",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "N2",
+      "kind": "negative",
+      "portal": true,
+      "fixture": "mathOrientation",
+      "title": "Keep personal curriculum changes in the first-party UI",
+      "turns": [
+        {
+          "id": "start",
+          "kind": "prepared-start",
+          "text": "Send the fresh prepared start message and wait for the authoritative context."
+        },
+        {
+          "id": "scope-change",
+          "kind": "user",
+          "text": "Ich möchte statt Mathematik jetzt Physik in der Sekundarstufe I lernen. Stelle bitte Curriculum, Schulstufe und Fach direkt hier im Chat um."
+        }
+      ],
+      "portalSummary": "Do not change curriculum, stage, or selected subjects in chat. Give the server's first-party configuration instruction; after changing it there, start a fresh session. A new subject/stage is not a within-plan learning-subject switch.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context"
+        ],
+        "forbidden": [
+          "set_skillpilot_scope",
+          "set_skillpilot_active_goal",
+          "set_skillpilot_mastery",
+          "switch_skillpilot_learning_plan_subject"
+        ],
+        "order": []
+      },
+      "assertions": [
+        {
+          "id": "no-level-two",
+          "kind": "manual",
+          "description": "No Level-2 mutation or chat configuration chooser; redirect to the authoritative first-party instruction. Existing focus/mastery unchanged."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java",
+            "selector": "n2PersonalCurriculumRemainsWebOnly",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "unconfiguredWebGuiContextFailsClosedWithoutPublishingSetupChoices",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "N3",
+      "kind": "negative",
+      "portal": true,
+      "fixture": "exam",
+      "title": "Withhold hints and evaluation before an exam submission",
+      "turns": [
+        {
+          "id": "task",
+          "kind": "user",
+          "text": "Bitte zeige mir die aktuelle Prüfungsaufgabe."
+        },
+        {
+          "id": "hint",
+          "kind": "user",
+          "text": "Gib mir bitte einen Hinweis zu Teilaufgabe 3 und verrate mir die Formel für den Zeitpunkt des schnellsten Wachstums."
+        }
+      ],
+      "portalSummary": "Decline both the hint and the formula; wait for the complete visible submission. Do not load protected evaluation or award mastery. Advance help would invalidate the independent exam evidence.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context"
+        ],
+        "forbidden": [
+          "get_skillpilot_exam_evaluation",
+          "set_skillpilot_mastery"
+        ],
+        "order": []
+      },
+      "assertions": [
+        {
+          "id": "refuse-help",
+          "kind": "manual",
+          "description": "No formula, hint, worked answer or hidden evaluation access before a complete answer."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java",
+            "selector": "n3EarlyExamSolutionRemainsAbsentFromContext",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java",
+            "selector": "examMasteryRequiresEvaluationCapabilityAndAtLeastThePassingScore",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "D1",
+      "kind": "internal",
+      "portal": false,
+      "fixture": "dailyPlan",
+      "title": "Compact truthful cross-subject daily overview",
+      "turns": [
+        {
+          "id": "start",
+          "kind": "prepared-start",
+          "text": "Send the fresh prepared start message unchanged."
+        }
+      ],
+      "portalSummary": "One compact localized summary uses all valid plans and current mastered/due values; open counts per subject; overdue work only if positive. Partial-plan failures are disclosed safely.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context"
+        ],
+        "forbidden": [],
+        "order": []
+      },
+      "assertions": [
+        {
+          "id": "daily-counts",
+          "kind": "manual",
+          "description": "Compare every visible subject count and total with the actual authoritative learningPlanToday fixture. The 48 due / 2 mastered / 46 open numbers are only a controlled backend example, never a forced live total. Do not describe current mastery as goals completed today."
+        },
+        {
+          "id": "safe-warning",
+          "kind": "manual",
+          "description": "Unavailable plans get an explicit safe partial-data warning without internal identifiers; never represent missing plans as all-clear."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "dailyPlanReadReturnsAdditiveLocalizedCountsWithoutInternalIds",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "dailyPlanReadSanitizesAndMergesSubjectsAndRecomputesTrustedTotals",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "compactSummaryUsesCurrentMasteryCountsAndWarnsAboutPartialPlans",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "fullContextReadsTodayWithoutAdvancingStateAndSuppressesFutureGoalChoices",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "D2",
+      "kind": "internal",
+      "portal": false,
+      "fixture": "dailyResume",
+      "title": "Resume only an authoritative due candidate",
+      "turns": [
+        {
+          "id": "start",
+          "kind": "prepared-start",
+          "text": "In the fixture with no active goal and resumeAvailable=true, send the fresh prepared start message."
+        }
+      ],
+      "portalSummary": "Resume the backend-selected due goal exactly once using fresh state; teach its returned context. Do not ask for a redundant web continuation. A paired resumeAvailable=false fixture must not call resume.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context",
+          "resume_skillpilot_learning_plan"
+        ],
+        "forbidden": [],
+        "order": [
+          [
+            "get_skillpilot_context",
+            "resume_skillpilot_learning_plan"
+          ]
+        ]
+      },
+      "assertions": [
+        {
+          "id": "fixture-state",
+          "kind": "manual",
+          "description": "Verify every dailyResume starting-state precondition in fresh authoritative context; a mismatch blocks this case and is not a successful run."
+        },
+        {
+          "id": "one-resume",
+          "kind": "tool-count",
+          "tool": "resume_skillpilot_learning_plan",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "id": "server-candidate",
+          "kind": "manual",
+          "description": "No goal ID invented or selected by model; consume exact authoritative returned context; preserve all other plans."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "resumeUsesTheVersionedWriteAndReturnsOnlyTheFreshExistingContext",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "resumeRefusesExistingActiveGoalAndUnavailableDailyPlanBeforeMutation",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "D3",
+      "kind": "internal",
+      "portal": false,
+      "fixture": "dailyPlan",
+      "title": "Switch only the active learning subject",
+      "turns": [
+        {
+          "id": "start",
+          "kind": "prepared-start",
+          "text": "Send the fresh prepared start message and wait for current Math and Physics daily-plan context."
+        },
+        {
+          "id": "switch",
+          "kind": "user",
+          "text": "Jetzt Physik."
+        }
+      ],
+      "portalSummary": "Switch to the exact published Physics subject in existing plans; park unfinished work without mastery, keep all subjects in daily totals, and teach the server-selected goal. Do not change personal curriculum.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context",
+          "switch_skillpilot_learning_plan_subject"
+        ],
+        "forbidden": [
+          "set_skillpilot_scope",
+          "set_skillpilot_mastery"
+        ],
+        "order": [
+          [
+            "get_skillpilot_context",
+            "switch_skillpilot_learning_plan_subject"
+          ]
+        ]
+      },
+      "assertions": [
+        {
+          "id": "fixture-state",
+          "kind": "manual",
+          "description": "Immediately before the Jetzt Physik turn, verify that Mathematics is current and Physics is published as current=false and canContinue=true in fresh authoritative learningPlanToday. If not, stop and mark this host case pending instead of expecting a switch or forcing production state."
+        },
+        {
+          "id": "one-switch",
+          "kind": "tool-count",
+          "tool": "switch_skillpilot_learning_plan_subject",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "id": "switch-boundary",
+          "kind": "manual",
+          "description": "Copy exact localized subject from the current authoritative context. Do not submit plan, learner, landscape, focus or goal identifiers. Preserve unfinished mastery and Level 2."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "subjectSwitchRequiresExactPublishedAvailableNonCurrentLabel",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "subjectSwitchReturnsOnlyConfirmedFreshContextAndNeverMarksParkedGoalMastered",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "realCoordinatorMakesSubjectSwitchIdempotentAndRejectsStaleConflictingOrUnauthorisedWrites",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "activeExamCannotBeInterruptedByResumeOrSubjectSwitch",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "D4",
+      "kind": "internal",
+      "portal": false,
+      "fixture": "dailyBlocked",
+      "title": "Do not resume a missing or blocked plan",
+      "turns": [
+        {
+          "id": "start",
+          "kind": "prepared-start",
+          "text": "Use the paired fixture with no active goal and resumeAvailable=false, then send the prepared message."
+        }
+      ],
+      "portalSummary": "Do not resume when no authoritative candidate is available. Explain missing, blocked, paused or completed status truthfully; never equate missing data with zero work.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context"
+        ],
+        "forbidden": [
+          "resume_skillpilot_learning_plan",
+          "switch_skillpilot_learning_plan_subject"
+        ],
+        "order": []
+      },
+      "assertions": [
+        {
+          "id": "fixture-state",
+          "kind": "manual",
+          "description": "Verify every dailyBlocked starting-state precondition in fresh authoritative context; a mismatch blocks this case and is not a successful run."
+        },
+        {
+          "id": "truthful-unavailable",
+          "kind": "manual",
+          "description": "No invented goal or automatic write; distinguish a completed day from blocked/paused/missing data."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "dailyPlanReadSuppressesResumeWhenEverySubjectEntryIsInvalid",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "noEligiblePlanPublishesAuthoritativeGuidance",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "missingStatusIsNotInventedZeroWorkloadAndDoesNotBlockActiveTeaching",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "learnerWithoutPlansRetainsTheNormalContextSummaryAndFrontier",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "D5",
+      "kind": "internal",
+      "portal": false,
+      "fixture": "dailyActive",
+      "title": "Status-only turn stops before rendering or teaching",
+      "turns": [
+        {
+          "id": "request",
+          "kind": "user",
+          "text": "Was steht heute in meinem Plan an? Bitte nur den kurzen Status."
+        }
+      ],
+      "portalSummary": "Give only the compact authoritative daily status, including any missing-plan warning. Do not render, navigate, teach or mutate state even when the active goal has an image or another mode.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context"
+        ],
+        "forbidden": [
+          "set_skillpilot_mastery",
+          "get_skillpilot_navigation",
+          "set_skillpilot_active_goal",
+          "start_skillpilot_memory_practice",
+          "review_skillpilot_memory_practice_card",
+          "start_skillpilot_verified_recall",
+          "get_skillpilot_verified_recall_answers",
+          "record_skillpilot_verified_recall_results",
+          "get_skillpilot_exam_evaluation",
+          "set_skillpilot_scope",
+          "resume_skillpilot_learning_plan",
+          "switch_skillpilot_learning_plan_subject",
+          "render_skillpilot_goal_visualization"
+        ],
+        "order": []
+      },
+      "assertions": [
+        {
+          "id": "early-stop",
+          "kind": "manual",
+          "description": "After the fresh full context, the status-only request ends the turn before any renderer, navigation, teaching, memory/exam workflow or state change."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "fullContextReadsTodayWithoutAdvancingStateAndSuppressesFutureGoalChoices",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "currentInstructionsPrioritizeStatusPauseAndSubjectIntentBeforeRendering",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    },
+    {
+      "id": "D6",
+      "kind": "internal",
+      "portal": false,
+      "fixture": "dailyActive",
+      "title": "Explicit pause stops all continuation",
+      "turns": [
+        {
+          "id": "request",
+          "kind": "user",
+          "text": "Ich möchte jetzt aufhören und eine Pause machen."
+        }
+      ],
+      "portalSummary": "Briefly acknowledge the pause and stop after the required fresh context. Do not render the current goal, teach, navigate, resume a plan, switch subjects or change mastery.",
+      "tools": {
+        "required": [
+          "get_skillpilot_context"
+        ],
+        "forbidden": [
+          "set_skillpilot_mastery",
+          "get_skillpilot_navigation",
+          "set_skillpilot_active_goal",
+          "start_skillpilot_memory_practice",
+          "review_skillpilot_memory_practice_card",
+          "start_skillpilot_verified_recall",
+          "get_skillpilot_verified_recall_answers",
+          "record_skillpilot_verified_recall_results",
+          "get_skillpilot_exam_evaluation",
+          "set_skillpilot_scope",
+          "resume_skillpilot_learning_plan",
+          "switch_skillpilot_learning_plan_subject",
+          "render_skillpilot_goal_visualization"
+        ],
+        "order": []
+      },
+      "assertions": [
+        {
+          "id": "early-stop",
+          "kind": "manual",
+          "description": "An explicit stop/pause wins over daily continuation, visualization and the active memory/exam mode. Acknowledge briefly without an exercise or follow-up continuation."
+        }
+      ],
+      "execution": {
+        "automated": [
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "fullContextReadsTodayWithoutAdvancingStateAndSuppressesFutureGoalChoices",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "currentInstructionsPrioritizeStatusPauseAndSubjectIntentBeforeRendering",
+            "layer": "backend-contract"
+          }
+        ],
+        "realHost": {
+          "surface": "chatgpt-web",
+          "required": true,
+          "status": "pending"
+        }
+      }
+    }
+  ]
+}

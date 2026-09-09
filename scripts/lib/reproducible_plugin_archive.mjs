@@ -30,10 +30,30 @@ export function createReproducibleTrackedArchive({
   repositoryRoot,
   sourceRoot,
   archivePath,
+  includePaths,
 }) {
   const archiveRoot = toArchivePath(basename(sourceRoot));
-  const inventory = readTrackedInventory(repositoryRoot, sourceRoot);
-  assertNoUntrackedOrIgnoredPaths(repositoryRoot, sourceRoot);
+  const tracked = readTrackedInventory(repositoryRoot, sourceRoot);
+  let inventory = tracked;
+  if (includePaths === undefined) {
+    // Existing callers retain the complete tracked-tree, fail-closed contract.
+    assertNoUntrackedOrIgnoredPaths(repositoryRoot, sourceRoot);
+  } else {
+    if (!Array.isArray(includePaths) || includePaths.length === 0) {
+      throw new Error("Plugin install allowlist must be a nonempty array.");
+    }
+    const allowed = new Set(includePaths.map(toArchivePath));
+    if (allowed.size !== includePaths.length) {
+      throw new Error("Plugin install allowlist paths must be unique.");
+    }
+    const byPath = new Map(tracked.map((entry) => [toArchivePath(entry.archivePath), entry]));
+    inventory = [...allowed].map((path) => {
+      const entry = byPath.get(path);
+      if (!entry) throw new Error(`Allowlisted plugin path is not Git-tracked: ${path}`);
+      return entry;
+    });
+    // Other files, including private submission material, are never archive input.
+  }
 
   const entries = new Map();
   addDirectoryEntry(entries, archiveRoot);

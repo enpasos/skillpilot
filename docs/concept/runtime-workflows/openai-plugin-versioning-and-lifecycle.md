@@ -272,17 +272,21 @@ Die Grenze ist der reale Veröffentlichungsstatus:
 - sobald eine Version veröffentlicht ist, erfordert jede weitere Änderung am
   Plugin-Paket je nach Änderung einen PATCH-, MINOR- oder MAJOR-Schritt.
 
-Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde noch
-nicht veröffentlicht, befindet sich aber bereits im Portal-Review. Der
-eingereichte `1.0.0`-Draft enthält zwei getrennte aktive hashgebundene
+Für die aktuelle Linie bedeutet das konkret (9. September 2026):
+`SkillPilot Coach v1` wurde noch nicht veröffentlicht. Die Einlieferung `1.0.0`
+wurde abgelehnt; der Product Owner hat sämtliche ChatGPT-Entwicklungssperren
+ausdrücklich aufgehoben. Der abgelehnte Snapshot bleibt historische Evidenz;
+der neue Arbeitsstand `1.1.0-SNAPSHOT` darf mit `prepare` aktualisiert werden.
+Die neue Paketversion enthält zwei getrennte aktive hashgebundene
 `text/html;profile=mcp-app`-Ressourcen für Lernzielvisualisierung und
 interaktives Karteikartenlernen. Bild-Renderer und Kartenlernstart verweisen
 jeweils mit `ui.resourceUri` und `openai/outputTemplate` auf ihre eigene
-Ressource; Kartenbewertung und gewöhnliche Werkzeuge bleiben ungebunden. Bis zu
-einer ausdrücklich autorisierten Remediation oder tatsächlichen
-Veröffentlichung werden weder diese Artefakte noch der Draft mit `prepare`
-aktualisiert. Bereits ausgelieferte Hash-URIs bleiben byte-identisch und passiv
-lesbar.
+Ressource; Kartenbewertung und gewöhnliche Werkzeuge bleiben ungebunden.
+Der aktuelle Entwurf ergänzt die Tagesplanprojektion sowie kontrollierte
+Planfortsetzung und Fachwechsel, ohne den Contract Major zu ändern. Er ist
+weder automatisch deployt noch erneut eingereicht. Bereits ausgelieferte
+Hash-URIs bleiben byte-identisch und passiv lesbar; eine spätere neue Einlieferung
+braucht eine eigene dokumentierte Abnahme und Entscheidung.
 
 ### 7.1 Server-Build ohne Plugin-Release
 
@@ -1139,12 +1143,12 @@ skillpilot/
     openai/
       skillpilot-coach-v1/
         .codex-plugin/plugin.json
-        .app.json
+        .mcp.json
         skills/
         release-notes/
       skillpilot-coach-v2/
         .codex-plugin/plugin.json
-        .app.json
+        .mcp.json
         skills/
         release-notes/
 
@@ -1302,7 +1306,7 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
 
 1. **V1-Konstanten und Konfiguration einführen**
    - `pluginIdentity = skillpilot-coach-v1`
-   - `pluginVersion = 1.0.0`
+   - `pluginVersion` aus dem aktuellen Manifest (Nachfolgerentwurf `1.1.0`)
    - `contractMajor = 1`
    - den öffentlichen MCP-Pfad und die exakte OAuth-Resource festlegen;
    - Server-Build separat ausgeben.
