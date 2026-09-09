@@ -332,6 +332,8 @@ jobs:
         run: npm run test:trainer-course-plan
       - name: Test learner-owned subject plans and Cockpit status
         run: npm run test:learner-learning-plans
+      - name: Test quiet and bounded learner cockpit startup
+        run: npm run test:learner-cockpit-startup
       - name: Test read-only learning-goal book UI
         run: npm run test:goal-book-ui
       - name: Test compact completed session setup
@@ -367,6 +369,7 @@ jobs:
           npm ci --ignore-scripts
           npm run check
           npm run demo -- validate --scenario scenarios/example.yaml
+          npm run demo -- validate --scenario scenarios/skillpilot-openai-review.template.yaml
           npx playwright install --with-deps chromium
           DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
             npm run demo -- record --scenario scenarios/example.yaml

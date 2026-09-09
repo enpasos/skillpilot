@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from 'react'
 import type { SkillLandscape } from '../landscapeTypes'
 import type { LandscapeEntry } from './useLandscapes'
@@ -9,16 +8,21 @@ interface Options {
   refreshToken?: number
 }
 
+const EMPTY_ENTRIES: LandscapeEntry[] = []
+
 export function useLearnerScopedLandscapes(
   landscapeId: string | undefined,
   language: string,
   skillpilotId: string | undefined,
   { enabled = true, refreshToken = 0 }: Options = {},
 ) {
-  const [entries, setEntries] = useState<LandscapeEntry[]>([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<Error | null>(null)
   const isActive = enabled && !!landscapeId && !!skillpilotId
+  const requestKey = JSON.stringify([skillpilotId, landscapeId, language, refreshToken])
+  const [result, setResult] = useState<{
+    key: string
+    entries: LandscapeEntry[]
+    error: Error | null
+  } | null>(null)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -28,9 +32,6 @@ export function useLearnerScopedLandscapes(
     if (!isActive || !landscapeId || !skillpilotId) {
       return () => controller.abort()
     }
-
-    setLoading(true)
-    setError(null)
 
     const url = apiBase
       ? `${apiBase}/api/ui/learners/${skillpilotId}/landscapes/${landscapeId}/closure`
@@ -44,24 +45,21 @@ export function useLearnerScopedLandscapes(
           throw new Error(message || `Failed to load learner-scoped landscape (${res.status})`)
         }
         const json = (await res.json()) as SkillLandscape[]
-        setEntries(prepareLandscapeEntries(json))
+        if (signal.aborted) return
+        setResult({ key: requestKey, entries: prepareLandscapeEntries(json), error: null })
       })
       .catch((err) => {
         if (signal.aborted) return
-        setError(err as Error)
-      })
-      .finally(() => {
-        if (!signal.aborted) {
-          setLoading(false)
-        }
+        setResult({ key: requestKey, entries: EMPTY_ENTRIES, error: err as Error })
       })
 
     return () => controller.abort()
-  }, [isActive, landscapeId, language, refreshToken, skillpilotId])
+  }, [isActive, landscapeId, language, requestKey, skillpilotId])
 
+  const current = isActive && result?.key === requestKey ? result : null
   return {
-    learnerScopedLandscapeEntries: isActive ? entries : [],
-    loadingLearnerScopedLandscapes: isActive ? loading : false,
-    learnerScopedLandscapeError: isActive ? error : null,
+    learnerScopedLandscapeEntries: current?.entries ?? EMPTY_ENTRIES,
+    loadingLearnerScopedLandscapes: isActive && current === null,
+    learnerScopedLandscapeError: current?.error ?? null,
   }
 }

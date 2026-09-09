@@ -225,9 +225,18 @@ export const LearnerPlanTodayOverview = ({
       ) : null}
 
       {staleDataMessage ? (
-        <p className="mt-4 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/20 dark:text-amber-100" role="alert">
-          {staleDataMessage}
-        </p>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/20 dark:text-amber-100" role="alert">
+          <p>{staleDataMessage}</p>
+          {onRetry && !actionError ? (
+            <button
+              type="button"
+              onClick={onRetry}
+              className="min-h-9 shrink-0 rounded-lg border border-current px-3 py-1.5 font-semibold"
+            >
+              {copy.retryAction}
+            </button>
+          ) : null}
+        </div>
       ) : null}
       {actionError ? (
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/20 dark:text-amber-100" role="alert">

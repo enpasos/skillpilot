@@ -39,6 +39,7 @@ import {
 
 type Role = 'learner' | 'trainer' | 'explorer'
 const DEFAULT_ACTIVE_FILTER = 'all'
+const EMPTY_LANDSCAPES: ReturnType<typeof useLandscapes>['landscapeEntries'] = []
 type ActiveFilterDimension = 'jurisdiction' | 'courseProfile' | 'durationModel' | 'generic'
 const COURSE_FILTER_VALUES = new Set(['GK', 'LK', 'GK+LK'])
 
@@ -325,18 +326,30 @@ export function useAppCore({
 
   const { language } = useLanguage()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
-  const [learnerPersonalCurriculum, setLearnerPersonalCurriculum] = React.useState<string | null>(null)
+  const [learnerProfile, setLearnerProfile] = React.useState<{
+    key: string
+    personalCurriculum: string | null
+    error: Error | null
+  } | null>(null)
   const [matchedCompositionViewsByLandscapeId, setMatchedCompositionViewsByLandscapeId] = React.useState<Record<string, Record<string, unknown>>>({})
   const [loadingMatchedCompositionViews, setLoadingMatchedCompositionViews] = React.useState(false)
   const [compositionViewError, setCompositionViewError] = React.useState<Error | null>(null)
+  const [matchedCompositionRequestKey, setMatchedCompositionRequestKey] = React.useState('')
 
   const [learnerGraphRefreshToken, setLearnerGraphRefreshToken] = React.useState(0)
   const runtimeCatalogReady = runtimeCatalogState.mode === 'package' || runtimeCatalogState.mode === 'repository'
+  // The canonical learner closure already carries root/subject metadata. Do
+  // not additionally download every unselected subject's complete graph.
+  // Canonical editor choices remain owned by the personalization-plan API.
+  const scopedCanonicalLearner = role === 'learner' && !!skillpilotId
+    && selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
   const {
-    landscapeEntries,
+    landscapeEntries: publicLandscapeEntries,
     loadingLandscapes,
     landscapeError: loadedLandscapeError,
-  } = useLandscapes(selectedLandscapeId, language, { enabled: enabled && runtimeCatalogReady })
+  } = useLandscapes(selectedLandscapeId, language, {
+    enabled: enabled && runtimeCatalogReady && !scopedCanonicalLearner,
+  })
   const {
     learnerScopedLandscapeEntries,
     loadingLearnerScopedLandscapes,
@@ -347,6 +360,12 @@ export function useAppCore({
     skillpilotId,
     { enabled: enabled && role === 'learner' && runtimeCatalogReady, refreshToken: learnerGraphRefreshToken },
   )
+  const landscapeEntries = scopedCanonicalLearner ? learnerScopedLandscapeEntries : publicLandscapeEntries
+  const learnerProfileKey = JSON.stringify([skillpilotId, learnerGraphRefreshToken])
+  const needsLearnerProfile = enabled && role === 'learner' && !!skillpilotId
+  const currentLearnerProfile = needsLearnerProfile && learnerProfile?.key === learnerProfileKey ? learnerProfile : null
+  const learnerPersonalCurriculum = currentLearnerProfile?.personalCurriculum ?? null
+  const loadingLearnerProfile = needsLearnerProfile && currentLearnerProfile === null
   const showLearnerTools = role !== 'explorer'
 
   const {
@@ -367,15 +386,15 @@ export function useAppCore({
       return landscapeEntries
     }
     if (loadingLearnerScopedLandscapes) {
-      return []
+      return EMPTY_LANDSCAPES
     }
     if (learnerScopedLandscapeEntries.length > 0) {
       return learnerScopedLandscapeEntries
     }
     if (learnerScopedLandscapeError) {
-      return landscapeEntries
+      return EMPTY_LANDSCAPES
     }
-    return []
+    return EMPTY_LANDSCAPES
   }, [
     landscapeEntries,
     learnerScopedLandscapeEntries,
@@ -459,7 +478,6 @@ export function useAppCore({
 
   useEffect(() => {
     if (!enabled || role !== 'learner' || !skillpilotId) {
-      setLearnerPersonalCurriculum(null)
       return
     }
 
@@ -467,7 +485,6 @@ export function useAppCore({
     const signal = controller.signal
     const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
     const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
-    setLearnerPersonalCurriculum(null)
 
     fetch(url, { signal })
       .then(async (res) => {
@@ -476,23 +493,29 @@ export function useAppCore({
         }
         const data = await res.json()
         if (!signal.aborted) {
-          setLearnerPersonalCurriculum(typeof data.personalCurriculum === 'string' ? data.personalCurriculum : null)
+          setLearnerProfile({
+            key: learnerProfileKey,
+            personalCurriculum: typeof data.personalCurriculum === 'string' ? data.personalCurriculum : null,
+            error: null,
+          })
         }
       })
       .catch((error) => {
         if (signal.aborted) return
         console.warn('[useAppCore] Failed to load learner personal curriculum for composition views', error)
-        setLearnerPersonalCurriculum(null)
+        setLearnerProfile({ key: learnerProfileKey, personalCurriculum: null, error: error instanceof Error ? error : new Error('Failed to load learner profile') })
       })
 
     return () => controller.abort()
-  }, [enabled, learnerGraphRefreshToken, role, skillpilotId])
+  }, [enabled, learnerProfileKey, role, skillpilotId])
 
+  const selectedOfferingId = searchParams.get('offering')
   const runtimeCompositionRequests = useMemo(() => {
     const requests = new Map<string, {
       scope: ReturnType<typeof deriveRuntimeCompositionScope>
       offeringId?: string
     }>()
+    if (role === 'learner' && (loadingLearnerProfile || currentLearnerProfile?.error)) return requests
     graphSourceLandscapeEntries.forEach((entry) => {
       const rootLandscapeId = runtimeCatalogState.mode === 'package'
         ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, entry.meta.landscapeId)
@@ -529,7 +552,7 @@ export function useAppCore({
             }, {})
           : null
         const queryOfferingId = entry.meta.landscapeId === selectedLandscapeId
-          ? new URLSearchParams(currentSearchString).get('offering')
+          ? selectedOfferingId
           : null
         const configuredOfferingId = queryOfferingId
           ?? readPersonalCurriculumOfferingId(learnerPersonalCurriculum, entry.meta.landscapeId)
@@ -557,7 +580,9 @@ export function useAppCore({
       }
     })
     return requests
-  }, [activeFilter, currentSearchString, graphSourceLandscapeEntries, learnerPersonalCurriculum, runtimeCatalogState, selectedLandscapeId])
+  }, [activeFilter, selectedOfferingId, graphSourceLandscapeEntries, learnerPersonalCurriculum, runtimeCatalogState, selectedLandscapeId, role, loadingLearnerProfile, currentLearnerProfile?.error])
+
+  const compositionRequestKey = JSON.stringify([learnerProfileKey, [...runtimeCompositionRequests]])
 
   useEffect(() => {
     if (role !== 'learner' || runtimeCompositionRequests.size === 0) {
@@ -566,6 +591,7 @@ export function useAppCore({
       )
       setLoadingMatchedCompositionViews(false)
       setCompositionViewError(null)
+      setMatchedCompositionRequestKey(compositionRequestKey)
       return
     }
 
@@ -622,6 +648,7 @@ export function useAppCore({
         setMatchedCompositionViewsByLandscapeId(next)
         setLoadingMatchedCompositionViews(false)
         setCompositionViewError(null)
+        setMatchedCompositionRequestKey(compositionRequestKey)
       })
       .catch((error) => {
         if (signal.aborted) return
@@ -629,10 +656,11 @@ export function useAppCore({
         setMatchedCompositionViewsByLandscapeId({})
         setLoadingMatchedCompositionViews(false)
         setCompositionViewError(error instanceof Error ? error : new Error('Failed to load composition view'))
+        setMatchedCompositionRequestKey(compositionRequestKey)
       })
 
     return () => controller.abort()
-  }, [role, runtimeCatalogState, runtimeCompositionRequests])
+  }, [role, runtimeCatalogState, runtimeCompositionRequests, compositionRequestKey])
 
   const effectiveMatchedCompositionViewsByLandscapeId = useMemo(
     () => matchedCompositionViewsByLandscapeId,
@@ -869,11 +897,17 @@ export function useAppCore({
     (targetLandscapeId: string, goalId: string) => {
       if (!goalId) return
       const newSearchParams = new URLSearchParams(searchParams)
-      newSearchParams.set('l', targetLandscapeId)
+      // A canonical multi-subject cockpit already owns its projected subject
+      // goals. Revealing one must not reload a subject closure and immediately
+      // bounce back to the learner's committed root curriculum.
+      const isLoadedCanonicalTarget = role === 'learner'
+        && selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+        && goalIndexAll.get(goalId)?.landscapeId === targetLandscapeId
+      if (!isLoadedCanonicalTarget) newSearchParams.set('l', targetLandscapeId)
       const view = location.pathname.split('/')[1]
       navigate(`/${view}/${goalId}?${newSearchParams.toString()}`)
     },
-    [navigate, location.pathname, searchParams],
+    [navigate, location.pathname, searchParams, role, selectedLandscapeId, goalIndexAll],
   )
 
   const handleMasteryChange = (id: string, value: number) => {
@@ -991,10 +1025,14 @@ export function useAppCore({
     loadingLandscapes:
       runtimeCatalogState.mode === 'loading'
       || loadingLandscapes
+      || loadingLearnerProfile
       || (role === 'learner' && !!selectedLandscapeId && loadingLearnerScopedLandscapes)
-      || (role === 'learner' && runtimeCompositionRequests.size > 0 && loadingMatchedCompositionViews),
+      || (role === 'learner' && runtimeCompositionRequests.size > 0
+        && (loadingMatchedCompositionViews || matchedCompositionRequestKey !== compositionRequestKey)),
     landscapeError:
       (runtimeCatalogState.mode === 'unavailable' ? runtimeCatalogState.error : null)
+      ?? currentLearnerProfile?.error
+      ?? learnerScopedLandscapeError
       ?? compositionViewError
       ?? loadedLandscapeError,
     runtimeCatalogState,

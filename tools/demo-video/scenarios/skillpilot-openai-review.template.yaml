@@ -1,6 +1,6 @@
 # Review blueprint, not submission evidence as committed.
 #
-# `review-build` prepares four fresh disposable learners and passes their
+# `review-build` prepares five fresh disposable learners and passes their
 # SkillPilot IDs only through an in-memory environment map. Every 24-hour
 # learning session is created later by the recorded first-party WebGUI click;
 # no session ID or protected ChatGPT URL is a fixture input. Never put the IDs
@@ -10,8 +10,8 @@
 # profile. Calibrate the external ChatGPT selectors and validate the result.
 schemaVersion: 1
 id: skillpilot-openai-review-v1
-title: SkillPilot Coach v1 review demonstration
-description: Demonstrate the supported SkillPilot browser launch and its main learning workflows with fresh disposable learners.
+title: SkillPilot Coach v1 1.1.0 review demonstration
+description: Demonstrate the supported SkillPilot browser launch, its main learning workflows and cross-subject daily planning with fresh disposable learners.
 # `review-build --source-revision` replaces this public placeholder in memory.
 sourceRevision: SET_TO_DEPLOYED_GIT_SHA
 platform: web
@@ -63,7 +63,7 @@ narration:
   model: gpt-5.6
   ttsModel: gpt-4o-mini-tts
   voice: cedar
-  instructions: Speak in clear, calm, professional English for an OpenAI plugin review. Explain only visible, evidenced behavior and safety boundaries. Describe SkillPilot Coach v1 only as a ChatGPT browser experience; do not claim operating-system, native-app, mobile, or cross-platform support.
+  instructions: Speak in clear, calm, professional English for an OpenAI plugin review of the 1.1.0 candidate. Explain only visible, evidenced behavior and safety boundaries. Describe SkillPilot Coach v1 only as a ChatGPT browser experience; do not claim operating-system, native-app, mobile, or cross-platform support. In the daily-plan chapter distinguish the current mastered count from goals completed today, show continuation and the explicit subject switch only when the recorded response supports them, and never infer a successful tool call or hidden state change from narration or a chapter label.
   disclosure: The narration in this video is AI-generated and is not a human voice.
   segmentGapMs: 350
   maxSegments: 28
@@ -170,7 +170,7 @@ chapters:
       - id: p2-open-chatgpt
         action: click
         label: Start learning through the normal first-party handoff
-        target: { role: button, name: "SkillPilot-App öffnen" }
+        target: { role: button, name: "Mit ChatGPT starten" }
         samePage: true
       - id: p2-wait-chatgpt
         action: waitFor
@@ -323,7 +323,7 @@ chapters:
       - id: p3-open-chatgpt
         action: click
         label: Create the fresh 24-hour session through the normal WebGUI handoff
-        target: { role: button, name: "SkillPilot-App öffnen" }
+        target: { role: button, name: "Mit ChatGPT starten" }
         samePage: true
       - id: p3-wait-chatgpt
         action: waitFor
@@ -494,7 +494,7 @@ chapters:
       - id: p4-open-chatgpt
         action: click
         label: Create the fresh exam session through the normal WebGUI handoff
-        target: { role: button, name: "SkillPilot-App öffnen" }
+        target: { role: button, name: "Mit ChatGPT starten" }
         samePage: true
       - id: p4-wait-chatgpt
         action: waitFor
@@ -586,7 +586,7 @@ chapters:
       - id: p5-open-chatgpt
         action: click
         label: Create the fresh focus session through the normal WebGUI handoff
-        target: { role: button, name: "SkillPilot-App öffnen" }
+        target: { role: button, name: "Mit ChatGPT starten" }
         samePage: true
       - id: p5-wait-chatgpt
         action: waitFor
@@ -661,4 +661,152 @@ chapters:
         target: { css: "${chatgptAssistantSelector}", match: last }
         text: "E-Phase: Grundlagen der Analysis und mathematische Modelle"
         timeoutMs: 120000
+        capture: true
+
+  - id: d1-daily-plan
+    title: See today's plan, continue Mathematics and switch to Physics
+    narrationHint: "A fresh learner has one open orientation goal in each subject. Show the genuine compact daily summary, continue the current Mathematics orientation with a personal interest, then explicitly switch to Physics. Orientation is motivation, not a knowledge test or proof of mastery. On weekends the two open goals are backlog from Friday. This chapter does not prove the separate no-active-goal resume case D2; only describe what the recorded conversation actually demonstrates."
+    steps:
+      - id: d1-open-first-party
+        action: goto
+        label: Return to SkillPilot for the fresh two-subject learner
+        url: "${skillpilotUrl}"
+      - id: d1-open-setup
+        action: click
+        label: Open the learner setup
+        target: { role: button, name: "Jetzt starten" }
+      - id: d1-enter-disposable-id
+        action: fill
+        label: Enter the freshly public-CREATE disposable SkillPilot ID
+        target: { css: "#skillpilotIdInput" }
+        valueFromEnv: SKILLPILOT_REVIEW_D1_SKILLPILOT_ID
+        secret: true
+        capture: true
+      - id: d1-continue-to-curriculum
+        action: click
+        label: Load the learner with published Mathematics and Physics plans
+        target: { role: button, name: "Weiter zu Schritt 2: Curriculum wählen" }
+      - id: d1-expand-personal-curriculum
+        action: click
+        label: Verify the existing personal curriculum without changing it
+        target: { role: button, name: "Ändern: Persönliches Curriculum festlegen", exact: true }
+      - id: d1-level-two-complete
+        action: waitFor
+        label: Verify the committed personal curriculum before launch
+        target: { role: heading, name: "Dein persönlicher Lehrplan ist eingerichtet." }
+        timeoutMs: 60000
+      - id: d1-level-two-mathematics
+        action: assert
+        label: Verify that Mathematics remains selected
+        target: { text: "Mathematik – Leistungskurs", exact: true, match: last }
+      - id: d1-level-two-physics
+        action: assert
+        label: Verify that Physics remains selected
+        target: { text: "Physik – Leistungskurs", exact: true, match: last }
+        capture: true
+      - id: d1-open-chatgpt
+        action: click
+        label: Create the plan session through the normal first-party handoff
+        target: { role: button, name: "Mit ChatGPT starten" }
+        samePage: true
+      - id: d1-wait-chatgpt
+        action: waitFor
+        label: Wait for the URL-prefilled ChatGPT composer
+        target: { css: "${chatgptComposerSelector}" }
+        timeoutMs: 60000
+      - id: d1-prompt-injected
+        action: assertPreparedPrompt
+        label: Verify the exact first-party prepared message before sending
+        target: { css: "${chatgptComposerSelector}" }
+        timeoutMs: 60000
+      - id: d1-send-start
+        action: press
+        label: Send the unchanged prepared start message
+        target: { css: "${chatgptComposerSelector}" }
+        key: Enter
+      - id: d1-wait-context-start
+        action: waitFor
+        label: Wait for the genuine plan response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 60000
+      - id: d1-wait-context-complete
+        action: waitFor
+        label: Wait until the plan response has finished streaming
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 120000
+      # These are the two exact server-date cases verified by the disposable
+      # fixture: weekday goals due today, or Friday goals overdue on weekends.
+      # Never replace an unexpected live total with one of these display texts.
+      - id: d1-daily-counts
+        action: assert
+        label: Verify the compact cross-subject counts from the checked live fixture
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: '(?:Heute:\s*0/2\s+beherrscht\s*·\s*Offen:\s*Mathematik\s+1\s*·\s*Physik\s+1(?!\d|\s*·)|Heute:\s*0/0\s+beherrscht\s*·\s*Offen:\s*Mathematik\s+0\s*·\s*Physik\s+0\s*·\s*Rückstand:\s*2(?!\d|\s*·))'
+        timeoutMs: 90000
+        capture: true
+      - id: d1-mathematics-active
+        action: assert
+        label: Verify that the current planned Mathematics orientation is visible
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: 'Warum Mathematik\?\s*[–-]\s*Denken, Muster & Zukunft'
+        timeoutMs: 60000
+      - id: d1-continue-mathematics
+        action: fill
+        label: Continue the current orientation with a genuine personal interest
+        target: { css: "${chatgptComposerSelector}" }
+        value: Ich möchte bei Mathematik weiterlernen. Mich interessiert, wie man mit Mathematik Wachstum verstehen kann.
+      - id: d1-send-continuation
+        action: press
+        label: Send the learner's interest without asserting mastery or selecting another goal
+        target: { css: "${chatgptComposerSelector}" }
+        key: Enter
+      - id: d1-wait-continuation-start
+        action: waitFor
+        label: Wait for the Mathematics follow-up to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 60000
+      - id: d1-wait-continuation-complete
+        action: waitFor
+        label: Wait until the motivational follow-up has finished streaming
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 120000
+      - id: d1-mathematics-continued
+        action: assert
+        label: Verify a visible growth-related follow-up and invitation to respond
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: '^(?=[\s\S]*(?:Wachstum|wachsen))(?=[\s\S]*\?)[\s\S]+$'
+        timeoutMs: 90000
+        capture: true
+      - id: d1-switch-physics
+        action: fill
+        label: Explicitly choose Physics within the existing plans
+        target: { css: "${chatgptComposerSelector}" }
+        value: Jetzt Physik.
+      - id: d1-send-switch
+        action: press
+        label: Send the explicit subject-switch request
+        target: { css: "${chatgptComposerSelector}" }
+        key: Enter
+      - id: d1-wait-switch-start
+        action: waitFor
+        label: Wait for the Physics response to begin
+        target: { testId: stop-button }
+        state: visible
+        timeoutMs: 60000
+      - id: d1-wait-switch-complete
+        action: waitFor
+        label: Wait until the subject-switch response has finished streaming
+        target: { testId: stop-button }
+        state: hidden
+        timeoutMs: 120000
+      - id: d1-physics-result
+        action: assert
+        label: Verify the planned Physics orientation and its invitation to the learner
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: '^(?=[\s\S]*Warum Physik\?\s*[–-]\s*Weltverständnis & Zukunft)(?=[\s\S]*(?:interess|entdeck|versteh|erkund))[\s\S]+$'
+        timeoutMs: 90000
         capture: true

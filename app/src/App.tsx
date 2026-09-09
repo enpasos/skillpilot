@@ -816,8 +816,10 @@ const App: React.FC = () => {
 
   if (core.loadingLandscapes && role !== 'trainer') {
     return (
-      <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
-        Landscapes laden ...
+      <div className="min-h-screen bg-chat-bg flex items-center justify-center p-6 text-sm text-text-secondary" role="status">
+        {role === 'learner'
+          ? (language === 'en' ? 'Loading your cockpit …' : 'Dein Cockpit wird geladen …')
+          : (language === 'en' ? 'Loading learning goals …' : 'Lernziele werden geladen …')}
       </div>
     )
   }

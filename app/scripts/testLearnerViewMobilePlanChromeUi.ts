@@ -67,6 +67,7 @@ try {
 
   const page = await context.newPage()
   const browserErrors: string[] = []
+  const unexpectedRequests: string[] = []
   page.on('pageerror', (error) => browserErrors.push(error.message))
   page.on('console', (message) => {
     if (message.type() === 'error') browserErrors.push(message.text())
@@ -119,7 +120,6 @@ try {
         },
       })
     }
-    if (pathname.endsWith('/planned')) return json({ goals: ['math-goal-1'] })
     if (pathname.endsWith('/learning-plans')) {
       return json({
         asOf: '2026-09-04',
@@ -145,6 +145,7 @@ try {
         activeGoalId: 'math-goal-1',
       })
     }
+    unexpectedRequests.push(`${request.method()} ${pathname}`)
     return route.fulfill({ status: 404, body: 'Unexpected learner fixture request' })
   }
   await page.route('**/api/ui/learners/learner-42', handleLearnerRequest)
@@ -191,6 +192,7 @@ try {
   await menuButton.waitFor()
 
   assert.equal(browserErrors.length, 0, `mobile LearnerView browser errors:\n${browserErrors.join('\n')}`)
+  assert.deepEqual(unexpectedRequests, [], 'the full state already supplies focus; initial /planned must not be fetched')
   await context.close()
   console.log('mobile LearnerView plan chrome browser regression test passed')
 } finally {

@@ -294,14 +294,37 @@ and [submission testing](https://developers.openai.com/plugins/deploy/submission
 guidance.
 
 The target recording blueprint is defined in
-`scenarios/skillpilot-openai-review.template.yaml`. Its four browser chapters P2–P5
+`scenarios/skillpilot-openai-review.template.yaml`. Its five browser chapters P2–P5 and D1
 show the supported first-party launch, context-bound orientation, a second
 goal completed through Verified Recall, complete exam evaluation, and consent-bound
-focus widening. The five positive and three negative cases remain separate portal Testing entries in
-`docs/deploy/openai-plugin-v1-submission.md`. A contract test locks all four
+focus widening, followed by the current 1.1.0 daily-plan workflow: a compact
+Mathematics/Physics overview, plan continuation and an explicit subject switch.
+The five positive and three negative cases remain separate portal Testing entries in
+`docs/deploy/openai-plugin-v1-submission.md`; D1–D6 are additional regression cases.
+The D1 video chapter shows D1/D3 and continuation of the active plan goal. It
+does not prove D2's separate no-active-goal repair path or all regression cases.
+A contract test locks all five
 first-party WebGUI launches, the URL-prefilled-message and exact-session gate,
 the complete eight-answer Recall batch, the absence of any redundant app lookup, and a captured result gate
 per video chapter.
+
+For the current operator handoff and approval checklist, see
+[`docs/deploy/openai-plugin-v1-demo-video.md`](../../docs/deploy/openai-plugin-v1-demo-video.md).
+Local preparation needs no credentials or paid API calls:
+
+```bash
+cd /home/enpasos/projects/skillpilot/tools/demo-video
+npm run check
+npm run demo -- validate --scenario scenarios/skillpilot-openai-review.template.yaml
+```
+
+These commands validate the recording machinery and blueprint, not a real
+ChatGPT session, the deployed plugin, or the final video. No fixture transcript
+or API-regression output may stand in for an actual ChatGPT screen recording.
+Before the next release recording, extend P3 with the actual memory-widget
+flip/rate sequence required by the current review case. Its existing script
+still jumps straight to Verified Recall; passing the local blueprint tests
+does not establish that missing main-use-case evidence.
 
 Before treating that template as release evidence:
 
@@ -319,9 +342,9 @@ Before treating that template as release evidence:
    syncing changes back.
 3. Calibrate only the external ChatGPT locator variables against the current
    UI; SkillPilot's own selectors/accessible labels are repository-owned.
-4. Let `review-build` create one fresh disposable learner for each P2–P5 video
+4. Let `review-build` create one fresh disposable learner for each P2–P5 and D1 video
    chapter through the public first-party endpoints. It prepares the normal
-   reviewed state, then records every P2–P5 launch through the real SkillPilot
+   reviewed state, then records every launch through the real SkillPilot
    WebGUI. Each click creates that chapter's fresh 24-hour learning session and
    passes its prepared message to ChatGPT through the product URL. The fixture
    code never creates a learning session or constructs a ChatGPT start URL.
@@ -337,7 +360,10 @@ Before treating that template as release evidence:
    submission supports only the browser surface. Generic scenarios may still
    append independently reviewed platform clips.
 7. Review `timeline.json`, every evidence screenshot, `subtitles.srt`, and the
-   final MP4 before uploading its private HTTPS URL to the portal.
+   final MP4. Only after explicit approval, host the final MP4 at a new public,
+   content-addressed HTTPS URL and verify anonymous access and exact bytes
+   before entering that URL in the portal. The historical 1.0.0 video and its
+   URL remain unchanged.
 
 The release-oriented command is:
 
@@ -351,8 +377,8 @@ umask 077
 cd /home/enpasos/projects/skillpilot/tools/demo-video
 
 # One-time protected operator setup. Use a normal, dedicated Chromium profile,
-# log in with the review account, enable Developer Mode, make the draft
-# SkillPilot Coach v1 app available, and close every profile window. Do not use
+# log in with the review account, enable Developer Mode, make the current
+# SkillPilot Coach v1 1.1.0 draft available, and close every profile window. Do not use
 # automation or challenge-bypass flags for the login.
 mkdir -p /home/enpasos/projects/skillpilot/tools/demo-video/secrets/chatgpt-login-profile
 chmod 700 /home/enpasos/projects/skillpilot/tools/demo-video/secrets
@@ -435,8 +461,9 @@ contains no prior user data and remains covered by SkillPilot's normal
 365-day inactivity deletion. The tool does not claim that this ambiguous
 network-failure case was synchronously deleted.
 
-The command prints the private final MP4 and manifest paths. Upload only the
-final MP4 to the private HTTPS location used by the portal. The WebM,
+The command prints the private final MP4 and manifest paths. After human
+approval, publish only the final MP4 at the new public HTTPS location used by
+the portal. An unlisted URL is still public, not a privacy boundary. The WebM,
 screenshots, timeline, analysis, WAV files, SRT, and manifest form a private
 audit package and are not the portal payload.
 

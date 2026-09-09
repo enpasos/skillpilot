@@ -215,6 +215,9 @@ URL und Bytes bleiben unverändert. Es wird nicht automatisch in den neuen
 Draft übernommen. Die aktuelle Demo muss auch Tagesübersicht, Fortsetzung und
 Fachwechsel auf der zugesagten Oberfläche belegen. Sie enthält keine OAuth-
 oder Review-Zugangsdaten. Freigegebene Demo-URLs sind öffentlich, nicht privat.
+Die aktuelle [Aufnahmevorbereitung und Freigabecheckliste](openai-plugin-v1-demo-video.md)
+beschreibt die fünf Szenen, den einmaligen Browserzugang und die Grenze zwischen
+lokalen Tests und tatsächlicher ChatGPT-Aufnahme.
 
 ## 8. Unveränderte Datenschutz- und Freigabegrenzen
 

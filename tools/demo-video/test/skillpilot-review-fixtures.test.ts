@@ -12,17 +12,21 @@ import {
 
 const ROOT_CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
 const MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+const PHYSICS_CURRICULUM_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
 const ORIENTATION_GOAL_ID = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
+const PHYSICS_ORIENTATION_GOAL_ID = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
 const MEMORY_GOAL_ID = "77259806-add7-5fcb-b89c-376e1b0c88d6";
 
 interface RequestRecord {
   method: string;
   pathname: string;
+  search: string;
   body: unknown;
 }
 
 interface MockReviewApiOptions {
   failRequest?: (request: RequestRecord) => boolean;
+  serverDate?: string;
 }
 
 const jsonResponse = (value: unknown, status = 200): Response => new Response(
@@ -64,6 +68,9 @@ const personalizationPlan = (step: number): Record<string, unknown> => {
       landscapeId: MATHEMATICS_CURRICULUM_ID,
       filterId: null,
     }],
+    [{
+      optionId: "subject-physics", kind: "VALUE", landscapeId: PHYSICS_CURRICULUM_ID, filterId: null,
+    }, { optionId: "finish-subjects", kind: "COMPLETE_GROUP" }],
     [{ optionId: "finish-subjects", kind: "COMPLETE_GROUP" }],
     [
       {
@@ -79,6 +86,7 @@ const personalizationPlan = (step: number): Record<string, unknown> => {
         filterId: "LK",
       },
     ],
+    [{ optionId: "physics-lk", kind: "VALUE", landscapeId: PHYSICS_CURRICULUM_ID, filterId: "LK" }],
   ];
   return step >= optionsByStep.length
     ? { stage: "COMPLETE", options: [] }
@@ -90,6 +98,9 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
   const createdIds: string[] = [];
   const deletedIds: string[] = [];
   const personalizationSteps = new Map<string, number>();
+  const physicsLearners = new Set<string>();
+  const activatedPlans = new Map<string, Record<string, unknown>>();
+  const asOf = options.serverDate ?? "2026-09-09";
 
   const fetchImpl = (async (
     input: string | URL | Request,
@@ -98,7 +109,7 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
     const url = new URL(input instanceof Request ? input.url : input.toString());
     const method = (init?.method ?? (input instanceof Request ? input.method : "GET")).toUpperCase();
     const body = requestBody(init?.body);
-    const request = { method, pathname: url.pathname, body };
+    const request = { method, pathname: url.pathname, search: url.search, body };
     requests.push(request);
     if (options.failRequest?.(request)) return jsonResponse({ error: "planned failure" }, 503);
 
@@ -122,7 +133,11 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
       return jsonResponse(personalizationPlan(personalizationSteps.get(id) ?? 0));
     }
     if (method === "POST" && suffix === "/personalization-options") {
-      const nextStep = (personalizationSteps.get(id) ?? 0) + 1;
+      const optionId = (body as { optionId: string }).optionId;
+      if (optionId === "subject-physics") physicsLearners.add(id);
+      const nextStep = optionId === "finish-subjects" ? 6
+        : optionId.startsWith("mathematics-") ? (physicsLearners.has(id) ? 7 : 8)
+        : (personalizationSteps.get(id) ?? 0) + 1;
       personalizationSteps.set(id, nextStep);
       return jsonResponse(personalizationPlan(nextStep));
     }
@@ -132,6 +147,34 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
     if (method === "POST" && suffix === "/active-goal") {
       const requestedGoalId = (body as { goalId?: unknown } | undefined)?.goalId;
       return jsonResponse({ activeGoal: { id: requestedGoalId } });
+    }
+    if (method === "GET" && suffix === "/planning-scope") {
+      const landscapeId = url.searchParams.get("landscapeId");
+      const goalId = landscapeId === MATHEMATICS_CURRICULUM_ID ? ORIENTATION_GOAL_ID : PHYSICS_ORIENTATION_GOAL_ID;
+      return jsonResponse({ landscapeId, scopeAtomicGoalIds: [goalId], openAtomicGoalIds: [goalId] });
+    }
+    if (method === "GET" && suffix === "/learning-plans") {
+      return jsonResponse(activatedPlans.get(id) ?? { asOf, followLearningPlans: false, plans: [] });
+    }
+    if (method === "POST" && suffix === "/learning-plans/activate") {
+      const request = body as { asOf: string; plans: {
+        landscapeId: string; planLabel: string; blocks: { startDate: string; atomicGoalIds: string[] }[];
+      }[] };
+      assert.equal(request.asOf, asOf);
+      const plans = request.plans.map((plan, index) => {
+        const dueToday = plan.blocks[0]!.startDate === asOf ? 1 : 0;
+        return {
+          ...plan, planId: `disposable-plan-${index}`, revision: 1, stale: false,
+          nextEligibleGoal: { goalId: plan.blocks[0]!.atomicGoalIds[0] },
+          metrics: { totalPlanned: 1, dueThroughToday: 1, completedDueThroughToday: 0,
+            openDueThroughToday: 1, dueToday, completedDueToday: 0, openDueToday: dueToday },
+        };
+      });
+      const response = { asOf, followLearningPlans: true, plans,
+        selectedLandscapeId: MATHEMATICS_CURRICULUM_ID, activeGoalId: ORIENTATION_GOAL_ID,
+        state: { activeGoal: { id: ORIENTATION_GOAL_ID } } };
+      activatedPlans.set(id, response);
+      return jsonResponse(response);
     }
     if (method === "DELETE" && suffix === "") {
       deletedIds.push(id);
@@ -143,19 +186,20 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
   return { fetchImpl, requests, createdIds, deletedIds };
 };
 
-test("prepares four disposable upload-video learners only through normal public learner routes", async () => {
+test("prepares five disposable video learners only through normal public learner routes", async () => {
   const mock = createMockReviewApi();
   const fixtures = await prepareSkillPilotReviewFixtures({
     baseUrl: "https://skillpilot.example",
     fetchImpl: mock.fetchImpl,
   });
 
-  assert.equal(fixtures.learnerCount, 4);
+  assert.equal(fixtures.learnerCount, 5);
   assert.deepEqual(mock.createdIds, [
     "sps_review_00000001",
     "sps_review_00000002",
     "sps_review_00000003",
     "sps_review_00000004",
+    "sps_review_00000005",
   ]);
   assert.equal(
     fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.p2SkillpilotId],
@@ -167,12 +211,13 @@ test("prepares four disposable upload-video learners only through normal public 
       fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.p3SkillpilotId],
       fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.p4SkillpilotId],
       fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.p5SkillpilotId],
+      fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.d1SkillpilotId],
     ],
     mock.createdIds,
   );
   assert.equal(
     mock.requests.filter((request) => request.method === "POST" && request.pathname === "/api/ui/learners").length,
-    4,
+    5,
   );
   assert.equal(
     mock.requests.filter((request) => request.method === "POST" && request.pathname.endsWith("/openai/v1/launch")).length,
@@ -198,6 +243,8 @@ test("prepares four disposable upload-video learners only through normal public 
   );
   assert.ok(mock.requests.every((request) => request.pathname.startsWith("/api/ui/learners")));
   assert.ok(mock.requests.every((request) => !/(?:admin|fixture|reset)/iu.test(request.pathname)));
+  assert.ok(mock.requests.every((request) => !request.pathname.endsWith("/mastery")),
+    "daily-plan preparation must not manufacture mastery");
 
   await fixtures.cleanup();
   assert.deepEqual(mock.deletedIds, [...mock.createdIds].reverse());
@@ -220,6 +267,75 @@ test("cleans every already-created learner when fixture preparation fails partwa
   );
   assert.deepEqual(mock.createdIds, ["sps_review_00000001", "sps_review_00000002"]);
   assert.deepEqual(mock.deletedIds, ["sps_review_00000002", "sps_review_00000001"]);
+});
+
+test("daily-plan fixture selects both published LK profiles and atomically activates current server-date plans", async () => {
+  const mock = createMockReviewApi();
+  const fixtures = await prepareSkillPilotReviewFixtures({ fetchImpl: mock.fetchImpl });
+  const id = fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.d1SkillpilotId]!;
+  const requests = mock.requests.filter((request) => request.pathname.startsWith(`/api/ui/learners/${id}/`));
+  assert.deepEqual(requests.filter((request) => request.pathname.endsWith("/personalization-options"))
+    .map((request) => (request.body as { optionId: string }).optionId), [
+    "jurisdiction-hessen", "duration-g9", "stage-sekii", "subject-mathematics",
+    "subject-physics", "finish-subjects", "mathematics-lk", "physics-lk",
+  ]);
+  assert.deepEqual(requests.filter((request) => request.pathname.endsWith("/planning-scope"))
+    .map((request) => new URLSearchParams(request.search).get("landscapeId")),
+  [MATHEMATICS_CURRICULUM_ID, PHYSICS_CURRICULUM_ID]);
+  const activation = requests.find((request) => request.pathname.endsWith("/learning-plans/activate"))!;
+  assert.deepEqual(activation.body, {
+    asOf: "2026-09-09",
+    plans: [
+      { landscapeId: MATHEMATICS_CURRICULUM_ID, expectedRevision: 0, planLabel: "Mathematik", blocks: [{
+        id: "review-daily-1", kind: "learning", goalId: ORIENTATION_GOAL_ID,
+        title: "Mathematik: Orientierung", startDate: "2026-09-09", endDate: "2026-09-09",
+        atomicGoalIds: [ORIENTATION_GOAL_ID],
+      }] },
+      { landscapeId: PHYSICS_CURRICULUM_ID, expectedRevision: 0, planLabel: "Physik", blocks: [{
+        id: "review-daily-2", kind: "learning", goalId: PHYSICS_ORIENTATION_GOAL_ID,
+        title: "Physik: Orientierung", startDate: "2026-09-09", endDate: "2026-09-09",
+        atomicGoalIds: [PHYSICS_ORIENTATION_GOAL_ID],
+      }] },
+    ],
+  });
+  assert.equal(requests.at(-1)?.method, "GET");
+  assert.ok(requests.at(-1)?.pathname.endsWith("/learning-plans"), "activation must be read back");
+  await fixtures.cleanup();
+});
+
+test("weekend preparation uses overdue Friday goals without changing the current server date", async () => {
+  const mock = createMockReviewApi({ serverDate: "2026-09-13" });
+  const fixtures = await prepareSkillPilotReviewFixtures({ fetchImpl: mock.fetchImpl });
+  const activation = mock.requests.find((request) => request.pathname.endsWith("/learning-plans/activate"))!;
+  const body = activation.body as { asOf: string; plans: { blocks: { startDate: string; endDate: string }[] }[] };
+  assert.equal(body.asOf, "2026-09-13");
+  assert.deepEqual(body.plans.map((plan) => [plan.blocks[0]!.startDate, plan.blocks[0]!.endDate]),
+    [["2026-09-11", "2026-09-11"], ["2026-09-11", "2026-09-11"]]);
+  await fixtures.cleanup();
+});
+
+test("daily-plan activation failure cleans all five disposable learners", async () => {
+  const mock = createMockReviewApi({ failRequest: (request) => request.pathname.endsWith("/learning-plans/activate") });
+  await assert.rejects(prepareSkillPilotReviewFixtures({ fetchImpl: mock.fetchImpl }),
+    /Activate disposable review subject plans failed/u);
+  assert.equal(mock.createdIds.length, 5);
+  assert.deepEqual(mock.deletedIds, [...mock.createdIds].reverse());
+});
+
+test("persisted daily-plan drift fails closed and cleans every disposable learner", async () => {
+  const mock = createMockReviewApi();
+  let planReads = 0;
+  const fetchImpl = (async (input: string | URL | Request, init?: RequestInit) => {
+    const response = await mock.fetchImpl(input, init);
+    if ((init?.method ?? "GET") === "GET" && String(input).endsWith("/learning-plans") && ++planReads === 2) {
+      const body = await response.json() as { plans: { metrics: { completedDueThroughToday: number } }[] };
+      body.plans[1]!.metrics.completedDueThroughToday = 1;
+      return jsonResponse(body);
+    }
+    return response;
+  }) as typeof fetch;
+  await assert.rejects(prepareSkillPilotReviewFixtures({ fetchImpl }), /one unmastered due orientation goal/u);
+  assert.deepEqual(mock.deletedIds, [...mock.createdIds].reverse());
 });
 
 test("times out a stalled fixture request without logging its URL or learner data", async () => {
@@ -272,7 +388,7 @@ test("retries failed deletes and retains only pending learner IDs for a later cl
     fixtures.cleanup(),
     /Failed to delete 1 disposable review learner\(s\); 1 cleanup operation\(s\) remain pending/u,
   );
-  assert.equal(mock.deletedIds.length, 3);
+  assert.equal(mock.deletedIds.length, 4);
   assert.ok(!mock.deletedIds.includes(pendingId));
   assert.equal(
     mock.requests.filter((request) => (
@@ -285,7 +401,7 @@ test("retries failed deletes and retains only pending learner IDs for a later cl
 
   rejectPendingDelete = false;
   await fixtures.cleanup();
-  assert.equal(mock.deletedIds.length, 4);
+  assert.equal(mock.deletedIds.length, 5);
   assert.equal(mock.deletedIds.filter((id) => id === pendingId).length, 1);
   const deleteRequestsAfterRecovery = mock.requests.filter((request) => request.method === "DELETE").length;
 
@@ -325,7 +441,7 @@ test("recovers a private cleanup ledger before creating a new review generation"
     const activeLedger = JSON.parse(await readFile(ledgerPath, "utf8")) as {
       skillpilotIds: string[];
     };
-    assert.equal(activeLedger.skillpilotIds.length, 4);
+    assert.equal(activeLedger.skillpilotIds.length, 5);
     assert.ok(!activeLedger.skillpilotIds.includes(previousId));
 
     await fixtures.cleanup();

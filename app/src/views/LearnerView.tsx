@@ -471,8 +471,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const pendingActiveGoalRouteSyncRef = useRef<string | null>(null)
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
   const learnerStateRequestSequenceRef = useRef(0)
-  const learnerDataRequestSequenceRef = useRef(0)
-  const plannedGoalsRequestSequenceRef = useRef(0)
   const personalCurriculumRefreshSequenceRef = useRef(0)
   const learningPlansRequestSequenceRef = useRef(0)
   const learningPlansRefreshInFlightRef = useRef(false)
@@ -1465,42 +1463,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       ? stateRequiredAction === 'setActiveGoal' || currentActiveFlashcardVerificationWaiting
       : !effectiveActiveGoalId)
 
-  const refreshLearnerData = useCallback(async () => {
-    if (!skillpilotId) return
-    const requestSequence = beginLatestRequest(learnerDataRequestSequenceRef)
-    const requestScopeKey = learnerStateScopeKey
-    const isCurrentRequest = () => isLatestRequestForScope(
-      learnerDataRequestSequenceRef,
-      requestSequence,
-      currentLearnerStateScopeKeyRef.current,
-      requestScopeKey,
-    )
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
-      const res = await fetch(url)
-      if (res.ok) {
-        const data = await res.json()
-        if (!isCurrentRequest()) return
-        setLearnerData(data)
-        clearReportedLoadError('learner-initial-load')
-        return
-      }
-      if (!isCurrentRequest()) return
-      notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
-    } catch (e) {
-      if (!isCurrentRequest()) return
-      console.warn('Failed to load learner data', e)
-      notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
-    }
-  }, [
-    clearReportedLoadError,
-    learnerStateScopeKey,
-    notifyLoadErrorOnce,
-    skillpilotId,
-    t.notifications.learnerInitialLoadFailed,
-  ])
-
   const usesGuidedPersonalCurriculumEditor =
     rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
   const personalConfigLoadStatus: LearnerStateLoadStatus =
@@ -1529,36 +1491,24 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const currentFlashcardVerificationDisabled =
     currentFlashcardVerificationComplete || currentFlashcardVerificationWaiting
   const personalizationGateCopy = language === 'en'
-    ? guidedPersonalizationGateReason === 'scopeLoading'
+    ? guidedPersonalizationGateReason === 'scopeError'
       ? {
-        title: 'Loading your learning scope',
-        body: 'The learning tree remains locked until the current personal curriculum has been verified.',
-        action: 'Please wait',
+        title: 'Your learning scope could not be verified',
+        body: 'The learning tree remains locked so that no broad fallback curriculum is shown.',
+        action: 'Try again',
       }
-      : guidedPersonalizationGateReason === 'scopeError'
-        ? {
-          title: 'Your learning scope could not be verified',
-          body: 'The learning tree remains locked so that no broad fallback curriculum is shown.',
-          action: 'Try again',
-        }
-        : {
+      : {
           title: 'Complete your personal curriculum',
           body: 'Choose your lasting curriculum scope before selecting a concrete learning goal.',
           action: 'Continue setup',
         }
-    : guidedPersonalizationGateReason === 'scopeLoading'
+    : guidedPersonalizationGateReason === 'scopeError'
       ? {
-        title: 'Dein Lernumfang wird geladen',
-        body: 'Der Lernbaum bleibt gesperrt, bis dein persönlicher Lehrplan verlässlich geprüft ist.',
-        action: 'Bitte warten',
+        title: 'Dein Lernumfang konnte nicht geprüft werden',
+        body: 'Der Lernbaum bleibt gesperrt, damit kein breiter Fallback-Lehrplan angezeigt wird.',
+        action: 'Erneut versuchen',
       }
-      : guidedPersonalizationGateReason === 'scopeError'
-        ? {
-          title: 'Dein Lernumfang konnte nicht geprüft werden',
-          body: 'Der Lernbaum bleibt gesperrt, damit kein breiter Fallback-Lehrplan angezeigt wird.',
-          action: 'Erneut versuchen',
-        }
-        : {
+      : {
           title: 'Persönlichen Lehrplan vervollständigen',
           body: 'Lege zuerst deinen dauerhaften Lernumfang fest, bevor du ein konkretes Lernziel auswählst.',
           action: 'Einrichtung fortsetzen',
@@ -1567,8 +1517,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   useEffect(() => {
     invalidateLatestRequest(learnerStateRequestSequenceRef)
-    invalidateLatestRequest(learnerDataRequestSequenceRef)
-    invalidateLatestRequest(plannedGoalsRequestSequenceRef)
     invalidateLatestRequest(personalCurriculumRefreshSequenceRef)
     invalidateLatestRequest(learningPlansRequestSequenceRef)
     invalidateLatestRequest(learningPlanContinueRequestSequenceRef)
@@ -1908,44 +1856,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     rewindPersonalCurriculum,
   ])
 
-  const refreshPlanned = useCallback(async () => {
-    if (!skillpilotId) return
-    const requestSequence = beginLatestRequest(plannedGoalsRequestSequenceRef)
-    const requestScopeKey = learnerStateScopeKey
-    const isCurrentRequest = () => isLatestRequestForScope(
-      plannedGoalsRequestSequenceRef,
-      requestSequence,
-      currentLearnerStateScopeKeyRef.current,
-      requestScopeKey,
-    )
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
-      const res = await fetch(url)
-      if (res.ok) {
-        const data = await res.json()
-        if (!isCurrentRequest()) return
-        if (data.goals && Array.isArray(data.goals)) {
-          setPlannedGoals(new Set(data.goals))
-        }
-        clearReportedLoadError('learner-initial-load')
-        return
-      }
-      if (!isCurrentRequest()) return
-      notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
-    } catch (e) {
-      if (!isCurrentRequest()) return
-      console.warn('Failed to load planned goals', e)
-      notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
-    }
-  }, [
-    clearReportedLoadError,
-    learnerStateScopeKey,
-    notifyLoadErrorOnce,
-    skillpilotId,
-    t.notifications.learnerInitialLoadFailed,
-  ])
-
   const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
     if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
       setSrsMasteryTick(c => c + 1)
@@ -1973,11 +1883,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     fullRefreshInFlightRef.current = true
     lastFullRefreshAtRef.current = now
     console.log('[SSE] 🔄 Triggering full refresh...')
-    // Refresh mastery data, learner state, AND planned goals (scope) in parallel
+    // The full state already includes planned goals. Do not compute the same
+    // learner scope again through a separate /planned request.
     try {
       await Promise.all([
         refreshState(true),
-        refreshPlanned(),
         refreshLearningPlans(),
         onRefresh?.()
       ])
@@ -1990,7 +1900,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     } finally {
       fullRefreshInFlightRef.current = false
     }
-  }, [refreshState, refreshPlanned, refreshLearningPlans, onRefresh, currentGoal?.id, skillpilotId])
+  }, [refreshState, refreshLearningPlans, onRefresh, currentGoal?.id, skillpilotId])
 
   useEffect(() => {
     if (!campaignContext) return
@@ -2053,15 +1963,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [currentRouteGoalId, effectiveActiveGoalId, effectiveLearnerParentMap, revealActiveGoal])
 
 
-  // Load planned goals from backend
+  // Personal configuration below loads the profile and full state (including
+  // planned goals). Only the independent plan summaries need another request.
   React.useEffect(() => {
     if (!skillpilotId) return
-
-    // fetchPlanned now handled by refreshPlanned
-    refreshPlanned()
-    refreshLearnerData()
-    refreshLearningPlans()
-  }, [skillpilotId, refreshPlanned, refreshLearnerData, refreshLearningPlans])
+    void refreshLearningPlans()
+  }, [skillpilotId, refreshLearningPlans])
 
   const handleSetActiveGoal = useCallback(async (goalId: string) => {
     if (!skillpilotId) return;
@@ -2212,7 +2119,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!result || !isCurrentRequest()) return
 
     invalidateLatestRequest(learnerStateRequestSequenceRef)
-    invalidateLatestRequest(plannedGoalsRequestSequenceRef)
     if (isLearnerStatePayload(result.state)) {
       applyLearnerStatePayload(result.state, requestScopeKey)
     } else {
@@ -2483,6 +2389,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const res = await fetch(url)
         if (res.ok) {
           const data = await res.json()
+          if (isCurrentRefresh()) setLearnerData(data)
           if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
             if (isCurrentRefresh()) {
               setPersonalConfig(readPersonalCurriculumConfig(data.personalCurriculum))
@@ -3317,6 +3224,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
           <div className="flex-1 min-w-0 mr-2">
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
+            {learnerStateLoadStatus !== 'ready' || personalConfigLoadStatus !== 'ready' ? (
+              <div className="mt-2 h-4 w-36 rounded bg-border-color" aria-hidden="true" data-testid="learner-progress-loading" />
+            ) : (
               <div className="text-xs flex items-center gap-2 mt-1">
                 <button
                   className="flex items-center gap-1 font-bold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 transition-colors"
@@ -3354,6 +3264,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 </button>
               </ProgressPopover>
             </div>
+            )}
           </div>
           <div className="flex items-center gap-1 shrink-0">
 
@@ -3374,9 +3285,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           </div>
         </div>
         <div className="flex-1 overflow-y-auto p-2">
-          {isPersonalConfigHydrating ? (
-            <div className="p-8 text-center text-sm text-text-secondary">
-              {t.learner.loadingGoals}
+          {isPersonalConfigHydrating || guidedPersonalizationGateReason === 'scopeLoading' ? (
+            <div className="space-y-4 p-8" aria-hidden="true" data-testid="learner-tree-loading">
+              <div className="h-4 w-3/4 rounded bg-border-color" />
+              <div className="ml-4 h-4 w-1/2 rounded bg-border-color" />
+              <div className="ml-4 h-4 w-2/3 rounded bg-border-color" />
             </div>
           ) : isGuidedPersonalizationRequired ? (
             <div className="m-2 rounded-xl border border-sky-300 bg-sky-50 p-4 text-sm dark:border-sky-900/60 dark:bg-sky-950/20">
@@ -3385,7 +3298,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               <button
                 type="button"
                 onClick={handlePersonalizationGateAction}
-                disabled={guidedPersonalizationGateReason === 'scopeLoading'}
                 className="mt-3 rounded-lg bg-sky-600 px-3 py-2 font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
               >
                 {personalizationGateCopy.action}
@@ -3473,16 +3385,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         ) && (
           <section
             aria-label={localizedLanguage === 'de' ? 'Meine Fachpläne' : 'My subject plans'}
+            aria-busy={learningPlansLoadStatus === 'loading'}
             className="mb-6 flex w-full max-w-3xl flex-col gap-4"
           >
             {learningPlansLoadStatus === 'loading' && !scopedLearningPlans ? (
               <p className="rounded-xl border border-border-color bg-sidebar-bg p-4 text-sm text-text-secondary" role="status">
                 {learnerLearningPlanCopy.loading}
-              </p>
-            ) : null}
-            {learningPlansLoadStatus === 'loading' && scopedLearningPlans ? (
-              <p className="rounded-xl border border-sky-200 bg-sky-50/70 p-4 text-sm text-sky-900 dark:border-sky-900/60 dark:bg-sky-950/20 dark:text-sky-100" role="status">
-                {learnerLearningPlanCopy.refreshing}
               </p>
             ) : null}
             {learningPlansLoadStatus === 'error' && !scopedLearningPlans ? (
@@ -3544,7 +3452,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             ) : null}
           </section>
         )}
-        {isGuidedPersonalizationRequired ? (
+        {guidedPersonalizationGateReason === 'scopeLoading' ? (
+          <div className="flex min-h-full w-full max-w-xl items-center justify-center" role="status">
+            <p className="text-sm text-text-secondary">
+              {localizedLanguage === 'de' ? 'Dein Cockpit wird geladen …' : 'Loading your cockpit …'}
+            </p>
+          </div>
+        ) : isGuidedPersonalizationRequired ? (
           <div className="flex min-h-full w-full max-w-xl items-center justify-center">
             <div className="rounded-2xl border border-sky-300 bg-white p-6 text-center shadow-sm dark:border-sky-900/60 dark:bg-slate-900">
               <h2 className="text-xl font-bold text-text-primary">{personalizationGateCopy.title}</h2>
@@ -3552,7 +3466,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               <button
                 type="button"
                 onClick={handlePersonalizationGateAction}
-                disabled={guidedPersonalizationGateReason === 'scopeLoading'}
                 className="mt-5 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
               >
                 {personalizationGateCopy.action}

@@ -5,7 +5,7 @@ import { test } from "node:test";
 
 import { loadScenario } from "../src/config.js";
 
-test("locks the upload video to the supported browser launch and four main workflows", async () => {
+test("locks the upload video to the supported browser launch and five main workflows", async () => {
   const scenario = await loadScenario(resolve("scenarios/skillpilot-openai-review.template.yaml"));
 
   assert.deepEqual(scenario.chapters.map((chapter) => chapter.id), [
@@ -13,6 +13,7 @@ test("locks the upload video to the supported browser launch and four main workf
     "p3-memory-and-recall",
     "p4-exam-evaluation",
     "p5-focus-widening",
+    "d1-daily-plan",
   ]);
   assert.equal(scenario.sourceRevision, "SET_TO_DEPLOYED_GIT_SHA");
   assert.equal(scenario.browser.headless, false);
@@ -49,6 +50,7 @@ test("locks the upload video to the supported browser launch and four main workf
     ["p3-memory-and-recall", "SKILLPILOT_REVIEW_P3_SKILLPILOT_ID"],
     ["p4-exam-evaluation", "SKILLPILOT_REVIEW_P4_SKILLPILOT_ID"],
     ["p5-focus-widening", "SKILLPILOT_REVIEW_P5_SKILLPILOT_ID"],
+    ["d1-daily-plan", "SKILLPILOT_REVIEW_D1_SKILLPILOT_ID"],
   ]);
   for (const [chapterId, environmentName] of firstPartyCases) {
     const chapter = scenario.chapters.find((candidate) => candidate.id === chapterId);
@@ -85,7 +87,7 @@ test("locks the upload video to the supported browser launch and four main workf
     assert.equal(launch?.action === "click" ? launch.samePage : undefined, true);
     assert.deepEqual(launch?.action === "click" ? launch.target : undefined, {
       role: "button",
-      name: "SkillPilot-App öffnen",
+      name: "Mit ChatGPT starten",
     });
     assert.equal(injectedPromptGate?.action, "assertPreparedPrompt");
     assert.deepEqual(
@@ -202,7 +204,7 @@ test("locks the upload video to the supported browser launch and four main workf
   assert.equal(firstPartyHandoff?.action === "click" ? firstPartyHandoff.samePage : undefined, true);
   assert.deepEqual(
     firstPartyHandoff?.action === "click" ? firstPartyHandoff.target : undefined,
-    { role: "button", name: "SkillPilot-App öffnen" },
+    { role: "button", name: "Mit ChatGPT starten" },
   );
   assert.doesNotMatch(JSON.stringify(orientation), /SKILLPILOT_REVIEW_P2_START_URL/u);
   const sendStartIndex = orientation.steps.findIndex((step) => step.id === "p2-send-start");
@@ -311,6 +313,72 @@ test("locks the upload video to the supported browser launch and four main workf
   );
 });
 
+test("daily-plan chapter verifies counts, genuine continuation and an explicit subject switch", async () => {
+  const scenario = await loadScenario(resolve("scenarios/skillpilot-openai-review.template.yaml"));
+  const daily = scenario.chapters.find((chapter) => chapter.id === "d1-daily-plan");
+  assert.ok(daily);
+  const ids = daily.steps.map((step) => step.id);
+  const assertBefore = (before: string, after: string): void => {
+    assert.ok(ids.includes(before) && ids.includes(after));
+    assert.ok(ids.indexOf(before) < ids.indexOf(after), `${before} must precede ${after}`);
+  };
+  assertBefore("d1-prompt-injected", "d1-send-start");
+  assertBefore("d1-send-start", "d1-daily-counts");
+  assertBefore("d1-daily-counts", "d1-mathematics-active");
+  assertBefore("d1-mathematics-active", "d1-continue-mathematics");
+  assertBefore("d1-send-continuation", "d1-mathematics-continued");
+  assertBefore("d1-mathematics-continued", "d1-switch-physics");
+  assertBefore("d1-send-switch", "d1-physics-result");
+
+  const resultPattern = (id: string): RegExp => {
+    const step = daily.steps.find((candidate) => candidate.id === id);
+    assert.ok(step?.action === "assert");
+    assert.deepEqual(step.target, {
+      css: "[data-message-author-role='assistant']",
+      match: "last",
+    });
+    assert.ok(step.textPattern);
+    return new RegExp(step.textPattern, "iu");
+  };
+  const counts = resultPattern("d1-daily-counts");
+  assert.match("Heute: 0/2 beherrscht · Offen: Mathematik 1 · Physik 1", counts);
+  assert.match("Heute: 0/0 beherrscht · Offen: Mathematik 0 · Physik 0 · Rückstand: 2", counts);
+  for (const incorrect of [
+    "Heute: 2/48 beherrscht · Offen: Mathematik 19 · Physik 27",
+    "Heute: 0/2 beherrscht · Offen: Mathematik 1 · Physik 10",
+    "Heute: 0/2 beherrscht · Offen: Mathematik 1 · Physik 1 · Rückstand: 2",
+    "Heute: 0/0 beherrscht · Offen: Mathematik 0 · Physik 0",
+    "Heute: 0/0 beherrscht · Offen: Mathematik 0 · Physik 0 · Rückstand: 20",
+    "Tagesplan nicht auswertbar.",
+  ]) assert.doesNotMatch(incorrect, counts);
+  assert.match("Warum Mathematik? – Denken, Muster & Zukunft", resultPattern("d1-mathematics-active"));
+  const continuation = resultPattern("d1-mathematics-continued");
+  assert.match("Mit Mathematik kannst du Wachstum erkunden. Was interessiert dich daran?", continuation);
+  assert.doesNotMatch("Weiter geht es.", continuation);
+  const physics = resultPattern("d1-physics-result");
+  assert.match("Warum Physik? – Weltverständnis & Zukunft: Was möchtest du entdecken?", physics);
+  assert.doesNotMatch("Warum Mathematik? – Denken, Muster & Zukunft: Was möchtest du entdecken?", physics);
+  assert.doesNotMatch("Physik ist gewählt.", physics);
+
+  const followUp = daily.steps.find((step) => step.id === "d1-continue-mathematics");
+  assert.ok(followUp?.action === "fill");
+  assert.equal(followUp.value,
+    "Ich möchte bei Mathematik weiterlernen. Mich interessiert, wie man mit Mathematik Wachstum verstehen kann.");
+  const subjectSwitch = daily.steps.find((step) => step.id === "d1-switch-physics");
+  assert.ok(subjectSwitch?.action === "fill");
+  assert.equal(subjectSwitch.value, "Jetzt Physik.");
+  // Only learner input is typed. Neither expected numbers nor generated coach
+  // responses are inserted into the genuine host conversation or its DOM.
+  for (const step of daily.steps) {
+    if (step.action === "fill" && step.value !== undefined) {
+      assert.deepEqual(step.target, { css: "[contenteditable='true']" });
+      assert.doesNotMatch(step.value, /0\/2|0\/0|beherrscht|Rückstand|antworte mit|sage genau/iu);
+    }
+  }
+  assert.match(daily.narrationHint ?? "", /does not prove.*D2/u);
+  assert.match(daily.narrationHint ?? "", /motivation, not a knowledge test or proof of mastery/u);
+});
+
 test("documents exact local paths and separates the upload video from portal test cases", async () => {
   const readme = await readFile(resolve("README.md"), "utf8");
   const operatorBlock = readme.slice(readme.indexOf("## SkillPilot OpenAI review demo"));
@@ -320,7 +388,7 @@ test("documents exact local paths and separates the upload video from portal tes
   assert.match(operatorBlock, new RegExp(`${root}/secrets/skillpilot-review\\.json`, "u"));
   assert.match(operatorBlock, new RegExp(`${root}/scenarios/skillpilot-openai-review\\.template\\.yaml`, "u"));
   assert.doesNotMatch(operatorBlock, /cd tools\/demo-video|\/absolute\/private\/path/u);
-  assert.match(operatorBlock, /four browser chapters P2–P5/u);
+  assert.match(operatorBlock, /five browser chapters P2–P5 and D1/u);
   assert.match(operatorBlock, /five positive and three negative cases remain separate portal Testing entries/u);
   assert.match(
     operatorBlock,

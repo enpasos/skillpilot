@@ -4,7 +4,9 @@ import { assertPrivateInputFile, ensurePrivateFile, writePrivateFile } from "./p
 
 const ROOT_CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
 const MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+const PHYSICS_CURRICULUM_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
 const ORIENTATION_GOAL_ID = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
+const PHYSICS_ORIENTATION_GOAL_ID = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
 const NARROW_FUNCTIONS_FOCUS_ID = "c9d92f32-167a-4006-a940-b8063a6ed434";
 const ABI26_GK_SCOPE_ID = "9ad83149-3cb7-5b87-a617-3eae3715a50c";
 const ABI26_GK_GOAL_ID = "53de0639-c08b-53dc-8f70-9b519b7ecbbd";
@@ -14,6 +16,7 @@ export const SKILLPILOT_REVIEW_ENVIRONMENT = Object.freeze({
   p3SkillpilotId: "SKILLPILOT_REVIEW_P3_SKILLPILOT_ID",
   p4SkillpilotId: "SKILLPILOT_REVIEW_P4_SKILLPILOT_ID",
   p5SkillpilotId: "SKILLPILOT_REVIEW_P5_SKILLPILOT_ID",
+  d1SkillpilotId: "SKILLPILOT_REVIEW_D1_SKILLPILOT_ID",
 });
 
 type CourseLevel = "GK" | "LK";
@@ -95,6 +98,7 @@ const normalizeBaseUrl = (raw: string): URL => {
 const findOption = (
   plan: PersonalizationPlan,
   courseLevel: CourseLevel,
+  subjectIds: readonly string[],
 ): PersonalizationOption | undefined => {
   const options = asOptions(plan.options);
   return options.find((option) => (
@@ -114,13 +118,13 @@ const findOption = (
     ))
     ?? options.find((option) => (
       option.kind === "VALUE"
-      && option.landscapeId === MATHEMATICS_CURRICULUM_ID
+      && subjectIds.includes(String(option.landscapeId))
       && option.filterId === null
     ))
     ?? options.find((option) => option.kind === "COMPLETE_GROUP")
     ?? options.find((option) => (
       option.kind === "VALUE"
-      && option.landscapeId === MATHEMATICS_CURRICULUM_ID
+      && subjectIds.includes(String(option.landscapeId))
       && option.filterId === courseLevel
     ));
 };
@@ -187,6 +191,7 @@ class SkillPilotReviewApi {
   async createConfiguredLearner(
     courseLevel: CourseLevel,
     onCreated: (id: string) => Promise<void>,
+    subjectIds: readonly string[] = [MATHEMATICS_CURRICULUM_ID],
   ): Promise<string> {
     const created = await this.#request<{ state?: LearnerState }>(
       "POST",
@@ -211,11 +216,13 @@ class SkillPilotReviewApi {
       `/api/ui/learners/${encodeURIComponent(id)}/personalization-plan`,
       "Read review personalization plan",
     );
-    for (let step = 0; step < 12 && plan.stage !== "COMPLETE"; step += 1) {
+    const selectedSubjects = new Set<string>();
+    const selectedProfiles = new Set<string>();
+    for (let step = 0; step < 16 && plan.stage !== "COMPLETE"; step += 1) {
       if (plan.stage === "INVALID") {
         throw new Error("Review personalization plan is invalid");
       }
-      const option = findOption(plan, courseLevel);
+      const option = findOption(plan, courseLevel, subjectIds);
       const optionId = asString(option?.optionId);
       if (!optionId) {
         throw new Error("Expected current review personalization option is unavailable");
@@ -226,11 +233,101 @@ class SkillPilotReviewApi {
         "Apply review personalization option",
         { config: {}, goalIds: [], filters: [], optionId },
       );
+      if (option?.kind === "VALUE" && subjectIds.includes(String(option.landscapeId))) {
+        if (option.filterId === null) selectedSubjects.add(String(option.landscapeId));
+        if (option.filterId === courseLevel) selectedProfiles.add(String(option.landscapeId));
+      }
     }
     if (plan.stage !== "COMPLETE") {
       throw new Error("Review personalization did not complete within the bounded plan");
     }
+    if (subjectIds.some((subjectId) => !selectedSubjects.has(subjectId) || !selectedProfiles.has(subjectId))) {
+      throw new Error("Review personalization did not confirm every requested subject and course profile");
+    }
     return id;
+  }
+
+  async activateDailyPlans(id: string): Promise<void> {
+    const path = `/api/ui/learners/${encodeURIComponent(id)}`;
+    const initial = await this.#request<Record<string, unknown>>(
+      "GET", `${path}/learning-plans`, "Read disposable review plan date",
+    );
+    const asOf = asString(initial.asOf);
+    const today = asOf && /^\d{4}-\d{2}-\d{2}$/u.test(asOf)
+      ? new Date(`${asOf}T00:00:00.000Z`) : null;
+    if (!today || !Number.isFinite(today.getTime()) || today.toISOString().slice(0, 10) !== asOf
+        || !Array.isArray(initial.plans) || initial.plans.length !== 0) {
+      throw new Error("Disposable daily-plan fixture requires a valid server date and no existing plans");
+    }
+    // The backend schedules Monday through Friday. A weekend recording uses
+    // honestly overdue Friday goals, never a synthetic server date or mastery.
+    const dueDate = new Date(today);
+    while (dueDate.getUTCDay() === 0 || dueDate.getUTCDay() === 6) {
+      dueDate.setUTCDate(dueDate.getUTCDate() - 1);
+    }
+    const day = dueDate.toISOString().slice(0, 10);
+    const dueToday = day === asOf ? 1 : 0;
+    const subjects = [
+      { landscapeId: MATHEMATICS_CURRICULUM_ID, goalId: ORIENTATION_GOAL_ID, label: "Mathematik" },
+      { landscapeId: PHYSICS_CURRICULUM_ID, goalId: PHYSICS_ORIENTATION_GOAL_ID, label: "Physik" },
+    ];
+    for (const subject of subjects) {
+      const scope = await this.#request<Record<string, unknown>>(
+        "GET", `${path}/planning-scope?landscapeId=${encodeURIComponent(subject.landscapeId)}`,
+        "Check disposable daily-plan target scope",
+      );
+      if (scope.landscapeId !== subject.landscapeId
+          || !Array.isArray(scope.openAtomicGoalIds) || !scope.openAtomicGoalIds.includes(subject.goalId)
+          || !Array.isArray(scope.scopeAtomicGoalIds) || !scope.scopeAtomicGoalIds.includes(subject.goalId)) {
+        throw new Error("The disposable daily-plan orientation target is not an open personal curriculum goal");
+      }
+    }
+    const plans = subjects.map((subject, index) => ({
+      landscapeId: subject.landscapeId,
+      expectedRevision: 0,
+      planLabel: subject.label,
+      blocks: [{
+        id: `review-daily-${index + 1}`,
+        kind: "learning",
+        goalId: subject.goalId,
+        title: `${subject.label}: Orientierung`,
+        startDate: day,
+        endDate: day,
+        atomicGoalIds: [subject.goalId],
+      }],
+    }));
+    const activated = await this.#request<Record<string, unknown>>(
+      "POST", `${path}/learning-plans/activate`, "Activate disposable review subject plans", { asOf, plans },
+    );
+    const state = asRecord(activated.state);
+    const activeId = goalId(asRecord(state?.stateMachine)?.activeGoal) ?? goalId(state?.activeGoal);
+    if (activated.selectedLandscapeId !== MATHEMATICS_CURRICULUM_ID
+        || activated.activeGoalId !== ORIENTATION_GOAL_ID || activeId !== ORIENTATION_GOAL_ID) {
+      throw new Error("Daily-plan activation did not select the authoritative mathematics orientation goal");
+    }
+    const validatePlans = (value: Record<string, unknown>): void => {
+      const actualPlans = Array.isArray(value.plans) ? value.plans.map(asRecord) : [];
+      if (value.asOf !== asOf || value.followLearningPlans !== true || actualPlans.length !== subjects.length
+          || new Set(actualPlans.map((plan) => asString(plan?.planId))).size !== subjects.length) {
+        throw new Error("Daily-plan fixture did not persist two distinct enabled subject plans on the server date");
+      }
+      for (const subject of subjects) {
+        const plan = actualPlans.find((entry) => entry?.landscapeId === subject.landscapeId);
+        const metrics = asRecord(plan?.metrics);
+        if (!plan || !asString(plan.planId) || !Number.isSafeInteger(plan.revision) || Number(plan.revision) < 1
+            || plan.stale !== false || asRecord(plan.nextEligibleGoal)?.goalId !== subject.goalId
+            || metrics?.totalPlanned !== 1 || metrics.dueThroughToday !== 1
+            || metrics.completedDueThroughToday !== 0 || metrics.openDueThroughToday !== 1
+            || metrics.dueToday !== dueToday || metrics.completedDueToday !== 0 || metrics.openDueToday !== dueToday) {
+          throw new Error("Daily-plan fixture requires one unmastered due orientation goal in each valid subject plan");
+        }
+      }
+    };
+    validatePlans(activated);
+    // A successful activation acknowledgement alone is insufficient evidence.
+    validatePlans(await this.#request<Record<string, unknown>>(
+      "GET", `${path}/learning-plans`, "Verify disposable review subject plans",
+    ));
   }
 
   async setScope(id: string, ids: string[]): Promise<LearnerState> {
@@ -438,11 +535,11 @@ export async function prepareSkillPilotReviewFixtures(
   const learners = await loadCleanupLedger(options.cleanupLedgerPath);
   const environment: Record<string, string> = {};
 
-  const create = async (courseLevel: CourseLevel): Promise<string> => {
+  const create = async (courseLevel: CourseLevel, subjectIds?: readonly string[]): Promise<string> => {
     return await api.createConfiguredLearner(courseLevel, async (id) => {
       learners.push(id);
       await persistCleanupLedger(options.cleanupLedgerPath, learners);
-    });
+    }, subjectIds);
   };
 
   const cleanup = async (): Promise<void> => {
@@ -476,9 +573,13 @@ export async function prepareSkillPilotReviewFixtures(
     await api.setActiveGoal(p5, p5Goal);
     environment[SKILLPILOT_REVIEW_ENVIRONMENT.p5SkillpilotId] = p5;
 
+    const d1 = await create("LK", [MATHEMATICS_CURRICULUM_ID, PHYSICS_CURRICULUM_ID]);
+    await api.activateDailyPlans(d1);
+    environment[SKILLPILOT_REVIEW_ENVIRONMENT.d1SkillpilotId] = d1;
+
     const disposableIds = Object.values(environment);
-    if (disposableIds.length !== 4 || new Set(disposableIds).size !== 4) {
-      throw new Error("Review fixture preparation did not create four distinct disposable learners");
+    if (disposableIds.length !== 5 || new Set(disposableIds).size !== 5) {
+      throw new Error("Review fixture preparation did not create five distinct disposable learners");
     }
 
     return {

@@ -41,6 +41,7 @@
     "test:personal-curriculum-stage-scope": "tsx src/utils/personalCurriculumStageScope.test.ts",
     "test:personal-curriculum-editor": "tsx src/utils/personalCurriculumOptionLabel.test.ts && tsx src/utils/courseProfileFilters.test.ts && npm run test:personal-curriculum-stage-scope && tsx scripts/testPersonalCurriculumEditorLabels.tsx && tsx src/utils/personalCurriculumEditorApi.test.ts",
     "test:learner-learning-plans": "tsx src/utils/learnerLearningPlanApi.test.ts && tsx scripts/testLearnerPlanTodayCardUi.tsx && tsx scripts/testLearnerPlanCockpitUi.ts && tsx scripts/testLearnerViewMobilePlanChromeUi.ts",
+    "test:learner-cockpit-startup": "tsx scripts/testLearnerCoreStartupUi.ts && tsx scripts/testLearnerViewStartupUi.ts",
     "test:composition-projection-roles": "tsx scripts/testCompositionProjectionRoles.ts",
     "test:goal-book-model": "tsx scripts/testGoalBookModel.ts",
     "test:goal-book-chapter-projection": "tsx src/utils/goalBookChapterProjection.test.ts",
