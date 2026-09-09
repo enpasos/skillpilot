@@ -9,7 +9,132 @@ without changing the plan calculations, tools, learner sessions or frozen
 OpenAI v1 lane. Its immutable direct-install artifact is publicly available;
 the separately authorized Marketplace publication is tracked below.
 
+## Current first-party guide: Marketplace and file fallback, 9 September 2026
+
+After reviewing the new personal-account observations, the Product Owner
+explicitly authorized implementation of a Marketplace-first installation and
+update guide with **download/upload as a usable fallback**. This is a new
+guide-only decision, not an inference from a visible menu. It supersedes the
+8 September direct-only recommendation and the documentation-only restriction
+inside the supplied r2 handoff, solely for this bounded first-party guide.
+
+The separate `activation.firstPartyGuideDecision` is approved at
+`2026-09-09T08:02:01.000Z` by `product-owner`, bound to the existing published
+1.1.2 candidate, immutable artifact SHA-256 and verified repository revision/tree
+listed below. `firstPartyUiRoute = personal_git_marketplace` and
+`marketplaceUiSwitchAllowed = true` authorize the controlled-beta guide.
+`activation.state` remains `published_pending_acceptance`. The original
+repository evidence is unchanged; clean-account installation, migration/refresh
+and all outstanding exact-client, privacy, legal and support checks stay
+pending. No automatic-update, independent-account or native-mobile acceptance
+is inferred. This change does not publish a new plugin or Marketplace tree,
+deploy the application, modify GitHub permissions or operate a Claude account.
+
+The precise boundary is recorded in
+[freeze appendix 6.72](openai-plugin-v1-review-freeze.md#672-marketplace-anleitung-mit-manuellem-update-und-datei-fallback).
+User-facing instructions and the retained incident history are maintained in
+[personal installation and update guidance](claude-personal-plugin-update-options.md).
+
+### Observed navigation and the two installation paths
+
+[Open plugin management in Claude](https://claude.ai/new#customize/plugins/discover)
+opens **Plugins → Discover** in the reported personal Claude Pro web account.
+The complete hash route is a navigation link only, not a refresh endpoint or
+a guaranteed cross-client interface. If it does not work, enter Claude's
+plugin area manually. Do not attach a learner ID, session, token or GitHub
+credential to this link.
+
+- **New installation:** use the **Add dropdown at the top right → Add
+  marketplace → Add from a repository**, enter the canonical public repository
+  URL without a query parameter and synchronize the source. Open **SkillPilot
+  Coach v1** under Discover and add it after checking the offered version.
+  The source shown in the observed UI is `skillpilot-claude-marketplace`; the
+  internal manifest name remains `skillpilot-marketplace`. These are not the
+  plugin name. An “already added” message means use the existing-source
+  management path, not repeat Add.
+- **Existing installation:** **Add at the top right → Manage marketplaces → ⋮
+  next to `skillpilot-claude-marketplace` → Check for updates**. The observed
+  German labels are **Hinzufügen → Marketplaces verwalten → Nach Updates
+  suchen**. Do not confuse the global Add dropdown with the Add button on a
+  featured plugin card. Check the synchronized catalog and the installed plugin
+  version separately; opening this menu or seeing a new sync time is not proof
+  of installation. If the installed version stays old, use the file fallback.
+- **File fallback:** first download the current `.plugin` file from SkillPilot,
+  then remove only an older SkillPilot plugin if replacement is needed. Preserve
+  unrelated plugins/connectors. Only then use **Add → Upload plugin**
+  (**Hinzufügen → Plugin hochladen**) in Claude and retain exactly one active
+  SkillPilot instance. Skip removal for a new installation; an already current
+  installation needs neither removal nor reinstallation. Do not promise that same-name
+  upload silently replaces every installation or preserves its connection.
+  Removing the Marketplace source is not a prerequisite for this path.
+- **Both paths finish the same way:** verify the installed version and the
+  bundled SkillPilot connector, connect it if needed, then return to SkillPilot
+  and start a new session through the existing handoff. Do not create a second
+  manual MCP connector. GitHub authorization is not the SkillPilot connection.
+
+The guide obtains all current-version copy and the download from the validated
+public publication index. It does not retain a hardcoded current-version label
+or infer the installed account version from download, OAuth or tab return.
+Loading/error states do not display a guessed version or an older artifact.
+File download and version comparison require a valid index. The independently
+approved Marketplace navigation remains available if the index fails; it makes
+no version-match or installation-success claim. Do not remove an existing
+installation while the current version information is unavailable.
+
+### Evidence and limitations
+
+The internal handoff is **SkillPilot × Claude: persönliche Marketplaces,
+Updates und GitHub-Rechte**, revision **r2**, 9 September 2026. Its README SHA-256
+is `9bd52977e8224ff0758d78d02ba6b653575173e276be49e39b2fc5c046c59c13`.
+Evidence filenames are recorded here without making ignored temporary files
+dependencies of the published documentation:
+
+- E7, `07-direktlink-plugins-entdecken.png`: Discover view; the exact URL-to-view
+  relation is the user's report, not an authenticated test by the assistant.
+- E8, `08-hinzufuegen-marketplaces-verwalten.png`: top-right Add menu, including
+  Manage marketplaces and Upload plugin.
+- E9, `09-marketplace-verwaltung-aktionsmenue.png`: Check for updates, Automatically
+  sync and Remove, plus the warning that removal also uninstalls that source's
+  plugins. The synchronized commit value is obscured and is not reconstructed.
+- E3 shows historical synchronized versions 1.0.4 and 1.1.1, not acceptance of
+  published 1.1.2. Contents history does not prove rollback, pinning, parallel
+  active versions or adoption by an already running chat.
+- E6 shows the GitHub App access request, not a completed authorization.
+
+The earlier claim that Marketplace management was absent is obsolete for the
+observed account: the path was previously not found and is now visible. Whether
+Claude rolled it out later or it was overlooked is unknown. The normal update
+path is now documented, but a controlled version-to-version update via that
+specific action remains to be tested. English UI labels above are translations
+of the German observations, not separately verified English-client evidence.
+
+Automatic sync is optional and not relied upon by the learner guide. The shown
+GitHub App requests write permissions including code and workflows. Do not
+require learners to grant repository-admin rights or authorize all repositories.
+If GitHub access is requested, use the manual path or file fallback. Any
+separately approved publisher setup should be limited to the necessary repository;
+selecting repositories narrows resources, not the App's permission types.
+The organizational documentation's webhook/PR-merge rules do not establish
+the triggers or cross-account distribution of personal Pro marketplaces.
+
+Marketplace removal is not routine update troubleshooting: it also uninstalls
+the source's plugins and does not establish revocation of GitHub App access.
+The historical `?v=2` workaround remains incident evidence only; the canonical
+repository URL is unchanged. Independent-account installation, two successive
+real updates, duplicate prevention, connection retention and native-client
+coverage still require their existing acceptance evidence.
+
+The exported Marketplace-root README remains part of the exact already
+published 11-file tree. This guide change does not silently edit that template,
+invalidate its repository evidence or republish the six immutable plugin files.
+Updating that external README later requires a separately authorized
+documentation-only publication and fresh exact-tree verification.
+
 ## 1.1.2 Marketplace publication, 9 September 2026
+
+This subsection records the publication decision and evidence before the later
+guide decision above. Its pending guide status and direct-only wording describe
+that point in time; repository and artifact evidence remain unchanged.
 
 The Product Owner explicitly requested publication of the actual 1.1.2 plugin
 through the existing Marketplace under its normal name. This authorizes the
@@ -398,7 +523,7 @@ For each replacement candidate, that historical guide decision is reset to
 Neither the historical Marketplace install nor the 1.0.4 direct download may
 be offered as an available fallback.
 
-## 1.1.1 publication and controlled-beta update route
+## Historical 1.1.1 publication and controlled-beta update route
 
 On **5 September 2026**, the Product Owner explicitly required updates through
 the Marketplace and merged [publication PR #2](https://github.com/enpasos/skillpilot-claude-marketplace/pull/2).
@@ -448,9 +573,10 @@ The generated workflow and remote byte check prove supply-chain integrity;
 they do not prove the user journey. Record all of this against the exact remote
 revision before activation:
 
-1. On a clean eligible paid Claude account, add the now-public repository under
-   **Customize → Plugins → Personal plugins → + → Add marketplace → Add from a
-   repository**.
+1. On a clean eligible paid Claude web account, open **Plugins → Discover →
+   Add (top right) → Add marketplace → Add from a repository** and add the
+   now-public canonical repository URL. The observed deep link above is an
+   optional navigation shortcut, not an install or synchronization action.
 2. Confirm that exactly one `SkillPilot Coach v1` entry appears and install it.
 3. Connect the bundled SkillPilot connector through its normal OAuth flow. Do
    not add a second custom connector or enter the MCP URL manually.
@@ -493,9 +619,13 @@ revision before activation:
 11. Test migration from the previously uploaded plugin: remove only the old
    SkillPilot plugin, add the marketplace, install once, reconnect if Claude
    asks, and verify a new SkillPilot-started session.
-12. Refresh the marketplace in Claude and confirm that migration and refresh do
-   not require another file upload. A real version-to-version update becomes a
-   mandatory release gate beginning with the next Marketplace version.
+12. Use **Add (top right) → Manage marketplaces → ⋮ at the SkillPilot source →
+   Check for updates** and confirm that migration and refresh do not require
+   another file upload. Check catalog, installed version, connection and a new
+   SkillPilot-started session separately. A real version-to-version update is a
+   mandatory release gate beginning with the next Marketplace version; verify
+   two consecutive real updates for the repeatability claim. The fallback does
+   not turn an unsuccessful Marketplace update into a passed Marketplace test.
 
 Only after the public repository, clean-account installation,
 upload-to-marketplace migration/refresh, candidate-specific Web and Android

@@ -63,11 +63,18 @@ test("published 1.1.2 marketplace keeps the normal identity and pending account 
   assert.equal(lane.plugin.version, "1.1.2");
   assert.match(lane.plugin.directInstallSha256, /^[0-9a-f]{64}$/u);
   assert.equal(lane.activation.state, "published_pending_acceptance");
-  assert.equal(lane.activation.firstPartyUiRoute, "controlled_direct_install_beta");
-  assert.equal(lane.activation.marketplaceUiSwitchAllowed, false);
-  for (const [key, value] of Object.entries(lane.activation.firstPartyGuideDecision)) {
-    assert.equal(value, key === "status" ? "pending" : null, key);
-  }
+  assert.equal(lane.activation.firstPartyUiRoute, "personal_git_marketplace");
+  assert.equal(lane.activation.marketplaceUiSwitchAllowed, true);
+  assert.deepEqual(lane.activation.firstPartyGuideDecision, {
+    status: "approved",
+    approvedAt: "2026-09-09T08:02:01.000Z",
+    approvedBy: "product-owner",
+    candidateVersion: "1.1.2",
+    candidateSha256: "835c91844f950d9101f74ef245916fc6a7d65f53426ae3939f3a224f7ab827ca",
+    repositoryRevision: "25bf4d8272030a3701008f7b5a09d4a18cba15c5",
+    repositoryTreeSha256: "690e57846a250b49bb8ac2ac30b5bda0f7f4c1eaf50edc3c8de2561e1b03da66",
+    evidenceRef: "docs/deploy/openai-plugin-v1-review-freeze.md#672-marketplace-anleitung-mit-manuellem-update-und-datei-fallback",
+  });
   assert.deepEqual(
     lane.activation.evidence.map(({ id }) => id),
     ["public-repository-default-branch", "clean-account-marketplace-install", "uploaded-plugin-migration-and-marketplace-refresh"],
@@ -87,6 +94,32 @@ test("published 1.1.2 marketplace keeps the normal identity and pending account 
       if (key !== "id") assert.equal(value, key === "status" ? "pending" : null, key);
     }
   }
+});
+
+test("the renewed guide decision cannot imply account acceptance or survive withdrawal", () => {
+  const lane = loadClaudeMarketplaceLane(repositoryRoot);
+  const original = structuredClone(lane);
+  validateClaudeMarketplaceLane(lane);
+  assert.deepEqual(lane, original, "validation must not rewrite approval or account evidence");
+
+  const withdrawn = structuredClone(lane);
+  withdrawn.activation.firstPartyGuideDecision.status = "withdrawn";
+  assert.throws(
+    () => validateClaudeMarketplaceLane(withdrawn),
+    /must be derived from repository verification and the Product Owner guide decision/u,
+  );
+  withdrawn.activation.marketplaceUiSwitchAllowed = false;
+  withdrawn.activation.firstPartyUiRoute = "controlled_direct_install_beta";
+  validateClaudeMarketplaceLane(withdrawn);
+  assert.deepEqual(withdrawn.activation.evidence, original.activation.evidence);
+  assert.equal(withdrawn.activation.state, "published_pending_acceptance");
+
+  const claimedAcceptance = structuredClone(lane);
+  claimedAcceptance.activation.state = "published_verified";
+  assert.throws(
+    () => validateClaudeMarketplaceLane(claimedAcceptance),
+    /state must be derived from revision-bound evidence/u,
+  );
 });
 
 test("historical marketplace lane retains published 1.1.1 without claiming real-client acceptance", () => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
   ArrowLeft,
   CalendarClock,
+  Copy,
   Download,
   ExternalLink,
   RefreshCw,
@@ -16,8 +17,11 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
   CLAUDE_CONNECTOR_PRIVACY_URL,
+  CLAUDE_MARKETPLACE_INSTALLATION_ENABLED,
+  CLAUDE_MARKETPLACE_REPOSITORY_URL,
   CLAUDE_PLUGIN_BETA_REQUIREMENTS,
   CLAUDE_PLUGIN_PUBLICATION_INDEX_URL,
+  CLAUDE_PLUGINS_DISCOVER_URL,
   loadClaudePluginPublicationIndex,
   type ClaudePluginPublicationIndex,
 } from '../utils/claudePluginPublication'
@@ -26,55 +30,82 @@ const copy = (version?: string) => ({
   de: {
     back: 'Zurück zur Startseite',
     title: 'SkillPilot-Plugins',
-    subtitle: version
-      ? `Plugin herunterladen und in Claude hochladen: Einrichtung der SkillPilot-Claude-${version}-Beta mit Claude Pro.`
-      : 'Plugin herunterladen und in Claude hochladen: Einrichtung der SkillPilot-Claude-Beta mit Claude Pro.',
+    subtitle: 'SkillPilot in Claude einrichten und aktuell halten – per Marketplace oder Plugin-Datei.',
     cardTitle: 'SkillPilot Coach v1',
-    betaNotice: version ? `Claude-Beta ${version}` : 'Claude-Beta',
-    betaDescription: `${version ? `Die planorientierte Version ${version}` : 'Die planorientierte Claude-Beta'} ersetzt die bisherige Claude-Variante vollständig. Nutze derzeit die Plugin-Datei zum Herunterladen und Hochladen in Claude. Die Marketplace-Einrichtung und ihre Updates funktionieren noch nicht zuverlässig.`,
+    betaNotice: version ? 'Claude-Beta ' + version : 'Claude-Beta',
+    betaDescription: 'Empfohlen: Installation über unseren Marketplace. Falls das nicht klappt, lade die Plugin-Datei herunter und in Claude hoch.',
     loading: 'Aktuelle Plugin-Version wird geladen …',
-    loadErrorTitle: 'Die aktuelle Plugin-Datei konnte nicht geladen werden.',
-    loadErrorText: 'Bitte versuche es später erneut. Ohne gültigen Veröffentlichungsindex bieten wir aus Sicherheitsgründen weder eine ältere Datei noch einen anderen Installationsweg an.',
+    loadErrorTitle: 'Die aktuelle Versionsangabe konnte nicht geladen werden.',
+    loadErrorText: 'Der Marketplace-Weg bleibt verfügbar. Der Datei-Download und der Versionsvergleich sind bis zum erneuten Laden nicht verfügbar; eine ältere Datei wird nicht als Ersatz angeboten.',
     retry: 'Erneut versuchen',
     emptyTitle: 'Derzeit steht keine aktuelle Plugin-Datei bereit.',
     emptyText: 'Eine ältere Claude-Variante wird nicht als Ersatz angeboten.',
-    guideTitle: 'Einrichtung mit Plugin-Datei',
-    guideIntro: 'Diese fünf Schritte führen dich durch die Installation. Lass deinen ursprünglichen SkillPilot-Tab geöffnet. Lade zuerst die aktuelle Datei herunter, bevor du eine alte Installation entfernst.',
-    stepOpenTitle: 'Plugin-Liste öffnen',
-    stepOpenBody: 'Öffne Claude Web, nachdem die aktuelle Plugin-Datei heruntergeladen ist:',
-    stepOpenActions: [
-      'Öffne „Anpassen“ (Customize) → „Plugins“ und deine installierten Plugins.',
+    modeLabel: 'Was möchtest du tun?',
+    modeInstall: 'Neu installieren',
+    modeUpdate: 'Aktualisieren',
+    marketplaceTitle: 'Über Marketplace – empfohlen',
+    marketplaceInstallIntro: 'Füge unsere Quelle einmalig hinzu und installiere daraus das Plugin.',
+    marketplaceInstallActions: [
+      'Öffne in Claude „Hinzufügen“ oben rechts → „Marketplace hinzufügen“ → „Aus einem Repository hinzufügen“.',
+      'Füge die unten stehende Repository-Adresse ein. Lass „Automatisch synchronisieren“ für diesen Weg ausgeschaltet und wähle „Synchronisieren“.',
       version
-        ? `Wenn bereits „SkillPilot Coach v1“ in Version ${version} installiert und aktiviert ist, prüfe direkt seinen Konnektor in Schritt 4.`
-        : 'Warte auf die aktuelle Versionsangabe, bevor du eine bestehende SkillPilot-Installation vergleichst.',
-      'Wenn eine ältere SkillPilot-Version installiert ist, entferne nur diese SkillPilot-Coach-Installation – auch wenn sie aus dem Marketplace stammt. Andere Plugins und Konnektoren bleiben unverändert.',
+        ? 'Öffne „Entdecken“ und suche „SkillPilot Coach v1“ aus der Quelle „skillpilot-claude-marketplace“. Prüfe vor „Hinzufügen“, dass Version ' + version + ' angeboten wird. Ist die angebotene Version älter, nutze die Datei-Alternative unten.'
+        : 'Öffne „Entdecken“ und suche „SkillPilot Coach v1“ aus der Quelle „skillpilot-claude-marketplace“. Warte vor „Hinzufügen“ auf die aktuelle Versionsangabe dieser Seite und vergleiche sie mit der angebotenen Version.',
     ],
-    stepOpenCheck: 'Installiere SkillPilot nur einmal. Für eine neue Einrichtung muss nichts entfernt werden.',
-    stepInstallTitle: 'Plugin-Datei hochladen und Version prüfen',
-    stepInstallBody: 'Wähle in der Plugin-Verwaltung die Option zum Hochladen einer Plugin-Datei:',
+    marketplaceAlreadyAdded: '„Dieser Marketplace wurde bereits hinzugefügt“? Nicht erneut hinzufügen, sondern oben zu „Aktualisieren“ wechseln.',
+    marketplaceMigration: 'Wechsel vom Datei-Upload? Prüfe zuerst, ob der Marketplace die hier genannte Version anbietet. Entferne dann nur die ältere SkillPilot-Dateiinstallation unter „Deine Plugins“, bevor du das Marketplace-Plugin hinzufügst. Ist deine Version bereits aktuell, ist kein Wechsel nötig.',
+    marketplaceUpdateIntro: 'Für eine bestehende Marketplace-Installation: aktualisiere die vorhandene Quelle, ohne sie zu löschen.',
+    marketplaceUpdateActions: [
+      'Öffne „Hinzufügen“ oben rechts → „Marketplaces verwalten“.',
+      'Wähle bei „skillpilot-claude-marketplace“ das Menü „⋮“ → „Nach Updates suchen“.',
+      'Prüfe danach die angebotene Version und zusätzlich unter „Deine Plugins“ die installierte Version. Bleibt diese älter, nutze die Plugin-Datei unten.',
+    ],
+    uploadUpdateHint: 'Bisher per Datei installiert? Verwende die Datei-Alternative unten. Eine Marketplace-Synchronisierung bestätigt kein Update deiner Dateiinstallation.',
+    repositoryLabel: 'Marketplace-Adresse',
+    copyRepository: 'Adresse kopieren',
+    copiedRepository: 'Adresse kopiert.',
+    copyFailed: 'Kopieren nicht möglich. Markiere und kopiere die oben stehende Adresse selbst.',
+    autosync: 'Auto-Sync ist optional und wird hier nicht vorausgesetzt. Fordert Claude dafür GitHub-Zugriff, überspringe die Freigabe und nutze die manuelle Updatesuche oder den Datei-Upload. Gib dafür nicht pauschal alle Repositorys frei.',
+    troubleTitle: 'Hinweise zu Updates und Marketplace-Verwaltung',
+    troubleBody: 'Der Versionswähler unter „Inhalte“ zeigt synchronisierte Dateien, nicht zuverlässig die installierte oder im laufenden Chat verwendete Version. Automatische Updates auf unabhängigen Konten sind noch nicht vollständig geprüft.',
+    removalWarning: '„Entfernen“ am Marketplace deinstalliert laut Claude auch dessen Plugins. Das ist kein normaler Updateschritt. Prüfe separat erteilte GitHub-Rechte gesondert; das Entfernen ist kein bestätigter Widerruf.',
+    guideTitle: 'Alternative: Plugin-Datei herunterladen und hochladen',
+    guideIntro: 'Für eine neue Installation oder ein manuelles Update, wenn du den Marketplace nicht nutzen kannst oder möchtest. Nutze nur einen Installationsweg.',
+    stepOpenTitle: 'Bestehende Installation prüfen',
+    stepOpenBody: 'Erst nach dem Download:',
+    stepOpenActions: [
+      'Öffne in Claude „Deine Plugins“. Ist die hier angezeigte Version bereits installiert, musst du nichts entfernen oder neu hochladen.',
+      'Für den Wechsel auf die aktuelle Datei entferne nur eine ältere SkillPilot-Coach-Installation über deren „⋮“-Menü → „Entfernen“. Andere Plugins und Konnektoren bleiben unverändert.',
+    ],
+    stepOpenCheck: 'Nicht den gesamten Marketplace entfernen. Bei einer Neuinstallation entfällt dieser Schritt.',
+    stepInstallTitle: 'Plugin-Datei hochladen',
+    stepInstallBody: 'In der Plugin-Übersicht von Claude:',
     stepInstallActions: [
-      'Klicke auf „Hinzufügen“ und wähle den Datei-Upload. Lade die zuvor heruntergeladene .plugin-Datei unverändert hoch.',
-      'Aktiviere „SkillPilot Coach v1“, falls Claude einen Schalter dafür anzeigt.',
+      'Wähle „Hinzufügen“ oben rechts → „Plugin hochladen“ und lade die heruntergeladene .plugin-Datei unverändert hoch.',
+      'Prüfe anschließend wie unten beschrieben Version, Aktivierung und Konnektor. Spätere Datei-Updates führst du auf demselben Weg durch.',
     ],
-    stepInstallCheck: version
-      ? `Fahre erst fort, wenn „SkillPilot Coach v1“ genau einmal unter „Deine Plugins“ erscheint und dort Version ${version} angezeigt wird. Solange eine ältere Version angezeigt wird, ist die Aktualisierung nicht bestätigt.`
-      : 'Die aktuelle Versionsangabe muss geladen sein, bevor du die Version in Claude prüfen und fortfahren kannst.',
-    stepConnectorTitle: 'Enthaltenen SkillPilot-Konnektor verbinden',
-    stepConnectorBody: 'Prüfe anschließend den im Plugin enthaltenen Konnektor:',
+    finishTitle: 'Für beide Wege: prüfen und starten',
+    versionTitle: 'Installierte Version prüfen',
+    versionBody: version
+      ? 'Unter „Deine Plugins“ muss „SkillPilot Coach v1“ genau einmal installiert, aktiviert und in Version ' + version + ' angezeigt sein.'
+      : 'Warte auf die aktuelle Versionsangabe dieser Seite, bevor du die installierte Version vergleichst.',
+    stepConnectorTitle: 'SkillPilot-Konnektor verbinden',
+    stepConnectorBody: 'Öffne im installierten Plugin „Konnektoren“ → „skillpilot“.',
     stepConnectorActions: [
-      'Öffne „SkillPilot Coach v1“ und darin den Tab „Konnektoren“ (Connectors).',
-      'Wähle den enthaltenen Konnektor „skillpilot“. Steht dort bereits „Verbunden“, ist nichts weiter nötig.',
-      'Andernfalls klicke auf „Verbinden“ (Connect) und schließe Anmeldung und Freigabe ab.',
+      'Steht dort „Verbunden“, ist nichts weiter nötig.',
+      'Andernfalls wähle „Verbinden“ und schließe Anmeldung und Freigabe ab.',
     ],
-    stepConnectorCheck: 'Verwende ausschließlich den im Plugin enthaltenen SkillPilot-Konnektor. Füge keinen zweiten manuellen SkillPilot-Konnektor hinzu und trage keine MCP-URL ein.',
-    openClaudeWeb: 'Claude Web öffnen',
-    stepReturnTitle: 'Zu SkillPilot zurückkehren',
-    stepReturnBody: `Erst wenn beim installierten Plugin ${version ? `Version ${version}` : 'die hier bereitgestellte Version'} angezeigt wird und sein enthaltener SkillPilot-Konnektor verbunden ist, wechsle zurück zum ursprünglichen SkillPilot-Tab. Prüfe dort dein Lernprofil und Curriculum und wähle anschließend „Mit Claude starten“. Beginne auch spätere neue Lernsessions immer auf SkillPilot.com.`,
+    stepConnectorCheck: 'Gemeint ist der enthaltene SkillPilot-Konnektor, nicht GitHub. Keinen zweiten manuellen Konnektor hinzufügen und keine MCP-URL eintragen.',
+    openClaudeWeb: 'Plugins in Claude öffnen',
+    navigationHint: 'Der Link öffnet „Plugins → Entdecken“ in Claude Web, installiert oder aktualisiert aber nichts. Falls er nicht zur Plugin-Ansicht führt: in Claude „Anpassen“ → „Plugins“ öffnen. Gemeint ist immer das „Hinzufügen“-Menü oben rechts, nicht der Knopf einer beworbenen Plugin-Karte.',
+    keepTab: 'Lass diesen SkillPilot-Tab geöffnet.',
+    stepReturnTitle: 'Neue Lernsession bei SkillPilot starten',
+    stepReturnBody: 'Sind Version und Konnektor geprüft, kehre zu deinem ursprünglichen SkillPilot-Tab zurück. Prüfe Lernprofil und Curriculum und wähle „Mit Claude starten“. Starte auch nach einem Update eine neue Lernsession von SkillPilot.com aus.',
     returnToSkillPilot: 'Zurück zu SkillPilot',
-    updateTitle: 'Bereits installiert? Version vergleichen',
+    updateTitle: 'Deine Installation vergleichen',
     updateBody: version
-      ? `Prüfe in Claude die Version von „SkillPilot Coach v1“. Wird ${version} angezeigt, ist kein erneuter Upload nötig. Bei einer älteren Version verwende die folgenden Download- und Upload-Schritte. Das erneute Hinzufügen des Marketplace bestätigt kein Update.`
-      : 'Sobald die aktuelle Versionsangabe geladen ist, kannst du sie mit der Version von „SkillPilot Coach v1“ in Claude vergleichen.',
+      ? 'Aktuell bereitgestellt: ' + version + '. Zeigt „Deine Plugins“ in Claude dieselbe Version, ist keine Neuinstallation nötig.'
+      : 'Sobald die aktuelle Versionsangabe geladen ist, kannst du sie mit „Deine Plugins“ in Claude vergleichen. Entferne keine bestehende Installation, solange diese Angabe fehlt.',
     technicalDetails: 'Version und Integritätsdaten',
     status: 'Status',
     betaStatus: 'Beta',
@@ -86,11 +117,10 @@ const copy = (version?: string) => ({
     requirementsTitle: 'Voraussetzungen und Teststatus',
     supportedPlan: 'Unterstützter Beta-Tarif',
     installationSurface: 'Installation',
-    age: (minimumAge: number) => `Nur für Personen ab ${minimumAge} Jahren.`,
-    plan: `Claude Pro ist der für den ${version ? `${version}-` : ''}Betatest vorgesehene und technisch unterstützte Pfad.`,
-    planDetail: `Anthropic bietet Plugins auch in weiteren bezahlten Tarifen an. Die kandidatengenaue Abnahme von SkillPilot${version ? ` ${version}` : ''} mit Claude Pro steht noch aus.`,
-    install: `Einrichtung und derzeitige Updates in Claude Web: aktuelle Plugin-Datei herunterladen → bei Bedarf nur die alte SkillPilot-Installation entfernen → Datei hochladen → ${version ? `Version ${version}` : 'aktuelle Version'} prüfen → enthaltenen Konnektor verbinden.`,
-    connectAndStart: `Erst wenn „SkillPilot Coach v1“ in ${version ? `Version ${version}` : 'der hier bereitgestellten Version'} angezeigt wird und sein enthaltener SkillPilot-Konnektor verbunden ist, ist die Einrichtung abgeschlossen. Jede Lernsession startest du anschließend wieder auf SkillPilot.com.`,
+    age: (minimumAge: number) => 'Nur für Personen ab ' + minimumAge + ' Jahren.',
+    plan: 'Für den Betatest ist Claude Pro vorgesehen und technisch unterstützt.',
+    planDetail: 'Die vollständige Abnahme der aktuellen SkillPilot-Version mit unabhängigen Claude-Pro-Konten steht noch aus.',
+    install: 'Diese Schritte beziehen sich auf Claude Web. Marketplace und Datei-Upload führen zum selben SkillPilot-Plugin.',
     independentTitle: 'Unabhängiger Beta-Kandidat',
     independentText: 'Dieses Plugin wird von SkillPilot bereitgestellt. Es ist nicht offiziell von Anthropic verifiziert, gesponsert oder garantiert.',
     links: 'Dokumentation und Kontakt',
@@ -104,61 +134,89 @@ const copy = (version?: string) => ({
     publicationIndex: 'Maschinenlesbarer Veröffentlichungsindex',
     stepDownloadTitle: 'Aktuelle Plugin-Datei herunterladen',
     stepDownloadBody: version
-      ? `Lade die hier bereitgestellte Version ${version} herunter und behalte die Datei für den Upload in Claude. Der Download allein installiert das Plugin noch nicht.`
-      : 'Sobald die aktuelle Plugin-Datei verfügbar ist, kannst du sie für den Upload in Claude herunterladen. Der Download allein installiert das Plugin noch nicht.',
-    versionCheckLimit: 'SkillPilot kann die in deinem Claude-Konto installierte Plugin-Version derzeit nicht automatisch auslesen. Maßgeblich ist die Versionsanzeige in Claude.',
+      ? 'Lade Version ' + version + ' herunter, bevor du eine alte Installation entfernst. Der Download allein installiert das Plugin nicht.'
+      : 'Die aktuelle Datei steht nach erfolgreichem Laden der Versionsangabe bereit.',
+    versionCheckLimit: 'SkillPilot kann die in deinem Claude-Konto installierte Version nicht automatisch auslesen.',
   },
   en: {
     back: 'Back to the home page',
     title: 'SkillPilot plugins',
-    subtitle: `Download the plugin and upload it to Claude: setup for the SkillPilot Claude${version ? ` ${version}` : ''} beta with Claude Pro.`,
+    subtitle: 'Set up SkillPilot in Claude and keep it current – through the marketplace or a plugin file.',
     cardTitle: 'SkillPilot Coach v1',
-    betaNotice: version ? `Claude beta ${version}` : 'Claude beta',
-    betaDescription: `${version ? `The plan-first version ${version}` : 'The plan-first Claude beta'} fully replaces the previous Claude variant. For now, download the plugin file and upload it to Claude. Marketplace setup and updates are not yet reliable.`,
+    betaNotice: version ? 'Claude beta ' + version : 'Claude beta',
+    betaDescription: 'Recommended: install through our marketplace. If that does not work, download the plugin file and upload it to Claude.',
     loading: 'Loading the current plugin version …',
-    loadErrorTitle: 'The current plugin file could not be loaded.',
-    loadErrorText: 'Please try again later. Without a valid publication index, no older file or alternative installation route is offered for security reasons.',
+    loadErrorTitle: 'The current version information could not be loaded.',
+    loadErrorText: 'The marketplace instructions remain available. File download and version comparison are unavailable until you retry successfully; an older file is not offered as a substitute.',
     retry: 'Try again',
     emptyTitle: 'There is currently no current plugin file available.',
     emptyText: 'An older Claude variant is not offered as a substitute.',
-    guideTitle: 'Set up with the plugin file',
-    guideIntro: 'These five steps guide you through installation. Keep your original SkillPilot tab open. Download the current file before removing an older installation.',
-    stepOpenTitle: 'Open the plugin list',
-    stepOpenBody: 'After downloading the current plugin file, open Claude Web:',
-    stepOpenActions: [
-      'Open Customize → Plugins and your installed plugins.',
+    modeLabel: 'What would you like to do?',
+    modeInstall: 'Install',
+    modeUpdate: 'Update',
+    marketplaceTitle: 'Through the marketplace – recommended',
+    marketplaceInstallIntro: 'Add our source once, then install the plugin from it.',
+    marketplaceInstallActions: [
+      'In Claude, open the Add dropdown at the top right → Add marketplace → Add from a repository.',
+      'Paste the repository address below. Leave Automatically sync off for this route and select Sync.',
       version
-        ? `If SkillPilot Coach v1 version ${version} is already installed and enabled, go directly to its connector in step 4.`
-        : 'Wait for the current version information before comparing an existing SkillPilot installation.',
-      'If an older SkillPilot version is installed, remove only that SkillPilot Coach installation, including a marketplace installation. Leave other plugins and connectors unchanged.',
+        ? 'Open Discover and find SkillPilot Coach v1 from skillpilot-claude-marketplace. Before selecting Add, check that it offers version ' + version + '. If the offered version is older, use the file alternative below.'
+        : 'Open Discover and find SkillPilot Coach v1 from skillpilot-claude-marketplace. Before selecting Add, wait for this page’s current version information and compare it with the offered version.',
     ],
-    stepOpenCheck: 'Install SkillPilot only once. There is nothing to remove for a new setup.',
-    stepInstallTitle: 'Upload the plugin file and check the version',
-    stepInstallBody: 'In plugin management, choose the option for uploading a plugin file:',
+    marketplaceAlreadyAdded: 'Marketplace already added? Do not add it again; switch to Update above.',
+    marketplaceMigration: 'Switching from file upload? First check that the marketplace offers the version shown here. Then remove only the older SkillPilot file installation under Your plugins before adding the marketplace plugin. If your installed version is already current, there is no need to switch.',
+    marketplaceUpdateIntro: 'For an existing marketplace installation, refresh the existing source without removing it.',
+    marketplaceUpdateActions: [
+      'Open Add at the top right → Manage marketplaces.',
+      'Next to skillpilot-claude-marketplace, open ⋮ → Check for updates.',
+      'Then check the offered version and, separately, the installed version under Your plugins. If it is still older, use the plugin file below.',
+    ],
+    uploadUpdateHint: 'Previously installed by file upload? Use the file alternative below. A marketplace sync does not confirm an update to your uploaded installation.',
+    repositoryLabel: 'Marketplace address',
+    copyRepository: 'Copy address',
+    copiedRepository: 'Address copied.',
+    copyFailed: 'Could not copy. Select and copy the address shown above manually.',
+    autosync: 'Auto-sync is optional and not required here. If Claude requests GitHub access for it, skip authorization and use the manual update check or file upload. Do not grant access to all repositories for this.',
+    troubleTitle: 'About updates and marketplace management',
+    troubleBody: 'The version selector under Contents shows synchronized files, not reliable proof of the installed version or the version used by a running chat. Automatic updates across independent accounts have not been fully verified.',
+    removalWarning: 'Removing a marketplace also uninstalls its plugins, according to Claude. This is not a normal update step. Check separately granted GitHub access independently; removal is not confirmed to revoke it.',
+    guideTitle: 'Alternative: Download and upload the plugin file',
+    guideIntro: 'For a new installation or manual update when you cannot or prefer not to use the marketplace. Use only one installation route.',
+    stepOpenTitle: 'Check the existing installation',
+    stepOpenBody: 'Only after downloading the file:',
+    stepOpenActions: [
+      'Open Your plugins in Claude. If the version shown here is already installed, there is no need to remove it or upload again.',
+      'To switch to the current file, remove only an older SkillPilot Coach installation using its ⋮ menu → Remove. Leave other plugins and connectors unchanged.',
+    ],
+    stepOpenCheck: 'Do not remove the entire marketplace. Skip this step for a new installation.',
+    stepInstallTitle: 'Upload the plugin file',
+    stepInstallBody: 'In Claude’s plugin overview:',
     stepInstallActions: [
-      'Select Add, then choose the file upload. Upload the previously downloaded .plugin file without modifying it.',
-      'Enable SkillPilot Coach v1 if Claude displays an enable switch.',
+      'Select Add at the top right → Upload plugin, then upload the downloaded .plugin file without modifying it.',
+      'Check the version, activation and connector as described below. Use the same file workflow for later file updates.',
     ],
-    stepInstallCheck: version
-      ? `Continue only when SkillPilot Coach v1 appears exactly once under Your plugins and displays version ${version}. If an older version is still displayed, the update is not confirmed.`
-      : 'The current version information must be loaded before you can check the version in Claude and continue.',
-    stepConnectorTitle: 'Connect the bundled SkillPilot connector',
-    stepConnectorBody: 'Next, check the connector included in the plugin:',
+    finishTitle: 'For both routes: check and start',
+    versionTitle: 'Check the installed version',
+    versionBody: version
+      ? 'Under Your plugins, SkillPilot Coach v1 must appear exactly once, installed, enabled and showing version ' + version + '.'
+      : 'Wait for this page’s current version information before comparing the installed version.',
+    stepConnectorTitle: 'Connect the SkillPilot connector',
+    stepConnectorBody: 'In the installed plugin, open Connectors → skillpilot.',
     stepConnectorActions: [
-      'Open SkillPilot Coach v1, then open its Connectors tab.',
-      'Select the included skillpilot connector. If it already says Connected, no further action is needed.',
+      'If it already says Connected, no further action is needed.',
       'Otherwise select Connect and complete sign-in and approval.',
     ],
-    stepConnectorCheck: 'Use only the SkillPilot connector bundled with the plugin. Do not add a second manual SkillPilot connector or enter an MCP URL.',
-    openClaudeWeb: 'Open Claude Web',
-    stepReturnTitle: 'Return to SkillPilot',
-    stepReturnBody: `Return to your original SkillPilot tab only after the installed plugin displays ${version ? `version ${version}` : 'the version provided here'} and its bundled SkillPilot connector is connected. Check your learning profile and curriculum, then select “Start with Claude.” Start every later new learning session at SkillPilot.com as well.`,
+    stepConnectorCheck: 'This means the bundled SkillPilot connector, not GitHub. Do not add a second manual connector or enter an MCP URL.',
+    openClaudeWeb: 'Open plugins in Claude',
+    navigationHint: 'The link opens Plugins → Discover in Claude Web; it does not install or update anything. If it does not reach that view, open Customize → Plugins in Claude. Always use the Add dropdown at the top right, not the button inside a featured plugin card.',
+    keepTab: 'Keep this SkillPilot tab open.',
+    stepReturnTitle: 'Start a new learning session at SkillPilot',
+    stepReturnBody: 'After checking the version and connector, return to your original SkillPilot tab. Check your learning profile and curriculum, then select “Start with Claude.” After an update, also start a new learning session from SkillPilot.com.',
     returnToSkillPilot: 'Return to SkillPilot',
-    updateTitle: 'Already installed? Compare versions',
+    updateTitle: 'Compare your installation',
     updateBody: version
-      ? `Check the SkillPilot Coach v1 version in Claude. If it shows ${version}, no new upload is needed. For an older version, follow the download and upload steps below. Adding the marketplace again does not confirm an update.`
-      : 'Once the current version information is loaded, you can compare it with the SkillPilot Coach v1 version in Claude.',
-
+      ? 'Currently provided: ' + version + '. If Your plugins in Claude shows the same version, no reinstall is needed.'
+      : 'Once the current version information is loaded, you can compare it with Your plugins in Claude. Do not remove an existing installation while this information is unavailable.',
     technicalDetails: 'Version and integrity details',
     status: 'Status',
     betaStatus: 'Beta',
@@ -170,11 +228,10 @@ const copy = (version?: string) => ({
     requirementsTitle: 'Requirements and test status',
     supportedPlan: 'Supported beta plan',
     installationSurface: 'Installation',
-    age: (minimumAge: number) => `Only for people aged ${minimumAge} or older.`,
-    plan: `Claude Pro is the intended and technically supported route for the ${version ? `${version} ` : ''}beta test.`,
-    planDetail: `Anthropic also offers plugins on other paid plans. Exact-candidate acceptance of SkillPilot${version ? ` ${version}` : ''} with Claude Pro is still pending.`,
-    install: `Setup and current updates in Claude Web: download the current plugin file → remove only the old SkillPilot installation if needed → upload the file → check ${version ? `version ${version}` : 'the current version'} → connect the bundled connector.`,
-    connectAndStart: `Setup is complete only after SkillPilot Coach v1 displays ${version ? `version ${version}` : 'the version provided here'} and its bundled SkillPilot connector is connected. Start every learning session on SkillPilot.com afterwards.`,
+    age: (minimumAge: number) => 'Only for people aged ' + minimumAge + ' or older.',
+    plan: 'Claude Pro is the intended and technically supported beta route.',
+    planDetail: 'Full acceptance of the current SkillPilot version with independent Claude Pro accounts is still pending.',
+    install: 'These steps apply to Claude Web. The marketplace and file upload lead to the same SkillPilot plugin.',
     independentTitle: 'Independent beta candidate',
     independentText: 'This plugin is provided by SkillPilot. It is not officially verified, sponsored, or guaranteed by Anthropic.',
     links: 'Documentation and contact',
@@ -188,9 +245,9 @@ const copy = (version?: string) => ({
     publicationIndex: 'Machine-readable publication index',
     stepDownloadTitle: 'Download the current plugin file',
     stepDownloadBody: version
-      ? `Download version ${version} provided here and keep the file for uploading to Claude. Downloading alone does not install the plugin.`
-      : 'Once the current plugin file is available, you can download it for uploading to Claude. Downloading alone does not install the plugin.',
-    versionCheckLimit: 'SkillPilot cannot currently read the plugin version installed in your Claude account automatically. Check the version displayed in Claude.',
+      ? 'Download version ' + version + ' before removing an older installation. Downloading alone does not install the plugin.'
+      : 'The current file becomes available once the version information has loaded successfully.',
+    versionCheckLimit: 'SkillPilot cannot automatically read the version installed in your Claude account.',
   },
 } as const)
 
@@ -272,7 +329,7 @@ const InstallStep = ({ number, name, title, body, children }: {
   name: string
   title: string
   body: string
-  children: React.ReactNode
+  children?: React.ReactNode
 }) => (
   <li data-testid={`claude-plugin-install-step-${name}`} className="rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
     <div className="flex items-start gap-3">
@@ -292,11 +349,21 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
   onRetry,
   language,
 }) => {
+  const [guideMode, setGuideMode] = useState<'install' | 'update'>('install')
+  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'error'>('idle')
   const plugin = publication?.plugins[0]
   const text = copy(plugin?.version)[language]
   const requirements = plugin?.requirements ?? CLAUDE_PLUGIN_BETA_REQUIREMENTS
   const cardId = plugin?.id ?? 'skillpilot-coach-v1'
   const supportHref = `mailto:${plugin?.supportEmail ?? 'support@skillpilot.com'}`
+  const copyRepository = async () => {
+    try {
+      await navigator.clipboard.writeText(CLAUDE_MARKETPLACE_REPOSITORY_URL)
+      setCopyStatus('copied')
+    } catch {
+      setCopyStatus('error')
+    }
+  }
   const externalLinks = [
     {
       label: text.officialGuide,
@@ -338,39 +405,78 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
           <p className="mt-2 text-sm leading-relaxed text-text-secondary">{text.versionCheckLimit}</p>
         </aside>
 
-        <section data-testid="claude-plugin-direct-upload-guide" aria-labelledby={`${cardId}-install-guide`} className="rounded-3xl border-2 border-sky-300 bg-sky-50/70 p-5 dark:border-sky-800 dark:bg-sky-950/25 sm:p-6">
-          <h3 id={`${cardId}-install-guide`} className="text-xl font-semibold text-slate-900 dark:text-white">{text.guideTitle}</h3>
+        {!publication && !loadError && (
+          <div className="mt-4 flex items-center gap-3 rounded-xl border border-border-color bg-white/70 p-4 text-sm text-text-secondary dark:bg-slate-900/50" data-testid="claude-plugin-publication-status" role="status">
+            <CalendarClock className="animate-pulse" size={20} aria-hidden="true" />
+            {text.loading}
+          </div>
+        )}
+
+        {loadError && (
+          <div className="mt-4 rounded-xl border border-red-300 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30" role="alert">
+            <p className="font-semibold text-red-900 dark:text-red-100">{text.loadErrorTitle}</p>
+            <p className="mt-2 text-sm leading-relaxed text-red-900 dark:text-red-100">{text.loadErrorText}</p>
+            <button
+              type="button"
+              onClick={onRetry}
+              className="mt-3 inline-flex items-center gap-2 rounded-xl bg-red-700 px-4 py-2.5 font-semibold text-white hover:bg-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-red-50 dark:focus-visible:ring-offset-red-950"
+            >
+              <RefreshCw size={18} aria-hidden="true" />
+              {text.retry}
+            </button>
+          </div>
+        )}
+
+        {publication && !plugin && (
+          <div className="mt-4 rounded-xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/50">
+            <p className="font-semibold text-slate-900 dark:text-white">{text.emptyTitle}</p>
+            <p className="mt-2 text-sm text-text-secondary">{text.emptyText}</p>
+          </div>
+        )}
+
+        <div data-testid="claude-plugin-open-navigation">
+          <a data-testid="claude-plugin-open-claude" href={CLAUDE_PLUGINS_DISCOVER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-sky-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2">
+            {text.openClaudeWeb}<ExternalLink size={16} aria-hidden="true" />
+          </a>
+          <p className="mt-2 text-sm text-text-secondary">{text.keepTab}</p>
+          <p className="mt-2 text-sm leading-relaxed text-text-secondary">{text.navigationHint}</p>
+        </div>
+
+        {CLAUDE_MARKETPLACE_INSTALLATION_ENABLED && (
+          <section data-testid="claude-plugin-marketplace-guide" aria-labelledby={`${cardId}-marketplace-guide`} className="rounded-3xl border-2 border-sky-300 bg-sky-50/70 p-5 dark:border-sky-800 dark:bg-sky-950/25 sm:p-6">
+            <h3 id={`${cardId}-marketplace-guide`} className="text-xl font-semibold text-slate-900 dark:text-white">{text.marketplaceTitle}</h3>
+            <div role="group" aria-label={text.modeLabel} className="mt-4 flex flex-wrap gap-2">
+              {(['install', 'update'] as const).map((mode) => (
+                <button key={mode} type="button" data-testid={`claude-plugin-mode-${mode}`} aria-pressed={guideMode === mode} aria-controls={`${cardId}-marketplace-instructions`} onClick={() => setGuideMode(mode)} className={`min-h-11 rounded-xl border px-4 py-2 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 ${guideMode === mode ? 'border-sky-700 bg-sky-700 text-white' : 'border-sky-300 bg-white text-sky-800 dark:border-sky-700 dark:bg-slate-900 dark:text-sky-200'}`}>
+                  {mode === 'install' ? text.modeInstall : text.modeUpdate}
+                </button>
+              ))}
+            </div>
+            <div id={`${cardId}-marketplace-instructions`}>
+              <p className="mt-4 text-sm leading-relaxed text-text-secondary">{guideMode === 'install' ? text.marketplaceInstallIntro : text.marketplaceUpdateIntro}</p>
+              {guideMode === 'install' && <p data-testid="claude-plugin-marketplace-migration" className="mt-3 text-sm leading-relaxed text-text-secondary">{text.marketplaceMigration}</p>}
+              <InstructionActions actions={guideMode === 'install' ? text.marketplaceInstallActions : text.marketplaceUpdateActions} testId="claude-plugin-marketplace-navigation" />
+              {guideMode === 'install' ? (
+                <div className="mt-4 rounded-xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900">
+                  <p className="text-sm font-semibold">{text.repositoryLabel}</p>
+                  <code data-testid="claude-plugin-marketplace-url" className="mt-2 block select-all break-all text-sm">{CLAUDE_MARKETPLACE_REPOSITORY_URL}</code>
+                  <button type="button" data-testid="claude-plugin-copy-marketplace" onClick={() => { void copyRepository() }} className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl border border-sky-500 px-4 py-2 text-sm font-semibold text-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 dark:text-sky-200">
+                    <Copy size={16} aria-hidden="true" />{text.copyRepository}
+                  </button>
+                  <p data-testid="claude-plugin-copy-status" role="status" className="mt-2 text-sm text-text-secondary">{copyStatus === 'copied' ? text.copiedRepository : copyStatus === 'error' ? text.copyFailed : ''}</p>
+                  <p className="mt-2 text-sm text-text-secondary">{text.marketplaceAlreadyAdded}</p>
+                </div>
+              ) : <p className="mt-3 text-sm font-medium text-text-secondary">{text.uploadUpdateHint}</p>}
+              <p data-testid="claude-plugin-autosync-notice" className="mt-4 text-sm leading-relaxed text-text-secondary">{text.autosync}</p>
+            </div>
+          </section>
+        )}
+
+        <details data-testid="claude-plugin-direct-upload-guide" className="rounded-2xl border border-border-color p-5 sm:p-6">
+          <summary className="cursor-pointer text-lg font-semibold text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 dark:text-white">{text.guideTitle}</summary>
           <p className="mt-2 text-sm leading-relaxed text-text-secondary">{text.guideIntro}</p>
           <ol className="mt-5 space-y-4">
             <InstallStep number={1} name="download" title={text.stepDownloadTitle} body={text.stepDownloadBody}>
-              {!publication && !loadError && (
-                <div className="mt-4 flex items-center gap-3 rounded-xl border border-border-color bg-white/70 p-4 text-sm text-text-secondary dark:bg-slate-900/50" role="status">
-                  <CalendarClock className="animate-pulse" size={20} aria-hidden="true" />
-                  {text.loading}
-                </div>
-              )}
-
-              {loadError && (
-                <div className="mt-4 rounded-xl border border-red-300 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30" role="alert">
-                  <p className="font-semibold text-red-900 dark:text-red-100">{text.loadErrorTitle}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-red-900 dark:text-red-100">{text.loadErrorText}</p>
-                  <button
-                    type="button"
-                    onClick={onRetry}
-                    className="mt-3 inline-flex items-center gap-2 rounded-xl bg-red-700 px-4 py-2.5 font-semibold text-white hover:bg-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-red-50 dark:focus-visible:ring-offset-red-950"
-                  >
-                    <RefreshCw size={18} aria-hidden="true" />
-                    {text.retry}
-                  </button>
-                </div>
-              )}
-
-              {publication && !plugin && (
-                <div className="mt-4 rounded-xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/50">
-                  <p className="font-semibold text-slate-900 dark:text-white">{text.emptyTitle}</p>
-                  <p className="mt-2 text-sm text-text-secondary">{text.emptyText}</p>
-                </div>
-              )}
 
               {plugin && publication && (
                 <div className="mt-4 space-y-4">
@@ -411,27 +517,36 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
               )}
             </InstallStep>
             <InstallStep number={2} name="open" title={text.stepOpenTitle} body={text.stepOpenBody}>
-              <InstructionActions actions={text.stepOpenActions} testId="claude-plugin-open-navigation" />
+              <InstructionActions actions={text.stepOpenActions} testId="claude-plugin-replace-navigation" />
               <p className="mt-3 text-sm text-text-secondary">{text.stepOpenCheck}</p>
-              <a href="https://claude.ai" target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl border border-sky-500 px-4 py-2.5 text-sm font-semibold text-sky-800 dark:text-sky-200">
-                {text.openClaudeWeb}<ExternalLink size={16} aria-hidden="true" />
-              </a>
             </InstallStep>
             <InstallStep number={3} name="upload" title={text.stepInstallTitle} body={text.stepInstallBody}>
               <InstructionActions actions={text.stepInstallActions} testId="claude-plugin-upload-navigation" />
-              <p className="mt-3 text-sm font-medium text-text-secondary">{text.stepInstallCheck}</p>
             </InstallStep>
-            <InstallStep number={4} name="connector" title={text.stepConnectorTitle} body={text.stepConnectorBody}>
+          </ol>
+        </details>
+
+        <section data-testid="claude-plugin-finish-guide" aria-labelledby={`${cardId}-finish-guide`}>
+          <h3 id={`${cardId}-finish-guide`} className="text-xl font-semibold text-slate-900 dark:text-white">{text.finishTitle}</h3>
+          <ol className="mt-4 space-y-4">
+            <InstallStep number={1} name="version" title={text.versionTitle} body={text.versionBody} />
+            <InstallStep number={2} name="connector" title={text.stepConnectorTitle} body={text.stepConnectorBody}>
               <InstructionActions actions={text.stepConnectorActions} testId="claude-plugin-connector-navigation" />
               <p className="mt-3 text-sm font-medium text-text-secondary">{text.stepConnectorCheck}</p>
             </InstallStep>
-            <InstallStep number={5} name="return" title={text.stepReturnTitle} body={text.stepReturnBody}>
+            <InstallStep number={3} name="return" title={text.stepReturnTitle} body={text.stepReturnBody}>
               <Link to="/" className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl border border-sky-500 px-4 py-2.5 text-sm font-semibold text-sky-800 dark:text-sky-200">
                 <ArrowLeft size={16} aria-hidden="true" />{text.returnToSkillPilot}
               </Link>
             </InstallStep>
           </ol>
         </section>
+
+        <details className="rounded-2xl border border-border-color p-5">
+          <summary className="cursor-pointer font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600">{text.troubleTitle}</summary>
+          <p className="mt-3 text-sm leading-relaxed text-text-secondary">{text.troubleBody}</p>
+          <p className="mt-3 text-sm leading-relaxed text-text-secondary">{text.removalWarning}</p>
+        </details>
 
         <section aria-labelledby={`${cardId}-requirements`}>
             <h3 id={`${cardId}-requirements`} className="text-xl font-semibold text-slate-900 dark:text-white">
@@ -465,7 +580,6 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
                 <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.installationSurface}</p>
                 <p className="mt-1 font-semibold text-slate-900 dark:text-white">{formatSurface(requirements.installSurface, language)}</p>
                 <p className="mt-2 text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.install}</p>
-                <p className="mt-2 text-sm leading-relaxed text-slate-800 dark:text-slate-100">{text.connectAndStart}</p>
               </div>
             </li>
             </ul>

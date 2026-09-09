@@ -4443,6 +4443,59 @@ const expectedAuthorizedRuntimeExceptions = [
         "authorizedSha256": "2a0f99da3a9c39fc1cb6398c611393f5642ef7a908e4ea0af561889de4ffa83a"
       }
     ]
+  },
+  {
+    "id": "2026-09-09-claude-marketplace-and-upload-guide",
+    "approvedAt": "2026-09-09",
+    "approvedBy": "product-owner",
+    "reason": "Implement the Product Owner's explicitly requested updated Claude installation and update guide from the r2 evidence handoff, recommending the personal Marketplace with the current file-download/upload path as a fallback.",
+    "scope": "Only revise the existing German/English /plugins guide and focused publication/browser regressions to distinguish new Marketplace installation, manual updates through Add at the top right -> Manage marketplaces -> the SkillPilot source menu -> Check for updates, and current-file download/upload fallback. Add only the fixed observed Claude Web navigation link without session or credential parameters and restore copying of the canonical query-free repository URL. Keep current version and file download bound to the same validated dynamic publication index; keep neutral missing-index states while allowing the separately approved Marketplace instructions. Retain explicit installed-version, bundled-connector and return-to-SkillPilot checks; do not infer installation from catalog history or prescribe Marketplace deletion, query-string workarounds, GitHub administration or broad repository authorization. Approve only the first-party guide decision pinned to the existing verified 1.1.2 repository revision/tree/artifact; preserve published_pending_acceptance, all repository evidence and all pending account/client/privacy/legal/support gates. Update only the mutable Marketplace runbook and research documentation, append section 6.72 and advance these eight existing supplemental bindings. Preserve prior decisions, primary OpenAI runtime/tree chains, frozen-path inventory, App.tsx and root-route policy, exact connector/plugin candidate baselines, all six immutable package files, public Marketplace source tree and download artifacts. No automatic account detection or updates, new plugin version, external publication, account or GitHub permission mutation, OpenAI 1.0.0 or inactive 1.1 contract/UI, MCP/OAuth/tool/schema, provider launch, prepared message, session/identity/locale/learning-state/privacy/storage/security, portal, review case/fixture/artifact, app deployment or curriculum-goal resumption.",
+    "target": "existing-first-party-claude-marketplace-and-file-fallback-guide",
+    "frozenPluginVersion": "1.0.0",
+    "portalReviewAction": "none-required-claude-only-installation-guidance-with-unchanged-published-package-and-openai-contract",
+    "supplementalOnly": true,
+    "additionalFiles": [
+      {
+        "path": "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json",
+        "priorAuthorizedSha256": "a5e06627828d3ae428e2d16ce405c8f6d2850d277575e19c42977028b48866fa",
+        "authorizedSha256": "12edd0793564d56606e353fa4e1c3bd05799083169727d1b49011a5cd1a9fc96"
+      },
+      {
+        "path": "app/scripts/testClaudePluginInstallUi.ts",
+        "priorAuthorizedSha256": "a1f9996272dc46be16bc87d2533d905b9aa70066300db93045757306471be68d",
+        "authorizedSha256": "94392d720a8b250e7c1998e4b77500e7302b3bba115bbbc431ab1d06b0eae2be"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.test.ts",
+        "priorAuthorizedSha256": "3e894955f1cdfe7fb4fa2614217e141bab0326c2568e9b516b84d095d8077f82",
+        "authorizedSha256": "c711f1b2adf94971316fef5b8cc43b17b74b3aba3c687d3cddf578f51ec2c1ff"
+      },
+      {
+        "path": "app/src/utils/claudePluginPublication.ts",
+        "priorAuthorizedSha256": "6be53a7b5568ca5875bfc2b2a050893de39e1222377f7bd1fa0ead16986dab3d",
+        "authorizedSha256": "699af58f85fdd5d75cd4830e0a26e04d818c12057a5518d9dfc3844c362dd9bd"
+      },
+      {
+        "path": "app/src/views/PluginCatalogView.tsx",
+        "priorAuthorizedSha256": "3c996de24c666f7f3a40d99f190d96111d52ed235cc30e2325de4adf7a754353",
+        "authorizedSha256": "cf2ce58b6f593a486d19208cb4d30df7728de43762ee7c05fdc9c7f44bd908d3"
+      },
+      {
+        "path": "docs/deploy/claude-personal-marketplace-release.md",
+        "priorAuthorizedSha256": "ae3c32da2e4b4186f94a4395109d4dc5aec64d77d56d64c2d4d90724ac76a9a4",
+        "authorizedSha256": "8438eeb0be80643dd38fb5eea8fe0adfa1848533884b6cffab644c60c2195207"
+      },
+      {
+        "path": "docs/deploy/openai-plugin-v1-review-freeze.md",
+        "priorAuthorizedSha256": "2a0f99da3a9c39fc1cb6398c611393f5642ef7a908e4ea0af561889de4ffa83a",
+        "authorizedSha256": "a5c0bb89038101f0400b86db9a8b95529e0c2198928029ff57fb416319430b7a"
+      },
+      {
+        "path": "scripts/claude_marketplace_release.test.mjs",
+        "priorAuthorizedSha256": "e652887d8142d7b949da8725d462a08cc73814942530ca0c94448d1f36718a3d",
+        "authorizedSha256": "ee04c0a3bf136ab031d905eb31d552cd03ec5278fa2bbef9b5dec8e76e8bd826"
+      }
+    ]
   }
 ];
 

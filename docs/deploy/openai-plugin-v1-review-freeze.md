@@ -3821,3 +3821,72 @@ Datenschutz-, Speicher- und Berechtigungsverträge, Portalwerte, Reviewfälle,
 Fixtures und Reviewartefakte bleiben unverändert. Der OpenAI-Portalreview
 benötigt weder Rücknahme noch Neueinreichung. Kein neues Pluginpaket und kein
 App-Deployment sind Teil dieses lokalen Änderungspakets.
+
+### 6.72 Marketplace-Anleitung mit manuellem Update und Datei-Fallback
+
+Der Product Owner beauftragt am **9. September 2026** ausdrücklich, die
+Installations- und Updateanleitung anhand seiner Dokumentationsübergabe r2
+zu überarbeiten und die empfohlene Gestaltung direkt umzusetzen: Der
+persönliche Git-Marketplace wird wieder der erste Weg; Herunterladen und
+Hochladen der aktuellen Plugin-Datei bleibt als klar bezeichneter Fallback
+erreichbar. Diese aktuelle ausdrückliche Implementierungsfreigabe ersetzt
+ausschließlich die frühere Beschränkung der Übergabe auf Dokumentation und
+die zuletzt zurückgestellte First-Party-Guide-Entscheidung. Die Übergabe
+selbst erteilt weiterhin keine technische Account- oder Releaseabnahme.
+
+Die deutsche und englische `/plugins`-Anleitung unterscheidet Neuinstallation,
+Aktualisierung einer bestehenden Marketplace-Quelle und Datei-Upload.
+Der beobachtete reine Navigationslink
+`https://claude.ai/new#customize/plugins/discover` öffnet die Plugin-Übersicht;
+er enthält weder Lernsession noch sonstige Zugangsdaten und führt selbst
+keine Installation oder Aktualisierung aus. Als Alternative bleibt der
+manuelle Einstieg über Claudes Plugin-Bereich beschrieben. Der konkrete
+Updateweg lautet **Hinzufügen oben rechts → Marketplaces verwalten → ⋮ am
+SkillPilot-Marketplace → Nach Updates suchen**. Die kanonische
+Repository-Adresse bleibt unverändert und ohne Query-Parameter; `?v=2`
+ist ausschließlich ein historischer Nutzerbericht, keine Installationsvorgabe.
+
+Die Anleitung prüft angebotene und tatsächlich installierte Version getrennt.
+Der Inhalts-Versionswähler ist kein Nachweis einer aktualisierten Installation
+oder eines Rollbacks. Versionstexte und Dateidownload bleiben an denselben
+validierten dynamischen Veröffentlichungsindex gebunden. Bei dessen Ausfall
+bleiben die Marketplace-Navigation und ihre Grenzen sichtbar; eine aktuelle
+Versionsnummer oder ein Dateidownload wird dann nicht erfunden. Die
+bestehenden Herkunfts-, SemVer-, Dateinamen-, Größen- und Digestpfadprüfungen
+bleiben erhalten. Für beide Installationswege gelten anschließend dieselbe
+Prüfung des enthaltenen SkillPilot-Konnektors und die Rückkehr zu SkillPilot
+für den bereits bestehenden Lernstart.
+
+Die Anleitung fordert keine GitHub-App-Freigabe durch Lernende und behauptet
+keine zuverlässige kontoübergreifende Automatik. Sie trennt die angeforderten
+GitHub-Schreibrechte von der SkillPilot-Konnektor-Verbindung. Entfernen einer
+Marketplace-Quelle ist kein Standardupdateschritt; auf die Deinstallation
+ihrer Plugins wird hingewiesen. Beim nötigen Installationswechsel bleibt die
+Bereinigung auf die konkrete SkillPilot-Plugininstanz begrenzt; andere
+Plugins, Quellen und Konnektoren bleiben unangetastet. Es werden keine
+Claude-Konten, GitHub-Berechtigungen oder laufenden Installationen verändert.
+
+Die separate Guide-Entscheidung wird um
+`2026-09-09T08:02:01.000Z` an die bereits verifizierte Repository-Revision
+`25bf4d8272030a3701008f7b5a09d4a18cba15c5`, ihren Tree-Digest und das
+unveränderte 1.1.2-Artefakt gebunden. Nur daraus folgen
+`marketplaceUiSwitchAllowed = true` und
+`firstPartyUiRoute = personal_git_marketplace`.
+`published_pending_acceptance`, die vollständige bestehende
+Repository-Evidenz und alle offenen Accountinstallations-, Migrations-,
+Update-, Client-, Datenschutz-, Legal- und Supportnachweise bleiben
+unverändert. `openPublicBetaReady` bleibt `false`. Insbesondere belegen
+die historischen Screenshots von 1.1.1 keine vollständige 1.1.2-Abnahme.
+
+Record, Runtime-Checker und Regression ergänzen genau eine append-only
+Supplemental-Exception für die bereits gebundenen Guide-, Metadaten-,
+Test- und Runbook-Dateien sowie diesen Nachtrag. Frühere Ausnahmen, primäre
+Runtime-/Baumketten und die Menge geschützter Dateien bleiben unverändert.
+Die veröffentlichten sechs Plugin-Dateien, Downloadartefakte, öffentliche
+Marketplace-Quelldateien und ihre Releasebindungen werden nicht verändert.
+OpenAI Coach 1.0.0 und der ruhende OpenAI-1.1-Kandidat, MCP/OAuth, Tools,
+Schemas, MCP-Apps-UI, Provider-Start, Prepared Messages, Session-, Identitäts-,
+Locale-, Lernzustands-, Datenschutz-, Speicher- und Berechtigungsverträge,
+Portalwerte, Reviewfälle, Fixtures und Reviewartefakte bleiben unverändert.
+Keine neue Pluginversion, externe Veröffentlichung, App-Bereitstellung,
+Portalaktion oder Wiederaufnahme des pausierten Curriculum-Goals.
