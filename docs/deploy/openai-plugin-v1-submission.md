@@ -2,6 +2,10 @@
 
 **Stand:** 9. September 2026 · **Nachfolgekandidat:** `1.1.0`
 
+Für dauerhafte Verhaltensprüfungen vor und nach der Einreichung siehe
+[automatische API-Dialogregression](../qa-ci/openai-dialog-regression.md).
+Sie ergänzt die einmalige manuelle ChatGPT-Abnahme und ersetzt keine Host-Evidenz.
+
 **Status:** lokal vorbereitete Neueinreichung, nicht eingereicht, nicht
 genehmigt und nicht veröffentlicht. Der vorgelegte Portalexport nennt für
 `1.0.0` ausdrücklich `REJECTED`, aber weder eine konkrete Ablehnungsbegründung
@@ -35,6 +39,17 @@ liefert Tools, Schemas, Annotationen, Metadaten und UI-Ressourcen.
   Portalexport orientierte Angaben mit fünf positiven und drei negativen Fällen;
 - `submission/generated/preparation.json`: Quellhashes, Ressourcenbindungen,
   Starter Prompt, interne Planfälle und offene Abnahme-/Portalschritte.
+- `submission/generated/acceptance-guide.md`: vollständige Abnahmeanleitung
+  mit Ausgangsdaten, geordneten Turns und Prüfkriterien für alle 14 Fälle;
+- `submission/generated/trace-template.json`: leere Vorlage ohne beobachtete
+  Ereignisse oder Freigaben; sie kann unverändert keine Abnahme bestehen.
+
+Für den nächsten echten Test mit der
+[erzeugten Abnahmeanleitung](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20plugin/skillpilot-coach-v1/submission/generated/acceptance-guide.md)
+beginnen. Ergebnisse ausschließlich in einer separaten lokalen Kopie unter
+`tmp/` dokumentieren. Der OpenAI-CI-Job stellt nach seinen erfolgreichen
+Prüfungen nur diese vier unveränderten Vorbereitungsdateien als
+`openai-submission-worksheet-<commit>` bereit, keine privaten Testaufzeichnungen.
 
 Das ist eine Arbeits- und Vergleichsvorlage, **kein behauptetes offizielles
 Portal-Importformat**. Es werden keine undokumentierten Portal-APIs verwendet.

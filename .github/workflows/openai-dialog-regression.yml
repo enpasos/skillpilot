@@ -1,0 +1,66 @@
+name: OpenAI model dialog regression
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '35 4 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: openai-dialog-regression
+  cancel-in-progress: false
+
+jobs:
+  dialogs:
+    # No paid execution on PR/fork code. Scheduled runs require explicit activation.
+    if: >-
+      github.ref == format('refs/heads/{0}', github.event.repository.default_branch) &&
+      (github.event_name == 'workflow_dispatch' || vars.OPENAI_DIALOG_EVAL_ENABLED == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Test the runner and its failure detection without API access
+        run: node --test scripts/openai_dialog_eval.test.mjs scripts/openai_dialog_assertions.test.mjs
+      - name: Verify current candidate and generated submission sources
+        run: node scripts/openai_dialog_eval.mjs check
+      - name: Test isolated fixture adapter and state transitions
+        working-directory: backend
+        run: ./gradlew test --tests '*OpenAiDialogReplay*Test' prepareOpenAiDialogReplay --console=plain
+      - name: Run all fourteen model dialogs and independent semantic checks
+        env:
+          OPENAI_EVAL_API_KEY: ${{ secrets.OPENAI_EVAL_API_KEY }}
+        run: node scripts/openai_dialog_eval.mjs run --out-dir tmp/openai-dialog-ci
+      - name: Report model-test status separately from host acceptance
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const path = 'tmp/openai-dialog-ci/report.json';
+          const report = fs.existsSync(path) ? JSON.parse(fs.readFileSync(path)) : null;
+          const lines = ['## OpenAI API dialog regression', '',
+            `Result: ${report?.status ?? 'NOT EXECUTED'}`, '',
+            'ChatGPT host, OAuth and native widget acceptance: **NOT TESTED**.', '',
+            'Detailed sanitized evidence is in the report artifact. An absent report or incomplete run is not a pass.'];
+          if (report) lines.push('', `Passed: ${report.cases.filter(c => c.status === 'passed').length}/${report.total ?? 14}`, '',
+            `API requests: ${report.usage?.requests ?? 0}; conservative cost estimate: $${(report.usage?.estimatedUsd ?? 0).toFixed(4)}`);
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
+          NODE
+      - name: Retain sanitized dialog evidence including failures
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: openai-dialog-regression-${{ github.sha }}-${{ github.run_id }}
+          path: tmp/openai-dialog-ci/report.json
+          if-no-files-found: warn
+          retention-days: 30

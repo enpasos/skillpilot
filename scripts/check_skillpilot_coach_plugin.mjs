@@ -4,10 +4,6 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
-import {
-  OPENAI_REVIEW_VIDEO,
-  validateOpenAiReviewVideoBytes,
-} from "./openai_review_video_contract.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
@@ -15,17 +11,6 @@ const pluginRoot = resolve(
   "ai/openai plugin/skillpilot-coach-v1",
 );
 const faviconRoot = resolve(repositoryRoot, "app/public/favicon");
-const reviewVideoArtifact = resolve(
-  repositoryRoot,
-  "backend/src/main/resources",
-  OPENAI_REVIEW_VIDEO.relativePath,
-);
-assert.equal(
-  existsSync(reviewVideoArtifact),
-  true,
-  "The historical rejected OpenAI review video must remain available as audit evidence.",
-);
-validateOpenAiReviewVideoBytes(readFileSync(reviewVideoArtifact));
 const goalVisualizationWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
@@ -204,12 +189,6 @@ assert.match(submissionDossier, /openai_plugin_submission\.mjs/u);
 assert.match(submissionDossier, /ChatGPT im Webbrowser/u);
 assert.match(submissionDossier, /kein bestandener Realhost-Test/u);
 assert.match(submissionDossier, /Android-Unterstützung ist nicht zugesagt/u);
-assert.match(submissionDossier, /Reviewvideo bleibt ausschließlich historische/u);
-assert.equal(
-  submissionDossier.includes(OPENAI_REVIEW_VIDEO.sha256),
-  true,
-  "The dossier must identify historical video evidence without reusing it as current acceptance.",
-);
 assert.match(legalTermsVersion, /CURRENT_TERMS_VERSION = '1\.0\.0'/u);
 for (const [label, source] of [
   ["legal", legalViewCopy],

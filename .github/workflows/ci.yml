@@ -127,6 +127,7 @@ jobs:
       - name: Test submission generation, export audit and trace validation
         run: |
           node --test scripts/openai_plugin_submission.test.mjs
+          node --test scripts/openai_dialog_eval.test.mjs scripts/openai_dialog_assertions.test.mjs
           node scripts/openai_plugin_submission.mjs check
       - name: Test OpenAI V1 runtime configuration guard
         run: node --test scripts/validate_openai_v1_runtime_config.test.mjs
@@ -134,6 +135,17 @@ jobs:
         run: node scripts/validate_openai_v1_runtime_config.mjs
       - name: Audit MCP App dependencies
         run: npm --prefix "ai/openai app" audit --audit-level=moderate
+      - name: Retain checked OpenAI submission worksheets
+        uses: actions/upload-artifact@v6
+        with:
+          name: openai-submission-worksheet-${{ github.sha }}
+          path: |
+            ai/openai plugin/skillpilot-coach-v1/submission/generated/portal-draft.json
+            ai/openai plugin/skillpilot-coach-v1/submission/generated/preparation.json
+            ai/openai plugin/skillpilot-coach-v1/submission/generated/acceptance-guide.md
+            ai/openai plugin/skillpilot-coach-v1/submission/generated/trace-template.json
+          if-no-files-found: error
+          retention-days: 14
 
   claude-connector-v1-ci:
     name: Claude Connector V1 CI

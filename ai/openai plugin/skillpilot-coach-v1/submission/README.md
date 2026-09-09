@@ -23,10 +23,29 @@ node scripts/openai_plugin_submission.mjs audit-export --export /exact/local/pat
 node scripts/openai_plugin_submission.mjs validate-trace --trace /exact/local/path/trace.json
 ```
 
-`prepare` writes `generated/portal-draft.json` and `generated/preparation.json`.
+`prepare` writes `generated/portal-draft.json`, `generated/preparation.json`,
+`generated/acceptance-guide.md` and `generated/trace-template.json`.
 It does not update production or send anything to OpenAI. `check` requires exact
 regeneration. An alternative `--contract PATH` must have the matching adjacent
 snapshot `plugin.json`. `--out-dir PATH` isolates temporary outputs.
+The adjacent `snapshot-manifest.json` must bind the exact contract bytes and
+current candidate identity/version. Run `node scripts/openai_plugin_release.mjs
+verify` first to confirm the entire snapshot still reproduces from current
+sources, including the skill bundle and UI bytes.
+
+The generated [acceptance guide](generated/acceptance-guide.md) presents all
+fourteen cases with their complete fixture setup, ordered turns, tool rules,
+semantic assertions and automated test mappings. Start there for the real
+ChatGPT run. The accompanying trace template intentionally contains **no
+observed events or approvals** and fails trace validation until actual,
+reviewed evidence is supplied. Copy it to a separate local directory under
+`tmp/`; never enter observations into the generated source template.
+
+After successful source checks and the dependency audit, the OpenAI CI job
+retains exactly these four non-secret prepared files as the
+`openai-submission-worksheet-<commit>` artifact. It does not upload actual
+traces, recordings, credentials, private portal exports or arbitrary files
+from `tmp/`. The artifact is a worksheet, not a passed host test or submission.
 
 Generated portal prompts include complete actionable fixture setup and all
 ordered turns. The export audit compares our authored fields, including both duplicated tool
@@ -39,6 +58,14 @@ also remain explicit manual steps. No test case is silently dropped or text
 silently truncated.
 
 ## What automated execution proves
+
+The separate [automatic API dialog runner](../../../../docs/qa-ci/openai-dialog-regression.md)
+executes all fourteen authored cases with the current skill and model-visible
+tool catalog against the real adapter with isolated simulated domain state.
+It combines deterministic checks with independent semantic model evaluation,
+uses a dedicated test-only API key and bounded usage, and emits a version-bound
+report. It never manufactures human reviews or marks host acceptance complete.
+The dedicated GitHub workflow supports manual and explicitly enabled daily runs.
 
 Each case names concrete backend/component tests. Those tests execute the real
 adapter and state/capability code against controlled fixtures. Their actual test
@@ -56,7 +83,11 @@ keeps all real-host case statuses `pending`; a reviewed run is separate evidence
 A trace JSON contains:
 
 - `schemaVersion: 1`, current `candidateVersion`, SHA-256 of the canonical
-  pretty-printed case JSON as `suiteSha256`, and a non-secret `runId`;
+  pretty-printed case JSON as `suiteSha256`, canonical contract hash
+  `contractSha256`, exact snapshot-manifest file hash `snapshotManifestSha256`,
+  and a non-secret `runId`; both candidate hashes must match the current
+  preparation, so same-version contract, skill or UI updates invalidate old
+  traces after regenerating the candidate;
 - `layer`: `backend-fixture`, `model-replay`, `chatgpt-web`, `chatgpt-ios`, or
   `chatgpt-android`; a mock must never be labeled as a real host;
 - `cases`: exactly all P1–P5, N1–N3 and D1–D6, each with `id` and ordered

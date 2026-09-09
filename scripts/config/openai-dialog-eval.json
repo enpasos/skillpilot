@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "model": "gpt-5.6-sol",
+  "judgeModel": "gpt-5.6-sol",
+  "reasoningEffort": "low",
+  "repetitions": 1,
+  "maxRequests": 160,
+  "maxRequestsPerTurn": 8,
+  "maxOutputTokens": 4096,
+  "maxRequestBytes": 200000,
+  "requestTimeoutMs": 60000,
+  "maxEstimatedUsd": 10,
+  "pricing": {
+    "inputUsdPerMillion": 5,
+    "outputUsdPerMillion": 20,
+    "verifiedAt": "2026-09-09",
+    "validThrough": "2026-11-21",
+    "source": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+    "note": "Conservative input rate includes the documented 1.25x cache-write rate; cache-read discounts are ignored. Requests stay below the long-context threshold. This is a local usage estimate, not a billing-account hard limit. Revalidate rates before extending this configuration."
+  }
+}

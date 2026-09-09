@@ -11,6 +11,8 @@ Use this page by role: start with the overview documents, then jump to a review 
   Detailed meaning of `M0` to `M7`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
 - [CI Overview](ci.md)
   Local and GitHub Actions validation entry points.
+- [Automatische OpenAI-Dialogregression](openai-dialog-regression.md)
+  Wiederholbare API-Dialoge, isolierte Fixtures, Kostenlimits und getrennte Host-Abnahme.
 - [Graph Validation Rules](graph-validation-rules.md)
   Single source of truth for algorithmic graph validation in CI.
 - [Curriculum Package Readiness](curriculum-package-readiness.md)

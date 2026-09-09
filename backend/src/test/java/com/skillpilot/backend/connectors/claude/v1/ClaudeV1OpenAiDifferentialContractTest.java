@@ -18,15 +18,16 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestPropertySource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Proves that enabling Claude v1 in the shared JVM leaves the frozen OpenAI v1 contract unchanged.
+ * Proves that enabling Claude v1 in the shared JVM preserves the OpenAI 1.1.0 candidate contract.
  *
- * <p>The OpenAI lane is under review and its observable contract must not move. This test runs with
- * Claude v1 switched on so any accidental coupling — a shared bean, a contributed tool, a rewritten
- * instruction block — would show up as a fingerprint difference.</p>
+ * <p>The providers evolve independently. This test runs with Claude v1 switched on so accidental
+ * coupling — a shared bean, a contributed tool, a rewritten instruction block — is detected against
+ * the explicit OpenAI 1.1.0 candidate baseline, not the retired 1.0.0 review contract.</p>
  */
 @SpringBootTest
 @ActiveProfiles("test")
@@ -54,10 +55,28 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 })
 class ClaudeV1OpenAiDifferentialContractTest {
 
-    private static final String FROZEN_OPENAI_V1_CONTRACT_SHA256 =
-            "d2f08a66efa3488e5f87758de41688a18ce47ba2951bb2d3147e522d1fd30b38";
+    // Independently pinned to contracts/drafts/openai/skillpilot-coach-v1/
+    // 1.1.0-SNAPSHOT/contract/contract.json. Do not derive this from the runtime under test.
+    private static final String OPENAI_1_1_0_CONTRACT_SHA256 =
+            "65bf6fc6e7c5fd18a05f87c1e7deb973a40ee3fdb2a6cf1ca1262f84d8f79fc7";
 
-    /** Supplies the confidential secure-mode OAuth settings the frozen OpenAI lane requires. */
+    private static final Set<String> OPENAI_1_1_0_TOOL_NAMES = Set.of(
+            "get_skillpilot_context",
+            "get_skillpilot_exam_evaluation",
+            "get_skillpilot_navigation",
+            "get_skillpilot_verified_recall_answers",
+            "record_skillpilot_verified_recall_results",
+            "render_skillpilot_goal_visualization",
+            "resume_skillpilot_learning_plan",
+            "review_skillpilot_memory_practice_card",
+            "set_skillpilot_active_goal",
+            "set_skillpilot_mastery",
+            "set_skillpilot_scope",
+            "start_skillpilot_memory_practice",
+            "start_skillpilot_verified_recall",
+            "switch_skillpilot_learning_plan_subject");
+
+    /** Supplies the confidential secure-mode OAuth settings required by the OpenAI lane. */
     @DynamicPropertySource
     static void secureOpenAiProperties(DynamicPropertyRegistry registry) {
         OpenAiDeSecureOAuthTestServer.registerConfidentialSecureProperties(registry);
@@ -67,9 +86,9 @@ class ClaudeV1OpenAiDifferentialContractTest {
     private OpenAiDeV1McpContractAdapter openAiContract;
 
     @Test
-    void openAiV1ContractIdentityIsUnchanged() {
+    void openAiCandidateIdentityRemainsIndependentOfClaude() {
         assertEquals("skillpilot-coach-v1", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY);
-        assertEquals("1.0.0", OpenAiDeV1ContractMetadata.PLUGIN_VERSION);
+        assertEquals("1.1.0", OpenAiDeV1ContractMetadata.PLUGIN_VERSION);
         assertEquals("https://mcp-coach-v1.skillpilot.com/mcp", OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
         assertEquals("/internal/openai/v1/mcp", OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH);
     }
@@ -95,24 +114,22 @@ class ClaudeV1OpenAiDifferentialContractTest {
     @Test
     void openAiToolSurfaceIsUnaffectedByTheClaudeLane() {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = openAiContract.toolSpecifications();
-        assertEquals(12, tools.size(), "The frozen OpenAI v1 toolset must still publish exactly 12 tools");
+        assertEquals(14, tools.size(), "The OpenAI 1.1.0 candidate must publish exactly 14 tools");
 
         Set<String> openAiToolNames = tools.stream()
                 .map(specification -> specification.tool().name())
                 .collect(Collectors.toSet());
-        for (String claudeTool : ClaudeV1Contract.ALL_TOOL_NAMES) {
-            // Identical names would be a genuine problem only if the OpenAI catalogue grew; the
-            // two lanes deliberately share several tool names with different schemas, so this
-            // asserts the count and fingerprint rather than name disjointness.
-            assertNotNull(claudeTool);
-        }
-        assertEquals(12, openAiToolNames.size());
+        assertEquals(OPENAI_1_1_0_TOOL_NAMES, openAiToolNames);
+        // Shared tool names are intentional; Claude-specific entry/navigation/focus tools are not.
+        assertFalse(openAiToolNames.contains(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT));
+        assertFalse(openAiToolNames.contains(ClaudeV1Contract.TOOL_GET_NAVIGATION_OPTIONS));
+        assertFalse(openAiToolNames.contains(ClaudeV1Contract.TOOL_SET_FOCUS));
 
         String fingerprint = OpenAiDeCoachContractFingerprint.sha256(openAiContract);
         assertNotNull(fingerprint);
         assertEquals(
-                FROZEN_OPENAI_V1_CONTRACT_SHA256,
+                OPENAI_1_1_0_CONTRACT_SHA256,
                 fingerprint,
-                "Enabling Claude must leave the submitted OpenAI v1 contract byte-for-byte equivalent");
+                "Enabling Claude must preserve the explicit OpenAI 1.1.0 candidate contract");
     }
 }

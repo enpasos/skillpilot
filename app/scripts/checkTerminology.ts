@@ -88,7 +88,7 @@ const frozenEvidencePaths = [
   // Retired landscapes and captured source snapshots behind coverage claims.
   'curricula/DE/Gymnasium/archive',
   'curricula/DE/Gymnasium/input',
-  // Submitted V1 demo evidence is byte-frozen while the app is under review.
+  // Submitted V1 demo evidence stays immutable after retirement of the review.
   'tools/demo-video/output/manual-review-de',
   'tools/demo-video/output/manual-review-en',
   'tmp',
@@ -104,7 +104,7 @@ interface GrandfatheredOccurrence {
 }
 
 /**
- * Exact occurrences preserved by the active OpenAI review freeze.
+ * Exact reviewed legacy-wording occurrences, including historical review prose.
  *
  * These are deliberately narrower than an allowed phrase or a file exclusion:
  * moving or changing the approved wording makes this baseline stale and fails
@@ -138,7 +138,7 @@ const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
   {
     ruleId: 'TRM-001',
     path: 'docs/deploy/openai-plugin-v1-review-freeze.md',
-    line: 506,
+    line: 537,
     column: 30,
     found: 'Wissenslandschaften',
     lineSha256: '863fbedf7aef561bd4fd6868d4e7d13d61b0d1a107fbb2b00c8e0fedcd4275e9',
@@ -305,5 +305,5 @@ if (violations.length > 0 || staleGrandfatheredOccurrences.length > 0) {
 }
 
 console.log(
-  `Terminology check passed for ${scannedFiles.length} files with ${grandfatheredOccurrences.length} exact frozen occurrence(s).`,
+  `Terminology check passed for ${scannedFiles.length} files with ${grandfatheredOccurrences.length} exact reviewed legacy occurrence(s).`,
 )

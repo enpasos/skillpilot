@@ -96,3 +96,25 @@ tasks.register<JavaExec>("exportOpenAiCoachV1Contract") {
         .orElse("../tmp/openai-contract-v1")
     args(outputDir.get())
 }
+
+tasks.register("prepareOpenAiDialogReplay") {
+    group = "verification"
+    description = "Prepares the test-only isolated OpenAI model-dialog fixture subprocess."
+    dependsOn(tasks.testClasses)
+    val javaLauncher = javaToolchains.launcherFor(java.toolchain)
+    val output = layout.buildDirectory.file("openai-dialog-replay/launcher.json")
+    inputs.files(sourceSets.test.get().runtimeClasspath)
+    inputs.property("javaExecutable", javaLauncher.map { it.executablePath.asFile.absolutePath })
+    outputs.file(output)
+    doLast {
+        val launch = mapOf(
+            "javaExecutable" to javaLauncher.get().executablePath.asFile.absolutePath,
+            "classpath" to sourceSets.test.get().runtimeClasspath.asPath,
+            "mainClass" to "com.skillpilot.backend.openai.mcp.de.OpenAiDialogReplayHarness"
+        )
+        output.get().asFile.apply {
+            parentFile.mkdirs()
+            writeText(groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(launch)) + "\n")
+        }
+    }
+}

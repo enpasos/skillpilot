@@ -166,6 +166,8 @@ export function generateSubmission({ manifest, mcp, contract, suite, metadata, b
   nonempty(metadata.customerSupportUrl, 'Customer support URL')
   assert.equal(new URL(metadata.customerSupportUrl).protocol, 'https:')
   const listing = manifest.interface
+  assertNoSecrets(listing)
+  assert.match(bindings.snapshotManifestSha256 ?? '', /^[0-9a-f]{64}$/u, 'Missing candidate snapshot hash')
   for (const key of ['displayName', 'shortDescription', 'longDescription', 'developerName', 'category', 'websiteURL', 'privacyPolicyURL', 'termsOfServiceURL']) nonempty(listing[key], `Manifest interface.${key}`)
   const resources = contract.tools.map(portalTool)
   const draft = {
@@ -203,7 +205,90 @@ export function generateSubmission({ manifest, mcp, contract, suite, metadata, b
     manualStepsRequired: metadata.manualStepsRequired,
     evidence: { sourceValidation: 'generated', backendAndComponentTests: 'run separately and retain their actual reports', liveModelReplay: 'not run by generator', chatgptWebAcceptance: 'pending', nativeMobileAcceptance: 'not claimed', submission: 'not performed', publication: 'not performed' },
   }
-  return { draft, preparation }
+  return { draft, preparation, ...generateAcceptanceMaterials(suite, draft, preparation) }
+}
+
+// Derive the operator worksheet from the same reviewed cases as the portal.
+// Empty event/review fields are intentional: preparation is never test evidence.
+function generateAcceptanceMaterials(suite, draft, preparation) {
+  const traceTemplate = {
+    schemaVersion: 1,
+    candidateVersion: suite.candidateVersion,
+    suiteSha256: digest(suite),
+    contractSha256: preparation.sourceBindings.contractSha256,
+    snapshotManifestSha256: preparation.sourceBindings.snapshotManifestSha256,
+    runId: '',
+    layer: 'chatgpt-web',
+    hostEvidence: { sha256: '', recordingReference: '', observedAt: '', reviewer: '' },
+    cases: suite.cases.map(testCase => ({
+      id: testCase.id,
+      events: [],
+      manualReviews: testCase.assertions.filter(assertion => assertion.kind === 'manual').map(assertion => ({
+        assertionId: assertion.id, status: 'pending', reviewer: '', eventIds: [], evidenceSha256: '',
+      })),
+    })),
+  }
+  const quote = text => text.split('\n').map(line => `> ${line}`).join('\n')
+  const assertionText = assertion => {
+    switch (assertion.kind) {
+      case 'manual': return `Inhaltlich/visuell prüfen: ${assertion.description}`
+      case 'visible-exact': return `Exakter sichtbarer Antworttext:\n\n${quote(assertion.value)}`
+      case 'no-tools': return 'Kein Werkzeugaufruf.'
+      case 'tool-count': return `\`${assertion.tool}\`: mindestens ${assertion.min}, höchstens ${assertion.max} Aufrufe.`
+      case 'tool-error': return `\`${assertion.tool}\` liefert den erwarteten Fehler \`${assertion.code}\`.`
+      default: throw new Error('Unsupported acceptance assertion')
+    }
+  }
+  const acceptanceGuide = [
+    `# ChatGPT-Abnahme: ${draft.display_name} ${draft.version}`,
+    'Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten; Änderungen an den Quellen prüfen und erneut `prepare` ausführen.',
+    '**Status: NICHT AUSGEFÜHRT.** Diese Anleitung und die leere Trace-Vorlage sind keine bestandenen Tests, keine Rollout-Bestätigung und keine Einreichung.',
+    `Kandidat: \`${draft.version}\` · MCP-Endpunkt: \`${draft.mcp_url}\`\n\nTestsuite-SHA-256: \`${preparation.sourceBindings.suiteSha256}\`\n\nVertrags-SHA-256: \`${preparation.sourceBindings.contractSha256}\`\n\nPaket-Snapshot-SHA-256: \`${preparation.sourceBindings.snapshotManifestSha256}\``,
+    '## Vorbereitung',
+    [
+      '1. Lokale Tests/CI und `node scripts/openai_plugin_release.mjs verify` prüfen. Nur der reproduzierbare Snapshot bindet auch Skill- und UI-Bytes; nach Änderungen neu vorbereiten und betroffene Abnahmen wiederholen. Nach separater Rollout-Freigabe den tatsächlich laufenden Kandidaten und seine Sicherheitseinstellungen prüfen; ein lokaler Draft ersetzt keinen Rollout.',
+      '2. Die Entwicklungsverbindung in ChatGPT aktualisieren und die aktuellen Skill-Anweisungen installieren/importieren. Genau das vollständige Paket prüfen, nicht nur einzelne MCP-Werkzeuge.',
+      '3. Für jeden Fall die unten genannten Ausgangsdaten über den normalen First-Party-Ablauf einrichten. Keine Produktionsdatenbank ändern und keine abweichenden Voraussetzungen als bestanden werten.',
+      '4. Zuerst P1, P2, D1, D3, D5 und D6 als kurzen Einstieg prüfen; anschließend alle Fälle vollständig durchführen. Jeder Fall behält seinen eigenen Ausgangszustand und seine vollständige Turn-Reihenfolge.',
+      '5. Nur bereinigte Aufzeichnungen behalten. Keine OAuth-Werte, permanenten Lernenden-IDs, echten Sessionwerte, versteckten Lösungen oder signierten URLs in öffentliche Dateien, Git oder CI-Artefakte kopieren.',
+    ].join('\n'),
+    '## Ergebnisse dokumentieren',
+    'Die generierte `trace-template.json` in ein separates lokales Verzeichnis unter `tmp/` kopieren und nur tatsächlich beobachtete Ereignisse eintragen. Die Vorlage enthält absichtlich keine Ereignisse, keine Prüferbestätigung und keinen Beleg. Sie darf unverändert nicht bestehen.',
+    'Die Ereignisse je Fall chronologisch aufnehmen; für jeden vorgesehenen Benutzer-/UI-Turn die unten genannte `turnId` verwenden. Ein `prepared-start` erscheint bereinigt als `user`-Ereignis, niemals mit dem echten Sessionwert. Tool-Ereignisse brauchen `name` und `outcome`; bei Fehlern auch `errorCode`. Keine erwarteten Tool-Aufrufe als beobachtete Ereignisse vorfüllen.',
+    'Nach tatsächlicher Sichtung je manueller Assertion Prüfer, referenzierte Ereignis-IDs und SHA-256 der bereinigten Evidenz eintragen. `hostEvidence` benennt die echte Aufzeichnung, Zeitpunkt, Prüfer und SHA-256. Die fertige Spur mit `node scripts/openai_plugin_submission.mjs validate-trace --trace tmp/<lauf>/trace.json` prüfen. Vollständiges Format: `submission/README.md`.',
+    'Ein API-/Fixture-Test ist keine ChatGPT-Abnahme. Für native iOS-/Android-Tests getrennte Aufzeichnungen mit der passenden `layer` erstellen; eine schmale Browseransicht ist kein nativer App-Test. Ein fehlender Zugang, nicht herstellbarer Ausgangszustand oder ungeklärtes Ergebnis bleibt offen.',
+    ...suite.cases.flatMap(testCase => {
+      const fixture = suite.fixtures[testCase.fixture]
+      return [
+        `## ${testCase.id}: ${testCase.title}`,
+        `**Nicht ausgeführt** · ${testCase.portal ? 'Portaltest' : 'Zusätzlicher Plan-/Statustest'} · Ausgangszustand: \`${testCase.fixture}\``,
+        '### Ausgangsdaten',
+        fixture.description,
+        fixture.steps.map((step, index) => `${index + 1}. ${step}`).join('\n'),
+        `Erwarteter Startzustand: ${fixture.expectedStart}`,
+        '### Schritte in dieser Reihenfolge',
+        ...testCase.turns.map((turn, index) => `#### ${index + 1}. ${turn.kind} · turnId: \`${turn.id}\`\n\n${quote(turn.text)}`),
+        '### Erwartetes Ergebnis',
+        testCase.portalSummary,
+        `Erforderliche Werkzeuge: ${testCase.tools.required.map(name => `\`${name}\``).join(', ') || 'keine'}.\n\nVerbotene Werkzeuge: ${testCase.tools.forbidden.map(name => name === '*' ? 'alle' : `\`${name}\``).join(', ') || 'keine zusätzlichen Verbote'}.`,
+        ...testCase.tools.order.map(order => `Vorgegebene Werkzeugreihenfolge: ${order.map(name => `\`${name}\``).join(' → ')}.`),
+        '### Prüfkriterien',
+        ...testCase.assertions.map(assertion => `- [ ] \`${assertion.id}\` — ${assertionText(assertion)}`),
+        '### Zugeordnete automatisierte Tests',
+        testCase.execution.automated.map(mapping => `- \`${mapping.path}\` → \`${mapping.selector}\` (${mapping.layer})`).join('\n'),
+      ]
+    }),
+    '## Demo und Einreichung vorbereiten',
+    'Für eine aktuelle Demo aus den bestandenen Fällen den Einstieg, Bild/Unterricht, Tagesplan/Fachwechsel und Karteikarten zeigen. Die vollständigen Prüf- und Fehlerfälle behalten eigene Nachweise; eine Demo ersetzt die Testsuite nicht. Die echte Aufnahme auf private Werte prüfen und unter einem neuen content-addressierten Namen bereitstellen, ohne ältere Aufnahmen zu überschreiben.',
+    preparation.manualStepsRequired.map(step => `- [ ] ${step}`).join('\n'),
+    'Den frisch gespeicherten Portalexport ausschließlich lokal mit `node scripts/openai_plugin_submission.mjs audit-export --export tmp/<lauf>/portal-export.json` vergleichen. Das Roh-JSON kann Geheimnisse enthalten: weder committen noch als CI-Artefakt hochladen. Starter Prompt und nicht exportierte Portalangaben zusätzlich direkt kontrollieren.',
+    'Einreichen und Veröffentlichen bleiben getrennte, ausdrücklich freizugebende Schritte.',
+    '## Offizielle Referenzen',
+    '- [Plugin verbinden und testen](https://developers.openai.com/plugins/deploy/connect-chatgpt)\n- [Plugin einreichen](https://developers.openai.com/plugins/deploy/submission)',
+  ].join('\n\n') + '\n'
+  assertNoSecrets(traceTemplate)
+  assertNoSecrets(acceptanceGuide)
+  return { acceptanceGuide, traceTemplate }
 }
 
 // Compare only our authored fields. Never log values from the credential-bearing
@@ -238,7 +323,7 @@ export function auditExport(expected, actual) {
 // Input is a deliberately sanitized event log, not a dump of private MCP data.
 // Semantic/visual oracles require identified human review and concrete evidence.
 // Machine checks alone never promote a synthetic replay to real-host acceptance.
-export function validateTrace(suite, trace) {
+export function validateTrace(suite, trace, expectedCandidate) {
   // Validate the source shape on this path as well, including all assertion
   // fields. The current exported contract is additionally checked by the CLI.
   const declaredTools = [...new Set(suite.cases.flatMap(testCase => [...testCase.tools.required, ...testCase.tools.forbidden, ...testCase.tools.order.flat()]).filter(name => name !== '*'))]
@@ -247,6 +332,10 @@ export function validateTrace(suite, trace) {
   assert.equal(trace.schemaVersion, 1)
   assert.equal(trace.candidateVersion, suite.candidateVersion, 'Trace uses a stale candidate')
   assert.equal(trace.suiteSha256, digest(suite), 'Trace uses stale review cases')
+  for (const field of ['contractSha256', 'snapshotManifestSha256']) {
+    assert.match(expectedCandidate?.[field] ?? '', /^[0-9a-f]{64}$/u, `Current ${field} is required`)
+    assert.equal(trace[field], expectedCandidate[field], `Trace uses a stale or missing ${field}`)
+  }
   assert.ok(['backend-fixture', 'model-replay', 'chatgpt-web', 'chatgpt-ios', 'chatgpt-android'].includes(trace.layer))
   nonempty(trace.runId, 'Trace run ID')
   assert.ok(Array.isArray(trace.cases), 'Missing trace cases')
@@ -327,16 +416,24 @@ export function main(argv = process.argv.slice(2)) {
   const suitePath = resolve(submission, 'review-cases.json')
   const suite = readJson(suitePath)
   const contractPath = resolve(options.contract ?? resolve(root, 'contracts/drafts/openai', manifest.name, `${manifest.version}-SNAPSHOT/contract/contract.json`))
-  const snapshotManifest = resolve(dirname(contractPath), '../plugin.json')
-  assert.ok(existsSync(snapshotManifest), 'Contract requires its adjacent exported plugin.json version binding')
-  assert.equal(readJson(snapshotManifest).version, manifest.version, 'Exported contract belongs to a different candidate version')
+  const snapshotPluginPath = resolve(dirname(contractPath), '../plugin.json')
+  assert.ok(existsSync(snapshotPluginPath), 'Contract requires its adjacent exported plugin.json version binding')
+  assert.equal(readJson(snapshotPluginPath).version, manifest.version, 'Exported contract belongs to a different candidate version')
+  const snapshotManifestPath = resolve(dirname(contractPath), '../snapshot-manifest.json')
+  const snapshot = readJson(snapshotManifestPath)
+  assert.equal(snapshot.pluginIdentity, manifest.name, 'Snapshot/plugin identity mismatch')
+  assert.equal(snapshot.pluginVersion, manifest.version, 'Snapshot/candidate version mismatch')
+  const contractRelativePath = relative(dirname(snapshotManifestPath), contractPath).replaceAll('\\', '/')
+  const contractEntry = snapshot.files?.filter(entry => entry.path === contractRelativePath)
+  assert.equal(contractEntry?.length, 1, 'Snapshot must bind exactly one current contract file')
+  assert.equal(contractEntry[0].sha256, digest(readFileSync(contractPath, 'utf8')), 'Contract bytes differ from the candidate snapshot')
   const mcpPath = resolve(plugin, '.mcp.json')
   const metadataPath = resolve(submission, 'portal-metadata.json')
-  const result = generateSubmission({ manifest, mcp: readJson(mcpPath), contract: readJson(contractPath), suite, metadata: readJson(metadataPath), bindings: { contractPath: sourcePath(contractPath), suitePath: sourcePath(suitePath), manifestPath: sourcePath(manifestPath), metadataPath: sourcePath(metadataPath) } })
+  const result = generateSubmission({ manifest, mcp: readJson(mcpPath), contract: readJson(contractPath), suite, metadata: readJson(metadataPath), bindings: { contractPath: sourcePath(contractPath), suitePath: sourcePath(suitePath), manifestPath: sourcePath(manifestPath), metadataPath: sourcePath(metadataPath), snapshotManifestPath: sourcePath(snapshotManifestPath), snapshotManifestSha256: digest(readFileSync(snapshotManifestPath, 'utf8')) } })
   validateExecutionMappings(suite)
   if (command === 'validate-trace') {
     assert.ok(options.trace, '--trace is required')
-    const traceResult = validateTrace(suite, readJson(resolve(options.trace)))
+    const traceResult = validateTrace(suite, readJson(resolve(options.trace)), result.preparation.sourceBindings)
     console.log(json(traceResult))
     if (!traceResult.passed) process.exitCode = 1
     return traceResult
@@ -349,10 +446,15 @@ export function main(argv = process.argv.slice(2)) {
     if (!audit.matches) process.exitCode = 1
     return audit
   }
-  for (const [name, value] of [['portal-draft.json', result.draft], ['preparation.json', result.preparation]]) {
+  for (const [name, content] of [
+    ['portal-draft.json', json(result.draft)],
+    ['preparation.json', json(result.preparation)],
+    ['acceptance-guide.md', result.acceptanceGuide],
+    ['trace-template.json', json(result.traceTemplate)],
+  ]) {
     const path = resolve(out, name)
-    if (command === 'check') assert.equal(readFileSync(path, 'utf8'), json(value), `${name} is stale; run prepare after reviewing the current sources`)
-    else { mkdirSync(out, { recursive: true }); writeFileSync(path, json(value)) }
+    if (command === 'check') assert.equal(readFileSync(path, 'utf8'), content, `${name} is stale; run prepare after reviewing the current sources`)
+    else { mkdirSync(out, { recursive: true }); writeFileSync(path, content) }
   }
   console.log(`CHECK openai_plugin_submission PASS ${manifest.name} ${manifest.version} cases=${suite.cases.length} portal=5+3 state=PREPARED_NOT_SUBMITTED`)
   return result
