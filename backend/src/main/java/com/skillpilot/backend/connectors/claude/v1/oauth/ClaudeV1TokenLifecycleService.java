@@ -7,7 +7,6 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Revocation for the learner-free Claude v1 app authorization.
@@ -28,7 +27,6 @@ public class ClaudeV1TokenLifecycleService {
         this.authorizationService = Objects.requireNonNull(authorizationService, "authorizationService");
     }
 
-    @Transactional
     public void revokeToken(String token, String tokenTypeHint) {
         if (token == null || token.isBlank()) {
             return;
@@ -50,6 +48,9 @@ public class ClaudeV1TokenLifecycleService {
             return;
         }
 
+        // The authorization-service wrapper owns the atomic family + authorization removal.
+        // Do not hold the policy lookup transaction across this call: lock ordering is always
+        // refresh-family first, then shared profile policy (also during refresh and token save).
         authorizationService.remove(authorization);
     }
 }

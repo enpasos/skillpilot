@@ -72,8 +72,6 @@ public class OpenAiDeOAuthMetadataController {
             String issuer,
             OpenAiDeProperties properties) {
         String base = OpenAiDeOAuthConfiguration.stripTrailingSlash(issuer);
-        String clientAuthenticationMethod =
-                OpenAiDeOAuthConfiguration.normalizedClientAuthenticationMethod(properties);
         Map<String, Object> metadata = new LinkedHashMap<>();
         metadata.put("issuer", issuer);
         metadata.put("authorization_endpoint", base + "/oauth2/authorize");
@@ -82,8 +80,10 @@ public class OpenAiDeOAuthMetadataController {
         metadata.put("introspection_endpoint", base + "/oauth2/introspect");
         metadata.put("response_types_supported", List.of("code"));
         metadata.put("grant_types_supported", List.of("authorization_code", "refresh_token"));
-        metadata.put("token_endpoint_auth_methods_supported", List.of(clientAuthenticationMethod));
-        metadata.put("revocation_endpoint_auth_methods_supported", List.of(clientAuthenticationMethod));
+        List<String> methods = OpenAiDeClientProfiles.configurations(properties).stream()
+                .map(OpenAiDeOAuthConfiguration::normalizedClientAuthenticationMethod).distinct().toList();
+        metadata.put("token_endpoint_auth_methods_supported", methods);
+        metadata.put("revocation_endpoint_auth_methods_supported", methods);
         if (OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties)) {
             metadata.put("client_id_metadata_document_supported", true);
             metadata.put(
@@ -122,7 +122,7 @@ public class OpenAiDeOAuthMetadataController {
             @RequestParam("client_id") String requestedClientId,
             @RequestParam(required = false) String scope,
             @RequestParam(required = false) String state) {
-        if (!properties.getOauth().getClientId().equals(requestedClientId)) {
+        if (!OpenAiDeClientProfiles.clientIds(properties).contains(requestedClientId)) {
             return ResponseEntity.badRequest()
                     .contentType(MediaType.TEXT_HTML)
                     .body("<!doctype html><html><body>Unknown OAuth client.</body></html>");

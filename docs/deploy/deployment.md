@@ -117,7 +117,7 @@ The deployment process currently does all of the following:
 14. For the `openai-mcp` variant, run the focused backend security and contract
     tests.
 15. Restart the `skillpilot` system service.
-16. Wait until the public readiness endpoint returns HTTP 200.
+16. Wait until the public readiness endpoint returns HTTP 200 (shared process and database readiness, not provider acceptance).
 17. Verify the deployed CSS/JavaScript shell assets, coach variant, and AI-transparency copy against the public host.
 18. For the `openai-mcp` variant, require the public path-based OpenAI V1 smoke;
     then run the source-rationale deployment smoke against the public host.
@@ -287,7 +287,11 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 11. **`systemctl restart`** activates the freshly built frontend/backend bundle.
 12. **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
     startup window after `systemctl restart`. A temporary `502` therefore does
-    not produce a false failed deployment.
+    not produce a false failed deployment. This group checks only shared process
+    and database readiness. OpenAI has a separate `openaiReadiness` health group;
+    the [profile-specific host/release acceptance](oauth-client-authentication.md)
+    remains required before activating a profile. A shared readiness success or
+    the public-contract smoke below does not replace that acceptance.
 13. **Public shell verification after readiness** fetches `index.html` and the
     exact referenced CSS/module assets with cache bypass headers. It requires
     successful, nonempty same-origin responses with the expected content types,

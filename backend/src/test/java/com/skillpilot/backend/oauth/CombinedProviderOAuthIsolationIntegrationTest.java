@@ -1,27 +1,12 @@
 package com.skillpilot.backend.oauth;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.reset;
-import static org.mockito.Mockito.when;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.skillpilot.backend.claude.mcp.ClaudeMcpServerConfiguration;
-import com.skillpilot.backend.claude.oauth.ClaudeOAuthConfiguration;
-import com.skillpilot.backend.mcp.SkillPilotStatelessMcpServerFactory;
-import com.skillpilot.backend.openai.de.OpenAiDeConfiguration;
-import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
+import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
+import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeSecureOAuthTestServer;
-import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
-import com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpServerConfiguration;
-import com.skillpilot.backend.service.ClaudeCoachConnectionService;
-import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
-import io.modelcontextprotocol.server.McpStatelessServerFeatures;
-import io.modelcontextprotocol.spec.McpSchema;
-import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -31,30 +16,17 @@ import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.data.jpa.autoconfigure.DataJpaRepositoriesAutoConfiguration;
-import org.springframework.boot.hibernate.autoconfigure.HibernateJpaAutoConfiguration;
-import org.springframework.boot.security.oauth2.client.autoconfigure.OAuth2ClientAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
-import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpHeaders;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2RefreshToken;
@@ -64,436 +36,159 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.ai.tool.ToolCallbackProvider;
-import org.springframework.ai.tool.annotation.Tool;
-import org.springframework.ai.tool.method.MethodToolCallbackProvider;
+import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestPropertySource;
-import tools.jackson.databind.json.JsonMapper;
 
-@SpringBootTest(
-        classes = CombinedProviderOAuthIsolationIntegrationTest.TestApplication.class,
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+/** Real simultaneous V1 HTTP/security chains. The retired Claude beta lane stays disabled. */
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test")
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @TestPropertySource(properties = {
-        "spring.datasource.url=jdbc:h2:mem:combined-provider-oauth;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE",
-        "spring.datasource.driver-class-name=org.h2.Driver",
-        "spring.datasource.username=sa",
-        "spring.datasource.password=",
-        "spring.liquibase.enabled=true",
-        "spring.liquibase.change-log=classpath:db/changelog/db.changelog-master.yaml",
-        "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.claude.enabled=true",
-        "skillpilot.claude.mcp.enabled=true",
-        "skillpilot.claude.secure-cookie=false",
-        "skillpilot.claude.mcp-url=https://skillpilot.test/api/claude/mcp",
-        "skillpilot.claude.oauth.protected-resource-metadata=https://skillpilot.test/api/claude/oauth/protected-resource",
+        ClaudeV1TestProperties.ENABLED, ClaudeV1TestProperties.SIGNING_SECRET,
+        ClaudeV1TestProperties.CAPABILITY_SECRET, ClaudeV1TestProperties.BETA_DISABLED,
+        "spring.datasource.url=jdbc:h2:mem:combined-current-oauth;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE",
         "skillpilot.openai.coach.v1.enabled=true",
         "skillpilot.openai.coach.v1.server-build=test-build",
         "skillpilot.openai.coach.v1.oauth.enabled=true",
-        "skillpilot.openai.coach.v1.mcp.enabled=true",
-        "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.v1.oauth.client-id=chatgpt-combined-test-client",
         "skillpilot.openai.coach.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/combined-test-callback",
-        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
+        "skillpilot.openai.coach.v1.mcp.enabled=true",
+        "skillpilot.openai.coach.v1.mtls-edge-mode=disabled"
 })
 class CombinedProviderOAuthIsolationIntegrationTest {
+    private static final String OPENAI_RESOURCE = "https://mcp-coach-v1.skillpilot.com/mcp";
+    private static final String CLAUDE_RESOURCE = ClaudeV1Contract.DEFAULT_PUBLIC_MCP_URL;
+    private static final ObjectMapper JSON = new ObjectMapper();
+    @LocalServerPort private int port;
+    @Autowired @Qualifier("openAiDeRegisteredClientRepository") private RegisteredClientRepository openAiClients;
+    @Autowired @Qualifier("claudeV1RegisteredClientRepository") private RegisteredClientRepository claudeClients;
+    @Autowired @Qualifier("openAiDeAuthorizationService") private OAuth2AuthorizationService openAiAuthorizations;
+    @Autowired @Qualifier("claudeV1AuthorizationService") private OAuth2AuthorizationService claudeAuthorizations;
+    @Autowired @Qualifier("openAiDeOpaqueTokenIntrospector") private OpaqueTokenIntrospector openAiIntrospector;
+    @Autowired @Qualifier("claudeV1OpaqueTokenIntrospector") private OpaqueTokenIntrospector claudeIntrospector;
+    private final HttpClient http = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(5)).build();
 
-    private static final String OPENAI_CLIENT_ID = OpenAiDeSecureOAuthTestServer.confidentialClientId();
-    private static final String OPENAI_SUBJECT = "openai-combined-subject";
-    private static final String CLAUDE_SUBJECT = "claude-combined-subject";
-
-    @LocalServerPort
-    private int port;
-
-    @Autowired
-    @Qualifier("openAiDeRegisteredClientRepository")
-    private RegisteredClientRepository openAiClients;
-
-    @Autowired
-    @Qualifier("claudeRegisteredClientRepository")
-    private RegisteredClientRepository claudeClients;
-
-    @Autowired
-    @Qualifier("openAiDeAuthorizationService")
-    private OAuth2AuthorizationService openAiAuthorizations;
-
-    @Autowired
-    @Qualifier("claudeAuthorizationService")
-    private OAuth2AuthorizationService claudeAuthorizations;
-
-    @Autowired
-    private OpenAiDeCoachConnectionService openAiConnections;
-
-    @Autowired
-    private ClaudeCoachConnectionService claudeConnections;
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    private HttpClient client;
-
-    @DynamicPropertySource
-    static void secureOpenAiDeProperties(DynamicPropertyRegistry registry) {
+    @DynamicPropertySource static void secureProperties(DynamicPropertyRegistry registry) {
         OpenAiDeSecureOAuthTestServer.registerConfidentialSecureProperties(registry);
     }
 
-    @BeforeEach
-    void setUp() {
-        reset(openAiConnections, claudeConnections);
-        doAnswer(invocation -> {
-                    invocation.<Runnable>getArgument(1).run();
-                    return null;
-                })
-                .when(claudeConnections)
-                .withOAuthPersistenceLock(Mockito.anyString(), Mockito.any(Runnable.class));
-        when(claudeConnections.resolveSkillpilotId(CLAUDE_SUBJECT)).thenReturn("SP-CLAUDE-COMBINED");
-        when(claudeConnections.resolveSkillpilotIdWithoutActivity(CLAUDE_SUBJECT))
-                .thenReturn("SP-CLAUDE-COMBINED");
-        client = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(5))
-                .build();
+    @Test
+    void validTokensReachOnlyTheirRealMcpCatalogAndKeepTheirActualProfile() throws Exception {
+        var openAi = issueOpenAi();
+        var claude = issueClaude();
+        assertThat(openAiIntrospector.introspect(openAi.access()).<String>getAttribute("client_profile"))
+                .isEqualTo("chatgpt-basic-transition");
+        assertThat(claudeIntrospector.introspect(claude.access()).<String>getAttribute("client_profile"))
+                .isEqualTo("claude-cimd-public");
+        assertThat(claudeIntrospector.introspect(claude.access()).<String>getAttribute("client_authentication_method"))
+                .isEqualTo("none");
+        assertCatalog("/internal/openai/v1/mcp", openAi.access());
+        assertCatalog(ClaudeV1Contract.INTERNAL_MCP_PATH, claude.access());
+        assertThat(mcp("/internal/openai/v1/mcp", claude.access()).statusCode()).isEqualTo(401);
+        assertThat(mcp(ClaudeV1Contract.INTERNAL_MCP_PATH, openAi.access()).statusCode()).isEqualTo(401);
+        assertThat(claudeClients.findByClientId(OpenAiDeSecureOAuthTestServer.confidentialClientId())).isNull();
+        assertThat(openAiClients.findByClientId(ClaudeV1Contract.CIMD_HOSTED_CLAUDE_CLIENT_ID)).isNull();
     }
 
     @Test
-    void keepsAccessRefreshAndRevocationTokensInsideTheirProviderBoundary() throws Exception {
-        RegisteredClient openAiClient = openAiClients.findByClientId(OPENAI_CLIENT_ID);
-        RegisteredClient claudeClient = claudeClients.findByClientId(ClaudeOAuthConfiguration.CLAUDE_HOSTED_CLIENT_ID);
-        assertThat(openAiClient).isNotNull();
-        assertThat(claudeClient).isNotNull();
-
-        IssuedTokens openAiTokens = issue(
-                openAiAuthorizations,
-                openAiClient,
-                OPENAI_SUBJECT,
-                "https://mcp-coach-v1.skillpilot.com/mcp",
-                Set.of(
-                        OpenAiDeOAuthConfiguration.READ_SCOPE,
-                        OpenAiDeOAuthConfiguration.WRITE_SCOPE,
-                        OpenAiDeOAuthConfiguration.OFFLINE_SCOPE));
-        IssuedTokens claudeTokens = issue(
-                claudeAuthorizations,
-                claudeClient,
-                CLAUDE_SUBJECT,
-                "https://skillpilot.test/api/claude/mcp",
-                Set.of(
-                        ClaudeOAuthConfiguration.READ_SCOPE,
-                        ClaudeOAuthConfiguration.WRITE_SCOPE,
-                        ClaudeOAuthConfiguration.OFFLINE_SCOPE));
-
-        assertThat(authorizedToolNames("/internal/openai/v1/mcp", openAiTokens.accessToken()))
-                .containsExactly("openai_security_context_probe");
-        assertThat(authorizedToolNames("/api/claude/mcp", claudeTokens.accessToken()))
-                .containsExactly("claude_security_context_probe");
-
-        JsonNode openAiProbe = authorizedMcpCall(
-                "/internal/openai/v1/mcp",
-                openAiTokens.accessToken(),
-                "openai_security_context_probe");
-        assertThat(openAiProbe.path("result").path("structuredContent").path("provider").asText())
-                .isEqualTo("openai");
-        assertThat(openAiProbe.path("result").path("structuredContent").path("subject").asText())
-                .isEqualTo(OPENAI_SUBJECT);
-        JsonNode claudeProbe = authorizedMcpCall(
-                "/api/claude/mcp",
-                claudeTokens.accessToken(),
-                "claude_security_context_probe");
-        assertThat(claudeProbe.path("result").toString())
-                .contains("claude", CLAUDE_SUBJECT);
-
-        assertThat(postMcp(
-                        "/internal/openai/v1/mcp",
-                        claudeTokens.accessToken(),
-                        "openai_security_context_probe").statusCode())
-                .isEqualTo(401);
-        assertThat(postMcp(
-                        "/api/claude/mcp",
-                        openAiTokens.accessToken(),
-                        "claude_security_context_probe").statusCode())
-                .isEqualTo(401);
-
-        HttpResponse<String> openAiForeignRefresh = postOpenAiAuthenticatedForm(
-                OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
-                List.of(
-                        Map.entry("grant_type", "refresh_token"),
-                        Map.entry("client_id", OPENAI_CLIENT_ID),
-                        Map.entry("refresh_token", claudeTokens.refreshToken()),
-                        Map.entry("resource", "https://mcp-coach-v1.skillpilot.com/mcp")));
-        assertInvalidGrant(openAiForeignRefresh);
-
-        HttpResponse<String> claudeForeignRefresh = postForm(
-                "/oauth2/token",
-                List.of(
-                        Map.entry("grant_type", "refresh_token"),
-                        Map.entry("client_id", ClaudeOAuthConfiguration.CLAUDE_HOSTED_CLIENT_ID),
-                        Map.entry("refresh_token", openAiTokens.refreshToken()),
-                        Map.entry("resource", "https://skillpilot.test/api/claude/mcp")));
-        assertInvalidGrant(claudeForeignRefresh);
-
-        HttpResponse<String> openAiForeignRevocation = postOpenAiAuthenticatedForm(
-                OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
-                List.of(
-                        Map.entry("client_id", OPENAI_CLIENT_ID),
-                        Map.entry("token", claudeTokens.refreshToken()),
-                        Map.entry("token_type_hint", "refresh_token")));
-        assertThat(openAiForeignRevocation.statusCode())
-                .withFailMessage(openAiForeignRevocation.body())
-                .isEqualTo(200);
-        assertThat(claudeAuthorizations.findByToken(
-                        claudeTokens.refreshToken(), OAuth2TokenType.REFRESH_TOKEN))
-                .isNotNull();
-
-        HttpResponse<String> claudeForeignRevocation = postForm(
-                "/oauth2/revoke",
-                List.of(
-                        Map.entry("client_id", ClaudeOAuthConfiguration.CLAUDE_HOSTED_CLIENT_ID),
-                        Map.entry("token", openAiTokens.refreshToken()),
-                        Map.entry("token_type_hint", "refresh_token")));
-        assertThat(claudeForeignRevocation.statusCode())
-                .withFailMessage(claudeForeignRevocation.body())
-                .isEqualTo(200);
-        assertThat(openAiAuthorizations.findByToken(
-                        openAiTokens.refreshToken(), OAuth2TokenType.REFRESH_TOKEN))
-                .isNotNull();
+    void foreignRefreshAndRevocationCannotTouchAnotherProvidersTokens() throws Exception {
+        var openAi = issueOpenAi();
+        var claude = issueClaude();
+        assertInvalidGrant(form(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, Map.of(
+                "grant_type", "refresh_token", "refresh_token", claude.refresh(), "resource", OPENAI_RESOURCE), true));
+        assertInvalidGrant(form(ClaudeV1Contract.INTERNAL_TOKEN_PATH, Map.of(
+                "grant_type", "refresh_token", "client_id", ClaudeV1Contract.CIMD_HOSTED_CLAUDE_CLIENT_ID,
+                "refresh_token", openAi.refresh(), "resource", CLAUDE_RESOURCE), false));
+        assertThat(form(OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT, Map.of(
+                "token", claude.refresh(), "token_type_hint", "refresh_token"), true).statusCode()).isEqualTo(200);
+        assertThat(form(ClaudeV1Contract.INTERNAL_REVOKE_PATH, Map.of(
+                "client_id", ClaudeV1Contract.CIMD_HOSTED_CLAUDE_CLIENT_ID,
+                "token", openAi.refresh(), "token_type_hint", "refresh_token"), false).statusCode()).isEqualTo(200);
+        assertThat(openAiAuthorizations.findByToken(openAi.refresh(), OAuth2TokenType.REFRESH_TOKEN)).isNotNull();
+        assertThat(claudeAuthorizations.findByToken(claude.refresh(), OAuth2TokenType.REFRESH_TOKEN)).isNotNull();
+        assertCatalog("/internal/openai/v1/mcp", openAi.access());
+        assertCatalog(ClaudeV1Contract.INTERNAL_MCP_PATH, claude.access());
     }
 
-    private IssuedTokens issue(
-            OAuth2AuthorizationService authorizations,
-            RegisteredClient registeredClient,
-            String subject,
-            String resource,
-            Set<String> authorizedScopes) {
-        Instant issuedAt = Instant.now();
-        String accessTokenValue = "access-" + UUID.randomUUID();
-        String refreshTokenValue = "refresh-" + UUID.randomUUID();
-        OAuth2AccessToken accessToken = new OAuth2AccessToken(
-                OAuth2AccessToken.TokenType.BEARER,
-                accessTokenValue,
-                issuedAt,
-                issuedAt.plus(Duration.ofHours(1)),
-                authorizedScopes);
-        OAuth2RefreshToken refreshToken = new OAuth2RefreshToken(
-                refreshTokenValue,
-                issuedAt,
-                issuedAt.plus(Duration.ofDays(30)));
-        Authentication principal = org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-                .authenticated(subject, "N/A", List.of());
-        OAuth2AuthorizationRequest authorizationRequest = OAuth2AuthorizationRequest.authorizationCode()
-                .authorizationUri("https://skillpilot.test/authorize")
-                .clientId(registeredClient.getClientId())
-                .redirectUri(registeredClient.getRedirectUris().iterator().next())
-                .scopes(authorizedScopes)
-                .additionalParameters(Map.of("resource", resource))
-                .build();
-        OAuth2Authorization authorization = OAuth2Authorization.withRegisteredClient(registeredClient)
-                .id(UUID.randomUUID().toString())
-                .principalName(subject)
-                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                .authorizedScopes(authorizedScopes)
-                .attribute(Principal.class.getName(), principal)
-                .attribute(OAuth2AuthorizationRequest.class.getName(), authorizationRequest)
-                .accessToken(accessToken)
-                .refreshToken(refreshToken)
-                .build();
-        authorizations.save(authorization);
-        return new IssuedTokens(accessTokenValue, refreshTokenValue);
+    private IssuedTokens issueOpenAi() {
+        return issue(openAiAuthorizations, openAiClients.findByClientId(OpenAiDeSecureOAuthTestServer.confidentialClientId()),
+                "synthetic-openai-app", OPENAI_RESOURCE);
     }
 
-    private JsonNode authorizedMcpCall(String path, String accessToken, String toolName) throws Exception {
-        HttpResponse<String> response = postMcp(path, accessToken, toolName);
+    private IssuedTokens issueClaude() {
+        return issue(claudeAuthorizations, claudeClients.findByClientId(ClaudeV1Contract.CIMD_HOSTED_CLAUDE_CLIENT_ID),
+                "spca_synthetic-claude-app", CLAUDE_RESOURCE);
+    }
+
+    private IssuedTokens issue(OAuth2AuthorizationService service, RegisteredClient client, String subject, String resource) {
+        assertThat(client).isNotNull();
+        String id = UUID.randomUUID().toString();
+        var request = OAuth2AuthorizationRequest.authorizationCode()
+                .authorizationUri("https://skillpilot.com/synthetic-authorize")
+                .clientId(client.getClientId()).redirectUri(client.getRedirectUris().iterator().next())
+                .scopes(client.getScopes()).additionalParameters(Map.of("resource", resource)).build();
+        // Seed through the real profile wrapper BEFORE issuing synthetic tokens. Issuance itself
+        // is covered by the separate complete HTTP OAuth suites, not claimed by this fixture.
+        var authorization = OAuth2Authorization.withRegisteredClient(client).id(id).principalName(subject)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE).authorizedScopes(client.getScopes())
+                .attribute(Principal.class.getName(), UsernamePasswordAuthenticationToken.authenticated(subject, null, List.of()))
+                .attribute(OAuth2AuthorizationRequest.class.getName(), request).build();
+        service.save(authorization);
+        var now = Instant.now();
+        var access = new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER,
+                "synthetic-access-" + id, now, now.plusSeconds(3600), client.getScopes());
+        var refresh = new OAuth2RefreshToken("synthetic-refresh-" + id, now, now.plus(Duration.ofDays(1)));
+        var claims = new java.util.LinkedHashMap<String, Object>();
+        claims.put("aud", new ArrayList<>(List.of(resource)));
+        claims.put("client_id", client.getClientId());
+        claims.put("client_authentication_method", client.getClientAuthenticationMethods().iterator().next().getValue());
+        service.save(OAuth2Authorization.from(service.findById(id))
+                .token(access, metadata -> metadata.put(OAuth2Authorization.Token.CLAIMS_METADATA_NAME, claims))
+                .refreshToken(refresh).build());
+        return new IssuedTokens(access.getTokenValue(), refresh.getTokenValue());
+    }
+
+    private void assertCatalog(String path, String access) throws Exception {
+        var response = mcp(path, access);
         assertThat(response.statusCode()).withFailMessage(response.body()).isEqualTo(200);
-        return objectMapper.readTree(response.body());
+        var tools = JSON.readTree(response.body()).path("result").path("tools");
+        assertThat(tools.isArray()).isTrue();
+        assertThat(tools.valueStream().map(tool -> tool.path("name").asText()).toList())
+                .contains(path.equals(ClaudeV1Contract.INTERNAL_MCP_PATH)
+                        ? ClaudeV1Contract.TOOL_GET_COACH_CONTEXT : "get_skillpilot_context");
     }
 
-    private List<String> authorizedToolNames(String path, String accessToken) throws Exception {
-        HttpResponse<String> response = postMcpRequest(
-                path,
-                accessToken,
-                """
-                {"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}
-                """);
-        assertThat(response.statusCode()).withFailMessage(response.body()).isEqualTo(200);
-        return objectMapper.readTree(response.body())
-                .path("result")
-                .path("tools")
-                .valueStream()
-                .map(tool -> tool.path("name").asText())
-                .toList();
+    private HttpResponse<String> mcp(String path, String token) throws Exception {
+        return http.send(request(path).header("Authorization", "Bearer " + token)
+                .header("Content-Type", "application/json").header("Accept", "application/json, text/event-stream")
+                .header("MCP-Protocol-Version", "2025-11-25")
+                .POST(HttpRequest.BodyPublishers.ofString("{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/list\",\"params\":{}}"))
+                .build(), HttpResponse.BodyHandlers.ofString());
     }
 
-    private HttpResponse<String> postMcp(String path, String accessToken, String toolName) throws Exception {
-        String requestBody = """
-                {"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"%s","arguments":{}}}
-                """.formatted(toolName);
-        return postMcpRequest(path, accessToken, requestBody);
-    }
-
-    private HttpResponse<String> postMcpRequest(String path, String accessToken, String requestBody)
-            throws Exception {
-        HttpRequest.Builder request = HttpRequest.newBuilder(localUri(path))
-                .header(HttpHeaders.CONTENT_TYPE, "application/json")
-                .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
-                .header("MCP-Protocol-Version", "2025-11-25");
-        return client.send(
-                request
-                        .POST(HttpRequest.BodyPublishers.ofString(requestBody))
-                        .build(),
-                HttpResponse.BodyHandlers.ofString());
-    }
-
-    private HttpResponse<String> postForm(String path, List<Map.Entry<String, String>> parameters)
-            throws Exception {
-        return client.send(
-                HttpRequest.newBuilder(localUri(path))
-                        .header(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded")
-                        .POST(HttpRequest.BodyPublishers.ofString(form(parameters)))
-                        .build(),
-                HttpResponse.BodyHandlers.ofString());
-    }
-
-    private HttpResponse<String> postOpenAiAuthenticatedForm(
-            String path,
-            List<Map.Entry<String, String>> parameters) throws Exception {
-        return client.send(
-                HttpRequest.newBuilder(localUri(path))
-                        .header(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded")
-                        .header(
-                                HttpHeaders.AUTHORIZATION,
-                                OpenAiDeSecureOAuthTestServer.confidentialBasicAuthorization())
-                        .POST(HttpRequest.BodyPublishers.ofString(form(parameters)))
-                        .build(),
-                HttpResponse.BodyHandlers.ofString());
-    }
-
-    private void assertInvalidGrant(HttpResponse<String> response) throws Exception {
-        assertThat(response.statusCode()).withFailMessage(response.body()).isEqualTo(400);
-        assertThat(objectMapper.readTree(response.body()).path("error").asText()).isEqualTo("invalid_grant");
-    }
-
-    private URI localUri(String path) {
-        return URI.create("http://127.0.0.1:" + port + path);
-    }
-
-    private String form(List<Map.Entry<String, String>> parameters) {
-        return parameters.stream()
-                .map(entry -> encode(entry.getKey()) + "=" + encode(entry.getValue()))
+    private HttpResponse<String> form(String path, Map<String, String> fields, boolean basic) throws Exception {
+        String body = fields.entrySet().stream().map(entry -> encode(entry.getKey()) + "=" + encode(entry.getValue()))
                 .collect(Collectors.joining("&"));
+        var request = request(path).header("Content-Type", "application/x-www-form-urlencoded");
+        if (basic) request.header("Authorization", OpenAiDeSecureOAuthTestServer.confidentialBasicAuthorization());
+        return http.send(request.POST(HttpRequest.BodyPublishers.ofString(body)).build(), HttpResponse.BodyHandlers.ofString());
     }
 
-    private String encode(String value) {
-        return URLEncoder.encode(value, StandardCharsets.UTF_8);
+    private HttpRequest.Builder request(String path) {
+        var request = HttpRequest.newBuilder(URI.create("http://127.0.0.1:" + port + path)).timeout(Duration.ofSeconds(15));
+        if (path.startsWith(ClaudeV1Contract.INTERNAL_BASE_PATH)) {
+            request.header("X-Forwarded-Host", "mcp-claude-v1.skillpilot.com").header("X-Forwarded-Proto", "https");
+        }
+        return request;
     }
 
-    private record IssuedTokens(String accessToken, String refreshToken) {
+    private static String encode(String value) { return URLEncoder.encode(value, StandardCharsets.UTF_8); }
+    private static void assertInvalidGrant(HttpResponse<String> response) throws Exception {
+        assertThat(response.statusCode()).withFailMessage(response.body()).isEqualTo(400);
+        assertThat(JSON.readTree(response.body()).path("error").asText()).isEqualTo("invalid_grant");
     }
-
-    @SpringBootConfiguration
-    @EnableAutoConfiguration(exclude = {
-            HibernateJpaAutoConfiguration.class,
-            DataJpaRepositoriesAutoConfiguration.class,
-            OAuth2ClientAutoConfiguration.class
-    })
-    @Import({
-            OpenAiDeConfiguration.class,
-            OpenAiDeOAuthConfiguration.class,
-            ClaudeOAuthConfiguration.class,
-            SkillPilotStatelessMcpServerFactory.class,
-            OpenAiDeMcpServerConfiguration.class,
-            ClaudeMcpServerConfiguration.class
-    })
-    static class TestApplication {
-
-        @Bean
-        ObjectMapper objectMapper() {
-            return new ObjectMapper();
-        }
-
-        @Bean
-        JsonMapper jsonMapper() {
-            return JsonMapper.builder().build();
-        }
-
-        @Bean
-        OpenAiDeCoachConnectionService openAiDeCoachConnectionService() {
-            return Mockito.mock(OpenAiDeCoachConnectionService.class);
-        }
-
-        @Bean
-        OpenAiDeOperationalTelemetry openAiDeOperationalTelemetry() {
-            return new OpenAiDeOperationalTelemetry(new SimpleMeterRegistry());
-        }
-
-        @Bean
-        ClaudeCoachConnectionService claudeCoachConnectionService() {
-            return mock(ClaudeCoachConnectionService.class);
-        }
-
-        @Bean
-        OpenAiDeV1McpContractAdapter openAiDeCoachMcpContract() {
-            OpenAiDeV1McpContractAdapter contract = mock(OpenAiDeV1McpContractAdapter.class);
-            when(contract.serverInstructions()).thenReturn("Combined provider OAuth/MCP integration test.");
-            when(contract.toolSpecifications()).thenReturn(List.of(openAiSecurityContextTool()));
-            when(contract.resourceSpecifications()).thenReturn(List.of());
-            return contract;
-        }
-
-        @Bean(name = "claudeCoachMcpToolCallbacks")
-        ToolCallbackProvider claudeCoachMcpToolCallbacks() {
-            return MethodToolCallbackProvider.builder()
-                    .toolObjects(new ClaudeSecurityContextTool())
-                    .build();
-        }
-
-        @Bean
-        @Order(10)
-        SecurityFilterChain publicTestEndpoints(HttpSecurity http) throws Exception {
-            return http
-                    .authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
-                    .csrf(csrf -> csrf.disable())
-                    .build();
-        }
-    }
-
-    static class ClaudeSecurityContextTool {
-
-        @Tool(
-                name = "claude_security_context_probe",
-                description = "Returns the authenticated integration-test subject.")
-        public Map<String, String> probe() {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            return Map.of("provider", "claude", "subject", authentication.getName());
-        }
-    }
-
-    private static McpStatelessServerFeatures.SyncToolSpecification openAiSecurityContextTool() {
-        McpSchema.Tool tool = McpSchema.Tool.builder("openai_security_context_probe")
-                .description("Returns the authenticated integration-test subject.")
-                .inputSchema(Map.of(
-                        "type", "object",
-                        "properties", Map.of(),
-                        "additionalProperties", false))
-                .outputSchema(Map.of(
-                        "type", "object",
-                        "properties", Map.of(
-                                "provider", Map.of("type", "string"),
-                                "subject", Map.of("type", "string")),
-                        "required", List.of("provider", "subject"),
-                        "additionalProperties", false))
-                .build();
-        return McpStatelessServerFeatures.SyncToolSpecification.builder()
-                .tool(tool)
-                .callHandler((context, request) -> {
-                    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                    Map<String, Object> result = Map.of(
-                            "provider", "openai",
-                            "subject", authentication.getName());
-                    return McpSchema.CallToolResult.builder()
-                            .isError(false)
-                            .addTextContent("Authenticated OpenAI integration probe.")
-                            .structuredContent(result)
-                            .build();
-                })
-                .build();
-    }
+    private record IssuedTokens(String access, String refresh) {}
 }

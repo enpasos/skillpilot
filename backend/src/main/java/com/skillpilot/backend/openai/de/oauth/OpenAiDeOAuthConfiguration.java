@@ -1,7 +1,12 @@
 package com.skillpilot.backend.openai.de.oauth;
 
 import com.skillpilot.backend.oauth.ProviderScopedOAuth2AuthorizationService;
-import com.skillpilot.backend.oauth.ProviderScopedRegisteredClientRepository;
+import com.skillpilot.backend.oauth.AuthenticatedClientPolicy;
+import com.skillpilot.backend.oauth.AuthenticatedClientPolicyConfiguration;
+import com.skillpilot.backend.oauth.JdbcOAuthClientAssertionReplayStore;
+import com.skillpilot.backend.oauth.OAuthProfileDiagnosticsFilter;
+import com.skillpilot.backend.oauth.OAuthAuthorizationCodeExchangeGuard;
+import com.skillpilot.backend.oauth.OAuthTokenRevocationBoundary;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidation;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
@@ -10,6 +15,11 @@ import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemet
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.URI;
 import java.time.Duration;
+import java.time.Clock;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HexFormat;
 import java.util.List;
 import java.util.LinkedHashSet;
 import java.util.Locale;
@@ -23,6 +33,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -34,7 +45,6 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.authentication.JwtClientAssertionAuthenticationProvider;
-import org.springframework.security.oauth2.server.authorization.authentication.JwtClientAssertionDecoderFactory;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
@@ -62,6 +72,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
 @Configuration(proxyBeanMethods = false)
+@org.springframework.scheduling.annotation.EnableScheduling
+@Import(AuthenticatedClientPolicyConfiguration.class)
 @ConditionalOnProperty(
         name = {"skillpilot.openai.coach.v1.enabled", "skillpilot.openai.coach.v1.oauth.enabled"},
         havingValue = "true")
@@ -73,6 +85,7 @@ public class OpenAiDeOAuthConfiguration {
     public static final String CLIENT_AUTH_NONE = "none";
     public static final String CLIENT_AUTH_CLIENT_SECRET_BASIC = "client_secret_basic";
     public static final String CLIENT_AUTH_PRIVATE_KEY_JWT = "private_key_jwt";
+    static final String CLIENT_POLICY_SETTING = "skillpilot.oauth.client-policy";
     private static final PasswordEncoder CLIENT_SECRET_PASSWORD_ENCODER =
             PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
@@ -87,21 +100,36 @@ public class OpenAiDeOAuthConfiguration {
     @Bean
     RegisteredClientRepository openAiDeRegisteredClientRepository(
             JdbcOperations jdbcOperations,
-            OpenAiDeProperties properties) {
-        return new ProviderScopedRegisteredClientRepository(
+            OpenAiDeProperties properties,
+            ObjectProvider<OpenAiDeCimdMetadataGate> metadataGateProvider) {
+        var gate = metadataGateProvider.getIfAvailable();
+        if (isPrivateKeyJwt(properties) && gate == null) throw new IllegalStateException("JWT profile requires metadata readiness validation.");
+        return new OpenAiDeRegisteredClientRepository(
                 new JdbcRegisteredClientRepository(jdbcOperations),
-                properties.getOauth().getClientId());
+                properties, gate == null ? () -> true : gate::isReady);
     }
 
     @Bean
     OAuth2AuthorizationService openAiDeAuthorizationService(
             JdbcOperations jdbcOperations,
-            @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients) {
-        return new ProviderScopedOAuth2AuthorizationService(
+            @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients,
+            OpenAiDeProperties properties,
+            AuthenticatedClientPolicy policy) {
+        var profiles = OpenAiDeClientProfiles.configurations(properties).stream()
+                .map(value -> new AuthenticatedClientPolicy.Profile(OpenAiDeClientProfiles.primaryProfileId(value),
+                        policyFingerprint(value), normalizedClientAuthenticationMethod(value), isClientSecretBasic(value)))
+                .toList();
+        return policy.protectProfiles(new ProviderScopedOAuth2AuthorizationService(
                 new JdbcOAuth2AuthorizationService(
                         jdbcOperations,
                         new JdbcRegisteredClientRepository(jdbcOperations)),
-                registeredClients);
+                registeredClients), "openai", profiles, registeredId -> {
+                    var client = registeredClients.findById(registeredId);
+                    if (client == null) return null;
+                    return OpenAiDeClientProfiles.configurations(properties).stream()
+                            .filter(value -> value.getOauth().getClientId().trim().equals(client.getClientId()))
+                            .map(OpenAiDeClientProfiles::primaryProfileId).findFirst().orElse(null);
+                });
     }
 
     @Bean
@@ -134,8 +162,20 @@ public class OpenAiDeOAuthConfiguration {
     }
 
     @Bean
-    OpenAiDeCimdMetadataValidator openAiDeCimdMetadataValidator(ObjectMapper objectMapper) {
-        return OpenAiDeCimdMetadataValidator.production(objectMapper);
+    OpenAiDeCimdMetadataValidator.MetadataRetriever openAiDeClientDocumentRetriever() {
+        return new OpenAiDeTrustedJsonRetriever();
+    }
+
+    @Bean
+    OpenAiDeCimdMetadataValidator openAiDeCimdMetadataValidator(ObjectMapper objectMapper,
+            OpenAiDeCimdMetadataValidator.MetadataRetriever retriever) {
+        return new OpenAiDeCimdMetadataValidator(objectMapper, retriever);
+    }
+
+    @Bean(destroyMethod = "close")
+    @ConditionalOnProperty(name = "skillpilot.openai.coach.v1.oauth.client-authentication-method", havingValue = CLIENT_AUTH_PRIVATE_KEY_JWT)
+    OpenAiDeCimdMetadataGate openAiDeCimdMetadataGate(OpenAiDeProperties properties, OpenAiDeCimdMetadataValidator validator) {
+        return new OpenAiDeCimdMetadataGate(() -> validator.validate(properties));
     }
 
     @Bean
@@ -143,15 +183,27 @@ public class OpenAiDeOAuthConfiguration {
             @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients,
             OpenAiDeProperties properties,
             OpenAiDeOAuthLegacyClientCutover legacyClientCutover,
-            OpenAiDeCimdMetadataValidator cimdMetadataValidator) {
+            OpenAiDeCimdMetadataValidator cimdMetadataValidator,
+            AuthenticatedClientPolicy policy,
+            @Qualifier("openAiDeAuthorizationServerSettings") AuthorizationServerSettings serverSettings,
+            ObjectProvider<OpenAiDeCimdMetadataGate> metadataGateProvider) {
         return () -> {
-            validateSettings(properties);
-            if (isPrivateKeyJwt(properties)) {
-                cimdMetadataValidator.validate(properties);
+            policy.assertCompatible();
+            for (var profile : OpenAiDeClientProfiles.configurations(properties)) {
+                validateAuthenticatedSettings(profile, isPrivateKeyJwt(profile), serverSettings.getIssuer());
+                validateSettings(profile);
+                policy.assertProfileAvailable("openai", new AuthenticatedClientPolicy.Profile(
+                        OpenAiDeClientProfiles.primaryProfileId(profile), policyFingerprint(profile),
+                        normalizedClientAuthenticationMethod(profile), isClientSecretBasic(profile)));
             }
-            legacyClientCutover.execute(properties);
-            registerConfiguredClient(registeredClients, properties);
-            assertSecureClientRegistration(registeredClients, properties);
+            if (isPrivateKeyJwt(properties)) {
+                metadataGateProvider.getObject().initialRefresh();
+            }
+            legacyClientCutover.execute(properties, isPrivateKeyJwt(properties));
+            for (var profile : OpenAiDeClientProfiles.configurations(properties)) {
+                registerConfiguredClient(registeredClients, profile);
+                assertSecureClientRegistration(registeredClients, profile);
+            }
         };
     }
 
@@ -169,7 +221,24 @@ public class OpenAiDeOAuthConfiguration {
             RegisteredClientRepository registeredClients,
             OpenAiDeProperties properties) {
         String clientId = properties.getOauth().getClientId().trim();
-        RegisteredClient existing = registeredClients.findByClientId(clientId);
+        RegisteredClient existing = registeredClients instanceof OpenAiDeRegisteredClientRepository repository
+                ? repository.findForRegistration(clientId) : registeredClients.findByClientId(clientId);
+        if (existing != null && !Set.of(clientAuthenticationMethod(properties)).equals(existing.getClientAuthenticationMethods())) {
+            throw new IllegalStateException("Changing authentication method under an existing OpenAI client identity is forbidden; register a distinct profile identity.");
+        }
+        if (existing != null && isClientSecretBasic(properties)
+                && existing.getClientSettings().getSetting(CLIENT_POLICY_SETTING) == null
+                && (!Set.of(READ_SCOPE, WRITE_SCOPE, OFFLINE_SCOPE).equals(existing.getScopes())
+                    || !existing.getClientSettings().isRequireProofKey()
+                    || !existing.getClientSettings().isRequireAuthorizationConsent()
+                    || !Set.of(AuthorizationGrantType.AUTHORIZATION_CODE, AuthorizationGrantType.REFRESH_TOKEN)
+                            .equals(existing.getAuthorizationGrantTypes())
+                    || !Set.copyOf(properties.getOauth().getRedirectUris()).equals(existing.getRedirectUris())
+                    || existing.getTokenSettings().isReuseRefreshTokens()
+                    || !OAuth2TokenFormat.REFERENCE.equals(existing.getTokenSettings().getAccessTokenFormat())
+                    || !clientSecretMatches(existing, properties))) {
+            throw new IllegalStateException("An unprofiled Basic registration must already match the trusted OpenAI connection before its existing grants can be retained.");
+        }
         RegisteredClient.Builder clientBuilder = existing == null
                 ? RegisteredClient.withId(UUID.randomUUID().toString())
                 : RegisteredClient.from(existing);
@@ -181,7 +250,8 @@ public class OpenAiDeOAuthConfiguration {
                 clientAuthenticationMethod(properties);
         ClientSettings.Builder clientSettings = ClientSettings.builder()
                 .requireProofKey(true)
-                .requireAuthorizationConsent(true);
+                .requireAuthorizationConsent(true)
+                .setting(CLIENT_POLICY_SETTING, policyFingerprint(properties));
         if (privateKeyJwt) {
             clientSettings
                     .jwkSetUrl(properties.getOauth().getClientJwkSetUri().trim())
@@ -226,7 +296,7 @@ public class OpenAiDeOAuthConfiguration {
         registeredClients.save(client);
     }
 
-    private static void assertSecureClientRegistration(
+    static void assertSecureClientRegistration(
             RegisteredClientRepository registeredClients,
             OpenAiDeProperties properties) {
         boolean privateKeyJwt = isPrivateKeyJwt(properties);
@@ -243,8 +313,9 @@ public class OpenAiDeOAuthConfiguration {
                 privateKeyJwt ? properties.getOauth().getClientJwkSetUri().trim() : null;
         SignatureAlgorithm expectedSigningAlgorithm =
                 privateKeyJwt ? clientAssertionSigningAlgorithm(properties) : null;
-        RegisteredClient persisted =
-                registeredClients.findByClientId(properties.getOauth().getClientId().trim());
+        RegisteredClient persisted = registeredClients instanceof OpenAiDeRegisteredClientRepository repository
+                ? repository.findForRegistration(properties.getOauth().getClientId().trim())
+                : registeredClients.findByClientId(properties.getOauth().getClientId().trim());
         if (persisted == null
                 || !expectedAuthenticationMethods.equals(persisted.getClientAuthenticationMethods())
                 || !clientSecretMatches(persisted, properties)
@@ -260,6 +331,8 @@ public class OpenAiDeOAuthConfiguration {
                         expectedSigningAlgorithm,
                         persisted.getClientSettings()
                                 .getTokenEndpointAuthenticationSigningAlgorithm())
+                || !Objects.equals(policyFingerprint(properties),
+                        persisted.getClientSettings().getSetting(CLIENT_POLICY_SETTING))
                 || !OAuth2TokenFormat.REFERENCE.equals(
                         persisted.getTokenSettings().getAccessTokenFormat())
                 || !properties.getOauth().getAccessTokenTtl().equals(
@@ -295,13 +368,16 @@ public class OpenAiDeOAuthConfiguration {
             @Qualifier("openAiDeAuthorizationService") OAuth2AuthorizationService authorizationService,
             @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients,
             OpenAiDeOperationalTelemetry telemetry,
+            AuthenticatedClientPolicy policy,
             OpenAiDeProperties properties) {
         return new OpenAiDeOpaqueTokenIntrospector(
                 authorizationService,
                 registeredClients,
                 telemetry,
                 properties.getOauth().getClientId().trim(),
-                properties.getOauthResource());
+                properties.getOauthResource(), () -> {
+                    policy.assertCompatible();
+                }, OpenAiDeClientProfiles.clientIds(properties));
     }
 
     @Bean
@@ -316,9 +392,11 @@ public class OpenAiDeOAuthConfiguration {
             name = "skillpilot.openai.coach.v1.oauth.client-authentication-method",
             havingValue = CLIENT_AUTH_PRIVATE_KEY_JWT)
     OpenAiDeJwtClientAssertionValidator openAiDeJwtClientAssertionValidator(
-            OpenAiDeProperties properties) {
+            OpenAiDeProperties properties,
+            JdbcOAuthClientAssertionReplayStore replayStore) {
         return new OpenAiDeJwtClientAssertionValidator(
-                properties.getOauth().getClientAssertionReplayCacheSize());
+                replayStore, properties.getOauth().getClientAssertionReplayCacheSize(),
+                properties.getOauth().getClientAssertionClockSkew());
     }
 
     @Bean
@@ -334,7 +412,10 @@ public class OpenAiDeOAuthConfiguration {
             @Qualifier("openAiDeSecurityContextRepository") SecurityContextRepository contextRepository,
             @Qualifier("openAiDeOAuth2TokenGenerator") OAuth2TokenGenerator<?> tokenGenerator,
             ObjectProvider<OpenAiDeJwtClientAssertionValidator> clientAssertionValidatorProvider,
-            OpenAiDeProperties properties) throws Exception {
+            OpenAiDeCimdMetadataValidator.MetadataRetriever documentRetriever,
+            AuthenticatedClientPolicy policy,
+            OpenAiDeProperties properties,
+            JdbcOperations jdbcOperations, PlatformTransactionManager transactionManager) throws Exception {
         org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer server =
                 new org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer();
         RequestMatcher endpointsMatcher = server.getEndpointsMatcher();
@@ -360,17 +441,8 @@ public class OpenAiDeOAuthConfiguration {
                                     throw new IllegalStateException(
                                             "OpenAI Coach V1 private_key_jwt requires the client assertion validator.");
                                 }
-                                JwtClientAssertionDecoderFactory decoderFactory =
-                                        new JwtClientAssertionDecoderFactory();
-                                decoderFactory.setJwtValidatorFactory(registeredClient -> jwt -> {
-                                    var defaultResult = JwtClientAssertionDecoderFactory
-                                            .DEFAULT_JWT_VALIDATOR_FACTORY
-                                            .apply(registeredClient)
-                                            .validate(jwt);
-                                    return defaultResult.hasErrors()
-                                            ? defaultResult
-                                            : clientAssertionValidator.validate(jwt);
-                                });
+                                var decoderFactory = new OpenAiDeClientAssertionDecoderFactory(properties,
+                                        clientAssertionValidator, documentRetriever, Clock.systemUTC());
                                 clientAuthentication.authenticationProviders(providers ->
                                         providers.stream()
                                                 .filter(JwtClientAssertionAuthenticationProvider.class::isInstance)
@@ -391,6 +463,16 @@ public class OpenAiDeOAuthConfiguration {
                                         });
                             }
                         })
+                        .tokenEndpoint(endpoint -> endpoint.authenticationProviders(providers -> {
+                            for (int i = 0; i < providers.size(); i++) {
+                                if (providers.get(i) instanceof org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeAuthenticationProvider) {
+                                    providers.set(i, new OAuthAuthorizationCodeExchangeGuard(providers.get(i),
+                                            authorizationService, jdbcOperations, transactionManager));
+                                }
+                            }
+                        }))
+                        .tokenRevocationEndpoint(endpoint -> endpoint.authenticationProviders(providers ->
+                                OAuthTokenRevocationBoundary.restrict(providers, authorizationService)))
                         .authorizationEndpoint(endpoint -> endpoint.consentPage(CONSENT_ENDPOINT)))
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
                 .securityContext(context -> context.securityContextRepository(contextRepository))
@@ -405,7 +487,26 @@ public class OpenAiDeOAuthConfiguration {
                 .addFilterAfter(
                         bindingFilter,
                         org.springframework.security.web.context.SecurityContextHolderFilter.class)
-                .addFilterBefore(resourceValidationFilter, OpenAiDeBindingAuthenticationFilter.class);
+                .addFilterBefore(new OAuthProfileDiagnosticsFilter("openai"),
+                        org.springframework.security.web.context.SecurityContextHolderFilter.class)
+                .addFilterBefore(resourceValidationFilter, OpenAiDeBindingAuthenticationFilter.class)
+                .addFilterBefore(new org.springframework.web.filter.OncePerRequestFilter() {
+                    @Override
+                    protected void doFilterInternal(jakarta.servlet.http.HttpServletRequest request,
+                            jakarta.servlet.http.HttpServletResponse response, jakarta.servlet.FilterChain chain)
+                            throws jakarta.servlet.ServletException, java.io.IOException {
+                        try {
+                            policy.assertCompatible();
+                        } catch (IllegalStateException | org.springframework.dao.DataAccessException
+                                | org.springframework.transaction.TransactionException failure) {
+                            response.setStatus(HttpStatus.SERVICE_UNAVAILABLE.value());
+                            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+                            response.getWriter().write("{\"error\":\"temporarily_unavailable\"}");
+                            return;
+                        }
+                        chain.doFilter(request, response);
+                    }
+                }, OpenAiDeOAuthResourceValidationFilter.class);
         return http.build();
     }
 
@@ -422,6 +523,8 @@ public class OpenAiDeOAuthConfiguration {
                         .anyRequest().hasAuthority("SCOPE_" + READ_SCOPE))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(csrf -> csrf.disable())
+                .addFilterBefore(new OAuthProfileDiagnosticsFilter("openai"),
+                        org.springframework.security.web.context.SecurityContextHolderFilter.class)
                 .oauth2ResourceServer(resourceServer -> resourceServer
                         .opaqueToken(opaque -> opaque.introspector(introspector))
                         .authenticationEntryPoint((request, response, exception) -> {
@@ -507,6 +610,14 @@ public class OpenAiDeOAuthConfiguration {
                             + OpenAiDeSecureModeValidation.MINIMUM_CLIENT_SECRET_LENGTH
                             + " non-whitespace characters for client_secret_basic.");
         }
+        if (CLIENT_AUTH_CLIENT_SECRET_BASIC.equals(authenticationMethod)
+                && properties.getOauth().getClientId().startsWith("https://")) {
+            throw new IllegalStateException("ChatGPT CIMD identities require private_key_jwt; Basic is limited to a distinct transitional client.");
+        }
+        String revision = properties.getOauth().getAuthorizationPolicyVersion();
+        if (revision == null || !revision.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,63}")) {
+            throw new IllegalStateException("OpenAI authorization-policy-version must be an explicit bounded revision.");
+        }
         if (CLIENT_AUTH_PRIVATE_KEY_JWT.equals(authenticationMethod)) {
             if (properties.getOauth().getClientAssertionReplayCacheSize() <= 0) {
                 throw new IllegalStateException(
@@ -519,6 +630,11 @@ public class OpenAiDeOAuthConfiguration {
                     properties.getOauth().getClientJwkSetUri(),
                     "OpenAI Coach V1 CIMD client ID and client JWK Set URL");
             clientAssertionSigningAlgorithm(properties);
+            requireHttpsUri(properties.getOauth().getClientAssertionAudience(), "OpenAI client assertion audience");
+            if (!OpenAiDeSecureModeValidation.validAssertionTimePolicy(properties)
+                    || !SignatureAlgorithm.RS256.equals(clientAssertionSigningAlgorithm(properties))) {
+                throw new IllegalStateException("OpenAI client assertions require RS256 and bounded lifetime/skew.");
+            }
         }
         if (isConfidentialClient(properties)
                 && normalizedLegacyClientIds(properties)
@@ -548,6 +664,54 @@ public class OpenAiDeOAuthConfiguration {
                 || properties.getOauth().getRefreshTokenTtl().isZero()
                 || properties.getOauth().getRefreshTokenTtl().isNegative()) {
             throw new IllegalStateException("OpenAI Coach V1 refresh-token TTL must be positive.");
+        }
+    }
+
+    static void validateAuthenticatedSettings(OpenAiDeProperties properties, boolean required, String issuer) {
+        if (!required) {
+            return;
+        }
+        if (!properties.getSecurity().isSecureMode() || !isPrivateKeyJwt(properties)) {
+            throw new IllegalStateException("Authenticated OpenAI clients require secure mode and private_key_jwt; no downgrade is permitted.");
+        }
+        OpenAiDeTrustedJsonRetriever.requireTrustedUri(URI.create(properties.getOauth().getClientId()));
+        OpenAiDeTrustedJsonRetriever.requireTrustedUri(URI.create(properties.getOauth().getClientJwkSetUri()));
+        if (!"/oauth/jwks.json".equals(URI.create(properties.getOauth().getClientJwkSetUri()).getRawPath())
+                || properties.getOauth().getRedirectUris().size() != 1) {
+            throw new IllegalStateException("Authenticated OpenAI client requires the official JWKS and one exact app callback.");
+        }
+        URI callback = URI.create(properties.getOauth().getRedirectUris().getFirst());
+        requireHttpsUri(callback.toString(), "OpenAI callback");
+        if (!"chatgpt.com".equals(callback.getHost()) || (callback.getPort() != -1 && callback.getPort() != 443)
+                || callback.getRawPath() == null
+                || !("/connector_platform_oauth_redirect".equals(callback.getRawPath())
+                    || callback.getRawPath().matches("/connector/oauth/[A-Za-z0-9_-]+"))) {
+            throw new IllegalStateException("Authenticated OpenAI client callback must be the exact ChatGPT connector callback.");
+        }
+        String origin = issuer.substring(0, issuer.length() - ISSUER_PATH.length());
+        String audience = properties.getOauth().getClientAssertionAudience();
+        if (!issuer.equals(audience) && !(origin + TOKEN_ENDPOINT).equals(audience)) {
+            throw new IllegalStateException("OpenAI assertion audience must exactly pin this authorization server issuer or token endpoint, not the MCP resource.");
+        }
+    }
+
+    static String policyFingerprint(OpenAiDeProperties properties) {
+        var oauth = properties.getOauth();
+        String contract = String.join("\n", "openai-profile-v2", OpenAiDeClientProfiles.primaryProfileId(properties),
+                oauth.getAuthorizationPolicyVersion(), oauth.getClientId(),
+                normalizedClientAuthenticationMethod(properties),
+                isPrivateKeyJwt(properties) ? oauth.getClientJwkSetUri() : "",
+                isPrivateKeyJwt(properties) ? oauth.getClientAssertionSigningAlgorithm() : "",
+                isPrivateKeyJwt(properties) ? oauth.getClientAssertionAudience() : "",
+                isPrivateKeyJwt(properties) ? oauth.getClientAssertionClockSkew().toString() : "",
+                isPrivateKeyJwt(properties) ? oauth.getClientAssertionMaxLifetime().toString() : "",
+                String.join("\n", oauth.getRedirectUris().stream().sorted().toList()),
+                properties.getOauthResource(), READ_SCOPE, WRITE_SCOPE, OFFLINE_SCOPE,
+                oauth.getAccessTokenTtl().toString(), oauth.getRefreshTokenTtl().toString(), "pkce+consent+rotate");
+        try {
+            return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(contract.getBytes(StandardCharsets.UTF_8)));
+        } catch (NoSuchAlgorithmException impossible) {
+            throw new IllegalStateException("Required policy digest is unavailable.", impossible);
         }
     }
 

@@ -12,15 +12,15 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.transaction.support.TransactionOperations;
 
 /**
- * Optional one-way, allowlist-scoped migration from former public OpenAI Coach V1
- * OAuth clients when an installation explicitly switches to the fixed
- * confidential {@code client_secret_basic} production client.
+ * Optional allowlist-scoped cleanup of former OpenAI registrations. The shared
+ * durable authentication policy independently invalidates all unmarked tokens.
  *
  * <p>The migration deliberately does not discover candidates by provider
  * naming conventions or authentication method. It touches only exact client
  * IDs configured in {@code legacy-client-ids}, and only after proving that the
- * persisted client still uses the single legacy authentication method
- * {@code none}.</p>
+ * persisted client still uses only {@code none}, or only {@code client_secret_basic}
+ * when the independent CIMD profile selects private_key_jwt. Explicitly enabled
+ * transitional Basic clients may never be named in this retired-client list.</p>
  */
 final class OpenAiDeOAuthLegacyClientCutover {
 
@@ -37,20 +37,25 @@ final class OpenAiDeOAuthLegacyClientCutover {
     }
 
     void execute(OpenAiDeProperties properties) {
-        if (!OpenAiDeOAuthConfiguration.isClientSecretBasic(properties)) {
+        execute(properties, false);
+    }
+
+    void execute(OpenAiDeProperties properties, boolean authenticatedClientsRequired) {
+        if (!OpenAiDeOAuthConfiguration.isClientSecretBasic(properties)
+                && !(authenticatedClientsRequired && OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties))) {
             return;
         }
         List<String> legacyClientIds = OpenAiDeOAuthConfiguration.normalizedLegacyClientIds(properties);
         transactionOperations.executeWithoutResult(status -> {
             Instant revokedAt = Instant.now();
             for (String legacyClientId : legacyClientIds) {
-                cutOverClient(legacyClientId, revokedAt);
+                cutOverClient(legacyClientId, revokedAt, authenticatedClientsRequired);
             }
             assertNoConfiguredLegacyClientsRemain(legacyClientIds);
         });
     }
 
-    private void cutOverClient(String legacyClientId, Instant revokedAt) {
+    private void cutOverClient(String legacyClientId, Instant revokedAt, boolean authenticatedClientsRequired) {
         List<PersistedClient> clients = jdbcOperations.query(
                 """
                 SELECT id, client_authentication_methods
@@ -68,10 +73,12 @@ final class OpenAiDeOAuthLegacyClientCutover {
                             + legacyClientId);
         }
         PersistedClient client = clients.getFirst();
-        if (!Set.of(LEGACY_AUTHENTICATION_METHOD).equals(client.authenticationMethods())) {
+        if (!Set.of(LEGACY_AUTHENTICATION_METHOD).equals(client.authenticationMethods())
+                && !(authenticatedClientsRequired
+                    && Set.of("client_secret_basic").equals(client.authenticationMethods()))) {
             throw new IllegalStateException(
                     "Refusing to remove allowlisted OpenAI Coach V1 legacy client because it does not use only "
-                            + "client authentication method none: "
+                            + "an approved legacy client authentication method: "
                             + legacyClientId);
         }
 

@@ -158,4 +158,48 @@ class ClaudeV1RuntimeValidationTest {
             assertFalse(violation.contains(ClaudeV1TestProperties.SIGNING_SECRET_VALUE));
         }
     }
+
+    @Test
+    void publicProfileIsNotCoupledToOpenAiOrTheRetiredGlobalPolicy() {
+        MockEnvironment environment = environmentWithBeta(false)
+                .withProperty("skillpilot.oauth.authenticated-clients-required", "true");
+        var result = ClaudeV1RuntimeValidation.inspect(validEnabledProperties(), environment);
+        assertTrue(result.valid());
+    }
+
+    @Test
+    void confidentialProfileRequiresExplicitMethodCredentialsVersionAndExactCallback() {
+        ClaudeV1Properties properties = validEnabledProperties();
+        var oauth = properties.getOauth();
+        oauth.setClientAuthenticationMode("anthropic-credentials");
+        var missing = ClaudeV1RuntimeValidation.inspect(properties, environmentWithBeta(false));
+        assertFalse(missing.valid());
+        for (String field : java.util.List.of("client-id", "client-secret", "client-authentication-method", "authorization-policy-version")) {
+            assertTrue(hasViolationContaining(missing, field));
+        }
+
+        oauth.setClientId("skillpilot-claude-confidential-test");
+        oauth.setClientSecret("synthetic-claude-client-secret-0123456789");
+        oauth.setClientAuthenticationMethod("client_secret_basic");
+        oauth.setAuthorizationPolicyVersion("test-v1");
+        assertTrue(ClaudeV1RuntimeValidation.inspect(properties, environmentWithBeta(false)).valid());
+        oauth.setClientAuthenticationMethod("client_secret_post");
+        assertTrue(ClaudeV1RuntimeValidation.inspect(properties, environmentWithBeta(false)).valid());
+
+        for (String invalidMethod : java.util.List.of("none", "private_key_jwt", "oauth_anthropic_creds", "")) {
+            oauth.setClientAuthenticationMethod(invalidMethod);
+            assertFalse(ClaudeV1RuntimeValidation.inspect(properties, environmentWithBeta(false)).valid());
+        }
+        oauth.setClientAuthenticationMethod("client_secret_basic");
+        oauth.setRedirectUri("http://localhost:3456/callback");
+        assertFalse(ClaudeV1RuntimeValidation.inspect(properties, environmentWithBeta(false)).valid());
+        oauth.setRedirectUri(ClaudeV1Contract.HOSTED_CLAUDE_AUTH_CALLBACK);
+        oauth.setScopes(java.util.List.of("skillpilot.read", "foreign.scope"));
+        assertFalse(ClaudeV1RuntimeValidation.inspect(properties, environmentWithBeta(false)).valid());
+        oauth.setScopes(java.util.List.of("skillpilot.read"));
+        oauth.setClientSecret("invalid-secret");
+        var invalid = ClaudeV1RuntimeValidation.inspect(properties, environmentWithBeta(false));
+        assertFalse(invalid.valid());
+        assertFalse(String.join(";", invalid.violations()).contains("invalid-secret"));
+    }
 }

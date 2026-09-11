@@ -1,8 +1,11 @@
 package com.skillpilot.backend.openai.de.health;
 
+import com.skillpilot.backend.oauth.AuthenticatedClientPolicy;
 import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.openai.de.OpenAiDeSecureModeValidation;
+import com.skillpilot.backend.openai.de.oauth.OpenAiDeClientProfiles;
+import com.skillpilot.backend.openai.de.oauth.OpenAiDeCimdMetadataGate;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidation;
@@ -31,6 +34,8 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
     private final String curriculumRevision;
     private final boolean mcpEnabled;
     private final int expectedToolCount;
+    private final Optional<AuthenticatedClientPolicy> authenticationPolicy;
+    private final Optional<OpenAiDeCimdMetadataGate> metadataGate;
 
     public OpenAiDeCoachHealthIndicator(
             OpenAiDeProperties properties,
@@ -40,7 +45,6 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
         this(properties, contract, curriculumRevisionProvider, mcpEnabled, false);
     }
 
-    @Autowired
     public OpenAiDeCoachHealthIndicator(
             OpenAiDeProperties properties,
             Optional<OpenAiDeV1McpContractAdapter> contract,
@@ -48,6 +52,26 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
             @Value("${skillpilot.openai.coach.v1.mcp.enabled:false}") boolean mcpEnabled,
             @Value("${skillpilot.openai.coach.v1.daily-plan-tools-enabled:true}")
                     boolean dailyPlanToolsEnabled) {
+        this(properties, contract, curriculumRevisionProvider, mcpEnabled, dailyPlanToolsEnabled, Optional.empty());
+    }
+
+    public OpenAiDeCoachHealthIndicator(
+            OpenAiDeProperties properties,
+            Optional<OpenAiDeV1McpContractAdapter> contract,
+            Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
+            @Value("${skillpilot.openai.coach.v1.mcp.enabled:false}") boolean mcpEnabled,
+            @Value("${skillpilot.openai.coach.v1.daily-plan-tools-enabled:true}") boolean dailyPlanToolsEnabled,
+            Optional<AuthenticatedClientPolicy> authenticationPolicy) {
+        this(properties, contract, curriculumRevisionProvider, mcpEnabled, dailyPlanToolsEnabled, authenticationPolicy, Optional.empty());
+    }
+
+    @Autowired
+    public OpenAiDeCoachHealthIndicator(OpenAiDeProperties properties,
+            Optional<OpenAiDeV1McpContractAdapter> contract,
+            Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
+            @Value("${skillpilot.openai.coach.v1.mcp.enabled:false}") boolean mcpEnabled,
+            @Value("${skillpilot.openai.coach.v1.daily-plan-tools-enabled:true}") boolean dailyPlanToolsEnabled,
+            Optional<AuthenticatedClientPolicy> authenticationPolicy, Optional<OpenAiDeCimdMetadataGate> metadataGate) {
         this.properties = properties;
         this.contractAvailable = contract.isPresent();
         this.contractToolCount = contract.map(value -> value.toolSpecifications().size()).orElse(0);
@@ -57,6 +81,8 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 .filter(value -> !value.isBlank())
                 .orElse("unavailable");
         this.mcpEnabled = mcpEnabled;
+        this.authenticationPolicy = authenticationPolicy;
+        this.metadataGate = metadataGate;
         this.expectedToolCount = dailyPlanToolsEnabled
                 ? EXPECTED_DAILY_PLAN_TOOL_COUNT
                 : EXPECTED_TOOL_COUNT;
@@ -73,8 +99,28 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                         ? ""
                         : properties.getOauth().getClientAuthenticationMethod().trim().toLowerCase();
         boolean clientAuthenticationConfigured = secureMode.clientAuthenticationSupported()
-                && secureMode.clientSecretBasic()
-                && secureMode.clientSecretConfigured();
+                && (secureMode.privateKeyJwt() ? secureMode.valid()
+                    : secureMode.clientSecretBasic() && secureMode.clientSecretConfigured());
+        boolean clientMetadataReady = !secureMode.privateKeyJwt() || metadataGate.map(OpenAiDeCimdMetadataGate::isReady).orElse(false);
+        clientAuthenticationConfigured = clientAuthenticationConfigured && clientMetadataReady;
+        boolean authenticationPolicyCompatible = authenticationPolicy.isPresent();
+        var profileStatus = new java.util.LinkedHashMap<String, Boolean>();
+        try {
+            for (var profile : OpenAiDeClientProfiles.configurations(properties)) {
+                String id = OpenAiDeClientProfiles.primaryProfileId(profile);
+                boolean active = true;
+                try {
+                    authenticationPolicy.ifPresent(policy -> policy.assertActiveProfile("openai", id));
+                } catch (RuntimeException failure) {
+                    active = false;
+                    authenticationPolicyCompatible = false;
+                }
+                profileStatus.put(id, active && authenticationPolicy.isPresent()
+                        && (!OpenAiDeClientProfiles.CIMD_JWT.equals(id) || clientMetadataReady));
+            }
+        } catch (RuntimeException failure) {
+            authenticationPolicyCompatible = false;
+        }
         List<String> redirectUris = properties.getOauth().getRedirectUris();
         boolean redirectUrisConfigured = redirectUris != null
                 && !redirectUris.isEmpty()
@@ -108,10 +154,15 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 && rateLimitEnabled
                 && rateLimitConfigured
                 && contractReady
+                && authenticationPolicyCompatible
                 && secureMode.valid();
 
         Health.Builder health = ready ? Health.up() : Health.down();
         health.withDetail("provider", "openai")
+                .withDetail("authenticationProfile", OpenAiDeClientProfiles.primaryProfileId(properties))
+                .withDetail("clientMetadataReady", clientMetadataReady)
+                .withDetail("authenticationProfilesActive", profileStatus)
+                .withDetail("authenticationPolicyCompatible", authenticationPolicyCompatible)
                 .withDetail("localeBinding", "learning-session")
                 .withDetail("communicationLanguages", List.of("de", "en"))
                 .withDetail("pluginLine", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY)

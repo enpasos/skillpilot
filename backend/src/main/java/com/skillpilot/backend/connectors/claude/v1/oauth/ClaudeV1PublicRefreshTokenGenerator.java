@@ -8,7 +8,11 @@ import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenContext;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenGenerator;
 
-/** Issues a fresh opaque refresh token for the trusted public CIMD clients. */
+/**
+ * Issues a fresh opaque refresh token after the selected profile's grant/client checks.
+ * The historical class name also covers confidential clients; token generation itself does not
+ * authenticate a client or grant refresh-token access.
+ */
 final class ClaudeV1PublicRefreshTokenGenerator implements OAuth2TokenGenerator<OAuth2RefreshToken> {
 
     private final SecureRandom secureRandom = new SecureRandom();

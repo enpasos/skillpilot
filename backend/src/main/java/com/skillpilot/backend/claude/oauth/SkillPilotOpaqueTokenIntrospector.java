@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.DefaultOAuth2AuthenticatedPrincipal;
@@ -42,6 +43,14 @@ public final class SkillPilotOpaqueTokenIntrospector implements OpaqueTokenIntro
 
     @Override
     public OAuth2AuthenticatedPrincipal introspect(String token) {
+        try {
+            return introspectUnderCurrentPolicy(token);
+        } catch (IllegalStateException | DataAccessException exception) {
+            throw new BadOpaqueTokenException("Claude authorization is unavailable or requires reconnection.");
+        }
+    }
+
+    private OAuth2AuthenticatedPrincipal introspectUnderCurrentPolicy(String token) {
         OAuth2Authorization authorization = authorizationService.findByToken(token, OAuth2TokenType.ACCESS_TOKEN);
         if (authorization == null
                 || authorization.getAccessToken() == null

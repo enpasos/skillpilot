@@ -59,7 +59,8 @@ public class ClaudeV1CimdMetadataValidator {
 
     /** Structural check: is this one of the two client identities Claude v1 accepts at all? */
     public boolean isAllowedClientId(String clientId) {
-        return clientId != null && ClaudeV1Contract.ALLOWED_CIMD_CLIENT_IDS.contains(clientId);
+        return properties.getOauth().isPublicCimdEnabled()
+                && clientId != null && ClaudeV1Contract.ALLOWED_CIMD_CLIENT_IDS.contains(clientId);
     }
 
     /**

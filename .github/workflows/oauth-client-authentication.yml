@@ -1,0 +1,253 @@
+name: OAuth client authentication
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 5 * * *'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'docs/deploy/oauth-client-authentication.md'
+      - 'docs/deploy/oauth-provider-followups.md'
+      - 'contracts/oauth/**'
+      - 'scripts/check_oauth_profile_release*.mjs'
+      - 'scripts/validate_openai_v1_runtime_config*.mjs'
+      - 'scripts/lib/openai_v1_service_environment.sh'
+      - 'scripts/oauth_client_auth_ci.test.mjs'
+      - '.github/workflows/oauth-client-authentication.yml'
+      - '.java-version'
+      - '.corretto-version'
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'docs/deploy/oauth-client-authentication.md'
+      - 'docs/deploy/oauth-provider-followups.md'
+      - 'contracts/oauth/**'
+      - 'scripts/check_oauth_profile_release*.mjs'
+      - 'scripts/validate_openai_v1_runtime_config*.mjs'
+      - 'scripts/lib/openai_v1_service_environment.sh'
+      - 'scripts/oauth_client_auth_ci.test.mjs'
+      - '.github/workflows/oauth-client-authentication.yml'
+      - '.java-version'
+      - '.corretto-version'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: oauth-client-authentication-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  provider-security:
+    name: OAuth provider security
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+      - name: Use exact production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < .corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Guard automated security coverage
+        run: node --test scripts/oauth_client_auth_ci.test.mjs
+      - name: Validate independent release evidence and deployment configuration gates
+        run: |
+          node --test scripts/check_oauth_profile_release.test.mjs scripts/validate_openai_v1_runtime_config.test.mjs
+          node scripts/check_oauth_profile_release.mjs
+      - name: Test client profiles, token boundaries and shared security policy
+        working-directory: backend
+        run: >-
+          ./gradlew test --console=plain
+          --tests 'com.skillpilot.backend.openai.de.oauth.*Test'
+          --tests 'com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest'
+          --tests 'com.skillpilot.backend.openai.de.health.OpenAiDeCoachHealthIndicatorTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.oauth.*Test'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.ClaudeV1RuntimeValidationTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.ClaudeV1CrossProviderIsolationTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.ClaudeV1SecurityChainIntegrationTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinatorTest'
+          --tests 'com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinatorTest'
+          --tests 'com.skillpilot.backend.claude.oauth.ClaudeOAuthStrictModeTest'
+          --tests 'com.skillpilot.backend.oauth.JdbcOAuthClientAssertionReplayStoreTest'
+          --tests 'com.skillpilot.backend.oauth.AuthenticatedClientPolicyTest'
+          --tests 'com.skillpilot.backend.oauth.IndependentClientProfilePolicyTest'
+          --tests 'com.skillpilot.backend.oauth.OAuthProfileDiagnosticsFilterTest'
+          --tests 'com.skillpilot.backend.oauth.CombinedProviderOAuthIsolationIntegrationTest'
+          --tests 'com.skillpilot.backend.oauth.ProviderScopedOAuth2AuthorizationServiceTest'
+          --tests 'com.skillpilot.backend.oauth.ProviderScopedRegisteredClientRepositoryTest'
+          --tests 'com.skillpilot.backend.oauth.OAuthAuthorizationCodeExchangeGuardTest'
+          --tests 'com.skillpilot.backend.oauth.OAuthTokenRevocationBoundaryTest'
+      - name: Require executed provider-security evidence without skipped tests
+        if: always()
+        run: |
+          python3 - <<'PY_PROVIDER'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          required = {
+              'com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAssertionDecoderFactoryTest',
+              'com.skillpilot.backend.openai.de.oauth.OpenAiDePinnedJwkSourceTest',
+              'com.skillpilot.backend.openai.de.oauth.OpenAiDePrivateKeyJwtFlowIntegrationTest',
+              'com.skillpilot.backend.openai.de.oauth.OpenAiDeClientProfilesTest',
+              'com.skillpilot.backend.openai.de.oauth.OpenAiDeCimdMetadataGateTest',
+              'com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthLegacyClientCutoverTest',
+              'com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest',
+              'com.skillpilot.backend.openai.de.health.OpenAiDeCoachHealthIndicatorTest',
+              'com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1ConfidentialOAuthIntegrationTest',
+              'com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1ConfidentialPostOAuthIntegrationTest',
+              'com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1ClientPolicyTest',
+              'com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1PublicRefreshFamilyIntegrationTest',
+              'com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1RefreshTokenFamiliesTest',
+              'com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1OAuthBoundaryFilterTest',
+              'com.skillpilot.backend.connectors.claude.v1.ClaudeV1RuntimeValidationTest',
+              'com.skillpilot.backend.connectors.claude.v1.ClaudeV1CrossProviderIsolationTest',
+              'com.skillpilot.backend.connectors.claude.v1.ClaudeV1SecurityChainIntegrationTest',
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinatorTest',
+              'com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinatorTest',
+              'com.skillpilot.backend.claude.oauth.ClaudeOAuthStrictModeTest',
+              'com.skillpilot.backend.oauth.JdbcOAuthClientAssertionReplayStoreTest',
+              'com.skillpilot.backend.oauth.AuthenticatedClientPolicyTest',
+              'com.skillpilot.backend.oauth.IndependentClientProfilePolicyTest',
+              'com.skillpilot.backend.oauth.OAuthProfileDiagnosticsFilterTest',
+              'com.skillpilot.backend.oauth.CombinedProviderOAuthIsolationIntegrationTest',
+              'com.skillpilot.backend.oauth.ProviderScopedOAuth2AuthorizationServiceTest',
+              'com.skillpilot.backend.oauth.ProviderScopedRegisteredClientRepositoryTest',
+              'com.skillpilot.backend.oauth.OAuthAuthorizationCodeExchangeGuardTest',
+              'com.skillpilot.backend.oauth.OAuthTokenRevocationBoundaryTest',
+          }
+          executed = set()
+          count = 0
+          for report in Path('backend/build/test-results/test').glob('TEST-*.xml'):
+              suite = ET.parse(report).getroot()
+              name = suite.get('name')
+              cases = suite.findall('testcase')
+              if not name or report.name != f'TEST-{name}.xml' or not cases:
+                  raise SystemExit(f'Provider suite missing or misidentified: {report.name}')
+              if int(suite.get('tests', '0')) != len(cases):
+                  raise SystemExit(f'Provider suite has inconsistent test count: {name}')
+              for field in ('skipped', 'failures', 'errors'):
+                  if int(suite.get(field, '0')) != 0:
+                      raise SystemExit(f'Provider suite has {field}: {name}')
+              if any(suite.findall(f'.//{tag}') for tag in ('skipped', 'failure', 'error')):
+                  raise SystemExit(f'Provider suite has a skipped or failed case: {name}')
+              executed.add(name)
+              count += len(cases)
+          if required - executed:
+              raise SystemExit('Provider security reports missing: ' + ', '.join(sorted(required - executed)))
+          print(f'Executed provider-security tests: {count}; no skips or failures.')
+          PY_PROVIDER
+      - name: Retain provider-security evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: oauth-provider-security-${{ github.sha }}-${{ github.run_id }}
+          path: |
+            backend/build/test-results/test/TEST-*.xml
+            backend/build/reports/tests/test/
+          if-no-files-found: error
+          retention-days: 30
+
+  postgres-security:
+    name: OAuth profiles and token security PostgreSQL 15
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres@sha256:9b1d34adbce1dd07ee6e94b4a2cf698884b89bd44a6c9c12f5da8f3acbfe4957
+        env:
+          POSTGRES_DB: skillpilot_oauth_test
+          POSTGRES_PASSWORD: skillpilot-test-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d skillpilot_oauth_test"
+          --health-interval 2s
+          --health-timeout 5s
+          --health-retries 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+      - name: Use exact production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < .corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Test replay and profile isolation on disposable PostgreSQL
+        working-directory: backend
+        env:
+          SKILLPILOT_OAUTH_POSTGRES_TEST_ENABLED: 'true'
+          SKILLPILOT_OAUTH_TEST_POSTGRES_URL: jdbc:postgresql://127.0.0.1:5432/skillpilot_oauth_test
+          SKILLPILOT_OAUTH_TEST_POSTGRES_USER: postgres
+          SKILLPILOT_OAUTH_TEST_POSTGRES_PASSWORD: skillpilot-test-only
+        run: >-
+          ./gradlew test --console=plain --rerun-tasks
+          --tests 'com.skillpilot.backend.oauth.OAuthClientSecurityPostgresIntegrationTest'
+      - name: Require executed PostgreSQL evidence without skipped tests
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          suite_name = 'com.skillpilot.backend.oauth.OAuthClientSecurityPostgresIntegrationTest'
+          report = Path('backend/build/test-results/test') / f'TEST-{suite_name}.xml'
+          if not report.is_file():
+              raise SystemExit('PostgreSQL security report missing; this is not a pass.')
+          suite = ET.parse(report).getroot()
+          if suite.get('name') != suite_name or int(suite.get('tests', '0')) <= 0:
+              raise SystemExit('PostgreSQL security suite did not execute.')
+          for field in ('skipped', 'failures', 'errors'):
+              if int(suite.get(field, '0')) != 0:
+                  raise SystemExit(f'PostgreSQL security suite has {field}; this is not a pass.')
+          cases = suite.findall('testcase')
+          if len(cases) != int(suite.get('tests', '0')):
+              raise SystemExit('PostgreSQL security test cases are missing or inconsistent.')
+          if any(suite.findall(f'.//{tag}') for tag in ('skipped', 'failure', 'error')):
+              raise SystemExit('PostgreSQL security test cases are skipped or failed.')
+          print(f'Executed PostgreSQL security tests: {suite.get("tests")}; no skips or failures.')
+          PY
+      - name: Retain PostgreSQL-security evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: oauth-postgres-security-${{ github.sha }}-${{ github.run_id }}
+          path: |
+            backend/build/test-results/test/TEST-*.xml
+            backend/build/reports/tests/test/
+          if-no-files-found: error
+          retention-days: 30

@@ -75,11 +75,26 @@ export const IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES = Object.freeze([
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD",
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_JWK_SET_URI",
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_AUDIENCE",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_CLOCK_SKEW",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_MAX_LIFETIME",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_ENABLED",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_AUTHORIZATION_POLICY_VERSION",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_ID",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_SECRET",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_REDIRECT_URIS",
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_LEGACY_CLIENT_IDS",
 ]);
 const IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAME_SET = new Set(
   IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES,
 );
+export const RETIRED_GLOBAL_OAUTH_POLICY = "SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED";
+
+function validateRetiredGlobalPolicy(value) {
+  assert.ok(value === false || (typeof value === "string" && value.trim().toLowerCase() === "false"),
+    `${RETIRED_GLOBAL_OAUTH_POLICY} no longer enables a global cutover; migrate explicitly to independent client profiles and remove this setting or set false before deployment.`);
+}
 
 const escapeRegExp = (value) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -173,6 +188,9 @@ export function validateCanonicalPublicDefaults(applicationYaml) {
 }
 
 export function validateExplicitPublicOverrides(env) {
+  if (Object.hasOwn(env, RETIRED_GLOBAL_OAUTH_POLICY)) {
+    validateRetiredGlobalPolicy(env[RETIRED_GLOBAL_OAUTH_POLICY]);
+  }
   for (const name of Object.keys(env)) {
     if (!isForbiddenOpenAiV1EnvironmentName(name)) {
       continue;
@@ -200,6 +218,7 @@ export function validateExplicitPublicOverrides(env) {
 
 export function parseServiceEnvironmentFile(environmentFile) {
   const forbiddenEnvironmentNames = {};
+  let globalPolicySeen = false;
 
   for (const rawLine of environmentFile.split(/\r?\n/)) {
     const line = rawLine.trim();
@@ -208,6 +227,14 @@ export function parseServiceEnvironmentFile(environmentFile) {
     }
 
     const assignment = /^([A-Za-z_][A-Za-z0-9_]*)=(.*)$/.exec(line);
+    if (assignment?.[1] === RETIRED_GLOBAL_OAUTH_POLICY) {
+      assert.ok(!globalPolicySeen, `${RETIRED_GLOBAL_OAUTH_POLICY} is assigned more than once in the service environment file.`);
+      globalPolicySeen = true;
+      let value = assignment[2].trim();
+      if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) value = value.slice(1, -1);
+      validateRetiredGlobalPolicy(value);
+      continue;
+    }
     if (
       assignment === null ||
       !isForbiddenOpenAiV1EnvironmentName(assignment[1])

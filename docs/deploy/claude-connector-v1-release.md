@@ -1,5 +1,13 @@
 # SkillPilot Claude Connector v1 release runbook
 
+**OAuth update, 11 September 2026:** Follow the
+[profile-specific activation runbook](oauth-client-authentication.md).
+Public CIMD with PKCE is an explicitly authorized production-beta profile,
+independent of controlled custom-confidential and Anthropic-held Directory
+profiles. Only the latter requires Anthropic provisioning. No profile may
+upgrade old grants or fall back to a weaker client method. Local
+implementation does not prove real-host acceptance or activation.
+
 This runbook makes the dedicated Claude v1 edge and Directory submission
 reproducible. It does not authorize a production change. Run production steps
 only in an explicitly approved release window and never edit the frozen OpenAI

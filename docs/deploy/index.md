@@ -7,6 +7,8 @@ This page groups deployment-facing operational documentation.
 - [SkillPilot Deployment Process](deployment.md)
 - [Lernzielbücher: Build und Git-Historienbereinigung](goal-book-build-and-history-cleanup.md)
 - [ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover](openai-mcp-coach-v1.md)
+- [OAuth-Clientauthentifizierung: profilweise Abnahme und Betrieb](oauth-client-authentication.md)
+- [OAuth: getrennte Hersteller-Arbeitspakete](oauth-provider-followups.md)
 - [SkillPilot Coach v1: Release, Rollback und Stilllegung](openai-plugin-v1-release.md)
 - [SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre](openai-plugin-v1-review-freeze.md)
 - [SkillPilot Coach v1: OpenAI-Submission-Dossier](openai-plugin-v1-submission.md)

@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 032-add-claude-refresh-token-families
+      author: skillpilot
+      changes:
+        - createTable:
+            tableName: claude_v1_refresh_family
+            columns:
+              - column: { name: authorization_id, type: varchar(100), constraints: { primaryKey: true, nullable: false } }
+              - column: { name: registered_client_id, type: varchar(100), constraints: { nullable: false } }
+              - column: { name: revoked, type: boolean, constraints: { nullable: false } }
+              - column: { name: expires_at, type: timestamp, constraints: { nullable: false } }
+        - createTable:
+            tableName: claude_v1_refresh_history
+            columns:
+              - column: { name: token_hash, type: varchar(64), constraints: { primaryKey: true, nullable: false } }
+              - column: { name: authorization_id, type: varchar(100), constraints: { nullable: false, references: 'claude_v1_refresh_family(authorization_id)', foreignKeyName: fk_claude_refresh_family } }
+              - column: { name: consumed, type: boolean, constraints: { nullable: false } }
+        - createIndex:
+            tableName: claude_v1_refresh_history
+            indexName: idx_claude_refresh_history_family
+            columns:
+              - column: { name: authorization_id }
+        - createIndex:
+            tableName: claude_v1_refresh_family
+            indexName: idx_claude_refresh_family_expiry
+            columns:
+              - column: { name: expires_at }

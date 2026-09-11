@@ -13,6 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class ClaudeV1Properties {
 
     private boolean enabled = false;
+    private final OAuth oauth = new OAuth();
     private String publicBaseUrl = ClaudeV1Contract.DEFAULT_PUBLIC_BASE_URL;
     private String publicMcpUrl = ClaudeV1Contract.DEFAULT_PUBLIC_MCP_URL;
     private String publicResourceMetadataUrl = ClaudeV1Contract.DEFAULT_PUBLIC_RESOURCE_METADATA_URL;
@@ -40,6 +41,61 @@ public class ClaudeV1Properties {
      * budget would be a single global bucket. See {@code ClaudeV1OAuthBoundaryFilter}.
      */
     private int maxOAuthRequestsPerCallerPerMinute = 30;
+
+    public OAuth getOauth() {
+        return oauth;
+    }
+
+    /**
+     * Public CIMD is an explicit beta profile. A dedicated Custom Connector or Anthropic-held
+     * client is separately selected; public CIMD may remain enabled alongside it. No secret
+     * method is guessed, and configuration alone does not establish real-host acceptance.
+     */
+    public static final class OAuth {
+        public static final String PUBLIC_CIMD = "public-cimd";
+        public static final String ANTHROPIC_CREDENTIALS = "anthropic-credentials";
+        public static final String PUBLIC_PROFILE = "claude-cimd-public";
+        public static final String CUSTOM_PROFILE = "claude-custom-confidential";
+        public static final String ANTHROPIC_PROFILE = "claude-anthropic-held";
+
+        private String clientAuthenticationMode = PUBLIC_CIMD;
+        private Boolean publicCimdEnabled;
+        private String publicAuthorizationPolicyVersion = "1";
+        private String clientId;
+        private String clientSecret;
+        private String clientAuthenticationMethod;
+        private String redirectUri = ClaudeV1Contract.HOSTED_CLAUDE_AUTH_CALLBACK;
+        private String authorizationPolicyVersion;
+        private java.util.List<String> scopes = new java.util.ArrayList<>(java.util.List.of(
+                ClaudeV1Contract.SCOPE_READ, ClaudeV1Contract.SCOPE_WRITE, ClaudeV1Contract.SCOPE_OFFLINE_ACCESS));
+
+        public boolean isAnthropicCredentials() {
+            return ANTHROPIC_CREDENTIALS.equals(clientAuthenticationMode) || ANTHROPIC_PROFILE.equals(clientAuthenticationMode);
+        }
+
+        public boolean isConfidential() { return isAnthropicCredentials() || CUSTOM_PROFILE.equals(clientAuthenticationMode); }
+        public boolean isPublicCimdEnabled() { return publicCimdEnabled != null ? publicCimdEnabled : !isConfidential(); }
+        public Boolean getPublicCimdEnabled() { return publicCimdEnabled; }
+        public void setPublicCimdEnabled(Boolean value) { publicCimdEnabled = value; }
+        public String getPublicAuthorizationPolicyVersion() { return publicAuthorizationPolicyVersion; }
+        public void setPublicAuthorizationPolicyVersion(String value) { publicAuthorizationPolicyVersion = value; }
+        public String getProfileId() { return isAnthropicCredentials() ? ANTHROPIC_PROFILE : isConfidential() ? CUSTOM_PROFILE : PUBLIC_PROFILE; }
+
+        public String getClientAuthenticationMode() { return clientAuthenticationMode; }
+        public void setClientAuthenticationMode(String value) { clientAuthenticationMode = value; }
+        public String getClientId() { return clientId; }
+        public void setClientId(String value) { clientId = value; }
+        public String getClientSecret() { return clientSecret; }
+        public void setClientSecret(String value) { clientSecret = value; }
+        public String getClientAuthenticationMethod() { return clientAuthenticationMethod; }
+        public void setClientAuthenticationMethod(String value) { clientAuthenticationMethod = value; }
+        public String getRedirectUri() { return redirectUri; }
+        public void setRedirectUri(String value) { redirectUri = value; }
+        public String getAuthorizationPolicyVersion() { return authorizationPolicyVersion; }
+        public void setAuthorizationPolicyVersion(String value) { authorizationPolicyVersion = value; }
+        public java.util.List<String> getScopes() { return scopes; }
+        public void setScopes(java.util.List<String> value) { scopes = value; }
+    }
 
     public boolean isEnabled() {
         return enabled;

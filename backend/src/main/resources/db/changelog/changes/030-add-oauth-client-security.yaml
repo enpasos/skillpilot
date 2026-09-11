@@ -1,0 +1,101 @@
+databaseChangeLog:
+  - changeSet:
+      id: 030-add-oauth-client-security
+      author: skillpilot
+      changes:
+        - createTable:
+            tableName: oauth_client_security_policy
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: authenticated_required
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: activated_at
+                  type: TIMESTAMP WITH TIME ZONE
+        - insert:
+            tableName: oauth_client_security_policy
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: authenticated_required
+                  valueBoolean: false
+        - createTable:
+            tableName: oauth_client_auth_profile
+            columns:
+              - column:
+                  name: provider_id
+                  type: VARCHAR(128)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: fingerprint
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: oauth_client_retired_profile
+            columns:
+              - column:
+                  name: provider_id
+                  type: VARCHAR(128)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: fingerprint
+                  type: VARCHAR(64)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: retired_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: oauth_client_assertion_lock
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+        - insert:
+            tableName: oauth_client_assertion_lock
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+        - createTable:
+            tableName: oauth_client_assertion_replay
+            columns:
+              - column:
+                  name: replay_key
+                  type: VARCHAR(64)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: retain_until
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: oauth_client_assertion_replay
+            indexName: idx_oauth_assertion_retention
+            columns:
+              - column:
+                  name: retain_until

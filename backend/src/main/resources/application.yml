@@ -44,6 +44,10 @@ spring:
 
 skillpilot:
   public-base-url: ${SKILLPILOT_PUBLIC_BASE_URL:https://skillpilot.com}
+  oauth:
+    # Retired migration guard: true now fails startup. Authentication is selected
+    # independently per client profile below; no all-provider release switch.
+    authenticated-clients-required: ${SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED:false}
   goal-feedback:
     enabled: ${SKILLPILOT_GOAL_FEEDBACK_ENABLED:false}
     operator-token: ${SKILLPILOT_GOAL_FEEDBACK_OPERATOR_TOKEN:}
@@ -57,6 +61,18 @@ skillpilot:
       max-pending-bytes: ${SKILLPILOT_GOAL_FEEDBACK_MAX_PENDING_BYTES:104857600}
   claude:
     enabled: ${SKILLPILOT_CLAUDE_ENABLED:false}
+    connector:
+      v1:
+        oauth:
+          # Public beta is independent of optional custom/Anthropic-held credentials.
+          client-authentication-mode: ${SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_AUTHENTICATION_MODE:claude-cimd-public}
+          public-cimd-enabled: ${SKILLPILOT_CLAUDE_V1_OAUTH_PUBLIC_CIMD_ENABLED:}
+          public-authorization-policy-version: ${SKILLPILOT_CLAUDE_V1_OAUTH_PUBLIC_AUTHORIZATION_POLICY_VERSION:1}
+          client-id: ${SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_ID:}
+          client-secret: ${SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_SECRET:}
+          client-authentication-method: ${SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD:}
+          redirect-uri: ${SKILLPILOT_CLAUDE_V1_OAUTH_REDIRECT_URI:https://claude.ai/api/mcp/auth_callback}
+          authorization-policy-version: ${SKILLPILOT_CLAUDE_V1_OAUTH_AUTHORIZATION_POLICY_VERSION:1}
     secure-cookie: ${SKILLPILOT_CLAUDE_SECURE_COOKIE:true}
     binding-ttl: ${SKILLPILOT_CLAUDE_BINDING_TTL:PT5M}
     launch-ttl: ${SKILLPILOT_CLAUDE_LAUNCH_TTL:PT5M}
@@ -127,8 +143,8 @@ skillpilot:
           request-timeout: PT30S
         oauth:
           enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_ENABLED:false}
-          # The V1 coach owns one pre-registered static confidential client in
-          # the authorization server hosted by this process.
+          # Existing Basic is an explicit transitional profile. Select private_key_jwt
+          # for the pinned ChatGPT CIMD independently of the Claude configuration.
           client-id: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ID:}
           client-secret: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_SECRET:}
           redirect-uris: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_REDIRECT_URIS:}
@@ -136,6 +152,16 @@ skillpilot:
           client-jwk-set-uri: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_JWK_SET_URI:}
           client-assertion-signing-algorithm: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM:RS256}
           client-assertion-replay-cache-size: ${SKILLPILOT_OPENAI_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE:10000}
+          client-assertion-audience: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_AUDIENCE:}
+          client-assertion-clock-skew: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_CLOCK_SKEW:PT30S}
+          client-assertion-max-lifetime: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_MAX_LIFETIME:PT5M}
+          authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION:1}
+          transitional-basic:
+            enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_ENABLED:false}
+            authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_AUTHORIZATION_POLICY_VERSION:1}
+            client-id: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_ID:}
+            client-secret: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_SECRET:}
+            redirect-uris: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_REDIRECT_URIS:}
           # Exact former draft client IDs accepted only by the one-way cutover.
           legacy-client-ids: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_LEGACY_CLIENT_IDS:}
           protected-resource-metadata: https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
@@ -163,11 +189,13 @@ management:
     health:
       probes:
         enabled: true
-      # openAiDeCoach exists only while the provider is enabled. Keep the
-      # readiness group valid for deployments in which that feature is off.
+      # Provider health is independent of shared process/database readiness.
+      # The OpenAI contributor exists only while that provider is enabled.
       validate-group-membership: false
       group:
         readiness:
+          include: readinessState,db
+        openaiReadiness:
           include: readinessState,db,openAiDeCoach
 
 

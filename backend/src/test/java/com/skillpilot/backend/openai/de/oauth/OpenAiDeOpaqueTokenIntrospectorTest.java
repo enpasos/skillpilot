@@ -30,6 +30,22 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
     private static final String SUBJECT = "spod_subject";
 
     @Test
+    void convertsRevokedPolicyAndUnavailableProvenanceStorageIntoGenericTokenRejection() {
+        for (RuntimeException failure : List.of(
+                new com.skillpilot.backend.oauth.AuthenticatedClientPolicy.PolicyRejectedException("internal-profile"),
+                new org.springframework.dao.DataAccessResourceFailureException("internal-database"))) {
+            OAuth2AuthorizationService authorizations = mock(OAuth2AuthorizationService.class);
+            when(authorizations.findByToken(TOKEN, OAuth2TokenType.ACCESS_TOKEN)).thenThrow(failure);
+            var introspector = new OpenAiDeOpaqueTokenIntrospector(authorizations,
+                    mock(RegisteredClientRepository.class),
+                    new OpenAiDeOperationalTelemetry(new SimpleMeterRegistry()), CLIENT_ID, MCP_URL);
+            assertThatExceptionOfType(BadOpaqueTokenException.class)
+                    .isThrownBy(() -> introspector.introspect(TOKEN))
+                    .withMessageNotContaining("internal-");
+        }
+    }
+
+    @Test
     void acceptsOnlyPersistedExactResourceAndPublishesItAsAudience() {
         Fixture fixture = fixture(MCP_URL, true);
 
@@ -117,7 +133,7 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
                 .accessToken(accessToken)
                 .build();
         when(authorizations.findByToken(TOKEN, OAuth2TokenType.ACCESS_TOKEN)).thenReturn(authorization);
-        when(clients.findByClientId(CLIENT_ID)).thenReturn(client);
+        when(clients.findById(client.getId())).thenReturn(client);
         return new Fixture(
                 new OpenAiDeOpaqueTokenIntrospector(
                         authorizations,

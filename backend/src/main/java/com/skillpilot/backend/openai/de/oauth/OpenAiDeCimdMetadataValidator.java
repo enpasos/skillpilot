@@ -4,22 +4,18 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
 /**
- * Fetches and validates the configured ChatGPT CIMD document before the OAuth
- * client is registered.
+ * Fetches and validates the configured ChatGPT CIMD document before its OAuth
+ * profile is available for runtime requests.
  *
  * <p>The configured values are pins, not substitutes for discovery. Startup
- * fails unless the remotely published document confirms them exactly.</p>
+ * JWT access remains closed unless the remotely published document confirms them exactly.</p>
  */
 final class OpenAiDeCimdMetadataValidator {
 
@@ -38,13 +34,7 @@ final class OpenAiDeCimdMetadataValidator {
     }
 
     static OpenAiDeCimdMetadataValidator production(ObjectMapper objectMapper) {
-        HttpClient client = HttpClient.newBuilder()
-                .connectTimeout(CONNECT_TIMEOUT)
-                .followRedirects(HttpClient.Redirect.NEVER)
-                .build();
-        return new OpenAiDeCimdMetadataValidator(
-                objectMapper,
-                requestedUri -> retrieve(client, requestedUri));
+        return new OpenAiDeCimdMetadataValidator(objectMapper, new OpenAiDeTrustedJsonRetriever());
     }
 
     void validate(OpenAiDeProperties properties) {
@@ -59,6 +49,22 @@ final class OpenAiDeCimdMetadataValidator {
             throw failure("CIMD metadata could not be retrieved.", exception);
         }
 
+        validateResponse(clientId, response);
+
+        JsonNode document;
+        try {
+            document = objectMapper.readTree(response.body());
+        } catch (IOException exception) {
+            throw failure("CIMD metadata document is not valid JSON.", exception);
+        }
+        if (document == null || !document.isObject()) {
+            throw failure("CIMD metadata document must be a JSON object.");
+        }
+
+        validateDocument(properties, document);
+    }
+
+    static void validateResponse(URI clientId, MetadataResponse response) {
         if (!clientId.equals(response.requestedUri())
                 || !clientId.equals(response.effectiveUri())) {
             throw failure("CIMD metadata redirects are not allowed.");
@@ -76,16 +82,9 @@ final class OpenAiDeCimdMetadataValidator {
             throw failure("CIMD metadata document exceeds the size limit.");
         }
 
-        JsonNode document;
-        try {
-            document = objectMapper.readTree(response.body());
-        } catch (IOException exception) {
-            throw failure("CIMD metadata document is not valid JSON.", exception);
-        }
-        if (document == null || !document.isObject()) {
-            throw failure("CIMD metadata document must be a JSON object.");
-        }
+    }
 
+    private static void validateDocument(OpenAiDeProperties properties, JsonNode document) {
         requireExactText(document, "client_id", properties.getOauth().getClientId().trim());
         requireNonBlankText(document, "client_name");
         requireArrayContains(
@@ -118,25 +117,9 @@ final class OpenAiDeCimdMetadataValidator {
                             .trim()
                             .toUpperCase(Locale.ROOT));
         }
-    }
-
-    private static MetadataResponse retrieve(HttpClient client, URI requestedUri)
-            throws IOException, InterruptedException {
-        HttpRequest request = HttpRequest.newBuilder(requestedUri)
-                .timeout(REQUEST_TIMEOUT)
-                .header("Accept", "application/json")
-                .GET()
-                .build();
-        HttpResponse<InputStream> response =
-                client.send(request, HttpResponse.BodyHandlers.ofInputStream());
-        try (InputStream body = response.body()) {
-            byte[] bytes = body.readNBytes(MAX_DOCUMENT_BYTES + 1);
-            return new MetadataResponse(
-                    requestedUri,
-                    response.uri(),
-                    response.statusCode(),
-                    response.headers().firstValue("Content-Type").orElse(""),
-                    bytes);
+        if (document.has("token_endpoint_auth_signing_alg")) {
+            requireExactText(document, "token_endpoint_auth_signing_alg",
+                    properties.getOauth().getClientAssertionSigningAlgorithm().trim().toUpperCase(Locale.ROOT));
         }
     }
 

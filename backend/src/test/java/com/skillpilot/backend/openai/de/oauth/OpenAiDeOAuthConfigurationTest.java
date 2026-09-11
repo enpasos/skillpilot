@@ -43,6 +43,63 @@ class OpenAiDeOAuthConfigurationTest {
     private final OpenAiDeOAuthConfiguration configuration = new OpenAiDeOAuthConfiguration();
 
     @Test
+    void authenticatedPolicyRejectsDowngradesForeignPinsAndWrongAssertionAudience() {
+        String issuer = "https://skillpilot.com/api/openai/v1";
+        for (String method : List.of("none", "client_secret_basic", "client_secret_post")) {
+            OpenAiDeProperties properties = configuredPrivateKeyJwtProperties();
+            properties.getOauth().setClientAuthenticationMethod(method);
+            assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
+                    OpenAiDeOAuthConfiguration.validateAuthenticatedSettings(properties, true, issuer));
+        }
+        for (String audience : List.of(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE,
+                "https://skillpilot.com/api/openai/v1/api/openai/v1/oauth2/token", "https://attacker.test/token")) {
+            OpenAiDeProperties properties = configuredPrivateKeyJwtProperties();
+            properties.getOauth().setClientAssertionAudience(audience);
+            assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
+                    OpenAiDeOAuthConfiguration.validateAuthenticatedSettings(properties, true, issuer));
+        }
+        OpenAiDeProperties foreign = configuredPrivateKeyJwtProperties();
+        foreign.getOauth().setClientId("https://attacker.test/oauth/client.json");
+        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
+                OpenAiDeOAuthConfiguration.validateAuthenticatedSettings(foreign, true, issuer));
+    }
+
+    @Test
+    void authenticatedPolicyAllowsBothOfficialExactCallbackShapes() {
+        for (String callback : List.of("https://chatgpt.com/connector_platform_oauth_redirect",
+                "https://chatgpt.com/connector/oauth/app-specific-callback")) {
+            OpenAiDeProperties properties = configuredPrivateKeyJwtProperties();
+            properties.getOauth().setRedirectUris(List.of(callback));
+            OpenAiDeOAuthConfiguration.validateAuthenticatedSettings(properties, true, "https://skillpilot.com/api/openai/v1");
+        }
+    }
+
+    @Test
+    void retiredStrictProfileCannotMutateCurrentClientRegistrationOrRunCleanup() {
+        var clients = mock(RegisteredClientRepository.class);
+        var cleanup = mock(OpenAiDeOAuthLegacyClientCutover.class);
+        var metadata = mock(OpenAiDeCimdMetadataValidator.class);
+        var policy = mock(com.skillpilot.backend.oauth.AuthenticatedClientPolicy.class);
+        doAnswer(invocation -> {
+            throw new com.skillpilot.backend.oauth.AuthenticatedClientPolicy.PolicyRejectedException("Retired profile");
+        }).when(policy).assertProfileAvailable(any(), any(com.skillpilot.backend.oauth.AuthenticatedClientPolicy.Profile.class));
+        var initializer = configuration.openAiDeClientRegistrationInitializer(clients,
+                configuredPrivateKeyJwtProperties(), cleanup, metadata, policy,
+                configuration.openAiDeAuthorizationServerSettings("https://skillpilot.com"),
+                mock(org.springframework.beans.factory.ObjectProvider.class));
+        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(initializer::afterPropertiesSet);
+        verifyNoInteractions(clients, cleanup, metadata);
+    }
+
+    @Test
+    void persistedRegistrationMustCarryTheEntireActiveAuthenticationPolicyFingerprint() {
+        assertPersistedRegistrationTamperingRejected(configuredPrivateKeyJwtProperties(), client ->
+                RegisteredClient.from(client).clientSettings(ClientSettings.withSettings(client.getClientSettings().getSettings())
+                        .setting(OpenAiDeOAuthConfiguration.CLIENT_POLICY_SETTING, "retired-policy")
+                        .build()).build());
+    }
+
+    @Test
     void defaultsUseConfidentialAuthenticationButDoNotGuessClientCredentialsOrCallback() {
         OpenAiDeProperties properties = new OpenAiDeProperties();
 
@@ -387,8 +444,7 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
-    void startupRefusesUnverifiableCimdBeforeCutoverOrClientRegistration() {
-        RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
+    void startupMetadataOutageKeepsJwtClosedWithoutAbortingOtherProfiles() throws Exception {
         OpenAiDeOAuthLegacyClientCutover cutover =
                 mock(OpenAiDeOAuthLegacyClientCutover.class);
         OpenAiDeProperties properties = configuredPrivateKeyJwtProperties();
@@ -398,17 +454,27 @@ class OpenAiDeOAuthConfigurationTest {
                         ignored -> {
                             throw new IOException("offline");
                         });
+        var gate = new OpenAiDeCimdMetadataGate(() -> validator.validate(properties));
+        var metadataProvider = mock(org.springframework.beans.factory.ObjectProvider.class);
+        when(metadataProvider.getObject()).thenReturn(gate);
+        var raw = new org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository(
+                RegisteredClient.withId("foreign-id").clientId("foreign-client")
+                        .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS).build());
+        var clients = new OpenAiDeRegisteredClientRepository(raw, properties, gate::isReady);
         InitializingBean initializer =
                 configuration.openAiDeClientRegistrationInitializer(
                         clients,
                         properties,
                         cutover,
-                        validator);
+                        validator,
+                        mock(com.skillpilot.backend.oauth.AuthenticatedClientPolicy.class),
+                        configuration.openAiDeAuthorizationServerSettings("https://skillpilot.com"), metadataProvider);
 
-        assertThatExceptionOfType(IllegalStateException.class)
-                .isThrownBy(initializer::afterPropertiesSet)
-                .withMessageContaining("CIMD metadata could not be retrieved");
-        verifyNoInteractions(cutover, clients);
+        initializer.afterPropertiesSet();
+        assertThat(gate.isReady()).isFalse();
+        assertThat(clients.findByClientId(properties.getOauth().getClientId())).isNull();
+        assertThat(clients.findForRegistration(properties.getOauth().getClientId())).isNotNull();
+        gate.close();
     }
 
     @Test
@@ -592,10 +658,12 @@ class OpenAiDeOAuthConfigurationTest {
 
     private OpenAiDeProperties configuredPrivateKeyJwtProperties() {
         OpenAiDeProperties properties = configuredProperties();
+        properties.getSecurity().setSecureMode(true);
         properties.getOauth().setClientAuthenticationMethod("private_key_jwt");
         properties.getOauth().setClientId("https://chatgpt.com/oauth/skillpilot/client.json");
         properties.getOauth().setClientJwkSetUri("https://chatgpt.com/oauth/jwks.json");
         properties.getOauth().setClientAssertionSigningAlgorithm("RS256");
+        properties.getOauth().setClientAssertionAudience("https://skillpilot.com/api/openai/v1/oauth2/token");
         return properties;
     }
 

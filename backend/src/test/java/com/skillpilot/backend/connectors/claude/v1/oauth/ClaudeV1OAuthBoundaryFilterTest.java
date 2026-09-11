@@ -2,6 +2,7 @@ package com.skillpilot.backend.connectors.claude.v1.oauth;
 
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
+import com.skillpilot.backend.oauth.AuthenticatedClientPolicy;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -12,6 +13,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ClaudeV1OAuthBoundaryFilterTest {
 
     private static final int BUDGET = 3;
+
+    @Test
+    void policyRejectionAndDatabaseFailureUseSanitizedOAuthErrors() throws Exception {
+        MockHttpServletResponse policyResponse = new MockHttpServletResponse();
+        filter().doFilter(authorize("synthetic-client", "127.0.0.1"), policyResponse,
+                (request, response) -> { throw new AuthenticatedClientPolicy.PolicyRejectedException("internal-detail"); });
+        assertEquals(401, policyResponse.getStatus());
+        assertEquals("{\"error\":\"invalid_client\"}", policyResponse.getContentAsString());
+
+        MockHttpServletResponse unavailable = new MockHttpServletResponse();
+        filter().doFilter(authorize("synthetic-client", "127.0.0.1"), unavailable,
+                (request, response) -> { throw new org.springframework.dao.DataAccessResourceFailureException("internal-detail"); });
+        assertEquals(503, unavailable.getStatus());
+        assertEquals("{\"error\":\"temporarily_unavailable\"}", unavailable.getContentAsString());
+    }
 
     @Test
     void theAbuseBudgetIsNotSharedAcrossCallersOfTheSameClient() throws Exception {

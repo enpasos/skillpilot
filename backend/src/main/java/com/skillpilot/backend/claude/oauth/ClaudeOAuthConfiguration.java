@@ -2,6 +2,8 @@ package com.skillpilot.backend.claude.oauth;
 
 import com.skillpilot.backend.oauth.ProviderScopedOAuth2AuthorizationService;
 import com.skillpilot.backend.oauth.ProviderScopedRegisteredClientRepository;
+import com.skillpilot.backend.oauth.AuthenticatedClientPolicy;
+import com.skillpilot.backend.oauth.AuthenticatedClientPolicyConfiguration;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
 import java.time.Duration;
 import java.util.List;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -46,6 +49,7 @@ import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(name = "skillpilot.claude.enabled", havingValue = "true")
+@Import(AuthenticatedClientPolicyConfiguration.class)
 public class ClaudeOAuthConfiguration {
 
     public static final String READ_SCOPE = "skillpilot.read";
@@ -74,14 +78,16 @@ public class ClaudeOAuthConfiguration {
     OAuth2AuthorizationService claudeAuthorizationService(
             JdbcOperations jdbcOperations,
             @Qualifier("claudeRegisteredClientRepository") RegisteredClientRepository registeredClientRepository,
-            ClaudeCoachConnectionService connectionService) {
-        return new ClaudeConnectionAwareAuthorizationService(
+            ClaudeCoachConnectionService connectionService,
+            AuthenticatedClientPolicy authenticatedClientPolicy) {
+        requireLegacyMode(authenticatedClientPolicy);
+        return authenticatedClientPolicy.protect(new ClaudeConnectionAwareAuthorizationService(
                 new ProviderScopedOAuth2AuthorizationService(
                         new JdbcOAuth2AuthorizationService(
                                 jdbcOperations,
                                 new JdbcRegisteredClientRepository(jdbcOperations)),
                         registeredClientRepository),
-                connectionService);
+                connectionService), "claude-legacy", "legacy-public-client");
     }
 
     @Bean
@@ -111,8 +117,10 @@ public class ClaudeOAuthConfiguration {
             @Qualifier("claudeRegisteredClientRepository") RegisteredClientRepository registeredClientRepository,
             @Value("${skillpilot.claude.oauth.client-id:https://claude.ai/oauth/mcp-oauth-client-metadata}") String clientId,
             @Value("${skillpilot.claude.oauth.access-token-ttl:PT1H}") Duration accessTokenTtl,
-            @Value("${skillpilot.claude.oauth.refresh-token-ttl:P30D}") Duration refreshTokenTtl) {
+            @Value("${skillpilot.claude.oauth.refresh-token-ttl:P30D}") Duration refreshTokenTtl,
+            AuthenticatedClientPolicy authenticatedClientPolicy) {
         return () -> {
+            requireLegacyMode(authenticatedClientPolicy);
             RegisteredClient existing = registeredClientRepository.findByClientId(clientId);
             RegisteredClient.Builder clientBuilder = existing == null
                     ? RegisteredClient.withId(UUID.randomUUID().toString())
@@ -267,7 +275,9 @@ public class ClaudeOAuthConfiguration {
                 .addFilterAfter(
                         bindingFilter,
                         org.springframework.security.web.context.SecurityContextHolderFilter.class)
-                .addFilterBefore(resourceValidationFilter, ClaudeBindingAuthenticationFilter.class);
+                .addFilterBefore(resourceValidationFilter, ClaudeBindingAuthenticationFilter.class)
+                .addFilterBefore(new ClaudeOAuthPolicyErrorFilter(),
+                        org.springframework.security.web.context.SecurityContextHolderFilter.class);
         return http.build();
     }
 
@@ -302,5 +312,12 @@ public class ClaudeOAuthConfiguration {
             normalized = normalized.substring(0, normalized.length() - 1);
         }
         return normalized;
+    }
+
+    private static void requireLegacyMode(AuthenticatedClientPolicy policy) {
+        policy.assertCompatible();
+        if (policy.isRequired()) {
+            throw new IllegalStateException("The legacy public Claude lane must be disabled when authenticated OAuth clients are required.");
+        }
     }
 }

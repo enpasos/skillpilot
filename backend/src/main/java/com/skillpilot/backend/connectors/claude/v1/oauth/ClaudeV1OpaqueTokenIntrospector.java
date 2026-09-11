@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.DefaultOAuth2AuthenticatedPrincipal;
@@ -45,6 +46,16 @@ public class ClaudeV1OpaqueTokenIntrospector implements OpaqueTokenIntrospector 
 
     @Override
     public OAuth2AuthenticatedPrincipal introspect(String token) {
+        try {
+            return introspectUnderCurrentPolicy(token);
+        } catch (IllegalStateException | DataAccessException exception) {
+            // A live policy cutover or unavailable authorization store is never a bearer bypass.
+            // Keep persistence/configuration details out of the HTTP authentication response.
+            throw new BadOpaqueTokenException("Claude authorization is unavailable or requires reconnection.");
+        }
+    }
+
+    private OAuth2AuthenticatedPrincipal introspectUnderCurrentPolicy(String token) {
         if (token == null || token.isBlank()) {
             throw new BadOpaqueTokenException("Missing or empty token.");
         }
@@ -68,14 +79,22 @@ public class ClaudeV1OpaqueTokenIntrospector implements OpaqueTokenIntrospector 
             throw new BadOpaqueTokenException("Authorization does not use a Claude v1 app principal.");
         }
         RegisteredClient client = registeredClients.findById(authorization.getRegisteredClientId());
-        if (client == null) {
+        if (!ClaudeV1ClientPolicy.permitsClient(properties, client)) {
             throw new BadOpaqueTokenException("OAuth client is not registered for Claude v1.");
+        }
+        String expectedMethod = ClaudeV1ClientPolicy.isConfidentialClient(properties, client)
+                ? properties.getOauth().getClientAuthenticationMethod() : "none";
+        if (accessToken.getClaims() == null
+                        || !client.getClientId().equals(accessToken.getClaims().get("client_id"))
+                        || !expectedMethod.equals(accessToken.getClaims().get("client_authentication_method"))) {
+            throw new BadOpaqueTokenException("Access token has no valid client-profile provenance.");
         }
 
         Set<String> scopes = accessToken.getToken().getScopes();
         if (scopes == null
                 || !scopes.contains(com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract.SCOPE_READ)
-                || !com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract.SUPPORTED_SCOPES.containsAll(scopes)) {
+                || !com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract.SUPPORTED_SCOPES.containsAll(scopes)
+                || !client.getScopes().containsAll(scopes)) {
             throw new BadOpaqueTokenException("Access token carries an invalid Claude v1 scope set.");
         }
         Collection<GrantedAuthority> authorities = scopes.stream()
@@ -86,6 +105,8 @@ public class ClaudeV1OpaqueTokenIntrospector implements OpaqueTokenIntrospector 
         Map<String, Object> attributes = new LinkedHashMap<>();
         attributes.put("sub", principalName);
         attributes.put("client_id", client.getClientId());
+        attributes.put("client_profile", ClaudeV1ClientPolicy.profileId(properties, client));
+        attributes.put("client_authentication_method", expectedMethod);
         attributes.put("aud", List.of(properties.getPublicMcpUrl()));
         attributes.put("scope", scopes);
 

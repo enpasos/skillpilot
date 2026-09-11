@@ -135,6 +135,20 @@ class OpenAiDeOAuthLegacyClientCutoverTest {
                 .isOne();
     }
 
+    @Test
+    void authenticatedCutoverAlsoCleansOnlyExplicitlyAllowlistedFormerBasicClients() {
+        insertRegisteredClient("old-basic", "old-openai-basic", "client_secret_basic");
+        insertRegisteredClient("foreign-basic", "another-provider-basic", "client_secret_basic");
+        insertAuthorization("old-basic", "old-app-subject");
+        insertConnectionAndTransientState("old-app-subject");
+        OpenAiDeProperties properties = secureProperties("old-openai-basic");
+        properties.getOauth().setClientAuthenticationMethod("private_key_jwt");
+        cutover.execute(properties, true);
+        assertThat(count("SELECT COUNT(*) FROM oauth2_registered_client WHERE client_id = ?", "old-openai-basic")).isZero();
+        assertThat(count("SELECT COUNT(*) FROM oauth2_registered_client WHERE client_id = ?", "another-provider-basic")).isOne();
+        assertSubjectWasRevokedAndTransientStateDeleted("old-app-subject");
+    }
+
     private void assertSubjectWasRevokedAndTransientStateDeleted(String subject) {
         assertThat(count(
                         "SELECT COUNT(*) FROM openai_de_connection WHERE subject = ? AND revoked_at IS NOT NULL AND oauth_expires_at IS NOT NULL",

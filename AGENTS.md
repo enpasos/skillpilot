@@ -1228,6 +1228,33 @@ Provider-facing contracts must use derived temporary context instead:
   coaching, selection, mastery, Verified Recall, and exam flows remain normal
   MCP/chat flows without UI bindings; the memory-card review write is app-only
   and has no output template of its own.
+- OAuth activation is independent per client profile, as authorized by the
+  Product Owner on 11 September 2026. `chatgpt-cimd-jwt` requires the exactly
+  pinned ChatGPT CIMD and `private_key_jwt`; the existing confidential Basic
+  connection may remain as the explicit `chatgpt-basic-transition` profile.
+  `claude-cimd-public` is an authorized production beta using public CIMD,
+  Authorization Code and S256 PKCE, not confidential client authentication.
+  `claude-custom-confidential` and `claude-anthropic-held` use dedicated secret
+  clients with an explicitly selected Basic or POST method. Only the latter
+  requires Anthropic provisioning. Real host and intended installation-path
+  acceptance are required separately for every production profile; manufacturer
+  inquiries never block unrelated accepted profiles. No failed confidential
+  authentication may fall back to a public profile, and there is no open DCR.
+  The former global `SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED=true`
+  override is rejected with migration guidance. The historical database floor
+  is retained as an old-binary barrier, not as an all-provider secret requirement.
+  Drain pre-policy binaries during migration. Authorization provenance remains
+  bound to its profile through MCP access, including public grants. Only exact
+  existing Basic-transition grants may remain unmarked without being upgraded.
+  Public refresh rotation includes durable reuse detection and token-family
+  revocation. Retired revisions cannot be reactivated: a rollback to accepted
+  configuration uses a new policy revision and new grants, never weaker checks.
+  Assertion replay protection is atomic and durable across instances.
+  This authenticates the OAuth host client, not plugin bytes, a particular
+  plugin execution, or the learner. Learning-session authorization remains
+  independent. Secrets never belong in public plugin packages. Activation,
+  rotation, external provisioning and real-host evidence are documented in
+  `docs/deploy/oauth-client-authentication.md`.
 - The dedicated V1 edge requests ChatGPT's OpenAI-managed client certificate
   only for transport authentication; OAuth and the learning session remain
   mandatory and independent. Trust only the published OpenAI Root and

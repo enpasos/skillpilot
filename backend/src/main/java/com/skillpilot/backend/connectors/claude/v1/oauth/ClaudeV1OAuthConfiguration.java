@@ -4,6 +4,11 @@ import com.skillpilot.backend.config.RawHttpServletRequest;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
+import com.skillpilot.backend.oauth.AuthenticatedClientPolicy;
+import com.skillpilot.backend.oauth.AuthenticatedClientPolicyConfiguration;
+import com.skillpilot.backend.oauth.OAuthAuthorizationCodeExchangeGuard;
+import com.skillpilot.backend.oauth.OAuthProfileDiagnosticsFilter;
+import com.skillpilot.backend.oauth.OAuthTokenRevocationBoundary;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.UUID;
@@ -11,16 +16,24 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationProvider;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeAuthenticationProvider;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2RefreshTokenAuthenticationProvider;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.security.oauth2.server.authorization.client.JdbcRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
@@ -50,24 +63,41 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClaudeV1Enabled
+@Import(AuthenticatedClientPolicyConfiguration.class)
 public class ClaudeV1OAuthConfiguration {
+    private static final String POLICY_PROVIDER = "claude";
 
     @Bean(name = "claudeV1RegisteredClientRepository")
-    public RegisteredClientRepository claudeV1RegisteredClientRepository(JdbcOperations jdbcOperations) {
-        return new ClaudeV1RegisteredClientRepository(new JdbcRegisteredClientRepository(jdbcOperations));
+    public ClaudeV1RegisteredClientRepository claudeV1RegisteredClientRepository(
+            JdbcOperations jdbcOperations, ClaudeV1Properties properties) {
+        return new ClaudeV1RegisteredClientRepository(new JdbcRegisteredClientRepository(jdbcOperations), properties);
     }
 
     /**
-     * Registers or refreshes the two Claude client identities in the shared client table.
+     * Registers or refreshes only the identities allowed by the selected client profile.
      *
      * <p>Loopback redirect URIs are stored without a port. {@link ClaudeV1RedirectUriValidator}
-     * performs the actual comparison and allows the ephemeral port Claude Code binds at runtime.</p>
+     * performs the actual comparison and allows the ephemeral port Claude Code binds at runtime
+     * only for the explicitly enabled public CIMD profile. Confidential clients have one exact
+     * hosted callback, even when public and confidential registrations coexist.</p>
      */
     @Bean(name = "claudeV1ClientRegistrar")
+    @DependsOn("validateClaudeV1Runtime")
     public InitializingBean claudeV1ClientRegistrar(
-            @Qualifier("claudeV1RegisteredClientRepository") RegisteredClientRepository registeredClients,
-            ClaudeV1Properties properties) {
+            @Qualifier("claudeV1RegisteredClientRepository") ClaudeV1RegisteredClientRepository registeredClients,
+            ClaudeV1Properties properties,
+            AuthenticatedClientPolicy authenticatedClientPolicy) {
         return () -> {
+            authenticatedClientPolicy.assertCompatible();
+            for (var profile : profiles(properties)) {
+                authenticatedClientPolicy.assertProfileAvailable(POLICY_PROVIDER, profile);
+            }
+            if (properties.getOauth().isConfidential()) {
+                registerClient(registeredClients, properties, properties.getOauth().getClientId(),
+                        properties.getOauth().isAnthropicCredentials() ? "Hosted Claude (Anthropic-held Directory credentials)" : "Hosted Claude (controlled Custom Connector)",
+                        List.of(properties.getOauth().getRedirectUri()));
+            }
+            if (!properties.getOauth().isPublicCimdEnabled()) return;
             registerClient(
                     registeredClients,
                     properties,
@@ -84,7 +114,7 @@ public class ClaudeV1OAuthConfiguration {
     }
 
     private void registerClient(
-            RegisteredClientRepository registeredClients,
+            ClaudeV1RegisteredClientRepository registeredClients,
             ClaudeV1Properties properties,
             String clientId,
             String clientName,
@@ -97,16 +127,33 @@ public class ClaudeV1OAuthConfiguration {
                 .reuseRefreshTokens(false)
                 .build();
 
-        RegisteredClient existing = registeredClients.findByClientId(clientId);
+        RegisteredClient existing = registeredClients.findForRegistration(clientId);
         RegisteredClient.Builder builder = existing == null
                 ? RegisteredClient.withId(UUID.randomUUID().toString())
                 : RegisteredClient.from(existing);
+
+        boolean confidential = properties.getOauth().isConfidential() && clientId.equals(properties.getOauth().getClientId());
+        ClientSettings.Builder clientSettings = ClientSettings.builder()
+                .requireAuthorizationConsent(false)
+                .requireProofKey(true);
+        if (confidential) {
+            clientSettings.setting(ClaudeV1ClientPolicy.CLIENT_PROFILE_SETTING, properties.getOauth().getProfileId());
+            clientSettings.setting(ClaudeV1ClientPolicy.CLIENT_POLICY_SETTING, ClaudeV1ClientPolicy.fingerprint(properties));
+            PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+            String encoded = existing == null ? null : existing.getClientSecret();
+            if (encoded == null || !encoder.matches(properties.getOauth().getClientSecret(), encoded)) {
+                encoded = encoder.encode(properties.getOauth().getClientSecret());
+            }
+            builder.clientSecret(encoded);
+        } else {
+            builder.clientSecret(null);
+        }
 
         builder.clientId(clientId)
                 .clientName(clientName)
                 .clientAuthenticationMethods(methods -> {
                     methods.clear();
-                    methods.add(ClientAuthenticationMethod.NONE);
+                    methods.add(confidential ? ClaudeV1ClientPolicy.authenticationMethod(properties) : ClientAuthenticationMethod.NONE);
                 })
                 .authorizationGrantTypes(grants -> {
                     grants.clear();
@@ -119,30 +166,51 @@ public class ClaudeV1OAuthConfiguration {
                 })
                 .scopes(scopes -> {
                     scopes.clear();
-                    scopes.add(ClaudeV1Contract.SCOPE_READ);
-                    scopes.add(ClaudeV1Contract.SCOPE_WRITE);
-                    scopes.add(ClaudeV1Contract.SCOPE_OFFLINE_ACCESS);
+                    scopes.addAll(confidential ? properties.getOauth().getScopes()
+                            : List.of(ClaudeV1Contract.SCOPE_READ, ClaudeV1Contract.SCOPE_WRITE, ClaudeV1Contract.SCOPE_OFFLINE_ACCESS));
                 })
-                .clientSettings(ClientSettings.builder()
-                        .requireAuthorizationConsent(false)
-                        .requireProofKey(true)
-                        .build())
+                .clientSettings(clientSettings.build())
                 .tokenSettings(tokenSettings);
 
         registeredClients.save(builder.build());
     }
 
     @Bean(name = "claudeV1AuthorizationService")
+    @DependsOn("claudeV1ClientRegistrar")
     public OAuth2AuthorizationService claudeV1AuthorizationService(
             JdbcOperations jdbcOperations,
-            @Qualifier("claudeV1RegisteredClientRepository") RegisteredClientRepository registeredClients) {
+            @Qualifier("claudeV1RegisteredClientRepository") RegisteredClientRepository registeredClients,
+            ClaudeV1Properties properties,
+            AuthenticatedClientPolicy authenticatedClientPolicy,
+            ClaudeV1RefreshTokenFamilies refreshFamilies) {
         // The JDBC service deliberately reads through an unscoped repository so it can deserialize
         // any row; the provider wrapper then applies the Claude v1 boundary after deserialization.
-        return new ClaudeV1OAuth2AuthorizationService(
+        OAuth2AuthorizationService scoped = new ClaudeV1OAuth2AuthorizationService(
                 new JdbcOAuth2AuthorizationService(
                         jdbcOperations,
                         new JdbcRegisteredClientRepository(jdbcOperations)),
                 registeredClients);
+        OAuth2AuthorizationService protectedService = authenticatedClientPolicy.protectProfiles(scoped,
+                POLICY_PROVIDER, profiles(properties), registeredId -> {
+                    RegisteredClient client = registeredClients.findById(registeredId);
+                    return client == null ? null : ClaudeV1ClientPolicy.profileId(properties, client);
+                });
+        return new ClaudeV1FamilyAuthorizationService(protectedService, registeredClients, refreshFamilies);
+    }
+
+    private static List<AuthenticatedClientPolicy.Profile> profiles(ClaudeV1Properties properties) {
+        var profiles = new java.util.ArrayList<AuthenticatedClientPolicy.Profile>();
+        if (properties.getOauth().isPublicCimdEnabled()) profiles.add(new AuthenticatedClientPolicy.Profile(
+                ClaudeV1Properties.OAuth.PUBLIC_PROFILE, ClaudeV1ClientPolicy.publicFingerprint(properties), "none", false));
+        if (properties.getOauth().isConfidential()) profiles.add(new AuthenticatedClientPolicy.Profile(
+                properties.getOauth().getProfileId(), ClaudeV1ClientPolicy.fingerprint(properties),
+                properties.getOauth().getClientAuthenticationMethod(), false));
+        return profiles;
+    }
+
+    @Bean
+    public ClaudeV1RefreshTokenFamilies claudeV1RefreshTokenFamilies(JdbcOperations jdbc, PlatformTransactionManager manager) {
+        return new ClaudeV1RefreshTokenFamilies(jdbc, manager);
     }
 
     @Bean(name = "claudeV1AuthorizationServerSettings")
@@ -163,8 +231,24 @@ public class ClaudeV1OAuthConfiguration {
     public OAuth2TokenCustomizer<OAuth2TokenClaimsContext> claudeV1TokenCustomizer(ClaudeV1Properties properties) {
         // A mutable ArrayList: the JDBC authorization store serializes token claims through a
         // restricted polymorphic type validator that does not accept List.of() implementations.
-        return context -> context.getClaims()
-                .audience(new java.util.ArrayList<>(List.of(properties.getPublicMcpUrl())));
+        return context -> {
+            {
+                RegisteredClient client = context.getRegisteredClient();
+                boolean confidential = ClaudeV1ClientPolicy.isConfidentialClient(properties, client);
+                ClientAuthenticationMethod method = confidential ? ClaudeV1ClientPolicy.authenticationMethod(properties) : ClientAuthenticationMethod.NONE;
+                Object principal = context.getAuthorizationGrant() == null ? null : context.getAuthorizationGrant().getPrincipal();
+                if (!(principal instanceof OAuth2ClientAuthenticationToken clientAuthentication)
+                        || !clientAuthentication.isAuthenticated()
+                        || !method.equals(clientAuthentication.getClientAuthenticationMethod())
+                        || !ClaudeV1ClientPolicy.permitsClient(properties, clientAuthentication.getRegisteredClient())) {
+                    throw new org.springframework.security.oauth2.core.OAuth2AuthenticationException("invalid_client");
+                }
+                context.getClaims().claim("client_id", client.getClientId())
+                        .claim("client_authentication_method", method.getValue())
+                        .claim("client_profile", ClaudeV1ClientPolicy.profileId(properties, client));
+            }
+            context.getClaims().audience(new java.util.ArrayList<>(List.of(properties.getPublicMcpUrl())));
+        };
     }
 
     @Bean(name = "claudeV1TokenGenerator")
@@ -208,6 +292,9 @@ public class ClaudeV1OAuthConfiguration {
             @Qualifier("claudeV1SecurityContextRepository") SecurityContextRepository contextRepository,
             ClaudeV1CimdMetadataValidator cimdValidator,
             ClaudeV1TokenLifecycleService tokenLifecycleService,
+            ClaudeV1RefreshTokenFamilies refreshFamilies,
+            JdbcOperations jdbc,
+            PlatformTransactionManager transactions,
             ClaudeV1Properties properties) throws Exception {
 
         OAuth2AuthorizationServerConfigurer authorizationServer = new OAuth2AuthorizationServerConfigurer();
@@ -238,16 +325,29 @@ public class ClaudeV1OAuthConfiguration {
                 .tokenGenerator(tokenGenerator)
                 .clientAuthentication(clientAuthentication -> clientAuthentication
                         .authenticationConverters(converters -> {
-                            converters.add(0, new ClaudeV1PublicRefreshClientAuthenticationConverter());
-                            converters.add(0, new ClaudeV1PublicRevocationClientAuthenticationConverter());
+                            if (properties.getOauth().isPublicCimdEnabled()) {
+                                converters.add(0, new ClaudeV1PublicRefreshClientAuthenticationConverter());
+                                converters.add(0, new ClaudeV1PublicRevocationClientAuthenticationConverter());
+                            }
                         })
                         .authenticationProviders(providers -> {
-                            providers.add(0, new ClaudeV1PublicRefreshClientAuthenticationProvider(
-                                    registeredClientRepository));
-                            providers.add(0, new ClaudeV1PublicRevocationClientAuthenticationProvider(
-                                    registeredClientRepository));
+                            if (properties.getOauth().isPublicCimdEnabled()) {
+                                providers.add(0, new ClaudeV1PublicRefreshClientAuthenticationProvider(registeredClientRepository));
+                                providers.add(0, new ClaudeV1PublicRevocationClientAuthenticationProvider(registeredClientRepository));
+                            }
                         }))
-                .tokenRevocationEndpoint(endpoint -> endpoint.revocationResponseHandler(
+                .tokenEndpoint(endpoint -> endpoint.authenticationProviders(providers -> {
+                    for (int i = 0; i < providers.size(); i++) {
+                        if (providers.get(i) instanceof OAuth2RefreshTokenAuthenticationProvider) {
+                            providers.set(i, new ClaudeV1FamilyRefreshAuthenticationProvider(providers.get(i), refreshFamilies));
+                        } else if (providers.get(i) instanceof OAuth2AuthorizationCodeAuthenticationProvider) {
+                            providers.set(i, new OAuthAuthorizationCodeExchangeGuard(providers.get(i), authorizationService, jdbc, transactions));
+                        }
+                    }
+                }))
+                .tokenRevocationEndpoint(endpoint -> endpoint
+                        .authenticationProviders(providers -> OAuthTokenRevocationBoundary.restrict(providers, authorizationService))
+                        .revocationResponseHandler(
                         (request, response, authentication) -> {
                             tokenLifecycleService.revokeToken(
                                     request.getParameter("token"),
@@ -278,6 +378,7 @@ public class ClaudeV1OAuthConfiguration {
         // The host check runs first; the app filter runs directly after the security context
         // is loaded, which is well before the authorization endpoint filter reads it.
         .addFilterBefore(new ClaudeV1HostBoundaryFilter(properties), SecurityContextHolderFilter.class)
+        .addFilterBefore(new OAuthProfileDiagnosticsFilter("claude"), ClaudeV1HostBoundaryFilter.class)
         .addFilterAfter(new ClaudeV1RequestSizeFilter(properties), ClaudeV1HostBoundaryFilter.class)
         .addFilterAfter(new ClaudeV1OAuthBoundaryFilter(properties), ClaudeV1RequestSizeFilter.class)
         .addFilterAfter(
@@ -310,6 +411,7 @@ public class ClaudeV1OAuthConfiguration {
             .authorizeHttpRequests(auth -> auth
                     .anyRequest().hasAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_READ))
             .addFilterBefore(new ClaudeV1HostBoundaryFilter(properties), SecurityContextHolderFilter.class)
+            .addFilterBefore(new OAuthProfileDiagnosticsFilter("claude"), ClaudeV1HostBoundaryFilter.class)
             .addFilterAfter(new ClaudeV1McpOriginFilter(), ClaudeV1HostBoundaryFilter.class)
             .addFilterAfter(new ClaudeV1RequestSizeFilter(properties), ClaudeV1McpOriginFilter.class)
             .oauth2ResourceServer(oauth2 -> oauth2

@@ -274,8 +274,13 @@ public class OpenAiDeProperties {
         // client. Public-client mode must be selected explicitly in isolated
         // compatibility tests and is rejected by secure production mode.
         private String clientAuthenticationMethod = "client_secret_basic";
+        private String authorizationPolicyVersion = "1";
+        private final TransitionalBasic transitionalBasic = new TransitionalBasic();
         private String clientJwkSetUri = "";
         private String clientAssertionSigningAlgorithm = "RS256";
+        private String clientAssertionAudience = "";
+        private Duration clientAssertionClockSkew = Duration.ofSeconds(30);
+        private Duration clientAssertionMaxLifetime = Duration.ofMinutes(5);
         private int clientAssertionReplayCacheSize = 10_000;
         private List<String> legacyClientIds = new ArrayList<>();
         private String protectedResourceMetadata =
@@ -319,6 +324,32 @@ public class OpenAiDeProperties {
             return clientAuthenticationMethod;
         }
 
+        public String getAuthorizationPolicyVersion() { return authorizationPolicyVersion; }
+
+        public void setAuthorizationPolicyVersion(String value) { authorizationPolicyVersion = value; }
+
+        public TransitionalBasic getTransitionalBasic() { return transitionalBasic; }
+
+        /** Explicit, separate old connection during the CIMD migration; never a JWT fallback. */
+        public static class TransitionalBasic {
+            private boolean enabled;
+            private String authorizationPolicyVersion = "1";
+            private String clientId = "";
+            private String clientSecret = "";
+            private List<String> redirectUris = new ArrayList<>();
+
+            public boolean isEnabled() { return enabled; }
+            public void setEnabled(boolean value) { enabled = value; }
+            public String getAuthorizationPolicyVersion() { return authorizationPolicyVersion; }
+            public void setAuthorizationPolicyVersion(String value) { authorizationPolicyVersion = value; }
+            public String getClientId() { return clientId; }
+            public void setClientId(String value) { clientId = value; }
+            public String getClientSecret() { return clientSecret; }
+            public void setClientSecret(String value) { clientSecret = value; }
+            public List<String> getRedirectUris() { return redirectUris; }
+            public void setRedirectUris(List<String> value) { redirectUris = value == null ? new ArrayList<>() : new ArrayList<>(value); }
+        }
+
         public void setClientAuthenticationMethod(String clientAuthenticationMethod) {
             this.clientAuthenticationMethod = clientAuthenticationMethod;
         }
@@ -337,6 +368,30 @@ public class OpenAiDeProperties {
 
         public void setClientAssertionSigningAlgorithm(String clientAssertionSigningAlgorithm) {
             this.clientAssertionSigningAlgorithm = clientAssertionSigningAlgorithm;
+        }
+
+        public String getClientAssertionAudience() {
+            return clientAssertionAudience;
+        }
+
+        public void setClientAssertionAudience(String clientAssertionAudience) {
+            this.clientAssertionAudience = clientAssertionAudience;
+        }
+
+        public Duration getClientAssertionClockSkew() {
+            return clientAssertionClockSkew;
+        }
+
+        public void setClientAssertionClockSkew(Duration value) {
+            this.clientAssertionClockSkew = value;
+        }
+
+        public Duration getClientAssertionMaxLifetime() {
+            return clientAssertionMaxLifetime;
+        }
+
+        public void setClientAssertionMaxLifetime(Duration value) {
+            this.clientAssertionMaxLifetime = value;
         }
 
         public int getClientAssertionReplayCacheSize() {

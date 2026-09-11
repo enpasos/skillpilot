@@ -144,10 +144,15 @@ class ClaudeV1OAuthFlowIntegrationTest {
                 scopes);
         Map<String, Object> claims = new LinkedHashMap<>();
         claims.put("aud", new java.util.ArrayList<>(List.of(audience)));
+        claims.put("client_id", client.getClientId());
+        claims.put("client_authentication_method", "none");
         OAuth2Authorization authorization = OAuth2Authorization.withRegisteredClient(client)
                 .id(UUID.randomUUID().toString())
                 .principalName(principal)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .build();
+        authorizationService.save(authorization);
+        authorization = OAuth2Authorization.from(authorizationService.findById(authorization.getId()))
                 .token(token, metadata -> metadata.put(
                         OAuth2Authorization.Token.CLAIMS_METADATA_NAME,
                         claims))

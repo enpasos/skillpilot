@@ -50,11 +50,58 @@ public final class ClaudeV1RuntimeValidation {
         }
 
         validateSecrets(properties, violations);
+        validateOAuth(properties, environment, violations);
         validatePublicIdentifiers(properties, violations);
         validateTtls(properties, violations);
         validateLimits(properties, violations);
 
         return violations.isEmpty() ? ValidationResult.success() : ValidationResult.failure(violations);
+    }
+
+    private static void validateOAuth(ClaudeV1Properties properties, Environment environment, List<String> violations) {
+        ClaudeV1Properties.OAuth oauth = properties.getOauth();
+        if (!ClaudeV1Properties.OAuth.PUBLIC_CIMD.equals(oauth.getClientAuthenticationMode())
+                && !ClaudeV1Properties.OAuth.PUBLIC_PROFILE.equals(oauth.getClientAuthenticationMode())
+                && !oauth.isConfidential()) {
+            violations.add("oauth.client-authentication-mode must select claude-cimd-public, claude-custom-confidential or claude-anthropic-held.");
+        }
+        if (!oauth.isPublicCimdEnabled() && !oauth.isConfidential()) {
+            violations.add("At least one explicit Claude OAuth profile must be enabled.");
+        }
+        if (oauth.isPublicCimdEnabled() && (oauth.getPublicAuthorizationPolicyVersion() == null
+                || !oauth.getPublicAuthorizationPolicyVersion().matches("[A-Za-z0-9._-]{1,128}"))) {
+            violations.add("oauth.public-authorization-policy-version must be a non-secret policy version.");
+        }
+        if (!oauth.isConfidential()) {
+            return;
+        }
+        if (oauth.getClientId() == null || !oauth.getClientId().matches("[A-Za-z0-9._-]{8,128}")) {
+            violations.add("oauth.client-id must be a dedicated non-URL client identifier of 8 to 128 safe characters.");
+        }
+        // bcrypt has a 72-byte input limit. Restrict the transport secret to printable ASCII so
+        // no longer value is silently truncated and no Unicode byte-count ambiguity is possible.
+        if (oauth.getClientSecret() == null || !oauth.getClientSecret().matches("[\\x21-\\x7e]{32,72}")) {
+            violations.add("oauth.client-secret must contain 32 to 72 printable ASCII non-whitespace characters.");
+        } else if (oauth.getClientSecret().equals(properties.getSigningSecret())
+                || oauth.getClientSecret().equals(properties.getCapabilitySecret())) {
+            violations.add("oauth.client-secret must differ from connector signing and capability secrets.");
+        }
+        if (!java.util.Set.of("client_secret_basic", "client_secret_post").contains(
+                Objects.toString(oauth.getClientAuthenticationMethod(), ""))) {
+            violations.add("oauth.client-authentication-method must explicitly select client_secret_basic or client_secret_post for the dedicated confidential client.");
+        }
+        if (!ClaudeV1Contract.HOSTED_CLAUDE_AUTH_CALLBACK.equals(oauth.getRedirectUri())) {
+            violations.add("oauth.redirect-uri must be the exact approved hosted Claude callback.");
+        }
+        if (oauth.getAuthorizationPolicyVersion() == null
+                || !oauth.getAuthorizationPolicyVersion().matches("[A-Za-z0-9._-]{1,128}")) {
+            violations.add("oauth.authorization-policy-version must be an explicit non-secret policy version.");
+        }
+        if (oauth.getScopes() == null || !oauth.getScopes().contains(ClaudeV1Contract.SCOPE_READ)
+                || oauth.getScopes().stream().anyMatch(scope -> scope == null || !ClaudeV1Contract.SUPPORTED_SCOPES.contains(scope))
+                || new java.util.HashSet<>(oauth.getScopes()).size() != oauth.getScopes().size()) {
+            violations.add("oauth.scopes must be distinct supported Claude scopes and include skillpilot.read.");
+        }
     }
 
     private static void validateSecrets(ClaudeV1Properties properties, List<String> violations) {

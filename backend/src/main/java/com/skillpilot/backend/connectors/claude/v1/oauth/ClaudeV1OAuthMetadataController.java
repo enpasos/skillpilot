@@ -34,7 +34,10 @@ public class ClaudeV1OAuthMetadataController {
         Map<String, Object> metadata = Map.of(
                 "resource", properties.getPublicMcpUrl(),
                 "authorization_servers", List.of(properties.getPublicOrigin()),
-                "scopes_supported", List.of(ClaudeV1Contract.SCOPE_READ, ClaudeV1Contract.SCOPE_WRITE),
+                "scopes_supported", !properties.getOauth().isPublicCimdEnabled()
+                        ? properties.getOauth().getScopes().stream()
+                                .filter(scope -> !ClaudeV1Contract.SCOPE_OFFLINE_ACCESS.equals(scope)).toList()
+                        : List.of(ClaudeV1Contract.SCOPE_READ, ClaudeV1Contract.SCOPE_WRITE),
                 "bearer_methods_supported", List.of("header"),
                 "resource_documentation", properties.getPublicDocumentationUrl());
         return ResponseEntity.ok(metadata);
@@ -50,13 +53,18 @@ public class ClaudeV1OAuthMetadataController {
         metadata.put("authorization_endpoint", publicOrigin + "/oauth2/authorize");
         metadata.put("token_endpoint", publicOrigin + "/oauth2/token");
         metadata.put("revocation_endpoint", publicOrigin + "/oauth2/revoke");
-        metadata.put("scopes_supported", List.of(ClaudeV1Contract.SCOPE_READ, ClaudeV1Contract.SCOPE_WRITE, ClaudeV1Contract.SCOPE_OFFLINE_ACCESS));
+        metadata.put("scopes_supported", !properties.getOauth().isPublicCimdEnabled()
+                ? List.copyOf(properties.getOauth().getScopes())
+                : List.of(ClaudeV1Contract.SCOPE_READ, ClaudeV1Contract.SCOPE_WRITE, ClaudeV1Contract.SCOPE_OFFLINE_ACCESS));
         metadata.put("response_types_supported", List.of("code"));
         metadata.put("grant_types_supported", List.of("authorization_code", "refresh_token"));
-        metadata.put("token_endpoint_auth_methods_supported", List.of("none"));
-        metadata.put("revocation_endpoint_auth_methods_supported", List.of("none"));
+        List<String> authenticationMethods = new java.util.ArrayList<>();
+        if (properties.getOauth().isPublicCimdEnabled()) authenticationMethods.add("none");
+        if (properties.getOauth().isConfidential()) authenticationMethods.add(ClaudeV1ClientPolicy.authenticationMethod(properties).getValue());
+        metadata.put("token_endpoint_auth_methods_supported", authenticationMethods);
+        metadata.put("revocation_endpoint_auth_methods_supported", authenticationMethods);
         metadata.put("code_challenge_methods_supported", List.of("S256"));
-        metadata.put("client_id_metadata_document_supported", true);
+        metadata.put("client_id_metadata_document_supported", properties.getOauth().isPublicCimdEnabled());
         return ResponseEntity.ok(metadata);
     }
 }

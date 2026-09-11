@@ -17,6 +17,7 @@ import {
   IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES,
   OPENAI_V1_PUBLIC_CONTRACT,
   REMOVED_DIRECT_START_ENVIRONMENT_NAMES,
+  isForbiddenOpenAiV1EnvironmentName,
   parseServiceEnvironmentFile,
   validateBuiltApplication,
   validateCanonicalPublicDefaults,
@@ -48,6 +49,39 @@ const canonicalSourceApplication = applicationConfig(
   "@skillpilotServerBuild@",
 );
 const builtApplication = applicationConfig(COMMIT, COMMIT);
+const authenticatedClientEnvironment = {
+  SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED: "false",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD: "private_key_jwt",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_AUDIENCE:
+    "https://skillpilot.com/api/openai/v1/oauth2/token",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_CLOCK_SKEW: "PT30S",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_MAX_LIFETIME: "PT5M",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION: "synthetic-jwt-1",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_ENABLED: "true",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_AUTHORIZATION_POLICY_VERSION: "synthetic-basic-1",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_ID: "skillpilot-synthetic-basic",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_SECRET: "synthetic-transition-secret-never-print",
+  SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_REDIRECT_URIS: "https://chatgpt.com/connector_platform_oauth_redirect",
+  SKILLPILOT_OPENAI_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE: "10000",
+  SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_AUTHENTICATION_MODE: "claude-custom-confidential",
+  SKILLPILOT_CLAUDE_V1_OAUTH_PUBLIC_CIMD_ENABLED: "true",
+  SKILLPILOT_CLAUDE_V1_OAUTH_PUBLIC_AUTHORIZATION_POLICY_VERSION: "synthetic-public-1",
+  SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_ID: "skillpilot-synthetic-client",
+  SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_SECRET: "synthetic-only-never-print-this-secret",
+  SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD: "client_secret_basic",
+  SKILLPILOT_CLAUDE_V1_OAUTH_REDIRECT_URI: "https://claude.ai/api/mcp/auth_callback",
+  SKILLPILOT_CLAUDE_V1_OAUTH_AUTHORIZATION_POLICY_VERSION: "synthetic-1",
+};
+const unknownAssertionEnvironmentNames = [
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_AUDIENCE_TYPO",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_CLOCK_SKEWW",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_MAX_LIFETIME_EXTRA",
+  // The existing replay-budget setting belongs to the shared namespace.
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONIONAL_BASIC_ENABLED",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_SECRET_TYPO",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION_TYPO",
+];
 
 test("the fixed public contract needs no runtime URL overrides", () => {
   assert.doesNotThrow(() =>
@@ -78,6 +112,59 @@ test("line-specific and process-shared environment names remain valid", () => {
   );
 });
 
+test("independent OAuth client profiles pass namespace checks without retaining credentials", () => {
+  assert.doesNotThrow(() =>
+    validateExplicitPublicOverrides(authenticatedClientEnvironment),
+  );
+  const assignments = Object.entries(authenticatedClientEnvironment)
+    .map(([name, value]) => `${name}=${value}`)
+    .join("\n");
+  assert.deepEqual(parseServiceEnvironmentFile(assignments), {});
+});
+
+test("retired global OAuth switch is rejected before deploy while explicit false remains valid", () => {
+  const name = "SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED";
+  for (const value of ["true", "TRUE", "yes", "1", "", "do-not-print-this-value"]) {
+    assert.throws(() => validateExplicitPublicOverrides({ [name]: value }), /migrate explicitly/u);
+    assert.throws(() => parseServiceEnvironmentFile(`${name}=${value}`), /migrate explicitly/u);
+  }
+  for (const value of ["false", "FALSE", '"false"', "'false'"]) {
+    assert.deepEqual(parseServiceEnvironmentFile(`${name}=${value}`), {});
+  }
+  assert.throws(() => parseServiceEnvironmentFile(`${name}=false\n${name}=true`), /assigned more than once/u);
+});
+
+test("every implemented V1 environment binding has matching JavaScript and shell gates", () => {
+  const applicationYaml = readFileSync(
+    new URL("../backend/src/main/resources/application.yml", import.meta.url),
+    "utf8",
+  );
+  const sourceNames = [...new Set([...applicationYaml.matchAll(
+    /\$\{(SKILLPILOT_OPENAI_COACH_V1_[A-Z0-9_]+)[:}]/g,
+  )].map((match) => match[1]))];
+  assert.ok(sourceNames.length > 0);
+  const allowedNames = [...new Set([
+    ...sourceNames,
+    ...Object.keys(authenticatedClientEnvironment),
+  ])];
+  for (const name of allowedNames) {
+    assert.equal(isForbiddenOpenAiV1EnvironmentName(name), false, name);
+  }
+  const completed = spawnSync("bash", ["-c", `
+source "$1"
+shift
+for name in "$@"; do
+  if _skillpilot_openai_v1_forbidden_environment_name "$name"; then
+    printf '%s\\n' "$name" >&2
+    exit 1
+  fi
+done
+`, "oauth-namespace-test", new URL(
+    "./lib/openai_v1_service_environment.sh", import.meta.url,
+  ).pathname, ...allowedNames], { encoding: "utf8" });
+  assert.equal(completed.status, 0, completed.stderr);
+});
+
 test("removed Direct-Start environment names fail closed", () => {
   for (const name of REMOVED_DIRECT_START_ENVIRONMENT_NAMES) {
     assert.throws(
@@ -93,6 +180,7 @@ test("unimplemented coach lines and misspelled V1 settings fail closed", () => {
     "SKILLPILOT_OPENAI_COACH_V2_ENABLED",
     "SKILLPILOT_OPENAI_COACH_V3_OAUTH_CLIENT_ID",
     "SKILLPILOT_OPENAI_COACH_V9_ENABLED",
+    ...unknownAssertionEnvironmentNames,
   ]) {
     assert.throws(
       () => validateExplicitPublicOverrides({ [name]: "do-not-print" }),
@@ -290,6 +378,49 @@ esac
         "SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE=observe",
     });
     assert.equal(mtlsEdgeMode.status, 0, mtlsEdgeMode.stderr);
+
+    const authenticatedAssignments = Object.entries(authenticatedClientEnvironment)
+      .map(([name, value]) => `${name}=${value}`);
+    for (const overrides of [
+      { FAKE_DIRECT_ENVIRONMENT: authenticatedAssignments.join(" ") },
+      { FAKE_PASS_ENVIRONMENT: Object.keys(authenticatedClientEnvironment).join(" ") },
+      { FAKE_MANAGER_ENVIRONMENT: authenticatedAssignments.join("\n") },
+    ]) {
+      const authenticated = runGate(overrides);
+      assert.equal(authenticated.status, 0, authenticated.stderr);
+      assert.ok(!authenticated.stdout.includes(authenticatedClientEnvironment.SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_SECRET));
+      assert.ok(!authenticated.stderr.includes(authenticatedClientEnvironment.SKILLPILOT_CLAUDE_V1_OAUTH_CLIENT_SECRET));
+    }
+
+    for (const name of unknownAssertionEnvironmentNames) {
+      for (const overrides of [
+        { FAKE_DIRECT_ENVIRONMENT: `${name}=${secretSentinel}` },
+        { FAKE_PASS_ENVIRONMENT: name },
+        { FAKE_MANAGER_ENVIRONMENT: `${name}=${secretSentinel}` },
+      ]) {
+        const rejected = runGate(overrides);
+        assert.notEqual(rejected.status, 0, name);
+        assert.match(rejected.stderr, new RegExp(name));
+        assert.ok(!rejected.stdout.includes(secretSentinel));
+        assert.ok(!rejected.stderr.includes(secretSentinel));
+      }
+    }
+
+    for (const overrides of [
+      { SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED: "true" },
+      { FAKE_DIRECT_ENVIRONMENT: "SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED=true" },
+      { FAKE_DIRECT_ENVIRONMENT: '"SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED=true"' },
+      { FAKE_PASS_ENVIRONMENT: "SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED",
+        FAKE_MANAGER_ENVIRONMENT: "SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED=true" },
+    ]) {
+      const rejected = runGate(overrides);
+      assert.notEqual(rejected.status, 0);
+      assert.match(rejected.stderr, /Migration auf unabhängige Clientprofile/u);
+      assert.ok(!rejected.stderr.includes(secretSentinel));
+    }
+    writeFileSync(environmentPath, "SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED=true\n");
+    assert.notEqual(runGate().status, 0);
+    writeFileSync(environmentPath, `SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_SECRET=${secretSentinel}\n`);
 
     const missingEnvironmentPath = resolve(directory, "missing.env");
     const optionalMissing = runGate({

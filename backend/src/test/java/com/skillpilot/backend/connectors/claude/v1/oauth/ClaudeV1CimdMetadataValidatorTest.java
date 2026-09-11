@@ -32,6 +32,18 @@ class ClaudeV1CimdMetadataValidatorTest {
     }
 
     @Test
+    void confidentialModeRejectsEveryPublicIdentityBeforeAnyMetadataRetrieval() {
+        ClaudeV1Properties properties = new ClaudeV1Properties();
+        properties.getOauth().setClientAuthenticationMode("anthropic-credentials");
+        var confidential = new ClaudeV1CimdMetadataValidator(properties, new ObjectMapper());
+        for (String clientId : ClaudeV1Contract.ALLOWED_CIMD_CLIENT_IDS) {
+            assertFalse(confidential.isAllowedClientId(clientId));
+            assertFalse(confidential.isVerifiedClientId(clientId));
+            assertFalse(confidential.isValidRedirectUri(clientId, ClaudeV1Contract.HOSTED_CLAUDE_AUTH_CALLBACK));
+        }
+    }
+
+    @Test
     void hostedClaudeAcceptsExactlyOneCallback() {
         String clientId = ClaudeV1Contract.CIMD_HOSTED_CLAUDE_CLIENT_ID;
         assertTrue(validator.isValidRedirectUri(clientId, ClaudeV1Contract.HOSTED_CLAUDE_AUTH_CALLBACK));

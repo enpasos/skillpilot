@@ -2,6 +2,7 @@ package com.skillpilot.backend.connectors.claude.v1.oauth;
 
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
+import com.skillpilot.backend.oauth.AuthenticatedClientPolicy;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /** Validates OAuth endpoint media types and applies a bounded fixed-window abuse budget. */
@@ -61,7 +63,21 @@ final class ClaudeV1OAuthBoundaryFilter extends OncePerRequestFilter {
             error(response, 429, "rate_limited");
             return;
         }
-        filterChain.doFilter(request, response);
+        try {
+            filterChain.doFilter(request, response);
+        } catch (AuthenticatedClientPolicy.PolicyRejectedException exception) {
+            if (response.isCommitted()) {
+                throw exception;
+            }
+            response.resetBuffer();
+            error(response, HttpServletResponse.SC_UNAUTHORIZED, "invalid_client");
+        } catch (DataAccessException exception) {
+            if (response.isCommitted()) {
+                throw exception;
+            }
+            response.resetBuffer();
+            error(response, HttpServletResponse.SC_SERVICE_UNAVAILABLE, "temporarily_unavailable");
+        }
     }
 
     /**

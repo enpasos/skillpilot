@@ -16,6 +16,25 @@ class OpenAiDeSecureModeConfigurationTest {
             new ApplicationContextRunner().withUserConfiguration(OpenAiDeConfiguration.class);
 
     @Test
+    void jwtProfileIsIndependentOfOtherProvidersAndRequiresAudienceAndTimeBounds() {
+        String[] authenticated = {
+                "skillpilot.openai.coach.v1.oauth.client-authentication-method=private_key_jwt",
+                "skillpilot.openai.coach.v1.oauth.client-id=https://chatgpt.com/oauth/client.json",
+                "skillpilot.openai.coach.v1.oauth.client-jwk-set-uri=https://chatgpt.com/oauth/jwks.json",
+                "skillpilot.openai.coach.v1.oauth.client-assertion-replay-cache-size=1000",
+                "skillpilot.openai.coach.v1.oauth.client-assertion-audience=https://skillpilot.com/api/openai/v1/oauth2/token"
+        };
+        runner.withPropertyValues(validSecureProperties()).withPropertyValues(authenticated)
+                .run(context -> assertThat(context).hasNotFailed());
+        runner.withPropertyValues(validSecureProperties()).withPropertyValues(authenticated)
+                .withPropertyValues("skillpilot.openai.coach.v1.oauth.client-assertion-max-lifetime=PT6M")
+                .run(context -> assertSecureStartupFailure(context.getStartupFailure(), "oauth.client-assertion-time-policy"));
+        runner.withPropertyValues(validSecureProperties()).withPropertyValues(authenticated)
+                .withPropertyValues("skillpilot.openai.coach.v1.oauth.client-assertion-audience=")
+                .run(context -> assertSecureStartupFailure(context.getStartupFailure(), "oauth.client-assertion-audience"));
+    }
+
+    @Test
     void secureModeAcceptsStaticConfidentialClientAuthentication() {
         runner.withPropertyValues(validSecureProperties())
                 .run(context -> {
@@ -33,9 +52,9 @@ class OpenAiDeSecureModeConfigurationTest {
     }
 
     @Test
-    void secureModeRejectsPublicPrivateKeyJwtAndUnsupportedClientAuthentication() {
+    void secureModeRejectsPublicAndUnsupportedClientAuthentication() {
         for (String authenticationMethod : new String[] {
-                "none", "private_key_jwt", "client_secret_post"
+                "none", "client_secret_post"
         }) {
             runner.withPropertyValues(
                             securePropertiesWith(

@@ -57,6 +57,9 @@ class OpenAiDeCimdMetadataValidatorTest {
         ObjectNode wrongJwks = validDocument();
         wrongJwks.put("jwks_uri", "https://chatgpt.com/oauth/other-jwks.json");
         assertFailure(response(wrongJwks), "jwks_uri");
+        ObjectNode wrongAlgorithm = validDocument();
+        wrongAlgorithm.put("token_endpoint_auth_signing_alg", "HS256");
+        assertFailure(response(wrongAlgorithm), "token_endpoint_auth_signing_alg");
     }
 
     @Test

@@ -28,13 +28,18 @@ public final class OpenAiDeSecureModeValidation {
     private OpenAiDeSecureModeValidation() {}
 
     public static Result inspect(OpenAiDeProperties properties) {
+        return inspect(properties, false);
+    }
+
+    public static Result inspect(OpenAiDeProperties properties, boolean authenticatedClientsRequired) {
         boolean secureMode = properties.getSecurity().isSecureMode();
         boolean oauthEnabled = properties.getOauth().isEnabled();
         String authenticationMethod = normalizedAuthenticationMethod(properties);
         boolean publicClient = "none".equals(authenticationMethod);
         boolean clientSecretBasic = "client_secret_basic".equals(authenticationMethod);
         boolean privateKeyJwt = "private_key_jwt".equals(authenticationMethod);
-        boolean clientAuthenticationSupported = clientSecretBasic;
+        // Authentication is selected per registered client, not by a cross-provider release switch.
+        boolean clientAuthenticationSupported = privateKeyJwt || clientSecretBasic;
         boolean clientIdConfigured = hasText(properties.getOauth().getClientId());
         boolean clientSecretConfigured = isValidClientSecret(
                 properties.getOauth().getClientSecret());
@@ -61,8 +66,24 @@ public final class OpenAiDeSecureModeValidation {
                     "oauth.client-authentication-method");
             addViolation(violations, clientIdConfigured, "oauth.client-id");
             addViolation(violations, redirectUrisConfigured, "oauth.redirect-uris");
+            addViolation(violations, properties.getOauth().getAuthorizationPolicyVersion() != null
+                    && properties.getOauth().getAuthorizationPolicyVersion().matches("[A-Za-z0-9][A-Za-z0-9._-]{0,63}"),
+                    "oauth.authorization-policy-version");
+            if (properties.getOauth().getTransitionalBasic().isEnabled()) {
+                var transitional = properties.getOauth().getTransitionalBasic();
+                addViolation(violations, privateKeyJwt && hasText(transitional.getClientId())
+                        && !transitional.getClientId().equals(properties.getOauth().getClientId())
+                        && !isStrictHttpsDocumentUri(transitional.getClientId())
+                        && transitional.getAuthorizationPolicyVersion() != null
+                        && transitional.getAuthorizationPolicyVersion().matches("[A-Za-z0-9][A-Za-z0-9._-]{0,63}")
+                        && isValidClientSecret(transitional.getClientSecret())
+                        && transitional.getRedirectUris() != null && !transitional.getRedirectUris().isEmpty()
+                        && transitional.getRedirectUris().stream().allMatch(OpenAiDeSecureModeValidation::isStrictHttpsUri),
+                        "oauth.transitional-basic");
+            }
             if (clientSecretBasic) {
                 addViolation(violations, clientSecretConfigured, "oauth.client-secret");
+                addViolation(violations, !cimdHttpsDocument, "oauth.basic-transition-non-cimd-client-id");
             }
             if (privateKeyJwt) {
                 addViolation(violations, cimdHttpsDocument, "oauth.client-id-cimd-document");
@@ -75,6 +96,11 @@ public final class OpenAiDeSecureModeValidation {
                         violations,
                         replayCacheConfigured,
                         "oauth.client-assertion-replay-cache-size");
+                addViolation(violations,
+                        isStrictHttpsDocumentUri(properties.getOauth().getClientAssertionAudience()),
+                        "oauth.client-assertion-audience");
+                addViolation(violations, validAssertionTimePolicy(properties),
+                        "oauth.client-assertion-time-policy");
             }
         }
 
@@ -93,6 +119,14 @@ public final class OpenAiDeSecureModeValidation {
                 asymmetricAlgorithm,
                 replayCacheConfigured,
                 List.copyOf(violations));
+    }
+
+    public static boolean validAssertionTimePolicy(OpenAiDeProperties properties) {
+        var skew = properties.getOauth().getClientAssertionClockSkew();
+        var lifetime = properties.getOauth().getClientAssertionMaxLifetime();
+        return skew != null && !skew.isNegative() && skew.compareTo(java.time.Duration.ofSeconds(60)) <= 0
+                && lifetime != null && !lifetime.isNegative() && !lifetime.isZero()
+                && lifetime.compareTo(java.time.Duration.ofMinutes(5)) <= 0;
     }
 
     private static void addViolation(List<String> violations, boolean valid, String property) {

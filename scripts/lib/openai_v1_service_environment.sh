@@ -46,6 +46,15 @@ _skillpilot_openai_v1_forbidden_environment_name() {
     SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD|\
     SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_JWK_SET_URI|\
     SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM|\
+    SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_AUDIENCE|\
+    SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_CLOCK_SKEW|\
+    SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_MAX_LIFETIME|\
+    SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION|\
+    SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_ENABLED|\
+    SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_AUTHORIZATION_POLICY_VERSION|\
+    SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_ID|\
+    SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_SECRET|\
+    SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_REDIRECT_URIS|\
     SKILLPILOT_OPENAI_COACH_V1_OAUTH_LEGACY_CLIENT_IDS)
       return 1
       ;;
@@ -58,12 +67,32 @@ _skillpilot_openai_v1_forbidden_environment_name() {
   esac
 }
 
+_skillpilot_oauth_global_policy_assignment_allowed() {
+  local assignment="$1"
+  assignment="${assignment#\"}"
+  local name="${assignment%%=*}"
+  if [ "${name}" != "SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED" ]; then
+    return 0
+  fi
+  local value="${assignment#*=}"
+  value="${value#\"}"
+  value="${value%\"}"
+  if [ "${value,,}" != "false" ]; then
+    echo "Abbruch: SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED erfordert die explizite Migration auf unabhängige Clientprofile; Einstellung vor Deployment entfernen oder false setzen." >&2
+    return 1
+  fi
+}
+
 validate_openai_v1_service_environment() {
   local systemctl_bin="$1"
   local service_name="$2"
   local service_env_file="$3"
   local node_bin="$4"
   local validator_path="$5"
+
+  if [[ -v SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED ]]; then
+    _skillpilot_oauth_global_policy_assignment_allowed "SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED=${SKILLPILOT_OAUTH_AUTHENTICATED_CLIENTS_REQUIRED}" || return 1
+  fi
 
   if [[ "${service_env_file}" != /* ]] || [[ "${service_env_file}" =~ [[:space:]] ]]; then
     echo "Abbruch: SKILLPILOT_SERVICE_ENV_FILE muss ein absoluter Pfad ohne Leerzeichen sein." >&2
@@ -136,6 +165,7 @@ validate_openai_v1_service_environment() {
 
   local direct_assignment
   for direct_assignment in "${direct_environment_tokens[@]}"; do
+    _skillpilot_oauth_global_policy_assignment_allowed "${direct_assignment}" || return 1
     direct_assignment="${direct_assignment#\"}"
     local direct_name="${direct_assignment%%=*}"
     if _skillpilot_openai_v1_forbidden_environment_name "${direct_name}"; then
@@ -154,6 +184,7 @@ validate_openai_v1_service_environment() {
 
   local manager_assignment
   for manager_assignment in "${manager_environment_lines[@]}"; do
+    _skillpilot_oauth_global_policy_assignment_allowed "${manager_assignment}" || return 1
     manager_assignment="${manager_assignment#\"}"
     local manager_name="${manager_assignment%%=*}"
     if _skillpilot_openai_v1_forbidden_environment_name "${manager_name}"; then

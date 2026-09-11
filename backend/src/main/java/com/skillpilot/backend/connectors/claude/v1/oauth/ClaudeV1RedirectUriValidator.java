@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationContext;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationException;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationToken;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationValidator;
 
 /**
  * Replaces the default redirect-URI check for the Claude v1 authorization endpoint.
@@ -16,8 +17,9 @@ import org.springframework.security.oauth2.server.authorization.authentication.O
  * <p>The stock validator treats only literal loopback IP addresses as port-variable and compares
  * everything else by exact string. Claude Code binds an ephemeral port and may present either
  * {@code 127.0.0.1} or {@code localhost}, so the stock rule rejects half of the valid callbacks.
- * This validator delegates to {@link ClaudeV1CimdMetadataValidator}, which pins scheme, host and
- * path exactly and permits only the port to vary.</p>
+ * Compatibility mode delegates to {@link ClaudeV1CimdMetadataValidator}, which pins scheme, host
+ * and path exactly and permits only the port to vary. Confidential mode instead pins the single
+ * hosted callback locally, validates scopes and requires S256 without consulting CIMD.</p>
  */
 public final class ClaudeV1RedirectUriValidator
         implements Consumer<OAuth2AuthorizationCodeRequestAuthenticationContext> {
@@ -43,6 +45,20 @@ public final class ClaudeV1RedirectUriValidator
             // first registered entry and could send a code to the wrong client type.
             throwInvalidRedirectUri(authentication);
         }
+        if (!"S256".equals(authentication.getAdditionalParameters().get("code_challenge_method"))
+                || !(authentication.getAdditionalParameters().get("code_challenge") instanceof String challenge)
+                || !challenge.matches("[A-Za-z0-9_-]{43}")) {
+            throw new OAuth2AuthorizationCodeRequestAuthenticationException(
+                    new OAuth2Error(OAuth2ErrorCodes.INVALID_REQUEST, "S256 PKCE is required.", null), null);
+        }
+        if (ClaudeV1ClientPolicy.isConfidentialClient(properties, context.getRegisteredClient())) {
+            if (!ClaudeV1ClientPolicy.permitsClient(properties, context.getRegisteredClient())
+                    || !properties.getOauth().getRedirectUri().equals(requestedRedirectUri)) {
+                throwInvalidRedirectUri(authentication);
+            }
+            OAuth2AuthorizationCodeRequestAuthenticationValidator.DEFAULT_SCOPE_VALIDATOR.accept(context);
+            return;
+        }
         if (!cimdValidator.isValidRedirectUri(clientId, requestedRedirectUri)) {
             throwInvalidRedirectUri(authentication);
         }
@@ -54,6 +70,7 @@ public final class ClaudeV1RedirectUriValidator
                             properties.getPublicAuthServerMetadataUrl()),
                     null);
         }
+        OAuth2AuthorizationCodeRequestAuthenticationValidator.DEFAULT_SCOPE_VALIDATOR.accept(context);
     }
 
     private void throwInvalidRedirectUri(OAuth2AuthorizationCodeRequestAuthenticationToken authentication) {

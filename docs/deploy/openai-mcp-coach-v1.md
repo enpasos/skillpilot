@@ -2,6 +2,15 @@
 
 **Stand:** 9. September 2026
 
+**OAuth-Umstellung, 11. September 2026:** Für die freigegebene neue
+Clientauthentifizierung gilt das
+[profilbezogene Aktivierungsrunbook](oauth-client-authentication.md).
+Das Zielprofil verwendet CIMD mit `private_key_jwt`; bestehende sicher
+konfigurierte Basic-Verbindungen bleiben ein separates Übergangsprofil.
+Die folgenden Basic-Beispiele sind kein Methoden-Fallback für JWT-Clients.
+Claude-Beta und Herstelleranfragen blockieren diese Freigabe nicht.
+Die Implementierung allein aktiviert keine Produktionsverbindung.
+
 **Status:** Die Einlieferung `1.0.0` wurde abgelehnt (`REJECTED`). Der Product
 Owner hat die ChatGPT-Entwicklungssperren ausdrücklich aufgehoben; der aktuelle
 Nachfolger ist der noch unveröffentlichte Entwurf `1.1.0`. Siehe
@@ -82,7 +91,7 @@ Es gibt keinen öffentlichen Kompatibilitätsalias. Der produktive App-Eintrag
 verwendet ausschließlich diese V1-**Server URL**, nicht den Entwicklungstunnel
 und nicht einen Pfad auf `skillpilot.com`.
 
-## 2. Discovery-Bootstrap und OAuth-Werte
+## 2. Discovery-Bootstrap und OAuth-Werte des bisherigen Kompatibilitätsprofils
 
 Der Produktivvertrag verwendet Authorization Code mit PKCE `S256` und genau
 einen vorregistrierten **vertraulichen OAuth-Client** für die Linie
@@ -789,15 +798,24 @@ Rotation.
 ### 3.1 Health, Readiness und Metriknamen
 
 Bei `SKILLPILOT_OPENAI_COACH_V1_ENABLED=true` registriert Spring den Health-Contributor
-`openAiDeCoach`. Er fließt in die Actuator-Gruppe `readiness` ein. Der Beitrag
+`openAiDeCoach`. Er fließt in die separate Actuator-Gruppe `openaiReadiness` ein. Der Beitrag
 ist nur `UP`, wenn MCP und OAuth aktiviert sind, die erforderlichen Client- und
 Callback-Werte gesetzt sind, die öffentlichen MCP-/Metadata-Ziele gültiges
-HTTPS verwenden und der aktuelle Vertrag mit genau 14 Werkzeugen geladen ist.
-Die Readiness-Gruppe enthält zusätzlich den Datenbank-Health-Check `db`; ein
+HTTPS verwenden, die ausgewählten Clientprofile aktiv sind und der aktuelle
+Vertrag mit genau 14 Werkzeugen geladen ist. Beim JWT-Profil muss zusätzlich
+der verifizierte CIMD-Metadatencache gültig sein.
+Die OpenAI-Gruppe enthält zusätzlich `readinessState` und den Datenbank-Health-Check `db`; ein
 nicht erreichbarer Persistenzdienst darf daher nicht als einsatzbereiter Coach
 gemeldet werden.
+
+Die gemeinsame Gruppe `readiness` enthält ausschließlich `readinessState,db`.
+Ein Ausfall allein des JWT-Metadatenabrufs setzt deshalb die OpenAI-Gruppe auf
+`DOWN`, ohne die gemeinsame Readiness oder verfügbare Claude-/Basic-Profile zu
+sperren. Gemeinsame Readiness ist ausdrücklich keine OpenAI-Abnahme; dafür
+bleiben die separate Providerprüfung und die
+[profilbezogene Host-/Release-Abnahme](oauth-client-authentication.md) erforderlich.
 `SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=false` ist ein erlaubter read-only
-Canary-Zustand und setzt die gemeinsame Readiness nicht auf `DOWN`. Ob der
+Canary-Zustand und setzt auch die OpenAI-Readiness nicht auf `DOWN`. Ob der
 vollständige Coach produktiv funktionsfähig ist, muss deshalb zusätzlich über
 die Betriebsumgebung beziehungsweise einen separaten Deployment-Preflight
 geprüft werden.
@@ -1044,7 +1062,9 @@ Erwartung: alle drei Metadatenabrufe sind gültig, MCP antwortet `401` mit
 `WWW-Authenticate`, und sämtliche OAuth-Protokollendpunkte bleiben `404`.
 Der intern aus Kompatibilitätsgründen noch `openAiDeCoach` benannte
 Health-Contributor existiert in diesem Zustand absichtlich nicht; die allgemeine
-Readiness des übrigen SkillPilot-Dienstes muss weiterhin `UP` sein.
+Readiness des übrigen SkillPilot-Dienstes prüft nur Prozess und Datenbank und
+muss weiterhin `UP` sein. Das bestätigt keine Verfügbarkeit des abgeschalteten
+OpenAI-Profils.
 
 ### 5.2 Vollbetrieb, zunächst read-only
 
@@ -1058,7 +1078,7 @@ AUTH_METHOD="${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD:-cl
 curl -fsS "$MANAGEMENT_BASE/actuator/health/readiness" \
   | jq -e '.status == "UP"'
 
-curl -fsS "$MANAGEMENT_BASE/actuator/health/openAiDeCoach" \
+curl -fsS "$MANAGEMENT_BASE/actuator/health/openaiReadiness" \
   | jq -e '.status == "UP"'
 
 curl -fsS "$RESOURCE_METADATA" \
