@@ -182,7 +182,7 @@ public class CoachToolFacade {
                     HttpStatus.CONFLICT,
                     "No resumable learning-plan goal is currently available");
         }
-        LearnerLearningPlanApi.TransitionResponse transition = plans.reconcile(
+        LearnerLearningPlanApi.TransitionResponse transition = plans.resumeExplicitly(
                 skillpilotId,
                 new LearnerLearningPlanApi.ReconcileRequest(null));
         if (transition == null || !transition.changed() || transition.state() == null) {
@@ -331,6 +331,8 @@ public class CoachToolFacade {
                 && subject.completedToday() >= 0
                 && subject.openToday() >= 0
                 && subject.openOverdue() >= 0
+                && subject.extraCompletedToday() >= 0
+                && (subject.extraCompletedToday() == 0 || subject.openToday() == 0)
                 && (long) subject.completedToday() + subject.openToday()
                         == subject.dueToday();
     }

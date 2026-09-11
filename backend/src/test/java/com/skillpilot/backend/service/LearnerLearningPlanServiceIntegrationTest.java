@@ -3,6 +3,7 @@ package com.skillpilot.backend.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.doThrow;
@@ -159,11 +160,11 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(preview.days().get(0).subjects())
                 .containsExactly(
                         new LearnerLearningPlanApi.PreviewSubject(LANDSCAPE_ID,
-                                new LearnerLearningPlanApi.Metrics(3, 1, 2, 2, 1, 1, 4)),
+                                new LearnerLearningPlanApi.Metrics(3, 1, 2, 2, 0, 2, 4)),
                         new LearnerLearningPlanApi.PreviewSubject(PHYSICS_LANDSCAPE_ID,
-                                new LearnerLearningPlanApi.Metrics(2, 1, 1, 1, 1, 0, 2)));
+                                new LearnerLearningPlanApi.Metrics(2, 1, 1, 1, 0, 1, 2)));
         assertThat(preview.days().get(0).totals())
-                .isEqualTo(new LearnerLearningPlanApi.Metrics(5, 2, 3, 3, 2, 1, 6));
+                .isEqualTo(new LearnerLearningPlanApi.Metrics(5, 2, 3, 3, 0, 3, 6));
         // Weekends remain visible. Backlog is not mistaken for newly assigned work.
         assertThat(preview.days().get(1).totals())
                 .isEqualTo(new LearnerLearningPlanApi.Metrics(5, 2, 3, 0, 0, 0, 6));
@@ -192,6 +193,21 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(activated.plans()).extracting(LearnerLearningPlanApi.PlanDetail::metrics)
                 .containsExactlyElementsOf(preview.days().get(0).subjects().stream()
                         .map(LearnerLearningPlanApi.PreviewSubject::metrics).toList());
+    }
+
+    @Test
+    void futurePreviewUsesDailyQuotaWithoutInventingFutureCompletions() {
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-b", 1.0));
+        var preview = service.previewPlans(LEARNER_ID,
+                new LearnerLearningPlanApi.ActivateRequest(TODAY, List.of(
+                        new LearnerLearningPlanApi.ActivationPlan(LANDSCAPE_ID, 0L, "Math", List.of(
+                                learning("backlog", "2026-09-03", "2026-09-03", "atom-a"),
+                                learning("monday", "2026-09-07", "2026-09-07", "atom-b"))))));
+
+        // Even if Monday's originally assigned ID is already mastered, the quota
+        // can be fulfilled with the still-open backlog. No future event is invented.
+        assertThat(preview.days().get(3).totals())
+                .isEqualTo(new LearnerLearningPlanApi.Metrics(2, 1, 1, 1, 0, 1, 2));
     }
 
     @Test
@@ -571,7 +587,9 @@ class LearnerLearningPlanServiceIntegrationTest {
                                                 "math-focus",
                                                 "2026-09-01",
                                                 "2026-09-04",
-                                                "atom-a"))),
+                                                "atom-a"),
+                                                learningWithFocus("math-today", "math-focus",
+                                                        "2026-09-04", "2026-09-04", "atom-b"))),
                                 new LearnerLearningPlanApi.ActivationPlan(
                                         PHYSICS_LANDSCAPE_ID,
                                         0L,
@@ -581,7 +599,9 @@ class LearnerLearningPlanServiceIntegrationTest {
                                                 "physics-focus",
                                                 "2026-08-20",
                                                 "2026-09-04",
-                                                "atom-p"))))));
+                                                "atom-p"),
+                                                learningWithFocus("physics-today", "physics-focus",
+                                                        "2026-09-04", "2026-09-04", "atom-q"))))));
 
         assertThat(response.followLearningPlans()).isTrue();
         assertThat(response.selectedLandscapeId()).isEqualTo(PHYSICS_LANDSCAPE_ID);
@@ -1065,7 +1085,9 @@ class LearnerLearningPlanServiceIntegrationTest {
                                 "physics-focus",
                                 "2026-08-20",
                                 "2026-09-04",
-                                "atom-p"))),
+                                "atom-p"),
+                                learningWithFocus("physics-today", "physics-focus",
+                                        "2026-09-04", "2026-09-04", "atom-q"))),
                 TODAY);
         String legacyFingerprint = useLegacyFingerprint(created.planId());
 
@@ -1098,6 +1120,40 @@ class LearnerLearningPlanServiceIntegrationTest {
                 "atom-p",
                 true,
                 "LEARNING_PLAN_RECONCILED");
+    }
+
+    @Test
+    void completedQuotaStopsAutomaticReconcileButExplicitResumeAllowsExtraWork() {
+        learner.setFollowLearningPlans(true);
+        learnerRepository.saveAndFlush(learner);
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-p", 1.0));
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY))
+                .thenReturn(Map.of("atom-p", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("physics-focus")))
+                .thenReturn(List.of(frontier("atom-q")));
+        service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Physik", List.of(
+                        learningWithFocus("yesterday", "physics-focus", "2026-09-03", "2026-09-03", "atom-p"),
+                        learningWithFocus("today", "physics-focus", "2026-09-04", "2026-09-04", "atom-q"))), TODAY);
+        UnifiedLearnerStateResponse state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.getCoachLearnerState(LEARNER_ID)).thenReturn(state);
+
+        var status = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(status.totals().completedToday()).isEqualTo(1);
+        assertThat(status.totals().openToday()).isZero();
+        assertThat(status.totals().openOverdue()).isEqualTo(1);
+        assertThat(status.resumeAvailable()).isTrue();
+        var automatic = service.reconcile(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(TODAY));
+        assertThat(automatic.changed()).isFalse();
+        verify(learnerService, never()).applyLearningPlanTransition(
+                any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());
+
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true,
+                "physics-focus", "atom-q", true, "LEARNING_PLAN_RECONCILED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+        var explicit = service.resumeExplicitly(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(TODAY));
+        assertThat(explicit.changed()).isTrue();
+        assertThat(explicit.activeGoalId()).isEqualTo("atom-q");
     }
 
     @Test
@@ -1146,6 +1202,8 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of(
                 "atom-a", 1.0,
                 "atom-d", 1.0));
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY))
+                .thenReturn(Map.of("atom-d", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
         when(learnerService.getUncompactedRichFrontierForFocus(
                 LEARNER_ID,
                 List.of("block-focus")))
@@ -1334,6 +1392,8 @@ class LearnerLearningPlanServiceIntegrationTest {
                 });
 
         when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-p", 1.0));
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY))
+                .thenReturn(Map.of("atom-p", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
         LearnerPlanTodayStatus physicsDone = service.getTodayStatus(LEARNER_ID, "de");
         assertThat(physicsDone.subjects()).filteredOn(subject -> "Physik".equals(subject.subjectLabel()))
                 .singleElement().satisfies(subject -> {

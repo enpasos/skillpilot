@@ -5,8 +5,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
+import java.time.LocalDate;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 
@@ -28,13 +31,36 @@ class OpenAiDialogReplayHarnessTest {
     @Test
     void dailyContextHasActualAdapterTotalsAndDoesNotMutate() {
         var fixture = OpenAiDialogReplayDailyFixtures.create("D1");
-        JsonNode context = content(fixture.call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments()));
+        var response = fixture.call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
+        JsonNode context = content(response);
         assertThat(context.path("learningPlanToday").path("totals").path("dueToday").asInt()).isEqualTo(48);
         assertThat(context.path("learningPlanToday").path("totals").path("completedToday").asInt()).isEqualTo(2);
         assertThat(context.path("learningPlanToday").path("totals").path("openToday").asInt()).isEqualTo(46);
+        assertThat(context.path("learningPlanToday").path("totals").path("extraCompletedToday").asInt()).isZero();
+        assertThat(response.content().toString()).contains("2/48 geschafft").doesNotContain("beherrscht");
         assertThat(fixture.currentStateVersion()).isZero();
         assertThat(fixture.snapshot().get("confirmedWriteCount")).isEqualTo(0);
         assertThat(context.toString()).doesNotContain(OpenAiDialogReplayFixture.LEARNER_ID);
+    }
+
+    @Test
+    void weekendReplayReportsNoFixedQuotaAndLeavesVoluntaryExtraUnstarted() {
+        var fixture = OpenAiDialogReplayDailyFixtures.create("D2");
+        fixture.planStatus = new LearnerPlanTodayStatus(LocalDate.parse("2026-09-12"), true, true,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                                "synthetic-math", "Mathematik", 0, 0, 0, 1, false, true, 0),
+                        new LearnerPlanTodayStatus.SubjectStatus(
+                                "synthetic-physics", "Physik", 0, 0, 0, 1, false, true, 0)),
+                new LearnerPlanTodayStatus.Totals(0, 0, 0, 2, 0), 0);
+        var response = fixture.call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
+        JsonNode context = content(response);
+        assertThat(context.path("learningPlanToday").path("guidance").path("state").asText())
+                .isEqualTo("complete");
+        assertThat(context.path("learningPlanToday").path("resumeAvailable").asBoolean()).isTrue();
+        assertThat(response.content().toString()).contains("Heute kein festes Pensum.")
+                .doesNotContain("Rückstand", "0/0", "geschafft");
+        assertThat(fixture.currentStateVersion()).isZero();
+        assertThat(fixture.snapshot().get("confirmedWriteCount")).isEqualTo(0);
     }
 
     @Test

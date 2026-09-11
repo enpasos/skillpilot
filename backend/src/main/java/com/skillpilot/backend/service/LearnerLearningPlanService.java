@@ -104,9 +104,9 @@ public class LearnerLearningPlanService {
     /**
      * Returns today's additive workload across every valid subject plan.
      *
-     * <p>The date is always derived in Europe/Berlin. {@code completedToday}
-     * means "currently mastered among the goals newly due today"; the mastery
-     * store does not provide an event-backed completion date. Stale or
+     * <p>The date is always derived in Europe/Berlin. Actual completion events
+     * from all due goals (including backlog) fill each subject's daily quota
+     * first. Additional completions are voluntary extra progress. Stale or
      * malformed plans fail closed and are represented only by the anonymous
      * unavailable-plan counter.</p>
      */
@@ -124,7 +124,8 @@ public class LearnerLearningPlanService {
                         < MASTERY_THRESHOLD;
         List<LearnerPlanTodayStatus.SubjectStatus> subjects = new ArrayList<>();
         int unavailablePlanCount = 0;
-        boolean resumeAvailable = false;
+        boolean dailyResumeAvailable = false;
+        boolean extraResumeAvailable = false;
 
         for (LearnerLearningPlan plan : plans
                 .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId)) {
@@ -137,8 +138,13 @@ public class LearnerLearningPlanService {
                     activeGoalInProgress ? activeGoalId : null);
             if (evaluation.isPresent()) {
                 subjects.add(evaluation.get().status());
-                resumeAvailable |= !activeGoalInProgress
-                        && evaluation.get().resumeAvailable();
+                if (!activeGoalInProgress && evaluation.get().resumeAvailable()) {
+                    if (evaluation.get().status().openToday() > 0) {
+                        dailyResumeAvailable = true;
+                    } else {
+                        extraResumeAvailable = true;
+                    }
+                }
             } else {
                 unavailablePlanCount++;
             }
@@ -148,11 +154,12 @@ public class LearnerLearningPlanService {
                 subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::dueToday).sum(),
                 subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::completedToday).sum(),
                 subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::openToday).sum(),
-                subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::openOverdue).sum());
+                subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::openOverdue).sum(),
+                subjects.stream().mapToInt(LearnerPlanTodayStatus.SubjectStatus::extraCompletedToday).sum());
         return new LearnerPlanTodayStatus(
                 asOf,
                 enabled,
-                resumeAvailable,
+                totals.openToday() > 0 ? dailyResumeAvailable : extraResumeAvailable,
                 List.copyOf(subjects),
                 totals,
                 unavailablePlanCount);
@@ -204,7 +211,8 @@ public class LearnerLearningPlanService {
                         metrics.openDueToday(),
                         openOverdue,
                         activeGoalId != null && atomicIds(evaluation.blocks()).contains(activeGoalId),
-                        enabled && summary.nextEligibleGoal() != null),
+                        enabled && summary.nextEligibleGoal() != null,
+                        metrics.extraCompletedToday()),
                 summary.canContinue()));
     }
 
@@ -356,12 +364,14 @@ public class LearnerLearningPlanService {
                         false))
                 .toList();
         Map<String, Double> mastery = Map.copyOf(learners.getMastery(skillpilotId));
+        Set<String> completedTodayGoals = learners.getGoalCompletionsOnDate(skillpilotId, asOf).keySet();
         List<LearnerLearningPlanApi.PreviewDay> days = new ArrayList<>();
         for (int offset = 0; offset < PREVIEW_DAYS; offset++) {
             LocalDate date = asOf.plusDays(offset);
             List<LearnerLearningPlanApi.PreviewSubject> subjects = preparedPlans.stream()
                     .map(plan -> new LearnerLearningPlanApi.PreviewSubject(
-                            plan.landscapeId(), metrics(plan.blocks(), date, mastery)))
+                            plan.landscapeId(), dailyMetrics(plan.blocks(), date, mastery,
+                                    date.equals(asOf) ? completedTodayGoals : Set.of())))
                     .toList();
             LearnerLearningPlanApi.Metrics totals = new LearnerLearningPlanApi.Metrics(0, 0, 0, 0, 0, 0, 0);
             for (LearnerLearningPlanApi.PreviewSubject subject : subjects) {
@@ -575,6 +585,21 @@ public class LearnerLearningPlanService {
     public LearnerLearningPlanApi.TransitionResponse reconcile(
             String skillpilotId,
             LearnerLearningPlanApi.ReconcileRequest request) {
+        return reconcileInternal(skillpilotId, request, false);
+    }
+
+    /** Explicitly requested continuation may select voluntary extra work. */
+    @Transactional
+    public LearnerLearningPlanApi.TransitionResponse resumeExplicitly(
+            String skillpilotId,
+            LearnerLearningPlanApi.ReconcileRequest request) {
+        return reconcileInternal(skillpilotId, request, true);
+    }
+
+    private LearnerLearningPlanApi.TransitionResponse reconcileInternal(
+            String skillpilotId,
+            LearnerLearningPlanApi.ReconcileRequest request,
+            boolean allowExtra) {
         if (request == null) {
             throw badRequest("request is required");
         }
@@ -605,7 +630,8 @@ public class LearnerLearningPlanService {
                 currentPlans,
                 asOf,
                 mastery,
-                false);
+                false,
+                allowExtra);
         boolean parkedCompletedPointer = previousActiveGoalId != null && !previousActiveGoalId.isBlank();
         if (selected.isEmpty()) {
             LearnerService.LearningPlanTransitionResult transition = parkedCompletedPointer
@@ -836,12 +862,29 @@ public class LearnerLearningPlanService {
             LocalDate asOf,
             Map<String, Double> mastery,
             boolean failOnInvalidPlan) {
+        return firstCandidateAcrossPlans(skillpilotId, candidatePlans, asOf, mastery, failOnInvalidPlan, false);
+    }
+
+    private Optional<PlanGoalCandidate> firstCandidateAcrossPlans(
+            String skillpilotId,
+            List<LearnerLearningPlan> candidatePlans,
+            LocalDate asOf,
+            Map<String, Double> mastery,
+            boolean failOnInvalidPlan,
+            boolean allowExtra) {
         List<PlanGoalCandidate> candidates = new ArrayList<>();
+        List<PlanGoalCandidate> extras = new ArrayList<>();
+        Set<String> completions = learners.getGoalCompletionsOnDate(skillpilotId, asOf).keySet();
         for (LearnerLearningPlan plan : candidatePlans) {
             try {
                 List<LearnerLearningPlanApi.Block> blocks = requireCurrentBlocks(skillpilotId, plan);
+                boolean quotaComplete = dailyMetrics(blocks, asOf, mastery, completions).openDueToday() == 0;
+                if (quotaComplete && !allowExtra) {
+                    continue;
+                }
                 firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
-                        .ifPresent(dueGoal -> candidates.add(new PlanGoalCandidate(plan, dueGoal)));
+                        .ifPresent(dueGoal -> (quotaComplete ? extras : candidates)
+                                .add(new PlanGoalCandidate(plan, dueGoal)));
             } catch (ResponseStatusException exception) {
                 if (failOnInvalidPlan || exception.getStatusCode().is5xxServerError()) {
                     throw exception;
@@ -852,7 +895,8 @@ public class LearnerLearningPlanService {
                 }
             }
         }
-        return candidates.stream().min(planCandidateComparator());
+        return (candidates.isEmpty() && allowExtra ? extras : candidates)
+                .stream().min(planCandidateComparator());
     }
 
     private static Comparator<PlanGoalCandidate> planCandidateComparator() {
@@ -904,7 +948,8 @@ public class LearnerLearningPlanService {
         }
 
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
-        LearnerLearningPlanApi.Metrics metrics = metrics(blocks, asOf, mastery);
+        LearnerLearningPlanApi.Metrics metrics = dailyMetrics(blocks, asOf, mastery,
+                learners.getGoalCompletionsOnDate(skillpilotId, asOf).keySet());
         Optional<DueGoal> eligible = !stale
                 ? firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
                 : Optional.empty();
@@ -944,7 +989,7 @@ public class LearnerLearningPlanService {
         return new Evaluation(summary, blocks);
     }
 
-    /** Shared, side-effect-free calculation for published plans and draft previews. */
+    /** Future draft schedule preview; never invents future completion events. */
     private LearnerLearningPlanApi.Metrics metrics(
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf,
@@ -970,6 +1015,36 @@ public class LearnerLearningPlanService {
                 atomicIds(blocks).size());
     }
 
+    /**
+     * A stable subject workload, not an arbitrary fixed set of today's IDs.
+     * Completing an overdue goal first fills today's quota. The cumulative
+     * schedule itself never changes and prerequisites remain authoritative.
+     * openDue + recorded successes is invariant while today's work is completed;
+     * capping the quota by that value avoids demanding already finished work.
+     * Explicit plan edits may change the quota. Old updatedAt rows and imports
+     * are not completion events and must never be passed as today's successes.
+     */
+    static LearnerLearningPlanApi.Metrics dailyMetrics(
+            List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf,
+            Map<String, Double> mastery,
+            Set<String> completedTodayGoalIds) {
+        List<String> due = dueAtomicGoalIdsForSchedule(blocks, asOf);
+        Set<String> before = Set.copyOf(dueAtomicGoalIdsForSchedule(blocks, asOf.minusDays(1)));
+        int scheduledToday = (int) due.stream().filter(id -> !before.contains(id)).count();
+        int completed = (int) due.stream()
+                .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD).count();
+        int actualToday = (int) due.stream()
+                .filter(completedTodayGoalIds::contains)
+                .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD).count();
+        int open = due.size() - completed;
+        int quota = Math.min(scheduledToday, open + actualToday);
+        int credited = Math.min(quota, actualToday);
+        return new LearnerLearningPlanApi.Metrics(due.size(), completed, open,
+                quota, credited, quota - credited, atomicIds(blocks).size(),
+                actualToday - credited);
+    }
+
     private static LearnerLearningPlanApi.Metrics addMetrics(
             LearnerLearningPlanApi.Metrics left,
             LearnerLearningPlanApi.Metrics right) {
@@ -980,7 +1055,8 @@ public class LearnerLearningPlanService {
                 Math.addExact(left.dueToday(), right.dueToday()),
                 Math.addExact(left.completedDueToday(), right.completedDueToday()),
                 Math.addExact(left.openDueToday(), right.openDueToday()),
-                Math.addExact(left.totalPlanned(), right.totalPlanned()));
+                Math.addExact(left.totalPlanned(), right.totalPlanned()),
+                Math.addExact(left.extraCompletedToday(), right.extraCompletedToday()));
     }
 
     private Optional<DueGoal> firstEligibleDueGoal(
@@ -1568,7 +1644,7 @@ public class LearnerLearningPlanService {
         return "milestone".equals(block.kind()) ? block.date() : block.endDate();
     }
 
-    private Set<String> atomicIds(List<LearnerLearningPlanApi.Block> blocks) {
+    private static Set<String> atomicIds(List<LearnerLearningPlanApi.Block> blocks) {
         LinkedHashSet<String> ids = new LinkedHashSet<>();
         for (LearnerLearningPlanApi.Block block : blocks) {
             if (block.atomicGoalIds() != null) {

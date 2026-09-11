@@ -765,7 +765,7 @@
           "text": "Send the fresh prepared start message unchanged."
         }
       ],
-      "portalSummary": "One compact localized summary uses all valid plans and current mastered/due values; open counts per subject; overdue work only if positive. Partial-plan failures are disclosed safely.",
+      "portalSummary": "One compact localized summary shows actual completions today against stable subject quotas, open counts per subject and voluntary extra. Mention backlog only for requested plan details; disclose partial-plan failures safely.",
       "tools": {
         "required": [
           "get_skillpilot_context"
@@ -777,7 +777,7 @@
         {
           "id": "daily-counts",
           "kind": "manual",
-          "description": "Compare every visible subject count and total with the actual authoritative learningPlanToday fixture. The 48 due / 2 mastered / 46 open numbers are only a controlled backend example, never a forced live total. Do not describe current mastery as goals completed today."
+          "description": "Compare every visible count with authoritative learningPlanToday: completedToday counts actual completions today of due plan goals, including older overdue goals, capped at each subject's stable dueToday quota; extraCompletedToday is a voluntary bonus that never fills another subject's quota. The 48 quota / 2 completed today / 46 open numbers are a controlled backend example, never a forced live total. Avoid routine backlog reminders. A zero quota means no fixed quota today, not completed work."
         },
         {
           "id": "safe-warning",
@@ -799,12 +799,42 @@
           },
           {
             "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
-            "selector": "compactSummaryUsesCurrentMasteryCountsAndWarnsAboutPartialPlans",
+            "selector": "compactSummaryUsesTodayQuotaProgressAndWarnsAboutPartialPlans",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "fulfilledQuotaPublishesVoluntaryExtraAndDoesNotTurnBacklogIntoRequiredWork",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "zeroQuotaHasHonestHeadlineAndSubjectBonusNeverReplacesAnotherQuota",
             "layer": "backend-contract"
           },
           {
             "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
             "selector": "fullContextReadsTodayWithoutAdvancingStateAndSuppressesFutureGoalChoices",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java",
+            "selector": "overdueSuccessFillsTodaysQuotaBeforeReducingResidualBacklog",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java",
+            "selector": "noCrossSubjectOrFutureGoalCreditAndNoCreditForRevokedMastery",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerGoalCompletionIntegrationTest.java",
+            "selector": "partialWorkCompletionReplayAndResetKeepOneImmutableEvent",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java",
+            "selector": "completedQuotaStopsAutomaticReconcileButExplicitResumeAllowsExtraWork",
             "layer": "backend-contract"
           }
         ],
@@ -828,7 +858,7 @@
           "text": "In the fixture with no active goal and resumeAvailable=true, send the fresh prepared start message."
         }
       ],
-      "portalSummary": "Resume the backend-selected due goal exactly once using fresh state; teach its returned context. Do not ask for a redundant web continuation. A paired resumeAvailable=false fixture must not call resume.",
+      "portalSummary": "With guidance.state=resume and resumeAvailable=true, resume once and teach the returned goal without a web detour. With resumeAvailable=false, do not resume. With fulfilled quotas, start extra work only on explicit request, even if resumeAvailable=true.",
       "tools": {
         "required": [
           "get_skillpilot_context",

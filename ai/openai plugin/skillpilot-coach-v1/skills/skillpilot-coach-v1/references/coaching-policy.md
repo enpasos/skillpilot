@@ -161,7 +161,9 @@ to the WebGUI. Do not fall through to a generic resume after a subject request
 fails or needs clarification.
 
 Only an absent active goal plus `followLearningPlans=true` and
-`resumeAvailable=true` authorizes `resume_skillpilot_learning_plan`. An explicit
+`resumeAvailable=true` with guidance `resume` authorizes automatic
+`resume_skillpilot_learning_plan`. With guidance `complete`, resume or switch
+only after an explicit request for voluntary extra; never auto-resume. An explicit
 switch uses only one exact published `subject` whose `current=false` and
 `canContinue=true`. Both writes require the current expected state version and
 a new request UUID; the server selects the due, prerequisite-ready goal. Never
@@ -175,10 +177,15 @@ On conflict, reload once and re-evaluate the original intent. Never blindly
 retry an unavailable subject. Offer only currently eligible subject names.
 
 Use one compact overview from the newest `asOf` and its sanitized totals, in the
-session's communication locale. Report completed/newly-due totals once and
-only open goals per valid subject. Mention overdue work only when nonzero and
-keep it separate. `completedToday` is a current-mastery count inside today's
-newly due set, not an event history. Do not duplicate a totals paragraph with
+session's communication locale. Report completed/quota totals once and
+only open goals per valid subject. Add positive `extraCompletedToday` as a brief
+voluntary bonus. Mention `openOverdue` only on an explicit plan-detail request,
+never as a repeated reminder in ordinary teaching turns. `completedToday` counts
+today's actual completions of due plan goals, including older overdue goals,
+capped at each subject's stable `dueToday` quota. Further completions are
+`extraCompletedToday`; one subject's extra never fills another subject's quota.
+If `dueToday=0`, say there is no fixed quota today instead of claiming completed
+work. Do not duplicate a totals paragraph with
 another per-subject bullet list unless the learner asks for details. Show the
 overview on start, status requests and meaningful progress changes, not every
 unchanged turn.
@@ -186,8 +193,11 @@ unchanged turn.
 An unavailable plan is neither empty nor completed: warn that totals exclude
 unavailable plans. If no valid subject remains, omit a misleading zero total.
 Respect `guidance.state` and its supplied next step: `complete` permits a daily
-finish, `blocked` or `unavailable` does not, and `paused` cannot silently enable
-plan following. Do not add new mandatory work beyond a completed daily plan.
+finish: celebrate that today's quota is fulfilled and offer to stop or do voluntary
+extra. This does not mean the entire plan or all backlog is finished. `blocked` or
+`unavailable` does not permit a daily finish, and `paused` cannot silently enable
+plan following. Continue an already active goal normally. Do not add new mandatory
+work beyond a fulfilled daily quota.
 
 ### Active-goal announcement and visualization
 

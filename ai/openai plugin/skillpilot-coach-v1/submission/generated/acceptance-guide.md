@@ -6,11 +6,11 @@ Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten
 
 Kandidat: `1.1.0` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `8fb58b47989829f8a5bfe0c3a9015924241dbe4b1c99491cda1eda564dba80d2`
+Testsuite-SHA-256: `c2ed60388586a915882302c4e1eb562c482e5201421b30c85c3910e09a1a90b9`
 
-Vertrags-SHA-256: `6808924581ff4b00e25aede3010a9624b387c223940a116c81183feb77d1cf00`
+Vertrags-SHA-256: `985b820b4089c185c044e287c28c948e8fdfb95f8047094f8d687a4456848bb6`
 
-Paket-Snapshot-SHA-256: `15008afd5aede8ace1b987bf045c8aaf3046c98f7039d306848361c5d6a714f9`
+Paket-Snapshot-SHA-256: `963eacd74b5686de00c1898213361e9ad051b5509ee828b4e27e708d4c3141fc`
 
 ## Vorbereitung
 
@@ -458,7 +458,7 @@ Erwarteter Startzustand: Current learningPlanToday with at least two valid subje
 
 ### Erwartetes Ergebnis
 
-One compact localized summary uses all valid plans and current mastered/due values; open counts per subject; overdue work only if positive. Partial-plan failures are disclosed safely.
+One compact localized summary shows actual completions today against stable subject quotas, open counts per subject and voluntary extra. Mention backlog only for requested plan details; disclose partial-plan failures safely.
 
 Erforderliche Werkzeuge: `get_skillpilot_context`.
 
@@ -466,7 +466,7 @@ Verbotene Werkzeuge: keine zusätzlichen Verbote.
 
 ### Prüfkriterien
 
-- [ ] `daily-counts` — Inhaltlich/visuell prüfen: Compare every visible subject count and total with the actual authoritative learningPlanToday fixture. The 48 due / 2 mastered / 46 open numbers are only a controlled backend example, never a forced live total. Do not describe current mastery as goals completed today.
+- [ ] `daily-counts` — Inhaltlich/visuell prüfen: Compare every visible count with authoritative learningPlanToday: completedToday counts actual completions today of due plan goals, including older overdue goals, capped at each subject's stable dueToday quota; extraCompletedToday is a voluntary bonus that never fills another subject's quota. The 48 quota / 2 completed today / 46 open numbers are a controlled backend example, never a forced live total. Avoid routine backlog reminders. A zero quota means no fixed quota today, not completed work.
 
 - [ ] `safe-warning` — Inhaltlich/visuell prüfen: Unavailable plans get an explicit safe partial-data warning without internal identifiers; never represent missing plans as all-clear.
 
@@ -474,8 +474,14 @@ Verbotene Werkzeuge: keine zusätzlichen Verbote.
 
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `dailyPlanReadReturnsAdditiveLocalizedCountsWithoutInternalIds` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `dailyPlanReadSanitizesAndMergesSubjectsAndRecomputesTrustedTotals` (backend-contract)
-- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `compactSummaryUsesCurrentMasteryCountsAndWarnsAboutPartialPlans` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `compactSummaryUsesTodayQuotaProgressAndWarnsAboutPartialPlans` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `fulfilledQuotaPublishesVoluntaryExtraAndDoesNotTurnBacklogIntoRequiredWork` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `zeroQuotaHasHonestHeadlineAndSubjectBonusNeverReplacesAnotherQuota` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `fullContextReadsTodayWithoutAdvancingStateAndSuppressesFutureGoalChoices` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `overdueSuccessFillsTodaysQuotaBeforeReducingResidualBacklog` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `noCrossSubjectOrFutureGoalCreditAndNoCreditForRevokedMastery` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/service/LearnerGoalCompletionIntegrationTest.java` → `partialWorkCompletionReplayAndResetKeepOneImmutableEvent` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java` → `completedQuotaStopsAutomaticReconcileButExplicitResumeAllowsExtraWork` (backend-contract)
 
 ## D2: Resume only an authoritative due candidate
 
@@ -501,7 +507,7 @@ Erwarteter Startzustand: No active goal; current authorized plan resume option a
 
 ### Erwartetes Ergebnis
 
-Resume the backend-selected due goal exactly once using fresh state; teach its returned context. Do not ask for a redundant web continuation. A paired resumeAvailable=false fixture must not call resume.
+With guidance.state=resume and resumeAvailable=true, resume once and teach the returned goal without a web detour. With resumeAvailable=false, do not resume. With fulfilled quotas, start extra work only on explicit request, even if resumeAvailable=true.
 
 Erforderliche Werkzeuge: `get_skillpilot_context`, `resume_skillpilot_learning_plan`.
 

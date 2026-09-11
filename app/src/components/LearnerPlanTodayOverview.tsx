@@ -18,6 +18,7 @@ import {
   formatLearnerLearningPlanDate,
   formatLearnerLearningPlanPeriod,
 } from '../utils/learnerLearningPlanReadModel'
+import { LearnerPlanDailyProgress } from './LearnerPlanDailyProgress'
 
 export interface LearnerPlanTodayOverviewProps {
   plans: readonly LearnerLearningPlanSummary[]
@@ -67,11 +68,10 @@ const LearnerPlanDetails = ({
       <p>
         <span className="block text-xs font-medium uppercase tracking-wide">{copy.dueTodayLabel}</span>
         <span className="mt-1 block text-text-primary">
-          {plan.metrics.openDueToday} {language === 'de' ? 'offen' : 'open'}
-          {' · '}
-          {plan.metrics.completedDueToday} {language === 'de' ? 'beherrscht' : 'mastered'}
+          {copy.dailyProgress(plan.metrics.completedDueToday, plan.metrics.dueToday)}
         </span>
       </p>
+      <p className="sm:col-span-2">{copy.includesBacklog}</p>
       <p className="sm:col-span-2">
         {copy.cumulativeProgress(
           plan.metrics.completedDueThroughToday,
@@ -150,10 +150,13 @@ export const LearnerPlanTodayOverview = ({
   const headingId = React.useId()
   const summaryId = React.useId()
   const validPlans = plans.filter((plan) => !plan.stale)
-  const openThroughToday = validPlans.reduce(
-    (sum, plan) => sum + plan.metrics.openDueThroughToday,
+  const openToday = validPlans.reduce(
+    (sum, plan) => sum + plan.metrics.openDueToday,
     0,
   )
+  const dailyQuota = validPlans.reduce((sum, plan) => sum + plan.metrics.dueToday, 0)
+  const activePlan = validPlans.find((plan) => plan.landscapeId === activeLandscapeId)
+  const activeIsVoluntary = activePlan?.metrics.openDueToday === 0
   const activeSubject = activeLandscapeId ? subjectLabel(activeLandscapeId) : null
   const activeGoalLabel = activeGoalId ? goalLabel(activeGoalId) : undefined
   const allActionsDisabled = actionsDisabled || Boolean(staleDataMessage)
@@ -174,11 +177,8 @@ export const LearnerPlanTodayOverview = ({
             </span>
           </div>
           <p id={summaryId} className="mt-1 text-sm font-medium text-text-primary">
-            {openThroughToday > 0 ? copy.todayOpen(openThroughToday) : copy.todayDone}
+            {openToday > 0 ? copy.todayOpen(openToday) : dailyQuota > 0 ? copy.todayDone : copy.todayNoQuota}
           </p>
-          {openThroughToday > 0 ? (
-            <p className="mt-1 text-xs text-text-secondary">{copy.includesBacklog}</p>
-          ) : null}
         </div>
         <button
           type="button"
@@ -215,7 +215,7 @@ export const LearnerPlanTodayOverview = ({
             className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-sky-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:focus-visible:ring-offset-slate-900"
           >
             <Play size={16} fill="currentColor" aria-hidden="true" />
-            {copy.continueLearningAction}
+            {activeIsVoluntary ? copy.voluntaryContinueAction : copy.continueLearningAction}
           </button>
         </div>
       ) : isReconciling ? (
@@ -262,6 +262,7 @@ export const LearnerPlanTodayOverview = ({
           const isActive = Boolean(activeGoalId && plan.landscapeId === activeLandscapeId)
           const isSwitching = switchingPlanId === plan.planId
           const hasOpenDueGoal = plan.metrics.openDueThroughToday > 0
+          const dailyTargetOpen = plan.metrics.openDueToday > 0
           const canSwitch = planModeEnabled
             && !isActive
             && !plan.stale
@@ -276,7 +277,7 @@ export const LearnerPlanTodayOverview = ({
               className="py-3 first:pt-0 last:pb-0"
             >
               <div className="flex flex-wrap items-center gap-3">
-                <div className="min-w-0 flex-1">
+                <div className="min-w-0 w-full sm:w-auto sm:flex-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <h3 className="font-semibold text-text-primary">{label}</h3>
                     {isActive ? (
@@ -290,15 +291,16 @@ export const LearnerPlanTodayOverview = ({
                       </span>
                     ) : null}
                   </div>
-                  <p className="mt-0.5 text-sm text-text-secondary">
-                    {plan.stale
-                      ? copy.stalePlan
-                      : hasOpenDueGoal
-                        ? plan.nextEligibleGoal
-                          ? copy.openCount(plan.metrics.openDueThroughToday)
-                          : copy.subjectBlocked
-                        : copy.subjectDone}
-                  </p>
+                  {plan.stale ? (
+                    <p className="mt-0.5 text-sm text-text-secondary">{copy.stalePlan}</p>
+                  ) : (
+                    <>
+                      <LearnerPlanDailyProgress metrics={plan.metrics} subjectLabel={label} language={language} />
+                      {dailyTargetOpen && !plan.nextEligibleGoal ? (
+                        <p className="mt-1 text-sm text-text-secondary">{copy.subjectBlocked}</p>
+                      ) : null}
+                    </>
+                  )}
                 </div>
                 {canSwitch ? (
                   <button
@@ -307,10 +309,10 @@ export const LearnerPlanTodayOverview = ({
                     aria-busy={isSwitching || undefined}
                     disabled={allActionsDisabled || isReconciling || Boolean(switchingPlanId)}
                     onClick={() => onSwitch(plan.planId)}
-                    className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-sky-300 bg-white px-3 py-2 text-sm font-semibold text-sky-800 transition-colors hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-60 dark:border-sky-800 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/30"
+                    className="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-lg border border-sky-300 bg-white px-3 py-2 text-sm font-semibold text-sky-800 transition-colors hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-60 dark:border-sky-800 dark:bg-slate-900 dark:text-sky-200 sm:w-auto dark:hover:bg-sky-950/30"
                   >
                     <Repeat2 size={16} aria-hidden="true" />
-                    {isSwitching ? copy.switchBusy : copy.switchSubjectAction(label)}
+                    {isSwitching ? copy.switchBusy : dailyTargetOpen ? copy.switchSubjectAction(label) : copy.voluntarySubjectAction(label)}
                   </button>
                 ) : null}
               </div>
@@ -335,16 +337,18 @@ export const LearnerPlanTodayOverview = ({
         })}
       </ul>
 
-      {planModeEnabled && !isReconciling && !activeGoalId && openThroughToday > 0 && !actionError ? (
+      {planModeEnabled && !isReconciling && !activeGoalId && openToday > 0
+        && !validPlans.some((plan) => plan.metrics.openDueToday > 0 && plan.nextEligibleGoal)
+        && !actionError ? (
         <p className="mt-4 flex items-start gap-2 text-sm text-text-secondary" role="status">
           <CircleAlert className="mt-0.5 shrink-0" size={17} aria-hidden="true" />
           <span>{copy.dueGoalBlocked}</span>
         </p>
       ) : null}
-      {planModeEnabled && !isReconciling && !activeGoalId && openThroughToday === 0 ? (
+      {planModeEnabled && !isReconciling && !activeGoalId && openToday === 0 && dailyQuota > 0 ? (
         <p className="mt-4 flex items-center gap-2 text-sm font-medium text-emerald-700 dark:text-emerald-300" role="status">
           <CheckCircle2 size={18} aria-hidden="true" />
-          {copy.nothingDue}
+          {copy.dailyTargetDoneBody}
         </p>
       ) : null}
     </section>

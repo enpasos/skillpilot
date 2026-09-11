@@ -173,6 +173,9 @@ export const parseLearnerLearningPlanSummary = (value: unknown): LearnerLearning
   const dueToday = requiredInteger(metrics.dueToday, 'metrics.dueToday')
   const completedDueToday = requiredInteger(metrics.completedDueToday, 'metrics.completedDueToday')
   const openDueToday = requiredInteger(metrics.openDueToday, 'metrics.openDueToday')
+  const extraCompletedToday = metrics.extraCompletedToday === undefined
+    ? undefined
+    : requiredInteger(metrics.extraCompletedToday, 'metrics.extraCompletedToday')
   const totalPlanned = requiredInteger(metrics.totalPlanned, 'metrics.totalPlanned')
   if (
     completedDueThroughToday > dueThroughToday
@@ -183,6 +186,8 @@ export const parseLearnerLearningPlanSummary = (value: unknown): LearnerLearning
     || dueToday > dueThroughToday
     || completedDueToday > completedDueThroughToday
     || openDueToday > openDueThroughToday
+    || (extraCompletedToday ?? 0) > completedDueThroughToday - completedDueToday
+    || ((extraCompletedToday ?? 0) > 0 && openDueToday > 0)
   ) {
     throw new Error('Invalid learning-plan response: metrics.cardinality')
   }
@@ -236,6 +241,7 @@ export const parseLearnerLearningPlanSummary = (value: unknown): LearnerLearning
       dueToday,
       completedDueToday,
       openDueToday,
+      ...(extraCompletedToday === undefined ? {} : { extraCompletedToday }),
       totalPlanned,
     },
     buffer: {
@@ -643,7 +649,7 @@ export const activateLearnerLearningPlans = async (
   return parseActivateResponse(await readJsonResponse(response))
 }
 
-const parsePreviewMetrics = (value: unknown): LearnerLearningPlanMetrics => {
+const parsePreviewMetrics = (value: unknown, aggregate = false): LearnerLearningPlanMetrics => {
   const source = asRecord(value, 'Invalid learning-plan preview: metrics')
   const metrics: LearnerLearningPlanMetrics = {
     dueThroughToday: requiredInteger(source.dueThroughToday, 'metrics.dueThroughToday'),
@@ -652,6 +658,9 @@ const parsePreviewMetrics = (value: unknown): LearnerLearningPlanMetrics => {
     dueToday: requiredInteger(source.dueToday, 'metrics.dueToday'),
     completedDueToday: requiredInteger(source.completedDueToday, 'metrics.completedDueToday'),
     openDueToday: requiredInteger(source.openDueToday, 'metrics.openDueToday'),
+    ...(source.extraCompletedToday === undefined ? {} : {
+      extraCompletedToday: requiredInteger(source.extraCompletedToday, 'metrics.extraCompletedToday'),
+    }),
     totalPlanned: requiredInteger(source.totalPlanned, 'metrics.totalPlanned'),
   }
   if (
@@ -663,6 +672,8 @@ const parsePreviewMetrics = (value: unknown): LearnerLearningPlanMetrics => {
     || metrics.dueToday > metrics.dueThroughToday
     || metrics.completedDueToday > metrics.completedDueThroughToday
     || metrics.openDueToday > metrics.openDueThroughToday
+    || (metrics.extraCompletedToday ?? 0) > metrics.completedDueThroughToday - metrics.completedDueToday
+    || (!aggregate && (metrics.extraCompletedToday ?? 0) > 0 && metrics.openDueToday > 0)
   ) throw new Error('Invalid learning-plan preview: metrics.cardinality')
   return metrics
 }
@@ -700,10 +711,14 @@ export const parsePreviewLearnerLearningPlansResponse = (
       || new Set(subjects.map((subject) => subject.landscapeId)).size !== subjects.length
       || subjects.some((subject) => !expectedSubjects.has(subject.landscapeId))
     ) throw new Error('Invalid learning-plan preview: subjects')
-    const totals = parsePreviewMetrics(day.totals)
-    for (const key of Object.keys(totals) as Array<keyof LearnerLearningPlanMetrics>) {
-      const sum = subjects.reduce((total, subject) => total + subject.metrics[key], 0)
-      if (!Number.isSafeInteger(sum) || totals[key] !== sum) {
+    const totals = parsePreviewMetrics(day.totals, true)
+    const metricKeys = new Set([
+      ...Object.keys(totals),
+      ...subjects.flatMap((subject) => Object.keys(subject.metrics)),
+    ] as Array<keyof LearnerLearningPlanMetrics>)
+    for (const key of metricKeys) {
+      const sum = subjects.reduce((total, subject) => total + (subject.metrics[key] ?? 0), 0)
+      if (!Number.isSafeInteger(sum) || (totals[key] ?? 0) !== sum) {
         throw new Error('Invalid learning-plan preview: totals')
       }
     }

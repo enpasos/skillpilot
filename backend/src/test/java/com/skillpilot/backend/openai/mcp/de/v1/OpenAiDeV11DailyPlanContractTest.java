@@ -118,6 +118,15 @@ class OpenAiDeV11DailyPlanContractTest {
         JsonNode currentSchema = objectMapper.valueToTree(spec(enabled,
                 OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema());
         assertThat(currentSchema.path("properties").has("learningPlanToday")).isTrue();
+        JsonNode dailySchema = currentSchema.path("properties").path("learningPlanToday");
+        for (JsonNode countsSchema : List.of(dailySchema.path("properties").path("totals"),
+                dailySchema.path("properties").path("subjects").path("items"))) {
+            assertThat(countsSchema.path("properties").path("extraCompletedToday").path("type").asText())
+                    .isEqualTo("integer");
+            assertThat(countsSchema.path("properties").path("extraCompletedToday").path("minimum").asInt())
+                    .isZero();
+            assertThat(countsSchema.path("required").toString()).contains("extraCompletedToday");
+        }
         JsonNode legacySchema = objectMapper.valueToTree(spec(disabled,
                 OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema());
         assertThat(legacySchema.path("properties").has("learningPlanToday")).isFalse();
@@ -468,17 +477,73 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     @Test
-    void compactSummaryUsesCurrentMasteryCountsAndWarnsAboutPartialPlans() {
+    void compactSummaryUsesTodayQuotaProgressAndWarnsAboutPartialPlans() {
         var projection = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
                 LocalDate.parse("2026-09-09"), true, true,
                 List.of(new LearnerPlanTodayStatus.SubjectStatus("private-math", "Mathematik", 21, 2, 19, 0),
                         new LearnerPlanTodayStatus.SubjectStatus("private-physics", "Physik", 27, 0, 27, 0)),
                 new LearnerPlanTodayStatus.Totals(999, 999, 999, 999), 1), false, false);
         assertThat(projection.summary(false)).isEqualTo(
-                "Heute: 2/48 beherrscht · Offen: Mathematik 19 · Physik 27 · Nicht auswertbare Pläne: 1");
+                "Heute: 2/48 geschafft · Offen: Mathematik 19 · Physik 27 · Nicht auswertbare Pläne: 1");
         assertThat(projection.summary(true)).isEqualTo(
-                "Today: 2/48 mastered · Open: Mathematik 19 · Physik 27 · Unavailable plans: 1");
-        assertThat(projection.summary(false)).doesNotContain("Rückstand", "heute geschafft");
+                "Today: 2/48 done · Open: Mathematik 19 · Physik 27 · Unavailable plans: 1");
+        assertThat(projection.summary(false)).doesNotContain("Rückstand");
+    }
+
+    @Test
+    void fulfilledQuotaPublishesVoluntaryExtraAndDoesNotTurnBacklogIntoRequiredWork() {
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
+                .thenReturn(new LearnerPlanTodayStatus(LocalDate.parse("2026-09-11"), true, true,
+                        List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                                "private-math", "Mathematik", 2, 2, 0, 3, false, true, 4)),
+                        new LearnerPlanTodayStatus.Totals(99, 99, 99, 99, 99), 0));
+        var response = call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
+        JsonNode content = objectMapper.valueToTree(response.structuredContent());
+        JsonNode today = content.path("learningPlanToday");
+        assertThat(today.path("guidance").path("state").asText()).isEqualTo("complete");
+        assertThat(today.path("guidance").path("instruction").asText())
+                .contains("explicit request", "Remaining backlog is not required today");
+        assertThat(today.path("totals").path("extraCompletedToday").asInt()).isEqualTo(4);
+        assertThat(today.path("subjects").get(0).path("extraCompletedToday").asInt()).isEqualTo(4);
+        assertThat(today.path("subjects").get(0).path("canContinue").asBoolean()).isTrue();
+        assertThat(today.path("resumeAvailable").asBoolean()).isTrue();
+        assertThat(content.path("requiredAction").asText()).isEqualTo("complete");
+        assertThat(content.path("frontier")).isEmpty();
+        assertThat(response.content().toString()).contains("Zusätzlich: +4").doesNotContain("Rückstand");
+        verify(coachTools, never()).resumeLearningPlan(any(), any());
+    }
+
+    @Test
+    void zeroQuotaHasHonestHeadlineAndSubjectBonusNeverReplacesAnotherQuota() {
+        var weekend = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
+                LocalDate.parse("2026-09-12"), true, true,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus("m", "Mathematik", 0, 0, 0, 7,
+                        false, true, 2)), null, 0), false, false);
+        assertThat(weekend.guidance().state()).isEqualTo("complete");
+        assertThat(weekend.summary(false)).isEqualTo("Heute kein festes Pensum. · Zusätzlich: +2");
+        assertThat(weekend.summary(true)).isEqualTo("No fixed quota today. · Extra: +2");
+
+        var subjects = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
+                LocalDate.parse("2026-09-11"), true, true,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus("m", "Mathematik", 2, 2, 0, 0,
+                                false, false, 4),
+                        new LearnerPlanTodayStatus.SubjectStatus("p", "Physik", 2, 0, 2, 0,
+                                false, true, 0)), null, 0), false, false);
+        assertThat(subjects.totals().completedToday()).isEqualTo(2);
+        assertThat(subjects.totals().openToday()).isEqualTo(2);
+        assertThat(subjects.totals().extraCompletedToday()).isEqualTo(4);
+        assertThat(subjects.guidance().state()).isEqualTo("resume");
+    }
+
+    @Test
+    void bonusBeforeItsOwnSubjectQuotaIsFilledMakesThatPlanUnavailable() {
+        var projection = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
+                LocalDate.parse("2026-09-11"), true, false,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus("m", "Mathematik", 2, 1, 1, 3,
+                        false, false, 1)), null, 0), false, false);
+        assertThat(projection.subjects()).isEmpty();
+        assertThat(projection.unavailablePlanCount()).isEqualTo(1);
+        assertThat(projection.guidance().state()).isEqualTo("unavailable");
     }
 
     @Test

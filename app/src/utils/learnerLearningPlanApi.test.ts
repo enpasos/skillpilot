@@ -139,6 +139,31 @@ assert.equal(parsed.plans[0]?.nextMilestone?.date, '2026-09-25')
 assert.equal(parsed.plans[0]?.metrics.openDueThroughToday, 5)
 assert.equal(parsed.plans[0]?.metrics.openDueToday, 2)
 assert.equal(parsed.plans[0]?.nextEligibleGoal?.goalId, 'analysis-1')
+assert.equal(parsed.plans[0]?.metrics.extraCompletedToday, undefined, 'older responses remain compatible')
+
+const completedMetrics = { ...planSummary.metrics, completedDueToday: 3, openDueToday: 0, extraCompletedToday: 2 }
+const parsedExtra = parseLearnerLearningPlansResponse({
+  asOf: '2026-09-10', followLearningPlans: true,
+  plans: [{ ...planSummary, metrics: completedMetrics }],
+})
+assert.equal(parsedExtra.plans[0]?.metrics.extraCompletedToday, 2)
+assert.equal(parsedExtra.plans[0]?.canContinue, true, 'completed quota still permits explicit extra work')
+for (const invalidMetrics of [
+  { ...completedMetrics, extraCompletedToday: -1 },
+  { ...completedMetrics, extraCompletedToday: 0.5 },
+  { ...completedMetrics, extraCompletedToday: Number.NaN },
+  { ...completedMetrics, extraCompletedToday: Number.MAX_SAFE_INTEGER + 1 },
+  { ...completedMetrics, extraCompletedToday: '2' },
+  { ...completedMetrics, extraCompletedToday: null },
+  { ...completedMetrics, extraCompletedToday: 5 },
+  { ...completedMetrics, completedDueToday: 4 },
+  { ...planSummary.metrics, extraCompletedToday: 1 },
+]) {
+  assert.throws(() => parseLearnerLearningPlansResponse({
+    asOf: '2026-09-10', followLearningPlans: true,
+    plans: [{ ...planSummary, metrics: invalidMetrics }],
+  }), /metrics\./u)
+}
 
 assert.throws(
   () => parseLearnerLearningPlansResponse({
@@ -181,6 +206,10 @@ const sorted = sortLearnerLearningPlansForToday([
   { ...parsed.plans[0], planId: 'actionable', landscapeId: 'p' },
 ])
 assert.deepEqual(sorted.map(({ planId }) => planId), ['actionable', 'done', 'stale'])
+assert.deepEqual(sortLearnerLearningPlansForToday([
+  { ...parsedExtra.plans[0], planId: 'voluntary', landscapeId: 'a' },
+  { ...parsed.plans[0], planId: 'daily', landscapeId: 'z' },
+]).map(({ planId }) => planId), ['daily', 'voluntary'], 'unfinished daily targets precede extra work')
 
 let capturedUrl = ''
 let capturedInit: RequestInit | undefined
@@ -465,6 +494,44 @@ const previewResponse = {
   })),
 }
 assert.deepEqual(parsePreviewLearnerLearningPlansResponse(previewResponse, previewRequest), previewResponse)
+const mixedPreviewRequest = {
+  ...previewRequest,
+  plans: [...previewRequest.plans, { landscapeId: 'physics', expectedRevision: 1, blocks: [] }],
+}
+const mixedPreviewResponse = {
+  ...previewResponse,
+  days: previewResponse.days.map((day) => ({
+    ...day,
+    subjects: [
+      { landscapeId: planDetail.landscapeId, metrics: completedMetrics },
+      { landscapeId: 'physics', metrics: planDetail.metrics },
+    ],
+    totals: {
+      dueThroughToday: 24, completedDueThroughToday: 14, openDueThroughToday: 10,
+      dueToday: 6, completedDueToday: 4, openDueToday: 2,
+      extraCompletedToday: 2, totalPlanned: 84,
+    },
+  })),
+}
+assert.equal(parsePreviewLearnerLearningPlansResponse(mixedPreviewResponse, mixedPreviewRequest)
+  .days[0].totals.extraCompletedToday, 2, 'one subject can earn extras while another daily target remains open')
+for (const extraCompletedToday of [-1, 0.5, null, '1']) {
+  assert.throws(() => parsePreviewLearnerLearningPlansResponse({
+    ...previewResponse,
+    days: previewResponse.days.map((day) => ({
+      ...day,
+      totals: { ...day.totals, extraCompletedToday },
+    })),
+  }, previewRequest), /metrics\.extraCompletedToday/u)
+}
+assert.throws(() => parsePreviewLearnerLearningPlansResponse({
+  ...previewResponse,
+  days: previewResponse.days.map((day) => ({
+    ...day,
+    subjects: day.subjects.map((subject) => ({ ...subject, metrics: completedMetrics })),
+    totals: { ...completedMetrics, extraCompletedToday: undefined },
+  })),
+}, previewRequest), /preview: totals/u, 'omitted optional totals cannot hide supplied subject completions')
 for (const invalid of [
   { ...previewResponse, asOf: '2026-10-25' },
   { ...previewResponse, days: previewResponse.days.slice(1) },

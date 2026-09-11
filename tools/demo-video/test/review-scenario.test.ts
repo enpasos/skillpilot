@@ -341,14 +341,17 @@ test("daily-plan chapter verifies counts, genuine continuation and an explicit s
     return new RegExp(step.textPattern, "iu");
   };
   const counts = resultPattern("d1-daily-counts");
-  assert.match("Heute: 0/2 beherrscht · Offen: Mathematik 1 · Physik 1", counts);
-  assert.match("Heute: 0/0 beherrscht · Offen: Mathematik 0 · Physik 0 · Rückstand: 2", counts);
+  assert.match("Heute: 0/2 geschafft · Offen: Mathematik 1 · Physik 1", counts);
+  assert.match("Heute kein festes Pensum.", counts);
   for (const incorrect of [
-    "Heute: 2/48 beherrscht · Offen: Mathematik 19 · Physik 27",
-    "Heute: 0/2 beherrscht · Offen: Mathematik 1 · Physik 10",
-    "Heute: 0/2 beherrscht · Offen: Mathematik 1 · Physik 1 · Rückstand: 2",
+    "Heute: 2/48 geschafft · Offen: Mathematik 19 · Physik 27",
+    "Heute: 0/2 geschafft · Offen: Mathematik 1 · Physik 10",
+    "Heute: 0/2 geschafft · Offen: Mathematik 1 · Physik 1 · Rückstand: 2",
+    "Heute: 0/2 beherrscht · Offen: Mathematik 1 · Physik 1",
     "Heute: 0/0 beherrscht · Offen: Mathematik 0 · Physik 0",
     "Heute: 0/0 beherrscht · Offen: Mathematik 0 · Physik 0 · Rückstand: 20",
+    "Heute kein festes Pensum. · Rückstand: 2",
+    "Heute: 0/0 geschafft",
     "Tagesplan nicht auswertbar.",
   ]) assert.doesNotMatch(incorrect, counts);
   assert.match("Warum Mathematik? – Denken, Muster & Zukunft", resultPattern("d1-mathematics-active"));
@@ -377,6 +380,8 @@ test("daily-plan chapter verifies counts, genuine continuation and an explicit s
   }
   assert.match(daily.narrationHint ?? "", /does not prove.*D2/u);
   assert.match(daily.narrationHint ?? "", /motivation, not a knowledge test or proof of mastery/u);
+  assert.match(daily.narrationHint ?? "", /no fixed quota/u);
+  assert.match(daily.narrationHint ?? "", /explicitly chosen voluntary extra/u);
 });
 
 test("documents exact local paths and separates the upload video from portal test cases", async () => {

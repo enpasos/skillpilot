@@ -204,7 +204,7 @@ public class ClaudeV1CoachContextProjector {
                     "followLearningPlans", false,
                     "resumeAvailable", false,
                     "subjects", List.of(),
-                    "totals", dailyCounts(0, 0, 0, 0),
+                    "totals", dailyCounts(0, 0, 0, 0, 0),
                     "unavailablePlanCount", 0,
                     "guidance", dailyPlanGuidance("unavailable"));
         }
@@ -224,14 +224,14 @@ public class ClaudeV1CoachContextProjector {
                     subject.dueToday(),
                     subject.completedToday(),
                     subject.openToday(),
-                    subject.openOverdue());
+                    subject.openOverdue(), subject.extraCompletedToday());
             bySubject.merge(label,
                     new DailySubject(counts, subject.current(), subject.canContinue(), 1),
                     DailySubject::add);
         }
 
         List<Map<String, Object>> subjects = new java.util.ArrayList<>();
-        DailyCounts totals = new DailyCounts(0, 0, 0, 0);
+        DailyCounts totals = new DailyCounts(0, 0, 0, 0, 0);
         for (Map.Entry<String, DailySubject> entry : bySubject.entrySet()) {
             DailySubject value = entry.getValue();
             DailyCounts counts = value.counts();
@@ -244,7 +244,7 @@ public class ClaudeV1CoachContextProjector {
                     counts.dueToday(),
                     counts.completedToday(),
                     counts.openToday(),
-                    counts.openOverdue()));
+                    counts.openOverdue(), counts.extraCompletedToday()));
             subjects.add(Map.copyOf(subject));
             totals = totals.add(counts);
         }
@@ -259,7 +259,7 @@ public class ClaudeV1CoachContextProjector {
                 totals.dueToday(),
                 totals.completedToday(),
                 totals.openToday(),
-                totals.openOverdue()));
+                totals.openOverdue(), totals.extraCompletedToday()));
         projected.put(
                 "resumeAvailable",
                 status.followLearningPlans() && status.resumeAvailable() && !hasActiveGoal);
@@ -267,11 +267,9 @@ public class ClaudeV1CoachContextProjector {
         boolean canResume = Boolean.TRUE.equals(projected.get("resumeAvailable"));
         String guidanceState = !status.followLearningPlans() ? "paused"
                 : hasActiveGoal ? "continue"
-                : canResume ? "resume"
                 : status.asOf() == null || subjects.isEmpty() ? "unavailable"
-                : totals.openToday() > 0 || totals.openOverdue() > 0 ? "blocked"
-                : unavailablePlanCount > 0 ? "unavailable"
-                : "complete";
+                : totals.openToday() == 0 ? unavailablePlanCount > 0 ? "unavailable" : "complete"
+                : canResume ? "resume" : "blocked";
         projected.put("guidance", dailyPlanGuidance(guidanceState));
         return Map.copyOf(projected);
     }
@@ -285,10 +283,12 @@ public class ClaudeV1CoachContextProjector {
                     + "for confirmation. A clear subject request takes priority: use its exact published subject "
                     + "with canContinue=true instead of a preliminary generic resume. For a status-only question "
                     + "or pause, report the status without starting a goal.";
-            case "complete" -> "The complete evaluated workload due through today, including backlog, is done. "
-                    + "Say clearly that no more plan goals are required today. Do not select a future goal, widen "
-                    + "the focus or send the learner to the Web application. Extra learning is optional and "
-                    + "requires an explicit learner request; this does not mean the entire plan is finished.";
+            case "complete" -> "Today's quota is fulfilled in every evaluated subject. Celebrate that progress "
+                    + "and offer to stop or do voluntary extra learning. If dueToday=0, say there is no fixed quota "
+                    + "today instead of claiming work was completed. Extra learning requires an explicit request, "
+                    + "even when resumeAvailable=true. Do not automatically resume, select future goals, widen "
+                    + "focus or redirect to the Web app. Remaining backlog is not required today; neither the "
+                    + "entire plan nor all backlog is necessarily finished.";
             case "blocked" -> "Some due goals remain open, but none can currently be started. Do not call today "
                     + "complete, invent a goal or offer the same unavailable subject again. Explain this briefly "
                     + "and suggest that the teacher check the plan; do not make the learner repair it in the Web app.";
@@ -308,6 +308,8 @@ public class ClaudeV1CoachContextProjector {
                 && subject.completedToday() >= 0
                 && subject.openToday() >= 0
                 && subject.openOverdue() >= 0
+                && subject.extraCompletedToday() >= 0
+                && (subject.extraCompletedToday() == 0 || subject.openToday() == 0)
                 && (long) subject.completedToday() + subject.openToday() == subject.dueToday();
     }
 
@@ -315,12 +317,14 @@ public class ClaudeV1CoachContextProjector {
             int dueToday,
             int completedToday,
             int openToday,
-            int openOverdue) {
+            int openOverdue,
+            int extraCompletedToday) {
         Map<String, Object> counts = new LinkedHashMap<>();
         counts.put("dueToday", dueToday);
         counts.put("completedToday", completedToday);
         counts.put("openToday", openToday);
         counts.put("openOverdue", openOverdue);
+        counts.put("extraCompletedToday", extraCompletedToday);
         return Map.copyOf(counts);
     }
 
@@ -342,14 +346,16 @@ public class ClaudeV1CoachContextProjector {
             int dueToday,
             int completedToday,
             int openToday,
-            int openOverdue) {
+            int openOverdue,
+            int extraCompletedToday) {
 
         DailyCounts add(DailyCounts other) {
             return new DailyCounts(
                     Math.addExact(dueToday, other.dueToday),
                     Math.addExact(completedToday, other.completedToday),
                     Math.addExact(openToday, other.openToday),
-                    Math.addExact(openOverdue, other.openOverdue));
+                    Math.addExact(openOverdue, other.openOverdue),
+                    Math.addExact(extraCompletedToday, other.extraCompletedToday));
         }
     }
 

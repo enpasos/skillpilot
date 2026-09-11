@@ -852,6 +852,18 @@ Implementation-wise:
 - Layer B is **per-learner data** and should be persisted separately (database, files, …).
 - The current React app keeps a single in-memory `mastery` map as a prototype of this layer.
 
+Daily plan progress is a backend-owned **quota per subject**, not mastery of a
+fixed set of newly scheduled goal IDs. Actual completion events today, including
+due backlog goals, fill that subject's quota first; additional completions are
+voluntary extra progress. Subjects never offset each other's open quota.
+Automatic plan reconciliation and handoff stop when every daily quota is met;
+remaining plan work requires an explicit learner request. Preserve prerequisites
+and actual mastery. Never infer a completion date from `mastery.updated_at`, an
+import, or a current mastery snapshot. Completion events are transactional,
+unique per learner/goal/Berlin day, and not historically backfilled. The exact
+counting, migration, and presentation contract is documented in
+`docs/concept/runtime-workflows/daily-learning-progress.md`.
+
 ### 10.3 Layer C – LLM-/MCP-Integration
 
 Layer C connects the skill graph and learner states to **LLM-based agents**.

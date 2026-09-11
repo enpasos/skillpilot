@@ -12,15 +12,15 @@ test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.2", () => {
+test("rejects a replacement candidate version other than 1.1.3", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.2"',
+      '"version": "1.1.3"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.2/u,
+      /replacement candidate must be version 1\.1\.3/u,
     );
   });
 });
@@ -265,15 +265,15 @@ for (const path of [
     });
   });
 
-  test(`rejects a zero-backlog announcement in ${path}`, () => {
+  test(`rejects routine backlog reminders in ${path}`, () => {
     withPackageCopy((root) => {
       mutate(root, path, (value) => value.replace(
-        /omit zero backlog\s+entirely/u,
-        "always announce zero backlog",
+        /only on an explicit plan-detail request/u,
+        "in every ordinary teaching turn",
       ));
       assert.match(
         validateClaudePluginPackage(root).errors.join("\n"),
-        /omit zero backlog, keep positive overdue separate/u,
+        /show voluntary extra, reserve backlog for explicit details/u,
       );
     });
   });
@@ -292,15 +292,28 @@ for (const path of [
   });
 }
 
-test("rejects event-history claims for completedToday", () => {
+test("rejects counting old mastery as today's completed work", () => {
   withPackageCopy((root) => {
     mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
-      /goals newly due today that are\s+currently\s+mastered/u,
-      "mastery events recorded during the current day",
+      /today's actual completions of due plan goals, including\s+older overdue goals/u,
+      "goals newly due today that are currently mastered",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /completedToday as current mastery, not same-day event history/u,
+      /count actual today completions toward each subject quota/u,
+    );
+  });
+});
+
+test("rejects automatic extra work after the quota is fulfilled", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replace(
+      "never auto-resume",
+      "always auto-resume",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /distinguish completion from blocked, unavailable or paused plans/u,
     );
   });
 });
@@ -603,15 +616,15 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.2 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.3 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
-      "The 1.1.2 package already passed every exact-client check",
+      "The 1.1.3 package already passed every exact-client check",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.2 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.3 exact-candidate acceptance/u,
     );
   });
 });

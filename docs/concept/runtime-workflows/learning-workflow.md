@@ -93,23 +93,31 @@ Optional learner-owned subject schedules are presented as one guided learning
 plan even though every subject retains its own revision and validation boundary.
 The confirmed first-party teacher action **Make planning effective** validates
 and replaces all included subject schedules atomically, enables plan-guided
-learning, and immediately selects the first due frontier goal. A learner who
+learning, and immediately selects the first due frontier goal from a subject
+with an unfinished daily quota. A learner who
 opens an already effective plan with no active goal triggers the same
 idempotent foreground reconciliation; there is no separate **Start next planned
-goal** step.
+goal** step while the daily quota remains open. After that quota is fulfilled,
+the learner chooses whether to stop or explicitly start voluntary extra work.
 
 An unfinished active goal remains selected while learning continues normally.
 The learner can nevertheless choose another subject explicitly. That foreground
 action parks the previous goal without changing mastery, revalidates the chosen
 subject schedule, selects its next due eligible goal, changes the subject route,
 and brings the goal visibly into focus. After confirmed completion, a due
-eligible candidate from a valid plan containing the completed goal has priority;
+eligible candidate from a valid plan containing the completed goal has priority
+only while that subject's daily quota remains unfinished;
 otherwise valid subject plans are ranked deterministically by due urgency and
-stable subject identity. Stale or invalid plans are never used, and `requires`
+stable subject identity, again considering unfinished daily quotas only. Stale
+or invalid plans are never used, and `requires`
 is never bypassed. If no valid due candidate exists, no replacement goal is
 invented. Plan-guided learning remains revocably pausable by the learner, and
 the generic Autopilot remains suppressed while it is enabled. Calendar progress
-alone never writes focus, active goal, or mastery.
+alone never writes focus, active goal, or mastery. Actual completions of due
+goals today fill each subject's quota first, including work originally scheduled
+earlier. The denominator stays stable during normal learning, and extra
+completions are counted separately. See [Daily learning progress](daily-learning-progress.md)
+for the authoritative quota, event history and voluntary-extra contract.
 
 When focus is widened, the backend follows the learner-facing ancestor path
 toward the root and publishes valid broader ancestors that add unmastered

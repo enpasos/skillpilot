@@ -158,7 +158,10 @@ export function evaluateDialogCase(testCase, events) {
   if (['D2', 'D4'].includes(testCase.id)) {
     const first = tools.find(event => event.name === CONTEXT && success(event))
     const state = contextOf(first ?? {})
-    check('starting-plan-precondition', state && !state.activeGoal && state.learningPlanToday?.resumeAvailable === (testCase.id === 'D2'), 'The controlled starting condition is verified from actual fresh context, never inferred from the case name.')
+    check('starting-plan-precondition', state && !state.activeGoal
+      && state.learningPlanToday?.resumeAvailable === (testCase.id === 'D2')
+      && (testCase.id !== 'D2' || state.learningPlanToday?.guidance?.state === 'resume'),
+    'The controlled starting condition is verified from fresh context. A normal D2 start requires unfinished daily work, not merely voluntary extra capability.')
   }
   if (testCase.id === 'D3') check('starting-switch-precondition', tools.some(event => event.name === CONTEXT && event.turnId === 'switch' && success(event) && contextOf(event)?.learningPlanToday?.subjects?.some(subject => subject.subject === 'Physik' && !subject.current && subject.canContinue)), 'Fresh switch-turn context must expose a real available Physics option.')
   const failures = checks.filter(entry => !entry.passed).map(entry => entry.id)

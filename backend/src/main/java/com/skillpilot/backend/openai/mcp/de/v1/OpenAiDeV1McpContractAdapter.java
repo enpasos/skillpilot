@@ -301,13 +301,20 @@ public final class OpenAiDeV1McpContractAdapter {
                     + "cannot be interrupted. These intent checks override automatic goal/renderer/mode steps. "
                     + "The fresh full context includes authoritative learningPlanToday. Never call a separate daily-plan "
                     + "read. For a normal learning start, follow its guidance and resume only with no active goal "
-                    + "and resumeAvailable=true. An explicit available-subject request takes priority over generic "
+                    + "and resumeAvailable=true; guidance.state=complete requires an explicit request for voluntary extra. "
+                    + "An explicit available-subject request takes priority over generic "
                     + "resume. Status-only questions and pauses require no new exercise and no state write. "
                     + "Use switch_skillpilot_learning_plan_subject only for a requested, published, non-current "
                     + "subject with canContinue=true; never interrupt an active exam. Report daily counts once "
                     + "in one compact line: completedToday/dueToday and each subject's openToday. Include "
-                    + "backlog only when openOverdue>0 and always warn about unavailablePlanCount>0. "
-                    + "completedToday means current mastery in the newly-due set, not activity performed today. "
+                    + "extraCompletedToday as a positive voluntary bonus when nonzero. Mention openOverdue only "
+                    + "for an explicit plan-detail request, never in every ordinary teaching turn. Always warn "
+                    + "about unavailablePlanCount>0. completedToday counts today's actual completions of due plan "
+                    + "goals, including older overdue goals, capped at each subject's stable dueToday quota; "
+                    + "further completions are extraCompletedToday. One subject's extra never fills another's quota. "
+                    + "When every quota is fulfilled, celebrate and offer a stop or voluntary extra; never "
+                    + "auto-resume or claim the entire plan or backlog is finished. If dueToday=0, say there "
+                    + "is no fixed quota today instead of claiming completed work. Continue an already active goal normally. "
                     + "No valid daily status is unavailable, never an invented 0/0 completion. Do not choose "
                     + "future goals or widen focus automatically when today's plan is complete or blocked. "
                     + "Use fresh mutation successor context and its visualization without reloading context.";
@@ -745,7 +752,8 @@ public final class OpenAiDeV1McpContractAdapter {
                 "Idempotently reconciles all valid subject plans and selects the next due, open and "
                         + "prerequisite-satisfied goal only when fresh context.learningPlanToday returned "
                         + "resumeAvailable=true and the context had no active goal. Never resume for a "
-                        + "status-only question, pause or a requested specific subject. Copy "
+                        + "status-only question, pause or a requested specific subject. With guidance.state=complete, "
+                        + "use only after an explicit request for voluntary extra; never auto-resume. Copy "
                         + "expectedStateVersion from that context and create one clientRequestId for the write. "
                         + "On success, continue context.activeGoal immediately without loading another context.",
                 emptyObjectSchema(),
@@ -1781,6 +1789,25 @@ public final class OpenAiDeV1McpContractAdapter {
                                     + "the same assistant turn."),
                     null);
         }
+        if (context != null && context.learningPlanToday() != null
+                && context.learningPlanToday().followLearningPlans()) {
+            return new RecallContinuation(
+                    "followLearningPlanGuidance",
+                    "complete".equals(context.learningPlanToday().guidance().state()),
+                    localized(metadata,
+                            "Die Kartenprüfung ist abgeschlossen. Folge jetzt ausschließlich "
+                                    + "context.learningPlanToday.guidance aus diesem Folgezustand. Bei guidance.state=complete "
+                                    + "würdige das erfüllte Tagespensum und biete Pause oder freiwilliges Extra nur "
+                                    + "auf ausdrücklichen Wunsch an; bei dueToday=0 sage stattdessen, dass heute kein "
+                                    + "festes Pensum ansteht. Für andere Zustände führe die aktuelle guidance aus. "
+                                    + "Lade keinen neuen Kontext.",
+                            "The recall check is complete. Follow only context.learningPlanToday.guidance from "
+                                    + "this successor now. For guidance.state=complete, celebrate the fulfilled quota "
+                                    + "and offer a stop or voluntary extra that requires an explicit request. If "
+                                    + "dueToday=0, say there is no fixed quota today instead. For other states, "
+                                    + "execute the current guidance. Do not reload context."),
+                    null);
+        }
         if (context != null && "setScope".equals(context.requiredAction())
                 && context.options() != null && !context.options().isEmpty()) {
             return new RecallContinuation(
@@ -2167,7 +2194,12 @@ public final class OpenAiDeV1McpContractAdapter {
                     metadata);
         }
         UnifiedLearnerStateResponse state = coachTools.getLearnerState(skillpilotId);
-        if (result.status() == CoachToolFacade.MasteryStatus.UPDATED && selectedOrientationPath != null) {
+        if (result.status() == CoachToolFacade.MasteryStatus.UPDATED && selectedOrientationPath != null
+                && (!dailyPlanToolsEnabled
+                        || !projectLearningPlanToday(skillpilotId, state, metadata).followLearningPlans())) {
+            // In plan mode the canonical handoff owns both the quota stop and
+            // any next subject. A motivational interest must not select extra
+            // or unplanned work after that authoritative completion.
             state = activateFirstAvailableOrientationPathGoal(
                     skillpilotId,
                     state,
@@ -3491,6 +3523,7 @@ public final class OpenAiDeV1McpContractAdapter {
                         "canContinue", booleanSchema(),
                         "dueToday", integerSchema(0, null),
                         "completedToday", integerSchema(0, null),
+                        "extraCompletedToday", integerSchema(0, null),
                         "openToday", integerSchema(0, null),
                         "openOverdue", integerSchema(0, null)),
                 List.of(
@@ -3499,6 +3532,7 @@ public final class OpenAiDeV1McpContractAdapter {
                         "canContinue",
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"));
     }
@@ -3508,11 +3542,13 @@ public final class OpenAiDeV1McpContractAdapter {
                 Map.of(
                         "dueToday", integerSchema(0, null),
                         "completedToday", integerSchema(0, null),
+                        "extraCompletedToday", integerSchema(0, null),
                         "openToday", integerSchema(0, null),
                         "openOverdue", integerSchema(0, null)),
                 List.of(
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"));
     }
@@ -3666,6 +3702,10 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     private Map<String, Object> recallResultSchema() {
+        List<String> continuationActions = new ArrayList<>(List.of(
+                "askNextRecallBatch", "chooseMemoryMode", "renderGoalVisualizationThenTeachActiveGoal",
+                "teachActiveGoal", "offerScope", "offerGoal", "waitUntilEligible", "curriculumComplete"));
+        if (dailyPlanToolsEnabled) continuationActions.add("followLearningPlanGuidance");
         Map<String, Object> properties = new LinkedHashMap<>();
         properties.put("savedAssessments", integerSchema(1, 20));
         properties.put("passedAssessments", integerSchema(0, 20));
@@ -3675,15 +3715,7 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("next", recallPromptSchema());
         properties.put("continuation", objectSchema(
                 Map.of(
-                        "action", enumStringSchema(
-                                "askNextRecallBatch",
-                                "chooseMemoryMode",
-                                "renderGoalVisualizationThenTeachActiveGoal",
-                                "teachActiveGoal",
-                                "offerScope",
-                                "offerGoal",
-                                "waitUntilEligible",
-                                "curriculumComplete"),
+                        "action", enumStringSchema(continuationActions.toArray(String[]::new)),
                         "consentRequired", booleanSchema(),
                         "instruction", stringSchema(),
                         "toolCall", objectSchema(

@@ -88,6 +88,8 @@ public class LearnerServiceTest {
             "8dd9f210-2683-5902-acab-e3be22725232";
     private static final String CANONICAL_CREATE_REPRESENTATION_ID =
             "3f4d1340-1fbb-5109-b9c2-08fc61303133";
+    private static final String CANONICAL_READ_REPRESENTATION_ID =
+            "cf4fe700-dec2-502f-888b-90acefa307bb";
     private static final String CANONICAL_MATH_SEK_ONE_ORIENTATION_ID =
             "65365dce-f33f-49d8-9516-42f75883aa86";
     private static final String COMPOSITION_SEK_ONE_G9_SCOPE_ID =
@@ -915,6 +917,10 @@ public class LearnerServiceTest {
     @Test
     void followedPlanStartsExplicitlyThenHandsOffAfterCompletionEvenWithAutopilotDisabled() {
         prepareRepresentationLearningPlan();
+        replaceRepresentationLearningPlanSchedule(
+                LocalDate.parse("2026-09-02"),
+                LocalDate.parse("2026-09-02"),
+                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID));
         learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
 
         var beforeExplicitStart = learnerService.getLearnerState(learnerId);
@@ -936,6 +942,41 @@ public class LearnerServiceTest {
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @Test
+    void completingDailyQuotaStopsAutomaticHandoffDespiteEligibleOverdueGoals() {
+        prepareRepresentationLearningPlan();
+        LocalDate today = LocalDate.parse("2026-09-02");
+        replaceRepresentationLearningPlanSchedule(
+                today.minusDays(1), today,
+                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID,
+                        CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_READ_REPRESENTATION_ID));
+        var before = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
+        assertThat(before.metrics().dueToday()).isEqualTo(1);
+        assertThat(before.metrics().openDueThroughToday()).isEqualTo(3);
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                before.blocks(), today.minusDays(1)))
+                .contains(CANONICAL_CREATE_REPRESENTATION_ID);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
+        learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+
+        var completion = learnerService.setMastery(learnerId, new MasteryUpdateRequest(
+                Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0), CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        var after = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
+        assertThat(after.metrics().completedDueToday()).isEqualTo(1);
+        assertThat(after.metrics().openDueToday()).isZero();
+        assertThat(after.metrics().openDueThroughToday()).isEqualTo(2);
+        assertThat(completion.activeGoal()).isNull();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(
+                learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
+                .extracting(FrontierGoal::id).contains(CANONICAL_CREATE_REPRESENTATION_ID);
+        assertThat(learnerService.getMastery(learnerId).getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0))
+                .isZero();
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId).containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
     }
 
     @Test
@@ -981,7 +1022,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void completionHandsOffToTheOnlyEligiblePlanInAnotherPersonalizedSubject() {
+    void fulfilledMathQuotaHandsOffToIncompletePhysicsEvenWithEligibleMathBacklog() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
@@ -1031,10 +1072,11 @@ public class LearnerServiceTest {
                                 "learning",
                                 CANONICAL_REPRESENTATION_CLUSTER_ID,
                                 "Mathematik",
-                                planDate,
+                                planDate.minusDays(1),
                                 planDate,
                                 null,
-                                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID)))),
+                                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID,
+                                        CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_READ_REPRESENTATION_ID)))),
                 planDate);
         learnerLearningPlanService.upsert(
                 learnerId,
@@ -1068,6 +1110,19 @@ public class LearnerServiceTest {
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(CANONICAL_PHYSICS_ROOT_SCOPE_ID);
+        var math = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, planDate);
+        assertThat(math.metrics().dueToday()).isEqualTo(1);
+        assertThat(math.metrics().completedDueToday()).isEqualTo(1);
+        assertThat(math.metrics().openDueToday()).isZero();
+        assertThat(math.metrics().openDueThroughToday()).isEqualTo(2);
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                math.blocks(), planDate.minusDays(1)))
+                .contains(CANONICAL_CREATE_REPRESENTATION_ID);
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(
+                learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
+                .extracting(FrontierGoal::id).contains(CANONICAL_CREATE_REPRESENTATION_ID);
+        assertThat(learnerLearningPlanService.getPlan(learnerId, CANONICAL_PHYSICS_LANDSCAPE_ID, planDate)
+                .metrics().openDueToday()).isEqualTo(1);
     }
 
     @Test
@@ -1117,6 +1172,10 @@ public class LearnerServiceTest {
     @Test
     void compatibleHistoricalFingerprintStillAllowsReadAndAutomaticHandoffWithoutRewrite() throws Exception {
         prepareRepresentationLearningPlan();
+        replaceRepresentationLearningPlanSchedule(
+                LocalDate.parse("2026-09-02"),
+                LocalDate.parse("2026-09-02"),
+                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID));
         LearnerLearningPlan plan = learnerLearningPlanRepository
                 .findByLearner_SkillpilotIdAndLandscapeId(learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
         String historicalFingerprint = "sha256:" + "a".repeat(64);
@@ -1135,6 +1194,8 @@ public class LearnerServiceTest {
 
         assertThat(completion.activeGoal()).isNotNull();
         assertThat(completion.activeGoal().id()).isEqualTo(CANONICAL_CREATE_REPRESENTATION_ID);
+        plan = learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdAndLandscapeId(learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
         assertThat(plan.getScopeFingerprint()).isEqualTo(historicalFingerprint);
         assertThat(plan.getRevision()).isEqualTo(revision);
         assertThat(plan.getBlocksJson()).isEqualTo(blocksJson);
@@ -2950,6 +3011,7 @@ public class LearnerServiceTest {
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+        assertVerifiedRecallDailyCredit(LocalDate.parse("2026-09-01"), 2, 1);
     }
 
     @Test
@@ -2988,6 +3050,54 @@ public class LearnerServiceTest {
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+        assertVerifiedRecallDailyCredit(LocalDate.parse("2026-09-01"), 2, 1);
+    }
+
+    @Test
+    void verifiedRecallCompletionFulfillsDailyQuotaWithoutAutomaticallyStartingRemainingPlanWork() {
+        prepareMemoryThenRepresentationLearningPlan();
+        LocalDate today = LocalDate.parse("2026-09-01");
+        LearnerLearningPlan stored = learnerLearningPlanRepository.findByLearner_SkillpilotIdAndLandscapeId(
+                learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
+        learnerLearningPlanService.upsert(
+                learnerId,
+                CANONICAL_MATH_LANDSCAPE_ID,
+                new com.skillpilot.backend.api.LearnerLearningPlanApi.UpsertRequest(
+                        stored.getRevision(), "Memory und Darstellungen", List.of(
+                                new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                                        "memory", "learning", SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                        "Lernkarten", today.minusDays(1), today.minusDays(1), null,
+                                        List.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID)),
+                                new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                                        "representations", "learning", CANONICAL_REPRESENTATION_CLUSTER_ID,
+                                        "Darstellungen", today, today, null,
+                                        List.of(CANONICAL_CHOOSE_REPRESENTATION_ID)))),
+                today);
+        var prompt = learnerService.startVerifiedRecallBatch(
+                learnerId, "de", SEK1_CORE_FORMULAS_FLASHCARDS_ID, 20);
+        List<String> cardIds = prompt.cards().stream().map(VerifiedRecallPromptCard::cardId).toList();
+        assertThat(cardIds).hasSize(prompt.totalCards());
+
+        var completion = learnerService.recordVerifiedRecallResultsBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchResultRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID, prompt.configuredBatchSize(),
+                        cardIds, prompt.issuedAt(), cardIds.stream()
+                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                                .toList()));
+
+        assertThat(completion.masterySaved()).isTrue();
+        assertThat(completion.successor().activeGoal()).isNull();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+        assertVerifiedRecallDailyCredit(today, 1, 0);
+        assertThat(learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today)
+                .metrics().openDueThroughToday()).isEqualTo(1);
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(
+                learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
+                .extracting(FrontierGoal::id).contains(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(learnerService.getMastery(learnerId).getOrDefault(CANONICAL_CHOOSE_REPRESENTATION_ID, 0.0))
+                .isZero();
     }
 
     @Test
@@ -3653,6 +3763,10 @@ public class LearnerServiceTest {
                 learnerService,
                 "learningPlanClock",
                 Clock.fixed(planDate.atStartOfDay(berlin).toInstant(), berlin));
+        ReflectionTestUtils.setField(
+                learnerService,
+                "verifiedRecallClock",
+                Clock.fixed(planDate.atStartOfDay(berlin).toInstant(), berlin));
         learnerLearningPlanService.upsert(
                 learnerId,
                 CANONICAL_MATH_LANDSCAPE_ID,
@@ -3680,6 +3794,17 @@ public class LearnerServiceTest {
                                         List.of(CANONICAL_CHOOSE_REPRESENTATION_ID)))),
                 planDate);
         learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
+    }
+
+    private void assertVerifiedRecallDailyCredit(LocalDate day, int expectedQuota, int expectedOpen) {
+        assertThat(learnerService.getGoalCompletionsOnDate(learnerId, day))
+                .containsExactly(Map.entry(SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        day.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
+        var metrics = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, day).metrics();
+        assertThat(metrics.dueToday()).isEqualTo(expectedQuota);
+        assertThat(metrics.completedDueToday()).isEqualTo(1);
+        assertThat(metrics.openDueToday()).isEqualTo(expectedOpen);
+        assertThat(metrics.extraCompletedToday()).isZero();
     }
 
     private void selectCompletedCanonicalMathCurriculum() {
@@ -3739,6 +3864,21 @@ public class LearnerServiceTest {
                         "Darstellungen",
                         List.of(block)),
                 LocalDate.parse("2026-09-02"));
+    }
+
+    private void replaceRepresentationLearningPlanSchedule(
+            LocalDate startDate, LocalDate endDate, List<String> goalIds) {
+        LearnerLearningPlan stored = learnerLearningPlanRepository.findByLearner_SkillpilotIdAndLandscapeId(
+                learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
+        learnerLearningPlanService.upsert(
+                learnerId,
+                CANONICAL_MATH_LANDSCAPE_ID,
+                new com.skillpilot.backend.api.LearnerLearningPlanApi.UpsertRequest(
+                        stored.getRevision(), "Darstellungen", List.of(
+                                new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                                        "representations", "learning", CANONICAL_REPRESENTATION_CLUSTER_ID,
+                                        "Darstellungen", startDate, endDate, null, goalIds))),
+                endDate);
     }
 
     private void selectCompletedHessenSekTwoLkCurriculum() {

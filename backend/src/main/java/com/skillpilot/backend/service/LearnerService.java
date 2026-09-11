@@ -147,6 +147,9 @@ public class LearnerService {
     private Clock verifiedRecallClock = Clock.systemUTC();
     private Clock learningPlanClock = Clock.system(LEARNING_PLAN_ZONE);
 
+    @Autowired
+    private LearnerGoalCompletionService goalCompletionService;
+
     private static final Set<String> SRS_FILTER_EXCLUDE = Set.of(
             "structure",
             "root",
@@ -1334,14 +1337,16 @@ public class LearnerService {
         if (goal == null || goal.getId() == null || goal.getId().isBlank()) {
             return;
         }
-        Learner learner = learnerRepository.findById(skillpilotId)
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         MasteryId id = new MasteryId(skillpilotId, goal.getId());
         Mastery mastery = masteryRepository.findById(id)
-                .orElseGet(() -> new Mastery(learner, goal.getId(), 1.0));
+                .orElseGet(() -> new Mastery(learner, goal.getId(), 0.0));
+        double previousValue = mastery.getValue();
         boolean masteryChanged = mastery.getValue() < 1.0;
         mastery.setValue(1.0);
         masteryRepository.save(mastery);
+        recordGoalCompletion(learner, goal.getId(), previousValue, 1.0, verifiedRecallNow());
 
         boolean activeGoalCleared = goal.getId().equals(learner.getActiveGoalId());
         if (activeGoalCleared) {
@@ -2562,11 +2567,12 @@ public class LearnerService {
         }
 
         MasteryId id = new MasteryId(skillpilotId, effectiveGoalId);
-        double resolvedMasteryValue = masteryValue;
         Mastery mastery = masteryRepository.findById(id)
-                .orElseGet(() -> new Mastery(learner, effectiveGoalId, resolvedMasteryValue));
+                .orElseGet(() -> new Mastery(learner, effectiveGoalId, 0.0));
+        double previousValue = mastery.getValue();
         mastery.setValue(masteryValue);
         masteryRepository.save(mastery);
+        recordGoalCompletion(learner, effectiveGoalId, previousValue, masteryValue, learningPlanClock.instant());
 
         // A failed/partial plan attempt remains the current work item. This is
         // intentionally scoped to plan mode so the established default
@@ -7330,6 +7336,8 @@ public class LearnerService {
         }
 
         LocalDate asOf = LocalDate.now(learningPlanClock);
+        Set<String> completedTodayGoalIds = getGoalCompletionsOnDate(
+                learner.getSkillpilotId(), asOf).keySet();
         List<LearningPlanHandoffCandidate> candidates = new ArrayList<>();
         boolean completedAnchorBelongsToValidPlan = false;
         for (LearnerLearningPlan plan : plans) {
@@ -7346,6 +7354,13 @@ public class LearnerService {
                         .filter(Objects::nonNull)
                         .anyMatch(goalIds -> goalIds.contains(completedAnchorGoalId));
                 completedAnchorBelongsToValidPlan |= containsAnchor;
+                // Today's subject quota is a real stopping point. Backlog is
+                // available through an explicit continue/switch, never an
+                // automatic obligation after the daily target is fulfilled.
+                if (LearnerLearningPlanService.dailyMetrics(
+                        blocks, asOf, mastery, completedTodayGoalIds).openDueToday() == 0) {
+                    continue;
+                }
                 Optional<LearnerLearningPlanService.DueGoal> selected =
                         LearnerLearningPlanService.firstEligibleDueGoal(
                                 blocks,
@@ -11002,16 +11017,65 @@ public class LearnerService {
             goals = getStructuralGoals(curriculumId);
         }
         final Set<String> goalIds = goals.isEmpty() ? Collections.emptySet() : new HashSet<>(goals.keySet());
-        return masteryRepository.findByLearner_SkillpilotId(skillpilotId)
+        List<com.skillpilot.backend.api.MasteryHistoryEntry> history = new ArrayList<>();
+        Set<String> observedGoals = new HashSet<>();
+        if (goalCompletionService != null) {
+            for (var completion : goalCompletionService.getHistory(skillpilotId)) {
+                observedGoals.add(completion.getGoalId());
+                if (isKnownHistoryGoal(completion.getGoalId(), goalIds)) {
+                    history.add(new com.skillpilot.backend.api.MasteryHistoryEntry(
+                            completion.getGoalId(), completion.getOccurredAt(),
+                            completion.getMasteryValue(), "completion_event"));
+                }
+            }
+        }
+        // Keep pre-ledger history, but label the weaker timestamp evidence.
+        // Neither these rows nor imports ever create daily completion credit.
+        masteryRepository.findByLearner_SkillpilotId(skillpilotId)
                 .stream()
-                .filter(m -> m.getValue() >= 0.9) // Only mastered goals count for velocity
+                .filter(m -> m.getValue() >= PLANNING_SCOPE_MASTERY_THRESHOLD)
+                .filter(m -> !observedGoals.contains(m.getGoalKey()))
                 .filter(m -> isKnownHistoryGoal(m.getGoalKey(), goalIds))
                 .map(m -> new com.skillpilot.backend.api.MasteryHistoryEntry(
                         m.getGoalKey(),
                         m.getUpdatedAt(),
                         m.getValue()))
-                .sorted((a, b) -> b.timestamp().compareTo(a.timestamp())) // Newest first
+                .forEach(history::add);
+        return history.stream()
+                .sorted(Comparator.comparing(
+                        com.skillpilot.backend.api.MasteryHistoryEntry::timestamp,
+                        Comparator.nullsLast(Comparator.reverseOrder())))
                 .toList();
+    }
+
+    /** Real threshold crossings on the given Berlin day, still mastered now. */
+    @Transactional(readOnly = true)
+    public Map<String, Instant> getGoalCompletionsOnDate(String skillpilotId, LocalDate date) {
+        ensureLearnerExists(skillpilotId);
+        Objects.requireNonNull(date, "completion date");
+        if (goalCompletionService == null) {
+            return Map.of();
+        }
+        Set<String> masteredGoals = masteryRepository.findByLearner_SkillpilotId(skillpilotId).stream()
+                .filter(mastery -> mastery.getValue() >= PLANNING_SCOPE_MASTERY_THRESHOLD)
+                .map(Mastery::getGoalKey)
+                .collect(Collectors.toSet());
+        Map<String, Instant> completions = new LinkedHashMap<>();
+        for (var completion : goalCompletionService.getCompletionsOnDate(skillpilotId, date)) {
+            if (masteredGoals.contains(completion.getGoalId())) {
+                completions.putIfAbsent(completion.getGoalId(), completion.getOccurredAt());
+            }
+        }
+        return Collections.unmodifiableMap(completions);
+    }
+
+    private void recordGoalCompletion(
+            Learner learner, String goalId, double previousValue, double nextValue, Instant occurredAt) {
+        // Existing hand-built service fixtures predate the ledger dependency.
+        // Spring production construction always injects this required bean.
+        if (goalCompletionService != null) {
+            goalCompletionService.recordTransition(learner, goalId, previousValue, nextValue, occurredAt);
+        }
     }
 
     private boolean isKnownHistoryGoal(String goalKey, Set<String> goalIds) {

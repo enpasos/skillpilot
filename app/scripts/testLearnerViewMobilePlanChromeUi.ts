@@ -161,7 +161,7 @@ try {
     const body = await page.locator('body').innerText()
     throw new Error(`LearnerView did not render Today overview. Body:\n${body}\nBrowser errors:\n${browserErrors.join('\n')}`, { cause: error })
   }
-  await overview.getByText('5 Planziele sind bis heute noch offen.').waitFor()
+  await overview.getByText('Noch 4 Lernziele bis zu deinen heutigen Tageszielen.').waitFor()
 
   const menuBox = await menuButton.boundingBox()
   const overviewBox = await overview.boundingBox()

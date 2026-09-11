@@ -267,6 +267,10 @@
                         "minimum": 0,
                         "type": "integer"
                       },
+                      "extraCompletedToday": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
                       "openOverdue": {
                         "minimum": 0,
                         "type": "integer"
@@ -286,6 +290,7 @@
                       "canContinue",
                       "dueToday",
                       "completedToday",
+                      "extraCompletedToday",
                       "openToday",
                       "openOverdue"
                     ],
@@ -304,6 +309,10 @@
                       "minimum": 0,
                       "type": "integer"
                     },
+                    "extraCompletedToday": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
                     "openOverdue": {
                       "minimum": 0,
                       "type": "integer"
@@ -316,6 +325,7 @@
                   "required": [
                     "dueToday",
                     "completedToday",
+                    "extraCompletedToday",
                     "openToday",
                     "openOverdue"
                   ],
@@ -1290,6 +1300,10 @@
                             "minimum": 0,
                             "type": "integer"
                           },
+                          "extraCompletedToday": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
                           "openOverdue": {
                             "minimum": 0,
                             "type": "integer"
@@ -1309,6 +1323,7 @@
                           "canContinue",
                           "dueToday",
                           "completedToday",
+                          "extraCompletedToday",
                           "openToday",
                           "openOverdue"
                         ],
@@ -1327,6 +1342,10 @@
                           "minimum": 0,
                           "type": "integer"
                         },
+                        "extraCompletedToday": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
                         "openOverdue": {
                           "minimum": 0,
                           "type": "integer"
@@ -1339,6 +1358,7 @@
                       "required": [
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"
                       ],
@@ -1611,7 +1631,8 @@
                     "offerScope",
                     "offerGoal",
                     "waitUntilEligible",
-                    "curriculumComplete"
+                    "curriculumComplete",
+                    "followLearningPlanGuidance"
                   ],
                   "type": "string"
                 },
@@ -1943,7 +1964,7 @@
       {
         "name": "resume_skillpilot_learning_plan",
         "title": "Resume today's learning plan",
-        "description": "Idempotently reconciles all valid subject plans and selects the next due, open and prerequisite-satisfied goal only when fresh context.learningPlanToday returned resumeAvailable=true and the context had no active goal. Never resume for a status-only question, pause or a requested specific subject. Copy expectedStateVersion from that context and create one clientRequestId for the write. On success, continue context.activeGoal immediately without loading another context.",
+        "description": "Idempotently reconciles all valid subject plans and selects the next due, open and prerequisite-satisfied goal only when fresh context.learningPlanToday returned resumeAvailable=true and the context had no active goal. Never resume for a status-only question, pause or a requested specific subject. With guidance.state=complete, use only after an explicit request for voluntary extra; never auto-resume. Copy expectedStateVersion from that context and create one clientRequestId for the write. On success, continue context.activeGoal immediately without loading another context.",
         "input_json_schema": {
           "additionalProperties": false,
           "properties": {
@@ -2196,6 +2217,10 @@
                             "minimum": 0,
                             "type": "integer"
                           },
+                          "extraCompletedToday": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
                           "openOverdue": {
                             "minimum": 0,
                             "type": "integer"
@@ -2215,6 +2240,7 @@
                           "canContinue",
                           "dueToday",
                           "completedToday",
+                          "extraCompletedToday",
                           "openToday",
                           "openOverdue"
                         ],
@@ -2233,6 +2259,10 @@
                           "minimum": 0,
                           "type": "integer"
                         },
+                        "extraCompletedToday": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
                         "openOverdue": {
                           "minimum": 0,
                           "type": "integer"
@@ -2245,6 +2275,7 @@
                       "required": [
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"
                       ],
@@ -3011,6 +3042,10 @@
                         "minimum": 0,
                         "type": "integer"
                       },
+                      "extraCompletedToday": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
                       "openOverdue": {
                         "minimum": 0,
                         "type": "integer"
@@ -3030,6 +3065,7 @@
                       "canContinue",
                       "dueToday",
                       "completedToday",
+                      "extraCompletedToday",
                       "openToday",
                       "openOverdue"
                     ],
@@ -3048,6 +3084,10 @@
                       "minimum": 0,
                       "type": "integer"
                     },
+                    "extraCompletedToday": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
                     "openOverdue": {
                       "minimum": 0,
                       "type": "integer"
@@ -3060,6 +3100,7 @@
                   "required": [
                     "dueToday",
                     "completedToday",
+                    "extraCompletedToday",
                     "openToday",
                     "openOverdue"
                   ],
@@ -3692,6 +3733,10 @@
                             "minimum": 0,
                             "type": "integer"
                           },
+                          "extraCompletedToday": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
                           "openOverdue": {
                             "minimum": 0,
                             "type": "integer"
@@ -3711,6 +3756,7 @@
                           "canContinue",
                           "dueToday",
                           "completedToday",
+                          "extraCompletedToday",
                           "openToday",
                           "openOverdue"
                         ],
@@ -3729,6 +3775,10 @@
                           "minimum": 0,
                           "type": "integer"
                         },
+                        "extraCompletedToday": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
                         "openOverdue": {
                           "minimum": 0,
                           "type": "integer"
@@ -3741,6 +3791,7 @@
                       "required": [
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"
                       ],
@@ -4350,6 +4401,10 @@
                         "minimum": 0,
                         "type": "integer"
                       },
+                      "extraCompletedToday": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
                       "openOverdue": {
                         "minimum": 0,
                         "type": "integer"
@@ -4369,6 +4424,7 @@
                       "canContinue",
                       "dueToday",
                       "completedToday",
+                      "extraCompletedToday",
                       "openToday",
                       "openOverdue"
                     ],
@@ -4387,6 +4443,10 @@
                       "minimum": 0,
                       "type": "integer"
                     },
+                    "extraCompletedToday": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
                     "openOverdue": {
                       "minimum": 0,
                       "type": "integer"
@@ -4399,6 +4459,7 @@
                   "required": [
                     "dueToday",
                     "completedToday",
+                    "extraCompletedToday",
                     "openToday",
                     "openOverdue"
                   ],
@@ -5236,6 +5297,10 @@
                             "minimum": 0,
                             "type": "integer"
                           },
+                          "extraCompletedToday": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
                           "openOverdue": {
                             "minimum": 0,
                             "type": "integer"
@@ -5255,6 +5320,7 @@
                           "canContinue",
                           "dueToday",
                           "completedToday",
+                          "extraCompletedToday",
                           "openToday",
                           "openOverdue"
                         ],
@@ -5273,6 +5339,10 @@
                           "minimum": 0,
                           "type": "integer"
                         },
+                        "extraCompletedToday": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
                         "openOverdue": {
                           "minimum": 0,
                           "type": "integer"
@@ -5285,6 +5355,7 @@
                       "required": [
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"
                       ],
@@ -5873,6 +5944,10 @@
                       "minimum": 0,
                       "type": "integer"
                     },
+                    "extraCompletedToday": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
                     "openOverdue": {
                       "minimum": 0,
                       "type": "integer"
@@ -5892,6 +5967,7 @@
                     "canContinue",
                     "dueToday",
                     "completedToday",
+                    "extraCompletedToday",
                     "openToday",
                     "openOverdue"
                   ],
@@ -5910,6 +5986,10 @@
                     "minimum": 0,
                     "type": "integer"
                   },
+                  "extraCompletedToday": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
                   "openOverdue": {
                     "minimum": 0,
                     "type": "integer"
@@ -5922,6 +6002,7 @@
                 "required": [
                   "dueToday",
                   "completedToday",
+                  "extraCompletedToday",
                   "openToday",
                   "openOverdue"
                 ],
@@ -6896,6 +6977,10 @@
                           "minimum": 0,
                           "type": "integer"
                         },
+                        "extraCompletedToday": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
                         "openOverdue": {
                           "minimum": 0,
                           "type": "integer"
@@ -6915,6 +7000,7 @@
                         "canContinue",
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"
                       ],
@@ -6933,6 +7019,10 @@
                         "minimum": 0,
                         "type": "integer"
                       },
+                      "extraCompletedToday": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
                       "openOverdue": {
                         "minimum": 0,
                         "type": "integer"
@@ -6945,6 +7035,7 @@
                     "required": [
                       "dueToday",
                       "completedToday",
+                      "extraCompletedToday",
                       "openToday",
                       "openOverdue"
                     ],
@@ -7217,7 +7308,8 @@
                   "offerScope",
                   "offerGoal",
                   "waitUntilEligible",
-                  "curriculumComplete"
+                  "curriculumComplete",
+                  "followLearningPlanGuidance"
                 ],
                 "type": "string"
               },
@@ -7549,7 +7641,7 @@
     {
       "name": "resume_skillpilot_learning_plan",
       "title": "Resume today's learning plan",
-      "description": "Idempotently reconciles all valid subject plans and selects the next due, open and prerequisite-satisfied goal only when fresh context.learningPlanToday returned resumeAvailable=true and the context had no active goal. Never resume for a status-only question, pause or a requested specific subject. Copy expectedStateVersion from that context and create one clientRequestId for the write. On success, continue context.activeGoal immediately without loading another context.",
+      "description": "Idempotently reconciles all valid subject plans and selects the next due, open and prerequisite-satisfied goal only when fresh context.learningPlanToday returned resumeAvailable=true and the context had no active goal. Never resume for a status-only question, pause or a requested specific subject. With guidance.state=complete, use only after an explicit request for voluntary extra; never auto-resume. Copy expectedStateVersion from that context and create one clientRequestId for the write. On success, continue context.activeGoal immediately without loading another context.",
       "input_json_schema": {
         "additionalProperties": false,
         "properties": {
@@ -7802,6 +7894,10 @@
                           "minimum": 0,
                           "type": "integer"
                         },
+                        "extraCompletedToday": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
                         "openOverdue": {
                           "minimum": 0,
                           "type": "integer"
@@ -7821,6 +7917,7 @@
                         "canContinue",
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"
                       ],
@@ -7839,6 +7936,10 @@
                         "minimum": 0,
                         "type": "integer"
                       },
+                      "extraCompletedToday": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
                       "openOverdue": {
                         "minimum": 0,
                         "type": "integer"
@@ -7851,6 +7952,7 @@
                     "required": [
                       "dueToday",
                       "completedToday",
+                      "extraCompletedToday",
                       "openToday",
                       "openOverdue"
                     ],
@@ -8617,6 +8719,10 @@
                       "minimum": 0,
                       "type": "integer"
                     },
+                    "extraCompletedToday": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
                     "openOverdue": {
                       "minimum": 0,
                       "type": "integer"
@@ -8636,6 +8742,7 @@
                     "canContinue",
                     "dueToday",
                     "completedToday",
+                    "extraCompletedToday",
                     "openToday",
                     "openOverdue"
                   ],
@@ -8654,6 +8761,10 @@
                     "minimum": 0,
                     "type": "integer"
                   },
+                  "extraCompletedToday": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
                   "openOverdue": {
                     "minimum": 0,
                     "type": "integer"
@@ -8666,6 +8777,7 @@
                 "required": [
                   "dueToday",
                   "completedToday",
+                  "extraCompletedToday",
                   "openToday",
                   "openOverdue"
                 ],
@@ -9298,6 +9410,10 @@
                           "minimum": 0,
                           "type": "integer"
                         },
+                        "extraCompletedToday": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
                         "openOverdue": {
                           "minimum": 0,
                           "type": "integer"
@@ -9317,6 +9433,7 @@
                         "canContinue",
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"
                       ],
@@ -9335,6 +9452,10 @@
                         "minimum": 0,
                         "type": "integer"
                       },
+                      "extraCompletedToday": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
                       "openOverdue": {
                         "minimum": 0,
                         "type": "integer"
@@ -9347,6 +9468,7 @@
                     "required": [
                       "dueToday",
                       "completedToday",
+                      "extraCompletedToday",
                       "openToday",
                       "openOverdue"
                     ],
@@ -9956,6 +10078,10 @@
                       "minimum": 0,
                       "type": "integer"
                     },
+                    "extraCompletedToday": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
                     "openOverdue": {
                       "minimum": 0,
                       "type": "integer"
@@ -9975,6 +10101,7 @@
                     "canContinue",
                     "dueToday",
                     "completedToday",
+                    "extraCompletedToday",
                     "openToday",
                     "openOverdue"
                   ],
@@ -9993,6 +10120,10 @@
                     "minimum": 0,
                     "type": "integer"
                   },
+                  "extraCompletedToday": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
                   "openOverdue": {
                     "minimum": 0,
                     "type": "integer"
@@ -10005,6 +10136,7 @@
                 "required": [
                   "dueToday",
                   "completedToday",
+                  "extraCompletedToday",
                   "openToday",
                   "openOverdue"
                 ],
@@ -10842,6 +10974,10 @@
                           "minimum": 0,
                           "type": "integer"
                         },
+                        "extraCompletedToday": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
                         "openOverdue": {
                           "minimum": 0,
                           "type": "integer"
@@ -10861,6 +10997,7 @@
                         "canContinue",
                         "dueToday",
                         "completedToday",
+                        "extraCompletedToday",
                         "openToday",
                         "openOverdue"
                       ],
@@ -10879,6 +11016,10 @@
                         "minimum": 0,
                         "type": "integer"
                       },
+                      "extraCompletedToday": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
                       "openOverdue": {
                         "minimum": 0,
                         "type": "integer"
@@ -10891,6 +11032,7 @@
                     "required": [
                       "dueToday",
                       "completedToday",
+                      "extraCompletedToday",
                       "openToday",
                       "openOverdue"
                     ],

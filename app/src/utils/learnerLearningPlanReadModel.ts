@@ -70,9 +70,8 @@ export const isLearnerPlanActionAvailable = (
 
 const planUrgencyRank = (plan: LearnerLearningPlanSummary): number => {
   if (plan.stale) return 4
-  if (plan.canContinue) return 0
-  if (plan.metrics.openDueThroughToday > 0) return 1
-  if (plan.metrics.dueToday > 0) return 2
+  if (plan.metrics.openDueToday > 0) return plan.canContinue ? 0 : 1
+  if (plan.metrics.openDueThroughToday > 0) return 2
   return 3
 }
 
@@ -80,12 +79,12 @@ const compareStableText = (left: string, right: string): number => (
   left === right ? 0 : left < right ? -1 : 1
 )
 
-/** Actionable and overdue subjects stay ahead of completed or stale plans. */
+/** Unfinished daily targets stay ahead of voluntary extra work and stale plans. */
 export const sortLearnerLearningPlansForToday = (
   plans: readonly LearnerLearningPlanSummary[],
 ): LearnerLearningPlanSummary[] => [...plans].sort((left, right) => (
   planUrgencyRank(left) - planUrgencyRank(right)
-  || right.metrics.openDueThroughToday - left.metrics.openDueThroughToday
+  || right.metrics.openDueToday - left.metrics.openDueToday
   || compareStableText(left.landscapeId, right.landscapeId)
   || compareStableText(left.planId, right.planId)
 ))

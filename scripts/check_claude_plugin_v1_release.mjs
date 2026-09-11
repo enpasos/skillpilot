@@ -26,8 +26,15 @@ const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.1.2";
+const expectedPluginVersion = "1.1.3";
 const expectedHistoricalReleaseFiles = new Map([
+  ["1.1.2/contract-baseline.json", "952d17014c939a9db6d97012f608f6a502de1d6fb339b66be55d29db27bbb0e0"],
+  ["1.1.2/direct-install-beta.json", "5fcb02a45ce7e730d039463687ad3a51df383d483397ab7b0c94191bc8f91509"],
+  ["1.1.2/evidence-manifest.json", "879401980f0e62adfd9f7785dc522e05661a018c01aeb6f2689640aa60cfbb74"],
+  ["1.1.2/lifecycle.json", "d29b12c405739c4902681c7a79c2bc11b5467ec4e495cad5220df1bdf1325bcf"],
+  ["1.1.2/marketplace-publication.json", "12edd0793564d56606e353fa4e1c3bd05799083169727d1b49011a5cd1a9fc96"],
+  ["1.1.2/release-gates.json", "b6f2ac97d1319186978967f02a1dd1b7594ad368c40a7859fa4a54efbd1fdc69"],
+  ["1.1.2/support-readiness-drill.template.md", "c1c35c757ef8475171e2de2f482a202bb58df6b54720a6189e75d79d5f2896fd"],
   [
     "1.0.0/contract-baseline.json",
     "2b3f1bc1fdc60c72c5168590b1899fb0360500da5be208a578eaa3d82ca65058",
@@ -178,7 +185,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.1.2.",
+      "Every plugin release document must use Claude plugin version 1.1.3.",
     );
   }
 
@@ -238,14 +245,14 @@ export function verifyClaudePluginV1Release({
     "Plugin lifecycle must exclude Claude Free, iOS, Android in-app installation, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
   );
   check(
-    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-08"
+    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-11"
       && lifecycle?.productOwnerAuthorization?.approvedBy === "product-owner"
-      && /Prepare Claude plugin 1\.1\.2 locally only for the compact daily-plan summary/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /No publication, deployment, marketplace promotion or OpenAI V1 change is authorized/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /Prepare Claude plugin 1\.1\.3 locally for motivational daily quotas backed by completion events/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /publication, deployment, portal writes and real-client acceptance are not/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && Array.isArray(lifecycle?.productOwnerAuthorization?.excludes)
-      && lifecycle.productOwnerAuthorization.excludes.some((entry) => /OpenAI/u.test(entry))
+      && lifecycle.productOwnerAuthorization.excludes.some((entry) => /External publication, deployment, credential changes/u.test(entry))
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Connector Directory/u.test(entry)),
-    "Plugin lifecycle must record the Claude-plugin-only Product Owner authorization and its exclusions.",
+    "Plugin lifecycle must record the local Claude candidate Product Owner authorization and its publication exclusions.",
   );
   check(
     lifecycle?.releaseLine?.major === 1

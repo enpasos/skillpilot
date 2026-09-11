@@ -6,6 +6,7 @@ import { MemoryRouter, useLocation, useNavigate } from 'react-router-dom'
 import '../../src/index.css'
 import { LearnerPlanTodayOverview } from '../../src/components/LearnerPlanTodayOverview'
 import { PersonalCurriculumSetup } from '../../src/components/PersonalCurriculumSetup'
+import { ProgressPopover } from '../../src/components/ProgressPopover'
 import { LanguageProvider } from '../../src/contexts/LanguageContext'
 import type { LearnerLearningPlanSummary } from '../../src/learnerLearningPlanTypes'
 import {
@@ -278,6 +279,39 @@ const PreferenceSyncFixture = () => {
   )
 }
 
+const DailyProgressFixture = () => {
+  const [completed, setCompleted] = useState(0)
+  const [extra, setExtra] = useState(0)
+  const [continued, setContinued] = useState(0)
+  const base = PLANS[0]
+  const currentPlan = {
+    ...base,
+    metrics: {
+      ...base.metrics,
+      completedDueThroughToday: completed + extra,
+      openDueThroughToday: 6 - completed - extra,
+      completedDueToday: completed,
+      openDueToday: 2 - completed,
+      extraCompletedToday: extra,
+    },
+  }
+  return (
+    <section data-testid="daily-progress-fixture" className="mx-auto max-w-3xl p-4">
+      <button onClick={() => setCompleted(2)}>Tagespensum abschließen</button>
+      <button onClick={() => setExtra(1)}>Zusätzliches Ziel abschließen</button>
+      <output data-testid="voluntary-start-count">{continued}</output>
+      <LearnerPlanTodayOverview
+        plans={[currentPlan]} language="de" planModeEnabled
+        subjectLabel={() => 'Mathematik'} goalLabel={() => 'Lineare Gleichungen lösen'}
+        onContinue={() => undefined} onSwitch={() => setContinued((count) => count + 1)} onOpenSettings={() => undefined}
+      />
+      <ProgressPopover skillpilotId="history-fixture" goalIndexAll={new Map()}>
+        <button>Historie öffnen</button>
+      </ProgressPopover>
+    </section>
+  )
+}
+
 const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('missing fixture root')
 
@@ -287,6 +321,7 @@ createRoot(rootElement).render(
       <PreferenceSyncFixture />
       <Fixture />
       <InFlightRefreshFixture />
+      <DailyProgressFixture />
     </LanguageProvider>
   </MemoryRouter>,
 )

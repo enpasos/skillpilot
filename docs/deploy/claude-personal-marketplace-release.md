@@ -3,13 +3,55 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.2 is the sole
-current replacement candidate. It shortens the daily-plan overview
-without changing the plan calculations, tools, learner sessions or frozen
-OpenAI v1 lane. Its immutable direct-install artifact is publicly available;
-the separately authorized Marketplace publication is tracked below.
+Anthropic-curated or Anthropic-verified listing. Version 1.1.3 is the current
+locally prepared replacement candidate. The previously published 1.1.2 package
+and its evidence remain immutable history.
 
-## Current first-party guide: Marketplace and file fallback, 9 September 2026
+## Local 1.1.3 daily-quota candidate, 11 September 2026
+
+The Product Owner authorized local preparation using the existing candidate
+workflow below. Today’s newly completed due plan goals, including older due
+goals, count toward each subject’s stable daily quota. Automatic continuation
+stops at the daily target; further work is voluntary and extra completions are
+acknowledged separately. The backend owns completion evidence and counters.
+Backlog is shown in requested details, without a repeated routine warning.
+
+The new local direct-install artifact has 56,661 bytes and SHA-256
+`0e0b951233d72c0dd68b2cb2f631ae7fbdd1ad2411d373d60f9414bf0019f663`.
+Local `prepare` advances the checked-in publication index to 1.1.3 and stores
+the new artifact additively. Every prior artifact retains its exact bytes. The
+complete former active dossier is retained under
+`ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.2/`, including the
+published repository and guide approvals; its file hashes are checked by the
+release checker. None of those candidate-bound approvals transfers to 1.1.3.
+
+For the new candidate, Marketplace state is `prepared_not_published`, repository
+and exact-client records are `pending`, the guide decision is `pending`, and
+`marketplaceUiSwitchAllowed=false`. Consequently the local first-party guide
+route returns to `controlled_direct_install_beta`. This is the existing
+fail-closed candidate behavior; the previously deployed 1.1.2 guide is not
+changed by these local files. Web, Android/Voice, privacy, legal and support
+acceptance remain pending. The generated repository tree is local only.
+
+Local validation passed: 123 focused package, archive, release, direct-install
+and Marketplace tests; deterministic artifact verification; both strict CLI
+validations; and an installation smoke test in an isolated Claude profile.
+The generated 11-file tree has SHA-256
+`99881a8624dcf38eda781681397d7d4a9eaa657bab0923c3c0031a14ec86868d`.
+The release checker reports `STRUCTURAL_PASS` with all 15 formal release gates
+still pending. These local results do not provide real-client acceptance.
+
+This work does not deploy, publish, update the remote Marketplace repository,
+modify credentials or record host acceptance. The historical OpenAI review
+freeze is retired; current development follows the explicit successor
+authorization in `AGENTS.md`. Older freeze references below retain their
+historical context and do not constrain this local preparation.
+
+## Historical 1.1.2 first-party guide: Marketplace and file fallback, 9 September 2026
+
+This section preserves the 1.1.2 guide decision. It does not approve the new
+local 1.1.3 candidate or its Marketplace route; current candidate status is
+recorded above.
 
 After reviewing the new personal-account observations, the Product Owner
 explicitly authorized implementation of a Marketplace-first installation and
@@ -363,7 +405,8 @@ starts at `pending`; no earlier approval transfers to the new candidate.
 
 ## Local preparation and validation
 
-Start with a clean worktree and run the frozen OpenAI checks first:
+Inspect the worktree and preserve unrelated changes. Verify the retained
+OpenAI review history and the current authorized successor package first:
 
 ```bash
 node scripts/check_openai_plugin_review_freeze.mjs
@@ -650,17 +693,16 @@ as:
 Only a new exact-candidate decision may make the first-party `/plugins` guide
 Marketplace-first. It must preserve the scoped cleanup, connector OAuth, and
 return-to-SkillPilot steps. No 1.0.4 direct-download fallback is permitted.
-Because those WebGUI files are hash-bound by the active OpenAI review freeze,
-the UI change also needs a narrow Product Owner exception and updated freeze
-hashes.
+The former OpenAI review freeze is retired; no new review-time hash exception
+is required. Claude candidate and guide acceptance remain independent gates.
 
 ## Subsequent releases
 
 For any plugin-content change:
 
 1. make and review the plugin change in the canonical SkillPilot repository;
-2. increment `plugin.json` SemVer in the same change (`1.1.1` becomes at least
-   `1.1.2`);
+2. increment `plugin.json` SemVer in the same change (`1.1.2` becomes at least
+   `1.1.3`);
 3. rebuild and bind a new direct-install artifact; never rebind an existing
    version to new bytes;
 4. update the marketplace lane's version and direct-install SHA-256, create or
@@ -671,7 +713,8 @@ For any plugin-content change:
    before retaining those local results;
 5. update `CHANGELOG.md`;
 6. run all local checks above and prepare a new tree;
-7. publish through a target-repository pull request;
+7. only after separate publication authorization, publish through a
+   target-repository pull request;
 8. run `verify-repository` after merge;
 9. test the real marketplace update from the previous installed version; this
    is mandatory for every release after the first Marketplace publication.
@@ -688,7 +731,7 @@ Rollback is a new, higher SemVer release that restores reviewed content. Never
 force-push `main`, delete history, or reuse an old version with different
 bytes. Connector containment and recovery follow the
 [support readiness and incident runbook](claude-support-readiness-runbook.md),
-including the frozen OpenAI differential and candidate-bound evidence.
+including retained OpenAI historical integrity and candidate-bound evidence.
 
 ## References
 

@@ -55,6 +55,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 ## Runtime Workflows
 
 - [Learning Workflow](runtime-workflows/learning-workflow.md)
+- [Tagesfortschritt: zuerst das Tagespensum](runtime-workflows/daily-learning-progress.md)
+  Echte Abschlussereignisse, stabile Fachquoten und freiwillige Zusatzarbeit in Cockpit und Coach.
 - [Kursplanung nach Curriculum-Updates](runtime-workflows/course-plan-update-continuity.md)
 - [Existing-Learner Teacher View by SkillPilot ID](runtime-workflows/existing-learner-teacher-view.md)
   Functionally read-only local teacher view over the normal learner endpoints,

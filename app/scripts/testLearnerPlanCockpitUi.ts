@@ -50,6 +50,15 @@ try {
       learnerMutationPaths.push(pathname)
     }
   })
+  await page.route('**/api/ui/learners/history-fixture/history', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify([
+      { goalId: 'recorded', timestamp: '2026-09-10T23:30:00Z', value: 1, source: 'completion_event' },
+      { goalId: 'legacy', timestamp: '2026-09-09T12:00:00Z', value: 1, source: 'legacy_last_updated' },
+      { goalId: 'old-server', timestamp: '2026-09-08T12:00:00Z', value: 1 },
+    ]),
+  }))
   await page.route('**/api/ui/curriculum-catalog', (route) => route.fulfill({
     status: 200,
     contentType: 'application/json',
@@ -145,12 +154,11 @@ try {
 
   const overview = page.getByTestId('cockpit-fixture').getByTestId('learner-plan-today-overview')
   await overview.getByRole('heading', { name: 'Heute' }).waitFor()
-  await overview.getByText('5 Planziele sind bis heute noch offen.').waitFor()
-  await overview.getByText('Rückstände aus früheren Tagen sind mitgezählt.').waitFor()
+  await overview.getByText('Noch 4 Lernziele bis zu deinen heutigen Tageszielen.').waitFor()
   assert.equal(await overview.getByTestId(/learner-plan-subject-/u).count(), 2)
-  await overview.getByTestId('learner-plan-subject-math/sek-i').getByText('2 Ziele offen').waitFor()
+  await overview.getByTestId('learner-plan-subject-math/sek-i').getByText('0 von 2 Lernzielen heute geschafft').first().waitFor()
   const physicsPlanRow = overview.getByTestId('learner-plan-subject-physics/sek-ii')
-  await physicsPlanRow.getByText('3 Ziele offen').waitFor()
+  await physicsPlanRow.getByText('0 von 2 Lernzielen heute geschafft').first().waitFor()
   assert.equal(await overview.getByText('Tempo der letzten 7 Tage').count(), 0)
   assert.equal(await overview.getByText('Nächstes Planziel starten').count(), 0)
   const overviewHeight = await overview.evaluate((element) => element.getBoundingClientRect().height)
@@ -171,8 +179,8 @@ try {
     `mobile today overview should not overflow horizontally (${mobileLayout.scrollWidth}px > ${mobileLayout.clientWidth}px)`,
   )
   await physicsPlanRow.getByLabel('Plandetails: Physik').click()
-  await physicsPlanRow.getByText('2 offen · 0 beherrscht').waitFor()
-  await physicsPlanRow.getByText('1 offenes Ziel aus früheren Tagen').waitFor()
+  await physicsPlanRow.getByText('0 von 2 Lernzielen heute geschafft').last().waitFor()
+  await physicsPlanRow.getByText('1 weiteres offenes Planziel').waitFor()
   await physicsPlanRow.getByLabel('Plandetails: Physik').click()
 
   const mathPlanLabel = overview.getByText('Mathematik bis Klasse 10')
@@ -270,6 +278,39 @@ try {
   await inFlightFixture.getByTestId('in-flight-status').filter({ hasText: 'ready' }).waitFor()
   assert.equal(await inFlightContinue.isEnabled(), true, 'the action returns after the refresh completes')
   assert.equal(reconcileRequests, 1, 'later rerenders and retries do not repeat first-start reconcile')
+
+  const progressFixture = page.getByTestId('daily-progress-fixture')
+  const progress = progressFixture.getByRole('progressbar', { name: 'Tagesziel: Mathematik' })
+  assert.equal(await progress.getAttribute('value'), '0')
+  await progressFixture.getByRole('button', { name: 'Tagespensum abschließen' }).click()
+  await progressFixture.getByText('Deine Tagesziele sind erreicht. Gut gemacht!').waitFor()
+  assert.equal(await progress.getAttribute('value'), '2')
+  assert.equal(await progress.getAttribute('max'), '2')
+  assert.equal(await progressFixture.getByText('4 weitere offene Planziele').isVisible(), false, 'backlog stays available in closed details')
+  assert.equal(await progressFixture.getByTestId('voluntary-start-count').textContent(), '0', 'reaching the daily target starts no extra work')
+  await progressFixture.getByRole('button', { name: 'Freiwillig weiter in Mathematik' }).click()
+  assert.equal(await progressFixture.getByTestId('voluntary-start-count').textContent(), '1', 'extra work requires an explicit click')
+  await progressFixture.getByRole('button', { name: 'Zusätzliches Ziel abschließen' }).click()
+  await progressFixture.getByText('Zusätzlich 1 Lernziel geschafft. Stark!').waitFor()
+  assert.equal(await progress.getAttribute('value'), '2', 'extra work does not change the fulfilled target')
+  assert.equal(await progressFixture.getByText('3 weitere offene Planziele').isVisible(), false)
+  const completedLayout = await progressFixture.getByTestId('learner-plan-subject-math/sek-i').evaluate((row) => {
+    const text = row.querySelector('[aria-live] p')!.getBoundingClientRect()
+    const button = row.querySelector('button')!.getBoundingClientRect()
+    return { textWidth: text.width, textHeight: text.height, textBottom: text.bottom, buttonTop: button.top }
+  })
+  assert.ok(completedLayout.textWidth >= 250, `daily progress must keep readable mobile width: ${JSON.stringify(completedLayout)}`)
+  assert.ok(completedLayout.textHeight <= 48, 'the daily progress sentence must not collapse into a narrow word column')
+  assert.ok(completedLayout.buttonTop >= completedLayout.textBottom, 'the voluntary action follows the mobile progress text without overlap')
+  await progressFixture.getByTestId('learner-plan-today-overview').screenshot({
+    path: fileURLToPath(new URL('../../tmp/learner-plan-daily-quota-mobile.png', import.meta.url)),
+  })
+  await progressFixture.getByRole('button', { name: 'Historie öffnen' }).evaluate((element: HTMLButtonElement) => element.click())
+  await page.getByRole('heading', { name: 'Lerngeschwindigkeit' }).waitFor()
+  await page.getByText('Abgeschlossen am: 11.09.2026').waitFor()
+  await page.getByText('Letzte Aktualisierung: 09.09.2026').waitFor()
+  await page.getByText('Letzte Aktualisierung: 08.09.2026').waitFor()
+  await page.getByText('Erfasste Abschlüsse / Woche (letzte 8 Wochen)').waitFor()
   assert.equal(errors.length, 0, `learner plan Cockpit browser errors:\n${errors.join('\n')}`)
 
   console.log('learner plan Cockpit browser regression test passed')

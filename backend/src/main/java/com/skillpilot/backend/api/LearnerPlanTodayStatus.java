@@ -13,7 +13,9 @@ import java.util.List;
  * {@link #unavailablePlanCount()} and never to the visible counts.
  * {@link #resumeAvailable()} is true only when the existing authoritative
  * plan-continuation check finds a due frontier goal and no unmastered active
- * goal is already in progress.</p>
+ * goal is already in progress. While any daily quota remains open, only a
+ * candidate in an unfinished subject enables resume. Once all quotas are met,
+ * this flag describes voluntary extra capability, never automatic consent.</p>
  */
 public record LearnerPlanTodayStatus(
         @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf,
@@ -32,7 +34,14 @@ public record LearnerPlanTodayStatus(
             int openToday,
             int openOverdue,
             boolean current,
-            boolean canContinue) {
+            boolean canContinue,
+            int extraCompletedToday) {
+
+        public SubjectStatus(String landscapeId, String subjectLabel, int dueToday, int completedToday,
+                int openToday, int openOverdue, boolean current, boolean canContinue) {
+            this(landscapeId, subjectLabel, dueToday, completedToday, openToday, openOverdue,
+                    current, canContinue, 0);
+        }
 
         /** Count-only callers cannot authorize a subject transition. */
         public SubjectStatus(
@@ -52,6 +61,10 @@ public record LearnerPlanTodayStatus(
             int dueToday,
             int completedToday,
             int openToday,
-            int openOverdue) {
+            int openOverdue,
+            int extraCompletedToday) {
+        public Totals(int dueToday, int completedToday, int openToday, int openOverdue) {
+            this(dueToday, completedToday, openToday, openOverdue, 0);
+        }
     }
 }

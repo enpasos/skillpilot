@@ -1644,6 +1644,69 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void plannedOrientationCompletionStopsAtQuotaDespiteSelectedPathEntry() {
+        assertPlannedOrientationPreservesCanonicalSuccessor(false);
+    }
+
+    @Test
+    void plannedOrientationCompletionKeepsTheBackendSelectedNextSubject() {
+        assertPlannedOrientationPreservesCanonicalSuccessor(true);
+    }
+
+    private void assertPlannedOrientationPreservesCanonicalSuccessor(boolean anotherSubjectOpen) {
+        useCurrentContract();
+        FrontierGoal orientation = orientationGoal();
+        FrontierGoal pathEntry = contentGoal("path-entry", "Wachstum verstehen");
+        FrontierGoal physics = contentGoal("physics-next", "Kräfte darstellen");
+        UnifiedLearnerStateResponse before = state("orientActiveGoal", orientation);
+        UnifiedLearnerStateResponse successor = anotherSubjectOpen
+                ? state("teachActiveGoal", physics) : goalSelectionState(pathEntry);
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before, successor);
+        when(coachTools.getOrientationOutlook(LEARNER_ID, "de"))
+                .thenReturn(new OrientationOutlook(orientation.id(), List.of(new OrientationOutlook.Path(
+                        "growth", "Wachstum", "Wachstum erklären", List.of("Natur"),
+                        List.of(new OrientationOutlook.GoalReference(pathEntry.id(), pathEntry.title())),
+                        List.of(pathEntry.id())))));
+        when(coachTools.getUncompactedFrontier(LEARNER_ID)).thenReturn(List.of(pathEntry));
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de"))
+                .thenReturn(planQuotaStatus(anotherSubjectOpen));
+        when(coachTools.setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class)))
+                .thenReturn(new CoachToolFacade.MasteryResult(CoachToolFacade.MasteryStatus.UPDATED,
+                        new MasteryUpdateResponse(true, orientation.id(), 1.0, successor.frontier(),
+                                successor.nextAllowedActions(), successor.learningState(), successor.activeGoal(),
+                                successor.stateMachine(), successor.goals()), null, null));
+
+        McpSchema.CallToolResult result = call(OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                masteryArguments(orientation.id(), "growth"));
+        assertThat(result.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.SET_MASTERY, result);
+        var payload = structured(result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
+        assertThat(payload.context().learningPlanToday().guidance().state())
+                .isEqualTo(anotherSubjectOpen ? "continue" : "complete");
+        if (anotherSubjectOpen) {
+            assertThat(payload.context().activeGoal().goalId()).isEqualTo(physics.id());
+        } else {
+            assertThat(payload.context().activeGoal()).isNull();
+            assertThat(payload.context().goalVisualization()).isNull();
+            assertThat(payload.context().requiredAction()).isEqualTo("complete");
+            assertThat(payload.context().options()).isEmpty();
+        }
+        verify(coachTools, never()).setActiveGoal(any(), any());
+        verify(coachTools, never()).getUncompactedFrontier(any());
+    }
+
+    private static com.skillpilot.backend.api.LearnerPlanTodayStatus planQuotaStatus(boolean anotherSubjectOpen) {
+        return new com.skillpilot.backend.api.LearnerPlanTodayStatus(
+                java.time.LocalDate.parse("2026-09-11"), true, !anotherSubjectOpen,
+                List.of(new com.skillpilot.backend.api.LearnerPlanTodayStatus.SubjectStatus(
+                                "math", "Mathematik", 1, 1, 0, 3, false, true, 0),
+                        new com.skillpilot.backend.api.LearnerPlanTodayStatus.SubjectStatus(
+                                "physics", "Physik", 1, anotherSubjectOpen ? 0 : 1,
+                                anotherSubjectOpen ? 1 : 0, 0, anotherSubjectOpen, anotherSubjectOpen, 0)),
+                null, 0);
+    }
+
+    @Test
     void orientationCompletionWithoutASelectedPathLeavesGoalChoiceToTheFreshState() {
         FrontierGoal orientation = orientationGoal();
         FrontierGoal firstEntry = contentGoal("first-entry", "Funktionen und Modelle verstehen");
@@ -2430,6 +2493,49 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(rendered.path("goalVisualization").path("goalId").asText())
                 .isEqualTo("goal-with-image");
         verify(coachTools, times(2)).getLearnerState(LEARNER_ID);
+    }
+
+    @Test
+    void completedRecallWithExplicitActiveSuccessorKeepsRequiredRendererInPlanMode() {
+        useCurrentContract();
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de")).thenReturn(planQuotaStatus(false));
+        completedRecallBatchWithVisualSuccessorReturnsAndExecutesTheServerDirectedRendererCall();
+    }
+
+    @Test
+    void completedRecallAtDailyQuotaReturnsOnlyTheDailyGuidanceContinuation() {
+        useCurrentContract();
+        String batchCapability = issueTwoCardRecallBatchCapability();
+        String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
+        UnifiedLearnerStateResponse successor = goalSelectionState(contentGoal("future", "Späteres Ziel"));
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de")).thenReturn(planQuotaStatus(false));
+        when(coachTools.recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallBatchResultResponse(List.of(
+                        new VerifiedRecallBatchSavedResult("card-public-id-1", true),
+                        new VerifiedRecallBatchSavedResult("card-public-id-2", true)),
+                        2, 0, true, "memory-public-id", null, successor));
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
+                .when(sessionCoordinator).write(any(), any(), anyLong(), any(), any(), any());
+
+        var result = call(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, Map.of(
+                "gradingCapability", gradingCapability, "assessments", twoCardAssessments(true, true)));
+        assertThat(result.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, result);
+        var receipt = structured(result, OpenAiDeV1McpContractAdapter.RecallResultsReceipt.class);
+        assertThat(receipt.continuation().action()).isEqualTo("followLearningPlanGuidance");
+        assertThat(receipt.continuation().instruction()).contains("context.learningPlanToday.guidance")
+                .doesNotContain("Nur die harte Kartenprüfung ist für heute beendet");
+        assertThat(receipt.continuation().consentRequired()).isTrue();
+        assertThat(receipt.continuation().toolCall()).isNull();
+        assertThat(receipt.context().learningPlanToday().guidance().state()).isEqualTo("complete");
+        assertThat(receipt.context().learningPlanToday().totals().openOverdue()).isEqualTo(3);
+        assertThat(receipt.context().activeGoal()).isNull();
+        assertThat(receipt.context().goalVisualization()).isNull();
+        assertThat(receipt.context().options()).isEmpty();
+        assertThat(receipt.context().instruction()).isNull();
+        assertThat(receipt.context().requiredAction()).isNull();
+        verify(coachTools, never()).setActiveGoal(any(), any());
+        verify(coachTools, never()).resumeLearningPlan(any(), any());
     }
 
     @Test

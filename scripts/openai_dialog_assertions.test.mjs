@@ -113,8 +113,11 @@ test('P5 refreshes scope options after consent and copies all independent roots 
 
 test('D2/D4 check actual plan preconditions and D3 exact authorized labels before switching', () => {
   const d2 = getCase('D2')
-  const events = [user('start'), ctx('start', { activeGoal: undefined, learningPlanToday: { resumeAvailable: true } }), tool('start', 'resume_skillpilot_learning_plan', {}, { expectedStateVersion: 1 }), reply('start')]
+  const events = [user('start'), ctx('start', { activeGoal: undefined, learningPlanToday: { resumeAvailable: true, guidance: { state: 'resume' } } }), tool('start', 'resume_skillpilot_learning_plan', {}, { expectedStateVersion: 1 }), reply('start')]
   assert.equal(evaluateDialogCase(d2, events).passed, true)
+  events[1].result.structuredContent.learningPlanToday.guidance.state = 'complete'
+  assert.equal(failed(evaluateDialogCase(d2, events), 'starting-plan-precondition'), true)
+  events[1].result.structuredContent.learningPlanToday.guidance.state = 'resume'
   events[1].result.structuredContent.activeGoal = { goalId: 'active' }
   assert.equal(failed(evaluateDialogCase(d2, events), 'resume-precondition'), true)
   assert.equal(failed(evaluateDialogCase(getCase('D4'), base(getCase('D4'))), 'starting-plan-precondition'), true)

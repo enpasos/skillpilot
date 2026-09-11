@@ -10,8 +10,11 @@ snapshot remains historical evidence, not an active source-code freeze.
   without a redundant daily-plan read tool.
 - Add guarded plan continuation and subject switching, preserving unfinished
   work and respecting status-only, pause, exam, and learner-consent boundaries.
-- Use one compact daily overview with separate overdue work and explicit
-  unavailable-plan guidance; never invent progress from missing data.
+- Count actual recorded completions toward each subject's stable daily quota,
+  including older due goals. Celebrate completion before offering voluntary
+  extra learning; additional work never replaces another subject's quota.
+- Keep remaining plan work secondary and unavailable-plan guidance explicit.
+  Never infer a completion date from a mastery snapshot or legacy update time.
 - Keep orientation, teaching, mastery, memory practice, Verified Recall and
   assessment safeguards. Optional visualizations never replace complete text.
 - Submit the remote MCP server directly, without the former development-app

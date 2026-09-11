@@ -5,5 +5,10 @@ import java.time.Instant;
 public record MasteryHistoryEntry(
         String goalId,
         Instant timestamp,
-        double value) {
+        double value,
+        String source) {
+
+    public MasteryHistoryEntry(String goalId, Instant timestamp, double value) {
+        this(goalId, timestamp, value, "legacy_last_updated");
+    }
 }

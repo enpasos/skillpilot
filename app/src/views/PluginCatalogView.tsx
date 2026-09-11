@@ -69,8 +69,10 @@ const copy = (version?: string) => ({
     troubleTitle: 'Hinweise zu Updates und Marketplace-Verwaltung',
     troubleBody: 'Der Versionswähler unter „Inhalte“ zeigt synchronisierte Dateien, nicht zuverlässig die installierte oder im laufenden Chat verwendete Version. Automatische Updates auf unabhängigen Konten sind noch nicht vollständig geprüft.',
     removalWarning: '„Entfernen“ am Marketplace deinstalliert laut Claude auch dessen Plugins. Das ist kein normaler Updateschritt. Prüfe separat erteilte GitHub-Rechte gesondert; das Entfernen ist kein bestätigter Widerruf.',
-    guideTitle: 'Alternative: Plugin-Datei herunterladen und hochladen',
-    guideIntro: 'Für eine neue Installation oder ein manuelles Update, wenn du den Marketplace nicht nutzen kannst oder möchtest. Nutze nur einen Installationsweg.',
+    guideTitle: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED ? 'Alternative: Plugin-Datei herunterladen und hochladen' : 'Plugin-Datei herunterladen und hochladen',
+    guideIntro: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED
+      ? 'Für eine neue Installation oder ein manuelles Update, wenn du den Marketplace nicht nutzen kannst oder möchtest. Nutze nur einen Installationsweg.'
+      : 'Lade die aktuelle Plugin-Datei für eine neue Installation oder ein manuelles Update herunter und installiere sie in Claude.',
     stepOpenTitle: 'Bestehende Installation prüfen',
     stepOpenBody: 'Erst nach dem Download:',
     stepOpenActions: [
@@ -84,7 +86,7 @@ const copy = (version?: string) => ({
       'Wähle „Hinzufügen“ oben rechts → „Plugin hochladen“ und lade die heruntergeladene .plugin-Datei unverändert hoch.',
       'Prüfe anschließend wie unten beschrieben Version, Aktivierung und Konnektor. Spätere Datei-Updates führst du auf demselben Weg durch.',
     ],
-    finishTitle: 'Für beide Wege: prüfen und starten',
+    finishTitle: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED ? 'Für beide Wege: prüfen und starten' : 'Prüfen und starten',
     versionTitle: 'Installierte Version prüfen',
     versionBody: version
       ? 'Unter „Deine Plugins“ muss „SkillPilot Coach v1“ genau einmal installiert, aktiviert und in Version ' + version + ' angezeigt sein.'
@@ -180,8 +182,10 @@ const copy = (version?: string) => ({
     troubleTitle: 'About updates and marketplace management',
     troubleBody: 'The version selector under Contents shows synchronized files, not reliable proof of the installed version or the version used by a running chat. Automatic updates across independent accounts have not been fully verified.',
     removalWarning: 'Removing a marketplace also uninstalls its plugins, according to Claude. This is not a normal update step. Check separately granted GitHub access independently; removal is not confirmed to revoke it.',
-    guideTitle: 'Alternative: Download and upload the plugin file',
-    guideIntro: 'For a new installation or manual update when you cannot or prefer not to use the marketplace. Use only one installation route.',
+    guideTitle: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED ? 'Alternative: Download and upload the plugin file' : 'Download and upload the plugin file',
+    guideIntro: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED
+      ? 'For a new installation or manual update when you cannot or prefer not to use the marketplace. Use only one installation route.'
+      : 'Download the current plugin file for a new installation or manual update, then install it in Claude.',
     stepOpenTitle: 'Check the existing installation',
     stepOpenBody: 'Only after downloading the file:',
     stepOpenActions: [
@@ -195,7 +199,7 @@ const copy = (version?: string) => ({
       'Select Add at the top right → Upload plugin, then upload the downloaded .plugin file without modifying it.',
       'Check the version, activation and connector as described below. Use the same file workflow for later file updates.',
     ],
-    finishTitle: 'For both routes: check and start',
+    finishTitle: CLAUDE_MARKETPLACE_INSTALLATION_ENABLED ? 'For both routes: check and start' : 'Check and start',
     versionTitle: 'Check the installed version',
     versionBody: version
       ? 'Under Your plugins, SkillPilot Coach v1 must appear exactly once, installed, enabled and showing version ' + version + '.'
@@ -472,7 +476,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({
           </section>
         )}
 
-        <details data-testid="claude-plugin-direct-upload-guide" className="rounded-2xl border border-border-color p-5 sm:p-6">
+        <details data-testid="claude-plugin-direct-upload-guide" open={!CLAUDE_MARKETPLACE_INSTALLATION_ENABLED} className="rounded-2xl border border-border-color p-5 sm:p-6">
           <summary className="cursor-pointer text-lg font-semibold text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 dark:text-white">{text.guideTitle}</summary>
           <p className="mt-2 text-sm leading-relaxed text-text-secondary">{text.guideIntro}</p>
           <ol className="mt-5 space-y-4">

@@ -19,9 +19,10 @@ public record OpenAiDeLearningPlanToday(
         Guidance guidance) {
 
     public record Subject(String subject, boolean current, boolean canContinue,
-            int dueToday, int completedToday, int openToday, int openOverdue) {}
+            int dueToday, int completedToday, int openToday, int openOverdue, int extraCompletedToday) {}
 
-    public record Totals(int dueToday, int completedToday, int openToday, int openOverdue) {}
+    public record Totals(int dueToday, int completedToday, int openToday, int openOverdue,
+            int extraCompletedToday) {}
 
     public record Guidance(String state, String instruction) {}
 
@@ -29,7 +30,7 @@ public record OpenAiDeLearningPlanToday(
             LearnerPlanTodayStatus source, boolean hasActiveGoal, boolean activeExam) {
         if (source == null) {
             return new OpenAiDeLearningPlanToday(null, false, false, List.of(),
-                    new Totals(0, 0, 0, 0), 0, guidance("unavailable"));
+                    new Totals(0, 0, 0, 0, 0), 0, guidance("unavailable"));
         }
         Map<String, Counts> bySubject = new TreeMap<>(String.CASE_INSENSITIVE_ORDER
                 .thenComparing(java.util.Comparator.naturalOrder()));
@@ -42,12 +43,12 @@ public record OpenAiDeLearningPlanToday(
                 continue;
             }
             bySubject.merge(label, new Counts(subject.dueToday(), subject.completedToday(),
-                    subject.openToday(), subject.openOverdue(), subject.current(),
+                    subject.openToday(), subject.openOverdue(), subject.extraCompletedToday(), subject.current(),
                     subject.canContinue() && label.equals(subject.subjectLabel()), 1),
                     Counts::add);
         }
         List<Subject> subjects = new ArrayList<>();
-        Counts totals = new Counts(0, 0, 0, 0, false, false, 0);
+        Counts totals = new Counts(0, 0, 0, 0, 0, false, false, 0);
         for (Map.Entry<String, Counts> entry : bySubject.entrySet()) {
             Counts counts = entry.getValue();
             if (!counts.fitsIntegers() || !totals.add(counts).fitsIntegers()) {
@@ -59,7 +60,7 @@ public record OpenAiDeLearningPlanToday(
                             && counts.planCount() == 1 && counts.canContinue()
                             && (counts.openToday() > 0 || counts.openOverdue() > 0),
                     (int) counts.dueToday(), (int) counts.completedToday(),
-                    (int) counts.openToday(), (int) counts.openOverdue()));
+                    (int) counts.openToday(), (int) counts.openOverdue(), (int) counts.extraCompletedToday()));
             totals = totals.add(counts);
         }
         boolean resume = source.asOf() != null && source.followLearningPlans()
@@ -67,27 +68,31 @@ public record OpenAiDeLearningPlanToday(
                 && (totals.openToday() > 0 || totals.openOverdue() > 0);
         String state = !source.followLearningPlans() ? "paused"
                 : hasActiveGoal ? "continue"
-                : resume ? "resume"
                 : source.asOf() == null || subjects.isEmpty() ? "unavailable"
-                : totals.openToday() > 0 || totals.openOverdue() > 0 ? "blocked"
-                : unavailable > 0 ? "unavailable" : "complete";
+                : totals.openToday() == 0 ? unavailable > 0 ? "unavailable" : "complete"
+                : resume ? "resume"
+                : "blocked";
         return new OpenAiDeLearningPlanToday(source.asOf() == null ? null : source.asOf().toString(),
                 source.followLearningPlans(), resume, List.copyOf(subjects),
                 new Totals((int) totals.dueToday(), (int) totals.completedToday(),
-                        (int) totals.openToday(), (int) totals.openOverdue()), unavailable, guidance(state));
+                        (int) totals.openToday(), (int) totals.openOverdue(),
+                        (int) totals.extraCompletedToday()), unavailable, guidance(state));
     }
 
-    /** Display counts are current mastery in the newly-due set, never activity events. */
+    /** Today's real completions fill each subject's quota before counting voluntary extra work. */
     public String summary(boolean english) {
         if (asOf == null || subjects.isEmpty()) {
             return english ? "Daily plan unavailable." : "Tagesplan nicht auswertbar.";
         }
         String subjectsOpen = subjects.stream().map(subject -> subject.subject() + " " + subject.openToday())
                 .collect(java.util.stream.Collectors.joining(" · "));
-        return (english ? "Today: " : "Heute: ") + totals.completedToday() + "/" + totals.dueToday()
-                + (english ? " mastered · Open: " : " beherrscht · Offen: ") + subjectsOpen
-                + (totals.openOverdue() > 0 ? (english ? " · Overdue: " : " · Rückstand: ")
-                        + totals.openOverdue() : "")
+        String progress = totals.dueToday() == 0
+                ? (english ? "No fixed quota today." : "Heute kein festes Pensum.")
+                : (english ? "Today: " : "Heute: ") + totals.completedToday() + "/" + totals.dueToday()
+                        + (english ? " done · Open: " : " geschafft · Offen: ") + subjectsOpen;
+        return progress
+                + (totals.extraCompletedToday() > 0 ? (english ? " · Extra: +" : " · Zusätzlich: +")
+                        + totals.extraCompletedToday() : "")
                 + (unavailablePlanCount > 0 ? (english ? " · Unavailable plans: " : " · Nicht auswertbare Pläne: ")
                         + unavailablePlanCount : "");
     }
@@ -102,9 +107,12 @@ public record OpenAiDeLearningPlanToday(
                     + "stateVersion. A clear subject request takes priority: use its exact published subject with "
                     + "canContinue=true before rendering the old goal. For status-only questions or a pause "
                     + "do not render, navigate, start a goal or write state.";
-            case "complete" -> "The evaluated workload due through today, including backlog, is done. Say that "
-                    + "no more plan goals are required today. Do not select future goals, widen focus, or redirect "
-                    + "to the Web app. Extra learning requires an explicit request; the entire plan is not finished.";
+            case "complete" -> "Today's quota is fulfilled in every evaluated subject. Celebrate that progress "
+                    + "and offer to stop or do voluntary extra learning. If dueToday=0, say there is no fixed quota "
+                    + "today instead of claiming work was completed. Extra learning requires an explicit request, "
+                    + "even when resumeAvailable=true. Do not automatically resume, select future goals, widen "
+                    + "focus or redirect to the Web app. Remaining backlog is not required today; neither the "
+                    + "entire plan nor all backlog is necessarily finished.";
             case "blocked" -> "Due goals remain open but none can currently start. Do not claim today is complete, "
                     + "invent tasks, or offer the same unavailable subject again. Ask the teacher to check the plan; "
                     + "do not require the learner to repair configuration.";
@@ -127,6 +135,8 @@ public record OpenAiDeLearningPlanToday(
     private static boolean validCounts(LearnerPlanTodayStatus.SubjectStatus subject) {
         return subject != null && subject.dueToday() >= 0 && subject.completedToday() >= 0
                 && subject.openToday() >= 0 && subject.openOverdue() >= 0
+                && subject.extraCompletedToday() >= 0
+                && (subject.extraCompletedToday() == 0 || subject.openToday() == 0)
                 && (long) subject.completedToday() + subject.openToday() == subject.dueToday();
     }
 
@@ -135,16 +145,19 @@ public record OpenAiDeLearningPlanToday(
     }
 
     private record Counts(long dueToday, long completedToday, long openToday, long openOverdue,
+            long extraCompletedToday,
             boolean current, boolean canContinue, int planCount) {
         Counts add(Counts other) {
             return new Counts(dueToday + other.dueToday, completedToday + other.completedToday,
                     openToday + other.openToday, openOverdue + other.openOverdue,
+                    extraCompletedToday + other.extraCompletedToday,
                     current || other.current, canContinue || other.canContinue,
                     saturatingAdd(planCount, other.planCount));
         }
         boolean fitsIntegers() {
             return dueToday <= Integer.MAX_VALUE && completedToday <= Integer.MAX_VALUE
-                    && openToday <= Integer.MAX_VALUE && openOverdue <= Integer.MAX_VALUE;
+                    && openToday <= Integer.MAX_VALUE && openOverdue <= Integer.MAX_VALUE
+                    && extraCompletedToday <= Integer.MAX_VALUE;
         }
     }
 }

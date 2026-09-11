@@ -25,9 +25,13 @@ export interface LearnerLearningPlanMetrics {
   dueThroughToday: number
   completedDueThroughToday: number
   openDueThroughToday: number
+  /** Stable daily quota, capped by available due work. */
   dueToday: number
+  /** Actual completions credited on this day; forecasts assume zero future completions. */
   completedDueToday: number
   openDueToday: number
+  /** Additional due plan goals completed today after the daily target was reached. */
+  extraCompletedToday?: number
   totalPlanned: number
 }
 
@@ -219,7 +223,7 @@ export interface ActivateLearnerLearningPlansResponse {
   state: Record<string, unknown>
 }
 
-/** Read-only projection of the proposed batch using the learner's current mastery. */
+/** Read-only daily-quota projection; future days retain current mastery without assuming future completions. */
 export interface PreviewLearnerLearningPlansResponse {
   asOf: LearnerLearningPlanDate
   days: Array<{

@@ -50,12 +50,13 @@ tool.
    cannot be fulfilled, do not fall through to generic resume.
    Only for a normal learning start or continuation, with no pending subject
    request, if no active goal exists and `learningPlanToday.followLearningPlans`
-   and `learningPlanToday.resumeAvailable` are both true, call
+   and `learningPlanToday.resumeAvailable` are both true and guidance is `resume`, call
    `resume_skillpilot_learning_plan` with the latest server-provided
    `expectedStateVersion` and a fresh UUID request identifier before any
    learner-facing response.
    Call it only in that exact state. Never call it when `resumeAvailable` is
-   false. Use the tool's returned full canonical context as authoritative and
+   false. With guidance `complete`, resume or switch only after an explicit
+   request for voluntary extra; never auto-resume. Use the tool's returned full canonical context as authoritative and
    immediately apply step 5 to that returned context before continuing. Do not
    ask the learner to select **Weiterlernen** or open the Web application as a
    substitute for this automatic resume.
@@ -67,15 +68,17 @@ tool.
    `learningPlanToday.subjects`. Example: "Heute: 2 von 48 geschafft · noch
    offen: 19 Mathe, 27 Physik." In English: "Today: 2 of 48 done · still open:
    19 Maths, 27 Physics." Use actual counts, never the example numbers.
-   Append "+ N überfällig" (English: "+ N overdue") only when the totals'
-   `openOverdue` is greater than zero; omit zero backlog entirely and never add
-   backlog to today's counts. Use detailed per-subject counters only on explicit
+   Add positive `extraCompletedToday` as a brief voluntary bonus. Mention
+   `openOverdue` only on an explicit plan-detail request, never as a repeated
+   reminder in ordinary teaching turns. Use detailed per-subject counters only on explicit
    request; do not add a second totals paragraph or bullet list by default.
    "Mathe" is a display alias only; tool arguments still use the exact published
    subject. Do not omit one valid subject when several plans apply.
-   `completedToday` means goals newly due today that are
-   currently mastered, not mastery events that necessarily happened today.
-   Never present it as an event count. When `unavailablePlanCount` is greater
+   `completedToday` counts today's actual completions of due plan goals, including
+   older overdue goals, capped at each subject's stable `dueToday` quota. Further
+   completions are `extraCompletedToday`; one subject's extra never fills another
+   subject's quota. If `dueToday=0`, say there is no fixed quota today instead of
+   claiming completed work. When `unavailablePlanCount` is greater
    than zero, add a learner-safe warning that one or more plans could not be
    evaluated and the totals exclude them; expose no plan identifiers, malformed
    data or internal details. In that unavailable-plan case, if no valid subject
@@ -84,8 +87,9 @@ tool.
    every turn.
 8. Use `learningPlanToday.guidance.state` and
    `learningPlanToday.guidance.instruction` to explain the next step in ordinary
-   learning language. For `complete`, clearly say that all planned work due
-   through today is done; do not add new required goals. Further learning is
+   learning language. For `complete`, celebrate that today's quota is fulfilled
+   and offer to stop or do voluntary extra. This does not mean the entire plan or
+   all backlog is finished; do not add new required goals. Further learning is
    optional and needs a learner request. For `blocked` or `unavailable`, never
    claim that today is complete; explain the supplied next step briefly. For
    `paused`, do not silently enable plan following. For `continue` or `resume`,

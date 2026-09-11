@@ -1,8 +1,8 @@
 # Learning Velocity (Concept)
 
-> This is the narrow observational metric approximated by the current UI. Its
-> current snapshot timestamps do not yet prove first atomic threshold
-> crossings, and the current history boundary does not itself validate that
+> The current UI counts recorded completion events, not mutable mastery update
+> timestamps. The event can be a renewed completion on a later day, not necessarily
+> the first-ever threshold crossing; the history boundary does not itself validate that
 > every counted entry is an atomic plan-capable goal. The target model for
 > dated curriculum planning, effective teaching weeks, buffers, baselines,
 > target pace and forecasts is defined in
@@ -15,6 +15,14 @@ It is designed to encourage steady practice ("don't break the chain") rather tha
 
 ## Definition
 Learning Velocity is the count of newly mastered **atomic** goals per time unit.
+
+This is the conceptual subject-mastery metric. The present Cockpit chart is
+labelled **recorded completions** and uses the narrower evidence contract in
+[Daily learning progress](../runtime-workflows/daily-learning-progress.md).
+It includes completion markers such as orientation, which do not certify
+subject-matter mastery. Legacy history remains visible but does not enter the
+chart. Weeks use the `Europe/Berlin` calendar; a same-goal completion is counted
+at most once per day, not necessarily once in a lifetime.
 
 **Default definition:**
 -   **Atomic goals only:** Only leaf nodes count (no containers), to avoid inflation.
@@ -44,12 +52,13 @@ This is an example of presentation; UI specifics are intentionally flexible.
 3. **Motivation:** Keep the metric simple enough to be understood at a glance.
 
 ## Caveats
-- Bulk imports or late updates can create artificial spikes.
+- Imports and old update timestamps must not create artificial completion spikes;
+  the current event ledger deliberately excludes them and does not backfill history.
 - Learners with different time budgets are not directly comparable.
 - Context switches (new curriculum or new phase) may temporarily reduce velocity.
-- The current mutable mastery timestamp is not sufficient evidence for the
-  first threshold crossing. Reliable pacing requires an append-only achievement
-  event plus stable global and assignment-specific achievement projections.
+- Mutable mastery timestamps are not sufficient evidence for a threshold
+  crossing. The current transactional completion ledger addresses that boundary;
+  broader pacing still needs stable assignment-specific achievement projections.
 - Calendar weeks do not represent teaching capacity: holidays, cancelled
   lessons and explicit buffers require an instructional calendar.
 

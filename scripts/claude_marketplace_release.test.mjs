@@ -35,6 +35,13 @@ function loadHistorical111MarketplaceLane() {
   ), "utf8"));
 }
 
+function loadHistorical112MarketplaceLane() {
+  return JSON.parse(readFileSync(resolve(
+    repositoryRoot,
+    "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.2/marketplace-publication.json",
+  ), "utf8"));
+}
+
 const pluginManifest = JSON.parse(
   readFileSync(
     resolve(
@@ -54,8 +61,8 @@ const marketplaceTemplate = JSON.parse(
   ),
 );
 
-test("published 1.1.2 marketplace keeps the normal identity and pending account acceptance", () => {
-  const lane = loadClaudeMarketplaceLane(repositoryRoot);
+test("historical published 1.1.2 marketplace keeps the normal identity and pending account acceptance", () => {
+  const lane = loadHistorical112MarketplaceLane();
   validateClaudeMarketplaceLane(lane);
   assert.equal(lane.target.marketplaceName, "skillpilot-marketplace");
   assert.equal(lane.target.repositoryUrl, "https://github.com/enpasos/skillpilot-claude-marketplace");
@@ -97,7 +104,7 @@ test("published 1.1.2 marketplace keeps the normal identity and pending account 
 });
 
 test("the renewed guide decision cannot imply account acceptance or survive withdrawal", () => {
-  const lane = loadClaudeMarketplaceLane(repositoryRoot);
+  const lane = loadHistorical112MarketplaceLane();
   const original = structuredClone(lane);
   validateClaudeMarketplaceLane(lane);
   assert.deepEqual(lane, original, "validation must not rewrite approval or account evidence");
@@ -120,6 +127,23 @@ test("the renewed guide decision cannot imply account acceptance or survive with
     () => validateClaudeMarketplaceLane(claimedAcceptance),
     /state must be derived from revision-bound evidence/u,
   );
+});
+
+test("local 1.1.3 candidate resets all external publication and guide evidence", () => {
+  const lane = loadClaudeMarketplaceLane(repositoryRoot);
+  validateClaudeMarketplaceLane(lane);
+  assert.equal(lane.plugin.version, "1.1.3");
+  assert.equal(lane.activation.state, "prepared_not_published");
+  assert.equal(lane.activation.firstPartyUiRoute, "controlled_direct_install_beta");
+  assert.equal(lane.activation.marketplaceUiSwitchAllowed, false);
+  for (const [key, value] of Object.entries(lane.activation.firstPartyGuideDecision)) {
+    assert.equal(value, key === "status" ? "pending" : null, key);
+  }
+  for (const evidence of lane.activation.evidence) {
+    for (const [key, value] of Object.entries(evidence)) {
+      if (key !== "id") assert.equal(value, key === "status" ? "pending" : null, key);
+    }
+  }
 });
 
 test("historical marketplace lane retains published 1.1.1 without claiming real-client acceptance", () => {
@@ -465,7 +489,7 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.1.2");
+    assert.equal(prepared.version, "1.1.3");
     assert.equal(prepared.files.length, 11);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
@@ -524,7 +548,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.1.2",
+                version: "1.1.3",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {

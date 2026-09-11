@@ -28,8 +28,8 @@ export const TrainerLearningPlanPreviewSummary = ({
   const today = preview.days[0]
   const labels = new Map(subjects.map((subject) => [subject.landscapeId, subject.label]))
   const columns = de
-    ? ['Heute neu fällig', 'Davon bereits beherrscht', 'Heute noch offen', 'Offen aus früheren Tagen']
-    : ['Newly due today', 'Already mastered', 'Still open today', 'Open from earlier days']
+    ? ['Tagespensum', 'Heute geschafft', 'Heute noch offen', 'Weiterer Rückstand']
+    : ['Daily target', 'Completed today', 'Still open today', 'Remaining backlog']
   const metrics = (value: typeof today.totals) => [
     value.dueToday, value.completedDueToday, value.openDueToday,
     value.openDueThroughToday - value.openDueToday,
@@ -38,8 +38,8 @@ export const TrainerLearningPlanPreviewSummary = ({
     <div data-testid="trainer-learning-plan-preview-summary">
       <p className="text-sm leading-6 text-text-secondary">
         {de
-          ? 'So wirkt sich der gespeicherte Entwurf auf den Schüler aus. Die Zahlen kommen aus derselben Berechnung wie im Chat. Es wird noch nichts aktiviert.'
-          : 'This is how the saved draft affects the learner. These figures use the same calculation as the chat. Nothing is activated yet.'}
+          ? 'Diese Vorschau zeigt das Tagespensum für den gespeicherten Entwurf. Heute erfasste Abschlüsse fälliger Planziele zählen mit, auch wenn die Ziele aus früheren Tagen stammen. Es wird noch nichts aktiviert.'
+          : 'This preview shows the daily target for the saved draft. Due goals recorded as completed today count toward it, including goals from earlier days. Nothing is activated yet.'}
       </p>
       <h3 className="mt-4 font-semibold">{de ? 'Heute' : 'Today'} · {formatLearnerLearningPlanDate(preview.asOf, language)}</h3>
       <div className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
@@ -72,7 +72,7 @@ export const TrainerLearningPlanPreviewSummary = ({
       </p>
       {!compact && (
         <>
-          <h3 className="mt-6 font-semibold">{de ? 'Die nächsten 7 Tage · neu fällige Lernziele' : 'The next 7 days · newly due goals'}</h3>
+          <h3 className="mt-6 font-semibold">{de ? 'Die nächsten 7 Tage · Tagespensum' : 'The next 7 days · daily targets'}</h3>
           <div className="mt-3 overflow-x-auto rounded-xl border border-border-color" tabIndex={0} role="region" aria-label={de ? 'Wochenvorschau' : 'Week preview'}>
             <table className="w-full text-left text-sm">
               <thead className="bg-sidebar-bg text-text-secondary">
@@ -96,8 +96,8 @@ export const TrainerLearningPlanPreviewSummary = ({
       )}
       <p className="mt-3 text-xs leading-5 text-text-secondary">
         {de
-          ? '„Bereits beherrscht“ beschreibt den aktuellen Lernstand, nicht nur heute erreichte Ziele. Die Wochenvorschau zeigt die geplante Fälligkeit; zukünftiger Lernerfolg und Lernminuten werden nicht vorhergesagt. Rückstände werden nicht täglich erneut zur Wochensumme addiert.'
-          : '“Already mastered” describes current mastery, not only goals achieved today. The week preview shows scheduled due dates, not predicted future progress or learning minutes. Backlog is not repeatedly added to a weekly total.'}
+          ? 'Für die kommenden Tage bleibt der aktuelle Lernstand unverändert; künftige Abschlüsse werden nicht angenommen. Ein verbleibender Rückstand kann das Tagespensum füllen, erhöht es aber nicht. Lernminuten werden nicht vorhergesagt.'
+          : 'For future days, the current learning state is held unchanged; no future completions are assumed. Remaining backlog can fill the daily target without increasing it. Learning minutes are not predicted.'}
       </p>
     </div>
   )

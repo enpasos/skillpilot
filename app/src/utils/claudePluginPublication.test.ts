@@ -311,29 +311,29 @@ assert.equal(
 )
 assert.equal(marketplaceLane.plugin?.version, candidateManifest.version)
 assert.equal(marketplaceLane.plugin?.directInstallSha256, productionIndex.plugins[0]?.sha256)
-assert.equal(marketplaceLane.activation?.state, 'published_pending_acceptance')
+assert.equal(marketplaceLane.activation?.state, 'prepared_not_published')
 assert.equal(
   marketplaceLane.activation?.firstPartyUiRoute,
-  'personal_git_marketplace',
-  'the approved guide offers the observed Marketplace route with an independent file fallback',
+  'controlled_direct_install_beta',
+  'the new local candidate waits for its own Marketplace guide decision',
 )
 assert.equal(
   marketplaceLane.activation?.marketplaceUiSwitchAllowed,
-  true,
-  'the explicit guide decision enables Marketplace guidance, not automatic-update acceptance',
+  false,
+  'the previous candidate guide decision does not transfer to a new version',
 )
 const guideDecision = marketplaceLane.activation?.firstPartyGuideDecision
-assert.equal(guideDecision?.status, 'approved')
-assert.equal(guideDecision?.candidateVersion, candidateManifest.version)
-assert.equal(guideDecision?.candidateSha256, productionIndex.plugins[0]?.sha256)
+assert.equal(guideDecision?.status, 'pending')
+assert.equal(guideDecision?.candidateVersion, null)
+assert.equal(guideDecision?.candidateSha256, null)
 const repositoryEvidence = marketplaceLane.activation?.evidence?.find(
   entry => entry.id === 'public-repository-default-branch',
 )
-assert.equal(repositoryEvidence?.status, 'pass')
-assert.equal(repositoryEvidence?.candidateVersion, candidateManifest.version)
-assert.equal(repositoryEvidence?.candidateSha256, productionIndex.plugins[0]?.sha256)
-assert.match(repositoryEvidence?.revision ?? '', /^[a-f0-9]{40}$/u)
-assert.match(repositoryEvidence?.treeSha256 ?? '', /^[a-f0-9]{64}$/u)
+assert.equal(repositoryEvidence?.status, 'pending')
+assert.equal(repositoryEvidence?.candidateVersion, null)
+assert.equal(repositoryEvidence?.candidateSha256, null)
+assert.equal(repositoryEvidence?.revision, null)
+assert.equal(repositoryEvidence?.treeSha256, null)
 assert.equal(guideDecision?.repositoryRevision, repositoryEvidence?.revision)
 assert.equal(guideDecision?.repositoryTreeSha256, repositoryEvidence?.treeSha256)
 for (const pendingEvidenceId of [
@@ -353,7 +353,7 @@ for (const pendingEvidenceId of [
   assert.equal(evidence?.revision, null)
   assert.equal(evidence?.treeSha256, null)
 }
-assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, true)
+assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, false)
 
 // Preparing a replacement must not rewrite the actual 1.1.1 publication or
 // turn its withdrawn guide into evidence for the new candidate.

@@ -4,16 +4,12 @@ import { Check, Activity, X } from 'lucide-react'
 import type { UiGoal } from '../goalTypes'
 import { useTranslation } from '../hooks/useTranslation'
 import { InlineMathText } from './InlineMathText'
+import { useLanguage } from '../contexts/LanguageContext'
+import { getWeeklyCompletionCounts, isRecordedCompletion, type MasteryHistoryEntry } from '../utils/masteryHistory'
 import {
     LEARNER_UI_REFRESH_EVENT,
     type LearnerUiRefreshDetail,
 } from '../utils/learnerUiEvents'
-
-interface MasteryHistoryEntry {
-    goalId: string
-    timestamp: string // ISO string
-    value: number
-}
 
 interface ProgressPopoverProps {
     skillpilotId: string
@@ -26,10 +22,8 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
     children,
     goalIndexAll
 }) => {
-    // Explicitly casting to any to bypass potential TS issues with the hook signature during build if not updated
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const tAny = useTranslation() as any
-    const t = tAny
+    const t = useTranslation()
+    const { language } = useLanguage()
 
     const [isOpen, setIsOpen] = useState(false)
     const [history, setHistory] = useState<MasteryHistoryEntry[]>([])
@@ -123,55 +117,21 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
 
     // --- Statistics Logic ---
 
-    const getStartOfWeekKey = (date: Date) => {
-        const d = new Date(date);
-        const day = d.getDay();
-        const diff = d.getDate() - day + (day === 0 ? -6 : 1); // adjust to Monday
-        d.setDate(diff);
-        const year = d.getFullYear();
-        const month = String(d.getMonth() + 1).padStart(2, '0');
-        const dayOfMonth = String(d.getDate()).padStart(2, '0');
-        return `${year}-${month}-${dayOfMonth}`;
-    }
-
-    const getWeeklyVelocity = () => {
-        const weeks: Record<string, number> = {}
-        const now = new Date()
-
-        // Initialize last 8 weeks with 0
-        for (let i = 7; i >= 0; i--) {
-            const d = new Date(now)
-            d.setDate(d.getDate() - (i * 7))
-            const weekKey = getStartOfWeekKey(d)
-            weeks[weekKey] = 0
-        }
-
-        history.forEach(entry => {
-            const d = new Date(entry.timestamp)
-            const weekKey = getStartOfWeekKey(d)
-
-            if (weeks[weekKey] !== undefined) {
-                weeks[weekKey]++
-            } else {
-                console.warn('[Velocity] Key not in window:', weekKey)
-            }
-        })
-
-        return Object.entries(weeks).map(([key, count]) => ({ key, count }))
-    }
-
-    const weeklyData = getWeeklyVelocity().sort((a, b) => a.key.localeCompare(b.key))
+    const weeklyData = getWeeklyCompletionCounts(history)
     const maxVelocity = Math.max(...weeklyData.map(w => w.count), 1)
 
     const recentAchievements = history.slice(0, 5).map(h => {
         const goal = goalIndexAll.get(h.goalId)
         return {
             title: goal?.title || "Unknown Goal",
-            date: new Date(h.timestamp).toLocaleDateString()
+            date: new Date(h.timestamp).toLocaleDateString(language === 'de' ? 'de-DE' : 'en-GB', {
+                timeZone: 'Europe/Berlin', day: '2-digit', month: '2-digit', year: 'numeric',
+            }),
+            recordedCompletion: isRecordedCompletion(h),
         }
     })
 
-    const velocityT = t.learner?.velocity || {}
+    const velocityT = t.learner.velocity
 
     return (
         <>
@@ -220,7 +180,8 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-center text-xs text-slate-400">{velocityT.chartLabel || "Goals / Week"}</p>
+                            <p className="text-center text-xs text-slate-400">{velocityT.chartLabel}</p>
+                            <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{velocityT.historyNote}</p>
                         </div>
 
                         {/* Recent List */}
@@ -241,7 +202,9 @@ export const ProgressPopover: React.FC<ProgressPopoverProps> = ({
                                                     title={item.title}
                                                     className="font-medium text-slate-700 dark:text-slate-200 truncate"
                                                 />
-                                                <div className="text-xs text-slate-400">{item.date}</div>
+                                                <div className="text-xs text-slate-400">
+                                                    {item.recordedCompletion ? velocityT.completedOn : velocityT.lastUpdatedOn}: {item.date}
+                                                </div>
                                             </div>
                                         </div>
                                     ))}

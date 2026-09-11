@@ -265,7 +265,10 @@ export const en = {
         chooseNext: "Which one would you like to tackle next?",
         velocity: {
             title: "Learning Velocity",
-            chartLabel: "Goals Mastered / Week (Last 8 Weeks)",
+            chartLabel: "Recorded completions / week (last 8 weeks)",
+            historyNote: "The chart counts recorded completions. Older entries show only their last update and are not included in the chart.",
+            completedOn: "Completed on",
+            lastUpdatedOn: "Last updated",
             recent: "Recent Achievements",
             loading: "Loading history...",
             none: "No mastered goals yet. Keep going!"

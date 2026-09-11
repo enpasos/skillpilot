@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-/** Daily-plan simulated domain states; the MCP outputs are always produced by the real adapter. */
+/** Simulated daily quotas and actual-today completion counts; outputs use the real adapter. */
 final class OpenAiDialogReplayDailyFixtures {
     private OpenAiDialogReplayDailyFixtures() {}
 
@@ -74,10 +74,10 @@ final class OpenAiDialogReplayDailyFixtures {
         return new LearnerPlanTodayStatus(LocalDate.parse("2026-09-09"), true, resume,
                 List.of(
                         new LearnerPlanTodayStatus.SubjectStatus("synthetic-math", "Mathematik",
-                                21, 2, 19, 0, !resume && !blocked && current.equals("Mathematik"), !blocked),
+                                21, 2, 19, 0, !resume && !blocked && current.equals("Mathematik"), !blocked, 0),
                         new LearnerPlanTodayStatus.SubjectStatus("synthetic-physics", "Physik",
-                                27, 0, 27, 0, !resume && !blocked && current.equals("Physik"), !blocked)),
-                new LearnerPlanTodayStatus.Totals(48, 2, 46, 0), blocked ? 1 : 0);
+                                27, 0, 27, 0, !resume && !blocked && current.equals("Physik"), !blocked, 0)),
+                new LearnerPlanTodayStatus.Totals(48, 2, 46, 0, 0), blocked ? 1 : 0);
     }
 
     private static UnifiedLearnerStateResponse state(String subject, boolean active) {

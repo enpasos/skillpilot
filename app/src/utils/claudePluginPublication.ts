@@ -6,9 +6,9 @@ export const CLAUDE_CONNECTOR_PRIVACY_URL = 'https://mcp-claude-v1.skillpilot.co
 // This is a compatibility floor, not the current publication. The public index
 // selects the version; incompatible major versions require a new guide contract.
 const CLAUDE_PLUGIN_MINIMUM_VERSION = [1, 1, 2] as const
-// The Product Owner approved the observed Marketplace path with a file fallback.
-// This guide decision does not establish automatic updates or client acceptance.
-export const CLAUDE_MARKETPLACE_INSTALLATION_ENABLED = true
+// The local 1.1.3 candidate has no candidate-bound Marketplace guide approval.
+// The retained 1.1.2 approval does not authorize the new candidate's route.
+export const CLAUDE_MARKETPLACE_INSTALLATION_ENABLED = false
 
 export interface ClaudePluginRequirements {
   minimumAge: number

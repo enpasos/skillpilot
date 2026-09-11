@@ -70,7 +70,7 @@ class CoachToolFacadeLearningPlanTest {
                         true,
                         mock(UnifiedLearnerStateResponse.class));
         when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(true));
-        when(learningPlans.reconcile(
+        when(learningPlans.resumeExplicitly(
                         eq(LEARNER_ID),
                         eq(new LearnerLearningPlanApi.ReconcileRequest(null))))
                 .thenReturn(transition);
@@ -79,7 +79,7 @@ class CoachToolFacadeLearningPlanTest {
                 .isSameAs(transition);
 
         verify(learnerService).assertWritableLearningSession(LEARNER_ID);
-        verify(learningPlans).reconcile(
+        verify(learningPlans).resumeExplicitly(
                 LEARNER_ID,
                 new LearnerLearningPlanApi.ReconcileRequest(null));
     }
@@ -92,7 +92,7 @@ class CoachToolFacadeLearningPlanTest {
                 .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
                         assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
 
-        verify(learningPlans, never()).reconcile(
+        verify(learningPlans, never()).resumeExplicitly(
                 eq(LEARNER_ID),
                 eq(new LearnerLearningPlanApi.ReconcileRequest(null)));
     }
@@ -100,7 +100,7 @@ class CoachToolFacadeLearningPlanTest {
     @Test
     void resumeRejectsAnUnexpectedSuccessfulReconcileNoop() {
         when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(true));
-        when(learningPlans.reconcile(
+        when(learningPlans.resumeExplicitly(
                         eq(LEARNER_ID),
                         eq(new LearnerLearningPlanApi.ReconcileRequest(null))))
                 .thenReturn(new LearnerLearningPlanApi.TransitionResponse(

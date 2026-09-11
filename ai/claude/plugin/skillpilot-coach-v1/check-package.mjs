@@ -144,7 +144,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
   if (manifest) {
     check(manifest.name === "skillpilot-coach-v1", "Unexpected plugin name.");
     check(/^\d+\.\d+\.\d+$/u.test(manifest.version ?? ""), "Plugin version must be SemVer.");
-    check(manifest.version === "1.1.2", "Claude replacement candidate must be version 1.1.2.");
+    check(manifest.version === "1.1.3", "Claude replacement candidate must be version 1.1.3.");
     check(nonBlank(manifest.description), "Plugin description is required.");
     check(manifest.author?.name === "enpasos GmbH", "Unexpected plugin author.");
     check(manifest.homepage === "https://skillpilot.com", "Unexpected plugin homepage.");
@@ -224,20 +224,22 @@ export function validateClaudePluginPackage(root = packageRoot) {
   );
   check(
     planFirstPolicyTexts.every((value) => (
-      value.includes('Append "+ N überfällig" (English: "+ N overdue") only when the totals\' `openOverdue` is greater than zero')
-        && value.includes("omit zero backlog entirely and never add backlog to today's counts")
+      value.includes("Add positive `extraCompletedToday` as a brief voluntary bonus")
+        && value.includes("`openOverdue` only on an explicit plan-detail request")
+        && value.includes("never as a repeated reminder in ordinary teaching turns")
         && value.includes("totals exclude them")
         && value.includes('In that unavailable-plan case, if no valid subject remains, say only that today\'s plan could not be evaluated, not "0 of 0 done"')
     )),
-    "The compact daily-plan summary must omit zero backlog, keep positive overdue separate, and warn about partial or unavailable plans.",
+    "The compact daily-plan summary must show voluntary extra, reserve backlog for explicit details, and warn about partial or unavailable plans.",
   );
   check(
     planFirstPolicyTexts.every((value) => (
-      value.includes("goals newly due today that are currently mastered")
-        && value.includes("not")
-        && value.includes("event")
+      value.includes("today's actual completions of due plan goals, including older overdue goals")
+        && value.includes("capped at each subject's stable `dueToday` quota")
+        && value.includes("one subject's extra never fills another subject's quota")
+        && value.includes("there is no fixed quota today instead of claiming completed work")
     )),
-    "The Skill and coaching policy must describe completedToday as current mastery, not same-day event history.",
+    "The Skill and coaching policy must count actual today completions toward each subject quota and separate voluntary extra.",
   );
   check(
     planFirstPolicyTexts.every((value) => (
@@ -301,7 +303,10 @@ export function validateClaudePluginPackage(root = packageRoot) {
         && value.includes("`learningPlanToday.guidance.instruction`")
         && ["complete", "blocked", "unavailable", "paused", "continue", "resume"]
           .every((state) => value.includes(`\`${state}\``))
-        && value.includes("all planned work due through today is done")
+        && value.includes("celebrate that today's quota is fulfilled")
+        && value.includes("offer to stop or do voluntary extra")
+        && value.includes("This does not mean the entire plan or all backlog is finished")
+        && value.includes("only after an explicit request for voluntary extra; never auto-resume")
         && value.includes("do not add new required goals")
         && value.includes("Further learning is optional and needs a learner request")
         && value.includes("never claim that today is complete")
@@ -534,10 +539,10 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(
     normalizedSetupText.includes("Earlier packages were observed in paid Claude Web chat and, after account-level direct installation on Claude Pro, in the native Claude app on Android")
       && normalizedSetupText.includes("Those observations are historical evidence only")
-      && normalizedSetupText.includes("exact-candidate Web, Android and Voice acceptance for 1.1.2 is still pending")
+      && normalizedSetupText.includes("exact-candidate Web, Android and Voice acceptance for 1.1.3 is still pending")
       && normalizedSetupText.includes("no earlier package is a supported fallback")
       && normalizedSetupText.includes("Fresh public-listing installation and Android use are verified after publication and do not form a circular pre-submission gate"),
-    "SETUP.md must distinguish historical observations from pending 1.1.2 exact-candidate acceptance.",
+    "SETUP.md must distinguish historical observations from pending 1.1.3 exact-candidate acceptance.",
   );
   check(
     normalizedSetupText.includes("The v1 publication scope is limited to eligible paid Claude Chat on the Web and the native Android app after account-level installation")
@@ -563,13 +568,13 @@ export function validateClaudePluginPackage(root = packageRoot) {
   );
   check(
     normalizedReadmeText.includes("Its product scope is limited to eligible paid Claude Chat on the Web and the native Android app")
-      && normalizedReadmeText.includes("Version 1.1.2 is the sole current replacement candidate")
+      && normalizedReadmeText.includes("Version 1.1.3 is the sole current replacement candidate")
       && normalizedReadmeText.includes("prepared locally only. It has not been published or deployed")
-      && normalizedReadmeText.includes("The existing 1.1.1 release and its immutable download remain unchanged until a separately authorized rollout")
+      && normalizedReadmeText.includes("The existing 1.1.2 release and its immutable download remain unchanged until a separately authorized rollout")
       && normalizedReadmeText.includes("older packages are not a fallback for testing this candidate")
-      && normalizedReadmeText.includes("Those observations do not transfer to the 1.1.2 candidate")
-      && normalizedReadmeText.includes("Exact-candidate direct-install, public-listing installation and the complete Android learning flow remain pending until they are verified for 1.1.2")
-      && normalizedReadmeText.includes("Version 1.1.2 keeps the chat plan-first with a compact daily summary")
+      && normalizedReadmeText.includes("Those observations do not transfer to the 1.1.3 candidate")
+      && normalizedReadmeText.includes("Exact-candidate direct-install, public-listing installation and the complete Android learning flow remain pending until they are verified for 1.1.3")
+      && normalizedReadmeText.includes("Version 1.1.3 keeps the chat plan-first with a compact daily summary")
       && normalizedReadmeText.includes("Public-listing reach on Android remains a publication verification, not a circular pre-submission requirement")
       && normalizedReadmeText.includes("The permanent SkillPilot ID remains inside SkillPilot")
       && normalizedReadmeText.includes("[SETUP.md](./SETUP.md)")

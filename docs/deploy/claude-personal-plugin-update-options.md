@@ -1,5 +1,19 @@
 # Installation und Updates für persönliche Claude-Konten
 
+Aktueller lokaler Kandidat, **11. September 2026**: **1.1.3** ist nur lokal
+vorbereitet und nicht veröffentlicht. Seine Marketplace-, Guide- und
+Client-Abnahmen stehen aus. Deshalb zeigt die lokale Webanleitung vorerst
+den Datei-Installationsweg; die Marketplace-Anleitung ist dort deaktiviert.
+Der lokale Veröffentlichungsindex nennt 1.1.3. Das aktualisiert weder den
+externen Marketplace noch die bereits bereitgestellte Webanleitung.
+Details und Artefaktnachweise stehen im
+[Marketplace-Runbook](claude-personal-marketplace-release.md).
+
+## Erhaltene Anleitung und Beobachtungen für 1.1.2
+
+Die folgenden Angaben dokumentieren die frühere 1.1.2-Freigabe. Sie übertragen
+keine Zustimmung oder Client-Abnahme auf den neuen Kandidaten.
+
 Stand: **9. September 2026**. Der Product Owner hat nach Sichtung der neuen
 Kontobeobachtungen ausdrücklich eine überarbeitete `/plugins`-Anleitung
 freigegeben: **Marketplace als erster Weg, Datei herunterladen und hochladen
@@ -10,8 +24,8 @@ Claude-Konten oder GitHub-Rechten gehören nicht zu diesem Änderungssatz.
 
 Die neue Freigabe erweitert den dokumentationsbezogenen Auftrag der Übergabe
 `skillpilot-claude-marketplace-doku-2026-09-09-r2` gezielt um die Webanleitung.
-Die sechs Dateien des veröffentlichten Plugins bleiben unverändert. Der aktuelle
-Repository-Stand ist **1.1.2**, `published_pending_acceptance`; Veröffentlichung
+Die sechs Dateien des veröffentlichten Plugins bleiben unverändert. Der damals
+veröffentlichte Repository-Stand ist **1.1.2**, `published_pending_acceptance`; Veröffentlichung
 und separate Guide-Entscheidung stehen im
 [Marketplace-Runbook](claude-personal-marketplace-release.md).
 

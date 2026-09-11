@@ -265,7 +265,10 @@ export const de = {
         chooseNext: "Welches möchtest du als Nächstes angehen?",
         velocity: {
             title: "Lerngeschwindigkeit",
-            chartLabel: "Gemeisterte Ziele / Woche (letzte 8 Wochen)",
+            chartLabel: "Erfasste Abschlüsse / Woche (letzte 8 Wochen)",
+            historyNote: "Die Grafik zählt erfasste Abschlüsse. Ältere Einträge zeigen nur die letzte Aktualisierung und werden hier nicht mitgezählt.",
+            completedOn: "Abgeschlossen am",
+            lastUpdatedOn: "Letzte Aktualisierung",
             recent: "Letzte Erfolge",
             loading: "Lade Historie...",
             none: "Noch keine Ziele gemeistert. Bleib dran!"

@@ -138,7 +138,8 @@ public class ClaudeV1McpContractAdapter {
                     + "If that context contains goalVisualization, follow its presentationInstruction before "
                     + "any learner-facing response. Then give the compact one-line daily-plan summary from "
                     + "the newest context using the daily learning-plan presentation rule: totals once, only "
-                    + "openToday per valid subject, and overdue backlog only when positive. Keep unavailable-plan "
+                    + "openToday per valid subject, and extraCompletedToday as a voluntary bonus when positive. "
+                    + "Mention backlog only on an explicit plan-detail request. Keep unavailable-plan "
                     + "warnings and do not repeat a summary already given from this context in the same response. "
                     + "Continue immediately with the returned active goal. Do not ask for another "
                     + "confirmation and do not expose identifiers, state revisions or plan mechanics.";
@@ -262,7 +263,8 @@ public class ClaudeV1McpContractAdapter {
                 for a normal learning start, if no activeGoal is returned and
                 learningPlanToday.resumeAvailable is true, immediately call
                 resume_skillpilot_learning_plan with the current stateVersion and a fresh UUID before
-                any learner-facing response. Do not ask for confirmation and do not select a plan,
+                any learner-facing response, except when guidance.state=complete: then resume only
+                after an explicit learner request for voluntary extra. Do not ask for confirmation and do not select a plan,
                 subject, date or goal yourself. Treat the full context returned by that write as the
                 newest context and perform its required goalVisualization render before speaking.
                 Never call the resume tool while an activeGoal is present. Only when no such immediate
@@ -271,21 +273,27 @@ public class ClaudeV1McpContractAdapter {
                 then only openToday and the localized subject for every valid learningPlanToday.subjects
                 entry. German example: "Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik."
                 English example: "Today: 2 of 48 done · still open: 19 Maths, 27 Physics."
-                Use actual current counts, never the example numbers. Append "+ N überfällig" in German
-                or "+ N overdue" in English only when totals.openOverdue is greater than zero; omit zero
-                backlog entirely and never add backlog to today's counts. Use detailed per-subject
+                Use actual current counts, never the example numbers. Add a positive voluntary bonus
+                from extraCompletedToday when nonzero. Mention openOverdue only for an explicit
+                plan-detail request; do not repeat backlog in ordinary teaching turns or add it to today's quota.
+                Use detailed per-subject
                 counters only on explicit request; no second totals paragraph or bullet list by default.
                 "Mathe" is a display alias only; tool arguments still use the exact published subject.
-                completedToday counts goals newly due today that are currently mastered, not mastery
-                events that necessarily happened today. If unavailablePlanCount is greater than zero,
+                completedToday counts today's actual completions of due plan goals, including older
+                overdue goals, capped at each subject's stable dueToday quota. Further completions
+                are extraCompletedToday. One subject's extra never fills another subject's quota.
+                If unavailablePlanCount is greater than zero,
                 briefly warn that one or more plans could not be evaluated and the totals exclude them.
                 In that unavailable-plan case, if no valid subject remains, say only that today's plan
                 could not be evaluated, not "0 of 0 done". Never expose plan IDs or internal error details.
                 Give the summary at most once per response. Then continue the returned activeGoal. If these counts later change,
                 report the updated counts naturally. Do not repeat unchanged counts on every turn.
 
-                For guidance.state=complete, clearly say that today's work including backlog is done
-                and no more plan goals are required today. Do not automatically start future goals,
+                For guidance.state=complete, celebrate that today's quota is fulfilled and offer to
+                stop or do voluntary extra. Do not claim the entire plan or all backlog is finished.
+                If dueToday=0, say there is no fixed quota today instead of claiming completed work.
+                Never automatically resume extra work, even when resumeAvailable=true. Continue an
+                already active goal normally. Do not automatically start future goals,
                 widen focus or send the learner to the Web application. For blocked or unavailable,
                 explain the remaining work or missing plan status without claiming completion; any
                 necessary planning correction belongs to the teacher. Never infer completion from
@@ -473,7 +481,8 @@ public class ClaudeV1McpContractAdapter {
                 "Resume SkillPilot Learning Plan",
                 "Selects the authoritative next due goal across all current subject plans when no "
                         + "learning goal is active. The server chooses the date, plan, subject and goal. "
-                        + "Use for a normal learning start with resumeAvailable=true; an explicit subject "
+                        + "Use for a normal learning start with resumeAvailable=true; an explicit learner "
+                        + "request for voluntary extra is required when guidance.state=complete. A specific subject "
                         + "request takes priority, and status-only or pause requests do not start a goal. "
                         + "Returns a fresh complete coach context and advances learner state.",
                 objectSchema(

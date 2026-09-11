@@ -80,7 +80,13 @@ public final class LearnerLearningPlanApi {
             int dueToday,
             int completedDueToday,
             int openDueToday,
-            int totalPlanned) {
+            int totalPlanned,
+            int extraCompletedToday) {
+        public Metrics(int dueThroughToday, int completedDueThroughToday, int openDueThroughToday,
+                int dueToday, int completedDueToday, int openDueToday, int totalPlanned) {
+            this(dueThroughToday, completedDueThroughToday, openDueThroughToday,
+                    dueToday, completedDueToday, openDueToday, totalPlanned, 0);
+        }
     }
 
     /** Read-only draft projection; mastery is held at today's observed values. */

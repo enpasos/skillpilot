@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { startViteTestServer } from './viteTestServer'
 import {
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
+  CLAUDE_MARKETPLACE_INSTALLATION_ENABLED,
   CLAUDE_PLUGINS_DISCOVER_URL,
   parseClaudePluginPublicationIndex,
 } from '../src/utils/claudePluginPublication'
@@ -108,6 +109,48 @@ try {
     }
     await page.getByTestId('claude-plugin-publication-status').waitFor()
     await assertUnavailableVersionSafety()
+    if (!CLAUDE_MARKETPLACE_INSTALLATION_ENABLED) {
+      assert.equal(await marketplace.count(), 0, 'the unpublished candidate does not inherit the old Marketplace guide approval')
+      assert.equal(await downloadLink.count(), 0, 'loading never offers an unvalidated candidate download')
+      assert.equal(await guide.getAttribute('open'), '', 'the only available installation route starts expanded')
+      releaseInitialPublication()
+      await downloadLink.waitFor()
+      assert.equal(await downloadLink.getAttribute('href'), plugin.downloadUrl)
+      assert((await page.getByTestId('claude-plugin-version-badge').innerText()).includes(plugin.version))
+      assert.equal(await finish.getByTestId('claude-plugin-install-step-return').getByRole('link').getAttribute('href'), '/')
+      const storageBeforeDownload = await page.evaluate(() => JSON.stringify(localStorage))
+      const downloadEvent = page.waitForEvent('download')
+      await downloadLink.click()
+      const download = await downloadEvent
+      const downloadedBytes = await readFile((await download.path())!)
+      assert.equal(createHash('sha256').update(downloadedBytes).digest('hex'), plugin.sha256)
+      assert.equal(await page.evaluate(() => JSON.stringify(localStorage)), storageBeforeDownload)
+      for (const width of [1280, 390]) {
+        await page.setViewportSize({ width, height: 900 })
+        await downloadLink.scrollIntoViewIfNeeded()
+        assert(await downloadLink.isVisible())
+        assert(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+          `${language} candidate file guide fits the ${width}px viewport`)
+      }
+      responseIndex = futureIndex
+      await page.goto(fixtureUrl)
+      await downloadLink.waitFor()
+      assert.equal(await downloadLink.getAttribute('href'), futurePlugin.downloadUrl)
+      assert((await page.getByTestId('claude-plugin-version-badge').innerText()).includes(futurePlugin.version))
+      publicationAvailable = false
+      await page.goto(fixtureUrl)
+      await page.getByRole('alert').waitFor()
+      await assertUnavailableVersionSafety()
+      assert.equal(await downloadLink.count(), 0, 'failed candidate metadata cannot offer a stale download')
+      assert.equal(await marketplace.count(), 0, 'metadata failure cannot enable an unapproved Marketplace route')
+      publicationAvailable = true
+      responseIndex = index
+      await page.getByRole('button', { name: language === 'de' ? 'Erneut versuchen' : 'Try again', exact: true }).click()
+      await downloadLink.waitFor()
+      assert.deepEqual(errors, [])
+      await context.close()
+      continue
+    }
     assert(await marketplace.isVisible(), 'Marketplace instructions do not depend on the download index')
     assert(await guide.locator(':scope > summary').isVisible(), 'the file-upload fallback remains discoverable')
     assert.equal(await guide.getAttribute('open'), null, 'the alternative route starts collapsed')
@@ -281,7 +324,7 @@ try {
     assert.deepEqual(errors, [])
     await context.close()
   }
-  console.log('Claude plugin guide browser regression passed: Marketplace install/update, canonical navigation and clipboard, independent upload fallback, DE/EN, two dynamic versions, loading/errors/retry, download bytes, mobile, no installation claim.')
+  console.log(`Claude plugin guide browser regression passed: ${CLAUDE_MARKETPLACE_INSTALLATION_ENABLED ? 'approved Marketplace guide and file fallback' : 'candidate file guide with Marketplace disabled'}, DE/EN, dynamic versions, loading/errors/retry, exact download bytes, mobile, no installation claim.`)
 } finally {
   await browser.close()
   await server.close()

@@ -63,7 +63,7 @@ narration:
   model: gpt-5.6
   ttsModel: gpt-4o-mini-tts
   voice: cedar
-  instructions: Speak in clear, calm, professional English for an OpenAI plugin review of the 1.1.0 candidate. Explain only visible, evidenced behavior and safety boundaries. Describe SkillPilot Coach v1 only as a ChatGPT browser experience; do not claim operating-system, native-app, mobile, or cross-platform support. In the daily-plan chapter distinguish the current mastered count from goals completed today, show continuation and the explicit subject switch only when the recorded response supports them, and never infer a successful tool call or hidden state change from narration or a chapter label.
+  instructions: Speak in clear, calm, professional English for an OpenAI plugin review of the 1.1.0 candidate. Explain only visible, evidenced behavior and safety boundaries. Describe SkillPilot Coach v1 only as a ChatGPT browser experience; do not claim operating-system, native-app, mobile, or cross-platform support. In the daily-plan chapter describe actual completions today toward each subject's fixed quota and voluntary extra separately; a zero quota means no fixed quota today, not proof of completed work. Show continuation and the explicit subject switch only when the recorded response supports them, and never infer a successful tool call or hidden state change from narration or a chapter label.
   disclosure: The narration in this video is AI-generated and is not a human voice.
   segmentGapMs: 350
   maxSegments: 28
@@ -665,7 +665,7 @@ chapters:
 
   - id: d1-daily-plan
     title: See today's plan, continue Mathematics and switch to Physics
-    narrationHint: "A fresh learner has one open orientation goal in each subject. Show the genuine compact daily summary, continue the current Mathematics orientation with a personal interest, then explicitly switch to Physics. Orientation is motivation, not a knowledge test or proof of mastery. On weekends the two open goals are backlog from Friday. This chapter does not prove the separate no-active-goal resume case D2; only describe what the recorded conversation actually demonstrates."
+    narrationHint: "A fresh learner has one open orientation goal in each subject. Show the genuine compact daily summary, continue the current Mathematics orientation with a personal interest, then explicitly switch to Physics. Orientation is motivation, not a knowledge test or proof of mastery. On weekends there is no fixed quota; the two open Friday goals remain eligible for explicitly chosen voluntary extra. Do not narrate zero quota as completed work or repeatedly announce backlog. This chapter does not prove the separate no-active-goal resume case D2; only describe what the recorded conversation actually demonstrates."
     steps:
       - id: d1-open-first-party
         action: goto
@@ -737,13 +737,13 @@ chapters:
         state: hidden
         timeoutMs: 120000
       # These are the two exact server-date cases verified by the disposable
-      # fixture: weekday goals due today, or Friday goals overdue on weekends.
+      # fixture: weekday quota 2, or no fixed quota on weekends with open Friday goals.
       # Never replace an unexpected live total with one of these display texts.
       - id: d1-daily-counts
         action: assert
         label: Verify the compact cross-subject counts from the checked live fixture
         target: { css: "${chatgptAssistantSelector}", match: last }
-        textPattern: '(?:Heute:\s*0/2\s+beherrscht\s*·\s*Offen:\s*Mathematik\s+1\s*·\s*Physik\s+1(?!\d|\s*·)|Heute:\s*0/0\s+beherrscht\s*·\s*Offen:\s*Mathematik\s+0\s*·\s*Physik\s+0\s*·\s*Rückstand:\s*2(?!\d|\s*·))'
+        textPattern: '(?:Heute:\s*0/2\s+geschafft\s*·\s*Offen:\s*Mathematik\s+1\s*·\s*Physik\s+1(?!\d|\s*·)|Heute\s+kein\s+festes\s+Pensum\.(?!\s*·))'
         timeoutMs: 90000
         capture: true
       - id: d1-mathematics-active

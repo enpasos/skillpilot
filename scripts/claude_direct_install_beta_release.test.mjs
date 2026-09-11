@@ -86,9 +86,13 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     downloadBasePath: "/api/public/claude/plugins",
     accessModel: "first_party_guided_beta",
   });
-  assert.equal(canonicalLane.candidate.version, "1.1.2");
+  assert.equal(canonicalLane.candidate.version, "1.1.3");
   assert.match(canonicalLane.candidate.sha256, /^[0-9a-f]{64}$/u);
-  for (const id of ["web-learning-plan-compact-summary", "android-voice-learning-plan-compact-summary"]) {
+  for (const id of [
+    "web-learning-plan-compact-summary", "android-voice-learning-plan-compact-summary",
+    "web-learning-plan-older-due-goal-counts-toward-daily-quota", "web-learning-plan-voluntary-extra-after-daily-quota",
+    "android-voice-learning-plan-older-due-goal-counts-toward-daily-quota", "android-voice-learning-plan-voluntary-extra-after-daily-quota",
+  ]) {
     assert.equal(canonicalExactClientEvidence.checks.find((entry) => entry.id === id)?.status, "pending");
     const incomplete = structuredClone(canonicalExactClientEvidence);
     incomplete.checks = incomplete.checks.filter((entry) => entry.id !== id);
@@ -138,6 +142,8 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "web-coaching-and-both-mcp-apps",
     "web-learning-plan-today-all-subjects",
     "web-learning-plan-compact-summary",
+      "web-learning-plan-older-due-goal-counts-toward-daily-quota",
+      "web-learning-plan-voluntary-extra-after-daily-quota",
       "web-learning-plan-automatic-resume",
       "web-learning-plan-subject-switch",
       "web-learning-plan-natural-subject-requests",
@@ -156,6 +162,8 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "android-voice-current-context",
     "android-voice-learning-plan-today-all-subjects",
     "android-voice-learning-plan-compact-summary",
+      "android-voice-learning-plan-older-due-goal-counts-toward-daily-quota",
+      "android-voice-learning-plan-voluntary-extra-after-daily-quota",
       "android-voice-learning-plan-automatic-resume",
       "android-voice-learning-plan-subject-switch",
       "android-voice-learning-plan-natural-subject-requests",

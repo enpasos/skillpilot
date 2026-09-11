@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: 033-add-learner-goal-completions
+      author: skillpilot
+      changes:
+        # No backfill: mastery.updated_at is not evidence of a completion date.
+        - createTable:
+            tableName: learner_goal_completion
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_learner_goal_completion
+              - column:
+                  name: learner_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: goal_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: completion_date
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: occurred_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: mastery_value
+                  type: DOUBLE PRECISION
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: learner_goal_completion
+            baseColumnNames: learner_id
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            constraintName: fk_learner_goal_completion_learner
+            onDelete: CASCADE
+        - addUniqueConstraint:
+            tableName: learner_goal_completion
+            columnNames: learner_id, goal_id, completion_date
+            constraintName: uq_learner_goal_completion_day
+        - createIndex:
+            tableName: learner_goal_completion
+            indexName: idx_learner_goal_completion_date
+            columns:
+              - column:
+                  name: learner_id
+              - column:
+                  name: completion_date
+              - column:
+                  name: occurred_at

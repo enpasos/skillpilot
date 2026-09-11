@@ -1298,7 +1298,7 @@ try {
   const subjectPreview = learnerPreview.getByRole('list', { name: 'Tagesanforderungen nach Fach', exact: true })
   assert(await subjectPreview.getByRole('heading', { name: 'Mathematik', exact: true }).count() === 1, 'the preview labels its authoritative daily workload by subject')
   const previewCount = (label: string) => subjectPreview.getByText(label, { exact: true }).locator('..').locator('dd').textContent()
-  assertJsonEqual(await Promise.all(['Heute neu fällig', 'Davon bereits beherrscht', 'Heute noch offen', 'Offen aus früheren Tagen'].map(previewCount)), ['6', '2', '4', '0'], 'the preview renders backend counts without conflating today and backlog')
+  assertJsonEqual(await Promise.all(['Tagespensum', 'Heute geschafft', 'Heute noch offen', 'Weiterer Rückstand'].map(previewCount)), ['6', '2', '4', '0'], 'the preview renders daily quota, actual completions, remaining quota and residual backlog separately')
   assert(await learnerPreview.getByRole('region', { name: 'Wochenvorschau', exact: true }).locator('tbody tr').count() === 7, 'the learner preview shows exactly seven calendar days')
   assert(learnerPlanPreviewBodies.length > previewsBeforeUnsavedNavigation, 'restoring the saved draft enables the read-only calculation')
   assert(learnerPlanWrites.length === 0 && unexpectedLearnerWrites.length === 0, 'opening and reading a preview never activates plans, changes focus, or records mastery')

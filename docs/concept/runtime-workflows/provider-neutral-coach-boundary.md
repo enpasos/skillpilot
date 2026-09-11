@@ -357,6 +357,7 @@ einem Testlauf zufällig korrekt ausführt:
 | Werkzeugbedingung | genau eine Toolbeschreibung und ihr Schema |
 | Aktuelle Entscheidung | genau ein frisches Toolergebnis |
 | Fachliche oder Sicherheitsgarantie | Backendguard, Transaktion und Test |
+| Tagespensum, echte Abschlussereignisse und freiwillige Zusatzarbeit | [Tagesfortschritt](daily-learning-progress.md) |
 | Betrieb und Release | Runbooks unter `docs/deploy/` |
 
 Abgeschlossene Migrationspläne und frühere Knowledge-Paritätsmatrizen sind

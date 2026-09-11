@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.3 - 2026-09-11 (not published)
+
+- Credit newly completed due plan goals, including older due goals, toward a
+  stable daily quota for each subject using backend completion events.
+- Stop automatic continuation at the daily target. Make further work voluntary,
+  celebrate extra completions and keep backlog in explicitly requested details.
+- Preserve all fourteen tools, session boundaries, existing plan dates and every
+  previously published artifact byte. Archive the complete 1.1.2 release dossier.
+- Prepare the new local artifact and marketplace tree; reset all candidate-bound
+  repository, guide, privacy and real-client evidence to pending. No publication,
+  deployment or installed-client update is part of this preparation.
+
 ## 1.1.2 - 2026-09-09
 
 - Keep the daily overview to one line: total completed out of today's due
