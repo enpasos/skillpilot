@@ -63,7 +63,7 @@ assert.equal(parsed.channel, 'beta')
 assert.equal(parsed.plugins[0]?.requirements.minimumAge, 18)
 assert.equal(parsed.plugins[0]?.requirements.voiceMode, false)
 assert.deepEqual(parsed.plugins[0]?.requirements.testedSurfaces, [])
-for (const version of ['1.1.2', '1.1.3', '1.2.0']) {
+for (const version of ['1.1.2', '1.1.3', '1.1.4', '1.2.0']) {
   const current = parseClaudePluginPublicationIndex(indexForVersion(version)).plugins[0]!
   assert.equal(current.version, version, 'the publication index selects compatible newer versions without a frontend rebuild')
   assert.equal(current.filename, `skillpilot-coach-v1-${version}.plugin`)
@@ -313,7 +313,6 @@ assert.equal(
 )
 assert.equal(marketplaceLane.plugin?.version, candidateManifest.version)
 assert.equal(marketplaceLane.plugin?.directInstallSha256, productionIndex.plugins[0]?.sha256)
-assert.equal(marketplaceLane.activation?.state, 'published_pending_acceptance')
 assert.equal(
   marketplaceLane.activation?.firstPartyUiRoute,
   'controlled_direct_install_beta',
@@ -331,15 +330,24 @@ assert.equal(guideDecision?.candidateSha256, null)
 const repositoryEvidence = marketplaceLane.activation?.evidence?.find(
   entry => entry.id === 'public-repository-default-branch',
 )
-assert.equal(repositoryEvidence?.status, 'pass')
-assert.equal(repositoryEvidence?.candidateVersion, candidateManifest.version)
-assert.equal(repositoryEvidence?.candidateSha256, productionIndex.plugins[0]?.sha256)
-assert.match(repositoryEvidence?.revision ?? '', /^[a-f0-9]{40}$/u)
-assert.equal(repositoryEvidence?.treeSha256,
-  '96675808155fa7d48b5890c617975ba8b25964ec20dcf01c3ab184408d459799')
-assert.equal(new Date(repositoryEvidence?.verifiedAt ?? '').toISOString(), repositoryEvidence?.verifiedAt)
-assert.match(repositoryEvidence?.evidenceRef ?? '',
-  /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u)
+// A candidate must pass CI before it can be published. Publication evidence
+// must bind that candidate afterwards, never the previous release's tree.
+if (repositoryEvidence?.status === 'pending') {
+  assert.equal(marketplaceLane.activation?.state, 'prepared_not_published')
+  for (const key of ['candidateVersion', 'candidateSha256', 'revision', 'treeSha256', 'verifiedAt', 'evidenceRef'] as const) {
+    assert.equal(repositoryEvidence[key], null, `unpublished candidate must not carry ${key}`)
+  }
+} else {
+  assert.equal(repositoryEvidence?.status, 'pass')
+  assert.equal(marketplaceLane.activation?.state, 'published_pending_acceptance')
+  assert.equal(repositoryEvidence?.candidateVersion, candidateManifest.version)
+  assert.equal(repositoryEvidence?.candidateSha256, productionIndex.plugins[0]?.sha256)
+  assert.match(repositoryEvidence?.revision ?? '', /^[a-f0-9]{40}$/u)
+  assert.match(repositoryEvidence?.treeSha256 ?? '', /^[a-f0-9]{64}$/u)
+  assert.equal(new Date(repositoryEvidence?.verifiedAt ?? '').toISOString(), repositoryEvidence?.verifiedAt)
+  assert.match(repositoryEvidence?.evidenceRef ?? '',
+    /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u)
+}
 assert.equal(guideDecision?.repositoryRevision, null)
 assert.equal(guideDecision?.repositoryTreeSha256, null)
 for (const pendingEvidenceId of [
