@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.1.5",
+  "pluginVersion": "1.1.4",
   "state": "PRE_SUBMISSION",
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
@@ -30,7 +30,7 @@
   "productOwnerAuthorization": {
     "approvedAt": "2026-09-12",
     "approvedBy": "product-owner",
-    "scope": "Product Owner explicitly authorized simplifying the Claude Skill and policy without overlapping instructions, independent regression verification, and complete production and Claude Marketplace deployment after CI passes. Version 1.1.5 is the instruction-consolidation candidate under the existing plugin identity and unchanged tool contract; teaching, assessment, privacy, protected-answer, OAuth, session and backend-owned progression semantics must be preserved. This decision authorizes no inherited real-client acceptance, Anthropic Console submission or general public activation.",
+    "scope": "Product Owner explicitly required removing workFeedback, outcomeFeedback and Recall feedback from both providers and authorized the corrective backend and Claude Marketplace rollout after CI passes. Version 1.1.4 is the controlled-beta privacy correction under the existing plugin identity; it deliberately contracts input fields and requires corrected backend, refreshed connector tools and current instructions together. This decision authorizes no inherited real-client acceptance, Anthropic Console submission or general public activation.",
     "excludes": [
       "Connector Directory lifecycle, gates and Team/Enterprise submission access",
       "Credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance"
@@ -42,9 +42,9 @@
   },
   "releaseLine": {
     "major": 1,
-    "version": "1.1.5",
+    "version": "1.1.4",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "Version 1.1.5 simplifies instructions under the existing identity and preserves the 1.1.4 tool contract. The prior privacy correction still forbids assessment-prose inputs; no compatibility workaround may restore them. OAuth, session, tool identity and state ownership remain unchanged. Every earlier package and evidence record stays immutable; no prior acceptance transfers."
+    "compatibilityPolicy": "Version 1.1.4 is the expressly authorized controlled-beta privacy correction under the same plugin identity. Removed prose inputs are intentionally not backward compatible: activate the corrected backend and refresh connector tools and plugin instructions together. OAuth, session, tool identity and state ownership remain unchanged. Every earlier package and evidence record stays immutable; no prior acceptance transfers."
   },
   "stateTransitions": [
     {

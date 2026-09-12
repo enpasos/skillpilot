@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.5 - 2026-09-12
+
+- Consolidate the Skill and replace the overlapping policy with conditional
+  Verified Recall and exam references, preserving teaching, assessment,
+  daily-plan and progression semantics.
+- Keep feedback in chat and retain the fourteen tools, OAuth, learner-session,
+  protected-answer and backend-owned state boundaries from 1.1.4.
+- Add independently reviewed regression coverage for the simplified instruction
+  structure. Local checks do not replace real-client acceptance.
+- Preserve every published artifact and the complete 1.1.4 release dossier;
+  start new-candidate repository and real-client evidence pending.
+
 ## 1.1.4 - 2026-09-12
 
 - Keep coach assessment, feedback and success messages in the Claude chat;

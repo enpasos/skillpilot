@@ -1419,7 +1419,12 @@ provider policy and product review explicitly permit it.
   a source of learner state or authorization.
 - **Coach-content maintenance:** current backend/MCP contract,
   ChatClient/backend communication contract, behavioral integration,
-  `SKILL.md`, and `coaching-policy.md` are the active sources. The frozen
+  `SKILL.md`, and its provider-specific workflow references are the active sources.
+  Keep each coach rule in one instruction location: shared rules belong in the
+  entrypoint, specialized rules in a clearly routed reference read before that
+  workflow. Do not make a second overlapping policy mandatory at every startup.
+  Preserve assessment, privacy and state invariants when shortening instructions;
+  verify realistic coach decisions as well as package integrity. The frozen
   Custom-GPT and Visible-Session packages are historical baseline or isolated
   rollback artifacts, not active parity targets; do not edit them to mirror a
   current V1 feature. Obsolete `startCode`, `chatSessionToken`, Action,

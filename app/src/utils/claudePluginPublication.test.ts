@@ -63,7 +63,7 @@ assert.equal(parsed.channel, 'beta')
 assert.equal(parsed.plugins[0]?.requirements.minimumAge, 18)
 assert.equal(parsed.plugins[0]?.requirements.voiceMode, false)
 assert.deepEqual(parsed.plugins[0]?.requirements.testedSurfaces, [])
-for (const version of ['1.1.2', '1.1.3', '1.1.4', '1.2.0']) {
+for (const version of ['1.1.2', '1.1.3', '1.1.4', '1.1.5', '1.2.0']) {
   const current = parseClaudePluginPublicationIndex(indexForVersion(version)).plugins[0]!
   assert.equal(current.version, version, 'the publication index selects compatible newer versions without a frontend rebuild')
   assert.equal(current.filename, `skillpilot-coach-v1-${version}.plugin`)

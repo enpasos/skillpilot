@@ -1,13 +1,14 @@
 # Installation und Updates für persönliche Claude-Konten
 
-Aktueller lokaler Kandidat, **12. September 2026**: **1.1.4** ist die autorisierte
-Datenschutzkorrektur; Produktion und Marketplace dürfen nach grüner CI
-ausgerollt werden. Die letzte verifiziert veröffentlichte Version ist 1.1.3.
+Aktueller lokaler Kandidat, **12. September 2026**: **1.1.5** vereinfacht die
+Claude-Anweisungen ohne Änderung der Coaching-Regeln oder des Tool-Vertrags.
+Produktion und Marketplace dürfen nach unabhängiger Prüfung und grüner CI
+ausgerollt werden. Die letzte verifiziert veröffentlichte Version ist 1.1.4.
 Die neuen Marketplace-, Guide- und
 Client-Abnahmen stehen aus. Deshalb zeigt die lokale Webanleitung vorerst
 den Datei-Installationsweg; die Marketplace-Anleitung ist dort deaktiviert.
-Der lokale Veröffentlichungsindex nennt 1.1.4. Das aktualisiert weder den
-externen Marketplace noch die bereits bereitgestellte Webanleitung.
+Die lokale Kandidatenvorbereitung aktualisiert weder den externen Marketplace
+noch die bereits bereitgestellte Webanleitung.
 Die Korrektur benötigt den aktualisierten Backend-Vertrag und einen frisch
 geladenen Tool-Katalog: Rückmeldungstexte bleiben im Chat; alte Freitextparameter
 werden absichtlich nicht mehr akzeptiert.

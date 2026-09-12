@@ -41,6 +41,17 @@ const expectedExternalEvidence = [
   "uploaded-plugin-migration-and-marketplace-refresh",
 ];
 const expectedRepositoryName = "skillpilot-claude-marketplace";
+const legacyInstructionVersions = new Set([
+  "1.0.2", "1.0.3", "1.0.4", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4",
+]);
+const legacyPublicationFiles = [
+  ".claude-plugin/plugin.json",
+  ".mcp.json",
+  "README.md",
+  "SETUP.md",
+  "skills/skillpilot-coach-v1/SKILL.md",
+  "skills/skillpilot-coach-v1/references/coaching-policy.md",
+];
 const compareCodeUnits = (left, right) =>
   left < right ? -1 : left > right ? 1 : 0;
 
@@ -106,8 +117,8 @@ export function validateClaudeMarketplaceLane(lane) {
   assertEqual(lane.source.licenseFile, "LICENSE", "lane.source.licenseFile");
   assertJsonEqual(
     lane.source.publicationFiles,
-    publicationFiles,
-    "lane.source.publicationFiles must remain the package allowlist",
+    legacyInstructionVersions.has(lane.plugin?.version) ? legacyPublicationFiles : publicationFiles,
+    "lane.source.publicationFiles must remain the version-specific package allowlist",
   );
 
   assertRecord(lane.plugin, "lane.plugin");

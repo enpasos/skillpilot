@@ -86,7 +86,7 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     downloadBasePath: "/api/public/claude/plugins",
     accessModel: "first_party_guided_beta",
   });
-  assert.equal(canonicalLane.candidate.version, "1.1.4");
+  assert.equal(canonicalLane.candidate.version, "1.1.5");
   assert.match(canonicalLane.candidate.sha256, /^[0-9a-f]{64}$/u);
   for (const id of [
     "web-learning-plan-compact-summary", "android-voice-learning-plan-compact-summary",

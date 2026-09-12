@@ -12,7 +12,6 @@ import { dirname, resolve } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { buildClaudePluginPackage } from "./build-package.mjs";
-import { publicationFiles } from "./check-package.mjs";
 
 const packageRoot = dirname(fileURLToPath(import.meta.url));
 
@@ -36,7 +35,15 @@ test("builds a deterministic root-level Claude .plugin archive", () => {
     );
 
     const entries = readStoredZip(firstBytes);
-    const expectedPaths = [...publicationFiles].sort((left, right) =>
+    const expectedPaths = [
+      ".claude-plugin/plugin.json",
+      ".mcp.json",
+      "README.md",
+      "SETUP.md",
+      "skills/skillpilot-coach-v1/SKILL.md",
+      "skills/skillpilot-coach-v1/references/verified-recall.md",
+      "skills/skillpilot-coach-v1/references/exams.md",
+    ].sort((left, right) =>
       left < right ? -1 : left > right ? 1 : 0);
     assert.deepEqual(entries.map(({ name }) => name), expectedPaths);
     assert.equal(entries[0].name.startsWith("skillpilot-coach-v1/"), false);

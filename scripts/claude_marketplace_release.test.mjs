@@ -166,10 +166,10 @@ test("published 1.1.3 marketplace does not imply guide approval or real-client a
   }
 });
 
-test("privacy correction 1.1.4 cannot inherit repository or client acceptance", () => {
+test("instruction consolidation 1.1.5 cannot inherit repository or client acceptance", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
-  assert.equal(lane.plugin.version, "1.1.4");
+  assert.equal(lane.plugin.version, "1.1.5");
   const repositoryEvidence = lane.activation.evidence.find(({ id }) => id === "public-repository-default-branch");
   if (repositoryEvidence.status === "pending") {
     assert.equal(lane.activation.state, "prepared_not_published");
@@ -185,6 +185,8 @@ test("privacy correction 1.1.4 cannot inherit repository or client acceptance", 
       assert.match(treeSha256, /^[0-9a-f]{64}$/u);
       assert.notEqual(revision, "f2d22431f84278f62cc37d8ebbe0bb92295aec13");
       assert.notEqual(treeSha256, "96675808155fa7d48b5890c617975ba8b25964ec20dcf01c3ab184408d459799");
+      assert.notEqual(revision, "91d6646c64ebeda9afa3b729f10a4859c360d69e");
+      assert.notEqual(treeSha256, "dd8bf77fa63ac8d1fd3747bf5b7ba3785780742c04945d3e649d77ff558003b7");
       continue;
     }
     for (const [key, value] of Object.entries(record)) {
@@ -197,6 +199,7 @@ test("a replacement candidate must reset both prior guide approval and publicati
   const historicalLane = loadHistorical112MarketplaceLane();
   const replacement = structuredClone(historicalLane);
   replacement.plugin = structuredClone(loadClaudeMarketplaceLane(repositoryRoot).plugin);
+  replacement.source.publicationFiles = structuredClone(loadClaudeMarketplaceLane(repositoryRoot).source.publicationFiles);
 
   assert.throws(
     () => validateClaudeMarketplaceLane(replacement),
@@ -350,6 +353,13 @@ test("marketplace manifest keeps one stable plugin identity and one version auth
     () => validateClaudeMarketplaceManifest(renamedEntry, lane, pluginManifest),
     /marketplace plugin name mismatch/u,
   );
+});
+
+test("the consolidated candidate rejects the historical six-file instruction layout", () => {
+  const lane = structuredClone(loadClaudeMarketplaceLane(repositoryRoot));
+  lane.source.publicationFiles = loadHistorical112MarketplaceLane().source.publicationFiles;
+  assert.throws(() => validateClaudeMarketplaceLane(lane),
+    /version-specific package allowlist/u);
 });
 
 test("public activation cannot bypass the existing open-public-beta blockers", () => {
@@ -571,8 +581,8 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.1.4");
-    assert.equal(prepared.files.length, 11);
+    assert.equal(prepared.version, "1.1.5");
+    assert.equal(prepared.files.length, 12);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
     assert(prepared.files.includes(".claude-plugin/marketplace.json"));
@@ -630,7 +640,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.1.4",
+                version: "1.1.5",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {
@@ -716,7 +726,7 @@ test("published verification is pinned to the configured repository", () => {
 test("source check leaves no publication tree behind", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
-  assert.equal(result.files.length, 11);
+  assert.equal(result.files.length, 12);
 });
 
 function withOutput(callback, { prepareDirectory = false } = {}) {

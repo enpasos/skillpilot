@@ -3,10 +3,57 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.4 is the current
-privacy-correction package, deployed in production and verified in the public
-Marketplace. Real-client acceptance remains pending. Earlier published packages
-and their evidence remain immutable history.
+Anthropic-curated or Anthropic-verified listing. Version 1.1.5 is the current
+instruction-consolidation candidate. Version 1.1.4 remains the last verified
+production and public Marketplace release until the new coordinated rollout
+is completed. Real-client acceptance remains pending. Earlier published
+packages and their evidence remain immutable history.
+
+## 1.1.5 instruction consolidation, 12 September 2026
+
+The Product Owner authorized removing overlapping Claude instructions while
+preserving the coaching semantics, independent regression verification and a
+complete production and Marketplace rollout after green CI.
+
+The compact Skill owns the common coaching flow. The Verified Recall and exam
+procedures move to conditional references; the duplicated `coaching-policy.md`
+is removed from the current package. Its historical bytes remain inside the
+immutable 1.1.4 artifact. The current package contains seven allowlisted files
+and produces a twelve-file Marketplace tree. The fourteen tools, assessment
+criteria, privacy, protected-answer, OAuth, session and progression boundaries
+remain unchanged. This instruction cleanup does not reopen prohibited chat
+feedback fields or imply host acceptance.
+
+The complete seven-file 1.1.4 release dossier is archived byte-identically under
+`ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.4/`; the release checker
+protects its exact hashes. No repository, guide or real-client approval is
+inherited by 1.1.5. New evidence starts pending. Validate the final instruction
+content first, then prepare its immutable artifact and local publication index.
+Only after CI passes may production serve that artifact and the Marketplace
+publish the matching tree. Until those separate operations succeed, the public
+deployment and remote default branch continue to serve 1.1.4.
+
+### Local verification scope
+
+The previously mandatory Skill plus policy contained 40,643 UTF-8 bytes. The
+shared 1.1.5 Skill contains 11,131 bytes, approximately 72.6% less normal-startup
+instruction text. Verified Recall and exam procedures are separate conditional
+references (1,692 and 1,513 bytes); all three instruction files total 14,336
+bytes. These are source-size measurements, not observed Claude read counts,
+token usage, latency or account-level acceptance.
+
+An independent reviewer evaluated fourteen synthetic decision cases plus three
+combined daily-completion and subject-switch cases from the instruction text.
+All seventeen decisions passed the bounded review: status alone causes no
+write; a subject request after daily completion requires clarification about
+voluntary extra work unless that intent is already explicit; explicit voluntary
+continuation uses only the current published subject option and state version.
+This instruction-only simulation did not invoke a real Claude host or exercise
+production tools, and complete executable backend fixtures were not supplied.
+Separately, forty local backend tests across seven contract classes passed with
+no failures or skips, covering exams, visualization, learning plans, mastery,
+memory practice and Verified Recall. These checks supplement, but do not
+replace, real-client acceptance or measured host behavior.
 
 ## 1.1.4 privacy correction, 12 September 2026
 
@@ -465,7 +512,7 @@ the personal **Add from a repository** flow. Exposing the complete application
 repository would also broaden the publication surface far beyond the reviewed
 plugin. The target repository is therefore a small generated publication tree.
 
-The generator copies exactly the six files in the existing `publicationFiles`
+The generator copies exactly the seven files in the existing `publicationFiles`
 allowlist. It never copies package tests, builders, release evidence, learner
 data, sessions, credentials, or other monorepo content. The exported files are
 byte-identical to the direct-install candidate, whose version and SHA-256 are
@@ -475,7 +522,7 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.4`
+- Current candidate version: `1.1.5`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only

@@ -402,12 +402,18 @@ einem Testlauf zufällig korrekt ausführt:
 | Lernendensichtbares Coach-Verhalten und Golden Journeys | [Verhaltensintegration](openai-mcp-coach-behavioral-integration.md) |
 | Produkt-, Provider- und Deploymenttopologie | [SkillPilot-eigene Coach-Architektur](skillpilot-owned-coach-architecture.md) |
 | OAuth, Lernsession und Ablauf | [OpenAI OAuth-/Sessionarchitektur](openai-mcp-oauth-learner-session-architecture.md) |
-| Wiederholbares Modellverhalten | ausgelieferte `SKILL.md` und `coaching-policy.md` |
+| Wiederholbares Modellverhalten | ausgelieferte `SKILL.md` mit eindeutig zugeordneten, bedarfsweise gelesenen Workflow-Referenzen |
 | Werkzeugbedingung | genau eine Toolbeschreibung und ihr Schema |
 | Aktuelle Entscheidung | genau ein frisches Toolergebnis |
 | Fachliche oder Sicherheitsgarantie | Backendguard, Transaktion und Test |
 | Tagespensum, echte Abschlussereignisse und freiwillige Zusatzarbeit | [Tagesfortschritt](daily-learning-progress.md) |
 | Betrieb und Release | Runbooks unter `docs/deploy/` |
+
+Gemeinsame Regeln stehen einmal in der Hauptanleitung. Eine Workflow-Referenz
+enthält nur ihre besonderen Abläufe und wird vor deren Verwendung gelesen,
+nicht pauschal vor jedem Lernstart. Kürzere Anleitungen dürfen Datenschutz-,
+Bewertungs- und Zustandsgrenzen nicht abschwächen; statische Prüfungen und
+realistische Coach-Szenarien müssen diese Entscheidungen weiterhin absichern.
 
 Abgeschlossene Migrationspläne und frühere Knowledge-Paritätsmatrizen sind
 keine aktuellen Normquellen. Ihre Geschichte bleibt in Git erhalten; aktive
