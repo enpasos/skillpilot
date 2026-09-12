@@ -1,3 +1,4 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.jvm.toolchain.JvmVendorSpec
 
 plugins {
@@ -68,6 +69,15 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    // Keep CI failure details actionable even when the JUnit report is unavailable.
+    testLogging {
+        events("failed")
+        exceptionFormat = TestExceptionFormat.FULL
+        showExceptions = true
+        showCauses = true
+        showStackTraces = true
+        showStandardStreams = false
+    }
     // The provider-isolation test reads this independent, checked-in baseline.
     // Draft-only updates must invalidate local test results as well as fresh CI runs.
     inputs.file(layout.projectDirectory.file(

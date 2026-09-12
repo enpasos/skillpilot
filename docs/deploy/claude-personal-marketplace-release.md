@@ -55,6 +55,19 @@ no failures or skips, covering exams, visualization, learning plans, mastery,
 memory practice and Verified Recall. These checks supplement, but do not
 replace, real-client acceptance or measured host behavior.
 
+The first full [CI run](https://github.com/enpasos/skillpilot/actions/runs/34696935964)
+passed every lane except one OAuth integration assertion. Its three consent
+redirects passed, but `verifyNoInteractions(connectionService)` detected an
+unrelated invocation. A local negative reproduction with a one-millisecond
+cleanup interval reproduced that failure; the imported OAuth configuration
+enables scheduling on the mocked connection service. The HTTP-flow fixture now
+provides an inert test-only scheduler while retaining that aggressive interval
+and every no-interaction assertion. All three tests pass with this isolation.
+Production scheduling and OAuth behavior are unchanged. Gradle now prints full
+failure exceptions, causes and stack traces without enabling standard-stream
+logging. The original failed run does not authorize deployment; the corrected
+commit requires a new green full CI run.
+
 ## 1.1.4 privacy correction, 12 September 2026
 
 The Product Owner required removal of `workFeedback`, `outcomeFeedback` and

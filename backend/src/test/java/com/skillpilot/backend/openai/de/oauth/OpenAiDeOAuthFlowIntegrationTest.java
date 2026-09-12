@@ -20,6 +20,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.time.Clock;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.List;
@@ -43,6 +44,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
@@ -67,6 +69,7 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.enabled=true",
         "skillpilot.openai.coach.v1.server-build=test-build",
         "skillpilot.openai.coach.v1.oauth.enabled=true",
+        "skillpilot.openai.coach.v1.cleanup-interval-ms=1",
         "skillpilot.openai.coach.v1.mcp.enabled=false",
         "skillpilot.public-base-url=https://skillpilot.test",
         "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
@@ -492,6 +495,17 @@ class OpenAiDeOAuthFlowIntegrationTest {
         @Bean
         OpenAiDeCoachConnectionService openAiDeCoachConnectionService() {
             return Mockito.mock(OpenAiDeCoachConnectionService.class);
+        }
+
+        @Bean
+        TaskScheduler taskScheduler() {
+            // OAuth configuration enables scheduling. Do not let the service mock's
+            // unrelated @Scheduled cleanup race reset/verifyNoInteractions, even at
+            // the deliberately aggressive test cleanup interval. Keep HTTP isolation
+            // assertions intact; production scheduling is not changed by this fixture.
+            TaskScheduler scheduler = Mockito.mock(TaskScheduler.class);
+            Mockito.when(scheduler.getClock()).thenReturn(Clock.systemUTC());
+            return scheduler;
         }
 
         @Bean
