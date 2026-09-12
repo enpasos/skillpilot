@@ -74,8 +74,6 @@ public class ClaudeV1McpContractAdapter {
     private static final String ARG_GOAL_ID = "goalId";
     private static final String ARG_GOAL_IDS = "goalIds";
     private static final String ARG_REDIRECT = "redirect";
-    private static final String ARG_WORK_FEEDBACK = "workFeedback";
-    private static final String ARG_OUTCOME_FEEDBACK = "outcomeFeedback";
     private static final String ARG_EXPECTED_STATE_VERSION = "expectedStateVersion";
     private static final String ARG_CLIENT_REQUEST_ID = "clientRequestId";
     private static final String ARG_BATCH_CAPABILITY = "batchCapability";
@@ -87,11 +85,10 @@ public class ClaudeV1McpContractAdapter {
     private static final String ARG_REVIEW_CAPABILITY = "reviewCapability";
     private static final String ARG_RATING = "rating";
     private static final String ARG_PASSED = "passed";
-    private static final String ARG_FEEDBACK = "feedback";
 
     private static final String LANGUAGE_DE = "de";
     private static final String LANGUAGE_EN = "en";
-    private static final int MAX_FEEDBACK_LENGTH = 2000;
+    private static final int MAX_SCORING_DESCRIPTION_LENGTH = 2000;
     private static final int MAX_IDENTIFIER_LENGTH = 256;
     private static final int MAX_GOAL_IDS = 64;
     private static final int MAX_RECALL_CARDS = 20;
@@ -126,7 +123,7 @@ public class ClaudeV1McpContractAdapter {
                     + "state; do not reload it. If that context contains goalVisualization, follow its "
                     + "presentationInstruction before any learner-facing communication. Then continue immediately "
                     + "and naturally with only the active goal or next action supplied by that returned context. "
-                    + "Do not repeat the submitted feedback or narrate the previous orientation's completion, "
+                    + "Do not narrate the previous orientation's completion, "
                     + "eligibility criteria, policy, self-correction, internal reasoning or conflicts, tool "
                     + "selection, compliance, saving or retry mechanics. Do not ask for another confirmation.";
     static final String LEGACY_MASTERY_REPLAY_INSTRUCTION =
@@ -168,7 +165,7 @@ public class ClaudeV1McpContractAdapter {
             Map.entry(ClaudeV1Contract.TOOL_SET_ACTIVE_GOAL, Set.of(
                     ARG_GOAL_ID, ARG_REDIRECT, ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_SET_MASTERY, Set.of(
-                    ARG_GOAL_ID, ARG_WORK_FEEDBACK, ARG_OUTCOME_FEEDBACK,
+                    ARG_GOAL_ID,
                     ARG_EVALUATION_CAPABILITY, ARG_EARNED_POINTS, ARG_EXPECTED_STATE_VERSION,
                     ARG_CLIENT_REQUEST_ID, ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_START_VERIFIED_RECALL, Set.of(ARG_LANGUAGE)),
@@ -385,9 +382,11 @@ public class ClaudeV1McpContractAdapter {
                 Mastery is completion, never a model-selected score. For an ordinary competency,
                 save mastery only after at least two independent checks or one genuine multi-step
                 transfer task provide learner evidence in the current conversation, including spoken
-                or written responses. Supply specific evidence-based content in both required feedback
-                fields, but present it afterwards as one natural response without field labels or
-                technical metadata. Do not treat praise, repetition or a single guided answer as
+                or written responses. Keep assessment reasoning and feedback only in the conversation.
+                Send only structured completion data to set_skillpilot_mastery; never send learner work,
+                assessment reasoning or feedback text. After confirmed persistence, give one natural
+                learner-facing response without field labels or technical metadata.
+                Do not treat praise, repetition or a single guided answer as
                 evidence. Never use normal mastery for a memory goal. The model decides only whether
                 the active goal is complete. It must never choose, infer or activate a successor as
                 part of completion; use the full canonical successor context returned by the write.
@@ -443,7 +442,9 @@ public class ClaudeV1McpContractAdapter {
                 learner, and wait until every learner answer is present in the current conversation,
                 including any spoken or written responses. Only then call
                 get_skillpilot_verified_recall_answers, grade card by card, and submit one complete
-                ordered result set. Never reveal an expected answer before the learner has answered.
+                ordered result set containing only cardId and passed for each card. Keep learner
+                answers, assessment reasoning and feedback only in the conversation; never send them
+                to the result tool. Never reveal an expected answer before the learner has answered.
                 After recording, follow the returned next continuation immediately: present all
                 cards when its status is ready, and stop only when it is waiting or complete. Never
                 save memory mastery separately.
@@ -632,20 +633,16 @@ public class ClaudeV1McpContractAdapter {
                 "Set Mastery",
                 "Records mastery for the active atomic goal. For an exam goal this additionally requires the "
                         + "evaluationCapability from get_skillpilot_exam_evaluation and an earnedPoints value that "
-                        + "reaches passingPoints. Writes learner state and advances the state revision.",
+                        + "reaches passingPoints. Send only structured completion and concurrency data; "
+                        + "learner work, assessment reasoning and feedback stay in the conversation. "
+                        + "Writes learner state and advances the state revision.",
                 objectSchema(
                         List.of(
                                 ARG_GOAL_ID,
-                                ARG_WORK_FEEDBACK,
-                                ARG_OUTCOME_FEEDBACK,
                                 ARG_EXPECTED_STATE_VERSION,
                                 ARG_CLIENT_REQUEST_ID),
                         Map.of(
                                 ARG_GOAL_ID, Map.of("type", "string", "minLength", 1),
-                                ARG_WORK_FEEDBACK, boundedStringSchema(
-                                        "Specific feedback on learner work present in the current conversation, including spoken or written responses."),
-                                ARG_OUTCOME_FEEDBACK, boundedStringSchema(
-                                        "Why the evidence does or does not establish completion."),
                                 ARG_EVALUATION_CAPABILITY, Map.of(
                                         "type", "string",
                                         "description", "Opaque value from get_skillpilot_exam_evaluation, copied unchanged."),
@@ -687,7 +684,8 @@ public class ClaudeV1McpContractAdapter {
                 "Record Verified Recall Results",
                 "Submits one complete, ordered assessment for every card of the graded batch. Missing, extra, "
                         + "reordered or foreign cards are rejected without any partial write. Returns the canonical "
-                        + "next recall continuation and writes learner state.",
+                        + "next recall continuation and writes learner state. Send only each cardId and passed "
+                        + "boolean; learner answers and feedback stay in the conversation.",
                 objectSchema(
                         List.of(ARG_GRADING_CAPABILITY, ARG_RESULTS, ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID),
                         Map.of(
@@ -699,8 +697,7 @@ public class ClaudeV1McpContractAdapter {
                                                 List.of(ARG_CARD_ID, ARG_PASSED),
                                                 Map.of(
                                                         ARG_CARD_ID, Map.of("type", "string"),
-                                                        ARG_PASSED, Map.of("type", "boolean"),
-                                                        ARG_FEEDBACK, Map.of("type", "string", "maxLength", MAX_FEEDBACK_LENGTH)))),
+                                                        ARG_PASSED, Map.of("type", "boolean")))),
                                 ARG_EXPECTED_STATE_VERSION, stateVersionSchema(),
                                 ARG_CLIENT_REQUEST_ID, clientRequestIdSchema(),
                                 ARG_LANGUAGE, languageSchema())),
@@ -1628,8 +1625,6 @@ public class ClaudeV1McpContractAdapter {
 
     private Map<String, Object> setMastery(String connectionId, Map<String, Object> arguments) {
         String goalId = requiredIdentifier(arguments, ARG_GOAL_ID);
-        String workFeedback = requiredBoundedString(arguments, ARG_WORK_FEEDBACK, MAX_FEEDBACK_LENGTH);
-        String outcomeFeedback = requiredBoundedString(arguments, ARG_OUTCOME_FEEDBACK, MAX_FEEDBACK_LENGTH);
         String evaluationCapability = optionalString(arguments, ARG_EVALUATION_CAPABILITY);
         Double earnedPoints = optionalDouble(arguments, ARG_EARNED_POINTS);
         long expectedStateVersion = requiredStateVersion(arguments);
@@ -1765,6 +1760,7 @@ public class ClaudeV1McpContractAdapter {
     }
 
     private Map<String, Object> recordVerifiedRecallResults(String connectionId, Map<String, Object> arguments) {
+        List<VerifiedRecallBatchCardResult> results = parseRecallResults(arguments);
         String gradingCapability = requiredString(arguments, ARG_GRADING_CAPABILITY);
         long expectedStateVersion = requiredStateVersion(arguments);
         String clientRequestId = requiredClientRequestId(arguments);
@@ -1788,8 +1784,7 @@ public class ClaudeV1McpContractAdapter {
                                     connectionId,
                                     active.id(),
                                     ctx.stateVersion());
-                    List<VerifiedRecallBatchCardResult> results =
-                            parseRecallResults(arguments, claim.cardIds());
+                    requireRecallResultCardOrder(results, claim.cardIds());
                     VerifiedRecallBatchResultResponse batch = coachToolFacade.recordVerifiedRecallResultsBatch(
                             ctx.skillpilotId(),
                             language,
@@ -1867,30 +1862,21 @@ public class ClaudeV1McpContractAdapter {
     }
 
     /**
-     * Rebuilds the result list in the batch's own order and rejects anything that is not an exact
-     * one-to-one match, before any mutation is attempted.
+     * Rejects chat-derived text and other unsupported input before core access or replay hashing.
      */
-    private List<VerifiedRecallBatchCardResult> parseRecallResults(
-            Map<String, Object> arguments,
-            List<String> expectedCardIds) {
+    private List<VerifiedRecallBatchCardResult> parseRecallResults(Map<String, Object> arguments) {
 
         Object rawResults = arguments.get(ARG_RESULTS);
         if (!(rawResults instanceof List<?> list)) {
             throw new ToolInputException("results must be an array.");
         }
-        if (list.size() != expectedCardIds.size()) {
-            throw new ToolInputException(
-                    "results must contain exactly one entry for each of the " + expectedCardIds.size()
-                            + " cards in the batch.");
-        }
-
         List<VerifiedRecallBatchCardResult> ordered = new ArrayList<>();
         for (int index = 0; index < list.size(); index++) {
             Object rawEntry = list.get(index);
             if (!(rawEntry instanceof Map<?, ?> entry)) {
                 throw new ToolInputException("Each result entry must be an object.");
             }
-            if (!Set.of(ARG_CARD_ID, ARG_PASSED, ARG_FEEDBACK).containsAll(entry.keySet())) {
+            if (!Set.of(ARG_CARD_ID, ARG_PASSED).containsAll(entry.keySet())) {
                 throw new ToolInputException("A result entry contains an unsupported field.");
             }
             Object cardId = entry.get(ARG_CARD_ID);
@@ -1901,22 +1887,25 @@ public class ClaudeV1McpContractAdapter {
             if (!(passed instanceof Boolean passedFlag)) {
                 throw new ToolInputException("Each result entry needs a boolean passed value.");
             }
-            if (!expectedCardIds.get(index).equals(cardIdText)) {
-                throw new ToolInputException(
-                        "results must preserve the exact server-issued card order.");
-            }
-            Object feedback = entry.get(ARG_FEEDBACK);
-            if (feedback != null && !(feedback instanceof String)) {
-                throw new ToolInputException("feedback must be a string when supplied.");
-            }
-            String feedbackText = feedback instanceof String text ? text : null;
-            if (feedbackText != null && feedbackText.length() > MAX_FEEDBACK_LENGTH) {
-                throw new ToolInputException("feedback exceeds the permitted length.");
-            }
-            ordered.add(new VerifiedRecallBatchCardResult(cardIdText, passedFlag, feedbackText));
+            ordered.add(new VerifiedRecallBatchCardResult(cardIdText, passedFlag));
         }
 
         return List.copyOf(ordered);
+    }
+
+    private void requireRecallResultCardOrder(
+            List<VerifiedRecallBatchCardResult> results,
+            List<String> expectedCardIds) {
+        if (results.size() != expectedCardIds.size()) {
+            throw new ToolInputException(
+                    "results must contain exactly one entry for each of the " + expectedCardIds.size()
+                            + " cards in the batch.");
+        }
+        for (int index = 0; index < results.size(); index++) {
+            if (!expectedCardIds.get(index).equals(results.get(index).cardId())) {
+                throw new ToolInputException("results must preserve the exact server-issued card order.");
+            }
+        }
     }
 
     private void validateRecallPromptCards(List<VerifiedRecallPromptCard> cards) {
@@ -2126,7 +2115,7 @@ public class ClaudeV1McpContractAdapter {
                     || step.points() <= 0.0
                     || step.description() == null
                     || step.description().isBlank()
-                    || step.description().length() > MAX_FEEDBACK_LENGTH) {
+                    || step.description().length() > MAX_SCORING_DESCRIPTION_LENGTH) {
                 throw new ToolConflictException("The active exam has no valid released evaluation data.");
             }
             assignedPoints = assignedPoints.add(BigDecimal.valueOf(step.points()));
@@ -2605,22 +2594,6 @@ public class ClaudeV1McpContractAdapter {
                 "description", "A fresh UUID for this write. Reuse it only when a response was interrupted and no "
                         + "tool result was received; after a returned error, follow the server recovery instructions "
                         + "instead of repeating automatically.");
-    }
-
-    private Map<String, Object> boundedStringSchema(String description) {
-        return Map.of(
-                "type", "string",
-                "minLength", 1,
-                "maxLength", MAX_FEEDBACK_LENGTH,
-                "description", description);
-    }
-
-    private String requiredBoundedString(Map<String, Object> arguments, String key, int maxLength) {
-        Object raw = arguments.get(key);
-        if (!(raw instanceof String text) || text.isBlank() || text.length() > maxLength) {
-            throw new ToolInputException(key + " is required and must not exceed " + maxLength + " characters.");
-        }
-        return text;
     }
 
     private String optionalBoundedString(Map<String, Object> arguments, String key, int maxLength) {

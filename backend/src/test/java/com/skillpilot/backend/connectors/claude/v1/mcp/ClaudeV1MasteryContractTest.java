@@ -36,6 +36,8 @@ import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -164,7 +166,7 @@ class ClaudeV1MasteryContractTest {
                                 "canonical backend state",
                                 "do not reload",
                                 "continue immediately and naturally",
-                                "Do not repeat the submitted feedback",
+                                "Do not narrate the previous orientation's completion",
                                 "Do not ask for another confirmation")
                         .doesNotContain("what went well", "what still needs practice")
                         .doesNotContain("Reload coach context now"));
@@ -295,14 +297,34 @@ class ClaudeV1MasteryContractTest {
         verify(coachToolFacade, never()).setActiveGoal(any(), any(ActiveGoalRequest.class));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"workFeedback", "outcomeFeedback"})
+    void chatDerivedFeedbackIsRejectedBeforeCoreAccessOrReplayPersistence(String field) throws Exception {
+        String requestId = UUID.randomUUID().toString();
+        McpSchema.CallToolResult result = callMastery(
+                Map.of(field, "synthetic-private-feedback-canary"), requestId);
+
+        assertThat(result.isError()).isTrue();
+        assertThat(payload(result))
+                .containsEntry("errorCode", "INVALID_INPUT")
+                .hasEntrySatisfying("message", message -> assertThat(message.toString())
+                        .contains("unsupported argument"))
+                .allSatisfy((key, value) -> assertThat(value.toString())
+                        .doesNotContain("synthetic-private-feedback-canary"));
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+        verify(coachToolFacade, never()).getLearnerState(any());
+        verify(coachToolFacade, never()).setMastery(any(), any());
+        assertThat(idempotencyRepository.findLive(
+                        sessionTokens.hash(connectionId), requestId, java.time.Instant.now()))
+                .isEmpty();
+    }
+
     private McpSchema.CallToolResult callMastery(
             Map<String, Object> additionalArguments,
             String clientRequestId) {
         Map<String, Object> arguments = new LinkedHashMap<>();
         arguments.put("learningSessionId", connectionId);
         arguments.put("goalId", ACTIVE_GOAL_ID);
-        arguments.put("workFeedback", "The learner gave a meaningful orientation response.");
-        arguments.put("outcomeFeedback", "The active orientation goal is complete.");
         arguments.put("expectedStateVersion", INITIAL_STATE_VERSION);
         arguments.put("clientRequestId", clientRequestId);
         arguments.put("language", "en");

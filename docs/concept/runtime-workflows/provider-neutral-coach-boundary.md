@@ -3,7 +3,7 @@
 **Status:** kanonische, provider-neutrale Kommunikationsnorm für alle
 SkillPilot-Lerncoaches.
 
-**Geltungsbereich:** OpenAI MCP App V1, künftige Provideradapter und alle
+**Geltungsbereich:** OpenAI MCP App V1, Claude Connector V1, künftige Provideradapter und alle
 neuen Coach-Werkzeuge. Sicherheits-, Session-, Didaktik- und
 Deploymentdokumente konkretisieren diese Grenze, dürfen sie aber nicht
 abweichend neu definieren.
@@ -123,11 +123,56 @@ Grenze.
 
 ## Eingaben: semantisch klein, technisch abgeleitet
 
+### Unverrückbare Grenze: keine Chat-Freitexte zum Core
+
+Der Coach beurteilt die sichtbare Arbeit und formuliert Rückmeldungen und
+Erfolgsantworten **selbstständig im Provider-Chat**. Die Texte müssen weder
+zum Backend geschickt noch von diesem zurückgegeben werden. Dies gilt auch
+für Zusammenfassungen, paraphrasierte Antworten und Bewertungsbegründungen,
+nicht nur für wörtliche Chatkopien.
+
+Insbesondere sind `workFeedback`, `outcomeFeedback`, Recall-`feedback` und
+inhaltlich gleichartige anders benannte Felder in aktiven Coach-Mutationen
+verboten. Ein optionales Feld oder eine Längenbegrenzung macht die Übertragung
+nicht zulässig. Auch ein Umweg über Replay-Hashes, Logs oder Ergebnis-Receipts
+ist keine Rechtfertigung für die Erhebung.
+
+Die Grenze lautet konkret:
+
+- **Normales Lernziel:** Der Coach meldet die strukturierte Abschlussentscheidung.
+  Das Backend prüft aktives Ziel, Berechtigung und Zustandsregeln und bestätigt
+  die Speicherung mit Ziel, Mastery-Wert und maßgeblichem Folgezustand.
+- **Verified Recall:** Der Coach übermittelt ausschließlich die zum freigegebenen
+  Batch gehörenden strukturierten `passed`-Entscheidungen. Antworten und deren
+  fachliche Begründung bleiben im Chat; kein `lastFeedback` wird daraus gespeichert.
+- **Prüfung:** Der Coach darf die autorisierte numerische Bewertung übermitteln.
+  Die Erläuterung zu Lösungsweg, Punkten und Bestehen bleibt im Chat.
+
+Der Coach darf einen erfolgreichen Save erst nach dem passenden Erfolgsbeleg
+behaupten. Ein abgebrochener Transport oder Timeout beweist weder Speicherung
+noch Nicht-Speicherung; dafür ist eine eindeutige technische Recovery nötig,
+keine erfundene Erklärung wie „Server nicht erreichbar“.
+
+Servereigene Lerninhalte, lokalisierte Labels, unverändert kopierte
+Optionspayloads und notwendige opake Capabilities sind keine Chat-Freitexte.
+Sie dürfen aber nicht als Tarnfeld für zusätzliche Chatinformationen dienen.
+Ein anderes Produktmerkmal, das Texte bewusst erhebt, benötigt eine eigene,
+ausdrücklich autorisierte Daten- und Datenschutzgrenze; es schafft keine
+Ausnahme für den Coach-Vertrag.
+
+Unbekannte Felder werden auf jeder Eingabeebene vor Domain-Aufruf,
+Replay-Hashbildung und Speicherung abgelehnt. Regressionstests prüfen sowohl
+die veröffentlichten Schemas als auch echte unerlaubte Inputs und die
+Persistenz. Bereits veröffentlichte alte Pakete bleiben unverändert; eine
+Korrektur wird als neue Version ausgeliefert. Vorhandene historische
+Freitextdaten werden ohne gesonderten Auftrag weder gelöscht noch exportiert.
+
 Ein Modellinput enthält nur Werte, die eine der folgenden Bedingungen
 erfüllen:
 
-- Die lernende Person hat den Wert semantisch geliefert, zum Beispiel eine
-  Antwort oder ein Feedback.
+- Die lernende Person hat eine Absicht oder Auswahl semantisch geliefert,
+  die der Coach auf einen dafür vorgesehenen strukturierten Wert abbildet;
+  ihre freie Formulierung wird nicht mitgeschickt.
 - Das Modell hat eine fachlich-semantische Entscheidung getroffen, die das
   Backend nicht selbst treffen kann, zum Beispiel `passed` nach Vergleich der
   sichtbaren Antwort mit einer freigegebenen Sollantwort.
@@ -231,7 +276,7 @@ get_skillpilot_verified_recall_answers(
 record_skillpilot_verified_recall_results(
   learningSessionId,
   gradingCapability,
-  assessments[{passed, feedback}]
+  assessments[{passed}]
 )
 -> ein atomarer Receipt + genau eine continuation
 ```
@@ -344,6 +389,10 @@ einem Testlauf zufällig korrekt ausführt:
 - sichtbare Behauptungen über Saves, Counts oder Abschluss ohne
   Backendreceipt;
 - Backend-NLP, das freie Antworten durch exakten Wortlautvergleich bewertet.
+- Chattexte oder frei formulierte Bewertungs-/Erfolgsantworten, die zum
+  Backend geschickt werden, nur um sie danach wieder im Chat auszugeben;
+- Freitext in einem strukturiert benannten Feld oder in verschachtelten
+  Recall-Ergebnissen als vermeintliche Ausnahme von dieser Grenze.
 
 ## Verbindlicher Ort einer Regel
 
@@ -382,6 +431,9 @@ Eine Aenderung ist erst fertig, wenn alle Antworten „ja“ lauten:
 9. Gibt es Contracttests für gültige, ungültige und adversariale Inputs?
 10. Belegt ein realer Provider-Trace die beabsichtigte Toolanzahl und
     Fortsetzung ohne zusätzliche Polls?
+11. Sind Chatantworten, Begründungen und Erfolgsformulierungen vollständig aus
+    aktiven Toolinputs, deren Echo-Antworten und der Persistenz ausgeschlossen,
+    und werden entsprechende zusätzliche Felder vor dem Core abgelehnt?
 
 ## Referenzen
 

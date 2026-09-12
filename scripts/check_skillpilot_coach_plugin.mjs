@@ -166,6 +166,18 @@ const contractMetadata = read(resolve(
 ));
 const releaseScript = read(resolve(repositoryRoot, "scripts/openai_plugin_release.mjs"));
 const combinedSkill = `${skill}\n${policy}`;
+// Assessment prose is conversation-local, never a tool argument or receipt.
+for (const [name, source] of [
+  ["active skill/policy", combinedSkill],
+  ["MCP adapter", mcpContract],
+  ["context projector", contextProjector],
+]) {
+  assert.doesNotMatch(source, /\b(?:workFeedback|outcomeFeedback)\b/u,
+    `${name} must not reintroduce chat-derived assessment fields.`);
+}
+assert.match(skill, /Learner answers, assessment reasoning and feedback stay exclusively in\s+the conversation/u);
+assert.match(policy, /`\{passed\}` assessment for every returned card/u,
+  "Verified Recall submits structured booleans, not assessment prose.");
 const recallCrossFlowDocumentation =
   `${agentsGuide}\n${communicationContract}\n${behavioralIntegration}`;
 const compactWhitespace = (value) => value.replace(/\s+/gu, " ").trim();

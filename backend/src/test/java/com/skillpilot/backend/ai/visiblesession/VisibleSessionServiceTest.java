@@ -623,7 +623,7 @@ class VisibleSessionServiceTest {
         VisibleVerifiedRecallResultResponse result = service.recordVerifiedRecallResult(
                 TOKEN,
                 "de",
-                new VerifiedRecallResultRequest(memory.id(), "card-1", true, "korrekt"));
+                new VerifiedRecallResultRequest(memory.id(), "card-1", true));
         assertThat(result.masterySaved()).isTrue();
         assertThat(result.masteryGoalId()).isEqualTo(memory.id());
         assertThat(result.next().status()).isEqualTo("complete");

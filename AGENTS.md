@@ -521,7 +521,9 @@ Interpretation:
   learningSessionId, gradingCapability, assessments)`. The start result carries
   `batchCapability` and the complete ordered cards; the answer result carries
   `gradingCapability` and the complete ordered answers. `assessments` contains
-  exactly one ordered `{passed, feedback}` entry per returned card. This
+  exactly one ordered `{passed}` entry per returned card. Semantic grading and
+  its explanation stay in the provider conversation; no feedback prose is sent
+  to or persisted by the backend. This
   capability-bound write derives its expected state version and idempotency key
   server-side; the model supplies neither `expectedStateVersion` nor
   `clientRequestId`. When a terminal Recall write activates an ordinary atomic
@@ -1349,6 +1351,29 @@ provider policy and product review explicitly permit it.
 
 ### 12.1 Key Features for AI
 
+- **Hard privacy and responsibility boundary — no chat prose into Core:**
+  the coach evaluates visible learner work and independently formulates its
+  feedback and success response in the provider conversation. Neither raw
+  answers, reasoning, chat excerpts, summaries, assessment explanations nor
+  pieces of that response may be sent through SkillPilot merely to be echoed,
+  hashed, logged, or stored. In particular, `workFeedback`, `outcomeFeedback`,
+  Recall `feedback`, and equivalent renamed free-text fields are forbidden in
+  active coach mutation inputs. Normal mastery carries only its structured
+  completion request; Recall carries only the bound per-card `passed` values;
+  an exam may carry its authorized numeric score. The backend validates the
+  applicable rules and confirms persistence and canonical successor facts, not
+  the coach's wording. Approved server-owned labels/option payloads and opaque
+  credentials are copied unchanged and are not a free-text escape hatch.
+  Reject unsupported top-level and nested input fields before domain calls,
+  replay hashing, or persistence. Protect the rule with schema, adversarial
+  input, and persistence regression tests for every active provider. A new
+  chat-content collection use case requires an explicit Product Owner
+  architecture decision; a generic string, an optional field, a character
+  limit, or a logging justification does not authorize it. Existing published
+  artifacts remain immutable history, not authority to restore the old fields.
+  Historical stored data is not deleted or exported without a separate,
+  explicitly scoped decision. The canonical contract is
+  `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md`.
 - **Canonical ChatClient/backend contract:**
   `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md` is the
   single durable source for communication and new tool-design decisions. The

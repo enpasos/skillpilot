@@ -38,8 +38,7 @@ class OpenAiDialogReplayReviewFixturesTest {
         assertThat(fixture.snapshot().get("masteryWrites")).isEqualTo(0L);
         var result = call(fixture, OpenAiDeV1McpContractAdapter.SET_MASTERY, Map.of(
                 "goalId", OpenAiDialogReplayReviewFixtures.ORIENTATION_ID,
-                "orientationPathId", "change-and-models", "workFeedback", "Du hast deine persönliche Perspektive beschrieben.",
-                "outcomeFeedback", "Die Orientierung ist abgeschlossen; dies ist keine Fachprüfung."));
+                "orientationPathId", "change-and-models"));
         assertThat(result.isError()).isFalse();
         assertThat(fixture.state.activeGoal().id()).isEqualTo(OpenAiDialogReplayReviewFixtures.CONTENT_ID);
         assertThat(fixture.currentStateVersion()).isEqualTo(1L);
@@ -106,8 +105,7 @@ class OpenAiDialogReplayReviewFixturesTest {
         var recorded = call(fixture, OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, Map.of(
                 "gradingCapability", answerData.get("gradingCapability"),
                 "assessments", java.util.stream.IntStream.range(0, 8)
-                        .mapToObj(i -> Map.of("passed", allCorrect || i > 0,
-                                "feedback", allCorrect || i > 0 ? "Die gegebene Antwort ist fachlich richtig." : "Die Steigung wurde vertauscht.")).toList()));
+                        .mapToObj(i -> Map.of("passed", allCorrect || i > 0)).toList()));
         assertThat(recorded.isError()).isFalse();
         assertThat(fixture.domainState.get("savedRecallBatches")).isEqualTo(1);
         assertThat((List<?>) fixture.domainState.get("verifiedCardIds")).hasSize(allCorrect ? 8 : 7);

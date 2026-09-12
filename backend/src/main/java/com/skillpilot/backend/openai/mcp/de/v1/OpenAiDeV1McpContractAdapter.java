@@ -112,8 +112,6 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String EXPECTED_STATE_VERSION = "expectedStateVersion";
     public static final String CLIENT_REQUEST_ID = "clientRequestId";
     public static final String ORIENTATION_PATH_ID = "orientationPathId";
-    public static final String WORK_FEEDBACK = "workFeedback";
-    public static final String OUTCOME_FEEDBACK = "outcomeFeedback";
     public static final String EXAM_EVALUATION_CAPABILITY = "evaluationCapability";
     public static final String EXAM_EARNED_POINTS = "earnedPoints";
     private static final String MEMORY_PRACTICE_REVIEW_CAPABILITY = "reviewCapability";
@@ -129,8 +127,6 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final int RECALL_CAPABILITY_IV_BYTES = 12;
     private static final int RECALL_CAPABILITY_TAG_BITS = 128;
     private static final SecureRandom RECALL_CAPABILITY_RANDOM = new SecureRandom();
-    private static final int MAX_WORK_FEEDBACK_LENGTH = 1_600;
-    private static final int MAX_OUTCOME_FEEDBACK_LENGTH = 800;
 
     private static final Pattern LEARNING_SESSION_PATTERN =
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
@@ -151,7 +147,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. After each new learner message, establish exactly one fresh full SkillPilot context before learner-facing SkillPilot coaching. One successful get_skillpilot_context satisfies this requirement for the whole assistant turn, including every subsequent tool call; never call it again until a new learner message, except for the single explicit reload allowed after a state conflict. A successful state-changing tool result that contains its full successor context also satisfies the requirement for the rest of that assistant turn because SkillPilot has already revalidated the session and canonical state; use that successor directly. Without either successful full result, provide no subject-matter communication. Treat the newest full result's structuredContent as the sole authority for the communication locale, configured curriculum and course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with generic advice, an invented curriculum, or an invented learning path. A successful render_skillpilot_goal_visualization result is only a UI receipt and never replaces that full context.
 
-            On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. A successful mastery result is the one ordering exception: first give both learner-facing texts from completionHandoff as concrete feedback on the completed goal, and only then begin the already activated successor in the same response. Never omit, merge, postpone, or replace either feedback text with the successor introduction. Never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
+            On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. A successful mastery result is the one ordering exception: first give concrete learner-facing feedback on the completed goal using the conversation, and only then begin the already activated successor in the same response. Generate feedback entirely in the chat; never send learner answers, reasoning or feedback to SkillPilot. completionHandoff contains only confirmed completion facts and continuation instructions. Never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
 
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
@@ -165,13 +161,13 @@ public final class OpenAiDeV1McpContractAdapter {
 
             When interactionMode=orientation, do not conduct a subject-matter assessment. After the exact goal-title sentence, use orientationOutlook as the sole authoritative map of the material ahead: briefly present every supplied path, what the learner will actually learn along it, its representative later milestones, and where that knowledge is practically useful. Do not invent, add, merge, or substitute paths, applications, or follow-on topics. If orientationOutlook is absent, stay general about the active orientation goal and only offer to continue directly. Then ask a low-threshold question about which supplied path sparks curiosity or whether the learner wants to continue. A reply that merely names one path starts the motivational dialogue; it is not completion evidence and not a request to leave the active goal. Map a free-form interest to a path only when exactly one supplied path clearly matches it; otherwise ask which supplied path the learner means and never guess a pathId. Take up that exact path, connect two to four of its supplied milestones to its supplied practical contexts, and ask one active personal follow-up with no technically right or wrong answer. Do not test prior knowledge, terms, procedures, details, correctness, transfer, recall, or Feynman teach-back. Save orientation completion only after the learner meaningfully engages with that tailored follow-up or explicitly asks to continue directly; a content-free acknowledgement alone is not sufficient. When completing a selected path, pass its exact pathId unchanged as orientationPathId. SkillPilot activates the path's first reviewed entry only when it is currently available; otherwise completion still succeeds and the normal available foundations return without an active goal. Omit orientationPathId only when the learner explicitly chose to continue without selecting a path. A generic acknowledgement followed immediately by unrelated next-goal options is forbidden. Orientation is only a completion marker and never certifies subject mastery.
 
-            For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. On that call, workFeedback must assess the learner's visible reasoning or approach and outcomeFeedback must state the accepted result or conclusion; generic praise is insufficient. After success, present both returned texts before introducing the successor. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
+            For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. Send only structured completion facts. After confirmed success, give concrete feedback about the learner's reasoning and accepted result directly in the chat before introducing the successor; generic praise is insufficient. Learner work, reasoning and feedback never travel through tool arguments. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
             When the newest full result is get_skillpilot_context or a successful state-changing result containing its full successor context, that full context contains goalVisualization, and its nextAllowedTools permits render_skillpilot_goal_visualization, form a pair from that context's goalVisualization.goalId and the authorizing result's top-level stateVersion. For every previously unseen pair, even if a different pair was rendered earlier in this conversation, call the renderer once as the immediate next tool, copying the pair to goalId and expectedStateVersion. A repeated pair creates no automatic call. Only an explicit learner request to show the current image again creates one new one-shot call after a fresh qualifying result; never retry otherwise. A terminal Recall result with continuation.action=renderGoalVisualizationThenTeachActiveGoal is the sole cross-flow exception: use its continuation.toolCall as this one required render call and do not derive a second call from context. Do not insert get_skillpilot_context or another SkillPilot tool before the required renderer. The renderer result is only a UI receipt. Never claim display, invent image details, expose image URLs or metadata, or use the image as evidence.
 
             For a memory goal, keep normal flashcard learning and Verified Recall strictly separate. The published normal-practice option uses the exact action start_skillpilot_memory_practice. Treat the exact localized option label “Karteikarten lernen” or “Learn with flashcards”, and any unambiguous equivalent request, as confirmation of that option. When the newest full context permits start_skillpilot_memory_practice, call it exactly once as the immediate next action with the confirmed activeGoal.goalId and stateVersion, before any learner-facing response. Never infer that the component is unavailable and never replace this required call pre-emptively with a Cockpit link. Its dedicated component alone may reveal card fronts and backs and call review_skillpilot_memory_practice_card. Never call the review tool from ordinary coach dialogue, reproduce or answer the private card content in the transcript, infer a rating, or claim that the host displayed the component. The component may navigate locally through the supplied bounded card batch without any tool call or state change. It records exactly not_known or known for an explicitly rated card; that updates only the card's repetition schedule. After its loaded batch is exhausted, only the component may call start_skillpilot_memory_practice again with the newest stateVersion to load another private batch. Normal flashcard learning never certifies mastery, completes the active goal, or substitutes for Verified Recall. When no cards are due, say only that flashcard learning is complete for today and offer the separate strict learning-coach check if appropriate. Offer the supplied activeGoal.cockpitUrl verbatim as the fallback for flashcard learning only when the start tool actually returns an error, the newest context does not permit it, or the learner explicitly asks for the Cockpit. For the learner-visible German wording, say „Karteikarten lernen“ or „Karteikartenlernen“, never „SRS-Kartendrill“.
 
-            In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints, copying evaluationCapability unchanged and passing earnedPoints plus concrete workFeedback and outcomeFeedback. Present the returned feedback and score before introducing the successor.
+            In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints, copying evaluationCapability unchanged and passing earnedPoints. Keep learner submissions, grading reasoning and feedback exclusively in the chat. After confirmed success, give the feedback and confirmed score before introducing the successor.
 
             For Verified Recall, SkillPilot owns goal, batch count, card IDs, order, completeness, state transition, retry identity, and continuation. Start without technical selection, show every returned question in order, and wait for all answers. Load all expected answers once with batchCapability, compare by meaning, then submit exactly one ordered assessment per answer in one atomic call with gradingCapability; passed=true only when correct without help. Never invent counts, expose answers early, use per-card tools, grade from memory, or save manual mastery. Follow the confirmed continuation immediately. For renderGoalVisualizationThenTeachActiveGoal, call its toolCall once next after adding only the current learningSessionId, then teach in the same response; never reload or retry.
 
@@ -360,8 +356,6 @@ public final class OpenAiDeV1McpContractAdapter {
     public record CompletionHandoff(
             String completedGoalId,
             String completedGoalTitle,
-            String workFeedback,
-            String outcomeFeedback,
             Double earnedPoints,
             Double maxPoints,
             String successorGoalTitle,
@@ -411,7 +405,7 @@ public final class OpenAiDeV1McpContractAdapter {
             String gradingCapability) {
     }
 
-    public record RecallAssessment(boolean passed, String feedback) {
+    public record RecallAssessment(boolean passed) {
     }
 
     public record RecallToolCall(String name, Map<String, Object> arguments) {
@@ -625,12 +619,11 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         SET_MASTERY,
                         "Finalize evaluated learning goal",
-                        "Completes exactly the confirmed active atomic goal with the technical value 1.0. Every "
-                                + "call must carry two concrete learner-facing feedback texts about the work just "
-                                + "completed: workFeedback assesses the reasoning or approach, and outcomeFeedback "
-                                + "states the accepted result or conclusion. If either cannot be written from visible "
-                                + "evidence, do not call this tool. After success, first present both texts from "
-                                + "completionHandoff, then begin the exact successor from context.activeGoal in the "
+                        "Completes exactly the confirmed active atomic goal with the technical value 1.0. Send "
+                                + "only structured completion facts and concurrency data; learner work, assessment "
+                                + "reasoning and feedback stay in the conversation. After confirmed success, first "
+                                + "give concrete feedback about the completed goal using the conversation, then "
+                                + "begin the exact successor from context.activeGoal in the "
                                 + "same response; never load navigation or set that goal again. "
                                 + "For interactionMode=orientation, use orientationOutlook as the complete authoritative "
                                 + "learning map. A reply that merely names one supplied path starts the tailored "
@@ -657,21 +650,9 @@ public final class OpenAiDeV1McpContractAdapter {
                                 Map.of(
                                         "goalId", modelFacingOpaqueReferenceSchema(),
                                         ORIENTATION_PATH_ID, boundedNonEmptyStringSchema(320),
-                                        WORK_FEEDBACK, describedSchema(
-                                                stringSchema(),
-                                                "Concrete learner-facing feedback on the visible reasoning, approach, "
-                                                        + "or meaningful orientation contribution, written in the "
-                                                        + "authoritative communicationLocale. This exact text is returned "
-                                                        + "before any successor goal."),
-                                        OUTCOME_FEEDBACK, describedSchema(
-                                                stringSchema(),
-                                                "Clear learner-facing statement of the accepted result, conclusion, or "
-                                                        + "orientation completion, written in the authoritative "
-                                                        + "communicationLocale. This exact text is returned before any "
-                                                        + "successor goal."),
                                         EXAM_EVALUATION_CAPABILITY, modelFacingOpaqueReferenceSchema(),
                                         EXAM_EARNED_POINTS, numberSchema(0.0, Double.MAX_VALUE)),
-                                List.of("goalId", WORK_FEEDBACK, OUTCOME_FEEDBACK)),
+                                List.of("goalId")),
                         masterySchema(),
                         false,
                         true,
@@ -706,16 +687,15 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Save the complete recall assessment",
                         "Atomically saves one ordered assessment for every answer in the exact released batch. "
                                 + "Copy gradingCapability unchanged; do not pass card IDs, state versions, retry IDs, "
-                                + "counts or other technical workflow values. Execute the returned continuation "
+                                + "counts or other technical workflow values. Send only passed booleans; answers, "
+                                + "reasoning and feedback stay in the conversation. Execute the returned continuation "
                                 + "immediately and exactly.",
                         objectSchema(
                                 Map.of(
                                         RECALL_GRADING_CAPABILITY, modelFacingOpaqueReferenceSchema(),
                                         "assessments", boundedObjectArraySchema(
                                                 objectSchema(
-                                                        Map.of(
-                                                                "passed", booleanSchema(),
-                                                                "feedback", stringSchema()),
+                                                        Map.of("passed", booleanSchema()),
                                                         List.of("passed")),
                                                 1,
                                                 20)),
@@ -1089,6 +1069,7 @@ public final class OpenAiDeV1McpContractAdapter {
         ToolOperation operation) {
         try {
             String learningSessionId = requiredLearningSessionId(arguments);
+            requireStructuredAssessmentArguments(toolName, arguments);
             String skillpilotId =
                     identityResolver.resolveSkillpilotId(transportContext, learningSessionId);
             if (skillpilotId == null || skillpilotId.isBlank()) {
@@ -1711,24 +1692,31 @@ public final class OpenAiDeV1McpContractAdapter {
             if (!(entry instanceof Map<?, ?> map) || !(map.get("passed") instanceof Boolean passed)) {
                 throw new IllegalArgumentException("Each assessment requires passed=true or passed=false.");
             }
-            Object rawFeedback = map.get("feedback");
-            if (rawFeedback != null && !(rawFeedback instanceof String)) {
-                throw new IllegalArgumentException("assessment feedback must be a string.");
+            if (!map.keySet().equals(Set.of("passed"))) {
+                throw new IllegalArgumentException("Each assessment accepts only passed.");
             }
-            String feedback = rawFeedback == null ? null : ((String) rawFeedback).trim();
-            if (feedback != null && feedback.isEmpty()) {
-                feedback = null;
-            } else if (feedback != null && feedback.length() > MAX_OUTCOME_FEEDBACK_LENGTH) {
-                int end = MAX_OUTCOME_FEEDBACK_LENGTH;
-                if (Character.isHighSurrogate(feedback.charAt(end - 1))
-                        && Character.isLowSurrogate(feedback.charAt(end))) {
-                    end--;
-                }
-                feedback = feedback.substring(0, end);
-            }
-            assessments.add(new RecallAssessment(passed, feedback));
+            assessments.add(new RecallAssessment(passed));
         }
         return List.copyOf(assessments);
+    }
+
+    /** Reject chat-derived assessment text before identity resolution, replay hashing or core calls. */
+    private void requireStructuredAssessmentArguments(String toolName, Map<String, Object> arguments) {
+        Set<String> allowed;
+        if (SET_MASTERY.equals(toolName)) {
+            allowed = Set.of("goalId", ORIENTATION_PATH_ID, EXAM_EVALUATION_CAPABILITY,
+                    EXAM_EARNED_POINTS, LEARNING_SESSION_ID, EXPECTED_STATE_VERSION, CLIENT_REQUEST_ID);
+        } else if (RECORD_RECALL_RESULTS.equals(toolName)) {
+            allowed = Set.of(RECALL_GRADING_CAPABILITY, "assessments", LEARNING_SESSION_ID);
+        } else {
+            return;
+        }
+        if (!allowed.containsAll(arguments.keySet())) {
+            throw new IllegalArgumentException("Unsupported assessment argument.");
+        }
+        if (RECORD_RECALL_RESULTS.equals(toolName)) {
+            requiredRecallAssessments(arguments);
+        }
     }
 
     private RecallContinuation recallContinuation(
@@ -2067,14 +2055,6 @@ public final class OpenAiDeV1McpContractAdapter {
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
         String goalId = requiredString(arguments, "goalId");
-        String workFeedback = requiredBoundedString(
-                arguments,
-                WORK_FEEDBACK,
-                MAX_WORK_FEEDBACK_LENGTH);
-        String outcomeFeedback = requiredBoundedString(
-                arguments,
-                OUTCOME_FEEDBACK,
-                MAX_OUTCOME_FEEDBACK_LENGTH);
         String orientationPathId = optionalString(arguments, ORIENTATION_PATH_ID);
         String evaluationCapability = optionalString(arguments, EXAM_EVALUATION_CAPABILITY);
         Double earnedPoints = optionalFiniteDouble(arguments, EXAM_EARNED_POINTS);
@@ -2216,16 +2196,16 @@ public final class OpenAiDeV1McpContractAdapter {
                 new CompletionHandoff(
                         result.update() == null ? goalId : result.update().savedGoalId(),
                         active.title(),
-                        workFeedback,
-                        outcomeFeedback,
                         earnedPoints,
                         examMaxPoints,
                         successorTitle,
                         localized(metadata,
-                                "Gib zuerst workFeedback und danach outcomeFeedback vollständig sichtbar aus. "
+                                "Gib zuerst im Chat konkrete Rückmeldung zu Lösungsweg und Ergebnis des "
+                                        + "abgeschlossenen Ziels; die Gesprächsinhalte bleiben ausschließlich im Chat. "
                                         + "Beginne erst anschließend den Nachfolgerabschnitt. Keine Antwort aus der "
                                         + "Zeit vor seiner Aktivierung zählt als Evidenz für das neue Lernziel.",
-                                "Present workFeedback first and outcomeFeedback second in full. Only then begin "
+                                "First give concrete feedback in the chat about the completed goal's reasoning "
+                                        + "and outcome; conversation content stays exclusively in the chat. Only then begin "
                                         + "the successor section. No answer from before its activation counts as "
                                         + "evidence for the new learning goal."),
                         true),
@@ -2267,10 +2247,8 @@ public final class OpenAiDeV1McpContractAdapter {
                     "Mastery nicht gespeichert; aktuellen Folgezustand beachten.",
                     "Mastery was not saved; use the current successor state.");
         }
-        String successSummary = completionFeedbackSummary(
+        String successSummary = completionSummary(
                 active.title(),
-                workFeedback,
-                outcomeFeedback,
                 earnedPoints,
                 examMaxPoints,
                 transitionSummary,
@@ -2280,10 +2258,8 @@ public final class OpenAiDeV1McpContractAdapter {
                 response);
     }
 
-    private String completionFeedbackSummary(
+    private String completionSummary(
             String completedGoalTitle,
-            String workFeedback,
-            String outcomeFeedback,
             Double earnedPoints,
             Double maxPoints,
             String transitionSummary,
@@ -2292,12 +2268,10 @@ public final class OpenAiDeV1McpContractAdapter {
                 ? localized(metadata, "Abgeschlossenes Lernziel", "Completed learning goal")
                 : completedGoalTitle;
         StringBuilder summary = new StringBuilder(localized(metadata,
-                "Verpflichtende Abschlussrückmeldung zu „" + title + "“ — gib diesen Block zuerst vollständig sichtbar aus:\n"
-                        + "Inhaltliche Rückmeldung: " + workFeedback + "\n"
-                        + "Ergebnis: " + outcomeFeedback,
-                "Mandatory completion feedback for “" + title + "” — present this full block visibly first:\n"
-                        + "Feedback on the work: " + workFeedback + "\n"
-                        + "Outcome: " + outcomeFeedback));
+                "Abschluss bestätigt für „" + title + "“. Gib zuerst im Chat konkrete Rückmeldung "
+                        + "zu Lösungsweg und Ergebnis; sende diese Gesprächsinhalte nicht an SkillPilot.",
+                "Completion confirmed for “" + title + "”. First give concrete feedback in the chat "
+                        + "about the reasoning and outcome; do not send this conversation content to SkillPilot."));
         if (earnedPoints != null && maxPoints != null) {
             summary.append(localized(metadata,
                     "\nBestätigte Punktzahl: " + formatScore(earnedPoints) + " von " + formatScore(maxPoints) + ".",
@@ -2460,8 +2434,7 @@ public final class OpenAiDeV1McpContractAdapter {
             RecallAssessment assessment = assessments.get(index);
             domainResults.add(new VerifiedRecallBatchCardResult(
                     payload.cardIds().get(index),
-                    assessment.passed(),
-                    assessment.feedback()));
+                    assessment.passed()));
         }
         VerifiedRecallBatchResultResponse response = coachTools.recordVerifiedRecallResultsBatch(
                 skillpilotId,
@@ -2583,8 +2556,8 @@ public final class OpenAiDeV1McpContractAdapter {
                                 + "begründe jeden Abzug konkret. Bewerte abschließend ohne Nachfrage. Benenne Unleserliches als "
                                 + "solches und erfinde daraus keinen konkreten fachlichen Fehler. Speichere Mastery erst nach "
                                 + "einem finalen Ergebnis mit mindestens passingPoints. Übergib dabei diese "
-                                + "evaluationCapability unverändert, earnedPoints sowie konkrete workFeedback- und "
-                                + "outcomeFeedback-Texte.",
+                                + "evaluationCapability unverändert sowie earnedPoints. Formuliere die fachliche "
+                                + "Rückmeldung ausschließlich im Chat; sende keine Gesprächsinhalte an SkillPilot.",
                         "Assess the complete visible submission step by step against every rubric criterion and only "
                                 + "from visible work. The sample solution is a reference, not a wording requirement. Give "
                                 + "full credit for technically equivalent results, representations, rounding, reasoning, and "
@@ -2593,8 +2566,9 @@ public final class OpenAiDeV1McpContractAdapter {
                                 + "withhold only those points, separate partial credit cleanly, and justify every deduction. "
                                 + "Complete the assessment without another question. Identify unreadable content as unreadable "
                                 + "and do not invent a specific subject error. Save mastery only after a final result with at "
-                                + "least passingPoints. Copy this evaluationCapability unchanged and pass earnedPoints "
-                                + "together with concrete workFeedback and outcomeFeedback texts."));
+                                + "least passingPoints. Copy this evaluationCapability unchanged and pass earnedPoints. "
+                                + "Keep assessment feedback exclusively in the chat; send no "
+                                + "conversation content to SkillPilot."));
         return successResult(
                 localized(metadata,
                         "Freigegebene Bewertungsgrundlage geladen; jetzt abschließend bewerten.",
@@ -3205,17 +3179,6 @@ public final class OpenAiDeV1McpContractAdapter {
         return value;
     }
 
-    private String requiredBoundedString(
-            Map<String, Object> arguments,
-            String name,
-            int maxLength) {
-        String value = requiredString(arguments, name);
-        if (value.length() > maxLength) {
-            throw new IllegalArgumentException(name + " darf höchstens " + maxLength + " Zeichen enthalten.");
-        }
-        return value;
-    }
-
     private String requiredLearningSessionId(Map<String, Object> arguments) {
         Object value = arguments.get(LEARNING_SESSION_ID);
         if (!(value instanceof String text)) {
@@ -3620,8 +3583,9 @@ public final class OpenAiDeV1McpContractAdapter {
                         "savedMastery", numberSchema(0.0, 1.0),
                         "completionHandoff", describedSchema(
                                 completionHandoffSchema(),
-                                "Mandatory learner-facing handoff for the completed goal. Present workFeedback "
-                                        + "and outcomeFeedback in that order before naming or teaching the successor."),
+                                "Server-owned completion facts. Generate learner-facing feedback from the "
+                                        + "conversation in chat before naming or teaching the successor; no chat "
+                                        + "content is transmitted or echoed through this handoff."),
                         "context", describedSchema(
                                 contextSchema(),
                                 "Fresh authoritative successor state. It invalidates every goal option from "
@@ -3637,8 +3601,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 Map.of(
                         "completedGoalId", stringSchema(),
                         "completedGoalTitle", stringSchema(),
-                        "workFeedback", stringSchema(),
-                        "outcomeFeedback", stringSchema(),
                         "earnedPoints", numberSchema(0.0, Double.MAX_VALUE),
                         "maxPoints", numberSchema(0.0, Double.MAX_VALUE),
                         "successorGoalTitle", stringSchema(),
@@ -3647,8 +3609,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 List.of(
                         "completedGoalId",
                         "completedGoalTitle",
-                        "workFeedback",
-                        "outcomeFeedback",
                         "instruction",
                         "successorEvidenceReset"));
     }

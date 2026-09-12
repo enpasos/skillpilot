@@ -415,6 +415,26 @@ class OpenAiDeCoachContextProjectorTest {
     }
 
     @Test
+    void teachingAndExamPoliciesKeepAssessmentFeedbackInTheConversationInBothLocales() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"), "https://skillpilot.test");
+        for (String locale : List.of("de", "en")) {
+            for (UnifiedLearnerStateResponse state : List.of(
+                    motivationState("curricularAtomic", List.of(), "teachActiveGoal"), imageExamState())) {
+                OpenAiDeCoachContext context = projector.project(
+                        state, PersonalizationPlan.complete(List.of()), true, locale);
+                String policies = String.join("\n", context.policies());
+                assertThat(policies).contains(locale.equals("de")
+                        ? "Antworten, Bewertungsbegründungen und Rückmeldungen bleiben"
+                        : "assessment reasoning and feedback stay");
+                assertThat(context.instruction() + policies)
+                        .doesNotContain("workFeedback", "outcomeFeedback", "always pass concrete feedback",
+                                "Übergib beim Abschluss immer", "earnedPoints plus complete work");
+            }
+        }
+    }
+
+    @Test
     void imageExamRemovesPrivatePathAndRequiresExactCockpitLinkBeforeTask() throws Exception {
         OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
                 new CoachStateProjection("https://skillpilot.test"),

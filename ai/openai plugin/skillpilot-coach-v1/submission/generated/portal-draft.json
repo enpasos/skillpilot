@@ -1038,7 +1038,7 @@
       {
         "name": "record_skillpilot_verified_recall_results",
         "title": "Save the complete recall assessment",
-        "description": "Atomically saves one ordered assessment for every answer in the exact released batch. Copy gradingCapability unchanged; do not pass card IDs, state versions, retry IDs, counts or other technical workflow values. Execute the returned continuation immediately and exactly.",
+        "description": "Atomically saves one ordered assessment for every answer in the exact released batch. Copy gradingCapability unchanged; do not pass card IDs, state versions, retry IDs, counts or other technical workflow values. Send only passed booleans; answers, reasoning and feedback stay in the conversation. Execute the returned continuation immediately and exactly.",
         "input_json_schema": {
           "additionalProperties": false,
           "properties": {
@@ -1046,9 +1046,6 @@
               "items": {
                 "additionalProperties": false,
                 "properties": {
-                  "feedback": {
-                    "type": "string"
-                  },
                   "passed": {
                     "type": "boolean"
                   }
@@ -3407,7 +3404,7 @@
       {
         "name": "set_skillpilot_mastery",
         "title": "Finalize evaluated learning goal",
-        "description": "Completes exactly the confirmed active atomic goal with the technical value 1.0. Every call must carry two concrete learner-facing feedback texts about the work just completed: workFeedback assesses the reasoning or approach, and outcomeFeedback states the accepted result or conclusion. If either cannot be written from visible evidence, do not call this tool. After success, first present both texts from completionHandoff, then begin the exact successor from context.activeGoal in the same response; never load navigation or set that goal again. For interactionMode=orientation, use orientationOutlook as the complete authoritative learning map. A reply that merely names one supplied path starts the tailored motivational follow-up and must not call this tool. Resolve a free-form interest to a path only when the match is unique; otherwise ask which path was meant. First connect two to four supplied milestones from that path to its supplied practical contexts, ask one active non-assessing follow-up, and wait for meaningful engagement. Call only after that engagement or an explicit request to continue directly; a content-free acknowledgement alone is insufficient. When a path was selected, pass its exact pathId unchanged as orientationPathId. SkillPilot activates its first reviewed entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for an explicit direct continuation. Do not invent content, test details, jump straight to unrelated frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case. For exam goals, first call get_skillpilot_exam_evaluation. Copy its evaluationCapability unchanged, pass earnedPoints from the completed rubric, and call only when earnedPoints reaches passingPoints.",
+        "description": "Completes exactly the confirmed active atomic goal with the technical value 1.0. Send only structured completion facts and concurrency data; learner work, assessment reasoning and feedback stay in the conversation. After confirmed success, first give concrete feedback about the completed goal using the conversation, then begin the exact successor from context.activeGoal in the same response; never load navigation or set that goal again. For interactionMode=orientation, use orientationOutlook as the complete authoritative learning map. A reply that merely names one supplied path starts the tailored motivational follow-up and must not call this tool. Resolve a free-form interest to a path only when the match is unique; otherwise ask which path was meant. First connect two to four supplied milestones from that path to its supplied practical contexts, ask one active non-assessing follow-up, and wait for meaningful engagement. Call only after that engagement or an explicit request to continue directly; a content-free acknowledgement alone is insufficient. When a path was selected, pass its exact pathId unchanged as orientationPathId. SkillPilot activates its first reviewed entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for an explicit direct continuation. Do not invent content, test details, jump straight to unrelated frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case. For exam goals, first call get_skillpilot_exam_evaluation. Copy its evaluationCapability unchanged, pass earnedPoints from the completed rubric, and call only when earnedPoints reaches passingPoints.",
         "input_json_schema": {
           "additionalProperties": false,
           "properties": {
@@ -3441,20 +3438,10 @@
               "maxLength": 320,
               "minLength": 1,
               "type": "string"
-            },
-            "outcomeFeedback": {
-              "description": "Clear learner-facing statement of the accepted result, conclusion, or orientation completion, written in the authoritative communicationLocale. This exact text is returned before any successor goal.",
-              "type": "string"
-            },
-            "workFeedback": {
-              "description": "Concrete learner-facing feedback on the visible reasoning, approach, or meaningful orientation contribution, written in the authoritative communicationLocale. This exact text is returned before any successor goal.",
-              "type": "string"
             }
           },
           "required": [
             "goalId",
-            "workFeedback",
-            "outcomeFeedback",
             "learningSessionId",
             "expectedStateVersion",
             "clientRequestId"
@@ -3470,7 +3457,7 @@
             },
             "completionHandoff": {
               "additionalProperties": false,
-              "description": "Mandatory learner-facing handoff for the completed goal. Present workFeedback and outcomeFeedback in that order before naming or teaching the successor.",
+              "description": "Server-owned completion facts. Generate learner-facing feedback from the conversation in chat before naming or teaching the successor; no chat content is transmitted or echoed through this handoff.",
               "properties": {
                 "completedGoalId": {
                   "type": "string"
@@ -3491,24 +3478,16 @@
                   "minimum": 0,
                   "type": "number"
                 },
-                "outcomeFeedback": {
-                  "type": "string"
-                },
                 "successorEvidenceReset": {
                   "type": "boolean"
                 },
                 "successorGoalTitle": {
-                  "type": "string"
-                },
-                "workFeedback": {
                   "type": "string"
                 }
               },
               "required": [
                 "completedGoalId",
                 "completedGoalTitle",
-                "workFeedback",
-                "outcomeFeedback",
                 "instruction",
                 "successorEvidenceReset"
               ],
@@ -6715,7 +6694,7 @@
     {
       "name": "record_skillpilot_verified_recall_results",
       "title": "Save the complete recall assessment",
-      "description": "Atomically saves one ordered assessment for every answer in the exact released batch. Copy gradingCapability unchanged; do not pass card IDs, state versions, retry IDs, counts or other technical workflow values. Execute the returned continuation immediately and exactly.",
+      "description": "Atomically saves one ordered assessment for every answer in the exact released batch. Copy gradingCapability unchanged; do not pass card IDs, state versions, retry IDs, counts or other technical workflow values. Send only passed booleans; answers, reasoning and feedback stay in the conversation. Execute the returned continuation immediately and exactly.",
       "input_json_schema": {
         "additionalProperties": false,
         "properties": {
@@ -6723,9 +6702,6 @@
             "items": {
               "additionalProperties": false,
               "properties": {
-                "feedback": {
-                  "type": "string"
-                },
                 "passed": {
                   "type": "boolean"
                 }
@@ -9084,7 +9060,7 @@
     {
       "name": "set_skillpilot_mastery",
       "title": "Finalize evaluated learning goal",
-      "description": "Completes exactly the confirmed active atomic goal with the technical value 1.0. Every call must carry two concrete learner-facing feedback texts about the work just completed: workFeedback assesses the reasoning or approach, and outcomeFeedback states the accepted result or conclusion. If either cannot be written from visible evidence, do not call this tool. After success, first present both texts from completionHandoff, then begin the exact successor from context.activeGoal in the same response; never load navigation or set that goal again. For interactionMode=orientation, use orientationOutlook as the complete authoritative learning map. A reply that merely names one supplied path starts the tailored motivational follow-up and must not call this tool. Resolve a free-form interest to a path only when the match is unique; otherwise ask which path was meant. First connect two to four supplied milestones from that path to its supplied practical contexts, ask one active non-assessing follow-up, and wait for meaningful engagement. Call only after that engagement or an explicit request to continue directly; a content-free acknowledgement alone is insufficient. When a path was selected, pass its exact pathId unchanged as orientationPathId. SkillPilot activates its first reviewed entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for an explicit direct continuation. Do not invent content, test details, jump straight to unrelated frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case. For exam goals, first call get_skillpilot_exam_evaluation. Copy its evaluationCapability unchanged, pass earnedPoints from the completed rubric, and call only when earnedPoints reaches passingPoints.",
+      "description": "Completes exactly the confirmed active atomic goal with the technical value 1.0. Send only structured completion facts and concurrency data; learner work, assessment reasoning and feedback stay in the conversation. After confirmed success, first give concrete feedback about the completed goal using the conversation, then begin the exact successor from context.activeGoal in the same response; never load navigation or set that goal again. For interactionMode=orientation, use orientationOutlook as the complete authoritative learning map. A reply that merely names one supplied path starts the tailored motivational follow-up and must not call this tool. Resolve a free-form interest to a path only when the match is unique; otherwise ask which path was meant. First connect two to four supplied milestones from that path to its supplied practical contexts, ask one active non-assessing follow-up, and wait for meaningful engagement. Call only after that engagement or an explicit request to continue directly; a content-free acknowledgement alone is insufficient. When a path was selected, pass its exact pathId unchanged as orientationPathId. SkillPilot activates its first reviewed entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for an explicit direct continuation. Do not invent content, test details, jump straight to unrelated frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case. For exam goals, first call get_skillpilot_exam_evaluation. Copy its evaluationCapability unchanged, pass earnedPoints from the completed rubric, and call only when earnedPoints reaches passingPoints.",
       "input_json_schema": {
         "additionalProperties": false,
         "properties": {
@@ -9118,20 +9094,10 @@
             "maxLength": 320,
             "minLength": 1,
             "type": "string"
-          },
-          "outcomeFeedback": {
-            "description": "Clear learner-facing statement of the accepted result, conclusion, or orientation completion, written in the authoritative communicationLocale. This exact text is returned before any successor goal.",
-            "type": "string"
-          },
-          "workFeedback": {
-            "description": "Concrete learner-facing feedback on the visible reasoning, approach, or meaningful orientation contribution, written in the authoritative communicationLocale. This exact text is returned before any successor goal.",
-            "type": "string"
           }
         },
         "required": [
           "goalId",
-          "workFeedback",
-          "outcomeFeedback",
           "learningSessionId",
           "expectedStateVersion",
           "clientRequestId"
@@ -9147,7 +9113,7 @@
           },
           "completionHandoff": {
             "additionalProperties": false,
-            "description": "Mandatory learner-facing handoff for the completed goal. Present workFeedback and outcomeFeedback in that order before naming or teaching the successor.",
+            "description": "Server-owned completion facts. Generate learner-facing feedback from the conversation in chat before naming or teaching the successor; no chat content is transmitted or echoed through this handoff.",
             "properties": {
               "completedGoalId": {
                 "type": "string"
@@ -9168,24 +9134,16 @@
                 "minimum": 0,
                 "type": "number"
               },
-              "outcomeFeedback": {
-                "type": "string"
-              },
               "successorEvidenceReset": {
                 "type": "boolean"
               },
               "successorGoalTitle": {
-                "type": "string"
-              },
-              "workFeedback": {
                 "type": "string"
               }
             },
             "required": [
               "completedGoalId",
               "completedGoalTitle",
-              "workFeedback",
-              "outcomeFeedback",
               "instruction",
               "successorEvidenceReset"
             ],

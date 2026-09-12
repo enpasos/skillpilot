@@ -470,8 +470,7 @@ public class VisibleSessionService {
                 new VerifiedRecallResultRequest(
                         active.id(),
                         request.cardId(),
-                        request.passed(),
-                        request.feedback()));
+                        request.passed()));
         VisibleVerifiedRecallState next = visibleRecallState(response.next());
         UnifiedLearnerStateResponse refreshed = currentState(chatSessionToken);
         FrontierGoal refreshedActiveGoal = activeGoal(refreshed);

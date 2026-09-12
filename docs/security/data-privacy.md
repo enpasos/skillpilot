@@ -32,6 +32,18 @@ content**.
   receive every explicit API or MCP tool request sent to it, including the
   arguments needed to read or change learning state.
 
+**Architectural invariant for coach tools:** learner answers, explanations,
+chat summaries and coach-authored feedback must stay in the provider chat.
+Neither `workFeedback`, `outcomeFeedback`, Recall `feedback`/`lastFeedback`, nor
+renamed equivalents belong in accepted coach inputs, persisted learning state,
+replay responses or diagnostics. The coach makes the pedagogical assessment and
+composes its own success message; SkillPilot accepts only the authorized
+structured decision and returns confirmed state. See the
+[provider-neutral coach boundary](../concept/runtime-workflows/provider-neutral-coach-boundary.md).
+The [12 September 2026 cleanup record](coach-feedback-cleanup-2026-09-12.md)
+distinguishes the completed production data purge from the still-required
+coordinated rollout of the corrected backend and provider packages.
+
 Two ChatGPT integration paths coexist during rollback support:
 
 1. **Visible Session:** retained Custom-GPT rollback contract only. It is not the

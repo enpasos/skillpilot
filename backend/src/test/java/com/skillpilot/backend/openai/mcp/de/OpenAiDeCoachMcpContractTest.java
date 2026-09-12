@@ -99,10 +99,6 @@ class OpenAiDeCoachMcpContractTest {
     private static final String CHALLENGE = "Bearer resource_metadata=\"https://skillpilot.test/meta\"";
     private static final String INSUFFICIENT_SCOPE_CHALLENGE =
             "Bearer resource_metadata=\"https://skillpilot.test/meta\", error=\"insufficient_scope\"";
-    private static final String TEST_WORK_FEEDBACK =
-            "Dein sichtbarer Lösungsweg ist fachlich schlüssig und vollständig begründet.";
-    private static final String TEST_OUTCOME_FEEDBACK =
-            "Das Ergebnis ist vollständig richtig.";
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     private CoachToolFacade coachTools;
@@ -324,8 +320,6 @@ class OpenAiDeCoachMcpContractTest {
                         .containsOnlyKeys(
                                 "goalId",
                                 OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID,
-                                OpenAiDeV1McpContractAdapter.WORK_FEEDBACK,
-                                OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK,
                                 OpenAiDeV1McpContractAdapter.EXAM_EVALUATION_CAPABILITY,
                                 OpenAiDeV1McpContractAdapter.EXAM_EARNED_POINTS,
                                 OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
@@ -344,8 +338,6 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(masteryInputSchema.at("/required"))
                 .containsExactly(
                         objectMapper.valueToTree("goalId"),
-                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.WORK_FEEDBACK),
-                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK),
                         objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID),
                         objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION),
                         objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID));
@@ -680,6 +672,60 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void everyToolInputStringHasAnExplicitStructuredPurpose() {
+        OpenAiDeV1McpContractAdapter completeCatalog = new OpenAiDeV1McpContractAdapter(
+                coachTools, new CoachStateProjection("https://skillpilot.test"), identityResolver,
+                null, sessionCoordinator, "https://skillpilot.test", SERVER_BUILD,
+                "skillpilot-input-schema-test-secret", true);
+        Map<String, Set<String>> toolStrings = Map.ofEntries(
+                Map.entry(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Set.of()),
+                Map.entry(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION, Set.of("goalId")),
+                Map.entry(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE, Set.of("goalId")),
+                Map.entry(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
+                        Set.of("goalId", "cardId", "rating", "reviewCapability", "clientRequestId")),
+                Map.entry(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, Set.of("target")),
+                Map.entry(OpenAiDeV1McpContractAdapter.SET_SCOPE, Set.of("goalIds[]", "clientRequestId")),
+                Map.entry(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL, Set.of("goalId", "clientRequestId")),
+                Map.entry(OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                        Set.of("goalId", "orientationPathId", "evaluationCapability", "clientRequestId")),
+                Map.entry(OpenAiDeV1McpContractAdapter.START_RECALL, Set.of()),
+                Map.entry(OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS, Set.of("batchCapability")),
+                Map.entry(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, Set.of("gradingCapability")),
+                Map.entry(OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION, Set.of("goalId")),
+                Map.entry(OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN, Set.of("clientRequestId")),
+                Map.entry(OpenAiDeV1McpContractAdapter.SWITCH_LEARNING_PLAN_SUBJECT,
+                        Set.of("subject", "clientRequestId")));
+        assertThat(completeCatalog.toolSpecifications().stream().map(item -> item.tool().name()))
+                .containsExactlyInAnyOrderElementsOf(toolStrings.keySet());
+        for (var specification : completeCatalog.toolSpecifications()) {
+            Set<String> expected = new java.util.LinkedHashSet<>(toolStrings.get(specification.tool().name()));
+            expected.add("learningSessionId");
+            Set<String> actual = new java.util.LinkedHashSet<>();
+            collectInputStringPaths(objectMapper.valueToTree(specification.tool().inputSchema()), "", actual);
+            assertThat(actual).as("%s must not introduce chat-derived free-text inputs", specification.tool().name())
+                    .isEqualTo(expected);
+        }
+    }
+
+    private void collectInputStringPaths(JsonNode schema, String path, Set<String> paths) {
+        assertThat(schema.isObject()).as("%s must declare a constrained schema", path).isTrue();
+        String type = schema.path("type").asText();
+        assertThat(type).as("%s must declare one reviewed input type", path)
+                .isIn("object", "array", "string", "number", "integer", "boolean");
+        if ("string".equals(type)) paths.add(path);
+        if ("object".equals(type)) {
+            assertThat(schema.path("additionalProperties")).as("%s must remain closed", path)
+                    .isEqualTo(objectMapper.valueToTree(false));
+            schema.path("properties").fields().forEachRemaining(field -> collectInputStringPaths(
+                    field.getValue(), path.isEmpty() ? field.getKey() : path + "." + field.getKey(), paths));
+        }
+        if ("array".equals(type)) collectInputStringPaths(schema.path("items"), path + "[]", paths);
+        for (String alternatives : List.of("anyOf", "oneOf", "allOf")) {
+            schema.path(alternatives).forEach(branch -> collectInputStringPaths(branch, path, paths));
+        }
+    }
+
+    @Test
     void modelFacingInputSchemasOmitTechnicalStringValidationDetails() throws Exception {
         for (McpStatelessServerFeatures.SyncToolSpecification specification : contract.toolSpecifications()) {
             JsonNode inputSchema = objectMapper.valueToTree(specification.tool().inputSchema());
@@ -689,12 +735,6 @@ class OpenAiDeCoachMcpContractTest {
                 // are part of the V1 contract. All remaining model-facing strings stay
                 // free of technical validators.
                 properties.remove(OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID);
-            }
-            if (OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS.equals(specification.tool().name())
-                    && inputSchema.at("/properties/assessments/items/properties") instanceof ObjectNode properties) {
-                // Recall feedback is learner-facing assessment content. Its explicit
-                // 1..800 bound is part of the public contract, not a technical token format.
-                properties.remove("feedback");
             }
             String inputSchemaJson = objectMapper.writeValueAsString(inputSchema);
 
@@ -1135,7 +1175,9 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("use its continuation.toolCall as this one required render call")
                 .contains("do not derive a second call from context")
                 .contains("A successful mastery result is the one ordering exception")
-                .contains("first give both learner-facing texts from completionHandoff")
+                .contains("first give concrete learner-facing feedback on the completed goal using the conversation")
+                .contains("Generate feedback entirely in the chat")
+                .contains("completionHandoff contains only confirmed completion facts")
                 .contains("only then begin the already activated successor")
                 .contains("Never call get_skillpilot_navigation or set_skillpilot_active_goal")
                 .contains("invented learning path")
@@ -1288,7 +1330,8 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("jeden Abzug konkret")
                 .contains("ohne Nachfrage")
                 .contains("erfinde daraus keinen konkreten fachlichen Fehler")
-                .contains("evaluationCapability", "earnedPoints", "workFeedback", "outcomeFeedback");
+                .contains("evaluationCapability", "earnedPoints")
+                .doesNotContain("workFeedback", "outcomeFeedback");
         verify(identityResolver, never()).requireWriteAccess(any());
     }
 
@@ -1372,8 +1415,8 @@ class OpenAiDeCoachMcpContractTest {
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.SET_MASTERY, passingScore);
         assertThat(payload.completionHandoff().earnedPoints()).isEqualTo(5.0);
         assertThat(payload.completionHandoff().maxPoints()).isEqualTo(10.0);
-        assertThat(payload.completionHandoff().workFeedback()).isEqualTo(TEST_WORK_FEEDBACK);
-        assertThat(payload.completionHandoff().outcomeFeedback()).isEqualTo(TEST_OUTCOME_FEEDBACK);
+        assertThat(objectMapper.valueToTree(payload.completionHandoff()).has("workFeedback")).isFalse();
+        assertThat(objectMapper.valueToTree(payload.completionHandoff()).has("outcomeFeedback")).isFalse();
         assertThat(payload.completionHandoff().successorGoalTitle()).isEqualTo(successor.title());
         assertThat(passingScore.content().toString())
                 .contains("Bestätigte Punktzahl: 5 von 10", successor.title());
@@ -1410,44 +1453,25 @@ class OpenAiDeCoachMcpContractTest {
                 structured(result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.SET_MASTERY, result);
         assertThat(payload.status()).isEqualTo("updated");
-        assertThat(payload.completionHandoff().workFeedback()).isEqualTo(TEST_WORK_FEEDBACK);
-        assertThat(payload.completionHandoff().outcomeFeedback()).isEqualTo(TEST_OUTCOME_FEEDBACK);
+        assertThat(objectMapper.valueToTree(payload.completionHandoff()).has("workFeedback")).isFalse();
+        assertThat(objectMapper.valueToTree(payload.completionHandoff()).has("outcomeFeedback")).isFalse();
         assertThat(payload.context().activeGoal().goalId()).isEqualTo("goal-public-id");
         assertThat(objectMapper.writeValueAsString(payload)).doesNotContain(LEARNER_ID, CONNECTION_SECRET);
         verify(identityResolver).requireWriteAccess(McpTransportContext.EMPTY);
     }
 
     @Test
-    void masteryRequiresConcreteBoundedFeedbackBeforeMutation() {
-        McpSchema.CallToolResult missingFeedback = call(
-                OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of("goalId", "goal-public-id"));
-        McpSchema.CallToolResult blankFeedback = call(
-                OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of(
-                        "goalId", "goal-public-id",
-                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, "   ",
-                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, TEST_OUTCOME_FEEDBACK));
-        McpSchema.CallToolResult oversizedWorkFeedback = call(
-                OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of(
-                        "goalId", "goal-public-id",
-                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, "x".repeat(1_601),
-                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, TEST_OUTCOME_FEEDBACK));
-        McpSchema.CallToolResult oversizedOutcomeFeedback = call(
-                OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of(
-                        "goalId", "goal-public-id",
-                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, TEST_WORK_FEEDBACK,
-                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, "x".repeat(801)));
-
-        assertThat(List.of(
-                        missingFeedback,
-                        blankFeedback,
-                        oversizedWorkFeedback,
-                        oversizedOutcomeFeedback))
-                .allSatisfy(result -> assertThat(result.isError()).isTrue());
+    void masteryRejectsChatDerivedFeedbackBeforeMutationOrReplay() {
+        String chatContent = "PRIVATE_CHAT_ASSESSMENT_SENTINEL";
+        for (String field : List.of("workFeedback", "outcomeFeedback", "feedback", "learnerAnswer")) {
+            McpSchema.CallToolResult rejected = call(
+                    OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                    Map.of("goalId", "goal-public-id", field, chatContent));
+            assertThat(rejected.isError()).as(field).isTrue();
+            assertThat(rejected.content().toString()).doesNotContain(chatContent);
+        }
         verify(coachTools, never()).setMastery(any(), any());
+        verify(sessionCoordinator, never()).write(any(), any(), anyLong(), any(), any(), any());
     }
 
     @Test
@@ -1522,11 +1546,11 @@ class OpenAiDeCoachMcpContractTest {
                         "only after presenting completionHandoff");
         assertThat(payload.completionHandoff().completedGoalId()).isEqualTo(completed.id());
         assertThat(payload.completionHandoff().completedGoalTitle()).isEqualTo(completed.title());
-        assertThat(payload.completionHandoff().workFeedback()).isEqualTo(TEST_WORK_FEEDBACK);
-        assertThat(payload.completionHandoff().outcomeFeedback()).isEqualTo(TEST_OUTCOME_FEEDBACK);
+        assertThat(objectMapper.valueToTree(payload.completionHandoff()).has("workFeedback")).isFalse();
+        assertThat(objectMapper.valueToTree(payload.completionHandoff()).has("outcomeFeedback")).isFalse();
         assertThat(payload.completionHandoff().successorGoalTitle()).isEqualTo(successor.title());
         assertThat(payload.completionHandoff().instruction())
-                .contains("zuerst workFeedback", "danach outcomeFeedback", "Beginne erst anschließend");
+                .contains("im Chat konkrete Rückmeldung", "ausschließlich im Chat", "Beginne erst anschließend");
         assertThat(payload.completionHandoff().successorEvidenceReset()).isTrue();
         assertThat(payload.completionHandoff().earnedPoints()).isNull();
         assertThat(payload.completionHandoff().maxPoints()).isNull();
@@ -1550,14 +1574,12 @@ class OpenAiDeCoachMcpContractTest {
                         "keine weitere Bestätigung");
         String completionSummary = ((McpSchema.TextContent) result.content().getFirst()).text();
         assertThat(completionSummary)
-                .contains(TEST_WORK_FEEDBACK, TEST_OUTCOME_FEEDBACK)
+                .contains("Abschluss bestätigt", "Rückmeldung", "nicht an SkillPilot")
                 .contains(successor.title(), "bereits aktiviert", "keine Lernzielauswahl")
                 .doesNotContain(unrelated.title());
-        int workFeedbackIndex = completionSummary.indexOf(TEST_WORK_FEEDBACK);
-        int outcomeFeedbackIndex = completionSummary.indexOf(TEST_OUTCOME_FEEDBACK);
+        int feedbackInstructionIndex = completionSummary.indexOf("Rückmeldung");
         int successorIndex = completionSummary.indexOf(successor.title());
-        assertThat(outcomeFeedbackIndex).isGreaterThan(workFeedbackIndex);
-        assertThat(successorIndex).isGreaterThan(outcomeFeedbackIndex);
+        assertThat(successorIndex).isGreaterThan(feedbackInstructionIndex);
         McpSchema.CallToolResult accidentalNavigation = call(
                 OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                 Map.of("target", "goal"));
@@ -2294,8 +2316,8 @@ class OpenAiDeCoachMcpContractTest {
                 Map.of(
                         "gradingCapability", answerPayload.gradingCapability(),
                         "assessments", List.of(
-                                Map.of("passed", true, "feedback", "Vollständig richtig."),
-                                Map.of("passed", false, "feedback", "Die Richtung wurde vertauscht."))));
+                                Map.of("passed", true),
+                                Map.of("passed", false))));
         OpenAiDeV1McpContractAdapter.RecallResultsReceipt receipt =
                 structured(result, OpenAiDeV1McpContractAdapter.RecallResultsReceipt.class);
 
@@ -2792,7 +2814,7 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void recallAssessmentFeedbackIsSafelyTruncatedBeforeTheAtomicDomainWrite() {
+    void recallAssessmentRejectsChatDerivedFeedbackBeforeMutationOrReplay() {
         String batchCapability = issueTwoCardRecallBatchCapability();
         String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
         when(coachTools.recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), any()))
@@ -2809,26 +2831,20 @@ class OpenAiDeCoachMcpContractTest {
         org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
                 .when(sessionCoordinator)
                 .write(any(), any(), anyLong(), any(), any(), any());
-        String overlongFeedback = "x".repeat(799) + "😀" + "must-be-truncated";
+        String chatContent = "PRIVATE_RECALL_FEEDBACK_SENTINEL";
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
                 Map.of(
                         "gradingCapability", gradingCapability,
                         "assessments", List.of(
-                                Map.of("passed", true, "feedback", overlongFeedback),
-                                Map.of("passed", false, "feedback", "Kurz."))));
+                                Map.of("passed", true, "feedback", chatContent),
+                                Map.of("passed", false))));
 
-        assertThat(result.isError()).isFalse();
-        ArgumentCaptor<VerifiedRecallBatchResultRequest> request =
-                ArgumentCaptor.forClass(VerifiedRecallBatchResultRequest.class);
-        verify(coachTools).recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), request.capture());
-        String truncated = request.getValue().results().getFirst().feedback();
-        assertThat(truncated)
-                .hasSizeLessThanOrEqualTo(800)
-                .isEqualTo("x".repeat(799))
-                .doesNotContain("😀", "must-be-truncated");
-        assertThat(truncated.chars().noneMatch(codeUnit -> Character.isSurrogate((char) codeUnit))).isTrue();
+        assertThat(result.isError()).isTrue();
+        assertThat(result.content().toString()).doesNotContain(chatContent);
+        verify(coachTools, never()).recordVerifiedRecallResultsBatch(any(), any(), any());
+        verify(sessionCoordinator, never()).write(any(), any(), anyLong(), any(), any(), any());
     }
 
     @Test
@@ -3449,10 +3465,7 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     private static Map<String, Object> masteryArguments(String goalId) {
-        return Map.of(
-                "goalId", goalId,
-                OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, TEST_WORK_FEEDBACK,
-                OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, TEST_OUTCOME_FEEDBACK);
+        return Map.of("goalId", goalId);
     }
 
     private static Map<String, Object> masteryArguments(
@@ -3460,9 +3473,7 @@ class OpenAiDeCoachMcpContractTest {
             String orientationPathId) {
         return Map.of(
                 "goalId", goalId,
-                OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, orientationPathId,
-                OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, TEST_WORK_FEEDBACK,
-                OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, TEST_OUTCOME_FEEDBACK);
+                OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, orientationPathId);
     }
 
     private static Map<String, Object> examMasteryArguments(
@@ -3531,8 +3542,8 @@ class OpenAiDeCoachMcpContractTest {
             boolean firstPassed,
             boolean secondPassed) {
         return List.of(
-                Map.<String, Object>of("passed", firstPassed, "feedback", "Bewertung eins."),
-                Map.<String, Object>of("passed", secondPassed, "feedback", "Bewertung zwei."));
+                Map.<String, Object>of("passed", firstPassed),
+                Map.<String, Object>of("passed", secondPassed));
     }
 
     private void assertInvalidRecallCapability(

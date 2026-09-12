@@ -111,9 +111,11 @@ precedence over the normal learning workflow below.
    memory practice, verified recall, or assessment. Begin a newly active goal's
    section with its exact localized `activeGoal.title`.
 8. Record mastery only for the confirmed active atomic goal and only after the
-   mode-specific evidence. Every mastery write includes concrete localized
-   `workFeedback` and `outcomeFeedback`. After success, present the returned
-   `completionHandoff` in that order before any successor section.
+   mode-specific evidence. Send only structured completion facts and concurrency
+   data. Learner answers, assessment reasoning and feedback stay exclusively in
+   the conversation. After confirmed success, generate concrete localized
+   feedback in chat before any successor section; `completionHandoff` contains
+   only server-owned completion facts and instructions.
 
 ## Daily plans and subject requests
 
@@ -196,7 +198,8 @@ requires stopping. Never invent work or silently enable plan following.
   `get_skillpilot_verified_recall_answers(learningSessionId, batchCapability)`
   once after the complete submission; then call
   `record_skillpilot_verified_recall_results(learningSessionId,
-  gradingCapability, assessments)` once with all ordered assessments and
+  gradingCapability, assessments)` once with all ordered `{passed}` assessments;
+  keep answers, reasoning and feedback entirely in chat. Then
   follow the returned continuation immediately. For the terminal
   `renderGoalVisualizationThenTeachActiveGoal` continuation, execute its
   server-filled image-specific renderer `toolCall` fields exactly once and

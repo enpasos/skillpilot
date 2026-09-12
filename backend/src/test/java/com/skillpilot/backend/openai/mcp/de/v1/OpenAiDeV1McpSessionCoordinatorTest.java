@@ -201,14 +201,14 @@ class OpenAiDeV1McpSessionCoordinatorTest {
                 "learningSessionId", SESSION_ID,
                 "gradingCapability", gradingCapability,
                 "assessments", java.util.List.of(
-                        Map.of("passed", true, "feedback", "correct"),
-                        Map.of("passed", false, "feedback", "incorrect")));
+                        Map.of("passed", true),
+                        Map.of("passed", false)));
         Map<String, Object> changedArguments = Map.of(
                 "learningSessionId", SESSION_ID,
                 "gradingCapability", gradingCapability,
                 "assessments", java.util.List.of(
-                        Map.of("passed", false, "feedback", "changed"),
-                        Map.of("passed", false, "feedback", "incorrect")));
+                        Map.of("passed", false),
+                        Map.of("passed", false)));
         AtomicInteger calls = new AtomicInteger();
 
         McpSchema.CallToolResult first = coordinator.write(

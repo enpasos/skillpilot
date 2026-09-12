@@ -962,10 +962,6 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
                 objectMapper.writeValueAsString(Map.of(
                         "goalId", orientationGoalId,
-                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK,
-                        "Du hast den gewählten Interessenpfad auf deine Lernziele bezogen.",
-                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK,
-                        "Die Orientierung ist damit abgeschlossen.",
                         OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID,
                         selectedOrientationPath.pathId())),
                 resumedLearningSessionId);
@@ -1037,17 +1033,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(activeOrdinaryContext.path("activeGoal").path("goalId").asText())
                 .isEqualTo(completedOrdinaryGoalId);
 
-        String workFeedback = "Dein Lösungsweg ist fachlich schlüssig und die Begründung trägt das Ergebnis.";
-        String outcomeFeedback = "Das Lernziel ist vollständig erreicht.";
-
         HttpResponse<String> completeOrdinaryGoal = callTool(
                 accessToken,
                 18,
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
                 objectMapper.writeValueAsString(Map.of(
-                        "goalId", completedOrdinaryGoalId,
-                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, workFeedback,
-                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, outcomeFeedback)),
+                        "goalId", completedOrdinaryGoalId)),
                 resumedLearningSessionId);
         assertMcpPayloadDoesNotExposeIdentity(completeOrdinaryGoal, applicationSubject);
         JsonNode masteryResult = result(completeOrdinaryGoal).path("structuredContent");
@@ -1055,12 +1046,11 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         JsonNode completionHandoff = masteryResult.path("completionHandoff");
         assertThat(completionHandoff.path("completedGoalId").asText())
                 .isEqualTo(completedOrdinaryGoalId);
-        assertThat(completionHandoff.path("workFeedback").asText()).isEqualTo(workFeedback);
-        assertThat(completionHandoff.path("outcomeFeedback").asText()).isEqualTo(outcomeFeedback);
+        assertThat(completionHandoff.has("workFeedback")).isFalse();
+        assertThat(completionHandoff.has("outcomeFeedback")).isFalse();
         assertThat(completionHandoff.path("successorEvidenceReset").asBoolean()).isTrue();
         String completionText = result(completeOrdinaryGoal).path("content").toString();
-        assertThat(completionText.indexOf(workFeedback)).isGreaterThanOrEqualTo(0);
-        assertThat(completionText.indexOf(outcomeFeedback)).isGreaterThan(completionText.indexOf(workFeedback));
+        assertThat(completionText).contains("Abschluss bestätigt", "Rückmeldung", "nicht an SkillPilot");
         JsonNode autopilotSuccessorContext = masteryResult.path("context");
         String successorGoalId = autopilotSuccessorContext.path("activeGoal").path("goalId").asText();
         long successorStateVersion = masteryResult.path("stateVersion").asLong();
@@ -1092,7 +1082,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         .path("activeGoal")
                         .path("title")
                         .asText()))
-                .isGreaterThan(completionText.indexOf(outcomeFeedback));
+                .isGreaterThan(completionText.indexOf("Rückmeldung"));
 
         // Regression for the second image in one chat: the mastery successor is
         // already the fresh authority. Render it immediately with the successor's
@@ -1282,9 +1272,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         String gradingCapability = recallAnswers.path("gradingCapability").asText();
         assertThat(gradingCapability).isNotBlank().isNotEqualTo(batchCapability);
         List<Map<String, Object>> passingAssessments = recallAnswers.path("answers").valueStream()
-                .map(ignored -> Map.<String, Object>of(
-                        "passed", true,
-                        "feedback", "Ohne Hilfe vollständig richtig."))
+                .map(ignored -> Map.<String, Object>of("passed", true))
                 .toList();
 
         HttpResponse<String> completeRecall = callTool(

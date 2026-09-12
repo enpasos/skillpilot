@@ -1,18 +1,96 @@
 package com.skillpilot.backend.config;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.read.ListAppender;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
+import jakarta.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import org.slf4j.LoggerFactory;
 import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.util.ReflectionTestUtils;
 
 class RequestLoggingFilterTest {
 
     private final RequestLoggingFilter filter = new RequestLoggingFilter(new ObjectMapper());
+
+    @TempDir
+    Path traceDirectory;
+
+    @Test
+    void coachResultRoutesNeverCacheBodiesOrWriteDebugOrAiTraceEvenForRejectedProse() throws Exception {
+        ReflectionTestUtils.setField(filter, "aiTraceEnabled", true);
+        ReflectionTestUtils.setField(filter, "aiTracePath", traceDirectory.resolve("ai-trace.jsonl").toString());
+        ReflectionTestUtils.setField(filter, "aiTraceMaxBodyChars", 50000);
+        Logger logger = (Logger) LoggerFactory.getLogger(RequestLoggingFilter.class);
+        Level previousLevel = logger.getLevel();
+        ListAppender<ILoggingEvent> appender = new ListAppender<>();
+        appender.start();
+        logger.addAppender(appender);
+        logger.setLevel(Level.DEBUG);
+        try {
+            for (String path : new String[] {
+                    "/api/ai/de/learners/learner-42/mastery",
+                    "/api/ai/en/learners/learner-42/verified-recall/result",
+                    "/api/ai/de/sessions/sps_test/mastery",
+                    "/api/ai/en/sessions/sps_test/verified-recall/result/",
+                    "/api/ai/de/sessions/sps_test/visible/mastery",
+                    "/api/ai/en/sessions/sps_test/visible/verified-recall/result",
+                    "/api/ai/de/sessions/sps_test/verified-recall/result;parameter=ignored"
+            }) {
+                for (int status : new int[] {200, 400, 500}) {
+                    MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
+                    request.setContentType("application/json");
+                    // The renamed unknown field must be protected without relying
+                    // on a list of historical feedback field names.
+                    request.setContent("{\"rationale\":\"synthetic-private-input-canary\"}"
+                            .getBytes(StandardCharsets.UTF_8));
+                    MockHttpServletResponse response = new MockHttpServletResponse();
+
+                    filter.doFilter(request, response, (forwardedRequest, forwardedResponse) -> {
+                        assertThat(forwardedRequest).as(path).isSameAs(request);
+                        assertThat(forwardedResponse).as(path).isSameAs(response);
+                        forwardedRequest.getInputStream().readAllBytes();
+                        ((HttpServletResponse) forwardedResponse).setStatus(status);
+                        forwardedResponse.getWriter().write("{\"error\":\"synthetic-private-response-canary\"}");
+                    });
+
+                    assertThat(response.getStatus()).isEqualTo(status);
+                    assertThat(response.getContentAsString()).contains("synthetic-private-response-canary");
+                }
+            }
+            MockHttpServletRequest failedRequest = new MockHttpServletRequest(
+                    "POST", "/api/ai/de/sessions/sps_test/verified-recall/result");
+            failedRequest.setContent("synthetic-private-malformed-body".getBytes(StandardCharsets.UTF_8));
+            assertThatThrownBy(() -> filter.doFilter(
+                    failedRequest, new MockHttpServletResponse(), (request, response) -> {
+                        request.getInputStream().readAllBytes();
+                        throw new ServletException("synthetic-private-failure-canary");
+                    })).isInstanceOf(ServletException.class);
+
+            assertThat(appender.list).isEmpty();
+            try (var files = Files.list(traceDirectory)) {
+                assertThat(files.toList()).isEmpty();
+            }
+        } finally {
+            logger.detachAppender(appender);
+            logger.setLevel(previousLevel);
+            appender.stop();
+        }
+    }
 
     @Test
     void actionRegressionRouteBypassesTheGeneralCachingAndRedactingLogger() throws Exception {
@@ -92,24 +170,29 @@ class RequestLoggingFilterTest {
     }
 
     @Test
-    void forwardingWrapperCannotExposeAnInternalOpenAiBodyToTheLogger() throws Exception {
-        MockHttpServletRequest raw = new MockHttpServletRequest(
-                "POST",
-                "/internal/openai/v1/mcp");
-        raw.setContent("private-mcp-body".getBytes(java.nio.charset.StandardCharsets.UTF_8));
-        HttpServletRequest wrapped = new HttpServletRequestWrapper(raw) {
-            @Override
-            public String getRequestURI() {
-                return "/api/not-the-mcp-path";
-            }
-        };
-        MockHttpServletResponse response = new MockHttpServletResponse();
-        MockFilterChain chain = new MockFilterChain();
+    void forwardingWrapperCannotExposeCoachBodiesToTheLogger() throws Exception {
+        for (String path : new String[] {
+                "/internal/openai/v1/mcp",
+                "/internal/claude/v1/mcp",
+                "/api/ai/de/sessions/sps_test/verified-recall/result",
+                "/api/ai/en/learners/learner-42/mastery"
+        }) {
+            MockHttpServletRequest raw = new MockHttpServletRequest("POST", path);
+            raw.setContent("private-mcp-body".getBytes(StandardCharsets.UTF_8));
+            HttpServletRequest wrapped = new HttpServletRequestWrapper(raw) {
+                @Override
+                public String getRequestURI() {
+                    return "/api/not-the-mcp-path";
+                }
+            };
+            MockHttpServletResponse response = new MockHttpServletResponse();
+            MockFilterChain chain = new MockFilterChain();
 
-        filter.doFilter(wrapped, response, chain);
+            filter.doFilter(wrapped, response, chain);
 
-        assertThat(chain.getRequest()).isSameAs(wrapped);
-        assertThat(chain.getResponse()).isSameAs(response);
+            assertThat(chain.getRequest()).isSameAs(wrapped);
+            assertThat(chain.getResponse()).isSameAs(response);
+        }
     }
 
     @Test
@@ -182,6 +265,35 @@ class RequestLoggingFilterTest {
                 .contains("\"selectedCurriculum\":\"math\"")
                 .contains("\"promptContext\":\"<redacted>\"")
                 .doesNotContain("private learner context");
+    }
+
+    @Test
+    void everyKnownFeedbackFieldIsRedactedRecursivelyInBothLogFormats() {
+        ReflectionTestUtils.setField(filter, "aiTraceMaxBodyChars", 50000);
+        String body = """
+                {"goalId":"goal-123","workFeedback":"private-work-canary",
+                 "outcome_feedback":"private-outcome-canary",
+                 "results":[{"cardId":"card-1","feedback":"private-recall-canary"}],
+                 "state":{"verifiedRecall":{"Last_Feedback":"private-stored-canary"}}}
+                """;
+
+        for (String output : new String[] {
+                filter.formatBodyForOperationalLog(body), filter.formatBodyForTrace(body).toString()
+        }) {
+            assertThat(output)
+                    .doesNotContain("private-work-canary", "private-outcome-canary",
+                            "private-recall-canary", "private-stored-canary")
+                    .contains("goal-123", "card-1", "<redacted>");
+        }
+    }
+
+    @Test
+    void traceBodyFallbacksNeverWriteUnparseableOrOversizedProse() {
+        ReflectionTestUtils.setField(filter, "aiTraceMaxBodyChars", 1000);
+        assertThat(filter.formatBodyForTrace("{\"feedback\":\"private-malformed-canary"))
+                .isEqualTo("<non-json body omitted>");
+        assertThat(filter.formatBodyForTrace("{\"feedback\":\"" + "private-large-canary".repeat(100) + "\"}"))
+                .isEqualTo("<oversized body omitted>");
     }
 
     @Test

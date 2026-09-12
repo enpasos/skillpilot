@@ -94,6 +94,10 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 || requestUri.equals("/api/claude/mcp")
                 || requestUri.startsWith("/api/claude/mcp/")
                 || openAiMcp
+                // Coach results are structured-only. Even a rejected request may
+                // contain chat prose under an unknown field, and validation errors
+                // may echo it. Never cache or log either body at these boundaries.
+                || isCoachResultBoundary(requestUri)
                 // OAuth token, authorization and revocation requests use form bodies.
                 // Do not pass those credentials through the general JSON body logger.
                 || requestUri.startsWith("/api/claude/oauth")
@@ -148,6 +152,14 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
 
     private static boolean isInternalOpenAiV1(String requestUri) {
         return requestUri != null && requestUri.startsWith("/internal/openai/v1/");
+    }
+
+    private static boolean isCoachResultBoundary(String requestUri) {
+        // Match the route independently of its HTTP method, success status or
+        // field names. Matrix parameters must not bypass the privacy boundary.
+        String path = requestUri.replaceAll(";[^/]*", "");
+        return path.matches("/api/ai/[^/]+/(?:learners|sessions)/[^/]+/"
+                + "(?:visible/)?(?:mastery|verified-recall/result)(?:/.*)?");
     }
 
     private void writeAiTrace(HttpServletRequest request,
@@ -228,27 +240,18 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         return stableSensitiveRef(traceSubject.value());
     }
 
-    private String truncate(String value) {
-        if (value == null || value.isBlank()) {
-            return "";
-        }
-        if (value.length() <= aiTraceMaxBodyChars) {
-            return value;
-        }
-        return value.substring(0, aiTraceMaxBodyChars) + "...(truncated)";
-    }
-
     Object formatBodyForTrace(String body) {
         if (body == null || body.isBlank()) {
             return "";
         }
         if (body.length() > aiTraceMaxBodyChars) {
-            return truncate(redactPlainText(body));
+            // A truncated JSON document cannot be reliably field-redacted.
+            return "<oversized body omitted>";
         }
         try {
             return redactJsonNode(objectMapper.readTree(body));
         } catch (IOException e) {
-            return redactPlainText(body);
+            return "<non-json body omitted>";
         }
     }
 
@@ -439,6 +442,10 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 || normalized.contains("chatsessiontoken")
                 || normalized.contains("startcode")
                 || normalized.equals("promptcontext")
+                || normalized.equals("workfeedback")
+                || normalized.equals("outcomefeedback")
+                || normalized.equals("feedback")
+                || normalized.equals("lastfeedback")
                 || normalized.equals("authorization")
                 || normalized.equals("password")
                 || normalized.endsWith("password")

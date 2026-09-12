@@ -423,8 +423,8 @@ export function validateClaudePluginPackage(root = packageRoot) {
         && value.includes("learner need not label the orientation complete")
         && value.includes("Call `set_skillpilot_mastery` immediately before any further learner-facing speech or text")
         && value.includes("Complete it silently without another confirmation")
-        && value.includes("Supply the required orientation feedback fields to the tool")
-        && value.includes("never present, repeat or paraphrase them to the learner")
+        && value.includes("Send only structured completion data to the tool")
+        && value.includes("do not narrate the orientation completion to the learner")
         && value.includes("meta-discussion about eligibility")
         && value.includes("narrated self-correction")
         && value.includes("backend alone determines what follows")
@@ -432,10 +432,24 @@ export function validateClaudePluginPackage(root = packageRoot) {
     "The Skill and coaching policy must treat clear learner readiness as orientation completion without a confirmation or policy-meta loop, while leaving progression to the backend.",
   );
   check(
-    normalizedSkillText.includes("For that ordinary competency, supply concrete evidence in both required feedback fields")
-      && normalizedSkillText.includes("then present it to the learner as one natural response")
-      && !normalizedSkillText.includes("- Supply concrete evidence in both required feedback fields, then present it to the learner"),
+    normalizedSkillText.includes("For that ordinary competency, give concrete feedback only in the conversation")
+      && normalizedSkillText.includes("as one natural learner-facing response after confirmed persistence"),
     "The learner-visible evidence feedback rule must be scoped to ordinary competencies, not orientation.",
+  );
+  check(
+    silentInstructionPolicyTexts.every((value) => (
+      value.includes("Send only structured completion data to `set_skillpilot_mastery`")
+        && value.includes("never send learner work, assessment reasoning or feedback text to that tool")
+        && !/workFeedback|outcomeFeedback|(?:required|both) feedback fields/u.test(value)
+    )),
+    "Mastery must send only structured completion data; assessment reasoning and feedback stay in the conversation.",
+  );
+  check(
+    normalizedSkillText.includes("Each result contains only `cardId` and `passed`")
+      && normalizedSkillText.includes("assessment reasoning and feedback only in the conversation, never in that tool")
+      && normalizedCoachingPolicyText.includes("containing only `cardId` and `passed`")
+      && normalizedCoachingPolicyText.includes("Never send learner answers, assessment reasoning or feedback text to the recall-result tool"),
+    "Verified Recall must send only card identifiers and boolean outcomes; learner answers and feedback stay in the conversation.",
   );
   check(
     silentInstructionPolicyTexts.every((value) => (

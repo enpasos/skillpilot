@@ -385,7 +385,7 @@ class LearnerAiControllerTest {
     @Test
     void recordVerifiedRecallResult_usesWritableSessionAndDelegatesToService() {
         String skillpilotId = "learner-1";
-        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest("goal-1", "card-1", true, "ok");
+        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest("goal-1", "card-1", true);
         VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
                 "complete",
                 "done",
@@ -417,7 +417,7 @@ class LearnerAiControllerTest {
     void recordSessionVerifiedRecallResult_hidesSkillpilotIdFromNestedNextPrompt() {
         String chatSessionToken = "chat-token";
         String skillpilotId = "learner-1";
-        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest("goal-1", "card-1", true, "ok");
+        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest("goal-1", "card-1", true);
         VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
                 "ready",
                 "next prompt",
@@ -455,7 +455,7 @@ class LearnerAiControllerTest {
         String chatSessionToken = "chat-token";
         String skillpilotId = "learner-1";
         String goalId = "memory-goal";
-        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest(goalId, "card-1", true, "ok");
+        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest(goalId, "card-1", true);
         VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
                 "complete",
                 "Backend saved mastery; do not call setMastery.",

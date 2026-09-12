@@ -2728,7 +2728,7 @@ public class LearnerServiceTest {
             var result = learnerService.recordVerifiedRecallResult(
                     learnerId,
                     "de",
-                    new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, prompt.cardId(), true, "ok"));
+                    new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, prompt.cardId(), true));
             assertThat(result.passed()).isTrue();
             finalResult = result;
             prompt = result.next();
@@ -2791,8 +2791,7 @@ public class LearnerServiceTest {
                         new VerifiedRecallResultRequest(
                                 SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                                 foreignPrompt.cardId(),
-                                true,
-                                "must not be stored")))
+                                true)))
                 .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining("Card is not part of this memorization goal");
 
@@ -2852,8 +2851,7 @@ public class LearnerServiceTest {
                         new VerifiedRecallResultRequest(
                                 SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                                 originalPrompt.cardId(),
-                                true,
-                                "must not be stored")))
+                                true)))
                 .isInstanceOf(ResponseStatusException.class)
                 .satisfies(error -> assertThat(
                                 ((ResponseStatusException) error).getStatusCode())
@@ -2963,7 +2961,7 @@ public class LearnerServiceTest {
                 .toList();
         long beforeRevision = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
         List<VerifiedRecallBatchCardResult> results = cardIds.stream()
-                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true))
                 .toList();
 
         var response = learnerService.recordVerifiedRecallResultsBatch(
@@ -2992,7 +2990,11 @@ public class LearnerServiceTest {
         assertThat(cardIds).allSatisfy(cardId -> assertThat(stored.srsState().get(cardId))
                 .isInstanceOfSatisfying(Map.class, cardState -> assertThat(cardState.get("verifiedRecall"))
                         .isInstanceOfSatisfying(Map.class, verified -> assertThat(verified)
-                                .containsEntry("status", "passed"))));
+                                .containsEntry("status", "passed")
+                                .doesNotContainKey("lastFeedback"))));
+        assertThat(learnerClientStateRepository.findAll())
+                .allSatisfy(row -> assertThat(row.getClientState())
+                        .doesNotContain("lastFeedback", "feedback"));
     }
 
     @Test
@@ -3019,7 +3021,7 @@ public class LearnerServiceTest {
                         cardIds,
                         prompt.issuedAt(),
                         cardIds.stream()
-                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true))
                                 .toList()));
 
         assertThat(response.masterySaved()).isTrue();
@@ -3056,8 +3058,7 @@ public class LearnerServiceTest {
                     new VerifiedRecallResultRequest(
                             SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                             prompt.cardId(),
-                            true,
-                            "korrekt"));
+                            true));
             prompt = finalResult.next();
         }
 
@@ -3104,7 +3105,7 @@ public class LearnerServiceTest {
                 new VerifiedRecallBatchResultRequest(
                         SEK1_CORE_FORMULAS_FLASHCARDS_ID, prompt.configuredBatchSize(),
                         cardIds, prompt.issuedAt(), cardIds.stream()
-                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true))
                                 .toList()));
 
         assertThat(completion.masterySaved()).isTrue();
@@ -3135,7 +3136,7 @@ public class LearnerServiceTest {
                 .map(VerifiedRecallPromptCard::cardId)
                 .toList();
         List<VerifiedRecallBatchCardResult> firstResults = firstCardIds.stream()
-                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true))
                 .toList();
 
         var recorded = learnerService.recordVerifiedRecallResultsBatch(
@@ -3238,7 +3239,7 @@ public class LearnerServiceTest {
                         cardIds,
                         prompt.issuedAt(),
                         cardIds.stream()
-                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, false, "offen"))
+                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, false))
                                 .toList()));
         assertThat(saved.next().status()).isEqualTo("waiting");
         assertThat(saved.next().batchSize()).isZero();
@@ -3314,7 +3315,7 @@ public class LearnerServiceTest {
                         cardIds,
                         prompt.issuedAt(),
                         cardIds.stream()
-                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true))
                                 .toList()));
         assertThat(saved.next().issuedAt()).isEqualTo(afterMidnight);
         assertThat(saved.next().configuredBatchSize()).isEqualTo(5);
@@ -3336,7 +3337,7 @@ public class LearnerServiceTest {
                 .toList();
         long beforeRevision = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
         List<VerifiedRecallBatchCardResult> incompleteResults = cardIds.subList(0, cardIds.size() - 1).stream()
-                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true))
                 .toList();
 
         assertThatThrownBy(() -> learnerService.recordVerifiedRecallResultsBatch(
@@ -3398,8 +3399,7 @@ public class LearnerServiceTest {
                                 new VerifiedRecallResultRequest(
                                         SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                                         card.cardId(),
-                                        true,
-                                        "parallel verified"));
+                                        true));
                     }))
                     .toList();
             assertThat(ready.await(10, TimeUnit.SECONDS)).isTrue();
@@ -3485,7 +3485,7 @@ public class LearnerServiceTest {
         var failedResult = learnerService.recordVerifiedRecallResult(
                 learnerId,
                 "de",
-                new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, failedCardId, false, "nicht gewusst"));
+                new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, failedCardId, false));
 
         assertThat(failedResult.passed()).isFalse();
         assertThat(failedResult.next().status()).isEqualTo("ready");
@@ -3499,7 +3499,7 @@ public class LearnerServiceTest {
         assertThatThrownBy(() -> learnerService.recordVerifiedRecallResult(
                 learnerId,
                 "de",
-                new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, failedCardId, true, "zweiter Versuch")))
+                new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, failedCardId, true)))
                 .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining("already been tested today");
 
@@ -3546,8 +3546,7 @@ public class LearnerServiceTest {
                     new VerifiedRecallResultRequest(
                             SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                             prompt.cardId(),
-                            passed,
-                            passed ? "ok" : "nicht gewusst"));
+                            passed));
             failedOneCard = true;
             prompt = result.next();
         }

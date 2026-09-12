@@ -277,14 +277,13 @@ public final class ClaudeCoachMcpTools {
             @ToolParam(description = "Exact goal ID from the recall prompt") String goalId,
             @ToolParam(description = "Exact card ID from the recall prompt") String cardId,
             @ToolParam(description = "True only if the learner answered correctly without help") Boolean passed,
-            @ToolParam(description = "Short evidence-based feedback") String feedback,
             @ToolParam(description = "Response language, normally de or en") String language) {
         requireWriteScope();
         return withActivity(connectionSubject(), skillpilotId -> withoutSkillpilotId(
                 coachTools.recordVerifiedRecallResult(
                         skillpilotId,
                         normalizeLanguage(language),
-                        new VerifiedRecallResultRequest(goalId, cardId, passed, feedback))));
+                        new VerifiedRecallResultRequest(goalId, cardId, passed))));
     }
 
     private <T> T withActivity(String subject, Function<String, T> operation) {

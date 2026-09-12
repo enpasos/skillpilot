@@ -241,8 +241,6 @@ class ClaudeV1MasteryBackendIntegrationTest {
         Map<String, Object> arguments = new LinkedHashMap<>();
         arguments.put("learningSessionId", learningSessionId);
         arguments.put("goalId", goalId);
-        arguments.put("workFeedback", "The learner completed the active learning goal.");
-        arguments.put("outcomeFeedback", "The active learning goal is reached.");
         arguments.put("expectedStateVersion", expectedStateVersion);
         arguments.put("clientRequestId", UUID.randomUUID().toString());
         arguments.put("language", "en");

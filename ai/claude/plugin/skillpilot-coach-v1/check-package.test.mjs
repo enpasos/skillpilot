@@ -150,8 +150,8 @@ test("rejects an extra policy-meta confirmation loop after clear orientation rea
 test("rejects learner-visible orientation feedback narration", () => {
   withPackageCopy((root) => {
     mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
-      /Supply the required orientation feedback fields to\s+the tool, but never present, repeat or paraphrase them to the learner\./u,
-      "Present the orientation feedback fields and explain the completion decision to the learner.",
+      /Send only structured completion data to the tool;\s+do not narrate the orientation completion to the learner\./u,
+      "Explain the orientation completion decision to the learner.",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
@@ -163,12 +163,42 @@ test("rejects learner-visible orientation feedback narration", () => {
 test("rejects an unscoped learner-visible feedback rule", () => {
   withPackageCopy((root) => {
     mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
-      "For that ordinary competency, supply concrete evidence in both required",
-      "Supply concrete evidence in both required",
+      "For that ordinary competency, give concrete feedback only in the conversation",
+      "Give concrete feedback only in the conversation",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
       /learner-visible evidence feedback rule must be scoped to ordinary competencies/u,
+    );
+  });
+});
+
+test("rejects restoring chat-derived mastery fields in Skill instructions", () => {
+  for (const file of [
+    "skills/skillpilot-coach-v1/SKILL.md",
+    "skills/skillpilot-coach-v1/references/coaching-policy.md",
+  ]) {
+    for (const field of ["workFeedback", "outcomeFeedback"]) {
+      withPackageCopy((root) => {
+        mutate(root, file, (value) => `${value}\nSend ${field} with the completion write.\n`);
+        assert.match(
+          validateClaudePluginPackage(root).errors.join("\n"),
+          /Mastery must send only structured completion data/u,
+        );
+      });
+    }
+  }
+});
+
+test("rejects restoring free-text Recall result instructions", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      "Each result contains only `cardId` and `passed`.",
+      "Each result includes feedback explaining the learner answer.",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /Verified Recall must send only card identifiers and boolean outcomes/u,
     );
   });
 });
@@ -202,7 +232,7 @@ test("rejects learner-visible lazy-loading and retry narration", () => {
 test("rejects progression chosen by Claude after clear orientation readiness", () => {
   withPackageCopy((root) => {
     mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replace(
-      /Record only\s+completion; the backend\s+alone determines what follows\./u,
+      /Record\s+only\s+completion; the backend\s+alone determines what follows\./u,
       "Record completion and choose the next goal yourself.",
     ));
     assert.match(

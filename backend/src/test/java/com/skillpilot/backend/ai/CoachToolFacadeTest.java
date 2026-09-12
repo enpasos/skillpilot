@@ -347,7 +347,7 @@ class CoachToolFacadeTest {
     void sessionVerifiedRecallResultHidesLearnerIdInNestedPrompt() {
         String skillpilotId = "learner-1";
         String sessionToken = "session-token";
-        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest("goal-1", "card-1", true, "ok");
+        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest("goal-1", "card-1", true);
         VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
                 "ready",
                 "next",

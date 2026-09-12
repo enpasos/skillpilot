@@ -17,6 +17,11 @@ snapshot remains historical evidence, not an active source-code freeze.
   Never infer a completion date from a mastery snapshot or legacy update time.
 - Keep orientation, teaching, mastery, memory practice, Verified Recall and
   assessment safeguards. Optional visualizations never replace complete text.
+- Keep learner answers, assessment reasoning and feedback exclusively in the
+  chat. Mastery writes carry only structured completion facts and concurrency
+  data; Verified Recall assessments carry only pass/fail outcomes. Reject
+  extra assessment fields before replay processing or Core mutation, and
+  generate success feedback locally after confirmed persistence.
 - Submit the remote MCP server directly, without the former development-app
   reference. Refresh listing and review scenarios from maintained sources.
 - Generate complete positive and negative portal test cases, with regression

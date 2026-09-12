@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HexFormat;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -377,8 +378,6 @@ class ClaudeV1McpContractTest {
         assertEquals(
                 Set.of(
                         "goalId",
-                        "workFeedback",
-                        "outcomeFeedback",
                         "evaluationCapability",
                         "earnedPoints",
                         "expectedStateVersion",
@@ -386,15 +385,96 @@ class ClaudeV1McpContractTest {
                         "language",
                         "learningSessionId"),
                 properties.keySet(),
-                "Completion accepts evidence and concurrency data, never progression input");
-        assertTrue(requiredOf(ClaudeV1Contract.TOOL_SET_MASTERY).contains("workFeedback"));
-        assertTrue(requiredOf(ClaudeV1Contract.TOOL_SET_MASTERY).contains("outcomeFeedback"));
+                "Completion accepts only structured state and concurrency data, never chat-derived text or progression input");
+        assertEquals(
+                Set.of("goalId", "expectedStateVersion", "clientRequestId", "learningSessionId"),
+                Set.copyOf(requiredOf(ClaudeV1Contract.TOOL_SET_MASTERY)));
         @SuppressWarnings("unchecked")
         Map<String, Object> clientRequestId = (Map<String, Object>) properties.get("clientRequestId");
         assertTrue(clientRequestId.get("description").toString().contains(
                 "Reuse it only when a response was interrupted and no tool result was received"));
         assertTrue(clientRequestId.get("description").toString().contains(
                 "after a returned error, follow the server recovery instructions instead of repeating automatically"));
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void recallResultsAcceptOnlyStructuredCardOutcomesAndNoFeedback() {
+        Map<String, Object> properties = (Map<String, Object>) schemaOf(
+                ClaudeV1Contract.TOOL_RECORD_VERIFIED_RECALL_RESULTS).get("properties");
+        Map<String, Object> results = (Map<String, Object>) properties.get("results");
+        Map<String, Object> items = (Map<String, Object>) results.get("items");
+        Map<String, Object> itemProperties = (Map<String, Object>) items.get("properties");
+
+        assertEquals(Set.of("cardId", "passed"), itemProperties.keySet());
+        assertEquals(Set.of("cardId", "passed"), Set.copyOf((List<String>) items.get("required")));
+        assertEquals(Boolean.FALSE, items.get("additionalProperties"));
+    }
+
+    @Test
+    void everyToolInputStringHasAnExplicitStructuredPurpose() {
+        String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+        assertTrue(instructions.contains("Keep assessment reasoning and feedback only in the conversation"));
+        assertFalse(instructions.contains("both required feedback fields"));
+        assertFalse(instructions.contains("workFeedback"));
+        assertFalse(instructions.contains("outcomeFeedback"));
+        Map<String, Set<String>> toolStrings = Map.ofEntries(
+                Map.entry(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Set.of()),
+                Map.entry(ClaudeV1Contract.TOOL_GET_NAVIGATION_OPTIONS, Set.of()),
+                Map.entry(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN, Set.of("clientRequestId")),
+                Map.entry(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT, Set.of("subject", "clientRequestId")),
+                Map.entry(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION, Set.of("goalId")),
+                Map.entry(ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE, Set.of("goalId")),
+                Map.entry(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD,
+                        Set.of("goalId", "cardId", "reviewCapability", "rating", "clientRequestId")),
+                Map.entry(ClaudeV1Contract.TOOL_SET_FOCUS, Set.of("goalIds[]", "clientRequestId")),
+                Map.entry(ClaudeV1Contract.TOOL_SET_ACTIVE_GOAL, Set.of("goalId", "clientRequestId")),
+                Map.entry(ClaudeV1Contract.TOOL_SET_MASTERY,
+                        Set.of("goalId", "evaluationCapability", "clientRequestId")),
+                Map.entry(ClaudeV1Contract.TOOL_START_VERIFIED_RECALL, Set.of()),
+                Map.entry(ClaudeV1Contract.TOOL_GET_VERIFIED_RECALL_ANSWERS, Set.of("batchCapability")),
+                Map.entry(ClaudeV1Contract.TOOL_RECORD_VERIFIED_RECALL_RESULTS,
+                        Set.of("gradingCapability", "results[].cardId", "clientRequestId")),
+                Map.entry(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Set.of("goalId")));
+        assertEquals(Set.copyOf(ClaudeV1Contract.ALL_TOOL_NAMES), toolStrings.keySet());
+        for (String toolName : ClaudeV1Contract.ALL_TOOL_NAMES) {
+            Set<String> expected = new LinkedHashSet<>(toolStrings.get(toolName));
+            expected.addAll(Set.of("learningSessionId", "language"));
+            Set<String> actual = new LinkedHashSet<>();
+            collectInputStringPaths(schemaOf(toolName), "", actual);
+            assertEquals(expected, actual, toolName + " must not introduce a chat-derived free-text input");
+        }
+    }
+
+    private void collectInputStringPaths(Object node, String path, Set<String> paths) {
+        if (node instanceof List<?> list) {
+            list.forEach(value -> collectInputStringPaths(value, path, paths));
+            return;
+        }
+        if (!(node instanceof Map<?, ?> schema)) {
+            return;
+        }
+        Object type = schema.get("type");
+        assertNotNull(type, path + " must declare a reviewed input type, not an unrestricted payload");
+        if ("string".equals(type) || type instanceof List<?> types && types.contains("string")) {
+            paths.add(path);
+        }
+        if ("object".equals(type) || type instanceof List<?> types && types.contains("object")) {
+            assertEquals(Boolean.FALSE, schema.get("additionalProperties"), path + " must remain closed");
+        }
+        if ("array".equals(type) || type instanceof List<?> types && types.contains("array")) {
+            assertNotNull(schema.get("items"), path + " must constrain every array item");
+        }
+        for (Map.Entry<?, ?> entry : schema.entrySet()) {
+            if ("properties".equals(entry.getKey()) && entry.getValue() instanceof Map<?, ?> properties) {
+                properties.forEach((name, value) -> collectInputStringPaths(
+                        value, path.isEmpty() ? name.toString() : path + "." + name, paths));
+            } else if ("items".equals(entry.getKey())) {
+                collectInputStringPaths(entry.getValue(), path + "[]", paths);
+            } else {
+                collectInputStringPaths(entry.getValue(), path, paths);
+            }
+        }
     }
 
     @Test
@@ -676,7 +756,7 @@ class ClaudeV1McpContractTest {
         assertTrue(orientationContinuation.contains(
                 "continue immediately and naturally with only the active goal or next action"));
         assertTrue(orientationContinuation.contains(
-                "Do not repeat the submitted feedback or narrate the previous orientation's completion"));
+                "Do not narrate the previous orientation's completion"));
         assertTrue(orientationContinuation.contains(
                 "eligibility criteria, policy, self-correction, internal reasoning or conflicts"));
         assertTrue(orientationContinuation.contains("tool selection, compliance, saving or retry mechanics"));

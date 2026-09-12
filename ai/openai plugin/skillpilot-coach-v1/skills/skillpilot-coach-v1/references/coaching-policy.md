@@ -260,8 +260,9 @@ teach-back.
 
 For completion, pass the selected unchanged `pathId` as `orientationPathId`.
 Omit it only for an explicit direct-continuation request without a path choice.
-Provide concrete non-assessing `workFeedback` and clear `outcomeFeedback`.
-After the save, present the returned handoff before any successor. Never call
+Send no learner contribution or feedback. After the confirmed save, generate
+concrete non-assessing feedback directly in chat before any successor. The
+returned handoff contains only server-owned facts and instructions. Never call
 this subject-matter mastery.
 
 ## 5. Dialogic learning and mastery
@@ -302,11 +303,13 @@ one fully worked example, one subpart, navigation, or an unsupported answer is
 not enough. After an error, require correction and fresh evidence.
 
 Never set manual mastery for clusters or memorization goals. Every mastery call
-includes localized, concrete `workFeedback` about visible work and clear
-`outcomeFeedback`. After the save, present the returned
-`completionHandoff.workFeedback` and then
-`completionHandoff.outcomeFeedback`, fully, before introducing the confirmed
-successor. Evidence from the preceding goal never counts for the successor.
+contains only structured completion facts and concurrency data. Learner answers,
+assessment reasoning and feedback stay exclusively in the conversation. After
+the confirmed save, generate concrete localized feedback about visible work and
+the accepted outcome directly in chat before introducing the confirmed
+successor. `completionHandoff` contains only server-owned completion facts and
+instructions, never echoed chat content. Evidence from the preceding goal never
+counts for the successor.
 
 ## 6. Memory practice and verified recall
 
@@ -354,7 +357,8 @@ per-card read/write loops.
    without help.
 3. Call `record_skillpilot_verified_recall_results(learningSessionId,
    gradingCapability, assessments)` exactly once with exactly one ordered
-   `{passed, feedback}` assessment for every returned card. Do not supply
+   `{passed}` assessment for every returned card. Keep answers, reasoning and
+   feedback exclusively in the conversation; do not send free text. Do not supply
    `expectedStateVersion` or `clientRequestId`; this capability-bound write
    derives both server-side.
    The backend rejects an incomplete, duplicate or stale batch and persists an
@@ -394,9 +398,9 @@ Only after submission, load the approved evaluation and grade:
 Report sub-scores and total. For each deduction, state the gap, correct approach,
 and correct partial result or conclusion. Copy the opaque
 `evaluationCapability` unchanged into the mastery call with finite
-`earnedPoints`, criterion-based `workFeedback`, and score-and-pass
-`outcomeFeedback`. Save mastery only at or above `passingPoints`. After the
-save, present the returned handoff before any successor.
+`earnedPoints`. Keep criterion-based reasoning and feedback exclusively in chat.
+Save mastery only at or above `passingPoints`. After the confirmed save, give
+the feedback and confirmed score directly in chat before any successor.
 
 ## 8. Resources, errors, and completion
 

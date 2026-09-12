@@ -204,6 +204,146 @@ IDs, private answers, and private portal exports out of Git, CI artifacts, and
 screenshots. Failure evidence needs only the non-secret revision, stage,
 timestamp, status/error class, and separately retained sanitized evidence.
 
+## Historical registered-app experiment (stopped before installation)
+
+**Superseded on 12 September 2026:** after supplying the app link, the Product
+Owner clarified that the beta installation must work from scratch, not depend
+on a repaired or previously configured personal app. The local probe below is
+retained as diagnostic preparation only. Do not install or publish it as the
+beta solution. It was never installed, connected, or published.
+
+On **12 September 2026**, the Product Owner agreed to investigate a separate
+Git-marketplace package referencing a registered OpenAI MCP app. The aim is to
+retain Git-delivered Skill updates while exercising the production security
+chain. This is not a decision to replace the published direct-MCP candidate,
+publish another package, change credentials, or relax authentication.
+
+The first direct-MCP attempt in Windows ChatGPT **26.901.51231** stopped before
+OAuth: the production edge recorded `403 / certificate_required` at
+**08:36:11, 08:38:14 and 08:38:24 UTC**. These observations establish that those
+requests supplied no client certificate; they do not establish that every
+Git-marketplace transport is incompatible with mTLS.
+
+The proposed alternative has these separate responsibilities:
+
+| Component | Responsibility |
+| --- | --- |
+| Git marketplace | Distribute the plugin, canonical Skills and assets |
+| Plugin `.app.json` | Reference the explicitly selected registered app |
+| Registered OpenAI app connection | Supply the hosted MCP transport and OAuth connection |
+| Production SkillPilot edge and backend | Enforce mTLS, OAuth and independent learner-session authorization |
+
+OpenAI documents `.app.json` references to existing apps and its managed MCP
+client certificate. The combination still requires real-host evidence; an app
+reference does not itself prove that any request uses that certificate.
+[OpenAI: Existing app references](https://learn.chatgpt.com/docs/enterprise/plugin-management#reference-an-existing-app-with-appjson),
+[OpenAI: mTLS](https://developers.openai.com/plugins/build/auth#mutual-tls-mtls)
+
+The originally proposed diagnostic sequence was:
+
+1. Obtain the **current** registered SkillPilot app's detail-page link from the
+   owner and confirm the intended connection. Do not reuse an ID from an old
+   screenshot or deleted connection. The package uses the app ID, not the
+   `plugin_` wrapper from the detail-page URL. No client secret or learning
+   session belongs in this input or the package.
+2. Prepare an isolated candidate with a distinct test identity. Derive
+   `SKILL.md`, `references/coaching-policy.md` and image assets byte-for-byte
+   from the canonical source. Remove the direct MCP `dependencies` entry from
+   the experimental `agents/openai.yaml`, retaining its interface and policy;
+   otherwise it still declares a second HTTP transport. Use `.app.json` and a
+   manifest `apps` reference, with **no** direct `.mcp.json` or `mcpServers`
+   declaration. Leave the existing direct exporter, its negative app-reference
+   tests, published `v1.1.0`, and the public submission source unchanged.
+3. Test the owner's actual host against the **unchanged production endpoint**.
+   Correlate a successful tool request with `VERIFIED` transport and the
+   configured OAuth profile. A successful install or login alone is not enough.
+4. Repeat with an independent personal beta account. Referencing an app grants
+   no access to it; workspace sharing is not proof of cross-account beta
+   availability. If the app is unavailable, record that access boundary as
+   unresolved rather than weakening server checks.
+5. Verify an actual Git-delivered package/Skill update and another authenticated
+   learning turn. Test web and native-mobile operation separately before
+   promising those surfaces. Keep every unobserved acceptance result pending.
+
+The suggestion of temporarily disabling certificate checks was a contingency,
+**not authorization to activate it**. `mTLS=enforce`, OAuth client checks and
+learner-session authorization stay unchanged. A certificate-less beta test
+would not validate the intended production security chain; it would also not
+solve any independent OAuth-client incompatibility.
+
+Public submission remains the actual HTTPS MCP server submitted through
+**With MCP**, not this existing-app reference wrapper. Shared backend and Skill
+behavior do not make the two packaging paths identical.
+[OpenAI: Submission requirements](https://developers.openai.com/plugins/deploy/submission#submit-the-mcp-server-not-an-existing-integration-reference)
+
+### Owner-selected registration and local candidate
+
+The owner supplied the current personal detail-page URL on 12 September 2026:
+`https://chatgpt.com/plugins/plugin_asdk_app_6aa39de25e70819195ce64ee4c22a0e0?view=personal`.
+The corresponding app ID is `asdk_app_6aa39de25e70819195ce64ee4c22a0e0`.
+The page displays **1.0.0**. This observation identifies the selected
+registration; it does not establish its endpoint, current tool snapshot,
+OAuth readiness, or deployed backend version. Do not dismiss the label as
+cosmetic or treat the registration as accepted solely because the page loads.
+
+A separate local candidate is prepared under
+`tmp/openai-app-reference-probe-20260912/`, with plugin identity
+`skillpilot-coach-v1-appref-test`, catalog identity
+`skillpilot-chatgpt-appref-test`, and version **1.1.0-appref.1** derived from
+the current canonical **1.1.0** package. It is not an installation or rollback
+to the registered app's displayed 1.0.0 package. Its `.app.json` uses only the
+documented `id` field: the installed Plugin Creator validator does not accept
+the optional `required` field shown in newer documentation. The current
+official reference permits that field to be omitted; this compatibility choice
+changes no server authorization rule.
+[OpenAI: App-reference validation](https://developers.openai.com/plugins/deploy/submission-errors#mcp-server-reference-errors)
+
+The canonical Skill name remains `skillpilot-coach-v1`; do not enable both the
+direct candidate and this probe in one test context. The local one-off helper
+`tmp/prepare_openai_app_reference_probe_20260912.mjs verify` checks the exact
+11-file inventory, source-content equality and all pending acceptance labels.
+The `tmp/` artifacts are local experiment files, not durable public releases.
+
+Current status: **stopped before installation; not the beta installation path**.
+The local artifacts remain uninstalled and unpublished; their pending receipts
+are not acceptance evidence. No production security settings were changed.
+
+## Required clean-install path
+
+The acceptance target is an independent personal beta account with **no prior
+SkillPilot plugin, registered connector, local configuration, or developer
+credentials**. Its complete workflow must be:
+
+1. Add the published SkillPilot Git marketplace.
+2. Install the current plugin and complete ordinary account connection/consent.
+3. Start a fresh learning session in the SkillPilot WebGUI and use the plugin
+   against the unchanged production MCP endpoint.
+4. Prove the same enforced mTLS, configured OAuth-client profile and independent
+   learner-session checks required in production.
+5. Receive a Git-delivered plugin/Skill update and repeat the authenticated
+   learning turn without manual file edits or developer setup.
+
+Operator-side service registration may be necessary, but it must be reproducible
+and make the resulting integration available to the intended independent
+accounts. A private owner-only app ID, per-tester secret setup, cache surgery,
+version-label changes or a certificate-less transport is not this workflow.
+Neither package format nor Git distribution grants app availability by itself.
+
+The currently documented formats preserve the distinction: portable
+`plugin.json`/`mcp.json` describes a bundled server; a registered-app mapping
+references an existing integration. No supported Git declaration that creates
+the needed hosted registration for a fresh independent account has yet been
+established. The direct desktop path failed the enforced certificate check;
+the personal app-reference probe does not resolve cross-account availability.
+This is an unresolved provisioning/transport prerequisite, not a passed beta
+installation or a reason to weaken authentication.
+[OpenAI: Package your plugin](https://developers.openai.com/plugins/build/plugins),
+[OpenAI: Existing app references](https://learn.chatgpt.com/docs/enterprise/plugin-management#reference-an-existing-app-with-appjson)
+
+Do not prescribe another installation workaround until a supported route meets
+these prerequisites. Real clean-account evidence, including updates, must
+precede calling that route beta-ready.
+
 ## Acceptance and updates
 
 The initial real-host matrix is deliberately unresolved:

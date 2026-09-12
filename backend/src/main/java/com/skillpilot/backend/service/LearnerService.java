@@ -1053,7 +1053,7 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "Card has already been tested today.");
         }
-        applyVerifiedRecallScheduling(cardState, request.passed(), testedAt, request.feedback());
+        applyVerifiedRecallScheduling(cardState, request.passed(), testedAt);
         nextState.put(card.id, cardState);
 
         upsertClientState(skillpilotId, context.goal().getId(), new ClientStateRequest(testedAt, nextState));
@@ -1136,8 +1136,7 @@ public class LearnerService {
             applyVerifiedRecallScheduling(
                     cardState,
                     result.passed(),
-                    testedAt,
-                    result.feedback());
+                    testedAt);
             nextState.put(card.id, cardState);
             savedResults.add(new VerifiedRecallBatchSavedResult(card.id, result.passed()));
         }
@@ -1738,8 +1737,7 @@ public class LearnerService {
     private void applyVerifiedRecallScheduling(
             Map<String, Object> cardState,
             boolean passed,
-            Instant testedAt,
-            String feedback) {
+            Instant testedAt) {
         Map<String, Object> previousVerified = toMutableStringObjectMap(cardState.get("verifiedRecall"));
         int attempts = Math.max(0, numberValue(previousVerified.get("attempts"), 0).intValue()) + 1;
         int failures = Math.max(0, numberValue(previousVerified.get("failures"), 0).intValue()) + (passed ? 0 : 1);
@@ -1777,9 +1775,6 @@ public class LearnerService {
         } else {
             verified.put("lastFailedAt", testedAt.toString());
             verified.put("nextEligibleAt", nextVerifiedRecallEligibleAt(testedAt).toString());
-        }
-        if (feedback != null && !feedback.isBlank()) {
-            verified.put("lastFeedback", feedback.trim());
         }
         cardState.put("verifiedRecall", verified);
     }

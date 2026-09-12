@@ -31,6 +31,7 @@ import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -39,6 +40,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcOperations;
@@ -240,6 +243,34 @@ class ClaudeV1VerifiedRecallLearningPlanContractTest {
                                     0, List.of(), null, null, null, 20, issuedAt),
                             learnerState(activeGoal.get()));
                 });
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"feedback", "answer", "reasoning"})
+    void recallRejectsChatDerivedTextBeforeCoreAccessOrReplayHashing(String field) throws Exception {
+        String requestId = UUID.randomUUID().toString();
+        Map<String, Object> arguments = new LinkedHashMap<>(arguments(requestId, true));
+        arguments.put("results", List.of(Map.of(
+                "cardId", CARD_ID,
+                "passed", true,
+                field, "synthetic-private-recall-canary")));
+
+        McpSchema.CallToolResult result = call(arguments);
+
+        assertThat(result.isError()).isTrue();
+        assertThat(payload(result))
+                .containsEntry("errorCode", "INVALID_INPUT")
+                .hasEntrySatisfying("message", message -> assertThat(message.toString())
+                        .contains("unsupported field"))
+                .allSatisfy((key, value) -> assertThat(value.toString())
+                        .doesNotContain("synthetic-private-recall-canary"));
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(INITIAL_STATE_VERSION);
+        verify(coachToolFacade, never()).getLearnerState(any());
+        verify(coachToolFacade, never()).recordVerifiedRecallResultsBatch(any(), any(), any());
+        assertThat(idempotencyRepository.findLive(
+                        sessionTokens.hash(connectionId), requestId, Instant.now()))
+                .isEmpty();
     }
 
     private Map<String, Object> arguments(String requestId, boolean passed) {
