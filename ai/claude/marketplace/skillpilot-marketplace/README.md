@@ -6,13 +6,13 @@ package, but distributes them through a repository that Claude can update.
 This personal marketplace is published independently by SkillPilot. It is not
 reviewed, endorsed, curated, or verified by Anthropic.
 
-Version **1.1.3** is the locally prepared replacement candidate, not yet
-published or deployed. Its normal display name remains **SkillPilot Coach v1**.
-The six plugin files match the newly prepared immutable 1.1.3 direct-install
-artifact. The published 1.1.2 package and its evidence remain immutable history.
-Repository publication, exact-client installation and update acceptance, and a
-first-party Marketplace guide decision are pending for 1.1.3. Local preparation
-does not update an existing Claude installation or publish this repository tree.
+This repository distributes version **1.1.3** under the normal display name
+**SkillPilot Coach v1**. Its six plugin files match the immutable 1.1.3
+direct-install artifact byte for byte. The published 1.1.2 package and its
+evidence remain immutable history.
+Exact-client installation and update acceptance, and a first-party Marketplace
+guide decision remain pending for 1.1.3. Repository publication does not update
+an existing Claude installation or establish real-client acceptance.
 
 ## Install in Claude
 

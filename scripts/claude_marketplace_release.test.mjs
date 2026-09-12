@@ -129,21 +129,75 @@ test("the renewed guide decision cannot imply account acceptance or survive with
   );
 });
 
-test("local 1.1.3 candidate resets all external publication and guide evidence", () => {
+test("published 1.1.3 marketplace does not imply guide approval or real-client acceptance", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
   assert.equal(lane.plugin.version, "1.1.3");
-  assert.equal(lane.activation.state, "prepared_not_published");
+  assert.equal(
+    lane.plugin.directInstallSha256,
+    "0e0b951233d72c0dd68b2cb2f631ae7fbdd1ad2411d373d60f9414bf0019f663",
+  );
+  assert.equal(lane.activation.state, "published_pending_acceptance");
   assert.equal(lane.activation.firstPartyUiRoute, "controlled_direct_install_beta");
   assert.equal(lane.activation.marketplaceUiSwitchAllowed, false);
   for (const [key, value] of Object.entries(lane.activation.firstPartyGuideDecision)) {
     assert.equal(value, key === "status" ? "pending" : null, key);
   }
-  for (const evidence of lane.activation.evidence) {
+  const repositoryEvidence = lane.activation.evidence[0];
+  assert.equal(repositoryEvidence.id, "public-repository-default-branch");
+  assert.equal(repositoryEvidence.status, "pass");
+  assert.equal(repositoryEvidence.candidateVersion, lane.plugin.version);
+  assert.equal(repositoryEvidence.candidateSha256, lane.plugin.directInstallSha256);
+  assert.match(repositoryEvidence.revision, /^[0-9a-f]{40}$/u);
+  assert.equal(
+    repositoryEvidence.treeSha256,
+    "96675808155fa7d48b5890c617975ba8b25964ec20dcf01c3ab184408d459799",
+  );
+  assert.equal(new Date(repositoryEvidence.verifiedAt).toISOString(), repositoryEvidence.verifiedAt);
+  assert.match(
+    repositoryEvidence.evidenceRef,
+    /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u,
+  );
+  for (const evidence of lane.activation.evidence.slice(1)) {
     for (const [key, value] of Object.entries(evidence)) {
       if (key !== "id") assert.equal(value, key === "status" ? "pending" : null, key);
     }
   }
+});
+
+test("a replacement candidate must reset both prior guide approval and publication evidence", () => {
+  const historicalLane = loadHistorical112MarketplaceLane();
+  const replacement = structuredClone(historicalLane);
+  replacement.plugin = structuredClone(loadClaudeMarketplaceLane(repositoryRoot).plugin);
+
+  assert.throws(
+    () => validateClaudeMarketplaceLane(replacement),
+    /firstPartyGuideDecision\.candidateVersion mismatch/u,
+  );
+  replacement.activation.firstPartyGuideDecision = Object.fromEntries(
+    Object.keys(replacement.activation.firstPartyGuideDecision).map(
+      (key) => [key, key === "status" ? "pending" : null],
+    ),
+  );
+  assert.throws(
+    () => validateClaudeMarketplaceLane(replacement),
+    /passing evidence public-repository-default-branch\.candidateVersion mismatch/u,
+  );
+
+  replacement.activation.state = "prepared_not_published";
+  replacement.activation.firstPartyUiRoute = "controlled_direct_install_beta";
+  replacement.activation.marketplaceUiSwitchAllowed = false;
+  replacement.activation.evidence = replacement.activation.evidence.map(
+    (evidence) => Object.fromEntries(Object.keys(evidence).map(
+      (key) => [key, key === "id" ? evidence.id : key === "status" ? "pending" : null],
+    )),
+  );
+  validateClaudeMarketplaceLane(replacement);
+  assert.deepEqual(
+    replacement.activation.evidence.map(({ status }) => status),
+    ["pending", "pending", "pending"],
+  );
+  assert.deepEqual(historicalLane, loadHistorical112MarketplaceLane());
 });
 
 test("historical marketplace lane retains published 1.1.1 without claiming real-client acceptance", () => {

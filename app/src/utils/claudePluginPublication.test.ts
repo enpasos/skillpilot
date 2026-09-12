@@ -286,6 +286,8 @@ interface MarketplaceEvidence {
   candidateSha256?: string | null
   revision?: string | null
   treeSha256?: string | null
+  verifiedAt?: string | null
+  evidenceRef?: string | null
 }
 const marketplaceLane = JSON.parse(readFileSync(marketplaceLanePath, 'utf8')) as {
   target?: { repositoryUrl?: string }
@@ -311,11 +313,11 @@ assert.equal(
 )
 assert.equal(marketplaceLane.plugin?.version, candidateManifest.version)
 assert.equal(marketplaceLane.plugin?.directInstallSha256, productionIndex.plugins[0]?.sha256)
-assert.equal(marketplaceLane.activation?.state, 'prepared_not_published')
+assert.equal(marketplaceLane.activation?.state, 'published_pending_acceptance')
 assert.equal(
   marketplaceLane.activation?.firstPartyUiRoute,
   'controlled_direct_install_beta',
-  'the new local candidate waits for its own Marketplace guide decision',
+  'repository publication still waits for its own Marketplace guide decision',
 )
 assert.equal(
   marketplaceLane.activation?.marketplaceUiSwitchAllowed,
@@ -329,13 +331,17 @@ assert.equal(guideDecision?.candidateSha256, null)
 const repositoryEvidence = marketplaceLane.activation?.evidence?.find(
   entry => entry.id === 'public-repository-default-branch',
 )
-assert.equal(repositoryEvidence?.status, 'pending')
-assert.equal(repositoryEvidence?.candidateVersion, null)
-assert.equal(repositoryEvidence?.candidateSha256, null)
-assert.equal(repositoryEvidence?.revision, null)
-assert.equal(repositoryEvidence?.treeSha256, null)
-assert.equal(guideDecision?.repositoryRevision, repositoryEvidence?.revision)
-assert.equal(guideDecision?.repositoryTreeSha256, repositoryEvidence?.treeSha256)
+assert.equal(repositoryEvidence?.status, 'pass')
+assert.equal(repositoryEvidence?.candidateVersion, candidateManifest.version)
+assert.equal(repositoryEvidence?.candidateSha256, productionIndex.plugins[0]?.sha256)
+assert.match(repositoryEvidence?.revision ?? '', /^[a-f0-9]{40}$/u)
+assert.equal(repositoryEvidence?.treeSha256,
+  '96675808155fa7d48b5890c617975ba8b25964ec20dcf01c3ab184408d459799')
+assert.equal(new Date(repositoryEvidence?.verifiedAt ?? '').toISOString(), repositoryEvidence?.verifiedAt)
+assert.match(repositoryEvidence?.evidenceRef ?? '',
+  /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u)
+assert.equal(guideDecision?.repositoryRevision, null)
+assert.equal(guideDecision?.repositoryTreeSha256, null)
 for (const pendingEvidenceId of [
   'clean-account-marketplace-install',
   'uploaded-plugin-migration-and-marketplace-refresh',
@@ -352,6 +358,8 @@ for (const pendingEvidenceId of [
   assert.equal(evidence?.candidateSha256, null)
   assert.equal(evidence?.revision, null)
   assert.equal(evidence?.treeSha256, null)
+  assert.equal(evidence?.verifiedAt, null)
+  assert.equal(evidence?.evidenceRef, null)
 }
 assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, false)
 

@@ -4,10 +4,56 @@ This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
 Anthropic-curated or Anthropic-verified listing. Version 1.1.3 is the current
-locally prepared replacement candidate. The previously published 1.1.2 package
+published personal Marketplace package. The previously published 1.1.2 package
 and its evidence remain immutable history.
 
-## Local 1.1.3 daily-quota candidate, 11 September 2026
+## 1.1.3 production and Marketplace publication, 12 September 2026
+
+The Product Owner explicitly authorized both the production deployment and
+subsequent publication of the prepared 1.1.3 package. Production was deployed
+from `f455074b18a7d4bc03efbe0c3112c344403a0f9a` through
+`./deploy_skillpilot.sh`, after a restricted database backup and preservation
+of the previous server artifact. The update fixes the two stale Whitepaper
+image digests and synchronizes their runtime copies without changing inventory
+counts or review claims. Liquibase migration `033-add-learner-goal-completions`
+is `EXECUTED`; the service is running with `NRestarts=0`.
+
+The deployment completed its build, focused backend security tests, public
+readiness, exact Claude artifact, frontend resources, AI-transparency,
+OpenAI mTLS/route matrix and source-rationale checks. The optional OpenAI Apps
+challenge comparison was skipped because no expected challenge was supplied
+to that check; this is not a claim of challenge or real-host acceptance.
+All eight public Claude support synthetic checks passed at
+`2026-09-12T06:31:26.766Z`, binding the 1.1.3 artifact below.
+
+[Publication PR #5](https://github.com/enpasos/skillpilot-claude-marketplace/pull/5)
+passed the required Marketplace validation and was merged. Verification of the
+actual public default branch with `verify-repository` then proved:
+
+- repository revision: `f2d22431f84278f62cc37d8ebbe0bb92295aec13`;
+- verification timestamp: `2026-09-12T06:33:19.000Z`;
+- closed publication inventory: 11 files;
+- tree SHA-256: `96675808155fa7d48b5890c617975ba8b25964ec20dcf01c3ab184408d459799`;
+- plugin: 1.1.3, 56,661 bytes, SHA-256
+  `0e0b951233d72c0dd68b2cb2f631ae7fbdd1ad2411d373d60f9414bf0019f663`;
+- both strict Claude validations and an isolated install from the actual public
+  HTTPS repository passed; the
+  [default-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/34678417257)
+  also passed.
+
+Only `public-repository-default-branch` is now `pass`; activation is
+`published_pending_acceptance`. The guide decision, clean-account installation,
+real-account refresh, privacy, legal and support acceptance remain pending.
+`marketplaceUiSwitchAllowed=false`, the first-party guide remains
+`controlled_direct_install_beta`, and `openPublicBetaReady=false`.
+Publication does not update an existing Claude installation or establish
+real-client acceptance. The six immutable packaged files retain their
+preparation-time text; the Marketplace root README and changelog describe the
+subsequent publication. No prior package or historical approval was rebound.
+
+## Historical local 1.1.3 preparation, 11 September 2026
+
+The following records the state before the publication above.
 
 The Product Owner authorized local preparation using the existing candidate
 workflow below. Today’s newly completed due plan goals, including older due
@@ -336,13 +382,13 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.2`
+- Current candidate version: `1.1.3`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
 - Current candidate SHA-256: the exact binding in
   `ai/claude/plugin/skillpilot-coach-v1/release/direct-install-beta.json`;
-  the published 1.1.1 binding remains in its archived release dossier.
+  earlier published bindings remain in their archived release dossiers.
 
 Anthropic allows a marketplace entry name to differ from the embedded plugin
 name. SkillPilot intentionally keeps the technical name equal, but Claude still
@@ -626,17 +672,22 @@ revision before activation:
 4. Return to `https://skillpilot.com/` and start a new learning session through
    the established first-party handoff.
 5. Confirm that the initial response gives one compact daily summary with
-   total currently mastered out of today's due goals and the open count for
-   each subject. Mention overdue work only when positive; do not repeat three
-   counts per subject or a sentence stating there is no backlog.
+   actual completions today credited toward each subject's fixed daily quota
+   and the remaining count for every subject. Completing an older due goal
+   must count toward that subject's quota; extra work must be acknowledged
+   separately without filling another subject's quota. Show remaining backlog
+   only on an explicit detail request, not as a routine reminder. A zero-quota
+   day must not be described as completed required work.
    Prove that an unavailable plan produces only the safe partial-data warning
-   and no plan or landscape identifier, and that the mastered-today figure is
-   not described as a same-day event log.
+   and no plan or landscape identifier. Counts must come from backend completion
+   evidence, not an inferred completion date from a mastery snapshot.
 6. With no active goal, prove that Claude calls
-   `resume_skillpilot_learning_plan` only when `resumeAvailable` is true, uses
+   `resume_skillpilot_learning_plan` automatically only when `resumeAvailable`
+   is true and guidance is `resume`, uses
    the returned canonical context and continues the backend-selected goal
    without asking for the Web-app **Weiterlernen** button. Also prove that no
-   resume call occurs when the flag is false.
+   resume call occurs when the flag is false. With guidance `complete`, further
+   continuation requires an explicit request for voluntary extra work.
 7. Exercise the intended coaching flow and both interactive MCP Apps on every
    surface that SkillPilot intends to advertise. Anthropic's technical
    availability is not SkillPilot acceptance evidence.
