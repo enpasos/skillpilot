@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.1.4",
+  "pluginVersion": "1.1.3",
   "state": "PRE_SUBMISSION",
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
@@ -28,12 +28,12 @@
     "subagents"
   ],
   "productOwnerAuthorization": {
-    "approvedAt": "2026-09-12",
+    "approvedAt": "2026-09-11",
     "approvedBy": "product-owner",
-    "scope": "Product Owner explicitly required removing workFeedback, outcomeFeedback and Recall feedback from both providers and authorized the corrective backend and Claude Marketplace rollout after CI passes. Version 1.1.4 is the controlled-beta privacy correction under the existing plugin identity; it deliberately contracts input fields and requires corrected backend, refreshed connector tools and current instructions together. This decision authorizes no inherited real-client acceptance, Anthropic Console submission or general public activation.",
+    "scope": "Prepare Claude plugin 1.1.3 locally for motivational daily quotas backed by completion events, voluntary additional work, coordinated backend/UI guidance and regression tests. Local artifact/index and marketplace-tree preparation are authorized; publication, deployment, portal writes and real-client acceptance are not.",
     "excludes": [
       "Connector Directory lifecycle, gates and Team/Enterprise submission access",
-      "Credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance"
+      "External publication, deployment, credential changes and inherited candidate acceptance"
     ]
   },
   "externalStateEvidence": {
@@ -42,9 +42,9 @@
   },
   "releaseLine": {
     "major": 1,
-    "version": "1.1.4",
+    "version": "1.1.3",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "Version 1.1.4 is the expressly authorized controlled-beta privacy correction under the same plugin identity. Removed prose inputs are intentionally not backward compatible: activate the corrected backend and refresh connector tools and plugin instructions together. OAuth, session, tool identity and state ownership remain unchanged. Every earlier package and evidence record stays immutable; no prior acceptance transfers."
+    "compatibilityPolicy": "Compatible plugin changes receive a new patch version under Product Owner control. Version 1.1.3 is the sole locally prepared replacement candidate; the existing 1.1.2 release remains unchanged until a separately authorized rollout. All retained versioned packages and evidence are immutable."
   },
   "stateTransitions": [
     {
@@ -63,5 +63,5 @@
       "requires": "An approved public-listing installation and native Android end-to-end verification bound to the same frozen plugin candidate digest and exact candidate revision."
     }
   ],
-  "breakingChangePolicy": "Preserve all released package bytes and evidence. The Product Owner expressly authorized the 12 September 2026 controlled-beta removal of prohibited assessment-prose inputs as correction 1.1.4 under the existing identity, with coordinated backend and catalog rollout. This narrow privacy correction is not a general compatibility exception. Other breaking plugin, identity, OAuth, state or tool-contract changes require a separately approved major-line candidate."
+  "breakingChangePolicy": "After submission or publication, preserve the released v1 package and remote contract. Breaking plugin, identity, OAuth, state or tool-contract changes require a separately approved major-line candidate."
 }

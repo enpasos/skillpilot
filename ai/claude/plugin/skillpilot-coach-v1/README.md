@@ -2,18 +2,18 @@
 
 SkillPilot Coach v1 is the public-plugin candidate for curriculum-grounded
 SkillPilot learning coaching. Its product scope is limited to eligible paid
-Claude Chat on the Web and the native Android app. Version 1.1.3 is the sole
-current replacement candidate, prepared locally only. It has not been published
-or deployed. The existing 1.1.2 release and its immutable download remain
-unchanged until a separately authorized rollout; older packages are not a
+Claude Chat on the Web and the native Android app. Version 1.1.4 is the sole
+current replacement candidate. Local preparation does not establish deployment,
+Marketplace publication or real-client acceptance. The existing 1.1.3 artifact
+and its publication evidence remain immutable; older packages are not a
 fallback for testing this candidate.
 
 Earlier v1 direct-install packages were demonstrated in paid Claude Web chat.
 The Product Owner also used an earlier account-level direct installation with a
 Claude Pro account in the native Claude app on Android. Those observations do
-not transfer to the 1.1.3 candidate. Exact-candidate direct-install,
+not transfer to the 1.1.4 candidate. Exact-candidate direct-install,
 public-listing installation and the complete Android learning flow remain
-pending until they are verified for 1.1.3. The earlier Android observation also
+pending until they are verified for 1.1.4. The earlier Android observation also
 does not establish that the package can be installed from Android itself or
 that a public listing will reach Android. iOS, Claude Desktop Chat, Cowork and
 public Claude Code remain outside this candidate's claims.
@@ -44,7 +44,18 @@ remote SkillPilot connector. All fourteen MCP tools and both interactive MCP App
 come from that connector; the plugin does not duplicate their schemas,
 resources, or UI bytes.
 
-Version 1.1.3 keeps the chat plan-first with a compact daily summary. For example:
+The 1.1.4 privacy correction deliberately removes assessment prose from tool
+inputs. Claude judges the work and writes feedback and success messages in the
+chat. Mastery calls carry only the structured completion decision; Verified
+Recall carries only the required card identifiers and pass/fail results, never
+answers, reasoning, `workFeedback`, `outcomeFeedback` or Recall `feedback`.
+This is an intentional input-contract contraction, not backward compatibility.
+Use the corrected backend together with refreshed connector tools and this
+plugin version. Old cached inputs are rejected; they must not be reintroduced
+to make an old installation work. OAuth, learner-session, tool identity and
+backend-owned progression boundaries remain unchanged.
+
+Version 1.1.4 keeps the chat plan-first with a compact daily summary. For example:
 “Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik.” Today's newly
 completed due plan goals count first toward a stable daily quota for their
 subject, including goals from earlier days. The backend owns the completion
@@ -75,7 +86,7 @@ from inside the Android app, Claude Desktop Chat, Cowork, hooks, subagents, or
 public Claude Code. Those surfaces require their own acceptance evidence and a
 later reviewed release before SkillPilot can advertise them.
 
-The historical direct-install observations are not evidence for 1.1.3 or public
+The historical direct-install observations are not evidence for 1.1.4 or public
 Directory availability. Submission readiness requires this exact candidate to
 complete the dedicated Web and Android real-client acceptance gates.
 Public-listing reach on Android remains a publication verification, not a

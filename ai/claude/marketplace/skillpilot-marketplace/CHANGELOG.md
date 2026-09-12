@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.4 - 2026-09-12
+
+- Keep coach assessment, feedback and success messages in the Claude chat;
+  stop sending `workFeedback`, `outcomeFeedback` or Recall `feedback` to Core.
+- Require the corrected backend and refreshed connector tools with this
+  plugin. Removed prose inputs are intentionally not backward compatible.
+- Preserve the fourteen tool identities, OAuth and learner-session boundaries,
+  learner progress, every published artifact and the complete 1.1.3 dossier.
+- Reset new-candidate repository and real-client evidence to pending.
+  Local preparation and repository publication do not prove host acceptance.
+
 ## 1.1.3 - 2026-09-12
 
 - Credit newly completed due plan goals, including older due goals, toward a

@@ -3,9 +3,33 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.3 is the current
-published personal Marketplace package. The previously published 1.1.2 package
-and its evidence remain immutable history.
+Anthropic-curated or Anthropic-verified listing. Version 1.1.4 is the current
+privacy-correction candidate; 1.1.3 remains the last verified published package
+until the new CI-gated rollout is completed. Published packages and their
+evidence remain immutable history.
+
+## 1.1.4 privacy correction, 12 September 2026
+
+The Product Owner required removal of `workFeedback`, `outcomeFeedback` and
+Recall `feedback`, then authorized deployment of both the corrected backend
+and Claude Marketplace after CI passes. Claude creates its own feedback and
+success messages in the chat; Core accepts only structured completion results.
+
+This deliberately contracts the input schema. It is not backward compatible
+with old cached tool inputs. The controlled-beta correction keeps the plugin,
+tool and OAuth identities, session boundary and progression ownership unchanged.
+Deploy the corrected backend and immutable 1.1.4 artifact first, then publish
+the exact Marketplace tree and refresh installed plugin/connector catalogs.
+Confirm the installed version and a successful mastery write in a fresh Claude
+session. Never restore the prohibited text fields as a compatibility workaround.
+
+The complete seven-file 1.1.3 release dossier is archived under
+`ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.3/`, with immutable hashes
+enforced by the release checker. All 1.1.4 repository, guide and real-client
+evidence starts pending; historical automatic updates do not establish new
+candidate acceptance. Local preparation fixes artifact/index drift without
+overwriting any published artifact. Publication and production evidence must
+be recorded only after the corresponding operation actually succeeds.
 
 ## 1.1.3 production and Marketplace publication, 12 September 2026
 
@@ -398,7 +422,7 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.3`
+- Current candidate version: `1.1.4`
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only

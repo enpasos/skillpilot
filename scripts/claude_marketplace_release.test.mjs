@@ -130,7 +130,8 @@ test("the renewed guide decision cannot imply account acceptance or survive with
 });
 
 test("published 1.1.3 marketplace does not imply guide approval or real-client acceptance", () => {
-  const lane = loadClaudeMarketplaceLane(repositoryRoot);
+  const lane = JSON.parse(readFileSync(resolve(repositoryRoot,
+    "ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.3/marketplace-publication.json"), "utf8"));
   validateClaudeMarketplaceLane(lane);
   assert.equal(lane.plugin.version, "1.1.3");
   assert.equal(
@@ -160,6 +161,33 @@ test("published 1.1.3 marketplace does not imply guide approval or real-client a
   );
   for (const evidence of lane.activation.evidence.slice(1)) {
     for (const [key, value] of Object.entries(evidence)) {
+      if (key !== "id") assert.equal(value, key === "status" ? "pending" : null, key);
+    }
+  }
+});
+
+test("privacy correction 1.1.4 cannot inherit repository or client acceptance", () => {
+  const lane = loadClaudeMarketplaceLane(repositoryRoot);
+  validateClaudeMarketplaceLane(lane);
+  assert.equal(lane.plugin.version, "1.1.4");
+  const repositoryEvidence = lane.activation.evidence.find(({ id }) => id === "public-repository-default-branch");
+  if (repositoryEvidence.status === "pending") {
+    assert.equal(lane.activation.state, "prepared_not_published");
+    assert.equal(lane.activation.marketplaceUiSwitchAllowed, false);
+  }
+  for (const record of [lane.activation.firstPartyGuideDecision, ...lane.activation.evidence]) {
+    if (record.status !== "pending") {
+      assert.equal(record.candidateVersion, lane.plugin.version);
+      assert.equal(record.candidateSha256, lane.plugin.directInstallSha256);
+      const revision = record.revision ?? record.repositoryRevision;
+      const treeSha256 = record.treeSha256 ?? record.repositoryTreeSha256;
+      assert.match(revision, /^[0-9a-f]{40}$/u);
+      assert.match(treeSha256, /^[0-9a-f]{64}$/u);
+      assert.notEqual(revision, "f2d22431f84278f62cc37d8ebbe0bb92295aec13");
+      assert.notEqual(treeSha256, "96675808155fa7d48b5890c617975ba8b25964ec20dcf01c3ab184408d459799");
+      continue;
+    }
+    for (const [key, value] of Object.entries(record)) {
       if (key !== "id") assert.equal(value, key === "status" ? "pending" : null, key);
     }
   }
@@ -543,7 +571,7 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.1.3");
+    assert.equal(prepared.version, "1.1.4");
     assert.equal(prepared.files.length, 11);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
@@ -602,7 +630,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.1.3",
+                version: "1.1.4",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {

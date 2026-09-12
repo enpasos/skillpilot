@@ -6,12 +6,12 @@ package, but distributes them through a repository that Claude can update.
 This personal marketplace is published independently by SkillPilot. It is not
 reviewed, endorsed, curated, or verified by Anthropic.
 
-This repository distributes version **1.1.3** under the normal display name
-**SkillPilot Coach v1**. Its six plugin files match the immutable 1.1.3
-direct-install artifact byte for byte. The published 1.1.2 package and its
+This repository distributes version **1.1.4** under the normal display name
+**SkillPilot Coach v1**. Its six plugin files match the immutable 1.1.4
+direct-install artifact byte for byte. The published 1.1.3 package and its
 evidence remain immutable history.
 Exact-client installation and update acceptance, and a first-party Marketplace
-guide decision remain pending for 1.1.3. Repository publication does not update
+guide decision remain pending for 1.1.4. Repository publication does not update
 an existing Claude installation or establish real-client acceptance.
 
 ## Install in Claude
@@ -54,9 +54,15 @@ Technical installation ID: `skillpilot-coach-v1@skillpilot-marketplace`.
 
 ## Updates
 
+Version 1.1.4 keeps assessment feedback in the Claude conversation. It removes
+assessment-prose tool inputs and therefore requires the corrected SkillPilot
+backend and a refreshed connector tool catalog together with this plugin.
+This is an intentional privacy correction, not backward-compatible support
+for cached older schemas. OAuth, session and progression boundaries stay intact.
+
 Check the version offered in the plugin's **Contents** view and the version of
 your installed plugin. For an explicitly opened candidate test, both should
-read **1.1.3** before starting a new Claude
+read **1.1.4** before starting a new Claude
 session. A GitHub release alone does not prove that Claude has synchronized or
 updated your installation; the available synchronization controls vary by
 Claude surface. If the catalog is stale, contact <support@skillpilot.com>.
