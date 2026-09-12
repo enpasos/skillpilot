@@ -68,6 +68,12 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    // The provider-isolation test reads this independent, checked-in baseline.
+    // Draft-only updates must invalidate local test results as well as fresh CI runs.
+    inputs.file(layout.projectDirectory.file(
+        "../contracts/drafts/openai/skillpilot-coach-v1/1.1.0-SNAPSHOT/contract/contract.json"
+    )).withPropertyName("openAiCoachV1CandidateContract")
+        .withPathSensitivity(PathSensitivity.RELATIVE)
     // The suite runs 22 @SpringBootTest classes whose distinct property sets each pin their own
     // cached Spring context in this one JVM. 1536m stopped being enough when the Claude v1
     // connector added ten of them, and the executor died with "Java heap space" rather than a

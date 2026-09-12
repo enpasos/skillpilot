@@ -1,9 +1,14 @@
 package com.skillpilot.backend.connectors.claude.v1;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.openai.de.health.OpenAiDeCoachContractFingerprint;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -55,10 +60,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 })
 class ClaudeV1OpenAiDifferentialContractTest {
 
-    // Independently pinned to contracts/drafts/openai/skillpilot-coach-v1/
-    // 1.1.0-SNAPSHOT/contract/contract.json. Do not derive this from the runtime under test.
-    private static final String OPENAI_1_1_0_CONTRACT_SHA256 =
-            "65bf6fc6e7c5fd18a05f87c1e7deb973a40ee3fdb2a6cf1ca1262f84d8f79fc7";
+    // Read the independently committed candidate, never regenerate it from the runtime under test.
+    // Keeping a second literal digest here would drift whenever the authorized draft is refreshed.
+    private static final Path OPENAI_1_1_0_CONTRACT = Path.of(
+            "../contracts/drafts/openai/skillpilot-coach-v1/1.1.0-SNAPSHOT/contract/contract.json");
 
     private static final Set<String> OPENAI_1_1_0_TOOL_NAMES = Set.of(
             "get_skillpilot_context",
@@ -112,7 +117,7 @@ class ClaudeV1OpenAiDifferentialContractTest {
     }
 
     @Test
-    void openAiToolSurfaceIsUnaffectedByTheClaudeLane() {
+    void openAiToolSurfaceIsUnaffectedByTheClaudeLane() throws IOException {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = openAiContract.toolSpecifications();
         assertEquals(14, tools.size(), "The OpenAI 1.1.0 candidate must publish exactly 14 tools");
 
@@ -128,8 +133,21 @@ class ClaudeV1OpenAiDifferentialContractTest {
         String fingerprint = OpenAiDeCoachContractFingerprint.sha256(openAiContract);
         assertNotNull(fingerprint);
         assertEquals(
-                OPENAI_1_1_0_CONTRACT_SHA256,
+                preparedOpenAiContractSha256(),
                 fingerprint,
                 "Enabling Claude must preserve the explicit OpenAI 1.1.0 candidate contract");
+    }
+
+    private static String preparedOpenAiContractSha256() throws IOException {
+        assertTrue(Files.isRegularFile(OPENAI_1_1_0_CONTRACT),
+                "The independently prepared OpenAI 1.1.0 candidate must be checked in");
+        JsonNode candidate = new ObjectMapper().readTree(Files.readString(OPENAI_1_1_0_CONTRACT));
+        assertEquals(1, candidate.path("schemaVersion").asInt());
+        assertEquals("skillpilot-coach-v1", candidate.path("pluginIdentity").asText());
+        assertEquals(1, candidate.path("contractMajor").asInt());
+        String fingerprint = candidate.path("contractSha256").asText();
+        assertTrue(fingerprint.matches("[0-9a-f]{64}"),
+                "The prepared candidate must contain a valid contract fingerprint");
+        return fingerprint;
     }
 }

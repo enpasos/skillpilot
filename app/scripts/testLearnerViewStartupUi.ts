@@ -163,7 +163,15 @@ try {
   )
   const waitReady = async (page: Page, title: string) => {
     await page.getByTestId('learner-current-goal').getByRole('heading', { name: title }).waitFor({ timeout: 20_000 })
-    await page.getByTestId('learner-plan-today-overview').getByText('2 Planziele sind bis heute noch offen.').waitFor()
+    const overview = page.getByTestId('learner-plan-today-overview')
+    await overview.getByText('Noch 2 Lernziele bis zu deinen heutigen Tageszielen.', { exact: true }).waitFor()
+    for (const subject of ['Mathematik', 'Physik']) {
+      const progress = overview.getByRole('progressbar', { name: `Tagesziel: ${subject}`, exact: true })
+      await progress.waitFor()
+      assert.equal(await progress.getAttribute('value'), '0', `${subject} must not show fabricated daily completions`)
+      assert.equal(await progress.getAttribute('max'), '1', `${subject} must retain its own daily quota`)
+      assert.equal(await progress.getAttribute('aria-valuetext'), '0 von 1 Lernzielen heute geschafft')
+    }
   }
 
   // Delay the two independent authoritative reads in both possible orders.
