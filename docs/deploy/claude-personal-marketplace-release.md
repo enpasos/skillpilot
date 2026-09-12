@@ -3,11 +3,12 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.5 is the current
-instruction-consolidation candidate. Version 1.1.4 remains the last verified
-production and public Marketplace release until the new coordinated rollout
-is completed. Real-client acceptance remains pending. Earlier published
-packages and their evidence remain immutable history.
+Anthropic-curated or Anthropic-verified listing. Version 1.1.5 is deployed in
+production and published in the public Marketplace, with the exact artifact
+and repository independently verified. Real-client acceptance remains pending;
+repository publication does not establish installation or synchronization in
+every account. Earlier published packages and their evidence remain immutable
+history.
 
 ## 1.1.5 instruction consolidation, 12 September 2026
 
@@ -27,11 +28,10 @@ feedback fields or imply host acceptance.
 The complete seven-file 1.1.4 release dossier is archived byte-identically under
 `ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.4/`; the release checker
 protects its exact hashes. No repository, guide or real-client approval is
-inherited by 1.1.5. New evidence starts pending. Validate the final instruction
-content first, then prepare its immutable artifact and local publication index.
-Only after CI passes may production serve that artifact and the Marketplace
-publish the matching tree. Until those separate operations succeed, the public
-deployment and remote default branch continue to serve 1.1.4.
+inherited by 1.1.5. New evidence started pending. The final instruction content,
+immutable artifact and local publication index were validated before rollout.
+Production and Marketplace publication followed green CI as recorded below;
+only the independently verified repository evidence now passes.
 
 ### Local verification scope
 
@@ -76,6 +76,71 @@ test-harness deadlock guard replaces the stopwatch; the 50-ms test attempt
 budget, production six-second hard maximum and retry/cache policy are unchanged.
 All 106 expanded OAuth and connection-service tests then passed locally. These
 are test-only corrections, not changes to production authorization or scheduling.
+
+### Completed 1.1.5 production and Marketplace rollout
+
+All five source push workflows passed on
+`13726bb00b8ae55fec40141eed415346ffa69633` before production changed:
+[34698744283](https://github.com/enpasos/skillpilot/actions/runs/34698744283),
+[34698744194](https://github.com/enpasos/skillpilot/actions/runs/34698744194),
+[34698744257](https://github.com/enpasos/skillpilot/actions/runs/34698744257),
+[34698744337](https://github.com/enpasos/skillpilot/actions/runs/34698744337) and
+[34698744205](https://github.com/enpasos/skillpilot/actions/runs/34698744205).
+The full local backend run also passed: 202 suites, 1,788 tests, zero failures
+and nine skips. Twenty Marketplace regression tests passed. These checks do
+not substitute for account-level Claude acceptance.
+
+A fresh restricted backup was preserved under
+`/home/enpasos/backups/skillpilot-predeploy-1.1.5-6kwlUBtY` before deployment.
+The SQL backup contains 10,620,167 bytes with mode `0600`; privacy checks before
+and after creation passed without exporting prohibited feedback as evidence.
+The archived previous server JAR has SHA-256
+`59e62af381a3f87ca757f689c197b7708467547d0b6547728c37e819098c1e9d`.
+This records backup creation, not a restore test. The service starts through
+`bootRun`, so that JAR alone is not a complete runtime rollback; rollback must
+also restore the intended source and rebuilt resources without overwriting
+learner data or unrelated generated files.
+
+The exact green source was deployed through `./deploy_skillpilot.sh`. The
+production build, focused security tests, public artifact, frontend shell,
+AI-transparency, OpenAI mTLS/route matrix and source-rationale checks all passed.
+Readiness returned HTTP 200 after 40 seconds. The service became active at
+`2026-09-12T14:56:49Z` with `NRestarts=0`, and OpenAI mTLS remained `enforce`.
+The new deployment JAR has SHA-256
+`de70d9b515ff6e68ba2f0aab1e3a5e656dff2614471b5df0f490a2867fd618ad`.
+The optional OpenAI Apps challenge comparison was skipped because no expected
+challenge was supplied. All eight public Claude synthetic checks passed at
+`2026-09-12T14:58:01.369Z`; the scheduled support check
+[passed on attempt 2](https://github.com/enpasos/skillpilot/actions/runs/34699176733)
+at `2026-09-12T15:02:08Z` after the artifact was live.
+
+At the Product Owner's request, the Marketplace README now focuses on 1.1.5
+and explains that automatic updates were observed in two Claude accounts during
+an earlier beta release. It no longer incorrectly says repository publication
+cannot update an existing installation. This does not claim that all accounts,
+or those same two accounts, have received 1.1.5. These README and changelog
+clarifications changed only the Marketplace publication tree, not the plugin
+artifact.
+
+[Publication PR #7](https://github.com/enpasos/skillpilot-claude-marketplace/pull/7)
+was merged. `node scripts/claude_marketplace_release.mjs verify-repository`
+then verified the actual public HTTPS default branch, its closed file inventory,
+both strict Claude validations and an isolated installation from that repository:
+
+- repository revision: `228f6bd59f30fa03e3f0e44fa69ffaa122f98323`;
+- verification timestamp: `2026-09-12T15:03:16.000Z`;
+- publication inventory: 12 files;
+- tree SHA-256: `c854f82f337200a75ee9ad1078d1f22b8c219e5e4543e0fa62da38a19b24f4b2`;
+- plugin: 1.1.5, 32,535 bytes, SHA-256
+  `8b1713178bbb289bc0b6669afa6e60328f2b362d42651353a78a869fe6aa76c1`;
+- [default-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/34701054308):
+  passed on that exact revision, observed at `2026-09-12T15:04:23Z`.
+
+Only `public-repository-default-branch` is recorded as `pass`; activation is
+`published_pending_acceptance`. Clean-account installation, real-account update
+and migration, other real-client acceptance, and the first-party guide decision
+remain pending. `marketplaceUiSwitchAllowed=false`; the first-party route remains
+`controlled_direct_install_beta`. No artifact or historical approval was rebound.
 
 ## 1.1.4 privacy correction, 12 September 2026
 

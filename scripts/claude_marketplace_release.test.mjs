@@ -61,6 +61,18 @@ const marketplaceTemplate = JSON.parse(
   ),
 );
 
+test("marketplace README focuses on the current version and explains observed automatic updates", () => {
+  const readme = readFileSync(resolve(repositoryRoot,
+    "ai/claude/marketplace/skillpilot-marketplace/README.md"), "utf8");
+  const mentionedVersions = new Set(readme.match(/\b\d+\.\d+\.\d+\b/gu));
+  assert.deepEqual([...mentionedVersions], [pluginManifest.version]);
+  assert.match(readme, /automatic updates/u);
+  assert.match(readme, /observed in two Claude accounts/u);
+  assert.match(readme, /Update timing.*can vary/u);
+  assert.match(readme, /Verification of this version in individual clients/u);
+  assert.doesNotMatch(readme, /Repository publication does not update/u);
+});
+
 test("historical published 1.1.2 marketplace keeps the normal identity and pending account acceptance", () => {
   const lane = loadHistorical112MarketplaceLane();
   validateClaudeMarketplaceLane(lane);
