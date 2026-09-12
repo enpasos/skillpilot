@@ -518,6 +518,22 @@ try {
   const returning = await openFreshSetupPage(context, baseUrl)
   await returning.page.getByLabel('Deine SkillPilot-ID').fill(existingLearnerId)
   await continueToCompletedSetup(returning.page)
+  const claudeStart = returning.page.getByTestId('claude-plugin-start')
+  await claudeStart.waitFor()
+  assert(await claudeStart.isEnabled(), 'the completed setup offers the working Claude beta')
+  assert(
+    await returning.page.getByRole('button', { name: 'Mit ChatGPT starten' }).count() === 0,
+    'public onboarding does not offer an unavailable parallel ChatGPT beta',
+  )
+  const chatGptStatus = returning.page.getByTestId('chatgpt-start-status')
+  assert(
+    (await chatGptStatus.textContent())?.includes('ChatGPT: noch nicht verfügbar'),
+    'ChatGPT is explicitly separated and marked as not yet available',
+  )
+  assert(
+    (await returning.page.getByTestId('claude-v1-start-options').textContent())?.includes('warte einen Moment'),
+    'the Claude start gives the practical voice-pause hint instead of rejecting voice mode',
+  )
   assert(
     returning.apiMetrics.resumeRequests === 1,
     'continuing with an existing learner records exactly one resume activity',

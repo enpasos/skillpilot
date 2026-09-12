@@ -3,35 +3,16 @@ import { Link } from 'react-router-dom'
 import {
   ArrowLeft,
   ArrowRight,
-  Check,
   CheckCircle2,
   ChevronDown,
   Info,
-  TriangleAlert,
-  X,
 } from 'lucide-react'
 
 import { LanguageToggle } from '../components/LanguageToggle'
 import { PublicPageHeader } from '../components/PublicPageHeader'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
-import {
-  getFaqViewCopy,
-  type FaqCompatibilityStatus,
-} from '../utils/faqViewCopy'
-
-const statusStyles: Record<FaqCompatibilityStatus, string> = {
-  recommended: 'border-emerald-300 bg-emerald-100 text-emerald-800 dark:border-emerald-700 dark:bg-emerald-950/70 dark:text-emerald-200',
-  supported: 'border-sky-300 bg-sky-100 text-sky-800 dark:border-sky-700 dark:bg-sky-950/70 dark:text-sky-200',
-  limited: 'border-amber-300 bg-amber-100 text-amber-900 dark:border-amber-700 dark:bg-amber-950/70 dark:text-amber-200',
-  unsupported: 'border-red-300 bg-red-100 text-red-800 dark:border-red-700 dark:bg-red-950/70 dark:text-red-200',
-}
-
-const StatusIcon: React.FC<{ status: FaqCompatibilityStatus }> = ({ status }) => {
-  if (status === 'unsupported') return <X size={16} aria-hidden="true" />
-  if (status === 'limited') return <TriangleAlert size={16} aria-hidden="true" />
-  return <Check size={16} aria-hidden="true" />
-}
+import { getFaqViewCopy } from '../utils/faqViewCopy'
 
 export const FaqView: React.FC = () => {
   const { language } = useLanguage()
@@ -95,140 +76,51 @@ export const FaqView: React.FC = () => {
           </div>
         </section>
 
-        <aside
-          aria-labelledby="faq-voice-warning-title"
-          className="mt-6 rounded-3xl border-2 border-amber-400 bg-amber-50 p-6 shadow-sm dark:border-amber-600 dark:bg-amber-950/30 sm:p-8"
-        >
-          <div className="flex gap-4">
-            <TriangleAlert
-              className="mt-0.5 shrink-0 text-amber-700 dark:text-amber-300"
-              size={30}
-              aria-hidden="true"
-            />
-            <div className="min-w-0">
-              <p className="text-sm font-semibold uppercase tracking-wide text-amber-800 dark:text-amber-300">
-                {copy.warning.eyebrow}
-              </p>
-              <h2 id="faq-voice-warning-title" className="mt-1 text-2xl font-semibold text-slate-900 dark:text-white">
-                {copy.warning.title}
-              </h2>
-              <div className="mt-4 space-y-3 leading-relaxed text-slate-800 dark:text-slate-100">
-                {copy.warning.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-                <p className="font-semibold">{copy.warning.evidenceWarning}</p>
-                <p>{copy.warning.alternative}</p>
-              </div>
-            </div>
-          </div>
+        {copy.sections.map((section) => (
+          <section key={section.id} aria-labelledby={`faq-${section.id}-title`} className="mt-12">
+            <h2 id={`faq-${section.id}-title`} className="text-2xl font-semibold text-slate-800 dark:text-slate-100">
+              {section.title}
+            </h2>
+            <p className="mt-2 text-text-secondary">{section.intro}</p>
 
-          <div className="mt-6 rounded-2xl border border-red-300 bg-white/80 p-5 dark:border-red-800 dark:bg-slate-950/40">
-            <h3 className="font-semibold text-red-800 dark:text-red-300">{copy.warning.recoveryTitle}</h3>
-            <ol className="mt-3 list-decimal space-y-2 pl-5 text-slate-800 marker:font-semibold dark:text-slate-100">
-              {copy.warning.recoverySteps.map((step) => (
-                <li key={step}>{step}</li>
+            <div className="mt-5 space-y-3">
+              {section.questions.map((item) => (
+                <details
+                  key={item.id}
+                  className="group rounded-2xl border border-border-color bg-white/60 shadow-sm open:bg-white/90 dark:bg-slate-900/40 dark:open:bg-slate-900/70"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 font-semibold text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-100 [&::-webkit-details-marker]:hidden">
+                    <span>{item.question}</span>
+                    <ChevronDown
+                      size={20}
+                      className="shrink-0 text-text-secondary transition-transform group-open:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </summary>
+                  <div className="space-y-3 border-t border-border-color px-5 py-5 leading-relaxed text-text-secondary">
+                    {item.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                    {item.bullets && (
+                      <ul className="list-disc space-y-2 pl-5">
+                        {item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                      </ul>
+                    )}
+                    {item.link && (
+                      <Link
+                        to={item.link.href}
+                        className="inline-flex items-center gap-2 rounded-lg font-semibold text-sky-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-chat-bg dark:text-sky-400"
+                      >
+                        {item.link.label}
+                        <ArrowRight size={18} aria-hidden="true" />
+                      </Link>
+                    )}
+                  </div>
+                </details>
               ))}
-            </ol>
-            <p className="mt-3 font-semibold text-red-800 dark:text-red-300">{copy.warning.recoveryClosing}</p>
-          </div>
-        </aside>
-
-        <section aria-labelledby="faq-compatibility-title" className="mt-12">
-          <h2 id="faq-compatibility-title" className="text-2xl font-semibold text-slate-800 dark:text-slate-100">
-            {copy.compatibility.title}
-          </h2>
-          <p className="mt-2 text-text-secondary">{copy.compatibility.intro}</p>
-
-          <div className="mt-5 space-y-3 sm:hidden">
-            {copy.compatibility.rows.map((row) => (
-              <article
-                key={row.id}
-                className="rounded-2xl border border-border-color bg-white/70 p-4 shadow-sm dark:bg-slate-900/50"
-              >
-                <h3 className="font-medium text-slate-800 dark:text-slate-100">{row.feature}</h3>
-                <div className="mt-3">
-                  <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-semibold ${statusStyles[row.status]}`}>
-                    <StatusIcon status={row.status} />
-                    {copy.compatibility.statusLabels[row.status]}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-text-secondary">{row.recommendation}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-5 hidden overflow-x-auto rounded-2xl border border-border-color bg-white/60 shadow-sm dark:bg-slate-900/40 sm:block">
-            <table className="w-full min-w-[760px] border-collapse text-left">
-              <thead className="bg-slate-100/90 text-sm text-slate-700 dark:bg-slate-800/90 dark:text-slate-200">
-                <tr>
-                  <th scope="col" className="px-5 py-4 font-semibold">{copy.compatibility.featureHeading}</th>
-                  <th scope="col" className="px-5 py-4 font-semibold">{copy.compatibility.statusHeading}</th>
-                  <th scope="col" className="px-5 py-4 font-semibold">{copy.compatibility.recommendationHeading}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border-color">
-                {copy.compatibility.rows.map((row) => (
-                  <tr key={row.id} className="align-top">
-                    <th scope="row" className="px-5 py-4 font-medium text-slate-800 dark:text-slate-100">
-                      {row.feature}
-                    </th>
-                    <td className="px-5 py-4">
-                      <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-semibold ${statusStyles[row.status]}`}>
-                        <StatusIcon status={row.status} />
-                        {copy.compatibility.statusLabels[row.status]}
-                      </span>
-                    </td>
-                    <td className="px-5 py-4 text-text-secondary">{row.recommendation}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section aria-labelledby="faq-questions-title" className="mt-12">
-          <h2 id="faq-questions-title" className="text-2xl font-semibold text-slate-800 dark:text-slate-100">
-            {copy.faqTitle}
-          </h2>
-          <p className="mt-2 text-text-secondary">{copy.faqIntro}</p>
-
-          <div className="mt-5 space-y-3">
-            {copy.questions.map((item) => (
-              <details
-                key={item.id}
-                className="group rounded-2xl border border-border-color bg-white/60 shadow-sm open:bg-white/90 dark:bg-slate-900/40 dark:open:bg-slate-900/70"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 font-semibold text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-100 [&::-webkit-details-marker]:hidden">
-                  <span>{item.question}</span>
-                  <ChevronDown
-                    size={20}
-                    className="shrink-0 text-text-secondary transition-transform group-open:rotate-180"
-                    aria-hidden="true"
-                  />
-                </summary>
-                <div className="space-y-3 border-t border-border-color px-5 py-5 leading-relaxed text-text-secondary">
-                  {item.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                  {item.bullets && (
-                    <ul className="list-disc space-y-2 pl-5">
-                      {item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
-                    </ul>
-                  )}
-                  {item.link && (
-                    <Link
-                      to={item.link.href}
-                      className="inline-flex items-center gap-2 rounded-lg font-semibold text-sky-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-chat-bg dark:text-sky-400"
-                    >
-                      {item.link.label}
-                      <ArrowRight size={18} aria-hidden="true" />
-                    </Link>
-                  )}
-                </div>
-              </details>
-            ))}
-          </div>
-        </section>
+            </div>
+          </section>
+        ))}
 
         <section
           aria-labelledby="faq-more-information-title"

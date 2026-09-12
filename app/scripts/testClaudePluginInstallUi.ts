@@ -107,6 +107,17 @@ try {
         : 'Do not remove an existing installation'),
       'missing version information must not encourage removing an existing installation')
     }
+    const assertCurrentBetaUsage = async () => {
+      const body = await page.locator('body').innerText()
+      assert(body.includes(language === 'de'
+        ? 'Die Claude-App und Voice Mode funktionieren im Betatest'
+        : 'The Claude app and voice mode work in the beta'),
+      'the guide reflects the reported working app and voice beta route')
+      assert(body.includes(language === 'de' ? 'warte kurz' : 'wait briefly'),
+        'the guide explains what to do when voice output briefly stalls')
+      assert(!body.includes(language === 'de' ? 'Abnahme der aktuellen SkillPilot-Version' : 'acceptance of the current SkillPilot version'),
+        'the guide no longer presents the ongoing beta as an unstarted acceptance candidate')
+    }
     await page.getByTestId('claude-plugin-publication-status').waitFor()
     await assertUnavailableVersionSafety()
     if (!CLAUDE_MARKETPLACE_INSTALLATION_ENABLED) {
@@ -115,6 +126,11 @@ try {
       assert.equal(await guide.getAttribute('open'), '', 'the only available installation route starts expanded')
       releaseInitialPublication()
       await downloadLink.waitFor()
+      await assertCurrentBetaUsage()
+      assert(!(await page.locator('body').innerText()).includes(language === 'de'
+        ? 'Empfohlen: Installation über unseren Marketplace'
+        : 'Recommended: install through our marketplace'),
+      'the file guide does not advertise a marketplace route disabled by the current publication gate')
       assert.equal(await downloadLink.getAttribute('href'), plugin.downloadUrl)
       assert((await page.getByTestId('claude-plugin-version-badge').innerText()).includes(plugin.version))
       assert.equal(await finish.getByTestId('claude-plugin-install-step-return').getByRole('link').getAttribute('href'), '/')
@@ -244,9 +260,20 @@ try {
     const installNavigation = await page.getByTestId('claude-plugin-marketplace-navigation').innerText()
     assert(installNavigation.includes(language === 'de' ? 'Marketplace hinzufügen' : 'Add marketplace'))
     assert(installNavigation.includes(language === 'de' ? 'Aus einem Repository hinzufügen' : 'Add from a repository'))
+    const updateNotes = page.getByText(language === 'de'
+      ? 'Hinweise zu Updates und Marketplace-Verwaltung'
+      : 'About updates and marketplace management', { exact: true })
+    await updateNotes.click()
     const body = await page.locator('body').innerText()
     assert(!body.includes('?v='), 'the historical query workaround is not a user installation or update instruction')
     assert(body.includes(language === 'de' ? 'nicht automatisch auslesen' : 'cannot automatically read'))
+    assert(body.includes(language === 'de'
+      ? 'Automatische Marketplace-Updates wurden im Betatest bereits auf unabhängigen Claude-Konten beobachtet'
+      : 'Automatic marketplace updates have already been observed on independent Claude accounts during the beta'),
+    'the guide reflects observed independent-account updates without promising an update time')
+    assert(body.includes(language === 'de' ? 'Zeitpunkt kann variieren' : 'Timing can vary'))
+    await assertCurrentBetaUsage()
+    await updateNotes.click()
     assert((await page.getByTestId('claude-plugin-update-guide').innerText()).includes(plugin.version),
       'the version comparison must use the same publication as the downloadable artifact')
     assert((await finish.getByTestId('claude-plugin-install-step-connector').innerText()).includes('skillpilot'))

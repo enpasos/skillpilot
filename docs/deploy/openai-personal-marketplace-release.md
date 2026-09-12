@@ -1,4 +1,12 @@
-# SkillPilot ChatGPT Git marketplace: experimental release runbook
+# SkillPilot ChatGPT Git marketplace: paused experiment and release reference
+
+**Paused by Product Owner decision on 12 September 2026.** Follow
+[Claude beta → stable candidate → focused ChatGPT acceptance → submission](claude-beta-chatgpt-release-strategy.md).
+Do not continue this distribution experiment, search for more workarounds,
+or build another ChatGPT beta path. The evidence, commands and unresolved
+acceptance checks below are retained as reference, not an active rollout plan
+or prerequisites for official ChatGPT submission. Published artifacts remain
+intact; this decision changes no production security setting.
 
 ## Purpose and status
 
@@ -308,7 +316,7 @@ Current status: **stopped before installation; not the beta installation path**.
 The local artifacts remain uninstalled and unpublished; their pending receipts
 are not acceptance evidence. No production security settings were changed.
 
-## Required clean-install path
+## Former required clean-install path
 
 The acceptance target is an independent personal beta account with **no prior
 SkillPilot plugin, registered connector, local configuration, or developer
@@ -343,6 +351,17 @@ installation or a reason to weaken authentication.
 Do not prescribe another installation workaround until a supported route meets
 these prerequisites. Real clean-account evidence, including updates, must
 precede calling that route beta-ready.
+
+The [12 September 2026 historical assessment](openai-beta-distribution-assessment.md)
+records the subsequent two-account detail-page comparison, the declined shared
+workspace alternative, the Tunnel/CIMD checks, and unsent support/forum drafts.
+No complete qualifying pre-review beta route was established. The subsequent
+[Product Owner decision](claude-beta-chatgpt-release-strategy.md) stops further
+distribution work: stabilize Claude first, then perform focused ChatGPT host
+acceptance of that candidate and submit. ChatGPT behavior cannot be inferred
+from Claude results. This changes neither production authentication nor the
+historical unresolved acceptance results below; that marketplace matrix is not
+an official-submission gate.
 
 ## Acceptance and updates
 

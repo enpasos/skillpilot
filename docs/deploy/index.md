@@ -5,6 +5,7 @@ This page groups deployment-facing operational documentation.
 ## Deployment
 
 - [SkillPilot Deployment Process](deployment.md)
+- [Vorgehen für Beta-Test und ChatGPT-Veröffentlichung](claude-beta-chatgpt-release-strategy.md)
 - [Lernzielbücher: Build und Git-Historienbereinigung](goal-book-build-and-history-cleanup.md)
 - [ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover](openai-mcp-coach-v1.md)
 - [OAuth-Clientauthentifizierung: profilweise Abnahme und Betrieb](oauth-client-authentication.md)
@@ -12,7 +13,8 @@ This page groups deployment-facing operational documentation.
 - [SkillPilot Coach v1: Release, Rollback und Stilllegung](openai-plugin-v1-release.md)
 - [SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre](openai-plugin-v1-review-freeze.md)
 - [SkillPilot Coach v1: OpenAI-Submission-Dossier](openai-plugin-v1-submission.md)
-- [SkillPilot ChatGPT Git marketplace: experimental release runbook](openai-personal-marketplace-release.md)
+- [SkillPilot ChatGPT Git marketplace: paused experiment and release reference](openai-personal-marketplace-release.md)
+- [ChatGPT beta distribution: historical assessment and unsent drafts](openai-beta-distribution-assessment.md)
 - [Demoaufnahme für SkillPilot Coach v1 1.1.0](openai-plugin-v1-demo-video.md)
 - [Neue SkillPilot Custom GPTs als befristeter Übergangskanal](openai-custom-gpt-interim.md)
 - [Claude coach (paused beta): architecture, testing, and reactivation](claude-coach-beta.md)

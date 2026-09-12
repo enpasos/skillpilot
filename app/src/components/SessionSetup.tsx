@@ -16,6 +16,10 @@ type ClaudeActionState = 'idle' | 'opening-setup' | 'setup-opened' | 'launching'
 type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
 
+// Public onboarding stays Claude-first until actual ChatGPT acceptance and publication.
+// This UI availability decision does not change the existing provider adapter or security.
+const chatGptPublicStartAvailable = false
+
 interface SessionSetupProps {
   role: Role | null
   setRole: (r: Role | null) => void
@@ -788,7 +792,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   }
 
   const handleOpenChatGpt = async () => {
-    if (!personalCurriculumReady) return
+    if (!chatGptPublicStartAvailable || !personalCurriculumReady) return
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     if (!effectiveId) return
     if (!chatStartInFlightRef.current.tryStart()) return
@@ -1363,28 +1367,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         <Bot size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
                         <span>{t.startPage.login.aiCoachNotice}</span>
                       </p>
-                      <div className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-950/40">
-                        <p className="font-semibold text-text-primary">
-                          {openAiMcpCoachActive
-                            ? t.startPage.login.openAiMcpTitle
-                            : visibleSessionLaunchCopy?.startPromptLabel ?? t.startPage.login.startPromptLabel}
-                        </p>
-                        <p className="mt-1">
-                          {openAiMcpCoachActive
-                            ? t.startPage.login.openAiMcpHint
-                            : visibleSessionLaunchCopy?.startPromptHint ?? t.startPage.login.startPromptHint}
-                        </p>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={handleOpenChatGpt}
-                        disabled={!personalCurriculumReady || chatStartLoading}
-                        className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
-                      >
-                        <MessageCircle size={16} />
-                        {t.startPage.login.openChatGptProvider}
-                        <ExternalLink size={14} />
-                      </button>
                       <div
                         data-testid="claude-v1-start-options"
                         className="space-y-3 rounded-xl border border-violet-300/80 bg-violet-50/70 p-3 dark:border-violet-700/70 dark:bg-violet-950/20"
@@ -1402,6 +1384,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                               </div>
                               <p className="mt-1 text-xs leading-relaxed text-text-secondary">
                                 {t.startPage.login.claudeBetaHint}
+                              </p>
+                              <p className="mt-2 text-xs leading-relaxed text-text-secondary">
+                                {t.startPage.login.claudeVoiceHint}
                               </p>
                               <p className="mt-1 text-[11px] leading-relaxed text-violet-800 dark:text-violet-200">
                                 {t.startPage.login.claudeAdultsOnly}
@@ -1496,6 +1481,36 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             )}
                           </div>
                         </div>
+                      <section
+                        data-testid="chatgpt-start-status"
+                        aria-labelledby="chatgpt-start-status-title"
+                        className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-950/40"
+                      >
+                        <h3 id="chatgpt-start-status-title" className="font-semibold text-text-primary">
+                          {chatGptPublicStartAvailable
+                            ? t.startPage.login.openAiMcpTitle
+                            : t.startPage.login.chatGptNotAvailableTitle}
+                        </h3>
+                        <p className="mt-1">
+                          {chatGptPublicStartAvailable
+                            ? (openAiMcpCoachActive
+                              ? t.startPage.login.openAiMcpHint
+                              : visibleSessionLaunchCopy?.startPromptHint ?? t.startPage.login.startPromptHint)
+                            : t.startPage.login.chatGptNotAvailableHint}
+                        </p>
+                        {chatGptPublicStartAvailable && (
+                          <button
+                            type="button"
+                            onClick={handleOpenChatGpt}
+                            disabled={!personalCurriculumReady || chatStartLoading}
+                            className="mt-3 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
+                          >
+                            <MessageCircle size={16} />
+                            {t.startPage.login.openChatGptProvider}
+                            <ExternalLink size={14} />
+                          </button>
+                        )}
+                      </section>
                       <div>
                         <a
                           href={personalCurriculumReady ? learnerCockpitHref : undefined}

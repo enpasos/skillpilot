@@ -8,6 +8,13 @@ Kandidat: **1.1.0**. Lokale Vorbereitung ist erlaubt; Deployment und erneute
 Portal-Einreichung sind nicht Bestandteil dieser Freigabe.
 Die [Review-Historie](openai-plugin-v1-review-freeze.md) bleibt nachvollziehbar.
 
+**Arbeitsreihenfolge seit 12. September 2026:** zuerst den laufenden Claude-Beta-
+Betrieb stabilisieren, dann den bewährten Kandidaten gezielt im echten ChatGPT-
+Host abnehmen und anschließend einreichen. Kein paralleler externer ChatGPT-
+Betaweg und keine weiteren Verteilungsworkarounds. Die folgenden Release-
+Schritte gelten innerhalb dieser [verbindlichen Entwicklervorgabe](claude-beta-chatgpt-release-strategy.md);
+Sicherheitsprüfungen und Einreichungsnachweise bleiben unverändert.
+
 Dieses Runbook setzt den
 [Versionierungs- und Lebenszyklusplan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
 operativ um. Es gilt für `skillpilot-coach-v1`.

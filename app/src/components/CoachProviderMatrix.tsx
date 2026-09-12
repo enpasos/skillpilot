@@ -54,7 +54,7 @@ const MatrixCell: React.FC<{
 
 export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ language }) => {
   const copy = getCoachProviderMatrixCopy(language)
-  const [selectedProvider, setSelectedProvider] = React.useState<CoachMatrixProvider>('ChatGPT')
+  const [selectedProvider, setSelectedProvider] = React.useState<CoachMatrixProvider>('Claude')
   const visibleVariants = getVisibleCoachVariants(copy.variants, selectedProvider)
 
   return (
@@ -103,7 +103,7 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
             {copy.providerFilterHint}
           </p>
           <div className="mt-3 inline-flex rounded-xl border border-border-color bg-slate-100 p-1 dark:bg-slate-950/70">
-            {(['ChatGPT', 'Claude'] as CoachMatrixProvider[]).map(provider => {
+            {(['Claude', 'ChatGPT'] as CoachMatrixProvider[]).map(provider => {
               const isSelected = selectedProvider === provider
               return (
                 <label key={provider} className="cursor-pointer">
@@ -186,7 +186,7 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
             tabIndex={0}
           >
             <table
-              className={`${selectedProvider === 'ChatGPT' ? 'min-w-[1260px]' : 'min-w-[1020px]'} w-full border-collapse text-left`}
+              className={`${selectedProvider === 'ChatGPT' ? 'min-w-[1260px]' : 'min-w-[600px]'} w-full border-collapse text-left`}
             >
             <caption className="sr-only">{copy.title}</caption>
             <thead>

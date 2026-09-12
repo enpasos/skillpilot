@@ -35,11 +35,11 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
     sectionLabel: 'Einstiege nach Anliegen',
     learning: {
       title: 'Lernen starten',
-      description: 'Wähle dein Curriculum und starte deinen KI-Lerncoach. Dein Fortschritt bleibt erhalten.',
+      description: 'Wähle dein Curriculum und starte mit Claude in die Lern-Beta. Dein Fortschritt bleibt erhalten.',
       primaryAction: 'Jetzt lernen',
       quickstartAction: '5-Minuten-Quickstart',
       faqAction: 'FAQ',
-      accessSummary: 'Angeboten wird derzeit der Claude-1.1-Betakandidat; seine exakte Client-Abnahme und die ChatGPT-Freigabe stehen noch aus.',
+      accessSummary: 'Jetzt mit Claude lernen – auch in der App und mit Voice-Mode. ChatGPT ist noch nicht verfügbar.',
     },
     teaching: {
       title: 'Kurse planen',
@@ -64,11 +64,11 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
     sectionLabel: 'Entry points by need',
     learning: {
       title: 'Start learning',
-      description: 'Choose your curriculum and start your AI learning coach. Your progress is preserved.',
+      description: 'Choose your curriculum and join the learning beta with Claude. Your progress is preserved.',
       primaryAction: 'Learn now',
       quickstartAction: '5-minute quickstart',
       faqAction: 'FAQ',
-      accessSummary: 'The Claude 1.1 beta candidate is currently offered; its exact client acceptance and ChatGPT approval are still pending.',
+      accessSummary: 'Learn with Claude now – including the app and voice mode. ChatGPT is not available yet.',
     },
     teaching: {
       title: 'Plan courses',

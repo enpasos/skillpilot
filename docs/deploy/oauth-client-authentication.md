@@ -413,11 +413,19 @@ Der Nutzer bestätigt die Einrichtung; konkrete Kontoverfügbarkeit prüfen.
 vollständigen Lerncoach bleibt die Paketinstallation erforderlich.
 [Claude: Install links](https://claude.com/docs/connectors/building/directory-vs-custom#share-an-install-link)
 
-### ChatGPT: Entwickler- und Beta-Installation getrennt
+### ChatGPT: gezielte Integrationsabnahme nach stabiler Claude-Beta
 
-Eine manuelle Entwickler-Verbindung beweist nicht die Plugin-/Skill-Verteilung
-an externe Beta-Tester. Den vorgesehenen Verteilungsweg mit einem eigenen
-Tester-Konto dokumentieren. Keine angeblich allgemeingültige Marketplace-URL
+Die [verbindliche Arbeitsreihenfolge](claude-beta-chatgpt-release-strategy.md)
+lautet: Claude-Beta stabilisieren, den bewährten Kandidaten über eine echte
+ChatGPT-Verbindung gezielt abnehmen, anschließend einreichen. Kein zusätzlicher
+externer ChatGPT-Betaweg und keine weitere Suche nach Verteilungsworkarounds.
+Verbindungsaufbau, tatsächliches Authentisierungsprofil und Token-Erneuerung,
+Coach-Anweisungen, Tool-Aufrufe und Session-Fortsetzung müssen im echten Host
+funktionieren. Die bestehenden Sicherheits- und Einreichungsprüfungen bleiben.
+
+Eine manuelle Entwickler-Verbindung kann diese gezielte Abnahme tragen, beweist
+aber keine Plugin-/Skill-Verteilung an externe Beta-Tester. Eine solche externe
+Beta ist keine Voraussetzung der Einreichung. Keine allgemeine Marketplace-
 oder Desktop-/Mobile-Verfügbarkeit aus einem Entwicklertest ableiten.
 Fehlende Konto-/Workspace-Rechte betreffen dieses Profil, nicht Claude.
 [OpenAI: Connect and test](https://developers.openai.com/plugins/deploy/connect-chatgpt)
@@ -428,9 +436,12 @@ Datum, Deployment-Commit, nicht geheime Profilrevision, Oberfläche,
 Installationsweg und Ergebnis erfassen. Erforderlich: frische Installation,
 Autorisierung, Tool-Nutzung, Ablauf/Refresh, Widerruf/Wiederverbindung,
 Negativtests, Profil-/Endpunkt-Isolation, unveränderte Lernsession-/Runtime-
-Regeln, Monitoring und getesteter Rollback. JWT und öffentliche Claude-Beta
-benötigen den vorgesehenen externen Beta-Installationsnachweis; Anthropic-held
-zusätzlich Hinterlegung und eigenen Verteilungsnachweis.
+Regeln, Monitoring und getesteter Rollback. Die öffentliche Claude-Beta benötigt
+den vorgesehenen externen Beta-Installationsnachweis. Für das tatsächlich
+verwendete ChatGPT-Profil ist die gezielte reale Integrationsabnahme erforderlich,
+nicht ein zusätzlicher externer Beta-Verteilungsweg. Anthropic-held benötigt
+zusätzlich Hinterlegung und eigenen Verteilungsnachweis, wenn dieses Profil
+tatsächlich in Betrieb genommen werden soll.
 
 Keine Secrets, Assertions, vollständigen Tokens, Lernsession-IDs oder privaten
 Lerndaten in Belege übernehmen. Browserprofile/Cookies bleiben außerhalb von
@@ -447,9 +458,12 @@ bestätigter Anmeldung/MFA; ein OpenAI-API-Key ersetzt ihn nicht.
 1. **Kandidat festhalten:** Commit, Build-ID, nicht geheime Profilrevision,
    aktivierte Lane, Testumgebung, Host/Version/Kontotyp und Uhrzeit notieren.
    Zulässige Methode/Callback/Scopes vorab aus dem konkreten Profil ableiten.
-2. **Frisch installieren:** Den tatsächlich zugesagten Beta-Installationsweg
-   ohne vorherige Entwicklerregistrierung oder geteiltes Betreiber-Secret
-   durchlaufen. Paket-/Skill-Version und Connector getrennt prüfen. Bei Custom
+2. **Frisch einrichten:** Bei der öffentlichen Claude-Beta den zugesagten
+   Beta-Installationsweg ohne vorherige Entwicklerregistrierung durchlaufen.
+   Bei ChatGPT die vorgesehene echte Verbindung für die gezielte Host-Abnahme
+   einrichten; eine Entwicklerregistrierung ist dabei zulässig, aber kein
+   externer Beta-Verteilungsnachweis. Keine Betreiber-Secrets an Beta-Tester
+   verteilen. Paket-/Skill-Version und Connector getrennt prüfen. Bei Custom
    wird ausdrücklich nur der kontrollierte Custom-Weg abgenommen.
 3. **Verbinden:** OAuth im Host starten; beim Backend über die bereinigte
    Korrelationskennung kontrollieren, welches Profil wirklich verwendet wurde.

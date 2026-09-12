@@ -9,7 +9,7 @@ export const de = {
             gpt: {
                 title: "Lernen starten",
                 badge: "Start",
-                description: "Wähle dein Curriculum und starte deinen KI-Lerncoach. Dein Fortschritt bleibt erhalten.",
+                description: "Wähle dein Curriculum und starte mit Claude in die Lern-Beta. Dein Fortschritt bleibt erhalten.",
                 cta: "Jetzt starten"
             },
             explorer: {
@@ -85,6 +85,8 @@ export const de = {
             copyStartPrompt: "Startcode kopieren",
             openChatGpt: "Lerncoach starten",
             openChatGptProvider: "Mit ChatGPT starten",
+            chatGptNotAvailableTitle: "ChatGPT: noch nicht verfügbar",
+            chatGptNotAvailableHint: "Zuerst stabilisieren wir die Claude-Beta. Danach prüfen wir den bewährten Stand mit ChatGPT und reichen ihn zur Veröffentlichung ein. Starte bis dahin mit Claude.",
             startPromptCopied: "Startcode kopiert.",
             startPromptCopyFailed: "Der Lerncoach konnte gerade nicht vorbereitet werden. Bitte versuche es erneut.",
             openAiMcpTitle: "SkillPilot-App in ChatGPT",
@@ -97,15 +99,16 @@ export const de = {
             openAiMcpDisconnect: "ChatGPT-Verbindung trennen",
             openAiMcpDisconnectFailed: "Die ChatGPT-Verbindung konnte gerade nicht getrennt werden. Bitte versuche es erneut.",
             claudeBetaTitle: "Claude-Lerncoach",
-            claudeBetaBadge: "v1",
-            claudeBetaHint: "Der 1.1-Betakandidat ist für Claude Pro vorgesehen. Richte das Plugin einmal in Claude Web ein. Die exakte Abnahme in Web, Android und Voice Mode steht noch aus.",
+            claudeBetaBadge: "Beta",
+            claudeBetaHint: "Mit Claude Pro kannst du jetzt an der Lern-Beta teilnehmen – im Browser oder in der Claude-App, auch mit Voice-Mode.",
+            claudeVoiceHint: "Wenn der Sprecher im Voice-Mode kurz hängen bleibt, warte einen Moment. Im laufenden Betatest setzt die Sprachausgabe danach wieder ein.",
             claudeAdultsOnly: "Claude.ai ist laut Anbieter erst ab 18 Jahren nutzbar.",
             claudeSetupTitle: "So gehst du vor",
-            claudeSetupStepOne: "Öffne die Installationsseite, lade die aktuelle Plugin-Datei herunter und lade sie in Claude Web unter Customize („Anpassen“) → Plugins hoch.",
+            claudeSetupStepOne: "Öffne die aktuelle Installationsanleitung und richte das SkillPilot-Coach-Plugin in Claude ein. Die Anleitung zeigt dir den verfügbaren Installationsweg.",
             claudeSetupStepTwo: "Kehre danach zu SkillPilot zurück und starte hier deine Lernsession. Falls das Plugin bereits installiert ist, kannst du direkt mit Schritt 2 fortfahren.",
             claudeConnect: "Schritt 1: Plugin einrichten",
             claudeConnecting: "Installationsseite wird geöffnet …",
-            claudeInstallOpened: "Die Installationsseite ist in einem neuen Tab geöffnet. Kehre nach dem Upload hierher zurück und fahre mit Schritt 2 fort.",
+            claudeInstallOpened: "Die Installationsseite ist in einem neuen Tab geöffnet. Kehre nach der Installation hierher zurück und fahre mit Schritt 2 fort.",
             claudeStart: "Schritt 2: Mit Claude starten",
             claudeStarting: "Claude wird vorbereitet …",
             claudeLaunched: "Claude ist geöffnet und die Startnachricht ist bereits eingetragen. Prüfe sie und sende sie ab. Beim ersten SkillPilot-Zugriff führt Claude dich bei Bedarf durch die einmalige Anmeldung.",
@@ -142,8 +145,8 @@ export const de = {
             explorerCurriculumStepText: "Wähle ein Curriculum und sieh dir Lernziele und Zusammenhänge an.",
             explorerDashboardButton: "Explorer öffnen",
             startStepTitle: "Los geht’s",
-            startStepText: "Starte den Lerncoach in ChatGPT oder arbeite im Cockpit weiter.",
-            startStepTextWithClaude: "Wähle bei diesem Start ChatGPT oder Claude als Lerncoach – oder arbeite im Cockpit weiter.",
+            startStepText: "Starte den Lerncoach mit Claude oder arbeite im Cockpit weiter.",
+            startStepTextWithClaude: "Starte mit Claude in die Lern-Beta oder arbeite im Cockpit weiter.",
             aiCoachNotice: "Der Lerncoach ist ein KI-Assistent und kann Fehler machen. Prüfe wichtige Antworten.",
             curriculumLabel: {
                 select: "Curriculum wählen",
@@ -155,7 +158,7 @@ export const de = {
             }
         },
         banner: {
-            text: "**SkillPilot ist kostenlos.** Aktuell angeboten wird ausschließlich der Claude-1.1-Betakandidat. Dafür ist ein kostenpflichtiger Claude-Tarif erforderlich; SkillPilot unterstützt derzeit Claude Pro. Die exakte 1.1-Client-Abnahme in Claude Web, Android und Voice Mode steht noch aus. Der ChatGPT-Zugang wartet noch auf Freigabe und kann derzeit nicht genutzt werden.",
+            text: "**SkillPilot ist kostenlos.** Die Lern-Beta läuft mit dem kostenpflichtigen Claude Pro – im Browser und in der Claude-App, auch mit Voice-Mode. ChatGPT folgt nach Stabilisierung, gezielter Prüfung und Veröffentlichung.",
             linkLabel: "Zugänge vergleichen"
         },
         links: {

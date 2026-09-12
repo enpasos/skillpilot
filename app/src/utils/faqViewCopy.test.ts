@@ -7,124 +7,52 @@ function assert(condition: unknown, message: string): asserts condition {
 const de = getFaqViewCopy('de')
 const en = getFaqViewCopy('en')
 const ids = <T extends { id: string }>(items: T[]) => items.map(item => item.id)
-
-assert(
-  JSON.stringify(ids(de.compatibility.rows)) === JSON.stringify(ids(en.compatibility.rows)),
-  'German and English compatibility rows have identical IDs and ordering',
-)
-assert(
-  JSON.stringify(ids(de.questions)) === JSON.stringify(ids(en.questions)),
-  'German and English FAQ questions have identical IDs and ordering',
-)
-assert(
-  new Set(ids(de.compatibility.rows)).size === de.compatibility.rows.length,
-  'compatibility row IDs are unique',
-)
-assert(
-  new Set(ids(de.questions)).size === de.questions.length,
-  'FAQ question IDs are unique',
-)
-
-const deVoiceRow = de.compatibility.rows.find(row => row.id === 'voice-mode')
-const enVoiceRow = en.compatibility.rows.find(row => row.id === 'voice-mode')
-assert(deVoiceRow?.status === 'unsupported', 'German compatibility matrix rejects voice mode')
-assert(enVoiceRow?.status === 'unsupported', 'English compatibility matrix rejects voice mode')
-assert(
-  de.warning.evidenceWarning.includes('kein Beleg')
-    && en.warning.evidenceWarning.includes('not evidence'),
-  'both languages explain that a convincing response does not prove SkillPilot is connected',
-)
-assert(
-  de.warning.recoverySteps.some(step => step.includes('neuen Chat'))
-    && en.warning.recoverySteps.some(step => step.includes('new chat')),
-  'both languages tell learners to recover in a new SkillPilot chat',
-)
-assert(
-  de.recommendation.actionLabel.includes('SkillPilot')
-    && en.recommendation.actionLabel.includes('SkillPilot'),
-  'both languages provide a direct learner-facing return to SkillPilot',
-)
-assert(
-  de.compatibility.rows.find(row => row.id === 'browser-mobile')?.status === 'recommended'
-    && en.compatibility.rows.find(row => row.id === 'browser-mobile')?.status === 'recommended',
-  'both languages recommend the mobile browser',
-)
-assert(
-  de.compatibility.rows.find(row => row.id === 'cross-device-chat')?.status === 'supported'
-    && en.compatibility.rows.find(row => row.id === 'cross-device-chat')?.status === 'supported',
-  'both languages support continuing an existing chat in a browser on another device',
-)
-const deContinueOnPhone = de.questions.find(question => question.id === 'continue-on-phone')
-const enContinueOnPhone = en.questions.find(question => question.id === 'continue-on-phone')
-assert(
-  deContinueOnPhone?.paragraphs.some(paragraph => paragraph.includes('denselben bestehenden Chat'))
-    && deContinueOnPhone.paragraphs.some(paragraph => paragraph.includes('24 Stunden')),
-  'German copy keeps the same chat within the 24-hour learning session when moving to a phone',
-)
-assert(
-  enContinueOnPhone?.paragraphs.some(paragraph => paragraph.includes('same existing chat'))
-    && enContinueOnPhone.paragraphs.some(paragraph => paragraph.includes('24 hours')),
-  'English copy keeps the same chat within the 24-hour learning session when moving to a phone',
-)
-
-const deProviderOptions = de.questions.find(question => question.id === 'provider-options')
-const enProviderOptions = en.questions.find(question => question.id === 'provider-options')
-assert(
-  deProviderOptions?.link?.href === '/faq/coach-setup'
-    && enProviderOptions?.link?.href === '/faq/coach-setup',
-  'both languages link the setup question to the learner-facing detail page',
-)
-assert(
-  Boolean(deProviderOptions?.link?.label) && Boolean(enProviderOptions?.link?.label),
-  'the setup detail link has a learner-facing label in both languages',
-)
-
-const deSession = de.questions.find(question => question.id === 'session-duration')
-const enSession = en.questions.find(question => question.id === 'session-duration')
-assert(
-  deSession?.paragraphs.some(paragraph => paragraph.includes('24 Stunden'))
-    && deSession.paragraphs.some(paragraph => paragraph.includes('nicht mit anderen')),
-  'German FAQ explains the session duration and that the learner should not share access',
-)
-assert(
-  enSession?.paragraphs.some(paragraph => paragraph.includes('24 hours'))
-    && enSession.paragraphs.some(paragraph => paragraph.includes('not share')),
-  'English FAQ explains the session duration and that the learner should not share access',
-)
-
-const dePhotoUpload = de.questions.find(question => question.id === 'photo-upload')
-const enPhotoUpload = en.questions.find(question => question.id === 'photo-upload')
-assert(
-  dePhotoUpload?.paragraphs.some(paragraph => paragraph.includes('persönliche Angaben'))
-    && enPhotoUpload?.paragraphs.some(paragraph => paragraph.includes('personal information')),
-  'both languages tell learners to remove personal information before uploading a photo',
-)
+const section = (copy: typeof de, id: string) => {
+  const found = copy.sections.find(item => item.id === id)
+  assert(found, `FAQ section ${id} exists`)
+  return found
+}
+const question = (copy: typeof de, sectionId: string, id: string) => {
+  const found = section(copy, sectionId).questions.find(item => item.id === id)
+  assert(found, `FAQ question ${id} belongs to ${sectionId}`)
+  return found
+}
+const paragraphs = (copy: typeof de, sectionId: string, id: string) => question(copy, sectionId, id).paragraphs.join(' ')
 
 for (const copy of [de, en]) {
+  assert(JSON.stringify(ids(copy.sections)) === JSON.stringify(['claude', 'chatgpt', 'learning']), 'separate Claude, ChatGPT and shared-learning sections in that order')
+  const allQuestions = copy.sections.flatMap(item => item.questions)
+  assert(new Set(ids(allQuestions)).size === allQuestions.length, 'FAQ question IDs are unique across all sections')
+  assert(!('warning' in copy) && !('compatibility' in copy), 'no global ChatGPT warning or compatibility matrix can be applied to Claude')
+  assert(copy.recommendation.title.includes('Claude'), 'current recommendation names Claude')
+  assert(copy.recommendation.actionLabel.includes('SkillPilot'), 'recommendation returns learners to SkillPilot')
+  assert(question(copy, 'learning', 'provider-options').link?.href === '/faq/coach-setup', 'setup question links to access details')
+  assert(Boolean(question(copy, 'learning', 'provider-options').link?.label), 'setup detail link is labeled')
+  assert(question(copy, 'learning', 'ask-to-improve').bullets?.length, 'shared learning help keeps concrete examples')
+  assert(question(copy, 'learning', 'disagree-with-coach').bullets?.length, 'shared learning help encourages reasoned disagreement')
   const serialized = JSON.stringify(copy).toLowerCase()
-  for (const forbidden of [
-    'skillpilot-id',
-    'skillpilotid',
-    'session id',
-    'session-id',
-    'stateversion',
-    'oauth',
-    'mcp',
-    'connector',
-    'workspace',
-    'anbieter-konto',
-    'provider account',
-    'eingebettete',
-    'embedded',
-  ]) {
+  for (const forbidden of ['skillpilot-id', 'skillpilotid', 'session id', 'session-id', 'stateversion', 'oauth', 'mcp', 'connector', 'workspace', 'provider account', 'embedded']) {
     assert(!serialized.includes(forbidden), `learner FAQ does not expose ${forbidden}`)
   }
 }
-
-assert(
-  !JSON.stringify(de).includes('Der Inhalt ist dadurch nicht falsch')
-    && !JSON.stringify(en).includes('The content is not wrong'),
-  'formula-display guidance does not guarantee that the mathematical content is correct',
-)
+for (const deSection of de.sections) {
+  assert(JSON.stringify(ids(deSection.questions)) === JSON.stringify(ids(section(en, deSection.id).questions)), `${deSection.id}: DE and EN questions have identical IDs and order`)
+}
+assert(paragraphs(de, 'claude', 'claude-app').includes('funktioniert') && paragraphs(en, 'claude', 'claude-app').includes('works'), 'Claude app works in the current beta')
+assert(paragraphs(de, 'claude', 'claude-app').includes('nicht eine vollständige Prüfung') && paragraphs(en, 'claude', 'claude-app').includes('not complete testing'), 'beta experience does not imply universal device acceptance')
+assert(paragraphs(de, 'claude', 'claude-voice').includes('warte dann kurz') && paragraphs(en, 'claude', 'claude-voice').includes('wait briefly'), 'Claude voice guidance advises waiting through occasional pauses')
+assert(paragraphs(de, 'claude', 'claude-voice').includes('anschließend weiter') && paragraphs(en, 'claude', 'claude-voice').includes('resumes speaking'), 'Claude voice guidance explains observed recovery')
+assert(paragraphs(de, 'claude', 'continue-on-phone').includes('denselben bestehenden Chat') && paragraphs(en, 'claude', 'continue-on-phone').includes('same existing chat'), 'device switching keeps the existing Claude chat')
+assert(paragraphs(de, 'claude', 'continue-on-phone').includes('24 Stunden') && paragraphs(en, 'claude', 'continue-on-phone').includes('24 hours'), 'cross-device continuation respects session validity')
+assert(de.recommendation.paragraphs.some(item => item.includes('parallele ChatGPT-Beta bieten wir nicht an')) && en.recommendation.paragraphs.some(item => item.includes('not offering a parallel ChatGPT beta')), 'no parallel external ChatGPT beta is advertised')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('echten ChatGPT-Verbindung') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('real ChatGPT connection'), 'ChatGPT needs real host-specific testing before submission')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('Veröffentlichungstermin können wir noch nicht nennen') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('cannot give a release date'), 'no publication date is promised')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-app-voice').includes('gesondert') && paragraphs(en, 'chatgpt', 'chatgpt-app-voice').includes('separately'), 'Claude app and voice experience does not prove ChatGPT behavior')
+assert(paragraphs(de, 'learning', 'session-duration').includes('24 Stunden') && paragraphs(en, 'learning', 'session-duration').includes('24 hours'), 'shared FAQ preserves session duration')
+assert(paragraphs(de, 'learning', 'session-duration').includes('nicht mit anderen') && paragraphs(en, 'learning', 'session-duration').includes('not share'), 'shared FAQ preserves private start-message caution')
+assert(paragraphs(de, 'learning', 'saved-progress').includes('kein Beleg') && paragraphs(en, 'learning', 'saved-progress').includes('not evidence'), 'coach praise is not proof of saved progress')
+assert(paragraphs(de, 'learning', 'photo-upload').includes('persönliche Angaben') && paragraphs(en, 'learning', 'photo-upload').includes('personal information'), 'photo guidance preserves personal-data caution')
+assert(paragraphs(de, 'learning', 'photo-upload').includes('keine Chattexte oder Fotos') && paragraphs(en, 'learning', 'photo-upload').includes('does not receive chat text or photos'), 'privacy copy preserves the no-chat-prose-to-Core boundary')
+assert(!JSON.stringify(de).includes('Der Inhalt ist dadurch nicht falsch') && !JSON.stringify(en).includes('The content is not wrong'), 'display guidance never guarantees correct mathematics')
 
 console.log('FAQ view copy tests passed')

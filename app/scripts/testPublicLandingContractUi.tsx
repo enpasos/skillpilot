@@ -21,8 +21,8 @@ interface LanguageExpectation {
 
 const expectedByLanguage: Record<Language, LanguageExpectation> = {
   de: {
-    accessNotice: 'SkillPilot ist kostenlos. Aktuell angeboten wird ausschließlich der Claude-1.1-Betakandidat. Dafür ist ein kostenpflichtiger Claude-Tarif erforderlich; SkillPilot unterstützt derzeit Claude Pro. Die exakte 1.1-Client-Abnahme in Claude Web, Android und Voice Mode steht noch aus. Der ChatGPT-Zugang wartet noch auf Freigabe und kann derzeit nicht genutzt werden.',
-    accessSummary: 'Angeboten wird derzeit der Claude-1.1-Betakandidat; seine exakte Client-Abnahme und die ChatGPT-Freigabe stehen noch aus.',
+    accessNotice: 'SkillPilot ist kostenlos. Die Lern-Beta läuft mit dem kostenpflichtigen Claude Pro – im Browser und in der Claude-App, auch mit Voice-Mode. ChatGPT folgt nach Stabilisierung, gezielter Prüfung und Veröffentlichung.',
+    accessSummary: 'Jetzt mit Claude lernen – auch in der App und mit Voice-Mode. ChatGPT ist noch nicht verfügbar.',
     footerLabels: ['Statistiken', 'Nutzungsbedingungen', 'Datenschutz', 'Impressum'],
     landingPillLabels: [
       'Jetzt lernen',
@@ -43,8 +43,8 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
     removedHeroLine: 'So startest du in 5 Minuten',
   },
   en: {
-    accessNotice: 'SkillPilot is free. Currently, only the Claude 1.1 beta candidate is offered. A paid Claude plan is required; SkillPilot currently supports Claude Pro. Exact 1.1 client acceptance in Claude Web, Android, and voice mode is still pending. ChatGPT access is awaiting approval and cannot currently be used.',
-    accessSummary: 'The Claude 1.1 beta candidate is currently offered; its exact client acceptance and ChatGPT approval are still pending.',
+    accessNotice: 'SkillPilot is free. The learning beta runs with the paid Claude Pro plan – in your browser and the Claude app, including voice mode. ChatGPT will follow after stabilization, focused testing and publication.',
+    accessSummary: 'Learn with Claude now – including the app and voice mode. ChatGPT is not available yet.',
     footerLabels: ['Statistics', 'Terms of Use', 'Privacy', 'Imprint'],
     landingPillLabels: [
       'Learn now',

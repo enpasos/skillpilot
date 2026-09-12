@@ -39,6 +39,31 @@ artifact reproducibility and truthful acceptance tests remain required.
 See [review retirement and history](docs/deploy/openai-plugin-v1-review-freeze.md)
 and the [release runbook](docs/deploy/openai-plugin-v1-release.md).
 
+### 0.1 Claude-first beta and subsequent ChatGPT publication
+
+On **12 September 2026**, the Product Owner set this binding work order:
+**Claude beta → stable candidate → focused ChatGPT integration acceptance →
+official submission**. The detailed [beta and publication strategy](docs/deploy/claude-beta-chatgpt-release-strategy.md)
+supersedes earlier plans for a parallel external ChatGPT beta.
+
+- Continue the real Claude beta and stabilize complete learning flows,
+  including session continuation, persisted learning progress and reliable tools.
+- Do not build another ChatGPT beta distribution path, investigate further
+  distribution workarounds, or develop speculative ChatGPT-specific extensions.
+- Once Claude is stable, identify the proven source/build as the release
+  candidate. Test that shared functional baseline through the actual ChatGPT
+  adapter; do not duplicate the core or treat the provider packages as identical.
+- ChatGPT acceptance is a focused host-integration check, not a second full
+  beta: connection/authentication and token renewal, loaded coach instructions,
+  actual tool calls, and a representative learning flow with session continuation.
+  Fix observed host-specific faults and record a demo of the tested candidate.
+- Existing security, privacy, domain checks and submission evidence gates remain
+  unchanged. Claude results do not prove ChatGPT host behavior.
+- An external ChatGPT beta is not a submission prerequisite. Handle provider
+  inquiries separately; only a demonstrated submission or operation obstacle,
+  not silence on a general support question, can block the next step.
+- This work order does not itself submit, publish or change production settings.
+
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.
 
