@@ -4,9 +4,9 @@ This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
 Anthropic-curated or Anthropic-verified listing. Version 1.1.4 is the current
-privacy-correction candidate; 1.1.3 remains the last verified published package
-until the new CI-gated rollout is completed. Published packages and their
-evidence remain immutable history.
+privacy-correction package, deployed in production and verified in the public
+Marketplace. Real-client acceptance remains pending. Earlier published packages
+and their evidence remain immutable history.
 
 ## 1.1.4 privacy correction, 12 September 2026
 
@@ -30,6 +30,59 @@ evidence starts pending; historical automatic updates do not establish new
 candidate acceptance. Local preparation fixes artifact/index drift without
 overwriting any published artifact. Publication and production evidence must
 be recorded only after the corresponding operation actually succeeds.
+
+### Completed production and Marketplace rollout
+
+The Product Owner authorized autonomous completion of both deployments, with
+green CI required first. The complete [application CI](https://github.com/enpasos/skillpilot/actions/runs/34691209861)
+and [documentation deployment](https://github.com/enpasos/skillpilot/actions/runs/34691209879)
+passed on `f28ce87e4d792c75649b01da20bc5f32cd709ad8` before production was changed.
+The original failures were the stale 1.1.3 artifact binding and a missing
+documentation-index entry. A subsequent frontend failure exposed a test that
+required publication before CI and pinned the old 1.1.3 repository tree; it now
+checks the prepared and separately verified publication states correctly.
+
+Production was deployed from that exact commit through `./deploy_skillpilot.sh`.
+A fresh restricted database backup and a hash-verified copy of the prior server
+artifact were preserved first. The database precheck and fresh-backup postcheck
+found none of the prohibited feedback JSON keys; no feedback text was exported
+as incident evidence. This is not a restore-test or a claim about older backups.
+The server's Git SSH authentication was unavailable, so the exact public source
+was fetched through HTTPS without changing credentials or Git configuration.
+The existing deployment generated the canonical runtime deck copies; these
+generated production-worktree changes are not additional release source edits.
+
+The production build, focused backend security tests, public artifact, frontend
+shell, AI-transparency, OpenAI mTLS/route matrix and source-rationale checks
+passed. Readiness returned HTTP 200 after 45 seconds. The service became active
+at `2026-09-12T12:13:17Z` with `NRestarts=0`; OpenAI mTLS remained `enforce`.
+The optional OpenAI Apps challenge comparison was skipped because no expected
+challenge was supplied. All eight credential-free Claude support synthetic
+checks passed at `2026-09-12T12:14:27.976Z`. The earlier scheduled version-drift
+alarm also [passed on rerun](https://github.com/enpasos/skillpilot/actions/runs/34690832224)
+after the new artifact was live.
+
+[Publication PR #6](https://github.com/enpasos/skillpilot-claude-marketplace/pull/6)
+passed required validation and automatic review, then was merged. Verification
+with `node scripts/claude_marketplace_release.mjs verify-repository` proved:
+
+- public default-branch revision: `91d6646c64ebeda9afa3b729f10a4859c360d69e`;
+- verification timestamp: `2026-09-12T12:18:50.000Z`;
+- closed publication inventory: 11 files;
+- tree SHA-256: `dd8bf77fa63ac8d1fd3747bf5b7ba3785780742c04945d3e649d77ff558003b7`;
+- plugin: 1.1.4, 58,290 bytes, SHA-256
+  `0b1aa078fa140f95a83f3ef699c1b2130ac3c2e9b4624e02cb84f859d5612831`;
+- strict Marketplace/plugin validation and an isolated installation from the
+  actual public HTTPS repository: passed;
+- [default-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/34693308362): passed.
+
+Only the current candidate's `public-repository-default-branch` evidence is
+recorded as `pass`; activation is `published_pending_acceptance`. The guide,
+real-account update, clean-account installation and other real-client acceptance
+records remain pending. No previous approval is inherited, and no automatic
+update in a user's Claude account is claimed. Confirm installed version 1.1.4,
+refresh connector tools if needed, and start a fresh SkillPilot learning session
+to verify an actual mastery write with the new input contract.
 
 ## 1.1.3 production and Marketplace publication, 12 September 2026
 
