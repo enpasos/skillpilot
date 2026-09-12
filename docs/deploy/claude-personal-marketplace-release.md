@@ -68,6 +68,15 @@ failure exceptions, causes and stack traces without enabling standard-stream
 logging. The original failed run does not authorize deployment; the corrected
 commit requires a new green full CI run.
 
+The expanded local OAuth suite also exposed a wall-clock-sensitive CIMD test:
+a one-second elapsed-time assertion included JVM scheduling latency. The test
+now proves causally that startup returns while the started resolver remains
+blocked, and that twenty retries still produce exactly one fetch. A separate
+test-harness deadlock guard replaces the stopwatch; the 50-ms test attempt
+budget, production six-second hard maximum and retry/cache policy are unchanged.
+All 106 expanded OAuth and connection-service tests then passed locally. These
+are test-only corrections, not changes to production authorization or scheduling.
+
 ## 1.1.4 privacy correction, 12 September 2026
 
 The Product Owner required removal of `workFeedback`, `outcomeFeedback` and

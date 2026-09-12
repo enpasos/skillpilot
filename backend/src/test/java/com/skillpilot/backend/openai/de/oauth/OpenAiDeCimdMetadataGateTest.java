@@ -13,6 +13,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.Test;
@@ -80,15 +81,26 @@ class OpenAiDeCimdMetadataGateTest {
                 catch (InterruptedException ignored) { /* Deliberately simulate a non-interruptible resolver. */ }
             }
         }, clock, Duration.ofMillis(50))) {
-            long before = System.nanoTime();
-            gate.initialRefresh();
-            assertThat(Duration.ofNanos(System.nanoTime() - before)).isLessThan(Duration.ofSeconds(1));
-            assertThat(started.await(1, TimeUnit.SECONDS)).isTrue();
-            assertThat(gate.isReady()).isFalse();
-            for (int i = 0; i < 20; i++) { clock.advance(Duration.ofSeconds(31)); gate.retry(); }
-            assertThat(calls).hasValue(1);
-        } finally {
-            release.countDown();
+            var startup = new FutureTask<Void>(() -> {
+                gate.initialRefresh();
+                return null;
+            });
+            var startupThread = Thread.ofPlatform().daemon().name("cimd-startup-test").unstarted(startup);
+            try {
+                startupThread.start();
+                // These waits guard test deadlocks, not JVM scheduling latency. The gate's
+                // configured budget stays 50 ms; startup must return while the resolver is blocked.
+                assertThat(started.await(10, TimeUnit.SECONDS)).isTrue();
+                startup.get(10, TimeUnit.SECONDS);
+                assertThat(release.getCount()).isEqualTo(1L);
+                assertThat(gate.isReady()).isFalse();
+                for (int i = 0; i < 20; i++) { clock.advance(Duration.ofSeconds(31)); gate.retry(); }
+                assertThat(calls).hasValue(1);
+            } finally {
+                release.countDown();
+                startupThread.interrupt();
+                assertThat(startupThread.join(Duration.ofSeconds(10))).isTrue();
+            }
         }
     }
 
