@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.ClientStateRequest;
+import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
 import com.skillpilot.backend.api.MemoryPracticeStartRequest;
@@ -55,6 +56,8 @@ import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -173,9 +176,11 @@ public class LearnerServiceTest {
     private CompositionViewService compositionViewService;
 
     private String learnerId;
+    private Clock originalPlanClock;
 
     @BeforeEach
     void setUp() {
+        originalPlanClock = (Clock) ReflectionTestUtils.getField(learnerLearningPlanService, "clock");
         Learner learner = new Learner();
         learner.setSkillpilotId("test-learner");
         learner.setLearningStrategy("RANDOM");
@@ -186,6 +191,7 @@ public class LearnerServiceTest {
 
     @AfterEach
     void tearDown() {
+        ReflectionTestUtils.setField(learnerLearningPlanService, "clock", originalPlanClock);
         ReflectionTestUtils.setField(learnerService, "verifiedRecallClock", Clock.systemUTC());
         ReflectionTestUtils.setField(
                 learnerService,
@@ -1301,31 +1307,9 @@ public class LearnerServiceTest {
 
     @Test
     void planPackageActivationEnablesFollowingAndSelectsTheFirstGoalWithoutAnotherAction() {
-        selectCompletedCanonicalMathCurriculum();
-        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
-        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
-        LocalDate asOf = LocalDate.now(ZoneId.of("Europe/Berlin"));
-        LocalDate planDate = asOf.with(
-                java.time.temporal.TemporalAdjusters.previousOrSame(java.time.DayOfWeek.FRIDAY));
-        var block = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
-                "representations",
-                "learning",
-                CANONICAL_REPRESENTATION_CLUSTER_ID,
-                "Darstellungen",
-                planDate,
-                planDate,
-                null,
-                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID));
-
-        var activation = learnerLearningPlanService.activatePlans(
-                learnerId,
-                new com.skillpilot.backend.api.LearnerLearningPlanApi.ActivateRequest(
-                        asOf,
-                        List.of(new com.skillpilot.backend.api.LearnerLearningPlanApi.ActivationPlan(
-                                CANONICAL_MATH_LANDSCAPE_ID,
-                                0L,
-                                "Mathematik",
-                                List.of(block)))));
+        // The one goal must be due today, not on whichever Friday preceded the CI run.
+        LocalDate friday = LocalDate.parse("2026-09-11");
+        var activation = activateRepresentationPlan(friday, friday);
 
         Learner activated = learnerRepository.findById(learnerId).orElseThrow();
         assertThat(activation.followLearningPlans()).isTrue();
@@ -1337,6 +1321,42 @@ public class LearnerServiceTest {
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "2026-09-12", "2026-09-13", "2026-09-14",
+            "2026-09-15", "2026-09-16", "2026-09-17"
+    })
+    void planPackageActivationWithoutTodaysQuotaLeavesBacklogForExplicitContinuation(String activationDate) {
+        LocalDate asOf = LocalDate.parse(activationDate);
+        var activation = activateRepresentationPlan(asOf, LocalDate.parse("2026-09-11"));
+
+        assertThat(activation.followLearningPlans()).isTrue();
+        assertThat(activation.selectedPlanId()).isNull();
+        assertThat(activation.selectedLandscapeId()).isNull();
+        assertThat(activation.activeGoalId()).isNull();
+        assertThat(activation.state().activeGoal()).isNull();
+        Learner activated = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(activated.getFollowLearningPlans()).isTrue();
+        assertThat(activated.getActiveGoalId()).isNull();
+
+        assertThat(activation.plans()).hasSize(1);
+        var plan = activation.plans().getFirst();
+        assertThat(plan.metrics().dueToday()).isZero();
+        assertThat(plan.metrics().openDueToday()).isZero();
+        assertThat(plan.metrics().openDueThroughToday()).isEqualTo(1);
+        Map<String, Double> masteryBefore = new LinkedHashMap<>(learnerService.getMastery(learnerId));
+        assertThat(masteryBefore.getOrDefault(CANONICAL_CHOOSE_REPRESENTATION_ID, 0.0)).isZero();
+
+        // No automatic obligation does not mean that the overdue goal becomes inaccessible.
+        var continuation = learnerLearningPlanService.continuePlan(
+                learnerId,
+                plan.planId(),
+                new LearnerLearningPlanApi.ContinueRequest(plan.revision(), asOf));
+        assertThat(continuation.activeGoalId()).isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(continuation.state().activeGoal().id()).isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(learnerService.getMastery(learnerId)).isEqualTo(masteryBefore);
     }
 
     @Test
@@ -3825,6 +3845,26 @@ public class LearnerServiceTest {
                 }
                 """));
         learnerRepository.save(learner);
+    }
+
+    private LearnerLearningPlanApi.ActivateResponse activateRepresentationPlan(LocalDate asOf, LocalDate planDate) {
+        ZoneId berlin = ZoneId.of("Europe/Berlin");
+        Clock clock = Clock.fixed(asOf.atStartOfDay(berlin).toInstant(), berlin);
+        // Mutation-date validation and learner-state transitions must see the same Berlin day.
+        ReflectionTestUtils.setField(learnerLearningPlanService, "clock", clock);
+        ReflectionTestUtils.setField(learnerService, "learningPlanClock", clock);
+        selectCompletedCanonicalMathCurriculum();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
+        var block = new LearnerLearningPlanApi.Block(
+                "representations", "learning", CANONICAL_REPRESENTATION_CLUSTER_ID, "Darstellungen",
+                planDate, planDate, null, List.of(CANONICAL_CHOOSE_REPRESENTATION_ID));
+        return learnerLearningPlanService.activatePlans(
+                learnerId,
+                new LearnerLearningPlanApi.ActivateRequest(
+                        asOf,
+                        List.of(new LearnerLearningPlanApi.ActivationPlan(
+                                CANONICAL_MATH_LANDSCAPE_ID, 0L, "Mathematik", List.of(block)))));
     }
 
     private void prepareRepresentationLearningPlan() {
