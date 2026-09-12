@@ -51,6 +51,22 @@ real-client acceptance. The six immutable packaged files retain their
 preparation-time text; the Marketplace root README and changelog describe the
 subsequent publication. No prior package or historical approval was rebound.
 
+### First observed automatic update in two Claude accounts
+
+On **12 September 2026**, after the 1.1.3 publication, the Product Owner reported
+that the installed plugin version had updated **automatically to 1.1.3 in two
+Claude accounts**. This is the first reported real-account automatic update in
+this release history, beyond the repository and isolated-install checks above.
+
+This is a Product Owner observation, not an agent-observed account test. The
+previous installed versions, exact clients and synchronization timing were not
+recorded in that report. It therefore documents the successful two-account
+version update without claiming a fresh-account installation, unchanged OAuth
+connectivity, a complete coaching acceptance run, or repeatable automatic
+updates on every client. The next release should explicitly record whether the
+same accounts update again; the two-consecutive-update repeatability gate and
+the remaining acceptance records stay pending.
+
 ## Historical local 1.1.3 preparation, 11 September 2026
 
 The following records the state before the publication above.
