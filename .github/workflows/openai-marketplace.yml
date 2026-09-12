@@ -1,0 +1,70 @@
+name: Experimental OpenAI personal marketplace
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '25 6 * * *'
+  pull_request:
+    paths:
+      - '.github/workflows/openai-marketplace.yml'
+      - '.nvmrc'
+      - 'LICENSE'
+      - 'ai/openai plugin/skillpilot-coach-v1/**'
+      - 'ai/openai-marketplace/**'
+      - 'scripts/openai_marketplace_release*'
+      - 'scripts/lib/openai_plugin_install_files.mjs'
+      - 'scripts/lib/reproducible_plugin_archive.mjs'
+      - 'scripts/openai_plugin_release.mjs'
+      - 'docs/deploy/openai-personal-marketplace-release.md'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/openai-marketplace.yml'
+      - '.nvmrc'
+      - 'LICENSE'
+      - 'ai/openai plugin/skillpilot-coach-v1/**'
+      - 'ai/openai-marketplace/**'
+      - 'scripts/openai_marketplace_release*'
+      - 'scripts/lib/openai_plugin_install_files.mjs'
+      - 'scripts/lib/reproducible_plugin_archive.mjs'
+      - 'scripts/openai_plugin_release.mjs'
+      - 'docs/deploy/openai-personal-marketplace-release.md'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: openai-marketplace-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Verify experimental marketplace export
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - name: Test export integrity and reproducibility
+        run: node --test scripts/openai_marketplace_release.test.mjs
+      - name: Check the canonical candidate without external services
+        run: node scripts/openai_marketplace_release.mjs check
+      - name: Prepare and verify the standalone candidate
+        run: |
+          node scripts/openai_marketplace_release.mjs prepare --output tmp/openai-marketplace-ci
+          node scripts/openai_marketplace_release.mjs verify --output tmp/openai-marketplace-ci
+          node tmp/openai-marketplace-ci/validate.mjs
+      # This artifact is an experimental package, not publication or host acceptance.
+      # Keep the upload confined to the validated export, including its manifests.
+      - name: Retain the verified experimental candidate
+        uses: actions/upload-artifact@v6
+        with:
+          name: openai-marketplace-candidate-${{ github.sha }}-${{ github.run_attempt }}
+          path: tmp/openai-marketplace-ci/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14

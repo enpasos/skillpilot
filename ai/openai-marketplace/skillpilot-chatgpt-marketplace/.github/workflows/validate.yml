@@ -1,0 +1,19 @@
+name: Validate experimental marketplace
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 5 * * *'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20.20.2'
+      - name: Verify closed file inventory, hashes and MCP boundary
+        run: node validate.mjs

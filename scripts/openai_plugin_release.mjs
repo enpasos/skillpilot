@@ -33,6 +33,7 @@ import {
   pluginInstallBundleArchiveName,
 } from "./lib/reproducible_plugin_archive.mjs";
 import { assertOpenAiPluginReleaseMutationAllowed } from "./check_openai_plugin_review_freeze.mjs";
+import { openAiPluginInstallFiles } from "./lib/openai_plugin_install_files.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
@@ -434,16 +435,7 @@ function buildCandidate(output) {
     sourceRoot: pluginRoot,
     archivePath: archive,
     // Release/portal evidence is not part of the public installable plugin.
-    includePaths: [
-      ".codex-plugin/plugin.json",
-      ".mcp.json",
-      ...(manifest.apps === undefined ? [] : [".app.json"]),
-      "skills/skillpilot-coach-v1/SKILL.md",
-      "skills/skillpilot-coach-v1/agents/openai.yaml",
-      "skills/skillpilot-coach-v1/references/coaching-policy.md",
-      "assets/favicon-96x96.png",
-      "assets/web-app-manifest-512x512.png",
-    ],
+    includePaths: openAiPluginInstallFiles(manifest),
   });
 
   const files = listFiles(output)

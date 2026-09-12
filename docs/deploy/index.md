@@ -12,6 +12,7 @@ This page groups deployment-facing operational documentation.
 - [SkillPilot Coach v1: Release, Rollback und Stilllegung](openai-plugin-v1-release.md)
 - [SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre](openai-plugin-v1-review-freeze.md)
 - [SkillPilot Coach v1: OpenAI-Submission-Dossier](openai-plugin-v1-submission.md)
+- [SkillPilot ChatGPT Git marketplace: experimental release runbook](openai-personal-marketplace-release.md)
 - [Demoaufnahme für SkillPilot Coach v1 1.1.0](openai-plugin-v1-demo-video.md)
 - [Neue SkillPilot Custom GPTs als befristeter Übergangskanal](openai-custom-gpt-interim.md)
 - [Claude coach (paused beta): architecture, testing, and reactivation](claude-coach-beta.md)
