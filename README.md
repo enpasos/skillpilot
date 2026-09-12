@@ -4,7 +4,7 @@
 
 Open-source curriculum infrastructure for learning platforms and AI coaches.
 
-[Explore SkillPilot](https://skillpilot.com) · [Documentation](docs/index.md) · [Contribute](CONTRIBUTING.md)
+[Explore SkillPilot](https://skillpilot.com) · [Documentation](https://enpasos.github.io/skillpilot/) · [Contribute](https://enpasos.github.io/skillpilot/#contribute)
 
 ![A comic showing how SkillPilot helps learners find their next learning step](docs/comic1/SkillPilot_Comic.en.jpg)
 
