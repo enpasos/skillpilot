@@ -114,7 +114,7 @@ const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
   {
     ruleId: 'TRM-001',
     path: 'app/scripts/testPublicOverviewUi.tsx',
-    line: 57,
+    line: 59,
     column: 78,
     found: 'Wissenslandschaften',
     lineSha256: '684fbf08d53b563eea7b2e73cf0e8151727f1eda5bc44c4ae45db270c4a5c2e3',
@@ -122,7 +122,7 @@ const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
   {
     ruleId: 'TRM-001',
     path: 'app/scripts/testPublicOverviewUi.tsx',
-    line: 94,
+    line: 96,
     column: 30,
     found: 'Wissenslandschaften',
     lineSha256: 'd240409a7691214bdfde425a657b126c795f642ac87d53f6da873b3a1ce29e90',

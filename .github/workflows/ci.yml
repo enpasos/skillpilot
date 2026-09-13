@@ -373,10 +373,10 @@ jobs:
         working-directory: tools/demo-video
         run: |
           npm ci --ignore-scripts
+          npx --no-install playwright install --with-deps chromium
           npm run check
           npm run demo -- validate --scenario scenarios/example.yaml
           npm run demo -- validate --scenario scenarios/skillpilot-openai-review.template.yaml
-          npx playwright install --with-deps chromium
           DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
             npm run demo -- record --scenario scenarios/example.yaml
           DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
