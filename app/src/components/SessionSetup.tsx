@@ -999,10 +999,15 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-chat-bg text-text-primary px-6 py-10 transition-colors relative">
-      <div className="w-full flex justify-between items-center mb-6">
-        <div /> {/* Spacer to keep right alignment clean or put branding here later */}
-        <div className="flex items-center gap-4">
+    <div className={`min-h-screen flex flex-col items-center text-text-primary transition-colors relative ${showLogin ? 'bg-chat-bg px-6 py-10' : 'public-landing-page px-4 py-5 sm:px-8 lg:px-10'}`}>
+      <div className={`w-full flex justify-between items-center mb-6 ${showLogin ? '' : 'gap-2 max-w-[1440px]'}`}>
+        {showLogin ? <div /> : (
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2.5">
+            <Send size={30} strokeWidth={2} className="h-6 w-6 sm:h-[30px] sm:w-[30px] text-amber-500" aria-hidden="true" />
+            <h1 className="text-lg min-[360px]:text-xl sm:text-2xl font-bold tracking-tight text-text-primary">SkillPilot</h1>
+          </div>
+        )}
+        <div className={`flex items-center ${showLogin ? 'gap-4' : 'gap-2 sm:gap-4'}`}>
           <a
             href="https://github.com/enpasos/skillpilot"
             target="_blank"
@@ -1017,9 +1022,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         </div>
       </div>
 
-      <div className="flex-grow flex flex-col items-center justify-center w-full max-w-2xl">
+      <div className={`flex-grow flex flex-col items-center w-full ${showLogin ? 'justify-center max-w-2xl' : 'max-w-[1440px]'}`}>
         {/* 0. Logo & Title */}
-        <div className="flex flex-col items-center mb-10 animate-in fade-in zoom-in duration-500">
+        {showLogin && <div className="flex flex-col items-center mb-10 animate-in fade-in zoom-in duration-500">
           <div className="flex items-center gap-4 mb-2">
             <div className="text-amber-500">
               <Send size={48} strokeWidth={2} />
@@ -1028,7 +1033,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
               SkillPilot
             </h1>
           </div>
-        </div>
+        </div>}
 
         <div className="w-full space-y-5">
           {!showLogin ? (

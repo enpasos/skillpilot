@@ -4,7 +4,6 @@ import {
   CircleHelp,
   ClipboardList,
   GraduationCap,
-  MessageCircle,
   Network,
   ShieldCheck,
   Timer,
@@ -14,6 +13,7 @@ import { Link } from 'react-router-dom'
 import type { LabelLanguage } from '../utils/filterLabels'
 import { getPublicLandingCopy } from '../utils/publicLandingCopy'
 import { SkillPilotOverviewCard } from './SkillPilotOverviewCard'
+import { PublicLandingLearningScenes } from './PublicLandingLearningScenes'
 
 interface AccessBannerCopy {
   text: string
@@ -40,7 +40,7 @@ const neutralActionClassName =
   `${actionGeometryClassName} border-border-color bg-input-bg text-text-secondary`
 
 const learningActionClassName =
-  `${neutralActionClassName} hover:border-sky-300/80 hover:bg-sky-50/70 hover:text-sky-800 focus-visible:ring-sky-600 dark:hover:border-sky-600/70 dark:hover:bg-sky-950/25 dark:hover:text-sky-200 dark:focus-visible:ring-sky-400`
+  `${neutralActionClassName} hover:border-emerald-300/80 hover:bg-emerald-50/70 hover:text-emerald-800 focus-visible:ring-emerald-600 dark:hover:border-emerald-600/70 dark:hover:bg-emerald-950/25 dark:hover:text-emerald-200 dark:focus-visible:ring-emerald-400`
 
 const teachingActionClassName =
   `${neutralActionClassName} hover:border-violet-300/80 hover:bg-violet-50/70 hover:text-violet-800 focus-visible:ring-violet-600 dark:hover:border-violet-600/70 dark:hover:bg-violet-950/25 dark:hover:text-violet-200 dark:focus-visible:ring-violet-400`
@@ -49,13 +49,13 @@ const curriculaActionClassName =
   `${neutralActionClassName} hover:border-amber-300/80 hover:bg-amber-50/70 hover:text-amber-900 focus-visible:ring-amber-600 dark:hover:border-amber-600/70 dark:hover:bg-amber-950/25 dark:hover:text-amber-200 dark:focus-visible:ring-amber-400`
 
 const primaryActionClassName =
-  `${actionGeometryClassName} border-sky-300/90 bg-input-bg text-sky-700 shadow-sm hover:border-sky-400 hover:bg-sky-50/80 hover:text-sky-800 focus-visible:ring-sky-600 dark:border-sky-700/80 dark:text-sky-300 dark:hover:border-sky-500 dark:hover:bg-sky-950/35 dark:hover:text-sky-200 dark:focus-visible:ring-sky-400`
+  `${actionGeometryClassName} shadow-sm focus-visible:ring-emerald-600 dark:focus-visible:ring-emerald-400`
 
-const skyPanelClassName =
-  'hover:border-sky-400/70 focus-within:border-sky-500 dark:hover:border-sky-500/60 dark:focus-within:border-sky-400'
+const learningPanelClassName =
+  'hover:border-emerald-400/70 focus-within:border-emerald-500 dark:hover:border-emerald-500/60 dark:focus-within:border-emerald-400'
 
-const skyHeadingClassName =
-  'transition-colors group-hover:text-sky-700 group-focus-within:text-sky-700 dark:group-hover:text-sky-300 dark:group-focus-within:text-sky-300'
+const learningHeadingClassName =
+  'transition-colors group-hover:text-emerald-600 group-focus-within:text-emerald-600 dark:group-hover:text-emerald-400 dark:group-focus-within:text-emerald-400'
 
 const violetPanelClassName =
   'hover:border-violet-400/70 focus-within:border-violet-500 dark:hover:border-violet-500/60 dark:focus-within:border-violet-400'
@@ -84,28 +84,30 @@ export const PublicLandingPanels = ({
     <section
       aria-label={copy.sectionLabel}
       data-testid="public-landing-panels"
-      className="w-full space-y-4"
+      className="public-landing-panels grid w-full gap-4 lg:grid-cols-3"
     >
       <article
         data-testid="public-landing-panel-learning"
-        className={`${panelClassName} ${skyPanelClassName}`}
+        className={`public-landing-hero ${panelClassName} ${learningPanelClassName}`}
       >
-        <h2 className={`flex items-center gap-2 text-lg font-semibold text-text-primary ${skyHeadingClassName}`}>
+        <PublicLandingLearningScenes copy={copy.learning.scenes} imageCaption={copy.learning.imageCaption} />
+        <div className="public-landing-hero-veil" aria-hidden="true" />
+        <p className="public-landing-eyebrow">{copy.learning.eyebrow}</p>
+        <h2 className={`public-landing-hero-title text-text-primary ${learningHeadingClassName}`}>
           <span>{copy.learning.title}</span>
-          <MessageCircle size={18} className="text-sky-500" aria-hidden="true" />
         </h2>
-        <p className="mt-1 text-sm leading-relaxed text-text-secondary">
+        <p className="public-landing-hero-description mt-1 text-sm leading-relaxed text-text-secondary">
           {copy.learning.description}
         </p>
-        <ul className="mt-3 flex flex-wrap items-center gap-2" aria-label={copy.learning.title}>
+        <ul className="public-landing-hero-actions mt-3 flex flex-wrap items-center gap-2" aria-label={copy.learning.title}>
           <li>
             <button
               type="button"
               onClick={onStartLearning}
               data-testid="public-landing-action-learning"
-              className={primaryActionClassName}
+              className={`public-landing-hero-primary ${primaryActionClassName}`}
             >
-              <GraduationCap size={14} className="text-sky-600 dark:text-sky-300" aria-hidden="true" />
+              <GraduationCap size={14} aria-hidden="true" />
               <span>{copy.learning.primaryAction}</span>
             </button>
           </li>
@@ -115,7 +117,7 @@ export const PublicLandingPanels = ({
               data-testid="public-landing-action-quickstart"
               className={learningActionClassName}
             >
-              <Timer size={14} className="text-sky-600 dark:text-sky-300" aria-hidden="true" />
+              <Timer size={14} className="text-emerald-600 dark:text-emerald-300" aria-hidden="true" />
               <span>{copy.learning.quickstartAction}</span>
             </Link>
           </li>
@@ -125,7 +127,7 @@ export const PublicLandingPanels = ({
               data-testid="public-landing-action-faq"
               className={learningActionClassName}
             >
-              <CircleHelp size={14} className="text-sky-600 dark:text-sky-300" aria-hidden="true" />
+              <CircleHelp size={14} className="text-emerald-600 dark:text-emerald-300" aria-hidden="true" />
               <span>{copy.learning.faqAction}</span>
             </Link>
           </li>
@@ -133,11 +135,11 @@ export const PublicLandingPanels = ({
 
         <details
           data-testid="public-landing-access-notice"
-          className="group/access mt-4 border-t border-border-color pt-3 text-xs leading-relaxed text-text-secondary"
+          className="public-landing-hero-access group/access mt-4 border-t border-border-color pt-3 text-xs leading-relaxed text-text-secondary"
         >
-          <summary className="flex cursor-pointer list-none items-start gap-2 font-semibold text-text-secondary marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 [&::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer list-none items-start gap-2 font-semibold text-text-secondary marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 [&::-webkit-details-marker]:hidden">
             <ShieldCheck
-              className="mt-0.5 shrink-0 text-sky-600 dark:text-sky-300"
+              className="mt-0.5 shrink-0 text-emerald-600 dark:text-emerald-300"
               size={16}
               aria-hidden="true"
             />
@@ -157,7 +159,7 @@ export const PublicLandingPanels = ({
             <Link
               to="/faq/coach-setup"
               data-testid="public-landing-access-link"
-              className="font-semibold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-600 dark:text-sky-300 dark:hover:text-sky-200"
+              className="font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-800 dark:text-emerald-300 dark:hover:text-emerald-200"
             >
               {accessBanner.linkLabel}
             </Link>

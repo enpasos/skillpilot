@@ -1,4 +1,180 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/caveat-latin-wght.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+/* The learning scene belongs to the public landing only, never to learner forms. */
+.public-landing-page { background: #f7f5f0; }
+.public-landing-hero {
+  grid-column: 1 / -1;
+  isolation: isolate;
+  padding: 0 24px 28px;
+  border-radius: 24px;
+  background: #f4f1e9;
+}
+.public-landing-hero-visual {
+  position: relative;
+  width: calc(100% + 48px);
+  aspect-ratio: 4 / 3;
+  margin: 0 -24px;
+  touch-action: pan-y pinch-zoom;
+  background: #f4f1e9;
+}
+.public-landing-hero-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+.public-landing-scene-image { opacity: 0; transition: opacity 350ms ease; }
+.public-landing-scene-image[data-active="true"] { opacity: 1; }
+/* Preserve the right edge; any necessary horizontal crop comes from the left. */
+.public-landing-voice-image { object-position: 100% 50%; }
+.dark .public-landing-hero-visual { background: #1d282d; }
+.public-landing-hero-veil { display: none; pointer-events: none; }
+.public-landing-scene-controls {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  width: min(100%, 340px);
+  margin: 12px 0 26px;
+  padding: 4px;
+  border: 1px solid #d6d3cb;
+  border-radius: 28px;
+  background: #eae8e2;
+}
+.public-landing-scene-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px 8px;
+  border-radius: 24px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.public-landing-scene-controls button[aria-pressed="true"] {
+  color: #065f46;
+  background: #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+}
+.public-landing-scene-controls button:hover { color: #065f46; }
+.public-landing-scene-controls button:focus-visible { outline: 2px solid #047857; outline-offset: 1px; }
+.dark .public-landing-scene-controls { background: #253238; border-color: #475569; }
+.dark .public-landing-scene-controls button { color: #cbd5e1; }
+.dark .public-landing-scene-controls button[aria-pressed="true"] { background: #35474b; color: #a7f3d0; }
+.dark .public-landing-scene-controls button:hover { color: #a7f3d0; }
+.dark .public-landing-scene-controls button:focus-visible { outline-color: #34d399; }
+@media (prefers-reduced-motion: reduce) {
+  .public-landing-scene-image { transition: none; }
+}
+.public-landing-image-caption {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  border-radius: 6px;
+  padding: 3px 7px;
+  background: rgb(0 0 0 / 60%);
+  color: white;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.public-landing-eyebrow {
+  position: relative;
+  color: #786049;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.public-landing-hero-title {
+  position: relative;
+  margin-top: 14px;
+  font-family: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
+  font-size: clamp(38px, 11vw, 72px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.015em;
+  white-space: pre-line;
+}
+.public-landing-hero-description {
+  position: relative;
+  max-width: 370px;
+  margin-top: 22px;
+  font-size: 15px;
+  line-height: 1.75;
+}
+.public-landing-hero-actions { position: relative; margin-top: 26px; }
+.public-landing-hero-primary {
+  min-height: 44px;
+  padding: 10px 17px;
+  border-color: #047857;
+  background: #047857;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+.public-landing-hero-primary svg { color: inherit; }
+.public-landing-hero-primary:hover { background: #065f46; color: white; }
+.public-landing-hero-access { position: relative; max-width: 400px; margin-top: 25px; }
+.dark .public-landing-page { background: #171e22; }
+.dark .public-landing-hero { background: #1d282d; }
+.dark .public-landing-eyebrow { color: #dec19f; }
+
+@media (min-width: 1024px) {
+  .public-landing-hero { min-height: 630px; padding: 80px 48px 112px; }
+  .public-landing-hero-visual {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: -2;
+    aspect-ratio: auto;
+  }
+  .public-landing-hero-image {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 77%;
+    height: 100%;
+    object-position: 50% 38%;
+  }
+  .public-landing-voice-image {
+    /* Extend underneath the opaque side of the veil so no image boundary shows. */
+    width: 100%;
+    object-position: 100% 50%;
+  }
+  .public-landing-hero-veil {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, #f4f1e9 0%, #f4f1e9 25%, rgb(244 241 233 / 96%) 33%, rgb(244 241 233 / 72%) 42%, transparent 59%);
+  }
+  .public-landing-scene-controls { position: absolute; left: 48px; bottom: 28px; width: 340px; max-width: 38%; margin: 0; }
+  .public-landing-hero-title { max-width: 44%; font-size: clamp(56px, 5vw, 72px); }
+  .public-landing-hero-description { max-width: 33%; }
+  .public-landing-hero-actions, .public-landing-hero-access { max-width: 38%; }
+  .public-landing-image-caption { top: auto; bottom: 14px; right: 16px; }
+  .dark .public-landing-hero-veil {
+    background: linear-gradient(90deg, #1d282d 0%, #1d282d 25%, rgb(29 40 45 / 97%) 33%, rgb(29 40 45 / 76%) 42%, transparent 59%);
+  }
+}
 @plugin "@tailwindcss/typography";
 
 /* Force class-based dark mode instead of media-query default */

@@ -4,6 +4,15 @@ export interface PublicLandingCopy {
   sectionLabel: string
   learning: {
     title: string
+    eyebrow: string
+    imageCaption: string
+    scenes: {
+      label: string
+      writing: string
+      voice: string
+      loading: string
+      unavailable: string
+    }
     description: string
     primaryAction: string
     quickstartAction: string
@@ -34,7 +43,16 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
   de: {
     sectionLabel: 'Einstiege nach Anliegen',
     learning: {
-      title: 'Lernen starten',
+      title: 'Dein Lernen.\nDein Tempo.',
+      eyebrow: 'Verstehen. Üben. Weiterkommen.',
+      imageCaption: 'KI-generiertes Symbolbild',
+      scenes: {
+        label: 'Zwei Einblicke ins Lernen',
+        writing: 'Mit Stift & Papier',
+        voice: 'Im Gespräch',
+        loading: 'Das Gesprächsmotiv wird geladen.',
+        unavailable: 'Das Bild konnte nicht geladen werden. Bitte erneut auswählen.',
+      },
       description: 'Wähle dein Curriculum und starte mit Claude in die Lern-Beta. Dein Fortschritt bleibt erhalten.',
       primaryAction: 'Jetzt lernen',
       quickstartAction: '5-Minuten-Quickstart',
@@ -63,7 +81,16 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
   en: {
     sectionLabel: 'Entry points by need',
     learning: {
-      title: 'Start learning',
+      title: 'Your learning.\nYour pace.',
+      eyebrow: 'Understand. Practise. Progress.',
+      imageCaption: 'AI-generated illustration',
+      scenes: {
+        label: 'Two glimpses of learning',
+        writing: 'With pen & paper',
+        voice: 'In conversation',
+        loading: 'Loading the conversation illustration.',
+        unavailable: 'The image could not be loaded. Select it again to retry.',
+      },
       description: 'Choose your curriculum and join the learning beta with Claude. Your progress is preserved.',
       primaryAction: 'Learn now',
       quickstartAction: '5-minute quickstart',

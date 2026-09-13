@@ -864,14 +864,14 @@ try {
       .getByTestId('skillpilot-overview-heading')
       .evaluate((heading) => [...heading.classList])
     for (const interactionClass of [
-      'group-hover:text-emerald-700',
-      'group-focus-within:text-emerald-700',
-      'dark:group-hover:text-emerald-300',
-      'dark:group-focus-within:text-emerald-300',
+      'group-hover:text-[#0073b5]',
+      'group-focus-within:text-[#0073b5]',
+      'dark:group-hover:text-sky-400',
+      'dark:group-focus-within:text-sky-400',
     ]) {
       assert(
         overviewHeadingClasses.includes(interactionClass),
-        `${language}: overview heading uses approved green interaction class ${interactionClass}`,
+        `${language}: overview heading uses the fresh blue interaction class ${interactionClass}`,
       )
     }
     assert(
@@ -886,9 +886,9 @@ try {
       overviewEntry.evaluate((card) => [...card.classList]),
     ])
     assert(
-      cardFrameClasses.includes('hover:border-emerald-400/70')
-      && cardFrameClasses.includes('focus-within:border-emerald-500'),
-      `${language}: the overview card uses the approved single green interaction border`,
+      cardFrameClasses.includes('hover:border-sky-400/70')
+      && cardFrameClasses.includes('focus-within:border-sky-500'),
+      `${language}: the overview card uses a single blue interaction border`,
     )
     assert(
       !cardFrameClasses.some((className) => className.startsWith('focus-within:ring')),
@@ -1103,9 +1103,9 @@ try {
     await flushBrowserEffects(page)
     const openDisclosureAppearance = await readDisclosurePillAppearance(page)
     for (const activeClassName of [
-      'border-emerald-300',
-      'bg-emerald-50/80',
-      'text-emerald-900',
+      'border-sky-300',
+      'bg-sky-50/80',
+      'text-sky-900',
     ]) {
       assert(
         openDisclosureAppearance.classNames.includes(activeClassName),
@@ -1125,12 +1125,12 @@ try {
     assert.notEqual(
       openDisclosureAppearance.backgroundColor,
       closedDisclosureAppearance.backgroundColor,
-      `${language}: open disclosure has a visibly distinct green background`,
+      `${language}: open disclosure has a visibly distinct blue background`,
     )
     assert.notEqual(
       openDisclosureAppearance.borderColor,
       closedDisclosureAppearance.borderColor,
-      `${language}: open disclosure has a visibly distinct green border`,
+      `${language}: open disclosure has a visibly distinct blue border`,
     )
     assert.equal(
       openDisclosureAppearance.borderRadius,
@@ -1250,10 +1250,10 @@ try {
       `${language}: Space restores the calm neutral media-pill styling`,
     )
     assert(
-      !reclosedDisclosureClasses.includes('border-emerald-300')
-      && !reclosedDisclosureClasses.includes('bg-emerald-50/80')
-      && !reclosedDisclosureClasses.includes('text-emerald-900'),
-      `${language}: Space removes the green active styling`,
+      !reclosedDisclosureClasses.includes('border-sky-300')
+      && !reclosedDisclosureClasses.includes('bg-sky-50/80')
+      && !reclosedDisclosureClasses.includes('text-sky-900'),
+      `${language}: Space removes the blue active styling`,
     )
     assert(
       !(await disclosureChevron.getAttribute('class'))?.split(/\s+/u).includes('rotate-180'),

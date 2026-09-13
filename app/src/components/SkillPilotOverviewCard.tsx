@@ -9,13 +9,13 @@ interface SkillPilotOverviewCardProps {
 }
 
 const overviewActionGeometryClassName =
-  'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 motion-reduce:transition-none dark:focus-visible:ring-emerald-400 dark:focus-visible:ring-offset-slate-900'
+  'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 motion-reduce:transition-none dark:focus-visible:ring-sky-400 dark:focus-visible:ring-offset-slate-900'
 
 const overviewActionRestingClassName =
-  'border-border-color bg-input-bg text-text-secondary hover:border-emerald-300/80 hover:bg-emerald-50/70 hover:text-emerald-800 dark:hover:border-emerald-600/70 dark:hover:bg-emerald-950/25 dark:hover:text-emerald-200'
+  'border-border-color bg-input-bg text-text-secondary hover:border-sky-300/80 hover:bg-sky-50/70 hover:text-sky-800 dark:hover:border-sky-600/70 dark:hover:bg-sky-950/25 dark:hover:text-sky-200'
 
 const overviewActionActiveClassName =
-  'border-emerald-300 bg-emerald-50/80 text-emerald-900 hover:border-emerald-400 hover:bg-emerald-100 hover:text-emerald-950 dark:border-emerald-600 dark:bg-emerald-950/35 dark:text-emerald-100 dark:hover:border-emerald-500 dark:hover:bg-emerald-950/55'
+  'border-sky-300 bg-sky-50/80 text-sky-900 hover:border-sky-400 hover:bg-sky-100 hover:text-sky-950 dark:border-sky-600 dark:bg-sky-950/35 dark:text-sky-100 dark:hover:border-sky-500 dark:hover:bg-sky-950/55'
 
 export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps) => {
   const copy = getSkillPilotOverviewCopy(language)
@@ -49,15 +49,15 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
   return (
     <article
       data-testid="skillpilot-overview-entry"
-      className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:border-emerald-400/70 hover:shadow-md focus-within:border-emerald-500 dark:bg-slate-800/50 dark:hover:border-emerald-500/60 dark:focus-within:border-emerald-400"
+      className="group relative overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:border-sky-400/70 hover:shadow-md focus-within:border-sky-500 dark:bg-slate-800/50 dark:hover:border-sky-500/60 dark:focus-within:border-sky-400"
     >
       <h2
         id={headingId}
         data-testid="skillpilot-overview-heading"
-        className="flex items-center gap-2 text-lg font-semibold text-text-primary transition-colors group-hover:text-emerald-700 group-focus-within:text-emerald-700 dark:group-hover:text-emerald-300 dark:group-focus-within:text-emerald-300"
+        className="flex items-center gap-2 text-lg font-semibold text-text-primary transition-colors group-hover:text-[#0073b5] group-focus-within:text-[#0073b5] dark:group-hover:text-sky-400 dark:group-focus-within:text-sky-400"
       >
         <span>{copy.title}</span>
-        <Compass size={18} className="text-emerald-500" aria-hidden="true" />
+        <Compass size={18} className="text-sky-500" aria-hidden="true" />
       </h2>
       <p
         data-testid="skillpilot-overview-card-description"
@@ -84,7 +84,7 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
               >
                 <Icon
                   size={14}
-                  className="text-emerald-600 dark:text-emerald-300"
+                  className="text-sky-600 dark:text-sky-300"
                   aria-hidden="true"
                 />
                 {label}
@@ -102,7 +102,7 @@ export const SkillPilotOverviewCard = ({ language }: SkillPilotOverviewCardProps
             >
               <Compass
                 size={14}
-                className="text-emerald-600 dark:text-emerald-300"
+                className="text-sky-600 dark:text-sky-300"
                 aria-hidden="true"
                 data-testid="skillpilot-overview-disclosure-icon"
               />

@@ -160,13 +160,13 @@ assert.doesNotMatch(
 )
 assert.match(
   germanLocaleSource,
-  /ausschließlich der Claude-1\.1-Betakandidat.*kostenpflichtiger Claude-Tarif erforderlich.*unterstützt derzeit Claude Pro.*exakte 1\.1-Client-Abnahme.*steht noch aus.*ChatGPT-Zugang wartet noch auf Freigabe.*kann derzeit nicht genutzt werden/u,
-  'the German start banner must present Claude 1.1 as the supported but not yet exact-client-accepted candidate while ChatGPT awaits approval',
+  /Die Lern-Beta läuft mit dem kostenpflichtigen Claude Pro.*im Browser und in der Claude-App.*Voice-Mode.*ChatGPT folgt nach Stabilisierung, gezielter Prüfung und Veröffentlichung/u,
+  'the German start banner must present the Claude-first beta and subsequent ChatGPT testing and publication',
 )
 assert.match(
   englishLocaleSource,
-  /only the Claude 1\.1 beta candidate is offered.*paid Claude plan is required.*supports Claude Pro.*Exact 1\.1 client acceptance.*still pending.*ChatGPT access is awaiting approval.*cannot currently be used/u,
-  'the English start banner must present Claude 1.1 as the supported but not yet exact-client-accepted candidate while ChatGPT awaits approval',
+  /The learning beta runs with the paid Claude Pro plan.*in your browser and the Claude app.*voice mode.*ChatGPT will follow after stabilization, focused testing and publication/u,
+  'the English start banner must present the Claude-first beta and subsequent ChatGPT testing and publication',
 )
 assert.match(
   appSource,
