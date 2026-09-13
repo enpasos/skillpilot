@@ -212,8 +212,18 @@ for (const managedVariant of ['chatgpt-business', 'chatgpt-enterprise-edu'] as c
   )
 }
 
+for (const [copy, camera, phone, privacy] of [
+  [de, 'Kamera direkt in der Claude-App', 'Handy', 'Persönliche Angaben'],
+  [en, 'camera directly in the Claude app', 'phone', 'personal information'],
+] as const) {
+  const photo = row(copy, 'photo-upload').cells['claude-pro-max']
+  assert(photo.status === 'tested', 'Claude photo upload is confirmed in practice, not conditional')
+  assert(photo.value.includes(camera), 'Claude supports photo upload and its in-app camera')
+  assert(photo.note?.includes(phone) && photo.note.includes(privacy), 'photo guidance recommends a phone and retains privacy advice')
+}
+
 for (const copy of [de, en]) {
-  assert(copy.asOf.includes('12') && copy.asOf.includes('2026'), 'the matrix has an explicit current status date')
+  assert(copy.asOf.includes('13') && copy.asOf.includes('2026'), 'the matrix has an explicit current status date')
   assert(copy.sources.length === 5, 'the matrix links only learner-relevant access, voice, and age sources')
   assert(
     copy.sources.every(source => source.href.startsWith('https://')

@@ -40,7 +40,7 @@ const germanCopy: FaqViewCopy = {
   backToApp: 'Zurück zu SkillPilot',
   title: 'Häufige Fragen zu SkillPilot',
   subtitle: 'Mit Claude in der Beta lernen. ChatGPT folgt nach gezielter Prüfung und offizieller Veröffentlichung.',
-  reviewedLabel: 'Stand: 12. September 2026',
+  reviewedLabel: 'Stand: 13. September 2026',
   recommendation: {
     eyebrow: 'Jetzt mitlernen',
     title: 'Die laufende Beta nutzt Claude',
@@ -147,7 +147,7 @@ const germanCopy: FaqViewCopy = {
           id: 'photo-upload',
           question: 'Kann ich eine handschriftliche Aufgabe fotografieren?',
           paragraphs: [
-            'Ja. Wenn dein Chat einen Upload anbietet, kannst du eine Rechnung, ein Diagramm oder einen handschriftlichen Lösungsweg fotografieren und das Bild hochladen.',
+            'Ja. In Claude kannst du Fotos deiner Rechnung, eines Diagramms oder eines handschriftlichen Lösungswegs hochladen oder direkt die Kamera in der Claude-App nutzen. Am praktischsten geht das mit dem Handy.',
             'Schneide Namen, Adressen und andere persönliche Angaben vorher aus dem Bild heraus oder verdecke sie. Lade keine Zeugnisse, Passwörter oder vertraulichen Unterlagen hoch.',
             'Die Unterhaltung und das Bild bleiben beim jeweiligen Chat-Anbieter; SkillPilot erhält über den Coach keine Chattexte oder Fotos, sondern nur die vorgesehenen strukturierten Lernstandsdaten.',
           ],
@@ -171,7 +171,8 @@ const germanCopy: FaqViewCopy = {
           paragraphs: [
             'Widersprich und begründe, was du für falsch hältst. Eine flüssige Erklärung ist kein Beweis dafür, dass sie stimmt. Wenn deine Lösung zu Unrecht als falsch bewertet wird, zeige deinen Rechenweg und bitte um erneute Prüfung.',
             'Sag auch, wenn der Coach zu schnell ist oder dir die Lösung zu früh verrät. Ein begründeter Widerspruch schadet deinem Lernstand nicht.',
-            'Bleibt der Fehler bestehen oder ist die Aufgabe selbst fehlerhaft, schreib an support@skillpilot.com. Nenne Fach, Lernziel und das Problem; schicke keine Startnachricht oder vollständigen Lernchats mit.',
+            'Im Cockpit wird dein aktuelles Lernziel automatisch angezeigt. Wähle dort „Feedback zu diesem Lernziel“. Hier kannst du auch beschreiben, wenn sich der Coach deiner Meinung nach nicht richtig verhält – etwa schlecht erklärt, falsch bewertet oder zu schnell vorgeht.',
+            'Beschreibe das Problem in eigenen Worten. Übernimm keine Chattexte, Startnachrichten oder persönlichen Angaben in dein Feedback.',
           ],
           bullets: [
             '„Rechne den Schritt bitte noch einmal nach.“',
@@ -195,7 +196,7 @@ const englishCopy: FaqViewCopy = {
   backToApp: 'Back to SkillPilot',
   title: 'Frequently asked questions about SkillPilot',
   subtitle: 'Learn with Claude in the beta. ChatGPT will follow after focused testing and official publication.',
-  reviewedLabel: 'Status: September 12, 2026',
+  reviewedLabel: 'Status: September 13, 2026',
   recommendation: {
     eyebrow: 'Join the learning',
     title: 'Our current beta uses Claude',
@@ -302,7 +303,7 @@ const englishCopy: FaqViewCopy = {
           id: 'photo-upload',
           question: 'Can I photograph a handwritten task?',
           paragraphs: [
-            'Yes. If your chat offers uploads, you can photograph a calculation, diagram, or handwritten solution and upload the image.',
+            'Yes. In Claude, you can upload photos of your calculation, diagram, or handwritten solution, or use the camera directly in the Claude app. This is most convenient on your phone.',
             'Crop out or cover names, addresses, and other personal information first. Do not upload report cards, passwords, or confidential documents.',
             'The conversation and image stay with the chat service; SkillPilot does not receive chat text or photos through the coach, only the intended structured learning-state data.',
           ],
@@ -326,7 +327,8 @@ const englishCopy: FaqViewCopy = {
           paragraphs: [
             'Push back and explain what you think is wrong. A fluent explanation is not proof that it is correct. If your solution is incorrectly marked wrong, show your working and ask for another check.',
             'Also say when the coach is too fast or gives away the answer too soon. Disagreeing with good reasons does not hurt your learning record.',
-            'If the error persists or the task itself is faulty, write to support@skillpilot.com. Include the subject, learning goal, and problem; do not send your start message or full learning conversations.',
+            'The cockpit automatically shows your current learning goal. Select “Give feedback on this learning goal” there. You can also describe when, in your opinion, the coach is not behaving appropriately – for example, explaining poorly, assessing incorrectly, or moving too fast.',
+            'Describe the problem in your own words. Do not copy chat text, start messages, or personal information into your feedback.',
           ],
           bullets: [
             '“Please redo that calculation.”',

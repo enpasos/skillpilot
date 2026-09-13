@@ -51,7 +51,20 @@ assert(paragraphs(de, 'chatgpt', 'chatgpt-app-voice').includes('gesondert') && p
 assert(paragraphs(de, 'learning', 'session-duration').includes('24 Stunden') && paragraphs(en, 'learning', 'session-duration').includes('24 hours'), 'shared FAQ preserves session duration')
 assert(paragraphs(de, 'learning', 'session-duration').includes('nicht mit anderen') && paragraphs(en, 'learning', 'session-duration').includes('not share'), 'shared FAQ preserves private start-message caution')
 assert(paragraphs(de, 'learning', 'saved-progress').includes('kein Beleg') && paragraphs(en, 'learning', 'saved-progress').includes('not evidence'), 'coach praise is not proof of saved progress')
+for (const [copy, goalContext, action, opinion, privacy] of [
+  [de, 'aktuelles Lernziel automatisch', 'Feedback zu diesem Lernziel', 'deiner Meinung nach', 'keine Chattexte'],
+  [en, 'automatically shows your current learning goal', 'Give feedback on this learning goal', 'in your opinion', 'Do not copy chat text'],
+] as const) {
+  const feedback = paragraphs(copy, 'learning', 'disagree-with-coach')
+  assert(feedback.includes(goalContext) && feedback.includes(action), 'coach feedback points to the automatically selected goal and actual cockpit action')
+  assert(feedback.includes(opinion), 'learners can report coach behavior they consider inappropriate')
+  assert(feedback.includes(privacy), 'manual feedback must not copy chat content')
+  assert(!feedback.includes('support@skillpilot.com'), 'goal-specific coach feedback uses the cockpit rather than email')
+}
 assert(paragraphs(de, 'learning', 'photo-upload').includes('persönliche Angaben') && paragraphs(en, 'learning', 'photo-upload').includes('personal information'), 'photo guidance preserves personal-data caution')
+assert(paragraphs(de, 'learning', 'photo-upload').includes('Kamera in der Claude-App') && paragraphs(en, 'learning', 'photo-upload').includes('camera directly in the Claude app'), 'photo FAQ explicitly supports the Claude app camera')
+assert(paragraphs(de, 'learning', 'photo-upload').includes('Handy') && paragraphs(en, 'learning', 'photo-upload').includes('phone'), 'photo FAQ recommends using a phone')
+assert(!paragraphs(de, 'learning', 'photo-upload').includes('Wenn dein Chat') && !paragraphs(en, 'learning', 'photo-upload').includes('If your chat'), 'confirmed Claude photo support is not described as conditional')
 assert(paragraphs(de, 'learning', 'photo-upload').includes('keine Chattexte oder Fotos') && paragraphs(en, 'learning', 'photo-upload').includes('does not receive chat text or photos'), 'privacy copy preserves the no-chat-prose-to-Core boundary')
 assert(!JSON.stringify(de).includes('Der Inhalt ist dadurch nicht falsch') && !JSON.stringify(en).includes('The content is not wrong'), 'display guidance never guarantees correct mathematics')
 
