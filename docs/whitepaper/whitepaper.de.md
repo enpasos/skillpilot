@@ -290,13 +290,24 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 
 ## 5. Das Ökosystem: Inhalte & Standards
 
-### 5.1 Status quo: Verfügbare Inhalte (Beispiele)
+### 5.1 Aktueller Schwerpunkt: Gymnasium Deutschland
 
-SkillPilot ist nicht nur Konzept: Es enthält bereits Curricula und Standards als Startpunkt. Ihre Qualität wird über das maschinenlesbare Reifegradmodell **M0 bis M7** ausgewiesen. Es trennt unter anderem Graphintegrität, Bundesland-Abdeckung, Routendeckung, prüfungsfähige Aufgaben, semantische Atomicity, Memory-Card-Traceability und freigegebene Visualisierungen. Ein Reifegrad gilt immer nur für den exakt benannten Scope.
+Der aktuelle Entwicklungs- und Inhaltsschwerpunkt von SkillPilot liegt auf dem **Gymnasium in Deutschland – für alle 16 Bundesländer**. Der gemeinsame Einstieg „Gymnasium (DE)“ erschließt fachliche Kompetenzgraphen über länderspezifische Zuordnungen und Ansichten. Gemeinsame Kompetenzen werden dabei fachlich gebündelt; Unterschiede der Landeslehrpläne, Schulstufen und Kursprofile bleiben berücksichtigt.
 
-Der jeweils aktuelle Stand im generierten Qualitätsstatus und im [Curriculum-Verzeichnis](https://skillpilot.com/curricula) ist maßgeblich. Dadurch bleibt das Whitepaper auch dann korrekt, wenn weitere Curricula hinzukommen oder ein Scope eine neue Qualitätsstufe erreicht.
+Der Ausbau ist je Fach unterschiedlich weit fortgeschritten:
+
+- **Mathematik und Physik** sind am weitesten entwickelt. Sie bilden den Schwerpunkt des Ausbaus über Sekundarstufe I und II hinweg.
+- **Chemie und Biologie** folgen als nächste Schwerpunkte. Auch für sie bestehen gemeinsame Fachcurricula mit Bundesland-Zuordnungen; ihr Ausbau ist noch weniger breit.
+- **Weitere Gymnasialfächer** sind mit unterschiedlichen Ausbauständen angelegt und werden schrittweise weiterentwickelt.
+
+Diese Einordnung beschreibt den Entwicklungsstand, nicht eine einheitliche Vollständigkeit oder Freigabe für jedes Fach, jede Jahrgangsstufe und jedes Bundesland. Der jeweils aktuelle fachliche Umfang und die Qualitätsnachweise des konkret gewählten Bereichs sind im [Curriculum-Verzeichnis](https://skillpilot.com/curricula) und im generierten Qualitätsstatus ausgewiesen.
+
+Die maschinenlesbaren Reifegrade **M0 bis M7** bewerten unter anderem Graphintegrität, Bundesland-Abdeckung, Routendeckung, prüfungsfähige Aufgaben, semantische Atomicity, Memory-Card-Traceability und freigegebene Visualisierungen. Ein Reifegrad gilt immer nur für den exakt benannten Scope. Gleiche Reifegrade können deshalb mit unterschiedlich breitem fachlichem Ausbau einhergehen.
+
+Ergänzend enthält das Repository bereits Inhalte für weitere Schulformen, Hochschulcurricula und Sprachlernen nach CEFR. Sie zeigen die Übertragbarkeit des Ansatzes, stehen derzeit aber nicht im Zentrum der Entwicklung.
 
 **Curriculum Champions (Praxisanker):**
+
 ![Curriculum Champion Comic](../comic3/champion.de.png)
 
 - Champions übernehmen Verantwortung für ein Curriculum oder einen **klaren Themen-Scope**.
@@ -307,43 +318,13 @@ Der jeweils aktuelle Stand im generierten Qualitätsstatus und im [Curriculum-Ve
 
 Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI-Lerncoach wird im laufenden Betrieb kontinuierlich qualifiziert, damit die Nutzung über reale Curricula hinweg zuverlässig und didaktisch sinnvoll bleibt.
 
-#### Schule (Beispiele aus den verfügbaren Curricula)
-
-**Bayern:**
-
-- Grundschule (Jgst 1–4)
-- Mittelschule (Jgst 5–10)
-- Realschule (Jgst 5–10)
-- Gymnasium (Jgst 5–13)
-- Fachoberschule & Berufsoberschule (FOS/BOS)
-- Wirtschaftsschule
-
-**Hessen:**
-
-- Gymnasiale Oberstufe (G9, Sekundarstufe II)
-- Gymnasiale Mittelstufe (G9, Sekundarstufe I)
-
-#### Hochschule (Bologna-relevant)
-
-- Uni Heidelberg: Bachelor Biowissenschaften, Master Molecular BioSciences, Physikum Medizin
-- Uni Mannheim: Bachelor BWL, Bachelor Jura, Master Jura
-- TU Darmstadt: Bachelor Informatik
-- TU München: Bachelor Informatik, Bachelor Mathematik, Bachelor Physik, Master Quantenwissenschaft und -technologie, Master Theoretische und Mathematische Physik, Executive Master of Business Administration (MBA)
-
-#### Sprachen (CEFR A1–C2)
-
-- Englisch (A1–C2)
-- Französisch (A1–C2)
-
-Die hier gelisteten Curricula sind Beispiele für **verfügbare Inhalte** und besitzen nicht automatisch denselben Reifegrad. Maßgeblich ist immer der Reifegrad **M0 bis M7** des exakt angezeigten Scopes im [Curriculum-Verzeichnis](https://skillpilot.com/curricula). Curriculum Champions ergänzen diese maschinenlesbare Qualitätssicherung durch Praxisfeedback für klar benannte Scopes.
-
 > Wir laden dazu ein, diesen Prozess aktiv mitzugestalten: **[Werden Sie Curriculum Champion](https://skillpilot.com/curricula)** und helfen Sie dabei, die Qualität und Praxisnähe Ihres Fachbereichs sicherzustellen.
 
 Die Inhalte sind erweiterbar und versioniert; Quellenbezüge sind dokumentiert, und Änderungen laufen aktuell über GitHub (Issues/PRs).
 
 ### 5.2 SkillPilot im Kontext Bologna/EHEA (Kurzüberblick)
 
-Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Anerkennung und Qualität**. SkillPilot kann diese Ziele unterstützen – ersetzt aber keine institutionellen Entscheidungen.
+Über den aktuellen Gymnasium-Schwerpunkt hinaus ist das Modell auch auf Hochschulen übertragbar. Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Anerkennung und Qualität**. SkillPilot kann diese Ziele unterstützen – ersetzt aber keine institutionellen Entscheidungen.
 
 - **Learning Outcomes / Kompetenzen:** Beitrag: Outcomes als Skill-Graph navigierbar machen; Fortschritt sichtbar. Grenze/Voraussetzung: Saubere Modellierung, Quellenbezug, Versionierung.
 - **Credits/Workload (ECTS-Logik):** Beitrag: Pfade/Prereqs und Workload-Transparenz unterstützen. Grenze/Voraussetzung: **Keine Credit-Vergabe**; Regeln bleiben institutionell.

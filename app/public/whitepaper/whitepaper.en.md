@@ -292,14 +292,26 @@ On import (e.g., transfer, backup), the full **provenance chain** can be carried
 
 ## 5. The Ecosystem: Content & Standards
 
-### 5.1 Status Quo: Available Content (Examples)
+### 5.1 Current Focus: Gymnasium in Germany
 
-SkillPilot is not just a concept: it already contains curricula and standards as starting points. Their quality is reported through the machine-readable **M0-M7** maturity model. It distinguishes, among other things, graph integrity, jurisdiction coverage, route coverage, assessment-ready tasks, semantic atomicity, memory-card traceability, and approved visualizations. A maturity level always applies only to the precisely named scope.
+SkillPilot's current development and content focus is **Gymnasium, Germany's academic secondary school track, across all 16 federal states**. The shared “Gymnasium (DE)” entry provides access to subject-level competency graphs through state-specific mappings and views. Shared competencies are brought together by subject, while differences between state curricula, school stages, and course profiles remain represented.
 
-The generated quality status and the [Curriculum Directory](https://skillpilot.com/curricula) are the authoritative current sources. This keeps the whitepaper accurate as more curricula are added or a scope reaches a new quality level.
+The extent of development varies by subject:
+
+- **Mathematics and Physics** are the most advanced. They are the main focus of development across lower and upper secondary education.
+- **Chemistry and Biology** are the next priorities. They also have shared subject curricula with state-specific mappings, but their development is not yet as broad.
+- **Other Gymnasium subjects** are present at varying stages of development and are being expanded gradually.
+
+This describes development progress, not uniform completeness or approval for every subject, year group, and federal state. The current subject coverage and quality evidence for the specific area selected are reported in the [Curriculum Directory](https://skillpilot.com/curricula) and the generated quality status.
+
+The machine-readable **M0-M7** maturity levels assess, among other things, graph integrity, jurisdiction coverage, route coverage, assessment-ready tasks, semantic atomicity, memory-card traceability, and approved visualizations. A maturity level always applies only to the precisely named scope. Equal maturity levels can therefore coexist with different breadths of subject development.
+
+The repository also contains content for other school types, higher education, and CEFR-based language learning. These illustrate how the approach transfers to other settings, but they are not the current development focus.
 
 **Curriculum Champions (practice anchor):**
+
 ![Curriculum Champion comic](../comic3/champion.en.png)
+
 - Champions take responsibility for a curriculum or a **clearly scoped topic area**.
 - They **work through learning goals themselves** and report errors or unclear content directly on the relevant goal wherever a feedback entry is available.
 - Larger, cross-cutting or technical topics, and feedback on other curricula, are collected on GitHub.
@@ -308,31 +320,6 @@ The generated quality status and the [Curriculum Directory](https://skillpilot.c
 
 The QA process does not only cover curricula: the SkillPilot AI learning coach is continuously qualified in real-world use so that the experience remains reliable and didactically sound across curricula.
 
-#### Schools (examples from available curricula)
-**Bavaria:**
-- Grundschule (Primary School, Grades 1–4)
-- Mittelschule (Middle School, Grades 5–10)
-- Realschule (Secondary School, Grades 5–10)
-- Gymnasium (Academic High School, Grades 5–13)
-- Fachoberschule & Berufsoberschule (Vocational High School)
-- Wirtschaftsschule (Business School)
-
-**Hesse:**
-- Gymnasiale Oberstufe (G9, Secondary II)
-- Gymnasiale Mittelstufe (G9, Secondary I)
-
-#### Higher Education (Bologna-relevant)
-- Uni Heidelberg: Bachelor Biosciences, Master Molecular BioSciences, Physikum (Medicine)
-- Uni Mannheim: Bachelor Business Administration (BWL), Bachelor Law, Master Law
-- TU Darmstadt: Bachelor Computer Science
-- TU Munich: Bachelor Computer Science (Informatics), Bachelor Mathematics, Bachelor Physics, Master Quantum Science and Technology, Master Theoretical and Mathematical Physics, Executive Master of Business Administration (MBA)
-
-#### Languages (CEFR A1-C2)
-- English (A1-C2)
-- French (A1-C2)
-
-The listed curricula are examples of **available content** and do not automatically share the same maturity level. The authoritative value is always the **M0-M7** maturity of the exact displayed scope in the [Curriculum Directory](https://skillpilot.com/curricula). Curriculum Champions complement this machine-readable quality assurance with practice feedback for clearly named scopes.
-
 > [!IMPORTANT]
 > We invite you to actively shape this process: **[Become a Curriculum Champion](https://skillpilot.com/curricula)** and help ensure the quality and practical relevance of your subject area.
 
@@ -340,7 +327,7 @@ The content is extensible and versioned; source references are documented, and c
 
 ### 5.2 SkillPilot in the Bologna/EHEA Context (Short Overview)
 
-Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and quality** in higher education. SkillPilot can support these goals, but it does not replace institutional decisions.
+Beyond the current Gymnasium focus, the model is also transferable to higher education. Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and quality** in higher education. SkillPilot can support these goals, but it does not replace institutional decisions.
 
 - **Learning outcomes / competencies:** Contribution: Make outcomes navigable as a skill graph; progress visible. Limit/prerequisite: Clean modeling, source references, versioning.
 - **Credits/workload (ECTS logic):** Contribution: Support paths/prereqs and workload transparency. Limit/prerequisite: **No credit awarding**; rules remain institutional.
