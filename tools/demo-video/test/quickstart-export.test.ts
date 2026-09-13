@@ -158,6 +158,23 @@ test('capture export distinguishes instruction cards from four verified Claude b
   assert.equal(JSON.stringify(host).includes('evidence.json'), false);
 });
 
+test('optional chat-start evidence exports without promoting historical clips into chat footage', () => {
+  const historical = hostCapture();
+  const chat = { ...historical.hostClips.clips[0]!, chapterId: 'chat-start', sha256: '5'.repeat(64) };
+  const current = { ...historical, hostClips: { ...historical.hostClips, clips: [...historical.hostClips.clips, chat] } };
+  assert.deepEqual(validateQuickstartCapture(current), current);
+  assert.equal(quickstartCaptureProvenance(current).hostClips?.clips.length, 5);
+  assert.equal(quickstartCaptureProvenance(historical).hostClips?.clips.length, 4);
+  const bytes = JSON.stringify(current.hostClips);
+  assert.doesNotThrow(() => validateQuickstartHostClipArtifact(current, evidenceArtifact(bytes), bytes));
+  assert.throws(() => validateQuickstartHostClipArtifact(historical, evidenceArtifact(bytes), bytes), /does not match/u);
+  for (const clips of [
+    current.hostClips.clips.slice(1),
+    [...current.hostClips.clips, chat],
+    [...historical.hostClips.clips, { ...chat, privacyReviewed: false }],
+  ]) assert.throws(() => validateQuickstartCapture({ ...current, hostClips: { ...current.hostClips, clips } }));
+});
+
 test('capture metadata allows explicitly absent instruction screenshots for clips and minimal card fixtures', () => {
   for (const capture of [cardCapture(), hostCapture()]) {
     const withoutScreenshot = { ...capture, instructionScreenshotSha256: null };

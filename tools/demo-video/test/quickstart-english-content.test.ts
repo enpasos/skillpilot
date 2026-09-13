@@ -14,6 +14,14 @@ test("English Quickstart has its own English narration, interface actions and cu
   assert.equal(scenario.browser.locale, "en-GB");
   assert.equal(scenario.privacy.maskLabel, "PRIVATE");
   assert.deepEqual(scenario.chapters.map(chapter => chapter.id), german.chapters.map((chapter: { id: string }) => chapter.id));
+  const ids = scenario.chapters.map(chapter => chapter.id);
+  const chatIndex = ids.indexOf("chat-start");
+  assert.equal(ids[chatIndex - 1], "feedback");
+  assert.equal(ids[chatIndex + 1], "session");
+  const chat = scenario.chapters[chatIndex]!;
+  assert.match(chat.scriptedNarration ?? "", /prepared start message.*send.*tool request.*first message/su);
+  assert.equal(chat.steps[0]?.action, "goto");
+  assert.ok(chat.steps[0]?.action === "goto" && chat.steps[0].url === "quickstart-card:chat-start");
   assert.match(scenario.chapters[0]?.scriptedNarration ?? "", /active Pro subscription/u);
   assert.equal(scenario.narration.disclosureMode, "visual-only");
   assert.equal(scenario.narration.visualDisclosure, "AI-generated voice");
@@ -43,7 +51,7 @@ test("English instruction cards fit the video frame without embedding German scr
   const browser = await chromium.launch({ headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
-    for (const card of ["intro", "marketplace", "repository", "install", "connect", "feedback", "start", "mobile", "finish"]) {
+    for (const card of ["intro", "marketplace", "repository", "install", "connect", "feedback", "chat-start", "start", "mobile", "finish"]) {
       await page.goto(`${pathToFileURL(resolve("assets/quickstart/cards.en.html")).href}#${card}`);
       assert.equal(await page.locator("html").getAttribute("lang"), "en");
       assert.equal(await page.locator("img").count(), 0);
@@ -54,6 +62,26 @@ test("English instruction cards fit the video frame without embedding German scr
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       assert.doesNotMatch(await page.locator("body").innerText(), /Anleitung|hinzufügen|Konnektor|Lernen|keine|Deutsch/u);
       if (!["intro", "finish"].includes(card)) assert.equal(await page.locator("#kind").innerText(), "Illustrated guide");
+    }
+  } finally { await browser.close(); }
+});
+
+test("both chat-start fallbacks are readable guidance, not fabricated Claude interfaces", async () => {
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
+    for (const [language, filename, notice] of [
+      ["de", "cards.html", "Anleitung · keine Claude-Bildschirmaufnahme"],
+      ["en", "cards.en.html", "Illustrated guide"],
+    ]) {
+      await page.goto(`${pathToFileURL(resolve("assets/quickstart", filename!)).href}#chat-start`);
+      assert.equal(await page.locator("html").getAttribute("lang"), language);
+      const active = page.locator('.screen.active[data-card="chat-start"]');
+      const bounds = await active.boundingBox();
+      assert.ok(bounds && bounds.y >= 0 && bounds.y + bounds.height < 678);
+      assert.equal(await active.locator("img,video,iframe").count(), 0);
+      assert.equal(await page.locator("#kind").innerText(), notice);
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     }
   } finally { await browser.close(); }
 });

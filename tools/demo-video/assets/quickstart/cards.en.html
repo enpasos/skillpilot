@@ -47,6 +47,12 @@
   <h1>Ask questions. <em>Learn actively.</em></h1>
   <div class="steps"><div class="step"><div class="number">SMALLER STEPS</div><strong>“Please explain<br>that step again.”</strong><p>Ask for a clearer explanation or another example.</p></div><div class="step"><div class="number">YOUR OWN APPROACH</div><strong>“Can you check<br>my reasoning?”</strong><p>Explain how you reached your answer.</p></div><div class="step"><div class="number">A HELPFUL HINT</div><strong>“Please give me<br>a small hint.”</strong><p>Use the hint to find the answer yourself.</p></div></div>
 </section>
+<section class="screen" data-card="chat-start">
+  <div class="eyebrow"><span class="badge">04 · Guide</span> Begin in the Claude chat</div>
+  <h1>One message. <em>Your learning starts.</em></h1>
+  <p class="subtitle">Review the prepared start message and send it as it is.</p>
+  <div class="steps"><div class="step"><div class="number">SEND</div><strong>Send the<br>start message</strong><p>In your new Claude chat.</p></div><div class="step"><div class="number">APPROVE</div><strong>Confirm the<br>tool request</strong><p>If Claude asks for permission.</p></div><div class="step"><div class="number">BEGIN</div><strong>Read the<br>first reply</strong><p>Answer your coach's opening question.</p></div></div>
+</section>
 <section class="screen" data-card="start">
   <div class="eyebrow"><span class="badge">04 · Guide</span> A new Claude chat</div>
   <h1><em>Send the start message.</em><br>Begin learning.</h1>
@@ -68,6 +74,6 @@
 <div class="footer"><span id="kind">SkillPilot · Quickstart</span><span class="url">skillpilot.com</span><span>13 September 2026</span></div>
 </main>
 <script>
-function show(){const id=location.hash.slice(1)||'intro';document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.dataset.card===id));document.querySelector('#kind').textContent=['marketplace','repository','install','connect','feedback','start','mobile'].includes(id)?'Illustrated guide':'SkillPilot · Quickstart';}addEventListener('hashchange',show);show();
+function show(){const id=location.hash.slice(1)||'intro';document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.dataset.card===id));document.querySelector('#kind').textContent=['marketplace','repository','install','connect','feedback','chat-start','start','mobile'].includes(id)?'Illustrated guide':'SkillPilot · Quickstart';}addEventListener('hashchange',show);show();
 </script>
 </html>

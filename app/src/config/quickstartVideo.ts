@@ -11,11 +11,11 @@ interface QuickstartVideo {
 // A missing export never falls back to a video in the other language.
 export const QUICKSTART_VIDEOS: Record<LabelLanguage, QuickstartVideo | null> = {
   de: {
-    url: '/media/quickstart/claude/2026-09-13/de/sha256-a8cbf7dd81d9c63d2b1d0e1492263453feb3e9ae9823a43a8a4d6418da235584.mp4',
-    poster: '/media/quickstart/claude/2026-09-13/de/sha256-ddd959ff1429832232a75d95922b360c2311af020d30b3e5e3039410a592e592.webp',
+    url: '/media/quickstart/claude/2026-09-13/de/sha256-807d717e651bc789a6c5dadb0d2a6015510862c5e4ecfe517623a596cacf945a.mp4',
+    poster: '/media/quickstart/claude/2026-09-13/de/sha256-ff24179da7398ff23613472f138b21faae0c39e2425481764c8ab110fdc91823.webp',
     tracks: [
       {
-        src: '/media/quickstart/claude/2026-09-13/de/sha256-813c961b8324ba8ef89e51288c74eb2ca1d9d95cddbf4b70dfa860184f113be3.vtt',
+        src: '/media/quickstart/claude/2026-09-13/de/sha256-bc0d920cfc8ab811473d006f137dd103aa35bf2ddaaa3f7c14c8c915ac3200fc.vtt',
         srcLang: 'de',
         label: 'Deutsch',
         kind: 'captions',
@@ -24,11 +24,11 @@ export const QUICKSTART_VIDEOS: Record<LabelLanguage, QuickstartVideo | null> = 
     ],
   },
   en: {
-    url: '/media/quickstart/claude/2026-09-13/en/sha256-0de8546e5efb666fef45ef7daaf821a8bc8f37d4e6818cc63c05be5fb00812ff.mp4',
+    url: '/media/quickstart/claude/2026-09-13/en/sha256-29c3a5606e9ca4f22815a13ba6f8e56990a32e9a151a11fdaee37605de0b54b2.mp4',
     poster: '/media/quickstart/claude/2026-09-13/en/sha256-c082f1d2f84295974b9f2ea89b6f08b2735dab91b661f88c647b277b9123be48.webp',
     tracks: [
       {
-        src: '/media/quickstart/claude/2026-09-13/en/sha256-9db199a18168911046a61c31196adde59ac460134c3c3f33253c775a91b6ae30.vtt',
+        src: '/media/quickstart/claude/2026-09-13/en/sha256-76792a440ba97001cb56c25b93dc9bb7e56cf5d8783ed080497bc751a5a8cf64.vtt',
         srcLang: 'en',
         label: 'English',
         kind: 'captions',

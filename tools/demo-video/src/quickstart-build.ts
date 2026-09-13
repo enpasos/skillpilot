@@ -18,7 +18,7 @@ import type { TtsOpenAIClient } from "./tts.js";
 
 const TOOL_ROOT = fileURLToPath(new URL("../", import.meta.url));
 const LEARNER_ID = /^[A-Za-z0-9_-]{16,128}$/u;
-const CARD_IDS = new Set(["intro", "marketplace", "repository", "install", "connect", "mobile", "finish", "start", "feedback"]);
+const CARD_IDS = new Set(["intro", "marketplace", "repository", "install", "connect", "mobile", "finish", "start", "feedback", "chat-start"]);
 const CAPTURE_CLEANUP_FILE = "capture-cleanup.json";
 type CreationResponse = Pick<BrowserResponse, "url" | "ok" | "request" | "json">;
 
@@ -275,7 +275,7 @@ export async function runQuickstart(options: QuickstartOptions): Promise<{ workD
       applyQuickstartHostClips(scenario, hostClips);
     } catch {
       // Validation can include filesystem/ffprobe errors with private paths.
-      throw new Error("Private Claude clip import failed: verify the four reviewed local files, hashes, permissions and installation chapters");
+      throw new Error("Private Claude clip import failed: verify the reviewed local files, hashes, permissions, four installation chapters and optional chat-start chapter");
     }
   }
   const workDir = scenarioWorkDir(scenario);

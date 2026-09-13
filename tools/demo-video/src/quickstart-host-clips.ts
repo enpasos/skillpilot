@@ -9,17 +9,31 @@ import { assertPrivateInputFile, ensurePrivateDirectory, ensurePrivateFile } fro
 import type { DemoScenario } from "./types.js";
 
 export const QUICKSTART_HOST_CHAPTER_IDS = ["marketplace", "repository", "plugin-install", "plugin-connect"] as const;
-export type QuickstartHostChapterId = typeof QUICKSTART_HOST_CHAPTER_IDS[number];
+export const QUICKSTART_ALLOWED_HOST_CHAPTER_IDS = [...QUICKSTART_HOST_CHAPTER_IDS, "chat-start"] as const;
+export type QuickstartHostChapterId = typeof QUICKSTART_ALLOWED_HOST_CHAPTER_IDS[number];
+
+/** Preserve the four installation clips; a reviewed chat start is the only optional addition. */
+export function hasRequiredQuickstartHostChapters(ids: readonly string[]): boolean {
+  return ids.length >= QUICKSTART_HOST_CHAPTER_IDS.length
+    && ids.length <= QUICKSTART_ALLOWED_HOST_CHAPTER_IDS.length
+    && new Set(ids).size === ids.length
+    && QUICKSTART_HOST_CHAPTER_IDS.every((id) => ids.includes(id))
+    && ids.every((id) => QUICKSTART_ALLOWED_HOST_CHAPTER_IDS.includes(id as QuickstartHostChapterId));
+}
 const sha256 = z.string().regex(/^[0-9a-f]{64}$/u);
 const clipSchema = z.object({
-  chapterId: z.enum(QUICKSTART_HOST_CHAPTER_IDS),
+  chapterId: z.enum(QUICKSTART_ALLOWED_HOST_CHAPTER_IDS),
   path: z.string().min(1),
   sha256,
   capturedAt: z.iso.datetime(),
   captureMethod: z.literal("claude-browser-recording"),
   privacyReviewed: z.literal(true),
 }).strict();
-const manifestSchema = z.object({ schemaVersion: z.literal(1), language: z.enum(["de", "en"]).optional(), clips: z.array(clipSchema).length(4) }).strict();
+const manifestSchema = z.object({
+  schemaVersion: z.literal(1), language: z.enum(["de", "en"]).optional(),
+  clips: z.array(clipSchema).min(4).max(5).refine((clips) => hasRequiredQuickstartHostChapters(clips.map((clip) => clip.chapterId)),
+    "Each installation chapter is required exactly once; chat-start is optional"),
+}).strict();
 
 export interface QuickstartHostClipEvidence {
   schemaVersion: 1;
@@ -60,10 +74,10 @@ export function quickstartHostVideoPage(videoName: string, expectedDurationMs: n
   if (!/^sha256-[0-9a-f]{64}\.(?:mp4|webm|mov)$/u.test(videoName)) throw new Error("Invalid private host-clip filename");
   if (!Number.isSafeInteger(expectedDurationMs) || expectedDurationMs <= 0) throw new Error("Invalid private host-clip duration");
   const copy = language === "en" ? {
-    title: "Claude web installation – actual recording", loading: "Playing reviewed Claude web recording.",
+    title: "Claude web – actual recording", loading: "Playing reviewed Claude web recording.",
     error: "Claude recording could not be played in full.", ended: "Reviewed Claude web recording played in full at normal speed.",
   } : {
-    title: "Claude-Webinstallation – echte Aufnahme", loading: "Geprüfte Claude-Webaufnahme wird abgespielt.",
+    title: "Claude im Web – echte Aufnahme", loading: "Geprüfte Claude-Webaufnahme wird abgespielt.",
     error: "Claude-Aufnahme konnte nicht vollständig abgespielt werden.", ended: "Geprüfte Claude-Webaufnahme vollständig mit normaler Geschwindigkeit abgespielt.",
   };
   return `<!doctype html><html lang="${language}" data-quickstart-host-state="loading"><head><meta charset="utf-8">
@@ -119,9 +133,8 @@ export async function prepareQuickstartHostClips(
   const bytes = await readFile(path);
   let parsed: z.infer<typeof manifestSchema>;
   try { parsed = manifestSchema.parse(JSON.parse(bytes.toString("utf8"))); }
-  catch { throw new Error("Claude clip manifest must contain exactly four valid, privacy-reviewed browser clips"); }
+  catch { throw new Error("Claude clip manifest must contain four reviewed installation clips and optionally one reviewed chat-start clip"); }
   if ((parsed.language ?? "de") !== expectedLanguage) throw new Error("Claude clip recording language must match the Quickstart language");
-  if (new Set(parsed.clips.map((clip) => clip.chapterId)).size !== 4) throw new Error("Claude clip manifest needs each installation chapter exactly once");
   const manifestSha256 = sha256Text(bytes.toString("utf8"));
   const resolvedInputs = new Set<string>();
   const fileIdentities = new Set<string>();
@@ -131,8 +144,9 @@ export async function prepareQuickstartHostClips(
     ...(parsed.language ? { language: parsed.language } : {}),
     presentation: "local-video-replay", playbackRate: 1, nativeAppRecording: false, hostAcceptanceEvidence: false, clips: [],
   };
-  for (const chapterId of QUICKSTART_HOST_CHAPTER_IDS) {
-    const clip = parsed.clips.find((entry) => entry.chapterId === chapterId)!;
+  for (const chapterId of QUICKSTART_ALLOWED_HOST_CHAPTER_IDS) {
+    const clip = parsed.clips.find((entry) => entry.chapterId === chapterId);
+    if (!clip) continue;
     if (/^[a-z][a-z0-9+.-]*:/iu.test(clip.path) && !/^[a-z]:[\\/]/iu.test(clip.path)) throw new Error("Claude clips must use local file paths, not URLs");
     const inputPath = resolve(dirname(path), clip.path);
     await assertPrivateInputFile(inputPath, "Private Claude browser clip");
@@ -182,13 +196,16 @@ export async function quickstartHostClipBinding(prepared: PreparedQuickstartHost
   };
 }
 
-/** Rewrite only four instruction chapters; all narration and first-party steps stay intact. */
+/** Rewrite only supplied host chapters; narration and first-party steps stay intact. */
 export function applyQuickstartHostClips(scenario: DemoScenario, prepared: PreparedQuickstartHostClips): void {
-  const selected = scenario.chapters.filter((chapter) => QUICKSTART_HOST_CHAPTER_IDS.includes(chapter.id as QuickstartHostChapterId));
-  if (selected.length !== 4 || selected.some((chapter, index) => chapter.id !== QUICKSTART_HOST_CHAPTER_IDS[index])) {
-    throw new Error("Quickstart host clips require the four ordered installation chapters");
+  const suppliedIds = prepared.clips.map((clip) => clip.chapterId);
+  if (!hasRequiredQuickstartHostChapters(suppliedIds)) throw new Error("Invalid prepared Quickstart host chapter set");
+  const expectedIds = QUICKSTART_ALLOWED_HOST_CHAPTER_IDS.filter((id) => suppliedIds.includes(id));
+  const selected = scenario.chapters.filter((chapter) => suppliedIds.includes(chapter.id as QuickstartHostChapterId));
+  if (selected.length !== expectedIds.length || selected.some((chapter, index) => chapter.id !== expectedIds[index])) {
+    throw new Error("Quickstart host clips require the four ordered installation chapters and any supplied chat-start chapter");
   }
-  const reservedStepIds = new Set(QUICKSTART_HOST_CHAPTER_IDS.flatMap((id) => [`${id}-host-open`, `${id}-host-ended`, `${id}-host-verified`]));
+  const reservedStepIds = new Set(expectedIds.flatMap((id) => [`${id}-host-open`, `${id}-host-ended`, `${id}-host-verified`]));
   if (scenario.chapters.filter((chapter) => !selected.includes(chapter)).some((chapter) => chapter.steps.some((step) => reservedStepIds.has(step.id)))) {
     throw new Error("Quickstart host playback step identifiers collide with another chapter");
   }

@@ -1466,12 +1466,14 @@ try {
       assert.equal(await page.locator(`[id="${descriptionId}"]`).textContent(), quickstartCopy.videoDescription)
       if (language === 'en') {
         assert.match(quickstartCopy.videoDescription, /Claude marketplace.*real screen recordings/u)
+        assert.match(quickstartCopy.videoDescription, /start learning in the Claude chat/u)
         assert.doesNotMatch(quickstartCopy.videoDescription, /not a recording/u)
         assert.match(quickstartCopy.videoDescription, /English AI-generated narration and English captions/u)
         assert.doesNotMatch(quickstartCopy.videoDescription, /German|written guide follows/u)
         assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT is not available yet/u)
       } else {
         assert.match(quickstartCopy.videoDescription, /Claude-Marketplace.*echten Bildschirmaufnahmen/u)
+        assert.match(quickstartCopy.videoDescription, /im Claude-Chat loslernen/u)
         assert.doesNotMatch(quickstartCopy.videoDescription, /keine Aufnahme/u)
         assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT ist noch nicht verfügbar/u)
       }

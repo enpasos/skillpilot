@@ -8,6 +8,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { z } from 'zod';
 import { resolveVoiceDisclosureMode } from './policy.js';
 import { ensurePrivateFile } from './private-fs.js';
+import { hasRequiredQuickstartHostChapters, QUICKSTART_ALLOWED_HOST_CHAPTER_IDS } from './quickstart-host-clips.js';
 
 // Editorial export only. Does not deploy, use credentials, or contact a learner API.
 const toolRoot = fileURLToPath(new URL('../', import.meta.url));
@@ -24,13 +25,13 @@ const hostClipEvidenceSchema = z.object({
   nativeAppRecording: z.literal(false),
   hostAcceptanceEvidence: z.literal(false),
   clips: z.array(z.object({
-    chapterId: z.enum(['marketplace', 'repository', 'plugin-install', 'plugin-connect']),
+    chapterId: z.enum(QUICKSTART_ALLOWED_HOST_CHAPTER_IDS),
     sha256: sha256Schema,
     durationMs: z.number().int().positive().safe(),
     capturedAt: z.iso.datetime({ offset: true }),
     privacyReviewed: z.literal(true),
-  }).strict()).length(4).refine((clips) => new Set(clips.map((clip) => clip.chapterId)).size === 4,
-    'Each required Claude chapter must have exactly one clip'),
+  }).strict()).min(4).max(5).refine((clips) => hasRequiredQuickstartHostChapters(clips.map((clip) => clip.chapterId)),
+    'Each installation chapter is required exactly once; chat-start is optional'),
 }).strict();
 
 const captureMetadata = {
@@ -75,7 +76,7 @@ const focusDeclarationSchema = z.object({
 const recordedFocusRegionSchema = focusDeclarationSchema.extend({
   chapterId: z.enum(['intro', 'marketplace', 'repository', 'plugin-install', 'plugin-connect',
     'website', 'identity', 'save', 'curriculum', 'personal-curriculum', 'launch', 'cockpit',
-    'feedback', 'session', 'mobile', 'finish']),
+    'feedback', 'chat-start', 'session', 'mobile', 'finish']),
   sourceStartMs: z.number().int().nonnegative().safe(),
   sourceEndMs: z.number().int().positive().safe(),
   startMs: z.number().int().nonnegative().safe(),

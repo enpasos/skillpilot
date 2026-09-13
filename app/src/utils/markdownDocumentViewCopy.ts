@@ -44,12 +44,12 @@ export const getMarkdownDocumentViewCopy = (
         en: {
           eyebrow: 'Quickstart video',
           title: 'Start with Claude in 5 steps',
-          description: 'Set up SkillPilot and install the Claude marketplace step by step with real screen recordings. English AI-generated narration and English captions.',
+          description: 'Set up SkillPilot, add the Claude marketplace and start learning in the Claude chat – step by step with real screen recordings. English AI-generated narration and English captions.',
         },
         de: {
           eyebrow: 'Quickstart-Video',
           title: 'In 5 Schritten mit Claude starten',
-          description: 'SkillPilot einrichten und den Claude-Marketplace Schritt für Schritt installieren – mit echten Bildschirmaufnahmen. KI-generierte Sprecherstimme · deutsche Untertitel.',
+          description: 'SkillPilot einrichten, den Claude-Marketplace hinzufügen und im Claude-Chat loslernen – Schritt für Schritt mit echten Bildschirmaufnahmen. KI-generierte Sprecherstimme · deutsche Untertitel.',
         },
       }
 

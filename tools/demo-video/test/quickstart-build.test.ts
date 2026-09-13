@@ -125,7 +125,7 @@ test("card references resolve only the known local guidance pages", async () => 
   assert.match(resolveQuickstartCards(scenario), /assets[/\\]quickstart[/\\]cards\.html$/u);
   const step = scenario.chapters[0]!.steps[0]!;
   assert.ok(step.action === "goto" && step.url?.startsWith("file:") && step.url.endsWith("cards.html#intro"));
-  for (const card of ["marketplace", "repository"]) {
+  for (const card of ["marketplace", "repository", "chat-start"]) {
     scenario.chapters[0]!.steps = [{ id: "card", label: "Instruction", action: "goto", url: `quickstart-card:${card}` }];
     resolveQuickstartCards(scenario);
     const resolvedStep = scenario.chapters[0]!.steps[0]!;

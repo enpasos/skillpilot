@@ -65,13 +65,22 @@ change the default or the historical review scenario.
 ### Claude-first public Quickstart
 
 The learner Quickstart has its own entry point, separate from the historical
-OpenAI review. The current production workflow imports four separately captured,
-privacy-reviewed Claude browser installation clips and records their complete
-local playback alongside the current first-party UI in a fresh browser. Other
+OpenAI review. The exports import four separately captured, privacy-reviewed
+Claude browser installation clips and a fifth real **chat-start** clip, and
+record their complete local playback alongside the current first-party UI. Other
 guidance remains explicitly labelled. The builder performs no provider login or
 Claude account operation and establishes no complete learning-flow/native-app
 acceptance. Omitting `--host-clips` preserves the older instruction-card mode;
 that mode does not satisfy the current real-installation recording request.
+
+The import contract supports one optional, separately reviewed `chat-start` clip.
+The updated DE/EN scenarios place that chapter after `feedback` and before
+`session`, once all first-party cockpit actions are complete. Its fallback is
+an explicitly labelled guidance card. A four-clip manifest leaves that card in
+place; only a manifest containing the fifth reviewed clip replaces it with real
+Claude footage. Historical four-clip manifests remain valid, but their guidance
+card does not demonstrate an actual chat start. The current recordings described
+below show the prepared message, its real submission and the first coach reply.
 
 The `/quickstart/de` and `/quickstart/en` pages have separate video, poster,
 narration and caption assets. The English page never falls back to the German
@@ -87,25 +96,34 @@ installed and enabled SkillPilot **1.1.5**, and showed connector status
 restored to its prior **70%** setting. The separate screen recorder uses browser
 crops; this is web footage, not native Claude-app footage or a fresh-account test.
 
-All 101 stored source frames were visually reviewed. Raw recordings remain
+All 101 stored installation source frames were visually reviewed. Raw recordings remain
 private; the transient personal Claude-home view and its preceding blank frames
 were excluded before encoding the reviewed derivatives. Only static operator
 inspection holds were shortened; retained actions and loading remain at 1×.
 The four clip hashes and private edit decisions bind this review to the imported
 files. Every future take needs the same full-frame privacy review.
 
-The unchanged German combined build and content-addressed export run **292.628 seconds**
-(4:53), with one disposable SkillPilot learner deleted after capture. Visual QA
-covered all 25 recording screenshots and 22 sampled final-video frames, including
-all 16 chapter endings, privacy cuts, masks and the voice disclosure. Its 16
-Gemini `Sulafat` narration segments were checked technically and through blind
-audio transcription/quality assessment by Gemini; they were **not directly
-listened to by the assistant**. Two uncertain transcription details remain for
-a human listening pass. This is a local tutorial build, not deployment,
-learning-tool/native-app acceptance, or a fresh-account test. Earlier card-video
-artifacts and cleanup evidence remain separate.
+The additional German chat take uses a newly created demonstration learner,
+Hessen / G9 / Sekundarstufe I / Mathematik and the actual first-party start
+message. It shows submission in Claude, SkillPilot tool activity and the real
+orientation reply. All **191 stored chat source frames** and all **75 encoded
+image states** were reviewed. The session value is opaquely masked in both the
+composer and the sent message. The **37.456-second** edit plays retained footage
+at 1×, labels shortened waiting time and documents the separate answer take.
+It does not reconstruct a successful response or claim a continuous take.
 
-**English captured state, 13 September 2026:** four new Claude Web clips show
+The German combined build and content-addressed export run **328.317 seconds
+(5:28), 1920 × 1080**, with **17 chapters**. The chat section starts at **237.582
+seconds (3:58)**. Visual QA covered all **26 recording screenshots** and **41
+sampled final-video frames**, including all 17 chapter endings, privacy cuts,
+masks and the voice disclosure. Fifteen previously reviewed `Sulafat` narration
+WAVs are reused byte-for-byte; the changed `launch` and new `chat-start` WAVs
+passed full decode, clipping/pause checks and blind Gemini transcription/flow
+review. They were **not directly listened to by the assistant**. The chat-capture
+learner and the separate first-party recording learner were both deleted via
+their own observed cleanup. Earlier content-addressed video assets remain intact.
+
+**English captured state, 13 September 2026:** four Claude Web installation clips show
 the actual English menus, **Sync automatically** enabled, installation of
 **SkillPilot Coach v1 1.1.5**, and the **Connected** connector status. All 48
 stored source frames were reviewed; private OAuth transition content and the
@@ -117,16 +135,33 @@ That chapter uses a declared, static camera close-up of the actual curriculum
 selector; source pixels and actions remain unchanged, with the crop bounds and
 source/output timing recorded in public provenance.
 Its one disposable learner was deleted through the capture cleanup gate.
-The final English build and content-addressed export run **260.102 seconds
-(4:20), 1920 × 1080**, with 16 English narration segments and
-English captions. All 16 narration WAV hashes match the technically and
-model-reviewed English audio. Direct listening by the assistant remains
-unavailable. Final visual QA passed all 25 recording screenshots and 29 sampled
-rendered frames, including the corrected camera framing and chapter holds.
-The separate English export is bound locally; this is not a production deployment.
-Both languages passed actual desktop/mobile playback, seeking, HTTP range delivery,
-caption-language and in-page language-switch checks; the English pages were also
-visually checked at 390 px and 1280 px width.
+
+The additional English chat take has its own demonstration learner and genuine
+English start message for MIT OpenCourseWare Foundations. All **174 stored
+source frames** and **50 encoded image states** were reviewed. Its **34-second**
+edit shows the real message submission, completed English tool activity, the
+neutral first coach paragraph and its opening question. Account-memory
+personalization and non-English intermediate content were removed by explicit
+timeline cuts; the host UI and replies were not translated or reconstructed.
+The session value is opaquely masked, shortened waiting time is labelled, and
+retained footage plays at 1×. This separately captured learner was deleted after
+filming; its cleanup is independent of the full first-party recording.
+
+The English combined build and content-addressed export run **291.834 seconds
+(4:52), 1920 × 1080**, with **17 chapters**, English narration and English
+captions. The chat section starts at **202.939 seconds (3:23)**. Fifteen previously
+reviewed narration WAVs are reused byte-for-byte; the changed `launch` and new
+`chat-start` WAVs passed full decode, clipping/pause checks and blind Gemini
+transcription/flow review. They were **not directly listened to by the assistant**.
+Final visual QA passed all **26 recording screenshots** and **40 sampled
+final-video frames**, including all 17 chapter endings, chat masks and cuts,
+the first coach reply and the voice disclosure.
+
+Both language exports are bound locally; this is not a production deployment.
+Earlier content-addressed assets remain intact. Both languages passed playback,
+seeking, HTTP range delivery, caption-language and in-page language-switch checks
+in desktop and mobile browser viewports (1280 px and 390 px). These viewport
+checks are not tests on a native mobile app.
 
 The mobile/photo/voice chapters are labelled guidance cards in both languages,
 not footage or acceptance evidence from the native Claude mobile app. Neither
@@ -192,7 +227,7 @@ for pronunciation, omissions and sentence endings before publication.
 demonstration export inputs; it is not an operator secret.
 
 Scenario `goto` URLs `quickstart-card:intro`, `:marketplace`, `:repository`,
-`:install`, `:connect`, `:mobile`, `:finish`, and `:start` resolve to the matching
+`:install`, `:connect`, `:chat-start`, `:mobile`, `:finish`, and `:start` resolve to the matching
 fragment of the language-specific local `assets/quickstart/cards.html` or
 `cards.en.html`. The Claude walkthrough first
 requires Claude Pro, then adds `enpasos/skillpilot-claude-marketplace` through
@@ -213,16 +248,19 @@ if it is missing. Other scenarios and CI fixtures do not need this private
 image and record a null screenshot digest. Only the reviewed, framed video
 output is eligible for publication.
 
-#### Optional: import real Claude browser installation clips
+#### Optional: import real Claude browser installation and chat-start clips
 
 This is an import path, not a recorder or a Claude account/login workflow.
 After separately recording and privacy-reviewing the actual installation,
-`--host-clips <private-manifest.json>` replaces only the `marketplace`,
-`repository`, `plugin-install`, and `plugin-connect` chapter steps. Their
-narration and all first-party steps stay unchanged. Without the option, the
-existing instruction-card path stays unchanged.
+`--host-clips <private-manifest.json>` replaces the `marketplace`, `repository`,
+`plugin-install`, and `plugin-connect` chapter steps. It also replaces
+`chat-start` when that optional clip is supplied. Their narration and all
+first-party steps stay unchanged. Without the option, the instruction-card
+path stays unchanged.
 
-The private JSON manifest must contain exactly those four chapter IDs once:
+The private JSON manifest must contain all four installation chapter IDs once.
+It may additionally contain `chat-start` exactly once; other chapter IDs are
+rejected. Historical four-clip manifests remain supported:
 
 ```json
 {
@@ -242,6 +280,12 @@ The private JSON manifest must contain exactly those four chapter IDs once:
 ```
 
 The example shows one entry; add the three other required chapter entries.
+For the chat-start section, add a fifth entry with `"chapterId": "chat-start"`
+and its own reviewed local file, SHA-256 digest and capture timestamp. That take
+should show the prepared message in Claude, its submission, any actual tool
+permission prompt and the first real coach reply. Use the matching UI and reply
+language, a demonstration learner and a neutral learning example. Never
+reconstruct a successful reply as if it were actual host footage.
 `language` must match the scenario's `browser.locale`. English requires explicit
 `"language": "en"`; omitted language remains historical German for compatibility.
 The importer and exporter both reject mismatched host-clip languages.
@@ -253,6 +297,11 @@ than ten minutes. `privacyReviewed: true` is an explicit operator attestation:
 review every frame and remove account details, chats, login/consent secrets,
 personal bookmarks and other private content **before** setting it. The importer
 does not discover or redact account information embedded in video pixels.
+For a chat-start recording, this review includes the private session identifier
+inside both the composer and the sent message. Keep the raw source and review
+decisions private. A demonstration learner created in the separate host-capture
+browser needs its own observed cleanup; the Quickstart wrapper only tracks
+learners created in its own first-party recording browser.
 
 ```bash
 npx tsx src/quickstart-build.ts --scenario scenarios/skillpilot-claude-quickstart.de.yaml --host-clips /absolute/private/claude-clips.json --record-only
@@ -268,6 +317,14 @@ Capture cleanup evidence additionally binds the reviewed manifest, clip bytes
 and player implementation; changed inputs invalidate reuse. `--cleanup-only`
 deliberately ignores clip inputs so missing or invalid files cannot prevent
 recovery of the private learner-cleanup ledger.
+
+Adding the chat clip or changing a scenario/card requires a fresh recording;
+older capture-cleanup evidence cannot be relabelled for the extension. Unchanged
+speech segments can still reuse their model/voice/text-bound TTS cache. The
+chat-start chapter deliberately follows `feedback`: replay navigates the single
+recorded page to a private local player, so it must not interrupt first-party
+setup state needed by later cockpit actions. No additional browser profile,
+learner identifier in scenario files or new recorder action is introduced.
 
 A successful complete build adds private `claude-host-clips.json` evidence and
 marks the capture as real Claude **browser** recordings replayed locally.

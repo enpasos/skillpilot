@@ -14,19 +14,20 @@ import { runProcess } from "../src/process.js";
 import { parseQuickstartArguments, resolveQuickstartCards, runQuickstart, verifyQuickstartCaptureCleanup } from "../src/quickstart-build.js";
 import { validateQuickstartCapture, validateQuickstartHostClipArtifact } from "../src/quickstart-export.js";
 import {
-  applyQuickstartHostClips, prepareQuickstartHostClips, QUICKSTART_HOST_CHAPTER_IDS,
+  applyQuickstartHostClips, prepareQuickstartHostClips, QUICKSTART_ALLOWED_HOST_CHAPTER_IDS, QUICKSTART_HOST_CHAPTER_IDS,
   quickstartHostClipBinding, quickstartHostVideoPage,
 } from "../src/quickstart-host-clips.js";
 
 const BINARIES = { ffmpeg: "ffmpeg", ffprobe: "ffprobe" };
 
 /** Deliberately synthetic local media: tests never access Claude or any real learner. */
-async function fixture(t: TestContext) {
+async function fixture(t: TestContext, includeChatStart = false) {
   const directory = await mkdtemp(join(tmpdir(), "quickstart-host-fixture-"));
   t.after(() => rm(directory, { recursive: true, force: true }));
-  const colors = ["red", "green", "blue", "yellow"];
+  const colors = ["red", "green", "blue", "yellow", "purple"];
   const clips = [];
-  for (const [index, chapterId] of QUICKSTART_HOST_CHAPTER_IDS.entries()) {
+  const chapterIds = includeChatStart ? QUICKSTART_ALLOWED_HOST_CHAPTER_IDS : QUICKSTART_HOST_CHAPTER_IDS;
+  for (const [index, chapterId] of chapterIds.entries()) {
     const path = join(directory, `${chapterId}.webm`);
     await runProcess("ffmpeg", ["-nostdin", "-loglevel", "error", "-f", "lavfi", "-i", `color=c=${colors[index]}:s=160x90:r=10`,
       "-t", "1.2", "-an", "-c:v", "libvpx", "-threads", "1", path]);
@@ -78,6 +79,62 @@ test("host import is explicit, private, hash-bound and rewrites only the four ch
   assert.throws(() => applyQuickstartHostClips(scenario, prepared), /ordered installation chapters/u);
   await writeFile(prepared.clips[0]!.pagePath, "Changed player");
   await assert.rejects(quickstartHostClipBinding(prepared), /clip or player changed/u);
+});
+
+test("optional chat-start replaces only its guidance card and old manifests retain that card", async (t) => {
+  const files = await fixture(t, true);
+  const prepared = await prepareQuickstartHostClips(files.manifestPath, files.cacheDir, BINARIES);
+  assert.deepEqual(prepared.evidence.clips.map((clip) => clip.chapterId), [...QUICKSTART_ALLOWED_HOST_CHAPTER_IDS]);
+  const scenario = await loadScenario(resolve("scenarios/skillpilot-claude-quickstart.de.yaml"));
+  const firstParty = scenario.chapters.filter((chapter) => !QUICKSTART_ALLOWED_HOST_CHAPTER_IDS.includes(chapter.id as typeof QUICKSTART_ALLOWED_HOST_CHAPTER_IDS[number]));
+  const before = structuredClone(firstParty);
+  const chat = scenario.chapters.find((chapter) => chapter.id === "chat-start")!;
+  const narration = chat.scriptedNarration;
+  const fallback = structuredClone(chat.steps);
+  applyQuickstartHostClips(scenario, prepared);
+  assert.deepEqual(firstParty, before);
+  assert.equal(chat.scriptedNarration, narration);
+  assert.deepEqual(chat.steps.map((step) => step.action), ["goto", "waitFor", "assert"]);
+  assert.equal(chat.steps[0]?.id, "chat-start-host-open");
+  assert.ok(!JSON.stringify(prepared.evidence).includes(files.directory));
+
+  const missingChat = structuredClone(scenario);
+  missingChat.chapters = missingChat.chapters.filter((chapter) => chapter.id !== "chat-start");
+  assert.throws(() => applyQuickstartHostClips(missingChat, prepared), /supplied chat-start/u);
+  const duplicateChat = structuredClone(scenario);
+  duplicateChat.chapters.push(structuredClone(chat));
+  assert.throws(() => applyQuickstartHostClips(duplicateChat, prepared), /supplied chat-start/u);
+
+  await writeFile(files.manifestPath, JSON.stringify({ ...files.manifest, clips: files.manifest.clips.slice(0, 4) }));
+  const historical = await prepareQuickstartHostClips(files.manifestPath, files.cacheDir, BINARIES);
+  const oldScenario = await loadScenario(resolve("scenarios/skillpilot-claude-quickstart.de.yaml"));
+  applyQuickstartHostClips(oldScenario, historical);
+  assert.deepEqual(oldScenario.chapters.find((chapter) => chapter.id === "chat-start")?.steps, fallback);
+  assert.equal(historical.evidence.clips.length, 4);
+  assert.ok(historical.evidence.clips.every((clip) => clip.chapterId !== "chat-start"));
+});
+
+test("chat-start obeys the same required-installation, privacy, language and hash gates", async (t) => {
+  const files = await fixture(t, true);
+  const invalidManifests = [
+    { ...files.manifest, clips: files.manifest.clips.slice(1) },
+    { ...files.manifest, clips: [...files.manifest.clips, files.manifest.clips[4]] },
+    { ...files.manifest, clips: files.manifest.clips.map((clip) => clip.chapterId === "chat-start" ? { ...clip, privacyReviewed: false } : clip) },
+    { ...files.manifest, clips: files.manifest.clips.map((clip) => clip.chapterId === "chat-start" ? { ...clip, chapterId: "private-chat" } : clip) },
+    { ...files.manifest, clips: files.manifest.clips.map((clip) => clip.chapterId === "chat-start" ? { ...clip, sha256: "0".repeat(64) } : clip) },
+    { ...files.manifest, clips: files.manifest.clips.map((clip) => clip.chapterId === "chat-start" ? { ...clip, path: files.manifest.clips[0]!.path, sha256: files.manifest.clips[0]!.sha256 } : clip) },
+  ];
+  for (const invalid of invalidManifests) {
+    await writeFile(files.manifestPath, JSON.stringify(invalid));
+    await assert.rejects(prepareQuickstartHostClips(files.manifestPath, files.cacheDir, BINARIES));
+  }
+  await writeFile(files.manifestPath, JSON.stringify({ ...files.manifest, language: "en" }));
+  await assert.rejects(prepareQuickstartHostClips(files.manifestPath, files.cacheDir, BINARIES, "de"), /language must match/u);
+  const english = await prepareQuickstartHostClips(files.manifestPath, files.cacheDir, BINARIES, "en");
+  assert.equal(english.evidence.clips.length, 5);
+  const chat = english.clips.find((clip) => clip.chapterId === "chat-start")!;
+  await writeFile(chat.inputPath, "Changed chat recording");
+  await assert.rejects(quickstartHostClipBinding(english), /clip or player changed/u);
 });
 
 test("host manifests fail closed on missing review, wrong hashes, duplicate chapters or file paths, remote paths and shared permissions", async (t) => {
@@ -151,7 +208,7 @@ test("local VideoPage actually plays the full clip at speed one and rejects seek
 });
 
 test("optional host clips preserve cleanup, verified reuse and complete-build evidence without provider access", async (t) => {
-  const files = await fixture(t);
+  const files = await fixture(t, true);
   const learnerId = "33333333-3333-4333-8333-333333333333";
   const operations: string[] = [];
   const server = createServer(async (request, response) => {
@@ -192,6 +249,9 @@ test("optional host clips preserve cleanup, verified reuse and complete-build ev
         { id: "create", action: "click", label: "Create", target: { css: "#create" } },
         { id: "done", action: "assert", label: "Verify", target: { css: "#done" }, text: "Created", capture: true },
       ] },
+      { id: "chat-start", title: "Chat start fixture", scriptedNarration: "Local synthetic chat fixture.", steps: [
+        { id: "chat-start-card", action: "goto", label: "Labelled chat guide", url: "quickstart-card:chat-start" },
+      ] },
     ],
   }));
   const options = { scenarioPath, hostClipsPath: files.manifestPath };
@@ -207,7 +267,7 @@ test("optional host clips preserve cleanup, verified reuse and complete-build ev
   assert.deepEqual(proof.hostClipAssets, await quickstartHostClipBinding(prepared));
   assert.equal(proof.instructionScreenshotSha256, null);
   const timeline = JSON.parse(await readFile(join(recorded.workDir, "timeline.json"), "utf8"));
-  for (const chapterId of QUICKSTART_HOST_CHAPTER_IDS) {
+  for (const chapterId of QUICKSTART_ALLOWED_HOST_CHAPTER_IDS) {
     const clipEvents = timeline.filter((event: { chapterId: string }) => event.chapterId === chapterId);
     assert.equal(clipEvents.length, 3);
     assert.ok(clipEvents[2].endedAtMs - clipEvents[0].startedAtMs >= 1000);
@@ -235,6 +295,7 @@ test("optional host clips preserve cleanup, verified reuse and complete-build ev
     assert.equal(capture.cleanupPerformedThisRun, 0);
     assert.equal(capture.disposableLearnersDeleted, 1);
     assert.ok(capture.actualClaudeHostRecording && !capture.hostClips.hostAcceptanceEvidence);
+    assert.ok(capture.actualClaudeHostRecording && capture.hostClips.clips.length === 5);
     const artifact = manifest.artifacts.hostClipEvidence;
     const bytes = await readFile(join(completed.workDir, artifact.path));
     validateQuickstartHostClipArtifact(capture, artifact, bytes);
@@ -244,7 +305,7 @@ test("optional host clips preserve cleanup, verified reuse and complete-build ev
 
   // Mutating either a clip or its reviewed manifest invalidates reuse before
   // any new first-party action. Recovery deliberately does not need the clips.
-  await writeFile(join(files.directory, files.manifest.clips[0]!.path), "Changed fixture bytes");
+  await writeFile(join(files.directory, files.manifest.clips.find((clip) => clip.chapterId === "chat-start")!.path), "Changed chat fixture bytes");
   await assert.rejects(runQuickstart({ ...options, recordOnly: true, reuseRecording: true }), /Private Claude clip import failed/u);
   assert.deepEqual(operations, ["CREATE", "DELETE"]);
   assert.equal((await runQuickstart({ ...options, cleanupOnly: true })).deletedLearners, 0);

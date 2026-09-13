@@ -1,7 +1,7 @@
 schemaVersion: 1
 id: skillpilot-claude-quickstart-2026-09-13-en
 title: SkillPilot – Start learning with Claude in five steps
-description: English SkillPilot Quickstart with current first-party screen recordings, an English MIT OpenCourseWare Foundations example and labelled instruction cards. Optional private host clips replace four installation chapters with reviewed actual Claude web recordings; these demonstrate setup rather than full learning-flow or native-app acceptance.
+description: English SkillPilot Quickstart with current first-party screen recordings, an English MIT OpenCourseWare Foundations example and labelled instruction cards. Private host clips replace four installation chapters and optionally the chat start with reviewed actual Claude web recordings; these are not full learning-flow or native-app acceptance.
 sourceRevision: 6cc5c49c18e462937d8c528dfa27929df9bb2327
 platform: web
 outputDir: ../output
@@ -139,11 +139,10 @@ chapters:
       - { id: summary-read, action: wait, label: Review the personal learning framework, durationMs: 6000, capture: true }
   - id: launch
     title: Start your learning session
-    scriptedNarration: Choose Start with Claude. A new Claude chat opens with a prepared message. Review it and send it as it is. Approve the first tool request if prompted. Your coach can then load your learning context and get started with you.
+    scriptedNarration: Start with Claude opens a new chat with your prepared start message. Before we send it there, let us take a quick look at the cockpit. This is where you can check your progress while you learn.
     steps:
       - { id: start-focus, action: hover, label: Show the start button, target: { testId: claude-plugin-start } }
       - { id: start-button-read, action: wait, label: Explain the start button, durationMs: 6000, capture: true }
-      - { id: start-read, action: wait, label: Explain the prepared message, durationMs: 6000, capture: true }
   - id: cockpit
     title: Explore your cockpit
     scriptedNarration: Your cockpit shows your current learning goal and saved progress. This fresh demo profile is just getting started. As you learn, you can see what you have achieved and choose your next focus here.
@@ -156,6 +155,13 @@ chapters:
     steps:
       - { id: feedback-card, action: goto, label: Labelled guidance for questions and independent thinking, url: 'quickstart-card:feedback' }
       - { id: feedback-read, action: wait, label: Explain questions and independent thinking, durationMs: 6000, capture: true }
+  - id: chat-start
+    title: Begin learning in the Claude chat
+    scriptedNarration: >-
+      Now continue in the Claude chat. Review the prepared start message and send it as it is. Approve the tool request if Claude asks. Your coach loads your learning context and replies. Read the first message and answer the opening question. This is where your learning together begins.
+    steps:
+      - { id: chat-start-card, action: goto, label: Labelled guide to starting the chat, url: 'quickstart-card:chat-start' }
+      - { id: chat-start-read, action: wait, label: 'Explain the start message, permission and first reply', durationMs: 6000, capture: true }
   - id: session
     title: Keep your session private
     scriptedNarration: Your start message contains a private learning session valid for twenty-four hours. Keep this message confidential. After that, start a new session from SkillPilot. Your saved progress stays accessible with the same SkillPilot ID.

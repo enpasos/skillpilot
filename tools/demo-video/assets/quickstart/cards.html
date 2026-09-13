@@ -47,6 +47,12 @@ html,body{height:100%;overflow:hidden}main{height:100vh;min-height:0;padding:32p
   <div class="steps"><div class="step"><div class="number">IM PLUGIN</div><strong>Konnektoren → skillpilot</strong></div><div class="step"><div class="number">FREIGEBEN</div><strong>Verbinden</strong><p>Anmeldung und angezeigte Freigabe abschließen.</p></div><div class="step"><div class="number">KONTROLLIEREN</div><strong>Status: Verbunden</strong><p>Erst dann mit dem Lernstart fortfahren.</p></div></div>
   <div class="note">Verbinde den SkillPilot-Konnektor direkt im gerade installierten Plugin.</div>
 </section>
+<section class="screen" data-card="chat-start">
+  <div class="eyebrow"><span class="badge">04 · Anleitung</span> Im Claude-Chat loslernen</div>
+  <h1>Eine Nachricht. <em>Dein Lernstart.</em></h1>
+  <p class="subtitle">Die vorbereitete Startnachricht prüfen und unverändert absenden.</p>
+  <div class="steps"><div class="step"><div class="number">SENDEN</div><strong>Startnachricht<br>abschicken</strong><p>Im neuen Claude-Chat.</p></div><div class="step"><div class="number">FREIGEBEN</div><strong>Tool-Anfrage<br>bestätigen</strong><p>Falls Claude danach fragt.</p></div><div class="step"><div class="number">LOSLEGEN</div><strong>Erste Antwort<br>lesen</strong><p>Auf die Einstiegsfrage deines Coaches antworten.</p></div></div>
+</section>
 <section class="screen" data-card="start">
   <div class="eyebrow"><span class="badge">04 · Anleitung</span> Neuer Claude-Chat</div>
   <h1><em>Startnachricht senden.</em><br>Loslernen.</h1>
@@ -68,6 +74,6 @@ html,body{height:100%;overflow:hidden}main{height:100vh;min-height:0;padding:32p
 <div class="footer"><span id="kind">SkillPilot · Quickstart</span><span class="url">skillpilot.com</span><span>Stand: 13.09.2026</span></div>
 </main>
 <script>
-function show(){const id=location.hash.slice(1)||'intro';document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.dataset.card===id));document.querySelector('#kind').textContent=['marketplace','repository'].includes(id)?'Anleitung mit bereitgestellten Claude-Screenshots':['install','connect','start'].includes(id)?'Anleitung · keine Claude-Bildschirmaufnahme':'SkillPilot · Quickstart';}addEventListener('hashchange',show);show();
+function show(){const id=location.hash.slice(1)||'intro';document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.dataset.card===id));document.querySelector('#kind').textContent=['marketplace','repository'].includes(id)?'Anleitung mit bereitgestellten Claude-Screenshots':['install','connect','chat-start','start'].includes(id)?'Anleitung · keine Claude-Bildschirmaufnahme':'SkillPilot · Quickstart';}addEventListener('hashchange',show);show();
 </script>
 </html>

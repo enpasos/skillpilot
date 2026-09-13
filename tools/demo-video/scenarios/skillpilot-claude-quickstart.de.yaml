@@ -1,7 +1,7 @@
 schemaVersion: 1
 id: skillpilot-claude-quickstart-2026-09-13-de
 title: SkillPilot – In fünf Schritten mit Claude starten
-description: SkillPilot-Quickstart mit aktueller First-Party-Bildschirmaufnahme und gekennzeichneten Anleitungen. Optional ersetzt der private Host-Clip-Import vier Installationskapitel durch geprüfte echte Claude-Webaufnahmen; daraus folgt keine vollständige Lernbetriebs- oder native App-Abnahme.
+description: SkillPilot-Quickstart mit aktueller First-Party-Bildschirmaufnahme und gekennzeichneten Anleitungen. Der private Host-Clip-Import ersetzt vier Installationskapitel und optional den Chatstart durch geprüfte echte Claude-Webaufnahmen; daraus folgt keine vollständige Lernbetriebs- oder native App-Abnahme.
 sourceRevision: 6cc5c49c18e462937d8c528dfa27929df9bb2327
 platform: web
 outputDir: ../output
@@ -130,11 +130,10 @@ chapters:
   - id: launch
     title: Die Lernsession starten
     scriptedNarration: >-
-      Wähle Mit Claude starten. Im neuen Claude-Chat wartet eine vorbereitete Nachricht. Prüfe sie und sende sie unverändert ab. Bestätige bei Bedarf die erste Tool-Freigabe. Damit kann dein Coach den Lernkontext laden und mit dir beginnen.
+      Mit Claude starten öffnet einen neuen Chat mit deiner vorbereiteten Startnachricht. Bevor wir sie dort absenden, schauen wir kurz ins Cockpit. Hier findest du deinen Lernstand auch während des Lernens wieder.
     steps:
       - { id: start-focus, action: hover, label: Startknopf zeigen, target: { testId: claude-plugin-start } }
-      - { id: start-button-read, action: wait, label: Startknopf erklären ohne fremde Anmeldung, durationMs: 6000, capture: true }
-      - { id: start-read, action: wait, label: Vorbereitete Nachricht erklären, durationMs: 6000, capture: true }
+      - { id: start-button-read, action: wait, label: Startknopf und Übergang zu Claude erklären, durationMs: 6000, capture: true }
   - id: cockpit
     title: Im Cockpit nachsehen
     scriptedNarration: Im Cockpit siehst du dein aktuelles Lernziel und die gespeicherten Erfolge. Unser frisches Demo-Profil steht noch am Anfang. Später kannst du hier verfolgen, was du schon geschafft hast, und deinen nächsten Schwerpunkt auswählen.
@@ -150,6 +149,13 @@ chapters:
       - { id: example-goal, action: click, label: Beispielziel nur ansehen, target: { css: '[title="Ähnlichkeit und Strahlensatz anwenden"]' } }
       - { id: feedback-focus, action: hover, label: Feedbackknopf zeigen ohne Meldung abzusenden, target: { role: button, name: 'Feedback zu diesem Lernziel: Ähnlichkeit und Strahlensatz anwenden', exact: true } }
       - { id: feedback-read, action: wait, label: Feedback und eigenes Denken erklären, durationMs: 6000, capture: true }
+  - id: chat-start
+    title: Im Claude-Chat loslernen
+    scriptedNarration: >-
+      Jetzt geht es im Claude-Chat weiter. Prüfe die vorbereitete Startnachricht und sende sie unverändert ab. Bestätige die Tool-Freigabe, falls Claude danach fragt. Dein Coach lädt den Lernkontext und antwortet dir. Lies seine erste Nachricht und antworte auf die Einstiegsfrage. So beginnt euer gemeinsames Lernen.
+    steps:
+      - { id: chat-start-card, action: goto, label: Gekennzeichnete Anleitung zum Chatstart, url: 'quickstart-card:chat-start' }
+      - { id: chat-start-read, action: wait, label: 'Startnachricht, Freigabe und erste Antwort erklären', durationMs: 6000, capture: true }
   - id: session
     title: Deine Session bleibt privat
     scriptedNarration: Deine Startnachricht enthält eine private Lernsession, die vierundzwanzig Stunden gilt. Halte diese Nachricht vertraulich. Danach startest du einfach von SkillPilot aus eine neue Session. Deine gespeicherten Erfolge bleiben mit derselben SkillPilot-ID erreichbar.
