@@ -38,6 +38,22 @@ test("merges holds for narration segments sharing one recorded anchor", () => {
   assert.equal(plan.audio[1]!.startMs, 1_400);
 });
 
+test("pauses inside the chapter's recorded reading wait without moving narration anchors or losing source time", () => {
+  const plan = createNarrationPacingPlan([
+    { id: "feedback", filePath: "feedback.wav", anchorMs: 0, durationMs: 4_000, holdAtMs: 1_200 },
+    { id: "session", filePath: "session.wav", anchorMs: 2_000, durationMs: 4_000, holdAtMs: 3_200 },
+  ], { sourceVideoDurationMs: 4_000, minimumGapMs: 500, tailPaddingMs: 500 });
+  assert.deepEqual(plan.holds, [{ atMs: 1_200, durationMs: 2_500 }, { atMs: 3_200, durationMs: 2_500 }]);
+  assert.deepEqual(plan.audio.map(({ startMs, endMs }) => ({ startMs, endMs })), [
+    { startMs: 0, endMs: 4_000 }, { startMs: 4_500, endMs: 8_500 },
+  ]);
+  assert.equal(plan.pacedVideoDurationMs, 9_000);
+  assert.equal(shiftRecordedTimestamp(2_000, plan.holds), 4_500);
+  assert.throws(() => createNarrationPacingPlan([
+    { id: "wrong", filePath: "wrong.wav", anchorMs: 1_000, durationMs: 2_000, holdAtMs: 999 },
+  ], { sourceVideoDurationMs: 4_000, minimumGapMs: 500 }), /inside its recorded segment/u);
+});
+
 test("fails instead of silently producing an excessive frozen shot", () => {
   assert.throws(() => createNarrationPacingPlan([
     { id: "too-long", filePath: "voice.wav", anchorMs: 0, durationMs: 40_000 },

@@ -1,103 +1,70 @@
-# SkillPilot: In 5 Schritten starten
+# SkillPilot: In 5 Schritten mit Claude starten
 
-**Stand:** 15. August 2026
+**Stand:** 13. September 2026
 
-> **Veröffentlichungsstatus:** Der hier beschriebene SkillPilot Coach v1 befindet sich derzeit im Veröffentlichungsreview.
+Dein Lernen. Dein Tempo. Wähle dein Curriculum, lass dich beim Üben begleiten und entdecke deine Erfolge im Cockpit.
 
-SkillPilot verbindet den Lernkontext, den du auf [skillpilot.com](https://skillpilot.com) einstellst, mit deinem Lerncoach in ChatGPT. Du verwendest dafür **ChatGPT im Browser**.
+Die laufende Lern-Beta nutzt **Claude Pro** und richtet sich an **Erwachsene ab 18 Jahren**. Du installierst das Plugin einmalig in **Claude Web**; danach kannst du mit demselben Konto auch in der **Claude-App** lernen. ChatGPT ist noch nicht verfügbar.
 
-Für Schüler:innen eignet sich besonders die browserbasierte Web-App auf dem Smartphone: Du kannst Antworten per Spracheingabe als Text erfassen, Aufgaben auf Papier bearbeiten und anschließend ein Foto deiner Lösung hochladen. Die native ChatGPT-App gehört derzeit nicht zum unterstützten SkillPilot-Ablauf.
+Der Quickstart erklärt den Einstieg in ungefähr fünf Minuten. Für die erstmalige Einrichtung kannst du dir so viel Zeit nehmen, wie du brauchst.
 
-> Nutze den normalen Textchat. Diktier- und Spracheingabe im Textfeld kannst du verwenden. Den fortlaufenden ChatGPT Voice Mode solltest du während einer SkillPilot-Lernsession nicht starten.
+## 1. Claude einmalig einrichten
 
-## Das brauchst du
+Du brauchst zuerst ein **Claude-Pro-Konto**. Melde dich damit in **Claude Web** an. Ist das aktuelle SkillPilot-Plugin bereits aus dem Marketplace installiert und verbunden, geh direkt zu Schritt 2 weiter.
 
-- einen Browser auf Computer, Tablet oder Smartphone
-- einen ChatGPT-Account, in dessen Tarif oder Workspace Apps verfügbar sind
-- keine SkillPilot-Registrierung mit Name oder E-Mail-Adresse
+1. Öffne **Einstellungen → Plugins → Hinzufügen → Marketplace hinzufügen → Aus einem Repository hinzufügen**.
+2. Trage `enpasos/skillpilot-claude-marketplace` ein. Das ist der [öffentliche SkillPilot-Marketplace](https://github.com/enpasos/skillpilot-claude-marketplace). Lass **Automatisch synchronisieren eingeschaltet** und wähle **Synchronisieren**.
+3. Suche anschließend **SkillPilot Coach v1** aus diesem Marketplace und füge das Plugin hinzu. Unter **Deine Plugins** soll es genau einmal installiert und aktiviert sein. Vergleiche die Version mit der [aktuellen SkillPilot-Installationsanleitung](https://skillpilot.com/plugins).
+4. Öffne im Plugin **Konnektoren → skillpilot**. Wähle bei Bedarf **Verbinden** und schließe die angezeigte Anmeldung und Freigabe ab. Prüfe anschließend den Status **Verbunden**.
 
-## Start in 5 Schritten
+Die Marketplace-Verbindung ist auch dein Weg für spätere Updates. Automatische Updates wurden im Betatest beobachtet; der Zeitpunkt kann variieren. Für eine bestehende Installation folge dem Abschnitt **Aktualisieren** der aktuellen Anleitung. Sind Plugin und Konnektor bereit, öffne SkillPilot für die nächsten Schritte.
 
-### 1. SkillPilot öffnen
+## 2. Öffnen und deine SkillPilot-ID sichern
 
-Öffne [skillpilot.com](https://skillpilot.com) und wähle **Lernen starten**.
+Öffne [skillpilot.com](https://skillpilot.com) und wähle **Jetzt lernen**. Lies die Hinweise und Nutzungsbedingungen, bevor du sie bestätigst.
 
-![Aktuelle SkillPilot-Startseite mit der Auswahl „Lernen starten“](quickstart-01-start.webp)
+Wähle **Neue SkillPilot-ID erstellen**. Deine dauerhafte ID ist der Schlüssel zu deinem Lernstand: Wähle **SkillPilot-ID geschützt speichern** und bewahre die verschlüsselte Datei und ihr Passwort sicher auf. Für den späteren Zugang brauchst du deine ID oder diese Datei samt Passwort.
 
-### 2. SkillPilot-ID festlegen
+Schon eine ID vorhanden? Gib sie in SkillPilot ein oder wähle **Geschützte Datei auswählen**. Bewahre deine dauerhafte ID und ihr Passwort privat auf.
 
-Erstelle eine neue SkillPilot-ID, lade deine geschützte ID-Datei oder gib eine vorhandene SkillPilot-ID ein. Speichere eine neue ID möglichst sofort als geschützte Datei.
+## 3. Dein Curriculum wählen
 
-![Auswahl zum Erstellen, Laden oder Eingeben einer SkillPilot-ID](quickstart-02-id.webp)
+Wähle **Weiter zu Schritt 2: Curriculum wählen** und entscheide, womit du lernen möchtest. Lege anschließend dein persönliches Curriculum fest, zum Beispiel Schulform, Lernstufe und Fächer sowie die dafür angebotenen weiteren Angaben.
 
-### 3. Persönliches Curriculum festlegen
+Die Auswahl bildet deinen dauerhaften Lernrahmen. Deinen aktuellen Schwerpunkt kannst du später im Cockpit verändern. Prüfe die Zusammenfassung, bevor du weitergehst.
 
-Lege dein persönliches Curriculum und deinen aktuellen Lernkontext fest. Dazu gehören zum Beispiel Schulform, Lernstufe, Fach und Kursprofil.
+## 4. Deine Lernsession starten
 
-![Auswahl des persönlichen Curriculums und Lernkontexts](quickstart-03-curriculum.webp)
+Wähle im Abschnitt **Los geht’s** die Schaltfläche **Schritt 2: Mit Claude starten**.
 
-### 4. SkillPilot Coach v1 öffnen
+SkillPilot öffnet einen neuen Claude-Chat mit einer vorbereiteten Startnachricht. Prüfe sie und sende sie unverändert ab. Falls Claude beim ersten Zugriff noch eine Anmeldung oder Freigabe verlangt, schließe diese ab.
 
-Wähle **SkillPilot-App öffnen**. SkillPilot öffnet einen neuen ChatGPT-Chat im Browser mit einer vorbereiteten Nachricht. Beim ersten App-Aufruf kann ChatGPT einmalig um die Verbindung mit **SkillPilot Coach v1** bitten.
+Die vorbereitete Startnachricht enthält eine **24 Stunden gültige Lernsession**. Halte diese Nachricht und deinen Lernchat vertraulich.
 
-![Abgeschlossene Konfiguration mit der Schaltfläche „SkillPilot-App öffnen“](quickstart-04-launch.webp)
+## 5. Lernen und Erfolge im Cockpit ansehen
 
-Die vorbereitete Nachricht enthält bereits die neue, 24 Stunden gültige Lernsession. Du musst sie nicht ergänzen.
+Der Coach lädt deinen Lernkontext und begleitet dich beim aktuellen Ziel. Arbeite selbst, frage nach und bitte bei Bedarf um kleinere Schritte oder einen Tipp. KI kann Fehler machen: Prüfe Erklärungen und Bewertungen und begründe deine Sicht, wenn du anderer Meinung bist.
 
-![Von SkillPilot vorbereitete Nachricht in einem neuen ChatGPT-Browserchat](quickstart-05-prepared-message.webp)
+Über **Cockpit öffnen** siehst du deinen aktuellen Lernstand und das aktive Lernziel. Prüfe dort nach einem Abschluss deinen **gespeicherten Fortschritt**.
 
-### 5. Vorbereitete Nachricht senden
+Zum automatisch angezeigten Lernziel kannst du **Feedback zu diesem Lernziel** abgeben, auch zum Verhalten des Coaches. Beschreibe das Problem knapp in eigenen Worten und konzentriere dich auf das Lernziel und deine Beobachtung. Halte persönliche Angaben und deine Startnachricht vertraulich.
 
-Sende die vorbereitete Nachricht unverändert ab. Der Coach lädt deinen Lernstand und führt dich durch das aktuelle Lernziel.
+## Mit dem Handy, Fotos und Voice Mode lernen
 
-![SkillPilot Coach v1 führt durch ein konkretes Lernziel](quickstart-06-coach.webp)
+- Öffne mit demselben Claude-Konto denselben Chat in der App. Innerhalb der 24 Stunden kannst du dort weiterlernen.
+- Lade Fotos deiner Rechnung oder Skizze hoch oder nutze die Kamera direkt in der Claude-App. Das geht besonders praktisch mit dem Handy. Verdecke persönliche Angaben vorher.
+- **Voice Mode funktioniert im laufenden Betatest.** Stockt die Sprachausgabe, warte kurz; nach bisherigen Erfahrungen spricht Claude anschließend weiter. Bei Bedarf kannst du im Textchat fortfahren.
 
-![Illustration: Der Lerncoach stimmt den Chat mit dem SkillPilot-Lernstand ab](comic03.de.png)
+Chat, Fotos und Sprache verarbeitet Claude. SkillPilot erhält über die Coach-Schnittstelle ausschließlich die vorgesehenen strukturierten Lernstandsdaten.
 
-Du musst keine Session-ID kopieren, bearbeiten oder selbst in ChatGPT eintragen.
+## Wenn etwas hakt
 
-## Lernen auf dem Smartphone
+**Probleme beim Öffnen von Claude?** Erlaube Pop-ups für SkillPilot und versuche den Start erneut.
 
-Öffne ChatGPT im Smartphone-Browser oder speichere die Browserseite als Web-App auf dem Startbildschirm. So kannst du:
+**Lernsession abgelaufen?** Starte von SkillPilot aus eine neue Lernsession und sende die vorbereitete Nachricht im neuen Chat. Deine gespeicherten Erfolge bleiben mit derselben SkillPilot-ID erreichbar.
 
-- Antworten in das normale Textfeld diktieren, den erkannten Text prüfen und absenden,
-- Rechnungen, Skizzen und längere Lösungen auf Papier bearbeiten,
-- deine Arbeit fotografieren und im selben Chat hochladen.
+**Speichern fehlgeschlagen?** Lass den Coach den aktuellen Stand prüfen und den Abschluss bei Bedarf erneut speichern. Prüfe anschließend das Cockpit; bei abgelaufener Session starte zuerst eine neue.
 
-Je nach Lernziel kann der Coach außerdem eine passende interaktive Lernansicht öffnen, zum Beispiel für fällige Karteikarten.
+Weitere Antworten findest du in den [FAQs](https://skillpilot.com/faq) und der [Claude-Einrichtung](https://skillpilot.com/plugins).
 
-![Interaktive Karteikartenansicht von SkillPilot Coach v1 in ChatGPT](quickstart-08-cards.webp)
-
-## SkillPilot-ID und Lernsession
-
-Deine dauerhafte SkillPilot-ID ist der Schlüssel zu deinem Lernfortschritt. Sie bleibt bei SkillPilot und wird nicht in den Chat übernommen.
-
-Bei jedem Klick auf **Lernen starten** erzeugt SkillPilot eine neue, zufällige Lernsession. Sie ist exakt 24 Stunden gültig und wird automatisch in die vorbereitete Nachricht eingesetzt.
-
-## Fortschritt im Cockpit
-
-![Aktuelles SkillPilot-Cockpit mit Lernbaum, aktivem Ziel und Zielvisualisierung](quickstart-07-cockpit.webp)
-
-![Illustration: Lernerfolge im SkillPilot-Cockpit ansehen](comic05.de.png)
-
-*Cockpit und Lerncoach verwenden denselben Lernstand. Im Cockpit siehst du deinen Fortschritt und sinnvolle nächste Ziele.*
-
-## Wenn etwas nicht funktioniert
-
-### Was mache ich, wenn die Lernsession abläuft?
-
-Eine Lernsession ist exakt 24 Stunden gültig und wird durch Nutzung nicht verlängert. Sobald weniger als eine Stunde übrig ist, beginnt der Coach keine neue Lernaktion mehr.
-
-Kehre zu [skillpilot.com](https://skillpilot.com) zurück, lade deine geschützte ID-Datei oder gib dort deine SkillPilot-ID ein, prüfe deinen Lernkontext und wähle erneut **Lernen starten**. Sende die neue vorbereitete Nachricht in dem neu geöffneten Chat ab. Gib deine dauerhafte SkillPilot-ID niemals direkt im Chat ein.
-
-### Was mache ich, wenn ich versehentlich Voice Mode gestartet habe?
-
-Beende Voice Mode und starte über SkillPilot einen neuen Chat mit einer neuen Lernsession. Arbeite nicht einfach im bisherigen Chat weiter.
-
-### Was mache ich, wenn sich das ChatGPT-Fenster nicht öffnet?
-
-Erlaube Pop-ups für skillpilot.com und wähle erneut **SkillPilot-App öffnen**.
-
-### Was mache ich, wenn ich meine SkillPilot-ID verloren habe?
-
-Lade deine zuvor gespeicherte geschützte ID-Datei. Ohne die SkillPilot-ID oder diese Datei kann dein bisheriger Lernstand nicht wieder geöffnet werden.
+Entdecke, was du kannst – und freu dich über jeden Erfolg.

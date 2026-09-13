@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import { loadScenario, redactedScenario } from "../src/config.js";
+import { AI_VOICE_DISCLOSURE, AI_VOICE_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_EN } from "../src/policy.js";
 
 const minimalScenario = `
 schemaVersion: 1
@@ -51,6 +52,8 @@ test("loads defaults, resolves local URLs, and keeps environment values out of c
   assert.equal(scenario.browser.headless, true);
   assert.equal(scenario.browser.persistentProfileRequiresSnapshot, false);
   assert.equal(scenario.browser.dialogPolicy, "dismiss");
+  assert.equal(scenario.narration.disclosure, AI_VOICE_DISCLOSURE);
+  assert.equal(scenario.narration.disclosureMode, "spoken-and-visual");
   assert.deepEqual(scenario.privacy.requiredMaskSelectors, []);
   assert.deepEqual(scenario.platformClips, []);
   assert.match(scenario.chapters[0]!.steps[0]!.action === "goto" ? scenario.chapters[0]!.steps[0]!.url ?? "" : "", /^file:/);
@@ -65,6 +68,48 @@ test("loads defaults, resolves local URLs, and keeps environment values out of c
     preparedPromptStep.action === "assertPreparedPrompt" ? preparedPromptStep.timeoutMs : undefined,
     5000,
   );
+});
+
+test("accepts the exact German disclosure without changing the English default", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "demo-video-config-"));
+  const scenarioPath = join(directory, "scenario.yaml");
+  for (const disclosure of [AI_VOICE_DISCLOSURE, AI_VOICE_DISCLOSURE_DE]) {
+    await writeFile(scenarioPath, minimalScenario.replace(
+      "  mode: scripted", `  mode: scripted\n  disclosure: ${JSON.stringify(disclosure)}`,
+    ), "utf8");
+    assert.equal((await loadScenario(scenarioPath)).narration.disclosure, disclosure);
+  }
+});
+
+test("visual-only must be explicit and retain the exact visible AI-voice label", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "demo-video-visual-config-"));
+  const scenarioPath = join(directory, "scenario.yaml");
+  const visual = minimalScenario.replace("  mode: scripted", "  mode: scripted\n  disclosureMode: visual-only");
+  await writeFile(scenarioPath, visual, "utf8");
+  await assert.rejects(loadScenario(scenarioPath), /requires an explicit visualDisclosure/u);
+  for (const label of [AI_VOICE_VISUAL_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_EN]) {
+    await writeFile(scenarioPath, visual.replace("  disclosureMode: visual-only", `  disclosureMode: visual-only\n  visualDisclosure: ${label}`), "utf8");
+    const scenario = await loadScenario(scenarioPath);
+    assert.equal(scenario.narration.disclosureMode, "visual-only");
+    assert.equal(scenario.narration.visualDisclosure, label);
+  }
+  for (const invalid of ["", "Möglicherweise KI", "Eine menschliche Stimme"]) {
+    await writeFile(scenarioPath, visual.replace("  disclosureMode: visual-only", `  disclosureMode: visual-only\n  visualDisclosure: ${JSON.stringify(invalid)}`), "utf8");
+    await assert.rejects(loadScenario(scenarioPath), /visualDisclosure/u);
+  }
+  await writeFile(scenarioPath, visual.replace("visual-only", "none"), "utf8");
+  await assert.rejects(loadScenario(scenarioPath), /disclosureMode/u);
+});
+
+test("rejects empty, weakened, or arbitrary voice disclosures", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "demo-video-config-"));
+  const scenarioPath = join(directory, "scenario.yaml");
+  for (const disclosure of ["", "This is a human voice.", "Die Stimme ist möglicherweise KI-generiert."]) {
+    await writeFile(scenarioPath, minimalScenario.replace(
+      "  mode: scripted", `  mode: scripted\n  disclosure: ${JSON.stringify(disclosure)}`,
+    ), "utf8");
+    await assert.rejects(loadScenario(scenarioPath), /disclosure/u);
+  }
 });
 
 test("requires every mandatory evidence mask to be an active configured selector", async () => {

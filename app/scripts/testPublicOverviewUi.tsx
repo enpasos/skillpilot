@@ -9,6 +9,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { chromium, type Browser, type Page } from 'playwright'
 import { createServer as createViteServer } from 'vite'
+import { getQuickstartVideo } from '../src/config/quickstartVideo'
+import { getMarkdownDocumentViewCopy } from '../src/utils/markdownDocumentViewCopy'
 
 type Language = 'de' | 'en'
 type FormatId = 'audio' | 'video' | 'whitepaper'
@@ -205,6 +207,11 @@ const fixtureHtml = `<!doctype html>
           default: module.WhitepaperView,
         })),
       )
+      const LazyStoryView = React.lazy(() =>
+        import('/src/views/StoryView.tsx').then((module) => ({
+          default: module.StoryView,
+        })),
+      )
       const RootOverview = () => {
         const { language } = useLanguage()
         return e('main', null, e(SkillPilotOverviewCard, { language }))
@@ -225,6 +232,10 @@ const fixtureHtml = `<!doctype html>
         null,
         e(Route, { path: '/', element: e(RootOverview) }),
         e(Route, { path: '/whitepaper/:lang?', element: overviewRoute }),
+        e(Route, {
+          path: '/quickstart/:lang?',
+          element: e(React.Suspense, { fallback: e('p', null, 'Loading quickstart') }, e(LazyStoryView)),
+        }),
       )
       const app = e(
         BrowserRouter,
@@ -250,6 +261,9 @@ const http = createHttpServer((request, response) => {
         || pathname === '/whitepaper'
         || pathname === '/whitepaper/de'
         || pathname === '/whitepaper/en'
+        || pathname === '/quickstart'
+        || pathname === '/quickstart/de'
+        || pathname === '/quickstart/en'
       if (!isOverviewRoute) {
         response.statusCode = 404
         response.end('Not found')
@@ -1391,6 +1405,8 @@ try {
     )
     assert(await video.getAttribute('controls') !== null, `${language}: presentation video exposes native controls`)
     assert.equal(await video.getAttribute('aria-label'), expected.formats.video[1])
+    assert.equal(await video.getAttribute('poster'), null, 'the legacy whitepaper caller needs no poster')
+    assert.equal(await video.locator('track').count(), 0, 'the legacy whitepaper caller needs no caption tracks')
 
     assert.equal(
       await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth),
@@ -1414,10 +1430,73 @@ try {
       }
     }
 
+    // Each route has its own narrated Claude tutorial and caption language.
+    // This checks the player contract and responsive layout, not media bytes.
+    const quickstartCopy = getMarkdownDocumentViewCopy(language, 'story')
+    const quickstartAsset = getQuickstartVideo(language)
+    const otherLanguage = language === 'en' ? 'de' : 'en'
+    const otherAsset = getQuickstartVideo(otherLanguage)
+    assert(quickstartAsset, `${language}: a completed localized Quickstart export is required`)
+    assert(otherAsset, `${otherLanguage}: the other language keeps its own completed export`)
+    assert.match(quickstartAsset.url, new RegExp(`^/media/quickstart/claude/[^/]+/${language}/`, 'u'))
+    assert.notEqual(quickstartAsset.url, otherAsset.url, 'English never falls back to the German video')
+    assert.notEqual(quickstartAsset.poster, otherAsset.poster, 'each language has its own recorded poster')
+    assert.notEqual(quickstartAsset.tracks[0].src, otherAsset.tracks[0].src, 'captions follow their own narration')
+    for (const width of [375, 1280]) {
+      await page.setViewportSize({ width, height: 900 })
+      await page.goto(`${origin}/quickstart/${language}`)
+      await page.getByRole('heading', { level: 2, name: quickstartCopy.videoTitle, exact: true }).waitFor()
+      const quickstartVideo = page.locator('video')
+      assert.equal(await quickstartVideo.count(), 1, `${language}: quickstart exposes exactly one player`)
+      assert.equal(await quickstartVideo.getAttribute('src'), quickstartAsset.url)
+      assert.equal(await quickstartVideo.getAttribute('poster'), quickstartAsset.poster)
+      assert.notEqual(await quickstartVideo.getAttribute('controls'), null)
+      assert.notEqual(await quickstartVideo.getAttribute('playsinline'), null)
+      assert.equal(await quickstartVideo.getAttribute('autoplay'), null, 'quickstart playback is user-initiated')
+      assert.equal(await quickstartVideo.getAttribute('preload'), 'metadata')
+      const caption = quickstartVideo.locator('track')
+      assert.equal(await caption.count(), 1)
+      assert.equal(await caption.getAttribute('src'), quickstartAsset.tracks[0].src)
+      assert.equal(await caption.getAttribute('srclang'), language)
+      assert.equal(await caption.getAttribute('label'), language === 'en' ? 'English' : 'Deutsch')
+      assert.equal(await caption.getAttribute('kind'), 'captions')
+      assert.notEqual(await caption.getAttribute('default'), null)
+      const descriptionId = await quickstartVideo.getAttribute('aria-describedby')
+      assert(descriptionId, 'video exposes the language and recording disclosure accessibly')
+      assert.equal(await page.locator(`[id="${descriptionId}"]`).textContent(), quickstartCopy.videoDescription)
+      if (language === 'en') {
+        assert.match(quickstartCopy.videoDescription, /Claude marketplace.*real screen recordings/u)
+        assert.doesNotMatch(quickstartCopy.videoDescription, /not a recording/u)
+        assert.match(quickstartCopy.videoDescription, /English AI-generated narration and English captions/u)
+        assert.doesNotMatch(quickstartCopy.videoDescription, /German|written guide follows/u)
+        assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT is not available yet/u)
+      } else {
+        assert.match(quickstartCopy.videoDescription, /Claude-Marketplace.*echten Bildschirmaufnahmen/u)
+        assert.doesNotMatch(quickstartCopy.videoDescription, /keine Aufnahme/u)
+        assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT ist noch nicht verfügbar/u)
+      }
+      const bounds = await quickstartVideo.boundingBox()
+      assert(bounds && Math.abs(bounds.width / bounds.height - 16 / 9) < 0.02)
+      await assertNoHorizontalOverflow(page, `${language}: quickstart fits a ${width}px viewport`)
+      assert.equal(
+        await page.getByRole('link', { name: quickstartCopy.videoOpen, exact: true }).first().getAttribute('href'),
+        quickstartAsset.url,
+      )
+      // A real in-app language switch must replace the already-mounted player,
+      // not merely translate its heading while the original media keeps playing.
+      await page.getByRole('link', { name: quickstartCopy.switchLabel, exact: true }).click()
+      await page.getByRole('heading', {
+        level: 2, name: getMarkdownDocumentViewCopy(otherLanguage, 'story').videoTitle, exact: true,
+      }).waitFor()
+      assert.equal(new URL(page.url()).pathname, `/quickstart/${otherLanguage}`)
+      assert.equal(await page.locator('video').getAttribute('src'), otherAsset.url)
+      assert.equal(await page.locator('video track').getAttribute('srclang'), otherLanguage)
+    }
+
     await context.close()
   }
 
-  console.log('Public SkillPilot overview UI tests passed')
+  console.log('Public SkillPilot overview and Claude quickstart UI tests passed')
 } finally {
   await browser?.close()
   await new Promise<void>((resolve, reject) => {

@@ -58,11 +58,25 @@ export type DemoStep =
   | (StepBase & { action: "mask"; selector: string })
   | (StepBase & { action: "unmask"; selector: string });
 
+/** Camera framing of an explicit interval in the original recorded footage. */
+export interface RecordedFocusConfig {
+  fromStepId: string;
+  toStepId: string;
+  /** Rectangle in source-video pixels, never viewport/CSS coordinates. */
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  /** Bounded lead to account for browser screencast frames preceding event anchors. */
+  leadMs?: number;
+}
+
 export interface DemoChapter {
   id: string;
   title: string;
   narrationHint?: string;
   scriptedNarration?: string;
+  recordedFocus?: RecordedFocusConfig;
   steps: DemoStep[];
 }
 
@@ -114,6 +128,9 @@ export interface NarrationConfig {
   voice: string;
   instructions: string;
   disclosure: string;
+  /** Omitted by historic in-memory scenarios; defaults to spoken-and-visual. */
+  disclosureMode?: "spoken-and-visual" | "visual-only";
+  visualDisclosure?: string;
   segmentGapMs: number;
   maxSegments: number;
 }

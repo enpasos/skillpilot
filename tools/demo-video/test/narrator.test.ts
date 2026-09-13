@@ -3,10 +3,12 @@ import { test } from "node:test";
 
 import {
   DEFAULT_AI_VOICE_DISCLOSURE,
+  ensureAiVoiceDisclosure,
   generateNarration,
   selectImageEvidence,
   type NarrationOpenAIClient,
 } from "../src/narrator.js";
+import { AI_VOICE_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_EN } from "../src/policy.js";
 
 function clientReturning(output: unknown): {
   client: NarrationOpenAIClient;
@@ -71,6 +73,7 @@ test("generateNarration uses Responses Structured Outputs and materializes ancho
     input: Array<{ role: string; content: unknown }>;
   };
   assert.equal(request.model, "gpt-5.6");
+  assert.match(String(request.input[0]?.content), /natural international English/u);
   assert.ok(request.text.format);
   const userMessage = request.input[1];
   assert.ok(userMessage);
@@ -80,6 +83,89 @@ test("generateNarration uses Responses Structured Outputs and materializes ancho
   assert.equal(opening.anchorMs, 1250);
   assert.match(opening.narration, /AI-generated and is not a human voice/i);
   assert.equal(result.disclosure, DEFAULT_AI_VOICE_DISCLOSURE);
+});
+
+test("German narration selects German instructions and discloses the AI voice in both tracks", async () => {
+  const { client, requests } = clientReturning({
+    summary: "SkillPilot kennenlernen.",
+    editorialNotes: [],
+    segments: [{
+      id: "intro", chapterId: "start", anchorEventId: "open",
+      title: "Willkommen", narration: "Hier beginnt dein Lernen.", subtitle: "Hier beginnt dein Lernen.",
+    }],
+  });
+  const result = await generateNarration({
+    title: "SkillPilot Quickstart", objective: "Den sichtbaren Einstieg erklären.",
+    chapters: [{ id: "start", title: "Start" }],
+    timeline: [{ id: "open", chapterId: "start", atMs: 0, action: "goto" }],
+  }, { client, disclosure: AI_VOICE_DISCLOSURE_DE });
+  const request = requests[0] as { input: Array<{ role: string; content: unknown }> };
+  assert.match(String(request.input[0]?.content), /natural German/u);
+  assert.doesNotMatch(String(request.input[0]?.content), /natural international English/u);
+  assert.equal(result.disclosure, AI_VOICE_DISCLOSURE_DE);
+  assert.equal(result.segments[0]?.narration, `${AI_VOICE_DISCLOSURE_DE} Hier beginnt dein Lernen.`);
+  assert.equal(result.segments[0]?.subtitle, `${AI_VOICE_DISCLOSURE_DE} Hier beginnt dein Lernen.`);
+});
+
+test("visual-only narration leaves speech and spoken subtitles unchanged and tells the model why", async () => {
+  const { client, requests } = clientReturning({
+    summary: "SkillPilot kennenlernen.", editorialNotes: [],
+    segments: [{
+      id: "intro", chapterId: "start", anchorEventId: "open",
+      title: "Start", narration: "Hier beginnt dein Lernen.", subtitle: "Hier beginnt dein Lernen.",
+    }],
+  });
+  const result = await generateNarration({
+    title: "Quickstart", objective: "Den Einstieg erklären.",
+    timeline: [{ id: "open", chapterId: "start", atMs: 0, action: "goto" }],
+  }, { client, disclosureMode: "visual-only", visualDisclosure: AI_VOICE_VISUAL_DISCLOSURE_DE });
+  const request = requests[0] as { input: Array<{ content: unknown }> };
+  assert.match(String(request.input[0]?.content), /Do not speak it/u);
+  assert.equal(result.segments[0]?.narration, "Hier beginnt dein Lernen.");
+  assert.equal(result.segments[0]?.subtitle, "Hier beginnt dein Lernen.");
+  assert.throws(() => ensureAiVoiceDisclosure(result.segments, AI_VOICE_DISCLOSURE_DE, "visual-only"), /exact visualDisclosure/u);
+  assert.throws(() => ensureAiVoiceDisclosure([
+    { ...result.segments[0]!, narration: `${AI_VOICE_VISUAL_DISCLOSURE_DE}. Hallo.` },
+  ], AI_VOICE_DISCLOSURE_DE, "visual-only", AI_VOICE_VISUAL_DISCLOSURE_DE), /must not speak/u);
+});
+
+test("English visual-only disclosure retains English instructions and stays out of speech", async () => {
+  const { client, requests } = clientReturning({
+    summary: "Start learning.", editorialNotes: [],
+    segments: [{
+      id: "intro", chapterId: "start", anchorEventId: "open", title: "Start",
+      narration: "Your learning. Your pace.", subtitle: "Your learning. Your pace.",
+    }],
+  });
+  const result = await generateNarration({
+    title: "Quickstart", objective: "Explain the setup.",
+    timeline: [{ id: "open", chapterId: "start", atMs: 0, action: "goto" }],
+  }, { client, disclosureMode: "visual-only", visualDisclosure: AI_VOICE_VISUAL_DISCLOSURE_EN });
+  const request = requests[0] as { input: Array<{ content: unknown }> };
+  assert.match(String(request.input[0]?.content), /natural international English/u);
+  assert.doesNotMatch(String(request.input[0]?.content), /natural German/u);
+  assert.equal(result.segments[0]?.narration, "Your learning. Your pace.");
+  assert.equal(result.segments[0]?.subtitle, "Your learning. Your pace.");
+  assert.throws(() => ensureAiVoiceDisclosure([
+    { ...result.segments[0]!, narration: `${AI_VOICE_VISUAL_DISCLOSURE_EN}. Welcome.` },
+  ], DEFAULT_AI_VOICE_DISCLOSURE, "visual-only", AI_VOICE_VISUAL_DISCLOSURE_EN), /must not speak/u);
+});
+
+test("voice and subtitle disclosures are independently required and never duplicated", () => {
+  for (const disclosure of [DEFAULT_AI_VOICE_DISCLOSURE, AI_VOICE_DISCLOSURE_DE]) {
+    for (const narrationHasDisclosure of [false, true]) {
+      for (const subtitleHasDisclosure of [false, true]) {
+        const result = ensureAiVoiceDisclosure([{
+          id: "intro", chapterId: "start", anchorEventId: "open", anchorMs: 0,
+          title: "Start",
+          narration: `${narrationHasDisclosure ? `${disclosure} ` : ""}Welcome.`,
+          subtitle: `${subtitleHasDisclosure ? `${disclosure} ` : ""}Welcome.`,
+        }], disclosure);
+        assert.equal(result[0]?.narration, `${disclosure} Welcome.`);
+        assert.equal(result[0]?.subtitle, `${disclosure} Welcome.`);
+      }
+    }
+  }
 });
 
 test("generateNarration removes configured sensitive values before the API request", async () => {

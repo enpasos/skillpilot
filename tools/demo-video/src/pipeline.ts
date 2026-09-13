@@ -33,8 +33,10 @@ import {
 import { createSubtitleCues, writeSrtFile } from "./subtitles.js";
 import { synthesizeSpeechSegments } from "./tts.js";
 import type { TtsOpenAIClient } from "./tts.js";
-import type { BuildArtifacts, DemoScenario, NarrationPlan, NarrationSegment, RecordingAdapter, RecordingResult } from "./types.js";
+import type { BuildArtifacts, DemoScenario, NarrationPlan, NarrationSegment, RecordingAdapter, RecordingResult, TimelineEvent } from "./types.js";
 import { scenarioWorkDir } from "./workdir.js";
+import { assertNoSpokenDisclosure, resolveVoiceDisclosureMode } from "./policy.js";
+import { resolveRecordedFocusRegions, type RecordedFocusRegion } from "./recorded-focus.js";
 
 export { scenarioWorkDir } from "./workdir.js";
 
@@ -70,6 +72,7 @@ interface SpeechStageResult {
 
 export interface RenderStageResult {
   subtitlesPath: string;
+  visualDisclosurePath?: string;
   webVideoPath: string;
   outputVideoPath: string;
   webDurationMs?: number;
@@ -77,6 +80,7 @@ export interface RenderStageResult {
   platformClips: ComposedPlatformClip[];
   outputDurationMs?: number;
   actualOutputDurationMs?: number;
+  recordedFocusRegions?: RecordedFocusRegion[];
 }
 
 function fromOpenAiPlan(plan: OpenAiNarrationPlan): NarrationPlan {
@@ -97,6 +101,7 @@ function fromOpenAiPlan(plan: OpenAiNarrationPlan): NarrationPlan {
 }
 
 function scriptedPlan(scenario: DemoScenario, recording: RecordingResult): NarrationPlan {
+  const mode = resolveVoiceDisclosureMode(scenario.narration.disclosureMode, scenario.narration.visualDisclosure);
   const segments: NarrationSegment[] = scenario.chapters.map((chapter, index) => {
     const firstEvent = recording.timeline.find((event) => event.chapterId === chapter.id);
     if (!firstEvent || !chapter.scriptedNarration) {
@@ -106,12 +111,13 @@ function scriptedPlan(scenario: DemoScenario, recording: RecordingResult): Narra
       id: `scripted-${index + 1}-${chapter.id}`,
       chapterId: chapter.id,
       title: chapter.title,
-      text: `${index === 0 ? `${scenario.narration.disclosure} ` : ""}${chapter.scriptedNarration}`.trim(),
-      subtitle: `${index === 0 ? `${scenario.narration.disclosure} ` : ""}${chapter.scriptedNarration}`.trim(),
+      text: `${index === 0 && mode === "spoken-and-visual" ? `${scenario.narration.disclosure} ` : ""}${chapter.scriptedNarration}`.trim(),
+      subtitle: `${index === 0 && mode === "spoken-and-visual" ? `${scenario.narration.disclosure} ` : ""}${chapter.scriptedNarration}`.trim(),
       startAfterStepId: firstEvent.stepId,
       desiredStartMs: firstEvent.startedAtMs,
     };
   });
+  if (mode === "visual-only") assertNoSpokenDisclosure(segments.map((segment) => segment.text));
   return {
     title: scenario.title,
     overview: scenario.description ?? scenario.title,
@@ -269,6 +275,8 @@ export async function narrationStage(
         ...(options.narrationClient ? { client: options.narrationClient } : {}),
         model: options.scenario.narration.model,
         disclosure: options.scenario.narration.disclosure,
+        disclosureMode: options.scenario.narration.disclosureMode ?? "spoken-and-visual",
+        ...(options.scenario.narration.visualDisclosure ? { visualDisclosure: options.scenario.narration.visualDisclosure } : {}),
         maxImageEvidence: 8,
         maxSegments: options.scenario.narration.maxSegments,
         sensitiveValues: configuredEnvironmentSecrets(options.scenario, options.environment),
@@ -278,6 +286,27 @@ export async function narrationStage(
   await writeJson(narrationPath, narration);
   if (mayReuseNarration) await writeJson(narrationCachePath, narration);
   return { narration, narrationPath };
+}
+
+/**
+ * Browser video frames may lead wall-clock event anchors by several frames.
+ * A chapter's final, screenshot-backed reading wait gives a recorded interval
+ * in which to insert a pause safely before the following navigation. Splitting
+ * inside that wait preserves all original frames and their order; it does not
+ * replace footage with a screenshot or assume the next page is still hidden.
+ */
+export function recordedNarrationHoldAtMs(
+  segment: Pick<NarrationSegment, "chapterId" | "desiredStartMs">,
+  nextAnchorMs: number,
+  timeline: readonly TimelineEvent[],
+): number | undefined {
+  const events = timeline.filter(event => event.startedAtMs >= segment.desiredStartMs
+    && event.startedAtMs < nextAnchorMs);
+  const last = events.at(-1);
+  if (!last || last.chapterId !== segment.chapterId || last.action !== "wait" || !last.screenshot
+    || !Number.isSafeInteger(last.startedAtMs) || !Number.isSafeInteger(last.endedAtMs)
+    || last.endedAtMs > nextAnchorMs || last.endedAtMs - last.startedAtMs < 1_000) return undefined;
+  return Math.floor((last.startedAtMs + last.endedAtMs) / 2);
 }
 
 export async function speechStage(
@@ -301,6 +330,8 @@ export async function speechStage(
       voice: options.scenario.narration.voice,
       instructions: options.scenario.narration.instructions,
       disclosure: options.scenario.narration.disclosure,
+      disclosureMode: options.scenario.narration.disclosureMode ?? "spoken-and-visual",
+      ...(options.scenario.narration.visualDisclosure ? { visualDisclosure: options.scenario.narration.visualDisclosure } : {}),
       refreshCache: (options.refreshAi ?? false) || (options.force ?? false),
     },
   );
@@ -318,14 +349,18 @@ export async function speechStage(
   const sourceVideoDurationMs = await probeMediaDurationMs(recording.videoPath, {
     ffprobe: options.scenario.binaries.ffprobe,
   });
-  const pacing = createNarrationPacingPlan(probed.map((entry) => {
+  const pacing = createNarrationPacingPlan(probed.map((entry, index) => {
     const segment = narration.segments.find((candidate) => candidate.id === entry.id);
     if (!segment) throw new Error(`Missing narration anchor for ${entry.id}`);
+    const nextSegment = narration.segments.find(candidate => candidate.id === probed[index + 1]?.id);
+    const holdAtMs = recordedNarrationHoldAtMs(segment,
+      nextSegment?.desiredStartMs ?? sourceVideoDurationMs, recording.timeline);
     return {
       id: entry.id,
       filePath: entry.filePath,
       anchorMs: segment.desiredStartMs,
       durationMs: entry.durationMs,
+      ...(holdAtMs !== undefined ? { holdAtMs } : {}),
     };
   }), {
     sourceVideoDurationMs,
@@ -401,6 +436,15 @@ export async function renderStage(
   scheduled: ScheduledNarrationAudio[],
   videoHolds: VideoHoldPoint[],
 ): Promise<RenderStageResult> {
+  const disclosureMode = resolveVoiceDisclosureMode(options.scenario.narration.disclosureMode, options.scenario.narration.visualDisclosure);
+  // Separate from spoken captions: the notice remains visible even with CC disabled.
+  const visualDisclosurePath = disclosureMode === "visual-only"
+    ? join(recorded.workDir, "visual-disclosure.txt") : undefined;
+  if (visualDisclosurePath) {
+    assertNoSpokenDisclosure(narration.segments.flatMap((segment) => [segment.text, segment.subtitle ?? segment.text]));
+    await writePrivateFile(visualDisclosurePath, options.scenario.narration.visualDisclosure!);
+    await ensurePrivateFile(visualDisclosurePath);
+  }
   const subtitlesPath = join(recorded.workDir, "subtitles.srt");
   const cues = createSubtitleCues(narration.segments.map((segment) => {
     if (segment.startMs === undefined || segment.endMs === undefined) {
@@ -429,11 +473,13 @@ export async function renderStage(
         viewportHeight: options.scenario.browser.viewport.height,
       }]
     : []);
+  const recordedFocusRegions = resolveRecordedFocusRegions(options.scenario, recorded.recording, videoHolds);
   await renderVideo({
     inputVideoPath: recorded.recording.videoPath,
     outputVideoPath: webVideoPath,
     audioSegments: scheduled,
     videoHolds,
+    recordedFocusRegions,
     clickFocusPoints,
     autoZoom: {
       enabled: options.scenario.render.autoZoom.enabled,
@@ -447,6 +493,9 @@ export async function renderStage(
           marginBottom: options.scenario.render.subtitleBottomMargin,
         } }
       : {}),
+    ...(visualDisclosurePath ? { visualDisclosure: {
+      textFilePath: visualDisclosurePath,
+    } } : {}),
     width: options.scenario.render.width,
     height: options.scenario.render.height,
     fps: options.scenario.render.fps,
@@ -457,7 +506,9 @@ export async function renderStage(
   });
   await ensurePrivateFile(webVideoPath);
   if (options.scenario.platformClips.length === 0) {
-    return { subtitlesPath, webVideoPath, outputVideoPath, platformClips: [] };
+    return { subtitlesPath, ...(visualDisclosurePath ? { visualDisclosurePath } : {}),
+      ...(recordedFocusRegions.length > 0 ? { recordedFocusRegions } : {}),
+      webVideoPath, outputVideoPath, platformClips: [] };
   }
   const composed = await composeScenarioPlatformClips({
     scenario: options.scenario,
@@ -469,6 +520,7 @@ export async function renderStage(
   await ensurePrivateFile(outputVideoPath);
   return {
     subtitlesPath,
+    ...(visualDisclosurePath ? { visualDisclosurePath } : {}),
     webVideoPath,
     outputVideoPath,
     webDurationMs: composed.webDurationMs,
@@ -476,6 +528,7 @@ export async function renderStage(
     platformClips: composed.platformClips,
     outputDurationMs: composed.outputDurationMs,
     actualOutputDurationMs: composed.actualOutputDurationMs,
+    ...(recordedFocusRegions.length > 0 ? { recordedFocusRegions } : {}),
   };
 }
 
@@ -556,6 +609,7 @@ export async function buildPipeline(options: PipelineOptions): Promise<BuildArti
       tts: buildOptions.scenario.narration.ttsModel,
       voice: buildOptions.scenario.narration.voice,
     },
+    ...(rendered.recordedFocusRegions?.length ? { render: { recordedFocusRegions: rendered.recordedFocusRegions } } : {}),
     ...(rendered.platformClips.length > 0 ? {
       composition: {
         sequence: [
@@ -580,6 +634,7 @@ export async function buildPipeline(options: PipelineOptions): Promise<BuildArti
       webVideo: webVideoArtifact,
       sourceRecording: await artifact(recorded.recording.videoPath),
       subtitles: await artifact(rendered.subtitlesPath),
+      ...(rendered.visualDisclosurePath ? { visualDisclosure: await artifact(rendered.visualDisclosurePath) } : {}),
       timeline: await artifact(recorded.recording.timelinePath),
       analysis: await artifact(recorded.analysisPath),
       narration: await artifact(narrated.narrationPath),

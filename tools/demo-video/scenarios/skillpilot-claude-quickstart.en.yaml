@@ -1,0 +1,176 @@
+schemaVersion: 1
+id: skillpilot-claude-quickstart-2026-09-13-en
+title: SkillPilot – Start learning with Claude in five steps
+description: English SkillPilot Quickstart with current first-party screen recordings, an English MIT OpenCourseWare Foundations example and labelled instruction cards. Optional private host clips replace four installation chapters with reviewed actual Claude web recordings; these demonstrate setup rather than full learning-flow or native-app acceptance.
+sourceRevision: 6cc5c49c18e462937d8c528dfa27929df9bb2327
+platform: web
+outputDir: ../output
+cacheDir: ../.cache
+browser:
+  baseUrl: https://skillpilot.com
+  headless: true
+  viewport: { width: 1280, height: 720 }
+  video: { width: 1280, height: 720 }
+  locale: en-GB
+  timezoneId: Europe/Berlin
+  colorScheme: light
+  reducedMotion: reduce
+  defaultTimeoutMs: 15000
+  postActionDelayMs: 800
+privacy:
+  maskSelectors:
+    - '#skillpilotIdInput'
+    - '#skillpilotIdFilePassword'
+    - '#skillpilotIdFilePasswordConfirmation'
+    - 'input[type="password"]'
+    - '[data-testid="learner-id"]'
+  maskTextSelectors: ['code', 'span', 'p']
+  maskLabel: PRIVATE
+  maskColor: '#102239'
+  forbiddenPatterns:
+    - '[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}'
+    - 'sp[sc]_[A-Za-z0-9_-]+'
+  evidenceSelectors: ['h1', 'h2', 'h3']
+  failOnForbiddenText: true
+narration:
+  mode: scripted
+  ttsModel: gemini-2.5-flash-preview-tts
+  voice: Sulafat
+  instructions: Speak in natural English with a warm, calm voice, like a friendly person sitting beside the listener and explaining each step. Keep an unhurried, even pace and connect words into flowing sentences. Use short natural pauses between sentences, with no choppy emphasis and no advertising voice. Pronounce SkillPilot as Skill Pilot and Claude as clawd. Read only the supplied narration, never the directions.
+  disclosure: The narration in this video is AI-generated and is not a human voice.
+  disclosureMode: visual-only
+  visualDisclosure: AI-generated voice
+  segmentGapMs: 500
+render:
+  width: 1920
+  height: 1080
+  fps: 30
+  crf: 23
+  preset: fast
+  burnSubtitles: false
+  autoZoom: { enabled: false }
+chapters:
+  - id: intro
+    title: Your learning. Your pace.
+    scriptedNarration: Welcome to SkillPilot. Your learning, your pace. First, you need a Claude account with an active Pro subscription. The learning beta is for adults aged eighteen and over. We will set up the marketplace together, then prepare your first learning session.
+    steps:
+      - { id: intro-card, action: goto, label: Quickstart title card, url: 'quickstart-card:intro' }
+      - { id: intro-read, action: wait, label: Read the overview, durationMs: 6000, capture: true }
+  - id: marketplace
+    title: Add the Claude marketplace
+    scriptedNarration: In Claude, open your account menu, then Settings and Plugins. Open Add and choose Add marketplace. Next, select Add from a repository.
+    steps:
+      - { id: marketplace-card, action: goto, label: Explain the Claude marketplace menus, url: 'quickstart-card:marketplace' }
+      - { id: marketplace-read, action: wait, label: Review marketplace setup, durationMs: 6000, capture: true }
+  - id: repository
+    title: Enable automatic updates
+    scriptedNarration: Enter the repository address shown on screen. You can also copy it from the guide below this video. Keep automatic synchronisation switched on and select Sync. This lets Claude receive updates from the SkillPilot marketplace.
+    steps:
+      - { id: repository-card, action: goto, label: Show the repository and automatic synchronisation, url: 'quickstart-card:repository' }
+      - { id: repository-read, action: wait, label: Explain repository setup, durationMs: 6000, capture: true }
+  - id: plugin-install
+    title: Install SkillPilot from the marketplace
+    scriptedNarration: The marketplace now shows SkillPilot Coach version one. Open the plugin and select Add. Check that it is enabled.
+    steps:
+      - { id: install-card, action: goto, label: Labelled Claude installation guide, url: 'quickstart-card:install' }
+      - { id: install-read, action: wait, label: Explain plugin installation, durationMs: 6000, capture: true }
+  - id: plugin-connect
+    title: Connect SkillPilot
+    scriptedNarration: Open the plugin's Connectors tab and select SkillPilot. Choose Connect. Once its status says Connected, Claude is ready.
+    steps:
+      - { id: connect-card, action: goto, label: Labelled connector setup guide, url: 'quickstart-card:connect' }
+      - { id: connect-read, action: wait, label: Explain the connection status, durationMs: 6000, capture: true }
+  - id: website
+    title: Learn now
+    scriptedNarration: Now open SkillPilot dot com and choose Learn now. Read the notices and Terms of Use, and confirm them if you agree. The website then guides you through setup.
+    steps:
+      - { id: home, action: goto, label: Open the current SkillPilot homepage, url: '/', waitUntil: networkidle }
+      - { id: english, action: click, label: Select the English interface, target: { role: button, name: EN, exact: true } }
+      - { id: home-read, action: wait, label: Review the homepage, durationMs: 4500, capture: true }
+      - { id: learn, action: click, label: Open Learn now, target: { role: button, name: Learn now, exact: true } }
+      - { id: terms-read, action: wait, label: Read the notices and terms, durationMs: 6000, capture: true }
+      - { id: terms-check, action: check, label: Accept the terms for the demo profile, target: { role: checkbox, name: 'I accept the Terms of Use', exact: false } }
+      - { id: terms-continue, action: click, label: Continue with setup, target: { role: button, name: 'Accept & Continue', exact: true } }
+  - id: identity
+    title: Your SkillPilot ID
+    scriptedNarration: Create your SkillPilot ID. It is your personal key to your learning progress. We keep it covered in this video. If you already have an ID, use it again to continue with your existing progress.
+    steps:
+      - { id: new-id-focus, action: hover, label: Prepare a new demo ID, target: { role: button, name: Create a new SkillPilot ID, exact: true } }
+      - { id: new-id, action: click, label: Create a fresh demo profile, target: { role: button, name: Create a new SkillPilot ID, exact: true } }
+      - { id: identity-focus, action: hover, label: Show the masked permanent ID, target: { css: '#skillpilotIdInput' } }
+      - { id: identity-read, action: wait, label: Explain the ID and returning access, durationMs: 6000, capture: true }
+  - id: save
+    title: Save your ID securely
+    scriptedNarration: Save your ID as a protected file. Choose a strong password and download the file. Keep both the file and your password safe and private. They let you open your learning progress again later.
+    steps:
+      - { id: save-dialog, action: click, label: Create a protected ID file, target: { role: button, name: Save SkillPilot ID securely, exact: true } }
+      - { id: password, action: fill, label: Enter the masked demo password, target: { css: '#skillpilotIdFilePassword' }, valueFromEnv: QUICKSTART_DEMO_ID_PASSWORD, secret: true, capture: true }
+      - { id: password-confirm, action: fill, label: Confirm the masked demo password, target: { css: '#skillpilotIdFilePasswordConfirmation' }, valueFromEnv: QUICKSTART_DEMO_ID_PASSWORD, secret: true, capture: true }
+      - { id: save-explain, action: wait, label: Explain secure storage, durationMs: 6000, capture: true }
+      - { id: save-download, action: click, label: Download the encrypted file, target: { role: button, name: Download protected file, exact: true } }
+      - { id: save-check, action: assert, label: Confirm the download, target: { text: Protected ID file saved., exact: true } }
+      - { id: save-read, action: wait, label: Review the confirmation, durationMs: 3000, capture: true }
+  - id: curriculum
+    title: Choose your curriculum
+    # A camera close-up of the actual selection panel; every recorded click is retained.
+    # Keep unrelated default school configuration outside this shot until MIT is selected.
+    recordedFocus:
+      fromStepId: curriculum-open
+      toStepId: curriculum-read
+      x: 296
+      y: 258
+      width: 688
+      height: 302
+      leadMs: 300
+    scriptedNarration: Choose your curriculum, the framework for your learning. Open University and Higher Education, then show all available curricula. For this English example, choose MIT OpenCourseWare Foundations. Pick the curriculum that fits your own learning plans.
+    steps:
+      - { id: curriculum-open, action: click, label: Open curriculum selection, target: { role: button, name: 'Continue to step 2: Choose curriculum', exact: true } }
+      - { id: university, action: click, label: Show university curricula, target: { role: button, name: 'University & Higher Ed', exact: true } }
+      - { id: all-curricula, action: click, label: Show all quality levels, target: { role: button, name: All, exact: true } }
+      - { id: mit-curriculum, action: select, label: Choose MIT OpenCourseWare Foundations, target: { css: '#sessionCurriculumSelect' }, value: '25df82ae-f6ab-518b-98f2-dc72bcdf2fcf' }
+      - { id: curriculum-focus, action: hover, label: Review the curriculum selector, target: { css: '#sessionCurriculumSelect' } }
+      - { id: curriculum-read, action: wait, label: Explain the base curriculum, durationMs: 6000, capture: true }
+  - id: personal-curriculum
+    title: Review your learning framework
+    scriptedNarration: Check your selected curriculum. This example brings together mathematics and programming courses. Your learning framework is now ready. Later, you can set your current focus, such as a particular topic, in the cockpit.
+    steps:
+      - { id: summary-ready, action: assert, label: Confirm the learning-start section is ready, target: { testId: claude-plugin-start } }
+      - { id: summary-focus, action: hover, label: Show the completed learning-framework summary, target: { text: Your personal curriculum is configured., exact: true } }
+      - { id: summary-read, action: wait, label: Review the personal learning framework, durationMs: 6000, capture: true }
+  - id: launch
+    title: Start your learning session
+    scriptedNarration: Choose Start with Claude. A new Claude chat opens with a prepared message. Review it and send it as it is. Approve the first tool request if prompted. Your coach can then load your learning context and get started with you.
+    steps:
+      - { id: start-focus, action: hover, label: Show the start button, target: { testId: claude-plugin-start } }
+      - { id: start-button-read, action: wait, label: Explain the start button, durationMs: 6000, capture: true }
+      - { id: start-read, action: wait, label: Explain the prepared message, durationMs: 6000, capture: true }
+  - id: cockpit
+    title: Explore your cockpit
+    scriptedNarration: Your cockpit shows your current learning goal and saved progress. This fresh demo profile is just getting started. As you learn, you can see what you have achieved and choose your next focus here.
+    steps:
+      - { id: cockpit-open, action: click, label: Open the demo profile's cockpit, target: { role: link, name: Open Cockpit, exact: true }, samePage: true }
+      - { id: cockpit-read, action: wait, label: Review the fresh cockpit, durationMs: 6000, capture: true }
+  - id: feedback
+    title: Ask questions
+    scriptedNarration: If an explanation feels unclear, ask your coach for smaller steps or another example. Explain your own approach and ask for a check. A hint can help you find the answer yourself. Tell your coach what helps you learn.
+    steps:
+      - { id: feedback-card, action: goto, label: Labelled guidance for questions and independent thinking, url: 'quickstart-card:feedback' }
+      - { id: feedback-read, action: wait, label: Explain questions and independent thinking, durationMs: 6000, capture: true }
+  - id: session
+    title: Keep your session private
+    scriptedNarration: Your start message contains a private learning session valid for twenty-four hours. Keep this message confidential. After that, start a new session from SkillPilot. Your saved progress stays accessible with the same SkillPilot ID.
+    steps:
+      - { id: start-card, action: goto, label: Labelled start-message guidance, url: 'quickstart-card:start' }
+      - { id: session-read, action: wait, label: Explain session duration and privacy, durationMs: 6000, capture: true }
+  - id: mobile
+    title: The app, photos and voice mode
+    scriptedNarration: In the Claude app, continue learning in the same chat, upload photos or use the camera. This is especially handy on your phone. Voice mode works too. If the voice pauses, wait a moment. Claude will usually carry on by itself.
+    steps:
+      - { id: mobile-card, action: goto, label: Labelled app and voice guidance, url: 'quickstart-card:mobile' }
+      - { id: mobile-read, action: wait, label: Explain photos and voice, durationMs: 6000, capture: true }
+  - id: finish
+    title: Celebrate every success
+    scriptedNarration: Claude processes your chat, photos and voice. SkillPilot stores your learning progress. You can read all the steps below this video. Now it is your turn. Discover what you can do, and celebrate every success.
+    steps:
+      - { id: finish-card, action: goto, label: Finish and next steps, url: 'quickstart-card:finish' }
+      - { id: finish-read, action: wait, label: Review the closing card, durationMs: 6000, capture: true }

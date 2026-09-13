@@ -11,13 +11,68 @@ import {
   buildPipeline,
   narrationStage,
   recordStage,
+  recordedNarrationHoldAtMs,
   renderStage,
   speechStage,
   type RecordStageResult,
 } from "../src/pipeline.js";
 import type { TtsOpenAIClient } from "../src/tts.js";
-import type { NarrationPlan, RecordingAdapter, RecordingContext } from "../src/types.js";
+import type { NarrationPlan, RecordingAdapter, RecordingContext, TimelineEvent } from "../src/types.js";
 import { scenarioWorkDir } from "../src/workdir.js";
+import { AI_VOICE_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_DE } from "../src/policy.js";
+
+test("narration freezes inside its final captured reading wait, not at the next navigation", () => {
+  const wait: TimelineEvent = {
+    chapterId: "feedback", chapterTitle: "Ask questions", stepId: "feedback-read", action: "wait",
+    label: "Read", startedAtMs: 148_552, endedAtMs: 154_625,
+    screenshot: "screenshots/feedback.png", evidence: [], secretInput: false,
+  };
+  const segment = { chapterId: "feedback", desiredStartMs: 147_675 };
+  const next: TimelineEvent = { ...wait, chapterId: "session", action: "goto", stepId: "session-card",
+    startedAtMs: 154_625, endedAtMs: 155_446 };
+  const withoutScreenshot = { ...wait };
+  delete withoutScreenshot.screenshot;
+  assert.equal(recordedNarrationHoldAtMs(segment, 154_625, [wait, next]), 151_588);
+  assert.equal(recordedNarrationHoldAtMs(segment, 154_625, [withoutScreenshot, next]), undefined);
+  assert.equal(recordedNarrationHoldAtMs(segment, 154_625, [{ ...wait, startedAtMs: 154_100 }, next]), undefined);
+  assert.equal(recordedNarrationHoldAtMs(segment, 154_625, [wait,
+    { ...wait, action: "click", startedAtMs: 154_600, endedAtMs: 154_624 }, next]), undefined);
+  assert.equal(recordedNarrationHoldAtMs(segment, 154_625, [{ ...wait, endedAtMs: 155_000 }, next]), undefined);
+});
+
+test("scripted German narration prefixes the first spoken and subtitle segments without an AI request", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "demo-video-scripted-de-"));
+  const scenarioPath = resolve("scenarios/example.yaml");
+  const scenario = await loadScenario(scenarioPath);
+  scenario.outputDir = directory;
+  scenario.narration.disclosure = AI_VOICE_DISCLOSURE_DE;
+  scenario.chapters[0]!.scriptedNarration = "Willkommen bei SkillPilot.";
+  const recordingAdapter: RecordingAdapter = {
+    kind: "test-adapter",
+    record: async ({ workDir }) => ({
+      videoPath: join(workDir, "test.webm"),
+      timelinePath: join(workDir, "timeline.json"),
+      timeline: [{
+        chapterId: "complete-flow", chapterTitle: "Start", stepId: "open-fixture",
+        action: "goto", label: "Start", startedAtMs: 0, endedAtMs: 1,
+        evidence: [], secretInput: false,
+      }],
+      durationMs: 1, browserVersion: "test",
+    }),
+  };
+  const options = { scenario, scenarioPath, recordingAdapter };
+  const recorded = await recordStage(options);
+  const { narration } = await narrationStage(options, recorded);
+  assert.equal(narration.disclosure, AI_VOICE_DISCLOSURE_DE);
+  assert.equal(narration.segments[0]?.text, `${AI_VOICE_DISCLOSURE_DE} Willkommen bei SkillPilot.`);
+  assert.equal(narration.segments[0]?.subtitle, `${AI_VOICE_DISCLOSURE_DE} Willkommen bei SkillPilot.`);
+
+  scenario.narration.disclosureMode = "visual-only";
+  scenario.narration.visualDisclosure = AI_VOICE_VISUAL_DISCLOSURE_DE;
+  const visual = await narrationStage(options, recorded);
+  assert.equal(visual.narration.segments[0]?.text, "Willkommen bei SkillPilot.");
+  assert.equal(visual.narration.segments[0]?.subtitle, "Willkommen bei SkillPilot.");
+});
 
 test("SkillPilot review narration cannot mention unsupported surfaces", async () => {
   const scenario = await loadScenario(resolve("scenarios/skillpilot-openai-review.template.yaml"));
@@ -373,8 +428,37 @@ test("joins scripted narration, mocked OpenAI WAV speech, subtitles, and recorde
   assert.ok((await stat(rendered.outputVideoPath)).size > 0);
   assert.match(await readFile(rendered.subtitlesPath, "utf8"), /AI-generated and is not a human voice/i);
 
+  // The visual-only notice must exist in actual pixels with spoken CC disabled.
+  scenario.narration.disclosureMode = "visual-only";
+  scenario.narration.visualDisclosure = AI_VOICE_VISUAL_DISCLOSURE_DE;
+  scenario.render.burnSubtitles = false;
+  scenario.render.autoZoom.enabled = false;
+  const visualNarrated = await narrationStage(options, recorded);
+  const visualSpeech = await speechStage(options, visualNarrated.narration, recorded.recording);
+  const visualRendered = await renderStage(options, recorded, visualSpeech.narration, visualSpeech.scheduled, visualSpeech.videoHolds);
+  assert.ok(visualRendered.visualDisclosurePath);
+  assert.equal(await readFile(visualRendered.visualDisclosurePath, "utf8"),
+    AI_VOICE_VISUAL_DISCLOSURE_DE);
+  assert.doesNotMatch(await readFile(visualRendered.subtitlesPath, "utf8"), /AI-generated|KI-generierte Sprecherstimme/u);
+  const pixelStats = await runProcess("ffmpeg", [
+    "-hide_banner", "-ss", "0.5", "-i", visualRendered.outputVideoPath, "-frames:v", "1", "-an",
+    "-vf", "crop=320:90:320:0,signalstats,metadata=print", "-f", "null", "-",
+  ]);
+  const brightest = /lavfi\.signalstats\.YMAX=(\d+)/u.exec(pixelStats.stderr);
+  assert.ok(brightest && Number(brightest[1]) > 180, "opaque notice must produce visible light glyphs in the top-right video pixels");
+
+  scenario.narration.disclosureMode = "spoken-and-visual";
+  delete scenario.narration.visualDisclosure;
+  scenario.render.burnSubtitles = true;
+
   scenario.outputDir = join(directory, "manifest-output");
   scenario.cacheDir = join(directory, "manifest-cache");
+  scenario.browser.video = { width: 640, height: 360 };
+  scenario.chapters[0]!.recordedFocus = {
+    fromStepId: "open-fixture", toStepId: "open-fixture",
+    x: 160, y: 90, width: 320, height: 180, leadMs: 100,
+  };
+  const originalVideoHash = await sha256File(videoPath);
   const built = await buildPipeline({
     scenario,
     scenarioPath: examplePath,
@@ -395,6 +479,7 @@ test("joins scripted narration, mocked OpenAI WAV speech, subtitles, and recorde
   const manifest = JSON.parse(manifestText) as {
     sourceRevision: string;
     scenarioFile: string;
+    render: { recordedFocusRegions: unknown[] };
     artifacts: Record<string, unknown> & {
       video: { path: string; sha256: string };
       sourceRecording: { path: string; sha256: string };
@@ -404,6 +489,13 @@ test("joins scripted narration, mocked OpenAI WAV speech, subtitles, and recorde
   };
   assert.equal(manifest.sourceRevision, "local-fixture-v1");
   assert.equal(manifest.scenarioFile, "example.yaml");
+  assert.deepEqual(manifest.render.recordedFocusRegions, [{
+    chapterId: "complete-flow", fromStepId: "open-fixture", toStepId: "open-fixture",
+    sourceStartMs: 0, sourceEndMs: 400, startMs: 0, endMs: 400,
+    x: 160, y: 90, width: 320, height: 180, sourceWidth: 640, sourceHeight: 360,
+    leadMs: 100, fit: "contain", paddingColor: "white", speed: 1,
+  }]);
+  assert.equal(manifest.artifacts.sourceRecording.sha256, originalVideoHash);
   assert.match(manifest.artifacts.video.sha256, /^[0-9a-f]{64}$/u);
   assert.match(manifest.artifacts.sourceRecording.sha256, /^[0-9a-f]{64}$/u);
   assert.match(manifest.artifacts.analysis.sha256, /^[0-9a-f]{64}$/u);
@@ -413,6 +505,7 @@ test("joins scripted narration, mocked OpenAI WAV speech, subtitles, and recorde
   assert.doesNotMatch(manifestText, new RegExp(directory.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "u"));
 
   const iosClip = join(directory, "reviewed-ios.mov");
+  delete scenario.chapters[0]!.recordedFocus;
   const androidClip = join(directory, "reviewed-android.mp4");
   await runProcess("ffmpeg", [
     "-y", "-f", "lavfi", "-i", "color=c=0x604080:s=180x320:r=24:d=0.4",

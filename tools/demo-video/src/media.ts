@@ -30,6 +30,18 @@ export interface VideoHoldPoint {
   durationMs: number;
 }
 
+/** A camera crop applied only to this interval of the paced recorded video. */
+export interface VideoRecordedFocusRegion {
+  startMs: number;
+  endMs: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  sourceWidth: number;
+  sourceHeight: number;
+}
+
 export interface NarrationScheduleOptions extends MediaBinaryPaths {
   initialStartMs?: number;
   minimumGapMs?: number;
@@ -112,9 +124,12 @@ export interface RenderPlanOptions {
   outputDurationMs: number;
   audioSegments?: readonly ScheduledNarrationAudio[];
   videoHolds?: readonly VideoHoldPoint[];
+  recordedFocusRegions?: readonly VideoRecordedFocusRegion[];
   clickFocusPoints?: readonly ClickFocusPoint[];
   autoZoom?: AutoZoomOptions;
   subtitles?: SubtitleBurnInOptions;
+  /** Separate, always burned visual notice; independent of optional spoken captions. */
+  visualDisclosure?: { textFilePath: string };
   width?: number;
   height?: number;
   fps?: number;
@@ -230,6 +245,21 @@ export async function probeMediaStreamTypes(
     video: streams.filter((stream) => stream.codec_type === "video").length,
     audio: streams.filter((stream) => stream.codec_type === "audio").length,
   };
+}
+
+export async function probeVideoDimensions(
+  filePath: string,
+  options: MediaBinaryPaths = {},
+): Promise<{ width: number; height: number }> {
+  const result = await runProcess(options.ffprobe ?? "ffprobe", [
+    "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "json", filePath,
+  ]);
+  const parsed = JSON.parse(result.stdout) as { streams?: Array<{ width?: number; height?: number }> };
+  const video = parsed.streams?.[0];
+  if (!video?.width || !video.height) throw new Error("ffprobe did not report source-video dimensions");
+  requirePositiveInteger(video.width, "sourceVideo.width");
+  requirePositiveInteger(video.height, "sourceVideo.height");
+  return { width: video.width, height: video.height };
 }
 
 /**
@@ -616,6 +646,28 @@ function validateVideoHolds(
   return merged;
 }
 
+/** The exact source split positions used by the renderer, including its frame-lead guard. */
+export function renderedVideoHolds(
+  holds: readonly VideoHoldPoint[],
+  sourceVideoDurationMs: number,
+  fps: number,
+): VideoHoldPoint[] {
+  requirePositiveInteger(fps, "fps");
+  const frameMs = Math.ceil(1_000 / fps);
+  return validateVideoHolds(
+    holds.map((hold) => ({
+      ...hold,
+      // Browser screencast frames can lead wall-clock event anchors by a frame
+      // or two. Freeze before the transition, not its already-painted next state.
+      // Move the split itself: the remaining original frames still play after
+      // the hold, so no UI action or source interval is removed or reordered.
+      atMs: hold.atMs === sourceVideoDurationMs ? hold.atMs
+        : Math.min(sourceVideoDurationMs, Math.max(frameMs, hold.atMs - 100)),
+    })),
+    sourceVideoDurationMs,
+  );
+}
+
 function pacedVideoInput(
   holds: readonly VideoHoldPoint[],
   sourceVideoDurationMs: number,
@@ -624,14 +676,7 @@ function pacedVideoInput(
   if (holds.length === 0) {
     return { filters: [], input: "[0:v]", durationMs: sourceVideoDurationMs };
   }
-  const frameMs = 1_000 / fps;
-  const normalized = validateVideoHolds(
-    holds.map((hold) => ({
-      ...hold,
-      atMs: hold.atMs === 0 ? Math.min(sourceVideoDurationMs, frameMs) : hold.atMs,
-    })),
-    sourceVideoDurationMs,
-  );
+  const normalized = renderedVideoHolds(holds, sourceVideoDurationMs, fps);
   const sourceCount = normalized.length + (normalized.at(-1)!.atMs < sourceVideoDurationMs ? 1 : 0);
   const sourceLabels = sourceCount === 1
     ? ["[0:v]"]
@@ -667,6 +712,67 @@ function pacedVideoInput(
   };
 }
 
+export function validateRecordedFocusRegions(
+  regions: readonly VideoRecordedFocusRegion[],
+  durationMs: number,
+): void {
+  let previousEndMs = 0;
+  for (const [index, region] of regions.entries()) {
+    for (const field of ["startMs", "endMs", "x", "y"] as const) {
+      requireNonNegativeInteger(region[field], `recordedFocus.${field}`);
+    }
+    for (const field of ["width", "height", "sourceWidth", "sourceHeight"] as const) {
+      requirePositiveInteger(region[field], `recordedFocus.${field}`);
+    }
+    if (region.endMs <= region.startMs || region.endMs > durationMs) {
+      throw new RangeError("Recorded focus interval must stay inside the paced video");
+    }
+    if (region.startMs < previousEndMs) throw new RangeError("Recorded focus intervals must be ordered and must not overlap");
+    if (region.x + region.width > region.sourceWidth || region.y + region.height > region.sourceHeight) {
+      throw new RangeError("Recorded focus rectangle must stay inside the source video");
+    }
+    if (index > 0 && (region.sourceWidth !== regions[0]!.sourceWidth || region.sourceHeight !== regions[0]!.sourceHeight)) {
+      throw new RangeError("Recorded focus regions must use the same source-video dimensions");
+    }
+    previousEndMs = region.endMs;
+  }
+}
+
+function framedVideoInput(
+  input: string,
+  regions: readonly VideoRecordedFocusRegion[],
+  durationMs: number,
+  width: number,
+  height: number,
+  fps: number,
+): { filters: string[]; input: string } {
+  if (regions.length === 0) return { filters: [], input };
+  validateRecordedFocusRegions(regions, durationMs);
+  const parts: Array<{ startMs: number; endMs: number; region?: VideoRecordedFocusRegion }> = [];
+  let cursorMs = 0;
+  for (const region of regions) {
+    if (cursorMs < region.startMs) parts.push({ startMs: cursorMs, endMs: region.startMs });
+    parts.push({ startMs: region.startMs, endMs: region.endMs, region });
+    cursorMs = region.endMs;
+  }
+  if (cursorMs < durationMs) parts.push({ startMs: cursorMs, endMs: durationMs });
+  // Normalize the frame clock once before partitioning. The disjoint trims
+  // retain every normalized frame in its original order at 1x; only its camera
+  // rectangle changes. A boundary falls on the next available video frame.
+  const labels = parts.map((_, index) => `[focussrc${index}]`);
+  const filters = [`${input}fps=${fps}:eof_action=pass,split=${parts.length}${labels.join("")}`];
+  for (const [index, part] of parts.entries()) {
+    const crop = part.region
+      ? `crop=w=${part.region.width}:h=${part.region.height}:x=${part.region.x}:y=${part.region.y}:exact=1,`
+      : "";
+    filters.push(`${labels[index]}trim=start=${seconds(part.startMs)}:end=${seconds(part.endMs)},` +
+      `setpts=PTS-STARTPTS,${crop}scale=w=${width}:h=${height}:force_original_aspect_ratio=decrease,` +
+      `pad=${width}:${height}:(ow-iw)/2:(oh-ih)/2:color=${part.region ? "white" : "black"},setsar=1[focuspart${index}]`);
+  }
+  filters.push(`${parts.map((_, index) => `[focuspart${index}]`).join("")}concat=n=${parts.length}:v=1:a=0[vfocused]`);
+  return { filters, input: "[vfocused]" };
+}
+
 export function buildFfmpegRenderPlan(options: RenderPlanOptions): FfmpegRenderPlan {
   const width = options.width ?? DEFAULT_WIDTH;
   const height = options.height ?? DEFAULT_HEIGHT;
@@ -678,6 +784,10 @@ export function buildFfmpegRenderPlan(options: RenderPlanOptions): FfmpegRenderP
   requirePositiveInteger(options.outputDurationMs, "outputDurationMs");
   const holds = validateVideoHolds(options.videoHolds ?? [], options.sourceVideoDurationMs);
   const pacedVideo = pacedVideoInput(holds, options.sourceVideoDurationMs, fps);
+  if ((options.recordedFocusRegions?.length ?? 0) > 0 && options.autoZoom?.enabled) {
+    throw new Error("Recorded focus and automatic click zoom cannot be combined");
+  }
+  const focusedVideo = framedVideoInput(pacedVideo.input, options.recordedFocusRegions ?? [], pacedVideo.durationMs, width, height, fps);
   if (options.outputDurationMs < pacedVideo.durationMs) {
     throw new RangeError("outputDurationMs must not truncate the paced source video");
   }
@@ -691,10 +801,10 @@ export function buildFfmpegRenderPlan(options: RenderPlanOptions): FfmpegRenderP
   args.push("-i", options.inputVideoPath);
   audio.forEach((segment) => args.push("-i", segment.filePath));
 
-  const filters: string[] = [...pacedVideo.filters];
+  const filters: string[] = [...pacedVideo.filters, ...focusedVideo.filters];
   const padDurationMs = options.outputDurationMs - pacedVideo.durationMs;
   const videoFilters = [
-    `fps=${fps}`,
+    ...(options.recordedFocusRegions?.length ? [] : [`fps=${fps}`]),
     `scale=w=${width}:h=${height}:force_original_aspect_ratio=decrease`,
     `pad=${width}:${height}:(ow-iw)/2:(oh-ih)/2:color=black`,
     "setsar=1",
@@ -709,7 +819,13 @@ export function buildFfmpegRenderPlan(options: RenderPlanOptions): FfmpegRenderP
   );
   if (autoZoom) videoFilters.push(autoZoom);
   if (options.subtitles) videoFilters.push(subtitleFilter(options.subtitles));
-  filters.push(`${pacedVideo.input}${videoFilters.join(",")}[vout]`);
+  if (options.visualDisclosure) {
+    // Explicit pixel placement avoids SSA/ASS Alignment differences between libass versions.
+    const fontSize = Math.max(14, Math.round(height / 30));
+    const margin = Math.max(12, Math.round(height / 32));
+    videoFilters.push(`drawtext=textfile='${escapeFfmpegFilterPath(options.visualDisclosure.textFilePath)}':expansion=none:fontcolor=white:fontsize=${fontSize}:x=w-tw-${margin}:y=${margin}:box=1:boxcolor=black@0.75:boxborderw=7:enable='lt(t,8)'`);
+  }
+  filters.push(`${focusedVideo.input}${videoFilters.join(",")}[vout]`);
 
   filters.push(
     `anullsrc=channel_layout=stereo:sample_rate=48000,atrim=duration=${seconds(options.outputDurationMs)},asetpts=PTS-STARTPTS[silence]`,
@@ -764,6 +880,12 @@ export async function renderVideo(
 ): Promise<RenderVideoResult> {
   const ffmpeg = options.ffmpeg ?? "ffmpeg";
   const sourceVideoDurationMs = await probeMediaDurationMs(options.inputVideoPath, options);
+  if ((options.recordedFocusRegions?.length ?? 0) > 0) {
+    const actual = await probeVideoDimensions(options.inputVideoPath, options);
+    if (options.recordedFocusRegions!.some((region) => region.sourceWidth !== actual.width || region.sourceHeight !== actual.height)) {
+      throw new Error("Recorded focus dimensions do not match the actual source video");
+    }
+  }
   const audio = validateScheduledAudio(options.audioSegments ?? []);
   const holds = validateVideoHolds(options.videoHolds ?? [], sourceVideoDurationMs);
   const pacedVideoDurationMs = sourceVideoDurationMs + holds.reduce(

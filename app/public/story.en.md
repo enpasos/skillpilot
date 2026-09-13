@@ -1,103 +1,72 @@
-# SkillPilot: Start in 5 Steps
+# SkillPilot: Start with Claude in 5 Steps
 
-**Status:** August 15, 2026
+**Updated:** September 13, 2026
 
-> **Publication status:** SkillPilot Coach v1, as described here, is currently undergoing publication review.
+Your learning. Your pace. Choose your curriculum, get support while practising, and discover your achievements in the Cockpit.
 
-SkillPilot connects the learning context you configure on [skillpilot.com](https://skillpilot.com) with your learning coach in ChatGPT. You use **ChatGPT in a browser**.
+The ongoing learning beta uses **Claude Pro** and is for **adults aged 18 or older**. Install the plugin once in **Claude Web**; afterwards, you can also learn in the **Claude app** using the same account. ChatGPT is not available yet.
 
-For students, the browser-based web app on a smartphone is particularly useful: you can enter answers as text by voice, work on paper, and then upload a photo of your solution. The native ChatGPT app is currently not part of the supported SkillPilot workflow.
+This quickstart explains the basics in about five minutes. Take as much time as you need for the initial setup.
 
-> Use normal text chat. You may use dictation or voice input in the text field. Do not start continuous ChatGPT voice mode during a SkillPilot learning session.
+## 1. Set up Claude once
 
-## What You Need
+You need a **Claude Pro account first**. Sign in to **Claude Web** with that account. If the current SkillPilot plugin is already installed from the marketplace and connected, go straight to step 2.
 
-- a browser on a computer, tablet, or smartphone
-- a ChatGPT account whose plan or workspace provides access to apps
-- no SkillPilot registration with a name or email address
+1. Open **Settings → Plugins → Add → Add marketplace → Add from a repository**.
+2. Enter `enpasos/skillpilot-claude-marketplace`. This is the [public SkillPilot marketplace](https://github.com/enpasos/skillpilot-claude-marketplace). Keep **Sync automatically** switched on and select **Sync**.
+3. Find **SkillPilot Coach v1** from that marketplace and add the plugin. Under **Your plugins**, it should be installed exactly once and enabled. Compare the version with the [current SkillPilot installation guide](https://skillpilot.com/plugins).
+4. Inside the plugin, open **Connectors → skillpilot** and select **Connect**. Follow any prompts shown, then check that the status says **Connected**.
 
-## Start in 5 Steps
+The marketplace connection is also your route for future updates. Automatic updates have been observed during the beta; timing can vary. For an existing installation, follow the **Update** section of the current guide. Once the plugin and connector are ready, open SkillPilot for the following steps.
 
-### 1. Open SkillPilot
+## 2. Open SkillPilot and protect your SkillPilot ID
 
-Open [skillpilot.com](https://skillpilot.com) and select **Start Learning**.
+Open [skillpilot.com](https://skillpilot.com) and select **Learn now**. Read the notices and terms before accepting them.
 
-![Current SkillPilot landing page with the Start Learning option](quickstart-01-start.webp)
+Select **Create a new SkillPilot ID**. Your permanent ID is the key to your learning record: select **Save SkillPilot ID securely** and keep the encrypted file and its password safe. To access your record later, you need your ID or this file and its password.
 
-### 2. Set Your SkillPilot ID
+Already have an ID? Enter it in SkillPilot or select **Choose protected file**. Keep your permanent ID and its password private.
 
-Create a new SkillPilot ID, load your protected ID file, or enter an existing SkillPilot ID. If you create a new ID, save it as a protected file as soon as possible.
+## 3. Choose your curriculum
 
-![Options to create, load, or enter a SkillPilot ID](quickstart-02-id.webp)
+Select **Continue to step 2: Choose curriculum** and decide what you want to learn. Then configure your personal curriculum, such as school type, learning stage and subjects, along with the further choices offered for your selection.
 
-### 3. Configure Your Personal Curriculum
+The English video uses **University & Higher Ed → All → MIT OpenCourseWare Foundations** as an example. Choose the curriculum that fits your own learning plans.
 
-Configure your personal curriculum and current learning context. This includes items such as school type, learning stage, subject, and course profile.
+These choices define your lasting learning framework. You can change your current focus in the Cockpit later. Review the summary before continuing.
 
-![Selection of the personal curriculum and learning context](quickstart-03-curriculum.webp)
+## 4. Start your learning session
 
-### 4. Open SkillPilot Coach v1
+In the **Let’s go** section, select **Step 2: Start with Claude**.
 
-Select **Open SkillPilot app**. SkillPilot opens a new ChatGPT browser chat with a prepared message. On the first app call, ChatGPT may ask you once to connect **SkillPilot Coach v1**.
+SkillPilot opens a new Claude chat with a prepared start message. Review it and send it unchanged. If Claude still requests sign-in or authorization on first access, complete that step.
 
-![Completed configuration with the Open SkillPilot app button](quickstart-04-launch.webp)
+The prepared start message contains a **learning session valid for 24 hours**. Keep this message and your learning chat private.
 
-The prepared message already contains the new learning session, which is valid for 24 hours. You do not need to add anything.
+## 5. Learn and see your achievements in the Cockpit
 
-![Message prepared by SkillPilot in a new ChatGPT browser chat](quickstart-05-prepared-message.webp)
+The coach loads your learning context and guides you through the current goal. Do the work yourself, ask questions, and request smaller steps or a hint when needed. AI can make mistakes: check explanations and assessments, and explain your reasoning when you disagree.
 
-### 5. Send the Prepared Message
+Select **Open Cockpit** to see your current learning record and active goal. After completing a goal, check your **saved progress** there.
 
-Send the prepared message unchanged. The coach loads your learning state and guides you through the current learning goal.
+For the goal displayed automatically, choose **Give feedback on this learning goal** to report a problem, including coach behaviour. Describe the issue briefly in your own words, focusing on the learning goal and what you observed. Keep personal details and your start message private.
 
-![SkillPilot Coach v1 guiding the learner through a specific learning goal](quickstart-06-coach.webp)
+## Learn with your phone, photos and voice mode
 
-![Illustration: The learning coach aligns the chat with the SkillPilot learning state](comic03.en.png)
+- Open the same chat in the app using the same Claude account. You can continue there within the session's 24-hour validity.
+- Upload a photo of your calculation or sketch, or use the camera directly in the Claude app. This works especially conveniently on a phone. Cover personal details first.
+- **Voice mode works in the ongoing beta.** If speech pauses, wait briefly; in our experience so far, Claude then continues. You can also continue in text chat when needed.
 
-You do not need to copy, edit, or manually enter a session ID in ChatGPT.
+Claude processes your chat, photos and voice inputs. Through the coach interface, SkillPilot receives only the intended structured learning-state data.
 
-## Learning on a Smartphone
+## If something goes wrong
 
-Open ChatGPT in your smartphone browser, or save the browser page as a home-screen web app. You can then:
+**Trouble opening Claude?** Allow pop-ups for SkillPilot and try starting again.
 
-- dictate into the normal text field, review the recognized text, and send it,
-- work through calculations, sketches, and longer solutions on paper,
-- photograph your work and upload it in the same chat.
+**Session expired?** Start a new learning session from SkillPilot and send the prepared message in the new chat. Your saved achievements remain accessible with the same SkillPilot ID.
 
-Depending on the learning goal, the coach may also open an appropriate interactive learning view, such as due flashcards.
+**Saving failed?** Ask the coach to check the current state and save the completion again if needed. Then check the Cockpit; if the session has expired, start a new one first.
 
-![Interactive SkillPilot Coach v1 flashcard view in ChatGPT](quickstart-08-cards.webp)
+Find more answers in the [FAQs](https://skillpilot.com/faq) and [Claude setup guide](https://skillpilot.com/plugins).
 
-## SkillPilot ID and Learning Session
-
-Your permanent SkillPilot ID is the key to your learning progress. It stays with SkillPilot and is not copied into the chat.
-
-Every time you select **Start Learning**, SkillPilot creates a new random learning session. It is valid for exactly 24 hours and is inserted into the prepared message automatically.
-
-## Progress in the Cockpit
-
-![Current SkillPilot Cockpit with learning tree, active goal, and goal visualization](quickstart-07-cockpit.webp)
-
-![Illustration: Viewing learning achievements in the SkillPilot Cockpit](comic05.en.png)
-
-*The Cockpit and learning coach use the same learning state. The Cockpit shows your progress and useful next goals.*
-
-## If Something Does Not Work
-
-### What should I do when the learning session expires?
-
-A learning session is valid for exactly 24 hours and is not extended by use. Once less than one hour remains, the coach will not begin another learning action.
-
-Return to [skillpilot.com](https://skillpilot.com), load your protected ID file or enter your SkillPilot ID there, review your learning context, and select **Start Learning** again. Send the new prepared message in the newly opened chat. Never enter your permanent SkillPilot ID directly in chat.
-
-### What should I do if I accidentally started voice mode?
-
-End voice mode and use SkillPilot to start a new chat with a new learning session. Do not simply continue in the previous chat.
-
-### What should I do if the ChatGPT window does not open?
-
-Allow pop-ups for skillpilot.com and select **Open SkillPilot app** again.
-
-### What should I do if I lost my SkillPilot ID?
-
-Load your previously saved protected ID file. Without the SkillPilot ID or that file, your previous learning state cannot be reopened.
+Discover what you can do — and celebrate every success.

@@ -23,8 +23,8 @@ export const getMarkdownDocumentViewCopy = (
         de: 'Whitepaper',
       }
     : {
-        en: 'story',
-        de: 'Story',
+        en: 'quickstart guide',
+        de: 'Quickstart-Anleitung',
       }
 
   const video = kind === 'whitepaper'
@@ -43,13 +43,13 @@ export const getMarkdownDocumentViewCopy = (
     : {
         en: {
           eyebrow: 'Quickstart video',
-          title: 'Start SkillPilot in 5 steps',
-          description: 'The video shows the current browser workflow. The narration was generated with AI.',
+          title: 'Start with Claude in 5 steps',
+          description: 'Set up SkillPilot and install the Claude marketplace step by step with real screen recordings. English AI-generated narration and English captions.',
         },
         de: {
           eyebrow: 'Quickstart-Video',
-          title: 'SkillPilot in 5 Schritten starten',
-          description: 'Das Video zeigt den aktuellen Browser-Ablauf. Die Tonspur wurde mit KI erzeugt.',
+          title: 'In 5 Schritten mit Claude starten',
+          description: 'SkillPilot einrichten und den Claude-Marketplace Schritt für Schritt installieren – mit echten Bildschirmaufnahmen. KI-generierte Sprecherstimme · deutsche Untertitel.',
         },
       }
 
@@ -58,7 +58,7 @@ export const getMarkdownDocumentViewCopy = (
         back: 'Back to App',
         switchLabel: 'Deutsch',
         loading: `Loading ${subject.en}...`,
-        error: `${subject.de} could not be loaded.`,
+        error: `${subject.en} could not be loaded.`,
         videoEyebrow: video.en.eyebrow,
         videoTitle: video.en.title,
         videoDescription: video.en.description,

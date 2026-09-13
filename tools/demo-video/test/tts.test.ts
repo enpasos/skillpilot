@@ -7,6 +7,7 @@ import { test } from "node:test";
 import {
   DEFAULT_AI_VOICE_DISCLOSURE,
 } from "../src/narrator.js";
+import { AI_VOICE_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_DE } from "../src/policy.js";
 import {
   MAX_TTS_INPUT_CHARACTERS,
   synthesizeSpeechSegments,
@@ -108,6 +109,25 @@ test("the required AI-voice disclosure is spoken exactly once", async (t) => {
   assert.equal(requests[0]?.input, `${DEFAULT_AI_VOICE_DISCLOSURE} Welcome.`);
 });
 
+test("explicit visual-only sends natural narration unchanged and never reuses spoken-disclosure audio", async (t) => {
+  const cacheDir = await mkdtemp(path.join(tmpdir(), "demo-video-visual-tts-"));
+  t.after(() => rm(cacheDir, { recursive: true, force: true }));
+  const { client, requests } = fakeClient();
+  const segments = [{ id: "intro", text: "Willkommen bei SkillPilot." }];
+  const spoken = await synthesizeSpeechSegments(segments, { client, cacheDir, disclosure: AI_VOICE_DISCLOSURE_DE });
+  const options = {
+    client, cacheDir, disclosure: AI_VOICE_DISCLOSURE_DE,
+    disclosureMode: "visual-only" as const, visualDisclosure: AI_VOICE_VISUAL_DISCLOSURE_DE,
+  };
+  const visual = await synthesizeSpeechSegments(segments, options);
+  assert.equal(requests[1]?.input, segments[0]!.text);
+  assert.equal(requests[1]?.speed, 1);
+  assert.notEqual(spoken[0]?.cacheKey, visual[0]?.cacheKey);
+  await assert.rejects(synthesizeSpeechSegments(segments, { client, cacheDir, disclosureMode: "visual-only" }), /exact visualDisclosure/u);
+  await assert.rejects(synthesizeSpeechSegments([{ id: "bad", text: `${AI_VOICE_DISCLOSURE_DE} Hallo.` }], options), /must not speak/u);
+  assert.equal(requests.length, 2, "invalid disclosure configurations must fail before any provider request");
+});
+
 test("TTS cache key changes with voice and instructions", async (t) => {
   const cacheDir = await mkdtemp(path.join(tmpdir(), "demo-video-tts-"));
   t.after(() => rm(cacheDir, { recursive: true, force: true }));
@@ -133,6 +153,23 @@ test("TTS cache key changes with voice and instructions", async (t) => {
   assert.ok(cedarSegment);
   assert.ok(marinSegment);
   assert.notEqual(cedarSegment.cacheKey, marinSegment.cacheKey);
+});
+
+test("German TTS speaks the localized disclosure exactly once without an English prefix", async (t) => {
+  const cacheDir = await mkdtemp(path.join(tmpdir(), "demo-video-tts-de-"));
+  t.after(() => rm(cacheDir, { recursive: true, force: true }));
+  const { client, requests } = fakeClient();
+  await synthesizeSpeechSegments([
+    { id: "intro", text: `${AI_VOICE_DISCLOSURE_DE} Willkommen bei SkillPilot.` },
+    { id: "continue", text: "Wähle dein Curriculum." },
+  ], {
+    client, cacheDir, disclosure: AI_VOICE_DISCLOSURE_DE,
+    instructions: "Sprich natürliches Deutsch.",
+  });
+  assert.equal(requests[0]?.input, `${AI_VOICE_DISCLOSURE_DE} Willkommen bei SkillPilot.`);
+  assert.equal(requests[1]?.input, "Wähle dein Curriculum.");
+  assert.equal(requests[0]?.instructions, "Sprich natürliches Deutsch.");
+  assert.doesNotMatch(JSON.stringify(requests), /not a human voice/u);
 });
 
 test("TTS validates the documented input length before calling OpenAI", async (t) => {

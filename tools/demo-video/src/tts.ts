@@ -6,6 +6,7 @@ import OpenAI from "openai";
 
 import { DEFAULT_AI_VOICE_DISCLOSURE } from "./narrator.js";
 import { ensurePrivateDirectory, ensurePrivateFile } from "./private-fs.js";
+import { assertNoSpokenDisclosure, resolveVoiceDisclosureMode, type VoiceDisclosureMode } from "./policy.js";
 
 export const DEFAULT_TTS_MODEL = "gpt-4o-mini-tts";
 export const DEFAULT_TTS_VOICE = "cedar";
@@ -27,7 +28,23 @@ export interface SynthesizedSpeechSegment extends SpeechSegment {
   format: "wav";
 }
 
-export type TtsOpenAIClient = Pick<OpenAI, "audio">;
+/** Narrow speech interface shared by explicitly selected provider adapters. */
+export interface SpeechClient {
+  audio: {
+    speech: {
+      create(input: {
+        model: string;
+        voice: string;
+        input: string;
+        response_format: "wav";
+        speed: number;
+        instructions?: string;
+      }): Promise<{ arrayBuffer(): Promise<ArrayBuffer> }>;
+    };
+  };
+}
+/** Backwards-compatible name for existing callers. */
+export type TtsOpenAIClient = SpeechClient;
 
 export interface SynthesizeSpeechOptions {
   client?: TtsOpenAIClient;
@@ -37,6 +54,8 @@ export interface SynthesizeSpeechOptions {
   instructions?: string;
   speed?: number;
   disclosure?: string;
+  disclosureMode?: VoiceDisclosureMode;
+  visualDisclosure?: string;
   refreshCache?: boolean;
 }
 
@@ -69,6 +88,8 @@ export async function synthesizeSpeechSegments(
   const prepared = prepareSpeechSegments(
     segments,
     options.disclosure ?? DEFAULT_AI_VOICE_DISCLOSURE,
+    options.disclosureMode,
+    options.visualDisclosure,
   );
   validateSpeechSegments(prepared);
   await ensurePrivateDirectory(options.cacheDir);
@@ -102,7 +123,7 @@ export async function synthesizeSpeechSegments(
       });
       const bytes = Buffer.from(await response.arrayBuffer());
       if (bytes.length === 0) {
-        throw new Error(`OpenAI returned empty audio for segment ${segment.id}`);
+        throw new Error(`Speech provider returned empty audio for segment ${segment.id}`);
       }
       await atomicWrite(audioPath, bytes);
     }
@@ -124,12 +145,19 @@ export async function synthesizeSpeechSegments(
 export function prepareSpeechSegments(
   segments: SpeechSegment[],
   disclosure = DEFAULT_AI_VOICE_DISCLOSURE,
+  disclosureMode: VoiceDisclosureMode = "spoken-and-visual",
+  visualDisclosure?: string,
 ): SpeechSegment[] {
+  const mode = resolveVoiceDisclosureMode(disclosureMode, visualDisclosure);
   const copies = segments.map((segment) => ({ ...segment }));
   const normalizedDisclosure = normalizeNonEmpty(disclosure, "AI voice disclosure");
   const first = copies[0];
   if (!first) {
     throw new Error("Cannot add an AI voice disclosure to an empty speech plan");
+  }
+  if (mode === "visual-only") {
+    assertNoSpokenDisclosure(copies.map((segment) => segment.text));
+    return copies;
   }
   if (first.text.toLocaleLowerCase("en-US").includes(normalizedDisclosure.toLocaleLowerCase("en-US"))) {
     return copies;

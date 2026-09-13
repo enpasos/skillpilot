@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillPilot · Claude-Quickstart</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f5ef;color:#102239;font-family:Arial,sans-serif}main{min-height:100vh;padding:42px 64px 120px;position:relative;overflow:hidden}main:after{content:"";position:absolute;width:480px;height:480px;border:60px solid #dcece2;border-radius:50%;right:-280px;top:180px;z-index:-1}.brand{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:700}.brand svg{width:39px;height:39px;color:#f59e0b}.eyebrow{margin-top:46px;display:flex;gap:12px;align-items:center;font-size:17px;letter-spacing:1.5px;font-weight:700;text-transform:uppercase;color:#007c60}.badge{background:#e3eee8;padding:9px 14px;border-radius:30px}h1{font-size:56px;letter-spacing:-1.7px;line-height:1.1;max-width:1050px;margin:22px 0 22px}h1 em{color:#009c74;font-style:normal}.subtitle{font-size:26px;line-height:1.45;max-width:1060px;color:#526171;margin:0 0 28px}.steps{display:flex;gap:15px;margin-top:25px}.step{flex:1;background:#fff;border:1px solid #dce4dd;border-radius:20px;padding:23px 22px;min-height:130px;box-shadow:0 3px 0 #e7ece5}.number{color:#008969;font-weight:700;font-size:18px;margin-bottom:14px}.step strong{display:block;font-size:25px;line-height:1.25}.step p{font-size:19px;line-height:1.45;color:#526171;margin:12px 0 0}.note{font-size:19px;line-height:1.4;max-width:1050px;padding:16px 20px;margin-top:25px;background:#edf2ed;border-radius:12px}.footer{position:absolute;bottom:105px;left:64px;right:64px;display:flex;justify-content:space-between;color:#68757b;font-size:16px}.url{font-weight:700;color:#008767}.disclosure{font-size:18px;margin-top:24px;color:#526171}.screen{display:none}.screen.active{display:block}
+/* Keep every card within one video frame; hash navigation must never crop the brand. */
+html,body{height:100%;overflow:hidden}main{height:100vh;min-height:0;padding:32px 52px 64px}.brand svg{width:35px;height:35px}.eyebrow{margin-top:28px;font-size:16px}.badge{padding:8px 14px}h1{font-size:52px;margin:20px 0;line-height:1.12}.subtitle{font-size:25px;margin-bottom:18px}.steps{margin-top:20px}.step{padding:20px;min-height:130px}.step strong{font-size:24px}.step p{font-size:18px}.note{font-size:18px;margin-top:20px;padding:14px 18px}.disclosure{margin-top:18px}.footer{bottom:24px;left:52px;right:52px}
+.repository{font-family:monospace;font-size:30px;padding:22px 25px;background:white;border:2px solid #009c74;border-radius:14px;margin:24px 0;letter-spacing:-.6px}.toggle{display:inline-block;background:#009c74;color:white;font-size:17px;padding:5px 14px;border-radius:20px;margin-left:12px;vertical-align:middle}.prerequisite{color:#007c60;font-weight:700}.steps.two .step{min-height:110px}
+.screenshot-crop{position:relative;overflow:hidden;flex:none;background:white;border:1px solid #dce4dd;border-radius:14px}.screenshot-crop img{position:absolute;max-width:none;width:2457px;height:1346px;pointer-events:none}.screenshot-row{display:flex;align-items:center;gap:28px;margin-top:20px}.screenshot-row .caption{font-size:21px;line-height:1.5;flex:1}.caption strong{display:block;font-size:25px;color:#007c60}.menu-crop{width:615px;height:210px}.menu-crop img{left:-590px;top:-555px}.source-crop{width:965px;height:115px}.source-crop img{left:-1340px;top:-393px}.repository-crop{width:1070px;height:320px;margin-top:20px}.repository-crop img{left:-1340px;top:-950px}.screenshot-label{font-size:19px;color:#007c60;font-weight:700;margin:18px 0 8px}
+</style>
+<main>
+<div class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>SkillPilot</div>
+<section class="screen" data-card="intro">
+  <div class="eyebrow"><span class="badge">Quickstart</span> Lernen mit Claude</div>
+  <h1>Dein Lernen.<br><em>Dein Tempo.</em></h1>
+  <p class="subtitle">In fünf Schritten zu deinem Lernstart.<br><span class="prerequisite">Zuerst: Claude-Konto mit aktivem Pro-Abo.</span></p>
+  <div class="steps"><div class="step"><div class="number">01</div><strong>Claude einmalig<br>vorbereiten</strong></div><div class="step"><div class="number">02–03</div><strong>ID sichern &amp;<br>Curriculum wählen</strong></div><div class="step"><div class="number">04–05</div><strong>Lernen &amp;<br>Erfolge entdecken</strong></div></div>
+  <p class="disclosure">Lern-Beta ab 18 Jahren</p>
+</section>
+<section class="screen" data-card="marketplace">
+  <div class="eyebrow"><span class="badge">01 · Anleitung</span> Claude einmalig vorbereiten</div>
+  <h1>Den <em>Marketplace hinzufügen.</em></h1>
+  <p class="subtitle">Kontomenü → Einstellungen → Plugins → Hinzufügen</p>
+  <div class="screenshot-row"><div class="screenshot-crop menu-crop"><img src="claude-marketplace.png" alt="Claude-Menü: Marketplace hinzufügen"></div><div class="caption"><strong>Marketplace hinzufügen</strong>Mit deinem Claude-Pro-Konto.</div></div>
+  <p class="screenshot-label">Anschließend: Aus einem Repository hinzufügen</p>
+  <div class="screenshot-crop source-crop"><img src="claude-marketplace.png" alt="Claude: Aus einem Repository hinzufügen"></div>
+</section>
+<section class="screen" data-card="repository">
+  <div class="eyebrow"><span class="badge">01 · Anleitung</span> Marketplace verbinden</div>
+  <h1>Einmal einrichten. <em>Updates mitnehmen.</em></h1>
+  <p class="subtitle">Adresse einfügen · automatisch synchronisieren lassen · bestätigen</p>
+  <div class="screenshot-crop repository-crop"><img src="claude-marketplace.png" alt="Claude-Marketplace: enpasos/skillpilot-claude-marketplace, Automatisch synchronisieren aktiviert, Synchronisieren"></div>
+  <div class="note">Adresse zum Kopieren unter dem Video. Nur Plugins installieren, deren Quelle du vertraust.</div>
+</section>
+<section class="screen" data-card="install">
+  <div class="eyebrow"><span class="badge">01 · Anleitung</span> Aus dem SkillPilot-Marketplace</div>
+  <h1>Dein Coach. <em>Ein Plugin.</em></h1>
+  <p class="subtitle">SkillPilot Coach v1 auswählen und installieren.</p>
+  <div class="steps"><div class="step"><div class="number">ÖFFNEN</div><strong>SkillPilot-<br>Marketplace</strong><p>Den gerade hinzugefügten Marketplace öffnen.</p></div><div class="step"><div class="number">INSTALLIEREN</div><strong>SkillPilot Coach v1</strong><p>Das Plugin aus dem Marketplace installieren.</p></div><div class="step"><div class="number">PRÜFEN</div><strong>Deine Plugins</strong><p>SkillPilot einmal installiert, aktiviert und in aktueller Version.</p></div></div>
+  <div class="note">Schon aktuell installiert und verbunden? Dann kannst du direkt mit SkillPilot starten.</div>
+</section>
+<section class="screen" data-card="connect">
+  <div class="eyebrow"><span class="badge">01 · Anleitung</span> Verbindung freigeben</div>
+  <h1>Den enthaltenen<br><em>SkillPilot-Konnektor verbinden.</em></h1>
+  <div class="steps"><div class="step"><div class="number">IM PLUGIN</div><strong>Konnektoren → skillpilot</strong></div><div class="step"><div class="number">FREIGEBEN</div><strong>Verbinden</strong><p>Anmeldung und angezeigte Freigabe abschließen.</p></div><div class="step"><div class="number">KONTROLLIEREN</div><strong>Status: Verbunden</strong><p>Erst dann mit dem Lernstart fortfahren.</p></div></div>
+  <div class="note">Verbinde den SkillPilot-Konnektor direkt im gerade installierten Plugin.</div>
+</section>
+<section class="screen" data-card="start">
+  <div class="eyebrow"><span class="badge">04 · Anleitung</span> Neuer Claude-Chat</div>
+  <h1><em>Startnachricht senden.</em><br>Loslernen.</h1>
+  <p class="subtitle">Die vorbereitete Nachricht prüfen und unverändert absenden.</p>
+  <div class="steps"><div class="step"><div class="number">AUTOMATISCH</div><strong>Lernkontext laden</strong><p>Bei Bedarf die erste Tool-Freigabe bestätigen.</p></div><div class="step"><div class="number">24 STUNDEN</div><strong>Deine Lernsession</strong><p>Danach eine neue Session von SkillPilot aus starten.</p></div><div class="step"><div class="number">PRIVAT</div><strong>Startnachricht<br>vertraulich halten</strong><p>Bewahre deine dauerhafte SkillPilot-ID sicher auf.</p></div></div>
+</section>
+<section class="screen" data-card="mobile">
+  <div class="eyebrow"><span class="badge">Im Alltag</span> App · Fotos · Sprache</div>
+  <h1>Lernen, <em>wie es zu dir passt.</em></h1>
+  <div class="steps"><div class="step"><div class="number">CLAUDE-APP</div><strong>Derselbe Chat.<br>Auch unterwegs.</strong><p>Mit demselben Claude-Konto weiterlernen.</p></div><div class="step"><div class="number">FOTOS &amp; KAMERA</div><strong>Zeig deinen<br>Rechenweg.</strong><p>Am Handy besonders praktisch. Persönliches vorher verdecken.</p></div><div class="step"><div class="number">VOICE MODE</div><strong>Sprich mit<br>deinem Coach.</strong><p>Stockt die Stimme, warte kurz. Sonst im Textchat fortfahren.</p></div></div>
+  <div class="note">Nutzungshinweise aus dem laufenden Betatest – keine Aufnahme der nativen Claude-App.</div>
+</section>
+<section class="screen" data-card="finish">
+  <div class="eyebrow"><span class="badge">Dein nächster Schritt</span> skillpilot.com</div>
+  <h1>Entdecke, <em>was du kannst.</em></h1>
+  <p class="subtitle">Und freu dich über jeden Erfolg.</p>
+  <div class="steps"><div class="step"><div class="number">STARTEN</div><strong>Jetzt lernen</strong><p>Mit deiner gesicherten SkillPilot-ID.</p></div><div class="step"><div class="number">NACHSCHLAGEN</div><strong>Quickstart &amp; FAQs</strong><p>Alle Schritte auch zum Nachlesen.</p></div><div class="step"><div class="number">FREU DICH</div><strong>Über jeden Erfolg</strong><p>Entdecke, was du kannst.</p></div></div>
+</section>
+<div class="footer"><span id="kind">SkillPilot · Quickstart</span><span class="url">skillpilot.com</span><span>Stand: 13.09.2026</span></div>
+</main>
+<script>
+function show(){const id=location.hash.slice(1)||'intro';document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.dataset.card===id));document.querySelector('#kind').textContent=['marketplace','repository'].includes(id)?'Anleitung mit bereitgestellten Claude-Screenshots':['install','connect','start'].includes(id)?'Anleitung · keine Claude-Bildschirmaufnahme':'SkillPilot · Quickstart';}addEventListener('hashchange',show);show();
+</script>
+</html>

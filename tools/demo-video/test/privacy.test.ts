@@ -4,12 +4,13 @@ import {
   assertTextIsPrivate,
   createRedactorScript,
   findForbiddenText,
+  installRedactor,
   maskLocator,
   redactForbiddenText,
   redactSensitiveText,
   validateForbiddenPatterns,
 } from "../src/privacy.js";
-import type { Locator } from "playwright";
+import { chromium, type Locator } from "playwright";
 
 test("redacts every configured sensitive pattern without exposing it in output", () => {
   const patterns = validateForbiddenPatterns([
@@ -71,4 +72,52 @@ test("text-selective masks inspect candidate text against privacy patterns", () 
   assert.match(script, /textContent/);
   assert.match(script, /forbiddenPatterns\.some/);
   assert.match(script, /data-message-author-role/);
+});
+
+test("native modal dialogs keep selector and text masks visibly above the browser top layer", async (t) => {
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+  const page = await browser.newPage({ viewport: { width: 900, height: 600 } });
+  await page.setContent(`<input id="outside" value="LOCAL_TEST_SECRET">
+    <dialog id="modal" style="padding:40px;width:440px;background:white;">
+      <label>Demo password <input id="secret" type="text" style="width:320px;height:40px"></label>
+      <p id="context" style="height:40px">LOCAL_TEST_SECRET</p>
+    </dialog>`);
+  await installRedactor(page, {
+    maskSelectors: ["#secret", "#outside"], requiredMaskSelectors: [], maskTextSelectors: ["#context"],
+    maskLabel: "PRIVAT", maskColor: "#112233", forbiddenPatterns: ["LOCAL_TEST_SECRET"],
+    evidenceSelectors: [], failOnForbiddenText: true,
+  });
+  await page.locator("#modal").evaluate((element) => (element as HTMLDialogElement).showModal());
+  await maskLocator(page.locator("#secret"), "native-dialog-password");
+  await page.locator("#secret").fill("LOCAL_TEST_SECRET");
+  await page.waitForTimeout(100);
+  const rects = await Promise.all(["#secret", "#context"].map(async (selector) => {
+    const rect = await page.locator(selector).boundingBox();
+    assert.ok(rect);
+    return rect;
+  }));
+  const screenshot = await page.screenshot();
+  const inspector = await browser.newPage();
+  const ratios = await inspector.evaluate(async ({ data, boxes }) => {
+    const image = new Image();
+    image.src = data;
+    await image.decode();
+    const canvas = document.createElement("canvas");
+    canvas.width = image.width;
+    canvas.height = image.height;
+    const context = canvas.getContext("2d")!;
+    context.drawImage(image, 0, 0);
+    return boxes.map((box) => {
+      const pixels = context.getImageData(Math.ceil(box.x), Math.ceil(box.y), Math.floor(box.width), Math.floor(box.height)).data;
+      let opaque = 0;
+      for (let i = 0; i < pixels.length; i += 4) {
+        if (pixels[i] === 17 && pixels[i + 1] === 34 && pixels[i + 2] === 51) opaque += 1;
+      }
+      return opaque / (pixels.length / 4);
+    });
+  }, { data: `data:image/png;base64,${screenshot.toString("base64")}`, boxes: rects });
+  for (const ratio of ratios) assert.ok(ratio > 0.8, `Expected opaque mask pixels above dialog, got ${ratio}`);
+  assert.equal(await page.locator("#modal > [data-demo-video-overlay='true']").count(), 2);
+  assert.equal(await page.locator("html > [data-demo-video-mask-selector='#outside']").count(), 1);
 });

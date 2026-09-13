@@ -7,15 +7,12 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { MarkdownDocumentH1 } from '../components/MarkdownDocumentHeading'
 import { MarkdownDocumentVideoCard } from '../components/MarkdownDocumentVideoCard'
 import { getMarkdownDocumentViewCopy } from '../utils/markdownDocumentViewCopy'
+import { getQuickstartVideo } from '../config/quickstartVideo'
 
 type LoadState = 'loading' | 'ready' | 'error'
 
 const SUPPORTED_LANGS = new Set(['de', 'en'])
 
-const QUICKSTART_VIDEO_URLS = {
-    de: '/api/public/quickstart/videos/skillpilot-coach-v1/1.0.0/de/sha256-151a5c097a2c73e73b40e6521e410724e6b0737630dff8d5f40419e673132ee6.mp4',
-    en: '/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4',
-} as const
 
 const resolveLanguage = (routeLang: string | undefined, fallback: 'de' | 'en') => {
     const normalized = (routeLang || '').toLowerCase()
@@ -81,10 +78,10 @@ export const StoryView: React.FC = () => {
     }, [activeLanguage])
 
     const labels = getMarkdownDocumentViewCopy(activeLanguage, 'story')
+    const video = getQuickstartVideo(activeLanguage)
 
     const switchLanguage = activeLanguage === 'en' ? 'de' : 'en'
     const basePath = '/quickstart'
-    const videoUrl = QUICKSTART_VIDEO_URLS[activeLanguage]
 
     if (lang !== activeLanguage) {
         return <Navigate to={`${basePath}/${activeLanguage}`} replace />
@@ -116,13 +113,16 @@ export const StoryView: React.FC = () => {
                 )}
                 {loadState === 'ready' && (
                     <>
-                        <MarkdownDocumentVideoCard
-                            url={videoUrl}
+                        {video && <MarkdownDocumentVideoCard
+                            key={activeLanguage}
+                            url={video.url}
+                            poster={video.poster}
+                            tracks={video.tracks}
                             eyebrow={labels.videoEyebrow}
                             title={labels.videoTitle}
                             description={labels.videoDescription}
                             openLabel={labels.videoOpen}
-                        />
+                        />}
                         <div className="prose dark:prose-invert max-w-none text-text-primary">
                             <ReactMarkdown
                                 remarkPlugins={[remarkGfm]}

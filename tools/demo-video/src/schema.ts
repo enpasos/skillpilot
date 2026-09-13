@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { AI_VOICE_DISCLOSURE } from "./policy.js";
+import { AI_VOICE_DISCLOSURE, AI_VOICE_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_EN } from "./policy.js";
 
 const nonEmpty = z.string().trim().min(1);
 
@@ -46,6 +46,15 @@ const chapterSchema = z.object({
   title: nonEmpty,
   narrationHint: nonEmpty.optional(),
   scriptedNarration: nonEmpty.optional(),
+  recordedFocus: z.object({
+    fromStepId: nonEmpty,
+    toStepId: nonEmpty,
+    x: z.number().int().nonnegative(),
+    y: z.number().int().nonnegative(),
+    width: z.number().int().positive(),
+    height: z.number().int().positive(),
+    leadMs: z.number().int().min(0).max(1000).default(0),
+  }).strict().optional(),
   steps: z.array(stepSchema).min(1),
 }).strict();
 
@@ -108,7 +117,9 @@ export const scenarioSchema = z.object({
     ttsModel: nonEmpty.default("gpt-4o-mini-tts"),
     voice: nonEmpty.default("cedar"),
     instructions: nonEmpty.default("Speak in clear, calm, professional English for a software review demonstration."),
-    disclosure: z.literal(AI_VOICE_DISCLOSURE).default(AI_VOICE_DISCLOSURE),
+    disclosure: z.enum([AI_VOICE_DISCLOSURE, AI_VOICE_DISCLOSURE_DE]).default(AI_VOICE_DISCLOSURE),
+    disclosureMode: z.enum(["spoken-and-visual", "visual-only"]).default("spoken-and-visual"),
+    visualDisclosure: z.enum([AI_VOICE_VISUAL_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_EN]).optional(),
     segmentGapMs: z.number().int().nonnegative().max(10_000).default(350),
     maxSegments: z.number().int().positive().max(100).default(30),
   }).strict().prefault({}),
@@ -138,6 +149,13 @@ export const scenarioSchema = z.object({
   const stepIds = new Set<string>();
   const platformClipIds = new Set<string>();
 
+  if (scenario.narration.disclosureMode === "visual-only" && !scenario.narration.visualDisclosure) {
+    context.addIssue({
+      code: "custom",
+      message: "visual-only requires an explicit visualDisclosure rendered into the video",
+      path: ["narration", "visualDisclosure"],
+    });
+  }
   if (scenario.browser.storageState && scenario.browser.persistentProfilePathFromEnv) {
     context.addIssue({
       code: "custom",
@@ -210,6 +228,21 @@ export const scenarioSchema = z.object({
       context.addIssue({ code: "custom", message: `Duplicate chapter id: ${chapter.id}`, path: ["chapters"] });
     }
     chapterIds.add(chapter.id);
+
+    if (chapter.recordedFocus) {
+      const focus = chapter.recordedFocus;
+      const from = chapter.steps.findIndex((step) => step.id === focus.fromStepId);
+      const to = chapter.steps.findIndex((step) => step.id === focus.toStepId);
+      if (from < 0 || to < from) {
+        context.addIssue({ code: "custom", message: `Chapter ${chapter.id} recordedFocus needs ordered steps from the same chapter`, path: ["chapters"] });
+      }
+      if (focus.x + focus.width > scenario.browser.video.width || focus.y + focus.height > scenario.browser.video.height) {
+        context.addIssue({ code: "custom", message: `Chapter ${chapter.id} recordedFocus must stay inside browser.video`, path: ["chapters"] });
+      }
+      if (scenario.render.autoZoom.enabled) {
+        context.addIssue({ code: "custom", message: "recordedFocus and automatic click zoom cannot be combined", path: ["render", "autoZoom"] });
+      }
+    }
 
     if (scenario.narration.mode === "scripted" && !chapter.scriptedNarration) {
       context.addIssue({ code: "custom", message: `Chapter ${chapter.id} needs scriptedNarration in scripted mode`, path: ["chapters"] });

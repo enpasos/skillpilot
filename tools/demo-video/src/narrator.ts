@@ -4,7 +4,7 @@ import path from "node:path";
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
-import { AI_VOICE_DISCLOSURE } from "./policy.js";
+import { AI_VOICE_DISCLOSURE, AI_VOICE_DISCLOSURE_DE, AI_VOICE_VISUAL_DISCLOSURE_DE, assertNoSpokenDisclosure, resolveVoiceDisclosureMode, type VoiceDisclosureMode } from "./policy.js";
 
 export const DEFAULT_NARRATION_MODEL = "gpt-5.6";
 export const DEFAULT_AI_VOICE_DISCLOSURE = AI_VOICE_DISCLOSURE;
@@ -71,6 +71,8 @@ export interface GenerateNarrationOptions {
   client?: NarrationOpenAIClient;
   model?: string;
   disclosure?: string;
+  disclosureMode?: VoiceDisclosureMode;
+  visualDisclosure?: string;
   maxWordsPerSegment?: number;
   maxSegments?: number;
   maxImageEvidence?: number;
@@ -94,18 +96,18 @@ const NarrationModelOutputSchema = z.object({
 
 type NarrationModelOutput = z.infer<typeof NarrationModelOutputSchema>;
 
-const SYSTEM_PROMPT = `You are an expert English demo-video editor and voice-over writer.
+const systemPrompt = (german: boolean, mode: VoiceDisclosureMode) => `You are an expert ${german ? "German" : "English"} demo-video editor and voice-over writer.
 Create a concise, professional, factual narration plan from the supplied browser-run timeline and evidence.
 
 Rules:
-- Write natural international English for a product reviewer.
+- Write ${german ? "natural German" : "natural international English"} for a product reviewer.
 - Describe only behavior supported by the supplied evidence. Never invent a result, platform, tool call, or policy claim.
 - Explain user value while the relevant action is visible; avoid hype and vague marketing language.
 - Anchor every segment to exactly one supplied timeline event ID and use its chapter ID.
 - Include at least one narration segment for every supplied chapter.
 - Keep segments short enough to fit between nearby actions and avoid repeating visible UI text verbatim.
 - Treat strings marked [REDACTED] as confidential and never reconstruct or describe them.
-- The first spoken segment must clearly disclose that the voice is AI-generated.
+- ${mode === "visual-only" ? "The AI voice disclosure is rendered as a separate visible label. Do not speak it or include it in narration or spoken subtitles." : "The first spoken segment must clearly disclose that the voice is AI-generated."}
 - Subtitle text should carry the same meaning as narration and remain readable on screen.
 - Return only the requested structured output.`;
 
@@ -114,6 +116,7 @@ export async function generateNarration(
   options: GenerateNarrationOptions = {},
 ): Promise<NarrationPlan> {
   validateNarrationInput(input);
+  const disclosureMode = resolveVoiceDisclosureMode(options.disclosureMode, options.visualDisclosure);
 
   const disclosure = normalizeNonEmpty(
     options.disclosure ?? DEFAULT_AI_VOICE_DISCLOSURE,
@@ -135,7 +138,9 @@ export async function generateNarration(
     options.sensitiveValues ?? [],
   );
   const userText = [
-    `Required AI voice disclosure: ${disclosure}`,
+    disclosureMode === "visual-only"
+      ? `Visual-only AI voice disclosure (rendered separately, never spoken): ${options.visualDisclosure}`
+      : `Required AI voice disclosure: ${disclosure}`,
     `Maximum words per narration segment: ${maxWordsPerSegment}`,
     `Maximum narration segments: ${maxSegments}`,
     "Browser-run material:",
@@ -149,7 +154,7 @@ export async function generateNarration(
   const response = await client.responses.parse({
     model,
     input: [
-      { role: "system", content: SYSTEM_PROMPT },
+      { role: "system", content: systemPrompt(disclosure === AI_VOICE_DISCLOSURE_DE || options.visualDisclosure === AI_VOICE_VISUAL_DISCLOSURE_DE, disclosureMode) },
       {
         role: "user",
         content: [
@@ -180,6 +185,8 @@ export async function generateNarration(
     maxWordsPerSegment,
     maxSegments,
     input.chapters?.map((chapter) => chapter.id) ?? [],
+    disclosureMode,
+    options.visualDisclosure,
   );
   assertNoSensitiveOutput(plan, options.sensitiveValues ?? []);
   return plan;
@@ -188,7 +195,10 @@ export async function generateNarration(
 export function ensureAiVoiceDisclosure(
   segments: NarrationSegment[],
   disclosure = DEFAULT_AI_VOICE_DISCLOSURE,
+  disclosureMode: VoiceDisclosureMode = "spoken-and-visual",
+  visualDisclosure?: string,
 ): NarrationSegment[] {
+  const mode = resolveVoiceDisclosureMode(disclosureMode, visualDisclosure);
   const normalizedDisclosure = normalizeNonEmpty(disclosure, "AI voice disclosure");
   if (segments.length === 0) {
     throw new Error("Cannot add an AI voice disclosure to an empty narration");
@@ -198,17 +208,20 @@ export function ensureAiVoiceDisclosure(
   if (!first) {
     throw new Error("Cannot add an AI voice disclosure to an empty narration");
   }
-  const hasDisclosure = first.narration.toLocaleLowerCase("en-US")
-    .includes(normalizedDisclosure.toLocaleLowerCase("en-US"));
-  if (hasDisclosure) {
+  if (mode === "visual-only") {
+    assertNoSpokenDisclosure(segments.flatMap((segment) => [segment.narration, segment.subtitle]));
     return segments.map((segment) => ({ ...segment }));
   }
+  const withDisclosure = (text: string) => text.toLocaleLowerCase("en-US")
+    .includes(normalizedDisclosure.toLocaleLowerCase("en-US"))
+    ? text
+    : `${normalizedDisclosure} ${text}`.trim();
 
   return [
     {
       ...first,
-      narration: `${normalizedDisclosure} ${first.narration}`.trim(),
-      subtitle: `${normalizedDisclosure} ${first.subtitle}`.trim(),
+      narration: withDisclosure(first.narration),
+      subtitle: withDisclosure(first.subtitle),
     },
     ...segments.slice(1).map((segment) => ({ ...segment })),
   ];
@@ -247,6 +260,8 @@ function materializeNarrationPlan(
   maxWordsPerSegment: number,
   maxSegments: number,
   requiredChapterIds: string[],
+  disclosureMode: VoiceDisclosureMode,
+  visualDisclosure?: string,
 ): NarrationPlan {
   if (output.segments.length === 0) {
     throw new Error("OpenAI returned an empty narration plan");
@@ -301,7 +316,7 @@ function materializeNarrationPlan(
     summary: normalizeNonEmpty(output.summary, "Narration summary"),
     editorialNotes: output.editorialNotes,
     disclosure,
-    segments: ensureAiVoiceDisclosure(materialized, disclosure),
+    segments: ensureAiVoiceDisclosure(materialized, disclosure, disclosureMode, visualDisclosure),
   };
 }
 

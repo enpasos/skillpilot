@@ -96,6 +96,13 @@ export function createRedactorScript(
         document.documentElement.appendChild(style);
       }
     };
+    const mountOverlay = (element, overlay) => {
+      // A modal dialog is in the browser top layer: even maximum document
+      // z-index cannot cover it. Keep masks inside the target's open dialog,
+      // and remount existing masks when a dialog opens or closes.
+      const host = element.closest('dialog[open]') || document.documentElement;
+      if (overlay.parentElement !== host) host.appendChild(overlay);
+    };
     const update = () => {
       mountStyle();
       const seen = new Set();
@@ -117,9 +124,9 @@ export function createRedactorScript(
               letterSpacing: '0.08em'
             });
             overlay.textContent = ${JSON.stringify(label)};
-            document.documentElement.appendChild(overlay);
             overlays.set(element, overlay);
           }
+          mountOverlay(element, overlay);
           if (selector.includes('data-demo-video-secret')) overlay.dataset.demoVideoSecretMask = 'true';
           overlay.dataset.demoVideoMaskSelector = selector;
           if (!selector.includes('data-demo-video-secret')) overlay.dataset.demoVideoConfiguredMask = 'true';
@@ -153,9 +160,9 @@ export function createRedactorScript(
               letterSpacing: '0.08em'
             });
             overlay.textContent = ${JSON.stringify(label)};
-            document.documentElement.appendChild(overlay);
             overlays.set(element, overlay);
           }
+          mountOverlay(element, overlay);
           overlay.dataset.demoVideoMaskSelector = selector;
           overlay.dataset.demoVideoSecretMask = 'true';
           overlay.dataset.demoVideoConfiguredMask = 'true';

@@ -16,6 +16,8 @@ import {
   scheduleNarrationAudio,
 } from "../src/media.js";
 import { runProcess } from "../src/process.js";
+import { createNarrationPacingPlan } from "../src/pacing.js";
+import { sha256File } from "../src/hash.js";
 
 test("builds a smooth, bounded auto-zoom around click coordinates", () => {
   const filter = buildAutoZoomFilter(
@@ -72,8 +74,56 @@ test("creates a shell-free H.264/AAC/faststart render plan", () => {
   assert.match(plan.filterComplex, /adelay=500:all=1/u);
   assert.match(plan.filterComplex, /subtitles=filename=/u);
   assert.match(plan.filterComplex, /tpad=stop_mode=clone/u);
-  assert.match(plan.filterComplex, /trim=start=0\.000:end=2\.000/u);
+  assert.match(plan.filterComplex, /trim=start=0\.000:end=1\.900/u);
+  assert.match(plan.filterComplex, /trim=start=1\.900:end=5\.000/u);
   assert.match(plan.filterComplex, /concat=n=2:v=1:a=0\[vpaced\]/u);
+});
+
+test("visual notice is independently burned for eight seconds at a safe top-right position", () => {
+  const plan = buildFfmpegRenderPlan({
+    inputVideoPath: "/input/demo.webm", outputVideoPath: "/output/demo.mp4",
+    sourceVideoDurationMs: 10_000, outputDurationMs: 10_000,
+    visualDisclosure: { textFilePath: "/private/voice-label.txt" },
+  });
+  assert.match(plan.filterComplex, /drawtext=textfile=.*voice-label\.txt/u);
+  assert.match(plan.filterComplex, /expansion=none/u);
+  assert.match(plan.filterComplex, /x=w-tw-34:y=34/u);
+  assert.match(plan.filterComplex, /box=1:boxcolor=black@0\.75/u);
+  assert.match(plan.filterComplex, /enable='lt\(t,8\)'/u);
+  assert.doesNotMatch(plan.filterComplex, /subtitles=filename/u);
+});
+
+test("recorded camera focus partitions real footage with explicit bounded crop and white aspect-preserving padding", () => {
+  const region = { startMs: 1000, endMs: 3000, x: 296, y: 258, width: 688, height: 302,
+    sourceWidth: 1280, sourceHeight: 720 };
+  const options = { inputVideoPath: "raw.webm", outputVideoPath: "render.mp4",
+    sourceVideoDurationMs: 4000, outputDurationMs: 4000, recordedFocusRegions: [region] };
+  const plan = buildFfmpegRenderPlan(options);
+  assert.match(plan.filterComplex, /trim=start=0\.000:end=1\.000/u);
+  assert.match(plan.filterComplex, /trim=start=1\.000:end=3\.000/u);
+  assert.match(plan.filterComplex, /trim=start=3\.000:end=4\.000/u);
+  assert.match(plan.filterComplex, /crop=w=688:h=302:x=296:y=258:exact=1,scale=w=1920:h=1080:force_original_aspect_ratio=decrease/u);
+  assert.match(plan.filterComplex, /pad=1920:1080:\(ow-iw\)\/2:\(oh-ih\)\/2:color=white/u);
+  assert.match(plan.filterComplex, /concat=n=3:v=1:a=0\[vfocused\]/u);
+  assert.doesNotMatch(plan.filterComplex, /setpts=.*\*PTS|overlay=/u);
+  for (const invalid of [{ x: -1 }, { width: 1280 }, { startMs: 0.5 }, { startMs: 3000 }, { endMs: 4001 }]) {
+    assert.throws(() => buildFfmpegRenderPlan({ ...options, recordedFocusRegions: [{ ...region, ...invalid }] }));
+  }
+  assert.throws(() => buildFfmpegRenderPlan({ ...options, recordedFocusRegions: [region, region] }), /must not overlap/u);
+  assert.throws(() => buildFfmpegRenderPlan({ ...options, autoZoom: { enabled: true } }), /cannot be combined/u);
+  const unchanged = { ...options, recordedFocusRegions: [] };
+  const { recordedFocusRegions: _unused, ...withoutFocus } = options;
+  assert.deepEqual(buildFfmpegRenderPlan(unchanged), buildFfmpegRenderPlan(withoutFocus));
+});
+
+test("a zero-time hold keeps the first source frame without a fractional timestamp", () => {
+  const plan = buildFfmpegRenderPlan({
+    inputVideoPath: "/input/demo.webm", outputVideoPath: "/output/demo.mp4",
+    sourceVideoDurationMs: 1_000, outputDurationMs: 2_000,
+    videoHolds: [{ atMs: 0, durationMs: 1_000 }], fps: 30,
+  });
+  assert.match(plan.filterComplex, /trim=start=0\.000:end=0\.034/u);
+  assert.match(plan.filterComplex, /trim=start=0\.034:end=1\.000/u);
 });
 
 test("creates a normalized, explicitly labeled Web and native clip composition plan", () => {
@@ -138,6 +188,140 @@ async function hasRequiredFfmpegFeatures(): Promise<boolean> {
     return false;
   }
 }
+
+test("recorded camera focus preserves real motion and every frame at 1x, covers narration holds and restores the full view", async (t) => {
+  if (!(await hasRequiredFfmpegFeatures())) { t.skip("Required FFmpeg features are not installed"); return; }
+  const directory = await mkdtemp(path.join(os.tmpdir(), "demo-video-camera-focus-"));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const source = path.join(directory, "source.mp4");
+  const output = path.join(directory, "camera.mp4");
+  const baseline = path.join(directory, "same-holds-full-view.mp4");
+  const unpaced = path.join(directory, "camera-without-holds.mp4");
+  await runProcess("ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", "-f", "lavfi", "-i",
+    "color=c=red:s=320x240:r=25:d=4", "-vf",
+    "drawbox=x=60:y=80:w=200:h=80:color=blue:t=fill:enable='lt(t,2)',drawbox=x=60:y=80:w=200:h=80:color=lime:t=fill:enable='gte(t,2)'",
+    "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", source]);
+  const sourceHash = await sha256File(source);
+  const region = { startMs: 1000, endMs: 3800, x: 60, y: 80, width: 200, height: 80,
+    sourceWidth: 320, sourceHeight: 240 };
+  await renderVideo({ inputVideoPath: source, outputVideoPath: output, width: 640, height: 360, fps: 25,
+    videoHolds: [{ atMs: 2600, durationMs: 800 }], recordedFocusRegions: [region] });
+  await renderVideo({ inputVideoPath: source, outputVideoPath: baseline, width: 640, height: 360, fps: 25,
+    videoHolds: [{ atMs: 2600, durationMs: 800 }] });
+  await renderVideo({ inputVideoPath: source, outputVideoPath: unpaced, width: 640, height: 360, fps: 25,
+    recordedFocusRegions: [{ ...region, endMs: 3000 }] });
+  const pixel = async (atMs: number, x: number, y: number): Promise<number[]> => {
+    const result = await runProcess("ffmpeg", ["-hide_banner", "-ss", (atMs / 1000).toFixed(3), "-i", output,
+      "-frames:v", "1", "-an", "-vf", `crop=8:8:${x}:${y},signalstats,metadata=print`, "-f", "null", "-"]);
+    return ["Y", "U", "V"].map((channel) => {
+      const match = new RegExp(`lavfi\\.signalstats\\.${channel}AVG=(\\d+(?:\\.\\d+)?)`, "u").exec(result.stderr);
+      assert.ok(match, "camera sample must contain an actual rendered frame");
+      return Number(match[1]);
+    });
+  };
+  assert.ok((await pixel(500, 100, 80))[2]! > 200, "full recorded red view precedes the camera crop");
+  assert.ok((await pixel(1200, 100, 80))[1]! > 200, "actual blue rectangle fills the camera closeup");
+  assert.ok((await pixel(2200, 100, 80))[2]! < 70, "real blue-to-green action occurs at its original 2s time");
+  assert.ok((await pixel(3300, 100, 80))[2]! < 70, "green closeup persists throughout the paced reading hold");
+  assert.ok((await pixel(1200, 320, 20))[0]! > 230, "white letterboxing preserves the entire crop aspect ratio");
+  assert.ok((await pixel(4200, 100, 80))[2]! > 200, "full recorded view resumes outside the declared interval");
+  const frameCount = async (file: string): Promise<number> => {
+    const probe = await runProcess("ffprobe", ["-v", "error", "-count_frames", "-select_streams", "v:0",
+      "-show_entries", "stream=nb_read_frames", "-of", "json", file]);
+    return Number(JSON.parse(probe.stdout).streams[0].nb_read_frames);
+  };
+  assert.equal(await frameCount(unpaced), 100, "camera framing preserves all 100 original frames at 1x");
+  assert.equal(await frameCount(output), await frameCount(baseline),
+    "camera framing adds no frame loss to the identical off-frame-grid narration-hold baseline");
+  assert.equal(await probeMediaDurationMs(output), await probeMediaDurationMs(baseline),
+    "camera framing does not shorten or extend the paced baseline");
+  assert.ok(Math.abs(await probeMediaDurationMs(output) - 4800) < 50);
+  assert.equal(await sha256File(source), sourceHash, "camera framing must not rewrite original evidence");
+  await assert.rejects(renderVideo({ inputVideoPath: source, outputVideoPath: path.join(directory, "bad.mp4"),
+    recordedFocusRegions: [{ ...region, endMs: 3000, sourceWidth: 640 }] }), /actual source video/u);
+});
+
+test("holds keep the preceding screen when recorded transitions lead event anchors, without losing source states", async (t) => {
+  if (!(await hasRequiredFfmpegFeatures())) { t.skip("Required FFmpeg features are not installed"); return; }
+  const directory = await mkdtemp(path.join(os.tmpdir(), "demo-video-hold-boundary-"));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const sourceVideo = path.join(directory, "source.mp4");
+  const outputVideo = path.join(directory, "held.mp4");
+  await runProcess("ffmpeg", [
+    "-hide_banner", "-loglevel", "error", "-y",
+    "-f", "lavfi", "-i", "color=c=0xff0000:s=320x180:r=25:d=1",
+    "-f", "lavfi", "-i", "color=c=0x00ff00:s=320x180:r=25:d=1",
+    "-f", "lavfi", "-i", "color=c=0x0000ff:s=320x180:r=25:d=1",
+    "-filter_complex", "[0:v][1:v][2:v]concat=n=3:v=1:a=0[v]", "-map", "[v]",
+    "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", sourceVideo,
+  ]);
+  await renderVideo({
+    inputVideoPath: sourceVideo, outputVideoPath: outputVideo, width: 320, height: 180,
+    // This reproduces a 25fps screencast painting each new page 80ms before
+    // the corresponding wall-clock event anchor, as seen in the Quickstart.
+    videoHolds: [{ atMs: 1_080, durationMs: 1_500 }, { atMs: 2_080, durationMs: 1_500 }],
+  });
+  const frameV = async (seconds: number): Promise<number> => {
+    const result = await runProcess("ffmpeg", [
+      "-hide_banner", "-ss", String(seconds), "-i", outputVideo, "-frames:v", "1", "-an",
+      "-vf", "crop=8:8:100:100,signalstats,metadata=print", "-f", "null", "-",
+    ]);
+    const match = /lavfi\.signalstats\.VAVG=(\d+(?:\.\d+)?)/u.exec(result.stderr);
+    assert.ok(match, "sampled video must contain a real frame");
+    return Number(match[1]);
+  };
+  assert.ok(await frameV(0.5) > 200, "original first red screen is retained");
+  assert.ok(await frameV(1.8) > 200, "first long hold must keep red, not the upcoming green screen");
+  assert.ok(await frameV(2.8) < 70, "green transition plays after the hold");
+  assert.ok(await frameV(4.3) < 70, "second hold must keep green, not the upcoming blue screen");
+  const finalV = await frameV(5.5);
+  assert.ok(finalV > 90 && finalV < 140, "final blue state and remaining source footage are retained");
+  assert.ok(Math.abs(await probeMediaDurationMs(outputVideo) - 6_000) < 100, "holds preserve total source duration plus inserted pauses");
+});
+
+test("final narration frames keep their chapter when next pages paint 200ms before event anchors", async (t) => {
+  if (!(await hasRequiredFfmpegFeatures())) { t.skip("Required FFmpeg features are not installed"); return; }
+  const directory = await mkdtemp(path.join(os.tmpdir(), "demo-video-stable-reading-hold-"));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const sourceVideo = path.join(directory, "source.mp4");
+  const outputVideo = path.join(directory, "held.mp4");
+  await runProcess("ffmpeg", [
+    "-hide_banner", "-loglevel", "error", "-y",
+    "-f", "lavfi", "-i", "color=c=red:s=320x180:r=25:d=2",
+    "-f", "lavfi", "-i", "color=c=green:s=320x180:r=25:d=2",
+    "-f", "lavfi", "-i", "color=c=blue:s=320x180:r=25:d=2",
+    "-f", "lavfi", "-i", "color=c=yellow:s=320x180:r=25:d=2",
+    "-filter_complex", "[0:v][1:v][2:v][3:v]concat=n=4:v=1:a=0[v]", "-map", "[v]",
+    "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", sourceVideo,
+  ]);
+  const pacing = createNarrationPacingPlan([
+    { id: "feedback", filePath: "unused.wav", anchorMs: 0, durationMs: 4_500, holdAtMs: 1_200 },
+    { id: "session", filePath: "unused.wav", anchorMs: 2_200, durationMs: 4_500, holdAtMs: 3_200 },
+    { id: "mobile", filePath: "unused.wav", anchorMs: 4_200, durationMs: 4_500, holdAtMs: 5_200 },
+    { id: "finish", filePath: "unused.wav", anchorMs: 6_200, durationMs: 1_000 },
+  ], { sourceVideoDurationMs: 8_000, minimumGapMs: 500, tailPaddingMs: 500 });
+  await renderVideo({ inputVideoPath: sourceVideo, outputVideoPath: outputVideo, width: 320, height: 180,
+    videoHolds: pacing.holds });
+  const frameColour = async (file: string, atMs: number): Promise<number[]> => {
+    const result = await runProcess("ffmpeg", [
+      "-hide_banner", "-ss", (atMs / 1_000).toFixed(3), "-i", file, "-frames:v", "1", "-an",
+      "-vf", "crop=8:8:100:100,signalstats,metadata=print", "-f", "null", "-",
+    ]);
+    return ["Y", "U", "V"].map(channel => {
+      const match = new RegExp(`lavfi\\.signalstats\\.${channel}AVG=(\\d+(?:\\.\\d+)?)`, "u").exec(result.stderr);
+      assert.ok(match, "final narration sample must contain a real source frame");
+      return Number(match[1]);
+    });
+  };
+  for (const [index, segment] of pacing.audio.entries()) {
+    const expected = await frameColour(sourceVideo, index * 2_000 + 500);
+    const actual = await frameColour(outputVideo, segment.endMs - 50);
+    assert.ok(actual.every((value, channel) => Math.abs(value - expected[channel]!) < 3),
+      `${segment.id} must still show its own chapter at the final narration frame`);
+  }
+  assert.ok(Math.abs(await probeMediaDurationMs(outputVideo) - pacing.pacedVideoDurationMs) < 100,
+    "all original source time remains, with only the planned pauses added");
+});
 
 test("renders a synthetic clip with scheduled narration and burned captions", async (t) => {
   if (!(await hasRequiredFfmpegFeatures())) {

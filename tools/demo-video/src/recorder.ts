@@ -129,8 +129,15 @@ export async function finalizeRecordingSession(
   }
 }
 
+export interface PlaywrightRecordingOptions {
+  /** Runs after redaction is installed and before the first scenario action. */
+  onPageReady?: (page: Page) => void | Promise<void>;
+}
+
 export class PlaywrightRecordingAdapter implements RecordingAdapter {
   readonly kind = "playwright-chromium";
+
+  constructor(private readonly options: PlaywrightRecordingOptions = {}) {}
 
   async record({ scenario, workDir, force, environment }: RecordingContext): Promise<RecordingResult> {
     await ensurePrivateDirectory(workDir);
@@ -184,6 +191,7 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
       });
       video = page.video();
       await installRedactor(page, scenario.privacy);
+      await this.options.onPageReady?.(page);
       const recordingStartedAt = Date.now();
 
       for (const chapter of scenario.chapters) {

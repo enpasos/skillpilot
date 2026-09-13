@@ -5,7 +5,7 @@ reviewable MP4 in one command:
 
 ```text
 YAML -> Playwright Chromium -> redacted WebM + timeline + screenshots
-     -> OpenAI structured narration -> OpenAI TTS WAV segments
+     -> scripted or OpenAI structured narration -> cached TTS WAV segments
      -> SRT subtitles -> FFmpeg H.264/AAC Web MP4
      -> optional reviewed native iOS/Android clips -> labeled final MP4
      -> provenance manifest
@@ -41,6 +41,270 @@ npm run demo -- narrate  --scenario scenarios/example.yaml
 npm run demo -- tts      --scenario scenarios/example.yaml
 npm run demo -- render   --scenario scenarios/example.yaml
 ```
+
+For a reviewed German script, use `narration.mode: scripted`, provide German
+`scriptedNarration` for every chapter, and configure:
+
+```yaml
+narration:
+  mode: scripted
+  instructions: Sprich natürliches Deutsch, freundlich und klar, ohne Werbestimme.
+  disclosure: Die Sprecherstimme in diesem Video ist KI-generiert und keine menschliche Stimme.
+```
+
+By default, the first spoken segment and its subtitles include the exact
+English or German disclosure. English remains the default, including for the
+existing OpenAI review scenario. Scripted narration needs no narration-model
+request. The public Quickstart explicitly uses `disclosureMode: visual-only`
+and a localized `visualDisclosure`: `KI-generierte Sprecherstimme` for German,
+`AI-generated voice` for English. The renderer burns this short notice into
+the first eight seconds even when captions are disabled,
+without speaking it or including it in the narration captions. This does not
+change the default or the historical review scenario.
+
+### Claude-first public Quickstart
+
+The learner Quickstart has its own entry point, separate from the historical
+OpenAI review. The current production workflow imports four separately captured,
+privacy-reviewed Claude browser installation clips and records their complete
+local playback alongside the current first-party UI in a fresh browser. Other
+guidance remains explicitly labelled. The builder performs no provider login or
+Claude account operation and establishes no complete learning-flow/native-app
+acceptance. Omitting `--host-clips` preserves the older instruction-card mode;
+that mode does not satisfy the current real-installation recording request.
+
+The `/quickstart/de` and `/quickstart/en` pages have separate video, poster,
+narration and caption assets. The English page never falls back to the German
+video. Both use genuine installation footage recorded in the corresponding
+Claude interface language; English is not dubbed over German menus.
+
+**German captured state, 13 September 2026:** the four real installation chapters were
+recorded in the user's already signed-in Windows Firefox. The scoped preparation
+removed only the SkillPilot marketplace/plugin and disconnected its connector;
+the recorded flow then re-added the public repository with automatic sync on,
+installed and enabled SkillPilot **1.1.5**, and showed connector status
+**Verbunden**. Other account content stayed unchanged. Firefox page zoom was
+restored to its prior **70%** setting. The separate screen recorder uses browser
+crops; this is web footage, not native Claude-app footage or a fresh-account test.
+
+All 101 stored source frames were visually reviewed. Raw recordings remain
+private; the transient personal Claude-home view and its preceding blank frames
+were excluded before encoding the reviewed derivatives. Only static operator
+inspection holds were shortened; retained actions and loading remain at 1×.
+The four clip hashes and private edit decisions bind this review to the imported
+files. Every future take needs the same full-frame privacy review.
+
+The unchanged German combined build and content-addressed export run **292.628 seconds**
+(4:53), with one disposable SkillPilot learner deleted after capture. Visual QA
+covered all 25 recording screenshots and 22 sampled final-video frames, including
+all 16 chapter endings, privacy cuts, masks and the voice disclosure. Its 16
+Gemini `Sulafat` narration segments were checked technically and through blind
+audio transcription/quality assessment by Gemini; they were **not directly
+listened to by the assistant**. Two uncertain transcription details remain for
+a human listening pass. This is a local tutorial build, not deployment,
+learning-tool/native-app acceptance, or a fresh-account test. Earlier card-video
+artifacts and cleanup evidence remain separate.
+
+**English captured state, 13 September 2026:** four new Claude Web clips show
+the actual English menus, **Sync automatically** enabled, installation of
+**SkillPilot Coach v1 1.1.5**, and the **Connected** connector status. All 48
+stored source frames were reviewed; private OAuth transition content and the
+brief German metadata view were excluded by ordinary timeline cuts, without
+pixel translation or fabricated UI. The retained actions play at original speed.
+The first-party recording uses the English SkillPilot interface and
+**MIT OpenCourseWare Foundations** as its English-language curriculum example.
+That chapter uses a declared, static camera close-up of the actual curriculum
+selector; source pixels and actions remain unchanged, with the crop bounds and
+source/output timing recorded in public provenance.
+Its one disposable learner was deleted through the capture cleanup gate.
+The final English build and content-addressed export run **260.102 seconds
+(4:20), 1920 × 1080**, with 16 English narration segments and
+English captions. All 16 narration WAV hashes match the technically and
+model-reviewed English audio. Direct listening by the assistant remains
+unavailable. Final visual QA passed all 25 recording screenshots and 29 sampled
+rendered frames, including the corrected camera framing and chapter holds.
+The separate English export is bound locally; this is not a production deployment.
+Both languages passed actual desktop/mobile playback, seeking, HTTP range delivery,
+caption-language and in-page language-switch checks; the English pages were also
+visually checked at 390 px and 1280 px width.
+
+The mobile/photo/voice chapters are labelled guidance cards in both languages,
+not footage or acceptance evidence from the native Claude mobile app. Neither
+language's installation footage establishes a fresh-account or complete
+learning-tool acceptance test.
+
+```bash
+cd tools/demo-video
+npx tsx src/quickstart-build.ts --scenario scenarios/skillpilot-claude-quickstart.de.yaml --host-clips /absolute/private/claude-clips.json --record-only
+npx tsx src/quickstart-build.ts --scenario scenarios/skillpilot-claude-quickstart.de.yaml --host-clips /absolute/private/claude-clips.json --reuse-recording
+
+# English has its own scenario and explicitly English host clips:
+npx tsx src/quickstart-build.ts --scenario scenarios/skillpilot-claude-quickstart.en.yaml --host-clips /absolute/private/claude-clips-en.json --record-only
+npx tsx src/quickstart-build.ts --scenario scenarios/skillpilot-claude-quickstart.en.yaml --host-clips /absolute/private/claude-clips-en.json --reuse-recording
+```
+
+Omit `--reuse-recording` for a fresh complete recording. `--record-only` performs
+browser actions but makes no narration/TTS API call. Supply the same reviewed
+host-clip manifest for recording and reuse; an older card recording cannot be
+relabeled as real Claude footage.
+
+A successful capture also writes private `capture-cleanup.json`, binding its
+observed learner deletions to the exact recording, timeline, recording metadata,
+scenario, HTML/screenshot instruction assets, and any imported host-clip/player
+bytes. `--reuse-recording` requires
+that proof and revalidates all recording/privacy hashes before using the cache.
+Changed cards or an older recording without this proof require a fresh capture.
+The manifest's `disposableLearnersDeleted` is the count proved for that capture;
+`cleanupPerformedThisRun` separately records deletions performed by the current
+process. Reusing a cleaned recording therefore correctly reports zero new
+deletions without losing the original cleanup evidence. A later TTS/render
+failure may retain this completed capture proof, but never a complete video
+manifest.
+
+The German artifact uses **Gemini 3.1 Flash TTS Preview, voice Sulafat**;
+the English artifact uses **Gemini 2.5 Flash Preview TTS, voice Sulafat**.
+Each scenario provides its own language directions for calm, warm delivery and
+continuous phrases, and each manifest records the actual model and voice. The
+Quickstart wrapper selects `GeminiSpeechClient` when `narration.ttsModel` starts
+with `gemini-`. It sends only the scripted public narration and voice direction
+to Google's `generateContent` endpoint. It does not send browser evidence,
+learner state, screenshots, credentials, or any learning chat to Gemini.
+
+For Gemini, the wrapper checks `GEMINI_API_KEY`, then `GOOGLE_API_KEY`; for each
+name it checks the existing process environment and the repository's known
+`.env.local` and `app/.env.local` files. No shell sourcing or environment
+mutation occurs. Alternatively, `--secrets <private-file.json>` accepts a
+private JSON file with `schemaVersion: 1` and `geminiApiKey`. Never commit keys
+or pass them as command arguments. With an OpenAI TTS model, the wrapper still
+reads only `openAiApiKey` from private `secrets/skillpilot-review.json` or the
+explicit secrets file. It ignores unrelated review browser/clip fields.
+Keys are passed to the respective client only in memory.
+
+Gemini's 24 kHz mono PCM gets a WAV header without tempo or pitch changes.
+The cache and manifest retain the actual Gemini model and voice, so these WAVs
+cannot collide with the previous OpenAI narration. Preview model output is not
+assumed byte-reproducible: keep the generated, content-addressed audio cache.
+The public export preserves natural timing; the script determines the duration,
+not an `atempo` speed-up to force exactly five minutes. Review the actual audio
+for pronunciation, omissions and sentence endings before publication.
+
+`QUICKSTART_DEMO_ID_PASSWORD` is generated afresh in memory for protected
+demonstration export inputs; it is not an operator secret.
+
+Scenario `goto` URLs `quickstart-card:intro`, `:marketplace`, `:repository`,
+`:install`, `:connect`, `:mobile`, `:finish`, and `:start` resolve to the matching
+fragment of the language-specific local `assets/quickstart/cards.html` or
+`cards.en.html`. The Claude walkthrough first
+requires Claude Pro, then adds `enpasos/skillpilot-claude-marketplace` through
+Settings → Plugins → Add marketplace → Add from a repository, keeps automatic
+synchronization enabled, and installs SkillPilot from that marketplace. It does
+not instruct learners to download a plugin archive. The German card-only
+fallback frames the supplied Claude screenshot into readable steps; English
+cards do not load that German reference image. The screenshot is not a fabricated
+recording of a successful connection. The German card-only completion manifest binds both the HTML card and
+`assets/quickstart/claude-marketplace.png` digests and states that no actual
+Claude-host recording is included.
+
+The source screenshot contains account information outside the framed regions.
+Keep `assets/quickstart/claude-marketplace.png` private and untracked; it is not
+a deployable web asset. To reproduce the marketplace chapters, place the
+approved source screenshot at that exact local path. Those chapters fail clearly
+if it is missing. Other scenarios and CI fixtures do not need this private
+image and record a null screenshot digest. Only the reviewed, framed video
+output is eligible for publication.
+
+#### Optional: import real Claude browser installation clips
+
+This is an import path, not a recorder or a Claude account/login workflow.
+After separately recording and privacy-reviewing the actual installation,
+`--host-clips <private-manifest.json>` replaces only the `marketplace`,
+`repository`, `plugin-install`, and `plugin-connect` chapter steps. Their
+narration and all first-party steps stay unchanged. Without the option, the
+existing instruction-card path stays unchanged.
+
+The private JSON manifest must contain exactly those four chapter IDs once:
+
+```json
+{
+  "schemaVersion": 1,
+  "language": "en",
+  "clips": [
+    {
+      "chapterId": "marketplace",
+      "path": "marketplace.webm",
+      "sha256": "<64 lowercase hexadecimal characters>",
+      "capturedAt": "2026-09-13T12:00:00Z",
+      "captureMethod": "claude-browser-recording",
+      "privacyReviewed": true
+    }
+  ]
+}
+```
+
+The example shows one entry; add the three other required chapter entries.
+`language` must match the scenario's `browser.locale`. English requires explicit
+`"language": "en"`; omitted language remains historical German for compatibility.
+The importer and exporter both reject mismatched host-clip languages.
+Each chapter needs its own regular local MP4, WebM or MOV file (no URLs,
+symlinks or duplicate file paths). Relative paths resolve beside the manifest.
+Keep the manifest and source files owner-private (`0600` on Unix), outside
+tracked/public assets. Each clip must have one video stream and last no more
+than ten minutes. `privacyReviewed: true` is an explicit operator attestation:
+review every frame and remove account details, chats, login/consent secrets,
+personal bookmarks and other private content **before** setting it. The importer
+does not discover or redact account information embedded in video pixels.
+
+```bash
+npx tsx src/quickstart-build.ts --scenario scenarios/skillpilot-claude-quickstart.de.yaml --host-clips /absolute/private/claude-clips.json --record-only
+npx tsx src/quickstart-build.ts --scenario scenarios/skillpilot-claude-quickstart.de.yaml --host-clips /absolute/private/claude-clips.json --reuse-recording
+```
+
+Clips are copied into private content-addressed snapshots and replayed in a
+local-only video page with original speed (`1`), muted source audio, no looping
+or seeking. The next step requires verified complete playback; unsupported
+codecs, seeks, speed changes and playback errors fail the capture. The normal
+recording/privacy checks and disposable-learner cleanup remain in effect.
+Capture cleanup evidence additionally binds the reviewed manifest, clip bytes
+and player implementation; changed inputs invalidate reuse. `--cleanup-only`
+deliberately ignores clip inputs so missing or invalid files cannot prevent
+recovery of the private learner-cleanup ledger.
+
+A successful complete build adds private `claude-host-clips.json` evidence and
+marks the capture as real Claude **browser** recordings replayed locally.
+Public export preserves the clip hashes and provenance without private paths;
+it does not claim native-app coverage, OAuth/session acceptance or a complete
+Claude learning-flow acceptance. Review chapter timing and the actual final
+video before publishing. Importer tests use synthetic local videos and do not
+constitute a real Claude installation recording.
+
+Export each completed build separately with `quickstart-export.ts`. The exporter
+derives `/media/quickstart/claude/2026-09-13/de/` or `/en/` from the validated
+scenario locale and verifies its ID and localized voice notice. Bind only
+completed, reviewed exports in `app/src/config/quickstartVideo.ts`; existing
+content-addressed German and historical review files remain unchanged.
+
+Official speech references:
+
+- [Gemini speech generation and available voices](https://ai.google.dev/gemini-api/docs/speech-generation)
+- [Gemini generateContent REST API](https://ai.google.dev/api/generate-content)
+
+Only successful browser `POST /api/ui/learners` responses at the configured
+first-party origin contribute new learner IDs to a private cleanup ledger.
+The wrapper does not enumerate existing learners or create/preconfigure them
+through an API. Every observed disposable learner is deleted through the normal
+confirmed DELETE route, including after recording failures. Pending IDs are
+retried before a new recording; `--cleanup-only` retries only this ledger without
+opening a browser or loading the TTS key. The manifest becomes complete only
+after cleanup succeeds. The run-owned lock excludes concurrent writers; after
+an interrupted process, verify that no recording is still active before removing
+that specific stale lock and running cleanup.
+
+If a CREATE commits but its response is lost before an ID can be observed, the
+tool cannot name that learner for synchronous deletion. The ordinary inactivity
+retention applies; no successful build/cleanup claim is made for a detected
+unreadable CREATE response. Review the private video, screenshots and subtitles
+before publishing a new content-addressed artifact. Existing published videos
+are never overwritten by this command.
 
 The pinned Linux container provides the strongest reproducible path and works
 from Docker Desktop on macOS and Windows as well:
@@ -266,8 +530,9 @@ reviewed frame-specific selector is available.
 AI narration uses the Responses API with Zod Structured Outputs and may attach
 only the already-redacted evidence screenshots selected by the scenario. Speech
 uses `gpt-4o-mini-tts`, WAV output, and a configurable voice; `cedar` is the
-default. The first spoken/subtitle segment always contains the required clear
-AI-voice disclosure and the code does not provide a switch to suppress it.
+default. The default `spoken-and-visual` mode includes the clear AI-voice
+disclosure in the first spoken/subtitle segment. The explicitly configured
+public Quickstart uses the visible-only disclosure described above.
 
 References:
 
@@ -497,6 +762,8 @@ without changing analysis, narration, TTS, subtitle, or render modules.
 | `analyzer.ts` | Deterministic, redacted timeline summary |
 | `narrator.ts` | Evidence-grounded structured English script |
 | `tts.ts` | Segment WAV generation and content-addressed cache |
+| `gemini-tts.ts` | Gemini speech adapter, scoped private key lookup, natural PCM-to-WAV conversion |
+| `quickstart-build.ts`, `quickstart-export.ts` | Claude-first public recording, disposable-profile cleanup, natural-timing content-addressed export |
 | `subtitles.ts` | Sanitized, wrapped and timed SRT cues |
 | `pacing.ts`, `media.ts`, `process.ts` | speech-aware visual holds, ffprobe, audio scheduling, zooms, normalized FFmpeg render/concat |
 | `platform-clips.ts` | reviewed native-input validation, private snapshots, labels, composition provenance |

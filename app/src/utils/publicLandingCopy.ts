@@ -45,7 +45,7 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
     learning: {
       title: 'Dein Lernen.\nDein Tempo.',
       eyebrow: 'Verstehen. Üben. Weiterkommen.',
-      imageCaption: 'KI-generiertes Symbolbild',
+      imageCaption: 'KI-generiert',
       scenes: {
         label: 'Zwei Einblicke ins Lernen',
         writing: 'Mit Stift & Papier',
@@ -83,7 +83,7 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
     learning: {
       title: 'Your learning.\nYour pace.',
       eyebrow: 'Understand. Practise. Progress.',
-      imageCaption: 'AI-generated illustration',
+      imageCaption: 'AI-generated',
       scenes: {
         label: 'Two glimpses of learning',
         writing: 'With pen & paper',

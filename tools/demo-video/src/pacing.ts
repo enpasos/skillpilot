@@ -5,6 +5,8 @@ export interface AnchoredNarrationAudio {
   filePath: string;
   anchorMs: number;
   durationMs: number;
+  /** Optional pause location inside this segment's final captured reading wait. */
+  holdAtMs?: number;
 }
 
 export interface NarrationPacingPlan {
@@ -22,8 +24,9 @@ export interface NarrationPacingOptions {
 
 /**
  * Keeps narration attached to its recorded browser event by inserting a
- * freeze immediately after that event when the original interval is too
- * short. Later event anchors shift by the accumulated holds.
+ * pause before the following event when the original interval is too short.
+ * Prefer a known reading-wait location within the current segment; otherwise
+ * retain the interval-end fallback. Later anchors shift by accumulated holds.
  */
 export function createNarrationPacingPlan(
   sources: readonly AnchoredNarrationAudio[],
@@ -54,6 +57,12 @@ export function createNarrationPacingPlan(
 
     const next = sources[index + 1];
     const nextAnchor = next?.anchorMs ?? options.sourceVideoDurationMs;
+    if (source.holdAtMs !== undefined) {
+      requireNonNegativeInteger(source.holdAtMs, `holdAtMs for ${source.id}`);
+      if (source.holdAtMs < source.anchorMs || source.holdAtMs > nextAnchor) {
+        throw new Error(`Narration hold ${source.id} must stay inside its recorded segment`);
+      }
+    }
     const requiredIntervalMs = source.durationMs + (next ? options.minimumGapMs : tailPaddingMs);
     const recordedIntervalMs = Math.max(0, nextAnchor - source.anchorMs);
     const holdDurationMs = Math.max(0, requiredIntervalMs - recordedIntervalMs);
@@ -72,7 +81,7 @@ export function createNarrationPacingPlan(
       endMs: startMs + source.durationMs,
     });
     if (holdDurationMs > 0) {
-      const holdAtMs = nextAnchor;
+      const holdAtMs = source.holdAtMs ?? nextAnchor;
       const previous = holds.at(-1);
       if (previous?.atMs === holdAtMs) {
         const mergedDurationMs = previous.durationMs + holdDurationMs;

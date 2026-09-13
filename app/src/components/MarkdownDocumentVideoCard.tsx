@@ -1,6 +1,14 @@
 import { forwardRef, useCallback, useId, useImperativeHandle, useRef } from 'react'
 import { ExternalLink, Play } from 'lucide-react'
 
+export interface MarkdownDocumentVideoTrack {
+  src: string
+  srcLang: string
+  label: string
+  kind?: 'subtitles' | 'captions'
+  default?: boolean
+}
+
 interface MarkdownDocumentVideoCardProps {
   url: string
   eyebrow: string
@@ -8,6 +16,8 @@ interface MarkdownDocumentVideoCardProps {
   description: string
   openLabel: string
   sectionId?: string
+  poster?: string
+  tracks?: readonly MarkdownDocumentVideoTrack[]
 }
 
 export interface MarkdownDocumentVideoCardHandle {
@@ -21,8 +31,11 @@ export const MarkdownDocumentVideoCard = forwardRef<MarkdownDocumentVideoCardHan
   description,
   openLabel,
   sectionId,
+  poster,
+  tracks,
 }, forwardedRef) => {
   const titleId = useId()
+  const descriptionId = `${titleId}-description`
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const play = useCallback(async () => {
@@ -49,7 +62,7 @@ export const MarkdownDocumentVideoCard = forwardRef<MarkdownDocumentVideoCardHan
             <h2 id={titleId} className="m-0 text-2xl font-bold tracking-tight text-white sm:text-3xl">
               {title}
             </h2>
-            <p className="mb-0 mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+            <p id={descriptionId} className="mb-0 mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
               {description}
             </p>
           </div>
@@ -64,14 +77,27 @@ export const MarkdownDocumentVideoCard = forwardRef<MarkdownDocumentVideoCardHan
           </a>
         </div>
         <video
+          key={url}
           ref={videoRef}
           className="aspect-video w-full rounded-2xl border border-white/10 bg-black object-contain shadow-xl"
           aria-label={title}
+          aria-describedby={descriptionId}
           controls
           playsInline
           preload="metadata"
           src={url}
+          poster={poster}
         >
+          {tracks?.map((track) => (
+            <track
+              key={`${track.srcLang}:${track.src}`}
+              src={track.src}
+              srcLang={track.srcLang}
+              label={track.label}
+              kind={track.kind ?? 'captions'}
+              default={track.default}
+            />
+          ))}
           <a href={url}>{openLabel}</a>
         </video>
       </div>

@@ -168,6 +168,13 @@ try {
       continue
     }
     assert(await marketplace.isVisible(), 'Marketplace instructions do not depend on the download index')
+    const installInstructions = await page.getByTestId('claude-plugin-marketplace-navigation').innerText()
+    assert(installInstructions.includes(language === 'de' ? '„Einstellungen“ → „Plugins“' : 'Settings → Plugins'),
+      'the guide follows the supplied Claude settings navigation')
+    assert(installInstructions.includes(language === 'de'
+      ? '„Automatisch synchronisieren“ eingeschaltet'
+      : 'Automatically sync enabled'),
+    'the guide enables automatic synchronization for the approved marketplace route')
     assert(await guide.locator(':scope > summary').isVisible(), 'the file-upload fallback remains discoverable')
     assert.equal(await guide.getAttribute('open'), null, 'the alternative route starts collapsed')
     assert.equal(await installMode.getAttribute('aria-pressed'), 'true')

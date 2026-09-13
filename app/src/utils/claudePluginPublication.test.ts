@@ -298,10 +298,13 @@ const marketplaceLane = JSON.parse(readFileSync(marketplaceLanePath, 'utf8')) as
     marketplaceUiSwitchAllowed?: boolean
     firstPartyGuideDecision?: {
       status?: string
+      approvedAt?: string
+      approvedBy?: string
       candidateVersion?: string
       candidateSha256?: string
       repositoryRevision?: string
       repositoryTreeSha256?: string
+      evidenceRef?: string
     }
     evidence?: MarketplaceEvidence[]
   }
@@ -315,18 +318,22 @@ assert.equal(marketplaceLane.plugin?.version, candidateManifest.version)
 assert.equal(marketplaceLane.plugin?.directInstallSha256, productionIndex.plugins[0]?.sha256)
 assert.equal(
   marketplaceLane.activation?.firstPartyUiRoute,
-  'controlled_direct_install_beta',
-  'repository publication still waits for its own Marketplace guide decision',
+  'personal_git_marketplace',
+  'the current candidate has its own explicit Marketplace guide decision',
 )
 assert.equal(
   marketplaceLane.activation?.marketplaceUiSwitchAllowed,
-  false,
-  'the previous candidate guide decision does not transfer to a new version',
+  true,
+  'guide-only approval enables guidance without claiming client acceptance',
 )
 const guideDecision = marketplaceLane.activation?.firstPartyGuideDecision
-assert.equal(guideDecision?.status, 'pending')
-assert.equal(guideDecision?.candidateVersion, null)
-assert.equal(guideDecision?.candidateSha256, null)
+assert.equal(guideDecision?.status, 'approved')
+assert.equal(guideDecision?.approvedBy, 'product-owner')
+assert.equal(new Date(guideDecision?.approvedAt ?? '').toISOString(), guideDecision?.approvedAt)
+assert.equal(guideDecision?.candidateVersion, candidateManifest.version)
+assert.equal(guideDecision?.candidateSha256, productionIndex.plugins[0]?.sha256)
+assert.equal(guideDecision?.evidenceRef,
+  'docs/quickstart/video-production.md#guide-freigabe-vom-13-september-2026')
 const repositoryEvidence = marketplaceLane.activation?.evidence?.find(
   entry => entry.id === 'public-repository-default-branch',
 )
@@ -348,8 +355,9 @@ if (repositoryEvidence?.status === 'pending') {
   assert.match(repositoryEvidence?.evidenceRef ?? '',
     /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u)
 }
-assert.equal(guideDecision?.repositoryRevision, null)
-assert.equal(guideDecision?.repositoryTreeSha256, null)
+assert.equal(repositoryEvidence?.status, 'pass', 'guide approval needs verified publication first')
+assert.equal(guideDecision?.repositoryRevision, repositoryEvidence?.revision)
+assert.equal(guideDecision?.repositoryTreeSha256, repositoryEvidence?.treeSha256)
 for (const pendingEvidenceId of [
   'clean-account-marketplace-install',
   'uploaded-plugin-migration-and-marketplace-refresh',
@@ -369,7 +377,7 @@ for (const pendingEvidenceId of [
   assert.equal(evidence?.verifiedAt, null)
   assert.equal(evidence?.evidenceRef, null)
 }
-assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, false)
+assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, marketplaceLane.activation?.marketplaceUiSwitchAllowed)
 
 // Preparing a replacement must not rewrite the actual 1.1.1 publication or
 // turn its withdrawn guide into evidence for the new candidate.
