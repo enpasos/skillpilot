@@ -1460,7 +1460,11 @@ try {
       assert.equal(await caption.getAttribute('srclang'), language)
       assert.equal(await caption.getAttribute('label'), language === 'en' ? 'English' : 'Deutsch')
       assert.equal(await caption.getAttribute('kind'), 'captions')
-      assert.notEqual(await caption.getAttribute('default'), null)
+      assert.equal(await caption.getAttribute('default'), null, 'quickstart captions are opt-in')
+      assert.equal(await caption.evaluate((track: HTMLTrackElement) => track.track.mode), 'disabled')
+      await caption.evaluate((track: HTMLTrackElement) => { track.track.mode = 'showing' })
+      assert.equal(await caption.evaluate((track: HTMLTrackElement) => track.track.mode), 'showing',
+        'captions remain selectable in the player')
       const descriptionId = await quickstartVideo.getAttribute('aria-describedby')
       assert(descriptionId, 'video exposes the language and recording disclosure accessibly')
       assert.equal(await page.locator(`[id="${descriptionId}"]`).textContent(), quickstartCopy.videoDescription)
@@ -1493,6 +1497,9 @@ try {
       assert.equal(new URL(page.url()).pathname, `/quickstart/${otherLanguage}`)
       assert.equal(await page.locator('video').getAttribute('src'), otherAsset.url)
       assert.equal(await page.locator('video track').getAttribute('srclang'), otherLanguage)
+      assert.equal(await page.locator('video track').getAttribute('default'), null)
+      assert.equal(await page.locator('video track').evaluate((track: HTMLTrackElement) => track.track.mode), 'disabled',
+        'the other language also starts with captions off')
     }
 
     await context.close()

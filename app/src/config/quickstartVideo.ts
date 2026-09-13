@@ -9,6 +9,7 @@ interface QuickstartVideo {
 
 // Each page uses its own narrated tutorial, independent of historical review evidence.
 // A missing export never falls back to a video in the other language.
+// Captions stay available in the player without being enabled by default.
 export const QUICKSTART_VIDEOS: Record<LabelLanguage, QuickstartVideo | null> = {
   de: {
     url: '/media/quickstart/claude/2026-09-13/de/sha256-807d717e651bc789a6c5dadb0d2a6015510862c5e4ecfe517623a596cacf945a.mp4',
@@ -19,7 +20,7 @@ export const QUICKSTART_VIDEOS: Record<LabelLanguage, QuickstartVideo | null> = 
         srcLang: 'de',
         label: 'Deutsch',
         kind: 'captions',
-        default: true,
+        default: false,
       },
     ],
   },
@@ -32,7 +33,7 @@ export const QUICKSTART_VIDEOS: Record<LabelLanguage, QuickstartVideo | null> = 
         srcLang: 'en',
         label: 'English',
         kind: 'captions',
-        default: true,
+        default: false,
       },
     ],
   },
