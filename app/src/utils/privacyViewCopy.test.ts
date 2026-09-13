@@ -19,8 +19,8 @@ const deTeacherSupervisionText = de.sections.find(section => section.title.inclu
 const enTeacherSupervisionText = en.sections.find(section => section.title.includes('Existing SkillPilot ID'))
   ?.paragraphs.join(' ') ?? ''
 
-assert(de.effectiveDate.includes('4. September 2026'), 'German privacy copy carries the current planning-activation date')
-assert(en.effectiveDate.includes('September 4, 2026'), 'English privacy copy carries the current planning-activation date')
+assert(de.effectiveDate.includes('13. September 2026'), 'German privacy copy carries the current revision date')
+assert(en.effectiveDate.includes('September 13, 2026'), 'English privacy copy carries the current revision date')
 assert(
   deTeacherSupervisionText.includes('Klassennamen')
     && deTeacherSupervisionText.includes('Namen oder Alias')
@@ -118,16 +118,16 @@ assert(
   'privacy copy makes no invitation, revocation, membership, seven-day, or thirty-day claims',
 )
 assert(
-  deAiText.includes('Visible Session')
+  deAiText.includes('Claude-Konto')
     && deAiText.includes('OAuth/MCP')
     && deAiText.includes('Toolanfragen und Argumente'),
-  'German privacy copy discloses both coach variants and explicit tool arguments',
+  'German privacy copy discloses the active Claude connection and structured tool arguments',
 )
 assert(
-  enAiText.includes('Visible Session')
+  enAiText.includes('Claude account')
     && enAiText.includes('OAuth/MCP')
     && enAiText.includes('tool requests and arguments'),
-  'English privacy copy discloses both coach variants and explicit tool arguments',
+  'English privacy copy discloses the active Claude connection and structured tool arguments',
 )
 assert(
   !deAiText.includes('ausschließlich ein temporäres Sitzungstoken')
@@ -196,6 +196,54 @@ assert(
   !de.sections.some(section => section.paragraphs.some(paragraph => paragraph.includes('sofern implementiert')))
     && !en.sections.some(section => section.paragraphs.some(paragraph => paragraph.includes('if implemented'))),
   'privacy copy describes the implemented deletion function without a future-feature qualifier',
+)
+
+for (const [language, copy] of [['de', de], ['en', en]] as const) {
+  assert(copy.sections.length === 11, `${language}: complete privacy sections`)
+  copy.sections.forEach((section, index) => {
+    assert(section.title.startsWith(`${index + 1}. `), `${language}: ordered section numbers`)
+    for (const link of section.links ?? []) {
+      assert(new URL(link.href).protocol === 'https:', `${language}: HTTPS source link`)
+    }
+  })
+  const text = JSON.stringify(copy)
+  for (const required of ['enpasos - Enterprise Patterns & Solutions GmbH', 'Heuhohlweg 42',
+    'workFeedback', 'outcomeFeedback', '31', '18', 'support@skillpilot.com']) {
+    assert(text.includes(required), `${language}: missing privacy boundary ${required}`)
+  }
+  assert(copy.sections[4].paragraphs.join(' ').includes('ChatGPT'), `${language}: separate ChatGPT status`)
+  assert(text.includes('https://www.anthropic.com/legal/privacy'), `${language}: provider privacy link`)
+  assert(text.includes('https://datenschutz.hessen.de/service/beschwerde-uebermitteln'), `${language}: complaint link`)
+}
+
+assert(
+  JSON.stringify(de).includes('SkillPilot Core wird in Deutschland gehostet')
+    && JSON.stringify(en).includes('SkillPilot Core is hosted in Germany'),
+  'hosting statement reflects the operator-confirmed Core location without extending it to AI providers',
+)
+assert(
+  JSON.stringify(de).includes('Pseudonymisierung, keine Anonymisierung')
+    && JSON.stringify(en).includes('pseudonymisation, not anonymisation')
+    && !JSON.stringify(de).includes('vollständig pseudonym')
+    && !JSON.stringify(en).includes('completely pseudonymously'),
+  'privacy copy does not confuse pseudonymity with anonymity',
+)
+assert(
+  JSON.stringify(de).includes('ohne Übersendung geheimer Zugangsschlüssel')
+    && JSON.stringify(en).includes('without sending your secret access keys')
+    && JSON.stringify(de).includes('separate Feedbackabgabe nicht automatisch')
+    && JSON.stringify(en).includes('does not automatically delete a separate feedback submission'),
+  'access proof does not solicit bearer secrets and profile deletion is not misrepresented as feedback deletion',
+)
+assert(
+  deRetentionText.includes('noch nicht ausgewiesen')
+    && enRetentionText.includes('have not yet been specified'),
+  'unknown production log and backup periods stay transparent rather than copying repository defaults',
+)
+assert(
+  JSON.stringify(de).includes('Einwilligung erlaubt keine zweckfremden Auswertungen')
+    && JSON.stringify(en).includes('this consent does not authorise unrelated analysis'),
+  'general privacy notice does not broaden the existing goal-specific feedback consent',
 )
 
 console.log('privacy view copy tests passed')

@@ -30,6 +30,14 @@ const storage = {
 
 assert.equal(hasAcceptedCurrentTerms(storage), false)
 
+assert.equal(String(CURRENT_TERMS_VERSION) !== '1.0.0', true, 'the material update must not reuse the previous acceptance version')
+values.set(TERMS_ACCEPTANCE_STORAGE_KEY, '1.0.0')
+assert.equal(
+  hasAcceptedCurrentTerms(storage),
+  false,
+  'accepting the previous published terms does not accept the September update',
+)
+
 values.set(TERMS_ACCEPTANCE_STORAGE_KEY, 'not-current')
 assert.equal(
   hasAcceptedCurrentTerms(storage),

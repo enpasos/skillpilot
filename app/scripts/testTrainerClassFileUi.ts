@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { chromium, type Browser } from 'playwright'
 
 import { startViteTestServer } from './viteTestServer'
+import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 
 const landscapeId = 'trainer-class-file-landscape'
 const studentId = '11111111-1111-4111-8111-111111111111'
@@ -86,11 +87,11 @@ try {
   const context = await browser.newContext({ locale: 'de-DE', timezoneId: 'Europe/Berlin' })
   await context.addInitScript((seed) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', seed.termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_trainer_landscape', seed.landscapeId)
     localStorage.setItem('skillpilot_classes', JSON.stringify([seed.classSession]))
-  }, { landscapeId, classSession })
+  }, { landscapeId, classSession, termsVersion: CURRENT_TERMS_VERSION })
 
   const page = await context.newPage()
   const browserErrors: string[] = []

@@ -1,5 +1,6 @@
 import { getLegalTermsCopy } from './legalTermsCopy'
 import { getLegalViewCopy } from './legalViewCopy'
+import { CURRENT_TERMS_VERSION } from './legalTermsVersion'
 
 const assert = {
   equal(actual: unknown, expected: unknown, message = 'values differ') {
@@ -22,14 +23,31 @@ assert.doesNotMatch(de.markdown, /^#\s/mu, 'the page header owns the only H1')
 assert.doesNotMatch(en.markdown, /^#\s/mu, 'the page header owns the only H1')
 
 for (const [language, markdown] of [['de', de.markdown], ['en', en.markdown]] as const) {
-  assert.match(markdown, /Version 1\.0\.0/u, `${language} copy identifies the accepted terms version`)
+  assert.equal(markdown.includes(`Version ${CURRENT_TERMS_VERSION}`), true, `${language} copy identifies the accepted terms version`)
+  assert.match(markdown, /(?:13\. September 2026|September 13, 2026)/u)
   assert.match(markdown, /enpasos - Enterprise Patterns & Solutions GmbH/u)
   assert.match(markdown, /\[.*(?:Impressum|Imprint).*\]\(\/imprint\)/u)
   assert.match(markdown, /\[.*(?:Datenschutzerklärung|Privacy Policy).*\]\(\/privacy\)/u)
   assert.match(markdown, /support@skillpilot\.com/u)
   assert.match(markdown, /Apache License, Version 2\.0/u)
-  assert.match(markdown, /13/u, `${language} copy includes the provider-specific ChatGPT age floor`)
-  assert.match(markdown, /(?:gesetzlichen Vertretung|parent or legal guardian)/u)
+  assert.match(markdown, /(?:gesetzlichen Vertretung|legal representative)/u)
+  assert.match(markdown, /https:\/\/www\.anthropic\.com\/legal\/consumer-terms/u)
+  assert.match(markdown, /(?:mindestens 18 Jahre|minimum age of 18)/u, `${language} copy includes the active Claude consumer age floor`)
+  assert.match(markdown, /(?:Zustimmung eines Elternteils hebt diese Anbietergrenze nicht auf|Parental permission does not override this provider restriction)/u)
+  assert.match(markdown, /(?:nicht anderen Personen zur Nutzung überlassen|must not be made available to other people)/u)
+  assert.match(markdown, /(?:Verbindung für ChatGPT ist derzeit nicht verfügbar|connection for ChatGPT is not currently available)/u)
+  assert.match(markdown, /(?:eigener ChatGPT-Integrationsabnahme|separate ChatGPT integration acceptance check)/u)
+  assert.match(markdown, /(?:Claude-App|Claude app)/u)
+  assert.match(markdown, /(?:Kameraaufnahmen|camera captures)/u)
+  assert.match(markdown, /(?:Voice Mode|voice mode)/u)
+  assert.match(markdown, /(?:Keine Chattexte an den SkillPilot Core|No chat text sent to the SkillPilot Core)/u)
+  assert.match(markdown, /(?:strukturierten Tooldaten|structured tool data)/u)
+  assert.match(markdown, /(?:Zusammenfassungen|summaries)/u)
+  assert.match(markdown, /(?:freiwillig Feedback|voluntarily submit feedback)/u)
+  assert.match(markdown, /(?:kein automatischer Export|not an automatic export)/u)
+  assert.match(markdown, /(?:separat übermittelte Feedback- und Supportnachrichten|Separately submitted feedback and support messages)/u)
+  assert.match(markdown, /(?:Lernmotive auf der Startseite sind KI-generierte Symbolbilder|learning scenes on the homepage are also AI-generated illustrations)/u)
+  assert.match(markdown, /(?:keine echten Produktaufnahmen|not actual product captures)/u)
   assert.match(markdown, /(?:unentgeltlich|free of charge)/u)
   assert.match(markdown, /(?:weder eine automatische Zahlungsverpflichtung|neither an automatic payment obligation)/u)
   assert.match(markdown, /(?:Sicherheitsmaßnahmen|security measures)/u)
@@ -66,6 +84,10 @@ assert.doesNotMatch(de.markdown, /Nutzung .* auf eigene Verantwortung/u)
 assert.doesNotMatch(en.markdown, /use .* at your own risk/u)
 assert.doesNotMatch(de.markdown, /Bloße Nichtnutzung löscht den pseudonymen Lernstand nicht/u)
 assert.doesNotMatch(en.markdown, /Merely ceasing use does not delete the pseudonymous learning state/u)
+assert.doesNotMatch(de.markdown, /derzeitige SkillPilot-Start mit ChatGPT/u)
+assert.doesNotMatch(en.markdown, /current SkillPilot start with ChatGPT/u)
+assert.doesNotMatch(de.markdown, /nicht automatisch das vollständige Chatprotokoll/u)
+assert.doesNotMatch(en.markdown, /not automatically the complete chat transcript/u)
 
 const deAcceptance = getLegalTermsCopy('de')
 const enAcceptance = getLegalTermsCopy('en')
@@ -77,6 +99,15 @@ assert.match(deAcceptance.storageError, /Zustimmung nicht speichern/u)
 assert.match(enAcceptance.storageError, /could not save the acceptance/u)
 assert.match(deAcceptance.summary, /nach 365 Tagen zur automatischen Löschung fällig/u)
 assert.match(enAcceptance.summary, /due for automatic deletion after 365 days/u)
+for (const summary of [deAcceptance.summary, enAcceptance.summary]) {
+  assert.equal(summary.includes(`Version ${CURRENT_TERMS_VERSION}`), true, 'the acceptance gate identifies the current version')
+  assert.match(summary, /(?:Aktualisiert|Updated):/u, 'the acceptance gate identifies the material update')
+  assert.match(summary, /(?:Claude-Beta|Claude beta)/u)
+  assert.match(summary, /(?:mindestens 18 Jahre|minimum age of 18)/u)
+  assert.match(summary, /(?:ChatGPT ist noch nicht verfügbar|ChatGPT is not available yet)/u)
+  assert.match(summary, /(?:keine Chattexte, Fotos oder Audiodaten|not chat text, photos, or audio)/u)
+  assert.match(summary, /(?:freiwillige Mitteilung|voluntary communication)/u)
+}
 for (const pattern of [
   /erfolgreiche ID-Erstellung/u,
   /aktive Laden oder Fortsetzen/u,

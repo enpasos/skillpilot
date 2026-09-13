@@ -46,6 +46,15 @@ export const PrivacyView: React.FC = () => {
                             {section.paragraphsAfterBullets?.map((paragraph) => (
                                 <p key={paragraph}>{paragraph}</p>
                             ))}
+                            {section.links && (
+                                <ul>
+                                    {section.links.map((link) => (
+                                        <li key={link.href}>
+                                            <a href={link.href} className="break-words underline">{link.label}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
                         </React.Fragment>
                     ))}
 

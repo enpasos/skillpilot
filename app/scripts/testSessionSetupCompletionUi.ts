@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type BrowserContext, type Page } from 'playwright'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../src/utils/curriculumDisplay'
 import { CANONICAL_GYMNASIUM_MATH_ID } from '../src/utils/curriculumQualityTrafficLight'
+import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import type {
   PersonalizationCompletedDecision,
   PersonalizationOption,
@@ -316,14 +317,14 @@ try {
   }).waitFor()
   assert(
     await termsPage.getByLabel('Deine SkillPilot-ID').count() === 0,
-    'learner setup remains hidden before accepting Terms 1.0.0',
+    'learner setup remains hidden before accepting the current Terms',
   )
   await termsPage.getByRole('checkbox', { name: /Ich akzeptiere die Nutzungsbedingungen/u }).check()
   await termsPage.getByRole('button', { name: 'Akzeptieren & Fortfahren' }).click()
   await termsPage.getByLabel('Deine SkillPilot-ID').waitFor()
   assert(
-    await termsPage.evaluate(() => localStorage.getItem('skillpilot_terms_accepted_version')) === '1.0.0',
-    'the first-party gate stores exactly the canonical Terms 1.0.0 acceptance',
+    await termsPage.evaluate(() => localStorage.getItem('skillpilot_terms_accepted_version')) === CURRENT_TERMS_VERSION,
+    'the first-party gate stores exactly the canonical current Terms acceptance',
   )
   await termsContext.close()
 
@@ -341,7 +342,7 @@ try {
   }).waitFor()
   assert(
     await trainerTermsPage.getByRole('heading', { name: 'Kurs vorbereiten' }).count() === 0,
-    'trainer setup remains hidden before accepting the same Terms 1.0.0',
+    'trainer setup remains hidden before accepting the same current Terms',
   )
   await trainerTermsPage.getByRole('checkbox', { name: /Ich akzeptiere die Nutzungsbedingungen/u }).check()
   await trainerTermsPage.getByRole('button', { name: 'Akzeptieren & Fortfahren' }).click()
@@ -376,11 +377,11 @@ try {
   await trainerTermsContext.close()
 
   const emptyTrainerContext = await browser.newContext({ locale: 'de-DE' })
-  await emptyTrainerContext.addInitScript(() => {
+  await emptyTrainerContext.addInitScript((termsVersion) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
     localStorage.setItem('skillpilot_trainer_landscape', 'obsolete-global-trainer-context')
-  })
+  }, CURRENT_TERMS_VERSION)
   const emptyTrainerPage = await emptyTrainerContext.newPage()
   emptyTrainerPage.setDefaultTimeout(60_000)
   const emptyTrainerErrors: string[] = []
@@ -413,12 +414,12 @@ try {
   await emptyTrainerContext.close()
 
   const directTrainerContext = await browser.newContext({ locale: 'de-DE' })
-  await directTrainerContext.addInitScript(() => {
+  await directTrainerContext.addInitScript((termsVersion) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_trainer_landscape', 'obsolete-global-trainer-context')
-  })
+  }, CURRENT_TERMS_VERSION)
   const directTrainerPage = await directTrainerContext.newPage()
   directTrainerPage.setDefaultTimeout(60_000)
   await installApi(directTrainerPage)
@@ -433,11 +434,11 @@ try {
   await directTrainerContext.close()
 
   const unavailableOverviewContext = await browser.newContext({ locale: 'de-DE' })
-  await unavailableOverviewContext.addInitScript(() => {
+  await unavailableOverviewContext.addInitScript((termsVersion) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
-  })
+  }, CURRENT_TERMS_VERSION)
   const unavailableOverviewPage = await unavailableOverviewContext.newPage()
   unavailableOverviewPage.setDefaultTimeout(60_000)
   await installApi(unavailableOverviewPage)
@@ -453,9 +454,9 @@ try {
   await unavailableOverviewContext.close()
 
   const unavailableCourseContext = await browser.newContext({ locale: 'de-DE' })
-  await unavailableCourseContext.addInitScript((rootLandscapeId) => {
+  await unavailableCourseContext.addInitScript(({ rootLandscapeId, termsVersion }) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_classes', JSON.stringify([{
       id: 'unavailable-course',
@@ -467,7 +468,7 @@ try {
       students: [],
       source: 'local-generated',
     }]))
-  }, CANONICAL_GYMNASIUM_ROOT_ID)
+  }, { rootLandscapeId: CANONICAL_GYMNASIUM_ROOT_ID, termsVersion: CURRENT_TERMS_VERSION })
   const unavailableCoursePage = await unavailableCourseContext.newPage()
   unavailableCoursePage.setDefaultTimeout(60_000)
   await installApi(unavailableCoursePage)
@@ -510,10 +511,10 @@ try {
   await blockedStorageContext.close()
 
   const context = await browser.newContext({ locale: 'de-DE' })
-  await context.addInitScript(() => {
+  await context.addInitScript((termsVersion) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
-  })
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
+  }, CURRENT_TERMS_VERSION)
 
   const returning = await openFreshSetupPage(context, baseUrl)
   await returning.page.getByLabel('Deine SkillPilot-ID').fill(existingLearnerId)

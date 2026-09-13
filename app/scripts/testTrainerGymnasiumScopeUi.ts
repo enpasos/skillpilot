@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Page } from 'playwright'
 
 import { startViteTestServer } from './viteTestServer'
+import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -321,9 +322,9 @@ try {
     ],
   })
   const context = await browser.newContext({ locale: 'de-DE' })
-  await context.addInitScript(({ fixtureClassId, fixtureMathId, fixtureRootId, fixtureStudentId }) => {
+  await context.addInitScript(({ fixtureClassId, fixtureMathId, fixtureRootId, fixtureStudentId, termsVersion }) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_trainer_landscape', fixtureMathId)
     localStorage.setItem('skillpilot_last_landscape', fixtureMathId)
@@ -344,6 +345,7 @@ try {
     fixtureMathId: mathLandscapeId,
     fixtureRootId: rootLandscapeId,
     fixtureStudentId: studentId,
+    termsVersion: CURRENT_TERMS_VERSION,
   })
 
   const page = await context.newPage()

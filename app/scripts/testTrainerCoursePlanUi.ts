@@ -7,6 +7,7 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 import { startViteTestServer } from './viteTestServer'
+import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import { CoursePlanLearningBook } from '../src/components/CoursePlanLearningBook'
 import type { TeacherCoursePlan } from '../src/coursePlanTypes'
 import { convertLearningGoal } from '../src/goalTypes'
@@ -462,11 +463,11 @@ try {
     ],
   })
   const context = await browser.newContext({ locale: 'de-DE' })
-  await context.addInitScript(({ fixtureClassId, fixtureLandscapeId, fixtureSession }) => {
+  await context.addInitScript(({ fixtureClassId, fixtureLandscapeId, fixtureSession, termsVersion }) => {
     if (sessionStorage.getItem('skillpilot_trainer_course_plan_seeded') === '1') return
     sessionStorage.setItem('skillpilot_trainer_course_plan_seeded', '1')
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_trainer_landscape', fixtureLandscapeId)
     localStorage.setItem('skillpilot_active_class', fixtureClassId)
@@ -475,6 +476,7 @@ try {
     fixtureClassId: classId,
     fixtureLandscapeId: landscapeId,
     fixtureSession: normalClassSession,
+    termsVersion: CURRENT_TERMS_VERSION,
   })
 
   const page = await context.newPage()
@@ -843,7 +845,7 @@ try {
   const personalizedBlockEnd = addDays(personalizedToday, 12)
   await personalizedContext.addInitScript((seed) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', seed.termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_trainer_landscape', seed.landscapeId)
     localStorage.setItem('skillpilot_active_class', seed.classId)
@@ -889,6 +891,7 @@ try {
   }, {
     landscapeId,
     classId: personalizedClassId,
+    termsVersion: CURRENT_TERMS_VERSION,
     coursePlanId: personalizedCoursePlanId,
     rootLandscapeId: personalizedRootLandscapeId,
     personalConfig: personalizedConfig,

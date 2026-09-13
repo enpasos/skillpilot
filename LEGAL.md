@@ -1,5 +1,12 @@
 # Rechtliche Hinweise (Legal Notice)
 
+**Aktualisiert: 13. September 2026.** Für den gehosteten Dienst gelten die
+[Nutzungsbedingungen](https://skillpilot.com/legal) (Version 1.1.0) und die
+[Datenschutzerklärung](https://skillpilot.com/privacy), jeweils auf Deutsch und
+Englisch. Die laufende Lern-Beta nutzt Claude; eine reguläre ChatGPT-Verbindung
+ist derzeit nicht verfügbar. Die Open-Source-Lizenz des Quellcodes ist von den
+Bedingungen des gehosteten Dienstes getrennt.
+
 ## Nutzung von Curricula und Lehrplänen
 
 SkillPilot verwendet Strukturen und Kompetenzbeschreibungen aus staatlichen Kerncurricula und Lehrplänen (z.B. des Landes Hessen).
@@ -29,24 +36,24 @@ Der Quellcode dieses Projekts (SkillPilot Software) ist unter der **Apache Licen
 > See the License for the specific language governing permissions and
 > limitations under the License.
 
-Dies betrifft die technische Implementierung, die Algorithmen und die Benutzeroberfläche. Die Inhalte der Curricula (siehe oben) unterliegen gesonderten Regelungen (§ 5 UrhG).
+Dies betrifft die unter dieser Lizenz veröffentlichte Software. Curriculumquellen, Marken, Inhalte Dritter und sonstige Materialien können eigenen rechtlichen Bedingungen unterliegen; ihre öffentliche Zugänglichkeit begründet für sich allein keine pauschale Nutzungsfreigabe.
 
 ## KI-Transparenz
 
-**Stand: 29. Juli 2026**
+**Stand: 13. September 2026**
 
-SkillPilot enthält dokumentiert KI-gestützte Lernziel-Visualisierungen, weitere didaktische Illustrationen und Comics, zwei Audioeinführungen, teilweise KI-unterstützt erstellte und redigierte Lerninhalte sowie den Lerncoach. Der Lerncoach läuft im Chat des jeweils gewählten, dort erkennbaren KI-Anbieters. SkillPilot stellt dafür Lernkontext und Werkzeuge bereit, betreibt aber kein eigenes Dialogmodell. Die aktuell angebotenen Verbindungswege und Datenflüsse beschreibt die [Datenschutzerklärung](https://skillpilot.com/privacy).
+SkillPilot enthält dokumentiert KI-gestützte Lernziel-Visualisierungen, weitere didaktische Illustrationen und Comics, zwei Audioeinführungen, teilweise KI-unterstützt erstellte und redigierte Lerninhalte sowie den Lerncoach. Auch die beiden fotorealistisch wirkenden Lernmotive auf der Startseite sind KI-generierte Symbolbilder und direkt als solche gekennzeichnet. Sie zeigen keine dokumentierten Nutzererfahrungen; abgebildete Geräteoberflächen, Roboter und Sprechblasen sind keine echten Produktaufnahmen oder zugesicherten Funktionen. Der Lerncoach läuft im Chat des jeweils gewählten, dort erkennbaren KI-Anbieters. SkillPilot stellt dafür Lernkontext und Werkzeuge bereit, betreibt aber kein eigenes Dialogmodell. Die aktuell angebotenen Verbindungswege und Datenflüsse beschreibt die [Datenschutzerklärung](https://skillpilot.com/privacy).
 
 Beide Audioeinführungen werden direkt am Player vorsorglich mit dem Hinweis gekennzeichnet, dass sie KI-erzeugte Stimmen enthalten; die genaue Anbieter-, Stimmen- und Segmentprovenienz ist noch nicht abschließend belegt. Die vorhandenen Bildbestände sind überwiegend didaktische Illustrationen und Schemata. „KI-generiert“ bedeutet nicht automatisch „Deepfake“. Für die Einordnung sind Realismus, Ähnlichkeit, Kontext und mögliche Täuschungswirkung maßgeblich; realistische oder sonst zweifelhafte Inhalte werden einzeln geprüft. Soweit eine Offenlegung am betreffenden Inhalt nach [Art. 50 KI-Verordnung](https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=de) erforderlich ist, ersetzt dieser allgemeine Hinweis sie nicht.
 
 Rechtsgrundlagen sind die [KI-Verordnung (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=de) und die [Änderungsverordnung (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=de). Zur Auslegung von Art. 50 berücksichtigt SkillPilot die [nicht bindenden Leitlinien der Europäischen Kommission](https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems).
 
-## Haftungsausschluss & Warnhinweise für SkillPilot
+## Nutzungshinweise und gesetzliche Rechte
 
 SkillPilot ist ein digitales Werkzeug zur Planung, Dokumentation und Reflexion von Lernprozessen.
 Es richtet sich an **Lernende** und **Trainer:innen/Lehrende**.
 
-Für die Nutzung von SkillPilot gelten die folgenden Hinweise:
+Die folgenden Hinweise erläutern Grenzen der Lernmodelle. Sie ersetzen weder die Nutzungsbedingungen des gehosteten Dienstes noch begründen sie einen Verzicht auf gesetzliche Rechte.
 
 ### 1. Keine Garantie für Vollständigkeit der Lernmodelle
 
@@ -79,7 +86,7 @@ Für **Trainer:innen/Lehrende**:
 
 * Es besteht **keine Garantie** für die jederzeitige technische Verfügbarkeit von SkillPilot.
 * Der Dienst kann **zeitweise eingeschränkt**, **gestört** oder **dauerhaft eingestellt** werden.
-* Funktionen, Inhalte oder Schnittstellen können **jederzeit geändert oder entfernt** werden.
+* Änderungen, Sperrungen und eine Einstellung des Dienstes richten sich nach den Nutzungsbedingungen. Gesetzliche Informations-, Gewährleistungs- und Beendigungsrechte bleiben unberührt.
 
 ### 5. Speicherung und Verlust von Daten
 
@@ -87,17 +94,9 @@ Für **Trainer:innen/Lehrende**:
 * Es kann trotz technischer und organisatorischer Maßnahmen zu **Datenverlust, Beschädigung oder versehentlicher Löschung** kommen.
 * Nutzer:innen sind selbst dafür verantwortlich, **wichtige Informationen zusätzlich außerhalb von SkillPilot zu sichern** (z. B. Exporte, eigene Backups).
 
-### 6. Haftungsausschluss
+### 6. Haftung und Gewährleistung
 
-* Die Nutzung von SkillPilot erfolgt **auf eigene Verantwortung**.
-* Soweit **gesetzlich zulässig**, übernimmt der Betreiber **keine Haftung** für:
-
-  * inhaltliche Fehler oder Unvollständigkeiten der Lernmodelle,
-  * fehlerhafte oder unzutreffende KI-Bewertungen,
-  * manipulierte oder falsche Eingaben von Nutzenden,
-  * technische Störungen, Ausfälle oder Datenverluste,
-  * mittelbare Schäden, Folgeschäden, entgangenen Gewinn oder sonstige Vermögensschäden.
-* Unberührt bleiben gesetzlich zwingende Haftungsregeln, insbesondere bei **Vorsatz, grober Fahrlässigkeit** sowie bei **Verletzung von Leben, Körper oder Gesundheit**.
+Die gesetzlichen Rechte bei Mängeln und sonstige zwingende Verbraucherrechte bleiben unberührt. Für den gehosteten Dienst gilt die differenzierte Haftungsregelung in Abschnitt 12 der [Nutzungsbedingungen](https://skillpilot.com/legal), insbesondere die unbeschränkte Haftung bei Vorsatz, grober Fahrlässigkeit und schuldhafter Verletzung von Leben, Körper oder Gesundheit. Diese Repository-Hinweise schaffen keinen zusätzlichen Haftungsausschluss. Die Gewährleistungsregelungen der Apache License 2.0 für den veröffentlichten Quellcode bleiben getrennt davon anwendbar.
 
 ### 7. Verantwortungsvolle Nutzung
 

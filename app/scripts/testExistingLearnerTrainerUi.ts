@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Download } from 'playwright'
 
 import { startViteTestServer } from './viteTestServer'
+import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import { getTeacherCoursePlanStorageId } from '../src/utils/teacherCoursePlanContext'
 
 const learnerId = '11111111-2222-4333-8444-555555555555'
@@ -169,7 +170,7 @@ try {
     }
 
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', seed.termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_trainer_landscape', 'math')
     localStorage.setItem('skillpilot_teacher_workspace_v1', 'retired-secret')
@@ -249,6 +250,7 @@ try {
     mathCoursePlanId,
     personalConfig,
     secondStoredPersonalConfig,
+    termsVersion: CURRENT_TERMS_VERSION,
   })
 
   const page = await context.newPage()

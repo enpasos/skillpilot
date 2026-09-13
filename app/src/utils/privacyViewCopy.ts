@@ -5,6 +5,7 @@ export interface PrivacyViewSectionCopy {
   paragraphs: string[]
   bullets?: string[]
   paragraphsAfterBullets?: string[]
+  links?: { label: string; href: string }[]
 }
 
 export interface PrivacyViewCopy {
@@ -23,15 +24,16 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
     ? {
         backToApp: 'Back to App',
         title: 'Privacy Policy',
-        effectiveDate: 'Date: September 4, 2026',
+        effectiveDate: 'Date: September 13, 2026',
         intro:
-          'We appreciate your interest in SkillPilot. Protecting your privacy is very important to us. Below we provide detailed information about how we handle your data.',
+          'SkillPilot stores your learning progress, not your conversation with the coach. This notice explains the data processed by SkillPilot, the separate role of your AI provider, and your choices. The ongoing learning beta uses Claude; a regular ChatGPT connection is not currently available.',
         sections: [
           {
-            title: '1. Pseudonymous Use',
+            title: '1. Controller and Pseudonymous Use',
             paragraphs: [
-              'SkillPilot is designed to be used completely pseudonymously. We do not require registration with a real name or email address. Your learning progress is stored exclusively under a randomly generated SkillPilot ID (UUID).',
-              'This ID is the only key to your data. If you lose this ID, we cannot restore your learning status, as we have no link to your person.',
+              'The controller for the SkillPilot service is enpasos - Enterprise Patterns & Solutions GmbH, Heuhohlweg 42, 61462 Königstein, Germany. Contact: support@skillpilot.com. Further company details are in the Imprint.',
+              'You can use the learning functions without registering a real name or email address. Learning progress is assigned to a randomly generated SkillPilot ID (UUID). This is pseudonymisation, not anonymisation: the ID, learning data, technical connection data and any information you voluntarily provide may still be personal data.',
+              'The permanent SkillPilot ID is the full-access key to your learning state. Anyone who knows it can use that access. Keep it secret, including in screenshots and support messages. Without the ID or your own saved copy, we generally cannot recover your learning state because there is no name-based account recovery.',
             ],
           },
           {
@@ -42,7 +44,8 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             bullets: [
               'Your chosen learning path (curriculum/landscape).',
               'Your current learning status (mastery) for individual skills.',
-              'Your planned learning goals (frontier).',
+              'Your selected subjects, learning focus, active goal and permitted next goals (frontier).',
+              'Structured learning and review results, completion times, recall scheduling and, where used, numerical exam results and your own memory-card content.',
               'Your optional personal subject schedules and whether you have enabled plan-guided learning.',
               'The time of your last successful activity for the deletion period.',
               'SkillPilot-side learning-session and connection data associated with the SkillPilot ID.',
@@ -61,50 +64,99 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '4. Use with AI Assistants',
+            title: '4. AI Assistants: Claude Beta',
             paragraphs: [
-              'SkillPilot currently supports two separate ChatGPT connection variants. In the Visible Session variant, a temporary session token is shown in the prepared start message and in the chat; it expires after no more than 24 hours. In the multilingual OpenAI OAuth/MCP App variant, ChatGPT connects to SkillPilot through an OAuth authorization. The permanent SkillPilot ID remains inside SkillPilot and is not included in the chat, OAuth principal, or MCP tool contract.',
-              'The AI provider receives the learning context and tool results required for coaching, as well as everything you enter or upload in its chat. SkillPilot receives the explicit tool requests and arguments needed to read or update your learning state, but not the complete chat transcript. OAuth credentials, temporary connection data, and provider-side conversation data are processed and retained according to the respective technical purpose and the provider’s own terms.',
+              'When you choose Claude, Anthropic processes your conversation under your Claude account. This includes what you type, photos you upload or take with the app camera, files and voice inputs when using Voice Mode. SkillPilot supplies the learning context needed for coaching, such as the current goal, relevant progress, tasks, recall cards and confirmed tool results. This also makes those learning data available to Anthropic.',
+              'The OAuth/MCP connection and the temporary learning session have separate purposes. OAuth authorises access to the interface; the learning session selects the learner you started in SkillPilot. The prepared start message contains a temporary session reference, normally valid for 24 hours. Treat it as a credential. SkillPilot does not put the permanent SkillPilot ID in the prepared chat message or the coach tool contract.',
+              'SkillPilot receives structured tool requests and arguments, for example goal and session references, completion decisions, right/wrong results and permitted numerical scores. The coach assesses your work and composes its own explanations and success messages in the Claude chat. Answers, solution steps, chat extracts, summaries, workFeedback, outcomeFeedback and other free-text assessment explanations are not permitted coach inputs to the SkillPilot Core and must not be stored in learning state, replay data or diagnostics. The integration does not transmit your photos, audio or chat transcript to SkillPilot.',
+              'This restriction does not prevent you from deliberately typing personal information into a separate feedback form or support email. Please do not include complete chats, credentials, sensitive information or unnecessary information about other people there.',
+              'Anthropic is responsible for processing in its own service under its privacy terms, including retention, safety review and any model improvement depending on your account and settings. SkillPilot cannot change those settings or delete your Claude conversations. Check the provider’s data controls before use. Personal Claude accounts require at least age 18; parental permission does not override that restriction.',
+            ],
+            links: [
+              { label: 'Anthropic Privacy Policy and data controls', href: 'https://www.anthropic.com/legal/privacy' },
+              { label: 'Anthropic Consumer Terms', href: 'https://www.anthropic.com/legal/consumer-terms' },
             ],
           },
           {
-            title: '5. Transfer to Third Parties',
+            title: '5. ChatGPT: Not Currently Available',
             paragraphs: [
-              'We do not sell your data and do not share it with unauthorized third parties. When you choose an AI integration, the selected provider processes the conversation and the learning context returned to it under its own privacy and retention terms. Our services are hosted on secure servers.',
+              'The public learning beta runs with Claude. ChatGPT is planned only after stabilisation, a focused check of the actual ChatGPT integration and the official submission process. This notice is not an offer of a second ChatGPT beta or a claim that an older plugin link provides the current service. Before any public activation, the applicable connection and privacy information must reflect the integration actually released. The same rule against coach-transmitted chat free text applies to the ChatGPT adapter.',
             ],
           },
           {
-            title: '6. Storage Period, Activity, and Deletion',
+            title: '6. Hosting, Recipients and International Processing',
+            paragraphs: [
+              'SkillPilot Core is hosted in Germany. Operating the website involves processing technical connection data such as IP address, request time, requested resource and response status. Authorised operators and infrastructure providers may process data as needed to deliver, secure and maintain the service. Correspondence is also processed through the email service used for support. We do not sell your learning data.',
+              'German hosting of the Core does not mean that all data remain in Germany: if you use Claude, your inputs and the learning context returned to it are processed by Anthropic, including in the United States and other countries according to its privacy terms. Anthropic describes applicable adequacy decisions and contractual safeguards there. Its account, retention and transfer rules are separate from SkillPilot’s.',
+              'Opening an external link, downloading a plugin from an external source or contacting a third-party service creates a connection to that provider. Merely viewing SkillPilot’s homepage does not start a Claude learning session. Access by authorities or other recipients is limited to an applicable legal requirement or another lawful basis.',
+            ],
+            links: [{ label: 'Anthropic: international transfers and recipients', href: 'https://www.anthropic.com/legal/privacy' }],
+          },
+          {
+            title: '7. Purposes and Legal Bases',
+            paragraphs: [
+              'We process the learning profile and the connection data necessary for the functions you request to provide the learning service under Article 6(1)(b) GDPR. Without these data, the corresponding functions cannot be provided. Viewing public information does not require a learning profile.',
+              'Technical delivery, proportionate security and fault diagnosis are based on Article 6(1)(f) GDPR. Our legitimate interests are a reliable service, prevention of misuse and correction of faults. Contract-related support is covered by Article 6(1)(b); other correspondence by Article 6(1)(f), in the interest of answering your enquiry. Where a statutory obligation requires processing, Article 6(1)(c) applies.',
+              'Optional learning-goal feedback is processed on the basis of your express consent under Article 6(1)(a) GDPR. Accepting the Terms of Use is not blanket consent to optional processing. You can use the learning service without submitting feedback.',
+            ],
+          },
+          {
+            title: '8. Voluntary Feedback and Support',
+            paragraphs: [
+              'You can open feedback for the automatically selected current learning goal from the cockpit, including feedback about coach behaviour. The learning-goal book also links to this feedback workflow. Only after you submit the form do we receive your own feedback text, selected perspective, goal and publication context, a random feedback ID, submission time and the recorded consent/notice version. This is separate from the coach interface, not an automatic chat export or a mastery assessment.',
+              'Feedback is used exclusively to review and, where appropriate, improve the displayed learning goal based on your observations. Reports about coach behaviour are considered in relation to that goal; this consent does not authorise unrelated analysis or general model training. Authorised reviewers may use technical services and automated assistance for this review; curricular changes require human approval. The form does not request your permanent SkillPilot ID, attachments or a chat transcript. Save the feedback ID for enquiries or withdrawal of consent.',
+              'Unprocessed feedback is deleted during normal operation no later than 31 days after receipt. Once review has begun, it is retained only as long as necessary for that review and an expressly commissioned improvement. The notice and consent shown at the form apply in addition to this policy. Feedback is stored separately from learning profiles; deleting your learning profile does not automatically delete a separate feedback submission.',
+              'If you email support, we receive your sender address, message and anything you attach. We use these to handle your enquiry and retain them for that purpose and, where necessary, applicable statutory obligations or legal claims. Do not send permanent IDs, temporary session credentials or full learning chats. We will agree a suitable secure way to verify access if needed.',
+            ],
+          },
+          {
+            title: '9. Browser Storage and Technical Diagnostics',
+            paragraphs: [
+              'SkillPilot uses browser storage for your active access, optionally saved profiles, local teacher data, language and display preferences, the accepted Terms version and locally cached application resources. This includes local storage and the application cache; a download is a separate file. Technically necessary device storage or access for a service expressly requested by you is governed by Section 25(2) TDDDG. Any non-essential access requiring consent is not authorised by merely accepting the Terms.',
+              'You can clear website data in your browser. This removes local settings and may remove your only saved access key; export information you wish to keep first. Clearing the browser does not delete your server-side learning state or downloaded files. A password-protected export does not protect an unlocked browser.',
+              'Operational diagnostics can include timestamps, tool names, response status, error codes, durations and pseudonymous correlation references. These are not anonymous data. Current coach-result, OAuth and feedback routes exclude request bodies from general request logging. Learner answers and coach-generated feedback must not enter these diagnostics. Separately enabled debug or legacy-route tracing can process redacted technical request and response fields; field-based redaction is not automatic detection of every personal detail. Technical logs and backups are separate from the active learning state.',
+            ],
+          },
+          {
+            title: '10. Storage Period, Activity, and Deletion',
             paragraphs: [
               'After 365 consecutive days without successful activity, the active learning state stored under your SkillPilot ID in the SkillPilot database, including the associated SkillPilot learning sessions and SkillPilot connections, becomes due for automatic deletion and is removed during the next automatic deletion run.',
               'Only the following count as activity: successful creation of a SkillPilot ID; foreground loading or resuming of the learning state in the SkillPilot web interface; a server-completed import or export of signed learner data; a learner-state change successfully stored on the server; a successfully completed SkillPilot session or AI-provider connection action; and a valid Coach/MCP call that SkillPilot completes with a successful domain result. Background GET requests, SSE traffic, OAuth token refreshes, merely selecting or opening a local file, and server operations that do not complete or are domain-rejected do not count and do not restart the 365-day period.',
               'You can delete the same active server-side data at any time using the designated function in the SkillPilot web interface. The SkillPilot ID can then no longer be used for that learning state.',
               'Manual or automatic deletion does not delete downloaded or other local files, or chats or other data held by an AI provider. Existing backup copies are not part of the active learning state. Neither the delete function nor the 365-day expiry immediately deletes each backup copy individually. Mandatory legal retention obligations and other lawful exceptions remain unaffected.',
+              'Expiry of a learning session or an OAuth token is an access limit, not a promise to delete every related record at that exact time. Revoking a provider connection does not itself delete learning progress. The separate feedback retention rule is explained above.',
+              'The specific retention periods for server logs and backups have not yet been specified in this notice. Please contact the controller for clarification; the 365-day learning-profile period must not be understood as their retention period. Statutory storage-limitation and erasure duties apply independently of this outstanding clarification.',
             ],
           },
           {
-            title: '7. Your Rights',
+            title: '11. Your Rights and Learning Recommendations',
             paragraphs: [
-              'Because we store your data pseudonymously, we can process information or deletion requests only if you provide the relevant SkillPilot ID or otherwise demonstrate access to it. You can contact us using the details below. Your statutory data-protection rights remain unaffected by the deletion function and automatic deletion.',
+              'Subject to the conditions of the GDPR, you have rights of access, rectification, erasure, restriction of processing and data portability. You can withdraw consent at any time for the future without affecting the lawfulness of processing before withdrawal.',
+              'You may object, on grounds relating to your particular situation, to processing based on Article 6(1)(f) GDPR. We will then stop that processing unless we demonstrate compelling overriding legitimate grounds or processing is needed for legal claims.',
+              'Contact us without sending your secret access keys. For learning-profile requests, we need an appropriate proof of access; a name alone usually cannot identify a pseudonymous profile. For separate feedback, use the feedback ID if available. We request only the additional information needed to allocate and verify the request securely. The built-in deletion function does not replace your statutory rights. We normally respond within one month; any lawful extension must be explained within that period.',
+              'You may lodge a complaint with a supervisory authority, in particular where you live, work or believe an infringement occurred. The Hessian Commissioner for Data Protection and Freedom of Information is the authority at the controller’s location.',
+              'SkillPilot uses stored progress and prerequisites to suggest next goals. Mastery estimates and automated suggestions are learning aids, not official grades or decisions with legal or similarly significant effects. You can review your progress in the cockpit, pause plan-guided learning and report incorrect assessments.',
             ],
+            links: [{ label: 'Submit a complaint to the Hessian data-protection authority', href: 'https://datenschutz.hessen.de/service/beschwerde-uebermitteln' }],
           },
         ],
-        contactTitle: '8. Contact',
+        contactTitle: '12. Contact',
         contactIntro: 'If you have any questions about data protection, please contact us at:',
         imprintLabel: 'Imprint',
       }
     : {
         backToApp: 'Zurück zur App',
         title: 'Datenschutzerklärung',
-        effectiveDate: 'Stand: 4. September 2026',
+        effectiveDate: 'Stand: 13. September 2026',
         intro:
-          'Wir freuen uns über Ihr Interesse an SkillPilot. Der Schutz Ihrer Privatsphäre ist für uns sehr wichtig. Nachstehend informieren wir Sie ausführlich über den Umgang mit Ihren Daten.',
+          'SkillPilot speichert Ihren Lernfortschritt, nicht Ihr Gespräch mit dem Coach. Diese Erklärung erläutert die Datenverarbeitung bei SkillPilot, die getrennte Rolle des KI-Anbieters und Ihre Wahlmöglichkeiten. Die laufende Lern-Beta nutzt Claude; eine reguläre ChatGPT-Verbindung ist derzeit nicht verfügbar.',
         sections: [
           {
-            title: '1. Pseudonyme Nutzung',
+            title: '1. Verantwortlicher und pseudonyme Nutzung',
             paragraphs: [
-              'SkillPilot ist so konzipiert, dass es vollständig pseudonym genutzt werden kann. Wir verlangen keine Registrierung mit Klarnamen oder E-Mail-Adresse. Ihr Lernfortschritt wird ausschließlich unter einer zufällig generierten SkillPilot-ID (UUID) gespeichert.',
-              'Diese ID ist der einzige Schlüssel zu Ihren Daten. Wenn Sie diese ID verlieren, können wir Ihren Lernstand nicht wiederherstellen, da wir keine Verknüpfung zu Ihrer Person haben.',
+              'Verantwortlich für den SkillPilot-Dienst ist die enpasos - Enterprise Patterns & Solutions GmbH, Heuhohlweg 42, 61462 Königstein, Deutschland. Kontakt: support@skillpilot.com. Weitere Unternehmensangaben stehen im Impressum.',
+              'Die Lernfunktionen können Sie ohne Registrierung mit Klarnamen oder E-Mail-Adresse verwenden. Der Lernfortschritt wird einer zufällig erzeugten SkillPilot-ID (UUID) zugeordnet. Das ist Pseudonymisierung, keine Anonymisierung: ID, Lerndaten, technische Verbindungsdaten und freiwillige Angaben können weiterhin personenbezogene Daten sein.',
+              'Die dauerhafte SkillPilot-ID ist der Schlüssel mit Vollzugriff auf Ihren Lernstand. Wer sie kennt, kann diesen Zugang nutzen. Halten Sie sie geheim, auch in Screenshots und Supportnachrichten. Ohne ID oder eigene gesicherte Kopie können wir Ihren Lernstand grundsätzlich nicht wiederherstellen, weil keine namensbezogene Kontowiederherstellung besteht.',
             ],
           },
           {
@@ -115,7 +167,8 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             bullets: [
               'Ihren gewählten Lernpfad (Curriculum/Landschaft).',
               'Ihren aktuellen Lernstand (Mastery) für einzelne Kompetenzen.',
-              'Ihre geplanten Lernziele (Frontier).',
+              'Ihre ausgewählten Fächer, Ihren Lernfokus, das aktive Ziel und zulässige nächste Lernziele (Frontier).',
+              'Strukturierte Lern- und Wiederholungsergebnisse, Abschlusszeitpunkte, Wiederholungsplanung und, soweit genutzt, numerische Prüfungsergebnisse sowie eigene Lernkarteninhalte.',
               'Ihre optionalen persönlichen Fachzeitpläne und ob Sie planbegleitetes Lernen aktiviert haben.',
               'Den Zeitpunkt Ihrer letzten erfolgreichen Tätigkeit für die Löschfrist.',
               'SkillPilot-seitige Lernsession- und Verbindungsdaten, die der SkillPilot-ID zugeordnet sind.',
@@ -134,35 +187,83 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '4. Nutzung mit KI-Assistenten',
+            title: '4. KI-Assistenten: Claude-Beta',
             paragraphs: [
-              'SkillPilot unterstützt derzeit zwei getrennte ChatGPT-Verbindungsvarianten. In der Variante „Visible Session“ wird ein temporäres Sitzungstoken in der vorbereiteten Startnachricht und im Chat angezeigt; es ist höchstens 24 Stunden gültig. In der mehrsprachigen OpenAI-OAuth/MCP-App-Variante verbindet sich ChatGPT über eine OAuth-Autorisierung mit SkillPilot. Die dauerhafte SkillPilot-ID bleibt innerhalb von SkillPilot und wird weder in den Chat noch in den OAuth-Principal oder den MCP-Toolvertrag aufgenommen.',
-              'Der KI-Anbieter erhält den für das Coaching benötigten Lernkontext und die Toolergebnisse sowie alles, was Sie in dessen Chat eingeben oder hochladen. SkillPilot erhält die ausdrücklichen Toolanfragen und Argumente, die zum Lesen oder Aktualisieren Ihres Lernstands erforderlich sind, jedoch nicht das vollständige Chatprotokoll. OAuth-Zugangsdaten, temporäre Verbindungsdaten und anbieterseitige Konversationsdaten werden entsprechend ihrem jeweiligen technischen Zweck und den Bedingungen des Anbieters verarbeitet und gespeichert.',
+              'Wenn Sie Claude wählen, verarbeitet Anthropic das Gespräch unter Ihrem Claude-Konto. Dazu gehören Ihre Texteingaben, hochgeladene oder mit der App-Kamera aufgenommene Fotos, Dateien und bei Voice Mode die Spracheingaben. SkillPilot stellt den für das Coaching erforderlichen Lernkontext bereit, beispielsweise das aktuelle Ziel, relevante Lernstände, Aufgaben, Lernkarten und bestätigte Toolergebnisse. Auch diese Lerndaten werden dadurch für Anthropic verfügbar.',
+              'Die OAuth/MCP-Verbindung und die temporäre Lernsession haben unterschiedliche Aufgaben. OAuth autorisiert den Schnittstellenzugriff; die Lernsession wählt den von Ihnen in SkillPilot gestarteten Lernstand aus. Die vorbereitete Startnachricht enthält einen temporären Session-Verweis, regulär für 24 Stunden gültig. Behandeln Sie ihn als Zugangsdaten. SkillPilot setzt die dauerhafte SkillPilot-ID weder in die vorbereitete Chatnachricht noch in den Coach-Toolvertrag ein.',
+              'SkillPilot erhält strukturierte Toolanfragen und Argumente, etwa Ziel- und Session-Verweise, Abschlussentscheidungen, Richtig/Falsch-Ergebnisse und zulässige numerische Punktwerte. Der Coach beurteilt Ihre Arbeit und formuliert Erklärungen und Erfolgsantworten selbst im Claude-Chat. Antworten, Lösungswege, Chat-Auszüge, Zusammenfassungen, workFeedback, outcomeFeedback und andere ausformulierte Bewertungsbegründungen sind keine zulässigen Coach-Eingaben an den SkillPilot Core und dürfen weder im Lernstand noch in Wiederholungsantworten oder Diagnosen gespeichert werden. Die Integration überträgt Ihre Fotos, Audiodaten und Chatprotokolle nicht an SkillPilot.',
+              'Diese Grenze verhindert nicht, dass Sie selbst personenbezogene Angaben in ein separates Feedbackformular oder eine Support-E-Mail schreiben. Bitte übermitteln Sie dort keine vollständigen Chats, Zugangsdaten, sensiblen Angaben oder unnötigen Informationen über andere Personen.',
+              'Anthropic verantwortet die Verarbeitung im eigenen Dienst nach seinen Datenschutzbedingungen, einschließlich Aufbewahrung, Sicherheitsprüfung und möglicher Modellverbesserung je nach Konto und Einstellungen. SkillPilot kann diese Einstellungen nicht ändern und Ihre Claude-Gespräche nicht löschen. Prüfen Sie vor der Nutzung die Datenkontrollen des Anbieters. Persönliche Claude-Konten setzen mindestens 18 Jahre voraus; elterliche Zustimmung hebt diese Grenze nicht auf.',
+            ],
+            links: [
+              { label: 'Datenschutz und Datenkontrollen bei Anthropic', href: 'https://www.anthropic.com/legal/privacy' },
+              { label: 'Nutzungsbedingungen von Anthropic', href: 'https://www.anthropic.com/legal/consumer-terms' },
             ],
           },
           {
-            title: '5. Weitergabe an Dritte',
+            title: '5. ChatGPT: derzeit nicht verfügbar',
             paragraphs: [
-              'Wir verkaufen Ihre Daten nicht und geben sie nicht unbefugt an Dritte weiter. Wenn Sie eine KI-Integration wählen, verarbeitet der ausgewählte Anbieter die Konversation und den an ihn zurückgegebenen Lernkontext nach seinen eigenen Datenschutz- und Aufbewahrungsbedingungen. Das Hosting unserer Dienste erfolgt auf sicheren Servern.',
+              'Die öffentliche Lern-Beta findet mit Claude statt. ChatGPT ist erst nach Stabilisierung, gezielter Prüfung der echten ChatGPT-Integration und dem offiziellen Einreichungsweg vorgesehen. Diese Erklärung bietet weder eine zweite ChatGPT-Beta an noch bestätigt sie, dass ein älterer Plugin-Link den aktuellen Dienst bereitstellt. Vor einer öffentlichen Aktivierung müssen die Verbindungs- und Datenschutzhinweise dem tatsächlich freigegebenen Stand entsprechen. Das Verbot von Chat-Freitexten aus Coach-Aufrufen gilt ebenso für den ChatGPT-Adapter.',
             ],
           },
           {
-            title: '6. Speicherdauer, Tätigkeit und Löschung',
+            title: '6. Hosting, Empfänger und internationale Verarbeitung',
+            paragraphs: [
+              'SkillPilot Core wird in Deutschland gehostet. Beim Betrieb der Website werden technische Verbindungsdaten wie IP-Adresse, Anfragezeitpunkt, angeforderte Ressource und Antwortstatus verarbeitet. Befugte Betreiberpersonen und Infrastrukturdienstleister können Daten verarbeiten, soweit dies für Bereitstellung, Absicherung und Wartung erforderlich ist. Korrespondenz wird auch über den für Support eingesetzten E-Mail-Dienst verarbeitet. Wir verkaufen Ihre Lerndaten nicht.',
+              'Das deutsche Hosting des Core bedeutet nicht, dass sämtliche Daten in Deutschland bleiben: Bei Claude verarbeitet Anthropic Ihre Eingaben und den zurückgegebenen Lernkontext nach seinen Datenschutzbedingungen auch in den USA und weiteren Ländern. Anthropic erläutert dort einschlägige Angemessenheitsbeschlüsse und vertragliche Schutzmechanismen. Seine Konto-, Aufbewahrungs- und Übermittlungsregeln sind von SkillPilot getrennt.',
+              'Wenn Sie externe Links öffnen, ein Plugin aus einer externen Quelle beziehen oder einen Drittanbieterdienst kontaktieren, entsteht eine Verbindung zu diesem Anbieter. Der bloße Besuch der SkillPilot-Startseite startet keine Claude-Lernsession. Eine Offenlegung an Behörden oder andere Empfänger setzt eine anwendbare gesetzliche Verpflichtung oder eine andere zulässige Rechtsgrundlage voraus.',
+            ],
+            links: [{ label: 'Anthropic: internationale Übermittlungen und Empfänger', href: 'https://www.anthropic.com/legal/privacy' }],
+          },
+          {
+            title: '7. Zwecke und Rechtsgrundlagen',
+            paragraphs: [
+              'Das Lernprofil und die für Ihre gewünschten Funktionen notwendigen Verbindungsdaten verarbeiten wir zur Erfüllung des Lernservices nach Art. 6 Abs. 1 Buchst. b DSGVO. Ohne diese Daten können die entsprechenden Funktionen nicht bereitgestellt werden. Öffentlich zugängliche Informationen können Sie ohne Lernprofil ansehen.',
+              'Technische Bereitstellung, verhältnismäßige Absicherung und Fehlerdiagnose beruhen auf Art. 6 Abs. 1 Buchst. f DSGVO. Unsere berechtigten Interessen sind ein zuverlässiger Dienst, die Verhinderung von Missbrauch und die Behebung von Fehlern. Vertragsbezogener Support fällt unter Art. 6 Abs. 1 Buchst. b; sonstige Korrespondenz unter Art. 6 Abs. 1 Buchst. f, mit dem Interesse, Ihr Anliegen zu beantworten. Soweit eine gesetzliche Pflicht eine Verarbeitung verlangt, gilt Art. 6 Abs. 1 Buchst. c.',
+              'Freiwilliges Lernziel-Feedback verarbeiten wir auf Grundlage Ihrer ausdrücklichen Einwilligung nach Art. 6 Abs. 1 Buchst. a DSGVO. Die Zustimmung zu Nutzungsbedingungen ist keine pauschale Einwilligung in optionale Datenverarbeitung. Sie können den Lernservice ohne Feedbackabgabe nutzen.',
+            ],
+          },
+          {
+            title: '8. Freiwilliges Feedback und Support',
+            paragraphs: [
+              'Im Cockpit können Sie Feedback zum dort automatisch ausgewählten aktuellen Lernziel öffnen, auch zum Verhalten des Coaches. Auch das Lernzielbuch verlinkt auf diesen Feedbackablauf. Erst mit dem Absenden des Formulars erhalten wir Ihren selbst eingegebenen Feedbacktext, die ausgewählte Perspektive, den Ziel- und Publikationskontext, eine zufällige Feedback-ID, den Eingangszeitpunkt und die dokumentierte Einwilligungs- beziehungsweise Hinweisversion. Das ist ein eigener Vorgang außerhalb der Coach-Schnittstelle, kein automatischer Chatexport und keine Mastery-Bewertung.',
+              'Das Feedback dient ausschließlich dazu, das angezeigte Lernziel anhand Ihrer Beobachtungen zu prüfen und gegebenenfalls zu verbessern. Hinweise zum Coach-Verhalten werden in Bezug auf dieses Ziel betrachtet; die Einwilligung erlaubt keine zweckfremden Auswertungen oder allgemeines Modelltraining. Befugte Prüfende können dafür technische Dienste und automatisierte Unterstützung nutzen; Änderungen am Curriculum erfordern eine menschliche Freigabe. Das Formular fordert weder Ihre dauerhafte SkillPilot-ID noch Anhänge oder ein Chatprotokoll an. Bewahren Sie die Feedback-ID für Rückfragen oder einen Widerruf auf.',
+              'Unbearbeitetes Feedback wird im laufenden Betrieb spätestens 31 Tage nach Eingang gelöscht. Sobald eine Prüfung begonnen hat, wird es nur so lange aufbewahrt, wie es für diese Prüfung und eine ausdrücklich beauftragte Verbesserung erforderlich ist. Der Hinweis und die Einwilligung am Formular gelten ergänzend. Feedback wird getrennt vom Lernprofil gespeichert; das Löschen des Lernprofils löscht eine separate Feedbackabgabe nicht automatisch.',
+              'Bei E-Mails an den Support erhalten wir Ihre Absenderadresse, Ihre Nachricht und etwaige Anhänge. Wir verwenden sie zur Bearbeitung Ihres Anliegens und bewahren sie für diesen Zweck sowie erforderlichenfalls aufgrund gesetzlicher Pflichten oder zur Rechtsverfolgung auf. Senden Sie keine dauerhaften IDs, temporären Session-Zugangsdaten oder vollständigen Lernchats. Bei Bedarf vereinbaren wir einen geeigneten sicheren Weg zum Nachweis Ihres Zugriffs.',
+            ],
+          },
+          {
+            title: '9. Browserspeicher und technische Diagnosen',
+            paragraphs: [
+              'SkillPilot verwendet Browserspeicher für Ihren aktiven Zugang, optional gespeicherte Profile, lokale Lehrkraftdaten, Sprach- und Anzeigeeinstellungen, die akzeptierte Version der Nutzungsbedingungen und lokal zwischengespeicherte Anwendungsressourcen. Dazu gehören Local Storage und der Anwendungscache; ein Download ist eine separate Datei. Technisch notwendiges Speichern oder Auslesen auf Ihrem Gerät für einen ausdrücklich gewünschten Dienst richtet sich nach § 25 Abs. 2 TDDDG. Einwilligungspflichtige, nicht notwendige Zugriffe sind durch die bloße Annahme der Nutzungsbedingungen nicht erlaubt.',
+              'Sie können Websitedaten in Ihrem Browser löschen. Dadurch entfernen Sie lokale Einstellungen und möglicherweise Ihren einzigen gespeicherten Zugangsschlüssel; sichern Sie zuvor gewünschte Informationen. Das Löschen im Browser entfernt weder den serverseitigen Lernstand noch heruntergeladene Dateien. Ein passwortgeschützter Export schützt keinen entsperrten Browser.',
+              'Betriebsdiagnosen können Zeitpunkte, Toolnamen, Antwortstatus, Fehlercodes, Laufzeiten und pseudonyme Zuordnungsreferenzen enthalten. Das sind keine anonymen Daten. Aktuelle Coach-Ergebnis-, OAuth- und Feedbackrouten nehmen Anfrageinhalte von der allgemeinen Anfrageprotokollierung aus. Antworten von Lernenden und vom Coach formuliertes Feedback dürfen nicht in diese Diagnosen gelangen. Gesondert aktivierte Debug- oder Altrouten-Traces können redigierte technische Anfrage- und Antwortfelder verarbeiten; eine feldbezogene Redaktion erkennt nicht automatisch jede persönliche Angabe. Technische Protokolle und Sicherungskopien sind vom aktiven Lernstand getrennt.',
+            ],
+          },
+          {
+            title: '10. Speicherdauer, Tätigkeit und Löschung',
             paragraphs: [
               'Nach 365 aufeinanderfolgenden Tagen ohne erfolgreiche Tätigkeit ist der aktive, unter Ihrer SkillPilot-ID in der SkillPilot-Datenbank gespeicherte Lernstand einschließlich der zugehörigen SkillPilot-Lernsessions und SkillPilot-Verbindungen zur automatischen Löschung fällig und wird beim nächsten automatischen Löschlauf entfernt.',
               'Als Tätigkeit zählen ausschließlich die erfolgreiche Erstellung einer SkillPilot-ID, das aktive Laden oder Fortsetzen des Lernstands in der SkillPilot-Weboberfläche, ein vom Server abgeschlossener Import oder Export signierter Lerndaten, eine serverseitig erfolgreich gespeicherte Änderung des Lernstands, eine erfolgreich abgeschlossene SkillPilot-Sitzungs- oder KI-Anbieter-Verbindungsaktion sowie ein gültiger Coach-/MCP-Aufruf, den SkillPilot mit einem fachlich erfolgreichen Ergebnis abschließt. Hintergrund-GET-Anfragen, SSE-Verkehr, OAuth-Token-Aktualisierungen, das bloße Auswählen oder Öffnen einer lokalen Datei sowie vom Server nicht abgeschlossene oder fachlich abgewiesene Aktionen zählen nicht und starten die 365-Tage-Frist nicht neu.',
               'Dieselben aktiven serverseitigen Daten können Sie jederzeit über die dafür vorgesehene Funktion in der SkillPilot-Weboberfläche löschen. Danach kann die SkillPilot-ID nicht mehr für diesen Lernstand verwendet werden.',
               'Die manuelle oder automatische Löschung entfernt keine heruntergeladenen oder sonstigen lokalen Dateien und keine Chats oder sonstigen Daten bei einem KI-Anbieter. Bestehende Sicherungskopien gehören nicht zum aktiven Lernstand. Die Löschfunktion und der 365-Tage-Ablauf löschen sie nicht unmittelbar einzeln. Zwingende gesetzliche Aufbewahrungspflichten und andere zulässige Ausnahmefälle bleiben unberührt.',
+              'Der Ablauf einer Lernsession oder eines OAuth-Tokens begrenzt den Zugriff, ist aber keine Zusage, jeden zugehörigen Datensatz genau zu diesem Zeitpunkt zu löschen. Der Widerruf einer Anbieter-Verbindung löscht für sich allein keinen Lernfortschritt. Für Feedback gilt die oben beschriebene eigene Aufbewahrungsregel.',
+              'Die konkreten Aufbewahrungsfristen für Serverprotokolle und Sicherungskopien sind in dieser Erklärung noch nicht ausgewiesen. Bitte wenden Sie sich zur Klärung an den Verantwortlichen; die 365-Tage-Frist des Lernprofils ist nicht als deren Aufbewahrungsfrist zu verstehen. Gesetzliche Pflichten zur Speicherbegrenzung und Löschung gelten unabhängig von dieser noch offenen Konkretisierung.',
             ],
           },
           {
-            title: '7. Ihre Rechte',
+            title: '11. Ihre Rechte und Lernempfehlungen',
             paragraphs: [
-              'Da wir Ihre Daten pseudonym speichern, können wir Auskunfts- oder Löschanfragen nur bearbeiten, wenn Sie uns die betreffende SkillPilot-ID mitteilen oder den Zugriff darauf anderweitig nachweisen. Sie können dafür die unten genannten Kontaktdaten verwenden. Ihre gesetzlichen Datenschutzrechte bleiben von der Löschfunktion und der automatischen Löschung unberührt.',
+              'Unter den Voraussetzungen der DSGVO haben Sie Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit. Eine Einwilligung können Sie jederzeit für die Zukunft widerrufen; die Rechtmäßigkeit der Verarbeitung vor dem Widerruf bleibt unberührt.',
+              'Gegen eine Verarbeitung nach Art. 6 Abs. 1 Buchst. f DSGVO können Sie aus Gründen Ihrer besonderen Situation Widerspruch einlegen. Wir beenden diese Verarbeitung dann, sofern wir keine zwingenden überwiegenden schutzwürdigen Gründe nachweisen oder die Verarbeitung für Rechtsansprüche benötigen.',
+              'Kontaktieren Sie uns ohne Übersendung geheimer Zugangsschlüssel. Bei Anfragen zum Lernprofil benötigen wir einen geeigneten Zugriffsnachweis; ein Name allein identifiziert ein pseudonymes Profil in der Regel nicht. Bei separatem Feedback verwenden Sie möglichst die Feedback-ID. Wir fordern nur die zusätzlichen Angaben an, die für eine sichere Zuordnung und Prüfung erforderlich sind. Die eingebaute Löschfunktion ersetzt Ihre gesetzlichen Rechte nicht. Wir antworten grundsätzlich innerhalb eines Monats; eine zulässige Verlängerung muss innerhalb dieser Frist begründet werden.',
+              'Sie können sich bei einer Datenschutzaufsichtsbehörde beschweren, insbesondere an Ihrem Aufenthaltsort, Arbeitsplatz oder dem Ort eines vermuteten Verstoßes. Am Sitz des Verantwortlichen ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit zuständig.',
+              'SkillPilot nutzt gespeicherten Lernfortschritt und Voraussetzungen, um nächste Ziele vorzuschlagen. Mastery-Schätzungen und automatische Vorschläge sind Lernhilfen, keine amtlichen Noten oder Entscheidungen mit rechtlicher oder vergleichbar erheblicher Wirkung. Sie können Ihren Lernstand im Cockpit prüfen, planbegleitetes Lernen pausieren und fehlerhafte Bewertungen melden.',
             ],
+            links: [{ label: 'Beschwerde beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit', href: 'https://datenschutz.hessen.de/service/beschwerde-uebermitteln' }],
           },
         ],
-        contactTitle: '8. Kontakt',
+        contactTitle: '12. Kontakt',
         contactIntro: 'Bei Fragen zum Datenschutz erreichen Sie uns unter:',
         imprintLabel: 'Impressum',
       }

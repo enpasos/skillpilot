@@ -201,7 +201,16 @@ assert.match(submissionDossier, /openai_plugin_submission\.mjs/u);
 assert.match(submissionDossier, /ChatGPT im Webbrowser/u);
 assert.match(submissionDossier, /kein bestandener Realhost-Test/u);
 assert.match(submissionDossier, /Android-Unterstützung ist nicht zugesagt/u);
-assert.match(legalTermsVersion, /CURRENT_TERMS_VERSION = '1\.0\.0'/u);
+const currentTermsVersion = legalTermsVersion.match(
+  /export const CURRENT_TERMS_VERSION = ['"]((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*))['"]/u,
+)?.[1];
+assert.ok(currentTermsVersion, "The canonical Terms version must be a concrete semantic version.");
+for (const [label, source] of [["legal page", legalViewCopy], ["acceptance summary", legalTermsCopy]]) {
+  assert.match(source, /import \{ CURRENT_TERMS_VERSION \} from '\.\/legalTermsVersion'/u,
+    `${label} must import the canonical Terms version.`);
+  assert.ok(source.includes("Version ${CURRENT_TERMS_VERSION}"),
+    `${label} must display the canonical Terms version (${currentTermsVersion}).`);
+}
 for (const [label, source] of [
   ["legal", legalViewCopy],
   ["privacy", privacyViewCopy],

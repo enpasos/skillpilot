@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Page } from 'playwright'
 
 import { startViteTestServer } from './viteTestServer'
+import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -214,7 +215,7 @@ const testPlanningSubjectNavigation = async (browser: Browser, baseUrl: string) 
   const context = await browser.newContext({ locale: 'de-DE' })
   await context.addInitScript((seed) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', seed.termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_classes', JSON.stringify([{
       id: seed.classId,
@@ -226,7 +227,7 @@ const testPlanningSubjectNavigation = async (browser: Browser, baseUrl: string) 
       students: [{ id: seed.learnerId, name: 'Alex', accessMode: 'learner-id' }],
       source: 'existing-learner',
     }]))
-  }, { classId, landscapeId, rootLandscapeId, learnerId, personalConfig })
+  }, { classId, landscapeId, rootLandscapeId, learnerId, personalConfig, termsVersion: CURRENT_TERMS_VERSION })
   const page = await context.newPage()
   const browserErrors: string[] = []
   page.on('pageerror', (error) => browserErrors.push(error.message))
@@ -354,11 +355,11 @@ try {
     ],
   })
   const context = await browser.newContext({ locale: 'de-DE' })
-  await context.addInitScript(({ fixtureClassId, fixtureLandscapeId }) => {
+  await context.addInitScript(({ fixtureClassId, fixtureLandscapeId, termsVersion }) => {
     if (sessionStorage.getItem('skillpilot_trainer_navigation_seeded') === 'true') return
     sessionStorage.setItem('skillpilot_trainer_navigation_seeded', 'true')
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_trainer_landscape', fixtureLandscapeId)
     localStorage.setItem('skillpilot_active_class', fixtureClassId)
@@ -389,7 +390,7 @@ try {
     window.addEventListener('popstate', () => {
       historyProbe.entries.push({ kind: 'popstate', href: location.href })
     })
-  }, { fixtureClassId: classId, fixtureLandscapeId: landscapeId })
+  }, { fixtureClassId: classId, fixtureLandscapeId: landscapeId, termsVersion: CURRENT_TERMS_VERSION })
 
   const page = await context.newPage()
   const browserErrors: string[] = []

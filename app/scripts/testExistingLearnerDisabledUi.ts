@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { chromium, type Browser } from 'playwright'
 
 import { startViteTestServer } from './viteTestServer'
+import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 
 const learnerId = '11111111-2222-4333-8444-555555555555'
 const directClassId = 'existing-learner-disabled'
@@ -90,7 +91,7 @@ try {
   const context = await browser.newContext({ locale: 'de-DE', timezoneId: 'Europe/Berlin' })
   await context.addInitScript((seed) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
+    localStorage.setItem('skillpilot_terms_accepted_version', seed.termsVersion)
     localStorage.setItem('skillpilot_role', 'trainer')
     localStorage.setItem('skillpilot_trainer_landscape', 'math')
     localStorage.setItem('skillpilot_teacher_workspace_v1', 'retired-secret')
@@ -126,7 +127,7 @@ try {
         [seed.generatedClassId]: { classId: seed.generatedClassId },
       },
     }))
-  }, { directClassId, directClass, legacyClassId, generatedClassId, personalConfig })
+  }, { directClassId, directClass, legacyClassId, generatedClassId, personalConfig, termsVersion: CURRENT_TERMS_VERSION })
 
   const page = await context.newPage()
   const requests: Array<{ pathname: string; method: string }> = []
