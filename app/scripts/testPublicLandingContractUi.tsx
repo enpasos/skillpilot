@@ -14,6 +14,7 @@ interface LanguageExpectation {
   accessSummary: string
   footerLabels: string[]
   imageCaption: string
+  heroDescription: string
   sceneLabels: [string, string]
   landingPillLabels: string[]
   overviewTitle: string
@@ -27,6 +28,7 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
     accessSummary: 'Jetzt mit Claude lernen – auch in der App und mit Voice-Mode. ChatGPT ist noch nicht verfügbar.',
     footerLabels: ['Statistiken', 'Nutzungsbedingungen', 'Datenschutz', 'Impressum'],
     imageCaption: 'KI-generiertes Symbolbild',
+    heroDescription: 'Wähle dein Curriculum und starte mit Claude in die Lern-Beta. Entdecke, was du kannst – und freu dich über jeden Erfolg.',
     sceneLabels: ['Mit Stift & Papier', 'Im Gespräch'],
     landingPillLabels: [
       'Jetzt lernen',
@@ -51,6 +53,7 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
     accessSummary: 'Learn with Claude now – including the app and voice mode. ChatGPT is not available yet.',
     footerLabels: ['Statistics', 'Terms of Use', 'Privacy', 'Imprint'],
     imageCaption: 'AI-generated illustration',
+    heroDescription: 'Choose your curriculum and join the learning beta with Claude. Discover what you can do – and celebrate every success.',
     sceneLabels: ['With pen & paper', 'In conversation'],
     landingPillLabels: [
       'Learn now',
@@ -950,6 +953,11 @@ const assertLandingContract = async (page: Page, language: Language, viewport: s
   const expected = expectedByLanguage[language]
   const landing = page.getByTestId('public-landing-panels')
   await landing.waitFor()
+  assert.equal(
+    await landing.locator('.public-landing-hero-description').innerText(),
+    expected.heroDescription,
+    `${language} ${viewport}: the introduction emphasizes the joy of learning achievements`,
+  )
   await page.evaluate(() => document.fonts.ready)
   const titleTypography = await landing.locator('.public-landing-hero-title').evaluate((element) => {
     const style = getComputedStyle(element)
