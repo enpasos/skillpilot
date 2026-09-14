@@ -28,29 +28,29 @@
     "directInstallSha256": "439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca"
   },
   "activation": {
-    "state": "prepared_not_published",
-    "firstPartyUiRoute": "controlled_direct_install_beta",
-    "marketplaceUiSwitchAllowed": false,
+    "state": "published_pending_acceptance",
+    "firstPartyUiRoute": "personal_git_marketplace",
+    "marketplaceUiSwitchAllowed": true,
     "firstPartyGuideDecision": {
-      "status": "pending",
-      "approvedAt": null,
-      "approvedBy": null,
-      "candidateVersion": null,
-      "candidateSha256": null,
-      "repositoryRevision": null,
-      "repositoryTreeSha256": null,
-      "evidenceRef": null
+      "status": "approved",
+      "approvedAt": "2026-09-14T18:46:17.000Z",
+      "approvedBy": "product-owner",
+      "candidateVersion": "1.1.6",
+      "candidateSha256": "439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca",
+      "repositoryRevision": "2c009f47630132f6b14492b204c827f43ba21ba0",
+      "repositoryTreeSha256": "e466966eb72f4470730aff5a5fa6e75f2bff5e6593642a18d89cacea201a5599",
+      "evidenceRef": "docs/deploy/claude-personal-marketplace-release.md#guide-approval-and-website-download-promotion-14-september-2026"
     },
     "evidence": [
       {
         "id": "public-repository-default-branch",
-        "status": "pending",
-        "revision": null,
-        "treeSha256": null,
-        "candidateVersion": null,
-        "candidateSha256": null,
-        "verifiedAt": null,
-        "evidenceRef": null
+        "status": "pass",
+        "revision": "2c009f47630132f6b14492b204c827f43ba21ba0",
+        "treeSha256": "e466966eb72f4470730aff5a5fa6e75f2bff5e6593642a18d89cacea201a5599",
+        "candidateVersion": "1.1.6",
+        "candidateSha256": "439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca",
+        "verifiedAt": "2026-09-14T18:39:12.000Z",
+        "evidenceRef": "https://github.com/enpasos/skillpilot-claude-marketplace/pull/8"
       },
       {
         "id": "clean-account-marketplace-install",

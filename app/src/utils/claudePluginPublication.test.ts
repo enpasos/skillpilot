@@ -314,11 +314,85 @@ const marketplaceLane = publishedVersion === candidateManifest.version
   ? candidateMarketplaceLane
   : JSON.parse(readFileSync(resolve(dirname(marketplaceLanePath),
     `history/${publishedVersion}/marketplace-publication.json`), 'utf8')) as MarketplaceLane
+function assertSeparateMarketplacePublication(lane: MarketplaceLane) {
+  // A verified Marketplace update may precede the download/guide promotion.
+  // Neither publication nor a historical approval promotes that new guide.
+  assert.equal(lane.activation?.marketplaceUiSwitchAllowed, false)
+  assert.equal(lane.activation?.firstPartyUiRoute, 'controlled_direct_install_beta')
+  assert.equal(lane.activation?.firstPartyGuideDecision?.status, 'pending')
+  for (const field of ['approvedAt', 'approvedBy', 'candidateVersion', 'candidateSha256',
+    'repositoryRevision', 'repositoryTreeSha256', 'evidenceRef'] as const) {
+    assert.equal(lane.activation?.firstPartyGuideDecision?.[field], null,
+      `pending guide decision must not inherit ${field}`)
+  }
+  const entries = lane.activation?.evidence ?? []
+  assert.deepEqual(entries.map(entry => entry.id), [
+    'public-repository-default-branch',
+    'clean-account-marketplace-install',
+    'uploaded-plugin-migration-and-marketplace-refresh',
+  ])
+  const publication = entries[0]!
+  if (publication.status === 'pass') {
+    assert.equal(lane.activation?.state, 'published_pending_acceptance')
+    assert.equal(publication.candidateVersion, candidateManifest.version)
+    assert.equal(publication.candidateSha256, lane.plugin?.directInstallSha256)
+    assert.match(publication.revision ?? '', /^[a-f0-9]{40}$/u)
+    assert.match(publication.treeSha256 ?? '', /^[a-f0-9]{64}$/u)
+    assert.equal(new Date(publication.verifiedAt ?? '').toISOString(), publication.verifiedAt)
+    assert.match(publication.evidenceRef ?? '',
+      /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u)
+  } else {
+    assert.equal(publication.status, 'pending')
+    assert.equal(lane.activation?.state, 'prepared_not_published')
+  }
+  for (const entry of entries.filter(entry => entry.status !== 'pass' || entry !== publication)) {
+    assert.equal(entry.status, 'pending', 'repository publication cannot approve a client installation')
+    for (const field of ['candidateVersion', 'candidateSha256', 'revision', 'treeSha256', 'verifiedAt', 'evidenceRef'] as const) {
+      assert.equal(entry[field], null, `pending evidence must not carry ${field}`)
+    }
+  }
+}
 if (publishedVersion !== candidateManifest.version) {
-  assert.equal(candidateMarketplaceLane.activation?.state, 'prepared_not_published')
-  assert.equal(candidateMarketplaceLane.activation?.marketplaceUiSwitchAllowed, false)
-  assert.equal(candidateMarketplaceLane.activation?.firstPartyGuideDecision?.status, 'pending')
-  assert.ok(candidateMarketplaceLane.activation?.evidence?.every(entry => entry.status === 'pending'))
+  assertSeparateMarketplacePublication(candidateMarketplaceLane)
+}
+{
+  // Keep the independent publication boundary covered after index promotion.
+  const publishedCandidate = structuredClone(candidateMarketplaceLane)
+  publishedCandidate.activation!.state = 'published_pending_acceptance'
+  publishedCandidate.activation!.marketplaceUiSwitchAllowed = false
+  publishedCandidate.activation!.firstPartyUiRoute = 'controlled_direct_install_beta'
+  publishedCandidate.activation!.firstPartyGuideDecision = {
+    status: 'pending',
+    ...Object.fromEntries(['approvedAt', 'approvedBy', 'candidateVersion', 'candidateSha256',
+      'repositoryRevision', 'repositoryTreeSha256', 'evidenceRef'].map(field => [field, null])),
+  }
+  Object.assign(publishedCandidate.activation!.evidence![0]!, {
+    status: 'pass', candidateVersion: candidateManifest.version,
+    candidateSha256: publishedCandidate.plugin!.directInstallSha256,
+    revision: 'a'.repeat(40), treeSha256: 'b'.repeat(64),
+    verifiedAt: '2026-09-14T18:00:00.000Z',
+    evidenceRef: 'https://github.com/enpasos/skillpilot-claude-marketplace/pull/999',
+  })
+  assertSeparateMarketplacePublication(publishedCandidate)
+  const preparedCandidate = structuredClone(publishedCandidate)
+  preparedCandidate.activation!.state = 'prepared_not_published'
+  Object.assign(preparedCandidate.activation!.evidence![0]!, {
+    status: 'pending', candidateVersion: null, candidateSha256: null,
+    revision: null, treeSha256: null, verifiedAt: null, evidenceRef: null,
+  })
+  assertSeparateMarketplacePublication(preparedCandidate)
+  for (const corrupt of [
+    (lane: MarketplaceLane) => { lane.activation!.evidence![0]!.candidateVersion = '1.1.5' },
+    (lane: MarketplaceLane) => { lane.activation!.evidence![0]!.candidateSha256 = '0'.repeat(64) },
+    (lane: MarketplaceLane) => { lane.activation!.evidence![0]!.revision = null },
+    (lane: MarketplaceLane) => { lane.activation!.evidence![1]!.status = 'pass' },
+    (lane: MarketplaceLane) => { lane.activation!.marketplaceUiSwitchAllowed = true },
+    (lane: MarketplaceLane) => { lane.activation!.firstPartyGuideDecision!.approvedBy = 'product-owner' },
+  ]) {
+    const invalid = structuredClone(publishedCandidate)
+    corrupt(invalid)
+    assert.throws(() => assertSeparateMarketplacePublication(invalid))
+  }
 }
 assert.equal(
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
@@ -343,8 +417,13 @@ assert.equal(guideDecision?.approvedBy, 'product-owner')
 assert.equal(new Date(guideDecision?.approvedAt ?? '').toISOString(), guideDecision?.approvedAt)
 assert.equal(guideDecision?.candidateVersion, publishedVersion)
 assert.equal(guideDecision?.candidateSha256, productionIndex.plugins[0]?.sha256)
+const guideEvidenceRefs: Record<string, string> = {
+  '1.1.5': 'docs/quickstart/video-production.md#guide-freigabe-vom-13-september-2026',
+  '1.1.6': 'docs/deploy/claude-personal-marketplace-release.md#guide-approval-and-website-download-promotion-14-september-2026',
+}
+assert.ok(guideEvidenceRefs[publishedVersion], 'the indexed release needs its own explicit guide approval reference')
 assert.equal(guideDecision?.evidenceRef,
-  'docs/quickstart/video-production.md#guide-freigabe-vom-13-september-2026')
+  guideEvidenceRefs[publishedVersion])
 const repositoryEvidence = marketplaceLane.activation?.evidence?.find(
   entry => entry.id === 'public-repository-default-branch',
 )
@@ -389,6 +468,25 @@ for (const pendingEvidenceId of [
   assert.equal(evidence?.evidenceRef, null)
 }
 assert.equal(CLAUDE_MARKETPLACE_INSTALLATION_ENABLED, marketplaceLane.activation?.marketplaceUiSwitchAllowed)
+
+const historical115MarketplaceLane = JSON.parse(readFileSync(
+  resolve(dirname(marketplaceLanePath), 'history/1.1.5/marketplace-publication.json'),
+  'utf8',
+)) as MarketplaceLane
+assert.equal(historical115MarketplaceLane.plugin?.version, '1.1.5')
+assert.equal(historical115MarketplaceLane.plugin?.directInstallSha256,
+  '8b1713178bbb289bc0b6669afa6e60328f2b362d42651353a78a869fe6aa76c1')
+assert.equal(historical115MarketplaceLane.activation?.state, 'published_pending_acceptance')
+assert.equal(historical115MarketplaceLane.activation?.firstPartyUiRoute, 'personal_git_marketplace')
+assert.equal(historical115MarketplaceLane.activation?.marketplaceUiSwitchAllowed, true)
+assert.deepEqual(historical115MarketplaceLane.activation?.firstPartyGuideDecision, {
+  status: 'approved', approvedAt: '2026-09-13T07:47:06.000Z', approvedBy: 'product-owner',
+  candidateVersion: '1.1.5',
+  candidateSha256: '8b1713178bbb289bc0b6669afa6e60328f2b362d42651353a78a869fe6aa76c1',
+  repositoryRevision: '228f6bd59f30fa03e3f0e44fa69ffaa122f98323',
+  repositoryTreeSha256: 'c854f82f337200a75ee9ad1078d1f22b8c219e5e4543e0fa62da38a19b24f4b2',
+  evidenceRef: guideEvidenceRefs['1.1.5'],
+})
 
 // Preparing a replacement must not rewrite the actual 1.1.1 publication or
 // turn its withdrawn guide into evidence for the new candidate.

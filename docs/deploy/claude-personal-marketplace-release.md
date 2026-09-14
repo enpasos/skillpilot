@@ -3,10 +3,12 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.6 is the local,
-unpublished continuation-correction candidate. Version 1.1.5 is deployed in
-production and published in the public Marketplace, with the exact artifact
-and repository independently verified. Real-client acceptance remains pending;
+Anthropic-curated or Anthropic-verified listing. Version 1.1.6 is published in
+the public Marketplace; its exact source, package and public repository were
+independently verified. The Product Owner has separately approved promoting
+the website download index and its guide to the same 1.1.6 artifact. The local
+index now names 1.1.6; production promotion still requires deployment and live
+verification. Real-client acceptance of 1.1.6 remains pending;
 repository publication does not establish installation or synchronization in
 every account. Earlier published packages and their evidence remain immutable
 history.
@@ -24,16 +26,97 @@ to catch up; a pause stays possible without becoming the primary recommendation.
 
 The seven-file published 1.1.5 release dossier is archived byte-identically under
 `ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.5/` and hash-protected.
-The new candidate's publication, guide and real-client evidence starts pending.
-The served publication index and the 1.1.5 Marketplace guide retain their existing
-bindings while 1.1.6 is developed locally. Candidate preparation does not update
-that index or transfer the historical guide approval to 1.1.6.
+During local candidate development, publication, guide and real-client evidence
+started pending, while the served index and guide retained their 1.1.5 bindings.
+Candidate preparation does not update that index or transfer historical guide
+approval. The separate 1.1.6 publication and guide decisions are recorded below.
 
 Use `prepare-candidate` and `verify-candidate` below for local work. The ordinary
 `verify` command checks the served registry against its exactly referenced,
 hash-protected historical dossier when it still names the previous release.
 It does not rebuild that published artifact from successor source. The separate
 candidate check still rebuilds current source and verifies exact bytes.
+
+### Independent Marketplace publication and download promotion
+
+For 1.1.6, Marketplace CI checks the exact package against the already green
+SkillPilot commit `114ff08b29bcb259aaebf6be2a90aef659bcd886`. It uses the canonical
+builder from that immutable revision, compares the seven package files with
+the reviewed source, verifies the candidate's exact archive size and SHA-256,
+and compares the extracted archive with the complete plugin directory. Both
+strict Claude validations remain required. Extra files, symlinks, changed
+package content and incorrect candidate bindings fail closed.
+
+This removes the circular requirement to serve a new website download before
+the Marketplace PR can pass. It does not waive download verification: the
+public synthetic continues to check the actual served index and its immutable
+download, and a later download-index promotion must verify the new public
+artifact separately. No previous guide or client approval transfers to 1.1.6.
+The Marketplace may be `published_pending_acceptance` while the served index
+and its independently approved guide still reference 1.1.5. This is publication
+separation, not a claim that an existing Claude installation has updated.
+
+### Completed 1.1.6 Marketplace publication
+
+After the Product Owner confirmed the backend deployment and green CI for
+SkillPilot commit `114ff08b29bcb259aaebf6be2a90aef659bcd886`, the Marketplace
+handoff was completed through
+[PR #8](https://github.com/enpasos/skillpilot-claude-marketplace/pull/8).
+The required [PR validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/34881731641)
+passed before the SHA-guarded squash merge at `2026-09-14T18:38:41Z`.
+The [main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/34882059869)
+also passed for the published commit.
+
+`verify-repository` cloned the actual public default branch and proved the
+complete exported tree, both strict Claude validations, isolated installation
+of the HTTPS Marketplace source and an unchanged remote HEAD:
+
+- Repository revision: `2c009f47630132f6b14492b204c827f43ba21ba0`.
+- Export: exactly twelve files, tree SHA-256
+  `e466966eb72f4470730aff5a5fa6e75f2bff5e6593642a18d89cacea201a5599`.
+- Plugin: `1.1.6`, 34,263 bytes, SHA-256
+  `439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca`.
+
+Local validation included 145 scoped Node tests, executable rejection cases
+for modified packages and workflow bindings, App publication/browser tests,
+TypeScript and focused lint. The public read-only synthetic passed before and
+after publication, including the unchanged served 1.1.5 download and connector
+OAuth discovery/unauthenticated challenge. No additional backend deployment,
+credential change, learner-data mutation or guide promotion was performed.
+
+At publication, only `public-repository-default-branch` was recorded as `pass`,
+giving `published_pending_acceptance`; the guide decision and real-account
+installation/update evidence remained pending. The next acceptance step is to
+confirm installed version 1.1.6 in Claude and test explicit continuation and
+catching up after a fulfilled daily quota in a fresh SkillPilot session.
+
+### Guide approval and website download promotion, 14 September 2026
+
+After the Product Owner reported that `/plugins` still displayed 1.1.5, the
+assistant explicitly asked whether website and download should also be updated
+to 1.1.6, checked and deployed. The Product Owner replied **"ja bitte"**.
+This new candidate-bound decision was recorded at `2026-09-14T18:46:17.000Z`.
+It authorizes the existing Marketplace-first guide and direct-file fallback
+for exactly version 1.1.6, package SHA-256
+`439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca`,
+published repository revision `2c009f47630132f6b14492b204c827f43ba21ba0`
+and tree SHA-256
+`e466966eb72f4470730aff5a5fa6e75f2bff5e6593642a18d89cacea201a5599`.
+
+`activation.firstPartyGuideDecision` is now `approved`,
+`marketplaceUiSwitchAllowed=true` and `firstPartyUiRoute=personal_git_marketplace`.
+The native direct-install `prepare` command advances the website index and
+stores the exact reproducible 34,263-byte archive without changing any previous
+artifact. The page derives its badge, comparison text and download from this
+validated index; no separately hardcoded version label is introduced.
+
+This is guide and deployment approval, not account-level acceptance. Both
+Marketplace installation/update records and the exact-client direct-install
+records remain pending; activation stays `published_pending_acceptance` and
+`openPublicBetaReady=false`. No plugin payload, credentials, authorization,
+session boundaries or learner data are changed. Local preparation is not a
+claim of completed production deployment; the public index and exact download
+must be verified after the normal deployment succeeds.
 
 ## 1.1.5 instruction consolidation, 12 September 2026
 
@@ -634,7 +717,7 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.6` (local, unpublished)
+- Current candidate version: `1.1.6` (Marketplace published; website promotion separately approved)
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
@@ -723,10 +806,11 @@ node scripts/claude_direct_install_beta_release.mjs verify-candidate
 node scripts/claude_direct_install_beta_release.mjs verify
 ```
 
-Only during an authorized coordinated rollout, run the existing `prepare`
+Only during an authorized download-index rollout, run the existing `prepare`
 command to add the exact artifact to runtime resources and advance the served
-index. The new guide requires its own release-bound decision; preparation and
-archived approvals do not authorize a guide switch.
+index. This is not a prerequisite for publishing the exact Marketplace package.
+The new guide requires its own release-bound decision; preparation and archived
+approvals do not authorize a guide switch.
 
 Then run the marketplace checks and create the publication tree:
 

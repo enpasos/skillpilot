@@ -9,8 +9,9 @@
   prerequisites, automatic daily stopping and read-only status requests.
 - After the daily target, offer remaining backlog as a pressure-free catch-up
   opportunity; without backlog, offer voluntary continuation or a pause.
-- Prepare this candidate locally and preserve the published 1.1.5 artifact and
-  release evidence. New publication, guide and real-client evidence is pending.
+- Preserve the published 1.1.5 artifact and release evidence. Verify Marketplace
+  publication independently of the website download index; guide and real-client
+  acceptance remain separate, candidate-bound decisions.
 
 ## 1.1.5 - 2026-09-12
 

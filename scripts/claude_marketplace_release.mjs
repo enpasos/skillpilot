@@ -41,6 +41,7 @@ const expectedExternalEvidence = [
   "uploaded-plugin-migration-and-marketplace-refresh",
 ];
 const expectedRepositoryName = "skillpilot-claude-marketplace";
+const expectedCanonicalSourceRevision = "114ff08b29bcb259aaebf6be2a90aef659bcd886";
 const legacyInstructionVersions = new Set([
   "1.0.2", "1.0.3", "1.0.4", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4",
 ]);
@@ -912,18 +913,67 @@ function validateMarketplaceTemplates(paths, lane) {
     `## ${lane.plugin.version} -`,
     "Marketplace changelog current version",
   );
+  validateClaudeMarketplaceWorkflow(workflow, lane);
+}
+
+export function validateClaudeMarketplaceWorkflow(workflow, lane) {
+  // This release uses the exact reviewed source dossier before the public download
+  // index advances. Keep the source pin, PR-byte parity and closed inventory gates.
+  const checkoutBlocks = [...workflow.matchAll(/^      - uses: actions\/checkout@[^\n]+\n(?:        [^\n]*\n)*/gmu)]
+    .map(([block]) => block.trimEnd());
+  assertJsonEqual(checkoutBlocks, [
+    [
+      "      - uses: actions/checkout@v6",
+      "        with:",
+      "          path: marketplace",
+      "          persist-credentials: false",
+    ].join("\n"),
+    [
+      "      - uses: actions/checkout@v6",
+      "        with:",
+      "          repository: enpasos/skillpilot",
+      `          ref: ${expectedCanonicalSourceRevision}`,
+      "          path: canonical",
+      "          sparse-checkout: ai/claude/plugin/skillpilot-coach-v1",
+      "          persist-credentials: false",
+    ].join("\n"),
+  ], "Marketplace workflow pinned checkouts");
+  const workflowLines = new Set(workflow.split("\n").map((line) => line.trim()));
   for (const requiredWorkflowText of [
-    "@anthropic-ai/claude-code@2.1.241",
-    lane.plugin.directInstallSha256,
-    `https://skillpilot.com/api/public/claude/plugins/${lane.plugin.name}/${lane.plugin.version}/sha256-${lane.plugin.directInstallSha256}/${lane.plugin.name}-${lane.plugin.version}.plugin`,
+    "working-directory: marketplace",
+    "node-version: 22",
+    "run: npm install --global @anthropic-ai/claude-code@2.1.241",
+    `test "$(git -C ../canonical rev-parse HEAD)" = '${expectedCanonicalSourceRevision}'`,
+    'canonical="${GITHUB_WORKSPACE}/canonical/ai/claude/plugin/skillpilot-coach-v1"',
+    `artifact="\${RUNNER_TEMP}/${lane.plugin.name}-${lane.plugin.version}.plugin"`,
+    'node --input-type=module - "${canonical}" "${artifact}" <<\'NODE\'',
+    'const { buildClaudePluginPackage } = await import(pathToFileURL(resolve(canonicalRoot, "build-package.mjs")));',
+    'const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));',
+    'const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));',
+    `assert.equal(baseline.pluginVersion, "${lane.plugin.version}", "Pinned dossier version");`,
+    'assert.equal(baseline.archive.bytes, 34263, "Pinned dossier archive bytes");',
+    `assert.equal(baseline.archive.sha256, "${lane.plugin.directInstallSha256}", "Pinned dossier archive digest");`,
+    'assert.deepEqual([...publicationFiles].sort(), baseline.archive.entries.map(({ packagePath }) => packagePath).sort(), "Pinned dossier inventory");',
+    'assert.ok(!stat.isSymbolicLink(), `Symlink forbidden: ${path}`);',
+    'assert.ok(expectedDirectories.has(path), `Unexpected directory: ${path}`);',
+    'assert.ok(stat.isFile(), `Non-regular file forbidden: ${path}`);',
+    'assert.deepEqual(listFiles(), expectedFiles, "Closed Marketplace inventory");',
+    'assert.ok(readFileSync(resolve(canonicalRoot, path)).equals(readFileSync(resolve("plugins/skillpilot-coach-v1", path))), `Canonical source parity: ${path}`);',
+    'const built = buildClaudePluginPackage({ root: resolve("plugins/skillpilot-coach-v1"), outputPath: artifactPath });',
+    'assert.equal(built.bytes, baseline.archive.bytes, "Rebuilt archive bytes");',
+    'assert.equal(built.sha256, baseline.archive.sha256, "Rebuilt archive digest");',
+    'assert.deepEqual(built.entries, baseline.archive.entries, "Rebuilt archive entries");',
+    `'${lane.plugin.directInstallSha256}' \\`,
+    '"${artifact}" | sha256sum --check --strict',
+    'unzip -q "${artifact}" -d "${extracted}"',
+    "diff --recursive --brief --no-dereference \\",
+    '"${extracted}" ./plugins/skillpilot-coach-v1',
     "claude plugin validate --strict .",
     "claude plugin validate --strict ./plugins/skillpilot-coach-v1",
   ]) {
-    assertIncludes(
-      workflow,
-      requiredWorkflowText,
-      `Marketplace workflow contract: ${requiredWorkflowText}`,
-    );
+    if (!workflowLines.has(requiredWorkflowText)) {
+      throw new Error(`Marketplace workflow contract: ${requiredWorkflowText} is missing a required executable line.`);
+    }
   }
 }
 

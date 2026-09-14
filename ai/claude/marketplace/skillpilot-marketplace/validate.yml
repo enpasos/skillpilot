@@ -11,20 +11,83 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: marketplace
     steps:
       - uses: actions/checkout@v6
+        with:
+          path: marketplace
+          persist-credentials: false
+      - uses: actions/checkout@v6
+        with:
+          repository: enpasos/skillpilot
+          ref: 114ff08b29bcb259aaebf6be2a90aef659bcd886
+          path: canonical
+          sparse-checkout: ai/claude/plugin/skillpilot-coach-v1
+          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version: 22
       - name: Install the pinned Claude validator
         run: npm install --global @anthropic-ai/claude-code@2.1.241
-      - name: Verify immutable direct-install artifact parity
+      - name: Verify pinned source and immutable package parity
         run: |
+          test "$(git -C ../canonical rev-parse HEAD)" = '114ff08b29bcb259aaebf6be2a90aef659bcd886'
+          canonical="${GITHUB_WORKSPACE}/canonical/ai/claude/plugin/skillpilot-coach-v1"
           artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.6.plugin"
           extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.6"
-          curl --proto '=https' --tlsv1.2 --fail --silent --show-error \
-            --output "${artifact}" \
-            "https://skillpilot.com/api/public/claude/plugins/skillpilot-coach-v1/1.1.6/sha256-439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca/skillpilot-coach-v1-1.1.6.plugin"
+          # Publication must not depend on a download that is only indexed after publication.
+          # Use the reviewed, immutable source dossier and its builder, never PR-supplied code.
+          node --input-type=module - "${canonical}" "${artifact}" <<'NODE'
+          import assert from "node:assert/strict";
+          import { lstatSync, readFileSync, readdirSync } from "node:fs";
+          import { dirname, resolve } from "node:path";
+          import { pathToFileURL } from "node:url";
+
+          const [canonicalRoot, artifactPath] = process.argv.slice(2);
+          const { buildClaudePluginPackage } = await import(pathToFileURL(resolve(canonicalRoot, "build-package.mjs")));
+          const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));
+          const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));
+          assert.equal(baseline.pluginVersion, "1.1.6", "Pinned dossier version");
+          assert.equal(baseline.archive.bytes, 34263, "Pinned dossier archive bytes");
+          assert.equal(baseline.archive.sha256, "439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca", "Pinned dossier archive digest");
+          assert.deepEqual([...publicationFiles].sort(), baseline.archive.entries.map(({ packagePath }) => packagePath).sort(), "Pinned dossier inventory");
+
+          const expectedFiles = [
+            ".claude-plugin/marketplace.json", ".github/workflows/validate.yml",
+            "CHANGELOG.md", "LICENSE", "README.md",
+            ...publicationFiles.map((path) => `plugins/skillpilot-coach-v1/${path}`),
+          ].sort();
+          const expectedDirectories = new Set();
+          for (const path of expectedFiles) {
+            for (let directory = dirname(path); directory !== "."; directory = dirname(directory)) {
+              expectedDirectories.add(directory);
+            }
+          }
+          function listFiles(directory = ".") {
+            return readdirSync(directory).flatMap((name) => {
+              const path = directory === "." ? name : `${directory}/${name}`;
+              const stat = lstatSync(path);
+              assert.ok(!stat.isSymbolicLink(), `Symlink forbidden: ${path}`);
+              if (path === ".git" && stat.isDirectory()) return [];
+              if (stat.isDirectory()) {
+                assert.ok(expectedDirectories.has(path), `Unexpected directory: ${path}`);
+                return listFiles(path);
+              }
+              assert.ok(stat.isFile(), `Non-regular file forbidden: ${path}`);
+              return [path];
+            }).sort();
+          }
+          assert.deepEqual(listFiles(), expectedFiles, "Closed Marketplace inventory");
+          for (const path of publicationFiles) {
+            assert.ok(readFileSync(resolve(canonicalRoot, path)).equals(readFileSync(resolve("plugins/skillpilot-coach-v1", path))), `Canonical source parity: ${path}`);
+          }
+          const built = buildClaudePluginPackage({ root: resolve("plugins/skillpilot-coach-v1"), outputPath: artifactPath });
+          assert.equal(built.bytes, baseline.archive.bytes, "Rebuilt archive bytes");
+          assert.equal(built.sha256, baseline.archive.sha256, "Rebuilt archive digest");
+          assert.deepEqual(built.entries, baseline.archive.entries, "Rebuilt archive entries");
+          NODE
           printf '%s  %s\n' \
             '439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca' \
             "${artifact}" | sha256sum --check --strict

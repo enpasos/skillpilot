@@ -4,8 +4,9 @@
 coaching to Claude. Install it once through this Git marketplace to receive
 future plugin updates through Claude.
 
-Version 1.1.6 is locally prepared and has not been published or accepted in a
-real Claude account. The previous published package remains immutable history.
+This repository distributes the exact reviewed 1.1.6 package. Repository
+publication does not establish acceptance in a particular Claude account;
+the previous published package remains immutable history.
 
 ### In version 1.1.6
 
